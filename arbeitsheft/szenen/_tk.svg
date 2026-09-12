@@ -1,0 +1,20 @@
+<defs>
+  <linearGradient id="tkBoden" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6E5C41"/><stop offset="1" stop-color="#4A3D2B"/>
+  </linearGradient>
+</defs>
+  <use href="#t_kellerwand" transform="translate(0,0)"/>
+  <rect x="0" y="418" width="900" height="122" fill="url(#tkBoden)"/>
+  <rect x="0" y="418" width="900" height="4" fill="#9A8462" opacity="0.5"/>
+
+  <!-- Standlinie -->
+  <line x1="0" y1="470" x2="900" y2="470" stroke="#C4963A" stroke-width="1.5" stroke-dasharray="6 6"/>
+
+  <use href="#t_eierkarton"     transform="translate(190,170) scale(0.9)"/>
+  <use href="#t_saite_schwingt" transform="translate(640,150) scale(1.0)"/>
+
+  <use href="#t_gitarre"        transform="translate(80,470) scale(0.62)"/>
+  <use href="#t_cajon"          transform="translate(250,470) scale(0.78)"/>
+  <use href="#t_verstaerker"    transform="translate(440,470) scale(0.78)"/>
+  <use href="#t_notenstaender"  transform="translate(640,470) scale(0.66)"/>
+  <use href="#t_kopfhoerer"     transform="translate(820,470) scale(0.72)"/>

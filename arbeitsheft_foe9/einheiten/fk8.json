@@ -1,0 +1,193 @@
+{
+ "seite": {
+  "id": "fk8",
+  "quelle": "kf8",
+  "sim": "kraefte-gleichgewicht",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Die Lampe hängt still",
+  "name": "Warum bewegt sich die Lampe nicht?",
+  "fachwoerter_neu": [
+   "Kräftegleichgewicht"
+  ],
+  "alltag": [
+   "Über der Bühne hängt eine Lampe an einem Seil.",
+   "Das Seil zieht die Lampe nach oben. Diese Kraft heißt Haltekraft.",
+   "Jannis sagt: „An der Lampe zieht doch nichts mehr.“"
+  ],
+  "frage": "Wirken an der stillen Lampe wirklich keine Kräfte?",
+  "predict": [
+   "An der Lampe wirken keine Kräfte mehr.",
+   "Es wirken zwei Kräfte. Sie gleichen sich aus."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies am Anfang ab: Halte 5 N, Gewicht 5 N.",
+   "Drücke einmal auf – N. Beobachte die Lampe.",
+   "Lies im Bild unter der Lampe die Gesamtkraft ab.",
+   "Drücke auf den Knopf zurück in die Mitte. Vergleiche."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Haltekraft des Seils",
+   "Was steht im Bild unter der Lampe?",
+   "Was passiert mit der Lampe?"
+  ],
+  "tabRows": [
+   [
+    "5 N (am Anfang)",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ],
+   [
+    "4 N (nach – N)",
+    "",
+    ""
+   ],
+   [
+    "wieder 5 N",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Haltekraft und Gewichtskraft sind gleich groß. Die Gesamtkraft ist",
+    "loesung": "null",
+    "post": "."
+   },
+   {
+    "pre": "Das heißt",
+    "loesung": "Kräftegleichgewicht",
+    "post": ". Die Lampe bleibt in Ruhe. Die Kräfte sind trotzdem da."
+   }
+  ],
+  "wortbank": [
+   "null",
+   "Kräftegleichgewicht",
+   "unten",
+   "bewegt"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation am Anfang?",
+   "antwort": "Die Haltekraft ist 5 N. Die Gewichtskraft ist auch 5 N. Im Bild steht: Gesamtkraft = 0 N. Die Lampe hängt still."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst einmal auf – N. Was steht dann im Bild?",
+    "optionen": [
+     "Gesamtkraft = 0 N.",
+     "Gesamtkraft = 1 N nach unten.",
+     "Die Gewichtskraft ist weg."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Seil hält nur mit 4 N. Es bleibt 1 N nach",
+      "loesung": "unten",
+      "post": "übrig."
+     },
+     {
+      "pre": "Darum bleibt die Lampe nicht in Ruhe. Sie",
+      "loesung": "bewegt",
+      "post": "sich."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum an der stillen Lampe doch Kräfte ziehen.",
+    "satzstarter": "Es wirken zwei Kräfte, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche jedes Wort nach dem Eintragen durch.",
+   "h2": "Beginne so: Es wirken zwei Kräfte, aber sie sind gleich groß.",
+   "h3": "Fast fertig: Das Seil zieht nach oben. Die Gewichtskraft zieht nach unten. Beide sind 5 N groß. Die Gesamtkraft ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann die Lampe in Ruhe bleibt.",
+   "Ich weiß, dass die Gesamtkraft dann null ist.",
+   "Ich kann erklären, dass trotzdem Kräfte wirken."
+  ],
+  "zuhause": "Lege ein Buch auf den Tisch. Es liegt still. Zeichne einen Pfeil nach unten und einen nach oben.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleiche Bildhälften nebeneinander: in jeder Hälfte hängt dieselbe Lampe an einem senkrechten Seil von der Decke; links ein grüner Pfeil vom Seil nach OBEN mit der großen Beschriftung „Halte 5 N“ und ein gleich langer roter Pfeil von der Lampe nach UNTEN mit „Gewicht 5 N“ (Farben wie am Bildschirm: Haltekraft grün, Gewichtskraft rot), darunter groß „Gesamtkraft = 0 N – bleibt in Ruhe“; rechts dieselbe Anordnung, aber der grüne Pfeil nach oben ist deutlich KÜRZER, beschriftet „Halte 4 N“, der rote Pfeil nach unten bleibt unverändert lang mit „Gewicht 5 N“, darunter groß „Gesamtkraft = 1 N nach unten – Bewegung“; beide Pfeile starten an der Lampe und liegen genau übereinander auf einer Linie; keine weiteren Pfeile, keine Nebenbilder, keine Deko; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fk8",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass an einem ruhenden Körper Kräfte wirken können: Sind Haltekraft und Gewichtskraft gleich groß und entgegengesetzt gerichtet, ist die Gesamtkraft null und der Körper bleibt in Ruhe (Kräftegleichgewicht). Sie erkennen, dass Ruhe nicht „keine Kräfte“ bedeutet, und lesen ab, dass bei 4 N Haltekraft 1 N nach unten übrig bleibt und die Lampe sich bewegt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: Lampe oder Beutel an einer Schnur, dazu ein Kraftmesser.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen; auf jeder Karte steht die Lampe mit zwei Pfeilen und darunter der Bildtext des Bildschirms. Karte 1 (Anfang, Haltekraft 5 N): Pfeil nach oben „Halte 5 N“, Pfeil nach unten „Gewicht 5 N“, darunter „Gesamtkraft = 0 N → Gleichgewicht (bleibt in Ruhe)“; die Statuszeile lautet dazu: „Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.“ Karte 2 (nach einmal – N): kurzer Pfeil nach oben „Halte 4 N“, unverändert langer Pfeil nach unten „Gewicht 5 N“, darunter „Gesamtkraft = 1 N nach unten → Bewegung!“; die Statuszeile lautet dazu: „Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“ Karte 3 (nach dem Knopf zurück in die Mitte): wieder Karte 1. Wichtig: die beiden Pfeile immer senkrecht übereinander zeichnen, damit das Aufheben sichtbar wird.",
+  "merksatz": [
+   "null",
+   "Kräftegleichgewicht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "4 N (nach – N)",
+    "Gesamtkraft = 1 N nach unten",
+    "Sie bewegt sich."
+   ],
+   [
+    "wieder 5 N",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach einmal – N steht im Bild unter der Lampe: „Gesamtkraft = 1 N nach unten → Bewegung!“. Die Statuszeile daneben sagt dasselbe: „Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“ Beide Stellen führen auf dieselbe Antwort; die Aufgabe fragt nach dem Bild, weil dort zusätzlich die Pfeillängen dazu passen.",
+   "typische_fehler": [
+    "„Gesamtkraft = 0 N“ wird angekreuzt, weil dieser Bildtext im Ausgangszustand die ganze Zeit dastand.",
+    "Es wird zweimal auf – N gedrückt; dann steht dort „Gesamtkraft = 2 N nach unten“ und keine Option passt. Vorher mit „zurück in die Mitte“ neu beginnen.",
+    "Option 3 wird gewählt: Wenn sich etwas bewegt, sei die Gewichtskraft „weg“ – Verwechslung von Ursache und Wirkung."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "unten",
+    "bewegt"
+   ],
+   "typische_fehler": [
+    "„oben“ statt „unten“ – die Richtung der übrig bleibenden Kraft wird mit der Richtung des Seils verwechselt.",
+    "Statt 1 N wird 4 N eingesetzt; dann fehlt der Schritt 5 N − 4 N. Am Bildtext gemeinsam nachlesen.",
+    "„bleibt“ statt „bewegt“, weil der Merksatz von Ruhe spricht und ungeprüft übernommen wird."
+   ]
+  },
+  "a3": {
+   "erwartung": "Es wirken zwei Kräfte, aber sie sind gleich groß und ziehen in verschiedene Richtungen. Die Gewichtskraft zieht nach unten, das Seil zieht mit der Haltekraft nach oben. Zusammen ergibt das die Gesamtkraft null. Darum hängt die Lampe still.",
+   "alternativen": [
+    "Mit den Zahlen der Simulation: „5 N nach oben und 5 N nach unten heben sich auf. Es bleibt 0 N übrig.“",
+    "Gegenprobe statt Beschreibung: „Wenn wirklich keine Kraft zöge, müsste das Seil auch schlaff sein. Es ist aber straff gespannt.“",
+    "Zweiter Fall als Beleg: „Bei 4 N Haltekraft bleibt 1 N übrig – dann bewegt sich die Lampe sofort. Also wirken Kräfte.“",
+    "Kurzform ohne Beispiel: „Die Kräfte sind da, sie gleichen sich aus.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Jannis wird nur wiederholt: „Es zieht nichts, weil sie sich nicht bewegt.“",
+    "Gesamtkraft null wird als „keine Kräfte“ gedeutet – genau die Fehlvorstellung, gegen die die Seite arbeitet. Die Simulation widerlegt sie selbst: „Doch, es wirken Kräfte – sie gleichen sich nur aus.“",
+    "Nur eine Kraft wird genannt (meist die Gewichtskraft); die Haltekraft des Seils fehlt.",
+    "Die beiden Kräfte werden addiert statt gegeneinander gerechnet (10 N)."
+   ]
+  },
+  "hilfe3_wort": "null (auch richtig: 0 N)",
+  "schwache": [
+   "Zuerst nur den Anfang und einmal – N vergleichen; den Knopf zurück in die Mitte erst danach freigeben.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen; „Kräftegleichgewicht“ dabei in zwei Teilen sprechen und schreiben (Kräfte – Gleichgewicht).",
+   "Zwei gleich lange Papierstreifen als Pfeile auf den Tisch legen und gegeneinander schieben; danach einen Streifen kürzen.",
+   "Den Bildtext unter der Lampe mit dem Finger zeigen lassen, bevor die Tabellenzeile geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Fragen der Minidiagnose (weit unter dem Bild, im Protokollteil) und schreibe auf, welche Rückmeldung du bekommen hast.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Kräftegleichgewicht am ruhenden Körper; trägt UF4 (Wissen vernetzen: Ruhe wird auf das Zusammenwirken zweier Kräfte zurückgeführt) und B1. Hinweise zur Wortwahl: Das Wort „Kräftegleichgewicht“ ist mit 18 Buchstaben für A2/DaZ schwer; es steht am Bildschirm im Hinweis neben der Statuszeile („… ist die Gesamtkraft 0 – die Lampe bleibt in Ruhe. Das heißt Kräftegleichgewicht.“); die Überschrift trägt dazu nur ein Waagen-Zeichen, nicht das Wort. Beim Sprechen in zwei Teilen zerlegen (Kräfte – Gleichgewicht). „Haltekraft“ bleibt Alltagswort mit Begriffssatz im Einstieg und steht bewusst nicht in der Wortbank; „Gesamtkraft“ und „Gewichtskraft“ sind Rückverweise auf fk7 bzw. fk4/fk5 und zählen dort. Nicht einführen: Normalkraft, Resultierende, Kräftefreiheit. Achtung: Die Rückmeldung des Bildschirms zur Buch-Frage schreibt „Gewichtskraft und Normalkraft wirken ständig“ – im Unterricht dafür „Kraft des Tisches“ sagen, so heißt es an anderer Stelle am Bildschirm auch („Tischkraft“). Der Reset-Knopf trägt am Bildschirm vor der Aufschrift ein Kreispfeil-Zeichen, das die Heftschrift nicht drucken kann; im Heft steht deshalb nur die Wortmarke „zurück in die Mitte“ – beim Vorstellen der Simulation einmal auf den Knopf zeigen. Die 5 N sind reine Anzeigewerte, eine Masse nennt die Simulation nicht; keine Rechnung mit F = m · g. Kompetenzcodes stehen nur hier, nicht auf der Schülerseite."
+ }
+}

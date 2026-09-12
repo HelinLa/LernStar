@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 430" width="1136" height="430">
+<defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#22334f"/><stop offset="1" stop-color="#13203a"/></linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#ffdc93" stop-opacity=".9"/>
+    <stop offset=".4" stop-color="#ffc866" stop-opacity=".26"/>
+    <stop offset="1" stop-color="#ffbe55" stop-opacity="0"/></radialGradient>
+  <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffd28a" stop-opacity=".30"/>
+    <stop offset="1" stop-color="#ffd28a" stop-opacity="0"/></linearGradient>
+  <radialGradient id="floorlit" cx="0.5" cy="0" r="0.7">
+    <stop offset="0" stop-color="#c99a52" stop-opacity=".33"/>
+    <stop offset="1" stop-color="#c99a52" stop-opacity="0"/></radialGradient>
+  <clipPath id="frame"><rect x="0" y="0" width="1136" height="430" rx="18"/></clipPath>
+</defs>
+<g clip-path="url(#frame)">
+  <rect width="1136" height="430" fill="url(#wall)"/>
+  <g stroke="#2c3f61" stroke-width="2" opacity=".75">
+    <line x1="0" y1="64" x2="1136" y2="64"/><line x1="0" y1="158" x2="1136" y2="158"/>
+    <line x1="0" y1="252" x2="1136" y2="252"/></g>
+
+  <!-- Fenster, Nacht -->
+  <g><rect x="72" y="86" width="146" height="122" rx="5" fill="#0e1a32" stroke="#3a5480" stroke-width="4"/>
+    <path d="M130 124a25 25 0 1 0 23 35 29 29 0 0 1-23-35z" fill="#d3dcee" opacity=".85"/>
+    <circle cx="185" cy="112" r="2.4" fill="#d3dcee" opacity=".65"/>
+    <circle cx="99" cy="180" r="2" fill="#d3dcee" opacity=".45"/>
+    <line x1="145" y1="86" x2="145" y2="208" stroke="#3a5480" stroke-width="4"/></g>
+
+  <!-- Boden -->
+  <rect x="0" y="366" width="1136" height="64" fill="#392b1f"/>
+  <rect x="0" y="366" width="1136" height="5" fill="#4e3b2a"/>
+  <ellipse cx="420" cy="382" rx="330" ry="30" fill="url(#floorlit)"/>
+
+  <!-- Licht -->
+  <path d="M330 176 L196 366 L470 366 Z" fill="url(#cone)"/>
+  <circle cx="330" cy="168" r="124" fill="url(#glow)"/>
+
+  <!-- Kabelpaar: Lampe -> hoch an die Wand -> hinunter zur Batterie -->
+  <path d="M330 110 L330 72 C 470 44, 660 56, 742 118 C 792 158, 790 208, 780 240"
+        stroke="#e2b755" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <path d="M340 116 L344 80 C 476 56, 650 70, 726 126 C 770 162, 764 210, 754 240"
+        stroke="#c9544a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Haengelampe -->
+  <g><circle cx="330" cy="110" r="7" fill="#8e9ab6"/>
+    <rect x="321" y="114" width="18" height="14" rx="3" fill="#95a2bf"/>
+    <circle cx="330" cy="148" r="22" fill="#ffdd95"/>
+    <circle cx="330" cy="148" r="22" fill="none" stroke="#e6b158" stroke-width="3"/>
+    <path d="M321 144q9 11 18 0" stroke="#d5952f" stroke-width="2.6" fill="none"/></g>
+
+  <!-- Pritsche -->
+  <g><rect x="96" y="298" width="430" height="20" rx="5" fill="#8a6438"/>
+    <rect x="96" y="284" width="430" height="18" rx="6" fill="#cdbb9e"/>
+    <rect x="112" y="318" width="16" height="50" fill="#6f4f2c"/>
+    <rect x="494" y="318" width="16" height="50" fill="#6f4f2c"/>
+    <rect x="88"  y="240" width="14" height="82" rx="4" fill="#6f4f2c"/>
+    <path d="M104 294 q86 -20 170 -6 q54 9 96 6 v10 H104 Z" fill="#3f6ea8"/>
+    <path d="M104 294 q86 -20 170 -6 q54 9 96 6" fill="none" stroke="#5d8cc6" stroke-width="3"/>
+    <rect x="112" y="258" width="88" height="30" rx="14" fill="#e9e2d2"/>
+    <rect x="112" y="258" width="88" height="30" rx="14" fill="none" stroke="#cfc6b1" stroke-width="2"/></g>
+
+  <!-- Yusuf: sitzt am Bettrand, beugt sich weit nach rechts zur Batterie -->
+  <g>
+    <!-- Bein haengt herunter -->
+    <path d="M452 296 q26 6 26 24 l-2 44" stroke="#3a4a70" stroke-width="24" fill="none" stroke-linecap="round"/>
+    <path d="M470 362 l26 4" stroke="#2b3550" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <!-- Rumpf, nach rechts geneigt -->
+    <path d="M436 300 q-4 -44 34 -58 q40 -14 56 18 q10 20 -6 32 l-70 20 z" fill="#4f7ec0"/>
+    <!-- Kopf -->
+    <circle cx="536" cy="228" r="27" fill="#e8b98f"/>
+    <path d="M509 228 A27 27 0 0 1 556.7 210.6 Q540 205 526 213 Q515 219 509 228 Z" fill="#2c2620"/>
+    <path d="M509 228 q-2 13 4 20 q-9 -7 -9 -20 z" fill="#2c2620"/>
+    <path d="M545 217 q8 -1 12 3" stroke="#2c2620" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <circle cx="551" cy="228" r="2.9" fill="#2c2620"/>
+    <path d="M557 240 q-9 4 -15 0" stroke="#c98f63" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <!-- ausgestreckter Arm zur Klemme -->
+    <path d="M528 258 C 590 274, 654 268, 700 250" stroke="#e8b98f" stroke-width="16"
+          fill="none" stroke-linecap="round"/>
+    <circle cx="708" cy="247" r="11.5" fill="#f0c49a"/>
+  </g>
+
+  <!-- Tisch mit Batterie -->
+  <g><rect x="646" y="292" width="240" height="16" rx="4" fill="#c2a071"/>
+    <rect x="646" y="308" width="240" height="7" rx="3" fill="#8f7048"/>
+    <rect x="668" y="315" width="14" height="53" fill="#7a5c38"/>
+    <rect x="852" y="315" width="14" height="53" fill="#7a5c38"/>
+    <rect x="702" y="250" width="130" height="44" rx="6" fill="#4a5570" stroke="#2a3346" stroke-width="3"/>
+    <text x="767" y="279" font-family="Helvetica,Arial" font-size="16" fill="#a9b3c7"
+          text-anchor="middle" letter-spacing="1.5">4,5 V</text>
+    <rect x="722" y="238" width="9" height="14" rx="3" fill="#bcc5d6"/>
+    <rect x="794" y="230" width="9" height="22" rx="3" fill="#bcc5d6"/>
+    <path d="M726 240 l-16 -7 l16 -7 z" fill="#c9544a"/>
+    <path d="M799 232 l16 -7 l-16 -7 z" fill="#e2b755"/></g>
+
+  <!-- Sprechblase -->
+  <g><rect x="846" y="62" width="256" height="88" rx="20" fill="#faf6ec"/>
+    <path d="M886 148 l-8 32 l36 -32 z" fill="#faf6ec"/>
+    <text x="974" y="101" font-family="Helvetica,Arial" font-size="25" font-weight="600"
+          fill="#262c42" text-anchor="middle">Das muss doch</text>
+    <text x="974" y="131" font-family="Helvetica,Arial" font-size="25" font-weight="600"
+          fill="#262c42" text-anchor="middle">einfacher gehen!</text></g>
+</g>
+<rect x="1.5" y="1.5" width="1133" height="427" rx="18" fill="none" stroke="#c6a04a" stroke-width="3"/>
+</svg>

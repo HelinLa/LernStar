@@ -1,0 +1,271 @@
+[
+ {
+  "sim": "sammellinse",
+  "ueberschrift": "🔎 Was macht ein Glas mit dem Lichtbündel?",
+  "regler": [
+   {
+    "id": "sliF",
+    "beschriftung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90",
+    "bereich": {
+     "min": "45",
+     "max": "150",
+     "step": "5",
+     "start": "90"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "in der Mitte dicker",
+    "ruft": "_sliArt('sammel')"
+   },
+   {
+    "aufschrift": "in der Mitte dünner",
+    "ruft": "_sliArt('zerstreu')"
+   },
+   {
+    "aufschrift": "Im Brennpunkt",
+    "ruft": "_sliAns(0,0)"
+   },
+   {
+    "aufschrift": "In der Linse",
+    "ruft": "_sliAns(0,1)"
+   },
+   {
+    "aufschrift": "Sie treffen sich nie",
+    "ruft": "_sliAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Dicke der Linse",
+    "ruft": "_sliAns(1,0)"
+   },
+   {
+    "aufschrift": "Der Abstand von der Linse zum Brennpunkt",
+    "ruft": "_sliAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Helligkeit des Lichts",
+    "ruft": "_sliAns(1,2)"
+   },
+   {
+    "aufschrift": "Sie zerstreut es",
+    "ruft": "_sliAns(2,0)"
+   },
+   {
+    "aufschrift": "Sie bündelt es",
+    "ruft": "_sliAns(2,1)"
+   },
+   {
+    "aufschrift": "Sie verschluckt es",
+    "ruft": "_sliAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_sliSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_sliSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_sliSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('sammellinse')"
+   }
+  ],
+  "hinweise": [
+   "Paralleles Licht – wie von der weit entfernten Sonne – fällt auf ein Glas. Schalte zwischen den beiden Glassorten um und beobachte, wohin die Strahlen laufen.",
+   "Die Sammellinse ist in der Mitte dicker. Sie lenkt die Strahlen zueinander hin; sie treffen sich im Brennpunkt hinter der Linse.",
+   "Die Zerstreuungslinse ist in der Mitte dünner. Sie lenkt die Strahlen voneinander weg. Rückwärts verlängert treffen sie sich in einem Punkt vor der Linse – dort liegt ihr Brennpunkt. Hinter ihr gibt es keinen hellen Fleck.",
+   "Unten rechts: Blick durch das Glas. Die Sammellinse vergrößert dicht über der Schrift, die Zerstreuungslinse verkleinert – bei jedem Abstand."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "sliStatus: 🔆 Sammellinse, in der Mitte dicker. Die Strahlen treffen sich im Brennpunkt, 90 hinter dem Glas – dort ist es am hellsten und heißesten."
+   },
+   {
+    "einstellung": "in der Mitte dicker",
+    "text": "sliStatus: 🔆 Sammellinse, in der Mitte dicker. Die Strahlen treffen sich im Brennpunkt, 90 hinter dem Glas – dort ist es am hellsten und heißesten."
+   },
+   {
+    "einstellung": "in der Mitte dünner",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck."
+   },
+   {
+    "einstellung": "Im Brennpunkt",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✓ Richtig! Alle parallelen Strahlen treffen sich im Brennpunkt."
+   },
+   {
+    "einstellung": "In der Linse",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Der Brennpunkt liegt hinter der Linse, nicht in ihr."
+   },
+   {
+    "einstellung": "Sie treffen sich nie",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt."
+   },
+   {
+    "einstellung": "Die Dicke der Linse",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt."
+   },
+   {
+    "einstellung": "Der Abstand von der Linse zum Brennpunkt",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✓ Richtig! Die Brennweite ist der Abstand Linse–Brennpunkt."
+   },
+   {
+    "einstellung": "Die Helligkeit des Lichts",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes."
+   },
+   {
+    "einstellung": "Sie zerstreut es",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Das macht eine Zerstreuungslinse."
+   },
+   {
+    "einstellung": "Sie bündelt es",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✓ Richtig! Eine Sammellinse bündelt das Licht."
+   },
+   {
+    "einstellung": "Sie verschluckt es",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht.  ||  sliSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht.  ||  sliSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 45",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 45 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 60",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 60 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 70",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 70 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 85",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 85 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 100",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 100 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 110",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 110 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 125",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 125 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 135",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 135 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 150",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 150 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 50",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 50 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 55",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 55 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 65",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 65 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 75",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 75 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 80",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 80 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 90",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 95",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 95 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 105",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 105 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 115",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 115 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 120",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 120 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 130",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 130 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 140",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 140 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   },
+   {
+    "einstellung": "in der Mitte dünner Wölbung des Glases – Brennweite f: 90 = 145",
+    "text": "sliStatus: 🌫️ Zerstreuungslinse, in der Mitte dünner. Die Strahlen laufen auseinander. Rückwärts verlängert kommen sie aus einem Punkt 145 vor dem Glas. Hinter dem Glas entsteht nie ein heller Fleck.  ||  sliFb0: ✗ Doch – sie treffen sich im Brennpunkt.  ||  sliFb1: ✗ Die Helligkeit ist etwas anderes.  ||  sliFb2: ✗ Die Linse ist durchsichtig – sie verschluckt das Licht nicht."
+   }
+  ],
+  "bildtexte": [
+   "Sammellinse",
+   "Brennpunkt",
+   "Brennweite f = 90",
+   "paralleles Licht →",
+   "Blick durch das Glas",
+   "Aa",
+   "Zerstreuungslinse",
+   "scheinbarer Brennpunkt",
+   "Brennweite f = 45",
+   "Brennweite f = 60",
+   "Brennweite f = 70",
+   "Brennweite f = 85",
+   "Brennweite f = 100",
+   "Brennweite f = 110",
+   "Brennweite f = 125",
+   "Brennweite f = 135",
+   "Brennweite f = 150",
+   "Brennweite f = 50",
+   "Brennweite f = 55",
+   "Brennweite f = 65",
+   "Brennweite f = 75",
+   "Brennweite f = 80",
+   "Brennweite f = 95",
+   "Brennweite f = 105",
+   "Brennweite f = 115",
+   "Brennweite f = 120",
+   "Brennweite f = 130",
+   "Brennweite f = 140",
+   "Brennweite f = 145"
+  ]
+ }
+]

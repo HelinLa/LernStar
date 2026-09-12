@@ -1,0 +1,154 @@
+{
+"id": "magnetismus",
+"clues": {
+"hinweise": [
+{
+"wort": "MAGNET",
+"tipp": "Dieses Ding zieht Eisen, Nickel und Kobalt an. Holz und Plastik bleiben nicht daran hängen."
+},
+{
+"wort": "EISEN",
+"tipp": "Aus diesem grauen Metall sind viele Nägel und Büroklammern. Ein Magnet zieht es an."
+},
+{
+"wort": "KOMPASS",
+"tipp": "Mit diesem kleinen Gerät findest du den Weg. Sein Zeiger dreht sich immer nach Norden."
+},
+{
+"wort": "NORDPOL",
+"tipp": "So heißt das eine Ende von einem Magneten. Es ist oft rot angemalt."
+},
+{
+"wort": "NADEL",
+"tipp": "Der dünne, drehbare Zeiger im Kompass. Sie ist selbst ein winziger Magnet."
+},
+{
+"wort": "POL",
+"tipp": "So nennt man ein Ende von einem Magneten. Davon gibt es zwei an jedem Magneten."
+},
+{
+"wort": "FELD",
+"tipp": "Der unsichtbare Bereich rund um einen Magneten. Es wirkt sogar durch Papier."
+},
+{
+"wort": "NORDEN",
+"tipp": "Diese Himmelsrichtung zeigt eine Kompassnadel immer an. Auf der Karte ist sie oben."
+},
+{
+"wort": "KRAFT",
+"tipp": "Man kann sie nicht sehen. Sie zieht Eisen an oder drückt zwei Magnete auseinander."
+},
+{
+"wort": "ANZIEHEN",
+"tipp": "Das machen ein Nordpol und ein Südpol: Sie halten fest aneinander."
+},
+{
+"wort": "ABSTOSSEN",
+"tipp": "Das passiert bei zwei gleichen Polen: Sie drücken sich voneinander weg."
+},
+{
+"wort": "NICKEL",
+"tipp": "Ein silbrig glänzendes Metall. Neben Eisen und Kobalt zieht ein Magnet es an."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann erklären, dass ein Magnet Dinge auch anziehen kann, ohne sie zu berühren, weil um ihn herum ein Magnetfeld liegt.",
+"Ich kann sagen, welche Stoffe ein Magnet anzieht: Eisen, Nickel und Kobalt – aber nicht Aluminium, Kupfer, Holz, Plastik oder Glas.",
+"Ich kann beschreiben, dass jeder Magnet einen Nordpol und einen Südpol hat und dass sich gleiche Pole abstoßen und ungleiche Pole anziehen.",
+"Ich kann erklären, dass um jeden Magneten ein unsichtbares Magnetfeld liegt, das an den Polen am stärksten ist.",
+"Ich kann zeigen, dass die Feldlinien außen vom Nordpol zum Südpol laufen.",
+"Ich kann erklären, dass eine Kompassnadel ein kleiner Magnet ist und nach Norden zeigt, weil die Erde ein großer Magnet ist."
+],
+"tipps": [
+"Nimm zu Hause einen Magneten und probiere aus, welche Dinge er anzieht und welche nicht.",
+"Male dir einen Magneten auf. Sage dabei laut: Gleiche Pole stoßen sich ab, ungleiche Pole ziehen sich an.",
+"Erkläre einem Freund oder deinen Eltern, warum ein Kompass immer nach Norden zeigt."
+],
+"mini": [
+{
+"frage": "Ein Magnet wird an einen Löffel aus Aluminium und an einen Nagel aus Eisen gehalten. Welchen zieht er an?",
+"loesung": "Den Nagel aus Eisen. Eisen wird angezogen, Aluminium nicht."
+},
+{
+"frage": "Du hältst den Nordpol an den Nordpol eines anderen Magneten. Was passiert und warum?",
+"loesung": "Sie stoßen sich ab, weil sich gleiche Pole immer abstoßen."
+},
+{
+"frage": "Warum zeigt eine Kompassnadel immer nach Norden?",
+"loesung": "Weil die Nadel ein kleiner Magnet ist und die Erde ein großer Magnet."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Ein Magnet zieht nur die Metalle Eisen,",
+"post": "und Kobalt an.",
+"loesung": "Nickel"
+},
+{
+"pre": "Jeder Magnet hat zwei Pole: einen Nordpol und einen",
+"post": ".",
+"loesung": "Südpol"
+},
+{
+"pre": "Gleiche Pole",
+"post": "sich ab, ungleiche Pole ziehen sich an.",
+"loesung": "stoßen"
+},
+{
+"pre": "Um jeden Magneten liegt ein unsichtbares",
+"post": ". Es ist an den Polen am stärksten.",
+"loesung": "Magnetfeld"
+}
+],
+"a2": [
+{
+"aussage": "Ein Magnet zieht Eisen an.",
+"stimmt": true
+},
+{
+"aussage": "Ein Magnet zieht auch Aluminium an.",
+"stimmt": false
+},
+{
+"aussage": "Gleiche Pole stoßen sich ab.",
+"stimmt": true
+},
+{
+"aussage": "Ungleiche Pole stoßen sich ab.",
+"stimmt": false
+},
+{
+"aussage": "Um jeden Magneten liegt ein Magnetfeld.",
+"stimmt": true
+},
+{
+"aussage": "Die Kompassnadel zeigt nach Süden.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Wo ist das Magnetfeld eines Stabmagneten am stärksten?",
+"optionen": [
+"Genau in der Mitte des Magneten",
+"An den beiden Polen",
+"Überall am Magneten gleich stark",
+"Nur am Nordpol"
+],
+"richtig": 1
+},
+"offen": {
+"frage": "Erkläre, warum eine Kompassnadel immer nach Norden zeigt.",
+"zeilen": 3,
+"loesung": "Die Kompassnadel ist selbst ein kleiner Magnet und kann sich frei drehen. Auch die Erde ist ein großer Magnet mit einem Magnetfeld. Die Nadel dreht sich so lange, bis ein Ende nach Norden zeigt."
+},
+"transfer": {
+"frage": "Warum hält ein Magnet an der Kühlschranktür, aber nicht an einer Holztür?",
+"zeilen": 2,
+"loesung": "Die Kühlschranktür ist aus Eisen/Stahl und wird angezogen. Holz ist nicht magnetisch, darum hält der Magnet dort nicht."
+}
+}
+}

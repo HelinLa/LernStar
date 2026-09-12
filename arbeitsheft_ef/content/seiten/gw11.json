@@ -1,0 +1,85 @@
+{
+ "id": "gw11",
+ "basiskonzept": "Zufall und Determiniertheit",
+ "titel": "Vier Quellen, eine Behauptung",
+ "problem": "Für die Tafel zur Schwerelosigkeit haben Mira und Tobias vier Quellen gesammelt: ein Schulbuch, einen Zeitungsartikel, ein Video aus dem Netz und einen begutachteten Fachartikel. Alle vier äußern sich dazu, warum die Besatzung einer Raumstation schwebt, und sie widersprechen einander. Tobias will die Quelle nehmen, die am überzeugendsten klingt. Mira fragt zurück: Woran misst man das?",
+ "frage": "Woran erkennt man, welche Quelle eine physikalische Aussage verlässlich belegt?",
+ "auftrag": "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
+ "predict": [
+  "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht. Wer Bilder aus dem All zeigt, war schließlich näher dran als ein Buch.",
+  "Verlässlich ist die Quelle, deren Aussage sich nachprüfen lässt: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt. Das lässt sich Zeile für Zeile abhaken."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Lies die vier Zeilen des Datenblatts und markiere in jeder Zeile, welche der vier Kriterien erfüllt sind: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung.",
+  "Rechne die Behauptung der ersten Zeile nach: r = 6371 km + 400 km, dann g = G · M / r² mit G = 6,674 · 10⁻¹¹ N · m² / kg² und M = 5,972 · 10²⁴ kg. Vergleiche mit dem Bodenwert, den dieselbe Formel für r = 6371 km liefert.",
+  "Zähle für jede Quellenart, wie viele der vier Kriterien sie erfüllt, trage die Zahl in die Tabelle ein und vergib danach die Rangplätze 1 bis 4."
+ ],
+ "daten": {
+  "titel": "Vier Quellenarten zu einer Aussage über Schwerelosigkeit",
+  "spalten": [
+   "Quellenart",
+   "Was sie behauptet",
+   "Woran man die Verlässlichkeit erkennt"
+  ],
+  "zeilen": [
+   [
+    "Schulbuch für die Oberstufe",
+    "In 400 km Höhe wirkt noch g = 8,69 m/s², das sind 88,5 % des Bodenwerts",
+    "Quelle genannt, nicht begutachtet, Daten offen, Deutung getrennt"
+   ],
+   [
+    "Zeitungsartikel im Wissensteil",
+    "So weit oben zieht die Erde kaum noch, deshalb schwebt die Besatzung",
+    "Quelle genannt, nicht begutachtet, keine Daten, keine Trennung"
+   ],
+   [
+    "Netzvideo ohne Quellenangabe",
+    "Im Weltall gibt es keine Schwerkraft mehr",
+    "Keine Quelle, nicht begutachtet, keine Daten, keine Trennung"
+   ],
+   [
+    "Begutachteter Fachartikel",
+    "Bahndaten r = 6771 km und T = 5545 s; Station und Besatzung fallen frei",
+    "Quelle genannt, begutachtet, Daten offen, Deutung getrennt"
+   ]
+  ],
+  "quelle": "Die vier Zeilen beschreiben Quellenarten, keine bestimmten Veröffentlichungen. Gemeinsamer Bezug: eine Raumstation in 400 km Höhe über dem Boden, mittlerer Erdradius 6371 km. Der Bodenwert 9,82 m/s² folgt aus dem Kugelmodell ohne Erddrehung; gemessen werden 9,81 m/s².",
+  "merke": "Die dritte Spalte nennt nur, was eine Quelle über sich selbst preisgibt – nicht, ob ihre Aussage stimmt. Beides ist zu trennen."
+ },
+ "tabCols": [
+  "Quellenart laut Datenblatt",
+  "Erfüllte Kriterien (von vier) und Rangplatz"
+ ],
+ "tabRows": [
+  "Schulbuch",
+  "Zeitungsartikel",
+  "Netzvideo",
+  "Fachartikel"
+ ],
+ "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden, und es zieht die Astronautin weiter an. Station und Besatzung fallen gemeinsam frei, und genau deshalb drückt niemand auf eine Unterlage. Diese Aussage lässt sich prüfen: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Dass zwei unabhängige Wege denselben Wert liefern, ist kein Zufall, sondern die Folge eines determinierten Gesetzes. Ebenso prüfbar ist eine Quelle: Sie nennt, worauf sie sich stützt, sie wurde von Fachleuten begutachtet, sie legt ihre Daten offen, und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
+ "merksatz": [
+  {
+   "pre": "Schwerelosigkeit bedeutet nicht fehlende Anziehung, sondern",
+   "loesung": "freien Fall",
+   "post": "."
+  },
+  {
+   "pre": "Verlässlich ist eine Quelle, wenn ihre Angaben",
+   "loesung": "nachprüfbar",
+   "post": "sind: Quelle, Begutachtung, offene Daten, Deutung getrennt."
+  }
+ ],
+ "beobachtung": "Die Rechnung entscheidet zwischen den Zeilen. Mit r = 6371 km + 400 km = 6771 km = 6,771 · 10⁶ m folgt r² = 4,585 · 10¹³ m², und mit G · M = 3,986 · 10¹⁴ m³/s² ergibt sich g = 8,69 m/s². Dieselbe Formel liefert am Boden 3,986 · 10¹⁴ m³/s² : 4,059 · 10¹³ m² = 9,82 m/s²; in Bahnhöhe bleiben davon 8,69 : 9,82 = 0,885, also 88,5 Prozent. Die Anziehung ist dort nur um gut ein Zehntel kleiner. Damit ist das Netzvideo widerlegt. Der Zeitungsartikel sagt dasselbe in schwächerer Form; er nennt keine Zahl und lässt sich deshalb nicht genau prüfen, doch in der Lesart „fast keine Anziehung“ widerspricht ihm dieselbe Rechnung. Schulbuch und Fachartikel stimmen im Wert überein. Die dritte Spalte zählt: Fachartikel vier Kriterien, Schulbuch drei, Zeitungsartikel eins, Netzvideo keins – das ist die Rangfolge. Verlässlichkeit und Richtigkeit bleiben dabei zweierlei: Der Rang entsteht aus den Kriterien, über wahr oder falsch entscheidet die Rechnung.",
+ "aufgabe": {
+  "frage": "Berechne aus den Bahndaten der vierten Zeile mit a = 4 · π² · r / T² die Zentripetalbeschleunigung und begründe damit, welche der vier Aussagen haltbar ist.",
+  "zeilen": 5,
+  "loesung": "Mit r = 6771 km = 6,771 · 10⁶ m und T = 5545 s gilt 4 · π² · r = 39,48 · 6,771 · 10⁶ m = 2,673 · 10⁸ m sowie T² = (5545 s)² = 3,0747 · 10⁷ s². Damit ist a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s². Dieser Wert stimmt mit dem Erdfeld in dieser Höhe überein: Die Feldstärke 8,69 N/kg entspricht einer Beschleunigung von 8,69 m/s². Die Station wird angezogen und fällt mit genau dieser Beschleunigung ständig an der Erde vorbei. Haltbar sind deshalb die Aussagen von Schulbuch und Fachartikel; das Netzvideo ist widerlegt, und der Zeitungsartikel nennt keine Zahl – prüfen lässt er sich nur der Richtung nach, und auch dort hält er nicht stand. Der Fachartikel steht trotz gleichem Wert über dem Schulbuch, weil er die Messdaten offenlegt und begutachtet wurde."
+ },
+ "alltag": "Suche in einem Erklärvideo oder einem Zeitungsartikel eine Aussage über Schwerelosigkeit und prüfe sie an den vier Kriterien des Datenblatts. Notiere, welches Kriterium fehlt und welche Angabe du bräuchtest, um die Aussage selbst nachzurechnen.",
+ "alltagAfb": "III",
+ "alltagKomp": "K2",
+ "ueberleitung": "Diese vier Zeilen ließen sich mit einer Rechnung entscheiden. Die letzte Seite des Kapitels behauptet etwas, das keinem Gefühl entspricht und trotzdem gemessen ist: Eine bewegte Uhr geht langsamer. Lege dort dieselben Kriterien noch einmal an.",
+ "name": "Wem glaubt man ein Weltbild?",
+ "theme": "ef_gravitation"
+}

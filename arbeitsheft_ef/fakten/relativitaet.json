@@ -1,0 +1,541 @@
+[
+ {
+  "sim": "relativitaet",
+  "ueberschrift": "🚀 Spezielle Relativitätstheorie – γ, Δt, L",
+  "regler": [
+   {
+    "id": "relV",
+    "beschriftung": "anvas> Geschwindigkeit v (% von c): 50 % c",
+    "bereich": {
+     "min": "1",
+     "max": "99",
+     "step": "1",
+     "start": "50"
+    }
+   }
+  ],
+  "knoepfe": [],
+  "hinweise": [],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 1",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 1 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|212.59,221.97 | lineTo|218.26,221.97 | lineTo|223.92,221.97 | lineTo|229.58,221.97 | lineTo|235.25,221.97 | lineTo|240.91,221.97 | lineTo|246.58,221.97 | lineTo|252.24,221.97 | lineTo|257.90,221.97 | lineTo|263.57,221.97 | lineTo|269.23,221.97 | lineTo|274.90,221.97 | lineTo|280.56,221.97 | lineTo|286.22,221.97 | lineTo|291.89,221.97 | lineTo|297.55,221.97 | lineTo|303.22,221.97 | lineTo|308.88,221.97 | lineTo|314.54,221.97 | lineTo|320.21,221.97 | lineTo|325.87,221.97 | lineTo|331.54,221.97 | lineTo|337.20,221.97 | lineTo|342.86,221.97 | lineTo|348.53,221.97 | lineTo|354.19,221.97 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 1 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|294.54,221.97 | lineTo|299.08,221.97 | lineTo|303.62,221.97 | lineTo|308.15,221.97 | lineTo|312.69,221.97 | lineTo|317.23,221.97 | lineTo|321.77,221.97 | lineTo|326.31,221.97 | lineTo|330.85,221.97 | lineTo|335.38,221.97 | lineTo|339.92,221.97 | lineTo|344.46,221.97 | lineTo|349.00,221.97 | lineTo|353.54,221.97 | lineTo|358.08,221.97 | lineTo|362.62,221.97 | lineTo|367.15,221.97 | lineTo|371.69,221.97 | lineTo|376.23,221.97 | lineTo|380.77,221.97 | lineTo|385.31,221.97 | lineTo|389.85,221.97 | lineTo|394.38,221.97 | lineTo|398.92,221.97 | lineTo|403.46,221.97 | lineTo|408.00,221.97 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 1 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|322.08,221.97 | lineTo|325.51,221.97 | lineTo|328.95,221.97 | lineTo|332.39,221.97 | lineTo|335.83,221.97 | lineTo|339.26,221.97 | lineTo|342.70,221.97 | lineTo|346.14,221.97 | lineTo|349.57,221.97 | lineTo|353.01,221.97 | lineTo|356.45,221.97 | lineTo|359.88,221.97 | lineTo|363.32,221.97 | lineTo|366.76,221.97 | lineTo|370.19,221.97 | lineTo|373.63,221.97 | lineTo|377.07,221.97 | lineTo|380.50,221.97 | lineTo|383.94,221.97 | lineTo|387.38,221.97 | lineTo|390.82,221.97 | lineTo|394.25,221.97 | lineTo|397.69,221.97 | lineTo|401.13,221.97 | lineTo|404.56,221.97 | lineTo|408.00,221.97 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 1 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|338.86,221.97 | lineTo|341.63,221.97 | lineTo|344.39,221.97 | lineTo|347.16,221.97 | lineTo|349.92,221.97 | lineTo|352.69,221.97 | lineTo|355.45,221.97 | lineTo|358.22,221.97 | lineTo|360.98,221.97 | lineTo|363.75,221.97 | lineTo|366.52,221.97 | lineTo|369.28,221.97 | lineTo|372.05,221.97 | lineTo|374.81,221.97 | lineTo|377.58,221.97 | lineTo|380.34,221.97 | lineTo|383.11,221.97 | lineTo|385.88,221.97 | lineTo|388.64,221.97 | lineTo|391.41,221.97 | lineTo|394.17,221.97 | lineTo|396.94,221.97 | lineTo|399.70,221.97 | lineTo|402.47,221.97 | lineTo|405.23,221.97 | lineTo|408.00,221.97 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 13",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 13 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|358.28,217.68 | lineTo|360.27,217.68 | lineTo|362.26,217.68 | lineTo|364.25,217.68 | lineTo|366.24,217.68 | lineTo|368.22,217.68 | lineTo|370.21,217.68 | lineTo|372.20,217.68 | lineTo|374.19,217.68 | lineTo|376.18,217.68 | lineTo|378.17,217.68 | lineTo|380.16,217.68 | lineTo|382.15,217.68 | lineTo|384.13,217.68 | lineTo|386.12,217.68 | lineTo|388.11,217.68 | lineTo|390.10,217.68 | lineTo|392.09,217.68 | lineTo|394.08,217.68 | lineTo|396.07,217.68 | lineTo|398.06,217.68 | lineTo|400.04,217.68 | lineTo|402.03,217.68 | lineTo|404.02,217.68 | lineTo|406.01,217.68 | lineTo|408.00,217.68 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 13 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|364.40,217.68 | lineTo|366.15,217.68 | lineTo|367.89,217.68 | lineTo|369.64,217.68 | lineTo|371.38,217.68 | lineTo|373.12,217.68 | lineTo|374.87,217.68 | lineTo|376.61,217.68 | lineTo|378.35,217.68 | lineTo|380.10,217.68 | lineTo|381.84,217.68 | lineTo|383.59,217.68 | lineTo|385.33,217.68 | lineTo|387.07,217.68 | lineTo|388.82,217.68 | lineTo|390.56,217.68 | lineTo|392.31,217.68 | lineTo|394.05,217.68 | lineTo|395.79,217.68 | lineTo|397.54,217.68 | lineTo|399.28,217.68 | lineTo|401.02,217.68 | lineTo|402.77,217.68 | lineTo|404.51,217.68 | lineTo|406.26,217.68 | lineTo|408.00,217.68 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 13 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|369.18,217.68 | lineTo|370.74,217.68 | lineTo|372.29,217.68 | lineTo|373.84,217.68 | lineTo|375.39,217.68 | lineTo|376.95,217.68 | lineTo|378.50,217.68 | lineTo|380.05,217.68 | lineTo|381.61,217.68 | lineTo|383.16,217.68 | lineTo|384.71,217.68 | lineTo|386.26,217.68 | lineTo|387.82,217.68 | lineTo|389.37,217.68 | lineTo|390.92,217.68 | lineTo|392.47,217.68 | lineTo|394.03,217.68 | lineTo|395.58,217.68 | lineTo|397.13,217.68 | lineTo|398.68,217.68 | lineTo|400.24,217.68 | lineTo|401.79,217.68 | lineTo|403.34,217.68 | lineTo|404.89,217.68 | lineTo|406.45,217.68 | lineTo|408.00,217.68 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 13 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|373.02,217.68 | lineTo|374.42,217.68 | lineTo|375.82,217.68 | lineTo|377.22,217.68 | lineTo|378.62,217.68 | lineTo|380.02,217.68 | lineTo|381.42,217.68 | lineTo|382.81,217.68 | lineTo|384.21,217.68 | lineTo|385.61,217.68 | lineTo|387.01,217.68 | lineTo|388.41,217.68 | lineTo|389.81,217.68 | lineTo|391.21,217.68 | lineTo|392.61,217.68 | lineTo|394.01,217.68 | lineTo|395.41,217.68 | lineTo|396.81,217.68 | lineTo|398.21,217.68 | lineTo|399.60,217.68 | lineTo|401.00,217.68 | lineTo|402.40,217.68 | lineTo|403.80,217.68 | lineTo|405.20,217.68 | lineTo|406.60,217.68 | lineTo|408.00,217.68 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 26",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 26 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 26 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 26 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 26 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 38",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 38 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 38 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 38 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 38 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 50",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 50 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 50 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 50 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 50 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.2|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 62",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 62 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.3|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 62 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.3|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 62 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.3|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 62 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.3|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 75",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 75 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.5|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 75 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.5|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 75 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.5|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 75 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.5|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 87",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 87 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|2.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 87 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|2.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 87 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|2.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 87 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|2.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 99",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 99 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 99 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 99 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 99 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 5",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.98 | lineTo|379.59,221.98 | lineTo|380.77,221.98 | lineTo|381.95,221.98 | lineTo|383.14,221.98 | lineTo|384.32,221.98 | lineTo|385.51,221.98 | lineTo|386.69,221.98 | lineTo|387.87,221.98 | lineTo|389.06,221.98 | lineTo|390.24,221.98 | lineTo|391.42,221.98 | lineTo|392.61,221.98 | lineTo|393.79,221.98 | lineTo|394.98,221.98 | lineTo|396.16,221.98 | lineTo|397.34,221.98 | lineTo|398.53,221.98 | lineTo|399.71,221.98 | lineTo|400.90,221.98 | lineTo|402.08,221.98 | lineTo|403.26,221.98 | lineTo|404.45,221.98 | lineTo|405.63,221.98 | lineTo|406.82,221.98 | lineTo|408.00,221.98 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.98 | lineTo|379.59,221.98 | lineTo|380.77,221.98 | lineTo|381.95,221.98 | lineTo|383.14,221.98 | lineTo|384.32,221.98 | lineTo|385.51,221.98 | lineTo|386.69,221.98 | lineTo|387.87,221.98 | lineTo|389.06,221.98 | lineTo|390.24,221.98 | lineTo|391.42,221.98 | lineTo|392.61,221.98 | lineTo|393.79,221.98 | lineTo|394.98,221.98 | lineTo|396.16,221.98 | lineTo|397.34,221.98 | lineTo|398.53,221.98 | lineTo|399.71,221.98 | lineTo|400.90,221.98 | lineTo|402.08,221.98 | lineTo|403.26,221.98 | lineTo|404.45,221.98 | lineTo|405.63,221.98 | lineTo|406.82,221.98 | lineTo|408.00,221.98 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.98 | lineTo|379.59,221.98 | lineTo|380.77,221.98 | lineTo|381.95,221.98 | lineTo|383.14,221.98 | lineTo|384.32,221.98 | lineTo|385.51,221.98 | lineTo|386.69,221.98 | lineTo|387.87,221.98 | lineTo|389.06,221.98 | lineTo|390.24,221.98 | lineTo|391.42,221.98 | lineTo|392.61,221.98 | lineTo|393.79,221.98 | lineTo|394.98,221.98 | lineTo|396.16,221.98 | lineTo|397.34,221.98 | lineTo|398.53,221.98 | lineTo|399.71,221.98 | lineTo|400.90,221.98 | lineTo|402.08,221.98 | lineTo|403.26,221.98 | lineTo|404.45,221.98 | lineTo|405.63,221.98 | lineTo|406.82,221.98 | lineTo|408.00,221.98 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.98 | lineTo|379.59,221.98 | lineTo|380.77,221.98 | lineTo|381.95,221.98 | lineTo|383.14,221.98 | lineTo|384.32,221.98 | lineTo|385.51,221.98 | lineTo|386.69,221.98 | lineTo|387.87,221.98 | lineTo|389.06,221.98 | lineTo|390.24,221.98 | lineTo|391.42,221.98 | lineTo|392.61,221.98 | lineTo|393.79,221.98 | lineTo|394.98,221.98 | lineTo|396.16,221.98 | lineTo|397.34,221.98 | lineTo|398.53,221.98 | lineTo|399.71,221.98 | lineTo|400.90,221.98 | lineTo|402.08,221.98 | lineTo|403.26,221.98 | lineTo|404.45,221.98 | lineTo|405.63,221.98 | lineTo|406.82,221.98 | lineTo|408.00,221.98 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 10",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 10 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.94 | lineTo|379.59,221.94 | lineTo|380.77,221.94 | lineTo|381.95,221.94 | lineTo|383.14,221.94 | lineTo|384.32,221.94 | lineTo|385.51,221.94 | lineTo|386.69,221.94 | lineTo|387.87,221.94 | lineTo|389.06,221.94 | lineTo|390.24,221.94 | lineTo|391.42,221.94 | lineTo|392.61,221.94 | lineTo|393.79,221.94 | lineTo|394.98,221.94 | lineTo|396.16,221.94 | lineTo|397.34,221.94 | lineTo|398.53,221.94 | lineTo|399.71,221.94 | lineTo|400.90,221.94 | lineTo|402.08,221.94 | lineTo|403.26,221.94 | lineTo|404.45,221.94 | lineTo|405.63,221.94 | lineTo|406.82,221.94 | lineTo|408.00,221.94 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 10 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.94 | lineTo|379.59,221.94 | lineTo|380.77,221.94 | lineTo|381.95,221.94 | lineTo|383.14,221.94 | lineTo|384.32,221.94 | lineTo|385.51,221.94 | lineTo|386.69,221.94 | lineTo|387.87,221.94 | lineTo|389.06,221.94 | lineTo|390.24,221.94 | lineTo|391.42,221.94 | lineTo|392.61,221.94 | lineTo|393.79,221.94 | lineTo|394.98,221.94 | lineTo|396.16,221.94 | lineTo|397.34,221.94 | lineTo|398.53,221.94 | lineTo|399.71,221.94 | lineTo|400.90,221.94 | lineTo|402.08,221.94 | lineTo|403.26,221.94 | lineTo|404.45,221.94 | lineTo|405.63,221.94 | lineTo|406.82,221.94 | lineTo|408.00,221.94 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 10 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.94 | lineTo|379.59,221.94 | lineTo|380.77,221.94 | lineTo|381.95,221.94 | lineTo|383.14,221.94 | lineTo|384.32,221.94 | lineTo|385.51,221.94 | lineTo|386.69,221.94 | lineTo|387.87,221.94 | lineTo|389.06,221.94 | lineTo|390.24,221.94 | lineTo|391.42,221.94 | lineTo|392.61,221.94 | lineTo|393.79,221.94 | lineTo|394.98,221.94 | lineTo|396.16,221.94 | lineTo|397.34,221.94 | lineTo|398.53,221.94 | lineTo|399.71,221.94 | lineTo|400.90,221.94 | lineTo|402.08,221.94 | lineTo|403.26,221.94 | lineTo|404.45,221.94 | lineTo|405.63,221.94 | lineTo|406.82,221.94 | lineTo|408.00,221.94 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 10 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,221.94 | lineTo|379.59,221.94 | lineTo|380.77,221.94 | lineTo|381.95,221.94 | lineTo|383.14,221.94 | lineTo|384.32,221.94 | lineTo|385.51,221.94 | lineTo|386.69,221.94 | lineTo|387.87,221.94 | lineTo|389.06,221.94 | lineTo|390.24,221.94 | lineTo|391.42,221.94 | lineTo|392.61,221.94 | lineTo|393.79,221.94 | lineTo|394.98,221.94 | lineTo|396.16,221.94 | lineTo|397.34,221.94 | lineTo|398.53,221.94 | lineTo|399.71,221.94 | lineTo|400.90,221.94 | lineTo|402.08,221.94 | lineTo|403.26,221.94 | lineTo|404.45,221.94 | lineTo|405.63,221.94 | lineTo|406.82,221.94 | lineTo|408.00,221.94 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|7.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 15",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 15 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 15 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 15 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 15 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 20",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 20 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 20 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 20 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 20 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 25",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 25 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 25 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 25 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 25 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 30",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 30 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 30 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 30 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 30 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.0|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 35",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 35 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 35 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 35 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 35 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 40",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 40 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 40 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 40 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 40 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 45",
+    "text": ""
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 45 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 45 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 45 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   },
+   {
+    "einstellung": "anvas> Geschwindigkeit v (% von c): 50 % c = 45 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|Δt/Δt₀|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|1.1|50.00|156.00 | set:textAlign=right | fillText|1.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | fillText|Zeitdilatation-Faktor (= γ)|191.00|134.00"
+   }
+  ],
+  "bildtexte": [
+   "v = 50% c",
+   "γ = 1.155  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.15× langsamer",
+   "L = L₀/γ → Länge auf 86.6% verkürzt",
+   "γ vs. v (%) — explodiert bei v→c!",
+   "Zeitdilatation-Faktor (= γ)",
+   "γ",
+   "1.2",
+   "1.0",
+   "t [s]",
+   "Δt/Δt₀",
+   "v = 1% c",
+   "γ = 1.000  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.00× langsamer",
+   "L = L₀/γ → Länge auf 100.0% verkürzt",
+   "v = 13% c",
+   "γ = 1.009  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.01× langsamer",
+   "L = L₀/γ → Länge auf 99.2% verkürzt",
+   "v = 26% c",
+   "γ = 1.036  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.04× langsamer",
+   "L = L₀/γ → Länge auf 96.6% verkürzt",
+   "v = 38% c",
+   "γ = 1.081  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.08× langsamer",
+   "L = L₀/γ → Länge auf 92.5% verkürzt",
+   "1.1",
+   "v = 62% c",
+   "γ = 1.275  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.27× langsamer",
+   "L = L₀/γ → Länge auf 78.5% verkürzt",
+   "1.3",
+   "v = 75% c",
+   "γ = 1.512  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.51× langsamer",
+   "L = L₀/γ → Länge auf 66.1% verkürzt",
+   "1.5",
+   "v = 87% c",
+   "γ = 2.028  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 2.03× langsamer",
+   "L = L₀/γ → Länge auf 49.3% verkürzt",
+   "2.0",
+   "v = 99% c",
+   "γ = 7.089  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 7.09× langsamer",
+   "L = L₀/γ → Länge auf 14.1% verkürzt",
+   "7.1",
+   "v = 5% c",
+   "γ = 1.001  (Lorentz-Faktor)",
+   "L = L₀/γ → Länge auf 99.9% verkürzt",
+   "v = 10% c",
+   "γ = 1.005  (Lorentz-Faktor)",
+   "L = L₀/γ → Länge auf 99.5% verkürzt",
+   "v = 15% c",
+   "γ = 1.011  (Lorentz-Faktor)",
+   "L = L₀/γ → Länge auf 98.9% verkürzt",
+   "v = 20% c",
+   "γ = 1.021  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.02× langsamer",
+   "L = L₀/γ → Länge auf 98.0% verkürzt",
+   "v = 25% c",
+   "γ = 1.033  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.03× langsamer",
+   "L = L₀/γ → Länge auf 96.8% verkürzt",
+   "v = 30% c",
+   "γ = 1.048  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.05× langsamer",
+   "L = L₀/γ → Länge auf 95.4% verkürzt",
+   "v = 35% c",
+   "γ = 1.068  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.07× langsamer",
+   "L = L₀/γ → Länge auf 93.7% verkürzt",
+   "v = 40% c",
+   "γ = 1.091  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.09× langsamer",
+   "L = L₀/γ → Länge auf 91.7% verkürzt",
+   "v = 45% c",
+   "γ = 1.120  (Lorentz-Faktor)",
+   "Δt = γ·Δt₀ → Zeit läuft 1.12× langsamer",
+   "L = L₀/γ → Länge auf 89.3% verkürzt"
+  ]
+ }
+]

@@ -1,0 +1,55 @@
+<defs>
+  <linearGradient id="sc2himmel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8FB3D8"/><stop offset="0.55" stop-color="#C6D9E4"/>
+    <stop offset="1" stop-color="#E4E2C8"/>
+  </linearGradient>
+  <linearGradient id="sc2wiese" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7A9C55"/><stop offset="0.45" stop-color="#6E9449"/>
+    <stop offset="1" stop-color="#4A6B31"/>
+  </linearGradient>
+  <linearGradient id="sc2weg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#B49A6E"/><stop offset="1" stop-color="#8E7448"/>
+  </linearGradient>
+  <linearGradient id="sc2dunst" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#C6D9E4" stop-opacity="0.7"/>
+    <stop offset="1" stop-color="#C6D9E4" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+  <rect x="0" y="0" width="900" height="230" fill="url(#sc2himmel)"/>
+  <rect x="0" y="176" width="900" height="364" fill="url(#sc2wiese)"/>
+  <!-- Waldrand hinten, nach hinten heller -->
+  <g opacity="0.72">
+    <use href="#t_baum_fern" transform="translate(80,206) scale(0.8)"/>
+    <use href="#t_baum_fern" transform="translate(230,200) scale(0.7)"/>
+    <use href="#t_baum_fern" transform="translate(408,198) scale(0.62)"/>
+    <use href="#t_baum_fern" transform="translate(600,202) scale(0.74)"/>
+    <use href="#t_baum_fern" transform="translate(790,206) scale(0.86)"/>
+  </g>
+  <rect x="0" y="150" width="900" height="80" fill="url(#sc2dunst)"/>
+
+  <!-- der Trampelpfad zieht von der Bude nach links unten zum Waldweg -->
+  <path d="M636,306 C 560,352 430,392 300,438 C 250,456 190,470 120,482"
+        stroke="url(#sc2weg)" stroke-width="26" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <path d="M636,306 C 560,352 430,392 300,438 C 250,456 190,470 120,482"
+        stroke="#6E5A34" stroke-width="30" fill="none" stroke-linecap="round" opacity="0.18"/>
+  <!-- der Waldweg quert unten -->
+  <path d="M-20,472 C 180,494 520,500 920,486 L920,540 L-20,540 Z" fill="url(#sc2weg)"/>
+  <g stroke="#6E5A34" stroke-width="4" fill="none" opacity="0.4">
+    <path d="M-20,496 C 200,514 540,520 920,506"/>
+    <path d="M-20,520 C 200,536 540,540 920,528"/>
+  </g>
+
+  <!-- die Bude oben rechts auf der Lichtung -->
+  <use href="#t_bude" transform="translate(672,312) scale(0.86)"/>
+  <use href="#t_kiste" transform="translate(534,332) scale(0.30)"/>
+  <use href="#t_keksdose" transform="translate(534,286) scale(0.26)"/>
+
+  <g opacity="0.8">
+    <use href="#t_grasbuschel" transform="translate(160,430) scale(0.6)"/>
+    <use href="#t_grasbuschel" transform="translate(392,404) scale(0.5)"/>
+    <use href="#t_grasbuschel" transform="translate(820,404) scale(0.7)"/>
+    <use href="#t_grasbuschel" transform="translate(60,462) scale(0.8)"/>
+  </g>
+  <!-- am Waldweg wartet jemand: die abgestellte Tasche -->
+  <use href="#t_schlafsack" transform="translate(206,488) scale(0.42)"/>
+  <use href="#t_baum" transform="translate(58,330) scale(0.72)"/>

@@ -1,0 +1,54 @@
+{
+ "id": "ki5",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Zwei Wege, zwei Zahlen",
+ "problem": "Für die Wettbewerbsmappe soll neben jeder Messung eine Fallbeschleunigung stehen. Tobias liest ein einziges Wertetripel ab und rechnet g zweimal aus: über v/t bekommt er 9,81 m/s², über 2s/t² dagegen 10,35 m/s². Mira hält das für Ablesepech und schlägt vor, statt eines Tripels eine ganze Messreihe aufzunehmen.",
+ "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
+ "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
+ "predict": [
+  "Auch aus einer ganzen Messreihe werden es zwei Geraden: Die Steigung aus s über t² liefert ein größeres g als die Steigung aus v über t, weil die Simulation den Fallweg schrittweise aufsummiert und dabei zu viel Weg erhält.",
+  "Mit einer ganzen Messreihe verschwindet der Unterschied: Die Ausgleichsgerade mittelt die Ablesefehler des einzelnen Tripels heraus, und beide Auftragungen führen auf denselben Wert für g."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Drücke zuerst „Tabelle leeren“, damit keine alten Zeilen mitrechnen. Belasse den Regler „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“: In die Wertetabelle laufen 9 Messpunkte von t = 0,32 s bis t = 3,18 s – dieselben Zahlen, die im weißen Anzeigefeld stehen, wenn die Uhr dort steht. Einzelne Punkte gehen auch – erst „Anhalten“, dann „Messpunkt übernehmen“; sie landen in derselben Tabelle und verändern die Ausgleichsgeraden.",
+  "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve, aus der sich keine Steigung ablesen lässt. Wechsle zu „t² → s auftragen“ – jetzt liegen dieselben Punkte auf einer Ursprungsgeraden. Notiere ihre Steigung k aus der Zeile y = k·x.",
+  "Wechsle zu „t → v auftragen“ und notiere auch diese Steigung: Sie ist g unmittelbar. Vergleiche die beiden Zahlen – die Steigung aus s über t² ist halb so groß, daraus folgt g = 2 · k. Im Kasten „Fallbeschleunigung g aus der Steigung“ stehen beide zurückgerechneten g-Werte und ihre Differenz."
+ ],
+ "modellgrenze": "Vor t = 0,15 s und nach dem Aufprall nimmt die Simulation keinen Messpunkt an: Am Anfang sind s und v auf zwei Nachkommastellen zu grob gerundet, nach dem Aufprall stehen beide still, während die Uhr weiterläuft. Solche Zeilen würden beide Ausgleichsgeraden verfälschen, nicht nur die aus s über t².",
+ "tabCols": [
+  "Auswertung der Messreihe (50 m)",
+  "Mein Wert aus der Messreihe"
+ ],
+ "tabRows": [
+  "t² → s: Steigung k in m/s²",
+  "daraus g = 2 · k in m/s²",
+  "t → v: Steigung k = g in m/s²",
+  "Differenz der beiden g-Werte in m/s²"
+ ],
+ "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg nicht gleichmäßig: s über t liefert eine Kurve, und aus einer Kurve lässt sich keine Steigung ablesen. Linearisieren heißt, eine Achse so umzurechnen, dass die Messpunkte auf einer Ursprungsgeraden liegen. Über t² aufgetragen gelingt das – s ist proportional zu t², und die Gerade hat die Steigung k. Die zweite Auftragung kommt ohne den Fallweg aus: v über t ist von sich aus eine Ursprungsgerade, und ihre Steigung ist der Zuwachs der Geschwindigkeit je Sekunde, also die Fallbeschleunigung selbst. Der Vergleich der beiden gemessenen Steigungen entscheidet: k ist halb so groß wie die Steigung der v-Geraden. Damit ist k = g/2 abgelesen und nicht vorausgesetzt, und erst daraus folgen s = ½ · g · t² und g = 2 · k. Beide Geraden stammen aus denselben Messpunkten und liefern trotzdem verschiedene Zahlen: Die Simulation wertet die Formeln nicht aus, sie rechnet den Fall in festen Schritten von Δt = 0,016 s. Erst wird v um g · Δt erhöht, danach v · Δt zum Weg addiert; der Weg wird mit der Geschwindigkeit am Schrittende aufsummiert und fällt um den Faktor (1 + Δt/t) zu groß aus, während v = g · t exakt bleibt. Der aus s gewonnene g-Wert liegt deshalb immer über dem aus v – keine Messunsicherheit, sondern die Genauigkeitsgrenze des Rechenverfahrens.",
+ "merksatz": [
+  {
+   "pre": "Trägt man s über t² auf, liegen die Punkte auf einer Ursprungsgeraden; ihre Steigung k ist",
+   "loesung": "g/2",
+   "post": " – daraus folgt g = 2 · k."
+  },
+  {
+   "pre": "Die Gerade v über t liefert g unmittelbar. Dass beide Wege verschiedene Zahlen ergeben, ist eine Grenze des",
+   "loesung": "Rechenverfahrens",
+   "post": ", keine Messunsicherheit."
+  }
+ ],
+ "beobachtung": "Der Regler steht auf 50 m; „Messreihe automatisch aufnehmen“ schreibt 9 Messpunkte in die Tabelle, von t = 0,32 s bis t = 3,18 s. Die Tabelle hat sieben Spalten; die erste trägt überall die Fallhöhe 50. Die vier folgenden lauten (t; s; v; t²): 0,32 s; 0,53 m; 3,14 m/s; 0,1024 s² – 0,64 s; 2,06 m; 6,28 m/s; 0,4096 s² – 0,96 s; 4,60 m; 9,42 m/s; 0,9216 s² – 1,28 s; 8,14 m; 12,56 m/s; 1,6384 s² – 1,60 s; 12,68 m; 15,70 m/s; 2,5600 s² – 1,92 s; 18,23 m; 18,84 m/s; 3,6864 s² – 2,24 s; 24,79 m; 21,97 m/s; 5,0176 s² – 2,56 s; 32,35 m; 25,11 m/s; 6,5536 s² – 3,18 s; 49,98 m; 31,24 m/s; 10,1124 s². Die beiden letzten Spalten rechnen g schon zeilenweise aus: über v/t steht dort achtmal 9,81 und zuletzt 9,82, über 2s/t² dagegen 10,35 in der ersten Zeile und 9,87 bzw. 9,88 in den beiden letzten. In der Auftragung t → s liegen die Punkte auf einer Kurve. Nach t² → s liegen dieselben Punkte auf einer Ursprungsgeraden: y = 4,942·x bei R² = 1,0000, erwartet wird 4,905. Nach t → v ergibt sich y = 9,815·x, ebenfalls bei R² = 1,0000. Der Kasten „Fallbeschleunigung g aus der Steigung“ rechnet beide Steigungen in Fallbeschleunigungen um, beide in m/s²: aus s über t² folgt g = 2 · 4,942 = 9,884 mit einer Abweichung von 0,75 %, aus v über t unmittelbar g = 9,815 mit 0,05 %. Der Vergleich der beiden Wege steht darunter: 9,884 − 9,815 = 0,069. Eine zweite Messreihe aus einer anderen Fallhöhe legt ihre Punkte auf dieselben beiden Geraden, und jeder Durchgang wiederholt die Zahlen.",
+ "aufgabe": {
+  "frage": "Bestimme aus den Tabellenzeilen t = 0,64 s mit s = 2,06 m und t = 2,56 s mit s = 32,35 m die Steigung der Geraden s über t², rechne daraus g zurück und begründe, warum die Gerade v über t einen kleineren Wert liefert.",
+  "zeilen": 4,
+  "loesung": "Zu den beiden Zeiten gehören t² = (0,64 s)² = 0,4096 s² und t² = (2,56 s)² = 6,5536 s². Die Steigung durch diese zwei Punkte ist k = (32,35 m − 2,06 m) / (6,5536 s² − 0,4096 s²) = 30,29 m / 6,1440 s² = 4,93 m/s². Wegen s = ½ · g · t² ist k = g/2, also g = 2 · 4,93 m/s² = 9,86 m/s²; die Ausgleichsgerade über alle neun Punkte liefert mit 4,942 m/s² etwas mehr. Dieselben zwei Zeilen über v gerechnet: k = (25,11 m/s − 6,28 m/s) / (2,56 s − 0,64 s) = 18,83 m/s / 1,92 s = 9,81 m/s², und hier ist k schon g. Die Differenz von 0,05 m/s² fällt in jedem Lauf gleich aus und zeigt immer in dieselbe Richtung. Die Simulation summiert den Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende auf und erhält dadurch zu viel Weg, während v in jedem Schritt genau um g · Δt wächst. Nur die aus s gewonnene Gerade ist davon betroffen."
+ },
+ "alltag": "Computerspiele und Simulationsprogramme rechnen Bewegungen ebenfalls in Zeitschritten; wird der Schritt zu groß, rutschen Gegenstände schon einmal durch den Boden. Erkläre einer Person zu Hause in drei Sätzen, warum ein größerer Rechenschritt den berechneten Weg verfälscht – und warum unsere Simulation trotzdem auf jedem Gerät dieselbe Abweichung zeigt.",
+ "alltagAfb": "II",
+ "alltagKomp": "S2",
+ "ueberleitung": "Aus einer einzigen Messreihe wurden zwei Ausgleichsgeraden und zwei Zahlen für g – entschieden hat das allein das Rechenverfahren, nicht die Ablesung. Auf der nächsten Seite schiebt Mira eine Kugel über die Tischkante: Dann laufen zwei Bewegungen gleichzeitig ab, und nur eine von beiden bestimmt die Fallzeit.",
+ "name": "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
+ "theme": "ef_mechanik"
+}

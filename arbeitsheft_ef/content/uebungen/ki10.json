@@ -1,0 +1,72 @@
+{
+ "id": "ki10",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "K8",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Beide an der Lampe angreifenden Kräfte liegen auf einer Wirkungslinie; statt der vektoriellen Addition genügt deshalb die vorzeichenbehaftete Summe F_res =",
+   "loesung": "F_H − F_G",
+   "post": "."
+  },
+  {
+   "pre": "Was im Fachtext resultierende Kraft heißt, führt das Statusfeld unter der Bezeichnung",
+   "loesung": "Gesamtkraft",
+   "post": "; statt des Vorzeichens steht dort die Richtung."
+  },
+  {
+   "pre": "Die Aussage des Trägheitsprinzips gilt nur in einem Bezugssystem, das selbst nicht beschleunigt wird; ein solches Bezugssystem heißt",
+   "loesung": "Inertialsystem",
+   "post": "."
+  },
+  {
+   "pre": "Erst wenn die resultierende Kraft von null abweicht, ändert sich der Bewegungszustand, und zwar nach",
+   "loesung": "F_res = m · a",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Nach einmal „– N“ und nach zweimal „+ N“ meldet das Statusfeld denselben Betrag der Gesamtkraft; verschieden ist allein die Richtung.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil die Lampe im Ausgangszustand ruht, ist das Seil dort entlastet und der eingehängte Kraftmesser zeigt 0 N an.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Im dritten Schritt kommt die Lampe am unteren Bildrand zum Stehen, obwohl das Statusfeld weiterhin eine Gesamtkraft nach unten meldet; dieser Stillstand ist eine Grenze der Darstellung und kein physikalischer Befund.",
+   "stimmt": true
+  },
+  {
+   "aussage": "„Zurück in die Mitte“ setzt neben der Haltekraft auch die Gewichtskraft auf ihren Ausgangswert zurück, weil beide Kräfte in der Simulation miteinander gekoppelt sind.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira drückt zweimal „+ N“ und sieht die Lampe nach oben steigen. Tobias hält dazu fest: „Das Seil zieht jetzt mit 6 N, und genau diese 6 N beschleunigen die Lampe nach oben.“ Welche Beurteilung seiner Begründung trifft zu?",
+  "optionen": [
+   "Sie trägt: Sobald die Haltekraft größer als die Gewichtskraft ist, gibt ihr Betrag die beschleunigende Kraft an, denn nur sie zeigt in die Bewegungsrichtung.",
+   "Sie trägt nicht: Beschleunigt wird die Lampe allein von der resultierenden Kraft F_res = 6 N − 5 N = 1 N nach oben; die Gewichtskraft verschwindet nicht, sondern wirkt unverändert weiter.",
+   "Sie trägt nicht: Beschleunigt wird die Lampe von der Summe beider Beträge, also von 6 N + 5 N = 11 N nach oben."
+  ],
+  "richtig": 1,
+  "erklaerung": "Der Bewegungszustand ändert sich nach F_res = m · a, und F_res ist die vorzeichenbehaftete Summe der beiden Kräfte auf der gemeinsamen Wirkungslinie: 6 N − 5 N = 1 N nach oben – genau das meldet auch das Statusfeld. Der Betrag der Haltekraft allein taugt dafür nicht, denn bei 5 N wäre die Lampe nach derselben Überlegung ebenfalls beschleunigt, obwohl sie dort in Ruhe bleibt. Die Beträge zu addieren ist falsch, weil die beiden Kräfte entgegengesetzt gerichtet sind; die Summe 11 N käme nur heraus, wenn beide in dieselbe Richtung zeigten. Mit m = 0,51 kg folgt aus 1 N eine Beschleunigung von 1,96 m/s² nach oben, aus 6 N dagegen der rund sechsfache Wert."
+ },
+ "offen": {
+  "frage": "Nach dem dritten Schritt steht die Lampe am unteren Bildrand still, während das Statusfeld unverändert „Gesamtkraft 1 N nach unten“ meldet. Tobias notiert: „Jetzt ist die Lampe wieder im Gleichgewicht, sie bewegt sich ja nicht mehr.“ Beurteile seine Begründung und erläutere, woran hier die Darstellung und nicht die Physik an ihre Grenze stößt.",
+  "prompt": "Nach dem dritten Schritt steht die Lampe am unteren Bildrand still, während das Statusfeld unverändert „Gesamtkraft 1 N nach unten“ meldet. Tobias notiert: „Jetzt ist die Lampe wieder im Gleichgewicht, sie bewegt sich ja nicht mehr.“ Beurteile seine Begründung und erläutere, woran hier die Darstellung und nicht die Physik an ihre Grenze stößt.",
+  "zeilen": 4,
+  "loesung": "Tobias schließt erneut von der Ruhe auf das Gleichgewicht, und der Schluss trägt wieder nicht: Gleichgewicht bedeutet F_res = 0 N, und genau das steht nicht im Statusfeld – dort stehen unverändert 1 N nach unten. Mit m = 0,51 kg wäre die Lampe damit weiterhin mit a = 1 N / 0,51 kg = 1,96 m/s² nach unten beschleunigt; physikalisch dürfte sie also gerade nicht stehen bleiben. Der Stillstand hat eine andere Ursache: Die Zeichnung zeigt nur den Beginn der Bewegung und lässt die Lampe am unteren Bildrand anhalten, und die Statuszeile wird nur beim Drücken neu geschrieben. Beide Angaben beschreiben deshalb verschiedene Dinge – die Zeile den Kräftezustand, das Bild eine abgeschnittene Bewegung –, und nur die Kräfte entscheiden über das Gleichgewicht: Erst „zurück in die Mitte“ macht Haltekraft und Gewichtskraft wieder gleich groß und damit F_res = 0 N. Zu ergänzen ist die zweite Grenze: Wird die Gesamtkraft null, steht die Lampe sofort still, statt gleichförmig weiterzulaufen. Auch das ist eine Eigenart der Darstellung, nicht des Trägheitsprinzips."
+ }
+}

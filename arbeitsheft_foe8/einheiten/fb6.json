@@ -1,0 +1,188 @@
+{
+ "seite": {
+  "id": "fb6",
+  "quelle": "be8",
+  "sim": "v-zeit-diagramm",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Die Linie steigt und fällt",
+  "name": "Was verrät die Linie im Tempo-Bild?",
+  "fachwoerter_neu": [
+   "Tempo-Zeit-Diagramm"
+  ],
+  "alltag": [
+   "Nour und Jannis fahren auf dem Schulhof eine Messstrecke ab.",
+   "Jannis fährt an, tritt kräftig in die Pedale und bremst dann.",
+   "Am Bildschirm zeichnet eine Linie mit, wie schnell er gerade ist.",
+   "Ein Bild mit so einer Linie heißt Tempo-Zeit-Diagramm."
+  ],
+  "frage": "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
+  "predict": [
+   "Eine waagerechte Linie bedeutet: Der Wagen steht still.",
+   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Tempo-Zeit-Diagramm.",
+   "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.",
+   "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Linien und die drei Meldungen.",
+  "tabCols": [
+   "Welcher Knopf?",
+   "Wie läuft die Linie?",
+   "Wie ändert sich das Tempo?"
+  ],
+  "tabRows": [
+   [
+    "konstant",
+    "waagerecht",
+    "bleibt gleich"
+   ],
+   [
+    "beschleunigen",
+    "",
+    ""
+   ],
+   [
+    "bremsen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine waagerechte Linie im Tempo-Zeit-Diagramm bedeutet: Der Wagen fährt",
+    "loesung": "gleichförmig",
+    "post": ". Sein Tempo bleibt gleich."
+   },
+   {
+    "pre": "Eine ansteigende Linie zeigt: Der Wagen wird schneller. Bei einer fallenden Linie wird er",
+    "loesung": "langsamer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "gleichförmig",
+   "langsamer",
+   "ansteigende",
+   "fallende"
+  ],
+  "beispiel": {
+   "frage": "Du drückst den Knopf „konstant“ und dann „▶ Fahren“. Wie läuft die Linie?",
+   "antwort": "Die Linie läuft waagerecht. Die Statuszeile meldet: der Wagen fährt gleich schnell (gleichförmig). Sein Tempo bleibt also gleich. Er steht dabei nicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "In einem Tempo-Zeit-Diagramm fällt die Linie. Was macht der Wagen?",
+    "optionen": [
+     "Er fährt gleich schnell.",
+     "Er wird schneller.",
+     "Er wird langsamer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Du drückst den Knopf „beschleunigen“. Am Bildschirm siehst du eine",
+      "loesung": "ansteigende",
+      "post": "Linie."
+     },
+     {
+      "pre": "Du drückst den Knopf „bremsen“. Am Bildschirm siehst du eine",
+      "loesung": "fallende",
+      "post": "Linie."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Linie ist waagerecht. Also steht der Wagen.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Eine waagerechte Linie zeigt …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon brauchst du in Aufgabe 2. Streiche durch, was du benutzt hast.",
+   "h2": "Sieh in Zeile 1 deiner Tabelle nach. Beginne so: Eine waagerechte Linie zeigt, dass das Tempo …",
+   "h3": "Fast fertige Antwort: Eine waagerechte Linie zeigt, dass das Tempo gleich bleibt. Der Wagen fährt gleichförmig weiter. Ergänze den letzten Satz: Er steht nur, wenn die Linie ganz ___ liegt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was eine waagerechte Linie im Tempo-Zeit-Diagramm bedeutet.",
+   "Ich kann eine ansteigende und eine fallende Linie unterscheiden.",
+   "Ich kann erklären, warum eine waagerechte Linie nicht Stillstand bedeutet."
+  ],
+  "zuhause": "Achte bei einer Busfahrt auf drei Stücke: das Anfahren, die ruhige Fahrt und das Bremsen. Schreibe zu jedem Stück auf, ob die Linie im Tempo-Zeit-Diagramm ansteigt, waagerecht läuft oder fällt.",
+  "bildauftrag": "[BILD: drei gleich große Achsenkreuze nebeneinander, alle mit derselben Beschriftung: senkrechte Achse „v (Tempo)“, waagerechte Achse „t (Zeit)“; im linken Bild eine dicke waagerechte Linie auf halber Höhe, darunter groß „gleich schnell“; im mittleren Bild eine dicke, gleichmäßig ansteigende Linie, darunter groß „wird schneller“; im rechten Bild eine dicke, gleichmäßig fallende Linie, darunter groß „wird langsamer“; jede Linie in einer eigenen Farbe UND mit einem eigenen Symbol am Anfang (Kreis, Dreieck, Viereck), damit die Farbe nicht allein unterscheidet; im linken Bild zusätzlich eine dünne graue Linie ganz unten auf der Zeitachse mit der kleinen Beschriftung „steht still“; nur diese Linien, keine Messpunkte, keine Zahlen an den Achsen, keine Räder, keine Deko; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fb6",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Linie im Tempo-Zeit-Diagramm ab, ob ein Wagen gleich schnell fährt, schneller wird oder langsamer wird. Sie unterscheiden die waagerechte Linie (gleichförmige Fahrt) vom Stillstand, der als Linie ganz unten erscheint. Die Steilheit bleibt weg: Die Simulation zeigt dazu keinen Wert.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten von unten. Gegenprobe: ein Spielzeugauto anschieben, rollen lassen, abbremsen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten zeigen: kleines Achsenkreuz (senkrecht Tempo, waagerecht Zeit), Linie, Wortlaut der Statuszeile. „konstant“ (auch Ausgangszustand und Zustand nach „Zurücksetzen“): waagerechte Linie – „der Wagen fährt gleich schnell (gleichförmig)“. „beschleunigen“: ansteigende Linie – „die Geschwindigkeit wird immer größer“. „bremsen“: fallende Linie – „die Geschwindigkeit wird immer kleiner (bis der Wagen steht)“. Dazu ein viertes Achsenkreuz an der Tafel: Linie ganz unten, beschriftet „steht still“ – diesen Fall nennt die Simulation nur in einer Rückmeldung.",
+  "merksatz": [
+   "gleichförmig",
+   "langsamer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "beschleunigen",
+    "ansteigend",
+    "wird größer"
+   ],
+   [
+    "bremsen",
+    "fallend",
+    "wird kleiner"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Fallende Linie = Knopf „bremsen“. Die Statuszeile meldet dort „die Geschwindigkeit wird immer kleiner (bis der Wagen steht)“; so steht es auch in Zeile 3 der Tabelle.",
+   "typische_fehler": [
+    "Antwort 2 („Er wird schneller“): Die Linie wird von rechts nach links gelesen.",
+    "Antwort 1 („Er fährt gleich schnell“): Der Wagen fährt ja noch – gleich schnell wäre waagerecht.",
+    "Die fallende Linie wird als Rückwärtsfahrt gedeutet; senkrecht steht das Tempo."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "ansteigende",
+    "fallende"
+   ],
+   "typische_fehler": [
+    "„ansteigende“ und „fallende“ werden vertauscht, weil beide Sätze gleich anfangen. Hilfe: erst die Knopfaufschrift markieren.",
+    "In die Lücke wird die Knopfaufschrift geschrieben, oder beide Lücken bekommen dasselbe Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Eine waagerechte Linie zeigt, dass das Tempo gleich bleibt. Der Wagen fährt gleichförmig weiter. Er steht nur, wenn die Linie ganz unten liegt.",
+   "alternativen": [
+    "Statuszeile bei „konstant“: „der Wagen fährt gleich schnell (gleichförmig)“ – von Stehen ist keine Rede.",
+    "Rückmeldung der Simulation: „Stillstand wäre die Linie ganz unten (v = 0).“"
+   ],
+   "typische_fehler": [
+    "Waagerecht wird mit Stillstand gleichgesetzt – die Kernfehlvorstellung dieser Einheit; sie steht deshalb schon in der Vermutung.",
+    "Übertragung aus fb5: Im Weg-Zeit-Diagramm bedeutet waagerecht wirklich Stillstand. Der Vergleich gehört ins Gespräch, nicht auf die Schülerseite – diese Simulation zeigt kein Weg-Zeit-Diagramm.",
+    "Die Höhe der Linie wird als Weg gedeutet. Senkrecht steht das Tempo."
+   ]
+  },
+  "hilfe3_wort": "unten (auch richtig: unten bei null)",
+  "schwache": [
+   "Bedienhinweis vorweg: „konstant“, „beschleunigen“ und „bremsen“ stellen nur ein. Erst „▶ Fahren“ zeichnet die Linie, „Zurücksetzen“ stellt wieder „konstant“ ein.",
+   "Zeile 1 der Tabelle laut lesen und die waagerechte Linie mit dem Finger nachfahren; danach erst Zeile 2, zuletzt Zeile 3 (bremsen).",
+   "Die Anzeige „v jetzt“ abdecken; sie ändert sich ständig und lenkt von der Linie ab."
+  ],
+  "zusatz": "Freiwillig: die drei Fragen in der Simulation beantworten und die richtigen Rückmeldungen abschreiben.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Tempo-Zeit-Diagramme auswerten. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 über den Merksatz; UF2 über Tabelle und Aufgabe 1 (waagerecht, ansteigend und fallend auseinanderhalten); E5 über den Vergleich der drei Einstellungen; B2 über Aufgabe 3 (Jannis' Behauptung prüfen). UF1, UF2 und E5 stammen aus be8. K2 steht hier bewusst nicht: Der Code hängt nach dem Seitenplan allein an fb5, und fb4 hält ihn dort ebenfalls frei."
+ }
+}

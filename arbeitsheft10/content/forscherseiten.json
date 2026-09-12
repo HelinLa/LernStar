@@ -1,0 +1,2813 @@
+[
+ {
+  "id": "mo1",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Das Magnetfeld sichtbar machen",
+  "titel": "Der Motor liegt in Einzelteilen da",
+  "problem": "Im Umspannwerk steht auf Bens Werkbank ein zerlegter Motor. Zwischen den Teilen liegt ein schwerer Hufeisenmagnet. Ben hält eine Büroklammer daran und merkt: An den beiden Enden hängt sie fest, in der Mitte fällt sie ab. Dabei sieht der Magnet überall gleich aus.",
+  "frage": "An welchen Stellen eines Magneten wirkt er am stärksten?",
+  "auftrag": "Untersuche mit dem Prüfkompass, wo der Magnet die Nadel am kräftigsten dreht.",
+  "predict": [
+   "Der Magnet wirkt an den Enden am stärksten und in der Mitte kaum.",
+   "Der Magnet wirkt überall gleich stark, weil er aus einem Stück besteht.",
+   "Nur eines der beiden Enden zieht die Büroklammer an; am anderen Ende wird sie weggedrückt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Ziehe den Prüfkompass dicht an das linke Ende des Magneten und beobachte die Nadel.",
+   "Führe ihn an dieselbe Stelle, aber mit größerem Abstand. Vergleiche den Ausschlag.",
+   "Setze ihn zuletzt in die Mitte zwischen beide Enden und halte fest, was die Nadel tut."
+  ],
+  "tabCols": [
+   "Ausschlag der Nadel",
+   "stark, schwach oder gar nicht?"
+  ],
+  "tabRows": [
+   "dicht am linken Ende",
+   "weit weg vom linken Ende",
+   "in der Mitte des Magneten"
+  ],
+  "fachtext": "Um einen Magneten herum ist der Raum verändert: Dort wirkt eine Kraft auf andere Magnete und auf Eisen. Diesen Raum nennt man das Magnetfeld. Man sieht es nicht, aber man merkt es an jeder Kompassnadel, die man hineinhält. Am dichtesten ist das Feld an den beiden Polen, nach außen hin wird es rasch schwächer.",
+  "merksatz": [
+   {
+    "pre": "Den Raum um einen Magneten, in dem er wirkt, nennt man sein ",
+    "loesung": "Magnetfeld",
+    "post": "."
+   },
+   {
+    "pre": "Am stärksten ist dieses Feld an den beiden ",
+    "loesung": "Polen",
+    "post": "; mit größerem Abstand wird es schnell schwächer."
+   }
+  ],
+  "beobachtung": "Dicht am linken Ende dreht sich die Nadel sofort und steht deutlich anders als vorher. Zieht man den Prüfkompass von derselben Stelle weiter weg, wird der Ausschlag merklich kleiner. In der Mitte zwischen beiden Enden bewegt sich die Nadel fast gar nicht. Der Magnet wirkt also nicht überall gleich, sondern an den Polen am stärksten – und seine Wirkung nimmt mit dem Abstand rasch ab.",
+  "aufgabe": {
+   "frage": "Erkläre, warum eine Büroklammer an den Enden des Hufeisenmagneten hängen bleibt, in der Mitte aber abfällt.",
+   "zeilen": 3,
+   "loesung": "An den Enden liegen die Pole. Dort ist das Magnetfeld am dichtesten und die Kraft auf die Büroklammer am größten – groß genug, um ihre Gewichtskraft zu übertreffen. In der Mitte ist das Feld so schwach, dass die Kraft nicht mehr ausreicht und die Klammer herunterfällt."
+  },
+  "alltag": "Prüfe mit einem Kühlschrankmagneten, an welcher Stelle er am besten hält.",
+  "ueberleitung": "Der Magnet auf der Werkbank hat zwei Pole. Die Erde hat sie auch – auf der nächsten Seite siehst du, was das mit einem Kompass zu tun hat.",
+  "alltagKomp": "E2",
+  "alltagAfb": "I"
+ },
+ {
+  "id": "mo2",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Die Erde als großer Magnet",
+  "titel": "Warum der Kompass nicht lügt",
+  "problem": "Mia bringt aus dem Krankenhaus einen kleinen Wanderkompass mit. Draußen auf dem Hof zeigt er zuverlässig in dieselbe Richtung, egal wie oft sie ihn dreht. Legt sie ihn aber neben Bens Werkbank mit der Magnetleiste, zeigt er plötzlich woandershin. Ben vermutet, der Kompass sei kaputt.",
+  "frage": "Wovon hängt es ab, wohin die Kompassnadel zeigt?",
+  "auftrag": "Vergleiche die Nadel im freien Gelände mit der Nadel neben einer Magnetleiste.",
+  "predict": [
+   "Die Nadel zeigt immer nach Norden, weil das eine feste Eigenschaft der Nadel ist.",
+   "Die Nadel stellt sich nach dem Magnetfeld, das an ihrem Ort gerade das stärkste ist.",
+   "Die Nadel dreht sich zu jedem Metall in der Nähe hin, denn Metall zieht sie an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle die Einstellung „Erdmagnetfeld“ und stoße die Nadel an. Warte ab, wo sie zur Ruhe kommt.",
+   "Stoße sie mehrmals aus verschiedenen Richtungen an und prüfe, ob sie immer gleich endet.",
+   "Wähle danach die Einstellung mit der Magnetleiste daneben und stoße die Nadel erneut an."
+  ],
+  "tabCols": [
+   "Wo kommt die Nadel zur Ruhe?",
+   "immer an derselben Stelle?"
+  ],
+  "tabRows": [
+   "im Erdmagnetfeld, erster Versuch",
+   "im Erdmagnetfeld, zweiter Versuch",
+   "neben der Magnetleiste"
+  ],
+  "fachtext": "Die Erde ist selbst ein großer Magnet. Ihr Magnetfeld ist schwach, reicht aber überall hin, und deshalb stellt sich eine frei drehbare Nadel danach aus. Kommt ein stärkeres Feld dazu – etwa das eines Magneten in der Nähe –, richtet sich die Nadel nach diesem. Ein Kompass zeigt also nicht „nach Norden“, sondern in die Richtung des Feldes, das an seinem Ort das stärkste ist.",
+  "merksatz": [
+   {
+    "pre": "Eine Kompassnadel stellt sich in die Richtung des ",
+    "loesung": "Magnetfeldes",
+    "post": " an ihrem Ort ein."
+   },
+   {
+    "pre": "Im Freien ist das meist das Feld der ",
+    "loesung": "Erde",
+    "post": "; ein Magnet in der Nähe ist stärker und gewinnt."
+   }
+  ],
+  "beobachtung": "Im Erdmagnetfeld kommt die Nadel nach jedem Anstoßen wieder in derselben Richtung zur Ruhe, ganz gleich, aus welcher Richtung man sie angestoßen hat. Neben der Magnetleiste stellt sie sich dagegen auf diese aus und bleibt dort stehen. Der Kompass ist also nicht kaputt: Er zeigt weiterhin das stärkste Feld an – nur ist das jetzt nicht mehr das der Erde.",
+  "aufgabe": {
+   "frage": "Begründe, warum ein Kompass in der Nähe eines Lautsprechers unbrauchbar wird, obwohl an ihm selbst nichts kaputtgeht.",
+   "zeilen": 3,
+   "loesung": "In jedem Lautsprecher steckt ein kräftiger Dauermagnet. Sein Feld ist am Ort der Nadel viel stärker als das schwache Erdmagnetfeld. Die Nadel stellt sich deshalb nach dem Lautsprecher aus statt nach Norden. Nimmt man den Kompass weit genug weg, zeigt er wieder richtig."
+  },
+  "alltag": "Halte dein Handy neben einen Kompass und beobachte, ob sich die Nadel bewegt.",
+  "ueberleitung": "Bisher kam jedes Magnetfeld von einem Magneten. Auf der nächsten Seite ist weit und breit kein Magnet zu sehen – nur ein Draht, durch den Strom fließt.",
+  "alltagKomp": "E5",
+  "alltagAfb": "I"
+ },
+ {
+  "id": "mo3",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Der Versuch von Ørsted",
+  "titel": "Ein Draht, der sich benimmt wie ein Magnet",
+  "problem": "Ben legt ein Kabel quer über Mias Kompass und schließt es an eine Batterie an. In dem Moment, in dem der Strom fließt, dreht sich die Nadel weg. Schaltet er ab, geht sie zurück. Am Kabel ist nichts magnetisch – eine Büroklammer bleibt nicht daran hängen. Trotzdem passiert etwas.",
+  "frage": "Kann elektrischer Strom eine Kompassnadel bewegen?",
+  "auftrag": "Miss den Ausschlag der Nadel bei verschiedenen Stromstärken und Abständen.",
+  "predict": [
+   "Nur ein Magnet kann die Nadel drehen; ein Draht mit Strom kann das nicht.",
+   "Der Draht zieht die Nadelspitze zu sich hin, so wie ein Magnet ein Stück Eisen anzieht.",
+   "Auch ein Draht mit Strom ist von einem Magnetfeld umgeben und dreht die Nadel."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Schalte den Strom aus und halte fest, wohin die Nadel zeigt.",
+   "Stelle nacheinander I = 1,0 A, 3,0 A und 5,0 A ein, jeweils bei 1,0 cm Abstand, und lies Feld und Ausschlag ab.",
+   "Stelle zuletzt 3,0 A ein und vergrößere nur den Abstand auf 3,0 cm."
+  ],
+  "tabCols": [
+   "Feld des Drahtes in µT",
+   "Ausschlag in Grad"
+  ],
+  "tabRows": [
+   "Strom aus",
+   "1,0 A bei 1,0 cm",
+   "3,0 A bei 1,0 cm",
+   "3,0 A bei 3,0 cm"
+  ],
+  "fachtext": "Jeder Draht, durch den Strom fließt, ist von einem Magnetfeld umgeben. Es läuft in Kreisen um den Draht herum. Je größer die Stromstärke, desto stärker das Feld; je größer der Abstand, desto schwächer. Eine Kompassnadel in der Nähe stellt sich zwischen dieses Feld und das der Erde – sie dreht sich also, sobald der Strom fließt, und geht zurück, sobald er abgeschaltet wird.",
+  "merksatz": [
+   {
+    "pre": "Um jeden stromdurchflossenen Leiter herum liegt ein ",
+    "loesung": "Magnetfeld",
+    "post": "; ohne Strom ist es nicht da."
+   },
+   {
+    "pre": "Dieses Feld verläuft in ",
+    "loesung": "Kreisen",
+    "post": " um den Draht herum."
+   }
+  ],
+  "beobachtung": "Ohne Strom zeigt die Nadel nach Norden. Bei 1,0 A und 1,0 cm Abstand ist das Feld des Drahtes 20,0 µT – genauso stark wie das waagerechte Erdfeld –, und die Nadel steht bei genau 45°, also mitten zwischen Norden und Osten. Bei 3,0 A sind es 60,0 µT und 71,6°. Vergrößert man bei 3,0 A den Abstand auf 3,0 cm, sinkt das Feld auf 20,0 µT und der Ausschlag wieder auf 45°.",
+  "aufgabe": {
+   "frage": "Berechne mit B = 20 µT · I / r das Feld eines Drahtes bei I = 4,0 A und r = 2,0 cm und beurteile, ob die Nadel mehr oder weniger als 45° ausschlägt.",
+   "zeilen": 3,
+   "loesung": "B = 20 µT · 4,0 / 2,0 = 40,0 µT. Das ist doppelt so stark wie das waagerechte Erdfeld von 20 µT. Die Nadel schlägt deshalb weiter als 45° aus – sie neigt sich stärker zum Draht hin als zum Norden. In der Simulation sind es 63,4°."
+  },
+  "alltag": "Halte einen Kompass an ein eingeschaltetes Ladekabel und achte auf die Nadel.",
+  "ueberleitung": "Ein gerader Draht dreht die Nadel ein Stück weit. Auf der nächsten Seite wird aus demselben Draht ein Magnet, der Büroklammern trägt.",
+  "alltagKomp": "E5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo4",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Der Elektromagnet",
+  "titel": "Ein Magnet mit Schalter",
+  "problem": "Auf dem Schrottplatz hebt ein Kran ganze Autowracks hoch, ohne sie anzuhaken – und lässt sie im richtigen Moment einfach fallen. Ein gewöhnlicher Magnet kann das nicht: Was einmal daran hängt, hängt fest. Ben fragt sich, wie man einen Magneten baut, den man abschalten kann.",
+  "frage": "Wie baut man einen Magneten, den man an- und ausschalten kann?",
+  "auftrag": "Prüfe, wie viele Büroklammern eine Spule mit Eisenkern trägt.",
+  "predict": [
+   "Eine Spule mit Eisenkern wird nur dann zum Magneten, wenn Strom durch sie fließt.",
+   "Ein abschaltbarer Magnet braucht besonderes Metall, das seine Kraft verliert.",
+   "Der Strom magnetisiert den Eisenkern dauerhaft; abgeworfen wird das Wrack durch einen kräftigen Ruck."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Windungszahl ändern“ und stelle N = 150 bei I = 2 A ein. Lies die Tragkraft ab.",
+   "Stelle nacheinander N = 50, N = 100 und N = 300 ein und übernimm jeden Messwert.",
+   "Sieh dir die entstehende Kurve an und lies ab, welchen Verlauf sie hat."
+  ],
+  "tabCols": [
+   "Windungszahl N",
+   "Tragkraft in Büroklammern"
+  ],
+  "tabRows": [
+   "N = 50",
+   "N = 100",
+   "N = 150",
+   "N = 300"
+  ],
+  "fachtext": "Wickelt man Draht zu einer Spule und schickt Strom hindurch, verstärken sich die Magnetfelder der einzelnen Windungen. Ein Eisenkern in der Mitte verstärkt das Feld noch einmal erheblich. So entsteht ein Elektromagnet. Sein entscheidender Vorteil: Er wirkt nur, solange Strom fließt. Schaltet man ab, ist das Feld sofort weg – und was daran hing, fällt herunter.",
+  "merksatz": [
+   {
+    "pre": "Eine stromdurchflossene Spule mit Eisenkern nennt man einen ",
+    "loesung": "Elektromagneten",
+    "post": "."
+   },
+   {
+    "pre": "Er wirkt nur, solange ",
+    "loesung": "Strom",
+    "post": " fließt – darum lässt er sich abschalten."
+   }
+  ],
+  "beobachtung": "Bei I = 2 A trägt die Spule mit N = 50 drei Büroklammern, mit N = 100 sechs, mit N = 150 neun und mit N = 300 achtzehn. Trägt man die Messpunkte auf, liegen sie auf einer Geraden durch den Nullpunkt: Bei null Windungen wäre die Tragkraft null. Doppelt so viele Windungen bedeuten also genau die doppelte Tragkraft.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ein Schrottplatzkran einen Elektromagneten benutzt und keinen gewöhnlichen Dauermagneten.",
+   "zeilen": 3,
+   "loesung": "Ein Dauermagnet wirkt immer. Ein daran hängendes Wrack ließe sich nur mit großer Kraft wieder abreißen. Der Elektromagnet wirkt nur, solange Strom fließt: Der Kranführer schaltet ab, und die Last fällt genau dort herunter, wo sie hinsoll."
+  },
+  "alltag": "Suche in deiner Wohnung drei Geräte, in denen eine Spule steckt.",
+  "ueberleitung": "Mehr Windungen machen den Magneten stärker. Auf der nächsten Seite prüfst du, ob die Stromstärke dasselbe bewirkt.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo5",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Was einen Elektromagneten stärker macht",
+  "titel": "Zwei Schrauben, an denen man drehen kann",
+  "problem": "Bens Elektromagnet trägt neun Büroklammern. Für den Versuch, den er vorhat, bräuchte er die doppelte Tragkraft. Die Spule neu zu wickeln würde eine halbe Stunde dauern. Am Netzgerät dagegen ist die Stromstärke in zwei Sekunden verstellt. Ben will wissen, ob das denselben Effekt hat.",
+  "frage": "Wovon hängt die Stärke eines Elektromagneten ab?",
+  "auftrag": "Bestimme die Tragkraft bei verschiedenen Stromstärken und vergleiche sie.",
+  "predict": [
+   "Nur die Windungszahl zählt; die Stromstärke ändert an der Tragkraft nichts.",
+   "Windungszahl und Stromstärke gehen beide gleichermaßen in die Tragkraft ein.",
+   "Es kommt nur darauf an, wie viel Draht du verbrauchst; ob er eng um den Kern liegt, ist gleichgültig."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle „Stromstärke ändern“. Die Windungszahl steht dabei fest bei N = 150.",
+   "Stelle I = 2 A ein, lies die Tragkraft ab und übernimm den Messwert.",
+   "Stelle danach I = 4 A ein, übernimm auch diesen Wert und prüfe, ob sich die Tragkraft verdoppelt hat."
+  ],
+  "tabCols": [
+   "Stromstärke I",
+   "Tragkraft in Büroklammern"
+  ],
+  "tabRows": [
+   "I = 2 A",
+   "I = 4 A",
+   "verdoppelt? ja oder nein"
+  ],
+  "fachtext": "Die Tragkraft eines Elektromagneten hängt von zwei Größen ab, und beide gehen gleichermaßen ein: von der Windungszahl N und von der Stromstärke I. Verdoppelt man eine der beiden, verdoppelt sich die Tragkraft. Verdoppelt man beide zugleich, wird sie viermal so groß. Ein dritter Weg ist der Eisenkern – ohne ihn wäre dieselbe Spule um ein Vielfaches schwächer.",
+  "merksatz": [
+   {
+    "pre": "Die Stärke eines Elektromagneten wächst mit der Windungszahl und mit der ",
+    "loesung": "Stromstärke",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man eine der beiden Größen, so wird die Tragkraft ",
+    "loesung": "doppelt",
+    "post": " so groß."
+   }
+  ],
+  "beobachtung": "Bei fest eingestellten N = 150 Windungen trägt die Spule mit I = 2 A neun Büroklammern und mit I = 4 A achtzehn – genau doppelt so viele. Dasselbe war vorher bei der Windungszahl zu sehen. Die Messpunkte liegen wieder auf einer Geraden durch den Nullpunkt. Beide Größen wirken also auf dieselbe Weise, und Ben kann sein Ziel schneller über den Strom erreichen als durch neues Wickeln.",
+  "aufgabe": {
+   "frage": "Berechne, wie viele Büroklammern eine Spule mit 300 Windungen bei 4 A trägt, wenn 150 Windungen bei 2 A neun Klammern tragen.",
+   "zeilen": 3,
+   "loesung": "Die Windungszahl wird verdoppelt: doppelte Tragkraft, also 18. Die Stromstärke wird ebenfalls verdoppelt: noch einmal das Doppelte, also 36 Büroklammern. Beide Verdopplungen zusammen ergeben das Vierfache von neun."
+  },
+  "alltag": "Beurteile, warum ein Elektromagnet mit dünnerem Draht nicht beliebig viel Strom verträgt.",
+  "ueberleitung": "Du kannst jetzt einen Magneten bauen und regeln. Auf der nächsten Seite siehst du, was elektrischer Strom sonst noch alles bewirkt.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo6",
+  "theme": "motor",
+  "basiskonzept": "Energie",
+  "name": "Wirkungen des elektrischen Stroms",
+  "titel": "Vier Geräte an derselben Batterie",
+  "problem": "Ben schließt nacheinander vier Dinge an dieselbe Batterie: eine Glühlampe, einen Heizdraht, eine Spule und einen kleinen Motor. Der Strom ist jedes Mal derselbe. Trotzdem passiert vier Mal etwas völlig anderes – es leuchtet, es wird heiß, es zieht an, es dreht sich.",
+  "frage": "Welche Wirkungen kann elektrischer Strom haben?",
+  "auftrag": "Vergleiche, was derselbe Strom in vier verschiedenen Geräten bewirkt.",
+  "predict": [
+   "Strom bewirkt immer dasselbe; die Geräte sehen nur verschieden aus.",
+   "Warm wird nur der Heizdraht; Lampe, Spule und Motor bleiben kalt.",
+   "Welche Wirkung auftritt, entscheidet das angeschlossene Gerät, nicht der Strom."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Schließe die Glühlampe an und halte fest, welche Wirkungen angezeigt werden.",
+   "Wechsle nacheinander zu Heizdraht, Spule und Elektromotor.",
+   "Lies bei jedem Gerät ab, in welche Energieform die elektrische Energie übergeht."
+  ],
+  "tabCols": [
+   "angezeigte Wirkungen",
+   "Energieumwandlung"
+  ],
+  "tabRows": [
+   "Glühlampe",
+   "Heizdraht",
+   "Spule (Elektromagnet)",
+   "Elektromotor"
+  ],
+  "fachtext": "Elektrischer Strom kann vier Wirkungen haben: die Lichtwirkung, die Wärmewirkung, die magnetische Wirkung und die Bewegungswirkung. Welche davon auftritt, hängt nicht vom Strom ab, sondern vom Gerät. In jedem Fall wird elektrische Energie in eine andere Form umgewandelt. Die Wärmewirkung tritt fast immer zusätzlich auf – auch dort, wo man sie gar nicht haben will.",
+  "merksatz": [
+   {
+    "pre": "Elektrischer Strom kann Licht, Wärme, Bewegung und eine ",
+    "loesung": "magnetische",
+    "post": " Wirkung hervorrufen."
+   },
+   {
+    "pre": "Welche Wirkung auftritt, entscheidet das angeschlossene ",
+    "loesung": "Gerät",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei der Glühlampe zeigt die Simulation Lichtwirkung und Wärmewirkung zugleich an, die Umwandlung lautet: elektrische Energie in Licht und Wärme. Beim Heizdraht bleibt nur die Wärmewirkung. Bei der Spule leuchtet die magnetische Wirkung auf, beim Elektromotor die Bewegungswirkung. Auffällig ist, dass die Wärmewirkung bei fast jedem Gerät mit auftritt – sie lässt sich kaum vermeiden.",
+  "aufgabe": {
+   "frage": "Beurteile, bei welchem der vier Geräte die Wärmewirkung erwünscht ist und bei welchem sie stört.",
+   "zeilen": 3,
+   "loesung": "Beim Heizdraht ist die Wärme genau das, was man haben will – dort ist sie die Nutzenergie. Bei der Glühlampe stört sie: Der größte Teil der elektrischen Energie wird zu Wärme statt zu Licht, deshalb sind Glühlampen längst durch LED ersetzt. Auch bei Motor und Spule ist die Erwärmung unerwünscht."
+  },
+  "alltag": "Nenne drei Geräte bei dir zu Hause, bei denen die Wärme das Ziel ist, und zwei, bei denen sie stört.",
+  "ueberleitung": "Die Bewegungswirkung hast du eben nur als Wort gelesen. Auf der nächsten Seite siehst du nach, woher sie eigentlich kommt.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo7",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Kraft auf einen stromdurchflossenen Leiter",
+  "titel": "Der Stab, der von selbst hochspringt",
+  "problem": "Ben hängt einen Kupferstab lose zwischen die Pole des Hufeisenmagneten. Nichts passiert. Dann schließt er die Batterie an – und der Stab springt nach oben, als hätte ihn jemand angehoben. Er zieht die Batterie ab: Der Stab sinkt zurück. Am Kupfer bleibt keine Büroklammer haften.",
+  "frage": "Warum bewegt sich ein Draht im Magnetfeld, sobald Strom fließt?",
+  "auftrag": "Miss die Kraft auf den Stab bei verschiedenen Stromstärken und Feldstärken.",
+  "predict": [
+   "Zwischen dem Feld des Magneten und dem Strom im Stab entsteht eine Kraft quer zu beiden.",
+   "Der Stab wird magnetisch und dann vom Hufeisenmagneten angezogen.",
+   "Der Strom schiebt den Stab in die Richtung, in die er selbst fließt – also der Länge nach."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle I = 0 A ein und halte fest, was mit dem Stab geschieht.",
+   "Stelle B = 0,20 T und I = 5,0 A ein, lies Kraft und Richtung ab und verdopple danach nur die Stromstärke auf 10,0 A.",
+   "Gehe zurück auf I = 5,0 A und verdopple stattdessen nur das Feld auf B = 0,40 T."
+  ],
+  "tabCols": [
+   "Kraft F in N",
+   "Richtung der Kraft"
+  ],
+  "tabRows": [
+   "I = 0 A",
+   "0,20 T und 5,0 A",
+   "0,20 T und 10,0 A",
+   "0,40 T und 5,0 A"
+  ],
+  "fachtext": "Fließt Strom durch einen Leiter, der in einem Magnetfeld liegt, so wirkt auf ihn eine Kraft. Man berechnet sie als F = B · I · L, wobei L die Länge des Leiters im Feld ist. Diese Kraft zieht nicht zum Magneten hin, sondern schiebt quer: senkrecht zum Strom und senkrecht zum Feld zugleich. Ohne Strom gibt es sie nicht – ein Magnetfeld allein bewegt einen Kupferdraht nicht.",
+  "merksatz": [
+   {
+    "pre": "Auf einen stromdurchflossenen Leiter im Magnetfeld wirkt die Kraft F = B · I · ",
+    "loesung": "L",
+    "post": "."
+   },
+   {
+    "pre": "Diese Kraft steht ",
+    "loesung": "senkrecht",
+    "post": " auf dem Strom und auf dem Magnetfeld."
+   }
+  ],
+  "beobachtung": "Bei I = 0 A hängt der Stab still zwischen den Polen – ein Magnetfeld allein schiebt ihn nicht. Bei B = 0,20 T und I = 5,0 A rechnet die Simulation F = 0,20 T · 5,0 A · 0,10 m = 0,100 N und drückt den Stab nach oben. Verdoppelt man die Stromstärke auf 10,0 A, sind es 0,200 N. Verdoppelt man stattdessen das Feld auf 0,40 T, ebenfalls 0,200 N. Beide Größen gehen also gleichermaßen ein.",
+  "aufgabe": {
+   "frage": "Berechne die Kraft auf einen 10 cm langen Leiter, durch den 8,0 A fließen, in einem Feld von 0,25 T.",
+   "zeilen": 3,
+   "loesung": "F = B · I · L = 0,25 T · 8,0 A · 0,10 m = 0,200 N. Das entspricht der Gewichtskraft von rund 20 Büroklammern zu je 0,01 N. Ein Leiter mit doppelter Länge im selben Feld bekäme die doppelte Kraft."
+  },
+  "alltag": "Erkläre, warum in jedem Lautsprecher eine Spule zwischen Magnetpolen sitzt.",
+  "ueberleitung": "Die Kraft ist berechnet. Ihre Richtung hast du bisher nur abgelesen – auf der nächsten Seite sagst du sie selbst vorher.",
+  "alltagKomp": "E8",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo8",
+  "theme": "motor",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Die Richtung der Kraft vorhersagen",
+  "titel": "Ben baut den Motor falsch herum ein",
+  "problem": "Ben setzt den Motor zusammen, schließt ihn an – und er dreht sich in die falsche Richtung. Sein Ausbilder grinst und sagt, er solle den Motor nicht auseinandernehmen, sondern nachdenken. Es gebe zwei Möglichkeiten, die Drehrichtung umzukehren, und eine dritte, bei der sich gar nichts ändert.",
+  "frage": "Wie sagt man die Richtung der Kraft vorher, ohne sie auszuprobieren?",
+  "auftrag": "Prüfe, wie sich die Kraftrichtung beim Umpolen von Strom und Magnet verändert.",
+  "predict": [
+   "Nur das Umpolen des Stroms dreht die Kraft; der Magnet spielt für die Richtung keine Rolle.",
+   "Polt man Strom oder Magnet um, dreht sich die Kraft in beiden Fällen um.",
+   "Die Kraft zeigt immer zum Nordpol des Magneten hin, ganz gleich, wie der Strom fließt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle B = 0,20 T und I = 5,0 A ein und halte die Kraftrichtung fest.",
+   "Drücke „Strom umpolen“, lies die neue Richtung ab und drücke danach zusätzlich „Magnet umdrehen“.",
+   "Setze zurück und drücke diesmal nur „Magnet umdrehen“."
+  ],
+  "tabCols": [
+   "Richtung der Kraft",
+   "gegenüber dem Anfang gedreht?"
+  ],
+  "tabRows": [
+   "Ausgangslage",
+   "nur Strom umgepolt",
+   "Strom und Magnet umgepolt",
+   "nur Magnet umgepolt"
+  ],
+  "fachtext": "Die Richtung der Kraft findet man mit der Drei-Finger-Regel der rechten Hand: Der Daumen zeigt in die technische Stromrichtung, der Zeigefinger vom Nord- zum Südpol, und der Mittelfinger zeigt dann dorthin, wohin der Leiter gedrückt wird. Kehrt man eine der beiden Ursachen um, so kehrt sich auch die Kraft um. Kehrt man beide um, heben sich die Umkehrungen auf.",
+  "merksatz": [
+   {
+    "pre": "Die Richtung der Kraft findet man mit der Drei-Finger-Regel der ",
+    "loesung": "rechten",
+    "post": " Hand."
+   },
+   {
+    "pre": "Polt man Strom und Magnet zugleich um, so bleibt die Kraftrichtung ",
+    "loesung": "gleich",
+    "post": "."
+   }
+  ],
+  "beobachtung": "In der Ausgangslage wird der Stab nach oben gedrückt. Nach dem Umpolen des Stroms zeigt die Kraft nach unten. Dreht man zusätzlich den Magneten um, so zeigt sie wieder nach oben wie am Anfang – zwei Umkehrungen heben sich auf. Setzt man zurück und dreht nur den Magneten, geht die Kraft ebenfalls nach unten. Es kommt also auf das Zusammenspiel beider Ursachen an.",
+  "aufgabe": {
+   "frage": "Erkläre Ben, wie er seinen Motor zum Rückwärtslaufen bringt, ohne ihn auseinanderzubauen.",
+   "zeilen": 3,
+   "loesung": "Er muss genau eine der beiden Ursachen umkehren – am einfachsten die Stromrichtung, indem er die beiden Anschlüsse am Netzgerät vertauscht. Dann dreht sich die Kraft und damit der Motor andersherum. Vertauscht er zusätzlich die Magnetpole, läuft der Motor wieder wie vorher."
+  },
+  "alltag": "Erkläre, warum eine Modelleisenbahn rückwärts fährt, wenn man den Regler über null hinausdreht.",
+  "ueberleitung": "Eine Kraft, die schiebt, hast du jetzt im Griff. Auf der nächsten Seite wird daraus eine Drehung, die nicht aufhört.",
+  "alltagKomp": "E8",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo9",
+  "theme": "motor",
+  "basiskonzept": "System",
+  "name": "Aus Kraft wird Drehung",
+  "titel": "Warum sich die Spule überhaupt dreht",
+  "problem": "Ben hat verstanden, dass der Strom im Magnetfeld eine Kraft spürt. Aber der Motor auf seiner Werkbank schiebt nichts zur Seite – er dreht sich. Zwischen den Polen hängt keine gerade Stange, sondern eine rechteckige Spule, die sich um eine Achse drehen kann.",
+  "frage": "Wie wird aus einer schiebenden Kraft eine Drehbewegung?",
+  "auftrag": "Untersuche, in welche Richtungen die Kräfte auf die beiden Spulenseiten wirken.",
+  "predict": [
+   "Beide Seiten der Spule werden in dieselbe Richtung geschoben, die Spule wandert.",
+   "Nur die Spulenseite, die dem Nordpol am nächsten liegt, wird geschoben; die andere spürt nichts.",
+   "Die beiden Seiten werden entgegengesetzt geschoben, dadurch dreht sich die Spule."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Sieh dem laufenden Motor eine halbe Minute lang zu und achte auf die grünen Pfeile.",
+   "Halte fest, in welche Richtung der Strom auf jeder der beiden Spulenseiten fließt, und vergleiche die beiden Kraftpfeile.",
+   "Lies das Drehmoment ab, das die Simulation dazu berechnet."
+  ],
+  "tabCols": [
+   "Stromrichtung (Punkt heraus / Kreuz hinein)",
+   "Richtung des Kraftpfeils"
+  ],
+  "tabRows": [
+   "linke Spulenseite",
+   "rechte Spulenseite",
+   "Drehmoment in mN·m"
+  ],
+  "fachtext": "In einer drehbaren Spule fließt der Strom auf der einen Seite hin und auf der anderen zurück. Beide Seiten liegen im selben Magnetfeld, aber weil die Stromrichtungen entgegengesetzt sind, zeigen auch die Kräfte in entgegengesetzte Richtungen: die eine Seite nach oben, die andere nach unten. Dieses Kräftepaar dreht die Spule. Man nennt seine Wirkung das Drehmoment M = N · B · I · A.",
+  "merksatz": [
+   {
+    "pre": "Auf die beiden Seiten einer Spule wirken Kräfte in ",
+    "loesung": "entgegengesetzte",
+    "post": " Richtungen."
+   },
+   {
+    "pre": "Ihre drehende Wirkung nennt man das ",
+    "loesung": "Drehmoment",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Auf der einen Spulenseite kommt der Strom aus dem Bild heraus, auf der anderen fließt er hinein – die Simulation zeichnet dafür einen Punkt und ein Kreuz. Entsprechend zeigt der eine Kraftpfeil nach oben und der andere nach unten. Die Spule wird also nicht zur Seite geschoben, sondern gedreht. Bei 20 Windungen, 0,20 T und 2,0 A rechnet die Simulation ein Drehmoment von 16,0 mN·m aus.",
+  "aufgabe": {
+   "frage": "Erkläre, warum sich die Spule dreht und nicht einfach zur Seite wandert, obwohl auf beide Seiten Kräfte wirken.",
+   "zeilen": 3,
+   "loesung": "Die beiden Kräfte sind gleich groß, zeigen aber in entgegengesetzte Richtungen und greifen an verschiedenen Stellen an. In der Summe heben sie sich auf, deshalb wandert die Spule nicht. Ihre drehende Wirkung hebt sich jedoch nicht auf, sondern addiert sich – die Spule dreht sich um ihre Achse."
+  },
+  "alltag": "Erkläre am Lenkrad, warum man mit zwei Händen leichter dreht als mit einer.",
+  "ueberleitung": "Eine halbe Umdrehung schafft die Spule so. Auf der nächsten Seite geht es um das Bauteil, das die zweite Hälfte möglich macht.",
+  "alltagKomp": "E8",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo10",
+  "theme": "motor",
+  "basiskonzept": "System",
+  "name": "Der Kommutator",
+  "titel": "Das kleine Teil, ohne das nichts läuft",
+  "problem": "Beim Zusammenbauen bleibt ein geteilter Metallring übrig, auf dem zwei Kohlestücke schleifen. Ben hält ihn für Zierrat und lässt ihn weg. Der Motor zuckt kurz, pendelt hin und her und steht still. Sein Ausbilder legt das Teil wortlos zurück auf die Werkbank.",
+  "frage": "Warum bleibt der Motor nicht nach einer halben Umdrehung stehen?",
+  "auftrag": "Vergleiche den Motor mit eingeschaltetem und mit ausgeschaltetem Kommutator.",
+  "predict": [
+   "Ohne Umpolen zeigt die Kraft nach einer halben Umdrehung zurück und bremst die Spule.",
+   "Die Spule dreht sich durch ihren Schwung von allein immer weiter.",
+   "Nach einer halben Umdrehung ist der Strom in der Spule verbraucht; der geteilte Ring liefert frischen nach."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Sieh dem Motor mit eingeschaltetem Kommutator zu und lies die Zahl der Umdrehungen ab.",
+   "Schalte den Kommutator aus, setze zurück und beobachte die Spule mindestens zwanzig Sekunden lang.",
+   "Schalte den Kommutator wieder ein und vergleiche."
+  ],
+  "tabCols": [
+   "Was macht die Spule?",
+   "Umdrehungen je Minute"
+  ],
+  "tabRows": [
+   "Kommutator eingeschaltet",
+   "Kommutator ausgeschaltet",
+   "wieder eingeschaltet"
+  ],
+  "fachtext": "Der Kommutator, auch Polwender genannt, ist ein geteilter Ring, der sich mit der Spule mitdreht; zwei feste Kohlebürsten schleifen darauf. Bei jeder halben Umdrehung wechseln die Hälften unter den Bürsten, und dadurch fließt der Strom in der Spule andersherum. Weil zugleich auch die Spulenseiten die Plätze getauscht haben, drücken die Kräfte weiterhin in dieselbe Drehrichtung.",
+  "merksatz": [
+   {
+    "pre": "Der Kommutator polt den Strom in der Spule bei jeder ",
+    "loesung": "halben",
+    "post": " Umdrehung um."
+   },
+   {
+    "pre": "Ohne ihn bliebe der Motor nach einer halben Umdrehung ",
+    "loesung": "stehen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Mit eingeschaltetem Kommutator dreht sich die Spule ohne Unterbrechung; die Simulation zählt eine Umdrehung nach der anderen. Schaltet man ihn aus und setzt zurück, dreht sich die Spule zunächst an, kommt über die Senkrechte hinaus und wird dann zurückgedrückt. Sie pendelt einige Male und bleibt schließlich stehen. Die Anzeige meldet dann, dass sie festgefahren ist – dort ist das Drehmoment null.",
+  "aufgabe": {
+   "frage": "Begründe, warum ein Motor ohne Kommutator ausgerechnet in der Stellung stehen bleibt, in der die Spulenfläche quer zum Magnetfeld steht.",
+   "zeilen": 3,
+   "loesung": "In dieser Stellung zeigen die beiden Kräfte zwar noch immer nach oben und unten, greifen aber genau in der Drehachse an. Sie können die Spule dort nicht mehr weiterdrehen – das Drehmoment ist null. Ohne Umpolen würde jede Auslenkung von dort zurückgedrückt."
+  },
+  "alltag": "Erkläre, warum ein Akkuschrauber leise klickt, wenn man ihn langsam laufen lässt.",
+  "ueberleitung": "Der Motor läuft jetzt zuverlässig. Auf der nächsten Seite machst du ihn kräftiger und schneller.",
+  "alltagKomp": "E8",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "mo11",
+  "theme": "motor",
+  "basiskonzept": "Energie",
+  "name": "Was einen Motor kräftiger macht",
+  "titel": "Vier Stellschrauben am fertigen Motor",
+  "problem": "Der Motor läuft, aber er ist zu schwach für die Seilwinde, die Ben antreiben will. Sein Ausbilder gibt ihm vier Möglichkeiten mit: mehr Windungen wickeln, mehr Strom einstellen, einen stärkeren Magneten einbauen oder die Spule größer machen. Ben soll herausfinden, welche davon am meisten bringt.",
+  "frage": "Was macht einen Elektromotor kräftiger und schneller?",
+  "auftrag": "Bestimme das Drehmoment, wenn du Windungszahl, Stromstärke und Magnetfeld veränderst.",
+  "predict": [
+   "Nur die Stromstärke zählt, denn sie liefert die Energie für den Motor.",
+   "Windungszahl, Stromstärke, Magnetfeld und Spulenfläche gehen alle gleichermaßen ein.",
+   "Ein stärkerer Magnet bringt nichts; er hält die Spule nur fester und bremst sie."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle 20 Windungen, I = 2,0 A und B = 0,20 T ein und lies das Drehmoment ab.",
+   "Verdopple nur die Windungszahl auf 40, lies erneut ab und gehe danach wieder auf 20 zurück.",
+   "Verdopple nun nur die Stromstärke auf 4,0 A und zuletzt nur das Magnetfeld auf 0,40 T."
+  ],
+  "tabCols": [
+   "Drehmoment in mN·m",
+   "wie viel mal so groß?"
+  ],
+  "tabRows": [
+   "20 Wdg., 2,0 A, 0,20 T",
+   "40 Wdg., 2,0 A, 0,20 T",
+   "20 Wdg., 4,0 A, 0,20 T",
+   "20 Wdg., 2,0 A, 0,40 T"
+  ],
+  "fachtext": "Das Drehmoment eines Motors berechnet man als M = N · B · I · A. Darin stecken vier Größen: die Windungszahl N, das Magnetfeld B, die Stromstärke I und die Spulenfläche A. Alle vier gehen einfach ein – jede Verdopplung verdoppelt das Drehmoment. In der Werkstatt ist die Stromstärke am schnellsten zu ändern, die Windungszahl am mühsamsten.",
+  "merksatz": [
+   {
+    "pre": "Das Drehmoment eines Motors berechnet man als M = N · B · I · ",
+    "loesung": "A",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man eine dieser vier Größen, so wird das Drehmoment ",
+    "loesung": "doppelt",
+    "post": " so groß."
+   }
+  ],
+  "beobachtung": "Bei 20 Windungen, 2,0 A und 0,20 T zeigt die Simulation ein Drehmoment von 16,0 mN·m. Mit 40 Windungen sind es 32,0 mN·m, also genau das Doppelte. Verdoppelt man stattdessen die Stromstärke auf 4,0 A, ebenfalls 32,0 mN·m. Verdoppelt man nur das Magnetfeld auf 0,40 T, wieder 32,0 mN·m. Alle drei Wege führen zum selben Ergebnis – die vierte Größe, die Spulenfläche, wirkt genauso.",
+  "aufgabe": {
+   "frage": "Berechne das Drehmoment einer Spule mit 50 Windungen bei I = 3,0 A, B = 0,30 T und A = 0,002 m² und beurteile, ob sie kräftiger ist als Bens Motor mit 16,0 mN·m.",
+   "zeilen": 3,
+   "loesung": "M = N · B · I · A = 50 · 0,30 T · 3,0 A · 0,002 m² = 0,090 N·m = 90 mN·m. Das ist mehr als das Fünffache von Bens 16,0 mN·m. Diese Spule wäre also deutlich kräftiger und für die Seilwinde geeignet."
+  },
+  "alltag": "Beurteile, warum ein Akkuschrauber im ersten Gang mehr Kraft hat, aber langsamer dreht.",
+  "ueberleitung": "Aus Strom hast du Drehung gemacht. Im nächsten Kapitel gehst du den Weg rückwärts: aus Drehung wird Strom.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge1",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Induktion – Spannung ohne Batterie",
+  "titel": "Das Messgerät zeigt etwas an, obwohl nichts angeschlossen ist",
+  "problem": "In der Schaltwarte hängt ein Schaubild vom Kraftwerk bis zur Steckdose. Bens Ausbilder legt einen kleinen Aufbau auf den Tisch: eine Spule, einen Stabmagneten und einen Spannungsmesser. Weder eine Batterie noch ein Netzteil ist angeschlossen. Er schiebt den Magneten langsam in die Spule hinein, und der Zeiger schlägt deutlich aus.",
+  "frage": "Kann ein bewegter Magnet eine Spannung erzeugen, ohne dass eine Batterie da ist?",
+  "auftrag": "Untersuche, wann das Messgerät ausschlägt und wann es auf null steht.",
+  "predict": [
+   "Der Magnet erzeugt in der Spule dauerhaft eine Spannung, solange er in ihr steckt.",
+   "Ohne Batterie kann gar keine Spannung entstehen; der Zeiger schlägt nur aus, weil der Magnet das Messgerät stört.",
+   "Eine Spannung entsteht nur, solange sich der Magnet bewegt – im Stillstand nicht."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Beobachte einen ganzen Durchgang: hineinschieben, liegen lassen, herausziehen, liegen lassen.",
+   "Halte fest, was das Messgerät in jeder der vier Phasen anzeigt.",
+   "Vergleiche besonders das Hineinschieben mit dem Herausziehen und achte auf das Vorzeichen."
+  ],
+  "tabCols": [
+   "Spannung in V",
+   "Vorzeichen: plus, minus oder null?"
+  ],
+  "tabRows": [
+   "Magnet wird hineingeschoben",
+   "Magnet liegt still in der Spule",
+   "Magnet wird herausgezogen",
+   "Magnet liegt still außerhalb"
+  ],
+  "fachtext": "Bewegt man einen Magneten in eine Spule hinein oder aus ihr heraus, so entsteht zwischen den Spulenenden eine Spannung. Man nennt das Induktion. Entscheidend ist nicht, dass ein Magnet da ist, sondern dass sich das Magnetfeld in der Spule ändert. Liegt der Magnet still, ändert sich nichts – und die Spannung ist null, obwohl der Magnet mitten in der Spule steckt.",
+  "merksatz": [
+   {
+    "pre": "Entsteht in einer Spule durch ein sich änderndes Magnetfeld eine Spannung, so heißt das ",
+    "loesung": "Induktion",
+    "post": "."
+   },
+   {
+    "pre": "Liegt der Magnet still, so ist die induzierte Spannung ",
+    "loesung": "null",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Beim Hineinschieben zeigt das Messgerät 0,300 V an. Sobald der Magnet still in der Spule liegt, fällt die Anzeige auf 0,000 V zurück – obwohl der Magnet unverändert dort steckt. Beim Herausziehen schlägt der Zeiger wieder aus, diesmal aber mit umgekehrtem Vorzeichen: −0,300 V. Liegt der Magnet außerhalb still, ist die Anzeige erneut null. Nur die Bewegung erzeugt also Spannung.",
+  "aufgabe": {
+   "frage": "Erkläre, warum das Messgerät auf null zurückfällt, obwohl der Magnet mitten in der Spule liegt und sein Feld unverändert wirkt.",
+   "zeilen": 3,
+   "loesung": "Für die Induktion zählt nicht das Magnetfeld selbst, sondern seine Änderung. Solange der Magnet still liegt, bleibt das Feld in der Spule konstant – es ändert sich nichts, und deshalb wird auch keine Spannung induziert. Erst wenn der Magnet wieder bewegt wird, ändert sich das Feld und der Zeiger schlägt erneut aus."
+  },
+  "alltag": "Bewege einen Fahrraddynamo von Hand und beobachte, wann das Licht angeht.",
+  "ueberleitung": "Dass eine Spannung entsteht, weißt du jetzt. Auf der nächsten Seite findest du heraus, wovon es abhängt, wie groß sie wird.",
+  "alltagKomp": "E5",
+  "alltagAfb": "I"
+ },
+ {
+  "id": "ge2",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Wovon die induzierte Spannung abhängt",
+  "titel": "Drei Schrauben an derselben Spule",
+  "problem": "Bens Ausbilder deutet auf das Schaubild: Ein Kraftwerk liefert Spannungen in Tausenden von Volt, Bens Aufbau nur Bruchteile eines Volt. Dabei ist es derselbe Versuch. Er fragt Ben, an welchen drei Schrauben man drehen müsste, um von der einen Größenordnung zur anderen zu kommen.",
+  "frage": "Wovon hängt die Höhe der induzierten Spannung ab?",
+  "auftrag": "Bestimme die Spannung, wenn du Tempo, Windungszahl und Magnetstärke veränderst.",
+  "predict": [
+   "Tempo, Windungszahl und Magnetstärke gehen alle drei gleichermaßen ein.",
+   "Nur die Windungszahl zählt; wie schnell man den Magneten bewegt, ist gleichgültig.",
+   "Je länger die Bewegung dauert, desto höher die Spannung; langsames Schieben bringt also mehr."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle 600 Windungen, Tempo 50 cm/s und den mittleren Magneten ein und lies die Spannung ab.",
+   "Verdopple nur das Tempo auf 100 cm/s, danach nur die Windungszahl auf 1200.",
+   "Stelle zuletzt wieder 600 Windungen und 50 cm/s ein und wähle nur den starken Magneten."
+  ],
+  "tabCols": [
+   "Spannung in V",
+   "wie viel mal so groß?"
+  ],
+  "tabRows": [
+   "600 Wdg., 50 cm/s, mittel",
+   "Tempo verdoppelt",
+   "Windungen verdoppelt",
+   "Magnet doppelt so stark"
+  ],
+  "fachtext": "Die induzierte Spannung berechnet man in diesem Aufbau als U = N · B · A · v / d. Darin ist N die Windungszahl, B die Stärke des Magneten, A die Spulenfläche und v das Tempo der Bewegung. Alle diese Größen gehen einfach ein: Jede Verdopplung verdoppelt die Spannung. Ein Kraftwerk erreicht seine hohen Spannungen deshalb über sehr viele Windungen, starke Felder und hohe Drehzahlen zugleich.",
+  "merksatz": [
+   {
+    "pre": "Je schneller der Magnet bewegt wird, desto ",
+    "loesung": "größer",
+    "post": " ist die induzierte Spannung."
+   },
+   {
+    "pre": "Auch mehr Windungen und ein stärkerer Magnet machen die Spannung ",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 600 Windungen, 50 cm/s und dem mittleren Magneten zeigt die Simulation 0,300 V an und schreibt die Rechnung dazu: 600 · 0,05 T · 0,0004 m² · 0,50 m/s geteilt durch 0,02 m. Verdoppelt man das Tempo auf 100 cm/s, sind es 0,600 V. Verdoppelt man stattdessen die Windungszahl auf 1200, ebenfalls 0,600 V. Und mit dem starken Magneten statt dem mittleren wieder 0,600 V – alle drei Wege führen zum selben Ergebnis.",
+  "aufgabe": {
+   "frage": "Berechne, wie viel Spannung ein Aufbau mit 1200 Windungen, dem starken Magneten und 100 cm/s liefert, wenn 600 Windungen, mittlerer Magnet und 50 cm/s 0,300 V ergeben.",
+   "zeilen": 3,
+   "loesung": "Alle drei Größen werden verdoppelt. Jede Verdopplung verdoppelt die Spannung, also ist sie insgesamt achtmal so groß: 0,300 V · 8 = 2,400 V. So kommt ein Kraftwerk auf seine hohen Spannungen – nicht durch einen einzigen Trick, sondern durch alle Größen zugleich."
+  },
+  "alltag": "Erkläre, warum das Fahrradlicht heller wird, wenn du schneller fährst.",
+  "ueberleitung": "Das Erzeugen von Spannung kostet Kraft in der Hand. Auf der nächsten Seite siehst du, woher dieser Widerstand kommt.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge3",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Die Lenzsche Regel",
+  "titel": "Der Ring, der von der Spule wegspringt",
+  "problem": "Auf der Werkbank steht eine Spule mit einem langen Eisenkern; darüber hängt lose ein Aluminiumring. Aluminium ist nicht magnetisch – eine Büroklammer bleibt daran nicht haften, und ein Stabmagnet zieht ihn nicht an. Trotzdem springt der Ring hoch, sobald Bens Ausbilder den Taster drückt. Beim Loslassen wird er wieder zurückgezogen.",
+  "frage": "Warum wirkt bei der Induktion immer eine bremsende Kraft?",
+  "auftrag": "Vergleiche, was beim Einschalten und was beim Ausschalten mit dem Ring geschieht.",
+  "predict": [
+   "Der Ring wird magnetisch und deshalb wie Eisen angezogen – beim Ein- und Ausschalten gleich.",
+   "Im Ring entsteht ein Strom, dessen Magnetfeld der Änderung entgegenwirkt.",
+   "Der Ring wird weggestoßen, und zwar beim Einschalten und beim Ausschalten gleich stark."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Halte fest, was der Ring in Ruhe tut, solange kein Strom fließt.",
+   "Schalte den Strom ein und lies ab, wie sich der Ring bewegt und wie die Felder zueinander stehen.",
+   "Schalte danach wieder aus und vergleiche die Bewegung mit der beim Einschalten."
+  ],
+  "tabCols": [
+   "Bewegung des Rings",
+   "Felder von Ring und Spule"
+  ],
+  "tabRows": [
+   "kein Strom",
+   "beim Einschalten",
+   "beim Ausschalten"
+  ],
+  "fachtext": "Ändert sich das Magnetfeld durch einen Leiterring, so wird in ihm eine Spannung induziert und ein Strom fließt. Dieser Strom erzeugt selbst ein Magnetfeld – und zwar stets so, dass es der Änderung entgegenwirkt. Das ist die Lenzsche Regel. Deshalb wird der Ring beim Einschalten abgestoßen und beim Ausschalten angezogen. Aus demselben Grund muss man am Dynamo kräftiger treten, sobald das Licht brennt.",
+  "merksatz": [
+   {
+    "pre": "Der induzierte Strom wirkt der Änderung, die ihn hervorruft, stets ",
+    "loesung": "entgegen",
+    "post": "."
+   },
+   {
+    "pre": "Diesen Zusammenhang nennt man die ",
+    "loesung": "Lenzsche",
+    "post": " Regel."
+   }
+  ],
+  "beobachtung": "Ohne Strom hängt der Ring still neben der Spule – ohne Feldänderung keine Induktion. Beim Einschalten nimmt der Fluss durch den Ring zu, die Felder von Ring und Spule sind entgegengesetzt gerichtet, und der Ring wird abgestoßen. Beim Ausschalten nimmt der Fluss ab, die Felder sind gleichgerichtet, und der Ring wird angezogen. In beiden Fällen wirkt der Ring der Änderung entgegen.",
+  "aufgabe": {
+   "frage": "Begründe mit der Lenzschen Regel, warum das Treten am Fahrrad schwerer wird, sobald man den Dynamo einschaltet.",
+   "zeilen": 3,
+   "loesung": "Im Dynamo wird eine Spannung induziert; sobald das Licht angeschlossen ist, fließt auch ein Strom. Nach der Lenzschen Regel erzeugt dieser Strom ein Magnetfeld, das der Drehbewegung entgegenwirkt und den Dynamo bremst. Diese Bremskraft muss man mit den Beinen überwinden – so wird die Energie für das Licht überhaupt erst hineingesteckt."
+  },
+  "alltag": "Lasse einen starken Magneten durch ein Kupferrohr fallen und beobachte, wie lange er braucht.",
+  "ueberleitung": "Ein einzelner Stoß liefert einen einzelnen Ausschlag. Ein Kraftwerk braucht Strom ohne Unterbrechung – wie das geht, siehst du als Nächstes.",
+  "alltagKomp": "E5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge4",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Der Generator",
+  "titel": "Eine Spule, die sich nicht mehr anhalten lässt",
+  "problem": "Ben hat den Magneten inzwischen hundertmal hin- und hergeschoben. Jedes Mal gibt es einen kurzen Ausschlag, dazwischen steht der Zeiger auf null. Ein Kraftwerk liefert dagegen ohne jede Unterbrechung Strom, Tag und Nacht. Sein Ausbilder dreht daraufhin eine Spule zwischen zwei Magnetpolen im Kreis, statt sie hin- und herzuschieben.",
+  "frage": "Wie erzeugt ein Kraftwerk ohne Unterbrechung Strom?",
+  "auftrag": "Untersuche, wie sich die Spannung ändert, während sich die Spule einmal ganz dreht.",
+  "predict": [
+   "Bei gleichmäßiger Drehung bleibt die Spannung dauerhaft gleich groß.",
+   "Bei jeder Umdrehung gibt es zwei kurze Ausschläge; dazwischen steht der Zeiger auf null.",
+   "Die Spannung wächst und fällt fortlaufend, weil sich die wirksame Fläche ständig ändert."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lasse die Spule sich drehen und beobachte den Verlauf der Spannung über eine volle Umdrehung.",
+   "Halte die Spule in der Lage an, in der ihre Fläche senkrecht zum Feld steht, und lies die Spannung ab.",
+   "Drehe sie um eine Vierteldrehung weiter und lies die Spannung dort erneut ab."
+  ],
+  "tabCols": [
+   "wirksame Fläche",
+   "Spannung"
+  ],
+  "tabRows": [
+   "Fläche senkrecht zum Feld",
+   "eine Vierteldrehung weiter",
+   "noch eine Vierteldrehung weiter"
+  ],
+  "fachtext": "Dreht sich eine Spule gleichmäßig in einem Magnetfeld, so ändert sich fortlaufend, wie viel Feld durch sie hindurchtritt. Damit wird ohne Unterbrechung eine Spannung induziert. Ein solcher Aufbau heißt Generator. Bemerkenswert ist die Lage der Höchstwerte: Wo die wirksame Fläche am größten ist, ist die Spannung gerade null – denn dort ändert sich die Fläche für einen Augenblick überhaupt nicht.",
+  "merksatz": [
+   {
+    "pre": "Eine Spule, die sich im Magnetfeld dreht und dabei Spannung erzeugt, heißt ",
+    "loesung": "Generator",
+    "post": "."
+   },
+   {
+    "pre": "Die Spannung ist dort am größten, wo sich die wirksame Fläche am schnellsten ",
+    "loesung": "ändert",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die Spannung bleibt nicht konstant, sondern wächst und fällt in einer gleichmäßigen Welle. Steht die Spulenfläche senkrecht zum Feld, ist die wirksame Fläche am größten – und die Spannung genau null. Eine Vierteldrehung weiter ist die wirksame Fläche null und die Spannung am größten. Die Simulation hält das in einer Tabelle fest: Wo die eine Größe einen Höchstwert hat, hat die andere eine Nullstelle.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die Spannung ausgerechnet dann null ist, wenn die wirksame Fläche ihren größten Wert hat.",
+   "zeilen": 3,
+   "loesung": "Induziert wird nicht durch die Fläche selbst, sondern durch ihre Änderung. In der Lage mit der größten wirksamen Fläche befindet sich diese gerade an ihrem Höchstwert; unmittelbar davor und danach ist sie kleiner. In diesem Augenblick ändert sie sich also nicht, und deshalb wird auch keine Spannung induziert."
+  },
+  "alltag": "Erkläre, warum ein Windrad auch bei gleichmäßigem Wind Wechselspannung liefert.",
+  "ueberleitung": "Die Spannung schwankt nicht nur – sie wechselt sogar das Vorzeichen. Was das für die Steckdose bedeutet, siehst du auf der nächsten Seite.",
+  "alltagKomp": "E6",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge5",
+  "theme": "netz",
+  "basiskonzept": "System",
+  "name": "Wechselspannung",
+  "titel": "Warum die Steckdose keinen Plus- und Minuspol hat",
+  "problem": "Auf Bens Batterie stehen ein Plus und ein Minus. An der Steckdose zu Hause steht nichts dergleichen, und der Stecker passt in beiden Richtungen. Sein Ausbilder sagt, das sei kein Versäumnis der Hersteller, sondern folge unmittelbar daraus, wie der Strom im Kraftwerk entsteht.",
+  "frage": "Warum wechselt der Strom aus der Steckdose ständig seine Richtung?",
+  "auftrag": "Vergleiche die Spannung in den vier ausgezeichneten Lagen einer vollen Umdrehung.",
+  "predict": [
+   "Die Spannung wechselt das Vorzeichen, weil die Spulenseiten nach einer halben Umdrehung die Plätze tauschen.",
+   "Die Spannung bleibt immer positiv, denn der Magnet behält ja seine Pole.",
+   "Im Kraftwerk sitzt ein Schalter, der die Richtung fünfzigmal in der Sekunde umlegt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies in der Tabelle der Simulation die Spannung bei 0°, 90°, 180° und 270° ab.",
+   "Achte dabei besonders auf das Vorzeichen der Werte bei 90° und bei 270°.",
+   "Vergleiche den Verlauf mit dem einer Batterie, die immer denselben Pol behält."
+  ],
+  "tabCols": [
+   "Spannung U",
+   "Vorzeichen"
+  ],
+  "tabRows": [
+   "bei 0°",
+   "bei 90°",
+   "bei 180°",
+   "bei 270°"
+  ],
+  "fachtext": "Bei einer vollen Umdrehung tauschen die beiden Spulenseiten einmal die Plätze im Magnetfeld. Deshalb kehrt sich die induzierte Spannung nach jeder halben Umdrehung um. Es entsteht eine Wechselspannung, und der von ihr getriebene Strom wechselt ebenfalls fortlaufend die Richtung. Im deutschen Netz geschieht das fünfzigmal in der Sekunde; man sagt, die Frequenz beträgt 50 Hertz.",
+  "merksatz": [
+   {
+    "pre": "Eine Spannung, die fortlaufend ihr Vorzeichen wechselt, heißt ",
+    "loesung": "Wechselspannung",
+    "post": "."
+   },
+   {
+    "pre": "Im deutschen Netz wechselt sie fünfzigmal in der Sekunde; die Frequenz beträgt 50 ",
+    "loesung": "Hertz",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die Tabelle der Simulation zeigt es unmittelbar: Bei 0° ist die Spannung null, bei 90° erreicht sie ihren größten positiven Wert, bei 180° ist sie wieder null und bei 270° erreicht sie ihren größten Wert mit umgekehrtem Vorzeichen. Nach einer vollen Umdrehung beginnt alles von vorn. Anders als bei einer Batterie gibt es hier also keinen festen Plus- und keinen festen Minuspol.",
+  "aufgabe": {
+   "frage": "Begründe, warum ein Netzstecker in beiden Richtungen in die Steckdose passt, ein Batteriefach dagegen nur in einer.",
+   "zeilen": 3,
+   "loesung": "Eine Batterie liefert Gleichspannung mit festem Plus- und Minuspol; wird sie falsch herum eingesetzt, fließt der Strom verkehrt und das Gerät arbeitet nicht oder nimmt Schaden. Aus der Steckdose kommt dagegen Wechselspannung: Beide Kontakte wechseln fünfzigmal in der Sekunde ihre Rolle. Welcher Stift in welchem Loch steckt, spielt deshalb keine Rolle."
+  },
+  "alltag": "Beurteile, warum in einer Taschenlampe Batterien nur in einer Richtung passen.",
+  "ueberleitung": "Wechselspannung kommt aus jedem Kraftwerk. Warum nicht jedes Gerät sie gebrauchen kann, steht auf der nächsten Seite.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge6",
+  "theme": "netz",
+  "basiskonzept": "System",
+  "name": "Gleichstrom und Wechselstrom",
+  "titel": "Zwei Sorten Strom in einem einzigen Gerät",
+  "problem": "Bens Handy hängt am Ladekabel in der Steckdose. Im Handy steckt ein Akku, und der hat einen Plus- und einen Minuspol. Aus der Steckdose kommt aber Wechselstrom ohne feste Pole. Zwischen beiden sitzt der dicke Klotz am Kabel. Ben will wissen, was dieser Klotz eigentlich tut.",
+  "frage": "Wann braucht man Gleichstrom und wann Wechselstrom?",
+  "auftrag": "Vergleiche die Einsatzgebiete beider Stromarten anhand des Datenblatts.",
+  "predict": [
+   "Beide Stromarten sind gleichwertig; welche man nimmt, ist reine Gewohnheit.",
+   "Für den Transport ist Wechselstrom günstig, für Elektronik und Akkus braucht man Gleichstrom.",
+   "Zum Transport taugt nur Gleichstrom; Wechselstrom pendelt hin und her und kommt nirgends an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies im Datenblatt ab, welche Geräte Gleichstrom und welche Wechselstrom brauchen.",
+   "Halte fest, welche Stromart sich mit einem Transformator umspannen lässt.",
+   "Suche für jede der beiden Stromarten den entscheidenden Vorteil heraus."
+  ],
+  "tabCols": [
+   "Gleichstrom",
+   "Wechselstrom"
+  ],
+  "tabRows": [
+   "Woher kommt er?",
+   "Wofür wird er gebraucht?",
+   "Lässt er sich umspannen?"
+  ],
+  "daten": {
+   "titel": "Gleichstrom und Wechselstrom im Vergleich",
+   "spalten": [
+    "Merkmal",
+    "Gleichstrom",
+    "Wechselstrom"
+   ],
+   "zeilen": [
+    [
+     "Richtung",
+     "bleibt gleich",
+     "wechselt 50-mal je Sekunde"
+    ],
+    [
+     "Pole",
+     "fest: Plus und Minus",
+     "keine festen Pole"
+    ],
+    [
+     "Quelle",
+     "Batterie, Akku, Solarzelle",
+     "Generator im Kraftwerk"
+    ],
+    [
+     "Umspannen",
+     "nur mit Elektronik",
+     "direkt mit dem Transformator"
+    ],
+    [
+     "Typische Geräte",
+     "Handy, Taschenlampe, LED",
+     "Netz, Motoren, Heizungen"
+    ]
+   ],
+   "quelle": "Frequenz des europäischen Verbundnetzes: 50 Hz",
+   "merke": "Nur Wechselspannung lässt sich mit einem Transformator einfach hoch- und heruntersetzen."
+  },
+  "fachtext": "Gleichstrom fließt immer in dieselbe Richtung; Batterien, Akkus und Solarzellen liefern ihn. Wechselstrom wechselt fortlaufend die Richtung und kommt aus jedem Generator. Für das Stromnetz ist Wechselstrom entscheidend, weil sich nur seine Spannung mit einem Transformator einfach hoch- und heruntersetzen lässt. Elektronik und Akkus brauchen dagegen Gleichstrom. Deshalb sitzt in jedem Ladegerät ein Gleichrichter, der aus Wechselstrom Gleichstrom macht.",
+  "merksatz": [
+   {
+    "pre": "Strom, der immer in dieselbe Richtung fließt, heißt ",
+    "loesung": "Gleichstrom",
+    "post": "."
+   },
+   {
+    "pre": "Nur Wechselspannung lässt sich mit einem Transformator einfach ",
+    "loesung": "umspannen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Das Datenblatt zeigt den entscheidenden Unterschied in der vierten Zeile: Wechselstrom lässt sich unmittelbar mit einem Transformator umspannen, Gleichstrom nur über aufwendige Elektronik. Deshalb arbeitet das gesamte Stromnetz mit Wechselstrom. Handy, Taschenlampe und LED brauchen dagegen Gleichstrom – der Klotz am Ladekabel ist ein Gleichrichter, der die eine Stromart in die andere umwandelt.",
+  "aufgabe": {
+   "frage": "Erkläre, warum in jedem Handyladegerät ein Bauteil sitzt, das aus Wechselstrom Gleichstrom macht.",
+   "zeilen": 3,
+   "loesung": "Aus der Steckdose kommt Wechselstrom, weil sich nur dieser im Netz verlustarm transportieren und umspannen lässt. Der Akku im Handy braucht aber Gleichstrom mit festem Plus- und Minuspol, sonst würde er abwechselnd geladen und entladen. Der Gleichrichter im Ladegerät sorgt dafür, dass der Strom nur noch in eine Richtung fließt."
+  },
+  "alltag": "Nenne drei Geräte bei dir zu Hause, die mit Gleichstrom arbeiten, und zwei mit Wechselstrom.",
+  "ueberleitung": "Warum das Netz mit Wechselstrom arbeitet, hängt an einem einzigen Bauteil. Das siehst du dir auf der nächsten Seite genau an.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge7",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Der Transformator",
+  "titel": "Zwei Spulen, die sich nicht berühren",
+  "problem": "Im Umspannwerk steht ein Transformator so groß wie ein Kleinwagen. Ben soll ein Modell davon verstehen: zwei Spulen auf einem geschlossenen Eisenkern, ohne jede leitende Verbindung zwischen ihnen. An der einen liegt Wechselspannung an, an der anderen kann man Spannung abgreifen. Ben findet keinen Draht dazwischen.",
+  "frage": "Wie ändert man eine Spannung, ohne dabei viel Energie zu verschwenden?",
+  "auftrag": "Untersuche, wie die Spannung an der zweiten Spule von der Windungszahl abhängt.",
+  "predict": [
+   "Ohne leitende Verbindung kann keine Energie auf die zweite Spule gelangen.",
+   "Der Eisenkern ist Metall, und der Strom fließt durch ihn hindurch zur zweiten Spule.",
+   "Das sich ändernde Magnetfeld im Eisenkern überträgt die Energie ohne Draht."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle den Spulensatz 500 → 1000 und lies das Übersetzungsverhältnis ab.",
+   "Vergleiche die ideal erwartete Sekundärspannung mit der tatsächlich gemessenen.",
+   "Lies in der Leistungsbilanz ab, wie viel hineingesteckt und wie viel herausgeholt wird."
+  ],
+  "tabCols": [
+   "Wert",
+   "Einheit"
+  ],
+  "tabRows": [
+   "Übersetzungsverhältnis",
+   "ideal erwartete Spannung",
+   "gemessene Spannung",
+   "Wirkungsgrad"
+  ],
+  "fachtext": "Ein Transformator besteht aus zwei Spulen auf einem gemeinsamen Eisenkern. Die Wechselspannung an der ersten Spule erzeugt ein sich änderndes Magnetfeld; der Eisenkern führt es zur zweiten Spule, wo es eine Spannung induziert. Zwischen beiden Spulen gibt es keine leitende Verbindung – die Energie wird allein über das Magnetfeld übertragen. Nur mit Wechselspannung funktioniert das, denn nur sie ändert sich fortlaufend.",
+  "merksatz": [
+   {
+    "pre": "Ein Transformator überträgt Energie allein über das ",
+    "loesung": "Magnetfeld",
+    "post": " im Eisenkern."
+   },
+   {
+    "pre": "Er arbeitet deshalb nur mit ",
+    "loesung": "Wechselspannung",
+    "post": ", nicht mit Gleichspannung."
+   }
+  ],
+  "beobachtung": "Beim Spulensatz 500 → 1000 gibt die Simulation das Übersetzungsverhältnis mit 2,000 an. Ideal erwartet wären damit 10,000 V, tatsächlich gemessen werden 8,800 V. Die Leistungsbilanz zeigt, wohin der Rest geht: hineingesteckt 0,500 W, herausgeholt 0,405 W, im Transformator geblieben 0,095 W. Der Wirkungsgrad beträgt damit 81,0 %. Übertragen wird also viel, aber nicht alles.",
+  "aufgabe": {
+   "frage": "Erkläre, warum zwischen den beiden Spulen eines Transformators kein Draht nötig ist, obwohl Energie von der einen zur anderen gelangt.",
+   "zeilen": 3,
+   "loesung": "Die Wechselspannung an der ersten Spule treibt einen Wechselstrom, der ein sich fortlaufend änderndes Magnetfeld erzeugt. Der Eisenkern bündelt dieses Feld und führt es zur zweiten Spule. Dort ändert sich das Feld ebenfalls, und genau das induziert die Spannung. Die Energie wird also über das Magnetfeld übertragen, nicht über Ladungen in einem Draht."
+  },
+  "alltag": "Erkläre, warum ein Trafo im Ladegerät brummt, wenn er alt ist.",
+  "ueberleitung": "Dass die Spannung sich ändern lässt, weißt du jetzt. Um wie viel sie sich ändert, bestimmst du auf der nächsten Seite selbst.",
+  "alltagKomp": "E7",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge8",
+  "theme": "netz",
+  "basiskonzept": "System",
+  "name": "Die Transformatorgleichung",
+  "titel": "Das Verhältnis, auf das es ankommt",
+  "problem": "Ben soll aus 230 V eine ungefährliche Spannung von 12 V für die Werkbanklampe machen. Im Regal liegen Spulen mit 250, 500 und 1000 Windungen. Sein Ausbilder gibt ihm keinen Katalog, sondern sagt nur: Rechne es dir aus, es steckt alles in einem einzigen Verhältnis.",
+  "frage": "Wie hängen Windungszahl und Spannung an einem Transformator zusammen?",
+  "auftrag": "Bestimme für mehrere Spulensätze das Verhältnis von Windungszahlen und Spannungen.",
+  "predict": [
+   "Die Spannungen verhalten sich zueinander wie die Windungszahlen der beiden Spulen.",
+   "Die Sekundärspannung hängt von der Differenz der beiden Windungszahlen ab.",
+   "Es kommt allein auf die zweite Spule an; wie die erste gewickelt ist, spielt keine Rolle."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle nacheinander die Spulensätze 1000 → 500, 1000 → 250 und 500 → 1000.",
+   "Notiere für jeden Satz das Übersetzungsverhältnis und die gemessene Spannung.",
+   "Prüfe an der Messwerttabelle, ob das Verhältnis der Spannungen zum Verhältnis der Windungszahlen passt."
+  ],
+  "tabCols": [
+   "Übersetzungsverhältnis",
+   "gemessene Spannung in V"
+  ],
+  "tabRows": [
+   "1000 → 500",
+   "1000 → 250",
+   "500 → 1000"
+  ],
+  "fachtext": "Am Transformator gilt: Die Spannungen verhalten sich zueinander wie die Windungszahlen. Hat die zweite Spule doppelt so viele Windungen wie die erste, so ist auch ihre Spannung doppelt so groß – man spricht von einem Aufwärtstransformator. Hat sie weniger Windungen, wird die Spannung heruntergesetzt. Für den Strom gilt es umgekehrt: Wo die Spannung steigt, sinkt die Stromstärke. Die Leistung bleibt dabei näherungsweise erhalten.",
+  "merksatz": [
+   {
+    "pre": "Die Spannungen verhalten sich zueinander wie die ",
+    "loesung": "Windungszahlen",
+    "post": " der beiden Spulen."
+   },
+   {
+    "pre": "Steigt die Spannung, so sinkt die ",
+    "loesung": "Stromstärke",
+    "post": " im selben Verhältnis."
+   }
+  ],
+  "beobachtung": "Bei 1000 → 500 halbiert sich die Spannung, das Verhältnis beträgt 0,50. Bei 1000 → 250 sinkt sie auf ein Viertel, Verhältnis 0,25. Bei 500 → 1000 verdoppelt sie sich, Verhältnis 2,00. Die Messwerttabelle bestätigt das: Aus 4,0 V werden bei 500 → 1000 gemessene 7,0 V statt der idealen 8,0 V. Das Verhältnis der Spannungen entspricht also dem der Windungszahlen, abzüglich der Verluste.",
+  "aufgabe": {
+   "frage": "Berechne, wie viele Windungen die zweite Spule braucht, um aus 230 V genau 12 V zu machen, wenn die erste 1150 Windungen hat.",
+   "zeilen": 3,
+   "loesung": "Die Spannungen verhalten sich wie die Windungszahlen: 12 V / 230 V = NS / 1150. Daraus folgt NS = 1150 · 12 / 230 = 60 Windungen. Die zweite Spule braucht also 60 Windungen. In Wirklichkeit nimmt man wegen der Verluste einige Windungen mehr, damit unter Last wirklich 12 V anliegen."
+  },
+  "alltag": "Beurteile, warum ein Ladegerät für 230 V im Ausland mit 110 V nicht die richtige Spannung liefert.",
+  "ueberleitung": "Umspannen kannst du jetzt. Warum das auf dem Weg vom Kraftwerk zu dir überhaupt nötig ist, klärt die nächste Seite.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge9",
+  "theme": "netz",
+  "basiskonzept": "Energie",
+  "name": "Verluste auf der Leitung",
+  "titel": "Was zwischen Kraftwerk und Lampe verlorengeht",
+  "problem": "Auf dem Modell im Schulungsraum hängen zwei Lampen am Ende einer langen Modellleitung. Ben schließt sie ohne Umspannen direkt an, und die Lampen glimmen nur noch matt vor sich hin. Die Energie ist deshalb aber nicht verschwunden: Sein Ausbilder legt die Hand an den Leitungsdraht, und der ist deutlich warm geworden.",
+  "frage": "Warum geht auf langen Leitungen Energie verloren?",
+  "auftrag": "Vergleiche die Verluste der drei Leitungsvarianten miteinander.",
+  "predict": [
+   "Die Energie geht auf dem langen Weg einfach unterwegs verloren.",
+   "Der Leitungsdraht hat einen Widerstand und wird vom Strom erwärmt.",
+   "Der Strom wird unterwegs aufgebraucht; hinten kommt weniger Strom an, als vorn losfließt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle die Niederspannungs-Fernleitung und lies ab, wie hell die Lampen leuchten.",
+   "Lies in der Energiebilanz ab, wie viel Energie je Sekunde in der Leitung bleibt.",
+   "Wähle danach die Leitung mit kleinem spezifischem Widerstand und vergleiche den Verlust."
+  ],
+  "tabCols": [
+   "Verlust je Sekunde",
+   "Nutzen zu Verlust"
+  ],
+  "tabRows": [
+   "Niederspannung, Konstantandraht",
+   "Niederspannung, Kupferdraht",
+   "Hochspannung"
+  ],
+  "fachtext": "Jeder Leitungsdraht hat einen elektrischen Widerstand. Fließt Strom durch ihn, so wird ein Teil der Energie in Wärme umgewandelt und geht für den Verbraucher verloren. Berechnet wird dieser Verlust als P = R · I². Er wächst also mit dem Quadrat der Stromstärke: Doppelter Strom bedeutet den vierfachen Verlust. Kleiner wird er auf zwei Wegen – durch einen kleineren Widerstand oder durch eine kleinere Stromstärke.",
+  "merksatz": [
+   {
+    "pre": "Der Verlust auf einer Leitung berechnet sich als P = R · ",
+    "loesung": "I²",
+    "post": "."
+   },
+   {
+    "pre": "Bei doppelter Stromstärke wird der Verlust ",
+    "loesung": "viermal",
+    "post": " so groß."
+   }
+  ],
+  "beobachtung": "Mit der Niederspannungs-Fernleitung aus Konstantandraht gehen 21,6 J je Sekunde in der Leitung verloren, während bei den Lampen nur 6,4 J ankommen – das Verhältnis von Nutzen zu Verlust beträgt 1 : 0,3. Nimmt man stattdessen Kupfer mit seinem viel kleineren Widerstand, sinkt der Verlust auf 0,068 J je Sekunde, also 1 : 94. Mit Hochspannung sind es 1,1 J je Sekunde, das Verhältnis 1 : 5,8.",
+  "aufgabe": {
+   "frage": "Berechne den Verlust auf einer Leitung mit R = 26,6 Ω, wenn 0,100 A fließen, und vergleiche ihn mit dem Verlust bei 0,200 A.",
+   "zeilen": 3,
+   "loesung": "Bei 0,100 A gilt P = R · I² = 26,6 Ω · 0,100 A · 0,100 A = 0,266 W. Bei 0,200 A sind es 26,6 Ω · 0,200 A · 0,200 A = 1,064 W. Der doppelte Strom erzeugt also den vierfachen Verlust, weil die Stromstärke quadratisch eingeht."
+  },
+  "alltag": "Erkläre, warum ein zu dünnes Verlängerungskabel unter Last warm wird.",
+  "ueberleitung": "Dünnere Verluste bekommt man über den Widerstand oder über den Strom. Welchen Weg das Stromnetz geht, siehst du auf der nächsten Seite.",
+  "alltagKomp": "E6",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge10",
+  "theme": "netz",
+  "basiskonzept": "System",
+  "name": "Warum Hochspannung",
+  "titel": "380 000 Volt über dem Acker",
+  "problem": "Über dem Feld hinter dem Umspannwerk hängen Leitungen an vierzig Meter hohen Masten. Ben findet das aufwendig und gefährlich; ein Auto komme schließlich mit zwölf Volt aus. Sein Ausbilder stellt am Modell die Hochspannungsleitung ein und lässt ihn dieselben zwei Lampen noch einmal ansehen.",
+  "frage": "Warum transportiert man elektrische Energie mit Hochspannung?",
+  "auftrag": "Vergleiche Stromstärke und Verlust bei Hoch- und bei Niederspannung.",
+  "predict": [
+   "Hochspannung schiebt die Energie kräftiger durch die Leitung und damit weiter.",
+   "Bei hoher Spannung fließt auch mehr Strom, und mehr Strom bringt mehr Energie ans Ziel.",
+   "Bei hoher Spannung ist die Stromstärke klein, und der Verlust hängt vom Strom ab."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle die Hochspannungs-Fernleitung und lies ab, auf welche Spannung hochtransformiert wird.",
+   "Lies die Stromstärke in der Fernleitung ab und vergleiche sie mit der bei den Lampen.",
+   "Halte den Verlust je Sekunde fest und vergleiche ihn mit dem der Niederspannungsleitung."
+  ],
+  "tabCols": [
+   "Hochspannung",
+   "Niederspannung"
+  ],
+  "tabRows": [
+   "Strom in der Fernleitung",
+   "Verlust je Sekunde",
+   "Nutzen zu Verlust"
+  ],
+  "fachtext": "Für den Verbraucher zählt die Leistung P = U · I. Dieselbe Leistung lässt sich mit hoher Spannung und kleinem Strom oder mit kleiner Spannung und großem Strom übertragen. Der Verlust auf der Leitung hängt aber allein vom Strom ab, und zwar quadratisch. Deshalb transformiert man vor der Fernleitung hoch: Der Strom wird klein, der Verlust winzig. Am Ziel setzt ein zweiter Transformator die Spannung wieder herunter.",
+  "merksatz": [
+   {
+    "pre": "Bei hoher Spannung ist für dieselbe Leistung die Stromstärke ",
+    "loesung": "klein",
+    "post": "."
+   },
+   {
+    "pre": "Weil der Verlust quadratisch vom Strom abhängt, wird er dadurch sehr viel ",
+    "loesung": "kleiner",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die Simulation transformiert auf 66,7 V hoch. In der Fernleitung fließen dann nur noch 0,100 A, während bei den Lampen 1,0 A ankommen – zehnmal so viel. Der Verlust beträgt P = R · I² = 26,6 Ω · 0,100 A · 0,100 A = 0,266 W. Bei Niederspannung gehen dagegen 21,6 J je Sekunde verloren. Das Verhältnis von Nutzen zu Verlust verbessert sich damit von 1 : 0,3 auf 1 : 5,8.",
+  "aufgabe": {
+   "frage": "Beurteile, ob es sinnvoll wäre, das Stromnetz statt mit Hochspannung einfach mit sehr dicken Kupferleitungen zu bauen.",
+   "zeilen": 4,
+   "loesung": "Möglich wäre es: Ein kleinerer Widerstand senkt den Verlust ebenso, wie das Modell mit der Kupferleitung zeigt. Für Hunderte von Kilometern bräuchte man aber gewaltige Mengen Kupfer. Das wäre sehr teuer, sehr schwer und würde weit stabilere Masten verlangen. Hochspannung erreicht dasselbe Ziel mit dünnen Leitern und zwei Transformatoren – deshalb hat sich dieser Weg durchgesetzt."
+  },
+  "alltag": "Erkläre, warum unter Hochspannungsleitungen Warnschilder stehen.",
+  "ueberleitung": "Zwischen Kraftwerk und Steckdose liegen mehrere solcher Umspannungen. Die ganze Kette siehst du auf der nächsten Seite.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ge11",
+  "theme": "netz",
+  "basiskonzept": "System",
+  "name": "Vom Kraftwerk in die Steckdose",
+  "titel": "Vier Spannungen auf demselben Weg",
+  "problem": "Am Ende der Woche steht Ben wieder vor dem Schaubild in der Schaltwarte. Jetzt erkennt er die einzelnen Stationen: Kraftwerk, Umspannwerk, Überlandleitung, Ortsnetzstation, Hausanschluss. An jeder Station steht eine andere Zahl in Volt. Sein Ausbilder fragt ihn, warum es nicht überall dieselbe ist.",
+  "frage": "Wie kommt der Strom vom Kraftwerk bis in die Steckdose?",
+  "auftrag": "Untersuche im Datenblatt, an welcher Station die Spannung jeweils geändert wird.",
+  "predict": [
+   "Die Spannung wird auf dem Weg mehrmals hoch- und wieder heruntergesetzt.",
+   "Die Spannung wird im Kraftwerk einmal festgelegt und bleibt dann bis zur Steckdose gleich.",
+   "Die Spannung wird auf dem Weg immer kleiner, weil alle unterwegs etwas davon abzweigen."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt ab, mit welcher Spannung der Generator im Kraftwerk arbeitet.",
+   "Verfolge die Stationen der Reihe nach und halte jede Spannung fest.",
+   "Bestimme, an welchen Stellen ein Transformator stehen muss."
+  ],
+  "tabCols": [
+   "Station",
+   "Spannung"
+  ],
+  "tabRows": [
+   "Generator im Kraftwerk",
+   "Überlandleitung",
+   "Ortsnetz",
+   "Steckdose"
+  ],
+  "daten": {
+   "titel": "Die Spannungsebenen des deutschen Stromnetzes",
+   "spalten": [
+    "Netzebene",
+    "Spannung",
+    "Wofür"
+   ],
+   "zeilen": [
+    [
+     "Generator",
+     "10–27 kV",
+     "Erzeugung im Kraftwerk"
+    ],
+    [
+     "Höchstspannung",
+     "220–380 kV",
+     "Transport über große Entfernungen"
+    ],
+    [
+     "Hochspannung",
+     "110 kV",
+     "Versorgung von Regionen"
+    ],
+    [
+     "Mittelspannung",
+     "10–20 kV",
+     "Versorgung von Stadtteilen"
+    ],
+    [
+     "Niederspannung",
+     "400 V / 230 V",
+     "Hausanschluss und Steckdose"
+    ]
+   ],
+   "quelle": "Spannungsebenen nach den Netzebenen des deutschen Verbundnetzes",
+   "merke": "Zwischen je zwei Ebenen steht ein Transformator – deshalb arbeitet das Netz mit Wechselstrom."
+  },
+  "fachtext": "Der Weg vom Kraftwerk zur Steckdose führt über mehrere Spannungsebenen. Der Generator liefert einige Tausend Volt. Für den weiten Transport wird auf bis zu 380 000 Volt hochtransformiert, weil dabei der Strom und damit der Verlust klein bleibt. Danach wird stufenweise wieder heruntergesetzt: für Regionen, für Stadtteile und schließlich auf die 230 Volt der Steckdose. An jedem Übergang steht ein Transformator.",
+  "merksatz": [
+   {
+    "pre": "Zwischen je zwei Spannungsebenen des Netzes steht ein ",
+    "loesung": "Transformator",
+    "post": "."
+   },
+   {
+    "pre": "In der Steckdose liegen schließlich ",
+    "loesung": "230",
+    "post": " Volt an."
+   }
+  ],
+  "beobachtung": "Das Datenblatt zeigt fünf Ebenen. Der Generator arbeitet mit 10 bis 27 kV. Für den Transport über große Entfernungen wird auf 220 bis 380 kV hochgesetzt, für die Versorgung von Regionen auf 110 kV heruntergesetzt, für Stadtteile auf 10 bis 20 kV und zuletzt auf 400 V beziehungsweise 230 V für den Hausanschluss. Zwischen je zwei Ebenen steht ein Transformator – insgesamt also vier auf dem Weg vom Kraftwerk bis zur Steckdose.",
+  "aufgabe": {
+   "frage": "Erkläre, warum das gesamte Stromnetz mit Wechselstrom arbeitet und nicht mit Gleichstrom.",
+   "zeilen": 4,
+   "loesung": "Auf dem Weg vom Kraftwerk zur Steckdose muss die Spannung viermal geändert werden – erst hoch für den verlustarmen Transport, dann stufenweise wieder herunter. Genau das leistet ein Transformator, und der arbeitet ausschließlich mit Wechselspannung, weil nur ein sich änderndes Magnetfeld eine Spannung induziert. Mit Gleichstrom bräuchte man an jeder Station aufwendige Elektronik."
+  },
+  "alltag": "Suche in deiner Umgebung drei Anlagen, an denen die Spannung geändert wird.",
+  "ueberleitung": "Damit ist der Weg vom Kraftwerk bis zu dir vollständig. Im nächsten Kapitel geht es um eine ganz andere Energiequelle – eine, die im Atomkern steckt.",
+  "alltagKomp": "K5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak1",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Der Aufbau des Atoms",
+  "titel": "Was hinter der Bleitür passiert",
+  "problem": "Mia darf in der Radiologie zusehen. An der Tür zum Untersuchungsraum hängt ein gelbes Zeichen mit drei Flügeln, die Tür selbst ist mit Blei ausgekleidet. Die Ärztin sagt, alles hier drehe sich um etwas, das kleiner ist als jede Zelle: den Kern eines einzelnen Atoms.",
+  "frage": "Woraus besteht ein Atom, und was macht es zu genau diesem Element?",
+  "auftrag": "Untersuche, wie sich Name und Massenzahl ändern, wenn du am Kern etwas veränderst.",
+  "predict": [
+   "Ein Atom ist eine winzige, nicht weiter teilbare Kugel ohne inneren Aufbau.",
+   "Ein Atom hat einen Kern aus Protonen und Neutronen und außen herum Elektronen.",
+   "Im Kern sitzen die Elektronen; Protonen und Neutronen bewegen sich außen herum."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle 6 Protonen und 6 Neutronen ein und lies Name, Massenzahl und Schreibweise ab.",
+   "Verändere die Protonenzahl auf 7 und danach auf 8 und halte jeden Namen fest.",
+   "Lies ab, wie viele Elektronen in der Hülle sind und wie sie sich auf die Schalen verteilen."
+  ],
+  "tabCols": [
+   "Name des Atoms",
+   "Massenzahl A"
+  ],
+  "tabRows": [
+   "6 Protonen, 6 Neutronen",
+   "7 Protonen, 6 Neutronen",
+   "8 Protonen, 6 Neutronen"
+  ],
+  "fachtext": "Jedes Atom besteht aus einem Kern und einer Hülle. Im Kern sitzen Protonen mit positiver Ladung und Neutronen ohne Ladung; in der Hülle bewegen sich Elektronen mit negativer Ladung. Weil ein neutrales Atom genauso viele Elektronen wie Protonen hat, wirkt es nach außen ungeladen. Die Zahl der Protonen bestimmt, um welches Element es sich handelt. Die Massenzahl A ist die Summe aus Protonen und Neutronen.",
+  "merksatz": [
+   {
+    "pre": "Welches Element vorliegt, bestimmt allein die Zahl der ",
+    "loesung": "Protonen",
+    "post": " im Kern."
+   },
+   {
+    "pre": "Die Massenzahl A ist die Summe aus Protonen und ",
+    "loesung": "Neutronen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Mit 6 Protonen und 6 Neutronen zeigt die Simulation Kohlenstoff-12 an, geschrieben als ¹²₆C, und rechnet A = 6 + 6 = 12. Erhöht man die Protonenzahl auf 7, wird daraus Stickstoff-13; bei 8 Protonen Sauerstoff-14. Der Name wechselt also mit jeder Änderung am Protonenregler. In der Hülle sitzen stets genauso viele Elektronen wie Protonen, bei Kohlenstoff verteilt auf 2 + 4.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ein Atom nach außen ungeladen ist, obwohl es geladene Teilchen enthält.",
+   "zeilen": 3,
+   "loesung": "Im Kern sitzen positiv geladene Protonen, in der Hülle negativ geladene Elektronen. In einem neutralen Atom sind beide genau gleich viele – bei Kohlenstoff etwa sechs und sechs. Die Ladungen heben sich deshalb nach außen vollständig auf. Erst wenn ein Elektron fehlt oder eines zu viel da ist, wird das Atom zum geladenen Ion."
+  },
+  "alltag": "Erkläre, warum im Periodensystem die Ordnungszahl und nicht die Masse die Reihenfolge bestimmt.",
+  "ueberleitung": "Die Protonen bestimmen das Element. Was die Neutronen bewirken, siehst du auf der nächsten Seite.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak2",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Isotope",
+  "titel": "Warum im Periodensystem 35,45 steht",
+  "problem": "Mia schlägt Chlor im Periodensystem nach: 35,45. Sie stutzt. Protonen und Neutronen sind einzelne Teilchen, die man abzählen kann – eine krumme Zahl wie 35,45 dürfte es eigentlich gar nicht geben. Bei Kohlenstoff steht 12,01, bei Kupfer 63,55. Fast nirgends steht eine glatte Zahl.",
+  "frage": "Warum gibt es von demselben Element verschiedene Sorten?",
+  "auftrag": "Vergleiche die Sorten von Kohlenstoff und Chlor und lies ihre Anteile ab.",
+  "predict": [
+   "Die krummen Zahlen sind Messfehler, die sich nie ganz vermeiden lassen.",
+   "Die krumme Zahl kommt daher, dass das Chlor nie ganz rein ist; andere Stoffe sind beigemischt.",
+   "Von jedem Element gibt es mehrere Sorten mit verschiedenen Neutronenzahlen."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle 6 Protonen ein und ziehe nur den Neutronenregler auf 6, 7 und 8.",
+   "Halte fest, ob sich dabei der Name des Elements ändert oder nur die Massenzahl.",
+   "Wähle nacheinander Chlor-35 und Chlor-37 und lies beide natürlichen Anteile ab."
+  ],
+  "tabCols": [
+   "Name",
+   "natürlicher Anteil"
+  ],
+  "tabRows": [
+   "Kohlenstoff-12",
+   "Kohlenstoff-13",
+   "Chlor-35",
+   "Chlor-37"
+  ],
+  "fachtext": "Atome mit gleicher Protonenzahl, aber verschiedener Neutronenzahl heißen Isotope. Sie gehören alle zum selben Element, denn die Protonenzahl entscheidet darüber. Sie unterscheiden sich nur in ihrer Masse. In der Natur kommen die Isotope eines Elements in festen Anteilen vor. Die Zahl im Periodensystem ist deshalb ein Mittelwert über alle Sorten – und dadurch fast nie eine glatte Zahl.",
+  "merksatz": [
+   {
+    "pre": "Atome mit gleicher Protonenzahl, aber verschiedener Neutronenzahl heißen ",
+    "loesung": "Isotope",
+    "post": "."
+   },
+   {
+    "pre": "Die Zahl im Periodensystem ist ein ",
+    "loesung": "Mittelwert",
+    "post": " über alle natürlich vorkommenden Sorten."
+   }
+  ],
+  "beobachtung": "Ändert man bei 6 Protonen nur die Neutronenzahl, bleibt der Name Kohlenstoff – nur die Massenzahl wächst von 12 auf 13 und 14. Kohlenstoff-12 macht 98,93 % aller Kohlenstoffatome aus, Kohlenstoff-13 nur 1,07 %. Bei Chlor sind es 75,76 % Chlor-35 und 24,24 % Chlor-37. Rund drei Viertel der leichten Sorte und ein Viertel der schweren ergeben zusammen den Mittelwert 35,45.",
+  "aufgabe": {
+   "frage": "Berechne den Mittelwert aus 75,76 % Chlor-35 und 24,24 % Chlor-37 und vergleiche ihn mit der Angabe 35,45 im Periodensystem.",
+   "zeilen": 4,
+   "loesung": "Man gewichtet jede Massenzahl mit ihrem Anteil: 35 · 0,7576 = 26,52 und 37 · 0,2424 = 8,97. Zusammen ergibt das 35,49. Das liegt sehr nahe an den 35,45 des Periodensystems; der kleine Rest kommt daher, dass die tatsächlichen Atommassen etwas von den glatten Massenzahlen abweichen."
+  },
+  "alltag": "Erkläre, warum bei Wasserstoff im Periodensystem fast genau 1,008 steht.",
+  "ueberleitung": "Manche dieser Sorten sind für immer stabil, andere nicht. Warum das so ist, klärt die nächste Seite.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak3",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Warum Kerne zerfallen",
+  "titel": "Der Kern, der es nicht aushält",
+  "problem": "Auf Mias Tabelle sind manche Isotope grün und manche rot markiert. Die Ärztin erklärt, die grünen blieben für immer so, wie sie sind, die roten dagegen zerfielen irgendwann von selbst. Von außen sieht man den Kernen das nicht an – beide bestehen aus denselben zwei Sorten Teilchen.",
+  "frage": "Warum zerfallen manche Atomkerne von selbst und andere nie?",
+  "auftrag": "Untersuche in der Nuklidkarte, wo die zerfallenden Kerne liegen und wo Schluss ist.",
+  "predict": [
+   "Es kommt auf das Verhältnis von Neutronen zu Protonen an; passt es nicht, zerfällt der Kern.",
+   "Große Kerne zerfallen immer, kleine nie – es kommt allein auf die Größe an.",
+   "Ein Kern zerfällt erst, wenn er von außen angestoßen wird – durch Wärme, Druck oder Strahlung von nebenan."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Starte bei Uran-238 und lies ab, wie viele Neutronen auf ein Proton kommen.",
+   "Gehe Schritt für Schritt weiter und beobachte, wohin der Punkt in der Karte wandert.",
+   "Lies beim letzten Kern ab, warum die Reihe dort endet, und vergleiche sein Verhältnis mit dem am Anfang."
+  ],
+  "tabCols": [
+   "Neutronen je Proton",
+   "stabil oder nicht?"
+  ],
+  "tabRows": [
+   "Uran-238 am Anfang",
+   "Radium-226 in der Mitte",
+   "Blei-206 am Ende"
+  ],
+  "fachtext": "Ob ein Kern stabil ist, hängt vom Verhältnis der Neutronen zu den Protonen ab. Stabile Kerne liegen in der Nuklidkarte auf einem schmalen Band, dem Tal der Stabilität. Bei leichten Kernen sind Protonen und Neutronen ungefähr gleich viele; je schwerer der Kern, desto mehr Neutronen braucht er. Liegt ein Kern zu weit daneben, wandelt er sich um – so lange, bis er im Tal ankommt.",
+  "merksatz": [
+   {
+    "pre": "Ob ein Kern zerfällt, hängt vom Verhältnis von Neutronen zu ",
+    "loesung": "Protonen",
+    "post": " ab."
+   },
+   {
+    "pre": "Stabile Kerne liegen in der Nuklidkarte im Tal der ",
+    "loesung": "Stabilität",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei Uran-238 kommen auf ein Proton 1,59 Neutronen. Der Kern wandert Schritt für Schritt durch die Karte, immer schräg nach unten links oder nach oben links. Bei Radium-226 sind es 1,57 Neutronen je Proton, bei Blei-206 am Ende 1,51. Dort meldet die Simulation, dass der Kern stabil ist und keine Halbwertszeit mehr hat. Er ist im Tal der Stabilität angekommen und bleibt für immer, wie er ist.",
+  "aufgabe": {
+   "frage": "Begründe, warum die Zerfallsreihe ausgerechnet bei Blei-206 aufhört und nicht früher oder später.",
+   "zeilen": 3,
+   "loesung": "Blei-206 ist der erste Kern der Reihe, dessen Verhältnis von Neutronen zu Protonen im Tal der Stabilität liegt. Alle Kerne davor hatten zu viele Kernbausteine oder zu viele Neutronen und mussten sich umwandeln. Bei Blei-206 passt beides; es gibt keinen Grund mehr für eine weitere Umwandlung, deshalb endet die Reihe genau dort."
+  },
+  "alltag": "Erkläre, warum in alten Uranerzen immer auch Blei zu finden ist.",
+  "ueberleitung": "Zerfallende Kerne senden dabei etwas aus. Woher diese Strahlung kommt, siehst du auf der nächsten Seite.",
+  "alltagKomp": "E7",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak4",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Woher die Strahlung kommt",
+  "titel": "Strahlung aus dem Kellerfußboden",
+  "problem": "Im Keller des Krankenhauses hängt ein Messgerät, das auch dann tickt, wenn kein Patient und kein Präparat in der Nähe ist. Mia hält das für einen Defekt. Die Ärztin schüttelt den Kopf: Das Gerät sei in Ordnung, die Strahlung komme aus dem Gestein, auf dem das Gebäude steht.",
+  "frage": "Woher kommt eine Strahlung, die niemand sehen kann?",
+  "auftrag": "Untersuche an der Zerfallsreihe, was ein zerfallender Kern dabei aussendet.",
+  "predict": [
+   "Die Strahlung wird von Geräten und Leitungen erzeugt, die in der Nähe stehen.",
+   "Sie stammt aus Atomkernen im Gestein, die von selbst zerfallen.",
+   "Die Strahlung stammt von Atomtests und Unfällen früherer Jahre; ohne den Menschen gäbe es sie nicht."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Gehe die Zerfallsreihe von Uran-238 an Schritt für Schritt durch.",
+   "Halte fest, was bei jedem Schritt aus dem Kern herausfliegt.",
+   "Suche in der Reihe das Nuklid, das ein Gas ist, und lies nach, warum es besonders wichtig ist."
+  ],
+  "tabCols": [
+   "Was fliegt heraus?",
+   "Was bleibt zurück?"
+  ],
+  "tabRows": [
+   "Uran-238",
+   "Thorium-234",
+   "Radium-226"
+  ],
+  "fachtext": "Im Gestein der Erde steckt seit ihrer Entstehung Uran. Seine Kerne sind nicht stabil und wandeln sich um; dabei fliegen Teilchen und energiereiche Strahlung heraus. Das nennt man Radioaktivität. Sie ist kein Werk des Menschen, sondern seit jeher vorhanden. Ein Zwischenprodukt der Uranreihe ist Radon, ein Gas: Es steigt aus dem Boden in Keller und Wohnräume und liefert den größten Teil der natürlichen Strahlung.",
+  "merksatz": [
+   {
+    "pre": "Die von selbst ablaufende Umwandlung instabiler Kerne heißt ",
+    "loesung": "Radioaktivität",
+    "post": "."
+   },
+   {
+    "pre": "Den größten Teil der natürlichen Strahlung liefert das Gas ",
+    "loesung": "Radon",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei jedem Schritt der Reihe fliegt etwas aus dem Kern heraus: bei Uran-238 ein Heliumkern, bei Thorium-234 ein Elektron. Zurück bleibt jedes Mal ein anderes Element. In der Mitte der Reihe steht Radon-222, und die Simulation weist eigens darauf hin, dass es ein Gas ist: Es steigt aus dem Boden in Keller und Wohnräume. Von der natürlichen Strahlung, die ein Mensch abbekommt, stammt der größte Teil daher.",
+  "aufgabe": {
+   "frage": "Erkläre, warum das Messgerät im Keller auch dann tickt, wenn weder Patient noch Präparat in der Nähe sind.",
+   "zeilen": 3,
+   "loesung": "Im Gestein unter und um das Gebäude steckt Uran, dessen Kerne von selbst zerfallen. Dabei entsteht unter anderem das Gas Radon, das aus dem Boden in den Keller aufsteigt. Seine Zerfälle und die des Gesteins erzeugen eine ständige, schwache Strahlung – die sogenannte Nullrate. Sie ist überall vorhanden und kein Zeichen für einen Defekt."
+  },
+  "alltag": "Erkläre, warum in manchen Gegenden Deutschlands zu Radonmessungen im Keller geraten wird.",
+  "ueberleitung": "Dass es diese Strahlung gibt, weißt du jetzt. Warum sie überhaupt gefährlich ist, steht auf der nächsten Seite.",
+  "alltagKomp": "K5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak5",
+  "theme": "atomkern",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Ionisierende Strahlung",
+  "titel": "Was die Strahlung im Gewebe anrichtet",
+  "problem": "Neben dem Umkleideraum hängt ein großes Plakat mit der Überschrift Strahlenschutz. Mia liest darauf den Ausdruck „ionisierende Strahlung“ und weiß nicht, was damit gemeint ist. Warum ausgerechnet diese Strahlung gefährlich sein soll, während Licht und Radiowellen doch den ganzen Tag über ungehindert durch sie hindurchgehen, versteht sie zunächst überhaupt nicht.",
+  "frage": "Was macht radioaktive Strahlung mit dem Stoff, durch den sie hindurchgeht?",
+  "auftrag": "Vergleiche, wie dicht die drei Strahlungsarten auf ihrem Weg Atome zerlegen.",
+  "predict": [
+   "Gefährlich ist die Strahlung, die am weitesten kommt – also die Gammastrahlung.",
+   "Der Stoff, durch den die Strahlung geht, wird selbst radioaktiv und strahlt danach weiter.",
+   "Es kommt darauf an, wie dicht die Strahlung unterwegs Elektronen herausschlägt."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle Alphastrahlung und lies Energie, Reichweite und Ionenpaare je Millimeter ab.",
+   "Wechsle zu Betastrahlung und danach zu Gammastrahlung und notiere dieselben Werte.",
+   "Lies bei jeder Art den Wichtungsfaktor ab, mit dem im Strahlenschutz gerechnet wird."
+  ],
+  "tabCols": [
+   "Ionenpaare je Millimeter",
+   "Wichtungsfaktor"
+  ],
+  "tabRows": [
+   "Alphastrahlung",
+   "Betastrahlung",
+   "Gammastrahlung"
+  ],
+  "fachtext": "Ionisierende Strahlung heißt so, weil sie aus Atomen Elektronen herausschlägt. Zurück bleiben ein freies Elektron und ein geladenes Ion – zusammen ein Ionenpaar. Geschieht das in einer Zelle, können Moleküle zerreißen, auch die des Erbguts. Entscheidend ist nicht, wie weit die Strahlung kommt, sondern wie dicht sie unterwegs ionisiert. Deshalb rechnet man im Strahlenschutz Alphastrahlung mit dem zwanzigfachen Gewicht.",
+  "merksatz": [
+   {
+    "pre": "Strahlung, die aus Atomen Elektronen herausschlägt, heißt ",
+    "loesung": "ionisierend",
+    "post": "."
+   },
+   {
+    "pre": "Ein freies Elektron und das zurückbleibende Ion nennt man zusammen ein ",
+    "loesung": "Ionenpaar",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Alphastrahlung hat 5,00 MeV und reicht nur 3,5 cm weit, erzeugt dabei aber 147.059 Ionenpaare – das sind 4.202 auf jedem Millimeter. Betastrahlung kommt mit 1,00 MeV rund 3 Meter weit und schafft nur 9,8 Ionenpaare je Millimeter, also 429-mal dünner. Für Gammastrahlung gibt die Simulation gar keine Reichweite an; sie wird nur geschwächt. Im Strahlenschutz zählt Alphastrahlung mit dem Faktor 20, Beta und Gamma mit 1.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Alphastrahlung von außen fast harmlos ist, eingeatmet aber die gefährlichste der drei Arten.",
+   "zeilen": 4,
+   "loesung": "Von außen wird Alphastrahlung schon von der obersten, abgestorbenen Hautschicht oder von wenigen Zentimetern Luft aufgehalten – sie erreicht lebendes Gewebe gar nicht. Wird ein alphastrahlender Stoff eingeatmet oder gegessen, liegt dagegen kein Schutz mehr dazwischen. Die sehr dichte Ionisierungsspur von über viertausend Ionenpaaren je Millimeter liegt dann mitten im Gewebe und richtet auf kleinstem Raum großen Schaden an."
+  },
+  "alltag": "Erkläre, warum in einem Rauchmelder ein Alphastrahler ungefährlich eingebaut werden kann.",
+  "ueberleitung": "Sehen kann man diese Strahlung nicht. Wie man sie trotzdem hörbar macht, zeigt die nächste Seite.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak6",
+  "theme": "atomkern",
+  "basiskonzept": "System",
+  "name": "Das Geiger-Müller-Zählrohr",
+  "titel": "Das Gerät, das die Strahlung hörbar macht",
+  "problem": "Auf dem Tisch im Strahlenschutzraum liegt ein Metallrohr mit einem Kabel und einem kleinen Lautsprecher. Es knackt in unregelmäßigen Abständen vor sich hin. Mia hält es für ein defektes Radio. Die Ärztin schaltet es aus und wieder ein: Das Knacken kommt zurück, aber in einem völlig anderen Takt als vorher.",
+  "frage": "Wie macht man eine Strahlung sichtbar, die man weder sehen noch fühlen kann?",
+  "auftrag": "Vergleiche die Zählrate ohne Präparat mit der bei verschiedenen Proben.",
+  "predict": [
+   "Auch ohne Präparat zählt es etwas, weil überall eine schwache Strahlung vorhanden ist.",
+   "Ohne Präparat zählt das Gerät nichts, denn ohne Quelle gibt es keine Strahlung.",
+   "Das unregelmäßige Knacken macht die Elektronik des Geräts selbst; mit Strahlung hat es nichts zu tun."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „ohne Präparat“ und lies ab, wie viele Impulse je Sekunde gezählt werden.",
+   "Wähle nacheinander Paranussmehl, gebrannten Ziegel und Am-241 und notiere jede Rate.",
+   "Lies ab, bei welcher Spannung das Zählrohr arbeitet und wie breit der Auslösebereich ist."
+  ],
+  "tabCols": [
+   "Impulse je Sekunde",
+   "wie viel mal die Nullrate?"
+  ],
+  "tabRows": [
+   "ohne Präparat",
+   "Paranussmehl",
+   "gebrannter Ziegel",
+   "Am-241"
+  ],
+  "fachtext": "Ein Geiger-Müller-Zählrohr ist ein gasgefülltes Metallrohr mit einem dünnen Draht in der Mitte, an dem eine hohe Spannung liegt. Tritt ein Teilchen ein, ionisiert es Gasatome. Die freien Elektronen werden zum Draht beschleunigt und schlagen dabei weitere Elektronen heraus – es entsteht eine Lawine, die als kurzer Spannungsimpuls messbar wird. Jeder Impuls entspricht einem Teilchen; das Rohr zählt also, es misst keine Energie.",
+  "merksatz": [
+   {
+    "pre": "Ein Geiger-Müller-Zählrohr weist einzelne Teilchen über eine ",
+    "loesung": "Lawine",
+    "post": " von Elektronen nach."
+   },
+   {
+    "pre": "Die Impulse, die auch ohne Präparat auftreten, nennt man die ",
+    "loesung": "Nullrate",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Auch ohne Präparat knackt das Zählrohr – das ist die Nullrate, die von der natürlichen Strahlung ringsum stammt. Paranussmehl und gebrannter Ziegel liefern eine merklich höhere Rate, obwohl beides ganz gewöhnliche Stoffe sind. Mit dem Schulpräparat Am-241 zählt das Rohr rund 120,0 Impulse je Sekunde. Es arbeitet dabei bei 450 V, mitten im Auslösebereich, der von etwa 300 bis 600 V reicht.",
+  "aufgabe": {
+   "frage": "Erkläre, warum das Zählrohr auch dann knackt, wenn kein Präparat in der Nähe liegt, und warum es dabei unregelmäßig knackt.",
+   "zeilen": 4,
+   "loesung": "Überall ist eine schwache natürliche Strahlung vorhanden – aus dem Gestein, aus der Luft und aus dem Weltall. Sie erzeugt die Nullrate. Unregelmäßig ist das Knacken, weil jeder einzelne Kernzerfall zufällig geschieht: Man kann nur angeben, wie viele Zerfälle im Mittel je Sekunde stattfinden, nicht wann der nächste kommt. Deshalb hört man mal zwei Impulse kurz hintereinander und dann längere Zeit gar keinen."
+  },
+  "alltag": "Erkläre, warum Paranüsse als Beispiel für einen leicht erhöhten Messwert gewählt werden.",
+  "ueberleitung": "Zählen kannst du die Teilchen jetzt. Was sie unterscheidet, findest du auf den nächsten Seiten heraus.",
+  "alltagKomp": "E5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak7",
+  "theme": "atomkern",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Alphastrahlung",
+  "titel": "Ein Blatt Papier reicht",
+  "problem": "Die Ärztin legt das Am-241-Präparat vor das Zählrohr; die Rate steigt deutlich. Dann schiebt sie ein einziges Blatt Papier dazwischen – und die Anzeige fällt auf die Nullrate zurück. Mia hält das für einen Zufall, aber es wiederholt sich bei jedem Versuch aufs Neue.",
+  "frage": "Was ist Alphastrahlung, und wie weit kommt sie?",
+  "auftrag": "Prüfe, wie viel Alphastrahlung durch Papier, Aluminium und Blei hindurchkommt.",
+  "predict": [
+   "Ein Blatt Papier kann keine Strahlung aufhalten; die Anzeige muss hoch bleiben.",
+   "Alphastrahlung wird schon von Papier vollständig aufgehalten.",
+   "Aufhalten kann Alphastrahlung nur festes Material; durch Luft kommt sie viele Meter weit."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle Alphastrahlung und stelle als Absorber Papier ein.",
+   "Lies in der Faustregel-Tabelle ab, was Papier, Aluminium und Blei mit Alphastrahlung machen.",
+   "Vergleiche das mit dem, was dieselben Absorber bei Beta- und Gammastrahlung bewirken."
+  ],
+  "tabCols": [
+   "Papier",
+   "Aluminium"
+  ],
+  "tabRows": [
+   "Alphastrahlung",
+   "Betastrahlung",
+   "Gammastrahlung"
+  ],
+  "fachtext": "Alphastrahlung besteht aus Heliumkernen: zwei Protonen und zwei Neutronen zusammen. Diese Teilchen sind vergleichsweise schwer und zweifach positiv geladen. Deshalb geben sie ihre Energie auf sehr kurzem Weg ab und werden schon von einem Blatt Papier oder wenigen Zentimetern Luft vollständig aufgehalten. Gerade weil sie so dicht ionisieren, kommen sie nicht weit – beides hängt unmittelbar zusammen.",
+  "merksatz": [
+   {
+    "pre": "Alphastrahlung besteht aus ",
+    "loesung": "Heliumkernen",
+    "post": " mit zwei Protonen und zwei Neutronen."
+   },
+   {
+    "pre": "Aufgehalten wird sie bereits von einem Blatt ",
+    "loesung": "Papier",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die Faustregel-Tabelle der Simulation ist bei Alphastrahlung eindeutig: Papier stoppt sie, Aluminium ebenfalls, Blei erst recht. Für Betastrahlung steht in derselben Spalte nur „schwächt“ – Papier hält sie nicht auf, dafür rund 3 mm Aluminium. Gammastrahlung geht durch Papier kaum geschwächt hindurch und wird selbst von Blei nur geschwächt, nie ganz gestoppt.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ausgerechnet die Strahlung mit der kürzesten Reichweite die dichteste Ionisierungsspur hinterlässt.",
+   "zeilen": 3,
+   "loesung": "Beides ist dieselbe Ursache von zwei Seiten. Ein Alphateilchen ist schwer und zweifach geladen und stößt deshalb sehr häufig mit Atomen zusammen. Bei jedem Stoß gibt es Energie ab und erzeugt ein Ionenpaar. Weil es seine Energie so schnell verbraucht, ist sie nach wenigen Zentimetern aufgebraucht – die Reichweite ist gerade deshalb klein."
+  },
+  "alltag": "Erkläre, warum ein Alphastrahler in einem geschlossenen Gehäuse als sicher gilt.",
+  "ueberleitung": "Papier genügt bei Alphastrahlung. Auf der nächsten Seite siehst du, warum das bei Betastrahlung nicht mehr reicht.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak8",
+  "theme": "atomkern",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Betastrahlung",
+  "titel": "Wenn Papier nicht mehr genügt",
+  "problem": "Beim zweiten Präparat wiederholt Mia den Versuch mit dem Blatt Papier. Diesmal passiert fast nichts: Die Zählrate bleibt fast so hoch wie vorher. Erst als die Ärztin ein Aluminiumblech von wenigen Millimetern dazwischenschiebt, fällt die Anzeige deutlich ab. Dasselbe Papier, ein völlig anderes Ergebnis.",
+  "frage": "Warum ist Betastrahlung durchdringender als Alphastrahlung?",
+  "auftrag": "Vergleiche, wie viel Aluminium nötig ist, um Betastrahlung aufzuhalten.",
+  "predict": [
+   "Betastrahlung ist energiereicher und deshalb durchdringender als Alphastrahlung.",
+   "Das zweite Präparat ist einfach stärker; ein schwächeres würde das Papier auch nicht durchdringen.",
+   "Betateilchen sind viel leichter und einfach geladen, deshalb kommen sie weiter."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle Betastrahlung und stelle als Absorber Papier ein. Halte die Zählrate fest.",
+   "Wechsle zu Aluminium und lies in der Faustregel ab, welche Dicke nötig ist.",
+   "Vergleiche den Wert mit dem, was bei Alphastrahlung schon genügt hat."
+  ],
+  "tabCols": [
+   "Absorber",
+   "hält die Strahlung auf?"
+  ],
+  "tabRows": [
+   "Papier bei Alphastrahlung",
+   "Papier bei Betastrahlung",
+   "3 mm Aluminium bei Betastrahlung"
+  ],
+  "fachtext": "Betastrahlung besteht aus Elektronen, die bei der Umwandlung eines Neutrons in ein Proton aus dem Kern herausfliegen. Ein Elektron ist rund achttausendmal leichter als ein Alphateilchen und nur einfach geladen. Es stößt deshalb viel seltener mit Atomen zusammen, ionisiert dünner und kommt entsprechend weiter. Aufgehalten wird es erst von einigen Millimetern Aluminium – Papier genügt nicht.",
+  "merksatz": [
+   {
+    "pre": "Betastrahlung besteht aus ",
+    "loesung": "Elektronen",
+    "post": ", die aus dem Kern herausfliegen."
+   },
+   {
+    "pre": "Aufgehalten wird sie erst von einigen Millimetern ",
+    "loesung": "Aluminium",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Für Betastrahlung steht in der Papier-Spalte der Tabelle nur „schwächt“ – die Strahlung kommt also weitgehend hindurch, während sie bei Alphastrahlung dort vollständig gestoppt wurde. Erst in der Aluminium-Spalte erscheint ein Haken, mit dem Zusatz „~3 mm“. Betastrahlung braucht also rund dreitausendmal so viel Material wie Alphastrahlung, obwohl sie eine kleinere Energie mitbringt.",
+  "aufgabe": {
+   "frage": "Begründe, warum ein leichteres Teilchen mit weniger Energie trotzdem weiter kommt als ein schweres mit mehr Energie.",
+   "zeilen": 4,
+   "loesung": "Entscheidend ist nicht die mitgebrachte Energie, sondern wie schnell sie abgegeben wird. Ein Alphateilchen ist schwer und doppelt geladen; es stößt sehr häufig mit Atomen zusammen und verbraucht seine Energie auf wenigen Zentimetern. Ein Elektron ist viel leichter und nur einfach geladen, stößt deshalb seltener und gibt seine Energie über eine viel längere Strecke ab. Es kommt weiter, richtet dabei aber auf jedem Millimeter weniger an."
+  },
+  "alltag": "Erkläre, warum bei Arbeiten mit Betastrahlern Plexiglas statt Blei empfohlen wird.",
+  "ueberleitung": "Aluminium hält Betastrahlung auf. Auf der nächsten Seite triffst du eine Strahlung, die selbst Blei nicht ganz aufhält.",
+  "alltagKomp": "UF2",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak9",
+  "theme": "atomkern",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Gammastrahlung",
+  "titel": "Die Bleitür, die nur die Hälfte schafft",
+  "problem": "Mia rechnet nach, wie dick die Bleiabschirmung im Untersuchungsraum sein müsste, um die Strahlung ganz aufzuhalten. Die Ärztin sagt, das gehe gar nicht: Ein Rest komme immer durch, ganz gleich wie dick die Wand sei. Man könne die Strahlung nur schwächen, nicht stoppen.",
+  "frage": "Wieso hält selbst eine dicke Bleiwand Gammastrahlung nicht vollständig auf?",
+  "auftrag": "Bestimme, wie viel Gammastrahlung durch 6,0 mm Blei hindurchkommt.",
+  "predict": [
+   "Jede Schicht Blei halbiert die Strahlung; ein Rest kommt deshalb immer durch.",
+   "Bei ausreichender Dicke hält Blei die Gammastrahlung vollständig auf.",
+   "Blei nützt gegen Gammastrahlung gar nichts; sie geht durch jedes Material hindurch."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle Gammastrahlung, stelle Blei als Absorber ein und lies die Dicke ab.",
+   "Lies ab, wie viel Prozent der Strahlung bei 6,0 mm Blei noch durchkommen.",
+   "Lies die Halbwertsdicke ab und überlege, was nach zwei und nach drei solchen Dicken übrig bleibt."
+  ],
+  "tabCols": [
+   "Bleidicke",
+   "Anteil, der durchkommt"
+  ],
+  "tabRows": [
+   "0 mm",
+   "6,0 mm",
+   "12 mm (rechnerisch)",
+   "18 mm (rechnerisch)"
+  ],
+  "fachtext": "Gammastrahlung ist kein Teilchenstrom, sondern sehr energiereiches Licht. Sie wird nicht durch Zusammenstöße abgebremst, sondern nur nach und nach geschwächt: Jede weitere Schicht Absorber nimmt denselben Bruchteil weg. Deshalb spricht man von Schwächung statt von Reichweite. Die Dicke, nach der noch die Hälfte übrig ist, heißt Halbwertsdicke. Für Blei und die Gammastrahlung von Cäsium-137 beträgt sie rund 6 Millimeter.",
+  "merksatz": [
+   {
+    "pre": "Gammastrahlung wird nicht gestoppt, sondern nur ",
+    "loesung": "geschwächt",
+    "post": "."
+   },
+   {
+    "pre": "Die Dicke, nach der noch die Hälfte übrig ist, heißt ",
+    "loesung": "Halbwertsdicke",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 6,0 mm Blei zeigt die Simulation an, dass noch 50 % der Strahlung durchkommen; die Zählrate fällt von 2462 auf 1235 Impulse je zehn Minuten. Die Halbwertsdicke gibt sie mit 6,03 mm an. Nach zwei solchen Dicken wäre noch ein Viertel übrig, nach drei ein Achtel. Der Anteil wird also immer kleiner, erreicht aber nie null – ein Rest kommt stets hindurch.",
+  "aufgabe": {
+   "frage": "Berechne, wie viel Prozent der Gammastrahlung nach 18 mm Blei noch durchkommen, wenn die Halbwertsdicke 6 mm beträgt.",
+   "zeilen": 3,
+   "loesung": "18 mm sind drei Halbwertsdicken. Nach der ersten ist die Hälfte übrig, nach der zweiten ein Viertel, nach der dritten ein Achtel. Ein Achtel sind 12,5 %. Selbst nach 18 mm Blei kommt also noch jeder achte Strahlungsanteil hindurch – deshalb lässt sich Gammastrahlung nie vollständig abschirmen."
+  },
+  "alltag": "Erkläre, warum die Wände eines Röntgenraums trotzdem nur wenige Millimeter Blei enthalten.",
+  "ueberleitung": "Drei Strahlungsarten, drei Verhaltensweisen. Auf der nächsten Seite stellst du sie einander gegenüber.",
+  "alltagKomp": "E6",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak10",
+  "theme": "atomkern",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Abschirmung im Vergleich",
+  "titel": "Drei Absorber, drei Ergebnisse",
+  "problem": "Auf dem Tisch liegen jetzt alle drei Absorber nebeneinander: ein Blatt Papier, ein Aluminiumblech und eine Bleiplatte. Daneben stehen die drei Präparate. Die Ärztin gibt Mia die Aufgabe, herauszufinden, welcher Absorber gegen welche Strahlung wirklich hilft – und wo eine dickere Platte nichts mehr bringt.",
+  "frage": "Womit kann ich welche Strahlung aufhalten?",
+  "auftrag": "Prüfe für alle drei Strahlungsarten, welcher Absorber sie aufhält.",
+  "predict": [
+   "Blei hilft gegen alle drei Arten gleich gut, weil es das schwerste Material ist.",
+   "Jede Strahlungsart braucht ihren eigenen Absorber; bei Gamma hilft nur Schwächung.",
+   "Auf die Strahlungsart kommt es nicht an, nur auf die Dicke: Ein dickes Bündel Papier hält alle drei auf."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle nacheinander alle drei Strahlungsarten ein und wähle jeweils Papier als Absorber.",
+   "Wiederhole das mit Aluminium und danach mit Blei.",
+   "Trage die Ergebnisse in die Faustregel-Tabelle ein und vergleiche die drei Zeilen."
+  ],
+  "tabCols": [
+   "Papier",
+   "Aluminium und Blei"
+  ],
+  "tabRows": [
+   "Alphastrahlung",
+   "Betastrahlung",
+   "Gammastrahlung"
+  ],
+  "fachtext": "Für jede Strahlungsart gibt es einen passenden Absorber. Alphastrahlung wird schon von Papier aufgehalten, Betastrahlung von rund drei Millimetern Aluminium. Gammastrahlung dagegen lässt sich nicht stoppen, sondern nur schwächen; Blei halbiert sie alle sechs Millimeter. Eine dickere Platte hilft dort also immer weiter, aber nie vollständig. Für den Strahlenschutz heißt das: Man muss wissen, welche Strahlung vorliegt.",
+  "merksatz": [
+   {
+    "pre": "Alphastrahlung hält schon Papier auf, Betastrahlung erst einige Millimeter ",
+    "loesung": "Aluminium",
+    "post": "."
+   },
+   {
+    "pre": "Gammastrahlung wird von Blei nur ",
+    "loesung": "geschwächt",
+    "post": ", nie ganz aufgehalten."
+   }
+  ],
+  "beobachtung": "Die Faustregel-Tabelle fasst alle neun Fälle zusammen. In der Papier-Spalte steht bei Alpha ein Haken für „stoppt“, bei Beta nur „schwächt“, bei Gamma „kaum“. In der Aluminium-Spalte hat Beta bei rund 3 mm einen Haken, Gamma nur „schwächt“. Blei stoppt Alpha und Beta vollständig und schwächt Gamma mit einer Halbwertsdicke von etwa 6 mm. Nur bei Gammastrahlung bleibt immer ein Rest.",
+  "aufgabe": {
+   "frage": "Beurteile, ob ein Bleischurz beim Röntgen sinnvoll ist, obwohl Blei Gammastrahlung nicht vollständig aufhält.",
+   "zeilen": 4,
+   "loesung": "Er ist sinnvoll. Zwar lässt sich die Strahlung nicht ganz aufhalten, aber jede Halbwertsdicke halbiert sie. Ein Schurz von wenigen Millimetern Bleigleichwert senkt die Dosis für die abgedeckten Organe damit auf einen kleinen Bruchteil. Im Strahlenschutz geht es nicht um vollständigen Schutz, sondern darum, die Dosis so weit zu senken, wie es mit vertretbarem Aufwand möglich ist."
+  },
+  "alltag": "Beurteile, warum ein Zahnarzt beim Röntgen den Raum verlässt, statt sich zu schützen.",
+  "ueberleitung": "Aufhalten kannst du die drei Arten jetzt. Sie auseinanderzuhalten ist eine andere Aufgabe – dazu die nächste Seite.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak11",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Die drei Strahlungsarten unterscheiden",
+  "titel": "Ein Präparat ohne Beschriftung",
+  "problem": "Im Schrank findet Mia ein Präparat, dessen Aufkleber abgefallen ist. Welche Strahlung es aussendet, weiß niemand mehr. Wegwerfen darf man es nicht, und ohne diese Angabe lässt sich weder der richtige Schutz wählen noch die Dosis berechnen. Mia soll herausfinden, wie man das feststellt.",
+  "frage": "Wie unterscheide ich die drei Strahlungsarten voneinander?",
+  "auftrag": "Untersuche im Datenblatt, welche Eigenschaften jede Strahlungsart eindeutig kennzeichnen.",
+  "predict": [
+   "Die drei Arten lassen sich nur mit sehr teuren Spezialgeräten unterscheiden.",
+   "Schon das Zählrohr allein verrät die Art, denn jede Strahlungsart erzeugt ihre eigene Zählrate.",
+   "Mit Absorbern und einem Magnetfeld lassen sie sich schon im Schulversuch trennen."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lies im Datenblatt ab, was jede Strahlungsart aufhält.",
+   "Halte fest, welche Ladung die drei Arten tragen und wie sie sich im Magnetfeld verhalten.",
+   "Überlege dir aus diesen Angaben eine Reihenfolge von Prüfungen für das unbekannte Präparat."
+  ],
+  "tabCols": [
+   "Aufgehalten von",
+   "Verhalten im Magnetfeld"
+  ],
+  "tabRows": [
+   "Alphastrahlung",
+   "Betastrahlung",
+   "Gammastrahlung"
+  ],
+  "daten": {
+   "titel": "Die drei Strahlungsarten im Überblick",
+   "spalten": [
+    "Merkmal",
+    "α",
+    "β"
+   ],
+   "zeilen": [
+    [
+     "Was ist es?",
+     "Heliumkern",
+     "Elektron"
+    ],
+    [
+     "Ladung",
+     "zweifach positiv",
+     "einfach negativ"
+    ],
+    [
+     "Aufgehalten von",
+     "Papier",
+     "3 mm Aluminium"
+    ],
+    [
+     "Reichweite in Luft",
+     "wenige cm",
+     "einige Meter"
+    ],
+    [
+     "Im Magnetfeld",
+     "wird schwach abgelenkt",
+     "wird stark abgelenkt"
+    ],
+    [
+     "Ionisierung je mm",
+     "sehr dicht",
+     "dünn"
+    ]
+   ],
+   "quelle": "Gammastrahlung ist ungeladen, wird im Magnetfeld nicht abgelenkt und nur geschwächt (Halbwertsdicke Blei rund 6 mm)",
+   "merke": "Papier weg, Alu weg, Rest bleibt: So trennt man die drei Arten in drei Schritten."
+  },
+  "fachtext": "Die drei Strahlungsarten lassen sich an drei Eigenschaften unterscheiden. Erstens am Absorber: Papier stoppt nur Alpha, Aluminium zusätzlich Beta, Gamma kommt durch. Zweitens an der Ladung: Alphateilchen sind zweifach positiv, Betateilchen einfach negativ, Gammastrahlung ist ungeladen. Deshalb werden die ersten beiden im Magnetfeld nach verschiedenen Seiten abgelenkt, Gammastrahlung gar nicht. Drittens an der Ionisierungsdichte.",
+  "merksatz": [
+   {
+    "pre": "Im Magnetfeld werden Alpha- und Betastrahlung nach verschiedenen Seiten ",
+    "loesung": "abgelenkt",
+    "post": "."
+   },
+   {
+    "pre": "Gammastrahlung wird im Magnetfeld überhaupt nicht abgelenkt, weil sie ",
+    "loesung": "ungeladen",
+    "post": " ist."
+   }
+  ],
+  "beobachtung": "Das Datenblatt zeigt drei unabhängige Merkmale. Alphastrahlung besteht aus zweifach positiven Heliumkernen, wird von Papier gestoppt und kommt in Luft nur wenige Zentimeter weit. Betastrahlung besteht aus einfach negativen Elektronen, braucht 3 mm Aluminium und reicht einige Meter. Gammastrahlung ist ungeladen, wird im Magnetfeld nicht abgelenkt und von Blei nur geschwächt – mit einer Halbwertsdicke von rund 6 mm.",
+  "aufgabe": {
+   "frage": "Erkläre, wie du mit einem Blatt Papier, einem Aluminiumblech und einem Zählrohr herausfindest, welche Strahlung das unbeschriftete Präparat aussendet.",
+   "zeilen": 4,
+   "loesung": "Man misst zuerst die Zählrate ohne Absorber. Dann schiebt man Papier dazwischen: Fällt die Rate auf die Nullrate, war es Alphastrahlung. Bleibt sie hoch, nimmt man 3 mm Aluminium: Fällt sie jetzt stark ab, war es Betastrahlung. Bleibt auch dann noch ein deutlicher Teil übrig, handelt es sich um Gammastrahlung – sie lässt sich nur schwächen."
+  },
+  "alltag": "Erkläre, warum man beim unbekannten Präparat zuerst den Abstand vergrößert.",
+  "ueberleitung": "Was aus dem Kern herausfliegt, weißt du jetzt. Was aus ihm selbst wird, steht auf der nächsten Seite.",
+  "alltagKomp": "E4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak12",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Zerfallsgleichungen",
+  "titel": "Aus Uran wird am Ende Blei",
+  "problem": "Auf dem Plakat im Flur steht eine Kette von Pfeilen: Uran, Thorium, Protactinium, wieder Uran, Thorium, Radium – und ganz am Ende Blei. Mia versteht nicht, wie aus einem Element ein anderes werden kann. In der Chemie hatte sie gelernt, dass Elemente sich nicht ineinander verwandeln lassen.",
+  "frage": "Was wird aus einem Kern, nachdem er zerfallen ist?",
+  "auftrag": "Bestimme für jeden Schritt der Reihe, wie sich Massenzahl und Kernladungszahl ändern.",
+  "predict": [
+   "Beim Zerfall entsteht ein Kern mit anderer Protonenzahl, also ein anderes Element.",
+   "Der Kern bleibt dasselbe Element, er verliert nur einen Teil seiner Masse.",
+   "Der Kern löst sich vollständig in Strahlung auf; von ihm bleibt am Ende nichts übrig."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Starte bei Uran-238 und lies die Gleichung des ersten Zerfalls ab.",
+   "Gehe zum nächsten Schritt und halte fest, wie sich A und Z beim Betazerfall ändern.",
+   "Gehe bis ans Ende der Reihe und lies ab, wie viele Alpha- und wie viele Betazerfälle es waren."
+  ],
+  "tabCols": [
+   "Änderung von A",
+   "Änderung von Z"
+  ],
+  "tabRows": [
+   "Alphazerfall",
+   "Betazerfall",
+   "ganze Reihe von U-238 bis Pb-206"
+  ],
+  "fachtext": "Beim Alphazerfall verlässt ein Heliumkern den Kern: Die Massenzahl A sinkt um 4, die Kernladungszahl Z um 2. Beim Betazerfall wandelt sich ein Neutron in ein Proton um und ein Elektron fliegt heraus: A bleibt gleich, Z steigt um 1. In beiden Fällen ändert sich Z – und damit das Element. Genau deshalb verwandeln sich Kerne ineinander, was in der Chemie unmöglich ist: Dort ändert sich nur die Hülle.",
+  "merksatz": [
+   {
+    "pre": "Beim Alphazerfall sinkt A um 4 und Z um ",
+    "loesung": "2",
+    "post": "."
+   },
+   {
+    "pre": "Beim Betazerfall bleibt A gleich und Z steigt um ",
+    "loesung": "1",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Der erste Schritt lautet ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He: A sinkt von 238 auf 234, Z von 92 auf 90. Beim nächsten Schritt, ²³⁴₉₀Th → ²³⁴₉₁Pa + ⁰₋₁e, bleibt A bei 234 und Z steigt auf 91. Am Ende der Reihe zählt die Simulation 8 Alphazerfälle und 6 Betazerfälle und rechnet vor: 238 − 8 · 4 = 206 und 92 − 8 · 2 + 6 · 1 = 82. Beides stimmt mit Blei-206 überein.",
+  "aufgabe": {
+   "frage": "Berechne, welcher Kern entsteht, wenn Radium-226 mit Z = 88 einen Alphazerfall durchläuft.",
+   "zeilen": 3,
+   "loesung": "Beim Alphazerfall sinkt die Massenzahl um 4 und die Kernladungszahl um 2. Aus A = 226 wird 222, aus Z = 88 wird 86. Das Element mit der Ordnungszahl 86 ist Radon. Es entsteht also Radon-222 – genau das Gas, das aus dem Boden in die Keller steigt."
+  },
+  "alltag": "Erkläre, warum sich in der Chemie Elemente nicht ineinander umwandeln lassen.",
+  "ueberleitung": "Was aus einem Kern wird, weißt du jetzt. Wann er es tut, ist eine ganz andere Frage – dazu die nächste Seite.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak13",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Halbwertszeit",
+  "titel": "Der Kern, dem man nicht ansieht, wann er dran ist",
+  "problem": "Im Kühlschrank der Nuklearmedizin steht eine Spritze mit einem Aufkleber: verwendbar bis 14 Uhr. Mia fragt, was um 14 Uhr passiert. Nichts Bestimmtes, sagt die Ärztin – man wisse nur, dass dann nicht mehr genug übrig sei. Bei einem einzelnen Kern könne niemand sagen, wann er zerfällt.",
+  "frage": "Warum kann man nie sagen, wann ein bestimmter Kern zerfällt?",
+  "auftrag": "Miss, wie viele Kerne nach jeder Halbwertszeit noch übrig sind.",
+  "predict": [
+   "Nach der Hälfte der Halbwertszeit ist genau ein Viertel der Kerne zerfallen.",
+   "Für einen einzelnen Kern gibt es nur eine Wahrscheinlichkeit, für die Menge ein Gesetz.",
+   "Jeder Kern altert; je länger er schon da ist, desto eher ist er an der Reihe."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle Radon-220 und drücke fünfmal „eine Halbwertszeit weiter“. Notiere jeden Wert.",
+   "Setze zurück und wiederhole den ganzen Durchgang ein zweites Mal.",
+   "Vergleiche beide Reihen miteinander und mit der erwarteten Reihe 100, 50, 25, 12,5 und 6,25."
+  ],
+  "tabCols": [
+   "1. Durchgang",
+   "2. Durchgang"
+  ],
+  "tabRows": [
+   "nach 1 Halbwertszeit",
+   "nach 2 Halbwertszeiten",
+   "nach 3 Halbwertszeiten",
+   "nach 5 Halbwertszeiten"
+  ],
+  "fachtext": "Die Halbwertszeit ist die Zeit, nach der im Mittel die Hälfte der Kerne zerfallen ist. Sie hängt allein vom Nuklid ab, nicht von Temperatur, Druck oder Alter der Probe. Für einen einzelnen Kern lässt sich nur eine Wahrscheinlichkeit angeben; er altert nicht und zerfällt im nächsten Moment mit derselben Wahrscheinlichkeit wie ein frischer. Für sehr viele Kerne zusammen gilt dagegen ein sehr genaues Gesetz.",
+  "merksatz": [
+   {
+    "pre": "Die Zeit, nach der im Mittel die Hälfte der Kerne zerfallen ist, heißt ",
+    "loesung": "Halbwertszeit",
+    "post": "."
+   },
+   {
+    "pre": "Für einen einzelnen Kern lässt sich der Zeitpunkt ",
+    "loesung": "nicht",
+    "post": " vorhersagen."
+   }
+  ],
+  "beobachtung": "Von 200 Kernen sind nach der ersten Halbwertszeit rund 100 übrig, nach der zweiten rund 50, nach der dritten rund 25. Wiederholt man den Durchgang, kommen andere Zahlen heraus – etwa 104 statt 100 oder 96 statt 100. Beide Reihen liegen aber nahe an der erwarteten Reihe. Je weiter man kommt, desto größer werden die Abweichungen, weil immer weniger Kerne übrig sind.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die beiden Durchgänge verschiedene Zahlen liefern, obwohl die Halbwertszeit für dieses Nuklid feststeht.",
+   "zeilen": 4,
+   "loesung": "Jeder einzelne Kern zerfällt zufällig; man kann für ihn nur eine Wahrscheinlichkeit angeben. Bei 200 Kernen kommt deshalb mal etwas mehr, mal etwas weniger als die Hälfte heraus – wie beim Werfen von 200 Münzen. Die Halbwertszeit gilt für den Mittelwert über sehr viele Kerne. In einem Gramm Stoff stecken rund 10²¹ Kerne, dort ist die Abweichung nicht mehr messbar."
+  },
+  "alltag": "Erkläre, warum radioaktive Medikamente ein Verfallsdatum mit Uhrzeit tragen.",
+  "ueberleitung": "Dieses Gesetz lässt sich auch rückwärts lesen. Wie man damit ein Alter bestimmt, siehst du auf der nächsten Seite.",
+  "alltagKomp": "E7",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ak14",
+  "theme": "atomkern",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Altersbestimmung mit C-14",
+  "titel": "Wie alt ist der Mann aus dem Eis",
+  "problem": "In der Kantine liegt eine Zeitschrift mit einem Bericht über Ötzi. Darin steht, er sei vor rund 5300 Jahren gestorben – bestimmt mit einer Methode aus der Physik. Mia wundert sich: Am Körper steht kein Datum, und aufgeschrieben hat es damals niemand. Trotzdem geben die Forscher eine Jahreszahl an.",
+  "frage": "Wie bestimmt man das Alter von Holz, Knochen oder Leder?",
+  "auftrag": "Bestimme mit der Halbwertszeit von C-14, wie viel nach mehreren Halbwertszeiten übrig ist.",
+  "predict": [
+   "Man zählt die Jahresringe oder Wachstumsschichten und rechnet daraus zurück.",
+   "Je älter der Fund, desto mehr Kohlenstoff-14 hat sich in ihm angesammelt; man misst also die Menge.",
+   "Man misst, wie viel Kohlenstoff-14 noch übrig ist, und rechnet mit der Halbwertszeit zurück."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle Kohlenstoff-14 und lies seine Halbwertszeit ab.",
+   "Drücke dreimal „eine Halbwertszeit weiter“ und notiere Zeit und übrige Kerne.",
+   "Rechne aus, wie alt eine Probe ist, bei der noch ein Viertel des C-14 vorhanden ist."
+  ],
+  "tabCols": [
+   "vergangene Zeit",
+   "übrige Kerne in Prozent"
+  ],
+  "tabRows": [
+   "1 Halbwertszeit",
+   "2 Halbwertszeiten",
+   "3 Halbwertszeiten"
+  ],
+  "fachtext": "In der Luft entsteht laufend Kohlenstoff-14, und jedes lebende Wesen nimmt ihn mit der Nahrung auf. Solange es lebt, bleibt sein Anteil gleich. Mit dem Tod hört die Aufnahme auf, und der vorhandene Kohlenstoff-14 zerfällt mit einer Halbwertszeit von 5730 Jahren. Misst man, wie viel noch übrig ist, so lässt sich zurückrechnen, wie lange der Tod zurückliegt. Die Methode reicht bis etwa 50 000 Jahre zurück.",
+  "merksatz": [
+   {
+    "pre": "Kohlenstoff-14 hat eine Halbwertszeit von ",
+    "loesung": "5730",
+    "post": " Jahren."
+   },
+   {
+    "pre": "Mit dem Tod eines Lebewesens hört die ",
+    "loesung": "Aufnahme",
+    "post": " von Kohlenstoff-14 auf."
+   }
+  ],
+  "beobachtung": "Die Simulation gibt für Kohlenstoff-14 eine Halbwertszeit von 5730 Jahren an. Nach einer Halbwertszeit sind 5730 Jahre vergangen und rund die Hälfte der Kerne übrig, nach zwei Halbwertszeiten 11.460 Jahre und ein Viertel, nach drei 17.190 Jahre und ein Achtel. Eine Probe mit noch einem Viertel des ursprünglichen C-14 ist demnach rund 11.460 Jahre alt.",
+  "aufgabe": {
+   "frage": "Berechne, wie alt ein Fund ist, bei dem noch ein Achtel des ursprünglichen Kohlenstoff-14 vorhanden ist.",
+   "zeilen": 3,
+   "loesung": "Ein Achtel bleibt nach drei Halbwertszeiten übrig, denn die Hälfte der Hälfte der Hälfte ist ein Achtel. Drei Halbwertszeiten sind 3 · 5730 Jahre = 17.190 Jahre. Der Fund ist also rund 17.000 Jahre alt. Ötzi mit seinen 5300 Jahren liegt dagegen noch nicht einmal bei einer vollen Halbwertszeit."
+  },
+  "alltag": "Erkläre, warum sich das Alter eines Steins nicht mit der C-14-Methode bestimmen lässt.",
+  "ueberleitung": "Kerne zerfallen von allein und liefern dabei Energie. Im nächsten Kapitel geht es darum, was der Mensch damit anfängt.",
+  "alltagKomp": "E7",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke1",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Strahlung in der Medizin",
+  "titel": "Warum Mia die Spritze in einem Bleibehälter holt",
+  "problem": "Mia soll aus der Nuklearmedizin eine Spritze holen. Sie steckt in einem schweren Bleibehälter mit langem Griff, und die Ärztin trägt beim Aufziehen Handschuhe und ein Dosimeter am Kittel. Der Inhalt wird gleich einem Patienten gespritzt. Mia fragt sich, warum man einem Menschen etwas gibt, wovor sich hier alle schützen.",
+  "frage": "Wie hilft radioaktive Strahlung in der Medizin?",
+  "auftrag": "Vergleiche im Datenblatt, wofür die einzelnen Nuklide eingesetzt werden.",
+  "predict": [
+   "Sie dienen sowohl zum Sichtbarmachen von Vorgängen im Körper als auch zur Behandlung.",
+   "Radioaktive Stoffe dienen in der Medizin nur dazu, Tumoren zu zerstören.",
+   "Radioaktive Stoffe dienen in der Medizin nur zum Durchleuchten; behandeln kann man damit nicht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt ab, welche Nuklide zum Untersuchen und welche zum Behandeln dienen.",
+   "Vergleiche die Halbwertszeiten und überlege, warum sie so unterschiedlich gewählt sind.",
+   "Halte fest, welche Nuklide im Körper wirken und welche von außen bestrahlen."
+  ],
+  "tabCols": [
+   "Halbwertszeit",
+   "wofür eingesetzt"
+  ],
+  "tabRows": [
+   "Technetium-99m",
+   "Fluor-18",
+   "Iod-131",
+   "Cobalt-60"
+  ],
+  "daten": {
+   "titel": "Radioaktive Stoffe in der Medizin",
+   "spalten": [
+    "Nuklid",
+    "Halbwertszeit",
+    "Anwendung"
+   ],
+   "zeilen": [
+    [
+     "Technetium-99m",
+     "6,0 Stunden",
+     "Szintigraphie von Knochen und Schilddrüse"
+    ],
+    [
+     "Fluor-18",
+     "110 Minuten",
+     "PET: Stoffwechsel sichtbar machen"
+    ],
+    [
+     "Iod-131",
+     "8,0 Tage",
+     "Behandlung der Schilddrüse"
+    ],
+    [
+     "Cobalt-60",
+     "5,3 Jahre",
+     "Bestrahlung von Tumoren von außen"
+    ],
+    [
+     "Iridium-192",
+     "74 Tage",
+     "Bestrahlung direkt im Gewebe"
+    ]
+   ],
+   "quelle": "Halbwertszeiten nach der Karlsruher Nuklidkarte",
+   "merke": "Zum Untersuchen nimmt man kurzlebige Nuklide – sie sind rasch wieder verschwunden."
+  },
+  "fachtext": "In der Medizin nutzt man radioaktive Stoffe auf zwei Weisen. Beim Untersuchen spritzt man ein kurzlebiges Nuklid, das sich in einem bestimmten Organ sammelt; eine Kamera nimmt die austretende Gammastrahlung auf und macht Vorgänge im Körper sichtbar. Beim Behandeln nutzt man aus, dass ionisierende Strahlung Zellen schädigt: Tumorzellen sind empfindlicher als gesundes Gewebe und werden gezielt bestrahlt.",
+  "merksatz": [
+   {
+    "pre": "Zum Sichtbarmachen von Vorgängen im Körper nimmt man Nuklide mit kurzer ",
+    "loesung": "Halbwertszeit",
+    "post": "."
+   },
+   {
+    "pre": "Bei der Behandlung nutzt man aus, dass Strahlung Zellen ",
+    "loesung": "schädigt",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Das Datenblatt teilt die Nuklide in zwei Gruppen. Zum Untersuchen dienen Technetium-99m mit 6,0 Stunden und Fluor-18 mit nur 110 Minuten – beide sind nach kurzer Zeit praktisch verschwunden. Zum Behandeln dienen Iod-131 mit 8,0 Tagen, Cobalt-60 mit 5,3 Jahren und Iridium-192 mit 74 Tagen. Cobalt-60 bleibt dabei außerhalb des Körpers, Iridium-192 wird direkt ins Gewebe eingebracht.",
+  "aufgabe": {
+   "frage": "Erkläre, warum man zum Untersuchen ein Nuklid mit sehr kurzer Halbwertszeit wählt und nicht eines mit langer.",
+   "zeilen": 4,
+   "loesung": "Für die Aufnahme genügen wenige Stunden. Ein Nuklid mit kurzer Halbwertszeit ist danach fast vollständig zerfallen, sodass der Patient nur für kurze Zeit bestrahlt wird. Ein langlebiges Nuklid bliebe im Körper und würde über Monate weiter strahlen, ohne dass es dafür noch einen Nutzen gäbe. Die Dosis wäre also unnötig hoch bei gleichem Ergebnis."
+  },
+  "alltag": "Erkläre, warum Patienten nach einer Schilddrüsenbehandlung einige Tage im Krankenhaus bleiben.",
+  "ueberleitung": "In der Medizin hilft die Strahlung. Wo die Technik sie nutzt, siehst du auf der nächsten Seite.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke2",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Strahlung in der Technik",
+  "titel": "Der Sensor über dem Fließband",
+  "problem": "Auf dem Rückweg kommt Mia an einer Werkhalle vorbei. Über dem Fließband hängt ein Kasten mit demselben gelben Zeichen wie an der Bleitür im Krankenhaus. Darunter läuft Aluminiumblech durch. Niemand steht daneben, und trotzdem misst die Anlage fortlaufend, ob das Blech überall die richtige Dicke hat.",
+  "frage": "Wo nutzt die Technik radioaktive Strahlung?",
+  "auftrag": "Untersuche im Datenblatt, welche Eigenschaft der Strahlung jeweils ausgenutzt wird.",
+  "predict": [
+   "Radioaktive Stoffe kommen außerhalb von Kraftwerken und Kliniken kaum vor.",
+   "Die Technik nutzt sie überall dort, wo man ohne Berührung messen oder prüfen will.",
+   "Strahlung taugt nur zum Zerstören und Keimfreimachen; zum Messen ist sie ungeeignet."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies im Datenblatt ab, welche Strahlungsart bei der Dickenmessung genutzt wird.",
+   "Halte fest, warum bei der Prüfung von Schweißnähten Gammastrahlung nötig ist.",
+   "Vergleiche, welche Anwendungen die Durchdringung nutzen und welche die Schwächung."
+  ],
+  "tabCols": [
+   "genutztes Nuklid",
+   "welche Eigenschaft wird genutzt?"
+  ],
+  "tabRows": [
+   "Dickenmessung",
+   "Füllstandsmessung",
+   "Schweißnahtprüfung",
+   "Sterilisation"
+  ],
+  "daten": {
+   "titel": "Radioaktive Stoffe in der Technik",
+   "spalten": [
+    "Anwendung",
+    "Nuklid",
+    "Grundgedanke"
+   ],
+   "zeilen": [
+    [
+     "Dicke von Blech messen",
+     "Strontium-90 (β)",
+     "dickeres Blech schwächt mehr"
+    ],
+    [
+     "Füllstand im Tank",
+     "Cäsium-137 (γ)",
+     "Flüssigkeit schwächt, Luft nicht"
+    ],
+    [
+     "Schweißnaht prüfen",
+     "Iridium-192 (γ)",
+     "ein Riss lässt mehr Strahlung durch"
+    ],
+    [
+     "Einwegbesteck keimfrei machen",
+     "Cobalt-60 (γ)",
+     "Strahlung tötet Keime ab"
+    ],
+    [
+     "Alter von Holz bestimmen",
+     "Kohlenstoff-14 (β)",
+     "Zerfall seit dem Absterben"
+    ]
+   ],
+   "quelle": "Auswahl gängiger Anwendungen; die Nuklide sind die jeweils üblichen",
+   "merke": "Fast alle Anwendungen nutzen dasselbe: Materie schwächt Strahlung, und zwar messbar."
+  },
+  "fachtext": "Die Technik nutzt radioaktive Strahlung überall dort, wo man messen oder prüfen will, ohne etwas zu berühren oder zu öffnen. Der Grundgedanke ist fast immer derselbe: Materie schwächt Strahlung, und wie stark, hängt von Dicke und Dichte ab. Aus der gemessenen Schwächung lässt sich deshalb auf die Dicke eines Blechs, den Füllstand eines geschlossenen Tanks oder einen verborgenen Riss schließen.",
+  "merksatz": [
+   {
+    "pre": "Technische Messungen nutzen fast immer die ",
+    "loesung": "Schwächung",
+    "post": " der Strahlung durch Materie."
+   },
+   {
+    "pre": "Ein Vorteil dieser Verfahren ist, dass man nichts ",
+    "loesung": "berühren",
+    "post": " oder öffnen muss."
+   }
+  ],
+  "beobachtung": "Bei der Dickenmessung dient Strontium-90, ein Betastrahler: Dickeres Blech schwächt die Strahlung stärker, und aus der Zählrate folgt die Dicke. Beim Füllstand nutzt man Cäsium-137, weil Gammastrahlung die Tankwand durchdringt und die Flüssigkeit sie schwächt. Für Schweißnähte nimmt man Iridium-192; ein Riss lässt mehr Strahlung hindurch. Cobalt-60 dient zum Keimfreimachen, Kohlenstoff-14 zur Altersbestimmung.",
+  "aufgabe": {
+   "frage": "Begründe, warum man zur Dickenmessung von Blech einen Betastrahler nimmt und keinen Gammastrahler.",
+   "zeilen": 4,
+   "loesung": "Betastrahlung wird von wenigen Millimetern Metall bereits deutlich geschwächt. Eine kleine Änderung der Blechdicke ändert die Zählrate deshalb merklich – das Verfahren ist empfindlich. Gammastrahlung durchdringt dünnes Blech dagegen fast ungeschwächt; die Zählrate würde sich kaum ändern, und man könnte die Dicke nicht genau bestimmen. Für dicke Wände ist es umgekehrt."
+  },
+  "alltag": "Nenne drei Gegenstände in deinem Haushalt, die mit Strahlung keimfrei gemacht worden sein könnten.",
+  "ueberleitung": "Strahlung ist überall im Einsatz. Wie viel davon bei dir selbst ankommt, rechnest du auf der nächsten Seite aus.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke3",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Strahlung im Alltag",
+  "titel": "Die Dosis, die jeder mitbringt",
+  "problem": "Am Ende der Woche zeigt die Ärztin Mia ihr eigenes Dosimeter: fast nichts. Dann sagt sie, Mia habe in dieser Woche trotzdem Strahlung abbekommen – im Zug, beim Essen, im Keller ihres Hauses. Der weitaus größte Teil der Dosis eines Menschen habe mit dem Krankenhaus überhaupt nichts zu tun.",
+  "frage": "Wie viel Strahlung bekommt ein Mensch in Deutschland im Jahr ab?",
+  "auftrag": "Bestimme aus dem Datenblatt, woher der größte Anteil der Jahresdosis stammt.",
+  "predict": [
+   "Der größte Teil der Dosis stammt aus Kernkraftwerken und dem Fallout früherer Unfälle.",
+   "Der größte Teil der Dosis kommt von Handys, WLAN und Mikrowellen.",
+   "Der größte Teil stammt aus natürlichen Quellen, vor allem aus dem Radon in Wohnräumen."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lies im Datenblatt die natürlichen Anteile ab und addiere sie.",
+   "Vergleiche die Summe mit dem zivilisatorischen Anteil.",
+   "Suche heraus, welcher einzelne Beitrag am größten ist, und ordne ihn ein."
+  ],
+  "tabCols": [
+   "Beitrag in mSv je Jahr",
+   "natürlich oder zivilisatorisch?"
+  ],
+  "tabRows": [
+   "Radon in Wohnräumen",
+   "kosmische Strahlung",
+   "Medizin",
+   "gesamt"
+  ],
+  "daten": {
+   "titel": "Mittlere Strahlenbelastung in Deutschland je Jahr",
+   "spalten": [
+    "Quelle",
+    "Dosis je Jahr",
+    "Anteil"
+   ],
+   "zeilen": [
+    [
+     "Radon in Wohnräumen",
+     "rund 1,1 mSv",
+     "natürlich"
+    ],
+    [
+     "Kosmische Strahlung",
+     "rund 0,3 mSv",
+     "natürlich"
+    ],
+    [
+     "Boden und Baustoffe",
+     "rund 0,3 mSv",
+     "natürlich"
+    ],
+    [
+     "Nahrung, eigener Körper",
+     "rund 0,3 mSv",
+     "natürlich"
+    ],
+    [
+     "Medizin, vor allem CT",
+     "rund 1,7 mSv",
+     "zivilisatorisch"
+    ]
+   ],
+   "quelle": "Mittelwerte für Deutschland nach Angaben des Bundesamts für Strahlenschutz; gerundet",
+   "merke": "Zusammen rund 3,8 mSv je Jahr – gut die Hälfte davon stammt aus der Natur."
+  },
+  "fachtext": "Die Dosis gibt an, wie viel Strahlungsenergie das Gewebe aufnimmt, gewichtet nach der Gefährlichkeit der Strahlungsart. Sie wird in Millisievert angegeben. In Deutschland bekommt ein Mensch im Mittel rund 3,8 mSv im Jahr ab. Etwas mehr als die Hälfte stammt aus natürlichen Quellen, allen voran aus dem Radon in Wohnräumen. Der zivilisatorische Anteil kommt fast vollständig aus der Medizin.",
+  "merksatz": [
+   {
+    "pre": "Die Strahlendosis gibt man in der Einheit ",
+    "loesung": "Millisievert",
+    "post": " an."
+   },
+   {
+    "pre": "Den größten einzelnen Beitrag zur natürlichen Dosis liefert das Gas ",
+    "loesung": "Radon",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die vier natürlichen Beiträge ergeben zusammen rund 2,0 mSv im Jahr: 1,1 mSv aus dem Radon, je 0,3 mSv aus kosmischer Strahlung, aus Boden und Baustoffen sowie aus der Nahrung und dem eigenen Körper. Hinzu kommen rund 1,7 mSv aus der Medizin, vor allem aus Computertomographien. Der mit Abstand größte einzelne Beitrag ist damit das Radon – kein Kraftwerk und kein Unfall.",
+  "aufgabe": {
+   "frage": "Beurteile die Aussage: „Die meiste Strahlung, die wir abbekommen, stammt aus Kernkraftwerken.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage ist falsch. Von den rund 3,8 mSv im Jahr stammen etwa 2,0 mSv aus natürlichen Quellen, allein 1,1 mSv aus dem Radon in Wohnräumen. Weitere 1,7 mSv kommen aus der Medizin, überwiegend aus der Computertomographie. Der Beitrag von Kernkraftwerken im Normalbetrieb liegt weit darunter und taucht in dieser Aufstellung nicht einmal als eigene Zeile auf."
+  },
+  "alltag": "Beurteile, ob es sinnvoll ist, wegen einer Flugreise auf eine Röntgenaufnahme zu verzichten.",
+  "ueberleitung": "Wie viel ankommt, weißt du jetzt. Wie man weniger abbekommt, rechnest du auf der nächsten Seite aus.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke4",
+  "theme": "kernenergie",
+  "basiskonzept": "Wechselwirkung",
+  "name": "Die drei A des Strahlenschutzes",
+  "titel": "Zwei Schritte zurück sind mehr wert als eine Bleiweste",
+  "problem": "An der Wand hängt ein Merkblatt mit drei Wörtern, die alle mit A anfangen. Mia hält das für eine Eselsbrücke ohne echten Inhalt. Die Ärztin widerspricht: Zwei der drei wirkten unterschiedlich stark, und eines davon bringe weit mehr als die schwere Bleiweste, die im Schrank hängt.",
+  "frage": "Womit schütze ich mich am wirksamsten vor Strahlung?",
+  "auftrag": "Miss, wie sich die Dosis bei größerem Abstand, mit Blei und bei kürzerer Zeit ändert.",
+  "predict": [
+   "Der Abstand wirkt am stärksten, weil er quadratisch in die Dosisleistung eingeht.",
+   "Alle drei Maßnahmen wirken gleich stark; man kann sich eine davon aussuchen.",
+   "Am meisten bringt die Bleiweste; Abstand nützt wenig, denn Strahlung fliegt beliebig weit."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle 100 cm Abstand, 0 mm Blei und 20 Minuten ein und lies die Dosis ab.",
+   "Verdopple nur den Abstand auf 200 cm und lies die Dosisleistung erneut ab.",
+   "Gehe zurück auf 100 cm und lege stattdessen nur 7 mm Blei dazwischen."
+  ],
+  "tabCols": [
+   "Dosisleistung in µSv/h",
+   "auf welchen Teil gesunken?"
+  ],
+  "tabRows": [
+   "100 cm, kein Blei",
+   "200 cm, kein Blei",
+   "100 cm, 7 mm Blei"
+  ],
+  "fachtext": "Im Strahlenschutz gelten drei Regeln: Abstand halten, abschirmen und die Aufenthaltsdauer kurz halten. Sie wirken jedoch verschieden stark. Der Abstand geht quadratisch ein – doppelter Abstand bedeutet ein Viertel der Dosisleistung. Die Abschirmung halbiert die Strahlung je Halbwertsdicke; für Cäsium-137 sind das 6,5 mm Blei. Die Aufenthaltsdauer geht einfach ein: halbe Zeit, halbe Dosis.",
+  "merksatz": [
+   {
+    "pre": "Die drei A des Strahlenschutzes sind Abstand, Abschirmung und ",
+    "loesung": "Aufenthaltsdauer",
+    "post": "."
+   },
+   {
+    "pre": "Am stärksten wirkt der Abstand, weil er ",
+    "loesung": "quadratisch",
+    "post": " eingeht."
+   }
+  ],
+  "beobachtung": "Bei 1,00 m Abstand ohne Blei rechnet die Simulation 92,7 µSv/h. Verdoppelt man den Abstand auf 2,00 m, sind es nur noch 23,2 µSv/h – ein Viertel, nicht die Hälfte. Legt man stattdessen bei 1,00 m sieben Millimeter Blei dazwischen, bleiben 43,94 µSv/h, also knapp die Hälfte; sieben Millimeter sind rund eine Halbwertsdicke. Zwei Schritte zurück bringen damit mehr als die Bleiplatte.",
+  "aufgabe": {
+   "frage": "Berechne, auf welchen Teil die Dosisleistung sinkt, wenn man den Abstand von 1,0 m auf 3,0 m vergrößert.",
+   "zeilen": 3,
+   "loesung": "Der Abstand geht quadratisch ein. Dreifacher Abstand bedeutet den neunfachen Nenner, also ein Neuntel der Dosisleistung. Aus 92,7 µSv/h werden damit rund 10,3 µSv/h. Um dieselbe Wirkung mit Blei zu erreichen, bräuchte man mehr als drei Halbwertsdicken, also über 20 mm."
+  },
+  "alltag": "Erkläre, warum das Personal beim Röntgen den Raum verlässt, statt eine Bleiweste zu tragen.",
+  "ueberleitung": "Schützen kannst du dich jetzt. Woher die Energie stammt, um die es hier geht, siehst du auf der nächsten Seite.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke5",
+  "theme": "kernenergie",
+  "basiskonzept": "Energie",
+  "name": "Kernspaltung",
+  "titel": "Ein Würfel Uran gegen einen ganzen Güterzug",
+  "problem": "Ben ist wieder im Umspannwerk. An der Wand hängt ein Bild vom nächstgelegenen Kraftwerk, daneben ein Vergleich: ein kleiner Würfel neben einem Güterzug voller Kohle. Beide sollen dieselbe Energie liefern. Ben hält das für Werbung – der Unterschied erscheint ihm viel zu groß, um zu stimmen.",
+  "frage": "Wie holt man riesige Energie aus einem winzigen Kern?",
+  "auftrag": "Bestimme aus der Massenbilanz, wie viel Energie bei einer Spaltung frei wird.",
+  "predict": [
+   "Bei der Kernspaltung wird der Kern verbrannt, so wie Kohle verbrennt.",
+   "Die Bruchstücke wiegen zusammen weniger als der Ausgangskern; die fehlende Masse wird zu Energie.",
+   "Die Energie stammt aus dem Neutron, das mit großer Wucht in den Kern geschossen wird."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Sieh dir die drei Phasen an: anfliegendes Neutron, ²³⁶U, Spaltung.",
+   "Wähle nacheinander alle drei Spaltwege und prüfe jedes Mal die Summen von A und Z.",
+   "Lies den Massenunterschied und die frei werdende Energie je Spaltung ab."
+  ],
+  "tabCols": [
+   "Summe A rechts",
+   "Energie in MeV"
+  ],
+  "tabRows": [
+   "Barium und Krypton",
+   "Xenon und Strontium",
+   "Cäsium und Rubidium"
+  ],
+  "fachtext": "Trifft ein langsames Neutron einen Uran-235-Kern, so nimmt dieser es auf und wird kurz zu Uran-236. Der Kern wird länglich und reißt auseinander. Dabei entstehen zwei mittelschwere Kerne und zwei bis drei freie Neutronen. Massenzahl und Kernladungszahl bleiben erhalten – die Masse jedoch nicht: Die Bruchstücke wiegen zusammen weniger. Dieser Massenunterschied wird nach E = Δm · c² zu Energie.",
+  "merksatz": [
+   {
+    "pre": "Damit ein Urankern gespalten wird, muss ihn ein ",
+    "loesung": "langsames",
+    "post": " Neutron treffen."
+   },
+   {
+    "pre": "Die fehlende Masse der Bruchstücke wird zu ",
+    "loesung": "Energie",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Beim Spaltweg mit Barium und Krypton lautet die Gleichung ¹₀n + ²³⁵₉₂U → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n. Die Summen gehen auf: links 236 Kernbausteine, rechts 141 + 92 + 3 = 236; links 92 Protonen, rechts 56 + 36 = 92. Trotzdem fehlen 0,1860 u an Masse. Daraus werden 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung. In einem Kilogramm Uran-235 stecken 2,56 · 10²⁴ Kerne.",
+  "aufgabe": {
+   "frage": "Erkläre, warum bei der Kernspaltung Energie frei wird, obwohl Massenzahl und Kernladungszahl vorher und nachher gleich sind.",
+   "zeilen": 4,
+   "loesung": "Massenzahl und Kernladungszahl zählen nur Teilchen, und davon geht keines verloren. Die tatsächliche Masse ist aber nicht die Summe der Teilchenzahlen: Die Bruchstücke sind zusammen um 0,1860 u leichter als der Ausgangskern mit dem Neutron. Genau diese fehlende Masse wird nach E = Δm · c² zu Energie – rund 173 MeV je Spaltung."
+  },
+  "alltag": "Erkläre, warum ein Kernkraftwerk viel seltener nachgeladen wird als ein Kohlekraftwerk.",
+  "ueberleitung": "Eine einzelne Spaltung liefert wenig. Wie daraus eine nutzbare Leistung wird, siehst du auf der nächsten Seite.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke6",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Die Kettenreaktion steuern",
+  "titel": "Die eine Zahl, auf die alles ankommt",
+  "problem": "Bei jeder Spaltung fliegen zwei bis drei Neutronen heraus, und jedes davon kann die nächste Spaltung auslösen. Ben rechnet nach und erschrickt: Nach zwanzig Schritten wären es Millionen. Sein Ausbilder sagt, genau deshalb hänge alles an einer einzigen Zahl – und die lasse sich einstellen.",
+  "frage": "Wie verhindert man, dass eine Kettenreaktion außer Kontrolle gerät?",
+  "auftrag": "Untersuche, wie sich die Zahl der Spaltungen bei verschiedenen Stabstellungen entwickelt.",
+  "predict": [
+   "Eine Kettenreaktion wächst immer lawinenartig; aufhalten kann man sie nicht.",
+   "Die Steuerstäbe bremsen die Neutronen ab; langsame Neutronen lösen keine Spaltung mehr aus.",
+   "Über die Steuerstäbe lässt sich einstellen, ob sie wächst, gleich bleibt oder erstirbt."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Fahre die Steuerstäbe auf 80 % ein und drücke fünfmal „nächste Generation“.",
+   "Setze zurück, stelle 50 % ein und wiederhole den Durchgang.",
+   "Setze erneut zurück, stelle 20 % ein und vergleiche alle drei Reihen."
+  ],
+  "tabCols": [
+   "Vermehrungsfaktor k",
+   "nach 5 Generationen"
+  ],
+  "tabRows": [
+   "Steuerstäbe 80 %",
+   "Steuerstäbe 50 %",
+   "Steuerstäbe 20 %"
+  ],
+  "fachtext": "Bei jeder Spaltung werden Neutronen frei. Wie viele davon eine neue Spaltung auslösen, gibt der Vermehrungsfaktor k an: Er sagt, wie viele neue Spaltungen aus einer Spaltung folgen. Bei k unter 1 wird jede Generation kleiner und die Kette erstirbt. Bei k gleich 1 bleibt sie gleich groß – so arbeitet ein Kraftwerk. Bei k über 1 wächst sie lawinenartig. Eingestellt wird k über die Steuerstäbe, die Neutronen wegschlucken.",
+  "merksatz": [
+   {
+    "pre": "Wie viele neue Spaltungen aus einer Spaltung folgen, gibt der Vermehrungsfaktor ",
+    "loesung": "k",
+    "post": " an."
+   },
+   {
+    "pre": "Ein Kernkraftwerk arbeitet dauerhaft bei k gleich ",
+    "loesung": "1",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 80 % eingefahrenen Steuerstäben ist k = 0,64; aus 500 Spaltungen werden nacheinander etwa 315, 200, 134 und 88 – die Kette erstickt. Bei 50 % ist k = 1,00, und die Zahl bleibt mit kleinen Schwankungen bei rund 500. Bei 20 % ist k = 1,36, und aus 500 werden 668, 922, 1238 und mehr. Dieselbe Anlage kann also erlöschen, gleichmäßig laufen oder außer Kontrolle geraten.",
+  "aufgabe": {
+   "frage": "Berechne, auf das Wievielfache die Zahl der Spaltungen nach zehn Generationen anwächst, wenn k = 1,36 beträgt.",
+   "zeilen": 3,
+   "loesung": "Nach jeder Generation wird die Zahl mit 1,36 multipliziert. Nach zehn Generationen ist sie also mit 1,36 hoch 10 multipliziert, das sind rund 21. Aus 500 Spaltungen würden damit über 10.000. Bei k = 1,60 wären es sogar rund 110-mal so viele – deshalb muss k sehr genau bei 1 gehalten werden."
+  },
+  "alltag": "Erkläre, warum in Steuerstäben Bor oder Cadmium steckt und nicht Eisen.",
+  "ueberleitung": "Steuern kannst du die Kette jetzt. Wie daraus Strom in deiner Steckdose wird, steht auf der nächsten Seite.",
+  "alltagKomp": "E7",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke7",
+  "theme": "kernenergie",
+  "basiskonzept": "Energie",
+  "name": "Vom Reaktor zur Steckdose",
+  "titel": "Ein Dampfkraftwerk mit ungewöhnlichem Feuer",
+  "problem": "Auf dem Schnittbild des Kraftwerks sucht Ben nach dem Bauteil, das den Strom erzeugt. Er findet Rohre, einen Kessel, eine Turbine und einen Generator – alles Dinge, die er vom Kohlekraftwerk kennt. Vom Reaktor führt kein einziges Kabel direkt zur Leitung hinaus.",
+  "frage": "Wie wird aus der Kernspaltung Strom in meiner Steckdose?",
+  "auftrag": "Untersuche, über welche Schritte die Energie vom Kern bis zur Leitung gelangt.",
+  "predict": [
+   "Die Spaltung liefert nur Wärme; den Strom erzeugt am Ende ein gewöhnlicher Generator.",
+   "Im Reaktor entsteht der Strom unmittelbar aus der Kernspaltung.",
+   "Den Strom erzeugt der heiße Dampf selbst; der Generator verteilt ihn nur auf die Leitungen."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies in der Simulation nach, welche vier Schritte vom Reaktor zur Steckdose führen.",
+   "Halte fest, an welcher Stelle die elektrische Energie tatsächlich entsteht.",
+   "Lies ab, wie viele Spaltungen je Sekunde ein Kraftwerk für 300 Megawatt braucht."
+  ],
+  "tabCols": [
+   "Schritt",
+   "welche Energieform"
+  ],
+  "tabRows": [
+   "Bruchstücke fliegen auseinander",
+   "Wasser wird zu Dampf",
+   "Dampf treibt die Turbine",
+   "Turbine dreht den Generator"
+  ],
+  "fachtext": "Ein Kernkraftwerk erzeugt keinen Strom aus der Spaltung selbst. Die Bruchstücke fliegen mit großer Geschwindigkeit auseinander und werden im Brennstab abgebremst – dabei entsteht Wärme. Diese Wärme macht aus Wasser Dampf, der Dampf treibt eine Turbine, und die Turbine dreht einen Generator. Erst dort entsteht die elektrische Energie. Ein Kernkraftwerk ist also ein Dampfkraftwerk, dessen Feuer aus Kernspaltung besteht.",
+  "merksatz": [
+   {
+    "pre": "Die Kernspaltung liefert im Kraftwerk zunächst nur ",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Die elektrische Energie entsteht erst im ",
+    "loesung": "Generator",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Die Simulation nennt vier Schritte: Die Bruchstücke erhitzen den Brennstab, die Wärme macht aus Wasser Dampf, der Dampf treibt die Turbine, und die Turbine dreht den Generator. Nur der letzte Schritt erzeugt Strom; alles davor ist gewöhnliche Wärmekraftwerks-Technik. Weil eine einzelne Spaltung nur rund 3,2 · 10⁻¹¹ J liefert, braucht ein Kraftwerk für 300 Megawatt rund 10¹⁹ Spaltungen in jeder Sekunde.",
+  "aufgabe": {
+   "frage": "Vergleiche ein Kernkraftwerk mit einem Kohlekraftwerk und nenne den einzigen wesentlichen Unterschied.",
+   "zeilen": 4,
+   "loesung": "Beide sind Dampfkraftwerke: Wärme macht Dampf, Dampf treibt eine Turbine, die Turbine dreht einen Generator. Der einzige wesentliche Unterschied liegt in der Wärmequelle. Im Kohlekraftwerk verbrennt Kohle, wobei sich die Elektronenhüllen der Atome umordnen. Im Kernkraftwerk wird der Kern gespalten, wobei rund eine Million Mal mehr Energie je Atom frei wird."
+  },
+  "alltag": "Erkläre, warum auch Kernkraftwerke große Kühltürme brauchen.",
+  "ueberleitung": "Wenn diese Kette funktioniert, liefert sie zuverlässig Strom. Was passiert, wenn sie es nicht tut, steht auf der nächsten Seite.",
+  "alltagKomp": "UF3",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke8",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Wenn ein Reaktor außer Kontrolle gerät",
+  "titel": "Zwei Daten, die niemand vergisst",
+  "problem": "Im Pausenraum hängt ein alter Zeitungsausschnitt vom April 1986. Bens Ausbilder war damals in der Ausbildung und erinnert sich, dass wochenlang niemand Pilze sammeln durfte. Fünfundzwanzig Jahre später sah er dieselben Bilder wieder – diesmal aus Japan, nach einem Erdbeben und einer Flutwelle.",
+  "frage": "Was passiert, wenn ein Reaktor außer Kontrolle gerät?",
+  "auftrag": "Vergleiche im Datenblatt die Ursachen und Folgen der drei schwersten Unfälle.",
+  "predict": [
+   "Ein Reaktorunfall ist immer eine Explosion wie bei einer Atombombe.",
+   "Die Gefahr besteht darin, dass radioaktive Stoffe freigesetzt werden und sich verteilen.",
+   "Sobald die Kettenreaktion abgeschaltet ist, kühlt der Reaktor von allein ab; dann kann nichts mehr passieren."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies im Datenblatt die drei Unfälle mit ihren Jahreszahlen und Ursachen ab.",
+   "Vergleiche die INES-Stufen und ordne sie der Skala von 0 bis 7 zu.",
+   "Halte fest, welcher Stoff nach einem Unfall am längsten Probleme macht."
+  ],
+  "tabCols": [
+   "Jahr und Ursache",
+   "INES-Stufe"
+  ],
+  "tabRows": [
+   "Three Mile Island",
+   "Tschernobyl",
+   "Fukushima"
+  ],
+  "daten": {
+   "titel": "Die drei schwersten Reaktorunfälle",
+   "spalten": [
+    "Ort und Jahr",
+    "Ursache",
+    "INES"
+   ],
+   "zeilen": [
+    [
+     "Three Mile Island 1979",
+     "Kühlmittelverlust, Fehlbedienung",
+     "Stufe 5"
+    ],
+    [
+     "Tschernobyl 1986",
+     "Versuch bei abgeschalteten Sicherungen",
+     "Stufe 7"
+    ],
+    [
+     "Fukushima 2011",
+     "Erdbeben und Flutwelle, Notkühlung fiel aus",
+     "Stufe 7"
+    ],
+    [
+     "Freigesetzt vor allem",
+     "Iod-131 und Cäsium-137",
+     ""
+    ],
+    [
+     "Cäsium-137",
+     "Halbwertszeit 30,17 Jahre",
+     "macht am längsten Probleme"
+    ]
+   ],
+   "quelle": "INES ist die internationale Bewertungsskala für nukleare Ereignisse, Stufen 0 bis 7",
+   "merke": "In allen drei Fällen fiel die Kühlung aus – nicht die Steuerung der Kettenreaktion."
+  },
+  "fachtext": "Ein Reaktor kann nicht wie eine Bombe explodieren; dafür ist der Brennstoff viel zu wenig angereichert. Die eigentliche Gefahr ist die Nachzerfallswärme: Auch nach dem Abschalten der Kettenreaktion zerfallen die Spaltprodukte weiter und erzeugen Wärme. Fällt die Kühlung aus, schmilzt der Kern, und radioaktive Stoffe können freigesetzt werden. Am längsten macht dabei Cäsium-137 Probleme, weil seine Halbwertszeit 30 Jahre beträgt.",
+  "merksatz": [
+   {
+    "pre": "Auch nach dem Abschalten erzeugen die Spaltprodukte weiter ",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Am längsten Probleme macht nach einem Unfall das Nuklid ",
+    "loesung": "Cäsium-137",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Das Datenblatt nennt drei Unfälle. In Three Mile Island 1979 führten Kühlmittelverlust und Fehlbedienung zu Stufe 5. In Tschernobyl 1986 wurde ein Versuch bei abgeschalteten Sicherungen durchgeführt, Stufe 7. In Fukushima 2011 fiel nach Erdbeben und Flutwelle die Notkühlung aus, ebenfalls Stufe 7. In allen drei Fällen war nicht die Steuerung der Kettenreaktion das Problem, sondern die Kühlung.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ein Reaktor auch nach dem vollständigen Einfahren aller Steuerstäbe noch gekühlt werden muss.",
+   "zeilen": 4,
+   "loesung": "Die Steuerstäbe beenden die Kettenreaktion, aber nicht den Zerfall der bereits entstandenen Spaltprodukte. Diese sind selbst radioaktiv und geben weiter Energie ab – die Nachzerfallswärme. Sie beträgt anfangs einige Prozent der vollen Leistung und klingt erst über Tage und Wochen ab. Fällt die Kühlung in dieser Zeit aus, kann der Kern trotz abgeschalteter Kettenreaktion schmelzen. Genau das geschah in Fukushima."
+  },
+  "alltag": "Erkläre, warum nach 1986 in Bayern jahrelang Wildschweinfleisch gemessen wurde.",
+  "ueberleitung": "Auch ohne Unfall bleibt am Ende etwas übrig, das strahlt. Was damit geschieht, steht auf der nächsten Seite.",
+  "alltagKomp": "K5",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke9",
+  "theme": "kernenergie",
+  "basiskonzept": "Struktur der Materie",
+  "name": "Endlagerung",
+  "titel": "Ein Behälter für hunderttausend Jahre",
+  "problem": "Bens Ausbilder zeigt ihm das Bild eines Castor-Behälters. Daneben steht eine Zahl, die Ben zunächst für einen Druckfehler hält: eine Million Jahre. So lange soll der Inhalt sicher verwahrt bleiben. Zum Vergleich fällt ihm nur ein, dass die ältesten von Menschen errichteten Bauwerke noch keine fünftausend Jahre alt sind.",
+  "frage": "Wohin mit dem Müll, der noch Tausende Jahre strahlt?",
+  "auftrag": "Bestimme mit der Halbwertszeit, wie lange Plutonium-239 gefährlich bleibt.",
+  "predict": [
+   "Nach etwa hundert Jahren ist auch der stärkste Atommüll unbedenklich geworden.",
+   "Der Abfall strahlt für immer gleich stark; schwächer wird er nie.",
+   "Nuklide mit langer Halbwertszeit bleiben über Zehntausende von Jahren gefährlich."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle Plutonium-239 und lies seine Halbwertszeit ab.",
+   "Drücke fünfmal „eine Halbwertszeit weiter“ und notiere jedes Mal die vergangene Zeit.",
+   "Vergleiche diese Zeiten mit dem Alter der ältesten menschlichen Bauwerke."
+  ],
+  "tabCols": [
+   "vergangene Zeit",
+   "übrige Kerne in Prozent"
+  ],
+  "tabRows": [
+   "1 Halbwertszeit",
+   "3 Halbwertszeiten",
+   "5 Halbwertszeiten"
+  ],
+  "fachtext": "Beim Betrieb eines Reaktors entstehen Spaltprodukte und schwere Kerne wie Plutonium-239. Ein Teil davon hat sehr lange Halbwertszeiten. Als grobe Regel gilt, dass nach zehn Halbwertszeiten weniger als ein Tausendstel übrig ist. Bei Plutonium-239 mit 24.110 Jahren sind das rund 240.000 Jahre. Ein Endlager muss deshalb über Zeiträume dichthalten, für die es keinerlei menschliche Erfahrung gibt.",
+  "merksatz": [
+   {
+    "pre": "Nach zehn Halbwertszeiten ist weniger als ein ",
+    "loesung": "Tausendstel",
+    "post": " der Kerne übrig."
+   },
+   {
+    "pre": "Plutonium-239 hat eine Halbwertszeit von rund ",
+    "loesung": "24.110",
+    "post": " Jahren."
+   }
+  ],
+  "beobachtung": "Die Simulation gibt für Plutonium-239 eine Halbwertszeit von 24.110 Jahren an. Nach einer Halbwertszeit sind 24.110 Jahre vergangen und die Hälfte der Kerne übrig, nach drei Halbwertszeiten 72.330 Jahre und ein Achtel, nach fünf 120.550 Jahre und rund drei Prozent. Zum Vergleich: Die Cheopspyramide ist keine fünftausend Jahre alt – nicht einmal ein Fünftel einer Halbwertszeit.",
+  "aufgabe": {
+   "frage": "Beurteile, warum die Suche nach einem Endlager so schwierig ist, obwohl die Menge des Mülls vergleichsweise klein ist.",
+   "zeilen": 4,
+   "loesung": "Nicht die Menge ist das Problem, sondern die Zeit. Ein Endlager muss über Hunderttausende von Jahren dicht bleiben – länger, als es Schrift, Staaten oder Sprachen gibt. Man kann sich weder auf Wartung noch auf Warnschilder verlassen, weil niemand weiß, ob künftige Menschen sie verstehen. Deshalb sucht man nach Gestein, das seit Millionen Jahren unverändert ist und kein Wasser durchlässt."
+  },
+  "alltag": "Erkläre, warum man für ein Endlager Salz- oder Tongestein untersucht.",
+  "ueberleitung": "Kerne spalten liefert Energie. Es gibt aber noch einen zweiten Weg – und den geht die Sonne.",
+  "alltagKomp": "B1",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke10",
+  "theme": "kernenergie",
+  "basiskonzept": "Energie",
+  "name": "Kernfusion",
+  "titel": "Das Feuer, das seit viereinhalb Milliarden Jahren brennt",
+  "problem": "Auf dem Heimweg fällt Ben auf, wie warm die Sonne noch am Abend ist. Sie leuchtet seit viereinhalb Milliarden Jahren gleichmäßig weiter. Kein Feuer auf der Erde hält das durch; selbst wenn die Sonne vollständig aus Kohle bestünde, wäre sie nach wenigen tausend Jahren erloschen.",
+  "frage": "Woher nimmt die Sonne ihre Energie?",
+  "auftrag": "Bestimme aus der Massenbilanz, wie viel Energie beim Aufbau eines Heliumkerns frei wird.",
+  "predict": [
+   "In der Sonne werden Kerne zusammengebaut; die fehlende Masse wird zu Energie.",
+   "In der Sonne verbrennt Wasserstoff mit Sauerstoff, so wie in einer Flamme.",
+   "In der Sonne werden Kerne gespalten, so wie in einem Kernkraftwerk."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle 5 Millionen Grad ein und beobachte eine halbe Minute lang, was geschieht.",
+   "Erhöhe schrittweise und halte fest, ab welcher Temperatur der erste Heliumkern entsteht.",
+   "Stelle 15 Millionen Grad ein und lies die Massenbilanz und die Energie je Baustein ab."
+  ],
+  "tabCols": [
+   "Heliumkerne in 30 s",
+   "zündet es?"
+  ],
+  "tabRows": [
+   "5 Millionen °C",
+   "10 Millionen °C",
+   "15 Millionen °C"
+  ],
+  "fachtext": "In der Sonne werden aus je vier Wasserstoffkernen ein Heliumkern gebaut. Das nennt man Kernfusion. Der Heliumkern wiegt weniger als die vier Wasserstoffkerne zusammen; die fehlende Masse wird zu Energie – dieselbe Bilanz wie bei der Spaltung, nur andersherum. Damit die Kerne überhaupt zusammenkommen, müssen sie ihre gegenseitige Abstoßung überwinden. Dafür braucht es Temperaturen von über zehn Millionen Grad.",
+  "merksatz": [
+   {
+    "pre": "Das Zusammenbauen leichter Kerne zu schwereren heißt ",
+    "loesung": "Kernfusion",
+    "post": "."
+   },
+   {
+    "pre": "Sie gelingt erst bei sehr hoher Temperatur, weil sich die Kerne gegenseitig ",
+    "loesung": "abstoßen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 5 Millionen Grad passiert nichts: Die Kerne prallen voneinander ab, bevor sie nah genug zusammenkommen. Ab etwa 10 Millionen Grad zündet es, und die Simulation zählt entstehende Heliumkerne. Bei 15 Millionen Grad – so heiß ist es im Sonnenkern – läuft es zügig. Vier Wasserstoffkerne wiegen 4,031300 u, ein Heliumkern nur 4,002603 u; die fehlenden 0,028697 u ergeben 26,73 MeV.",
+  "aufgabe": {
+   "frage": "Vergleiche Fusion und Spaltung, indem du die Energie je Kernbaustein gegenüberstellst.",
+   "zeilen": 4,
+   "loesung": "Bei der Fusion werden 26,73 MeV aus vier Bausteinen frei, das sind 6,68 MeV je Baustein. Bei der Spaltung sind es rund 200 MeV aus 236 Bausteinen, also 0,85 MeV je Baustein. Die Fusion liefert damit je Kernbaustein rund das Achtfache. Trotzdem ist sie auf der Erde bisher nicht nutzbar, weil die nötigen Temperaturen dort weit über denen im Sonnenkern liegen müssten."
+  },
+  "alltag": "Erkläre, warum Fusionsanlagen auf der Erde noch heißer werden müssen als der Sonnenkern.",
+  "ueberleitung": "Beide Wege liefern gewaltige Energie. Auf der letzten Seite dieses Hefts wägst du selbst ab, was daraus folgen soll.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II"
+ },
+ {
+  "id": "ke11",
+  "theme": "kernenergie",
+  "basiskonzept": "System",
+  "name": "Kernenergie bewerten",
+  "titel": "Zwei Listen und eine eigene Entscheidung",
+  "problem": "Am letzten Praktikumstag streiten sich zwei Mitarbeiter in der Kantine. Der eine sagt, ohne Kernkraft sei der Klimaschutz nicht zu schaffen. Der andere hält dagegen, niemand wisse, wohin mit dem Müll. Beide führen Zahlen an, und beide klingen überzeugend. Ben und Mia sollen sich eine eigene Meinung bilden.",
+  "frage": "Ist Kernenergie eher ein Segen oder eher eine Gefahr?",
+  "auftrag": "Vergleiche im Datenblatt die Argumente beider Seiten miteinander.",
+  "predict": [
+   "Bei einer solchen Frage gibt es eine richtige Antwort, man muss sie nur nachschlagen.",
+   "Die Antwort hängt davon ab, wie man Nutzen und Risiken gegeneinander gewichtet.",
+   "So eine Frage entscheidet allein das Gefühl; auf Zahlen und Fakten kommt es nicht an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies im Datenblatt beide Spalten vollständig durch.",
+   "Ordne jedes Argument einem der Bereiche Klima, Sicherheit, Müll oder Kosten zu.",
+   "Suche das Argument heraus, das für dich am schwersten wiegt, und notiere warum."
+  ],
+  "tabCols": [
+   "spricht dafür",
+   "spricht dagegen"
+  ],
+  "tabRows": [
+   "Klima",
+   "Sicherheit",
+   "Abfall"
+  ],
+  "daten": {
+   "titel": "Kernenergie – Argumente beider Seiten",
+   "spalten": [
+    "Bereich",
+    "spricht dafür",
+    "spricht dagegen"
+   ],
+   "zeilen": [
+    [
+     "Klima",
+     "im Betrieb kaum Treibhausgase",
+     "Bau und Uranabbau erzeugen welche"
+    ],
+    [
+     "Versorgung",
+     "liefert Strom unabhängig vom Wetter",
+     "Uran muss eingeführt werden"
+    ],
+    [
+     "Sicherheit",
+     "sehr wenige Unfälle je erzeugter Energie",
+     "ein Unfall trifft ganze Regionen"
+    ],
+    [
+     "Abfall",
+     "kleine Mengen, gut erfassbar",
+     "muss Hunderttausende Jahre sicher liegen"
+    ],
+    [
+     "Kosten",
+     "niedrige Brennstoffkosten",
+     "teurer Bau und teurer Rückbau"
+    ]
+   ],
+   "quelle": "Die Argumente sind gängige Positionen der Debatte, keine Wertung dieses Hefts",
+   "merke": "Eine Bewertung braucht Kriterien. Welches Kriterium schwerer wiegt, entscheidest du – und begründest es."
+  },
+  "fachtext": "Physik kann sagen, wie viel Energie eine Spaltung liefert, wie lange ein Nuklid strahlt und wie hoch eine Dosis ist. Ob man Kernenergie nutzen soll, kann sie nicht beantworten – das ist eine Frage der Bewertung. Dazu braucht man Kriterien: Klima, Versorgungssicherheit, Unfallrisiko, Abfall und Kosten. Verschiedene Menschen gewichten diese Kriterien verschieden und kommen deshalb zu verschiedenen Ergebnissen, obwohl sie dieselben Zahlen kennen.",
+  "merksatz": [
+   {
+    "pre": "Eine Bewertung braucht immer erst festgelegte ",
+    "loesung": "Kriterien",
+    "post": "."
+   },
+   {
+    "pre": "Aus denselben Zahlen können verschiedene Menschen zu verschiedenen Ergebnissen ",
+    "loesung": "kommen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Das Datenblatt stellt fünf Bereiche gegenüber. Beim Klima steht dem geringen Ausstoß im Betrieb gegenüber, dass Bau und Uranabbau sehr wohl Treibhausgase erzeugen. Bei der Sicherheit steht der sehr niedrigen Unfallzahl je erzeugter Energie gegenüber, dass ein einziger Unfall ganze Regionen trifft. Beim Abfall stehen kleine Mengen gegen Zeiträume von Hunderttausenden Jahren. Beide Spalten enthalten zutreffende Angaben.",
+  "aufgabe": {
+   "frage": "Beurteile begründet, ob Deutschland Kernkraftwerke betreiben sollte. Nenne dabei mindestens drei Kriterien und gewichte sie.",
+   "zeilen": 6,
+   "loesung": "Erwartet wird keine bestimmte Antwort, sondern eine begründete. Eine vollständige Antwort nennt mindestens drei Kriterien aus dem Datenblatt, gibt zu jedem an, was dafür und was dagegen spricht, und sagt ausdrücklich, welches Kriterium für die eigene Entscheidung am schwersten wiegt – und warum. Wer etwa den Klimaschutz höher gewichtet als die Endlagerfrage, kommt zu einem anderen Ergebnis als jemand, der die Verantwortung gegenüber künftigen Generationen voranstellt. Beides ist vertretbar, solange die Gewichtung offengelegt wird."
+  },
+  "alltag": "Beurteile, welches der fünf Kriterien für dich persönlich am schwersten wiegt.",
+  "ueberleitung": "Damit endet dieses Heft. Du kannst jetzt erklären, wie aus Magnetismus Bewegung wird, wie aus Bewegung Strom wird und was im Inneren eines Atomkerns steckt.",
+  "alltagKomp": "B2",
+  "alltagAfb": "II"
+ }
+]

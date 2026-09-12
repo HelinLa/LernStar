@@ -1,0 +1,72 @@
+{
+ "id": "ki4",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "S6",
+  "E8"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Aus der Ruhe heraus gilt v = a · t; der Weg bis zur Zeit t ist die Fläche unter dieser Geraden, also s =",
+   "loesung": "½ · a · t²",
+   "post": "."
+  },
+  {
+   "pre": "Trägt man s über t² auf, so wird aus der Parabel eine",
+   "loesung": "Ursprungsgerade",
+   "post": ", deren Steigung an jeder Stelle denselben Wert hat."
+  },
+  {
+   "pre": "In dieser Auftragung gilt s = (a/2) · t²; für die Beschleunigung folgt daraus a =",
+   "loesung": "2 · Steigung",
+   "post": "."
+  },
+  {
+   "pre": "Aus einem einzelnen gestoppten Wertepaar erhält man diese Steigung als Quotient",
+   "loesung": "s/t²",
+   "post": "; genauer wird der Wert, wenn eine Ausgleichsgerade alle Punkte der Messreihe auswertet."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Ein Wagen, der bei unveränderter Beschleunigung die doppelte Zeit unterwegs ist, legt den vierfachen Weg zurück.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die Auftragung s über t² ergibt nur für kleine Beschleunigungen eine Gerade; bei a = 4,0 m/s² krümmt sich die Punktreihe erneut.",
+   "stimmt": false
+  },
+  {
+   "aussage": "In der ersten Zeile jeder Fahrt bleibt die gerechnete Spalte a leer, weil Δv/Δt zwei aufeinanderfolgende Zeilen derselben Fahrt braucht.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Bildet man statt s/t² den Quotienten s/t, so kommt bei jedem Stopp derselbe Wert heraus.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Zwei Stopps derselben Fahrt liefern t = 1,20 s mit s = 1,44 m und t = 2,40 s mit s = 5,76 m. Woran erkennt man daran, dass die Punkte im s-t²-Diagramm auf einer Ursprungsgeraden liegen?",
+  "optionen": [
+   "Daran, dass sich die Wege wie die Zeiten verhalten: 5,76 m zu 1,44 m entspricht 2,40 s zu 1,20 s.",
+   "Daran, dass beide Stopps denselben Quotienten s/t² ergeben: 1,44 m : 1,44 s² und 5,76 m : 5,76 s² sind beide 1,00 m/s².",
+   "Daran, dass der Quotient s/t² zum Ende der Fahrt hin wächst und die Punktreihe deshalb immer steiler ansteigt."
+  ],
+  "richtig": 1,
+  "erklaerung": "Eine Ursprungsgerade ist gerade dadurch gekennzeichnet, dass der Quotient aus Ordinate und Abszisse an jeder Stelle denselben Wert hat – hier der Quotient s/t². Aus t = 1,20 s folgt t² = 1,44 s² und 1,44 m : 1,44 s² = 1,00 m/s²; aus t = 2,40 s folgt t² = 5,76 s² und 5,76 m : 5,76 s² = 1,00 m/s². Wegen s/t² = a/2 ist a = 2 · 1,00 m/s² = 2,00 m/s², also die eingestellte Beschleunigung. Ein mit der Fahrtdauer wachsender Quotient würde dagegen bedeuten, dass die Punkte eben nicht auf einer Geraden liegen. Und ein Verhältnis der Wege wie das der Zeiten ist gar nicht zu erwarten: Die doppelte Zeit gehört zum vierfachen Weg (1,44 m und 5,76 m), denn der Weg wächst mit t², nicht mit t."
+ },
+ "offen": {
+  "frage": "Mira will die Beschleunigung allein aus dem t-s-Diagramm ihrer fünf gestoppten Wertepaare gewinnen und legt dazu an drei Stellen der Parabel ein Lineal an. Beurteile dieses Vorgehen und erläutere, was die Auftragung s über t² daran ändert.",
+  "prompt": "Mira will die Beschleunigung allein aus dem t-s-Diagramm ihrer fünf gestoppten Wertepaare gewinnen und legt dazu an drei Stellen der Parabel ein Lineal an. Beurteile dieses Vorgehen und erläutere, was die Auftragung s über t² daran ändert.",
+  "zeilen": 4,
+  "loesung": "Das Vorgehen kann nicht zum Ziel führen: Eine Parabel besitzt in jedem Punkt eine andere Steigung, drei angelegte Lineale liefern deshalb drei verschiedene Zahlen und keinen einzigen, für die ganze Fahrt gültigen Wert. Genau das meldet auch das Auswertungsfeld nach der Wahl von „t → s“ – es nennt keine Steigung, sondern rät, t zu quadrieren. Trägt man s über t² auf, so geht s = ½ · a · t² in s = (a/2) · x mit x = t² über – eine Ursprungsgerade, deren Steigung überall gleich ist. Erst dadurch entsteht eine eindeutige Zahl: die Steigung a/2 und daraus a = 2 · Steigung. Für ein einzelnes gestopptes Wertepaar ist diese Steigung s/t², für die ganze Messreihe liefert die Ausgleichsgerade den genaueren Wert (im gezeigten Durchgang y = 1,000·x und damit a = 2,00 m/s²). Dass es gleichgültig ist, wann gestoppt wurde, bestätigen die beiden anderen Auftragungen: „t → v“ liefert dieselbe Beschleunigung als Steigung, „t → a“ als Höhe einer Waagerechten. Linearisieren heißt also, die Achsen so zu wählen, dass die vermutete Beziehung als Gerade sichtbar wird – erst eine Gerade liefert eine Zahl."
+ }
+}

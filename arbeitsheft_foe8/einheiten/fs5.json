@@ -1,0 +1,190 @@
+{
+ "seite": {
+  "id": "fs5",
+  "quelle": "st5",
+  "sim": "messen",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zwei Messgeräte auf der Werkbank",
+  "name": "Wohin kommt das Messgerät?",
+  "fachwoerter_neu": [
+   "in Reihe",
+   "parallel"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG liegen zwei Messgeräte auf der Werkbank.",
+   "Das eine misst die Stromstärke. Es heißt Amperemeter.",
+   "Das andere misst die Spannung. Es heißt Voltmeter.",
+   "Beide sehen fast gleich aus. Jannis weiß nicht, wohin sie gehören."
+  ],
+  "frage": "Wohin gehört das Amperemeter, wohin das Voltmeter?",
+  "predict": [
+   "Ein Gerät hängt in der Leitung, das andere daneben.",
+   "Beide Messgeräte hängt man einfach in die Leitung."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke den Knopf „Amperemeter“ und lies die Statuszeile.",
+   "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.",
+   "Wähle danach „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.",
+   "Trage in die Tabelle ein, was die Statuszeile meldet."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welches Gerät?",
+   "Wie ist es eingebaut?",
+   "Was meldet die Statuszeile? (kurz)"
+  ],
+  "tabRows": [
+   [
+    "Amperemeter",
+    "in Reihe",
+    "✓ misst 0,3 A"
+   ],
+   [
+    "Voltmeter",
+    "in Reihe",
+    ""
+   ],
+   [
+    "Voltmeter",
+    "parallel",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Amperemeter wird",
+    "loesung": "in Reihe",
+    "post": "in die Leitung eingebaut."
+   },
+   {
+    "pre": "Das Voltmeter schließt man",
+    "loesung": "parallel",
+    "post": "zur Lampe an."
+   }
+  ],
+  "wortbank": [
+   "in Reihe",
+   "parallel",
+   "fließen",
+   "dunkel"
+  ],
+  "beispiel": {
+   "frage": "Warum liegt das Amperemeter in Reihe?",
+   "antwort": "Das Amperemeter misst die Stromstärke. Der ganze Strom muss durch das Gerät hindurch. Darum liegt es in Reihe. Die Statuszeile zeigt ✓ und den Wert 0,3 A."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour will die Spannung an der Lampe messen. Wohin gehört das Voltmeter?",
+    "optionen": [
+     "In Reihe in die Leitung.",
+     "Parallel neben die Lampe.",
+     "Direkt an die Batteriepole."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Strom muss durch das Amperemeter",
+      "loesung": "fließen",
+      "post": "."
+     },
+     {
+      "pre": "Liegt das Voltmeter in der Leitung, bleibt die Lampe",
+      "loesung": "dunkel",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis hängt das Voltmeter in die Leitung. Die Lampe bleibt dunkel. Erkläre seinen Fehler.",
+    "satzstarter": "Das geht nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Das geht nicht, weil in der Leitung fast kein Strom …",
+   "h3": "Fast fertige Antwort: In der Leitung fließt fast kein Strom. Die Lampe bleibt dunkel. Ergänze: Jannis muss das Voltmeter neben die Lampe hängen, also ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, dass das Amperemeter in Reihe liegt.",
+   "Ich weiß, dass das Voltmeter parallel zur Lampe liegt.",
+   "Ich kann erklären, warum die Lampe bei falschem Einbau dunkel bleibt."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte mit einer Angabe in Volt oder Ampere. Ein Ladegerät hilft dir. Schreibe die Angaben auf.",
+  "bildauftrag": "[BILD: zwei große Schaltbilder nebeneinander, klar getrennt; links ein einfacher Stromkreis aus Batterie und Lampe, in der Leitung ein rundes Messgerät mit dem Buchstaben A, darunter groß „in Reihe“; rechts derselbe Stromkreis, daneben ein rundes Messgerät mit dem Buchstaben V, das mit zwei kurzen Kabeln links und rechts an die Lampe geht, darunter groß „parallel“; dicke schwarze Leitungen, nur diese Bauteile, keine weiteren Kabel, keine zweite Lampe; große Beschriftungen „Amperemeter“, „Voltmeter“ und „Lampe“; heller ruhiger Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fs5",
+  "lernziel": "Die Schülerinnen und Schüler bauen in der Simulation das Amperemeter in Reihe und das Voltmeter parallel zur Lampe ein und begründen mit der Statuszeile, warum das Voltmeter in der Leitung die Lampe dunkel lässt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil mit Kleinspannung, Lampe, Amperemeter und Voltmeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Bildschirm-Meldungen als Ergebniskarten auslegen oder an die Tafel schreiben: (1) Amperemeter → „✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).“ · (2) Voltmeter, in Reihe → „✗ Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel.“ · (3) Voltmeter, parallel → „✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V).“ Dazu drei Skizzen an die Tafel: A mitten in der Leitung, V mitten in der Leitung, V neben der Lampe.",
+  "merksatz": [
+   "in Reihe",
+   "parallel"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Voltmeter",
+    "in Reihe",
+    "✗ Lampe bleibt dunkel"
+   ],
+   [
+    "Voltmeter",
+    "parallel",
+    "✓ misst 4,5 V"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile meldet nach dem Knopf „parallel“: ✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V). Das Voltmeter hängt neben der Lampe, nicht in der Leitung.",
+   "typische_fehler": [
+    "„In Reihe in die Leitung“ wird gewählt, weil beide Geräte gleich aussehen und das Amperemeter dort liegt.",
+    "„Direkt an die Batteriepole“ wird gewählt, weil der Strom scheinbar aus der Batterie kommt; die Simulation meldet dazu einen Kurzschluss."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "fließen",
+    "dunkel"
+   ],
+   "typische_fehler": [
+    "„in Reihe“ oder „parallel“ werden noch einmal eingesetzt, weil sie oben im Merksatz stehen.",
+    "Beide Lückenwörter werden vertauscht („Der Strom muss durch das Amperemeter dunkel.“) – hier Wortart und Satzsinn gemeinsam prüfen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das geht nicht, weil in der Leitung dann fast kein Strom fließt. Darum bleibt die Lampe dunkel. Jannis muss das Voltmeter parallel neben die Lampe hängen.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel.“",
+    "Jannis hat die beiden Geräte verwechselt: Nur das Amperemeter gehört in die Leitung.",
+    "Beschreibung statt Fachwort: Das Voltmeter muss mit zwei Kabeln links und rechts an die Lampe."
+   ],
+   "typische_fehler": [
+    "Nur der Fehler wird benannt („falsch angeschlossen“), der richtige Einbau fehlt.",
+    "„in Reihe“ und „parallel“ werden vertauscht, weil beide Geräte gleich aussehen.",
+    "Die Anzeige gilt als Beweis: Auch falsch eingebaut zeigt das Voltmeter eine Zahl (~4,5 V) – die Tilde bitte nicht als Teil der Zahl lesen lassen."
+   ]
+  },
+  "hilfe3_wort": "parallel",
+  "schwache": [
+   "Erst nur den Knopf „Amperemeter“ drücken und die Beispielzeile der Tabelle gemeinsam laut lesen; das Voltmeter folgt in einer zweiten Runde.",
+   "Zwei Wortkarten „in Reihe“ und „parallel“ auf den Tisch legen und zu den beiden Skizzen schieben lassen, bevor geschrieben wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Auf die Knopf-Falle hinweisen: Der Bedienknopf heißt „parallel“, die Quiz-Antwort „Parallel zum Bauteil“ – gemeinsam einmal zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke im Quiz der Simulation die Antwort „Direkt an die Batteriepole“ und schreibe auf, was die Simulation dazu meldet.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Messgeräte für Stromstärke und Spannung. Kompetenzcodes (UF1, E5, K1, B2) stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

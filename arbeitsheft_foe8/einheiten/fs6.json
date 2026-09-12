@@ -1,0 +1,191 @@
+{
+ "seite": {
+  "id": "fs6",
+  "quelle": "st6",
+  "sim": "widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was bremst den Strom?",
+  "name": "Großer Widerstand, kleiner Strom",
+  "fachwoerter_neu": [
+   "Widerstand R in Ohm (Ω)"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG steht eine Kiste mit Bauteilen.",
+   "Nour klemmt drei Bauteile nacheinander an dasselbe Netzteil mit 4,5 Volt.",
+   "Mal zeigt das Amperemeter viel Strom, mal fast keinen.",
+   "Jedes Bauteil bremst den Strom. Diese Bremse heißt Widerstand R."
+  ],
+  "frage": "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
+  "predict": [
+   "Die Spannung bleibt 4,5 Volt. Also bleibt der Strom gleich.",
+   "Ein großer Widerstand bremst stark. Dann fließt weniger Strom."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „kleiner Widerstand“ und lies die Statuszeile.",
+   "Trage Widerstand R und Stromstärke I in die Tabelle ein.",
+   "Drücke „großer Widerstand“ und trage die beiden Werte ein.",
+   "Vergleiche die drei Zeilen: Wo fließt der meiste Strom?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Knopf?",
+   "Widerstand R",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "15 Ω",
+    "0,30 A"
+   ],
+   [
+    "kleiner Widerstand",
+    "",
+    ""
+   ],
+   [
+    "großer Widerstand",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Bauteil bremst den Strom. Das nennt man",
+    "loesung": "Widerstand",
+    "post": ". Die Einheit ist Ohm (Ω)."
+   },
+   {
+    "pre": "Bei 4,5 Volt gilt: großer Widerstand,",
+    "loesung": "kleiner Strom",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Widerstand",
+   "kleiner Strom",
+   "1,50 A",
+   "0,10 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strom, wenn der Widerstand größer wird?",
+   "antwort": "Bei 4,5 Volt und 3 Ω fließen 1,50 A. Bei 45 Ω fließen nur noch 0,10 A. Der Widerstand ist größer, also ist der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim Knopf „großer Widerstand“?",
+    "optionen": [
+     "Der Strom wird größer: 1,50 A.",
+     "Der Strom bleibt gleich: 0,30 A.",
+     "Der Strom wird kleiner: 0,10 A."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knopf „kleiner Widerstand“ zeigt R = 3 Ω. Dort fließen",
+      "loesung": "1,50 A",
+      "post": "."
+     },
+     {
+      "pre": "Beim Knopf „großer Widerstand“ zeigt die Anzeige nur",
+      "loesung": "0,10 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ein großer Widerstand macht den Strom stärker.“ Erkläre Jannis, warum das falsch ist.",
+    "satzstarter": "Ein großer Widerstand bremst …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Schau in der Statuszeile nach. Dort stehen zu jedem Bauteil der Widerstand R und die Stromstärke I.",
+   "h2": "Beginne so: Ein großer Widerstand bremst den Strom stark. Darum fließt …",
+   "h3": "Fast fertige Antwort: Bei 45 Ω fließen nur 0,10 A. Bei 3 Ω fließen 1,50 A. Ein großer Widerstand macht den Strom also nicht stärker, sondern ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile den Widerstand R und die Stromstärke I ablesen.",
+   "Ich weiß, dass man den Widerstand in Ohm (Ω) misst.",
+   "Ich kann erklären: großer Widerstand, kleiner Strom."
+  ],
+  "zuhause": "Suche zu Hause eine Lampe mit Drehregler. So ein Regler heißt Dimmer. Drehe ihn langsam dunkler. Der Regler bremst den Strom immer stärker. Schreibe auf, wie sich das Licht dabei ändert.",
+  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, alle mit demselben Netzteil „4,5 V“ und einem runden Messgerät mit großem „A“; links ein kurzer dicker Draht mit großer Beschriftung „R = 3 Ω“ und der Anzeige „1,50 A“, in der Mitte „R = 15 Ω“ mit „0,30 A“, rechts „R = 45 Ω“ mit „0,10 A“; der Strompfeil im Kreis wird von links nach rechts deutlich dünner; nur diese drei Kreise, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs6",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei fester Spannung 4,5 V an drei Bauteilen den Widerstand R in Ohm (Ω) und die Stromstärke I ab und erklären daran: großer Widerstand, kleiner Strom. Die Berechnung R = U/I ist auf dieser Seite bewusst weggelassen und bleibt dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, Amperemeter, dicker Kupferdraht und Widerstandsdraht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen: „kleiner Widerstand“ → dicker Kupferdraht: Widerstand R = 3 Ω, bei U = 4,5 V fließt I = 1,50 A · „mittel“ → Glühdraht: Widerstand R = 15 Ω, bei U = 4,5 V fließt I = 0,30 A · „großer Widerstand“ → Widerstandsdraht: Widerstand R = 45 Ω, bei U = 4,5 V fließt I = 0,10 A. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Bauteilnamen stehen absichtlich nur hier, nicht auf der Schülerseite.",
+  "merksatz": [
+   "Widerstand",
+   "kleiner Strom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "kleiner Widerstand",
+    "3 Ω",
+    "1,50 A"
+   ],
+   [
+    "großer Widerstand",
+    "45 Ω",
+    "0,10 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet beim Knopf „großer Widerstand“: Widerstand R = 45 Ω. Bei U = 4,5 V fließt I = 0,10 A. Von 0,30 A auf 0,10 A wird der Strom also kleiner.",
+   "typische_fehler": [
+    "1,50 A wird gewählt, weil „groß“ mit „viel Strom“ gleichgesetzt wird (Sim-Rückmeldung: „✗ Ein größerer Widerstand macht den Strom nicht größer.“).",
+    "0,30 A wird gewählt: der Wert des Ausgangszustands bleibt im Kopf stehen (Sim: „✗ Der Strom ändert sich sehr wohl.“).",
+    "0,10 A wird für größer gehalten als 0,30 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,50 A",
+    "0,10 A"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht.",
+    "Statt der Stromstärke wird der Widerstand eingetragen (3 Ω, 45 Ω).",
+    "1,50 A wird als „einhundertfünfzig“ gelesen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein großer Widerstand bremst den Strom stark. Darum fließt weniger Strom. Bei 45 Ω sind es nur 0,10 A, bei 3 Ω dagegen 1,50 A. Die Spannung war jedes Mal 4,5 V.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Größerer Widerstand → kleinerer Strom“.",
+    "Verweis auf die eigene Tabelle: 15 Ω → 0,30 A, 3 Ω → 1,50 A, 45 Ω → 0,10 A – und die Spannung bleibt 4,5 V.",
+    "Bild vom Bremsen: Wer stärker bremst, wird nicht schneller."
+   ],
+   "typische_fehler": [
+    "Der Widerstand wird als Verstärker gedacht (Sim: „✗ Verstärken tut er den Strom nicht.“).",
+    "Es wird behauptet, der Widerstand erzeuge die Spannung (Sim: „✗ Spannung erzeugt die Quelle, nicht der Widerstand.“).",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "kleiner (auch richtig: schwächer, weniger)",
+  "schwache": [
+   "Zuerst nur die zwei Randfälle „kleiner Widerstand“ und „großer Widerstand“ vergleichen; die Zeile „mittel“ ist schon ausgefüllt.",
+   "Die drei Zahlen 1,50 – 0,30 – 0,10 vorher auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Das Zeichen Ω an der Tafel als gesprochenes Wort einführen: 15 Ω heißt „fünfzehn Ohm“. Sonst wird es als leeres Symbol abgeschrieben.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe die drei richtigen Antworten auf („Er hemmt den Strom“, „Kleiner“, „Ohm (Ω)“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrischer Widerstand. Kompetenzen UF1, UF2, UF3 und B2 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). UF4 hing an der Rechnung R = U/I und bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

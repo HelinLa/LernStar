@@ -1,0 +1,69 @@
+[
+ {
+  "sim": "energie-entwerten",
+  "ueberschrift": "♻️ Wenn Energie nie verloren geht – warum soll man dann sparen?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Kohle → Licht",
+    "ruft": "_eewSet('strom')"
+   },
+   {
+    "aufschrift": "Benzin → Fahrt",
+    "ruft": "_eewSet('auto')"
+   },
+   {
+    "aufschrift": "▶ nächster Schritt",
+    "ruft": "_eewWeiter()"
+   },
+   {
+    "aufschrift": "↺ zurücksetzen",
+    "ruft": "_eew.stufe=0;_eewStatus()"
+   }
+  ],
+  "hinweise": [
+   "Gehe die Kette Schritt für Schritt durch. Zähle unten mit: die Gesamtmenge bleibt bei 1000 J – aber schau, was am Ende davon noch zu gebrauchen ist.",
+   "Am Ende sind immer noch 1000 J da – aber als lauwarme Luft. Damit kann niemand mehr etwas anfangen.",
+   "Gespart wird deshalb nicht die Menge an Energie, sondern ihre Brauchbarkeit.",
+   "Energie bleibt erhalten – aber sie wird entwertet | jeder Schritt macht einen Teil zu Wärme"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "eewStatus: Kohle → Licht · Start: 1000 J Kohle | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden."
+   },
+   {
+    "einstellung": "Kohle → Licht",
+    "text": "eewStatus: Kohle → Licht · Start: 1000 J Kohle | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden."
+   },
+   {
+    "einstellung": "Benzin → Fahrt",
+    "text": "eewStatus: Benzin → Fahrt · Start: 1000 J Benzin | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden."
+   },
+   {
+    "einstellung": "▶ nächster Schritt",
+    "text": "eewStatus: Benzin → Fahrt · Start: 1000 J Benzin | Schritt 1: Motor verbrennt das Benzin | davon weiter nutzbar: 250 J | als Wärme abgegeben: 750 J (Abgas und Kühlwasser) | zusammen immer noch 1000 J – keine ist verschwunden."
+   },
+   {
+    "einstellung": "↺ zurücksetzen",
+    "text": "eewStatus: Benzin → Fahrt · Start: 1000 J Benzin | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden."
+   }
+  ],
+  "bildtexte": [
+   "Kohle → Licht · Start 1000 J Kohle",
+   "grün = noch nutzbar    rot = zu Wärme geworden",
+   "1000 J nutzbar",
+   "↓ Kraftwerk verbrennt die Kohle  (η = 40 %)",
+   "↓ Strom fließt durch die Leitung  (η = 92 %)",
+   "↓ LED-Lampe macht Licht  (η = 40 %)",
+   "↓ Licht trifft Wände und Möbel  (η = 0 %)",
+   "die Gesamtlänge ändert sich nie: 1000 J",
+   "Benzin → Fahrt · Start 1000 J Benzin",
+   "↓ Motor verbrennt das Benzin  (η = 25 %)",
+   "↓ Antrieb bis zu den Rädern  (η = 90 %)",
+   "↓ Auto bremst an der Ampel  (η = 0 %)",
+   "250 J nutzbar",
+   "750 J Wärme"
+  ]
+ }
+]

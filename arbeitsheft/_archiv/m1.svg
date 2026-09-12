@@ -1,0 +1,573 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+<defs>
+<!-- GEMEINSAMER STILBAUKASTEN fuer die Einstiegsbilder.
+     Wird von jedem Szenen-SVG woertlich in <defs> uebernommen, damit alle Bilder
+     dieselben Materialien haben. Material A (Verlaeufe, Glanz) + Ordnung C (klare
+     Silhouetten, ruhige Flaechen). -->
+
+<!-- ===== Karte ===== -->
+<linearGradient id="karte" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#FFF7E8"/><stop offset="1" stop-color="#F9E8CE"/>
+</linearGradient>
+<clipPath id="clipKarte"><rect x="0" y="0" width="900" height="540" rx="84"/></clipPath>
+
+<!-- ===== Holz: Grundverlauf + echte Maserung ueber feTurbulence ===== -->
+<linearGradient id="holz" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#A9762F"/><stop offset="0.18" stop-color="#C08F45"/>
+  <stop offset="0.55" stop-color="#CE9C56"/><stop offset="0.86" stop-color="#B27F3C"/>
+  <stop offset="1" stop-color="#96682A"/>
+</linearGradient>
+<linearGradient id="holzHell" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#C79A5C"/><stop offset="0.5" stop-color="#D8AE71"/>
+  <stop offset="1" stop-color="#B98D50"/>
+</linearGradient>
+<filter id="maser" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.010 0.42" numOctaves="4" seed="11" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.42  0 0 0 0 0.27  0 0 0 0 0.10  0 0 0 0.42 0"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+<filter id="rauh" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.30  0 0 0 0 0.24  0 0 0 0 0.16  0 0 0 0.35 0"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+
+<!-- ===== Stahl: Hauptverlauf, warmer Reflex von unten, harter Glanzpunkt ===== -->
+<radialGradient id="stahl" cx="0.5" cy="0.5" r="0.68" fx="0.32" fy="0.26">
+  <stop offset="0" stop-color="#F7FAFD"/><stop offset="0.16" stop-color="#D4DEE9"/>
+  <stop offset="0.42" stop-color="#9BA9BB"/><stop offset="0.70" stop-color="#65728A"/>
+  <stop offset="0.89" stop-color="#3F4960"/><stop offset="1" stop-color="#2C3547"/>
+</radialGradient>
+<radialGradient id="stahlWarm" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#FFEBC2" stop-opacity="0.92"/>
+  <stop offset="0.55" stop-color="#EFCB90" stop-opacity="0.42"/>
+  <stop offset="1" stop-color="#DFB578" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="glanz" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
+  <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.38"/>
+  <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="blech" x1="0" y1="0" x2="0.35" y2="1">
+  <stop offset="0" stop-color="#D9E1EA"/><stop offset="0.4" stop-color="#A6B2C2"/>
+  <stop offset="0.75" stop-color="#7C8899"/><stop offset="1" stop-color="#9DA9B8"/>
+</linearGradient>
+<linearGradient id="magnetKlotz" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#7A8496"/><stop offset="0.26" stop-color="#4D5768"/>
+  <stop offset="0.62" stop-color="#323B4D"/><stop offset="0.88" stop-color="#222939"/>
+  <stop offset="1" stop-color="#3E4759"/>
+</linearGradient>
+
+<!-- ===== Gras ===== -->
+<linearGradient id="gras" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8FB362"/><stop offset="0.5" stop-color="#6E9449"/>
+  <stop offset="1" stop-color="#4F7134"/>
+</linearGradient>
+<linearGradient id="grasDunkel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6B8F46"/><stop offset="1" stop-color="#3E5B29"/>
+</linearGradient>
+
+<!-- ===== Schatten ===== -->
+<filter id="kontakt" x="-60%" y="-60%" width="220%" height="220%">
+  <feDropShadow dx="1" dy="3" stdDeviation="2.2" flood-color="#3A2B14" flood-opacity="0.55"/>
+</filter>
+<filter id="weich" x="-60%" y="-60%" width="220%" height="220%">
+  <feDropShadow dx="3" dy="7" stdDeviation="7" flood-color="#3A2B14" flood-opacity="0.32"/>
+</filter>
+<filter id="tiefe" x="-40%" y="-40%" width="180%" height="180%">
+  <feGaussianBlur stdDeviation="9"/>
+</filter>
+
+<!-- ===== eigene defs m1 ===== -->
+<linearGradient id="m1Wald" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#93AE71"/><stop offset="0.55" stop-color="#658647"/>
+  <stop offset="1" stop-color="#476530"/>
+</linearGradient>
+<linearGradient id="m1Dunst" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFF7E8" stop-opacity="0.62"/>
+  <stop offset="0.55" stop-color="#FDF1DE" stop-opacity="0.34"/>
+  <stop offset="1" stop-color="#F9E8CE" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="m1Boden" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#93AF64"/><stop offset="0.42" stop-color="#71944B"/>
+  <stop offset="1" stop-color="#3D5B29"/>
+</linearGradient>
+<linearGradient id="m1Ritze" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#503A1B"/><stop offset="0.16" stop-color="#3A2911"/>
+  <stop offset="0.42" stop-color="#1A1208"/><stop offset="0.72" stop-color="#0A0703"/>
+  <stop offset="1" stop-color="#080502"/>
+</linearGradient>
+<linearGradient id="m1Halo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2A1C0B" stop-opacity="0"/>
+  <stop offset="0.30" stop-color="#2A1C0B" stop-opacity="0.42"/>
+  <stop offset="0.52" stop-color="#1A1207" stop-opacity="0.62"/>
+  <stop offset="0.74" stop-color="#2A1C0B" stop-opacity="0.34"/>
+  <stop offset="1" stop-color="#2A1C0B" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="m1Kante" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#F4D296" stop-opacity="0.75"/>
+  <stop offset="1" stop-color="#F4D296" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="m1Schatten" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2B1E0C" stop-opacity="0.5"/>
+  <stop offset="1" stop-color="#2B1E0C" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="m1Schaft" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#525C71"/><stop offset="0.18" stop-color="#A3B0C1"/>
+  <stop offset="0.36" stop-color="#EEF4FA"/><stop offset="0.58" stop-color="#A7B3C2"/>
+  <stop offset="0.84" stop-color="#4E5769"/><stop offset="1" stop-color="#7C8795"/>
+</linearGradient>
+<linearGradient id="m1Zyl" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2E3745" stop-opacity="0.55"/>
+  <stop offset="0.13" stop-color="#FFFFFF" stop-opacity="0.10"/>
+  <stop offset="0.28" stop-color="#FFFFFF" stop-opacity="0.60"/>
+  <stop offset="0.44" stop-color="#FFFFFF" stop-opacity="0.08"/>
+  <stop offset="0.68" stop-color="#222A38" stop-opacity="0.32"/>
+  <stop offset="0.88" stop-color="#1B222E" stop-opacity="0.55"/>
+  <stop offset="1" stop-color="#E8C58C" stop-opacity="0.32"/>
+</linearGradient>
+<radialGradient id="m1DoseInnen" cx="0.66" cy="0.60" r="0.74">
+  <stop offset="0" stop-color="#15100A"/><stop offset="0.5" stop-color="#221A11"/>
+  <stop offset="1" stop-color="#463726"/>
+</radialGradient>
+<linearGradient id="m1MagOben" x1="0.08" y1="0" x2="0.42" y2="1">
+  <stop offset="0" stop-color="#BAC4D2"/><stop offset="0.24" stop-color="#8B95A6"/>
+  <stop offset="0.62" stop-color="#697386"/><stop offset="1" stop-color="#596375"/>
+</linearGradient>
+<linearGradient id="m1MagFront" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#3E4759"/><stop offset="0.45" stop-color="#28303F"/>
+  <stop offset="0.86" stop-color="#1A202C"/><stop offset="1" stop-color="#2E3646"/>
+</linearGradient>
+<linearGradient id="m1Ritze2" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#5C431F"/><stop offset="0.2" stop-color="#412F15"/>
+  <stop offset="0.55" stop-color="#22180B"/><stop offset="1" stop-color="#140E06"/>
+</linearGradient>
+<clipPath id="m1Spalt1"><rect x="-140" y="387" width="1180" height="12"/></clipPath>
+</defs>
+<g clip-path="url(#clipKarte)">
+  <rect width="900" height="540" fill="url(#karte)"/>
+
+  <!-- Waldrand, weit hinten -->
+  <g filter="url(#tiefe)" opacity="0.92">
+    <rect x="-40" y="150" width="980" height="132" fill="#63834A"/>
+    <ellipse cx="40" cy="158" rx="116" ry="74" fill="url(#m1Wald)"/>
+    <ellipse cx="158" cy="118" rx="140" ry="112" fill="url(#m1Wald)"/>
+    <ellipse cx="292" cy="152" rx="104" ry="72" fill="url(#m1Wald)"/>
+    <ellipse cx="408" cy="108" rx="156" ry="120" fill="url(#m1Wald)"/>
+    <ellipse cx="556" cy="142" rx="118" ry="86" fill="url(#m1Wald)"/>
+    <ellipse cx="676" cy="124" rx="132" ry="102" fill="url(#m1Wald)"/>
+    <ellipse cx="796" cy="150" rx="110" ry="76" fill="url(#m1Wald)"/>
+    <ellipse cx="886" cy="126" rx="118" ry="98" fill="url(#m1Wald)"/>
+    <ellipse cx="24" cy="191" rx="88" ry="40" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="138" cy="167" rx="106" ry="60" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="277" cy="184" rx="79" ry="39" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="386" cy="161" rx="119" ry="65" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="539" cy="180" rx="90" ry="46" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="658" cy="169" rx="100" ry="55" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="781" cy="183" rx="84" ry="41" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="869" cy="169" rx="90" ry="53" fill="#41602F" opacity="0.5"/>
+    <ellipse cx="96" cy="196" rx="90" ry="54" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="238" cy="202" rx="84" ry="48" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="366" cy="198" rx="96" ry="56" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="508" cy="204" rx="88" ry="50" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="632" cy="196" rx="92" ry="54" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="760" cy="204" rx="84" ry="48" fill="#4E6E38" opacity="0.72"/>
+    <ellipse cx="866" cy="198" rx="88" ry="52" fill="#4E6E38" opacity="0.72"/>
+    <rect x="200" y="192" width="20" height="92" fill="#4A3A24" opacity="0.7"/>
+    <rect x="472" y="184" width="23" height="100" fill="#4A3A24" opacity="0.66"/>
+    <rect x="744" y="192" width="19" height="92" fill="#4A3A24" opacity="0.6"/>
+  </g>
+  <rect x="0" y="0" width="900" height="252" fill="url(#m1Dunst)"/>
+
+  <!-- Wiesenboden -->
+  <rect x="0" y="232" width="900" height="112" fill="url(#m1Boden)"/>
+  <ellipse cx="450" cy="238" rx="540" ry="30" fill="#88A85C" opacity="0.6" filter="url(#tiefe)"/>
+
+  <!-- weiche Wiese im Mittelgrund -->
+  <g filter="url(#tiefe)" opacity="0.8">
+  <path d="M-28 271 Q-28 245 -36 227 Q-21 249 -17 271 Z" fill="#779950"/><path d="M-7 270 Q-7 247 -17 230 Q-1 250 3 270 Z" fill="#5F8340"/><path d="M10 270 Q12 249 24 234 Q21 252 18 270 Z" fill="#5F8340"/><path d="M31 276 Q32 244 39 222 Q42 249 41 276 Z" fill="#779950"/><path d="M63 270 Q63 240 60 218 Q69 244 71 270 Z" fill="#5F8340"/><path d="M69 272 Q69 244 64 223 Q77 248 80 272 Z" fill="#5F8340"/><path d="M98 273 Q97 250 88 232 Q102 253 106 273 Z" fill="#779950"/><path d="M111 276 Q111 255 110 240 Q120 258 121 276 Z" fill="#5F8340"/><path d="M135 272 Q136 244 146 223 Q145 248 144 272 Z" fill="#5F8340"/><path d="M157 275 Q158 245 168 223 Q167 249 165 275 Z" fill="#779950"/><path d="M183 270 Q184 249 195 234 Q193 252 191 270 Z" fill="#5F8340"/><path d="M195 269 Q196 243 208 225 Q207 247 205 269 Z" fill="#5F8340"/><path d="M220 272 Q221 246 228 227 Q231 250 230 272 Z" fill="#779950"/><path d="M234 278 Q235 247 239 224 Q245 251 245 278 Z" fill="#5F8340"/><path d="M248 277 Q250 251 270 233 Q264 255 260 277 Z" fill="#5F8340"/><path d="M272 273 Q271 247 262 229 Q278 251 282 273 Z" fill="#779950"/><path d="M291 270 Q293 256 304 246 Q302 258 299 270 Z" fill="#5F8340"/><path d="M312 273 Q311 243 303 222 Q318 247 321 273 Z" fill="#5F8340"/><path d="M336 279 Q338 250 352 229 Q348 254 345 279 Z" fill="#779950"/><path d="M355 273 Q357 243 373 221 Q367 247 363 273 Z" fill="#5F8340"/><path d="M370 272 Q371 254 375 242 Q381 257 381 272 Z" fill="#5F8340"/><path d="M391 269 Q392 248 392 233 Q401 251 402 269 Z" fill="#779950"/><path d="M421 277 Q422 254 430 237 Q433 257 432 277 Z" fill="#5F8340"/><path d="M428 279 Q430 251 446 230 Q443 255 440 279 Z" fill="#5F8340"/><path d="M455 273 Q456 259 463 248 Q463 261 462 273 Z" fill="#779950"/><path d="M470 271 Q470 255 469 244 Q476 258 478 271 Z" fill="#5F8340"/><path d="M489 271 Q490 256 489 245 Q496 258 497 271 Z" fill="#5F8340"/><path d="M521 276 Q521 260 517 249 Q528 262 530 276 Z" fill="#779950"/><path d="M533 270 Q536 241 554 219 Q547 245 543 270 Z" fill="#5F8340"/><path d="M555 270 Q556 255 555 244 Q563 257 564 270 Z" fill="#5F8340"/><path d="M580 271 Q582 258 599 248 Q594 259 590 271 Z" fill="#779950"/><path d="M589 275 Q590 262 596 252 Q602 264 601 275 Z" fill="#5F8340"/><path d="M621 277 Q621 259 621 246 Q628 261 629 277 Z" fill="#5F8340"/><path d="M640 275 Q640 247 638 226 Q647 251 648 275 Z" fill="#779950"/><path d="M658 280 Q660 250 674 229 Q673 254 670 280 Z" fill="#5F8340"/><path d="M680 271 Q680 249 679 232 Q686 252 687 271 Z" fill="#5F8340"/><path d="M687 272 Q689 254 700 241 Q702 257 700 272 Z" fill="#779950"/><path d="M715 279 Q717 247 734 224 Q728 252 724 279 Z" fill="#5F8340"/><path d="M731 271 Q731 255 727 243 Q739 257 741 271 Z" fill="#5F8340"/><path d="M760 278 Q761 256 770 240 Q773 259 772 278 Z" fill="#779950"/><path d="M768 276 Q770 246 783 223 Q783 250 780 276 Z" fill="#5F8340"/><path d="M794 271 Q794 243 794 222 Q804 247 806 271 Z" fill="#5F8340"/><path d="M821 273 Q823 253 841 238 Q836 256 832 273 Z" fill="#779950"/><path d="M829 270 Q832 255 848 243 Q845 257 841 270 Z" fill="#5F8340"/><path d="M850 278 Q852 246 860 223 Q861 250 860 278 Z" fill="#5F8340"/><path d="M875 270 Q878 257 896 248 Q890 259 886 270 Z" fill="#779950"/>
+  </g>
+
+  <!-- hohes Gras, hintere Lage -->
+  <g>
+  <path d="M-2 305 Q-4 243 -28 199 Q1 252 9 305 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M6 299 Q4 256 -19 226 Q8 262 15 299 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M16 302 Q14 241 0 197 Q19 250 24 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M29 302 Q30 240 29 196 Q37 249 38 302 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M39 298 Q39 259 36 230 Q48 264 50 298 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M54 302 Q56 252 69 215 Q66 259 63 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M58 304 Q60 254 73 217 Q68 261 65 304 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M73 303 Q78 246 118 205 Q92 254 82 303 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M90 305 Q88 232 63 179 Q91 242 99 305 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M102 306 Q102 225 95 166 Q107 236 110 306 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M113 301 Q111 253 94 218 Q115 259 121 301 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M112 302 Q112 230 110 177 Q121 240 123 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M128 302 Q129 254 141 219 Q141 261 139 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M134 302 Q136 238 154 192 Q149 247 145 302 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M146 308 Q147 251 153 209 Q155 259 154 308 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M156 307 Q157 245 166 201 Q165 254 164 307 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M157 301 Q161 215 190 152 Q176 227 169 301 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M169 305 Q171 228 193 172 Q181 238 175 305 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M210 300 Q207 264 181 238 Q212 269 221 300 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M213 295 Q212 264 198 242 Q217 268 222 295 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M229 295 Q228 243 216 206 Q236 250 240 295 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M238 297 Q239 259 244 231 Q249 264 249 297 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M252 295 Q252 259 256 233 Q259 264 259 295 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M260 300 Q263 262 287 235 Q274 267 267 300 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M272 302 Q274 273 296 251 Q283 277 278 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M298 309 Q296 238 278 187 Q299 248 304 309 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M310 308 Q308 219 288 154 Q312 231 319 308 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M317 304 Q317 216 309 151 Q324 228 327 304 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M323 303 Q322 250 304 211 Q327 257 333 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M333 303 Q334 214 340 149 Q344 226 343 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M346 303 Q346 233 344 182 Q353 243 355 303 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M362 303 Q364 229 376 175 Q376 239 374 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M362 302 Q364 236 378 189 Q374 245 370 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M372 300 Q373 241 385 197 Q382 249 380 300 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M384 308 Q388 250 420 208 Q402 258 393 308 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M428 307 Q426 250 402 209 Q428 258 436 307 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M437 306 Q435 255 412 219 Q440 262 448 306 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M449 302 Q447 246 434 207 Q453 254 457 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M459 304 Q460 248 465 208 Q470 256 470 304 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M464 297 Q464 264 461 240 Q470 268 472 297 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M478 301 Q480 251 499 215 Q492 258 487 301 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M491 303 Q494 250 520 211 Q507 257 500 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M502 304 Q505 265 527 236 Q515 270 509 304 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M531 305 Q529 222 507 161 Q532 233 540 305 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M542 302 Q541 233 527 183 Q544 242 548 302 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M551 301 Q550 245 541 205 Q554 253 557 301 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M558 306 Q559 234 558 182 Q565 244 566 306 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M565 311 Q567 263 575 228 Q574 269 573 311 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M567 305 Q569 243 580 198 Q580 251 578 305 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M580 302 Q581 219 585 159 Q589 231 589 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M598 310 Q602 261 631 226 Q614 268 607 310 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M600 300 Q603 220 624 161 Q612 231 606 300 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M611 303 Q614 248 636 208 Q625 256 619 303 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M640 304 Q638 245 617 202 Q640 253 647 304 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M660 305 Q659 261 644 229 Q664 267 669 305 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M665 295 Q664 246 649 211 Q667 253 672 295 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M674 300 Q674 234 666 187 Q679 243 682 300 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M684 301 Q687 235 702 187 Q698 244 695 301 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M704 302 Q707 249 729 211 Q716 257 710 302 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M712 304 Q715 248 734 208 Q723 256 718 304 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M717 305 Q721 259 747 225 Q734 265 727 305 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M747 302 Q744 241 723 198 Q748 250 755 302 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M751 310 Q749 222 729 157 Q752 234 758 310 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M764 304 Q762 251 743 213 Q764 258 771 304 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M769 308 Q769 250 764 208 Q777 258 780 308 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M782 301 Q782 230 779 179 Q788 240 790 301 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M798 309 Q799 257 810 219 Q809 264 807 309 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M799 310 Q801 253 810 211 Q810 261 808 310 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M816 310 Q817 262 829 228 Q828 269 825 310 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M821 309 Q824 263 849 229 Q838 269 832 309 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M837 306 Q841 248 866 206 Q851 256 844 306 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M843 301 Q842 245 828 204 Q848 253 854 301 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M842 303 Q840 245 817 203 Q846 253 853 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M854 297 Q854 256 849 226 Q862 261 864 297 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M871 303 Q871 251 872 213 Q877 258 878 303 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M877 306 Q880 258 900 223 Q892 264 887 306 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M886 299 Q890 258 919 228 Q904 264 896 299 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M901 303 Q904 249 932 209 Q916 256 909 303 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  </g>
+
+  <!-- Schrauben im Gras -->
+<g transform="translate(148,296) rotate(-13) scale(0.97)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+<g transform="translate(648,268) rotate(21) scale(0.9)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+<g transform="translate(806,302) rotate(-6) scale(0.97)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+
+  <!-- hohes Gras, vordere Lage -->
+  <g>
+  <path d="M41 318 Q38 279 9 251 Q40 284 50 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M59 321 Q57 258 42 212 Q61 266 66 321 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M67 313 Q66 268 53 235 Q73 274 77 313 Z" fill="url(#gras)"/>
+  <path d="M74 317 Q73 274 64 242 Q79 280 82 317 Z" fill="url(#gras)"/>
+  <path d="M78 312 Q78 261 74 224 Q87 268 89 312 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M87 318 Q89 267 106 230 Q102 274 98 318 Z" fill="url(#gras)"/>
+  <path d="M107 318 Q109 270 124 234 Q122 276 118 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M115 312 Q118 262 140 225 Q129 269 123 312 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M121 321 Q126 271 164 236 Q138 278 128 321 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M140 315 Q139 227 120 163 Q143 239 149 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M150 324 Q147 231 120 164 Q149 244 158 324 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M160 314 Q159 227 150 163 Q163 239 166 314 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M172 318 Q173 256 175 211 Q183 264 183 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M182 317 Q182 239 179 182 Q190 250 192 317 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M179 324 Q181 239 190 178 Q190 251 189 324 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M190 318 Q192 246 210 194 Q205 256 201 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M203 323 Q206 250 229 197 Q216 260 210 323 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M216 318 Q219 232 244 170 Q230 244 224 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M223 317 Q226 263 248 224 Q239 271 233 317 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M222 324 Q226 248 251 194 Q240 259 234 324 Z" fill="url(#gras)"/>
+  <path d="M254 316 Q250 281 216 255 Q252 286 263 316 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M263 316 Q262 271 247 238 Q267 277 273 316 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M279 314 Q279 278 280 252 Q286 283 287 314 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M290 310 Q290 271 286 243 Q296 276 298 310 Z" fill="url(#gras)"/>
+  <path d="M296 314 Q297 271 304 240 Q309 277 308 314 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M311 313 Q315 260 342 222 Q325 268 318 313 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M321 309 Q323 248 339 204 Q333 257 329 309 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M333 318 Q338 267 382 230 Q353 274 341 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M350 321 Q349 229 331 163 Q351 242 357 321 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M359 317 Q356 245 327 194 Q357 255 366 317 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M373 321 Q370 258 348 212 Q373 267 380 321 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M377 315 Q377 251 375 206 Q384 260 386 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M388 316 Q389 236 388 178 Q394 247 395 316 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M395 317 Q396 250 396 202 Q405 260 407 317 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M404 318 Q406 244 423 191 Q419 255 415 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M417 319 Q419 255 425 210 Q429 264 428 319 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M425 314 Q427 218 445 148 Q436 231 432 314 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M435 318 Q438 220 456 150 Q449 234 445 318 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M438 315 Q441 248 472 199 Q456 257 449 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M481 320 Q478 252 450 202 Q479 261 488 320 Z" fill="url(#gras)"/>
+  <path d="M486 320 Q486 281 478 253 Q491 286 495 320 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M501 314 Q501 272 499 241 Q507 278 508 314 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M510 316 Q510 273 503 241 Q516 279 518 316 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M510 310 Q511 265 517 233 Q522 272 521 310 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M530 317 Q532 278 551 250 Q541 284 536 317 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M536 315 Q539 268 555 234 Q550 274 546 315 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M544 315 Q546 264 559 227 Q556 271 553 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M559 315 Q563 253 594 208 Q574 261 566 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M574 320 Q570 250 534 199 Q571 259 582 320 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M588 320 Q587 265 575 225 Q593 273 598 320 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M596 323 Q596 256 592 207 Q601 265 603 323 Z" fill="url(#gras)"/>
+  <path d="M606 319 Q605 232 594 169 Q613 244 617 319 Z" fill="url(#gras)"/>
+  <path d="M617 315 Q618 256 627 214 Q629 264 628 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M625 323 Q627 265 641 223 Q636 273 633 323 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M631 320 Q632 228 634 162 Q638 241 638 320 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M632 321 Q633 262 638 220 Q644 271 643 321 Z" fill="url(#gras)"/>
+  <path d="M644 321 Q645 235 655 173 Q655 247 653 321 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M660 315 Q664 240 695 185 Q679 250 671 315 Z" fill="url(#gras)"/>
+  <path d="M667 325 Q672 256 710 207 Q685 266 675 325 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M698 316 Q695 257 669 213 Q696 265 705 316 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M711 314 Q711 271 702 240 Q719 277 723 314 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M717 315 Q715 280 695 255 Q718 285 724 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M730 315 Q729 251 720 205 Q734 260 737 315 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M733 310 Q733 264 727 231 Q739 271 741 310 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M750 309 Q752 268 771 238 Q763 274 758 309 Z" fill="url(#gras)"/>
+  <path d="M755 318 Q757 278 769 249 Q767 283 765 318 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M767 314 Q770 271 789 239 Q781 277 777 314 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M799 317 Q798 249 786 200 Q805 258 809 317 Z" fill="url(#gras)"/>
+  <path d="M803 315 Q800 243 776 191 Q802 253 810 315 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M812 316 Q811 244 804 191 Q816 254 819 316 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M827 317 Q827 241 828 186 Q833 252 834 317 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M829 314 Q830 227 833 164 Q839 239 839 314 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M847 316 Q849 248 863 198 Q859 257 856 316 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M850 322 Q851 271 858 235 Q861 278 860 322 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M865 323 Q868 263 890 219 Q879 271 874 323 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M870 324 Q874 247 906 192 Q886 258 877 324 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M877 322 Q881 263 917 221 Q897 271 888 322 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M141 320 Q139 259 118 214 Q144 267 151 320 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M156 316 Q158 264 180 226 Q170 271 164 316 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M797 322 Q796 264 780 222 Q801 272 807 322 Z" fill="url(#gras)" opacity="1.0"/>
+  <path d="M814 318 Q817 269 842 234 Q829 276 822 318 Z" fill="url(#grasDunkel)" opacity="0.9"/>
+  <path d="M638 306 Q640 258 660 224 Q651 265 646 306 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M62 300 Q61 194 50 118 Q66 209 70 300 Z" fill="url(#grasDunkel)" opacity="0.7"/>
+  <path d="M254 296 Q256 196 272 124 Q266 210 262 296 Z" fill="url(#grasDunkel)" opacity="0.7"/>
+  <path d="M474 300 Q473 192 466 114 Q479 207 482 300 Z" fill="url(#grasDunkel)" opacity="0.7"/>
+  <path d="M696 296 Q698 194 716 120 Q708 208 704 296 Z" fill="url(#grasDunkel)" opacity="0.7"/>
+  <path d="M882 300 Q881 203 872 132 Q886 216 890 300 Z" fill="url(#grasDunkel)" opacity="0.7"/>
+  </g>
+
+  <!-- Bretterboden der Bude, leicht gekippt -->
+  <g transform="rotate(-2.10 450 430)">
+    <g filter="url(#maser)">
+      <rect x="-140" y="300" width="1180" height="82" fill="url(#holz)"/>
+      <rect x="-140" y="399" width="1180" height="88" fill="url(#holzHell)"/>
+      <rect x="-140" y="500" width="1180" height="100" fill="url(#holz)"/>
+    </g>
+    <rect x="-140" y="300" width="1180" height="30" fill="url(#m1Schatten)"/>
+    <rect x="-140" y="300" width="1180" height="7" fill="url(#m1Kante)"/>
+    <rect x="-140" y="399" width="1180" height="7" fill="url(#m1Kante)"/>
+    <rect x="-140" y="500" width="1180" height="7" fill="url(#m1Kante)"/>
+    <g opacity="0.15">
+      <rect x="-140" y="326" width="1180" height="3" fill="#7A5426"/>
+      <rect x="-140" y="356" width="1180" height="2" fill="#E3BA80"/>
+      <rect x="-140" y="431" width="1180" height="3" fill="#7A5426"/>
+      <rect x="-140" y="465" width="1180" height="2" fill="#E3BA80"/>
+      <rect x="-140" y="512" width="1180" height="2" fill="#7A5426"/>
+    </g>
+
+    <!-- Ritze -->
+    <rect x="-140" y="369.0" width="1180" height="43.0" fill="url(#m1Halo)"/>
+    <rect x="-140" y="382" width="1180" height="17" fill="url(#m1Ritze)"/>
+    <g clip-path="url(#m1Spalt1)">
+      <g transform="translate(426,395) rotate(2) scale(1)">
+        <g filter="url(#kontakt)">
+          <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+          <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+        </g>
+        <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+          <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+          <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+        </g>
+        <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+        <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+        <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+        <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+        <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+      </g>
+      <g transform="translate(528,394) rotate(-4) scale(0.98)">
+        <g filter="url(#kontakt)">
+          <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+          <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+        </g>
+        <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+          <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+          <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+        </g>
+        <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+        <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+        <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+        <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+        <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+      </g>
+    </g>
+    <rect x="-140" y="386" width="1180" height="13" fill="#0B0803" opacity="0.58"/>
+    <rect x="-140" y="380.6" width="1180" height="2.4" fill="#3E2C14" opacity="0.8"/>
+    <rect x="-140" y="395.8" width="1180" height="3.2" fill="#F2CB8E" opacity="0.5"/>
+
+    <!-- Ritze -->
+    <rect x="-140" y="474.0" width="1180" height="39.0" fill="url(#m1Halo)"/>
+    <rect x="-140" y="487" width="1180" height="13" fill="url(#m1Ritze2)"/>
+    <rect x="-140" y="485.6" width="1180" height="2.4" fill="#3E2C14" opacity="0.8"/>
+    <rect x="-140" y="496.8" width="1180" height="3.2" fill="#F2CB8E" opacity="0.5"/>
+  </g>
+
+  <!-- einzelne Halme ueber der Brettkante -->
+  <g>
+  <path d="M21 346 Q20 297 4 262 Q25 304 31 346 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M40 340 Q42 301 60 272 Q52 306 48 340 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  <path d="M867 330 Q870 280 892 244 Q882 287 877 330 Z" fill="url(#gras)" opacity="0.9"/>
+  <path d="M884 322 Q883 284 874 256 Q889 289 892 322 Z" fill="url(#grasDunkel)" opacity="0.8"/>
+  </g>
+
+  <!-- umgekippte Blechdose -->
+  <g transform="translate(211,368) rotate(-10)">
+    <ellipse cx="6" cy="56" rx="120" ry="21" fill="#3A2B14" opacity="0.36" filter="url(#tiefe)"/>
+    <g filter="url(#kontakt)">
+      <ellipse cx="-104" cy="0" rx="17" ry="48" fill="#5F6B7B"/>
+      <rect x="-104" y="-48" width="208" height="96" fill="url(#blech)"/>
+      <ellipse cx="106" cy="0" rx="19" ry="50" fill="#4B5462"/>
+    </g>
+    <rect x="-104" y="-48" width="208" height="96" fill="url(#m1Zyl)"/>
+    <ellipse cx="-104" cy="0" rx="17" ry="48" fill="url(#m1Zyl)" opacity="0.55"/>
+    <path d="M-74 -47.4 A17 48 0 0 1 -74 47.4" fill="none" stroke="#59636F" stroke-width="2.6" opacity="0.42"/>
+    <path d="M-68 -47.4 A17 48 0 0 1 -68 47.4" fill="none" stroke="#E5ECF3" stroke-width="1.8" opacity="0.32"/>
+    <path d="M74 -47.4 A17 48 0 0 1 74 47.4" fill="none" stroke="#59636F" stroke-width="2.6" opacity="0.38"/>
+    <ellipse cx="104" cy="0" rx="19.5" ry="50.5" fill="url(#blech)"/>
+    <ellipse cx="104" cy="0" rx="19.5" ry="50.5" fill="url(#m1Zyl)" opacity="0.7"/>
+    <ellipse cx="105" cy="0" rx="15" ry="44" fill="url(#m1DoseInnen)"/>
+    <path d="M99 30 A14.5 43 0 0 0 110 -27" fill="none" stroke="#8B7756" stroke-width="3.4" opacity="0.42"/>
+    <path d="M101 -47 A19 50 0 0 1 114 -12" fill="none" stroke="#F3F8FC" stroke-width="3.2" opacity="0.7"/>
+    <path d="M104 50 A19 50 0 0 1 90 12" fill="none" stroke="#EEDCB4" stroke-width="2.6" opacity="0.4"/>
+    <ellipse cx="-14" cy="-25" rx="76" ry="12" fill="url(#glanz)" opacity="0.85"/>
+    <ellipse cx="-34" cy="-28" rx="30" ry="6" fill="url(#glanz)"/>
+    <ellipse cx="-6" cy="38" rx="90" ry="13" fill="url(#stahlWarm)" opacity="0.55"/>
+  </g>
+
+  <!-- Schrauben auf den Brettern -->
+<g transform="translate(420,340) rotate(11) scale(1.12)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+<g transform="translate(726,340) rotate(-20) scale(1.12)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+<g transform="translate(312,460) rotate(6) scale(1.12)">
+  <g filter="url(#kontakt)">
+    <path d="M-19 -6.6 L15 -6.6 L33 0 L15 6.6 L-19 6.6 Z" fill="url(#m1Schaft)"/>
+    <rect x="-33.5" y="-11.4" width="16" height="22.8" rx="3.4" fill="url(#stahl)"/>
+  </g>
+  <g stroke="#39435A" stroke-width="1.7" opacity="0.34" stroke-linecap="round">
+    <path d="M-13 -6.1 L-9.4 6.1"/><path d="M-6.8 -6.1 L-3.2 6.1"/><path d="M-0.6 -6.1 L3 6.1"/>
+    <path d="M5.6 -6.1 L9.2 6.1"/><path d="M11.8 -6.1 L15.4 6.1"/>
+  </g>
+  <rect x="-30.5" y="-1.9" width="12.5" height="3.8" rx="1.6" fill="#2B3446" opacity="0.6"/>
+  <ellipse cx="1" cy="5.1" rx="17" ry="2.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-25.5" cy="8.2" rx="7" ry="2.6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-2" cy="-3.4" rx="11" ry="2.1" fill="url(#glanz)" opacity="0.95"/>
+  <ellipse cx="-27.5" cy="-5.2" rx="5.4" ry="3.6" fill="url(#glanz)"/>
+</g>
+
+  <!-- flacher Blockmagnet, beruehrt nichts -->
+  <g>
+    <ellipse cx="710" cy="460" rx="100" ry="18" fill="#3A2B14" opacity="0.34" filter="url(#tiefe)"/>
+    <g filter="url(#kontakt)">
+      <path d="M622 441 L790 434 L790 456 L622 463 Z" fill="url(#m1MagFront)"/>
+      <path d="M774 397 L790 434 L790 456 L774 419 Z" fill="#1F2634"/>
+      <path d="M606 404 L774 397 L790 434 L622 441 Z" fill="url(#m1MagOben)"/>
+    </g>
+    <path d="M606 404 L774 397" fill="none" stroke="#D2DBE6" stroke-width="2.2" opacity="0.45"/>
+    <path d="M622 441 L790 434" fill="none" stroke="#1B2230" stroke-width="1.8" opacity="0.45"/>
+    <ellipse cx="666" cy="413" rx="50" ry="8" fill="url(#glanz)" opacity="0.5"/>
+    <path d="M622 461.5 L790 454.5" fill="none" stroke="#E9C591" stroke-width="2.4" opacity="0.55"/>
+    <ellipse cx="708" cy="457" rx="74" ry="8" fill="url(#stahlWarm)" opacity="0.45"/>
+  </g>
+</g>
+<rect x="6" y="6" width="888" height="528" rx="78" fill="none" stroke="#C4963A" stroke-width="4.8"/>
+</svg>

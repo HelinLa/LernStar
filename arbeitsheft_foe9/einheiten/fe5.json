@@ -1,0 +1,182 @@
+{
+ "seite": {
+  "id": "fe5",
+  "quelle": "el5",
+  "sim": "energie-entwerten",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Am Ende ist alles warm",
+  "name": "Warum wird alles am Ende warm?",
+  "fachwoerter_neu": [
+   "entwertet"
+  ],
+  "alltag": [
+   "Der Bauscheinwerfer über der Bühne brennt seit einer Stunde.",
+   "Nour fasst an das Gehäuse. Es ist heiß: Das ist Wärme.",
+   "Herr Kessler sagt: Verloren geht dabei nichts. Sparen sollt ihr trotzdem."
+  ],
+  "frage": "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
+  "predict": [
+   "Am Ende sind immer noch 1000 J da. Aber fast alles ist Wärme.",
+   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst „Benzin → Fahrt“. Sonst misst du die falsche Kette.",
+   "Drücke „nächster Schritt“. Lies ab, wie viel man noch gebrauchen kann.",
+   "Lies auch die letzte Zeile: Wie viel ist zusammen da?",
+   "Trage beides in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Zahlen.",
+  "tabCols": [
+   "Wann?",
+   "Wie viel kann man noch gebrauchen? (in J)",
+   "Wie viel ist zusammen da? (in J)"
+  ],
+  "tabRows": [
+   [
+    "Am Anfang",
+    "1000 J",
+    "1000 J"
+   ],
+   [
+    "Nach Schritt 1 (Motor)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Menge der Energie bleibt",
+    "loesung": "gleich",
+    "post": ". Ein Teil wird bei jedem Schritt zu Wärme."
+   },
+   {
+    "pre": "Diese Wärme kann man nicht mehr",
+    "loesung": "gebrauchen",
+    "post": ". Man sagt: Die Energie ist entwertet."
+   }
+  ],
+  "wortbank": [
+   "gleich",
+   "gebrauchen",
+   "250 J",
+   "750 J"
+  ],
+  "beispiel": {
+   "frage": "Wie viel von 1000 J ist zu Wärme geworden?",
+   "antwort": "Gegeben: 1000 J am Anfang, 250 J noch zu gebrauchen. Rechnung: 1000 J − 250 J = 750 J. Antwort: 750 J sind zu Wärme geworden."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was steht nach Schritt 1 am Bildschirm?",
+    "optionen": [
+     "Es sind nur noch 250 J zusammen da.",
+     "Zusammen sind es immer noch 1000 J.",
+     "Die 750 J Wärme sind verschwunden."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach Schritt 1 sind von 1000 J noch",
+      "loesung": "250 J",
+      "post": "zu gebrauchen."
+     },
+     {
+      "pre": "Zu Wärme geworden sind",
+      "loesung": "750 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis fragt: Warum sollen wir sparen, wenn immer noch 1000 J da sind?",
+    "satzstarter": "Die Menge bleibt gleich, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Die Menge bleibt gleich, aber die Wärme ist überall verteilt.",
+   "h3": "Fast fertig: Die 1000 J sind noch da. Man kann sie nicht mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, wie viel man noch gebrauchen kann.",
+   "Ich kann sagen: Zusammen sind es immer noch 1000 J.",
+   "Ich kann erklären, warum man trotzdem sparen soll."
+  ],
+  "zuhause": "Fasse ein Ladegerät nach dem Laden an. Woher kommt die Wärme?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Balkenbild aus zwei gleich langen waagerechten Balken untereinander, gleicher Bildausschnitt, gleiche Länge. Oberer Balken, links davor die Beschriftung „Am Anfang“: der ganze Balken ist grün und glatt, in der Mitte groß beschriftet „1000 J – kann man gebrauchen“. Unterer Balken, links davor die Beschriftung „Nach Schritt 1: Motor“: das linke Viertel ist grün und glatt und trägt die Aufschrift „250 J“, die rechten drei Viertel sind rot und schraffiert und tragen die Aufschrift „750 J Wärme“; dazwischen eine kräftige senkrechte Trennlinie. Rechts neben beiden Balken eine geschweifte Klammer über die volle Länge mit der großen Beschriftung „zusammen immer noch 1000 J“. Unter dem Bild eine Legende aus zwei Kästchen: grünes glattes Kästchen „kann man gebrauchen“, rotes schraffiertes Kästchen „zu Wärme geworden“. Genau diese zwei Balken, keine weiteren Schritte, keine Prozentzahlen, keine Pfeile zwischen den Balken. Ruhiger heller Hintergrund, keine Personen, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fe5",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Kette „Benzin → Fahrt“ ab, dass die Gesamtmenge der Energie bei 1000 J bleibt, während nach dem ersten Schritt nur noch 250 J zu gebrauchen sind und 750 J zu Wärme geworden sind. Sie begründen damit, warum man Energie trotzdem sparen soll: Nicht die Menge geht verloren, sondern das, was man noch gebrauchen kann – die Energie wird entwertet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die beiden Ergebniskarten aus diesem Lehrerteil plus das Balken-Tafelbild. Optional als Demonstration: ein Ladegerät oder ein Netzteil eine Viertelstunde laufen lassen und danach anfassen lassen (nur handwarme Geräte, nichts Heißes).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte 1 „Am Anfang“: „Benzin → Fahrt · Start: 1000 J Benzin | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden.“ Karte 2 „Nach Schritt 1“: „Benzin → Fahrt · Start: 1000 J Benzin | Schritt 1: Motor verbrennt das Benzin | davon weiter nutzbar: 250 J | als Wärme abgegeben: 750 J (Abgas und Kühlwasser) | zusammen immer noch 1000 J – keine ist verschwunden.“ Dazu als Tafelbild zwei gleich lange Balken untereinander: oben ganz grün „1000 J nutzbar“, unten ein grünes Viertel „250 J nutzbar“ und drei rote Viertel „750 J Wärme“. Die beiden Bildtexte dazuschreiben: „grün = noch nutzbar    rot = zu Wärme geworden“ und „die Gesamtlänge ändert sich nie: 1000 J“. Wichtig: Die Schritte 2 und 3 der Kette (Antrieb, Bremsen) werden weder gezeigt noch mit Zahlen genannt – siehe Kernlehrplan-Feld. Alternativ die beiden Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "gleich",
+   "gebrauchen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Nach Schritt 1 (Motor)",
+    "250 J",
+    "1000 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Der Bildschirm meldet nach einmal „nächster Schritt“: „Schritt 1: Motor verbrennt das Benzin | davon weiter nutzbar: 250 J | als Wärme abgegeben: 750 J (Abgas und Kühlwasser) | zusammen immer noch 1000 J – keine ist verschwunden.“ Die letzte Zeile beantwortet die Frage wörtlich. 250 J und 750 J stehen zwar auch dort, aber als Teile – zusammen ergeben sie wieder 1000 J.",
+   "typische_fehler": [
+    "Antwort 2 wird angekreuzt: Die zuletzt gelesene Zahl (250 J) gilt als neue Gesamtmenge. Gegenfrage: Wo sind die 750 J geblieben? Am Balken zeigen, dass er gleich lang bleibt.",
+    "Antwort 3 wird angekreuzt: Wärme gilt als „weg“, weil man sie nicht mehr sieht. Die Wärme steckt in Abgas und Kühlwasser – sie ist noch da, nur überall verteilt.",
+    "Es wird in der Kette „Kohle → Licht“ gemessen, weil das der Ausgangszustand ist; dann passen die Zahlen nicht. Erst „Benzin → Fahrt“ drücken."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "250 J",
+    "750 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Zahlen werden vertauscht. Hilfe: Nach dem Motor ist das meiste schon Wärme – die große Zahl gehört zur Wärme.",
+    "Statt 750 J wird 1000 J eingesetzt, weil die Zeile „zusammen immer noch 1000 J“ im Kopf bleibt. Die Kontrollrechnung 1000 J − 250 J = 750 J steht im gelösten Beispiel.",
+    "Die Einheit J fehlt oder es wird W geschrieben (Verwechslung mit fe6)."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Menge bleibt gleich, aber ein großer Teil ist Wärme geworden. Diese Wärme ist überall verteilt. Man kann sie nicht mehr gebrauchen. Deshalb soll man Energie sparen.",
+   "alternativen": [
+    "Bezug auf die Zahlen: Von 1000 J sind nach dem Motor nur noch 250 J zu gebrauchen, 750 J sind Wärme.",
+    "Bezug auf den Bildschirm: Der Balken bleibt gleich lang, aber der grüne Teil wird immer kürzer.",
+    "Kurzform ohne Zahlen: „Gespart wird nicht die Menge, sondern das, was man noch gebrauchen kann.“ – reicht für die volle Wertung.",
+    "Alltagsbezug Scheinwerfer oder Ladegerät: Die Wärme geht in den Hof beziehungsweise in den Raum und ist dort für niemanden mehr zu gebrauchen."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne den Gegensatz „Menge gleich – brauchbar weniger“ zu nennen. Gegenfrage: Was ändert sich denn dann überhaupt?",
+    "Es wird doch wieder behauptet, Energie gehe verloren. Auf die letzte Bildschirmzeile zeigen: „zusammen immer noch 1000 J – keine ist verschwunden.“",
+    "Sparen wird moralisch begründet („weil es die Umwelt kaputt macht“) statt physikalisch. Die moralische Seite ist richtig, gehört aber zu fe7; hier zählt die Begründung über die Wärme."
+   ]
+  },
+  "hilfe3_wort": "gebrauchen (auch richtig: nutzen, brauchen)",
+  "schwache": [
+   "Die Bedienreihenfolge vorher gemeinsam üben: erst „Benzin → Fahrt“, dann „nächster Schritt“. Wer sich verdrückt hat, nimmt „zurücksetzen“.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Nur die zweite Spalte ausfüllen lassen; die dritte Spalte (immer 1000 J) gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Mit einem Blatt Papier arbeiten: ein Viertel abreißen und beiseitelegen, drei Viertel danebenlegen. Das Papier ist immer noch ganz da – aber nur das Viertel liegt noch brauchbar auf dem Tisch."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke am Bildschirm die andere Kette „Kohle → Licht“ und dann einmal „nächster Schritt“. Schreibe die Zeile „zusammen immer noch …“ ab. Gilt der Satz auch dort? Erwartete Antwort (nachgemessen, 05.09.2026): Ja. Dort steht „Schritt 1: Kraftwerk verbrennt die Kohle | davon weiter nutzbar: 400 J | als Wärme abgegeben: 600 J (Abwärme im Kühlturm) | zusammen immer noch 1000 J – keine ist verschwunden.“ Die Zahlen sind andere, der Satz ist derselbe.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · Energieentwertung: Energie bleibt erhalten, wird aber entwertet (Leitplanke aus dem geprüften Gutachten). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ablesen und Eintragen der Tabelle trägt E5, die Deutung der gleichbleibenden Summe UF1, die Erklär-Aufgabe zur Sparfrage UF4 und B1. Fachwortzählung: neu ist genau EIN Wort, „entwertet“ – es steht im Fachtext des Merksatzes, nicht in einer Lücke, wie bei fe4 der Erhaltungssatz. „Wärme“ ist nach Zählregel 5 ein Alltagswort ohne Formelzeichen und ohne Einheit; die Regel gilt nur mit ihren beiden Bedingungen, deshalb bekommt das Wort im Alltagsteil einen Begriffssatz („Es ist heiß: Das ist Wärme.“) und steht weder in der Wortbank noch in einer Lücke. Die Merksatz-Lücken sind „gleich“ und „gebrauchen“ – Alltagswörter ohne Begriffscharakter, wie „kleiner“ und „größer“ in fe4. „erhalten“ wird bewusst NICHT eingeführt: Nach Zählregel 4 gehört es fe4 (energieerhaltung); die Regelheft-Lücke von el5 lautete ebenfalls „erhalten“. Ebenfalls vermieden: „nutzbar“ (steht am Bildschirm als „davon weiter nutzbar: 250 J“, würde nach Zählregel 3 als Tabellenkopf- oder Aufgabenwort mitzählen). Der Tabellenkopf fragt deshalb „Wie viel kann man noch gebrauchen? (in J)“; „nutzbar“ erscheint nur in wörtlichen Bildschirmzitaten dieses Lehrerteils. „Brauchbarkeit“ ist Nominalstil und kommt auf der Schülerseite nicht vor. Datenlage: Im Dump `fakten/energie-entwerten.json` steht von der Benzin-Kette nur Schritt 1, weil simfakten jedes Bedienelement genau einmal drückt. Schritt 2 und 3 sind deshalb am 05.09.2026 von Hand nachgemessen (`node simcheck/werte.js physics-sim.js energie-entwerten` mit _eewSet('auto'), dann dreimal _eewWeiter()): Schritt 2 „Antrieb bis zu den Rädern“ – nutzbar 225 J, Wärme 775 J (Reibung im Getriebe); Schritt 3 „Auto bremst an der Ampel“ – nutzbar 0 J, Wärme 1000 J (heiße Bremsscheiben), dazu die Zeile „Nutzbar ist jetzt: 0 J. Die Energie ist noch da, aber sie taugt zu nichts mehr.“ Die Zahlen sind damit belegt; die Tabelle bleibt trotzdem bei zwei Zeilen, weil der freigegebene Seitenplan auf „nur die Kette Benzin → Fahrt“ zuschneidet und Schritt 2 (225 J) sich von Schritt 1 (250 J) zu wenig unterscheidet, um am Balken etwas zu zeigen. Die Wirkungsgrade der Bildtexte (η = 25 %, 90 %, 0 %, 40 %, 92 %) bleiben aus Tabellenkopf, Merksatz und Aufgaben heraus – „Wirkungsgrad“ gehört fe7. Knopfaufschriften: Am Bildschirm heißen die Knöpfe „▶ nächster Schritt“ und „↺ zurücksetzen“; gedruckt werden nur die Wortmarken, weil SourceSans3 ▶ und ↺ nicht kennt und als leeres Kästchen setzen würde – der Bildschirm selbst schreibt „Drücke „nächster Schritt“.“ ohne Zierzeichen, die Wortmarke ist also belegt. Die Überschrift trägt ein Emoji (♻️) und wird nirgends zitiert. Bedienhinweis auf der Schülerseite ist Pflicht: „Kohle → Licht“ ist am Bildschirm der ERSTE Knopf und zugleich der Ausgangszustand; wer sofort „nächster Schritt“ drückt, misst in der falschen Kette. Das steht so nirgends am Bildschirm."
+ }
+}

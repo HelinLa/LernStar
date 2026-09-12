@@ -1,0 +1,3635 @@
+[
+ {
+  "id": "fv1",
+  "quelle": "ev1",
+  "sim": "magnetfeld",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Erster Tag bei den Stadtwerken",
+  "name": "Wo ist ein Magnet am stärksten?",
+  "fachwoerter_neu": [
+   "Magnetfeld",
+   "Feldlinie"
+  ],
+  "alltag": [
+   "Jannis macht Praktikum bei den Stadtwerken. Er bekommt einen Stabmagneten.",
+   "An den Enden halten Büroklammern, in der Mitte nicht.",
+   "Die Enden heißen Nordpol (N) und Südpol (S). Um jeden Magneten liegt ein Magnetfeld.",
+   "Du siehst es nicht. Jannis nimmt eine Nadel. Das Gerät heißt Prüfkompass."
+  ],
+  "frage": "An welcher Stelle ist das Magnetfeld am stärksten?",
+  "predict": [
+   "An den Enden ist das Magnetfeld stark, über der Mitte schwach.",
+   "Das Magnetfeld ist überall gleich stark."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Feldlinien“. Die Linien zeigen das Magnetfeld. Vergleiche, wo sie dicht liegen.",
+   "Stelle den Abstand auf 55. Stelle bei „Stelle am Magneten“ die Zahl hinter dem Doppelpunkt auf 0. Sieh: Wie viele Linien liegen dort?",
+   "Stelle bei „Stelle am Magneten“ die Zahl auf 90. Trage Zeile 2 ein.",
+   "Stelle die Zahl wieder auf 0. Stelle den Abstand auf 140. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Abstand",
+   "Welche Stelle am Magneten?",
+   "Feldlinien beim Prüfkompass: viele, wenige, keine?"
+  ],
+  "tabRows": [
+   [
+    "55",
+    "0° = Ende",
+    "viele"
+   ],
+   [
+    "55",
+    "90° = Mitte",
+    ""
+   ],
+   [
+    "140",
+    "0° = Ende",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Magnet wirkt auch ohne Berührung. Dieser Bereich heißt",
+    "loesung": "Magnetfeld",
+    "post": "."
+   },
+   {
+    "pre": "Am Ende des Magneten liegen die Feldlinien dicht. Dort ist das Magnetfeld am",
+    "loesung": "stärksten",
+    "post": ". Weit weg wird es schwach."
+   }
+  ],
+  "wortbank": [
+   "Magnetfeld",
+   "stärksten",
+   "stark",
+   "schwach"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du Zeile 1 aus?",
+   "antwort": "Bei 0° steht der Prüfkompass am Ende. Dort laufen alle Linien zusammen. In die Tabelle kommt: viele."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was gilt für einen Magneten auf dem Tisch?",
+    "optionen": [
+     "Das Magnetfeld ist schon da. Der Prüfkompass zeigt es an.",
+     "Das Magnetfeld entsteht erst durch den Prüfkompass.",
+     "Der Magnet hat kein Magnetfeld."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Am Ende ist das Magnetfeld",
+      "loesung": "stark",
+      "post": "."
+     },
+     {
+      "pre": "Über der Mitte ist das Magnetfeld nur",
+      "loesung": "schwach",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum halten Büroklammern nur an den Enden?",
+    "satzstarter": "Büroklammern halten an den Enden, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Antwort steht in deiner Tabelle, die Wörter in der Wortbank.",
+   "h2": "Beginne so: Büroklammern halten an den Enden, weil das Magnetfeld dort …",
+   "h3": "Fast fertig: Am Ende liegen die Feldlinien dicht. Dort ist das Magnetfeld am ___."
+  },
+  "selbstcheck": [
+   "Ich kann Stelle und Abstand am Bildschirm einstellen.",
+   "Ich kann meine Beobachtung in die Tabelle eintragen.",
+   "Ich weiß: Am Ende ist das Magnetfeld am stärksten."
+  ],
+  "zuhause": "Prüfe zu Hause, wo eine Büroklammer am Magneten hält.",
+  "bildauftrag": "[BILD: großes, ruhiges Schaubild in EINEM einzigen Bildfeld: ein liegender Stabmagnet in der Bildmitte, von der Seite gesehen, als breiter Balken. Sein linkes Ende trägt groß den Buchstaben „N“, sein rechtes Ende groß den Buchstaben „S“. Um den Magneten herum liegen dünne, durchgehende Feldlinien: Jede einzelne Linie beginnt am N-Ende, schwingt in einem weiten Bogen nach oben oder nach unten und endet wieder am S-Ende. Keine Linie bricht mitten im Bild ab, keine Linie läuft an den Bildrand hinaus — es sind geschlossene Bögen, keine Pfeilbündel, die ins Leere zeigen, und keine Fäden, die am Magneten festhängen. Dicht an beiden Enden stehen die Bögen eng beieinander, über der Mitte des Magneten laufen sie weit auseinander; dieser Dichteunterschied muss auf einen Blick zu sehen sein. Er entsteht allein dadurch, dass an den Enden mehr Linien nebeneinander liegen — kein aufgemalter Streifen, kein grauer Balken, keine eingefärbte Zone. Zwei gleich große runde Prüfkompasse liegen im selben Bildfeld an ihrem Platz am Magneten, jeder mit einer roten Nadelspitze: der erste dicht am linken N-Ende, wo alle Bögen zusammenlaufen; der zweite dicht über der Mitte des Magneten, wo nur wenige Bögen vorbeikommen. Die Nadel liegt bei beiden genau entlang der Feldlinie, die durch ihren Kompass läuft, und ist bei beiden gleich lang. Die Hauptaussage des Bildes ist der Unterschied in der Anzahl der Linien um die beiden Kompasse, nicht die Stellung der Nadeln. Beschriftung: unter dem linken Kompass „0° = Ende“, unter dem mittleren Kompass „90° = Mitte“, an einem der beiden Kompasse zusätzlich das Wort „Prüfkompass“ mit einer kurzen Anschlusslinie. Beide Kompasse stehen an ihrem Ort am Magneten, im selben Bildfeld — keine abgesetzten kleinen Nebenbilder, keine Kästchen am Rand, keine Vorher-Nachher-Reihe, kein zweiter Magnet. Keine Wertung wie „stark“ oder „schwach“ im Bild, keine Zahlen außer den beiden Gradangaben, keine Einheiten, keine Personen, keine Deko. Heller Hintergrund, kräftiger Kontrast, große Schrift.]"
+ },
+ {
+  "id": "fv2",
+  "quelle": "ev2",
+  "sim": "oersted",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Draht unter der Kompassnadel",
+  "name": "Kann Strom eine Kompassnadel bewegen?",
+  "fachwoerter_neu": [
+   "Magnetfeld B in Mikrotesla (µT)",
+   "Erdfeld"
+  ],
+  "alltag": [
+   "Jannis legt bei den Stadtwerken einen Kompass auf einen Draht.",
+   "Das Magnetfeld der Erde heißt Erdfeld. Es dreht Kompassnadeln nach Norden.",
+   "Wie stark ein Magnetfeld ist, sagt die Zahl B in Mikrotesla (µT)."
+  ],
+  "frage": "Was macht die Kompassnadel, wenn Strom fließt?",
+  "predict": [
+   "Der Draht zieht die Nadel an wie ein Magnet.",
+   "Die Nadel dreht sich nur zur Seite."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies in der Statuszeile „Feld des Drahtes“ und „Erdfeld“ ab.",
+   "Drücke „Strom ausschalten“. Der Knopf heißt danach „Strom einschalten“.",
+   "Beobachte, wohin sich die Nadel dreht. Achte auf den Abstand.",
+   "Trage die Zeile „Strom aus“ ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft beide Ergebnisse.",
+  "tabCols": [
+   "Was ist eingestellt?",
+   "Welche Felder wirken auf die Nadel?",
+   "Wohin dreht sich die Nadel?"
+  ],
+  "tabRows": [
+   [
+    "Strom an: 3,0 A, Abstand 2,0 cm",
+    "Erdfeld 20 µT, Magnetfeld 30,0 µT",
+    "nach Osten"
+   ],
+   [
+    "Strom aus, Abstand 2,0 cm",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Fließt Strom durch den Draht, läuft sein Magnetfeld im",
+    "loesung": "Kreis",
+    "post": "um ihn herum. Die Nadel dreht sich zur Seite."
+   },
+   {
+    "pre": "Ohne Strom zeigt die Nadel nach",
+    "loesung": "Norden",
+    "post": ". Dann wirkt nur das Erdfeld."
+   }
+  ],
+  "wortbank": [
+   "Kreis",
+   "Norden",
+   "Osten",
+   "30,0 µT"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du das Magnetfeld ab?",
+   "antwort": "Am Bildschirm steht: „Feld des Drahtes: B = 20 µT · 3,0 / 2,0 = 30,0 µT“. Wichtig ist, was hinter dem letzten Gleichzeichen steht: 30,0 µT."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was steht am Bildschirm bei „Strom aus“?",
+    "optionen": [
+     "Die Nadel dreht sich nach Osten.",
+     "Die Nadel zeigt nach Norden.",
+     "Der Draht zieht die Nadel an."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 3,0 A ist das Magnetfeld des Drahtes",
+      "loesung": "30,0 µT",
+      "post": "groß."
+     },
+     {
+      "pre": "Die Nadel dreht sich dann nach",
+      "loesung": "Osten",
+      "post": ". Das Erdfeld bleibt rund 20 µT."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum zieht der Draht die Nadel nicht an?",
+    "satzstarter": "Der Draht zieht die Nadel nicht an, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Hinter dem letzten Gleichzeichen stehen Zahl und Einheit. Die Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Der Draht zieht die Nadel nicht an, weil sein Magnetfeld …",
+   "h3": "Fast fertig: Der Draht zieht die Nadel nicht an, weil sein Magnetfeld im Kreis um ihn ___."
+  },
+  "selbstcheck": [
+   "Ich kann das Magnetfeld B in µT ablesen.",
+   "Ich kann sagen: Strom dreht die Nadel zur Seite.",
+   "Ich weiß: Ohne Strom zeigt die Nadel nach Norden."
+  ],
+  "zuhause": "Halte eine Kompass-App neben eine Taschenlampe mit Batterie. Vielleicht passiert nichts.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Feldern nebeneinander, beide in derselben Schrägansicht von oben und mit derselben Bildgröße. Über dem linken Feld steht die Überschrift „Strom aus“, über dem rechten „Strom an: 3,0 A“. In BEIDEN Feldern liegt dieselbe Szene an derselben Stelle: unten waagerecht ein runder Kompass mit einer Windrose, deren vier Buchstaben groß und gut lesbar am Rand stehen — „N“ oben, „S“ unten, „W“ links, „O“ rechts. UNTER dem Kompass verläuft ein dicker grauer Draht von unten nach oben durch das Bild, also in Nord-Süd-Richtung; hinter der Kompassdose ist er verdeckt und kommt oberhalb und unterhalb der Dose wieder hervor. Der Kompass liegt also auf dem Draht, die Nadel über ihm — daran hängt die Ausschlagrichtung. Der Draht liegt in beiden Feldern exakt gleich. Zwischen Draht und Nadel steht eine kurze senkrechte Maßlinie mit der Beschriftung „Abstand 2,0 cm“, ebenfalls in beiden Feldern gleich. LINKES FELD („Strom aus“): Die Kompassnadel liegt genau auf der Linie N–S, die rote Spitze zeigt auf das „N“. Aus dem Drehpunkt der Nadel geht GENAU EIN gerader Pfeil nach oben zum „N“, beschriftet „Erdfeld waagerecht: 20 µT“. Am unteren Bildrand ist der Draht abgeschnitten und als kleiner Kreis im Querschnitt zu sehen — genau derselbe Querschnitt an genau derselben Stelle wie im rechten Feld, aber ohne jeden Ring darum. Unter dem Feld steht die Bildzeile „Die Nadel zeigt nach Norden“. RECHTES FELD („Strom an: 3,0 A“): Am unteren Bildrand ist der Draht ebenso abgeschnitten und als kleiner Kreis im Querschnitt zu sehen; um diesen Querschnitt liegen DREI vollständig geschlossene, konzentrische Ringe, jeder mit zwei Pfeilspitzen auf dem Ring, alle drei im gleichen Umlaufsinn. Aus dem Drehpunkt derselben Kompassnadel gehen GENAU ZWEI gerade Pfeile: einer nach oben zum „N“, beschriftet „Erdfeld waagerecht: 20 µT“, und einer nach rechts zum „O“, beschriftet „Magnetfeld des Drahtes: 30,0 µT“. Der Pfeil nach rechts ist deutlich länger als der Pfeil nach oben. Die Nadelspitze liegt zwischen beiden Pfeilen, etwas näher am „O“ als am „N“, und die Nadel bleibt dabei flach auf dem Kompass liegen und genauso weit vom Draht entfernt wie im linken Feld. Der Draht ist in beiden Feldern gleich weit weg — daran hängt die ganze Aussage der Seite. Wichtig für die Komposition: Die drei Ringe sind geschlossene Kreise rings um den Drahtquerschnitt, KEINE geraden Streifen und keine parallelen Linien, die längs neben dem Draht herlaufen; sie umschließen den Draht als Ringe, nicht als Band. Jeder Pfeil beginnt sichtbar am Drehpunkt der Nadel oder auf einem Ring — kein Pfeil schwebt frei im Bild, keiner läuft aus dem Bild hinaus, keiner endet im Leeren. Es gibt genau diese zwei Felder und keine Nebenbilder: kein eingesetztes kleines Zusatzbild mit Batterie, Schalter oder Stromkreis, keine Lupe, kein Formelkasten, keine zweite Nadel, keine Hand, keine Person, keine Gradzahl und kein Winkelbogen. Keine Eisenspäne, keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv3",
+  "quelle": "ev3",
+  "sim": "elektromagnet",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Kran auf dem Schrottplatz",
+  "name": "Wie baut man einen Magneten zum Anschalten?",
+  "fachwoerter_neu": [
+   "Elektromagnet",
+   "Tragkraft"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen Kran auf dem Schrottplatz.",
+   "Der Kran hält schweres Eisen fest. Dann lässt er los.",
+   "Im Kran steckt eine Spule aus Draht. Der Eisenstab darin heißt Eisenkern.",
+   "Beide zusammen sind ein Elektromagnet. Wie viel er halten kann, heißt Tragkraft."
+  ],
+  "frage": "Wie ändert sich die Tragkraft, wenn mehr Strom fließt?",
+  "predict": [
+   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern.",
+   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst „Stromstärke ändern“. Sonst füllt sich die falsche Tabelle.",
+   "Drücke danach „Beispielmessreihe“. Lies die Tragkraft bei 1 A, 3 A und 5 A ab.",
+   "Trage die zwei Zahlen ein. Vergleiche jede Zeile mit der davor.",
+   "Lies am Bildschirm den Satz über den Eisenkern."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Welche Stromstärke I?",
+   "Wie viele Büroklammern hält der Magnet?",
+   "Mehr oder weniger als vorher?"
+  ],
+  "tabRows": [
+   [
+    "1 A",
+    "deine Zahl vom Bildschirm",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "3 A",
+    "",
+    ""
+   ],
+   [
+    "5 A",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Elektromagnet ist nur ein Magnet, solange",
+    "loesung": "Strom",
+    "post": "fließt."
+   },
+   {
+    "pre": "Mehr Strom macht die Tragkraft",
+    "loesung": "größer",
+    "post": ". Ohne Strom fallen die Büroklammern herunter."
+   }
+  ],
+  "wortbank": [
+   "Strom",
+   "größer",
+   "kleiner",
+   "ausschalten"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du die Zeile für 3 A?",
+   "antwort": "Bei 3 A steht in der Spalte „Tragkraft (Büroklammern)“ eine Zahl. Diese Zahl schreibst du in die Tabelle. Sie ist größer als bei 1 A. In die letzte Spalte schreibst du: mehr."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Kern macht den Magneten stärker?",
+    "optionen": [
+     "Ein Kupferkern",
+     "Ein Holzstab",
+     "Ein Eisenkern"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Kranfahrer will den Schrott loslassen. Er muss den Strom",
+      "loesung": "ausschalten",
+      "post": "."
+     },
+     {
+      "pre": "Bei 1 A hält der Magnet weniger Klammern. Die Tragkraft ist dort",
+      "loesung": "kleiner",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum nimmt der Kran einen Elektromagneten und keinen normalen Magneten?",
+    "satzstarter": "Der Kran nimmt einen Elektromagneten, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Für Aufgabe 1 hilft der Satz oben am Bildschirm.",
+   "h2": "Beginne so: Der Kran nimmt einen Elektromagneten, weil er den Strom …",
+   "h3": "Fast fertig: Der Kran nimmt einen Elektromagneten, weil er den Strom ___ kann. Dann fällt der Schrott herunter."
+  },
+  "selbstcheck": [
+   "Ich kann die Tragkraft ablesen und in die Tabelle eintragen.",
+   "Ich kann sagen: Mehr Strom macht die Tragkraft größer.",
+   "Ich weiß: Ohne Strom ist die Spule kein Magnet."
+  ],
+  "zuhause": "Prüfe zu Hause einen Kühlschrankmagneten. Kannst du ihn ausschalten?",
+  "bildauftrag": "[BILD: eine einzige große, kontrastreiche Szene, kein Vorher-Nachher und keine Bildfolge. Links oben ragt der Ausleger eines Schrottplatzkrans ins Bild, daran hängt an einem Stahlseil eine große runde Magnetplatte waagerecht über einem Schrotthaufen. An der Unterseite der Platte klebt ein unregelmäßiges Büschel aus Eisenschrott (verbogene Stäbe, Blechstücke) – bewusst als dichtes, ineinander hängendes Büschel gezeichnet, NICHT als abzählbare Reihe gleicher Teile, und ohne jede Zahl daneben. Rechts im selben Bild öffnet sich EIN rundes Ausschnittfenster in die Magnetplatte hinein, mit zwei dünnen geraden Führungslinien an der Platte angebunden, sodass klar bleibt: Das ist dieselbe Platte von innen, kein zweites Bild. Im Fenster liegt waagerecht ein dicker Eisenstab als geschlossene graue Fläche mit der großen Beschriftung „Eisenkern“; darum sind gleichmäßige Drahtwindungen gewickelt, deutlich als runder Draht mit Zwischenraum gezeichnet und mit der Beschriftung „Spule aus Draht“. Aus der Spule treten genau ZWEI Drahtenden heraus, sie laufen als zwei durchgehende Linien am Stahlseil entlang nach oben zu einem gut sichtbaren Kippschalter mit heruntergedrücktem Hebel (Beschriftung „Schalter: an“) und weiter zu einem einfachen Batteriesymbol (Beschriftung „Batterie“). Beide Drahtenden enden sichtbar an Schalter und Batterie, keines läuft ins Leere aus. Weitere Beschriftungen groß und waagerecht: „Kranmagnet“ an der Platte, „Schrott aus Eisen“ am Haufen. Drei Fehler, die hier drohen und ausdrücklich nicht vorkommen dürfen: (1) KEINE Magnetfeldlinien und keine Feldpfeile – weder Bögen um die Spule noch Pfeile, die frei im Bild aufhören; die einzigen Linien, die vom Magneten weggehen, sind die zwei Drähte, und die enden an Schalter und Batterie. (2) KEIN Nebenbild – kein zweites Kranbild daneben, kein ausgeschalteter Zustand, kein Diagramm, kein Vergleichsstreifen am Rand; nur diese eine Szene mit dem einen Ausschnittfenster. (3) Eisenkern und Magnetplatte sind geschlossene graue Flächen, KEINE Schraffur und keine Streifenmuster – gestreift ist im ganzen Bild nur der gewickelte Draht, und der ist Draht. Außerdem: keine Zahlen im Bild (keine Ampere-Angabe, keine Stückzahl), keine Personen, kein weiterer Text als die sechs genannten Beschriftungen. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv4",
+  "quelle": "ev4+ev5",
+  "sim": "leiterkraft",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der aufgeschraubte Motor",
+  "name": "Warum bewegt sich ein Draht im Magnetfeld?",
+  "fachwoerter_neu": [
+   "Leiterlänge L in m"
+  ],
+  "alltag": [
+   "Bei den Stadtwerken sieht Jannis im offenen Motor Kupferdraht und Magnete.",
+   "Am Bildschirm heißt der Draht Stab. Das Magnetfeld B steht in Tesla (T).",
+   "Der Stab ist 10 cm lang. Diese Leiterlänge L ist 0,10 m.",
+   "Umpolen heißt: der Strom fließt andersherum."
+  ],
+  "frage": "Wohin drückt die Kraft F auf den Stab?",
+  "predict": [
+   "Der Magnet zieht den Stab zum Nordpol.",
+   "Der Stab wird quer geschoben, nicht angezogen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „zurücksetzen“. Lies den ersten Satz und die Zahl vor N. Den Absatz über drei Finger brauchst du nicht.",
+   "Stelle 0 A ein. Nimm nur den ersten Satz. Trage Zeile 2 ein.",
+   "Stelle 10,0 A ein. Trage Zeile 3 ein.",
+   "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“. Trage Zeile 4 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Wie groß ist die Kraft F in N?",
+   "Wohin wird der Stab gedrückt?"
+  ],
+  "tabRows": [
+   [
+    "5,0 A",
+    "0,100 N",
+    "nach oben"
+   ],
+   [
+    "0 A",
+    "",
+    ""
+   ],
+   [
+    "10,0 A",
+    "",
+    ""
+   ],
+   [
+    "5,0 A umgepolt",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Kraft auf den Stab ist F =",
+    "loesung": "B · I · L",
+    "post": ". Sie schiebt den Stab quer, nicht zum Pol."
+   },
+   {
+    "pre": "Polst du den Strom um, drückt sie",
+    "loesung": "andersherum",
+    "post": ". Sie bleibt gleich groß."
+   }
+  ],
+  "wortbank": [
+   "B · I · L",
+   "andersherum",
+   "0,10 m",
+   "0,200 N"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Kraft ab?",
+   "antwort": "Am Bildschirm steht: F = 0,20 T · 5,0 A · 0,10 m = 0,100 N. Wichtig ist nur die Zahl vor N: 0,100 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst bei 5,0 A „Strom umpolen“. Was steht am Bildschirm?",
+    "optionen": [
+     "0,100 N nach unten",
+     "0,200 N nach unten",
+     "0,100 N nach oben"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "In der Formel steht für L:",
+      "loesung": "0,10 m",
+      "post": "."
+     },
+     {
+      "pre": "Bei 10,0 A zeigt der Bildschirm",
+      "loesung": "0,200 N",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum bewegt sich der Stab bei 0 A nicht?",
+    "satzstarter": "Der Stab bewegt sich nicht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Der Stab bewegt sich nicht, weil kein …",
+   "h3": "Fast fertig: Am Bildschirm steht „Kein Strom – keine Kraft“. Ohne Strom wirkt keine ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F ablesen.",
+   "Ich kann sagen, wohin der Stab gedrückt wird.",
+   "Ich weiß: Ohne Strom wirkt keine Kraft."
+  ],
+  "zuhause": "Sieh dir einen Akkuschrauber an. Sein Schalter für links und rechts polt den Strom um.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Sachbild in EINEM durchgehenden Bildrahmen. Zwei Zeilen liegen übereinander, beide zeigen denselben Hufeisenmagneten von vorn, gleich groß und gleich hell; getrennt sind sie nur durch eine dünne graue Linie, nicht durch einen zweiten Rahmen. OBERE ZEILE: Hufeisenmagnet von vorn, der linke Pol trägt groß den Buchstaben N, der rechte Pol groß den Buchstaben S. Waagerecht zwischen den Polen hängt ein kupferfarbener runder Stab, an beiden Enden mit dünnen Drähten aufgehängt. Unter dem Stab eine waagerechte Maßlinie mit zwei kurzen Endstrichen und der großen Aufschrift „L = 10 cm = 0,10 m“. In der Mitte des Stabes ein kleiner heller Kreis mit einem dicken Punkt darin, daneben klein „Strom kommt auf dich zu“. Aus der Stabmitte geht GENAU EIN dicker gerader Pfeil senkrecht nach oben, daneben groß „F = 0,100 N“. Über der Zeile klein „B = 0,20 T · I = 5,0 A“. UNTERE ZEILE: derselbe Magnet, derselbe Stab, N wieder links, S wieder rechts, diesmal OHNE jede Kraftangabe: an dieser Zeile steht keine Zahl und kein „F = …“. In der Stabmitte derselbe kleine Kreis, diesmal mit einem Kreuz darin, daneben klein „Strom fließt von dir weg“. Aus der Stabmitte geht GENAU EIN dicker gerader Pfeil senkrecht nach unten. Links außen an dieser Zeile groß die Beschriftung „Strom umgepolt“. Die Aussage steht damit im Bild selbst: gleicher Magnet, nur der Pfeil kippt. Der Kraftwert der unteren Zeile fehlt mit Absicht — er ist die Antwort von Tabellenzeile 4 und von Aufgabe 1 und wird am Bildschirm abgelesen. Keine Feldlinien und keine Pfeile zwischen den Polen — der Bildschirm zeigt dort auch keine, und freie Linien enden sonst im Nichts. Kein zweiter Pfeil am Stab, keine zerlegten Kräfte, kein Pfeil, der auf einen Pol zeigt: der Stab wird geschoben, nicht angezogen. Keine gestreiften oder schraffierten Flächen, sondern durchgehend gefüllte Farbflächen. Keine kleinen Nebenbilder am Rand, keine Personen, keine Geräte, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv5",
+  "quelle": "ev6",
+  "sim": "elektromotor",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der geteilte Ring im Motor",
+  "name": "Wie wird aus der Kraft eine Drehung?",
+  "fachwoerter_neu": [
+   "Kommutator",
+   "Drehmoment M in Millinewtonmeter (mN·m)"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen offenen Motor.",
+   "Auf einer Stange sitzt ein Ring aus zwei Hälften. Er heißt Kommutator.",
+   "Sein Betreuer sagt: „Ohne den Ring dreht sich nichts.“",
+   "Das Drehmoment M sagt, wie kräftig ein Motor dreht. M sagt nicht, wohin. Einheit: Millinewtonmeter (mN·m)."
+  ],
+  "frage": "Was macht die Spule, wenn der Kommutator aus ist?",
+  "predict": [
+   "Ohne Kommutator wackelt die Spule und bleibt stehen.",
+   "Ohne Kommutator dreht die Spule langsamer weiter."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Beobachte die Spule. Das ist Zeile 1.",
+   "Drücke den Knopf mit dem Wort Kommutator. Dort steht dann: Kommutator ist AUS.",
+   "Beobachte wieder. Lies M ab. Trage Zeile 2 ein.",
+   "Stelle die Windungen auf 40. Lies M ab. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Was macht die Spule?",
+   "Wie groß ist M?"
+  ],
+  "tabRows": [
+   [
+    "20 Windungen, Kommutator an",
+    "sie dreht immer weiter",
+    "16,0 mN·m"
+   ],
+   [
+    "20 Windungen, Kommutator aus",
+    "",
+    ""
+   ],
+   [
+    "40 Windungen, Kommutator aus",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Kraft drückt die eine Seite der Spule nach oben, die andere nach",
+    "loesung": "unten",
+    "post": ". So dreht sich die Spule."
+   },
+   {
+    "pre": "Ohne",
+    "loesung": "Kommutator",
+    "post": "wackelt die Spule und bleibt stehen."
+   }
+  ],
+  "wortbank": [
+   "unten",
+   "Kommutator",
+   "32,0 mN·m",
+   "doppelt"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du M ab?",
+   "antwort": "Am Bildschirm steht: „Das sind 16,0 Millinewtonmeter.“ Kurz schreibt man 16,0 mN·m. Die Zeile darüber brauchst du nicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nur der Kommutator geht aus. Was ändert sich?",
+    "optionen": [
+     "M wird kleiner. Die Spule bleibt stehen.",
+     "M bleibt gleich. Die Spule bleibt stehen.",
+     "M wird größer. Die Spule dreht weiter."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 20 Windungen steht 16,0 mN·m. Bei 40 Windungen steht",
+      "loesung": "32,0 mN·m",
+      "post": "."
+     },
+     {
+      "pre": "M ist also",
+      "loesung": "doppelt",
+      "post": "so groß."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Bei Jannis ist der geteilte Ring gebrochen. Sein Modellauto wackelt und bleibt stehen. Warum?",
+    "satzstarter": "Das Auto wackelt und bleibt stehen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. M steht am Bildschirm hinter „Das sind“.",
+   "h2": "Beginne so: Das Auto wackelt und bleibt stehen, weil der Strom …",
+   "h3": "Fast fertig: Der Strom fließt jetzt immer in dieselbe Richtung. Dann drückt die ___ die Spule zurück."
+  },
+  "selbstcheck": [
+   "Ich kann M am Bildschirm ablesen.",
+   "Ich kann sagen, was die Spule ohne Kommutator macht.",
+   "Ich weiß: doppelt so viele Windungen geben doppelt so viel M."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte mit Motor.",
+  "bildauftrag": "[BILD: ein einziges großes, kontrastreiches Vergleichsbild, in zwei gleich hohe Streifen untereinander geteilt – oben und unten steht DERSELBE Motor aus DERSELBEN Blickrichtung, gleiche Größe, gleiche Farben, nur der Kommutator ist verschieden. In beiden Streifen: links ein roter Magnetblock mit der großen weißen Aufschrift „N“, rechts ein blauer Magnetblock mit der großen weißen Aufschrift „S“; dazwischen eine rechteckige Drahtspule, die waagerecht auf einer Stange sitzt. Auf der Stange vorn der Kommutator als Ring, deutlich in zwei Hälften geteilt, mit zwei kleinen dunklen Kohleklötzchen, die von unten und oben daran anliegen. An jeder der beiden langen Spulenseiten sitzt ein kleiner heller Kreis als Stromzeichen: einmal ein Kreis mit einem dicken PUNKT in der Mitte, einmal ein Kreis mit einem dicken KREUZ. OBERER STREIFEN: der Ring ist ganz, die Spule liegt schräg nach links gekippt; der Kreis mit dem PUNKT sitzt an der linken, der Kreis mit dem KREUZ an der rechten Spulenseite. An der linken Spulenseite ein dicker gerader Pfeil senkrecht nach OBEN, an der rechten Spulenseite ein gleich dicker gerader Pfeil senkrecht nach UNTEN; beide Pfeile tragen gemeinsam die Beschriftung „Kraft auf die Leiterseite“. Ein breiter gebogener Pfeil führt einmal ganz um die Stange herum. Beschriftung groß am linken Rand „Kommutator AN“, darunter kleiner „sie dreht immer weiter“, dazu klein am Ring „der Ring dreht den Strom um“. UNTERER STREIFEN: derselbe Ring, aber in der Mitte mit einem sichtbaren Bruch; die Spule ist über die Senkrechte hinaus weitergedreht und liegt jetzt andersherum schräg als oben, nach rechts gekippt. Die beiden Stromzeichen sind mit der Spule mitgewandert: der Kreis mit dem PUNKT sitzt jetzt rechts, der Kreis mit dem KREUZ links. Die beiden Kraftpfeile sind genauso dick wie oben, zeigen aber andersherum – an der linken Spulenseite senkrecht nach UNTEN, an der rechten senkrecht nach OBEN; beide tragen gemeinsam die Beschriftung „Die Kraft drückt jetzt zurück“. Ein kurzer gebogener Pfeil geht nur ein Stück nach rechts und ein zweiter, kürzerer gebogener Pfeil weist gleich daneben wieder zurück – zusammen zeigen sie das Hin und Her. Beschriftung groß am linken Rand „Kommutator AUS“, darunter kleiner „sie wackelt und bleibt stehen“, dazu klein am Ring „der Strom bleibt gleich“. Unter beiden Streifen steht klein EINE gemeinsame Zeile, die die zwei Stromzeichen erklärt: „Kreis mit Punkt: Strom kommt heraus · Kreis mit Kreuz: Strom fließt hinein“. In BEIDEN Streifen steht rechts oben dieselbe Zeile „20 Windungen · M = 16,0 mN·m“ – gleich groß, gleiche Farbe, damit sofort auffällt: die Zahl M ändert sich hier nicht, wohl aber die Richtung der Kraft und die Bewegung. Die drohenden Bildfehler ausdrücklich vermeiden: KEINE Magnetfeldlinien und keine schraffierten Streifen zwischen den Polen (das Feld bleibt eine leere helle Fläche); KEINE kleinen Nebenbilder, keine Lupenkreise, keine Detailkästen am Rand – nur die zwei Streifen und die eine Erklärzeile darunter; KEINE Pfeile, die frei im Bild ins Leere zeigen: jeder Pfeil beginnt sichtbar an einer Spulenseite oder an der Stange. Ebenfalls nicht ins Bild: Drehzahlen, Umdrehungen je Minute, Stromstärke, Magnetfeldstärke, Formeln, Personen, Deko. Ruhiger heller Hintergrund, große Schrift, dicke Linien.]"
+ },
+ {
+  "id": "fv6",
+  "quelle": "ev7",
+  "sim": "induktion-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Aufbau ohne Batterie",
+  "name": "Wie entsteht Spannung ohne Batterie?",
+  "fachwoerter_neu": [
+   "Induktion"
+  ],
+  "alltag": [
+   "Jannis findet bei den Stadtwerken keine Batterie.",
+   "Am Bildschirm liegen nur ein Magnet, eine Spule und ein Messgerät.",
+   "Bewegung erzeugt Spannung. Das heißt Induktion.",
+   "Am Fahrrad erzeugt ein Dynamo die Spannung für das Licht."
+  ],
+  "frage": "Wann zeigt das Messgerät eine Spannung an?",
+  "predict": [
+   "Der Magnet liegt in der Spule. Also zeigt das Messgerät weiter Spannung.",
+   "Das Messgerät zeigt nur Spannung, solange sich der Magnet bewegt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Beobachte das Messgerät. Der Magnet fährt hinein, liegt still, fährt heraus.",
+   "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.",
+   "Stelle „Tempo des Magneten“ auf 100 cm/s. Lies ab und trage ein.",
+   "Lies ab, wenn der Magnet still liegt. Trage ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Werte.",
+  "tabCols": [
+   "Wie stark ist der Magnet?",
+   "Wie schnell fährt der Magnet?",
+   "Wie viel Volt zeigt das Messgerät?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "50 cm/s",
+    "0,300 V"
+   ],
+   [
+    "stark",
+    "50 cm/s",
+    ""
+   ],
+   [
+    "stark",
+    "100 cm/s",
+    ""
+   ],
+   [
+    "stark",
+    "er liegt still",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Spannung entsteht nur, solange sich der Magnet",
+    "loesung": "bewegt",
+    "post": ". Ohne Bewegung sind es 0,000 V."
+   },
+   {
+    "pre": "Der Magnet fährt doppelt so schnell. Dann zeigt das Messgerät",
+    "loesung": "doppelte Spannung",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "bewegt",
+   "doppelte Spannung",
+   "1,200 V",
+   "0,000 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Der Magnet ist mittel, Tempo 50 cm/s. Am Bildschirm steht: „Messgerät: 0,300 V“. In die Tabelle kommt 0,300 V."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann zeigt das Messgerät eine Spannung an?",
+    "optionen": [
+     "Nur solange der Magnet still liegt.",
+     "Immer, weil der Magnet da ist.",
+     "Nur solange sich der Magnet bewegt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Magnet ist stark. Bei 50 cm/s zeigt das Messgerät 0,600 V. Bei 100 cm/s zeigt es",
+      "loesung": "1,200 V",
+      "post": "."
+     },
+     {
+      "pre": "Der Magnet liegt still. Das Messgerät zeigt",
+      "loesung": "0,000 V",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Das Fahrrad steht still. Warum geht das Dynamolicht aus?",
+    "satzstarter": "Das Licht geht aus, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies den Satz laut und probiere jedes Wort aus.",
+   "h2": "Doppelt heißt zweimal: 0,600 V + 0,600 V = ______ V.",
+   "h3": "Fast fertig: Das Licht geht aus, weil sich der Magnet im Dynamo nicht mehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann das Messgerät Spannung anzeigt.",
+   "Ich kann aus meiner Tabelle ablesen: schneller heißt mehr Volt.",
+   "Ich kann erklären, warum das Dynamolicht ausgeht, wenn das Rad steht."
+  ],
+  "zuhause": "Suche ein Fahrrad mit Dynamo. Drehe das Rad. Wann leuchtet die Lampe?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Zuständen desselben Aufbaus, nebeneinander in EINEM Bildausschnitt, gleiche Blickrichtung von der Seite, gleiche Größe, gleiche Höhe, dieselbe Tischkante. In beiden Hälften steht dasselbe Gerät: eine liegende Spule als geschlossener, hell ausgefüllter Zylinderkörper mit dicken, deutlich voneinander getrennten Kupferringen darauf, daneben ein rundes Messgerät mit Skala und einem Zeiger. Über der Spule die Beschriftung „600 Windungen“, über dem Messgerät „Spannungsmesser“. Der Stabmagnet ist ein liegender Balken aus ZWEI vollflächigen Farbhälften, links die eine Farbe, rechts die andere, mit den großen Buchstaben „N“ und „S“ mitten in den Flächen. LINKE HÄLFTE: Der Magnet steht vor der Spulenöffnung, genau EIN dicker gerader Pfeil führt vom Magneten waagerecht in die Spule hinein; der Zeiger des Messgeräts schlägt deutlich nach rechts aus. Bildtexte links: „Magnet wird hineingeschoben“ und groß „Spannung: 0,300 V“. RECHTE HÄLFTE: Derselbe Magnet liegt mitten in der Spule, es gibt KEINEN Pfeil, der Zeiger steht senkrecht auf Null. Bildtexte rechts: „Magnet liegt still – in der Spule“ und groß „Spannung: 0,000 V – der Magnet bewegt sich nicht“. Unter beiden Hälften läuft eine durchgehende Zeile: „keine Batterie im Aufbau – nur ein Magnet, eine Spule und ein Messgerät“. Der Unterschied zwischen links und rechts darf an genau drei Stellen sichtbar sein: Pfeil da / kein Pfeil, Zeiger ausgeschlagen / Zeiger auf Null, 0,300 V / 0,000 V. Alles andere ist in beiden Hälften identisch – daran hängt die ganze Aussage des Bildes. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen – Magnetpole und Spulenkörper werden als volle Farbflächen gezeichnet, nie als Schraffur, Strichmuster oder dünne Streifen; sonst verschwimmen N und S beim Verkleinern zu Grau. (2) Nebenbilder – es gibt genau zwei Hälften: keine dritte Miniatur, kein eingesetztes Detailfenster, kein Diagramm in der Ecke, keine Fahrradlampe, kein Kraftwerk am Rand. (3) Strahlengänge ins Leere – es werden KEINE Feldlinien, keine Bögen um den Magneten, keine Strompfeile im Draht und keine Linien gezeichnet, die am Bildrand einfach aufhören; der einzige Pfeil im ganzen Bild ist der Bewegungspfeil links. Keine Batterie, kein Netzkabel, keine Personen, keine Formel, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv7",
+  "quelle": "ev8",
+  "sim": "generator",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Die Maschine im Kraftwerk",
+  "name": "Wie macht ein Generator Strom?",
+  "fachwoerter_neu": [
+   "Drehfrequenz f in Hertz (Hz)",
+   "Scheitelwert Û"
+  ],
+  "alltag": [
+   "Jannis steht bei den Stadtwerken vor einer Maschine.",
+   "Dampf dreht ein großes Rad. Dieses Rad heißt Turbine.",
+   "Die Turbine dreht eine Spule im Magnetfeld. Diese Maschine heißt Generator.",
+   "Wie schnell sich die Spule dreht, heißt Drehfrequenz f in Hertz (Hz)."
+  ],
+  "frage": "Wie ändert sich die Spannung, wenn sich die Spule schneller dreht?",
+  "predict": [
+   "Die Spannung wird größer, wenn sich die Spule schneller dreht.",
+   "Die Spannung bleibt gleich. Der Magnet allein macht sie."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke oben „1 · Der Grundversuch“. Drücke dann „Anhalten“.",
+   "Lies den Kasten „Scheitelwert Û“ ab. Das ist die größte Spannung.",
+   "Schiebe nur den Regler „Drehfrequenz f“ auf „1,0 Hz“. Lies „Scheitelwert Û“ ab. Trage ein.",
+   "Schiebe auf „4,0 Hz“. Lies wieder ab. Trage ein. Vergleiche jede Zeile mit der davor."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viel Hz stellst du ein?",
+   "Wie viel Volt zeigt „Scheitelwert Û“?",
+   "Mehr oder weniger als vorher?"
+  ],
+  "tabRows": [
+   [
+    "2,0 Hz",
+    "0,658 V",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "1,0 Hz",
+    "",
+    ""
+   ],
+   [
+    "4,0 Hz",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Generator entsteht Spannung, weil sich eine Spule im Magnetfeld",
+    "loesung": "dreht",
+    "post": "."
+   },
+   {
+    "pre": "Dreht sie sich doppelt so schnell, ist die Spannung",
+    "loesung": "doppelt so groß",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "dreht",
+   "doppelt so groß",
+   "größer",
+   "0,329 V",
+   "1,316 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 ab?",
+   "antwort": "Der Regler „Drehfrequenz f“ steht auf 2,0 Hz. Der Kasten „Scheitelwert Û“ zeigt 0,658 V. In die Tabelle kommt 0,658 V. Die drei anderen Regler bleiben stehen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Spule dreht sich schneller. Was zeigt „Scheitelwert Û“?",
+    "optionen": [
+     "Mehr Volt als vorher.",
+     "Gleich viel wie vorher.",
+     "Weniger Volt als vorher."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1,0 Hz zeigt „Scheitelwert Û“",
+      "loesung": "0,329 V",
+      "post": "."
+     },
+     {
+      "pre": "Bei 4,0 Hz zeigt „Scheitelwert Û“",
+      "loesung": "1,316 V",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Der Generator soll mehr Spannung liefern. Was muss die Turbine tun?",
+    "satzstarter": "Die Turbine muss …, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies „Scheitelwert Û“ ab, nicht „Spannung U“.",
+   "h2": "Beginne so: Die Turbine muss die Spule schneller drehen, weil …",
+   "h3": "Fast fertig: Schneller drehen heißt mehr Volt. Die Spannung wird ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Kasten „Scheitelwert Û“ ablesen.",
+   "Ich kann sagen: schneller drehen heißt mehr Volt.",
+   "Ich weiß: Im Generator dreht sich eine Spule im Magnetfeld."
+  ],
+  "zuhause": "Suche an einem Gerät das kleine Schild. Schreibe die Zahl vor „Hz“ auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Zuständen derselben Maschine, nebeneinander in EINEM Bildausschnitt, gleiche Blickrichtung von vorn, gleiche Größe, gleiche Höhe, dieselbe Grundplatte. In beiden Hälften steht dasselbe Gerät: links ein großer Magnetblock in einer vollen Farbfläche mit dem großen Buchstaben „N“ mitten darin, rechts ein gleich großer Magnetblock in einer deutlich anderen vollen Farbfläche mit dem großen Buchstaben „S“ mitten darin. Zwischen den beiden Blöcken steckt auf einer waagerechten Achse eine rechteckige Spule, gezeichnet als geschlossenes Rechteck aus dicken, deutlich voneinander getrennten Kupferwindungen; die Achse führt nach rechts aus dem Magnetspalt heraus. Um die Achse liegt genau EIN gebogener Drehpfeil mit einer einzigen Pfeilspitze. Unter jeder Hälfte steht groß und gut lesbar eine Anzeigetafel mit genau zwei Zeilen untereinander. LINKE HÄLFTE: Der Drehpfeil ist dünn und reicht nur über ein Viertel des Kreises; die Anzeigetafel trägt die Zeilen „Drehfrequenz f  1,0 Hz“ und „Scheitelwert Û  0,329 V“. RECHTE HÄLFTE: Derselbe Drehpfeil ist dick und reicht über den ganzen Kreis, dahinter drei kurze Tempostriche; die Anzeigetafel trägt die Zeilen „Drehfrequenz f  4,0 Hz“ und „Scheitelwert Û  1,316 V“. Unter beiden Hälften läuft eine durchgehende Zeile: „gleich geblieben: Strom 2,00 A · 8000 Windungen · Fläche 42 cm²“. Der Unterschied zwischen links und rechts darf an genau drei Stellen sichtbar sein: dünner kurzer Pfeil / dicker langer Pfeil mit Tempostrichen, 1,0 Hz / 4,0 Hz, 0,329 V / 1,316 V. Alles andere ist in beiden Hälften Strich für Strich identisch – daran hängt die ganze Aussage des Bildes. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen – die beiden Magnetblöcke werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Strichmuster oder dünne Streifen, und N und S stehen als große Buchstaben mitten in der Fläche; sonst verschwimmen sie beim Verkleinern zu Grau. (2) Nebenbilder – es gibt genau zwei Hälften: keine dritte Miniatur, kein Detailfenster, keine Sinuskurve, kein Messdiagramm in der Ecke, keine Lampe, kein Schatten der Spule, kein Kraftwerk und keine Turbine am Rand, keine Personen. (3) Strahlengänge ins Leere – es werden KEINE Feldlinien, keine Bögen zwischen den Polen, keine Strompfeile im Draht und keine Linien gezeichnet, die am Bildrand einfach aufhören; die einzigen Pfeile im ganzen Bild sind die zwei Drehpfeile um die Achse. Keine Formel, keine Winkelangabe, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv8",
+  "quelle": "ev9",
+  "sim": "transformator-schluessel",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Kasten, der brummt",
+  "name": "Wie ändert ein Transformator die Spannung?",
+  "fachwoerter_neu": [
+   "Sekundärspule",
+   "Wechselspannung"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen brummenden Kasten: einen Transformator.",
+   "Darin liegen zwei Spulen auf einem Eisenkern: links Primärspule, rechts Sekundärspule.",
+   "Jede Runde des Drahtes um die Spule heißt eine Windung.",
+   "Aus der Steckdose kommt Wechselspannung: Plus und Minus wechseln ständig."
+  ],
+  "frage": "Wovon hängt es ab, wie viel Volt aus der Sekundärspule kommen?",
+  "predict": [
+   "Die Windungen sind egal. Es kommen immer gleich viele Volt.",
+   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „1 · Aufbau und Wirkungskette“. „Wechselspannung“ ist schon gedrückt.",
+   "Achte darauf: Du bewegst nur „Sekundär NS“. „Frequenz f“ bleibt, wie sie ist.",
+   "Stelle „Sekundär NS“ auf 500. Lies die Zahl bei „Volt“ ab.",
+   "Stelle „Sekundär NS“ auf 250. Trage beide Zahlen ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Welche Zahl steht bei „Volt“?",
+   "Mehr oder weniger Volt als vorher?"
+  ],
+  "tabRows": [
+   [
+    "1000 Windungen",
+    "8,80",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "500 Windungen",
+    "",
+    ""
+   ],
+   [
+    "250 Windungen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Hat die Sekundärspule mehr Windungen, kommen dort",
+    "loesung": "mehr",
+    "post": "Volt heraus. Weniger Windungen heißen weniger Volt."
+   },
+   {
+    "pre": "Ein Transformator arbeitet nur mit",
+    "loesung": "Wechselspannung",
+    "post": ". Nur dann ändert sich das Magnetfeld."
+   }
+  ],
+  "wortbank": [
+   "mehr",
+   "Wechselspannung",
+   "4,40 Volt",
+   "2,20 Volt"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Links stehen „Primär“ und „500 Wdg.“, rechts „Sekundär“ und „1000 Wdg.“. Wdg. heißt Windungen. „Sekundär“ heißt Sekundärspule. Im Kreis rechts steht 8,80, darunter Volt. In die Tabelle kommt 8,80."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was passiert, wenn die Sekundärspule weniger Windungen bekommt?",
+    "optionen": [
+     "Mehr Volt als vorher.",
+     "Weniger Volt als vorher.",
+     "Genauso viele Volt wie vorher."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 500 Windungen zeigt der Bildschirm",
+      "loesung": "4,40 Volt",
+      "post": "."
+     },
+     {
+      "pre": "Bei 250 Windungen sind es",
+      "loesung": "2,20 Volt",
+      "post": ". Wieder die Hälfte."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis drückt „Gleichspannung“. Die Zahl bei „Volt“ fällt fast auf null. Warum?",
+    "satzstarter": "Bei Gleichspannung wird die Spannung kleiner, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl steht rechts im Kreis über „Volt“. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Halb so viele Windungen heißt halb so viel Volt: ______ + ______ = 8,80.",
+   "h3": "Fast fertig: Bei Gleichspannung wird die Spannung kleiner, weil sich das Magnetfeld nicht mehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Zahl bei „Volt“ ablesen.",
+   "Ich kann meine Messwerte in die Tabelle eintragen.",
+   "Ich weiß: Ein Transformator braucht Wechselspannung."
+  ],
+  "zuhause": "Suche zu Hause ein Netzteil. Schreibe auf, wie viel Volt hinein- und herausgehen.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI Zeilen, untereinander in EINEM Bildausschnitt, gleiche Blickrichtung von vorn, gleiche Größe, gleiche Höhe, exakt dieselbe Anordnung. In jeder Zeile steht derselbe Transformator: in der Mitte ein aufrecht stehender, geschlossener Eisenkern als vollflächiger grauer Rahmen (ein Rechteck mit rechteckigem Loch in der Mitte), links am Rahmen eine rote Spule, rechts am Rahmen eine blaue Spule. Jede Spule ist ein Stapel dicker, deutlich voneinander getrennter Ringe auf dem Rahmenschenkel; die Ringe sind vollflächig gefüllt, nie schraffiert. Über der linken Spule steht groß „Primär“, darunter „500 Wdg.“; über der rechten Spule steht groß „Sekundär“, darunter die Windungszahl dieser Zeile. Links außen hängt an zwei Drähten ein roter Kreis mit einer liegenden Wellenlinie darin und der Beschriftung „5,0 V“ — das ist die Wechselspannungsquelle, in allen drei Zeilen gleich. Rechts außen hängt an zwei Drähten ein blauer Kreis mit einem großen „V“ oben, einer großen Zahl in der Mitte und dem Wort „Volt“ darunter. ZEILE 1 (oben): rechte Spule mit vielen Ringen, Beschriftung „1000 Wdg.“, im blauen Kreis die Zahl „8,80“; rechts neben der Zeile groß „mehr Windungen — mehr Volt“. ZEILE 2 (Mitte): rechte Spule mit genauso vielen Ringen wie die linke, Beschriftung „500 Wdg.“, im blauen Kreis die Zahl „4,40“; rechts daneben groß „gleich viele Windungen“. ZEILE 3 (unten): rechte Spule mit halb so vielen Ringen wie die linke, Beschriftung „250 Wdg.“, im blauen Kreis die Zahl „2,20“; rechts daneben groß „weniger Windungen — weniger Volt“. Die Zahl der gezeichneten Ringe muss von Zeile zu Zeile sichtbar abnehmen — daran hängt die ganze Aussage des Bildes; alles andere bleibt in allen drei Zeilen identisch. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — Eisenkern und Spulenringe werden als volle Farbflächen gezeichnet, nie als Blechschraffur, Strichmuster oder dünne Streifen; sonst verschwimmt der Kern beim Verkleinern zu Grau und die Ringe sind nicht mehr zählbar. (2) Nebenbilder — es gibt genau drei Zeilen: kein eingesetztes Detailfenster, kein Diagramm in der Ecke, kein Strommast, kein Kraftwerk, keine Steckdose, keine zweite Ansicht des Kerns. (3) Strahlengänge ins Leere — es werden KEINE Feldlinien, keine Magnetfeldpfeile, keine Flusspfeile im Kern, keine Strompfeile in den Drähten und keine Linien gezeichnet, die am Bildrand einfach aufhören; die einzigen Linien außerhalb der Bauteile sind die vier kurzen Drähte, die den roten Kreis links und den blauen Kreis rechts mit ihrer Spule verbinden, und die schließen sichtbar an beiden Enden an. Keine Personen, keine Formel, keine Pfeile zwischen den Zeilen, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv9",
+  "quelle": "ev10",
+  "sim": "freileitungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Zwei Lampen und ein dünner Draht",
+  "name": "Warum ist der Verlust mit Hochspannung klein?",
+  "fachwoerter_neu": [
+   "Hochspannung",
+   "Verlust in Watt (W)"
+  ],
+  "alltag": [
+   "Jannis steht auf dem Hof der Stadtwerke. Sein Betreuer zeigt nach oben.",
+   "Dort hängen dicke Leitungen. Niemand darf hin.",
+   "Sehr hohe Spannung nennt man Hochspannung.",
+   "In jedem Draht wird Energie zu Wärme. Den Verlust zeigt der Bildschirm in Watt (W)."
+  ],
+  "frage": "Warum ist der Verlust mit Hochspannung so klein?",
+  "predict": [
+   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein.",
+   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1 · Die drei Teilversuche“, dann „Hochspannung“.",
+   "Lies in der Zeile mit „Strom“ die Zahl vor A ab. Lies in der Zeile „Verlust in der Leitung“ die Zahl vor W ab.",
+   "Drücke „Niederspannung, CrNi“. Lies den neuen Satz.",
+   "Lies beide Zahlen wieder ab. Trage sie in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft zwei Ergebniskarten.",
+  "tabCols": [
+   "Welchen Knopf hast du gedrückt?",
+   "Wie groß ist der Strom I in A?",
+   "Wie groß ist der Verlust in W?"
+  ],
+  "tabRows": [
+   [
+    "Hochspannung",
+    "0,100 A",
+    "0,266 W"
+   ],
+   [
+    "Niederspannung, CrNi",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mit Hochspannung fließt in der Leitung nur ein",
+    "loesung": "kleiner",
+    "post": "Strom."
+   },
+   {
+    "pre": "Dann wird im Draht nur",
+    "loesung": "wenig",
+    "post": "Energie zu Wärme. Diese Wärme geht verloren."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "wenig",
+   "0,238 A",
+   "1,224 W"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile der Tabelle ab?",
+   "antwort": "Nach „Hochspannung“ steht in der Zeile mit „Strom“ die Zahl 0,100 A. In der Zeile „Verlust in der Leitung“ steht 0,266 W."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Satz steht nach „Niederspannung, CrNi“ neu am Bildschirm?",
+    "optionen": [
+     "Die Lampen leuchten normal hell.",
+     "Die Lampen leuchten heller als vorher.",
+     "Die Lampen leuchten praktisch nicht."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach „Niederspannung, CrNi“ fließt ein Strom von",
+      "loesung": "0,238 A",
+      "post": "."
+     },
+     {
+      "pre": "Der Verlust in der Leitung ist dann",
+      "loesung": "1,224 W",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour fragt: Warum ist Hochspannung besser? Erkläre mit deinen Zahlen.",
+    "satzstarter": "Mit Hochspannung ist der Strom …, darum …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahlen stehen in deiner Tabelle, die Wörter in der Wortbank.",
+   "h2": "Vergleiche die zwei Zahlen der Spalte „Verlust in W“.",
+   "h3": "Fast fertig: Mit Hochspannung ist der Strom kleiner (0,100 A statt 0,238 A). Darum ist der Verlust ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Strom I in A ablesen.",
+   "Ich kann sagen: Kleiner Strom heißt wenig Verlust.",
+   "Ich weiß: Im Draht wird Energie zu Wärme."
+  ],
+  "zuhause": "Fühle das Kabel deines Föhns nach fünf Minuten. Wird es warm?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Bildzeilen untereinander, beide im selben Bildausschnitt, beide mit demselben Aufbau von links nach rechts: links ein Kasten mit einem Wellenzeichen als Stromquelle, daran eine lange waagerechte Doppelleitung quer durch das ganze Bild, rechts zwei kleine Glühlampen nebeneinander. Beide Zeilen sind exakt gleich breit und gleich hoch, damit man sie direkt übereinanderlegen kann. OBERE ZEILE: In der Leitung sitzen zwei gleich große Kästen mit der gut lesbaren Aufschrift „Transformator“, einer dicht hinter der Quelle, einer dicht vor den Lampen. Die zwei Lampen dieser Zeile leuchten kräftig warmgelb, mit hellem Glaskolben. Über der Zeile links die große Zeilenüberschrift „Hochspannung“ — genau so heißt der Knopf am Bildschirm. UNTERE ZEILE: dieselbe Anordnung, aber OHNE die beiden Kästen — die Leitung läuft ununterbrochen durch. Die zwei Lampen dieser Zeile sind dunkelgrau und leuchten nicht, der Glaskolben bleibt matt. Über der Zeile links die große Zeilenüberschrift „Niederspannung, CrNi“ — genau so heißt der zweite Knopf. WÄRME ALS FLÄCHE: Der lange Leitungsdraht der unteren Zeile ist auf seiner ganzen Länge in einem weichen, durchgehenden Orange eingefärbt, das die volle Drahtstärke ausfüllt und an den Rändern sanft ausläuft; der Draht der oberen Zeile trägt dieselbe Einfärbung nur ganz blass. Diese Wärme wird als geschlossene Farbfläche gemalt — NICHT als Streifenmuster, nicht als Schraffur, nicht als Strichraster, nicht als Reihe kleiner Wellenlinien über dem Draht. PFEILE: In jeder Zeile genau EIN Pfeil, er liegt direkt auf dem Leitungsdraht, beginnt an der Quelle und endet an den Lampen; beide Pfeile berühren an beiden Enden gezeichnetes Material und schweben nirgends frei im Bild. Beschriftung am oberen Pfeil „Strom 0,100 A“; der untere Pfeil bleibt OHNE Beschriftung, ist dafür deutlich dicker gezeichnet als der obere. Unter der Mitte jedes Leitungsdrahts steht in großer Schrift: oben „Verlust 0,266 W“, unten nur „viel Wärme“ ohne jede Zahl. Im ganzen Bild stehen genau diese zwei Zahlen und sonst keine — die zwei Zahlen der unteren Zeile sollen die Lernenden selbst am Bildschirm ablesen und in die Tabelle eintragen. KEIN drittes Teilbild und KEIN eingesetztes Nebenbild: keine Lupe, kein kleines Diagramm in einer Ecke, kein Extra-Kästchen mit Formel, keine Legende am Rand. Keine Personen, keine Strommasten, keine Häuser, keine Landschaft, keine Formeln, keine Widerstandssymbole, keine Messgeräte. Ruhiger heller Hintergrund, sehr große Schrift, kein Schmuck.]"
+ },
+ {
+  "id": "fv10",
+  "quelle": "ev11",
+  "sim": "freileitungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Weg bis zur Steckdose",
+  "name": "Wie kommt der Strom zur Steckdose?",
+  "fachwoerter_neu": [
+   "Umspannwerk",
+   "Kilovolt (kV)"
+  ],
+  "alltag": [
+   "Jannis macht Praktikum bei den Stadtwerken.",
+   "Sein Betreuer zeigt ihm den Weg zur Steckdose.",
+   "Die lange Leitung über Land heißt Fernleitung. Warum dort Hochspannung ist, weißt du schon.",
+   "Ein Umspannwerk ändert die Spannung. kV heißt Kilovolt: 1 kV sind 1000 V."
+  ],
+  "frage": "Welche Stellen liegen auf dem Weg vom Kraftwerk bis zur Steckdose?",
+  "predict": [
+   "Aus dem Kraftwerk kommen schon 230 V. Die Spannung bleibt gleich.",
+   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „5 · Konzepte im Vergleich“.",
+   "Sieh dir die fünf Kreise an. Jeder Kreis ist eine Stelle auf dem Weg.",
+   "Lies unter jedem Kreis beide Zeilen ab.",
+   "Trage sie in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die fünf Stellen.",
+  "tabCols": [
+   "Welche Nummer?",
+   "Wie heißt die Stelle?",
+   "Was steht klein darunter?"
+  ],
+  "tabRows": [
+   [
+    "1",
+    "Kraftwerk",
+    "10–25 kV"
+   ],
+   [
+    "2",
+    "",
+    ""
+   ],
+   [
+    "3",
+    "",
+    ""
+   ],
+   [
+    "4",
+    "",
+    ""
+   ],
+   [
+    "5",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Strom geht vom Kraftwerk bis zur Steckdose. Vor der langen Leitung macht ein Umspannwerk die Spannung",
+    "loesung": "größer",
+    "post": "."
+   },
+   {
+    "pre": "Am Ende macht ein Umspannwerk sie wieder",
+    "loesung": "kleiner",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "kleiner",
+   "10–25 kV",
+   "230 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Stelle 1 ab?",
+   "antwort": "Im ersten Kreis steht die 1, darunter „Kraftwerk“ und klein „10–25 kV“. Beides kommt in die Tabelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Reihenfolge zeigt das Bild?",
+    "optionen": [
+     "Kraftwerk → hoch → Fernleitung → herunter → Haushalt",
+     "Kraftwerk → herunter → Fernleitung → hoch → Haushalt",
+     "Haushalt → herunter → Fernleitung → hoch → Kraftwerk"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Nummer 1 steht",
+      "loesung": "10–25 kV",
+      "post": "."
+     },
+     {
+      "pre": "Bei Nummer 5 steht",
+      "loesung": "230 V",
+      "post": ". So viel kommt bei dir an."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: Aus dem Kraftwerk kommen schon 230 V. Warum stimmt das nicht?",
+    "satzstarter": "Das stimmt nicht, weil im Kraftwerk …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "kV heißt Kilovolt: 1 kV sind 1000 V. Die Wörter stehen in der Wortbank.",
+   "h2": "Sieh bei Nummer 1 nach: Dort stehen 10–25 kV. Umgerechnet sind 10 kV schon 10 000 V.",
+   "h3": "Fast fertig: Das stimmt nicht, weil im Kraftwerk 10–25 kV stehen. Das ist viel ___ als 230 V."
+  },
+  "selbstcheck": [
+   "Ich kann die fünf Stellen der Reihe nach nennen.",
+   "Ich kann unter jedem Kreis beide Zeilen ablesen und eintragen.",
+   "Ich weiß: Ein Umspannwerk macht die Spannung größer oder kleiner."
+  ],
+  "zuhause": "Suche ein Gerät mit der Aufschrift 230 V.",
+  "bildauftrag": "[BILD: große, kontrastreiche Übersicht des Stromwegs als EIN einziger waagerechter Streifen, von links nach rechts zu lesen, alles in einem Bildausschnitt. Auf einer gemeinsamen Mittellinie liegen GENAU FÜNF gleich große, randlos und vollflächig ausgefüllte Kreise in gleichem Abstand. In jedem Kreis steht groß und weiß nur seine Nummer, von links nach rechts 1, 2, 3, 4, 5. Direkt unter jedem Kreis steht in fetter, gut lesbarer Schrift sein Name, in dieser Reihenfolge: „Kraftwerk“, „hoch“, „Fernleitung“, „herunter“, „Haushalt“. Die fünf Kreise tragen fünf deutlich verschiedene, kräftige Farben, damit man sie auch in Graustufen an ihrer Helligkeit unterscheidet. Zwischen je zwei benachbarten Kreisen verbindet ein waagerechter Strich mit EINER Pfeilspitze zum rechten Nachbarn — vier Pfeile, alle in dieselbe Richtung; jeder beginnt sichtbar am Rand des einen Kreises und endet sichtbar am Rand des nächsten, keiner läuft weiter. Über dem Abschnitt zwischen Kreis 2 und Kreis 4 stehen drei einfache Strommasten auf der Verbindungslinie: je ein senkrechter Strich mit zwei kurzen Querarmen, gleich hoch, gleich weit auseinander. Unter den Namen von Kreis 2 und von Kreis 4 läuft je eine schmale waagerechte Klammer, und unter jeder Klammer steht groß dasselbe Wort: „Umspannwerk“. Ganz klein steht unter Kreis 1 „Anfang“ und unter Kreis 5 „Ende“. Weiter steht KEINE Zahl und KEIN Wort im Bild — ausdrücklich keine Spannungswerte, denn die liest die Schülerin selbst am Bildschirm ab und trägt sie in die Tabelle ein. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die fünf Kreise sind volle Farbflächen mit weißer Ziffer darin, nie Ringe, nie schraffiert, nie aus Strichen oder Rastern aufgebaut; sonst werden sie beim Verkleinern alle gleich grau und der Weg verliert seine Stationen. (2) Nebenbilder — es gibt genau diesen einen Streifen: kein zweites kleines Bild in einer Ecke, kein gezeichnetes Kraftwerksgebäude, kein Haus mit Fenstern, keine Landkarte, kein Diagramm, keine Person, kein Innenraum. Die Masten sind der einzige gegenständliche Teil des Bildes und stehen nur über der Strecke zwischen den beiden Umspannwerken. (3) Strahlengänge ins Leere — es wird keine Linie gezeichnet, die im Nichts endet: keine Blitze, keine Funken, keine Feldlinien, keine Strompfeile im Draht, keine Leitung, die aus dem Bildrand hinausläuft. Der Strom wird allein durch die vier Verbindungspfeile dargestellt. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fv11",
+  "quelle": "ev12",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_versorgung",
+  "titel": "Vier Kraftwerke auf einem Blatt",
+  "name": "Welche Kraftwerke liefern unseren Strom?",
+  "fachwoerter_neu": [
+   "regelbar",
+   "wetterabhängig"
+  ],
+  "alltag": [
+   "Jannis soll bei den Stadtwerken eine Folie für seinen Vortrag machen.",
+   "Sein Betreuer gibt ihm ein Datenblatt mit vier Kraftwerksarten: Kohle, Kernkraft, Wind und Wasser.",
+   "Regelbar heißt: Das Kraftwerk kann schnell mehr oder weniger liefern.",
+   "Wetterabhängig heißt: Das Wetter bestimmt, wie viel ein Kraftwerk liefert."
+  ],
+  "frage": "Reicht eine einzige Kraftwerksart für den Strom einer Stadt?",
+  "predict": [
+   "Eine Stadt braucht mehrere Kraftwerksarten zusammen.",
+   "Eine Kraftwerksart reicht, wenn man genug davon baut."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die Zeile „Kernkraftwerk“ von links nach rechts.",
+   "Trage bei den drei offenen Zeilen ein, ob der Brennstoff Geld kostet.",
+   "Ordne die drei regelbaren Kraftwerke in der Tabelle. Beginne beim schnellsten. Der Windpark passt nicht dazu.",
+   "Beurteile: Reicht ein Pumpspeicher allein für eine Stadt?"
+  ],
+  "daten": {
+   "titel": "Kraftwerksarten im Vergleich",
+   "spalten": [
+    "Kraftwerk",
+    "Kostet der Brennstoff Geld?",
+    "Wie schnell regelbar?"
+   ],
+   "zeilen": [
+    [
+     "Kohlekraftwerk",
+     "Kohle kostet Geld; CO₂",
+     "in Stunden"
+    ],
+    [
+     "Kernkraftwerk",
+     "Uran kostet Geld; Abfall",
+     "sehr langsam"
+    ],
+    [
+     "Windpark",
+     "Wind kostet nichts; Fläche",
+     "nur bei Wind"
+    ],
+    [
+     "Pumpspeicher",
+     "kein Brennstoff; braucht Strom zum Pumpen",
+     "in Minuten; speichert nur"
+    ]
+   ],
+   "quelle": "Typische Angaben zur Bauart. Kein bestimmtes Kraftwerk.",
+   "merke": "Lies jede Zeile von links nach rechts. Ganz rechts steht die Zeit."
+  },
+  "tabCols": [
+   "Kraftwerk",
+   "Kostet der Brennstoff Geld?",
+   "Platz 1, 2, 3 – oder gar nicht?"
+  ],
+  "tabRows": [
+   [
+    "Kohlekraftwerk",
+    "ja",
+    "Platz 2"
+   ],
+   [
+    "Kernkraftwerk",
+    "",
+    ""
+   ],
+   [
+    "Windpark",
+    "",
+    ""
+   ],
+   [
+    "Pumpspeicher",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Pumpspeicher ist in Minuten",
+    "loesung": "regelbar",
+    "post": "."
+   },
+   {
+    "pre": "Ein Windpark ist",
+    "loesung": "wetterabhängig",
+    "post": ". Eine Stadt braucht deshalb mehrere Kraftwerksarten."
+   }
+  ],
+  "wortbank": [
+   "regelbar",
+   "wetterabhängig",
+   "Stunden",
+   "sehr langsam"
+  ],
+  "beispiel": {
+   "frage": "Wie ist die Zeile „Kohlekraftwerk“ ausgefüllt?",
+   "antwort": "Im Datenblatt steht beim Kohlekraftwerk: „Kohle kostet Geld“. In der Tabelle steht deshalb: ja. Beim Ordnen ist „in Stunden“ Platz 2."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welches Kraftwerk braucht Strom zum Pumpen?",
+    "optionen": [
+     "Kohlekraftwerk",
+     "Pumpspeicher",
+     "Kernkraftwerk"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Kohlekraftwerk ist in",
+      "loesung": "Stunden",
+      "post": "regelbar."
+     },
+     {
+      "pre": "Ein Kernkraftwerk ist",
+      "loesung": "sehr langsam",
+      "post": "regelbar."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Eine Stadt will nur Windparks bauen. Warum reicht das nicht?",
+    "satzstarter": "Nur Windparks reichen nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Die Zeiten stehen im Datenblatt.",
+   "h2": "Im Datenblatt steht beim Windpark: „nur bei Wind“.",
+   "h3": "Fast fertig: Nur Windparks reichen nicht, weil ein Windpark nur bei ___ liefert."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt ablesen, wie schnell ein Kraftwerk regelbar ist.",
+   "Ich kann sagen, welches Kraftwerk wetterabhängig ist.",
+   "Ich kann erklären, warum eine Stadt mehrere Kraftwerksarten braucht."
+  ],
+  "zuhause": "Sieh auf eurer Stromrechnung nach, woher euer Strom kommt. Ist er eher regelbar oder eher wetterabhängig?",
+  "bildauftrag": "[BILD: eine einzige ruhige Vergleichstafel auf hellem Grund, vier gleich große Felder nebeneinander in EINEM Bildausschnitt, mit gemeinsamer Grundlinie und einem gemeinsamen Rahmen um alle vier. Jedes Feld ist ein volles Rechteck, mindestens so breit wie halb so hoch – ausdrücklich KEINE schmalen Streifen und KEINE vier freistehenden Einzelbilder mit eigenem Himmel und eigenem Boden; der helle Hintergrund läuft ohne Naht durch alle vier Felder, getrennt nur durch eine dünne senkrechte Linie. Über jedem Feld steht groß und gut lesbar der Name, von links nach rechts: „Kohlekraftwerk“, „Kernkraftwerk“, „Windpark“, „Pumpspeicher“. In jedem Feld eine einfache, kräftige Silhouette in EINER Farbe, alle vier gleich hoch: Feld 1 ein Kesselhaus mit hohem Schornstein und einer weißen Rauchfahne; Feld 2 ein rundes Reaktorgebäude mit breitem Kühlturm daneben; Feld 3 drei Windräder mit je drei Flügeln; Feld 4 ein Stausee oben am Hang, ein See unten und ein dickes Rohr dazwischen. Unter jeder Silhouette stehen genau ZWEI Beschriftungszeilen, in allen vier Feldern auf gleicher Höhe und in gleicher Schriftgröße – oben der Brennstoff, unten die Zeit, wörtlich so: Feld 1 „Kohle kostet Geld“ / „in Stunden“, Feld 2 „Uran kostet Geld“ / „sehr langsam“, Feld 3 „Wind kostet nichts“ / „nur bei Wind“, Feld 4 „kein Brennstoff“ / „in Minuten“. Pfeile gibt es nur an einer einzigen Stelle: zwei kurze Pfeile am Rohr des Pumpspeichers, einer nach oben, einer nach unten – beide beginnen und enden sichtbar an einem der beiden Seen, keiner zeigt ins Leere oder aus dem Feld heraus. Keine weiteren Pfeile, keine Stromleitungen zwischen den Feldern, keine Personen, keine Zahlen und keine anderen Wörter als die genannten. Große Schrift, ruhiger Hintergrund, keine Deko.]"
+ },
+ {
+  "id": "fv12",
+  "quelle": "ev13",
+  "sim": "wirkungsgrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Warme Luft aus dem Schaltschrank",
+  "name": "Wie viel Energie kommt beim Kunden an?",
+  "fachwoerter_neu": [
+   "Energie in Joule (J)"
+  ],
+  "alltag": [
+   "Jannis lädt sein Handy. Das Netzteil wird warm.",
+   "Bei den Stadtwerken bläst ein Lüfter warme Luft aus dem Schaltschrank.",
+   "Ein Schaltschrank ist ein Schrank voll Technik.",
+   "Energie misst man in Joule (J). Wie viel Prozent herauskommt, heißt Wirkungsgrad η (sprich: eta)."
+  ],
+  "frage": "Bleibt der Wirkungsgrad η gleich, wenn mehr Energie hineingeht?",
+  "predict": [
+   "Bei mehr Energie wird der Wirkungsgrad η größer.",
+   "Der Wirkungsgrad η bleibt gleich. Nur die Zahlen werden größer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Handy-Ladegerät“. Zeile 1 ist schon ausgefüllt.",
+   "Stelle den Regler auf 200 J, 600 J und 1200 J. Bleibe beim Handy-Ladegerät.",
+   "Trage die Zahlen und η ein.",
+   "Vergleiche die vier Zeilen. Was bleibt gleich?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Werte.",
+  "tabCols": [
+   "Wie viel Energie geht hinein?",
+   "Wie viel geht in den Akku?",
+   "Wie hoch ist der Wirkungsgrad η?"
+  ],
+  "tabRows": [
+   [
+    "1000 J",
+    "800 J",
+    "80 %"
+   ],
+   [
+    "200 J",
+    "",
+    ""
+   ],
+   [
+    "600 J",
+    "",
+    ""
+   ],
+   [
+    "1200 J",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Wirkungsgrad η sagt, wie viel Prozent herauskommt. Beim Ladegerät sind es",
+    "loesung": "80 %",
+    "post": "."
+   },
+   {
+    "pre": "Mehr Energie hinein heißt: η bleibt",
+    "loesung": "gleich",
+    "post": ". Nur die Joule-Zahlen werden größer."
+   }
+  ],
+  "wortbank": [
+   "80 %",
+   "gleich",
+   "480 J",
+   "120 J"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 der Tabelle ab?",
+   "antwort": "Am Bildschirm steht „hinein: 1000 J“ und „davon geladener Akku: 800 J“. Darüber steht „η = 80 %“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Regler steht auf 1200 J. Wie viel geht in den Akku?",
+    "optionen": [
+     "1200 J",
+     "240 J",
+     "960 J"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Ladegerät bekommt 600 J. In den Akku gehen",
+      "loesung": "480 J",
+      "post": "."
+     },
+     {
+      "pre": "Als Wärme gehen",
+      "loesung": "120 J",
+      "post": "verloren. η bleibt trotzdem 80 %."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Aus dem Schaltschrank kommt warme Luft. Ist diese Energie verloren? Prüfe: Ist sie noch da? Kann man sie nutzen?",
+    "satzstarter": "Die Energie ist noch …, aber man kann sie …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Statuszeile zeigt „als Wärme verloren: …“.",
+   "h2": "Beginne so: Die Energie ist noch da, aber man kann sie …",
+   "h3": "Fast fertig: Die Energie ist noch da, aber man kann sie nicht mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Wirkungsgrad η in der Statuszeile ablesen.",
+   "Ich weiß: Mehr Energie hinein ändert den Wirkungsgrad η nicht.",
+   "Ich kann begründen, ob warme Luft verlorene Energie ist."
+  ],
+  "zuhause": "Fasse dein Ladegerät an, während dein Handy lädt. Wird es warm?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei gleich breiten Feldern nebeneinander, gleicher Bildausschnitt, ruhiger heller Hintergrund. Unten in jedem Feld steht dasselbe Handy-Ladegerät (Netzteil mit Stecker), in allen drei Feldern exakt gleich groß gezeichnet — es ändert sich nur die Energiemenge, nicht das Gerät. Über jedem Ladegerät steht ein breites Rechteck als Energiemenge: eine FLÄCHE, kein dünner Streifen. Alle drei Rechtecke sind exakt gleich breit und nur unterschiedlich hoch. Das Maß gibt das GRÖSSTE Rechteck vor: Feld 3 ist höchstens doppelt so hoch wie breit. Daraus folgen Feld 2 (Höhe = Breite) und Feld 1 (Höhe = ein Drittel der Breite, also deutlich breiter als hoch). Links neben jedem Rechteck steht groß „hinein 200 J“, „hinein 600 J“, „hinein 1200 J“. Jedes Rechteck ist durch GENAU EINE waagerechte Trennlinie in zwei Flächen geteilt, und die Trennlinie sitzt in allen drei Rechtecken an derselben Stelle des Rechtecks: vier Fünftel unten, ein Fünftel oben. Der große untere Teil ist hell gefüllt und trägt in der Fläche die Aufschrift „geladener Akku 160 J“ beziehungsweise „geladener Akku 480 J“ und „geladener Akku 960 J“. Der kleine obere Teil ist dunkler gefüllt UND zusätzlich schraffiert (Farbe darf nicht das einzige Unterscheidungsmerkmal sein). Nur in Feld 3 ist diese Fläche hoch genug für Schrift: Dort steht „Wärme 240 J“ in der Fläche. In Feld 1 und Feld 2 stehen „Wärme 40 J“ und „Wärme 120 J“ ÜBER dem Rechteck, jeweils mit einer kurzen senkrechten Anschlusslinie hinab auf die schraffierte Fläche (nicht rechts daneben — dort steht der Maßstrich). Unter jedem Feld steht groß und in allen drei Feldern wortgleich „Wirkungsgrad η = 80 %“. Damit das gleiche Verhältnis sichtbar wird, steht am rechten Rand jedes Rechtecks derselbe kurze senkrechte Maßstrich mit der kleinen Beschriftung „4 von 5“, jeweils genau an der Trennlinie. Die Bildaussage ist: Die Flächen wachsen, die Aufteilung bleibt. KEINE Strahlen, Blitze, Funken oder Kabel, die aus dem Bild ins Leere laufen; das Ladegerät steckt in keiner Steckdose. KEINE Nebenbilder neben den drei Feldern — kein Handy, kein Schaltschrank, kein Lüfter, keine Personen, keine Sprechblasen. KEINE Energiepfeile als dünne Streifen: Die Menge wird allein durch die Höhe der breiten Flächen gezeigt. Keine weiteren Zahlen als die genannten. Große, gut lesbare Schrift, kein Rahmen, keine Deko.]"
+ },
+ {
+  "id": "fv13",
+  "quelle": "ev14",
+  "sim": "stromkosten",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Die Rechnung am Tresen",
+  "name": "Was kostet ein Gerät im Jahr?",
+  "fachwoerter_neu": [
+   "Energie in Kilowattstunden (kWh)",
+   "Strompreis in €/kWh"
+  ],
+  "alltag": [
+   "Eine Kundin steht am Tresen der Stadtwerke. Jannis hört zu.",
+   "Ihre Rechnung für das Jahr ist sehr hoch.",
+   "Der Stromzähler zählt die Energie in Kilowattstunden (kWh).",
+   "Am Tresen steht der Strompreis: 1 kWh kostet 0,30 €."
+  ],
+  "frage": "Wovon hängt es ab, was ein Gerät im Jahr kostet?",
+  "predict": [
+   "Ein starkes Gerät kostet viel, auch bei kurzer Zeit.",
+   "Am meisten kostet das Gerät, das am längsten läuft."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile ab. Nimm nur die Zahl hinter „Im Jahr:“.",
+   "Drücke „LED 10 W“. Trage die Zahl ein.",
+   "Drücke „Wasserkocher 2000 W“. Trage die Zahl ein.",
+   "Drücke „1 h“. Der Wasserkocher bleibt gewählt. Trage die Zahl ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Welches Gerät läuft?",
+   "Wie lange am Tag?",
+   "Was kostet es im Jahr?"
+  ],
+  "tabRows": [
+   [
+    "Fernseher 100 W",
+    "3 h",
+    "32,85 €"
+   ],
+   [
+    "LED 10 W",
+    "3 h",
+    ""
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "3 h",
+    ""
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "1 h",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Stromzähler misst die Energie in",
+    "loesung": "Kilowattstunden",
+    "post": "(kWh), nicht in Watt."
+   },
+   {
+    "pre": "Die Kosten rechnest du so: Energie ·",
+    "loesung": "Preis",
+    "post": ". 1 kWh kostet 0,30 €."
+   }
+  ],
+  "wortbank": [
+   "Kilowattstunden",
+   "Preis",
+   "0,60 €",
+   "219,00 €"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 ab?",
+   "antwort": "Am Bildschirm steht: „Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.“ In die Tabelle kommt 32,85 €."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was misst der Stromzähler? Prüfe am Bildschirm.",
+    "optionen": [
+     "In Kilowattstunden (kWh)",
+     "In Watt (W)",
+     "In Ampere (A)"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1 h zählt der Stromzähler 2 kWh. 2 · 0,30 € =",
+      "loesung": "0,60 €",
+      "post": "am Tag."
+     },
+     {
+      "pre": "Bei 1 h steht am Bildschirm: Im Jahr",
+      "loesung": "219,00 €",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Kundin sagt: „Es war nur die Lampe.“ Hat sie recht?",
+    "satzstarter": "Die Kundin hat …, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Nimm nur die Zahl hinter „Im Jahr:“.",
+   "h2": "Beginne so: Die Kundin hat nicht recht, weil …",
+   "h3": "Fast fertig: Die Kundin hat nicht recht, weil die LED nur 3,28 € kostet. Der Wasserkocher bei 1 h kostet ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Kosten im Jahr am Bildschirm ablesen.",
+   "Ich kann sagen: Der Stromzähler misst Energie in Kilowattstunden.",
+   "Ich kann zwei Geräte nach den Kosten im Jahr vergleichen."
+  ],
+  "zuhause": "Lies zu Hause die W-Zahl am Wasserkocher ab. Schreibe sie auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU VIER Feldern, nebeneinander in EINEM Bildausschnitt, gleiche Größe, gleiche Höhe, gleiche Blickrichtung von vorn, alle auf einer durchgehenden waagerechten Grundlinie. Jedes Feld ist Strich für Strich gleich aufgebaut und enthält genau drei Dinge untereinander: oben das Gerät als einfache, satt ausgefüllte Silhouette, darunter EINE Beschriftungszeile, ganz unten eine rechteckige Tafel in voller Farbfläche mit der kleinen Aufschrift „Kosten pro Jahr“ und darunter dem Betrag in sehr großer dunkler Schrift. FELD 1: ein Fernseher als liegendes Rechteck auf kurzem Fuß; Zeile „Fernseher · 100 W · 3 h/Tag“; Tafel „32,85 € pro Jahr“. FELD 2: eine LED-Lampe als kleiner Birnenumriss; Zeile „LED-Lampe · 10 W · 3 h/Tag“; Tafel „3,28 € pro Jahr“. FELD 3: ein Wasserkocher als hohe Kanne mit Griff und Ausguss; Zeile „Wasserkocher · 2000 W · 3 h/Tag“; Tafel „657,00 € pro Jahr“. FELD 4: derselbe Wasserkocher, Strich für Strich gleich gezeichnet wie in Feld 3; Zeile „Wasserkocher · 2000 W · 1 h/Tag“; Tafel „219,00 € pro Jahr“. Über allen vier Feldern läuft eine einzige durchgehende Kopfzeile: „1 kWh kostet 0,30 €“. Unter Feld 1 und Feld 2 steht gemeinsam die große Beschriftung „gleiche Zeit, anderes Gerät“, unter Feld 3 und Feld 4 gemeinsam „gleiches Gerät, andere Zeit“ — daran hängt die ganze Aussage des Bildes. Die vier Tafeln sind alle GLEICH GROSS: Der Unterschied steckt allein in der Zahl, nie in der Fläche. Ein Balkendiagramm ist ausdrücklich ausgeschlossen — 3,28 € und 657,00 € unterscheiden sich um das Zweihundertfache, maßstäbliche Balken wären auf dieser Seite nicht zeichenbar und würden falsch abgelesen. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die vier Geräte und die vier Tafeln werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Raster, Punktmuster oder dünne Streifen, und die Beträge stehen als große dunkle Ziffern mitten in der hellen Tafel; sonst verschwimmt beim Verkleinern alles zu Grau. (2) Nebenbilder — es gibt genau vier Felder: keine fünfte Miniatur, kein Kreisdiagramm, kein Münzstapel, kein Geldschein, kein Rechnungsblatt, kein Zählerkasten mit Zahlenrollen in der Ecke, kein Tresen, keine Kundin, keine Personen, kein Kraftwerk. (3) Strahlengänge ins Leere — es werden KEINE Kabel, Stecker, Blitze, Strompfeile oder Flusslinien gezeichnet und keine Linie, die am Bildrand einfach aufhört; zwischen Gerät und Tafel steht in jedem Feld genau EIN kurzer gerader Pfeil nach unten, und das sind die einzigen vier Pfeile im ganzen Bild. Keine weiteren Zahlen als die genannten, keine Formel, keine Prozentangabe, kein Vergleichspfeil zwischen den Feldern. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn1",
+  "quelle": "rk1",
+  "sim": "atombau-isotope",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Kühlschrank mit den Zahlen",
+  "name": "Woraus besteht ein Atomkern?",
+  "fachwoerter_neu": [
+   "Proton",
+   "Neutron"
+  ],
+  "alltag": [
+   "Nour macht Praktikum in der Nuklearmedizin. Dort steht ein Kühlschrank voller Fläschchen.",
+   "Auf jedem Fläschchen steht ein Name, dann ein Strich, dann eine Zahl: Kohlenstoff-12.",
+   "Vom selben Stoff gibt es mehrere Sorten. Nour fragt: Warum die Zahl?",
+   "Im Kern jedes Atoms sitzen Protonen und Neutronen. Protonen haben eine Plus-Ladung. Neutronen haben keine Ladung."
+  ],
+  "frage": "Welche Teilchen im Kern bestimmen den Namen?",
+  "predict": [
+   "Nur die Zahl der Protonen bestimmt den Namen. Mehr Neutronen geben nur eine andere Sorte.",
+   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Wasserstoff-1. Die erste Zeile der Tabelle ist schon ausgefüllt.",
+   "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.",
+   "Drücke Kohlenstoff-14. Trage die dritte Zeile ein.",
+   "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Trage die vierte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was stellst du ein?",
+   "Wie viele Protonen und Neutronen?",
+   "Welcher Name steht oben?"
+  ],
+  "tabRows": [
+   [
+    "Wasserstoff-1",
+    "1 Proton, 0 Neutronen",
+    "Wasserstoff-1"
+   ],
+   [
+    "Kohlenstoff-12",
+    "",
+    ""
+   ],
+   [
+    "Kohlenstoff-14",
+    "",
+    ""
+   ],
+   [
+    "Regler auf 8 Protonen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Zahl der",
+    "loesung": "Protonen",
+    "post": "bestimmt den Namen des Kerns."
+   },
+   {
+    "pre": "Mehr oder weniger",
+    "loesung": "Neutronen",
+    "post": "geben nur eine andere Sorte mit demselben Namen."
+   }
+  ],
+  "wortbank": [
+   "Protonen",
+   "Neutronen",
+   "Kohlenstoff",
+   "Sauerstoff"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du die erste Zeile aus?",
+   "antwort": "Drücke Wasserstoff-1. Oben steht der Name: Wasserstoff-1. Die Zeile darunter zeigt: 1 Proton, 0 Neutronen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Kohlenstoff-14. Was steht dann im Kern?",
+    "optionen": [
+     "6 Protonen und 8 Neutronen",
+     "6 Protonen und 6 Neutronen",
+     "8 Protonen und 6 Neutronen"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Kern mit 6 Protonen heißt immer",
+      "loesung": "Kohlenstoff",
+      "post": "."
+     },
+     {
+      "pre": "Ein Kern mit 8 Protonen heißt",
+      "loesung": "Sauerstoff",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Chlor-35 hat 17 Protonen und 18 Neutronen. Chlor-37 hat 17 Protonen und 20 Neutronen. Warum heißen beide Chlor?",
+    "satzstarter": "Beide heißen Chlor, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies im Statusfeld die Zeile mit den Protonen und Neutronen. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beide heißen Chlor, weil beide gleich viele …",
+   "h3": "Fast fertig: Chlor-35 hat 17 Protonen, Chlor-37 auch. Beide heißen Chlor, weil beide 17 ___ haben."
+  },
+  "selbstcheck": [
+   "Ich kann im Statusfeld die Protonen und Neutronen ablesen.",
+   "Ich kann sagen: Die Zahl der Protonen bestimmt den Namen.",
+   "Ich weiß: Mehr Neutronen geben nur eine andere Sorte."
+  ],
+  "zuhause": "Erzähle zu Hause: Warum heißen Kohlenstoff-12 und Kohlenstoff-14 beide Kohlenstoff?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Atomen, nebeneinander im selben Bildausschnitt, gleich groß, gleich aufgebaut, mit einer dünnen senkrechten Trennlinie dazwischen. Links die Überschrift „Kohlenstoff-12“, rechts die Überschrift „Kohlenstoff-14“. Jedes Atom besteht aus einem großen runden Kern in der Mitte und zwei dünnen Kreislinien um den Kern herum. Im Kern liegen einzelne, deutlich voneinander getrennte, vollflächig gefüllte runde Kugeln in zwei klar unterscheidbaren Sorten: Protonen sind rote Kugeln und tragen mittig ein großes „+“, Neutronen sind graue Kugeln und tragen KEIN Zeichen. Links liegen genau 6 rote und genau 6 graue Kugeln im Kern, rechts genau 6 rote und genau 8 graue. Die Zahl der grauen Kugeln ist der EINZIGE Unterschied zwischen den beiden Bildhälften – die roten Kugeln sind links und rechts gleich viele, gleich groß und gleich angeordnet, damit man den Unterschied durch Abzählen findet. Auf den beiden Kreislinien sitzen kleine blaue Kugeln mit einem „–“: zwei auf der inneren Linie, vier auf der äußeren, links wie rechts gleich. Beschriftungen groß und waagerecht, mit dünner Anschlusslinie an das gemeinte Teilchen, links: „6 Protonen  (+)“, „6 Neutronen  (ohne Ladung)“, „6 Elektronen  (–)“; rechts genauso, aber „8 Neutronen  (ohne Ladung)“. Unter dem linken Atom steht groß „Stabil.“, unter dem rechten groß „Nicht stabil.“. Unter beiden Atomen läuft eine gemeinsame Fußzeile mit zwei Sätzen: „6 mal (+)  und  6 mal (–)  →  nach außen neutral“ und „Kern hier 10 000-mal zu groß gezeichnet“. Drei Fehler, die hier drohen und die das Bild nicht machen darf: (1) Streifen statt Flächen – die Teilchen müssen einzelne, voll ausgefüllte, sauber getrennte Kreisflächen sein, kein gestreifter oder schraffierter Klumpen, und die zwei Bahnen sind dünne einzelne Linien, keine breiten Farbbänder oder Nebelringe. (2) Nebenbilder – im Bild stehen NUR diese zwei Atome: kein drittes Atom, kein Periodensystem, kein Vergrößerungskreis, keine kleine Wiederholung in einer Ecke, keine Legendenkästchen mit noch einmal denselben Kugeln. (3) Strahlengänge ins Leere – aus dem rechten Kern kommen KEINE Strahlen, Blitze, Wellen oder Pfeile heraus, obwohl darunter „Nicht stabil.“ steht; auf den Bahnen stehen keine Bewegungspfeile. Der einzige Pfeil im ganzen Bild ist der kleine Pfeil mitten im Fußzeilensatz „→ nach außen neutral“. Farbe ist nie das einzige Merkmal: Protonen kennt man am „+“, Elektronen am „–“, Neutronen daran, dass sie kein Zeichen tragen. Keine hoch- oder tiefgestellten Kernschreibweisen, keine Massenzahlen, keine weiteren Zahlen außer den genannten. Keine Personen, ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn2",
+  "quelle": "rk2",
+  "sim": "geiger-mueller",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Knacken an der Wand",
+  "name": "Was ist radioaktive Strahlung?",
+  "fachwoerter_neu": [
+   "radioaktive Strahlung",
+   "Impuls"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. An der Wand knackt ein Gerät.",
+   "Strahlung aus Atomkernen heißt radioaktive Strahlung.",
+   "Das Gerät heißt Zählrohr. Jedes Teilchen macht darin einen Impuls. Jeden Impuls hörst du als Knacken.",
+   "Eine Physikerin dreht am Regler. Dann knackt es nicht mehr. Nour denkt: Das Zählrohr ist kaputt."
+  ],
+  "frage": "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
+  "predict": [
+   "Je mehr Spannung, desto besser zählt das Zählrohr.",
+   "Das Zählrohr zählt nur bei mittlerer Spannung. Zu wenig und zu viel sind schlecht."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke oben den Knopf „2 · Die Kennlinie“.",
+   "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.",
+   "Lies die Zahl hinter „Bereich“ ab. Trage sie ein.",
+   "Lies den Text unter der Zahl. Trage ein: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zählrohrspannung U",
+   "Welche Zahl steht hinter „Bereich“?",
+   "Was macht das Zählrohr hier?"
+  ],
+  "tabRows": [
+   [
+    "0 V",
+    "I",
+    "zählt nicht"
+   ],
+   [
+    "450 V",
+    "",
+    ""
+   ],
+   [
+    "650 V",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Radioaktive Strahlung kommt aus Atomkernen. Jedes Teilchen macht im Zählrohr einen kurzen",
+    "loesung": "Impuls",
+    "post": "."
+   },
+   {
+    "pre": "Bei etwa",
+    "loesung": "450 V",
+    "post": "arbeitet das Zählrohr richtig."
+   }
+  ],
+  "wortbank": [
+   "Impuls",
+   "450 V",
+   "zählt",
+   "heil"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile 0 V ab?",
+   "antwort": "Hinter „Bereich“ steht die Zahl I. Im Text darunter fehlen „zählt“ und „zerstört“. In die Tabelle kommt: I und „zählt nicht“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour stellt 650 V ein. Was passiert?",
+    "optionen": [
+     "Es zählt besonders gut.",
+     "Es geht kaputt.",
+     "Es zählt nichts, ist aber heil."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 0 V ist die Spannung zu klein. Das Zählrohr",
+      "loesung": "zählt",
+      "post": "nicht."
+     },
+     {
+      "pre": "Nour denkt: Das Zählrohr ist kaputt. Es ist aber",
+      "loesung": "heil",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Physikerin stellt 0 V ein. Warum knackt es nicht mehr?",
+    "satzstarter": "Es knackt nicht mehr, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl steht vorne im Textfeld, hinter dem Wort „Bereich“. „heil“ heißt: nicht kaputt.",
+   "h2": "Beginne so: Es knackt nicht mehr, weil die Spannung zu klein ist.",
+   "h3": "Fast fertig: Bei 0 V macht das Zählrohr keinen Impuls. Dann zählt es kein ___."
+  },
+  "selbstcheck": [
+   "Ich kann eine Spannung einstellen und den Bereich ablesen.",
+   "Ich kann sagen: Bei etwa 450 V zählt das Zählrohr die Teilchen.",
+   "Ich weiß: Bei 650 V geht das Zählrohr kaputt."
+  ],
+  "zuhause": "Zähle eine Minute die Autos auf eurer Straße. Ein Zählrohr zählt genauso einzeln.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei Zeilen, untereinander angeordnet und alle im selben Bildausschnitt. Links in jeder Zeile dasselbe liegende Zählrohr in Seitenansicht, dreimal identisch gezeichnet: ein Zylinder mit dünnem Draht in der Mitte und einem runden Fenster an der linken Stirnseite. Über jedem Rohr steht groß und gut lesbar die eingestellte Spannung, von oben nach unten „0 V“, „450 V“, „650 V“. Von links kommt in jeder Zeile GENAU EIN gerader Pfeil; er beginnt sichtbar an einem beschrifteten Kästchen „Strahlung“ und endet sichtbar am Fenster des Rohrs. Kein Pfeil endet im Leeren, kein Pfeil läuft am Rohr vorbei, und im Rohr werden keine weiteren Bahnen oder Linien gezeichnet. Rechts neben jedem Rohr steht das Ergebnis groß in Worten, dazu ein kleines Liniendiagramm derselben Größe: obere Zeile „zählt nicht“ mit einer glatten waagerechten Linie; mittlere Zeile „zählt“ mit drei deutlichen Ausschlägen auf der Linie; untere Zeile „geht kaputt“ mit einer einzigen Linie, die oben aus dem Rahmen läuft. Unter den drei Zeilen liegt über die ganze Bildbreite ein Spannungsband als FLÄCHE, mindestens ein Fünftel der Bildhöhe hoch, links „0“ und rechts „700“, mit den Marken „0“, „100“, „200“, „300“, „400“, „500“, „600“, „700“ und der Achsenbeschriftung „Spannung U / V“. Das Band ist in fünf verschieden helle Felder geteilt, und zwar an genau diesen Stellen: Feld I von 0 bis 20, Feld II von 20 bis 100, Feld III von 100 bis 300, Feld IV von 300 bis 600, Feld V ab 600 bis zum rechten Rand. Die Felder sind deshalb verschieden breit: I und II sind schmal, IV ist mit Abstand das breiteste. Die Zahlen „III“, „IV“ und „V“ stehen mittig und groß in ihrem Feld; „I“ und „II“ sind für ihr schmales Feld zu groß und stehen deshalb ebenso groß ÜBER dem Band, jede mit einem kurzen senkrechten Strich hinunter auf ihr Feld. Das Feld von 300 bis 600 ist das hellste und trägt zusätzlich das Wort „Betrieb“. Drei kräftige senkrechte Linien verbinden jedes Zählrohr mit seiner Stelle im Band: 0 V mit Feld I ganz am linken Bandanfang, 450 V mit Feld IV, 650 V mit Feld V. Die fünf Felder sind Flächen mit sichtbarer Höhe, keine dünnen Streifen. Genau drei Zählrohre, genau ein Strahlungspfeil je Zeile, genau ein Spannungsband. Keine zweiten kleinen Bilder am Rand, keine Detailausschnitte oder Lupen, keine Personen, keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn3",
+  "quelle": "rk3",
+  "sim": "absorption-strahlung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Die Schürze aus Blei",
+  "name": "Welche Strahlung kommt wie weit?",
+  "fachwoerter_neu": [
+   "drei Arten von Strahlung: Alphastrahlung (α), Betastrahlung (β), Gammastrahlung (γ)"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. Dort hängt eine Schürze aus Blei.",
+   "Im Labor nebenan reicht eine Scheibe aus Aluminium. Beides ist richtig.",
+   "Es gibt drei Arten von Strahlung: Alphastrahlung (α), Betastrahlung (β) und Gammastrahlung (γ).",
+   "Das Gerät, aus dem die Strahlung kommt, heißt Strahler."
+  ],
+  "frage": "Welches Material hält welche Strahlung auf?",
+  "predict": [
+   "Papier hält Alphastrahlung auf. Durch Blei kommt noch Gammastrahlung.",
+   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.",
+   "Drücke „γ-Strahlung“ und „Blei“. Vergleiche mit der Beispielzeile.",
+   "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Trage die Zeile ein.",
+   "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Trage die letzte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebniskarten.",
+  "tabCols": [
+   "Strahlung und Material",
+   "Wie viel kommt durch?",
+   "Was heißt das?"
+  ],
+  "tabRows": [
+   [
+    "γ-Strahlung und Blei",
+    "50,2 % kommen durch",
+    "Ungefähr die Hälfte kommt durch"
+   ],
+   [
+    "α-Strahlung und Papier",
+    "",
+    ""
+   ],
+   [
+    "β-Strahlung und Aluminium",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Papier hält Alphastrahlung auf. Aluminium hält",
+    "loesung": "Betastrahlung",
+    "post": "auf."
+   },
+   {
+    "pre": "Gammastrahlung kommt durch Blei. Sie wird dabei nur",
+    "loesung": "schwächer",
+    "post": ". Ein kleiner Rest kommt immer durch."
+   }
+  ],
+  "wortbank": [
+   "Betastrahlung",
+   "schwächer",
+   "Blei",
+   "50,2 %"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du ab, wie viel durch das Blei kommt?",
+   "antwort": "Ich drücke „γ-Strahlung“ und „Blei“. Oben rechts im Bild steht „50,2 % kommen durch“. Das schreibe ich in die Tabelle. Das ist ungefähr die Hälfte."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welches Material hält Alphastrahlung (α) auf?",
+    "optionen": [
+     "Blei",
+     "Aluminium",
+     "Papier"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nour trägt in der Nuklearmedizin eine Schürze aus",
+      "loesung": "Blei",
+      "post": "."
+     },
+     {
+      "pre": "Hinter 6,0 mm Blei kommen noch",
+      "loesung": "50,2 %",
+      "post": "durch."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "In der Nuklearmedizin ist Gammastrahlung (γ). Warum reicht dort keine Schürze aus Papier?",
+    "satzstarter": "Papier reicht nicht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Prozentzahl steht oben rechts im Bild. Die Zahl unter der Platte ist die Dicke.",
+   "h2": "Beginne so: Papier reicht nicht, weil Gammastrahlung …",
+   "h3": "Fast fertig: Gammastrahlung geht durch Papier hindurch. Nur Blei macht sie ___."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Arten von Strahlung nennen.",
+   "Ich kann sagen, welches Material welche Strahlung aufhält.",
+   "Ich weiß: Hinter Blei kommt noch ein Rest Gammastrahlung an."
+  ],
+  "zuhause": "Frage zu Hause: Wer hat schon einmal eine Schürze aus Blei getragen?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild in DREI gleich aufgebauten Bildzeilen untereinander, alle im selben Ausschnitt, gleiche Größe, gleicher Abstand. Jede Zeile zeigt denselben Weg von links nach rechts: links ein kleiner grauer Kasten mit der großen Beschriftung „Strahler“, in der Mitte eine aufrecht stehende Platte, rechts ein Kasten mit der Beschriftung „Zählrohr“. Alle drei Platten sind GLEICH breit und gleich hoch — sie unterscheiden sich nur in Farbe und Beschriftung; unter jeder Platte steht dieselbe Maßangabe „6,0 mm“ (am Bildschirm sind alle drei Platten auf denselben Wert eingestellt, das Bild darf davon nicht abweichen). Die Strahlung wird in jeder Zeile als EINE zusammenhängende, flächig gefüllte Bahn zwischen Strahler und Platte gezeichnet — eine breite, weiche Fläche in der Farbe der Zeile, NICHT als mehrere dünne parallele Striche oder Streifen und nicht als Pfeilbündel. Am linken Rand jeder Zeile steht groß, welche Strahlung gemeint ist: obere Zeile „Alphastrahlung (α)“, mittlere Zeile „Betastrahlung (β)“, untere Zeile „Gammastrahlung (γ)“. Rechts oben in jeder Zeile steht groß der abgelesene Anteil, genau wie am Bildschirm: obere Zeile „0,0 % kommen durch“, mittlere Zeile „0,0 % kommen durch“, untere Zeile „50,2 % kommen durch“. Obere Zeile: die Platte ist hellgelb wie am Bildschirm, mit dunkler Kontur, und trägt oben die Beschriftung „Papier“; die gefüllte Bahn endet sichtbar INNERHALB der Papierplatte, rechts von der Platte ist die Fläche vollständig leer und sauber, der Kasten „Zählrohr“ steht dort blass und ohne jede Bahn davor. Mittlere Zeile: die Platte ist silbergrau und trägt oben die Beschriftung „Aluminium“; die Bahn endet ebenso innerhalb dieser Platte, rechts davon bleibt es leer, das „Zählrohr“ steht blass. Untere Zeile: die Platte ist dunkelgrau und trägt oben die Beschriftung „Blei“; hier läuft die Bahn DURCH die Platte hindurch bis an den Kasten „Zählrohr“ heran, ist rechts der Platte aber deutlich blasser und nur noch halb so hoch wie links. Wichtig für die Komposition: jede gezeichnete Bahn endet an einem Gegenstand — entweder in einer Platte oder am Zählrohr; keine Bahn und kein Pfeil darf frei im Bild auslaufen oder ins Leere zeigen. Ebenso wichtig: EIN einziges durchgehendes Bild mit diesen drei Zeilen, keine kleinen Nebenbilder, keine eingesetzten Kästchen, keine Legende am Rand, kein zweites Diagramm. Keine Kurven, keine Achsen, keine Formeln, kein Warnzeichen für Radioaktivität, keine Personen, keine Zahlen außer „6,0 mm“, „0,0 % kommen durch“ und „50,2 % kommen durch“. Ruhiger heller Hintergrund, sehr große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn4",
+  "quelle": "rk4",
+  "sim": "ionisation",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Fläschchen, das zubleibt",
+  "name": "Warum ist die Strahlung gefährlich?",
+  "fachwoerter_neu": [
+   "ionisieren und Ionenpaar",
+   "Elektron"
+  ],
+  "alltag": [
+   "Nour sieht im Praktikum ein Fläschchen mit einem gelben Zeichen.",
+   "Auf dem Fläschchen steht: nicht öffnen. Aber Papier hält Alphastrahlung auf.",
+   "Um den Kern eines Atoms sitzen winzige Elektronen. Strahlung schlägt eines heraus. Das heißt ionisieren.",
+   "Das Elektron und das Atom ohne Elektron heißen zusammen Ionenpaar."
+  ],
+  "frage": "Warum ist Alphastrahlung im Körper am gefährlichsten?",
+  "predict": [
+   "Gefährlich ist die Strahlung, die am weitesten kommt.",
+   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke α Alpha und lies die Ionenpaare je Millimeter ab.",
+   "Drücke β Beta und trage beide Werte in die Tabelle ein.",
+   "Drücke γ Gamma. Trage zwei Wortangaben ein, keine Zahlen. Eine steht im letzten Satz.",
+   "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Strahlung",
+   "Wie viele Ionenpaare je Millimeter?",
+   "Wie weit kommt sie in Luft?"
+  ],
+  "tabRows": [
+   [
+    "α Alpha",
+    "4.202 (über viertausend)",
+    "3,5 cm"
+   ],
+   [
+    "β Beta",
+    "",
+    ""
+   ],
+   [
+    "γ Gamma",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beim Ionisieren wird aus einem Atom ein",
+    "loesung": "Elektron",
+    "post": "herausgeschlagen. Der Kern bleibt ganz. Der Stoff wird nicht radioaktiv."
+   },
+   {
+    "pre": "Gefährlich ist nicht, wie weit die Strahlung kommt, sondern wie",
+    "loesung": "dicht",
+    "post": "die Ionenpaare liegen."
+   }
+  ],
+  "wortbank": [
+   "Elektron",
+   "dicht",
+   "viertausend",
+   "9,8"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile für α Alpha ab?",
+   "antwort": "In der Anzeige steht: „Das ergibt 4.202 Ionenpaare je Millimeter.“ Die Zeile darüber nennt 3,5 cm. In die Tabelle kommt: 4.202 (über viertausend) und 3,5 cm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie dicht ionisiert γ Gamma?",
+    "optionen": [
+     "nur sehr vereinzelt",
+     "19.412 Ionenpaare je Millimeter",
+     "sehr dicht"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Alphastrahlung macht über",
+      "loesung": "viertausend",
+      "post": "Ionenpaare je Millimeter."
+     },
+     {
+      "pre": "Betastrahlung kommt weiter, macht aber nur",
+      "loesung": "9,8",
+      "post": "Ionenpaare je Millimeter."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum ist Alphastrahlung im Körper gefährlicher als Gammastrahlung?",
+    "satzstarter": "Alphastrahlung ist im Körper gefährlicher, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Zahl steht vor „Ionenpaare“.",
+   "h2": "Schreibe erst beides auf: α macht ____ Ionenpaare je Millimeter, γ ionisiert ____.",
+   "h3": "Fast fertig: α macht über viertausend Ionenpaare je Millimeter, γ nur sehr vereinzelt. α ionisiert also sehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Ionenpaare je Millimeter am Bildschirm ablesen.",
+   "Ich kann sagen: dicht ionisieren ist gefährlicher als weit kommen.",
+   "Ich weiß: Beim Ionisieren bleibt der Kern ganz."
+  ],
+  "zuhause": "Streue Salz auf ein dunkles Blatt: einmal auf einen Fleck, einmal weit verteilt. Vergleiche: Wo liegt das Salz dichter?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei waagerechten Spuren, untereinander angeordnet, alle im selben Bildausschnitt und alle links an derselben senkrechten Startlinie beginnend. Links VOR der Startlinie steht der Ausgangszustand genau einmal, mittig auf halber Höhe der drei Spuren: ein großer heller Kreis mit dünnem Rand, auf dem Rand sitzt ein kleiner voller dunkler Punkt; darunter die Aufschrift „Atom“. Jede Spur ist eine dünne gerade Linie mit vielen einzelnen Marken darauf – NIE ein durchgezogener farbiger Balken oder Streifen: Die Marken müssen bis zur letzten einzeln erkennbar bleiben, denn genau ihre Dichte ist die Aussage des Bildes. Jeder Ionisierungsort auf einer Spur besteht aus GENAU ZWEI Marken dicht beieinander: ein kleiner voller dunkler Punkt (das herausgeschlagene Elektron) und daneben ein offener Ring, so groß wie das Atom links (das zurückbleibende Ion). Das Atom selbst wird in den Spuren NICHT noch einmal gezeichnet – es steht einmal links vor der Startlinie, und rechts davon steht nur, was nach dem Ionisieren übrig ist. Punkt und Ring unterscheiden sich in der FORM – voll gegen offen –, nie nur in der Farbe oder in der Randstärke. Die Ringe bleiben in allen drei Spuren UNVERSEHRT und rund – kein zersprungener, geplatzter oder zerbrochener Kern, keine Bruchstücke, keine Explosionssterne; herausgelöst wird nur der kleine Punkt. Über jeder Spur liegt ein deutlich gezeichnetes Rechteck als Lupenfenster mit der großen Aufschrift „1 Millimeter“; alle drei Fenster sind exakt gleich breit, denn sie sind der Vergleich. Oberste Spur: im Fenster stehen die Marken so dicht, dass sie sich fast berühren, die Linie endet kurz hinter dem Fenster an einem waagerechten Endstrich. Beschriftung rechts daneben in zwei Zeilen: „Alphastrahlung   5,00 MeV“ und „4.202 Ionenpaare je Millimeter“, darunter am Endstrich „Reichweite: 3,5 cm Luft“, klein darunter „(gezeichnet sind nur einige der Ionisierungen – in Wirklichkeit sind es viel mehr)“. Mittlere Spur: im Fenster liegen rund zehn Ionisierungsorte weit auseinander, die Linie läuft bis zum rechten Rand des Bildausschnitts und endet dort ebenfalls an einem Endstrich mit der Aufschrift „Reichweite: 3,0 m Luft“ – sie darf nirgends frei ins Leere auslaufen. Beschriftung: „Betastrahlung   1,00 MeV“ und „9,8 Ionenpaare je Millimeter“. Unterste Spur: im Fenster liegen vier bis fünf Ionisierungsorte, weit auseinander, sonst nichts; die Linie läuft ohne Endstrich über den rechten Rand hinaus und trägt dort die Aufschrift „keine Reichweite – nach rund 70 m Luft ist erst die Hälfte weg“. Beschriftung: „Gammastrahlung   0,66 MeV“ und „ionisiert nur ganz vereinzelt“. Klein unter der untersten Spur eine zweite Modellgrenze in derselben Schriftgröße: „(die Längen der drei Spuren sind nicht maßstäblich – 3,5 cm gegen 3,0 m = 300 cm)“. Ganz unten eine einzige Legendenzeile in derselben Schriftgröße, in der die drei Marken selbst abgebildet sind und nicht dreimal derselbe Punkt: Kreis mit Punkt auf dem Rand = „Atom“, kleiner voller Punkt = „herausgeschlagenes Elektron“, offener Ring = „zurückbleibendes Ion“. Genau diese drei Spuren, genau drei Lupenfenster, genau ein Atom links, genau eine Legende. Alles, was das Bild zeigt, steht in einer dieser drei Zeilen, im Atom links oder in der Legende – KEINE zweite kleine Nebenzeichnung am Rand: kein Fläschchen, kein gelbes Strahlenzeichen, kein Blatt Papier, keine Bleiplatte, kein Zählrohr, kein Körperumriss, keine Zelle, keine Personen. Keine Pfeile außer den drei Spurlinien selbst, und keine Spurlinie ohne beschriftetes Ende oder beschrifteten Randaustritt. Keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn5",
+  "quelle": "rk5",
+  "sim": "geiger-mueller",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Knacken im Messraum",
+  "name": "Wie weist man Strahlung nach?",
+  "fachwoerter_neu": [
+   "Impulshöhe",
+   "Totzeit"
+  ],
+  "alltag": [
+   "Nour darf in den Messraum.",
+   "An der Wand knackt ein Zählrohr. Jedes Teilchen macht einen Impuls.",
+   "Wie hoch der Impuls ist, heißt Impulshöhe.",
+   "α ionisiert stark, γ ionisiert schwach. Stark heißt: sehr dicht."
+  ],
+  "frage": "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
+  "predict": [
+   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich.",
+   "α macht auch bei etwa 450 V den größten Impuls."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.",
+   "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.",
+   "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Ergänze die rechte Spalte.",
+   "Drücke „4 · Totzeit & wahre Zählrate“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Teilchen",
+   "Wie hoch ist der Impuls bei etwa 200 V?",
+   "Wie hoch ist der Impuls bei etwa 450 V?"
+  ],
+  "tabRows": [
+   [
+    "α",
+    "groß",
+    "gleich"
+   ],
+   [
+    "β",
+    "",
+    ""
+   ],
+   [
+    "γ",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Bei etwa 200 V zeigt die Impulshöhe, wie stark ein Teilchen",
+    "loesung": "ionisiert",
+    "post": "."
+   },
+   {
+    "pre": "Bei etwa 450 V ist jeder Impuls",
+    "loesung": "gleich",
+    "post": "hoch. Dann zählt das Rohr nur noch, wie viele Teilchen kommen."
+   }
+  ],
+  "wortbank": [
+   "ionisiert",
+   "gleich",
+   "mittel",
+   "klein"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile α ab?",
+   "antwort": "Bei „Proportionalbereich“ steht unter „Impulshöhe“: groß. Bei „Auslösebereich“ steht dort: gleich."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie hoch sind die Impulse bei etwa 450 V?",
+    "optionen": [
+     "groß, mittel, klein",
+     "gleich, gleich, gleich",
+     "klein, mittel, groß"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei etwa 200 V ist der Impuls von β",
+      "loesung": "mittel",
+      "post": "."
+     },
+     {
+      "pre": "Bei γ ist er",
+      "loesung": "klein",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nach jedem Impuls ist das Rohr kurz blind. Das heißt Totzeit. Je Sekunde kommen 2000 Teilchen. Gezählt werden nur 1667. Warum zählt es zu wenig?",
+    "satzstarter": "Das Zählrohr hat eine Grenze. Es zählt zu wenig, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Wörter stehen in der Wortbank. Lies nur unter der Überschrift mit der Spannung.",
+   "h2": "In der Totzeit merkt das Rohr nichts. Was ist mit Teilchen, die dann kommen?",
+   "h3": "Fast fertig: Das Rohr zählt zu wenig, weil es nach jedem Impuls kurz ___ ist."
+  },
+  "selbstcheck": [
+   "Ich kann die Impulshöhe von α, β und γ ablesen.",
+   "Ich kann sagen: Bei etwa 450 V ist jeder Impuls gleich.",
+   "Ich kann eine Grenze nennen: In der Totzeit verpasst das Rohr Teilchen."
+  ],
+  "zuhause": "Lass jemanden immer schneller klopfen. Wann kommst du nicht mehr mit?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einstiegsbild mit GENAU EINER Szene — kein Vergleich, keine zwei Felder, keine Balkengruppe. In der Bildmitte liegt waagerecht EIN einzelnes Zählrohr in Seitenansicht: ein Zylinder mit dünnem Draht in der Mitte und einem runden Fenster an der linken Stirnseite. Von links kommt GENAU EIN gerader Pfeil; er beginnt sichtbar an einem beschrifteten Kästchen „ein Teilchen“ und endet sichtbar am Fenster des Rohrs. Kein zweiter Pfeil, keine Bahn und keine Lawine im Rohr, keine fliegenden Punkte, kein Pfeil, der im Leeren endet. Rechts vom Rohr führt GENAU EINE kurze Leitung waagerecht zu einem rechteckigen Anzeigefeld. Im Anzeigefeld liegt eine durchgehende waagerechte Grundlinie, und darauf steht GENAU EIN breites, vollflächig ausgefülltes Rechteck aufrecht: der Impuls. Keine Kurve, kein Zackenzug, keine zweite Spitze, kein Raster im Feld. Links neben dem Rechteck steht ein senkrechter Doppelpfeil von der Grundlinie bis zur Oberkante des Rechtecks, daneben groß und waagerecht das Wort „Impulshöhe“ — die einzige Beschriftung im Anzeigefeld. Über der ganzen Szene steht groß die Frage „Wie hoch ist der Impuls?“. Das Bild stellt die Frage der Seite und beantwortet sie NICHT: Deshalb ist nur dieser eine Impuls gezeichnet, es gibt keinen zweiten zum Vergleichen, keine drei verschieden hohen Rechtecke, keine Hilfslinie über mehrere Oberkanten, nirgends die Buchstaben α, β oder γ, nirgends die Wörter „groß“, „mittel“, „klein“ oder „gleich“ und keine Spannungsangabe „200 V“ oder „450 V“. Genau diese eine Szene und sonst nichts: kein zweites Feld, kein kleines Nebenbild, keine eingeklinkte Nahaufnahme des Drahtes, kein Bildschirmrahmen, keine Tabelle, keine Person, keine Sprechblase, keine Legende am Rand. Der Impuls ist eine FLÄCHE, deutlich breiter als ein Strich, gleichmäßig gefüllt, ohne Schraffur, ohne Muster, ohne Farbverlauf; drei dünne Striche nebeneinander wären falsch, ebenso ein gestreifter oder gerasterter Hintergrund. Ruhiger heller Hintergrund, große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn6",
+  "quelle": "rk6",
+  "sim": "zerfall-halbwertszeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Fläschchen wird schwächer",
+  "name": "Wann ist die Hälfte zerfallen?",
+  "fachwoerter_neu": [
+   "Halbwertszeit T½",
+   "Nuklid"
+  ],
+  "alltag": [
+   "Nour sieht im Krankenhaus ein Fläschchen mit Iod-131. Es wird schwächer.",
+   "Nach 8,02 Tagen ist die Hälfte der Kerne zerfallen. Diese Zeit heißt Halbwertszeit T½.",
+   "Zerfallen heißt: Ein Kern wird von selbst zu einem anderen Kern.",
+   "Eine Kernsorte wie Iod-131 heißt Nuklid."
+  ],
+  "frage": "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
+  "predict": [
+   "Immer genau 100 Kerne sind übrig.",
+   "Ungefähr 100 Kerne sind übrig."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.",
+   "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.",
+   "Vergleiche deine Zahl mit Zeile 3.",
+   "Wähle Iod-131 und danach Cäsium-137. Trage beides ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Nuklid",
+   "Wie lange dauert eine Halbwertszeit?",
+   "Wie viele Kerne sind vor dem Schritt übrig?"
+  ],
+  "tabRows": [
+   [
+    "Radon-220",
+    "55,6 s",
+    "200 von 200"
+   ],
+   [
+    "Iod-131",
+    "",
+    ""
+   ],
+   [
+    "Cäsium-137",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Nach einer Halbwertszeit T½ ist ungefähr die",
+    "loesung": "Hälfte",
+    "post": "der Kerne zerfallen."
+   },
+   {
+    "pre": "Jeder Kern zerfällt aber für sich und",
+    "loesung": "zufällig",
+    "post": ". Erst bei vielen Kernen stimmt die Regel."
+   }
+  ],
+  "wortbank": [
+   "Hälfte",
+   "zufällig",
+   "55,6 s",
+   "Nuklid"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Statuszeile nach einem Schritt?",
+   "antwort": "Zeile 2: „noch 107 von 200 Kernen übrig“. Zeile 3: „Erwartet hätte man 100“. Bei dir steht wahrscheinlich eine andere Zahl."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Bei Nour steht: noch 107 übrig, erwartet 100. Was stimmt?",
+    "optionen": [
+     "Die Simulation rechnet falsch. Es müssen 100 sein.",
+     "Die Kerne sind der Reihe nach dran. Dann wären es 100.",
+     "Jeder Kern zerfällt zufällig. Deshalb sind es selten genau 100."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Radon-220 dauert eine Halbwertszeit",
+      "loesung": "55,6 s",
+      "post": ". Bei Iod-131 dauert sie 8,02 Tage."
+     },
+     {
+      "pre": "Die Halbwertszeit gehört also zum",
+      "loesung": "Nuklid",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Kerne sind der Reihe nach dran.“ Warum ist das falsch?",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile hat drei Zeilen. Zeile 2 nennt die übrigen Kerne. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Jannis hat nicht recht, weil jeder Kern …",
+   "h3": "Fast fertig: Kein Kern weiß, wann er dran ist. Jeder Kern zerfällt ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Halbwertszeit in der Statuszeile ablesen.",
+   "Ich weiß: Die Halbwertszeit gehört zum Nuklid. Temperatur und Druck ändern sie nicht.",
+   "Ich weiß: Jeder Kern zerfällt zufällig, nicht der Reihe nach."
+  ],
+  "zuhause": "Wirf 20 Münzen. Zähle die Köpfe. Sind es immer genau 10?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Kernfeldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleicher heller Hintergrund, beide breiter als hoch. Beide Felder zeigen DIESELBEN 200 Kernpunkte an DENSELBEN Stellen, geordnet wie am Bildschirm: 10 Reihen zu je 20 Punkten, waagerecht und senkrecht gleicher Abstand, in beiden Feldern dasselbe Raster. Linkes Feld: alle 200 Punkte sind ausgefüllte Kreise. Darüber groß und gut lesbar: „am Anfang: 200 von 200 Kernen übrig“. Zwischen den beiden Feldern GENAU EIN breiter waagerechter Pfeil von links nach rechts, darüber die Beschriftung „nach einer Halbwertszeit – das sind 55,6 s“. Rechtes Feld: dasselbe Raster an denselben Stellen, aber 93 der Punkte sind jetzt offene Kreise. Entscheidend für die Komposition ist allein die VERTEILUNG der offenen Kreise: Sie liegen über das ganze Raster verstreut, kreuz und quer zwischen den ausgefüllten — nie als Reihe, nie als Spalte, nie als Streifen, nie als Block, nie als obere oder linke Hälfte, nie am Rand gesammelt und ohne jedes erkennbare Muster. Genau daran hängt die Aussage des Bildes: Kein Kern ist der Reihe nach dran. Über dem rechten Feld groß: „noch 107 von 200 Kernen übrig“, darunter in derselben Schriftgröße eine zweite Zeile: „erwartet hätte man 100“. Unten links, einmal für beide Felder, die Zeichenerklärung: „● noch nicht zerfallen    ○ zerfallen“. Sonst nichts: kein drittes Feld, kein Diagramm, keine Kurve, keine Achsen, keine kleinen Zusatzbilder am Rand, kein Fläschchen, kein Bleikasten, keine Personen, keine Zahlenreihe unter den Feldern. Ebenso nichts, was aus den Kernen herausfliegt: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Alpha-, Beta- oder Gammazeichen, keine gestrichelten Linien ins Leere — der einzige Pfeil im Bild ist der waagerechte Zeitpfeil zwischen den Feldern. Andere Zahlen als 200, 107 und 100 werden weggelassen; gedruckt werden nur die genannten Beschriftungen. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn7",
+  "quelle": "rk7+rk8",
+  "sim": "zerfall-halbwertszeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Ein Holzstück aus dem Moor",
+  "name": "Wie alt ist der Fund?",
+  "fachwoerter_neu": [
+   "Alphazerfall",
+   "Betazerfall"
+  ],
+  "alltag": [
+   "Nour liest von einem Holzstück aus einem Moor. Das Holzstück ist ein Fund.",
+   "Das Museum kennt sein Alter. Kein Zettel lag dabei.",
+   "Im Holz steckt Kohlenstoff-14. Dieser Kern zerfällt langsam. Dabei wird er ein anderer Stoff.",
+   "Beim Alphazerfall fliegt ein Paket weg. Beim Betazerfall fliegt ein Elektron weg."
+  ],
+  "frage": "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
+  "predict": [
+   "Zwei Halbwertszeiten. 50 Kerne sind ein Viertel von 200.",
+   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.",
+   "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.",
+   "Lies im dritten Teil die Zahl hinter „Erwartet hätte man“ ab.",
+   "Drücke „eine Halbwertszeit weiter“ noch zweimal. Lies Teil 2 und 3 ab. Trage alle Zahlen ohne Punkt ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Halbwertszeiten?",
+   "Wie viele Jahre sind vergangen?",
+   "Wie viele Kerne erwartet man?"
+  ],
+  "tabRows": [
+   [
+    "0",
+    "0 Jahre",
+    "200"
+   ],
+   [
+    "1",
+    "",
+    ""
+   ],
+   [
+    "2",
+    "",
+    ""
+   ],
+   [
+    "3",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Nach jeder Halbwertszeit erwartet man die Hälfte: 200, 100, 50,",
+    "loesung": "25",
+    "post": "."
+   },
+   {
+    "pre": "Zähle die Halbwertszeiten. Bei Kohlenstoff-14 dauert jede 5730 Jahre. So kennst du das",
+    "loesung": "Alter",
+    "post": "des Fundes."
+   }
+  ],
+  "wortbank": [
+   "25",
+   "Alter",
+   "5730 Jahre",
+   "Viertel"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile?",
+   "antwort": "Am Bildschirm steht: 0 Jahre. Darunter: „Erwartet hätte man 200.“"
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Von 200 Kernen sind noch 50 übrig. Wie alt ist der Fund?",
+    "optionen": [
+     "11460 Jahre – das sind zwei Halbwertszeiten.",
+     "5730 Jahre – das ist eine Halbwertszeit.",
+     "17190 Jahre – das sind drei Halbwertszeiten."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Halbwertszeit von Kohlenstoff-14 dauert",
+      "loesung": "5730 Jahre",
+      "post": "."
+     },
+     {
+      "pre": "Nach zwei Halbwertszeiten ist noch ein",
+      "loesung": "Viertel",
+      "post": "übrig. Das sind 50 von 200."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour misst 49 von 200 Kernen. Warum sagt sie: zwei Halbwertszeiten?",
+    "satzstarter": "Nour sagt zwei Halbwertszeiten, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile hat drei Teile. Teil 2 nennt die Jahre, Teil 3 die erwartete Zahl.",
+   "h2": "Beginne so: Nour sagt zwei Halbwertszeiten, weil 49 fast …",
+   "h3": "Fast fertig: Zu zwei Halbwertszeiten gehören 50 Kerne. 49 ist fast ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Jahre in der Statuszeile ablesen.",
+   "Ich kann die Reihe 200, 100, 50, 25 fortsetzen.",
+   "Ich kann aus den übrigen Kernen das Alter ablesen."
+  ],
+  "zuhause": "Falte ein Blatt Papier zweimal in der Mitte. Falte es wieder auf. Wie viele Teile sind es?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Zeitband aus GENAU VIER gleich großen quadratischen Kernfeldern, nebeneinander in einer Reihe, alle im selben Bildausschnitt, gleiche Größe, gleicher heller Hintergrund. Jedes Feld zeigt DIESELBEN 200 Kernpunkte an DENSELBEN Stellen — locker und unregelmäßig über die ganze Fläche gestreut, ohne Raster, ohne Reihen, ohne Spalten. Von links nach rechts sind immer mehr Punkte offene Kreise: im ersten Feld sind alle 200 ausgefüllt, im zweiten noch 100, im dritten noch 50, im vierten noch 25. Entscheidend für die Komposition: Die offenen Kreise liegen in jedem Feld kreuz und quer über die GANZE Fläche verstreut, mitten zwischen den ausgefüllten — sie dürfen keinen Streifen, keine Reihe, keine Spalte, keine obere oder linke Hälfte, keinen Rand, keinen Block und kein erkennbares Muster bilden. Daran hängt die Aussage des Bildes: Es zerfällt überall gleich, nicht von einer Seite her. Zwischen je zwei Feldern GENAU EIN kurzer waagerechter Pfeil, darüber gut lesbar „eine Halbwertszeit weiter“. Über jedem Feld groß die erwartete Zahl, von links nach rechts: „erwartet: 200 Kerne“, „erwartet: 100 Kerne“, „erwartet: 50 Kerne“, „erwartet: 25 Kerne“. Unter der Reihe eine durchgehende waagerechte Zeitlinie mit vier Marken, jede genau unter der Mitte ihres Feldes, beschriftet „0 Jahre“, „5730 Jahre“, „11460 Jahre“, „17190 Jahre“ — die Jahreszahlen ohne Punkt und ohne Komma schreiben. Der einzige weitere Pfeil des Bildes steht am vierten Feld: ein kurzer senkrechter Pfeil, der oben am Feld „25 Kerne“ beginnt und unten genau auf der Marke „17190 Jahre“ endet, daneben die Beschriftung „Kerne zählen – Alter ablesen“. Dieser Pfeil muss sichtbar an beiden Enden andocken und darf nirgends frei auslaufen. Unten links, einmal für alle vier Felder, die Zeichenerklärung: „● noch nicht zerfallen    ○ zerfallen“. Sonst nichts: kein fünftes Feld, kein Diagramm, keine Kurve, keine Achsen, keine kleinen Nebenbilder am Rand — also kein Moor, kein Baum, kein Holzstück, kein Museum, kein Labor, keine Personen und keine Sprechblasen. Ebenso nichts, was aus den Kernen herausfliegt: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Alpha-, Beta- oder Gammazeichen, keine gestrichelten Linien ins Leere. Keine anderen Zahlen als die genannten. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn8",
+  "quelle": "rk9",
+  "sim": "kernspaltung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Güterzug und der Würfel",
+  "name": "Was passiert bei einer Kernspaltung?",
+  "fachwoerter_neu": [
+   "Kernspaltung",
+   "fehlende Masse in u"
+  ],
+  "alltag": [
+   "Jannis sieht am Kraftwerk einen Güterzug voll Kohle.",
+   "Nour sagt: Ein Würfel aus Uran von knapp 4 cm liefert genauso viel.",
+   "Ein Neutron trifft einen Urankern. Er zerbricht in zwei Bruchstücke: das heißt Kernspaltung.",
+   "Winzige Massen misst man in u. Winzige Energien misst man in MeV."
+  ],
+  "frage": "Woher kommt die Energie bei einer Kernspaltung?",
+  "predict": [
+   "Alles wiegt zusammen gleich viel wie vorher. Die Energie kam vom Neutron.",
+   "Alles wiegt zusammen weniger als vorher. Daraus wird die Energie."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.",
+   "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.",
+   "Lies in der Statuszeile die Energie ab. Sie steht vor „je Spaltung“.",
+   "Wähle „Xenon + Strontium“. Trage beide Werte ein. Wiederhole das mit „Cäsium + Rubidium“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Bruchstücke",
+   "Wie viel Masse fehlt?",
+   "Wie viel Energie wird frei?"
+  ],
+  "tabRows": [
+   [
+    "Barium + Krypton",
+    "0,1860 u",
+    "173,3 MeV"
+   ],
+   [
+    "Xenon + Strontium",
+    "",
+    ""
+   ],
+   [
+    "Cäsium + Rubidium",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langsames",
+    "loesung": "Neutron",
+    "post": "trifft den Urankern. Er zerbricht in zwei Bruchstücke."
+   },
+   {
+    "pre": "Die Bruchstücke wiegen zusammen weniger. Diese fehlende",
+    "loesung": "Masse",
+    "post": "wird zu Energie. Nichts verbrennt."
+   }
+  ],
+  "wortbank": [
+   "Neutron",
+   "Masse",
+   "0,1860 u",
+   "Energie"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Werte bei Barium + Krypton ab?",
+   "antwort": "In der Statuszeile steht: „… 0,1860 u weniger als vorher.“ Und: „… 173,3 MeV je Spaltung.“"
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Bei Xenon + Strontium fehlt mehr Masse als bei Barium + Krypton. Was folgt daraus?",
+    "optionen": [
+     "Es wird weniger Energie frei.",
+     "Es wird mehr Energie frei.",
+     "Die Energie bleibt gleich groß."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Barium + Krypton fehlen",
+      "loesung": "0,1860 u",
+      "post": "."
+     },
+     {
+      "pre": "Aus dieser fehlenden Masse wird",
+      "loesung": "Energie",
+      "post": "frei."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Energie kommt vom schnellen Neutron.“ Warum ist das falsch?",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Schreibe die Zahl mit Einheit ab.",
+   "h2": "Ein Teil der Antwort: Das langsame Neutron bringt fast keine Energie mit.",
+   "h3": "Fast fertig: Das Neutron ist langsam. Woher kommt die Energie? Aus der fehlenden ___."
+  },
+  "selbstcheck": [
+   "Ich kann Masse und Energie in der Statuszeile ablesen.",
+   "Ich weiß: Bei der Kernspaltung wird Masse zu Energie.",
+   "Ich weiß: Ein langsames Neutron löst die Kernspaltung aus."
+  ],
+  "zuhause": "Miss zu Hause eine Kante von knapp 4 cm ab. So klein ist der Würfel.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild, eine Reihe aus GENAU DREI gleich großen quadratischen Feldern nebeneinander. Alles im selben Bildausschnitt, gleicher heller Hintergrund, große Schrift, viel Weißraum. — FELD 1, darüber die Überschrift „1 · Ein Neutron fliegt an“: rechts in der Mitte eine große runde, gleichmäßig ausgefüllte Kugel mit der gut lesbaren Aufschrift „Uran-235“. Links davon, deutlich kleiner, ein einzelner Kreis mit der Aufschrift „n“, daneben klein „langsam“. Von diesem kleinen Kreis geht GENAU EIN gerader waagerechter Pfeil nach rechts; seine Spitze berührt den Rand der Kugel. Der Pfeil endet an der Kugel und nicht im Leeren. Sonst steht in Feld 1 nichts. — FELD 2, darüber „2 · Der Kern wird länglich“: an derselben Stelle wie in Feld 1, in derselben Größe und derselben Füllung, dieselbe Kugel, aber zu einer liegenden Erdnussform gedehnt und in der Mitte leicht eingeschnürt, weiterhin mit der Aufschrift „Uran-235“. In Feld 2 gibt es keinen Pfeil, keinen freien Kreis und keine zweite Form. — FELD 3, darüber „3 · Der Kern reißt auseinander“: aus der Mitte heraus zwei runde, gleichmäßig ausgefüllte Bruchstücke, das größere oben rechts mit der Aufschrift „Barium“, das kleinere unten rechts mit der Aufschrift „Krypton“; sie sind sichtbar voneinander weggerückt. Zwischen ihnen liegen GENAU DREI kleine Kreise mit der Aufschrift „n“, unregelmäßig verteilt, nicht auf einer Linie und nicht in einer Reihe. In Feld 3 gibt es keine Pfeile. — Sonst kommt im ganzen Bild nichts vor. Das Bild zeigt NUR den Hergang, nie das Ergebnis: kein Bilanzstreifen, keine zwei Quadrate mit einem Pfeil dazwischen, keine Beschriftung „wird zu“, keine Angabe zur fehlenden Masse, keine Angabe zur frei werdenden Energie, keine Zahl mit „u“ und keine Zahl mit „MeV“. Die Antwort auf die Forscherfrage steht in der Tabelle und im Merksatz; das Bild steht auf Seite A vor dem Vermutungskasten und darf sie nicht vorwegnehmen. Keine Nebenbilder am Rand: kein Kraftwerk, kein Reaktor, kein Kühlturm, kein Güterzug, kein Kohlehaufen, kein Uranwürfel, keine Waage, kein Diagramm, keine Personen, keine Sprechblasen, kein zweites Bruchstückpaar (Xenon, Strontium, Cäsium und Rubidium kommen im Bild nicht vor). Kein Pfeil endet im Leeren: Im ganzen Bild gibt es genau EINEN Pfeil, den waagerechten Neutronenpfeil in Feld 1, und er endet an der gezeichneten Kugel. Deshalb ausdrücklich nicht: Strahlenbündel aus den Bruchstücken, Blitze, Zacken, Explosionssterne, Wellenlinien, Funken, gestrichelte Linien nach außen, Flugbahnen der Neutronen. Keine Formel und keine Gleichung im Bild, keine hoch- oder tiefgestellten Zahlen, kein Reaktionspfeil zwischen Formeln, keine Zahlen außer den Schrittnummern 1, 2 und 3 der drei Feldüberschriften und der 235 im Wort „Uran-235“. Kein Feuer, keine Flamme, keine Rauchwolke — es verbrennt nichts.]"
+ },
+ {
+  "id": "fn9",
+  "quelle": "rk10",
+  "sim": "kettenreaktion",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Beitrag im Aufenthaltsraum",
+  "name": "Wie hält man eine Kettenreaktion in Schach?",
+  "fachwoerter_neu": [
+   "Steuerstäbe",
+   "Vermehrungsfaktor k"
+  ],
+  "alltag": [
+   "Nour sieht einen Beitrag über Reaktoren.",
+   "Eine Spaltung löst neue Spaltungen aus: eine Kette. Am Bildschirm heißt eine Runde Generation.",
+   "Steuerstäbe sind Stangen im Reaktor. Sie fangen Neutronen weg.",
+   "Der Vermehrungsfaktor k sagt: So viele neue Spaltungen folgen aus einer Spaltung."
+  ],
+  "frage": "Was macht k, wenn die Steuerstäbe weiter drin sind?",
+  "predict": [
+   "Je weiter die Steuerstäbe drin sind, desto weniger Spaltungen folgen.",
+   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Schiebe den Regler auf 0 %. Lies k und die Zahl darunter.",
+   "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk.",
+   "Stelle 75 % und 100 % ein. Trage alles ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Wie weit drin?",
+   "Wie groß ist k?",
+   "Aus 100 Spaltungen werden wie viele?"
+  ],
+  "tabRows": [
+   [
+    "0 %",
+    "1,60",
+    "160"
+   ],
+   [
+    "50 %",
+    "",
+    ""
+   ],
+   [
+    "75 %",
+    "",
+    ""
+   ],
+   [
+    "100 %",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je weiter die Steuerstäbe drin sind, desto",
+    "loesung": "kleiner",
+    "post": "wird k."
+   },
+   {
+    "pre": "Ein Kernkraftwerk läuft mit k =",
+    "loesung": "1,00",
+    "post": ". Jede Runde bleibt gleich groß."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "1,00",
+   "1,60",
+   "0,40"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du bei 0 % ab?",
+   "antwort": "Am Bildschirm steht: „Steuerstäbe 0 % eingefahren → Vermehrungsfaktor k = 1,60“. Die 500 brauchst du nicht. Darunter: „Aus 100 Spaltungen werden … 160.“ In die Tabelle kommt: 1,60 und 160."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Steuerstäbe sind ganz drin (100 %). Was macht die Kette?",
+    "optionen": [
+     "Sie läuft gleichmäßig weiter. Aus 100 werden rund 100.",
+     "Sie wächst lawinenartig. Aus 100 werden 40 mehr.",
+     "Sie erstickt (hört auf). Aus 100 werden nur 40."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 0 % ist k =",
+      "loesung": "1,60",
+      "post": ". Aus 100 werden 160."
+     },
+     {
+      "pre": "Bei 100 % ist k =",
+      "loesung": "0,40",
+      "post": ". Aus 100 werden nur 40."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum lässt man die Steuerstäbe nicht ganz draußen?",
+    "satzstarter": "Man lässt die Steuerstäbe nicht ganz draußen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "k steht am Bildschirm in der ersten Zeile. Die Wortbank hilft bei Merksatz und Aufgabe 2.",
+   "h2": "Schreibe den Satzstarter ab. Lies k bei 0 % in der Tabelle ab.",
+   "h3": "Fast fertig: Bei 0 % werden aus 100 Spaltungen 160. Das ist mehr als 100. Jede Runde wird ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Vermehrungsfaktor k ablesen.",
+   "Ich weiß: Weiter drin bedeutet kleineres k.",
+   "Ich weiß: Ein Kernkraftwerk läuft mit k = 1,00."
+  ],
+  "zuhause": "Stelle Dominosteine auf. Jeder wirft genau einen um. Wie groß ist k?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Jedes Feld zeigt denselben Reaktor in derselben Ansicht, nur die Steuerstäbe stehen verschieden tief. Aufbau in jedem Feld von oben nach unten, in allen drei Feldern auf derselben Höhe: (1) eine große Überschrift „Steuerstäbe 0 % drin“ bzw. „Steuerstäbe 50 % drin“ bzw. „Steuerstäbe 100 % drin“. (2) Ein aufrecht stehendes Rechteck als Reaktor, mit deutlicher Umrandung; darin fünf gleich breite, hellgraue, VOLL AUSGEFÜLLTE senkrechte Balken als Brennstäbe, gleichmäßig verteilt und deutlich voneinander getrennt. (3) Drei dunkle, ebenfalls VOLL AUSGEFÜLLTE senkrechte Stäbe, die von oben zwischen die Brennstäbe fahren – das sind die Steuerstäbe. Ihre Eintauchtiefe ist der ganze Unterschied zwischen den Feldern und muss auf einen Blick zu sehen sein: links stehen sie vollständig über dem Reaktor und ragen gar nicht hinein, in der Mitte reichen sie bis zur halben Höhe des Rechtecks, rechts reichen sie bis zum Boden des Rechtecks. Neben dem linken Reaktor eine senkrechte Maßlinie mit der Beschriftung „Höhe des Reaktors“, damit die halbe Tiefe in der Mitte ablesbar ist. (4) Darunter, in allen drei Feldern an derselben Stelle und in derselben sehr großen Schrift: „k = 1,60“ · „k = 1,00“ · „k = 0,40“. (5) Ganz unten je drei aufrechte, voll ausgefüllte Säulen nebeneinander auf einer gemeinsamen Grundlinie, beschriftet „1. Runde“, „2. Runde“, „3. Runde“; alle neun Säulen haben dieselbe Breite und dieselbe Grundlinie, und die erste Säule ist in allen drei Feldern exakt gleich hoch. Links werden die Säulen von links nach rechts deutlich höher, in der Mitte bleiben alle drei genau gleich hoch, rechts werden sie deutlich niedriger. Diese neun Säulen tragen die Aussage des Bildes und müssen als klar getrennte Flächen erkennbar sein. Drei Fehler, die hier drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – Brennstäbe, Steuerstäbe und Säulen werden als breite, gefüllte Rechtecke gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Reaktor liest sich als Muster und nicht als Bauteil. ZWEITENS Nebenbilder – es gibt genau diese drei Felder, kein viertes, keine kleinen Zusatzbilder am Rand, keine eingesetzten Lupenausschnitte, keine Legendenkästen mit weiteren Szenen. Ganz besonders: kein Kühlturm, kein Wasser, kein Dampf, keine Turbine, kein Generator, keine Stromleitung – der Aufbau des Kraftwerks ist nicht Thema dieser Seite. DRITTENS Strahlengänge ins Leere – aus dem Reaktor führen keine Pfeile, keine Strahlen, keine Zickzacklinien, keine Blitze und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus. Der einzige Richtungshinweis im Bild sind die Steuerstäbe, die von oben nach unten in den Reaktor reichen. Ebenfalls nicht im Bild: einzelne Neutronen als Punkte, verzweigte Spaltungsbäume, gestreute Punktwolken und alles, was man zählen könnte – gezählt werden soll hier nichts. Keine anderen Zahlen als 0 %, 50 %, 100 %, 1,60, 1,00, 0,40 sowie die drei Rundennummern. Keine Personen, keine Warnzeichen, keine Deko. Große Schrift, viel Weißraum.]"
+ },
+ {
+  "id": "fn10",
+  "quelle": "rk11",
+  "sim": "kettenreaktion",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Pfeil auf Nours Folie",
+  "name": "Wie ist ein Kernkraftwerk aufgebaut?",
+  "fachwoerter_neu": [
+   "Dampf",
+   "Brennstab"
+  ],
+  "alltag": [
+   "Nour zeigt ihre Folie: Reaktor, Pfeil, Steckdose. Jannis sagt: Dazwischen fehlt etwas.",
+   "Der Stab mit Uran im Reaktor heißt Brennstab.",
+   "Jannis malt einen Topf und ein Rad dazu. Heißes Wasser wird zu Dampf.",
+   "Turbine und Generator kennst du schon aus Kapitel 1."
+  ],
+  "frage": "Wo im Kernkraftwerk entsteht der Strom?",
+  "predict": [
+   "Der Strom entsteht schon im Brennstab. Das Kabel führt ihn weg.",
+   "Der Strom entsteht erst am Ende der Kette."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.",
+   "Prüfe im Text: Wo steht Strom?",
+   "Trage die drei fehlenden Zeilen ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft den Text.",
+  "tabCols": [
+   "Welches Teil ist das?",
+   "Was passiert dort?",
+   "Ist dort schon Strom?"
+  ],
+  "tabRows": [
+   [
+    "Brennstab",
+    "wird heiß",
+    "nein"
+   ],
+   [
+    "Wasser",
+    "",
+    ""
+   ],
+   [
+    "Turbine",
+    "",
+    ""
+   ],
+   [
+    "Generator",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Wärme im Brennstab macht aus Wasser Dampf. Der Dampf dreht das Rad. Das ist die",
+    "loesung": "Turbine",
+    "post": "."
+   },
+   {
+    "pre": "Am Ende dreht dieses Rad den",
+    "loesung": "Generator",
+    "post": ". Erst dort entsteht der Strom."
+   }
+  ],
+  "wortbank": [
+   "Turbine",
+   "Generator",
+   "Wärme",
+   "Dampf"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Im Text steht: „Die Bruchstücke … erhitzen den Brennstab.“ Darum kommt in die Tabelle: wird heiß. Dort steht auch: „Nur der letzte Schritt macht Strom.“ Der Brennstab ist Schritt 1. Also: nein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Reihenfolge steht im Text?",
+    "optionen": [
+     "Brennstab → Dampf → Turbine → Generator",
+     "Generator → Turbine → Dampf → Brennstab",
+     "Brennstab → Turbine → Dampf → Generator"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Im Brennstab entsteht zuerst nur",
+      "loesung": "Wärme",
+      "post": ". Strom kommt erst später."
+     },
+     {
+      "pre": "Aus dem Wasser wird heißer",
+      "loesung": "Dampf",
+      "post": ". Er dreht die Turbine."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum braucht auch ein Kernkraftwerk einen Generator?",
+    "satzstarter": "Ein Kernkraftwerk braucht einen Generator, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Der Text mit den vier Schritten steht unter der Anzeige „Wie geht es weiter?“. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Ein Kernkraftwerk braucht einen Generator, weil im Brennstab nur Wärme entsteht.",
+   "h3": "Fast fertig: Wärme macht Dampf. Dampf dreht die Turbine. Strom entsteht erst im ___."
+  },
+  "selbstcheck": [
+   "Ich kann die vier Schritte im Kraftwerk der Reihe nach nennen.",
+   "Ich weiß: Im Brennstab entsteht nur Wärme, noch kein Strom.",
+   "Ich weiß: Hier macht der Generator aus Kapitel 1 den Strom."
+  ],
+  "zuhause": "Beobachte mit einem Erwachsenen, wie der Dampf den Deckel hebt. Bleib weit weg. Welches Teil im Kraftwerk ist der Deckel?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Ablaufbild in EINER waagerechten Reihe, von links nach rechts zu lesen, alles im selben Bildausschnitt auf einer gemeinsamen Grundlinie und auf ruhigem hellem Hintergrund. Vier gleich große, klar getrennte Stationen mit einer großen Ziffer oben links im Kasten: (1) BRENNSTAB — ein aufrecht stehender, voll ausgefüllter Stab in kräftigem Rot-Orange, darunter groß die Beschriftung „Brennstab wird heiß“. (2) KESSEL — ein liegender geschlossener Behälter, unten zu einem Drittel mit einer voll ausgefüllten blauen Wasserfläche, darüber eine voll ausgefüllte weiße Dampfwolke, die oben aus einem Rohr steigt; Beschriftung „Wasser wird Dampf“. (3) TURBINE — ein großes Rad in Vorderansicht mit sechs breiten, voll ausgefüllten Schaufeln, das Rohr aus Station 2 zeigt genau auf die Schaufeln; Beschriftung „Turbine dreht sich“. (4) GENERATOR — ein liegender Kasten mit deutlicher Umrandung, in dem eine Spule zwischen zwei Magnetpolen sitzt; Beschriftung „Generator macht Strom“. Die Verbindungen tragen die Aussage des Bildes und sind alle verschieden: von Station 1 zu Station 2 ein breiter roter Pfeil mit der großen Aufschrift „Wärme“; von Station 2 zu Station 3 ein breiter weißer Pfeil mit der Aufschrift „Dampf“; von Station 3 zu Station 4 KEIN Pfeil, sondern ein dicker waagerechter Balken als Welle, der Rad und Kasten mechanisch verbindet, mit der Aufschrift „Welle“; von Station 4 nach rechts hinaus ein einzelnes schwarzes Kabel zu einer Steckdose am rechten Bildrand, mit der Aufschrift „Strom“. Unter der ganzen Reihe zwei durchgehende waagerechte Bänder, die die Frage der Tabelle beantworten: ein helles Band unter den Stationen 1, 2 und 3 mit der großen Aufschrift „Hier ist noch kein Strom.“ und ein deutlich abgesetztes dunkles Band unter Station 4 und der Steckdose mit der Aufschrift „Erst hier entsteht Strom.“ Die Grenze zwischen den beiden Bändern liegt genau zwischen Turbine und Generator und ist die auffälligste Linie im Bild. Drei Fehler drohen hier und werden ausdrücklich vermieden: ERSTENS Streifen statt Flächen — Brennstab, Wasser, Dampfwolke, Turbinenschaufeln, Welle und die beiden Bänder werden als breite, gefüllte Formen gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Dampf liest sich als Muster und nicht als Stoff. ZWEITENS Nebenbilder — es gibt genau diese vier Stationen und die eine Steckdose, kein fünftes Kästchen, keinen Kühlturm, kein Kraftwerksgebäude am Rand, keine Landschaft, keine eingesetzten Lupenausschnitte, keine zweite kleine Kette darunter, keine Personen. DRITTENS Strahlengänge ins Leere — aus dem Brennstab führen keine Strahlenpfeile, keine Blitze, keine Zickzacklinien, keine Wellen und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus, und es gibt keine einzelnen Neutronen, keine Punktwolken und keine Spaltungsbäume. Jeder Pfeil im Bild verbindet genau zwei benannte Stationen und endet an einer davon. Ebenfalls nicht im Bild: ein Blitzsymbol an Brennstab, Kessel oder Turbine, ein Steuerstab, ein Regler, ein Bildschirm, ein k-Wert, ein Diagramm. Keine Zahlen außer den vier Stationsziffern. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn11",
+  "quelle": "rk12",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Die Tür im Keller",
+  "name": "Wohin mit dem, was übrig bleibt?",
+  "fachwoerter_neu": [
+   "Abklingraum",
+   "Endlager"
+  ],
+  "alltag": [
+   "Im Keller der Klinik ist eine Tür.",
+   "Dahinter warten Abfälle, bis sie fast nicht mehr strahlen.",
+   "So ein Raum heißt Abklingraum.",
+   "Nour fragt: Und der Abfall aus dem Kernkraftwerk?"
+  ],
+  "frage": "Reicht ein Abklingraum für Abfall aus dem Kernkraftwerk?",
+  "predict": [
+   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten.",
+   "Auch dieser Abfall ist nach ein paar Jahren fertig."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die fehlenden Halbwertszeiten ab. Trage sie ein.",
+   "Ordne beide Zeiten ein. Kurz heißt: Ein Mensch kann die Zeit rechts abwarten.",
+   "Beurteile: Welcher Stoff wartet im Abklingraum? Welche beiden nicht?"
+  ],
+  "daten": {
+   "titel": "Halbwertszeiten im Abfall aus dem Kernkraftwerk",
+   "spalten": [
+    "Stoff",
+    "Halbwertszeit",
+    "Fast nichts mehr nach rund"
+   ],
+   "zeilen": [
+    [
+     "Iod-131",
+     "8 Tage",
+     "80 Tagen"
+    ],
+    [
+     "Cäsium-137",
+     "30 Jahre",
+     "300 Jahren"
+    ],
+    [
+     "Plutonium-239",
+     "24 000 Jahre",
+     "240 000 Jahren"
+    ]
+   ],
+   "quelle": "Gerundete Werte. Kein bestimmtes Kernkraftwerk.",
+   "merke": "Halbwertszeit: Nach dieser Zeit ist die Hälfte der Kerne zerfallen. Ganz rechts: die Zeit nach zehn Halbwertszeiten."
+  },
+  "tabCols": [
+   "Stoff",
+   "Wie lange dauert eine Halbwertszeit?",
+   "Ist diese Zeit kurz oder lang?"
+  ],
+  "tabRows": [
+   [
+    "Iod-131",
+    "8 Tage",
+    "kurz"
+   ],
+   [
+    "Cäsium-137",
+    "",
+    ""
+   ],
+   [
+    "Plutonium-239",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Abfall wartet im Abklingraum, wenn die Halbwertszeit",
+    "loesung": "kurz",
+    "post": "ist."
+   },
+   {
+    "pre": "Ist sie lang, muss der Abfall in ein",
+    "loesung": "Endlager",
+    "post": "tief im festen Stein."
+   }
+  ],
+  "wortbank": [
+   "kurz",
+   "Endlager",
+   "8 Tage",
+   "24 000 Jahre"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Iod-131 ab?",
+   "antwort": "Bei Iod-131 steht: 8 Tage, rechts 80 Tagen. Das kann ein Mensch abwarten: kurz."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Jannis sagt: Nach ein paar Jahren strahlt fast nichts mehr. Stimmt das?",
+    "optionen": [
+     "Ja, nach zehn Jahren ist alles vorbei.",
+     "Nein, Plutonium-239 braucht 240 000 Jahre.",
+     "Ja, jeder Stoff hat 8 Tage Halbwertszeit."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Halbwertszeit von Iod-131 ist",
+      "loesung": "8 Tage",
+      "post": ". Dieser Stoff wartet im Abklingraum."
+     },
+     {
+      "pre": "Die Halbwertszeit von Plutonium-239 ist",
+      "loesung": "24 000 Jahre",
+      "post": ". Hier hilft kein Warten."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Beurteile",
+    "frage": "Ein Endlager bekommt ein Warnschild. Reicht das für 240 000 Jahre?",
+    "satzstarter": "Ein Warnschild allein reicht nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die zweite Spalte nennt die Halbwertszeit. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Denke an die Zeit: 240 000 Jahre. So alt ist keine Schrift.",
+   "h3": "Fast fertig: Nach so langer Zeit versteht niemand das Schild. Sicher macht nur das ___ tief im festen Stein."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt eine Halbwertszeit ablesen.",
+   "Ich kann kurze und lange Halbwertszeiten unterscheiden.",
+   "Ich kann begründen, warum ein Warnschild nicht reicht."
+  ],
+  "zuhause": "Frage zwei Erwachsene: Wohin soll dieser Abfall?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einzelbild aus dem Keller einer Klinik, ruhig ausgeleuchtet, viel Weißraum. Im Bild steht GENAU EINE schwere graue Tür, halb geöffnet, sodass man in den kleinen Raum dahinter hineinsieht. An der Tür in Augenhöhe ein gelbes Dreiblatt-Warnzeichen und darüber gut lesbar in großer Schrift das Wort „Abklingraum“. Im Raum dahinter stehen GENAU DREI schlichte weiße Kästen auf drei Regalbrettern übereinander, jeder Kasten flach und geschlossen. An jedem Kasten hängt vorn eine große, gut lesbare Karteikarte mit zwei Zeilen; von oben nach unten: „Iod-131 · hier seit 3. März · frei ab 22. Mai“, „Iod-131 · hier seit 10. März · frei ab 29. Mai“, „Iod-131 · hier seit 17. März · frei ab 5. Juni“. An der Seitenwand des Raums hängt EIN Wandkalender; darauf sind zwei Tage mit Kreisen markiert und mit einer geschwungenen Klammer verbunden, an der Klammer steht groß „80 Tage warten“. Vor der Tür, im Gang, steht auf dem Boden GENAU EIN geschlossenes graues Fass mit der großen Aufschrift „Abfall aus dem Kernkraftwerk“; an seinem Deckel hängt dieselbe Art Karteikarte wie an den Kästen, aber die zweite Zeile ist eine leere Schreiblinie: „frei ab ________“. Diese leere Linie ist der Kern der Komposition — sie stellt die Frage der Seite, sie darf auf keinen Fall ausgefüllt sein. Alles im Bild sind ruhige, klar begrenzte Flächen: Wand, Boden, Tür, Kästen und Fass werden als geschlossene Flächen gezeichnet, NICHT als Schraffur und nicht als Streifenmuster — Streifen lesen sich hier sofort als Strahlung. Aus den Kästen und aus dem Fass kommt NICHTS heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Punktwolken, keine gestrichelten Linien ins Leere, keine Alpha-, Beta- oder Gammazeichen. Es gibt außerdem KEIN zweites, kleineres Bild am Rand: kein Kernkraftwerk, keine Landkarte, kein Bergwerk, kein Stollen, kein Querschnitt durch Gestein, kein Endlager — wohin das Fass gehört, ist die Aufgabe der Seite und steht nicht im Bild. Keine Personen, keine Sprechblasen, keine Uhr, keine Pfeile zwischen Fass und Tür. Keine anderen Zahlen als die genannten Daten und die „80 Tage“. Große Schrift, ruhiger heller Hintergrund, keine Deko.]"
+ },
+ {
+  "id": "fn12",
+  "quelle": "rk13+rk14",
+  "sim": "strahlenschutz",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Nours Schritt zurück",
+  "name": "Wie schützt man sich vor Strahlung?",
+  "fachwoerter_neu": [
+   "Dosisleistung H′ (µSv/h)",
+   "Dosis H (µSv)"
+  ],
+  "alltag": [
+   "Nour macht Praktikum in der Nuklearmedizin und bekommt ein Messgerät.",
+   "So ein Messgerät heißt Dosimeter. Daneben steht eine Bleiwand.",
+   "Die Dosisleistung H′ in µSv/h sagt, wie schnell Strahlung ankommt.",
+   "Die Dosis H in µSv sagt, wie viel zusammenkommt."
+  ],
+  "frage": "Was hilft mehr: ein Schritt zurück oder Blei?",
+  "predict": [
+   "Doppelter Abstand halbiert die Dosisleistung H′.",
+   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Abstand auf 50 cm und lies beide Zahlen ab.",
+   "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.",
+   "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.",
+   "Trage die Zahlen ein. „Aufenthaltsdauer“ bleibt auf 20 Minuten."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Was stellst du ein?",
+   "Dosisleistung H′ (µSv/h)",
+   "Dosis H in 20 Minuten (µSv)"
+  ],
+  "tabRows": [
+   [
+    "50 cm",
+    "370,8 µSv/h",
+    "123,6 µSv"
+   ],
+   [
+    "100 cm",
+    "",
+    ""
+   ],
+   [
+    "200 cm",
+    "",
+    ""
+   ],
+   [
+    "50 cm, 7 mm Blei",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Verdoppelst du den Abstand, sinkt die Dosisleistung H′ auf",
+    "loesung": "ein Viertel",
+    "post": "."
+   },
+   {
+    "pre": "7 mm Blei senken sie nur auf rund die",
+    "loesung": "Hälfte",
+    "post": ". Abstand schützt stärker als Blei."
+   }
+  ],
+  "wortbank": [
+   "ein Viertel",
+   "Hälfte",
+   "92,7 µSv/h",
+   "30,9 µSv"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Am Regler steht 50 cm, im Bild steht 0,50 m. Oben links steht „Dosisleistung: 370,8 µSv/h“, darunter „in 20 Minuten: 123,6 µSv“. Sprich H′ als „H Strich“, µSv/h als „Mikrosievert pro Stunde“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo steht die kleinste Zahl?",
+    "optionen": [
+     "50 cm mit 7 mm Blei: 175,8 µSv/h.",
+     "50 cm ohne Blei: 370,8 µSv/h.",
+     "100 cm ohne Blei: 92,7 µSv/h."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 100 cm steht die Dosisleistung",
+      "loesung": "92,7 µSv/h",
+      "post": "."
+     },
+     {
+      "pre": "In 20 Minuten kommt die Dosis",
+      "loesung": "30,9 µSv",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum geht Nour zurück, statt hinter die Bleiwand zu gehen?",
+    "satzstarter": "Nour geht zurück, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Beide Zahlen stehen im Bild untereinander. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Nour geht zurück, weil dort nur 92,7 µSv/h stehen.",
+   "h3": "Fast fertig: Blei lässt 175,8 µSv/h übrig, 100 cm nur 92,7 µSv/h. Der Abstand hilft ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Dosisleistung im Bild ablesen.",
+   "Ich weiß: Doppelter Abstand heißt ein Viertel.",
+   "Ich kann sagen, warum Abstand stärker schützt als Blei."
+  ],
+  "zuhause": "Schreibe zuerst zwei Abstände auf, den zweiten doppelt so groß. Leuchte aus beiden auf ein Blatt und vergleiche die Lichtflecke.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Beide Felder zeigen dieselbe Quelle in derselben Ansicht, nur der Abstand ist verschieden. Aufbau in beiden Feldern von oben nach unten, jeweils auf derselben Höhe: (1) eine große Überschrift, links „Abstand 1 m“, rechts „Abstand 2 m“. (2) Am linken Rand jedes Feldes ein kleiner, VOLL AUSGEFÜLLTER dunkler Kreis mit der Beschriftung „Quelle“; beide Kreise sind exakt gleich groß und liegen in beiden Feldern auf derselben Höhe. (3) Auf halber Höhe ein waagerechter Maßpfeil mit deutlichen Endstrichen an BEIDEN Enden, der vom Rand des Kreises bis zur Fläche reicht, darüber die Beschriftung „1 m“ bzw. „2 m“; der rechte Maßpfeil ist sichtbar doppelt so lang wie der linke. (4) Am rechten Ende des Maßpfeils die Fläche, auf die die Strahlung trifft. Links: EIN einzelnes Quadrat, satt und gleichmäßig in einer kräftigen Farbe VOLL AUSGEFÜLLT, mit deutlicher Umrandung, darunter groß die Beschriftung „1 Feld“. Rechts: VIER Quadrate, als Block von zwei mal zwei dicht aneinandergelegt, jedes einzelne exakt so groß wie das Quadrat links, alle vier in derselben helleren Farbe VOLL AUSGEFÜLLT, mit deutlichen Trennlinien zwischen den vier Quadraten, darunter groß die Beschriftung „4 Felder“. Dass die vier Quadrate rechts einzeln genauso groß sind wie das eine links, ist die ganze Aussage des Bildes und muss auf einen Blick zu sehen sein; zeichne dafür alle fünf Quadrate mit exakt derselben Kantenlänge. (5) Unter beiden Feldern gemeinsam eine einzige große Textzeile: „Dieselbe Strahlung verteilt sich auf viermal so viel Fläche.“ Drei Fehler, die hier besonders drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – die Quadrate werden als satte, geschlossene Farbflächen gezeichnet, niemals als Schraffur, Punktraster, Linienbündel oder dünne Striche; ein schraffiertes Quadrat liest sich als Muster und nicht als Fläche, und genau die Fläche trägt hier die Aussage. ZWEITENS Nebenbilder – es gibt genau diese zwei Felder, kein drittes, keine kleinen Zusatzbilder am Rand, keine Lupenausschnitte, keine Legendenkästen. Ganz besonders nicht im Bild: Dosimeter, Bleiwand, Bleischürze, Bleiplatte, Bodenmarkierung, Präparateschrank, Krankenhaus, Personen und Warnzeichen – die Bleiwirkung und die Geschichte gehören auf die Textseite, nicht in dieses Bild. DRITTENS Strahlengänge ins Leere – aus der Quelle führen keine Strahlen, keine Pfeilbündel, keine Zickzacklinien, keine Blitze, keine gestrichelten Linien und keine Kegel hinaus; es fliegt nichts aus dem Bild hinaus, und keine Linie endet frei im Weißraum. Die einzigen Pfeile im ganzen Bild sind die beiden waagerechten Maßpfeile, und beide haben an jedem Ende einen Endstrich, der sie sichtbar begrenzt. Ebenfalls nicht im Bild: Kugeln, Kugelschalen, Kreisbögen um die Quelle, einzelne Teilchen als Punkte, Zahlenwerte in µSv/h oder µSv und alles, was man zählen könnte außer den fünf Quadraten. Keine anderen Zahlen als 1 m, 2 m, 1 Feld und 4 Felder. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn13",
+  "quelle": "rk15",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Das Datenblatt im Vorbereitungsraum",
+  "name": "Wie hilft Strahlung in der Medizin?",
+  "fachwoerter_neu": [
+   "Diagnose",
+   "Therapie"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. Dort hängt ein Datenblatt.",
+   "Beim ersten Patienten will der Arzt nur sehen, was im Körper ist. Das heißt Diagnose.",
+   "Beim zweiten soll die Strahlung kranke Zellen treffen. Das heißt Therapie."
+  ],
+  "frage": "Warum passt nicht jeder Stoff für jede Aufgabe?",
+  "predict": [
+   "Für ein Bild braucht man andere Strahlung als für eine Therapie.",
+   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die Strahlung ab und trage sie ein.",
+   "Ordne ein: Diagnose oder Therapie? Trage es in die letzte Spalte ein.",
+   "Beurteile: Passt für ein Bild Technetium-99m mit 6 Stunden oder Iod-131 mit 8 Tagen?"
+  ],
+  "daten": {
+   "titel": "Stoffe der Station",
+   "spalten": [
+    "Stoff",
+    "Strahlung und Halbwertszeit",
+    "Wofür?"
+   ],
+   "zeilen": [
+    [
+     "Technetium-99m",
+     "Gamma, 6 Stunden",
+     "Diagnose"
+    ],
+    [
+     "Iod-131",
+     "Beta, 8 Tage",
+     "Therapie"
+    ],
+    [
+     "Radium-223",
+     "Alpha, 11 Tage",
+     "Therapie"
+    ]
+   ],
+   "quelle": "Aus dem Vorbereitungsraum.",
+   "merke": "Vor dem Komma steht die Strahlung, dahinter die Halbwertszeit."
+  },
+  "tabCols": [
+   "Stoff",
+   "Welche Strahlung?",
+   "Diagnose oder Therapie?"
+  ],
+  "tabRows": [
+   [
+    "Technetium-99m",
+    "Gamma",
+    "Diagnose"
+   ],
+   [
+    "Iod-131",
+    "",
+    ""
+   ],
+   [
+    "Radium-223",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Für ein Bild aus dem Körper passt",
+    "loesung": "Gammastrahlung",
+    "post": ". Nur diese Strahlung kommt außen an."
+   },
+   {
+    "pre": "Alpha und Beta bleiben im Körper. Sie passen zur",
+    "loesung": "Therapie",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "8 Tage",
+   "Gammastrahlung",
+   "6 Stunden",
+   "Therapie"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Technetium-99m ab?",
+   "antwort": "Im Datenblatt steht bei Technetium-99m: Gamma, 6 Stunden. Gamma ist kurz für Gammastrahlung, Beta für Betastrahlung, Alpha für Alphastrahlung. In die Tabelle kommt Gamma. Rechts steht Diagnose."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Jannis sagt: Man nimmt immer die schwächste Strahlung. Stimmt das?",
+    "optionen": [
+     "Nein. Für ein Bild muss die Strahlung nach außen kommen.",
+     "Ja. Schwache Strahlung schadet niemandem.",
+     "Ja. Alle drei Stoffe haben Gammastrahlung."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Halbwertszeit von Technetium-99m ist",
+      "loesung": "6 Stunden",
+      "post": ". Der Stoff ist schnell wieder weg."
+     },
+     {
+      "pre": "Iod-131 strahlt länger. Seine Halbwertszeit ist",
+      "loesung": "8 Tage",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Begründe",
+    "frage": "Nour soll ein Bild machen. Warum kann sie dafür kein Radium-223 nehmen?",
+    "satzstarter": "Radium-223 passt nicht für ein Bild, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Im Datenblatt steht rechts: Diagnose oder Therapie. Die Wortbank hat alle Lückenwörter.",
+   "h2": "Beginne so: Radium-223 passt nicht für ein Bild, weil seine Strahlung …",
+   "h3": "Fast fertig: Radium-223 hat Alphastrahlung. Die bleibt im Körper. Außen kommt nichts an, also kein ___."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt Strahlung und Halbwertszeit ablesen.",
+   "Ich kann sagen, welche Strahlung für ein Bild passt.",
+   "Ich kann begründen, welcher Stoff für ein Bild passt."
+  ],
+  "zuhause": "Frage zwei Erwachsene nach Diagnose und Therapie.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Feldern nebeneinander, beide gleich groß, ruhig ausgeleuchtet, viel Weißraum. In beiden Feldern liegt dieselbe schlichte Umrisszeichnung eines Menschen auf einer Liege, gleich groß, gleiche Haltung, an derselben Stelle im Feld — der Unterschied zwischen links und rechts ist allein das, was dazukommt. Über dem linken Feld steht groß und gut lesbar „DIAGNOSE“, über dem rechten groß „THERAPIE“. LINKES FELD: Über dem Bauch der liegenden Person schwebt GENAU EIN flaches, rechteckiges Gerät, waagerecht, mit der großen Aufschrift „Kamera“; es berührt den Körper nicht. Rechts daneben steht GENAU EIN Bildschirm auf einem Fuß, und auf dem Bildschirm ist eine einzelne einfache Organform als geschlossene dunklere Fläche gezeichnet, darunter in großer Schrift „Bild vom Organ“. Der Bildschirm ist die Aussage dieses Feldes: Das Ergebnis entsteht AUSSERHALB des Körpers. RECHTES FELD: Über der Person ist NICHTS — kein Gerät, kein Bildschirm, kein Fenster. Dafür ist im Bauch der Person eine kleine dunkle ovale Fläche eingezeichnet, an genau derselben Stelle, an der links die Organform auf dem Bildschirm zu sehen ist; um diese Fläche liegt ein einfacher dünner Ring, und daneben steht in großer Schrift „kranke Zellen“. Das ist die Aussage dieses Feldes: Die Wirkung soll INNEN bleiben. Alle Formen sind ruhige, klar begrenzte Flächen — Körper, Liege, Gerät, Bildschirm, Organ und der dunkle Fleck werden als geschlossene, gleichmäßig getönte Flächen gezeichnet, NIEMALS als Schraffur, als Streifenmuster oder als Punkteraster: Streifen lesen sich hier sofort als Strahlung und machen aus dem Bild eine falsche Behauptung. Aus dem Körper, aus dem Fleck und aus dem Gerät kommt NICHTS heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine gestrichelten Linien, keine Kegel, keine Sternchen, keine Punktwolken, keine Alpha-, Beta- oder Gammazeichen, kein gelbes Strahlenwarnzeichen. Es wird auch KEINE Linie zwischen Körper und Kamera oder zwischen Kamera und Bildschirm gezogen — welche Strahlung dorthin gelangt, ist die Aufgabe der Seite und darf im Bild nicht beantwortet sein. Es gibt außerdem KEIN zweites, kleineres Bild am Rand: kein Atom, kein Atomkern, keine Zerfallskurve, kein Diagramm, keine Spritze, kein Fläschchen, keine Bleischürze, kein Zählrohr, kein Krankenhaus von außen, keine Landkarte, kein Kalender, keine Uhr und vor allem keine zweite Tabelle oder Liste — die Liste steht als Datenblatt schon auf der Seite. Keine weiteren Personen: kein Arzt, keine Pflegekraft, keine Praktikantin, keine Sprechblasen, keine Gesichtszüge. Keine Zahlen im Bild, keine Stoffnamen im Bild. Nur die vier genannten Beschriftungen: „DIAGNOSE“, „Kamera“, „Bild vom Organ“, „THERAPIE“, „kranke Zellen“. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ {
+  "id": "fn14",
+  "quelle": "rk16",
+  "sim": "kernfusion",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Die Heizung ohne Holz",
+  "name": "Woher nimmt die Sonne ihre Energie?",
+  "fachwoerter_neu": [
+   "Kernfusion",
+   "Heliumkern"
+  ],
+  "alltag": [
+   "Nour sitzt mit der Ärztin in der Sonne.",
+   "Die Ärztin sagt: Diese Heizung läuft seit 4,6 Milliarden Jahren.",
+   "Im Kern der Sonne verschmelzen vier kleine Kerne aus Wasserstoff.",
+   "Das heißt Kernfusion."
+  ],
+  "frage": "Ab welcher Temperatur verschmelzen kleine Kerne zu einem Heliumkern?",
+  "predict": [
+   "Die Sonne verbrennt Wasserstoff wie ein großes Feuer.",
+   "Unter etwa 10 Millionen Grad passiert nichts. Erst darüber verschmelzen die Kerne."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Schiebe den Regler nach links auf 4 Millionen °C.",
+   "Lies die Statuszeile rechts neben dem Bild ab.",
+   "Stelle nacheinander 8, 10 und 16 Millionen °C ein.",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Temperatur im Kern (Millionen °C)",
+   "Was meldet die Statuszeile?",
+   "Wie schnell sind die Kerne?"
+  ],
+  "tabRows": [
+   [
+    "4",
+    "Es passiert nichts.",
+    "zu langsam"
+   ],
+   [
+    "8",
+    "",
+    ""
+   ],
+   [
+    "10",
+    "",
+    ""
+   ],
+   [
+    "16",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Vier kleine Kerne verschmelzen zu einem",
+    "loesung": "Heliumkern",
+    "post": ". Das heißt Kernfusion. Dabei wird nichts verbrannt."
+   },
+   {
+    "pre": "Die Kernfusion zündet erst ab etwa",
+    "loesung": "10 Millionen Grad",
+    "post": ". Darunter prallen die Kerne ab. Sie haben die gleiche Ladung."
+   }
+  ],
+  "wortbank": [
+   "Heliumkern",
+   "10 Millionen Grad",
+   "zu langsam",
+   "schnell genug"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du die erste Zeile aus?",
+   "antwort": "Am Bildschirm steht bei 4 Millionen °C: „Es passiert nichts … zu langsam.“ Beide Angaben kommen in die Tabelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Ab welcher Temperatur meldet die Statuszeile „Es zündet“?",
+    "optionen": [
+     "ab etwa 4 Millionen Grad",
+     "ab etwa 10 Millionen Grad",
+     "bei jeder Temperatur"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 8 Millionen °C sind die Kerne noch",
+      "loesung": "zu langsam",
+      "post": ". Sie prallen voneinander ab. Gleiche Ladung stößt ab."
+     },
+     {
+      "pre": "Im Kern der Sonne sind 15 Millionen Grad. Dort sind die Kerne",
+      "loesung": "schnell genug",
+      "post": ". Es zündet."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Sonne ist ein großes Feuer.“ Was sagst du dazu?",
+    "satzstarter": "Die Sonne ist kein Feuer, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Vergleiche in der Tabelle die Zeilen 8 und 10. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Schreibe den Satzstarter ab. Lies dazu noch einmal den Merksatz.",
+   "h3": "Fast fertig: Die Sonne ist kein Feuer, weil dort nichts verbrannt wird. Kerne verschmelzen zu einem ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Temperatur einstellen und die Statuszeile ablesen.",
+   "Ich weiß: Die Kernfusion zündet ab etwa 10 Millionen Grad.",
+   "Ich weiß: In der Sonne wird nichts verbrannt. Kerne verschmelzen."
+  ],
+  "zuhause": "Beobachte zwei Wassertropfen. Sie fließen sofort zusammen. Warum brauchen Kerne dafür 10 Millionen Grad?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Feldern nebeneinander, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Beide Felder zeigen denselben Ausschnitt aus dem Inneren der Sonne in derselben Ansicht; verschieden ist allein die Temperatur. Über jedem Feld eine große Überschrift: links „4 Millionen °C“, rechts „15 Millionen °C“. IM LINKEN FELD: vier gleich große, VOLL AUSGEFÜLLTE Kreise, jeder mit einem großen „+“ in der Mitte und dem Wort „Wasserstoff“ darunter. Die vier Kreise sind auf die Bildmitte zu gerichtet, bleiben aber deutlich voneinander getrennt – zwischen ihnen bleibt eine klar sichtbare Lücke, und in der Mitte ist nichts. An jedem Kreis ein kurzer, dicker, voll ausgefüllter Pfeil, der zur Mitte zeigt und dann in einem Bogen wieder nach außen umkehrt: die Kerne prallen ab. Unter dem linken Feld in großer Schrift: „zu kalt – die Kerne prallen ab“. IM RECHTEN FELD: dieselben vier Kreise mit „+“ und „Wasserstoff“, diesmal dicht an der Mitte, und in der Mitte ein deutlich größerer, ebenfalls voll ausgefüllter Kreis mit dem Wort „Heliumkern“. Vier kurze, dicke Pfeile zeigen von den vier kleinen Kreisen auf den großen Kreis und enden dort; kein Pfeil führt über den großen Kreis hinaus. Unter dem rechten Feld in großer Schrift: „die Kerne verschmelzen“. ZWISCHEN BEIDEN FELDERN, über die ganze Bildhöhe: ein schmales, aufrecht stehendes Thermometer als voll ausgefüllter Balken mit einer Skala von 1 bis 30 und der Beschriftung „Millionen °C“. Auf der Skala genau zwei waagerechte Marken, die sich deutlich unterscheiden: bei 10 eine DICKE Linie mit der Beschriftung „ab hier zündet es (10 Mio. °C)“, bei 15 eine deutlich DÜNNERE Linie mit der Beschriftung „Sonnenkern: 15 Mio. °C“. Von der Skalenstelle 4 führt ein kurzer waagerechter Strich zum linken Feld, von der Skalenstelle 15 ein kurzer waagerechter Strich zum rechten Feld, damit auf einen Blick zu sehen ist, welches Feld zu welcher Temperatur gehört. Drei Fehler drohen hier und werden ausdrücklich vermieden. ERSTENS Streifen statt Flächen: Kerne, Pfeile und Thermometerbalken werden als volle, gefüllte Formen gezeichnet, niemals als dünne Ringe, Umrisse, Schraffuren oder Linienbündel; ein schraffierter Kern liest sich als Muster und nicht als Teilchen. ZWEITENS Nebenbilder: Es gibt genau diese zwei Felder und das eine Thermometer – kein drittes Feld, keine kleine Sonne am Rand, kein Sonnensystem, kein Lupenausschnitt, keine Personen, keine Sprechblasen, kein Legendenkasten mit weiteren Szenen. DRITTENS Strahlengänge ins Leere: Aus keinem Feld führen Strahlen, Zacken, Blitze, Wellenlinien oder Pfeile aus dem Bild hinaus, auch nicht aus dem He-Kern, und um die Sonne wird kein Strahlenkranz gezeichnet. Jeder Pfeil im Bild hat Anfang und Ende an einem Kern. Ausdrücklich NICHT im Bild: Flammen, Feuer, Rauch, Glut, Holz, Kerzen, Streichhölzer – die Seite handelt gerade davon, dass hier nichts brennt. Ebenfalls nicht im Bild: eine Reaktionsgleichung, chemische Zeichen oder Abkürzungen an den Kreisen — die Kreise tragen ausschließlich die ausgeschriebenen Wörter „Wasserstoff“ und „Heliumkern“. Ebenfalls nicht: eine Zahl gezählter Heliumkerne oder ein Zähler (die Simulation zählt mit der Zeit, jedes Kind sähe eine andere Zahl), Massen in u, Energien in MeV, Positronen, Neutrinos. Keine anderen Zahlen als 1, 4, 10, 15 und 30 an der Skala sowie die genannten Beschriftungen. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ {
+  "id": "fn15",
+  "quelle": "rk17",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Die letzte Folie",
+  "name": "Kernenergie: Wie stehst du dazu?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Auf Nours letzter Folie steht nur: Kernenergie.",
+   "Jannis fragt: Was sagst du dazu?",
+   "CO₂ ist ein Gas. Viel CO₂ schadet dem Klima.",
+   "Wiegen heißt hier: Wie wichtig ist mir das?"
+  ],
+  "frage": "Was wiegt für dich schwerer: dafür oder dagegen?",
+  "predict": [
+   "Das Datenblatt zeigt nur die Folgen. Wie schwer sie wiegen, entscheidest du.",
+   "Wer alle Angaben kennt, entscheidet von allein."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt alle vier Zeilen ganz.",
+   "Vergleiche beide Seiten. Trage beide Antworten in die Tabelle ein.",
+   "Entscheide: Welches Thema wiegt für dich am schwersten?"
+  ],
+  "daten": {
+   "titel": "Kernenergie: beide Seiten",
+   "spalten": [
+    "Thema",
+    "dafür",
+    "dagegen"
+   ],
+   "zeilen": [
+    [
+     "Klima",
+     "macht Strom fast ohne CO₂",
+     "Bau und Uran-Abbau machen CO₂"
+    ],
+    [
+     "Brennstoff",
+     "wenig Uran reicht sehr lange",
+     "Uran kommt aus anderen Ländern"
+    ],
+    [
+     "Abfall",
+     "wenig Abfall, gut zu sammeln",
+     "muss 100 000 Jahre sicher liegen"
+    ],
+    [
+     "Sicherheit",
+     "bisher gab es nur wenige Unfälle",
+     "ein Unfall trifft eine ganze Gegend"
+    ]
+   ],
+   "quelle": "So reden beide Seiten. In Deutschland liefen die letzten drei Reaktoren bis 2023.",
+   "merke": "Lies jede Zeile ganz: Thema, dafür, dagegen."
+  },
+  "tabCols": [
+   "Thema",
+   "Was wiegt für mich mehr?",
+   "Wie wichtig: sehr, mittel, wenig?"
+  ],
+  "tabRows": [
+   [
+    "Klima",
+    "dafür",
+    "sehr"
+   ],
+   [
+    "Brennstoff",
+    "",
+    ""
+   ],
+   [
+    "Abfall",
+    "",
+    ""
+   ],
+   [
+    "Sicherheit",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Kernkraftwerk holt seine Energie aus der",
+    "loesung": "Kernspaltung",
+    "post": "."
+   },
+   {
+    "pre": "Die Angaben allein entscheiden nicht. Du brauchst auch einen",
+    "loesung": "Grund",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Kernspaltung",
+   "Grund",
+   "Uran",
+   "100 000 Jahre"
+  ],
+  "beispiel": {
+   "frage": "Wie füllt Nour die Zeile „Klima“ aus?",
+   "antwort": "Nour trägt „dafür“ ein: Strom fast ohne CO₂. Klima ist ihr sehr wichtig. Jannis trägt „dagegen“ ein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was steht in der Zeile „Abfall“?",
+    "optionen": [
+     "Nur etwas dafür.",
+     "Nur etwas dagegen.",
+     "Etwas dafür und etwas dagegen."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Dafür steht: Wenig",
+      "loesung": "Uran",
+      "post": "reicht sehr lange."
+     },
+     {
+      "pre": "Dagegen steht: Der Abfall muss",
+      "loesung": "100 000 Jahre",
+      "post": "sicher liegen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Entscheide",
+    "frage": "Wie stehst du zu Kernenergie? Nenne dein Thema und deinen Grund.",
+    "satzstarter": "Ich bin dagegen / dafür / unentschieden. Am schwersten wiegt für mich …, weil …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Themen stehen links.",
+   "h2": "Suche die Zeile, die dir am wichtigsten ist. Lies beide Seiten.",
+   "h3": "Fast fertig: Ich bin dagegen. Am schwersten wiegt für mich der Abfall, weil er ___ sicher liegen muss. „Dafür“ ist genauso richtig."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt beide Seiten einer Zeile ablesen.",
+   "Ich kann sagen, welches Thema am schwersten wiegt.",
+   "Ich kann meine Meinung mit einem Grund begründen."
+  ],
+  "zuhause": "Suche in den Nachrichten einen Satz über Kernenergie. Nennt er einen Grund?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einzelbild eines aufgeräumten Tisches im Aufenthaltsraum der Klinik, ruhig ausgeleuchtet, heller Hintergrund, viel Weißraum. Die Komposition besteht aus GENAU DREI Dingen auf derselben Tischplatte, alle im selben Bildausschnitt: hinten eine aufgeklappte Präsentationsmappe, in der Mitte eine Balkenwaage, davor vier Karten. In der Mappe steht eine Folie hochkant; darauf oben groß und gut lesbar das einzelne Wort „Kernenergie“ und darunter eine lange, vollkommen LEERE Schreiblinie über die ganze Folienbreite. Diese leere Linie ist der Kern der Komposition — sie stellt die Frage der Seite und darf auf keinen Fall beschriftet, angekreuzt oder ausgefüllt sein. In der Mitte des Tisches steht eine einfache Balkenwaage mit zwei runden Schalen. Der Balken ist EXAKT WAAGERECHT, beide Schalen hängen genau gleich hoch, sind gleich groß, gleich geformt und in derselben Farbe gezeichnet; beide Schalen sind LEER. Unter der linken Schale steht in großer Schrift „dafür“, unter der rechten in genau derselben Schriftgröße „dagegen“ — keine der beiden Beschriftungen ist größer, fetter, farbiger oder mit einem Zeichen versehen. Vor der Waage liegen GENAU VIER gleich große, gleich geformte weiße Karteikarten nebeneinander auf dem Tisch, alle vier flach liegend und keine davon auf einer Schale. Jede Karte trägt in großer Schrift genau ein Wort, von links nach rechts: „Klima“, „Brennstoff“, „Abfall“, „Sicherheit“. Alle Gegenstände sind als geschlossene, klar begrenzte Flächen gezeichnet — Tischplatte, Waage, Schalen, Karten und Mappe in ruhigen Vollflächen, NICHT als Schraffur und nicht als Streifenmuster; Streifen lesen sich auf einer Seite über Kernenergie sofort als Strahlung. Aus keinem Gegenstand kommt etwas heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Punktwolken, keine gestrichelten Linien ins Leere, keine Alpha-, Beta- oder Gammazeichen, kein Dreiblatt-Warnzeichen. Es gibt außerdem KEIN zweites, kleineres Bild am Rand und keine Symbole auf den Karten: kein Reaktorgebäude, kein Kühlturm, keine Wolke, kein Windrad, kein Fass, keine Landkarte, keine Fabrik — wofür die vier Themen stehen, steht im gedruckten Datenblatt und nicht im Bild. Keine Personen, keine Sprechblasen, keine Pfeile zwischen den Karten und der Waage, keine Häkchen, keine Kreuze, keine Daumen nach oben oder unten, kein Rot und kein Grün als Wertung — die beiden Seiten müssen im Bild vollkommen gleich stark aussehen. Keine Zahlen. Große Schrift, ruhiger heller Hintergrund, keine Deko.]"
+ }
+]

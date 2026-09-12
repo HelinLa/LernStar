@@ -1,0 +1,379 @@
+[
+ {
+  "id": "ef_mechanik",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "STEIGUNG",
+     "tipp": "Diese Eigenschaft der Ausgleichsgeraden ist im s-t-Diagramm die Geschwindigkeit und im v-t-Diagramm die Beschleunigung; gebildet wird sie als Δy/Δx aus zwei beliebigen Punkten."
+    },
+    {
+     "wort": "SPANNWEITE",
+     "tipp": "Vom kleinsten bis zum größten Wert dreier Messfahrten reicht sie; erst sie sagt, wie sicher eine gemessene Steigung ist – R² sagt es nicht."
+    },
+    {
+     "wort": "LINEARISIERUNG",
+     "tipp": "Der Kunstgriff, der aus einer Parabel eine Ursprungsgerade macht: Man wählt die Achsen neu und trägt s über t² auf."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "In der Sekundarstufe I trug diese Größe die Einheit N/kg; beim freien Fall heißt dieselbe Zahl Fallbeschleunigung und steht in m/s²."
+    },
+    {
+     "wort": "WURFPARABEL",
+     "tipp": "So heißt die Bahn y = h − g/(2 · v₀²) · x², die entsteht, wenn sich eine gleichförmige und eine gleichmäßig beschleunigte Bewegung überlagern."
+    },
+    {
+     "wort": "KOMPONENTE",
+     "tipp": "F · cos(α) ist die eine, F · sin(α) die andere; nach Pythagoras ergeben beide zusammen wieder die ganze Zugkraft von 200,0 N."
+    },
+    {
+     "wort": "GLEICHGEWICHT",
+     "tipp": "Zustand der hängenden Lampe: Haltekraft und Gewichtskraft ergänzen sich zu 0 N, und trotzdem steht der Kraftmesser weiter bei 5 N."
+    },
+    {
+     "wort": "WECHSELWIRKUNG",
+     "tipp": "Das Prinzip hinter dem dritten newtonschen Gesetz: Zu jeder Kraft gehört eine gleich große, entgegengesetzt gerichtete an einem zweiten Körper."
+    },
+    {
+     "wort": "GLEITREIBUNG",
+     "tipp": "Für sie gilt F_R = μ · F_N; sie bremst den bereits fahrenden Wagen und hängt weder von der Berührfläche noch vom Tempo ab."
+    },
+    {
+     "wort": "HUBARBEIT",
+     "tipp": "W = m · g · h: Sie fällt an, wenn Kraft und Weg beide nach oben zeigen – beim Gang durch den Flur dagegen nicht."
+    },
+    {
+     "wort": "SPANNENERGIE",
+     "tipp": "Sie ist die Dreiecksfläche unter der F-s-Geraden und beträgt ½ · D · s²; das Produkt aus Kraft und Auslenkung ergäbe doppelt so viel."
+    },
+    {
+     "wort": "IMPULS",
+     "tipp": "p = m · v: Diese gerichtete Größe bleibt beim Stoß in der Summe erhalten, und ein zurücklaufender Körper geht mit Minuszeichen ein."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann aus Weg-Zeit-Paaren die Geschwindigkeit als Steigung v = Δs/Δt bestimmen und begründen, warum die Ausgleichsgerade belastbarer ist als ein einzelner Quotient s/t.",
+    "Ich kann erklären, dass R² nur die Anpassungsgüte misst, und mit der Spannweite dreier Messfahrten angeben, wie sicher meine Steigung wirklich ist.",
+    "Ich kann die Beschleunigung als Steigung der v-t-Geraden ablesen und sie aus der s-t-Parabel gewinnen, indem ich s über t² auftrage und a = 2 · Steigung bilde.",
+    "Ich kann die Fallbeschleunigung über g = v/t und über g = 2s/t² bestimmen und begründen, warum die schrittweise Rechnung den zweiten Wert zu groß macht.",
+    "Ich kann den waagerechten Wurf in zwei Teilbewegungen zerlegen und mit t = √(2h/g) und xW = v₀ · t begründen, warum v₀ die Fallzeit nicht verändert.",
+    "Ich kann eine schräg ziehende Kraft in F · cos(α) und F · sin(α) zerlegen und erklären, warum die senkrechte Komponente den Schlitten entlastet.",
+    "Ich kann mit F_res = 0 N erklären, warum ein Wagen ohne resultierende Kraft sein Tempo behält und eine Lampe still hängt, obwohl an ihr gezogen wird.",
+    "Ich kann unter Variablenkontrolle zeigen, dass a proportional zu F und umgekehrt proportional zu m ist, und mit F = m · a sowie 1 N = 1 kg · m/s² rechnen.",
+    "Ich kann mit dem Wechselwirkungsprinzip begründen, dass beide Wagen denselben Kraftbetrag erfahren, und aus a1 : a2 = m2 : m1 ihre Beschleunigungen bestimmen.",
+    "Ich kann mit F_R = μ · m · g die Reibungskraft berechnen und daraus über a = (F − F_R)/m die Beschleunigung des Wagens gewinnen.",
+    "Ich kann mit W = F · s · cos(α), W = m · g · h und P = W/t entscheiden, wann eine Kraft Arbeit verrichtet und wie groß die Leistung dabei ist.",
+    "Ich kann E = ½ · m · v² und E = ½ · D · s² berechnen, das Quadrat in beiden begründen und mit p = m · v einen geraden Stoß bilanzieren."
+   ],
+   "tipps": [
+    "Drei Auftragungen, drei Bedeutungen derselben Steigung: Im s-t-Diagramm ist sie die Geschwindigkeit, im v-t-Diagramm die Beschleunigung, im s-t²-Diagramm dagegen nur a/2 – dort ist die Beschleunigung das Doppelte. Schreibe an jede Achsenbeschriftung dazu, was die Steigung dort bedeutet.",
+    "Frage bei jedem Kräftepaar zuerst: an welchem Körper? Beim Gleichgewicht greifen beide Kräfte am selben Körper an und heben sich auf – die Lampe hängt still. Beim Wechselwirkungsprinzip greifen sie an zwei verschiedenen Körpern an und heben sich gerade nicht auf – beide Wagen fahren los.",
+    "Wo ein Quadrat in der Formel steht, zählt eine Verdopplung viermal: E = ½ · m · v² und E = ½ · D · s² wachsen bei doppeltem v beziehungsweise doppeltem s auf das Vierfache, W = m · g · h und p = m · v dagegen nur auf das Doppelte. Prüfe vor jeder Vorhersage, welche Größe im Quadrat steht.",
+    "Schreibe die festen Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: g = 9,81 m/s², Rechenschritt 0,016 s, F_R = 14,7 N bei μ = 0,30 und 5 kg, W = 400 J beim Schieben und 0 J beim Tragen, E = 32 J bei 4 kg und 4 m/s, F = D · s₀ = 20,00 N und p_ges = 60,0 kg·m/s."
+   ],
+   "mini": [
+    {
+     "frage": "Eine Messfahrt bei a = 2,0 m/s² liefert an der Lichtschranke s = 6,0 m die Zeit t = 2,44 s. Bestimme daraus die Beschleunigung.",
+     "loesung": "t² = (2,44 s)² = 5,95 s². Die Steigung der s-t²-Geraden ist s/t² = 6,00 m / 5,95 s² = 1,01 m/s². Weil diese Steigung gerade a/2 ist, folgt a = 2 · 1,01 m/s² = 2,02 m/s² – im Rahmen der auf zwei Nachkommastellen abgelesenen Zeit sind das die eingestellten 2,0 m/s²."
+    },
+    {
+     "frage": "Eine Kugel wird aus der Abwurfhöhe h = 45 m mit v₀ = 4 m/s waagerecht abgeworfen. Gib Fallzeit und Wurfweite an.",
+     "loesung": "Die Fallzeit hängt nur von h ab, denn in t = √(2h/g) kommt v₀ nicht vor: Für h = 45 m nennt die Liste „Aufgezeichnete Bahnen“ bei allen vier Abwurfgeschwindigkeiten 3,03 s. Die Wurfweite ist xW = v₀ · t = 4 m/s · 3,03 s = 12,12 m."
+    },
+    {
+     "frage": "Eine Feder mit D = 250 N/m ist um s₀ = 8,0 cm vorgespannt und stößt zwei Wagen mit m1 = 1 kg und m2 = 5 kg auseinander. Wie groß sind die Kraft und die beiden Beschleunigungen?",
+     "loesung": "F = D · s₀ = 250 N/m · 0,080 m = 20,00 N, und zwar für beide Wagen derselbe Betrag – in F = D · s₀ steht keine Masse. Mit F = m · a folgt a1 = 20,00 N : 1 kg = 20,00 m/s² und a2 = 20,00 N : 5 kg = 4,00 m/s², also a1 : a2 = 5 : 1 = m2 : m1."
+    },
+    {
+     "frage": "Eine Feder mit D = 20 N/m wird um s = 20 cm gespannt. Berechne die Kraft am Ende des Spannens und die Spannenergie.",
+     "loesung": "s = 20 cm = 0,20 m. Kraft: F = D · s = 20 N/m · 0,20 m = 4,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 20 N/m · 0,0400 m² = 0,400 J. Das Produkt aus Kraft und Auslenkung ergäbe 0,800 J, also genau das Doppelte – die Kraft wächst beim Spannen eben erst von null an."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Bei gleichförmiger Bewegung liegen die Wertepaare aus Weg und Zeit auf einer Ursprungsgeraden; deren Steigung Δs/Δt ist die",
+     "loesung": "Geschwindigkeit",
+     "post": "."
+    },
+    {
+     "pre": "Aus der s-t-Parabel wird erst dann eine Gerade, wenn man s nicht über t aufträgt, sondern über",
+     "loesung": "t²",
+     "post": "."
+    },
+    {
+     "pre": "Ein Körper behält Ruhe oder Tempo genau dann bei, wenn die Summe aller an ihm angreifenden Kräfte",
+     "loesung": "null",
+     "post": "ist; an der hängenden Lampe ziehen dabei zwei Kräfte weiter."
+    },
+    {
+     "pre": "Auf waagerechter Bahn gilt F_R = μ · m · g; nach diesem Modell hängt die Reibungskraft weder von der Berührfläche noch von der",
+     "loesung": "Geschwindigkeit",
+     "post": "ab."
+    },
+    {
+     "pre": "In E = ½ · m · v² geht das Tempo quadratisch ein; eine Verdopplung von v bedeutet deshalb die",
+     "loesung": "vierfache",
+     "post": "Energie."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Zeigt die Auswertung R² = 1,0000 an, so ist damit belegt, dass die Steigung der Ausgleichsgeraden den eingestellten Sollwert trifft.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Messreihen zu a = 1,0 m/s², 2,0 m/s² und 4,0 m/s² liefern v-t-Geraden, deren Steigungen sich wie 1 : 2 : 4 verhalten.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Dass beim freien Fall der über 2s/t² gewonnene Wert über dem aus v/t liegt, ist eine Messunsicherheit; in einem zweiten Durchgang kann es ebenso gut umgekehrt ausfallen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Wirft man von derselben Kante zwei gleiche Kugeln waagerecht ab, die eine sanft und die andere kräftig, so schlagen beide nach derselben Zeit auf dem Boden auf.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Weil die senkrechte Komponente F · sin(α) den Schlitten entlastet, läuft er umso leichter, je steiler das Seil nach oben gezogen wird.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim Abstoßen zweier Wagen erfahren beide denselben Kraftbetrag, obwohl der leichtere von ihnen stärker beschleunigt wird.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Prallt eine Kugel zurück, so geht ihr Impuls mit negativem Vorzeichen in p_ges ein; die Summe fällt deshalb kleiner aus als die Summe der beiden Beträge.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Auf der Reibungsbahn stehen die Antriebskraft F = 80 N und die Masse m = 5 kg fest. Bei μ = 0,60 meldet der Infokasten F_R = 29,4 N. Wie groß ist die Beschleunigung des Wagens?",
+    "optionen": [
+     "a = 16,0 m/s²",
+     "a = 5,9 m/s²",
+     "a = 21,9 m/s²",
+     "a = 10,1 m/s²"
+    ],
+    "richtig": 3
+   },
+   "offen": {
+    "frage": "Tobias trägt die 20 kg schwere Kiste mit einer Haltekraft von 196 N vier Meter weit durch den Flur und hebt sie danach 2,0 m auf ein Regal. Erkläre mit W = F · s · cos(α), warum die Physik dem langen Tragen 0 J zuschreibt, dem kürzeren Hub dagegen 392 J – und warum Tobias' Anstrengung beim Tragen trotzdem echt ist.",
+    "zeilen": 5,
+    "loesung": "Arbeit verrichtet nur die Kraftkomponente längs des Weges: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg aber waagerecht nach vorn; der Winkel beträgt 90°, und mit cos(90°) = 0 wird W = 196 N · 4 m · 0 = 0 J, gleichgültig wie schwer die Kiste ist und wie weit er geht. Beim Hochheben zeigen Hubkraft und Weg in dieselbe Richtung, α = 0° und cos(0°) = 1; die Hubkraft muss die Gewichtskraft F_G = m · g ausgleichen, also ist W = m · g · h = 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, angezeigt als 392 J. Der kürzere Weg liefert hier den größeren Wert, weil allein die Richtung entscheidet, nicht die Länge. Tobias' Anstrengung ist trotzdem real: Seine Muskelfasern spannen sich unablässig nach und setzen dabei Energie um. An der Kiste wird davon nichts als Arbeit wirksam, weil sie ihre Höhe nicht ändert. Mit P = W / t folgt daraus auch die Leistung null beim Tragen."
+   },
+   "transfer": {
+    "frage": "Mira baut aus der Feder mit D = 20 N/m einen Katapultstart und spannt sie um s = 20 cm. Statt des 0,50 kg schweren Wagens der Simulation setzt sie einen leichteren mit m = 0,20 kg davor. Sage die Startgeschwindigkeit voraus und begründe, warum der leichtere Wagen schneller wird, obwohl in der Feder genau dieselbe Energie steckt.",
+    "zeilen": 6,
+    "loesung": "Die Feder gibt ihre Energie unabhängig von der Masse ab: E = ½ · D · s² = 0,5 · 20 N/m · (0,20 m)² = 0,400 J – derselbe Wert wie in der Messreihe, denn in ½ · D · s² kommt keine Masse vor. Auf der reibungsfreien Bahn geht diese Spannenergie vollständig in Bewegungsenergie über: E_Spann = E_Kin, also ½ · m · v² = 0,400 J und damit v = √(2 · E / m). Für m = 0,20 kg ergibt das v = √(2 · 0,400 J / 0,20 kg) = √4,00 = 2,00 m/s. Zum Vergleich: Mit dem 0,50 kg schweren Wagen wären es v = √(2 · 0,400 J / 0,50 kg) = √1,60 = 1,26 m/s. Der leichtere Wagen wird schneller, weil in E = ½ · m · v² die Masse und das Quadrat des Tempos zusammen die feste Energie ergeben müssen: Sinkt die Masse auf 0,40 ihres Werts, so muss v² auf das 2,5-Fache steigen, und v selbst wächst nur mit der Wurzel daraus, also auf das 1,58-Fache. Die Feder liefert also nicht ein festes Tempo, sondern eine feste Energie."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Fahrbahn mit mehreren Lichtschranken und digitalem Zeitmessgerät",
+   "Wagen mit Zusatzmassen sowie ein Antrieb über Faden, Umlenkrolle und Wägesatz",
+   "Luftkissenbahn oder eine möglichst reibungsarme Schiene",
+   "Stoppuhr, Maßband und Millimeterpapier",
+   "Tabellenkalkulation oder Messwerterfassungssoftware für Ausgleichsgerade und R²",
+   "Stahlkugel mit Fallrinne für den freien Fall und eine Abschussvorrichtung für den waagerechten Wurf",
+   "Federkraftmesser in mehreren Messbereichen und ein Winkelmesser",
+   "Zugseil und ein beladener Schlitten oder Reibungsklotz für die Kraftzerlegung",
+   "Unterlagen aus Holz, Filz und Kunststoff zum Vergleich der Gleitreibung",
+   "zwei Schraubenfedern verschiedener Federkonstante mit Skala für die Auslenkung",
+   "zwei Rollwagen mit Stoßfedern und ein Wägesatz für den geraden Stoß",
+   "Taschenrechner, Zettel und Stift für die festen Zahlen des Kapitels"
+  ]
+ },
+ {
+  "id": "ef_gravitation",
+  "material": [
+   "Simulationen am Bildschirm, je Arbeitsgruppe ein Gerät",
+   "Taschenrechner mit Wurzel-, Potenz- und Exponentialschreibweise (die dritte Wurzel wird gebraucht)",
+   "Millimeterpapier oder ein Tabellenprogramm für die Ausgleichsgerade",
+   "Schnur, ein kleiner Ball und ein kurzes Rohrstück zum Kreisenlassen von Hand",
+   "Federkraftmesser bis 10 N für die Gegenprobe zur gerechneten Zentripetalkraft",
+   "Waage für die Masse des kreisenden Körpers",
+   "Stoppuhr zum Auszählen von zehn Umläufen",
+   "Bild oder Modell der Drehwaage von Henry Cavendish",
+   "Datenblatt der Feldstärken und das Datenblatt der Planetenbahnen, beide im Heft abgedruckt",
+   "vier Beispielquellen zur Schwerelosigkeit: Schulbuch, Zeitungsartikel, Netzvideo, begutachteter Fachartikel",
+   "Weltkugel oder Ball und eine Lampe für die Anordnung der beiden Weltbilder",
+   "Zettel und Stift für die festen Zahlen des Kapitels"
+  ],
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "BOGENMASS",
+     "tipp": "In diesem Winkelmaß rechnet die Kreisbewegung; ein voller Umlauf sind 2π rad, und nur so gilt s = φ · r."
+    },
+    {
+     "wort": "ZENTRIPETAL",
+     "tipp": "So heißt die Beschleunigung, die allein die Richtung der Geschwindigkeit ändert; sie beträgt ω²·r und weist zur Drehachse hin."
+    },
+    {
+     "wort": "STEIGUNG",
+     "tipp": "Diese Kennzahl der Ausgleichsgeraden hat bei F über r die Einheit N/m und enthält außer der gesuchten Masse nur Bekanntes."
+    },
+    {
+     "wort": "PROPORTIONAL",
+     "tipp": "So verhält sich die Anziehung zu jeder der beiden Massen: Verfünffacht man eine von ihnen, verfünffacht sich auch die Kraft."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Die Kraft je Kilogramm an einem bestimmten Ort, angegeben in N/kg; auf dem Mond sind es 1,6, auf dem Jupiter 24,8."
+    },
+    {
+     "wort": "SCHWERELOS",
+     "tipp": "So nennt man den Zustand in einer Raumstation; er bedeutet nicht, dass dort kein Feld wäre, sondern dass alles gemeinsam fällt."
+    },
+    {
+     "wort": "DREHWAAGE",
+     "tipp": "Zwei Bleikugeln an einem dünnen Draht, von außen durch Fernrohre beobachtet: So wurde 1798 eine Kraft von 10⁻⁷ N sichtbar."
+    },
+    {
+     "wort": "VORBEIFALLEN",
+     "tipp": "Anziehung zum Zentrum und Bewegung quer dazu ergeben zusammen dieses – und genau das ist eine Umlaufbahn."
+    },
+    {
+     "wort": "HALBACHSE",
+     "tipp": "Die Größe a im dritten Keplerschen Gesetz; bei der Erde beträgt sie 1,000 AE, beim Saturn 9,537 AE."
+    },
+    {
+     "wort": "EPIZYKEL",
+     "tipp": "Der Zusatzkreis, mit dem das geozentrische Modell die rückläufige Schleife eines Planeten erzeugt."
+    },
+    {
+     "wort": "BEGUTACHTET",
+     "tipp": "Bevor ein Fachartikel erscheint, prüfen ihn andere Fachleute; ein Netzvideo ohne Quellenangabe ist das nie."
+    },
+    {
+     "wort": "LORENTZFAKTOR",
+     "tipp": "Der Kehrwert von √(1−β²); bei v = 0,60·c beträgt er 1,250, bei v = 0,95·c dagegen 3,203."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann mit v = ω · r begründen, warum alle Sitze eines Kettenkarussells dieselbe Winkelgeschwindigkeit, aber verschiedene Bahngeschwindigkeiten haben.",
+    "Ich kann aus r und f die Größen T, ω, v, a_z und F_z berechnen und begründen, warum die Zentripetalkraft zum Mittelpunkt zeigt und keine neue Kraftart ist.",
+    "Ich kann F_z über r auftragen, aus der Steigung k = 4·π²·m·f² mit m = k/(4·π²·f²) die Masse zurückrechnen und begründen, warum eine Messreihe genauer ist als ein Einzelwert.",
+    "Ich kann unter Variablenkontrolle zeigen, dass die Anziehung zu jeder Masse proportional und zum Quadrat des Abstands antiproportional ist, und daraus F ~ m₁ · m₂ / r² folgern.",
+    "Ich kann Masse und Gewichtskraft unterscheiden, mit F = m · g rechnen und begründen, warum 1 N/kg dasselbe ist wie 1 m/s².",
+    "Ich kann mit g = G · M / r² die Feldstärke an einem Ort berechnen und erklären, dass die Besatzung der ISS nicht wegen eines fehlenden Feldes schwebt, sondern weil sie frei fällt.",
+    "Ich kann beschreiben, dass die Drehwaage zuerst die Gravitationskonstante liefert, und daraus mit M = g · R² / G die Masse der Erde berechnen.",
+    "Ich kann aus G·M·m/r² = m·v²/r den Kreiswert v = √(G·M/r) herleiten und erklären, warum ein Planet an der Sonne vorbeifällt, statt in sie zu stürzen.",
+    "Ich kann mit T²/a³ = 1,00 aus der Umlaufzeit eines Körpers seine große Halbachse berechnen und beurteilen, ob Abweichungen aus der Regel oder aus der Stellenzahl der Tabelle stammen.",
+    "Ich kann die rückläufige Schleife des Mars in beiden Weltbildern erklären und begründen, warum erst Galileis Beobachtungen und Bessels Parallaxe den Ausschlag gaben.",
+    "Ich kann eine Aussage über Schwerelosigkeit an den vier Kriterien Quellenangabe, Begutachtung, offengelegte Daten und Trennung von Beobachtung und Deutung prüfen.",
+    "Ich kann mit dem Satz des Pythagoras Δtbew = ΔtRuh · √(1−v²/c²) herleiten und für v = 0,60·c den Faktor 0,800 und den Lorentzfaktor γ = 1,250 angeben."
+   ],
+   "tipps": [
+    "Halte ω und v auseinander: Die Winkelgeschwindigkeit gehört zum ganzen starren Körper, die Bahngeschwindigkeit zu einem einzelnen Punkt und wächst mit seinem Abstand von der Achse. Beide hängen über v = ω · r zusammen, und ω = 2·π·f verbindet sie mit der Umlauffrequenz.",
+    "Der Abstand r kommt im Kapitel dreimal vor, jedes Mal anders: Bei fester Umlauffrequenz wächst F_z proportional zu r, die Feldstärke sinkt mit 1/r², und im dritten Keplerschen Gesetz steht a sogar in der dritten Potenz. Prüfe bei jeder Aufgabe zuerst, welcher der drei Fälle vorliegt.",
+    "Rechne den Abstand immer ab dem Mittelpunkt und immer in Metern. Die beiden häufigsten Fehler des Kapitels sind, die Höhe über dem Boden statt des Abstands vom Erdmittelpunkt einzusetzen und Kilometer nicht umzurechnen – Letzteres verschiebt das Ergebnis um den Faktor 10⁶.",
+    "Schreibe die festen Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: G = 6,674 · 10⁻¹¹ N·m²/kg², M = 5,972 · 10²⁴ kg, Erdradius 6371 km mit 9,82 N/kg, ISS-Bahn 6771 km mit 8,69 N/kg, Kreiswert 29,8 km/s und Fluchtwert 42,1 km/s, T²/a³ = 1,00 und √(1−0,60²) = 0,800."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Karussellarm dreht sich mit ω = 1,2 rad/s. Welche Bahngeschwindigkeit hat ein Sitz bei r = 6,0 m, welche einer bei r = 4,0 m?",
+     "loesung": "Mit v = ω · r ist außen v = 1,2 rad/s · 6,0 m = 7,2 m/s und innen v = 1,2 rad/s · 4,0 m = 4,8 m/s. Die Winkelgeschwindigkeit ist für beide Sitze dieselbe, weil die Arme starr sind und ω = Δφ/Δt den Radius nicht enthält."
+    },
+    {
+     "frage": "Zwei Kugeln ziehen einander mit 200,0 Einheiten an. Wie groß ist die Anziehung bei dreifachem Abstand, wenn beide Massen unverändert bleiben?",
+     "loesung": "Der Abstand geht quadratisch ein: Dreifacher Abstand bedeutet 3² = 9, also ein Neuntel. 200,0 : 9 = 22,2 Einheiten. Auf die Hälfte oder ein Drittel sinkt die Anziehung nicht."
+    },
+    {
+     "frage": "Berechne die Gewichtskraft einer Person von 60 kg auf dem Mond (g = 1,6 N/kg) und auf dem Jupiter (g = 24,8 N/kg).",
+     "loesung": "Mit F = m · g ist F = 60 kg · 1,6 N/kg = 96 N auf dem Mond und F = 60 kg · 24,8 N/kg = 1488 N auf dem Jupiter. In beiden Zeilen steht dieselbe Masse 60 kg; verändert wurde allein der Ortsfaktor, eine Größe des Ortes."
+    },
+    {
+     "frage": "Ein Körper umläuft die Sonne in T = 8,00 Jahren. Wie groß ist seine große Halbachse? Rechne mit T²/a³ = 1,00 in AE und Jahren.",
+     "loesung": "Aus T²/a³ = 1,00 folgt a³ = T² = 8,00² = 64,0, und die dritte Wurzel daraus ergibt a = 4,00 AE. Die Probe bestätigt es: 4,00³ = 64,0 und 8,00² = 64,0, der Quotient ist 1,00."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Am Kettenkarussell haben alle Sitze dieselbe Winkelgeschwindigkeit ω; die Bahngeschwindigkeit wächst dagegen mit dem",
+     "loesung": "Abstand",
+     "post": "von der Drehachse, denn es gilt v = ω · r."
+    },
+    {
+     "pre": "Eine gleichförmige Kreisbewegung ist beschleunigt, obwohl der Betrag der Geschwindigkeit gleich bleibt: Fortwährend ändert sich ihre",
+     "loesung": "Richtung",
+     "post": "."
+    },
+    {
+     "pre": "Vom Ort abhängig ist allein die Gewichtskraft; die Masse eines Körpers ist dagegen",
+     "loesung": "überall gleich",
+     "post": "."
+    },
+    {
+     "pre": "Für alle Planeten derselben Sonne ist der Quotient",
+     "loesung": "T²/a³",
+     "post": "konstant; in AE und Jahren gerechnet beträgt er 1,00."
+    },
+    {
+     "pre": "Die Herleitung mit dem Satz des Pythagoras stützt sich auf einen einzigen Messbefund: Die Lichtgeschwindigkeit c hat in jedem",
+     "loesung": "Bezugssystem",
+     "post": "denselben Wert."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Eine Ausgleichsgerade durch acht Messpunkte liefert die gesuchte Masse im Mittel genauer als eine einzelne Kraftmessung, obwohl jeder einzelne Punkt dieselbe Streuung trägt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdreifacht man den Abstand zweier Kugeln und lässt beide Massen unverändert, so sinkt ihre Anziehung auf ein Drittel.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Gravitationsfeld hat keinen Rand: Mit wachsendem Abstand wird die Feldstärke der Erde beliebig klein, erreicht aber an keinem Ort den Wert null.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Weil die Sonne ihn ständig anzieht, wird ein Planet auf einer Kreisbahn immer schneller.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Ortsfaktor und der Erdradius waren lange vor 1798 bekannt; die Masse der Erde ließ sich aus ihnen aber erst angeben, nachdem die Gravitationskonstante gemessen war.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Kopernikus kam 1543 mit seinem Modell ohne jeden Zusatzkreis aus.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Je mehr Menschen ein Video erreicht und je sicherer es auftritt, desto verlässlicher ist seine physikalische Aussage.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Körper der Masse m = 2,00 kg läuft im Radius r = 0,80 m mit der Umlauffrequenz f = 1,50 Hz auf einer Kreisbahn. Welche beiden Werte gehören zu dieser Einstellung?",
+    "optionen": [
+     "a_z = 142,1 m/s² und F_z = 71,06 N",
+     "a_z = 35,53 m/s² und F_z = 71,06 N",
+     "a_z = 71,06 m/s² und F_z = 142,1 N",
+     "a_z = 71,06 m/s² und F_z = 35,53 N"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Ein Netzvideo behauptet: „In der Raumstation ISS schweben die Menschen, weil sie dort keine Masse mehr haben.“ Beurteile beide Teile dieser Begründung. Nutze dafür die Feldstärke 8,69 N/kg in der Bahnhöhe der ISS und erkläre, was Schwerelosigkeit tatsächlich bedeutet.",
+    "zeilen": 5,
+    "loesung": "Beide Teile treffen nicht zu. Die Masse gehört zum Körper und nicht zum Ort: Eine Astronautin von 60 kg hat auf der ISS-Bahn dieselben 60 kg wie am Boden, verändert hat sich allein die Feldstärke. Und auch die ist dort nicht null, sondern 8,69 N/kg, also 8,69 : 9,82 = 0,885 und damit rund 89 Prozent des Werts an der Erdoberfläche. Auf die Astronautin wirkt deshalb F = m · g = 60 kg · 8,69 N/kg = 521,4 N. Diese Kraft fehlt nicht, sie beschleunigt Station, Ausrüstung und Mensch ständig zum Erdmittelpunkt hin. Weil alle drei im selben Feld liegen und gleich stark beschleunigt werden, fallen sie gemeinsam um die Erde herum und fallen dabei ständig an ihr vorbei. Zwischen Astronautin und Wand wird deshalb keine Kraft mehr übertragen, und genau dieses Ausbleiben nennt man Schwerelosigkeit. Schwerelos heißt also frei fallend – nicht ohne Feld und schon gar nicht ohne Masse."
+   },
+   "transfer": {
+    "frage": "Ein neu entdeckter Kleinplanet umläuft die Sonne in T = 125 Jahren. Berechne mit T²/a³ = 1,00 seine große Halbachse und entscheide begründet, ob seine Bahn innerhalb oder außerhalb der Saturnbahn mit a = 9,537 AE verläuft.",
+    "zeilen": 6,
+    "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Mit T = 125 Jahren ist T² = 15 625, und die dritte Wurzel daraus ergibt a = 25,0 AE. Die Probe bestätigt es: 25,0³ = 15 625 und 125² = 15 625, der Quotient ist genau 1,00. Die große Halbachse beträgt also 25,0 AE, das 25-Fache des Erdabstands. Der Saturn läuft mit 9,537 AE deutlich weiter innen, der Kleinplanet also klar außerhalb der Saturnbahn – rund zweieinhalbmal so weit von der Sonne entfernt. Bemerkenswert ist, wie dieser Wert zustande kommt: Gemessen wurde allein die Zeit für einen Umlauf, der Bahnradius ist daraus vorhergesagt. Möglich ist das, weil in T²/a³ = 4π²/(G·M) rechts nur die Masse des Zentralkörpers steht; die Masse des umlaufenden Körpers fällt heraus, sie muss also gar nicht bekannt sein."
+   }
+  }
+ }
+]

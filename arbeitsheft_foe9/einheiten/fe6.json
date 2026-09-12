@@ -1,0 +1,190 @@
+{
+ "seite": {
+  "id": "fe6",
+  "quelle": "el6",
+  "sim": "leistung-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Nour zieht schneller",
+  "name": "Was ist Leistung?",
+  "fachwoerter_neu": [
+   "Leistung P in Watt (W)"
+  ],
+  "alltag": [
+   "Zwei gleich schwere Kisten müssen auf die Bühne.",
+   "Jannis zieht langsam, Nour in der halben Zeit. Beide kommen gleich hoch.",
+   "Wie schnell Arbeit geht, heißt Leistung P in Watt (W)."
+  ],
+  "frage": "Was ändert sich, wenn Nour die halbe Zeit braucht?",
+  "predict": [
+   "Wer schneller zieht, verrichtet mehr Arbeit W.",
+   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „zurücksetzen“ und dann „Hochziehen“. Die Zahlen stehen schon vorher da.",
+   "Drücke „÷2 Zeit“ und fülle Zeile 2 aus.",
+   "Drücke „zurücksetzen“. Stelle 20 kg ein und fülle Zeile 3 aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was ist eingestellt?",
+   "Wie groß ist die Arbeit W?",
+   "Wie viel Watt zeigt P?"
+  ],
+  "tabRows": [
+   [
+    "50 kg in 10 s",
+    "1962 J",
+    "196 W"
+   ],
+   [
+    "nach ÷2 Zeit",
+    "",
+    ""
+   ],
+   [
+    "20 kg in 10 s",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Für die Leistung gilt P =",
+    "loesung": "W / t",
+    "post": ". 1 Watt ist 1 Joule je Sekunde."
+   },
+   {
+    "pre": "Bei halber Zeit bleibt die Arbeit gleich. Die Leistung wird",
+    "loesung": "doppelt",
+    "post": "so groß."
+   }
+  ],
+  "wortbank": [
+   "W / t",
+   "doppelt",
+   "392 W",
+   "79 W"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Leistung P?",
+   "antwort": "Gegeben: W = 1962 J, t = 10 s. Gesucht: P. Rechnung: 1962 J / 10 s = 196 W. Antwort: Die Leistung ist 196 W."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ändert sich zwischen 10 s und 5 s?",
+    "optionen": [
+     "Die Arbeit W wird doppelt. Die Leistung P bleibt gleich.",
+     "Arbeit W und Leistung P bleiben gleich.",
+     "Die Arbeit W bleibt gleich. Die Leistung P steigt auf 392 W."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "In 5 s: 1962 J / 5 s =",
+      "loesung": "392 W",
+      "post": "."
+     },
+     {
+      "pre": "Bei 20 kg: 785 J / 10 s =",
+      "loesung": "79 W",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler sagt: Beide haben gleich viel Arbeit verrichtet. Hat er recht?",
+    "satzstarter": "Herr Kessler hat recht, weil die Arbeit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies nur bis „Leistung P = ... W“. Die 9,81 steht schon da.",
+   "h2": "785 J : 10 s = 78,5. Der Bildschirm rundet: 79 W.",
+   "h3": "Fast fertige Antwort: Die Arbeit ist gleich. Nour war schneller, darum ist ihre ___ doppelt."
+  },
+  "selbstcheck": [
+   "Ich kann die Leistung P ablesen.",
+   "Ich kann P = W / t benutzen.",
+   "Ich weiß, was bei halber Zeit passiert."
+  ],
+  "zuhause": "Laufe eine Treppe hinauf. Die Höhe sagt deine Lehrkraft. Stoppe deine Zeit.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern hängt dieselbe Kiste an einem Seil über einer Bühnenkante und ist gleich hoch gezogen; eine dünne waagerechte Linie auf gleicher Höhe in beiden Feldern zeigt, dass die Höhe wirklich dieselbe ist, daneben groß „h = 4 m“ und an der Kiste „50 kg“. Feld 1 oben groß „in 10 s“, Feld 2 oben groß „in 5 s“. In BEIDEN Feldern steht unten dieselbe Zeile „Arbeit W = 1962 J“, in Feld 1 darunter „Leistung P = 196 W“, in Feld 2 darunter „Leistung P = 392 W“. In Feld 1 zieht Jannis am Seil, in Feld 2 Nour, beide vierzehn, in Arbeitskleidung. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kiste je Feld, keine Uhr als Zusatzbild, keine PS- oder kW-Angaben. Unter den beiden Feldern eine gemeinsame große Zeile: „halbe Zeit – doppelte Leistung, gleiche Arbeit“ und darunter kleiner der Hinweis „das W hinter der Zahl heißt Watt“. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ "lehrer": {
+  "id": "fe6",
+  "lernziel": "Die Schülerinnen und Schüler lesen Arbeit W und Leistung P an der Statuszeile ab und bestimmen die Leistung mit P = W / t. Sie erklären an den belegten Werten 1962 J / 196 W (10 s) und 1962 J / 392 W (5 s): Bei halber Zeit bleibt die Arbeit gleich, die Leistung wird doppelt so groß. Die Arbeit wird abgelesen, nicht mit m · g · h gerechnet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: eine Kiste am Seil zweimal gleich hoch ziehen, einmal langsam und einmal schnell, mit Stoppuhr.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils nur bis zum Leistungswert. Karte 1 (Ausgangszustand, 50 kg · 4 m · 10 s): „Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W“. Karte 2 (nach „÷2 Zeit“): „Arbeit W = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W“. Karte 3 (20 kg · 4 m · 10 s): „Arbeit W = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W“. Dazu eine vierte Karte mit dem Bildtext der Simulation: „Arbeit W = 1962 J (ändert sich durch die Zeit NICHT)“ und „halbe Zeit → doppelte Leistung, gleiche Arbeit“. Der Rest der Statuszeile („das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf“) gehört NICHT auf die Karten; kW und PS kommen im Schülerteil nicht vor. Statt der Animation eine Kiste zweimal gleich hoch ziehen und nur die Zeit stoppen.",
+  "merksatz": [
+   "W / t",
+   "doppelt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nach ÷2 Zeit",
+    "1962 J",
+    "392 W"
+   ],
+   [
+    "20 kg in 10 s",
+    "785 J",
+    "79 W"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die beiden Statuszeilen stehen direkt nebeneinander: bei 10 s „Arbeit W = 1962 J … Leistung P = 196 W“, nach „÷2 Zeit“ bei 5 s „Arbeit W = 1962 J … Leistung P = 392 W“. Die Arbeit ist in beiden Zeilen dieselbe Zahl, nur die Leistung verdoppelt sich. Der Bildtext sagt es wörtlich: „Arbeit W = 1962 J (ändert sich durch die Zeit NICHT)“.",
+   "typische_fehler": [
+    "Antwort 2 wird gewählt: „schneller = mehr Arbeit“ – genau die Vermutung 1 auf Seite A. Gegenfrage: Welche Zahl steht in beiden Zeilen an derselben Stelle?",
+    "Antwort 3 wird gewählt, weil die Kiste ja gleich hoch kommt. Das stimmt für die Arbeit, nicht für die Leistung.",
+    "Die 392 wird für die Arbeit gehalten. Am Bildschirm ist 392 viermal belegt: 392 J bei 10 kg, 392 W bei 50 kg in 5 s, 392 W bei 100 kg in 10 s und 392 W bei 50 kg mit h = 8 m. Deshalb immer die Einheit mitlesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "392 W",
+    "79 W"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird „78,5 W“ geschrieben. Richtig gerechnet, aber die Anzeige rundet auf 79 W – beides wird gewertet, verlangt ist der Wert vom Bildschirm (Hilfe 2).",
+    "Die Einheit fehlt oder es wird „392 J“ geschrieben: Watt-W und Arbeits-W verwechselt.",
+    "1962 / 5 wird als 392,4 notiert. Der Bildschirm zeigt 392 W; die Simulation rundet selbst."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herr Kessler hat recht, weil die Arbeit nur von der Kiste und von der Höhe abhängt. Beide Kisten kommen gleich hoch, also ist die Arbeit gleich: 1962 J. Verschieden ist nur die Zeit. Nour war schneller, darum ist ihre Leistung doppelt so groß: 392 W statt 196 W.",
+   "alternativen": [
+    "Bezug auf die eigenen Messwerte: „In beiden Zeilen steht 1962 J, aber einmal 196 W und einmal 392 W.“ – reicht für die volle Wertung.",
+    "Bezug auf den Bildtext: „Die Arbeit ändert sich durch die Zeit nicht.“",
+    "Nour bekommt zusätzlich recht: Sie hat sich mehr angestrengt, weil ihre Leistung doppelt so groß war. Das ist kein Widerspruch – beide Aussagen dürfen im selben Text stehen."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne die Zahlen der eigenen Tabelle zu nennen. Nachfragen: Welche Zahl steht bei dir zweimal?",
+    "„Nour hat mehr Arbeit gemacht, weil sie außer Puste war.“ Anstrengung wird mit Arbeit gleichgesetzt.",
+    "Arbeit und Leistung werden im Antwortsatz vertauscht („die Leistung bleibt gleich, die Arbeit wird doppelt“)."
+   ]
+  },
+  "hilfe3_wort": "Leistung (auch richtig: Leistung P)",
+  "schwache": [
+   "Die Reihenfolge ist zwingend: erst „zurücksetzen“, dann „÷2 Zeit“, dann wieder „zurücksetzen“ und erst danach 20 kg einstellen. Wer die 20 kg nach dem Halbieren einstellt, hat noch 5 s stehen und liest 157 W statt der 79 W der Tabelle ab (nachgemessen). Die drei Schritte als Merkzettel auf den Tisch legen.",
+   "Für die 5 s den Knopf „÷2 Zeit“ nehmen, nicht den Zeitregler: Der Knopf trifft die 5 s in einem Griff, am Regler landen Lernende leicht auf 4 s (491 W) oder 6 s (327 W), und dann passt Zeile 2 nicht. Wer den Regler genau auf 5 s stellt, bekommt dieselben Zahlen wie über den Knopf (1962 J / 392 W, nachgemessen) – das ist kein Fehler, nur der längere Weg.",
+   "Die Statuszeile gemeinsam laut lesen und mit dem Finger nach „= 196 W“ stoppen. Der Rest der Zeile (kW, PS, „ungefähr wie: Radfahrer bergauf“) wird abgedeckt.",
+   "Der Knopf „Hochziehen“ ändert keine Zahl – die Werte stehen schon vorher da. Das vorher sagen, sonst suchen Lernende ihren Fehler.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. In „392 W“ und „79 W“ das W dick unterstreichen und laut „Watt“ dazusagen; in „W / t“ meint dasselbe W die Arbeit. Ein J steht in der Wortbank nicht – die Joule-Werte kommen aus der Tabelle."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 100 kg bei 4 m und 10 s ein. Der Bildschirm zeigt 3924 J und 392 W. Warum steht dort dieselbe Leistung wie bei 50 kg in 5 s – obwohl die Arbeit doppelt so groß ist?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Leistung P = W / t, Einheit Watt. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: die Tabelle trägt E5, Aufgabe 2 trägt UF2, Aufgabe 3 trägt B2 (Nour gegen Herrn Kessler abwägen), der Treppen-Auftrag trägt E5 im Alltag. Fachwortzählung: neu ist genau EIN Wort, „Leistung P in Watt (W)“ (Zählregel 1). „Arbeit W in Joule (J)“ zählt bei fe1 und wird hier nur wiederholt (Zählregel 4). „Zeit t in Sekunden (s)“ wird bewusst NICHT als Größe eingeführt: t erscheint nur in der Formel P = W / t, genau so, wie die Hinweiszeile des Bildschirms sie schreibt; Sekunden werden abgelesen, nie umgerechnet. Der Seitenplan weist fe6 nur das eine Wort zu. Doppeldeutiges W: Auf EINER Statuszeile steht W als Formelzeichen der Arbeit („Arbeit W = 1962 J“) und als Einheitenzeichen Watt („Leistung P = 196 W“). Deshalb schreiben Spaltenkopf, Merksatz und Alltagsteil „Watt“ aus, das Zeichen W bleibt der Arbeit vorbehalten, und der Bildauftrag trägt den Hinweis „das W hinter der Zahl heißt Watt“ einmal ins Bild. Datenlage: Belegt sind die Zustände 50 kg · 4 m · 10 s = 1962 J / 196 W, derselbe Zustand nach „÷2 Zeit“ = 1962 J / 392 W und 20 kg · 4 m · 10 s = 785 J / 79 W. Der Zustand „50 kg, 4 m, 5 s“ steht im Dump nur hinter dem Knopf „÷2 Zeit“: simfakten drückt jedes Element nur einmal, und beim Zeitregler stand die Höhe schon auf 5 m – alle Zeitregler-Zeilen des Dumps tragen deshalb 2453 J und dürfen nicht gedruckt werden. Mit simcheck/werte.js nachgemessen: Bei h = 4 m liefert der Zeitregler auf 5 s dieselbe Zeile wie der Knopf (1962 J / 392 W); die drei Regler sind voneinander unabhängig, keiner verstellt einen anderen. Schritt 2 verlangt trotzdem den Knopf, weil er die 5 s in einem Griff trifft – am Regler liegen 4 s (491 W) und 6 s (327 W) daneben. Für die dritte Zeile stehen bewusst 20 kg (785 J / 79 W) und nicht die 10 kg des Regelhefts: 392 käme sonst in zwei Rollen auf derselben Seite vor (392 J bei 10 kg gegen 392 W bei 50 kg in 5 s). Die Zahl 392 ist am Bildschirm viermal belegt, dreimal davon als Watt: 50 kg in 5 s, 100 kg in 10 s und 50 kg bei h = 8 m. Die Anzeige rundet selbst (1962 : 10 = 196,2 → 196 W; 1962 : 5 = 392,4 → 392 W; 785 : 10 = 78,5 → 79 W); das Heft verlangt nie 196,2, Hilfe 2 zeigt das Runden an 78,5 → 79 W. „Hochziehen“ ändert die Statuszeile nicht – Ausgangszustand und Zustand nach dem Druck sind wortgleich; Forschen-Schritt 1 sagt das ausdrücklich. Die Uhr („0,0 s von 10 s“) wird nicht abgelesen, ihr Endwert ist nicht nachgemessen. Der Ortsfaktor 9,81 N/kg steht mitten in der Statuszeile, gehört aber zu fe1/fk5: Hilfe 1 sagt einmal, dass die Zahl schon dasteht, gerechnet wird damit nicht. Der Band trägt g mit zwei Zahlen (9,8 in masse-gewicht und ortsfaktor, 9,81 hier und in den Druck-Simulationen); die Förderseiten lesen nur ab, für die Lernenden entsteht der Widerspruch nicht. kW und PS bleiben ganz draußen – zusätzlicher Grund: Bildtext und Statuszeile widersprechen sich dort (0,05 PS gegen 0,053 PS bei 10 kg). Knopfnamen im Heft nur als Wortmarke ohne Zierzeichen: „Hochziehen“ und „zurücksetzen“ ohne ihre Symbole; „÷2 Zeit“ steht mit dem Divisionszeichen, das SourceSans3 kennt. Die Reglerbeschriftung „tton> (Rundpfeil) zurücksetzen Masse m: 50 kg“ im Dump ist ein Ausleseartefakt (der Rundpfeil des Knopfes fehlt in SourceSans3 und wird hier deshalb nur benannt, nicht gesetzt), am Bildschirm steht „Masse m: 50 kg“ – im Heft nur „Masse m“ beziehungsweise „20 kg“. Aus dem Regelheft gestrichen: kW und PS, der Vergleich „ungefähr wie: Radfahrer bergauf“, der Vierzeiler und die 100-kg-Rechnung (AFB III); Letztere steht als freiwillige Zusatzaufgabe oben."
+ }
+}

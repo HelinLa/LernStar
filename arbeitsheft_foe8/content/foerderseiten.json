@@ -1,0 +1,2472 @@
+[
+ {
+  "id": "fs1",
+  "quelle": "st1",
+  "sim": "ladung",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Das Knistern im Pullover",
+  "name": "Wie wirken Ladungen aufeinander?",
+  "fachwoerter_neu": [
+   "Ladung"
+  ],
+  "alltag": [
+   "Nour zieht in der kalten Werkstatt ihren Pullover aus.",
+   "Es knistert laut, und ihre Haare stehen vom Kopf ab.",
+   "Beim Reiben bekommen Pullover und Haare eine Ladung.",
+   "Es gibt zwei Ladungen: positive (+) und negative (−)."
+  ],
+  "frage": "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
+  "predict": [
+   "Gleiche Ladung stößt ab. Ungleiche Ladung zieht an.",
+   "Zwei geladene Kugeln ziehen sich immer an."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Öffne die Simulation und lies die Statuszeile.",
+   "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.",
+   "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.",
+   "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Einstellung",
+   "Welche Ladung haben die zwei Kugeln?",
+   "Was machen die Kugeln?"
+  ],
+  "tabRows": [
+   [
+    "am Anfang",
+    "ungleiche Ladung",
+    "Sie ziehen sich an."
+   ],
+   [
+    "beide Kugeln − negativ",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Kugeln mit gleicher Ladung",
+    "loesung": "stoßen",
+    "post": "sich ab."
+   },
+   {
+    "pre": "Zwei Kugeln mit ungleicher Ladung",
+    "loesung": "ziehen",
+    "post": "sich an."
+   }
+  ],
+  "wortbank": [
+   "stoßen",
+   "ziehen",
+   "Ladung",
+   "ungleiche"
+  ],
+  "beispiel": {
+   "frage": "Eine Kugel ist positiv, die andere ist negativ. Was passiert?",
+   "antwort": "Die zwei Kugeln haben eine ungleiche Ladung. Darum ziehen sie sich an. In der Statuszeile steht: Sie ziehen sich an."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Beide Kugeln sind negativ. Was zeigt die Simulation?",
+    "optionen": [
+     "Die Kugeln stoßen sich ab.",
+     "Die Kugeln ziehen sich an.",
+     "Die Kugeln verlieren ihre Ladung."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim Reiben bekommt der Pullover eine",
+      "loesung": "Ladung",
+      "post": "."
+     },
+     {
+      "pre": "Pullover und Haare ziehen sich an. Sie haben",
+      "loesung": "ungleiche",
+      "post": "Ladung."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ich lade beide Kugeln negativ. Dann ziehen sie sich stark an.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Beide Kugeln haben dann …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2.",
+   "h2": "Beginne so: Beide Kugeln haben dann die gleiche Ladung. Sieh in deiner Tabelle nach, was dann passiert.",
+   "h3": "Fast fertige Antwort: Beide Kugeln sind negativ. Sie haben also die ___ Ladung. Darum stoßen sie sich ab."
+  },
+  "selbstcheck": [
+   "Ich weiß, dass es positive und negative Ladung gibt.",
+   "Ich kann sagen, was zwei Kugeln mit gleicher Ladung machen.",
+   "Ich kann erklären, warum sich geladene Kugeln nicht immer anziehen."
+  ],
+  "zuhause": "Reibe einen Luftballon an deinen Haaren. Halte ihn danach neben deine Haare. Schreibe auf, was du siehst.",
+  "bildauftrag": "[BILD: eine breite Zeichnung mit zwei gleich großen Feldern, getrennt durch eine dünne senkrechte Linie; links zwei Kugeln, die linke mit großem +, die rechte mit großem −, zwei kurze Pfeile zeigen aufeinander zu, darunter groß „ungleiche Ladung – sie ziehen sich an“; rechts zwei Kugeln, beide mit großem −, zwei kurze Pfeile zeigen voneinander weg, darunter groß „gleiche Ladung – sie stoßen sich ab“; alle Kugeln gleich groß, Zeichen sehr groß und kontrastreich, ruhiger heller Hintergrund, keine weiteren Gegenstände, keine Deko, keine Funken und keine Blitze]"
+ },
+ {
+  "id": "fs2",
+  "quelle": "st2",
+  "sim": "ladungen-kraft",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zwei geladene Kugeln",
+  "name": "Was macht die Kraft größer?",
+  "fachwoerter_neu": [
+   "Kraft F"
+  ],
+  "alltag": [
+   "An zwei dünnen Fäden hängen zwei kleine Kugeln.",
+   "Jannis lädt beide Kugeln auf und schiebt sie langsam auseinander.",
+   "Zwischen den Kugeln zieht oder schiebt etwas – das ist die Kraft F.",
+   "Am Bildschirm steht die Kraft F so: 249,7 µN."
+  ],
+  "frage": "Was macht die Kraft F größer und was macht sie kleiner?",
+  "predict": [
+   "Doppelter Abstand macht die Kraft F halb so groß.",
+   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Die kleine grüne Kugel brauchst du hier nicht.",
+   "Drücke „Abstand verdoppeln“. Trage die Kraft F in Zeile 2 ein. Der Abstand bleibt jetzt 12,0 cm.",
+   "Stelle „Ladung je Kugel“ auf 4 nC. Trage die Kraft F in Zeile 3 ein.",
+   "Stelle „Ladung je Kugel“ auf 18 nC. Trage die Kraft F in Zeile 4 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Werte als Karten.",
+  "tabCols": [
+   "Ladung je Kugel",
+   "Abstand",
+   "Wie groß ist die Kraft F?"
+  ],
+  "tabRows": [
+   [
+    "10 nC",
+    "6,0 cm",
+    "249,7 µN"
+   ],
+   [
+    "10 nC",
+    "12,0 cm",
+    ""
+   ],
+   [
+    "4 nC",
+    "12,0 cm",
+    ""
+   ],
+   [
+    "18 nC",
+    "12,0 cm",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mehr Ladung auf den Kugeln macht die Kraft F",
+    "loesung": "größer",
+    "post": "."
+   },
+   {
+    "pre": "Doppelter Abstand macht die Kraft F nicht halb, sondern nur",
+    "loesung": "ein Viertel",
+    "post": "so groß."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "ein Viertel",
+   "kleiner",
+   "62,4 µN"
+  ],
+  "beispiel": {
+   "frage": "Der Abstand geht von 6,0 cm auf 12,0 cm. Was passiert mit der Kraft F?",
+   "antwort": "Vorher zeigt die Anzeige 249,7 µN. Danach zeigt sie 62,4 µN. Der Abstand ist doppelt so groß. Die Kraft F ist nur noch ein Viertel so groß."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „Abstand verdoppeln“. Was zeigt die Anzeige dann?",
+    "optionen": [
+     "Die Kraft F bleibt bei 249,7 µN.",
+     "Die Kraft F sinkt auf 62,4 µN.",
+     "Die Kraft F wird halb so groß."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 4 nC ist die Kraft F",
+      "loesung": "kleiner",
+      "post": "als bei 18 nC."
+     },
+     {
+      "pre": "Bei 10 nC und 12,0 cm zeigt die Anzeige nur noch",
+      "loesung": "62,4 µN",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Doppelter Abstand heißt halbe Kraft.“ Erkläre mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Zahlen stehen in deiner Tabelle.",
+   "h2": "Beginne so: Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm sind es …",
+   "h3": "Fast fertige Antwort: Der Abstand ist doppelt so groß. Die Kraft F ist aber nicht halb so groß. Von 249,7 µN bleiben nur 62,4 µN übrig. Ergänze: Das ist ___ der Kraft F."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F am Bildschirm ablesen.",
+   "Ich kann sagen, was mehr Ladung mit der Kraft F macht.",
+   "Ich weiß, dass doppelter Abstand nur ein Viertel der Kraft F lässt."
+  ],
+  "zuhause": "Reibe zwei Trinkhalme kräftig an deinem Pullover. Hänge sie dicht nebeneinander an dünnen Fäden auf. Schiebe sie langsam weiter auseinander. Schreibe auf, wann sie sich stärker abstoßen.",
+  "bildauftrag": "[BILD: derselbe Aufbau zweimal untereinander, gleich groß und gleich hell: oben hängen zwei Kugeln an dünnen Fäden dicht nebeneinander, die linke groß mit „+“, die rechte groß mit „–“ beschriftet, zwei kräftige Pfeile zeigen aufeinander zu, darunter die Beschriftungen „6,0 cm“ und „F = 249,7 µN“; unten dieselben zwei Kugeln doppelt so weit auseinander, die Pfeile deutlich kürzer und dünner, darunter „12,0 cm“ und „F = 62,4 µN“; große Beschriftungen, keine weiteren Kugeln, keine Feldlinien, keine grüne Probeladung, keine Formel; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fs3",
+  "quelle": "st3",
+  "sim": "spannung",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Die Zahl mit dem V auf der Zelle",
+  "name": "Was sagt die Zahl mit dem V?",
+  "fachwoerter_neu": [
+   "Spannung U in Volt (V)"
+  ],
+  "alltag": [
+   "In der Werkstatt steht eine Kiste voller Batteriezellen.",
+   "Auf jeder Zelle steht 1,5 V.",
+   "Diese Zahl ist die Spannung U. Man misst sie in Volt (V).",
+   "Ein Voltmeter ist ein Messgerät für die Spannung."
+  ],
+  "frage": "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
+  "predict": [
+   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller.",
+   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.",
+   "Lies in der Statuszeile, wie hell die Lampe leuchtet.",
+   "Drücke „2 Zellen (3 V)“ und trage die zweite Zeile ein.",
+   "Drücke „3 Zellen (4,5 V)“ und trage die dritte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zahl der Zellen",
+   "Welche Spannung U steht am Voltmeter?",
+   "Wie hell ist die Lampe?"
+  ],
+  "tabRows": [
+   [
+    "1 Zelle",
+    "1,5 V",
+    "schwach"
+   ],
+   [
+    "2 Zellen",
+    "",
+    ""
+   ],
+   [
+    "3 Zellen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Spannung U misst man in",
+    "loesung": "Volt",
+    "post": "(V)."
+   },
+   {
+    "pre": "Mehr Zellen geben mehr Spannung. Die Lampe leuchtet dann",
+    "loesung": "heller",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Volt",
+   "heller",
+   "1,5 V",
+   "4,5 V"
+  ],
+  "beispiel": {
+   "frage": "Nour setzt zwei Zellen ein. Was zeigt das Voltmeter?",
+   "antwort": "Jede Zelle gibt 1,5 V. Zwei Zellen geben zusammen 3 V, denn 1,5 V + 1,5 V = 3 V. Am Voltmeter steht U = 3 V. Die Lampe leuchtet heller als mit einer Zelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei drei Zellen?",
+    "optionen": [
+     "Am Voltmeter steht 1,5 V. Die Lampe bleibt gleich hell.",
+     "Am Voltmeter steht 3 V. Die Lampe wird dunkler.",
+     "Am Voltmeter steht 4,5 V. Die Lampe leuchtet am hellsten."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Zelle gibt",
+      "loesung": "1,5 V",
+      "post": ". Zwei Zellen geben zusammen 3 V."
+     },
+     {
+      "pre": "Drei Zellen geben zusammen",
+      "loesung": "4,5 V",
+      "post": ". Das ist die größte Spannung hier."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Zwei Zellen halten nur länger. Die Lampe bleibt gleich hell.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Mit zwei Zellen zeigt das Voltmeter …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Zwei davon sind Zahlen mit V.",
+   "h2": "Beginne so: Mit zwei Zellen zeigt das Voltmeter 3 V. Die Lampe …",
+   "h3": "Fast fertige Antwort: Eine Zelle gibt 1,5 V. Zwei Zellen geben 3 V. Mehr Volt heißt: Die Lampe leuchtet ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Spannung U am Voltmeter ablesen.",
+   "Ich weiß, dass man die Spannung U in Volt (V) misst.",
+   "Ich kann erklären, warum mehr Zellen die Lampe heller machen."
+  ],
+  "zuhause": "Suche zu Hause drei Batterien. Schreibe auf, wie viel Volt auf jeder steht. Kreise die größte Zahl ein.",
+  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, gleich groß und gleich gezeichnet; links eine Batteriezelle, in der Mitte zwei, rechts drei; in jedem Kreis eine Lampe und ein rundes Messgerät mit großem V; die Anzeigen lesen von links nach rechts 1,5 V, 3 V und 4,5 V; die Lampe leuchtet von links nach rechts sichtbar stärker; große Beschriftungen „1 Zelle“, „2 Zellen“, „3 Zellen“ unter den Kreisen; heller ruhiger Hintergrund, keine weiteren Bauteile, keine Deko]"
+ },
+ {
+  "id": "fs4",
+  "quelle": "st4",
+  "sim": "stromstaerke",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Wie viel fließt da?",
+  "name": "Wie viel Strom fließt?",
+  "fachwoerter_neu": [
+   "Stromstärke I in Ampere (A)",
+   "Stromkreis (offen und geschlossen)"
+  ],
+  "alltag": [
+   "Über der Werkbank hängt eine Lampe an einer 4,5-V-Batterie.",
+   "Nour drückt den Schalter, und das Licht geht sofort aus.",
+   "Im Stromkreis liegt ein Messgerät für den Strom.",
+   "So ein Messgerät heißt Amperemeter."
+  ],
+  "frage": "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
+  "predict": [
+   "Bei offenem Kreis fließt noch ein kleiner Rest Strom weiter.",
+   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „mittel“ und trage die Stromstärke I in die Tabelle ein.",
+   "Drücke „stark“ und trage die Stromstärke I ein.",
+   "Drücke den Knopf „Schalter: geschlossen“. Damit öffnest du den Kreis.",
+   "Lies die Stromstärke ab und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die Stromstärke I?",
+   "Ist der Kreis offen oder geschlossen?"
+  ],
+  "tabRows": [
+   [
+    "Strom schwach",
+    "0,10 A",
+    "geschlossen"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "stark",
+    "",
+    ""
+   ],
+   [
+    "Schalter: geschlossen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Stromstärke I misst man in",
+    "loesung": "Ampere (A)",
+    "post": "."
+   },
+   {
+    "pre": "Ist der Stromkreis offen, fließt",
+    "loesung": "kein Strom",
+    "post": ", die Lampe bleibt dunkel."
+   }
+  ],
+  "wortbank": [
+   "Ampere (A)",
+   "kein Strom",
+   "0,60 A",
+   "geschlossen"
+  ],
+  "beispiel": {
+   "frage": "Bei welcher Einstellung fließt der meiste Strom?",
+   "antwort": "Bei „stark“ fließt der meiste Strom. Das Amperemeter zeigt dort 0,60 A. Bei „Strom schwach“ sind es nur 0,10 A. 0,60 A ist mehr als 0,10 A."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt das Amperemeter, wenn der Kreis offen ist?",
+    "optionen": [
+     "0 A – es fließt kein Strom.",
+     "0,10 A – es fließt noch ganz wenig Strom.",
+     "0,30 A – so viel wie am Anfang."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei „stark“ zeigt das Amperemeter",
+      "loesung": "0,60 A",
+      "post": "."
+     },
+     {
+      "pre": "Nur wenn der Stromkreis",
+      "loesung": "geschlossen",
+      "post": "ist, fließt Strom durch die Lampe."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der Strom wartet im Kabel, bis der Schalter wieder schließt.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Im offenen Stromkreis …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Im offenen Stromkreis fehlt der Weg für die Ladungen. Darum …",
+   "h3": "Fast fertige Antwort: Im offenen Stromkreis fehlt der Weg. Die Ladungen wandern nicht mehr. Ergänze den letzten Satz: Das Amperemeter zeigt dann ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Stromstärke I am Amperemeter ablesen.",
+   "Ich kann 0,10 A, 0,30 A und 0,60 A der Größe nach ordnen.",
+   "Ich kann erklären, warum im offenen Stromkreis 0 A fließt."
+  ],
+  "zuhause": "Suche zu Hause einen Lichtschalter. Schalte das Licht an und wieder aus. Der Schalter schließt und öffnet den Stromkreis. Schreibe auf, wann die Lampe leuchtet.",
+  "bildauftrag": "[BILD: einfaches Schaltbild in zwei großen Feldern nebeneinander, kräftige Linien, heller ruhiger Hintergrund. Links: geschlossener Stromkreis aus 4,5-V-Batterie, geschlossenem Schalter, Lampe und rundem Messgerät mit großem A; die Lampe leuchtet, am Messgerät steht groß „0,30 A“, darunter die Beschriftung „Kreis geschlossen“. Rechts: derselbe Kreis, aber der Schalter ist deutlich geöffnet und die Lücke im Draht gut sichtbar; die Lampe ist dunkel, am Messgerät steht groß „0 A“, darunter „Kreis offen“. Je Feld nur diese eine Leitungsschleife, keine zusätzlichen Drähte, keine Pfeile ins Leere, keine Deko]"
+ },
+ {
+  "id": "fs5",
+  "quelle": "st5",
+  "sim": "messen",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zwei Messgeräte auf der Werkbank",
+  "name": "Wohin kommt das Messgerät?",
+  "fachwoerter_neu": [
+   "in Reihe",
+   "parallel"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG liegen zwei Messgeräte auf der Werkbank.",
+   "Das eine misst die Stromstärke. Es heißt Amperemeter.",
+   "Das andere misst die Spannung. Es heißt Voltmeter.",
+   "Beide sehen fast gleich aus. Jannis weiß nicht, wohin sie gehören."
+  ],
+  "frage": "Wohin gehört das Amperemeter, wohin das Voltmeter?",
+  "predict": [
+   "Ein Gerät hängt in der Leitung, das andere daneben.",
+   "Beide Messgeräte hängt man einfach in die Leitung."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke den Knopf „Amperemeter“ und lies die Statuszeile.",
+   "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.",
+   "Wähle danach „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.",
+   "Trage in die Tabelle ein, was die Statuszeile meldet."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welches Gerät?",
+   "Wie ist es eingebaut?",
+   "Was meldet die Statuszeile? (kurz)"
+  ],
+  "tabRows": [
+   [
+    "Amperemeter",
+    "in Reihe",
+    "✓ misst 0,3 A"
+   ],
+   [
+    "Voltmeter",
+    "in Reihe",
+    ""
+   ],
+   [
+    "Voltmeter",
+    "parallel",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Amperemeter wird",
+    "loesung": "in Reihe",
+    "post": "in die Leitung eingebaut."
+   },
+   {
+    "pre": "Das Voltmeter schließt man",
+    "loesung": "parallel",
+    "post": "zur Lampe an."
+   }
+  ],
+  "wortbank": [
+   "in Reihe",
+   "parallel",
+   "fließen",
+   "dunkel"
+  ],
+  "beispiel": {
+   "frage": "Warum liegt das Amperemeter in Reihe?",
+   "antwort": "Das Amperemeter misst die Stromstärke. Der ganze Strom muss durch das Gerät hindurch. Darum liegt es in Reihe. Die Statuszeile zeigt ✓ und den Wert 0,3 A."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour will die Spannung an der Lampe messen. Wohin gehört das Voltmeter?",
+    "optionen": [
+     "In Reihe in die Leitung.",
+     "Parallel neben die Lampe.",
+     "Direkt an die Batteriepole."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Strom muss durch das Amperemeter",
+      "loesung": "fließen",
+      "post": "."
+     },
+     {
+      "pre": "Liegt das Voltmeter in der Leitung, bleibt die Lampe",
+      "loesung": "dunkel",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis hängt das Voltmeter in die Leitung. Die Lampe bleibt dunkel. Erkläre seinen Fehler.",
+    "satzstarter": "Das geht nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Das geht nicht, weil in der Leitung fast kein Strom …",
+   "h3": "Fast fertige Antwort: In der Leitung fließt fast kein Strom. Die Lampe bleibt dunkel. Ergänze: Jannis muss das Voltmeter neben die Lampe hängen, also ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, dass das Amperemeter in Reihe liegt.",
+   "Ich weiß, dass das Voltmeter parallel zur Lampe liegt.",
+   "Ich kann erklären, warum die Lampe bei falschem Einbau dunkel bleibt."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte mit einer Angabe in Volt oder Ampere. Ein Ladegerät hilft dir. Schreibe die Angaben auf.",
+  "bildauftrag": "[BILD: zwei große Schaltbilder nebeneinander, klar getrennt; links ein einfacher Stromkreis aus Batterie und Lampe, in der Leitung ein rundes Messgerät mit dem Buchstaben A, darunter groß „in Reihe“; rechts derselbe Stromkreis, daneben ein rundes Messgerät mit dem Buchstaben V, das mit zwei kurzen Kabeln links und rechts an die Lampe geht, darunter groß „parallel“; dicke schwarze Leitungen, nur diese Bauteile, keine weiteren Kabel, keine zweite Lampe; große Beschriftungen „Amperemeter“, „Voltmeter“ und „Lampe“; heller ruhiger Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fs6",
+  "quelle": "st6",
+  "sim": "widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was bremst den Strom?",
+  "name": "Großer Widerstand, kleiner Strom",
+  "fachwoerter_neu": [
+   "Widerstand R in Ohm (Ω)"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG steht eine Kiste mit Bauteilen.",
+   "Nour klemmt drei Bauteile nacheinander an dasselbe Netzteil mit 4,5 Volt.",
+   "Mal zeigt das Amperemeter viel Strom, mal fast keinen.",
+   "Jedes Bauteil bremst den Strom. Diese Bremse heißt Widerstand R."
+  ],
+  "frage": "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
+  "predict": [
+   "Die Spannung bleibt 4,5 Volt. Also bleibt der Strom gleich.",
+   "Ein großer Widerstand bremst stark. Dann fließt weniger Strom."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „kleiner Widerstand“ und lies die Statuszeile.",
+   "Trage Widerstand R und Stromstärke I in die Tabelle ein.",
+   "Drücke „großer Widerstand“ und trage die beiden Werte ein.",
+   "Vergleiche die drei Zeilen: Wo fließt der meiste Strom?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Knopf?",
+   "Widerstand R",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "15 Ω",
+    "0,30 A"
+   ],
+   [
+    "kleiner Widerstand",
+    "",
+    ""
+   ],
+   [
+    "großer Widerstand",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Bauteil bremst den Strom. Das nennt man",
+    "loesung": "Widerstand",
+    "post": ". Die Einheit ist Ohm (Ω)."
+   },
+   {
+    "pre": "Bei 4,5 Volt gilt: großer Widerstand,",
+    "loesung": "kleiner Strom",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Widerstand",
+   "kleiner Strom",
+   "1,50 A",
+   "0,10 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strom, wenn der Widerstand größer wird?",
+   "antwort": "Bei 4,5 Volt und 3 Ω fließen 1,50 A. Bei 45 Ω fließen nur noch 0,10 A. Der Widerstand ist größer, also ist der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim Knopf „großer Widerstand“?",
+    "optionen": [
+     "Der Strom wird größer: 1,50 A.",
+     "Der Strom bleibt gleich: 0,30 A.",
+     "Der Strom wird kleiner: 0,10 A."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knopf „kleiner Widerstand“ zeigt R = 3 Ω. Dort fließen",
+      "loesung": "1,50 A",
+      "post": "."
+     },
+     {
+      "pre": "Beim Knopf „großer Widerstand“ zeigt die Anzeige nur",
+      "loesung": "0,10 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ein großer Widerstand macht den Strom stärker.“ Erkläre Jannis, warum das falsch ist.",
+    "satzstarter": "Ein großer Widerstand bremst …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Schau in der Statuszeile nach. Dort stehen zu jedem Bauteil der Widerstand R und die Stromstärke I.",
+   "h2": "Beginne so: Ein großer Widerstand bremst den Strom stark. Darum fließt …",
+   "h3": "Fast fertige Antwort: Bei 45 Ω fließen nur 0,10 A. Bei 3 Ω fließen 1,50 A. Ein großer Widerstand macht den Strom also nicht stärker, sondern ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile den Widerstand R und die Stromstärke I ablesen.",
+   "Ich weiß, dass man den Widerstand in Ohm (Ω) misst.",
+   "Ich kann erklären: großer Widerstand, kleiner Strom."
+  ],
+  "zuhause": "Suche zu Hause eine Lampe mit Drehregler. So ein Regler heißt Dimmer. Drehe ihn langsam dunkler. Der Regler bremst den Strom immer stärker. Schreibe auf, wie sich das Licht dabei ändert.",
+  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, alle mit demselben Netzteil „4,5 V“ und einem runden Messgerät mit großem „A“; links ein kurzer dicker Draht mit großer Beschriftung „R = 3 Ω“ und der Anzeige „1,50 A“, in der Mitte „R = 15 Ω“ mit „0,30 A“, rechts „R = 45 Ω“ mit „0,10 A“; der Strompfeil im Kreis wird von links nach rechts deutlich dünner; nur diese drei Kreise, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs7",
+  "quelle": "st7",
+  "sim": "draht",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Der lange dünne Draht",
+  "name": "Wovon hängt der Widerstand ab?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "In der Fahrrad-AG liegt eine Kiste voller Drahtrollen.",
+   "Manche Drähte sind kurz und dick. Andere sind lang und dünn.",
+   "Jannis klemmt sie nacheinander an dasselbe Netzteil mit 4,5 Volt.",
+   "Mal leuchtet die Lampe hell, mal schwach. Jeder Draht hat Widerstand."
+  ],
+  "frage": "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
+  "predict": [
+   "Ein langer und dünner Draht bremst stärker. Auch das Material zählt mit.",
+   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „lang“. Trage den Widerstand R und die Stromstärke I ein.",
+   "Drücke „dünn“. Trage beide Werte in die nächste Zeile ein.",
+   "Drücke „Eisen“. Trage beide Werte in die letzte Zeile ein.",
+   "Vergleiche die vier Zeilen: Wo ist der Widerstand am größten?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Welcher Draht?",
+   "Widerstand R",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   [
+    "Kupfer, kurz, dick",
+    "5 Ω",
+    "0,90 A"
+   ],
+   [
+    "Kupfer, lang, dick",
+    "",
+    ""
+   ],
+   [
+    "Kupfer, lang, dünn",
+    "",
+    ""
+   ],
+   [
+    "Eisen, lang, dünn",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langer und dünner Draht hat mehr",
+    "loesung": "Widerstand",
+    "post": "als ein kurzer und dicker."
+   },
+   {
+    "pre": "Auch das Material zählt: Eisen bremst",
+    "loesung": "stärker",
+    "post": "als Kupfer. Länge und Dicke sind dabei gleich."
+   }
+  ],
+  "wortbank": [
+   "Widerstand",
+   "stärker",
+   "60 Ω",
+   "0,07 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert, wenn der kurze Kupfer-Draht länger wird?",
+   "antwort": "Am Anfang steht in der Statuszeile: Kupfer, kurz, dick mit R = 5 Ω und I = 0,90 A. Nach dem Knopf „lang“ steht dort R = 10 Ω und I = 0,45 A. Der Draht ist länger geworden. Also ist der Widerstand größer und der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Statuszeile, wenn du beim langen Kupfer-Draht auf „dünn“ drückst?",
+    "optionen": [
+     "Der Widerstand wird größer: von 10 Ω auf 20 Ω.",
+     "Der Widerstand wird kleiner: von 10 Ω auf 5 Ω.",
+     "Der Widerstand bleibt bei 10 Ω."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "„Kupfer, lang, dünn“ zeigt R = 20 Ω. „Eisen, lang, dünn“ zeigt",
+      "loesung": "60 Ω",
+      "post": "."
+     },
+     {
+      "pre": "Durch den Eisen-Draht fließen bei 4,5 Volt nur",
+      "loesung": "0,07 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis nimmt für die Lampe das längste dünne Drahtstück. Nour sagt: „Nimm lieber ein kurzes dickes Stück.“ Erkläre, warum Nour recht hat.",
+    "satzstarter": "Ein langer und dünner Draht hat …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Knöpfe bleiben eingestellt. Nach „lang“ bleibt der Draht lang. Der Knopf stellt alles zurück auf Kupfer, kurz, dick.",
+   "h2": "Lies die Statuszeile in drei Teilen: erst der Draht, dann R, dann I. Beginne so: Ein langer und dünner Draht hat mehr Widerstand. Darum fließt …",
+   "h3": "Fast fertige Antwort: Bei „Kupfer, lang, dünn“ sind es 20 Ω und 0,23 A. Bei „Kupfer, kurz, dick“ sind es 5 Ω und 0,90 A. Durch den kurzen dicken Draht fließt also ___ Strom."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile den Widerstand R und die Stromstärke I ablesen.",
+   "Ich weiß: länger und dünner heißt mehr Widerstand.",
+   "Ich kann erklären, warum durch einen kurzen dicken Draht mehr Strom fließt."
+  ],
+  "zuhause": "Suche zu Hause zwei Strohhalme: einen kurzen dicken und einen langen dünnen. Trinke Wasser durch beide. Durch welchen geht es leichter? Schreibe es auf. So ähnlich ist es beim Draht.",
+  "bildauftrag": "[BILD: vier einfache Stromkreise nebeneinander, alle mit demselben Netzteil „4,5 V“ und einem Messgerät „A“; von links nach rechts wird der Draht immer länger und dünner: links ein kurzer dicker Kupfer-Draht mit den großen Beschriftungen „R = 5 Ω“ und „0,90 A“, daneben ein langer dicker Kupfer-Draht mit „R = 10 Ω“ und „0,45 A“, daneben ein langer dünner Kupfer-Draht mit „R = 20 Ω“ und „0,23 A“, rechts ein langer dünner Eisen-Draht in anderer Farbe mit „R = 60 Ω“ und „0,07 A“; in jedem Kreis genau ein Strompfeil, der nach rechts hin deutlich dünner wird; keine Lampe, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs8",
+  "quelle": "st8",
+  "sim": "ohm-kennlinie",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was macht doppelte Spannung?",
+  "name": "Doppelte Spannung, doppelter Strom",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "In der Fahrrad-AG hängt ein Bauteil mit 20 Ω am Netzteil.",
+   "Bei 1,5 Volt fließt nur wenig Strom.",
+   "Jannis stellt 3 Volt ein. Das ist doppelt so viel Spannung."
+  ],
+  "frage": "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
+  "predict": [
+   "Der Strom bleibt gleich. Das Bauteil bremst ja immer gleich stark.",
+   "Der Strom wird ungefähr doppelt so groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „20 Ω“ und dann einmal „◀ weniger“. Vergleiche die Statuszeile mit Zeile 1.",
+   "Drücke einmal „mehr ▶“. Trage Spannung U und Stromstärke I in Zeile 2 ein.",
+   "Drücke „10 Ω“. Trage die beiden neuen Werte in Zeile 3 ein.",
+   "Vergleiche Zeile 1 und Zeile 2: Wie ändert sich die Stromstärke?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Widerstand?",
+   "Welche Spannung U?",
+   "Welche Stromstärke I?"
+  ],
+  "tabRows": [
+   [
+    "20 Ω",
+    "1,5 V",
+    "0,07 A"
+   ],
+   [
+    "20 Ω",
+    "",
+    ""
+   ],
+   [
+    "10 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Widerstand bleibt gleich. Doppelte Spannung bedeutet dann",
+    "loesung": "doppelter Strom",
+    "post": "."
+   },
+   {
+    "pre": "Bei 20 Ω und 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen",
+    "loesung": "0,15 A",
+    "post": ". Das ist ungefähr doppelt so viel."
+   }
+  ],
+  "wortbank": [
+   "doppelter Strom",
+   "0,15 A",
+   "0,07 A",
+   "0,30 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strom, wenn die Spannung doppelt so groß wird?",
+   "antwort": "Der Widerstand ist beide Male 20 Ω. Bei 1,5 Volt zeigt die Statuszeile 0,07 A. Bei 3 Volt zeigt sie 0,15 A. Der Strom ist also ungefähr doppelt so groß geworden."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Knopf „20 Ω“ ist gedrückt. Was zeigt die Statuszeile, wenn du von 1,5 Volt auf 3 Volt gehst?",
+    "optionen": [
+     "Die Stromstärke bleibt bei 0,07 A.",
+     "Die Stromstärke steigt von 0,07 A auf 0,15 A.",
+     "Die Stromstärke steigt auf 0,30 A."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knopf „20 Ω“ ist gedrückt. Bei 1,5 Volt zeigt die Statuszeile",
+      "loesung": "0,07 A",
+      "post": "."
+     },
+     {
+      "pre": "Danach drückst du „10 Ω“. Bei 3 Volt zeigt die Statuszeile",
+      "loesung": "0,30 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei 3 Volt fließt genauso viel Strom wie bei 1,5 Volt.“ Erkläre Jannis mit zwei Zahlen aus deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei 1,5 Volt fließen …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahlen musst du nicht rechnen. Sie stehen in der Statuszeile und in deiner Tabelle.",
+   "h2": "Beginne so: Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen …",
+   "h3": "Fast fertige Antwort: Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen 0,15 A. Der Widerstand war beide Male 20 Ω. Der Strom bleibt also nicht gleich, sondern wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile die Spannung U und die Stromstärke I ablesen.",
+   "Ich kann sagen: doppelte Spannung, doppelter Strom.",
+   "Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen."
+  ],
+  "zuhause": "Nimm zu Hause eine Taschenlampe mit Batterien. Sieh dir an, wie hell sie leuchtet. Lege dann eine fast leere Batterie ein. Weniger Spannung heißt weniger Strom. Schreibe auf, wie sich das Licht ändert.",
+  "bildauftrag": "[BILD: zwei einfache Stromkreise nebeneinander, beide mit demselben Bauteil „R = 20 Ω“ und einem Amperemeter; links das Netzteil groß beschriftet „U = 1,5 V“ und die Anzeige „I = 0,07 A“, rechts „U = 3 V“ und „I = 0,15 A“; der Strompfeil im rechten Kreis ist doppelt so dick wie im linken; zwischen den beiden Kreisen ein breiter Pfeil mit der Aufschrift „doppelte Spannung“; nur diese zwei Stromkreise, keine weiteren Bauteile, kein Diagramm, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs9",
+  "quelle": "st9",
+  "sim": "reihe-widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was passiert hintereinander?",
+  "name": "Zwei Widerstände in einer Reihe",
+  "fachwoerter_neu": [
+   "Reihenschaltung",
+   "Gesamtwiderstand"
+  ],
+  "alltag": [
+   "Jannis zieht eine alte Lichterkette aus der Kiste der Fahrrad-AG.",
+   "Alle Lämpchen hängen an einem Kabel, eines hinter dem anderen. So etwas heißt Reihenschaltung.",
+   "Nour dreht das Netzteil auf. Die Kette leuchtet nur schwach.",
+   "Jedes Lämpchen bremst den Strom. Alle Bremsen zusammen heißen Gesamtwiderstand R_ges."
+  ],
+  "frage": "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
+  "predict": [
+   "Der Strom ist an jeder Stelle gleich groß.",
+   "Am zweiten Widerstand kommt weniger Strom an als am ersten."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
+   "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.",
+   "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.",
+   "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie stehen R₁ und R₂?",
+   "Wie groß ist R_ges?",
+   "Wie groß ist der Strom I?"
+  ],
+  "tabRows": [
+   [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "30 Ω",
+    "0,20 A"
+   ],
+   [
+    "R₁ = 20 Ω, R₂ = 20 Ω",
+    "",
+    ""
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 30 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Widerstände liegen hintereinander. Das ist eine",
+    "loesung": "Reihenschaltung",
+    "post": "."
+   },
+   {
+    "pre": "Der",
+    "loesung": "Gesamtwiderstand",
+    "post": "ist so groß wie R₁ + R₂. Der Strom ist überall gleich groß."
+   }
+  ],
+  "wortbank": [
+   "Reihenschaltung",
+   "Gesamtwiderstand",
+   "60 Ω",
+   "0,10 A"
+  ],
+  "beispiel": {
+   "frage": "Wie groß sind R_ges und der Strom I bei R₁ = 30 Ω und R₂ = 20 Ω?",
+   "antwort": "Die Statuszeile zeigt: R_ges = 30 Ω + 20 Ω = 50 Ω. Der Strom ist überall gleich: I = 0,12 A. Bei R_ges = 30 Ω waren es noch 0,20 A. Der Gesamtwiderstand ist größer, also ist der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Statuszeile bei R₁ = 20 Ω und R₂ = 20 Ω?",
+    "optionen": [
+     "R_ges = 0 Ω, denn 20 Ω − 20 Ω = 0 Ω.",
+     "R_ges = 20 Ω. Der Gesamtwiderstand bleibt so groß wie R₁.",
+     "R_ges = 40 Ω, denn 20 Ω + 20 Ω = 40 Ω."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt die Statuszeile R_ges =",
+      "loesung": "60 Ω",
+      "post": "."
+     },
+     {
+      "pre": "In der ganzen Reihe fließt derselbe Strom von",
+      "loesung": "0,10 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Am zweiten Widerstand kommt weniger Strom an.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "In der Reihenschaltung fließt der Strom …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile rechnet dir alles vor: R_ges = 30 Ω + 20 Ω = 50 Ω. Die erste Zahl gehört zu R₁, die zweite zu R₂.",
+   "h2": "Beginne so: In der Reihenschaltung fließt der Strom nur auf einem Weg. Darum …",
+   "h3": "Fast fertige Antwort: Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt die Anzeige 0,10 A. Dieser Wert gilt vor und hinter jedem Widerstand. Am zweiten Widerstand kommt also nicht weniger an, sondern ___ viel."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile R_ges und den Strom I ablesen.",
+   "Ich weiß: In der Reihenschaltung ist R_ges so groß wie R₁ + R₂.",
+   "Ich kann erklären, dass der Strom an jeder Stelle gleich groß ist."
+  ],
+  "zuhause": "Suche zu Hause eine Lichterkette. Schau nach, wie die Lämpchen am Kabel hängen. Hängen sie alle hintereinander in einer Reihe? Zähle die Lämpchen und schreibe die Zahl auf.",
+  "bildauftrag": "[BILD: zwei einfache Stromkreise nebeneinander, jeder ein einziger geschlossener Weg ohne Abzweigung; links die Quelle „6 V“, im Kreis hintereinander „R₁ = 10 Ω“ und „R₂ = 20 Ω“, ein Messgerät „A“ zeigt „0,20 A“, darunter groß „R_ges = 10 + 20 = 30 Ω“; rechts die Quelle „6 V“, hintereinander „R₁ = 30 Ω“ und „R₂ = 30 Ω“, das Messgerät „A“ zeigt „0,10 A“, darunter groß „R_ges = 30 + 30 = 60 Ω“; die Strompfeile sind innerhalb eines Kreises überall gleich dick, im rechten Kreis aber deutlich dünner als im linken; keine Abzweigung, kein zweiter Weg, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs10",
+  "quelle": "st10",
+  "sim": "parallel-widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was passiert nebeneinander?",
+  "name": "Zwei Wege für den Strom",
+  "fachwoerter_neu": [
+   "Parallelschaltung",
+   "Gesamtstrom"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG hängen zwei Lampen nebeneinander am Netzteil.",
+   "Eine Lampe fällt aus. Die andere leuchtet ruhig weiter.",
+   "Jede Lampe hat einen eigenen Weg für den Strom.",
+   "Zwei Bauteile nebeneinander nennt man Parallelschaltung. Der ganze Strom vom Netzteil heißt Gesamtstrom I."
+  ],
+  "frage": "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
+  "predict": [
+   "Der Strom teilt sich auf zwei Wege. Darum wird er insgesamt kleiner.",
+   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
+   "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.",
+   "Drücke bei R₁ auf 30 Ω. Trage die zweite Tabellenzeile ein.",
+   "Drücke danach bei R₂ auf 10 Ω. Ergänze die letzte Tabellenzeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Wie groß sind I₁ und I₂?",
+   "Wie groß ist der Gesamtstrom I?"
+  ],
+  "tabRows": [
+   [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "I₁ = 0,45 A, I₂ = 0,23 A",
+    "0,68 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 20 Ω",
+    "",
+    ""
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 10 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Widerstände nebeneinander sind eine",
+    "loesung": "Parallelschaltung",
+    "post": ". Jeder Weg hat einen eigenen Strom."
+   },
+   {
+    "pre": "Beide Ströme zusammen ergeben den",
+    "loesung": "Gesamtstrom",
+    "post": ": I = I₁ + I₂."
+   }
+  ],
+  "wortbank": [
+   "Parallelschaltung",
+   "Gesamtstrom",
+   "0,23 A",
+   "0,38 A"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Gesamtstrom bei R₁ = 10 Ω und R₂ = 20 Ω?",
+   "antwort": "Gegeben: I₁ = 0,45 A und I₂ = 0,23 A. Gesucht: der Gesamtstrom I. Formel: I = I₁ + I₂. Einsetzen: I = 0,45 A + 0,23 A. Ergebnis: I = 0,68 A. Antwort: Der Gesamtstrom ist 0,68 A. Genau das zeigt auch die Statuszeile."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du stellst R₁ = 30 Ω und R₂ = 30 Ω ein. Die Statuszeile zeigt I₁ = 0,15 A und I₂ = 0,15 A. Welchen Gesamtstrom zeigt sie?",
+    "optionen": [
+     "0,30 A – die zwei Ströme werden addiert.",
+     "0,15 A – im ganzen Kreis fließt überall derselbe Strom.",
+     "0,00 A – ein Strom wird vom anderen abgezogen."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei R₁ = 30 Ω und R₂ = 20 Ω fließen durch R₂",
+      "loesung": "0,23 A",
+      "post": "."
+     },
+     {
+      "pre": "Die Statuszeile meldet dann den Gesamtstrom",
+      "loesung": "0,38 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Wenn der Strom zwei Wege hat, wird er insgesamt weniger.“ Erkläre Jannis mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Der Gesamtstrom ist …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. In der Statuszeile stehen I₁, I₂ und der Gesamtstrom I.",
+   "h2": "Beginne so: Der Gesamtstrom ist größer als der Strom auf einem Weg. In meiner Tabelle steht …",
+   "h3": "Fast fertige Antwort: Durch R₁ fließen 0,15 A, durch R₂ fließen 0,23 A. Zusammen zeigt die Statuszeile 0,38 A. Der Gesamtstrom wird also nicht kleiner, sondern ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann I₁, I₂ und den Gesamtstrom I in der Statuszeile ablesen.",
+   "Ich kann aus zwei Strömen den Gesamtstrom ausrechnen.",
+   "Ich kann mit eigenen Worten sagen, was eine Parallelschaltung ist."
+  ],
+  "zuhause": "Schalte im Zimmer eine Lampe aus. Schreibe auf, welche weiterleuchten.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Stromkreis als Parallelschaltung: unten eine Batterie mit großer Beschriftung „4,5 V“; die Leitung teilt sich links an einem dicken Punkt in zwei nebeneinanderliegende Zweige und trifft rechts wieder zusammen; im oberen Zweig ein Widerstand „R₁ = 10 Ω“ mit der Anzeige „0,45 A“, im unteren ein Widerstand „R₂ = 20 Ω“ mit der Anzeige „0,23 A“; in der Hauptleitung ein rundes Messgerät mit „A“ und der Anzeige „0,68 A“; Strompfeile in Fließrichtung, in den zwei Zweigen dünner, in der Hauptleitung deutlich dicker; unter dem Bild groß die Zeile „I = I₁ + I₂ = 0,68 A“; nur dieser eine Stromkreis, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs11",
+  "quelle": "st11",
+  "sim": "elektronen-drift",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Warum geht das Licht sofort an?",
+  "name": "Langsames Wandern, schnelles Signal",
+  "fachwoerter_neu": [
+   "Elektron"
+  ],
+  "alltag": [
+   "Jannis drückt den Schalter an der Werkbank.",
+   "Die Leselampe leuchtet sofort, obwohl das Kabel drei Meter lang ist.",
+   "Im Kupferdraht sitzen winzige Teilchen. So ein Teilchen heißt Elektron.",
+   "Nour fragt: Wie schnell sind diese Elektronen wirklich?"
+  ],
+  "frage": "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
+  "predict": [
+   "Nein. Die Elektronen wandern langsam. Trotzdem ist das Signal sofort da.",
+   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.",
+   "Lies im Bild die Werte für Zappeln und Signal ab.",
+   "Trage die zwei leeren Zeilen in die Tabelle ein.",
+   "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was steht im Bild?",
+   "Welchen Wert zeigt das Bild?",
+   "Ist das schnell oder langsam?"
+  ],
+  "tabRows": [
+   [
+    "Wandern",
+    "0,0490 mm/s",
+    "langsam"
+   ],
+   [
+    "Zappeln",
+    "",
+    ""
+   ],
+   [
+    "Signal",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Draht ist schon voller Elektronen. Sie wandern sehr",
+    "loesung": "langsam",
+    "post": ": nur 0,0490 mm/s."
+   },
+   {
+    "pre": "Das",
+    "loesung": "Signal",
+    "post": "ist mit 200 000 000 m/s sofort in der ganzen Leitung. Darum leuchtet die Lampe."
+   }
+  ],
+  "wortbank": [
+   "langsam",
+   "Signal",
+   "5,7 Stunden",
+   "1 570 000 m/s"
+  ],
+  "beispiel": {
+   "frage": "Wie schnell wandern die Elektronen beim Knopf „Wasserkocher“?",
+   "antwort": "Ich drücke „Wasserkocher“. Im Bild steht: I = 9,0 A · A = 1,50 mm². Darunter steht: Wandern: 0,4410 mm/s. Bei mehr Strom wandern die Elektronen also schneller. Sie bleiben trotzdem sehr langsam."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was stimmt nach den Werten im Bild?",
+    "optionen": [
+     "Das Signal ist genauso schnell wie das Wandern.",
+     "Das Wandern ist viel langsamer als das Signal.",
+     "Das Zappeln ist langsamer als das Wandern."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Für einen Meter Kabel braucht ein Elektron",
+      "loesung": "5,7 Stunden",
+      "post": "."
+     },
+     {
+      "pre": "Jedes Elektron zappelt mit",
+      "loesung": "1 570 000 m/s",
+      "post": "kreuz und quer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Die Elektronen müssen rasend schnell durch das Kabel fahren.“ Erkläre Nour, warum die Lampe trotzdem sofort leuchtet.",
+    "satzstarter": "Der Draht ist schon voller …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die drei Werte stehen im Bild unter dem Draht: Zappeln, Wandern und Signal. Achte auf mm/s und m/s.",
+   "h2": "Beginne so: Der Draht ist schon voller Elektronen. Das Signal …",
+   "h3": "Fast fertige Antwort: Der Draht ist schon voller Elektronen. Sie wandern nur 0,0490 mm/s. Das Signal ist mit 200 000 000 m/s sofort in der ganzen Leitung. Ergänze den letzten Satz: Kein Elektron muss die drei Meter bis zur Lampe ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann im Bild ablesen, wie schnell die Elektronen wandern.",
+   "Ich weiß, dass die Elektronen schon im Draht sind und nur wandern.",
+   "Ich kann erklären, warum die Lampe sofort leuchtet."
+  ],
+  "zuhause": "Suche einen Gartenschlauch, der schon voll Wasser ist. Drehe den Hahn auf. Vorne kommt sofort Wasser heraus. Es ist aber nicht das Wasser vom Hahn. Schreibe auf, was das mit dem Draht zu tun hat.",
+  "bildauftrag": "[BILD: ein einzelner, stark vergrößerter Kupferdraht waagerecht quer über das Bild, darüber klein die Beschriftung „Kupferdraht, stark vergrößert“; im Draht viele blaue Punkte für die Elektronen, jeder mit einer kurzen blauen Zickzack-Linie für das Zappeln, dazu EIN kräftiger oranger Pfeil, der nur ein winziges Stück nach rechts zeigt, für das Wandern; rechts am Draht eine kleine leuchtende Lampe; keine Pole, kein „+“ und kein „–“ am Draht; drei große Beschriftungen untereinander unter dem Draht: „Zappeln: 1 570 000 m/s“, „Wandern: 0,0490 mm/s“, „Signal: 200 000 000 m/s“; nur dieser eine Draht, keine zweite Leitung, keine Nebenbilder, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Schrift]"
+ },
+ {
+  "id": "fs12",
+  "quelle": "st12",
+  "sim": "blitz",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Blitz und Donner",
+  "name": "Warum kommt der Donner später?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Am Nachmittag zieht ein Gewitter über den Schulhof.",
+   "Nour und Jannis schieben ihre Räder schnell unter das Dach.",
+   "Sie sehen den Blitz sofort.",
+   "Den Donner hören sie erst viele Sekunden später."
+  ],
+  "frage": "Warum hören wir den Donner erst nach dem Blitz?",
+  "predict": [
+   "Der Donner entsteht erst einige Sekunden nach dem Blitz.",
+   "Blitz und Donner starten zusammen. Der Donner ist nur viel langsamer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.",
+   "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.",
+   "Stelle den Regler danach auf 2,0 km und zuletzt auf 3,0 km.",
+   "Trage die Zeit für den Donner und die Zeit für das Licht in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie weit ist das Gewitter weg?",
+   "Wie lange braucht der Donner?",
+   "Wie lange braucht das Licht?"
+  ],
+  "tabRows": [
+   [
+    "1,0 km",
+    "2,92 s",
+    "3 Millionstel Sekunden"
+   ],
+   [
+    "2,0 km",
+    "",
+    ""
+   ],
+   [
+    "3,0 km",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Blitz und Donner starten zur gleichen Zeit. Das Licht ist",
+    "loesung": "sofort",
+    "post": "da."
+   },
+   {
+    "pre": "Der Donner ist viel",
+    "loesung": "langsamer",
+    "post": ". Er läuft mit 343 m/s und kommt darum später an."
+   }
+  ],
+  "wortbank": [
+   "sofort",
+   "langsamer",
+   "5,83 s",
+   "10 Millionstel Sekunden"
+  ],
+  "beispiel": {
+   "frage": "Warum sieht Nour den Blitz zuerst?",
+   "antwort": "Blitz und Donner starten zur gleichen Zeit. Das Licht ist sofort bei Nour. Der Donner ist viel langsamer. Bei 1,0 km braucht er 2,92 s. Darum sieht Nour den Blitz zuerst und hört den Donner später."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei 3,0 km Entfernung?",
+    "optionen": [
+     "Das Licht braucht 8,75 s, der Donner nur 10 Millionstel Sekunden.",
+     "Der Donner und das Licht brauchen beide 8,75 s.",
+     "Der Donner braucht 8,75 s, das Licht nur 10 Millionstel Sekunden."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2,0 km braucht der Donner",
+      "loesung": "5,83 s",
+      "post": "bis zu uns."
+     },
+     {
+      "pre": "Bei 3,0 km braucht der Donner 8,75 s. Das Licht braucht nur",
+      "loesung": "10 Millionstel Sekunden",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der Donner entsteht erst später als der Blitz.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Blitz und Donner starten …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Beide Zeiten hast du vorher schon in die Tabelle geschrieben.",
+   "h2": "Beginne so: Blitz und Donner starten zur gleichen Zeit. Nur der Donner …",
+   "h3": "Fast fertige Antwort: Blitz und Donner starten zur gleichen Zeit. Das Licht ist sofort bei uns. Der Donner braucht bei 3,0 km 8,75 s. Ergänze den letzten Satz: Der Donner entsteht nicht später, er ist nur viel ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, wie lange der Donner bis zu uns braucht.",
+   "Ich weiß, dass Blitz und Donner zur gleichen Zeit starten.",
+   "Ich kann erklären, warum wir den Donner später hören."
+  ],
+  "zuhause": "Zähle beim nächsten Gewitter mit. Bleibe dabei im Haus am Fenster. Zähle die Sekunden vom Blitz bis zum Donner. Schreibe deine Zahl auf.",
+  "bildauftrag": "[BILD: eine einzige breite Szene: links eine dunkle Gewitterwolke mit EINEM Zickzack-Blitz zum Boden, rechts Nour und Jannis mit ihren Rädern unter einem Schuldach; dazwischen eine gerade Strecke mit der großen Maßangabe „3,0 km“; auf dieser Strecke zwei Wege übereinander: oben ein dünner gelber Pfeil, der die beiden schon erreicht hat, beschriftet „Licht: sofort da“, darunter ein breiter blaugrauer Bogen, der erst ein Drittel der Strecke geschafft hat, beschriftet „Donner: 343 m/s“; rechts unten eine große Uhr mit „8,75 s“; nur dieser eine Blitz, keine weiteren Blitze, keine Nebenszene, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fs13",
+  "quelle": "st13+st14",
+  "sim": "stromgefahren",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zu viel an einer Steckdose",
+  "name": "Wann schaltet die Sicherung ab?",
+  "fachwoerter_neu": [
+   "Sicherung"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG gibt es nur eine Steckdose.",
+   "Daran hängen schon ein Ladegerät, ein Lötkolben und ein Radio.",
+   "Jannis will noch einen Heizlüfter dazustecken. Nour zögert.",
+   "Im Stromkasten sitzt ein kleiner Schutzschalter. Er heißt Sicherung."
+  ],
+  "frage": "Wann unterbricht die Sicherung den Stromkreis?",
+  "predict": [
+   "Die Ströme der Geräte addieren sich. Über 16 A schaltet die Sicherung ab.",
+   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Anzeige ab: 1 Gerät zieht 6 A. Die Sicherung erlaubt 16 A.",
+   "Drücke „Gerät anschließen“. Lies den Strom ab und trage Zeile 2 ein.",
+   "Drücke „Gerät anschließen“ noch einmal. Lies die Meldung und trage Zeile 3 ein.",
+   "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Geräte?",
+   "Wie viel Strom zeigt die Anzeige?",
+   "Was macht die Sicherung?"
+  ],
+  "tabRows": [
+   [
+    "1 Gerät",
+    "6 A",
+    "Sie lässt den Strom fließen."
+   ],
+   [
+    "2 Geräte",
+    "",
+    ""
+   ],
+   [
+    "3 Geräte",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Ströme aller Geräte an einer Steckdose",
+    "loesung": "addieren sich",
+    "post": ". Zusammen ergeben sie den Gesamtstrom wie bei der Parallelschaltung."
+   },
+   {
+    "pre": "Wird der Gesamtstrom größer als 16 A, unterbricht die",
+    "loesung": "Sicherung",
+    "post": "den Stromkreis."
+   }
+  ],
+  "wortbank": [
+   "addieren sich",
+   "Sicherung",
+   "18 A",
+   "unterbrochen"
+  ],
+  "beispiel": {
+   "frage": "Vier Geräte hängen an der Steckdose. Wie viel Strom fließt? Was macht die Sicherung?",
+   "antwort": "Ein Gerät zieht 6 A. Vier Geräte ziehen 6 A + 6 A + 6 A + 6 A = 24 A. Das ist mehr als 16 A. Die Anzeige meldet: Die Sicherung hat ausgelöst und den Kreis unterbrochen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Anzeige bei 3 Geräten?",
+    "optionen": [
+     "18 A. Die Sicherung hat ausgelöst und den Kreis unterbrochen.",
+     "18 A. Der Strom fließt weiter, denn jedes Gerät hat seinen eigenen Weg.",
+     "6 A. Jedes Gerät zieht 6 A, mehr wird es nicht."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Drei Geräte ziehen zusammen",
+      "loesung": "18 A",
+      "post": "."
+     },
+     {
+      "pre": "Das ist mehr als 16 A. Darum hat die Sicherung den Kreis",
+      "loesung": "unterbrochen",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum schaltet die Sicherung ab, bevor das Kabel heiß wird?",
+    "satzstarter": "Bei zu vielen Geräten wird der Strom …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Ein Gerät zieht 6 A. Zähle für jedes Gerät 6 A dazu.",
+   "h2": "Beginne so: Bei zu vielen Geräten wird der Strom größer als 16 A. Dann wird das Kabel …",
+   "h3": "Fast fertige Antwort: Ein zu großer Strom macht das Kabel in der Wand heiß. Die Sicherung unterbricht den Stromkreis vorher. Ergänze den letzten Satz: So kann kein ___ entstehen."
+  },
+  "selbstcheck": [
+   "Ich kann die Ströme von mehreren Geräten zusammenzählen.",
+   "Ich kann den Gesamtstrom mit 16 A vergleichen.",
+   "Ich kann erklären, warum die Sicherung den Stromkreis unterbricht."
+  ],
+  "zuhause": "Nicht jedes Gerät zieht gleich viel Strom. Ein Heizlüfter zieht viel Strom, ein Radio wenig. Zähle zu Hause in einem Zimmer die Geräte an einer Steckdose. Schreibe die Zahl auf. Fasse dabei nichts an.",
+  "bildauftrag": "[BILD: drei gleich aufgebaute Bilder nebeneinander, gleich groß und gleich gezeichnet; in jedem Bild eine Steckdose in der Wand, ein Kabel führt nach links zu einem Kasten mit der Sicherung, über allen drei Bildern steht groß „Sicherung: 16 A“; links hängt 1 Gerät an der Steckdose, darunter groß „1 Gerät · 6 A“, die Sicherung ist geschlossen, ein dünner Strompfeil läuft durch das Kabel; in der Mitte 2 Geräte, „2 Geräte · 12 A“, Sicherung geschlossen, deutlich dickerer Strompfeil; rechts 3 Geräte, „3 Geräte · 18 A“, die Sicherung ist sichtbar aufgesprungen, der Strompfeil endet an der Lücke, darunter groß „Sicherung hat ausgelöst“; die Geräte hängen in jedem Bild nebeneinander an derselben Steckdose, jedes mit einem eigenen kurzen Kabel, kein Gerät hinter dem anderen; nur das eine Kabel zur Sicherung führt den ganzen Strom, keine weiteren Leitungen, keine Funken, kein Feuer, keine blanken Kabelenden, niemand fasst etwas an; ruhiger heller Hintergrund, keine Deko, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fb1",
+  "quelle": "be1",
+  "sim": "v-begriff",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Das Wettrennen am Bildschirm",
+  "name": "Wer ist schneller?",
+  "fachwoerter_neu": [
+   "Geschwindigkeit"
+  ],
+  "alltag": [
+   "Nour und Jannis machen in der Fahrrad-AG zwei Räder fertig.",
+   "Jannis sagt: „Mein Rad ist schneller, es ist größer.“",
+   "Wie schnell sich etwas bewegt, nennt man Geschwindigkeit.",
+   "Am Bildschirm lassen die beiden zuerst zwei Autos um die Wette fahren."
+  ],
+  "frage": "Woran erkennst du, welches der zwei Autos schneller ist?",
+  "predict": [
+   "Schneller ist das Auto, das in gleicher Zeit weiter kommt.",
+   "Schneller ist das Auto, das die größere Strecke schafft."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.",
+   "Lies die Statuszeile unter „Wer ist schneller?“. Zeile 1 ist schon ausgefüllt.",
+   "Drücke bei Auto A den Knopf „schnell“ und dann „Rennen starten“. Trage Zeile 2 ein.",
+   "Drücke bei Auto B den Knopf „langsam“ und dann „Rennen starten“. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Tempo bei Auto A",
+   "Tempo bei Auto B",
+   "Wer ist schneller?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "schnell",
+    "Auto B"
+   ],
+   [
+    "schnell",
+    "schnell",
+    ""
+   ],
+   [
+    "schnell",
+    "langsam",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Bei gleicher Zeit ist das Auto mit der größeren Strecke",
+    "loesung": "schneller",
+    "post": "."
+   },
+   {
+    "pre": "Die",
+    "loesung": "Geschwindigkeit",
+    "post": "sagt, wie schnell sich etwas bewegt."
+   }
+  ],
+  "wortbank": [
+   "schneller",
+   "langsamer",
+   "Geschwindigkeit",
+   "weit"
+  ],
+  "beispiel": {
+   "frage": "Auto A steht auf mittel. Auto B steht auf schnell. Wer ist schneller?",
+   "antwort": "Beide Autos fahren gleich lange. Auto B kommt dabei weiter als Auto A. In der Statuszeile steht: Auto B ist schneller. Auto B hat also die größere Geschwindigkeit."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Auto A steht auf schnell. Auto B steht auf mittel. Was meldet die Statuszeile?",
+    "optionen": [
+     "Auto A ist schneller.",
+     "Beide Autos sind gleich schnell.",
+     "Auto B ist schneller."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beide Autos stehen auf schnell. Dann kommen sie gleich",
+      "loesung": "weit",
+      "post": "."
+     },
+     {
+      "pre": "Auto A steht auf schnell. Auto B steht auf langsam. Auto B ist",
+      "loesung": "langsamer",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Mein Rad ist schneller, weil es größer ist.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Die Größe sagt nichts über …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2.",
+   "h2": "Beginne so: Die Größe sagt nichts über die Geschwindigkeit. Sieh danach in Zeile 2 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Die Größe sagt nichts über die Geschwindigkeit. Beide Räder fahren gleich lange. Schneller ist das Rad, das dabei ___ kommt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was das Wort Geschwindigkeit bedeutet.",
+   "Ich kann an der Statuszeile ablesen, welches Auto schneller ist.",
+   "Ich kann erklären, warum die Größe nichts über das Tempo sagt."
+  ],
+  "zuhause": "Geht zu zweit los, wenn eine Person „los“ ruft. Bleibt beide stehen, wenn dieselbe Person „stopp“ ruft. Schreibe auf, wer weiter gekommen ist und damit schneller war.",
+  "bildauftrag": "[BILD: eine breite Zeichnung mit zwei waagerechten Fahrbahnen übereinander; oben ein rotes Auto mit großem A, unten ein blaues Auto mit großem B, beide Autos genau gleich groß; beide starten links an derselben senkrechten Startlinie; das blaue Auto B steht deutlich weiter rechts als das rote Auto A; über beiden Bahnen eine einzelne große Uhr mit der Beschriftung „gleiche Zeit“; unter jeder Bahn ein Maßpfeil von der Startlinie bis zum Auto, beschriftet „zurückgelegte Strecke“; ganz unten groß „Gleiche Zeit, mehr Strecke – schneller“; ruhiger heller Hintergrund, keine Zuschauer, keine Tempostriche, keine Deko]"
+ },
+ {
+  "id": "fb2",
+  "quelle": "be2+be3",
+  "sim": "v-messen",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Messen und ausrechnen",
+  "name": "Wie misst und rechnet man das Tempo?",
+  "fachwoerter_neu": [
+   "Strecke s in Meter (m)",
+   "Zeit t in Sekunden (s)"
+  ],
+  "alltag": [
+   "Nour und Jannis wollen wissen, wie schnell ein Rad fährt.",
+   "Nour misst auf dem Schulhof eine Strecke s in Meter (m) ab.",
+   "Jannis stoppt dazu die Zeit t mit einer Stoppuhr.",
+   "Eine Stoppuhr misst die Zeit t in Sekunden (s)."
+  ],
+  "frage": "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
+  "predict": [
+   "Bei kleinerer Zeit ist die Geschwindigkeit kleiner. Die Strecke bleibt ja gleich.",
+   "Bei kleinerer Zeit ist die Geschwindigkeit größer. Die Strecke bleibt ja gleich."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke den Knopf langsam und danach den Knopf „Messung starten“.",
+   "Vergleiche die Zeit im Bild mit der ersten Zeile der Tabelle.",
+   "Drücke mittel und dann „Messung starten“. Trage die zweite Zeile ein.",
+   "Drücke schnell und dann „Messung starten“. Ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welches Tempo hast du gedrückt?",
+   "Welche Zeit t zeigt die Stoppuhr?",
+   "Welche Geschwindigkeit v steht im Bild?"
+  ],
+  "tabRows": [
+   [
+    "langsam",
+    "10,0 s",
+    "1,0 m/s"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "schnell",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Du misst zuerst die Strecke s. Dann stoppst du die",
+    "loesung": "Zeit t",
+    "post": "."
+   },
+   {
+    "pre": "Die Geschwindigkeit rechnest du so aus: v =",
+    "loesung": "s / t",
+    "post": ". Die Einheit ist Meter pro Sekunde (m/s)."
+   }
+  ],
+  "wortbank": [
+   "Zeit t",
+   "s / t",
+   "2,0 s",
+   "5,0 m/s"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Geschwindigkeit beim Tempo langsam?",
+   "antwort": "Gegeben: Strecke s = 10 m und Zeit t = 10,0 s. Gesucht: die Geschwindigkeit v. Formel: v = s / t. Einsetzen: v = 10 m / 10,0 s. Ergebnis: v = 1,0 m/s. Antwort: Der Wagen fährt 1,0 m/s schnell. Genau das steht auch im Bild."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Auf dem Schulweg fährt ein Bus vorbei. Du willst seine Geschwindigkeit messen. Was musst du messen?",
+    "optionen": [
+     "Nur die Zeit t. Die Strecke muss man nicht messen.",
+     "Erst die Strecke s, dann die Zeit t für diese Strecke.",
+     "Nur die Strecke s. Die Zeit muss man nicht messen."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim Tempo schnell zeigt die Stoppuhr die Zeit t =",
+      "loesung": "2,0 s",
+      "post": "."
+     },
+     {
+      "pre": "Rechne: 10 m geteilt durch 2,0 s =",
+      "loesung": "5,0 m/s",
+      "post": ". Das zeigt auch das Bild."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei der halben Zeit ist die Geschwindigkeit auch halb so groß.“ Erkläre Jannis mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei mittel ist die Zeit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Strecke ist immer s = 10 m.",
+   "h2": "Beginne so: Bei mittel ist die Zeit 5,0 s. Das ist die Hälfte von 10,0 s. Die Geschwindigkeit ist dann …",
+   "h3": "Fast fertige Antwort: Bei langsam misst du 10,0 s und 1,0 m/s. Bei mittel misst du 5,0 s und 2,0 m/s. Die Zeit wird halb so groß. Die Geschwindigkeit wird also ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, welche zwei Größen ich für v messen muss.",
+   "Ich kann die Zeit t und die Geschwindigkeit v im Bild ablesen.",
+   "Ich kann mit v = s / t die Geschwindigkeit ausrechnen."
+  ],
+  "zuhause": "Miss zu Hause eine Strecke s von 10 m ab. Gehe die Strecke normal ab. Jemand stoppt dabei deine Zeit t. Rechne dann v = s / t aus. Schreibe deine Geschwindigkeit in m/s auf.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Messaufbau von der Seite: links eine senkrechte gestrichelte Linie mit der großen Beschriftung „Start“, rechts eine gleiche Linie mit „Ziel“; zwischen beiden Linien unten ein Doppelpfeil mit der großen Beschriftung „s = 10 m“; auf der Strecke ein einfacher grüner Wagen mit zwei Rädern, der nach rechts fährt; über dem Wagen eine große runde Stoppuhr mit der gut lesbaren Anzeige „10,0 s“ und der Beschriftung „Stoppuhr“; ganz oben quer über dem Bild in sehr großer Schrift die Zeile „v = s / t = 10 m / 10,0 s = 1,0 m/s“; nur dieser eine Aufbau, kein zweiter Wagen, keine zusätzlichen Pfeile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fb3",
+  "quelle": "be4",
+  "sim": "v-umrechnung",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "km/h oder m/s?",
+  "name": "Von m/s zu km/h – mal 3,6",
+  "fachwoerter_neu": [
+   "km/h"
+  ],
+  "alltag": [
+   "Jannis fährt in der Fahrrad-AG eine Testrunde.",
+   "Am Lenker sitzt ein Tacho. Er zeigt das Tempo an.",
+   "km/h heißt Kilometer pro Stunde. So steht es auf jedem Schild.",
+   "Der Tacho zeigt 18,0 km/h. In Nours Heft steht 5,0 m/s für dieselbe Runde."
+  ],
+  "frage": "Wie rechnest du einen Wert von m/s in km/h um?",
+  "predict": [
+   "Man rechnet mal 3,6.",
+   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.",
+   "Drücke „Fußgänger“. Vergleiche die Statuszeile mit Zeile 1 der Tabelle.",
+   "Drücke „Radfahrer“. Trage beide Zahlen in Zeile 2 ein.",
+   "Drücke „Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Knopf drückst du?",
+   "Wie viele m/s?",
+   "Wie viele km/h?"
+  ],
+  "tabRows": [
+   [
+    "Fußgänger",
+    "1,5 m/s",
+    "5,4 km/h"
+   ],
+   [
+    "Radfahrer",
+    "",
+    ""
+   ],
+   [
+    "Auto (Stadt)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von m/s zu km/h rechnest du",
+    "loesung": "mal 3,6",
+    "post": "."
+   },
+   {
+    "pre": "Es gilt: 1 m/s sind",
+    "loesung": "3,6 km/h",
+    "post": ". Die Zahl wird größer, das Tempo bleibt gleich."
+   }
+  ],
+  "wortbank": [
+   "mal 3,6",
+   "3,6 km/h",
+   "5,4 km/h",
+   "50,4 km/h"
+  ],
+  "beispiel": {
+   "frage": "Am Anfang zeigt die Simulation 10,0 m/s. Wie viele km/h sind das?",
+   "antwort": "Gegeben: 10,0 m/s. Gesucht: der Wert in km/h. Rechnung: 10,0 · 3,6 = 36,0. Ergebnis: 36,0 km/h. Antwortsatz: 10,0 m/s sind 36,0 km/h. Genau das zeigt auch die Statuszeile."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „Radfahrer“. Welche Rechnung steht in der Statuszeile?",
+    "optionen": [
+     "5,0 m/s · 3,6 = 5,4 km/h",
+     "5,0 m/s · 3,6 = 50,4 km/h",
+     "5,0 m/s · 3,6 = 18,0 km/h"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Fußgänger geht 1,5 m/s. Auf dem Bildschirm steht",
+      "loesung": "5,4 km/h",
+      "post": "."
+     },
+     {
+      "pre": "Das Auto in der Stadt fährt 14,0 m/s. Dort steht",
+      "loesung": "50,4 km/h",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „18,0 km/h ist mehr als 5,0 m/s. Auf dem Tacho bin ich also schneller.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Beide Zahlen gehören zu …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Am Bildschirm steht: 1 m/s = 3,6 km/h. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beide Zahlen gehören zu derselben Runde. 5,0 mal 3,6 sind …",
+   "h3": "Fast fertige Antwort: Beide Zahlen gehören zu derselben Runde. 5,0 m/s sind 18,0 km/h. Nur die Einheit ist anders. Ergänze den letzten Satz: Jannis fährt ___ schnell."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile die Zahl in m/s und die Zahl in km/h ablesen.",
+   "Ich kann einen Wert in m/s mal 3,6 nehmen und bekomme km/h.",
+   "Ich kann erklären, dass sich nur die Einheit ändert und nicht das Tempo."
+  ],
+  "zuhause": "Sieh dir zu Hause einen Tacho an, im Auto oder am Fahrrad. Schreibe die Zahl ab, die er anzeigt. Kreise ein, welche Einheit daneben steht: km/h oder m/s. Auf fast jedem Tacho steht km/h.",
+  "bildauftrag": "[BILD: eine einzige große Umrechnungs-Grafik quer über die Seite: links ein Kästchen mit „5,0 m/s“, in der Mitte ein breiter Pfeil nach rechts mit der Aufschrift „× 3,6“, rechts ein gleich großes Kästchen mit „18,0 km/h“; unter beiden Kästchen dasselbe Fahrrad mit demselben Fahrer, in genau gleicher Größe und gleicher Haltung, damit sichtbar wird: eine Fahrt, zwei Einheiten; darunter mittig die Bildunterschrift „gleich schnell“; nur dieser eine Pfeil, KEIN Rückwärts-Pfeil und kein „÷ 3,6“, keine weiteren Zahlen, kein Tacho-Zifferblatt, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ {
+  "id": "fb4",
+  "quelle": "be5+be7",
+  "sim": "gleichfoermig-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Kreidestriche auf dem Schulhof",
+  "name": "Was sagen die Abstände?",
+  "fachwoerter_neu": [
+   "gleichförmig",
+   "beschleunigt"
+  ],
+  "alltag": [
+   "Jannis fährt in der Fahrrad-AG eine Runde über den Schulhof.",
+   "Nour ruft jede Sekunde „jetzt“ und malt dann einen Kreidestrich.",
+   "So ein Kreidestrich heißt Sekunden-Marke.",
+   "Am Ende liegt eine Reihe von Strichen auf dem Boden."
+  ],
+  "frage": "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
+  "predict": [
+   "Jannis rollt immer weiter. Die Abstände werden nach hinten größer.",
+   "Bleibt das Tempo gleich, sind alle Abstände gleich groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies zuerst Zeile 1 der Tabelle. So startet die Simulation.",
+   "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.",
+   "Lies ab, welche Zahl bei v steht. Sieh dir die Abstände an. Fülle Zeile 2 aus.",
+   "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Welche Zahl steht bei v?",
+   "Wie sind die Abstände?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "70",
+    "gleich groß"
+   ],
+   [
+    "langsam",
+    "",
+    ""
+   ],
+   [
+    "schnell",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Alle Abstände der Sekunden-Marken sind gleich groß. Die Bewegung ist",
+    "loesung": "gleichförmig",
+    "post": "."
+   },
+   {
+    "pre": "Die Abstände werden größer oder kleiner. Die Bewegung ist",
+    "loesung": "beschleunigt",
+    "post": ". Das Tempo ändert sich."
+   }
+  ],
+  "wortbank": [
+   "gleichförmig",
+   "beschleunigt",
+   "schneller",
+   "langsamer"
+  ],
+  "beispiel": {
+   "frage": "Du drückst den Knopf „mittel“ und dann „▶ Fahren“. Was zeigt die Simulation?",
+   "antwort": "Bei v steht die Zahl 70. Die Sekunden-Marken haben alle den gleichen Abstand. Die Bewegung ist also gleichförmig."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du wählst „schnell“ und drückst „▶ Fahren“. Wie liegen die Sekunden-Marken?",
+    "optionen": [
+     "Sie liegen alle gleich weit auseinander.",
+     "Sie liegen immer weiter auseinander.",
+     "Sie liegen immer enger."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Wagen fährt los. Die Marken liegen immer weiter auseinander. Er wird",
+      "loesung": "schneller",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen bremst. Die Marken liegen immer enger. Er wird",
+      "loesung": "langsamer",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei schnell werden die Abstände immer größer.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Bei schnell sind die Abstände größer als bei langsam, aber …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei passen in den Merksatz, zwei in Aufgabe 2.",
+   "h2": "Beginne so: Bei schnell sind die Abstände größer als bei langsam. Sieh dann in Zeile 3 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Bei schnell fährt der Wagen die ganze Zeit gleich schnell. Alle Abstände sind größer als bei langsam. Aber in einer Fahrt bleiben alle Abstände ___ groß."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, welche Zahl in der Simulation bei v steht.",
+   "Ich kann an den Abständen der Marken erkennen, ob das Tempo gleich bleibt.",
+   "Ich kann sagen, was gleichförmig und was beschleunigt bedeutet."
+  ],
+  "zuhause": "Zähle beim Gehen leise die Sekunden mit. Lege bei jeder Sekunde einen kleinen Stein auf den Weg. Gehe einmal gleich schnell und einmal immer schneller. Vergleiche die Abstände der Steine.",
+  "bildauftrag": "[BILD: drei waagerechte Fahrbahnen untereinander, alle gleich lang und gleich breit; auf jeder Bahn derselbe kleine Wagen, immer am rechten Ende; hinter jedem Wagen fünf senkrechte Kreidestriche auf der Bahn; obere Bahn: die fünf Striche haben genau gleiche Abstände, Beschriftung „gleich groß – gleichförmig“; mittlere Bahn: die Striche liegen von links nach rechts immer weiter auseinander, Beschriftung „werden größer – wird schneller“; untere Bahn: die Striche rücken von links nach rechts immer enger zusammen, Beschriftung „werden enger – wird langsamer“; an einem einzelnen Strich der oberen Bahn ein dicker Pfeil mit dem großen Wort „Sekunden-Marke“; zwischen je zwei Strichen ein kurzer Maßpfeil; ruhiger heller Hintergrund, keine Zuschauer, keine Tempostriche, keine Zahlen, keine Deko]"
+ },
+ {
+  "id": "fb5",
+  "quelle": "be6",
+  "sim": "weg-zeit-diagramm",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Linien an der Werkstattwand",
+  "name": "Was verrät die Linie im Weg-Zeit-Bild?",
+  "fachwoerter_neu": [
+   "Weg-Zeit-Diagramm"
+  ],
+  "alltag": [
+   "In der Werkstatt hängt ein großes Blatt Papier an der Wand.",
+   "Nour zeichnet darauf jede Messfahrt als Linie.",
+   "So ein Bild heißt Weg-Zeit-Diagramm.",
+   "Jannis sieht nur Striche und fragt: „Was soll man daran erkennen?“"
+  ],
+  "frage": "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
+  "predict": [
+   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß.",
+   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „schnell“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.",
+   "Lies die Statuszeile und trage Zeile 2 in die Tabelle ein.",
+   "Drücke „mit Pause“ und dann „▶ Fahren“. Trage danach Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Fahrt?",
+   "Wie sieht die Linie aus?",
+   "Was macht der Wagen?"
+  ],
+  "tabRows": [
+   [
+    "schnell",
+    "steil",
+    "Er fährt schnell."
+   ],
+   [
+    "langsam",
+    "",
+    ""
+   ],
+   [
+    "mit Pause",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Weg-Zeit-Diagramm zeigt eine steile Linie eine schnelle Fahrt. Eine",
+    "loesung": "flache",
+    "post": "Linie zeigt eine langsame Fahrt."
+   },
+   {
+    "pre": "Eine waagerechte Linie zeigt: Der Wagen",
+    "loesung": "steht still",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "flache",
+   "steht still",
+   "schneller",
+   "waagerecht"
+  ],
+  "beispiel": {
+   "frage": "Du drückst „schnell“ und dann „▶ Fahren“. Was zeigt die Simulation?",
+   "antwort": "Die Linie steigt steil nach oben. In der Statuszeile steht: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg. In gleicher Zeit ist der Weg also groß. Der Wagen fährt schnell."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Zwei Wagen fahren gleich lange. Die Linie von Wagen A ist flach. Die Linie von Wagen B ist steil. Wer ist schneller?",
+    "optionen": [
+     "Wagen A ist schneller.",
+     "Wagen B ist schneller.",
+     "Beide sind gleich schnell."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nours Linie ist steil, die Linie von Jannis ist flach. Nour ist",
+      "loesung": "schneller",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen hält am Tor an. Seine Linie ist dort",
+      "loesung": "waagerecht",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Linie ist waagerecht. Also bleibt die Zeit stehen.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Die Zeit läuft weiter, aber …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Die Zeit läuft weiter, aber der Weg wird nicht länger. Sieh danach in Zeile 3 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Die Zeit läuft weiter. Der Weg wird nicht länger. Deshalb bleibt die Linie waagerecht. Ergänze den letzten Satz: Der Wagen ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, was ein Weg-Zeit-Diagramm zeigt.",
+   "Ich kann an der Linie ablesen, ob der Wagen schnell oder langsam fährt.",
+   "Ich kann erklären, was eine waagerechte Linie bedeutet."
+  ],
+  "zuhause": "Zeichne deinen Schulweg als Weg-Zeit-Diagramm. Steil heißt schnell. Flach heißt langsam. Waagerecht heißt: Du wartest an der Ampel.",
+  "bildauftrag": "[BILD: EIN einzelnes Weg-Zeit-Diagramm im Querformat, das den ganzen Bildkasten füllt. Der Kasten ist gemessen 306 × 168 pt, gedruckt also nur etwa 52 mm breit und 28 mm hoch – deshalb nur wenige, sehr große Elemente und kein zweites Bild daneben. Dicke Achsen auf ruhigem hellem Grund, unten beschriftet „t (Zeit)“, links beschriftet „s (Weg)“, keine Zahlen und keine Striche an den Achsen. Darin genau drei Linien, die alle im Ursprung starten: eine steile gerade Linie mit der Beschriftung „schnell“, eine flache gerade Linie mit der Beschriftung „langsam“, und eine dritte Linie mit der Beschriftung „mit Pause“, die erst steigt, dann ein Stück waagerecht läuft und danach wieder steigt. Jede Linie in einer anderen Farbe UND einer anderen Strichart (durchgezogen, gestrichelt, gepunktet), damit sie auch in Schwarz-Weiß unterscheidbar sind; die Beschriftung steht jeweils direkt am Ende der Linie und muss bei 52 mm Bildbreite noch lesbar sein. Keine Straße, kein Fahrrad, keine Deko im Bild]"
+ },
+ {
+  "id": "fb6",
+  "quelle": "be8",
+  "sim": "v-zeit-diagramm",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Die Linie steigt und fällt",
+  "name": "Was verrät die Linie im Tempo-Bild?",
+  "fachwoerter_neu": [
+   "Tempo-Zeit-Diagramm"
+  ],
+  "alltag": [
+   "Nour und Jannis fahren auf dem Schulhof eine Messstrecke ab.",
+   "Jannis fährt an, tritt kräftig in die Pedale und bremst dann.",
+   "Am Bildschirm zeichnet eine Linie mit, wie schnell er gerade ist.",
+   "Ein Bild mit so einer Linie heißt Tempo-Zeit-Diagramm."
+  ],
+  "frage": "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
+  "predict": [
+   "Eine waagerechte Linie bedeutet: Der Wagen steht still.",
+   "Eine waagerechte Linie bedeutet: Der Wagen fährt gleich schnell weiter."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Tempo-Zeit-Diagramm.",
+   "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.",
+   "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Linien und die drei Meldungen.",
+  "tabCols": [
+   "Welcher Knopf?",
+   "Wie läuft die Linie?",
+   "Wie ändert sich das Tempo?"
+  ],
+  "tabRows": [
+   [
+    "konstant",
+    "waagerecht",
+    "bleibt gleich"
+   ],
+   [
+    "beschleunigen",
+    "",
+    ""
+   ],
+   [
+    "bremsen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine waagerechte Linie im Tempo-Zeit-Diagramm bedeutet: Der Wagen fährt",
+    "loesung": "gleichförmig",
+    "post": ". Sein Tempo bleibt gleich."
+   },
+   {
+    "pre": "Eine ansteigende Linie zeigt: Der Wagen wird schneller. Bei einer fallenden Linie wird er",
+    "loesung": "langsamer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "gleichförmig",
+   "langsamer",
+   "ansteigende",
+   "fallende"
+  ],
+  "beispiel": {
+   "frage": "Du drückst den Knopf „konstant“ und dann „▶ Fahren“. Wie läuft die Linie?",
+   "antwort": "Die Linie läuft waagerecht. Die Statuszeile meldet: der Wagen fährt gleich schnell (gleichförmig). Sein Tempo bleibt also gleich. Er steht dabei nicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "In einem Tempo-Zeit-Diagramm fällt die Linie. Was macht der Wagen?",
+    "optionen": [
+     "Er fährt gleich schnell.",
+     "Er wird schneller.",
+     "Er wird langsamer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Du drückst den Knopf „beschleunigen“. Am Bildschirm siehst du eine",
+      "loesung": "ansteigende",
+      "post": "Linie."
+     },
+     {
+      "pre": "Du drückst den Knopf „bremsen“. Am Bildschirm siehst du eine",
+      "loesung": "fallende",
+      "post": "Linie."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Linie ist waagerecht. Also steht der Wagen.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Eine waagerechte Linie zeigt …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon brauchst du in Aufgabe 2. Streiche durch, was du benutzt hast.",
+   "h2": "Sieh in Zeile 1 deiner Tabelle nach. Beginne so: Eine waagerechte Linie zeigt, dass das Tempo …",
+   "h3": "Fast fertige Antwort: Eine waagerechte Linie zeigt, dass das Tempo gleich bleibt. Der Wagen fährt gleichförmig weiter. Ergänze den letzten Satz: Er steht nur, wenn die Linie ganz ___ liegt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was eine waagerechte Linie im Tempo-Zeit-Diagramm bedeutet.",
+   "Ich kann eine ansteigende und eine fallende Linie unterscheiden.",
+   "Ich kann erklären, warum eine waagerechte Linie nicht Stillstand bedeutet."
+  ],
+  "zuhause": "Achte bei einer Busfahrt auf drei Stücke: das Anfahren, die ruhige Fahrt und das Bremsen. Schreibe zu jedem Stück auf, ob die Linie im Tempo-Zeit-Diagramm ansteigt, waagerecht läuft oder fällt.",
+  "bildauftrag": "[BILD: drei gleich große Achsenkreuze nebeneinander, alle mit derselben Beschriftung: senkrechte Achse „v (Tempo)“, waagerechte Achse „t (Zeit)“; im linken Bild eine dicke waagerechte Linie auf halber Höhe, darunter groß „gleich schnell“; im mittleren Bild eine dicke, gleichmäßig ansteigende Linie, darunter groß „wird schneller“; im rechten Bild eine dicke, gleichmäßig fallende Linie, darunter groß „wird langsamer“; jede Linie in einer eigenen Farbe UND mit einem eigenen Symbol am Anfang (Kreis, Dreieck, Viereck), damit die Farbe nicht allein unterscheidet; im linken Bild zusätzlich eine dünne graue Linie ganz unten auf der Zeitachse mit der kleinen Beschriftung „steht still“; nur diese Linien, keine Messpunkte, keine Zahlen an den Achsen, keine Räder, keine Deko; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fb7",
+  "quelle": "be9",
+  "sim": "bremsweg-jg9",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Bis das Auto steht",
+  "name": "Wie weit fährt ein Auto bis zum Halt?",
+  "fachwoerter_neu": [
+   "Reaktionsweg",
+   "Anhalteweg"
+  ],
+  "alltag": [
+   "Nour und Jannis stehen an der Einfahrt der Fahrrad-Werkstatt.",
+   "Nour meint: Bei Tempo 30 steht ein Auto sofort.",
+   "Jannis sagt: Du siehst die Gefahr und trittst erst dann auf die Bremse.",
+   "Bis dahin fährt das Auto weiter. Dieser Weg heißt Reaktionsweg."
+  ],
+  "frage": "Woraus besteht der Weg, bis das Auto wirklich steht?",
+  "predict": [
+   "Zu diesem Weg gehört auch das Stück, bevor das Auto bremst.",
+   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.",
+   "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.",
+   "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.",
+   "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Tempo",
+   "Wie lang ist der Reaktionsweg?",
+   "Wie lang ist der Bremsweg?"
+  ],
+  "tabRows": [
+   [
+    "50 km/h",
+    "15 m",
+    "25 m"
+   ],
+   [
+    "100 km/h",
+    "",
+    ""
+   ],
+   [
+    "30 km/h",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Reaktionsweg und Bremsweg ergeben zusammen den",
+    "loesung": "Anhalteweg",
+    "post": "."
+   },
+   {
+    "pre": "Auf dem",
+    "loesung": "Reaktionsweg",
+    "post": "fährt das Auto noch mit vollem Tempo weiter."
+   }
+  ],
+  "wortbank": [
+   "Anhalteweg",
+   "Reaktionsweg",
+   "18 m",
+   "130 m"
+  ],
+  "beispiel": {
+   "frage": "Bei 50 km/h zeigt die Statuszeile: Reaktionsweg = 15 m · Bremsweg = 25 m. Wie lang ist der Anhalteweg?",
+   "antwort": "Gegeben: Reaktionsweg 15 m und Bremsweg 25 m. Gesucht: der Anhalteweg. Rechnung: 15 m + 25 m = 40 m. Antwort: Der Anhalteweg ist 40 m lang. Die Statuszeile zeigt auch 40 m."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was passiert mit dem Bremsweg von 50 km/h auf 100 km/h? Sieh in deiner Tabelle nach.",
+    "optionen": [
+     "Er wird viermal so lang: aus 25 m werden 100 m.",
+     "Er wird doppelt so lang: aus 25 m werden 50 m.",
+     "Er bleibt gleich: 25 m."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 30 km/h zeigt die Simulation Reaktionsweg 9 m und Bremsweg 9 m. Zusammen sind das",
+      "loesung": "18 m",
+      "post": "."
+     },
+     {
+      "pre": "Bei 100 km/h sind es 30 m und 100 m. Der Anhalteweg ist dann",
+      "loesung": "130 m",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Bei Tempo 30 steht ein Auto sofort.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "Zuerst siehst du die Gefahr, …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Einträge der Wortbank werden gebraucht: zwei Wörter im Merksatz, zwei Zahlen in Aufgabe 2.",
+   "h2": "Rechne in Aufgabe 2 so: Reaktionsweg + Bremsweg = Anhalteweg. Bei 30 km/h heißt das 9 m + 9 m.",
+   "h3": "Fast fertige Antwort: Zuerst siehst du die Gefahr. In dieser Zeit fährt das Auto mit vollem Tempo weiter. Das ist der Reaktionsweg. Danach kommt noch der ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann Reaktionsweg und Bremsweg in der Statuszeile ablesen.",
+   "Ich kann aus zwei Zahlen den Anhalteweg ausrechnen.",
+   "Ich kann erklären, warum ein Auto nicht sofort steht."
+  ],
+  "zuhause": "Zähle auf dem Flur oder dem Schulhof 18 große Schritte ab, nicht an der Straße. Ein großer Schritt ist ungefähr 1 m. So weit fährt ein Auto bei 30 km/h noch, bis es steht.",
+  "bildauftrag": "[BILD: Seitenansicht einer geraden Straße über die volle Bildbreite; ganz links ein einzelnes Auto mit der Angabe „v = 50 km/h“, ganz rechts am Straßenrand ein wartendes Kind; unter der Straße zwei gleich hohe Balken direkt hintereinander: links ein kürzerer gelb schraffierter Balken mit der großen Aufschrift „Reaktionsweg 15 m“, rechts ein längerer roter Balken mit „Bremsweg 25 m“; darunter eine durchgehende Klammer über beide Balken mit der Aufschrift „Anhalteweg 40 m“; nur dieses eine Auto, keine zweite Fahrt, keine Tempostriche, keine weiteren Fahrzeuge; heller ruhiger Hintergrund ohne Deko]"
+ }
+]

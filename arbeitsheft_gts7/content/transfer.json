@@ -1,0 +1,48 @@
+[
+ {
+  "kapitel": "gts_optik",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Auf der Verpackung einer Sonnenbrille steht: „Unsere Gläser schlucken 100 % des Lichts. Deshalb schützen sie perfekt vor UV-Strahlung.“ Prüfe beide Sätze mit dem, was du über die drei Anteile des Lichts und über unsichtbares Licht gelernt hast, und schreibe eine begründete Antwort an den Hersteller.",
+    "erwartung": "Die Schülerin erkennt, dass der erste Satz sich selbst widerspricht: Was 100 % des Lichts schluckt, lässt nichts hindurch, man würde durch das Glas gar nichts sehen. Sie nutzt die Aufteilung in zurückgeworfen, hindurchgelassen und geschluckt, die zusammen 100 % ergibt, und schätzt für ein brauchbares Brillenglas einen großen hindurchgelassenen Anteil ab. Beim zweiten Satz begründet sie, dass UV unsichtbares Licht ist: Wie dunkel ein Glas aussieht, sagt nur etwas über den sichtbaren Bereich von 380 bis 780 nm aus, nicht über den Bereich davor. Als Folgerung nennt sie, dass eine dunkle Brille ohne UV-Filter sogar gefährlich sein kann, weil sich die Pupille dahinter weitet und mehr UV ins Auge lässt, und dass ein Nachweis nur mit einer Messung oder einer geprüften Angabe möglich ist. Häufige Fehler: Dunkel und UV-Schutz werden gleichgesetzt; die 100 % werden nur auf das Schlucken bezogen, ohne die anderen beiden Anteile zu bedenken; UV wird für sichtbares violettes Licht gehalten; die Aussage wird ohne Rechnung oder Messvorschlag nur als „falsch“ abgetan."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "In einer Kiste des Sammlungsschranks liegen drei unbeschriftete Gläser. Entwickle einen Versuch, mit dem Nour und Jannis für jedes Glas entscheiden können, ob es eine Sammellinse oder eine Zerstreuungslinse ist, und mit dem sie außerdem die Brennweite jeder Sammellinse messen. Beschreibe Aufbau, Messschritte und die Gegenprobe.",
+    "erwartung": "Die Schülerin plant einen Aufbau mit paralleler Lichtquelle (Dreifachspalt oder weit entfernte Lampe), Linse auf der optischen Bank und Schirm dahinter. Als Entscheidungsmerkmal nennt sie: Nur bei der Sammellinse laufen die Strahlen hinter dem Glas zusammen und erzeugen auf dem Schirm einen kleinsten, hellsten Fleck; bei der Zerstreuungslinse laufen sie auseinander, und ein solcher Punkt entsteht dahinter nie. Die Brennweite misst sie als Abstand von der Linsenmitte bis zum Schirm in der Stellung mit dem kleinsten Fleck und wiederholt die Messung mehrfach. Als Gegenprobe schlägt sie den Tastversuch (in der Mitte dicker oder dünner) oder den Blick durch das Glas auf nahe Schrift vor und hält fest, dass beide Wege zum gleichen Ergebnis führen müssen. Häufige Fehler: Der Abstand wird vom Rand oder vom Halter statt von der Linsenmitte gemessen; das Licht ist nicht parallel, sodass die Brennweite zu groß herauskommt; die Gruppe schaut mit der Lupe direkt in die Sonne; die Zerstreuungslinse wird für eine Sammellinse gehalten, weil sich rückwärts verlängert ebenfalls ein Punkt ergibt; es wird nur eine einzige Messung notiert."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Die Klasse soll für die Schulausstellung ein Foto des halbdunklen Physikraums aufnehmen und darf dafür entweder eine Lochkamera aus Pappe oder eine Kamera mit Sammellinse bauen. Lege zuerst zwei Kriterien fest, an denen ihr entscheidet, und begründe dann, welche der beiden Kameras ihr baut.",
+    "erwartung": "Die Schülerin legt nachvollziehbare Kriterien fest, zum Beispiel Helligkeit des Bildes, Schärfe, Aufwand beim Bau und Bedienbarkeit. Sie überträgt, dass ein kleines Loch ein scharfes, aber sehr dunkles Bild liefert, während ein größeres Loch das Bild zwar heller, aber verwaschen macht – bei der Lochkamera sind Schärfe und Helligkeit also nicht gleichzeitig zu haben. Die Sammellinse dagegen fängt Licht auf ihrer ganzen Fläche ein und bündelt es trotzdem in einem Punkt, sie liefert im halbdunklen Raum ein helles und scharfes Bild; dafür muss der Schirm genau in die passende Bildweite geschoben werden, sonst wird nichts scharf. Sie entscheidet begründet für die Linsenkamera und nennt für beide Kameras, dass das Bild auf dem Kopf steht und mit größerer Bildweite größer wird. Häufige Fehler: Die Entscheidung wird ohne vorher genannte Kriterien getroffen; ein größeres Loch wird für ein größeres Bild gehalten statt für ein helleres und unschärferes; die Linse wird genannt, ohne das Scharfstellen über die Bildweite zu erwähnen; das umgekehrte Bild wird nur der Lochkamera zugeschrieben."
+   }
+  ]
+ },
+ {
+  "kapitel": "gts_weltall",
+  "aufgaben": [
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "In einer Zeitschrift steht: „Bei Vollmond schlafen viele Menschen schlechter, weil der Mond dann sein eigenes Licht besonders stark auf die Erde schickt.“ Prüfe diese Behauptung mit dem, was du über Selbstleuchter und beleuchtete Körper weißt. Trenne dabei den Teil, der sich beobachten lässt, von dem Teil, der physikalisch nicht stimmt.",
+    "erwartung": "Erwartet wird, dass die Begründung der Behauptung zurückgewiesen wird: Der Mond ist kein Selbstleuchter, er hat kein eigenes Licht, sondern wirft nur das Sonnenlicht zurück – deckt die Blende in der Simulation das Sonnenlicht ab, wird er sofort dunkel. Bei Vollmond zeigt seine ganze beleuchtete Seite zur Erde, deshalb ist die Nacht wirklich heller als bei Neumond; dieser beobachtbare Teil der Aussage kann also stimmen. Eine gute Antwort unterscheidet sauber: heller ja, eigenes Licht nein, und das zurückgeworfene Licht ist millionenfach schwächer als das Sonnenlicht am Tag. Häufige Fehler: Die ganze Behauptung wird für falsch erklärt, auch der beobachtbare Teil; oder der Vollmond wird mit dem Erdschatten erklärt, der in Wirklichkeit zur Mondfinsternis gehört. Manche übernehmen die Formulierung „stärker schicken“ und sprechen dem Mond damit doch eigenes Licht zu. Wer als Beleg die Blende aus der Simulation heranzieht, argumentiert am überzeugendsten."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Eure Klasse möchte auf dem Schulhof zeigen, wie weit die Planeten wirklich auseinanderliegen. Entwickle dazu einen Versuch: Beschreibe, was ihr braucht, wie ihr die Abstände auf die Länge des Schulhofs umrechnet und woran die Zuschauer merken sollen, dass die Größen der Planeten in diesem Modell nicht stimmen können.",
+    "erwartung": "Erwartet wird ein durchdachter Plan mit einem einzigen, klar genannten Maßstab für die Abstände: Zuerst wird die Länge des Schulhofs gemessen, dann der Abstand Neptun–Sonne von 30 AE darauf verteilt, sodass 1 AE zum Beispiel einige Schritte oder Meter entspricht. Zum Material gehören Maßband oder Seil, Schilder oder Kreidemarken für die acht Planeten und ein Ball für die Sonne. Wichtig ist die Begründung, dass die Planeten nach diesem Maßstab winzig klein wären – ein Stecknadelkopf oder kleiner –, weil die Abstände viel größer sind als die Körper selbst; deshalb muss das Modell entweder die Größen oder die Abstände verzerren, genau wie die getrennten Ansichten in der Simulation. Häufige Fehler: Die Planeten werden in gleichen Schritten verteilt, statt die echten Abstände umzurechnen, sodass die inneren vier viel zu weit auseinanderstehen. Ebenso häufig wird derselbe Maßstab für Größen und Abstände beansprucht oder gar kein Maßstab angegeben. Manche vergessen, dass zwischen Mars und Jupiter noch der Asteroidengürtel liegt, oder verwechseln Durchmesser und Abstand."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für den Fernrohrabend auf dem Schulhof darf die Schule nur ein Gerät kaufen: Fernrohr A hat 60 mm Öffnung und wird mit einem Okular für 30-fache Vergrößerung geliefert, Fernrohr B hat 130 mm Öffnung und 20-fache Vergrößerung. Beobachtet werden sollen vor allem lichtschwache Sterne und ferne Nebel. Entscheide dich für ein Gerät und begründe deine Wahl.",
+    "erwartung": "Erwartet wird eine Entscheidung für Fernrohr B, begründet über die Öffnung: Sie bestimmt, wie viel Licht das Objektiv einsammelt, und nur so werden lichtschwache Objekte überhaupt sichtbar – in der Simulation ist das Bild bei großer Öffnung hell und lichtstark, bei kleiner nur mäßig hell. Dazu gehört das Argument, dass 130 mm gegenüber 60 mm mehr als die vierfache Fläche haben und dass die Vergrößerung sich später leicht ändern lässt, weil sie die Brennweite des Objektivs geteilt durch die des Okulars ist; ein anderes Okular genügt. Eine begründete Entscheidung für A ist nur dann tragfähig, wenn sie andere Kriterien offenlegt, etwa Gewicht, Transport auf den Schulhof oder Preis, und den Nachteil bei der Helligkeit ausdrücklich einräumt. Häufige Fehler: Die Vergrößerung wird als Gütezeichen genommen, nach dem Motto „30-fach ist besser als 20-fach“, obwohl ein dunkles Bild auch stark vergrößert dunkel bleibt. Ebenso häufig werden Öffnung und Vergrößerung gleichgesetzt oder es wird behauptet, die größere Öffnung mache das Bild größer. Manche entscheiden ohne jedes Kriterium und schreiben nur „B ist größer“."
+   }
+  ]
+ }
+]

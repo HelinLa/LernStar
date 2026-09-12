@@ -1,0 +1,197 @@
+{
+ "seite": {
+  "id": "fo7",
+  "quelle": "oi10",
+  "sim": "auge",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Das aufklappbare Augenmodell",
+  "name": "Wie entsteht ein Bild im Auge?",
+  "fachwoerter_neu": [
+   "Netzhaut",
+   "Pupille"
+  ],
+  "alltag": [
+   "Zwischen den Karten steckt ein Augenmodell aus Kunststoff.",
+   "Innen sitzt eine dicke Linse, hinten eine rosa Schale.",
+   "Auf der Schale erscheint das Fensterkreuz – winzig und auf dem Kopf.",
+   "Die Schale hinten im Auge heißt Netzhaut."
+  ],
+  "frage": "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
+  "predict": [
+   "Zum Scharfstellen rückt die Netzhaut nach vorn oder hinten.",
+   "Zum Scharfstellen verformt sich die Linse im Auge."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.",
+   "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.",
+   "Schiebe den Regler „Pupille“ nach links und nach rechts. Lies beide Meldungen.",
+   "Trage deine Beobachtungen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Einstellung",
+   "Linse laut Statuszeile",
+   "Pupille laut Statuszeile"
+  ],
+  "tabRows": [
+   [
+    "Abstand weit",
+    "flacher (fern)",
+    "mittel"
+   ],
+   [
+    "Abstand nah",
+    "",
+    "mittel"
+   ],
+   [
+    "Pupille eng",
+    "flacher (fern)",
+    ""
+   ],
+   [
+    "Pupille weit",
+    "flacher (fern)",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Auf der Netzhaut entsteht ein",
+    "loesung": "umgekehrtes",
+    "post": "Bild."
+   },
+   {
+    "pre": "Scharf stellt das Auge mit der Linse. Die Pupille regelt nur die",
+    "loesung": "Helligkeit",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "umgekehrtes",
+   "Helligkeit",
+   "Netzhaut",
+   "Pupille",
+   "gewölbt"
+  ],
+  "beispiel": {
+   "frage": "Nour sieht ein Buch ganz nah an. Was macht ihre Augenlinse?",
+   "antwort": "Die Linse wölbt sich stärker. So bleibt das Bild auf der Netzhaut scharf. Die Statuszeile zeigt: Linse stark gewölbt (nah)."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie sieht das Bild auf der Netzhaut aus?",
+    "optionen": [
+     "Es steht auf dem Kopf und ist verkleinert.",
+     "Es steht aufrecht und ist vergrößert.",
+     "Es ist genauso groß wie der Gegenstand."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Bild entsteht hinten im Auge auf der",
+      "loesung": "Netzhaut",
+      "post": "."
+     },
+     {
+      "pre": "Die",
+      "loesung": "Pupille",
+      "post": "regelt, wie viel Licht ins Auge kommt."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Das Bild auf der Netzhaut ist umgekehrt. Warum sehen wir die Welt trotzdem aufrecht?",
+    "satzstarter": "Das Bild auf der Netzhaut steht auf dem Kopf, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies den Hinweis in der Simulation: Dort steht, wer das Bild umdreht.",
+   "h2": "Beginne so: Auf der Netzhaut steht das Bild auf dem Kopf. Unser Gehirn …",
+   "h3": "Fast fertige Antwort: Das Bild auf der Netzhaut ist umgekehrt. Unser Gehirn dreht es wieder ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, wo im Auge das Bild entsteht.",
+   "Ich kann sagen, wie das Auge scharf stellt.",
+   "Ich kenne die Aufgabe der Pupille."
+  ],
+  "zuhause": "Sieh in einen Spiegel und mache das Licht im Raum aus und wieder an. Beobachte deine Pupille: Sie wird weit und dann wieder eng.",
+  "bildauftrag": "[BILD: großer Querschnitt eines Auges von der Seite; vorn die Linse mit der Pupille davor, hinten die Netzhaut als Bogen; vor dem Auge steht ein kleiner Baum, auf der Netzhaut erscheint sein Bild winzig und auf dem Kopf; große Beschriftungen „Pupille“, „Linse“, „Netzhaut“ und „umgekehrtes Bild“; höchstens zwei ruhige Lichtlinien, keine gekreuzten Strahlenbündel; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fo7",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass die Augenlinse auf der Netzhaut ein umgekehrtes Bild erzeugt und es durch Ändern ihrer Wölbung scharf hält, während die Pupille nur die Lichtmenge regelt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Meldungen aus diesem Lehrerteil als Karten. Optional: aufklappbares Augenmodell aus der Sammlung. Für den Zuhause-Auftrag: Spiegel und Zimmerlampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Meldungen als Karten zeigen: Abstand weit → Linse flacher (fern) · Abstand nah → Linse stark gewölbt (nah) · Pupille eng oder weit → regelt die Helligkeit. Dazu immer: Bild scharf auf der Netzhaut (umgekehrt).",
+  "merksatz": [
+   "umgekehrtes",
+   "Helligkeit"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Abstand nah",
+    "stark gewölbt (nah)",
+    "mittel"
+   ],
+   [
+    "Pupille eng",
+    "flacher (fern)",
+    "eng"
+   ],
+   [
+    "Pupille weit",
+    "flacher (fern)",
+    "weit"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+   "typische_fehler": [
+    "„aufrecht“ wird angekreuzt, weil wir die Welt aufrecht sehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Netzhaut",
+    "Pupille"
+   ],
+   "typische_fehler": [
+    "Netzhaut und Linse werden vertauscht.",
+    "Der Pupille wird das Scharfstellen zugeschrieben – sie regelt nur die Helligkeit."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Bild auf der Netzhaut steht auf dem Kopf, aber unser Gehirn dreht es wieder um. Darum sehen wir die Welt aufrecht.",
+   "alternativen": [
+    "Verweis auf den Hinweis der Simulation: das Gehirn dreht das Bild um.",
+    "Vergleich mit dem Augenmodell aus dem Alltag: Auf der Schale steht das Fensterkreuz auf dem Kopf, wir sehen es trotzdem aufrecht."
+   ],
+   "typische_fehler": [
+    "Die Netzhaut soll das Bild selbst drehen.",
+    "„Das Auge stellt das Bild richtig“ – das Gehirn wird nicht genannt."
+   ]
+  },
+  "hilfe3_wort": "um",
+  "schwache": [
+   "Erst nur den Abstands-Regler bearbeiten lassen, die Pupillen-Zeilen danach.",
+   "Die zwei Aufgaben trennen und anschreiben: Linse macht scharf, Pupille macht hell.",
+   "Die vorausgefüllten Zellen der Tabelle laut vorlesen lassen: Nur eine Sache ändert sich."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Auge. Kompetenz E2 wie auf der Quellseite oi10. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

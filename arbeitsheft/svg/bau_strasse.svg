@@ -1,0 +1,610 @@
+<!-- ============================================================================
+     Werkstatt: Strasse und Gully  (Magnetismus)
+     Bens Schluessel faellt durch den Gullyrost. Mia angelt mit dem Magneten.
+     Eigene defs tragen das Praefix b_g.
+     ============================================================================ -->
+
+<!-- ===== Guss, Rost, Schacht ===== -->
+<linearGradient id="b_gGuss" x1="0" y1="0" x2="0.26" y2="1">
+  <stop offset="0" stop-color="#767B7B"/><stop offset="0.24" stop-color="#565B5C"/>
+  <stop offset="0.62" stop-color="#373C3E"/><stop offset="0.86" stop-color="#252A2C"/>
+  <stop offset="1" stop-color="#31373A"/>
+</linearGradient>
+<linearGradient id="b_gSteg" x1="0" y1="0" x2="0.08" y2="1">
+  <stop offset="0" stop-color="#A7ACAB"/><stop offset="0.30" stop-color="#787E7E"/>
+  <stop offset="0.72" stop-color="#454B4D"/><stop offset="1" stop-color="#262B2E"/>
+</linearGradient>
+<linearGradient id="b_gSchlitz" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#000000"/><stop offset="0.62" stop-color="#040608"/>
+  <stop offset="1" stop-color="#171C1F"/>
+</linearGradient>
+<radialGradient id="b_gSchacht" cx="0.48" cy="0.34" r="0.82">
+  <stop offset="0" stop-color="#2A302F"/><stop offset="0.42" stop-color="#171C1D"/>
+  <stop offset="0.78" stop-color="#0B0E10"/><stop offset="1" stop-color="#040608"/>
+</radialGradient>
+<linearGradient id="b_gSchachtWand" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#000000" stop-opacity="0.85"/>
+  <stop offset="0.55" stop-color="#000000" stop-opacity="0.28"/>
+  <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="b_gWasserT" x1="0" y1="0" x2="0.12" y2="1">
+  <stop offset="0" stop-color="#2F6560"/><stop offset="0.32" stop-color="#215049"/>
+  <stop offset="0.74" stop-color="#143734"/><stop offset="1" stop-color="#0C2624"/>
+</linearGradient>
+
+<!-- ===== Strasse ===== -->
+<linearGradient id="b_gAsphalt" x1="0" y1="0" x2="0.06" y2="1">
+  <stop offset="0" stop-color="#54585B"/><stop offset="0.26" stop-color="#44484B"/>
+  <stop offset="0.68" stop-color="#383C3F"/><stop offset="1" stop-color="#2C3033"/>
+</linearGradient>
+<linearGradient id="b_gBeton" x1="0" y1="0" x2="0.08" y2="1">
+  <stop offset="0" stop-color="#E0DCD1"/><stop offset="0.22" stop-color="#C8C4B8"/>
+  <stop offset="0.66" stop-color="#ABA69A"/><stop offset="1" stop-color="#8E8A7F"/>
+</linearGradient>
+<linearGradient id="b_gGehweg" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#B8B3A6"/><stop offset="1" stop-color="#D3CFC3"/>
+</linearGradient>
+<linearGradient id="b_gKante" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#F2EEE2"/><stop offset="0.5" stop-color="#DFDACD"/>
+  <stop offset="1" stop-color="#BAB5A8"/>
+</linearGradient>
+
+<!-- ===== Laub ===== -->
+<linearGradient id="b_gLaubBraun" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#A9702F"/><stop offset="0.42" stop-color="#8A5522"/>
+  <stop offset="1" stop-color="#5C3512"/>
+</linearGradient>
+<linearGradient id="b_gLaubOcker" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#D9A340"/><stop offset="0.44" stop-color="#B77F27"/>
+  <stop offset="1" stop-color="#815416"/>
+</linearGradient>
+<linearGradient id="b_gLaubRot" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#A64B2C"/><stop offset="0.44" stop-color="#7E2F1C"/>
+  <stop offset="1" stop-color="#511B10"/>
+</linearGradient>
+<linearGradient id="b_gLaubNass" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#6B4A22"/><stop offset="0.46" stop-color="#4A3016"/>
+  <stop offset="1" stop-color="#2C1C0C"/>
+</linearGradient>
+<g id="b_gBlattA">
+  <path d="M 0,0 C 7,-15 25,-25 46,-26 C 66,-27 82,-19 92,0 C 82,19 66,27 46,26 C 25,25 7,15 0,0 Z"/>
+</g>
+<g id="b_gBlattDeko">
+  <g fill="none" stroke="#40290C" stroke-width="1.8" stroke-opacity="0.42" stroke-linecap="round">
+    <path d="M 4,0 L 84,0"/>
+    <path d="M 18,-1 L 30,-16"/><path d="M 18,1 L 30,16"/>
+    <path d="M 38,-1 L 53,-19"/><path d="M 38,1 L 53,19"/>
+    <path d="M 58,-1 L 71,-16"/><path d="M 58,1 L 71,16"/>
+  </g>
+  <ellipse cx="36" cy="-11" rx="27" ry="8" fill="url(#glanz)" opacity="0.62" transform="rotate(-8 36 -11)"/>
+  <ellipse cx="58" cy="12" rx="20" ry="5" fill="url(#stahlWarm)" opacity="0.3"/>
+  <path d="M 0,0 C 7,-15 25,-25 46,-26 C 66,-27 82,-19 92,0 C 82,19 66,27 46,26 C 25,25 7,15 0,0 Z"
+        fill="none" stroke="#2C1B06" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M 0,0 C -5,-2 -10,-4 -16,-3" fill="none" stroke="#4A3212" stroke-width="3" stroke-opacity="0.6" stroke-linecap="round"/>
+</g>
+
+<!-- ===== Magnet ===== -->
+<linearGradient id="b_gMagRot" x1="0" y1="0" x2="0.08" y2="1">
+  <stop offset="0" stop-color="#E29472"/><stop offset="0.2" stop-color="#C4643E"/>
+  <stop offset="0.6" stop-color="#95412A"/><stop offset="0.88" stop-color="#63281A"/>
+  <stop offset="1" stop-color="#8B4530"/>
+</linearGradient>
+<linearGradient id="b_gMagBlau" x1="0" y1="0" x2="0.08" y2="1">
+  <stop offset="0" stop-color="#A5B5C6"/><stop offset="0.2" stop-color="#72849A"/>
+  <stop offset="0.6" stop-color="#47576D"/><stop offset="0.88" stop-color="#2A3646"/>
+  <stop offset="1" stop-color="#48566A"/>
+</linearGradient>
+<linearGradient id="b_gMagRotO" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#F0B394"/><stop offset="0.5" stop-color="#D07B52"/>
+  <stop offset="1" stop-color="#A9532F"/>
+</linearGradient>
+<linearGradient id="b_gMagBlauO" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#C6D3E0"/><stop offset="0.5" stop-color="#8E9EB2"/>
+  <stop offset="1" stop-color="#5C6C82"/>
+</linearGradient>
+<linearGradient id="b_gSchnur" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#8A754C"/><stop offset="0.3" stop-color="#D6C08C"/>
+  <stop offset="0.62" stop-color="#B29A66"/><stop offset="1" stop-color="#6E5A34"/>
+</linearGradient>
+
+<!-- ===== Blech, Alu, Messing ===== -->
+<radialGradient id="b_gKorken" cx="0.34" cy="0.26" r="0.86">
+  <stop offset="0" stop-color="#E8EDF1"/><stop offset="0.28" stop-color="#BAC3CC"/>
+  <stop offset="0.66" stop-color="#8B95A2"/><stop offset="1" stop-color="#5C6674"/>
+</radialGradient>
+<linearGradient id="b_gKorkenRand" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#CBD3DB"/><stop offset="0.44" stop-color="#8F99A6"/>
+  <stop offset="1" stop-color="#4E5766"/>
+</linearGradient>
+<linearGradient id="b_gAluD" x1="0" y1="0" x2="0.22" y2="1">
+  <stop offset="0" stop-color="#F4F7FA"/><stop offset="0.3" stop-color="#D2DAE2"/>
+  <stop offset="0.7" stop-color="#A2ADBA"/><stop offset="1" stop-color="#77828F"/>
+</linearGradient>
+<linearGradient id="b_gMessing" x1="0" y1="0" x2="0.24" y2="1">
+  <stop offset="0" stop-color="#FBEFBE"/><stop offset="0.24" stop-color="#EBCB74"/>
+  <stop offset="0.62" stop-color="#C39C33"/><stop offset="0.88" stop-color="#8E6B18"/>
+  <stop offset="1" stop-color="#B08D2C"/>
+</linearGradient>
+<radialGradient id="b_gMessingKopf" cx="0.34" cy="0.26" r="0.84">
+  <stop offset="0" stop-color="#FDF5CE"/><stop offset="0.3" stop-color="#EFCE76"/>
+  <stop offset="0.68" stop-color="#C39C33"/><stop offset="1" stop-color="#7E5D13"/>
+</radialGradient>
+
+
+<!-- t_gullyrost | Gussrost eines Strasseneinlaufs, schraeg von oben | nominal 380 x 240 | Anker: Mitte -->
+<g id="t_gullyrost">
+  <!-- Fuge im Asphalt rings um den Rahmen -->
+  <polygon points="-171,-128 171,-128 202,128 -202,128" fill="#14171A" opacity="0.55"/>
+  <polygon points="-166,-124 166,-124 197,125 -197,125" fill="#2B2E30" opacity="0.5"/>
+
+  <!-- schwerer Gussrahmen -->
+  <g filter="url(#kontakt)">
+    <polygon points="-160,-120 160,-120 190,120 -190,120" fill="url(#b_gGuss)"/>
+  </g>
+  <g filter="url(#rauh)" opacity="0.55">
+    <polygon points="-160,-120 160,-120 190,120 -190,120" fill="url(#b_gGuss)"/>
+  </g>
+  <!-- Fase: oben und links hell, unten rechts dunkel -->
+  <polygon points="-160,-120 160,-120 159,-113 -159,-113" fill="#C2C7C6" opacity="0.4"/>
+  <polygon points="-160,-120 -159,-113 -188,113 -190,120" fill="#AEB4B3" opacity="0.28"/>
+  <polygon points="-190,120 190,120 188,113 -188,113" fill="#0C0F11" opacity="0.5"/>
+  <polygon points="160,-120 190,120 188,113 159,-113" fill="#0C0F11" opacity="0.38"/>
+
+  <!-- Oeffnung: tiefschwarz -->
+  <polygon points="-126,-96 126,-96 157,96 -157,96" fill="#05070A"/>
+  <!-- Innenkante des Rahmens -->
+  <polygon points="-126,-96 126,-96 126,-89 -126,-89" fill="#000000" opacity="0.75"/>
+  <polygon points="-157,96 157,96 156,89 -156,89" fill="#8A9090" opacity="0.34"/>
+
+  <!-- Stege zwischen den Schlitzen -->
+  <g>
+    <polygon points="-128.7,-77 128.7,-77 130,-69 -130,-69" fill="url(#b_gSteg)"/>
+    <polygon points="-132.1,-56 132.1,-56 133.4,-48 -133.4,-48" fill="url(#b_gSteg)"/>
+    <polygon points="-135.4,-35 135.4,-35 136.7,-27 -136.7,-27" fill="url(#b_gSteg)"/>
+    <polygon points="-138.8,-14 138.8,-14 140.1,-6 -140.1,-6" fill="url(#b_gSteg)"/>
+    <polygon points="-142.2,7 142.2,7 143.4,15 -143.4,15" fill="url(#b_gSteg)"/>
+    <polygon points="-145.5,28 145.5,28 146.8,36 -146.8,36" fill="url(#b_gSteg)"/>
+    <polygon points="-148.9,49 148.9,49 150.2,57 -150.2,57" fill="url(#b_gSteg)"/>
+    <polygon points="-152.2,70 152.2,70 153.5,78 -153.5,78" fill="url(#b_gSteg)"/>
+  </g>
+  <!-- Stegoberseiten: von Reifen blank gefahren -->
+  <g fill="#CDD1D0" opacity="0.6">
+    <polygon points="-128.7,-77 128.7,-77 129.1,-74.4 -129.1,-74.4"/>
+    <polygon points="-132.1,-56 132.1,-56 132.5,-53.4 -132.5,-53.4"/>
+    <polygon points="-135.4,-35 135.4,-35 135.9,-32.4 -135.9,-32.4"/>
+    <polygon points="-138.8,-14 138.8,-14 139.2,-11.4 -139.2,-11.4"/>
+    <polygon points="-142.2,7 142.2,7 142.6,9.6 -142.6,9.6"/>
+    <polygon points="-145.5,28 145.5,28 145.9,30.6 -145.9,30.6"/>
+    <polygon points="-148.9,49 148.9,49 149.3,51.6 -149.3,51.6"/>
+    <polygon points="-152.2,70 152.2,70 152.7,72.6 -152.7,72.6"/>
+  </g>
+  <g fill="#07090B" opacity="0.75">
+    <polygon points="-129.7,-71 129.7,-71 130,-69 -130,-69"/>
+    <polygon points="-133,-50 133,-50 133.4,-48 -133.4,-48"/>
+    <polygon points="-136.4,-29 136.4,-29 136.7,-27 -136.7,-27"/>
+    <polygon points="-139.8,-8 139.8,-8 140.1,-6 -140.1,-6"/>
+    <polygon points="-143.1,13 143.1,13 143.4,15 -143.4,15"/>
+    <polygon points="-146.5,34 146.5,34 146.8,36 -146.8,36"/>
+    <polygon points="-149.8,55 149.8,55 150.2,57 -150.2,57"/>
+    <polygon points="-153.2,76 153.2,76 153.5,78 -153.5,78"/>
+  </g>
+  <!-- blank gefahrene Spur quer ueber die Stege -->
+  <polygon points="-48,-96 46,-96 58,96 -58,96" fill="#E4E8E6" opacity="0.13"/>
+
+  <!-- Sand am Rand -->
+  <g fill="#C9AC72" opacity="0.55">
+    <ellipse cx="-146" cy="104" rx="34" ry="9"/>
+    <ellipse cx="-92" cy="112" rx="26" ry="7"/>
+    <ellipse cx="132" cy="98" rx="30" ry="8"/>
+    <ellipse cx="168" cy="76" rx="14" ry="18"/>
+    <ellipse cx="-172" cy="42" rx="12" ry="24"/>
+    <ellipse cx="118" cy="-112" rx="26" ry="6"/>
+  </g>
+  <g fill="#E0C795" opacity="0.5">
+    <circle cx="-158" cy="100" r="2.4"/><circle cx="-130" cy="110" r="1.8"/>
+    <circle cx="-104" cy="102" r="2.1"/><circle cx="146" cy="94" r="2.2"/>
+    <circle cx="120" cy="104" r="1.6"/><circle cx="-176" cy="24" r="1.9"/>
+    <circle cx="164" cy="52" r="2"/><circle cx="96" cy="-114" r="1.7"/>
+    <circle cx="-146" cy="-102" r="1.9"/><circle cx="-166" cy="-64" r="1.6"/>
+  </g>
+
+  <!-- ein paar Blaetter am Rand -->
+  <g transform="translate(-186,86) rotate(-16) scale(0.62,0.34)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubBraun)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(94,104) rotate(9) scale(0.7,0.36)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubRot)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(-40,-126) rotate(6) scale(0.55,0.3)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubOcker)"/><use href="#b_gBlattDeko"/>
+  </g>
+
+  <!-- Kontur -->
+  <polygon points="-160,-120 160,-120 190,120 -190,120" fill="none" stroke="#0A0D0F" stroke-width="3" stroke-opacity="0.5"/>
+  <polygon points="-126,-96 126,-96 157,96 -157,96" fill="none" stroke="#000000" stroke-width="2.4" stroke-opacity="0.6"/>
+  <!-- harter Glanz oben links auf dem Rahmen -->
+  <ellipse cx="-116" cy="-108" rx="52" ry="9" fill="url(#glanz)" opacity="0.5"/>
+  <ellipse cx="0" cy="112" rx="120" ry="9" fill="url(#stahlWarm)" opacity="0.28"/>
+</g>
+
+<!-- t_gullyloch | Blick durch den Rost in den Schacht | nominal 300 x 200 | Anker: Mitte -->
+<g id="t_gullyloch">
+  <rect x="-150" y="-100" width="300" height="200" rx="6" fill="url(#b_gSchacht)"/>
+  <!-- Schachtwaende, nach hinten zulaufend -->
+  <polygon points="-150,-100 150,-100 118,-24 -118,-24" fill="#0A0E10" opacity="0.9"/>
+  <polygon points="-150,-100 -118,-24 -118,100 -150,100" fill="#0D1214" opacity="0.72"/>
+  <polygon points="150,-100 118,-24 118,100 150,100" fill="#05080A" opacity="0.8"/>
+  <!-- feuchter Schimmer an der linken Wand -->
+  <polygon points="-146,-88 -126,-40 -126,58 -146,74" fill="#5D7A78" opacity="0.16"/>
+
+  <!-- Wasser unten im Schacht -->
+  <path d="M -119,-16 L 119,-16 C 128,44 134,74 138,98 L -138,98 C -134,74 -128,44 -119,-16 Z"
+        fill="url(#b_gWasserT)"/>
+  <!-- Spiegelung des Lichts, das durch die Schlitze faellt -->
+  <g opacity="0.5">
+    <path d="M -114,-4 L 114,-4 L 116,3 L -116,3 Z" fill="#9FC6BE" opacity="0.34"/>
+    <path d="M -120,18 L 120,18 L 123,26 L -123,26 Z" fill="#9FC6BE" opacity="0.26"/>
+    <path d="M -128,44 L 128,44 L 132,52 L -132,52 Z" fill="#9FC6BE" opacity="0.18"/>
+  </g>
+  <ellipse cx="-42" cy="24" rx="62" ry="20" fill="#BFE0D6" opacity="0.14"/>
+  <!-- dunkle Tiefe unter dem Wasser -->
+  <ellipse cx="30" cy="70" rx="86" ry="26" fill="#06110F" opacity="0.55"/>
+
+  <!-- nasse Blaetter treiben darauf -->
+  <g transform="translate(-118,10) rotate(-8) scale(0.72,0.3)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubNass)"/><use href="#b_gBlattDeko" opacity="0.75"/>
+  </g>
+  <g transform="translate(-24,50) rotate(11) scale(0.8,0.32)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubBraun)"/><use href="#b_gBlattDeko" opacity="0.8"/>
+  </g>
+  <g transform="translate(20,-6) rotate(-19) scale(0.66,0.28)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubRot)"/><use href="#b_gBlattDeko" opacity="0.7"/>
+  </g>
+  <g transform="translate(52,74) rotate(6) scale(0.6,0.26)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubNass)"/><use href="#b_gBlattDeko" opacity="0.7"/>
+  </g>
+
+  <!-- Rand: alles laeuft ins Dunkle -->
+  <rect x="-150" y="-100" width="300" height="200" rx="6" fill="url(#b_gSchachtWand)" opacity="0.7"/>
+  <rect x="-150" y="-100" width="300" height="200" rx="6" fill="none" stroke="#04070A" stroke-width="8" stroke-opacity="0.75"/>
+</g>
+
+<!-- t_asphalt | Stueck Asphaltflaeche | nominal 900 x 300 | Anker: obere linke Ecke -->
+<g id="t_asphalt">
+  <rect x="0" y="0" width="900" height="300" fill="url(#b_gAsphalt)"/>
+  <g filter="url(#rauh)"><rect x="0" y="0" width="900" height="300" fill="url(#b_gAsphalt)"/></g>
+  <g filter="url(#rauh)" opacity="0.5"><rect x="0" y="0" width="900" height="300" fill="#6A6F73"/></g>
+  <!-- Ferne oben etwas heller, vorn dunkler -->
+  <rect x="0" y="0" width="900" height="54" fill="#7B8084" opacity="0.16"/>
+  <rect x="0" y="240" width="900" height="60" fill="#191C1F" opacity="0.28"/>
+  <!-- alter Flickstreifen -->
+  <path d="M 486,0 C 500,64 476,120 498,182 C 514,230 500,268 512,300 L 566,300
+           C 552,266 566,228 550,180 C 530,120 556,62 542,0 Z" fill="#2E3235" opacity="0.5"/>
+  <!-- Kieselchen im Belag -->
+  <g fill="#A8ADB0" opacity="0.6">
+    <circle cx="58" cy="42" r="2.2"/><circle cx="132" cy="88" r="1.6"/><circle cx="196" cy="30" r="2.6"/>
+    <circle cx="248" cy="126" r="1.9"/><circle cx="312" cy="66" r="2.3"/><circle cx="374" cy="152" r="1.5"/>
+    <circle cx="428" cy="24" r="2"/><circle cx="472" cy="104" r="2.5"/><circle cx="548" cy="58" r="1.7"/>
+    <circle cx="604" cy="138" r="2.2"/><circle cx="666" cy="46" r="1.8"/><circle cx="722" cy="112" r="2.4"/>
+    <circle cx="784" cy="34" r="1.6"/><circle cx="840" cy="94" r="2.1"/><circle cx="878" cy="150" r="1.9"/>
+    <circle cx="92" cy="168" r="2.3"/><circle cx="168" cy="212" r="1.7"/><circle cx="286" cy="196" r="2.5"/>
+    <circle cx="352" cy="262" r="1.8"/><circle cx="440" cy="228" r="2.2"/><circle cx="620" cy="252" r="2"/>
+    <circle cx="700" cy="196" r="2.6"/><circle cx="812" cy="238" r="1.8"/><circle cx="866" cy="276" r="2.1"/>
+    <circle cx="24" cy="262" r="1.9"/><circle cx="228" cy="288" r="1.6"/><circle cx="758" cy="286" r="2.2"/>
+  </g>
+  <g fill="#2A2D30" opacity="0.55">
+    <circle cx="82" cy="72" r="2.8"/><circle cx="264" cy="48" r="2.2"/><circle cx="398" cy="112" r="3"/>
+    <circle cx="518" cy="164" r="2.4"/><circle cx="646" cy="88" r="2.7"/><circle cx="756" cy="152" r="2.3"/>
+    <circle cx="856" cy="52" r="2.6"/><circle cx="140" cy="240" r="2.9"/><circle cx="486" cy="272" r="2.4"/>
+    <circle cx="672" cy="228" r="2.7"/>
+  </g>
+  <!-- verblasste weisse Randlinie -->
+  <g fill="#E4E1D4">
+    <rect x="0"   y="200" width="104" height="11" opacity="0.5"/>
+    <rect x="112" y="200" width="86"  height="11" opacity="0.34"/>
+    <rect x="204" y="201" width="132" height="10" opacity="0.46"/>
+    <rect x="344" y="200" width="70"  height="11" opacity="0.26"/>
+    <rect x="420" y="200" width="158" height="11" opacity="0.44"/>
+    <rect x="586" y="201" width="94"  height="10" opacity="0.3"/>
+    <rect x="688" y="200" width="126" height="11" opacity="0.48"/>
+    <rect x="822" y="200" width="78"  height="11" opacity="0.32"/>
+  </g>
+  <g fill="#2F3336" opacity="0.35">
+    <rect x="0" y="210" width="900" height="3"/>
+  </g>
+</g>
+
+<!-- t_bordstein | Bordsteinkante von der Strasse aus | nominal 900 x 90 | Anker: obere linke Ecke -->
+<g id="t_bordstein">
+  <!-- schmaler Streifen Gehweg ganz oben -->
+  <rect x="0" y="0" width="900" height="19" fill="url(#b_gGehweg)"/>
+  <g filter="url(#rauh)" opacity="0.55"><rect x="0" y="0" width="900" height="19" fill="url(#b_gGehweg)"/></g>
+  <g fill="#8E8A7E" opacity="0.45">
+    <rect x="96"  y="0" width="2.4" height="19"/><rect x="248" y="0" width="2.4" height="19"/>
+    <rect x="392" y="0" width="2.4" height="19"/><rect x="546" y="0" width="2.4" height="19"/>
+    <rect x="690" y="0" width="2.4" height="19"/><rect x="838" y="0" width="2.4" height="19"/>
+  </g>
+  <!-- abgerundete Oberkante -->
+  <rect x="0" y="17" width="900" height="15" fill="url(#b_gKante)"/>
+  <rect x="0" y="17" width="900" height="4" fill="#FFFFFF" opacity="0.42"/>
+  <rect x="0" y="29" width="900" height="3" fill="#7C786D" opacity="0.35"/>
+  <!-- Bordsteinvorderseite -->
+  <rect x="0" y="31" width="900" height="59" fill="url(#b_gBeton)"/>
+  <g filter="url(#rauh)" opacity="0.5"><rect x="0" y="31" width="900" height="59" fill="url(#b_gBeton)"/></g>
+  <rect x="0" y="31" width="900" height="4" fill="#FFFFFF" opacity="0.3"/>
+  <!-- Schmutz- und Schattensaum am Fuss -->
+  <rect x="0" y="76" width="900" height="14" fill="#2A2924" opacity="0.34"/>
+  <rect x="0" y="86" width="900" height="4" fill="#16150F" opacity="0.42"/>
+  <!-- Fugen alle 120 -->
+  <g>
+    <rect x="60"  y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="62.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="180" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="182.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="300" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="302.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="420" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="422.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="540" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="542.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="660" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="662.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+    <rect x="780" y="17" width="2.6" height="73" fill="#6A665B" opacity="0.6"/>
+    <rect x="782.6" y="17" width="1.6" height="73" fill="#F0ECE0" opacity="0.5"/>
+  </g>
+  <!-- ein paar Abplatzer -->
+  <path d="M 236,31 L 252,31 L 246,40 L 232,38 Z" fill="#8B8779" opacity="0.5"/>
+  <path d="M 614,62 L 632,66 L 620,74 L 606,70 Z" fill="#8B8779" opacity="0.45"/>
+  <!-- Schattenlinie Gehweg / Kante -->
+  <rect x="0" y="15" width="900" height="3" fill="#57544A" opacity="0.5"/>
+</g>
+
+<!-- t_laub | Haeufchen nasses Herbstlaub | nominal 220 x 120 | Anker: Auflageflaeche Mitte -->
+<g id="t_laub">
+  <ellipse cx="6" cy="-2" rx="112" ry="15" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <!-- dunkle Grundmasse, damit es ein Haufen wird -->
+  <g filter="url(#kontakt)">
+    <path d="M -108,0 C -104,-44 -66,-82 -8,-88 C 50,-94 96,-56 106,0 Z" fill="url(#b_gLaubNass)"/>
+  </g>
+  <!-- hintere Lage -->
+  <g transform="translate(-70,-74) rotate(7) scale(0.76,0.44)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubBraun)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(2,-82) rotate(-15) scale(0.7,0.42)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubRot)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <!-- mittlere Lage -->
+  <g transform="translate(-96,-44) rotate(-11) scale(0.9,0.5)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubOcker)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(-16,-50) rotate(13) scale(0.94,0.52)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubBraun)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <!-- vordere Lage -->
+  <g transform="translate(-110,-16) rotate(5) scale(1.02,0.54)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubRot)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(-34,-12) rotate(-7) scale(1.06,0.56)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubOcker)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <g transform="translate(24,-26) rotate(20) scale(0.86,0.5)">
+    <use href="#b_gBlattA" fill="url(#b_gLaubBraun)"/><use href="#b_gBlattDeko"/>
+  </g>
+  <!-- nass: ein zusammenhaengender Glanz ueber dem Haufen -->
+  <ellipse cx="-38" cy="-58" rx="58" ry="20" fill="url(#glanz)" opacity="0.3" transform="rotate(-10 -38 -58)"/>
+  <ellipse cx="26" cy="-10" rx="52" ry="12" fill="url(#stahlWarm)" opacity="0.3"/>
+</g>
+
+<!-- t_stabmagnet | Stabmagnet waagerecht liegend | nominal 200 x 60 | Anker: Mitte -->
+<g id="t_stabmagnet">
+  <ellipse cx="4" cy="24" rx="104" ry="11" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <!-- Deckflaeche -->
+    <polygon points="-102,-18 90,-18 102,-32 -90,-32" fill="url(#b_gMagRotO)"/>
+    <!-- Vorderseite -->
+    <rect x="-102" y="-18" width="192" height="40" fill="url(#b_gMagRot)"/>
+  </g>
+  <!-- blaugraue Haelfte -->
+  <polygon points="-6,-18 90,-18 102,-32 6,-32" fill="url(#b_gMagBlauO)"/>
+  <rect x="-6" y="-18" width="96" height="40" fill="url(#b_gMagBlau)"/>
+  <!-- Trennkante der beiden Haelften -->
+  <polygon points="-6,-18 -4,-18 8,-32 6,-32" fill="#1B1F27" opacity="0.5"/>
+  <rect x="-6.6" y="-18" width="2.4" height="40" fill="#1B1F27" opacity="0.45"/>
+  <rect x="-4.2" y="-18" width="1.6" height="40" fill="#FFFFFF" opacity="0.28"/>
+
+  <!-- harte Kanten: Stahl, poliert -->
+  <polygon points="-90,-32 102,-32 102,-29.4 -90,-29.4" fill="#FFFFFF" opacity="0.55"/>
+  <polygon points="-102,-18 90,-18 90,-14.6 -102,-14.6" fill="#FFFFFF" opacity="0.3"/>
+  <polygon points="-102,-18 -90,-32 -90,-29.4 -99.6,-18.2" fill="#FFFFFF" opacity="0.42"/>
+  <rect x="-102" y="16" width="192" height="6" fill="#120E12" opacity="0.4"/>
+  <polygon points="90,-18 102,-32 102,-29 92.4,-17.8" fill="#0E1017" opacity="0.4"/>
+  <rect x="86" y="-18" width="4" height="40" fill="#0E1017" opacity="0.34"/>
+  <!-- Politur: lange Reflexe ueber der Flanke -->
+  <rect x="-98" y="-11" width="184" height="4.5" rx="2.2" fill="#FFFFFF" opacity="0.22"/>
+  <rect x="-96" y="6" width="176" height="3" rx="1.5" fill="#FFFFFF" opacity="0.12"/>
+  <!-- warmer Rueckwurf unten -->
+  <ellipse cx="-6" cy="20" rx="88" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+  <!-- Glanzpunkt oben links -->
+  <ellipse cx="-56" cy="-26" rx="42" ry="6" fill="url(#glanz)"/>
+  <ellipse cx="-76" cy="-8" rx="24" ry="7" fill="url(#glanz)" opacity="0.5"/>
+  <!-- Kontur -->
+  <path d="M -102,-18 L -90,-32 L 102,-32 L 102,-29 L 90,-18 L 90,22 L -102,22 Z"
+        fill="none" stroke="#141822" stroke-width="2.6" stroke-opacity="0.55"/>
+</g>
+
+<!-- t_magnetschnur | Stabmagnet senkrecht an einer Schnur | nominal 90 x 300 | Anker: oben Mitte -->
+<g id="t_magnetschnur">
+  <!-- gedrehte Kordel -->
+  <path d="M -1,0 C -3,26 3,52 1,78 C -1,96 0,104 0,112" fill="none" stroke="#5E4C2A"
+        stroke-width="8" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M -1,0 C -3,26 3,52 1,78 C -1,96 0,104 0,112" fill="none" stroke="url(#b_gSchnur)"
+        stroke-width="6.4" stroke-linecap="round"/>
+  <g stroke="#4E3E20" stroke-width="1.6" stroke-opacity="0.5" fill="none" stroke-linecap="round">
+    <path d="M -3.2,4 L 2.6,11"/><path d="M -2.6,17 L 3.2,24"/><path d="M -1.6,30 L 4,37"/>
+    <path d="M -0.6,43 L 4.2,50"/><path d="M -0.6,56 L 3.6,63"/><path d="M -1.6,69 L 2.6,76"/>
+    <path d="M -2.6,82 L 1.6,89"/><path d="M -2.6,95 L 1.6,102"/>
+  </g>
+  <g stroke="#FFF3D2" stroke-width="1.5" stroke-opacity="0.5" fill="none" stroke-linecap="round">
+    <path d="M -3,9 L 0.4,13"/><path d="M -2.4,22 L 1,26"/><path d="M -1.4,35 L 2,39"/>
+    <path d="M -0.4,48 L 2.4,52"/><path d="M -0.4,61 L 2,65"/><path d="M -1.4,74 L 1,78"/>
+    <path d="M -2.4,87 L 0,91"/>
+  </g>
+
+  <!-- Magnet, senkrecht haengend -->
+  <g filter="url(#kontakt)">
+    <polygon points="-30,112 24,112 36,102 -18,102" fill="url(#b_gMagBlauO)"/>
+    <rect x="-30" y="112" width="54" height="184" fill="url(#b_gMagBlau)"/>
+    <polygon points="24,112 36,102 36,286 24,296" fill="#2C384A"/>
+  </g>
+  <!-- rotbraune untere Haelfte -->
+  <rect x="-30" y="204" width="54" height="92" fill="url(#b_gMagRot)"/>
+  <polygon points="24,204 36,194 36,286 24,296" fill="#6B3021"/>
+  <rect x="-30" y="202" width="54" height="2.6" fill="#141822" opacity="0.5"/>
+  <rect x="-30" y="204.6" width="54" height="1.6" fill="#FFFFFF" opacity="0.24"/>
+  <polygon points="24,204 36,194 36,196.6 24,206.6" fill="#141822" opacity="0.45"/>
+
+  <!-- Kanten -->
+  <polygon points="-18,102 36,102 36,104.6 -18,104.6" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="-30" y="112" width="54" height="3.4" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="-30" y="112" width="4" height="184" fill="#FFFFFF" opacity="0.2"/>
+  <rect x="19" y="112" width="5" height="184" fill="#0E1017" opacity="0.3"/>
+  <rect x="-30" y="290" width="54" height="6" fill="#120E12" opacity="0.42"/>
+  <!-- Politur -->
+  <rect x="-24" y="118" width="5" height="172" rx="2.4" fill="#FFFFFF" opacity="0.24"/>
+  <rect x="-13" y="120" width="3" height="168" rx="1.5" fill="#FFFFFF" opacity="0.12"/>
+  <ellipse cx="-14" cy="140" rx="10" ry="30" fill="url(#glanz)" opacity="0.55"/>
+  <ellipse cx="-6" cy="284" rx="20" ry="8" fill="url(#stahlWarm)" opacity="0.45"/>
+
+  <!-- Schnur um den Magneten gebunden -->
+  <g>
+    <path d="M -31,124 C -14,120 8,120 25,124" fill="none" stroke="#5E4C2A" stroke-width="7.4" stroke-opacity="0.6"/>
+    <path d="M -31,124 C -14,120 8,120 25,124" fill="none" stroke="url(#b_gSchnur)" stroke-width="6"/>
+    <path d="M -31,137 C -14,133 8,133 25,137" fill="none" stroke="#5E4C2A" stroke-width="7.4" stroke-opacity="0.6"/>
+    <path d="M -31,137 C -14,133 8,133 25,137" fill="none" stroke="url(#b_gSchnur)" stroke-width="6"/>
+    <path d="M 25,124 C 32,124 34,130 34,133" fill="none" stroke="#8A7248" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 0,112 C -2,116 -1,120 0,122" fill="none" stroke="#8A7248" stroke-width="5.4" stroke-linecap="round"/>
+  </g>
+  <!-- Kontur -->
+  <path d="M -30,112 L -18,102 L 36,102 L 36,286 L 24,296 L -30,296 Z"
+        fill="none" stroke="#141822" stroke-width="2.6" stroke-opacity="0.55"/>
+</g>
+
+<!-- t_kronkorken | Kronkorken flach liegend | nominal 70 x 70 | Anker: Mitte -->
+<g id="t_kronkorken">
+  <ellipse cx="2" cy="22" rx="32" ry="7" fill="#241704" opacity="0.32" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <!-- geriffelter Rand -->
+    <path d="M 0,-21.9 L 5.1,-25.2 L 8.6,-21 L 14.8,-23 L 16.5,-18.1 L 23.1,-18.7 L 22.9,-13.7
+             L 29.4,-12.7 L 27.2,-8 L 33.1,-5.7 L 29.2,-1.6 L 33.9,1.9 L 28.5,4.9 L 31.6,9.3
+             L 25.3,11 L 26.6,15.9 L 19.9,16.1 L 19.2,21.1 L 12.7,19.8 L 10,24.4 L 4.4,21.7
+             L 0,25.5 L -4.4,21.7 L -10,24.4 L -12.7,19.8 L -19.2,21.1 L -19.9,16.1 L -26.6,15.9
+             L -25.3,11 L -31.6,9.3 L -28.5,4.9 L -33.9,1.9 L -29.2,-1.6 L -33.1,-5.7 L -27.2,-8
+             L -29.4,-12.8 L -22.9,-13.7 L -23.1,-18.7 L -16.5,-18.1 L -14.8,-23 L -8.6,-21
+             L -5.1,-25.2 Z" fill="url(#b_gKorkenRand)"/>
+    <!-- Deckflaeche, leicht gewoelbt -->
+    <ellipse cx="0" cy="0" rx="26.5" ry="19.5" fill="url(#b_gKorken)"/>
+  </g>
+  <!-- Riffel: kurze Schatten in den Kerben -->
+  <g stroke="#3E4654" stroke-width="1.4" stroke-opacity="0.55" fill="none" stroke-linecap="round">
+    <path d="M 0,-21.9 L 0,-25.3"/><path d="M 8.6,-21 L 10.2,-24.4"/><path d="M 16.5,-18.1 L 19.4,-21"/>
+    <path d="M 22.9,-13.7 L 26.7,-15.6"/><path d="M 27.2,-8 L 31.5,-8.7"/><path d="M 29.2,-1.6 L 33.8,-1.2"/>
+    <path d="M 28.5,4.9 L 32.6,6.4"/><path d="M 25.3,11 L 28.7,13.5"/><path d="M 19.9,16.1 L 22.4,19.4"/>
+    <path d="M 12.7,19.8 L 14,23.6"/><path d="M 4.4,21.7 L 4.4,25.5"/><path d="M -4.4,21.7 L -4.4,25.5"/>
+    <path d="M -12.7,19.8 L -14,23.6"/><path d="M -19.9,16.1 L -22.4,19.4"/><path d="M -25.3,11 L -28.7,13.5"/>
+    <path d="M -28.5,4.9 L -32.6,6.4"/><path d="M -29.2,-1.6 L -33.8,-1.2"/><path d="M -27.2,-8 L -31.5,-8.7"/>
+    <path d="M -22.9,-13.7 L -26.7,-15.6"/><path d="M -16.5,-18.1 L -19.4,-21"/><path d="M -8.6,-21 L -10.2,-24.4"/>
+  </g>
+  <!-- Verbeulung -->
+  <path d="M -22,-6 C -12,-16 6,-18 20,-10" fill="none" stroke="#5C6674" stroke-width="3.2" stroke-opacity="0.45"/>
+  <path d="M -20,-3 C -10,-13 8,-15 21,-7" fill="none" stroke="#E2E8EE" stroke-width="2" stroke-opacity="0.4"/>
+  <path d="M 6,18 C 14,14 22,6 24,-2" fill="none" stroke="#4E5766" stroke-width="3" stroke-opacity="0.35"/>
+  <ellipse cx="12" cy="9" rx="13" ry="8" fill="#4E5766" opacity="0.2" transform="rotate(-22 12 9)"/>
+  <!-- Kratzer im matten Blech -->
+  <g stroke="#F0F4F8" stroke-width="1.2" stroke-opacity="0.5" fill="none" stroke-linecap="round">
+    <path d="M -18,4 L -2,-2"/><path d="M -9,10 L 8,4"/><path d="M 2,-9 L 17,-5"/>
+  </g>
+  <g stroke="#3E4654" stroke-width="1.1" stroke-opacity="0.4" fill="none" stroke-linecap="round">
+    <path d="M -14,-8 L 0,-11"/><path d="M 4,12 L 18,7"/>
+  </g>
+  <!-- Kontur, warmer Rueckwurf, Glanz -->
+  <ellipse cx="0" cy="0" rx="26.5" ry="19.5" fill="none" stroke="#333B48" stroke-width="1.8" stroke-opacity="0.55"/>
+  <ellipse cx="1" cy="14" rx="18" ry="6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-10" cy="-9" rx="12" ry="6" fill="url(#glanz)" transform="rotate(-24 -10 -9)"/>
+</g>
+
+<!-- t_ringzieher | Aufreisslasche einer Getraenkedose | nominal 60 x 40 | Anker: Mitte -->
+<g id="t_ringzieher">
+  <ellipse cx="2" cy="14" rx="28" ry="6" fill="#241704" opacity="0.3" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <!-- duennes Alu, Kante nach unten sichtbar -->
+    <path d="M -30,3 C -30,-11 -18,-16 -2,-16 C 14,-16 26,-9 30,-1 C 31,2 31,4 30,7
+             C 26,15 14,22 -2,22 C -18,22 -30,17 -30,3 Z
+             M 8,3 A 18,10.5 0 1 1 -26,3 A 18,10.5 0 1 1 8,3 Z"
+          fill="#6E7887" fill-rule="evenodd"/>
+    <path d="M -30,0 C -30,-14 -18,-19 -2,-19 C 14,-19 26,-12 30,-4 C 31,-1 31,1 30,4
+             C 26,12 14,19 -2,19 C -18,19 -30,14 -30,0 Z
+             M 8,0 A 18,10.5 0 1 1 -26,0 A 18,10.5 0 1 1 8,0 Z"
+          fill="url(#b_gAluD)" fill-rule="evenodd"/>
+  </g>
+  <!-- gepraegte Rille rings um den Ring -->
+  <path d="M 12,0 A 22,14 0 1 1 -30,0 A 22,14 0 1 1 12,0 Z"
+        fill="none" stroke="#7E8996" stroke-width="1.6" stroke-opacity="0.5"/>
+  <!-- Lochkante: oben dunkel, unten hell -->
+  <path d="M -26,0 A 18,10.5 0 0 1 8,0" fill="none" stroke="#39414E" stroke-width="2.2" stroke-opacity="0.6"/>
+  <path d="M 8,0 A 18,10.5 0 0 1 -26,0" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.6"/>
+  <!-- Niet -->
+  <ellipse cx="22" cy="0" rx="7" ry="6" fill="#8B96A4"/>
+  <ellipse cx="22" cy="-0.8" rx="5" ry="4.2" fill="url(#b_gAluD)"/>
+  <ellipse cx="22" cy="-0.8" rx="5" ry="4.2" fill="none" stroke="#3B4450" stroke-width="1.3" stroke-opacity="0.55"/>
+  <ellipse cx="20.6" cy="-2.2" rx="2.4" ry="1.6" fill="#FFFFFF" opacity="0.75"/>
+  <!-- Hebelrippe -->
+  <path d="M 14,-9 C 20,-6 20,6 14,9" fill="none" stroke="#5E6875" stroke-width="1.6" stroke-opacity="0.45"/>
+  <!-- Kontur, warmer Rueckwurf, Glanz -->
+  <path d="M -30,0 C -30,-14 -18,-19 -2,-19 C 14,-19 26,-12 30,-4 C 31,-1 31,1 30,4
+           C 26,12 14,19 -2,19 C -18,19 -30,14 -30,0 Z"
+        fill="none" stroke="#38414D" stroke-width="1.8" stroke-opacity="0.55"/>
+  <ellipse cx="-8" cy="15" rx="14" ry="4" fill="url(#stahlWarm)" opacity="0.5"/>
+  <path d="M -26,-8 C -20,-15 -8,-16 2,-14" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.7"/>
+  <ellipse cx="-19" cy="-11" rx="9" ry="4" fill="url(#glanz)" transform="rotate(-24 -19 -11)"/>
+</g>
+
+<!-- t_schluessel_messing | einzelner Messingschluessel, liegend | nominal 130 x 50 | Anker: Mitte -->
+<g id="t_schluessel_messing">
+  <ellipse cx="4" cy="18" rx="62" ry="9" fill="#241704" opacity="0.3" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <path d="M -26,-8 L 63,-8 L 63,-2 L 66,-2 L 66,6 L 59,6 L 59,0 L 53,0 L 53,9 L 46,9
+             L 46,2 L 40,2 L 40,11 L 32,11 L 32,3 L 25,3 L 25,8 L -26,8 Z" fill="url(#b_gMessing)"/>
+    <circle cx="-42" cy="0" r="23" fill="url(#b_gMessingKopf)"/>
+  </g>
+  <!-- Loch im Kopf -->
+  <ellipse cx="-42" cy="0" rx="9" ry="8.4" fill="#4E3A0C"/>
+  <ellipse cx="-42" cy="-1.4" rx="9" ry="8.4" fill="none" stroke="#FFF3C6" stroke-width="1.8" stroke-opacity="0.6"/>
+  <ellipse cx="-42" cy="1" rx="9" ry="8.4" fill="none" stroke="#6B4F0F" stroke-width="1.8" stroke-opacity="0.55"/>
+  <!-- Kopfwoelbung -->
+  <circle cx="-42" cy="0" r="17.5" fill="none" stroke="#7E5D13" stroke-width="1.6" stroke-opacity="0.32"/>
+  <path d="M -57,-11 C -50,-19 -34,-19 -27,-11" fill="none" stroke="#FFF6D8" stroke-width="3.4" stroke-opacity="0.8"/>
+  <path d="M -55,11 C -48,18 -35,18 -29,12" fill="none" stroke="#6B4F0F" stroke-width="2.6" stroke-opacity="0.42"/>
+  <!-- Schaft: polierter Grat oben, Schatten unten -->
+  <path d="M -24,-5.4 L 62,-5.4" stroke="#FFF6D8" stroke-width="3.2" stroke-opacity="0.8"/>
+  <path d="M -24,-0.6 L 60,-0.6" stroke="#FFEBAE" stroke-width="1.8" stroke-opacity="0.4"/>
+  <path d="M -24,5.2 L 24,5.2" stroke="#6B4F0F" stroke-width="2.4" stroke-opacity="0.5"/>
+  <!-- Kerben im Bart, jede mit heller Schnittkante -->
+  <g stroke="#FFF3C6" stroke-width="1.6" stroke-opacity="0.7" fill="none">
+    <path d="M 25.8,3 L 25.8,8"/><path d="M 32.8,3 L 32.8,11"/>
+    <path d="M 40.8,2 L 40.8,11"/><path d="M 46.8,2 L 46.8,9"/>
+    <path d="M 53.8,0 L 53.8,9"/><path d="M 59.8,0 L 59.8,6"/>
+  </g>
+  <g stroke="#5E440C" stroke-width="1.5" stroke-opacity="0.5" fill="none">
+    <path d="M 31.2,3.6 L 25.4,3.6"/><path d="M 39.2,2.6 L 32.4,2.6"/>
+    <path d="M 52.2,0.6 L 46.4,0.6"/><path d="M 65,-1.4 L 59.4,-1.4"/>
+  </g>
+  <!-- Kontur -->
+  <path d="M -26,-8 L 63,-8 L 63,-2 L 66,-2 L 66,6 L 59,6 L 59,0 L 53,0 L 53,9 L 46,9
+           L 46,2 L 40,2 L 40,11 L 32,11 L 32,3 L 25,3 L 25,8 L -26,8 Z"
+        fill="none" stroke="#4E390F" stroke-width="1.9" stroke-opacity="0.6"/>
+  <circle cx="-42" cy="0" r="23" fill="none" stroke="#4E390F" stroke-width="2" stroke-opacity="0.55"/>
+  <!-- warmer Rueckwurf, harter Glanz -->
+  <ellipse cx="6" cy="9" rx="52" ry="5" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-50" cy="-12" rx="12" ry="6" fill="url(#glanz)" transform="rotate(-28 -50 -12)"/>
+  <ellipse cx="4" cy="-6" rx="30" ry="3" fill="url(#glanz)" opacity="0.7"/>
+</g>

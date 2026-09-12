@@ -1,0 +1,196 @@
+{
+ "seite": {
+  "id": "fo8",
+  "quelle": "oi11",
+  "sim": "brille",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei Brillen ohne Etikett",
+  "name": "Wie hilft eine Brille?",
+  "fachwoerter_neu": [
+   "Zerstreuungslinse"
+  ],
+  "alltag": [
+   "Unter den Karten liegen zwei alte Brillen ohne Etikett.",
+   "Eine gehört zu einem kurzsichtigen Auge, eine zu einem weitsichtigen.",
+   "Aber welche passt zu welchem?",
+   "Ein Glas, das Licht auseinanderlenkt, heißt Zerstreuungslinse."
+  ],
+  "frage": "Welche Linse gehört zu welchem Sehfehler?",
+  "predict": [
+   "Kurzsichtige brauchen eine Zerstreuungslinse, Weitsichtige eine Sammellinse.",
+   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.",
+   "Drücke „Brille“ und lies die neue Meldung.",
+   "Wähle „weitsichtig“ und wiederhole beide Schritte.",
+   "Trage alle vier Ergebnisse in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Auge",
+   "Wo liegt das Bild?",
+   "scharf oder unscharf?"
+  ],
+  "tabRows": [
+   [
+    "kurzsichtig ohne Brille",
+    "vor der Netzhaut",
+    "unscharf"
+   ],
+   [
+    "kurzsichtig mit Brille",
+    "",
+    ""
+   ],
+   [
+    "weitsichtig ohne Brille",
+    "",
+    ""
+   ],
+   [
+    "weitsichtig mit Brille",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Kurzsichtige Augen brauchen eine",
+    "loesung": "Zerstreuungslinse",
+    "post": "."
+   },
+   {
+    "pre": "Weitsichtige Augen brauchen eine",
+    "loesung": "Sammellinse",
+    "post": ". Dann liegt das Bild genau auf der Netzhaut."
+   }
+  ],
+  "wortbank": [
+   "Zerstreuungslinse",
+   "Sammellinse",
+   "vor",
+   "hinter",
+   "scharf"
+  ],
+  "beispiel": {
+   "frage": "Jannis ist kurzsichtig. Welche Brille hilft ihm?",
+   "antwort": "Ohne Brille liegt das Bild vor der Netzhaut und ist unscharf. Ihm hilft eine Zerstreuungslinse. Mit Brille liegt das Bild genau auf der Netzhaut."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim weitsichtigen Auge ohne Brille?",
+    "optionen": [
+     "Das Bild liegt vor der Netzhaut.",
+     "Das Bild liegt genau auf der Netzhaut.",
+     "Das Bild liegt hinter der Netzhaut."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim kurzsichtigen Auge liegt das Bild",
+      "loesung": "vor",
+      "post": "der Netzhaut."
+     },
+     {
+      "pre": "Mit der richtigen Brille ist das Bild",
+      "loesung": "scharf",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum brauchen kurzsichtige und weitsichtige Augen verschiedene Linsen?",
+    "satzstarter": "Ohne Brille liegt das Bild einmal vor und einmal …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: vor der Netzhaut oder hinter der Netzhaut – das ist der Unterschied.",
+   "h2": "Beginne so: Beim kurzsichtigen Auge liegt das Bild vor der Netzhaut. Beim weitsichtigen …",
+   "h3": "Fast fertige Antwort: Das Bild liegt einmal vor und einmal hinter der Netzhaut. Darum braucht jedes Auge eine andere ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann kurzsichtig und weitsichtig unterscheiden.",
+   "Ich weiß, welche Linse welchem Auge hilft.",
+   "Ich kann sagen, wo das scharfe Bild liegen muss."
+  ],
+  "zuhause": "Frage zu Hause oder bei Freunden: Wer trägt eine Brille? Hilft sie beim Sehen in der Nähe oder in der Ferne?",
+  "bildauftrag": "[BILD: zwei große Augen-Querschnitte untereinander; oben ein kurzsichtiges Auge ohne Brille: zwei Lichtlinien treffen sich deutlich VOR der Netzhaut, Markierung „unscharf“; unten dasselbe Auge mit Brillenglas davor: Treffpunkt genau AUF der Netzhaut, Haken und Beschriftung „scharf“; große Beschriftungen „kurzsichtig“, „Zerstreuungslinse“, „Netzhaut“; je Auge nur zwei ruhige Linien, keine weiteren Strahlen; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fo8",
+  "lernziel": "Die Schülerinnen und Schüler ordnen zu, dass ein kurzsichtiges Auge eine Zerstreuungslinse und ein weitsichtiges Auge eine Sammellinse braucht, damit das Bild genau auf der Netzhaut liegt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Meldungen aus diesem Lehrerteil als Tafeltabelle. Optional: zwei echte Brillen mit unterschiedlichen Gläsern zum Durchsehen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zuhause-Umfrage in der Folgestunde sammeln",
+  "ersatz_ohne_simulation": "Die vier Meldungen als Tafeltabelle: kurzsichtig ohne Brille → Bild vor der Netzhaut, unscharf, nötig: Zerstreuungslinse · kurzsichtig mit Brille → Bild genau auf der Netzhaut, scharf · weitsichtig ohne Brille → Bild hinter der Netzhaut, unscharf, nötig: Sammellinse · weitsichtig mit Brille → Bild genau auf der Netzhaut, scharf.",
+  "merksatz": [
+   "Zerstreuungslinse",
+   "Sammellinse"
+  ],
+  "tabelle_erwartet": [
+   [
+    "kurzsichtig mit Brille",
+    "genau auf der Netzhaut",
+    "scharf"
+   ],
+   [
+    "weitsichtig ohne Brille",
+    "hinter der Netzhaut",
+    "unscharf"
+   ],
+   [
+    "weitsichtig mit Brille",
+    "genau auf der Netzhaut",
+    "scharf"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet: Ohne Brille: Bild liegt hinter der Netzhaut → unscharf. Nötig: Sammellinse.",
+   "typische_fehler": [
+    "kurzsichtig und weitsichtig werden vertauscht – das Wortpaar klingt ähnlich."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "vor",
+    "scharf"
+   ],
+   "typische_fehler": [
+    "vor und hinter werden vertauscht.",
+    "„gut“ statt der Wortbank-Form „scharf“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ohne Brille liegt das Bild einmal vor und einmal hinter der Netzhaut. Darum braucht jedes Auge eine andere Linse: das kurzsichtige die Zerstreuungslinse, das weitsichtige die Sammellinse.",
+   "alternativen": [
+    "Mit den Tabellenzeilen begründet: zwei verschiedene Fehler, zwei verschiedene Linsen.",
+    "Zielsatz aus dem Hinweis: Das Bild muss genau auf die Netzhaut."
+   ],
+   "typische_fehler": [
+    "„Eine stärkere Brille hilft bei beiden“ – die Richtung des Fehlers wird ignoriert.",
+    "vor und hinter der Netzhaut werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "Linse (auch richtig: Brille)",
+  "schwache": [
+   "Erst das kurzsichtige Auge vollständig bearbeiten, dann erst das weitsichtige.",
+   "Die Wortteile kurz und weit farbig markieren lassen.",
+   "Eselsbrücke besprechen: kurzsichtig heißt, nur das Nahe ist scharf."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Sehfehler und Brille. Kompetenz UF2 wie auf der Quellseite oi11. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

@@ -1,0 +1,155 @@
+[
+ {
+  "sim": "brille",
+  "ueberschrift": "👓 Wie korrigiert eine Brille Sehfehler?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🔭 kurzsichtig",
+    "ruft": "_briSetF('kurz')"
+   },
+   {
+    "aufschrift": "📖 weitsichtig",
+    "ruft": "_briSetF('weit')"
+   },
+   {
+    "aufschrift": "👓 Brille",
+    "ruft": "_briToggle()"
+   },
+   {
+    "aufschrift": "Eine Sammellinse",
+    "ruft": "_briAns(0,0)"
+   },
+   {
+    "aufschrift": "Eine Zerstreuungslinse",
+    "ruft": "_briAns(0,1)"
+   },
+   {
+    "aufschrift": "Gar keine",
+    "ruft": "_briAns(0,2)"
+   },
+   {
+    "aufschrift": "Eine Sammellinse",
+    "ruft": "_briAns(1,0)"
+   },
+   {
+    "aufschrift": "Eine Zerstreuungslinse",
+    "ruft": "_briAns(1,1)"
+   },
+   {
+    "aufschrift": "Einen Spiegel",
+    "ruft": "_briAns(1,2)"
+   },
+   {
+    "aufschrift": "Genau auf der Netzhaut",
+    "ruft": "_briAns(2,0)"
+   },
+   {
+    "aufschrift": "Vor der Netzhaut",
+    "ruft": "_briAns(2,1)"
+   },
+   {
+    "aufschrift": "Hinter der Netzhaut",
+    "ruft": "_briAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_briSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_briSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_briSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('brille')"
+   }
+  ],
+  "hinweise": [
+   "Wähle einen Sehfehler und beobachte, wo das Bild landet. Setze dann die richtige Brille auf und schau, ob das Bild scharf wird.",
+   "Kurzsichtig: Bild liegt vor der Netzhaut → Zerstreuungslinse (zerstreut das Licht etwas). | Weitsichtig: Bild liegt hinter der Netzhaut → Sammellinse (bündelt zusätzlich).",
+   "Kurzsichtig → Zerstreuungslinse. | Weitsichtig → Sammellinse. | Ziel: Bild genau auf die Netzhaut."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "briStatus: 🌫 Ohne Brille: Bild liegt vor der Netzhaut → unscharf. Nötig: Zerstreuungslinse."
+   },
+   {
+    "einstellung": "🔭 kurzsichtig",
+    "text": "briStatus: 🌫 Ohne Brille: Bild liegt vor der Netzhaut → unscharf. Nötig: Zerstreuungslinse."
+   },
+   {
+    "einstellung": "📖 weitsichtig",
+    "text": "briStatus: 🌫 Ohne Brille: Bild liegt hinter der Netzhaut → unscharf. Nötig: Sammellinse."
+   },
+   {
+    "einstellung": "👓 Brille",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!"
+   },
+   {
+    "einstellung": "Eine Sammellinse",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Die Sammellinse ist für Weitsichtige."
+   },
+   {
+    "einstellung": "Eine Zerstreuungslinse",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✓ Richtig! Bei Kurzsichtigkeit hilft eine Zerstreuungslinse."
+   },
+   {
+    "einstellung": "Gar keine",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf."
+   },
+   {
+    "einstellung": "Eine Sammellinse",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✓ Richtig! Bei Weitsichtigkeit hilft eine Sammellinse."
+   },
+   {
+    "einstellung": "Eine Zerstreuungslinse",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Die Zerstreuungslinse ist für Kurzsichtige."
+   },
+   {
+    "einstellung": "Einen Spiegel",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler."
+   },
+   {
+    "einstellung": "Genau auf der Netzhaut",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Dann bräuchte er keine Brille."
+   },
+   {
+    "einstellung": "Vor der Netzhaut",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✓ Richtig! Bei Kurzsichtigkeit liegt das Bild vor der Netzhaut."
+   },
+   {
+    "einstellung": "Hinter der Netzhaut",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Hinter der Netzhaut liegt es bei Weitsichtigkeit."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Hinter der Netzhaut liegt es bei Weitsichtigkeit.  ||  briSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Hinter der Netzhaut liegt es bei Weitsichtigkeit.  ||  briSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Hinter der Netzhaut liegt es bei Weitsichtigkeit."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "briStatus: ✓ Mit Sammellinse liegt das Bild genau auf der Netzhaut → scharf!  ||  briFb0: ✗ Ohne Korrektur bleibt das Bild unscharf.  ||  briFb1: ✗ Ein Spiegel korrigiert keinen Sehfehler.  ||  briFb2: ✗ Hinter der Netzhaut liegt es bei Weitsichtigkeit."
+   }
+  ],
+  "bildtexte": [
+   "Netzhaut",
+   "🌫 unscharf – Bild vor der Netzhaut",
+   "🌫 unscharf – Bild hinter der Netzhaut",
+   "Sammellinse",
+   "✓ scharf – Bild auf der Netzhaut"
+  ]
+ }
+]

@@ -1,0 +1,190 @@
+{
+ "seite": {
+  "id": "fs12",
+  "quelle": "st12",
+  "sim": "blitz",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Blitz und Donner",
+  "name": "Warum kommt der Donner später?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Am Nachmittag zieht ein Gewitter über den Schulhof.",
+   "Nour und Jannis schieben ihre Räder schnell unter das Dach.",
+   "Sie sehen den Blitz sofort.",
+   "Den Donner hören sie erst viele Sekunden später."
+  ],
+  "frage": "Warum hören wir den Donner erst nach dem Blitz?",
+  "predict": [
+   "Der Donner entsteht erst einige Sekunden nach dem Blitz.",
+   "Blitz und Donner starten zusammen. Der Donner ist nur viel langsamer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.",
+   "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.",
+   "Stelle den Regler danach auf 2,0 km und zuletzt auf 3,0 km.",
+   "Trage die Zeit für den Donner und die Zeit für das Licht in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie weit ist das Gewitter weg?",
+   "Wie lange braucht der Donner?",
+   "Wie lange braucht das Licht?"
+  ],
+  "tabRows": [
+   [
+    "1,0 km",
+    "2,92 s",
+    "3 Millionstel Sekunden"
+   ],
+   [
+    "2,0 km",
+    "",
+    ""
+   ],
+   [
+    "3,0 km",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Blitz und Donner starten zur gleichen Zeit. Das Licht ist",
+    "loesung": "sofort",
+    "post": "da."
+   },
+   {
+    "pre": "Der Donner ist viel",
+    "loesung": "langsamer",
+    "post": ". Er läuft mit 343 m/s und kommt darum später an."
+   }
+  ],
+  "wortbank": [
+   "sofort",
+   "langsamer",
+   "5,83 s",
+   "10 Millionstel Sekunden"
+  ],
+  "beispiel": {
+   "frage": "Warum sieht Nour den Blitz zuerst?",
+   "antwort": "Blitz und Donner starten zur gleichen Zeit. Das Licht ist sofort bei Nour. Der Donner ist viel langsamer. Bei 1,0 km braucht er 2,92 s. Darum sieht Nour den Blitz zuerst und hört den Donner später."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei 3,0 km Entfernung?",
+    "optionen": [
+     "Das Licht braucht 8,75 s, der Donner nur 10 Millionstel Sekunden.",
+     "Der Donner und das Licht brauchen beide 8,75 s.",
+     "Der Donner braucht 8,75 s, das Licht nur 10 Millionstel Sekunden."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2,0 km braucht der Donner",
+      "loesung": "5,83 s",
+      "post": "bis zu uns."
+     },
+     {
+      "pre": "Bei 3,0 km braucht der Donner 8,75 s. Das Licht braucht nur",
+      "loesung": "10 Millionstel Sekunden",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der Donner entsteht erst später als der Blitz.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Blitz und Donner starten …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Beide Zeiten hast du vorher schon in die Tabelle geschrieben.",
+   "h2": "Beginne so: Blitz und Donner starten zur gleichen Zeit. Nur der Donner …",
+   "h3": "Fast fertige Antwort: Blitz und Donner starten zur gleichen Zeit. Das Licht ist sofort bei uns. Der Donner braucht bei 3,0 km 8,75 s. Ergänze den letzten Satz: Der Donner entsteht nicht später, er ist nur viel ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, wie lange der Donner bis zu uns braucht.",
+   "Ich weiß, dass Blitz und Donner zur gleichen Zeit starten.",
+   "Ich kann erklären, warum wir den Donner später hören."
+  ],
+  "zuhause": "Zähle beim nächsten Gewitter mit. Bleibe dabei im Haus am Fenster. Zähle die Sekunden vom Blitz bis zum Donner. Schreibe deine Zahl auf.",
+  "bildauftrag": "[BILD: eine einzige breite Szene: links eine dunkle Gewitterwolke mit EINEM Zickzack-Blitz zum Boden, rechts Nour und Jannis mit ihren Rädern unter einem Schuldach; dazwischen eine gerade Strecke mit der großen Maßangabe „3,0 km“; auf dieser Strecke zwei Wege übereinander: oben ein dünner gelber Pfeil, der die beiden schon erreicht hat, beschriftet „Licht: sofort da“, darunter ein breiter blaugrauer Bogen, der erst ein Drittel der Strecke geschafft hat, beschriftet „Donner: 343 m/s“; rechts unten eine große Uhr mit „8,75 s“; nur dieser eine Blitz, keine weiteren Blitze, keine Nebenszene, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs12",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, wie lange der Donner aus 1,0 km, 2,0 km und 3,0 km bis zu ihnen braucht. Sie erklären: Blitz und Donner starten zur gleichen Zeit, das Licht ist sofort da, der Donner läuft nur mit 343 m/s und kommt darum später an. Die Feldstärke, die Schwelle 300 kV/m, die Einheit kV/m und jede eigene Rechnung mit t = s / v bleiben dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Stoppuhr, mit der die Klasse 2,92 s, 5,83 s und 8,75 s einmal laut abzählt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen; eingestellt wird nur der Regler „Entfernung des Gewitters“. 1,0 km → „t = s / v = 1000 m / 343 m/s = 2,92 s“ und „Das Licht braucht für dieselbe Strecke nur 3 Millionstel Sekunden.“ · 2,0 km → „t = s / v = 2000 m / 343 m/s = 5,83 s“ und „Das Licht braucht für dieselbe Strecke nur 7 Millionstel Sekunden.“ · 3,0 km → „t = s / v = 3000 m / 343 m/s = 8,75 s“ und „Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden.“ Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Abschnitte 1 bis 3 der Statuszeile (Ladungstrennung, Schwelle 300 kV/m, 30 kA und 30.000 K) bleiben abgedeckt – sie stehen absichtlich nicht auf der Schülerseite.",
+  "merksatz": [
+   "sofort",
+   "langsamer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2,0 km",
+    "5,83 s",
+    "7 Millionstel Sekunden"
+   ],
+   [
+    "3,0 km",
+    "8,75 s",
+    "10 Millionstel Sekunden"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Bei 3,0 km meldet Abschnitt 4 der Statuszeile „t = s / v = 3000 m / 343 m/s = 8,75 s“ und darunter „Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden.“ Die 8,75 s gehören also zum Donner, nicht zum Licht.",
+   "typische_fehler": [
+    "Antwort 0 wird gewählt: Die beiden Zeiten sind vertauscht. Die Sätze sehen fast gleich aus, nur das Subjekt ist verschieden – für DaZ-Lernende die häufigste Falle dieser Seite.",
+    "Antwort 1 wird gewählt: Licht und Donner gelten als gleich schnell, weil beide „zur gleichen Zeit starten“. Starten und Ankommen werden verwechselt.",
+    "Die Zeit wird am Regler gesucht statt in Abschnitt 4; der Regler zeigt nur „Entfernung des Gewitters: 3,0 km“."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,83 s",
+    "10 Millionstel Sekunden"
+   ],
+   "typische_fehler": [
+    "2,92 s aus der Beispielzeile abgeschrieben; dieser Wert gilt für 1,0 km, nicht für 2,0 km.",
+    "„5,83 km“ statt „5,83 s“ – die Einheit des Reglers wird mitgenommen.",
+    "10 Millionstel Sekunden werden für länger gehalten als 8,75 s, weil 10 größer ist als 8,75."
+   ]
+  },
+  "a3": {
+   "erwartung": "Blitz und Donner starten zur gleichen Zeit. Der Donner entsteht nicht später. Das Licht ist sofort bei uns, der Donner läuft nur mit 343 m/s. Bei 3,0 km braucht er 8,75 s. Darum hören wir ihn später, obwohl er gleichzeitig entstanden ist.",
+   "alternativen": [
+    "Verweis auf die eigene Tabelle: Die Zeit des Donners wächst mit der Entfernung (2,92 s · 5,83 s · 8,75 s), die Zeit des Lichts bleibt winzig.",
+    "Verweis auf Abschnitt 4 der Statuszeile: „Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall.“ Der Knall gehört zum Blitz selbst.",
+    "Eigenes Bild: Ein Feuerwerk sieht man sofort, den Knall hört man später – losgegangen ist es trotzdem nur einmal."
+   ],
+   "typische_fehler": [
+    "Der Unterschied zwischen „entstehen“ und „ankommen“ wird nicht gemacht; die Antwort wiederholt Jannis' Satz nur mit anderen Wörtern.",
+    "Die Behauptung wird bloß verneint („stimmt nicht“), ohne eine Zeit aus der Tabelle zu nennen.",
+    "Der Donner gilt als etwas, das der Blitz erst danach auslöst. Richtig ist: Derselbe Blitz macht Licht und Knall im selben Augenblick."
+   ]
+  },
+  "hilfe3_wort": "langsamer (auch richtig: langsam, langsamer unterwegs)",
+  "schwache": [
+   "Den Regler „Feld zwischen Wolke und Boden“ vorher einmal auf 310 stellen (Knopf „knapp darüber“) und danach nicht mehr anfassen. Er gehört zu einem anderen Lernziel und lenkt sonst ab.",
+   "Zuerst nur 1,0 km und 3,0 km vergleichen lassen (2,92 s gegen 8,75 s); die Zeile 2,0 km später ergänzen.",
+   "Die dritte Spalte „Wie lange braucht das Licht?“ zunächst abdecken. Erst wenn die Donner-Spalte steht, den Vergleich anschließen.",
+   "Die drei Zeiten 2,92 s – 5,83 s – 8,75 s auf Kärtchen der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "„Millionstel Sekunden“ gemeinsam laut lesen und mit einem Fingerschnippen vergleichen: kürzer als jedes Schnippen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke in der Simulation den Knopf „knapp darüber“ und beobachte die Anzeige „Zählen: … von 8,75 s“. Schreibe auf, bei welcher Sekunde der Donner ankommt.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gewitter, Blitz und Donner. Kompetenzen UF1, E2, E5 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Feldstärke, die Durchbruchschwelle 300 kV/m und die Entfernungsbestimmung mit t = s / v hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

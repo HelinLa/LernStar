@@ -1,0 +1,71 @@
+[
+ {
+  "kapitel": "gym_ladung",
+  "aufgaben": [
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "An einer Tankstelle steht das Schild: „Bevor Sie tanken, berühren Sie kurz das Blech des Autos.“ Erkläre mit dem, was du über Ladungstrennung und Funken gelernt hast, wie sich ein Mensch beim Aussteigen und Rutschen über den Sitz auflädt, und beurteile, warum das ruhige Berühren des großen Blechs vor dem Griff zum Zapfhahn wichtig ist.",
+    "erwartung": "Die Schülerin überträgt die Ladungstrennung aus dem Reibungsversuch auf den Alltag: Beim Rutschen über den Sitz reiben Kleidung und Bezug aneinander, dabei wechseln Elektronen von einem Körper zum anderen – es entsteht keine neue Ladung, der Mensch ist danach aber geladen. Nähert sich seine geladene Hand einem Metall, steigt zwischen Fingerspitze und Metall die Feldstärke; erreicht sie die Schwelle, wird die Luft auf der kurzen Strecke leitend und es springt ein Funke über, so wie beim Blitz im Kleinen. Am Zapfhahn wäre das gefährlich, weil sich Benzindämpfe entzünden könnten. Das ruhige Berühren des großflächigen Karosserieblechs (Metall ist ein Leiter) gleicht die Ladung langsam und ohne zündenden Funken aus, bevor man den Zapfhahn anfasst. Häufige Fehler: Es wird von neu entstehender Ladung gesprochen statt von wechselnden Elektronen; der Funke wird ohne die nötige Feldstärke erklärt; Leiter und Isolator werden verwechselt; die Gefahr der Benzindämpfe wird nicht genannt; das Blech wird als Ladungsquelle statt als Ableiter gedeutet."
+   },
+   {
+    "komp": "E6",
+    "afb": "III",
+    "prompt": "An einem trockenen Wintertag springt zwischen deiner Fingerspitze und einer Türklinke ein Funke über eine Luftstrecke von etwa 3 mm. Schätze mit der Schwelle von 300 kV/m, ab welcher Spannung zwischen Finger und Klinke die Luft leitend wird, und erkläre damit, warum eine einzelne 1,5-V-Batteriezelle niemals einen solchen Funken durch die Luft schlagen kann.",
+    "erwartung": "Die Schülerin nutzt den Zusammenhang U = E · d aus dem Blitz-Modell und rechnet für die kleine Strecke: 3 mm sind 0,003 m, also U = 300 kV/m · 0,003 m = 900 V. Sie folgert, dass zwischen Finger und Klinke rund 900 V nötig sind, damit die Luft leitend wird und der Funke springt, und dass sich ein Mensch beim Reiben kurzzeitig so hoch auflädt. Eine einzelne Batteriezelle liefert dagegen nur 1,5 V Antrieb – das ist hunderte Male zu wenig, um die 3 mm Luft leitend zu machen, deshalb schlägt aus ihr nie ein Funke durch die Luft. Häufige Fehler: Feldstärke und Spannung werden gleichgesetzt; es wird mit Zentimetern statt Metern gerechnet, sodass die Spannung um den Faktor 10 falsch herauskommt; die Batterie wird für gefährlicher gehalten, weil sie „dauerhaft“ liefert; die Einheit V wird vergessen; die hohe Reibungsspannung wird gar nicht mit der niedrigen Batteriespannung verglichen."
+   },
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Ein Mitschüler behauptet: „Die dicken Kabel zu den großen Scheinwerfern der Aula braucht man, damit der Strom schneller ankommt – in einem dünnen Kabel wären die Elektronen zu langsam, und das Licht ginge verzögert an.“ Beurteile die Aussage mit dem, was du über die Driftgeschwindigkeit und den Anstoß im Draht gelernt hast, und nenne einen sinnvollen Grund für die dickeren Kabel.",
+    "erwartung": "Die Schülerin erkennt, dass die Aussage Driftgeschwindigkeit und Anstoß verwechselt. Dass der Scheinwerfer sofort angeht, liegt am Anstoß, der mit rund 200 000 km/s durch die schon mit Elektronen gefüllte Leitung läuft – das gilt für dünne wie dicke Kabel gleichermaßen und hängt nicht von der Kabeldicke ab. Die einzelnen Elektronen wandern ohnehin nur extrem langsam (Bruchteile eines Millimeters je Sekunde); bei gleichem Strom wandern sie in einem dickeren Draht sogar langsamer, nicht schneller. Ein Verzögerungsargument gibt es also nicht. Als sinnvollen Grund für dicke Kabel nennt sie, dass die großen Scheinwerfer eine hohe Stromstärke ziehen und ein größerer Querschnitt diese hohe Stromstärke tragen kann, ohne dass sich das Kabel zu stark erwärmt. Häufige Fehler: Der schnelle Anstoß und das langsame Wandern werden nicht getrennt; es wird behauptet, im dickeren Draht seien die Elektronen schneller; das sofortige Leuchten wird dem einzelnen Elektron zugeschrieben; für die dicken Kabel wird gar kein tragfähiger Grund genannt."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_kreise",
+  "aufgaben": [
+   {
+    "komp": "UF4",
+    "afb": "III",
+    "prompt": "In der Aula soll ein Scheinwerfer an der hinteren Wand aufgestellt werden, gut 20 m von der Anschlussdose entfernt. Im Lager liegen eine lange, dünne Kabeltrommel und mehrere kurze, dicke Kabel, die man zusammenstecken kann. Sina schließt die dünne Trommel an und wundert sich, dass der Scheinwerfer schwächer leuchtet als direkt an der Dose. Erkläre mit dem, was du über den Widerstand eines Drahtes gelernt hast, warum das so ist, und begründe, welche Leitung besser geeignet ist.",
+    "erwartung": "Die Schülerin überträgt, dass der Widerstand eines Drahtes mit der Länge wächst und mit der Dicke sinkt und dass Kupfer gut leitet. Die lange, dünne Leitung hat deshalb einen viel größeren Widerstand als eine kurze, dicke. Dieser Leitungswiderstand liegt in Reihe zum Scheinwerfer, sodass der Gesamtwiderstand steigt und nach I = U / R_ges weniger Strom fließt; der Scheinwerfer leuchtet schwächer. Zusätzlich fällt an der langen Leitung ein Teil der Spannung ab (U = U₁ + U₂), der der Lampe fehlt, und die Leitung selbst wird warm. Sie empfiehlt eine möglichst kurze, dicke Kupferleitung und, wenn die Entfernung nötig ist, ein dickes Kabel statt der dünnen Trommel. Häufige Fehler: Der Widerstand des Kabels wird ganz vernachlässigt; dünn und dick werden vertauscht; nur die Länge, nicht die Dicke wird genannt; die schwächere Lampe wird der Batterie statt der Leitung zugeschrieben."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für einen Auftritt sollen zwei gleiche Scheinwerfer an dieselbe Kleinspannungsquelle angeschlossen werden. Beide sollen möglichst hell leuchten, und wenn eine Lampe durchbrennt, soll die andere weiterleuchten. David will sie hintereinander in Reihe anschließen, Sina nebeneinander parallel. Entscheide begründet, welche Schaltung die Technik-AG wählen soll, und erkläre, was beim Durchbrennen einer Lampe in beiden Schaltungen geschieht.",
+    "erwartung": "Die Schülerin entscheidet sich für die Parallelschaltung und begründet mit beiden geforderten Kriterien. Helligkeit: In der Reihenschaltung addieren sich die Widerstände, der Gesamtwiderstand steigt und der Strom sinkt, außerdem teilt sich die Spannung auf beide Lampen auf (U = U₁ + U₂), sodass jede nur einen Teil bekommt und dunkler leuchtet. In der Parallelschaltung liegt an jeder Lampe die volle Spannung, beide leuchten hell. Ausfall: In der Reihe ist der Kreis unterbrochen, sobald eine Lampe durchbrennt, und wie bei der alten Lichterkette bleibt dann auch die zweite dunkel. In der Parallelschaltung hat jede Lampe ihren eigenen Weg, die zweite leuchtet weiter. Beide Kriterien sprechen für die Parallelschaltung. Häufige Fehler: Es wird ohne Bezug auf die genannten Kriterien entschieden; die Reihenschaltung wird für heller gehalten; der Spannungsabfall U = U₁ + U₂ wird übersehen; beim Ausfall werden Reihe und Parallel vertauscht."
+   },
+   {
+    "komp": "E7",
+    "afb": "III",
+    "prompt": "Nour misst an einem unbeschrifteten Bauteil aus der Sammlung diese Werte: bei 1 V fließen 0,20 A, bei 2 V fließen 0,30 A und bei 3 V fließen 0,36 A. Sie behauptet: „Das ist bestimmt ein ohmscher Widerstand.“ Überprüfe ihre Behauptung, indem du für jede Zeile R = U/I berechnest, und begründe, an welches Bauteil aus dem Kapitel dich das Verhalten erinnert.",
+    "erwartung": "Die Schülerin berechnet den Widerstand für jede Zeile: R = 1 V / 0,20 A = 5 Ω, R = 2 V / 0,30 A ≈ 6,7 Ω und R = 3 V / 0,36 A ≈ 8,3 Ω. Da das Verhältnis U/I nicht in jeder Zeile gleich ist, sondern mit der Spannung wächst, ist der Widerstand nicht konstant. Damit gilt das Ohmsche Gesetz U = R · I hier nicht, und die U-I-Kennlinie wäre keine Ursprungsgerade, sondern nach oben gekrümmt. Nours Behauptung ist also falsch. Das Verhalten erinnert an eine Glühlampe, deren Draht sich beim Stromfluss erwärmt und deren Widerstand mit der Temperatur steigt. Häufige Fehler: R wird nur in einer einzigen Zeile berechnet; U und I werden bei R = U/I vertauscht; ein deutlich steigender Wert wird trotzdem für konstant erklärt; das Bauteil wird ohne Rechnung als ohmscher Widerstand bezeichnet."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_eleistung",
+  "aufgaben": [
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Zu Hause streiten deine Eltern über die Stromkosten. Der Vater will den WLAN-Router nachts ausschalten, weil er „ständig Strom frisst“; er hat 8 W und läuft 24 h am Tag. Die Mutter hält den Heizlüfter im Bad für wichtiger; er hat 2000 W und läuft morgens rund eine halbe Stunde. Rechne für beide Geräte die Energie pro Tag aus, vergleiche sie und schreibe eine begründete Empfehlung, wo sich das Sparen mehr lohnt.",
+    "erwartung": "Die Schülerin rechnet mit E = P · t für beide Geräte: Router 8 W · 24 h = 192 Wh, also rund 0,19 kWh am Tag; Heizlüfter 2000 W · 0,5 h = 1000 Wh = 1 kWh am Tag. Sie erkennt, dass der Heizlüfter trotz kurzer Laufzeit etwa fünf Mal so viel Energie am Tag umsetzt wie der dauerlaufende Router. Mit 0,30 € je kWh schätzt sie die Tageskosten ab, rund 0,06 € beim Router und 0,30 € beim Heizlüfter, und empfiehlt begründet, beim Heizlüfter anzusetzen, weil dort Leistung mal Laufzeit den größeren Wert ergibt; das nächtliche Abschalten des Routers bringt dagegen wenig. Sie stützt sich dabei auf den Merksatz, dass nicht die Wattzahl allein, sondern Leistung mal Laufzeit über die Energie und die Kosten entscheidet. Häufige Fehler: nur die Wattzahlen vergleichen und daraus schließen, der Heizlüfter sei immer teurer, ohne die Laufzeit einzurechnen; nur die Laufzeit vergleichen und den lange laufenden Router für den größeren Verbraucher halten; Wattstunden und Kilowattstunden verwechseln; eine Empfehlung ohne Rechnung geben."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "In deinem Zimmer hängen an einer Mehrfachsteckdose ein Heizlüfter, ein Fernseher und ein Laptop-Ladegerät. Auf der Steckdose steht „maximal 16 A“. Der Heizlüfter zieht rund 9 A, der Fernseher rund 0,4 A und das Ladegerät rund 0,3 A. Entscheide mit einer Rechnung, ob du zusätzlich einen zweiten Heizlüfter mit 9 A einstecken darfst, und begründe, was sonst im Stromkreis geschieht.",
+    "erwartung": "Die Schülerin addiert die Ströme zum Gesamtstrom, weil alle Geräte an derselben Leitung hängen: 9 A + 0,4 A + 0,3 A = 9,7 A. Das bleibt unter der Grenze von 16 A, der Strom fließt also noch sicher. Steckt sie einen zweiten Heizlüfter mit 9 A dazu, steigt der Gesamtstrom auf 9,7 A + 9 A = 18,7 A und überschreitet die 16 A; die Sicherung löst dann aus und unterbricht den Stromkreis, bevor die Leitung zu heiß wird und ein Brand entstehen kann. Sie entscheidet begründet, den zweiten Heizlüfter nicht anzustecken oder ihn an einen anderen Stromkreis zu hängen, und hält fest, dass für die Überlastung der Gesamtstrom entscheidend ist, nicht die Spannung. Häufige Fehler: nur ein einzelnes Gerät betrachten, statt die Ströme zum Gesamtstrom zu addieren; die Spannung statt der Stromstärke für maßgeblich halten; annehmen, die Sicherung passe sich dem Bedarf an und lasse einfach mehr Strom durch; den zweiten Heizlüfter für ungefährlich halten, weil die Steckdose ja „16 A kann“, ohne nachzurechnen."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Deine Familie will herausfinden, welches Küchengerät im Jahr am meisten kostet. Ihr habt ein Strommessgerät für die Steckdose, das die Leistung in Watt und die Energie in Kilowattstunden anzeigt, und eine Uhr. Entwickle eine Vorgehensweise, mit der ihr die Jahreskosten von Wasserkocher und Kühlschrank vergleichen könnt, und erkläre, warum ihr die Leistung allein nicht vergleichen dürft.",
+    "erwartung": "Die Schülerin plant, für jedes Gerät die Leistung mit dem Messgerät abzulesen und außerdem die tägliche Laufzeit zu bestimmen: beim Wasserkocher misst sie mit der Uhr die kurze Zeit je Nutzung und schätzt, wie oft er am Tag läuft; beim Kühlschrank berücksichtigt sie, dass er zwar 24 h angeschlossen ist, sein Motor aber nur getaktet läuft, und liest deshalb besser die Energie in kWh über einen ganzen Tag direkt am Messgerät ab. Aus E = P · t ermittelt sie die kWh pro Tag, rechnet mit 365 Tagen auf das Jahr hoch und multipliziert mit 0,30 € je kWh, um die Jahreskosten zu vergleichen. Sie begründet, dass die Leistung allein nicht reicht, weil erst Leistung mal Laufzeit die Energie ergibt: Der Wasserkocher hat eine hohe Leistung, läuft aber nur kurz, der Kühlschrank eine kleine Leistung, läuft aber dauerhaft. Häufige Fehler: nur die Wattzahlen der Typenschilder vergleichen; die Laufzeit raten statt messen; beim Kühlschrank mit voller Dauerleistung statt mit dem getakteten Betrieb rechnen; den Strompreis oder die 365 Tage vergessen; Wattstunden und Kilowattstunden verwechseln."
+   }
+  ]
+ }
+]

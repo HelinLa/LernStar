@@ -1,0 +1,191 @@
+{
+ "seite": {
+  "id": "fe3",
+  "quelle": "el3",
+  "sim": "bewegungsenergie",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Ball wirft den Eimer um",
+  "name": "Wo steckt die Energie beim Rollen?",
+  "fachwoerter_neu": [
+   "Bewegungsenergie"
+  ],
+  "alltag": [
+   "Nour stößt einen schweren Ball über den Hof.",
+   "Der Ball rollt gegen einen Eimer und wirft ihn um.",
+   "Die Energie in einer Bewegung heißt Bewegungsenergie E in Joule (J)."
+  ],
+  "frage": "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppeltes Tempo v?",
+  "predict": [
+   "Doppeltes Tempo v bringt mehr Energie als doppelte Masse.",
+   "Masse und Tempo v wirken gleich stark."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „zurücksetzen“. Am Bildschirm stehen 4 kg und 4 m/s.",
+   "Drücke „×2 Masse“ und fülle Zeile 2 aus.",
+   "Drücke danach „×2 Tempo“ und fülle Zeile 3 aus.",
+   "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Schritt?",
+   "Was steht am Bildschirm?",
+   "Wie viel Bewegungsenergie E?"
+  ],
+  "tabRows": [
+   [
+    "Start",
+    "4 kg mit 4 m/s",
+    "32 J"
+   ],
+   [
+    "×2 Masse",
+    "",
+    ""
+   ],
+   [
+    "×2 Tempo",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Doppelte Masse m bringt",
+    "loesung": "doppelt",
+    "post": "so viel Bewegungsenergie E."
+   },
+   {
+    "pre": "Doppeltes Tempo v bringt sogar",
+    "loesung": "viermal",
+    "post": "so viel Energie E."
+   }
+  ],
+  "wortbank": [
+   "doppelt",
+   "viermal",
+   "64 J",
+   "256 J"
+  ],
+  "beispiel": {
+   "frage": "Was steht am Bildschirm nach „×2 Masse“?",
+   "antwort": "Vorher: 4 kg mit 4 m/s und 32 J. Nachher: 8 kg mit 4 m/s und 64 J. Masse doppelt, Energie doppelt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Vor Schulen gilt Tempo 30. Warum ist langsam sicherer?",
+    "optionen": [
+     "Bei doppeltem Tempo v steckt doppelt so viel Energie im Auto.",
+     "Das Tempo v ändert die Energie nicht. Nur die Masse zählt.",
+     "Bei doppeltem Tempo v steckt viermal so viel Energie im Auto."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach „×2 Masse“ stehen dort 8 kg. Die Energie steigt von 32 J auf",
+      "loesung": "64 J",
+      "post": "."
+     },
+     {
+      "pre": "Nach „×2 Tempo“ stehen dort 8 m/s. Die Energie steigt auf",
+      "loesung": "256 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Schwer ist gefährlicher als schnell.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Das Tempo v zählt mehr, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Wörter der Wortbank werden gebraucht. Streiche jedes durch.",
+   "h2": "Schau in deine Tabelle. Von 64 J auf 256 J ist viermal so viel.",
+   "h3": "Fast fertige Antwort: Doppeltes Tempo v bringt viermal so viel Energie. Doppelte Masse bringt nur ___ so viel."
+  },
+  "selbstcheck": [
+   "Ich kann die Bewegungsenergie am Bildschirm ablesen.",
+   "Ich kann sagen, was doppelte Masse bewirkt.",
+   "Ich kann erklären, warum doppeltes Tempo v viermal so viel bringt."
+  ],
+  "zuhause": "Suche das Schild Tempo 30 vor einer Schule. Schreibe auf, warum langsam sicherer ist.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus drei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In jedem Feld rollt eine Kugel von links nach rechts über einen glatten Boden und trifft rechts einen gleich großen Holzklotz; der Klotz ist um eine deutlich unterschiedliche Strecke nach rechts geschoben. Die drei Schiebestrecken stehen im nachgemessenen Verhältnis 1 : 2 : 8. Feld 1 oben groß „4 kg mit 4 m/s“, darunter „32 J“: kleine Kugel, Klotz um ein kurzes Grundmaß verschoben – so kurz, dass das Achtfache davon in Feld 3 noch in denselben Bildausschnitt passt. Feld 2 oben groß „8 kg mit 4 m/s“, darunter „64 J“: doppelt so große Kugel, Klotz genau doppelt so weit verschoben wie in Feld 1. Feld 3 oben groß „8 kg mit 8 m/s“, darunter „256 J“: gleich große Kugel wie in Feld 2, Klotz genau achtmal so weit verschoben wie in Feld 1, also viermal so weit wie in Feld 2. Die Ausgangsstelle des Klotzes in allen drei Feldern durch dieselbe dünne senkrechte Linie markiert, damit die drei Schiebestrecken vergleichbar sind. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kugel, keine Personen. Unter den drei Feldern eine gemeinsame große Zeile: „mehr Energie – der Klotz rutscht weiter“. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ "lehrer": {
+  "id": "fe3",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Bewegungsenergie E in Joule an der Statuszeile ab und beschreiben an der belegten Kette 32 J – 64 J – 256 J: doppelte Masse bringt doppelt so viel Bewegungsenergie, doppeltes Tempo v bringt viermal so viel. Sie übertragen das auf Tempo 30 vor Schulen. Gerechnet wird nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: zwei verschieden schwere Kugeln auf einer Rampe, die einen Holzklotz anschieben.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils mit der Statuszeile bis zum Energiewert. Die Statuszeile steht am Bildschirm zweizeilig; auf den Karten genauso untereinander schreiben. Karte 1 (Start): „4 kg mit 4 m/s“, darunter „E = ½ · 4 · 4² = 32 J“. Karte 2 (nach „×2 Masse“): „8 kg mit 4 m/s“, darunter „E = ½ · 8 · 4² = 64 J“. Karte 3 (nach „×2 Tempo“): „8 kg mit 8 m/s“, darunter „E = ½ · 8 · 8² = 256 J“. Dazu eine vierte Karte mit dem Bildtext der Simulation: „Bewegungsenergie E = ½ · m · v²“ und „das Tempo zählt doppelt: v steht im Quadrat“. Die Formel wird nur gezeigt und in einem Satz erklärt, nicht gerechnet. Die Aufforderung „Drücke ‚Rollen lassen‘“ am Ende der Statuszeile gehört nicht auf die Karten – Lernende halten sie sonst für einen Teil des Messwerts. Auf die Rückseite jeder Karte gehört die Strecke, die der Bildschirm erst nach dem Rollen meldet: „Klotz 0,16 m weit geschoben.“, dann 0,32 m, dann 1,28 m. Statt der Animation zwei Kugeln auf einer Rampe gegen einen Holzklotz laufen lassen und die Schiebestrecken vergleichen.",
+  "merksatz": [
+   "doppelt",
+   "viermal"
+  ],
+  "tabelle_erwartet": [
+   [
+    "×2 Masse",
+    "8 kg mit 4 m/s",
+    "64 J"
+   ],
+   [
+    "×2 Tempo",
+    "8 kg mit 8 m/s",
+    "256 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die belegte Kette zeigt es: 8 kg mit 4 m/s sind 64 J, 8 kg mit 8 m/s sind 256 J. Bei gleicher Masse und doppeltem Tempo v ist es viermal so viel. Ein Auto mit 60 km/h trägt deshalb viermal so viel Bewegungsenergie wie dasselbe Auto mit 30 km/h.",
+   "typische_fehler": [
+    "Antwort 1: Masse und Tempo werden gleich behandelt („doppelt ist doppelt“) – genau die Vermutung 2 auf Seite A.",
+    "Antwort 2: Das Tempo gilt nur als „wie schnell es weh tut“, nicht als Größe, die die Energie ändert.",
+    "Der Sprung 64 J → 256 J wird als „viermal, weil auch die Masse doppelt war“ gelesen. Die Masse bleibt in diesem Schritt bei 8 kg; nur v ändert sich."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "64 J",
+    "256 J"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird 128 J gesetzt (doppelt statt viermal gerechnet). 128 J steht am Bildschirm bei 16 kg mit 4 m/s – und bei 4 kg mit 8 m/s. In genau diesem Zustand landet, wer „×2 Tempo“ gleich aus dem Startzustand drückt, ohne vorher „×2 Masse“ zu drücken (nachgemessen).",
+    "Die beiden Werte werden vertauscht, weil „×2 Tempo“ als der kleinere Schritt gelesen wird.",
+    "Es wird nachgerechnet und dabei die Masse vergessen: 32 J · 4 = 128 J. Die Seite verlangt Ablesen, nicht Rechnen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Tempo v zählt mehr, weil doppeltes Tempo viermal so viel Bewegungsenergie bringt. Doppelte Masse bringt nur doppelt so viel. Ein schneller Ball kann also gefährlicher sein als ein schwerer.",
+   "alternativen": [
+    "Bezug auf die eigenen Messwerte: „Von 32 J auf 64 J ist doppelt, von 64 J auf 256 J ist viermal.“ – reicht für die volle Wertung.",
+    "Bezug auf die Schiebestrecke: „Beim doppelten Tempo schiebt die Kugel den Klotz viel weiter als bei doppelter Masse.“",
+    "Alltagsbezug: „Deshalb gilt vor Schulen Tempo 30 und nicht ein Gewichtslimit für Autos.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus deiner Tabelle zeigt das?",
+    "„Schwer ist egal“ – falsch, die Masse zählt ja auch, nur weniger stark.",
+    "Es wird mit der Formel argumentiert („v steht im Quadrat“). Fachlich richtig, aber nicht verlangt; der Zahlenvergleich genügt."
+   ]
+  },
+  "hilfe3_wort": "doppelt (auch richtig: nur halb so viel wie viermal, zweimal)",
+  "schwache": [
+   "Die Reihenfolge ist zwingend: erst „zurücksetzen“, dann „×2 Masse“, dann „×2 Tempo“. Die beiden Verdopplungs-Knöpfe wirken auf den aktuellen Zustand. Wer aus dem Startzustand gleich „×2 Tempo“ drückt, bekommt andere Zahlen als in der Tabelle. Die drei Schritte als Merkzettel auf den Tisch legen.",
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen (32 J und 64 J), Zeile 3 erst danach dazunehmen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird. Aus der Statuszeile wird nur der Teil bis „= 32 J“ vorgelesen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Die Regler nicht anfassen lassen. Krumme Massen ergeben Werte, die die Anzeige rundet (½ · 15 · 1² = 7,5, angezeigt wird 8 J)."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle die Masse nacheinander auf 4 kg, 8 kg und 16 kg (Tempo v bleibt 4 m/s) und schreibe die drei Energiewerte auf. Welche Regel erkennst du?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Bewegungsenergie. Neu ist genau ein Fachwort: Bewegungsenergie. „Tempo v in m/s“ wurde in fk9 eingeführt, hier wird nur zurückverwiesen (Zählregel 4); „Joule“ stammt aus fe1. Der Kernlehrplan sagt „Geschwindigkeit“, der Bildschirm schreibt „Tempo“ – im Heft durchgängig „Tempo v“. Das Wort „Quadrat“ steht bewusst nur im Formelkasten der Simulation, nie in Wortbank, Merksatz oder Aufgabe; es wäre ein zweites neues Fachwort. Die Simulation benutzt zwei Formelzeichen für dieselbe Größe („E“ in der Statuszeile, „Ebew“ im Hinweistext) – im Heft immer „E“. Datenlage: Belegt sind allein die drei Zustände 4 kg/4 m/s = 32 J, 8 kg/4 m/s = 64 J und 8 kg/8 m/s = 256 J. Der saubere Tempo-Vergleich bei gleicher Masse 4 kg (32 J → 128 J) ist NICHT nachgemessen und darf nicht gedruckt werden; deshalb läuft der Vierfach-Vergleich hier über 64 J → 256 J bei 8 kg, und der Masse-Sprung wird in Spalte 2 ausdrücklich mitgeschrieben. Die Anzeige rundet (7,5 → 8 J, 187,5 → 188 J), darum sind nur 4 kg, 8 kg und 16 kg zugelassen; die ganze 15-kg-Reihe des Dumps ist gesperrt. Die Schiebestrecke des Klotzes hat sehr wohl einen angezeigten Wert – sie steht aber erst NACH dem Rollen in der Statuszeile, weshalb sie im simfakten-Dump fehlt: nachgemessen 0,16 m (32 J), 0,32 m (64 J) und 1,28 m (256 J). Sie bleibt trotzdem ohne Tabelleneintrag: die Tabelle übt das Ablesen der Energie, die Strecke ist die Gegenprobe zum Anschauen. Kompetenzen: die Tabelle trägt E5, Aufgabe 1 und der Zuhause-Auftrag tragen B1."
+ }
+}

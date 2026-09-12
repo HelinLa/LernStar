@@ -1,0 +1,170 @@
+[
+ {
+  "sim": "gleichfoermig-rs",
+  "ueberschrift": "➡️ Was ist eine gleichförmige Bewegung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "langsam",
+    "ruft": "_glmSet('langsam')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_glmSet('mittel')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_glmSet('schnell')"
+   },
+   {
+    "aufschrift": "▶ Fahren",
+    "ruft": "_glmStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_glmReset()"
+   },
+   {
+    "aufschrift": "Sie wird immer größer",
+    "ruft": "_glmAns(0,0)"
+   },
+   {
+    "aufschrift": "Sie ist konstant (gleichbleibend)",
+    "ruft": "_glmAns(0,1)"
+   },
+   {
+    "aufschrift": "Sie wird immer kleiner",
+    "ruft": "_glmAns(0,2)"
+   },
+   {
+    "aufschrift": "Immer weiter auseinander",
+    "ruft": "_glmAns(1,0)"
+   },
+   {
+    "aufschrift": "Gleich weit auseinander",
+    "ruft": "_glmAns(1,1)"
+   },
+   {
+    "aufschrift": "Immer enger",
+    "ruft": "_glmAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine Gerade",
+    "ruft": "_glmAns(2,0)"
+   },
+   {
+    "aufschrift": "Eine gebogene Kurve",
+    "ruft": "_glmAns(2,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_glmAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_glmSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_glmSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_glmSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('gleichfoermig-rs')"
+   }
+  ],
+  "hinweise": [
+   "Lass den Wagen mit gleichbleibender Geschwindigkeit fahren. Jede Sekunde wird eine Marke gesetzt. Wie sind die Abstände zwischen den Marken?",
+   "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit gleich (konstant). In gleichen Zeiten legt der Körper gleiche Strecken zurück – deshalb sind die Sekunden-Marken gleich weit auseinander. Im Weg-Zeit-Diagramm ergibt das eine Gerade.",
+   "Konstante Geschwindigkeit → in gleichen Zeiten gleiche Strecken → gleiche Abstände."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 40 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "schnell",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 110 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "▶ Fahren",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 110 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände."
+   },
+   {
+    "einstellung": "Sie wird immer größer",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann wäre es eine beschleunigte Bewegung."
+   },
+   {
+    "einstellung": "Sie ist konstant (gleichbleibend)",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich."
+   },
+   {
+    "einstellung": "Sie wird immer kleiner",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen."
+   },
+   {
+    "einstellung": "Immer weiter auseinander",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre beschleunigt."
+   },
+   {
+    "einstellung": "Gleich weit auseinander",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✓ Richtig! Gleiche Strecke pro Sekunde → gleiche Abstände."
+   },
+   {
+    "einstellung": "Immer enger",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen."
+   },
+   {
+    "einstellung": "Eine Gerade",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✓ Richtig! Bei konstanter Geschwindigkeit eine (Ursprungs-)Gerade."
+   },
+   {
+    "einstellung": "Eine gebogene Kurve",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Gebogen wäre es bei beschleunigter Bewegung."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm.  ||  glmSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm.  ||  glmSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "glmStatus: Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.  ||  glmFb0: ✗ Dann würde der Körper abbremsen.  ||  glmFb1: ✗ Das wäre ein Abbremsen.  ||  glmFb2: ✗ Waagerecht wäre das v-t-Diagramm, nicht das s-t-Diagramm."
+   }
+  ],
+  "bildtexte": [
+   "s",
+   "t",
+   "s-t: Gerade",
+   "gleichförmig: v = konstant"
+  ]
+ }
+]

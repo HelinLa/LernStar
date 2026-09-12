@@ -1,0 +1,46 @@
+<defs>
+  <linearGradient id="h4himmel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5E6B80"/><stop offset="0.6" stop-color="#7E8CA0"/>
+    <stop offset="1" stop-color="#A9B4C2"/>
+  </linearGradient>
+  <linearGradient id="h4wiese" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#5E6659"/><stop offset="0.5" stop-color="#525A4E"/>
+    <stop offset="1" stop-color="#3A4038"/>
+  </linearGradient>
+  <radialGradient id="h4sonne" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#E8E4CE" stop-opacity="0.85"/>
+    <stop offset="0.45" stop-color="#D6D3BE" stop-opacity="0.30"/>
+    <stop offset="1" stop-color="#C6C6B4" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="h4vig" cx="0.5" cy="0.48" r="0.72">
+    <stop offset="0.34" stop-color="#0E1218" stop-opacity="0"/>
+    <stop offset="1" stop-color="#0E1218" stop-opacity="0.52"/>
+  </radialGradient>
+</defs>
+  <rect x="0" y="0" width="900" height="250" fill="url(#h4himmel)"/>
+  <rect x="0" y="196" width="900" height="344" fill="url(#h4wiese)"/>
+  <!-- die Sonne steht hoch, ist aber nur ein diffuser Fleck hinter den Kronen -->
+  <ellipse cx="352" cy="96" rx="118" ry="106" fill="url(#h4sonne)" filter="url(#schein)"/>
+  <g filter="url(#daemmerTon)" opacity="0.7">
+    <use href="#t_baum_fern" transform="translate(120,230) scale(0.8)"/>
+    <use href="#t_baum_fern" transform="translate(330,222) scale(0.72)"/>
+    <use href="#t_baum_fern" transform="translate(560,226) scale(0.66)"/>
+    <use href="#t_baum_fern" transform="translate(830,232) scale(0.86)"/>
+  </g>
+  <g filter="url(#daemmerTon)"><use href="#t_baum" transform="translate(96,300) scale(0.68)"/></g>
+  <use href="#t_blatt_fallend" transform="translate(190,214) rotate(28) scale(0.9)"/>
+
+  <!-- die Bude wirft nur noch einen kurzen, schwachen Schatten -->
+  <ellipse cx="662" cy="392" rx="150" ry="20" fill="#131A14" opacity="0.20" filter="url(#tiefe)"/>
+  <g filter="url(#daemmerTon)"><use href="#t_bude" transform="translate(636,378) scale(0.92)"/></g>
+  <ellipse cx="330" cy="452" rx="86" ry="14" fill="#131A14" opacity="0.18" filter="url(#tiefe)"/>
+  <g filter="url(#daemmerTon)"><use href="#t_kiste" transform="translate(316,448) scale(0.52)"/></g>
+
+  <!-- Spuren der Mittagspause im Gras -->
+  <g filter="url(#daemmerTon)"><use href="#t_becher" transform="translate(214,486) rotate(-6) scale(0.6)"/></g>
+  <g filter="url(#daemmerTon)"><use href="#t_tuete" transform="translate(468,504) rotate(12) scale(0.7)"/></g>
+  <g filter="url(#daemmerTon)">
+    <use href="#t_grasbuschel" transform="translate(84,466) scale(0.8)"/>
+    <use href="#t_grasbuschel" transform="translate(776,500) scale(0.95)"/>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="url(#h4vig)"/>

@@ -1,0 +1,36 @@
+<!-- nacht -->
+<defs>
+  <linearGradient id="h5dach" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#232C40"/><stop offset="1" stop-color="#111726"/>
+  </linearGradient>
+  <radialGradient id="h5rot" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#8E4526" stop-opacity="0.30"/>
+    <stop offset="1" stop-color="#8E4526" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+  <use href="#t_sterne" x="0" y="0"/>
+  <use href="#t_sterne" transform="translate(0,230) scale(1,0.6)"/>
+  <ellipse cx="664" cy="150" rx="180" ry="170" fill="url(#h5rot)"/>
+  <use href="#t_mond_rot" transform="translate(664,150) scale(1.15)"/>
+
+  <!-- Baumsilhouetten links und rechts -->
+  <g filter="url(#nachtTon)">
+    <use href="#t_baum" transform="translate(70,392) scale(1.05)"/>
+    <use href="#t_baum" transform="translate(858,404) scale(1.15)"/>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="#0E1428" opacity="0.42"/>
+
+  <!-- das Dach der Bude, von hinten -->
+  <polygon points="-40,540 -40,436 940,368 940,540" fill="url(#h5dach)"/>
+  <g stroke="#8FA4C8" stroke-width="2.6" stroke-opacity="0.32" fill="none">
+    <path d="M-40,436 L940,368"/>
+    <path d="M-40,462 L940,394"/><path d="M-40,490 L940,422"/><path d="M-40,518 L940,450"/>
+  </g>
+  <g stroke="#0A0E1A" stroke-width="3" stroke-opacity="0.5" fill="none">
+    <path d="M-40,466 L940,398"/><path d="M-40,494 L940,426"/>
+  </g>
+  <path d="M-40,436 L940,368 L940,376 L-40,444 Z" fill="#A9BCD8" opacity="0.22"/>
+
+  <!-- Spuren: die Decke und die ausgeschaltete Lampe liegen auf dem First -->
+  <g filter="url(#nachtTon)"><use href="#t_schlafsack" transform="translate(232,470) scale(0.9)"/></g>
+  <g filter="url(#nachtTon)"><use href="#t_lampe_aus" transform="translate(560,452) rotate(-4) scale(0.66)"/></g>

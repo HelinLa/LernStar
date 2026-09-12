@@ -1,0 +1,72 @@
+{
+ "id": "ki5",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "S6",
+  "E8",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Aus einer Kurve lässt sich keine Steigung ablesen. Trägt man s nicht über t, sondern über",
+   "loesung": "t²",
+   "post": "auf, liegen die Messpunkte auf einer Ursprungsgeraden."
+  },
+  {
+   "pre": "Wegen s = ½ · g · t² ist die Steigung k dieser Ursprungsgeraden gleich",
+   "loesung": "g/2",
+   "post": "; die Fallbeschleunigung folgt daraus als g = 2 · k."
+  },
+  {
+   "pre": "Die Auftragung v über t braucht den Fallweg gar nicht: Wegen v = g · t ist ihre Steigung unmittelbar",
+   "loesung": "g",
+   "post": "."
+  },
+  {
+   "pre": "Beide Geraden stammen aus derselben Messreihe. Dass sie verschiedene Werte für g liefern, liegt am festen Rechenschritt von Δt =",
+   "loesung": "0,016 s",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "In der Auftragung s über t liegen die Messpunkte des freien Falls auf einer Ursprungsgeraden.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Die Steigung der Ausgleichsgeraden in der Auftragung t² → s ist halb so groß wie die Fallbeschleunigung.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Messpunkte aus zwei verschiedenen Fallhöhen liegen in der Auftragung t² → s auf zwei verschiedenen Geraden.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Der aus der Geraden s über t² zurückgerechnete Wert für g liegt über dem aus der Geraden v über t.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Eine Messreihe aus 50 m ergibt in der Auftragung t² → s die Ausgleichsgerade y = 4,942·x und in der Auftragung t → v die Gerade y = 9,815·x, beide mit R² = 1,0000. Welche Auswertung ist richtig?",
+  "optionen": [
+   "Aus der ersten Geraden folgt g = 4,942 m/s², aus der zweiten g = 9,815 m/s². Die erste Auftragung liefert nur den halben Wert und ist zur Bestimmung von g deshalb ungeeignet.",
+   "Aus der ersten Geraden folgt g = 2 · 4,942 m/s² = 9,884 m/s², aus der zweiten unmittelbar g = 9,815 m/s². Der Wert aus dem Weg liegt höher, weil die Simulation den Weg in Schritten aufsummiert.",
+   "Weil beide Geraden R² = 1,0000 erreichen, sind beide Werte gleich gut. Die Differenz von 0,069 m/s² ist die Messunsicherheit beim Ablesen der Messpunkte."
+  ],
+  "richtig": 1,
+  "erklaerung": "Aus s = ½ · g · t² folgt für die Auftragung s über t² die Steigung k = g/2, also g = 2 · 4,942 m/s² = 9,884 m/s²; wer die Steigung selbst als g nimmt, halbiert das Ergebnis. Aus v = g · t folgt für die Auftragung v über t dagegen k = g, hier also 9,815 m/s². R² = 1,0000 sagt nur, wie gut die Punkte auf einer Geraden liegen, und nicht, ob die Gerade das Richtige misst: Beide Geraden passen perfekt, und trotzdem unterscheiden sich die g-Werte um 0,069 m/s². Eine Messunsicherheit ist das nicht: Die Zahlen entstehen nicht durch Ablesen, sondern durch Rechnen. Der Unterschied ist bis auf die letzte Stelle wiederholbar und zeigt immer nach oben, weil der Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende aufsummiert wird."
+ },
+ "offen": {
+  "frage": "Berechne aus den Tabellenzeilen t = 0,96 s mit v = 9,42 m/s und t = 2,24 s mit v = 21,97 m/s die Steigung der Geraden v über t und begründe, warum gerade dieser Auswerteweg vom Rechenverfahren der Simulation nicht verfälscht wird.",
+  "prompt": "Berechne aus den Tabellenzeilen t = 0,96 s mit v = 9,42 m/s und t = 2,24 s mit v = 21,97 m/s die Steigung der Geraden v über t und begründe, warum gerade dieser Auswerteweg vom Rechenverfahren der Simulation nicht verfälscht wird.",
+  "zeilen": 4,
+  "loesung": "k = (21,97 m/s − 9,42 m/s) / (2,24 s − 0,96 s) = 12,55 m/s / 1,28 s = 9,80 m/s². Weil v = g · t gilt, ist die Steigung dieser Ursprungsgeraden schon die Fallbeschleunigung: g = 9,80 m/s², dicht am Literaturwert 9,81 m/s² (die Ausgleichsgerade über alle neun Punkte liefert 9,815 m/s²). Verfälscht wird dieser Weg nicht, weil die Simulation in jedem Rechenschritt v um genau g · Δt erhöht – v = g · t ist im Verfahren also exakt. Nur der Weg wird aufsummiert, und zwar mit der Geschwindigkeit am Schrittende; deshalb fällt allein s zu groß aus und allein die Gerade s über t² liefert ein zu großes g."
+ }
+}

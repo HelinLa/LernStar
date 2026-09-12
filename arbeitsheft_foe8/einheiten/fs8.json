@@ -1,0 +1,188 @@
+{
+ "seite": {
+  "id": "fs8",
+  "quelle": "st8",
+  "sim": "ohm-kennlinie",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was macht doppelte Spannung?",
+  "name": "Doppelte Spannung, doppelter Strom",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "In der Fahrrad-AG hängt ein Bauteil mit 20 Ω am Netzteil.",
+   "Bei 1,5 Volt fließt nur wenig Strom.",
+   "Jannis stellt 3 Volt ein. Das ist doppelt so viel Spannung."
+  ],
+  "frage": "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
+  "predict": [
+   "Der Strom bleibt gleich. Das Bauteil bremst ja immer gleich stark.",
+   "Der Strom wird ungefähr doppelt so groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „20 Ω“ und dann einmal „◀ weniger“. Vergleiche die Statuszeile mit Zeile 1.",
+   "Drücke einmal „mehr ▶“. Trage Spannung U und Stromstärke I in Zeile 2 ein.",
+   "Drücke „10 Ω“. Trage die beiden neuen Werte in Zeile 3 ein.",
+   "Vergleiche Zeile 1 und Zeile 2: Wie ändert sich die Stromstärke?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Widerstand?",
+   "Welche Spannung U?",
+   "Welche Stromstärke I?"
+  ],
+  "tabRows": [
+   [
+    "20 Ω",
+    "1,5 V",
+    "0,07 A"
+   ],
+   [
+    "20 Ω",
+    "",
+    ""
+   ],
+   [
+    "10 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Widerstand bleibt gleich. Doppelte Spannung bedeutet dann",
+    "loesung": "doppelter Strom",
+    "post": "."
+   },
+   {
+    "pre": "Bei 20 Ω und 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen",
+    "loesung": "0,15 A",
+    "post": ". Das ist ungefähr doppelt so viel."
+   }
+  ],
+  "wortbank": [
+   "doppelter Strom",
+   "0,15 A",
+   "0,07 A",
+   "0,30 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strom, wenn die Spannung doppelt so groß wird?",
+   "antwort": "Der Widerstand ist beide Male 20 Ω. Bei 1,5 Volt zeigt die Statuszeile 0,07 A. Bei 3 Volt zeigt sie 0,15 A. Der Strom ist also ungefähr doppelt so groß geworden."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Knopf „20 Ω“ ist gedrückt. Was zeigt die Statuszeile, wenn du von 1,5 Volt auf 3 Volt gehst?",
+    "optionen": [
+     "Die Stromstärke bleibt bei 0,07 A.",
+     "Die Stromstärke steigt von 0,07 A auf 0,15 A.",
+     "Die Stromstärke steigt auf 0,30 A."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knopf „20 Ω“ ist gedrückt. Bei 1,5 Volt zeigt die Statuszeile",
+      "loesung": "0,07 A",
+      "post": "."
+     },
+     {
+      "pre": "Danach drückst du „10 Ω“. Bei 3 Volt zeigt die Statuszeile",
+      "loesung": "0,30 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei 3 Volt fließt genauso viel Strom wie bei 1,5 Volt.“ Erkläre Jannis mit zwei Zahlen aus deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei 1,5 Volt fließen …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahlen musst du nicht rechnen. Sie stehen in der Statuszeile und in deiner Tabelle.",
+   "h2": "Beginne so: Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen …",
+   "h3": "Fast fertige Antwort: Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen 0,15 A. Der Widerstand war beide Male 20 Ω. Der Strom bleibt also nicht gleich, sondern wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile die Spannung U und die Stromstärke I ablesen.",
+   "Ich kann sagen: doppelte Spannung, doppelter Strom.",
+   "Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen."
+  ],
+  "zuhause": "Nimm zu Hause eine Taschenlampe mit Batterien. Sieh dir an, wie hell sie leuchtet. Lege dann eine fast leere Batterie ein. Weniger Spannung heißt weniger Strom. Schreibe auf, wie sich das Licht ändert.",
+  "bildauftrag": "[BILD: zwei einfache Stromkreise nebeneinander, beide mit demselben Bauteil „R = 20 Ω“ und einem Amperemeter; links das Netzteil groß beschriftet „U = 1,5 V“ und die Anzeige „I = 0,07 A“, rechts „U = 3 V“ und „I = 0,15 A“; der Strompfeil im rechten Kreis ist doppelt so dick wie im linken; zwischen den beiden Kreisen ein breiter Pfeil mit der Aufschrift „doppelte Spannung“; nur diese zwei Stromkreise, keine weiteren Bauteile, kein Diagramm, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs8",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei festem Widerstand von 20 Ω zu zwei Spannungen (1,5 V und 3 V) die Stromstärke aus der Statuszeile ab und begründen daran: doppelte Spannung bedeutet ungefähr doppelt so viel Strom. Das ohmsche Gesetz U = R · I, das Wort „proportional“ und jede Rechnung sind auf dieser Seite bewusst weggelassen – fs8 führt laut freigegebenem Seitenplan KEIN neues Fachwort ein. Spannung U, Stromstärke I und Widerstand R sind aus fs3, fs4 und fs6 bekannt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil mit 1,5 V und 3 V, ein Widerstand mit 20 Ω und ein Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (nach „20 Ω“ und einmal „◀ weniger“): „Eingestellt: U = 1,5 V → I = 0,07 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.“ · Karte 2 (nach einmal „mehr ▶“): „Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.“ · Karte 3 (nach „10 Ω“): „Eingestellt: U = 3 V → I = 0,30 A · R = U/I = 10 Ω. Widerstand fest: 10 Ω.“ Die Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle (Karte 1 = Zeile 1, Karte 2 = Zeile 2, Karte 3 = Zeile 3). Der Zusatz „R = U/I“ steht auf den Karten, weil er wörtlich am Bildschirm steht – er wird auf dieser Seite nicht besprochen. Die Simulation hat KEINEN Regler: die Spannung springt nur über „◀ weniger“ und „mehr ▶“ in Schritten von 1,5 V.",
+  "merksatz": [
+   "doppelter Strom",
+   "0,15 A"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20 Ω",
+    "3 V",
+    "0,15 A"
+   ],
+   [
+    "10 Ω",
+    "3 V",
+    "0,30 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „20 Ω“ und einmal „◀ weniger“ meldet die Statuszeile: U = 1,5 V → I = 0,07 A. Ein Druck auf „mehr ▶“ macht daraus: U = 3 V → I = 0,15 A. Der Strom steigt also von 0,07 A auf 0,15 A, der Widerstand bleibt 20 Ω.",
+   "typische_fehler": [
+    "„bleibt bei 0,07 A“ wird gewählt: fester Widerstand wird mit festem Strom verwechselt (Sim-Rückmeldung: „✗ Bei doppelter Spannung ändert sich der Strom.“).",
+    "„steigt auf 0,30 A“ wird gewählt: der Knopf „10 Ω“ war noch aktiv oder wurde zusätzlich gedrückt – 0,30 A gehört zu 10 Ω bei 3 V.",
+    "0,07 A wird für größer gehalten als 0,15 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,07 A",
+    "0,30 A"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht; 0,30 A gehört zu „10 Ω“, nicht zu „20 Ω“.",
+    "0,15 A wird eingetragen, weil es der auffälligste Wert der Seite ist (er steht schon im Merksatz).",
+    "Die Einheit A fehlt oder wird durch V ersetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen 0,15 A. Der Widerstand war beide Male 20 Ω. Doppelte Spannung bedeutet also ungefähr doppelt so viel Strom.",
+   "alternativen": [
+    "Nur mit der eigenen Tabelle argumentiert: von 0,07 A auf 0,15 A – das ist ungefähr das Doppelte.",
+    "Verweis auf die Rückmeldung der Simulation: „✓ Richtig! Doppelte Spannung → doppelter Strom (Proportionalität).“ Das Wort in Klammern wird auf dieser Seite nicht verlangt und muss nicht erklärt werden.",
+    "Antwort ohne Zahlen, aber mit klarer Richtung: Mehr Spannung drückt mehr Strom durch dasselbe Bauteil. Als Zwischenschritt annehmen, dann nach einer Zahl aus der Tabelle fragen."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen.",
+    "Der Widerstand wird für verändert gehalten; er bleibt in beiden Zeilen 20 Ω.",
+    "0,07 · 2 = 0,14 wird gerechnet und die Anzeige 0,15 A für falsch erklärt – siehe Rundungshinweis unten."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: doppelt so groß, stärker, mehr)",
+  "schwache": [
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen – dort steht beide Male 20 Ω. Zeile 3 mit dem Knopf „10 Ω“ erst danach angehen.",
+   "Die Knopffolge vorher an der Tafel notieren: „20 Ω“ → „◀ weniger“ → „mehr ▶“ → „10 Ω“. Die Simulation hat keinen Regler; wer 1,5 V „einstellen“ soll, sucht sonst vergeblich.",
+   "Die drei Zahlen 0,07 – 0,15 – 0,30 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Rundungshinweis für die Lehrkraft: Die Anzeige rundet. 0,07 A · 2 ergibt 0,14 A, die Simulation zeigt bei 3 V aber 0,15 A. Deshalb steht auf der Schülerseite überall „ungefähr doppelt so viel“ und nie „genau doppelt“. Wer nachrechnet, hat gut gearbeitet: die Rundung benennen, nicht wegdiskutieren."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die Frage mit den drei Antwortknöpfen „Sie bleibt gleich“ / „Sie verdoppelt sich“ / „Sie halbiert sich“ und schreibe die Rückmeldung ab. Wer mag, drückt danach „20 Ω“ und dann „Messpunkt“; die Simulation trägt dann 3 V | 0,15 A | 20 Ω in ihre eigene Tabelle ein. Ohne den Druck auf „20 Ω“ steht die Simulation nach Schritt 3 noch auf 10 Ω und trägt 3 V | 0,30 A | 10 Ω ein.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Zusammenhang von Spannung und Stromstärke bei festem Widerstand. Kompetenzen UF1, E6 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan hier einzeln gesichert und sitzt bewusst im Selbstcheck („Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen“), gestützt durch Aufgabe 3. UF4 und K3 hingen am ohmschen Gesetz U = R · I und an der Rechnung I = U/R; beides bleibt dem Regelheft gts8 vorbehalten, weil fs8 kein neues Fachwort einführen darf. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

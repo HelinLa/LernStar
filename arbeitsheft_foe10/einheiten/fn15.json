@@ -1,0 +1,241 @@
+{
+ "seite": {
+  "id": "fn15",
+  "quelle": "rk17",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Die letzte Folie",
+  "name": "Kernenergie: Wie stehst du dazu?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Auf Nours letzter Folie steht nur: Kernenergie.",
+   "Jannis fragt: Was sagst du dazu?",
+   "CO₂ ist ein Gas. Viel CO₂ schadet dem Klima.",
+   "Wiegen heißt hier: Wie wichtig ist mir das?"
+  ],
+  "frage": "Was wiegt für dich schwerer: dafür oder dagegen?",
+  "predict": [
+   "Das Datenblatt zeigt nur die Folgen. Wie schwer sie wiegen, entscheidest du.",
+   "Wer alle Angaben kennt, entscheidet von allein."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt alle vier Zeilen ganz.",
+   "Vergleiche beide Seiten. Trage beide Antworten in die Tabelle ein.",
+   "Entscheide: Welches Thema wiegt für dich am schwersten?"
+  ],
+  "daten": {
+   "titel": "Kernenergie: beide Seiten",
+   "spalten": [
+    "Thema",
+    "dafür",
+    "dagegen"
+   ],
+   "zeilen": [
+    [
+     "Klima",
+     "macht Strom fast ohne CO₂",
+     "Bau und Uran-Abbau machen CO₂"
+    ],
+    [
+     "Brennstoff",
+     "wenig Uran reicht sehr lange",
+     "Uran kommt aus anderen Ländern"
+    ],
+    [
+     "Abfall",
+     "wenig Abfall, gut zu sammeln",
+     "muss 100 000 Jahre sicher liegen"
+    ],
+    [
+     "Sicherheit",
+     "bisher gab es nur wenige Unfälle",
+     "ein Unfall trifft eine ganze Gegend"
+    ]
+   ],
+   "quelle": "So reden beide Seiten. In Deutschland liefen die letzten drei Reaktoren bis 2023.",
+   "merke": "Lies jede Zeile ganz: Thema, dafür, dagegen."
+  },
+  "tabCols": [
+   "Thema",
+   "Was wiegt für mich mehr?",
+   "Wie wichtig: sehr, mittel, wenig?"
+  ],
+  "tabRows": [
+   [
+    "Klima",
+    "dafür",
+    "sehr"
+   ],
+   [
+    "Brennstoff",
+    "",
+    ""
+   ],
+   [
+    "Abfall",
+    "",
+    ""
+   ],
+   [
+    "Sicherheit",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Kernkraftwerk holt seine Energie aus der",
+    "loesung": "Kernspaltung",
+    "post": "."
+   },
+   {
+    "pre": "Die Angaben allein entscheiden nicht. Du brauchst auch einen",
+    "loesung": "Grund",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Kernspaltung",
+   "Grund",
+   "Uran",
+   "100 000 Jahre"
+  ],
+  "beispiel": {
+   "frage": "Wie füllt Nour die Zeile „Klima“ aus?",
+   "antwort": "Nour trägt „dafür“ ein: Strom fast ohne CO₂. Klima ist ihr sehr wichtig. Jannis trägt „dagegen“ ein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was steht in der Zeile „Abfall“?",
+    "optionen": [
+     "Nur etwas dafür.",
+     "Nur etwas dagegen.",
+     "Etwas dafür und etwas dagegen."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Dafür steht: Wenig",
+      "loesung": "Uran",
+      "post": "reicht sehr lange."
+     },
+     {
+      "pre": "Dagegen steht: Der Abfall muss",
+      "loesung": "100 000 Jahre",
+      "post": "sicher liegen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Entscheide",
+    "frage": "Wie stehst du zu Kernenergie? Nenne dein Thema und deinen Grund.",
+    "satzstarter": "Ich bin dagegen / dafür / unentschieden. Am schwersten wiegt für mich …, weil …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Themen stehen links.",
+   "h2": "Suche die Zeile, die dir am wichtigsten ist. Lies beide Seiten.",
+   "h3": "Fast fertig: Ich bin dagegen. Am schwersten wiegt für mich der Abfall, weil er ___ sicher liegen muss. „Dafür“ ist genauso richtig."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt beide Seiten einer Zeile ablesen.",
+   "Ich kann sagen, welches Thema am schwersten wiegt.",
+   "Ich kann meine Meinung mit einem Grund begründen."
+  ],
+  "zuhause": "Suche in den Nachrichten einen Satz über Kernenergie. Nennt er einen Grund?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einzelbild eines aufgeräumten Tisches im Aufenthaltsraum der Klinik, ruhig ausgeleuchtet, heller Hintergrund, viel Weißraum. Die Komposition besteht aus GENAU DREI Dingen auf derselben Tischplatte, alle im selben Bildausschnitt: hinten eine aufgeklappte Präsentationsmappe, in der Mitte eine Balkenwaage, davor vier Karten. In der Mappe steht eine Folie hochkant; darauf oben groß und gut lesbar das einzelne Wort „Kernenergie“ und darunter eine lange, vollkommen LEERE Schreiblinie über die ganze Folienbreite. Diese leere Linie ist der Kern der Komposition — sie stellt die Frage der Seite und darf auf keinen Fall beschriftet, angekreuzt oder ausgefüllt sein. In der Mitte des Tisches steht eine einfache Balkenwaage mit zwei runden Schalen. Der Balken ist EXAKT WAAGERECHT, beide Schalen hängen genau gleich hoch, sind gleich groß, gleich geformt und in derselben Farbe gezeichnet; beide Schalen sind LEER. Unter der linken Schale steht in großer Schrift „dafür“, unter der rechten in genau derselben Schriftgröße „dagegen“ — keine der beiden Beschriftungen ist größer, fetter, farbiger oder mit einem Zeichen versehen. Vor der Waage liegen GENAU VIER gleich große, gleich geformte weiße Karteikarten nebeneinander auf dem Tisch, alle vier flach liegend und keine davon auf einer Schale. Jede Karte trägt in großer Schrift genau ein Wort, von links nach rechts: „Klima“, „Brennstoff“, „Abfall“, „Sicherheit“. Alle Gegenstände sind als geschlossene, klar begrenzte Flächen gezeichnet — Tischplatte, Waage, Schalen, Karten und Mappe in ruhigen Vollflächen, NICHT als Schraffur und nicht als Streifenmuster; Streifen lesen sich auf einer Seite über Kernenergie sofort als Strahlung. Aus keinem Gegenstand kommt etwas heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Punktwolken, keine gestrichelten Linien ins Leere, keine Alpha-, Beta- oder Gammazeichen, kein Dreiblatt-Warnzeichen. Es gibt außerdem KEIN zweites, kleineres Bild am Rand und keine Symbole auf den Karten: kein Reaktorgebäude, kein Kühlturm, keine Wolke, kein Windrad, kein Fass, keine Landkarte, keine Fabrik — wofür die vier Themen stehen, steht im gedruckten Datenblatt und nicht im Bild. Keine Personen, keine Sprechblasen, keine Pfeile zwischen den Karten und der Waage, keine Häkchen, keine Kreuze, keine Daumen nach oben oder unten, kein Rot und kein Grün als Wertung — die beiden Seiten müssen im Bild vollkommen gleich stark aussehen. Keine Zahlen. Große Schrift, ruhiger heller Hintergrund, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn15",
+  "lernziel": "Die Schülerinnen und Schüler lesen im gedruckten Datenblatt für vier Themen (Klima, Brennstoff, Abfall, Sicherheit) beide Seiten ab und erkennen, dass dieselbe Sache dafür UND dagegen sprechen kann. Sie vergleichen in jeder Zeile die beiden Seiten und halten in der Tabelle zweierlei fest: welche Seite für sie mehr wiegt und wie wichtig ihnen das Thema ist (sehr / mittel / wenig). Zuletzt beziehen sie eine eigene Position — für Kernenergie, dagegen oder ausdrücklich unentschieden — und begründen sie mit genau einer Angabe aus dem Datenblatt. Entschieden wird über GEWICHTUNG, nicht über eine Mehrheit von Punkten: Welches Argument wiegt für mich am schwersten, und warum? Zwei Lernende können mit demselben Blatt verschieden entscheiden, und beide Antworten können voll gewertet werden. Diese Doppelseite ist die LETZTE EINHEIT des Bandes und eine DATENBLATTSEITE ohne Simulation und ohne QR-Code. Hier wird nichts Neues über Kerne gelernt; hier wird das Gelernte gewichtet. Fachlicher Rückverweis, nur für Sie: Die Energie stammt aus der Kernspaltung (fn8), das Kraftwerk ist in fn10 aufgebaut worden, der Abfall in fn11 behandelt.",
+  "material": "Kein Gerät, keine Simulation, kein QR-Code — die Datenquelle ist das gedruckte Datenblatt auf Seite A, rechts neben den Arbeitsschritten. Nützlich sind eine vergrößerte Kopie des Datenblatts für Tafel oder Whiteboard, ein Lineal oder Papierstreifen zum Zeilenverfolgen und die acht Aussagekarten aus diesem Lehrerteil. Für die Zusatzaufgabe genügt ein leeres Blatt. Kein Präparat, kein Versuch, keine Schutzmaßnahmen nötig.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Datenblatt lesen in Partnerarbeit, die Tabelle JEDER für sich ausfüllen (die dritte Spalte ist eine persönliche Angabe und wird nicht abgeglichen), Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst allein schreiben und danach im Tandem vorlesen — ohne Abstimmung und ohne Auszählen im Plenum.",
+  "ersatz_ohne_simulation": "Diese Einheit hat keine Simulation, also auch keinen Ausfall: Das Datenblatt ist gedruckt und immer da. Einen Ersatzweg braucht hier etwas anderes — das dichte Blatt mit acht Aussagen auf einmal. Hängen Sie dafür ACHT gleich große Karten an die Tafel, in vier Paaren untereinander, links „dafür“, rechts „dagegen“, jede Karte im Wortlaut des Blattes. Paar 1 (Klima): „macht Strom fast ohne CO₂“ — „Bau und Uran-Abbau machen CO₂“. Paar 2 (Brennstoff): „wenig Uran reicht sehr lange“ — „Uran kommt aus anderen Ländern“. Paar 3 (Abfall): „wenig Abfall, gut zu sammeln“ — „muss 100 000 Jahre sicher liegen“. Paar 4 (Sicherheit): „bisher gab es nur wenige Unfälle“ — „ein Unfall trifft eine ganze Gegend“. Lesen Sie IMMER beide Karten eines Paares direkt nacheinander vor und decken Sie die drei anderen Paare ab; so entsteht der Kerngedanke der Seite von selbst: dieselbe Sache steht auf beiden Seiten. Wechseln Sie dabei ab, welche Karte des Paares Sie zuerst lesen — sonst hört die Klasse viermal hintereinander zuerst die Seite „dafür“. Achten Sie darauf, dass beide Spalten gleich lange besprochen werden und dass Sie keine Karte kommentieren — die Wertung ist die Aufgabe der Lernenden, nicht der Lehrkraft. Zum Gewichten (Schritt 3) legen Sie eine Schnur auf den Boden: ein Ende „dafür“, das andere „dagegen“, die Mitte „unentschieden“. Jede und jeder stellt sich hin und nennt EINEN Grund. Wichtig: Die Zahl der Personen an jedem Ende wird nicht gezählt und nicht an die Tafel geschrieben. Wer sich nicht öffentlich hinstellen möchte, schreibt seinen Satz nur ins Heft — die Bewertung erfolgt über den Grund, nie über die Position.",
+  "merksatz": [
+   "Kernspaltung",
+   "Grund"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Brennstoff",
+    "dafür oder dagegen — beides ist richtig",
+    "sehr, mittel oder wenig — eigene Angabe"
+   ],
+   [
+    "Abfall",
+    "dafür oder dagegen — beides ist richtig",
+    "sehr, mittel oder wenig — eigene Angabe"
+   ],
+   [
+    "Sicherheit",
+    "dafür oder dagegen — beides ist richtig",
+    "sehr, mittel oder wenig — eigene Angabe"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "In der Zeile „Abfall“ steht links „wenig Abfall, gut zu sammeln“ und rechts „muss 100 000 Jahre sicher liegen“. Beide Zellen sind gefüllt, also steht in dieser Zeile etwas dafür UND etwas dagegen — richtig ist die dritte Option. Lassen Sie die Zeile dafür wirklich am Blatt nachfahren und beide Zellen laut vorlesen; erst danach den Satz verallgemeinern, dass das für alle vier Zeilen gilt. Der Merksatz auf Seite B sagt diesen Satz bewusst NICHT mehr vorweg (frühere Fassung: „Jede Zeile hat zwei Seiten.“ — sie stand wörtlich über Aufgabe 1 und machte das Blatt entbehrlich). Die zweite und die zweite Option sind absichtlich spiegelbildlich gebaut („nur dafür“ / „nur dagegen“), damit keine der beiden Seiten die bequemere Antwort ist. Wichtig beim Besprechen: Es geht hier noch NICHT darum, welche der beiden Seiten schwerer wiegt — das kommt erst in Aufgabe 3.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt, weil Abfall im Alltag als etwas Schlechtes gilt und die Zeile nur nach rechts gelesen wurde. Mit dem Finger von links nach rechts über die ganze Zeile fahren lassen und beide Zellen laut vorlesen.",
+    "Die erste Option wird angekreuzt, weil die eigene Meinung schon feststeht und in die Aufgabe hineingelesen wird. Zurückfragen: Ich frage nicht, was du meinst. Ich frage, was auf dem Blatt gedruckt steht.",
+    "Es wird gar nichts angekreuzt, weil die drei Optionen einander ähnlich sehen. Die drei Zeilen einzeln vorlesen und jeweils mit dem Datenblatt vergleichen lassen; der Unterschied liegt allein bei „und“ gegen „nur“.",
+    "Es wird nach der richtigen Antwort gefragt, weil vermutet wird, hier gebe es keine. Klarstellen: Aufgabe 1 hat eine einzige richtige Antwort, denn sie fragt nach dem Blatt. Erst Aufgabe 3 hat mehrere richtige Antworten."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Uran",
+    "100 000 Jahre"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird „Abfall“ oder „Kohle“ eingesetzt: Die Zeile Brennstoff wird mit der Zeile Abfall verwechselt. Beide Sätze nennen ihre Spalte im ersten Wort — „Dafür“ zeigt auf die mittlere Spalte des Blattes, „Dagegen“ auf die rechte.",
+    "In die zweite Lücke wird „24 000 Jahre“ eingesetzt, der Wert von Plutonium-239 aus fn11. Auf dem Blatt dieser Seite steht 100 000 Jahre; die beiden Zahlen dürfen nicht vermischt werden.",
+    "Die Zahl wird als „100“ oder „000 Jahre“ geschrieben, das Leerzeichen wird als Satzende gelesen. Den Wert in der Wortbank zeigen und einmal als eine Zahl vorlesen: hunderttausend.",
+    "Die Einheit fehlt („100 000“). Die Wortbank enthält den Wert mit Einheit; einmal abschreiben lassen.",
+    "Beide Lücken werden aus derselben Spalte gefüllt. Ausdrücklich sagen: Der erste Satz kommt von der Seite dafür, der zweite von der Seite dagegen — die Aufgabe liest bewusst beide Seiten."
+   ]
+  },
+  "a3": {
+   "erwartung": "Es gibt hier KEINE einzige richtige Antwort. Voll gewertet wird jede Antwort, die drei Teile enthält: (1) eine klare Position — dagegen, dafür oder ausdrücklich unentschieden; (2) genau ein Thema aus dem Datenblatt; (3) einen Grund, der zu diesem Thema gehört und in eigenen Worten sagt, warum es schwer wiegt. Der Satzstarter bietet alle drei Positionen wörtlich an („Ich bin dagegen / dafür / unentschieden.“), damit auch „unentschieden“ schreibbar ist und nicht nur erlaubt geredet wird. Beispiel für „dagegen“: „Ich bin dagegen. Am schwersten wiegt für mich der Abfall, weil er 100 000 Jahre sicher liegen muss. So lange kann niemand aufpassen.“ Beispiel für „dafür“, gleich viel wert: „Ich bin dafür. Am schwersten wiegt für mich das Klima, weil ein Kernkraftwerk Strom fast ohne CO₂ macht.“ Nicht gewertet wird die Position selbst — weder Richtung ist richtiger als die andere, und unentschieden ist keine halbe Antwort. Gewertet wird, ob der Grund zum genannten Thema passt.",
+   "alternativen": [
+    "Unentschieden mit Begründung: „Ich bin unentschieden, weil beim Klima etwas dafür spricht und beim Abfall etwas dagegen. Beides wiegt für mich gleich schwer.“ — volle Wertung, das ist eine begründete Position.",
+    "Position aus dem Thema Sicherheit, dafür: „Ich bin dafür, weil es bisher nur wenige Unfälle gab.“",
+    "Position aus dem Thema Sicherheit, dagegen: „Ich bin dagegen, weil ein Unfall eine ganze Gegend trifft.“",
+    "Position aus dem Thema Brennstoff, dagegen: „Ich bin dagegen, weil das Uran aus anderen Ländern kommen muss.“",
+    "Grund mit einem Zusatz von außerhalb des Blattes, aber zur Angabe passend: „… weil in 100 000 Jahren niemand mehr weiß, wo das Zeug liegt.“ — richtig, solange das Thema aus dem Datenblatt stammt.",
+    "Wechsel der Gewichtung im Satz: „Klima spricht dafür, aber der Abfall wiegt für mich schwerer. Deshalb bin ich dagegen.“ — sehr gute Antwort, sie zeigt das Abwägen ausdrücklich."
+   ],
+   "typische_fehler": [
+    "Die Themen werden ausgezählt: „Zwei Punkte dafür, zwei dagegen, also unentschieden.“ Das ist der Fehler, gegen den diese Seite geschrieben ist. Gegenfrage: Sind alle vier Themen für dich gleich wichtig? Danach die dritte Tabellenspalte zeigen — dort steht sehr, mittel oder wenig, und dieses Gewicht zählt, nicht die Zahl der Kreuze.",
+    "Die Position wird genannt, aber ohne Thema und ohne Grund („Ich bin dagegen.“). Nachfragen: Welche Zeile im Datenblatt hat dich überzeugt? Der Satzstarter hat drei Teile; Hilfe 2 zeigt, wo der zweite steht.",
+    "Der Grund stammt nicht aus dem Datenblatt, sondern aus dem Netz oder aus einem Film („weil Reaktoren explodieren wie Bomben“). Fachlich richtigstellen — das ist die Leitplanke aus fn8 und fn9 — und dann auf die Zeile Sicherheit verweisen, in der die belegte Aussage steht.",
+    "Position und Grund passen nicht zueinander: „Ich bin dafür, weil der Abfall 100 000 Jahre liegen muss.“ Nachfragen: Steht dieser Satz im Blatt links oder rechts? Die Spaltenköpfe „dafür“ und „dagegen“ zeigen.",
+    "Es wird die Meinung der Sitznachbarin oder des Lehrers abgeschrieben. Beide Musterantworten oben laut vorlesen und sagen: Beide bekommen die volle Punktzahl. Es zählt der Grund, nicht die Seite.",
+    "Die Aufgabe bleibt leer, weil die Lernenden glauben, sie dürften sich nicht äußern. Auf den Satzstarter zeigen: „unentschieden“ steht dort als dritte Möglichkeit und ist eine vollwertige Antwort, sobald ein Grund dabeisteht."
+   ]
+  },
+  "hilfe3_wort": "100 000 Jahre (auch richtig: sehr lange, 100 000 Jahre lang)",
+  "schwache": [
+   "Das Datenblatt vor dem Lesen gemeinsam erschließen: erst die drei Spaltenköpfe vorlesen („Thema — dafür — dagegen“), dann die Zeile „Klima“ mit dem Finger von links nach rechts nachfahren und beide Zellen laut lesen. Ohne diesen Schritt wird regelmäßig nur eine Spalte gelesen.",
+   "Einen Papierstreifen ausgeben, der immer nur EINE Zeile freilässt. Die vier Zeilen sehen einander sehr ähnlich; das Verrutschen ist hier der häufigste Fehler.",
+   "Nur die dritte Tabellenspalte ausfüllen lassen („Wie wichtig: sehr, mittel, wenig?“). Die drei Wörter stehen schon im Spaltenkopf; wer sie zusätzlich vor Augen braucht, bekommt sie groß an die Tafel: sehr — mittel — wenig. Die zweite Spalte wird dann mündlich beantwortet.",
+   "Die Zahl 100 000 einmal gemeinsam vorlesen und dabei sagen: Das Leerzeichen gehört zur Zahl, es ist kein Komma und kein neues Wort. Als Anker an fn11 erinnern (dort standen 24 000 und 240 000 Jahre).",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und dabei „Uran“ in der Zeile Brennstoff und „100 000 Jahre“ in der Zeile Abfall im Datenblatt zeigen.",
+   "Wer bei Aufgabe 3 nicht anfängt, beantwortet zuerst mündlich eine einzige Frage: Welche DREI der vier Karten würdest du weglegen, wenn du nur EINE behalten dürftest? Die eine Karte, die übrig bleibt, ist das schwerste Thema. Wenn das Weglegen in einem Zug zu schwer fällt, in drei Schritten ausscheiden lassen: erst eine Karte weg, dann noch eine, dann noch eine. Danach den Satzstarter benutzen.",
+   "Den Satzstarter in drei Teilen an die Tafel schreiben und einzeln abarbeiten: erst die Position (die drei Wörter dagegen — dafür — unentschieden stehen im Satzstarter selbst), dann das Thema, dann das Wort „weil“. Nie alle drei Teile auf einmal verlangen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Perspektivwechsel: Schreibe auf, was jemand antworten würde, der genau die andere Seite gewählt hat. Nenne dafür ein Thema aus dem Datenblatt und einen Grund. Wer beide Sätze schreiben kann, hat die Seite verstanden. (2) Suche die Zeile, in der dafür und dagegen fast dieselbe Sache nennen. (Erwartet: Klima — der Strom macht fast kein CO₂, aber Bau und Uran-Abbau machen CO₂. Auch Abfall ist eine gute Antwort: wenig Abfall, aber sehr lange gefährlich.) Schreibe dazu einen Satz mit „aber“.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Nutzung der Kernenergie, Chancen und Risiken, eigene Position. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Diese Doppelseite ist der EINZIGE TRÄGER VON K4 („Argumentieren und Position beziehen“) im ganzen Band: Aufgabe 3 verlangt unter dem Operator „Entscheide“ eine eigene Position mit Begründung und darf deshalb unter keinen Umständen gekürzt, durch eine Ankreuzaufgabe ersetzt oder als Hausaufgabe abgegeben werden. Fällt sie weg, verliert der Band eine Kompetenz. Zweiter Code: B3 (Bewerten) — der Band hat dafür genau zwei Träger, fn11 und fn15. Dazu: das Ablesen beider Spalten UF1, der Vergleich der beiden Seiten einer Zeile UF3 und E6, das Gewichten in Schritt 3 B2, die Vermutung UF4. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag: Der Nachrichtensatz ist ein Bewertungsanker, kein Dokumentieren. Bauart der Seite: DATENBLATTSEITE ohne Simulation (Seitenplan vom 05.09.2026), Abschnitt 3 heißt „AUSWERTEN & BEURTEILEN“, kein QR-Code, kein Ersatzsatz, kein Feld sim. Der Dreischritt lautet ablesen (Schritt 1) — vergleichen (Schritt 2) — beurteilen (Schritt 3). GEWICHTUNG STATT AUSZÄHLEN: Das „Auszählen“ der Pro- und Kontra-Punkte aus dem Regelheft ist ersatzlos gestrichen. Wer mehr Punkte hat, hat nicht recht — ein Mehrheits- oder Punkteverfahren wäre Scheinrechnen und würde genau die Fehlvorstellung lehren, gegen die die Seite geschrieben ist. Entschieden wird über die dritte Tabellenspalte, also über das Gewicht des einzelnen Arguments. Damit dieser Weg für Alleinarbeitende überhaupt gangbar ist, trägt der Spaltenkopf die Skala jetzt selbst: „Wie wichtig: sehr, mittel, wenig?“ — dieselbe Bauart wie in den beiden Nachbar-Datenblattseiten (fn11 „Ist diese Zeit kurz oder lang?“, fv11 „Platz 1, 2, 3 – oder gar nicht?“). Vorher standen die drei zulässigen Wörter nur hier im Lehrerteil, und das gelöste Beispiel erklärte allein die zweite Spalte; ein Kind ohne Lehrkraft konnte in die dritte Spalte nur „wichtig“ aus der Beispielzeile abschreiben. Das Beispiel erklärt jetzt beide offenen Spalten. Deshalb steht auf der ganzen Seite keine Summe, keine Punktzahl und keine Zählfrage; auch der Sozialform-Hinweis verbietet das Abstimmen im Plenum. GLEICHGEWICHT BEIDER SEITEN, geprüft Stelle für Stelle: Das Datenblatt hat für jedes der vier Themen genau eine Zelle dafür und genau eine dagegen, in gleicher Länge und gleichem Ton. Die Merke-Zeile („Lies jede Zeile ganz: Thema, dafür, dagegen.“) ist reine Lesehilfe und bevorzugt keine Seite; die Fassung des Regelhefts („Die Zahlen allein entscheiden nicht. Welche Folge schwerer wiegt, begründest du selbst.“) war wörtlich die richtige Vermutung, das Ergebnis von Schritt 3 UND der Kern des Merksatzes und ist deshalb ersetzt. Zum Gleichgewicht gehört auch die ERSTPOSITION, und die war zunächst nicht geprüft: An allen vier Stellen, an denen die Seite die beiden Seiten nacheinander zeigt, stand „dafür“ vorn. Jetzt steht es zwei zu zwei — „dafür“ zuerst in der vorausgefüllten Beispielzeile und im gelösten Beispiel (beide gehören zusammen: das Beispiel erklärt genau diese Zeile), „dagegen“ zuerst in Hilfe 3 und im Satzstarter von Aufgabe 3. Die Spaltenfolge des Datenblatts (dafür, dagegen) bleibt, sie ist der Rahmen und nicht eine Reihenfolge im Text; der Tafelweg im Ersatzteil sagt ausdrücklich, die Vorlesereihenfolge der Kartenpaare zu wechseln. Aufgabe 1 baut die beiden falschen Optionen spiegelbildlich („nur dafür“ / „nur dagegen“). Aufgabe 2 nimmt eine Lücke von der Seite dafür und eine von der Seite dagegen. MERKSATZ 2 GEÄNDERT: Er lautete „Jede Zeile hat zwei Seiten. Entscheide selbst. Dafür brauchst du einen Grund.“ Der erste Satz war wörtlich die richtige Antwort von Aufgabe 1 und stand auf Seite B ÜBER den Aufgaben (build_pilot setzt merksatz → wortbank → beispiel → aufgaben); Aufgabe 1 war damit ohne Blick ins Datenblatt lösbar. Der Merksatz nennt jetzt nur noch, was eine Antwort braucht („Die Angaben allein entscheiden nicht. Du brauchst auch einen Grund.“); die Einsicht „zwei Seiten“ tragen weiterhin das Blatt selbst, die Merke-Zeile, Schritt 2, das Beispiel und Selbstcheck 1. HILFE 3 NEU: Sie gab zuvor ZWEI vollständig fertige Antworten, und die Lücke ___ saß außerhalb davon, in einer Regieanweisung („Schreibe deinen ___.“), mit dem Lösungswort „Grund“, das schon im Merksatz und in der Wortbank stand. Nach dem Profil ist H3 „ein fast fertiges Beispiel, nur der letzte Schritt fehlt“; die Lücke gehört deshalb IN den Antwortsatz (so wie fn11 „Sicher macht nur das ___ tief im Gestein.“ und fv11 „… weil ein Windpark nur bei ___ liefert.“). Sie lautet jetzt: „Fast fertig: Ich bin dagegen. Am schwersten wiegt für mich der Abfall, weil er ___ sicher liegen muss. „Dafür“ ist genauso richtig.“ Lückenwort „100 000 Jahre“ (steht in der Wortbank), und der Satz erfüllt selbst den Erwartungshorizont mit allen drei Teilen — die alte Fassung tat das nicht und lieferte beim Abschreiben genau den Fehler, den a3.typische_fehler[1] beschreibt. UNENTSCHIEDEN IST JETZT SCHREIBBAR: Der Erwartungshorizont wertet „unentschieden“ voll, aber der alte Satzstarter („Ich bin … Kernenergie.“) ließ sich damit nicht füllen — „Ich bin unentschieden Kernenergie“ ist kein deutscher Satz, und gerade für A2/DaZ ist der Satzstarter die Schreibvorlage. Er lautet jetzt „Ich bin dagegen / dafür / unentschieden. Am schwersten wiegt für mich …, weil …“, die Frage ist auf „Wie stehst du zu Kernenergie?“ geöffnet, der Operator „Entscheide“ bleibt. Fachwortzählung: NEU eingeführt wird KEIN Fachwort. Beide Plätze bleiben frei — das Budget dieser Abschlusseinheit gehört der Sprache und dem Abwägen, nicht neuen Begriffen. Nur als Rückverweis benutzt und andernorts zuerst gedruckt (nachgezählt in der Reihenfolge des Bauplans, nicht aus dem Gedächtnis): Kernspaltung (fn8; füllt hier nach Zählregel 4 zulässig die erste Merksatzlücke), Kernkraftwerk (erstmals gedruckt in fv11, im Aufbau erklärt in fn10; steht hier bewusst NICHT in der Wortbank und in keiner Lücke), Uran (erstmals gedruckt in fv11, im Sachzusammenhang erklärt in fn8: „Ein Neutron trifft einen Urankern.“), Abfall und Endlager-Gedanke (fn11), CO₂ (erstmals gedruckt in fv11, dort im Datenblatt der Kraftwerksarten). Frühere Fassungen dieses Absatzes nannten fn8 als Erstträger von Uran und fn10 als Erstträger von Kernkraftwerk; beides ist falsch: Uran steht zehn Einheiten vor fn8 und Kernkraftwerk zwölf Einheiten vor fn10 gedruckt in fv11, jeweils in der Zeile „Kernkraftwerk“ des dortigen Datenblatts. CO₂ BEKOMMT HIER SEINEN BEGRIFFSSATZ: fv11 druckt die Formel nur in einer Zelle — ohne Begriffssatz, ohne Eintrag in fachwoerter_neu, ohne Wortbank. Damit fehlte der Klima-Zeile ihre Voraussetzung: Warum „macht Strom fast ohne CO₂“ dafür und „Bau und Uran-Abbau machen CO₂“ dagegen spricht, ist nur entscheidbar, wenn man weiß, dass viel CO₂ dem Klima schadet — und dieser Satz stand auf keiner Seite des Bandes, obwohl das einzige gelöste Beispiel und die Musterlösung des Zusatzauftrags darauf ruhen. Der vierte Alltagssatz sagt ihn jetzt: „CO₂ ist ein Gas. Viel CO₂ schadet dem Klima.“ Nach Zählregel 4 bleibt der Eintrag beim Erstträger fv11, fachwoerter_neu bleibt hier deshalb leer. OFFEN für die nächste Überarbeitung von fv11: Dort gehört CO₂ eigentlich in fachwoerter_neu; fv11 hat aber bereits vier Alltagssätze (die Höchstzahl) und liegt mit 379 Wörtern ein Wort unter dem Budget — ein Begriffssatz passt dort im Moment nicht hinein, ohne an anderer Stelle zu kürzen. „BEREICH“ IST DURCH „THEMA“ ERSETZT (Spaltenkopf des Datenblatts, Spaltenkopf der Schreibtabelle, Schritt 3, Aufgabe 3, Selbstcheck 2, Hilfe 1). Zwei Gründe: Erstens trägt das Wort den Kern der Seite und hätte nach Zählregel 5 einen eigenen Begriffssatz im Alltagsteil gebraucht, den nur „wiegen“ bekam — und der vierte und letzte Alltagsplatz war für CO₂ nötiger. Zweitens benutzt der Band „Bereich“ bereits in zwei ANDEREN Bedeutungen: in fv1 als Raumbereich („Dieser Bereich heißt Magnetfeld.“) und in fn2 als Anzeigefeld des Zählrohrs („Lies die Zahl hinter „Bereich“ ab.“). Drei Bedeutungen für ein Wort verstoßen gegen „Immer dieselbe Bezeichnung für dieselbe Sache“. „Thema“ kommt auf keiner anderen Schülerseite des Bandes vor, ist kürzer und liegt näher an A2. Die Spaltenköpfe des Datenblatts heißen aus demselben Grund jetzt schlicht „dafür“ und „dagegen“ statt „spricht dafür“/„spricht dagegen“ — genau die Wörter, die die Lernenden selbst in die Schreibtabelle eintragen. Bewusst vermieden und deshalb nirgends auf der Schülerseite, weil es das erste bis siebte neue Wort wäre: „Bewertung“, „Argument“, „Debatte“, „Betrieb“, „Rückbau“, „erfassbar“, „Region“. „Debatte“ stand bis zuletzt doch auf der Seite, nämlich in der Quellzeile — und die Quellzeile WIRD gedruckt (build_pilot.datenblatt setzt sie unter das Blatt, pruefe_profil zählt sie mit). Sie ist jetzt gekürzt auf „So reden beide Seiten. In Deutschland liefen die letzten drei Reaktoren bis 2023.“; die Neutralitätsaussage des gestrichenen Satzes „Dieses Heft wertet nicht.“ steckt bereits in „beide Seiten“ und war für A2 die abstrakteste Wendung der Seite. Aus „im Betrieb nahezu kein CO₂“ ist „macht Strom fast ohne CO₂“ geworden, aus „Bau, Uranabbau und Rückbau erzeugen welches“ das Pronomen-freie „Bau und Uran-Abbau machen CO₂“ (das „welches“ des Regelhefts verweist auf die Nachbarzelle und ist auf A2 nicht dekodierbar), aus „Uran muss eingeführt werden“ das homonymfreie „Uran kommt aus anderen Ländern“ (einführen heißt hier importieren, nicht erklären — eine klassische DaZ-Falle), aus „wenige Unfälle je erzeugter Energie“ das verhältnisfreie „bisher gab es nur wenige Unfälle“ (die Verhältnisgröße im Genitiv setzt den Begriff des relativen Risikos voraus, der nirgends erklärt wird), aus „ein Unfall trifft ganze Regionen“ das Wort „Gegend“. Heft gegen Datenblatt: Verlangt wird nur, was in den gedruckten acht Zellen wirklich steht. Zwei Arbeitsschritte des Regelhefts sind deshalb gestrichen. (1) „Unterstreiche darin jede Zahl“ läuft ins Leere: Im Tabellenkörper steht GENAU EINE Zahl (100 000), die 2023 steht nur in der Quellzeile. (2) „Markiere, wo die Unterschiede am größten sind“ ist am Blatt nicht beantwortbar — es enthält keine vergleichbaren Größen, das Blatt ist rein sprachlich. An ihre Stelle treten das zeilenweise Lesen (Schritt 1) und der Vergleich der beiden Seiten EINER Zeile (Schritt 2); Schritt 2 sagt jetzt ausdrücklich „Trage beide Antworten in die Tabelle ein“, weil die Schreibtabelle je Zeile zwei Spalten offen hat und die dritte die Entscheidung trägt. Ebenso ersetzt ist die Schreibtabelle des Regelhefts: Sie fragte „Mein Urteil: dafür oder dagegen“ — genau das, was schon als Spaltenkopf über jeder Zelle steht, also Abschreiben statt Urteilen. Streichung gegenüber dem Regelheft: Die fünfte Datenblattzeile „Versorgung“ ist entfallen. Ihre Kontra-Zelle („träge regelbar, passt schlecht zu Wind und Sonne“) gehört inhaltlich zu fv11, wo „regelbar“ und „wetterabhängig“ eingeführt sind und das Kernkraftwerk bereits mit „sehr langsam“ in der Tabelle steht; eine Wiederholung hier hätte den vier Themen des Lernziels ein fünftes ohne fünften Gedanken hinzugefügt und das Blatt über die A2-Lesegrenze getrieben. Wer sie im Unterricht braucht, verweist mündlich auf fv11. Breite gemessen, nicht geschätzt: Alle 12 Zellen und die Kopfzeile sind mit BREITE_MESSEN gegen ihre Spalte geprüft; das breiteste Einzelwort ist „Uran-Abbau“ in Spalte 3. Wer die Zellen ändert, muss diese Messung wiederholen — ein einzelnes zu breites Wort zieht die Zeile still auf 6,0 pt herunter. Auch der Kopf der Schreibtabelle ist nachgemessen: „Wie wichtig: sehr, mittel, wenig?“ steht bei AVB(14) in einer Zeile (die Kopfhöhe kh=48 trägt höchstens zwei). Wortgewicht: Die Seite lag mit 397 Wörtern als EINZIGE der 28 Einheiten über dem verbindlichen Budget von 380 und ließ pruefe_profil.py mit Exitcode 1 abbrechen. Zurückgeholt wurde ausschließlich außerhalb der Hilfen und des Selbstchecks: Quellzeile (−7), Spaltenköpfe des Datenblatts (−2), Merke-Zeile (−3), Schritt 1, Alltagssätze 1 und 2, Merksatz 2, Aufgabe 2 und das gelöste Beispiel; hinzugekommen sind der CO₂-Begriffssatz und der längere Satzstarter. Undruckbare Zeichen: Die Seite trägt keine Simulation und damit keine Knopfnamen; benutzt wird aus dem Sonderzeichenvorrat allein das tiefgestellte ₂ in CO₂, das in SourceSans3 vorhanden und geprüft ist. Bewusst offen gelassen und deshalb nirgends behauptet: (1) Wie viele Kernkraftwerke weltweit laufen, wie teuer der Strom ist und wie hoch der Anteil am deutschen Netz war — dazu steht auf dem Blatt keine Zahl, und Zahlen dürfen nicht erfunden werden. Die einzige Jahreszahl (2023, letzte drei Reaktoren) steht in der Quellzeile und trägt keine Aufgabe. (2) Ob Kernenergie „klimafreundlich“ ist — die Seite stellt Betrieb und Bau nebeneinander und entscheidet nicht. (3) Wo ein Endlager entsteht, ist nicht entschieden und steht auf keiner Seite dieses Bandes (siehe fn11). (4) Ob Kernfusion die Frage einmal anders stellt — fn14 behandelt sie, das Datenblatt hier meint ausschließlich die Kernspaltung. (5) Wie die Klasse insgesamt steht: Es wird nicht abgestimmt, nicht ausgezählt und kein Ergebnis an der Tafel festgehalten. Die Position bleibt die des einzelnen Lernenden."
+ }
+}

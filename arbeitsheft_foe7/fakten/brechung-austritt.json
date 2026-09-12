@@ -1,0 +1,305 @@
+[
+ {
+  "sim": "brechung-austritt",
+  "ueberschrift": "🔶 Was geschieht beim Übergang von Glas in Luft?",
+  "regler": [
+   {
+    "id": "bauP",
+    "beschriftung": "on> 55° – Totalreflexion Winkel im Glas: 25°",
+    "bereich": {
+     "min": "0",
+     "max": "70",
+     "step": "1",
+     "start": "25"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "20° – Strahl tritt aus",
+    "ruft": "_bauSetP(20)"
+   },
+   {
+    "aufschrift": "42° – Grenzwinkel",
+    "ruft": "_bauSetP(42)"
+   },
+   {
+    "aufschrift": "55° – Totalreflexion",
+    "ruft": "_bauSetP(55)"
+   }
+  ],
+  "hinweise": [
+   "Jetzt läuft der Strahl im Glas und trifft von innen auf die gerade Fläche. Vergrößere den Winkel langsam – und schau, wann vorn nichts mehr herauskommt.",
+   "Von Glas in Luft knickt der Strahl vom Lot weg: Der Winkel in der Luft ist größer als der im Glas.",
+   "Bei etwa 42° hat der austretende Strahl schon 90° erreicht und liegt flach in der Fläche. Darüber gibt es keine Austrittsrichtung mehr – alles wird zurückgeworfen: Totalreflexion.",
+   "Umgekehrt geht das nicht: Von Luft in Glas bleibt der Winkel immer kleiner – deshalb gibt es dort keinen Grenzwinkel."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "bauStatus: 🔶 Winkel im Glas 25°, in der Luft 39° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "20° – Strahl tritt aus",
+    "text": "bauStatus: 🔶 Winkel im Glas 20°, in der Luft 31° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "42° – Grenzwinkel",
+    "text": "bauStatus: 🔶 42° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "55° – Totalreflexion",
+    "text": "bauStatus: 🔶 55° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 0",
+    "text": "bauStatus: 🔶 Winkel im Glas 0°, in der Luft 0° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 9",
+    "text": "bauStatus: 🔶 Winkel im Glas 9°, in der Luft 14° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 18",
+    "text": "bauStatus: 🔶 Winkel im Glas 18°, in der Luft 28° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 26",
+    "text": "bauStatus: 🔶 Winkel im Glas 26°, in der Luft 41° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 35",
+    "text": "bauStatus: 🔶 Winkel im Glas 35°, in der Luft 59° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 44",
+    "text": "bauStatus: 🔶 44° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 53",
+    "text": "bauStatus: 🔶 53° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 61",
+    "text": "bauStatus: 🔶 61° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 70",
+    "text": "bauStatus: 🔶 70° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 2",
+    "text": "bauStatus: 🔶 Winkel im Glas 2°, in der Luft 3° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 4",
+    "text": "bauStatus: 🔶 Winkel im Glas 4°, in der Luft 6° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 6",
+    "text": "bauStatus: 🔶 Winkel im Glas 6°, in der Luft 9° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 8",
+    "text": "bauStatus: 🔶 Winkel im Glas 8°, in der Luft 12° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 10",
+    "text": "bauStatus: 🔶 Winkel im Glas 10°, in der Luft 15° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 12",
+    "text": "bauStatus: 🔶 Winkel im Glas 12°, in der Luft 18° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 14",
+    "text": "bauStatus: 🔶 Winkel im Glas 14°, in der Luft 21° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 16",
+    "text": "bauStatus: 🔶 Winkel im Glas 16°, in der Luft 24° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 20",
+    "text": "bauStatus: 🔶 Winkel im Glas 20°, in der Luft 31° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 22",
+    "text": "bauStatus: 🔶 Winkel im Glas 22°, in der Luft 34° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 24",
+    "text": "bauStatus: 🔶 Winkel im Glas 24°, in der Luft 38° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 28",
+    "text": "bauStatus: 🔶 Winkel im Glas 28°, in der Luft 45° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 30",
+    "text": "bauStatus: 🔶 Winkel im Glas 30°, in der Luft 49° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 32",
+    "text": "bauStatus: 🔶 Winkel im Glas 32°, in der Luft 53° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 34",
+    "text": "bauStatus: 🔶 Winkel im Glas 34°, in der Luft 57° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 36",
+    "text": "bauStatus: 🔶 Winkel im Glas 36°, in der Luft 62° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 38",
+    "text": "bauStatus: 🔶 Winkel im Glas 38°, in der Luft 67° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 40",
+    "text": "bauStatus: 🔶 Winkel im Glas 40°, in der Luft 75° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 42",
+    "text": "bauStatus: 🔶 42° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 46",
+    "text": "bauStatus: 🔶 46° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 48",
+    "text": "bauStatus: 🔶 48° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 50",
+    "text": "bauStatus: 🔶 50° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 52",
+    "text": "bauStatus: 🔶 52° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 54",
+    "text": "bauStatus: 🔶 54° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 56",
+    "text": "bauStatus: 🔶 56° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 58",
+    "text": "bauStatus: 🔶 58° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 60",
+    "text": "bauStatus: 🔶 60° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 62",
+    "text": "bauStatus: 🔶 62° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 64",
+    "text": "bauStatus: 🔶 64° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 66",
+    "text": "bauStatus: 🔶 66° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 68",
+    "text": "bauStatus: 🔶 68° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 5",
+    "text": "bauStatus: 🔶 Winkel im Glas 5°, in der Luft 8° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 15",
+    "text": "bauStatus: 🔶 Winkel im Glas 15°, in der Luft 23° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 25",
+    "text": "bauStatus: 🔶 Winkel im Glas 25°, in der Luft 39° – der Strahl knickt vom Lot weg."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 45",
+    "text": "bauStatus: 🔶 45° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 55",
+    "text": "bauStatus: 🔶 55° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   },
+   {
+    "einstellung": "on> 55° – Totalreflexion Winkel im Glas: 25° = 65",
+    "text": "bauStatus: 🔶 65° im Glas liegt über dem Grenzwinkel von 41,8° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion)."
+   }
+  ],
+  "bildtexte": [
+   "Glas",
+   "Luft",
+   "Lot",
+   "25°",
+   "39°",
+   "Grenzwinkel 41,8°",
+   "vom Lot weg gebrochen",
+   "20°",
+   "31°",
+   "42°",
+   "TOTALREFLEXION – kein Licht tritt aus",
+   "55°",
+   "0°",
+   "9°",
+   "14°",
+   "18°",
+   "28°",
+   "26°",
+   "41°",
+   "35°",
+   "59°",
+   "44°",
+   "53°",
+   "61°",
+   "70°",
+   "2°",
+   "3°",
+   "4°",
+   "6°",
+   "8°",
+   "12°",
+   "10°",
+   "15°",
+   "21°",
+   "16°",
+   "24°",
+   "22°",
+   "34°",
+   "38°",
+   "45°",
+   "30°",
+   "49°",
+   "32°",
+   "57°",
+   "36°",
+   "62°",
+   "67°",
+   "40°",
+   "75°",
+   "46°",
+   "48°",
+   "50°",
+   "52°",
+   "54°",
+   "56°",
+   "58°",
+   "60°",
+   "64°",
+   "66°",
+   "68°",
+   "5°",
+   "23°",
+   "65°"
+  ]
+ }
+]

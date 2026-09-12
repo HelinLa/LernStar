@@ -1,0 +1,2061 @@
+[
+ {
+  "id": "oi1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Zurückgeworfen, hindurchgelassen und geschluckt ergeben zusammen immer",
+    "loesung": "100 Prozent",
+    "post": "des Lichts."
+   },
+   {
+    "pre": "Schwarzes Papier schluckt",
+    "loesung": "95 %",
+    "post": "des Lichts und wird dabei warm."
+   },
+   {
+    "pre": "Ein Spiegel wirft das Licht gerichtet zurück, weißes Papier",
+    "loesung": "streut",
+    "post": "es nach allen Seiten."
+   },
+   {
+    "pre": "Durch Fensterglas gehen 90 % des Lichts",
+    "loesung": "hindurch",
+    "post": ", nur 2 % werden geschluckt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Jede Oberfläche macht nur eine einzige Sache mit dem Licht: zurückwerfen oder hindurchlassen oder schlucken.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Fensterglas lässt 90 % des Lichts hindurch und wirft trotzdem 8 % zurück.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Spiegel bleibt in der Sonne fast kühl, weil er 95 % des Lichts zurückwirft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Schwarzes Papier wird warm, weil es das Licht besonders gut zurückwirft.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour legt in der Pause ein schwarzes und ein weißes T-Shirt nebeneinander in die Sonne. Nach zehn Minuten ist das schwarze deutlich wärmer. Woran liegt das?",
+   "optionen": [
+    "Das schwarze T-Shirt zieht das Sonnenlicht stärker an. Licht wird von einem Stoff jedoch nicht angezogen.",
+    "Auf dunkle Flächen trifft mehr Sonnenlicht als auf helle. Auf beide Shirts fällt aber gleich viel Licht.",
+    "Das schwarze T-Shirt schluckt fast das ganze Licht, das weiße wirft den größten Teil zurück. Geschlucktes Licht macht den Stoff wärmer.",
+    "Das weiße T-Shirt lässt das Licht hindurch und bleibt deshalb kühl. Durch beide Stoffe geht jedoch fast kein Licht hindurch."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Vorschlag: „Wir stellen den Spiegel einfach ganz schräg. Bei 80° zum Lot schluckt er mehr Licht und wird dann auch warm.“",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag geht nicht auf. Stellst du den Winkel zum Lot von 0° auf 80°, bleiben in der Simulation dieselben Zahlen stehen. Der Spiegel wirft weiterhin 95 % zurück und schluckt nur 5 %. Weil er so wenig Licht schluckt, bleibt er auch schräg gestellt fast kühl."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi2",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF4",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Spiegelbild liegt",
+    "loesung": "genauso weit",
+    "post": "hinter dem Spiegel wie der Gegenstand davor."
+   },
+   {
+    "pre": "Ein Bild hinter dem Spiegel heißt",
+    "loesung": "virtuell",
+    "post": "; man kann es nicht auffangen."
+   },
+   {
+    "pre": "Dein Auge verlängert die zurückgeworfenen Strahlen",
+    "loesung": "geradlinig",
+    "post": "nach hinten."
+   },
+   {
+    "pre": "Im ebenen Spiegel steht das Bild aufrecht, aber links und rechts sind vertauscht: Es ist",
+    "loesung": "seitenverkehrt",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Steht Nour 2 m vor dem Spiegel, liegt ihr Bild 2 m dahinter.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Spiegelbild liegt immer direkt auf der Spiegelfläche, egal wie weit der Gegenstand davorsteht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Hinter dem Spiegel treffen sich echte Lichtstrahlen, deshalb lässt sich das Bild auf Papier auffangen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Blatt Papier hinter dem Spiegel bleibt leer, weil dorthin gar kein Licht gelangt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour steht vor dem großen Spiegel im Physikraum und macht einen Schritt von 50 cm auf ihn zu. Um wie viel verringert sich der Abstand zwischen ihr und ihrem Spiegelbild?",
+   "optionen": [
+    "Um 100 cm, denn sie kommt dem Spiegel 50 cm näher und ihr Bild rückt um dieselben 50 cm nach vorn.",
+    "Um 50 cm, weil sich nur Nour bewegt. Das Bild bleibt jedoch nicht stehen, es rückt genauso weit mit.",
+    "Um 25 cm, weil sich der Abstand hinter dem Spiegel halbiert. Der Bildabstand ist aber immer genauso groß wie der Abstand davor.",
+    "Gar nicht, weil das Bild fest auf dem Spiegelglas sitzt. Es liegt jedoch hinter dem Spiegel und wandert mit."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche die Figur vor dem Spiegel mit ihrem Bild: Was ist gleich, was ist anders?",
+   "zeilen": 5,
+   "loesung": "Gleich ist, dass das Bild aufrecht steht und genauso weit hinter dem Spiegel liegt, wie die Figur davorsteht. Anders ist, dass links und rechts vertauscht sind, das Bild also seitenverkehrt erscheint. Anders ist außerdem, dass es virtuell ist: Hinter dem Spiegel treffen sich keine echten Strahlen. Deshalb kannst du das Bild nicht auf einem Blatt Papier auffangen, die Figur selbst dagegen schon anfassen."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Am Spiegel ist der Einfallswinkel",
+    "loesung": "genauso groß",
+    "post": "wie der Reflexionswinkel."
+   },
+   {
+    "pre": "Drehst du den Spiegel um 25°, schwenkt der Strahl um",
+    "loesung": "50°",
+    "post": ", also doppelt so weit."
+   },
+   {
+    "pre": "Beide Winkel misst du zum",
+    "loesung": "Lot",
+    "post": ", also zur Senkrechten auf der Spiegelfläche."
+   },
+   {
+    "pre": "Einfallender Strahl, Lot und zurückgeworfener Strahl liegen in einer",
+    "loesung": "Ebene",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Den Einfallswinkel misst man zwischen dem Strahl und der Spiegelfläche.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Fällt der Strahl genau auf dem Lot ein, sind Einfallswinkel und Reflexionswinkel beide 0°.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Drehst du den Spiegelfuß um 15°, schwenkt der zurückgeworfene Strahl ebenfalls um 15°.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einem Einfallswinkel von 80° beträgt der Reflexionswinkel ebenfalls 80°.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis hält den Spiegel so, dass der Lichtfleck genau auf dem Türrahmen liegt. Dann dreht er den Spiegelfuß um 30°. Um wie viel Grad schwenkt der Strahl?",
+   "optionen": [
+    "Um 15°, weil sich die Drehung auf Einfallswinkel und Reflexionswinkel aufteilt. Beide Winkel ändern sich aber gemeinsam in dieselbe Richtung.",
+    "Um 30°, also genauso weit wie der Spiegel. Mit dem Spiegel dreht sich jedoch auch das Lot, deshalb schwenkt der Strahl weiter.",
+    "Gar nicht, weil Einfallswinkel und Reflexionswinkel immer gleich groß bleiben. Diese Regel gilt zwar, doch beide Winkel werden beim Drehen größer.",
+    "Um 60°, also um den doppelten Drehwinkel."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Lichtfleck weit über die Tafel springt, obwohl Jannis den Spiegelfuß nur ein kleines Stück dreht.",
+   "zeilen": 4,
+   "loesung": "Dreht sich der Spiegel, dreht sich das Lot mit. Dadurch wird der Einfallswinkel größer, und der Reflexionswinkel wird genauso viel größer. Beide Änderungen zusammen ergeben, dass der zurückgeworfene Strahl um den doppelten Drehwinkel schwenkt. Weil die Wand weit entfernt ist, wandert der Fleck dort schon bei wenigen Grad Drehung ein großes Stück."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi4",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Von Luft in Glas knickt der Strahl",
+    "loesung": "zum Lot hin",
+    "post": "."
+   },
+   {
+    "pre": "Genau auf dem Lot, also bei 0°, gibt es",
+    "loesung": "keinen Knick",
+    "post": "."
+   },
+   {
+    "pre": "Die Richtungsänderung des Lichts an der Grenzfläche heißt",
+    "loesung": "Brechung",
+    "post": "."
+   },
+   {
+    "pre": "Glas ist optisch dichter als Luft, das Licht ist darin",
+    "loesung": "langsamer",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Winkel im Glas ist kleiner als der Winkel in der Luft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Glas läuft der Strahl auf einer leichten Kurve weiter, bis er wieder herauskommt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Stellst du in der Luft 75° ein, misst du im Glas 40°.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Strahl knickt an jeder Fläche des Glaskörpers, also auch an der runden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis schiebt den Glasklotz so, dass der Strahl mit 60° zum Lot aus der Luft auf die gerade Fläche trifft. Welchen Winkel liest Nour in der Statuszeile für das Glas ab?",
+   "optionen": [
+    "Genau 60°, weil der Strahl seine Richtung behält. An der Grenzfläche knickt er jedoch zum Lot hin.",
+    "Etwa 35°, denn der Winkel im Glas ist immer kleiner als der in der Luft.",
+    "Etwa 80°, weil sich der Strahl im dichteren Glas vom Lot wegdreht. Beim Eintritt von Luft in Glas knickt er aber zum Lot hin.",
+    "0°, weil das Glas den Strahl genau auf das Lot zwingt. Bei 0° im Glas müsste er schon in der Luft mit 0° auftreffen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum Jannis’ Satz „Im Glas wird der Strahl nach und nach immer weiter abgelenkt“ nicht stimmt.",
+   "zeilen": 4,
+   "loesung": "Im Glas läuft der Strahl geradeaus, genau wie davor und dahinter. Geknickt wird er nur an der Grenzfläche zwischen Luft und Glas, weil das Licht dort in ein optisch dichteres Material übergeht und langsamer wird. Auf dem Papier siehst du deshalb einen scharfen Knick an einer einzigen Stelle und keine Kurve. Trifft der Strahl genau auf dem Lot auf, fehlt sogar dieser Knick."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beim Übergang von Glas in Luft wird der Strahl vom Lot",
+    "loesung": "weg gebrochen",
+    "post": "."
+   },
+   {
+    "pre": "Über dem Grenzwinkel von 41,8° tritt kein Licht mehr aus. Das nennt man",
+    "loesung": "Totalreflexion",
+    "post": "."
+   },
+   {
+    "pre": "Licht läuft im Glas",
+    "loesung": "langsamer",
+    "post": "als in der Luft."
+   },
+   {
+    "pre": "Bei 25° im Glas nennt die Anzeige in der Luft",
+    "loesung": "39°",
+    "post": ", der Winkel außen ist also größer."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 0° im Glas zeigt die Anzeige auch 0° in der Luft, der Strahl knickt dort nicht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Übergang von Glas in Luft wird der Strahl zum Lot hin gebrochen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Über dem Grenzwinkel tritt noch ein kleiner Rest des Lichts aus dem Glas aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Vergrößerst du den Winkel im Glas, wächst der Winkel in der Luft schneller mit.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis leuchtet mit einem dünnen Lichtzeiger von innen gegen die Fläche des Glasklotzes. Bei 25° im Glas sieht er den Strahl außen weiterlaufen, bei 55° nicht mehr. Was geschieht bei 55°?",
+   "optionen": [
+    "Das Glas schluckt den Strahl bei 55° vollständig. Geschluckt wird er jedoch nicht, denn im Glas läuft er weiter sichtbar hin und her.",
+    "Der Strahl tritt aus, ist außen aber zu schwach zum Sehen. Bei 55° gibt es jedoch überhaupt keine Austrittsrichtung mehr.",
+    "Der Winkel liegt über dem Grenzwinkel von 41,8°, deshalb wird das ganze Licht ins Glas zurückgeworfen.",
+    "Bei 55° trifft der Strahl senkrecht auf die Fläche und kommt deshalb nicht heraus. Senkrecht wären jedoch 0°, und dort tritt er gerade ungeknickt aus."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Winkel in der Luft immer größer ist als der Winkel im Glas und was daraus über dem Grenzwinkel folgt.",
+   "zeilen": 4,
+   "loesung": "Licht läuft im Glas langsamer als in der Luft, deshalb wird der Strahl beim Austritt vom Lot weg gebrochen. Der Winkel außen ist damit größer als der im Glas: Bei 20° im Glas zeigt die Anzeige 31° in der Luft, bei 25° schon 39°. Der äußere Winkel wächst also schneller mit und erreicht beim Grenzwinkel von 41,8° bereits 90°, der Strahl liegt dann flach in der Fläche. Über 41,8° gibt es keine Austrittsrichtung mehr, und alles Licht wird ins Glas zurückgeworfen."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ab dem Grenzwinkel von etwa 42° wird das Licht an der Wand vollständig",
+    "loesung": "zurückgeworfen",
+    "post": "."
+   },
+   {
+    "pre": "Im Lichtleiter läuft das Licht im",
+    "loesung": "Zickzack",
+    "post": "bis zum Ende."
+   },
+   {
+    "pre": "Bei 40° an der Wand tritt Licht aus, denn dieser Winkel liegt",
+    "loesung": "unter",
+    "post": "dem Grenzwinkel."
+   },
+   {
+    "pre": "Weil der Stab nur",
+    "loesung": "sanft gebogen",
+    "post": "ist, bleibt der Winkel an jeder Wand groß genug."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Damit das Licht um die Kurve kommt, muss die Glasfaser innen verspiegelt sein.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 85° an der Wand bleibt das Licht im Leiter, bei 20° tritt es aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Lichtleiter trifft das Licht viele Male von innen auf die Glaswand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je kleiner der Winkel an der Wand ist, desto sicherer bleibt das Licht im Leiter.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour knickt das Faserbündel scharf um die Tischkante. Am anderen Ende leuchtet es nun deutlich schwächer. Woran liegt das?",
+   "optionen": [
+    "In der scharfen Biegung trifft das Licht flacher, also mit kleinerem Winkel, auf die Glaswand; liegt er unter 42°, tritt dort Licht aus.",
+    "Das Glas ist in der Biegung dünner geworden und schluckt mehr Licht. Beim Biegen wird die Faser jedoch nicht dünner.",
+    "Licht kann nun einmal nicht um Kurven laufen. Bei sanfter Biegung kommt am Ende jedoch fast alles Licht an.",
+    "Die Taschenlampe leuchtet beim Biegen schwächer. Die Lampe bleibt aber gleich hell, nur der Weg im Bündel ändert sich."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum ein Lichtleiter das Licht auch um eine Biegung trägt, obwohl sich Licht geradlinig ausbreitet.",
+   "zeilen": 4,
+   "loesung": "Das Licht läuft auch im Lichtleiter geradlinig, aber immer nur ein Stück weit. Dann trifft es von innen sehr schräg auf die Glaswand, mit mehr als dem Grenzwinkel von etwa 42°, und wird dort vollständig zurückgeworfen. Nach jeder Totalreflexion läuft es wieder geradeaus weiter, so entsteht der Zickzackweg. Weil der Stab nur sanft gebogen ist, bleibt der Winkel an jeder Wand groß genug, und das Licht folgt der Kurve bis zum Ende."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi7",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Glas, das in der Mitte dicker ist, heißt",
+    "loesung": "Sammellinse",
+    "post": "."
+   },
+   {
+    "pre": "Der Abstand vom Glas zum Brennpunkt heißt",
+    "loesung": "Brennweite",
+    "post": "."
+   },
+   {
+    "pre": "Ein Glas, das in der Mitte dünner ist, heißt",
+    "loesung": "Zerstreuungslinse",
+    "post": "und lenkt die Strahlen auseinander."
+   },
+   {
+    "pre": "Stellst du die Brennweite von 90 auf 150, rückt der Brennpunkt weiter vom Glas",
+    "loesung": "weg",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auch hinter dem in der Mitte dünneren Glas treffen sich die Strahlen in einem Brennpunkt, er liegt nur weiter weg.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je größer die Brennweite ist, desto näher liegt der Brennpunkt am Glas.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Brennpunkt einer Sammellinse ist es am hellsten und am heißesten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Hinter einer Zerstreuungslinse laufen die Strahlen auseinander; rückwärts verlängert kommen sie aus einem Punkt vor dem Glas.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis hält beide Gläser der Reihe nach in die Sonne über ein Blatt Papier. Unter dem einen entsteht ein winziger, sehr heller Punkt, unter dem anderen nur ein blasser Fleck. Welches Glas gehört ins Fernrohr?",
+   "optionen": [
+    "Das Glas mit dem blassen Fleck, denn es verteilt das Licht auf mehr Fläche. So verteiltes Licht ergibt jedoch kein Bild, das man auffangen kann.",
+    "Beide Gläser gehen, denn jedes geschliffene Glas bündelt Licht. Das in der Mitte dünnere Glas lässt die Strahlen jedoch auseinanderlaufen.",
+    "Das Glas mit dem winzigen Punkt, weil es in der Mitte dünner geschliffen ist. Der helle Punkt entsteht aber gerade unter dem in der Mitte dickeren Glas.",
+    "Das Glas mit dem winzigen Punkt, denn es ist in der Mitte dicker und sammelt die parallelen Strahlen in seinem Brennpunkt."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe, warum man mit dem in der Mitte dickeren Glas Papier anzünden kann, mit dem in der Mitte dünneren dagegen nicht.",
+   "zeilen": 4,
+   "loesung": "Das in der Mitte dickere Glas ist eine Sammellinse. Sie lenkt die parallelen Sonnenstrahlen zueinander hin, sodass sie sich hinter dem Glas im Brennpunkt treffen. Dort trifft das Licht der ganzen Glasfläche auf einen winzigen Punkt, deshalb ist es dort am hellsten und heißesten, und das Papier kann anbrennen. Das in der Mitte dünnere Glas ist eine Zerstreuungslinse: Sie lenkt die Strahlen auseinander, hinter ihr entsteht nie ein heller Fleck und damit auch keine große Wärme."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi8",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Steht der Gegenstand weiter weg als 2f, ist das Bild klein und",
+    "loesung": "umgekehrt",
+    "post": "."
+   },
+   {
+    "pre": "Nur näher als die Brennweite entsteht ein aufrechtes, vergrößertes und",
+    "loesung": "virtuelles Bild",
+    "post": "."
+   },
+   {
+    "pre": "Ein Bild, das man auf einem Schirm auffangen kann, heißt",
+    "loesung": "reell",
+    "post": "."
+   },
+   {
+    "pre": "Steht der Gegenstand genau bei 2f, also bei 124, ist das Bild",
+    "loesung": "gleich groß",
+    "post": "wie der Gegenstand selbst."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei g = 100 ist das Bild größer als der Gegenstand und steht trotzdem auf dem Kopf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je näher der Gegenstand an die Linse rückt, desto kleiner wird sein Bild.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein virtuelles Bild lässt sich nicht auf einem Schirm auffangen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dreht man den Zettel um, steht das umgekehrte Bild darauf wieder richtig herum.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour hält die Linse mit f = 62 dicht über eine Briefmarke, der Abstand beträgt nur 25. Was sieht sie, wenn sie durch die Linse schaut?",
+   "optionen": [
+    "Ein verkleinertes Bild auf dem Kopf. So ein Bild entsteht jedoch erst, wenn der Gegenstand weiter weg steht als 2f = 124.",
+    "Ein vergrößertes, aufrechtes Bild, das sich auf keinem Schirm auffangen lässt.",
+    "Ein gleich großes Bild auf dem Kopf. Gleich groß wird das Bild aber nur genau bei 2f, also bei 124.",
+    "Überhaupt kein Bild, weil der Abstand kleiner als die Brennweite ist. Innerhalb der Brennweite entsteht jedoch ein aufrechtes, virtuelles Bild."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile Nours Idee, das umgekehrte Bild des Schulhofs dadurch aufzurichten, dass sie den Zettel hinter der Linse umdreht.",
+   "zeilen": 4,
+   "loesung": "Nours Idee führt nicht zum Ziel. Der Schulhof steht viel weiter weg als 2f = 124, deshalb zeichnet die Linse ihn verkleinert und umgekehrt auf den Zettel. Drehst du den Zettel, drehst du nur das Papier mit; die Linse entwirft das Bild sofort wieder auf dem Kopf darauf. Aufrecht wird das Bild erst, wenn der Gegenstand näher als f = 62 steht, dann ist es aber virtuell und lässt sich gar nicht mehr auf dem Zettel auffangen."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Lupe ist eine",
+    "loesung": "Sammellinse",
+    "post": "."
+   },
+   {
+    "pre": "Vergrößert und aufrecht siehst du nur, wenn der Gegenstand",
+    "loesung": "näher als f",
+    "post": "steht."
+   },
+   {
+    "pre": "Das Lupenbild lässt sich nicht auf einem Schirm auffangen; deshalb heißt es",
+    "loesung": "virtuell",
+    "post": "."
+   },
+   {
+    "pre": "Je näher der Abstand g an die Brennweite f = 58 heranrückt, desto",
+    "loesung": "stärker",
+    "post": "vergrößert die Lupe."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je weiter du die Lupe vom Papier abhebst, desto größer wird das Bild – ganz ohne Grenze.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Lupenbild entsteht dort, wo dein Auge die auseinanderlaufenden Strahlen nach hinten verlängert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei g = 60 zeigt die Lupe kein vergrößertes, aufrechtes Bild mehr.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil das Lupenbild größer ist als der Gegenstand, kann man es auf einem Schirm auffangen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis liest den winzigen Text auf einer Tablettenschachtel mit der Lupe. Zuerst hält er sie dicht über das Papier, dann hebt er sie langsam höher. Was beobachtet er?",
+   "optionen": [
+    "Die Schrift wird immer weiter größer, je höher er die Lupe hält. Jenseits der Brennweite f = 58 gibt es aber gar kein aufrechtes Lupenbild mehr.",
+    "Die Schrift bleibt genau gleich groß, weil die Vergrößerung allein vom Glas abhängt. Die Statuszeile meldet bei g = 10 jedoch nur 1,2-fach und bei g = 48 schon 5,8-fach.",
+    "Die Schrift wird zuerst immer größer, und sobald der Abstand die Brennweite erreicht, verschwindet das aufrechte Bild.",
+    "Die Schrift wird von Anfang an kleiner, weil mehr Abstand immer verkleinert. Innerhalb der Brennweite wächst das Bild aber mit dem Abstand."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche das Bild bei g = 48 mit dem Bild bei g = 60 und begründe den Unterschied.",
+   "zeilen": 4,
+   "loesung": "Bei g = 48 liegt der Gegenstand innerhalb der Brennweite f = 58: Die Strahlen laufen hinter der Linse noch auseinander, das Auge verlängert sie nach hinten und sieht ein aufrechtes, virtuelles Bild mit 5,8-facher Vergrößerung. Bei g = 60 steht der Gegenstand außerhalb der Brennweite, die Strahlen laufen wieder zusammen, und die Simulation meldet „g ≥ f: kein aufrechtes Lupenbild“. Der Unterschied hängt also allein davon ab, ob g kleiner oder größer als f ist."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi10",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Auf der Netzhaut entsteht ein",
+    "loesung": "umgekehrtes Bild",
+    "post": "."
+   },
+   {
+    "pre": "Zum Scharfstellen verformt sich die",
+    "loesung": "Augenlinse",
+    "post": "."
+   },
+   {
+    "pre": "Weil das Bild auf der Netzhaut wirklich entsteht, nennt man es",
+    "loesung": "reell",
+    "post": "."
+   },
+   {
+    "pre": "Das Verformen der Linse beim Scharfstellen heißt",
+    "loesung": "Akkommodation",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Pupille sorgt dafür, dass das Bild auf der Netzhaut scharf wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Blick auf ein nahes Buch wölbt sich die Augenlinse stärker als beim Blick aus dem Fenster.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zum Scharfstellen rückt die Netzhaut ein Stück nach vorn oder nach hinten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf der Netzhaut steht das Bild umgekehrt; erst das Gehirn dreht es wieder um.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour kommt vom hellen Schulhof in den abgedunkelten Physikraum und erkennt zuerst fast nichts. Nach einer Weile sieht sie die Tische wieder. Was hat sich verändert?",
+   "optionen": [
+    "Die Pupille hat sich geweitet und lässt nun mehr Licht auf die Netzhaut.",
+    "Die Augenlinse hat sich stärker gewölbt und sammelt dadurch mehr Licht ein. Die Wölbung stellt jedoch nur die Schärfe ein, nicht die Lichtmenge.",
+    "Die Netzhaut ist nach vorn gerückt, damit das Bild heller wird. Die Netzhaut sitzt aber fest und kann sich nicht verschieben.",
+    "Das Bild steht jetzt nicht mehr auf dem Kopf, deshalb erkennt sie mehr. Auf der Netzhaut steht das Bild jedoch in jeder Stellung umgekehrt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Nour im Augenmodell das Fensterkreuz klein und auf dem Kopf sieht, obwohl das Modell richtig zusammengesetzt ist.",
+   "zeilen": 4,
+   "loesung": "Die Linse im Modell bündelt das Licht des Fensterkreuzes und wirft es auf die hintere Schale, die der Netzhaut entspricht. Dabei kreuzen sich die Strahlen, sodass dort ein reelles Bild entsteht, das umgekehrt und verkleinert ist. Genau das leistet auch das echte Auge; erst das Gehirn dreht das Bild wieder um. Das Modell ist richtig zusammengesetzt; die Vermutung von Jannis stimmt also nicht."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kurzsichtige Augen brauchen eine",
+    "loesung": "Zerstreuungslinse",
+    "post": "."
+   },
+   {
+    "pre": "Weitsichtige Augen brauchen eine",
+    "loesung": "Sammellinse",
+    "post": "."
+   },
+   {
+    "pre": "Beim kurzsichtigen Auge liegt das Bild ohne Brille",
+    "loesung": "vor der Netzhaut",
+    "post": "."
+   },
+   {
+    "pre": "Die Zerstreuungslinse fächert das Licht auf und schiebt den Treffpunkt nach",
+    "loesung": "hinten",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim weitsichtigen Auge liegt das Bild ohne Brille hinter der Netzhaut.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Brille hilft, indem sie das Bild auf der Netzhaut vergrößert.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit Brille liegt das Bild bei beiden Sehfehlern genau auf der Netzhaut und ist scharf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beide Sehfehler lassen sich mit einer Sammellinse ausgleichen, sie muss nur unterschiedlich stark geschliffen sein.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis hält eines der beiden Brillengläser gegen die Zimmerdecke. Die Lampe erscheint durch das Glas kleiner. Zu welchem Auge gehört diese Brille?",
+   "optionen": [
+    "Zu einem weitsichtigen Auge, denn zu jedem Sehfehler gehört eine Sammellinse. Eine Sammellinse lässt Dinge jedoch größer erscheinen, nicht kleiner.",
+    "Zu einem weitsichtigen Auge, denn das Glas ist in der Mitte dicker als am Rand. Ein Glas, durch das alles kleiner aussieht, ist in der Mitte aber dünner.",
+    "Zu gar keinem Auge, denn Brillengläser ändern nur die Schärfe und niemals die Größe. Nour hat mit der einen Brille den Raum jedoch deutlich kleiner gesehen.",
+    "Zu einem kurzsichtigen Auge, denn kleiner erscheinen lässt eine Zerstreuungslinse, und genau die braucht ein kurzsichtiges Auge."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile diesen Satz von Jannis: „Wenn ich die Brille meines kurzsichtigen Bruders aufsetze, sehe ich noch schärfer als sonst.“",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nicht. Bei Jannis treffen sich die Strahlen ohne Brille schon genau auf der Netzhaut, das Bild ist also bereits scharf. Die Brille seines Bruders ist eine Zerstreuungslinse; sie fächert das Licht zusätzlich auf, und der Treffpunkt rutscht hinter die Netzhaut. Jannis sieht damit unschärfer, denn eine Brille hilft nur dem Auge, zu dessen Sehfehler sie passt."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E3",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Bild der Lochkamera steht",
+    "loesung": "auf dem Kopf",
+    "post": "."
+   },
+   {
+    "pre": "Für die Größen gilt",
+    "loesung": "B/G = b/g",
+    "post": "."
+   },
+   {
+    "pre": "Licht breitet sich",
+    "loesung": "geradlinig",
+    "post": "aus, deshalb geht von jedem Punkt nur ein schmales Bündel durch das Loch."
+   },
+   {
+    "pre": "Weil sich die Strahlen im Loch",
+    "loesung": "kreuzen",
+    "post": ", sind oben und unten vertauscht."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei g = 40 cm und b = 51 cm ist das Bild größer als der Gegenstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Pfeil auf dem Schirm zeigt bei jeder Bildweite nach unten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein größeres Loch macht das Bild heller und zugleich schärfer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ohne Linse in der Kiste kann auf der Milchglasscheibe kein Bild entstehen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour möchte den Baum vom Schulhof größer auf der Milchglasscheibe der Pappkiste sehen. Was muss sie ändern?",
+   "optionen": [
+    "Sie muss das Nadelloch größer stechen, denn dann kommt mehr Licht vom Baum herein. Mehr Licht macht das Bild jedoch nur heller und dazu unscharf.",
+    "Sie muss die Kiste länger bauen, denn mit größerer Bildweite b wächst nach B/G = b/g auch die Bildgröße B.",
+    "Sie muss weiter vom Baum weggehen, denn mit mehr Abstand wird alles größer abgebildet. Nach B/G = b/g wird das Bild bei größerem g aber kleiner.",
+    "Sie muss die Milchglasscheibe gegen ein weißes Blatt tauschen, denn ein hellerer Schirm zeigt ein größeres Bild. Der Schirm ändert jedoch nur die Helligkeit, nicht die Bildgröße."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, wie lang die Kiste sein muss, damit ein 20 cm hoher Pfeil bei g = 40 cm genau 10 cm hoch abgebildet wird.",
+   "zeilen": 3,
+   "loesung": "Aus B/G = b/g folgt b = g · B/G. Eingesetzt ergibt das b = 40 cm · 10/20 = 20 cm, die Kiste muss also 20 cm lang sein. Weil die Bildweite dann halb so groß ist wie die Gegenstandsweite, ist auch das Bild halb so hoch wie der Pfeil. Auf dem Schirm steht es dabei auf dem Kopf."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Weißes Licht ist eine Mischung aller",
+    "loesung": "Spektralfarben",
+    "post": "."
+   },
+   {
+    "pre": "Am stärksten bricht das Prisma",
+    "loesung": "Violett",
+    "post": ", am wenigsten Rot."
+   },
+   {
+    "pre": "Hinter dem Prisma liegen die Farben von Rot bis Violett nebeneinander und bilden ein",
+    "loesung": "Spektrum",
+    "post": "."
+   },
+   {
+    "pre": "Ein roter Strahl lässt sich im Prisma nicht weiter zerlegen, denn er ist",
+    "loesung": "einfarbig",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Prisma wird Rot stärker gebrochen als Violett.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Prisma trennt nur die Farben, die schon im weißen Licht stecken.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der bunte Streifen auf dem Tisch entsteht, weil das Glas des Keils selbst bunt ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Blaues Licht wird vom Prisma zwar abgeknickt, aber nicht in weitere Farben aufgefächert.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour hält eine rote Folie vor den Glaskeil. Auf der Tischplatte liegt jetzt kein Farbfächer mehr, sondern nur ein einzelner roter Streifen. Woran liegt das?",
+   "optionen": [
+    "Die Folie klebt die Farben wieder zu Rot zusammen. Farben lassen sich aber nicht zusammenkleben, die Folie lässt nur eine von ihnen durch.",
+    "Der Glaskeil ist zu dünn, um rotes Licht zu zerlegen. Die Dicke des Glases entscheidet jedoch nicht darüber, ob in einem Strahl mehrere Farben stecken.",
+    "Rotes Licht wird überhaupt nicht gebrochen und läuft deshalb als gerader Streifen weiter. Auch Rot knickt im Prisma ab, nur am wenigsten von allen Farben.",
+    "Die Folie lässt vom weißen Licht nur den roten Anteil durch, und ein einfarbiger Strahl enthält nichts mehr, was das Prisma noch trennen könnte."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Farben hinter dem Prisma immer in der Reihenfolge Rot, Orange, Gelb, Grün, Blau, Violett liegen und nie bunt durcheinander.",
+   "zeilen": 4,
+   "loesung": "Weißes Licht enthält alle Spektralfarben. Das Prisma bricht jeden Farbanteil unterschiedlich stark: Violett am stärksten, Rot am wenigsten, die übrigen Farben liegen dazwischen. Weil die Brechung von Rot bis Violett Schritt für Schritt zunimmt, bekommt jede Farbe im Fächer ihren festen Platz. Deshalb ist die Reihenfolge bei jedem Versuch dieselbe."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi14",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Bildschirm mischt Licht aus",
+    "loesung": "Rot, Grün, Blau",
+    "post": "."
+   },
+   {
+    "pre": "Alle drei Werte auf 255 ergeben",
+    "loesung": "Weiß",
+    "post": ", alle drei auf 0 ergeben Schwarz."
+   },
+   {
+    "pre": "Leuchten nur die rote und die grüne Fläche mit 255, so erscheint der Bildpunkt",
+    "loesung": "gelb",
+    "post": "."
+   },
+   {
+    "pre": "Weil das Auge die winzigen Leuchtflächen nicht mehr trennt, zählt es ihr Licht zu einer Farbe zusammen; das heißt",
+    "loesung": "additive Mischung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein weißer Bildpunkt entsteht, wenn Rot, Grün und Blau zugleich mit dem Wert 255 leuchten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Damit ein Punkt gelb leuchten kann, muss zwischen den anderen eine gelbe Leuchtfläche sitzen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Stehen alle drei Werte auf 0, bleibt der Bildpunkt schwarz.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je mehr Farben ein Bildschirm zusammenmischt, desto dunkler wird das Ergebnis.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis hält die Lupe über eine gelbe Fläche auf dem Bildschirm. Er sieht dort rote und grüne Streifen leuchten, die blauen bleiben dunkel. Wie kommt das Gelb zustande?",
+   "optionen": [
+    "Das rote und das grüne Licht vermischen sich auf dem Glas zu einem gelben Farbstoff. Auf dem Glas vermischt sich jedoch nichts, dort leuchten weiterhin zwei getrennte Streifen.",
+    "Rotes und grünes Licht treffen gemeinsam im Auge ein, das die Streifen nicht mehr trennt und beide zum Eindruck Gelb zusammenzählt.",
+    "Die blaue Leuchtfläche ist an dieser Stelle kaputt, sonst wäre die Fläche weiß. Blau steht dort aber mit Absicht auf 0, denn genau das macht aus Weiß ein Gelb.",
+    "Erst die Lupe mischt die beiden Farben, weil sie das Licht bündelt. Ohne Lupe sieht die Fläche jedoch genauso gelb aus."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum eine weiße Fläche unter der Lupe gar nicht weiß aussieht, aus zwei Metern Entfernung aber schon.",
+   "zeilen": 4,
+   "loesung": "Auf dem Glas sitzt keine weiße Lampe. Eine weiße Fläche besteht aus winzigen roten, grünen und blauen Leuchtflächen, die alle mit 255 leuchten. Unter der Lupe sind sie so weit auseinandergezogen, dass das Auge jeden Streifen einzeln sieht. Aus zwei Metern liegen sie für das Auge so dicht beieinander, dass es ihr Licht zu einer einzigen Farbe zusammenzählt, und diese Mischung aus allen dreien ist Weiß."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "oi15",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E9"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Hinter dem roten Rand liegt",
+    "loesung": "Infrarot",
+    "post": "; man merkt es als Wärme."
+   },
+   {
+    "pre": "Vor dem violetten Rand liegt",
+    "loesung": "Ultraviolett",
+    "post": "; es macht den Sonnenbrand."
+   },
+   {
+    "pre": "Die Sehzellen erreicht nur der schmale Streifen von etwa 380 bis",
+    "loesung": "780 Nanometern",
+    "post": "."
+   },
+   {
+    "pre": "Herschel wies das unsichtbare Licht hinter dem letzten Rot mit einem",
+    "loesung": "Thermometer",
+    "post": "nach."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wo das Auge im Farbfächer nichts mehr sieht, kommt auch kein Licht mehr an.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 310 nm wärmt es stärker als bei 940 nm, weil Ultraviolett für die Haut gefährlicher ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 940 nm sieht das Auge nichts, das Thermometer zeigt dort aber 90 Prozent Erwärmung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ultraviolett lässt sich nachweisen, weil es Leuchtstoffe zum Leuchten bringt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis richtet die Fernbedienung des Beamers auf die Kamera seines Handys und drückt eine Taste. Auf dem Handybild blitzt es hell, seine Augen sehen nichts. Was folgt daraus?",
+   "optionen": [
+    "Die Fernbedienung schickt gar kein Licht, sondern nur Funk. Auf dem Handybild blitzt es aber genau an der Stelle der Fernbedienung, dort kommt also Licht an.",
+    "Das Handy erfindet den Blitz, weil es den Tastendruck erkennt. Eine Kamera kann jedoch nur zeigen, was wirklich bei ihr ankommt.",
+    "Die Fernbedienung sendet Infrarot bei etwa 940 nm: Die Kamera nimmt dieses Licht auf, die Sehzellen im Auge erreicht es nicht.",
+    "Das Licht der Fernbedienung ist für das Auge nur zu schwach. Auch eine viel hellere Fernbedienung bliebe unsichtbar, denn ihr Licht liegt hinter dem roten Rand."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe mit den Messwerten, warum Herschel das Licht hinter dem roten Rand nur mit dem Thermometer finden konnte und nicht mit seinen Augen.",
+   "zeilen": 5,
+   "loesung": "Das Auge erreicht nur der Streifen bis etwa 780 Nanometer; hinter dem letzten Rot meldet es nichts mehr. Das Thermometer misst dagegen die Erwärmung, und die steigt genau dort weiter an: 62 Prozent bei 700 nm, 90 Prozent bei 940 nm und 100 Prozent bei 1100 nm. Wo das Auge nichts mehr sieht, wird es also sogar am wärmsten. Erst dieses Messgerät konnte deshalb zeigen, dass hinter dem roten Rand noch Licht ankommt."
+  },
+  "theme": "gts_optik"
+ },
+ {
+  "id": "ew1",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF4",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Sonne und alle Sterne geben eigenes Licht ab; sie sind",
+    "loesung": "Selbstleuchter",
+    "post": "."
+   },
+   {
+    "pre": "Den Mond und die Planeten sehen wir nur, weil die Sonne sie",
+    "loesung": "beleuchtet",
+    "post": "."
+   },
+   {
+    "pre": "Ein Stern ist nichts anderes als eine ferne",
+    "loesung": "Sonne",
+    "post": ", nur viel weiter weg."
+   },
+   {
+    "pre": "Deckst du in der Simulation das Sonnenlicht ab, wird der Mond sofort",
+    "loesung": "dunkel",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Mond leuchtet mit eigenem Licht, nur schwächer als die Sonne.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Einen Planeten sehen wir nur, solange Sonnenlicht auf ihn fällt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Stern ist ein Selbstleuchter, genau wie unsere Sonne.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach dem Abdecken leuchtet der Mond noch eine Weile nach, weil er Licht gespeichert hat.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour zeigt abends auf einen hellen Punkt am Himmel. Jannis sagt, das sei der Planet Venus. Warum können die beiden ihn überhaupt sehen?",
+   "optionen": [
+    "Die Venus ist ein Stern und gibt eigenes Licht ab. Ein Planet ist jedoch kein Stern und leuchtet nicht selbst.",
+    "Die Venus glüht von innen und strahlt deshalb selbst. Dann bliebe sie auch ohne Sonnenlicht hell, und genau das tut sie nicht.",
+    "Sonnenlicht fällt auf die Venus, und sie wirft einen Teil davon zu uns zurück.",
+    "Die Venus sammelt tagsüber Sonnenlicht und gibt es nachts wieder ab. Sie speichert kein Licht, sonst würde sie nach dem Abdecken nachleuchten."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche einen Stern und einen Planeten am Nachthimmel. Gib an, was beide gemeinsam haben und worin sie sich beim Licht unterscheiden.",
+   "zeilen": 4,
+   "loesung": "Gemeinsam ist beiden, dass sie als kleine helle Punkte am Himmel stehen und wir sie nur sehen, weil Licht von ihnen zu unseren Augen kommt. Der Unterschied liegt darin, woher dieses Licht stammt: Ein Stern ist eine ferne Sonne und gibt eigenes Licht ab, er ist ein Selbstleuchter. Ein Planet hat kein eigenes Licht, er wirft nur das Sonnenlicht zurück, das auf ihn fällt. In der Simulation zeigt sich das beim Abdecken: Der Stern strahlt weiter, der Planet wird sofort dunkel."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Tag und Nacht entstehen, weil sich die Erde um ihre eigene",
+    "loesung": "Achse dreht",
+    "post": "."
+   },
+   {
+    "pre": "Für eine volle Drehung braucht die Erde etwa",
+    "loesung": "24 Stunden",
+    "post": "; das ist ein Tag."
+   },
+   {
+    "pre": "Die Sonne beleuchtet immer nur eine",
+    "loesung": "Hälfte",
+    "post": "der Erdkugel; dort ist Tag."
+   },
+   {
+    "pre": "Bei einer Drehung von 180° hat Ben Sonne, und Yumi hat gleichzeitig",
+    "loesung": "Nacht",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Während Ben Nacht hat, kann Yumi zur selben Zeit Tag haben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nachts hört die Sonne für einige Stunden auf zu leuchten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Sonne wandert in 24 Stunden einmal um die Erde herum.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Nachtseite der Erde liegt im eigenen Schatten der Erdkugel.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis schreibt am hellen Nachmittag seiner Cousine in Neuseeland. Sie antwortet, bei ihr sei gerade tiefe Nacht. Wie kommt dieser Unterschied zustande?",
+   "optionen": [
+    "Beide wohnen auf derselben Erdkugel, aber Neuseeland liegt gerade auf der Seite, die von der Sonne abgewandt ist.",
+    "Über Neuseeland liegt gerade eine sehr dicke Wolkendecke. Wolken machen es dunkler, aber keine ganze Nacht von vielen Stunden.",
+    "In Neuseeland scheint eine andere, schwächere Sonne. Es gibt nur eine Sonne, und sie beleuchtet immer eine ganze Erdhälfte auf einmal.",
+    "Die Sonne ist bei Jannis schon vorbeigezogen und in Neuseeland noch nicht angekommen. Nicht die Sonne wandert um die Erde, sondern die Erde dreht sich."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne, wie viele Stunden in Wirklichkeit zwischen der Reglerstellung 0° und der Stellung 90° vergehen. Erkläre danach, was sich in dieser Zeit für Ben ändert.",
+   "zeilen": 4,
+   "loesung": "Eine volle Drehung von 360° dauert etwa 24 Stunden. Die 90° sind ein Viertel davon, also 24 Stunden geteilt durch 4, das sind 6 Stunden. Bei 0° hat Ben Mitternacht und liegt mitten auf der dunklen Seite. Nach diesen 6 Stunden steht er genau an der Grenze zwischen heller und dunkler Seite; für ihn geht die Sonne gerade auf."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Jede Masse zieht jede andere Masse an; diese Anziehung heißt",
+    "loesung": "Gravitation",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Luft fallen Stein und Feder",
+    "loesung": "gleich schnell",
+    "post": "– die Masse spielt dabei keine Rolle."
+   },
+   {
+    "pre": "Wie stark ein Himmelskörper zieht, gibt die",
+    "loesung": "Fallbeschleunigung",
+    "post": "g an."
+   },
+   {
+    "pre": "Auf der Erde beträgt die Fallbeschleunigung",
+    "loesung": "9,8 m/s²",
+    "post": ", auf dem Mond nur 1,6 m/s²."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im luftleeren Rohr ist der schwere Stein zuerst unten, weil er mehr Masse hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Rohr mit Luft bleibt die Feder zurück, weil die Luft sie bremst.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf dem Jupiter dauert der Fall länger als auf dem Mond, weil dort alles schwerer ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je größer g ist, desto kürzer ist die Fallzeit aus derselben Höhe.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Im Physikraum lässt Nour eine Messingschraube und eine Staubfeder gleichzeitig los. Die Schraube liegt sofort am Boden, die Feder schwebt langsam hinterher. Woran liegt das?",
+   "optionen": [
+    "Die Erde zieht an der schweren Schraube stärker und deshalb ist sie zuerst unten. Im luftleeren Rohr kommen beide jedoch gleichzeitig an, an der Masse liegt es also nicht.",
+    "Die leichte Feder hat fast keine Masse und wird darum kaum angezogen. Auch die Feder hat eine Masse, sonst würde sie überhaupt nicht herunterkommen.",
+    "Auf die Feder wirkt eine kleinere Fallbeschleunigung als auf die Schraube. Im selben Raum ist g für alle Körper gleich, hier 9,8 m/s².",
+    "Die Luft im Raum bremst die leichte Feder stark ab, die kompakte Schraube dagegen kaum."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile den Satz von Jannis: „Das Schwere fällt eben schneller.“ Beziehe beide Rohre der Simulation in deine Antwort ein.",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nur für den Fall mit Luft. Im rechten Rohr bremst die Luft die leichte Feder stark ab, deshalb schwebt sie hinterher, während der Stein rasch unten ankommt. Im linken, luftleeren Rohr kommen Stein und Feder dagegen immer gemeinsam an, obwohl ihre Massen sehr verschieden sind. Über die Fallzeit entscheidet also nicht die Masse, sondern die Luft und die Fallbeschleunigung g des Himmelskörpers."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Verdoppelst du eine der beiden Massen, wird die Anziehung",
+    "loesung": "doppelt so groß",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelst du den Abstand, bleibt nur noch",
+    "loesung": "ein Viertel",
+    "post": "der Anziehung übrig."
+   },
+   {
+    "pre": "Die beiden Pfeile der Anziehung sind im Bild immer",
+    "loesung": "gleich lang",
+    "post": "."
+   },
+   {
+    "pre": "Stehen beide Massenregler auf 5, meldet die Statuszeile",
+    "loesung": "200,0 Einheiten",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Anziehung wirkt auf beide Kugeln gleich stark, auch wenn eine viel schwerer ist als die andere.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Masse und Abstand wirken gleich stark auf die Anziehung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdreifachst du eine der Massen, wird die Anziehung dreimal so groß.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei doppeltem Abstand ist die Anziehung nur noch halb so groß.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour startet in der Simulation bei 8,0 Einheiten. Sie drückt einmal ×2 Masse links und danach einmal ×2 Abstand. Welchen Wert liest sie dann in der Statuszeile ab?",
+   "optionen": [
+    "16,0 Einheiten. Das ist der Wert nach der doppelten Masse; der doppelte Abstand ist dabei noch gar nicht berücksichtigt.",
+    "4,0 Einheiten, denn von den 16,0 Einheiten bleibt beim doppelten Abstand ein Viertel übrig.",
+    "8,0 Einheiten. Das wäre so, wenn der doppelte Abstand nur halbieren würde – er lässt aber nur ein Viertel übrig.",
+    "2,0 Einheiten. Hier wurde die Masse halbiert statt verdoppelt; ×2 Masse macht die Anziehung größer, nicht kleiner."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, wie groß die Anziehung ist, wenn du beide Massen verdoppelst und außerdem den Abstand verdoppelst. Gehe vom Startwert 8,0 Einheiten aus und erkläre dein Ergebnis.",
+   "zeilen": 5,
+   "loesung": "Jede Masse zählt einfach: Die doppelte linke Masse macht aus 8,0 Einheiten 16,0 Einheiten, die doppelte rechte Masse noch einmal das Doppelte, also 32,0 Einheiten. Der doppelte Abstand lässt davon nur ein Viertel übrig, das sind 8,0 Einheiten. Die Anziehung ist damit genauso groß wie am Anfang. Das Vervierfachen durch die Massen und das Vierteln durch den Abstand heben sich hier also gerade auf."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Weil der Planet quer zur Sonne unterwegs ist, fällt er immer an ihr",
+    "loesung": "vorbei",
+    "post": "– das ist die Umlaufbahn."
+   },
+   {
+    "pre": "Ist der Anschub zu klein,",
+    "loesung": "stürzt er hinein",
+    "post": "; ab 42,1 km/s entkommt er."
+   },
+   {
+    "pre": "Bei 36 km/s wird aus der fast kreisförmigen Bahn eine lang gezogene",
+    "loesung": "Ellipse",
+    "post": "mit 2,71 AE als größtem Abstand."
+   },
+   {
+    "pre": "Mit wachsendem Abstand wird die Anziehung der Sonne rasch",
+    "loesung": "schwächer",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 30 km/s meldet die Anzeige eine fast kreisförmige Bahn, ein Umlauf dauert 1,02 Jahre.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Planet bleibt oben, weil die Sonne so weit weg ist, dass sie ihn kaum noch anzieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je größer der Anschub quer zur Sonne, desto runder wird die Bahn.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auch ein Planet, der nie in die Sonne stürzt, fällt die ganze Zeit zu ihr hin.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour stellt in der Simulation 6 km/s ein, und der Planet trifft die Sonne. Was muss sie ändern, damit er auf einer Bahn bleibt?",
+   "optionen": [
+    "Sie muss den Anschub quer zur Sonne ganz abschalten. Ohne Anschub fällt der Planet aber geradewegs in die Sonne.",
+    "Sie muss den Planeten weiter außen starten, der Anschub ist dabei egal. Auch weiter außen stürzt er ohne genügend Anschub hinein.",
+    "Sie muss den Anschub quer zur Sonne vergrößern, zum Beispiel auf 30 km/s.",
+    "Sie muss über 42,1 km/s gehen, dann kann nichts mehr schiefgehen. Ab diesem Wert entkommt der Planet jedoch und kommt nicht zurück."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Satz: „Der Planet bleibt oben, weil die Sonne so weit weg ist, dass sie ihn kaum noch anzieht.“ Nutze dazu deine Werte aus der Simulation.",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nicht. Die Sonne zieht den Planeten auf seiner ganzen Bahn ohne Pause an, genau deshalb ist die Bahn überhaupt gekrümmt. Entscheidend ist der Anschub quer zur Sonne: Bei 6 km/s stürzt der Planet hinein, bei 30 km/s läuft er auf einer fast kreisförmigen Bahn. Wäre die Anziehung wirklich weg, würde er geradeaus davonfliegen statt zu kreisen."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E7",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Innen kreisen vier kleine",
+    "loesung": "Gesteinsplaneten",
+    "post": "mit fester Oberfläche."
+   },
+   {
+    "pre": "Außen kreisen zwei Gasriesen und zwei",
+    "loesung": "Eisriesen",
+    "post": "; sie sind viel größer."
+   },
+   {
+    "pre": "Zwischen Mars und Jupiter liegt der",
+    "loesung": "Asteroidengürtel",
+    "post": "."
+   },
+   {
+    "pre": "Je weiter ein Planet von der Sonne entfernt ist, desto",
+    "loesung": "länger",
+    "post": "dauert sein Umlauf."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auf Jupiter könnte man landen und über eine feste Oberfläche laufen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Steckbrief der Erde stehen 12.756 km Durchmesser, 1 AE Abstand und 1 Jahr Umlauf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die äußeren Planeten brauchen für einen Umlauf länger, weil sie so groß sind.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Bild kann entweder die Größen oder die Abstände maßstäblich zeigen, nie beides zugleich.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis malt für ein Plakat alle acht Planeten in einer Reihe: alle gleich groß und mit gleichem Abstand. Was ist daran falsch?",
+   "optionen": [
+    "Beides: Die vier inneren Planeten sind viel kleiner als die äußeren, und die Abstände werden nach außen immer größer.",
+    "Nur die Abstände. In der Größe sind die acht Planeten wirklich fast gleich. Jupiter ist jedoch um ein Vielfaches größer als Merkur.",
+    "Nur die Größen. Die Abstände zwischen den Planeten sind überall gleich groß. Nach außen werden die Abstände jedoch immer größer.",
+    "Gar nichts, ein Plakat zeigt nur die Reihenfolge. Die Reihenfolge stimmt zwar, das Bild behauptet aber gleiche Größen und gleiche Abstände."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche die vier inneren mit den vier äußeren Planeten in drei Punkten: Aufbau, Größe und Umlaufzeit.",
+   "zeilen": 4,
+   "loesung": "Die vier inneren Planeten sind Gesteinsplaneten: klein, dicht und mit fester Oberfläche. Die vier äußeren sind zwei Gasriesen und zwei Eisriesen; sie sind um ein Vielfaches größer, bestehen vor allem aus Gas und Eis und haben keinen festen Boden. Weil ihre Bahn viel weiter außen liegt, dauert ein Umlauf ein Vielfaches des einen Erdjahres. In der Ansicht Umlauf kommen die inneren Planeten deshalb viel öfter herum als die äußeren."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Lichtjahr ist keine Zeit, sondern eine",
+    "loesung": "Entfernung",
+    "post": "."
+   },
+   {
+    "pre": "Je weiter ein Ziel entfernt ist, desto",
+    "loesung": "länger",
+    "post": "ist sein Licht zu uns unterwegs."
+   },
+   {
+    "pre": "Licht legt in jeder Sekunde rund",
+    "loesung": "300 000 km",
+    "post": "zurück."
+   },
+   {
+    "pre": "Vom Mond bis zur Erde ist das Licht",
+    "loesung": "1,3 Sekunden",
+    "post": "unterwegs."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Lichtjahr gibt an, wie alt ein Stern ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil Licht so schnell ist, sehen wir alles im Weltall so, wie es gerade jetzt ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Vom nächsten Stern ist das Licht viel länger unterwegs als von der Sonne.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Entfernung Erde–Mond kann man auch als 1,3 Lichtsekunden angeben.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour liest in einer Zeitschrift, ein Stern sei 400 Lichtjahre entfernt. Was bedeutet das?",
+   "optionen": [
+    "Der Stern ist 400 Jahre alt. Ein Lichtjahr misst jedoch eine Strecke und kein Alter.",
+    "Das Licht dieses Sterns ist 400-mal schneller als gewöhnliches Licht. Licht ist überall gleich schnell, rund 300 000 km in jeder Sekunde.",
+    "Der Stern braucht für einen Umlauf 400 Jahre. Über eine Umlaufzeit sagt ein Lichtjahr aber nichts aus.",
+    "Sein Licht war 400 Jahre zu uns unterwegs; wir sehen ihn so, wie er vor 400 Jahren war."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne, wie weit das Licht in einer Minute kommt, und vergleiche diese Strecke mit der Entfernung Erde–Mond.",
+   "zeilen": 4,
+   "loesung": "Eine Minute hat 60 Sekunden, und in jeder Sekunde legt das Licht rund 300 000 km zurück. Also sind es 60 · 300 000 km = 18 000 000 km, das sind 18 Mio. km. Die Entfernung Erde–Mond beträgt nur 384 000 km; in einer Minute schafft das Licht diese Strecke rund 47-mal. Für die 150 Mio. km bis zur Sonne reicht eine Minute dagegen nicht, dafür braucht das Licht 8,3 Minuten."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew8",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Objektiv entwirft ein umgekehrtes Zwischenbild, das Okular wirkt darauf wie eine",
+    "loesung": "Lupe",
+    "post": "."
+   },
+   {
+    "pre": "Eine größere Öffnung sammelt mehr Licht, das Bild wird dadurch",
+    "loesung": "heller",
+    "post": "."
+   },
+   {
+    "pre": "Durch das Teleskop steht das Mondbild",
+    "loesung": "auf dem Kopf",
+    "post": "; die Anzeige nennt eine 4-fache Vergrößerung."
+   },
+   {
+    "pre": "Die Vergrößerung ist die Brennweite des Objektivs geteilt durch die Brennweite des",
+    "loesung": "Okulars",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei kleiner Öffnung meldet die Anzeige ein nur mäßig helles Bild.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Fernrohr holt den Mond wirklich ein Stück näher an die Erde heran.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Scharf wird das Bild erst, wenn der Abstand beider Linsen so groß ist wie die Summe ihrer Brennweiten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine größere Öffnung des Objektivs vergrößert das Bild stärker.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour hat das Fernrohr zusammengebaut und tauscht das Okular gegen eines mit noch kürzerer Brennweite. Was ändert sich dadurch?",
+   "optionen": [
+    "Das Bild wird heller, weil das kurze Okular mehr Licht einsammelt. Die Helligkeit hängt jedoch von der Öffnung des Objektivs ab.",
+    "Die Vergrößerung wird größer, denn nun wird durch eine kleinere Brennweite geteilt.",
+    "Die Vergrößerung wird kleiner, weil das Okular kleiner ist. Beim Teilen durch eine kleinere Brennweite kommt jedoch eine größere Zahl heraus.",
+    "Das Bild steht jetzt aufrecht, weil nur das Okular umdreht. Das umgekehrte Zwischenbild entwirft aber das Objektiv, das Bild bleibt auf dem Kopf."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Bestimme die Vergrößerung eines Fernrohrs mit 800 mm Brennweite am Objektiv und 20 mm am Okular und beurteile, ob das Bild dadurch auch heller wird.",
+   "zeilen": 4,
+   "loesung": "Die Vergrößerung ist die Brennweite des Objektivs geteilt durch die des Okulars: 800 mm: 20 mm = 40. Das Fernrohr vergrößert also 40-fach. Heller wird das Bild dadurch nicht, denn die Helligkeit hängt allein von der Öffnung des Objektivs ab. Nur eine größere Öffnung sammelt mehr Licht, wie die Anzeige bei großer Öffnung mit hell und lichtstark zeigt."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Je weiter ein Stern entfernt ist, desto",
+    "loesung": "kleiner",
+    "post": "ist sein Parallaxenwinkel p."
+   },
+   {
+    "pre": "Die Entfernung in Parsec ist",
+    "loesung": "1 / p",
+    "post": ", also eins geteilt durch den Winkel."
+   },
+   {
+    "pre": "Ein Parsec ist die Entfernung, bei der der Winkel p genau eine",
+    "loesung": "Bogensekunde",
+    "post": "beträgt."
+   },
+   {
+    "pre": "Ein halbes Jahr nach der ersten Messung steht die Erde",
+    "loesung": "2 AE",
+    "post": "weiter drüben auf ihrer Bahn."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Polarstern springt überhaupt nicht, deshalb lässt sich seine Entfernung nicht über den Winkel bestimmen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Proxima Centauri hat mit 0,7686 Bogensekunden den größten Winkel der vier Sterne und steht deshalb am nächsten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Sprung eines Sterns entsteht, weil die Erde ein halbes Jahr später an einer anderen Stelle ihrer Bahn steht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil Wega mit 7,680 Parsec weiter weg ist als 61 Cygni, ist ihr Parallaxenwinkel größer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour trägt einen fünften Stern in die Tabelle ein. Die Statuszeile meldet für ihn p = 0,2 Bogensekunden. Wie weit ist dieser Stern entfernt?",
+   "optionen": [
+    "0,2 Parsec, denn der Winkel und die Entfernung sind dieselbe Zahl. Winkel und Entfernung sind jedoch verschiedene Größen; du musst eins durch den Winkel teilen.",
+    "2 Parsec, denn der Winkel wird mit zehn malgenommen. Die Entfernung ergibt sich aber aus eins geteilt durch den Winkel und nicht aus einer Multiplikation.",
+    "5 Parsec, denn eins geteilt durch 0,2 ergibt 5.",
+    "0,8 Parsec, denn 0,2 wird von 1 abgezogen. Man teilt jedoch eins durch den Winkel, statt den Winkel abzuziehen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Satz: „Der Polarstern steht still, sein Winkel ist null, also kann man seine Entfernung gar nicht messen.“",
+   "zeilen": 4,
+   "loesung": "Jannis hat nicht recht. Der Winkel des Polarsterns ist nicht null, sondern nur sehr klein: Die Statuszeile meldet 0,0075 Bogensekunden. Sein Sprung bleibt zwar unter einem Bildpunkt, mit der Lupe ×100 sind aber 25,6 Bildpunkte zu sehen. Aus dem winzigen Winkel folgt eine sehr große Entfernung, die Anzeige nennt dafür 132,6 Parsec."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew10",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Im Kern eines Sterns verschmelzen Wasserstoffkerne zu",
+    "loesung": "Helium",
+    "post": ". Das nennt man Kernfusion."
+   },
+   {
+    "pre": "Je größer die Masse eines Sterns, desto",
+    "loesung": "kürzer",
+    "post": "lebt er."
+   },
+   {
+    "pre": "Die Kernfusion ist kein Verbrennen, denn im Kern gibt es gar keinen",
+    "loesung": "Sauerstoff",
+    "post": "."
+   },
+   {
+    "pre": "Ein Stern mit 10 Sonnenmassen lebt nur",
+    "loesung": "31,6 Mio. Jahre",
+    "post": ", die Sonne dagegen 10,0 Mrd. Jahre."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Stern mit 25 Sonnenmassen ist mit 3,2 Mio. Jahren noch schneller fertig als einer mit 10 Sonnenmassen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil ein schwerer Stern mehr Brennstoff besitzt, reicht sein Vorrat länger als der der Sonne.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei der Kernfusion verbrennt der Wasserstoff mit dem Sauerstoff aus dem Inneren des Sterns.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Am Ende der Sonne bleibt ein Weißer Zwerg übrig und kein Neutronenstern.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis zeigt am Abendhimmel auf einen rötlich leuchtenden Stern und fragt, was seine Farbe über ihn verrät. Welche Antwort passt zu euren Messwerten?",
+   "optionen": [
+    "Er ist ein besonders schwerer Stern, denn schwere Sterne leuchten rot. Der Stern mit 10 Sonnenmassen leuchtet in der Simulation jedoch blau-weiß.",
+    "Er steht kurz vor dem Erlöschen, denn Rot ist die Farbe der letzten Tage. Die Farbe zeigt aber, wie heiß die Oberfläche ist, und nicht, wann der Stern endet.",
+    "Er hat gar keine eigene Farbe, das Licht wird erst in der Luft rot gefärbt. Die Simulation gibt jeder Masse jedoch eine eigene Farbe, von rötlich bis blau-weiß.",
+    "Er hat eine eher kühle Oberfläche und ist ein leichter Stern mit langer Lebensdauer; zu 0,5 Sonnenmassen gehören rötlich und 56,6 Mrd. Jahre."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile die Bleistiftnotiz auf der Sternkarte: „Auch die Sonne geht einmal aus.“ Nutze für deine Antwort die Zahlen aus der Simulation.",
+   "zeilen": 4,
+   "loesung": "Die Notiz stimmt. Der Wasserstoff im Kern der Sonne reicht nicht ewig; nach 10,0 Mrd. Jahren ist der Vorrat aufgebraucht und die Kernfusion hört auf. Die Sonne endet aber nicht als Supernova wie ein Stern mit 10 Sonnenmassen, sondern es bleibt ein Weißer Zwerg übrig. Ein Stern mit nur 0,5 Sonnenmassen hält mit 56,6 Mrd. Jahren dagegen sehr viel länger durch."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Milchstraße ist eine",
+    "loesung": "Scheibe",
+    "post": "aus Sternen, hundertmal breiter als dick."
+   },
+   {
+    "pre": "Die Sonne steht 26 000 Lichtjahre vom",
+    "loesung": "Zentrum",
+    "post": "entfernt, nicht in der Mitte."
+   },
+   {
+    "pre": "Die Scheibe ist rund 100 000 Lichtjahre breit, aber nur etwa",
+    "loesung": "1000 Lichtjahre",
+    "post": "dick."
+   },
+   {
+    "pre": "Das milchige Band am Himmel entsteht, weil längs durch die Scheibe sehr viele Sterne",
+    "loesung": "hintereinander",
+    "post": "stehen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil das Band auf einer Seite heller ist als auf der anderen, muss die Sonne genau im Zentrum der Scheibe stehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das milchige Band besteht aus sehr vielen einzelnen Sternen, die längs durch die Scheibe hintereinander stehen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Quer aus der Scheibe heraus sieht man besonders viele Sterne, weil der Blick dort frei ins Weltall geht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Säße die Sonne im Zentrum, wären nach der Gegenprobe beide Richtungen längs durch die Scheibe gleich dicht besetzt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour steht abends auf dem Land unter dem klaren Himmel: In eine Richtung ist das Band deutlich heller, in der Gegenrichtung blass. Was folgt daraus?",
+   "optionen": [
+    "Die Sonne steht genau in der Mitte der Milchstraße. Dann wären beide Richtungen längs durch die Scheibe aber gleich hell.",
+    "Die Sonne steht nicht in der Mitte: Zur hellen Seite blickst du zum Zentrum, wo mit 203 Sternen die meisten im Blickfeld stehen.",
+    "Auf der blassen Seite ist die Luft trüber, deshalb kommt dort weniger Licht an. Die Anzeige zählt in dieser Richtung jedoch wirklich nur 50 statt 203 Sterne.",
+    "Auf der blassen Seite schaust du aus der Scheibe heraus, deshalb ist dort gar nichts zu sehen. Nach außen stehen aber noch 50 Sterne im Blickfeld, quer heraus dagegen nur 5."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage: „Die Milchstraße ist eine riesige Kugel aus Sternen, und die Sonne sitzt in ihrer Mitte.“ Nenne zwei Beobachtungen, die dagegen sprechen.",
+   "zeilen": 4,
+   "loesung": "Die Aussage ist gleich zweimal falsch. Die Milchstraße ist keine Kugel, sondern eine Scheibe: Sie ist rund 100 000 Lichtjahre breit, aber nur etwa 1000 Lichtjahre dick, und quer heraus stehen nur 5 Sterne im Blickfeld statt 203 zur Mitte hin. Die Sonne sitzt auch nicht in der Mitte, sondern 26 000 Lichtjahre vom Zentrum entfernt. Deshalb ist das Band auf einer Seite hell und auf der anderen blass; im Zentrum wären beide Seiten gleich dicht besetzt."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In der Mitte des heutigen Weltbildes steht",
+    "loesung": "die Sonne",
+    "post": "."
+   },
+   {
+    "pre": "Für die Schleifen der Planeten brauchte das alte Weltbild zusätzliche Kreise, die",
+    "loesung": "Epizykel",
+    "post": "; das heutige braucht keinen einzigen."
+   },
+   {
+    "pre": "Die Schleife des Mars entsteht, weil die Erde ihn auf ihrer Bahn",
+    "loesung": "überholt",
+    "post": "."
+   },
+   {
+    "pre": "Weil beide Modelle denselben Himmel vorhersagen, gab am Ende den Ausschlag, dass das heutige Weltbild",
+    "loesung": "einfacher",
+    "post": "ist."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Schleife des Mars zeigt, dass der Mars auf seiner Bahn wirklich eine Kehrtwende macht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auch das alte Weltbild mit der Erde in der Mitte konnte die Stellungen der Planeten am Himmel gut vorhersagen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das alte Weltbild wurde aufgegeben, weil es einen anderen Himmel vorhersagte, als man ihn wirklich sah.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im heutigen Weltbild kommt man für die Planetenschleifen ohne einen einzigen Zusatzkreis aus.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis hält das vergilbte Blatt hoch und sagt zu Nour: „Die Leute früher haben den Himmel eben schlecht beobachtet.“ Was antwortest du ihm?",
+   "optionen": [
+    "Er hat recht, denn das alte Weltbild sagte die Stellungen der Planeten falsch voraus. Es sagte jedoch denselben Himmel voraus wie das heutige, nur mit Zusatzkreisen.",
+    "Er hat recht, denn ohne Fernrohr konnte man die Schleife des Mars gar nicht sehen. Die Schleife lässt sich aber über Wochen mit bloßem Auge verfolgen.",
+    "Er hat nicht recht: Beobachtet wurde gut. Das alte Modell sagte denselben Himmel voraus, brauchte dafür aber für jede Planetenschleife einen Epizykel.",
+    "Er hat nicht recht, denn in beiden Modellen steht die Erde in der Mitte. Im heutigen Weltbild steht in der Mitte jedoch die Sonne."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis' Satz „Das Blatt ist doch einfach falsch herum.“ Nutze dabei, was beide Weltbilder über den Himmel vorhersagen.",
+   "zeilen": 4,
+   "loesung": "Ganz falsch ist das alte Weltbild nicht: Es sagte den Himmel gut voraus, sonst hätte man das Blatt nicht so lange gedruckt. Für jede Schleife eines Planeten braucht es aber einen Zusatzkreis, einen Epizykel. Das heutige Weltbild stellt die Sonne in die Mitte, sagt denselben Himmel voraus und kommt ohne einen einzigen Epizykel aus. Jannis' Satz ist also zu hart: Das alte Modell ist nicht falsch, aber umständlicher als das heutige."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Grenze, hinter der nichts mehr entkommt, heißt",
+    "loesung": "Ereignishorizont",
+    "post": "."
+   },
+   {
+    "pre": "Ganz nah am Loch wird der Lichtstrahl nicht nur abgelenkt, sondern",
+    "loesung": "verschluckt",
+    "post": "."
+   },
+   {
+    "pre": "Je kleiner der Abstand des Lichtstrahls ist, desto",
+    "loesung": "stärker",
+    "post": "wird er gebogen."
+   },
+   {
+    "pre": "Um das Loch kreist leuchtend",
+    "loesung": "heißes Gas",
+    "post": ", daran kann man es am Himmel finden."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei mittlerem Abstand läuft der Lichtstrahl fast einmal um das Loch herum und entkommt gerade noch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Lichtstrahl läuft an einem schwarzen Loch unverändert vorbei, weil Licht nichts wiegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der helle Ring auf einem Foto ist nicht das Loch selbst, sondern Licht aus seiner Umgebung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Alles, was in die Nähe eines schwarzen Lochs gerät, wird auf jeden Fall verschluckt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour zeigt Jannis auf dem Handy das Foto eines schwarzen Lochs: ein leuchtender Ring mit einem dunklen Fleck in der Mitte. Jannis sagt: „In dem Foto fehlt ein Stück.“ Was stimmt?",
+   "optionen": [
+    "Der dunkle Fleck ist die Gegend hinter dem Ereignishorizont, von dort kommt kein Licht heraus. Der Ring entsteht aus heißem Gas und aus Licht, das um das Loch herumgelenkt wird.",
+    "Der Ring ist das schwarze Loch, der dunkle Fleck ist der leere Raum dahinter. Das Loch selbst sendet aber kein Licht aus, es ist also gerade der dunkle Teil.",
+    "Vor dem Loch liegt Staub, der die Mitte verdeckt. Auch ohne Staub bliebe die Mitte dunkel, weil aus dem Ereignishorizont kein Licht entkommt.",
+    "Das Bild ist gezeichnet, denn ein schwarzes Loch kann man nicht fotografieren. Man fotografiert nicht das Loch selbst, wohl aber das Licht in seiner Nähe."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche die drei Abstände aus dem Versuch und begründe damit, warum Jannis' Satz „Ein schwarzes Loch saugt am Ende alles auf“ nicht stimmt.",
+   "zeilen": 4,
+   "loesung": "Weit weg wird der Lichtstrahl nur wenig zur Seite gezogen und läuft fast gerade weiter. Bei mittlerem Abstand läuft er fast einmal um das Loch herum und entkommt gerade noch, ganz nah verschwindet er im Ereignishorizont. Die Anziehung wirkt also nur in der Nähe so stark, und verschluckt wird nur, was den Ereignishorizont überschreitet. Deshalb saugt ein schwarzes Loch nicht alles auf, sondern lenkt weiter außen nur ab."
+  },
+  "theme": "gts_weltall"
+ },
+ {
+  "id": "ew14",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Weltall begann vor etwa",
+    "loesung": "13,8 Milliarden",
+    "post": "Jahren."
+   },
+   {
+    "pre": "Seit dem Urknall werden die Abstände zwischen den Galaxien immer",
+    "loesung": "größer",
+    "post": "."
+   },
+   {
+    "pre": "Am Anfang lag alles auf winzigem Raum, unvorstellbar",
+    "loesung": "heiß und dicht",
+    "post": "."
+   },
+   {
+    "pre": "Die Galaxien fliegen nicht durch einen fertigen Raum, sondern der",
+    "loesung": "Raum",
+    "post": "zwischen ihnen wird größer."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil sich fast alle Galaxien von uns entfernen, stehen wir in der Mitte des Weltalls.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bläst man einen bemalten Luftballon weiter auf, werden alle Abstände zwischen den Punkten größer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach dem Urknall entstanden erst die ersten Sterne und Galaxien, danach das heutige Weltall.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Urknall war eine Explosion an einer bestimmten Stelle, von der die Galaxien seitdem wegfliegen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Beim Abendessen fragt Jannis' kleiner Bruder: „Wo genau ist der Urknall passiert? Kann man da hinfahren?“ Was antwortest du?",
+   "optionen": [
+    "Zum Mittelpunkt des Weltalls, dort liegt die Stelle. Einen solchen Mittelpunkt gibt es aber nicht, denn am Anfang lag alles auf winzigem Raum.",
+    "Zur Milchstraße, denn unsere Galaxie war zuerst da. Die ersten Galaxien entstanden jedoch lange nach dem Urknall, keine von ihnen ist der Anfangsort.",
+    "Zu der Stelle, von der sich alle Galaxien entfernen; sie ist nur zu weit weg. Eine solche Stelle gibt es nicht, denn von jeder Galaxie aus entfernen sich alle anderen.",
+    "Nirgendwohin: Der Urknall war überall, weil damals alles auf winzigem Raum lag. Seitdem wird der Raum zwischen den Galaxien immer größer."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile das Bild vom Luftballon: Schreibe auf, was es gut zeigt und wo es nicht mehr passt.",
+   "zeilen": 5,
+   "loesung": "Gut zeigt der Ballon, dass beim Aufblasen jeder Abstand zwischen den aufgemalten Punkten größer wird, obwohl kein Punkt über das Gummi wandert. Genauso wächst im Weltall der Raum zwischen den Galaxien, und von jedem Punkt aus scheinen sich alle anderen zu entfernen. Der Ballon passt aber nicht in allem: Er hat eine Mitte und einen Rand, und man sieht ihn von außen an; beides gibt es beim Weltall nicht. Ein Modell muss also nur in dem Punkt stimmen, den es erklären soll."
+  },
+  "theme": "gts_weltall"
+ }
+]

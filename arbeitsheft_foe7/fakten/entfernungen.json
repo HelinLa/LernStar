@@ -1,0 +1,169 @@
+[
+ {
+  "sim": "entfernungen",
+  "ueberschrift": "📏 Entfernungen im Weltall – wie weit ist das?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "◀ näher",
+    "ruft": "_entPrev()"
+   },
+   {
+    "aufschrift": "💡 Lichtblitz senden",
+    "ruft": "_entStart()"
+   },
+   {
+    "aufschrift": "weiter ▶",
+    "ruft": "_entNext()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_entReset()"
+   },
+   {
+    "aufschrift": "Eine Zeit von einem Jahr",
+    "ruft": "_entAns(0,0)"
+   },
+   {
+    "aufschrift": "Eine Entfernung (Strecke, die Licht in 1 Jahr zurücklegt)",
+    "ruft": "_entAns(0,1)"
+   },
+   {
+    "aufschrift": "Das Alter eines Sterns",
+    "ruft": "_entAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Sonne",
+    "ruft": "_entAns(1,0)"
+   },
+   {
+    "aufschrift": "Der nächste Stern",
+    "ruft": "_entAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Andromeda-Galaxie",
+    "ruft": "_entAns(1,2)"
+   },
+   {
+    "aufschrift": "Weil das Licht lange bis zu uns unterwegs ist",
+    "ruft": "_entAns(2,0)"
+   },
+   {
+    "aufschrift": "Weil die Sterne alt sind",
+    "ruft": "_entAns(2,1)"
+   },
+   {
+    "aufschrift": "Weil wir uns das nur einbilden",
+    "ruft": "_entAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_entSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_entSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_entSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('entfernungen')"
+   }
+  ],
+  "hinweise": [
+   "Licht ist das Schnellste, was es gibt (rund 300 000 km pro Sekunde). Schicke einen Lichtblitz von der Erde los. Wie lange braucht er bis zum Ziel?",
+   "Ein Lichtjahr ist keine Zeit, sondern eine Entfernung: die Strecke, die das Licht in einem ganzen Jahr zurücklegt. Weil das Licht so lange unterwegs ist, sehen wir ferne Objekte so, wie sie früher waren – wir blicken in die Vergangenheit.",
+   "Je weiter weg, desto länger ist das Licht unterwegs. | 1 Lichtjahr = Strecke, die Licht in 1 Jahr zurücklegt."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war."
+   },
+   {
+    "einstellung": "◀ näher",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war."
+   },
+   {
+    "einstellung": "💡 Lichtblitz senden",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war."
+   },
+   {
+    "einstellung": "weiter ▶",
+    "text": "entStatus: Erde → Sonne: Entfernung ≈ 150 Mio. km – das sind 8,3 Lichtminuten. Das Licht ist dafür 8,3 Minuten unterwegs. Wir sehen die Sonne so, wie sie vor etwa 8 Minuten war."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war."
+   },
+   {
+    "einstellung": "Eine Zeit von einem Jahr",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Ein Lichtjahr ist keine Zeit."
+   },
+   {
+    "einstellung": "Eine Entfernung (Strecke, die Licht in 1 Jahr zurücklegt)",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✓ Richtig! Ein Lichtjahr ist eine Entfernung."
+   },
+   {
+    "einstellung": "Das Alter eines Sterns",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun."
+   },
+   {
+    "einstellung": "Die Sonne",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✗ Die Sonne ist nur 8 Lichtminuten weit weg."
+   },
+   {
+    "einstellung": "Der nächste Stern",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✗ Der nächste Stern ist gut 4 Lichtjahre entfernt – die Galaxie viel weiter."
+   },
+   {
+    "einstellung": "Die Andromeda-Galaxie",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt."
+   },
+   {
+    "einstellung": "Weil das Licht lange bis zu uns unterwegs ist",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✓ Richtig! Das Licht war viele Jahre unterwegs – wir sehen einen früheren Zustand."
+   },
+   {
+    "einstellung": "Weil die Sterne alt sind",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Das Alter der Sterne ist nicht der Grund."
+   },
+   {
+    "einstellung": "Weil wir uns das nur einbilden",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Es ist echt: die Lichtlaufzeit macht es aus."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Es ist echt: die Lichtlaufzeit macht es aus.  ||  entSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Es ist echt: die Lichtlaufzeit macht es aus.  ||  entSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Es ist echt: die Lichtlaufzeit macht es aus."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "entStatus: Erde → Mond: Entfernung ≈ 384 000 km – das sind 1,3 Lichtsekunden. Das Licht ist dafür 1,3 Sekunden unterwegs. Wir sehen den Mond so, wie er vor gut 1 Sekunde war.  ||  entFb0: ✗ Mit dem Alter hat es nichts zu tun.  ||  entFb1: ✓ Richtig! Andromeda ist etwa 2,5 Millionen Lichtjahre entfernt.  ||  entFb2: ✗ Es ist echt: die Lichtlaufzeit macht es aus."
+   }
+  ],
+  "bildtexte": [
+   "1 Lichtsekunde = 300 000 km",
+   "Erde",
+   "Mond",
+   "unterwegs: 0,0 von 1,3 Sekunden",
+   "unterwegs: 0,1 von 1,3 Sekunden",
+   "1 Lichtminute = 18 Mio. km",
+   "Sonne",
+   "unterwegs: 0,0 von 8,3 Minuten",
+   "unterwegs: 0,2 von 1,3 Sekunden",
+   "unterwegs: 0,3 von 1,3 Sekunden",
+   "unterwegs: 0,4 von 1,3 Sekunden"
+  ]
+ }
+]

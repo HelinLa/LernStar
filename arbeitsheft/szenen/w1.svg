@@ -1,0 +1,16 @@
+<defs>
+  <radialGradient id="w1licht" cx="0.42" cy="0.34" r="0.76">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.44"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w1licht)"/>
+  <g opacity="0.85"><use href="#t_flasche" transform="translate(772,392) scale(0.72)"/></g>
+  <use href="#t_dampf" transform="translate(400,178) scale(1.5)"/>
+  <use href="#t_becher_tee" transform="translate(400,452) scale(1.75)"/>
+  <!-- der Loeffel steckt schraeg im Tee -->
+  <use href="#t_loeffel_metall" transform="translate(496,300) rotate(-62) scale(1.15)"/>
+  <!-- der zweite Loeffel liegt trocken daneben -->
+  <use href="#t_loeffel_metall" transform="translate(690,478) rotate(9) scale(1.1)"/>

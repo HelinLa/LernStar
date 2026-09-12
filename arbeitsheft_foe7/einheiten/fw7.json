@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw7",
+  "quelle": "ew8",
+  "sim": "teleskop",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Zwei Linsen und ein Rohr",
+  "name": "Was macht das Fernrohr mit dem Bild?",
+  "fachwoerter_neu": [
+   "Objektiv",
+   "Okular"
+  ],
+  "alltag": [
+   "Das Fernrohr liegt in Einzelteilen auf dem Tisch.",
+   "Jannis hält die kleine Linse ans Auge – alles verschwommen.",
+   "Wie soll das den Mond herholen?",
+   "Die große Linse heißt Objektiv, die kleine Okular."
+  ],
+  "frage": "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
+  "predict": [
+   "Nur das Bild des Mondes wird größer. Es steht auf dem Kopf.",
+   "Das Fernrohr holt den Mond wirklich näher heran."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.",
+   "Drücke „mit Teleskop“ und lies die Vergrößerung ab.",
+   "Vergleiche „große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ansicht",
+   "Größe und Lage",
+   "Helligkeit"
+  ],
+  "tabRows": [
+   [
+    "bloßes Auge",
+    "klein, richtig herum",
+    "Lichtschwaches unsichtbar"
+   ],
+   [
+    "Teleskop, große Öffnung",
+    "",
+    ""
+   ],
+   [
+    "Teleskop, kleine Öffnung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Fernrohr holt den Mond nicht näher. Nur sein Bild wird",
+    "loesung": "größer",
+    "post": "– und es steht auf dem Kopf."
+   },
+   {
+    "pre": "Eine größere Öffnung sammelt mehr Licht. Das Bild wird",
+    "loesung": "heller",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "heller",
+   "Objektiv",
+   "Okular",
+   "auf dem Kopf"
+  ],
+  "beispiel": {
+   "frage": "Was meldet die Anzeige mit Teleskop?",
+   "antwort": "Die Vergrößerung ist 4-fach. Die gelbe Marke der Oberkante liegt jetzt unten. Das Bild steht also auf dem Kopf."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was macht die große Öffnung?",
+    "optionen": [
+     "Das Bild wird dunkler.",
+     "Gar nichts.",
+     "Es wird mehr Licht gesammelt – das Bild wird heller."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die große Linse vorn heißt",
+      "loesung": "Objektiv",
+      "post": "."
+     },
+     {
+      "pre": "Das",
+      "loesung": "Okular",
+      "post": "ist die Lupe für das Bild im Rohr."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Fernrohr holt den Mond näher heran.“ Stimmt das?",
+    "satzstarter": "Der Mond bleibt, wo er ist …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in den Merksatz: Nur das Bild wird größer.",
+   "h2": "Beginne so: Der Mond bleibt, wo er ist. Das Fernrohr macht nur sein Bild …",
+   "h3": "Fast fertige Antwort: Das Fernrohr holt nichts heran. Es macht nur das Bild des Mondes ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne Objektiv und Okular.",
+   "Ich weiß, wie herum das Bild im Fernrohr steht.",
+   "Ich kann sagen, was die große Öffnung bringt."
+  ],
+  "zuhause": "Halte eine Lupe mit gestrecktem Arm zum Fenster: Das Bild ist klein und steht auf dem Kopf. Genau so ein Bild entsteht im Rohr des Fernrohrs.",
+  "bildauftrag": "[BILD: ein langes Fernrohr im Querschnitt; links die große Linse mit Beschriftung „Objektiv“, rechts die kleine mit „Okular“, dahinter ein Auge; links vor dem Rohr ein kleiner Mond, im Sehfeld rechts ein großer Mond auf dem Kopf mit Beschriftung „4-fach · auf dem Kopf“; höchstens zwei ruhige Lichtlinien durch das Rohr; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw7",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, wie das Fernrohr das Mondbild verändert: vergrößert (hier 4-fach), auf dem Kopf, und mit großer Öffnung heller – der Mond selbst bleibt, wo er ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ansichten aus diesem Lehrerteil als Karten. Optional: Lupe für den Zuhause-Versuch, echtes Fernrohr aus der Sammlung als Anschauung.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ansichten als Karten zeigen: bloßes Auge → Mond klein, richtig herum, Lichtschwaches bleibt unsichtbar · mit Teleskop → Vergrößerung 4-fach, gelbe Marke liegt unten, Bild auf dem Kopf · große Öffnung → hell und lichtstark, kleine Öffnung → nur mäßig hell.",
+  "merksatz": [
+   "größer",
+   "heller"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Teleskop, große Öffnung",
+    "4-fach größer, auf dem Kopf",
+    "hell"
+   ],
+   [
+    "Teleskop, kleine Öffnung",
+    "4-fach größer, auf dem Kopf",
+    "nur mäßig hell"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Eine große Öffnung sammelt mehr Licht.",
+   "typische_fehler": [
+    "Größer und heller werden gleichgesetzt – die Öffnung ändert nur die Helligkeit."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Objektiv",
+    "Okular"
+   ],
+   "typische_fehler": [
+    "Objektiv und Okular werden vertauscht – Merkhilfe: das Okular ist am Auge."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nein. Der Mond bleibt, wo er ist. Das Fernrohr macht nur sein Bild größer – hier 4-fach – und stellt es auf den Kopf.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Die Objekte bleiben, wo sie sind – nur das Bild wird größer.",
+    "Ergänzung: Mit großer Öffnung wird das Bild zusätzlich heller."
+   ],
+   "typische_fehler": [
+    "„Näher heranholen“ wird wörtlich verstanden.",
+    "Das Fernrohrbild soll aufrecht stehen."
+   ]
+  },
+  "hilfe3_wort": "größer",
+  "schwache": [
+   "Die gelbe Marke in beiden Ansichten mit dem Finger verfolgen lassen.",
+   "Zuerst nur bloßes Auge und Teleskop vergleichen, die Öffnungen danach.",
+   "Wortkarte anlegen: Okular = am Auge, Objektiv = am Objekt."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies in der Statuszeile, woraus die 4-fache Vergrößerung entsteht – aus den zwei Brennweiten der Linsen.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Fernrohr. Kompetenz UF4 wie auf der Quellseite ew8. Die Formel Vergrößerung = Brennweite Objektiv : Brennweite Okular fällt bewusst weg; die Anzeige „4-fach“ genügt."
+ }
+}

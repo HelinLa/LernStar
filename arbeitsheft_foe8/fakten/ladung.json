@@ -1,0 +1,170 @@
+[
+ {
+  "sim": "ladung",
+  "ueberschrift": "⚡ Was ist elektrische Ladung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "➕ positiv",
+    "ruft": "_ladSet(1,'+')"
+   },
+   {
+    "aufschrift": "➖ negativ",
+    "ruft": "_ladSet(1,'-')"
+   },
+   {
+    "aufschrift": "➕ positiv",
+    "ruft": "_ladSet(2,'+')"
+   },
+   {
+    "aufschrift": "➖ negativ",
+    "ruft": "_ladSet(2,'-')"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_ladReset()"
+   },
+   {
+    "aufschrift": "Nur eine",
+    "ruft": "_ladAns(0,0)"
+   },
+   {
+    "aufschrift": "Zwei (positiv und negativ)",
+    "ruft": "_ladAns(0,1)"
+   },
+   {
+    "aufschrift": "Drei",
+    "ruft": "_ladAns(0,2)"
+   },
+   {
+    "aufschrift": "Sie ziehen sich an",
+    "ruft": "_ladAns(1,0)"
+   },
+   {
+    "aufschrift": "Sie stoßen sich ab",
+    "ruft": "_ladAns(1,1)"
+   },
+   {
+    "aufschrift": "Nichts",
+    "ruft": "_ladAns(1,2)"
+   },
+   {
+    "aufschrift": "Sie stoßen sich ab",
+    "ruft": "_ladAns(2,0)"
+   },
+   {
+    "aufschrift": "Sie ziehen sich an",
+    "ruft": "_ladAns(2,1)"
+   },
+   {
+    "aufschrift": "Sie verschwinden",
+    "ruft": "_ladAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_ladSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_ladSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_ladSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('ladung')"
+   }
+  ],
+  "hinweise": [
+   "Gib den beiden Kugeln eine Ladung (+ oder −). Beobachte, ob sie sich anziehen oder abstoßen. Verändere immer nur eine Ladung.",
+   "Es gibt zwei Ladungsarten: positiv (+) und negativ (−). Gleiche Ladungen stoßen sich ab, ungleiche Ladungen ziehen sich an. Reibt man z. B. einen Luftballon an Haaren, wird er geladen und zieht kleine Papierstücke an.",
+   "Gleich + gleich → abstoßen. | Plus + minus → anziehen."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
+   },
+   {
+    "einstellung": "➕ positiv",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
+   },
+   {
+    "einstellung": "➖ negativ",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab."
+   },
+   {
+    "einstellung": "➕ positiv",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
+   },
+   {
+    "einstellung": "➖ negativ",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
+   },
+   {
+    "einstellung": "Nur eine",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine."
+   },
+   {
+    "einstellung": "Zwei (positiv und negativ)",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung."
+   },
+   {
+    "einstellung": "Drei",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei."
+   },
+   {
+    "einstellung": "Sie ziehen sich an",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an."
+   },
+   {
+    "einstellung": "Sie stoßen sich ab",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab."
+   },
+   {
+    "einstellung": "Nichts",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft."
+   },
+   {
+    "einstellung": "Sie stoßen sich ab",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab."
+   },
+   {
+    "einstellung": "Sie ziehen sich an",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an."
+   },
+   {
+    "einstellung": "Sie verschwinden",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
+   }
+  ],
+  "bildtexte": [
+   "Kugel A",
+   "Kugel B",
+   "ungleiche Ladung → anziehen",
+   "gleiche Ladung → abstoßen"
+  ]
+ }
+]

@@ -1,0 +1,75 @@
+[
+ {
+  "sim": "traegheit-rs",
+  "ueberschrift": "🧊 Warum bleibt alles von allein stehen?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Tisch",
+    "ruft": "_trsSet('tisch')"
+   },
+   {
+    "aufschrift": "Eis",
+    "ruft": "_trsSet('eis')"
+   },
+   {
+    "aufschrift": "Weltall",
+    "ruft": "_trsSet('weltall')"
+   },
+   {
+    "aufschrift": "▶ Anstoßen",
+    "ruft": "_trsGo()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_trsInit();_trsStatus()"
+   }
+  ],
+  "hinweise": [
+   "Der Wagen bekommt immer denselben Anstoß. Wähle den Untergrund und beobachte, wie lange er weiterrollt.",
+   "Je weniger Reibung, desto länger rollt der Wagen. Ohne Reibung hört er nie auf.",
+   "Ein Körper bleibt also nicht von allein stehen. Er wird von einer Kraft abgebremst – meistens von der Reibung, die man nicht sieht.",
+   "Ohne Kraft ändert sich der Bewegungszustand nicht | Newtons 1. Gesetz"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "Tisch",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "Eis",
+    "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "Weltall",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "▶ Anstoßen",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 0,0 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   }
+  ],
+  "bildtexte": [
+   "Tisch · viel Reibung",
+   "v = 0,0 m/s",
+   "t = 0,0 s",
+   "Weg = 0,0 m",
+   "Tempo (Anstoß = 8 m/s)",
+   "die Reibung bremst – deshalb bleibt er stehen",
+   "Eis · wenig Reibung",
+   "Weltall · keine Reibung",
+   "ohne Reibung: der Wagen wird nie langsamer",
+   "v = 8,0 m/s",
+   "Weg = 0,1 m",
+   "Weg = 0,3 m"
+  ]
+ }
+]

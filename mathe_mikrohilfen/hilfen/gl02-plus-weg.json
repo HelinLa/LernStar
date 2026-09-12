@@ -1,0 +1,63 @@
+{
+  "kennung": "gl02",
+  "frage": "Wie bekomme ich die +5 weg?",
+  "art": "rechenschritt",
+  "aufgabe": "a03",
+  "vorwissen": [
+    "Er weiß, dass 3x „drei mal x“ bedeutet.",
+    "Er kann im Kopf 20 − 5 rechnen.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen."
+  ],
+  "hilfe1": "Welche Zahl stört neben dem 3x?",
+  "skript": {
+    "A": { "text": "Du hast jetzt 3x + 5 = 20.", "woerter": 10 },
+    "B": { "text": "Wir wollen die +5 wegbekommen.", "woerter": 6 },
+    "C": { "text": "Rechne auf beiden Seiten −5.", "woerter": 6 },
+    "D": { "text": "Minus 5 hebt die plus 5 auf.", "woerter": 7 },
+    "E": { "text": "Jetzt muss dort 3x = 15 stehen.", "woerter": 9 },
+    "F": { "text": "Jetzt bist du wieder dran.", "woerter": 5 }
+  },
+  "woerter_gesamt": 43,
+  "sekunden_sprache": 21.5,
+  "sekunden_gesamt": 24.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 3x + 5 = 20.",
+      "hervorgehoben": "die ganze Zeile 3x + 5 = 20"
+    },
+    "B": {
+      "sichtbar": "3x + 5 = 20 steht weiter da. Um die +5 liegt ein roter Ring.",
+      "hervorgehoben": "die +5"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint −5. Unter der rechten Seite erscheint −5. Die Zeile 3x + 5 = 20 bleibt oben stehen.",
+      "hervorgehoben": "die beiden −5, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Links steht jetzt +5 − 5. Daraus wird eine grüne 0. Rechts steht darunter 20 − 5.",
+      "hervorgehoben": "das Paar +5 und −5"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile wird blass. Rechts wird aus 20 − 5 die 15. Darunter steht groß 3x = 15.",
+      "hervorgehoben": "die neue Zeile 3x = 15"
+    },
+    "F": {
+      "sichtbar": "3x = 15 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "3x = 15"
+    }
+  },
+  "szene": {
+    "A": [{ "zeile": "3x + 5 = 20" }],
+    "B": [{ "ring": "+5", "farbe": "rot" }],
+    "C": [{ "unterBeide": "−5" }],
+    "D": [{ "hebeAuf": ["+5", "−5"], "wird": "0" }],
+    "E": [{ "neueZeile": "3x = 15" }],
+    "F": [{ "nurNoch": "3x = 15" }, { "halte": 3 }]
+  },
+  "hilfe3": {
+    "aufgabe": "a11",
+    "text": "Nimm 4x + 7 = 31. Rechne auf beiden Seiten −7.",
+    "kontrolle": "Dann steht dort 4x = 24."
+  },
+  "faengt_fehler_auf": "Der Schüler nimmt die +5 einfach weg, ohne die Gegenzahl zu rechnen, und schreibt 3x = 20."
+}

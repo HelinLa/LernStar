@@ -1,0 +1,1345 @@
+[
+ {
+  "id": "la1",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Gleiche Vorzeichen stoßen sich ab, verschiedene Vorzeichen",
+    "loesung": "ziehen sich an",
+    "post": "."
+   },
+   {
+    "pre": "Bei plus und minus mit 6 cm Abstand ziehen sich die Kugeln an; die Kraft beträgt",
+    "loesung": "249,7 µN",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man den Abstand von 6 cm auf 12 cm, sinkt die Kraft auf",
+    "loesung": "ein Viertel",
+    "post": ", also auf 62,4 µN."
+   },
+   {
+    "pre": "Beim Reiben entsteht keine neue Ladung; es wechseln nur",
+    "loesung": "Elektronen",
+    "post": "von einem Körper zum anderen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Stellt man beide Kugeln auf plus, bleibt der Betrag der Kraft bei 249,7 µN, nur die Pfeile drehen sich um.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Nenner der Formel F = k · q · q : r² steht der Abstand im Quadrat.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man den Abstand der Kugeln, sinkt die Kraft genau auf die Hälfte.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Reiben der Folie entsteht neue Ladung, die es vorher nicht gab.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Sina stellt beide Kugeln von plus und minus auf beide plus, ohne den Abstand von 6 cm zu ändern. Was geschieht mit der Kraft?",
+   "optionen": [
+    "Die Kraft verschwindet, weil zwei gleiche Ladungen keine Kraft aufeinander ausüben. Gleiche Ladungen üben jedoch sehr wohl eine Kraft aus.",
+    "Der Betrag wird größer, weil zwei Pluskugeln stärker wirken. Der Betrag hängt hier aber nur vom Abstand ab, und der bleibt gleich.",
+    "Der Betrag bleibt bei 249,7 µN, nur die Pfeile drehen sich um: Aus Anziehen wird Abstoßen.",
+    "Die Kugeln ziehen sich jetzt noch stärker an, weil beide geladen sind. Gleiche Vorzeichen ziehen sich aber nicht an, sondern stoßen sich ab."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum sich beim Reiben eines Luftballons Ladungen trennen, obwohl dabei keine neue Ladung entsteht.",
+   "zeilen": 4,
+   "loesung": "Beim Reiben entsteht keine neue Ladung. Es wechseln nur Elektronen von einem Körper zum anderen. Der eine Körper hat danach zu wenige Elektronen und ist positiv geladen, der andere hat zu viele und ist negativ geladen. So trennen sich die Ladungen, ohne dass neue Ladung dazukommt."
+  }
+ },
+ {
+  "id": "la2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Elektroskop besteht aus einem Metallteller mit einem beweglichen",
+    "loesung": "Zeiger",
+    "post": "."
+   },
+   {
+    "pre": "Verschiebt der Stab beim bloßen Nähern nur die Elektronen im Metall, nennt man das",
+    "loesung": "Influenz",
+    "post": "."
+   },
+   {
+    "pre": "Bei „Nur nähern“ sitzen 0 Einheiten Ladung auf dem Elektroskop, der Zeiger steht aber auf",
+    "loesung": "44,3°",
+    "post": "."
+   },
+   {
+    "pre": "Dauerhaft geladen wird das Elektroskop erst durch",
+    "loesung": "Berührung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei Influenz wird keine Ladung übertragen; nimmt man den Stab weg, fällt der Zeiger auf 0° zurück.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Schon das bloße Nähern des Stabs überträgt Ladung, sodass der Zeiger auch nach dem Wegnehmen gespreizt bleibt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach der Berührung sitzen 40 Einheiten auf dem Elektroskop, und der Zeiger bleibt bei 40,0°, obwohl der Stab 30 cm entfernt ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein geladenes Elektroskop verliert seinen Ausschlag von selbst, ohne dass man es erdet.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "David nähert den geriebenen Stab dem Elektroskop, ohne es zu berühren. Der Zeiger schlägt auf 44,3° aus, obwohl 0 Einheiten Ladung auf dem Elektroskop sitzen. Wie passt das zusammen?",
+   "optionen": [
+    "Der Stab verschiebt durch Influenz die Elektronen im Metall; die verschobene Ladung von 51,7 Einheiten spreizt den Zeiger, ohne dass Ladung übergeht.",
+    "Der Stab hat doch heimlich etwas Ladung übertragen. Bei bloßem Nähern geht aber keine Ladung über, sonst bliebe der Zeiger nach dem Wegnehmen stehen.",
+    "Das Elektroskop erzeugt beim Nähern selbst neue Ladung. Es entsteht aber keine neue Ladung, nur die vorhandenen Elektronen verschieben sich.",
+    "Der Zeigerausschlag ist ein Messfehler und bedeutet nichts. Der Ausschlag von 44,3° zeigt aber gerade die verschobene Ladung an."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre den Unterschied im Verhalten des Zeigers, wenn David den Stab nur nähert und wenn er den Teller kurz berührt und den Stab dann wegnimmt.",
+   "zeilen": 5,
+   "loesung": "Beim bloßen Nähern verschiebt der Stab durch Influenz nur die Elektronen im Metall; es geht keine Ladung über. Nimmt man den Stab weg, verteilen sich die Elektronen wieder und der Zeiger fällt auf 0°. Berührt der Stab dagegen den Teller, gehen Elektronen wirklich über. Dann sitzen 40 Einheiten auf dem Elektroskop, und der Zeiger bleibt bei 40,0°, auch wenn der Stab 30 cm entfernt ist."
+  }
+ },
+ {
+  "id": "la3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Raum um eine Ladung, in dem eine andere Ladung eine Kraft spürt, heißt",
+    "loesung": "elektrisches Feld",
+    "post": "."
+   },
+   {
+    "pre": "Zwischen zwei parallelen Platten berechnet sich die Feldstärke aus",
+    "loesung": "E = U : d",
+    "post": "."
+   },
+   {
+    "pre": "Bei 100 V und 10 cm Abstand zeigt das Infofeld eine Feldstärke von",
+    "loesung": "1000 V/m",
+    "post": "."
+   },
+   {
+    "pre": "Die Feldlinien zeigen von der positiven Platte zur",
+    "loesung": "negativen",
+    "post": "Platte."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelt man die Spannung von 100 V auf 200 V, steigt die Feldstärke bei gleichem Abstand von 1000 V/m auf 2000 V/m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je größer der Plattenabstand d, desto stärker wird das Feld.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwischen zwei parallelen Platten ist das Feld in der Mitte am stärksten und am Rand schwächer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Halbiert man bei 100 V den Abstand von 10 cm auf 5 cm, springt die Feldstärke ebenfalls auf 2000 V/m.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Zwischen zwei Platten liegen 100 V bei 10 cm Abstand, das Infofeld zeigt 1000 V/m. Sina halbiert den Abstand auf 5 cm und lässt die Spannung bei 100 V. Was zeigt das Infofeld nun?",
+   "optionen": [
+    "500 V/m, weil der halbe Abstand die halbe Feldstärke ergibt. Ein kleinerer Abstand macht das Feld nach E = U : d aber stärker, nicht schwächer.",
+    "1000 V/m, weil sich nur der Abstand geändert hat und der die Feldstärke nicht beeinflusst. In E = U : d steht d aber im Nenner und verändert E sehr wohl.",
+    "100 V/m, weil die Feldstärke gleich der Spannung ist. Die Feldstärke ist aber Spannung geteilt durch Abstand, nicht die Spannung selbst.",
+    "2000 V/m, weil E = U : d bei halbem Abstand den doppelten Wert ergibt."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bestimme die elektrische Feldstärke E zwischen zwei Platten, an denen 100 V anliegen und die 10 cm voneinander entfernt sind, und gib die Einheit an.",
+   "zeilen": 3,
+   "loesung": "Die Feldstärke ist E = U : d. Der Abstand 10 cm sind 0,10 m. Also E = 100 V : 0,10 m = 1000 V/m. Das stimmt mit dem Wert im Infofeld der Simulation überein."
+  }
+ },
+ {
+  "id": "la4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B1"
+  ],
+  "afb": [
+   "II",
+   "III",
+   "I",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Luft wird leitend und es blitzt, sobald die Feldstärke etwa",
+    "loesung": "300 kV/m",
+    "post": "erreicht."
+   },
+   {
+    "pre": "Bei 300 kV/m über 1000 m Höhe liegen zwischen Wolke und Boden",
+    "loesung": "300 MV",
+    "post": "."
+   },
+   {
+    "pre": "Man sieht den Blitz zuerst, weil das Licht fast eine Million Mal schneller ist als der",
+    "loesung": "Schall",
+    "post": "."
+   },
+   {
+    "pre": "Die Entfernung berechnet man aus der Zeit bis zum Donner mit s = v · t und v =",
+    "loesung": "343 m/s",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Blitz und Donner entstehen nacheinander: Erst zuckt das Licht, und erst wenn es am Boden aufschlägt, entsteht der Knall.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 3 km Entfernung kommt der Donner nach 8,75 s, bei 6 km erst nach 17,49 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Donner entsteht, weil sich die schlagartig erhitzte Luft ausdehnt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Faustregel „3 s je km“ schätzt die Entfernung eines Gewitters etwas zu groß.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Sina schiebt den Regler „Feld zwischen Wolke und Boden“ langsam höher. Bei welcher Feldstärke wird die Luft leitend und es blitzt?",
+   "optionen": [
+    "Schon bei 120 kV/m, denn hier zuckt der erste Funke. Bei 120 kV/m bleibt der Himmel aber ruhig, bis zur Schwelle fehlen noch 180 kV/m.",
+    "Etwa ab 300 kV/m, dann wird die Luft leitend und zwischen Wolke und Boden liegen 300 MV.",
+    "Erst bei 343 kV/m, passend zur Schallgeschwindigkeit. 343 m/s ist aber die Schallgeschwindigkeit und keine Feldstärke.",
+    "Bei 30 kV/m, dann fließen die 30 kA des Blitzes. 30 kA ist jedoch die Stromstärke des Blitzes, nicht die Feldstärke, ab der es zündet."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, wie weit ein Gewitter entfernt ist, wenn zwischen Blitz und Donner 5 s vergehen.",
+   "zeilen": 4,
+   "loesung": "Aus s = v · t mit v = 343 m/s folgt s = 343 m/s · 5 s = 1715 m, also rund 1,7 km. Die Faustregel „3 s je km“ liefert 5 s geteilt durch 3, das sind 1,67 km, und schätzt die Entfernung damit etwas zu klein. Das Licht des Blitzes ist dagegen praktisch ohne Verzögerung zu sehen."
+  }
+ },
+ {
+  "id": "la5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Spannung ist der",
+    "loesung": "Antrieb",
+    "post": "der Quelle und wird in Volt gemessen."
+   },
+   {
+    "pre": "Das Voltmeter wird immer",
+    "loesung": "parallel",
+    "post": "zum Bauteil angeschlossen."
+   },
+   {
+    "pre": "Drei in Reihe geschaltete Zellen zu je 1,5 V ergeben zusammen",
+    "loesung": "4,5 V",
+    "post": "."
+   },
+   {
+    "pre": "Spannung und Strom sind nicht dasselbe: Die Spannung ist die Ursache, der Strom die",
+    "loesung": "Folge",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Das Voltmeter zeigt an, wie viel Strom schon verbraucht ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Jede Batteriezelle liefert 1,5 V, und in Reihe geschaltet addieren sich diese Spannungen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Voltmeter wird in Reihe zum Bauteil angeschlossen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Simulation wird nur mit ungefährlicher Kleinspannung bis 4,5 V gearbeitet.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "David setzt nacheinander eine, zwei und drei Batteriezellen ein. Die Lampe wird jedes Mal heller. Woran liegt das?",
+   "optionen": [
+    "Mit jeder Zelle addieren sich 1,5 V, der Antrieb wird stärker und treibt mehr Strom durch die Lampe.",
+    "Jede Zelle verbraucht etwas Strom, sodass am Ende mehr übrig bleibt. Das Voltmeter zeigt aber den Antrieb an, nicht verbrauchten Strom.",
+    "Die Lampe zieht die Zellen an, je mehr desto heller. Zellen werden aber nicht angezogen, sie erhöhen nur die Spannung.",
+    "Mehr Zellen kühlen die Lampe und lassen sie heller wirken. Die höhere Helligkeit kommt aber vom stärkeren Antrieb, nicht von Kühlung."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum eine Reihe aus drei 1,5-V-Zellen die Lampe heller leuchten lässt als eine einzelne Zelle.",
+   "zeilen": 4,
+   "loesung": "Drei in Reihe geschaltete Zellen zu je 1,5 V ergeben zusammen 4,5 V. Diese höhere Spannung ist ein stärkerer Antrieb für die Ladungen. Dadurch fließt mehr Strom durch die Lampe, und sie leuchtet am hellsten. Die einzelne Zelle liefert nur 1,5 V und damit den schwächsten Antrieb."
+  }
+ },
+ {
+  "id": "la6",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Metall leitet, weil es",
+    "loesung": "freie Elektronen",
+    "post": "enthält; im Gummi sind sie festgehalten."
+   },
+   {
+    "pre": "Beim Wasserkocher (9,0 A, 1,50 mm²) steigt die Driftgeschwindigkeit auf",
+    "loesung": "0,4410 mm/s",
+    "post": "."
+   },
+   {
+    "pre": "Der Anstoß läuft durch die schon gefüllte Leitung mit rund",
+    "loesung": "200 000 km/s",
+    "post": "."
+   },
+   {
+    "pre": "Weil die Elektronen fest an ihre Atome gebunden sind, ist Gummi ein",
+    "loesung": "Isolator",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Damit die Lampe sofort leuchtet, müssen die Elektronen fast mit Lichtgeschwindigkeit durch den ganzen Draht rasen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine größere Stromstärke lässt die einzelnen Elektronen langsamer wandern.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Handy-Ladegerät und Leselampe ergeben dieselben 0,0490 mm/s, weil Strom und Querschnitt gemeinsam halbiert sind.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Einschalten ist der Draht schon vollständig mit freien Elektronen gefüllt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Sina drückt den Schalter, und die Lampe leuchtet sofort. Trotzdem wandert ein einzelnes Elektron nur mit 0,0490 mm/s und braucht für einen Meter 5,7 Stunden. Wie passt das zusammen?",
+   "optionen": [
+    "Die Elektronen rasen beim Einschalten kurz mit Lichtgeschwindigkeit und werden dann langsam. Ein einzelnes Elektron wandert aber die ganze Zeit nur langsam, es rast nie.",
+    "Die Lampe leuchtet erst, wenn das erste Elektron von der Quelle bei ihr angekommen ist. Dann müsste man aber Stunden warten, tatsächlich leuchtet sie sofort.",
+    "Der Draht ist schon voll mit Elektronen; der Anstoß läuft mit rund 200 000 km/s durch die Leitung und erreicht die Lampe in 15 Nanosekunden.",
+    "Der Strom ist das schnelle Zappeln der Elektronen mit 1570 km/s, das die Lampe versorgt. Das Zappeln bewegt die Ladung aber nicht vorwärts; für das sofortige Leuchten sorgt der Anstoß."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Lampe sofort leuchtet, obwohl ein einzelnes Elektron Stunden für einen Meter Draht braucht.",
+   "zeilen": 5,
+   "loesung": "Der Draht ist schon vollständig mit freien Elektronen gefüllt. Beim Einschalten muss kein Elektron erst zur Lampe wandern - der Anstoß läuft mit rund 200 000 km/s durch die ganze Leitung und erreicht die 3 m entfernte Lampe in nur 15 Nanosekunden. Die einzelnen Elektronen wandern dabei mit 0,0490 mm/s und brauchen für einen Meter 5,7 Stunden. Sofort da ist also der Anstoß, nicht das einzelne Elektron."
+  }
+ },
+ {
+  "id": "wi1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Stromstärke I gibt an, wie viel",
+    "loesung": "Ladung pro Sekunde",
+    "post": "durch den geschlossenen Kreis fließt."
+   },
+   {
+    "pre": "Ihre Einheit ist das",
+    "loesung": "Ampere (A)",
+    "post": "; gemessen wird sie mit dem Amperemeter."
+   },
+   {
+    "pre": "Das Amperemeter wird zum Messen",
+    "loesung": "in Reihe",
+    "post": "in den Kreis gebaut."
+   },
+   {
+    "pre": "Auf der Stufe stark zeigt das Amperemeter",
+    "loesung": "0,60 A",
+    "post": ", auf der Stufe schwach nur 0,10 A."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Öffnet man den Schalter, springt die Stromstärke sofort auf 0 A, obwohl die Batterie weiter 4,5 V liefert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf der Stufe mittel zeigt das Amperemeter 0,30 A, und die Lampe leuchtet heller als auf der Stufe schwach.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim offenen Schalter fließt der Strom noch eine Weile schwächer weiter, weil die Ladung der Batterie langsam aufgebraucht wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je mehr Ladung pro Sekunde durch den Draht fließt, desto dunkler leuchtet die Lampe.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Sina öffnet den Schalter, während die Batterie noch voll bei 4,5 V liegt. Warum zeigt das Amperemeter jetzt 0 A?",
+   "optionen": [
+    "Die Batterie ist beim Öffnen leer geworden. Sie liefert aber weiter dieselbe Spannung von 4,5 V.",
+    "Der Strom fließt langsam aus, weil die restliche Ladung noch aufgebraucht wird. Bei offenem Kreis fließt jedoch sofort gar keine Ladung mehr.",
+    "Der offene Schalter unterbricht den Kreis, sodass keine Ladung mehr hindurchfließen kann. Ohne fließende Ladung ist die Stromstärke null.",
+    "Das Amperemeter ist beim Öffnen falsch angeschlossen. Es liegt aber die ganze Zeit richtig in Reihe im Kreis."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum das Amperemeter beim Wechsel von schwach auf stark einen größeren Wert anzeigt und die Lampe dabei heller leuchtet.",
+   "zeilen": 4,
+   "loesung": "Die Stromstärke gibt an, wie viel Ladung pro Sekunde durch den Kreis fließt. Auf der Stufe schwach sind das 0,10 A, auf der Stufe stark 0,60 A. Auf der stärkeren Stufe fließt also mehr Ladung pro Sekunde durch den Draht. Weil mehr Ladung fließt, leuchtet die Lampe heller."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi2",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Den Widerstand berechnet man aus Spannung und Stromstärke:",
+    "loesung": "R = U/I",
+    "post": "; seine Einheit ist das Ohm (Ω)."
+   },
+   {
+    "pre": "Bei gleicher Spannung gilt: Je größer der Widerstand, desto",
+    "loesung": "kleiner",
+    "post": "ist der Strom."
+   },
+   {
+    "pre": "Der dicke Kupferdraht hat R = 3 Ω; bei 4,5 V fließen",
+    "loesung": "1,50 A",
+    "post": "."
+   },
+   {
+    "pre": "Der Widerstandsdraht mit R = 45 Ω lässt nur noch",
+    "loesung": "0,10 A",
+    "post": "durch."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei gleicher Spannung von 4,5 V fließt durch den Glühdraht mit R = 15 Ω ein Strom von 0,30 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein dicker Kupferdraht hat mehr Widerstand als ein dünner Widerstandsdraht, weil in ihm mehr Metall im Weg ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Obwohl an allen drei Bauteilen dieselbe Spannung liegt, fließt durch den Kupferdraht fünfzehnmal so viel Strom wie durch den Widerstandsdraht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je größer der Widerstand eines Bauteils ist, desto größer ist bei gleicher Spannung der Strom.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "David misst bei 4,5 V am Glühdraht eine Stromstärke von 0,30 A. Wie groß ist dessen Widerstand?",
+   "optionen": [
+    "R = U/I = 4,5 V / 0,30 A = 15 Ω. Das ist genau der Wert, den die Statuszeile für mittel anzeigt.",
+    "R = U · I = 4,5 V · 0,30 A = 1,35 Ω. Der Widerstand wird jedoch nicht aus Spannung mal Stromstärke berechnet.",
+    "R = I/U = 0,30 A / 4,5 V = 0,07 Ω. Bei R = U/I stehen Spannung und Stromstärke aber genau andersherum.",
+    "Der Widerstand ist 45 Ω, denn das ist der größte Wert im Versuch. Zu 45 Ω gehören bei 4,5 V aber nur 0,10 A, nicht 0,30 A."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum bei gleicher Spannung von 4,5 V durch den Kupferdraht viel mehr Strom fließt als durch den Widerstandsdraht.",
+   "zeilen": 4,
+   "loesung": "Bei gleicher Spannung hängt der Strom vom Widerstand ab: Je größer der Widerstand, desto kleiner der Strom. Der Kupferdraht hat mit R = 3 Ω einen kleinen Widerstand und leitet fast ungehindert, deshalb fließen 1,50 A. Der Widerstandsdraht hat mit R = 45 Ω einen viel größeren Widerstand und bremst den Strom stark, sodass nur 0,10 A fließen. So kommt der fünfzehnfache Unterschied zustande."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Ohmsche Gesetz lautet",
+    "loesung": "U = R · I",
+    "post": "und gilt nur bei konstantem Widerstand."
+   },
+   {
+    "pre": "Bei festem Widerstand von 100 Ω gehören zu 12 V genau",
+    "loesung": "120,0 mA",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man bei festem Widerstand die Spannung, so",
+    "loesung": "verdoppelt sich",
+    "post": "auch der Strom."
+   },
+   {
+    "pre": "Teilt man Spannung durch Stromstärke, kommt jedes Mal",
+    "loesung": "100 Ω",
+    "post": "heraus - der Widerstand bleibt konstant."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Strom hängt nur vom Widerstand ab; erhöht man am Netzteil die Spannung, bleibt die Stromstärke ungefähr gleich.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei festem Widerstand von 100 Ω sind Strom und Spannung zueinander proportional: doppelte Spannung, doppelter Strom.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Ohmsche Gesetz U = R · I gilt für jedes Bauteil, auch für eine Glühlampe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil bei jeder Spannung U/I denselben Wert 100 Ω ergibt, ist der Widerstand in dieser Simulation ein ohmscher Widerstand.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Bei festem Widerstand von 100 Ω misst David für 6 V eine Stromstärke von 60,0 mA. Welche Stromstärke erwartet er bei 24 V?",
+   "optionen": [
+    "Weiterhin 60,0 mA, denn der Strom hängt nur vom Widerstand ab. Bei festem Widerstand wächst der Strom aber mit der Spannung.",
+    "120,0 mA, weil sich der Strom um einen festen Betrag erhöht. Von 6 V auf 24 V vervierfacht sich die Spannung aber, statt sich nur zu verdoppeln.",
+    "Das lässt sich nicht vorhersagen, weil hier kein Ohmsches Gesetz gilt. Bei konstantem Widerstand von 100 Ω gilt es aber gerade.",
+    "240,0 mA, denn bei festem Widerstand ist der Strom zur Spannung proportional. Viermal so viel Spannung bedeutet viermal so viel Strom."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe, warum das Ohmsche Gesetz in dieser Simulation gilt, für eine Glühlampe aber nicht gelten muss.",
+   "zeilen": 4,
+   "loesung": "In der Simulation bleibt der Widerstand fest bei 100 Ω, egal welche Spannung eingestellt wird. Dadurch ergibt U/I bei jeder Spannung denselben Wert, und der Strom wächst proportional zur Spannung. Genau das ist die Bedingung für das Ohmsche Gesetz U = R · I. Bei einer Glühlampe steigt der Widerstand mit der Temperatur, sodass diese Bedingung nicht erfüllt ist."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "K3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die U-I-Kennlinie eines ohmschen Widerstands ist eine",
+    "loesung": "Ursprungsgerade",
+    "post": "; Strom und Spannung sind proportional."
+   },
+   {
+    "pre": "Je steiler die Kennlinie verläuft, desto",
+    "loesung": "kleiner",
+    "post": "ist der Widerstand, denn ihre Steigung ist 1/R."
+   },
+   {
+    "pre": "Am 10-Ω-Widerstand gehören zu 3 V genau 0,30 A und zu 6 V",
+    "loesung": "0,60 A",
+    "post": "."
+   },
+   {
+    "pre": "In der Wertetabelle ergibt R = U/I in jeder Zeile",
+    "loesung": "10 Ω",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Erhöht man die Spannung in gleichen Schritten, wird der Strom immer langsamer größer, sodass sich die Kennlinie nach oben krümmt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je steiler die Kennlinie verläuft, desto größer ist der Widerstand.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim 10-Ω-Widerstand gehören zu 1,5 V 0,15 A und zu doppelter Spannung 3 V der doppelte Strom 0,30 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die vier Messpunkte liegen auf einer Geraden, die durch den Nullpunkt läuft.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "David betrachtet die Kennlinien zweier Widerstände. Woran erkennt er im Diagramm den kleineren Widerstand?",
+   "optionen": [
+    "Am flacheren Verlauf der Geraden, weil ein kleiner Widerstand wenig Strom durchlässt. Ein kleiner Widerstand lässt bei gleicher Spannung aber gerade viel Strom fließen.",
+    "Am steileren Verlauf der Geraden, denn die Steigung der Kennlinie ist 1/R. Je steiler die Gerade, desto kleiner der Widerstand.",
+    "An der stärkeren Krümmung der Kennlinie, weil sich dort der Widerstand ändert. Die Kennlinie eines ohmschen Widerstands ist aber eine Gerade ohne Krümmung.",
+    "Daran, dass die Gerade nicht durch den Nullpunkt geht. Die Kennlinie eines ohmschen Widerstands verläuft jedoch immer durch den Nullpunkt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, woran man in der Kennlinie erkennt, dass der Widerstand während der Messung konstant 10 Ω geblieben ist.",
+   "zeilen": 4,
+   "loesung": "Bei konstantem Widerstand sind Strom und Spannung zueinander proportional. Im Diagramm zeigt sich das als Gerade, die durch den Nullpunkt läuft. Für jeden Messpunkt ergibt R = U/I denselben Wert von 10 Ω. Würde sich der Widerstand ändern, wäre die Kennlinie gekrümmt statt gerade."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein längerer oder dünnerer Draht hat",
+    "loesung": "mehr Widerstand",
+    "post": "und lässt weniger Strom fließen."
+   },
+   {
+    "pre": "Von den drei Metallen leitet Kupfer am besten und",
+    "loesung": "Konstantan",
+    "post": "am schlechtesten."
+   },
+   {
+    "pre": "Der kurze, dicke Kupferdraht hat R = 5 Ω; es fließen",
+    "loesung": "0,90 A",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelst du die Länge des Drahtes, verdoppelt sich der Widerstand und der Strom",
+    "loesung": "halbiert sich",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Drückt man am kurzen, dicken Kupferdraht auf lang, verdoppelt sich der Widerstand von 5 Ω auf 10 Ω und der Strom sinkt auf 0,45 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein dicker Draht bremst den Strom stärker als ein dünner, weil in ihm mehr Metall im Weg steht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Aus Konstantan hat der kurze, dicke Draht einen kleineren Widerstand als aus Kupfer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der kurze, dünne Kupferdraht hat mit 10 Ω denselben Widerstand wie der lange, dicke Kupferdraht.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Sina sucht für die Scheinwerferleitung den Draht mit dem kleinsten Widerstand. Welchen wählt sie?",
+   "optionen": [
+    "Den kurzen, dicken Kupferdraht, denn er hat mit R = 5 Ω den kleinsten Widerstand und lässt 0,90 A fließen.",
+    "Den langen, dicken Kupferdraht, weil er aus gut leitendem Kupfer ist. Durch die größere Länge steigt sein Widerstand aber auf 10 Ω.",
+    "Den kurzen, dicken Konstantandraht, weil Konstantan besonders gut leitet. Konstantan leitet von den drei Metallen jedoch am schlechtesten, hier 45 Ω.",
+    "Den kurzen, dünnen Kupferdraht, weil ein dünner Draht wenig Widerstand hat. Ein dünner Draht hat aber mehr Widerstand, hier 10 Ω statt 5 Ω."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Begründe, warum man für die Scheinwerferleitung kurzes, dickes Kupfer nimmt und keinen langen, dünnen Konstantandraht.",
+   "zeilen": 4,
+   "loesung": "Kurzes, dickes Kupfer hat einen kleinen Widerstand, in der Simulation nur 5 Ω, dabei fließen 0,90 A. Ein langer, dünner Konstantandraht käme dagegen auf 180 Ω, sodass nur noch 0,03 A fließen. Mit ihm bliebe der Scheinwerfer fast dunkel. Außerdem würde der dünne Konstantandraht vor allem selbst warm, statt die Lampe zu versorgen."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In einer Reihenschaltung gilt für den Gesamtwiderstand R_ges =",
+    "loesung": "R₁ + R₂",
+    "post": "."
+   },
+   {
+    "pre": "In einer Reihenschaltung ist der Strom",
+    "loesung": "überall gleich",
+    "post": "groß."
+   },
+   {
+    "pre": "Mit R₁ = 10 Ω und R₂ = 20 Ω ist der Gesamtwiderstand 30 Ω, und es fließen",
+    "loesung": "0,20 A",
+    "post": "."
+   },
+   {
+    "pre": "Die Gesamtspannung teilt sich auf beide Widerstände auf: U =",
+    "loesung": "U₁ + U₂",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach dem ersten Widerstand ist ein Teil des Stroms verbraucht, sodass am zweiten weniger ankommt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit R₁ = 10 Ω und R₂ = 20 Ω teilt sich die Spannung in U₁ = 2,0 V und U₂ = 4,0 V, zusammen 6 V.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Stellt man R₁ und R₂ beide auf 30 Ω, steigt der Gesamtwiderstand auf 60 Ω und der Strom sinkt auf 0,10 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil ein zweiter Widerstand dazukommt, brauchen die beiden Bauteile zusammen mehr Strom als eines allein.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "David ändert in der Reihenschaltung R₂ von 20 Ω auf 30 Ω, während R₁ = 10 Ω bleibt. Was geschieht mit dem Strom?",
+   "optionen": [
+    "Der Strom bleibt bei 0,20 A, weil sich nur ein Bauteil geändert hat. In Reihe zählt aber der Gesamtwiderstand, und der ist gewachsen.",
+    "Der Strom steigt, weil mehr Widerstand im Kreis mehr Strom liefert. Mehr Widerstand in Reihe lässt jedoch weniger Strom fließen.",
+    "Der Gesamtwiderstand steigt von 30 Ω auf 40 Ω, und der Strom fällt von 0,20 A auf 0,15 A.",
+    "Der Strom fällt auf 0,10 A, weil sich der Widerstand verdoppelt. R₂ wächst aber nur von 20 Ω auf 30 Ω, der Gesamtwiderstand auf 40 Ω."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Anzeige am Pult schwächer wird, sobald ein zweiter Widerstand in Reihe dazukommt.",
+   "zeilen": 4,
+   "loesung": "In der Reihenschaltung addieren sich die Widerstände zum Gesamtwiderstand R_ges = R₁ + R₂. Mit R₁ = 10 Ω und R₂ = 20 Ω sind das 30 Ω, es fließen 0,20 A. Kommt ein größerer Widerstand hinzu, steigt der Gesamtwiderstand, bei 30 Ω und 30 Ω sogar auf 60 Ω. Weil der Gesamtwiderstand größer ist, fließen nur noch 0,10 A, und die Anzeige wird schwächer."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi7",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In einer Parallelschaltung addieren sich die",
+    "loesung": "Teilströme",
+    "post": "zum Gesamtstrom."
+   },
+   {
+    "pre": "In einer Parallelschaltung ist der Gesamtwiderstand",
+    "loesung": "kleiner",
+    "post": "als der kleinste Einzelwiderstand."
+   },
+   {
+    "pre": "Mit R₁ = 10 Ω und R₂ = 20 Ω fließen die Teilströme 0,45 A und 0,23 A, zusammen",
+    "loesung": "0,68 A",
+    "post": "."
+   },
+   {
+    "pre": "Stellt man beide Widerstände auf 10 Ω, sinkt der Gesamtwiderstand auf",
+    "loesung": "5,0 Ω",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In der Parallelschaltung liegt an beiden Widerständen dieselbe Spannung, und der Strom verteilt sich auf zwei Wege.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch nebeneinander addieren sich die Widerstände, sodass der Gesamtwiderstand größer wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit R₁ = 10 Ω und R₂ = 20 Ω ist der Gesamtwiderstand 6,7 Ω und damit kleiner als jeder der beiden Einzelwiderstände.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Schaltet man einen zweiten Widerstand parallel dazu, wird der Gesamtstrom kleiner.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Sina schaltet zu einem 10-Ω-Widerstand einen zweiten mit 20 Ω parallel. Welchen Gesamtstrom zeigt das Amperemeter?",
+   "optionen": [
+    "0,45 A, denn so viel floss schon durch den einen 10-Ω-Widerstand. Der zweite Zweig führt aber zusätzlichen Strom, sodass es mehr wird.",
+    "0,68 A, denn die Teilströme 0,45 A und 0,23 A addieren sich zum Gesamtstrom.",
+    "0,23 A, weil der Strom sich auf zwei Wege aufteilen muss. Die beiden Teilströme addieren sich aber, statt sich zu verkleinern.",
+    "0,30 A, weil der Widerstand der beiden zusammen größer ist. In der Parallelschaltung wird der Gesamtwiderstand jedoch kleiner."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Gesamtstrom größer wird, wenn man einen zweiten Widerstand parallel dazuschaltet.",
+   "zeilen": 4,
+   "loesung": "In der Parallelschaltung bekommt der Strom einen zweiten Weg. Die Teilströme addieren sich: bei R₁ = 10 Ω und R₂ = 20 Ω sind das 0,45 A und 0,23 A, zusammen 0,68 A. Mit nur einem 10-Ω-Widerstand flössen dagegen bloß 0,45 A. Weil es mehr Wege gibt, sinkt der Gesamtwiderstand auf 6,7 Ω, und mehr Strom kommt durch."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "wi8",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Potentiometer ist ein stufenlos",
+    "loesung": "veränderbarer",
+    "post": "Widerstand."
+   },
+   {
+    "pre": "Der Regler liegt zusammen mit der Lampe in Reihe; der Strom berechnet sich aus",
+    "loesung": "I = U / R_ges",
+    "post": "."
+   },
+   {
+    "pre": "Steht der Regler auf 0 Ω, ergibt sich mit der Lampe ein Gesamtwiderstand von 5 Ω und es fließen",
+    "loesung": "0,90 A",
+    "post": "."
+   },
+   {
+    "pre": "Beim größten Reglerwiderstand von 45 Ω ist der Gesamtwiderstand 50 Ω und es fließen nur",
+    "loesung": "0,09 A",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je größer der Reglerwiderstand, desto heller die Lampe, weil mehr Widerstand mehr Strom liefert.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Mitte, bei einem Reglerwiderstand von 23 Ω, ist der Gesamtwiderstand 28 Ω und der Strom sinkt auf 0,16 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Reglerwiderstand liegt parallel zur Lampe, deshalb wird der Gesamtwiderstand kleiner.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein kleiner Reglerwiderstand lässt viel Strom fließen, sodass die Lampe hell leuchtet.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "David dreht den Regler von 0 Ω auf 45 Ω. Wie verändern sich Strom und Helligkeit der Lampe?",
+   "optionen": [
+    "Der Strom bleibt gleich, nur die Batterie ändert sich. Batterie und Anschluss bleiben aber gleich, allein der Reglerwiderstand wächst.",
+    "Der Strom steigt von 0,09 A auf 0,90 A, die Lampe wird heller. Bei größerem Reglerwiderstand fließt aber weniger Strom, nicht mehr.",
+    "Der Strom bleibt bei 0,90 A, weil die Lampe ihren Widerstand von 5 Ω behält. Zur Lampe addiert sich aber der Reglerwiderstand zu 50 Ω.",
+    "Der Gesamtwiderstand steigt von 5 Ω auf 50 Ω, der Strom fällt von 0,90 A auf 0,09 A, und die Lampe wird sehr dunkel."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne den Gesamtwiderstand und die Stromstärke, wenn der Regler auf 45 Ω steht, und beurteile die Helligkeit der Lampe.",
+   "zeilen": 4,
+   "loesung": "Der Reglerwiderstand von 45 Ω und die Lampe mit 5 Ω liegen in Reihe, zusammen also R_ges = 50 Ω. Der Strom ist I = 4,5 V / 50 Ω = 0,09 A. Das ist sehr wenig, deshalb leuchtet die Lampe sehr dunkel. Bei 0 Ω am Regler wären es dagegen 5 Ω, 0,90 A und volle Helligkeit."
+  },
+  "theme": "gym_kreise"
+ },
+ {
+  "id": "ep1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die umgesetzte elektrische Energie ist Leistung mal",
+    "loesung": "Zeit",
+    "post": "."
+   },
+   {
+    "pre": "Tausend Wattstunden ergeben eine",
+    "loesung": "Kilowattstunde",
+    "post": " (1 kWh)."
+   },
+   {
+    "pre": "Der Wasserkocher mit 2000 W setzt in 3 h eine Energie von",
+    "loesung": "6 kWh",
+    "post": " um."
+   },
+   {
+    "pre": "Die LED mit 10 W erreicht in 10 h nur",
+    "loesung": "100 Wh",
+    "post": ", genauso viel wie der Fernseher in 1 h."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine kleine Leistung kann über lange Zeit genauso viel Energie umsetzen wie eine große Leistung über kurze Zeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Gerät mit der höchsten Wattzahl setzt immer die meiste Energie um, egal wie lange die anderen laufen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Fernseher mit 100 W setzt in 1 h mehr Energie um als die LED mit 10 W in 10 h.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Wasserkocher mit 2000 W kommt in 3 h auf 6 kWh.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Sina vergleicht die LED mit 10 W, die 10 h leuchtet, mit dem Fernseher mit 100 W, der 1 h läuft. Welche Aussage über die umgesetzte Energie stimmt?",
+   "optionen": [
+    "Der Fernseher setzt mehr Energie um, weil er die höhere Leistung hat. Über die zehnfache Zeit gleicht die LED die kleinere Leistung jedoch genau aus.",
+    "Die LED setzt mehr Energie um, weil sie viel länger leuchtet. Der Fernseher hat aber die zehnfach höhere Leistung, sodass beide gleich viel erreichen.",
+    "Beide setzen 100 Wh um, weil die zehnfach längere Zeit der LED die zehnfach kleinere Leistung genau ausgleicht.",
+    "Beide setzen 100 kWh um, weil Leistung mal Zeit hier Kilowattstunden ergibt. Watt mal Stunde ergibt jedoch Wattstunden, nicht Kilowattstunden."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne, wie viel Energie ein Fernseher mit 100 W an drei Abenden zu je 3 h umsetzt, und gib das Ergebnis in Wh und kWh an.",
+   "zeilen": 4,
+   "loesung": "Die Gesamtzeit beträgt 3 · 3 h = 9 h. Mit E = P · t ergibt sich E = 100 W · 9 h = 900 Wh. Geteilt durch 1000 sind das 0,9 kWh. Über drei Abende summiert sich die Energie des Fernsehers so auf fast eine Kilowattstunde."
+  },
+  "theme": "gym_eleistung"
+ },
+ {
+  "id": "ep2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die elektrische Leistung ist das Produkt aus Spannung und",
+    "loesung": "Stromstärke",
+    "post": "."
+   },
+   {
+    "pre": "Die Leistung P wird in der Einheit",
+    "loesung": "Watt",
+    "post": " gemessen."
+   },
+   {
+    "pre": "Bei 3 V und dem Verbraucher mittel fließen 0,20 A, das ergibt eine Leistung von",
+    "loesung": "0,60 W",
+    "post": "."
+   },
+   {
+    "pre": "Erhöht man die Spannung auf 6 V, steigt der Strom auf 0,40 A und die Leistung auf",
+    "loesung": "2,40 W",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Wattzahl hängt nur von der Spannung ab; mehr Volt bedeuten immer mehr Watt, ganz gleich, welcher Verbraucher angeschlossen ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelt man bei gleichem Verbraucher die Spannung von 3 V auf 6 V, wird die Leistung vier Mal so groß.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei 3 V liefert der Verbraucher mit viel Strom mit 0,60 A eine Leistung von 1,80 W.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Verbraucher, der bei gleicher Spannung weniger Strom zieht, hat die höhere Wattzahl.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "An zwei gleich hohen Steckdosen hängen zwei Scheinwerfer; der eine leuchtet heller und wird wärmer. Wodurch entsteht seine höhere Leistung?",
+   "optionen": [
+    "Er zieht bei gleicher Spannung den größeren Strom, und Spannung mal Strom ergibt die höhere Leistung.",
+    "Er bekommt aus der Steckdose die höhere Spannung. Die Steckdose liefert jedoch für beide Scheinwerfer gleich viel Spannung.",
+    "Seine Wattzahl ist ein fester Einzelwert, der nichts mit dem Strom zu tun hat. Die Wattzahl ist aber das Produkt aus Spannung und Stromstärke.",
+    "Er verbraucht mehr Energie pro Stunde statt pro Sekunde. Die Leistung gibt jedoch die Energie pro Sekunde an."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne die Leistung eines Verbrauchers, an dem 3 V anliegen und durch den 0,60 A fließen, und vergleiche sie mit dem Wert bei 1,5 V und 0,10 A.",
+   "zeilen": 4,
+   "loesung": "Mit P = U · I ergibt sich P = 3 V · 0,60 A = 1,80 W. Bei 1,5 V und 0,10 A sind es dagegen nur P = 1,5 V · 0,10 A = 0,15 W. Spannung und Stromstärke sind beim ersten Verbraucher jeweils größer, deshalb ist seine Leistung deutlich höher. Erst U und I zusammen ergeben die Wattzahl."
+  },
+  "theme": "gym_eleistung"
+ },
+ {
+  "id": "ep3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Stromzähler misst die verbrauchte Energie in",
+    "loesung": "Kilowattstunden",
+    "post": " (kWh)."
+   },
+   {
+    "pre": "Für die Kosten multipliziert man die Energie in kWh mit dem Preis von",
+    "loesung": "0,30 €",
+    "post": " je kWh."
+   },
+   {
+    "pre": "Der Kühlschrank mit 150 W verbraucht bei 24 h am Tag",
+    "loesung": "3,6 kWh",
+    "post": " und kostet im Jahr rund 394,20 €."
+   },
+   {
+    "pre": "Der Wasserkocher mit 2000 W kommt bei 1 h am Tag im Jahr auf",
+    "loesung": "219,00 €",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein schwaches Gerät, das ununterbrochen läuft, kann im Jahr teurer sein als ein starkes, das man nur kurz benutzt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Kühlschrank mit 150 W kostet mit rund 394,20 € im Jahr mehr als der Wasserkocher mit 2000 W, der auf 219,00 € kommt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Stromzähler im Haus misst die Leistung der Geräte in Watt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil der Wasserkocher die höchste Wattzahl hat, ist er im Jahr das teuerste Gerät.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "David will nur mit dem Wasserkocher mit 2000 W rechnen, weil er die höchste Wattzahl hat. Warum ist der Kühlschrank mit 150 W im Jahr trotzdem teurer?",
+   "optionen": [
+    "Der Kühlschrank hat in Wahrheit die höhere Leistung als der Wasserkocher. Auf dem Kühlschrank stehen jedoch nur 150 W, auf dem Wasserkocher 2000 W.",
+    "Strom ist nachts teurer, und der Kühlschrank läuft auch nachts. Der Preis bleibt hier aber bei 0,30 € je kWh, Tag und Nacht gleich.",
+    "Der Wasserkocher wird gar nicht über den Zähler abgerechnet. Der Zähler erfasst jedoch die Energie jedes angeschlossenen Geräts.",
+    "Der Kühlschrank läuft rund um die Uhr und setzt über 24 h insgesamt mehr Energie um als der nur kurz laufende Wasserkocher."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe, warum die tägliche Laufzeit für die Jahreskosten oft wichtiger ist als die reine Wattzahl. Nutze dazu den Kühlschrank mit 150 W und den Wasserkocher mit 2000 W.",
+   "zeilen": 5,
+   "loesung": "Die Kosten hängen von der Energie ab, und Energie ist Leistung mal Laufzeit. Der Wasserkocher hat mit 2000 W zwar die viel höhere Leistung, läuft aber nur 1 h am Tag und kommt so auf 2 kWh und 219,00 € im Jahr. Der Kühlschrank hat nur 150 W, läuft aber 24 h und erreicht 3,6 kWh am Tag und rund 394,20 € im Jahr. Die lange Laufzeit macht ihn trotz kleiner Leistung teurer."
+  },
+  "theme": "gym_eleistung"
+ },
+ {
+  "id": "ep4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Wird der Strom zu groß, unterbricht die",
+    "loesung": "Sicherung",
+    "post": " den Stromkreis."
+   },
+   {
+    "pre": "Für die Gefahr entscheidend ist nicht die Spannung, sondern die",
+    "loesung": "Stromstärke",
+    "post": "."
+   },
+   {
+    "pre": "Ein einzelnes Gerät zieht im Modell 6 A, zwei Geräte zusammen",
+    "loesung": "12 A",
+    "post": "."
+   },
+   {
+    "pre": "Beim dritten Gerät springt der Strom auf 18 A und überschreitet die Sicherungsgrenze von",
+    "loesung": "16 A",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Solange die Spannung niedrig bleibt, ist jede Zahl von Geräten ungefährlich, denn erst hohe Spannung löst die Sicherung aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei zwei Geräten fließen im Modell 12 A; das bleibt unter der Grenze von 16 A, und der Strom fließt sicher.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Fünf Geräte ergäben im Modell einen Gesamtstrom von 24 A.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein drittes Gerät bringt den Gesamtstrom auf 18 A, und die Sicherung löst aus.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Zwei Geräte laufen sicher an einer Dose. David steckt ein drittes dazu, und sofort wird es dunkel. Was ist im Stromkreis passiert?",
+   "optionen": [
+    "Die Spannung an der Dose ist durch das dritte Gerät zu hoch geworden. Für das Auslösen ist jedoch die Stromstärke entscheidend, nicht die Spannung.",
+    "Der Gesamtstrom ist auf 18 A gestiegen und hat die Grenze von 16 A überschritten, sodass die Sicherung den Kreis unterbrochen hat.",
+    "Das dritte Gerät war selbst defekt und hat die anderen abgeschaltet. Ausgelöst hat aber der zu große Gesamtstrom von 18 A, nicht ein einzelnes Gerät.",
+    "Die Sicherung hat den Kreis geschlossen und dadurch mehr Strom durchgelassen. Eine Sicherung unterbricht den Kreis jedoch, statt ihn zu schließen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Sicherung beim dritten Gerät auslöst, obwohl zwei Geräte noch sicher liefen. Rechne dabei mit 6 A je Gerät.",
+   "zeilen": 4,
+   "loesung": "Jedes Gerät zieht im Modell 6 A. Zwei Geräte ergeben 2 · 6 A = 12 A und bleiben unter der Grenze von 16 A. Ein drittes Gerät bringt den Gesamtstrom auf 3 · 6 A = 18 A und damit über 16 A. Weil der Strom die Grenze übersteigt, unterbricht die Sicherung den Kreis, bevor die Leitung zu heiß wird."
+  },
+  "theme": "gym_eleistung"
+ },
+ {
+  "id": "ep5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Jeder Stromkreis im Haus hat eine eigene",
+    "loesung": "Sicherung",
+    "post": " passend zur Leitung."
+   },
+   {
+    "pre": "Den Menschen schützt vor allem der",
+    "loesung": "FI-Schutzschalter",
+    "post": ", er löst schon bei 30 mA aus."
+   },
+   {
+    "pre": "Der Lichtstromkreis mit 1,5 mm² ist mit",
+    "loesung": "10 A",
+    "post": " abgesichert."
+   },
+   {
+    "pre": "Der FI-Schutzschalter löst schon bei 30 mA aus, das sind",
+    "loesung": "0,03 A",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Alle Sicherungen im Haus lösen bei derselben Stromstärke aus; sie sind nur an verschiedenen Stellen eingebaut.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Löst eine einzelne Sicherung aus, bleibt sofort das ganze Haus dunkel.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Steckdosen-Stromkreis hat mit 2,5 mm² eine dickere Leitung als der Lichtstromkreis und ist mit 16 A abgesichert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der FI-Schutzschalter reagiert schon bei einem kleinen Fehlerstrom von 30 mA und schützt vor allem den Menschen.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Sina zeigt am Sicherungskasten auf einen Schalter mit der Aufschrift FI und 30 mA, der anders aussieht als die übrigen. Wodurch unterscheidet er sich von den normalen Sicherungen?",
+   "optionen": [
+    "Er sichert wie die anderen den Stromkreis nach der Leitungsdicke ab, nur bei einem höheren Wert. Er löst jedoch schon bei sehr kleinen 30 mA aus, nicht bei vielen Ampere.",
+    "Er ersetzt alle übrigen Sicherungen im Haus, sodass nur noch ein Schalter nötig ist. Jeder Stromkreis hat aber weiterhin seine eigene Sicherung.",
+    "Er löst nicht erst bei vielen Ampere aus, sondern schon bei einem kleinen Fehlerstrom von 30 mA, und schützt so vor allem den Menschen.",
+    "Er lässt einen größeren Strom zu als die anderen, weil er an der dicksten Leitung sitzt. Der FI-Schutzschalter achtet aber gerade auf einen sehr kleinen Fehlerstrom."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Steckdosen-Stromkreis mit 16 A abgesichert ist, der Lichtstromkreis aber nur mit 10 A.",
+   "zeilen": 4,
+   "loesung": "Die Sicherung muss zur Leitung passen und darf sie nicht überhitzen lassen. Der Lichtstromkreis hat mit 1,5 mm² eine dünnere Leitung und wird schon bei 10 A abgeschaltet. Der Steckdosen-Stromkreis hat mit 2,5 mm² eine dickere Leitung, die mehr Strom verträgt, und ist deshalb mit 16 A gesichert. So löst jede Sicherung aus, bevor ihre eigene Leitung zu heiß wird."
+  },
+  "theme": "gym_eleistung"
+ }
+]

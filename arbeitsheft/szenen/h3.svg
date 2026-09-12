@@ -1,0 +1,43 @@
+<defs>
+  <radialGradient id="h3licht" cx="0.48" cy="0.38" r="0.80">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#h3licht)"/>
+  <use href="#t_heft" transform="translate(450,286) scale(1.35)"/>
+
+  <!-- acht von Kinderhand gemalte Mondbilder, jedes im eigenen Kaestchen -->
+  <g stroke="#5E5A4E" stroke-width="2.4" fill="none" opacity="0.55">
+    <path d="M158,150 h584" /><path d="M158,296 h584"/>
+  </g>
+  <g>
+    <!-- Reihe 1 -->
+    <g transform="translate(216,224)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M 32,-27 A 42,42 0 0 1 32,27 A 22,42 0 0 0 32,-27 Z" fill="#F2DC92"/></g>
+    <g transform="translate(362,222)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M 14,-39.6 A 42,42 0 0 1 14,39.6 A 30,42 0 0 0 14,-39.6 Z" fill="#F2DC92"/></g>
+    <g transform="translate(508,226)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M 0,-42 A 42,42 0 0 1 0,42 Z" fill="#F2DC92"/></g>
+    <g transform="translate(654,222)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M -16,-38.8 A 42,42 0 0 1 -16,38.8 A 30,42 0 0 1 -16,-38.8 Z" fill="#F2DC92"/></g>
+    <!-- Reihe 2 -->
+    <g transform="translate(216,370)"><circle r="42" fill="#F2DC92" stroke="#6E6A5C" stroke-width="3"/></g>
+    <g transform="translate(362,368)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M 16,-38.8 A 42,42 0 0 0 16,38.8 A 30,42 0 0 0 16,-38.8 Z" fill="#F2DC92"/></g>
+    <g transform="translate(508,372)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M 0,-42 A 42,42 0 0 0 0,42 Z" fill="#F2DC92"/></g>
+    <g transform="translate(654,368)"><circle r="42" fill="none" stroke="#6E6A5C" stroke-width="3"/>
+      <path d="M -32,-27 A 42,42 0 0 0 -32,27 A 22,42 0 0 1 -32,-27 Z" fill="#F2DC92"/></g>
+  </g>
+  <!-- Datumsnotizen als Wellenlinien, keine lesbare Schrift -->
+  <g stroke="#7A7466" stroke-width="2.6" fill="none" opacity="0.6" stroke-linecap="round">
+    <path d="M186,282 q10,-5 20,0 t20,0 t20,0"/><path d="M332,280 q10,-5 20,0 t20,0 t14,0"/>
+    <path d="M478,284 q10,-5 20,0 t20,0 t20,0"/><path d="M624,280 q10,-5 20,0 t20,0 t16,0"/>
+    <path d="M186,428 q10,-5 20,0 t20,0 t18,0"/><path d="M332,426 q10,-5 20,0 t20,0 t20,0"/>
+    <path d="M478,430 q10,-5 20,0 t20,0 t14,0"/><path d="M624,426 q10,-5 20,0 t20,0 t20,0"/>
+  </g>
+  <use href="#t_bleistift" transform="translate(762,486) rotate(-14) scale(0.94)"/>
+  <use href="#t_buntstift" transform="translate(690,510) rotate(6) scale(0.94)"/>

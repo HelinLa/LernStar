@@ -1,0 +1,53 @@
+{
+ "id": "gw8",
+ "basiskonzept": "Zufall und Determiniertheit",
+ "titel": "Das ewige Vorbeifallen",
+ "problem": "Für den Wettbewerbsbericht braucht Mira einen Satz über die Gravitation. Tobias diktiert: Die Sonne zieht an der Erde, also muss die Erde irgendwann hineinstürzen. Mira hält dagegen – dann gäbe es sie längst nicht mehr. Am Bildschirm starten beide einen Planeten im Abstand der Erde und ändern nur eine einzige Zahl. Welche Bahn entsteht daraus?",
+ "frage": "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
+ "auftrag": "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
+ "predict": [
+  "Je größer der Anschub quer zur Sonne, desto weiter außen läuft die Bahn. Der Planet bleibt bei jedem eingestellten Wert auf einer geschlossenen Bahn, sie wird nur immer größer.",
+  "Nur in einem mittleren Bereich fällt der Planet immerzu an der Sonne vorbei und läuft auf einer geschlossenen Bahn. Ist der Anschub zu klein, trifft er die Sonne; ist er zu groß, kommt er nicht zurück."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Stelle den Regler „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Verfolge die Anzeige „Abstand zur Sonne“, bis dort „Treffer – der Planet stürzt in die Sonne“ steht. Taste dich danach von 12 km/s an in Einerschritten aufwärts und halte fest, ab welchem Wert die Statuszeile nicht mehr „stürzt in die Sonne“ meldet.",
+  "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere zu jeder Einstellung aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand sowie die Dauer eines Umlaufs.",
+  "Vergleiche 42 km/s mit 48 km/s und prüfe, ob die Statuszeile noch einen größten Abstand meldet. Notiere für 42 km/s beide Abstände und die Umlaufzeit und halte die beiden Kennwerte fest, die am Ende jeder Statuszeile stehen."
+ ],
+ "tabCols": [
+  "Bahnform laut Statuszeile",
+  "kleinster / größter Abstand und Umlaufzeit"
+ ],
+ "tabRows": [
+  "18 km/s",
+  "24 km/s",
+  "30 km/s",
+  "36 km/s"
+ ],
+ "fachtext": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung genau quer dazu, ändert die Kraft nur deren Richtung, nicht ihren Betrag – das ist der Kreisfall. Der Planet fällt zur Sonne hin und ist zugleich seitwärts unterwegs, fällt also an ihr vorbei statt auf sie: Dieses ständige Vorbeifallen ist die Umlaufbahn. Auf der Kreisbahn liefert die Gravitationskraft gerade die nötige Zentripetalkraft: G·M·m/r² = m·v²/r. Die Masse m des Planeten kürzt sich heraus, es bleibt v = √(G·M/r); der Kreiswert hängt also nur vom Abstand ab, nicht davon, was dort kreist. Weicht v davon ab, wird die Bahn in beiden Richtungen zur Ellipse – nur liegt der Startpunkt einmal außen, einmal innen. Ist v kleiner, ist der Start der größte Abstand; wird v zu klein, führt die Ellipse so dicht an der Sonne vorbei, dass der Planet sie trifft. Ist v größer, ist der Start der kleinste Abstand. Auf jeder Ellipse hat die Kraft auch einen Anteil längs der Bahn, deshalb ändert sich dort auch der Betrag: nah an der Sonne läuft der Planet schnell, weit draußen langsam. Zum Entkommen braucht er v = √(2·G·M/r), also den √2-fachen Kreiswert. Startort und Startrichtung sind bei jedem Versuch dieselben; allein die Startgeschwindigkeit legt die ganze weitere Bahn fest – dieselbe Zahl liefert immer dieselbe Bahn, ohne jeden Zufall.",
+ "merksatz": [
+  {
+   "pre": "Anziehung und Querbewegung ergeben zusammen das ständige",
+   "loesung": "Vorbeifallen",
+   "post": "– und dieses Vorbeifallen ist die Umlaufbahn."
+  },
+  {
+   "pre": "Auf der Kreisbahn gilt G·M·m/r² =",
+   "loesung": "m·v²/r",
+   "post": ", und daraus folgt v = √(G·M/r)."
+  }
+ ],
+ "beobachtung": "Bei 6 km/s meldet die Statuszeile „Bahnform: stürzt in die Sonne“ und „Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie.“; die Anzeige im Bild läuft von 0,73 AE über 0,23 AE bis „Treffer – der Planet stürzt in die Sonne“. Dasselbe steht bei 8, 10, 12 und noch bei 15 km/s; ab 16 km/s meldet die Zeile „lang gezogene Ellipse“ mit 0,17 AE und 1,00 AE bei 0,45 Jahren – dort liegt der Umschlag. Bei 18 km/s heißt es „lang gezogene Ellipse“, kleinster Abstand 0,22 AE, größter 1,00 AE, ein Umlauf dauert 0,48 Jahre; bei 24 km/s sind es 0,48 AE und 1,00 AE bei 0,64 Jahren. Bei 30 km/s steht „fast ein Kreis“ mit 1,00 AE und 1,03 AE und 1,02 Jahren, bei 36 km/s wieder „lang gezogene Ellipse“ mit 1,00 AE und 2,71 AE und 2,53 Jahren, bei 42 km/s mit 1,00 AE und 171 AE und 800 Jahren. Ab 48 km/s meldet die Zeile „entkommt“, dazu „größter Abstand: keiner – er wird immer weiter“ und „Er kommt nicht zurück.“ Unter jeder Einstellung steht derselbe Satz: „Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er.“",
+ "aufgabe": {
+  "frage": "Berechne aus dem angezeigten Kreiswert 29,8 km/s den √2-fachen Wert und vergleiche ihn mit den 42,1 km/s, ab denen der Planet laut Statuszeile entkommt.",
+  "zeilen": 4,
+  "loesung": "√2 · 29,8 km/s = 1,414 · 29,8 km/s = 42,14 km/s, gerundet 42,1 km/s. Das ist genau der Grenzwert, den die Statuszeile nennt. Der Zusammenhang ist kein Zufall: Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen ist v = √(2·G·M/r) nötig. Beide Ausdrücke unterscheiden sich nur um den Faktor √2, und zwar bei jedem Abstand r."
+ },
+ "alltag": "Auf der Raumstation schweben die Astronautinnen, obwohl die Erde sie dort fast genauso stark anzieht wie dich am Boden. Erkläre mit dem ständigen Vorbeifallen, warum sie trotzdem nicht herunterfallen, und begründe damit, warum eine Raumstation eine bestimmte Bahngeschwindigkeit braucht und nicht einfach langsamer kreisen darf.",
+ "alltagAfb": "II",
+ "alltagKomp": "E10",
+ "ueberleitung": "Je weiter die Bahn hinausreicht, desto länger dauert ein Umlauf. Die Bahngröße ist dabei die halbe Summe aus kleinstem und größtem Abstand: 1,02 AE bei 1,02 Jahren, 1,86 AE bei 2,53 Jahren, 86 AE bei 800 Jahren. Auf der nächsten Seite rechnest du nach, in welchem Verhältnis Umlaufzeit und Bahngröße zueinander stehen.",
+ "name": "Warum fällt die Erde nicht in die Sonne?",
+ "theme": "ef_gravitation"
+}

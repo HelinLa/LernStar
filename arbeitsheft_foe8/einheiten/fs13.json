@@ -1,0 +1,192 @@
+{
+ "seite": {
+  "id": "fs13",
+  "quelle": "st13+st14",
+  "sim": "stromgefahren",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zu viel an einer Steckdose",
+  "name": "Wann schaltet die Sicherung ab?",
+  "fachwoerter_neu": [
+   "Sicherung"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG gibt es nur eine Steckdose.",
+   "Daran hängen schon ein Ladegerät, ein Lötkolben und ein Radio.",
+   "Jannis will noch einen Heizlüfter dazustecken. Nour zögert.",
+   "Im Stromkasten sitzt ein kleiner Schutzschalter. Er heißt Sicherung."
+  ],
+  "frage": "Wann unterbricht die Sicherung den Stromkreis?",
+  "predict": [
+   "Die Ströme der Geräte addieren sich. Über 16 A schaltet die Sicherung ab.",
+   "Jedes Gerät holt sich seinen eigenen Strom. Die Sicherung merkt davon nichts."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Anzeige ab: 1 Gerät zieht 6 A. Die Sicherung erlaubt 16 A.",
+   "Drücke „Gerät anschließen“. Lies den Strom ab und trage Zeile 2 ein.",
+   "Drücke „Gerät anschließen“ noch einmal. Lies die Meldung und trage Zeile 3 ein.",
+   "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Geräte?",
+   "Wie viel Strom zeigt die Anzeige?",
+   "Was macht die Sicherung?"
+  ],
+  "tabRows": [
+   [
+    "1 Gerät",
+    "6 A",
+    "Sie lässt den Strom fließen."
+   ],
+   [
+    "2 Geräte",
+    "",
+    ""
+   ],
+   [
+    "3 Geräte",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Ströme aller Geräte an einer Steckdose",
+    "loesung": "addieren sich",
+    "post": ". Zusammen ergeben sie den Gesamtstrom wie bei der Parallelschaltung."
+   },
+   {
+    "pre": "Wird der Gesamtstrom größer als 16 A, unterbricht die",
+    "loesung": "Sicherung",
+    "post": "den Stromkreis."
+   }
+  ],
+  "wortbank": [
+   "addieren sich",
+   "Sicherung",
+   "18 A",
+   "unterbrochen"
+  ],
+  "beispiel": {
+   "frage": "Vier Geräte hängen an der Steckdose. Wie viel Strom fließt? Was macht die Sicherung?",
+   "antwort": "Ein Gerät zieht 6 A. Vier Geräte ziehen 6 A + 6 A + 6 A + 6 A = 24 A. Das ist mehr als 16 A. Die Anzeige meldet: Die Sicherung hat ausgelöst und den Kreis unterbrochen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Anzeige bei 3 Geräten?",
+    "optionen": [
+     "18 A. Die Sicherung hat ausgelöst und den Kreis unterbrochen.",
+     "18 A. Der Strom fließt weiter, denn jedes Gerät hat seinen eigenen Weg.",
+     "6 A. Jedes Gerät zieht 6 A, mehr wird es nicht."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Drei Geräte ziehen zusammen",
+      "loesung": "18 A",
+      "post": "."
+     },
+     {
+      "pre": "Das ist mehr als 16 A. Darum hat die Sicherung den Kreis",
+      "loesung": "unterbrochen",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum schaltet die Sicherung ab, bevor das Kabel heiß wird?",
+    "satzstarter": "Bei zu vielen Geräten wird der Strom …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Ein Gerät zieht 6 A. Zähle für jedes Gerät 6 A dazu.",
+   "h2": "Beginne so: Bei zu vielen Geräten wird der Strom größer als 16 A. Dann wird das Kabel …",
+   "h3": "Fast fertige Antwort: Ein zu großer Strom macht das Kabel in der Wand heiß. Die Sicherung unterbricht den Stromkreis vorher. Ergänze den letzten Satz: So kann kein ___ entstehen."
+  },
+  "selbstcheck": [
+   "Ich kann die Ströme von mehreren Geräten zusammenzählen.",
+   "Ich kann den Gesamtstrom mit 16 A vergleichen.",
+   "Ich kann erklären, warum die Sicherung den Stromkreis unterbricht."
+  ],
+  "zuhause": "Nicht jedes Gerät zieht gleich viel Strom. Ein Heizlüfter zieht viel Strom, ein Radio wenig. Zähle zu Hause in einem Zimmer die Geräte an einer Steckdose. Schreibe die Zahl auf. Fasse dabei nichts an.",
+  "bildauftrag": "[BILD: drei gleich aufgebaute Bilder nebeneinander, gleich groß und gleich gezeichnet; in jedem Bild eine Steckdose in der Wand, ein Kabel führt nach links zu einem Kasten mit der Sicherung, über allen drei Bildern steht groß „Sicherung: 16 A“; links hängt 1 Gerät an der Steckdose, darunter groß „1 Gerät · 6 A“, die Sicherung ist geschlossen, ein dünner Strompfeil läuft durch das Kabel; in der Mitte 2 Geräte, „2 Geräte · 12 A“, Sicherung geschlossen, deutlich dickerer Strompfeil; rechts 3 Geräte, „3 Geräte · 18 A“, die Sicherung ist sichtbar aufgesprungen, der Strompfeil endet an der Lücke, darunter groß „Sicherung hat ausgelöst“; die Geräte hängen in jedem Bild nebeneinander an derselben Steckdose, jedes mit einem eigenen kurzen Kabel, kein Gerät hinter dem anderen; nur das eine Kabel zur Sicherung führt den ganzen Strom, keine weiteren Leitungen, keine Funken, kein Feuer, keine blanken Kabelenden, niemand fasst etwas an; ruhiger heller Hintergrund, keine Deko, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs13",
+  "lernziel": "Die Schülerinnen und Schüler zählen die Ströme mehrerer Geräte an einer Steckdose zusammen, vergleichen den Gesamtstrom mit der Grenze der Sicherung (16 A) und erklären, dass die Sicherung den Stromkreis unterbricht, bevor die Leitung in der Wand heiß wird. Die Rechnung P = U · I aus st13 entfällt vollständig. Die Leistungs-Simulation liefert nur den kurzen Anwendungsgedanken „nicht jedes Gerät zieht gleich viel Strom“ im Zuhause-Auftrag – ohne eigene Aufgabe und ohne das Wort Leistung auf der Schülerseite.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. KEIN Schülerversuch an der Steckdose – 230 V sind lebensgefährlich. Wenn überhaupt, dann als Demonstration mit ungefährlicher Kleinspannung: Netzteil, Feinsicherung im Halter, zwei bis drei kleine Verbraucher.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in dieser Reihenfolge: „1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.“ · „2 Geräte → 12 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.“ · „3 Geräte → 18 A. Das ist mehr als die Sicherung (16 A) erlaubt! Die Sicherung hat ausgelöst und den Kreis unterbrochen – so wird ein Brand verhindert.“ Daneben ein Tafelbild der Sicherung mit der Aufschrift „16 A“ und die Bildtexte „Strom: 6 A“ und „Strom: 12 A“. Die Klasse füllt daraus die Tabelle. Der Warnhinweis der Simulation gehört an die Tafel dazu: „Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!“ Die dritte Karte ist nachgemessen (simcheck/werte.js); der übliche simfakten-Dump erreicht diesen Zustand nicht.",
+  "merksatz": [
+   "addieren sich",
+   "Sicherung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Geräte",
+    "12 A",
+    "Sie lässt den Strom fließen."
+   ],
+   [
+    "3 Geräte",
+    "18 A",
+    "Sie unterbricht den Stromkreis."
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach zweimaligem Drücken von „Gerät anschließen“ meldet die Statuszeile: „3 Geräte → 18 A. Das ist mehr als die Sicherung (16 A) erlaubt! Die Sicherung hat ausgelöst und den Kreis unterbrochen – so wird ein Brand verhindert.“ Rechenweg der Lerngruppe: 6 A + 6 A + 6 A = 18 A, und 18 A ist mehr als 16 A.",
+   "typische_fehler": [
+    "Die falsche Vermutung von Seite A wird festgehalten: Jedes Gerät habe seinen eigenen Strom, also passiere nichts. Die Summe 6 + 6 + 6 = 18 A widerlegt das.",
+    "6 A wird in jede Zeile geschrieben: Die Geräte werden gezählt, die Ströme aber nicht addiert.",
+    "Nach dem Auslösen wird weiter „Gerät anschließen“ gedrückt, ohne „Sicherung zurücksetzen“ zu benutzen. Die Meldung bleibt dieselbe und wirkt wie ein Fehler des Geräts."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "18 A",
+    "unterbrochen"
+   ],
+   "typische_fehler": [
+    "„16 A“ statt „18 A“ eingesetzt: Die Grenze der Sicherung wird mit dem gemessenen Strom verwechselt.",
+    "„12 A“ aus Zeile 2 der Tabelle abgeschrieben.",
+    "„addieren sich“ landet in der zweiten Lücke, weil es das erste Wort der Wortbank ist."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei zu vielen Geräten wird der Strom größer als 16 A. So ein großer Strom macht das Kabel in der Wand heiß. Die Sicherung unterbricht den Stromkreis vorher. Dann kann kein Brand entstehen. Die Sicherung schützt die Leitung, nicht das einzelne Gerät.",
+   "alternativen": [
+    "Verweis auf die Simulation: Der Antwortknopf „Sie unterbricht den Stromkreis“ bekommt die Rückmeldung „✓ Richtig! Sie unterbricht den Kreis und schützt vor Brand.“",
+    "Verweis auf die eigene Tabelle: 18 A ist mehr als 16 A – deshalb steht in Zeile 3 „Sie unterbricht den Stromkreis.“",
+    "Antwort ohne Fachwörter: Die Sicherung gibt mit Absicht als Erste nach. So bleibt das Kabel in der Wand kühl."
+   ],
+   "typische_fehler": [
+    "Die Sicherung wird als Schutz für das einzelne Gerät gedacht, nicht für die Leitung in der Wand.",
+    "„Damit nichts kaputtgeht“ – ohne die Kette großer Strom → heißes Kabel → Brand.",
+    "Die Frage wird mit dem Merksatz beantwortet (Ströme addieren sich), die Erwärmung des Kabels fehlt.",
+    "Eine stärkere Sicherung (25 A) wird als Lösung vorgeschlagen. Hier gegensteuern: Dann fließt noch mehr Strom durch dasselbe Kabel."
+   ]
+  },
+  "hilfe3_wort": "Brand (auch richtig: Feuer)",
+  "schwache": [
+   "Sechs gleiche Kärtchen mit „6 A“ auslegen. Für jedes angeschlossene Gerät ein Kärtchen dazulegen und laut mitzählen: 6, 12, 18.",
+   "Die Grenze auf einen roten Streifen schreiben („16 A“) und neben die Kärtchenreihe legen. Sobald die Reihe über den Streifen hinausragt, löst die Sicherung aus.",
+   "Vor Aufgabe 2 nur die zwei Zahlen 16 A und 18 A nebeneinanderlegen: Welche ist größer? Erst danach den Lückentext lesen.",
+   "Das Wort Sicherung einmal abschreiben lassen und durchgängig benutzen – nie „Schalter“, „Automat“ oder „Stecker“ dafür sagen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Gerät anschließen“ ein viertes und ein fünftes Mal und schreibe die beiden Ströme auf (24 A und 30 A). Die Meldung der Sicherung bleibt dabei dieselbe. Drücke danach „Sicherung zurücksetzen“ und beantworte die drei Fragen der Simulation.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gefahren des elektrischen Stroms und Schutzmaßnahmen. Kompetenzen UF1, UF4, E4 und B3 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). B3 hängt im ganzen Band allein an dieser Seite; der Erklär-Slot gehört deshalb der Sicherung allein (Seitenplan, gesicherte Einzelträger-Kompetenzen). K1 wird über den Zuhause-Auftrag eingelöst – bewusst ohne den Sicherungskasten, den die Zielgruppe nicht öffnen soll. Die Leistungsrechnung P = U · I aus st13 bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

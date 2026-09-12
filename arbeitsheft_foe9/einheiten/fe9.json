@@ -1,0 +1,193 @@
+{
+ "seite": {
+  "id": "fe9",
+  "quelle": "el9+el10",
+  "sim": "flaschenzug",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Vier Seile für das Klavier",
+  "name": "Was bringen Rollen und Seile?",
+  "fachwoerter_neu": [
+   "feste Rolle",
+   "lose Rolle"
+  ],
+  "alltag": [
+   "Das Klavier muss 2,0 m hoch auf die Bühne.",
+   "Herr Kessler hängt einen Flaschenzug ans Rohr.",
+   "Ein Flaschenzug ist ein Seil über mehreren Rollen.",
+   "Ein Seilstück ist ein Stück Seil, das die Last hält."
+  ],
+  "frage": "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
+  "predict": [
+   "Mehr Seilstücke: Die Kraft wird kleiner, der Weg wird länger.",
+   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „n = 1 · volle Kraft“ und prüfe Zeile 1.",
+   "Drücke „n = 2 · halbe Kraft“ und fülle Zeile 2.",
+   "Drücke „n = 4 · ein Viertel“ und fülle Zeile 3.",
+   "Vergleiche die Zeile „Zugarbeit“ bei den drei Knöpfen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Seilstücke tragen?",
+   "Wie groß ist die Kraft F in N?",
+   "Wie lang ist der Weg deiner Hand in m?"
+  ],
+  "tabRows": [
+   [
+    "1 Seilstück",
+    "600,0 N",
+    "2,0 m"
+   ],
+   [
+    "2 Seilstücke",
+    "",
+    ""
+   ],
+   [
+    "4 Seilstücke",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine",
+    "loesung": "feste Rolle",
+    "post": "spart keine Kraft. Sie dreht nur die Richtung um."
+   },
+   {
+    "pre": "Eine",
+    "loesung": "lose Rolle",
+    "post": "halbiert die Kraft und verdoppelt den Weg."
+   }
+  ],
+  "wortbank": [
+   "feste Rolle",
+   "lose Rolle",
+   "300,0 N",
+   "4,0 m"
+  ],
+  "beispiel": {
+   "frage": "Was rechnet der Bildschirm bei 1 Seilstück?",
+   "antwort": "Er zeigt F = 600 N / 1 = 600,0 N und s = 1 · 2,0 m = 2,0 m. Die Arbeit ist 1200,0 J."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt der Bildschirm bei 4 Seilstücken?",
+    "optionen": [
+     "Die Kraft ist 150,0 N. Die Arbeit sinkt auf 300,0 J.",
+     "Die Kraft bleibt 600,0 N.",
+     "Die Kraft ist 150,0 N. Die Arbeit bleibt 1200,0 J."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2 Seilstücken ist die Kraft",
+      "loesung": "300,0 N",
+      "post": "."
+     },
+     {
+      "pre": "Der Weg deiner Hand ist dann",
+      "loesung": "4,0 m",
+      "post": "lang."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Vier Seilstücke, also ein Viertel Arbeit.“ Erkläre, warum das falsch ist.",
+    "satzstarter": "Die Arbeit bleibt gleich, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Wörter der Wortbank werden gebraucht.",
+   "h2": "Merke: Was du an Kraft sparst, zahlst du am Weg zurück.",
+   "h3": "Fast fertige Antwort: Bei 2 Seilstücken ist die Kraft halb so groß, der Weg doppelt so lang. Deshalb bleibt die Arbeit ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann Kraft und Weg am Bildschirm ablesen.",
+   "Ich kann feste und lose Rolle unterscheiden.",
+   "Ich kann erklären, warum die Arbeit gleich bleibt."
+  ],
+  "zuhause": "Zähle die Seilstücke am Baukran. Ein Foto davon reicht auch. Schreibe die Zahl auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]"
+ },
+ "lehrer": {
+  "id": "fe9",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation flaschenzug ab, wie Zugkraft und Handweg von der Zahl der tragenden Seilstücke abhängen (1 Seilstück: 600,0 N und 2,0 m · 2 Seilstücke: 300,0 N und 4,0 m · 4 Seilstücke: 150,0 N und 8,0 m). Sie benennen den Fall mit einem tragenden Seilstück als feste Rolle und den Fall mit zwei tragenden Seilstücken als lose Rolle und begründen an der dreimal gleichen Zugarbeit von 1200,0 J, dass keine Maschine Arbeit spart. Gerechnet wird nicht, es wird abgelesen und verglichen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: zwei Umlenkrollen, ein Seil und ein Kraftmesser an einem 10-N-Gewicht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen; alle Werte stehen so am Bildschirm. Karte 1 (Knopf „n = 1 · volle Kraft“): „An der unteren Flasche ziehen n = 1 Seilstücke. | F = 600 N / 1 = 600,0 N | Eine feste Rolle spart keine Kraft. Sie dreht nur die Richtung um. | s = 1 · 2,0 m = 2,0 m | Zugarbeit: W = F · s = 600,0 N · 2,0 m = 1200,0 J“. Karte 2 (Knopf „n = 2 · halbe Kraft“): „n = 2 Seilstücke. | F = 600 N / 2 = 300,0 N | Die Last verteilt sich auf 2 Seilstücke. Jedes trägt gleich viel. | s = 2 · 2,0 m = 4,0 m | Zugarbeit: W = F · s = 300,0 N · 4,0 m = 1200,0 J“. Karte 3 (Knopf „n = 4 · ein Viertel“): „n = 4 Seilstücke. | F = 600 N / 4 = 150,0 N | s = 4 · 2,0 m = 8,0 m | Zugarbeit: W = F · s = 150,0 N · 8,0 m = 1200,0 J“. Dazu eine vierte Karte mit der Hubarbeit, die in allen drei Fällen gleich bleibt: „Hubarbeit: W = G · h = 600 N · 2,0 m = 1200,0 J“. Die drei Karten nebeneinander hängen, damit die Reihe 600,0 N – 300,0 N – 150,0 N und die Reihe 2,0 m – 4,0 m – 8,0 m untereinander sichtbar werden. Als Tischversuch zur Gegenprobe: ein Gewicht am Kraftmesser erst direkt heben, dann über eine feste Rolle ziehen (gleiche Anzeige), dann an einer losen Rolle (halbe Anzeige, doppelt so viel Seil durch die Hand).",
+  "merksatz": [
+   "feste Rolle",
+   "lose Rolle"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Seilstücke",
+    "300,0 N",
+    "4,0 m"
+   ],
+   [
+    "4 Seilstücke",
+    "150,0 N",
+    "8,0 m"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Der Knopf „n = 4 · ein Viertel“ zeigt beides gleichzeitig: „F = 600 N / 4 = 150,0 N“ und „Zugarbeit: W = F · s = 150,0 N · 8,0 m = 1200,0 J“. Die Kraft wird ein Viertel, die Arbeit bleibt genau die Zahl, die schon der Knopf „n = 1 · volle Kraft“ anzeigt. In der Tabelle steht die Arbeit nicht – sie wird nur am Bildschirm verglichen.",
+   "typische_fehler": [
+    "Antwort 1: Mit der Kraft soll auch die Arbeit sinken – das ist die Fehlvorstellung aus Vermutung 2 auf Seite A. Gegenprobe: die Zeile „Zugarbeit“ bei allen drei Knöpfen vorlesen lassen.",
+    "Antwort 3: Der Knopfname „ein Viertel“ wird auf den Weg statt auf die Kraft bezogen. Hier hilft der Blick auf die eigene Tabellenspalte: die Kraft fällt, der Weg wächst.",
+    "1200,0 J wird für einen Druckfehler gehalten, weil die Zahl dreimal gleich ist. Die drei Ergebniskarten nebeneinander legen und die Zeile gemeinsam nachlesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "300,0 N",
+    "4,0 m"
+   ],
+   "typische_fehler": [
+    "600 N · 2 = 1200 N statt 600 N : 2 = 300,0 N – bei mehr Seilstücken wird geteilt, nicht malgenommen. Der Bildschirm schreibt den Schritt hin: „F = 600 N / 2 = 300,0 N“.",
+    "Beim Weg wird ebenfalls geteilt (2,0 m : 2 = 1,0 m). Genau umgekehrt: der Weg wird länger, weil beide Seilstücke kürzer werden müssen.",
+    "Die beiden Zahlen werden vertauscht, weil die Einheiten N und m nicht mitgelesen werden. Einheiten in der Wortbank mitsprechen lassen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Arbeit bleibt gleich, weil die Kraft zwar auf ein Viertel sinkt, der Weg deiner Hand aber viermal so lang wird. Der Bildschirm zeigt bei 1, 2 und 4 Seilstücken dieselbe Zugarbeit von 1200,0 J. Was du an Kraft sparst, zahlst du am Weg zurück.",
+   "alternativen": [
+    "Rein am Zahlenpaar: „150,0 N sind ein Viertel von 600,0 N, aber 8,0 m sind viermal 2,0 m.“ – reicht für die volle Wertung.",
+    "Über die eigene Tabelle: „In meiner Tabelle wird die Kraft kleiner und der Weg genauso viel größer.“",
+    "Alltagsbezug: „Am Baukran muss das Seil viel länger durch die Winde laufen, als der Haken steigt.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus deiner Tabelle zeigt das?",
+    "„Die Arbeit wird ein Viertel“ – die Zahl 1200,0 J wird nicht als Gegenbeleg genutzt. Sie steht nicht in der Tabelle (die hat nur Kraft und Weg), sondern nur am Bildschirm in der Zeile „Zugarbeit“; deshalb den vierten Arbeitsschritt noch einmal ausführen lassen.",
+    "Es wird mit W = F · s gerechnet. Fachlich richtig, aber nicht verlangt: 150,0 N · 8,0 m ist für die Zielgruppe zu schwer, der Vergleich der abgelesenen Zahlen genügt."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: gleich groß, 1200,0 J)",
+  "schwache": [
+   "Die Simulation startet NICHT bei 1 Seilstück, sondern bei n = 2 (300,0 N und 4,0 m). Wer nichts drückt, schreibt die falschen Zahlen in Zeile 1. Arbeitsschritt 1 – Knopf „n = 1 · volle Kraft“ – deshalb gemeinsam ausführen und die Beispielzeile daran prüfen.",
+   "Nur die drei Knöpfe benutzen lassen. Die beiden Regler bleiben unberührt: Der Last-Regler liefert bei 350 N, 450 N oder 950 N halbe Newton (87,5 N, 112,5 N, 237,5 N), und der Seilstück-Regler führt auf n = 3, das in der Tabelle nicht vorkommt.",
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen (600,0 N und 300,0 N), Zeile 3 erst danach dazunehmen.",
+   "Die lange Statuszeile abdecken und nur die drei Ablesestellen freilassen: die Zeile mit „F =“, die Zeile „3 · Der Weg“ und die Zeile „Zugarbeit“.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „300,0 N“ und „4,0 m“ zusammen mit der Einheit sprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schiebe den Regler „Tragende Seilstücke“ auf 3 und lies Kraft und Weg ab (200,0 N und 6,0 m). Passt der Wert zwischen deine Zeilen für 2 und 4 Seilstücke?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band."
+ }
+}

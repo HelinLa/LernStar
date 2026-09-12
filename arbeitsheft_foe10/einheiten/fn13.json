@@ -1,0 +1,225 @@
+{
+ "seite": {
+  "id": "fn13",
+  "quelle": "rk15",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Das Datenblatt im Vorbereitungsraum",
+  "name": "Wie hilft Strahlung in der Medizin?",
+  "fachwoerter_neu": [
+   "Diagnose",
+   "Therapie"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. Dort hängt ein Datenblatt.",
+   "Beim ersten Patienten will der Arzt nur sehen, was im Körper ist. Das heißt Diagnose.",
+   "Beim zweiten soll die Strahlung kranke Zellen treffen. Das heißt Therapie."
+  ],
+  "frage": "Warum passt nicht jeder Stoff für jede Aufgabe?",
+  "predict": [
+   "Für ein Bild braucht man andere Strahlung als für eine Therapie.",
+   "Man nimmt immer die schwächste Strahlung. Die schadet niemandem."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die Strahlung ab und trage sie ein.",
+   "Ordne ein: Diagnose oder Therapie? Trage es in die letzte Spalte ein.",
+   "Beurteile: Passt für ein Bild Technetium-99m mit 6 Stunden oder Iod-131 mit 8 Tagen?"
+  ],
+  "daten": {
+   "titel": "Stoffe der Station",
+   "spalten": [
+    "Stoff",
+    "Strahlung und Halbwertszeit",
+    "Wofür?"
+   ],
+   "zeilen": [
+    [
+     "Technetium-99m",
+     "Gamma, 6 Stunden",
+     "Diagnose"
+    ],
+    [
+     "Iod-131",
+     "Beta, 8 Tage",
+     "Therapie"
+    ],
+    [
+     "Radium-223",
+     "Alpha, 11 Tage",
+     "Therapie"
+    ]
+   ],
+   "quelle": "Aus dem Vorbereitungsraum.",
+   "merke": "Vor dem Komma steht die Strahlung, dahinter die Halbwertszeit."
+  },
+  "tabCols": [
+   "Stoff",
+   "Welche Strahlung?",
+   "Diagnose oder Therapie?"
+  ],
+  "tabRows": [
+   [
+    "Technetium-99m",
+    "Gamma",
+    "Diagnose"
+   ],
+   [
+    "Iod-131",
+    "",
+    ""
+   ],
+   [
+    "Radium-223",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Für ein Bild aus dem Körper passt",
+    "loesung": "Gammastrahlung",
+    "post": ". Nur diese Strahlung kommt außen an."
+   },
+   {
+    "pre": "Alpha und Beta bleiben im Körper. Sie passen zur",
+    "loesung": "Therapie",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "8 Tage",
+   "Gammastrahlung",
+   "6 Stunden",
+   "Therapie"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Technetium-99m ab?",
+   "antwort": "Im Datenblatt steht bei Technetium-99m: Gamma, 6 Stunden. Gamma ist kurz für Gammastrahlung, Beta für Betastrahlung, Alpha für Alphastrahlung. In die Tabelle kommt Gamma. Rechts steht Diagnose."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Jannis sagt: Man nimmt immer die schwächste Strahlung. Stimmt das?",
+    "optionen": [
+     "Nein. Für ein Bild muss die Strahlung nach außen kommen.",
+     "Ja. Schwache Strahlung schadet niemandem.",
+     "Ja. Alle drei Stoffe haben Gammastrahlung."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Halbwertszeit von Technetium-99m ist",
+      "loesung": "6 Stunden",
+      "post": ". Der Stoff ist schnell wieder weg."
+     },
+     {
+      "pre": "Iod-131 strahlt länger. Seine Halbwertszeit ist",
+      "loesung": "8 Tage",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Begründe",
+    "frage": "Nour soll ein Bild machen. Warum kann sie dafür kein Radium-223 nehmen?",
+    "satzstarter": "Radium-223 passt nicht für ein Bild, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Im Datenblatt steht rechts: Diagnose oder Therapie. Die Wortbank hat alle Lückenwörter.",
+   "h2": "Beginne so: Radium-223 passt nicht für ein Bild, weil seine Strahlung …",
+   "h3": "Fast fertig: Radium-223 hat Alphastrahlung. Die bleibt im Körper. Außen kommt nichts an, also kein ___."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt Strahlung und Halbwertszeit ablesen.",
+   "Ich kann sagen, welche Strahlung für ein Bild passt.",
+   "Ich kann begründen, welcher Stoff für ein Bild passt."
+  ],
+  "zuhause": "Frage zwei Erwachsene nach Diagnose und Therapie.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Feldern nebeneinander, beide gleich groß, ruhig ausgeleuchtet, viel Weißraum. In beiden Feldern liegt dieselbe schlichte Umrisszeichnung eines Menschen auf einer Liege, gleich groß, gleiche Haltung, an derselben Stelle im Feld — der Unterschied zwischen links und rechts ist allein das, was dazukommt. Über dem linken Feld steht groß und gut lesbar „DIAGNOSE“, über dem rechten groß „THERAPIE“. LINKES FELD: Über dem Bauch der liegenden Person schwebt GENAU EIN flaches, rechteckiges Gerät, waagerecht, mit der großen Aufschrift „Kamera“; es berührt den Körper nicht. Rechts daneben steht GENAU EIN Bildschirm auf einem Fuß, und auf dem Bildschirm ist eine einzelne einfache Organform als geschlossene dunklere Fläche gezeichnet, darunter in großer Schrift „Bild vom Organ“. Der Bildschirm ist die Aussage dieses Feldes: Das Ergebnis entsteht AUSSERHALB des Körpers. RECHTES FELD: Über der Person ist NICHTS — kein Gerät, kein Bildschirm, kein Fenster. Dafür ist im Bauch der Person eine kleine dunkle ovale Fläche eingezeichnet, an genau derselben Stelle, an der links die Organform auf dem Bildschirm zu sehen ist; um diese Fläche liegt ein einfacher dünner Ring, und daneben steht in großer Schrift „kranke Zellen“. Das ist die Aussage dieses Feldes: Die Wirkung soll INNEN bleiben. Alle Formen sind ruhige, klar begrenzte Flächen — Körper, Liege, Gerät, Bildschirm, Organ und der dunkle Fleck werden als geschlossene, gleichmäßig getönte Flächen gezeichnet, NIEMALS als Schraffur, als Streifenmuster oder als Punkteraster: Streifen lesen sich hier sofort als Strahlung und machen aus dem Bild eine falsche Behauptung. Aus dem Körper, aus dem Fleck und aus dem Gerät kommt NICHTS heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine gestrichelten Linien, keine Kegel, keine Sternchen, keine Punktwolken, keine Alpha-, Beta- oder Gammazeichen, kein gelbes Strahlenwarnzeichen. Es wird auch KEINE Linie zwischen Körper und Kamera oder zwischen Kamera und Bildschirm gezogen — welche Strahlung dorthin gelangt, ist die Aufgabe der Seite und darf im Bild nicht beantwortet sein. Es gibt außerdem KEIN zweites, kleineres Bild am Rand: kein Atom, kein Atomkern, keine Zerfallskurve, kein Diagramm, keine Spritze, kein Fläschchen, keine Bleischürze, kein Zählrohr, kein Krankenhaus von außen, keine Landkarte, kein Kalender, keine Uhr und vor allem keine zweite Tabelle oder Liste — die Liste steht als Datenblatt schon auf der Seite. Keine weiteren Personen: kein Arzt, keine Pflegekraft, keine Praktikantin, keine Sprechblasen, keine Gesichtszüge. Keine Zahlen im Bild, keine Stoffnamen im Bild. Nur die vier genannten Beschriftungen: „DIAGNOSE“, „Kamera“, „Bild vom Organ“, „THERAPIE“, „kranke Zellen“. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn13",
+  "lernziel": "Die Schülerinnen und Schüler lesen im gedruckten Datenblatt zu jedem Stoff die Strahlungsart ab — also den Teil VOR dem Komma — und tragen sie in die Arbeitstabelle ein (Iod-131: Beta; Radium-223: Alpha). In der letzten Spalte ordnen sie jede Zeile ein: Diagnose oder Therapie. Damit stehen Strahlungsart und Einsatz nebeneinander, und der Zusammenhang wird sichtbar: Bei der Diagnose steht Gammastrahlung, bei der Therapie Alpha- oder Betastrahlung. Bitte nicht als Muster verkaufen — im gekürzten Datenblatt steht die Diagnose nur EINMAL, Schritt 2 zerfällt also in eine Zeile gegen zwei. Dass Alpha und Beta grundsätzlich nicht nach außen kommen, stützt sich auf fn3 (Papier hält Alphastrahlung auf, Aluminium hält Betastrahlung auf) und fn4 (wie weit die Strahlung in Luft kommt), nicht auf die Zahl der Zeilen. Achtung: Das Wort „Reichweite“ steht auf keiner Schülerseite dieses Bandes, und der Schritt vom Material zum Körpergewebe wird auf keiner Vorgängerseite ausgesprochen — er gehört ausdrücklich in die Ergebniskarten (siehe Ersatzteil). Die zweite Angabe der Zelle, die Halbwertszeit, arbeitet Aufgabe 2 (6 Stunden / 8 Tage); die Arbeitstabelle nimmt sie bewusst nicht mehr auf. Daran beurteilen sie, warum für ein Bild aus dem Körper Technetium-99m passt und Iod-131 nicht: Nur Gammastrahlung kommt außen wieder heraus, und 6 Stunden sind viel kürzer als 8 Tage. Diese Doppelseite ist eine DATENBLATTSEITE ohne Simulation und ohne QR-Code. Es wird bewusst NICHTS gerechnet — der Dreischritt heißt hier ablesen – ordnen/vergleichen – beurteilen. Nur für Sie, nicht auf der Schülerseite: Das „m“ in Technetium-99m heißt metastabil; der Kern gibt allein Gammastrahlung ab und wandelt sich dabei nicht um. Ebenfalls nur für Sie: Iod sammelt sich von selbst in der Schilddrüse, Radium wie Kalzium im Knochen — deshalb wirken diese Stoffe genau dort, wo sie sollen. Und ebenfalls nur für Sie: Iod-131 sendet außer der Betastrahlung auch Gammastrahlung. Das Datenblatt nennt bewusst nur die Strahlungsart, auf die es für die Therapie ankommt; deshalb ist der Satz „außen kommt nichts an“ eine Vereinfachung. Genau wegen der Gammastrahlung bleiben Therapiepatienten einige Tage in der Klinik und werden nachgescannt. Auf der Schülerseite bleibt es bei der Vereinfachung.",
+  "material": "Kein Gerät, keine Simulation, kein QR-Code — die Datenquelle ist das gedruckte Datenblatt auf Seite A. Nützlich sind eine vergrößerte Kopie des Datenblatts für Tafel oder Whiteboard, die drei Ergebniskarten aus diesem Lehrerteil und ein leeres Blatt mit zwei Spalten („Diagnose“ / „Therapie“) für das Sortieren. Kein Präparat, kein Versuch, keine Schutzmaßnahmen nötig.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Datenblatt lesen und Tabelle ausfüllen in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, die Beurteilung in Aufgabe 3 zuerst allein schreiben und danach im Tandem vergleichen",
+  "ersatz_ohne_simulation": "Diese Einheit hat keine Simulation, also auch keinen Ausfall: Das Datenblatt ist gedruckt und immer da. Einen Ersatz braucht hier etwas anderes — die SITUATION. Fast niemand in der Lerngruppe hat je eine nuklearmedizinische Untersuchung gesehen, und ohne dieses Bild bleiben „Diagnose“ und „Therapie“ leere Wörter. Hängen Sie dafür drei Ergebniskarten an die Tafel, in dieser Reihenfolge. Karte 1 „Diagnose“: „Der Arzt will nur sehen, was im Körper los ist. Der Patient bekommt eine Spritze mit Technetium-99m. Die Gammastrahlung kommt aus dem Körper heraus und trifft außen auf die Kamera. Auf dem Bildschirm entsteht ein Bild vom Organ. Danach soll der Stoff schnell wieder weg sein: Halbwertszeit 6 Stunden. Der Patient darf am selben Tag nach Hause.“ Karte 2 „Therapie“: „Die Strahlung soll kranke Zellen treffen. Der Patient bekommt Iod-131. Iod sammelt sich in der Schilddrüse. Die Betastrahlung kommt nicht weit — sie gibt ihre Energie genau dort ab, wo der Stoff sitzt. Halbwertszeit 8 Tage: Der Stoff strahlt noch, wenn ein Bild längst fertig wäre.“ Karte 3 „Auch Therapie“: „Radium-223 sammelt sich im Knochen. Alphastrahlung kommt am wenigsten weit von allen dreien und bleibt genau bei den kranken Zellen. Halbwertszeit 11 Tage.“ Sagen Sie beim Vorlesen der ersten Karte ausdrücklich, dass das Bild AUSSERHALB des Körpers entsteht, und bei den Karten 2 und 3, dass die Wirkung INNEN bleiben soll — das ist der ganze Unterschied der Seite und genau das, was das Seitenbild zeigt. Sprechen Sie dabei den einen Schritt aus, den weder fn3 noch fn4 ausspricht: Was schon ein Blatt Papier oder eine Scheibe Aluminium aufhält, kommt erst recht nicht durch das Gewebe eines Menschen. Deshalb bleiben Alpha und Beta im Körper, Gammastrahlung dagegen kommt heraus. Ohne diesen Satz müssen die Kinder den Übergang vom Material zum Körper selbst herstellen — auf keiner Vorgängerseite steht er. Als Tafelbild daneben zwei Spalten mit den Überschriften „Diagnose“ und „Therapie“; die drei Zeilen des Datenblatts werden gemeinsam einsortiert. Lesen Sie „Technetium-99m“ einmal langsam in Silben vor (Tech-ne-ti-um) und zeigen Sie dabei, dass „99m“ zum Namen gehört und keine Messgröße ist — das ist die häufigste Lesefalle dieser Seite. Wer die Karten nicht hängen kann, liest sie einmal langsam vor und lässt die drei Zeilen im Datenblatt mit dem Finger nachfahren.",
+  "merksatz": [
+   "Gammastrahlung",
+   "Therapie"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Iod-131",
+    "Beta",
+    "Therapie"
+   ],
+   [
+    "Radium-223",
+    "Alpha",
+    "Therapie"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Behauptung wird am Datenblatt geprüft. Für ein Bild muss die Strahlung den Körper verlassen und außen ankommen — das kann nur Gammastrahlung. Ob eine Strahlung „schwach“ oder „stark“ ist, entscheidet hier gar nichts; dieser Band legt für Strahlung überhaupt keine Stärke-Rangfolge fest, und fn4 hält ausdrücklich fest, dass nicht die Weite, sondern die Dichte der Ionenpaare über die Gefahr entscheidet. Richtig ist deshalb die erste Option. Die zweite Option ist die Fehlvorstellung, die auch als Vermutung angeboten wurde: Sie klingt vernünftig, macht aber jede Untersuchung unmöglich, weil außen nichts mehr ankäme. Die dritte Option lässt sich Zeile für Zeile widerlegen: Im Datenblatt steht Gamma nur bei Technetium-99m, bei Iod-131 steht Beta und bei Radium-223 Alpha. Wichtig beim Besprechen: Die Antwort steht nicht als Satz im Datenblatt, sie entsteht erst aus dem Vergleich der Zeilen mit dem, was eine Diagnose leisten soll.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt, weil sie zur eigenen Vermutung passt und weil „schadet niemandem“ freundlich klingt. Gegenfrage: Wenn außen nichts ankommt — woher soll dann das Bild kommen?",
+    "Die dritte Option wird angekreuzt: Die erste Zeile (Gamma) wird als Regel für alle drei Zeilen gelesen. Mit dem Finger die zweite Spalte von oben nach unten abfahren lassen — Gamma, Beta, Alpha.",
+    "Es wird gar nichts angekreuzt, weil „schwächste Strahlung“ unklar bleibt. Auf fn3 und fn4 zurückführen: Alphastrahlung kommt am wenigsten weit, ionisiert aber am dichtesten. „Schwach“ und „ungefährlich“ sind nicht dasselbe.",
+    "Es wird die erste Option angekreuzt, aber mit der Begründung „weil Gamma am stärksten ist“. Das Kreuz ist richtig, der Grund nicht: Es geht darum, dass die Strahlung außen ankommt, nicht darum, welche die stärkste ist. Kurz nachsteuern, ohne die Wertung zu ändern."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "6 Stunden",
+    "8 Tage"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird „8 Tage“ eingesetzt und in die zweite „6 Stunden“ — die beiden Zeilen werden vertauscht. Beide Sätze nennen den Stoff am Anfang; den Namen im Satz und im Datenblatt gleichzeitig zeigen lassen.",
+    "Die Einheit fehlt („6“ oder „8“). Die Wortbank enthält beide Werte mit Einheit; einmal abschreiben lassen. Betonen: Bei Technetium-99m sind es Stunden, bei Iod-131 Tage — genau das ist der Unterschied, um den es geht.",
+    "„11 Tage“ wird eingesetzt, weil es die letzte gelesene Zeile ist. Die Zeile Radium-223 gehört zu keiner der beiden Lücken; sie steht im Datenblatt für den Vergleich.",
+    "Die Zahl wird richtig eingesetzt, aber der zweite Satz wird als Rechenaufgabe gelesen („wie viele Stunden sind 8 Tage?“). Hier wird bewusst NICHT umgerechnet: Stunden sind kürzer als Tage, das genügt. Diese Aussage ausdrücklich freigeben, sonst bleibt der Satz stehen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Radium-223 passt nicht für ein Bild, weil es Alphastrahlung hat. Alphastrahlung bleibt im Körper. Außen kommt nichts an, und ohne das gibt es kein Bild. Im Datenblatt steht bei Radium-223 deshalb Therapie: Dort SOLL die Strahlung drinnen bleiben, genau bei den kranken Zellen. Für ein Bild braucht Nour Gammastrahlung, also Technetium-99m. Hinweis zur Wertung: Diese Aufgabe ist ein neuer Fall, keine Wiederholung von Schritt 3 auf Seite A. Dort ging es um Technetium-99m gegen Iod-131, hier um den dritten Stoff, den die Seite bisher nur in der Tabelle geführt hat.",
+   "alternativen": [
+    "Über die Strahlungsart begründet: „weil Radium-223 Alphastrahlung hat und die im Körper bleibt“ — reicht für die volle Wertung.",
+    "Über das Ergebnis begründet: „weil außen nichts ankommt und dann kein Bild entsteht“ — reicht ebenfalls.",
+    "Über das Datenblatt begründet: „Bei Radium-223 steht Therapie, nicht Diagnose.“ Richtig abgelesen, aber ohne Grund; einmal nachfragen: Und warum steht das da?",
+    "Im Vergleich begründet: „Technetium-99m hat Gammastrahlung, Radium-223 nicht.“ — richtig und weiterführend.",
+    "Über die Zeit begründet: „11 Tage sind zu lang für ein Bild.“ Nicht falsch, trifft aber nicht den Kern. Nachfragen: Käme mit Alphastrahlung nach 6 Stunden ein Bild zustande? Nein — hier entscheidet die Strahlungsart. Als alleinige Begründung deshalb nur halb werten und nachsteuern."
+   ],
+   "typische_fehler": [
+    "Nur „weil es nicht passt“ oder „weil es Therapie ist“ ohne Grund. Nachfragen: Welche Strahlung hat Radium-223? Und kommt die außen an? Das Wort Alphastrahlung muss vorkommen (Hilfe 3 nennt es).",
+    "Radium-223 wird abgelehnt, weil Alphastrahlung „am gefährlichsten“ sei. Das ist ein anderer Gedanke: Für die Therapie ist genau diese Eigenschaft erwünscht. Auf die dritte Spalte des Datenblatts zeigen.",
+    "Die Begründung dreht sich um: „weil Alphastrahlung zu schwach ist“. Stärke entscheidet hier gar nichts — es geht darum, ob außen etwas ankommt. Auf fn4 zurückverweisen.",
+    "Es wird über Iod-131 geschrieben statt über Radium-223 — die Zeile ist verrutscht. Beide Namen im Datenblatt mit dem Finger zeigen lassen; sie unterscheiden sich schon im ersten Wort.",
+    "Die Aufgabe wird als Wissensfrage gelesen und leer gelassen. Satzstarter gemeinsam abschreiben lassen, danach Hilfe 2, erst zuletzt Hilfe 3."
+   ]
+  },
+  "hilfe3_wort": "Bild (auch richtig: kein Bild, kein Foto)",
+  "schwache": [
+   "Vor dem Lesen die drei Spaltenköpfe des Datenblatts gemeinsam laut lesen und mit dem Finger zeigen, wo die zweite Spalte anfängt und wo die dritte. Ohne diesen Schritt wird regelmäßig die dritte Spalte in die Tabelle geschrieben.",
+   "Die zweite Spalte trägt ZWEI Angaben in einer Zelle. Im Druck ist die Zeile Technetium-99m zu breit und bricht um — und zwar NICHT hinter dem Komma, sondern mitten im Wert: gedruckt steht dort „Gamma, 6“ und darunter „Stunden“ (gemessen, siehe Messprotokoll im Kompetenzteil). Weisen Sie ausdrücklich darauf hin, dass die 6 und das Wort Stunden zusammengehören, obwohl sie in zwei Zeilen stehen. Die anderen beiden Zeilen stehen einzeilig. Einmal gemeinsam zeigen: vor dem Komma die Strahlung, dahinter die Halbwertszeit. Genau das sagt auch die Merke-Zeile unter dem Blatt. Für die Arbeitstabelle wird nur der Teil VOR dem Komma gebraucht — der Umbruch stört dort also nicht; er wird erst bei Aufgabe 2 wichtig, und dafür steht die Zeit vollständig in der Wortbank.",
+   "Die Stoffnamen einmal in Silben vorlesen und nachsprechen lassen: Tech-ne-ti-um-99m, I-od-131, Ra-di-um-223. Danach jeden Namen im Datenblatt und in der Tabelle mit dem Finger suchen lassen — die Namen sind für DaZ-Lernende die größte Hürde der Seite, nicht die Physik.",
+   "Nur die Spalte „Welche Strahlung?“ ausfüllen lassen; die letzte Spalte („Diagnose oder Therapie?“) gemeinsam an der Tafel eintragen. Die Beispielzeile Technetium-99m ist schon fertig und zeigt beides: Gamma und Diagnose.",
+   "Für Schritt 2 die zwei Wörter „Diagnose“ und „Therapie“ groß auf zwei Karten schreiben und die drei Zeilen körperlich darunter legen lassen. Erst danach in die letzte Tabellenspalte schreiben lassen. Die Frage dazu: Welche Strahlung steht bei welcher Karte? In der fertigen Tabelle steht die Antwort dann nebeneinander — Gamma neben Diagnose, Beta und Alpha neben Therapie.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen, die zwei Zeitwerte mit Einheit.",
+   "Wer bei Aufgabe 3 nicht anfängt, beantwortet zuerst mündlich zwei Fragen: Welche Strahlung hat Radium-223? Und kommt die außen an? Danach den Satzstarter benutzen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Im Vorbereitungsraum hängt eine längere Liste. Dort steht auch Iod-123: Gamma, 13 Stunden. Diese Zeile fehlt in eurem Datenblatt. Gehört der Stoff zur Diagnose oder zur Therapie? Schreibe einen Satz mit „weil“. Erwartet: Diagnose, weil Gammastrahlung aus dem Körper herauskommt und 13 Stunden kurz genug sind. Achtung beim Besprechen: Iod-123 und Iod-131 gehören zum selben Element und zum selben Organ, machen aber Gegenteiliges — allein die Zahl hinter dem Bindestrich entscheidet. Genau deshalb steht Iod-123 nicht im Datenblatt der Schülerseite, sondern erst hier. (2) Warum darf der Stoff für ein Bild nicht zu schnell zerfallen? Erwartet, mündlich: Sonst ist er schon weg, bevor das Bild gemacht ist. Die Halbwertszeit muss kurz sein, aber nicht zu kurz. Diese zweite Stufe ist eine Denkaufgabe ohne Zahl — im Datenblatt steht dazu nichts.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Nutzung ionisierender Strahlung in der Medizin, Diagnose und Therapie. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: das Ablesen der Strahlungsart aus der Datenblattzelle UF1, das Ablesen der Halbwertszeit in Aufgabe 2 UF1, das Eintragen der abgelesenen Strahlungsart in die Arbeitstabelle K3, das Ordnen jeder Zeile nach Diagnose und Therapie in der letzten Tabellenspalte UF3, die Beurteilung der Stoffwahl in Aufgabe 3 E6 und UF4, die Vermutung zur „schwächsten Strahlung“ UF1. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE und NICHT auf dem Zuhause-Auftrag: Das Regelheft hatte den Alltagsauftrag als K3 ausgezeichnet, dabei ist „jemandem etwas erklären oder erfragen“ Präsentieren, nicht Dokumentieren. Fachwortzählung: neu sind genau ZWEI Wörter, „Diagnose“ und „Therapie“. Beide tragen kein Formelzeichen und keine Einheit, zählen aber nach Zählregel 3, weil sie im Lernziel, in der dritten Datenblattspalte, im Merksatz und in den Aufgaben gebraucht werden. Beide werden im Alltagsteil mit einem eigenen Begriffssatz eingeführt („Das heißt Diagnose.“ / „Das heißt Therapie.“); „Therapie“ steht zusätzlich als zweites Merksatz-Lückenwort und damit in der Wortbank. Nicht neu eingeführt und nur als Rückverweis benutzt: Alphastrahlung, Betastrahlung und Gammastrahlung (fn3, dort als EIN Fachwort in der Dreiergruppe eingeführt), Halbwertszeit (fn6, dort mit Formelzeichen T½ — hier steht das Formelzeichen bewusst nicht mehr, das Wort allein genügt), radioaktive Strahlung (fn2). Damit hängt fn13 an fn3 und fn6; fällt eine der beiden Einheiten, braucht der Alltagsteil hier zwei zusätzliche Begriffssätze und reißt das Limit. Bewusst NICHT auf der Schülerseite, weil es das dritte bis sechste Wort wäre: „Nuklearmedizin“ (steht einmal im Alltag als Ortsangabe von Nours Praktikum, wie schon in fn3 — es steht in keiner Wortbank und in keiner Lücke und wird nirgends abgefragt), „Gammakamera“ (nur das Seitenbild beschriftet ein Gerät mit „Kamera“, der Text nirgends — deshalb steht das Wort auch in keinem Erwartungshorizont; das Einstiegsbild ist derzeit Platzhalter), „Reichweite“ (das Wort steht auf KEINER Schülerseite dieses Bandes — fn3 arbeitet mit Papier, Aluminium und Blei, fn4 mit der Spalte „Wie weit kommt sie in Luft?“ und mit Ionenpaaren; die einzige Fundstelle im ganzen Band ist ein Bildauftrag. Hier heißt es durchgehend „kommt aus dem Körper heraus“ / „bleibt drin“, auch weil die Merksatzlücke sonst ein Produktionswort verlangte), „Nuklid“ (fn6), „Isotop“, „Aktivität“, „Dosis“ (fn12), „metastabil“ und „Schilddrüse“. Nach Zählregel 5 steht in der Wortbank kein Alltagswort ohne Einheit: „Bild“, „Körper“, „Kamera“ und „Zellen“ sind deshalb draußen; die Wortbank trägt genau die vier Lückenwörter. Eine Bezeichnung je Sache: durchgehend „Strahlung“, und für die drei Namen genau zwei Formen. Im Fließtext, im Merksatz und in den Hilfen steht das ganze Wort („Gammastrahlung“, „Alphastrahlung“) wie in fn3, das die Dreiergruppe eingeführt hat; im Datenblatt und in der Arbeitstabelle steht die Kurzform („Gamma“), weil das Datenblatt sie so führt und weil sie von Hand zu schreiben ist. Verbunden werden beide Formen an EINER Stelle: Das gelöste Beispiel setzt alle drei Paare ausdrücklich gleich („Gamma ist kurz für Gammastrahlung, Beta für Betastrahlung, Alpha für Alphastrahlung“). Alle drei — nicht nur zwei: Der Merksatz verlangt mit „Alpha und Beta bleiben im Körper“ und Aufgabe 3 mit Radium-223, dass das Kind auch Alpha zuordnen kann. Frühere Fassung dieses Absatzes berief sich auf die Selbstcheckzeile von fn3; die trägt gar keine Schreibweise („Ich kann die drei Arten von Strahlung nennen.“), der Verweis war falsch und ist gestrichen. Die griechischen Buchstaben α, β und γ stehen bewusst NICHT auf dieser Seite, obwohl die Schrift sie kennt und fn3 sie eingeführt hat: In der Arbeitstabelle müssten sie von Hand geschrieben werden, und das ist eine Schreibhürde ohne fachlichen Gewinn. Datenlage und Fallen: (1) Heft gegen Datenblatt — hier gilt die Heft-gegen-Sim-Regel sinngemäß: Verlangt werden darf nur, was in den drei gedruckten Zeilen wirklich steht. Die Arbeitstabelle des Regelhefts verlangte eine Zeile „Wo die Energie ankommt“; diese Angabe steht in KEINER Spalte des Datenblatts, sondern allein in der Quellzeile darunter. Sie ist ersatzlos entfallen. (2) KEIN Rechenschritt, bindend nach dem Seitenplan vom 05.09.2026. Das Regelheft ließ 8 · 24 = 192 Stunden ausrechnen, um 6 Stunden mit 8 Tagen vergleichen zu können. Zweistellig mal zweistellig ist auf A2–B1 keine Nebenrechnung, sondern die eigentliche Hürde der Seite. Entschieden wird stattdessen über den unmittelbaren Vergleich „6 Stunden gegen 8 Tage“ — Stunden sind kürzer als Tage, mehr braucht die Beurteilung nicht. Auf der ganzen Schülerseite steht deshalb kein einziger Rechenschritt, und der vierte typische Fehler zu Aufgabe 2 hält fest, dass die Umrechnung auch nicht heimlich zurückkommen darf. (3) Die Merke-Zeile unter dem Blatt ist eine reine Lesehilfe: Sie sagt nur, in welcher Reihenfolge die zweite Spalte gelesen wird. Die Fassung des Regelhefts („Zur Diagnose passt Gamma, zur Therapie Alpha oder Beta — und die Halbwertszeit muss kurz genug sein“) war das fertige Ergebnis und beantwortete Schritt 2, Schritt 3 und beide Merksatz-Lücken, bevor das Kind angefangen hatte. (4) Auch die Quellzeile des Regelhefts war ein zweiter Lösungssatz („Gammastrahlung verlässt den Körper und erreicht das Messgerät; Alpha und Beta geben ihre Energie im Gewebe ab“). Sie steht jetzt dort, wo sie hingehört: als Ergebnis im Merksatz auf Seite B (beide Hälften, „kommt außen an“ und „bleiben im Körper“) und als letzte Stufe in Hilfe 3. Unter dem Blatt steht nur noch, woher die Liste stammt. (5) Doppelte Angaben in einer Zelle: Die zweite Spalte trägt Strahlungsart UND Zeit, im Regelheft ebenso die dritte („Diagnose: Bild von Organen“). Die dritte Spalte ist deshalb auf das eine Wort gekürzt, das gebraucht wird — Diagnose oder Therapie; nichts ist hinzugefügt, nur weggelassen. Die zweite Spalte bleibt doppelt, weil sonst die vierte Angabe keine Spalte mehr hätte; die beiden Teile werden deshalb an ZWEI verschiedenen Stellen abgefragt — die Strahlungsart in der Arbeitstabelle, die Halbwertszeit in Aufgabe 2. Gemessen (pruefe_profil.py, BREITE_MESSEN): „Gamma, 6 Stunden“ misst 132 von 126 Einheiten und bricht im Druck um. Der Umbruch fällt NICHT hinter das Komma, sondern zwischen „6“ und „Stunden“ (gedruckt nachgesehen) — er erleichtert das Zerlegen also nicht, er zerschneidet die Zeitangabe. Tragbar ist er nur, weil die Arbeitstabelle allein den Teil vor dem Komma braucht und Aufgabe 2 die Zeit vollständig aus der Wortbank bezieht; schwache[2] weist die Lehrkraft ausdrücklich darauf hin. Kürzere Fassungen wären möglich („Gamma, 6 Std.“ misst 100, „Gamma, 6 h“ 82), sind aber bewusst NICHT gesetzt: Wortbank, Lücke und Merke-Zeile sprechen von „6 Stunden“, und eine Abkürzung nur im Datenblatt bräche die Regel „immer dieselbe Bezeichnung für dieselbe Sache“. Das Profil erlaubt Mehrwortzellen den Umbruch ausdrücklich; gemeldet wird nur ein EINZELNES zu breites Wort. „Beta, 8 Tage“ (84) und „Alpha, 11 Tage“ (100) bleiben einzeilig, „Technetium-99m“ misst 117 von 134 und passt. Wer die Zellen ändert, muss diese Messung wiederholen. (6) Iod-123 ist aus dem Datenblatt heraus. Das Regelheft führte vier Zeilen, darunter „Iod-123 | Gamma, 13 Stunden | Diagnose: Schilddrüse“ direkt über „Iod-131 | Beta, 8 Tage | Therapie: Schilddrüse“ — gleiches Wort, gleiches Organ, die ganze Bedeutung an der Zahl hinter dem Bindestrich. Für DaZ-Lernende ist das die härteste Stelle der Vorlage und sie trägt keinen vierten Gedanken; die drei verbliebenen Zeilen decken Gamma, Beta und Alpha vollständig ab. Iod-123 steht jetzt in der freiwilligen Zusatzaufgabe, wo es etwas trägt: einen Grenzfall, den man begründen muss. Wer die Zeile zurückholt, muss auch Aufgabe 1 anpassen — die dritte Option nennt „alle drei Stoffe“. (7) Der Einstieg des Regelhefts ließ den entscheidenden Schluss offen („ein Patient darf am selben Tag nach Hause, ein anderer bleibt mehrere Tage“) und verlangte damit genau die Verbindung, die erst am Ende der Seite entsteht. Der Alltagsteil sagt jetzt schlicht, was Diagnose und was Therapie ist; der Satz vom Heimgehen steht in Karte 1 des Ersatzteils und in den zulässigen Alternativen zu Aufgabe 3. (8) Der Alltagsauftrag des Regelhefts („Abstand von kleinen Kindern halten“) ist gestrichen: Er verlangt Wissen, das auf keiner Seite dieses Bandes steht — warum Kinder empfindlicher sind. Der Zuhause-Auftrag ist stattdessen reine Wortarbeit an den beiden neuen Fachwörtern und trägt keinen Kompetenzcode. (9) Kein QR-Code, kein Simulations-Ersatzsatz, kein Feld sim: Der Renderer setzt Abschnitt 3 als „AUSWERTEN & BEURTEILEN“ und stellt das Datenblatt rechts neben die drei Schritte. Steht es darüber, bleiben unten null Schreiblinien. (10) Undruckbare Zeichen: Diese Einheit zitiert keine Simulation und damit keinen Knopfnamen; die bekannte Emoji-Falle greift hier nicht. Auf der Schülerseite steht an Sonderzeichen nur „…“, zweimal: im Satzstarter von Aufgabe 3 und in Hilfe 2. Das Zeichen ist in allen drei Schnitten von SourceSans3 vorhanden (geprüft). Das gelbe Strahlenwarnzeichen fehlt der Schrift und ist deshalb auch aus dem Bildauftrag ausgeschlossen. (11) Bewusst offen gelassen: Wie viel Strahlung ein Patient bei so einer Untersuchung abbekommt, steht im Datenblatt nicht und wird nicht erfunden — die Dosis ist Sache von fn12. Ebenso offen bleiben die Frage, wie die Kamera aus der Strahlung ein Bild macht, warum sich Iod gerade in der Schilddrüse sammelt (steht nur in diesem Lehrerteil), und ob es außer diesen Stoffen noch andere gibt. Die Seite sagt nur, was im Blatt steht. (12) Ebenfalls offen und nur mündlich zu beantworten: ob eine kurze Halbwertszeit immer besser ist. Die Antwort — sie darf auch nicht zu kurz sein, sonst ist der Stoff vor dem Bild schon weg — steht in der zweiten Stufe der Zusatzaufgabe und ist nicht Voraussetzung für Aufgabe 3. (13) Die Arbeitstabelle trägt Schritt 1 UND Schritt 2. Ihre letzte Spalte hieß „Welche Halbwertszeit?“ und bediente damit nur das Ablesen; Schritt 2 (ordnen) und Schritt 3 (beurteilen) hatten auf Seite A keine einzige Schreiblinie und blieben rein mündlich. Die drei anderen Datenblattseiten des Bandes legen ihren zweiten oder dritten Schritt auf die dritte Spalte (fv11 „Platz 1, 2, 3 — oder gar nicht?“, fn11 „Ist diese Zeit kurz oder lang?“, fn15 „Wie wichtig ist mir das?“). Hier heißt die Spalte jetzt „Diagnose oder Therapie?“. Damit stehen Strahlungsart und Einsatz in derselben Zeile nebeneinander, und der Zusammenhang der Seite ist am Ende von Abschnitt 4 aufgeschrieben statt nur gesagt: Gamma neben Diagnose, Beta und Alpha neben Therapie. Der Eintrag ist aus dem Datenblatt ablesbar (dritte Spalte „Wofür?“) und verlangt damit nichts, was nicht gedruckt dasteht — die Zeile „Wo die Energie ankommt“ war genau daran gescheitert. Die Halbwertszeit ist nicht verloren, sie wandert in Aufgabe 2, die sie ohnehin schon abfragte. Platz ist dafür da: Seite A endete vor dieser Änderung bei y=1310 von 1664. (14) Aufgabe 3 stellt einen NEUEN Fall. Sie fragte „Warum passt Technetium-99m besser als Iod-131?“ und wiederholte damit Schritt 3 auf der Gegenseite Wort für Wort, nur mit vorangestelltem „Warum“; wer Schritt 3 gemacht hatte, hatte Aufgabe 3 schon beantwortet. Die Vergleichseinheiten setzen dort durchweg einen neuen Fall (fn11 geht von „Welcher Stoff wartet im Abklingraum?“ auf „Reicht ein Warnschild für 240 000 Jahre?“). Gefragt wird jetzt nach Radium-223 — dem dritten Stoff, der im Datenblatt und in der Arbeitstabelle steht, aber in keiner Aufgabe vorkam. Damit ist zugleich Alphastrahlung auf der Schülerseite angekommen; vorher stand das ganze Wort dort kein einziges Mal, obwohl der Merksatz „Alpha und Beta bleiben im Körper“ die Zuordnung verlangt. Der Operator heißt „Begründe“ und nicht mehr „Beurteile“: Die Aufgabe stellt eine Warum-Frage mit weil-Satzstarter, und „Beurteile“ bleibt dem dritten Schritt auf Seite A vorbehalten. (15) Die Hilfen sind wieder gestuft. Hilfe 2 nannte beide Begründungen, die der Erwartungshorizont je einzeln als volle Wertung anerkennt, und war damit stärker als Hilfe 3 — die Stufung lief rückwärts. Hilfe 2 ist jetzt der Satzstarter, den das Profil für diese Stufe vorsieht (so auch fn3 und fn4); der Inhaltssatz steht in Hilfe 3, wo er den letzten Schritt trägt. Das Lückenwort von Hilfe 3 ist deshalb nicht mehr „Gammastrahlung“, sondern „Bild“. (16) Der Selbstcheck nennt keine Lösung mehr. Die zweite Zeile lautete „Ich kann sagen: Für ein Bild passt Gammastrahlung.“ und druckte damit die erste Merksatzlücke gefüllt auf dieselbe Seite, rund zehn Zentimeter unter dem Kasten. Alle Vergleichseinheiten formulieren an dieser Stelle die Fähigkeit, nicht die Antwort; jetzt auch diese hier. Die dritte Zeile ist aus demselben Grund und wegen (14) mitgezogen: Sie nannte mit „warum Technetium-99m für ein Bild besser passt“ das Ergebnis von Schritt 3 und passte nach der Umstellung nicht mehr zu der Aufgabe, unter der sie steht. Sie deckt jetzt beides ab — Schritt 3 auf Seite A und Aufgabe 3 auf Seite B."
+ }
+}

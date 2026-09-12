@@ -1,0 +1,79 @@
+[
+ {
+  "sim": "zerfallsreihe",
+  "ueberschrift": "🧭 Warum zerfallen manche Kerne – und was wird aus ihnen?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "⏭ nächster Zerfall",
+    "ruft": "_zrrSchritt()"
+   },
+   {
+    "aufschrift": "⏮ zurück",
+    "ruft": "_zrrZurueck()"
+   },
+   {
+    "aufschrift": "⏭⏭ bis zum Ende",
+    "ruft": "_zrrEnde()"
+   },
+   {
+    "aufschrift": "↺ von vorn",
+    "ruft": "_zrrReset()"
+   }
+  ],
+  "hinweise": [
+   "Uran-238 kommt nicht in einem Sprung bei Blei an, sondern in 14 Schritten. Verfolge jeden davon: Welche Strahlung fliegt weg, und wohin wandert der Kern in der Karte?",
+   "Stabile Kerne liegen in der Karte auf einem schmalen Band, dem Tal der Stabilität. Bei leichten Kernen liegt es bei etwa gleich vielen Protonen und Neutronen; je schwerer der Kern, desto mehr Neutronen braucht er. Wer zu weit daneben liegt, zerfällt – so lange, bis er im Tal ankommt.",
+   "Modellgrenze: Der Weg ist hier eine feste Kette. In Wirklichkeit gibt es an einigen Stellen Abzweigungen – Bismut-214 zerfällt zu 99,98 % über β, ganz selten aber über α. Und die Zeiten sind Halbwertszeiten, keine Termine: Ein einzelner Kern kann jeden Schritt sofort oder erst nach dem Tausendfachen der Halbwertszeit machen.",
+   "α: A − 4, Z − 2 · β: A bleibt, Z + 1 · Schluss ist bei einem stabilen Kern"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "zrrStatus: Schritt 0 von 14 · jetzt: ²³⁸₉₂U, Uran-238 | 92 Protonen, 146 Neutronen · auf ein Proton kommen 1,59 Neutronen. | Halbwertszeit: 4,5 Milliarden Jahre | | Dieser Kern hat zu viele Kernbausteine. Er wirft ein ganzes Paket ab: zwei Protonen und zwei Neutronen zusammen – einen Heliumkern. Das ist Alphastrahlung. | | ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He | | A: 238 − 4 = 234 · Z: 92 − 2 = 90. Das Element wechselt – aus Uran wird Thorium."
+   },
+   {
+    "einstellung": "⏭ nächster Zerfall",
+    "text": "zrrStatus: Schritt 1 von 14 · jetzt: ²³⁴₉₀Th, Thorium-234 | 90 Protonen, 144 Neutronen · auf ein Proton kommen 1,60 Neutronen. | Halbwertszeit: 24,1 Tage | | Dieser Kern hat zu viele Neutronen. Eines davon wandelt sich um: Aus dem Neutron wird ein Proton, und ein Elektron fliegt heraus. Das ist Betastrahlung. | | ²³⁴₉₀Th → ²³⁴₉₁Pa + ⁰₋₁e | | A: bleibt 234 – es geht ja kein Baustein verloren, einer wird nur umgebaut. Z: 90 + 1 = 91. Auch hier wechselt das Element."
+   },
+   {
+    "einstellung": "⏮ zurück",
+    "text": "zrrStatus: Schritt 0 von 14 · jetzt: ²³⁸₉₂U, Uran-238 | 92 Protonen, 146 Neutronen · auf ein Proton kommen 1,59 Neutronen. | Halbwertszeit: 4,5 Milliarden Jahre | | Dieser Kern hat zu viele Kernbausteine. Er wirft ein ganzes Paket ab: zwei Protonen und zwei Neutronen zusammen – einen Heliumkern. Das ist Alphastrahlung. | | ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He | | A: 238 − 4 = 234 · Z: 92 − 2 = 90. Das Element wechselt – aus Uran wird Thorium."
+   },
+   {
+    "einstellung": "⏭⏭ bis zum Ende",
+    "text": "zrrStatus: Schritt 14 von 14 · jetzt: ²⁰⁶₈₂Pb, Blei-206 | 82 Protonen, 124 Neutronen · auf ein Proton kommen 1,51 Neutronen. | Stabil – dieser Kern hat keine Halbwertszeit. | | Hier bleibt es. Blei-206 ist stabil – das Verhältnis von Neutronen zu Protonen passt jetzt. Die ganze Reihe ist damit zu Ende. | | Von Uran-238 bis hierher waren es 8 Alphazerfälle und 6 Betazerfälle. | Nachrechnen: 238 − 8 · 4 = 206. Und 92 − 8 · 2 + 6 · 1 = 82. Beides stimmt mit Blei-206 überein. | | Ein stabiler Kern. Er hat 82 Protonen – und genau bei 82 liegt eine besonders stabile Anordnung."
+   },
+   {
+    "einstellung": "↺ von vorn",
+    "text": "zrrStatus: Schritt 0 von 14 · jetzt: ²³⁸₉₂U, Uran-238 | 92 Protonen, 146 Neutronen · auf ein Proton kommen 1,59 Neutronen. | Halbwertszeit: 4,5 Milliarden Jahre | | Dieser Kern hat zu viele Kernbausteine. Er wirft ein ganzes Paket ab: zwei Protonen und zwei Neutronen zusammen – einen Heliumkern. Das ist Alphastrahlung. | | ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He | | A: 238 − 4 = 234 · Z: 92 − 2 = 90. Das Element wechselt – aus Uran wird Thorium."
+   }
+  ],
+  "bildtexte": [
+   "124",
+   "128",
+   "132",
+   "136",
+   "140",
+   "144",
+   "Neutronen  N  →",
+   "82",
+   "84",
+   "86",
+   "88",
+   "90",
+   "92",
+   "Protonen  Z  →",
+   "²³⁸₉₂U",
+   "Uran-238 auf dem Weg zu Blei-206",
+   "α:",
+   "schräg nach unten links  (A−4, Z−2)",
+   "β:",
+   "nach oben links  (A bleibt, Z+1)",
+   "stabil:",
+   "Blei-206",
+   "²³⁴₉₀Th",
+   "²⁰⁶₈₂Pb"
+  ]
+ }
+]

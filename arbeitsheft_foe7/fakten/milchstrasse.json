@@ -1,0 +1,270 @@
+[
+ {
+  "sim": "milchstrasse",
+  "ueberschrift": "🌌 Die Milchstraße – wo stehen wir?",
+  "regler": [
+   {
+    "id": "mstNeig",
+    "beschriftung": "quer heraus Ansicht drehen: von oben (0°)",
+    "bereich": {
+     "min": "0",
+     "max": "90",
+     "step": "1",
+     "start": "0"
+    }
+   },
+   {
+    "id": "mstR0",
+    "beschriftung": "Sonne vom Zentrum: 26 000 Lichtjahre",
+    "bereich": {
+     "min": "0",
+     "max": "45000",
+     "step": "1000",
+     "start": "26000"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "zur Mitte",
+    "ruft": "_mstSetRichtung(0)"
+   },
+   {
+    "aufschrift": "nach außen",
+    "ruft": "_mstSetRichtung(1)"
+   },
+   {
+    "aufschrift": "quer heraus",
+    "ruft": "_mstSetRichtung(2)"
+   },
+   {
+    "aufschrift": "Gegenprobe: Sonne in die Mitte",
+    "ruft": "_mstGegenprobe()"
+   },
+   {
+    "aufschrift": "zurück auf 26 000 Lj",
+    "ruft": "_mstEcht()"
+   }
+  ],
+  "hinweise": [
+   "Links die ganze Galaxie: mit dem Regler von oben bis zur Seitenansicht drehen und den Punkt der Sonne suchen. Rechts der Himmel, den man von der Sonne aus in der eingestellten Richtung sieht.",
+   "Die Milchstraße ist eine Balkenspiralgalaxie: rund 100 000 Lichtjahre breit, die Scheibe aber nur etwa 1000 Lichtjahre dick – hundertmal breiter als dick. Unsere Sonne steht 26 000 Lichtjahre vom Zentrum entfernt im Orionarm, also weder in der Mitte noch am Rand; für einen Umlauf braucht sie rund 225 Millionen Jahre. Längs durch die Scheibe stehen sehr viele Sterne hintereinander, quer heraus nur wenige – daher das milchige Band am Himmel."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "mstStatus: längs durch die Scheibe zur Mitte | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 203 | Das sind 45-mal so viele wie quer aus der Scheibe heraus. | Blick durch die dichteste Gegend der Scheibe – das hellste Stück des Bandes. Das Zentrum selbst bleibt hinter Staub verborgen."
+   },
+   {
+    "einstellung": "zur Mitte",
+    "text": "mstStatus: längs durch die Scheibe zur Mitte | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 203 | Das sind 45-mal so viele wie quer aus der Scheibe heraus. | Blick durch die dichteste Gegend der Scheibe – das hellste Stück des Bandes. Das Zentrum selbst bleibt hinter Staub verborgen."
+   },
+   {
+    "einstellung": "nach außen",
+    "text": "mstStatus: längs durch die Scheibe nach außen | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 50 | Das sind 11-mal so viele wie quer aus der Scheibe heraus. | Auch längs durch die Scheibe, aber nach außen wird sie dünner – das Band ist hier schwächer."
+   },
+   {
+    "einstellung": "quer heraus",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Gegenprobe: Sonne in die Mitte",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 0 Lichtjahre vom Zentrum | Sterne im Blickfeld: 81 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Gegenprobe: Von der Mitte aus wären beide Richtungen längs durch die Scheibe gleich dicht – ein Band ohne helle und schwache Seite. Genau das sehen wir am Himmel nicht: Zum Sternbild Schütze hin ist das Band deutlich heller."
+   },
+   {
+    "einstellung": "zurück auf 26 000 Lj",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 0",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 11",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 23",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 34",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 45",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 56",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 68",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 79",
+    "text": "mstNeigLbl: von der Seite (79°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 90",
+    "text": "mstNeigLbl: von der Seite (90°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 5",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 10",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 15",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 20",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 25",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 30",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 35",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 40",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 50",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 55",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 60",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 65",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 70",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 75",
+    "text": "mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 80",
+    "text": "mstNeigLbl: von der Seite (80°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "quer heraus Ansicht drehen: von oben (0°) = 85",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 26 000 Lichtjahre vom Zentrum (echter Wert) | Sterne im Blickfeld: 5 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 0",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 0 Lichtjahre vom Zentrum | Sterne im Blickfeld: 81 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Gegenprobe: Von der Mitte aus wären beide Richtungen längs durch die Scheibe gleich dicht – ein Band ohne helle und schwache Seite. Genau das sehen wir am Himmel nicht: Zum Sternbild Schütze hin ist das Band deutlich heller."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 6000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 6 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 42 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 11000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 11 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 24 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 17000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 17 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 12 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 23000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 23 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 6 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 28000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 28 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 4 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 34000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 34 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 2 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 39000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 39 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 1 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   },
+   {
+    "einstellung": "Sonne vom Zentrum: 26 000 Lichtjahre = 45000",
+    "text": "mstNeigLbl: von der Seite (85°)  ||  mstStatus: quer aus der Scheibe heraus | Sonne 45 000 Lichtjahre vom Zentrum | Sterne im Blickfeld: 1 | Das ist der Vergleichswert für die anderen beiden Zeilen. | Senkrecht heraus ist die Scheibe schon nach wenigen hundert Lichtjahren zu Ende – kaum Sterne, freier Blick ins All."
+   }
+  ],
+  "bildtexte": [
+   "Ansicht: von oben (0°)",
+   "Sonne · 26 000 Lj vom Zentrum",
+   "Blick zur Mitte",
+   "100 000 Lichtjahre breit",
+   "Sterne im Blickfeld: 203",
+   "milchiges Band",
+   "Blick nach außen",
+   "Sterne im Blickfeld: 50",
+   "Blick quer heraus",
+   "Sterne im Blickfeld: 5",
+   "Sonne · 0 Lj vom Zentrum",
+   "Sterne im Blickfeld: 81",
+   "Ansicht: von oben (11°)",
+   "Ansicht: schräg (23°)",
+   "Ansicht: schräg (34°)",
+   "Ansicht: schräg (45°)",
+   "Ansicht: schräg (56°)",
+   "Scheibe nur ~1000 Lichtjahre dick – 100-mal breiter als dick",
+   "Ansicht: schräg (68°)",
+   "Ansicht: von der Seite (79°)",
+   "Ansicht: von der Seite (90°)",
+   "Ansicht: von oben (5°)",
+   "Ansicht: von oben (10°)",
+   "Ansicht: schräg (15°)",
+   "Ansicht: schräg (20°)",
+   "Ansicht: schräg (25°)",
+   "Ansicht: schräg (30°)",
+   "Ansicht: schräg (35°)",
+   "Ansicht: schräg (40°)",
+   "Ansicht: schräg (50°)",
+   "Ansicht: schräg (55°)",
+   "Ansicht: schräg (60°)",
+   "Ansicht: schräg (65°)",
+   "Ansicht: schräg (70°)",
+   "Ansicht: schräg (75°)",
+   "Ansicht: von der Seite (80°)",
+   "Ansicht: von der Seite (85°)",
+   "Sonne · 6 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 42",
+   "Sonne · 11 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 24",
+   "Sonne · 17 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 12",
+   "Sonne · 23 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 6",
+   "Sonne · 28 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 4",
+   "Sonne · 34 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 2",
+   "Sonne · 39 000 Lj vom Zentrum",
+   "Sterne im Blickfeld: 1",
+   "Sonne · 45 000 Lj vom Zentrum"
+  ]
+ }
+]

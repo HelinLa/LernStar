@@ -1,0 +1,225 @@
+{
+ "seite": {
+  "id": "fn11",
+  "quelle": "rk12",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_kern",
+  "titel": "Die Tür im Keller",
+  "name": "Wohin mit dem, was übrig bleibt?",
+  "fachwoerter_neu": [
+   "Abklingraum",
+   "Endlager"
+  ],
+  "alltag": [
+   "Im Keller der Klinik ist eine Tür.",
+   "Dahinter warten Abfälle, bis sie fast nicht mehr strahlen.",
+   "So ein Raum heißt Abklingraum.",
+   "Nour fragt: Und der Abfall aus dem Kernkraftwerk?"
+  ],
+  "frage": "Reicht ein Abklingraum für Abfall aus dem Kernkraftwerk?",
+  "predict": [
+   "Ein Teil strahlt noch nach vielen Tausend Jahren. Für diesen Teil hilft kein Warten.",
+   "Auch dieser Abfall ist nach ein paar Jahren fertig."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die fehlenden Halbwertszeiten ab. Trage sie ein.",
+   "Ordne beide Zeiten ein. Kurz heißt: Ein Mensch kann die Zeit rechts abwarten.",
+   "Beurteile: Welcher Stoff wartet im Abklingraum? Welche beiden nicht?"
+  ],
+  "daten": {
+   "titel": "Halbwertszeiten im Abfall aus dem Kernkraftwerk",
+   "spalten": [
+    "Stoff",
+    "Halbwertszeit",
+    "Fast nichts mehr nach rund"
+   ],
+   "zeilen": [
+    [
+     "Iod-131",
+     "8 Tage",
+     "80 Tagen"
+    ],
+    [
+     "Cäsium-137",
+     "30 Jahre",
+     "300 Jahren"
+    ],
+    [
+     "Plutonium-239",
+     "24 000 Jahre",
+     "240 000 Jahren"
+    ]
+   ],
+   "quelle": "Gerundete Werte. Kein bestimmtes Kernkraftwerk.",
+   "merke": "Halbwertszeit: Nach dieser Zeit ist die Hälfte der Kerne zerfallen. Ganz rechts: die Zeit nach zehn Halbwertszeiten."
+  },
+  "tabCols": [
+   "Stoff",
+   "Wie lange dauert eine Halbwertszeit?",
+   "Ist diese Zeit kurz oder lang?"
+  ],
+  "tabRows": [
+   [
+    "Iod-131",
+    "8 Tage",
+    "kurz"
+   ],
+   [
+    "Cäsium-137",
+    "",
+    ""
+   ],
+   [
+    "Plutonium-239",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Abfall wartet im Abklingraum, wenn die Halbwertszeit",
+    "loesung": "kurz",
+    "post": "ist."
+   },
+   {
+    "pre": "Ist sie lang, muss der Abfall in ein",
+    "loesung": "Endlager",
+    "post": "tief im festen Stein."
+   }
+  ],
+  "wortbank": [
+   "kurz",
+   "Endlager",
+   "8 Tage",
+   "24 000 Jahre"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Iod-131 ab?",
+   "antwort": "Bei Iod-131 steht: 8 Tage, rechts 80 Tagen. Das kann ein Mensch abwarten: kurz."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Jannis sagt: Nach ein paar Jahren strahlt fast nichts mehr. Stimmt das?",
+    "optionen": [
+     "Ja, nach zehn Jahren ist alles vorbei.",
+     "Nein, Plutonium-239 braucht 240 000 Jahre.",
+     "Ja, jeder Stoff hat 8 Tage Halbwertszeit."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Halbwertszeit von Iod-131 ist",
+      "loesung": "8 Tage",
+      "post": ". Dieser Stoff wartet im Abklingraum."
+     },
+     {
+      "pre": "Die Halbwertszeit von Plutonium-239 ist",
+      "loesung": "24 000 Jahre",
+      "post": ". Hier hilft kein Warten."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Beurteile",
+    "frage": "Ein Endlager bekommt ein Warnschild. Reicht das für 240 000 Jahre?",
+    "satzstarter": "Ein Warnschild allein reicht nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die zweite Spalte nennt die Halbwertszeit. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Denke an die Zeit: 240 000 Jahre. So alt ist keine Schrift.",
+   "h3": "Fast fertig: Nach so langer Zeit versteht niemand das Schild. Sicher macht nur das ___ tief im festen Stein."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt eine Halbwertszeit ablesen.",
+   "Ich kann kurze und lange Halbwertszeiten unterscheiden.",
+   "Ich kann begründen, warum ein Warnschild nicht reicht."
+  ],
+  "zuhause": "Frage zwei Erwachsene: Wohin soll dieser Abfall?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einzelbild aus dem Keller einer Klinik, ruhig ausgeleuchtet, viel Weißraum. Im Bild steht GENAU EINE schwere graue Tür, halb geöffnet, sodass man in den kleinen Raum dahinter hineinsieht. An der Tür in Augenhöhe ein gelbes Dreiblatt-Warnzeichen und darüber gut lesbar in großer Schrift das Wort „Abklingraum“. Im Raum dahinter stehen GENAU DREI schlichte weiße Kästen auf drei Regalbrettern übereinander, jeder Kasten flach und geschlossen. An jedem Kasten hängt vorn eine große, gut lesbare Karteikarte mit zwei Zeilen; von oben nach unten: „Iod-131 · hier seit 3. März · frei ab 22. Mai“, „Iod-131 · hier seit 10. März · frei ab 29. Mai“, „Iod-131 · hier seit 17. März · frei ab 5. Juni“. An der Seitenwand des Raums hängt EIN Wandkalender; darauf sind zwei Tage mit Kreisen markiert und mit einer geschwungenen Klammer verbunden, an der Klammer steht groß „80 Tage warten“. Vor der Tür, im Gang, steht auf dem Boden GENAU EIN geschlossenes graues Fass mit der großen Aufschrift „Abfall aus dem Kernkraftwerk“; an seinem Deckel hängt dieselbe Art Karteikarte wie an den Kästen, aber die zweite Zeile ist eine leere Schreiblinie: „frei ab ________“. Diese leere Linie ist der Kern der Komposition — sie stellt die Frage der Seite, sie darf auf keinen Fall ausgefüllt sein. Alles im Bild sind ruhige, klar begrenzte Flächen: Wand, Boden, Tür, Kästen und Fass werden als geschlossene Flächen gezeichnet, NICHT als Schraffur und nicht als Streifenmuster — Streifen lesen sich hier sofort als Strahlung. Aus den Kästen und aus dem Fass kommt NICHTS heraus: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Punktwolken, keine gestrichelten Linien ins Leere, keine Alpha-, Beta- oder Gammazeichen. Es gibt außerdem KEIN zweites, kleineres Bild am Rand: kein Kernkraftwerk, keine Landkarte, kein Bergwerk, kein Stollen, kein Querschnitt durch Gestein, kein Endlager — wohin das Fass gehört, ist die Aufgabe der Seite und steht nicht im Bild. Keine Personen, keine Sprechblasen, keine Uhr, keine Pfeile zwischen Fass und Tür. Keine anderen Zahlen als die genannten Daten und die „80 Tage“. Große Schrift, ruhiger heller Hintergrund, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn11",
+  "lernziel": "Die Schülerinnen und Schüler lesen im gedruckten Datenblatt die Halbwertszeiten von Iod-131 (8 Tage), Cäsium-137 (30 Jahre) und Plutonium-239 (24 000 Jahre) ab; zwei davon tragen sie selbst in die Tabelle ein, die Iod-Zeile ist als Beispiel schon gefüllt. Jede Zeit ordnen sie als kurz oder lang ein. Der Maßstab dafür steht wörtlich gedruckt in Arbeitsschritt 2: „Kurz heißt: Ein Mensch kann die Zeit rechts abwarten.“ — gemeint ist die rechte Spalte des Datenblatts (80 Tage ja, 300 Jahre und 240 000 Jahre nein). Das Wort „Mensch“ trägt die Entscheidung: Ohne es liest ein Kind „man“ als die Menschheit, und 300 Jahre wären abwartbar. Daran beurteilen sie, welcher Abfall im Abklingraum warten kann und welche beiden in ein Endlager müssen. In Aufgabe 3 begründen sie, dass ein Warnschild ein Endlager nicht sichert: Schrift, Sprache und Bauwerke halten nicht so lange, wie der Abfall gefährlich bleibt — Sicherheit gibt der Ort, nicht das Schild. Diese Doppelseite ist eine DATENBLATTSEITE ohne Simulation und ohne QR-Code; sie trägt den Kompetenzcode B3 (Bewerten). Es wird bewusst NICHTS gerechnet: Die Seite ist qualitativ, ein erzwungener Rechenschritt wäre Scheinrechnen. Nur für Sie, nicht auf der Schülerseite: Die Faustregel „nach zehn Halbwertszeiten ist fast nichts mehr übrig“ ist gesetzt, nicht hergeleitet; genau bleibt (½) hoch 10 = 1/1024 der Kerne übrig. Ebenfalls nur für Sie: Die kurzlebigen Stoffe sind Spaltbruchstücke, Plutonium-239 entsteht durch Neutroneneinfang aus Uran-238.",
+  "material": "Kein Gerät, keine Simulation, kein QR-Code — die Datenquelle ist das gedruckte Datenblatt rechts neben den Arbeitsschritten in Abschnitt 3 von Seite A. Nützlich sind eine vergrößerte Kopie des Datenblatts für Tafel oder Whiteboard, die drei Zeitkarten aus diesem Lehrerteil und ein Blatt für die freiwillige Zusatzaufgabe. Kein Präparat, kein Versuch, keine Schutzmaßnahmen nötig.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Datenblatt lesen und Tabelle ausfüllen in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, die Beurteilung in Aufgabe 3 zuerst allein schreiben und danach im Tandem vergleichen",
+  "ersatz_ohne_simulation": "Diese Einheit hat keine Simulation, also auch keinen Ausfall: Das Datenblatt ist gedruckt und immer da. Einen Ersatz braucht hier etwas anderes — die ZEITVORSTELLUNG. 8 Tage, 30 Jahre und 24 000 Jahre stehen als Zahlen nebeneinander, aber der Sprung dazwischen ist an der Zahl nicht zu sehen. Hängen Sie dafür drei Zeitkarten an die Tafel, in dieser Reihenfolge. Karte 1: „Iod-131 — Halbwertszeit 8 Tage. Nach zehn Halbwertszeiten, also nach rund 80 Tagen, ist fast nichts mehr übrig. 80 Tage sind knapp drei Monate — das kann ein Mensch abwarten.“ Karte 2: „Cäsium-137 — Halbwertszeit 30 Jahre. Nach rund 300 Jahren ist fast nichts mehr übrig. 300 Jahre: So alt ist in unserer Stadt kaum ein Haus.“ Karte 3: „Plutonium-239 — Halbwertszeit 24 000 Jahre. Nach rund 240 000 Jahren ist fast nichts mehr übrig. 240 000 Jahre sind älter als jede Schrift der Welt.“ Lesen Sie die Zahl 24 000 laut als „vierundzwanzigtausend“ und 240 000 als „zweihundertvierzigtausend“ vor und zeigen Sie dabei mit dem Finger, dass das Leerzeichen KEIN Komma und kein zweites Wort ist — das ist die häufigste Lesefalle dieser Seite. Als Tafelbild daneben die drei Wörter „Tage — Jahre — viele Tausend Jahre“ untereinander, nicht als Zahlenstrahl: Ein maßstabsgerechter Strahl ist nicht zeichenbar, 8 Tage wären darauf unsichtbar. Wer die Karten nicht hängen kann, liest sie einmal langsam vor und lässt die drei Zeiten in der Tabelle mit dem Finger nachfahren.",
+  "merksatz": [
+   "kurz",
+   "Endlager"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Cäsium-137",
+    "30 Jahre",
+    "lang"
+   ],
+   [
+    "Plutonium-239",
+    "24 000 Jahre",
+    "lang"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Behauptung wird am Datenblatt geprüft, Zeile für Zeile. Geprüft wird die dritte Spalte „Fast nichts mehr nach rund“: Iod-131 passt zu „ein paar Jahren“ noch (80 Tage), Cäsium-137 schon nicht mehr (30 Jahre Halbwertszeit, fast nichts mehr erst nach 300 Jahren), Plutonium-239 überhaupt nicht: 24 000 Jahre Halbwertszeit, fast nichts mehr nach 240 000 Jahren. Ein einziges Gegenbeispiel genügt, um die Behauptung umzuwerfen — richtig ist deshalb die zweite Option. Die erste Option ist die Fehlvorstellung aus der zweiten Vermutung („man muss nur lange genug warten“), die dritte überträgt die kürzeste Zeile des Datenblatts auf alle Stoffe. Wichtig beim Besprechen: Die Antwort steht nicht als Satz im Datenblatt, sie entsteht erst aus dem Vergleich von drei Zeilen.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil sie zur eigenen Vermutung passt und nicht mehr am Datenblatt geprüft wurde. Gegenfrage: Zeig mir im Datenblatt die Zeile, in der zehn Jahre stehen. Es gibt keine.",
+    "Die dritte Option wird angekreuzt: Die erste Zeile (Iod-131) wird als Regel für alle Stoffe gelesen. Mit dem Finger die drei Zeilen nacheinander abfahren lassen — jede Zeile hat ihre eigene Zeit.",
+    "Die 240 000 in der zweiten Option wird als „240“ und „000“ gelesen und für unsinnig gehalten. Zahl gemeinsam laut vorlesen; das Leerzeichen trennt nur die Tausender."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "8 Tage",
+    "24 000 Jahre"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke werden 80 Tage eingesetzt: Die dritte Spalte des Datenblatts wird für die Halbwertszeit gehalten. Die Spaltenköpfe laut lesen lassen — die Halbwertszeit steht in der zweiten Spalte, die dritte nennt die zehnfache Zeit.",
+    "In die zweite Lücke werden 240 000 Jahre eingesetzt, derselbe Fehler eine Zeile tiefer. Beide Lücken fragen nach derselben Spalte; das einmal ausdrücklich sagen.",
+    "Die Einheit fehlt („8“ oder „24 000“). Die Wortbank enthält beide Werte mit Einheit; einmal abschreiben lassen. Betonen: Bei Iod-131 sind es Tage, bei Plutonium-239 Jahre — das ist der ganze Unterschied der Seite.",
+    "„24 000“ wird als „24“ geschrieben, das Leerzeichen wird als Satzende gelesen. Den Wert in der Wortbank zeigen und als eine Zahl vorlesen.",
+    "Ein Kind legt fn6 daneben und findet andere Zahlen. Das Blatt rundet: In der Simulation von fn6 stehen 8,02 Tage, 30,17 Jahre und für Plutonium-239 „24.110 Jahre“. Wer nachfragt, hat recht — sagen Sie das auch so. Für das Ordnen und für die Beurteilung reicht die gerundete Zahl; die Fußzeile des Blattes weist die Rundung aus."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein Warnschild allein reicht nicht, weil niemand weiß, ob man die Schrift in 240 000 Jahren noch lesen kann. Sprachen ändern sich, Schilder rosten und fallen um, und so lange hält kein Bauwerk. Der Abfall ist aber noch gefährlich. Sicher macht deshalb nur der Ort: fester Stein tief unten, der den Abfall auch ohne Aufsicht einschließt.",
+   "alternativen": [
+    "Kurzform über die Zeit: „Weil 240 000 Jahre viel zu lang sind. So lange hält kein Schild.“ — reicht für die volle Wertung.",
+    "Über die Sprache begründet: „Weil in so langer Zeit niemand mehr unsere Sprache versteht.“",
+    "Über den Vergleich begründet: „Unsere Schrift gibt es erst ein paar Tausend Jahre. Der Abfall strahlt viel länger.“",
+    "Über den Ort begründet, ohne das Schild zu erwähnen: „Es hilft nur fester Stein tief unten, weil sich der kaum verändert.“ (Wer „Gestein“ sagt, meint dasselbe und hat recht.)",
+    "Zusatz mit Verantwortung: „Wir entscheiden das für Leute, die es uns nicht mehr sagen können.“ — richtig und weiterführend, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Nur „das reicht nicht“ ohne Begründung. Nachfragen: Woran siehst du das? Die Zahl 240 000 Jahre oder das Wort Schrift muss vorkommen (Hilfe 2 nennt beides).",
+    "Die Lösung wird technisch gesucht: „Man macht das Schild aus Metall“ oder „man stellt einen Wächter hin“. Zurückfragen: Wie lange hält Metall? Wie lange lebt ein Mensch? Danach auf die 240 000 Jahre zeigen.",
+    "Der Abfall soll einfach weggeschossen oder verbrannt werden. Hier gilt die Leitplanke des Kapitels: Im Kern verbrennt nichts, und die Halbwertszeit lässt sich nicht abschalten. Nicht vertiefen, aber klar benennen.",
+    "Es wird über Kernkraft im Ganzen gestritten statt über das Schild. Das ist gutes Nachdenken am falschen Platz — auf die Einheit fn15 vertrösten, wo genau diese Frage die Seite trägt.",
+    "Die Aufgabe wird als Wissensfrage gelesen und leer gelassen. Satzstarter gemeinsam abschreiben lassen, danach Hilfe 2, erst zuletzt Hilfe 3."
+   ]
+  },
+  "hilfe3_wort": "Endlager (steht in der Wortbank und im Merksatz, ist also von der Seite ablesbar; mündlich auch richtig: „der Ort tief im festen Stein“, „der Platz tief unten“, „das Gestein“). Die Seite schreibt durchgehend „fester Stein“ und nicht „Gestein“: Das Wort „Gestein“ kommt im ganzen Band sonst nirgends vor und wäre damit ein unerklärtes Wort in der Erklärung des neuen Fachworts „Endlager“. Wer im Gespräch „Gestein“ sagt, bekommt es bestätigt — schreiben lassen Sie „fester Stein“.",
+  "schwache": [
+   "Vor dem Lesen die drei Spaltenköpfe des Datenblatts gemeinsam laut lesen und mit dem Finger zeigen, wo die zweite Spalte anfängt. Ohne diesen Schritt wird regelmäßig die dritte Spalte abgeschrieben — sie steht direkt daneben und trägt größere Zahlen.",
+   "Die Zahlen 24 000 und 240 000 einmal gemeinsam vorlesen und dabei sagen: Das Leerzeichen gehört zur Zahl, es ist kein Komma und kein neues Wort. Wer sie danach noch trennt, schreibt sie einmal mit einem Bogen darunter ab.",
+   "Nur die zweite Tabellenspalte ausfüllen lassen; die Spalte „kurz oder lang?“ gemeinsam an der Tafel eintragen. Die Beispielzeile Iod-131 ist schon fertig und zeigt beides.",
+   "Für Schritt 2 die gedruckte Grenze laut vorlesen und an der Beispielzeile vorführen: Kann ein Mensch die Zeit ganz rechts abwarten? 80 Tage ja — also kurz. 300 Jahre nein, 240 000 Jahre nein — also beide lang. Ohne diese Grenze bliebe „kurz oder lang“ Geschmackssache; sie steht deshalb nicht mehr nur hier, sondern im Arbeitsschritt selbst.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen, die zwei Zeitwerte mit Einheit.",
+   "Wer bei Aufgabe 3 nicht anfängt, beantwortet zuerst mündlich zwei Fragen: Wie alt ist das älteste Haus, das du kennst? Und wie lange bleibt der Abfall gefährlich? Danach den Satzstarter benutzen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Im Abfall steckt auch Strontium-90. Seine Halbwertszeit beträgt 29 Jahre. Wohin gehört dieser Stoff — Abklingraum oder Endlager? Schreibe einen Satz mit „weil“. Erwartet: Endlager, weil 29 Jahre fast so lang sind wie die 30 Jahre von Cäsium-137 und niemand 290 Jahre warten kann. (2) Schreibe drei Dinge auf, von denen du glaubst, dass es sie in 240 000 Jahren noch gibt. Vergleicht eure Listen. Fast immer bleiben nur Berge, Stein und Meer übrig — genau das ist der Grund für ein Endlager tief im festen Stein.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Entsorgung radioaktiver Abfälle, Abklingraum und Endlager. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Diese Doppelseite ist ein B3-Träger des Bandes — die Beurteilung des Warnschilds in Aufgabe 3 ist die tragende Aufgabe und darf nicht gekürzt werden (B3 hat im Band genau zwei Träger, fn11 und fn15; die Analyse zu rk17 zählte hier zunächst falsch). Dazu: das Ablesen der drei Halbwertszeiten UF1, das Ordnen in kurz und lang UF3 (der Maßstab dafür steht seit dem Gegenlesen gedruckt in Arbeitsschritt 2 — ohne ihn wäre „lang“ für 30 Jahre gegen 24 000 Jahre nicht begründbar und die erwartete Tabellenlösung nicht haltbar), die Beurteilung der Lagerung E6 und B3, die Vermutung zu den langen Zeiten E3 („Hypothesen entwickeln“; UF4 heißt „Wissen vernetzen“ und trägt hier den Zuhause-Auftrag). K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag: Das Gespräch mit zwei Erwachsenen ist ein Bewertungsanker, kein Dokumentieren. Fachwortzählung: neu sind genau ZWEI Wörter, „Abklingraum“ (im Alltagsteil mit Begriffssatz eingeführt: „So ein Raum heißt Abklingraum.“) und „Endlager“ (im Merksatz eingeführt und dort zugleich erklärt: tief im festen Stein; steht in der Wortbank und in Aufgabe 3). Nicht neu eingeführt und nur als Rückverweis benutzt: Halbwertszeit (fn6, dort als Größe mit Formelzeichen T½ eingeführt — deshalb steht hier bewusst kein Formelzeichen mehr, das Wort allein genügt) und radioaktive Strahlung (fn2). „Brennstab“ steht bewusst NICHT mehr auf dieser Seite: Der frühere Verweis „fn8 und fn10“ war falsch — fn8 spricht von Urankern und Bruchstücken und enthält das Wort überhaupt nicht, und in fn9 und fn10 wird es zwar benutzt (fn10 sogar im Merksatz), aber ohne Begriffssatz und ohne Eintrag in fachwoerter_neu. Es ist im Band also nirgends eingeführt. Der Alltagsteil fragt deshalb nach dem Abfall und nicht nach dem Bauteil; gedruckt steht dort wörtlich: „Nour fragt: Und der Abfall aus dem Kernkraftwerk?“ Damit hängt fn11 an keiner fremden Einführung, und es bleibt bei genau zwei neuen Fachwörtern. Ebenfalls nicht auf der Seite: „abgeklungen“. Das Partizip stand in der MC-Aufgabe und war nirgends erklärt — nach Zählregel 3 wäre es das dritte Fachwort gewesen, denn erklärt ist nur das Substantiv „Abklingraum“. Jannis behauptet jetzt „Nach ein paar Jahren strahlt fast nichts mehr“; das Wortmaterial steht im Alltagsteil („bis sie fast nicht mehr strahlen“) und in der dritten Spalte des Blattes. Bewusst NICHT auf der Schülerseite, weil es das dritte bis fünfte Wort wäre: „Tausendstel“ (steht nirgends auf der Schülerseite — auch nicht in der Fußnote unter dem Datenblatt, die nur Rundung und Einschränkung nennt; die genaue Angabe 1/1024 steht allein hier im Lehrerteil. Im Regelheft war „Tausendstel“ ausgerechnet das Merksatz-Lückenwort und damit das schwerste Wort der Seite; die DaZ-Falle Tausend/Tausendstel bleibt so ohne Gewicht. Auf der Seite steht dafür „fast nichts mehr“ — im Spaltenkopf „Fast nichts mehr nach rund“), „Zwischenlager“, „Spaltprodukt“, „Aktivität“, „Abschirmung“ (letzteres gehört zu fn12). Nach Zählregel 5 steht in der Wortbank kein Alltagswort ohne Einheit: „Abfall“, „Stein“ und „Warnschild“ sind deshalb draußen; die Wortbank trägt genau die vier Lückenwörter. Eine Bezeichnung je Sache: durchgehend „Abklingraum“ (das Regelheft schwankte zwischen Abklingraum und Abklingbecken), durchgehend „Abfall“ (nie Atommüll, nie Restmüll) und durchgehend „fester Stein“ statt „Gestein“ (Merksatz und Hilfe 3): „Gestein“ kam im ganzen Band nur auf dieser Seite vor und war nirgends eingeführt — damit hing die Erklärung des neuen Fachworts „Endlager“ an einem unerklärten Wort. „Fester Stein“ besteht aus zwei Wörtern der Zielgruppe und kostet nach Zählregel 5 kein Fachwort. Wo im Band von Brennstäben die Rede ist (fn9, fn10), heißt es „gebrauchte Brennstäbe“ und nie „abgebrannte Brennstäbe“, weil „abgebrannt“ als verbrannt gelesen wird und die Kapitel-Leitplanke verletzt: Im Kern verbrennt nichts. Wird das Wort mündlich gebraucht, erklären Sie es einmal kurz — auf dieser Seite steht es nicht. Datenlage und Fallen: (1) Heft gegen Datenblatt — hier gilt die Heft-gegen-Sim-Regel sinngemäß: Verlangt werden darf nur, was in den drei gedruckten Zeilen wirklich steht. Der Arbeitsschritt 2 des Regelhefts („Vergleiche die kürzeste mit der längsten Halbwertszeit und halte fest, um wie viel sie sich unterscheiden“) tat das nicht — 8 Tage gegen 24 000 Jahre verlangt eine Umrechnung, die im Blatt nicht steht und die auf A2-Niveau nicht leistbar ist. Er entfällt ersatzlos und ist durch die Sortierung kurz/lang ersetzt. Zur selben Regel gehört der Titel des Blattes: Er heißt „Halbwertszeiten im Abfall aus dem Kernkraftwerk“ und nennt den Kernkraftwerksbezug, den Frage, Merksatz und Aufgabe 3 voraussetzen. Ohne diesen Zusatz stand über dem Blatt nur „Halbwertszeiten im Abfall“ — und weil der Alltagsteil unmittelbar davor die Abfälle der KLINIK zeigt und die oberste Zeile ausgerechnet Iod-131 ist (in fn13 das Nuklid der Nuklearmedizin), ließ sich das ganze Blatt als Klinikabfall lesen. Platz ist da: Die gedruckte Kopfzeile „Datenblatt: Halbwertszeiten im Abfall aus dem Kernkraftwerk“ misst gemessen 379 von 1102 Einheiten und bleibt einzeilig. (2) Kein Rechenschritt. Der Dreischritt heißt hier ablesen – ordnen/vergleichen – beurteilen. Die dritte Datenblatt-Spalte druckt die zehnfache Zeit bereits aus; wer sie „berechnet“, schreibt entweder ab oder rechnet zweistellig mal zweistellig. Beides ist Scheinrechnen und steht deshalb nicht auf der Seite. Die Faustregel selbst ist nicht herleitbar (zehn Halbierungen ergeben 1/1024) und muss als gesetzte Regel dastehen, sonst sucht die Lerngruppe eine Rechnung, die es hier nicht gibt. (3) Das Datenblatt des Regelhefts hatte VIER Zeilen; Strontium-90 (29 Jahre) und Cäsium-137 (30 Jahre) sind für diese Lerngruppe nicht unterscheidbar und hätten eine vierte Zeile ohne vierten Gedanken ergeben. Strontium-90 ist deshalb aus dem Blatt heraus und steht in der freiwilligen Zusatzaufgabe — dort trägt es etwas: einen Grenzfall, den man begründen muss. (4) Zahlenbild: „24 000“ und „240 000“ tragen ein Leerzeichen als Tausendertrenner und werden als zwei Zahlen gelesen. Ein Punkt wäre schlimmer (er wird als Komma gelesen, dieselbe Falle wie „24.110“ bei fn6). Querstand zu fn6: Dieselben drei Nuklide stehen dort mit 8,02 Tagen, 30,17 Jahren und „24.110 Jahre“ am Bildschirm. Beide Angaben sind richtig, dieses Blatt rundet — die Antwort auf ein Kind, das beide Seiten nebeneinanderlegt, steht bei Aufgabe 2 unter den typischen Fehlern. Beide Werte sind gemessen so gesetzt, dass sie in ihrer Spalte einzeilig stehen und der Umbruch die Zahl nicht zerreißen kann: „24 000 Jahre“ misst 86 von 126 Einheiten Spaltenbreite, „240 000 Jahren“ 103 von 108. Wer die Spaltentexte ändert, muss diese Messung wiederholen (pruefe_profil.py, BREITE_MESSEN). Die Zeilen unter dem Blatt zählen ins Wortbudget: pruefe_profil.wortgewicht schloss den Schlüssel „quelle“ früher auf jeder Ebene aus und traf damit auch die gedruckte Zeile daten.quelle; seit dem Gegenlesen gilt der Ausschluss nur noch für Schlüssel der obersten Ebene. (5) Spaltenkopf: „Nach zehn Halbwertszeiten“ aus dem Regelheft passt im Fördersatz nicht — das Wort „Halbwertszeiten“ allein ist mit 120 Einheiten breiter als die 108 der dritten Spalte und würde still auf 6,0 pt heruntergezogen. Der Kopf heißt deshalb „Fast nichts mehr nach rund“ und die Zellen stehen im Dativ „80 Tagen“; zusammengelesen ergibt das genau die Aussage der Faustregel. Das „rund“ war zunächst gestrichen — damit behauptete die Schülerseite genauer zu sein als die Quelle und als der eigene Lehrerteil, der an derselben Stelle weiter „rund 80 Tagen“ sagt. (6) Die Merke-Zeile unter dem Blatt ist eine Lesehilfe und nennt nur, was eine Halbwertszeit ist. Die Fassung des Regelhefts („Kurzlebige Stoffe klingen im Abklingbecken ab. Für die langlebigen reicht kein Bauwerk.“) war das fertige Ergebnis und hätte Schritt 3 und Aufgabe 3 die ganze Arbeit abgenommen. Die Merke-Zeile trägt jetzt zwei Lesehilfen: was eine Halbwertszeit ist (mit dem Bezugswort „der Kerne“ — ohne es greift das Bruchzahlwort ins Leere) und wofür die rechte Spalte steht. Dort stand die Faustregel vorher nicht: Sie lag in der Zeile „quelle“, und die ist die kleinere der beiden Zeilen unter dem Blatt. Gemessen im Renderer (build_pilot.datenblatt): „quelle“ steht mit AV(14,5) = 7,0 pt, „merke“ mit AVM(15) = 7,2 pt, beide in normaler Schrift. Die tragende Regel gehört in die größere der beiden Zeilen und steht deshalb jetzt in merke; „quelle“ ist wieder das, was sie in fn13, fv11 und fn15 ist: eine kurze Herkunfts- und Rundungszeile („Gerundete Werte. Kein bestimmtes Kernkraftwerk.“ — Einschränkung wie bei fv11, nicht der Zirkelschluss „aus einem Datenblatt“). Ein früherer Stand dieses Lehrerteils behauptete hier COP(12) = 5,8 pt in Versalien; diesen Zustand gibt es nicht mehr, der Renderer sagt im Code ausdrücklich das Gegenteil. Wer die Stelle wieder anfasst, misst neu, statt diesen Absatz fortzuschreiben. (7) Kein QR-Code, kein Simulations-Ersatzsatz, kein Feld sim: Der Renderer setzt Abschnitt 3 als „AUSWERTEN & BEURTEILEN“ und stellt das Datenblatt rechts neben die drei Schritte. Steht es darüber, bleiben unten null Schreiblinien. (8) Bewusst offen gelassen: Wo in Deutschland ein Endlager entsteht, ist nicht entschieden und steht deshalb auf keiner Seite dieses Bandes. Die Seite sagt nur, was ein Endlager leisten muss (fester Ort, tief im festen Stein), nicht wo es liegt. Ebenso offen bleiben die Kosten, die Zwischenlagerung in Castoren und die Frage, wie tief „tief“ ist — Zahlen dazu stehen im Datenblatt nicht und dürfen nicht erfunden werden. (9) Merksatz, Vermutung und Aufgabe 2 hängen zusammen und wurden zusammen gesetzt. Der Merksatz heißt jetzt „Der Abfall wartet im Abklingraum, wenn die Halbwertszeit [kurz] ist. Ist sie lang, muss der Abfall in ein [Endlager] tief im festen Stein.“ Drei Gründe: Die Lücke steht nicht mehr vor einem Komma — h.gapsatz() hängt nach jeder Lücke ein Leerzeichen an, gedruckt stand deshalb ein Spatium vor dem Komma; das dritte Wort „sehr“ ist weg, weil die Seite nur zwei Stufen kennt (kurz/lang in Spalte 3 der Schreibtabelle und in der Wortbank) und ein Kind seinen eigenen Eintrag „kurz“ sonst nicht unter die Regel bringt; und statt des Pronomens „Er“ steht jetzt zweimal „der Abfall“. Aus demselben Grund heißt es in Aufgabe 2 „. Dieser Stoff wartet im Abklingraum.“ und nicht mehr „. Er wartet im Abklingraum.“ — im Satz standen nur „die Halbwertszeit“ und „Iod-131“, zu denen „er“ nicht passt. Die richtige Vermutung endet aus demselben Grund nicht mehr auf dem pauschalen „Warten hilft nicht.“, sondern auf „Für diesen Teil hilft kein Warten.“: Sonst kreuzt ein Kind einen Satz als richtig an, den es eine Seite später für Iod-131 zurücknehmen muss. (10) Ebenfalls offen und nur mündlich zu beantworten: Warum der Abfall überhaupt so verschiedene Stoffe enthält. Die Antwort (Spaltbruchstücke plus neu entstandene schwere Kerne) gehört zu fn8 und fn10 und ist hier nicht Voraussetzung: Das Datenblatt nennt die drei Stoffe, das genügt für die Beurteilung."
+ }
+}

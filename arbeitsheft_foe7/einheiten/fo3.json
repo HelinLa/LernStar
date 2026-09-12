@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fo3",
+  "quelle": "oi4",
+  "sim": "brechung-eintritt",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der halbrunde Glasklotz",
+  "name": "Warum knickt Licht im Glas?",
+  "fachwoerter_neu": [
+   "Brechung"
+  ],
+  "alltag": [
+   "In der Kiste liegt ein schwerer, halbrunder Glasklotz.",
+   "Nour schiebt ihn in das Licht der Lampe.",
+   "Im Glas läuft der Strahl plötzlich in eine andere Richtung.",
+   "Diesen Knick an der Grenze nennt man Brechung."
+  ],
+  "frage": "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
+  "predict": [
+   "Der Strahl knickt an der Grenze zum Lot hin.",
+   "Der Strahl knickt an der Grenze vom Lot weg."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „↓ genau auf das Lot“ und lies die Statuszeile.",
+   "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.",
+   "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.",
+   "Vergleiche: Ist der Winkel im Glas größer oder kleiner?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Winkel in der Luft",
+   "Wie groß ist der Winkel im Glas?",
+   "Knickt der Strahl?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "nein"
+   ],
+   [
+    "40°",
+    "",
+    ""
+   ],
+   [
+    "75°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von Luft in Glas knickt der Strahl zum",
+    "loesung": "Lot",
+    "post": "hin. Der Winkel im Glas ist kleiner."
+   },
+   {
+    "pre": "Genau auf dem Lot gibt es",
+    "loesung": "keinen Knick",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Lot",
+   "keinen Knick",
+   "Brechung",
+   "kleiner",
+   "Grenze"
+  ],
+  "beispiel": {
+   "frage": "Der Winkel in der Luft ist 40°. Was passiert im Glas?",
+   "antwort": "Im Glas ist der Winkel nur 25°. Der Strahl knickt an der Grenze zum Lot hin. Danach läuft er geradeaus weiter."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo knickt der Lichtstrahl?",
+    "optionen": [
+     "Der Strahl knickt überall im Glas ein bisschen.",
+     "Der Strahl knickt nur einmal: an der Grenze.",
+     "Der Strahl knickt erst hinter dem Glas."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knick des Lichts an der Grenze heißt",
+      "loesung": "Brechung",
+      "post": "."
+     },
+     {
+      "pre": "Im Glas ist der Winkel",
+      "loesung": "kleiner",
+      "post": "als in der Luft."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour stellt den Strahl genau auf das Lot. Warum knickt er jetzt nicht?",
+    "satzstarter": "Auf dem Lot ist der Winkel …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die erste Zeile der Tabelle: Bei 0° steht „kein Knick“.",
+   "h2": "Beginne so: Auf dem Lot ist der Winkel 0°. Die Statuszeile meldet …",
+   "h3": "Fast fertige Antwort: Bei 0° meldet die Simulation: kein Knick. Der Strahl läuft einfach ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wo der Strahl knickt.",
+   "Ich weiß, in welche Richtung er von Luft in Glas knickt.",
+   "Ich kann den Sonderfall auf dem Lot erklären."
+  ],
+  "zuhause": "Stelle einen Löffel in ein Glas Wasser. Sieh von der Seite hinein: Der Löffel wirkt am Wasserrand geknickt.",
+  "bildauftrag": "[BILD: ein Lichtstrahl läuft schräg von links oben durch Luft auf die gerade Fläche eines halbrunden Glasklotzes; am Auftreffpunkt ein deutlicher Knick zum gestrichelten Lot hin, im Glas läuft der Strahl gerade weiter; große Beschriftungen „Luft“, „Glas“, „Lot“ und „hier knickt es“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo3",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass Licht beim Übergang von Luft in Glas nur an der Grenzfläche geknickt wird (Brechung), und zwar zum Lot hin, sodass der Winkel im Glas kleiner ist als in der Luft.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Tafeltabelle. Optional als Schülerversuch: Löffel im Wasserglas (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen vorlesen oder als Tafeltabelle zeigen: auf dem Lot → 0° in der Luft, 0° im Glas, kein Knick · 40° in der Luft → 25° im Glas · 75° in der Luft → 40° im Glas. Dazu der Bildtext der Simulation: geradeaus – knicken – geradeaus.",
+  "merksatz": [
+   "Lot",
+   "keinen Knick"
+  ],
+  "tabelle_erwartet": [
+   [
+    "40°",
+    "25°",
+    "ja"
+   ],
+   [
+    "75°",
+    "40°",
+    "ja"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Bildtext der Simulation: „geradeaus – knicken – geradeaus“. Geknickt wird nur an der Grenze zwischen Luft und Glas.",
+   "typische_fehler": [
+    "Der Strahl soll auch an der runden Fläche knicken – dort trifft er aber senkrecht auf."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Brechung",
+    "kleiner"
+   ],
+   "typische_fehler": [
+    "„Spiegelung“ oder „Reflexion“ statt „Brechung“ – Verwechslung mit der Spiegelseite.",
+    "„größer“ statt „kleiner“ – die Richtung zum Lot hin ist nicht verstanden."
+   ]
+  },
+  "a3": {
+   "erwartung": "Auf dem Lot ist der Winkel 0°. Die Statuszeile meldet: kein Knick. Der Strahl läuft geradeaus durch das Glas weiter.",
+   "alternativen": [
+    "Verweis auf die erste Tabellenzeile: 0° und 0°, kein Knick.",
+    "Formulierung „senkrecht auf die Grenze, darum kein Knick“."
+   ],
+   "typische_fehler": [
+    "„Der Strahl ist zu schwach zum Knicken“ – der Winkel wird nicht als Ursache genannt.",
+    "0° wird als „kein Licht“ gedeutet."
+   ]
+  },
+  "hilfe3_wort": "geradeaus (auch richtig: weiter geradeaus)",
+  "schwache": [
+   "Zuerst nur die Zeilen 0° und 40° eintragen lassen, 75° später.",
+   "Das Lot in der Simulation mit dem Finger nachfahren lassen.",
+   "Den Zuhause-Versuch mit dem Löffel schon im Unterricht zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „ungebrochene Richtung“ und vergleiche den gestrichelten Weg mit dem echten Strahl.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

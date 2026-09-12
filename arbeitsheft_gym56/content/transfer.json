@@ -1,0 +1,94 @@
+[
+ {
+  "kapitel": "gym_waerme",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Im Prospekt eines Sportgeschäfts steht über eine Trinkflasche: „Flasche aus purem Aluminium – Metall hält die Wärme fest, dein Tee bleibt den ganzen Vormittag heiß.“ Prüfe die Werbeaussage mit der Messreihe aus dem Kapitel und schreibe eine begründete Antwort an das Geschäft. Schlage auch vor, wie man deine Antwort mit einem Versuch belegen könnte.",
+    "erwartung": "Die Schülerin erkennt, dass die Werbung Wärmeleitung und Wärmespeicherung verwechselt: Aluminium ist ein Metall, und Metalle leiten Wärme gut – eine blanke Metallwand bremst den Wärmestrom nach außen kaum. Sie stützt sich auf die Messreihe des Kapitels: Nach 10 min hatte das 80 °C heiße Wasser in Alufolie nur noch etwa 39,0 °C, im Styropor dagegen noch etwa 65,4 °C, ohne Dämmung etwa 32,1 °C. Daraus folgert sie, dass der Tee in der reinen Aluminiumflasche eher schnell abkühlt und dass eine gute Flasche eine Schicht braucht, die viel ruhende Luft einschließt, etwa Styropor, Watte oder eine dicke Hülle. Als Beleg schlägt sie einen Vergleichsversuch vor: gleiche Menge gleich heißes Wasser in beide Flaschen füllen und die Temperatur mit Thermometer und Stoppuhr nach festen Zeiten ablesen. Häufige Fehler: Glänzend wird mit gut dämmend gleichgesetzt; „leitet Wärme gut“ wird als Vorteil für das Warmhalten verstanden; die Werbung wird nur als „falsch“ abgetan, ohne Messwerte oder einen Versuch zu nennen; es wird verlangt, dass eine gute Flasche das Abkühlen ganz verhindert, obwohl Dämmung es nur verlangsamen kann."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Lina, Aras und zwei Kinder aus der AG streiten, welcher von drei Winterhandschuhen am besten warm hält: der dünne Lederhandschuh, der dicke Wollhandschuh oder der gefütterte Skihandschuh. Entwickle einen fairen Versuch mit warmem Wasser, Thermometer und Stoppuhr, mit dem die AG das im Physikraum herausfindet. Beschreibe Aufbau, Messschritte und woran ihr den Sieger erkennt.",
+    "erwartung": "Die Schülerin überträgt die Messreihe mit den Dämmhüllen auf die Handschuhe: In jeden Handschuh kommt ein gleiches Gefäß mit gleich viel warmem Wasser gleicher Starttemperatur, ein viertes Gefäß bleibt ohne Handschuh als Vergleich. Die Temperatur wird zu Beginn und dann in festen Abständen abgelesen, etwa alle 2 min über 10 min, und in einer Tabelle notiert. Fair ist der Versuch nur, wenn alles außer dem Handschuh gleich bleibt: gleiche Wassermenge, gleiche Starttemperatur, gleiche Gefäße, gleicher Ort ohne Zugluft, gleiche Messzeiten. Der beste Handschuh ist der, in dem die Temperatur am wenigsten gefallen ist – als Abkühlkurve gezeichnet verläuft seine Kurve am flachsten. Zur Sicherheit wird die Messung wiederholt. Häufige Fehler: verschiedene Wassermengen oder Starttemperaturen; nur eine einzige Messung am Ende statt einer Messreihe; die eigene Hand als Messgerät („fühlt sich wärmer an“); die Erwartung, im besten Handschuh bleibe das Wasser dauerhaft heiß, obwohl Dämmung das Abkühlen nur verlangsamt."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für das Sommerfest soll die Forscher-AG Eis am Stiel vom Supermarkt zur Schule bringen, der Weg dauert eine halbe Stunde. Im Sammlungsschrank stehen eine dünne Metallbox und eine Styroporbox. Lege zuerst zwei Kriterien für eure Entscheidung fest, wähle dann begründet eine Box aus und erkläre dabei, in welche Richtung die Wärme an einem heißen Sommertag fließt.",
+    "erwartung": "Die Schülerin legt nachvollziehbare Kriterien fest, zum Beispiel wie langsam die Wärme in die Box eindringt und wie gut sich die Box verschließen und tragen lässt. Sie erkennt die Umkehrung der Kapitelidee: Wärme fließt immer vom Warmen zum Kalten, am Sommertag also von der warmen Luft außen in das kalte Eis hinein – Dämmung hilft deshalb auch beim Kalthalten. Styropor schließt viel ruhende Luft ein und leitet Wärme sehr schlecht, die dünne Metallbox leitet Wärme gut und lässt sie schnell hinein. Sie entscheidet sich begründet für die Styroporbox und ergänzt sinnvolle Maßnahmen, etwa die Box geschlossen zu halten und im Schatten zu tragen; ganz verhindern lässt sich das Schmelzen nicht, nur verzögern. Häufige Fehler: Es wird behauptet, „die Kälte fließt heraus“, als wäre Kälte ein Stoff; die Metallbox wird gewählt, weil sie sich kühl anfühlt; die Entscheidung fällt ohne vorher genannte Kriterien; der Styroporbox wird zugeschrieben, sie mache das Eis kälter, statt den Wärmestrom nur zu bremsen."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_strom",
+  "aufgaben": [
+   {
+    "komp": "K1",
+    "afb": "III",
+    "prompt": "Für den Quiz-Nachmittag der Klasse bekommen Team Rot und Team Blau je einen Taster. Eine Melde-Lampe soll aufleuchten, sobald irgendein Team drückt. Eine zweite Bereit-Lampe soll erst leuchten, wenn beide Teams ihren Taster gedrückt halten. Entscheide für jede Lampe, ob ihre Taster hintereinander oder in zwei Zweigen liegen müssen, und stelle für beide Lampen in einer Wahrheitstabelle mit 0 und 1 dar, wann sie leuchten.",
+    "erwartung": "Die Schülerin ordnet die Melde-Lampe der ODER-Schaltung zu: Die Taster liegen parallel in zwei Zweigen, der Strom nimmt jeden geschlossenen Zweig, deshalb genügt schon 1 gedrückter Taster von 2 – die Lampe ist in 3 von 4 Zeilen an. Die Bereit-Lampe ordnet sie der UND-Schaltung zu: Beide Taster liegen hintereinander im einzigen Stromweg, ein offener Taster unterbricht den ganzen Weg, es müssen also beide gedrückt sein, 2 von 2 – die Lampe ist nur in 1 von 4 Zeilen an. Sie stellt beide Wahrheitstabellen mit vier Zeilen auf, schreibt 0 für offen und 1 für geschlossen und trägt für jede Zeile richtig ein, ob die Lampe an ist. Häufige Fehler: Die beiden Schaltungen werden vertauscht; die Tabelle bekommt nur zwei Zeilen statt vier; 0 und 1 werden als Helligkeit statt als Schalterstellung gedeutet; bei ODER wird angenommen, die Lampe leuchte auch bei S1 = 0 und S2 = 0."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "An einem kalten Bastelnachmittag laufen im Hobbykeller an einer einzigen Steckdosenleiste ein Heizlüfter und ein Wasserkocher; dann wird noch eine Heizplatte angeschlossen, und plötzlich ist es dunkel – die Sicherung hat ausgelöst. Der kleine Bruder schlägt vor, die Sicherung einfach wieder einzuschalten und weiterzubasteln. Beurteile seinen Vorschlag und begründe, wie sich die Familie richtig verhält.",
+    "erwartung": "Die Schülerin erkennt, dass sich die Ströme aller Geräte in derselben Leitung addieren und mit dem dritten großen Gerät über der Grenze der Sicherung liegen – in der Simulation löst die Sicherung über 16 A aus. Schaltet man sie wieder ein, ohne ein Gerät auszustecken, fließt sofort wieder zu viel Strom, und sie löst erneut aus; die Sicherung ist kein Ärgernis, sondern schützt die Leitung vor Überhitzung und Brand. Als richtiges Verhalten nennt sie: zuerst mindestens ein großes Gerät ausstecken oder auf eine andere Steckdose verteilen, erst dann die Sicherung von einem Erwachsenen einschalten lassen – und mit der Netzspannung von 230 V darf man niemals selbst experimentieren. Häufige Fehler: Die Sicherung wird für kaputt gehalten; es wird angenommen, die Steckdose liefere jedem Gerät beliebig viel Strom; es wird geglaubt, nur das dritte Gerät gehe aus, die anderen liefen weiter; die Sicherung wird zurückgesetzt, ohne vorher ein Gerät zu entfernen."
+   },
+   {
+    "komp": "UF4",
+    "afb": "III",
+    "prompt": "Auf dem Wertstoffhof sehen Lina und Aras einen Kran, an dem eine große runde Scheibe hängt. Drückt der Kranführer einen Knopf, bleiben Dosen und Schrottteile aus Stahl daran kleben; über dem Container fallen alle auf einmal wieder ab. Die Aludosen im Haufen bleiben aber von Anfang an liegen. Erkläre mit deinem Wissen über die Spule und über magnetische Stoffe, wie der Kran funktioniert und warum er die Aludosen nicht mitnimmt.",
+    "erwartung": "Die Schülerin erkennt in der Scheibe eine große Spule, also einen Elektromagneten: Fließt Strom hindurch, zeigt die Spule die magnetische Wirkung – genau wie die Spule aus der Gerätekiste, die eine Kompassnadel ablenkt. Damit erklärt sie den Knopf: Strom an bedeutet Magnet an, die Stahlteile bleiben kleben; über dem Container wird der Strom abgeschaltet, die magnetische Wirkung verschwindet, und alles fällt auf einmal ab – ein Dauermagnet könnte das nicht. Sie ergänzt, dass die Wirkung mit größerer Stromstärke stärker wird. Für die Aludosen nutzt sie die Regel der Simulation: Ein Magnet zieht nur Stoffe an, die Eisen, Nickel oder Kobalt enthalten. Stahldosen bestehen zum größten Teil aus Eisen und werden angezogen, Aluminium enthält nichts davon und bleibt liegen, obwohl es ein Metall ist. Häufige Fehler: Die Scheibe wird für einen Dauermagneten gehalten, dann ließe sich die Last aber nicht abwerfen; es wird behauptet, Alu sei kein Metall; der Satz „Alle Metalle sind magnetisch“ wird als Begründung benutzt; das Abschalten wird mit dem Umdrehen des Magneten verwechselt."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_schall",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Beim Sommergewitter zählt Linas kleiner Bruder mit: Erst zuckt der Blitz, und erst vier Sekunden später grollt der Donner. Er glaubt, das Gewitter donnert einfach später los. Erkläre ihm in einem kurzen Text, warum der Donner erst nach dem Blitz bei euch ankommt, und gib ihm eine Zählregel, mit der er ausrechnen kann, wie weit das Gewitter entfernt ist.",
+    "erwartung": "Die Schülerin erklärt, dass Blitz und Donner am selben Ort und zur selben Zeit entstehen, der Schall für seinen Weg aber Zeit braucht: Er legt in jeder Sekunde nur 343 Meter zurück, während das Licht des Blitzes viel schneller ist und praktisch sofort ankommt. Aus den vier Sekunden rechnet sie 4 mal 343 m, also rund 1372 m oder knapp 1,4 km. Als Zählregel formuliert sie kindgerecht: die Sekunden zwischen Blitz und Donner zählen und mal 343 nehmen – oder gerundet: Etwa alle drei Sekunden entspricht der Abstand einem Kilometer. Sie schreibt den Text so, dass ein jüngeres Kind ihn versteht, ohne dass die Physik falsch wird. Häufige Fehler: Die Sekunden werden direkt als Kilometer genommen; der Donner wird für ein eigenes, späteres Ereignis gehalten statt für den verspätet ankommenden Schall; es wird angenommen, laute oder tiefe Töne seien langsamer unterwegs; die Zählregel wird angegeben, ohne zu erklären, dass der Schall Zeit braucht."
+   },
+   {
+    "komp": "E6",
+    "afb": "III",
+    "prompt": "Lina und Aras bauen für das Schulfest ein Schnurtelefon: zwei Becher, verbunden durch eine lange, straff gespannte Schnur. Flüstert Lina in ihren Becher, hört Aras sie am anderen Ende deutlich. Hängt die Schnur locker durch oder fasst jemand sie mit der Hand an, ist kaum noch etwas zu verstehen. Erkläre beide Beobachtungen mit dem, was du über Schallquellen, Teilchen und das Weitergeben von Schwingungen gelernt hast.",
+    "erwartung": "Die Schülerin überträgt das Teilchenmodell auf die Schnur: Linas Stimme bringt den Becherboden zum Schwingen, er wird zur Schallquelle für die Schnur. Die Teilchen der straff gespannten Schnur geben die Schwingung von einer zur nächsten bis zum zweiten Becher weiter – ein fester Stoff leitet den Schall gut, wie der Holzbalken in der Simulation und die Tischplatte, durch die Aras das Kratzen so deutlich hörte. Der zweite Becherboden schwingt mit, gibt die Schwingung an die Luft im Becher weiter, und Aras' Ohr ist der Empfänger. Hängt die Schnur locker durch, kann sie nicht richtig mitschwingen und die Schwingung nicht bis zum anderen Ende weitergeben. Die Hand stoppt die Schwingung der Schnur wie der Finger auf dem Gummiband: Ohne Schwingung kein Ton. Häufige Fehler: Es wird angenommen, die Stimme fliege als Luft durch die Schnur; das Anfassen wird nur als Störung bezeichnet, ohne das Anhalten der Schwingung zu nennen; Sender und Empfänger werden verwechselt; die straffe Spannung wird nicht als Bedingung für das Weitergeben der Schwingung erkannt."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "In der Mittagspause ist die Schulmensa mit ihren kahlen, harten Wänden so laut, dass man sein eigenes Wort kaum versteht. Die Schülervertretung darf eine Maßnahme gegen den Lärm vorschlagen. Zur Wahl stehen: weiche Stoffbahnen und Wandplatten aufhängen, Gehörschutz für alle austeilen oder die Klassen zeitversetzt essen lassen. Lege zuerst zwei Kriterien fest, nach denen ihr entscheidet, und begründe dann deinen Vorschlag.",
+    "erwartung": "Die Schülerin legt zuerst nachvollziehbare Kriterien fest, zum Beispiel: Wie stark senkt die Maßnahme die dB-Zahl am Ohr, und lässt sie sich beim Essen und Reden gut aushalten. Sie erklärt mit dem Kapitelwissen, warum die Mensa so laut ist: Die harten Wände werfen den Schall zurück wie die Wände der Turnhalle, der Hall kommt zum Stimmengewirr noch dazu. Die weichen Stoffbahnen wirken wie der Schallschutz (Absorption) in der Simulation und wie die geschlossene Tür beim Bohrer: Sie schlucken einen Teil des Schalls, und alle können weiter miteinander sprechen. Der Gehörschutz nimmt am Ohr zwar am meisten weg – in der Simulation von 94 dB auf 74 dB –, aber beim Essen will man sich unterhalten, dafür passt er schlecht. Zeitversetztes Essen bedeutet weniger Schallquellen im Raum, ändert aber nichts an den kahlen Wänden. Sie entscheidet sich begründet anhand ihrer Kriterien, etwa für die Stoffbahnen oder eine Kombination aus Stoffbahnen und zeitversetztem Essen. Häufige Fehler: Die Entscheidung fällt ohne vorher genannte Kriterien; Hall und Lautstärke werden nicht auseinandergehalten; der Gehörschutz wird nur wegen der größten dB-Senkung gewählt, ohne an das Sprechen beim Essen zu denken; es wird behauptet, weiche Stoffe machten die Schallquellen selbst leiser."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_licht",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Auf der Packung eines Fahrrad-Reflektors steht: „Leuchtet im Dunkeln von ganz allein – du wirst auch ohne Fahrradlampe immer gesehen.“ Prüfe beide Teile der Aussage mit dem, was du über Lichtquellen und zurückgeworfenes Licht gelernt hast, und schreibe eine begründete Antwort an die Firma.",
+    "erwartung": "Die Schülerin erkennt, dass der Reflektor keine Lichtquelle ist: Er leuchtet nicht selbst, sondern wirft wie das Katzenauge nur Licht besonders gut zurück, das auf ihn fällt. „Von ganz allein“ leuchtet er also nie – im stockdunklen Raum bliebe er unsichtbar, egal wie lange man wartet, denn ohne Licht gelangt nichts ins Auge. Den zweiten Teil schränkt sie ein: Gesehen wird der Reflektor nur, wenn eine andere Lichtquelle wie ein Autoscheinwerfer oder eine Straßenlaterne ihn anstrahlt und das zurückgeworfene Licht in das Auge des anderen gelangt. Auf einem unbeleuchteten Weg ohne entgegenkommende Autos macht der Reflektor deshalb nicht sichtbar – dafür braucht es die Fahrradlampe, die als Lichtquelle selbst Licht ins Auge der anderen schickt. Als Folgerung formuliert sie eine höfliche, begründete Antwort mit dem Weg des Lichts von der Quelle über den Reflektor ins Auge. Häufige Fehler: Hell-Aussehen wird mit Selbst-Leuchten gleichgesetzt; es wird angenommen, die Augen gewöhnten sich an die Dunkelheit und sähen den Reflektor irgendwann doch; der Reflektor wird wie eine Lampe behandelt; die Antwort behauptet nur „falsch“, ohne den Weg des Lichts ins Auge zu beschreiben."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Zu Hause wundert sich Papa: „Unter der neuen Deckenleuchte mit dem langen Leuchtband haben alle Schatten so komische graue Ränder – die Lampe ist bestimmt kaputt.“ Entwickle einen Versuch mit einer Pappfigur, mit dem du ihm zeigst, dass die grauen Ränder normal sind. Beschreibe Aufbau, Durchführung und was du bei einer kleinen Lampe und beim langen Leuchtband erwartest.",
+    "erwartung": "Die Schülerin plant einen fairen Vergleich im abgedunkelten Zimmer: dieselbe Pappfigur im gleichen Abstand vor derselben Wand, nur die Lichtquelle wird gewechselt. Zuerst eine kleine Lampe oder Taschenlampe – sie wirkt wie eine punktförmige Lichtquelle, alles Licht kommt aus einem Punkt, darum erwartet sie einen Schatten mit scharfem Rand und ohne Halbschatten. Dann das lange Leuchtband – es ist eine ausgedehnte Lichtquelle aus vielen leuchtenden Stellen: In die Mitte des Schattens gelangt von keiner Stelle Licht (Kernschatten), an den Rand noch Licht von einem Teil des Bandes (Halbschatten). Der graue Saum ist also kein Defekt, sondern eine Folge der breiten Quelle. Als Gegenprobe deckt sie einen Teil des Leuchtbands ab und erwartet, dass der graue Saum schmaler wird, je kleiner die leuchtende Fläche ist. Häufige Fehler: Beide Lichtquellen brennen gleichzeitig; beim Wechsel der Quelle werden auch die Abstände verändert, sodass der Vergleich nicht fair ist; der graue Saum wird für Schmutz an der Wand gehalten; Kernschatten und Halbschatten werden vertauscht; es wird keine Erwartung vor dem Versuch formuliert."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Beim Sportfest steht die Getränkekiste der Klasse drei Stunden in der prallen Sonne. Zum Abdecken liegen bereit: eine schwarze Mülltüte, ein weißes Bettlaken und eine Rolle Alufolie. Lege zuerst zwei Kriterien fest, nach denen ihr die Abdeckung auswählt, und entscheide dann begründet, welche Abdeckung die Getränke am kühlsten hält.",
+    "erwartung": "Die Schülerin legt vorab nachvollziehbare Kriterien fest, zum Beispiel: Wie viel Licht wirft die Fläche zurück, und wie warm wird sie dadurch in der Sonne? Dann überträgt sie die Messwerte der Station: Die schwarze Fläche schluckt fast das ganze Licht und wird 63 °C heiß – die schwarze Mülltüte scheidet aus, denn das geschluckte Licht macht sie und die Kiste darunter warm. Die weiße Fläche wirft das meiste Licht zurück und kommt nur auf 34 °C, die silberne (blanke) bleibt mit 26 °C am kühlsten. Sie entscheidet sich begründet für die Alufolie und nennt das Bettlaken als brauchbare zweite Wahl. Stark ist der Zusatz, dass auch zerknitterte Alufolie viel Licht zurückwirft: Sie streut es nur ungeordnet nach allen Seiten, und fürs Kühlhalten zählt allein die zurückgeworfene Menge, nicht die Ordnung – ein Spiegelbild braucht die Kiste nicht. Häufige Fehler: Es heißt, Schwarz „ziehe die Wärme an“, statt dass die Fläche das Licht absorbiert und das geschluckte Licht sie erwärmt; zerknitterte Folie wird für nutzlos erklärt, weil sie nicht mehr spiegelt; die Kriterien werden erst nach der Entscheidung genannt; es wird behauptet, dieselbe Sonne mache alle Flächen gleich warm."
+   }
+  ]
+ }
+]

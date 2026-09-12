@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fo10",
+  "quelle": "oi13",
+  "sim": "prisma",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der Glaskeil in der Schublade",
+  "name": "Woraus besteht weißes Licht?",
+  "fachwoerter_neu": [
+   "Prisma",
+   "Spektralfarben"
+  ],
+  "alltag": [
+   "In der Kiste liegt ein schwerer Glaskeil.",
+   "So ein Glaskeil heißt Prisma.",
+   "Jannis hält das Prisma am Fenster ins Sonnenlicht.",
+   "Auf dem Tisch erscheint ein bunter Streifen aus vielen Farben."
+  ],
+  "frage": "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
+  "predict": [
+   "Das Prisma färbt das Licht bunt, so wie eine bunte Folie.",
+   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle weißes Licht und lies die Meldung in der Statuszeile.",
+   "Trage in die Tabelle ein, was hinter dem Prisma erscheint.",
+   "Wähle nur Rot. Beobachte, ob sich das Licht noch auffächert.",
+   "Vergleiche mit nur Blau und ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Licht",
+   "Das erscheint hinter dem Prisma",
+   "Wie viele Farben siehst du?"
+  ],
+  "tabRows": [
+   [
+    "weißes Licht",
+    "ein Fächer aus allen Farben",
+    "viele Farben"
+   ],
+   [
+    "nur Rot",
+    "",
+    ""
+   ],
+   [
+    "nur Blau",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Weißes Licht besteht aus vielen verschiedenen",
+    "loesung": "Spektralfarben",
+    "post": "."
+   },
+   {
+    "pre": "Das Prisma",
+    "loesung": "bricht",
+    "post": "die Farben unterschiedlich stark und trennt sie so."
+   }
+  ],
+  "wortbank": [
+   "Spektralfarben",
+   "bricht",
+   "gebrochen",
+   "einfarbig"
+  ],
+  "beispiel": {
+   "frage": "Was macht das Prisma mit weißem Licht?",
+   "antwort": "Das Prisma zerlegt das weiße Licht in alle Spektralfarben. Rot steht am einen Rand, Violett am anderen. Die Farben waren schon vorher im Licht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei nur Rot?",
+    "optionen": [
+     "Hinter dem Prisma erscheint wieder ein bunter Fächer.",
+     "Das rote Licht wird gebrochen, bleibt aber einfarbig.",
+     "Das rote Licht bleibt im Glas stecken."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Violett wird am stärksten",
+      "loesung": "gebrochen",
+      "post": ", Rot am wenigsten."
+     },
+     {
+      "pre": "Ein roter Strahl ist",
+      "loesung": "einfarbig",
+      "post": ". Er lässt sich nicht weiter zerlegen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das Prisma malt die Farben.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "Die Farben stecken schon …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Die Farben stecken schon im weißen Licht. Das Prisma …",
+   "h3": "Fast fertige Antwort: Weißes Licht ist eine Mischung aus Farben. Das Prisma trennt die Farben nur. Ergänze den letzten Satz: Ein Prisma kann Licht nicht ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, woraus weißes Licht besteht.",
+   "Ich kann erklären, was das Prisma mit dem Licht macht.",
+   "Ich weiß, warum rotes Licht einfarbig bleibt."
+  ],
+  "zuhause": "Denke an einen Regenbogen. Dort trennen Wassertropfen das Sonnenlicht in seine Farben. Male die Farben in der richtigen Reihenfolge an.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Versuchsaufbau: von links ein breiter weißer Lichtstrahl, in der Mitte ein Glasprisma, rechts ein aufgefächerter Farbverlauf von Rot bis Violett; nur diese eine Lichtspur, keine Nebenstrahlen oder Nebenbilder; große Beschriftungen „weißes Licht“, „Prisma“ und „Spektrum“; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo10",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass weißes Licht aus vielen Spektralfarben besteht, die das Prisma durch unterschiedlich starke Brechung trennt – und dass einfarbiges Licht nur gebrochen, aber nicht weiter zerlegt wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Ergebnisse aus diesem Lehrerteil als drei Karten oder als Tabelle an der Tafel. Optional als Demonstration: echtes Prisma und Taschenlampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ergebnisse vorlesen oder als Karten zeigen: weißes Licht → ein Fächer aus allen Farben (viele Farben) · nur Rot → ein roter Strich, nur gebrochen (eine Farbe) · nur Blau → ein blauer Strich, nur gebrochen (eine Farbe). Alternativ drei Standbilder der Simulation am Beamer zeigen.",
+  "merksatz": [
+   "Spektralfarben",
+   "bricht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nur Rot",
+    "ein roter Strich, nur gebrochen",
+    "eine Farbe"
+   ],
+   [
+    "nur Blau",
+    "ein blauer Strich, nur gebrochen",
+    "eine Farbe"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile meldet bei nur Rot: Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt.",
+   "typische_fehler": [
+    "Auch bei Rot wird ein Fächer erwartet, weil Prisma mit bunt gleichgesetzt wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gebrochen",
+    "einfarbig"
+   ],
+   "typische_fehler": [
+    "„gespiegelt“ statt „gebrochen“ – Verwechslung mit dem Spiegel-Kapitel.",
+    "Die Reihenfolge Violett/Rot wird vertauscht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Farben stecken schon im weißen Licht. Das Prisma trennt die Farben nur. Ein Prisma kann Licht nicht anmalen.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt – ein einfarbiger Strahl bleibt einfarbig.",
+    "Vergleich mit der bunten Folie: Die Folie lässt nur eine Farbe durch, sie malt nichts an."
+   ],
+   "typische_fehler": [
+    "Prisma und Farbfolie werden gleichgesetzt.",
+    "„Das Prisma macht die Farben“ wird nur wiederholt statt widerlegt."
+   ]
+  },
+  "hilfe3_wort": "anmalen (auch richtig: färben)",
+  "schwache": [
+   "Zuerst nur weißes Licht und nur Rot vergleichen, nur Blau zunächst weglassen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, erst dann die Simulation öffnen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies die Reihenfolge der Farben aus dem Fächer der Simulation ab und schreibe sie auf.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Sonnenlicht und Spektrum. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

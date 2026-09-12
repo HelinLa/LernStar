@@ -1,0 +1,2256 @@
+
+
+===== SEITE 1 =====
+Kernlehrplan 
+für die Sekundarstufe II 
+Gymnasium / Gesamtschule 
+in Nordrhein-Westfalen 
+Physik
+
+
+===== SEITE 2 =====
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Herausgeber:  
+Ministerium für Schule und Bildung  
+des Landes Nordrhein-Westfalen 
+ Völklinger Straße 49, 40221 Düsseldorf 
+ 
+Telefon 0211-5867-40 
+Telefax 0211-5867-3220 
+ 
+poststelle@schulministerium.nrw.de 
+www.schulministerium.nrw.de 
+ 
+Heft 4721 
+ 
+1. Auflage 2022 
+ 
+  
+
+===== SEITE 3 =====
+    
+Vorwort  
+ 
+Liebe Leserinnen und Leser, 
+Auftrag von Schule und aller Beteiligten ist es, unsere Schülerinnen und Schüler er-
+folgreich zur Teilhabe und zur selbstbestimmten Gestaltung ihrer Zukunft zu befähi-
+gen. Die Gymnasiale Oberstufe trägt in besonderer Weise dazu bei, indem sie die 
+Bildungs- und Erziehungsarbeit der Sekundarstufe I mit dem Ziel einer vertieften all-
+gemeinen Bildung fortsetzt. Die Basis hierfür bilden die Richtlinien und Lehrpläne. Sie 
+sind auch die Grundlage für die Gestaltung eines wissenschaftspropädeutischen Un-
+terrichts, der zur allgemeinen Studierfähigkeit führt und auf die Berufs- und Arbeitswelt 
+vorbereitet. Der gesellschaftliche und technologische Wandel sowie die Weiterentwick-
+lung der Fächer erfordern, dass Bildungsziele und Bildungsinhalte immer wieder zeit-
+gemäß gefasst werden.  
+Die vorliegenden neuen landeseigenen Unterrichtsvorgaben berücksichtigen die von 
+der Kultusministerkonferenz erstmals für die Fächer Biologie, Chemie und Physik ver-
+abschiedeten Bildungsstandards für die Allgemeine Hochschulreife. Ziel ist eine bun-
+desweit höhere Vergleichbarkeit von Lerninhalten, Kompetenzen und Abschlüssen. 
+Die formalen und inhaltlichen Weiterentwicklungen der  Kernlehrpläne für die Fächer 
+Biologie, Chemie und Physik im mathematisch-naturwissenschaftlich-technischen Auf-
+gabenfeld stärken und schärfen den eingangs genannten Bildungsauftrag, indem sie 
+obligatorische Wissensbestände, Fähigkeiten und Fertigkeiten noch konkreter und kla-
+rer als bislang ausweisen.  
+Grundsätzlich setzen die Kernlehrpläne landesweite Standards und konzentrieren sich 
+auf die im Bildungsgang von den Schülerinnen und Schülern zu erwartenden Lerner-
+gebnisse und Kompetenzen. Dies geschieht auch mit Blick auf eine Bildung in einer 
+zunehmend digitalen Welt. Die Zielsetzungen des Medienkompetenzrahmens NRW in 
+den Vorgaben für die Sekundarstufe I werden fortgesetzt und bilden eine verbindliche 
+Grundlage dafür, dass Lernen und Leben mit digitalen Medien zur Selbstverständlich-
+keit im Unterricht wird.  
+Auf welche Weise die Lernergebnisse insgesamt erreicht werden, liegt in der Verant-
+wortung der Lehrkräfte vor Ort und damit in deren pädagogischer Freiheit. Auf Schul-
+ebene werden die Unterrichtsvorgaben in schuleigene Vorgaben, d.h. in schulinterne 
+Lehrpläne, konkretisiert. In ihnen verschränken sich die fachübergreifenden und fach-
+lichen Unterrichtsvorgaben mit den konkreten Rahmenbedingungen der Schule, den 
+Lernvoraussetzungen und Lernmöglichkeiten der Schülerinnen und Schüler. Auch die 
+Einbindung außerschulischer Partner und Lernorte wird berücksichtigt. 
+
+===== SEITE 4 =====
+    
+Zur Unterstützung der S chulen bei dieser wichtigen Aufgabe stellt die Qualitäts - und 
+Unterstützungsagentur – Landesinstitut für Schule NRW Angebote zur Implementation 
+bereit. Ich danke allen, die an der Entwicklung der neuen Kernlehrpläne mitgewirkt 
+haben sowie der Schulaufsicht auch für die Maßnahmen zur Implementation. Vor allem 
+danke ich den Lehrerinnen und Lehrern, die sich tagtäglich verantwortungsvoll der Bil-
+dung unserer Kinder und Jugendlichen widmen und die Kernlehrpläne umsetzen. 
+ 
+Yvonne Gebauer  
+Ministerin für Schule und Bildung  
+des Landes Nordrhein-Westfalen   
+
+
+===== SEITE 5 =====
+    
+Auszug aus dem Amtsblatt des Ministeriums für Schule und Bildung des Lan-
+des Nordrhein-Westfalen Nr. 06/22 
+ 
+Sekundarstufe II –  
+Gymnasiale Oberstufe des Gymnasiums und der Gesamtschule 
+Richtlinien und Lehrpläne 
+ 
+RdErl. d. Ministeriums für Schule und Bildung  
+v. 31.05.2022 - 526 - 2022-05-0002010 
+Für die Gymnasiale Oberstufe des Gymnasiums und der Gesamtschule  werden hier-
+mit Kernlehrpläne gemäß § 29 SchulG (BASS 1-1) festgesetzt. 
+Sie treten z um 1. August 2022  beginnend mit der Einführungsphase  aufsteigend in 
+Kraft.  
+Heft-Nr. Bereich/Fach Bezeichnung 
+4722 Biologie Kernlehrplan 
+4723 Chemie Kernlehrplan 
+4721 Physik Kernlehrplan 
+Tabelle 1: Kernlehrpläne zum 01.08.2022 
+Die Unterrichtsvorgaben sind veröffentlicht und abrufbar über den Lehrplannavigator: 
+https://www.schulentwicklung.nrw.de/lehrplaene/ 
+Die Schulen überprüfen auf Grundlage der o.g. Vorgaben ihre schuleigenen Vorgaben 
+(schulinterne Lehrpläne) und entwickeln diese kontinuierlich weiter. 
+Die Richtlinien für die Gymnasiale Oberstufe des Gymnasiums und der Gesamtschule, 
+RdErl. d. KM v. 03.03.1999, GABl NW. I, S.58, veröffentlicht online unter: 
+https://www.schulentwicklung.nrw.de/ gelten unverändert fort. 
+Zum 31.07.2022 treten die nachstehenden Kernlehrpläne auslaufend außer Kraft. 
+Heft-Nr. Bezeichnung Fundstelle 
+4722 Kernlehrplan Biologie 04.09.2013, ABl. NRW, S. 512 
+4723 Kernlehrplan Chemie 04.09.2013, ABl. NRW, S. 512 
+4721 Kernlehrplan Physik 04.09.2013, ABl. NRW, S. 512 
+Tabelle 2: zum 31.07.2022 außer Kraft tretende Kernlehrpläne 
+ABl. NRW. 06/22 
+
+===== SEITE 6 =====
+    
+Inhalt 
+  Seite 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte    
+Unterrichtsvorgaben 7 
+1 Aufgaben und Ziele des Faches 8 
+2 Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 13 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 15 
+2.1.1 Kompetenzbereiche 15 
+2.1.2 Inhaltsfelder 18 
+2.1.3 Basiskonzepte 21 
+2.2 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum Ende 
+der Einführungsphase 22 
+2.3 Kompetenzerwartungen und Inhaltliche Schwerpunkte bis zum Ende 
+der Qualifikationsphase 31 
+2.3.1 Grundkurs 35 
+2.3.2 Leistungskurs 44 
+3 Lernerfolgsüberprüfung und Leistungsbewertung 55 
+4 Abiturprüfung 59 
+ 
+
+===== SEITE 7 =====
+7 
+ 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte    
+Unterrichtsvorgaben  
+Kernlehrpläne leisten einen wichtigen Beitrag zur Sicherung des Anspruchsniveaus an 
+der Einzelschule sowie im ganzen Land und schaffen notwendige Voraussetzungen 
+für die Vergleichbarkeit von Lernergebnissen. 
+Kernlehrpläne 
+• bieten allen an Schule Beteiligten Orientierung über di e Aufgaben und Ziele der 
+Fächer, 
+• geben eine curriculare Stufung vor und legen fest, welche fachb ezogenen Kompe-
+tenzen einschließlich zugrundeliegender Wissensbestände Schülerinnen und Schü-
+ler am Ende der Stufen erworben haben sollen, 
+• stellen eine landesweite Obligatorik strukturiert in fachspezifische Inhalte und darauf 
+bezogene fachliche Kompetenzen dar,  
+• sind Grundlage für die Überprüfung von Lernergebnissen und Leistungsständen, 
+• fokussieren auf überprüfbares fachliches Wissen und Können. Au ssagen zu allge-
+meinen, fächerübergreifend relevanten Bildungs- und Erziehungszielen werden im 
+Wesentlichen außerhalb der Kernlehrpläne, u. a. in Richtlinien und Rahmenvorga-
+ben getroffen. Sie sind neben den fachspezifischen Vorgaben der Kernlehrpläne bei 
+der Entwicklung von schuleigenen Vorgaben und bei der Gestaltung des Unterrichts 
+zu berücksichtigen; 
+• bilden die curriculare Grundlage für die Entwicklung schuleigener Unterrichtsvorga-
+ben beziehungsweise schulinterner Lehrpläne (§ 29 sowie § 70 SchulG NRW), 
+• beschränken sich auf zentrale fachliche Fertigkeiten und Wissensbestände . So er-
+halten Schulen die Möglichkeit, aber auch die Aufgabe, gegebene Freiräume schul- 
+und lerngruppenbezogen auszugestalten. In Verbi ndung mit dem Schulpr ogramm 
+erfolgen Schwerpunktsetzungen im Unterricht in inhaltlicher, didaktis cher und me-
+thodischer Hinsicht. 
+Die vorliegenden Kernlehrpläne für die gymnasiale Oberstufe lösen die bisherigen 
+Kernlehrpläne ab und setzen die bundeseinheitlichen Vorgaben der Kultusminister-
+konferenz (Bildungsstandards für die Allgemeine Hochschulreife) für das Land Nord-
+rhein-Westfalen um. Mit diesen landesweit einheitlichen Standards ist eine wichtige 
+Voraussetzung dafür geschaffen, dass Schülerinnen und Schüler mit vergleichbaren 
+Voraussetzungen die Zentralen Prüfungen des Abiturs ablegen können.  
+ 
+
+===== SEITE 8 =====
+ 
+8 
+ 
+1 Aufgaben und Ziele des Faches 
+Gegenstand der Fächer im mathematisch -naturwissenschaftlich-technischen Aufga-
+benfeld (III) sind die empirisch erfassbare, die in formalen Strukturen beschreibbare 
+und die durch Technik gestaltbare Wirklichkeit sowie die Verfahr ens- und Erkenntnis-
+weisen, die ihrer Erschließung und Gestaltung dienen.  
+Naturwissenschaft und Technik prägen unsere Gesellschaft in allen Bereichen und 
+bilden heute einen bedeutenden Teil unserer kulturellen Identität. Sie bestimmen maß-
+geblich unser Weltbild, das schneller als in der Vergangenheit Veränderungen durch 
+aktuelle Forschungsergebnisse erfährt. Das Wechselspiel zwischen naturwissen-
+schaftlicher Erkenntnis und technischer Anwendung bewirkt einerseits Fortschritte auf 
+vielen Gebieten, vor allem auch bei der Entwicklung und Anwendung von neuen Tech-
+nologien und Produktionsverfahren. Andererseits birgt das Streben nach Fortschritt 
+auch Risiken, die bewertet und beherrscht werden müssen. Naturwissenschaftlich -
+technische Erkenntnisse und Innovationen stehen damit zunehmend im Fokus gesell-
+schaftlicher Diskussionen und Auseinandersetzungen. Eine vertiefte naturwissen-
+schaftliche Bildung  bietet dabei die Grundlage für fundierte Urteile in 
+Entscheidungsprozessen über erwünschte oder unerwünschte Entwicklungen. 
+Gemäß dem Bildungsauftrag von Gymnasium und Gesamtschule in der gymnasialen 
+Oberstufe leistet das Fach Physik  einen Beitrag dazu, den Schülerinnen und Schülern 
+eine vertiefte Allgemeinbildung zu vermitteln. Die gymnasiale Oberstufe setzt die Bil-
+dungs- und Erziehungsarbeit der Sekundarstufe I fort, vertieft und erweitert sie; sie 
+schließt mit der Abiturprüfung ab und vermittelt die allgemeine Hochschulreife. Indivi-
+duelle Schwerpunktsetzung und vertiefte allgemeine Bildung führen auf der Grundlage 
+eines wissenschaftspropädeutischen Unterrichts zur allgemeinen Studierfähigkeit und 
+bereiten auf die Berufs- und Arbeitswelt vor.  
+Im Rahmen des allgemeinen Bildungs- und Erziehungsauftrags der Schule unterstützt 
+der Unterricht im Fach Physik die Entwicklung einer mündigen und sozial verantwort-
+lichen Persönlichkeit und leistet weitere Beiträge zu fachübergreifenden Querschnitts-
+aufgaben in Schule und Unterricht, hierzu zählen u. a.  
+• Menschenrechtsbildung, 
+• Werteerziehung, 
+• politische Bildung und Demokratieerziehung, 
+• Bildung für die digitale Welt und Medienbildung,  
+• Bildung für nachhaltige Entwicklung,  
+• geschlechtersensible Bildung, 
+• kulturelle und interkulturelle Bildung. 
+
+===== SEITE 9 =====
+Aufgaben und Ziele des Faches 
+9 
+ 
+Sprache ist ein notwendiges Hilfsmittel bei der Entwicklung von Kompetenzen und be-
+sitzt deshalb  für den Erwerb einer vertieften naturwisse nschaftlichen Grundbildung 
+eine besondere Bedeutung. Kognitive Prozesse des Umgangs mit Fachwissen, der 
+Erkenntnisgewinnung, der Kommunikation und der Bewertung sind ebenso sprachlich 
+vermittelt wie der kommunikative Austausch darüber und die Präsentation von Lerner-
+gebnissen. In der aktiven Auseinandersetzung mit fachlichen Inhalten, Prozessen und 
+Ideen erweitert sich der vorhandene Wortschatz, und es entwickelt sich ein zuneh-
+mend differenzierter und bewusster Einsatz von Sprache. Dadurch entstehen Möglich-
+keiten, Konzepte sowie eigene Wahrnehmu ngen, Gedanken und Interessen 
+angemessen darzustellen.  
+Die interdisziplinäre Verknüpfung von Schritten einer kumulativen Kompetenzentwick-
+lung, inhaltliche Kooperationen mit anderen Fächern und Lernbereichen sowie außer-
+schulisches Lernen und Kooperationen mit außerschulischen Partnern können sowohl 
+zum Erreichen und zur Vertiefung der jeweils fachlichen Ziele als auch zur Erfüllung 
+übergreifender Aufgaben beitragen. 
+Ziele einer vertieften physikalisch-naturwissenschaftlichen Bildung 
+Die Naturwissenschaft Physik leistet einen Beitrag für ein umfassendes Verständnis 
+der Welt. Dazu gehört auch, die Grundlagen von Technologien zu verstehen und deren 
+Nutzung im Hinblick auf das eigene Leben und die Gesellschaft zu bewerten, sowie 
+Informationen, insbesondere in der digitalen Welt, selbstbestimmt zu nutzen. Physika-
+lische Erkenntnisse prägen unser Weltbild und stellen einen historisch -dynamischen 
+Prozess dar. Im Wandel, dem sie unterworfen sind, zeigt sich die Offenheit der Physik 
+für Weiterentwicklungen.  
+Die Physik als theoriegeleitete Erfahrungswissenschaft macht Naturphänomene über 
+die menschliche Wahrnehmung hinaus durch Messungen erfahrbar und durch Modelle 
+beschreibbar, zeigt aber auch die Grenzen der Messbarkeit und Alltagserfahrung auf, 
+z. B. im Bereich der Quantenphysik. Die Schülerinnen und Schüler erfahren im Unter-
+richt die Bedeutung der abstrahierenden, idealisierenden und formalisierten Beschrei-
+bung von Prozessen und Systemen, wenn sie regelmäßig mathematisch modellieren 
+und Vorhersagen treffen. Gleichzeitig sind sich die Schülerinnen und Schüler der be-
+grenzten Gültigkeit der Modelle bewusst. Sie lernen, dass aus theoretischen Überle-
+gungen Aussagen zu neuen Zusammenhängen und zur Vorhersagbarkeit von 
+Ereignissen abgeleitet werden können. 
+Physik ist nicht nur Wissenschaft, sondern auch Denkweise und Weltsicht. Ihre ratio-
+nale und analytische Sichtweise, ihre Exaktheit der Sprache und ihre planvollen, struk-
+turierten Herangehensweisen haben eine zentrale Bedeutung in einer Vielzahl von 
+Berufsfeldern und für die aktive Teilhabe an gesellschaftlicher Kommunikation. In der 
+
+===== SEITE 10 =====
+Aufgaben und Ziele des Faches 
+10 
+ 
+Auseinandersetzung mit typisch physikalischen Denk- und Arbeitsweisen, wie Analo-
+giebetrachtungen, algorithmisiertem Vorgehen, probabilistischen Beschreibungen und 
+Streben nach Vereinheitlichung und Kohärenz, erfahren die Schülerinnen und Schüler 
+den Aspektcharakter des Faches und die Vorteile von Verallgemeinerungen in wenige 
+fundamentale Ideen, wie z.B. die Erhaltungssätze. Die Schülerinnen und Schüler nut-
+zen diese Denk- und Arbeitsweisen nicht nur innerhalb der Fachwissenschaft Physik, 
+sondern transferieren diese auch als Strategien in ihren Lebensalltag.  Sie entwickeln 
+Verständnis und Wertschätzun g für physikalische Sichtweisen, nutzen sie aktiv und 
+fordern sie von anderen ein. Der fortwährende Wechsel zwischen Modellen und Rea-
+lität und die kontinuierliche Reflexion von vereinfachenden Algorithmen sensibilisieren 
+sie für Möglichkeiten und Gefahren, die besonders auch in der digitalen Welt auftreten 
+können. 
+Unterricht in Physik muss Mädchen ebenso wie Jungen dazu ermutigen, ihr Interesse 
+an naturwissenschaftlichen Zusammenhängen selbstbewusst zu verfolgen und so ihre 
+Fähigkeiten und Entwicklungspoten ziale zu nu tzen. Er sollte außerdem aufzeigen, 
+dass naturwissenschaftliche Kenntnisse sowohl für Frauen als auch Männer attraktive 
+berufliche Perspektiven eröffnen. 
+Als eine der ältesten Wissenschaften ist die Physik seit jeher in ein Wechselspiel mit 
+Technik und Gesellschaft eingebunden. Sowohl historische als auch aktuelle Entwick-
+lungen verdeut lichen die Notwendigkeit der Betrachtung gesellschaftlich relevanter 
+Problemstellungen wie der Energieversorgung oder des Klimawandels aus physikali-
+scher und techni scher Sicht. Schülerinnen und Schüler  werden dazu angeregt, sich 
+rational reflektiert eine eigene Meinung zu bilden und sowohl in ihrem unmittelbaren 
+Umfeld als auch in der Gesells chaft Verantwortung zu überneh men. Die Komplexität 
+bei der Bearbeitung von aktuellen Problemstellungen und Forschungsaufträgen in der 
+Physik verdeutlicht die Relevanz  interdisziplinärer und internationaler Zusammenar-
+beit. Für ein handelndes, konstruktives Miteinander sind Rücksichtnahme und Kom-
+promissbereitschaft notwendig. In diesem Sinne leistet auch der Physikunterricht einen 
+wichtigen Beitrag zur Persönlichkeitsentwicklung von Jugendlichen. 
+Physikalische Bildung hat insgesamt einerseits einen wissenschaftspropädeutischen 
+Charakter, andererseits aber auch wesentlichen Einfluss auf den lebenslangen indivi-
+duellen Kompetenzaufbau und stellt einen wichtigen Teilbereich der Allgemeinbildung 
+dar. 
+Physikunterricht in der gymnasialen Oberstufe  
+Physikunterricht in der gymnasialen Oberstufe knüpft an den Unterricht in der Sekun-
+darstufe I an und vermittelt, neben grundlegenden Kenntnissen und Fähigkeiten, Ein-
+sichten auch in komplexere Sach - und Naturvorgänge sowie für das Fach typische 
+
+===== SEITE 11 =====
+Aufgaben und Ziele des Faches 
+11 
+ 
+Herangehensweisen an Probleme und Aufgaben . Dazu lernen Schülerinnen und 
+Schüler zunehmend selbstständig physikalische Sichtweisen auf die Natur kennen und 
+erfahren Möglichkeiten und Grenzen naturwissenschaftlichen Denkens. Sie intensivie-
+ren die qualitative und quantitative Erfassung physikalischer Phänomene , präzisieren 
+Modellvorstellungen und thematisieren Modellbildungsprozesse, die auch zu einer um-
+fangreicheren Theoriebildung führen. Die Betrachtung und Erschließung von komple-
+xen Ausschnitten der Lebenswelt unter physikalischen Aspekten erfordert von den 
+Schülerinnen und Schülern in hohem Maße Kommunikations- und Handlungsfähigkeit. 
+Zur Erfüllung dieser Aufgaben und zum Erreichen der Ziele vermittelt der Physikunter-
+richt in der gymnasialen Oberstufe fachliche und fachmethodische Inhalte unter Be-
+rücksichtigung von Methoden und Formen selbstständigen und kooperativen 
+Arbeitens. Die Heterogenität der Schülerinnen und Schüler in Bezug auf Interessen, 
+kulturellen Hintergrund, Geschlechtersozialisation, Vorerfahrungen und fachspezifi-
+sche Kenntnisse sind angemessen zu berücksichtigen. 
+Das Lernen in Kontexten ist verbindlich. Lernen in Kontexten bedeutet, dass Frage-
+stellungen aus der Praxis der Forschung, technische und gesellschaftliche Fragestel-
+lungen und solche aus der Lebenswelt der Schülerinnen und Schüler den Rahmen für 
+Unterricht und Lernprozesse bilden. Dafür geeignete Kontexte beschreiben reale Situ-
+ationen mit authentischen Problemen, deren Relevanz auch für Schülerinnen und 
+Schüler erkennbar ist und die mit den zu erwerbenden Kompetenzen gelöst werden 
+können. 
+Aufgabe der Einführungsphase ist es, Schülerinnen und Schüler auf einen erfolgrei-
+chen Lernprozess in der Qualifikationsphase vorzubereiten. Wesentliche Ziele beste-
+hen darin, neue fachliche Anforderungen der gymnasialen Oberstufe, u. a. bezüglich 
+einer ve rstärkten Formalisierung, Systematisierung und reflektierenden Durchdrin-
+gung sowie einer größeren Selbstständigkeit beim Erarbeiten und Bearbeiten fachli-
+cher Fragestellungen und Probleme zu verdeutlichen und einzuüben. Dabei ist es 
+notwendig, die im Unterricht der Sekundarstufe I erworbenen Kompetenzen zu konso-
+lidieren und zu vertiefen, um eine gemeinsame Ausgangsbasis für weitere Lernpro-
+zesse zu schaffen. Insbesondere in dieser Phase ist eine individuelle Förderung von 
+Schülerinnen und Schülern mit heterogenen Bildungsbiographien von besonderer Be-
+deutung. 
+In der Qualifikationsphase findet der Unterricht im Fach Physik in einem Kurs auf 
+grundlegendem Anforderungsniveau (Grundkurs) oder einem Kurs auf erhöhtem An-
+forderungsniveau (Leistungskurs) statt.   
+Während in beiden Kursarten das Experiment im Zentrum stehen sollte, unterscheiden 
+sich die beiden Kursarten deutlich hinsichtlich der zu erreichenden fachlichen Tiefe, 
+
+===== SEITE 12 =====
+Aufgaben und Ziele des Faches 
+12 
+ 
+der Systematisierung und Vernetzung der fachlichen Inhalte, der Vielfalt des fachme-
+thodischen Vorgehens sowie dem Grad der Mathematisierung.  Insbesondere im 
+Grundkurs basiert der Unterricht auf der experimentellen Methode, da diese den be-
+sonderen Charakter der Physik als Experimentalwissenschaft verdeutlicht. Die Beto-
+nung liegt dabei auf spezifis chen Funktionen von Experimenten im physikalischen 
+Erkenntnisprozess wie auch auf ihrer Bedeutung für technische Anwendungen. Eine 
+experimentell ausgerichtete Arbeitsweise im Physikunterricht trägt zu vertiefter Allge-
+meinbildung und Studierfähigkeit bei. 
+Während die Kompetenzen im Grundkurs mit einem klaren Fokus auf ausgewählten 
+Kontexten und Schlüsselexperimenten (kursiv hervorgehoben) exemplarisch erarbei-
+tet werden, werden die Kompetenzen im Leistungskurs aus verschiedenen Perspekti-
+ven sowie an Kontexten vermittelt und deutlich stärker vernetzt. Die Schülerinnen und 
+Schüler erwerben dadurch zunehmend Fähigkeiten zum selbstständigen Arbeiten an 
+physikalischen Problemstellungen. Um die beschriebenen Ziele des Faches und die 
+Kompetenzerwartungen zu erreichen, sollte – wenn immer möglich – dem Realexpe-
+riment der Lehrkräfte oder der Schülerinnen und Schüler  gegenüber alternativen me-
+dialen Formaten der Vorzug gegeben werden.  
+Der vorliegende Kernlehrplan ist so gestaltet, dass er Freiräume für Vertiefung, schul-
+eigene Projekte und aktuelle Entwicklungen lässt. Die Umse tzung der verbindlichen 
+curricularen Vorgaben in schuleigene Vorgaben liegt in der Gestaltungsfreiheit – und 
+Gestaltungspflicht – der Fachkonferenzen sowie in der pädagogischen Verantwortung 
+der Lehrerinnen und Lehrer. Damit ist der Rahmen geschaffen, gezielt Kompetenzen 
+und Interessen der Schülerinnen und Schüler aufzugreifen und zu fördern bzw. Ergän-
+zungen der jeweiligen Schule in sinnvoller Erweiterung der Komp etenzen und Inhalte 
+zu ermöglichen. 
+ 
+ 
+
+===== SEITE 13 =====
+ 
+13 
+ 
+2 Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartun-
+gen 
+Im Kapitel „Aufgaben und Ziele“ der Kernlehrpläne werden u.  a. Ziele bzw. die über-
+greifende fachliche Kompetenz des Faches beschrieben, die Schülerinnen und Schü-
+ler im jeweiligen Fach entwickeln sollen. 
+Diese werden ausdifferenziert, indem fachspezifische Kompetenzbereiche und In-
+haltsfelder identifiziert und ausgewiesen werden. Dieses analytische Vorgehen erfolgt, 
+um die Strukturierung der fachrelevanten Prozesse einerseits sowie der Gegenstände 
+andererseits transparent zu machen. In Kompetenzerwartungen werden beide Seiten 
+miteinander verknüpft. Damit wird der Tatsache Rechnung getragen, dass der gleich-
+zeitige Einsatz von Können und Wissen bei der Bewältigung von Anforderungssituati-
+onen eine zentrale Rolle spielt. 
+ 
+Kompetenzbereiche repräsentieren die Grunddimensionen des fachlichen Handelns. 
+Sie dienen dazu, die einzelnen Teiloperationen entlang der fachlichen Kerne zu struk-
+turieren und den Zugriff für die am Lehr-Lernprozess Beteiligten zu verdeutlichen. 
+Inhaltsfelder systematisieren mit ihren jeweiligen inhaltlichen Schwerpun kten die im 
+Unterricht verbindlichen und unverzichtbaren Gegenstände und liefern Hinweise für 
+die inhaltliche Ausrichtung des Lehrens und Lernens. 
+Ziele des Faches/ 
+Übergreifende fachliche Kompetenz 
+Kapitel 1 
+ 
+Kompetenzbereiche 
+(Prozesse) 
+Kapitel 2.1.1 
+ 
+Inhaltsfelder 
+(Gegenstände) 
+Kapitel 2.1.2 
+ 
+Kompetenzerwartungen 
+(Verknüpfung von Prozessen und Gegenständen) 
+Kapitel 2.2 - 2.3 
+ 
+ Basiskonzepte 
+Kapitel 2.1.3 
+ 
+
+===== SEITE 14 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+14 
+ 
+Basiskonzepte strukturieren die Beschreibung fachlicher Sachverhalte denen fachspe-
+zifische Gemeinsamkeiten zugrunde liegen. Sie ermöglichen die Vernetzung fachlicher 
+Inhalte und deren Betrachtung aus verschiedenen Perspektiven. 
+Kompetenzerwartungen führen Prozesse und Gegenstände zusammen und beschrei-
+ben die fachlichen Anforderungen und intendierten Lerne rgebnisse, die kontinuierlich 
+bis zum Ende der Sekundarstufe II erreicht werden sollen. 
+Kompetenzerwartungen 
+• beziehen sich auf beobachtbare Handlungen und sind auf die Bewältigung von 
+Anforderungssituationen ausgerichtet, 
+• stellen im Sinne von Regelstandards die erwarteten Kenntnisse, Fähigkeiten 
+und Fertigkeiten auf einem mittleren Abstraktionsgrad dar, 
+• beschreiben Ergebnisse eines kumulativen, systematisch vernetzten Lernens, 
+• können in Aufgabenstellungen umgesetzt und überprüft werden. 
+Insgesamt ist der Unterricht in der Sekundarstufe II nicht allein auf das E rreichen der 
+aufgeführten Kompetenzerwartungen beschränkt, sondern soll es Schülerinnen und 
+Schülern ermöglichen, diese weiter auszubauen und darüber hinausgehendes Wissen 
+und Können zu erwerben. 
+
+===== SEITE 15 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+15 
+ 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 
+Der Physikunterricht in der gymnasialen Oberstufe ermöglicht den Erwerb von Kom-
+petenzen, die für ein vertiefte physikalisch-naturwissenschaftliche Bildung erforderlich 
+sind.  
+2.1.1 Kompetenzbereiche 
+Die Physik unterscheidet die vier untereinander vernetzten Kompetenzbereiche Sach-
+kompetenz, Erkenntnisgewinnungskompetenz, Kommunikationskompetenz sowie Be-
+wertungskompetenz.  
+Die Sachkompetenz der Schülerinnen und Schüler zeigt sich in der Kenntnis natur-
+wissenschaftlicher Konzepte, Theorien und Verfahren verbunden mit der Fähigkeit, 
+diese zu beschreiben und zu erklären sowie geeignet auszuwählen und zu nutzen, um 
+Sachverhalte aus fach- und alltagsbezogenen Anwendungsbereichen zu verarbeiten.  
+Das wissenschaftliche Vorgehen der Physik lässt sich im Wesentlichen in zwei funda-
+mentale, eng miteinander verwobene Bereiche einteilen: die theoretische Beschrei-
+bung von Phänomenen und das expe rimentelle Arbeiten. Die Vertrautheit mit 
+physikalischem Fachwissen sowie mit der Nutzung physikalischer Grundprinzipien 
+und Arbeitsweisen bildet eine unverzichtbare Grundlage für das Verständnis wissen-
+schaftlicher sowie alltäglicher Sachverhalte aus viele n Bereichen, z. B. aus Umwelt, 
+Technik oder auch Medizin. Daher leistet physikalische Sachkompetenz einen wichti-
+gen Beitrag sowohl zur Studierfähigkeit als auch zur Allgemeinbildung.  
+Sachkompetenz zeigt sich in der Physik in der Nutzung von Fachwissen zur Bearbei-
+tung von sowohl innerfachlichen als auch kontextbezogenen Aufgaben und Proble-
+men. Dazu gehört die theoriebasierte Beschreibung von Phänomenen ebenso wie die 
+qualitative und quantitative Auswertung von Messergebnissen anhand geeigneter 
+Theorien und Modelle. Deren Eigenschaften wie Gültigkeitsbereiche, theoretische Ein-
+bettungen und Angemessenheit sind dabei ebenso zu berücksichtigen wie ein ange-
+messener Grad der Mathematisierung.  
+Fertigkeiten wie das Durchführen eines Experiments nach einer Anleitung , der Um-
+gang mit Messgeräten oder die Anwendung bekannter Auswerteverfahren sind Be-
+standteil der Sachkompetenz. Die Planung und Konzeption von Experimenten 
+hingegen ist dem Kompetenzbereich Erkenntnisgewinnung zugeordnet. 
+Die Erkenntnisgewinnungskompetenz der Schülerinnen und Schüler zeigt sich in 
+der Kenntnis von naturwissenschaftlichen Denk- und Arbeitsweisen verbunden mit der 
+
+===== SEITE 16 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+16 
+ 
+Fähigkeit, diese zu beschreiben, zu erklären und zu verknüpfen, um Erkenntnispro-
+zesse nachvollziehen oder gestalten zu können und deren Möglichkeiten und Grenzen 
+zu reflektieren.  
+Physikalische Erkenntnisgewinnung ist zum einen bestimmt durch die theoretische 
+Beschreibung der Natur, die mit der Bildung von Fachbegriffen, Modellen und Theo-
+rien einhergeht, und zum anderen durch empiris che Methoden, v. a. das Experimen-
+tieren, mit denen Gültigkeit und Relevanz dieser Beschreibung abgesichert werden. 
+Das Wechselspiel von Theorie und Experiment in der naturwissenschaftlichen For-
+schung umfasst typischerweise folgende zentrale Schritte:  
+• Formulierung von Fragestellungen, 
+• Ableitung von Hypothesen, 
+• Planung und Durchführung von Untersuchungen, 
+• Auswertung, Interpretation und methodische Reflexion zur Widerlegung bzw. Stüt-
+zung der Hypothese sowie zur Beantwortung der Fragestellung. 
+Experimentelle Ergebnisse und aus Modellen abgeleitete Annahmen werden interpre-
+tiert und der gesamte Erkenntnisgewinnungsprozess wird im Hinblick auf wissen-
+schaftliche Güte reflektiert. Auf der Metaebene werden die Merkmale 
+naturwissenschaftlicher Verfahren und Methoden charakterisiert und von den nicht -
+naturwissenschaftlichen abgegrenzt. Das Durchführen eines erlernten Verfahrens  
+oder einer bekannten Methode ohne die Einbettung in den Prozess der Erkenntnisge-
+winnung als Ganzes ist im Kernlehrplan der Sachkompetenz zugeordnet. 
+Die Kommunikationskompetenz der Schülerinnen und Schüler  zeigt sich in der 
+Kenntnis von Fachsprache, fachtypischen Darstellungen und Argumentationsstruktu-
+ren verbunden mit der Fähigkeit, diese zu nutzen, um fachbezogene Informationen zu 
+erschließen, adressaten - und situationsgerecht, auch in digitalen kollaborativen Ar-
+beitssituationen darzustellen und auszutauschen.  
+In der Physik wird unter Verwendung strukturierter und standardisierter Formulierun-
+gen und Darstellungen  rational, fakten- oder evidenzbasiert kommuniziert. Das Ver-
+ständnis dieser Art der Kommunikation und die Fähigkeit, sie mitzugestalten, 
+ermöglichen die selbstbestimmte Teilhabe an wissenschaftlichen und gesellschaftlich 
+relevanten Diskussionen. Physikalische Kommunikationskompetenz zeigt sich im Ver-
+ständnis und in der Nutzung von definierten Begrifflichkeiten, fachtypischen Darstel-
+lungen und Argumentationsstrukturen, die mathematische Logik und verlässliche 
+Quellen als Belege für die Glaubwürdigkeit und Objektivität von Aussagen und Argu-
+menten verwenden. Das physikalische Fachvokabular setzt sich dabei zusammen aus 
+etablierten Fachbegriffen, abstrakten Symbolen und standardisierten Einheiten. Für 
+
+===== SEITE 17 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+17 
+ 
+Diskussionen außerhalb der Physik s ind vor allem die physiktypische Nutzung be-
+stimmter Arten von Abbildungen, Diagrammen und Symbolen, die Betonung logischer 
+Verknüpfungen und der Wechsel zwischen situationsspezifischen und verallgemeiner-
+ten Aussagen und mehreren Darstellungsformen relevant.  
+Physikalisch Kommunizieren bedingt ein Durchdringen der Teilkompetenzbereiche Er-
+schließen, Aufbereiten und Austauschen. Im Fach Physik tauschen die Schülerinnen 
+und Schüler Informationen mit Kommunikationspartnern kompetent aus, wenn sie In-
+formationen aus Quellen entnehmen, überzeugend präsentieren und sich reflektiert 
+an fachlichen Diskussionen beteiligen. Die sprachliche sowie mathematische Darstel-
+lung von Zusammenhängen und Lösungswegen ist dagegen Ausdruck von Sach - 
+bzw. Erkenntnisgewinnungskompetenz . Die Berücksichtigung von außerfachlichen 
+Aspekten für die Meinungsbildung und die Entscheidungsfindung ist im Kernlehrplan 
+im Kompetenzbereich Bewerten enthalten. 
+Die Bewertungskompetenz der Schülerinnen und Schüler zeigt sich in der Kenntnis 
+von fachlichen und überfachlichen Perspektiven und Bewertungsverfahren verbunden 
+mit der Fähigkeit, diese zu nutzen, um Aussagen bzw. Daten anhand verschiedener 
+Kriterien zu beurteilen, sich dazu begründet Meinungen zu bilden, Entscheidungen 
+auch auf ethischer Grundl age zu treffen und Entscheidungsprozesse und deren Fol-
+gen zu reflektieren.  
+Um in Praxissituationen einen Bewertungsprozess durchführen zu können, ist es not-
+wendig, Wissen über Bewertungsverfahren zu haben, wissenschaftliche sowie nicht -
+wissenschaftliche A ussagen anhand von formalen und inhaltlichen Kriterien prüfen 
+und den Einfluss von Werten, Normen und Interessen auf Bewertungsergebnisse ein-
+schätzen zu können. Im Zentrum des Bewertungsprozesses stehen dabei das Entwi-
+ckeln und Reflektieren geeigneter Kriterien als Grundlage für eine Entscheidung oder 
+Meinungsbildung und das Zusammentragen physikalischer Erkenntnisse, die – orga-
+nisiert anhand der Kriterien – als Argumente dienen.  
+Um selbstbestimmt an gesellschaftlichen Meinungsbildungsprozessen teilhaben z u 
+können, beziehen Schülerinnen und Schüler im Kompetenzbereich Bewerten bei ge-
+sellschaftlich relevanten Fragestellungen mit fachlichem Bezug kriteriengeleitet einen 
+eigenen Standpunkt und treffen sachgerechte Entscheidungen. Dazu tragen sie rele-
+vante physikalische, aber auch nichtphysikalische (z. B. ökonomische, ökologische, 
+soziale, politische oder ethische) Kriterien zusammen, sammeln geeignete Belege und 
+wägen diese unter Berücksichtigung von Normen, Werten und Interessen gegenei-
+nander ab. Physikalisch kompetent bewerten heißt insbesondere, über die rein sach-
+liche Beurteilung von physikalischen Aussagen hinauszugehen, weshalb rein 
+
+===== SEITE 18 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+18 
+ 
+innerfachliche Bewertungen z. B. der Anwendbarkeit eines Modells, der Güte von Ex-
+perimentierergebnissen oder der Korrektheit fachwissenschaftlicher Argumentationen 
+zumeist den anderen drei Kompetenzbereichen zugeordnet sind.  
+2.1.2 Inhaltsfelder  
+Kompetenzen sind immer an  fachliche Inhalte gebunden. Eine vertiefte physikalisch-
+naturwissenschaftliche Bildung soll deshalb mit Blick auf die nachfolgenden Inhaltsfel-
+der bis zum Ende der Sekundarstufe II entwickelt werden. 
+Grundlagen der Mechanik (Einführungsphase) 
+Wesentliche Aspekte des Inhaltsfelds Grundlagen der Mechanik markieren den Beginn 
+und die Grundlagen der Physik nach heutigem Verständnis. Dieser Bereich der klas-
+sischen Mechanik beinhaltet die Analyse und Beschreibung von vorwiegend eindimen-
+sionalen Bewegungen , von Kräften und deren Einf luss auf Bewegungsänderungen 
+sowie von Energie- und Impulserhaltung. Die Auseinandersetzung mit physikalischen 
+Phänomenen erfolgt hier und in allen weiteren Inhaltsfeldern mit zunehmender Mathe-
+matisierung. Die funktionalen Beziehungen zwischen den mechanischen Größen wer-
+den in verschiedenen Darstellungs formen (Messwerttabellen, Diagramme, Gesetze) 
+herausgestellt. 
+Kreisbewegung, Gravitation und physikalische Weltbilder (Einführungsphase) 
+Die Auseinandersetzung mit der gleichförmigen Kreisbewegung und der Gravitation 
+vervollständigen die Erkenntnisse zur Mechanik, deren  zentrale Konzepte und Sicht-
+weisen für das Verstehen der Physik in allen Bereichen einen fundamentalen Refe-
+renzrahmen bilde n. Die Übertragung mechanischer Gesetzmäßigkeiten auf die 
+Bewegung von Himmelskörpern und die Würdigung bedeutsamer historischer Beiträge 
+zur Herausbildung eines wissenschaftlich -physikalischen Weltbilds stellen einen wei-
+teren Aspekt dieses Inhaltsfelds dar. Mit dem Einblick in Grundprinzipien der speziellen 
+Relativitätstheorie am Beispiel der Zeitdilatation wird nachvollziehbar, dass das klas-
+sische physikalische Weltbild zu Beginn des 20. Jahrhunderts eine Revolutionierung 
+erfuhr. Andere relativistische Phänomene sind exemplarisch in ihren Grundzügen in  
+weiteren Inhaltsfeldern der Qualifikationsphase eingebunden. 
+Klassische Wellen und geladene Teilchen in Feldern (Qualifikationsphase – 
+Grundkurs) 
+Im Inhaltsfeld Klassische Wellen und Teilchen in Feldern wird die klassische Betrach-
+tungsweise der Natur zunächst fortgesetzt. Eine Säule sind harmonisch-mechanische 
+Schwingungen, deren Beschreibung und Eigenschaften einschließlich der auftreten-
+den Energieumwandlungen sowie darauf aufbauend die Beschreibung mechanis cher 
+Wellen und deren typischer Eigenschaften unter Zugrundelegung des Huygens’schen 
+
+===== SEITE 19 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+19 
+ 
+Prinzips. Die elektrischen und magnetischen Felder begründen die zweite Säule die-
+ses Inhaltsfelds. Neben deren qualitative r und quantitativer Beschreibung stehen die 
+Auswirkungen dieser Felder auf die Bahnen geladener Teilchen einschließlich der wir-
+kenden Kräfte im Mittelpunkt. Die Bestimmung der Elementarladung als kleinste, iso-
+liert auftretende elektrische Ladung zeigt die besondere Eigenschaft dieser Größe. 
+Quantenobjekte (Qualifikationsphase – Grundkurs) 
+Im Inhaltsfeld Quantenobjekte dienen das Photon und das Elektron als zwei beispiel-
+hafte Quantenobjekte, die beide in unterschiedlichen Experimenten sowohl Teilchen - 
+als auch Wellencharakter zeigen. Mit der Physik der Quantenobjekte gelingt die Auf-
+hebung dieser komplementären Beschreibungen . Die Sicht auf Quantenobjekte ver-
+bindet Wellen - und Teilchenaspekt e der Materie mithilfe von Wahrscheinlichkeits -
+aussagen. Die Quantenphysik ist ein Beispiel für ein Teilgebiet der modernen Physik, 
+das die Grenzen der physikalischen Erkenntnisfähigkeit im Besonderen aufzeigt. 
+Elektrodynamik und Energieübertragung (Qualifikationsphase – Grundkurs) 
+Im Inhaltsfeld Elektrodynamik und Energieübertragung stehen physikalische Grundla-
+gen der Versorgung mit elektrischer Energie im Vordergrund. Die elektromagnetische 
+Induktion spielt sowohl bei der Erzeugung elektrischer Spannung en als auch bei der 
+Verteilung der elektrischen Energie  eine wesentliche Rolle. Elektrodynamische Pro-
+zesse bei Kondensatoren und Spulen sowie deren Zusammenwirken haben in weiten 
+Bereichen unseres täglichen Lebens vielfältige und umfangreiche Anwendung gefun-
+den. Fragen der Energieversorgung, -speicherung und -rückgewinnung sind wichtige 
+Zukunftsfragen. 
+Strahlung und Materie (Qualifikationsphase – Grundkurs) 
+Das Inhaltsfeld Strahlung und Materie umfasst Modelle und Vorstellungen vom Aufbau 
+des Atoms, seiner Hülle und seines Kerns  sowie die Entstehung und Eigenschaften 
+von Strahlung, insbesondere ionisierender Strahlung. Die Linienspektren leuchtender 
+Gase und die Ergebnisse des Franck-Hertz-Versuchs begründen das Modell diskreter 
+Energiezustände in der Atomhülle.  Hochenergetische elektromagnetische Strahlung 
+sowie Alph a- und Betastrahlung sind insbesondere  durch ihre Ionisierungsfähigkeit 
+gekennzeichnet. Die Entstehung und die Eigenschaften von ionisierender Strahlung 
+bieten Entscheidungsgrundlagen zum Umgang mit dieser Strahlung in Alltag und  
+Medizin. 
+Ladungen, Felder und Induktion (Qualifikationsphase – Leistungskurs) 
+Im Inhaltsfeld Ladungen, Felder und Induktion  stehen zunächst das elektrische Feld, 
+elektrostatische Phänomene, das elektrische Poten tial und die Auf - und Entladevor-
+
+===== SEITE 20 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+20 
+ 
+gänge am Kondensator im Mittelpunkt. Es folgen die qualitative und quantitat ive Be-
+schreibung des elektrischen und des magnetischen Felds. Eigenschaften elektrischer 
+Ladungsträger und ihr Verhalten in elektrischen und magnetischen Feldern werden 
+untersucht. Die elektromagnetische Induktion stellt eine Verbindung zwischen elektri-
+schen und magnetischen Erscheinungen  dar. Dieses Inhaltsfeld liefert fundamentale 
+Aussagen über elektrische und magnetische Phänomene, die in weiten Bereichen  
+unseres täglichen Lebens vielfältige Anwendung gefunden haben und auch in der  
+Zukunft bedeutsam bleiben werden. 
+Schwingende Systeme und Wellen (Qualifikationsphase – Leistungskurs) 
+Der Untersuchung harmonische r mechanischer Schwingungen und Wellen  und der 
+Beschreibung deren typischer Eigenschaften folgt weitgehend in Analogie die Betrach-
+tung elektromagnetischer Schwingungen und Wellen auch unter Einbeziehung ener-
+getischer Aspekte. Die  mathematische Modellierung mechanischer und 
+elektromagnetischer Schwingungsvorgänge mittels Differen tialgleichungen ist prä-
+gend für dieses Inhaltsfeld. Interferenz an Spalten, Gittern und beim Interferometer 
+wird als typisches Wellenphänomen thematisiert. 
+Quantenphysik (Qualifikationsphase – Leistungskurs) 
+Im Inhaltsfeld Quantenphysik geht es um Eigenschaften von Photonen und Elektronen 
+als Quantenobjekte mit dem Ziel, Abgrenzungen und Unterschiede zwischen Ideen der 
+klassischen Physik und der Quantenphysik aufzuzeigen. Die Sicht auf Quantenobjekte 
+verbindet den Wellen- und Teilchenaspekt der Materie mithilfe von Wahrscheinlich-
+keitsaussagen. In der Quantenphysik spiegelt  sich beispielhaft die moderne Weiter-
+entwicklung des physikalischen Weltbilds wider. 
+Atom- und Kernphysik (Qualifikationsphase – Leistungskurs) 
+Das Inhaltsfeld Atom- und Kernphysik beinhaltet den Aufbau des Atoms, seiner Hülle 
+und seines Kerns sowie den Au fbau der Materie im Kleinsten . Betrachtet werden au-
+ßerdem ionisierende Strahlung , radioaktive Zerfallsprozesse bei Atomkernen  sowie 
+Kernumwandlungen durch Kernspaltung und Kernfusion. Die Behandlung von Atom - 
+und Kernphysik bietet einerseits einen Einblick  in den Aufbau der Materie unter dem 
+Aspekt des Wandels historischer Atommodelle und liefert andererseits Entscheidungs-
+grundlagen für die Einschätzung des Für und Wider s im Umgang mit ionisierender 
+Strahlung und deren Nutzung in Alltag und Medizin. 
+  
+
+===== SEITE 21 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+21 
+ 
+2.1.3 Basiskonzepte 
+Die Basiskonzepte werden übergreifend auf alle Kompetenzbereiche bezogen. Sie 
+können kumulatives Lernen, den Aufbau von strukturiertem Wissen und die Erschlie-
+ßung neuer Inhalte fördern. 
+Basiskonzepte werden in Lehr-Lernprozessen wiederholt thematisiert und ausdifferen-
+ziert. Den Schülerinnen und Schülern wird aufgezeigt, dass diese grundlegenden Kon-
+zepte in vielen verschiedenen Lernbereichen einsetzbar sind und einen 
+systematischen Wissensaufbau und somit den Erwerb eines strukturierten und mit an-
+deren Naturwissenschaften vernetzten Wissens unterstützen 
+Die Bildungsstandards im Fach Physik für die Allgemeine Hochschulreife geben fol-
+gende Basiskonzepte vor: 
+• Erhaltung und Gleichgewicht 
+• Superposition und Komponenten 
+• Mathematisieren und Vorhersagen 
+• Zufall und Determiniertheit 
+In den Kapiteln 2. 2 und 2.3 werden jeweils im Anschluss an die inhaltlichen Schwer-
+punkte und die konkretisierten Kompetenzerwartungen ausgewählte Beiträge zu den 
+Basiskonzepten aufgeführt. Die dort exemplarisch aufgezeigten Asp ekte des Inhalts-
+feldes eignen sich besonders als Beitrag zum Aufbau des jeweiligen Basiskonzepts, 
+sind jedoch nicht als abschließende Auflistung zu verstehen. 
+ 
+ 
+ 
+ 
+ 
+  
+
+===== SEITE 22 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+22 
+ 
+2.2 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Einführungsphase  
+Am Ende der Einführungsphase sollen die Schülerinnen und Schüler – aufbauend auf 
+der Kompetenzentwicklung in der Sekundarstufe I – über die im Folgenden genannten 
+übergeordneten Kompetenzerwartungen zu allen Kompetenzbereichen verfügen.  
+Während der Kompet enzbereich Kommunikation ausschließlich inhaltsfeldübergrei-
+fend angelegt ist, werden in den Be reichen Sachkompetenz, Erkenntnisgewinnungs-
+kompetenz und Bewertungskompetenz  anschließend inhalt sfeldbezogen 
+konkretisierte Kompetenzerwartungen formuliert. Hinte r den konkretisierten Kompe-
+tenzerwartungen ist jeweils in Klammern angegeben, auf welche übergeordneten 
+Kompetenzerwartungen aus allen Bereichen sich diese beziehen.  
+Sachkompetenz 
+Modelle und Konzepte zur Bearbeitung von Aufgaben und Problemen nutzen  
+Die Schülerinnen und Schüler  
+S1  erklären Phänomene und Zusammenhänge unter Verwendung von Konzepten, 
+übergeordneten Prinzipien, Modellen und Gesetzen, 
+S2  beschreiben Gültigkeitsbereiche von Modellen und Konzepten und geben deren 
+Aussage- und Vorhersagemöglichkeiten an, 
+S3 wählen zur Bearbeitung physikalischer Probleme relevante Modelle und Kon-
+zepte sowie funktionale Beziehungen zwischen physikalischen Größen begrün-
+det aus. 
+Verfahren und Experimente zur Bearbeitung von Aufgaben und Problemen nutzen 
+Die Schülerinnen und Schüler  
+S4 bauen einfache Versuchsanordnungen auch unter Verwendung von digitalen 
+Messwerterfassungssystemen nach Anleitungen auf, führen Experimente durch 
+und protokollieren ihre qualitativen Beobachtungen und quantitativen Mess-
+werte,  
+S5 beschreiben bekannte Messverfahren sowie die Funktion einzelner Komponen-
+ten eines Versuchsaufbaus, 
+S6 nutzen bekannte Auswerteverfahren für Messergebnisse, 
+
+===== SEITE 23 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+23 
+ 
+S7 wenden unter Anleitung mathematische Verfahren auf physikalische Sachver-
+halte an. 
+Erkenntnisgewinnungskompetenz 
+Fragestellungen und Hypothesen auf Basis von Beobachtungen und Konzepten bil-
+den 
+Die Schülerinnen und Schüler 
+E1 identifizieren und entwickeln Fragestellungen zu physikalischen Sachverhalten, 
+E2 stellen überprüfbare Hypothesen zur Bearbeitung von Fragestellungen auf. 
+Fachspezifische Modelle und Verfahren charakterisieren, auswählen und zur Unter-
+suchung von Sachverhalten nutzen 
+Die Schülerinnen und Schüler  
+E3 erläutern an ausgewählten Beispielen die Eignung von Untersuchungsverfah-
+ren zur Prüfung bestimmter Hypothesen, 
+E4 modellieren Phänomene physikalisch, auch mithilfe  einfacher mathematischer 
+Darstellungen und digitaler Werkzeuge,  
+E5 konzipieren erste Experimente und Auswertungen zur Untersuchung einer phy-
+sikalischen Fragestellung unter Beachtung der Variablenkontrolle. 
+ Erkenntnisprozesse und Ergebnisse interpretieren und reflektieren 
+ 
+Die Schülerinnen und Schüler  
+E6 untersuchen mithilfe bekannter Modelle und Konzepte die in erhobenen oder 
+recherchierten Daten vorliegenden Strukturen und Beziehungen, 
+E7 berücksichtigen Messunsicherheiten bei der Interpretation der Ergebnisse, 
+E8 untersuchen die Eignung physikalischer Modelle und Konzepte für die Lösung 
+von Problemen, 
+E9 beschreiben an ausgewählten Beispielen die Relevanz von Modellen, Konzep-
+ten, Hypothesen und Experimenten im Prozess der physikalischen Erkenntnis-
+gewinnung.  
+  
+
+===== SEITE 24 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+24 
+ 
+Merkmale wissenschaftlicher Aussagen und Methoden charakterisieren und reflektie-
+ren 
+Die Schülerinnen und Schüler  
+E10 beziehen theoretische Überlegungen und Modelle zurück auf zugrundeliegende 
+Kontexte, 
+E11 reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungs-
+prozesses an ausgewählten Beispielen. 
+Kommunikationskompetenz 
+Informationen erschließen  
+Die Schülerinnen und Schüler  
+K1 recherchieren zu physikalischen Sachverhalten zielgerichtet in analogen und 
+digitalen Medien und wählen für ihre Zwecke passende Quellen aus,  
+K2 analysieren verwendete Quellen hinsichtlich der Kriterien Korrektheit, Fach-
+sprache und Relevanz für den untersuchten Sachverhalt,  
+K3 entnehmen unter Anleitung und Berücksichtigung ihres Vorwissens aus Be-
+obachtungen, Darstellungen und Texten relevante Informationen und  geben 
+diese in passender Struktur und angemessener Fachsprache wieder. 
+Informationen aufbereiten 
+Die Schülerinnen und Schüler  
+K4 formulieren unter Verwendung der Fachsprache kausal korrekt, 
+K5 wählen ziel-, sach- und adressatengerecht geeignete Schwerpunkte für die In-
+halte von kurzen Vorträgen und schriftlichen Ausarbeitungen aus, 
+K6 veranschaulichen Informationen und Daten auch mithilfe digitaler Werkzeuge,  
+K7 präsentieren physikalische Sachverhalte sowie Lern- und Arbeitsergebnisse un-
+ter Einsatz geeigneter analoger und digitaler Medien.    
+Informationen austauschen und wissenschaftlich diskutieren 
+Die Schülerinnen und Schüler  
+K8 nutzen ihr Wissen über aus physikalischer Sicht gültige Argumentationsketten 
+zur Beurteilung vorgegebener Darstellungen, 
+
+===== SEITE 25 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+25 
+ 
+K9 tauschen sich ausgehend vom eigenen Standpunkt mit anderen konstruktiv  
+über physikalische Sachverhalte auch in digitalen kollaborativen Arbeitssituati-
+onen aus,  
+K10 belegen verwendete Quellen und kennzeichnen Zitate.  
+Bewertungskompetenz 
+Sachverhalte und Informationen multiperspektivisch beurteilen 
+Die Schülerinnen und Schüler  
+B1 erarbeiten aus verschiedenen Perspektiven eine schlüssige Argumentation, 
+B2 analysieren Informationen und deren Darstellung aus Quellen unterschiedlicher 
+Art hinsichtlich ihrer Relevanz.  
+Kriteriengeleitet Meinungen bilden und Entscheidungen treffen 
+Die Schülerinnen und Schüler  
+B3 entwickeln anhand festgelegter Bewertungskriterien Handlungsoptionen in ge-
+sellschaftlich- oder alltagsrelevanten Entscheidungssituationen mit fachlichem 
+Bezug,  
+B4 bilden sich reflektiert ein eigenes Urteil. 
+Entscheidungsprozesse und Folgen reflektieren 
+ 
+Die Schülerinnen und Schüler  
+B5 vollziehen Bewertungen von Technologien und Sicherheitsmaßnahmen oder 
+Risikoeinschätzungen nach, 
+B6 beurteilen Technologien und Sicherheitsmaßnahmen hinsichtlich ihrer Eignung 
+auch in Alltagssituationen,  
+B7 identifizieren kurz- und langfristige Folgen eigener und gesellschaftlicher Ent-
+scheidungen mit physikalischem Hintergrund,  
+B8 identifizieren Auswirkungen physikalischer Weltbetrachtung sowie die Bedeu-
+tung physikalischer Kompetenzen in historischen, gesellschaftlichen oder all-
+täglichen Zusammenhängen. 
+  
+
+===== SEITE 26 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+26 
+ 
+Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung 
+der nachfolgenden, für die  Einführungsphase obligatorischen Inhaltsfelder entwi-
+ckelt werden: 
+• Grundlagen der Mechanik 
+• Kreisbewegung, Gravitation und physikalische Weltbilder 
+Bezieht man übergeordnete Kompetenzerwartungen (Kap. 2.2) sowie die unten auf-
+geführten inhaltlichen Schwerpunkte aufeinander, so ergeben sich die nachfolgen-
+den konkretisierten Kompetenzerwartungen: 
+Inhaltsfeld Grundlagen der Mechanik  
+Sachkompetenz 
+Die Schülerinnen und Schüler  
+• erläutern die Größen Ort, Strecke, Geschwindigkeit, Beschleunigung, Masse, 
+Kraft, Energie, Leistung, Impuls und ihre Beziehungen zueinander an unter-
+schiedlichen Beispielen (S1, K4), 
+• unterscheiden gleichförmige und gleichmäßig beschleunigte Bewegungen und 
+erklären zugrunde liegende Ursachen auch am waagerechten Wurf (S2, S3, 
+S4, S7), 
+• beschreiben eindimensionale Stoßvorgänge mit Impuls- und Energieübertra-
+gung (S1, S2, K3), 
+• analysieren in verschiedenen Kontexten Bewegungen qualitativ und quantita-
+tiv sowohl anhand wirkender Kräfte als auch aus energetischer Sicht (S1, S3, 
+S4, K7), 
+• stellen Bewegungs- und Gleichgewichtszustände durch Komponentenzerle-
+gung bzw. Vektoraddition dar (S1, S7, K7), 
+• erklären mithilfe von Erhaltungssätzen sowie den Newton’schen Gesetzen Be-
+wegungen (S1, E2, K4), 
+Inhaltliche Schwerpunkte: 
+­ Kinematik: gleichförmige und gleichmäßig beschleunigte Bewegung; freier 
+Fall; waagerechter Wurf; vektorielle Größen 
+­ Dynamik: Newton‘sche Gesetze; beschleunigende Kräfte; Kräftegleichgewicht; 
+Reibungskräfte 
+­ Erhaltungssätze: Impuls; Energie (Lage-, Bewegungs- und Spannenergie); 
+Energiebilanzen; Stoßvorgänge 
+
+===== SEITE 27 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+27 
+ 
+• erläutern qualitativ die Auswirkungen von Reibungskräften bei realen Bewe-
+gungen (S1, S2, K4). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• planen selbstständig Experimente zur quantitativen und qualitativen Untersu-
+chung einfacher Bewegungen (E5, S5), 
+• interpretieren die Messdatenauswertung von Bewegungen unter qualitativer 
+Berücksichtigung von Messunsicherheiten (E7, S6, K9), 
+• untersuchen Bewegungen mithilfe von Erhaltungssätzen sowie des 
+Newton‘schen Kraftgesetzes (E4, K4), 
+• begründen die Auswahl relevanter Größen bei der Analyse von Bewegungen 
+(E3, E8, S5, K4),  
+• ermitteln anhand von Messdaten und Diagrammen funktionale Beziehungen 
+zwischen mechanischen Größen (E6, E4, S6, K6), 
+• bestimmen Geschwindigkeiten und Beschleunigungen mithilfe mathemati-
+scher Verfahren und digitaler Werkzeuge (E4, S7).  
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• beurteilen die Güte digitaler Messungen von Bewegungsvorgängen mithilfe 
+geeigneter Kriterien (B4, B5, E7, K7),  
+• bewerten Ansätze aktueller und zukünftiger Mobilitätsentwicklung unter den 
+Aspekten Sicherheit und mechanischer Energiebilanz (B3, B6, B7, E1, K5),  
+• bewerten die Darstellung bekannter, vorrangig mechanischer Phänomene in 
+verschiedenen Medien bezüglich ihrer Relevanz und Richtigkeit (B1, B2, K2, 
+K8).  
+ 
+
+===== SEITE 28 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+28 
+ 
+  
+ 
+Inhaltsfeld Kreisbewegung, Gravitation und physikalische Weltbilder  
+Sachkompetenz 
+Die Schülerinnen und Schüler  
+• erläutern auch quantitativ die kinematischen Größen der gleichförmigen Kreis-
+bewegung Radius, Drehwinkel, Umlaufzeit, Umlauffrequenz, Bahngeschwin-
+digkeit, Winkelgeschwindigkeit und Zentripetalbeschleunigung sowie deren 
+Beziehungen zueinander (S1, S7, K4), 
+• beschreiben quantitativ die bei einer gleichförmigen Kreisbewegung wirkende 
+Zentripetalkraft in Abhängigkeit der Beschreibungsgrößen dieser Bewegung 
+(S1, K3), 
+Inhaltliche Schwerpunkte: 
+­ Kreisbewegung: gleichförmige Kreisbewegung, Zentripetalkraft  
+­ Gravitation: Schwerkraft, Newton‘sches Gravitationsgesetz, Kepler‘sche Ge-
+setze; Gravitationsfeld 
+­ Wandel physikalischer Weltbilder: geo- und heliozentrische Weltbilder; Grund-
+prinzipien der speziellen Relativitätstheorie, Zeitdilatation 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Impuls sowie mechanische Energie sind erste Beispiele für streng bilanzierbare 
+Erhaltungsgrößen in der Physik.  
+Superposition und Komponenten: 
+Geschwindigkeit, Beschleunigung, Kraft und Impuls sind Beispiele für vektorielle 
+Größen. Die Komponentenzerlegung dieser vektoriellen Größen erlaubt die Be-
+schreibung komplexer Bewegungen. 
+Mathematisieren und Vorhersagen: 
+Unterschiedliche mathematische Darstellungsformen mittels Tabellen, Diagram-
+men und Gesetzen ermöglichen eine formale Beschreibung von Bewegungen. 
+Zufall und Determiniertheit: 
+Die statistische Messunsicherheit bei der Aufnahme realer Messwerte von 
+Bewegungen ist ein Beispiel für den Umgang mit dem Zufall in der Physik.  
+
+===== SEITE 29 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+29 
+ 
+• erläutern die Abhängigkeiten der Massenanziehungskraft zweier Körper an-
+hand des Newton‘schen Gravitationsgesetzes im Rahmen des Feldkonzepts 
+(S2, S3, K4), 
+• stellen Änderungen bei der Beschreibung von Bewegungen der Himmelskör-
+per beim Übergang vom geozentrischen Weltbild zu modernen physikalischen 
+Weltbildern auf der Basis zentraler astronomischer Beobachtungsergebnisse 
+dar (S2, K1, K3, K10),  
+• erläutern die Bedeutung von Bezugsystemen bei der Beschreibung von Bewe-
+gungen (S2, S3, K4), 
+• erläutern die Bedeutung der Invarianz der Lichtgeschwindigkeit als Ausgangs-
+punkt für die Entwicklung der speziellen Relativitätstheorie (S2, S3, K4), 
+• erklären mit dem Gedankenexperiment der Lichtuhr unter Verwendung grund-
+legender Prinzipien der speziellen Relativitätstheorie das Phänomen der Zeit-
+dilatation zwischen bewegten Bezugssystemen qualitativ und quantitativ (S3, 
+S5, S7). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• interpretieren Messergebnisse aus Experimenten zur quantitativen Untersu-
+chung der Zentripetalkraft (E4, E6, S6, K9), 
+• deuten eine vereinfachte Darstellung des Cavendish-Experiments qualitativ 
+als direkten Nachweis der allgemeinen Massenanziehung (E3, E6), 
+• ermitteln mithilfe der Kepler‘schen Gesetze und des Newton’schen Gravitati-
+onsgesetzes astronomische Größen (E4, E8, E10), 
+• ziehen das Ergebnis des Gedankenexperiments der Lichtuhr zur Widerlegung 
+der absoluten Zeit heran (E9, E11, K9, B1). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• ordnen die Bedeutung des Wandels vom geozentrischen zum heliozentri-
+schen Weltbild für die Emanzipation der Naturwissenschaften von der Religion 
+ein (B8, K3), 
+• beurteilen Informationen zu verschiedenen Weltbildern und deren Darstellun-
+gen aus unterschiedlichen Quellen hinsichtlich ihrer Vertrauenswürdigkeit und 
+Relevanz (B2, K9, K10). 
+
+===== SEITE 30 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+30 
+ 
+  
+ 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Mathematisieren und Vorhersagen: 
+Die Berechnung der Bahndaten von Satelliten und Planeten anhand des 
+Newton’schen Gravitationsgesetzes sowie die Bestimmung astronomischer Grö-
+ßen auf Basis der Kepler’schen Gesetze zeigen die Vorhersagbarkeit dieser Vor-
+gänge. 
+Zufall und Determiniertheit: 
+Die Regelmäßigkeit der Planetenbewegungen um die Sonne ist ein Beispiel für die 
+Determiniertheit physikalischer Abläufe durch Naturgesetze. 
+
+===== SEITE 31 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+31 
+ 
+2.3 Kompetenzerwartungen und Inhaltliche Schwerpunkte bis zum 
+Ende der Qualifikationsphase  
+Am Ende der Qualifikationsphase sollen die Schülerinnen und Schüler – aufbauend 
+auf der Kompetenzentwicklung in der Einführungsphase – über die im Folgenden ge-
+nannten übergeordneten Kompetenzerwartungen zu allen Kompetenzbereichen 
+verfügen.  
+Während der Kompetenzbereich Kommunikation ausschließlich inhaltsfeldübergrei-
+fend angelegt ist, werden in den Be reichen Sachkompetenz, Erkenntnisgewinnungs-
+kompetenz und Bewertungskompetenz  anschließend inhalt sfeldbezogen 
+konkretisierte Kompetenzerwartungen formuliert. Hinter den konkretisierten Kompe-
+tenzerwartungen ist jeweils in Klammern angegeben, auf welche übergeordneten 
+Kompetenzerwartungen aus allen Bereichen sich diese beziehen.  
+Sachkompetenz 
+Modelle und Theorien zur Bearbeitung von Aufgaben und Problemen nutzen  
+Die Schülerinnen und Schüler  
+S1  erklären Phänomene und Zusammenhänge unter Verwendung von Theorien, 
+übergeordneten Prinzipien, Modellen und Gesetzen auch auf der Grundlage ei-
+nes vernetzten physikalischen Wissens, 
+S2  beschreiben Gültigkeitsbereiche von Modellen und Theorien und erläutern de-
+ren Aussage- und Vorhersagemöglichkeiten, 
+S3 wählen zur Bearbeitung physikalischer Probleme relevante Modelle und Theo-
+rien sowie funktionale Beziehungen zwischen physikalischen Größen begrün-
+det aus. 
+Verfahren und Experimente zur Bearbeitung von Aufgaben und Problemen nutzen 
+Die Schülerinnen und Schüler  
+S4 bauen Versuchsanordnungen auch unter Verwendung von digitalen Messwer-
+terfassungssystemen nach Anleitungen auf, führen Experimente durch und pro-
+tokollieren ihre qualitativen Beobachtungen und quantitativen Messwerte,  
+S5 erklären bekannte Messverfahren sowie die Funktion einzelner Komponenten 
+eines Versuchsaufbaus, 
+S6 erklären bekannte Auswerteverfahren und wenden sie auf Messergebnisse an, 
+
+===== SEITE 32 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+32 
+ 
+S7 wenden bekannte mathematische Verfahren auf physikalische Sachverhalte an. 
+Erkenntnisgewinnungskompetenz 
+Fragestellungen und Hypothesen auf Basis von Beobachtungen und Theorien bilden 
+Die Schülerinnen und Schüler 
+E1 identifizieren und entwickeln in unterschiedlichen Kontexten naturwissenschaft-
+lich-technische Probleme und Fragestellungen zu physikalischen Sachverhal-
+ten, 
+E2 stellen theoriegeleitet Hypothesen zur Bearbeitung von Fragestellungen auf. 
+Fachspezifische Modelle und Verfahren charakterisieren, auswählen und zur Unter-
+suchung von Sachverhalten nutzen 
+Die Schülerinnen und Schüler  
+E3 beurteilen die Eignung von Untersuchungsverfahren zur Prüfung bestimmter 
+Hypothesen, 
+E4 modellieren Phänomene physikalisch, auch mithilfe mathematischer Darstellun-
+gen und digitaler Werkzeuge, wobei sie theoretische Überlegungen und experi-
+mentelle Erkenntnisse aufeinander beziehen,  
+E5 konzipieren geeignete Experimente und Auswertungen zur Untersuchung einer 
+physikalischen Fragestellung unter Beachtung der Variablenkontrolle. 
+ Erkenntnisprozesse und Ergebnisse interpretieren und reflektieren 
+ 
+Die Schülerinnen und Schüler  
+E6 erklären mithilfe bekannter Modelle und Theorien die in erhobenen oder recher-
+chierten Daten gefundenen Strukturen und Beziehungen, 
+E7 berücksichtigen Messunsicherheiten und analysieren die Konsequenzen für die 
+Interpretation des Ergebnisses, 
+E8 beurteilen die Eignung physikalischer Modelle und Theorien für die Lösung von 
+Problemen, 
+E9 reflektieren die Relevanz von Modellen, Theorien, Hypothesen und Experimen-
+ten im Prozess der physikalischen Erkenntnisgewinnung.  
+  
+
+===== SEITE 33 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+33 
+ 
+Merkmale wissenschaftlicher Aussagen und Methoden charakterisieren und reflektie-
+ren 
+Die Schülerinnen und Schüler  
+E10 beziehen theoretische Überlegungen und Modelle zurück auf zugrundeliegende 
+Kontexte und reflektieren ihre Generalisierbarkeit, 
+E11 reflektieren Möglichkeiten und Grenzen des konkreten Erkenntnisgewinnungs-
+prozesses sowie der gewonnenen Erkenntnisse (z. B. Reproduzierbarkeit, Fal-
+sifizierbarkeit, Intersubjektivität, logische Konsistenz, Vorläufigkeit). 
+Kommunikationskompetenz 
+Informationen erschließen  
+Die Schülerinnen und Schüler  
+K1 recherchieren zu physikalischen Sachverhalten zielgerichtet in analogen und 
+digitalen Medien und wählen für ihre Zwecke passende Quellen aus,  
+K2 prüfen verwendete Quellen hi nsichtlich der Kriterien Korrektheit, Fachsprache 
+und Relevanz für den untersuchten Sachverhalt,  
+K3 entnehmen unter Berücksichtigung ihres Vorwissens aus Beobachtungen, Dar-
+stellungen und Texten relevante Informationen und geben diese in passender 
+Struktur und angemessener Fachsprache wieder. 
+Informationen aufbereiten 
+Die Schülerinnen und Schüler  
+K4 formulieren unter Verwendung der Fachsprache chronologisch und kausal kor-
+rekt strukturiert, 
+K5 wählen ziel-, sach- und adressatengerecht geeignete Schwerpunkte für die In-
+halte von Präsentationen, Diskussionen oder anderen Kommunikationsformen 
+aus, 
+K6 veranschaulichen Informationen und Daten in ziel -, sach - und adressatenge-
+rechten Darstellungsformen, auch mithilfe digitaler Werkzeuge,  
+K7 präsentieren physikalisc he Sachverhalte sowie Lern - und Arbeitsergebnisse 
+sach-, adressaten- und situationsgerecht unter Einsatz geeigneter analoger und 
+digitaler Medien.  
+
+===== SEITE 34 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+34 
+ 
+Informationen austauschen und wissenschaftlich diskutieren 
+Die Schülerinnen und Schüler  
+K8 nutzen ihr Wissen über aus physikalischer Sicht gültige Argumentationsketten 
+zur Beurteilung vorgegebener und zur Entwicklung eigener innerfachlicher Ar-
+gumentationen, 
+K9 tauschen sich mit anderen konstruktiv über physikalische Sachverhalte auch in 
+digitalen kollaborativen Arbeitssituationen aus, vertreten, reflektieren und korri-
+gieren gegebenenfalls den eigenen Standpunkt,  
+K10 prüfen die Urheberschaft, belegen verwendete Quellen und kennzeichnen Zi-
+tate.  
+Bewertungskompetenz 
+Sachverhalte und Informationen multiperspektivisch beurteilen 
+Die Schülerinnen und Schüler  
+B1 erläutern aus verschiedenen Perspektiven Eigenschaften einer schlüssigen und 
+überzeugenden Argumentation, 
+B2 beurteilen Informationen und deren Darstellung aus Quellen unterschiedlicher 
+Art hinsichtlich Vertrauenswürdigkeit und Relevanz.  
+Kriteriengeleitet Meinungen bilden und Entscheidungen treffen 
+Die Schülerinnen und Schüler  
+B3 entwickeln anhand geeigneter Bewertungskriterien Handlungsoptionen in ge-
+sellschaftlich- oder alltagsrelevanten Entscheidungssi tuationen mit fachlichem 
+Bezug und wägen diese gegeneinander ab,  
+B4 bilden sich reflektiert und rational in außerfachlichen Kontexten ein eigenes Ur-
+teil. 
+Entscheidungsprozesse und Folgen reflektieren 
+ 
+Die Schülerinnen und Schüler  
+B5 reflektieren Bewertungen von Technologien und Sicherheitsmaßnahmen oder 
+Risikoeinschätzungen hinsichtlich der Güte des durchgeführten Bewertungs-
+prozesses, 
+
+===== SEITE 35 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+35 
+ 
+B6 beurteilen Technologien und Sicherheitsmaßnahmen hinsichtlich ihrer Eignung 
+und Konsequenzen und schätzen Risiken, auch in Alltagssituationen, ein, 
+B7 reflektieren kurz- und langfristige, lokale und globale Folgen eigener und gesell-
+schaftlicher Entscheidungen mit physikalischem Hintergrund,  
+B8 reflektieren Auswirkungen physikalischer Weltbetrachtung sowie die Bedeutung 
+physikalischer Kompetenzen in historischen, gesellschaftlichen oder alltägli-
+chen Zusammenhängen. 
+ 
+2.3.1 Grundkurs 
+Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung 
+der nachfolgenden, für die Qualifikationsphase obligatorischen Inhaltsfelder entwi-
+ckelt werden: 
+• Klassische Wellen und geladene Teilchen in Feldern 
+• Quantenobjekte 
+• Elektrodynamik und Energieübertragung 
+• Strahlung und Materie 
+Bezieht man übergeordnete Kompetenzerwartungen  (Kap. 2.3) sowie die unten auf-
+geführten inhaltlichen Schwerpunkte aufeinander, so ergeben sich die nachfolgen-
+den konkretisierten Kompetenzerwartungen: 
+Inhaltsfeld Klassische Wellen und geladene Teilchen in Feldern  
+  
+Inhaltliche Schwerpunkte: 
+­ Klassische Wellen: Federpendel, mechanische harmonische Schwingungen 
+und Wellen; Huygens‘sches Prinzip, Reflexion, Brechung, Beugung; Superpo-
+sition und Polarisation von Wellen 
+­ Teilchen in Feldern: elektrische und magnetische Felder; elektrische Feld-
+stärke, elektrische Spannung; magnetische Flussdichte; Bahnformen von gela-
+denen Teilchen in homogenen Feldern 
+
+===== SEITE 36 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+36 
+ 
+Sachkompetenz 
+Die Schülerinnen und Schüler  
+• erläutern die Eigenschaften harmonischer mechanischer Schwingungen und 
+Wellen, deren Beschreibungsgrößen Elongation, Amplitude, Periodendauer, 
+Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit sowie deren Zusam-
+menhänge (S1, S3), 
+• erläutern am Beispiel des Federpendels Energieumwandlungen harmonischer 
+Schwingungen (S1, S2, K4), 
+• erläutern mithilfe der Wellenwanne qualitativ auf der Grundlage des 
+Huygens’schen Prinzips Kreiswellen, ebene Wellen sowie die Phänomene Re-
+flexion, Brechung, Beugung und Interferenz (S1, E4, K6), 
+• erklären mithilfe der Superposition stehende Wellen (S1, E6, K3), 
+• erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudi-
+nal- und Transversalwellen (S2, E3, K8), 
+• stellen elektrische Feldlinienbilder von homogenen, Radial- und Dipolfeldern 
+sowie magnetische Feldlinienbilder von homogenen und Dipolfeldern dar (S1, 
+K6), 
+• beschreiben Eigenschaften und Wirkungen homogener elektrischer und mag-
+netischer Felder und erläutern die Definitionsgleichungen der elektrischen 
+Feldstärke und der magnetischen Flussdichte (S2, S3, E6), 
+• erläutern am Beispiel des Plattenkondensators den Zusammenhang zwischen 
+elektrischer Spannung und elektrischer Feldstärke im homogenen elektrischen 
+Feld (S3), 
+• berechnen Geschwindigkeitsänderungen von Ladungsträgern nach Durchlau-
+fen einer elektrischen Spannung (S1, S3, K3), 
+• erläutern am Fadenstrahlrohr die Erzeugung freier Elektronen durch den glüh-
+elektrischen Effekt, deren Beschleunigung beim Durchlaufen eines elektri-
+schen Felds sowie deren Ablenkung im homogenen magnetischen Feld durch 
+die Lorentzkraft (S4, S6, E6, K5). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• konzipieren Experimente zur Abhängigkeit der Periodendauer von Einflussgrö-
+ßen beim Federpendel und werten diese unter Anwendung digitaler Werk-
+zeuge aus (E6, S4, K6),  
+• ordnen dem zeitlichen Verlauf von Elongation, Geschwindigkeit und Beschleu-
+nigung deren Funktionsgleichungen zu und wenden diese an (E4, E6, S3), 
+• weisen anhand des Interferenzmusters bei Doppelspalt- und Gitterversuchen 
+mit mono- und polychromatischem Licht die Wellennatur des Lichts nach und 
+
+===== SEITE 37 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+37 
+ 
+bestimmen daraus Wellenlängen (E7, E8, K4), 
+• entwickeln mithilfe des Superpositionsprinzips elektrische und magnetische 
+Feldlinienbilder (E4, E6), 
+• modellieren mathematisch die Beobachtungen am Fadenstrahlrohr und ermit-
+teln aus den Messergebnissen die Elektronenmasse (E4, E9, K7), 
+• erläutern Experimente zur Variation elektrischer Einflussgrößen und deren 
+Auswirkungen auf die Bahnformen von Ladungsträgern in homogenen elektri-
+schen und magnetischen Feldern (E2, K4), 
+• schließen aus der statistischen Auswertung einer vereinfachten Version des 
+Millikan-Versuchs auf die Existenz einer kleinsten Ladung (E3, E11, K8), 
+• wenden eine Messmethode zur Bestimmung der magnetischen Flussdichte an 
+(E3, K6), 
+• erschließen sich die Funktionsweise des Zyklotrons auch mithilfe von Simulati-
+onen (E1, E10, S1, K1). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler 
+• beurteilen die Schutzwirkung des Erdmagnetfeldes gegen den Strom gelade-
+ner Teilchen aus dem Weltall (B4, K3) 
+• beurteilen Maßnahmen zur Störgeräuschreduzierung hinsichtlich deren Eig-
+nung (B7, K1, K5).  
+  
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Mithilfe der Energieerhaltung können periodische Zustandsänderungen bei mecha-
+nischen Schwingungen erläutert werden. 
+Superposition und Komponenten: 
+Das Superpositionsprinzip kann die Überlagerung mechanischer Wellen beschrei-
+ben. 
+Mathematisieren und Vorhersagen: 
+Im Rahmen der klassischen Betrachtung von Teilchen in Feldern lassen sich am 
+Beispiel des Fadenstrahlrohrs exakte Vorhersagen über die Bahnen geladener Teil-
+chen treffen. 
+ 
+
+===== SEITE 38 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+38 
+ 
+Inhaltsfeld Quantenobjekte  
+Sachkompetenz 
+Die Schülerinnen und Schüler  
+• erläutern anhand eines Experiments zum Photoeffekt den Quantencharakter 
+von Licht (S1, E9, K3), 
+• stellen die Lichtquanten- und De-Broglie-Hypothese sowie deren Unterschied 
+zur klassischen Betrachtungsweise dar (S1, S2, E8, K4), 
+• wenden die De-Broglie-Beziehung an, um das Beugungsbild beim Doppel-
+spaltversuch mit Elektronen quantitativ zu erklären (S1, S5, E6, K9), 
+• erläutern die Determiniertheit der Zufallsverteilung der diskreten Energieab-
+gabe beim Doppelspaltexperiment mit stark intensitätsreduziertem Licht (S3, 
+E6, K3), 
+• berechnen Energie und Impuls über Frequenz und Wellenlänge für Quanteno-
+bjekte (S3), 
+• erklären an einer exemplarischen Darstellung die Wahrscheinlichkeitsinterpre-
+tation für Quantenobjekte (S1, K3), 
+• erläutern bei Quantenobjekten die „Welcher-Weg“-Information als Bedingung 
+für das Auftreten oder Ausbleiben eines Interferenzmusters in einem Interfe-
+renzexperiment (S2, K4). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• leiten anhand eines Experiments zum Photoeffekt den Zusammenhang von 
+Energie, Wellenlänge und Frequenz von Photonen ab (E6, S6), 
+• untersuchen mithilfe von Simulationen das Verhalten von Quantenobjekten am 
+Doppelspalt (E4, E8, K6, K7),  
+• beurteilen an Beispielen die Grenzen und Gültigkeitsbereiche von Wellen- und 
+Teilchenmodellen für Licht und Elektronen (E9, E11, K8). 
+Inhaltliche Schwerpunkte: 
+­ Teilchenaspekte von Photonen: Energiequantelung von Licht, Photoeffekt 
+­ Wellenaspekt von Elektronen: De-Broglie-Wellenlänge, Interferenz von Elekt-
+ronen am Doppelspalt 
+­ Photon und Elektron als Quantenobjekte: Wellen- und Teilchenmodell, Kopen-
+hagener Deutung 
+
+===== SEITE 39 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+39 
+ 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler 
+• erläutern die Problematik der Übertragbarkeit von Begriffen aus der Anschau-
+ungswelt auf Quantenobjekte (B1, K8), 
+• stellen die Kontroverse um den Realitätsbegriff der Kopenhagener Deutung 
+dar (B8, K9), 
+• beschreiben anhand quantenphysikalischer Betrachtungen die Grenzen der 
+physikalischen Erkenntnisfähigkeit (B8, E11, K8). 
+ 
+ 
+  
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Deutung des Photoeffekts ist ein Beispiel für die Anwendung der Energieerhal-
+tung. 
+Superposition und Komponenten: 
+Die konstruktive und destruktive Interferenz beim Doppelspaltexperiment mit Quan-
+ten-objekten sind ein Beispiel für die Superposition  quantenmechanischer Zu-
+stände zu einer Auftreffwahrscheinlichkeit. 
+Mathematisieren und Vorhersagen: 
+Die Lichtquantenhypothese ermöglicht zusammen mit Energie - und Impulserhal-
+tung die Mathematisierung von Wechselwirkungsprozessen von Licht mit Materie. 
+Die De-Broglie-Hypothese ermöglicht zusammen mit dem Konzept der Materiewel-
+len eine Mathematisierung der räumlichen Ausbreitung von Elektronen am Doppel-
+spalt. 
+Zufall und Determiniertheit: 
+Die Determiniertheit von Zufallsverteilungen ist charakteristisch für die Aussagen 
+der Quantenphysik. 
+ 
+
+===== SEITE 40 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+40 
+ 
+Inhaltsfeld Elektrodynamik und Energieübertragung  
+Sachkompetenz 
+Die Schülerinnen und Schüler  
+• erläutern das Auftreten von Induktionsspannungen am Beispiel der Leiter-
+schaukel durch die Wirkung der Lorentzkraft auf bewegte Ladungsträger (S3, 
+S4, K4), 
+• führen Induktionserscheinungen bei einer Leiterschleife auf die zeitliche Ände-
+rung der magnetischen Flussdichte oder die zeitliche Änderung der durchsetz-
+ten Fläche zurück (S1, S2, K4), 
+• beschreiben das Induktionsgesetz mit der mittleren Änderungsrate und in dif-
+ferentieller Form des magnetischen Flusses (S7), 
+• untersuchen die gezielte Veränderung elektrischer Spannungen und Strom-
+stärken durch Transformatoren mithilfe angeleiteter Experimente als Beispiel 
+für die technische Anwendung der Induktion (S1, S4, E6, K8), 
+• erklären am physikalischen Modellexperiment zu Freileitungen technologische 
+Prinzipien der Bereitstellung und Weiterleitung von elektrischer Energie (S1, 
+S3, K8), 
+• beschreiben die Kapazität als Kenngröße eines Kondensators und bestimmen 
+diese für den Spezialfall des Plattenkondensators in Abhängigkeit seiner geo-
+metrischen Daten und der Dielektrizitätszahl (S1, S3), 
+• erläutern qualitativ die bei einer elektromagnetischen Schwingung in der Spule 
+und am Kondensator ablaufenden physikalischen Prozesse (S1, S4, E4), 
+• untersuchen den Auf- und Entladevorgang bei Kondensatoren unter Anleitung 
+experimentell (S4, S6, K6). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• interpretieren die mit einem Oszilloskop bzw. Messwerterfassungssystem auf-
+genommenen Daten bei elektromagnetischen Induktions- und Schwingungs-
+versuchen unter Rückbezug auf die experimentellen Parameter (E6, E7, K9), 
+Inhaltliche Schwerpunkte: 
+­ Elektrodynamik: magnetischer Fluss, elektromagnetische Induktion, Indukti-
+onsgesetz; Wechselspannung; Auf- und Entladevorgang am Kondensator 
+­ Energieübertragung: Generator, Transformator; elektromagnetische Schwin-
+gung 
+
+===== SEITE 41 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+41 
+ 
+• modellieren mathematisch das Entstehen von Induktionsspannungen für die 
+beiden Spezialfälle einer zeitlich konstanten Fläche und einer zeitlich konstan-
+ten magnetischen Flussdichte (E4, E6, K7), 
+• modellieren mathematisch den zeitlichen Verlauf der Stromstärke bei Auf- und 
+Entladevorgängen bei Kondensatoren unter Berücksichtigung des Widerstan-
+des und der Kapazität (E4, E6, S7), 
+• erklären das Entstehen von sinusförmigen Wechselspannungen in Generato-
+ren mithilfe des Induktionsgesetzes (E6, E10, K3, K4), 
+• stellen Hypothesen zum Verhalten des Rings beim Thomson’schen Ringver-
+such bei Zunahme und Abnahme des magnetischen Flusses im Ring auf und 
+erklären diese mithilfe des Induktionsgesetzes (E2, E9, S3, K4, K8), 
+• interpretieren den Flächeninhalt zwischen Graph und Abszissenachse im Q-U-
+Diagramm als Energiegehalt des Plattenkondensators (E6, K8). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• beurteilen ausgewählte Beispiele zur Energiebereitstellung und -umwandlung 
+unter technischen und ökologischen Aspekten (B3, B6, K8, K10),  
+• beurteilen den Einsatz des Kondensators als Energiespeicher in ausgewähl-
+ten alltäglichen Situationen (B3, B4, K9), 
+• beurteilen das Potential der Energierückgewinnung auf der Basis von Indukti-
+onsphänomenen bei elektrischen Antriebssystemen (B7, K2). 
+  
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Energieerhaltung ist die Grundlage für die qualitative Erklärung der Prozesse 
+bei ungedämpften elektromagnetischen Schwingungen. 
+Superposition und Komponenten: 
+Die Komponentenzerlegung erklärt Induktionsphänomene bei  einer rotierenden 
+Leiterschleife in einem Magnetfeld. 
+Mathematisieren und Vorhersagen: 
+Das Induktionsgesetz ermöglicht quantitative Vorhersagen von Spannungssigna-
+len. 
+ 
+
+===== SEITE 42 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+42 
+ 
+Inhaltsfeld Strahlung und Materie  
+Sachkompetenz  
+Die Schülerinnen und Schüler  
+• erklären die Energie emittierter und absorbierter Photonen am Beispiel von 
+Linienspektren leuchtender Gase und Fraunhofer’scher Linien mit den unter-
+schiedlichen Energieniveaus in der Atomhülle (S1, S3, E6, K4), 
+• beschreiben die Energiewerte für das Wasserstoffatom mithilfe eines quanten-
+physikalischen Atommodells (S2), 
+• interpretieren die Orbitale des Wasserstoffatoms als Veranschaulichung der 
+Nachweiswahrscheinlichkeiten für das Elektron (S2, K8), 
+• erklären die Entstehung von Bremsstrahlung und charakteristischer Röntgen-
+strahlung (S3, E6, K4), 
+• unterscheiden -, - - Strahlung, Röntgenstrahlung und Schwerionenstrah-
+lung als Arten ionisierender Strahlung (S1), 
+• ordnen verschiedene Frequenzbereiche dem elektromagnetischen Spektrum 
+zu (S1, K6), 
+• erläutern den Aufbau und die Funktionsweise des Geiger-Müller-Zählrohrs als 
+Nachweisgerät für ionisierende Strahlung (S4, S5, K8), 
+• erläutern den Begriff der Radioaktivität und zugehörige Kernumwandlungspro-
+zesse auch mithilfe der Nuklidkarte (S1, S2), 
+• wenden das zeitliche Zerfallsgesetz für den radioaktiven Zerfall an (S5, S6, 
+K6), 
+• erläutern qualitativ den Aufbau eines Atomkerns aus Nukleonen, den Aufbau 
+der Nukleonen aus Quarks sowie die Rolle der starken Wechselwirkung für die 
+Stabilität des Kerns (S1, S2), 
+• erläutern qualitativ an der −-Umwandlung die Entstehung der Neutrinos mit-
+hilfe der schwachen Wechselwirkung und ihrer Austauschteilchen (S1, S2, 
+K4), 
+Inhaltliche Schwerpunkte: 
+­ Strahlung: Spektrum der elektromagnetischen Strahlung; ionisierende Strah-
+lung, Geiger-Müller-Zählrohr, biologische Wirkungen 
+­ Atomphysik: Linienspektrum, Energieniveauschema, Kern-Hülle-Modell, Rönt-
+genstrahlung 
+­ Kernphysik: Nukleonen; Zerfallsprozesse und Kernumwandlungen, Kernspal-
+tung und -fusion 
+
+===== SEITE 43 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+43 
+ 
+• erklären anhand des Zusammenhangs E = m c² die Grundlagen der Energie-
+freisetzung bei Kernspaltung und -fusion über den Massendefekt (S1). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• interpretieren die Bedeutung von Flammenfärbung und Linienspektren bzw. 
+Spektralanalyse für die Entwicklung von Modellen der diskreten Energiezu-
+stände von Elektronen in der Atomhülle (E6, E10), 
+• interpretieren die Messergebnisse des Franck-Hertz-Versuchs (E6, E8, K8), 
+• erklären das charakteristische Röntgenspektrum mit den Energieniveaus der 
+Atomhülle (E6), 
+• identifizieren vorhandene Stoffe in der Sonnen- und Erdatmosphäre anhand 
+von Spektraltafeln des Sonnenspektrums (E3, E6, K1), 
+• untersuchen experimentell anhand der Zählraten bei Absorptionsexperimenten 
+unterschiedliche Arten ionisierender Strahlung (E3, E5, S4, S5), 
+• ermitteln im Falle eines einstufigen radioaktiven Zerfalls anhand der gemesse-
+nen Zählraten die Halbwertszeit (E5, E8, S6), 
+• begründen wesentliche biologisch-medizinische Wirkungen ionisierender 
+Strahlung mit deren typischen physikalischen Eigenschaften (E6, K3), 
+• quantifizieren mit der Größe der effektiven Dosis die Wirkung ionisierender 
+Strahlung und bewerten daraus abgeleitete Strahlenschutzmaßnahmen (E8, 
+S3, B2). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• stellen an der historischen Entwicklung der Atommodelle die spezifischen 
+Eigenschaften und Grenzen naturwissenschaftlicher Modelle heraus (B8, E9), 
+• vergleichen verschiedene Vorstellungen von der Materie mit den Konzepten 
+der modernen Physik (B8, K9), 
+• bewerten die Bedeutung hochenergetischer Strahlung hinsichtlich der Ge-
+sundheitsgefährdung sowie ihres Nutzens bei medizinischer Diagnose und 
+Therapie (B5, B6, K1, K10).  
+
+===== SEITE 44 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+44 
+ 
+2.3.2 Leistungskurs 
+Die Kompetenzen der Schülerinnen und Schüler sollen im Rahmen der Behandlung 
+der nachfolgenden, für die Qualifikationsphase obligatorischen Inhaltsfelder entwi-
+ckelt werden: 
+• Ladungen, Felder und Induktion 
+• Schwingende Systeme und Wellen 
+• Quantenphysik 
+• Atom- und Kernphysik 
+Bezieht man übergeordnete Kompetenzerwartungen  (Kap. 2.3) sowie die unten auf-
+geführten inhaltlichen Schwerpunkte aufeinander, so ergeben sich die nachfolgen-
+den konkretisierten Kompetenzerwartungen: 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Berücksichtigung des Massendefekts erweitert und verallgemeinert das Prinzip 
+der Energieerhaltung in abgeschlossenen physikalischen Systemen. 
+Mathematisieren und Vorhersagen: 
+Quantitative Atommodelle ermöglichen die Berechnung von Energieniveaus des 
+Atoms. 
+Zufall und Determiniertheit: 
+Der Zerfall eines einzelnen Atomkerns und die Beschreibung des zeitlichen Ablaufs 
+des Zerfalls einer großen Menge radioaktiver Atomkerne anhand des Zerfallsgeset-
+zes sind ein Beispiel für den Zusammenhang von Zufall und Determiniertheit phy-
+sikalischer Vorgänge. 
+ 
+
+===== SEITE 45 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+45 
+ 
+Inhaltsfeld Ladungen, Felder und Induktion  
+Sachkompetenz  
+Die Schülerinnen und Schüler  
+• erklären grundlegende elektrostatische Phänomene mithilfe der Eigenschaften 
+elektrischer Ladungen (S1), 
+• stellen elektrische Feldlinienbilder von homogenen, Radial- und Dipolfeldern 
+sowie magnetische Feldlinienbilder von homogenen und Dipolfeldern dar (S1, 
+K6), 
+• beschreiben Eigenschaften und Wirkungen homogener elektrischer und mag-
+netischer Felder und erläutern die Definitionsgleichungen der elektrischen 
+Feldstärke und der magnetischen Flussdichte (S2, S3, E6), 
+• erläutern den Zusammenhang von elektrischer Feldstärke, elektrischer Span-
+nung und Energie quantitativ im Plattenkondensator und qualitativ im Radial-
+feld unter Verwendung der Begriffe Potential und Potentialdifferenz (S1, S3, 
+K4), 
+• erläutern anhand einer einfachen Version des Millikan-Versuchs die grundle-
+genden Ideen und Ergebnisse zur Bestimmung der Elementarladung (S3, S5, 
+E7, K9), 
+• erläutern die Bestimmung der Elektronenmasse am Beispiel des Fadenstrahl-
+rohrs mithilfe der Lorentzkraft sowie die Erzeugung und Beschleunigung freier 
+Elektronen (S4, S5, S6, E6, K5), 
+• beschreiben qualitativ und quantitativ die Zusammenhänge von Ladung, 
+Spannung und Stromstärke unter Berücksichtigung der Parameter Kapazität 
+und Widerstand bei Lade- und Entladevorgängen am Kondensator auch mit-
+hilfe von Differentialgleichungen und deren vorgegebenen Lösungsansätzen 
+(S3, S6, S7, E4, K7), 
+ 
+Inhaltliche Schwerpunkte: 
+­ Elektrische Ladungen und Felder: Ladungen, elektrische Felder, elektrische 
+Feldstärke; Coulomb’sches Gesetz, elektrisches Potential, elektrische Span-
+nung, Kondensator und Kapazität; magnetische Felder, magnetische Fluss-
+dichte 
+­ Bewegungen in Feldern: geladene Teilchen in elektrischen Längs- und Quer-
+feldern; Lorentzkraft; geladene Teilchen in gekreuzten elektrischen und mag-
+netischen Feldern 
+­ Elektromagnetische Induktion: magnetischer Fluss, Induktionsgesetz, 
+Lenz’sche Regel; Selbstinduktion, Induktivität 
+
+===== SEITE 46 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+46 
+ 
+• nutzen das Induktionsgesetz auch in differenzieller Form unter Verwendung 
+des magnetischen Flusses (S2, S3, S7), 
+• erklären Verzögerungen bei Einschaltvorgängen sowie das Auftreten von 
+Spannungsstößen bei Ausschaltvorgängen mit der Kenngröße Induktivität ei-
+ner Spule anhand der Selbstinduktion (S1, S7, E6), 
+• geben die in homogenen elektrischen und magnetischen Feldern gespeicherte 
+Energie in Abhängigkeit der elektrischen Größen und der Kenngrößen der 
+Bauelemente an (S1, S3, E2). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• bestimmen mithilfe des Coulomb’schen Gesetzes Kräfte von punktförmigen 
+Ladungen aufeinander sowie resultierende Beträge und Richtungen von Feld-
+stärken (E8, E10, S1, S3), 
+• entwickeln mithilfe des Superpositionsprinzip elektrische und magnetische 
+Feldlinienbilder (E4, E6, K5), 
+• modellieren mathematisch Bahnformen geladener Teilchen in homogenen 
+elektrischen und magnetischen Längs- und Querfeldern sowie in orthogonal 
+gekreuzten Feldern (E1, E2, E4, S7), 
+• erläutern die Untersuchung magnetischer Flussdichten mithilfe des Hall-Ef-
+fekts (E4, E7, S1, S5), 
+• stellen Hypothesen zum Einfluss der relativistischen Massenzunahme auf die 
+Bewegung geladener Teilchen im Zyklotron auf (E2, E4, S1, K4), 
+• konzipieren Experimente zur Bestimmung der Abhängigkeit der magnetischen 
+Flussdichte einer langgestreckten stromdurchflossenen Spule von ihren Ein-
+flussgrößen (E2, E5), 
+• prüfen Hypothesen zur Veränderung der Kapazität eines Kondensators durch 
+ein Dielektrikum (E2, E3, S1), 
+• ermitteln anhand von Messkurven zu Auf- und Entladevorgängen bei Konden-
+satoren sowie zu Ein- und Ausschaltvorgängen bei Spulen zugehörige Kenn-
+größen (E4, E6, S6), 
+• führen die Funktionsweise eines Generators auf das Induktionsgesetz zurück 
+(E10, K4), 
+• begründen qualitative Versuche zur Lenz’schen Regel sowohl mit dem Wech-
+selwirkungs- als auch mit dem Energiekonzept (E2, E9, K3). 
+  
+
+===== SEITE 47 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+47 
+ 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• bewerten Teilchenbeschleuniger in Großforschungseinrichtungen im Hinblick 
+auf ihre Realisierbarkeit und ihren gesellschaftlichen Nutzen hin (B3, B4, K1, 
+K7), 
+• identifizieren und beurteilen Anwendungsbeispiele für die elektromagnetische 
+Induktion im Alltag (B6, K8).  
+ 
+ 
+Inhaltsfeld Schwingende Systeme und Wellen  
+Sachkompetenz 
+Die Schülerinnen und Schüler 
+• erläutern die Eigenschaften harmonischer mechanischer Schwingungen und 
+Wellen sowie deren Beschreibungsgrößen Elongation, Amplitude, Perioden-
+dauer, Frequenz, Wellenlänge und Ausbreitungsgeschwindigkeit und deren 
+Inhaltliche Schwerpunkte: 
+­ Schwingungen und Wellen: harmonische Schwingungen und ihre Kenngrößen; 
+Huygens‘sches Prinzip, Reflexion, Brechung, Beugung; Polarisation und  
+Superposition von Wellen; Michelson-Interferometer 
+­ Schwingende Systeme: Federpendel, Fadenpendel, Resonanz; Schwingkreis, 
+Hertz’scher Dipol 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Kompensation elektrischer und magnetischer Wirkungen auf bewegte gela-
+dene Teilchen bei speziell abgestimmten gekreuzten Feldern ist ein Beispiel für ein  
+Kräftegleichgewicht. 
+Superposition und Komponenten: 
+Die Überlagerung zweier elektrischer Radialfelder zu einem Dipolfeld ist ein 
+Beispiel für die Superposition von Feldern. 
+Mathematisieren und Vorhersagen: 
+Auf- und Entladevorgänge bei Kondensatoren werden mathematisch exakt 
+beschrieben. 
+
+===== SEITE 48 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+48 
+ 
+Zusammenhänge (S1, S3, K4), 
+• vergleichen mechanische und elektromagnetische Schwingungen unter ener-
+getischen Aspekten und hinsichtlich der jeweiligen Kenngrößen (S1, S3), 
+• erläutern qualitativ die physikalischen Prozesse bei ungedämpften, gedämpf-
+ten und erzwungenen mechanischen und elektromagnetischen Schwingungen 
+(S1, E1), 
+• leiten für das Federpendel und unter Berücksichtigung der Kleinwinkelnähe-
+rung für das Fadenpendel aus dem linearen Kraftgesetz die zugehörigen Diffe-
+rentialgleichungen her (S3, S7, E2), 
+• ermitteln mithilfe der Differentialgleichungen und der Lösungsansätze für das 
+ungedämpfte Fadenpendel, die ungedämpfte Federschwingung und den un-
+gedämpften Schwingkreis die Periodendauer sowie die Thomson’sche Glei-
+chung (S3, S7, E8), 
+• erläutern mithilfe der Wellenwanne qualitativ auf der Grundlage des 
+Huygens’schen Prinzips Kreiswellen, ebene Wellen sowie die Phänomene Re-
+flexion, Brechung, Beugung und Interferenz (S1, E4, K6), 
+• beschreiben mathematisch die räumliche und zeitliche Entwicklung einer har-
+monischen eindimensionalen Welle (S1, S2, S3, S7), 
+• erklären mithilfe der Superposition stehende Wellen (S1, E6, K3), 
+• erläutern die lineare Polarisation als Unterscheidungsmerkmal von Longitudi-
+nal- und Transversalwellen (S2, E3, K8), 
+• stellen für Einzel-, Doppelspalt und Gitter die Bedingungen für konstruktive 
+und destruktive Interferenz und deren quantitative Bestätigung im Experiment 
+für mono- und polychromatisches Licht dar (S1, S3, S6, E6), 
+• beschreiben den Hertz’schen Dipol als (offenen) Schwingkreis (S1, S2, K8), 
+• erläutern qualitativ die Entstehung eines elektrischen bzw. magnetischen Wir-
+belfelds bei B- bzw. E-Feldänderung und die Ausbreitung einer elektromagne-
+tischen Welle (S1, K4). 
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler 
+• untersuchen experimentell die Abhängigkeit der Periodendauer und Amplitu-
+denabnahme von Einflussgrößen bei mechanischen und elektromagnetischen 
+harmonischen Schwingungen unter Anwendung digitaler Werkzeuge (E4, S4),  
+• untersuchen experimentell am Beispiel des Federpendels das Phänomen der 
+Resonanz auch unter Rückbezug auf Alltagssituationen (E5, E6, K1), 
+• weisen anhand des Interferenzmusters bei Spalt- und Gitterversuchen die 
+Welleneigenschaften des Lichts nach und bestimmen daraus die Wellenlänge 
+des Lichts (E5, E6, E7, S6), 
+
+===== SEITE 49 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+49 
+ 
+• erläutern Aufbau und Funktionsweise des Michelson-Interferometers (E2, E3, 
+S3, K3). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• beurteilen Maßnahmen zur Vermeidung von Resonanzkatastrophen (B5, B6, 
+K2), 
+• beurteilen die Bedeutung von Schwingkreisen für die Umsetzung des Sender-
+Empfänger-Prinzips an alltäglichen Beispielen (B1, B4, K1),  
+• unterscheiden am Beispiel von Schwingungen deduktives und induktives Vor-
+gehen als Grundmethoden der Erkenntnisgewinnung (B8, K4).  
+ 
+ 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Energieerhaltung ist die Grundlage für die Erklärung der Prozesse bei mecha-
+nischen und elektromagnetischen Schwingungen. Schwingende Systeme in der 
+Physik oszillieren immer um einen Gleichgewichtszustand. 
+Superposition und Komponenten: 
+Interferenzphänomene mit Licht sind ein Beispiel für die Superposition elektromag-
+netischer Wellen. 
+Mathematisieren und Vorhersagen: 
+Mithilfe von Differentialgleichungen und deren Lösungen kann der zeitliche Verlauf 
+von Schwingungen exakt vorhergesagt werden. 
+ 
+
+===== SEITE 50 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+50 
+ 
+Inhaltsfeld Quantenphysik  
+Sachkompetenz  
+Die Schülerinnen und Schüler  
+• erklären den Photoeffekt mit der Einstein´schen Lichtquantenhypothese (S1, 
+S2, E3), 
+• beschreiben den Aufbau und die Funktionsweise der Röntgenröhre (S1), 
+• erläutern die Bragg-Reflexion an einem Einkristall und leiten die Bragg‘sche 
+Reflexionsbedingung her (S1, S3, E4, K4), 
+• stellen anhand geeigneter Phänomene dar, dass Licht sowohl Wellen- als 
+auch Teilchencharakter aufweisen kann (S2, S3, E6, K8), 
+• erklären bei Quantenobjekten anhand eines Delayed-Choice-Experiments un-
+ter Verwendung der Koinzidenzmethode das Auftreten oder Verschwinden des 
+Interferenzmusters mit dem Begriff der Komplementarität (S1, S5, E3, K3), 
+• erklären am Beispiel von Elektronen die De-Broglie-Hypothese (S1, S3), 
+• berechnen Energie und Impuls über Frequenz und Wellenlänge für Quanten- 
+objekte (S3), 
+• deuten das Quadrat der Wellenfunktion qualitativ als Maß für die Nachweis-
+wahrscheinlichkeitsdichte von Elektronen (S3), 
+• erläutern die Heisenberg‘sche Unbestimmtheitsrelation in der Version der Un-
+möglichkeits-Formulierung (S2, S3, E7, E11, K4).  
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• interpretieren die experimentellen Befunde zum Photoeffekt hinsichtlich des 
+Widerspruchs zur klassischen Physik (E3, E8, S2, K3), 
+• bestimmen aus den experimentellen Daten eines Versuchs zum Photoeffekt 
+das Planck‘sche Wirkungsquantum (E6, S6), 
+• interpretieren das Auftreten der kurzwelligen Grenze des Bremsstrahlungs-
+spektrums (E6, S1), 
+• erklären experimentelle Beobachtungen an der Elektronenbeugungsröhre mit 
+Inhaltliche Schwerpunkte: 
+­ Teilchenaspekte von Photonen: Energiequantelung von Licht, Photoeffekt, 
+Bremsstrahlung 
+­ Photonen und Elektronen als Quantenobjekte: Doppelspaltexperiment, Bragg-
+Reflexion, Elektronenbeugung; Wahrscheinlichkeitsinterpretation, Delayed-
+Choice-Experiment; Kopenhagener Deutung 
+
+===== SEITE 51 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+51 
+ 
+den Welleneigenschaften von Elektronen (E3, E6), 
+• modellieren qualitativ das stochastische Verhalten von Quantenobjekten am 
+Doppelspalt bei gleichzeitiger Determiniertheit der Zufallsverteilung mithilfe der 
+Eigenschaften der Wellenfunktion (E4, E6, K4). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• beurteilen die Problematik der Übertragbarkeit von Begriffen aus der Anschau-
+ungswelt auf Quantenobjekte (B1, K8), 
+• stellen die Kontroverse um den Realitätsbegriff der Kopenhagener Deutung 
+dar (B8, K9), 
+• beschreiben anhand quantenphysikalischer Betrachtungen die Grenzen der 
+exakten Vorhersagbarkeit von physikalischen Phänomenen (B8, K8, E11). 
+ 
+ 
+Ausgewählte Beiträge zu den Basiskonzepten 
+Superposition und Komponenten: 
+Die konstruktive und destruktive Interferenz beim Doppelspaltexperiment mit  
+Quantenobjekten sind ein Beispiel für Superposition  quantenmechanischer Zu-
+stände zu einer Auftreffwahrscheinlichkeit. 
+Mathematisieren und Vorhersagen: 
+Die mathematische Darstellung der Aufenthaltswahrscheinlichkeitsdarstel-
+lung von Quantenobjekten in Form des Quadrats der Wellenfunktion ist ein 
+Beispiel für die Mathematisierung in der Quantenphysik. 
+Zufall und Determiniertheit: 
+Die Determiniertheit von Zufallsverteilungen ist charakteristisch für die Aus-
+sagen der Quantenphysik. 
+ 
+
+===== SEITE 52 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+52 
+ 
+Inhaltsfeld Atom- und Kernphysik  
+Sachkompetenz  
+Die Schülerinnen und Schüler 
+• geben wesentliche Beiträge in der historischen Entwicklung der Atommodelle 
+bis zum ersten Kern-Hülle-Modell (Dalton, Thomson, Rutherford) wieder (S2, 
+K3), 
+• erklären die Energie absorbierter und emittierter Photonen mit den unter-
+schiedlichen Energieniveaus in der Atomhülle (S3, E6, K4), 
+• beschreiben die Energiewerte für das Wasserstoffatom und wasserstoffähnli-
+che Atome mithilfe eines quantenphysikalischen Atommodells (S2), 
+• erläutern das Modell des eindimensionalen Potentialtopfs und seine Grenzen 
+(S2, K4), 
+• beschreiben anhand des Modells des eindimensionalen Potentialtopfs die Ver-
+allgemeinerung eines quantenmechanischen Atommodells hin zu einem Aus-
+blick auf Mehrelektronensysteme unter Verwendung des Pauli-Prinzips (S2, 
+S3, E10), 
+• interpretieren die Orbitale des Wasserstoffatoms als Veranschaulichung der 
+Nachweiswahrscheinlichkeiten für das Elektron (S2, K8), 
+• erläutern qualitativ den Aufbau eines Atomkerns aus Nukleonen, den Aufbau 
+der Nukleonen aus Quarks sowie die Rolle der starken Wechselwirkung für die 
+Stabilität des Kerns (S1, S2, K3), 
+• ordnen verschiedene Frequenzbereiche dem elektromagnetischen Spektrum 
+zu (S1, K6), 
+• unterscheiden -, - - Strahlung, Röntgenstrahlung und Schwerionenstrah-
+lung als Arten ionisierender Strahlung (S1), 
+• beschreiben natürliche Zerfallsreihen sowie künstlich herbeigeführte Kernum-
+Inhaltliche Schwerpunkte: 
+­ Atomaufbau: Atommodelle, eindimensionaler Potentialtopf, Energieni-
+veauschema; Röntgenstrahlung 
+­ Ionisierende Strahlung: Strahlungsarten, Nachweismöglichkeiten ionisierender 
+Strahlung, Eigenschaften ionisierender Strahlung, Absorption ionisierender 
+Strahlung 
+­ Radioaktiver Zerfall: Kernaufbau, Zerfallsreihen, Zerfallsgesetz, Halbwertszeit; 
+Altersbestimmung 
+­ Kernspaltung und -fusion: Bindungsenergien, Massendefekt; Kettenreaktion  
+
+===== SEITE 53 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+53 
+ 
+wandlungsprozesse (Kernspaltung und -fusion, Neutroneneinfang) auch mit-
+hilfe der Nuklidkarte (S1), 
+• erklären die Ablenkbarkeit in elektrischen und magnetischen Feldern sowie 
+Durchdringungs- und Ionisierungsfähigkeit von ionisierender Strahlung mit ih-
+ren Eigenschaften (S1, S3), 
+• leiten auf der Basis der Definition der Aktivität das Gesetz für den radioaktiven 
+Zerfall einschließlich eines Terms für die Halbwertszeit her (S7, E9), 
+• erläutern den Aufbau und die Funktionsweise des Geiger-Müller-Zählrohrs als 
+Nachweisgerät ionisierender Strahlung (S4, S5, K8), 
+• erklären die Entstehung von Bremsstrahlung und charakteristischer Röntgen-
+strahlung (S3, E6, K4), 
+• beschreiben Kernspaltung und Kernfusion mithilfe der starken Wechselwir-
+kung zwischen den Nukleonen auch unter quantitativer Berücksichtigung von 
+Bindungsenergien (S1, S2), 
+• erläutern den Ablauf einer Kettenreaktion als zentrales Merkmal bei der Ener-
+giefreisetzung durch Kernspaltung (S1), 
+• erläutern qualitativ an der −-Umwandlung die Entstehung der Neutrinos mit-
+hilfe der schwachen Wechselwirkung und ihrer Austauschteilchen (S1, S2, 
+K4).  
+Erkenntnisgewinnungskompetenz 
+Die Schülerinnen und Schüler  
+• interpretieren Linienspektren bei Emission und Absorption sowie die Ergeb-
+nisse des Franck-Hertz-Versuchs mithilfe des Energieniveauschemas (E2, 
+E10, S6), 
+• wählen für die Planung von Experimenten mit ionisierender Strahlung zwi-
+schen dem Geiger-Müller-Zählrohr und einem energiesensiblen Detektor ge-
+zielt aus (E3, E5, S5, S6), 
+• konzipieren Experimente zur Bestimmung der Halbwertszeit kurzlebiger radio-
+aktiver Substanzen (E2, E5, S5), 
+• bestimmen mithilfe des Zerfallsgesetzes das Alter von Materialien mit der C-
+14-Methode (E4, E7, S7, K1), 
+• quantifizieren mit der Größe der effektiven Dosis die Wirkung ionisierender 
+Strahlung und bewerten daraus abgeleitete Strahlenschutzmaßnahmen (E8, 
+S3, B2). 
+Bewertungskompetenz 
+Die Schülerinnen und Schüler  
+• stellen an der historischen Entwicklung der Atommodelle die spezifischen Ei-
+genschaften und Grenzen naturwissenschaftlicher Modelle heraus (B8, E9), 
+
+===== SEITE 54 =====
+Kompetenzbereiche, Inhaltsfelder und Kompetenzerwartungen 
+54 
+ 
+• wägen die Chancen und Risiken bildgebender Verfahren in der Medizin unter 
+Verwendung ionisierender Strahlung gegeneinander ab (B1, B4, K3),  
+• bewerten Nutzen und Risiken von Kernspaltung und Kernfusion hinsichtlich 
+der globalen Energieversorgung (B5, B7, K3, K10),  
+• diskutieren ausgewählte Aspekte der Endlagerung  radioaktiver Abfälle  unter 
+Berücksichtigung verschiedener Quellen (B2, B4, K2, K10).  
+Ausgewählte Beiträge zu den Basiskonzepten 
+Erhaltung und Gleichgewicht: 
+Die Berücksichtigung des Massendefekts erweitert und verallgemeinert das 
+Prinzip der Energieerhaltung in physikalischen Systemen. 
+Mathematisieren und Vorhersagen: 
+Quantitative Atommodelle ermöglichen die Berechnung von Energieniveaus 
+des Atoms. 
+Zufall und Determiniertheit: 
+Der Zerfall eines einzelnen Atomkerns und die Beschreibung des zeitlichen 
+Ablaufs des Zerfalls einer großen Menge radioaktiver Atomkerne anhand 
+des Zerfallsgesetzes sind ein Beispiel für den Zusammenhang von Zufall 
+und Determiniertheit physikalischer Vorgänge. 
+ 
+
+===== SEITE 55 =====
+ 
+55 
+ 
+3 Lernerfolgsüberprüfung und Leistungsbewertung  
+Erfolgreiches Lernen ist kumulativ. Entsprechend sind die Kompetenzerwartungen im 
+Kernlehrplan in der Regel in ansteigender Progression und Komplexität formuliert. 
+Dies erfordert, dass Lernerfolgsüberprüfungen darauf ausgerichtet sein müssen, 
+Schülerinnen und Schülern Gelegenheit zu geben, Kompetenzen, die sie in den vo-
+rangegangenen Jahren erworben haben, wiederholt und in wechselnden Zusammen-
+hängen unter Beweis zu stellen. Für Lehrerinnen und Lehrer sind die Ergebnisse der 
+begleitenden Diagnose und Evaluation des Lernprozesses sowie des Kompetenzer-
+werbs Anlass, die Zielsetzungen und die Methoden ihres Unterrichts zu überprüfen 
+und ggf. zu modifizieren. Für die Schülerinnen und Schüler sollen ein den Lernprozess 
+begleitendes Feedback sowie Rückmeldungen zu den erreichten Lernständen eine 
+Hilfe für die Selbsteinschätzung sowie eine Ermutigung für das weitere Lernen darstel-
+len. Die Beurteilung von Leistungen soll demnach grundsätzlich mit der Diagnose des 
+erreichten Lernstandes und Hinweisen zum individuellen Lernfortschritt verknüpft sein.  
+Die Leistungsbewertung ist so anzulegen, dass sie den in den Fachkonferenzen ge-
+mäß Schulgesetz beschlossenen Grundsätzen entspricht, d ass die Kriterien für die 
+Notengebung den Schülerinnen und Schülern transparent sind und die Korrekturen 
+sowie die Kommentierungen den Lernenden auch Erkenntnisse über die individuelle 
+Lernentwicklung ermöglichen. Dazu gehören – neben der Etablierung eines angemes-
+senen Umgangs mit eigenen Stärken, Entwicklungsnotwendigkeiten und Fehlern – ins-
+besondere auch Hinweise zu individuell erfolgversprechenden allgemeinen und 
+fachmethodischen Lernstrategien.  
+Im Sinne der Orientierung an den zuvor formulierten Anforderungen sind grundsätzlich 
+alle in Kapitel 2 des Lehrplans ausgewiesenen Kompetenzbereiche (Sachkompetenz, 
+Erkenntnisgewinnungskompetenz, Kommunikationskompetenz, Bewertungskompe-
+tenz) und die Basiskonzepte bei der Leistungsbewertung angemessen zu berücksich-
+tigen. Überprüfungsformen schriftlicher, mündlicher und fachpraktischer Art, wie zum 
+Ende dieses Kapitels skizziert, sollen deshalb darauf ausgerichtet sein, die Erreichung 
+der in Kapitel 2 aufgeführten Kompetenzen und Inhalte zu überprüfen. Ein isolierte s, 
+lediglich auf Reproduktion angelegtes Abfragen einzelner Daten und Sachverhalte al-
+lein kann dabei den zuvor formulierten Ansprüchen an die Leistungsfeststellung nicht 
+gerecht werden.  
+Die rechtlich verbindlichen Grundsätze der Leistungsbewertung sind im  Schulgesetz 
+sowie in der Ausbildungs- und Prüfungsordnung für die gymnasiale Oberstufe (APO -
+GOSt) dargestellt. Demgemäß sind bei der Leistungsbewertung von Schülerinnen und 
+Schülern erbrachte Leistungen in den Beurteilungsbereichen „Schriftliche Arbei-
+
+===== SEITE 56 =====
+Lernerfolgsüberprüfung und Leistungsbewertung 
+56 
+ 
+ten/Klausuren“ sowie „Sonstige Leistungen im Unterricht/Sonstige Mitarbeit“ entspre-
+chend den in der APO -GOSt angegebenen Gewichtungen zu berücksichtigen. Dabei 
+bezieht sich die Leistungsbewertung insgesamt auf die im Zusammenhang mit dem 
+Unterricht erworbenen Kompetenzen und Inhalten und nutzt unterschiedliche Formen 
+der Lernerfolgsüberprüfung.  
+Hinsichtlich der einzelnen Beurteilungsbereiche sind die folgenden Regelungen zu be-
+achten.  
+Beurteilungsbereich „Schriftliche Arbeiten/Klausuren“  
+Für den Einsatz in Klausuren kommen Aufgabenarten in Betracht, wie sie in Kapitel 4 
+aufgeführt sind. Neben materialgebundenen Aufgaben sind nach Möglichkeit auch 
+fachpraktische Aufgaben im Verlauf der gymnasialen Oberstufe zu bearbeiten, so dass 
+die Schülerinnen und Schüler damit vertraut sind und hinreichend Gelegenheit zur An-
+wendung hatten.  
+Über ihre unmittelbare Funktion als Instrument der Leistungsbewertung hinaus sollen 
+Klausuren im Laufe der gymnasialen Oberstufe auch zunehmend auf die inhaltlichen 
+und formalen Anforderu ngen des schriftlichen Teils der Abiturprüfungen vorbereiten . 
+Dazu gehört u. a. die Schaffung angemessener Transparenz im Zusammenhang mit 
+einer kriteriengeleiteten Bewertung unter Berücksichtigung der drei Anforderungsbe-
+reiche. Beispiele für Prüfungsaufga ben und Auswertungskriterien sowie Konstrukti-
+onsvorgaben und Operatorenübersichten können im Internet auf den Seiten des 
+Bildungsportals unter www.schulministerium.nrw abgerufen werden.  
+Da in Klausuren neben  der Verdeutlichung des fachlichen Verständnisses auch die 
+Darstellung bedeutsam ist, muss diesem Sachverhalt bei der Leistungsbewertung ge-
+mäß APO-GOSt hinreichend Rechnung getragen werden. Abzüge für Verstöße gegen 
+die sprachliche Richtigkeit sollen allerdings nicht erfolgen, wenn diese bereits bei der 
+Darstellungsleistung fachspezifisch berücksichtigt wurden.  
+In der Qualifikationsphase trägt zudem eine komplexe Leistungsüberprüfung (u.  a. 
+Facharbeit, Projektkurs) dazu bei, die Schülerinnen und Schüler mit den Prinzipien und 
+Formen selbstständigen, wissenschaftspropädeutischen Lernens vertraut zu machen.  
+Beurteilungsbereich „Sonstige Leistungen im Unterricht/Sonstige Mitarbeit“  
+Im Beurteilungsbereich „Sonstige Leistungen im Unterricht/Sonstige Mitarbeit“ können 
+– neben den nachfolgend aufgeführten Überprüfungsformen – weitere zum Einsatz 
+kommen. Im Rahmen der Leistungsbewertung gelten auch für diese die oben ausge-
+führten allgemeinen Ansprüche der Lernerfolgsüberprüfung und Leistungsbewertung. 
+
+===== SEITE 57 =====
+Lernerfolgsüberprüfung und Leistungsbewertung 
+57 
+ 
+Im Verlauf der gymnasialen Oberstufe ist auch in diesem Beurteilungsbereich sicher-
+zustellen, dass Formen, die im Rahmen der Abiturprüfungen – insbesondere in den 
+mündlichen Prüfungen – von Bedeutung sind, frühzeitig vorbereitet und angewendet 
+werden.  
+Zu den Bestandteilen der „Sonstigen Leistungen im Unterricht/Sonstigen Mitarbeit“ 
+zählen u. a. unterschiedliche Formen der selbstständigen und kooperativen Aufgaben-
+erfüllung, Beiträge zum Unterricht, von der Lehrkraft abgerufene Leistungsnachweise 
+wie z. B. die schriftliche Übung, von der Schülerin oder dem Schüler vorbereitete, in 
+abgeschlossener Form eingebrachte Elemente zur Unterrichtsarbeit, die z. B. in Form 
+von Präsentationen, Protokollen, Referaten und Portfolios möglich werden. Schülerin-
+nen und Schüler bekommen durch die Verwendung unterschiedliche r Überprüfungs-
+formen vielfältige Möglichkeiten, ihre eigene Kompetenzentwicklung darzustellen und 
+zu dokumentieren. 
+Der Bewertungsbereich „Sonstige Leistungen im Unterricht/Sonstige Mitarbeit“ erfasst 
+die im Unterrichtsgeschehen durch mündliche, schriftliche und ggf. praktische Beiträge 
+sichtbare Kompetenzentwicklung der Schülerinnen und Schüler. Der Stand der Kom-
+petenzentwicklung in der „Sonstige n Mitarbeit“ wird sowohl durch Beobachtung wäh-
+rend des Schuljahres (Prozess der Kompetenzentwicklung) als auch durch punktuelle 
+Überprüfungen (Stand der Kompetenzentwicklung) festgestellt.  
+Die Kompetenzerwartungen des Kernlehrplans ermöglichen eine Vielza hl von Über-
+prüfungsformen. Im Verlauf der gesamten gymnasialen Oberstufe soll – auch mit 
+Blick auf die individuelle Förderung – ein möglichst breites Spektrum verschiedener 
+Formen in schriftlichen, mündlichen oder fachpraktischen Kontexten zum Einsatz kom-
+men. Wichtig für die Nutzung der Überprüfungsformen im Rahmen der Leistungsbe-
+wertung ist es, dass sich die Schülerinnen und Schüler zuvor im Rahmen von 
+Anwendungssituationen hinreichend mit diesen vertraut machen konnten.  
+Die nachfolgenden Überprüfungsformen sind verbindlich an geeigneten Stellen im Un-
+terricht einzusetzen. Darüber hinaus sind weitere Überprüfungsformen zulässig. 
+Experimentelle und fachpraktische Aufgaben 
+Aufgabenstellungen, die sich auf Experimente beziehen, werden in besonderem Maße 
+den Zielsetzungen des wissenschaftspropädeutischen Physik unterrichts gerecht.  
+Diese können auch Bestandteil von fachpraktischen Aufgaben sein. Neben Formulie-
+rung einer Fragestellung, der hypothesengeleiteten Planung, Durchführung und Aus-
+wertung liegt in di esem Zusammenhang ein weiteres Augenmerk auf der 
+Dokumentation. Experimentelles Arbeiten umfasst die qualitative und/oder quantitative 
+
+===== SEITE 58 =====
+Lernerfolgsüberprüfung und Leistungsbewertung 
+58 
+ 
+Untersuchung von Zusammenhängen, aber auch den Umgang mit umfangreichen Da-
+ten aus Messreihen sowie die Arbeit mit bzw. an  Modellen. Erkenntnisse, die aus ex-
+perimentellen Arbeiten gewonnen werden, können die Grundlage bilden für die 
+nachfolgenden Überprüfungsformen. 
+Aufgaben zur Arbeit mit Theorien und Modellen 
+Neben experimentellen Aufgaben kommt der Arbeit mit Theorien und Modellen im Phy-
+sikunterricht eine besondere Bedeutung zu. Hierzu zählen insbesondere die Erklärung 
+von Zusammenhängen oder die Überprüfung von Aussagen mit Modellen oder Theo-
+rien. Dies kann beispielsweise die Vorhersage bzw. Begründung von physikalischen 
+Sachverhalten und Ergebnissen auf Grundlage von Modellen sein . Mithilfe theoreti-
+scher Überlegungen können physikalische Zusammenhänge deduktiv hergeleitet so-
+wie mathematisch modelliert und berechnet werden. 
+Präsentationsaufgaben 
+Präsentationsaufgaben lassen sich in vielfältigen Formen einsetzen und reichen vo n 
+einfachen Vorträgen bzw. Referaten bis hin zur Erstellung und Darbietung von Medi-
+enbeiträgen oder der Durchführung von Diskussionen. Im Rahmen von Präsentationen 
+spielen auch immer Recherche- und Darstellungsaspekte eine bedeutende Rolle.  
+Darstellungsaufgaben 
+Mittels Darstellungsaufgaben erfolgt ein strukturiertes Beschreiben, Darstellen und/o-
+der Erklären eines physikalischen Phänomens, Konzepts oder Sachverhalts, wobei 
+auch Modelle zum Einsatz kommen können. Darstellungsaufgaben beziehen sich auf 
+die Beschreibung und Erläuterung von Tabellen, Grafiken und Diagrammen. Werden 
+komplexe Zusammenhänge und Sachverhalte durch geeignete graphische Darstel-
+lungsformen zusammengefasst oder Informationen aus einer Darstellungsform in eine 
+andere überführt, kommt der Charakter von Darstellungsaufgaben ebenfalls zum Tra-
+gen. Das Verfassen fachlicher Texte erfolgt adressaten- und anlassbezogen. 
+Bewertungs-/ Beurteilungsaufgaben 
+Das Fach Physik trägt zur Entwicklung von  Wertvorstellungen, Meinungsbildung und 
+Entscheidungsfindung bei. Dabei ist in auftretenden Problemsituationen die Unter-
+scheidung von Werten, Normen und Fakten wichtig. Die Benennung von Hand-
+lungsoptionen erfolgt aus der Beachtung verschiedener Perspektive n. Umstrittene 
+Sachverhalte oder Medienbeiträge werden unter fachlichen Gesichtspunkten über-
+prüft. 
+ 
+
+===== SEITE 59 =====
+ 
+59 
+ 
+4 Abiturprüfung 
+Die allgemeinen Regelungen zur schriftlichen und mündlichen Abiturprüfung, mit de-
+nen zugleich die Vereinbarungen der Kultusministerkonferenz umgesetzt werden (u.a. 
+Bildungsstandards), basieren auf dem Schulgesetz sowie dem entsprechenden Teil 
+der Ausbildungs- und Prüfungsordnung für die gymnasiale Oberstufe. 
+Fachlich beziehen sich alle Teile der Abiturprüfung auf die in Kapitel 2 dieses Kern -
+lehrplans für das Ende der Qualifikationsphase ausgewiesenen Lernergebnisse. Bei 
+der Lösung schriftlicher wie mündlicher Abituraufgaben sind generell Kompetenzen  
+und Inhalte nachzuweisen, die im Unterricht der gesamten Qualifikationsphase erwor-
+ben wurden und deren Erwerb in vielfältigen Zusammenhängen angelegt wurde.  
+Die jährlichen „Vorgaben für die schriftlichen Abiturprüfungen “ (Abiturvorgaben), die 
+im Internet auf den Seiten des Bildungsportals unter www.schulministerium.nrw abruf-
+bar sind, konkretisieren den Kernlehrplan, soweit dies für die Schaffung landesweit 
+einheitlicher Bezüge für die zentral gestellten Abiturklausuren erforderlich ist. Die Ver-
+pflichtung zur Umsetzung des gesamten Kernlehrplans bleibt hiervon unberührt. 
+Im Hinblick auf die Anforderungen im schriftlichen und mündlichen Teil der Abiturprü-
+fungen ist grundsätzlich von einer Strukturierung in drei Anforderungsbereiche auszu-
+gehen, die die Transparenz bezüglich des Selbstständigkeitsgrades der erbrachten 
+Prüfungsleistung erhöhen soll. 
+ 
+• Anforderungsbereich I umfasst das Wiedergeben von Sachverhalten und 
+Kenntnissen im gelernten Zusammenhang, die Verständnissicherung sowie 
+das Anwenden und Beschreiben geübter Arbeitstechniken und Verfahren. 
+ 
+• Anforderungsbereich II umfasst das selbstständige Auswählen, Anordnen, 
+Verarbeiten, Erklären und Darstellen bekannter Sachverhalte unter vorgege-
+benen Gesichtspunkten in einem durch Übung bekannten Zusammenhang 
+und das selbstständige Übertragen und Anwenden des Gelernten auf ver-
+gleichbare neue Zusammenhänge und Sachverhalte. 
+ 
+• Anforderungsbereich III umfasst das Verarbeiten komplexer Sachverhalte mit 
+dem Ziel, zu selbstständigen Lösungen, Gestaltungen oder Deutungen, Folge-
+rungen, Verallgemeinerungen, Begründungen und Wertungen zu gelangen. 
+Dabei wählen die Schülerinnen und Schüler selbstständig geeignete Arbeits-
+techniken und Verfahren zur Bewältigung der Aufgabe, wenden sie auf eine 
+neue Problemstellung an und reflektieren das eigene Vorgehen. 
+
+===== SEITE 60 =====
+Abiturprüfung 
+60 
+ 
+Für alle Fächer gilt, dass die Aufgabenstellungen in schriftlichen und mündlichen Abi-
+turprüfungen alle Anforderungsbereiche berücksichtigen müssen, der Anforderungs-
+bereich II aber den Schwerpunkt bildet. 
+Fachspezifisch ist die Ausgestaltung der Anforderungsbereiche an den Kompetenzer-
+wartungen und Inhalten der jeweiligen Kursart zu orientieren. Für die Aufgabenstellun-
+gen werden die für Abiturprüfungen geltenden Operatoren des Faches verwendet. 
+Die Bewertung der Prüfungsleistung erfolgt jeweils auf einer zuvor festgelegten Grund-
+lage, die im schriftlichen Abitur aus dem zentral vorgegebenen kriteriellen Bewertungs-
+raster, im mündlichen Abitur aus dem im Fachprüfungsausschuss abgesti mmten 
+Erwartungshorizont besteht.  
+Übergreifende Bewertungskriterien für die erbrachten Leistungen sind  
+• die Komplexität der Gegenstände,  
+• die sachliche Richtigkeit und die Schlüssigkeit der Aussagen,  
+• die Vielfalt der Gesichtspunkte und ihre jeweilige Bedeutsamkeit,  
+• die Differenziertheit des Verstehens und Darstellens,  
+• das Herstellen geeigneter Zusammenhänge,  
+• die Eigenständigkeit der Auseinandersetzung mit Sachverhalten und Problem-
+stellungen,  
+• die argumentative Begründung eigener Urteile, Stellungnahmen  und Wertun-
+gen,  
+• die Selbstständigkeit und Klarheit in Aufbau und Sprache,  
+• die Sicherheit im Umgang mit Fachsprache und -methoden sowie  
+• die Erfüllung standardsprachlicher Normen. 
+Hinsichtlich der einzelnen Prüfungsteile sind die folgenden Regelungen zu beachten: 
+Schriftliche Abiturprüfung 
+Die Aufgaben für die schriftliche Abiturprüfung werden landesweit zentral gestellt. 
+Alle Aufgaben entsprechen den öffentlich zugänglichen Konstruktionsvorgaben und 
+nutzen die fachspezifische Operatorenübersicht. Beispiele für Abiturklausuren sind im 
+Internet auf den Seiten des Bildungsportals unter www.schulministerium.nrw abrufbar.  
+Für die schriftliche Abiturprüfung enthalten die aufgabenbezogenen Unterlagen für die 
+Lehrkraft jeweils Hinweise zu Aufgabenart und zugelassenen Hilfsmitteln , die Aufga-
+benstellung, die Materialgrundlage, die Bezüge zum Kernlehrplan und zu den Abitur-
+vorgaben, die Vorgaben für die Bewertung der Schülerleistungen sowie den 
+Bewertungsbogen z ur Prüfungsarbeit. Die Anforderungen an die zu erbringenden 
+
+===== SEITE 61 =====
+Abiturprüfung 
+61 
+ 
+Klausurleistungen werden durch das zentral gestellte kriterielle Bewertungsraster de-
+finiert. 
+Die Bewertung erfolgt über Randkorrekturen sowie das ausgefüllte Bewertungsraster, 
+mit dem die Gesamtleistung dokumentiert wird.  
+ 
+Fachspezifisch gelten darüber hinaus die nachfolgenden Regelungen: 
+Für die Prüfung im Fach Physik sind analog zu den Bildungsstandards folgende Auf-
+gabenarten zulässig: 
+ 
+­ Aufgabenart I: Materialgebundene Aufgabe (ggf. mit Bearbeitung eines De-
+monstrationsexperiments) 
+­ Aufgabenart II: Fachpraktische Aufgabe 
+Mischformen der genannten Aufgabenarten sind möglich. Eine ausschließlich aufsatz-
+artig zu bearbeitende Aufgabenstellung, d. h. eine Aufgabe ohne Material- oder Expe-
+rimentbezug, ist nicht zulässig. 
+Wenn die Aufgaben der schriftlichen Abiturprüfung fachpraktische Anteile enthalten, 
+kann sich die Arbeitszeit erhöhen. Der zusätzliche Zeitaufwand wird verbindlich in der 
+Aufgabe ausgewiesen.  
+Weitergehende Regelungen finden sich an entsprechender Stelle in der APO GOSt. 
+ 
+Mündliche Abiturprüfung 
+Die Aufgaben für die mündliche Abiturprüfung werden dezentral durch die Fachprüferin 
+bzw. den Fachprüfer – im Einvernehmen mit dem jeweiligen Fachprüfungsausschuss– 
+gestellt. Dabei handelt es sich um jeweils neue, begrenzte Aufgaben, die dem Prüfling 
+einschließlich der ggf. notwendigen Texte und Materialien für den ersten Teil der 
+mündlichen Abiturprüfung in schriftlicher Form vorgelegt werden. Die Aufgaben für die 
+mündliche Abiturprüfung insgesamt sind so zu stellen, dass sie hinreichend breit an-
+gelegt sind und sich nicht ausschließlich auf den Unterricht eines Kurshalbjahres be-
+schränken.  
+ 
+Die Berücksichtigung aller Anforderungsbereiche soll eine Beurteilung ermöglichen, 
+die das gesamte Note nspektrum umfasst. Auswahlmöglichkeiten für die Schülerin 
+bzw. den Schüler bestehen nicht. Der Erwartungshorizont ist zuvor mit dem Fachprü-
+fungsausschuss abzustimmen. 
+Der Prüfling soll in der Prüfung, die in der Regel mindestens 20, höchstens 30 Minuten 
+dauert, in einem ersten Teil selbstständig die vorbereiteten Ergebnisse zur gestellten 
+
+===== SEITE 62 =====
+Abiturprüfung 
+62 
+ 
+Aufgabe in zusammenhängendem Vortrag präsentieren. In einem zweiten Teil sollen 
+vor allem größere fachliche und fachübergreifende Zusammenhänge in einem Prü-
+fungsgespräch angesprochen werden. Es ist nicht zulässig, zusammenhanglose Ein-
+zelfragen aneinanderzureihen. 
+Bei Bewertung mündlicher Prüfungen liegen der im Fachprüfungsausschuss abg e-
+stimmte Erwartungshorizont sowie die eingangs dargestellten übergreifenden Kriterien 
+zugrunde. Die Prüferin oder der Prüfer schlägt dem Fachprüfungsausschuss eine 
+Note, ggf. mit Tendenz, vor. Die Mitglieder des Fachprüfungsausschusses stimmen 
+über diesen Vorschlag ab. 
+Fachspezifisch gelten darüber hinaus die nachfolgenden Regelungen: 
+Die Aufgabenarten stimmen mit denen der schriftlichen Abiturprüfung überein.  
+Doch ist bei der Aufgabenstellung zu bedenken, dass die Dauer der Vorbereitungszeit 
+in der mündlichen Prüfung deutlich kürzer als in der schriftlichen Abiturprüfung ist. Die 
+Aufgabe für den ersten Prüfungsteil enthält daher Material von geringerem Umfang 
+und weniger komplexe Aufgabenstellungen als die Aufgabe der schriftlichen Prüfung. 
+Wenn in den Aufgaben des ersten Prüfungsteils der mündlichen Abiturprüfung im Rah-
+men einer materialgebundenen Aufgabe ein Demonstrationsexperiment vorgesehen 
+ist, ist dieses vorher aufzubauen und vor Beginn der Vorbereitungszeit in Anwesenheit 
+des Prüflings durchzuführen.  
+Für den Fall, dass in den Aufgaben der mündlichen Abiturprüfung im ersten Prüfungs-
+teil eine fachpraktische Aufgabe vorgesehen ist, kann die Vorbereitungszeit angemes-
+sen verlängert werden. 
+Besondere Lernleistung 
+Schülerinnen und Schüler können in die Ges amtqualifikation eine besondere Lern -
+leistung einbringen, die im Rahmen oder Umfang eines mindestens zwei Halbjahre 
+umfassenden Kurses erbracht wird. Grundlage einer besonderen Lernleistung kann 
+ein bedeutender Beitrag aus einem von den Ländern geförderten Wettbewerb, die Er-
+gebnisse des Projektkurses oder eines abgeschlossenen fachlichen oder fachüber-
+greifenden Projektes gelten. 
+Die Absicht, eine besondere Lernleistung zu erbringen, muss spätestens zu Beginn 
+des zweiten Jahres der Qualifikationsphase bei de r Schule angezeigt werden. Die 
+Schulleiterin oder der Schulleiter entscheidet in Abstimmung mit der Lehrkraft, die als 
+
+===== SEITE 63 =====
+Abiturprüfung 
+63 
+ 
+Korrektor vorgesehen ist, ob die vorgesehene Arbeit als besondere Lernleistung zu-
+gelassen werden kann. Die Arbeit ist spätestens bis zur Zulassung zur Abiturprüfung 
+abzugeben, nach den Maßstäben und dem Verfahren für die Abiturprüfung zu korri-
+gieren und zu bewerten. Ein Rücktritt von der besonderen Lernleistung muss bis zur 
+Entscheidung über die Zulassung zur Abiturprüfung erfolgt sein. 
+In einem Kolloquium von in der Regel 30 Minuten, das im Zusammenhang mit der 
+Abiturprüfung nach Festlegung durch die Schulleitung stattfindet, stellt der Prüfling vor 
+einem Fachprüfungsausschuss die Ergebnisse der besonderen Lernleistung dar, er-
+läutert sie und antwortet auf Fragen. Die Endnote wird aufgrund der insgesamt in der 
+besonderen Lernleistung und im Kolloquium erbrachten Leistungen gebildet; eine Ge-
+wichtung der Teilleistungen findet nicht statt. Bei Arbeiten, an denen mehrere Schüle-
+rinnen und Schüler beteiligt werden, muss die individuelle Schülerleistung erkennbar 
+und bewertbar sein.  
+Fachspezifisch gelten darüber hinaus die nachfolgenden Regelungen: 
+Grundlage einer besonderen Lernleistung in Physik kann zum Beispiel die experimen-
+telle Bearbeitung und Umsetzung einer Fragestellung mit Auswertung und Interpreta-
+tion sein ebenso wie eine theoretisch-analytische Arbeit, bei der eine wissenschaftliche 
+Theorie – auch historisch – bearbeitet wird. Solche Leistungen können auch im Rah-
+men eines Projektkurses en tstehen. Ebenso kann ein umfassender Beitrag im Rah-
+men der Teilnahme an qualifizierten Wettbewerben Grundlage einer besonderen 
+Lernleistung sein. 

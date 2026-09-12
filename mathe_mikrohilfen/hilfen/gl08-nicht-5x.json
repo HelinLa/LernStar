@@ -1,0 +1,144 @@
+{
+  "kennung": "gl08",
+  "frage": "Warum ist 3x + 2 nicht 5x?",
+  "art": "fehler",
+  "aufgabe": "a08",
+  "vorwissen": [
+    "Er weiß, dass x für eine unbekannte Zahl steht.",
+    "Er weiß, dass 3x „drei mal x“ bedeutet.",
+    "Er kann 3 Äpfel und 2 Äpfel zusammenzählen."
+  ],
+  "hilfe1": "Steckt in beiden Teilen ein x?",
+  "skript": {
+    "A": {
+      "text": "Du hast hier 3x + 2.",
+      "woerter": 7
+    },
+    "B": {
+      "text": "Wir prüfen: Sind 3x + 2 zusammen 5x?",
+      "woerter": 10
+    },
+    "C": {
+      "text": "Suche in beiden Teilen das x.",
+      "woerter": 6
+    },
+    "D": {
+      "text": "Nur 3x hat ein x. Zusammenfassen darf man nur Gleiches.",
+      "woerter": 11
+    },
+    "E": {
+      "text": "Also bleibt 3x + 2 stehen. Das ist nicht 5x.",
+      "woerter": 12
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 51,
+  "sekunden_sprache": 25.5,
+  "sekunden_gesamt": 28.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 3x + 2.",
+      "hervorgehoben": "die Zeile 3x + 2"
+    },
+    "B": {
+      "sichtbar": "3x + 2 steht oben. Darunter steht 5x mit einem großen Fragezeichen.",
+      "hervorgehoben": "das 5x mit dem Fragezeichen"
+    },
+    "C": {
+      "sichtbar": "Zuerst liegt ein gelber Rahmen um 3x. Darin leuchtet das x gelb auf. Dann liegt der Rahmen um die 2. Darin leuchtet nichts auf.",
+      "hervorgehoben": "das gelbe x in 3x"
+    },
+    "D": {
+      "sichtbar": "Das gelbe x in 3x bleibt sichtbar. Unter 3x erscheint ein Kästchen mit einem x darin. Unter der 2 erscheint ein Kästchen, das leer bleibt.",
+      "hervorgehoben": "das leere Kästchen unter der 2"
+    },
+    "E": {
+      "sichtbar": "3x + 2 steht groß mit grünem Haken. Das 5x darunter bekommt ein rotes Kreuz.",
+      "hervorgehoben": "der grüne Haken an 3x + 2"
+    },
+    "F": {
+      "sichtbar": "3x + 2 steht allein mit dem grünen Haken und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "3x + 2"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zeile": "3x + 2"
+      }
+    ],
+    "B": [
+      {
+        "zusammen": [
+          {
+            "zeile": "5x"
+          },
+          {
+            "frage": "5x"
+          }
+        ]
+      }
+    ],
+    "C": [
+      {
+        "zusammen": [
+          {
+            "ring": "3x",
+            "farbe": "gelb"
+          },
+          {
+            "ring": "2",
+            "farbe": "gelb"
+          }
+        ]
+      }
+    ],
+    "D": [
+      {
+        "buendel": [
+          {
+            "unter": "3x",
+            "inhalt": "x"
+          },
+          {
+            "unter": "2",
+            "inhalt": ""
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "zusammen": [
+          {
+            "haken": "3x + 2"
+          },
+          {
+            "kreuz": "5x"
+          }
+        ]
+      }
+    ],
+    "F": [
+      {
+        "nurNoch": "3x + 2"
+      },
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "C, Abweichung: Die Bildbeschreibung führt den Rahmen NACHEINANDER („Zuerst … um 3x … Dann … um die 2“) und lässt im ersten das x gelb aufleuchten. Die Bildsprache kennt keine Reihenfolge innerhalb eines Teils, und eine Hervorhebung IN einer Hervorhebung (das x im geringten 3x) zeichnet die Komponente nicht. Gezeigt werden beide Rahmen gleichzeitig; dass nur in einem ein x steckt, sagt Teil D mit den Kästchen.",
+    "E/F, Abweichung: Die gelben Ringe aus C bleiben auf 3x + 2 stehen, bis F die Tafel abräumt - die Bildbeschreibung von E („3x + 2 steht groß mit grünem Haken“) erwähnt sie nicht mehr. Eine Hervorhebung bleibt nach §12.4 stehen, bis eine andere sie ablöst; der grüne Haken ist ein Urteil über die Zeile und löst keinen Ring ab."
+  ],
+  "hilfe3": {
+    "aufgabe": "a12",
+    "text": "Bei 4x + 3 suchst du das x in beiden Teilen.",
+    "kontrolle": "4x + 3 bleibt stehen. Das ist nicht 7x."
+  },
+  "faengt_fehler_auf": "Der Schüler fasst 3x und 2 zusammen und schreibt 5x."
+}

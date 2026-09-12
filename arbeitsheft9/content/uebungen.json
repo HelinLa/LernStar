@@ -1,0 +1,3836 @@
+[
+ {
+  "id": "kr1",
+  "lueckensaetze": [
+   {
+    "pre": "Drückt Bens Vater die Kiste an die Wand, so ändert sich die ",
+    "loesung": "Form",
+    "post": " des Kartons, obwohl er an seinem Platz bleibt."
+   },
+   {
+    "pre": "Der Rollwagen steht zuerst still und rollt nach dem Schubs: Seine ",
+    "loesung": "Geschwindigkeit",
+    "post": " hat sich geändert."
+   },
+   {
+    "pre": "Prallt der Tennisball an der Kellertür ab, so läuft er danach in eine andere ",
+    "loesung": "Richtung",
+    "post": " weiter."
+   },
+   {
+    "pre": "Das Formelzeichen der Kraft ist F, gemessen wird sie in der Einheit ",
+    "loesung": "Newton",
+    "post": " mit dem Kurzzeichen N."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine Kraft kann an einem Körper mehrere Wirkungen gleichzeitig hervorrufen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch wenn ein rollender Körper langsamer wird, ist das die Wirkung einer Kraft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Solange sich ein Körper nicht bewegt, wirkt sicher keine Kraft auf ihn.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine zusammengedrückte Knete zeigt keine Kraftwirkung, weil sie ja liegen bleibt und sich nicht bewegt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mia schiebt den Rollwagen an, der eben noch stillstand. Welche Wirkung der Kraft steht hier im Vordergrund?",
+   "optionen": [
+    "Die Geschwindigkeit ändert sich, denn der Wagen stand still und rollt danach.",
+    "Die Form ändert sich, denn beim Schieben drückt Mia kurz den Griff ein. Der Griff ist aber nicht der Körper, um den es geht.",
+    "Die Richtung ändert sich, denn vorher stand der Wagen und danach fährt er vorwärts. Aus dem Stillstand heraus gibt es jedoch noch keine alte Richtung, die sich ändern könnte.",
+    "Es wirkt gar keine Kraft, denn der Wagen rollt nach dem Schubs von allein weiter. Das Anfahren aus der Ruhe ist trotzdem eine Kraftwirkung."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Satz „Wo sich nichts bewegt, wirkt auch keine Kraft“ falsch ist. Nenne dazu ein Beispiel aus dem Keller.",
+   "zeilen": 4,
+   "loesung": "Eine Kraft zeigt sich an drei möglichen Wirkungen: an einer Verformung, an einer geänderten Geschwindigkeit oder an einer geänderten Bewegungsrichtung. Nur eine dieser drei Wirkungen hat mit dem Anfahren zu tun, die Verformung dagegen nicht. Bens Vater drückt die Umzugskiste an die Wand; die Kiste bleibt an ihrem Platz stehen und bekommt trotzdem eine Delle an der Ecke. Hier wirkt also eine Kraft, ohne dass sich der Körper bewegt. Außerdem kann sich ein Körper in Ruhe befinden, weil sich mehrere Kräfte gegenseitig aufheben. Aus „nichts bewegt sich“ folgt deshalb nicht „keine Kraft“, sondern nur, dass sich an der Bewegung nichts geändert hat."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr2",
+  "lueckensaetze": [
+   {
+    "pre": "„Einkaufswagen anschieben“ und „Fahrrad abbremsen“ gehören beide zur Gruppe ",
+    "loesung": "Bewegen",
+    "post": " – einmal wird der Körper schneller, einmal langsamer."
+   },
+   {
+    "pre": "Beim Verformen bleibt der Körper an seinem ",
+    "loesung": "Platz",
+    "post": " und nur seine Form ändert sich."
+   },
+   {
+    "pre": "Beim Zurückschlagen wird der Tennisball umgelenkt und im Moment des Treffens zusätzlich kurz ",
+    "loesung": "zusammengedrückt",
+    "post": " – hier treten zwei Wirkungen zugleich auf."
+   },
+   {
+    "pre": "Eine Kraft, die einen rollenden Körper zur Ruhe bringt, ändert seine ",
+    "loesung": "Geschwindigkeit",
+    "post": " und gehört damit zur Gruppe Bewegen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Abbremsen des Fahrrads wirkt eine Kraft, obwohl niemand das Rad anschiebt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Abbremsen ist keine echte Kraftwirkung, weil dabei nichts angeschoben und nichts verformt wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Ball, der an der Wand abprallt, zeigt Richtungsänderung und Verformung zugleich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Jede Alltagssituation lässt sich genau einer der drei Wirkungen zuordnen, zwei Wirkungen zusammen gibt es nicht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben weiß nicht, in welche Gruppe „Fahrrad abbremsen“ gehört. Welche Zuordnung ist richtig?",
+   "optionen": [
+    "Verformen, weil die Bremsklötze fest auf die Felge gedrückt werden. Das ist aber eine Wirkung am Bremsklotz und nicht die Hauptwirkung am fahrenden Rad.",
+    "Bewegen, weil sich die Geschwindigkeit des Rades ändert und es schließlich zur Ruhe kommt.",
+    "Richtung, weil das Rad vorher fährt und danach steht. Beim Anhalten bleibt die Richtung jedoch dieselbe, nur die Geschwindigkeit wird kleiner.",
+    "Keine der drei Gruppen, weil beim Bremsen keine Kraft dazukommt, sondern eine Bewegung nur aufhört. Ohne bremsende Kraft würde das Rad aber weiterrollen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ordne die drei Situationen von Mias Liste je einer Wirkung zu und begründe jede Zuordnung: Bens Vater drückt tief in das Sofakissen, Mia bremst den Rollwagen mit der Hand ab, der Tennisball springt von der Wand zurück in Bens Hand.",
+   "zeilen": 4,
+   "loesung": "Beim Sofakissen steht das Verformen im Vordergrund: Das Kissen bleibt am selben Platz, seine Form ändert sich unter dem Daumen. Beim Abbremsen des Rollwagens geht es um das Bewegen, denn der Wagen rollt zuerst und wird durch Mias Hand langsamer, bis er steht. Der Tennisball an der Wand gehört zur Richtungsänderung, weil er vorher zur Wand hin und danach zu Ben zurückfliegt. Ben hat also recht, dass zwei Fälle zusammengehören: Kissen und Wagen sind es aber nicht, sondern Wagen und jede andere Situation, in der sich die Geschwindigkeit ändert. Beim Ball kommt zur Richtungsänderung im Moment des Aufpralls noch eine kurze Verformung dazu. Man nennt deshalb besser die Wirkung, die im Vordergrund steht, statt von der einzigen Wirkung zu sprechen."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "I"
+  ]
+ },
+ {
+  "id": "kr3",
+  "lueckensaetze": [
+   {
+    "pre": "Im Rohr eines Kraftmessers steckt eine ",
+    "loesung": "Feder",
+    "post": ", die sich unter Zug dehnt."
+   },
+   {
+    "pre": "Je größer die Kraft ist, desto weiter dehnt sich die Feder, und das zeigt der ",
+    "loesung": "Zeiger",
+    "post": " auf der Skala an."
+   },
+   {
+    "pre": "Ein Gewichtsstück mit der Masse 100 g zieht mit rund einem ",
+    "loesung": "Newton",
+    "post": " nach unten."
+   },
+   {
+    "pre": "Weil gleiche Gewichte die Feder um gleiche Stücke dehnen, ist die Skala eines Kraftmessers ",
+    "loesung": "gleichmäßig",
+    "post": " geteilt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ohne angehängtes Gewicht zeigt der Kraftmesser F = 0 N an, die Feder ist dann entspannt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Am Kraftmesser liest du unmittelbar die Masse des angehängten Körpers in Gramm ab.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Striche der Skala liegen unten enger beieinander, weil die Feder bei größerer Last weniger nachgibt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nimmst du die Gewichte einzeln wieder ab, durchläuft der Zeiger dieselben Werte rückwärts.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ein Gewichtsstück dehnt die Feder des Kraftmessers um 1 cm. Wie weit ist die Feder gedehnt, wenn drei gleiche Gewichtsstücke daran hängen?",
+   "optionen": [
+    "Um 1 cm, weil die Feder immer gleich weit nachgibt, egal wie viele Gewichte hängen. Dann könnte man an der Skala aber keine verschiedenen Kräfte unterscheiden.",
+    "Um 4 cm, weil sich die Dehnung mit jedem zusätzlichen Gewicht verdoppelt. Verdoppelt wird jedoch nicht die Dehnung pro Schritt, sondern jedes Gewicht legt dasselbe Stück zu.",
+    "Um 3 cm, weil jedes weitere Gewicht 1 N hinzufügt und die Feder um ein weiteres Zentimeter dehnt.",
+    "Um weniger als 3 cm, weil die Feder mit jeder Last steifer wird. Die Messwerte zeigen aber 1 N zu 1 cm, 2 N zu 2 cm und 3 N zu 3 cm."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beschreibe, wie du einen Kraftmesser ohne Beschriftung mit Hilfe von Gewichtsstücken zu je 100 g selbst mit einer Skala versehen kannst.",
+   "zeilen": 4,
+   "loesung": "Zuerst hängst du den Kraftmesser ohne Last auf und machst dort, wo der Zeiger steht, den Strich für F = 0 N. Dann hängst du ein Gewichtsstück von 100 g an, das mit rund 1 N nach unten zieht, und beschriftest die neue Zeigerstellung mit 1 N. Mit einem zweiten und einem dritten Gewichtsstück erhältst du auf dieselbe Weise die Striche für 2 N und 3 N. Weil jedes Gewicht die Feder um dasselbe Stück dehnt, hier um 1 cm, liegen diese Striche alle im gleichen Abstand. Deshalb darfst du die Zwischenwerte einfach gleichmäßig einteilen und die Skala über das letzte geeichte Gewicht hinaus verlängern. Danach kannst du an derselben Skala jede unbekannte Kraft in Newton ablesen."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr4",
+  "lueckensaetze": [
+   {
+    "pre": "Verdoppelt man die Kraft, so verdoppelt sich auch die ",
+    "loesung": "Dehnung",
+    "post": " der Feder."
+   },
+   {
+    "pre": "Im Diagramm liegen die Messpunkte auf einer Geraden durch den ",
+    "loesung": "Nullpunkt",
+    "post": " des Koordinatensystems."
+   },
+   {
+    "pre": "Die weiche Feder dehnt sich bei F = 1 N um 2 cm, ihre Federkonstante beträgt also D = 0,5 ",
+    "loesung": "N/cm",
+    "post": " und bleibt bei jeder Kraft gleich groß."
+   },
+   {
+    "pre": "Das Hookesche Gesetz gilt nur so lange, wie die Feder nicht ",
+    "loesung": "überdehnt",
+    "post": " wird."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil die weiche Feder bei 2 N doppelt so weit gedehnt ist wie bei 1 N, ist dort auch ihre Federkonstante doppelt so groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die harte Feder hat mit D = 1,0 N/cm den größeren Wert, weil sie sich bei derselben Kraft weniger dehnt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei F = 2 N ist die weiche Feder um 4 cm gedehnt, ihre Federkonstante bleibt trotzdem 0,5 N/cm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Feder mit kleiner Federkonstante ist besonders hart, denn eine kleine Zahl steht für eine kurze, feste Feder.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine Feder dehnt sich bei F = 3 N um s = 6 cm. Wie groß ist ihre Federkonstante D?",
+   "optionen": [
+    "D = 18 N/cm, denn man rechnet Kraft mal Dehnung. In der Formel D = F/s wird jedoch geteilt und nicht multipliziert.",
+    "D = 2 cm/N, denn 6 cm geteilt durch 3 N ergibt 2. Hier sind Zähler und Nenner vertauscht, dabei entsteht auch die falsche Einheit.",
+    "D = 3 N/cm, denn die Federkonstante ist die Kraft, die man am Kraftmesser abliest. Die Federkonstante ist aber keine Kraft, sondern eine Kraft je Zentimeter Dehnung.",
+    "D = 0,5 N/cm, denn D = F/s = 3 N : 6 cm = 0,5 N/cm."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mia zieht mit F = 2 N an der harten Feder mit D = 1,0 N/cm. Berechne ihre Dehnung und vergleiche das Ergebnis mit der weichen Feder.",
+   "zeilen": 4,
+   "loesung": "Aus D = F/s folgt durch Umstellen s = F/D. Eingesetzt ergibt sich s = 2 N : 1,0 N/cm = 2 cm. Das passt zum Hookeschen Gesetz: Bei F = 1 N war die harte Feder um 1 cm gedehnt, bei doppelter Kraft also um 2 cm. Die weiche Feder mit D = 0,5 N/cm dehnt sich bei denselben 2 N dagegen um s = 2 N : 0,5 N/cm = 4 cm, also doppelt so weit. Die harte Feder gibt bei gleicher Kraft nur halb so viel nach, weil ihr D doppelt so groß ist. Je größer die Federkonstante, desto steifer die Feder."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr5",
+  "lueckensaetze": [
+   {
+    "pre": "Die Masse m gibt an, wie viel Stoff in einem Körper steckt, und wird in Gramm oder ",
+    "loesung": "Kilogramm",
+    "post": " angegeben."
+   },
+   {
+    "pre": "Die Gewichtskraft liest du an einem Kraftmesser ab, ihre Einheit ist das ",
+    "loesung": "Newton",
+    "post": " (N)."
+   },
+   {
+    "pre": "Die Gewichtskraft berechnest du, indem du die Masse mit dem ",
+    "loesung": "Ortsfaktor",
+    "post": " g = 9,8 N/kg multiplizierst."
+   },
+   {
+    "pre": "Bei m = 100 g zeigt der Kraftmesser 1,0 N und bei m = 200 g schon 2,0 N; bei doppelter Masse ",
+    "loesung": "verdoppelt",
+    "post": " sich also auch die Gewichtskraft."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kilogramm und Newton sind zwei Einheiten für dieselbe Größe, man darf sie deshalb austauschen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine Kiste mit der Masse 1 kg zieht auf der Erde mit etwa 9,8 N nach unten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei m = 500 g zeigt der Kraftmesser 5 N, weil zu 500 g gerade 5 N gehören.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Küchenwaage zeigt die Masse an, der Kraftmesser dagegen die Gewichtskraft.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Eine Umzugskiste hat die Masse 3 kg. Wie groß ist ihre Gewichtskraft auf der Erde?",
+   "optionen": [
+    "29,4 N, denn F = m · g = 3 kg · 9,8 N/kg.",
+    "3000 N, denn 3 kg sind 3000 g und damit 3000 N.",
+    "3 N, denn die Masse in Kilogramm ist zugleich die Kraft in Newton.",
+    "0,31 N, denn man teilt die Masse durch den Ortsfaktor 9,8 N/kg."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Küchenwaage und die Federwaage bei derselben 5-kg-Kiste verschiedene Zahlen anzeigen, obwohl beide Geräte richtig arbeiten.",
+   "zeilen": 4,
+   "loesung": "Beide Geräte messen verschiedene Größen. Die Küchenwaage gibt die Masse an, also wie viel Stoff in der Kiste steckt; ihre Einheit ist das Kilogramm. Die Federwaage misst über die Dehnung ihrer Feder die Gewichtskraft, mit der die Erde an der Kiste zieht; ihre Einheit ist das Newton. Beide Größen hängen über F = m · g zusammen, auf der Erde mit g = 9,8 N/kg. Bei m = 5 kg zeigt die Küchenwaage 5 kg, die Federwaage dagegen F = 5 kg · 9,8 N/kg = 49 N. Die beiden Zahlen sind also verschieden, obwohl beide Geräte richtig anzeigen."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr6",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Wechsel von der Erde zum Mond ändert sich der ",
+    "loesung": "Ortsfaktor",
+    "post": ", die Masse des Körpers bleibt dagegen dieselbe."
+   },
+   {
+    "pre": "Ein Körper mit m = 60 kg hat auf der Erde die Gewichtskraft 588 N, auf dem Mond dagegen nur ",
+    "loesung": "96",
+    "post": " N."
+   },
+   {
+    "pre": "Auf dem Mond ist die Gewichtskraft nur etwa ein ",
+    "loesung": "Sechstel",
+    "post": " so groß wie auf der Erde."
+   },
+   {
+    "pre": "Weil g auf dem Jupiter mit 24,8 N/kg am größten ist, ist dort auch die Gewichtskraft am ",
+    "loesung": "größten",
+    "post": ", nämlich 1488 N."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auf dem Mond verliert ein Körper einen Teil seiner Masse, deshalb lässt er sich dort leichter tragen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil die Gewichtskraft auf dem Mond auf ein Sechstel sinkt, lässt sich eine Kiste dort auch sechsmal so leicht anschieben und wieder anhalten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Mond zeigt eine Federwaage bei derselben Kiste weniger Newton an als auf der Erde.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf dem Jupiter ist die Gewichtskraft von 60 kg mit 1488 N mehr als doppelt so groß wie auf der Erde.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben nimmt eine Kiste mit der Masse 12 kg mit auf den Mond, wo g = 1,6 N/kg beträgt. Was zeigt dort ein Kraftmesser an?",
+   "optionen": [
+    "2 kg, denn auf dem Mond ist alles ein Sechstel so schwer.",
+    "19,2 N, denn F = m · g = 12 kg · 1,6 N/kg.",
+    "12 N, denn die Masse bleibt 12 kg und damit auch die Anzeige.",
+    "117,6 N, denn die Gewichtskraft eines Körpers ist an jedem Ort gleich groß."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile Mias Satz: „Die Bücher in der Kiste sind auf dem Mond keine Seite weniger.“ Verwende dabei die Begriffe Masse, Ortsfaktor und Gewichtskraft.",
+   "zeilen": 4,
+   "loesung": "Mias Satz ist richtig. Die Zahl der Buchseiten und damit die Stoffmenge in der Kiste ändert sich beim Flug zum Mond nicht, also bleibt die Masse gleich groß. Was sich ändert, ist allein der Ortsfaktor: Auf der Erde gilt g = 9,8 N/kg, auf dem Mond nur g = 1,6 N/kg. Nach F = m · g wird deshalb die Gewichtskraft kleiner, bei m = 60 kg von 588 N auf 96 N, also auf etwa ein Sechstel. Ben spürt beim Heben nur diese kleinere Kraft und nennt die Kiste deshalb leichter. Kleiner geworden ist aber nur die Gewichtskraft, nicht die Masse."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kr7",
+  "lueckensaetze": [
+   {
+    "pre": "Den Betrag einer Kraft misst du in der Einheit ",
+    "loesung": "Newton",
+    "post": ", ihr Formelzeichen ist F."
+   },
+   {
+    "pre": "Die Länge des gezeichneten Pfeils steht für den ",
+    "loesung": "Betrag",
+    "post": " der Kraft."
+   },
+   {
+    "pre": "Der Kraftpfeil beginnt an der Stelle, an der die Kraft am Körper ",
+    "loesung": "angreift",
+    "post": ", und endet mit einer Spitze."
+   },
+   {
+    "pre": "Damit man zwei Kraftpfeile vergleichen kann, legt man vorher einen ",
+    "loesung": "Maßstab",
+    "post": " fest, zum Beispiel 1 cm für 1 N."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim selben Maßstab ist der Pfeil für 2 N doppelt so lang wie der Pfeil für 1 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Betrag und Richtung lassen sich in der Simulation unabhängig voneinander einstellen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zwei Kräfte sind schon dann gleich, wenn die Federwaage bei beiden denselben Wert anzeigt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Stellt man von 4 N nach rechts auf 4 N nach links um, so wird der Pfeil kürzer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben zieht die Kiste mit 4 N schräg nach oben, sein Vater mit 4 N flach nach vorn. Welche Beschreibung trifft zu?",
+   "optionen": [
+    "Die Kräfte sind verschieden groß, denn ihre Pfeile haben verschiedene Längen.",
+    "Es ist dieselbe Kraft, denn beide Federwaagen zeigen 4 N an.",
+    "Die Kräfte haben denselben Betrag, aber verschiedene Richtungen, und wirken deshalb verschieden.",
+    "Bens Kraft ist größer, weil ein schräger Zug immer mehr Newton bedeutet."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Zeichne die Kräfte F1 = 3 N nach rechts und F2 = 1 N nach oben im Maßstab 1 cm für 1 N als Pfeile und beschreibe, woran man in deiner Zeichnung Betrag und Richtung abliest.",
+   "zeilen": 4,
+   "loesung": "Der Pfeil für F1 ist im Maßstab 1 cm für 1 N genau 3 cm lang und zeigt nach rechts. Der Pfeil für F2 ist 1 cm lang und zeigt nach oben. Beide Pfeile beginnen an der Stelle, an der die Kraft am Körper angreift. Den Betrag liest man ab, indem man die Pfeillänge mit dem Lineal misst und über den Maßstab umrechnet: 3 cm bedeuten 3 N. Die Richtung liest man an der Pfeilspitze ab. Erst beide Angaben zusammen beschreiben die Kraft vollständig, zum Beispiel F1 = 3 N nach rechts."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr8",
+  "lueckensaetze": [
+   {
+    "pre": "Zwei Kräfte, die auf derselben Geraden wirken, kann man zu einer einzigen ",
+    "loesung": "Gesamtkraft",
+    "post": " zusammenfassen."
+   },
+   {
+    "pre": "F1 = 2 N nach rechts und F2 = 2 N nach rechts ergeben zusammen ",
+    "loesung": "4",
+    "post": " N nach rechts."
+   },
+   {
+    "pre": "Bei F1 = 3 N rechts und F2 = 2 N links bleibt 1 N übrig; die Gesamtkraft zeigt in die Richtung der ",
+    "loesung": "größeren",
+    "post": " Kraft."
+   },
+   {
+    "pre": "Auch die Gesamtkraft hat immer einen Betrag und eine ",
+    "loesung": "Richtung",
+    "post": ", genau wie jede einzelne Kraft."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zeigen beide Kräfte nach rechts, so ist die Gesamtkraft größer als jede der beiden einzelnen Kräfte.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zu zweit ist die Wirkung immer größer als allein, weil zwei Kräfte stets addiert werden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei F1 = 3 N nach links und F2 = 2 N nach rechts beträgt die Gesamtkraft 1 N nach links.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei entgegengesetzten Kräften rechnet man 3 N − 2 N und lässt die Richtung weg, weil der Betrag genügt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mia zieht mit 5 N nach rechts am Sofa, Ben drückt gleichzeitig mit 2 N nach links dagegen. Wie groß ist die Gesamtkraft und wohin zeigt sie?",
+   "optionen": [
+    "7 N nach rechts, denn zwei Kräfte an einem Körper werden immer addiert.",
+    "0 N, denn entgegengesetzte Kräfte heben sich immer gegenseitig auf.",
+    "3 N nach links, denn die Gesamtkraft zeigt zur kleineren Kraft hin.",
+    "3 N nach rechts, denn 5 N − 2 N = 3 N, und die größere Kraft zieht nach rechts."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Vergleiche die beiden Versuche am Sofa: Zuerst schiebt Ben mit 4 N von hinten mit, während Mia mit 5 N nach vorn zieht. Danach drückt er mit denselben 4 N von vorn dagegen. Berechne beide Gesamtkräfte und erkläre den Unterschied.",
+   "zeilen": 4,
+   "loesung": "Im ersten Versuch zeigen beide Kräfte in dieselbe Richtung, deshalb werden die Beträge addiert: F = 5 N + 4 N = 9 N in Mias Zugrichtung. Im zweiten Versuch zeigen die Kräfte in entgegengesetzte Richtungen, deshalb wird der kleinere Betrag vom größeren abgezogen: F = 5 N − 4 N = 1 N. Diese Gesamtkraft zeigt zu Mia hin, weil ihre Kraft die größere ist. Von 9 N bleibt also nur noch 1 N übrig, das ist der neunte Teil. Deshalb kriecht das Sofa im zweiten Versuch nur langsam vorwärts, statt gut voranzukommen. Geändert hat sich nicht die Anstrengung der beiden, sondern die Richtung, in die Ben drückt."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr9",
+  "lueckensaetze": [
+   {
+    "pre": "Wirken an einem Körper zwei gleich große Kräfte in entgegengesetzte Richtungen, herrscht ein ",
+    "loesung": "Kräftegleichgewicht",
+    "post": " und der Körper bleibt in Ruhe."
+   },
+   {
+    "pre": "An der Lampe zieht die Gewichtskraft mit 5 N nach unten, deshalb muss das Kabel mit genau 5 N nach ",
+    "loesung": "oben",
+    "post": " ziehen."
+   },
+   {
+    "pre": "Bei einer Haltekraft von nur 4 N bleibt eine Gesamtkraft von 1 N nach unten übrig, und die Lampe ",
+    "loesung": "sinkt",
+    "post": " nach unten."
+   },
+   {
+    "pre": "Dass sich die Lampe nicht bewegt, bedeutet nicht, dass keine Kraft wirkt, sondern dass sich beide Kräfte gegenseitig ",
+    "loesung": "aufheben",
+    "post": " und 0 N übrig bleiben."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Kräftegleichgewicht beträgt die Gesamtkraft an der Lampe 0 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Damit die Lampe hängen bleibt, muss das Kabel etwas stärker nach oben ziehen, als die Gewichtskraft nach unten zieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil die Lampe völlig ruhig hängt, wirkt an ihr keine Kraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Stellst du die Haltekraft auf 6 N ein, wird die Lampe nach oben gezogen.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Die Lampe hängt ruhig über der Kellertreppe. Warum bewegt sie sich nicht?",
+   "optionen": [
+    "Weil die Haltekraft des Kabels genauso groß ist wie die Gewichtskraft und die Gesamtkraft damit 0 N beträgt.",
+    "Weil die Haltekraft des Kabels größer ist als die Gewichtskraft und die Lampe deshalb oben festgehalten wird.",
+    "Weil an einer Lampe, die sich nicht bewegt, überhaupt keine Kraft wirkt.",
+    "Weil sich Gewichtskraft und Haltekraft zu 10 N addieren und die Lampe dadurch festklemmt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne die Gewichtskraft einer Lampe mit der Masse m = 0,60 kg und bestimme daraus, wie groß die Haltekraft des Kabels sein muss. Rechne mit g = 9,8 N/kg und begründe dein Ergebnis.",
+   "zeilen": 4,
+   "loesung": "Die Gewichtskraft berechnest du mit F = m · g. Mit m = 0,60 kg und g = 9,8 N/kg ergibt sich F = 0,60 kg · 9,8 N/kg = 5,88 N, also rund 5,9 N. Diese Kraft zieht die Lampe senkrecht nach unten. Damit die Lampe an ihrem Platz bleibt, muss das Kabel mit genau derselben Kraft von 5,9 N nach oben ziehen. Beide Kräfte sind dann gleich groß und entgegengesetzt gerichtet, die Gesamtkraft beträgt 0 N. Zöge das Kabel schwächer, bliebe eine Kraft nach unten übrig und die Lampe würde sinken; zöge es stärker, würde sie nach oben gezogen."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr10",
+  "lueckensaetze": [
+   {
+    "pre": "Zu jeder Kraft gehört eine gleich große ",
+    "loesung": "Gegenkraft",
+    "post": ", die in die entgegengesetzte Richtung zeigt."
+   },
+   {
+    "pre": "Kraft und Gegenkraft heben sich nicht auf, weil sie an zwei verschiedenen ",
+    "loesung": "Körpern",
+    "post": " angreifen."
+   },
+   {
+    "pre": "Bei gleich großer Kraft wird der Körper mit der ",
+    "loesung": "kleineren",
+    "post": " Masse schneller."
+   },
+   {
+    "pre": "Der losgelassene Luftballon fliegt nach vorn, weil die Luft nach ",
+    "loesung": "hinten",
+    "post": " ausströmt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Absprung drückt die Person stärker gegen das Boot, als das Boot gegen die Person drückt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei den beiden Eisläufern haben beide eine Masse von 60 kg und fahren mit 2,0 m/s auseinander.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Kraft und Gegenkraft sind gleich groß und zeigen in entgegengesetzte Richtungen, greifen aber an verschiedenen Körpern an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil das ausgestoßene Gas mit 20 kg viel leichter ist als die Rakete, ist die Kraft auf die Rakete größer als die Kraft auf das Gas.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Beim Start erreicht die Rakete mit m = 600 kg eine Geschwindigkeit von 0,20 m/s, das ausgestoßene Gas mit m = 20 kg dagegen 6,0 m/s. Was folgt daraus für die beiden Kräfte?",
+   "optionen": [
+    "Die Kraft der Rakete auf das Gas und die Kraft des Gases auf die Rakete heben sich auf, deshalb wirkt am Ende keine von beiden.",
+    "Beide Körper erfahren gleich große Kräfte; verschieden ist nur, wie stark die Massen darauf reagieren.",
+    "Auf das Gas wirkt die größere Kraft, denn es wird ja auch viel schneller.",
+    "Auf die Rakete wirkt die größere Kraft, denn sie hat die viel größere Masse."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Ben auf dem Rollbrett rückwärts rollt, während das Sofa nach vorn rutscht. Gehe dabei auf beide Kräfte und auf die beiden Massen ein.",
+   "zeilen": 4,
+   "loesung": "Ben stemmt sich mit den Händen gegen das Sofa und übt damit eine Kraft nach vorn auf das Sofa aus. Im selben Moment übt das Sofa eine gleich große Kraft nach hinten auf Ben aus. Diese beiden Kräfte sind Kraft und Gegenkraft: gleich groß, entgegengesetzt gerichtet, aber an zwei verschiedenen Körpern. Deshalb heben sie sich nicht auf, sondern setzen beide Körper in Bewegung. Das Sofa hat die deutlich größere Masse und rutscht nur ein kurzes Stück über die Fliesen. Ben hat die kleinere Masse und rollt auf dem Rollbrett so weit rückwärts, bis er gegen das Regal stößt."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kr11",
+  "lueckensaetze": [
+   {
+    "pre": "Über eine schiefe ",
+    "loesung": "Ebene",
+    "post": " ziehst du eine Last schräg nach oben, statt sie senkrecht zu heben."
+   },
+   {
+    "pre": "Je flacher die Rampe ist, desto ",
+    "loesung": "kleiner",
+    "post": " ist die nötige Zugkraft."
+   },
+   {
+    "pre": "Auf der mittleren Rampe reichen 3,0 N statt 6 N, dafür ist der ",
+    "loesung": "Weg",
+    "post": " doppelt so lang wie die Höhe."
+   },
+   {
+    "pre": "Kraft sparst du, den Aufwand aus Kraft mal Weg nicht; das ist die goldene ",
+    "loesung": "Regel",
+    "post": " der Mechanik."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil die flache Rampe nur 1,5 N statt 6 N verlangt, ist der gesamte Aufwand dort nur ein Viertel so groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf der steilen Rampe ist die Zugkraft mit 4,5 N größer als auf der flachen Rampe mit 1,5 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Über eine Rampe wird die Gewichtskraft der Waschmaschine kleiner.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim senkrechten Heben wären 6 N nötig, jede der drei Rampen verlangt weniger Kraft.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Statt die Last mit 6 N senkrecht zu heben, zieht Ben sie über die flache Rampe mit nur 1,5 N. Was gilt dann für den Weg?",
+   "optionen": [
+    "Der Weg ist ebenfalls nur ein Viertel so lang, weil Kraft und Weg gemeinsam kleiner werden.",
+    "Der Weg wird 6,0-mal so lang, weil zum senkrechten Heben 6 N nötig gewesen wären.",
+    "Der Weg ist 4,0-mal so lang wie die Höhe, weil die Kraft auf ein Viertel gesunken ist.",
+    "Der Weg bleibt genauso lang wie die Höhe, denn geändert hat sich ja nur die Kraft."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche das senkrechte Heben mit 6 N und das Ziehen über die flache Rampe mit 1,5 N. Beurteile, welches Vorgehen für Bens Vater günstiger ist, und begründe mit der goldenen Regel der Mechanik.",
+   "zeilen": 4,
+   "loesung": "Senkrecht müsste Bens Vater die Last mit 6 N anheben. Über die flache Rampe genügen 1,5 N, also nur ein Viertel dieser Kraft. Dafür ist der Weg auf der Rampe 4,0-mal so lang wie die Höhe. Zugkraft mal Weg-Faktor ergibt in beiden Fällen etwa 6, der Aufwand ist also gleich geblieben. Günstiger ist die Rampe trotzdem, weil Bens Vater die kleinere Kraft dauerhaft aufbringen kann und die Maschine nicht tragen muss; er muss dafür aber deutlich länger ziehen. Genau das sagt die goldene Regel der Mechanik: Kraft lässt sich sparen, das Produkt aus Kraft und Weg nicht."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kr12",
+  "lueckensaetze": [
+   {
+    "pre": "Die Reibungskraft zeigt immer entgegen der ",
+    "loesung": "Bewegung",
+    "post": " und bremst den Körper ab."
+   },
+   {
+    "pre": "Auf Eis rollt der Wagen 112 cm weit, auf Teppich nur 25 cm; auf dem Teppich ist die Reibungskraft also ",
+    "loesung": "größer",
+    "post": " als auf dem Eis."
+   },
+   {
+    "pre": "Ein angeschobener Wagen bleibt nicht deshalb stehen, weil ihm die Kraft ausgeht, sondern weil ihn die ",
+    "loesung": "Reibungskraft",
+    "post": " abbremst."
+   },
+   {
+    "pre": "Reibung ist nicht nur lästig, denn ohne sie könntest du weder ",
+    "loesung": "gehen",
+    "post": " noch bremsen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wagen kommt auf dem Teppich nur 25 cm weit, weil Mia ihm dort einen schwächeren Schubs gegeben hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Wagen bleibt stehen, weil die Kraft des Anschubs nach und nach aufgebraucht ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf Eis rollt der Wagen mit 112 cm mehr als viermal so weit wie auf Teppich mit 25 cm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wie groß die Reibungskraft ist, hängt von beiden Flächen ab, die aneinander reiben.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mia gibt dem Rollwagen auf den Fliesen und auf dem Teppichrest genau denselben Schubs. Warum kommt er auf dem Teppich viel kürzer weit?",
+   "optionen": [
+    "Weil der Wagen auf dem rauen Teppich mit einer kleineren Anschubkraft losfährt als auf den glatten Fliesen.",
+    "Weil die Kraft des Schubses auf dem Teppich schneller aufgebraucht ist und der Wagen dann keine Kraft mehr hat.",
+    "Weil auf dem Teppich zusätzlich die Gewichtskraft nach hinten wirkt und den Wagen dadurch bremst.",
+    "Weil die Reibungskraft zwischen Wagen und Teppich größer ist und den Wagen deshalb stärker abbremst."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile, ob Reibung im Alltag nur ein Nachteil ist. Nenne dazu ein Beispiel, bei dem Reibung stört, und eines, bei dem sie gebraucht wird.",
+   "zeilen": 4,
+   "loesung": "Reibung ist nicht nur ein Nachteil. Sie stört zum Beispiel beim Rollwagen im Keller: Auf dem rauen Teppich ist die Reibungskraft so groß, dass der Wagen schon nach 25 cm steht und Mia ständig nachschieben muss. Gebraucht wird die Reibung dagegen beim Gehen und beim Bremsen. Nur weil zwischen Schuhsohle und Boden eine Reibungskraft wirkt, kann Mia sich überhaupt abstoßen, ohne wegzurutschen. Auf Eis fehlt diese Kraft fast völlig; deshalb rollt der Wagen dort 112 cm weit, und man selbst rutscht leicht aus. Ob Reibung nützt oder stört, hängt also davon ab, ob man eine Bewegung erhalten oder Halt finden möchte."
+  },
+  "theme": "kraefte",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "bw1",
+  "lueckensaetze": [
+   {
+    "pre": "Zu jeder Wegangabe gehört immer auch eine ",
+    "loesung": "Zeitangabe",
+    "post": " für denselben Moment."
+   },
+   {
+    "pre": "Aus Zeit und Weg zusammen entsteht ein ",
+    "loesung": "Wertepaar",
+    "post": " in einer Zeile der Tabelle."
+   },
+   {
+    "pre": "Die Zeit misst du in ",
+    "loesung": "Sekunden",
+    "post": " und den Weg in Metern."
+   },
+   {
+    "pre": "Am ",
+    "loesung": "Startpunkt",
+    "post": " stehen die Werte t = 0,0 s und s = 0 m."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Vor dem Start zeigt die Simulation t = 0,0 s und s = 0 m, und dieses Wertepaar steht bereits als erste Zeile in der Tabelle.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Aus mehreren gespeicherten Wertepaaren lässt sich die Fahrt später Schritt für Schritt nacherzählen, auch wenn man nicht dabei war.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Angabe „Wir sind 26 m gefahren“ beschreibt die Bewegung schon vollständig, weil der Weg von beiden Größen die wichtigere ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Zeit braucht Mia nicht zu stoppen, denn sie lässt sich am Ende der Fahrt aus dem zurückgelegten Weg berechnen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mia hält eine Momentaufnahme fest und liest t = 3,2 s und s = 26 m ab. Welche Aussage gibt dieses Wertepaar richtig wieder?",
+   "optionen": [
+    "Der Transporter hat 3,2 s nach dem Start insgesamt 26 m zurückgelegt.",
+    "Der Transporter legt in jeder Sekunde 26 m zurück, denn die 26 m gehören zu dieser Momentaufnahme.",
+    "Der Transporter ist 3,2 m weit gekommen und fährt seit 26 s, denn die kleinere Zahl gehört zum Weg.",
+    "Der Transporter braucht für die ganze Fahrt 3,2 s, denn die Stoppuhr zeigt diesen Wert an."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Bens Vater fragt am Telefon nach dem Stand der Fahrt. Vergleiche die beiden Antworten „Wir fahren seit zehn Minuten“ und „Wir sind zwölf Kilometer weit“ und beurteile, ob eine von beiden allein die Bewegung des Transporters beschreibt.",
+   "zeilen": 4,
+   "loesung": "Jede der beiden Antworten nennt nur eine der zwei nötigen Größen. Die erste Antwort gibt allein die Zeit an, verrät aber nicht, welchen Weg der Transporter in diesen zehn Minuten geschafft hat. Die zweite Antwort gibt allein den Weg an, verrät aber nicht, wie lange dafür gebraucht wurde; zwölf Kilometer können in zehn Minuten oder in zwei Stunden entstehen. Keine der beiden Angaben beschreibt die Bewegung deshalb vollständig. Erst beide zusammen ergeben ein Wertepaar, so wie t = 3,2 s und s = 26 m in der Simulation. Genau darum notiert Mia an jedem Kilometerstein die Zeit und den Weg gemeinsam."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "bw2",
+  "lueckensaetze": [
+   {
+    "pre": "Die Einheit der Geschwindigkeit ist Meter pro ",
+    "loesung": "Sekunde",
+    "post": " und wird m/s geschrieben."
+   },
+   {
+    "pre": "Multiplizierst du einen Wert in m/s mit 3,6, erhältst du das Tempo in ",
+    "loesung": "Kilometern",
+    "post": " pro Stunde."
+   },
+   {
+    "pre": "Ein Vorsprung kann auch von einem früheren ",
+    "loesung": "Start",
+    "post": " stammen und sagt nichts über das Tempo aus."
+   },
+   {
+    "pre": "Willst du die Fahrzeit berechnen, teilst du den Weg durch die ",
+    "loesung": "Geschwindigkeit",
+    "post": " und erhältst t = s : v."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach 6 s hat Auto A 60 m und Auto B 36 m zurückgelegt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Lieferwagen liegt vorn, also hat er die größere Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Tempo von 10 m/s entspricht 36 km/h.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auto B wird während des Rennens langsamer, denn sein Abstand zu Auto A wird immer größer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Auto A fährt mit v = 10 m/s. Wie schnell ist das in Kilometern pro Stunde?",
+   "optionen": [
+    "600 km/h, denn 10 m in jeder Sekunde sind 600 m in jeder Minute.",
+    "36 km/h, denn 10 m/s · 3,6 = 36 km/h.",
+    "10 km/h, denn beim Wechsel der Einheit bleibt die Zahl gleich.",
+    "2,8 km/h, denn 10 m/s : 3,6 ergibt 2,8."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben behauptet: „Der Lieferwagen liegt vorn, also ist er schneller.“ Erkläre mit Hilfe von v = s : t, welche Größen Ben messen müsste, um seine Behauptung zu prüfen.",
+   "zeilen": 4,
+   "loesung": "Ben müsste bei beiden Fahrzeugen einen zurückgelegten Weg und die dazugehörige Zeit messen. Aus jedem Wertepaar berechnet er die Geschwindigkeit mit v = s : t. Im Rennen ergibt sich für Auto A 30 m : 3 s = 10 m/s und für Auto B 18 m : 3 s = 6 m/s. Erst dieser Vergleich zeigt, wer in derselben Zeit den größeren Weg schafft. Der Vorsprung des Lieferwagens sagt darüber nichts aus, denn er kann allein vom früheren Start an der Baustellenampel stammen. Ein Fahrzeug kann also weit vorn liegen und trotzdem den kleineren Wert für v haben."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw3",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer ",
+    "loesung": "gleichförmigen",
+    "post": " Bewegung bleibt die Geschwindigkeit während der ganzen Fahrt gleich."
+   },
+   {
+    "pre": "Alle Marken auf der Bahn haben denselben ",
+    "loesung": "Abstand",
+    "post": " zueinander, solange das Tempo sich nicht ändert."
+   },
+   {
+    "pre": "Bei der Einstellung „schnell“ kommen in jeder Sekunde 15 ",
+    "loesung": "Meter",
+    "post": " dazu."
+   },
+   {
+    "pre": "Verdoppelst du bei gleichförmiger Fahrt die Zeit, dann verdoppelt sich auch der zurückgelegte ",
+    "loesung": "Weg",
+    "post": " des Körpers."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei „mittel“ mit v = 10 m/s legt das Auto in 3,2 s genau 32 m zurück.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil das Auto immer weiterfährt, werden die Abstände zwischen den Marken mit der Zeit größer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil bei allen drei Einstellungen die Geschwindigkeit konstant bleibt, kommen die Autos in derselben Zeit auch gleich weit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei „schnell“ liegen die Marken weiter auseinander als bei „langsam“, untereinander sind ihre Abstände aber wieder alle gleich groß.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Bei der Einstellung „langsam“ fährt das Auto gleichförmig mit v = 6 m/s. Wie weit kommt es in 5 s?",
+   "optionen": [
+    "1,2 m, denn s = v : t = 6 m/s : 5 s = 1,2 m.",
+    "90 m, denn in jeder Sekunde kommen 6 m/s dazu: 6 m + 12 m + 18 m + 24 m + 30 m.",
+    "30 m, denn s = v · t = 6 m/s · 5 s = 30 m.",
+    "6 m, denn bei konstanter Geschwindigkeit bleibt auch der Weg konstant."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beim Versuch am Tisch zieht ihr ein Spielzeugauto mit gleichmäßigem Zug über die Platte und setzt alle zwei Sekunden einen Kreidepunkt. Begründe, warum die Punkte gleich weit auseinanderliegen, und beschreibe, wie sich das Muster ändert, wenn der Zug an der Schnur nachlässt.",
+   "zeilen": 4,
+   "loesung": "Der gleichmäßige Zug hält die Geschwindigkeit des Autos konstant, die Bewegung ist also gleichförmig. In jedem Zeitabschnitt von 2 s legt das Auto deshalb dasselbe Stück zurück, und die Kreidepunkte liegen alle gleich weit auseinander. Rechnerisch gilt s = v · t: Bleiben v und t gleich, kommt jedes Mal dasselbe s heraus. Bei v = 6 m/s wären es zum Beispiel in jedem Abschnitt 12 m. Lässt der Zug an der Schnur nach, wird das Auto langsamer, und die Abstände zwischen den Punkten werden von Mal zu Mal kleiner. Die Bewegung ist dann nicht mehr gleichförmig, und genau das erkennt man am Muster der Punkte."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw4",
+  "lueckensaetze": [
+   {
+    "pre": "Im Weg-Zeit-Diagramm trägst du die Zeit nach rechts und den Weg nach ",
+    "loesung": "oben",
+    "post": " auf."
+   },
+   {
+    "pre": "Die Steigung berechnest du als v = Δs/Δt, also den Wegzuwachs geteilt durch die zugehörige ",
+    "loesung": "Zeitspanne",
+    "post": " des Abschnitts."
+   },
+   {
+    "pre": "Eine steile Gerade gehört zu einem großen Tempo, eine flache Gerade zu einem ",
+    "loesung": "kleinen",
+    "post": " Tempo."
+   },
+   {
+    "pre": "Bei einer gleichförmigen Bewegung ist die Linie im Weg-Zeit-Diagramm eine ",
+    "loesung": "Gerade",
+    "post": " und keine Kurve."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine waagerechte Linie im Weg-Zeit-Diagramm bedeutet, dass der Körper mit gleichbleibendem Tempo weiterfährt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die steile Linie mit v = 12 m/s gehört zum dreifachen Tempo der flachen Linie mit v = 4 m/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In der Einstellung „flach“ sind nach t = 3,2 s erst rund 13 m zurückgelegt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je höher ein Punkt im Weg-Zeit-Diagramm liegt, desto schneller ist der Körper in diesem Moment.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine Gerade im Weg-Zeit-Diagramm steigt innerhalb von 5 s um 20 m an. Welche Geschwindigkeit gehört zu dieser Linie?",
+   "optionen": [
+    "20 m/s, denn der Körper hat in diesem Abschnitt 20 m zurückgelegt.",
+    "100 m/s, denn v = Δs · Δt = 20 m · 5 s = 100.",
+    "0,25 m/s, denn v = Δt/Δs = 5 s : 20 m = 0,25.",
+    "4 m/s, denn v = Δs/Δt = 20 m : 5 s = 4 m/s."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mias Linie steigt für die Landstraße flach an, für die Autobahn steil, und dazwischen läuft ein Stück waagerecht. Deute den Verlauf der Linie und ordne jedem der drei Abschnitte zu, was der Transporter dort gerade tut.",
+   "zeilen": 4,
+   "loesung": "Das flache Stück gehört zur Landstraße. Seine Steigung ist klein, in der Simulation entspricht das v = 4 m/s, sodass nach 3,2 s erst rund 13 m zurückgelegt sind. Das steile Stück gehört zur Autobahn, dort wächst der Weg in derselben Zeitspanne viel stärker; die Simulation gibt v = Δs/Δt = 12 m/s an, also das dreifache Tempo. Beim waagerechten Stück ändert sich der Weg nicht, es gilt Δs = 0 und damit v = 0 m/s. Dort steht der Transporter, zum Beispiel im Stau kurz vor der Ausfahrt. An der Steilheit der Linie liest man somit für jeden Abschnitt ab, ob der Transporter langsam fährt, schnell fährt oder steht."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw5",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer gleichmäßig beschleunigten Bewegung kommt in jeder Sekunde derselbe Betrag an ",
+    "loesung": "Geschwindigkeit",
+    "post": " dazu."
+   },
+   {
+    "pre": "Bei der gleichförmigen Fahrt mit v = 8 m/s bleibt der Abstand zwischen zwei Marken immer ",
+    "loesung": "gleich",
+    "post": " groß."
+   },
+   {
+    "pre": "Im Weg-Zeit-Diagramm wird die Linie der beschleunigten Bewegung mit der Zeit immer ",
+    "loesung": "steiler",
+    "post": " und ist deshalb keine Gerade."
+   },
+   {
+    "pre": "In den ersten Sekunden ist der beschleunigte Wagen noch ",
+    "loesung": "langsamer",
+    "post": " als der gleichförmige, obwohl er ständig Tempo gewinnt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der beschleunigte Wagen ist nach 3,2 s rund 3,8 m/s schnell, also hat er 3,8 m/s · 3,2 s ≈ 12 m zurückgelegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Anzeige a = 1,2 m/s² bedeutet, dass in jeder Sekunde 1,2 m/s an Geschwindigkeit dazukommen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch bei der gleichförmigen Fahrt werden die Markenabstände nach hinten langsam größer, weil der Wagen ja immer weiter kommt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der gleichförmige Wagen ist nach 3,2 s weiter gekommen als der beschleunigte, obwohl beide gleichzeitig gestartet sind.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum liegen die Marken bei der Einstellung „Gas geben (beschleunigt)“ zuerst eng beieinander und später weit auseinander?",
+   "optionen": [
+    "Weil in jeder Sekunde 1,2 m/s dazukommen und der Wagen deshalb in jeder folgenden Sekunde ein längeres Stück zurücklegt.",
+    "Weil der Wagen zuerst gegen die Reibung anfahren muss und erst danach frei rollt. Die Abstände wachsen jedoch auch später gleichmäßig weiter.",
+    "Weil die Marken bei höherem Tempo in immer kürzeren Zeitabständen gesetzt werden. Die Simulation setzt sie jedoch in gleichen Zeitabständen, nur die Wegstücke dazwischen wachsen.",
+    "Weil die Beschleunigung a mit der Zeit immer größer wird. Die Anzeige bleibt aber konstant bei a = 1,2 m/s², es wächst allein die Geschwindigkeit."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche die beschleunigte und die gleichförmige Fahrt aus der Simulation für die ersten 3,2 Sekunden. Gehe dabei auf Geschwindigkeit, zurückgelegten Weg und Markenabstände ein.",
+   "zeilen": 4,
+   "loesung": "Beim Gas geben startet der Wagen bei v ≈ 0,0 m/s und ist nach 3,2 s erst v ≈ 3,8 m/s schnell, weil je Sekunde nur 1,2 m/s dazukommen. Zurückgelegt hat er dabei s = 6 m, denn im Mittel war er nur rund 1,9 m/s schnell. Der gleichförmige Wagen fährt von Beginn an mit v = 8 m/s und schafft in denselben 3,2 s rund 26 m. Die Marken zeigen den Unterschied deutlich: Bei der beschleunigten Fahrt liegen sie am Anfang eng und werden nach hinten immer weiter, bei der gleichförmigen Fahrt haben alle denselben Abstand. In den ersten Sekunden ist die beschleunigte Fahrt also die langsamere. Erst wenn ihre Geschwindigkeit über 8 m/s gewachsen ist, holt sie auf."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw6",
+  "lueckensaetze": [
+   {
+    "pre": "Die Beschleunigung berechnest du, indem du die Geschwindigkeitsänderung Δv durch die zugehörige ",
+    "loesung": "Zeit",
+    "post": " Δt teilst."
+   },
+   {
+    "pre": "Die Beschleunigung wird in der Einheit ",
+    "loesung": "m/s²",
+    "post": " angegeben, gesprochen Meter je Sekundenquadrat."
+   },
+   {
+    "pre": "Verdoppelst du die Beschleunigung, so ist die Geschwindigkeit nach derselben Zeit ebenfalls ",
+    "loesung": "doppelt",
+    "post": " so groß."
+   },
+   {
+    "pre": "Ein Tempo von 100 km/h entspricht rund ",
+    "loesung": "28",
+    "post": " m/s."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Angabe a = 2 m/s² bedeutet, dass der Wagen mit 2 m/s unterwegs ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil der Transporter schwer beladen ist, hat er bei gleicher Antriebskraft die größere Beschleunigung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei a = 3 m/s² zeigt die Simulation nach t = 3,2 s eine Geschwindigkeit von 9,6 m/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Wagen mit großer Beschleunigung ist unmittelbar nach dem Start trotzdem noch langsam.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ein Wagen beschleunigt aus dem Stand gleichmäßig mit a = 2 m/s². Wie lange braucht er bis 100 km/h?",
+   "optionen": [
+    "2 s, denn a = 2 m/s² heißt, dass der Wagen nach 2 Sekunden sein Tempo erreicht hat. a nennt aber nur den Zuwachs je Sekunde und kein Endtempo.",
+    "Rund 14 s, denn 100 km/h sind rund 28 m/s, und aus v = a · t folgt t = 28 m/s : 2 m/s².",
+    "28 s, denn für 28 m/s braucht er 28 Sekunden. Das würde nur bei a = 1 m/s² stimmen, hier kommen je Sekunde 2 m/s dazu.",
+    "50 s, denn 100 geteilt durch 2 ergibt 50. Hier wurden km/h und m/s vermischt, ohne vorher umzurechnen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne mit v = a · t, wie schnell ein Wagen nach t = 3,2 s bei a = 1 m/s², bei a = 2 m/s² und bei a = 3 m/s² ist. Erkläre an deinen Ergebnissen den Unterschied zwischen Beschleunigung und Geschwindigkeit.",
+   "zeilen": 4,
+   "loesung": "Aus v = a · t folgt bei a = 1 m/s²: v = 1 m/s² · 3,2 s = 3,2 m/s. Bei a = 2 m/s² sind es v = 6,4 m/s, bei a = 3 m/s² sind es v = 9,6 m/s. Die Werte stimmen mit der Anzeige der Simulation überein: Verdreifachst du a, so ist v nach derselben Zeit ebenfalls dreimal so groß. Die Beschleunigung ist also kein Tempo, sondern sie sagt nur, wie viel Geschwindigkeit in jeder Sekunde dazukommt. Deshalb ist auch ein stark beschleunigender Wagen im ersten Augenblick noch langsam. Erst die Zeit macht aus einer großen Beschleunigung eine große Geschwindigkeit."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw7",
+  "lueckensaetze": [
+   {
+    "pre": "Ist die Beschleunigung negativ, so geht in jeder Sekunde derselbe Betrag an Geschwindigkeit ",
+    "loesung": "verloren",
+    "post": " statt dazuzukommen."
+   },
+   {
+    "pre": "Beim Bremsen zeigt die Beschleunigung entgegen der ",
+    "loesung": "Fahrtrichtung",
+    "post": " des Wagens."
+   },
+   {
+    "pre": "Zwischen Gas geben und Bremsen unterscheidet sich in der Simulation nur das ",
+    "loesung": "Vorzeichen",
+    "post": " von a, der Betrag ist beide Male 2,5 m/s²."
+   },
+   {
+    "pre": "Aus 25,0 m/s werden bei a = −2,5 m/s² nach 3,2 s noch ",
+    "loesung": "17,0",
+    "post": " m/s."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Gas geben mit a = +2,5 m/s² ist der Wagen aus dem Stand nach 3,2 s bei 8,0 m/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der bremsende Wagen kommt nach 10 s zum Stehen, weil je Sekunde 2,5 m/s abgebaut werden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Bremsen ist a gleich null, weil die Geschwindigkeit dabei nicht mehr zunimmt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil der Betrag von a in beiden Einstellungen gleich groß ist, hat der Wagen nach 3,2 s beide Male dieselbe Geschwindigkeit.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Wagen fährt mit 25,0 m/s und bremst gleichmäßig mit a = −2,5 m/s². Welche Geschwindigkeit hat er nach 4,0 s?",
+   "optionen": [
+    "0 m/s, denn nach dem Tritt auf die Bremse steht der Wagen sofort. Bis zum Stillstand vergehen hier aber 10 s.",
+    "10,0 m/s, denn 2,5 m/s² · 4,0 s ergibt 10,0 m/s. Das ist aber nur der Betrag, um den v abnimmt, und nicht die übrig gebliebene Geschwindigkeit.",
+    "15,0 m/s, denn 25,0 m/s − 2,5 m/s² · 4,0 s = 15,0 m/s.",
+    "35,0 m/s, denn 25,0 m/s + 2,5 m/s² · 4,0 s = 35,0 m/s. Beim Bremsen muss das Minuszeichen von a jedoch mitgeführt werden."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne für den bremsenden Wagen aus der Simulation die Geschwindigkeit nach 6,0 s und die Zeit bis zum Stillstand. Erläutere anschließend, woran man im Rechenweg erkennt, ob gebremst oder Gas gegeben wird.",
+   "zeilen": 4,
+   "loesung": "Der Wagen startet mit v = 25,0 m/s, die Anzeige nennt a = −2,5 m/s². Nach 6,0 s gilt v = 25,0 m/s − 2,5 m/s² · 6,0 s = 25,0 m/s − 15,0 m/s = 10,0 m/s. Bis zum Stillstand muss die gesamte Geschwindigkeit abgebaut werden, also t = 25,0 m/s : 2,5 m/s² = 10 s. Im Rechenweg erkennt man den Unterschied allein am Vorzeichen von a: Beim Gas geben wird der Betrag a · t zur Anfangsgeschwindigkeit addiert, beim Bremsen abgezogen. Der Betrag ist in beiden Fällen 2,5 m/s², die Formel a = Δv/Δt bleibt dieselbe. Deshalb spricht man auch beim Bremsen von einer Beschleunigung, nur zeigt sie entgegen der Fahrtrichtung."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw8",
+  "lueckensaetze": [
+   {
+    "pre": "Während der Reaktionszeit fährt das Auto mit unvermindertem Tempo ",
+    "loesung": "weiter",
+    "post": " und legt dabei den Reaktionsweg zurück."
+   },
+   {
+    "pre": "Bei doppeltem Tempo wird der Reaktionsweg ",
+    "loesung": "doppelt",
+    "post": " so lang wie vorher."
+   },
+   {
+    "pre": "Bei 100 km/h zeigt die Simulation einen Anhalteweg von ",
+    "loesung": "130",
+    "post": " m."
+   },
+   {
+    "pre": "Die Faustregel „halber Tacho“ nennt bei 100 km/h einen Abstand von 50 m und liegt damit deutlich unter dem ",
+    "loesung": "Anhalteweg",
+    "post": " von 130 m."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 30 km/h sind Reaktionsweg und Bremsweg mit je 9 m gleich lang, der Anhalteweg beträgt 18 m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Reaktionsweg hängt nicht vom Tempo ab, sondern nur von der Reaktionszeit, und ist bei 50 und bei 100 km/h gleich lang.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Von 50 km/h auf 100 km/h wächst der Bremsweg von 25 m auf 100 m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil sich das Tempo von 50 km/h auf 100 km/h verdoppelt, verdoppelt sich auch der Anhalteweg von 40 m auf 80 m.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum wächst der Bremsweg bei doppeltem Tempo auf das Vierfache, während der Reaktionsweg sich nur verdoppelt?",
+   "optionen": [
+    "Weil die Bremsen bei hohem Tempo schlechter greifen und heiß werden. Die Vervierfachung ergibt sich jedoch schon aus der Rechnung, auch bei völlig gleich guter Bremse.",
+    "Weil zum Bremsweg noch der Reaktionsweg dazukommt. Der Reaktionsweg gehört aber zum Anhalteweg, verdoppelt sich nur und erklärt die Vervierfachung nicht.",
+    "Weil bei doppeltem Tempo auch die Reaktionszeit doppelt so lang wird. Die Reaktionszeit bleibt jedoch etwa gleich, sie hängt vom Fahrer ab und nicht vom Tempo.",
+    "Weil doppelt so viel Geschwindigkeit abgebaut werden muss, was doppelt so lange dauert, und das Auto in dieser Zeit außerdem doppelt so schnell unterwegs ist."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Vergleiche mithilfe der Werte aus der Simulation den Anhalteweg bei 30 km/h und bei 50 km/h und beurteile daran, warum vor Schulen Tempo 30 gilt.",
+   "zeilen": 4,
+   "loesung": "Bei 30 km/h sind Reaktionsweg und Bremsweg je 9 m, der Anhalteweg beträgt also 18 m. Bei 50 km/h sind es 15 m Reaktionsweg und 25 m Bremsweg, zusammen 40 m. Das Tempo steigt nur um zwei Drittel, der Anhalteweg wächst dagegen um 22 m auf mehr als das Doppelte. Der Grund ist der Bremsweg: Er wächst viel stärker als die Geschwindigkeit, während der Reaktionsweg nur mit ihr mitwächst. Läuft ein Kind hinter einem parkenden Auto hervor, steht ein Wagen mit Tempo 30 nach 18 m und damit oft noch rechtzeitig. Mit Tempo 50 wäre er an derselben Stelle noch mit hoher Geschwindigkeit unterwegs, weil er erst nach 40 m steht."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "bw9",
+  "lueckensaetze": [
+   {
+    "pre": "Ohne Luftwiderstand ist die Fallzeit eines Körpers von seiner ",
+    "loesung": "Masse",
+    "post": " unabhängig."
+   },
+   {
+    "pre": "Auf eine große Masse wirkt zwar eine größere Gewichtskraft, doch sie lässt sich auch schwerer in Bewegung ",
+    "loesung": "setzen",
+    "post": ", und beides gleicht sich genau aus."
+   },
+   {
+    "pre": "In der Simulation sind die Kugeln nach 2,02 s genau 20,0 m gefallen und dabei 19,8 m/s ",
+    "loesung": "schnell",
+    "post": " geworden."
+   },
+   {
+    "pre": "Teilst du 19,8 m/s durch 2,02 s, so erhältst du rund 9,8 m/s², also die ",
+    "loesung": "Fallbeschleunigung",
+    "post": " g."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Kugel mit 1 kg und die Kugel mit 10 kg sind in der Simulation beide nach 2,02 s unten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine doppelt so schwere Kugel erreicht beim Aufschlag auch die doppelte Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beide Kugeln fallen gleich schnell, weil die Erde auf jede von ihnen dieselbe Gewichtskraft ausübt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Fallbeschleunigung g gibt an, um wie viel m/s die Geschwindigkeit in jeder Sekunde zunimmt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Eine Kugel mit 1 kg und eine mit 10 kg werden gleichzeitig aus 20,0 m Höhe losgelassen. Was zeigt die Simulation?",
+   "optionen": [
+    "Beide sind nach 2,02 s gleichzeitig unten und dabei 19,8 m/s schnell, weil die größere Kraft auch die größere Masse beschleunigen muss.",
+    "Beide sind gleichzeitig unten, doch die 10-kg-Kugel schlägt mit größerer Geschwindigkeit auf, weil sie schwerer ist.",
+    "Die 10-kg-Kugel ist deutlich früher unten, weil auf sie die zehnfache Gewichtskraft wirkt.",
+    "Die 1-kg-Kugel ist zuerst unten, weil die Erde eine kleine Masse leichter in Gang bringt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne mit g = 9,8 m/s², welche Geschwindigkeit eine Kugel nach 2,02 s freiem Fall erreicht, und begründe, warum dieser Wert für 1 kg und für 10 kg derselbe ist.",
+   "zeilen": 4,
+   "loesung": "Im freien Fall wächst die Geschwindigkeit in jeder Sekunde um g, es gilt also v = g · t. Eingesetzt ergibt das v = 9,8 m/s² · 2,02 s = 19,8 m/s, genau den Wert der Simulation beim Aufschlag. In dieser Rechnung kommt die Masse überhaupt nicht vor, deshalb gilt derselbe Wert für 1 kg und für 10 kg. Auf die schwerere Kugel wirkt zwar die zehnfache Gewichtskraft F, sie hat aber auch die zehnfache Masse m und ist entsprechend schwerer zu beschleunigen. Beide Einflüsse heben sich genau auf, sodass jede Kugel mit g = 9,8 m/s² schneller wird. Ein Unterschied entstünde erst, wenn die Luft einen der beiden Körper merklich bremsen würde."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw10",
+  "lueckensaetze": [
+   {
+    "pre": "Mit Luft ist der Stein nach 1,4 s unten, die Feder trifft 2,6 s ",
+    "loesung": "später",
+    "post": " auf."
+   },
+   {
+    "pre": "Im Vakuum treffen Stein und Feder ",
+    "loesung": "gleichzeitig",
+    "post": " auf, weil dort nur noch die Gewichtskraft wirkt."
+   },
+   {
+    "pre": "Der Luftwiderstand hängt nicht von der Masse ab, sondern von Fläche, Form und ",
+    "loesung": "Tempo",
+    "post": " des Körpers."
+   },
+   {
+    "pre": "Legst du das Blatt Papier flach auf das Buch, so hält das Buch die Luft vom Blatt fern, und beide fallen gleich ",
+    "loesung": "schnell",
+    "post": " nach unten."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Vakuum fällt die Feder schneller als in Luft, weil sie ohne Luft weniger wiegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Stein braucht mit Luft und im Vakuum dieselbe Fallzeit von 1,4 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Luftwiderstand bremst die Feder stark, weil sie viel Fläche und nur eine kleine Gewichtskraft hat.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Feder in Luft 4,0 s braucht und der Stein nur 1,4 s, wirkt auf die Feder eine kleinere Fallbeschleunigung.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Vakuum sind Stein und Feder nach 1,4 s gleichzeitig unten. Was folgt daraus?",
+   "optionen": [
+    "Im Vakuum zieht die Erde an der Feder stärker als in Luft, deshalb holt die Feder den Stein ein.",
+    "Für die Fallzeit ist nicht die Masse verantwortlich, sondern allein der Luftwiderstand, und der fehlt im Vakuum.",
+    "Im Vakuum haben beide Körper dieselbe Masse, deshalb brauchen sie auch dieselbe Zeit.",
+    "Im Vakuum wirkt keine Gewichtskraft mehr, deshalb fallen beide ungebremst und gleich schnell."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Übertrage das Ergebnis auf einen Fallschirmspringer: Erkläre, warum ihn der geöffnete Schirm bremst, obwohl seine Masse dabei unverändert bleibt.",
+   "zeilen": 4,
+   "loesung": "Beim Öffnen des Schirms ändern sich weder die Masse des Springers noch seine Gewichtskraft. Verändert wird nur die Fläche, die gegen die Luft gedrückt wird, und die ist mit geöffnetem Schirm sehr viel größer. Der Luftwiderstand hängt genau von Fläche, Form und Tempo ab, deshalb wächst er beim Öffnen sprunghaft an. Sobald der Luftwiderstand so groß ist wie die Gewichtskraft, heben sich beide Kräfte auf und der Springer sinkt mit gleichbleibendem Tempo weiter. Es ist derselbe Effekt wie bei der Feder, die in Luft 4,0 s statt 1,4 s braucht. Im Vakuum wäre ein Fallschirm nutzlos, denn dort wirkt nur die Gewichtskraft und jeder Körper fällt mit g = 9,8 m/s²."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw11",
+  "lueckensaetze": [
+   {
+    "pre": "Ein Körper ändert seinen Bewegungszustand nicht von allein; diese Eigenschaft heißt ",
+    "loesung": "Trägheit",
+    "post": " und gilt für jeden Körper."
+   },
+   {
+    "pre": "Auf dem Eis fährt der Wagen 16,0 s statt 2,0 s und legt mit 64,0 m den achtfachen ",
+    "loesung": "Weg",
+    "post": " zurück."
+   },
+   {
+    "pre": "Im Weltall hat der Wagen auch nach 40,0 s noch 8,0 m/s, denn dort fehlt die bremsende ",
+    "loesung": "Reibung",
+    "post": " völlig."
+   },
+   {
+    "pre": "Angestoßen wurde jedes Mal mit 8 m/s, verändert wurde allein der ",
+    "loesung": "Untergrund",
+    "post": " und damit die Reibung."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wagen bleibt auf dem Tisch stehen, weil der Schwung vom Anstoßen mit der Zeit aufgebraucht ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Eis kommt der Wagen achtmal so weit wie auf dem Tisch, weil die Reibung dort viel kleiner ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Körper braucht eine ständig wirkende Kraft, damit er sich mit gleichbleibendem Tempo weiterbewegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Damit ein Körper langsamer wird, muss eine Kraft auf ihn wirken.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Auf dem Tisch wird der Wagen langsamer und steht nach 2,0 s still. Welche Erklärung passt zu den Messwerten?",
+   "optionen": [
+    "Die im Wagen gespeicherte Bewegung geht mit der Zeit von selbst verloren.",
+    "Der Wagen bleibt stehen, weil nach dem Anstoß keine Kraft mehr auf ihn wirkt.",
+    "Die Reibung zwischen Wagen und Tisch wirkt als bremsende Kraft und nimmt ihm in jeder Sekunde Geschwindigkeit weg.",
+    "Der Anstoß war auf dem Tisch schwächer als auf dem Eis, deshalb kommt der Wagen nur 8,0 m weit."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne aus den Messwerten die Verzögerung des Wagens auf dem Tisch und auf dem Eis und vergleiche die beiden Werte.",
+   "zeilen": 4,
+   "loesung": "Auf dem Tisch sinkt die Geschwindigkeit in 2,0 s von 8,0 m/s auf 0 m/s. Mit a = Dv/Dt ergibt sich a = (-8,0 m/s) / 2,0 s = -4,0 m/s². Auf dem Eis dauert derselbe Vorgang 16,0 s, also ist a = (-8,0 m/s) / 16,0 s = -0,5 m/s². Die Verzögerung auf dem Tisch ist damit achtmal so groß wie auf dem Eis, genau wie sich auch Zeit und Weg um den Faktor acht unterscheiden. Ursache ist allein die größere Reibung auf dem Tisch, denn angestoßen wurde beide Male mit 8,0 m/s. Im Weltall ist a = 0 m/s², dort wirkt keine bremsende Kraft und der Wagen behält seine 8,0 m/s für immer."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw12",
+  "lueckensaetze": [
+   {
+    "pre": "Bei gleichmäßiger Fahrt ist v = 12,0 m/s, aber a = 0,0 m/s², und deshalb spürt Mia ",
+    "loesung": "nichts",
+    "post": " davon."
+   },
+   {
+    "pre": "Beim Anfahren mit a = +2,0 m/s² behält Mias Körper sein Tempo und kippt deshalb nach ",
+    "loesung": "hinten",
+    "post": " gegen die Fahrtrichtung."
+   },
+   {
+    "pre": "Eine Verzögerung ist nichts anderes als eine Beschleunigung mit negativem ",
+    "loesung": "Vorzeichen",
+    "post": ", beim Bremsen zum Beispiel a = -4,0 m/s²."
+   },
+   {
+    "pre": "Im Bus spürst du nicht die Geschwindigkeit v, sondern die ",
+    "loesung": "Beschleunigung",
+    "post": " a, also die Änderung des Tempos."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je schneller der Bus fährt, desto stärker wird man in den Sitz gedrückt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Bremsen wirkt auf Mia eine Kraft nach vorn, die sie nach vorn schiebt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Bremsen ist der Betrag von a doppelt so groß wie beim Anfahren, deshalb ist der Ruck nach vorn stärker.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Anfahren nimmt die Rückenlehne Mias trägen Körper mit nach vorn.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Der Bus fährt gleichmäßig mit v = 12,0 m/s. Warum spürt Mia dabei nichts, obwohl das schneller ist als beim Anfahren mit 6,4 m/s?",
+   "optionen": [
+    "Weil 12,0 m/s für einen Bus wenig ist und man erst bei hohen Geschwindigkeiten etwas spürt.",
+    "Weil bei gleichmäßiger Fahrt gar keine Kräfte mehr auf sie wirken und sie deshalb schwerelos ist.",
+    "Weil ihr Körper sich nach einigen Sekunden an die Geschwindigkeit des Busses gewöhnt hat.",
+    "Weil sich ihr Tempo nicht ändert: Es ist a = 0,0 m/s², und ohne Beschleunigung muss keine Kraft sie mitnehmen."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne mit a = +2,0 m/s², wie lange der Bus braucht, um von 0 m/s auf 12,0 m/s zu beschleunigen, und beschreibe, was Mia in dieser Zeit spürt.",
+   "zeilen": 4,
+   "loesung": "Die Geschwindigkeit ändert sich um Dv = 12,0 m/s - 0 m/s = 12,0 m/s. Aus a = Dv/Dt folgt Dt = Dv/a = 12,0 m/s : 2,0 m/s² = 6,0 s. Der Bus braucht also 6,0 s, bis er sein Reisetempo erreicht hat. Während dieser ganzen Zeit wird Mia nach hinten gedrückt, weil ihr träger Körper immer etwas langsamer ist als der Bus und mitgenommen werden muss. Der Druck bleibt dabei gleich stark, denn a ändert sich nicht, obwohl v von 0 m/s auf 12,0 m/s steigt. Sobald der Bus gleichmäßig mit 12,0 m/s fährt, ist a = 0,0 m/s² und Mia spürt nichts mehr."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw13",
+  "lueckensaetze": [
+   {
+    "pre": "Die Erde zieht an Ben mit 588 N; diese Kraft heißt ",
+    "loesung": "Gewichtskraft",
+    "post": " und wird mit F = m · g berechnet."
+   },
+   {
+    "pre": "Beschleunigt der Aufzug mit a = +2,0 m/s² nach oben, steigt die Anzeige von 588 N auf ",
+    "loesung": "708",
+    "post": " N."
+   },
+   {
+    "pre": "In allen vier Einstellungen bleibt Bens ",
+    "loesung": "Masse",
+    "post": " unverändert bei 60 kg."
+   },
+   {
+    "pre": "Reißt das Seil, fällt der Boden genauso schnell wie Ben, deshalb ",
+    "loesung": "drückt",
+    "post": " er nicht mehr gegen die Waage."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Solange der Aufzug mit gleichbleibender Geschwindigkeit fährt, zeigt die Waage denselben Wert wie im Stillstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Steigt die Anzeige beim Anfahren nach oben auf 708 N, so beträgt Bens Masse trotzdem weiterhin 60 kg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im freien Fall zeigt die Waage 0 N, weil in dieser Zeit keine Erdanziehung mehr auf Ben wirkt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Abbremsen kurz vor dem oberen Halt zeigt die Waage mehr als 588 N, weil der Aufzug ja nach oben fährt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Aufzug beschleunigt mit a = 2,0 m/s² nach unten, Ben hat die Masse 60 kg. Welche Anzeige erscheint auf der Waage?",
+   "optionen": [
+    "468 N, denn der Boden muss nur noch mit F = 60 kg · (9,8 - 2,0) N/kg gegen Bens Füße drücken.",
+    "588 N, denn die Gewichtskraft F = m · g ändert sich während der Fahrt nicht. Die Waage misst aber nicht die Erdanziehung, sondern den Druck des Bodens.",
+    "708 N, denn beim Beschleunigen wird die Anzeige größer. Größer wird sie nur, wenn die Beschleunigung nach oben zeigt; hier zeigt sie nach unten.",
+    "120 N, denn 60 kg · 2,0 m/s² ergibt 120 N. Hier wird nur der Zusatzanteil gerechnet und die Erdanziehung von 9,8 N/kg vergessen."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben fährt mit der Kiste im Aufzug nach oben. Beschreibe, wie sich die Anzeige der Waage vom Anfahren über die gleichmäßige Fahrt bis zum Halten verändert, und begründe jeden Abschnitt.",
+   "zeilen": 4,
+   "loesung": "Beim Anfahren beschleunigt der Aufzug nach oben; der Boden muss zusätzlich Kraft aufbringen, und die Anzeige steigt bei a = +2,0 m/s² von 588 N auf 708 N. Während der gleichmäßigen Fahrt ist a = 0,0 m/s², Bodenkraft und Gewichtskraft sind gleich groß, und die Waage zeigt wieder 588 N. Kurz vor dem Halt bremst der Aufzug ab; die Beschleunigung zeigt jetzt nach unten, obwohl die Fahrt weiter nach oben geht. Deshalb sinkt die Anzeige unter 588 N, bei a = -2,0 m/s² auf 468 N. Genau in diesem Moment fühlt sich die Kiste in Bens Armen für einen Augenblick ganz leicht an. Bens Masse bleibt dabei die ganze Fahrt über 60 kg; verändert hat sich nur die Kraft zwischen Boden und Füßen."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw14",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer Abschussgeschwindigkeit von 5 km/s fällt der Körper zur Erde zurück und ",
+    "loesung": "schlägt",
+    "post": " nach kurzer Zeit auf."
+   },
+   {
+    "pre": "Bei 7,7 km/s krümmt sich die Erdoberfläche genauso schnell weg, wie der Körper ",
+    "loesung": "fällt",
+    "post": " – deshalb trifft er die Erde nie."
+   },
+   {
+    "pre": "Auch bei 9 km/s bleibt die Bahn geschlossen, sie ist nur ",
+    "loesung": "langgezogener",
+    "post": " als der Kreis bei 7,7 km/s."
+   },
+   {
+    "pre": "In 400 km Höhe zieht die Erde noch fast genauso ",
+    "loesung": "stark",
+    "post": " wie unten im Wohnzimmer."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Raumstation fällt ständig zur Erde und trifft sie doch nie, weil sie sich zugleich sehr schnell quer dazu bewegt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ab 7,7 km/s ist ein Körper der Erdanziehung entkommen; deshalb fällt er auf seiner Bahn nicht mehr.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 11 km/s kehrt der Körper nicht mehr zurück, denn die Grenze zum Entkommen liegt bei etwa 10,9 km/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In 400 km Höhe ist die Erdanziehung so schwach geworden, dass die Astronautin deshalb schwebt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine Astronautin lässt in der Raumstation eine Wasserkugel los, und die Kugel bleibt neben ihrer Hand stehen. Welche Erklärung stimmt?",
+   "optionen": [
+    "Im Weltall gibt es keine Luft, und ohne Luft kann nichts fallen. Das Fallen hängt jedoch nicht von der Luft ab; Luft bremst einen Fall höchstens ab.",
+    "Kugel, Astronautin und Station fallen mit derselben Beschleunigung um die Erde, deshalb ändert sich ihr Abstand nicht.",
+    "In 400 km Höhe wirkt keine Erdanziehung mehr, deshalb fällt die Kugel nicht. Tatsächlich zieht die Erde dort fast genauso stark wie am Boden, sonst gäbe es gar keine Umlaufbahn.",
+    "Die Station ist so schnell, dass sie der Erdanziehung entkommen ist. Entkommen wäre sie erst ab etwa 10,9 km/s; mit rund 7,7 km/s bleibt sie auf einer geschlossenen Bahn."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Vergleiche die vier Einstellungen 5 km/s, 7,7 km/s, 9 km/s und 11 km/s. Beschreibe jeweils die Bahn und erkläre, wodurch sich die vier Fälle unterscheiden.",
+   "zeilen": 4,
+   "loesung": "Bei 5 km/s ist der Körper zu langsam: Er fällt zur Erde zurück und schlägt auf. Bei 7,7 km/s fällt er genauso schnell, wie sich die Erdoberfläche unter ihm wegkrümmt, und läuft auf einer geschlossenen, fast kreisförmigen Bahn um die Erde. Bei 9 km/s bleibt die Bahn ebenfalls geschlossen, sie wird aber langgezogener. Bei 11 km/s liegt das Tempo über der Grenze von 10,9 km/s; der Körper entkommt und kommt nicht zurück. In allen vier Fällen wirkt dieselbe Erdanziehung, unterschiedlich ist allein die Geschwindigkeit quer dazu. Zwischen Aufschlag und Entkommen liegt also nur ein schmaler Bereich von rund 7,7 km/s bis 10,9 km/s."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bw15",
+  "lueckensaetze": [
+   {
+    "pre": "Das Produkt aus Masse und Geschwindigkeit heißt ",
+    "loesung": "Impuls",
+    "post": " und wird in kg·m/s angegeben."
+   },
+   {
+    "pre": "Beim Ausstoß bekommen Gas und Rakete gleich viel Impuls, aber in ",
+    "loesung": "entgegengesetzte",
+    "post": " Richtungen."
+   },
+   {
+    "pre": "Halbierst du die Gasmasse von 20 kg auf 10 kg, so ",
+    "loesung": "halbiert",
+    "post": " sich auch die Geschwindigkeit der Rakete."
+   },
+   {
+    "pre": "Zum Abstoßen braucht eine Rakete keine ",
+    "loesung": "Luft",
+    "post": " und arbeitet im leeren Raum sogar besser."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ob du die Gasmasse auf 10 kg oder die Gasgeschwindigkeit auf 300 m/s halbierst, ändert nichts am Ergebnis: Beide Male wird die Rakete 6 m/s schnell.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Rakete genauso viel Impuls bekommt wie das Gas, ist sie danach auch genauso schnell wie der Gasstrahl.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mia drückt die Kiste mit einer größeren Kraft weg, als die Kiste auf Mia zurückwirkt; deshalb rollt der Stuhl nur langsam nach hinten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "20 kg Gas mit 600 m/s tragen 12000 kg·m/s Impuls, und genauso viel Impuls hat die 1000 kg schwere Rakete mit 12 m/s.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mit 20 kg Gas und 600 m/s erreicht die 1000 kg schwere Rakete 12 m/s. Wie schnell wird sie, wenn 20 kg Gas mit nur 300 m/s ausströmen?",
+   "optionen": [
+    "3 m/s, denn mit der halben Gasgeschwindigkeit sinkt das Tempo auf ein Viertel. Der Impuls hängt jedoch nur einfach von der Geschwindigkeit ab, also halbiert sich auch das Tempo.",
+    "300 m/s, denn Gas und Rakete bekommen gleich viel Impuls und damit dieselbe Geschwindigkeit. Gleich ist allein der Impuls; die 1000 kg schwere Rakete bleibt deshalb viel langsamer.",
+    "6 m/s, denn der Impuls sinkt auf 20 kg · 300 m/s = 6000 kg·m/s, geteilt durch 1000 kg.",
+    "12 m/s, denn die ausgestoßene Gasmasse ist mit 20 kg unverändert. Für den Impuls zählt aber das Produkt aus Masse und Geschwindigkeit, nicht die Masse allein."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Übertrage den Rückstoß auf Mia. Erkläre mit Hilfe des Impulses, warum die Kiste zügig nach vorn rutscht, der Bürostuhl mit Mia darauf aber nur langsam nach hinten rollt.",
+   "zeilen": 4,
+   "loesung": "Mia drückt die Kiste von sich weg, und die Kiste drückt mit einer gleich großen Kraft zurück. Deshalb bekommen Kiste und Stuhl gleich viel Impuls, nur in entgegengesetzte Richtungen. Die Kiste wiegt etwa 10 kg, Mia mit dem Bürostuhl dagegen rund 50 kg. Bei gleichem Impuls gilt m1 · v1 = m2 · v2, die fünffache Masse ist also fünfmal langsamer. Rutscht die Kiste mit 2 m/s nach vorn, rollt der Stuhl nur mit 0,4 m/s zurück. Bei der Rakete ist es genauso: Das leichte Gas strömt mit 600 m/s aus, die 1000 kg schwere Rakete erreicht dabei nur 12 m/s."
+  },
+  "theme": "bewegung",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en1",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "So verschieden die Speicher auch aussehen, gemessen wird die Energie immer in der Einheit ",
+    "loesung": "Joule",
+    "post": " mit dem Kurzzeichen J."
+   },
+   {
+    "pre": "In einer gespannten Feder steckt Spannenergie, in einem rollenden Ball dagegen ",
+    "loesung": "Bewegungsenergie",
+    "post": "."
+   },
+   {
+    "pre": "In Batterien, Brennstoffen und Nahrung steckt ",
+    "loesung": "chemische",
+    "post": " Energie."
+   },
+   {
+    "pre": "Ein Körper mit Energie kann etwas bewirken: sich bewegen, etwas heben oder etwas ",
+    "loesung": "erwärmen",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Energie in Form von Wärme misst man in einer anderen Einheit als Bewegungsenergie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein heißer Tee kann mehr Energie enthalten als ein rollender Fußball.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Körper, der ruhig auf einem Regal liegt, kann trotzdem Energie gespeichert haben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je schneller sich etwas sichtbar bewegt, desto mehr Energie steckt sicher darin.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation hebt die Tasse Tee den 10-kg-Sack 511 m hoch, der Fußball nur 13 cm. Was folgt daraus?",
+   "optionen": [
+    "Der Tee ist schwerer als der Ball, deshalb hebt er höher. Die Masse des Speichers spielt für die gespeicherte Energie aber keine Rolle.",
+    "Wärme ist eine stärkere Energieform als Bewegung. Es gibt jedoch keine starken und schwachen Formen, nur verschiedene Mengen in Joule.",
+    "Der Vergleich ist unzulässig, weil Wärme und Bewegung nichts miteinander zu tun haben. Gerade weil beide in Joule gemessen werden, ist er möglich.",
+    "Im Tee steckt weit mehr Energie als im Ball, auch wenn man ihm das nicht ansieht."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Nenne drei verschiedene Energieformen und je ein Beispiel dafür aus deiner Wohnung.",
+   "zeilen": 4,
+   "loesung": "Als Lageenergie kommt zum Beispiel ein Buch auf dem obersten Regalbrett in Frage: Es wurde angehoben und trägt die Hubarbeit seitdem in sich. Bewegungsenergie steckt in allem, was sich bewegt, etwa in der Tür, die zufällt, oder in einem rollenden Ball. Chemische Energie steckt in der Batterie der Fernbedienung, im Gas des Herdes und in jedem Lebensmittel im Kühlschrank. Als weitere Formen kämen die innere Energie eines heißen Getränks und die Spannenergie einer zusammengedrückten Feder in Frage, etwa in einem Kugelschreiber. Alle diese Formen werden in Joule gemessen und lassen sich deshalb miteinander vergleichen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "I"
+  ]
+ },
+ {
+  "id": "en2",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Die Arbeit berechnet man als W = ",
+    "loesung": "F · s",
+    "post": ", also Kraft mal Weg."
+   },
+   {
+    "pre": "Arbeit wird nur verrichtet, wenn die Kraft in Richtung des ",
+    "loesung": "Weges",
+    "post": " zeigt."
+   },
+   {
+    "pre": "Trägt man eine Kiste waagerecht, so beträgt die verrichtete Arbeit ",
+    "loesung": "0",
+    "post": " Joule."
+   },
+   {
+    "pre": "Ein Joule ist die Arbeit, die eine Kraft von einem Newton über einen ",
+    "loesung": "Meter",
+    "post": " verrichtet."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer sich anstrengt, verrichtet in der Physik immer auch Arbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Schieben einer Kiste über den Boden wird Arbeit verrichtet.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Einheit der Arbeit ist das Newton.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Steht die Kraft senkrecht zum Weg, so ist die verrichtete Arbeit null.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben hält einen schweren Koffer zehn Minuten lang still in der Hand, ohne sich zu bewegen. Welche Arbeit verrichtet er dabei am Koffer?",
+   "optionen": [
+    "Null Joule, denn ohne Weg gibt es keine Arbeit, so anstrengend das Halten auch ist.",
+    "Sehr viel, denn er strengt sich zehn Minuten lang an. Anstrengung ist jedoch kein Maß für die physikalische Arbeit.",
+    "Es kommt auf die Masse des Koffers an. Die Masse allein genügt nicht, ohne Weg bleibt das Produkt F · s in jedem Fall null.",
+    "Es kommt auf die Dauer an, hier also auf zehn Minuten. Die Zeit kommt in W = F · s aber gar nicht vor."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre den Unterschied zwischen Anstrengung und physikalischer Arbeit an einem selbst gewählten Beispiel.",
+   "zeilen": 4,
+   "loesung": "Physikalische Arbeit wird nach W = F · s berechnet und entsteht nur, wenn eine Kraft einen Körper längs eines Weges in Kraftrichtung bewegt. Anstrengung beschreibt dagegen, wie sehr sich der Körper eines Menschen dabei anspannen muss. Ein gutes Beispiel ist das Halten eines vollen Wassereimers mit ausgestrecktem Arm. Der Arm zittert nach kurzer Zeit, die Anstrengung ist also groß. Da sich der Eimer aber nicht bewegt, ist der Weg null und damit auch die Arbeit. Die Anstrengung entsteht, weil die Muskelfasern ständig neu anspannen müssen, um die Haltekraft aufzubringen. Physikalisch geschieht am Eimer dabei nichts."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en3",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Die Hubarbeit berechnet man als W = m · ",
+    "loesung": "g",
+    "post": " · h."
+   },
+   {
+    "pre": "Der Ortsfaktor g beträgt auf der Erde ",
+    "loesung": "9,81",
+    "post": " N/kg."
+   },
+   {
+    "pre": "Für die Hubarbeit zählt nur die gewonnene Höhe, nicht die Länge des ",
+    "loesung": "Weges",
+    "post": "."
+   },
+   {
+    "pre": "Ein waagerechter Weg trägt zur Hubarbeit ",
+    "loesung": "nichts",
+    "post": " bei."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Hubarbeit hängt davon ab, wie schnell man die Treppe hinaufgeht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine doppelt so schwere Kiste kostet bei gleicher Höhe die vierfache Hubarbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine lange flache Rampe und eine steile Treppe kosten bei gleicher Höhe dieselbe Hubarbeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer eine Kiste doppelt so hoch trägt, verrichtet doppelt so viel Hubarbeit.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mia trägt eine Kiste über eine lange, flache Rampe in den ersten Stock, Ben dieselbe Kiste über die steile Treppe. Was gilt für die Hubarbeit?",
+   "optionen": [
+    "Das lässt sich ohne die Zeitangabe nicht entscheiden. Die Zeit beeinflusst die Leistung, nicht die Arbeit.",
+    "Beide verrichten dieselbe Hubarbeit, denn sie gewinnen dieselbe Höhe.",
+    "Mia verrichtet mehr, weil ihr Weg länger ist. In W = m · g · h kommt die Weglänge aber nicht vor, nur die Höhe.",
+    "Ben verrichtet mehr, weil die Treppe steiler ist. Die Steigung ändert die Kraft je Schritt, nicht aber die gesamte Hubarbeit."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ein Aufzug hebt 400 kg um 12 m. Berechne die Hubarbeit und erkläre, warum die Fahrzeit für dieses Ergebnis keine Rolle spielt.",
+   "zeilen": 4,
+   "loesung": "Die Hubarbeit beträgt W = m · g · h = 400 kg · 9,81 N/kg · 12 m = 47 088 J, also rund 47 kJ. In der Formel W = m · g · h kommen nur die Masse, der Ortsfaktor und die Höhe vor. Die Zeit taucht darin überhaupt nicht auf, deshalb ändert eine schnellere oder langsamere Fahrt am Ergebnis nichts. Sehr wohl verändert die Fahrzeit aber die Leistung, denn diese wird als P = W / t berechnet. Ein schneller Aufzug erbringt für dieselbe Hubarbeit eine höhere Leistung und braucht dafür einen stärkeren Motor. Die aufgewendete Energie ist in beiden Fällen jedoch gleich groß."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en4",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Die Lageenergie eines angehobenen Körpers berechnet man als E = m · g · ",
+    "loesung": "h",
+    "post": "."
+   },
+   {
+    "pre": "Die Lageenergie entspricht genau der ",
+    "loesung": "Hubarbeit",
+    "post": ", die beim Anheben verrichtet wurde."
+   },
+   {
+    "pre": "Verdoppelt man die Höhe, so verdoppelt sich die Lageenergie ",
+    "loesung": "ebenfalls",
+    "post": "."
+   },
+   {
+    "pre": "Die Höhe h wird immer von einem gewählten ",
+    "loesung": "Nullpunkt",
+    "post": " aus gemessen, meist vom Fußboden."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Körper, der ruhig oben liegt, besitzt bereits Lageenergie.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Masse und Höhe gehen beide einfach in die Formel für die Lageenergie ein.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Lageenergie entsteht erst im Moment des Aufpralls.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei doppelter Masse und gleicher Höhe vervierfacht sich die Lageenergie.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation ergaben „×2 Masse“ und „×2 Höhe“ beide 294 J statt 147 J. Was zeigt dieses Ergebnis?",
+   "optionen": [
+    "Die Höhe zählt stärker, weil der Körper länger fällt. Die Fallzeit kommt in der Formel für die Lageenergie aber nicht vor.",
+    "Das Ergebnis muss ein Zufall sein. Es folgt zwingend daraus, dass beide Größen als einfache Faktoren auftreten.",
+    "Masse und Höhe zählen gleich stark, denn beide stehen in E = m · g · h einfach im Produkt.",
+    "Die Masse zählt stärker, weil sie zuerst in der Formel steht. Die Reihenfolge der Faktoren hat auf ein Produkt jedoch keinen Einfluss."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Eine 6 kg schwere Kiste steht 1,80 m hoch auf einem Schrank. Berechne ihre Lageenergie und erkläre, warum sie beim Herunterfallen eine Delle in den Boden schlagen kann.",
+   "zeilen": 4,
+   "loesung": "Die Lageenergie beträgt E = m · g · h = 6 kg · 9,81 N/kg · 1,80 m = 105,9 J, also rund 106 J. Diese Energie steckt bereits in der Kiste, solange sie oben ruht, denn sie entspricht der Hubarbeit beim Hinaufstellen. Beim Fallen wandelt sie sich vollständig in Bewegungsenergie um, und beim Aufprall wird diese wieder zu Arbeit am Fußboden. Entscheidend für den Schaden ist dabei W = F · s: Der Bremsweg beim Aufprall ist sehr kurz, oft nur wenige Millimeter. Damit dieselbe Energie über einen so kurzen Weg abgebaut werden kann, muss die Kraft entsprechend groß sein. Diese große Kraft verformt den Boden und hinterlässt die Delle."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en5",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Die Bewegungsenergie berechnet man als E = ",
+    "loesung": "½ · m · v²",
+    "post": "."
+   },
+   {
+    "pre": "In dieser Formel steht die Geschwindigkeit im ",
+    "loesung": "Quadrat",
+    "post": ", die Masse dagegen einfach."
+   },
+   {
+    "pre": "Doppeltes Tempo bedeutet die ",
+    "loesung": "vierfache",
+    "post": " Bewegungsenergie."
+   },
+   {
+    "pre": "Beim Aufprall wird die Bewegungsenergie wieder zu ",
+    "loesung": "Arbeit",
+    "post": ", denn es gilt W = F · s."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei doppelter Masse und gleichem Tempo verdoppelt sich die Bewegungsenergie.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei doppeltem Tempo und gleicher Masse verdoppelt sich die Bewegungsenergie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein leichter, aber sehr schneller Körper kann mehr Bewegungsenergie haben als ein schwerer langsamer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Bewegungsenergie hängt davon ab, in welche Richtung sich der Körper bewegt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation schob der Klotz bei 4 kg und 4 m/s 0,16 m weit, bei 4 kg und 8 m/s dagegen 0,64 m. Woran liegt das?",
+   "optionen": [
+    "Der Klotz war beim zweiten Versuch leichter. Die Masse des Klotzes wurde in der Simulation gar nicht verändert.",
+    "Die Reibung wird bei höherem Tempo kleiner. Die bremsende Kraft blieb hier jedoch konstant bei 200 N.",
+    "Die Kugel traf beim zweiten Mal genauer. Die Trefferstelle war in beiden Versuchen dieselbe.",
+    "Das Tempo geht quadratisch ein, deshalb ergibt doppeltes Tempo die vierfache Energie und die vierfache Strecke."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre, warum eine Geschwindigkeitsbegrenzung vor einer Schule mehr bringt als eine Warnleuchte.",
+   "zeilen": 4,
+   "loesung": "Die Bewegungsenergie eines Autos wächst nach E = ½ · m · v² mit dem Quadrat der Geschwindigkeit. Fährt ein Auto statt 50 km/h nur 30 km/h, so sinkt seine Bewegungsenergie nicht auf drei Fünftel, sondern auf etwa ein Drittel. Beim Bremsen muss diese Energie durch Reibungsarbeit abgebaut werden, und wegen W = F · s verkürzt sich damit auch der Bremsweg auf etwa ein Drittel. Kommt es dennoch zum Zusammenstoß, so ist die übertragene Energie ebenfalls deutlich kleiner. Eine Warnleuchte kann die Aufmerksamkeit erhöhen, ändert aber nichts an der Physik des Bremswegs. Die Begrenzung wirkt dagegen direkt auf die Größe, die quadratisch eingeht."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en6",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Ausrollen wird die Bewegungsenergie durch Reibung in ",
+    "loesung": "Wärme",
+    "post": " umgewandelt."
+   },
+   {
+    "pre": "Energie kann nicht vernichtet werden, sie wechselt nur ihre ",
+    "loesung": "Form",
+    "post": "."
+   },
+   {
+    "pre": "Wie stark die Erwärmung ausfällt, hängt davon ab, auf wie viel ",
+    "loesung": "Stoff",
+    "post": " sich die Energie verteilt."
+   },
+   {
+    "pre": "Wärme ist eine Form der ",
+    "loesung": "inneren",
+    "post": " Energie eines Körpers."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auch eine Erwärmung um 0,024 °C ist eine echte Energieumwandlung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn ein Ball von allein liegen bleibt, ist seine Energie vernichtet worden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil man die Wärme nicht spürt, ist sie physikalisch nicht vorhanden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Reibung setzt Bewegungsenergie in innere Energie um.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Der Balken in der Simulation zeigt während des Ausrollens einen wachsenden roten und einen schrumpfenden blauen Anteil, bleibt aber immer gleich lang. Was bedeutet das?",
+   "optionen": [
+    "Die Gesamtenergie bleibt erhalten, nur ihre Form ändert sich von Bewegung zu Wärme.",
+    "Der Ball verliert Energie an die Luft. Dann müsste der Balken kürzer werden, was er aber nicht tut.",
+    "Die Wärme entsteht zusätzlich zur Bewegungsenergie. Dann müsste der Balken länger werden.",
+    "Es handelt sich um einen Anzeigefehler. Die gleichbleibende Länge stellt gerade den Energieerhaltungssatz dar."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ein Radiergummi rutscht über den Tisch und bleibt liegen. Beschreibe, wo seine Bewegungsenergie geblieben ist.",
+   "zeilen": 4,
+   "loesung": "Die Bewegungsenergie des Radiergummis ist nicht verschwunden, sondern durch Reibung in innere Energie umgewandelt worden. Beim Rutschen greifen die winzigen Unebenheiten von Radiergummi und Tischplatte ineinander, und diese Reibung versetzt die Bausteine beider Körper in stärkere Bewegung. Ein Teil der Energie steckt danach im Radiergummi, ein Teil in der Tischplatte, ein weiterer geht als Wärme an die Luft über. Da die Energiemenge klein ist und sich auf viel Material verteilt, beträgt die Temperaturerhöhung nur Bruchteile eines Grades und ist deshalb nicht zu spüren. Der Energieerhaltungssatz gilt trotzdem: Die Summe aller Energien ist vorher und nachher gleich groß."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en7",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Energie kann weder erzeugt noch vernichtet, sondern nur ",
+    "loesung": "umgewandelt",
+    "post": " werden."
+   },
+   {
+    "pre": "Beim fallenden Körper wandelt sich Lageenergie in ",
+    "loesung": "Bewegungsenergie",
+    "post": " um."
+   },
+   {
+    "pre": "Ganz oben ist die Lageenergie am größten und die Bewegungsenergie fast ",
+    "loesung": "null",
+    "post": "."
+   },
+   {
+    "pre": "Beim Aufprall wird ein Teil der Energie in Wärme und in ",
+    "loesung": "Schall",
+    "post": " umgewandelt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Dass ein Flummi immer niedriger springt, widerlegt den Energieerhaltungssatz.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Summe aus Lage- und Bewegungsenergie bleibt beim freien Fall gleich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf halber Fallhöhe sind Lage- und Bewegungsenergie etwa gleich groß.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Aufprall verschwindet ein Teil der Energie vollständig.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum kommt der Ball in der Simulation nach dem ersten Aufprall nur noch auf etwa 14 m statt auf 20 m?",
+   "optionen": [
+    "Der Energieerhaltungssatz gilt nur beim ersten Sprung. Er gilt ausnahmslos, die Energie wechselt nur die Form.",
+    "Beim Aufprall wurde ein Teil der Energie in Wärme und Schall umgewandelt und fehlt nun für die Höhe.",
+    "Die Schwerkraft nimmt mit jedem Sprung zu. Der Ortsfaktor g bleibt in Bodennähe jedoch praktisch konstant.",
+    "Der Ball wird beim Aufprall leichter. Seine Masse ändert sich durch das Aufprallen nicht."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beschreibe für einen Ball, der aus 2 m Höhe fällt, wie sich die Energieformen während des Falls verändern.",
+   "zeilen": 4,
+   "loesung": "Ganz oben in 2 m Höhe besitzt der Ball ausschließlich Lageenergie, seine Bewegungsenergie ist null, weil er noch ruht. Beim Loslassen beginnt er zu fallen: Mit jedem gefallenen Zentimeter nimmt die Höhe ab und damit die Lageenergie, gleichzeitig wächst die Geschwindigkeit und damit die Bewegungsenergie. Auf halber Höhe, also bei 1 m, sind beide Anteile etwa gleich groß. Kurz vor dem Boden ist die Lageenergie fast null und praktisch die gesamte Energie steckt in der Bewegung. Während des ganzen Falls bleibt die Summe aus beiden konstant. Erst beim Aufprall geht ein Teil davon in Wärme und Schall über und steht für den Rücksprung nicht mehr zur Verfügung."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en8",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Ein Achterbahnwagen hat keinen Motor; seine ganze Energie stammt aus der ",
+    "loesung": "Starthöhe",
+    "post": "."
+   },
+   {
+    "pre": "Bergab wandelt sich Lageenergie in ",
+    "loesung": "Bewegungsenergie",
+    "post": " um, bergauf wieder zurück."
+   },
+   {
+    "pre": "Die Summe aus beiden Energieformen bleibt auf der ganzen Fahrt ",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Der Wagen kann nie höher steigen als bis zu seiner ",
+    "loesung": "Starthöhe",
+    "post": ", denn mehr Energie ist nicht vorhanden."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein zweiter Hügel darf höher sein als der Starthügel, wenn der Wagen nur schnell genug ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Tal ist die Bewegungsenergie am größten und die Lageenergie am kleinsten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf halber Höhe hat der Wagen gar keine Energie mehr.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Kette am Anfang verrichtet einmal Hubarbeit und lädt den Wagen damit auf.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation zeigte der Wagen oben 147,2 kJ Lageenergie, im Tal 147,2 kJ Bewegungsenergie und auf dem zweiten Hügel 98,1 kJ und 49,1 kJ. Was fällt auf?",
+   "optionen": [
+    "Auf dem zweiten Hügel fehlt Energie, weil dort gebremst wird. Es wird nicht gebremst, die Energie steckt dort nur wieder in der Höhe.",
+    "Die Werte widersprechen einander. Sie ergeben in jedem Fall dieselbe Summe und passen deshalb zusammen.",
+    "Die Summe beträgt an jeder Stelle 147,2 kJ, die Energie wandelt sich nur um.",
+    "Der Wagen verliert im Tal seine Lageenergie. Sie ist nicht verloren, sondern vollständig in Bewegungsenergie umgewandelt."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ein Achterbahnwagen startet aus 25 m Höhe. Begründe, ob er einen 25 m hohen Hügel überwinden kann.",
+   "zeilen": 4,
+   "loesung": "Rein rechnerisch reicht die Energie genau aus: Oben am Start besitzt der Wagen die Lageenergie E = m · g · 25 m, und um einen ebenso hohen Hügel zu erreichen, bräuchte er genau denselben Betrag. Er käme dort also mit einer Geschwindigkeit von null an. In der Wirklichkeit schafft er es dennoch nicht. Auf der Fahrt wirken Reibung an den Rädern und in den Lagern sowie der Luftwiderstand. Bei jedem dieser Vorgänge wird ein Teil der Energie in Wärme umgewandelt und steht für das Steigen nicht mehr zur Verfügung. Der Wagen bliebe deshalb schon unterhalb der Kuppe stehen und würde zurückrollen. Deshalb baut man den zweiten Hügel stets deutlich niedriger."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en9",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Bremsen wird die gesamte Bewegungsenergie durch Reibung in ",
+    "loesung": "Wärme",
+    "post": " umgewandelt."
+   },
+   {
+    "pre": "Diese Wärme entsteht dort, wo die ",
+    "loesung": "Reibung",
+    "post": " wirkt, also an Bremsbelägen und Felge."
+   },
+   {
+    "pre": "Trifft viel Energie auf wenig Stoff, so steigt die ",
+    "loesung": "Temperatur",
+    "post": " stark an."
+   },
+   {
+    "pre": "Bei doppeltem Tempo wird die Bremse nicht doppelt, sondern ",
+    "loesung": "viermal",
+    "post": " so warm."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil die Felge heiß wird, geht beim Bremsen Energie verloren.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Erwärmung hängt nur von der Energie ab, nicht von der Masse des erwärmten Stoffes.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Bremsen entsteht dieselbe Art von Wärme wie beim Ausrollen eines Balls.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein schwerer Lastwagen erwärmt seine Bremsen bergab stärker als ein Fahrrad.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Bei 8 m/s erwärmt sich Bens Bremse um 28,4 °C, der Ball auf dem Teppich bei gleichem Tempo nur um 0,043 °C. Worin liegt der Unterschied?",
+   "optionen": [
+    "Metall erwärmt sich grundsätzlich stärker als Stoff. Das spielt zwar eine Rolle, entscheidend ist hier aber die Energiemenge.",
+    "Beim Bremsen ist die Reibung stärker als beim Ausrollen. Die Reibungsstärke ändert nur die Dauer, nicht die umgesetzte Energie.",
+    "Der Ball rollt weiter und gibt deshalb weniger ab. Auch der Ball gibt am Ende seine gesamte Bewegungsenergie ab.",
+    "Das Fahrrad hat wegen seiner viel größeren Masse zweihundertmal so viel Bewegungsenergie."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Lastwagen auf langen Bergabfahrten den Motor zum Bremsen nutzen statt der Bremsen.",
+   "zeilen": 4,
+   "loesung": "Bei der Talfahrt wird laufend Lageenergie frei, die abgebaut werden muss, damit der Lastwagen nicht immer schneller wird. Nutzt der Fahrer dafür die Betriebsbremse, so wird diese gesamte Energie in Wärme an den Bremsbelägen und Bremsscheiben umgewandelt. Da es sich um sehr viel Energie und vergleichsweise wenig Material handelt, steigt die Temperatur stark an. Überhitzte Bremsen verlieren ihre Wirkung, im schlimmsten Fall vollständig. Bremst der Fahrer dagegen mit dem Motor, so verteilt sich die Energie auf den Motorblock und das Kühlsystem, die auf Wärmeabfuhr ausgelegt sind. Die Bremsen bleiben dadurch kühl und stehen für Gefahrensituationen zur Verfügung."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en10",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Der Wirkungsgrad wird berechnet als η = E",
+    "loesung": "nutz",
+    "post": " geteilt durch E rein."
+   },
+   {
+    "pre": "Bei jedem wirklichen Gerät ist der Wirkungsgrad kleiner als ",
+    "loesung": "100",
+    "post": " Prozent."
+   },
+   {
+    "pre": "Der Anteil, der dem Zweck nicht dient, wird meist zu ",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Es gilt stets E nutz plus E verlust gleich E ",
+    "loesung": "rein",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine Glühlampe setzt nur etwa fünf Prozent der Energie in Licht um.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine LED liefert bei gleichem Stromverbrauch deutlich mehr Licht als eine Glühlampe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei doppelter hineingesteckter Energie verdoppelt sich auch der Wirkungsgrad.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der fehlende Anteil bei einer Maschine ist verschwunden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Die Simulation zeigte bei 1000 J für die Glühlampe 50 J Licht und bei 2000 J genau 100 J Licht. Was folgt daraus für den Wirkungsgrad?",
+   "optionen": [
+    "Er bleibt bei 5 %, denn er ist eine Eigenschaft der Maschine und keine Frage der Menge.",
+    "Er verdoppelt sich, weil doppelt so viel Licht herauskommt. Auch der Aufwand hat sich verdoppelt, das Verhältnis bleibt gleich.",
+    "Er halbiert sich, weil mehr Wärme entsteht. Der Anteil der Wärme ist in beiden Fällen derselbe.",
+    "Er lässt sich daraus nicht bestimmen. Er ergibt sich unmittelbar als 50 geteilt durch 1000."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ein Elektromotor nimmt 2000 J auf und gibt 1800 J als Bewegung ab. Berechne den Wirkungsgrad und gib an, wo die restliche Energie bleibt.",
+   "zeilen": 4,
+   "loesung": "Der Wirkungsgrad beträgt η = E nutz geteilt durch E rein, also 1800 J geteilt durch 2000 J gleich 0,9 oder 90 Prozent. Die fehlenden 200 J sind nicht verschwunden, denn Energie bleibt erhalten. Sie wurden in Wärme umgewandelt und entstehen an zwei Stellen: zum einen durch Reibung in den Lagern und an den Kohlebürsten des Motors, zum anderen durch den elektrischen Widerstand der Spulendrähte, die sich beim Stromfluss erwärmen. Deshalb wird ein Elektromotor im Betrieb spürbar warm und braucht oft eine Lüftung. Mit 90 Prozent liegt sein Wirkungsgrad allerdings weit über dem eines Benzinmotors, der nur etwa 25 Prozent erreicht."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en11",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Verluste entstehen vor allem durch Reibung und durch elektrischen ",
+    "loesung": "Widerstand",
+    "post": "."
+   },
+   {
+    "pre": "Als Verlust bezeichnet man den Anteil, der für den beabsichtigten ",
+    "loesung": "Zweck",
+    "post": " nicht taugt."
+   },
+   {
+    "pre": "Beim Wasserkocher ist Wärme gerade der ",
+    "loesung": "Nutzen",
+    "post": ", deshalb ist sein Wirkungsgrad hoch."
+   },
+   {
+    "pre": "Beim Verbrennungsmotor tragen Abgase und ",
+    "loesung": "Kühlwasser",
+    "post": " die meiste Wärme fort."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ob Wärme Verlust oder Nutzen ist, hängt vom Zweck der Maschine ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Maschine ganz ohne Verluste ließe sich bauen, wenn man sorgfältig genug arbeitet.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wasserkocher und Glühlampe geben beide fast alles als Wärme ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je mehr Wärme eine Maschine abgibt, desto schlechter ist ihr Wirkungsgrad.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wasserkocher und Glühlampe geben beide fast ihre gesamte Energie als Wärme ab. Warum hat der Kocher trotzdem η = 90 % und die Lampe nur η = 5 %?",
+   "optionen": [
+    "Weil Wasser Wärme besser speichert als Luft. Das betrifft die Speicherung, nicht den Wirkungsgrad der Umwandlung.",
+    "Weil beim Kocher die Wärme der gewünschte Nutzen ist, bei der Lampe dagegen ein Verlust.",
+    "Weil der Kocher moderner gebaut ist. Die Bauweise erklärt den Unterschied nicht, beide wandeln Strom fast vollständig in Wärme um.",
+    "Weil der Kocher mehr Energie aufnimmt. Der Wirkungsgrad ist ein Verhältnis und hängt nicht von der Menge ab."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ein Heizlüfter hat einen Wirkungsgrad von nahezu 100 %. Erkläre, warum das kein Widerspruch zu der Regel ist, dass keine Maschine perfekt ist.",
+   "zeilen": 4,
+   "loesung": "Der Wirkungsgrad gibt an, welcher Anteil der aufgenommenen Energie als beabsichtigter Nutzen herauskommt. Beim Heizlüfter ist der beabsichtigte Nutzen die Wärme. Da elektrische Energie im Widerstandsdraht praktisch vollständig in Wärme übergeht und diese Wärme im Zimmer bleibt, geht fast nichts am Zweck vorbei. Der Wirkungsgrad liegt deshalb nahe bei 100 Prozent. Das widerspricht der Regel nicht, denn die Regel besagt genau genommen, dass sich stets ein Teil in Wärme umwandelt. Beim Heizlüfter ist dieser Teil eben kein Verlust. Betrachtet man dagegen die ganze Kette von der Kohle bis ins Zimmer, so sind die Verluste im Kraftwerk sehr wohl vorhanden und sogar erheblich."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en12",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Die Leistung berechnet man als P = ",
+    "loesung": "W / t",
+    "post": ", also Arbeit geteilt durch Zeit."
+   },
+   {
+    "pre": "Die Einheit der Leistung ist das ",
+    "loesung": "Watt",
+    "post": "."
+   },
+   {
+    "pre": "Ein Watt ist eine Leistung von einem Joule je ",
+    "loesung": "Sekunde",
+    "post": "."
+   },
+   {
+    "pre": "Dieselbe Arbeit in der halben Zeit bedeutet die ",
+    "loesung": "doppelte",
+    "post": " Leistung."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Arbeit hängt nur von Masse und Höhe ab, die Leistung zusätzlich von der Zeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer schneller arbeitet, verrichtet dabei mehr Arbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Formel für die Hubarbeit kommt die Zeit vor.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwei Personen können dieselbe Aufgabe mit sehr verschiedener Leistung erledigen.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation blieb die Arbeit bei 1962 J, während die Leistung von 196 W auf 392 W sprang. Was war verändert worden?",
+   "optionen": [
+    "Die Höhe wurde verdoppelt. Auch das hätte die Arbeit verändert, was hier nicht der Fall war.",
+    "Die Kiste wurde schneller gezogen und dabei leichter. Die Masse ändert sich durch die Geschwindigkeit nicht.",
+    "Nur die Zeit wurde halbiert; Masse und Höhe blieben unverändert.",
+    "Die Masse wurde verdoppelt. Dann hätte sich auch die Arbeit auf 3924 J verdoppelt."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Zwei Personen tragen dieselbe Kiste in denselben Stock, die eine in 12 s, die andere in 36 s. Vergleiche Arbeit und Leistung.",
+   "zeilen": 4,
+   "loesung": "Die Hubarbeit ist in beiden Fällen genau gleich groß, denn sie wird als W = m · g · h berechnet und hängt allein von Masse und Höhe ab. Beide Personen tragen dieselbe Kiste in denselben Stock, also ist auch die Arbeit dieselbe. Bei der Leistung ist es anders, denn sie wird als P = W / t berechnet. Die schnellere Person braucht ein Drittel der Zeit und erbringt deshalb die dreifache Leistung. Genau das erklärt, warum sie oben außer Atem ankommt, während die langsamere Person entspannt bleibt: Anstrengend ist nicht die verrichtete Arbeit, sondern die Geschwindigkeit, mit der der Körper die Energie umsetzen muss."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en13",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Für große Leistungen nutzt man das Kilowatt: 1 kW = ",
+    "loesung": "1000",
+    "post": " W."
+   },
+   {
+    "pre": "Bei Fahrzeugen ist die ältere Einheit PS gebräuchlich, dabei gilt 1 PS = ",
+    "loesung": "735,5",
+    "post": " W."
+   },
+   {
+    "pre": "Watt, Kilowatt und PS messen alle dieselbe ",
+    "loesung": "Größe",
+    "post": ", nur mit verschiedenen Zahlenwerten."
+   },
+   {
+    "pre": "Ein Mensch bringt dauerhaft ungefähr 100 W, ein Kleinwagen rund 60 ",
+    "loesung": "kW",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "100 PS entsprechen 100 000 Watt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "PS und Watt lassen sich mit einem festen Faktor ineinander umrechnen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Staubsauger mit 2000 W hat eine größere Leistung als ein Wasserkocher mit 1000 W.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil PS eine alte Einheit ist, misst sie etwas anderes als Watt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Motorrad wird mit 50 PS angegeben. Wie viel Watt sind das ungefähr?",
+   "optionen": [
+    "Rund 50 000 W, wenn man 1 PS mit 1000 W gleichsetzt. Ein PS sind jedoch nur 735,5 W.",
+    "Rund 500 W, wenn man durch 100 teilt. Bei der Umrechnung von PS in Watt wird multipliziert, nicht geteilt.",
+    "Das lässt sich nicht umrechnen, weil PS eine Kraft misst. PS ist eine Einheit der Leistung, nicht der Kraft.",
+    "Rund 37 000 W, denn 50 · 735,5 W ergibt 36 775 W."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Ein Aufzugmotor leistet 5,5 kW. Rechne diese Leistung in Watt und in PS um und vergleiche sie mit der Dauerleistung eines Menschen.",
+   "zeilen": 4,
+   "loesung": "Mit 1 kW = 1000 W ergeben sich 5,5 kW = 5500 W. Für die Umrechnung in PS teilt man durch 735,5 W: 5500 W geteilt durch 735,5 W ergibt etwa 7,5 PS. Ein Mensch bringt dauerhaft ungefähr 100 W auf. Der Aufzugmotor leistet damit rund das Fünfundfünfzigfache, denn 5500 W geteilt durch 100 W ergibt 55. Anders gesagt müssten fünfundfünfzig Menschen gleichzeitig und dauerhaft arbeiten, um dieselbe Leistung zu erbringen. Das erklärt, warum ein Aufzug eine Kiste in wenigen Sekunden in den dritten Stock bringt, während ein Mensch dafür deutlich länger braucht."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "en14",
+  "theme": "energie",
+  "lueckensaetze": [
+   {
+    "pre": "Bei jeder Umwandlung wird ein Teil der Energie zu Wärme und damit ",
+    "loesung": "entwertet",
+    "post": "."
+   },
+   {
+    "pre": "Wärme mit Zimmertemperatur lässt sich nicht mehr nutzen, weil ein ",
+    "loesung": "Temperaturunterschied",
+    "post": " fehlt."
+   },
+   {
+    "pre": "Am Ende einer Energiekette ist die Menge noch da, aber ihre ",
+    "loesung": "Brauchbarkeit",
+    "post": " ist verschwunden."
+   },
+   {
+    "pre": "Wer Energie spart, schont damit vor allem die begrenzten ",
+    "loesung": "Vorräte",
+    "post": " an Kohle, Öl und Gas."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Energieerhaltungssatz und die Aufforderung zum Energiesparen widersprechen einander.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Am Ende der Kette „Kohle → Licht“ sind noch immer 1000 J vorhanden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Entwertete Energie ist vernichtet worden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zum Antreiben einer Maschine braucht man einen Temperaturunterschied.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation waren am Ende beider Ketten 1000 J Wärme und 0 J nutzbare Energie vorhanden. Was bedeutet das?",
+   "optionen": [
+    "Die Energiemenge ist erhalten geblieben, aber sie ist vollständig entwertet worden.",
+    "Es sind 1000 J verloren gegangen. Sie sind alle noch da, nur als Wärme bei Zimmertemperatur.",
+    "Die Simulation rechnet falsch, weil aus 1000 J nicht 0 J werden können. Die 0 J beziehen sich auf den nutzbaren Anteil, nicht auf die Menge.",
+    "Am Ende war ein Gerät defekt. Das Ergebnis tritt bei jeder vollständigen Energiekette auf."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre einem Mitschüler in eigenen Worten, warum Energiesparen sinnvoll ist, obwohl Energie nie verloren geht.",
+   "zeilen": 4,
+   "loesung": "Der Energieerhaltungssatz sagt nur, dass die Menge an Energie immer gleich bleibt. Er sagt nichts darüber, ob man diese Energie noch gebrauchen kann. Bei jeder Umwandlung geht ein Teil in Wärme über, die sich in der Umgebung verteilt und dort nur noch Zimmertemperatur hat. Solche Wärme lässt sich nicht mehr nutzen, denn jede Maschine braucht dafür einen Temperaturunterschied. Am Ende einer Kette ist die gesamte Energie deshalb zwar noch vorhanden, aber vollständig entwertet. Wer spart, verringert also nicht die Energiemenge auf der Erde, sondern verbraucht weniger von den begrenzten Vorräten an Kohle, Öl und Gas, aus denen wir hochwertige Energie überhaupt erst entnehmen können."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw1",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Den größten Anteil an der deutschen Stromerzeugung hatte mit 33 % die ",
+    "loesung": "Windkraft",
+    "post": "."
+   },
+   {
+    "pre": "Zählt man Windkraft, Photovoltaik, Biomasse und Wasserkraft zusammen, so ergeben sich ",
+    "loesung": "60 %",
+    "post": " – also mehr als die Hälfte."
+   },
+   {
+    "pre": "Auf Kohle, Erdgas und Sonstige entfallen zusammen die übrigen ",
+    "loesung": "40 %",
+    "post": "."
+   },
+   {
+    "pre": "Welche Quellen zu welchem Anteil beitragen, nennt man den ",
+    "loesung": "Strommix",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kohle ist mit 23 % der größte einzelne Posten im Strommix.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Strommix ist über das ganze Jahr hinweg unverändert.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Windkraft und Photovoltaik liefern zusammen 47 % und damit mehr als Kohle und Erdgas zusammen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Biomasse und Wasserkraft kommen zusammen auf genau denselben Anteil wie Erdgas.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben sagt, der Strom komme „aus der Steckdose“. Mia hält dagegen, mehr als die Hälfte des Stroms stamme aus erneuerbaren Quellen. Welche Rechnung aus dem Datenblatt stützt Mia?",
+   "optionen": [
+    "33 % Windkraft plus 14 % Photovoltaik ergeben 47 %. Dabei fehlen Biomasse mit 8 % und Wasserkraft mit 5 %, obwohl auch sie erneuerbar sind.",
+    "33 % Windkraft plus 14 % Photovoltaik plus 8 % Biomasse plus 5 % Wasserkraft ergeben 60 %.",
+    "Alle sieben Anteile ergeben zusammen 100 %, also ist der ganze Strom erneuerbar. Die Summe aller Anteile sagt aber nichts darüber, welche davon erneuerbar sind.",
+    "33 % Windkraft plus 23 % Kohle ergeben 56 %. Kohle ist aber kein erneuerbarer Energieträger und darf hier nicht mitgezählt werden."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben fragt, ob man Kohle und Erdgas nicht einfach abschalten könnte. Beurteile das mithilfe der Anteile im Datenblatt und beachte, dass sich Strom kaum aufheben lässt.",
+   "zeilen": 4,
+   "loesung": "Kohle liefert 23 % und Erdgas 13 % des Stroms, zusammen also 36 %. Fielen beide weg, müsste mehr als ein Drittel der bisherigen Erzeugung anderswo herkommen. Die erneuerbaren Quellen decken mit 33 % Windkraft, 14 % Photovoltaik, 8 % Biomasse und 5 % Wasserkraft bereits 60 %, sie müssten für den Ersatz aber noch deutlich ausgebaut werden. Erschwerend kommt hinzu, dass Strom in dem Augenblick erzeugt werden muss, in dem er gebraucht wird. Wind und Sonne liefern jedoch nicht gleichmäßig, sondern je nach Wetter und Tageszeit, weshalb sich der Strommix sogar von Stunde zu Stunde ändert. Ohne Speicher oder andere regelbare Kraftwerke bliebe in einer windstillen Nacht eine Lücke, wenn Mia und Ben den Schalter im Flur umlegen. Rechnerisch fehlen also 36 %, praktisch fehlt vor allem die Sicherheit, den Strom zu jeder Stunde bereitzustellen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kw2",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Bewegt sich ein Magnet in einer Spule und entsteht dabei eine Spannung, so nennt man diesen Vorgang ",
+    "loesung": "Induktion",
+    "post": "."
+   },
+   {
+    "pre": "Eine Spannung entsteht nur bei einer ",
+    "loesung": "Änderung",
+    "post": " des Magnetfeldes in der Spule."
+   },
+   {
+    "pre": "Je höher die Drehzahl des Magneten ist, desto ",
+    "loesung": "größer",
+    "post": " ist die erzeugte Spannung."
+   },
+   {
+    "pre": "Ein Fahrraddynamo ist im Grunde nichts anderes als ein kleiner ",
+    "loesung": "Generator",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Dreht Ben das Vorderrad schneller, so wird die vom Dynamo erzeugte Spannung größer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mit eingeschalteter Lampe lässt sich das Rad schwerer treten, weil Ben die Energie für das Licht selbst liefern muss.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch ein ruhender Magnet erzeugt in der Spule eine Spannung, wenn er nur dicht genug an ihr liegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Energie für das Licht der Lampe steckt im Magneten des Dynamos und wird dort nach und nach verbraucht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation zeigt das Messgerät bei stillstehendem Magneten keine Spannung an, bei langsamer Drehung einen kleinen Wert und bei hoher Drehzahl den größten. Wie ist damit Bens Behauptung „Den Strom macht der Dynamo von selbst“ zu beurteilen?",
+   "optionen": [
+    "Ben hat recht, denn der Strom steckt bereits im Dynamo und wird nur abgerufen. Bei stillstehendem Magneten zeigt das Messgerät aber überhaupt keine Spannung an.",
+    "Der Magnet gibt beim Drehen nach und nach seine Kraft ab. Nach dem Versuch ist der Magnet jedoch genauso stark wie vorher.",
+    "Ben hat nicht recht: Eine Spannung entsteht nur, solange sich der Magnet bewegt, und sie wächst mit der Drehzahl.",
+    "Entscheidend ist allein, wie nah der Magnet an der Spule liegt. Der ruhende Magnet lag dicht an der Spule und lieferte trotzdem keine Spannung."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia sagt zu Ben: „Der Dynamo ist ein Umwandler, keine Energiequelle.“ Erkläre, was sie damit meint, und begründe damit, warum sich das Rad mit eingeschalteter Lampe schwerer treten lässt.",
+   "zeilen": 4,
+   "loesung": "Im Dynamo dreht sich ein Magnet an einer Spule, dadurch ändert sich das Magnetfeld in der Spule. Genau diese Änderung erzeugt eine Spannung, und man nennt den Vorgang Induktion. Der Dynamo stellt dabei keine Energie her, er wandelt nur um: Bewegungsenergie wird zu elektrischer Energie. Die Energie stammt deshalb nicht aus dem Magneten, sondern aus Bens Beinen. Solange Ben tritt, ändert sich das Feld, und die Lampe leuchtet; steht das Rad, ändert sich nichts, es fließt kein Strom und die Lampe bleibt dunkel. Je schneller Ben fährt, desto rascher ändert sich das Feld, desto größer wird die Spannung und desto heller leuchtet die Lampe. Die elektrische Energie, die die Lampe abgibt, muss Ben zusätzlich hineinstecken, und darum lässt sich das Rad mit eingeschalteter Lampe spürbar schwerer treten. Mia hat also recht: Der Strom kostet sehr wohl etwas, nämlich Bens Muskelarbeit."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw3",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Kraftwerke, die aus Brennstoff zuerst Wärme und daraus Dampf gewinnen, heißen ",
+    "loesung": "Wärmekraftwerke",
+    "post": "."
+   },
+   {
+    "pre": "Welcher Anteil der Brennstoffenergie als Strom herauskommt, sagt der ",
+    "loesung": "Wirkungsgrad",
+    "post": ", der Rest bleibt ungenutzt."
+   },
+   {
+    "pre": "Die Wärme, die nicht zu Strom wird, verlässt das Kraftwerk als ",
+    "loesung": "Abwärme",
+    "post": ", zum Beispiel als Dampfschwade über dem Kühlturm."
+   },
+   {
+    "pre": "Zwischen dem besten und dem schlechtesten Wirkungsgrad im Datenblatt liegen ",
+    "loesung": "25",
+    "post": " Prozentpunkte."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Datenblatt hat das Steinkohlekraftwerk mit 45 % einen höheren Wirkungsgrad als das Braunkohlekraftwerk mit 38 %.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil Uran ein ganz anderer Brennstoff ist als Holz, gehen Kernkraftwerk und Biomassekraftwerk ab dem Kessel einen ganz anderen Weg zum Strom.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Vom Braunkohlekraftwerk entweichen 62 % der Brennstoffenergie ungenutzt als Abwärme.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Gas-und-Dampf-Kraftwerk erreicht 60 %, weil Erdgas als Brennstoff mehr Energie enthält als jeder andere Brennstoff im Datenblatt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben vergleicht im Datenblatt das Kernkraftwerk (35 %) mit dem Gas-und-Dampf-Kraftwerk (60 %). Warum liegen zwischen beiden 25 Prozentpunkte?",
+   "optionen": [
+    "Das Kernkraftwerk hat keinen Generator. Auch dort dreht die Turbine einen Generator, sonst käme überhaupt kein Strom heraus.",
+    "Das Kernkraftwerk gibt nur 35 % als Abwärme ab, das Gas-und-Dampf-Kraftwerk dagegen 60 %. Die Werte im Datenblatt nennen den Stromanteil, die Abwärme beträgt also 65 % und 40 %.",
+    "Uran ist ein schlechterer Brennstoff als Erdgas. Über den Wirkungsgrad entscheidet aber nicht die Wärmequelle, sondern wie heiß der Dampf wird und wie viel Wärme ungenutzt entweicht.",
+    "Im Gas-und-Dampf-Kraftwerk treibt das heiße Abgas zuerst eine Gasturbine an und erzeugt erst danach den Dampf, die Wärme wird also zweimal genutzt."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mia will Ben mit dem Datenblatt überzeugen. Erkläre, warum ein hoher Wirkungsgrad nicht am Brennstoff liegt, und benutze dabei die Werte von Kernkraftwerk, Biomassekraftwerk und Gas-und-Dampf-Kraftwerk.",
+   "zeilen": 4,
+   "loesung": "Alle fünf Anlagen im Datenblatt sind Wärmekraftwerke: Die Wärmequelle heizt Wasser auf, der heiße Dampf treibt eine Turbine, und die Turbine dreht den Generator. Der Brennstoff liefert also nur die Wärme, der Weg zum Strom ist danach derselbe. Besonders deutlich zeigen das Kernkraftwerk und Biomassekraftwerk: Uran und Holz könnten kaum verschiedener sein, trotzdem erreichen beide 35 %. Das Gas-und-Dampf-Kraftwerk kommt dagegen auf 60 %, weil dort das heiße Abgas zuerst eine Gasturbine antreibt und erst danach den Dampf erzeugt, die Wärme also zweimal genutzt wird. Zwischen diesen 60 % und den 35 % liegen 25 Prozentpunkte, und dieser Abstand entsteht durch die Temperatur des Dampfes und die zusätzliche Gasturbine, nicht durch den Brennstoff. Auch Braunkohle mit 38 % und Steinkohle mit 45 % ordnen sich nach demselben Muster ein. Ben hat deshalb unrecht: Ein Brennstab und ein Holzscheit heizen auf verschiedene Weise, aber ab dem Kessel läuft in beiden Kraftwerken dasselbe ab."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw4",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Verbrennen verbindet sich der Kohlenstoff des Brennstoffs mit Sauerstoff aus der Luft zu ",
+    "loesung": "Kohlenstoffdioxid",
+    "post": ", das in der Atmosphäre zurückbleibt."
+   },
+   {
+    "pre": "Je Kilowattstunde Strom hinterlässt Braunkohle ",
+    "loesung": "1150 g",
+    "post": " Kohlenstoffdioxid, Erdgas dagegen nur 400 g."
+   },
+   {
+    "pre": "Der Unterschied zwischen beiden beträgt 1150 g − 400 g = ",
+    "loesung": "750 g",
+    "post": " je Kilowattstunde."
+   },
+   {
+    "pre": "Dass die Vorräte an Erdgas beim heutigen Verbrauch nur noch rund 50 Jahre reichen, gibt die statische ",
+    "loesung": "Reichweite",
+    "post": " an."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Braunkohle setzt je Kilowattstunde Strom fast dreimal so viel Kohlenstoffdioxid frei wie Erdgas.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ist Bens Gas unter dem Topf verbrannt, so ist sein Kohlenstoff endgültig verschwunden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Erdöl und Erdgas hinterlassen je Kilowattstunde Strom gleich viel Kohlenstoffdioxid, weil ihre Reichweite gleich ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Vorräte an Braunkohle reichen beim heutigen Verbrauch viermal so lange wie die an Erdgas.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mia sagt, ausgerechnet der Energieträger mit dem kleinsten CO₂-Wert sei zuerst aufgebraucht. Welche Zahlen aus dem Datenblatt stützen das?",
+   "optionen": [
+    "Erdgas hat mit 400 g den kleinsten Wert und reicht mit rund 50 Jahren am kürzesten.",
+    "Erdöl hat mit 800 g den kleinsten Wert und reicht nur rund 50 Jahre. Erdöl liegt mit 800 g aber doppelt so hoch wie Erdgas mit 400 g.",
+    "Braunkohle hat mit 1150 g den kleinsten Wert und reicht mit rund 200 Jahren am kürzesten. Die 1150 g sind aber der größte Wert im Datenblatt und die 200 Jahre die längste Reichweite.",
+    "Steinkohle hat mit 900 g den kleinsten Wert und reicht mit rund 130 Jahren am kürzesten. Den kleinsten Wert hat jedoch Erdgas mit 400 g, und 130 Jahre sind länger als die rund 50 Jahre von Erdgas."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben sagt in der Küche: „Verbrannt ist verbrannt, danach ist das Gas einfach weg.“ Beurteile diesen Satz mit den Zahlen aus dem Datenblatt.",
+   "zeilen": 4,
+   "loesung": "Für den Topf hat Ben recht, denn die Flamme geht aus und vom Gas ist nichts mehr zu sehen. Physikalisch verschwindet dabei aber nichts: Der Kohlenstoff des Erdgases verbindet sich mit Sauerstoff aus der Luft zu Kohlenstoffdioxid. Je Kilowattstunde Strom sind das bei Erdgas 400 g, die in der Atmosphäre bleiben, bei Braunkohle sogar 1150 g. Der Unterschied von 1150 g − 400 g = 750 g zeigt, dass Braunkohle fast das Dreifache freisetzt, denn 1150 g : 400 g ≈ 2,9. Weg ist der Brennstoff nur aus dem Vorrat, und dieser Vorrat wächst nicht nach: Erdgas reicht beim heutigen Verbrauch noch rund 50 Jahre, Braunkohle dagegen rund 200 Jahre, also viermal so lange. Der Brennstoff geht deshalb in zwei Richtungen fort, aus dem Vorrat hinaus und als Gas in die Luft hinein. Mia hat damit recht, und Bens Satz gilt nur für die Küche, nicht für die Erde."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kw5",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Photovoltaik gewinnt elektrische Energie unmittelbar aus ",
+    "loesung": "Sonnenstrahlung",
+    "post": ", also ohne den Umweg über ein Feuer."
+   },
+   {
+    "pre": "Bei der Windkraft treibt bewegte ",
+    "loesung": "Luft",
+    "post": " die Rotorblätter und darüber den Generator an."
+   },
+   {
+    "pre": "Die Energie der Geothermie stammt aus der Wärme des ",
+    "loesung": "Erdinneren",
+    "post": "; sie ist laut Datenblatt gar nicht vom Wetter abhängig."
+   },
+   {
+    "pre": "Von den fünf Quellen des Datenblatts hängen genau ",
+    "loesung": "zwei",
+    "post": " deutlich vom Wetter ab, nämlich Photovoltaik und Windkraft."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Photovoltaik erhitzt mit der Sonnenstrahlung zuerst Wasser und gewinnt daraus den Strom.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Laut Datenblatt hängt die Wasserkraft nur kaum vom Wetter ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Von den fünf Quellen des Datenblatts wird nur die Biomasse verbrannt, die anderen vier kommen ohne Feuer aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Windkraft steht im Datenblatt bei „vom Wetter abhängig“ genau wie die Geothermie auf „nein“.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben zählt am Datenblatt nach, wie viele der fünf Quellen deutlich vom Wetter abhängen. Welches Ergebnis ist richtig?",
+   "optionen": [
+    "Alle fünf Quellen hängen deutlich vom Wetter ab, denn ohne Sonne wächst auch keine Pflanze. Gefragt ist jedoch die Spalte des Datenblatts, und dort steht bei drei Quellen „kaum“ oder „nein“.",
+    "Zwei Quellen hängen deutlich vom Wetter ab, Photovoltaik und Windkraft; die drei übrigen kaum oder gar nicht.",
+    "Keine einzige Quelle hängt vom Wetter ab, weil ein Kraftwerk rund um die Uhr laufen muss. Bei Photovoltaik und Windkraft steht im Datenblatt aber ausdrücklich „ja“.",
+    "Vier Quellen hängen deutlich vom Wetter ab, nur die Geothermie nicht. In der Spalte des Datenblatts steht bei der Wasserkraft aber „kaum“ und bei der Biomasse „nein“."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben bleibt vor dem Solardach der Turnhalle dabei: Ohne Verbrennung könne kein Kraftwerk Strom liefern. Beurteile seine Behauptung mit dem Datenblatt und erkläre Mia dabei, woher die Energie der erneuerbaren Quellen stammt.",
+   "zeilen": 4,
+   "loesung": "Das Datenblatt nennt fünf Quellen, und nur bei einer einzigen, der Biomasse, wird zur Nutzung etwas verbrannt. Die übrigen vier kommen ganz ohne Feuer aus: Photovoltaik nutzt Sonnenstrahlung, Windkraft bewegte Luft, Wasserkraft fließendes Wasser und Geothermie die Wärme aus dem Erdinneren. Bei keiner dieser vier Quellen wird Energie neu erzeugt; sie liegt in der Natur schon vor und wird nur umgewandelt – bei der Photovoltaik unmittelbar in elektrische Energie, bei Wind und Wasser über Turbine und Generator. Bens Behauptung ist damit widerlegt, denn vier der fünf Quellen liefern Strom ohne Verbrennung. Recht hat er nur in einem Punkt: Diese Quellen haben einen anderen Nachteil. Photovoltaik und Windkraft hängen laut Datenblatt vom Wetter ab, also von Tageszeit, Wolken und Windstärke, und das sind zwei der fünf Quellen. Die drei übrigen liefern gleichmäßiger, denn bei der Wasserkraft steht „kaum“ und bei Geothermie und Biomasse „nein“. Mias Satz, man müsse die Energie nur einsammeln, beschreibt das Solardach der Turnhalle deshalb besser als Bens Feuer."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kw6",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Den Ertrag je Kilowatt erhält man, indem man den Jahresertrag durch die ",
+    "loesung": "Leistung",
+    "post": " teilt."
+   },
+   {
+    "pre": "Die Solaranlage auf dem Hausdach liefert 9 000 kWh bei 10 kW Leistung, also 9 000 : 10 = ",
+    "loesung": "900",
+    "post": " kWh je Kilowatt."
+   },
+   {
+    "pre": "Das kleine Wasserkraftwerk kommt mit 500 kW auf 3 000 000 kWh und damit auf ",
+    "loesung": "6 000",
+    "post": " kWh je Kilowatt – den höchsten Wert der drei Anlagen."
+   },
+   {
+    "pre": "Der Jahresertrag des Wasserkraftwerks reicht rechnerisch für 3 000 000 : 4 000 = ",
+    "loesung": "750",
+    "post": " Haushalte mit je 4 000 kWh."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Anlage mit der größten Leistung liefert immer auch den größten Ertrag je Kilowatt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Wasserkraftwerk am Fluss holt aus jedem Kilowatt Leistung mehr heraus als das Windrad am Feldrand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die 9 000 kWh der Solaranlage reichen rechnerisch für mehr als drei Haushalte mit je 4 000 kWh.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Windrad liefert im Jahr tausendmal so viel Energie wie die Solaranlage, hat aber nur die vierhundertfache Leistung.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben sagt, das Wasserkraftwerk unten am Fluss sei von den drei Anlagen die schwächste, weil es mit 500 kW die kleinste Leistung hat. Was zeigt die Rechnung mit dem Ertrag je Kilowatt?",
+   "optionen": [
+    "Ben hat recht, denn 500 kW ist die kleinste der drei Leistungen. Die Leistung sagt aber nur, wie stark eine Anlage höchstens ist, und nicht, was im Jahr zusammenkommt.",
+    "Alle drei Anlagen liefern je Kilowatt gleich viel, weil keine von ihnen etwas verbrennt. Sonne, Wind und Wasser liefern jedoch unterschiedlich viele Stunden, deshalb ergeben sich 900, 2 250 und 6 000 kWh je Kilowatt.",
+    "Das Wasserkraftwerk liefert mit 6 000 kWh je Kilowatt von den drei Anlagen am meisten, denn Wasser fließt fast immer.",
+    "Das Windrad liegt vorn, weil es mit 9 000 000 kWh den größten Jahresertrag hat. Dieser große Ertrag verteilt sich aber auf 4 000 kW, das sind nur 2 250 kWh je Kilowatt."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia will Ben am Fenster mit Zahlen überzeugen. Erkläre ihm mit dem Ertrag je Kilowatt, warum das Wasserkraftwerk nicht die schwächste der drei Anlagen ist.",
+   "zeilen": 4,
+   "loesung": "Ben vergleicht nur die Leistungen: 10 kW bei der Solaranlage, 4 000 kW beim Windrad und 500 kW beim Wasserkraftwerk. Die Leistung sagt aber nur, wie stark eine Anlage in einem günstigen Augenblick höchstens ist. Was im Jahr wirklich zusammenkommt, zeigt erst der Ertrag in Kilowattstunden. Teilt man den Jahresertrag durch die Leistung, so ergeben sich 9 000 : 10 = 900 kWh je Kilowatt für die Solaranlage, 9 000 000 : 4 000 = 2 250 kWh je Kilowatt für das Windrad und 3 000 000 : 500 = 6 000 kWh je Kilowatt für das Wasserkraftwerk. Gerade die Anlage mit der kleinsten Leistung holt also aus jedem Kilowatt am meisten heraus. Der Grund liegt an der Quelle: Wasser fließt fast immer, Wind weht unregelmäßig und die Sonne scheint nur am Tag. Sein Ertrag von 3 000 000 kWh reicht rechnerisch für 3 000 000 : 4 000 = 750 Haushalte. Mia hat also recht: Bens Satz gilt nur für die Leistung, nicht für das, was im Jahr zusammenkommt."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw7",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Anlagen, die nur so viel liefern, wie Wind und Sonne gerade hergeben, nennt man ",
+    "loesung": "wetterabhängig",
+    "post": "."
+   },
+   {
+    "pre": "Im Mittel der Woche decken Wind und Sonne (130 + 15 + 70 + 155 + 10) : 5 = ",
+    "loesung": "76 %",
+    "post": " des Bedarfs."
+   },
+   {
+    "pre": "Am Freitag deckten Wind und Sonne 10 %. Doppelt so viele Windräder bringen dort höchstens ",
+    "loesung": "20 %",
+    "post": ", die Lücke bleibt."
+   },
+   {
+    "pre": "Aufheben lässt sich der Überschuss vom Donnerstag nur durch Netze und ",
+    "loesung": "Speicher",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wochendurchschnitt von 76 % wird am Mittwoch mit seinen 70 % genau getroffen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil der Durchschnitt bei 76 % liegt, sind an jedem Tag der Woche mindestens drei Viertel des Bedarfs gedeckt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Am Freitag fehlen 90 Prozentpunkte des Tagesbedarfs, am Mittwoch dagegen nur 30.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man die Windräder, käme der Donnerstag rechnerisch auf höchstens 310 %, der Überschuss würde also noch größer.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben sagt: „Man müsste einfach doppelt so viele bauen.“ Mia rechnet das für den Freitag nach, an dem Wind und Sonne bei Nebel und Windstille nur 10 % des Tagesbedarfs deckten. Was bringt die Verdopplung an diesem Tag höchstens?",
+   "optionen": [
+    "Sie deckt 20 % mehr als vorher, also 30 % des Bedarfs. Verdoppeln heißt aber mal zwei und nicht plus 20 Prozentpunkte.",
+    "Sie deckt den vollen Bedarf von 100 %, weil sich zwei Windfelder gegenseitig ergänzen. Zwei windstille Felder erzeugen aber keinen Wind, sondern verdoppeln nur eine sehr kleine Zahl.",
+    "Sie deckt 76 % des Bedarfs, denn das ist der Wert dieser Woche. Die 76 % sind jedoch der Durchschnitt aller fünf Tage und gelten nicht für den einzelnen Freitag.",
+    "Sie deckt höchstens 20 % des Bedarfs, und auch das nur, wenn die 10 % ganz vom Wind stammten."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Ben will doppelt so viele Windräder bauen. Beurteile mit den Werten der Wochentabelle, was diese Verdopplung am Donnerstag und am Freitag bewirken würde und was stattdessen gebraucht wird.",
+   "zeilen": 4,
+   "loesung": "Am stürmischen Donnerstag deckten Wind und Sonne 155 % des Tagesbedarfs, also 55 Prozentpunkte mehr als gebraucht wurde. Verdoppelt man die Windräder, käme dieser Tag rechnerisch auf höchstens 310 %, der Überschuss würde also noch weiter wachsen. Am Freitag herrschten dagegen Nebel und Windstille, dort kamen nur 10 % zusammen. Die Verdopplung hebt diesen Wert höchstens auf 20 %, und das auch nur, wenn die 10 % ganz vom Wind stammten; rund 80 % des Bedarfs fehlen also weiterhin. Mehr Anlagen verstärken somit beides, den Überschuss am windigen Tag und die Lücke am windstillen. Der Grund ist, dass Wind- und Solaranlagen dargebotsabhängig sind und ihre Leistung nicht selbst bestimmen können. Im Mittel deckt die Woche zwar (130 + 15 + 70 + 155 + 10) : 5 = 76 % des Bedarfs, doch kein einziger Tag liegt bei diesem Wert. Mia hat deshalb recht: Helfen würden nicht mehr Räder, sondern Netze und Speicher, die den Überschuss vom Donnerstag bis zum Freitag aufheben."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kw8",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Den höchsten Wirkungsgrad im Datenblatt hat mit 90 % der ",
+    "loesung": "Batteriespeicher",
+    "post": " im Haus."
+   },
+   {
+    "pre": "Im Wasserstoffspeicher gehen von der eingespeicherten Energie ",
+    "loesung": "65 %",
+    "post": " verloren, denn nur 35 % kommen wieder heraus."
+   },
+   {
+    "pre": "Zwischen dem höchsten und dem niedrigsten Wirkungsgrad des Datenblatts liegen ",
+    "loesung": "55",
+    "post": " Prozentpunkte."
+   },
+   {
+    "pre": "Die verlorene Energie ist nicht verschwunden, sie steckt meist in unbrauchbarer ",
+    "loesung": "Wärme",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Druckluftspeicher gibt von 100 kWh eingespeicherter Energie 55 kWh wieder ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Für Energie, die Wochen liegen bleiben soll, nennt das Datenblatt nur den Wasserstoffspeicher.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Wärmespeicher hat einen höheren Wirkungsgrad als das Pumpspeicherkraftwerk.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Pumpspeicherkraftwerk gehen 80 % der eingespeicherten Energie verloren.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben speichert mittags 100 kWh vom Balkonmodul ein. Wie viel kommt am Abend wieder heraus, wenn er einen Batteriespeicher im Haus benutzt, und wie viel bei Wasserstoff?",
+   "optionen": [
+    "Batterie 18 kWh, Wasserstoff 7 kWh.",
+    "Batterie 18 kWh, Wasserstoff 11 kWh. Für den Wasserstoff wurden die 55 % des Druckluftspeichers eingesetzt, er hat aber nur 35 %.",
+    "Aus beiden kommen 20 kWh heraus, nur zu unterschiedlichen Zeiten. Ein Speicher gibt aber immer weniger zurück, als er aufnimmt.",
+    "Batterie 2 kWh, Wasserstoff 13 kWh. Hier wurde mit dem Verlustanteil von 10 % und 65 % gerechnet statt mit dem Wirkungsgrad."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben will den Mittagsstrom vom Balkonmodul bis zum Abend aufheben und sagt: „Dann speichern wir ihn eben, egal womit.“ Erkläre mit den Zahlen aus dem Datenblatt, welchen Speicher du ihm empfiehlst und warum Mia mit ihrem Einwand recht hat.",
+   "zeilen": 4,
+   "loesung": "Zwischen Mittag und Abend liegen nur wenige Stunden, und für diese kurze Dauer passt der Batteriespeicher im Haus am besten: Er hat mit 90 % den höchsten Wirkungsgrad im Datenblatt. Speichert Ben zum Beispiel 100 kWh ein, kommen abends 90 kWh wieder heraus, nur 100 % − 90 % = 10 % gehen verloren. Mit Wasserstoff wären es bei 35 % dagegen nur 35 kWh, also 65 kWh Verlust und 55 kWh weniger Licht und Herd am Abend. Bens „egal womit“ stimmt deshalb nicht, denn zwischen dem höchsten und dem niedrigsten Wirkungsgrad liegen 90 % − 35 % = 55 Prozentpunkte. Auch das Pumpspeicherkraftwerk mit 80 %, der Wärmespeicher mit 70 % und der Druckluftspeicher mit 55 % geben weniger zurück als die Batterie. Mia hat also recht: Jeder Speicher gibt weniger zurück, als man hineinsteckt, und die Unterschiede sind groß. Wasserstoff wäre erst dann die richtige Wahl, wenn die Energie Wochen bis Monate liegen soll, denn nur er hält so lange durch."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw9",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Verbrennen von Kohle, Erdöl und Erdgas verbindet sich der Kohlenstoff mit Sauerstoff aus der Luft zu ",
+    "loesung": "Kohlendioxid",
+    "post": "."
+   },
+   {
+    "pre": "Der Anteil dieses Gases wird in ppm angegeben, also in Teilen je ",
+    "loesung": "Million",
+    "post": ": 427 ppm sind 427 CO₂-Teilchen unter einer Million Luftteilchen."
+   },
+   {
+    "pre": "Von 1750 bis 1900 stieg der Anteil von 280 ppm auf 296 ppm, also um ",
+    "loesung": "16 ppm",
+    "post": " in 150 Jahren."
+   },
+   {
+    "pre": "Von 1960 bis 2025 kamen dagegen ",
+    "loesung": "110 ppm",
+    "post": " dazu – mehr als in den 210 Jahren davor."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Von 1900 bis 1960 stieg der CO₂-Anteil der Luft um 21 ppm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Jahresmittel steigt der CO₂-Anteil seit 1750 nicht durchgehend, sondern geht mal hoch und mal herunter.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Kohlendioxid aus Bens Gastherme verteilt sich über die ganze Erde und zählt zum weltweiten Anteil mit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Von 1990 bis 2025 kam weniger Kohlendioxid dazu als von 1750 bis 1900.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Datenblatt steigt der CO₂-Anteil von 280 ppm im Jahr 1750 auf 317 ppm im Jahr 1960 und von dort auf 427 ppm im Jahr 2025. Was folgt daraus?",
+   "optionen": [
+    "Der CO₂-Anteil hat sich seit 1960 verdoppelt. Aus 317 ppm sind aber 427 ppm geworden, also 110 ppm mehr und längst keine Verdopplung.",
+    "Der Anstieg ist seit 1960 viel steiler geworden: In 65 Jahren kamen 110 ppm dazu, in den 210 Jahren davor erst 37 ppm.",
+    "Der Anteil ist seit 1960 gleich geblieben, nur die Messgeräte wurden genauer. Zwischen 317 ppm und 427 ppm liegen jedoch 110 ppm echter Unterschied.",
+    "Der Anstieg war früher stärker, weil der Zeitraum bis 1960 viel länger ist. Ein längerer Zeitraum bedeutet aber nicht mehr ppm: Bis 1960 kamen nur 37 ppm dazu, danach 110 ppm."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben rechnet weiter: „Von 1750 bis 1960 sind gerade einmal 37 ppm dazugekommen. Dann bleibt auch in Zukunft alles ungefähr gleich.“ Nimm mit den Messwerten Stellung zu Bens Rechnung.",
+   "zeilen": 4,
+   "loesung": "Ben verwendet nur den Anfang der Messreihe und übersieht, dass der Anstieg immer schneller wird. Von 1750 bis 1900 kamen 16 ppm dazu (280 ppm auf 296 ppm), von 1900 bis 1960 noch einmal 21 ppm (296 ppm auf 317 ppm) – zusammen genau die 37 ppm, die Ben nennt. Von 1960 bis 2025 stieg der Anteil dagegen von 317 ppm auf 427 ppm, das sind 110 ppm in nur 65 Jahren. Allein von 1960 bis 1990 kamen 37 ppm dazu (317 ppm auf 354 ppm), also in 30 Jahren so viel wie in den 210 Jahren davor. Von 1990 bis 2025 waren es weitere 73 ppm (354 ppm auf 427 ppm). Insgesamt liegt der Anteil 2025 um 147 ppm über dem Wert von 1750. Wer wie Ben mit dem langsamen Anfang weiterrechnet, unterschätzt deshalb, was bei gleichbleibendem Verbrennen noch dazukommt."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw10",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Gase, die Wärmestrahlung festhalten und wieder nach unten zurückstrahlen, nennt man ",
+    "loesung": "Treibhausgase",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Treibhauseffekt gerechnet läge die mittlere Temperatur der Erde bei ",
+    "loesung": "−18 °C",
+    "post": ", wirklich sind es +15 °C."
+   },
+   {
+    "pre": "Die Rechnung 15 °C − (−18 °C) ergibt ",
+    "loesung": "33 °C",
+    "post": "; um so viel wärmer macht die Lufthülle unseren Planeten."
+   },
+   {
+    "pre": "Wie eine Erde ganz ohne Lufthülle aussähe, zeigt der ",
+    "loesung": "Mond",
+    "post": " mit rund −20 °C."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ohne den natürlichen Treibhauseffekt läge die mittlere Temperatur der Erde bei −18 °C statt bei +15 °C.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Venus erreicht +464 °C, weil ihre CO₂-Hülle besonders dünn ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Würde man den Treibhauseffekt ganz abschalten, bliebe die Erde so angenehm warm wie heute.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwischen der mittleren Temperatur des Mars und der der Venus liegen 527 °C.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben rechnet in Mias Heft nach: Mars und Venus haben beide eine CO₂-Hülle, trotzdem liegen zwischen −63 °C und +464 °C ganze 527 °C. Was folgt daraus?",
+   "optionen": [
+    "Der Mars hat in Wahrheit gar keine Lufthülle. Im Datenblatt steht aber eine dünne CO₂-Hülle, sie hält nur wenig Wärme fest.",
+    "CO₂ kühlt einen Planeten ab. Dann müsste die dichte Hülle der Venus sie kälter machen als den Mars, sie ist jedoch um 527 °C wärmer.",
+    "Nicht das Vorhandensein von CO₂ entscheidet, sondern die Menge: Die dünne Hülle des Mars hält kaum Wärme fest, die dichte Hülle der Venus dagegen sehr viel.",
+    "Weil Mars und Venus beide eine CO₂-Hülle haben, müssten sie etwa gleich warm sein. Der Mars hat aber nur eine dünne Hülle und kommt auf −63 °C, die Venus mit ihrer dichten auf +464 °C."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben bleibt dabei: „Schädlich bleibt schädlich, weg damit.“ Erkläre ihm mit den Zahlen aus dem Datenblatt, warum der natürliche Treibhauseffekt lebenswichtig ist und wo die Gefahr trotzdem liegt.",
+   "zeilen": 4,
+   "loesung": "Ohne Treibhauseffekt gerechnet läge die mittlere Temperatur der Erde bei −18 °C, wirklich sind es +15 °C. Die Differenz beträgt 15 °C − (−18 °C) = 33 °C, um so viel wärmer macht die Lufthülle unseren Planeten. Bei −18 °C wäre alles Wasser gefroren, Mia hat mit ihrer Eiswüste also recht. Wie eine Erde ohne Lufthülle aussähe, zeigt der Mond: Er ist gleich weit von der Sonne entfernt, hat keine Hülle und kommt nur auf rund −20 °C, also fast genau auf den Wert der Erde ohne Treibhauseffekt. Gefährlich ist deshalb nicht der Treibhauseffekt selbst, sondern seine Verstärkung durch zusätzliches CO₂ aus Kohle, Öl und Gas. Wohin sehr viel CO₂ führt, zeigt der Vergleich von Mars und Venus: Beide haben eine CO₂-Hülle, doch zwischen −63 °C und +464 °C liegen 527 °C. Bens Vorschlag hilft also nicht weiter, richtig ist nicht abschalten, sondern nicht weiter verstärken."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw11",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Den Zustand der Luft an einem Ort für Stunden oder Tage nennt man ",
+    "loesung": "Wetter",
+    "post": " – das Klima ist der Mittelwert über lange Zeiträume."
+   },
+   {
+    "pre": "Von 1881–1910 mit 7,9 °C bis 2015–2024 mit 10,5 °C stieg die Mitteltemperatur um ",
+    "loesung": "2,6 °C",
+    "post": "."
+   },
+   {
+    "pre": "Das Einzeljahr 2010 lag mit 7,8 °C sogar um ",
+    "loesung": "0,1 °C",
+    "post": " unter dem Mittel von 1881–1910."
+   },
+   {
+    "pre": "Steigt der Mittelwert von Zeitraum zu Zeitraum immer weiter, so spricht man von einem ",
+    "loesung": "Trend",
+    "post": ", den ein einzelner Ausreißer nicht umkehrt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Das Jahr 2010 war mit 7,8 °C wärmer als der Mittelwert des Zeitraums 1881–1910.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Von 1961–1990 mit 8,2 °C bis 1991–2020 mit 9,3 °C stieg die Mitteltemperatur um 1,1 °C.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Schritt von 1991–2020 auf 2015–2024 ist mit 1,2 °C größer als der Schritt von 1881–1910 auf 1961–1990 mit 0,3 °C.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil das Jahr 2010 kälter ausfiel als frühere Zeiträume, ist der steigende Trend der Mittelwerte widerlegt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ben zeigt im Datenblatt auf das Jahr 2010 mit 7,8 °C und sagt: „Vom Klimawandel merke ich gar nichts.“ Was entgegnest du ihm mit den Zahlen des Datenblatts?",
+   "optionen": [
+    "Man müsste das kalte Jahr 2010 nur aus dem Zeitraum 2015–2024 herausrechnen. Das Jahr 2010 gehört gar nicht zu diesem Zeitraum, denn dieser beginnt erst 2015.",
+    "Der Wert für 2010 ist ein Messfehler und zählt deshalb nicht mit. Er stammt aber aus derselben Messreihe des Deutschen Wetterdienstes wie alle anderen Werte des Datenblatts.",
+    "Ben hat recht, denn 7,8 °C ist kälter als die 7,9 °C von 1881–1910. Ein einzelnes Jahr ist jedoch noch kein Klima, entscheidend sind die Mittelwerte ganzer Zeiträume.",
+    "Ein einzelnes Jahr schwankt stark, doch die Mittelwerte der Zeiträume steigen ohne Ausnahme von 7,9 °C über 8,2 °C und 9,3 °C auf 10,5 °C, insgesamt um 2,6 °C."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mia will Ben mit dem Datenblatt überzeugen. Erkläre mit den Zahlen, warum man das Klima an langen Zeiträumen und nicht an einzelnen Jahren beurteilt.",
+   "zeilen": 4,
+   "loesung": "Wetter ist der Zustand der Luft an einem Ort für Stunden oder Tage, das Klima dagegen der Mittelwert über lange Zeiträume, üblich sind dreißig Jahre. Einzelne Jahre schwanken stark, deshalb kann ein Schneewinter wie der von Ben auch in einer wärmer werdenden Welt vorkommen. Das Jahr 2010 lag mit 7,8 °C sogar um 0,1 °C unter dem Mittel von 1881–1910 mit 7,9 °C. Es ist damit ein Ausreißer nach unten, aber kein Gegenbeweis. Die Mittelwerte der Zeiträume steigen nämlich ohne Ausnahme: erst 7,9 °C, dann 8,2 °C, dann 9,3 °C und zuletzt 10,5 °C. Die einzelnen Schritte betragen 0,3 °C, 1,1 °C und 1,2 °C, zusammen also 10,5 °C − 7,9 °C = 2,6 °C. Weil sich in solchen Mittelwerten die Schwankungen der Einzeljahre ausgleichen, zeigt erst dieser Trend über mehrere Zeiträume, dass es in Deutschland wärmer wird."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "kw12",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Den höchsten Wert im Datenblatt hat der Strom aus ",
+    "loesung": "Braunkohle",
+    "post": " mit 1150 g CO₂ je Kilowattstunde."
+   },
+   {
+    "pre": "Am wenigsten verursacht die Wasserkraft, nämlich ",
+    "loesung": "10 g",
+    "post": " je Kilowattstunde."
+   },
+   {
+    "pre": "Wegen 1150 g : 10 g = 115 stößt Braunkohlestrom das ",
+    "loesung": "115-Fache",
+    "post": " an CO₂ aus."
+   },
+   {
+    "pre": "Die 40 g gelten nicht nur für den Betrieb, sondern für den ganzen ",
+    "loesung": "Lebensweg",
+    "post": " von der Herstellung bis zum Rückbau."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Windkraft an Land steht im Datenblatt bei null Gramm CO₂ je Kilowattstunde, weil im Betrieb nichts verbrannt wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Auto stößt je gefahrenem Kilometer rund 120 g CO₂ aus und damit dreimal so viel wie eine Kilowattstunde Solarstrom vom Balkon der Nachbarn.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Erdgas verursacht je Kilowattstunde weniger CO₂ als Photovoltaik.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwischen dem höchsten und dem niedrigsten Wert des Datenblatts liegen 1140 g CO₂ je Kilowattstunde.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mia rechnet nach: Wie viele Kilowattstunden Strom aus dem Balkonmodul verursachen zusammen so viel CO₂ wie ein Auto auf einem einzigen gefahrenen Kilometer?",
+   "optionen": [
+    "3 Kilowattstunden, denn 120 g : 40 g = 3.",
+    "80 Kilowattstunden. Hier wurde 120 g − 40 g gerechnet; gefragt ist aber, wie oft die 40 g in die 120 g hineinpassen.",
+    "120 Kilowattstunden. Hier wurden die 120 g des Autos einfach als Kilowattstunden gelesen; man muss sie durch die 40 g je Kilowattstunde teilen.",
+    "40 Kilowattstunden. Das ist der CO₂-Wert der Photovoltaik in Gramm je Kilowattstunde und nicht die gesuchte Anzahl."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben behauptet: „Damit machen wir Strom ganz ohne CO₂.“ Nimm mit den Zahlen des Datenblatts dazu Stellung und erkläre, warum bei Photovoltaik und Windkraft trotzdem keine Null steht.",
+   "zeilen": 4,
+   "loesung": "Ben sieht nur den Betrieb auf dem Balkon, und dort wird tatsächlich nichts verbrannt. Vergleichen kann man Stromquellen aber erst über den ganzen Lebensweg, also mit Bau, Betrieb und Rückbau zusammen, geteilt durch den gelieferten Strom. Deshalb steht im Datenblatt bei Photovoltaik 40 g CO₂ je Kilowattstunde und bei Windkraft an Land 12 g, denn für Module, Türme und Fundamente wurde Energie gebraucht. Bens Behauptung stimmt also nicht ganz: Auch der Balkonstrom trägt einen Rucksack von 40 g je Kilowattstunde. Mia hat mit ihrem Einwand recht, doch der Vergleich fällt trotzdem klar für das Modul aus. Braunkohle liegt bei 1150 g, und 1150 g : 40 g = 28,75, also fast das 29-Fache; Erdgas liegt mit 430 g immer noch mehr als zehnmal so hoch. Selbst gegenüber dem Auto ist der Balkonstrom sparsam, denn dessen rund 120 g je gefahrenem Kilometer entsprechen 120 g : 40 g = 3 Kilowattstunden Solarstrom. Richtig wäre Bens Satz erst so: Der Strom vom Balkon entsteht mit sehr wenig CO₂, aber nicht ganz ohne."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "kw13",
+  "theme": "kraftwerke",
+  "lueckensaetze": [
+   {
+    "pre": "Die für Photovoltaik geeigneten Dächer bringen 400 000 m² · 150 kWh = ",
+    "loesung": "60 000 000 kWh",
+    "post": " im Jahr."
+   },
+   {
+    "pre": "Die acht Windräder liefern 8 · 9 000 000 kWh = ",
+    "loesung": "72 000 000 kWh",
+    "post": ", also mehr als alle Dächer zusammen."
+   },
+   {
+    "pre": "Beide Posten ergeben 132 000 000 kWh; diese Menge nennt man das ",
+    "loesung": "Potenzial",
+    "post": " der Stadt."
+   },
+   {
+    "pre": "Bis zum Bedarf von 200 000 000 kWh fehlen damit ",
+    "loesung": "68 000 000 kWh",
+    "post": ", die über das Netz herangeführt werden müssen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Mit 132 000 000 kWh deckt die Stadt genau die Hälfte ihres Bedarfs von 200 000 000 kWh.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Sobald die Jahressumme aus Sonne und Wind den Bedarf erreicht, ist zu jeder Stunde genug Strom da.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die acht Windräder liefern im Jahr mehr Strom als alle geeigneten Dächer der Stadt zusammen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein einziges Windrad liefert im Jahr so viel Strom wie 60 000 m² Dachfläche.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ben behauptet vor dem Luftbild: „Sonne und Wind, mehr braucht die Stadt später nicht.“ Was zeigt die Rechnung mit dem Datenblatt der Stadtwerke?",
+   "optionen": [
+    "Ben hat recht, weil allein die acht Windräder schon 72 000 000 kWh bringen. Der Bedarf der Stadt liegt jedoch bei 200 000 000 kWh und ist damit fast dreimal so hoch.",
+    "Ben hat nicht recht: Die 132 000 000 kWh aus Dächern und Windrädern decken 66 % des Bedarfs, es fehlen 68 000 000 kWh im Jahr.",
+    "Mia hat recht, weil Dächer und Windräder zusammen nur 66 000 000 kWh schaffen. Hier wurden die 66 % mit einer Strommenge verwechselt; erzeugt werden 132 000 000 kWh.",
+    "Ben hat recht, denn 60 000 000 kWh und 72 000 000 kWh sind zusammen mehr als der Bedarf. Addiert ergeben beide Posten aber nur 132 000 000 kWh und damit weniger als die 200 000 000 kWh, die gebraucht werden."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Mia rechnet weiter: Die Stadtwerke wollen die Lücke allein mit weiteren Windrädern schließen. Berechne, wie viele zusätzliche Windräder dafür nötig wären, und erkläre, warum die Stadt trotzdem am Netz bleibt.",
+   "zeilen": 4,
+   "loesung": "Die Lücke beträgt 200 000 000 kWh − 132 000 000 kWh = 68 000 000 kWh im Jahr. Ein Windrad liefert 9 000 000 kWh, also rechnet man 68 000 000 kWh : 9 000 000 kWh = 7,6. Sieben zusätzliche Windräder brächten erst 63 000 000 kWh, deshalb sind acht weitere nötig; sie liefern 72 000 000 kWh und damit 4 000 000 kWh mehr als die Lücke. Insgesamt müssten dann sechzehn Windräder stehen, doppelt so viele, wie das Umland nach dem Datenblatt überhaupt hergibt. Schon rechnerisch geht Bens Plan damit nicht auf. Dazu kommt, dass eine Jahressumme nichts über die einzelne Stunde sagt: An einem windstillen Winterabend erzeugen weder die Dächer noch die Windräder etwas, der Strom muss aber genau dann da sein. Die Stadt bleibt deshalb am Netz und braucht zusätzlich Speicher. Trotzdem wäre der Ausbau ein großer Schritt, weil rund zwei Drittel des Bedarfs vor Ort entstehen würden."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ }
+]

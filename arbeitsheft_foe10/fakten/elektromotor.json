@@ -1,0 +1,288 @@
+[
+ {
+  "sim": "elektromotor",
+  "ueberschrift": "⚙️ Wie wird aus der Kraft eine Drehbewegung?",
+  "regler": [
+   {
+    "id": "emoN",
+    "beschriftung": "Windungen der Spule: 20",
+    "bereich": {
+     "min": "5",
+     "max": "60",
+     "step": "5",
+     "start": "20"
+    }
+   },
+   {
+    "id": "emoI",
+    "beschriftung": "Stromstärke I: 2,0 A",
+    "bereich": {
+     "min": "0",
+     "max": "6",
+     "step": "0.5",
+     "start": "2"
+    }
+   },
+   {
+    "id": "emoB",
+    "beschriftung": "Magnetfeld B: 0,20 T",
+    "bereich": {
+     "min": "0.05",
+     "max": "0.5",
+     "step": "0.05",
+     "start": "0.2"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "🔁 Kommutator ist AN",
+    "ruft": "_emoKomm()"
+   },
+   {
+    "aufschrift": "↺ zurücksetzen",
+    "ruft": "_emoReset()"
+   }
+  ],
+  "hinweise": [
+   "Auf die beiden Seiten der Spule wirken Kräfte in entgegengesetzte Richtungen – die eine nach oben, die andere nach unten. Das dreht. Aber warum hört es nach einer halben Umdrehung nicht auf? Schalte den Kommutator aus und sieh selbst.",
+   "Der Kommutator (auch Polwender oder Stromwender genannt) ist ein geteilter Ring, der sich mit der Spule mitdreht. Zwei feste Kohlebürsten schleifen darauf. Bei jeder halben Umdrehung wechseln die Hälften – und damit fließt der Strom in der Spule andersherum, während die Kräfte weiter in dieselbe Drehrichtung drücken.",
+   "Modellgrenze: Ein echter Motor hat nicht eine, sondern mehrere Spulen versetzt auf dem Anker – sonst bliebe er in der Totlage hängen, wenn man ihn dort anhält. Außerdem entsteht in der drehenden Spule selbst eine Spannung, die dem Strom entgegenwirkt; deshalb dreht ein echter Motor nicht immer schneller, sondern erreicht eine Enddrehzahl. Hier begrenzt nur die Reibung.",
+   "M = N · B · I · A · ohne Kommutator bleibt die Spule nach einer halben Umdrehung stehen"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 20 · 0,20 T · 2,0 A · 0,002 m² = 0,0160 N·m | Das sind 16,0 Millinewtonmeter. | | Kommutator ist eingeschaltet. Bei jeder halben Umdrehung polt er den Strom in der Spule um. Dadurch drückt die Kraft immer in dieselbe Drehrichtung – der Motor läuft durch. | Bisher 0 volle Umdrehungen, gerade rund 0 Umdrehungen je Minute. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 20 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "🔁 Kommutator ist AN",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 20 · 0,20 T · 2,0 A · 0,002 m² = 0,0160 N·m | Das sind 16,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 20 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "↺ zurücksetzen",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 20 · 0,20 T · 2,0 A · 0,002 m² = 0,0160 N·m | Das sind 16,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 20 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 5 · 0,20 T · 2,0 A · 0,002 m² = 0,0040 N·m | Das sind 4,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 5 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 10",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 10 · 0,20 T · 2,0 A · 0,002 m² = 0,0080 N·m | Das sind 8,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 10 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 20",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 20 · 0,20 T · 2,0 A · 0,002 m² = 0,0160 N·m | Das sind 16,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 20 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 25",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 25 · 0,20 T · 2,0 A · 0,002 m² = 0,0200 N·m | Das sind 20,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 25 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 35",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 35 · 0,20 T · 2,0 A · 0,002 m² = 0,0280 N·m | Das sind 28,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 35 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 40",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 40 · 0,20 T · 2,0 A · 0,002 m² = 0,0320 N·m | Das sind 32,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 40 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 45",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 45 · 0,20 T · 2,0 A · 0,002 m² = 0,0360 N·m | Das sind 36,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 45 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 55",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 55 · 0,20 T · 2,0 A · 0,002 m² = 0,0440 N·m | Das sind 44,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 55 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 60",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 60 · 0,20 T · 2,0 A · 0,002 m² = 0,0480 N·m | Das sind 48,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 60 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 15",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 15 · 0,20 T · 2,0 A · 0,002 m² = 0,0120 N·m | Das sind 12,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 15 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 30",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 30 · 0,20 T · 2,0 A · 0,002 m² = 0,0240 N·m | Das sind 24,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 30 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Windungen der Spule: 20 = 50",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 2,0 A · 0,002 m² = 0,0400 N·m | Das sind 40,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 0",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 0,0 A · 0,002 m² = 0,0000 N·m | Das sind 0,0 Millinewtonmeter. | | Kein Strom – der Motor steht. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 0,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 1",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 1,0 A · 0,002 m² = 0,0200 N·m | Das sind 20,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 1,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 1.5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 1,5 A · 0,002 m² = 0,0300 N·m | Das sind 30,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 1,5 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 2.5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 2,5 A · 0,002 m² = 0,0500 N·m | Das sind 50,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 2,5 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 3",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 3,0 A · 0,002 m² = 0,0600 N·m | Das sind 60,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 3,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 4",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 4,0 A · 0,002 m² = 0,0800 N·m | Das sind 80,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 4,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 4.5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 4,5 A · 0,002 m² = 0,0900 N·m | Das sind 90,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 4,5 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 5.5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 5,5 A · 0,002 m² = 0,1100 N·m | Das sind 110,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 5,5 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 6",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 6,0 A · 0,002 m² = 0,1200 N·m | Das sind 120,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 6,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 2",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 2,0 A · 0,002 m² = 0,0400 N·m | Das sind 40,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 2,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Stromstärke I: 2,0 A = 5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 5,0 A · 0,002 m² = 0,1000 N·m | Das sind 100,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.05",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,05 T · 5,0 A · 0,002 m² = 0,0250 N·m | Das sind 25,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,05 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.1",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,10 T · 5,0 A · 0,002 m² = 0,0500 N·m | Das sind 50,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,10 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.15",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,15 T · 5,0 A · 0,002 m² = 0,0750 N·m | Das sind 75,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,15 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.2",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,20 T · 5,0 A · 0,002 m² = 0,1000 N·m | Das sind 100,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,20 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.3",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,30 T · 5,0 A · 0,002 m² = 0,1500 N·m | Das sind 150,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,30 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.35",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,35 T · 5,0 A · 0,002 m² = 0,1750 N·m | Das sind 175,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,35 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.4",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,40 T · 5,0 A · 0,002 m² = 0,2000 N·m | Das sind 200,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,40 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.45",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,45 T · 5,0 A · 0,002 m² = 0,2250 N·m | Das sind 225,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,45 T · 5,0 A · 20 cm²"
+   },
+   {
+    "einstellung": "Magnetfeld B: 0,20 T = 0.5",
+    "text": "emoKomm: ⛔ Kommutator ist AUS  ||  emoStatus: Drehmoment – wie kräftig dreht der Motor? | M = N · B · I · A | M = 50 · 0,50 T · 5,0 A · 0,002 m² = 0,2500 N·m | Das sind 250,0 Millinewtonmeter. | | Kommutator ist ausgeschaltet. | Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen. | | Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment. | | Zurzeit: 50 Windungen · 0,50 T · 5,0 A · 20 cm²"
+   }
+  ],
+  "bildtexte": [
+   "N",
+   "S",
+   "Kommutator AN",
+   "M = 16,0 mN·m   ·   20 Windungen   ·   2,0 A   ·   0,20 T",
+   "1 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "⊙ Strom kommt heraus    ⊗ Strom fließt hinein    ↑↓ Kraft auf die Leiterseite",
+   "2 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "3 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "Kommutator AUS",
+   "4 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 4,0 mN·m   ·   5 Windungen   ·   2,0 A   ·   0,20 T",
+   "M = 8,0 mN·m   ·   10 Windungen   ·   2,0 A   ·   0,20 T",
+   "M = 20,0 mN·m   ·   25 Windungen   ·   2,0 A   ·   0,20 T",
+   "5 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 28,0 mN·m   ·   35 Windungen   ·   2,0 A   ·   0,20 T",
+   "7 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "8 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 32,0 mN·m   ·   40 Windungen   ·   2,0 A   ·   0,20 T",
+   "9 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "11 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 36,0 mN·m   ·   45 Windungen   ·   2,0 A   ·   0,20 T",
+   "13 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "14 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 44,0 mN·m   ·   55 Windungen   ·   2,0 A   ·   0,20 T",
+   "17 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "19 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 48,0 mN·m   ·   60 Windungen   ·   2,0 A   ·   0,20 T",
+   "22 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "25 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 12,0 mN·m   ·   15 Windungen   ·   2,0 A   ·   0,20 T",
+   "26 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 24,0 mN·m   ·   30 Windungen   ·   2,0 A   ·   0,20 T",
+   "27 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "29 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 40,0 mN·m   ·   50 Windungen   ·   2,0 A   ·   0,20 T",
+   "32 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "35 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 0,0 mN·m   ·   50 Windungen   ·   0,0 A   ·   0,20 T",
+   "Kein Strom – der Motor steht",
+   "M = 20,0 mN·m   ·   50 Windungen   ·   1,0 A   ·   0,20 T",
+   "37 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 30,0 mN·m   ·   50 Windungen   ·   1,5 A   ·   0,20 T",
+   "39 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "42 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 50,0 mN·m   ·   50 Windungen   ·   2,5 A   ·   0,20 T",
+   "47 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "53 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 60,0 mN·m   ·   50 Windungen   ·   3,0 A   ·   0,20 T",
+   "59 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "66 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 80,0 mN·m   ·   50 Windungen   ·   4,0 A   ·   0,20 T",
+   "74 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "83 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 90,0 mN·m   ·   50 Windungen   ·   4,5 A   ·   0,20 T",
+   "92 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "99 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 110,0 mN·m   ·   50 Windungen   ·   5,5 A   ·   0,20 T",
+   "108 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "115 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 120,0 mN·m   ·   50 Windungen   ·   6,0 A   ·   0,20 T",
+   "120 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "122 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "117 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 100,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,20 T",
+   "111 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "102 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 25,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,05 T",
+   "98 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "94 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 50,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,10 T",
+   "86 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "79 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 75,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,15 T",
+   "68 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "57 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "43 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "30 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 150,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,30 T",
+   "10 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 175,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,35 T",
+   "31 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 200,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,40 T",
+   "77 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "100 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 225,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,45 T",
+   "124 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "144 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "M = 250,0 mN·m   ·   50 Windungen   ·   5,0 A   ·   0,50 T",
+   "162 Umdrehungen je Minute   ·   0 volle Umdrehungen",
+   "172 Umdrehungen je Minute   ·   0 volle Umdrehungen"
+  ]
+ }
+]

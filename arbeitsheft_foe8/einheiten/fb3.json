@@ -1,0 +1,194 @@
+{
+ "seite": {
+  "id": "fb3",
+  "quelle": "be4",
+  "sim": "v-umrechnung",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "km/h oder m/s?",
+  "name": "Von m/s zu km/h – mal 3,6",
+  "fachwoerter_neu": [
+   "km/h"
+  ],
+  "alltag": [
+   "Jannis fährt in der Fahrrad-AG eine Testrunde.",
+   "Am Lenker sitzt ein Tacho. Er zeigt das Tempo an.",
+   "km/h heißt Kilometer pro Stunde. So steht es auf jedem Schild.",
+   "Der Tacho zeigt 18,0 km/h. In Nours Heft steht 5,0 m/s für dieselbe Runde."
+  ],
+  "frage": "Wie rechnest du einen Wert von m/s in km/h um?",
+  "predict": [
+   "Man rechnet mal 3,6.",
+   "Man rechnet mal 1000, weil 1 Kilometer 1000 Meter sind."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.",
+   "Drücke „Fußgänger“. Vergleiche die Statuszeile mit Zeile 1 der Tabelle.",
+   "Drücke „Radfahrer“. Trage beide Zahlen in Zeile 2 ein.",
+   "Drücke „Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Knopf drückst du?",
+   "Wie viele m/s?",
+   "Wie viele km/h?"
+  ],
+  "tabRows": [
+   [
+    "Fußgänger",
+    "1,5 m/s",
+    "5,4 km/h"
+   ],
+   [
+    "Radfahrer",
+    "",
+    ""
+   ],
+   [
+    "Auto (Stadt)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von m/s zu km/h rechnest du",
+    "loesung": "mal 3,6",
+    "post": "."
+   },
+   {
+    "pre": "Es gilt: 1 m/s sind",
+    "loesung": "3,6 km/h",
+    "post": ". Die Zahl wird größer, das Tempo bleibt gleich."
+   }
+  ],
+  "wortbank": [
+   "mal 3,6",
+   "3,6 km/h",
+   "5,4 km/h",
+   "50,4 km/h"
+  ],
+  "beispiel": {
+   "frage": "Am Anfang zeigt die Simulation 10,0 m/s. Wie viele km/h sind das?",
+   "antwort": "Gegeben: 10,0 m/s. Gesucht: der Wert in km/h. Rechnung: 10,0 · 3,6 = 36,0. Ergebnis: 36,0 km/h. Antwortsatz: 10,0 m/s sind 36,0 km/h. Genau das zeigt auch die Statuszeile."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „Radfahrer“. Welche Rechnung steht in der Statuszeile?",
+    "optionen": [
+     "5,0 m/s · 3,6 = 5,4 km/h",
+     "5,0 m/s · 3,6 = 50,4 km/h",
+     "5,0 m/s · 3,6 = 18,0 km/h"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Fußgänger geht 1,5 m/s. Auf dem Bildschirm steht",
+      "loesung": "5,4 km/h",
+      "post": "."
+     },
+     {
+      "pre": "Das Auto in der Stadt fährt 14,0 m/s. Dort steht",
+      "loesung": "50,4 km/h",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „18,0 km/h ist mehr als 5,0 m/s. Auf dem Tacho bin ich also schneller.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Beide Zahlen gehören zu …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Am Bildschirm steht: 1 m/s = 3,6 km/h. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beide Zahlen gehören zu derselben Runde. 5,0 mal 3,6 sind …",
+   "h3": "Fast fertige Antwort: Beide Zahlen gehören zu derselben Runde. 5,0 m/s sind 18,0 km/h. Nur die Einheit ist anders. Ergänze den letzten Satz: Jannis fährt ___ schnell."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile die Zahl in m/s und die Zahl in km/h ablesen.",
+   "Ich kann einen Wert in m/s mal 3,6 nehmen und bekomme km/h.",
+   "Ich kann erklären, dass sich nur die Einheit ändert und nicht das Tempo."
+  ],
+  "zuhause": "Sieh dir zu Hause einen Tacho an, im Auto oder am Fahrrad. Schreibe die Zahl ab, die er anzeigt. Kreise ein, welche Einheit daneben steht: km/h oder m/s. Auf fast jedem Tacho steht km/h.",
+  "bildauftrag": "[BILD: eine einzige große Umrechnungs-Grafik quer über die Seite: links ein Kästchen mit „5,0 m/s“, in der Mitte ein breiter Pfeil nach rechts mit der Aufschrift „× 3,6“, rechts ein gleich großes Kästchen mit „18,0 km/h“; unter beiden Kästchen dasselbe Fahrrad mit demselben Fahrer, in genau gleicher Größe und gleicher Haltung, damit sichtbar wird: eine Fahrt, zwei Einheiten; darunter mittig die Bildunterschrift „gleich schnell“; nur dieser eine Pfeil, KEIN Rückwärts-Pfeil und kein „÷ 3,6“, keine weiteren Zahlen, kein Tacho-Zifferblatt, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fb3",
+  "lernziel": "Die Schülerinnen und Schüler rechnen einen Wert von m/s in km/h um, indem sie mit 3,6 multiplizieren, und begründen daran: Die Zahl wird größer, die Bewegung bleibt dieselbe. Nur diese eine Richtung wird verlangt – die Rückrichtung km/h → m/s ist laut freigegebenem Seitenplan bewusst weggelassen, ebenso die Herleitung des Faktors über 3600 Sekunden. Neu eingeführt wird auf dieser Seite genau EIN Fachwort: km/h. „Tempo“ ist auf der ganzen Seite das eine Alltagswort für dieselbe Sache; „Geschwindigkeit“ kommt aus fb1 und wird hier nicht erneut eingeführt, m/s aus fb2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional: ein Fahrradtacho aus der Fahrrad-AG zum Herumzeigen – auf ihm steht km/h.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (nach „Fußgänger“): „1,5 m/s · 3,6 = 5,4 km/h. (Rückwärts: 5,4 km/h ÷ 3,6 = 1,5 m/s.)“ · Karte 2 (nach „Radfahrer“): „5,0 m/s · 3,6 = 18,0 km/h. (Rückwärts: 18,0 km/h ÷ 3,6 = 5,0 m/s.)“ · Karte 3 (nach „Auto (Stadt)“): „14,0 m/s · 3,6 = 50,4 km/h. (Rückwärts: 50,4 km/h ÷ 3,6 = 14,0 m/s.)“ Die Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle (Karte 1 = Zeile 1, Karte 2 = Zeile 2, Karte 3 = Zeile 3). Der Klammerzusatz „(Rückwärts: …)“ steht wörtlich am Bildschirm und deshalb auch auf den Karten – er wird auf dieser Seite NICHT besprochen; beim Vorlesen den Klammerteil weglassen oder auf den Karten abdecken. Wichtig für den Ersatzweg wie für die Simulation: Es gibt KEINEN Regler. Die drei Werte der Tabelle kommen über die Knöpfe „Fußgänger“, „Radfahrer“ und „Auto (Stadt)“, dazu gibt es „ICE“. Den Wert ändern außerdem zwei Pfeilknöpfe: „◀ langsamer“ macht aus 10,0 m/s 9,0 m/s (Statuszeile dann: „9,0 m/s · 3,6 = 32,4 km/h“), „schneller ▶“ führt von 9,0 m/s zurück auf 10,0 m/s. Der Rundpfeil-Knopf stellt den Anfangswert 10,0 m/s wieder her.",
+  "merksatz": [
+   "mal 3,6",
+   "3,6 km/h"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Radfahrer",
+    "5,0 m/s",
+    "18,0 km/h"
+   ],
+   [
+    "Auto (Stadt)",
+    "14,0 m/s",
+    "50,4 km/h"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach „Radfahrer“ beginnt die Statuszeile mit „5,0 m/s · 3,6 = 18,0 km/h.“ – dahinter steht am Bildschirm noch der Klammerzusatz „(Rückwärts: 18,0 km/h ÷ 3,6 = 5,0 m/s.)“, der hier nicht gebraucht wird. Derselbe Wert steht in Zeile 2 der eigenen Tabelle – die Aufgabe prüft, ob die Tabelle richtig ausgefüllt wurde. Gerechnet werden muss hier nichts.",
+   "typische_fehler": [
+    "„5,4 km/h“ wird gewählt: das ist die vorgegebene Beispielzeile (Zeile 1, Fußgänger). Der Knopf „Radfahrer“ wurde nicht gedrückt oder die Statuszeile nicht neu gelesen.",
+    "„50,4 km/h“ wird gewählt: dieser Wert gehört zu „Auto (Stadt)“ mit 14,0 m/s, also zu Zeile 3.",
+    "Alle drei Zeilen werden für gleich gehalten, weil in jeder „· 3,6“ steht; verglichen wird dann nur der Faktor statt des Ergebnisses."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,4 km/h",
+    "50,4 km/h"
+   ],
+   "typische_fehler": [
+    "5,4 und 50,4 werden vertauscht – die beiden Zahlen sehen einander sehr ähnlich. Erst die m/s-Werte vergleichen (1,5 gegen 14,0), dann eintragen.",
+    "„3,6 km/h“ wird eingetragen: 3,6 ist die Zahl zum Malnehmen, kein Ergebnis. Der Wert 3,6 km/h gehört allein zu 1 m/s.",
+    "Die Einheit fehlt oder es steht m/s statt km/h; die Wortbank gibt die Einheit vor.",
+    "Es wird gerechnet statt abgelesen: 14,0 · 3,6 ist für diese Gruppe nicht zumutbar und auf der Seite auch nicht verlangt – der Wert steht am Bildschirm und in Zeile 3."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Zahlen gehören zu derselben Runde. 5,0 m/s sind mal 3,6 gerechnet 18,0 km/h. Nur die Einheit ist anders. Jannis fährt gleich schnell.",
+   "alternativen": [
+    "Mit der eigenen Tabelle begründet: In Zeile 2 stehen 5,0 m/s und 18,0 km/h nebeneinander – eine Fahrt, zwei Einheiten.",
+    "Mit dem Bildschirm begründet: Die Statuszeile schreibt beide Zahlen in eine einzige Rechnung: „5,0 m/s · 3,6 = 18,0 km/h.“",
+    "Ohne Rechnung, aber mit klarer Aussage: In km/h steht immer die größere Zahl, schneller wird das Rad davon nicht. Als Zwischenschritt annehmen und dann nach der Rechnung mit 3,6 fragen."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne eine der beiden Zahlen zu nennen.",
+    "18,0 km/h und 5,0 m/s werden für zwei verschiedene Fahrten gehalten – der Kern der Seite ist genau das Gegenteil.",
+    "Der Faktor wird als 1000 angenommen (Ergebnis 5000 statt 18,0). Die Simulation widerlegt das selbst: Der Antwortknopf „Mal 1000“ meldet „✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.“ Diese Fehlvorstellung steht bewusst als die falsche Vermutung auf Seite A.",
+    "Es wird geteilt statt malgenommen. Die Simulation meldet dazu bei „Durch 3,6“: „✗ Das wäre der Weg zurück (km/h → m/s).“ Den Rückweg hier nicht vertiefen – er ist nicht Gegenstand dieser Seite."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: genauso, gleich schnell)",
+  "schwache": [
+   "Die Knopffolge vorher an die Tafel schreiben: „Fußgänger“ → „Radfahrer“ → „Auto (Stadt)“. Die Simulation hat KEINEN Regler; wer 5,0 m/s „einstellen“ soll, sucht sonst vergeblich.",
+   "Zeile 1 der Tabelle gemeinsam laut lesen und in der Statuszeile wiederfinden, erst danach Zeile 2 allein ausfüllen lassen.",
+   "Nicht rechnen lassen: Alle Zahlen der Tabelle und der Aufgaben 1 und 2 stehen fertig am Bildschirm. Gerechnet wird nur im gelösten Beispiel (10,0 · 3,6 = 36,0), und dort ist der Weg vorgedruckt.",
+   "Die vier Zahlen 3,6 – 5,4 – 18,0 – 50,4 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "„ICE“ (Statuszeile: „83,0 m/s · 3,6 = 298,8 km/h“) erst ganz am Schluss und nur zum Staunen zeigen. Die Zahl gehört nicht in die Tabelle und nicht in eine Aufgabe."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die eingebauten Fragen mit den Antwortknöpfen und schreibe die Rückmeldung zu „Mal 3,6“ ab: „✓ Richtig! m/s · 3,6 = km/h.“ Wer mag, drückt danach „ICE“ und schreibt die ganze Statuszeile ab. Bedienhinweis: Es gibt drei Fragen mit je einer eigenen Rückmeldezeile, und der Knopf „3,6 km/h“ kommt in zwei verschiedenen Fragen vor – einmal meldet er „✓ Richtig! 1 m/s = 3,6 km/h.“, einmal „✗ Das ist nur 1 m/s.“ Beides stimmt; die Rückmeldung gehört jeweils zur eigenen Frage.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit in verschiedenen Einheiten. Kompetenzen UF1, UF4 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan neben fs8 hier einzeln gesichert und sitzt in Aufgabe 3: Die Lernenden begründen mit zwei Zahlen aus der eigenen Tabelle, dass 18,0 km/h und 5,0 m/s dieselbe Bewegung meinen. UF4 trägt die Umrechnung selbst. Die Rückrichtung km/h → m/s bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

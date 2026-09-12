@@ -1,0 +1,238 @@
+{
+ "seite": {
+  "id": "fv11",
+  "quelle": "ev12",
+  "sim": null,
+  "sicherheit": "Datenblatt",
+  "theme": "foe_versorgung",
+  "titel": "Vier Kraftwerke auf einem Blatt",
+  "name": "Welche Kraftwerke liefern unseren Strom?",
+  "fachwoerter_neu": [
+   "regelbar",
+   "wetterabhängig"
+  ],
+  "alltag": [
+   "Jannis soll bei den Stadtwerken eine Folie für seinen Vortrag machen.",
+   "Sein Betreuer gibt ihm ein Datenblatt mit vier Kraftwerksarten: Kohle, Kernkraft, Wind und Wasser.",
+   "Regelbar heißt: Das Kraftwerk kann schnell mehr oder weniger liefern.",
+   "Wetterabhängig heißt: Das Wetter bestimmt, wie viel ein Kraftwerk liefert."
+  ],
+  "frage": "Reicht eine einzige Kraftwerksart für den Strom einer Stadt?",
+  "predict": [
+   "Eine Stadt braucht mehrere Kraftwerksarten zusammen.",
+   "Eine Kraftwerksart reicht, wenn man genug davon baut."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Datenblatt die Zeile „Kernkraftwerk“ von links nach rechts.",
+   "Trage bei den drei offenen Zeilen ein, ob der Brennstoff Geld kostet.",
+   "Ordne die drei regelbaren Kraftwerke in der Tabelle. Beginne beim schnellsten. Der Windpark passt nicht dazu.",
+   "Beurteile: Reicht ein Pumpspeicher allein für eine Stadt?"
+  ],
+  "daten": {
+   "titel": "Kraftwerksarten im Vergleich",
+   "spalten": [
+    "Kraftwerk",
+    "Kostet der Brennstoff Geld?",
+    "Wie schnell regelbar?"
+   ],
+   "zeilen": [
+    [
+     "Kohlekraftwerk",
+     "Kohle kostet Geld; CO₂",
+     "in Stunden"
+    ],
+    [
+     "Kernkraftwerk",
+     "Uran kostet Geld; Abfall",
+     "sehr langsam"
+    ],
+    [
+     "Windpark",
+     "Wind kostet nichts; Fläche",
+     "nur bei Wind"
+    ],
+    [
+     "Pumpspeicher",
+     "kein Brennstoff; braucht Strom zum Pumpen",
+     "in Minuten; speichert nur"
+    ]
+   ],
+   "quelle": "Typische Angaben zur Bauart. Kein bestimmtes Kraftwerk.",
+   "merke": "Lies jede Zeile von links nach rechts. Ganz rechts steht die Zeit."
+  },
+  "tabCols": [
+   "Kraftwerk",
+   "Kostet der Brennstoff Geld?",
+   "Platz 1, 2, 3 – oder gar nicht?"
+  ],
+  "tabRows": [
+   [
+    "Kohlekraftwerk",
+    "ja",
+    "Platz 2"
+   ],
+   [
+    "Kernkraftwerk",
+    "",
+    ""
+   ],
+   [
+    "Windpark",
+    "",
+    ""
+   ],
+   [
+    "Pumpspeicher",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Pumpspeicher ist in Minuten",
+    "loesung": "regelbar",
+    "post": "."
+   },
+   {
+    "pre": "Ein Windpark ist",
+    "loesung": "wetterabhängig",
+    "post": ". Eine Stadt braucht deshalb mehrere Kraftwerksarten."
+   }
+  ],
+  "wortbank": [
+   "regelbar",
+   "wetterabhängig",
+   "Stunden",
+   "sehr langsam"
+  ],
+  "beispiel": {
+   "frage": "Wie ist die Zeile „Kohlekraftwerk“ ausgefüllt?",
+   "antwort": "Im Datenblatt steht beim Kohlekraftwerk: „Kohle kostet Geld“. In der Tabelle steht deshalb: ja. Beim Ordnen ist „in Stunden“ Platz 2."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welches Kraftwerk braucht Strom zum Pumpen?",
+    "optionen": [
+     "Kohlekraftwerk",
+     "Pumpspeicher",
+     "Kernkraftwerk"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Kohlekraftwerk ist in",
+      "loesung": "Stunden",
+      "post": "regelbar."
+     },
+     {
+      "pre": "Ein Kernkraftwerk ist",
+      "loesung": "sehr langsam",
+      "post": "regelbar."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Eine Stadt will nur Windparks bauen. Warum reicht das nicht?",
+    "satzstarter": "Nur Windparks reichen nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Die Zeiten stehen im Datenblatt.",
+   "h2": "Im Datenblatt steht beim Windpark: „nur bei Wind“.",
+   "h3": "Fast fertig: Nur Windparks reichen nicht, weil ein Windpark nur bei ___ liefert."
+  },
+  "selbstcheck": [
+   "Ich kann im Datenblatt ablesen, wie schnell ein Kraftwerk regelbar ist.",
+   "Ich kann sagen, welches Kraftwerk wetterabhängig ist.",
+   "Ich kann erklären, warum eine Stadt mehrere Kraftwerksarten braucht."
+  ],
+  "zuhause": "Sieh auf eurer Stromrechnung nach, woher euer Strom kommt. Ist er eher regelbar oder eher wetterabhängig?",
+  "bildauftrag": "[BILD: eine einzige ruhige Vergleichstafel auf hellem Grund, vier gleich große Felder nebeneinander in EINEM Bildausschnitt, mit gemeinsamer Grundlinie und einem gemeinsamen Rahmen um alle vier. Jedes Feld ist ein volles Rechteck, mindestens so breit wie halb so hoch – ausdrücklich KEINE schmalen Streifen und KEINE vier freistehenden Einzelbilder mit eigenem Himmel und eigenem Boden; der helle Hintergrund läuft ohne Naht durch alle vier Felder, getrennt nur durch eine dünne senkrechte Linie. Über jedem Feld steht groß und gut lesbar der Name, von links nach rechts: „Kohlekraftwerk“, „Kernkraftwerk“, „Windpark“, „Pumpspeicher“. In jedem Feld eine einfache, kräftige Silhouette in EINER Farbe, alle vier gleich hoch: Feld 1 ein Kesselhaus mit hohem Schornstein und einer weißen Rauchfahne; Feld 2 ein rundes Reaktorgebäude mit breitem Kühlturm daneben; Feld 3 drei Windräder mit je drei Flügeln; Feld 4 ein Stausee oben am Hang, ein See unten und ein dickes Rohr dazwischen. Unter jeder Silhouette stehen genau ZWEI Beschriftungszeilen, in allen vier Feldern auf gleicher Höhe und in gleicher Schriftgröße – oben der Brennstoff, unten die Zeit, wörtlich so: Feld 1 „Kohle kostet Geld“ / „in Stunden“, Feld 2 „Uran kostet Geld“ / „sehr langsam“, Feld 3 „Wind kostet nichts“ / „nur bei Wind“, Feld 4 „kein Brennstoff“ / „in Minuten“. Pfeile gibt es nur an einer einzigen Stelle: zwei kurze Pfeile am Rohr des Pumpspeichers, einer nach oben, einer nach unten – beide beginnen und enden sichtbar an einem der beiden Seen, keiner zeigt ins Leere oder aus dem Feld heraus. Keine weiteren Pfeile, keine Stromleitungen zwischen den Feldern, keine Personen, keine Zahlen und keine anderen Wörter als die genannten. Große Schrift, ruhiger Hintergrund, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv11",
+  "lernziel": "Die Schülerinnen und Schüler lesen im gedruckten Datenblatt ab, ob der Brennstoff Geld kostet und wie schnell sich ein Kraftwerk regeln lässt: Pumpspeicher in Minuten, Kohlekraftwerk in Stunden, Kernkraftwerk sehr langsam, Windpark nur bei Wind. Erwartet bei Schritt 3 (ordnen): Platz 1 Pumpspeicher, Platz 2 Kohlekraftwerk, Platz 3 Kernkraftwerk. Der Windpark lässt sich nicht einordnen; in die Tabelle kommt bei ihm „gar nicht“. Erwartet bei Schritt 4 (beurteilen): Nein, ein Pumpspeicher allein reicht nicht. Auf dem Blatt steht bei ihm „braucht Strom zum Pumpen“ und „speichert nur“ — diesen Strom muss ein anderes Kraftwerk liefern. Damit ist auch das schnellste Kraftwerk auf dem Blatt allein nicht genug, und die Stadt braucht mehrere Kraftwerksarten zusammen. Fachliche Leitplanke: Ein Pumpspeicher erzeugt keine Energie. Er hebt Wasser hoch und gibt die Energie später wieder ab. Anders als in der ersten Fassung steht dieser Einwand jetzt auch für das Kind lesbar auf dem Blatt und nicht nur hier.",
+  "material": "Kein Gerät und kein QR-Code — das Datenblatt ist auf Seite A gedruckt und steht neben den Arbeitsschritten. Hilfreich: ein Lineal oder ein Papierstreifen zum Zeilenverfolgen und ein farbiger Stift zum Markieren der Zeitspalte im Datenblatt. Für den Zuhause-Auftrag genügt eine beliebige Stromrechnung; sie ist nicht nötig, um die Seite zu lösen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Datenblatt lesen und Tabelle ausfüllen in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Schritt 4 (beurteilen) im Klassengespräch",
+  "ersatz_ohne_simulation": "Diese Doppelseite braucht keine Simulation und trägt deshalb keinen QR-Code und keinen Ersatzsatz; alle Angaben stehen gedruckt im Datenblatt neben den Arbeitsschritten. Ersatzweg, wenn das dichte Blatt einzelne Lernende überfordert: die vier Zeilen als vier Karten an die Tafel hängen und einzeln vorlesen, jede Karte im Wortlaut des Blattes. Karte 1: „Kohlekraftwerk — Kohle kostet Geld; CO₂ — in Stunden.“ Karte 2: „Kernkraftwerk — Uran kostet Geld; Abfall — sehr langsam.“ Karte 3: „Windpark — Wind kostet nichts; Fläche — nur bei Wind.“ Karte 4: „Pumpspeicher — kein Brennstoff; braucht Strom zum Pumpen — in Minuten; speichert nur.“ Zum Ordnen (Schritt 3) die vier Karten gemeinsam an der Tafel umhängen: Pumpspeicher, Kohlekraftwerk, Kernkraftwerk; die Karte „Windpark“ bleibt daneben liegen, weil sie sich nicht einordnen lässt — genau das ist der Gesprächsanlass für Schritt 4.",
+  "merksatz": [
+   "regelbar",
+   "wetterabhängig"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Kernkraftwerk",
+    "ja",
+    "Platz 3"
+   ],
+   [
+    "Windpark",
+    "nein",
+    "gar nicht"
+   ],
+   [
+    "Pumpspeicher",
+    "nein",
+    "Platz 1"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Im Datenblatt steht in der letzten Zeile: „kein Brennstoff; braucht Strom zum Pumpen“. Nur beim Pumpspeicher steht etwas vom Pumpen. Bei den beiden anderen Optionen steht stattdessen ein Brennstoff, der Geld kostet: Kohle beim Kohlekraftwerk, Uran beim Kernkraftwerk. Zur Wahl stehen genau die drei Kraftwerke, die sich regeln lassen — der Windpark ist in Schritt 3 schon beiseitegelegt worden.",
+   "typische_fehler": [
+    "Es wird das Kohlekraftwerk angekreuzt, weil es die Beispielzeile der Tabelle ist und im Blick liegt. Zurück ins Datenblatt schicken und die mittlere Spalte gemeinsam lesen: Dort steht „Kohle kostet Geld“.",
+    "Es wird irgendein Kraftwerk angekreuzt, ohne die Zeilen zu vergleichen. Mit dem Lineal Zeile für Zeile nachfahren lassen: Das Wort „Pumpen“ steht nur einmal auf dem Blatt.",
+    "Es wird gefragt, ob ein Pumpspeicher denn Strom macht. Das ist die eigentliche Fehlvorstellung: Er erzeugt keine Energie, er hebt Wasser hoch und gibt die Energie später wieder ab. Das Wort „speichert“ auf dem Blatt zeigen.",
+    "Der Pumpspeicher gilt als das beste Kraftwerk, weil er nichts kostet und schnell ist. Am Blatt zeigen: Erst muss Strom das Wasser hochpumpen — der kommt von woanders."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Stunden",
+    "sehr langsam"
+   ],
+   "typische_fehler": [
+    "Die beiden Angaben werden vertauscht: Kohlekraftwerk und Kernkraftwerk stehen im Datenblatt direkt untereinander, die Zeilen werden verrutscht gelesen. Mit dem Lineal unter die richtige Zeile fahren lassen.",
+    "Statt „sehr langsam“ wird „nur bei Wind“ eingesetzt — das ist die Zeile des Windparks. Die Wortbank enthält nur die vier Wörter, die gebraucht werden; einmal laut vorlesen lassen.",
+    "Es wird eine Zahl geschrieben („in 3 Stunden“). Das Datenblatt nennt keine Zahl; nur das Wort aus der Wortbank ist verlangt.",
+    "Die Lücke bleibt leer, weil „regelbar“ hinter der Lücke nicht verstanden wird. Auf den Begriffssatz im Alltagsteil zurückverweisen: schnell mehr oder weniger liefern."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nur Windparks reichen nicht, weil ein Windpark nur bei Wind liefert. Ohne Wind kommt nichts. Die Stadt braucht deshalb auch ein Kraftwerk, das man regeln kann — zum Beispiel einen Pumpspeicher in Minuten oder ein Kohlekraftwerk in Stunden.",
+   "alternativen": [
+    "Kurzform ohne zweites Kraftwerk: „weil ein Windpark nur bei Wind liefert“ — reicht für die volle Wertung.",
+    "Begründung über die Regelbarkeit: „weil man einen Windpark nicht regeln kann, ein Pumpspeicher aber schon“.",
+    "Alltagsnahe Formulierung: „weil bei Windstille kein Strom kommt und dann trotzdem alle kochen wollen“.",
+    "Zusatz zum Nachteil: „außerdem brauchen Windparks viel Fläche“ — richtig und steht im Datenblatt, ist aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Geantwortet wird mit einem Nachteil aus der mittleren Spalte des Datenblatts: „weil Windparks Fläche brauchen“. Nachfragen: Was ist, wenn kein Wind weht? Die Spalte ganz rechts noch einmal lesen lassen.",
+    "Es wird vorgeschlagen, einfach mehr Windparks zu bauen — genau die Vermutung „Eine Kraftwerksart reicht, wenn man genug davon baut.“ Gegenfrage: Was liefern hundert Windparks, wenn kein Wind weht?",
+    "Es wird nur „reicht nicht“ geschrieben, ohne Grund. Der Satzstarter endet mit „weil“; Hilfe 2 nennt die Stelle im Datenblatt.",
+    "Der Strom wird als Vorrat gedacht („der Strom ist dann alle“). Richtigstellen: Strom wird nicht verbraucht wie ein Vorrat; ohne Wind wird im Windpark keine Energie umgewandelt."
+   ]
+  },
+  "hilfe3_wort": "Wind",
+  "schwache": [
+   "Das Datenblatt vor dem Lesen gemeinsam erschließen: erst die drei Spaltenköpfe vorlesen, dann mit dem Finger die Zeile „Kohlekraftwerk“ von links nach rechts nachfahren. Erst danach die Tabelle öffnen.",
+   "Einen Papierstreifen ausgeben, der immer nur EINE Zeile des Datenblatts freilässt. Die vier Zeilen sehen einander sehr ähnlich; das Verrutschen ist hier der häufigste Fehler.",
+   "Nur die mittlere Spalte ausfüllen lassen („Kostet der Brennstoff Geld?“); die Plätze gemeinsam an der Tafel bestimmen. Die Zeile Kohlekraftwerk ist schon vorgefüllt und zeigt, wie es geht.",
+   "Beim Ordnen (Schritt 3) die vier Kraftwerksnamen auf Zettel schreiben und körperlich umlegen lassen. Erst wenn die Reihenfolge liegt, die Plätze in die Tabelle schreiben.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und die beiden Angaben „Stunden“ und „sehr langsam“ farbig unterstreichen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Eine Stadt hat nur Windparks und Pumpspeicher. Eine ganze Woche lang weht kein Wind. Schreibe auf, was dann passiert. (Erwartet: Die Windparks liefern nichts. Die Pumpspeicher sind bald leer, weil niemand das Wasser wieder hochpumpt. Die Stadt braucht also noch ein Kraftwerk, das ohne Wind läuft.)",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Kraftwerksarten, Nachhaltigkeit und Klimawandel. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ablesen und Vergleichen der vier Zeilen trägt UF3 und E6, das AUSFÜLLEN DER TABELLE trägt K3 („Untersuchungen dokumentieren“ — bandweit einheitlich auf das Ausfüllen der Tabelle gelegt, nicht auf den Zuhause-Auftrag; „Erkläre zu Hause jemandem …“ wäre Präsentieren) und in der letzten Spalte zugleich E5, weil das Ordnen dort schriftlich landet; die Erklär-Aufgabe zur Stadt B2 und UF4, die Vermutung UF1. Bauart der Seite: DATENBLATTSEITE ohne Simulation (Seitenplan vom 05.09.2026). Abschnitt 3 heißt „AUSWERTEN & BEURTEILEN“, es gibt keinen QR-Code und keinen Ersatzsatz; der Dreischritt lautet ablesen (Schritt 1 und 2) — ordnen (Schritt 3) — beurteilen (Schritt 4). Ein Rechenschritt wäre hier Scheinrechnen: Das Blatt trägt im Körper keine einzige Zahl. Jeder Schritt hinterlässt eine Spur: Schritt 2 die mittlere Tabellenspalte, Schritt 3 die letzte („Platz 1, 2, 3 – oder gar nicht?“), Schritt 4 das Klassengespräch. Die frühere dritte Spalte („Wie schnell regelbar?“) war eine Abschrift des Datenblatts und ist dem Ordnen gewichen. Fachwortzählung: neu sind GENAU ZWEI Wörter, „regelbar“ und „wetterabhängig“; beide bekommen im Alltagsteil einen Begriffssatz, beide stehen in der Wortbank und je einmal in einer Merksatzlücke. „Kraftwerksart“ trägt Frage, Vermutungen, Merksatz und Selbstcheck und bekommt deshalb im Alltagsteil einen eigenen Begriffssatz mit vier Beispielen (Kohle, Kernkraft, Wind, Wasser); damit greift Zählregel 2 und 5, und die Zählung bleibt bei zwei. „Netz“ ist gestrichen: Gemessen über alle 28 Einheiten kam es auf keiner Schülerseite vor fv11 vor — das einzige davor ist das „Netzteil“ von fv8 und fv9, eine andere Bedeutung. Frage, Aufgabe 3 und Selbstcheck sagen „eine Stadt“; der Merksatz sagt es jetzt auch. Bewusst vermieden und deshalb nirgends auf der Schülerseite: „Regelbarkeit“, „Grundlast“, „träge“, „drosselbar“, „Vogelschlag“, „Nebenwirkung“, „Feinstaub“ — sieben Wörter über A2, die das Regelheft an dieser Stelle druckt. „Nebenwirkung“ ist zu einem Stichwort in der mittleren Spalte geworden (CO₂, Abfall, Fläche), „träge, für die Grundlast“ zu „sehr langsam“, „nicht planbar, nur drosselbar“ zu „nur bei Wind“, „CO₂ und Feinstaub“ zu „CO₂“. Die vier Kraftwerksnamen stehen nach Zählregel 2 und 5 NICHT in der Wortbank und zählen nicht als Fachwörter; sie sind Gerätenamen und werden im Datenblatt selbst erklärt. Rückverweis ohne neue Einführung: Kraftwerk und Generator aus fv7. Breite gemessen, nicht geschätzt: „Pumpspeicherkraftwerk“ ist 21 Zeichen ohne Trennstelle und misst in Spalte 1 165 Einheiten bei 134 Einheiten Platz — der Renderer hätte die Zeile still auf 6,0 pt heruntergezogen. Im ganzen Band heißt es deshalb „Pumpspeicher“ (99 Einheiten). Alle 15 Zellen einschließlich der Kopfzeile sind mit BREITE_MESSEN gegen ihre Spalte geprüft, das breiteste Wort ist „Kohlekraftwerk“ mit 106 von 134 Einheiten. Merke-Zeile: reine LESEHILFE, nimmt das Ergebnis nicht vorweg. Die Zeile des Regelhefts („Keine Zeile ist in allen Spalten gut …“) war wörtlich die Antwort auf Forscherfrage, Schritt 4, zweite Merksatzaussage und Aufgabe 3 — ersetzt durch „Lies jede Zeile von links nach rechts. Ganz rechts steht die Zeit.“ Heft-gegen-Datenblatt: Verlangt wird nur, was gedruckt dasteht. Aufgabe 3 fragt nach dem Windpark, weil in Spalte 3 wörtlich „nur bei Wind“ steht. Aufgabe 1 fragt nach „braucht Strom zum Pumpen“ — das steht seit dieser Fassung wörtlich in der Zeile Pumpspeicher und ersetzt dort das Stichwort „Talsperre“. Damit trägt das Blatt den Einwand gegen den Pumpspeicher selbst; ohne ihn wäre er in beiden Spalten die beste Zeile und ein Kind könnte gedruckt belegt „ja, der Pumpspeicher“ antworten. Offen und deshalb nicht verlangt: (1) Wohin der Windpark beim Ordnen gehört — er ist gar nicht regelbar; Schritt 3 nennt die drei regelbaren ausdrücklich und legt den Windpark auf der Schülerseite selbst beiseite, in der Tabelle bekommt er „gar nicht“. (2) Wie viel Prozent jede Kraftwerksart im Netz beiträgt — dazu steht auf dem Blatt keine Zahl, und die Angaben sind ausdrücklich typisch für die Bauart (Quellzeile). (3) Wirkungsgrad und Kosten kommen erst in fv12 und fv13. (4) Woher der Strom zum Hochpumpen kommt, steht nicht auf dem Blatt; verlangt wird nur, DASS er gebraucht wird."
+ }
+}

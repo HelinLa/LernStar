@@ -1,0 +1,644 @@
+[
+ {
+  "sim": "zahnrad",
+  "ueberschrift": "⚙️ Warum dreht sich das kleine Rad schneller?",
+  "regler": [
+   {
+    "id": "znrZ1",
+    "beschriftung": "Rad 1 (Antrieb): 30 Zähne",
+    "bereich": {
+     "min": "8",
+     "max": "48",
+     "step": "1",
+     "start": "30"
+    }
+   },
+   {
+    "id": "znrZ2",
+    "beschriftung": "Rad 2 (Abtrieb): 10 Zähne",
+    "bereich": {
+     "min": "8",
+     "max": "48",
+     "step": "1",
+     "start": "10"
+    }
+   },
+   {
+    "id": "znrN1",
+    "beschriftung": "Antriebsdrehzahl: 60 U/min",
+    "bereich": {
+     "min": "10",
+     "max": "120",
+     "step": "5",
+     "start": "60"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "gleich groß (24 : 24)",
+    "ruft": "_znrMarke(24, 24, 60)"
+   },
+   {
+    "aufschrift": "klein treibt groß – langsamer, kräftiger",
+    "ruft": "_znrMarke(12, 36, 60)"
+   },
+   {
+    "aufschrift": "groß treibt klein – schneller",
+    "ruft": "_znrMarke(30, 10, 60)"
+   },
+   {
+    "aufschrift": "40 auf 10 – vierfach schnell",
+    "ruft": "_znrMarke(40, 10, 60)"
+   }
+  ],
+  "hinweise": [
+   "Zwei Zahnräder greifen ineinander. Stelle die Zähnezahlen ein und zähle an den farbigen Markierungen mit, wie oft sich jedes Rad dreht.",
+   "Der ganze Trick steckt im Berührpunkt. Dort läuft an beiden Rädern dieselbe Zahnreihe vorbei. Ein Rad mit wenigen Zähnen ist damit schnell einmal herum, ein Rad mit vielen Zähnen braucht dafür lange. Halte die Zähnezahlen fest und schiebe nur die Antriebsdrehzahl: das Verhältnis der beiden Drehzahlen bleibt gleich.",
+   "Modellgrenze: Gerechnet wird ohne Reibung und ohne Zahnspiel – in Wirklichkeit geht ein Teil der Leistung verloren und die Räder haben etwas Luft zwischeneinander. Außerdem drehen sich zwei direkt kämmende Räder immer gegenläufig; liegt eine Kette dazwischen, laufen sie gleichläufig. Das Bild läuft in Zeitlupe: eine Sekunde der Uhr im Bild dauert vier Sekunden in Wirklichkeit.",
+   "n₁ · z₁ = n₂ · z₂ · was an Drehzahl gewonnen wird, geht am Drehmoment verloren"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 30 Zähne = 1800 Zähne je Minute | 1800 : 60 s = 30,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1800 Zähne je Minute : 10 Zähne | n₂ = 180,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 180,0 U/min = 0,33 s. | | Die Übersetzung | i = z₁ : z₂ = 30 : 10 = 3,00 | Rad 2 dreht sich 3,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 30 = M₁ · 0,33 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "gleich groß (24 : 24)",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 24 Zähne = 1440 Zähne je Minute | 1440 : 60 s = 24,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1440 Zähne je Minute : 24 Zähne | n₂ = 60,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 60,0 U/min = 1,00 s. | | Die Übersetzung | i = z₁ : z₂ = 24 : 24 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 24 : 24 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   },
+   {
+    "einstellung": "klein treibt groß – langsamer, kräftiger",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 12 Zähne = 720 Zähne je Minute | 720 : 60 s = 12,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 720 Zähne je Minute : 36 Zähne | n₂ = 20,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 20,0 U/min = 3,00 s. | | Die Übersetzung | i = z₁ : z₂ = 12 : 36 = 0,33 | Rad 2 dreht sich 0,33-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 36 : 12 = M₁ · 3,00 | Rad 2 hat mehr Zähne: Es dreht langsamer, sein Drehmoment ist aber größer."
+   },
+   {
+    "einstellung": "groß treibt klein – schneller",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 30 Zähne = 1800 Zähne je Minute | 1800 : 60 s = 30,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1800 Zähne je Minute : 10 Zähne | n₂ = 180,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 180,0 U/min = 0,33 s. | | Die Übersetzung | i = z₁ : z₂ = 30 : 10 = 3,00 | Rad 2 dreht sich 3,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 30 = M₁ · 0,33 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "40 auf 10 – vierfach schnell",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | 2400 : 60 s = 40,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 240,0 U/min = 0,25 s. | | Die Übersetzung | i = z₁ : z₂ = 40 : 10 = 4,00 | Rad 2 dreht sich 4,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 40 = M₁ · 0,25 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 8",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 8 Zähne = 480 Zähne je Minute | 480 : 60 s = 8,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 480 Zähne je Minute : 10 Zähne | n₂ = 48,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 48,0 U/min = 1,25 s. | | Die Übersetzung | i = z₁ : z₂ = 8 : 10 = 0,80 | Rad 2 dreht sich 0,80-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 8 = M₁ · 1,25 | Rad 2 hat mehr Zähne: Es dreht langsamer, sein Drehmoment ist aber größer."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 13",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 13 Zähne = 780 Zähne je Minute | 780 : 60 s = 13,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 780 Zähne je Minute : 10 Zähne | n₂ = 78,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 78,0 U/min = 0,77 s. | | Die Übersetzung | i = z₁ : z₂ = 13 : 10 = 1,30 | Rad 2 dreht sich 1,30-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 13 = M₁ · 0,77 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 18",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 18 Zähne = 1080 Zähne je Minute | 1080 : 60 s = 18,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1080 Zähne je Minute : 10 Zähne | n₂ = 108,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 108,0 U/min = 0,56 s. | | Die Übersetzung | i = z₁ : z₂ = 18 : 10 = 1,80 | Rad 2 dreht sich 1,80-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 18 = M₁ · 0,56 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 23",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 23 Zähne = 1380 Zähne je Minute | 1380 : 60 s = 23,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1380 Zähne je Minute : 10 Zähne | n₂ = 138,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 138,0 U/min = 0,43 s. | | Die Übersetzung | i = z₁ : z₂ = 23 : 10 = 2,30 | Rad 2 dreht sich 2,30-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 23 = M₁ · 0,43 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 28",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 28 Zähne = 1680 Zähne je Minute | 1680 : 60 s = 28,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1680 Zähne je Minute : 10 Zähne | n₂ = 168,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 168,0 U/min = 0,36 s. | | Die Übersetzung | i = z₁ : z₂ = 28 : 10 = 2,80 | Rad 2 dreht sich 2,80-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 28 = M₁ · 0,36 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 33",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 33 Zähne = 1980 Zähne je Minute | 1980 : 60 s = 33,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1980 Zähne je Minute : 10 Zähne | n₂ = 198,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 198,0 U/min = 0,30 s. | | Die Übersetzung | i = z₁ : z₂ = 33 : 10 = 3,30 | Rad 2 dreht sich 3,30-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 33 = M₁ · 0,30 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 38",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 38 Zähne = 2280 Zähne je Minute | 2280 : 60 s = 38,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2280 Zähne je Minute : 10 Zähne | n₂ = 228,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 228,0 U/min = 0,26 s. | | Die Übersetzung | i = z₁ : z₂ = 38 : 10 = 3,80 | Rad 2 dreht sich 3,80-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 38 = M₁ · 0,26 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 43",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 43 Zähne = 2580 Zähne je Minute | 2580 : 60 s = 43,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2580 Zähne je Minute : 10 Zähne | n₂ = 258,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 258,0 U/min = 0,23 s. | | Die Übersetzung | i = z₁ : z₂ = 43 : 10 = 4,30 | Rad 2 dreht sich 4,30-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 43 = M₁ · 0,23 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 48",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 48 Zähne = 2880 Zähne je Minute | 2880 : 60 s = 48,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2880 Zähne je Minute : 10 Zähne | n₂ = 288,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 288,0 U/min = 0,21 s. | | Die Übersetzung | i = z₁ : z₂ = 48 : 10 = 4,80 | Rad 2 dreht sich 4,80-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 48 = M₁ · 0,21 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 9",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 9 Zähne = 540 Zähne je Minute | 540 : 60 s = 9,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 540 Zähne je Minute : 10 Zähne | n₂ = 54,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 54,0 U/min = 1,11 s. | | Die Übersetzung | i = z₁ : z₂ = 9 : 10 = 0,90 | Rad 2 dreht sich 0,90-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 9 = M₁ · 1,11 | Rad 2 hat mehr Zähne: Es dreht langsamer, sein Drehmoment ist aber größer."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 10",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 10 Zähne = 600 Zähne je Minute | 600 : 60 s = 10,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 600 Zähne je Minute : 10 Zähne | n₂ = 60,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 60,0 U/min = 1,00 s. | | Die Übersetzung | i = z₁ : z₂ = 10 : 10 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 10 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 11",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 11 Zähne = 660 Zähne je Minute | 660 : 60 s = 11,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 660 Zähne je Minute : 10 Zähne | n₂ = 66,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 66,0 U/min = 0,91 s. | | Die Übersetzung | i = z₁ : z₂ = 11 : 10 = 1,10 | Rad 2 dreht sich 1,10-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 11 = M₁ · 0,91 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 12",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 12 Zähne = 720 Zähne je Minute | 720 : 60 s = 12,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 720 Zähne je Minute : 10 Zähne | n₂ = 72,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 72,0 U/min = 0,83 s. | | Die Übersetzung | i = z₁ : z₂ = 12 : 10 = 1,20 | Rad 2 dreht sich 1,20-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 12 = M₁ · 0,83 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 14",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 14 Zähne = 840 Zähne je Minute | 840 : 60 s = 14,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 840 Zähne je Minute : 10 Zähne | n₂ = 84,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 84,0 U/min = 0,71 s. | | Die Übersetzung | i = z₁ : z₂ = 14 : 10 = 1,40 | Rad 2 dreht sich 1,40-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 14 = M₁ · 0,71 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 15",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 15 Zähne = 900 Zähne je Minute | 900 : 60 s = 15,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 900 Zähne je Minute : 10 Zähne | n₂ = 90,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 90,0 U/min = 0,67 s. | | Die Übersetzung | i = z₁ : z₂ = 15 : 10 = 1,50 | Rad 2 dreht sich 1,50-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 15 = M₁ · 0,67 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 16",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 16 Zähne = 960 Zähne je Minute | 960 : 60 s = 16,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 960 Zähne je Minute : 10 Zähne | n₂ = 96,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 96,0 U/min = 0,63 s. | | Die Übersetzung | i = z₁ : z₂ = 16 : 10 = 1,60 | Rad 2 dreht sich 1,60-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 16 = M₁ · 0,63 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 17",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 17 Zähne = 1020 Zähne je Minute | 1020 : 60 s = 17,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1020 Zähne je Minute : 10 Zähne | n₂ = 102,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 102,0 U/min = 0,59 s. | | Die Übersetzung | i = z₁ : z₂ = 17 : 10 = 1,70 | Rad 2 dreht sich 1,70-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 17 = M₁ · 0,59 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 19",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 19 Zähne = 1140 Zähne je Minute | 1140 : 60 s = 19,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1140 Zähne je Minute : 10 Zähne | n₂ = 114,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 114,0 U/min = 0,53 s. | | Die Übersetzung | i = z₁ : z₂ = 19 : 10 = 1,90 | Rad 2 dreht sich 1,90-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 19 = M₁ · 0,53 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 20",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 20 Zähne = 1200 Zähne je Minute | 1200 : 60 s = 20,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1200 Zähne je Minute : 10 Zähne | n₂ = 120,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 120,0 U/min = 0,50 s. | | Die Übersetzung | i = z₁ : z₂ = 20 : 10 = 2,00 | Rad 2 dreht sich 2,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 20 = M₁ · 0,50 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 21",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 21 Zähne = 1260 Zähne je Minute | 1260 : 60 s = 21,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1260 Zähne je Minute : 10 Zähne | n₂ = 126,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 126,0 U/min = 0,48 s. | | Die Übersetzung | i = z₁ : z₂ = 21 : 10 = 2,10 | Rad 2 dreht sich 2,10-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 21 = M₁ · 0,48 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 22",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 22 Zähne = 1320 Zähne je Minute | 1320 : 60 s = 22,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1320 Zähne je Minute : 10 Zähne | n₂ = 132,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 132,0 U/min = 0,45 s. | | Die Übersetzung | i = z₁ : z₂ = 22 : 10 = 2,20 | Rad 2 dreht sich 2,20-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 22 = M₁ · 0,45 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 24",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 24 Zähne = 1440 Zähne je Minute | 1440 : 60 s = 24,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1440 Zähne je Minute : 10 Zähne | n₂ = 144,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 144,0 U/min = 0,42 s. | | Die Übersetzung | i = z₁ : z₂ = 24 : 10 = 2,40 | Rad 2 dreht sich 2,40-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 24 = M₁ · 0,42 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 25",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 25 Zähne = 1500 Zähne je Minute | 1500 : 60 s = 25,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1500 Zähne je Minute : 10 Zähne | n₂ = 150,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 150,0 U/min = 0,40 s. | | Die Übersetzung | i = z₁ : z₂ = 25 : 10 = 2,50 | Rad 2 dreht sich 2,50-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 25 = M₁ · 0,40 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 26",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 26 Zähne = 1560 Zähne je Minute | 1560 : 60 s = 26,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1560 Zähne je Minute : 10 Zähne | n₂ = 156,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 156,0 U/min = 0,38 s. | | Die Übersetzung | i = z₁ : z₂ = 26 : 10 = 2,60 | Rad 2 dreht sich 2,60-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 26 = M₁ · 0,38 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 27",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 27 Zähne = 1620 Zähne je Minute | 1620 : 60 s = 27,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1620 Zähne je Minute : 10 Zähne | n₂ = 162,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 162,0 U/min = 0,37 s. | | Die Übersetzung | i = z₁ : z₂ = 27 : 10 = 2,70 | Rad 2 dreht sich 2,70-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 27 = M₁ · 0,37 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 29",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 29 Zähne = 1740 Zähne je Minute | 1740 : 60 s = 29,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1740 Zähne je Minute : 10 Zähne | n₂ = 174,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 174,0 U/min = 0,34 s. | | Die Übersetzung | i = z₁ : z₂ = 29 : 10 = 2,90 | Rad 2 dreht sich 2,90-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 29 = M₁ · 0,34 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 30",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 30 Zähne = 1800 Zähne je Minute | 1800 : 60 s = 30,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1800 Zähne je Minute : 10 Zähne | n₂ = 180,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 180,0 U/min = 0,33 s. | | Die Übersetzung | i = z₁ : z₂ = 30 : 10 = 3,00 | Rad 2 dreht sich 3,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 30 = M₁ · 0,33 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 31",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 31 Zähne = 1860 Zähne je Minute | 1860 : 60 s = 31,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1860 Zähne je Minute : 10 Zähne | n₂ = 186,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 186,0 U/min = 0,32 s. | | Die Übersetzung | i = z₁ : z₂ = 31 : 10 = 3,10 | Rad 2 dreht sich 3,10-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 31 = M₁ · 0,32 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 32",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 32 Zähne = 1920 Zähne je Minute | 1920 : 60 s = 32,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1920 Zähne je Minute : 10 Zähne | n₂ = 192,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 192,0 U/min = 0,31 s. | | Die Übersetzung | i = z₁ : z₂ = 32 : 10 = 3,20 | Rad 2 dreht sich 3,20-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 32 = M₁ · 0,31 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 34",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 34 Zähne = 2040 Zähne je Minute | 2040 : 60 s = 34,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2040 Zähne je Minute : 10 Zähne | n₂ = 204,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 204,0 U/min = 0,29 s. | | Die Übersetzung | i = z₁ : z₂ = 34 : 10 = 3,40 | Rad 2 dreht sich 3,40-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 34 = M₁ · 0,29 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 35",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 35 Zähne = 2100 Zähne je Minute | 2100 : 60 s = 35,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2100 Zähne je Minute : 10 Zähne | n₂ = 210,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 210,0 U/min = 0,29 s. | | Die Übersetzung | i = z₁ : z₂ = 35 : 10 = 3,50 | Rad 2 dreht sich 3,50-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 35 = M₁ · 0,29 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 36",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 36 Zähne = 2160 Zähne je Minute | 2160 : 60 s = 36,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2160 Zähne je Minute : 10 Zähne | n₂ = 216,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 216,0 U/min = 0,28 s. | | Die Übersetzung | i = z₁ : z₂ = 36 : 10 = 3,60 | Rad 2 dreht sich 3,60-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 36 = M₁ · 0,28 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 37",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 37 Zähne = 2220 Zähne je Minute | 2220 : 60 s = 37,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2220 Zähne je Minute : 10 Zähne | n₂ = 222,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 222,0 U/min = 0,27 s. | | Die Übersetzung | i = z₁ : z₂ = 37 : 10 = 3,70 | Rad 2 dreht sich 3,70-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 37 = M₁ · 0,27 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 39",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 39 Zähne = 2340 Zähne je Minute | 2340 : 60 s = 39,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2340 Zähne je Minute : 10 Zähne | n₂ = 234,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 234,0 U/min = 0,26 s. | | Die Übersetzung | i = z₁ : z₂ = 39 : 10 = 3,90 | Rad 2 dreht sich 3,90-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 39 = M₁ · 0,26 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 40",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | 2400 : 60 s = 40,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 240,0 U/min = 0,25 s. | | Die Übersetzung | i = z₁ : z₂ = 40 : 10 = 4,00 | Rad 2 dreht sich 4,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 40 = M₁ · 0,25 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 41",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 41 Zähne = 2460 Zähne je Minute | 2460 : 60 s = 41,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2460 Zähne je Minute : 10 Zähne | n₂ = 246,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 246,0 U/min = 0,24 s. | | Die Übersetzung | i = z₁ : z₂ = 41 : 10 = 4,10 | Rad 2 dreht sich 4,10-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 41 = M₁ · 0,24 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 42",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 42 Zähne = 2520 Zähne je Minute | 2520 : 60 s = 42,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2520 Zähne je Minute : 10 Zähne | n₂ = 252,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 252,0 U/min = 0,24 s. | | Die Übersetzung | i = z₁ : z₂ = 42 : 10 = 4,20 | Rad 2 dreht sich 4,20-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 42 = M₁ · 0,24 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 44",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 44 Zähne = 2640 Zähne je Minute | 2640 : 60 s = 44,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2640 Zähne je Minute : 10 Zähne | n₂ = 264,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 264,0 U/min = 0,23 s. | | Die Übersetzung | i = z₁ : z₂ = 44 : 10 = 4,40 | Rad 2 dreht sich 4,40-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 44 = M₁ · 0,23 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 45",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 45 Zähne = 2700 Zähne je Minute | 2700 : 60 s = 45,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2700 Zähne je Minute : 10 Zähne | n₂ = 270,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 270,0 U/min = 0,22 s. | | Die Übersetzung | i = z₁ : z₂ = 45 : 10 = 4,50 | Rad 2 dreht sich 4,50-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 45 = M₁ · 0,22 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 46",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 46 Zähne = 2760 Zähne je Minute | 2760 : 60 s = 46,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2760 Zähne je Minute : 10 Zähne | n₂ = 276,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 276,0 U/min = 0,22 s. | | Die Übersetzung | i = z₁ : z₂ = 46 : 10 = 4,60 | Rad 2 dreht sich 4,60-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 46 = M₁ · 0,22 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 1 (Antrieb): 30 Zähne = 47",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 10 Zähne | n₂ = 282,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 282,0 U/min = 0,21 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 10 = 4,70 | Rad 2 dreht sich 4,70-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 47 = M₁ · 0,21 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 8",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 8 Zähne | n₂ = 352,5 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 352,5 U/min = 0,17 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 8 = 5,88 | Rad 2 dreht sich 5,88-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 8 : 47 = M₁ · 0,17 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 13",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 13 Zähne | n₂ = 216,9 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 216,9 U/min = 0,28 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 13 = 3,62 | Rad 2 dreht sich 3,62-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 13 : 47 = M₁ · 0,28 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 18",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 18 Zähne | n₂ = 156,7 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 156,7 U/min = 0,38 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 18 = 2,61 | Rad 2 dreht sich 2,61-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 18 : 47 = M₁ · 0,38 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 23",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 23 Zähne | n₂ = 122,6 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 122,6 U/min = 0,49 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 23 = 2,04 | Rad 2 dreht sich 2,04-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 23 : 47 = M₁ · 0,49 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 28",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 28 Zähne | n₂ = 100,7 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 100,7 U/min = 0,60 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 28 = 1,68 | Rad 2 dreht sich 1,68-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 28 : 47 = M₁ · 0,60 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 33",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 33 Zähne | n₂ = 85,5 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 85,5 U/min = 0,70 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 33 = 1,42 | Rad 2 dreht sich 1,42-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 33 : 47 = M₁ · 0,70 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 38",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 38 Zähne | n₂ = 74,2 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 74,2 U/min = 0,81 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 38 = 1,24 | Rad 2 dreht sich 1,24-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 38 : 47 = M₁ · 0,81 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 43",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 43 Zähne | n₂ = 65,6 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 65,6 U/min = 0,91 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 43 = 1,09 | Rad 2 dreht sich 1,09-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 43 : 47 = M₁ · 0,91 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 48",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 48 Zähne | n₂ = 58,8 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 58,8 U/min = 1,02 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 48 = 0,98 | Rad 2 dreht sich 0,98-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 48 : 47 = M₁ · 1,02 | Rad 2 hat mehr Zähne: Es dreht langsamer, sein Drehmoment ist aber größer."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 9",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 9 Zähne | n₂ = 313,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 313,3 U/min = 0,19 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 9 = 5,22 | Rad 2 dreht sich 5,22-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 9 : 47 = M₁ · 0,19 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 10",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 10 Zähne | n₂ = 282,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 282,0 U/min = 0,21 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 10 = 4,70 | Rad 2 dreht sich 4,70-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 10 : 47 = M₁ · 0,21 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 11",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 11 Zähne | n₂ = 256,4 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 256,4 U/min = 0,23 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 11 = 4,27 | Rad 2 dreht sich 4,27-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 11 : 47 = M₁ · 0,23 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 12",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 12 Zähne | n₂ = 235,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 235,0 U/min = 0,26 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 12 = 3,92 | Rad 2 dreht sich 3,92-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 12 : 47 = M₁ · 0,26 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 14",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 14 Zähne | n₂ = 201,4 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 201,4 U/min = 0,30 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 14 = 3,36 | Rad 2 dreht sich 3,36-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 14 : 47 = M₁ · 0,30 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 15",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 15 Zähne | n₂ = 188,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 188,0 U/min = 0,32 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 15 = 3,13 | Rad 2 dreht sich 3,13-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 15 : 47 = M₁ · 0,32 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 16",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 16 Zähne | n₂ = 176,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 176,3 U/min = 0,34 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 16 = 2,94 | Rad 2 dreht sich 2,94-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 16 : 47 = M₁ · 0,34 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 17",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 17 Zähne | n₂ = 165,9 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 165,9 U/min = 0,36 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 17 = 2,76 | Rad 2 dreht sich 2,76-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 17 : 47 = M₁ · 0,36 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 19",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 19 Zähne | n₂ = 148,4 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 148,4 U/min = 0,40 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 19 = 2,47 | Rad 2 dreht sich 2,47-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 19 : 47 = M₁ · 0,40 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 20",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 20 Zähne | n₂ = 141,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 141,0 U/min = 0,43 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 20 = 2,35 | Rad 2 dreht sich 2,35-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 20 : 47 = M₁ · 0,43 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 21",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 21 Zähne | n₂ = 134,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 134,3 U/min = 0,45 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 21 = 2,24 | Rad 2 dreht sich 2,24-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 21 : 47 = M₁ · 0,45 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 22",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 22 Zähne | n₂ = 128,2 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 128,2 U/min = 0,47 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 22 = 2,14 | Rad 2 dreht sich 2,14-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 22 : 47 = M₁ · 0,47 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 24",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 24 Zähne | n₂ = 117,5 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 117,5 U/min = 0,51 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 24 = 1,96 | Rad 2 dreht sich 1,96-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 24 : 47 = M₁ · 0,51 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 25",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 25 Zähne | n₂ = 112,8 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 112,8 U/min = 0,53 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 25 = 1,88 | Rad 2 dreht sich 1,88-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 25 : 47 = M₁ · 0,53 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 26",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 26 Zähne | n₂ = 108,5 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 108,5 U/min = 0,55 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 26 = 1,81 | Rad 2 dreht sich 1,81-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 26 : 47 = M₁ · 0,55 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 27",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 27 Zähne | n₂ = 104,4 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 104,4 U/min = 0,57 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 27 = 1,74 | Rad 2 dreht sich 1,74-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 27 : 47 = M₁ · 0,57 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 29",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 29 Zähne | n₂ = 97,2 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 97,2 U/min = 0,62 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 29 = 1,62 | Rad 2 dreht sich 1,62-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 29 : 47 = M₁ · 0,62 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 30",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 30 Zähne | n₂ = 94,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 94,0 U/min = 0,64 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 30 = 1,57 | Rad 2 dreht sich 1,57-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 30 : 47 = M₁ · 0,64 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 31",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 31 Zähne | n₂ = 91,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 91,0 U/min = 0,66 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 31 = 1,52 | Rad 2 dreht sich 1,52-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 31 : 47 = M₁ · 0,66 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 32",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 32 Zähne | n₂ = 88,1 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 88,1 U/min = 0,68 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 32 = 1,47 | Rad 2 dreht sich 1,47-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 32 : 47 = M₁ · 0,68 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 34",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 34 Zähne | n₂ = 82,9 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 82,9 U/min = 0,72 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 34 = 1,38 | Rad 2 dreht sich 1,38-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 34 : 47 = M₁ · 0,72 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 35",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 35 Zähne | n₂ = 80,6 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 80,6 U/min = 0,74 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 35 = 1,34 | Rad 2 dreht sich 1,34-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 35 : 47 = M₁ · 0,74 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 36",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 36 Zähne | n₂ = 78,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 78,3 U/min = 0,77 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 36 = 1,31 | Rad 2 dreht sich 1,31-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 36 : 47 = M₁ · 0,77 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 37",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 37 Zähne | n₂ = 76,2 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 76,2 U/min = 0,79 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 37 = 1,27 | Rad 2 dreht sich 1,27-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 37 : 47 = M₁ · 0,79 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 39",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 39 Zähne | n₂ = 72,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 72,3 U/min = 0,83 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 39 = 1,21 | Rad 2 dreht sich 1,21-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 39 : 47 = M₁ · 0,83 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 40",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 40 Zähne | n₂ = 70,5 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 70,5 U/min = 0,85 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 40 = 1,18 | Rad 2 dreht sich 1,18-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 40 : 47 = M₁ · 0,85 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 41",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 41 Zähne | n₂ = 68,8 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 68,8 U/min = 0,87 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 41 = 1,15 | Rad 2 dreht sich 1,15-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 41 : 47 = M₁ · 0,87 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 42",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 42 Zähne | n₂ = 67,1 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 67,1 U/min = 0,89 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 42 = 1,12 | Rad 2 dreht sich 1,12-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 42 : 47 = M₁ · 0,89 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 44",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 44 Zähne | n₂ = 64,1 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 64,1 U/min = 0,94 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 44 = 1,07 | Rad 2 dreht sich 1,07-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 44 : 47 = M₁ · 0,94 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 45",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 45 Zähne | n₂ = 62,7 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 62,7 U/min = 0,96 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 45 = 1,04 | Rad 2 dreht sich 1,04-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 45 : 47 = M₁ · 0,96 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 46",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 46 Zähne | n₂ = 61,3 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 61,3 U/min = 0,98 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 46 = 1,02 | Rad 2 dreht sich 1,02-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 46 : 47 = M₁ · 0,98 | Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner."
+   },
+   {
+    "einstellung": "Rad 2 (Abtrieb): 10 Zähne = 47",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute | 2820 : 60 s = 47,0 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 2820 Zähne je Minute : 47 Zähne | n₂ = 60,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 60 U/min = 1,00 s, bei Rad 2: 60 s : 60,0 U/min = 1,00 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 47 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 47 : 47 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   },
+   {
+    "einstellung": "Antriebsdrehzahl: 60 U/min = 10",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 10 U/min · 47 Zähne = 470 Zähne je Minute | 470 : 60 s = 7,8 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 470 Zähne je Minute : 47 Zähne | n₂ = 10,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 10 U/min = 6,00 s, bei Rad 2: 60 s : 10,0 U/min = 6,00 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 47 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 47 : 47 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   },
+   {
+    "einstellung": "Antriebsdrehzahl: 60 U/min = 25",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 25 U/min · 47 Zähne = 1175 Zähne je Minute | 1175 : 60 s = 19,6 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1175 Zähne je Minute : 47 Zähne | n₂ = 25,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 25 U/min = 2,40 s, bei Rad 2: 60 s : 25,0 U/min = 2,40 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 47 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 47 : 47 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   },
+   {
+    "einstellung": "Antriebsdrehzahl: 60 U/min = 40",
+    "text": "znrStatus: Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch. | Rad 1: 40 U/min · 47 Zähne = 1880 Zähne je Minute | 1880 : 60 s = 31,3 Zähne je Sekunde | | Die Drehzahl des Abtriebs | n₂ = 1880 Zähne je Minute : 47 Zähne | n₂ = 40,0 U/min | Eine Umdrehung dauert bei Rad 1: 60 s : 40 U/min = 1,50 s, bei Rad 2: 60 s : 40,0 U/min = 1,50 s. | | Die Übersetzung | i = z₁ : z₂ = 47 : 47 = 1,00 | Rad 2 dreht sich 1,00-mal so oft wie Rad 1. | | Was du dafür bezahlst | Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm. | M₂ = M₁ · z₂ : z₁ = M₁ · 47 : 47 = M₁ · 1,00 | Gleich viele Zähne: gleiche Drehzahl, gleiches Drehmoment. Hier wird nichts übersetzt."
+   }
+  ],
+  "bildtexte": [
+   "Rad 1 · Antrieb",
+   "z₁ = 30 Zähne",
+   "n₁ = 60 U/min",
+   "Rad 2 · Abtrieb",
+   "z₂ = 10 Zähne",
+   "n₂ = 180,0 U/min",
+   "30,0 Zähne je Sekunde – bei beiden Rädern",
+   "Rad 1: 0,0 Umdrehungen   ·   Rad 2: 0,0 Umdrehungen",
+   "durchgeschobene Zähne: 0  ·  Uhr im Bild: 0,0 s  ·  Zeitlupe",
+   "z₁ = 24 Zähne",
+   "z₂ = 24 Zähne",
+   "n₂ = 60,0 U/min",
+   "24,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 12 Zähne",
+   "z₂ = 36 Zähne",
+   "n₂ = 20,0 U/min",
+   "12,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 40 Zähne",
+   "n₂ = 240,0 U/min",
+   "40,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 8 Zähne",
+   "n₂ = 48,0 U/min",
+   "8,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 13 Zähne",
+   "n₂ = 78,0 U/min",
+   "13,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 18 Zähne",
+   "n₂ = 108,0 U/min",
+   "18,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 23 Zähne",
+   "n₂ = 138,0 U/min",
+   "23,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 28 Zähne",
+   "n₂ = 168,0 U/min",
+   "28,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 33 Zähne",
+   "n₂ = 198,0 U/min",
+   "33,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 38 Zähne",
+   "n₂ = 228,0 U/min",
+   "38,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 43 Zähne",
+   "n₂ = 258,0 U/min",
+   "43,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 48 Zähne",
+   "n₂ = 288,0 U/min",
+   "48,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 9 Zähne",
+   "n₂ = 54,0 U/min",
+   "9,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 10 Zähne",
+   "10,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 11 Zähne",
+   "n₂ = 66,0 U/min",
+   "11,0 Zähne je Sekunde – bei beiden Rädern",
+   "n₂ = 72,0 U/min",
+   "z₁ = 14 Zähne",
+   "n₂ = 84,0 U/min",
+   "14,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 15 Zähne",
+   "n₂ = 90,0 U/min",
+   "15,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 16 Zähne",
+   "n₂ = 96,0 U/min",
+   "16,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 17 Zähne",
+   "n₂ = 102,0 U/min",
+   "17,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 19 Zähne",
+   "n₂ = 114,0 U/min",
+   "19,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 20 Zähne",
+   "n₂ = 120,0 U/min",
+   "20,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 21 Zähne",
+   "n₂ = 126,0 U/min",
+   "21,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 22 Zähne",
+   "n₂ = 132,0 U/min",
+   "22,0 Zähne je Sekunde – bei beiden Rädern",
+   "n₂ = 144,0 U/min",
+   "z₁ = 25 Zähne",
+   "n₂ = 150,0 U/min",
+   "25,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 26 Zähne",
+   "n₂ = 156,0 U/min",
+   "26,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 27 Zähne",
+   "n₂ = 162,0 U/min",
+   "27,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 29 Zähne",
+   "n₂ = 174,0 U/min",
+   "29,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 31 Zähne",
+   "n₂ = 186,0 U/min",
+   "31,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 32 Zähne",
+   "n₂ = 192,0 U/min",
+   "32,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 34 Zähne",
+   "n₂ = 204,0 U/min",
+   "34,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 35 Zähne",
+   "n₂ = 210,0 U/min",
+   "35,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 36 Zähne",
+   "n₂ = 216,0 U/min",
+   "36,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 37 Zähne",
+   "n₂ = 222,0 U/min",
+   "37,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 39 Zähne",
+   "n₂ = 234,0 U/min",
+   "39,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 41 Zähne",
+   "n₂ = 246,0 U/min",
+   "41,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 42 Zähne",
+   "n₂ = 252,0 U/min",
+   "42,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 44 Zähne",
+   "n₂ = 264,0 U/min",
+   "44,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 45 Zähne",
+   "n₂ = 270,0 U/min",
+   "45,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 46 Zähne",
+   "n₂ = 276,0 U/min",
+   "46,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₁ = 47 Zähne",
+   "n₂ = 282,0 U/min",
+   "47,0 Zähne je Sekunde – bei beiden Rädern",
+   "z₂ = 8 Zähne",
+   "n₂ = 352,5 U/min",
+   "z₂ = 13 Zähne",
+   "n₂ = 216,9 U/min",
+   "z₂ = 18 Zähne",
+   "n₂ = 156,7 U/min",
+   "z₂ = 23 Zähne",
+   "n₂ = 122,6 U/min",
+   "z₂ = 28 Zähne",
+   "n₂ = 100,7 U/min",
+   "z₂ = 33 Zähne",
+   "n₂ = 85,5 U/min",
+   "z₂ = 38 Zähne",
+   "n₂ = 74,2 U/min",
+   "z₂ = 43 Zähne",
+   "n₂ = 65,6 U/min",
+   "z₂ = 48 Zähne",
+   "n₂ = 58,8 U/min",
+   "z₂ = 9 Zähne",
+   "n₂ = 313,3 U/min",
+   "z₂ = 11 Zähne",
+   "n₂ = 256,4 U/min",
+   "z₂ = 12 Zähne",
+   "n₂ = 235,0 U/min",
+   "z₂ = 14 Zähne",
+   "n₂ = 201,4 U/min",
+   "z₂ = 15 Zähne",
+   "n₂ = 188,0 U/min",
+   "z₂ = 16 Zähne",
+   "n₂ = 176,3 U/min",
+   "z₂ = 17 Zähne",
+   "n₂ = 165,9 U/min",
+   "z₂ = 19 Zähne",
+   "n₂ = 148,4 U/min",
+   "z₂ = 20 Zähne",
+   "n₂ = 141,0 U/min",
+   "z₂ = 21 Zähne",
+   "n₂ = 134,3 U/min",
+   "z₂ = 22 Zähne",
+   "n₂ = 128,2 U/min",
+   "n₂ = 117,5 U/min",
+   "z₂ = 25 Zähne",
+   "n₂ = 112,8 U/min",
+   "z₂ = 26 Zähne",
+   "n₂ = 108,5 U/min",
+   "z₂ = 27 Zähne",
+   "n₂ = 104,4 U/min",
+   "z₂ = 29 Zähne",
+   "n₂ = 97,2 U/min",
+   "z₂ = 30 Zähne",
+   "n₂ = 94,0 U/min",
+   "z₂ = 31 Zähne",
+   "n₂ = 91,0 U/min",
+   "z₂ = 32 Zähne",
+   "n₂ = 88,1 U/min",
+   "z₂ = 34 Zähne",
+   "n₂ = 82,9 U/min",
+   "z₂ = 35 Zähne",
+   "n₂ = 80,6 U/min",
+   "n₂ = 78,3 U/min",
+   "z₂ = 37 Zähne",
+   "n₂ = 76,2 U/min",
+   "z₂ = 39 Zähne",
+   "n₂ = 72,3 U/min",
+   "z₂ = 40 Zähne",
+   "n₂ = 70,5 U/min",
+   "z₂ = 41 Zähne",
+   "n₂ = 68,8 U/min",
+   "z₂ = 42 Zähne",
+   "n₂ = 67,1 U/min",
+   "z₂ = 44 Zähne",
+   "n₂ = 64,1 U/min",
+   "z₂ = 45 Zähne",
+   "n₂ = 62,7 U/min",
+   "z₂ = 46 Zähne",
+   "n₂ = 61,3 U/min",
+   "z₂ = 47 Zähne",
+   "n₁ = 10 U/min",
+   "n₂ = 10,0 U/min",
+   "7,8 Zähne je Sekunde – bei beiden Rädern",
+   "n₁ = 25 U/min",
+   "n₂ = 25,0 U/min",
+   "19,6 Zähne je Sekunde – bei beiden Rädern",
+   "n₁ = 40 U/min",
+   "n₂ = 40,0 U/min",
+   "31,3 Zähne je Sekunde – bei beiden Rädern"
+  ]
+ }
+]

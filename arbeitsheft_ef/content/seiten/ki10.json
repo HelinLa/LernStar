@@ -1,0 +1,54 @@
+{
+ "id": "ki10",
+ "basiskonzept": "Erhaltung und Gleichgewicht",
+ "titel": "Still, aber nicht kräftefrei",
+ "problem": "Über der Messstrecke hängt eine Werkstattlampe an einem Seil, in das ein Kraftmesser eingehängt ist. Tobias trägt sie ins Protokoll als kräftefrei ein: Sie bewegt sich nicht, also ziehe auch nichts an ihr. Mira hält ihm die Anzeige hin, die ruhig bei 5 N steht und keinen Millimeter zurückgeht. Beide Sätze können nicht gleichzeitig stimmen.",
+ "frage": "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
+ "auftrag": "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
+ "predict": [
+  "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst, sobald sich etwas bewegt.",
+  "Beide Kräfte wirken die ganze Zeit weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null – und nur deshalb bleibt die Lampe in Ruhe."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Lies im Ausgangszustand das Statusfeld ab: Haltekraft, Gewichtskraft und Gesamtkraft stehen dort mit Zahl und Einheit, dazu der Zustand der Lampe. Vergleiche die Zahlen mit den Beschriftungen am Bild („Halte 5 N“, „Gewicht 5 N“).",
+  "Drücke einmal „– N“ und notiere sofort Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe. Drücke danach zweimal „+ N“ und zuletzt „zurück in die Mitte“ und halte jede Statuszeile gegen den Ausgangszustand.",
+  "Drücke noch einmal „– N“ und warte, bis sich das Bild nicht mehr ändert. Vergleiche dann, was die Zeichnung zeigt, mit dem, was die Statuszeile weiterhin meldet, und notiere den Unterschied."
+ ],
+ "modellgrenze": "Die Zeichnung zeigt nur den Beginn der Bewegung: Nach wenigen Sekunden hält die Lampe am unteren Bildrand, während die Statuszeile unverändert 1 N nach unten meldet – sie wird nur beim Drücken neu geschrieben. Wird die Gesamtkraft wieder 0 N, steht die Lampe sofort still, statt gleichförmig weiterzulaufen; diesen zweiten Fall des Trägheitsprinzips hast du am Wagen gesehen.",
+ "tabCols": [
+  "F_H und F_G in N",
+  "F_res in N mit Richtung, Zustand der Lampe"
+ ],
+ "tabRows": [
+  "Ausgangszustand",
+  "einmal – N",
+  "zweimal + N (Halte 6 N)",
+  "zurück in die Mitte"
+ ],
+ "fachtext": "Kräfte sind gerichtete Größen und werden vektoriell addiert. An der Lampe greifen zwei an: die Gewichtskraft F_G nach unten und die Haltekraft F_H des Seils nach oben. Beide wirken am selben Körper und liegen auf einer Wirkungslinie, deshalb genügt hier die vorzeichenbehaftete Summe F_res = F_H − F_G. Sie heißt resultierende Kraft; der Bildschirm nennt sie Gesamtkraft und schreibt statt des Vorzeichens die Richtung dazu: F_res = −1 N steht dort als „1 N nach unten“. Ein Körper bleibt genau dann in Ruhe oder in gleichförmiger Bewegung, wenn F_res = 0 N ist – gemessen in einem Bezugssystem, das selbst nicht beschleunigt wird (Inertialsystem); das ist die Aussage des Trägheitsprinzips. Kräftegleichgewicht heißt also nicht, dass keine Kräfte wirken, sondern dass sich die wirkenden Kräfte zu null ergänzen – das Seil bleibt gespannt, der Kraftmesser zeigt weiter an. Erst wenn F_res von null abweicht, ändert sich der Bewegungszustand, und zwar nach F_res = m · a. Gültigkeitsbereich: Die Simulation zeigt den eindimensionalen Fall mit zwei Kräften auf einer Linie und hält die Haltekraft dabei konstant. Allgemein lautet die Gleichgewichtsbedingung, dass die vektorielle Summe aller angreifenden Kräfte null ist; bei ausgedehnten Körpern kommt die Bedingung für die Drehmomente hinzu.",
+ "merksatz": [
+  {
+   "pre": "Ein Körper bleibt in Ruhe, wenn die Summe aller angreifenden Kräfte",
+   "loesung": "null",
+   "post": "ist – nicht, wenn keine Kraft wirkt."
+  },
+  {
+   "pre": "An der hängenden Lampe gilt F_res = F_H − F_G =",
+   "loesung": "0 N",
+   "post": "; beide Kräfte greifen am selben Körper an."
+  }
+ ],
+ "beobachtung": "Im Ausgangszustand meldet das Statusfeld „Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.“; am Bild stehen dazu „Halte 5 N“, „Gewicht 5 N“ und „Gesamtkraft = 0 N → Gleichgewicht (bleibt in Ruhe)“. Nach einmal „– N“ steht dort „Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“, im Bild „Halte 4 N“ und „Gesamtkraft = 1 N nach unten → Bewegung!“. Nach zweimal „+ N“ heißt es „Haltekraft 6 N > Gewichtskraft 5 N → Gesamtkraft 1 N nach oben. Die Lampe wird nach oben gezogen.“ – gleicher Betrag, andere Richtung. „Zurück in die Mitte“ führt wieder auf dieselbe Zeile wie im Ausgangszustand; die Gewichtskraft steht in allen vier Zeilen unverändert bei 5 N. Im dritten Schritt sinkt die Lampe zunächst und hält dann am unteren Bildrand an, während die Statuszeile weiterhin „Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“ meldet – sie wird nur beim Drücken neu geschrieben.",
+ "aufgabe": {
+  "frage": "Berechne aus der angezeigten Gewichtskraft die Masse der Lampe (nimm g = 9,81 N/kg) und daraus die Beschleunigung, mit der sie nach einmal „– N“ zu sinken beginnt.",
+  "zeilen": 4,
+  "loesung": "m = F_G / g = 5 N / 9,81 N/kg = 0,51 kg. Nach „– N“ zeigt das Statusfeld die Haltekraft 4 N, die Gewichtskraft weiter 5 N und die Gesamtkraft 1 N nach unten. Vorzeichenbehaftet ist F_res = F_H − F_G = 4 N − 5 N = −1 N; das Minuszeichen ist die Richtung nach unten, der Betrag ist |F_res| = 1 N. Aus F_res = m · a folgt a = |F_res| / m = 1 N / 0,51 kg = 1,96 N/kg = 1,96 m/s², denn 1 N = 1 kg · m/s²; die Beschleunigung ist nach unten gerichtet. Beschleunigt wird die Lampe also nicht von der Gewichtskraft 5 N – mit ihr allein käme man auf rund 9,8 m/s², das Fünffache –, sondern allein von der resultierenden Kraft 1 N. Im Ausgangszustand ist F_res = 0 N, also a = 0 m/s²: Die Lampe bleibt in Ruhe, obwohl an ihr gezogen wird."
+ },
+ "alltag": "Lege zu Hause ein Buch flach auf deine ausgestreckte Hand und halte es ruhig. Erkläre einer Person zu Hause kausal korrekt, welche zwei Kräfte am Buch angreifen, warum ihre Summe null ist und woran man merkt, dass die Kraft deiner Hand trotz der Ruhe wirklich wirkt. Lass die Hand danach langsam sinken und benenne, was sich an der Summe geändert hat.",
+ "alltagAfb": "II",
+ "alltagKomp": "K4",
+ "ueberleitung": "An der Lampe greifen beide Kräfte am selben Körper an – nur deshalb heben sie einander auf. Auf der nächsten Seite triffst du ein zweites Kräftepaar, das ebenfalls gleich groß und entgegengesetzt gerichtet ist, aber an zwei verschiedenen Körpern angreift und sich gerade deshalb nicht aufhebt.",
+ "name": "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
+ "theme": "ef_mechanik"
+}

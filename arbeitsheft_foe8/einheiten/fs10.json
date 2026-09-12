@@ -1,0 +1,188 @@
+{
+ "seite": {
+  "id": "fs10",
+  "quelle": "st10",
+  "sim": "parallel-widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was passiert nebeneinander?",
+  "name": "Zwei Wege für den Strom",
+  "fachwoerter_neu": [
+   "Parallelschaltung",
+   "Gesamtstrom"
+  ],
+  "alltag": [
+   "In der Fahrrad-AG hängen zwei Lampen nebeneinander am Netzteil.",
+   "Eine Lampe fällt aus. Die andere leuchtet ruhig weiter.",
+   "Jede Lampe hat einen eigenen Weg für den Strom.",
+   "Zwei Bauteile nebeneinander nennt man Parallelschaltung. Der ganze Strom vom Netzteil heißt Gesamtstrom I."
+  ],
+  "frage": "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
+  "predict": [
+   "Der Strom teilt sich auf zwei Wege. Darum wird er insgesamt kleiner.",
+   "Die zwei Ströme addieren sich. Zusammen sind sie größer als jeder einzelne."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
+   "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab.",
+   "Drücke bei R₁ auf 30 Ω. Trage die zweite Tabellenzeile ein.",
+   "Drücke danach bei R₂ auf 10 Ω. Ergänze die letzte Tabellenzeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Wie groß sind I₁ und I₂?",
+   "Wie groß ist der Gesamtstrom I?"
+  ],
+  "tabRows": [
+   [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "I₁ = 0,45 A, I₂ = 0,23 A",
+    "0,68 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 20 Ω",
+    "",
+    ""
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 10 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Widerstände nebeneinander sind eine",
+    "loesung": "Parallelschaltung",
+    "post": ". Jeder Weg hat einen eigenen Strom."
+   },
+   {
+    "pre": "Beide Ströme zusammen ergeben den",
+    "loesung": "Gesamtstrom",
+    "post": ": I = I₁ + I₂."
+   }
+  ],
+  "wortbank": [
+   "Parallelschaltung",
+   "Gesamtstrom",
+   "0,23 A",
+   "0,38 A"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Gesamtstrom bei R₁ = 10 Ω und R₂ = 20 Ω?",
+   "antwort": "Gegeben: I₁ = 0,45 A und I₂ = 0,23 A. Gesucht: der Gesamtstrom I. Formel: I = I₁ + I₂. Einsetzen: I = 0,45 A + 0,23 A. Ergebnis: I = 0,68 A. Antwort: Der Gesamtstrom ist 0,68 A. Genau das zeigt auch die Statuszeile."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du stellst R₁ = 30 Ω und R₂ = 30 Ω ein. Die Statuszeile zeigt I₁ = 0,15 A und I₂ = 0,15 A. Welchen Gesamtstrom zeigt sie?",
+    "optionen": [
+     "0,30 A – die zwei Ströme werden addiert.",
+     "0,15 A – im ganzen Kreis fließt überall derselbe Strom.",
+     "0,00 A – ein Strom wird vom anderen abgezogen."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei R₁ = 30 Ω und R₂ = 20 Ω fließen durch R₂",
+      "loesung": "0,23 A",
+      "post": "."
+     },
+     {
+      "pre": "Die Statuszeile meldet dann den Gesamtstrom",
+      "loesung": "0,38 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Wenn der Strom zwei Wege hat, wird er insgesamt weniger.“ Erkläre Jannis mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Der Gesamtstrom ist …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. In der Statuszeile stehen I₁, I₂ und der Gesamtstrom I.",
+   "h2": "Beginne so: Der Gesamtstrom ist größer als der Strom auf einem Weg. In meiner Tabelle steht …",
+   "h3": "Fast fertige Antwort: Durch R₁ fließen 0,15 A, durch R₂ fließen 0,23 A. Zusammen zeigt die Statuszeile 0,38 A. Der Gesamtstrom wird also nicht kleiner, sondern ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann I₁, I₂ und den Gesamtstrom I in der Statuszeile ablesen.",
+   "Ich kann aus zwei Strömen den Gesamtstrom ausrechnen.",
+   "Ich kann mit eigenen Worten sagen, was eine Parallelschaltung ist."
+  ],
+  "zuhause": "Schalte im Zimmer eine Lampe aus. Schreibe auf, welche weiterleuchten.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Stromkreis als Parallelschaltung: unten eine Batterie mit großer Beschriftung „4,5 V“; die Leitung teilt sich links an einem dicken Punkt in zwei nebeneinanderliegende Zweige und trifft rechts wieder zusammen; im oberen Zweig ein Widerstand „R₁ = 10 Ω“ mit der Anzeige „0,45 A“, im unteren ein Widerstand „R₂ = 20 Ω“ mit der Anzeige „0,23 A“; in der Hauptleitung ein rundes Messgerät mit „A“ und der Anzeige „0,68 A“; Strompfeile in Fließrichtung, in den zwei Zweigen dünner, in der Hauptleitung deutlich dicker; unter dem Bild groß die Zeile „I = I₁ + I₂ = 0,68 A“; nur dieser eine Stromkreis, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs10",
+  "lernziel": "Die Schülerinnen und Schüler lesen in der Parallelschaltung die beiden Ströme I₁ und I₂ sowie den Gesamtstrom I aus der Statuszeile ab und erklären an eigenen Messwerten: Die zwei Ströme addieren sich zum Gesamtstrom, I = I₁ + I₂. Der Gesamtwiderstand steht zwar daneben, wird hier aber bewusst weggelassen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, zwei Widerstände 10 Ω und 20 Ω, drei Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen (die Quelle liefert immer 4,5 V, R_ges auf den Karten weglassen): 1) R₁ = 10 Ω, R₂ = 20 Ω → I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A · 2) R₁ = 30 Ω, R₂ = 20 Ω → I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A · 3) R₁ = 30 Ω, R₂ = 10 Ω → I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Dazu die Zeile unter dem Sim-Bild: „I = I₁ + I₂ = 0,68 A“.",
+  "merksatz": [
+   "Parallelschaltung",
+   "Gesamtstrom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "R₁ = 30 Ω, R₂ = 20 Ω",
+    "I₁ = 0,15 A, I₂ = 0,23 A",
+    "0,38 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 10 Ω",
+    "I₁ = 0,15 A, I₂ = 0,45 A",
+    "0,60 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Nachgerechnet: 0,15 A + 0,15 A = 0,30 A.",
+   "typische_fehler": [
+    "0,15 A: Die Regel der Reihenschaltung („überall derselbe Strom“) wird übertragen. Sim: „✗ Der Gesamtstrom ist die Summe der Zweigströme.“",
+    "0,00 A: Die Ströme werden voneinander abgezogen. Sim: „✗ Subtrahiert wird nichts.“ Andere halbieren, weil „teilen“ als „halbieren“ gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,23 A",
+    "0,38 A"
+   ],
+   "typische_fehler": [
+    "0,15 A und 0,23 A vertauscht: Es wurde die falsche Knopfreihe gedrückt – beide Reihen sind gleich beschriftet.",
+    "Statt zu addieren wird subtrahiert: 0,23 A − 0,15 A = 0,08 A.",
+    "R₁ = 20 Ω mit R₂ = 20 Ω nicht einstellen lassen: Die Anzeige rundet dort auf I = 0,45 A, nachgerechnet wären es 0,23 A + 0,23 A = 0,46 A. Deshalb fehlt diese Einstellung auf der Schülerseite."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Gesamtstrom ist größer als der Strom auf einem einzelnen Weg. In meiner Tabelle fließen 0,15 A und 0,23 A. Zusammen sind das 0,38 A. Der Strom wird nicht weniger. Er verteilt sich nur auf zwei Wege.",
+   "alternativen": [
+    "Verweis auf die Antwortknöpfe der Simulation: Richtig ist „I = I₁ + I₂“, die Rückmeldung lautet „✓ Richtig! Die Zweigströme addieren sich.“",
+    "Bild von der zweiten Tür: Öffnet sich ein zweiter Ausgang, kommen insgesamt mehr Leute heraus, nicht weniger."
+   ],
+   "typische_fehler": [
+    "Der Strom wird als Vorrat gedacht, der sich beim Teilen aufbraucht. Strom wird nicht verbraucht, er verteilt sich nur.",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: mehr, stärker)",
+  "schwache": [
+   "Zuerst nur die Beispielzeile und die zweite Tabellenzeile bearbeiten; die dritte Zeile ist freiwillig.",
+   "Die zwei Knopfreihen gemeinsam am Beamer suchen, bevor gedrückt wird: Vor der oberen Reihe steht „R₁:“, vor der unteren „R₂:“. Die Knopfaufschriften sind in beiden Reihen gleich.",
+   "Das Tiefgestellte einmal laut klären: I₁ heißt „I eins“, I₂ heißt „I zwei“. Die Addition 0,15 + 0,23 an der Tafel untereinander schreiben lassen – das Rechnen mit Komma ist hier die Hürde, nicht die Physik."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Fragen. Schreibe die richtige Antwort zum Strom auf („I = I₁ + I₂“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Parallelschaltung und Stromstärke im verzweigten Stromkreis. Kompetenzen UF1, UF2, UF3 und E2 (Heft 3108). Der Gesamtwiderstand braucht die Kehrwertformel und bleibt dem Regelheft gts8 vorbehalten. Codes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

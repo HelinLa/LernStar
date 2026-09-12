@@ -1,0 +1,175 @@
+[
+ {
+  "sim": "v-zeit-diagramm",
+  "ueberschrift": "📈 Das Geschwindigkeit-Zeit-Diagramm (v-t-Diagramm)",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "konstant",
+    "ruft": "_vtdSet('konstant')"
+   },
+   {
+    "aufschrift": "beschleunigen",
+    "ruft": "_vtdSet('beschleunigen')"
+   },
+   {
+    "aufschrift": "bremsen",
+    "ruft": "_vtdSet('bremsen')"
+   },
+   {
+    "aufschrift": "▶ Fahren",
+    "ruft": "_vtdStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_vtdReset()"
+   },
+   {
+    "aufschrift": "Stillstand",
+    "ruft": "_vtdAns(0,0)"
+   },
+   {
+    "aufschrift": "Konstante Geschwindigkeit",
+    "ruft": "_vtdAns(0,1)"
+   },
+   {
+    "aufschrift": "Beschleunigen",
+    "ruft": "_vtdAns(0,2)"
+   },
+   {
+    "aufschrift": "Der Körper wird schneller (beschleunigt)",
+    "ruft": "_vtdAns(1,0)"
+   },
+   {
+    "aufschrift": "Er wird langsamer",
+    "ruft": "_vtdAns(1,1)"
+   },
+   {
+    "aufschrift": "Er steht still",
+    "ruft": "_vtdAns(1,2)"
+   },
+   {
+    "aufschrift": "Beschleunigen",
+    "ruft": "_vtdAns(2,0)"
+   },
+   {
+    "aufschrift": "Bremsen (langsamer werden)",
+    "ruft": "_vtdAns(2,1)"
+   },
+   {
+    "aufschrift": "Gleich schnell",
+    "ruft": "_vtdAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_vtdSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_vtdSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_vtdSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('vtdiagramm')"
+   }
+  ],
+  "hinweise": [
+   "Wähle eine Bewegung und starte sie. Achte auf die Linie im v-t-Diagramm und wie schnell der Wagen fährt. Was bedeutet waagerecht, steigend und fallend?",
+   "Im v-t-Diagramm steht die Zeit t waagerecht und die Geschwindigkeit v senkrecht. Eine waagerechte Linie = konstante Geschwindigkeit (gleichförmig). Eine ansteigende Linie = Beschleunigen. Eine fallende Linie = Bremsen.",
+   "waagerecht = konstant · steigend = schneller werden · fallend = bremsen."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig)."
+   },
+   {
+    "einstellung": "konstant",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig)."
+   },
+   {
+    "einstellung": "beschleunigen",
+    "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer."
+   },
+   {
+    "einstellung": "bremsen",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht)."
+   },
+   {
+    "einstellung": "▶ Fahren",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht)."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig)."
+   },
+   {
+    "einstellung": "Stillstand",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm."
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig)."
+   },
+   {
+    "einstellung": "Beschleunigen",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie."
+   },
+   {
+    "einstellung": "Der Körper wird schneller (beschleunigt)",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu."
+   },
+   {
+    "einstellung": "Er wird langsamer",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie."
+   },
+   {
+    "einstellung": "Er steht still",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0)."
+   },
+   {
+    "einstellung": "Beschleunigen",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend."
+   },
+   {
+    "einstellung": "Bremsen (langsamer werden)",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst."
+   },
+   {
+    "einstellung": "Gleich schnell",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
+   }
+  ],
+  "bildtexte": [
+   "v",
+   "t (Zeit)",
+   "v jetzt: 55",
+   "konstant",
+   "v jetzt: 0",
+   "beschleunigen",
+   "v jetzt: 96",
+   "bremsen",
+   "v jetzt: 95"
+  ]
+ }
+]

@@ -1,0 +1,250 @@
+[
+ {
+  "id": "ft1",
+  "theme": "foe_strom",
+  "titel": "Fördertest 1 · Strom in der Werkstatt",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Zwei Kugeln sind beide negativ geladen. Was passiert?",
+      "optionen": [
+       "Sie stoßen sich ab.",
+       "Sie ziehen sich an.",
+       "Es passiert nichts."
+      ],
+      "richtig": 0
+     },
+     {
+      "frage": "Der Stromkreis ist offen. Wie viel Strom fließt?",
+      "optionen": [
+       "Genauso viel wie vorher.",
+       "Nur die Hälfte.",
+       "Kein Strom."
+      ],
+      "richtig": 2
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Zwei Widerstände liegen hintereinander.",
+      "Reihenschaltung"
+     ],
+     [
+      "Zwei Widerstände liegen nebeneinander.",
+      "Parallelschaltung"
+     ],
+     [
+      "Sie unterbricht den Kreis bei zu viel Strom.",
+      "Sicherung"
+     ],
+     [
+      "Sie bremst den Strom. Die Einheit ist Ohm.",
+      "Widerstand"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "Volt",
+     "Ampere",
+     "in Reihe",
+     "Elektronen"
+    ],
+    "luecken": [
+     {
+      "pre": "Die Spannung U misst man in",
+      "loesung": "Volt",
+      "post": "(V)."
+     },
+     {
+      "pre": "Die Stromstärke I misst man in",
+      "loesung": "Ampere",
+      "post": "(A)."
+     },
+     {
+      "pre": "Das Amperemeter baut man",
+      "loesung": "in Reihe",
+      "post": "in die Leitung ein."
+     },
+     {
+      "pre": "Im Draht wandern die",
+      "loesung": "Elektronen",
+      "post": "sehr langsam."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "An einer Steckdose hängen drei Geräte. Zusammen ziehen sie 18 A. Die Sicherung erlaubt 16 A. Erkläre, was die Sicherung jetzt tut und warum das gut ist.",
+    "satzstarter": "18 A sind mehr als …",
+    "zeilen": 4,
+    "erwartung": "18 A sind mehr als die 16 A, die die Sicherung erlaubt. Die Sicherung unterbricht den Stromkreis. So wird das Kabel nicht zu heiß und es entsteht kein Brand.",
+    "teilpunkte": [
+     "18 A liegen über der Grenze von 16 A (1 P)",
+     "die Sicherung unterbricht den Stromkreis (1 P)",
+     "dadurch wird ein Brand verhindert (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ },
+ {
+  "id": "ft2",
+  "theme": "foe_bewegung",
+  "titel": "Fördertest 2 · Wie schnell ist schnell?",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Zwei Autos fahren gleich lange. Auto A fährt die größere Strecke. Welches Auto ist schneller?",
+      "optionen": [
+       "Beide sind gleich schnell.",
+       "Auto A.",
+       "Auto B."
+      ],
+      "richtig": 1
+     },
+     {
+      "frage": "Im Weg-Zeit-Diagramm ist die Linie waagerecht. Was macht der Wagen?",
+      "optionen": [
+       "Er fährt sehr schnell.",
+       "Er wird immer schneller.",
+       "Er steht still."
+      ],
+      "richtig": 2
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Alle Abstände der Sekunden-Marken sind gleich groß.",
+      "gleichförmig"
+     ],
+     [
+      "Die Abstände der Sekunden-Marken werden größer.",
+      "beschleunigt"
+     ],
+     [
+      "Reaktionsweg und Bremsweg zusammen.",
+      "Anhalteweg"
+     ],
+     [
+      "Sie sagt, wie schnell sich etwas bewegt.",
+      "Geschwindigkeit"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "s / t",
+     "mal 3,6",
+     "steile",
+     "Reaktionsweg"
+    ],
+    "luecken": [
+     {
+      "pre": "Die Geschwindigkeit rechnest du aus mit v =",
+      "loesung": "s / t",
+      "post": "."
+     },
+     {
+      "pre": "Von m/s zu km/h rechnest du",
+      "loesung": "mal 3,6",
+      "post": "."
+     },
+     {
+      "pre": "Im Weg-Zeit-Diagramm zeigt eine",
+      "loesung": "steile",
+      "post": "Linie eine schnelle Fahrt."
+     },
+     {
+      "pre": "Auf dem",
+      "loesung": "Reaktionsweg",
+      "post": "fährt das Auto noch mit vollem Tempo weiter."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Ein Wagen fährt eine Strecke von 10 m. Die Stoppuhr zeigt 5,0 s. Berechne die Geschwindigkeit und schreibe auf, wie du gerechnet hast.",
+    "satzstarter": "Ich teile die Strecke durch …",
+    "zeilen": 4,
+    "erwartung": "Ich teile die Strecke durch die Zeit: v = s / t = 10 m / 5,0 s = 2,0 m/s. Der Wagen fährt also 2,0 Meter in jeder Sekunde.",
+    "teilpunkte": [
+     "die Formel v = s / t wird genannt (1 P)",
+     "die Zahlen werden richtig eingesetzt: 10 m / 5,0 s (1 P)",
+     "das Ergebnis 2,0 m/s steht mit Einheit da (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ }
+]

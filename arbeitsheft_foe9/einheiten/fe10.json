@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fe10",
+  "quelle": "el11",
+  "sim": "zahnrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Dreimal kurbeln, einmal herum",
+  "name": "Warum dreht sich das kleine Rad schneller?",
+  "fachwoerter_neu": [
+   "Drehzahl"
+  ],
+  "alltag": [
+   "An der Seilwinde neben der Bühne sitzen zwei Zahnräder.",
+   "Jannis kurbelt dreimal. Die Trommel dreht sich nur einmal.",
+   "Die Drehzahl n sagt, wie oft sich ein Rad je Minute dreht.",
+   "U/min heißt: Umdrehungen je Minute."
+  ],
+  "frage": "Wovon hängt es ab, wie schnell sich Rad 2 dreht?",
+  "predict": [
+   "Das kleine Rad dreht schneller, weil es leichter ist.",
+   "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne sind schnell herum."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min.",
+   "Drücke „groß treibt klein – schneller“. Trage n₂ ein.",
+   "Drücke „klein treibt groß – langsamer, kräftiger“. Trage n₂ ein.",
+   "Vergleiche die drei Zeilen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Zähne von Rad 1",
+   "Zähne von Rad 2",
+   "Wie groß ist n₂?"
+  ],
+  "tabRows": [
+   [
+    "24",
+    "24",
+    "60,0 U/min"
+   ],
+   [
+    "30",
+    "10",
+    ""
+   ],
+   [
+    "12",
+    "36",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne geben eine große",
+    "loesung": "Drehzahl",
+    "post": "."
+   },
+   {
+    "pre": "Viele Zähne geben eine kleine Drehzahl. Das Rad dreht sich dann",
+    "loesung": "langsam",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Drehzahl",
+   "langsam",
+   "20,0 U/min",
+   "60,0 U/min",
+   "180,0 U/min"
+  ],
+  "beispiel": {
+   "frage": "Rad 1 und Rad 2 haben je 24 Zähne. Wie groß ist n₂?",
+   "antwort": "Beide Räder haben gleich viele Zähne. Rad 2 dreht genauso schnell wie Rad 1. Der Bildschirm zeigt: n₂ = 60,0 U/min."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „40 auf 10 – vierfach schnell“. Wie groß ist n₂?",
+    "optionen": [
+     "n₂ = 240,0 U/min",
+     "n₂ = 60,0 U/min",
+     "n₂ = 20,0 U/min"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Rad 1 hat 30 Zähne, Rad 2 hat 10 Zähne. Dann ist n₂",
+      "loesung": "180,0 U/min",
+      "post": "."
+     },
+     {
+      "pre": "Rad 1 hat 12 Zähne, Rad 2 hat 36 Zähne. Dann ist n₂",
+      "loesung": "20,0 U/min",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das kleine Rad dreht schneller, weil es leichter ist.“ Warum stimmt das nicht?",
+    "satzstarter": "Beide Räder schieben …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Drei davon sind Drehzahlen.",
+   "h2": "Beginne so: Beide Räder schieben gleich viele Zähne durch.",
+   "h3": "Fast fertig: Rad 2 hat wenige Zähne. Es ist schnell herum. Seine Drehzahl ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann n₂ am Bildschirm ablesen.",
+   "Ich kann sagen: Wenige Zähne heißt große Drehzahl.",
+   "Ich kann erklären, warum Rad 2 schneller dreht."
+  ],
+  "zuhause": "Sieh dir hinten am Fahrrad die Zahnräder an. Wo geht das Treten leichter?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild aus genau zwei ineinandergreifenden Zahnrädern, von der Seite gesehen, nebeneinander auf gleicher Höhe, gleich große und gut zählbare Zähne an beiden Rädern. Links ein großes Rad, darunter die große Beschriftung „Rad 1 · 30 Zähne · 60 U/min“. Rechts ein deutlich kleineres Rad, darunter die große Beschriftung „Rad 2 · 10 Zähne · 180,0 U/min“. Jedes Rad trägt einen kräftigen Markierungsstrich von der Achse bis zum Rand, links blau, rechts orange, damit man die Umdrehungen zählen kann; darunter eine Legende aus zwei Kästchen: blaues Kästchen „Markierung Rad 1“, orangefarbenes Kästchen „Markierung Rad 2“. An der Stelle, wo die Zähne ineinandergreifen, ein dicker Pfeil von unten mit der großen Aufschrift „Hier passt jeder Zahn in eine Lücke.“ Über jedem Rad ein gebogener Drehpfeil, die beiden Pfeile gegenläufig gerichtet. Genau diese zwei Räder, keine Kette, kein drittes Rad, keine Kurbel, keine Trommel, keine Zahlenreihen, keine Personen. Ruhiger heller Hintergrund, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fe10",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation die Drehzahl n₂ von Rad 2 für drei Zähnepaare ab (24 : 24 → 60,0 U/min · 30 : 10 → 180,0 U/min · 12 : 36 → 20,0 U/min) und begründen damit qualitativ: Weil beide Räder am Berührpunkt gleich viele Zähne durchschieben, hat das Rad mit wenigen Zähnen die große Drehzahl und das Rad mit vielen Zähnen die kleine. Gerechnet wird auf dieser Seite nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil plus das Zahnrad-Tafelbild. Optional als Demonstration: zwei ungleich große Zahnräder aus dem Bau- oder Technikkasten, jedes mit einem Klebestreifen als Markierung, von Hand langsam gedreht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Über allen vier Karten steht der Satz, den die Simulation in jeder Einstellung zeigt: „Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch.“ Karte 1 „gleich groß (24 : 24)“: „Rad 1: 60 U/min · 24 Zähne = 1440 Zähne je Minute | n₂ = 1440 Zähne je Minute : 24 Zähne | n₂ = 60,0 U/min“. Karte 2 „groß treibt klein – schneller“: „Rad 1: 60 U/min · 30 Zähne = 1800 Zähne je Minute | n₂ = 1800 Zähne je Minute : 10 Zähne | n₂ = 180,0 U/min“. Karte 3 „klein treibt groß – langsamer, kräftiger“: „Rad 1: 60 U/min · 12 Zähne = 720 Zähne je Minute | n₂ = 720 Zähne je Minute : 36 Zähne | n₂ = 20,0 U/min“. Karte 4 „40 auf 10 – vierfach schnell“ (nur für Aufgabe 1 nötig): „Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min“. Dazu als Tafelbild zwei ineinandergreifende Räder nebeneinander, links groß (30 Zähne, n₁ = 60 U/min), rechts klein (10 Zähne, n₂ = 180,0 U/min), an der Eingriffsstelle ein Pfeil mit „Hier passt jeder Zahn in eine Lücke“, und darunter die drei Zahlenpaare der Tabelle in einer Zeile. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen. Die Karten 2 und 3 sind Pflicht – sie füllen die beiden offenen Tabellenzeilen.",
+  "merksatz": [
+   "Drehzahl",
+   "langsam"
+  ],
+  "tabelle_erwartet": [
+   [
+    "30",
+    "10",
+    "180,0 U/min"
+   ],
+   [
+    "12",
+    "36",
+    "20,0 U/min"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Knopf „40 auf 10 – vierfach schnell“ zeigt der Bildschirm: „Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min“. Auch ohne Gerät ist die Antwort erschließbar: Rad 2 hat genau so wenige Zähne wie in Zeile 2 der Tabelle (10), Rad 1 aber mehr (40 statt 30). Die Drehzahl muss also über 180,0 U/min liegen; nur 240,0 U/min erfüllt das.",
+   "typische_fehler": [
+    "60,0 U/min wird angekreuzt: Das ist die Drehzahl von Rad 1 (n₁ = 60 U/min) und zugleich der Fall 24 : 24 aus der Beispielzeile. Gegenfrage: Hat Rad 2 hier genauso viele Zähne wie Rad 1?",
+    "20,0 U/min wird angekreuzt: Verwechslung mit dem umgekehrten Fall 12 : 36, in dem Rad 2 die vielen Zähne hat.",
+    "Es wird vermutet, das größere Rad 1 sei das schnellere. Am Berührpunkt zeigen: Beide schieben gleich viele Zähne durch, aber Rad 2 braucht dafür nur 10 statt 40 Zähne und ist deshalb viermal so oft herum."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "180,0 U/min",
+    "20,0 U/min"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht. Hilfe: In der ersten Lücke hat Rad 2 WENIGER Zähne als Rad 1 – dort gehört die große Zahl hin.",
+    "60,0 U/min wird eingesetzt, weil es die erste Zahl in der Tabelle ist. Sie gehört zur Beispielzeile 24 : 24.",
+    "Die Nachkommastelle wird weggelassen („180 U/min“). Der Bildschirm schreibt 180,0 U/min; so wird es auch abgeschrieben.",
+    "Statt U/min wird eine andere Einheit geschrieben (U/s, N, W). Der Alltagsteil löst die Einheit einmal auf: U/min heißt Umdrehungen je Minute."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Räder schieben am Berührpunkt gleich viele Zähne durch. Rad 2 hat weniger Zähne. Deshalb ist es schneller einmal herum. Mit dem Gewicht hat das nichts zu tun.",
+   "alternativen": [
+    "Bezug auf die Zahlen der Tabelle: Rad 1 mit 30 Zähnen dreht 60-mal je Minute, Rad 2 mit 10 Zähnen dreht 180,0 U/min – dreimal so oft.",
+    "Gegenbeispiel aus Zeile 3: Bei 12 : 36 ist Rad 2 das größere und dreht nur mit 20,0 U/min. Wäre das Gewicht schuld, müsste es dort auch schnell sein.",
+    "Kurzform ohne Zahlen: „Nicht das Gewicht entscheidet, sondern die Zahl der Zähne.“ – reicht für die volle Wertung.",
+    "Alltagsbezug Seilwinde: Jannis kurbelt dreimal, die Trommel dreht sich einmal – dort sitzen die vielen Zähne am zweiten Rad."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne Nours Behauptung zu widerlegen. Gegenfrage: Was wäre denn, wenn das kleine Rad aus Blei wäre?",
+    "„Weil es kleiner ist“ ohne Zähne. Nachfragen: Woran am Rad kann man es ablesen? Auf den Berührpunkt zeigen.",
+    "Rad 1 und Rad 2 werden verwechselt; erklärt wird der Fall 12 : 36. Dann ist die Begründung richtig, aber am falschen Rad – gemeinsam am Bild zuordnen."
+   ]
+  },
+  "hilfe3_wort": "groß (auch richtig: hoch)",
+  "schwache": [
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und den Knopf „gleich groß (24 : 24)“ zusammen drücken, bevor die Partnerarbeit beginnt.",
+   "Nur die zweite Tabellenzeile (30 : 10) ausfüllen lassen; die dritte Zeile gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die fünf Wörter der Wortbank einmal abschreiben lassen und die drei Drehzahlen darin einkreisen.",
+   "Mit zwei Zahnrädern aus dem Baukasten arbeiten: an beiden einen Klebestreifen anbringen und von Hand drehen, bis Rad 1 einmal herum ist. Rad 2 mitzählen lassen.",
+   "Die Spalten von rechts nach links lesen üben: erst „Wie groß ist n₂?“, dann zurück zu den Zähnezahlen – so bleibt der Zusammenhang wenige Zähne / große Drehzahl im Blick."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle am Bildschirm den Knopf „klein treibt groß – langsamer, kräftiger“ ein und lies die letzte Zeile im Statuskasten vor. Was gewinnt Rad 2 dort, obwohl es langsamer dreht?",
+  "kernlehrplan": "Inhaltsfeld Mechanische Arbeit, Energie und Leistung · Kraftwandler: Getriebe und Übersetzung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Zähnepaare und das Ablesen der Drehzahl trägt E5, das Vergleichen der drei Zeilen E6, die Deutung „wenige Zähne – große Drehzahl“ UF1 und UF3, die Erklär-Aufgabe gegen Nours Gewichts-Vorstellung UF4. Fachwortzählung: neu ist genau EIN Wort, „Drehzahl“ (mit Formelzeichen n und Einheit U/min – nach Zählregel 1 zusammen ein Fachwort). „Zähne“ ist nach Zählregel 5 ein Alltagswort und steht deshalb bewusst NICHT in der Wortbank und in keiner Merksatz-Lücke; „Zahnrad“ ist nach Zählregel 2 ein Gerätename mit Begriffssatz im Alltagsteil. Bewusst NICHT eingeführt: „Übersetzung i“ – der Seitenplan gibt fe10 nur ein Fachwort, deshalb kommt weder i noch das Verhältnis z₁ : z₂ auf der Schülerseite vor, obwohl der Bildschirm es zeigt („i = z₁ : z₂ = 30 : 10 = 3,00“). Ebenfalls gestrichen: „Drehmoment M“ – die Bildschirmdefinition „Kraft mal Hebelarm“ wäre ein weiteres Fachwort samt Produkt zweier Größen; die Sache steht nur in der freiwilligen Zusatzaufgabe und in Alltagssprache („langsamer, kräftiger“). „Antrieb“ und „Abtrieb“ werden vermieden, die Seite sagt durchgehend Rad 1 und Rad 2 – so beschriftet der Bildschirm die Räder ohnehin mit („Rad 1 · Antrieb“). Auch „Berührpunkt“ steht nicht als Fachwort, sondern nur als Bildmarke im Bildauftrag und im Tafelbild. Datenlage (wichtig): Benutzt werden allein der Ausgangszustand (30 : 10) und die vier Knöpfe. Der Faktendump enthält daneben 85 Reglerzustände (41-mal Regler „Rad 1“, 41-mal Regler „Rad 2“, 3-mal Regler „Antriebsdrehzahl“). Davon sind 44 unbrauchbar: In den Zuständen der Regler „Rad 2“ und „Antriebsdrehzahl“ hat simfakten den Regler „Rad 1“ auf 47 stehen gelassen – dort steht „Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute“ statt der 30 Zähne des Ausgangszustands. Die 41 Zustände des Reglers „Rad 1“ sind dagegen in sich stimmig (z₂ bleibt bei 10 Zähnen), werden auf dieser Seite aber nicht gebraucht. Kein Wert aus den Reglerzuständen steht im Heft; die Seite verlangt ausschließlich Knopf-Einstellungen und nennt die Regler nicht. Nachgemessen mit simcheck/werte.js: Der Regler „Antriebsdrehzahl“ verstellt n₁ wirklich (auf 10 gezogen zeigt der Bildschirm „Rad 1: 10 U/min“ und n₂ = 30,0 U/min), und jeder der vier Knöpfe stellt n₁ wieder auf 60 U/min. Deshalb sagt Forschen-Schritt 1 nicht, Rad 1 drehe „immer“ mit 60 U/min, sondern nennt den Knopf als Ursache. Nicht abgefragt werden außerdem: die Zeile „1800 : 60 s = 30,0 Zähne je Sekunde“ (würde mit einer Drehzahl von 30 verwechselt), die Umdrehungsdauer, der Umdrehungszähler und die Uhr im Bild (im Dump stehen alle auf null, die Endwerte sind nicht gemessen) sowie die Zeitlupe („eine Sekunde der Uhr im Bild dauert vier Sekunden in Wirklichkeit“) – auf dieser Seite wird gar nicht mit Zeit gearbeitet. Nachkommastellen werden nie gekürzt: 60,0 · 180,0 · 20,0 · 240,0 U/min, immer mit Dezimalkomma. Die Einheit U/min löst der Bildschirm nirgends auf; das geschieht einmal im Alltagsteil. Knopfaufschriften werden wörtlich zitiert und sind emojifrei; die Simulationsüberschrift trägt ein Emoji und wird deshalb nirgends zitiert. Modellgrenze der Simulation (Hinweis 3): gerechnet wird ohne Reibung und ohne Zahnspiel – das passt zur Leitplanke „ideale Maschinen gelten ohne Reibung“ und kann mündlich ergänzt werden; auf der Schülerseite steht es aus Platzgründen nicht. Rahmenbruch beachten: Die Seilwinde des Alltagsteils ist der UMGEKEHRTE Fall zum Startzustand der Simulation (Trommel langsamer). Genau deshalb steht Zeile 3 der Tabelle (12 : 36) auf der Seite – sie ist der Winden-Fall. Beim Besprechen ausdrücklich sagen: Bei der Winde sitzen die vielen Zähne am zweiten Rad."
+ }
+}

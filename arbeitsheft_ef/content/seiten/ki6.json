@@ -1,0 +1,53 @@
+{
+ "id": "ki6",
+ "basiskonzept": "Superposition und Komponenten",
+ "titel": "Ein Schlag, nicht zwei",
+ "problem": "An der Messstrecke schiebt Mira eine Stahlkugel über die Tischkante, während Tobias an derselben Kante im selben Augenblick eine zweite Kugel einfach fallen lässt. Mira rechnet mit zwei Aufschlägen, denn ihre Kugel legt den weiteren Weg zurück. Zu hören ist nur ein einziger Schlag. Mira will es mit kräftigerem Stoß wiederholen: Dann müsse die Kugel länger fliegen.",
+ "frage": "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
+ "auftrag": "Miss die Fallzeit unter Variablenkontrolle für neun Abwurfhöhen und für acht Abwurfgeschwindigkeiten und entscheide an den vier Auftragungen, welche krumm bleibt, welche die Abhängigkeit von h liefert und welche zeigt, dass v₀ die Fallzeit nicht ändert.",
+ "predict": [
+  "Je schneller die Kugel abgeworfen wird, desto länger bleibt sie in der Luft – für den weiteren Weg braucht sie mehr Zeit.",
+  "Die Fallzeit hängt allein von der Abwurfhöhe ab; eine größere Abwurfgeschwindigkeit vergrößert nur die Wurfweite."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Lass die Ausgangsstellung stehen – „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 8 m/s – und wähle die Auftragung „t_F über h auftragen“. Drücke „Messreihe automatisch aufnehmen“: Die Tabelle füllt sich mit neun Zeilen von h = 5 m bis h = 45 m. Übertrage die Fallzeit für h = 5 m und für h = 20 m und halte fest, warum sich aus dieser Auftragung keine Steigung ablesen lässt.",
+  "Wechsle zu „t_F² über h auftragen“ – dieselben neun Messwerte, nur die senkrechte Achse heißt jetzt „t_F² in s²“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und den Wert hinter „erwartet:“ ab, dazu die Zeile „Ortsfaktor g aus der Steigung k“ darunter.",
+  "Drücke „Tabelle leeren“ und bestätige die Rückfrage, wähle „t_F über v₀ auftragen“ und drücke erneut „Messreihe automatisch aufnehmen“: Jetzt bleibt h = 20 m stehen und v₀ wandert von 2 m/s bis 20 m/s. Notiere Steigung und Achsenabschnitt dieser Geraden. Wechsle danach ohne neue Messung zu „x_W über v₀ auftragen“ und lies dort die Steigung ab."
+ ],
+ "tabCols": [
+  "Auftragung (x-Achse → y-Achse)",
+  "Ablesung – und was daraus folgt"
+ ],
+ "tabRows": [
+  "t_F über h · 9 Messwerte bei v₀ = 8 m/s",
+  "t_F² über h · dieselben 9 Messwerte",
+  "t_F über v₀ · 8 Messwerte bei h = 20 m",
+  "x_W über v₀ · dieselben 8 Messwerte"
+ ],
+ "fachtext": "Der waagerechte Wurf zerfällt in zwei Teilbewegungen, die gleichzeitig ablaufen und sich nicht stören: Waagerecht wirkt keine Kraft – x = v₀ · t; senkrecht zieht die Gewichtskraft, der Körper wird gleichmäßig beschleunigt – y = h − 0,5 · g · t². Eliminiert man t, ergibt sich die Bahnkurve y = h − g/(2 · v₀²) · x², eine Parabel. Woher die Fallzeit kommt, zeigt aber erst die Messreihe. Trägt man t_F über h auf, entsteht eine nach rechts abflachende Kurve – aus einer krummen Auftragung lässt sich keine Steigung ablesen. Quadriert man die Fallzeit – genau das ist das Linearisieren –, liegen die Punkte auf einer Ursprungsgeraden t_F² = k · h. Dasselbe liefert y = 0 in y = h − 0,5 · g · t²: t_F² = (2/g) · h. Die Steigung ist also keine bloße Zahl, sondern k = 2/g, und daraus folgt g = 2/k zurück. In t_F = √(2h/g) kommt v₀ nicht vor; bewiesen ist das erst mit der dritten Auftragung: t_F über v₀ ist eine Waagerechte mit der Steigung null, ihr Achsenabschnitt ist die Fallzeit. Erst x_W über v₀ ist wieder eine Ursprungsgerade – ihre Steigung ist die Fallzeit selbst. Gültigkeitsbereich: ohne Luftwiderstand, g = 9,81 m/s²; der Vergleichskörper ist im Bild nur zur besseren Sicht nach links versetzt.",
+ "merksatz": [
+  {
+   "pre": "Krumme Auftragungen geben keine Steigung her. Quadriert man t_F, entsteht eine Ursprungsgerade mit der Steigung k =",
+   "loesung": "2/g",
+   "post": "; daraus folgt g = 2/k zurück."
+  },
+  {
+   "pre": "Über v₀ aufgetragen ist die Fallzeit eine Waagerechte – ihre Steigung ist",
+   "loesung": "null",
+   "post": "; v₀ vergrößert allein die Wurfweite x_W = v₀ · t_F."
+  }
+ ],
+ "beobachtung": "Die Reihe über die Abwurfhöhe füllt bei v₀ = 8 m/s neun Zeilen: h = 5 m mit t_F = 1,0096 s und x_W = 8,08 m, h = 10 m mit 1,4278 s und 11,42 m, h = 15 m mit 1,7487 s und 13,99 m, h = 20 m mit 2,0193 s und 16,15 m; bis h = 45 m wächst die Wurfweite auf 24,23 m. In „t_F über h auftragen“ zeichnet die Simulation gar keine Gerade und verweist auf die abflachende Kurve. Nach dem Wechsel zu „t_F² über h auftragen“ steht dort „alle Messwerte · 9 Messwerte“, y = 0,2039·x und R² = 1,0000 · erwartet: 0,2039; die Zeile „Ortsfaktor g aus der Steigung k“ meldet 9,809 gegen „Literatur: 9,810 m/s²“ mit der Abweichung 0,01 %. Nach „Tabelle leeren“ liefert die zweite Reihe bei h = 20 m für v₀ = 2, 4, 6, 9, 12, 15, 18 und 20 m/s achtmal dieselbe Fallzeit 2,0193 s, während die Wurfweite von 4,04 m über 8,08 m und 12,12 m bis 40,39 m wächst. „t_F über v₀ auftragen“ meldet „h = 20 m · 8 Messwerte“, y = 0,0000·x + 2,0193 mit R² = 1,0000 · erwartet: 0,0000 und darunter „Steigung k der Ausgleichsgeraden 0,0000 s²/m · erwartet: 0,0000 s²/m“ mit dem Satz „k = 0 heißt: t_F ist von v₀ unabhängig“; aus dem Achsenabschnitt rechnet die Zeile „Abwurfhöhe h aus dem Achsenabschnitt b“ die eingestellten 20,00 m zurück, Abweichung 0,00 %. „x_W über v₀ auftragen“ zeigt für dieselben acht Punkte y = 2,019·x und gewinnt daraus die Abwurfhöhe 19,99 m zurück.",
+ "aufgabe": {
+  "frage": "Berechne aus der Steigung k = 0,2039 s²/m der Geraden t_F² über h den Ortsfaktor g und aus dem Achsenabschnitt b = 2,0193 s der Waagerechten die Abwurfhöhe, und begründe, warum erst die dritte Auftragung die Forscherfrage beantwortet.",
+  "zeilen": 5,
+  "loesung": "Aus t_F² = (2/g) · h folgt g = 2/k = 2 : 0,2039 s²/m = 9,809 m/s²; die Simulation nennt daneben den Literaturwert 9,810 m/s² und eine Abweichung von 0,01 %. Der Achsenabschnitt der Waagerechten ist die Fallzeit selbst: b = t_F = √(2h/g). Quadriert ergibt das b² = 2h/g, also h = g · b²/2 = 9,81 m/s² · (2,0193 s)² : 2 = 20,00 m – genau die eingestellte Abwurfhöhe. Die Forscherfrage beantwortet aber erst die dritte Auftragung, denn nur dort steht die gefragte Größe auf der x-Achse: Acht Messpunkte von v₀ = 2 m/s bis 20 m/s liegen auf einer Geraden mit der Steigung 0,0000 – Steigung null heißt, dass sich t_F beim Verstellen von v₀ nicht ändert. Die ersten beiden Auftragungen zeigen dagegen nur, wie t_F von h abhängt; über v₀ sagen sie nichts, weil dort in allen neun Zeilen v₀ = 8 m/s steht."
+ },
+ "alltag": "Lege zu Hause zwei Münzen an die Tischkante und schnipse ein Lineal so gegen beide, dass die eine waagerecht wegfliegt und die andere nur über die Kante kippt. Erkläre einer Person zu Hause mit den beiden Bewegungsanteilen kausal, warum trotz sehr verschiedener Weiten nur ein Aufschlag zu hören ist.",
+ "alltagAfb": "II",
+ "alltagKomp": "K4",
+ "ueberleitung": "Waagerecht und senkrecht ließen sich getrennt auswerten, weil sie einander nicht in die Quere kommen. Auf der nächsten Seite triffst du dieselbe Zerlegung wieder – dort nicht bei einer Bewegung, sondern bei einer Kraft, die schräg an einem Körper zieht.",
+ "name": "Warum trifft die geworfene Kugel gleichzeitig auf?",
+ "theme": "ef_mechanik"
+}

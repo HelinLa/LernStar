@@ -1,0 +1,192 @@
+{
+ "seite": {
+  "id": "fe4",
+  "quelle": "el4",
+  "sim": "energieerhaltung",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Ball vom Bühnenrand",
+  "name": "Was passiert beim Fallen?",
+  "fachwoerter_neu": [
+   "Energieerhaltung"
+  ],
+  "alltag": [
+   "In der Pause lässt Jannis einen Ball vom Bühnenrand fallen.",
+   "Unten ist der Ball sehr schnell. Nour sagt: „Da entsteht neue Energie.“",
+   "Energie entsteht nie neu. Sie wird nur umgewandelt. Das heißt Energieerhaltung."
+  ],
+  "frage": "Wo bleibt die Lageenergie, während der Ball fällt?",
+  "predict": [
+   "Beim Fallen geht die Lageenergie nach und nach verloren.",
+   "Beim Fallen wird die Lageenergie zu Bewegungsenergie."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Fasse die beiden Regler nicht an.",
+   "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.",
+   "Beobachte die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.",
+   "Trage in die Tabelle ein: Wird der Balken kürzer oder länger?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft den Startzustand und die zwei Balken.",
+  "tabCols": [
+   "Was liest du ab?",
+   "Was steht am Anfang da?",
+   "Was passiert beim Fallen?"
+  ],
+  "tabRows": [
+   [
+    "Höhe",
+    "Höhe = 20,0 m",
+    "wird kleiner"
+   ],
+   [
+    "Lageenergie E_pot",
+    "langer Balken",
+    ""
+   ],
+   [
+    "Bewegungsenergie E_kin",
+    "kein Balken",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beim Fallen wird die Lageenergie",
+    "loesung": "kleiner",
+    "post": "."
+   },
+   {
+    "pre": "Gleichzeitig wird die Bewegungsenergie",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "größer",
+   "392 J",
+   "0 J"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit den beiden Energien zusammen?",
+   "antwort": "Die Lageenergie wird zu Bewegungsenergie. Zusammen bleiben beide gleich groß. Energie geht nicht verloren. Das ist die Energieerhaltung."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann darfst du die zwei Balken ablesen?",
+    "optionen": [
+     "Nur so lange, wie der Ball nach unten fällt.",
+     "Immer, auch wenn der Ball nach oben springt.",
+     "Erst, wenn du den Regler „Höhe h“ bewegt hast."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Am Anfang ist oben nur Lageenergie da. Der Bildschirm zeigt E_pot =",
+      "loesung": "392 J",
+      "post": "."
+     },
+     {
+      "pre": "Der Ball ruht noch. Deshalb steht dort E_kin =",
+      "loesung": "0 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Simulation ist ein Modell. Erkläre, was sie über einen echten Ball nicht sagt.",
+    "satzstarter": "Die Simulation zeigt nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die vier Lückenwörter stehen in der Wortbank. Zwei davon sind Zahlen.",
+   "h2": "Beginne so: Die Simulation zeigt nur Zahlen und zwei Balken.",
+   "h3": "Fast fertig: Ein Modell zeigt nie alles. Beim echten Ball siehst du, wie hoch er ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die zwei Balken E_pot und E_kin im Bild finden.",
+   "Ich weiß: Beim Fallen wird die Lageenergie kleiner.",
+   "Ich kann sagen, was die Simulation nicht zeigt."
+  ],
+  "zuhause": "Lass einen Ball aus 1 m Höhe fallen. Miss mit dem Zollstock, wie hoch er zurückspringt.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild auf ruhigem hellem Hintergrund, Seitenansicht. Links eine Bühnenkante; von ihr fällt EIN Ball senkrecht nach unten. Derselbe Ball ist dreimal gezeigt: dicht unter der Kante, auf halber Höhe, kurz über dem Boden. Die oberen beiden Bälle blass, der untere kräftig. Keine Bewegungsstreifen, keine Pfeile, keine weiteren Bälle, kein Rücksprung. Ganz links eine große Höhenleiter mit den Marken 0 m, 5 m, 10 m, 15 m und 20 m. Rechts neben jedem Ball, genau auf seiner Höhe, ein Paar aus zwei senkrechten Balken: oben ein sehr langer violetter Balken neben einem ganz kurzen orangen Balken, auf halber Höhe beide gleich lang, unten ein ganz kurzer violetter neben einem sehr langen orangen Balken. Jeder violette Balken trägt die Beschriftung „Lageenergie E_pot“, jeder orange die Beschriftung „Bewegungsenergie E_kin“, damit die Farbe nicht allein unterscheidet. Große Schrift, keine Personen, keine Formeln, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fe4",
+  "lernziel": "Die Schülerinnen und Schüler beobachten die beiden Energiebalken E_pot und E_kin und beschreiben, was beim Fallen geschieht: Die Lageenergie wird kleiner, die Bewegungsenergie größer. Sie benennen den Startzustand (Höhe = 20,0 m · E_pot = 392 J · E_kin = 0 J) mit Hilfe der Wortbank und begründen E_kin = 0 J damit, dass der Ball am Anfang noch ruht. Sie geben den Erhaltungssatz als Fachwissen wieder (die Summe aus beiden bleibt gleich groß, Energie entsteht nicht neu und geht nicht verloren – Energieerhaltung) und nennen eine Grenze des Modells (E7). Gerechnet wird nicht: weder E_pot = m · g · h noch E_kin = ½ · m · v² kommen auf der Schülerseite vor. WICHTIG: Die drei Startzahlen werden NICHT vom Bildschirm abgelesen. Sie stehen dort gemessen nur rund eine Zehntelsekunde; deshalb gibt die Tabelle die Startspalte vor und die Wortbank die beiden Zahlen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag zu Hause: ein Ball, der gut springt, und ein Zollstock oder ein Maßband.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten vorlesen oder an die Tafel hängen. Karte 1 (Startzustand, Höhe h auf 20 m, Masse m auf 2 kg, beides unverändert): die vier Zeilen des Anzeigekastens untereinander – „Höhe = 20,0 m“ · „E_pot = 392 J“ · „E_kin = 0 J“ · „noch kein Aufprall“. Karte 2 (Startbild der Balken): ein sehr langer violetter Balken, daneben ein oranger Balken der Länge null. An den Balken stehen im Bild NUR die Kurzformen „E_pot“ und „E_kin“; die langen Namen „Potentielle Energie“ und „Kinetische Energie“ sind die Überschriften der beiden Kurvendiagramme darunter, keine Balkenbeschriftung. Karte 3 (während des Falls, gezeichnet, ohne Zahlen): der Balken „E_pot“ deutlich kürzer, der Balken „E_kin“ deutlich länger. Als Tafelbild dieselbe Dreispaltentabelle wie im Heft: Was liest du ab? · Was steht am Anfang da? · Was passiert beim Fallen? – mit den Zeilen Höhe, Lageenergie E_pot, Bewegungsenergie E_kin; die mittlere Spalte ist im Heft schon ausgefüllt. Auf Karte 3 bewusst KEINE Zahlen eintragen: Der Fall dauert gemessen nur rund zwei Sekunden, und die Seite verlangt an dieser Stelle auch keine Zahl.",
+  "merksatz": [
+   "kleiner",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Lageenergie E_pot",
+    "langer Balken",
+    "der Balken wird kürzer"
+   ],
+   [
+    "Bewegungsenergie E_kin",
+    "kein Balken",
+    "der Balken wird länger"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Richtig ist „Nur so lange, wie der Ball nach unten fällt.“ Nur dann wird der Balken E_pot kürzer und der Balken E_kin länger – beim Hochspringen ist es genau umgekehrt. Die Simulation hat keinen einzigen Knopf, keine Pause und kein Reset; sie läuft vom Öffnen an durch. Antwort 2 ist falsch, weil ein Bewegen des Höhenreglers den Lauf mitten im Fall verändert: gemessen sprang die Anzeige dabei von „E_pot = 389 J“ auf „E_pot = 94 J“. VORSICHT, FALLE: Der Satz „noch kein Aufprall“ taugt NICHT als Regel und steht deshalb in keinem Arbeitsschritt und in keiner Antwortmöglichkeit. Er bleibt nach dem ersten Aufsetzen stehen und wechselt erst beim ZWEITEN Aufsetzen (nach rund 5,4 Sekunden) zu „Sprunghöhe 14,3 m“. Wer sich auf ihn verlässt, liest noch beim Rücksprung auf 14,2 m ab, obwohl die Energiesumme längst gefallen ist: gemessen 392 J → 283 J → 203 J → 145 J, also rund 28 Prozent weniger bei jedem Aufprall.",
+   "typische_fehler": [
+    "„Immer“ wird angekreuzt, weil das Bild ununterbrochen weiterläuft und nichts es anhält – die Simulation hat weder Pause noch Reset.",
+    "Fall und Sprung werden nicht unterschieden: Beim Hochspringen wird E_pot wieder größer, und der Merksatz scheint falsch zu sein.",
+    "Die Regler werden als Startknöpfe missverstanden, weil die Simulation sonst keine Bedienelemente hat."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "392 J",
+    "0 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht; Hilfe: erst E_pot und E_kin im Satz unterstreichen, dann in der Wortbank suchen.",
+    "Statt 392 J wird die Achsenzahl „392.4“ abgeschrieben. Sie steht mit Dezimalpunkt oben an der Achse des E_pot-Diagramms und gehört nicht ins Heft; ins Heft gehört das Wort aus der Wortbank: „392 J“.",
+    "Statt der Anzeige „Höhe = 20,0 m“ wird der Regler „Höhe h: 20 m“ gelesen. Beide Zahlen stehen auf demselben Bild – für die Höhe ist das kein Fehler, für E_pot schon.",
+    "„0 J“ wird als „nichts da“ ausgelassen und das Feld bleibt leer."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Simulation zeigt nur Zahlen und zwei Balken. Sie hat keine Luft und keinen echten Ball. Sie sagt nicht, wie hoch ein echter Ball zurückspringt. Das muss man selbst messen.",
+   "alternativen": [
+    "Über die Regler: „Man kann nur die Höhe und die Masse einstellen. Alles andere kommt in der Simulation nicht vor.“",
+    "Über den Auftrag zu Hause: „Am Bildschirm sehe ich keinen Boden und keinen Ball aus Gummi. Wie hoch er zurückspringt, sehe ich erst beim echten Versuch.“",
+    "Kurzform ohne Beispiel: „Ein Modell zeigt nie alles.“ – reicht für die volle Wertung, wenn ein Beispiel genannt wird."
+   ],
+   "typische_fehler": [
+    "Die Simulation wird für falsch erklärt statt für unvollständig: „Die Simulation lügt.“ Ein Modell ist nicht falsch, es lässt etwas weg.",
+    "Es wird nur die Beobachtung wiederholt: „Da sind zwei Balken.“ Ohne Aussage darüber, was fehlt.",
+    "Der echte Ball wird gar nicht erwähnt; die Antwort bleibt beim Bildschirm."
+   ]
+  },
+  "hilfe3_wort": "zurückspringt (auch richtig: hochspringt, springt)",
+  "schwache": [
+   "Vor dem Arbeiten zeigen, wo die 20 m stehen: am Regler „Höhe h: 20 m“ und an der obersten Marke der Höhenleiter im Bild. Die Zahlen im Anzeigekasten laufen dafür zu schnell.",
+   "Zuerst nur die Bewegung des Balls anschauen, ohne Heft. Erst im zweiten Durchgang die Balken beobachten und die Tabelle ausfüllen.",
+   "Die Übersetzung vorab an die Tafel schreiben: „E_pot“ am linken Balken = Lageenergie · „E_kin“ am rechten Balken = Bewegungsenergie. Die langen Namen stehen nur über den beiden Diagrammen darunter.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und die Zahlen laut sprechen („dreihundertzweiundneunzig Joule“, „null Joule“).",
+   "Den Satz „Fasse die beiden Regler nicht an.“ vor dem Öffnen der Simulation gemeinsam lesen und die Geräte erst danach austeilen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Zeichne die zwei Balken für den Anfang und für die Mitte des Falls nebeneinander auf und schreibe unter jedes Bild einen Satz. Für rechenstarke Lernende die Aufgabe aus dem Regelheft: Berechne mit E_pot = m · g · h die Lageenergie bei 20 m und bei 10 m (m = 2 kg, g = 9,81 N/kg) und bilde die Differenz. Der berechnete Wert 196 J steht so nicht am Bildschirm: Bei halber Höhe springt die Anzeige gemessen von „E_pot = 199 J“ auf „E_pot = 195 J“; dort steht dann übrigens auch „E_kin = 195 J“ – beide Balken sind gleich lang.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Energieumwandlung und Energieerhaltung. Trägt UF1 und UF3 (Energieumwandlung beschreiben) und vor allem E7 „Modelle auswählen und Modellgrenzen angeben“ – E7 kommt im ganzen Kapitel el nur hier vor und ist über die Erklär-Aufgabe 3 gesichert. Der Alltagsauftrag mit dem Zollstock trägt E5. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. ZUSCHNITT UND MESSUNG: Die Einheit ist gegenüber el4 neu zugeschnitten, weil die Simulation ihr altes Lernziel nicht trägt. Nachgemessen wurde Bild für Bild (rauchtest.js-Umgebung, 16 ms je Bild): (1) Die Simulation hat KEINEN Knopf, keine Pause, kein Reset und keine HTML-Statuszeile – alle 47 Statuszeilen im Dump sind leer; die vier Anzeigezeilen stehen im Bild selbst. (2) Der erste Fall dauert nur rund 2 Sekunden (126 Bilder). Der Startzustand „Höhe = 20,0 m · E_pot = 392 J · E_kin = 0 J“ steht danach nie wieder da und ist schon nach rund einer Zehntelsekunde weg. Deshalb wird er auf der Schülerseite VORGEGEBEN (Tabelle, Wortbank) und nicht als Ableseauftrag verlangt. (3) Der Satz „noch kein Aufprall“ bleibt nach dem ersten Aufsetzen stehen; er wechselt erst beim zweiten Aufsetzen (rund 5,4 s) zu „Sprunghöhe 14,3 m“, und dann erscheint links eine gestrichelte Marke „letzte Sprunghöhe“. Als Ableseregel ist der Satz damit unbrauchbar; die Seite benutzt stattdessen die sichtbare Bewegung „der Ball fällt nach unten“, die sich bei jedem Sprung wiederholt. (4) Die Energiesumme fällt bei jedem Aufprall um rund 28 Prozent: gemessen 392 J → 283 J → 203 J → 145 J. Der Erhaltungssatz ist am Bildschirm also nicht belegt und nach dem Aufprall sogar widerlegt; er steht deshalb nur als Fachtext im Alltagsteil und im gelösten Beispiel, nie in einer Lücke und nie als Ableseauftrag. BEDIENUNG: Beide Regler bleiben unberührt. Der Höhenregler wirkt mitten im Lauf – gemessen sprang die Anzeige von „E_pot = 389 J“ auf „E_pot = 94 J“; der Masseregler ändert jede Zahl auf dem Bildschirm. Höhe h bleibt auf 20 m, Masse m auf 2 kg. WORTWAHL: An den beiden Balken steht im Bild NUR „E_pot“ und „E_kin“. „Potentielle Energie“ und „Kinetische Energie“ sind die Überschriften der beiden Kurvendiagramme darunter; sie stehen deshalb nicht in der Wortbank, in keiner Lücke und in keinem Tabellenkopf – sonst zählten sie als zwei weitere Fachwörter und die Einheit risse das Limit. Lageenergie E_pot (fe2) und Bewegungsenergie E_kin (fe3) sind Rückverweise, keine zweite Einführung. Das Wort „Wärme“ kommt hier NICHT vor; es gehört fe5 (Energie entwerten). Einziges neues Fachwort: Energieerhaltung. Die Überschrift der Simulation trägt ein Blitz-Zeichen; im Heft wird nur die Wortmarke genannt, weil die Satzschrift das Zeichen nicht kennt."
+ }
+}

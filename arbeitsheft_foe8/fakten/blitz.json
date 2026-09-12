@@ -1,0 +1,568 @@
+[
+ {
+  "sim": "blitz",
+  "ueberschrift": "🌩️ Was passiert bei einem Blitz?",
+  "regler": [
+   {
+    "id": "blzF",
+    "beschriftung": "Feld zwischen Wolke und Boden: 120 kV/m",
+    "bereich": {
+     "min": "0",
+     "max": "400",
+     "step": "10",
+     "start": "120"
+    }
+   },
+   {
+    "id": "blzS",
+    "beschriftung": "Entfernung des Gewitters: 3,0 km",
+    "bereich": {
+     "min": "5",
+     "max": "80",
+     "step": "1",
+     "start": "30"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Blitz auslösen",
+    "ruft": "_blzAusloesen()"
+   },
+   {
+    "aufschrift": "knapp darunter",
+    "ruft": "_blzSet('feld', 290)"
+   },
+   {
+    "aufschrift": "knapp darüber",
+    "ruft": "_blzSet('feld', 310)"
+   }
+  ],
+  "hinweise": [
+   "Ein Blitz ist derselbe Vorgang wie der Schlag an der Türklinke – nur riesig. Lade die Wolke auf, bis die Luft nicht mehr aushält, und zähle dann mit, bis der Donner ankommt.",
+   "Warum sieht man den Blitz zuerst? Licht und Schall starten im selben Augenblick. Das Licht ist aber fast eine Million Mal schneller – deshalb ist der Abstand zwischen Blitz und Donner ein Maß für die Entfernung.",
+   "Modellgrenze: Trockene Laborluft hält 3000 kV/m aus – zehnmal mehr als hier. In einer echten Gewitterwolke reichen trotzdem 100 bis 400 kV/m, weil Wassertropfen sich im Feld verformen und Höhenstrahlung die ersten freien Elektronen liefert. Die Spannung U = E · d ist außerdem ein oberer Schätzwert: Das Feld ist in Wirklichkeit nicht überall gleich stark.",
+   "Donner: t = s / 343 m/s · die Faustregel „3 s je km“ schätzt die Entfernung rund 3 % zu klein"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 120 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 120 kV/m · 1000 m = 120 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 180 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Ladungen sammeln sich …"
+   },
+   {
+    "einstellung": "Blitz auslösen",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 120 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 120 kV/m · 1000 m = 120 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 180 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "knapp darunter",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 290 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 290 kV/m · 1000 m = 290 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 10 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "knapp darüber",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 310 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 310 kV/m · 1000 m = 310 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 0",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 0 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 0 kV/m · 1000 m = 0 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 300 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 50",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 50 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 50 kV/m · 1000 m = 50 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 250 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 100",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 100 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 100 kV/m · 1000 m = 100 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 200 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 150",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 150 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 150 kV/m · 1000 m = 150 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 150 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 200",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 200 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 200 kV/m · 1000 m = 200 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 100 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 250",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 250 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 250 kV/m · 1000 m = 250 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 50 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 300",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 300 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 300 kV/m · 1000 m = 300 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 350",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 350 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 350 kV/m · 1000 m = 350 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 400",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 400 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 400 kV/m · 1000 m = 400 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 10",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 10 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 10 kV/m · 1000 m = 10 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 290 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 20",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 20 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 20 kV/m · 1000 m = 20 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 280 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 30",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 30 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 30 kV/m · 1000 m = 30 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 270 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: ⚡ Es blitzt!"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 40",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 40 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 40 kV/m · 1000 m = 40 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 260 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,0 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 60",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 60 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 60 kV/m · 1000 m = 60 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 240 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,0 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 70",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 70 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 70 kV/m · 1000 m = 70 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 230 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,1 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 80",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 80 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 80 kV/m · 1000 m = 80 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 220 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,1 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 90",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 90 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 90 kV/m · 1000 m = 90 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 210 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,1 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 110",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 110 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 110 kV/m · 1000 m = 110 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 190 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,2 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 120",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 120 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 120 kV/m · 1000 m = 120 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 180 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,2 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 130",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 130 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 130 kV/m · 1000 m = 130 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 170 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,2 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 140",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 140 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 140 kV/m · 1000 m = 140 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 160 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,3 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 160",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 160 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 160 kV/m · 1000 m = 160 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 140 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,3 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 170",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 170 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 170 kV/m · 1000 m = 170 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 130 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,3 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 180",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 180 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 180 kV/m · 1000 m = 180 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 120 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,4 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 190",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 190 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 190 kV/m · 1000 m = 190 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 110 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,4 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 210",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 210 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 210 kV/m · 1000 m = 210 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 90 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,4 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 220",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 220 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 220 kV/m · 1000 m = 220 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 80 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,5 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 230",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 230 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 230 kV/m · 1000 m = 230 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 70 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,5 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 240",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 240 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 240 kV/m · 1000 m = 240 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 60 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,5 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 260",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 260 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 260 kV/m · 1000 m = 260 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 40 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,6 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 270",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 270 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 270 kV/m · 1000 m = 270 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 30 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,6 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 280",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 280 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 280 kV/m · 1000 m = 280 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 20 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,6 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 290",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 290 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 290 kV/m · 1000 m = 290 MV. | | 2 · Ab wann schlägt es durch? | Noch nichts. Erst ab etwa 300 kV/m wird die Luft leitend – es fehlen noch 10 kV/m. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,7 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 310",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 310 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 310 kV/m · 1000 m = 310 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,7 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 320",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 320 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 320 kV/m · 1000 m = 320 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,7 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 330",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 330 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 330 kV/m · 1000 m = 330 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,8 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 340",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 340 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 340 kV/m · 1000 m = 340 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,8 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 360",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 360 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 360 kV/m · 1000 m = 360 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,8 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 370",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 370 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 370 kV/m · 1000 m = 370 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,8 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 380",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 380 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 380 kV/m · 1000 m = 380 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,9 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Feld zwischen Wolke und Boden: 120 kV/m = 390",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,9 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 5",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 500 m / 343 m/s = 1,46 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 1,46 s nur 0,49 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 2 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (0,9 s von 1,46 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 14",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1400 m / 343 m/s = 4,08 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 4,08 s nur 1,36 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 5 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,0 s von 4,08 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 24",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2400 m / 343 m/s = 7,00 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 7,00 s nur 2,33 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 8 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,0 s von 7,00 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 33",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3300 m / 343 m/s = 9,62 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 9,62 s nur 3,21 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 11 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,0 s von 9,62 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 43",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4300 m / 343 m/s = 12,54 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 12,54 s nur 4,18 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 14 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,1 s von 12,54 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 52",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 5200 m / 343 m/s = 15,16 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 15,16 s nur 5,05 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 17 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,1 s von 15,16 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 61",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6100 m / 343 m/s = 17,78 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 17,78 s nur 5,93 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 20 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,1 s von 17,78 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 71",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7100 m / 343 m/s = 20,70 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 20,70 s nur 6,90 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 24 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,2 s von 20,70 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 80",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 8000 m / 343 m/s = 23,32 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 23,32 s nur 7,77 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 27 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,2 s von 23,32 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 6",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 600 m / 343 m/s = 1,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 1,75 s nur 0,58 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 2 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,2 s von 1,75 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 8",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 800 m / 343 m/s = 2,33 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 2,33 s nur 0,78 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 3 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,3 s von 2,33 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 10",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1000 m / 343 m/s = 2,92 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 2,92 s nur 0,97 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 3 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,3 s von 2,92 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 12",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1200 m / 343 m/s = 3,50 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 3,50 s nur 1,17 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 4 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,3 s von 3,50 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 16",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1600 m / 343 m/s = 4,66 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 4,66 s nur 1,55 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 5 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,4 s von 4,66 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 18",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1800 m / 343 m/s = 5,25 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 5,25 s nur 1,75 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 6 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,4 s von 5,25 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 20",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2000 m / 343 m/s = 5,83 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 5,83 s nur 1,94 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 7 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,4 s von 5,83 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 22",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2200 m / 343 m/s = 6,41 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 6,41 s nur 2,14 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 7 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,5 s von 6,41 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 26",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2600 m / 343 m/s = 7,58 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 7,58 s nur 2,53 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 9 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,5 s von 7,58 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 28",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2800 m / 343 m/s = 8,16 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,16 s nur 2,72 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 9 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,5 s von 8,16 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 30",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3000 m / 343 m/s = 8,75 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 8,75 s nur 2,92 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,6 s von 8,75 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 32",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3200 m / 343 m/s = 9,33 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 9,33 s nur 3,11 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 11 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,6 s von 9,33 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 34",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3400 m / 343 m/s = 9,91 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 9,91 s nur 3,30 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 11 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,6 s von 9,91 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 36",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3600 m / 343 m/s = 10,50 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 10,50 s nur 3,50 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 12 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,6 s von 10,50 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 38",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 3800 m / 343 m/s = 11,08 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 11,08 s nur 3,69 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 13 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,7 s von 11,08 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 40",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4000 m / 343 m/s = 11,66 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 11,66 s nur 3,89 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 13 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,7 s von 11,66 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 42",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4200 m / 343 m/s = 12,24 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 12,24 s nur 4,08 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 14 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,7 s von 12,24 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 44",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4400 m / 343 m/s = 12,83 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 12,83 s nur 4,28 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 15 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,8 s von 12,83 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 46",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4600 m / 343 m/s = 13,41 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 13,41 s nur 4,47 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 15 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,8 s von 13,41 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 48",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 4800 m / 343 m/s = 13,99 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 13,99 s nur 4,66 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 16 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,8 s von 13,99 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 50",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 5000 m / 343 m/s = 14,58 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 14,58 s nur 4,86 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 17 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,9 s von 14,58 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 54",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 5400 m / 343 m/s = 15,74 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 15,74 s nur 5,25 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 18 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,9 s von 15,74 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 56",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 5600 m / 343 m/s = 16,33 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 16,33 s nur 5,44 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 19 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (1,9 s von 16,33 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 58",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 5800 m / 343 m/s = 16,91 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 16,91 s nur 5,64 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 19 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,0 s von 16,91 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 60",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6000 m / 343 m/s = 17,49 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 17,49 s nur 5,83 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 20 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,0 s von 17,49 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 62",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6200 m / 343 m/s = 18,08 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 18,08 s nur 6,03 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 21 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,0 s von 18,08 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 64",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6400 m / 343 m/s = 18,66 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 18,66 s nur 6,22 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 21 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,1 s von 18,66 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 66",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6600 m / 343 m/s = 19,24 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 19,24 s nur 6,41 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 22 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,1 s von 19,24 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 68",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 6800 m / 343 m/s = 19,83 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 19,83 s nur 6,61 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 23 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,1 s von 19,83 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 70",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7000 m / 343 m/s = 20,41 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 20,41 s nur 6,80 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 23 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,2 s von 20,41 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 72",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7200 m / 343 m/s = 20,99 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 20,99 s nur 7,00 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 24 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,2 s von 20,99 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 74",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7400 m / 343 m/s = 21,57 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 21,57 s nur 7,19 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 25 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,2 s von 21,57 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 76",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7600 m / 343 m/s = 22,16 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 22,16 s nur 7,39 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 25 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,3 s von 22,16 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 78",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 7800 m / 343 m/s = 22,74 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 22,74 s nur 7,58 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 26 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,3 s von 22,74 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 15",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 1500 m / 343 m/s = 4,37 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 4,37 s nur 1,46 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 5 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,3 s von 4,37 s)"
+   },
+   {
+    "einstellung": "Entfernung des Gewitters: 3,0 km = 25",
+    "text": "blzStatus: 1 · Die Ladungen trennen sich | Feldstärke zwischen Wolke und Boden: 390 kV/m. | Auf 1000 m Höhe ergibt das eine Spannung von 390 kV/m · 1000 m = 390 MV. | | 2 · Ab wann schlägt es durch? | Die Schwelle von 300 kV/m ist erreicht: Die Luft wird leitend, es blitzt. | | 3 · Der Strom fließt | Rund 30 kA für wenige Millionstel Sekunden. Der Kanal wird dabei etwa 30.000 K heiß – fünfmal so heiß wie die Sonnenoberfläche. | | 4 · Der Donner kommt hinterher | Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall. | t = s / v = 2500 m / 343 m/s = 7,29 s | Die Faustregel „3 Sekunden je Kilometer“ macht aus diesen 7,29 s nur 2,43 km. Sie rechnet nämlich mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein. | Das Licht braucht für dieselbe Strecke nur 8 Millionstel Sekunden. | | Gerade: Der Donner ist unterwegs … (2,4 s von 7,29 s)"
+   }
+  ],
+  "bildtexte": [
+   "–",
+   "+",
+   "300 kV/m",
+   "Feld",
+   "120",
+   "kV/m",
+   "Feld wächst … ab 300 kV/m wird die Luft leitend",
+   "Gewitter 3,0 km entfernt",
+   "⚡ 30 kA  ·  30.000 K",
+   "290",
+   "310",
+   "0",
+   "50",
+   "100",
+   "150",
+   "200",
+   "250",
+   "300",
+   "350",
+   "400",
+   "10",
+   "20",
+   "30",
+   "Zählen: 0,0 s  von  8,75 s",
+   "40",
+   "60",
+   "Zählen: 0,1 s  von  8,75 s",
+   "70",
+   "80",
+   "90",
+   "Zählen: 0,2 s  von  8,75 s",
+   "110",
+   "130",
+   "Zählen: 0,3 s  von  8,75 s",
+   "140",
+   "160",
+   "170",
+   "Zählen: 0,4 s  von  8,75 s",
+   "180",
+   "190",
+   "210",
+   "Zählen: 0,5 s  von  8,75 s",
+   "220",
+   "230",
+   "240",
+   "Zählen: 0,6 s  von  8,75 s",
+   "260",
+   "270",
+   "280",
+   "Zählen: 0,7 s  von  8,75 s",
+   "320",
+   "Zählen: 0,8 s  von  8,75 s",
+   "330",
+   "340",
+   "360",
+   "370",
+   "Zählen: 0,9 s  von  8,75 s",
+   "380",
+   "390",
+   "Zählen: 1,0 s  von  1,46 s",
+   "Gewitter 0,5 km entfernt",
+   "Zählen: 1,0 s  von  4,08 s",
+   "Gewitter 1,4 km entfernt",
+   "Zählen: 1,0 s  von  7,00 s",
+   "Gewitter 2,4 km entfernt",
+   "Zählen: 1,1 s  von  9,62 s",
+   "Gewitter 3,3 km entfernt",
+   "Zählen: 1,1 s  von  12,54 s",
+   "Gewitter 4,3 km entfernt",
+   "Zählen: 1,1 s  von  15,16 s",
+   "Gewitter 5,2 km entfernt",
+   "Zählen: 1,2 s  von  17,78 s",
+   "Gewitter 6,1 km entfernt",
+   "Zählen: 1,2 s  von  20,70 s",
+   "Gewitter 7,1 km entfernt",
+   "Zählen: 1,2 s  von  23,32 s",
+   "Gewitter 8,0 km entfernt",
+   "Zählen: 1,2 s  von  1,75 s",
+   "Gewitter 0,6 km entfernt",
+   "Zählen: 1,3 s  von  1,75 s",
+   "Zählen: 1,3 s  von  2,33 s",
+   "Gewitter 0,8 km entfernt",
+   "Zählen: 1,3 s  von  2,92 s",
+   "Gewitter 1,0 km entfernt",
+   "Zählen: 1,3 s  von  3,50 s",
+   "Gewitter 1,2 km entfernt",
+   "Zählen: 1,4 s  von  3,50 s",
+   "Zählen: 1,4 s  von  4,66 s",
+   "Gewitter 1,6 km entfernt",
+   "Zählen: 1,4 s  von  5,25 s",
+   "Gewitter 1,8 km entfernt",
+   "Zählen: 1,4 s  von  5,83 s",
+   "Gewitter 2,0 km entfernt",
+   "Zählen: 1,5 s  von  5,83 s",
+   "Zählen: 1,5 s  von  6,41 s",
+   "Gewitter 2,2 km entfernt",
+   "Zählen: 1,5 s  von  7,58 s",
+   "Gewitter 2,6 km entfernt",
+   "Zählen: 1,5 s  von  8,16 s",
+   "Gewitter 2,8 km entfernt",
+   "Zählen: 1,6 s  von  8,16 s",
+   "Zählen: 1,6 s  von  8,75 s",
+   "Zählen: 1,6 s  von  9,33 s",
+   "Gewitter 3,2 km entfernt",
+   "Zählen: 1,6 s  von  9,91 s",
+   "Gewitter 3,4 km entfernt",
+   "Zählen: 1,7 s  von  10,50 s",
+   "Gewitter 3,6 km entfernt",
+   "Zählen: 1,7 s  von  11,08 s",
+   "Gewitter 3,8 km entfernt",
+   "Zählen: 1,7 s  von  11,66 s",
+   "Gewitter 4,0 km entfernt",
+   "Zählen: 1,8 s  von  12,24 s",
+   "Gewitter 4,2 km entfernt",
+   "Zählen: 1,8 s  von  12,83 s",
+   "Gewitter 4,4 km entfernt",
+   "Zählen: 1,8 s  von  13,41 s",
+   "Gewitter 4,6 km entfernt",
+   "Zählen: 1,9 s  von  13,99 s",
+   "Gewitter 4,8 km entfernt",
+   "Zählen: 1,9 s  von  14,58 s",
+   "Gewitter 5,0 km entfernt",
+   "Zählen: 1,9 s  von  15,74 s",
+   "Gewitter 5,4 km entfernt",
+   "Zählen: 2,0 s  von  16,33 s",
+   "Gewitter 5,6 km entfernt",
+   "Zählen: 2,0 s  von  16,91 s",
+   "Gewitter 5,8 km entfernt",
+   "Zählen: 2,0 s  von  17,49 s",
+   "Gewitter 6,0 km entfernt",
+   "Zählen: 2,0 s  von  18,08 s",
+   "Gewitter 6,2 km entfernt",
+   "Zählen: 2,1 s  von  18,08 s",
+   "Zählen: 2,1 s  von  18,66 s",
+   "Gewitter 6,4 km entfernt",
+   "Zählen: 2,1 s  von  19,24 s",
+   "Gewitter 6,6 km entfernt",
+   "Zählen: 2,1 s  von  19,83 s",
+   "Gewitter 6,8 km entfernt",
+   "Zählen: 2,2 s  von  19,83 s",
+   "Zählen: 2,2 s  von  20,41 s",
+   "Gewitter 7,0 km entfernt",
+   "Zählen: 2,2 s  von  20,99 s",
+   "Gewitter 7,2 km entfernt",
+   "Zählen: 2,2 s  von  21,57 s",
+   "Gewitter 7,4 km entfernt",
+   "Zählen: 2,3 s  von  21,57 s",
+   "Zählen: 2,3 s  von  22,16 s",
+   "Gewitter 7,6 km entfernt",
+   "Zählen: 2,3 s  von  22,74 s",
+   "Gewitter 7,8 km entfernt",
+   "Zählen: 2,3 s  von  4,37 s",
+   "Gewitter 1,5 km entfernt",
+   "Zählen: 2,4 s  von  4,37 s",
+   "Zählen: 2,4 s  von  7,29 s",
+   "Gewitter 2,5 km entfernt"
+  ]
+ }
+]

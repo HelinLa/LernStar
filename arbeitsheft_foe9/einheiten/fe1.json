@@ -1,0 +1,194 @@
+{
+ "seite": {
+  "id": "fe1",
+  "quelle": "el1",
+  "sim": "arbeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Vier Meter über den Hof",
+  "name": "Wann wird Arbeit verrichtet?",
+  "fachwoerter_neu": [
+   "Arbeit W in Joule (J)"
+  ],
+  "alltag": [
+   "Jannis schleppt eine schwere Kiste über den Hof.",
+   "„Das war Arbeit“, stöhnt er. Herr Kessler sieht das anders.",
+   "In der Physik bedeutet Arbeit W etwas anderes als im Alltag.",
+   "Am Bildschirm heißt die Strecke s jetzt Weg s."
+  ],
+  "frage": "Wann verrichtet Jannis wirklich Arbeit?",
+  "predict": [
+   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null.",
+   "Tragen ist anstrengend. Also ist es Arbeit."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.",
+   "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.",
+   "Drücke „Hochheben“. Lies die Arbeit im Bild ab.",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was macht Jannis?",
+   "Zeigen Kraft und Weg in dieselbe Richtung?",
+   "Wie viel Arbeit W in J?"
+  ],
+  "tabRows": [
+   [
+    "Schieben: 100 N über 4 m",
+    "ja",
+    "400 J"
+   ],
+   [
+    "Waagerecht tragen: 4 m",
+    "",
+    ""
+   ],
+   [
+    "Hochheben: 2,0 m",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Arbeit gibt es nur, wenn Kraft und Weg in dieselbe Richtung zeigen:",
+    "loesung": "W = F · s",
+    "post": "in Joule (J)."
+   },
+   {
+    "pre": "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist",
+    "loesung": "null",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "W = F · s",
+   "null",
+   "400 J",
+   "392 J"
+  ],
+  "beispiel": {
+   "frage": "Wie viel Arbeit verrichtet Jannis beim Schieben?",
+   "antwort": "Gegeben: F = 100 N, s = 4 m. Gesucht: W. Formel: W = F · s. Einsetzen: W = 100 N · 4 m = 400 J. Antwort: Jannis verrichtet 400 J Arbeit."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour trägt einen Stuhl über die Bühne. Was gilt?",
+    "optionen": [
+     "Sie verrichtet keine Arbeit. Die Kraft zeigt nach oben.",
+     "Sie verrichtet Arbeit, denn der Stuhl ist schwer.",
+     "Sie verrichtet Arbeit, denn sie geht 4 m."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Schieben mit 100 N über 4 m ergibt",
+      "loesung": "400 J",
+      "post": "Arbeit."
+     },
+     {
+      "pre": "Beim Hochheben steht im Bild",
+      "loesung": "392 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Tragen ist anstrengend, also ist es Arbeit.“ Erkläre seinen Fehler.",
+    "satzstarter": "Beim Tragen zeigt die Kraft …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beim Tragen zeigt die Kraft nach oben.",
+   "h3": "Fast fertig: Kraft und Weg zeigen nicht in dieselbe Richtung. Die Arbeit ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann Arbeit verrichtet wird.",
+   "Ich kann W = F · s ausrechnen.",
+   "Ich kann erklären, warum Tragen keine Arbeit ist."
+  ],
+  "zuhause": "Trage eine Tasche durch den Flur und die Treppe hinauf. Wo verrichtest du Arbeit?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fe1",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Arbeit nur verrichtet wird, wenn Kraft und Weg in dieselbe Richtung zeigen. Sie berechnen die Arbeit beim Schieben mit W = F · s (100 N · 4 m = 400 J) und lesen die beiden anderen Werte am Bildschirm ab: 0 J beim waagerechten Tragen, 392 J beim Hochheben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Bücherkiste einmal über den Tisch schieben, einmal waagerecht durch den Raum tragen, einmal auf den Tisch heben.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile des Bildschirms. Karte 1 „Schieben“: „Du schiebst mit 100 N über 4 m. | Arbeit W = 100 N · 4 m = 400 J“, dazu der Bildtext „Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet“ und „verrichtete Arbeit: 400 J“. Karte 2 „Waagerecht tragen“: „Du hältst 196 N (20 kg) und gehst 4 m geradeaus. | Die Kraft zeigt nach oben, der Weg nach vorn. | Arbeit W = 0 J – physikalisch keine Arbeit.“, dazu der Bildtext „verrichtete Arbeit: 0 J“. Karte 3 „Hochheben“: „Du hebst 20 kg um 2,0 m hoch.“, dazu der Bildtext „verrichtete Arbeit: 392 J“. Die Zahl 196 N und die Zeile „Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m“ nur vorlesen, nie abfragen und nie herleiten lassen (siehe Kernlehrplan-Feld). Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "W = F · s",
+   "null"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Waagerecht tragen: 4 m",
+    "nein",
+    "0 J"
+   ],
+   [
+    "Hochheben: 2,0 m",
+    "ja",
+    "392 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Tragen ist der Fall aus der Statuszeile: „Die Kraft zeigt nach oben, der Weg nach vorn. | Arbeit W = 0 J – physikalisch keine Arbeit.“ Nicht die Anstrengung entscheidet und nicht die Länge des Weges, sondern die Richtung der Kraft.",
+   "typische_fehler": [
+    "Antwort 1 wird angekreuzt: Das Gewicht des Stuhls gilt als Beweis für Arbeit. Gegenfrage: In welche Richtung zeigt die Kraft, in welche der Weg?",
+    "Antwort 3 wird angekreuzt: Der zurückgelegte Weg allein gilt als Beweis. Am Bildschirm sind beim Tragen ebenfalls 4 m eingestellt – und trotzdem steht dort 0 J.",
+    "Alltagswort und Fachwort werden vermischt („anstrengend = Arbeit“). Beide Bedeutungen einmal nebeneinander an die Tafel schreiben."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "400 J",
+    "392 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Zahlen werden vertauscht, weil 400 und 392 dicht beieinander liegen. Hilfe: 400 J steht in der Statuszeile beim Schieben, 392 J im Bild beim Hochheben.",
+    "Statt 400 J wird 104 J geschrieben (addiert statt multipliziert). Die Formel W = F · s laut mitsprechen.",
+    "Die Einheit J fehlt oder es wird N geschrieben.",
+    "„null“ wird aus dem Merksatz übernommen, weil beide Lücken nach einer Zahl aussehen; die Sätze sprechen aber von Schieben und Hochheben.",
+    "In Lücke 1 wird „W = F · s“ eingetragen, weil die Formel jetzt auch in der Wortbank steht. Gefragt ist dort das Ergebnis, nicht der Rechenweg."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beim Tragen zeigt die Kraft nach oben, der Weg zeigt nach vorn. Kraft und Weg zeigen also nicht in dieselbe Richtung. Deshalb ist die Arbeit null, auch wenn das Tragen anstrengend ist.",
+   "alternativen": [
+    "Bezug auf den Bildschirm: Beim Tragen steht dort „Arbeit W = 0 J – physikalisch keine Arbeit“, obwohl 4 m eingestellt sind.",
+    "Vergleich mit dem Schieben: Dort zeigen Kraft und Weg in dieselbe Richtung, deshalb kommen 400 J heraus.",
+    "Kurzform ohne Begründungssatz: „Anstrengend ist nicht dasselbe wie Arbeit in der Physik.“ – reicht für die volle Wertung, wenn die Richtung genannt wird."
+   ],
+   "typische_fehler": [
+    "Die Anstrengung wird als Beweis wiederholt, ohne die Richtung zu nennen. Gegenfrage: Wohin zeigt die Kraft, wohin der Weg?",
+    "Es wird behauptet, beim Tragen wirke gar keine Kraft. Die Kraft ist da (der Bildschirm nennt 196 N), sie zeigt nur in die falsche Richtung.",
+    "Die Aussage wird auf jedes Tragen verallgemeinert. Beim Hochheben wird Arbeit verrichtet (392 J) – dort geht der Weg nach oben, wie die Kraft."
+   ]
+  },
+  "hilfe3_wort": "null (auch richtig: 0 J)",
+  "schwache": [
+   "Zuerst nur Schieben und Waagerecht tragen vergleichen; Hochheben erst danach dazunehmen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Die drei Situationen mit einer Federmappe nachspielen: über den Tisch schieben, vor dem Bauch durch den Raum tragen, auf den Stuhl heben. Dabei jedes Mal mit dem Finger zeigen, wohin die Kraft geht und wohin der Weg.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Das gelöste Beispiel Zeile für Zeile abdecken und mitsprechen, bevor Aufgabe 2 begonnen wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen des Bildschirms wörtlich ab. Streiche darin an, welches Wort verrät, ob Arbeit verrichtet wird.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm."
+ }
+}

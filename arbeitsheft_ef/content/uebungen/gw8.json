@@ -1,0 +1,72 @@
+{
+ "id": "gw8",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "K8",
+  "S2"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung genau quer dazu, so ändert die Kraft nur die Richtung der Geschwindigkeit, nicht ihren",
+   "loesung": "Betrag",
+   "post": "; genau das ist der Kreisfall."
+  },
+  {
+   "pre": "Setzt man auf der Kreisbahn die Gravitationskraft gleich der nötigen Zentripetalkraft, so kürzt sich die Masse m des Planeten heraus, und es bleibt v =",
+   "loesung": "√(G·M/r)",
+   "post": ". Der Kreiswert hängt damit allein vom Abstand ab, nicht davon, was dort kreist."
+  },
+  {
+   "pre": "Weicht die Startgeschwindigkeit vom Kreiswert ab, wird die Bahn zur Ellipse. Ist sie kleiner als 29,8 km/s, so ist der Startabstand von 1,00 AE zugleich der",
+   "loesung": "größte Abstand",
+   "post": "der Bahn."
+  },
+  {
+   "pre": "Bei 30 km/s nennt die Statuszeile als Bahnform",
+   "loesung": "fast ein Kreis",
+   "post": ", dazu 1,00 AE und 1,03 AE bei 1,02 Jahren."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Bei 18 km/s und bei 36 km/s meldet die Statuszeile dieselbe Bahnform, obwohl der Startabstand 1,00 AE im einen Fall der größte und im anderen der kleinste Abstand der Bahn ist.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Ein doppelt so schwerer Planet bräuchte im Abstand 1,00 AE für eine Kreisbahn eine größere Startgeschwindigkeit als 29,8 km/s.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Weil die Bahnform zwischen 15 km/s und 16 km/s sprunghaft umschlägt, lässt sich bei wiederholtem Start nicht vorhersagen, welche der beiden Bahnen entsteht.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Bei der Einstellung 42 km/s durchläuft der Planet den sonnennahen Teil seiner Bahn mit größerer Bahngeschwindigkeit als den 171 AE entfernten Umkehrpunkt.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias will für den Bericht die Grenze zwischen Sturz und Umlauf angeben. Er liest die feste Zeile „Für einen Kreis braucht er 29,8 km/s“ und schreibt: „Unterhalb von 29,8 km/s stürzt der Planet in die Sonne.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Die Aussage trifft zu: Unterhalb des Kreiswertes ist der Startabstand nicht mehr der kleinste, sondern der größte Abstand der Bahn; damit fehlt der Ellipse der äußere Umkehrpunkt, und der Planet fällt zur Sonne.",
+   "Die Grenze ist zu hoch angesetzt: Zwischen 16 km/s und 29,8 km/s meldet die Statuszeile eine lang gezogene Ellipse, bei 18 km/s mit 0,22 AE und 1,00 AE. Erst unterhalb von 16 km/s führt die Bahn so dicht an der Sonne vorbei, dass der Planet sie trifft.",
+   "Der Kreiswert grenzt nicht die Bahnformen gegeneinander ab, sondern die Umlaufzeiten: Unterhalb von 29,8 km/s dauert ein Umlauf länger als ein Jahr, oberhalb weniger."
+  ],
+  "richtig": 1,
+  "erklaerung": "Die Statuszeile widerlegt die Grenze unmittelbar. Bei 18 km/s und bei 24 km/s – beide unterhalb von 29,8 km/s – steht dort „lang gezogene Ellipse“ mit 0,22 AE und 1,00 AE beziehungsweise 0,48 AE und 1,00 AE; der Planet fällt also weiterhin an der Sonne vorbei, nur auf einer engeren Bahn. Der Sturz beginnt erst deutlich weiter unten: Bei 15 km/s meldet die Zeile noch „stürzt in die Sonne“, ab 16 km/s eine Ellipse mit 0,17 AE und 1,00 AE. Der Kreiswert trennt nicht Sturz von Umlauf, sondern nur die beiden Lagen der Ellipse – darunter liegt der Start außen, darüber innen; ein äußerer Umkehrpunkt fehlt in keinem der beiden Fälle. Über die Umlaufzeit entscheidet der Kreiswert ebenfalls nicht so, wie die dritte Angabe behauptet: Bei 18 km/s dauert ein Umlauf 0,48 Jahre, also weniger als ein Jahr, obwohl 18 km/s unter dem Kreiswert liegt."
+ },
+ "offen": {
+  "frage": "Der Fluchtwert 42,1 km/s ist gerade das √2-fache des Kreiswertes 29,8 km/s. Für die untere Grenze gibt es keine solche Rechnung: Zwischen 15 km/s und 16 km/s wechselt die Statuszeile von „stürzt in die Sonne“ zu einer Ellipse mit 0,17 AE und 1,00 AE. Erläutere, worin sich die Aussagekraft der beiden Grenzen unterscheidet, und begründe, welche von ihnen aus v = √(G·M/r) vorhersagbar ist und welche nicht.",
+  "prompt": "Der Fluchtwert 42,1 km/s ist gerade das √2-fache des Kreiswertes 29,8 km/s. Für die untere Grenze gibt es keine solche Rechnung: Zwischen 15 km/s und 16 km/s wechselt die Statuszeile von „stürzt in die Sonne“ zu einer Ellipse mit 0,17 AE und 1,00 AE. Erläutere, worin sich die Aussagekraft der beiden Grenzen unterscheidet, und begründe, welche von ihnen aus v = √(G·M/r) vorhersagbar ist und welche nicht.",
+  "zeilen": 5,
+  "loesung": "Die obere Grenze folgt aus dem Modell selbst. Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen v = √(2·G·M/r); beide Ausdrücke unterscheiden sich bei jedem Abstand r nur um den Faktor √2. Aus 29,8 km/s folgt deshalb zwingend 1,414 · 29,8 km/s = 42,14 km/s, gerundet die angezeigten 42,1 km/s. Diese Grenze ist eine Vorhersage: Sie braucht keinen weiteren Versuch und hängt allein von G, M und r ab. Die untere Grenze steht auf anderem Grund. Zu kleine Startgeschwindigkeiten liefern nach demselben Modell ebenfalls Ellipsen – die Bahn hört nicht auf zu bestehen, sie führt nur immer dichter an der Sonne vorbei. Bei 16 km/s beträgt der kleinste Abstand noch 0,17 AE; wird die Startgeschwindigkeit weiter verringert, rückt dieser Punkt in die Sonne hinein, und die Anzeige meldet den Treffer. Ob ein Vorbeiflug noch einer ist, entscheidet also nicht das Kraftgesetz, sondern die Ausdehnung des Zentralkörpers. Deshalb ist der Umschlag zwischen 15 km/s und 16 km/s auch kein glatter Wert und ließ sich nur durch Ausprobieren in Einerschritten einkreisen. Die eine Grenze ist eine Aussage des Modells, die andere eine Eigenschaft des konkreten Körpers: Wäre die Sonne kleiner, läge der Umschlag bei einer kleineren Startgeschwindigkeit, während 42,1 km/s unverändert bliebe."
+ }
+}

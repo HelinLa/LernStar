@@ -1,0 +1,196 @@
+[
+ {
+  "sim": "v-begriff",
+  "ueberschrift": "🏁 Was bedeutet Geschwindigkeit?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "langsam",
+    "ruft": "_vbgSet('va','langsam')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_vbgSet('va','mittel')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_vbgSet('va','schnell')"
+   },
+   {
+    "aufschrift": "langsam",
+    "ruft": "_vbgSet('vb','langsam')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_vbgSet('vb','mittel')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_vbgSet('vb','schnell')"
+   },
+   {
+    "aufschrift": "🏁 Rennen starten",
+    "ruft": "_vbgStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_vbgReset()"
+   },
+   {
+    "aufschrift": "Wenn es in gleicher Zeit mehr Strecke schafft",
+    "ruft": "_vbgAns(0,0)"
+   },
+   {
+    "aufschrift": "Wenn es größer ist",
+    "ruft": "_vbgAns(0,1)"
+   },
+   {
+    "aufschrift": "Wenn es später startet",
+    "ruft": "_vbgAns(0,2)"
+   },
+   {
+    "aufschrift": "Strecke pro Zeit",
+    "ruft": "_vbgAns(1,0)"
+   },
+   {
+    "aufschrift": "Zeit pro Strecke",
+    "ruft": "_vbgAns(1,1)"
+   },
+   {
+    "aufschrift": "nur die Strecke",
+    "ruft": "_vbgAns(1,2)"
+   },
+   {
+    "aufschrift": "Auto A",
+    "ruft": "_vbgAns(2,0)"
+   },
+   {
+    "aufschrift": "Auto B",
+    "ruft": "_vbgAns(2,1)"
+   },
+   {
+    "aufschrift": "Beide gleichzeitig",
+    "ruft": "_vbgAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_vbgSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_vbgSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_vbgSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('vbegriff')"
+   }
+  ],
+  "hinweise": [
+   "Lass zwei Fahrzeuge um die Wette fahren. Wer in der gleichen Zeit weiter kommt, ist schneller. Verändere die Geschwindigkeiten und starte das Rennen.",
+   "Die Geschwindigkeit sagt, wie schnell sich etwas bewegt. Ein Fahrzeug ist schneller, wenn es in der gleichen Zeit eine größere Strecke zurücklegt (oder eine Strecke in kürzerer Zeit schafft). Geschwindigkeit = Strecke pro Zeit.",
+   "Gleiche Zeit, mehr Strecke → schneller. | Geschwindigkeit = Strecke pro Zeit."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "schnell",
+    "text": "vbgStatus: Beide Autos sind gleich schnell – sie kommen gleich weit."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "vbgStatus: 🔴 Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "vbgStatus: 🔴 Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "schnell",
+    "text": "vbgStatus: Beide Autos sind gleich schnell – sie kommen gleich weit."
+   },
+   {
+    "einstellung": "🏁 Rennen starten",
+    "text": "vbgStatus: Beide Autos sind gleich schnell – sie kommen gleich weit."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück."
+   },
+   {
+    "einstellung": "Wenn es in gleicher Zeit mehr Strecke schafft",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✓ Richtig! Mehr Strecke in derselben Zeit bedeutet schneller."
+   },
+   {
+    "einstellung": "Wenn es größer ist",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Die Größe sagt nichts über die Geschwindigkeit."
+   },
+   {
+    "einstellung": "Wenn es später startet",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit."
+   },
+   {
+    "einstellung": "Strecke pro Zeit",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✓ Richtig! Geschwindigkeit = Strecke pro Zeit."
+   },
+   {
+    "einstellung": "Zeit pro Strecke",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ So herum ist es nicht definiert."
+   },
+   {
+    "einstellung": "nur die Strecke",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu."
+   },
+   {
+    "einstellung": "Auto A",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✗ Bei gleicher Geschwindigkeit gewinnt keiner allein."
+   },
+   {
+    "einstellung": "Auto B",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✗ Bei gleicher Geschwindigkeit gewinnt keiner allein."
+   },
+   {
+    "einstellung": "Beide gleichzeitig",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✓ Richtig! Gleich schnell → gleichzeitig im Ziel."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✓ Richtig! Gleich schnell → gleichzeitig im Ziel.  ||  vbgSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✓ Richtig! Gleich schnell → gleichzeitig im Ziel.  ||  vbgSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✓ Richtig! Gleich schnell → gleichzeitig im Ziel."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "vbgStatus: 🔵 Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.  ||  vbgFb0: ✗ Der Startzeitpunkt entscheidet nicht über die Geschwindigkeit.  ||  vbgFb1: ✗ Auch die Zeit gehört dazu.  ||  vbgFb2: ✓ Richtig! Gleich schnell → gleichzeitig im Ziel."
+   }
+  ],
+  "bildtexte": [
+   "🏁 Ziel",
+   "A",
+   "zurückgelegte Strecke",
+   "B",
+   "Bereit – drücke „Rennen starten\"",
+   "… und los!"
+  ]
+ }
+]

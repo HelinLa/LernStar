@@ -1,0 +1,172 @@
+[
+ {
+  "sim": "weg-zeit-diagramm",
+  "ueberschrift": "📉 Das Weg-Zeit-Diagramm (s-t-Diagramm)",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "langsam",
+    "ruft": "_stdSet('langsam')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_stdSet('schnell')"
+   },
+   {
+    "aufschrift": "mit Pause",
+    "ruft": "_stdSet('pause')"
+   },
+   {
+    "aufschrift": "▶ Fahren",
+    "ruft": "_stdStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_stdReset()"
+   },
+   {
+    "aufschrift": "Langsame Fahrt",
+    "ruft": "_stdAns(0,0)"
+   },
+   {
+    "aufschrift": "Schnelle Fahrt",
+    "ruft": "_stdAns(0,1)"
+   },
+   {
+    "aufschrift": "Stillstand",
+    "ruft": "_stdAns(0,2)"
+   },
+   {
+    "aufschrift": "Sehr schnell",
+    "ruft": "_stdAns(1,0)"
+   },
+   {
+    "aufschrift": "Der Körper steht still",
+    "ruft": "_stdAns(1,1)"
+   },
+   {
+    "aufschrift": "Er fährt rückwärts",
+    "ruft": "_stdAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine Gerade",
+    "ruft": "_stdAns(2,0)"
+   },
+   {
+    "aufschrift": "Eine Kurve",
+    "ruft": "_stdAns(2,1)"
+   },
+   {
+    "aufschrift": "Eine Zickzacklinie",
+    "ruft": "_stdAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_stdSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_stdSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_stdSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('stdiagramm')"
+   }
+  ],
+  "hinweise": [
+   "Wähle eine Fahrt und starte sie. Beobachte gleichzeitig den Wagen und die Linie im s-t-Diagramm. Was bedeutet eine steile, eine flache und eine waagerechte Linie?",
+   "Im Weg-Zeit-Diagramm steht die Zeit t waagerecht und der Weg s senkrecht. Eine steile Linie = schnell, eine flache Linie = langsam, eine waagerechte Linie = der Körper steht still. Eine gleichförmige Bewegung ergibt eine Gerade.",
+   "steil = schnell · flach = langsam · waagerecht = Stillstand."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg."
+   },
+   {
+    "einstellung": "schnell",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg."
+   },
+   {
+    "einstellung": "mit Pause",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder."
+   },
+   {
+    "einstellung": "▶ Fahren",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg."
+   },
+   {
+    "einstellung": "Langsame Fahrt",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam."
+   },
+   {
+    "einstellung": "Schnelle Fahrt",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell."
+   },
+   {
+    "einstellung": "Stillstand",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht."
+   },
+   {
+    "einstellung": "Sehr schnell",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit."
+   },
+   {
+    "einstellung": "Der Körper steht still",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand."
+   },
+   {
+    "einstellung": "Er fährt rückwärts",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen."
+   },
+   {
+    "einstellung": "Eine Gerade",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade."
+   },
+   {
+    "einstellung": "Eine Kurve",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt."
+   },
+   {
+    "einstellung": "Eine Zickzacklinie",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
+   }
+  ],
+  "bildtexte": [
+   "s (Weg)",
+   "t (Zeit)",
+   "Fahrbahn",
+   "schnell",
+   "langsam",
+   "mit Pause"
+  ]
+ }
+]

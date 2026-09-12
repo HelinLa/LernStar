@@ -1,0 +1,199 @@
+{
+ "seite": {
+  "id": "fk6",
+  "quelle": "kf6",
+  "sim": "kraftpfeil",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Pfeile auf dem Bühnenplan",
+  "name": "Wie zeichnet man eine Kraft auf?",
+  "fachwoerter_neu": [
+   "Kraftpfeil"
+  ],
+  "alltag": [
+   "Herr Kessler malt an das Klavier einen dicken Pfeil nach unten.",
+   "So ein Pfeil für eine Kraft heißt Kraftpfeil.",
+   "Jannis sagt: „Die Zahl allein reicht doch.“"
+  ],
+  "frage": "Was zeigt der Kraftpfeil außer der Stärke noch?",
+  "predict": [
+   "Der Pfeil wird nur länger oder kürzer.",
+   "Die Pfeil-Länge zeigt die Stärke. Die Pfeil-Richtung zeigt die Richtung."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.",
+   "Drücke 6 N und →. Lies den letzten Satz in der Statuszeile.",
+   "Wiederhole das mit ↑ (nach oben) und ↗ (schräg nach rechts oben).",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Knöpfe drückst du?",
+   "Wohin würde der Körper gezogen?",
+   "Wie lang ist der Pfeil?"
+  ],
+  "tabRows": [
+   [
+    "2 N und →",
+    "nach rechts",
+    "kurz"
+   ],
+   [
+    "6 N und →",
+    "",
+    ""
+   ],
+   [
+    "6 N und ↑",
+    "",
+    ""
+   ],
+   [
+    "6 N und ↗",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine Kraft zeichnet man als",
+    "loesung": "Kraftpfeil",
+    "post": "."
+   },
+   {
+    "pre": "Die Pfeil-Richtung zeigt die Richtung. Die Pfeil-Länge zeigt, wie",
+    "loesung": "stark",
+    "post": "die Kraft ist."
+   }
+  ],
+  "wortbank": [
+   "Kraftpfeil",
+   "stark",
+   "lang",
+   "oben"
+  ],
+  "beispiel": {
+   "frage": "Was ändert sich, wenn du bei 6 N von → auf ↑ wechselst?",
+   "antwort": "Der Pfeil bleibt gleich lang. Er dreht sich nach oben. Der Körper würde jetzt nach oben gezogen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst 6 N und dann ↓. Was steht am Ende der Statuszeile?",
+    "optionen": [
+     "Der Körper würde nach oben gezogen.",
+     "Der Körper würde nach rechts gezogen.",
+     "Der Körper würde nach unten gezogen."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2 N ist der Pfeil kurz. Bei 6 N ist der Pfeil",
+      "loesung": "lang",
+      "post": "."
+     },
+     {
+      "pre": "Du drückst ↑. Der Körper würde nach",
+      "loesung": "oben",
+      "post": "gezogen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum die Zahl allein nicht reicht.",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. ↑ heißt nach oben.",
+   "h2": "Beginne so: Jannis hat nicht recht, weil ein Pfeil auch die Richtung zeigt.",
+   "h3": "Fast fertig: 6 N nach oben und 6 N nach unten sind gleich lang. Sie ziehen aber in eine andere ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann eine Kraft als Kraftpfeil zeichnen.",
+   "Ich weiß, was die Länge vom Pfeil zeigt.",
+   "Ich kann sagen, wohin eine Kraft zieht."
+  ],
+  "zuhause": "Zieh einen Karton über den Boden. Zeichne einen Punkt und dazu einen kurzen Pfeil für 2 N und einen langen für 6 N.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleiche Bildhälften nebeneinander: links ein grauer Kasten mit einem schwarzen Punkt an der rechten Kante, davon ein KURZER roter Pfeil waagerecht nach rechts, darüber die große Beschriftung „2 N“; rechts derselbe graue Kasten mit demselben schwarzen Punkt, davon ein LANGER roter Pfeil waagerecht nach rechts, darüber „6 N“; beide Pfeile starten genau am Punkt und liegen auf derselben Höhe, nur die Länge unterscheidet sich; keine weiteren Pfeile, keine Nebenbilder, keine Deko; unten die großen Beschriftungen „kurzer Pfeil = kleine Kraft“ und „langer Pfeil = große Kraft“; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fk6",
+  "lernziel": "Die Schülerinnen und Schüler lesen und zeichnen eine Kraft als Kraftpfeil: Die Länge des Pfeils zeigt, wie stark die Kraft ist (in Newton), die Pfeilrichtung zeigt die Richtung der Kraft. Sie begründen, warum die Zahl allein eine Kraft nicht beschreibt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Für den Zeichenauftrag: Lineal und unliniertes Blatt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zeichenauftrag und Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils der letzte Satz der Statuszeile plus ein gezeichneter Pfeil: 6 N und → → „Der Körper würde nach rechts gezogen.“ (langer Pfeil nach rechts) · 6 N und ↑ → „Der Körper würde nach oben gezogen.“ (gleich langer Pfeil nach oben) · 6 N und ↗ → „Der Körper würde schräg nach rechts oben gezogen.“ (gleich langer Pfeil schräg nach rechts oben). Danach die Vergleichskarte 2 N und → → „Der Körper würde nach rechts gezogen.“ mit einem deutlich kürzeren Pfeil. Wichtig: alle drei 6-N-Pfeile gleich lang zeichnen – nur so wird sichtbar, dass sich beim Richtungswechsel nur die Richtung ändert.",
+  "merksatz": [
+   "Kraftpfeil",
+   "stark"
+  ],
+  "tabelle_erwartet": [
+   [
+    "6 N und →",
+    "nach rechts",
+    "lang"
+   ],
+   [
+    "6 N und ↑",
+    "nach oben",
+    "lang"
+   ],
+   [
+    "6 N und ↗",
+    "schräg nach rechts oben",
+    "lang"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile endet nach 6 N und ↓ mit: Der Körper würde nach unten gezogen. Die Zahl 6 N bleibt beim Richtungswechsel stehen, es ändert sich nur die Richtung.",
+   "typische_fehler": [
+    "„nach rechts“ wird angekreuzt, weil das der Ausgangszustand ist und der Pfeil vorher dorthin zeigte.",
+    "Pfeilzeichen ↓ und ↑ werden verwechselt; Abhilfe: Zeichen und Wort gemeinsam an die Tafel schreiben."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "lang",
+    "oben"
+   ],
+   "typische_fehler": [
+    "„stark“ statt „lang“ – der Pfeil ist lang, die Kraft ist stark. Merksatz und Beispielzeile der Tabelle gemeinsam lesen: Spalte 3 fragt nach dem Pfeil, nicht nach der Kraft.",
+    "Bei der zweiten Lücke wird „rechts“ eingesetzt, weil vorher der Betrag eingestellt wurde und die Richtung noch auf → stand."
+   ]
+  },
+  "a3": {
+   "erwartung": "Jannis hat nicht recht, weil eine Kraft auch eine Richtung hat. Der Pfeil zeigt beides: Die Länge zeigt, wie stark die Kraft ist, die Pfeilrichtung zeigt die Richtung. 6 N nach oben wirken anders als 6 N nach unten.",
+   "alternativen": [
+    "Beispiel aus der Simulation: Bei 6 N und ↑ würde der Körper nach oben gezogen, bei 6 N und ↓ nach unten – die Zahl ist dieselbe.",
+    "Bezug auf das Klavier: Ein Pfeil nach unten und ein Pfeil nach schräg oben bedeuten etwas ganz anderes, auch wenn die Zahl gleich wäre.",
+    "Kurzform ohne Beispiel: „Die Zahl sagt nur, wie stark die Kraft ist. Sie sagt nicht, wohin sie zieht.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Jannis wird nur wiederholt statt widerlegt.",
+    "Es wird nur „der Pfeil ist länger“ genannt; die Richtung fehlt – genau darum geht die Aufgabe.",
+    "Der Angriffspunkt wird als Begründung genannt; das ist richtig gedacht, gehört aber nicht zum Lernziel dieser Seite."
+   ]
+  },
+  "hilfe3_wort": "Richtung",
+  "schwache": [
+   "Zuerst nur die Zahlen 2 N, 4 N und 6 N drücken und die Pfeillänge vergleichen; die Richtungsknöpfe erst danach freigeben.",
+   "Die fünf Pfeilzeichen mit dem passenden Wort auf Kärtchen legen (→ nach rechts, ← nach links, ↑ nach oben, ↓ nach unten, ↗ schräg nach rechts oben) und neben das Heft legen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Für den Zeichenauftrag ein Blatt mit vorgedrucktem Punkt und einer waagerechten Linie ausgeben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke 6 N und ↑, dann 6 N und ↓. Zeichne beide Pfeile untereinander und schreibe in einem Satz auf, was gleich bleibt und was sich ändert.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraft als gerichtete Größe, Darstellung durch Kraftpfeile; der Kernlehrplan nennt unter dem Basiskonzept Wechselwirkung ausdrücklich „Kraftvektoren“. Diese Einheit trägt K4 (Daten aufzeichnen und darstellen) über den Zeichenauftrag – der Kraftpfeil ist die Darstellung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Fachwortzählung: neu ist genau EIN Fachwort, „Kraftpfeil“. „Richtung“ und „Stärke“ bleiben nach Zählregel 5 Alltagswörter (kein Formelzeichen, keine Einheit) und stehen als Begriff nicht in der Wortbank; dort steht allein das Lückenadjektiv „stark“, wie „stärker“ in fk12. Das Wort „Größe“ stand im Entwurf in Wortbank und Merksatz-Lücke – dort hätte es als zweites Fachwort gezählt, außerdem meint es in fk4 schon etwas anderes („zwei verschiedene Größen“); die Seite sagt deshalb durchgehend „stark/Stärke“. Hinweise zur Wortwahl: Der Bildschirm schreibt „Betrag“, glossiert ihn aber selbst zweimal – „der Betrag (wie stark, in Newton)“ und der Antwortknopf „Den Betrag (die Stärke)“; die Überschrift der Simulation sagt „Größe“. „Betrag“ ist für DaZ ein falscher Freund (Geldbetrag) und bleibt weg, ebenso der Ausdruck „gerichtete Größe“ aus dem Hinweistext. „Angriffspunkt“ wird nicht eingeführt; wer das Fachwort braucht, klärt es mündlich am Bildtext „● = Angriffspunkt (wo die Kraft wirkt)“. Datenlage: Die Pfeillänge ist im Programm Betrag · 15 Pixel und hängt nicht von der Richtung ab – „kurz“ bei 2 N, „lang“ bei 6 N und „bleibt gleich lang“ beim Richtungswechsel sind damit belegt. Eine Längenzahl steht nirgends am Bildschirm und wird nicht verlangt; die Wortpaare der Spalte 3 sind reine Beobachtung am Bild, alle Werte der Spalte 2 stehen wörtlich im letzten Satz der Statuszeile."
+ }
+}

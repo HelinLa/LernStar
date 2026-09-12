@@ -1,0 +1,20 @@
+<defs>
+  <radialGradient id="w2licht" cx="0.36" cy="0.40" r="0.80">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w2licht)"/>
+  <!-- an der Bretterwand haengt das Thermometer der Bude -->
+  <circle cx="256" cy="60" r="9" fill="url(#stahl)"/>
+  <ellipse cx="256" cy="70" rx="12" ry="4" fill="#241704" opacity="0.34"/>
+  <ellipse cx="253" cy="56" rx="4" ry="2.6" fill="url(#glanz)"/>
+  <use href="#t_thermometer" transform="translate(256,452) scale(1.05)"/>
+  <!-- daneben ein zweites, das im heissen Tee steckt: der Faden steht hoeher -->
+  <use href="#t_kiste" transform="translate(662,516) scale(0.94)"/>
+  <use href="#t_dampf" transform="translate(662,152) scale(1.1)"/>
+  <use href="#t_becher_tee" transform="translate(662,376) scale(1.15)"/>
+  <use href="#t_thermometer" transform="translate(712,336) rotate(14) scale(0.82)"/>

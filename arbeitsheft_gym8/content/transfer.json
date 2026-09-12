@@ -1,0 +1,48 @@
+[
+ {
+  "kapitel": "gym_mechanik",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "In der Lokalzeitung steht: „Wer statt 30 km/h mit 60 km/h durch die Spielstraße vor der Schule fährt, hat ja nur den doppelten Bremsweg – halb so schlimm.“ Nutze, was du über Bewegungsenergie und über das Bremsen durch Reibung gelernt hast, und schreibe eine begründete Entgegnung an die Zeitung.",
+    "erwartung": "Die Schülerin erkennt, dass der doppelte Wert falsch ist. Sie überträgt E = ½ · m · v²: Verdoppelt sich das Tempo, vervierfacht sich die Bewegungsenergie, weil das Tempo im Quadrat eingeht – aus 30 auf 60 km/h wird also die vierfache Energie. Beim Bremsen wird diese Energie über Schiebearbeit gegen die Reibung in Wärme umgewandelt; die Reibungskraft hängt aber nicht von der Geschwindigkeit ab, sondern nur von Rauheit und Gewichtskraft. Weil die gleiche Bremskraft den vierfachen Energievorrat abbauen muss, wird der Bremsweg etwa viermal so lang, nicht doppelt so lang. Sie ergänzt möglichst, dass vor dem Bremsen noch der Reaktionsweg dazukommt, der mit dem Tempo wächst, und folgert, dass Tempo 30 in der Spielstraße die Gefahr weit stärker senkt, als die Zeitung behauptet. Häufige Fehler: Die Energie wird nur verdoppelt statt vervierfacht; das Tempo wird einfach statt im Quadrat gerechnet; die Reibungskraft wird für geschwindigkeitsabhängig gehalten; Bremsweg und Reaktionsweg werden vermischt; die Aussage wird ohne Bezug auf E = ½ · m · v² nur als „stimmt nicht“ abgetan."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Nour möchte herausfinden, welche Leistung sie beim schnellen Treppensteigen erbringt. Entwickle einen Versuch, mit dem sie aus ihrer Masse, der Schultreppe und einer Stoppuhr ihre Leistung in Watt bestimmen kann. Beschreibe, welche Größen sie misst, wie sie rechnet und welche Gegenprobe sie macht.",
+    "erwartung": "Die Schülerin plant, drei Größen zu messen: ihre Masse m mit der Waage, die gesamte Höhe h der Treppe mit dem Maßband (Höhe einer Stufe mal Stufenzahl, gemessen wird die senkrechte Höhe, nicht die schräge Länge) und die Zeit t für das Hinauflaufen mit der Stoppuhr. Sie berechnet zuerst die Hubarbeit als gewonnene Lageenergie W = m · g · h mit g = 9,81 N/kg und daraus die Leistung P = W / t in Watt. Eine Beispielrechnung mit selbst gewählten Werten rundet das Vorgehen ab. Als Gegenprobe misst sie mehrfach und mittelt oder steigt dieselbe Treppe einmal langsam und einmal schnell: Die Arbeit bleibt gleich, die kürzere Zeit ergibt die größere Leistung – genau das sagt P = W / t voraus. Häufige Fehler: Es wird nur die Höhe einer Stufe statt der Gesamthöhe genommen; die schräge Länge der Treppe statt der senkrechten Höhe gemessen; der Ortsfaktor g vergessen; Arbeit und Leistung verwechselt (die Zeit nicht einbezogen); nur eine einzige Messung notiert."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Der Hausmeister muss für das Schulfest ein 200 kg schweres Klavier vom Hof auf eine 1 m hohe Ladefläche bringen. Zur Verfügung stehen eine lange Rampe und ein Flaschenzug am Kranarm über der Ladefläche. Lege zwei Kriterien fest, nach denen du entscheidest, und begründe, welche einfache Maschine du wählst.",
+    "erwartung": "Die Schülerin legt nachvollziehbare Kriterien fest, etwa die nötige Zugkraft (Zahl der Helfer), den Platzbedarf beziehungsweise die Länge des Weges, die Sicherheit und den Aufwand. Sie überträgt, dass beide Maschinen Kraft sparen, aber keine Arbeit: Die Hubarbeit W = m · g · h beträgt hier rund 200 kg · 9,8 N/kg · 1 m ≈ 1960 J, egal welchen Weg das Klavier nimmt. Der Flaschenzug mit n tragenden Seilstücken senkt die Zugkraft auf G : n, braucht dafür einen festen hohen Aufhängepunkt am Kranarm und den n-fachen Seilweg. Die Rampe senkt die Zugkraft, je flacher sie ist, verlangt dafür aber viel Platz und man muss zusätzlich gegen die Reibung schieben. Sie entscheidet begründet für eine der beiden Maschinen und stützt die Wahl auf ihre Kriterien. Häufige Fehler: Es wird geglaubt, eine der Maschinen spare auch Arbeit; die Reibung auf der Rampe wird übersehen; die Entscheidung fällt ohne vorher genannte Kriterien; die Kraftersparnis wird mit einer Arbeitsersparnis verwechselt; die Formel F = G : n wird falsch angewendet."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_druck",
+  "aufgaben": [
+   {
+    "komp": "UF4",
+    "afb": "III",
+    "prompt": "Eine Reißzwecke hat einen breiten Kopf und eine sehr feine Spitze. Du drückst sie mit demselben Daumen in eine Pinnwand. Erkläre mit p = F / A, warum die Spitze mühelos ins Holz dringt, der Kopf deinen Daumen aber nicht verletzt. Übertrage deine Begründung anschließend auf ein scharfes und ein stumpfes Küchenmesser und sage voraus, mit welchem du weniger drücken musst.",
+    "erwartung": "Die Schülerin erkennt, dass auf Spitze und Kopf dieselbe Kraft F wirkt, weil beide vom selben Daumen kommen, und dass allein die Fläche A den Unterschied macht. An der winzigen Spitzenfläche wird der Druck p = F / A sehr groß, deshalb dringt die Spitze ein; die große Kopffläche verteilt dieselbe Kraft auf viel Fläche, so bleibt der Druck klein und der Daumen unverletzt. Sie überträgt das sauber auf das Messer: Die dünne, scharfe Klinge hat eine sehr kleine Auflagefläche und erzeugt schon bei geringer Kraft einen hohen Druck, sie schneidet leicht; die stumpfe Klinge hat eine größere Fläche, dort ist der Druck bei gleicher Kraft kleiner, man muss viel stärker drücken. Als Vorhersage nennt sie das scharfe Messer. Häufige Fehler: Es wird geglaubt, die Spitze übe eine größere Kraft aus statt einen größeren Druck; Kraft und Druck werden gleichgesetzt; das scharfe Messer wird für schwerer oder kräftiger gehalten, statt die kleine Fläche als Ursache zu erkennen; die Formel wird genannt, ohne zu sagen, welche Größe gleich bleibt und welche sich ändert."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Im Hof stehen zwei offene Regentonnen randvoll: eine ist schmal und hoch, die andere dick und niedrig, beide genau 1 m hoch mit Wasser gefüllt. In jede stichst du ganz unten am Boden ein gleich großes Loch. Stelle eine begründete Vermutung auf, aus welcher Tonne der Wasserstrahl weiter spritzt, und erkläre, welche Rolle die insgesamt gespeicherte Wassermenge dabei spielt.",
+    "erwartung": "Die Schülerin sagt voraus, dass beide Strahlen gleich weit spritzen, und begründet das mit dem Schweredruck p = ρ · g · h. Für den Druck am Boden zählt allein die Höhe der Wassersäule darüber, hier 1 m in beiden Tonnen, nicht die Form des Gefäßes und nicht die gespeicherte Wassermenge insgesamt – das ist das hydrostatische Paradoxon. Da beide Löcher in derselben Tiefe von 1 m liegen, herrscht dort derselbe Druck, und beide Strahlen treten gleich schnell aus und reichen gleich weit. Sie folgert, dass die dicke Tonne zwar viel mehr Liter enthält, das aber nichts am Bodendruck ändert; erst eine größere Füllhöhe würde den Strahl verstärken. Häufige Fehler: Aus der größeren Wassermenge der dicken Tonne wird auf einen höheren Druck und einen weiteren Strahl geschlossen; die schmale, hohe Tonne wird für stärker gehalten, obwohl beide gleich hoch gefüllt sind; es wird die Breite des Lochs oder die Wassermenge statt der Tiefe als entscheidend genannt; die Vermutung bleibt ohne Bezug auf p = ρ · g · h."
+   },
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Ein beladenes Frachtschiff fährt vom Meer in einen Süßwasserhafen an der Flussmündung. Ela behauptet: „Im Süßwasser taucht das Schiff tiefer ein als im Meer.“ Beurteile ihre Aussage mit dem, was du über Auftrieb und Dichte gelernt hast, und begründe deine Antwort.",
+    "erwartung": "Die Schülerin bestätigt Elas Aussage und begründet sie über den Kräftevergleich: Ein schwimmendes Schiff verdrängt immer so viel Wasser, dass der Auftrieb F_A = ρ · g · V genau seine Gewichtskraft ausgleicht. Da sich die Gewichtskraft auf der kurzen Fahrt nicht ändert, muss auch der Auftrieb gleich bleiben. Meerwasser ist mit rund 1025 kg/m³ dichter als Süßwasser mit 1000 kg/m³; im dichteren Meerwasser genügt schon ein kleineres verdrängtes Volumen V für denselben Auftrieb, das Schiff liegt höher. Im leichteren Süßwasser muss es ein größeres Volumen verdrängen, taucht also tiefer ein – genau wie die Simulation zeigt, dass der Auftrieb in Meerwasser größer ist (10,06 N statt 9,81 N für den 1-Liter-Würfel). Ela hat also recht. Häufige Fehler: Es wird angenommen, das Schiff sei im Meer schwerer oder im Süßwasser leichter, obwohl Masse und Gewichtskraft gleich bleiben; der Zusammenhang von Wasserdichte und verdrängtem Volumen wird umgekehrt, sodass tieferes Eintauchen fälschlich dem Meerwasser zugeschrieben wird; der feste Auftrieb beim Schwimmen (Auftrieb gleich Gewichtskraft) wird nicht genutzt; die Aussage wird ohne Zahlen und ohne Formel nur als „stimmt“ oder „stimmt nicht“ abgetan."
+   }
+  ]
+ }
+]

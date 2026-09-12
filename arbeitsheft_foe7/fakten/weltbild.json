@@ -1,0 +1,159 @@
+[
+ {
+  "sim": "weltbild",
+  "ueberschrift": "🔭 Wie hat sich die Vorstellung vom Weltall verändert?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🌍 Erde in der Mitte (alt)",
+    "ruft": "_wblSet('geo')"
+   },
+   {
+    "aufschrift": "☀️ Sonne in der Mitte (heute)",
+    "ruft": "_wblSet('helio')"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_wblReset()"
+   },
+   {
+    "aufschrift": "Die Sonne",
+    "ruft": "_wblAns(0,0)"
+   },
+   {
+    "aufschrift": "Die Erde",
+    "ruft": "_wblAns(0,1)"
+   },
+   {
+    "aufschrift": "Der Mond",
+    "ruft": "_wblAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Erde",
+    "ruft": "_wblAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Sonne",
+    "ruft": "_wblAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Milchstraße",
+    "ruft": "_wblAns(1,2)"
+   },
+   {
+    "aufschrift": "Durch neue Beobachtungen (z. B. mit dem Fernrohr)",
+    "ruft": "_wblAns(2,0)"
+   },
+   {
+    "aufschrift": "Durch einen Zufall",
+    "ruft": "_wblAns(2,1)"
+   },
+   {
+    "aufschrift": "Weil ein König es befahl",
+    "ruft": "_wblAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_wblSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_wblSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_wblSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('weltbild')"
+   }
+  ],
+  "hinweise": [
+   "Links das alte Bild (Erde in der Mitte, mit Zusatzkreisen), rechts das heutige (Sonne in der Mitte). Unten siehst du, was man von der Erde aus wirklich am Himmel sieht – bei beiden Modellen dasselbe.",
+   "Beide Modelle sagen dasselbe Aussehen am Himmel voraus – deshalb konnte man lange nicht entscheiden. Das heliozentrische kommt dabei ganz ohne Epizykel aus. Die rückläufige Schleife entsteht, weil die Erde den Mars überholt (Streifen unten: dann wird die Spur orange).",
+   "Wer hat es entschieden? Kopernikus konnte 1543 nichts beweisen. Galilei sah 1610 durch das Fernrohr die Jupitermonde (also kreist nicht alles um die Erde) und die Venusphasen (also läuft die Venus um die Sonne). Den echten Beweis, dass die Erde sich bewegt, lieferte erst Bessel 1838 mit der Fixsternparallaxe.",
+   "Geozentrisch (Erde Mitte, 2 Kreise je Planet) → heliozentrisch (Sonne Mitte, 1 Kreis je Planet – heute gültig)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht."
+   },
+   {
+    "einstellung": "🌍 Erde in der Mitte (alt)",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht."
+   },
+   {
+    "einstellung": "☀️ Sonne in der Mitte (heute)",
+    "text": "wblStatus: Heliozentrisch (Kopernikus): Die Sonne steht in der Mitte, auch die Erde kreist um sie. Es sagt genau denselben Himmel voraus – aber ohne einen einzigen Epizykel. So ist es heute gültig."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht."
+   },
+   {
+    "einstellung": "Die Sonne",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Die Sonne steht erst im heutigen Weltbild in der Mitte."
+   },
+   {
+    "einstellung": "Die Erde",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✓ Richtig! Im geozentrischen Weltbild steht die Erde in der Mitte."
+   },
+   {
+    "einstellung": "Der Mond",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum."
+   },
+   {
+    "einstellung": "Die Erde",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Die Erde ist einer der Planeten, die kreisen."
+   },
+   {
+    "einstellung": "Die Sonne",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✓ Richtig! Die Sonne steht im Mittelpunkt, die Planeten kreisen um sie."
+   },
+   {
+    "einstellung": "Die Milchstraße",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie."
+   },
+   {
+    "einstellung": "Durch neue Beobachtungen (z. B. mit dem Fernrohr)",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✓ Richtig! Neue Beweise führten zum heliozentrischen Weltbild."
+   },
+   {
+    "einstellung": "Durch einen Zufall",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Es war kein Zufall, sondern das Ergebnis von Forschung."
+   },
+   {
+    "einstellung": "Weil ein König es befahl",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit.  ||  wblSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit.  ||  wblSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "wblStatus: Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.  ||  wblFb0: ✗ Der Mond stand in keinem der Modelle im Zentrum.  ||  wblFb1: ✗ Es geht hier um unser Sonnensystem, nicht um die ganze Galaxie.  ||  wblFb2: ✗ Ein Befehl entscheidet nicht über wissenschaftliche Wahrheit."
+   }
+  ],
+  "bildtexte": [
+   "Erde",
+   "Sonne",
+   "Mars",
+   "Jupitermonde",
+   "früher: Erde in der Mitte + Epizykel",
+   "heute: Sonne in der Mitte",
+   "Von der Erde aus gesehen: Mars läuft zeitweise ",
+   "rückwärts"
+  ]
+ }
+]

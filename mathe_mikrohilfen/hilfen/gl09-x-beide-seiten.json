@@ -1,0 +1,63 @@
+{
+  "kennung": "gl09",
+  "frage": "Was mache ich, wenn x auf beiden Seiten steht?",
+  "art": "rechenschritt",
+  "aufgabe": "a09",
+  "vorwissen": [
+    "Er weiß, dass 5x „fünf mal x“ bedeutet.",
+    "Er kann 5x − 2x zu 3x zusammenfassen.",
+    "Er weiß, dass links und rechts zwei Seiten sind."
+  ],
+  "hilfe1": "Wie viele x stehen auf der rechten Seite?",
+  "skript": {
+    "A": { "text": "Du hast jetzt 5x = 2x + 12.", "woerter": 11 },
+    "B": { "text": "Wir wollen das x nur noch links haben.", "woerter": 8 },
+    "C": { "text": "Rechne auf beiden Seiten −2x.", "woerter": 7 },
+    "D": { "text": "Minus 2x hebt die plus 2x auf. Links bleiben 3x.", "woerter": 13 },
+    "E": { "text": "Jetzt muss dort 3x = 12 stehen.", "woerter": 9 },
+    "F": { "text": "Jetzt bist du wieder dran.", "woerter": 5 }
+  },
+  "woerter_gesamt": 53,
+  "sekunden_sprache": 26.5,
+  "sekunden_gesamt": 29.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 5x = 2x + 12.",
+      "hervorgehoben": "die ganze Zeile 5x = 2x + 12"
+    },
+    "B": {
+      "sichtbar": "5x = 2x + 12 steht weiter da. Um das 5x links legt sich ein dünner blauer Rahmen. Rechts bleibt alles unverändert.",
+      "hervorgehoben": "das 5x auf der linken Seite"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint −2x. Unter der rechten Seite erscheint −2x. Die Zeile 5x = 2x + 12 bleibt oben stehen.",
+      "hervorgehoben": "die beiden −2x, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Rechts steht jetzt 2x − 2x. Daraus wird eine grüne 0. Links bleiben von 5x − 2x noch 3x.",
+      "hervorgehoben": "die 3x auf der linken Seite"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile wird blass. Darunter steht groß 3x = 12.",
+      "hervorgehoben": "die neue Zeile 3x = 12"
+    },
+    "F": {
+      "sichtbar": "3x = 12 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "3x = 12"
+    }
+  },
+  "szene": {
+    "A": [{ "zeile": "5x = 2x + 12" }],
+    "B": [{ "ring": "5x", "farbe": "blau" }],
+    "C": [{ "unterBeide": "−2x" }],
+    "D": [{ "hebeAuf": ["5x", "−2x"], "wird": "3x" }],
+    "E": [{ "neueZeile": "3x = 12" }],
+    "F": [{ "nurNoch": "3x = 12" }, { "halte": 3 }]
+  },
+  "hilfe3": {
+    "aufgabe": "a19",
+    "text": "Bei 7x = 3x + 20 rechnest du auf beiden Seiten minus 3x.",
+    "kontrolle": "Dann steht dort 4x = 20."
+  },
+  "faengt_fehler_auf": "Der Schüler zieht 2x auf beiden Seiten ab, lässt links aber 5x stehen, und schreibt 5x = 12."
+}

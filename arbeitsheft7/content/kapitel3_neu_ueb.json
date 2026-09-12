@@ -1,0 +1,35 @@
+[
+{"id":"g9","theme":"himmel7",
+ "lueckensaetze":[
+  {"pre":"Je größer die Massen zweier Körper sind, desto","loesung":"stärker","post":"ziehen sie sich an."},
+  {"pre":"Je größer der Abstand zwischen ihnen ist, desto","loesung":"schwächer","post":"ist die Anziehung."},
+  {"pre":"Bei doppeltem Abstand bleibt nur noch ein","loesung":"Viertel","post":"der Anziehung übrig."},
+  {"pre":"Verdoppelt man bei festem Abstand eine der beiden Massen, so verdoppelt sich auch die","loesung":"Anziehung","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"Bei dreifachem Abstand bleibt ein Drittel der Anziehung übrig.","stimmt":false},
+  {"aussage":"Der Abstand wirkt sich stärker aus als die Masse, wenn man beide verdoppelt.","stimmt":true},
+  {"aussage":"Zwei Körper ziehen sich gegenseitig an, nicht nur der schwerere den leichteren.","stimmt":true},
+  {"aussage":"Weil die Sonne so weit weg ist, zieht sie kaum noch an der Erde.","stimmt":false}],
+ "mc":{"frage":"Zwei Kugeln ziehen sich mit 8 Einheiten an. Du lässt die Massen gleich und verdoppelst nur den Abstand. Wie stark ziehen sie sich jetzt an?",
+  "optionen":["4 Einheiten, denn doppelter Abstand halbiert die Kraft.","2 Einheiten, denn bei doppeltem Abstand bleibt ein Viertel übrig.","8 Einheiten, denn der Abstand ändert nur die Richtung.","16 Einheiten, denn mit dem Abstand wächst die Anziehung."],
+  "richtig":1},
+ "offen":{"prompt":"Erkläre, warum ein Magnet erst kurz vor der Büroklammer plötzlich stark wirkt, und nenne die Grenze dieses Vergleichs mit der Gravitation.","zeilen":4,
+  "loesung":"Auch beim Magneten nimmt die Kraft mit wachsendem Abstand sehr schnell ab, nicht gleichmäßig. Über mehrere Zentimeter ist sie so klein, dass sie die Klammer nicht bewegen kann; erst dicht davor wächst sie so stark an, dass sie die Reibung überwindet und die Klammer hochspringt. Deshalb wirkt es, als geschehe plötzlich etwas, obwohl sich die Kraft die ganze Zeit verändert hat. Die Grenze des Vergleichs ist der Kreis der Körper, auf die er wirkt: Der Magnet zieht nur Eisen und wenige andere Stoffe an, ein Stück Holz oder Wasser lässt er in Ruhe. Die Gravitation wirkt dagegen zwischen allen Körpern, die eine Masse haben, ganz gleich woraus sie bestehen."}},
+
+{"id":"g10","theme":"himmel7",
+ "lueckensaetze":[
+  {"pre":"Auf der Erde gibt es nicht einen, sondern","loesung":"zwei","post":"Wasserberge."},
+  {"pre":"Sie liegen einander genau","loesung":"gegenüber","post":": einer zum Mond hin, einer vom Mond weg."},
+  {"pre":"An einem Ort gibt es deshalb zweimal am Tag Flut und zweimal","loesung":"Ebbe","post":"."},
+  {"pre":"Weil der Mond weiterwandert, verschieben sich die Zeiten Tag für Tag um knapp eine","loesung":"Stunde","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"Der Mond zieht auf allen Stellen der Erde gleich stark.","stimmt":false},
+  {"aussage":"Auf der mondabgewandten Seite ist die Anziehung durch den Mond am kleinsten.","stimmt":true},
+  {"aussage":"Die Wasserberge wandern um die Erde, weil das Wasser dem Mond hinterherläuft.","stimmt":false},
+  {"aussage":"Stehen Sonne und Mond in einer Linie, fällt die Flut höher aus.","stimmt":true}],
+ "mc":{"frage":"Warum gibt es an einem Ort zweimal am Tag Flut und nicht nur einmal?",
+  "optionen":["Weil der Mond die Erde an einem Tag zweimal umrundet.","Weil sich die Erde in 24 Stunden durch zwei gegenüberliegende Wasserberge dreht.","Weil das Wasser nach der ersten Flut zurückschwappt und ein zweites Mal steigt.","Weil erst der Mond und danach die Sonne das Wasser hochzieht."],
+  "richtig":1},
+ "offen":{"prompt":"Beschreibe, wie die drei Anziehungen auf der Mondseite, im Erdmittelpunkt und auf der Rückseite zusammenhängen und wie daraus zwei Wasserberge werden.","zeilen":4,
+  "loesung":"Die Anziehung des Mondes nimmt mit dem Abstand ab, deshalb ist sie an den drei Stellen verschieden groß: am größten beim Wasser der Mondseite, kleiner im Erdmittelpunkt und am kleinsten beim Wasser der Rückseite. Auf der Mondseite wird das Wasser stärker gezogen als die feste Erde darunter, es wird also vom Boden weg zum Mond hin aufgetürmt und bildet den ersten Berg. Auf der Rückseite ist es umgekehrt: Dort wird die feste Erde stärker gezogen als das Wasser, die Erde wird gewissermaßen unter dem Wasser weggezogen, und das zurückbleibende Wasser bildet den zweiten Berg. Weil beide Berge einander gegenüberliegen und sich die Erde in 24 Stunden einmal ganz dreht, läuft jeder Ort nacheinander durch beide."}}
+]

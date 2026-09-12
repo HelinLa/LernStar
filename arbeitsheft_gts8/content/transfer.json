@@ -1,0 +1,48 @@
+[
+ {
+  "kapitel": "gts_strom",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Beim Gewitter über dem Schulhof sagt Jannis: „Zähle die Sekunden zwischen Blitz und Donner und teile durch drei, dann hast du die Entfernung in Kilometern. Der Donner kommt später an, weil er auch erst später entsteht.“ Prüfe beide Sätze mit den Zahlen aus dem Kapitel und schreibe Jannis eine begründete Antwort.",
+    "erwartung": "Die Schülerin prüft den ersten Satz mit einer Rechnung: Bei 6 Sekunden ergibt s = 343 m/s · 6 s = 2058 m, also rund 2,1 km, während die Faustregel 2 km liefert. Sie erkennt, dass die Faustregel mit rund 333 m je Sekunde rechnet, die Entfernung deshalb etwa 3 % zu klein schätzt und als grobe Abschätzung im Alltag brauchbar, als Messwert aber zu ungenau ist. Den zweiten Satz weist sie zurück: Blitz und Donner entstehen im selben Augenblick, denn der Kanal heizt sich auf etwa 30 000 K auf, und die Luft dehnt sich schlagartig aus. Der Knall kommt nur deshalb später an, weil der Schall mit 343 m/s unterwegs ist, das Licht dagegen unvergleichlich schneller. Als Beleg kann sie anführen, dass der Abstand mit wachsender Entfernung größer wird, bei 3,0 km sind es 8,75 s. Häufige Fehler: Die Faustregel wird für exakt gehalten; es wird durch drei geteilt, das Ergebnis aber in Metern angegeben; Sekunden und Meter werden verwechselt; die Verzögerung wird mit einer späteren Entstehung des Donners statt mit der Schallgeschwindigkeit erklärt; 343 m/s wird versehentlich dem Licht zugeschrieben."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "In der Restekiste liegen zwei gleich aussehende Lichterketten für 6 V, beide ohne Aufschrift. Bei der einen hängen die Lämpchen hintereinander, bei der anderen nebeneinander. Entwickle einen Versuch, mit dem Nour und Jannis das ohne Aufschrauben entscheiden können. Beschreibe Aufbau, Messschritte und eine Gegenprobe.",
+    "erwartung": "Die Schülerin plant einen Aufbau am regelbaren Netzgerät mit 6 V, dem Amperemeter in Reihe vor der Kette und dem Voltmeter parallel zu einem einzelnen Lämpchen. Als Messschritte nennt sie: bei beiden Ketten dieselbe Spannung einstellen, den Gesamtstrom notieren und die Spannung an einem einzelnen Lämpchen messen. Sie begründet die Entscheidung: Hängen die Lämpchen hintereinander, addieren sich die Widerstände, der Gesamtstrom ist klein, und am einzelnen Lämpchen liegt nur eine Teilspannung, bei sechs Lämpchen etwa 1 V. Liegen sie nebeneinander, ist der Gesamtwiderstand kleiner als der eines einzelnen Lämpchens, der Gesamtstrom deutlich größer, und jedes Lämpchen bekommt die vollen 6 V. Als Gegenprobe schlägt sie vor, ein Lämpchen herauszudrehen: Hintereinander wird die ganze Kette dunkel, nebeneinander leuchten die übrigen weiter; beide Wege müssen zum selben Ergebnis führen, und gearbeitet wird nur mit Kleinspannung aus dem Netzgerät, niemals an der Steckdose. Häufige Fehler: Das Amperemeter wird parallel angeschlossen und erzeugt einen Kurzschluss; das Voltmeter wird in Reihe gelegt, worauf alles dunkel bleibt und das Ergebnis falsch gedeutet wird; nur die Helligkeit wird verglichen, ohne zu messen; es wird ein einziger Messwert notiert; die Kette wird zum Test an 230 V gehalten."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für den Löttisch in der Werkstatt soll eine Arbeitsleuchte ausgewählt werden. Zur Wahl stehen zwei Lampen für 6 V: eine mit 0,80 W und eine mit 7,20 W. Das Netzgerät liefert höchstens 1,0 A. Lege zuerst zwei Kriterien fest, an denen ihr entscheidet, und begründe dann eure Wahl.",
+    "erwartung": "Die Schülerin legt nachvollziehbare Kriterien fest, zum Beispiel ausreichende Helligkeit am Arbeitsplatz, Belastung des Netzgeräts und Erwärmung der Lampe. Sie stellt P = U · I nach I um und rechnet: 0,80 W: 6 V = 0,13 A und 7,20 W: 6 V = 1,20 A. Damit erkennt sie, dass die starke Lampe über der Grenze von 1,0 A liegt und das Netzgerät überlastet, während die kleine Lampe mit 0,13 A weit darunter bleibt. Sie entscheidet begründet für die 0,80-W-Lampe und schlägt als Ausweg vor, entweder ein stärkeres Netzgerät zu holen oder mehrere kleine Lampen parallel zu betreiben, weil sich deren Ströme addieren: zwei Lampen ziehen zusammen 0,26 A. Zusätzlich weist sie darauf hin, dass nur ein kleiner Teil der Leistung als Licht abgegeben wird und der größte Teil als Wärme, was am Löttisch ein Sicherheitsargument ist. Häufige Fehler: Die Entscheidung wird ohne vorher genannte Kriterien getroffen; Watt und Ampere werden gleichgesetzt; P = U · I wird nicht nach I umgestellt; bei der Parallelschaltung wird vergessen, die Zweigströme zu addieren; die Abwärme der starken Lampe wird gar nicht bedacht."
+   }
+  ]
+ },
+ {
+  "kapitel": "gts_bewegung",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "In einem Video sagt ein Fahrlehrer: „Ob du 50 fährst oder 30 – bis zum Stehen sind das am Ende vielleicht ein, zwei Meter Unterschied.“ Prüfe diese Behauptung mit den Werten aus der Simulation und schreibe eine begründete Antwort für den Aushang der Fahrrad-AG.",
+    "erwartung": "Die Schülerin holt die Zahlen des Kapitels heran: Bei 30 km/h sind es 9 m Reaktionsweg und 9 m Bremsweg, zusammen 18 m Anhalteweg; bei 50 km/h sind es 15 m und 25 m, zusammen 40 m. Sie rechnet die Differenz aus: 40 m − 18 m = 22 m, also mehr als das Doppelte und nicht „ein, zwei Meter“. Zur Begründung trennt sie die beiden Teile: Der Reaktionsweg wächst gleichmäßig mit dem Tempo (von 9 m auf 15 m), der Bremsweg dagegen mit dem Quadrat der Geschwindigkeit (von 9 m auf 25 m). Als Folgerung hält sie fest, dass die Aussage die Gefahr stark verharmlost, und macht klar, dass 22 m auf dem Schulhof abgeschritten etwa der halben Hofbreite entsprechen. Häufige Fehler: Nur der Bremsweg wird verglichen und der Reaktionsweg vergessen; das Verhältnis 30 zu 50 wird direkt auf den Weg übertragen; km/h und m/s werden in einer Rechnung gemischt; die Behauptung wird ohne Zahlen einfach als falsch abgetan."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Die AG behauptet, ihr repariertes Rad fahre auf der 20 Meter langen Messstrecke gleichförmig. Entwickle einen Versuch, mit dem Nour und Jannis das nachprüfen können. Beschreibe den Aufbau, die Messschritte, die Auswertung und eine Gegenprobe.",
+    "erwartung": "Die Schülerin teilt die Messstrecke mit Kreide oder Hütchen in gleich lange Abschnitte, zum Beispiel fünf Abschnitte zu je 4 m, und lässt vor der Startlinie eine Anlaufstrecke, damit das Rad beim Messbeginn schon rollt. Sie plant, für jeden Abschnitt eine Zeit zu nehmen – mit mehreren Stoppuhren, Lichtschranken oder einem Video mit eingeblendeter Zeit – und für jeden Abschnitt v = s / t zu berechnen. Als Entscheidungsregel nennt sie: Die Fahrt ist gleichförmig, wenn alle Abschnittswerte im Rahmen der Messgenauigkeit gleich groß sind. Als Gegenprobe schlägt sie vor, die Messpunkte in ein Weg-Zeit-Diagramm einzutragen – sie müssen auf einer Geraden liegen – oder jede Sekunde eine Marke zu setzen und die Abstände mit dem Maßband zu vergleichen. Sie hält fest, dass die Fahrt mehrfach wiederholt werden muss. Häufige Fehler: Es wird nur die Gesamtzeit über 20 m gestoppt, obwohl ein einziger Mittelwert nichts über die einzelnen Abschnitte verrät; die Abschnitte sind unterschiedlich lang, die Zeiten werden aber direkt verglichen; die Reaktionszeit beim Drücken von Hand wird nicht bedacht; es wird nur eine einzige Fahrt gemessen; das Anfahren liegt mitten in der Messstrecke."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für das Sommerfest will die Fahrrad-AG die Zeiten auf der 10 Meter langen Messstrecke offiziell nehmen. Das Geld reicht entweder für fünf Stoppuhren oder für eine einzelne Lichtschranke mit Zeitmessgerät. Lege zuerst zwei Kriterien fest, nach denen ihr entscheidet, und begründe dann mit einer Abschätzung, welches Gerät ihr anschafft.",
+    "erwartung": "Die Schülerin nennt zwei nachvollziehbare Kriterien, zum Beispiel Messgenauigkeit und die Zahl der Gruppen, die gleichzeitig messen können, oder zusätzlich Bedienbarkeit und Fairness gegenüber den Teilnehmern. Sie schätzt den Fehler ab: Ein Wagen mit 2 m/s braucht 5 s für die 10 m, eine Reaktionszeit von etwa 0,2 s beim Drücken macht dort rund 4 Prozent aus; ein schnelles Rad mit 5,0 m/s braucht nur 2 s, dort sind dieselben 0,2 s bereits rund 10 Prozent. Weil die Zeiten beim Rennen dicht beieinanderliegen, entscheidet sie begründet für die Lichtschranke, die ohne Reaktionszeit startet und stoppt. Eine Entscheidung für die Stoppuhren ist ebenfalls zulässig, wenn sie mit dem Kriterium „mehrere Gruppen gleichzeitig“ begründet und durch mehrfaches Messen mit Mittelwert abgesichert wird. Häufige Fehler: Die Entscheidung fällt ohne vorher genannte Kriterien; die Genauigkeit wird nur behauptet statt an einer Zahl abgeschätzt; die Reaktionszeit wird der Uhr statt dem Menschen zugeschrieben; Fehler bei der Zeit und beim Ausmessen der Strecke werden vermischt; der Mittelwert wird als Ausgleich für eine immer zu spät gedrückte Uhr angesehen."
+   }
+  ]
+ }
+]

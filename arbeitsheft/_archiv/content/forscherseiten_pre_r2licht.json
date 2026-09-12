@@ -1,0 +1,1317 @@
+[
+{
+"theme": "magnetismus",
+"id": "m1",
+"name": "Magnete und magnetische Felder",
+"problem": "Jonas räumt seinen Schreibtisch auf. Eine Büroklammer liegt vor ihm auf dem Holz. Langsam hält er seinen Magneten darüber. Und noch bevor der Magnet sie berührt, zuckt die Klammer plötzlich hoch und klebt am Magneten – obwohl dazwischen noch Luft war.",
+"frage": "Wie kann der Magnet die Klammer ziehen, obwohl er sie noch gar nicht berührt?",
+"predict": [
+"Um den Magneten herum ist ein unsichtbares Feld.",
+"Der Magnet ist klebrig und pappt einfach fest."
+],
+"forschen": [
+"Führe den Versuch durch: Nähere den Magneten langsam einer Büroklammer, ohne sie zu berühren.",
+"Beschreibe, was mit der Büroklammer geschieht.",
+"Überprüfe, ob der Magnet auch durch ein Blatt Papier und durch die Luft wirkt."
+],
+"tabCols": [
+"Situation",
+"Wirkt der Magnet?"
+],
+"tabRows": [
+"ohne etwas dazwischen",
+"durch Papier",
+"aus der Luft"
+],
+"merksatz": [
+{
+"pre": "Um jeden Magneten liegt ein",
+"post": ".",
+"loesung": "Magnetfeld"
+},
+{
+"pre": "Er wirkt auch ohne",
+"post": ".",
+"loesung": "Berührung"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit dem Wort Magnetfeld, warum ein Magnet wirkt, ohne den Gegenstand zu berühren.",
+"zeilen": 3,
+"loesung": "Um jeden Magneten liegt ein Magnetfeld. Dieses unsichtbare Feld wirkt auch durch Luft und zieht das Eisen an, ohne es zu berühren."
+},
+"titel": "Die springende Büroklammer"
+},
+{
+"theme": "magnetismus",
+"id": "m2",
+"name": "Welche Stoffe zieht ein Magnet an?",
+"problem": "Mia sammelt glänzende Sachen in einer Kiste: einen Nagel, eine Getränkedose und ein paar Büroklammern. Mit ihrem Magneten probiert sie alles der Reihe nach aus. Der Nagel und die Klammern hüpfen sofort an den Magneten. Doch die glänzende Dose bleibt einfach liegen – dabei ist sie doch auch aus Metall.",
+"frage": "Warum zieht der Magnet manche Metalle an und andere gar nicht?",
+"predict": [
+"Der Magnet zieht nur manche Metalle an.",
+"Der Magnet zieht alles aus Metall an."
+],
+"forschen": [
+"Führe den Versuch durch: Prüfe mit dem Magneten nacheinander Eisennagel, Aludose, Büroklammer und Holzklotz.",
+"Ordne die Gegenstände in zwei Gruppen: wird angezogen / wird nicht angezogen.",
+"Vergleiche, was die angezogenen Gegenstände gemeinsam haben."
+],
+"tabCols": [
+"Gegenstand",
+"angezogen?"
+],
+"tabRows": [
+"Eisennagel",
+"Aludose",
+"Büroklammer",
+"Holzklotz"
+],
+"merksatz": [
+{
+"pre": "Magnetisch sind nur Eisen, Nickel und",
+"post": ".",
+"loesung": "Kobalt"
+},
+{
+"pre": "„Metall“ ist nicht dasselbe wie",
+"post": ".",
+"loesung": "magnetisch"
+}
+],
+"aufgabe": {
+"frage": "Nenne zwei Dinge, die ein Magnet anzieht, und zwei, die er nicht anzieht.",
+"zeilen": 3,
+"loesung": "Anziehen: Eisennagel und Büroklammer (aus Eisen/Stahl). Nicht anziehen: Aludose und Holzklotz, weil sie nicht magnetisch sind."
+},
+"titel": "Der wählerische Magnet"
+},
+{
+"theme": "magnetismus",
+"id": "m3",
+"name": "Wie wirken Magnetpole aufeinander?",
+"problem": "Ben steckt drei Ringmagnete auf einen Bleistift. Der oberste bleibt einfach in der Luft schweben und berührt den Ring darunter überhaupt nicht. Ben nimmt ihn herunter, dreht ihn um und steckt ihn wieder auf. Jetzt rutscht er sofort nach unten und klebt fest.",
+"frage": "Warum schwebt der Ring zuerst – und klebt dann fest, nur weil ich ihn umgedreht habe?",
+"predict": [
+"Ja, Magnete ziehen sich immer an.",
+"Nein, manchmal drücken sie sich weg."
+],
+"forschen": [
+"Führe den Versuch durch: Halte zwei Stabmagnete mit ihren Polen zusammen – nacheinander N–N, N–S und S–S.",
+"Beschreibe für jede Kombination, ob sich die Magnete anziehen oder abstoßen.",
+"Vergleiche dein Ergebnis mit Bens Ringen: Wann schweben zwei Magnete, wann kleben sie fest?"
+],
+"tabCols": [
+"Pole",
+"Was passiert?"
+],
+"tabRows": [
+"N und N",
+"N und S",
+"S und S"
+],
+"merksatz": [
+{
+"pre": "Gleiche Pole (N–N oder S–S)",
+"post": "sich.",
+"loesung": "stoßen"
+},
+{
+"pre": "Ungleiche Pole (N–S)",
+"post": "sich.",
+"loesung": "ziehen"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, wann sich zwei Magnete anziehen und wann sie sich abstoßen.",
+"zeilen": 3,
+"loesung": "Ungleiche Pole (Nord und Süd) ziehen sich an. Gleiche Pole (Nord und Nord oder Süd und Süd) stoßen sich ab."
+},
+"titel": "Der schwebende Ring"
+},
+{
+"theme": "magnetismus",
+"id": "m4",
+"name": "Wie sieht ein Magnetfeld aus?",
+"problem": "Emma streut feinen Eisenstaub über ein weißes Blatt Papier. Genau darunter versteckt sie einen Magneten. Sofort ordnen sich die winzigen Körner ganz von allein zu geschwungenen Linien. An den beiden Enden des Magneten drängen sie sich am dichtesten zusammen.",
+"frage": "Warum legen sich die Körner ausgerechnet zu diesem Muster – und wieso gerade an den Enden so dicht?",
+"predict": [
+"An den beiden Enden vom Magneten.",
+"Genau in der Mitte vom Magneten."
+],
+"forschen": [
+"Führe den Versuch durch: Streue Eisenspäne auf ein Blatt über einem Stabmagneten und klopfe leicht dagegen.",
+"Beschreibe das Muster und vergleiche, wo die Späne dicht und wo sie dünn liegen.",
+"Untersuche mit einer Kompassnadel, wohin das Feld an verschiedenen Stellen zeigt."
+],
+"tabCols": [
+"Ort",
+"Wie ist das Feld?"
+],
+"tabRows": [
+"an den Polen",
+"in der Mitte",
+"weit weg"
+],
+"merksatz": [
+{
+"pre": "Feldlinien gehen von Nord nach",
+"post": ".",
+"loesung": "Süden"
+},
+{
+"pre": "Enge Linien = Feld",
+"post": ".",
+"loesung": "stark"
+}
+],
+"aufgabe": {
+"frage": "Beschreibe mit Worten, wie die Feldlinien um einen Stabmagneten verlaufen.",
+"zeilen": 3,
+"loesung": "Die Feldlinien gehen außen vom Nordpol zum Südpol. An den Polen liegen sie eng zusammen, dort ist das Feld am stärksten."
+},
+"titel": "Das geheime Muster"
+},
+{
+"theme": "magnetismus",
+"id": "m5",
+"name": "Wie funktioniert ein Kompass?",
+"problem": "Noah spielt im Garten Entdecker und hat einen kleinen Kompass in der Hand. Neugierig dreht er sich langsam einmal im Kreis. Doch die kleine rote Nadel dreht sich nicht mit – sie schwingt jedes Mal zurück und zeigt wieder in genau dieselbe Richtung.",
+"frage": "Warum zeigt die Nadel immer wieder in dieselbe Richtung, egal wie ich mich drehe?",
+"predict": [
+"Die Nadel ist ein Magnet, die Erde auch.",
+"Der kalte Norden zieht die Nadel an."
+],
+"forschen": [
+"Führe den Versuch durch: Drehe dich mit dem Kompass langsam im Kreis und beobachte die Nadel.",
+"Untersuche, ob sich etwas ändert, wenn du den Kompass in Sonne oder Schatten hältst.",
+"Nähere vorsichtig einen Magneten und beschreibe, was mit der Nadel geschieht."
+],
+"tabCols": [
+"Test",
+"Wohin zeigt die Nadel?"
+],
+"tabRows": [
+"im Freien",
+"im Schatten",
+"neben Magnet"
+],
+"merksatz": [
+{
+"pre": "Die Kompassnadel ist ein kleiner",
+"post": ".",
+"loesung": "Magnet"
+},
+{
+"pre": "Sie richtet sich im",
+"post": "aus.",
+"loesung": "Erdmagnetfeld"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum die Kompassnadel nach Norden zeigt. Nutze die Wörter Magnet und Erdmagnetfeld.",
+"zeilen": 3,
+"loesung": "Die Kompassnadel ist ein kleiner Magnet. Die Erde ist auch ein großer Magnet mit einem Erdmagnetfeld. Darum dreht sich die Nadel und zeigt nach Norden."
+},
+"titel": "Die eigensinnige Nadel"
+},
+{
+"theme": "licht",
+"id": "l1",
+"name": "Lichtquellen und Lichtausbreitung",
+"problem": "Ben schaut abends aus dem Fenster. Unten glüht die Straßenlaterne ganz warm. Und hoch oben am Himmel leuchtet der Mond genauso hell. Dabei brennt da oben doch kein Feuer und hängt keine einzige Lampe.",
+"frage": "Woher kommt eigentlich das Licht, das der Mond zu uns schickt?",
+"predict": [
+"Ich sehe die Sachen nur, wenn Licht auf sie fällt.",
+"Meine Augen schicken selbst Licht aus und sehen auch im Dunkeln."
+],
+"forschen": [
+"Mach dein Zimmer ganz dunkel. Schau, ob du ein Buch auf dem Tisch erkennst.",
+"Knipse die Taschenlampe an und leuchte auf das Buch. Schau genau hin.",
+"Halte deine Hand in den Lichtstrahl der Taschenlampe. Schau, wo dahinter ein Schatten entsteht."
+],
+"tabCols": [
+"Gegenstand",
+"Leuchtet selbst? (ja / nein)"
+],
+"tabRows": [
+"Die Sonne",
+"Eine brennende Kerze",
+"Ein Buch auf dem Tisch",
+"Der Mond am Himmel"
+],
+"merksatz": [
+{
+"pre": "Die Sonne, eine Lampe und eine Kerze senden ",
+"post": " aus. Man nennt sie Lichtquellen.",
+"loesung": "selbst Licht"
+},
+{
+"pre": "Ein Buch und den Mond siehst du nur, weil Licht auf sie fällt. Das Licht breitet sich dabei immer ",
+"post": " aus.",
+"loesung": "geradlinig"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum du den Mond am Himmel sehen kannst, obwohl er nicht selbst leuchtet.",
+"zeilen": 3,
+"loesung": "Der Mond leuchtet nicht selbst. Die Sonne schickt Licht auf den Mond. Dieses Licht kommt von ihm zurück in mein Auge. Darum kann ich den Mond sehen."
+},
+"titel": "Das Rätsel am Nachthimmel"
+},
+{
+"theme": "licht",
+"id": "l2",
+"name": "Wie können wir einen Gegenstand sehen?",
+"problem": "Nachts wird Nele plötzlich wach. Ihr Zimmer ist stockdunkel. Ihr Lieblingsbär sitzt wie immer direkt neben dem Kopfkissen. Doch so sehr sie die Augen auch aufreißt – sie kann ihn einfach nicht erkennen.",
+"frage": "Der Bär ist doch da – warum kann ich ihn im Dunkeln nicht sehen?",
+"predict": [
+"Ich brauche Licht zum Sehen. Ohne Licht sehe ich nichts.",
+"Meine Augen sind stark. Wenn ich lange warte, sehe ich auch ohne Licht."
+],
+"forschen": [
+"Lege einen Gegenstand in ein Zimmer, das du dunkel machen kannst.",
+"Mach das Licht aus. Schau nach, ob du den Gegenstand noch siehst.",
+"Knipse die Taschenlampe an und leuchte den Gegenstand damit an."
+],
+"tabCols": [
+"Was ich mache",
+"Was ich sehe"
+],
+"tabRows": [
+"Das Licht im Raum ist an.",
+"Das Licht ist aus, es ist ganz dunkel.",
+"Die Taschenlampe leuchtet den Gegenstand an.",
+"Ich mache die Taschenlampe wieder aus."
+],
+"merksatz": [
+{
+"pre": "Ich kann einen Gegenstand nur sehen, wenn ",
+"post": " von ihm in mein Auge kommt.",
+"loesung": "Licht"
+},
+{
+"pre": "Ist es ganz dunkel, dann sehe ich ",
+"post": ".",
+"loesung": "nichts"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum du im dunklen Keller deine Hand vor den Augen nicht siehst.",
+"zeilen": 3,
+"loesung": "Im dunklen Keller ist kein Licht. Darum kommt kein Licht von der Hand in mein Auge. Deshalb sehe ich meine Hand nicht."
+},
+"titel": "Der verschwundene Teddy"
+},
+{
+"theme": "licht",
+"id": "l3",
+"name": "Wie entsteht ein Schatten?",
+"problem": "Leo spielt mit der Taschenlampe in seinem Zimmer. Er hält seine Hand mitten ins Licht. Da erscheint an der Wand eine große dunkle Hand. Sie macht genau dieselben Bewegungen wie er – obwohl an der Wand selbst gar nichts klebt.",
+"frage": "Wie kommt dieser dunkle Fleck hinter meiner Hand an die Wand?",
+"predict": [
+"Der Gegenstand hält das Licht auf. Dahinter bleibt es dunkel.",
+"Der Schatten kommt aus dem Gegenstand selbst heraus."
+],
+"forschen": [
+"Leuchte mit der Taschenlampe an die Wand.",
+"Halte einen undurchsichtigen Gegenstand in das Licht.",
+"Schau, wo es an der Wand dunkel wird."
+],
+"tabCols": [
+"Was ich tü",
+"Schatten an der Wand"
+],
+"tabRows": [
+"Lampe an, Gegenstand davor",
+"Lampe an, kein Gegenstand",
+"Gegenstand näher an die Lampe",
+"Gegenstand näher an die Wand"
+],
+"merksatz": [
+{
+"pre": "Licht breitet sich immer ",
+"post": " aus.",
+"loesung": "geradlinig"
+},
+{
+"pre": "Ein undurchsichtiger Gegenstand hält das ",
+"post": " auf. Dahinter entsteht der Schatten.",
+"loesung": "Licht"
+}
+],
+"aufgabe": {
+"frage": "Warum läuft dein Schatten an einem sonnigen Tag immer mit dir mit? Erkläre.",
+"zeilen": 3,
+"loesung": "Die Sonne scheint auf dich. Dein Körper hält das Licht auf. Hinter dir bleibt es dunkel. Wenn du gehst, wandert dieser dunkle Bereich mit. Das ist dein Schatten."
+},
+"titel": "Die dunkle Hand"
+},
+{
+"theme": "licht",
+"id": "l4",
+"name": "Wovon hängt die Größe des Schattens ab?",
+"problem": "Finn macht abends Handschatten an der Wand. Er schiebt seine Hand ganz langsam zwischen Lampe und Wand hin und her. Dabei wird der Schatten mal riesengroß und im nächsten Moment wieder ganz klein. Seine Hand bleibt die ganze Zeit gleich.",
+"frage": "Warum wird derselbe Schatten mal riesengroß und mal winzig klein?",
+"predict": [
+"Ganz nah an der Lampe wird der Schatten größer.",
+"Ganz nah an der Lampe wird der Schatten kleiner."
+],
+"forschen": [
+"Leuchte mit der Taschenlampe an die Wand und halte deine Hand ganz nah an die Lampe. Miss den Schatten mit dem Lineal.",
+"Ziehe deine Hand langsam von der Lampe weg zur Wand. Miss jedes Mal, wie groß der Schatten wird.",
+"Stelle jetzt die Lampe weiter weg und schau, wie sich der Schatten verändert."
+],
+"tabCols": [
+"Wo ist deine Hand?",
+"Wie groß ist der Schatten?"
+],
+"tabRows": [
+"Hand ganz nah an der Lampe",
+"Hand in der Mitte zwischen Lampe und Wand",
+"Hand ganz nah an der Wand",
+"Lampe weiter weg gestellt"
+],
+"merksatz": [
+{
+"pre": "Je näher der Gegenstand an der Lampe ist, desto ",
+"post": " wird sein Schatten.",
+"loesung": "größer"
+},
+{
+"pre": "Je weiter die Lampe weg ist, desto ",
+"post": " wird der Schatten.",
+"loesung": "kleiner"
+}
+],
+"aufgabe": {
+"frage": "Lena will mit ihrer Hand einen ganz großen Schatten an die Wand machen. Wo soll sie ihre Hand halten? Erkläre warum.",
+"zeilen": 3,
+"loesung": "Lena soll die Hand ganz nah an die Lampe halten. Je näher der Gegenstand an der Lichtquelle ist, desto größer wird sein Schatten an der Wand."
+},
+"titel": "Mal riesig, mal winzig"
+},
+{
+"theme": "licht",
+"id": "l5",
+"name": "Kern- und Halbschatten",
+"frage": "Warum ist der Schatten in der Mitte viel dunkler als außen am Rand?",
+"problem": "In der Küche brennen zwei Lampen an der Decke. Marlon stellt seinen Becher mitten auf den Tisch. Sein Schatten sieht komisch aus: In der Mitte ist er tiefschwarz, doch zum Rand hin wird er auf einmal blass und grau.",
+"predict": [
+"Der Schatten wird am Rand heller, weil dort noch ein bisschen Licht hinkommt.",
+"Ein Schatten ist überall gleich dunkel."
+],
+"forschen": [
+"Stelle einen Gegenstand vor eine Wand.",
+"Stelle zwei Lampen dicht nebeneinander und leuchte mit beiden auf den Gegenstand.",
+"Schau dir den Schatten an der Wand genau an: Wo ist er ganz dunkel, wo ist er heller?"
+],
+"tabCols": [
+"Das stelle ich ein",
+"So sieht der Schatten aus"
+],
+"tabRows": [
+"Nur eine Lampe an",
+"Zwei Lampen an",
+"Gegenstand nah an der Wand",
+"Gegenstand weit weg von der Wand"
+],
+"merksatz": [
+{
+"pre": "In der Mitte ist der Schatten ganz dunkel. Das nennt man den ",
+"post": ".",
+"loesung": "Kernschatten"
+},
+{
+"pre": "Am Rand ist der Schatten heller. Das nennt man den ",
+"post": ".",
+"loesung": "Halbschatten"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum dein Schatten am Rand oft heller ist als in der Mitte.",
+"zeilen": 3,
+"loesung": "Die Sonne ist eine große Lichtquelle. Am Rand kommt von der Sonne noch ein Teil vom Licht hin, darum ist es dort heller (Halbschatten). In der Mitte kommt gar kein Licht hin, darum ist es dort ganz dunkel (Kernschatten)."
+},
+"titel": "Der zweifarbige Schatten"
+},
+{
+"theme": "strom",
+"id": "s1",
+"name": "Stromkreis und Schaltzeichen",
+"problem": "Jonas packt seinen neuen Bausatz für eine kleine Lampe aus. Er breitet Kabel, Batterie und Lämpchen auf dem Tisch aus. Dann faltet er den Bauplan auseinander. Doch statt Bildern von den Teilen sieht er nur winzige Striche, Kreise und Kästchen.",
+"frage": "Was bedeuten diese komischen kleinen Zeichen auf dem Bauplan?",
+"predict": [
+"Das Lämpchen leuchtet nur, wenn alle Teile zu einem geschlossenen Kreis verbunden sind.",
+"Ein einziges Kabel von der Batterie zum Lämpchen reicht schon zum Leuchten."
+],
+"forschen": [
+"Verbinde Batterie, Lämpchen und Kabel so, dass ein geschlossener Kreis entsteht.",
+"Baue einen Schalter ein und drücke ihn an und aus.",
+"Nimm ein Kabel weg und schau, was mit dem Lämpchen passiert."
+],
+"tabCols": [
+"Was ich baue",
+"Leuchtet das Lämpchen?"
+],
+"tabRows": [
+"Der Kreis ist ganz geschlossen",
+"Ein Kabel fehlt",
+"Der Schalter ist an",
+"Der Schalter ist aus"
+],
+"merksatz": [
+{
+"pre": "In einem Stromkreis sind Batterie, Lämpchen, Kabel und Schalter zu einem ",
+"post": " verbunden.",
+"loesung": "geschlossenen Kreis"
+},
+{
+"pre": "In einem Schaltbild zeichnet man jedes Bauteil mit seinem genormten ",
+"post": ".",
+"loesung": "Schaltzeichen"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum die Taschenlampe nicht leuchtet, wenn der Schalter aus ist.",
+"zeilen": 2,
+"loesung": "Wenn der Schalter aus ist, ist der Kreis offen. Der Strom kann nicht mehr fließen, darum bleibt das Lämpchen dunkel."
+},
+"titel": "Der geheimnisvolle Bauplan"
+},
+{
+"theme": "strom",
+"id": "s2",
+"name": "Wann leuchtet eine Lampe?",
+"problem": "Emma hat ein kleines Lämpchen an eine Batterie angeschlossen. Sie legt einen kleinen Hebel um – sofort strahlt das Lämpchen hell. Dann legt sie den Hebel zurück, und alles wird stockdunkel. Dabei sieht das Lämpchen die ganze Zeit völlig gleich aus.",
+"frage": "Warum leuchtet dasselbe Lämpchen einmal und dann gar nicht mehr?",
+"predict": [
+"Die Lampe leuchtet nur, wenn der Weg von der Batterie zum Lämpchen und wieder zurück ganz geschlossen ist.",
+"Ein einziges Kabel von der Batterie zum Lämpchen reicht schon aus, damit es leuchtet."
+],
+"forschen": [
+"Verbinde die Batterie, zwei Kabel und das Lämpchen zu einem geschlossenen Ring.",
+"Baue einen Schalter in den Ring ein und schalte ihn an und aus.",
+"Nimm ein Kabel wieder ab und schau, was mit dem Lämpchen passiert."
+],
+"tabCols": [
+"Was ich baue",
+"Leuchtet das Lämpchen?"
+],
+"tabRows": [
+"Alle Kabel sind fest verbunden",
+"Der Schalter ist an",
+"Der Schalter ist aus",
+"Ein Kabel ist abgezogen"
+],
+"merksatz": [
+{
+"pre": "Die Lampe leuchtet nur, wenn der Stromkreis ganz ",
+"post": " ist.",
+"loesung": "geschlossen"
+},
+{
+"pre": "Machst du den Schalter aus, dann ",
+"post": " du den Weg und das Licht geht aus.",
+"loesung": "unterbrichst"
+}
+],
+"aufgabe": {
+"frage": "Erkläre einem Freund, warum die Lampe ausgeht, wenn du den Schalter ausmachst.",
+"zeilen": 3,
+"loesung": "Wenn du den Schalter ausmachst, ist der Weg für den Strom unterbrochen. Der Strom kann nicht mehr von der Batterie durch die Lampe und wieder zurück fließen. Darum bleibt die Lampe dunkel."
+},
+"titel": "Das störrische Lämpchen"
+},
+{
+"theme": "strom",
+"id": "s3",
+"name": "Welche Stoffe leiten Strom?",
+"problem": "Yusuf hat sich einen Tester gebaut: eine Batterie, ein Lämpchen und zwei freie Kabelenden. Neugierig drückt er die Enden an seinen Schlüssel – das Lämpchen leuchtet auf. Dann hält er sie an sein Radiergummi. Diesmal bleibt das Lämpchen einfach dunkel.",
+"frage": "Warum leuchtet die Lampe bei manchen Sachen und bei anderen überhaupt nicht?",
+"predict": [
+"Metall wie Kupfer und Eisen lässt den Strom durch.",
+"Alle harten Sachen leiten Strom, also auch Holz und Plastik."
+],
+"forschen": [
+"Bau mit einer Batterie und einem Lämpchen einen einfachen Stromkreis.",
+"Klemme ein Prüfstück in die Lücke, zum Beispiel einen Löffel aus Metall, ein Lineal aus Plastik oder einen Radiergummi.",
+"Schau genau hin, ob das Lämpchen leuchtet."
+],
+"tabCols": [
+"Prüfstück",
+"Lämpchen leuchtet? (ja / nein)"
+],
+"tabRows": [
+"Löffel aus Metall",
+"Lineal aus Plastik",
+"Stab aus Holz",
+"Büroklammer aus Eisen"
+],
+"merksatz": [
+{
+"pre": "Metalle wie Kupfer und Eisen sind ",
+"post": " und lassen den Strom durch.",
+"loesung": "Leiter"
+},
+{
+"pre": "Plastik, Holz, Glas und Gummi sind ",
+"post": " und lassen keinen Strom durch.",
+"loesung": "Nichtleiter"
+}
+],
+"aufgabe": {
+"frage": "Warum ist der Draht im Kabel innen aus Metall, die Hülle außen aber aus Plastik? Erkläre.",
+"zeilen": 3,
+"loesung": "Der Metall-Draht innen leitet den Strom. Das Plastik außen ist ein Nichtleiter und lässt keinen Strom durch. So bekommst du keinen Schlag, wenn du das Kabel anfasst."
+},
+"titel": "Der große Sachen-Test"
+},
+{
+"theme": "strom",
+"id": "s4",
+"name": "Reihenschaltung",
+"problem": "Frida hilft beim Schmücken und hält eine leuchtende Lichterkette in der Hand. Ein Lämpchen sitzt locker, also dreht sie es einfach heraus. Im selben Moment wird die ganze Kette dunkel. Kein einziges der vielen Lichter leuchtet noch.",
+"frage": "Warum gehen alle Lichter aus, obwohl ich nur ein einziges herausgedreht habe?",
+"predict": [
+"Alle Lämpchen gehen aus, weil der Strom nur einen Weg hat.",
+"Nur das kaputte Lämpchen geht aus, die anderen leuchten weiter."
+],
+"forschen": [
+"Baue mit der Batterie nur ein Lämpchen in einen Kreis. Schau, wie hell es leuchtet.",
+"Baue nun ein zweites Lämpchen hintereinander dazu. Leuchten die zwei heller oder dunkler als eines?",
+"Nimm jetzt ein Lämpchen heraus und beobachte das andere Lämpchen."
+],
+"tabCols": [
+"Das mache ich",
+"Das beobachte ich"
+],
+"tabRows": [
+"Nur ein Lämpchen im Kreis",
+"Zwei Lämpchen hintereinander",
+"Ein Lämpchen herausnehmen",
+"Beide Lämpchen wieder einsetzen"
+],
+"merksatz": [
+{
+"pre": "In einer Reihenschaltung liegen die Lämpchen ",
+"post": " in einem einzigen Weg.",
+"loesung": "hintereinander"
+},
+{
+"pre": "Nimmst du ein Lämpchen heraus, dann ",
+"post": ", weil der Weg unterbrochen ist.",
+"loesung": "gehen alle aus"
+}
+],
+"aufgabe": {
+"frage": "Erkläre einer Freundin, warum die ganze Lichterkette dunkel wird, wenn nur ein Lämpchen kaputt ist.",
+"zeilen": 3,
+"loesung": "Die Lämpchen hängen alle hintereinander in einem Weg. Ist ein Lämpchen kaputt, ist der Weg unterbrochen. Dann fließt kein Strom mehr und alle Lämpchen bleiben dunkel."
+},
+"titel": "Die zickige Lichterkette"
+},
+{
+"theme": "strom",
+"id": "s5",
+"name": "Parallelschaltung",
+"problem": "Paul hat mehrere kleine Lämpchen nebeneinander angeschlossen, und alle strahlen. Er dreht eines davon vorsichtig aus der Fassung. Doch die anderen Lämpchen leuchten einfach weiter, als wäre nichts passiert. Nur die eine Fassung bleibt jetzt dunkel.",
+"frage": "Warum leuchten die anderen Lämpchen weiter, wenn ich eins herausdrehe?",
+"predict": [
+"Die andere Lampe bleibt an, weil sie ihren eigenen Weg zum Strom hat.",
+"Die andere Lampe geht auch aus, weil beide zusammengehören."
+],
+"forschen": [
+"Baue zwei Lämpchen mit der Batterie so ein, dass jedes Lämpchen seinen eigenen Weg hat.",
+"Schau, wie hell die beiden Lämpchen leuchten.",
+"Nimm ein Lämpchen heraus und beobachte das andere Lämpchen."
+],
+"tabCols": [
+"Das mache ich",
+"Das sehe ich"
+],
+"tabRows": [
+"Beide Lämpchen sind eingebaut.",
+"Ich nehme ein Lämpchen heraus.",
+"Ich baue das Lämpchen wieder ein.",
+"Ich vergleiche, wie hell beide leuchten."
+],
+"merksatz": [
+{
+"pre": "In einer Parallelschaltung hat jede Lampe ihren eigenen ",
+"post": " zum Strom.",
+"loesung": "Weg"
+},
+{
+"pre": "Nimmst du eine Lampe heraus, leuchtet die andere Lampe ",
+"post": ".",
+"loesung": "weiter"
+}
+],
+"aufgabe": {
+"frage": "In deinem Zimmer sind zwei Lampen parallel geschaltet. Eine Lampe geht kaputt. Was passiert mit der anderen Lampe? Erkläre kurz.",
+"zeilen": 3,
+"loesung": "Die andere Lampe leuchtet weiter. Sie hat ihren eigenen Weg zum Strom. Die kaputte Lampe macht ihr nichts."
+},
+"titel": "Die tapferen Lämpchen"
+},
+{
+"theme": "waerme",
+"id": "w1",
+"name": "Sind Temperatur und Wärme das Gleiche?",
+"problem": "Ben hält eine Wunderkerze in der Hand. Die Funken sprühen hell in alle Richtungen. Ein paar davon landen sogar auf seiner Hand – doch es tut überhaupt nicht weh. Dabei glühen die winzigen Funken richtig hell und heiß.",
+"frage": "Warum tut das gar nicht weh, obwohl die Funken so heiß sind?",
+"predict": [
+"Wärme fließt vom heißen Tee in den kalten Löffel.",
+"Der Löffel wird warm, weil der Tee die Kälte aus dem Löffel herauszieht."
+],
+"forschen": [
+"Fülle einen Becher mit warmem Wasser und einen Becher mit kaltem Wasser.",
+"Miss mit dem Thermometer die Temperatur in beiden Bechern und schreibe sie auf.",
+"Stelle in jeden Becher einen Löffel und fasse beide Löffel nach 2 Minuten vorsichtig an."
+],
+"tabCols": [
+"Das mache ich",
+"Das beobachte ich"
+],
+"tabRows": [
+"Thermometer im warmen Wasser",
+"Thermometer im kalten Wasser",
+"Löffel im warmen Wasser nach 2 Minuten anfassen",
+"Löffel im kalten Wasser nach 2 Minuten anfassen"
+],
+"merksatz": [
+{
+"pre": "Die ",
+"post": " sagt, wie warm oder kalt ein Körper ist. Man misst sie mit dem Thermometer in Grad Celsius (°C).",
+"loesung": "Temperatur"
+},
+{
+"pre": "",
+"post": " ist Energie. Sie fließt immer von einem warmen zu einem kalten Körper. Deshalb sind Temperatur und Wärme nicht das Gleiche.",
+"loesung": "Wärme"
+}
+],
+"aufgabe": {
+"frage": "Ein kalter Löffel steckt in einer heißen Suppe. Erkläre, warum der Löffel nach kurzer Zeit warm wird.",
+"zeilen": 3,
+"loesung": "Wärme ist Energie und fließt von der heißen Suppe in den kalten Löffel. Deshalb wird der Löffel warm. Die Suppe wird dabei ein kleines bisschen kälter."
+},
+"titel": "Die Funken, die nicht wehtun"
+},
+{
+"theme": "waerme",
+"id": "w2",
+"name": "Wie funktioniert ein Thermometer?",
+"problem": "Mia hält ein Thermometer fest in ihrer Faust. Nach kurzer Zeit fängt der dünne Faden im Inneren an, sich zu bewegen. Ganz langsam wandert er an den Zahlen entlang. Dabei hat Mia die Flüssigkeit doch gar nicht angefasst.",
+"frage": "Warum bewegt sich der Faden ganz von allein?",
+"predict": [
+"Die Flüssigkeit wird bei Wärme größer und braucht mehr Platz. Darum steigt sie nach oben.",
+"Bei Wärme kommt neue Flüssigkeit dazu. Darum steigt sie nach oben."
+],
+"forschen": [
+"Stell ein Thermometer in ein Glas mit warmem Wasser. Warte kurz und beobachte die Flüssigkeit im Röhrchen.",
+"Stell das Thermometer danach in ein Glas mit kaltem Wasser. Schau genau hin, was passiert.",
+"Halte das Thermometer kurz in deine warme Hand und beobachte die Flüssigkeit."
+],
+"tabCols": [
+"Das mache ich",
+"Steigt oder sinkt die Flüssigkeit?"
+],
+"tabRows": [
+"Thermometer im warmen Wasser",
+"Thermometer im kalten Wasser",
+"Thermometer in meiner warmen Hand",
+"Thermometer liegt in der kühlen Luft"
+],
+"merksatz": [
+{
+"pre": "Wird es warm, dann ",
+"post": " die Flüssigkeit im Thermometer nach oben.",
+"loesung": "steigt"
+},
+{
+"pre": "Wird es kalt, dann ",
+"post": " die Flüssigkeit wieder nach unten.",
+"loesung": "sinkt"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum die Flüssigkeit im Thermometer im Sommer höher steht als im Winter.",
+"zeilen": 3,
+"loesung": "Im Sommer ist es warm. Die Flüssigkeit wird größer und braucht mehr Platz. Darum steigt sie nach oben. Im Winter ist es kalt. Die Flüssigkeit wird kleiner und sinkt wieder nach unten."
+},
+"titel": "Der Faden, der wandert"
+},
+{
+"theme": "waerme",
+"id": "w3",
+"name": "Was geschieht beim Erwärmen von Stoffen?",
+"problem": "Jonas will das Marmeladenglas öffnen, doch der Deckel sitzt bombenfest. Er zieht und dreht mit aller Kraft – nichts passiert. Dann hält er den Deckel kurz unter heißes Wasser aus dem Hahn. Auf einmal lässt er sich ganz leicht aufdrehen.",
+"frage": "Warum geht der Deckel nach dem heißen Wasser auf einmal so leicht auf?",
+"predict": [
+"Das Metall wird bei Wärme größer und braucht mehr Platz.",
+"Das Metall bleibt immer gleich groß, die Lücke ist nur für Regenwasser."
+],
+"forschen": [
+"Schiebe die kalte Metallkugel durch den Ring. Passt sie leicht durch?",
+"Halte die Kugel an ihrem Griff eine Weile in heißes Wasser, damit sie richtig warm wird. Vorsicht mit dem heißen Wasser - lass dir von einem Erwachsenen helfen.",
+"Nimm die heiße Kugel heraus und versuche noch einmal, sie durch den Ring zu schieben. Passt sie jetzt noch durch?"
+],
+"tabCols": [
+"Das probiere ich",
+"Passt die Kugel durch den Ring?"
+],
+"tabRows": [
+"Die Kugel ist kalt",
+"Die Kugel ist heiß (in heißem Wasser erwärmt)",
+"Die Kugel ist wieder abgekühlt"
+],
+"merksatz": [
+{
+"pre": "Die meisten Stoffe werden beim Erwärmen ",
+"post": ".",
+"loesung": "größer"
+},
+{
+"pre": "Beim Abkühlen ziehen sie sich wieder ",
+"post": ".",
+"loesung": "zusammen"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum eine Metallbrücke im heißen Sommer eine Lücke (Dehnungsfuge) im Boden braucht.",
+"zeilen": 3,
+"loesung": "Bei Hitze wird das Metall der Brücke größer und länger. Es braucht mehr Platz. Die Lücke gibt dem Metall diesen Platz. Ohne die Lücke würde sich die Brücke verbiegen oder kaputtgehen."
+},
+"titel": "Der bockige Deckel"
+},
+{
+"theme": "waerme",
+"id": "w4",
+"name": "Wie verändern sich Aggregatzustände?",
+"problem": "Emma stellt an einem kalten Winterabend einen Becher Wasser auf den Balkon. Am nächsten Morgen will sie ihn ausleeren – doch es tropft nichts heraus. Das Wasser ist ganz hart geworden. Emma kann es sogar als ganzes Stück aus dem Becher schütteln.",
+"frage": "Wie kann flüssiges Wasser über Nacht zu einem harten Stück werden?",
+"predict": [
+"Das Eis schmilzt, weil es in der Wärme warm wird.",
+"Das Eis verschwindet einfach, weil es zu alt ist."
+],
+"forschen": [
+"Lege einen Eiswürfel auf einen Teller und schau immer wieder hin.",
+"Gib einen zweiten Eiswürfel in warmes Wasser und vergleiche, welcher schneller schmilzt.",
+"Halte einen kalten Löffel über eine Tasse mit warmem Wasser."
+],
+"tabCols": [
+"Was ich mache",
+"Was ich sehe"
+],
+"tabRows": [
+"Eiswürfel auf dem Teller",
+"Eiswürfel im warmen Wasser",
+"kalter Löffel über warmem Wasser",
+"Pfütze in der Sonne"
+],
+"merksatz": [
+{
+"pre": "Wird Eis warm, dann ",
+"post": " es und wird zu flüssigem Wasser.",
+"loesung": "schmilzt"
+},
+{
+"pre": "Wird Wasser sehr kalt, dann ",
+"post": " es wieder zu festem Eis.",
+"loesung": "erstarrt"
+}
+],
+"aufgabe": {
+"frage": "Du legst einen Eiswürfel in die warme Küche. Was passiert mit ihm? Erkläre in deinen Worten.",
+"zeilen": 3,
+"loesung": "Der Eiswürfel wird warm. Er schmilzt und wird zu flüssigem Wasser. Wird es noch wärmer, verdampft das Wasser zu Wasserdampf."
+},
+"titel": "Der Becher über Nacht"
+},
+{
+"theme": "waerme",
+"id": "w5",
+"name": "Wie wird Wärme übertragen?",
+"problem": "Paul rührt seine heiße Suppe mit einem Metalllöffel um. Der Löffel steckt nur mit der Spitze in der Suppe. Nach kurzer Zeit fasst er oben ans Griffende – und zuckt zurück. Sogar dort, wo gar keine Suppe ist, ist der Löffel heiß geworden.",
+"frage": "Wie wird der Griff heiß, obwohl er die Suppe gar nicht berührt?",
+"predict": [
+"Die Wärme wandert durch das Metall vom Wasser bis zum Griff.",
+"Nur der Teil im Wasser wird heiß, der Griff bleibt immer kühl."
+],
+"forschen": [
+"Stelle einen Metalllöffel und einen Holzlöffel zusammen in warmes Wasser.",
+"Fühle nach 1 Minute an beiden Griffen, wie warm sie sind.",
+"Fühle nach 5 Minuten noch einmal und vergleiche die beiden Löffel."
+],
+"tabCols": [
+"Welcher Löffel?",
+"Wie fühlt sich der Griff an?"
+],
+"tabRows": [
+"Metalllöffel nach 1 Minute",
+"Metalllöffel nach 5 Minuten",
+"Holzlöffel nach 1 Minute",
+"Holzlöffel nach 5 Minuten"
+],
+"merksatz": [
+{
+"pre": "Wärme wandert immer von ",
+"post": " zu kalt.",
+"loesung": "warm"
+},
+{
+"pre": "Metall leitet Wärme ",
+"post": ", darum wird der Löffelgriff heiß. Das nennt man Wärmeleitung.",
+"loesung": "gut"
+}
+],
+"aufgabe": {
+"frage": "Warum nimmst du zum Umrühren von heißer Suppe lieber einen Holzlöffel als einen Metalllöffel? Erkläre.",
+"zeilen": 3,
+"loesung": "Holz leitet die Wärme schlecht. Darum bleibt der Griff vom Holzlöffel kühl, und du kannst ihn gut anfassen. Beim Metalllöffel würde auch der Griff heiß werden."
+},
+"titel": "Zu heiß zum Anfassen"
+},
+{
+"theme": "schall",
+"id": "sc1",
+"name": "Wie entsteht ein Ton?",
+"problem": "Jonas spannt ein dickes Gummiband über eine leere Keksdose. Er zupft einmal kräftig daran – sofort brummt ein tiefer Ton durch die Küche. Doch als er genauer hinschaut, ist das Band auf einmal ganz verschwommen. Es sieht aus, als wären dort plötzlich mehrere Gummibänder.",
+"frage": "Warum sieht das Band plötzlich so verschwommen aus, wenn es brummt?",
+"predict": [
+"Ein Ton entsteht, weil etwas ganz schnell hin und her schwingt (zittert).",
+"Ein Ton entsteht auch, wenn etwas ganz still liegt und sich gar nicht bewegt."
+],
+"forschen": [
+"Lege ein Lineal auf die Tischkante, ein Stück soll überstehen. Drücke das Ende runter und lass es los.",
+"Spanne ein Gummiband zwischen deine Finger und zupfe daran.",
+"Halte danach das zitternde Lineal oder Gummiband mit dem Finger fest."
+],
+"tabCols": [
+"Das mache ich",
+"Das sehe und höre ich"
+],
+"tabRows": [
+"Ich lasse das Lineal an der Tischkante schnippen.",
+"Ich zupfe am gespannten Gummiband.",
+"Ich halte das zitternde Lineal mit dem Finger fest.",
+"Ich lege das Lineal ganz ruhig auf den Tisch."
+],
+"merksatz": [
+{
+"pre": "Ein Ton entsteht, wenn etwas ganz schnell ",
+"post": ".",
+"loesung": "hin und her schwingt (zittert)"
+},
+{
+"pre": "Hört das Schwingen auf, dann hört auch der ",
+"post": " auf.",
+"loesung": "Ton"
+}
+],
+"aufgabe": {
+"frage": "Du zupfst ein Gummiband und hältst es dann mit dem Finger fest. Erkläre, was mit dem Ton passiert.",
+"zeilen": 3,
+"loesung": "Beim Zupfen schwingt das Gummiband und du hörst einen Ton. Wenn du es festhältst, kann es nicht mehr schwingen. Darum hört der Ton sofort auf."
+},
+"titel": "Ein Brummen aus der Keksdose"
+},
+{
+"theme": "schall",
+"id": "sc2",
+"name": "Wovon hängt die Lautstärke ab?",
+"problem": "Ben trommelt mit den Fingern auf einem umgedrehten Eimer. Mal hört man ihn kaum, dann dröhnt es plötzlich durch das ganze Wohnzimmer. Seine Schwester hält sich die Ohren zu und ruft: 'Nicht so doll!' Ben schaut auf seine Hände – dabei ist es doch immer derselbe Eimer.",
+"frage": "Was mache ich eigentlich anders, wenn es auf einmal so laut wird?",
+"predict": [
+"Wenn ich fester schlage, schwingt die Trommel stärker und der Ton wird lauter.",
+"Wenn ich fester schlage, wird der Ton höher, aber nicht lauter."
+],
+"forschen": [
+"Schlage die Trommel erst ganz leise an und höre gut hin.",
+"Schlage die Trommel dann ganz fest an und höre wieder.",
+"Schau dabei auf die Trommelhaut: Wie stark zittert sie?"
+],
+"tabCols": [
+"So schlage ich an",
+"Was ich höre und sehe"
+],
+"tabRows": [
+"Ich schlage ganz sanft an",
+"Ich schlage mittel an",
+"Ich schlage ganz fest an",
+"Ich lege einen Finger auf die Trommelhaut"
+],
+"merksatz": [
+{
+"pre": "Je fester ich schlage, desto ",
+"post": " wird der Ton.",
+"loesung": "lauter"
+},
+{
+"pre": "Große Schwingungen sind laut, kleine Schwingungen sind ",
+"post": ".",
+"loesung": "leise"
+}
+],
+"aufgabe": {
+"frage": "Lisa will auf ihrer Trommel ganz leise spielen, damit ihr Baby-Bruder nicht aufwacht. Was muss sie tun? Erkläre.",
+"zeilen": 3,
+"loesung": "Lisa muss die Trommel nur ganz sanft anschlagen. Dann schwingt die Trommelhaut nur wenig. Kleine Schwingungen machen einen leisen Ton."
+},
+"titel": "Nicht so doll!"
+},
+{
+"theme": "schall",
+"id": "sc3",
+"name": "Wovon hängt die Tonhöhe ab?",
+"problem": "Frieda füllt fünf Gläser mit unterschiedlich viel Wasser. Mit dem Löffel klopft sie eins nach dem anderen an. Das erste macht ein hohes 'Pling', beim letzten kommt nur ein tiefes 'Plong'. Dabei benutzt sie doch überall denselben Löffel und klopft ganz gleich.",
+"frage": "Warum klingt das eine Glas so hoch und das andere so tief?",
+"predict": [
+"Je schneller etwas schwingt, desto höher klingt der Ton.",
+"Je lauter du zupfst, desto höher klingt der Ton."
+],
+"forschen": [
+"Lege ein Lineal auf den Tisch. Lass es weit überstehen und zupfe es an. Höre gut hin.",
+"Schiebe das Lineal kürzer, sodass es nur wenig übersteht. Zupfe noch einmal und höre.",
+"Fülle zwei Gläser verschieden hoch mit Wasser. Schlage mit einem Löffel an jedes Glas und höre den Unterschied."
+],
+"tabCols": [
+"Das mache ich",
+"So klingt der Ton (hoch oder tief?)"
+],
+"tabRows": [
+"Lineal steht weit über",
+"Lineal steht wenig über",
+"Glas mit wenig Wasser",
+"Glas mit viel Wasser"
+],
+"merksatz": [
+{
+"pre": "Je schneller etwas schwingt, desto ",
+"post": " ist der Ton.",
+"loesung": "höher"
+},
+{
+"pre": "Eine kurze Saite schwingt schnell und klingt ",
+"post": ".",
+"loesung": "hoch"
+}
+],
+"aufgabe": {
+"frage": "Eine Gitarre hat kurze und lange Saiten. Welche Saite klingt hoch? Erkläre, warum das so ist.",
+"zeilen": 3,
+"loesung": "Die kurze Saite klingt hoch. Sie schwingt schneller als die lange Saite. Je schneller etwas schwingt, desto höher ist der Ton."
+},
+"titel": "Pling und Plong"
+},
+{
+"theme": "schall",
+"id": "sc4",
+"name": "Wie breitet sich Schall aus?",
+"problem": "Mira macht mittags ihre Hausaufgaben, als es ihr zu langweilig wird. Sie legt ihren Kopf seitlich auf die Holzplatte des Tisches. Am anderen Ende kratzt ihr kleiner Bruder heimlich mit dem Fingernagel. Auf einmal klingt das Kratzen ganz nah und laut – hebt sie den Kopf, ist es fast weg.",
+"frage": "Warum höre ich das Kratzen nur so laut, wenn mein Ohr auf dem Tisch liegt?",
+"predict": [
+"Der Schall wandert durch das Holz vom Tisch zu meinem Ohr.",
+"Schall kann sich nur durch die Luft bewegen, nicht durch feste Sachen."
+],
+"forschen": [
+"Lege dein Ohr flach auf den Tisch.",
+"Klopfe mit einem Finger ganz leise auf den Tisch, ein Stück weit von deinem Ohr entfernt.",
+"Hebe den Kopf und klopfe noch einmal genauso leise. Höre den Unterschied."
+],
+"tabCols": [
+"So höre ich",
+"Wie laut ist das Klopfen?"
+],
+"tabRows": [
+"Ohr liegt auf dem Tisch, ich klopfe leise",
+"Kopf ist oben, ich klopfe leise auf den Tisch",
+"Ohr an ein Fenster, jemand tippt leise dagegen",
+"Ohr an einen Holzstab, ich kratze am Ende"
+],
+"merksatz": [
+{
+"pre": "Schall wandert nicht nur durch die Luft, sondern auch durch feste Stoffe wie Holz und durch ",
+"post": ".",
+"loesung": "Wasser"
+},
+{
+"pre": "Legst du dein Ohr auf den Tisch, hörst du das Klopfen ",
+"post": ", weil der Schall gut durch das Holz kommt.",
+"loesung": "lauter"
+}
+],
+"aufgabe": {
+"frage": "Warum hörst du ein leises Klopfen besser, wenn du dein Ohr auf den Tisch legst? Erkläre es mit deinen eigenen Worten.",
+"zeilen": 3,
+"loesung": "Der Schall breitet sich durch das feste Holz vom Tisch aus. Feste Stoffe leiten den Schall gut. Darum kommt das Klopfen lauter an deinem Ohr an als durch die Luft."
+},
+"titel": "Das Kratzen im Tisch"
+},
+{
+"theme": "schall",
+"id": "sc5",
+"name": "Wie funktioniert das Ohr?",
+"problem": "Emil spannt Frischhaltefolie straff über eine große Schüssel. Vorsichtig streut er ein paar Salzkörner darauf. Dann hält er einen Kochtopf daneben und schlägt kräftig mit dem Löffel dagegen. Beim lauten Scheppern hüpfen die Salzkörner plötzlich in die Luft – obwohl nichts sie berührt.",
+"frage": "Wie können die Körner hüpfen, wenn der laute Ton sie doch gar nicht anfasst?",
+"predict": [
+"In deinem Ohr fängt etwas an zu schwingen, wenn ein Ton ankommt.",
+"Der Ton fliegt einfach durch ein Loch ins Ohr und bewegt dort nichts."
+],
+"forschen": [
+"Schau dir das Bild vom Ohr genau an. Suche das Trommelfell und die kleinen Knochen.",
+"Höre einen Ton. Setze dann den Gehörschutz auf und höre den gleichen Ton noch einmal.",
+"Halte deine Hand hinter das Ohr und höre ein leises Geräusch. Nimm die Hand dann wieder weg."
+],
+"tabCols": [
+"Das mache ich",
+"Das höre ich"
+],
+"tabRows": [
+"Ton ohne Gehörschutz",
+"Ton mit Gehörschutz",
+"Leises Geräusch ohne Hand hinter dem Ohr",
+"Leises Geräusch mit Hand hinter dem Ohr"
+],
+"merksatz": [
+{
+"pre": "Der Schall bringt das ",
+"post": " zum Schwingen.",
+"loesung": "Trommelfell"
+},
+{
+"pre": "Sehr laute Töne können dein ",
+"post": " schädigen.",
+"loesung": "Ohr"
+}
+],
+"aufgabe": {
+"frage": "Warum ist ein Gehörschutz bei einem lauten Konzert gut für deine Ohren? Erkläre in ganzen Sätzen.",
+"zeilen": 3,
+"loesung": "Sehr laute Töne können das Ohr schädigen. Der Gehörschutz macht die Töne leiser. So bleibt dein Trommelfell heil und deine Ohren tun nicht weh."
+},
+"titel": "Die hüpfenden Salzkörner"
+},
+{
+"theme": "himmel",
+"id": "h1",
+"name": "Wie entstehen Tag und Nacht?",
+"problem": "Ben videotelefoniert am Nachmittag mit seiner Cousine Yumi in Japan. Bei Ben scheint die Sonne hell ins Zimmer. Doch auf dem Bildschirm ist es bei Yumi stockdunkel – sie gähnt und will gleich ins Bett. Beide schauen aus dem Fenster: hier taghell, dort tiefe Nacht.",
+"frage": "Wie kann es bei uns Tag sein und bei Yumi gleichzeitig mitten in der Nacht?",
+"predict": [
+"Die Erde dreht sich, darum ist es mal Tag und mal Nacht.",
+"Die Sonne wandert über den Himmel und läuft abends einfach weg."
+],
+"forschen": [
+"Nimm einen Ball als Erde und eine Taschenlampe als Sonne.",
+"Leuchte mit der Lampe auf den Ball. Schau, welche Seite hell ist.",
+"Drehe den Ball langsam und beobachte, wie es hell und dunkel wird."
+],
+"tabCols": [
+"Was ich mache",
+"Was ich sehe"
+],
+"tabRows": [
+"Ich leuchte mit der Lampe auf den Ball.",
+"Ich schaue auf die Seite, die zur Lampe zeigt.",
+"Ich schaue auf die Seite, die von der Lampe weg zeigt.",
+"Ich drehe den Ball langsam einmal herum."
+],
+"merksatz": [
+{
+"pre": "Die Erde dreht sich in ",
+"post": " einmal um sich selbst.",
+"loesung": "24 Stunden"
+},
+{
+"pre": "Die Seite zur Sonne hat ",
+"post": ", die andere Seite hat Nacht.",
+"loesung": "Tag"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit deinen Worten: Warum wird es bei uns am Abend dunkel?",
+"zeilen": 3,
+"loesung": "Die Erde dreht sich weiter. Unsere Seite zeigt dann nicht mehr zur Sonne. Darum wird es bei uns dunkel und es ist Nacht."
+},
+"titel": "Tag hier, Nacht dort"
+},
+{
+"theme": "himmel",
+"id": "h2",
+"name": "Wie entstehen die Jahreszeiten?",
+"problem": "Lina blättert im heißen Sommer durch alte Fotos. Auf einem Bild vom letzten Winter steht sie in dicker Jacke im tiefen Schnee vor ihrem Haus. Heute steht sie an genau derselben Stelle im Garten – barfuß im T-Shirt, und die Sonne brennt. Gleicher Ort, und doch völlig anders.",
+"frage": "Warum ist es an genau demselben Ort mal eiskalt und mal so brütend heiß?",
+"predict": [
+"Im Sommer ist unsere Hälfte der Erde zur Sonne geneigt, darum steht die Sonne hoch.",
+"Im Sommer ist die ganze Erde näher an der Sonne dran, darum ist es warm."
+],
+"forschen": [
+"Stell die Lampe in die Mitte. Sie ist die Sonne.",
+"Kippe den Globus zur Seite. Halte ihn dabei immer gleich gekippt, zum Beispiel immer Richtung Fenster. Geh langsam einmal um die Lampe herum.",
+"Schau genau hin: Wann zeigt deine Hälfte zur Lampe, und wann zeigt sie weg?"
+],
+"tabCols": [
+"So steht die Erde",
+"Sommer oder Winter bei uns?"
+],
+"tabRows": [
+"Deine Hälfte ist zur Lampe geneigt",
+"Deine Hälfte ist von der Lampe weg geneigt",
+"Die Lampe scheint steil von oben auf deine Hälfte",
+"Die Lampe scheint flach von der Seite auf deine Hälfte"
+],
+"merksatz": [
+{
+"pre": "Wenn unsere Hälfte der Erde zur Sonne geneigt ist, haben wir ",
+"post": ". Dann steht die Sonne hoch und es ist lange hell.",
+"loesung": "Sommer"
+},
+{
+"pre": "Im Winter ist unsere Hälfte von der Sonne weggeneigt. Die Sonne steht dann ",
+"post": " am Himmel und es wird früh dunkel.",
+"loesung": "tief"
+}
+],
+"aufgabe": {
+"frage": "Erkläre einer Freundin, warum die Tage im Sommer länger hell sind als im Winter.",
+"zeilen": 3,
+"loesung": "Im Sommer ist unsere Hälfte der Erde zur Sonne geneigt. Die Sonne steht hoch am Himmel und ist lange zu sehen. Darum ist es viele Stunden lang hell."
+},
+"titel": "Vom Schnee zum Sonnenbrand"
+},
+{
+"theme": "himmel",
+"id": "h3",
+"name": "Warum verändert der Mond sein Aussehen?",
+"problem": "Nina malt jeden Abend vor dem Schlafengehen den Mond in ihr Heft. Am Montag ist er nur eine dünne Sichel. Ein paar Tage später ist er halb, dann ganz rund und hell. Und nach einer Woche fehlt plötzlich wieder ein großes Stück.",
+"frage": "Warum sieht der Mond jeden Abend ein bisschen anders aus?",
+"predict": [
+"Die Sonne beleuchtet den Mond. Wir sehen mal mehr, mal weniger von der hellen Seite.",
+"Der Schatten der Erde liegt auf dem Mond und deckt einen Teil zu."
+],
+"forschen": [
+"Mach das Zimmer dunkel. Stell eine Lampe fest auf den Tisch – sie ist die Sonne. Der Ball ist der Mond, dein Kopf ist die Erde.",
+"Halte den Ball mit ausgestrecktem Arm vor dich, so dass die Lampe ihn anleuchtet.",
+"Dreh dich langsam einmal ganz im Kreis und halte den Ball immer vor dich. Schau dabei, wie viel vom hellen Ball du siehst."
+],
+"tabCols": [
+"Wo steht der Ball?",
+"Wie viel Helles siehst du?"
+],
+"tabRows": [
+"Ball zwischen dir und der Lampe",
+"Ball seitlich neben dir",
+"Ball auf der anderen Seite (Lampe hinter dir)",
+"Ball wieder seitlich"
+],
+"merksatz": [
+{
+"pre": "Der Mond leuchtet nicht selbst. Er wird von der ",
+"post": " beleuchtet.",
+"loesung": "Sonne"
+},
+{
+"pre": "Wir sehen mal mehr, mal weniger von der hellen Seite. Das nennt man ",
+"post": ".",
+"loesung": "Mondphasen"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit deinen Worten, warum wir manchmal nur eine schmale Mond-Sichel sehen.",
+"zeilen": 3,
+"loesung": "Die Sonne beleuchtet immer nur eine Seite vom Mond. Wenn wir von der Seite auf den Mond schauen, sehen wir nur einen kleinen Teil der hellen Seite. Das sieht dann wie eine Sichel aus."
+},
+"titel": "Jeden Abend ein anderer Mond"
+},
+{
+"theme": "himmel",
+"id": "h4",
+"name": "Wie entsteht eine Sonnenfinsternis?",
+"problem": "Paul steht mittags mit seiner ganzen Klasse auf dem Schulhof. Die Sonne scheint von einem wolkenlosen Himmel – doch dann wird es langsam immer düsterer. Es wird kühl, die Vögel hören auf zu zwitschern, und für ein paar Minuten ist es fast wie mitten in der Nacht. Dann kommt das Tageslicht zurück.",
+"frage": "Wie kann es am helllichten Tag auf einmal so dunkel werden?",
+"predict": [
+"Der Mond schiebt sich genau vor die Sonne.",
+"Eine große dunkle Wolke deckt die Sonne zu."
+],
+"forschen": [
+"Stelle die Lampe an. Sie ist die Sonne. Der große Ball ist die Erde.",
+"Halte den kleinen Ball (Mond) genau zwischen Lampe und großem Ball. Bewege ihn langsam.",
+"Schau nie ohne Schutz in die echte Sonne! Das ist gefährlich für deine Augen."
+],
+"tabCols": [
+"So stelle ich die Bälle",
+"Das sehe ich am großen Ball (Erde)"
+],
+"tabRows": [
+"Der kleine Ball liegt neben der Erde",
+"Der kleine Ball ist genau zwischen Lampe und Erde",
+"Der kleine Ball ist nah an der Erde",
+"Der kleine Ball ist weit weg von der Erde"
+],
+"merksatz": [
+{
+"pre": "Bei einer Sonnenfinsternis steht der ",
+"post": " genau zwischen Sonne und Erde.",
+"loesung": "Mond"
+},
+{
+"pre": "Der Mond wirft einen ",
+"post": " auf die Erde und verdeckt so die Sonne.",
+"loesung": "Schatten"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit deinen Worten, warum es bei einer Sonnenfinsternis am Tag dunkel wird.",
+"zeilen": 3,
+"loesung": "Der Mond steht genau zwischen Sonne und Erde. Er verdeckt die Sonne und wirft einen Schatten auf die Erde. Wer im Schatten steht, für den wird es dunkel."
+},
+"titel": "Nacht am Mittag"
+},
+{
+"theme": "himmel",
+"id": "h5",
+"name": "Wie entsteht eine Mondfinsternis?",
+"problem": "Finn schaut spät abends aus dem Fenster. Der Vollmond leuchtet groß und weiß am Himmel. Doch nach und nach wird er immer dunkler – bis er am Ende ganz kupferrot schimmert. Dabei ist kein einziges Wölkchen zu sehen.",
+"frage": "Warum wird der helle Vollmond auf einmal dunkel und sogar rot?",
+"predict": [
+"Die Erde steht im Weg und wirft ihren Schatten auf den Mond.",
+"Eine große dunkle Wolke schiebt sich vor den Mond."
+],
+"forschen": [
+"Stell die Lampe an. Sie ist die Sonne. Leuchte damit den kleinen Ball (Mond) an.",
+"Halte jetzt den großen Ball (Erde) genau zwischen Lampe und kleinen Ball.",
+"Schau, was mit dem kleinen Ball passiert, wenn der große Ball davor steht."
+],
+"tabCols": [
+"Was ich tü",
+"Wie sieht der Mond-Ball aus?"
+],
+"tabRows": [
+"Nur die Lampe leuchtet den Mond-Ball an",
+"Der Erd-Ball steht neben dem Mond-Ball",
+"Der Erd-Ball steht genau zwischen Lampe und Mond-Ball",
+"Ich schiebe den Erd-Ball langsam vor den Mond-Ball"
+],
+"merksatz": [
+{
+"pre": "Bei einer Mondfinsternis steht die ",
+"post": " zwischen Sonne und Mond.",
+"loesung": "Erde"
+},
+{
+"pre": "Die Erde wirft ihren ",
+"post": " auf den Mond. Darum wird der Mond dunkel und oft rot.",
+"loesung": "Schatten"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit deinen eigenen Worten: Warum wird der Mond bei einer Mondfinsternis dunkel?",
+"zeilen": 3,
+"loesung": "Die Erde steht zwischen der Sonne und dem Mond. Sie wirft ihren Schatten auf den Mond. Darum bekommt der Mond fast kein Sonnenlicht mehr und wird dunkel und oft rötlich."
+},
+"titel": "Der Mond wird rot"
+}
+]

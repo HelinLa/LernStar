@@ -1,0 +1,45 @@
+<!-- nacht -->
+<defs>
+  <linearGradient id="l1erde" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2A2A22"/><stop offset="0.5" stop-color="#1E2018"/>
+    <stop offset="1" stop-color="#141610"/>
+  </linearGradient>
+  <linearGradient id="l1horizont" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0E1428" stop-opacity="0"/>
+    <stop offset="1" stop-color="#080C18" stop-opacity="0.85"/>
+  </linearGradient>
+  <radialGradient id="l1mondlicht" cx="0.76" cy="0.22" r="0.62">
+    <stop offset="0" stop-color="#AFC4E6" stop-opacity="0.20"/>
+    <stop offset="1" stop-color="#AFC4E6" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+  <use href="#t_sterne" x="0" y="0"/>
+  <use href="#t_mond" transform="translate(688,126) scale(0.92)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#l1mondlicht)"/>
+
+  <!-- Waldrand hinten -->
+  <g filter="url(#nachtTon)" opacity="0.9">
+    <use href="#t_baum_fern" transform="translate(430,392) scale(1.05)"/>
+    <use href="#t_baum_fern" transform="translate(556,384) scale(0.82)"/>
+    <use href="#t_baum_fern" transform="translate(832,398) scale(1.15)"/>
+    <use href="#t_baum_fern" transform="translate(672,376) scale(0.7)"/>
+  </g>
+  <rect x="0" y="230" width="900" height="200" fill="url(#l1horizont)"/>
+  <rect x="0" y="120" width="900" height="300" fill="#0E1428" opacity="0.34"/>
+
+  <!-- Boden -->
+  <rect x="0" y="386" width="900" height="154" fill="url(#l1erde)"/>
+  <path d="M0,392 Q220,378 452,392 Q690,404 900,388 L900,410 L0,410 Z" fill="#0C0E0A" opacity="0.55"/>
+  <g filter="url(#nachtTon)">
+    <use href="#t_grasbuschel" transform="translate(96,432) scale(0.9)"/>
+    <use href="#t_grasbuschel" transform="translate(320,452) scale(1.1)"/>
+    <use href="#t_grasbuschel" transform="translate(618,442) scale(0.8)"/>
+    <use href="#t_grasbuschel" transform="translate(806,470) scale(1.2)"/>
+  </g>
+
+  <!-- der dicke Baum am Abzweig, mit dem Katzenauge -->
+  <g filter="url(#daemmerTon)"><use href="#t_stamm_nah" transform="translate(158,470)"/></g>
+  <use href="#t_katzenauge" transform="translate(168,268) scale(0.95)"/>
+
+  <!-- Noahs leere Taschenlampe liegt im Gras -->
+  <use href="#t_lampe_aus" transform="translate(586,486) rotate(-8) scale(0.66)"/>

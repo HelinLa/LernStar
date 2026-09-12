@@ -1,0 +1,53 @@
+{
+ "id": "ki15",
+ "basiskonzept": "Erhaltung und Gleichgewicht",
+ "titel": "Das Dreieck unter der Geraden",
+ "problem": "Vor jedem Start schnellt eine gespannte Feder ihren Wagen auf die Messstrecke. Tobias hängt einen Kraftmesser an: bei zehn Zentimetern Auslenkung zeigt er zwei Newton. Zwei Newton mal zehn Zentimeter, rechnet er, das seien 0,2 Joule in der Feder. Mira widerspricht – am Anfang des Spannens sei die Kraft doch null gewesen.",
+ "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
+ "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
+ "predict": [
+  "Über s² wird die Auftragung wieder gerade, ihre Steigung ist aber nur halb so groß wie bei F über s. Die Federkonstante folgt aus ihr erst durch Verdoppeln, also D = 2 · k.",
+  "Beide Auftragungen stammen aus derselben Messreihe, also muss auch die Steigung dieselbe sein. Über s² liest man die Federkonstante deshalb unmittelbar ab, ohne noch etwas zu verdoppeln."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Der Ausgangszustand steht auf D = 20 N/m. Drücke „Messreihe automatisch aufnehmen“: Die Federkonstante bleibt fest, die Auslenkung fährt in sieben Zeilen von 0 cm bis 30 cm. Notiere aus der Tabelle die Spalten s, s², F und E und lies darunter die Zeile „Auswertung der Messreihe“ – sie nennt für 5 cm und 10 cm zwei Faktoren.",
+  "Drücke „F über s auftragen“ und notiere die Steigung der Fitzeile und darunter den Kasten „Federkonstante D aus der Steigung k“. Wechsle auf „E über s auftragen“ und setze den Haken bei „Theoriekurve einblenden“: Halte fest, warum dort keine Steigung steht. Drücke dann „E über s² auftragen“ und lies Steigung und Rückrechnung ab.",
+  "Drücke „Tabelle leeren“ und bestätige die Rückfrage „Alle 7 Messwerte löschen?“, stelle den Regler „Federkonstante D“ auf 50 N/m und drücke erneut „Messreihe automatisch aufnehmen“. Lies für diese neue Reihe die Steigung unter „F über s auftragen“ und unter „E über s² auftragen“ ab und vergleiche beide mit dem eingestellten Wert."
+ ],
+ "tabCols": [
+  "Auftragung im Auswertungsfeld",
+  "Form der Punkte · Steigung k · daraus folgt D"
+ ],
+ "tabRows": [
+  "F über s, D = 20 N/m",
+  "E über s, D = 20 N/m",
+  "E über s², D = 20 N/m",
+  "E über s², D = 50 N/m"
+ ],
+ "fachtext": "Eine Messreihe wird erst dann zu einer Formel, wenn man sie aufträgt. Bei fester Federkonstante liegen die Messpunkte der Auftragung F über s auf einer Ursprungsgeraden – das ist das Kraftgesetz F = D · s, und die Steigung k dieser Geraden ist unmittelbar die Federkonstante: D = k, gemessen in N/m. Trägt man dieselben Messwerte als E über s auf, wird die Auftragung krumm: eine Parabel durch den Ursprung. Eine Parabel hat keine Steigung, die man ablesen könnte; die Federkonstante ist ihr also nicht unmittelbar zu entnehmen. Deshalb wird linearisiert. Man ersetzt die Größe auf der x-Achse durch eine andere – hier s² statt s – und prüft, ob die Punkte danach auf einer Geraden liegen. Über s² tun sie es: Damit ist E proportional zu s², und die Steigung dieser zweiten Geraden gehört wieder zur Feder. Sie ist aber nicht D, sondern D/2; zurückgerechnet gilt D = 2 · k. Der Faktor ½ ist kein Rechenzufall, sondern hat eine anschauliche Bedeutung. Beim Spannen wächst die Kraft von null bis zum Endwert F = D · s. Die Form W = F · s gilt nur für eine konstante Kraft, einzusetzen ist ihr Mittelwert ½ · F. Die gespeicherte Energie ist deshalb die Fläche unter der F-s-Geraden, und diese Fläche ist ein rechtwinkliges Dreieck mit der Grundseite s und der Höhe F – halb so groß wie das Rechteck F · s mit denselben Seiten. So entsteht E = ½ · F · s = ½ · D · s², mit 1 N · 1 m = 1 J. Dieselbe Feder liefert also zwei Geraden mit zwei Steigungen: D aus der Kraftauftragung, D/2 aus der linearisierten Energieauftragung. Weil s im Quadrat steht, bringt die doppelte Auslenkung die doppelte Kraft, aber die vierfache Energie. Beim Loslassen gilt für einen reibungsfrei laufenden Wagen der Masse m: E_Spann = E_Kin, also ½ · D · s² = ½ · m · v² und damit v = √(2 · E / m). Die Simulation rechnet mit einer idealen Feder und einer reibungsfreien Bahn; an einer echten Fahrbahn gehen einige Prozent an Reibung und mitschwingende Federmasse verloren.",
+ "merksatz": [
+  {
+   "pre": "Über s² statt über s aufgetragen liegen die Energiewerte wieder auf einer Ursprungsgeraden; dieses Umformen der Achse heißt",
+   "loesung": "Linearisieren",
+   "post": ", und erst danach lässt sich eine Steigung ablesen."
+  },
+  {
+   "pre": "Die Steigung der E-s²-Geraden ist nicht D, sondern",
+   "loesung": "D/2",
+   "post": "; zurückgerechnet gilt D = 2 · k, denn die Energie ist die Dreiecksfläche unter der Kraftgeraden."
+  }
+ ],
+ "beobachtung": "Nach „Messreihe automatisch aufnehmen“ stehen bei D = 20 N/m sieben Zeilen in der Messreihe: s = 0, 5, 10, 15, 20, 25 und 30 cm, dazu s² von 0,0000 m² bis 0,0900 m², F = 0,00 · 1,00 · 2,00 · 3,00 · 4,00 · 5,00 · 6,00 N und E = 0,0000 · 0,0250 · 0,1000 · 0,2250 · 0,4000 · 0,6250 · 0,9000 J. Darunter meldet die Auswertung der Messreihe, dass Zeile 2 und Zeile 3 zur selben Feder gehören und die Auslenkung von 5 cm auf 10 cm verdoppelt ist: „Kraft: 1,00 N → 2,00 N, also das 2,0-fache. Energie: 0,0250 J → 0,1000 J, also das 4,0-fache. Das ist der Beleg: F ~ s, aber E ~ s².“ „F über s auftragen“ liefert die Fitzeile y = 20,000·x bei R² = 1,0000 und erwartet 20,000; der Kasten „Federkonstante D aus der Steigung k“ nennt 20,000 N/m gegen eingestellt 20 N/m, Abweichung 0,00 %, mit der Zeile F = D · s, also D = k. „E über s auftragen“ zeigt statt einer Fitzeile den Hinweis, dass die Punkte NICHT auf einer Geraden liegen: eine Parabel durch den Ursprung hat keine Steigung, die man ablesen könnte. „E über s² auftragen“ macht daraus wieder eine Ursprungsgerade: y = 10,000·x, R² = 1,0000, erwartet 10,000 – und der Ergebniskasten rechnet zurück, D = 2 · k = 2 · 10,000 N/m = 20,000 N/m, ebenfalls mit 0,00 % Abweichung. Nach „Tabelle leeren“ und D = 50 N/m ergibt dieselbe Reihe F = 2,50 N bei 5 cm bis 15,00 N bei 30 cm und E = 0,0625 J bis 2,2500 J; „F über s auftragen“ gibt y = 50,000·x, „E über s² auftragen“ gibt y = 25,000·x und wieder D = 2 · 25,000 N/m = 50,000 N/m. Beide Male ist die Steigung der linearisierten Auftragung genau die halbe Federkonstante.",
+ "aufgabe": {
+  "frage": "Bestimme aus der Steigung k = 12,500 N/m einer E-s²-Geraden die Federkonstante, berechne damit Kraft und Spannenergie bei s = 24 cm und prüfe beide Zahlen am Bildschirm nach.",
+  "zeilen": 5,
+  "loesung": "Aus der linearisierten Auftragung folgt die Federkonstante durch Verdoppeln: D = 2 · k = 2 · 12,500 N/m = 25,000 N/m, also D = 25 N/m. Diesen Wert kann der Regler „Federkonstante D“ einstellen, er läuft in Schritten von 5 N/m von 5 bis 60. Dann s = 24 cm = 0,24 m. Kraft: F = D · s = 25 N/m · 0,24 m = 6,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 25 N/m · (0,24 m)² = 0,5 · 25 · 0,0576 = 0,720 J. Die Gegenprobe über die Fläche gibt dieselbe Zahl: ½ · Grundseite · Höhe = 0,5 · 0,24 m · 6,00 N = 0,720 J. Nachprüfen am Bildschirm: Regler auf D = 25 N/m und s = 24 cm stellen, dann meldet das Feld „Kraft, Fläche, Energie“ genau 6,00 N und 0,720 J. Wer die Rückrechnung selbst sehen will, drückt „Messreihe automatisch aufnehmen“ und „E über s² auftragen“: Dort steht y = 12,500·x bei R² = 1,0000 und darunter E = ½ · D · s², also D = 2 · k = 2 · 12,500 N/m = 25,000 N/m bei 0,00 % Abweichung. Wer stattdessen F · s rechnet, kommt auf 6,00 N · 0,24 m = 1,44 J, also genau das Doppelte – das ist die Rechteckfläche, nicht das Dreieck. Nach „Loslassen“ nennt die Statuszeile v = √(2 · 0,720 J / 0,50 kg) = 1,70 m/s."
+ },
+ "alltag": "Nimm die Feder aus einem Druckkugelschreiber heraus – frei liegt sie in ihrer Ruhelage, dort ist s = 0. Drücke sie auf einer Küchenwaage mit einem Lineal um 2, 4, 6 und 8 mm zusammen und notiere jedes Mal die angezeigte Masse. Rechne F = m · g aus, trage F über s auf und bestimme die Federkonstante aus der Steigung.",
+ "alltagAfb": "II",
+ "alltagKomp": "S7",
+ "ueberleitung": "Aus einer Messreihe ist hier eine Formel geworden – die Auftragung über s² hat die krumme Kurve gerade gemacht. Auf der nächsten Seite prallen zwei Wagen aufeinander; dann steht neben der Energie noch eine zweite Summe in der Bilanz, der Impuls.",
+ "name": "Die gespannte Feder – wo steckt die Energie?",
+ "theme": "ef_mechanik"
+}

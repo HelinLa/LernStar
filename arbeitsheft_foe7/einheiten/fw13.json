@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw13",
+  "quelle": "ew14",
+  "sim": "urknall",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Woher kommt alles?",
+  "name": "Wie hat sich das Weltall seit dem Urknall verändert?",
+  "fachwoerter_neu": [
+   "Urknall"
+  ],
+  "alltag": [
+   "Auf der letzten Sternkarte steht hinten: Und davor?",
+   "Sterne und Galaxien haben Nour und Jannis sortiert.",
+   "Aber woher kommt das alles?",
+   "Den heißen Anfang des Weltalls nennt man Urknall."
+  ],
+  "frage": "Wie hat sich das Weltall seit dem Urknall verändert?",
+  "predict": [
+   "Das Weltall war am Anfang winzig, heiß und dicht – und dehnt sich aus.",
+   "Das Weltall war schon immer so groß wie heute."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „zum Anfang“ und lies Zeitanzeige und Statuszeile.",
+   "Drücke „▶ Urknall starten“ und beobachte die Galaxien.",
+   "Vergleiche das Bild am Anfang mit dem Bild am Ende.",
+   "Trage alle Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zeitpunkt",
+   "Wie liegen die Galaxien?",
+   "Was sagt die Statuszeile?"
+  ],
+  "tabRows": [
+   [
+    "am Anfang",
+    "alles auf winzigem Raum",
+    "unvorstellbar heiß und dicht"
+   ],
+   [
+    "in der Mitte des Ablaufs",
+    "",
+    ""
+   ],
+   [
+    "am Ende des Ablaufs",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Weltall begann vor etwa 13,8 Milliarden Jahren: winzig, heiß und",
+    "loesung": "dicht",
+    "post": "."
+   },
+   {
+    "pre": "Seitdem dehnt es sich aus. Die Abstände der Galaxien werden immer",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "dicht",
+   "größer",
+   "Urknall",
+   "dehnt",
+   "heiß"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation ganz am Anfang?",
+   "antwort": "Alles liegt auf winzigem Raum. Es ist unvorstellbar heiß und dicht. Die Zeitanzeige nennt die allerersten Augenblicke."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was macht das Weltall seit dem Urknall?",
+    "optionen": [
+     "Es schrumpft.",
+     "Es bleibt gleich groß.",
+     "Es dehnt sich aus."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Am Anfang war alles heiß und",
+      "loesung": "dicht",
+      "post": "."
+     },
+     {
+      "pre": "Das Weltall",
+      "loesung": "dehnt",
+      "post": "sich seit dem Urknall aus."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Sieh auf das Bild mit dem Luftballon. Warum entfernen sich alle Galaxien voneinander?",
+    "satzstarter": "Die Galaxien sind wie Punkte auf einem Ballon …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das Ballon-Bild: Beim Aufblasen wächst jeder Abstand zwischen den Punkten.",
+   "h2": "Beginne so: Die Galaxien sind wie Punkte auf einem Ballon. Bläst man ihn auf, …",
+   "h3": "Fast fertige Antwort: Beim Aufblasen wächst der Ballon überall. Darum wird der Abstand zwischen allen Punkten ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wie das Weltall begann.",
+   "Ich weiß, was sich seit dem Urknall ändert.",
+   "Ich kann das Ballon-Bild erklären."
+  ],
+  "zuhause": "Male drei Punkte auf einen Luftballon und blase ihn langsam auf. Beobachte, wie jeder Abstand zwischen den Punkten wächst.",
+  "bildauftrag": "[BILD: zweimal derselbe Luftballon nebeneinander: links klein aufgeblasen mit drei nah beieinanderliegenden Punkten, rechts groß aufgeblasen mit denselben drei Punkten weit auseinander; Pfeile zwischen den Punkten zeigen die gewachsenen Abstände; große Beschriftungen „vorher“ und „nachher“ und die Zeile „jeder Abstand wächst“; keine weiteren Objekte; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw13",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass das Weltall mit dem Urknall heiß und dicht begann und sich seitdem ausdehnt, sodass die Abstände zwischen den Galaxien immer größer werden.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Karten aus diesem Lehrerteil. Klassendemonstration: Luftballon mit drei aufgemalten Punkten (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Ballon-Demonstration gemeinsam",
+  "ersatz_ohne_simulation": "Die Karten zeigen: am Anfang → alles auf winzigem Raum, unvorstellbar heiß und dicht, Zeitanzeige: die allerersten Augenblicke · danach → die Galaxien rücken immer weiter auseinander, erste Sterne und Galaxien entstehen · am Ende → das heutige Weltall. Dazu der aufgeblasene Luftballon als Modell.",
+  "merksatz": [
+   "dicht",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "in der Mitte des Ablaufs",
+    "rücken auseinander",
+    "erste Sterne und Galaxien entstehen"
+   ],
+   [
+    "am Ende des Ablaufs",
+    "weit auseinander",
+    "das heutige Weltall"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Das Weltall dehnt sich seit dem Urknall aus.",
+   "typische_fehler": [
+    "Der Urknall wird als Explosion in einen schon fertigen Raum hinein gedacht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dicht",
+    "dehnt"
+   ],
+   "typische_fehler": [
+    "„dunkel“ statt „dicht“ – die Wörter klingen ähnlich.",
+    "„dreht“ statt „dehnt“ – Verwechslung der Verben."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Galaxien sind wie Punkte auf einem Ballon. Bläst man ihn auf, wächst jeder Abstand zwischen den Punkten. Genauso werden die Abstände zwischen den Galaxien immer größer.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: Fast alle Galaxien entfernen sich von uns – wie Punkte auf einem Luftballon.",
+    "Mit der eigenen Tabelle begründet: am Anfang eng zusammen, am Ende weit auseinander."
+   ],
+   "typische_fehler": [
+    "Die Galaxien sollen selbst durch einen fertigen Raum fliegen – es wächst der Raum dazwischen.",
+    "Milliarden und Millionen Jahre werden verwechselt."
+   ]
+  },
+  "hilfe3_wort": "größer",
+  "schwache": [
+   "Den Luftballon-Versuch real vorführen, bevor die Simulation startet.",
+   "Nur Anfang und Ende vergleichen lassen, die Mitte danach.",
+   "Die Zahl 13,8 Milliarden einmal mit allen Nullen anschreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen der Simulation – eine fragt nach dem Alter des Weltalls.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Urknall. Kompetenz E5 wie auf der Quellseite ew14. Astronomische Werte als Modellwerte kennzeichnen; die Modellkritik am Ballon (AFB III) entfällt bewusst und bleibt dem Regelheft vorbehalten."
+ }
+}

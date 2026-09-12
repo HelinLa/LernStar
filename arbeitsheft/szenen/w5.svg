@@ -1,0 +1,20 @@
+<defs>
+  <radialGradient id="w5licht" cx="0.5" cy="0.78" r="0.62">
+    <stop offset="0" stop-color="#FFCE7A" stop-opacity="0.40"/>
+    <stop offset="0.42" stop-color="#FFB65A" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#130C03" stop-opacity="0.58"/>
+  </radialGradient>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w5licht)"/>
+  <use href="#t_kiste" transform="translate(450,530) scale(1.0)"/>
+  <!-- Drahtgestell ueber der Kerze -->
+  <g stroke="url(#stahl)" stroke-width="7" fill="none" stroke-linecap="round">
+    <path d="M330,352 v-24 h240 v24"/><path d="M356,352 v-24"/><path d="M544,352 v-24"/>
+  </g>
+  <use href="#t_dampf" transform="translate(450,142) scale(0.95)"/>
+  <use href="#t_topf" transform="translate(450,328) scale(0.94)"/>
+  <use href="#t_loeffel_metall" transform="translate(392,236) rotate(-70) scale(0.86)"/>
+  <use href="#t_loeffel_holz"   transform="translate(512,236) rotate(70) scale(0.86)"/>
+  <use href="#t_teelicht" transform="translate(450,396) scale(1.1)"/>

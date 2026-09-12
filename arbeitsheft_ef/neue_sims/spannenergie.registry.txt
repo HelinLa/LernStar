@@ -1,0 +1,10 @@
+
+  // ── SPANNENERGIE (EF) – E = ½·D·s² als Fläche unter der F-s-Geraden ──
+  'spannenergie': modal => {
+    _speInit();
+    modal.innerHTML = _speHTML();
+    _speStatus();
+    _speRenderTabelle();
+    _pSim = new PhysicsSimEngine('speAnim', 'speAnim');
+    _pSim.start(dt => _speUpdate(dt), (ctx, cv) => _speDraw(ctx, cv), []);
+  },

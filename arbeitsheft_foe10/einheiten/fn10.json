@@ -1,0 +1,209 @@
+{
+ "seite": {
+  "id": "fn10",
+  "quelle": "rk11",
+  "sim": "kettenreaktion",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Pfeil auf Nours Folie",
+  "name": "Wie ist ein Kernkraftwerk aufgebaut?",
+  "fachwoerter_neu": [
+   "Dampf",
+   "Brennstab"
+  ],
+  "alltag": [
+   "Nour zeigt ihre Folie: Reaktor, Pfeil, Steckdose. Jannis sagt: Dazwischen fehlt etwas.",
+   "Der Stab mit Uran im Reaktor heißt Brennstab.",
+   "Jannis malt einen Topf und ein Rad dazu. Heißes Wasser wird zu Dampf.",
+   "Turbine und Generator kennst du schon aus Kapitel 1."
+  ],
+  "frage": "Wo im Kernkraftwerk entsteht der Strom?",
+  "predict": [
+   "Der Strom entsteht schon im Brennstab. Das Kabel führt ihn weg.",
+   "Der Strom entsteht erst am Ende der Kette."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.",
+   "Prüfe im Text: Wo steht Strom?",
+   "Trage die drei fehlenden Zeilen ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft den Text.",
+  "tabCols": [
+   "Welches Teil ist das?",
+   "Was passiert dort?",
+   "Ist dort schon Strom?"
+  ],
+  "tabRows": [
+   [
+    "Brennstab",
+    "wird heiß",
+    "nein"
+   ],
+   [
+    "Wasser",
+    "",
+    ""
+   ],
+   [
+    "Turbine",
+    "",
+    ""
+   ],
+   [
+    "Generator",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Wärme im Brennstab macht aus Wasser Dampf. Der Dampf dreht das Rad. Das ist die",
+    "loesung": "Turbine",
+    "post": "."
+   },
+   {
+    "pre": "Am Ende dreht dieses Rad den",
+    "loesung": "Generator",
+    "post": ". Erst dort entsteht der Strom."
+   }
+  ],
+  "wortbank": [
+   "Turbine",
+   "Generator",
+   "Wärme",
+   "Dampf"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Im Text steht: „Die Bruchstücke … erhitzen den Brennstab.“ Darum kommt in die Tabelle: wird heiß. Dort steht auch: „Nur der letzte Schritt macht Strom.“ Der Brennstab ist Schritt 1. Also: nein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Reihenfolge steht im Text?",
+    "optionen": [
+     "Brennstab → Dampf → Turbine → Generator",
+     "Generator → Turbine → Dampf → Brennstab",
+     "Brennstab → Turbine → Dampf → Generator"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Im Brennstab entsteht zuerst nur",
+      "loesung": "Wärme",
+      "post": ". Strom kommt erst später."
+     },
+     {
+      "pre": "Aus dem Wasser wird heißer",
+      "loesung": "Dampf",
+      "post": ". Er dreht die Turbine."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum braucht auch ein Kernkraftwerk einen Generator?",
+    "satzstarter": "Ein Kernkraftwerk braucht einen Generator, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Der Text mit den vier Schritten steht unter der Anzeige „Wie geht es weiter?“. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Ein Kernkraftwerk braucht einen Generator, weil im Brennstab nur Wärme entsteht.",
+   "h3": "Fast fertig: Wärme macht Dampf. Dampf dreht die Turbine. Strom entsteht erst im ___."
+  },
+  "selbstcheck": [
+   "Ich kann die vier Schritte im Kraftwerk der Reihe nach nennen.",
+   "Ich weiß: Im Brennstab entsteht nur Wärme, noch kein Strom.",
+   "Ich weiß: Hier macht der Generator aus Kapitel 1 den Strom."
+  ],
+  "zuhause": "Beobachte mit einem Erwachsenen, wie der Dampf den Deckel hebt. Bleib weit weg. Welches Teil im Kraftwerk ist der Deckel?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Ablaufbild in EINER waagerechten Reihe, von links nach rechts zu lesen, alles im selben Bildausschnitt auf einer gemeinsamen Grundlinie und auf ruhigem hellem Hintergrund. Vier gleich große, klar getrennte Stationen mit einer großen Ziffer oben links im Kasten: (1) BRENNSTAB — ein aufrecht stehender, voll ausgefüllter Stab in kräftigem Rot-Orange, darunter groß die Beschriftung „Brennstab wird heiß“. (2) KESSEL — ein liegender geschlossener Behälter, unten zu einem Drittel mit einer voll ausgefüllten blauen Wasserfläche, darüber eine voll ausgefüllte weiße Dampfwolke, die oben aus einem Rohr steigt; Beschriftung „Wasser wird Dampf“. (3) TURBINE — ein großes Rad in Vorderansicht mit sechs breiten, voll ausgefüllten Schaufeln, das Rohr aus Station 2 zeigt genau auf die Schaufeln; Beschriftung „Turbine dreht sich“. (4) GENERATOR — ein liegender Kasten mit deutlicher Umrandung, in dem eine Spule zwischen zwei Magnetpolen sitzt; Beschriftung „Generator macht Strom“. Die Verbindungen tragen die Aussage des Bildes und sind alle verschieden: von Station 1 zu Station 2 ein breiter roter Pfeil mit der großen Aufschrift „Wärme“; von Station 2 zu Station 3 ein breiter weißer Pfeil mit der Aufschrift „Dampf“; von Station 3 zu Station 4 KEIN Pfeil, sondern ein dicker waagerechter Balken als Welle, der Rad und Kasten mechanisch verbindet, mit der Aufschrift „Welle“; von Station 4 nach rechts hinaus ein einzelnes schwarzes Kabel zu einer Steckdose am rechten Bildrand, mit der Aufschrift „Strom“. Unter der ganzen Reihe zwei durchgehende waagerechte Bänder, die die Frage der Tabelle beantworten: ein helles Band unter den Stationen 1, 2 und 3 mit der großen Aufschrift „Hier ist noch kein Strom.“ und ein deutlich abgesetztes dunkles Band unter Station 4 und der Steckdose mit der Aufschrift „Erst hier entsteht Strom.“ Die Grenze zwischen den beiden Bändern liegt genau zwischen Turbine und Generator und ist die auffälligste Linie im Bild. Drei Fehler drohen hier und werden ausdrücklich vermieden: ERSTENS Streifen statt Flächen — Brennstab, Wasser, Dampfwolke, Turbinenschaufeln, Welle und die beiden Bänder werden als breite, gefüllte Formen gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Dampf liest sich als Muster und nicht als Stoff. ZWEITENS Nebenbilder — es gibt genau diese vier Stationen und die eine Steckdose, kein fünftes Kästchen, keinen Kühlturm, kein Kraftwerksgebäude am Rand, keine Landschaft, keine eingesetzten Lupenausschnitte, keine zweite kleine Kette darunter, keine Personen. DRITTENS Strahlengänge ins Leere — aus dem Brennstab führen keine Strahlenpfeile, keine Blitze, keine Zickzacklinien, keine Wellen und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus, und es gibt keine einzelnen Neutronen, keine Punktwolken und keine Spaltungsbäume. Jeder Pfeil im Bild verbindet genau zwei benannte Stationen und endet an einer davon. Ebenfalls nicht im Bild: ein Blitzsymbol an Brennstab, Kessel oder Turbine, ein Steuerstab, ein Regler, ein Bildschirm, ein k-Wert, ein Diagramm. Keine Zahlen außer den vier Stationsziffern. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn10",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Bildschirm den Textblock „Vom Reaktor zur Steckdose sind es vier Schritte“ und geben die vier Schritte in der richtigen Reihenfolge wieder: Die Bruchstücke erhitzen den Brennstab — die Wärme macht aus Wasser Dampf — der Dampf treibt eine Turbine — die Turbine dreht den Generator. Sie halten in der Tabelle fest, dass in den ersten drei Schritten noch kein Strom fließt: Nur der letzte Schritt macht Strom. Damit räumen sie die Fehlvorstellung aus, der Reaktor liefere den Strom unmittelbar und die Leitung führe ihn nur ab. Tragend ist der Rückverweis auf Kapitel 1: Turbine und Generator sind in fv7 eingeführt und werden hier nicht neu erklärt, sondern wiedererkannt — dieselbe Maschine, die im Wasser- und im Kohlekraftwerk den Strom macht, steht auch im Kernkraftwerk; verschieden ist allein, woher die Wärme kommt. Auf der Schülerseite steht dieser Rückverweis an zwei Stellen ausdrücklich: im vierten Alltagssatz („Turbine und Generator kennst du schon aus Kapitel 1.“) und im dritten Selbstcheck-Satz („Hier macht der Generator aus Kapitel 1 den Strom.“). Aufgabe 3 lehnt sich mit ihrem „auch“ an diese beiden Stellen an. Der Vermehrungsfaktor k und die Steuerstäbe sind in fn9 erarbeitet und werden hier NICHT wieder aufgenommen: Auf dieser Seite wird nichts eingestellt und nichts gemessen — der Regler steht von selbst auf 50 %, k kommt in keiner Tabellenspalte, keiner Lücke und keiner Antwortoption vor, und es gibt keine zweite k-Tabelle.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Textkarte mit den vier Schritten aus diesem Lehrerteil und das Tafelbild mit der Kette. Optional als Demonstration NUR durch die Lehrkraft, mit Abstand und wegen der Verbrühungsgefahr nie in Schülerhand: ein Teekessel oder Wasserkocher und ein leichtes Papierrädchen an einem Draht über der Tülle — das Rädchen dreht sich, solange Dampf strömt, und steht still, sobald der Dampf aufhört. Dazu, wenn vorhanden, der Fahrraddynamo aus fv7 als Generator zum Anfassen: erst drehen, dann leuchtet die Lampe. Kein Schülerversuch, kein Präparat. SICHERHEIT beim Zuhause-Auftrag: Der Topfdeckel wird ausdrücklich als BETREUTE Beobachtung vergeben — die Schülerseite sagt „mit einem Erwachsenen“ und „Bleib weit weg“. Sprechen Sie das vor der Ausgabe einmal an: geschaut, nicht angefasst; kein Deckel wird angehoben, kein Gesicht über den Topf. Wer zu Hause nicht kocht, beantwortet die Frage am Bild der Seite.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Eine einzige Textkarte genügt, denn diese Seite liest einen festen Text und misst nichts. Karte „Vier Schritte“, wörtlich vom Bildschirm: „Vom Reaktor zur Steckdose sind es vier Schritte: Die Bruchstücke fliegen auseinander und erhitzen den Brennstab. Die Wärme macht aus Wasser Dampf. Der Dampf treibt eine Turbine. Die Turbine dreht den Generator. Nur der letzte Schritt macht Strom …“ Den Schlusssatz des Bildschirmtextes — ein Kernkraftwerk sei ein Dampfkraftwerk, dessen Feuer aus Kernspaltung besteht — lesen Sie nur mündlich dazu; auf der Schülerseite steht er nicht, weil „Dampfkraftwerk“ und „Wärmekraftwerks-Technik“ zwei weitere lange Wörter wären. Eine zweite Karte mit k braucht diese Seite nicht — k wird hier an keiner Stelle verlangt. Wer den Bogen zu fn9 mündlich schlagen will, nennt die Werte von dort: „Steuerstäbe 50 % eingefahren · k = 1,00 · kritisch – genau richtig. Aus 100 Spaltungen werden wieder rund 100.“ Aufgeschrieben wird davon nichts. Dazu als Tafelbild die Kette in einer Reihe: ein roter Stab („Brennstab wird heiß“), ein Kessel mit Wasser und Dampfwolke („Wasser wird Dampf“), ein Rad mit breiten Schaufeln („Turbine dreht sich“), ein Kasten mit Spule zwischen zwei Polen („Generator macht Strom“), rechts eine Steckdose. Zwischen Brennstab und Kessel ein roter Pfeil „Wärme“, zwischen Kessel und Rad ein weißer Pfeil „Dampf“, zwischen Rad und Kasten KEIN Pfeil, sondern ein dicker Balken als Welle, und vom Kasten zur Steckdose ein einzelnes Kabel „Strom“. Ziehen Sie zum Schluss mit farbiger Kreide die Trennlinie zwischen Rad und Kasten und schreiben Sie links davon „Hier ist noch kein Strom“, rechts davon „Erst hier entsteht Strom“. Genau an dieser Linie hängt die ganze Doppelseite. Alternativ den Bildschirmtext als Standbild am Beamer zeigen und die vier Schritte gemeinsam abzählen lassen.",
+  "merksatz": [
+   "Turbine",
+   "Generator"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Wasser",
+    "wird zu Dampf",
+    "nein"
+   ],
+   [
+    "Turbine",
+    "wird vom Dampf gedreht",
+    "nein"
+   ],
+   [
+    "Generator",
+    "wird von der Turbine gedreht",
+    "ja"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Der Bildschirmtext nennt die Schritte in genau dieser Folge: „Die Bruchstücke fliegen auseinander und erhitzen den Brennstab. Die Wärme macht aus Wasser Dampf. Der Dampf treibt eine Turbine. Die Turbine dreht den Generator.“ Richtig ist deshalb die erste Option: Brennstab, dann Dampf, dann Turbine, dann Generator. Die zweite Option dreht die Kette um und lässt den Strom am Anfang stehen — das ist die Fehlvorstellung der ersten Vermutung, nur rückwärts geschrieben. Die dritte Option vertauscht Dampf und Turbine; sie ist die eigentliche Falle, weil sie mit dem richtigen Anfang und dem richtigen Ende beginnt und endet. Lassen Sie die Antwort am Text prüfen: Wer treibt wen an? Im Satz steht „Der Dampf treibt eine Turbine“, nicht umgekehrt. Am Bildschirm steht „treibt“, im Heft durchgehend „dreht“ — gemeint ist dasselbe. Sagen Sie es einmal dazu, sonst sucht die Zielgruppe zwei verschiedene Vorgänge.",
+   "typische_fehler": [
+    "Die dritte Option wird angekreuzt: Anfang und Ende stimmen, die Mitte wird geraten. Gegenfrage: Was steht im Text vor dem Wort Turbine? Den Satz gemeinsam mit dem Finger nachfahren.",
+    "Die zweite Option wird angekreuzt, weil der Generator als das Wichtigste gilt und deshalb nach vorn rutscht. Am Bild zeigen: Das Kabel geht rechts aus dem Generator heraus, nicht links hinein.",
+    "Es wird im Bild gesucht statt im Text. Die Simulation zeigt weder Dampf noch Turbine noch Generator — nur der Textblock nennt sie. Seit die Frage „Welche Reihenfolge steht im Text?“ lautet, tritt das selten auf; sagen Sie es trotzdem einmal vorher dazu, es ist eine Eigenart der Simulation und kein Fehler der Lernenden.",
+    "Es wird gar nichts angekreuzt, weil der Text zu lang wirkt. Nur den ersten Satz freilegen und danach die vier Stationen der Reihe nach benennen lassen: Brennstab, Dampf, Turbine, Generator. Achtung, nicht an den fetten Wörtern entlanglesen lassen: Fett gesetzt sind am Bildschirm erhitzen, Dampf, Turbine und Generator — das erste fette Wort ist das Verb, nicht „Brennstab“, und diese Kette passt zu keiner der drei Antwortoptionen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Wärme",
+    "Dampf"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird „Strom“ geschrieben — genau die Fehlvorstellung dieser Seite. Auf die letzte Tabellenspalte zurückverweisen: In der Zeile Brennstab steht „nein“.",
+    "In die erste Lücke wird „Feuer“ geschrieben. Im Brennstab brennt nichts; die Wärme kommt aus der Kernspaltung (fn8). Das Wort steht so nicht in der Wortbank.",
+    "Die beiden Wörter werden vertauscht: Wärme in die zweite, Dampf in die erste Lücke. Den Merksatz danebenlegen und die Reihenfolge laut mitsprechen: erst Wärme, dann Dampf.",
+    "In die zweite Lücke wird „Wasser“ geschrieben, weil das Wort im Satz davor steht. Nachfragen: Was wird aus dem heißen Wasser? Der Bildschirm sagt es wörtlich."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein Kernkraftwerk braucht einen Generator, weil im Brennstab nur Wärme entsteht. Die Wärme macht Dampf, der Dampf dreht die Turbine, und die Turbine dreht den Generator. Erst im Generator entsteht der Strom. Ohne Generator käme aus dem Kraftwerk kein Strom, sondern nur heißer Dampf.",
+   "alternativen": [
+    "Kurzform ohne die ganze Kette: „Weil nur der Generator Strom macht. Im Brennstab entsteht nur Wärme.“ — reicht für die volle Wertung.",
+    "Über den Rückverweis begründet: „Im Kohlekraftwerk macht auch der Generator den Strom. Nur die Wärme kommt woanders her.“",
+    "Über fv7 begründet: „Weil sich im Generator eine Spule im Magnetfeld dreht. Nur so entsteht Spannung.“ — richtig und weiterführend, hier nicht verlangt.",
+    "Über die Tabelle begründet: „Weil in den ersten drei Zeilen noch kein Strom steht, erst in der letzten.“",
+    "Formulierungen wie „sonst hätte man nur Wärme“ oder „der Dampf allein macht keinen Strom“ zählen, solange der Generator als Ort des Stroms genannt ist."
+   ],
+   "typische_fehler": [
+    "Es wird nur „damit Strom kommt“ geschrieben, ohne dass Wärme oder Dampf vorkommen. Nachfragen: Was hat der Brennstab vorher gemacht? Hilfe 2 gibt den Anfang vor.",
+    "Der Generator wird mit dem Reaktor verwechselt: „Der Generator spaltet die Kerne.“ Auf das Bild zeigen — der Generator steht am Ende der Reihe, die Spaltung ganz am Anfang.",
+    "Die Turbine wird als Stromerzeuger genannt. Das ist der häufigste Fehler der Seite. Am Tafelbild die Trennlinie zwischen Rad und Kasten zeigen: Das Kabel geht erst hinter dem Kasten los.",
+    "Es wird die Sicherheit erklärt („damit nichts explodiert“) — das ist die Frage von fn9. Auf den Satzstarter zeigen und die Frage noch einmal lesen lassen."
+   ]
+  },
+  "hilfe3_wort": "Generator",
+  "schwache": [
+   "Vorher gemeinsam klären, dass auf dieser Seite gar nichts verstellt wird: Der eine Regler steht schon von selbst auf 50 %, und keiner der drei Knöpfe wird gebraucht. Zwei der drei Knöpfe — „nächste Generation“ und „Zurücksetzen“ — und die Überschrift der Simulation tragen vor dem Wort ein Zeichen, das die Heftschrift nicht kennt (U+23ED, U+21BA, U+1F39B); beim dritten Knopf, „Laufen lassen“, ist das Zeichen dagegen vorhanden (U+25B6). Zitiert wird trotzdem keines, weil kein Knopf gebraucht wird. Wer trotzdem drückt, macht nichts kaputt — der Textblock mit den vier Schritten ändert sich dabei nicht.",
+   "Den Textblock mit den vier Schritten mit einem Papierstreifen abdecken und nur Satz für Satz freigeben. Nach jedem Satz sofort die passende Tabellenzeile ausfüllen lassen. Decken Sie außerdem die Statuszeile ab, die unter der Überschrift „Wie geht es weiter?“ steht: Ihr letzter Abschnitt endet in Zehnerpotenzen, von dort wird sonst abgeschrieben. Die Überschrift selbst bleibt sichtbar — sie ist die Wegmarke aus Arbeitsschritt 1. Im Textblock steht keine einzige Zehnerpotenz.",
+   "Die vier Wörter Brennstab, Wasser, Turbine, Generator vorher auf vier Kärtchen schreiben und in die richtige Reihenfolge legen lassen, bevor die Tabelle angefasst wird. Erst legen, dann schreiben.",
+   "Nur die mittlere Tabellenspalte ausfüllen lassen; die letzte Spalte gemeinsam an der Tafel eintragen — sie heißt dreimal „nein“ und einmal „ja“, und genau das ist der Kern der Seite.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und dabei laut die Kette sprechen: Wärme, Dampf, Turbine, Generator.",
+   "Wer beim Erklären nicht anfängt, zeigt zuerst am Bild mit dem Finger, wo das Kabel beginnt. Danach den Satzstarter benutzen. Das Wort Generator darf abgeschrieben werden."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen — beide ohne Rechnen. (1) Vergleichen: Welche der vier Stationen gibt es auch in einem Kohlekraftwerk? Erwartet: Wasser, Turbine und Generator sind gleich; verschieden ist nur die erste Station — dort brennt Kohle, statt dass ein Brennstab durch Kernspaltung heiß wird. Daraus folgt der Satz, den der Bildschirm selbst zieht: Ein Kernkraftwerk ist ein Dampfkraftwerk. (2) Weiterdenken: In einem Kraftwerk wird das Wasser nicht mehr heiß. Schreibe auf, was dann der Reihe nach passiert. Erwartet: kein Dampf — die Turbine dreht sich nicht — der Generator macht keinen Strom. Wer sofort „dann kommt kein Strom“ schreibt, ohne Dampf und Turbine zu nennen, hat die Kette übersprungen; darüber lässt sich gut sprechen. Bewusst NICHT verlangt wird, die Grenze „ab hier fließt Strom“ ins Bild einzuzeichnen: Das Einstiegsbild beantwortet die Frage selbst — es trägt unter den Stationen 1 bis 3 das Band „Hier ist noch kein Strom.“ und unter Station 4 das Band „Erst hier entsteht Strom.“, und die Grenze zwischen beiden ist die auffälligste Linie im Bild. Ebenfalls nicht verlangt wird, wie viel Energie eine Spaltung liefert: Die Anzeige nennt dafür Megaelektronenvolt und Zehnerpotenzen; das liegt weit über A2 und B1 und ist der Grund, warum von rk11 nur der Aufbau übrig ist.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Aufbau eines Kernkraftwerks: Wärme, Dampf, Turbine, Generator. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ablesen des Textfeldes am Bildschirm trägt K2, das Eintragen der drei Zeilen in die Tabelle K3 („Untersuchungen dokumentieren“) — K3 liegt bandweit auf dem AUSFÜLLEN DER TABELLE und ausdrücklich NICHT auf dem Zuhause-Auftrag; der Topfdeckel ist ein Alltagsanker zum selben Mechanismus, also Übertragen, nicht Dokumentieren. Der Merksatz und Aufgabe 1 tragen UF1, das Ordnen der vier Stationen in der Tabelle UF2, die Erklär-Aufgabe zum Generator UF4 und E6, die Übertragung des Topfdeckels auf die Turbine E8. E4 und E5 werden hier bewusst NICHT beansprucht: Auf dieser Seite wird nichts eingestellt und nichts gemessen — gemessen wurde in fn9. FACHWORTZÄHLUNG: Neu sind ZWEI Wörter, damit ist das Limit erreicht. (1) „Dampf“ — Begriffssatz im dritten Alltagssatz („Heißes Wasser wird zu Dampf.“), danach im Merksatz, in der Tabellenzeile Wasser und als Lösung der zweiten Lücke von Aufgabe 2. Zählregel 5 kann es nicht freistellen, denn sie verlangt, dass das Wort NICHT in der Wortbank steht, und der Rendervertrag zwingt jedes Lückenwort dorthin; es greift Zählregel 3. (2) „Brennstab“ — Begriffssatz im zweiten Alltagssatz („Der Stab mit Uran im Reaktor heißt Brennstab.“). Das Wort steht im Lernziel, in der Beispielzeile der Tabelle, im Merksatz, in zwei Antwortoptionen, am Anfang der ersten Lücke von Aufgabe 2 und im zweiten Selbstcheck-Satz — Zählregel 3. Im Band kommt es vorher NIRGENDS vor (geprüft über alle 28 Einheiten; Treffer nur fn10 und fn11), insbesondere nicht in fn8: Dort sind beide Plätze mit „Kernspaltung“ und „fehlende Masse in u“ belegt, fn8 kann „Brennstab“ also nicht übernehmen. Ein dritter Platz ist hier nicht frei — käme ein weiteres Wort dazu, müsste eines dieser beiden weichen. — NICHT gezählt, weil bloßer Rückverweis (Zählregel 4): Turbine und Generator (Träger fv7, dort im Alltagsteil UND in Aufgabe 3), Kernspaltung und Uran (fn8), Steuerstäbe und Vermehrungsfaktor k (fn9), Spule und Magnetfeld (fv1, fv6), Spannung (Förderband 8). Ein Rückverweis darf das Wort gebrauchen, er darf es nur nicht ein zweites Mal einführen — deshalb sagt der Alltagsteil „Turbine und Generator kennst du schon aus Kapitel 1“ und nicht „Dieses Rad heißt Turbine“. — OFFENE ABHÄNGIGKEIT „Wärme“, vor dem Zusammenführen zu entscheiden: Das Wort steht hier in der Wortbank, im Merksatz und in der ersten Lücke von Aufgabe 2 und zählte damit nach Zählregel 3. Freigestellt ist es allein über Zählregel 4 mit fv9 als Träger (Alltagssatz „In jedem Draht wird Energie zu Wärme“, Merksatz-Nachsatz, Selbstcheck) — fv9 führt „Wärme“ in fachwoerter_neu aber NICHT auf, das Wort ist also bandweit nirgends gezählt. Entweder nimmt fv9 es auf (dann steht fv9 bei drei), oder das FOERDER_PROFIL stellt klar, dass ein Alltagswort ohne Formelzeichen auch dann keinen Platz kostet, wenn der Rendervertrag es in die Wortbank zwingt. Fällt die Entscheidung anders aus, hat fn10 drei Fachwörter und eines muss weichen. — ABHÄNGIGKEIT zu fv7: fv7 führt in fachwoerter_neu „Drehfrequenz f in Hertz (Hz)“ und „Scheitelwert Û“, sein eigener kernlehrplan-Absatz spricht aber noch von „Generator“. Das gehört zu fv7; für fn10 ändert es nichts, weil Turbine und Generator dort in Alltagsteil UND Aufgabe stehen. Umgekehrt darf fv11 (Datenblatt Kraftwerksarten) „Turbine“ und „Dampf“ nicht ein weiteres Mal einführen. FALLEN UND DATENLAGE. (1) Die härteste Stelle ist die Heft-gegen-Sim-Regel: Die Simulation zeigt WEDER Dampf NOCH Turbine NOCH Generator — kein Knopf, kein Regler, kein Bildtext, keine Zeichnung. Die vier Schritte stehen ausschließlich in einem festen Textblock der Seite (54 Wörter, am Quelltext nachgezählt). Deshalb heißt Arbeitsschritt 1 „Lies den Text …“ und nicht „Beobachte, wie der Dampf die Turbine dreht“; deshalb steht in der Tabelle keine einzige Bildschirm-Beobachtung, sondern nur, was im Text steht. Aus demselben Grund fragt Aufgabe 1 nach dem TEXT und nicht nach dem Bildschirm. (2) WO der Text steht — und warum die Seite keine Richtung nennt: Der Textblock liegt in der zweiten Spalte des Rasters .fpm-grid, unter der Überschrift „Wie geht es weiter?“ und unter der Statuszeile. Auf breiten Bildschirmen steht er rechts; unter 780 Pixel Breite — Tablet und Handy — stellt die Simulation das Raster auf EINE Spalte um, und der Text rutscht UNTER die Zeichnung. Die Schülerseite nennt deshalb nirgends eine Richtung, sondern führt über den Namen des Kastens („Wie geht es weiter?“) und über die ersten Wörter des Textes („Vom Reaktor zur Steckdose“); dieselbe Bandregel gilt in fv7 für dieselbe Datei. Der Anker mit den ersten Wörtern ist nötig, weil unter derselben Überschrift ein ZWEITER Textblock steht („Modellgrenze: …“). Fett gesetzt sind im Textblock vier Wörter, aber NICHT die vier Stationen: erhitzen, Dampf, Turbine, Generator — das erste fette Wort ist das Verb. Wer die fetten Wörter der Reihe nach vorlesen lässt, bekommt eine Kette, die zu keiner der drei Antwortoptionen passt. (3) Auf dieser Seite wird nichts eingestellt. Der Regler startet von selbst auf 50 %, der Textblock hängt nicht von ihm ab, und k wird nirgends verlangt. Wer je einen Ablese-Schritt zu k einbaut, schreibt „oben im Bild“: Der Bildtext mit k steht als oberste Zeile IM Bild (Grundlinie y = 26), der Reaktorkasten beginnt erst bei y = 46. UNTER der Zeichnung stehen nur „Generation 0: 500 Spaltungen“ und „Spaltungen je Generation“, darunter im HTML die Reglerzeile „Steuerstäbe eingefahren: 50 %“ — ohne jedes k. fn9 schickt für denselben Wert an einen anderen Ort („k steht im ersten Teil der Statuszeile“) — dort richtig, weil fn9 die Statuszeile wörtlich zitiert. (4) Die Spaltungszahl der nächsten Generation SCHWANKT. Der Dump zeigt im Ausgangszustand — der Regler steht da schon auf 50 % — „Generation 0: 500 Spaltungen“; erst nach einem Druck auf „nächste Generation“ steht dort „Generation 1: 493 Spaltungen (vorher 500)“. Die Beobachtung des Regelhefts nennt 503, bei 80 bis 95 % steht 330 im Dump. Auf dieser Seite wird davon nichts verlangt — sie drückt keinen der drei Knöpfe. (5) Der Bildschirm-Schlusssatz „Ein Kernkraftwerk ist ein Dampfkraftwerk, dessen Feuer aus Kernspaltung besteht“ ist fachlich der Kern, sprachlich ein Relativsatz mit Genitiv und zwei langen Komposita. Er steht deshalb nur hier und in der Zusatzaufgabe, dort in zwei kurzen Sätzen aufgelöst. Leitplanke für das Gespräch: Im Brennstab BRENNT nichts — das „Feuer“ des Bildschirms ist ein Bild, die Wärme kommt aus der Kernspaltung. (6) Zwei Wörter für dieselbe Sache: Am Bildschirm heißt es „Der Dampf TREIBT eine Turbine“, im Heft durchgehend „dreht“. Sagen Sie das einmal laut dazu, sonst sucht die Zielgruppe zwei verschiedene Vorgänge. In der erwarteten Tabelle steht die passivische Antwort („wird vom Dampf gedreht“, „wird von der Turbine gedreht“), weil sie die Spaltenfrage „Was passiert dort?“ beantwortet und in allen drei Zeilen gleich gebaut ist. (7) Bewusst offen: Wohin der Dampf nach der Turbine geht, steht am Bildschirm nicht — Kondensator, Kühlturm und Kühlwasserkreislauf kommen im Text nicht vor und werden weder gefragt noch gezeichnet; das Bild endet an der Steckdose. Ebenso offen bleibt der Wirkungsgrad (zu Hause in fv12), und die Modellgrenze der Simulation gehört zu fn9. Fachliche Namen nur für Sie, nicht auf der Schülerseite: Wärmekraftwerk, Energieumwandlungskette, Kondensator, Kühlturm, Wirkungsgrad. Die Herleitung der Zählung und die Bearbeitungsgeschichte stehen im Feld notizen; es wird nicht gesetzt.",
+  "notizen": "ARBEITSNOTIZEN — werden NICHT gesetzt (build_pilot.seite_l liest dieses Feld nicht). Sie standen bis zum 05.09.2026 im Feld kernlehrplan und haben den Lehrerteil auf VIER gedruckte Seiten geschoben (Endhöhen 1641 · 1602 · 1658 · 715 bei 1664 Platz), während der Seitenplan für 28 Einheiten rund 32 Seiten Lehrerband vorsieht.\n\nBANDWEITE ENTSCHEIDUNG, offen: Die Lehrerteile aller 28 Einheiten summieren sich auf rund 574 000 Zeichen. Bei rund 7 500 Zeichen je gedruckter Lehrerseite sind das grob 70 Seiten statt der geplanten 32. fn10 ist mit dieser Kürzung von 26 152 auf einen deutlich kleineren Umfang gegangen; fn4 (29 595), fn8 (26 639), fn5 (25 361) und fn2 (25 273) stehen unverändert daneben. Das gehört vor dem Zusammenführen entschieden — entweder Seitenplan erhöhen oder in allen Einheiten die Bearbeitungsgeschichte nach notizen verschieben.\n\nBEARBEITUNGSGESCHICHTE (05.09.2026, erster Durchgang). — „Turbine“: Der Lehrerteil behauptete zunächst, fv7 benutze das Wort „in keiner Aufgabe“, und stützte darauf die ganze Zählung. Nachgesehen stimmt das nicht: fv7 nennt die Turbine in Aufgabe 3, im Satzstarter und in Hilfe 2. Der Alltagsteil von fn10 bekam deshalb KEINEN zweiten Begriffssatz mehr („So ein großes Rad im Kraftwerk heißt Turbine“ gestrichen), sondern einen Rückverweis. — „Kessel“ steht nicht mehr auf der Schülerseite: Der Alltagsteil sagt „einen Topf“, damit Alltag, Tabellenzeile („Wasser“) und Merksatz („aus Wasser Dampf“) dieselbe Bezeichnung tragen. — Der frühere Arbeitsschritt 1 („Stelle die Steuerstäbe auf 50 % ein. Unter dem Bild steht: k = 1,00.“) ist ersatzlos gestrichen: Die Ablesestelle war erfunden (k steht OBEN im Bild), und k wurde auf dieser Seite ohnehin nirgends gebraucht. — Der Textblock hat 54 Wörter, nicht 63; die alte Zahl stammte ungeprüft aus der Schritt-1-Analyse. — Der frühere Hinweis bei Aufgabe 1 ließ an den fetten Wörtern entlanglesen und ist berichtigt. — Das gelöste Beispiel erklärt seit diesem Durchgang die GEDRUCKTE Beispielzeile (Brennstab · wird heiß · nein); vorher löste es eine der drei OFFENEN Zeilen vollständig, während Arbeitsschritt 3 weiter „die drei fehlenden Zeilen“ verlangte. — Die zweite Merksatz-Lücke begann früher mit „sie“, was auf das Wort zeigte, das das Kind selbst erst in die vorige Lücke schreiben muss. — Die freiwillige Zusatzaufgabe ließ früher die Grenze „ab hier fließt Strom“ ins Bild einzeichnen — genau das, was der Bildauftrag derselben Einheit als auffälligstes Element verlangt.\n\nZWEITER DURCHGANG (05.09.2026, nach dem Gegenlesen). — Die Ortsangabe „rechts“ ist aus Arbeitsschritt 1 und aus Hilfe 1 verschwunden. Sie war unter 780 Pixel Breite falsch (Media-Query der Simulation stellt .fpm-grid auf eine Spalte) und stand so auch nicht im Faktendump; geführt wird jetzt über den Namen „Wie geht es weiter?“ und die ersten Wörter des Textes. Derselbe Griff steckt in schwache[1]: Abgedeckt wird die Statuszeile, die Überschrift bleibt sichtbar, weil sie die Wegmarke aus Arbeitsschritt 1 ist. — „Brennstab“ ist neu in fachwoerter_neu. Die alte Behauptung „Brennstab und Kernspaltung (fn8)“ war falsch: fn8 enthält das Wort an keiner Stelle, fn11 kommt erst danach. fn8 kann es auch nicht nachziehen, weil dort beide Fachwortplätze belegt sind. — „Dampf“ hat jetzt einen Begriffssatz im Alltagsteil („Heißes Wasser wird zu Dampf.“); vorher wurde das Wort zuerst auf SEITE A in der Tabelle verlangt, während sein Anker erst im Merksatz auf Seite B stand. — Der Rückverweis auf Kapitel 1 steht jetzt wirklich an zwei Stellen (vierter Alltagssatz, dritter Selbstcheck-Satz); vorher trugen Aufgabe 3 und der Selbstcheck nur das Wörtchen „auch“, während der Lehrerteil sie als Belegstellen aufführte. — Aufgabe 1 fragt nach dem TEXT statt nach dem Bildschirm; der frühere typische Fehler „es wird nach dem Bild gesucht“ war damit hausgemacht. — Das gelöste Beispiel begründet jetzt auch die letzte Spalte, mit dem zweiten Beleg aus dem Bildschirmtext („Nur der letzte Schritt macht Strom“). — Die erste Tabellenspalte ist eine Frage („Welches Teil ist das?“) statt der Nominalphrase „Teil im Kraftwerk“. — Der Merksatzkasten trägt sein Bezugswort selbst: „Der Dampf dreht das Rad. Das ist die ___.“ Damit hat „dieses Rad“ in der zweiten Lücke ein Antezedens IM Kasten. Bewusst NICHT übernommen wurde der Vorschlag „Dieses Rad heißt ___“ — das wäre wortgleich der Begriffssatz aus fv7 und damit eine zweite Einführung. — Die richtige Vermutung nennt „Wärme“ nicht mehr; sie gab die erste Lücke von Aufgabe 2 fast wörtlich vor. — Der Zuhause-Auftrag ist eine betreute Beobachtung („mit einem Erwachsenen“, „Bleib weit weg“), passend zum Verbot des Dampfversuchs in Schülerhand im Materialteil. — Das wörtliche Zitat in ersatz_ohne_simulation trägt jetzt die Auslassungspunkte; der Bildschirmsatz endet nicht nach „macht Strom“. — In der Datenlage ist die Reglerstellung richtig zugeordnet: Die 493 erscheinen erst nach einem Druck auf „nächste Generation“, nicht als Schnappschuss zu 50 %.\n\nNICHT EINGEARBEITET, mit Begründung. Der Gegenleser verlangte, die Antwortoptionen im Lösungsweg und in den typischen Fehlern über ihren Wortlaut statt über ihre Position zu nennen, weil seiten_nachbereiten.py sie sonst still falsch mache. Das stimmt seit dem 05.09.2026 nicht mehr: Das Werkzeug ZIEHT die Positionsangaben MIT (_ziehe_mit / _wandle, mit eigenem Selbsttest über acht Proben) und warnt nur noch vor Formen, die es nicht kennt (die Buchstabenformen und „erste/zweite/erste Antwort“); für „erste/zweite/erste Option“ und „Option 2…3“ überspringt die Warnschleife die Meldung ausdrücklich. 20 der 28 Einheiten dieses Bandes schreiben deshalb weiter mit Positionen; fv7 ist die Ausnahme, und die Begründung in fv7s Lösungsweg („eine Nummer wäre danach still falsch“) ist selbst überholt und dort nachzuziehen.\n\nAUS DEM KERNLEHRPLAN HIERHER VERSCHOBEN (05.09.2026, zweiter Durchgang). — Gestrichener Energieteil von rk11: 200 MeV, 3,2 · 10 hoch minus 11 Joule, 16,0 · 10 hoch minus 9 Joule und die 10 hoch 19 Spaltungen je Sekunde für 300 Megawatt, dazu der Rechenauftrag „Bestimme, wie viel Energie die Spaltungen liefern“. Negative Zehnerpotenzen und die Umrechnung Megaelektronenvolt in Joule liegen weit über A2 und B1; keine dieser vier Zahlen kommt auf der Förderseite vor. — Undruckbare Zeichen: Zwei der drei Knöpfe tragen ein Zeichen, für das SourceSans3 keine Glyphe hat — „nächste Generation“ (U+23ED) und „Zurücksetzen“ (U+21BA) —, ebenso die Überschrift (U+1F39B); beim dritten Knopf, „Laufen lassen“, ist es vorhanden (U+25B6), genau wie das nah verwandte U+25B8, das build_pilot.py selbst druckt. Gemessen gegen die cmap von SourceSans3-Regular, -Medium und -Bold. Praktisch ändert das nichts, weil kein Knopfname zitiert wird. OFFEN: Derselbe Satz steht in fn9 (schwache, erster Hinweis) noch falsch als „alle drei Knöpfe“ und ist dort nachzuziehen. Der Pfeil → aus den Antwortoptionen und der Trennpunkt · aus dem Bildtext sind geprüft vorhanden. — Wörter, die bewusst nicht auf die Schülerseite kommen, weil sie das dritte bis siebte wären: Dampfkraftwerk, Wärmekraftwerk, Kühlturm, Kondensator, Reaktordruckbehälter, Kreislauf. Auch „Welle“ steht nur im Bild und im Tafelbild, in keiner Aufgabe und in keiner Wortbank."
+ }
+}

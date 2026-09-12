@@ -1,0 +1,239 @@
+[
+ {
+  "sim": "wirkungsgrad",
+  "ueberschrift": "⚙️ Bekommt man aus einer Maschine so viel heraus, wie man hineinsteckt?",
+  "regler": [
+   {
+    "id": "wgrR",
+    "beschriftung": "Handy-Ladegerät hineingesteckte Energie: 1000 J",
+    "bereich": {
+     "min": "200",
+     "max": "4000",
+     "step": "200",
+     "start": "1000"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Glühlampe",
+    "ruft": "_wgrSet(0)"
+   },
+   {
+    "aufschrift": "LED-Lampe",
+    "ruft": "_wgrSet(1)"
+   },
+   {
+    "aufschrift": "Benzinmotor",
+    "ruft": "_wgrSet(2)"
+   },
+   {
+    "aufschrift": "Elektromotor",
+    "ruft": "_wgrSet(3)"
+   },
+   {
+    "aufschrift": "Wasserkocher",
+    "ruft": "_wgrSet(4)"
+   },
+   {
+    "aufschrift": "Handy-Ladegerät",
+    "ruft": "_wgrSet(5)"
+   }
+  ],
+  "hinweise": [
+   "Links geht die Energie hinein, rechts kommt sie heraus – aufgeteilt in Nutzen und Verlust. Vergleiche die sechs Maschinen.",
+   "Der Verlust ist nie wirklich weg – er ist Wärme. Deshalb wird jedes Gerät im Betrieb warm.",
+   "η = Enutz / Erein | η ist immer kleiner als 1 | Enutz + Everlust = Erein"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "wgrStatus: Glühlampe · η = 5 % | hinein: 1000 J | davon Licht: 50 J | als Wärme verloren: 950 J | Der Draht wird glühend heiß – deshalb leuchtet er überhaupt."
+   },
+   {
+    "einstellung": "Glühlampe",
+    "text": "wgrStatus: Glühlampe · η = 5 % | hinein: 1000 J | davon Licht: 50 J | als Wärme verloren: 950 J | Der Draht wird glühend heiß – deshalb leuchtet er überhaupt."
+   },
+   {
+    "einstellung": "LED-Lampe",
+    "text": "wgrStatus: LED-Lampe · η = 40 % | hinein: 1000 J | davon Licht: 400 J | als Wärme verloren: 600 J | Auch die LED erwärmt sich, aber viel weniger."
+   },
+   {
+    "einstellung": "Benzinmotor",
+    "text": "wgrStatus: Benzinmotor · η = 25 % | hinein: 1000 J | davon Bewegung: 250 J | als Wärme verloren: 750 J | Abgase und Kühlwasser tragen die meiste Wärme fort."
+   },
+   {
+    "einstellung": "Elektromotor",
+    "text": "wgrStatus: Elektromotor · η = 90 % | hinein: 1000 J | davon Bewegung: 900 J | als Wärme verloren: 100 J | Nur Reibung in den Lagern und Wärme in den Spulen gehen verloren."
+   },
+   {
+    "einstellung": "Wasserkocher",
+    "text": "wgrStatus: Wasserkocher · η = 90 % | hinein: 1000 J | davon Wärme im Wasser: 900 J | als Wärme verloren: 100 J | Hier ist Wärme der Nutzen – verloren geht nur, was das Gehäuse abgibt."
+   },
+   {
+    "einstellung": "Handy-Ladegerät",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1000 J | davon geladener Akku: 800 J | als Wärme verloren: 200 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 200",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 200 J | davon geladener Akku: 160 J | als Wärme verloren: 40 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 600",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 600 J | davon geladener Akku: 480 J | als Wärme verloren: 120 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 1200",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1200 J | davon geladener Akku: 960 J | als Wärme verloren: 240 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 1600",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1600 J | davon geladener Akku: 1280 J | als Wärme verloren: 320 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 2200",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 2200 J | davon geladener Akku: 1760 J | als Wärme verloren: 440 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 2600",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 2600 J | davon geladener Akku: 2080 J | als Wärme verloren: 520 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 3000",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 3000 J | davon geladener Akku: 2400 J | als Wärme verloren: 600 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 3600",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 3600 J | davon geladener Akku: 2880 J | als Wärme verloren: 720 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 4000",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 4000 J | davon geladener Akku: 3200 J | als Wärme verloren: 800 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 400",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 400 J | davon geladener Akku: 320 J | als Wärme verloren: 80 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 800",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 800 J | davon geladener Akku: 640 J | als Wärme verloren: 160 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 1000",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1000 J | davon geladener Akku: 800 J | als Wärme verloren: 200 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 1400",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1400 J | davon geladener Akku: 1120 J | als Wärme verloren: 280 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 1800",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 1800 J | davon geladener Akku: 1440 J | als Wärme verloren: 360 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 2000",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 2000 J | davon geladener Akku: 1600 J | als Wärme verloren: 400 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 2400",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 2400 J | davon geladener Akku: 1920 J | als Wärme verloren: 480 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 2800",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 2800 J | davon geladener Akku: 2240 J | als Wärme verloren: 560 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 3200",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 3200 J | davon geladener Akku: 2560 J | als Wärme verloren: 640 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 3400",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 3400 J | davon geladener Akku: 2720 J | als Wärme verloren: 680 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   },
+   {
+    "einstellung": "Handy-Ladegerät hineingesteckte Energie: 1000 J = 3800",
+    "text": "wgrStatus: Handy-Ladegerät · η = 80 % | hinein: 3800 J | davon geladener Akku: 3040 J | als Wärme verloren: 760 J | Das Netzteil wird warm – das ist der verlorene Teil."
+   }
+  ],
+  "bildtexte": [
+   "hinein",
+   "1000 J",
+   "Glühlampe",
+   "Wärme (Verlust)",
+   "50 J",
+   "950 J",
+   "Wirkungsgrad η = 5 %",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1000 J",
+   "LED-Lampe",
+   "Licht",
+   "400 J",
+   "600 J",
+   "Wirkungsgrad η = 40 %",
+   "Benzinmotor",
+   "Bewegung",
+   "250 J",
+   "750 J",
+   "Wirkungsgrad η = 25 %",
+   "Elektromotor",
+   "900 J",
+   "Wirkungsgrad η = 90 %",
+   "Wasserkocher",
+   "Wärme im Wasser",
+   "Handy-Ladegerät",
+   "geladener Akku",
+   "800 J",
+   "Wirkungsgrad η = 80 %",
+   "200 J",
+   "160 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 200 J",
+   "480 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 600 J",
+   "1200 J",
+   "960 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1200 J",
+   "1600 J",
+   "1280 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1600 J",
+   "2200 J",
+   "1760 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 2200 J",
+   "2600 J",
+   "2080 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 2600 J",
+   "3000 J",
+   "2400 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 3000 J",
+   "3600 J",
+   "2880 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 3600 J",
+   "4000 J",
+   "3200 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 4000 J",
+   "320 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 400 J",
+   "640 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 800 J",
+   "1400 J",
+   "1120 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1400 J",
+   "1800 J",
+   "1440 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1800 J",
+   "2000 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 2000 J",
+   "1920 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 2400 J",
+   "2800 J",
+   "2240 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 2800 J",
+   "2560 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 3200 J",
+   "3400 J",
+   "2720 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 3400 J",
+   "3800 J",
+   "3040 J",
+   "was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 3800 J"
+  ]
+ }
+]

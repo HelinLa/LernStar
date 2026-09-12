@@ -1,0 +1,27 @@
+<!-- nacht -->
+<defs>
+  <radialGradient id="l2spalt" cx="0.86" cy="0.42" r="0.55">
+    <stop offset="0" stop-color="#8FA8CC" stop-opacity="0.20"/>
+    <stop offset="0.55" stop-color="#8FA8CC" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#8FA8CC" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="l2schwarz" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0A0804" stop-opacity="0.86"/>
+    <stop offset="0.62" stop-color="#0A0804" stop-opacity="0.74"/>
+    <stop offset="1" stop-color="#0A0804" stop-opacity="0.88"/>
+  </linearGradient>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <use href="#t_luke_zu" transform="translate(760,236) scale(0.92)"/>
+
+  <!-- alles versinkt im Dunkeln; nur der Lichtspalt der Luke bleibt -->
+  <rect x="0" y="0" width="900" height="540" fill="url(#l2schwarz)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#l2spalt)"/>
+
+  <g filter="url(#nachtTon)" opacity="0.85">
+    <use href="#t_schlafsack" transform="translate(336,486) scale(1.06)"/>
+  </g>
+  <g filter="url(#nachtTon)" opacity="0.8">
+    <use href="#t_tuete" transform="translate(556,492) rotate(6) scale(0.9)"/>
+  </g>

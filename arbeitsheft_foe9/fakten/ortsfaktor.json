@@ -1,0 +1,161 @@
+[
+ {
+  "sim": "ortsfaktor",
+  "ueberschrift": "🌙 Wäre ich auf dem Mond wirklich leichter?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🌙 Mond",
+    "ruft": "_ortSet('mond')"
+   },
+   {
+    "aufschrift": "🌍 Erde",
+    "ruft": "_ortSet('erde')"
+   },
+   {
+    "aufschrift": "🪐 Jupiter",
+    "ruft": "_ortSet('jupiter')"
+   },
+   {
+    "aufschrift": "Die Masse",
+    "ruft": "_ortAns(0,0)"
+   },
+   {
+    "aufschrift": "Die Gewichtskraft",
+    "ruft": "_ortAns(0,1)"
+   },
+   {
+    "aufschrift": "Beide ändern sich gleich",
+    "ruft": "_ortAns(0,2)"
+   },
+   {
+    "aufschrift": "Weil seine Gewichtskraft dort kleiner ist",
+    "ruft": "_ortAns(1,0)"
+   },
+   {
+    "aufschrift": "Weil er weniger Masse hat",
+    "ruft": "_ortAns(1,1)"
+   },
+   {
+    "aufschrift": "Weil es keine Schwerkraft gibt",
+    "ruft": "_ortAns(1,2)"
+   },
+   {
+    "aufschrift": "Von der Masse und dem Ortsfaktor g",
+    "ruft": "_ortAns(2,0)"
+   },
+   {
+    "aufschrift": "Nur von der Farbe",
+    "ruft": "_ortAns(2,1)"
+   },
+   {
+    "aufschrift": "Nur von der Temperatur",
+    "ruft": "_ortAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_ortSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_ortSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_ortSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('ortsfaktor')"
+   }
+  ],
+  "hinweise": [
+   "Stell dir vor, du (Masse 60 kg) stehst auf verschiedenen Himmelskörpern. Was bleibt gleich – deine Masse oder deine Gewichtskraft?",
+   "Deine Masse (die Menge an Stoff) bleibt überall gleich – 60 kg. Nur die Gewichtskraft F = m · g ändert sich, weil der Ortsfaktor g woanders anders ist. Auf dem Mond bist du also nicht „weniger Masse“, sondern deine Gewichtskraft ist kleiner.",
+   "Masse bleibt gleich · Gewichtskraft ändert sich. | Auf dem Mond ≈ 1/6 der Erd-Gewichtskraft."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ortStatus: Auf dem/der Erde: g = 9,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 588 N."
+   },
+   {
+    "einstellung": "🌙 Mond",
+    "text": "ortStatus: Auf dem/der Mond: g = 1,6 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 96 N (etwa 1/6 der Erd-Gewichtskraft)."
+   },
+   {
+    "einstellung": "🌍 Erde",
+    "text": "ortStatus: Auf dem/der Erde: g = 9,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 588 N."
+   },
+   {
+    "einstellung": "🪐 Jupiter",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde)."
+   },
+   {
+    "einstellung": "Die Masse",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✓ Richtig! Die Masse (Materiemenge) ist überall gleich."
+   },
+   {
+    "einstellung": "Die Gewichtskraft",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Die Gewichtskraft wird auf dem Mond kleiner."
+   },
+   {
+    "einstellung": "Beide ändern sich gleich",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich."
+   },
+   {
+    "einstellung": "Weil seine Gewichtskraft dort kleiner ist",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✓ Richtig! Kleineres g → kleinere Gewichtskraft, er wird schwächer angezogen."
+   },
+   {
+    "einstellung": "Weil er weniger Masse hat",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Seine Masse bleibt gleich."
+   },
+   {
+    "einstellung": "Weil es keine Schwerkraft gibt",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde."
+   },
+   {
+    "einstellung": "Von der Masse und dem Ortsfaktor g",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✓ Richtig! F = m · g."
+   },
+   {
+    "einstellung": "Nur von der Farbe",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Farbe spielt keine Rolle."
+   },
+   {
+    "einstellung": "Nur von der Temperatur",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Temperatur spielt hier keine Rolle."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Temperatur spielt hier keine Rolle.  ||  ortSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Temperatur spielt hier keine Rolle.  ||  ortSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Temperatur spielt hier keine Rolle."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "ortStatus: Auf dem/der Jupiter: g = 24,8 N/kg. Masse m = 60 kg (überall gleich). Gewichtskraft F = m · g = 1488 N (viel mehr als auf der Erde).  ||  ortFb0: ✗ Nein, die Masse bleibt gleich, nur die Gewichtskraft ändert sich.  ||  ortFb1: ✗ Es gibt Schwerkraft – nur schwächer als auf der Erde.  ||  ortFb2: ✗ Die Temperatur spielt hier keine Rolle."
+   }
+  ],
+  "bildtexte": [
+   "🌍 Erde  ·  g = 9,8 N/kg",
+   "m = 60 kg",
+   "F = 588 N",
+   "Mond: F = 96 N",
+   "Erde: F = 588 N",
+   "Jupiter: F = 1488 N",
+   "Gewichtskraft im Vergleich (Masse überall 60 kg)",
+   "🌙 Mond  ·  g = 1,6 N/kg",
+   "F = 96 N",
+   "🪐 Jupiter  ·  g = 24,8 N/kg",
+   "F = 1488 N"
+  ]
+ }
+]

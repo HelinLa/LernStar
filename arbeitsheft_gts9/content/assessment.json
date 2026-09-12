@@ -1,0 +1,381 @@
+[
+ {
+  "id": "gts_kraefte",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "NEWTON",
+     "tipp": "In dieser Einheit gibt man Kräfte an; rund eine davon zieht an einem Gewicht von 100 g nach unten, und der Kraftmesser im Heft reicht von 0 bis 5 davon."
+    },
+    {
+     "wort": "FEDERKONSTANTE",
+     "tipp": "Diese Größe berechnest du aus Kraft geteilt durch Dehnung; die harte Feder hat 1,0 N/cm, die weiche nur 0,5 N/cm."
+    },
+    {
+     "wort": "GEWICHTSKRAFT",
+     "tipp": "So heißt die Kraft, mit der ein Himmelskörper an einem Körper zieht; du berechnest sie aus Masse mal Ortsfaktor und misst sie in Newton."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Diese Zahl sagt, wie stark ein Himmelskörper an je einem Kilogramm zieht: auf der Erde 9,8 N/kg, auf dem Mond nur 1,6 N/kg und auf dem Jupiter 24,8 N/kg."
+    },
+    {
+     "wort": "ANGRIFFSPUNKT",
+     "tipp": "An dieser Stelle beginnt der gezeichnete Pfeil, denn dort setzt die Kraft am Körper an; ohne diese Angabe ist eine Kraft nicht vollständig beschrieben."
+    },
+    {
+     "wort": "RESULTIERENDE",
+     "tipp": "So heißt die eine Kraft, zu der man zwei Kräfte auf derselben Linie zusammenfasst: 3 N und 2 N nach rechts ergeben zusammen 5 N nach rechts."
+    },
+    {
+     "wort": "KRAEFTEGLEICHGEWICHT",
+     "tipp": "In diesem Zustand heben sich alle Kräfte an einem Körper zu 0 N auf; der Scheinwerfer hängt deshalb still am Seil, obwohl an ihm gezogen wird."
+    },
+    {
+     "wort": "TRAEGHEIT",
+     "tipp": "Wegen dieser Eigenschaft behält ein Körper Tempo und Richtung bei, solange nichts auf ihn einwirkt; im Weltall rollt der Wagen deshalb mit 8,0 m/s weiter."
+    },
+    {
+     "wort": "WECHSELWIRKUNG",
+     "tipp": "Nach diesem Prinzip treten Kräfte immer paarweise auf: Drückst du gegen die schwere Traverse, drückt sie genauso stark zurück, und du rollst rückwärts."
+    },
+    {
+     "wort": "PASCAL",
+     "tipp": "In dieser Einheit gibt man den Druck an; sie steht für ein Newton je Quadratmeter, und weil das sehr wenig ist, rechnet man meist mit dem Tausendfachen."
+    },
+    {
+     "wort": "SCHWEREDRUCK",
+     "tipp": "Dieser Druck entsteht durch das Gewicht der Flüssigkeit darüber; in Wasser kommen je 10 m Tiefe rund 98,1 kPa dazu, ganz gleich wie breit der Tank ist."
+    },
+    {
+     "wort": "AUFTRIEBSKRAFT",
+     "tipp": "Diese nach oben gerichtete Kraft entsteht, weil Wasser von unten stärker drückt als von oben; sie ist so groß wie die Gewichtskraft des verdrängten Wassers."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann an einer Verformung, einer Tempoänderung oder einer Richtungsänderung erkennen, dass eine Kraft gewirkt hat, obwohl man die Kraft selbst nie sieht.",
+    "Ich kann eine Kraft mit dem Federkraftmesser in Newton bestimmen und mit D = F / s ausrechnen, wie hart eine Feder ist: 1,0 N/cm bei der harten, 0,5 N/cm bei der weichen.",
+    "Ich kann Masse und Gewichtskraft unterscheiden und mit F = m · g rechnen, zum Beispiel 245 N für ein Podest mit 25 kg.",
+    "Ich kann begründen, warum dasselbe Klavier mit 250 kg auf der Erde 2450 N, auf dem Mond aber nur 400 N Gewichtskraft hat, die Masse dabei aber gleich bleibt.",
+    "Ich kann eine Kraft als Pfeil zeichnen und dabei Betrag, Richtung und Angriffspunkt angeben.",
+    "Ich kann die Gesamtkraft zweier Kräfte auf einer Linie bestimmen und erklären, warum ein Körper im Kräftegleichgewicht in Ruhe bleibt, obwohl Kräfte an ihm wirken.",
+    "Ich kann mit der Trägheit erklären, warum eine angestoßene Kiste auf dem Hallenboden stehen bleibt, im Weltall aber mit 8,0 m/s weiterfliegt.",
+    "Ich kann Kraft und Gegenkraft an einem Beispiel benennen und begründen, warum der leichtere Körper dabei schneller wird, etwa das Gas mit 6,0 m/s gegenüber der Rakete mit 0,20 m/s.",
+    "Ich kann mit p = F / A den Druck berechnen und erklären, warum derselbe Mensch auf Skiern nur 2,1 kPa, auf einem Stöckelabsatz aber 5886,0 kPa auf den Boden bringt.",
+    "Ich kann mit p = ρ · g · h den Schweredruck und mit ρ = m / V die Dichte berechnen und damit beurteilen, ob ein Körper schwimmt oder sinkt."
+   ],
+   "tipps": [
+    "Schreibe die fünf Formeln des Kapitels auf einen Zettel: F = m · g, D = F / s, p = F / A, p = ρ · g · h und ρ = m / V. Übe an jeder, sie nach jeder Größe umzustellen, bevor du eine Aufgabe rechnest.",
+    "Rechne Flächen und Volumen immer zuerst in Quadrat- und Kubikmeter um, sonst stimmt kein Druck und keine Dichte: 300 cm² sind 0,0300 m², 1 cm² ist 0,0001 m², und 1000 cm³ sind 0,001 m³.",
+    "Halte zwei Kräftepaare sauber auseinander und zeichne sie dir mit Pfeilen auf: Beim Kräftegleichgewicht greifen beide Kräfte am selben Körper an, zum Beispiel Seil und Erde am Scheinwerfer, und heben sich zu 0 N auf. Bei der Wechselwirkung wirken sie auf zwei verschiedene Körper, zum Beispiel auf Jannis und die Traverse, und heben sich deshalb gerade nicht auf.",
+    "Prüfe die Zahlen des Kapitels an den Seiten nach: 9,8 N/kg auf der Erde, 1,6 N/kg auf dem Mond und 24,8 N/kg auf dem Jupiter, 1,0 N/cm und 0,5 N/cm bei den Federn, 19,6 kPa unter Turnschuhen und 2,1 kPa unter Skiern, 98,1 kPa je 10 m Wassertiefe und 101,3 kPa Luftdruck, dazu die Dichten 11340, 7870, 2700, 1000 und 20 kg/m³."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Scheinwerfer hat die Masse 12 kg. Wie groß ist seine Gewichtskraft auf der Erde?",
+     "loesung": "F = m · g = 12 kg · 9,8 N/kg = 117,6 N. Die Masse bleibt 12 kg, die Gewichtskraft gibt es nur in Newton."
+    },
+    {
+     "frage": "An der weichen Feder mit D = 0,5 N/cm hängt eine Last von 2 N. Wie weit dehnt sie sich?",
+     "loesung": "Aus D = F / s folgt s = F / D = 2 N: 0,5 N/cm = 4 cm. Kraft und Dehnung sind proportional, deshalb darf man so rechnen."
+    },
+    {
+     "frage": "Eine Kabelkiste drückt mit 400 N auf eine Fläche von 0,25 m². Wie groß ist der Druck auf den Boden?",
+     "loesung": "p = F / A = 400 N: 0,25 m² = 1600 Pa, also 1,6 kPa. Auf der doppelten Fläche wäre es nur halb so viel."
+    },
+    {
+     "frage": "Wie groß ist der Schweredruck in Wasser in 5 m Tiefe?",
+     "loesung": "p = ρ · g · h = 1000 kg/m³ · 9,81 N/kg · 5 m = 49 050 Pa, also rund 49,1 kPa. Das ist genau die Hälfte der 98,1 kPa bei 10 m."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Eine Kraft siehst du nie selbst, sondern nur an ihrer Wirkung: Form, Tempo oder",
+     "loesung": "Richtung",
+     "post": "eines Körpers ändern sich."
+    },
+    {
+     "pre": "Die Masse misst du in Kilogramm, die Gewichtskraft in Newton; berechnet wird sie mit",
+     "loesung": "F = m · g",
+     "post": ", auf der Erde mit g = 9,8 N/kg."
+    },
+    {
+     "pre": "Ziehen 3 N nach links und 2 N nach rechts an derselben Kiste, bleibt eine Gesamtkraft von",
+     "loesung": "1 N nach links",
+     "post": "übrig."
+    },
+    {
+     "pre": "Den Druck berechnest du mit",
+     "loesung": "p = F / A",
+     "post": "; seine Einheit ist das Pascal, also ein Newton je Quadratmeter."
+    },
+    {
+     "pre": "Ein Körper schwimmt, wenn seine mittlere Dichte kleiner ist als die von Wasser mit",
+     "loesung": "1000 kg/m³",
+     "post": "; der Auftrieb trägt dann seine ganze Gewichtskraft."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Auf dem Mond hat ein Klavier weniger Masse als auf der Erde.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Doppelte Kraft an derselben Feder bedeutet doppelte Dehnung.",
+     "stimmt": true
+    },
+    {
+     "aussage": "An einem Scheinwerfer, der still am Seil hängt, wirken Kräfte; sie heben sich nur genau auf.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verteilt man dieselbe Gewichtskraft auf die doppelte Fläche, verdoppelt sich der Druck auf den Boden.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Schweredruck hängt von der Tiefe und von der Dichte der Flüssigkeit ab, nicht von der Form des Behälters.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Kraft und Gegenkraft sind gleich groß, wirken aber auf zwei verschiedene Körper und heben sich deshalb nicht auf.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Im Weltall bleibt der angestoßene Wagen von allein stehen, weil der Anstoß in ihm aufgebraucht wird.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Werkzeugkoffer hat auf der Erde die Gewichtskraft 98 N. Welche Werte gelten für denselben Koffer auf dem Mond?",
+    "optionen": [
+     "Masse 10 kg, Gewichtskraft 98 N",
+     "Masse 1,6 kg, Gewichtskraft 16 N",
+     "Masse 10 kg, Gewichtskraft 61 N",
+     "Masse 10 kg, Gewichtskraft 16 N"
+    ],
+    "richtig": 3
+   },
+   "offen": {
+    "frage": "Erkläre den Unterschied zwischen den beiden Kräftepaaren: Der Scheinwerfer hängt still am Seil, und Jannis stößt sich auf dem Rollbrett von der Traverse ab.",
+    "zeilen": 5,
+    "loesung": "Am Scheinwerfer greifen beide Kräfte an demselben Körper an: Die Gewichtskraft zieht mit 5 N nach unten, das Seil hält mit 5 N nach oben dagegen. Sie sind gleich groß und entgegengesetzt, die Gesamtkraft ist also 0 N, und der Scheinwerfer bleibt in Ruhe. Das ist ein Kräftegleichgewicht. Beim Abstoßen greifen die beiden Kräfte dagegen an zwei verschiedenen Körpern an: Jannis drückt gegen die Traverse, die Traverse drückt genauso stark gegen ihn. Weil sie an verschiedenen Körpern angreifen, können sie sich nicht aufheben, und Jannis rollt zurück; die schwere Traverse bewegt sich wegen ihrer viel größeren Masse kaum."
+   },
+   "transfer": {
+    "frage": "Jannis sagt: „Das Traversenrohr schwimmt, weil Luft darin ist, und Luft zieht nach oben. Deshalb schwimmt jedes verschlossene Stahlrohr, egal wie dick seine Wand ist.“ Beurteile beide Sätze mit den Zahlen aus dem Kapitel.",
+    "zeilen": 6,
+    "loesung": "Der erste Satz stimmt so nicht. Die Luft zieht nicht nach oben; nach oben drückt das Wasser, weil es unten am Körper stärker drückt als oben. Dieser Unterschied ist die Auftriebskraft, und sie ist so groß wie die Gewichtskraft des verdrängten Wassers. Der zweite Satz ist ebenfalls falsch, denn es kommt auf die mittlere Dichte des ganzen Rohrs an. Der massive Würfel zieht mit G = 77,20 N nach unten, der Auftrieb beträgt nur 9,81 N, es bleiben 67,39 N übrig, und er sinkt. Erst ab etwa 87,3 % Hohlraum sinkt die mittlere Dichte unter 1000 kg/m³: Bei 87 % sind es noch 1023,1 kg/m³ und G = 10,04 N, bei 88 % dagegen 944,4 kg/m³, und der Auftrieb von 9,26 N trägt das Rohr. Ein Rohr mit dicker Wand und wenig Hohlraum geht also unter, genau wie das Reststück Vollstahl in der Regentonne."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Knete, ein leichter Rollwagen und ein Ball für die drei Kraftwirkungen",
+   "Federkraftmesser mit Skala von 0 N bis 5 N, mehrere Messbereiche",
+   "Schraubenfedern verschiedener Härte mit Stativ, Muffen und Klemmen",
+   "Satz Massestücke zu 100 g mit Haken sowie eine Küchen- oder Tafelwaage",
+   "zwei Gummipuffer, ein weicher und ein harter",
+   "Millimeterpapier, Lineal und Geodreieck zum Zeichnen der Kraftpfeile und der Kraft-Dehnungs-Diagramme",
+   "zwei Federkraftmesser und eine Umlenkrolle, um zwei Kräfte an einem Körper ziehen zu lassen",
+   "Rollbrett, Rollwagen und wenn vorhanden eine Luftkissenbahn für den reibungsarmen Versuch",
+   "Holzklötze mit verschiedenen Auflageflächen sowie eine Platte aus Schaumstoff oder eine Sandwanne, in der die Abdrücke sichtbar bleiben",
+   "Druckmessdose mit Schlauch oder U-Rohr-Manometer und ein hohes Standgefäß mit Wasser",
+   "Kunststoffflasche mit drei Löchern übereinander für den Versuch am Wassertank",
+   "Dichtewürfelsatz mit gleich großen Würfeln aus Blei, Eisen, Aluminium, Holz und Styropor",
+   "Messzylinder, Überlaufgefäß, Wasser und Kochsalz zum Anmischen von Salzwasser",
+   "Alufolie, eine Schüssel und ein verschlossenes Rohrstück für die Schwimmversuche"
+  ]
+ },
+ {
+  "id": "gts_energie",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "ARBEIT",
+     "tipp": "Diese Größe berechnest du als Kraft mal Weg in Kraftrichtung; ihre Einheit ist das Joule, und beim waagerechten Tragen der Kiste ist sie null."
+    },
+    {
+     "wort": "LAGEENERGIE",
+     "tipp": "Diese Form der Energie steckt in einem hochgezogenen Traversenrohr; du rechnest sie mit m · g · h aus, für 10 kg in 6 m Höhe sind es 589 J."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Diese Zahl mit dem Zeichen g beträgt bei uns 9,81 N/kg und sagt, wie stark ein Kilogramm zur Erde gezogen wird."
+    },
+    {
+     "wort": "BEWEGUNGSENERGIE",
+     "tipp": "Diese Form der Energie steckt in der rollenden Kabeltrommel; weil das Tempo im Quadrat steht, macht doppeltes Tempo daraus das Vierfache."
+    },
+    {
+     "wort": "ENERGIEERHALTUNG",
+     "tipp": "Dieser Satz sagt: Beim Fall des Balls bleibt die Summe aus beiden Formen gleich groß, denn was oben fehlt, ist unten dazugekommen."
+    },
+    {
+     "wort": "ENTWERTUNG",
+     "tipp": "So nennen Fachleute es, wenn von 1000 J am Ende zwar noch alles da ist, aber als fein verteilte Wärme niemand mehr etwas damit anfangen kann."
+    },
+    {
+     "wort": "LEISTUNG",
+     "tipp": "Diese Größe sagt, wie schnell etwas geschafft wird: 1962 J in 10 s ergeben 196 W, dieselbe Kiste in 5 s dagegen 392 W."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Dieser Anteil mit dem Zeichen η sagt, wie viel von der hineingesteckten Energie als Nutzen herauskommt; bei der Glühlampe sind es nur 5 Prozent, bei der LED-Lampe 40 Prozent."
+    },
+    {
+     "wort": "HEBELGESETZ",
+     "tipp": "Diese Formel lautet F₁ · l₁ = F₂ · l₂ und erklärt, warum an der Eisenstange schon 50,00 N genügen, um eine Last von 200 N anzuheben."
+    },
+    {
+     "wort": "SEILSTUECK",
+     "tipp": "An der festen Rolle trägt nur ein einziges davon die ganzen 600 N, an der losen Rolle teilen sich zwei die Last."
+    },
+    {
+     "wort": "FLASCHENZUG",
+     "tipp": "Bei dieser Maschine hängt die Last an mehreren Seilstücken: Ziehen vier davon, reichen 150,0 N statt 600 N, dafür laufen 8,0 m Seil durch deine Hand."
+    },
+    {
+     "wort": "UEBERSETZUNG",
+     "tipp": "Diese Zahl bekommst du aus dem Verhältnis der Zähnezahlen zweier kämmender Räder; bei 40 zu 10 Zähnen beträgt sie 4,00, und das Drehmoment sinkt auf ein Viertel."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, wann in der Physik Arbeit verrichtet wird, sie mit W = F · s berechnen und begründen, warum beim waagerechten Tragen einer Kiste über 4 m keine Arbeit verrichtet wird.",
+    "Ich kann die Lageenergie mit E = m · g · h berechnen und angeben, wie sie sich ändert, wenn ich die Masse oder die Höhe verdopple.",
+    "Ich kann die Bewegungsenergie mit E = ½ · m · v² berechnen und begründen, warum doppeltes Tempo die vierfache Energie bedeutet, doppelte Masse aber nur die doppelte.",
+    "Ich kann den Energieerhaltungssatz am fallenden Ball erklären und ausrechnen, wie viel Bewegungsenergie er nach der halben Fallhöhe besitzt.",
+    "Ich kann beschreiben, dass bei jeder Umwandlung ein Teil der Energie zu Wärme wird, und erklären, warum man Energie sparen soll, obwohl ihre Menge erhalten bleibt.",
+    "Ich kann Arbeit und Leistung unterscheiden, P = W / t anwenden und angeben, dass ein Watt genau ein Joule je Sekunde ist.",
+    "Ich kann den Wirkungsgrad mit η = Enutz / Erein berechnen und damit Glühlampe, LED-Lampe, Benzinmotor und Elektromotor vergleichen.",
+    "Ich kann das Hebelgesetz F₁ · l₁ = F₂ · l₂ anwenden und zeigen, dass ein langer Kraftarm Kraft spart, den Weg der Hand aber genauso viel länger macht.",
+    "Ich kann erklären, warum die feste Rolle nur die Zugrichtung ändert, und beim Flaschenzug mit F = G / n und s = n · h rechnen.",
+    "Ich kann die Übersetzung zweier Zahnräder aus ihren Zähnezahlen bestimmen, die Zugkraft an steilen und flachen Rampen vergleichen und mit der goldenen Regel der Mechanik beurteilen, ob eine Maschine Arbeit spart."
+   ],
+   "tipps": [
+    "Schreibe die sieben Formeln des Kapitels auf einen Zettel: W = F · s, E = m · g · h, E = ½ · m · v², P = W / t, η = Enutz / Erein, F₁ · l₁ = F₂ · l₂ und F = G / n mit s = n · h. Übe an jeder, sie nach jeder vorkommenden Größe umzustellen, bevor du eine Aufgabe rechnest.",
+    "Lege für die Maschinen eine Tabelle mit vier Spalten an: Maschine, Kraft, Weg, Arbeit. Trage Hebel, feste Rolle, lose Rolle, Flaschenzug und Rampe ein. Du siehst dann in einem Blick dasselbe Muster: Die Kraft wird kleiner, der Weg um genau denselben Faktor länger, die Arbeit bleibt gleich. Nur die feste Rolle ändert gar nichts an der Kraft, sondern allein die Richtung.",
+    "Rechne immer mit Einheiten mit: kg mal N/kg mal m ergibt J, und J geteilt durch s ergibt W. Vergiss den Ortsfaktor g = 9,81 N/kg nicht, wenn in der Aufgabe eine Masse in Kilogramm steht und du eine Kraft in Newton brauchst.",
+    "Prüfe die Zahlen des Kapitels an den Seiten nach: 400 J beim Schieben und 0 J beim waagerechten Tragen, 147 J, 294 J und 589 J bei der Lageenergie, 32 J, 64 J und 256 J bei der Bewegungsenergie, 250 J von 1000 J nach dem Benzinmotor, 1962 J mit 196 W und 392 W, η von 5 %, 40 % und 90 %, 50,00 N am Hebel, 600 N, 300 N und 150 N am Flaschenzug, 240,0 U/min bei 40 zu 10 Zähnen sowie 4,5 N, 3,0 N und 1,5 N an den drei Rampen."
+   ],
+   "mini": [
+    {
+     "frage": "Eine Kiste mit 15 kg wird 3,0 m hoch auf die Traverse gezogen. Wie groß ist die Hubarbeit?",
+     "loesung": "W = m · g · h = 15 kg · 9,81 N/kg · 3,0 m = 441 J. Dieselbe Energie steckt danach als Lageenergie in der Kiste."
+    },
+    {
+     "frage": "Eine Kabeltrommel mit 6 kg rollt mit 5 m/s über den Hof. Wie groß ist ihre Bewegungsenergie?",
+     "loesung": "E = ½ · m · v² = ½ · 6 kg · (5 m/s)² = 75 J. Bei 10 m/s wären es schon 300 J, also das Vierfache, denn das Tempo steht im Quadrat."
+    },
+    {
+     "frage": "Nour zieht 20 kg in 4,0 s um 3,0 m nach oben. Wie groß sind Arbeit und Leistung?",
+     "loesung": "W = 20 kg · 9,81 N/kg · 3,0 m = 589 J. P = W / t = 589 J: 4,0 s = 147 W. Bräuchte sie 8,0 s, bliebe die Arbeit gleich, die Leistung wäre nur halb so groß."
+    },
+    {
+     "frage": "Am Flaschenzug tragen drei Seilstücke eine Last von 900 N, die 1,5 m steigen soll. Wie groß sind Zugkraft und Seilweg?",
+     "loesung": "F = G / n = 900 N: 3 = 300 N und s = n · h = 3 · 1,5 m = 4,5 m. Die Zugarbeit beträgt 300 N · 4,5 m = 1350 J, die Hubarbeit 900 N · 1,5 m = 1350 J. Kraft gespart, Arbeit nicht."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Arbeit wird nur verrichtet, wenn eine Kraft den Körper in ihre eigene Richtung verschiebt. Dann gilt W =",
+     "loesung": "F · s",
+     "post": ". Die Einheit ist das Joule."
+    },
+    {
+     "pre": "Die Lageenergie wächst mit der Masse und der Höhe. Bei der Bewegungsenergie zählt dagegen das Quadrat des",
+     "loesung": "Tempos",
+     "post": ", deshalb bedeutet doppeltes Tempo vierfache Energie."
+    },
+    {
+     "pre": "Bei jeder Umwandlung bleibt die Gesamtmenge der Energie erhalten, doch ein Teil davon wird zu",
+     "loesung": "Wärme",
+     "post": "und ist danach nicht mehr nutzbar."
+    },
+    {
+     "pre": "Wie schnell eine Arbeit geschafft wird, sagt die Leistung: P =",
+     "loesung": "W / t",
+     "post": ". Ein Watt ist genau ein Joule je Sekunde."
+    },
+    {
+     "pre": "Tragen am Flaschenzug n Seilstücke die Last, so ist die Zugkraft F = G / n und der Seilweg",
+     "loesung": "n · h",
+     "post": "; die Arbeit bleibt dabei unverändert."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Wer eine Kiste waagerecht über 4 m durch den Hof trägt, verrichtet im physikalischen Sinn keine Arbeit.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelt man das Tempo der rollenden Kabeltrommel, so verdoppelt sich auch ihre Bewegungsenergie.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Während der Ball fällt, bleibt die Summe aus Lageenergie und Bewegungsenergie gleich groß.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Wer dieselbe Kiste in der halben Zeit hochzieht, verrichtet dabei die doppelte Arbeit.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine Glühlampe macht aus 1000 J nur etwa 50 J Licht, der ganze Rest wird Wärme.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die feste Rolle unter dem Hallendach halbiert die nötige Zugkraft.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Hebel mit langem Kraftarm spart Kraft, aber keine Arbeit.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Eine Kiste mit 50 kg wird 4 m hoch gezogen, einmal in 10 s und einmal in 5 s. Was ändert sich dabei?",
+    "optionen": [
+     "Die Arbeit verdoppelt sich auf 3924 J, die Leistung bleibt bei 196 W.",
+     "Arbeit und Leistung verdoppeln sich beide.",
+     "Die Arbeit bleibt 1962 J, die Leistung steigt von 196 W auf 392 W.",
+     "Arbeit und Leistung bleiben beide unverändert."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre am Hebel und am Flaschenzug, warum eine einfache Maschine zwar Kraft spart, aber niemals Arbeit. Nutze dabei die Zahlen aus dem Kapitel.",
+    "zeilen": 5,
+    "loesung": "Am Hebel ist der Kraftarm von 1,00 m viermal so lang wie der Lastarm von 0,25 m, deshalb genügen statt 200 N nur 50,00 N. Dafür läuft die Hand 40,0 cm, während die Last nur 10,0 cm steigt; beide Arbeiten betragen 20,00 J. Am Flaschenzug ist es dasselbe Muster: Bei vier tragenden Seilstücken sinkt die Zugkraft von 600 N auf 150,0 N, doch der Seilweg wächst von 2,0 m auf 8,0 m, und die Arbeit bleibt in beiden Fällen 1200,0 J. Die Kraft wird also immer um genau denselben Faktor kleiner, um den der Weg länger wird. Das ist die goldene Regel der Mechanik: Was man an Kraft spart, setzt man an Weg zu, denn Energie entsteht nicht von selbst."
+   },
+   "transfer": {
+    "frage": "Für die Seilwinde stehen der alte Benzinmotor und ein Elektromotor zur Wahl. Jannis sagt: „Nimm den Benzinmotor, der ist viel stärker. Der schafft für dasselbe Klavier auch mehr Arbeit.“ Beurteile seine Aussage mit den Werten aus dem Kapitel.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nicht. Die Arbeit hängt allein von der Last und der Höhe ab: W = m · g · h. Ob ein starker oder ein schwacher Motor zieht, ändert daran nichts; ein starker Motor schafft dieselbe Arbeit nur in kürzerer Zeit, denn „stark“ meint die Leistung P = W / t und nicht die Arbeit. Beim Wirkungsgrad ist der Benzinmotor sogar deutlich schlechter: Von 1000 J werden bei ihm nur 250 J zu Bewegung, also η = 25 %, während der Elektromotor mit η = 90 % auf 900 J kommt. Beim Benzinmotor gehen 750 J als Wärme in Abgas und Kühlwasser weg, beim Elektromotor nur 100 J. Für dieselbe Hubarbeit braucht der Benzinmotor deshalb viel mehr hineingesteckte Energie. Sinnvoll ist der Elektromotor, und wenn es schneller gehen soll, wählt man nicht einen anderen Kraftstoff, sondern einen Motor mit größerer Leistung."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Federkraftmesser mit 1 N, 10 N und 50 N",
+   "Holzklötze und kleine Kisten mit aufgeschriebener Masse sowie eine Waage",
+   "Gewichtsstücke von 100 g bis 1 kg mit Haken",
+   "Maßband, Zollstock und Lineal",
+   "Stoppuhr oder Handy mit Stoppuhr",
+   "Stativmaterial mit Muffen, Klemmen und einer Stange als Querträger",
+   "Hebelstange mit Bohrungen und ein Holzklotz als Drehpunkt",
+   "feste und lose Rollen mit Haken und dünner, reißfester Schnur",
+   "Flaschenzug mit oberer und unterer Flasche für zwei bis vier tragende Seilstücke",
+   "ein Brett oder zwei Bohlen als Rampe, dazu Klötze zum Unterlegen für verschiedene Neigungen",
+   "Rollwagen und eine Kugel, die eine Rampe hinunterrollt und einen Klotz anschiebt",
+   "Zahnradsatz mit 10, 12, 24, 30, 36 und 40 Zähnen auf einem Steckbrett",
+   "Tennisball für den Fallversuch und eine Wand mit Messband zum Ablesen der Sprunghöhe",
+   "Glühlampe und LED-Lampe gleicher Helligkeit in Fassungen, dazu ein Energiemessgerät für die Steckdose",
+   "kariertes Papier, Lineal und Taschenrechner"
+  ]
+ }
+]

@@ -1,0 +1,188 @@
+{
+ "seite": {
+  "id": "fv9",
+  "quelle": "ev10",
+  "sim": "freileitungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Zwei Lampen und ein dünner Draht",
+  "name": "Warum ist der Verlust mit Hochspannung klein?",
+  "fachwoerter_neu": [
+   "Hochspannung",
+   "Verlust in Watt (W)"
+  ],
+  "alltag": [
+   "Jannis steht auf dem Hof der Stadtwerke. Sein Betreuer zeigt nach oben.",
+   "Dort hängen dicke Leitungen. Niemand darf hin.",
+   "Sehr hohe Spannung nennt man Hochspannung.",
+   "In jedem Draht wird Energie zu Wärme. Den Verlust zeigt der Bildschirm in Watt (W)."
+  ],
+  "frage": "Warum ist der Verlust mit Hochspannung so klein?",
+  "predict": [
+   "Mit Hochspannung fließt ein kleiner Strom. Dann ist der Verlust klein.",
+   "Mit Hochspannung fließt mehr Energie. Dann ist der Verlust größer."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1 · Die drei Teilversuche“, dann „Hochspannung“.",
+   "Lies in der Zeile mit „Strom“ die Zahl vor A ab. Lies in der Zeile „Verlust in der Leitung“ die Zahl vor W ab.",
+   "Drücke „Niederspannung, CrNi“. Lies den neuen Satz.",
+   "Lies beide Zahlen wieder ab. Trage sie in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft zwei Ergebniskarten.",
+  "tabCols": [
+   "Welchen Knopf hast du gedrückt?",
+   "Wie groß ist der Strom I in A?",
+   "Wie groß ist der Verlust in W?"
+  ],
+  "tabRows": [
+   [
+    "Hochspannung",
+    "0,100 A",
+    "0,266 W"
+   ],
+   [
+    "Niederspannung, CrNi",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mit Hochspannung fließt in der Leitung nur ein",
+    "loesung": "kleiner",
+    "post": "Strom."
+   },
+   {
+    "pre": "Dann wird im Draht nur",
+    "loesung": "wenig",
+    "post": "Energie zu Wärme. Diese Wärme geht verloren."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "wenig",
+   "0,238 A",
+   "1,224 W"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile der Tabelle ab?",
+   "antwort": "Nach „Hochspannung“ steht in der Zeile mit „Strom“ die Zahl 0,100 A. In der Zeile „Verlust in der Leitung“ steht 0,266 W."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Satz steht nach „Niederspannung, CrNi“ neu am Bildschirm?",
+    "optionen": [
+     "Die Lampen leuchten normal hell.",
+     "Die Lampen leuchten heller als vorher.",
+     "Die Lampen leuchten praktisch nicht."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach „Niederspannung, CrNi“ fließt ein Strom von",
+      "loesung": "0,238 A",
+      "post": "."
+     },
+     {
+      "pre": "Der Verlust in der Leitung ist dann",
+      "loesung": "1,224 W",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour fragt: Warum ist Hochspannung besser? Erkläre mit deinen Zahlen.",
+    "satzstarter": "Mit Hochspannung ist der Strom …, darum …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahlen stehen in deiner Tabelle, die Wörter in der Wortbank.",
+   "h2": "Vergleiche die zwei Zahlen der Spalte „Verlust in W“.",
+   "h3": "Fast fertig: Mit Hochspannung ist der Strom kleiner (0,100 A statt 0,238 A). Darum ist der Verlust ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Strom I in A ablesen.",
+   "Ich kann sagen: Kleiner Strom heißt wenig Verlust.",
+   "Ich weiß: Im Draht wird Energie zu Wärme."
+  ],
+  "zuhause": "Fühle das Kabel deines Föhns nach fünf Minuten. Wird es warm?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Bildzeilen untereinander, beide im selben Bildausschnitt, beide mit demselben Aufbau von links nach rechts: links ein Kasten mit einem Wellenzeichen als Stromquelle, daran eine lange waagerechte Doppelleitung quer durch das ganze Bild, rechts zwei kleine Glühlampen nebeneinander. Beide Zeilen sind exakt gleich breit und gleich hoch, damit man sie direkt übereinanderlegen kann. OBERE ZEILE: In der Leitung sitzen zwei gleich große Kästen mit der gut lesbaren Aufschrift „Transformator“, einer dicht hinter der Quelle, einer dicht vor den Lampen. Die zwei Lampen dieser Zeile leuchten kräftig warmgelb, mit hellem Glaskolben. Über der Zeile links die große Zeilenüberschrift „Hochspannung“ — genau so heißt der Knopf am Bildschirm. UNTERE ZEILE: dieselbe Anordnung, aber OHNE die beiden Kästen — die Leitung läuft ununterbrochen durch. Die zwei Lampen dieser Zeile sind dunkelgrau und leuchten nicht, der Glaskolben bleibt matt. Über der Zeile links die große Zeilenüberschrift „Niederspannung, CrNi“ — genau so heißt der zweite Knopf. WÄRME ALS FLÄCHE: Der lange Leitungsdraht der unteren Zeile ist auf seiner ganzen Länge in einem weichen, durchgehenden Orange eingefärbt, das die volle Drahtstärke ausfüllt und an den Rändern sanft ausläuft; der Draht der oberen Zeile trägt dieselbe Einfärbung nur ganz blass. Diese Wärme wird als geschlossene Farbfläche gemalt — NICHT als Streifenmuster, nicht als Schraffur, nicht als Strichraster, nicht als Reihe kleiner Wellenlinien über dem Draht. PFEILE: In jeder Zeile genau EIN Pfeil, er liegt direkt auf dem Leitungsdraht, beginnt an der Quelle und endet an den Lampen; beide Pfeile berühren an beiden Enden gezeichnetes Material und schweben nirgends frei im Bild. Beschriftung am oberen Pfeil „Strom 0,100 A“; der untere Pfeil bleibt OHNE Beschriftung, ist dafür deutlich dicker gezeichnet als der obere. Unter der Mitte jedes Leitungsdrahts steht in großer Schrift: oben „Verlust 0,266 W“, unten nur „viel Wärme“ ohne jede Zahl. Im ganzen Bild stehen genau diese zwei Zahlen und sonst keine — die zwei Zahlen der unteren Zeile sollen die Lernenden selbst am Bildschirm ablesen und in die Tabelle eintragen. KEIN drittes Teilbild und KEIN eingesetztes Nebenbild: keine Lupe, kein kleines Diagramm in einer Ecke, kein Extra-Kästchen mit Formel, keine Legende am Rand. Keine Personen, keine Strommasten, keine Häuser, keine Landschaft, keine Formeln, keine Widerstandssymbole, keine Messgeräte. Ruhiger heller Hintergrund, sehr große Schrift, kein Schmuck.]"
+ },
+ "lehrer": {
+  "id": "fv9",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation die beiden Schaltungen des ersten Teilversuchs ein und lesen ab: Nach „Hochspannung“ fließen in der Leitung 0,100 A, und der Verlust beträgt 0,266 W; nach „Niederspannung, CrNi“ fließen 0,238 A, und der Verlust steigt auf 1,224 W. Sie tragen beide Wertepaare in die Tabelle ein und begründen daran die Kernaussage: Hochspannung macht den Strom in der Leitung klein, und ein kleiner Strom bedeutet wenig Verlust. Sie benennen den Verlust in der Sache: Die Energie ist nicht weg, sie wird im Draht zu Wärme. Ausdrücklich NICHT Gegenstand dieser Doppelseite ist der Weg vom Kraftwerk über die Umspannwerke bis zur Steckdose — der steht in fv10, das dieselbe Simulation benutzt. fv9 fragt allein nach dem Warum.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Leitungen. Optional als Demonstration: eine kleine Lampe einmal über zwei kurze dicke Kabel und einmal über eine lange dünne Litze betreiben und die Helligkeit vergleichen (nur hell gegen dunkel, keine Messreihe, keine Zahlen).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte „Hochspannung“ (das ist zugleich der Ausgangszustand der Simulation): Lagetext „Die Lampen leuchten normal hell. So sollen sie im Betrieb aussehen – rund 6,4 V und 1,0 A.“ Aus dem Rechenkasten daneben: „Leitungswiderstand (CrNi 4 m + 2 Spulen) R = 5,4·4 + 2·2,5  26,6 Ω“, „Strom in der Fernleitung klein, weil hochgespannt  0,100 A“, „Verlust in der Leitung P = R·I²  0,266 W“. Karte „Niederspannung, CrNi“: Lagetext „Die Lampen leuchten praktisch nicht. Fast die gesamte Spannung fällt schon an der Leitung ab – an den Lampen bleibt zu wenig übrig.“ Aus dem Rechenkasten: „Leitungswiderstand (CrNi 4 m) R = 5,4·4  21,6 Ω“, „Strom (Reihenschaltung Leitung + Lampen) I = UNetz/(RLeitung+RLampe)  0,238 A“, „an den Lampen UL = RLampe·I  1,52 V“, „Verlust in der Leitung P = R·I²  1,224 W“. Für die Schülerseite gebraucht werden von jeder Karte nur die beiden fett zu markierenden Zahlen (0,100 A / 0,266 W und 0,238 A / 1,224 W) und der Lagetext; die Widerstandszeile und die Formeln stehen auf der Karte nur, damit die Karte dem Bildschirm entspricht — sie werden nicht besprochen. Dazu als Tafelbild zwei Leitungen untereinander, beide von derselben Quelle links zu zwei Lampen rechts: obere Leitung mit zwei Kästen „Transformator“ und dem Wort „Hochspannung“, Lampen hell; untere Leitung ohne Kästen, Lampen dunkel, der Draht auf ganzer Länge orange eingefärbt. Wichtig beim Tafelbild: Die Aufschrift der vier Zahlen bleibt genau so stehen wie oben — daran hängen Aufgabe 2 und Hilfe 3. Alternativ die zwei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "kleiner",
+   "wenig"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Niederspannung, CrNi",
+    "0,238 A",
+    "1,224 W"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach „Niederspannung, CrNi“ meldet der Lagetext: „Die Lampen leuchten praktisch nicht. Fast die gesamte Spannung fällt schon an der Leitung ab – an den Lampen bleibt zu wenig übrig.“ Die dritte Option gibt genau diesen Anfang wieder. Die erste Option ist der Lagetext der Schaltung „Hochspannung“ und stand vorher da; die zweite Option steht nirgends am Bildschirm.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil der vorherige Satz noch im Blick liegt oder weil oben die eingefrorene Helligkeitszeile weiter „normal hell“ meldet. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt? Und dann auf den Lagetext zeigen, nicht auf die Zeile darüber.",
+    "Die zweite Option wird angekreuzt, weil „mehr Strom“ mit „heller“ gleichgesetzt wird. Am Bild zeigen: Der große Strom heizt den Draht, an den Lampen kommt zu wenig an.",
+    "Es wird gar nicht umgeschaltet und der Ausgangszustand abgelesen — dann steht dort noch der Satz der ersten Option, und die Aufgabe wird scheinbar richtig falsch beantwortet. Deshalb vorher laut mitzählen lassen, welcher Knopf gerade leuchtet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,238 A",
+    "1,224 W"
+   ],
+   "typische_fehler": [
+    "Die beiden Zahlen werden vertauscht: 1,224 W in die Stromlücke, 0,238 A in die Verlustlücke. Die Einheit ist der Schlüssel — A gehört zum Strom, W zum Verlust. Einmal an der Tabellenüberschrift zeigen.",
+    "Es werden die Zahlen der Beispielzeile eingesetzt (0,100 A und 0,266 W): Der Satz nennt aber „Niederspannung, CrNi“. Auf die zweite Tabellenzeile zurückverweisen.",
+    "Die Einheit fehlt („0,238“ oder „1,224“). Die Wortbank führt beide Zahlen mit Einheit; einmal abschreiben lassen.",
+    "Statt 0,238 A wird 1,037 A eingesetzt, weil vorher der dritte Knopf „Niederspannung, Kupfer“ gedrückt wurde. Diese Schaltung gehört nicht zu dieser Seite (siehe Zusatzaufgabe); die Tabelle hat nur zwei Zeilen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Mit Hochspannung ist der Strom kleiner, darum ist auch der Verlust kleiner. Nach „Hochspannung“ fließen nur 0,100 A und es gehen 0,266 W verloren, nach „Niederspannung, CrNi“ 0,238 A und 1,224 W. Die Lampen leuchten dann praktisch nicht, weil die Energie schon im Draht zu Wärme geworden ist. Wer statt der zwei Knopfnamen „mit Transformatoren“ und „ohne Transformatoren“ schreibt — so steht es im Bild —, ist ebenso richtig.",
+   "alternativen": [
+    "Nur der Zahlenvergleich, ohne Wärmesatz: „Mit Hochspannung ist der Strom kleiner (0,100 A statt 0,238 A), darum ist der Verlust kleiner (0,266 W statt 1,224 W).“ — reicht für die volle Wertung.",
+    "Über die Helligkeit begründet: „Mit Hochspannung ist der Strom kleiner, darum leuchten die Lampen normal hell. Ohne Transformatoren leuchten sie praktisch nicht.“",
+    "Ohne Zahlen, aber mit richtiger Kette: „Mit Hochspannung ist der Strom klein, darum wird im Draht wenig Energie zu Wärme.“ — richtig; bei Gelegenheit eine Zahl nachfordern.",
+    "Zusatz mit dem Preis der Sicherheit: „Dafür ist die Leitung gefährlich, niemand darf hin.“ — richtig, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Es wird nur „weil Hochspannung besser ist“ geschrieben, ohne den Strom. Nachfragen: Was ist mit Hochspannung kleiner geworden? Die Antwort steht in der Tabellenspalte.",
+    "Die Kette wird umgedreht: „Der Verlust ist klein, darum ist der Strom klein.“ Am Tafelbild zurückgehen: Erst kommen die Transformatoren, dann der kleine Strom, dann der kleine Verlust.",
+    "Die Energie sei „verbraucht“ oder „weg“. Richtigstellen: Sie ist im Draht zu Wärme geworden — genau das steht im Merksatz.",
+    "Die Spannung selbst wird für den Verlust verantwortlich gemacht: „Hochspannung ist stärker, darum geht mehr kaputt.“ Das ist die andere Vermutung von Seite A; die eigene Tabelle widerlegt sie.",
+    "Die Antwort weicht auf den dicken Kupferdraht aus. Der Knopf gehört nicht zu dieser Seite; Frage zurücklenken auf die zwei Zeilen der Tabelle."
+   ]
+  },
+  "hilfe3_wort": "kleiner (auch richtig: klein, viel kleiner, nur 0,266 W)",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Knöpfe gelten: nur „1 · Die drei Teilversuche“, dann „Hochspannung“ und „Niederspannung, CrNi“. Die Knöpfe der Stationen 2 bis 5 führen zu Diagrammen und Zusatzrechnungen, die diese Seite nicht braucht; der dritte Leitungsknopf („Niederspannung, Kupfer“) gehört erst zur freiwilligen Zusatzaufgabe.",
+   "Die vier Zahlen einmal laut vorlesen lassen: null Komma eins null null Ampere, null Komma zwei sechs sechs Watt und so weiter. Beim Vergleich von 0,100 und 0,238 den Finger auf die erste Stelle hinter dem Komma legen: 1 gegen 2.",
+   "Die lange Zeile im Rechenkasten mit einem Papierstreifen abdecken, sodass nur die Zahl mit ihrer Einheit sichtbar bleibt. Die Formeln davor werden nicht gebraucht und lenken ab.",
+   "Nur die Spalte „Verlust in W“ ausfüllen lassen; die Stromspalte gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen. Dabei laut sagen, welche Einheit zu welcher Größe gehört.",
+   "Der Knopfname „Niederspannung, CrNi“ wird nur abgelesen und gedrückt, nicht erklärt: CrNi ist der Name des Drahtmetalls. Wer fragt, bekommt den einen Satz „So heißt der dünne Draht“ und arbeitet weiter. Dasselbe gilt für „Niederspannung“: Es ist die andere Hälfte desselben Knopfnamens und wird mit einem Satz erledigt — „Das heißt: ohne Hochspannung“."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke auch den dritten Knopf, „Niederspannung, Kupfer“. Dort fließt mit 1,037 A der größte Strom von allen dreien — und trotzdem ist der Verlust mit 0,032 W der kleinste. Wie geht das? Der dicke Kupferdraht setzt dem Strom fast nichts entgegen (0,030 Ω statt 21,6 Ω). Schreibe einen Satz dazu. Überlege dann: Warum hängt man über hunderte Kilometer trotzdem lieber Hochspannung auf, statt überall dicke Kupferdrähte zu spannen? Antwort im Gespräch: So viel Kupfer wäre zu teuer und viel zu schwer für die Masten.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Energieübertragung über weite Strecken, Verlust in der Leitung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der beiden Schaltungen und das Ablesen der vier Zahlen trägt E4 und E5; das Eintragen der Messwerte in die Tabelle (Arbeitsschritt 4) trägt K3 — im ganzen Band liegt K3 auf dem Dokumentieren in der Tabelle, NICHT auf dem Zuhause-Auftrag, denn „Erkläre zu Hause jemandem …“ ist Präsentieren, nicht Dokumentieren (Bauplan vom 05.09.2026). Der Vergleich der beiden Zeilen trägt UF3, die Erklär-Aufgabe zur Frage „Warum ist Hochspannung besser?“ trägt UF4 und E6, die Vermutung auf Seite A trägt UF1. ABGRENZUNG ZU fv10: Beide Einheiten benutzen die Simulation freileitungen, haben aber getrennte Lernziele. fv9 fragt allein nach dem Warum (kleiner Strom heißt wenig Verlust). Der Weg vom Kraftwerk über die Umspannwerke zur Steckdose, die Netzgrafik der Simulation mit dem Satz „Hochspannen senkt den Strom – und damit den Verlust auf der langen Strecke“, die Strommasten und die Spannungsebenen kommen auf dieser Seite nirgends vor — weder im Text noch im Bildauftrag, der Masten und Häuser ausdrücklich ausschließt. Umgekehrt gehören die vier Zahlen dieser Seite nicht nach fv10. FACHWORTZÄHLUNG: Neu sind genau ZWEI Wörter. „Hochspannung“ wird im Alltagsteil mit Begriffssatz eingeführt („Sehr hohe Spannung nennt man Hochspannung.“). „Verlust in Watt (W)“ zählt nach Zählregel 5, weil die Tabellenspalte eine Einheit trägt; auch dafür steht ein Begriffssatz im Alltagsteil. „Niederspannung“ zählt NICHT — der Grund ist derselbe wie bei „CrNi“ (siehe Punkt 9): Das Wort steht auf der ganzen Schülerseite nur innerhalb des Knopfnamens „Niederspannung, CrNi“ und immer in Anführungszeichen, nie allein, nie in der Wortbank, nie in einer Lücke, nie im Merksatz. Es ist der Name eines Knopfes, den man finden und drücken muss, kein Lernstoff; die Seite verlangt an keiner Stelle, ihn zu erklären, und die Hinweise für schwache Lernende erledigen die Frage mit einem Satz. Sobald das Wort einmal ohne Knopfnamen tragend würde, wäre es das dritte Fachwort und die Seite risse das Limit. VERLUST IST NICHT DIE EINHEIT DER ENERGIE: Der Alltagsteil sagt zuerst, WAS passiert („In jedem Draht wird Energie zu Wärme.“), und erst dann, WO die Zahl steht („Den Verlust zeigt der Bildschirm in Watt (W).“). Der frühere Satz „Diesen Verlust misst man in Watt“ und der Merksatzschluss „Diese Wärme ist der Verlust“ sind gestrichen: Wärme ist Energie und wird in Joule gemessen, Watt ist Energie je Sekunde. Vier Einheiten später druckt fv13 als Merksatz „Der Stromzähler misst die Energie in Kilowattstunden (kWh), nicht in Watt.“ und führt „In Watt (W)“ dort als FALSCHE Ankreuzoption — wer fv9 in der alten Fassung gelernt hätte, kreuzte in fv13 falsch an. Die Tabellenspalte „Wie groß ist der Verlust in W?“ bleibt, sie zitiert den Bildschirm. Das Wort Leistung fällt hier bewusst nicht; es gehört zu fv12 und fv13. BEWUSST OHNE FORMELZEICHEN: Der Bildschirm schreibt „P = R·I²“ und im Diagramm „P_Verlust“. Ein einzelnes „P“ auf der Schülerseite würde die Größe Leistung P vorwegnehmen, die erst fv12 (Wirkungsgrad) und fv13 (Stromkosten) brauchen — nach Zählregel 4 darf ein Wort im Band nur einmal eingeführt werden. Einen tiefgestellten Index kann der Fördersatz außerdem nicht setzen (die Schrift führt nur ₁ und ₂). Die Seite sagt deshalb durchgehend „Verlust in W“. Rückverweise, nicht neu: Stromstärke I in Ampere (A) aus Förderband 8, Einheit fs4 (die Seite schreibt kurz „Strom I in A“, wie im ganzen Kapitel) — fv2 verweist selbst nur dorthin und ist nach Zählregel 4 nicht der Träger; Spannung U in Volt (V) aus Förderband 8, Einheit fs3; Transformator aus fv8. Bewusst vermieden, weil sie das dritte bis achte Wort wären: Übertragungsspannung, Leitungsverlust, Fernleitung, hochtransformieren, Widerstand R in Ohm, proportional, Ursprungsgerade, Reihenschaltung. GESTRICHEN GEGENÜBER ev10: die Formel PVerlust = R · I², die Formel I = P/U, die Auftragung über 1/U², jede Proportionalitätsaussage und die Fit-Zahlen der Simulation („y = 0,0884·x“, „R² = 1,0000“, „R·P² = 884“). Station 2 wird auf dieser Seite gar nicht geöffnet; damit entfallen auch der Regler, das Übernehmen von Messwerten und der Achsenwechsel — der Bedienweg des Regelhefts hatte neun Schritte, das Profil erlaubt vier. DATENLAGE UND FALLEN: (1) Die dritte Schaltung „Niederspannung, Kupfer“ steht mit Absicht NICHT in der Tabelle. Dort fließt mit 1,037 A der größte Strom aller drei Fälle, und der Verlust ist mit 0,032 W trotzdem der kleinste — auf einer Seite, deren Merksatz „kleiner Strom heißt wenig Verlust“ lautet, wäre diese Zeile gedruckt ein Widerspruch. Die Auflösung liegt am Widerstand des dicken Drahtes (0,030 Ω gegen 21,6 Ω) und ist eine Beurteilungsfrage (B1); sie steht deshalb in der freiwilligen Zusatzaufgabe und wird dort im Gespräch geklärt. (2) Die Zahlen sind nachgerechnet und passen zusammen, werden aber nicht ausgesprochen: 0,238 A sind rund das 2,4-Fache von 0,100 A, der Verlust wächst dabei auf rund das 4,6-Fache. Das ist kein Zufall — 2,38 · 2,38 = 5,66, geteilt durch das Widerstandsverhältnis 26,6 Ω zu 21,6 Ω (= 1,23) ergibt 4,6. Nicht vorher runden: Mit 2,4 · 2,4 = 5,76 kommt 4,7 heraus, und die vorgeführte Kette trifft den eben genannten Wert 4,6 nicht mehr. Der quadratische Zusammenhang steckt also in den vier Zahlen, wird auf der Schülerseite aber nirgends behauptet und nirgends gerechnet. Wer als Lehrkraft danach gefragt wird, kann diese Rechnung anbieten; verlangt wird sie nicht. (3) Zwei Zahlen für dieselbe Sache: Der Rechenkasten nennt die hochgesetzte Spannung mit 66,7 V, die Aufbau-Grafik daneben mit „Hochspannung 67 V“. Die Schülerseite zeigt keine der beiden — sie braucht die Übertragungsspannung nicht. (4) Widersprüchliche Verlustangaben auf einem Bildschirm: Der Rechenkasten nennt für „Niederspannung, CrNi“ 1,224 W, die Energiebilanz daneben 21,6 J je Sekunde (so zitiert es auch das Regelheft ev10). Beide Zahlen auf einer Förderseite wären ein Fehler; die Seite nimmt ausschließlich den Rechenkasten, also 0,266 W und 1,224 W. Falls jemand die Bilanz entdeckt: Sie rechnet mit der real gemessenen Handreichung, der Rechenkasten mit dem idealen Modell. [NACHMESSEN] Belegt ist das nur für den Fall Hochspannung — frlMess nennt „Verlust 1,1 J/s“, genau die Zahl der Bilanz. Für „Niederspannung, CrNi“ nennt die Handreichung gar keinen Wert; dort ist der Zusammenhang erschlossen, nicht abgelesen. (5) [NACHMESSEN] Die Helligkeitszeile über dem Lagetext ist im Faktendump EINGEFROREN: Sie meldet auch nach „Niederspannung, CrNi“ noch „normal hell (100 % der Nennleistung)“. Belegt ist damit der Dump, nicht die laufende Simulation; nachgemessen wird mit simcheck/werte.js. Nur der Lagetext darunter aktualisiert sich. Solange das so ist, hat Aufgabe 1 am Bildschirm ZWEI wahre Antworten — die eingefrorene Zeile sagt wörtlich, was Option 1 behauptet. Die Frage lautet deshalb „Welcher Satz steht nach „Niederspannung, CrNi“ NEU am Bildschirm?“: Der Lagetext „Die Lampen leuchten praktisch nicht.“ ist neu, „Die Lampen leuchten normal hell.“ stand vorher schon da. Beim Vorführen genau auf den Lagetext zeigen, nicht auf die Zeile darüber. (6) [NACHMESSEN] Was Station 2 anzeigt, BEVOR ein Messwert übernommen wird, ist nicht belegt: Der Faktendump hat den dortigen Rechenkasten mit den Kupfer-Werten überschrieben. Die Seite öffnet Station 2 deshalb nicht und verlangt keinen Wert von dort. (7) [NACHMESSEN] Die Spaltenüberschriften der Messtabelle am Bildschirm sind nicht belegt — der Dump liefert nur die Zellinhalte, die Deutung „Nr | U in V | I in A | Verlust in W“ ist aus den Werten erschlossen. Die Beispielmessreihe wird deshalb nicht verlangt; sie enthält außerdem U = 80 V zweimal, und ob sie acht oder neun Zeilen füllt, ist ebenfalls unbelegt. Sobald fakten/freileitungen.json diese drei Punkte nachgemessen führt, ließe sich die Reihe für eine spätere Auflage nutzen. (8) UNDRUCKBARE ZEICHEN: Die Überschrift der Simulation und sechs Knöpfe tragen Emoji oder Zierzeichen, für die SourceSans3 keine Glyphe hat. Sie werden nirgends zitiert — auch hier im Lehrerteil nicht, der in derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Gemeint sind die Knöpfe „Messwert übernehmen“, „Beispielmessreihe“, „Tabelle leeren“, „auf normal hell stellen“, „Anhalten“ und „Neu schalten“; sprechen Sie die Namen aus, zeigen Sie auf den Knopf, schreiben Sie das Zeichen nicht an. Die drei Knöpfe, die diese Seite braucht, sind zeichenfrei und werden wörtlich zitiert: „1 · Die drei Teilversuche“, „Hochspannung“, „Niederspannung, CrNi“. Der Mittelpunkt in „1 · Die drei Teilversuche“ ist geprüft vorhanden. (9) „CrNi“ bleibt unerklärt: Es ist nur der Name des Drahtmetalls, steht in keiner Wortbank und in keiner Lücke — zitiert wird es allein, weil man den Knopf finden muss. (10) Der Zuhause-Auftrag trägt bewusst keinen Kompetenzcode. Er zeigt denselben Mechanismus wie die Seite: Im Kabel des Föhns fließt ein großer Strom, und das Kabel wird warm — Wärme im LEITUNGSdraht, genau wie in der Modell-Fernleitung. Der frühere Auftrag am Handy-Netzteil ist gestrichen: Ein warmes Netzteil ist Wandlerverlust im Trafo und im Schaltnetzteil und hat mit der Stromstärke auf der Leitung nichts zu tun; außerdem eröffnet genau dieser Anker vier Einheiten später fv12 („Jannis lädt sein Handy. Das Netzteil wird warm.“) und steht dort auch im Zuhause-Auftrag. Die Frage ist offen gestellt („Wird es warm?“) und verrät das Ergebnis nicht mehr. Der Auftrag bleibt eine Beobachtung, keine Dokumentation und keine Präsentation. Er meidet außerdem Strommasten und Umspannwerke, weil das der Alltagsanker von fv10 ist. (11) DAS BILD NIMMT DIE MESSUNG NICHT VORWEG. Der Bildauftrag stand vorher mit allen vier Zahlen da — auch mit „Strom 0,238 A“ und „Verlust 1,224 W“, also genau den zwei Werten, die Tabellenzeile 2 offen lässt. Das Einstiegsbild sitzt auf Seite A direkt neben der Tabelle (build_pilot.seite_a), Arbeitsschritt 4 wäre damit vom Blatt lösbar gewesen. Gedruckt werden jetzt nur die zwei Zahlen der schon gefüllten Beispielzeile (0,100 A / 0,266 W); die untere Bildzeile trägt einen dickeren Pfeil ohne Zahl und die Aufschrift „viel Wärme“. Der Vergleich bleibt sichtbar, die Messung bleibt eine Messung — dieselbe Regel wie bei der Merke-Zeile der Datenblattseiten. Der Tafelbild-Ersatz oben behält die vier Zahlen: Dort ersetzt er den Bildschirm. (12) EINE BEZEICHNUNG FÜR EINE SACHE. Dieselbe Schaltung hieß auf der Schülerseite zweimal anders: in Tabelle und Arbeitsschritten „Niederspannung, CrNi“, in Aufgabe 2, Aufgabe 3 und Hilfe 3 „ohne Transformatoren“ — verbunden wurde beides nirgends. Der Text nennt jetzt durchgehend die zwei Knopfnamen. „Transformator“ steht auf der Schülerseite nur noch im Bild, wo die beiden Kästen die obere Zeile erklären; als Wort ist es aus fv8 bekannt und bleibt im Erwartungshorizont als richtige Antwort zugelassen. Der Bildauftrag beschriftet die zwei Bildzeilen deshalb mit den Knopfnamen. (13) HILFEN 1–2–3, NICHT 1–3–2. Hilfe 2 gab vorher den Satzstarter „Mit Hochspannung ist der Strom kleiner, darum …“ und verbrauchte damit genau das Wort, das Hilfe 3 danach noch offen ließ; die eigentliche Denkleistung — der Schluss vom kleinen Strom auf den kleinen Verlust — kam in keiner der drei Hilfen vor. Jetzt gilt: Hilfe 1 sagt, WO die Zahlen und Wörter stehen, Hilfe 2 sagt, WELCHE zwei Zahlen zu vergleichen sind, Hilfe 3 gibt den fast fertigen Satz und lässt nur das letzte Wort offen (der Verlust, nicht der Strom)."
+ }
+}

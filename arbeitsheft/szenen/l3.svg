@@ -1,0 +1,30 @@
+<defs>
+  <radialGradient id="l3licht" cx="0.22" cy="0.56" r="0.80">
+    <stop offset="0" stop-color="#FFDD9C" stop-opacity="0.32"/>
+    <stop offset="0.42" stop-color="#FFC96F" stop-opacity="0.09"/>
+    <stop offset="1" stop-color="#0C0904" stop-opacity="0.58"/>
+  </radialGradient>
+  <clipPath id="l3wand"><rect x="0" y="0" width="900" height="414"/></clipPath>
+  <filter id="l3weich" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="1.8"/>
+  </filter>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_querbalken" transform="translate(-14,54)"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#l3licht)"/>
+
+  <!-- Der Schatten liegt deutlich weiter rechts als die Pappfigur -->
+  <g clip-path="url(#l3wand)" filter="url(#l3weich)">
+    <use href="#t_wolf_form" transform="translate(716,398) scale(2.3)" fill="#2A1C08" opacity="0.60"/>
+  </g>
+
+  <use href="#t_kiste" transform="translate(186,500) scale(0.86)"/>
+  <use href="#t_lampe_an" transform="translate(196,316) rotate(-2) scale(0.8)"/>
+
+  <!-- Pappwolf: Stab steht auf dem Boden, Klammer haelt die Figur -->
+  <ellipse cx="410" cy="472" rx="34" ry="8" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <rect x="406" y="308" width="9" height="164" rx="4" fill="url(#holz)"/>
+  <rect x="406" y="308" width="3" height="164" fill="#FFFFFF" opacity="0.20"/>
+  <use href="#t_waescheklammer" transform="translate(410,326) scale(0.86)"/>
+  <use href="#t_pappfigur" transform="translate(410,312) scale(0.96)"/>

@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw2",
+  "quelle": "ew2",
+  "sim": "tag-nacht",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Der staubige Globus",
+  "name": "Warum wird es Tag und Nacht?",
+  "fachwoerter_neu": [
+   "Erdachse"
+  ],
+  "alltag": [
+   "Jannis schreibt seiner Cousine in Neuseeland.",
+   "Ihre Antwort: Bei ihr ist gerade tiefe Nacht.",
+   "Dabei scheint hier die Sonne auf den Schulhof.",
+   "Die Linie, um die sich die Erde dreht, heißt Erdachse."
+  ],
+  "frage": "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
+  "predict": [
+   "Die Erde dreht sich. Tag hat die Seite, die zur Sonne zeigt.",
+   "Die Sonne wandert um die Erde herum."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Pause“, damit der Globus stehen bleibt.",
+   "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?",
+   "Stelle 180° ein und vergleiche.",
+   "Ergänze die letzte Zeile nach einer vollen Drehung."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Stellung",
+   "Wer hat Tag?",
+   "Wer hat Nacht?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "Yumi",
+    "Ben"
+   ],
+   [
+    "180°",
+    "",
+    ""
+   ],
+   [
+    "volle Drehung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Tag und Nacht entstehen, weil sich die Erde um ihre eigene",
+    "loesung": "Achse",
+    "post": "dreht."
+   },
+   {
+    "pre": "Eine volle Drehung dauert etwa",
+    "loesung": "24 Stunden",
+    "post": "– einen Tag."
+   }
+  ],
+  "wortbank": [
+   "Achse",
+   "24 Stunden",
+   "dreht",
+   "Tag",
+   "Nacht"
+  ],
+  "beispiel": {
+   "frage": "Bei Jannis ist Mittag. Warum ist in Neuseeland Nacht?",
+   "antwort": "Die Erde ist eine Kugel und dreht sich. Neuseeland zeigt gerade von der Sonne weg. Darum ist dort Nacht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum wird es bei uns Nacht?",
+    "optionen": [
+     "Die Erde dreht sich um sich selbst.",
+     "Die Sonne bewegt sich um die Erde.",
+     "Die Sonne wird nachts ausgeschaltet."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Erde",
+      "loesung": "dreht",
+      "post": "sich einmal in 24 Stunden."
+     },
+     {
+      "pre": "Die Seite zur Sonne hat",
+      "loesung": "Tag",
+      "post": ", die andere Seite hat Nacht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum ist es nie auf der ganzen Erde gleichzeitig Tag?",
+    "satzstarter": "Die Sonne beleuchtet immer nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Bei 0° hat Yumi Tag und Ben Nacht – gleichzeitig.",
+   "h2": "Beginne so: Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte …",
+   "h3": "Fast fertige Antwort: Die Sonne beleuchtet immer nur eine Hälfte der Erde. Die andere Hälfte liegt im Schatten und hat ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann erklären, wie Tag und Nacht entstehen.",
+   "Ich weiß, wie lange eine volle Drehung dauert.",
+   "Ich kann sagen, welche Seite Tag hat."
+  ],
+  "zuhause": "Drehe einen Globus oder einen Ball langsam vor einer Taschenlampe. Beobachte, wie ein Punkt darauf in Licht und Schatten wandert.",
+  "bildauftrag": "[BILD: links die Sonne, rechts die Erdkugel; die sonnenzugewandte Hälfte hell, die abgewandte Hälfte dunkel; ein gebogener Drehpfeil um die Erde; zwei markierte Punkte auf der Kugel: einer im Hellen mit Beschriftung „Tag“, einer im Dunkeln mit „Nacht“; große Beschriftung „die Erde dreht sich“; keine weiteren Pfeile; ruhiger dunkler Weltraum-Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw2",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um ihre eigene Achse dreht und die Sonne immer nur eine Hälfte beleuchtet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Stellungen aus diesem Lehrerteil als Karten. Klassenversuch: Globus und Taschenlampe im abgedunkelten Raum (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Globus-Versuch als Demonstration",
+  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → Ben hat Nacht (Mitternacht), Yumi hat gleichzeitig Tag · 180° → Ben hat Sonne, Yumi Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
+  "merksatz": [
+   "Achse",
+   "24 Stunden"
+  ],
+  "tabelle_erwartet": [
+   [
+    "180°",
+    "Ben",
+    "Yumi"
+   ],
+   [
+    "volle Drehung",
+    "Yumi",
+    "Ben"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+   "typische_fehler": [
+    "Die am Himmel wandernde Sonne wird als echte Bewegung der Sonne gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dreht",
+    "Tag"
+   ],
+   "typische_fehler": [
+    "„1 Jahr“ statt „24 Stunden“ – Drehung und Weg um die Sonne werden verwechselt.",
+    "Tag- und Nachtseite werden vertauscht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte liegt im eigenen Schatten der Erde. Darum ist immer irgendwo Nacht.",
+   "alternativen": [
+    "Mit Ben und Yumi begründet: Bei 0° hat Yumi Tag und Ben gleichzeitig Nacht.",
+    "Mit dem Globus-Versuch begründet: Die Lampe trifft nur eine Seite."
+   ],
+   "typische_fehler": [
+    "„Nachts ist die Sonne aus.“",
+    "Tag und Nacht werden mit Sommer und Winter vermischt."
+   ]
+  },
+  "hilfe3_wort": "Nacht",
+  "schwache": [
+   "Nur die Stellungen 0° und 180° bearbeiten lassen.",
+   "Bens roten Punkt in der Simulation mit dem Finger verfolgen lassen.",
+   "Den Globus-Versuch vor der Simulation real zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. Ben steht genau an der Grenze zwischen heller und dunkler Seite.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Die Rechnung 360° zu 24 Stunden fällt bewusst weg."
+ }
+}

@@ -1,0 +1,189 @@
+{
+ "id": "ef_mechanik",
+ "clues": {
+  "hinweise": [
+   {
+    "wort": "STEIGUNG",
+    "tipp": "Diese Eigenschaft der Ausgleichsgeraden ist im s-t-Diagramm die Geschwindigkeit und im v-t-Diagramm die Beschleunigung; gebildet wird sie als Δy/Δx aus zwei beliebigen Punkten."
+   },
+   {
+    "wort": "SPANNWEITE",
+    "tipp": "Vom kleinsten bis zum größten Wert dreier Messfahrten reicht sie; erst sie sagt, wie sicher eine gemessene Steigung ist – R² sagt es nicht."
+   },
+   {
+    "wort": "LINEARISIERUNG",
+    "tipp": "Der Kunstgriff, der aus einer Parabel eine Ursprungsgerade macht: Man wählt die Achsen neu und trägt s über t² auf."
+   },
+   {
+    "wort": "ORTSFAKTOR",
+    "tipp": "In der Sekundarstufe I trug diese Größe die Einheit N/kg; beim freien Fall heißt dieselbe Zahl Fallbeschleunigung und steht in m/s²."
+   },
+   {
+    "wort": "WURFPARABEL",
+    "tipp": "So heißt die Bahn y = h − g/(2 · v₀²) · x², die entsteht, wenn sich eine gleichförmige und eine gleichmäßig beschleunigte Bewegung überlagern."
+   },
+   {
+    "wort": "KOMPONENTE",
+    "tipp": "F · cos(α) ist die eine, F · sin(α) die andere; nach Pythagoras ergeben beide zusammen wieder die ganze Zugkraft von 200,0 N."
+   },
+   {
+    "wort": "GLEICHGEWICHT",
+    "tipp": "Zustand der hängenden Lampe: Haltekraft und Gewichtskraft ergänzen sich zu 0 N, und trotzdem steht der Kraftmesser weiter bei 5 N."
+   },
+   {
+    "wort": "WECHSELWIRKUNG",
+    "tipp": "Das Prinzip hinter dem dritten newtonschen Gesetz: Zu jeder Kraft gehört eine gleich große, entgegengesetzt gerichtete an einem zweiten Körper."
+   },
+   {
+    "wort": "GLEITREIBUNG",
+    "tipp": "Für sie gilt F_R = μ · F_N; sie bremst den bereits fahrenden Wagen und hängt weder von der Berührfläche noch vom Tempo ab."
+   },
+   {
+    "wort": "HUBARBEIT",
+    "tipp": "W = m · g · h: Sie fällt an, wenn Kraft und Weg beide nach oben zeigen – beim Gang durch den Flur dagegen nicht."
+   },
+   {
+    "wort": "SPANNENERGIE",
+    "tipp": "Sie ist die Dreiecksfläche unter der F-s-Geraden und beträgt ½ · D · s²; das Produkt aus Kraft und Auslenkung ergäbe doppelt so viel."
+   },
+   {
+    "wort": "IMPULS",
+    "tipp": "p = m · v: Diese gerichtete Größe bleibt beim Stoß in der Summe erhalten, und ein zurücklaufender Körper geht mit Minuszeichen ein."
+   }
+  ]
+ },
+ "prep": {
+  "kannIch": [
+   "Ich kann aus Weg-Zeit-Paaren die Geschwindigkeit als Steigung v = Δs/Δt bestimmen und begründen, warum die Ausgleichsgerade belastbarer ist als ein einzelner Quotient s/t.",
+   "Ich kann erklären, dass R² nur die Anpassungsgüte misst, und mit der Spannweite dreier Messfahrten angeben, wie sicher meine Steigung wirklich ist.",
+   "Ich kann die Beschleunigung als Steigung der v-t-Geraden ablesen und sie aus der s-t-Parabel gewinnen, indem ich s über t² auftrage und a = 2 · Steigung bilde.",
+   "Ich kann die Fallbeschleunigung über g = v/t und über g = 2s/t² bestimmen und begründen, warum die schrittweise Rechnung den zweiten Wert zu groß macht.",
+   "Ich kann den waagerechten Wurf in zwei Teilbewegungen zerlegen und mit t = √(2h/g) und xW = v₀ · t begründen, warum v₀ die Fallzeit nicht verändert.",
+   "Ich kann eine schräg ziehende Kraft in F · cos(α) und F · sin(α) zerlegen und erklären, warum die senkrechte Komponente den Schlitten entlastet.",
+   "Ich kann mit F_res = 0 N erklären, warum ein Wagen ohne resultierende Kraft sein Tempo behält und eine Lampe still hängt, obwohl an ihr gezogen wird.",
+   "Ich kann unter Variablenkontrolle zeigen, dass a proportional zu F und umgekehrt proportional zu m ist, und mit F = m · a sowie 1 N = 1 kg · m/s² rechnen.",
+   "Ich kann mit dem Wechselwirkungsprinzip begründen, dass beide Wagen denselben Kraftbetrag erfahren, und aus a1 : a2 = m2 : m1 ihre Beschleunigungen bestimmen.",
+   "Ich kann mit F_R = μ · m · g die Reibungskraft berechnen und daraus über a = (F − F_R)/m die Beschleunigung des Wagens gewinnen.",
+   "Ich kann mit W = F · s · cos(α), W = m · g · h und P = W/t entscheiden, wann eine Kraft Arbeit verrichtet und wie groß die Leistung dabei ist.",
+   "Ich kann E = ½ · m · v² und E = ½ · D · s² berechnen, das Quadrat in beiden begründen und mit p = m · v einen geraden Stoß bilanzieren."
+  ],
+  "tipps": [
+   "Drei Auftragungen, drei Bedeutungen derselben Steigung: Im s-t-Diagramm ist sie die Geschwindigkeit, im v-t-Diagramm die Beschleunigung, im s-t²-Diagramm dagegen nur a/2 – dort ist die Beschleunigung das Doppelte. Schreibe an jede Achsenbeschriftung dazu, was die Steigung dort bedeutet.",
+   "Frage bei jedem Kräftepaar zuerst: an welchem Körper? Beim Gleichgewicht greifen beide Kräfte am selben Körper an und heben sich auf – die Lampe hängt still. Beim Wechselwirkungsprinzip greifen sie an zwei verschiedenen Körpern an und heben sich gerade nicht auf – beide Wagen fahren los.",
+   "Wo ein Quadrat in der Formel steht, zählt eine Verdopplung viermal: E = ½ · m · v² und E = ½ · D · s² wachsen bei doppeltem v beziehungsweise doppeltem s auf das Vierfache, W = m · g · h und p = m · v dagegen nur auf das Doppelte. Prüfe vor jeder Vorhersage, welche Größe im Quadrat steht.",
+   "Schreibe die festen Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: g = 9,81 m/s², Rechenschritt 0,016 s, F_R = 14,7 N bei μ = 0,30 und 5 kg, W = 400 J beim Schieben und 0 J beim Tragen, E = 32 J bei 4 kg und 4 m/s, F = D · s₀ = 20,00 N und p_ges = 60,0 kg·m/s."
+  ],
+  "mini": [
+   {
+    "frage": "Eine Messfahrt bei a = 2,0 m/s² liefert an der Lichtschranke s = 6,0 m die Zeit t = 2,44 s. Bestimme daraus die Beschleunigung.",
+    "loesung": "t² = (2,44 s)² = 5,95 s². Die Steigung der s-t²-Geraden ist s/t² = 6,00 m / 5,95 s² = 1,01 m/s². Weil diese Steigung gerade a/2 ist, folgt a = 2 · 1,01 m/s² = 2,02 m/s² – im Rahmen der auf zwei Nachkommastellen abgelesenen Zeit sind das die eingestellten 2,0 m/s²."
+   },
+   {
+    "frage": "Eine Kugel wird aus der Abwurfhöhe h = 45 m mit v₀ = 4 m/s waagerecht abgeworfen. Gib Fallzeit und Wurfweite an.",
+    "loesung": "Die Fallzeit hängt nur von h ab, denn in t = √(2h/g) kommt v₀ nicht vor: Für h = 45 m nennt die Liste „Aufgezeichnete Bahnen“ bei allen vier Abwurfgeschwindigkeiten 3,03 s. Die Wurfweite ist xW = v₀ · t = 4 m/s · 3,03 s = 12,12 m."
+   },
+   {
+    "frage": "Eine Feder mit D = 250 N/m ist um s₀ = 8,0 cm vorgespannt und stößt zwei Wagen mit m1 = 1 kg und m2 = 5 kg auseinander. Wie groß sind die Kraft und die beiden Beschleunigungen?",
+    "loesung": "F = D · s₀ = 250 N/m · 0,080 m = 20,00 N, und zwar für beide Wagen derselbe Betrag – in F = D · s₀ steht keine Masse. Mit F = m · a folgt a1 = 20,00 N : 1 kg = 20,00 m/s² und a2 = 20,00 N : 5 kg = 4,00 m/s², also a1 : a2 = 5 : 1 = m2 : m1."
+   },
+   {
+    "frage": "Eine Feder mit D = 20 N/m wird um s = 20 cm gespannt. Berechne die Kraft am Ende des Spannens und die Spannenergie.",
+    "loesung": "s = 20 cm = 0,20 m. Kraft: F = D · s = 20 N/m · 0,20 m = 4,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 20 N/m · 0,0400 m² = 0,400 J. Das Produkt aus Kraft und Auslenkung ergäbe 0,800 J, also genau das Doppelte – die Kraft wächst beim Spannen eben erst von null an."
+   }
+  ]
+ },
+ "test": {
+  "a1": [
+   {
+    "pre": "Bei gleichförmiger Bewegung liegen die Wertepaare aus Weg und Zeit auf einer Ursprungsgeraden; deren Steigung Δs/Δt ist die",
+    "loesung": "Geschwindigkeit",
+    "post": "."
+   },
+   {
+    "pre": "Aus der s-t-Parabel wird erst dann eine Gerade, wenn man s nicht über t aufträgt, sondern über",
+    "loesung": "t²",
+    "post": "."
+   },
+   {
+    "pre": "Ein Körper behält Ruhe oder Tempo genau dann bei, wenn die Summe aller an ihm angreifenden Kräfte",
+    "loesung": "null",
+    "post": "ist; an der hängenden Lampe ziehen dabei zwei Kräfte weiter."
+   },
+   {
+    "pre": "Auf waagerechter Bahn gilt F_R = μ · m · g; nach diesem Modell hängt die Reibungskraft weder von der Berührfläche noch von der",
+    "loesung": "Geschwindigkeit",
+    "post": "ab."
+   },
+   {
+    "pre": "In E = ½ · m · v² geht das Tempo quadratisch ein; eine Verdopplung von v bedeutet deshalb die",
+    "loesung": "vierfache",
+    "post": "Energie."
+   }
+  ],
+  "a2": [
+   {
+    "aussage": "Zeigt die Auswertung R² = 1,0000 an, so ist damit belegt, dass die Steigung der Ausgleichsgeraden den eingestellten Sollwert trifft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Messreihen zu a = 1,0 m/s², 2,0 m/s² und 4,0 m/s² liefern v-t-Geraden, deren Steigungen sich wie 1 : 2 : 4 verhalten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dass beim freien Fall der über 2s/t² gewonnene Wert über dem aus v/t liegt, ist eine Messunsicherheit; in einem zweiten Durchgang kann es ebenso gut umgekehrt ausfallen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wirft man von derselben Kante zwei gleiche Kugeln waagerecht ab, die eine sanft und die andere kräftig, so schlagen beide nach derselben Zeit auf dem Boden auf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die senkrechte Komponente F · sin(α) den Schlitten entlastet, läuft er umso leichter, je steiler das Seil nach oben gezogen wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Abstoßen zweier Wagen erfahren beide denselben Kraftbetrag, obwohl der leichtere von ihnen stärker beschleunigt wird.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Prallt eine Kugel zurück, so geht ihr Impuls mit negativem Vorzeichen in p_ges ein; die Summe fällt deshalb kleiner aus als die Summe der beiden Beträge.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Auf der Reibungsbahn stehen die Antriebskraft F = 80 N und die Masse m = 5 kg fest. Bei μ = 0,60 meldet der Infokasten F_R = 29,4 N. Wie groß ist die Beschleunigung des Wagens?",
+   "optionen": [
+    "a = 16,0 m/s²",
+    "a = 5,9 m/s²",
+    "a = 21,9 m/s²",
+    "a = 10,1 m/s²"
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "frage": "Tobias trägt die 20 kg schwere Kiste mit einer Haltekraft von 196 N vier Meter weit durch den Flur und hebt sie danach 2,0 m auf ein Regal. Erkläre mit W = F · s · cos(α), warum die Physik dem langen Tragen 0 J zuschreibt, dem kürzeren Hub dagegen 392 J – und warum Tobias' Anstrengung beim Tragen trotzdem echt ist.",
+   "zeilen": 5,
+   "loesung": "Arbeit verrichtet nur die Kraftkomponente längs des Weges: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg aber waagerecht nach vorn; der Winkel beträgt 90°, und mit cos(90°) = 0 wird W = 196 N · 4 m · 0 = 0 J, gleichgültig wie schwer die Kiste ist und wie weit er geht. Beim Hochheben zeigen Hubkraft und Weg in dieselbe Richtung, α = 0° und cos(0°) = 1; die Hubkraft muss die Gewichtskraft F_G = m · g ausgleichen, also ist W = m · g · h = 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, angezeigt als 392 J. Der kürzere Weg liefert hier den größeren Wert, weil allein die Richtung entscheidet, nicht die Länge. Tobias' Anstrengung ist trotzdem real: Seine Muskelfasern spannen sich unablässig nach und setzen dabei Energie um. An der Kiste wird davon nichts als Arbeit wirksam, weil sie ihre Höhe nicht ändert. Mit P = W / t folgt daraus auch die Leistung null beim Tragen."
+  },
+  "transfer": {
+   "frage": "Mira baut aus der Feder mit D = 20 N/m einen Katapultstart und spannt sie um s = 20 cm. Statt des 0,50 kg schweren Wagens der Simulation setzt sie einen leichteren mit m = 0,20 kg davor. Sage die Startgeschwindigkeit voraus und begründe, warum der leichtere Wagen schneller wird, obwohl in der Feder genau dieselbe Energie steckt.",
+   "zeilen": 6,
+   "loesung": "Die Feder gibt ihre Energie unabhängig von der Masse ab: E = ½ · D · s² = 0,5 · 20 N/m · (0,20 m)² = 0,400 J – derselbe Wert wie in der Messreihe, denn in ½ · D · s² kommt keine Masse vor. Auf der reibungsfreien Bahn geht diese Spannenergie vollständig in Bewegungsenergie über: E_Spann = E_Kin, also ½ · m · v² = 0,400 J und damit v = √(2 · E / m). Für m = 0,20 kg ergibt das v = √(2 · 0,400 J / 0,20 kg) = √4,00 = 2,00 m/s. Zum Vergleich: Mit dem 0,50 kg schweren Wagen wären es v = √(2 · 0,400 J / 0,50 kg) = √1,60 = 1,26 m/s. Der leichtere Wagen wird schneller, weil in E = ½ · m · v² die Masse und das Quadrat des Tempos zusammen die feste Energie ergeben müssen: Sinkt die Masse auf 0,40 ihres Werts, so muss v² auf das 2,5-Fache steigen, und v selbst wächst nur mit der Wurzel daraus, also auf das 1,58-Fache. Die Feder liefert also nicht ein festes Tempo, sondern eine feste Energie."
+  }
+ },
+ "material": [
+  "Simulationen am Bildschirm",
+  "Fahrbahn mit mehreren Lichtschranken und digitalem Zeitmessgerät",
+  "Wagen mit Zusatzmassen sowie ein Antrieb über Faden, Umlenkrolle und Wägesatz",
+  "Luftkissenbahn oder eine möglichst reibungsarme Schiene",
+  "Stoppuhr, Maßband und Millimeterpapier",
+  "Tabellenkalkulation oder Messwerterfassungssoftware für Ausgleichsgerade und R²",
+  "Stahlkugel mit Fallrinne für den freien Fall und eine Abschussvorrichtung für den waagerechten Wurf",
+  "Federkraftmesser in mehreren Messbereichen und ein Winkelmesser",
+  "Zugseil und ein beladener Schlitten oder Reibungsklotz für die Kraftzerlegung",
+  "Unterlagen aus Holz, Filz und Kunststoff zum Vergleich der Gleitreibung",
+  "zwei Schraubenfedern verschiedener Federkonstante mit Skala für die Auslenkung",
+  "zwei Rollwagen mit Stoßfedern und ein Wägesatz für den geraden Stoß",
+  "Taschenrechner, Zettel und Stift für die festen Zahlen des Kapitels"
+ ]
+}

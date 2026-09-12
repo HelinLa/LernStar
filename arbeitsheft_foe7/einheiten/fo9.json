@@ -1,0 +1,134 @@
+{
+ "seite": {
+  "id": "fo9",
+  "quelle": "oi12",
+  "sim": "lochkamera",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Die Pappkiste mit dem Nadelloch",
+  "name": "Wie macht die Lochkamera ein Bild?",
+  "fachwoerter_neu": ["Lochkamera"],
+  "alltag": [
+   "Hinten im Schrank steht eine schwarze Pappkiste.",
+   "Vorn hat sie nur ein Nadelloch, hinten eine Milchglas-Scheibe.",
+   "Jannis hält sie gegen das Fenster: Der Baum erscheint klein und auf dem Kopf.",
+   "So eine Kiste heißt Lochkamera."
+  ],
+  "frage": "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
+  "predict": [
+   "Ein größeres Loch macht das Bild größer.",
+   "Nur eine längere Kamera macht das Bild größer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle die Bildweite b auf 29 cm und lies die Statuszeile.",
+   "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.",
+   "Schiebe den Regler „Lochgröße“ ganz nach rechts und lies die Statuszeile.",
+   "Trage alle vier Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": ["Einstellung", "Wie groß ist das Bild?", "scharf oder unscharf?"],
+  "tabRows": [
+   ["b = 29 cm, Loch klein", "kleiner als der Gegenstand", "scharf"],
+   ["b = 39 cm, Loch klein", "", ""],
+   ["b = 51 cm, Loch klein", "", ""],
+   ["b = 51 cm, Loch groß", "", ""]
+  ],
+  "merksatz": [
+   {"pre": "Das Bild der Lochkamera steht", "loesung": "auf dem Kopf", "post": ", weil sich die Strahlen im Loch kreuzen."},
+   {"pre": "Eine längere Kamera macht das Bild", "loesung": "größer", "post": ". Ein großes Loch macht es unscharf."}
+  ],
+  "wortbank": ["auf dem Kopf", "größer", "unscharf", "geradeaus", "Loch"],
+  "beispiel": {
+   "frage": "Warum steht das Bild der Lochkamera auf dem Kopf?",
+   "antwort": "Licht läuft immer geradeaus. Die Strahlen kreuzen sich im kleinen Loch. Darum kommt oben und unten vertauscht auf dem Schirm an."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann wird das Bild größer?",
+    "optionen": [
+     "Wenn die Kamera länger ist.",
+     "Wenn das Loch größer ist.",
+     "Wenn es im Raum dunkler ist."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {"pre": "Das Licht läuft immer", "loesung": "geradeaus", "post": "."},
+     {"pre": "Ein großes Loch macht das Bild hell, aber", "loesung": "unscharf", "post": "."}
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum macht ein kleines Loch das Bild scharf, ein großes Loch aber unscharf?",
+    "satzstarter": "Durch ein kleines Loch kommt nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: großes Loch – unscharf.",
+   "h2": "Beginne so: Durch ein kleines Loch kommt nur ein dünner Lichtstrahl. Durch ein großes Loch …",
+   "h3": "Fast fertige Antwort: Durch ein großes Loch treffen viele Strahlen dieselbe Stelle. Das Bild wird hell, aber ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann erklären, warum das Bild auf dem Kopf steht.",
+   "Ich weiß, wie das Bild größer wird.",
+   "Ich kenne den Nachteil eines großen Lochs."
+  ],
+  "zuhause": "Baue eine Lochkamera: Steche mit einer Nadel ein Loch in eine Pappschachtel. Spanne hinten Butterbrotpapier. Sieh im dunklen Raum damit auf eine helle Lampe.",
+  "bildauftrag": "[BILD: Querschnitt einer Lochkamera als schwarze Kiste; links davor ein leuchtender Pfeil nach oben, in der Kistenwand das kleine Loch, rechts auf dem Schirm derselbe Pfeil nach unten; genau zwei Lichtlinien, die sich im Loch kreuzen: eine von der Pfeilspitze, eine vom Pfeilfuß; große Beschriftungen „Loch“, „Schirm“ und „Bild (umgekehrt)“; keine weiteren Strahlen; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fo9",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass die Lochkamera wegen der geradlinigen Ausbreitung des Lichts ein umgekehrtes Bild erzeugt, das mit längerer Kamera größer und mit größerem Loch heller, aber unscharf wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lochkamera aus Pappschachtel, Nadel und Butterbrotpapier (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Bastelauftrag als Hausaufgabe",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: b = 29 cm, Loch klein → umgekehrt, kleiner als der Gegenstand, scharf · b = 39 cm → etwa so groß wie der Gegenstand, scharf · b = 51 cm → größer als der Gegenstand, scharf · b = 51 cm, Loch groß → unscharf.",
+  "merksatz": ["auf dem Kopf", "größer"],
+  "tabelle_erwartet": [
+   ["b = 39 cm, Loch klein", "etwa so groß wie der Gegenstand", "scharf"],
+   ["b = 51 cm, Loch klein", "größer als der Gegenstand", "scharf"],
+   ["b = 51 cm, Loch groß", "größer als der Gegenstand", "unscharf"]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Größere Bildweite b → größeres Bild.",
+   "typische_fehler": [
+    "Das größere Loch wird als Ursache für ein größeres Bild angekreuzt – es macht das Bild nur unscharf."
+   ]
+  },
+  "a2": {
+   "loesungen": ["geradeaus", "unscharf"],
+   "typische_fehler": [
+    "„schnell“ statt „geradeaus“ – die Ausbreitungsrichtung wird nicht genannt.",
+    "hell und scharf werden gleichgesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Durch ein kleines Loch kommt zu jedem Punkt nur ein dünner Strahl – das Bild ist scharf. Durch ein großes Loch treffen viele Strahlen dieselbe Stelle – das Bild wird hell, aber unscharf.",
+   "alternativen": [
+    "Verweis auf die Rückmeldung der Simulation: Ein kleines Loch gibt ein scharfes Bild, aber dunkler.",
+    "Vergleich der beiden letzten Tabellenzeilen: gleiches b, anderes Loch."
+   ],
+   "typische_fehler": [
+    "Hell wird als Zeichen für gut/scharf gedeutet.",
+    "Das Loch soll das Bild drehen – das Drehen kommt aber vom Kreuzen der Strahlen, bei jedem Loch."
+   ]
+  },
+  "hilfe3_wort": "unscharf",
+  "schwache": [
+   "Nur die Zeilen b = 29 cm und b = 51 cm vergleichen lassen.",
+   "Die Pfeillängen auf dem Schirm mit zwei Fingern abgreifen lassen.",
+   "Die gebastelte Lochkamera zuerst vorführen, dann die Simulation öffnen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Verändere die Gegenstandsweite g und beobachte, was mit der Bildgröße passiert.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Lochkamera, geradlinige Ausbreitung. Kompetenz E5 wie auf der Quellseite oi12. Die Formel B/G = b/g steht bewusst nur im Regelheft und fällt hier weg."
+ }
+}

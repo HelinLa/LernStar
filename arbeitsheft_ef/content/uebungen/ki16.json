@@ -1,0 +1,72 @@
+{
+ "id": "ki16",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "E8",
+  "S2"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Weil die Geschwindigkeit v eine gerichtete Größe ist, ist auch p = m · v gerichtet; auf einer geraden Bahn hält deshalb schon ein einziges",
+   "loesung": "Vorzeichen",
+   "post": "die Richtung fest – nach rechts positiv, nach links negativ."
+  },
+  {
+   "pre": "Nach dem dritten newtonschen Gesetz drücken beide Körper gleich lange mit gleich großer, entgegengesetzt gerichteter Kraft aufeinander; für die Impulsänderungen folgt daraus Δp₁ =",
+   "loesung": "−Δp₂",
+   "post": "."
+  },
+  {
+   "pre": "Beim Durchgang mit m₁ = 1 kg und m₂ = 5 kg meldet das Anzeigefeld nach der Berührung p₂ = 100,0 kg·m/s und p_ges = 60,0 kg·m/s; für die zurücklaufende Kugel 1 steht dort demnach p₁ =",
+   "loesung": "−40,0 kg·m/s",
+   "post": "."
+  },
+  {
+   "pre": "Aus E = ½ · m · v² und p = m · v lässt sich die kinetische Energie unmittelbar aus dem abgelesenen Impuls gewinnen:",
+   "loesung": "E = p² / (2 · m)",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Wer nach dem Stoß die beiden Beträge addiert, kommt auf 140,0 kg·m/s und damit auf mehr Impuls, als vor der Berührung im System steckte.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die Kurve „Impuls Ball 1“ fällt beim Zusammenstoß auf −40,0 und bestätigt damit den Wert, den das Anzeigefeld für p₁ nennt.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Kugel 1 gibt beim Stoß mehr Impuls ab, als sie vorher besaß: Ihre Impulsänderung beträgt 100,0 kg·m/s, ihr Wert vor der Berührung nur 60,0 kg·m/s.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Da die Simulation ohne Reibung rechnet, ließe sich an ihr auch ein unelastischer Stoß einstellen, bei dem die beiden Kugeln zusammenkleben und p_ges trotzdem erhalten bleibt.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira will aus dem gemessenen Gesamtimpuls p_ges = 60,0 kg·m/s allein vorhersagen, mit welchen Impulsen die beiden Kugeln nach der Berührung auseinanderlaufen. Warum reicht der Impulserhaltungssatz dafür nicht aus?",
+  "optionen": [
+   "Eine einzige Gleichung legt zwei unbekannte Geschwindigkeiten nicht fest. Erst die zusätzliche Bedingung des elastischen Stoßes – die Erhaltung der kinetischen Energie – führt auf p₁ = −40,0 kg·m/s und p₂ = 100,0 kg·m/s.",
+   "Der Erhaltungssatz gilt nur, solange die Kugeln einander nicht berühren. Während des Stoßes wirken innere Kräfte, und die Summe p_ges weicht für diesen Augenblick von 60,0 kg·m/s ab.",
+   "Der Gesamtimpuls fasst nur Beträge zusammen und verliert dabei die Richtungen. Vorherzusagen wäre deshalb zunächst die Summe 40,0 + 100,0 = 140,0 kg·m/s, aus der sich die beiden Anteile ergeben."
+  ],
+  "richtig": 0,
+  "erklaerung": "Der Impulserhaltungssatz liefert für den geraden Stoß genau eine Gleichung: m₁ · v₁ + m₂ · v₂ bleibt erhalten. Gesucht sind darin zwei Größen, die beiden Geschwindigkeiten nach dem Stoß; eine Gleichung mit zwei Unbekannten legt sie nicht fest. Die zweite Bedingung steuert die Energie bei: Beim elastischen Stoß bleibt auch die kinetische Energie erhalten, und erst beide Sätze zusammen ergeben v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂). Mit m₁ = 1 kg, m₂ = 5 kg und v₁ = 60 m/s folgt v₁' = ((1 − 5) · 60) / 6 = −40 m/s, also p₁ = −40,0 kg·m/s und über die Summe p₂ = 100,0 kg·m/s – genau die beiden abgelesenen Werte. Dass der Satz während der Berührung aussetze, widerlegt die Simulation selbst: Die Kurve „Gesamtimpuls“ läuft über den Stoß hinweg waagerecht auf 60,0 kg·m/s. Und p_ges ist nicht die Summe der Beträge, sondern die vorzeichenrichtige Summe; 140,0 kg·m/s an Impuls sind im System nicht vorhanden."
+ },
+ "offen": {
+  "frage": "Tobias zieht den Regler „Masse 1 (kg)“ erst nach dem Zusammenstoß von 1 kg auf 2 kg. Das Anzeigefeld meldet daraufhin p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0 kg·m/s. Er hält fest: „Der Gesamtimpuls ist von 60,0 auf 20,0 kg·m/s gefallen – der Erhaltungssatz gilt also nicht immer.“ Prüfe seine Zahlen rechnerisch und beurteile, was diese Tabellenzeile in Wirklichkeit belegt.",
+  "prompt": "Tobias zieht den Regler „Masse 1 (kg)“ erst nach dem Zusammenstoß von 1 kg auf 2 kg. Das Anzeigefeld meldet daraufhin p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0 kg·m/s. Er hält fest: „Der Gesamtimpuls ist von 60,0 auf 20,0 kg·m/s gefallen – der Erhaltungssatz gilt also nicht immer.“ Prüfe seine Zahlen rechnerisch und beurteile, was diese Tabellenzeile in Wirklichkeit belegt.",
+  "zeilen": 5,
+  "loesung": "Abgelesen und nachgerechnet sind die Zahlen richtig. Nach dem Stoß gilt für Kugel 1 p₁ = −40,0 kg·m/s bei m₁ = 1 kg, ihre Geschwindigkeit ist also v₁' = −40 m/s. Daran ändert das Verstellen des Reglers nichts: Die Simulation rechnet p = m · v mit der neuen Masse und der alten Geschwindigkeit weiter und meldet deshalb p₁ = 2 kg · (−40 m/s) = −80,0 kg·m/s. Kugel 2 bleibt unberührt bei p₂ = 100,0 kg·m/s, und die Summe ist −80,0 + 100,0 = 20,0 kg·m/s. Der Fehlbetrag von 40,0 kg·m/s ist genau das zusätzliche Kilogramm mal 40 m/s. Der Schluss daraus trägt trotzdem nicht. Der Impulserhaltungssatz gilt für ein abgeschlossenes System, an dem von außen keine Kraft angreift und dessen Körper dieselben bleiben. Zwischen den beiden Ablesungen ist aber kein Stoß abgelaufen, sondern von außen die Masse eines Körpers verändert worden – ein wirklicher Körper ändert seine Masse unterwegs nicht. Die Zeile ist damit eine Grenze des Modells und kein Gegenbeispiel zum Erhaltungssatz. Prüfen lässt sich der Satz nur so wie in den beiden Zeilen davor: die Masse vor „Stoß auslösen“ einstellen und p_ges vor und nach der Berührung vergleichen. Dort steht beide Male 60,0 kg·m/s, und die Kurve „Gesamtimpuls“ bleibt über den Stoß hinweg waagerecht."
+ }
+}

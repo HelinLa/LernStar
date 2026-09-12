@@ -1,0 +1,2083 @@
+[
+ {
+  "id": "o1",
+  "titel": "Ein Stich in den Karton",
+  "problem": "Die alte Kamera aus Opas Kiste hat kein Objektiv, nur ein rundes Loch vorn. Ben hält sie gegen die Kerze: Hinten auf der Mattscheibe erscheint die Flamme. Mia sticht mit einer Nadel ein Loch in einen Schuhkarton. Ihr Bild ist schärfer, aber so dunkel, dass sie kaum etwas erkennt.",
+  "frage": "Wie verändern sich Schärfe und Helligkeit des Bildes, wenn das Loch größer wird?",
+  "predict": [
+   "Ein größeres Loch macht das Bild heller, gleichzeitig aber unschärfer.",
+   "Ein größeres Loch macht das Bild schärfer, weil mehr Licht durch das Loch auf den Schirm fällt.",
+   "Ein größeres Loch macht das Bild größer, weil mehr vom Bild durch das Loch passt. Schärfe und Helligkeit bleiben dabei gleich."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle die Gegenstandsweite g auf 40 cm, die Bildweite b (Kameralänge) auf 30 cm und die Lochgröße auf klein. Beschreibe, wie die Flamme auf dem Schirm steht.",
+   "Stelle die Lochgröße nacheinander auf mittel und auf groß, ohne g und b zu verändern. Achte jedes Mal auf Schärfe und Helligkeit des Bildes.",
+   "Stelle die Lochgröße wieder auf klein und vergrößere die Bildweite b (Kameralänge) von 30 cm auf 60 cm. Vergleiche das Bild mit deiner ersten Einstellung."
+  ],
+  "tabCols": [
+   "Einstellung an der Simulation",
+   "Bild auf dem Schirm (Schärfe, Helligkeit, Größe)"
+  ],
+  "tabRows": [
+   "g 40 cm, b 30 cm, Lochgröße klein",
+   "gleich, Lochgröße mittel",
+   "gleich, Lochgröße groß",
+   "Lochgröße klein, b auf 60 cm vergrößert"
+  ],
+  "fachtext": "Licht breitet sich geradlinig aus. In einer Lochkamera gelangt von jedem Punkt der Flamme nur ein schmales Lichtbündel durch das Loch auf den Schirm. Weil sich die Bündel im Loch kreuzen, vertauschen sich oben und unten sowie links und rechts: Das Bild steht auf dem Kopf. Ein größeres Loch lässt mehr Licht durch, doch jeder Punkt erzeugt jetzt einen Fleck statt eines Punktes – das Bild wird heller, aber unschärfer.",
+  "merksatz": [
+   {
+    "pre": "Licht breitet sich geradlinig aus. Deshalb steht das Bild in der Lochkamera auf dem",
+    "post": ".",
+    "loesung": "Kopf"
+   },
+   {
+    "pre": "Ein größeres Loch macht das Bild heller, gleichzeitig aber",
+    "post": ". Beides zusammen ist nicht zu haben.",
+    "loesung": "unschärfer"
+   }
+  ],
+  "beobachtung": "Bei kleiner Lochgröße steht die Flamme scharf, aber dunkel auf dem Schirm, und sie steht auf dem Kopf und seitenvertauscht. Bei mittlerer Lochgröße wird das Bild heller und die Ränder verwaschen. Bei großer Lochgröße ist der Schirm hell, die Flammenform aber nur noch ein verschwommener Fleck: Jeder Punkt der Flamme leuchtet jetzt einen ganzen Fleck aus. Mit kleiner Lochgröße und b von 30 cm auf 60 cm ist das Bild doppelt so groß, dafür lichtschwächer. Schärfe hängt also von der Lochgröße ab, die Bildgröße von der Kameralänge.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die Flamme in Mias Lochkamera auf dem Butterbrotpapier auf dem Kopf steht.",
+   "zeilen": 3,
+   "loesung": "Licht breitet sich geradlinig aus. Vom oberen Rand der Flamme läuft das Licht durch das Loch schräg nach unten und trifft dort den Schirm. Vom unteren Rand läuft es schräg nach oben. Dadurch vertauschen sich oben und unten, ebenso links und rechts. Deshalb steht das Bild der Flamme auf dem Papier auf dem Kopf.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Nenne eine Stelle in deinem Alltag, an der Sonnenlicht durch eine kleine Öffnung auf den Boden fällt.",
+  "ueberleitung": "Ben schneidet das Loch größer und klemmt eine Lupe aus der Kiste hinein. Auf einmal ist das Bild hell und trotzdem scharf. Mia will wissen, was so ein Glas mit dem Licht anstellt.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie macht ein kleines Loch ein Bild? (Lochkamera)",
+  "auftrag": "Untersuche an der Simulation den Einfluss der Lochgröße auf Schärfe und Helligkeit.",
+  "modellgrenze": "Die Simulation zeichnet gerade Lichtstrahlen. Ein sehr kleines Loch macht das Bild in Wirklichkeit wieder unschärfer, weil Licht an den Rändern gebeugt wird.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o2",
+  "titel": "Der kleinste helle Fleck",
+  "problem": "Zwölf Lupen liegen in Opas Kiste, keine ist beschriftet – für das Fernrohr braucht Ben zwei. Er hält eine in den Lampenstrahl und fängt das Licht auf einem Blatt auf. Schiebt er das Blatt, wird der helle Fleck mal größer, mal kleiner. Mit der dickeren Lupe sitzt die kleinste Stelle woanders.",
+  "frage": "Wovon hängt es ab, wie weit hinter der Linse das Licht gebündelt wird?",
+  "predict": [
+   "Je stärker das Glas gewölbt ist, desto weiter hinten treffen sich die Strahlen, weil sie stärker abgelenkt werden.",
+   "Je stärker das Glas gewölbt ist, desto näher an der Linse treffen sich die Strahlen.",
+   "Nicht die Wölbung entscheidet, sondern die Größe des Glases: Je größer die Lupe ist, desto weiter hinten treffen sich die Strahlen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle in der Mitte dicker und stelle Wölbung des Glases – Brennweite f auf 90 ein. Lies ab, in welchem Abstand hinter der Linsenmitte sich alle Strahlen treffen.",
+   "Stelle f nacheinander auf 60 und auf 150. Achte darauf, wie stark das Glas jeweils gewölbt ist und wie weit der Treffpunkt von der Linse entfernt liegt.",
+   "Gegenprobe: Wähle bei f 90 den Knopf in der Mitte dünner und beobachte, ob sich die Strahlen hinter dem Glas noch in einem Punkt treffen."
+  ],
+  "tabCols": [
+   "Einstellung des Glases",
+   "Abstand des Treffpunkts hinter der Linsenmitte"
+  ],
+  "tabRows": [
+   "in der Mitte dicker, f 90",
+   "in der Mitte dicker, f 60",
+   "in der Mitte dicker, f 150",
+   "Gegenprobe: in der Mitte dünner, f 90"
+  ],
+  "fachtext": "Ein Glas, das in der Mitte dicker ist als am Rand, heißt Sammellinse. Trifft paralleles Licht auf sie, laufen alle Strahlen hinter der Linse in einem Punkt zusammen, dem Brennpunkt. Der Abstand von der Linsenmitte zum Brennpunkt ist die Brennweite. Je stärker eine Linse gewölbt ist, desto stärker lenkt sie das Licht ab und desto kürzer ist ihre Brennweite.",
+  "merksatz": [
+   {
+    "pre": "Eine Sammellinse bündelt paralleles Licht in einem Punkt. Dieser Punkt heißt",
+    "post": ".",
+    "loesung": "Brennpunkt"
+   },
+   {
+    "pre": "Je stärker eine Linse gewölbt ist, desto",
+    "post": " ist ihre Brennweite.",
+    "loesung": "kürzer"
+   }
+  ],
+  "beobachtung": "Bei in der Mitte dicker und f 90 laufen alle Strahlen hinter der Linse in einem Punkt zusammen, dem Brennpunkt; er liegt beim Wert 90. Bei f 60 ist das Glas deutlich stärker gewölbt, die Strahlen werden stärker abgelenkt und treffen sich schon bei 60. Bei f 150 ist das Glas flacher und der Brennpunkt rückt auf 150 nach hinten. Der abgelesene Abstand ist immer gleich der eingestellten Brennweite f. Mit in der Mitte dünner laufen die Strahlen dagegen auseinander und treffen sich hinter dem Glas gar nicht.",
+  "aufgabe": {
+   "frage": "Erkläre, warum bei Bens zwei verschieden dicken Lupen der hellste Punkt nicht an derselben Stelle hinter dem Glas liegt.",
+   "zeilen": 3,
+   "loesung": "Beide Lupen sind Sammellinsen, aber unterschiedlich stark gewölbt. Die dickere Lupe lenkt das Licht stärker ab, deshalb treffen sich ihre Strahlen schon nach kurzer Strecke. Ihre Brennweite ist kürzer, der hellste Punkt liegt näher am Glas. Die dünnere Lupe lenkt schwächer ab und hat eine längere Brennweite. Am Ort des kleinsten Flecks kann Ben die Gläser also unterscheiden.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Übertrage dein Ergebnis auf ein Brennglas in der Sonne: In welchem Abstand qualmt das Papier?",
+  "ueberleitung": "Beim Sortieren stößt Ben auf Gläser, die in der Mitte dünner sind als am Rand. Er hält eines in den Strahl und findet den kleinsten Fleck nicht – so weit er den Schirm auch wegschiebt.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie bündelt eine Sammellinse das Licht?",
+  "auftrag": "Untersuche an der Simulation, wie die Wölbung des Glases den Brennpunkt verschiebt.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o8",
+  "theme": "optik",
+  "stufe": "grund",
+  "titel": "Das Glas, das nichts bündelt",
+  "problem": "In Opas Kiste liegen auch Gläser, die in der Mitte dünner sind als am Rand. Ben hält eines in den Lampenstrahl und sucht den kleinsten Fleck. Er findet keinen: Je weiter er den Schirm wegschiebt, desto größer wird der Fleck. Bei den anderen Gläsern hat das immer geklappt.",
+  "frage": "Was macht ein in der Mitte dickeres, was ein dünneres Glas mit dem Licht?",
+  "predict": [
+   "Auch das in der Mitte dünnere Glas bündelt, nur viel weiter hinten. Man muss hinter dem Glas nur weit genug suchen.",
+   "Das in der Mitte dünnere Glas lenkt das Licht gar nicht ab. Der Strahl läuft geradeaus hindurch, der Fleck bleibt bei jedem Abstand gleich groß.",
+   "Das in der Mitte dünnere Glas bündelt gar nicht. Es spreizt das Bündel auseinander, deshalb gibt es keinen Treffpunkt."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle „in der Mitte dicker“ und stelle Wölbung des Glases – Brennweite f auf 90. Verfolge, wo sich die Strahlen hinter dem Glas treffen.",
+   "Wähle bei derselben Brennweite f von 90 „in der Mitte dünner“. Suche hinter dem Glas wieder eine Stelle, an der sich die Strahlen treffen.",
+   "Gegenprobe am Tisch: Lege eine Lupe und ein Brillenglas für Kurzsichtige auf eine Zeile Schrift und hebe beide langsam an."
+  ],
+  "tabCols": [
+   "Glas und Einstellung",
+   "Treffpunkt der Strahlen oder Schriftgröße"
+  ],
+  "tabRows": [
+   "in der Mitte dicker, f = 90",
+   "in der Mitte dünner, f = 90",
+   "Gegenprobe: Lupe über der Schrift",
+   "Gegenprobe: Brillenglas über der Schrift"
+  ],
+  "fachtext": "Ein Glas, das in der Mitte dicker ist als am Rand, ist eine Sammellinse: Sie bündelt das Licht in ihrem Brennpunkt. Ein Glas, das in der Mitte dünner ist, ist eine Zerstreuungslinse. Sie spreizt das Bündel auseinander; die Strahlen scheinen von einem Punkt vor der Linse zu kommen. Hinter ihr entsteht deshalb nie ein heller Fleck. Durch eine Zerstreuungslinse siehst du alles verkleinert und aufrecht – bei jedem Abstand.",
+  "merksatz": [
+   {
+    "pre": "Ein Glas, das in der Mitte dünner ist als am Rand, heißt",
+    "loesung": "Zerstreuungslinse",
+    "post": ". Sie bündelt das Licht nicht, sondern spreizt es auseinander."
+   },
+   {
+    "pre": "Durch eine Zerstreuungslinse siehst du alles",
+    "loesung": "verkleinert",
+    "post": " und aufrecht, ganz gleich wie weit du sie weghältst."
+   }
+  ],
+  "beobachtung": "Bei „in der Mitte dicker“ und f = 90 laufen alle Strahlen hinter dem Glas zusammen und treffen sich im Brennpunkt. Bei „in der Mitte dünner“ und derselben Brennweite 90 laufen sie hinter dem Glas immer weiter auseinander; einen Treffpunkt gibt es nicht. Verlängert man die Strahlen nach hinten, scheinen sie von einem Punkt vor dem Glas zu kommen. Auf der Schrift vergrößert die Lupe, das Brillenglas für Kurzsichtige verkleinert die Buchstaben – bei jedem Abstand und immer aufrecht.",
+  "aufgabe": {
+   "frage": "Erkläre, woran Ben ein Glas aus Opas Kiste allein durch Hindurchschauen als Zerstreuungslinse erkennt.",
+   "zeilen": 3,
+   "loesung": "Ben hält das Glas über eine Zeile Schrift und hebt es langsam an. Eine Zerstreuungslinse zeigt die Schrift bei jedem Abstand kleiner und aufrecht. Eine Sammellinse vergrößert dicht über dem Papier, und weiter oben kippt das Bild um. Wird die Schrift also nie größer, hat Ben eine Zerstreuungslinse in der Hand. Messen muss er dafür nichts.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Beurteile Bens Plan, für das Fernrohr vorn ein in der Mitte dünneres Glas einzubauen.",
+  "ueberleitung": "Ben legt die dünnen Gläser beiseite; für das Fernrohr braucht er die anderen. Er hält die dickere Lupe vor die Kerzenflamme und fängt das Bild auf einem Karton auf.",
+  "name": "Sammellinse und Zerstreuungslinse im Vergleich",
+  "auftrag": "Vergleiche in der Simulation beide Gläser an demselben Lichtbündel.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o3",
+  "titel": "Mal riesig, mal winzig",
+  "problem": "Damit das Fernrohr später scharf zeichnet, probiert Ben die Lupe an der Kerze aus und fängt das Bild auf einem Karton auf. Steht die Kerze nah am Glas, füllt die Flamme den halben Karton. Schiebt Mia den Tisch zurück, schrumpft sie auf Streichholzgröße. Dahinter steckt eine Regel.",
+  "frage": "Wann entsteht ein vergrößertes, wann ein verkleinertes Bild?",
+  "predict": [
+   "Je näher der Gegenstand an der Linse steht, desto größer wird das Bild und desto weiter hinter der Linse entsteht es.",
+   "Rückt der Gegenstand näher, wandert auch das Bild näher an die Linse und wird dabei kleiner.",
+   "Ob das Bild größer oder kleiner wird, entscheidet allein die Lupe: Eine dicke Lupe vergrößert immer, eine flache verkleinert immer."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle die Gegenstandsweite g auf 170. Vergleiche die Höhe des Bildes mit der Höhe des Gegenstands und beachte, wie herum das Bild steht.",
+   "Stelle g nacheinander auf 124, also auf 2f, und danach auf 90. Beobachte jedes Mal die Bildgröße und den Abstand des Bildes zur Linse.",
+   "Stelle g auf den kleinsten einstellbaren Wert, der kleiner als f = 62 ist. Prüfe, ob sich die Strahlen hinter der Linse noch treffen."
+  ],
+  "tabCols": [
+   "Gegenstandsweite g",
+   "Bild: Größe und Abstand zur Linse"
+  ],
+  "tabRows": [
+   "g = 170",
+   "g = 124 (das ist 2f)",
+   "g = 90",
+   "Grenzfall: g kleiner als f = 62"
+  ],
+  "fachtext": "Der Abstand vom Gegenstand zur Linse heißt Gegenstandsweite, der von der Linse zum scharfen Bild Bildweite. Ist die Gegenstandsweite größer als die doppelte Brennweite, entsteht ein umgekehrtes, verkleinertes Bild; bei genau der doppelten Brennweite ist es gleich groß. Rückt der Gegenstand näher, wird das Bild größer, die Bildweite wächst stark. Innerhalb der Brennweite treffen sich die Strahlen nicht mehr, es gibt kein Bild auf dem Schirm.",
+  "merksatz": [
+   {
+    "pre": "Solange der Gegenstand weiter von der Linse entfernt ist als die Brennweite, gilt: Je näher er rückt, desto",
+    "post": " wird das Bild – und desto weiter muss der Schirm nach hinten.",
+    "loesung": "größer"
+   },
+   {
+    "pre": "Steht der Gegenstand näher an der Linse als die Brennweite, entsteht auf dem Schirm",
+    "post": " Bild mehr.",
+    "loesung": "kein"
+   }
+  ],
+  "beobachtung": "Bei g = 170 ist das Bild umgekehrt und kleiner als der Gegenstand; es entsteht kurz hinter dem Brennpunkt. Bei g = 124, also der doppelten Brennweite, ist es genauso groß wie der Gegenstand und ebenso weit von der Linse entfernt. Bei g = 90 ist das Bild größer als der Gegenstand und rückt deutlich weiter nach hinten. Je kleiner g wird, desto größer das Bild und desto größer die Bildweite. Ist g kleiner als f = 62, laufen die Strahlen hinter der Linse auseinander und treffen sich nicht mehr.",
+  "aufgabe": {
+   "frage": "Erkläre mit deiner Tabelle, warum Ben die Kerze nicht beliebig nah an die Lupe schieben darf, wenn er ein großes, scharfes Bild auf dem Karton haben will.",
+   "zeilen": 3,
+   "loesung": "Je näher die Kerze an die Linse rückt, desto größer wird das Bild, aber der Schirm muss auch immer weiter nach hinten. Bei der doppelten Brennweite ist das Bild genauso groß wie die Flamme. Rückt die Kerze näher als die einfache Brennweite, treffen sich die Strahlen hinter der Linse nicht mehr. Dann bleibt der Karton leer, egal wohin Ben ihn schiebt. Ein großes scharfes Bild gibt es nur, solange die Kerze weiter als eine Brennweite von der Linse entfernt steht.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Zeichne mit einem Pfeil ein, wohin die Leinwand im Klassenraum muss, damit das Beamerbild größer wird.",
+  "ueberleitung": "Beim letzten Versuch rutschte die Kerze zu dicht an die Linse, und der Schirm blieb leer. Mia hält die Lupe deshalb direkt über Opas Notizbuch – und die winzige Schrift steht plötzlich groß da.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wann entsteht ein vergrößertes oder verkleinertes Bild?",
+  "auftrag": "Untersuche in der Simulation, wie Größe und Lage des Bildes von der Gegenstandsweite g abhängen.",
+  "alltagKomp": "K1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o4",
+  "titel": "Wenn das Bild kippt",
+  "problem": "In Opas Notizbuch stehen die Maße für das Fernrohr, winzig klein geschrieben. Mia legt die Lupe flach aufs Papier und hebt sie langsam an: Die Schrift wird größer und steht richtig herum. Ab einer bestimmten Höhe verschwimmt alles und kippt dann auf den Kopf.",
+  "frage": "Warum vergrößert eine Lupe erst, wenn sie nah genug am Gegenstand steht?",
+  "predict": [
+   "Je größer g wird, desto kleiner erscheint das Bild, weil der Gegenstand weiter von der Lupe weg ist.",
+   "Die Vergrößerung wächst, je näher g an die Brennweite kommt; ab g = 58 gibt es kein aufrechtes Bild mehr.",
+   "Je höher du die Lupe hältst, desto größer wird die Schrift. Das geht immer so weiter, umdrehen kann sich das Bild dabei nicht."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Regler „Abstand Gegenstand–Lupe g“ auf 10 ein und lies die angegebene Vergrößerung ab. Stelle danach 30 ein und lies erneut ab.",
+   "Stelle g auf 54 und danach auf 58 und 80 ein. Notiere, ab welchem Wert die Simulation kein aufrechtes Lupenbild mehr zeigt.",
+   "Gegenprobe am Tisch: Lege eine Lupe flach auf eine Schrift und hebe sie langsam an, bis das Bild verschwimmt und umgekehrt erscheint."
+  ],
+  "tabCols": [
+   "Abstand g (Brennweite f = 58)",
+   "Vergrößerung und Lage des Bildes"
+  ],
+  "tabRows": [
+   "g = 10",
+   "g = 30",
+   "g = 54",
+   "Grenzfall: g = 58 und g = 80"
+  ],
+  "fachtext": "Liegt der Gegenstand näher an einer Sammellinse als ihre Brennweite, treffen sich die Strahlen dahinter nicht. Für das Auge scheinen sie von einer größeren Schrift zu kommen, die weiter hinten auf der Papierseite liegt. Dieses aufrechte, vergrößerte Bild kann man nicht auffangen; es heißt virtuelles Bild. Jenseits der Brennweite entsteht wieder ein umgekehrtes Bild; je kürzer die Brennweite, desto stärker vergrößert die Lupe.",
+  "merksatz": [
+   {
+    "pre": "Als Lupe wirkt eine Sammellinse nur, wenn der Abstand zum Gegenstand kleiner ist als ihre",
+    "post": ".",
+    "loesung": "Brennweite"
+   },
+   {
+    "pre": "Das Bild in der Lupe ist aufrecht und vergrößert, lässt sich aber nicht auffangen. Man nennt es ein",
+    "post": " Bild.",
+    "loesung": "virtuelles"
+   }
+  ],
+  "beobachtung": "Bei g = 10 zeigt die Simulation etwa 1,2-fache Vergrößerung, das A steht aufrecht. Bei g = 30 sind es rund 2,1-fach, bei g = 54 schon etwa 14,5-fach. Je näher g an die Brennweite f = 58 heranrückt, desto stärker vergrößert die Lupe; das Bild bleibt dabei aufrecht und virtuell, man kann es nicht auffangen. Ab g = 58 meldet die Simulation, dass kein aufrechtes Lupenbild mehr entsteht, bei g = 80 ebenso. Auf dem Tisch kippt die Schrift genau dann, wenn die Lupe weiter als eine Brennweite über dem Papier steht.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Mia Opas Notizen nicht mehr lesen kann, sobald sie die Lupe zu hoch über das Buch hält.",
+   "zeilen": 3,
+   "loesung": "Als Lupe wirkt die Linse nur, solange die Schrift näher am Glas liegt als die Brennweite. Dann sieht Mia ein aufrechtes, vergrößertes virtuelles Bild. Hebt sie die Lupe über die Brennweite hinaus, entsteht dieses Bild nicht mehr. Stattdessen bildet die Linse die Schrift umgekehrt und stark verschwommen ab, denn das Auge steht nicht am Ort des scharfen Bildes. Deshalb muss Mia die Lupe dicht über dem Notizbuch halten.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Vergleiche, wie nah du eine Lupe mit 20 cm Brennweite und eine mit 5 cm ans Papier halten musst.",
+  "sicherheit": "Arbeite nicht in der prallen Sonne und lege die Lupe nie auf der Fensterbank ab – gebündeltes Sonnenlicht setzt Papier in Brand.",
+  "ueberleitung": "Die Maße stehen fest. Ben greift nach der alten Kamera ohne Objektiv, klemmt eine Lupe vorn hinein und spannt hinten Transparentpapier ein.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie funktioniert eine Lupe?",
+  "auftrag": "Untersuche, wie sich die Vergrößerung ändert, wenn g Schritt für Schritt an die Brennweite heranrückt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o5",
+  "titel": "Das Papier muss wandern",
+  "problem": "Ben klemmt eine Lupe vorn in die alte Kamera und spannt hinten Transparentpapier ein. Auf den Kirchturm draußen stellt er scharf; das Papier sitzt dicht hinter der Linse. Dann hält Mia Opas Foto einen halben Meter vor das Glas – auf dem Papier ist nur noch ein heller Nebel.",
+  "frage": "Was muss man an einer Kamera einstellen, damit das Bild scharf wird?",
+  "predict": [
+   "Ein unscharfes Bild wird wieder scharf, wenn die Blende weit geöffnet ist, weil dann mehr Licht auf den Sensor fällt.",
+   "Rückt der Gegenstand näher an die Linse, musst du auch das Papier näher an die Linse schieben.",
+   "Scharf wird das Bild nur in einem schmalen Bereich der Bildweite; die Blende ändert allein die Helligkeit."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle „Abstand Linse–Sensor (Bildweite)“ auf 90 ein und lies die Meldung ab. Verkleinere den Wert in Zweierschritten und notiere, zwischen welchen Werten das Bild scharf ist.",
+   "Halte die Bildweite bei 66 und stelle „Blende (Öffnung)“ nacheinander auf klein (dunkel), mittel und groß (hell). Stelle danach die Bildweite auf 110, die Blende bleibt groß (hell).",
+   "Gegenprobe am Tisch: Fange mit einer Lupe das Bild des Fensters auf einem weißen Blatt auf und verschiebe das Blatt, bis das Bild scharf ist."
+  ],
+  "tabCols": [
+   "Bildweite und Blende",
+   "Meldung der Simulation"
+  ],
+  "tabRows": [
+   "Bildweite 90, Blende mittel",
+   "Bildweite 66, Blende mittel",
+   "Bildweite 66, Blende klein (dunkel) und groß (hell)",
+   "Gegenprobe: Bildweite 110, Blende groß (hell)"
+  ],
+  "fachtext": "Die Sammellinse vorn in der Kamera heißt Objektiv. Sie erzeugt auf dem Schirm, in einer echten Kamera auf dem Sensor, ein umgekehrtes und meist verkleinertes Bild. Von weit entfernten Gegenständen kommt das Licht fast parallel an; ihr Bild liegt dann fast genau in der Brennweite hinter der Linse. Je näher der Gegenstand steht, desto größer wird die Bildweite: Zum Scharfstellen muss der Schirm nach hinten wandern.",
+  "merksatz": [
+   {
+    "pre": "Das Objektiv einer Kamera erzeugt auf dem Sensor ein umgekehrtes und",
+    "post": " Bild.",
+    "loesung": "verkleinertes"
+   },
+   {
+    "pre": "Scharf gestellt wird, indem man die",
+    "post": " verändert: Für nahe Gegenstände muss der Schirm weiter nach hinten.",
+    "loesung": "Bildweite"
+   }
+  ],
+  "beobachtung": "Bei der Bildweite 90 ist das Bild unscharf. Scharf wird es erst zwischen etwa 62 und 72, am deutlichsten bei 66 bis 68; die Simulation meldet dann ein umgekehrtes, verkleinertes und reelles Bild. Die Blende ändert daran nichts: klein (dunkel) macht das Bild dunkel, groß (hell) macht es hell, scharf bleibt es in beiden Fällen. Bei der Bildweite 110 hilft auch die große Blende nicht, das Bild ist nur hell und weiter unscharf. Auf dem Blatt wird das Fensterbild ebenfalls nur in einem schmalen Bereich scharf und steht umgekehrt.",
+  "aufgabe": {
+   "frage": "Begründe, warum das Bild unscharf wird, sobald Mia ihr Foto nah vor die Linse hält, obwohl niemand etwas an der Kamera verstellt hat.",
+   "zeilen": 3,
+   "loesung": "Die Bildweite hängt von der Gegenstandsweite ab. Für den weit entfernten Kirchturm liegt das scharfe Bild fast genau in der Brennweite hinter der Linse. Das Foto steht viel näher, deshalb entsteht sein Bild weiter hinten. Der Schirm steht aber noch in der Fernstellung und fängt das Licht auf, bevor sich die Strahlen treffen. Erst wenn Ben den Schirm nach hinten schiebt, wird das Foto scharf.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum auf einem Klassenfoto die erste Reihe scharf ist, der Zaun dahinter aber verschwommen.",
+  "sicherheit": "Richte die Kamera nie auf die Sonne und schau nie durch die Lupe in die Sonne – das Licht wird gebündelt.",
+  "ueberleitung": "Am Fenster fällt Ben etwas auf: Seine Augen müssen nichts verschieben. Ob Kirchturm oder Foto – er sieht beides sofort scharf. Mia holt einen runden Glaskolben und füllt ihn mit Wasser.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie funktioniert eine Kamera?",
+  "auftrag": "Miss den Abstand Linse–Sensor für ein scharfes Bild und prüfe, ob die Blende daran etwas ändert.",
+  "modellgrenze": "Die Simulation zeigt eine einzige dünne Linse. Ein echtes Objektiv besteht aus mehreren Gläsern, damit auch die Ränder des Bildes scharf werden.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o6",
+  "titel": "Der Turm auf dem Papier",
+  "problem": "Mia stellt einen runden Glaskolben voll Wasser aufs Fensterbrett und hält einen Papierschirm dahinter. Auf dem Papier erscheint das Fenster mit dem Kirchturm. Genauso arbeite ein Auge, sagt Mia. Ben will wissen, ob der Turm auf dem Papier so herum steht wie draußen – er sieht die Welt ja richtig herum.",
+  "frage": "Wie ändert sich das Bild auf der Netzhaut, wenn der Gegenstand näher kommt?",
+  "predict": [
+   "Das Bild auf der Netzhaut steht auf dem Kopf, obwohl wir die Welt aufrecht sehen.",
+   "Weit entfernt steht das Bild aufrecht; erst nah am Auge kippt es um.",
+   "Auf der Netzhaut entsteht gar kein Bild. Dein Auge schickt Strahlen nach draußen und tastet den Turm damit ab."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle „Abstand des Gegenstands“ auf weit und „Pupille (Helligkeit)“ auf mittel. Vergleiche, wohin die Spitze des Gegenstands zeigt und wohin die Spitze des Bildes auf der Netzhaut zeigt.",
+   "Stelle „Abstand des Gegenstands“ nacheinander auf mittel und auf nah. Lies jedes Mal ab, wie groß das Bild auf der Netzhaut ist und wohin seine Spitze zeigt.",
+   "Gegenprobe am Tisch: Halte eine Lupe etwa eine Handbreit vor ein weißes Blatt und suche darauf das Bild des Fensters. Prüfe, wohin der Fensterrahmen auf dem Blatt zeigt."
+  ],
+  "tabCols": [
+   "Einstellung in der Simulation",
+   "Bild auf der Netzhaut (Richtung, Größe)"
+  ],
+  "tabRows": [
+   "Abstand: weit",
+   "Abstand: mittel",
+   "Abstand: nah",
+   "Gegenprobe: Lupe vor weißem Blatt"
+  ],
+  "fachtext": "Der Wasserkolben wirkt wie eine Sammellinse, der Papierschirm steht für die Netzhaut. Auf der Netzhaut entsteht ein umgekehrtes und verkleinertes Bild. Das Gehirn verarbeitet die Signale der Netzhaut und erzeugt daraus unseren räumlich richtigen Seheindruck. Im Auge bündeln Hornhaut und Augenlinse das Licht; die Augenlinse stellt scharf, indem sie ihre Form ändert, der Abstand zur Netzhaut bleibt gleich.",
+  "merksatz": [
+   {
+    "pre": "Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes Bild. Das Gehirn",
+    "post": " die Signale und erzeugt daraus unseren Seheindruck.",
+    "loesung": "verarbeitet"
+   },
+   {
+    "pre": "Das Auge stellt scharf, indem die Augenlinse ihre",
+    "post": " ändert; der Abstand zur Netzhaut bleibt dabei gleich.",
+    "loesung": "Form"
+   }
+  ],
+  "beobachtung": "Auf der Netzhaut erscheint der Gegenstand bei jeder Einstellung umgekehrt: Was oben ist, liegt im Bild unten, was rechts ist, liegt links. Bei „weit“ ist das Bild klein und scharf, bei „mittel“ und „nah“ wird es größer, es dreht sich aber nicht zurück. Die Richtung hängt also nicht vom Abstand ab. Auch auf dem Blatt hinter der Lupe steht das Fenster auf dem Kopf. Aufrecht sehen wir die Welt erst, weil das Gehirn die Signale der Netzhaut verarbeitet.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Ben den Kirchturm aufrecht sieht, obwohl das Bild auf seiner Netzhaut auf dem Kopf steht.",
+   "zeilen": 3,
+   "loesung": "Die Augenlinse erzeugt auf der Netzhaut ein umgekehrtes, verkleinertes Bild, genau wie der Wasserkolben auf dem Papierschirm. Im Auge wird dieses Bild nicht gedreht. Die Sinneszellen der Netzhaut wandeln das Licht in Signale um und leiten sie über den Sehnerv ins Gehirn. Das Gehirn verarbeitet diese Signale und erzeugt daraus den Seheindruck; es dreht also kein fertiges Bild um. Deshalb sieht Ben den Turm aufrecht.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Beurteile die Aussage: „Der Wasserkolben zeigt genau, wie ein Auge arbeitet.“",
+  "sicherheit": "Halte die Lupe niemals in die pralle Sonne – sie bündelt das Licht wie ein Brennglas und kann Papier entzünden.",
+  "ueberleitung": "Mia setzt Opas Brille auf und sieht sofort verschwommen. In der Kiste liegen Gläser in allen Stärken – für Menschen, bei denen das Bild nicht genau auf der Netzhaut landet.",
+  "modellgrenze": "Der starre Wasserkolben zeigt nicht, wie das Auge scharf stellt – die Augenlinse ändert dafür ihre Form, statt dass ein Schirm verschoben wird –, und Pupille, Sinneszellen und Sehnerv fehlen im Modell ganz.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie funktioniert das Auge?",
+  "auftrag": "Untersuche am Modellauge die Abbildung bei verschiedenen Abständen des Gegenstands.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "o7",
+  "titel": "Das Bild landet daneben",
+  "problem": "Für das Fernrohr sortieren Ben und Mia die Brillengläser: Manche sind in der Mitte dicker, manche am Rand. Am Modellauge schieben sie den Papierschirm absichtlich zu weit nach hinten, bis alles verschwimmt. Ben hält ein Glas nach dem anderen davor. Welches zu welchem Fehler passt, sieht er ihm nicht an.",
+  "frage": "Wohin schiebt eine Brille den Treffpunkt der Strahlen?",
+  "predict": [
+   "Unscharf bleibt unscharf: Die Brille schiebt den Treffpunkt beide Male in dieselbe Richtung, nur unterschiedlich weit.",
+   "Bei kurzsichtig schiebt die Brille den Treffpunkt nach hinten, bei weitsichtig nach vorn, beide Male auf die Netzhaut.",
+   "Eine Brille verschiebt den Treffpunkt gar nicht. Sie vergrößert das Bild nur wie eine Lupe, damit du mehr erkennst."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle kurzsichtig und beobachte, wo sich die Strahlen treffen: vor der Netzhaut, genau auf ihr oder dahinter. Schalte dann Brille dazu und beobachte den Treffpunkt erneut.",
+   "Wähle weitsichtig und beobachte den Treffpunkt ohne und mit Brille. Notiere jedes Mal, wo die Strahlen zusammenlaufen und wie scharf das Bild ist.",
+   "Gegenprobe am Tisch: Lege zwei Brillengläser auf eine Zeitungsseite. Das Glas, das die Schrift vergrößert, ist in der Mitte dicker, das andere in der Mitte dünner."
+  ],
+  "tabCols": [
+   "Einstellung in der Simulation",
+   "Wo treffen sich die Strahlen?"
+  ],
+  "tabRows": [
+   "kurzsichtig, ohne Brille",
+   "kurzsichtig, mit Brille",
+   "weitsichtig, ohne Brille",
+   "weitsichtig, mit Brille"
+  ],
+  "fachtext": "Bei Kurzsichtigkeit ist der Augapfel zu lang, das Bild entsteht vor der Netzhaut; im Modell steht der Schirm zu weit hinten. Eine Zerstreuungslinse ist in der Mitte dünner als am Rand; sie schwächt die Bündelung und schiebt das Bild zurück auf die Netzhaut. Bei Weitsichtigkeit ist der Augapfel zu kurz, das Bild läge hinter der Netzhaut. Eine Sammellinse ist in der Mitte dicker, bündelt zusätzlich und holt das Bild nach vorn.",
+  "merksatz": [
+   {
+    "pre": "Bei Kurzsichtigkeit entsteht das Bild vor der Netzhaut. Scharf wird es erst mit einer",
+    "post": ".",
+    "loesung": "Zerstreuungslinse"
+   },
+   {
+    "pre": "Eine Zerstreuungslinse ist in der Mitte",
+    "post": " als am Rand, eine Sammellinse dagegen dicker.",
+    "loesung": "dünner"
+   }
+  ],
+  "beobachtung": "Bei kurzsichtig treffen sich die Strahlen schon vor der Netzhaut, auf der Netzhaut ist das Bild verschwommen. Mit Brille wandert der Treffpunkt nach hinten und liegt auf der Netzhaut, das Bild wird scharf. Bei weitsichtig liegt der Treffpunkt dagegen hinter der Netzhaut, und die Brille holt ihn nach vorn. Die Brille wirkt also je nach Sehfehler unterschiedlich: einmal schwächt sie die Bündelung, einmal verstärkt sie sie. Zum Glas passt das: in der Mitte dünner bei Kurzsichtigkeit, in der Mitte dicker bei Weitsichtigkeit.",
+  "aufgabe": {
+   "frage": "Erkläre, woran Ben in Opas Kiste ohne Messgerät erkennt, welche Gläser für Kurzsichtige und welche für Weitsichtige geschliffen wurden.",
+   "zeilen": 3,
+   "loesung": "Man erkennt die Gläser an ihrer Form. Ein Glas, das in der Mitte dicker ist als am Rand, ist eine Sammellinse und gehört in die Brille eines Weitsichtigen. Ein Glas, das in der Mitte dünner ist als am Rand, ist eine Zerstreuungslinse und hilft Kurzsichtigen. Zusätzlich kann Ben durch das Glas auf Schrift schauen: Die Sammellinse vergrößert aus kurzem Abstand, die Zerstreuungslinse verkleinert. So lässt sich die ganze Kiste sortieren.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Begründe, warum eine kurzsichtige Person ohne Brille die Tafel nicht lesen kann, ihr Handy aber schon.",
+  "sicherheit": "Fasse die Brillengläser nur am Rand an und arbeite nicht in der prallen Sonne, weil der Wasserkolben das Licht bündelt.",
+  "ueberleitung": "Die Gläser sind sortiert, das Rohr ist zusammengesteckt. Abends richtet Ben es auf die Straßenlaterne – und um jede helle Kante liegt ein blauer und ein roter Saum.",
+  "modellgrenze": "Im Modellauge wird der Schirm verschoben; im echten Auge liegt der Sehfehler dagegen an der festen Länge des Augapfels, und dass die Augenlinse sich anpassen kann, zeigt das starre Modell nicht.",
+  "stufe": "grund",
+  "theme": "optik",
+  "name": "Wie korrigiert eine Brille Sehfehler?",
+  "auftrag": "Untersuche das nacheinander für ein kurzsichtiges und für ein weitsichtiges Auge.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "f8",
+  "name": "Was passiert, wenn Licht auf eine Oberfläche trifft?",
+  "theme": "farben",
+  "titel": "Zwei Bilder in einer Scheibe",
+  "problem": "Abends steht Ben am Fenster. Draußen erkennt er den Hof, und gleichzeitig sieht er sich selbst in derselben Scheibe. Zwei Bilder im selben Glas. Am Morgen ist sein Spiegelbild verschwunden, der Hof aber immer noch da. Das Glas hat sich über Nacht nicht verändert.",
+  "frage": "Was geschieht mit dem Licht, wenn es auf verschiedene Oberflächen trifft?",
+  "predict": [
+   "Jede Oberfläche macht nur eines: Spiegel wirft zurück, Fensterglas lässt durch, schwarzes Papier schluckt.",
+   "Ob eine Scheibe zurückwirft, hängt davon ab, wie dunkel es draußen ist. Bei Dunkelheit wirft sie zurück, bei Helligkeit lässt sie alles durch.",
+   "An jeder Oberfläche wird zugleich zurückgeworfen, durchgelassen und geschluckt, nur die Anteile sind verschieden groß."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle den Winkel zum Lot auf 45° und wähle Spiegel. Lies ab, welche Anteile des Lichts zurückgeworfen, durchgelassen und geschluckt werden.",
+   "Wähle bei genau diesem Winkel nacheinander Fensterglas, schwarzes Papier und weißes Papier. Lies jedes Mal alle drei Anteile ab.",
+   "Gegenprobe am Tisch: Leuchte mit der Taschenlampe schräg auf einen Spiegel und auf schwarzes Papier und fange das zurückgeworfene Licht auf einem weißen Blatt auf."
+  ],
+  "sicherheit": "Richte die Leuchte nie so auf den Spiegel, dass das Licht jemandem ins Auge fällt.",
+  "tabCols": [
+   "Oberfläche bei 45°",
+   "zurückgeworfen · hindurch · geschluckt"
+  ],
+  "tabRows": [
+   "Spiegel",
+   "Fensterglas",
+   "schwarzes Papier",
+   "Gegenprobe: weißes Papier"
+  ],
+  "fachtext": "Trifft Licht auf die Grenze zwischen zwei Stoffen, teilt es sich immer auf: Ein Teil wird zurückgeworfen (reflektiert), ein Teil läuft in den zweiten Stoff weiter, ein Teil wird geschluckt (absorbiert) und macht den Körper wärmer. Wie groß die drei Anteile sind, hängt von der Oberfläche ab. Ein Spiegel wirft fast alles zurück, schwarzes Papier schluckt fast alles, klares Glas lässt das meiste durch – wirft aber immer einen kleinen Rest zurück, etwa vier von hundert Teilen.",
+  "merksatz": [
+   {
+    "pre": "An jeder Oberfläche wird Licht zum Teil zurückgeworfen, zum Teil durchgelassen und zum Teil",
+    "loesung": "absorbiert",
+    "post": "; dabei wird der Körper wärmer."
+   },
+   {
+    "pre": "Wie groß die drei Anteile sind, hängt von der",
+    "loesung": "Oberfläche",
+    "post": " ab – zusammen ergeben sie immer das ganze auftreffende Licht."
+   }
+  ],
+  "beobachtung": "Bei 45° wirft der Spiegel fast alles zurück, etwa 95 von 100 Teilen; hindurch geht nichts. Fensterglas lässt das meiste durch, etwa 92 von 100 Teilen, und wirft trotzdem rund 4 von 100 Teilen zurück – das ist Bens zweites Bild in der Scheibe. Schwarzes Papier lässt nichts durch und wirft fast nichts zurück, es schluckt fast alles und wird dabei wärmer. Weißes Papier wirft ähnlich viel zurück wie der Spiegel, aber nach allen Seiten gestreut. Am Tisch zeigt sich das als heller, scharfer Fleck beim Spiegel und als fast nichts beim schwarzen Papier.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Ben sich abends im Fenster sieht, am Morgen aber nicht.",
+   "zeilen": 3,
+   "loesung": "Die Scheibe wirft zu jeder Tageszeit denselben kleinen Anteil zurück, etwa vier von hundert Teilen; sie hat sich über Nacht nicht verändert. Geändert hat sich nur das Verhältnis der Helligkeiten. Abends ist es draußen dunkel, es kommt also kaum Licht von außen durch die Scheibe. Der schwache zurückgeworfene Anteil aus dem hellen Zimmer ist dann das Hellste, was von der Scheibe in Bens Auge fällt, und er sieht sich selbst. Am Morgen ist es draußen viel heller als drinnen; das durchgelassene Licht vom Hof überstrahlt den zurückgeworfenen Anteil, und das Spiegelbild geht darin unter.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum dunkle Kleidung in der Sonne wärmer wird als helle.",
+  "ueberleitung": "Am Spiegel kommt fast alles zurück – aber nicht in irgendeine Richtung. Ben hält die Taschenlampe schräg darauf und muss erst suchen, wo der Fleck landet. Beim dritten Versuch trifft er ihn auf Anhieb.",
+  "auftrag": "Untersuche an Spiegel, Fensterglas, schwarzem und weißem Papier, welche Anteile zurückkommen, durchgehen und bleiben.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "id": "f9",
+  "name": "Nach welcher Regel wird Licht an einem Spiegel zurückgeworfen?",
+  "theme": "farben",
+  "titel": "Der Punkt an der Wand",
+  "problem": "Mia hält die Taschenlampe, Ben den Spiegel. Sie wollen den Lichtfleck genau auf einen Aufkleber an der Wand bringen. Ben dreht den Spiegel ein kleines Stück – und der Fleck springt viel weiter, als Ben gedreht hat. Nach dem dritten Versuch trifft er, weiß aber nicht, warum.",
+  "frage": "Nach welcher Regel wird Licht an einem Spiegel zurückgeworfen?",
+  "predict": [
+   "Einfalls- und Reflexionswinkel zum Lot sind immer gleich groß; dreht der Spiegel um 10°, schwenkt der Strahl um 20°.",
+   "Drehst du den Spiegel um 10°, schwenkt der zurückgeworfene Strahl im Raum auch genau um 10° mit.",
+   "Ein Spiegel wirft das Licht nach allen Seiten zurück, so wie weißes Papier. Eine feste Regel für die Richtung gibt es nicht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lass Spiegel drehen auf 0° und stelle den Einfallswinkel zum Lot nacheinander auf 20°, 40° und 65° ein. Lies jedes Mal den Reflexionswinkel ab.",
+   "Stelle den Einfallswinkel zum Lot auf 40° und Spiegel drehen auf 10°. Lies den Reflexionswinkel ab und beobachte, wie weit der Strahl im Raum schwenkt.",
+   "Wähle Spiegel zurückstellen und danach Strahl auf das Lot. Halte fest, wohin der zurückgeworfene Strahl läuft."
+  ],
+  "tabCols": [
+   "Einstellung an der Simulation",
+   "abgelesener Reflexionswinkel zum Lot"
+  ],
+  "tabRows": [
+   "Einfallswinkel 20°, Spiegel drehen 0°",
+   "Einfallswinkel 65°, Spiegel drehen 0°",
+   "Einfallswinkel 40°, Spiegel drehen 10°",
+   "Gegenprobe: Strahl auf das Lot"
+  ],
+  "fachtext": "Beide Winkel werden nicht zur Spiegelfläche gemessen, sondern zum Lot – der Senkrechten auf der Fläche im Auftreffpunkt. Für jeden Spiegel gilt: Der Einfallswinkel ist genauso groß wie der Reflexionswinkel. Einfallender Strahl, Lot und zurückgeworfener Strahl liegen dabei in einer Ebene, und die beiden Strahlen liegen auf verschiedenen Seiten des Lotes. Dreht man den Spiegel, dreht sich das Lot mit; der zurückgeworfene Strahl schwenkt deshalb um den doppelten Winkel.",
+  "merksatz": [
+   {
+    "pre": "Einfallswinkel und Reflexionswinkel sind gleich groß; gemessen wird beides zum",
+    "loesung": "Lot",
+    "post": ", der Senkrechten auf der Fläche."
+   },
+   {
+    "pre": "Einfallender Strahl, Lot und zurückgeworfener Strahl liegen immer in einer",
+    "loesung": "Ebene",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Zu jedem Einfallswinkel gehört derselbe Reflexionswinkel: 20° zu 20°, 40° zu 40°, 65° zu 65°. Der zurückgeworfene Strahl liegt dabei immer auf der anderen Seite des Lotes. Drehst du den Spiegel um 10°, dreht sich das Lot mit: abgelesen werden weiter 40°, im Raum schwenkt der Strahl aber um 20°, also um das Doppelte. Deshalb springt Bens Lichtfleck weiter, als er den Spiegel dreht. Bei Strahl auf das Lot läuft der Strahl genau in sich selbst zurück, beide Winkel sind 0°.",
+  "aufgabe": {
+   "frage": "Bestimme, um wie viel Grad der Lichtfleck weiterwandert, wenn Ben den Spiegel um 10 Grad dreht, und begründe deine Rechnung.",
+   "zeilen": 3,
+   "loesung": "Der Fleck wandert um 20 Grad, also um den doppelten Winkel. Dreht Ben den Spiegel um 10 Grad, dreht sich das Lot mit, ebenfalls um 10 Grad. Der einfallende Strahl behält seine Richtung bei, sein Winkel zum Lot wird dadurch um 10 Grad größer. Weil der Reflexionswinkel immer genauso groß ist wie der Einfallswinkel, wächst auch dieser um 10 Grad, und zwar auf der anderen Seite des Lotes. Beide Änderungen addieren sich, der zurückgeworfene Strahl schwenkt also um 20 Grad. Deshalb springt der Fleck viel weiter, als Ben gedreht hat.",
+   "komp": "E6",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum du im Rückspiegel den Fahrer hinter dir sehen kannst, ohne dich umzudrehen.",
+  "ueberleitung": "Das Gesetz gilt für jeden einzelnen Strahl. Im Spiegel sieht Ben aber kein Bündel Strahlen, sondern sich selbst – und zwar hinter dem Glas, wo niemand steht.",
+  "auftrag": "Vergleiche Einfallswinkel und Reflexionswinkel am Lot und prüfe, was das Drehen des Spiegels bewirkt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "f1",
+  "titel": "Hinter dem Glas steht niemand",
+  "problem": "Das Fernrohr zeigt steil nach oben, und Ben muss sich darunter verrenken. Mia klemmt einen kleinen Spiegel aus Opas Kiste schräg in den Auszug vor das Okular, damit man bequem von der Seite hineinsieht. Das klappt. Beim Scharfstellen kommen die beiden aber durcheinander: Keiner weiß, wo das Bild jetzt steckt.",
+  "frage": "Wie weit hinter dem Spiegel liegt das Spiegelbild?",
+  "predict": [
+   "Das Bild klebt am Spiegel: Änderst du g, bleibt der Abstand des Bildes hinter dem Spiegel gleich.",
+   "Das Bild liegt immer genauso weit hinter dem Spiegel, wie der Gegenstand davorsteht.",
+   "Wie weit das Bild hinter dem Spiegel liegt, hängt davon ab, wo du selbst stehst. Gehst du einen Schritt zurück, rutscht es genauso weit nach hinten."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Regler Abstand Gegenstand–Spiegel g auf 60 ein und lies ab, wie weit das Bild hinter dem Spiegel liegt. Das ist dein Ausgangswert.",
+   "Stelle nacheinander 110 und 160 ein und lies jedes Mal beide Abstände ab. Achte darauf, ob sich das Bild dabei vom Spiegel wegbewegt.",
+   "Gegenprobe am Tisch: Stelle einen Spiegel senkrecht auf und lege eine Münze 5 cm davor. Prüfe, ob ihr Bild ebenso weit hinter dem Spiegel zu liegen scheint."
+  ],
+  "tabCols": [
+   "eingestellter Abstand Gegenstand–Spiegel g",
+   "abgelesener Abstand des Bildes hinter dem Spiegel"
+  ],
+  "tabRows": [
+   "g = 60",
+   "g = 110",
+   "g = 160",
+   "Gegenprobe am Tisch: Münze 5 cm vor dem Spiegel"
+  ],
+  "fachtext": "Licht wird am ebenen Spiegel zurückgeworfen, Einfalls- und Reflexionswinkel sind gleich groß. Für dein Auge kommen die Strahlen scheinbar von einem Punkt hinter dem Spiegel: Dort liegt das Spiegelbild, so weit dahinter, wie der Gegenstand davorsteht. Dort trifft sich das Licht nie, es heißt virtuelles Bild und ist auf keinem Schirm auffangbar. Vertauscht wird die Richtung senkrecht zum Spiegel: Dein Bild hebt die andere Hand.",
+  "merksatz": [
+   {
+    "pre": "Das Spiegelbild liegt genauso weit hinter dem Spiegel wie der Gegenstand",
+    "loesung": "davor",
+    "post": ". Beide Abstände sind gleich groß."
+   },
+   {
+    "pre": "Auf einem Schirm lässt sich das Spiegelbild nicht auffangen; es ist ein",
+    "loesung": "virtuelles",
+    "post": " Bild."
+   }
+  ],
+  "beobachtung": "Das Bild liegt bei jeder Einstellung genauso weit hinter dem Spiegel, wie der Gegenstand davorsteht: bei g = 60 sind es 60, bei g = 110 sind es 110, bei g = 160 sind es 160. Verdoppelst du g, verdoppelt sich auch der Abstand des Bildes. Die Strahlen treffen sich hinter dem Spiegel nie wirklich, sie scheinen nur von dort zu kommen; das Bild ist virtuell und auf keinem Schirm auffangbar. Am Tisch passt die Münze dazu: Ihr Bild scheint ebenso weit hinter dem Spiegel zu liegen, und vertauscht ist die Richtung senkrecht zum Spiegel.",
+  "aufgabe": {
+   "frage": "Erkläre mit deinem Messergebnis, warum Ben nach dem Einbau des Spiegels neu scharfstellen muss.",
+   "zeilen": 3,
+   "loesung": "Der Spiegel wirft das Licht nur zur Seite: Ein Punkt erscheint genauso weit hinter der Spiegelfläche, wie er davorliegt. Für das Licht zählt deshalb nicht mehr die gerade Strecke, sondern der geknickte Weg – erst bis zur Spiegelfläche, dann von dort zur Seite bis zum Okular. Diese Summe ist eine andere als die gerade Strecke vorher, das Bild liegt also nicht mehr an der gewohnten Stelle. Ben muss den Auszug um genau diesen Unterschied nachstellen. Ein Blatt Papier hinter dem Spiegel bleibt dabei dunkel, denn dort kommt gar kein Licht an.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Zeichne, wie das Wort RETTUNG auf einer Motorhaube stehen muss, damit es im Rückspiegel richtig erscheint.",
+  "sicherheit": "Spiegel haben scharfe Kanten. Nimm einen mit Rahmen oder klebe die Kanten ringsum ab.",
+  "ueberleitung": "Das Spiegelbild kommt vom zurückgeworfenen Teil des Lichts. Der andere Teil geht durch das Glas hindurch – und beim Aufräumen merkt Ben, dass auch dieser Teil nicht einfach geradeaus weiterläuft.",
+  "stufe": "grund",
+  "theme": "farben",
+  "name": "Wie entsteht ein Spiegelbild?",
+  "auftrag": "Untersuche mit dem Regler Abstand Gegenstand–Spiegel g, wie sich der Ort des Bildes ändert.",
+  "modellgrenze": "Hinter dem Spiegel ist kein Licht. Die Linien dort zeigen nur, woher das Licht zu kommen scheint – deshalb heißt dieses Bild ein Scheinbild.",
+  "alltagKomp": "K1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "f10",
+  "name": "Wo ändert das Licht beim Übergang von Luft in Glas seine Richtung?",
+  "theme": "farben",
+  "titel": "Der Knick am Rand",
+  "problem": "Ben schiebt den Halbrundkörper aus Opas Kiste in den Lichtstrahl. Solange der Strahl genau von vorn kommt, läuft er schnurgerade hindurch. Dreht Ben die Scheibe nur ein Stück, macht der Strahl beim Eintritt einen Knick – und zwar immer zur selben Seite hin.",
+  "frage": "An welcher Stelle knickt ein Lichtstrahl beim Übergang von Luft in Glas?",
+  "predict": [
+   "Der Winkel im Glas ist genauso groß wie der in der Luft, der Strahl wird beim Eintritt nur zur Seite versetzt.",
+   "Der Strahl knickt nicht an einer Stelle. Er biegt sich im ganzen Glas langsam zur Seite, weil er dort abgebremst wird.",
+   "Der Winkel im Glas ist kleiner als der in der Luft, der Strahl knickt nur an der Grenzfläche zum Lot hin."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle den Regler Winkel in der Luft auf 20° ein und lies den Winkel im Glas ab. Achte darauf, an welcher Stelle der Strahl knickt.",
+   "Stelle nacheinander 40° und 60° ein und lies jedes Mal den Winkel im Glas ab. Vergleiche ihn mit dem eingestellten Winkel in der Luft.",
+   "Schalte ungebrochene Richtung ein und vergleiche sie mit dem wirklichen Strahl im Glas. Wähle danach genau auf das Lot und prüfe, ob noch ein Knick bleibt."
+  ],
+  "tabCols": [
+   "eingestellter Winkel in der Luft",
+   "abgelesener Winkel im Glas"
+  ],
+  "tabRows": [
+   "20°",
+   "40°",
+   "60°",
+   "genau auf das Lot"
+  ],
+  "fachtext": "Licht ändert seine Richtung nicht überall, sondern nur an der Grenze zwischen zwei Stoffen; davor, im Glas und dahinter läuft es jeweils geradeaus. Diese Richtungsänderung an der Grenze heißt Brechung. Beim Übergang von Luft in Glas knickt der Strahl zum Lot hin, der Winkel im Glas ist also kleiner als der in der Luft. Der Grund ist, dass Licht im Glas langsamer läuft als in der Luft; man nennt Glas deshalb optisch dichter. Nur ein Strahl genau auf dem Lot läuft ungebrochen weiter.",
+  "merksatz": [
+   {
+    "pre": "Seine Richtung ändert das Licht nur an der Grenze zwischen zwei Stoffen; dazwischen läuft es",
+    "loesung": "geradeaus",
+    "post": "."
+   },
+   {
+    "pre": "Beim Übergang von Luft in Glas knickt der Strahl zum",
+    "loesung": "Lot",
+    "post": " hin, denn Glas ist optisch dichter als Luft."
+   }
+  ],
+  "beobachtung": "Vor dem Glas und im Glas läuft der Strahl schnurgerade, geknickt ist er nur genau an der Grenzfläche. Der Winkel im Glas ist dabei stets kleiner als der in der Luft: zu 20° gehören etwa 13°, zu 40° etwa 25°, zu 60° etwa 35°. Die eingeblendete ungebrochene Richtung liegt jedes Mal weiter vom Lot entfernt als der wirkliche Strahl, der Knick geht also zum Lot hin. Fällt das Licht genau auf das Lot, sind beide Winkel 0° und der Strahl läuft ohne Knick weiter.",
+  "aufgabe": {
+   "frage": "Begründe, warum der Strahl an der runden Fläche des Halbrundkörpers keinen zweiten Knick macht.",
+   "zeilen": 3,
+   "loesung": "Der Strahl geht vom Mittelpunkt des Halbkreises aus. Jede Gerade durch den Mittelpunkt steht auf der Kreislinie senkrecht, sie ist dort selbst das Lot. Der Strahl trifft die gekrümmte Fläche also unter dem Winkel null zum Lot, und genau das ist der einzige Fall, in dem Licht ohne Richtungsänderung durch eine Grenze läuft. Deshalb misst man mit dem Halbrundkörper sauber nur die Brechung an der geraden Fläche; die runde Fläche stört die Messung nicht.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Nenne zwei Stellen im Fernrohr, an denen Licht von Luft in Glas übertritt.",
+  "ueberleitung": "Glas ist nicht der einzige Stoff, der das kann. Am Nachmittag legt Mia eine Münze in einen undurchsichtigen Becher und geht so weit zurück, bis die Münze hinter dem Rand verschwindet.",
+  "auftrag": "Vergleiche für mehrere Winkel in der Luft, wie groß der Winkel im Glas ausfällt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Struktur der Materie"
+ },
+ {
+  "id": "f2",
+  "titel": "Die Münze kommt zurück",
+  "problem": "Auf dem Tisch neben dem Fernrohr steht Bens Wasserglas mit dem Teelöffel darin. Von der Seite sieht der Löffel aus, als hätte ihn jemand genau an der Wasseroberfläche geknickt. Mia zieht ihn heraus – er ist völlig gerade. Zurück im Glas ist er wieder krumm.",
+  "frage": "Warum sieht ein Gegenstand im Wasser flacher aus, als er wirklich liegt?",
+  "predict": [
+   "Der Gegenstand erscheint höher, als er liegt, und der Unterschied wird größer, je tiefer du ihn einstellst.",
+   "Der Gegenstand erscheint zwar höher, aber der Abstand zum wirklichen Ort bleibt bei jeder Tiefe gleich groß.",
+   "Der Gegenstand erscheint immer dicht unter der Wasseroberfläche, ganz gleich, wie tief er wirklich liegt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle Tiefe des Gegenstands auf 30 ein. Vergleiche, wo der Gegenstand wirklich liegt und wo dein Auge ihn sieht.",
+   "Stelle nacheinander 60 und 90 ein. Lies jedes Mal ab, wie weit der scheinbare Ort über dem Gegenstand liegt.",
+   "Gegenprobe am Tisch: Lege eine Münze in ein Glas Wasser und schaue schräg von oben hinein. Prüfe, ob sie höher zu liegen scheint als der Glasboden."
+  ],
+  "tabCols": [
+   "Tiefe des Gegenstands",
+   "Wie weit das Auge ihn höher sieht"
+  ],
+  "tabRows": [
+   "Tiefe 30",
+   "Tiefe 60",
+   "Tiefe 90",
+   "Gegenprobe am Tisch: Münze im Glas Wasser"
+  ],
+  "fachtext": "An der Grenze zwischen Wasser und Luft ändert Licht seine Richtung; das nennt man Brechung. Beim Übergang aus dem Wasser in die Luft wird der Strahl vom Lot weggebrochen und läuft flacher weiter. Dein Auge verlängert die ankommenden Strahlen aber geradlinig nach hinten und setzt die Münze deshalb höher und weiter vorn an, als sie wirklich liegt. Nur senkrecht einfallendes Licht behält seine Richtung.",
+  "merksatz": [
+   {
+    "pre": "An der Grenze zwischen Luft und Wasser wird Licht",
+    "loesung": "gebrochen",
+    "post": ". Nur senkrecht einfallendes Licht behält seine Richtung."
+   },
+   {
+    "pre": "Ein Gegenstand unter Wasser erscheint höher, als er wirklich",
+    "loesung": "liegt",
+    "post": ". Das Auge verlängert die Strahlen geradlinig nach hinten."
+   }
+  ],
+  "beobachtung": "Bei jeder eingestellten Tiefe sieht das Auge den Gegenstand über seinem wirklichen Ort, nie darunter. Bei 30 ist der Unterschied klein, bei 60 deutlich größer, bei 90 am größten; das Bild liegt jeweils um etwa ein Viertel der Tiefe zu hoch. Beim Austritt aus dem Wasser wird das Licht vom Lot weggebrochen, dein Auge verlängert die Strahlen aber geradlinig nach hinten. Deshalb setzt es den Gegenstand zu hoch und zu weit vorn an. Im Glas Wasser wirkt die Münze aus demselben Grund angehoben.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Bens Teelöffel im Wasserglas geknickt aussieht, obwohl er gerade ist.",
+   "zeilen": 3,
+   "loesung": "Das Licht vom unteren Teil des Löffels läuft zuerst durch Wasser und tritt dann in die Luft. An der Wasseroberfläche wird es gebrochen und läuft flacher weiter. Bens Auge nimmt an, das Licht sei geradeaus gekommen, und verlegt den unteren Teil des Löffels nach oben. Der obere Teil steht in der Luft und wird nicht gebrochen, er bleibt an seinem Platz. Beide Teile passen im Bild deshalb nicht zusammen, und der Löffel wirkt geknickt.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Beurteile den Rat eines Anglers: „Beim Fischen mit dem Speer zielst du genau auf den Fisch, den du siehst.“",
+  "ueberleitung": "Das Wasser hebt die Münze also scheinbar an. Mia füllt einen zweiten Becher mit Speiseöl – dort erscheint die Münze noch höher. Offenbar bricht nicht jeder Stoff das Licht gleich stark.",
+  "stufe": "grund",
+  "theme": "farben",
+  "name": "Warum erscheint ein Gegenstand im Wasser verschoben?",
+  "auftrag": "Untersuche an der Simulation, wie stark der scheinbare Ort mit der Tiefe abweicht.",
+  "modellgrenze": "Auch hier trifft sich kein Licht unter Wasser. Das Auge verlängert die geknickten Strahlen gerade nach hinten, und dort scheint der Gegenstand zu liegen.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "f3",
+  "titel": "Immer zehn Grad weiter",
+  "problem": "Mia will wissen, wie stark Opas Objektivglas das Licht ablenkt. Ben stellt eine Linse in den Lichtspalt, doch an der gewölbten Fläche wird jeder Strahl anders abgelenkt. Aus der Kiste kommt deshalb ein Halbrundkörper aus Glas mit gerader Vorderseite. Ein einziger Messwert sagt den beiden darüber aber noch nichts.",
+  "frage": "Wovon hängt es ab, wie stark ein Lichtstrahl gebrochen wird?",
+  "predict": [
+   "Wenn ich den Einfallswinkel verdopple, verdoppelt sich auch der Brechungswinkel.",
+   "Der Brechungswinkel wächst mit, bleibt aber immer kleiner als der Einfallswinkel, und in Wasser fällt er größer aus als in Glas.",
+   "Wie stark der Strahl knickt, hängt von der Dicke des Glases ab. Durch einen dicken Körper knickt er stärker als durch eine dünne Scheibe."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle Glas und stelle den Einfallswinkel θ auf 20 Grad ein. Lies den Brechungswinkel ab und vergleiche ihn mit dem Einfallswinkel.",
+   "Stelle den Einfallswinkel θ nacheinander auf 40 Grad und auf 60 Grad ein. Lies jedes Mal den Brechungswinkel ab und prüfe, ob er sich beim Verdoppeln mitverdoppelt.",
+   "Wähle bei 60 Grad Wasser statt Glas und lies den Brechungswinkel noch einmal ab. Vergleiche ihn mit dem Wert, den Glas bei 60 Grad ergeben hat."
+  ],
+  "tabCols": [
+   "Einfallswinkel θ (Grad)",
+   "Brechungswinkel (Grad)"
+  ],
+  "tabRows": [
+   "Glas: 20 Grad",
+   "Glas: 40 Grad",
+   "Glas: 60 Grad",
+   "Gegenprobe: Wasser bei 60 Grad"
+  ],
+  "fachtext": "Einfallender und gebrochener Strahl liegen mit dem Lot in einer Ebene; beide Winkel misst du gegen das Lot, nie gegen die Fläche. Aus Luft in Glas wird das Licht zum Lot hin gebrochen, der Brechungswinkel bleibt kleiner als der Einfallswinkel. Er wächst mit dem Einfallswinkel, aber nicht im gleichen Verhältnis. Wie stark ein Stoff bricht, zeigt seine optische Dichte: Glas ist optisch dichter als Wasser und bricht stärker.",
+  "merksatz": [
+   {
+    "pre": "Beim Übergang von Luft in Glas wird das Licht zum",
+    "loesung": "Lot",
+    "post": " hin gebrochen. Der Brechungswinkel bleibt kleiner als der Einfallswinkel."
+   },
+   {
+    "pre": "Glas ist optisch dichter als Wasser und bricht das Licht bei gleichem Einfallswinkel deshalb",
+    "loesung": "stärker",
+    "post": ". Je dichter ein Stoff optisch ist, desto größer wird der Knick."
+   }
+  ],
+  "beobachtung": "Im Glas knickt der Strahl zum Lot hin. Bei 20 Grad misst du etwa 13 Grad, bei 40 Grad etwa 25 Grad und bei 60 Grad etwa 35 Grad. Der Brechungswinkel wächst also mit, bleibt aber immer deutlich kleiner als der Einfallswinkel und verdoppelt sich beim Verdoppeln nicht. Mit Wasser ergeben sich bei 60 Grad rund 40 Grad statt 35 Grad im Glas. Glas ist optisch dichter als Wasser und bricht das Licht deshalb stärker.",
+  "aufgabe": {
+   "frage": "Erkläre mit deinen Messwerten, warum Licht an einer stark gewölbten Linsenfläche kräftiger abgelenkt wird als an einer flachen.",
+   "zeilen": 3,
+   "loesung": "Auf eine flache Fläche trifft das Licht fast senkrecht, der Einfallswinkel ist klein. Dann ist auch der Knick klein, und bei 0 Grad bleibt er ganz aus. Eine stark gewölbte Fläche steht demselben Strahl viel schräger entgegen, der Einfallswinkel wird groß. Nach der Messung wächst der Brechungswinkel dann zwar mit, aber langsamer: Bei 20 Grad Einfall fehlen 7 Grad, bei 40 Grad schon 15 Grad. Der Unterschied zwischen beiden Winkeln ist die Ablenkung, und die wird also größer. Deshalb sammelt eine stark gewölbte Linse das Licht auf einer kürzeren Strecke als eine flache.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Vergleiche den Knick eines Strohhalms in einem Glas Wasser mit dem in einem Glas Speiseöl.",
+  "ueberleitung": "Bisher lief das Licht immer von der Luft ins Glas. Ben dreht den Halbrundkörper um und schickt den Strahl von innen nach draußen – und bei sehr flachem Austritt verschwindet der gebrochene Strahl plötzlich ganz.",
+  "stufe": "grund",
+  "theme": "farben",
+  "name": "Wovon hängt die Stärke der Brechung ab?",
+  "auftrag": "Untersuche, wie der Brechungswinkel mitwächst, und ob Wasser anders bricht als Glas.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Struktur der Materie"
+ },
+ {
+  "id": "f11",
+  "name": "Was geschieht beim Übergang von Glas in Luft?",
+  "theme": "farben",
+  "titel": "Zurück ins Freie",
+  "problem": "Jetzt dreht Ben den Halbrundkörper um. Der Strahl läuft zuerst durch das Glas und tritt an der geraden Fläche wieder in die Luft. Der Knick ist wieder da, aber er geht diesmal in die andere Richtung. Und ab einem bestimmten Winkel kommt vorn überhaupt nichts mehr heraus.",
+  "frage": "Ab welchem Winkel tritt aus dem Glas kein Licht mehr in die Luft aus?",
+  "predict": [
+   "Der Winkel in der Luft ist kleiner als der im Glas, weil der Strahl beim Austritt zum Lot hin knickt.",
+   "Ab einem bestimmten Winkel bleibt das Licht im Glas stecken und wird dort geschluckt. Auch im Glas läuft dann kein Strahl mehr weiter.",
+   "Der Winkel in der Luft ist größer als der im Glas, und ab einem bestimmten Winkel tritt gar kein Strahl mehr aus."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle den Winkel im Glas auf 10 Grad ein und lies ab, unter welchem Winkel der Strahl in der Luft weiterläuft. Wiederhole das mit 25 Grad und mit 40 Grad.",
+   "Wähle „42° – Grenzwinkel“ und beobachte, wie der austretende Strahl jetzt liegt und wie hell er noch ist.",
+   "Wähle „55° – Totalreflexion“ und prüfe, ob vorn noch Licht austritt oder ob alles an der geraden Fläche zurückläuft."
+  ],
+  "tabCols": [
+   "Winkel im Glas",
+   "Winkel in der Luft (zum Lot)"
+  ],
+  "tabRows": [
+   "10 Grad",
+   "25 Grad",
+   "40 Grad",
+   "55 Grad (Totalreflexion)"
+  ],
+  "fachtext": "Beim Übergang von Glas in Luft knickt der Strahl vom Lot weg: Der Winkel in der Luft ist größer als der im Glas. Es ist derselbe Weg wie beim Eintritt, nur rückwärts durchlaufen. Weil der Winkel in der Luft schneller wächst, erreicht er schon bei etwa 42 Grad im Glas seinen größten möglichen Wert von 90 Grad; der austretende Strahl liegt dann flach in der Grenzfläche. Wird der Winkel im Glas noch größer, tritt gar kein Licht mehr aus. Dieser Winkel heißt Grenzwinkel, und was danach geschieht, heißt Totalreflexion.",
+  "merksatz": [
+   {
+    "pre": "Beim Übergang von Glas in Luft knickt der Strahl vom Lot",
+    "loesung": "weg",
+    "post": "; der Winkel in der Luft ist größer als der im Glas."
+   },
+   {
+    "pre": "Ab dem Grenzwinkel von etwa 42 Grad tritt kein Licht mehr aus, es wird vollständig",
+    "loesung": "zurückgeworfen",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Der Strahl in der Luft liegt jedes Mal weiter vom Lot entfernt als der im Glas: rund 15 Grad zu 10 Grad, 39 Grad zu 25 Grad und 75 Grad zu 40 Grad. Der Zuwachs wird dabei immer größer. Bei 42 Grad liegt der austretende Strahl fast flach in der Glasfläche und ist nur noch sehr schwach, während der zurückgeworfene Strahl heller wird. Bei 55 Grad tritt vorn kein Licht mehr aus, das ganze Licht läuft im Glas zurück. Beim Übergang von Glas in Luft knickt der Strahl also vom Lot weg, und oberhalb des Grenzwinkels von etwa 42 Grad gibt es nur noch Totalreflexion.",
+  "aufgabe": {
+   "frage": "Erkläre, warum es von Glas in Luft einen Grenzwinkel gibt, von Luft in Glas aber nicht.",
+   "zeilen": 3,
+   "loesung": "Von Glas in Luft knickt der Strahl vom Lot weg, der Winkel in der Luft ist also stets größer als der im Glas. Er erreicht deshalb schon bei etwa 42 Grad im Glas seinen größtmöglichen Wert von 90 Grad; darüber hinaus gibt es keine Austrittsrichtung mehr, und das Licht muss vollständig zurückgeworfen werden. Von Luft in Glas ist es umgekehrt: Der Strahl knickt zum Lot hin, der Winkel im Glas bleibt immer kleiner als der in der Luft. Selbst bei ganz flachem Einfall von fast 90 Grad erreicht er im Glas nur etwa 42 Grad. Zu jedem Einfallswinkel gehört also eine mögliche Richtung im Glas, und damit gibt es keinen Grenzwinkel.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum ein Sprung im Glas hell aufblitzt, obwohl das Glas selbst durchsichtig ist.",
+  "ueberleitung": "Wenn das Licht die Grenze gar nicht mehr verlässt, bleibt es im Glas gefangen. Genau das steckt in dem dünnen Kabel, mit dem Bens Vater das Internet ins Haus holt.",
+  "auftrag": "Untersuche, wie sich der austretende Strahl ändert, wenn der Winkel im Glas wächst.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "f4",
+  "titel": "Das Licht macht die Kurve",
+  "problem": "Beim Aufräumen findet Ben in Opas Kiste ein Bündel dünner Glasfäden mit einem Etikett vom Hausanschluss. Hält Mia die Taschenlampe an das eine Ende, leuchtet das andere hell auf, auch wenn das Bündel in einer Schlaufe auf dem Tisch liegt. Aus der Seite dringt dabei fast nichts heraus.",
+  "frage": "Warum läuft Licht in einem dünnen Faden um die Kurve, statt seitlich auszutreten?",
+  "predict": [
+   "Ab etwa 42 Grad tritt gar nichts mehr nach außen, und bei 60 Grad läuft das Licht im Zickzack im Inneren weiter.",
+   "Bei jedem Winkel tritt ein Teil des Lichts durch die Wand nach außen; bei 60 Grad wird nur der Rest zurückgeworfen.",
+   "Der Faden ist innen wie ein Spiegel beschichtet. Deshalb bleibt das Licht im Inneren, ganz gleich, unter welchem Winkel es auftrifft."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle den Einfallswinkel an der Wand θ auf 30 Grad ein und beobachte, ob Licht durch die Wand nach außen tritt.",
+   "Vergrößere θ über 40 Grad auf 42 Grad und halte fest, bei welchem Wert zum ersten Mal nichts mehr nach außen dringt.",
+   "Stelle θ auf 60 Grad ein und verfolge, wie der Strahl im Inneren weiterläuft und wie oft er an den Wänden zurückgeworfen wird."
+  ],
+  "tabCols": [
+   "Einfallswinkel an der Wand θ",
+   "Was an der Wand geschieht"
+  ],
+  "tabRows": [
+   "30 Grad",
+   "40 Grad",
+   "42 Grad (Grenzwinkel)",
+   "60 Grad"
+  ],
+  "fachtext": "Totalreflexion tritt nur auf, wenn Licht aus dem optisch dichteren Stoff auf den dünneren trifft – und erst oberhalb des Grenzwinkels. Wie groß der ist, hängt von beiden Stoffen ab: von Glas in Luft rund 42 Grad, von Wasser in Luft rund 49 Grad. Der Glasstab im Modell grenzt an Luft, hier gilt also 42 Grad. Trifft das Licht noch flacher auf die Wand, bleibt es im Stab und läuft im Zickzack weiter.",
+  "merksatz": [
+   {
+    "pre": "Über dem Grenzwinkel tritt kein Licht mehr aus dem Glas in die Luft aus, es wird vollständig",
+    "loesung": "zurückgeworfen",
+    "post": ". Das nennt man Totalreflexion."
+   },
+   {
+    "pre": "Der Grenzwinkel hängt von beiden Stoffen ab: Glas–Luft rund 42 Grad, Wasser–Luft rund",
+    "loesung": "49",
+    "post": " Grad."
+   }
+  ],
+  "beobachtung": "Bei 30 Grad tritt der größte Teil des Lichts durch die Wand in die Luft, nur ein schwacher Rest wird zurückgeworfen. Bei 40 Grad liegt der austretende Strahl schon sehr flach an der Wand und ist blass. Bei etwa 42 Grad verschwindet er ganz: Ab diesem Grenzwinkel wird alles Licht zurückgeworfen. Bei 60 Grad bleibt das Licht vollständig im Inneren und läuft im Zickzack von Wand zu Wand bis zum Ende. Nach demselben Prinzip führt auch eine Glasfaser das Licht um die Kurve – dort grenzt der Kern allerdings an einen Glasmantel, nicht an Luft.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Opas Glasfaserbündel an der Seite dunkel bleibt und nur an den Enden hell leuchtet.",
+   "zeilen": 3,
+   "loesung": "In der Faser trifft das Licht von innen sehr flach auf die Wand. Der Einfallswinkel liegt über dem Grenzwinkel der Faser, deshalb tritt seitlich kein Licht aus, sondern es wird vollständig zurückgeworfen. So läuft es im Zickzack weiter, auch durch die Schlaufe. Erst am Ende trifft es fast senkrecht auf die Grenzfläche und kann dort austreten. Deshalb sieht man nur die beiden Enden leuchten.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Nenne ein Bauteil aus deinem Alltag, in dem Licht durch Totalreflexion geführt oder umgelenkt wird.",
+  "ueberleitung": "Der Eimer ist leer, der Boden trocken. Am nächsten Morgen fällt die Sonne über die dicke Glasplatte im Fensterbrett auf Bens Bauplan – und auf dem Papier liegt ein schmaler Farbstreifen, den dort niemand hingelegt hat.",
+  "stufe": "grund",
+  "modellgrenze": "Im Modell grenzt der Glasstab an Luft; dafür gilt der Grenzwinkel von etwa 42 Grad. Eine echte Glasfaser hat um den Kern einen Mantel aus zweitem Glas – dort hängt der Grenzwinkel von beiden Gläsern ab und liegt weit höher.",
+  "theme": "farben",
+  "name": "Wie funktioniert ein Lichtleiter?",
+  "auftrag": "Untersuche am Glasstab, ab welchem Winkel an der Wand kein Licht mehr austritt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Struktur der Materie"
+ },
+ {
+  "id": "f5",
+  "titel": "Der Streifen auf dem Bauplan",
+  "problem": "Auf Bens Bauplan liegt am Morgen ein schmaler Streifen aus Rot, Gelb, Grün und Blau. Er kommt von der schrägen Kante der dicken Glasplatte im Fensterbrett. Genau dieselben Farben sitzen als Saum an jeder hellen Kante im Fernrohr. Weiß ist in dem Streifen trotzdem nirgends zu sehen.",
+  "frage": "Welche Farben stecken im weißen Licht?",
+  "predict": [
+   "Das Glas färbt das Licht ein. Aus farblosem Licht macht das Prisma beim Durchgang erst die Farben.",
+   "Die Farben stecken schon im weißen Licht. Das Prisma lenkt Blau stärker ab als Rot und trennt sie dadurch.",
+   "Weißes Licht hat keine Farben in sich. Die Farben entstehen erst dort, wo helles Licht und Schatten aneinanderstoßen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle „weißes Licht“ ein und beobachte, was hinter dem Prisma zu sehen ist. Notiere die Farben in ihrer Reihenfolge.",
+   "Wähle „nur Rot“ und merke dir, wohin dieser Strahl läuft. Wähle danach „nur Blau“ und vergleiche, welcher der beiden Strahlen stärker abgelenkt wird.",
+   "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe durch ein Prisma aus der Schulsammlung und fange das Licht dahinter auf weißem Papier auf."
+  ],
+  "tabCols": [
+   "Eingestelltes Licht",
+   "Was hinter dem Prisma ankommt (Farben, Ablenkung)"
+  ],
+  "tabRows": [
+   "weißes Licht",
+   "nur Rot",
+   "nur Blau",
+   "Gegenprobe am Tisch: Taschenlampe und Prisma"
+  ],
+  "fachtext": "Weißes Licht ist aus Licht vieler Farben zusammengesetzt. Im Prisma wird jede Farbe gebrochen, aber nicht gleich stark: Blaues Licht wird stärker abgelenkt als rotes. Weil die Prismenflächen gegeneinander geneigt sind, addieren sich die Ablenkungen und die Farben laufen auseinander. Diese Zerlegung heißt Dispersion, das Farbband Spektrum; eine Sammellinse führt es wieder zusammen, das Glas sortiert die Farben also nur.",
+  "merksatz": [
+   {
+    "pre": "Weißes Licht ist aus Licht vieler Farben",
+    "loesung": "zusammengesetzt",
+    "post": ". Das Prisma erzeugt die Farben nicht, es trennt sie nur."
+   },
+   {
+    "pre": "Blaues Licht wird im Glas stärker gebrochen als",
+    "loesung": "rotes",
+    "post": ". Deshalb laufen die Farben hinter dem Prisma auseinander."
+   }
+  ],
+  "beobachtung": "Bei „weißes Licht“ entsteht hinter dem Prisma ein Farbband in der Reihenfolge Rot, Orange, Gelb, Grün, Blau, Violett. Bei „nur Rot“ bleibt ein einzelner roter Strahl, der nur schwach aus seiner Richtung abgelenkt wird. Bei „nur Blau“ bleibt ein einzelner blauer Strahl, und dieser wird deutlich stärker abgelenkt. Kein Knopf erzeugt neue Farben, das Prisma sortiert nur, was schon im weißen Licht steckt. Am Tisch zeigt sich dasselbe Band auf dem Papier, mit Rot auf der Seite der schwächeren Ablenkung.",
+  "aufgabe": {
+   "frage": "Erkläre mit deinem Ergebnis, warum sich die hellen Kanten im Fernrohr nie für alle Farben zugleich scharf stellen lassen.",
+   "zeilen": 3,
+   "loesung": "Das Objektivglas bricht das Licht, damit ein Bild entsteht. Weißes Sternenlicht enthält alle Farben, und blaues Licht wird stärker gebrochen als rotes. Deshalb sammelt die Linse das blaue Licht näher bei sich als das rote: Jede Farbe hat ihren eigenen Brennpunkt, und die farbigen Bilder liegen hintereinander. Stellt Ben das rote Bild scharf, ist das blaue schon unscharf und legt sich als farbiger Saum um die helle Kante; dreht er weiter, wechselt der Saum die Farbe. Es ist derselbe Vorgang wie im Prisma, nur an einer gewölbten Fläche.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Übertrage dein Ergebnis auf die geschliffenen Glasanhänger eines Kronleuchters im Sonnenlicht.",
+  "sicherheit": "Blicke niemals direkt in die Sonne, auch nicht durch Prisma oder Linse.",
+  "ueberleitung": "Am Nachmittag zieht ein Schauer durch, danach kommt die Sonne wieder heraus. Über dem Feld hinter dem Haus steht ein Regenbogen – mit den Farben in derselben Reihenfolge wie auf Bens Bauplan.",
+  "stufe": "grund",
+  "theme": "farben",
+  "name": "Welche Farben stecken im weißen Licht?",
+  "auftrag": "Vergleiche, wie stark das Prisma rotes und blaues Licht ablenkt.",
+  "modellgrenze": "Das Farbband der Simulation zeigt sechs Farben nebeneinander. In Wirklichkeit gehen die Farben stufenlos ineinander über.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "id": "f6",
+  "titel": "Der Bogen über dem Feld",
+  "problem": "Über dem nassen Feld steht ein Regenbogen. Ben dreht sich zur Sonne, um ihn besser zu sehen, und plötzlich ist er weg. Mit dem Rücken zur Sonne steht er wieder da, immer im selben Abstand. Näher kommt Ben ihm nicht, so weit er auch läuft.",
+  "frage": "Warum ist ein Regenbogen nur mit der Sonne im Rücken zu sehen?",
+  "predict": [
+   "Das Licht läuft geradeaus durch den Tropfen und tritt hinten farbig aus. Den Bogen siehst du deshalb mit Blick zur Sonne.",
+   "Die Tropfen wirken wie winzige Spiegel und werfen das Sonnenlicht an ihrer Außenseite zurück. Ins Wasser hinein läuft es dabei nicht.",
+   "Das Licht wird an der Rückseite zurückgeworfen und tritt vorn wieder aus. Den Bogen siehst du deshalb mit der Sonne im Rücken."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle „ein Tropfen“ und verfolge den Weg des Lichts: Eintritt vorn, Rückwurf an der Rückseite, Austritt. Halte fest, auf welcher Seite das Licht den Tropfen verlässt.",
+   "Bleibe bei „ein Tropfen“ und vergleiche, in welche Richtung Rot und Violett austreten. Notiere, welche Farbe den größeren Winkel zur einfallenden Richtung hat.",
+   "Stelle „der ganze Bogen“ ein und beobachte, aus welchen Tropfen Rot und Violett ins Auge kommen. Achte darauf, wo der Bogen zur Sonne liegt."
+  ],
+  "tabCols": [
+   "Eingestellte Ansicht",
+   "Was die Simulation zeigt (Weg, Farben, Lage)"
+  ],
+  "tabRows": [
+   "ein Tropfen: Eintritt und Weg im Tropfen",
+   "ein Tropfen: Rückseite des Tropfens",
+   "ein Tropfen: Austrittsrichtung von Rot und Violett",
+   "der ganze Bogen: Lage von Rot und Violett zur Sonne"
+  ],
+  "fachtext": "Im Regentropfen wird Sonnenlicht beim Eintritt gebrochen, an der Rückseite zurückgeworfen und beim Austritt noch einmal gebrochen. Jede Farbe wird dabei verschieden stark gebrochen und verlässt den Tropfen unter einem eigenen Winkel, Rot unter etwa 42 Grad. Den Regenbogen siehst du nur mit der Sonne im Rücken, als Kreisbogen um den Schatten deines Kopfes. Erst unzählige Tropfen zusammen schicken je eine Farbe in dein Auge.",
+  "merksatz": [
+   {
+    "pre": "Im Regentropfen wird das Licht gebrochen, an der Rückseite",
+    "loesung": "zurückgeworfen",
+    "post": " und beim Austritt noch einmal gebrochen."
+   },
+   {
+    "pre": "Einen Regenbogen siehst du nur, wenn die Sonne in deinem",
+    "loesung": "Rücken",
+    "post": " steht. Er hängt an keinem festen Ort."
+   }
+  ],
+  "beobachtung": "Bei „ein Tropfen“ tritt das Licht vorn ein, wird an der Rückseite nach innen zurückgeworfen und verlässt den Tropfen wieder auf der Seite, von der es gekommen ist. Beim Eintritt und beim Austritt wird jede Farbe verschieden stark gebrochen, deshalb laufen die Farben auseinander. Rot verlässt den Tropfen unter etwa 42 Grad, Violett unter einem etwas kleineren Winkel. Bei „der ganze Bogen“ kommt das rote Licht aus den weiter außen liegenden Tropfen, das violette aus den inneren. Der Bogen liegt der Sonne genau gegenüber, als Kreis um den Schatten deines Kopfes.",
+  "aufgabe": {
+   "frage": "Begründe, warum Ben dem Regenbogen über dem Feld nicht näher kommt, so weit er auch läuft.",
+   "zeilen": 3,
+   "loesung": "Der Regenbogen ist kein Gegenstand an einer bestimmten Stelle. Er entsteht aus dem Licht, das gerade diejenigen Tropfen unter etwa 42 Grad in Bens Auge zurückschicken. Läuft Ben weiter, sind es andere Tropfen, die diesen Winkel erfüllen. Der Bogen baut sich dabei ständig neu auf und behält denselben Winkel zur Richtung seines Schattens. Deshalb wandert er mit und lässt sich nicht erreichen.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre einer Person zu Hause, warum an einem Sommermittag kein Regenbogen zu sehen ist.",
+  "ueberleitung": "Die Farbsäume sind erklärt, das Fernrohr ist justiert, und am Freitag ist Neumond. Ben trägt es abends auf das Feld hinter dem Haus, stellt einen hellen Punkt scharf – und nach zwei Minuten ist der Punkt aus dem Bild gewandert, obwohl niemand das Rohr angefasst hat.",
+  "stufe": "grund",
+  "modellgrenze": "Die Simulation zeigt einen einzelnen, ideal runden Tropfen. Am Himmel wirken unzählige Tropfen zusammen, und jeder schickt nur eine einzige Farbe in dein Auge.",
+  "theme": "farben",
+  "name": "Wie entstehen die Farben eines Regenbogens?",
+  "auftrag": "Untersuche an einem einzelnen Tropfen, welchen Weg das Licht darin nimmt.",
+  "alltagKomp": "K7",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g1",
+  "titel": "Einer funkelt, einer nicht",
+  "problem": "Kurz vor Mitternacht stehen zwei helle Punkte dicht nebeneinander über dem Feld. Ben schwenkt das Fernrohr vom einen zum anderen. Der linke zittert und blitzt in Farben, der rechte steht ruhig und rund im Okular. Mia notiert beide. Welcher sein Licht selbst macht, sieht man den Punkten nicht an.",
+  "frage": "Welche Himmelskörper leuchten selbst, welche werden nur beleuchtet?",
+  "predict": [
+   "Zwei der vier leuchten weiter, weil sie ihr Licht selbst machen; die anderen beiden verschwinden.",
+   "Nimmt man das Sonnenlicht weg, verschwinden alle vier Punkte. Ohne die Sonne ist am Himmel nichts zu sehen.",
+   "Der Mond macht sein Licht selbst. Nimmst du die Sonne weg, leuchten drei der vier Punkte weiter; nur der Planet verschwindet."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle nacheinander Sonne, Stern, Mond und Planet. Halte fest, welcher Punkt ruhig und rund steht und welcher zittert.",
+   "Wähle bei jedem der vier Sonnenlicht abdecken und lies ab, ob er weiter leuchtet oder verschwindet.",
+   "Gegenprobe am Tisch: Richte im dunklen Raum eine Taschenlampe auf eine Styroporkugel und decke die Lampe dann ab."
+  ],
+  "tabCols": [
+   "Was ich wähle",
+   "Nach Sonnenlicht abdecken: leuchtet weiter oder verschwindet?"
+  ],
+  "tabRows": [
+   "Sonne",
+   "Stern",
+   "Mond",
+   "Planet"
+  ],
+  "fachtext": "Sonne und Sterne erzeugen ihr Licht selbst, sie sind selbstleuchtend; Mond und Planeten werfen nur Sonnenlicht zurück. Sterne funkeln meistens stärker als Planeten, weil sie uns nahezu punktförmig erscheinen. Ihr dünnes Lichtbündel wird von der unruhigen Luft ständig abgelenkt. Planeten erscheinen als sehr kleine Scheibchen. Dadurch gleichen sich Schwankungen des Lichts teilweise aus.",
+  "merksatz": [
+   {
+    "pre": "Sonne und Sterne erzeugen ihr Licht ohne fremde Hilfe, sie sind",
+    "post": ". Der Mond und die Planeten werfen dagegen nur Sonnenlicht zurück.",
+    "loesung": "selbstleuchtend"
+   },
+   {
+    "pre": "Sterne erscheinen uns nahezu punktförmig und funkeln meistens stärker als Planeten. Ein Planet zeigt dagegen ein winziges",
+    "post": ", dadurch gleichen sich die Schwankungen des Lichts teilweise aus.",
+    "loesung": "Scheibchen"
+   }
+  ],
+  "beobachtung": "Sonne und Stern bleiben sichtbar, auch wenn das Sonnenlicht abgedeckt ist; sie erzeugen ihr Licht selbst und sind selbstleuchtend. Mond und Planet verschwinden dagegen sofort, denn sie werfen nur Sonnenlicht zurück. Der Stern zittert dabei am stärksten und blitzt in Farben, weil er uns nahezu punktförmig erscheint und sein dünnes Lichtbündel von der unruhigen Luft ständig abgelenkt wird. Der Planet steht ruhiger, er zeigt sich als sehr kleines Scheibchen, bei dem sich die Schwankungen des Lichts teilweise ausgleichen. Am Tisch ist es genauso: Ohne Taschenlampe bleibt die Styroporkugel unsichtbar, weil sie nicht selbst leuchtet.",
+  "aufgabe": {
+   "frage": "Begründe, welcher der beiden Lichtpunkte wahrscheinlich ein Planet ist.",
+   "zeilen": 3,
+   "loesung": "Beide Punkte sind ähnlich hell, aber nur der rechte steht im Okular fast ruhig. Wahrscheinlich ist er der Planet. Ein Planet erscheint im Fernrohr als sehr kleines Scheibchen; sein Licht kommt aus vielen Richtungen zugleich, dadurch gleichen sich die Schwankungen teilweise aus. Der linke Punkt zittert stark, das spricht für einen Stern: Sterne erscheinen uns nahezu punktförmig, deshalb funkeln sie meistens stärker. Sicher ist die Zuordnung damit nicht, denn tief über dem Horizont kann auch ein Planet flimmern. Ben sollte den ruhigen Punkt deshalb an mehreren Abenden beobachten: Ein Planet wandert von Nacht zu Nacht vor den Sternen weiter.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Beurteile Bens Satz: „Die ISS ist am Abendhimmel so hell, weil an ihr überall Lampen brennen.“",
+  "sicherheit": "Wenn ihr draußen mit dem Fernrohr beobachtet: Richtet es niemals auf die Sonne. Schon ein kurzer Blick zerstört die Augen.",
+  "ueberleitung": "Mia trägt den ruhigen Punkt mit 23:40 Uhr in ihre Liste ein und schickt sie sofort ihrer Cousine nach Japan. Die soll mitsuchen – sitzt aber schon im Bus zur Schule.",
+  "theme": "himmel7",
+  "name": "Sonne, Mond und Sterne – was leuchtet am Himmel?",
+  "stufe": "grund",
+  "modellgrenze": "Das Lampenmodell zeigt nur den Unterschied zwischen selbstleuchtenden und beleuchteten Körpern; das Funkeln der Sterne in der unruhigen Luft kann es nicht nachstellen.",
+  "auftrag": "Prüfe in der Simulation, was noch zu sehen ist, wenn du das Sonnenlicht abdeckst.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g2",
+  "titel": "Dieselbe Minute, vier Uhrzeiten",
+  "problem": "Mia schickt ihre Beobachtungsliste an vier Leute: an ihre Cousine in Japan, an Bens Onkel in New York, an eine Brieffreundin in Australien und in die Klassengruppe. Alle vier antworten mit ihrer Ortszeit. Auf jedem Handy steht eine andere Uhrzeit, obwohl alle im selben Moment lesen.",
+  "frage": "Warum ist es in Japan Nacht, während bei uns die Sonne scheint?",
+  "predict": [
+   "Die Uhrzeiten sind reine Vereinbarung. Die Menschen in Japan haben ihre Uhren einfach anders gestellt; mit der Sonne hat das nichts zu tun.",
+   "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Weil jeder Ort dabei woanders steht, steht die Sonne für ihn zu einer anderen Stunde am höchsten – und seine Uhr zeigt etwas anderes.",
+   "In Japan ist Nacht, weil Japan gerade viel weiter von der Sonne weg ist. So weit reicht ihr Licht nicht mehr."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Halte mit Pause an und stelle Drehung auf 0°. Notiere, wie groß der helle Teil ist und ob Deutschland und Japan hell oder dunkel sind.",
+   "Drehe auf 90°, 180° und 270° weiter und lies jedes Mal beide Orte ab. Achte darauf, ob der helle Teil je größer wird.",
+   "Gegenprobe am Tisch: Richte eine Taschenlampe waagerecht auf einen Globus und drehe ihn langsam."
+  ],
+  "tabCols": [
+   "Drehung eingestellt",
+   "Deutschland und Japan: hell oder dunkel?"
+  ],
+  "tabRows": [
+   "0° (Ausgangsstellung)",
+   "90°",
+   "180°",
+   "270°"
+  ],
+  "fachtext": "Die Erde dreht sich in 24 Stunden einmal um ihre Achse; beleuchtet ist immer nur die der Sonne zugewandte Hälfte. Weil jeder Ort anderswo auf der Kugel liegt, steht die Sonne für ihn zu einer anderen Stunde am höchsten. Damit nicht jedes Dorf seine eigene Uhr braucht, ist die Erde in 24 Zeitzonen eingeteilt; von einer zur nächsten springt die Uhr um eine Stunde. Orte im Osten sind uns voraus, Orte im Westen hinken hinterher.",
+  "merksatz": [
+   {
+    "pre": "Die Sonne beleuchtet immer nur eine",
+    "post": " der Erdkugel. Auf der anderen ist zur selben Zeit Nacht.",
+    "loesung": "Hälfte"
+   },
+   {
+    "pre": "Damit nicht jeder Ort seine eigene Uhr braucht, ist die Erde in 24",
+    "post": " eingeteilt. Von einer zur nächsten springt die Uhr um eine Stunde.",
+    "loesung": "Zeitzonen"
+   }
+  ],
+  "beobachtung": "Bei jeder Einstellung ist genau die Hälfte der Erde beleuchtet, die andere Hälfte liegt im Schatten; der helle Teil wird nie größer oder kleiner, er wandert nur weiter. Deutschland und Japan sind fast nie gleich hell: Liegt Deutschland mitten im Licht, steht Japan schon nahe an der Schattengrenze oder im Dunkeln. Nach 180° ist es umgekehrt, ein Ort, der vorher im Licht stand, liegt jetzt im Schatten. Nach 360° steht jeder Ort wieder genau wie am Anfang, und eine solche volle Drehung dauert 24 Stunden. Auf eine Stunde entfallen also 15°, und weil jeder Ort dadurch seine eigene Mittagszeit hätte, ist die Erde in 24 Zeitzonen eingeteilt.",
+  "aufgabe": {
+   "frage": "Erkläre, warum alle vier Antworten in Mias Liste aus demselben Augenblick stammen, obwohl vier verschiedene Uhrzeiten daraufstehen.",
+   "zeilen": 3,
+   "loesung": "Die Sonne beleuchtet immer nur die ihr zugewandte Hälfte der Erdkugel. Die vier Orte liegen auf ganz verschiedenen Stellen dieser Kugel, deshalb steht die Sonne für jeden zu einer anderen Stunde am höchsten. Aus diesem Grund gilt an jedem Ort eine andere Zeitzone. Japan liegt weit östlich und ist Mia rund acht Stunden voraus, New York liegt westlich und hinkt etwa sechs Stunden hinterher. Geantwortet haben trotzdem alle vier im selben Augenblick.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Übertrage das auf Bens Videoanruf: Wann muss er hier anrufen, damit es in New York 19 Uhr ist?",
+  "sicherheit": "Die Lampe wird im Betrieb heiß. Fasse sie nur am Fuß an und lege nichts über den Schirm.",
+  "ueberleitung": "Beim Umstellen des Fernrohrs rutscht Mia der Zettel mit den vier Uhrzeiten aus der Hand. Er segelt in weiten Bögen ins Gras – das Okular, das Ben kurz zuvor vom Tisch gestoßen hat, war viel schneller unten.",
+  "theme": "himmel7",
+  "name": "Wie entstehen Tag und Nacht?",
+  "stufe": "grund",
+  "modellgrenze": "Der beleuchtete Globus zeigt nur die Drehung der Erde. Die tatsächlichen Zeitzonen folgen dagegen Ländergrenzen und sind am Modell nicht abzulesen.",
+  "auftrag": "Untersuche mit dem Regler Drehung, wie Licht und Schatten über die Erdkugel wandern.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g3",
+  "titel": "Wer ist zuerst unten?",
+  "problem": "Das Okular lag sofort im Gras, kaum dass Ben es vom Tisch gestoßen hat. Mias Zettel dagegen segelt in weiten Bögen hinterher und braucht ewig. Beide sind aus derselben Höhe gestartet. Ben tippt auf das Gewicht, Mia zerknüllt den Zettel und lässt ihn noch einmal los.",
+  "frage": "Fällt ein schwerer Körper schneller als ein leichter?",
+  "predict": [
+   "Die Münze kommt immer deutlich früher an, weil sie viel schwerer ist. Schwere Dinge fallen schneller als leichte.",
+   "Der größere Gegenstand fällt schneller. Wie schwer etwas ist, spielt keine Rolle – auf die Größe kommt es an.",
+   "Sobald das Papier zerknüllt ist, kommen beide fast gleichzeitig an. Wie schnell etwas fällt, hängt nicht vom Gewicht ab, sondern davon, wie stark die Luft es bremst."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle in der Simulation Erde und starte den Fall mit Noch einmal fallen lassen. Achte genau darauf, ob der schwere Körper vor dem leichten ankommt oder beide gleichzeitig.",
+   "Wähle danach Mond und anschließend Jupiter und lass jedes Mal noch einmal fallen. Halte fest, wie lange der Fall jeweils dauert und ob sich die Reihenfolge dabei ändert.",
+   "Gegenprobe am Tisch: Lass eine Münze und ein flaches Blatt Papier aus gleicher Höhe gleichzeitig los. Zerknülle dann dasselbe Blatt zu einer festen Kugel und wiederhole den Versuch."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "Wer ist zuerst unten, wie lange dauert der Fall?"
+  ],
+  "tabRows": [
+   "Erde",
+   "Mond",
+   "Jupiter",
+   "Gegenprobe am Tisch: Münze und flaches Papier"
+  ],
+  "fachtext": "Die Erde zieht alle Körper durch ihre Gravitation an. Ohne Luft fallen leichte und schwere Körper gleich schnell. In Luft werden Gegenstände mit großer Fläche und kleiner Masse stärker abgebremst. Deshalb fällt eine Feder langsamer als eine Münze.",
+  "merksatz": [
+   {
+    "pre": "Die Erde zieht jeden Körper zu sich hin. Diese Anziehung zwischen Körpern mit Masse heißt",
+    "post": ".",
+    "loesung": "Gravitation"
+   },
+   {
+    "pre": "Ohne Luft fallen alle Körper gleich schnell. Dass eine Feder langsamer fällt als eine Münze, liegt allein am",
+    "post": ".",
+    "loesung": "Luftwiderstand"
+   }
+  ],
+  "beobachtung": "In der Simulation kommen der schwere und der leichte Körper auf allen drei Himmelskörpern gleichzeitig unten an. Es gibt dort keine Luft, deshalb bremst nichts den leichteren Körper ab. Verschieden ist nur die Dauer: Auf Jupiter ist der Fall am kürzesten, auf der Erde dauert er länger, auf dem Mond am längsten, ungefähr zweieinhalbmal so lange wie auf der Erde. Der Grund ist die unterschiedlich starke Gravitation. Am Tisch sieht es zuerst anders aus: Die Münze liegt lange vor dem flachen Blatt unten, weil das Papier mit seiner großen Fläche vom Luftwiderstand gebremst wird. Zerknüllt fällt dasselbe Blatt fast gleich schnell wie die Münze, obwohl seine Masse sich nicht geändert hat.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Bens Okular sofort im Gras lag, Mias flacher Zettel aber in Bögen hinterhersegelte, obwohl beide von derselben Tischkante gestartet sind.",
+   "zeilen": 3,
+   "loesung": "Die Gravitation zieht beide nach unten, und ohne Luft würden schwere und leichte Körper dabei gleich schnell fallen. Der Unterschied kommt also von der Luft. Der flache Zettel hat eine große Fläche und eine kleine Masse, deshalb bremst ihn der Luftwiderstand stark und lenkt ihn zur Seite ab. Das Okular ist klein und schwer, an ihm kann die Luft fast nichts ausrichten. Genau das zeigt der Versuch mit Münze und Papier: Zerknüllt Mia den Zettel, wird seine Fläche klein und er fällt fast so schnell wie das Okular.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Vergleiche, wie schnell ein Fallschirmspringer vor und nach dem Öffnen des Schirms fällt.",
+  "sicherheit": "Lass Münze und Papier nur aus Schulterhöhe auf den Boden fallen, nicht vom Treppenhaus oder aus dem Fenster. Achte darauf, dass niemand darunter steht.",
+  "ueberleitung": "Die Erde zieht also jeden Körper an, den schweren wie den leichten. Nur: Wie stark eigentlich? Am Abend spielt Ben mit einem Magneten und einer Büroklammer – und stutzt.",
+  "theme": "himmel7",
+  "name": "Die Gravitation – warum fällt alles nach unten?",
+  "stufe": "grund",
+  "auftrag": "Vergleiche in der Simulation den Fall auf Mond, Erde und Jupiter.",
+  "modellgrenze": "Die Simulation lässt die Luft weg. Auf der Erde bremst die Luft leichte Körper ab, deshalb fällt ein Blatt Papier dort langsamer als ein Stein.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g9",
+  "name": "Wovon hängt die Anziehung zweier Körper ab?",
+  "theme": "himmel7",
+  "titel": "Erst nichts, dann ein Ruck",
+  "problem": "Ben hält einen Magneten über eine Büroklammer auf dem Tisch. Aus zehn Zentimetern passiert nichts. Er geht auf fünf herunter – immer noch nichts. Bei zwei Zentimetern springt die Klammer plötzlich hoch. Für Ben sieht es aus, als sei die Anziehung nicht gleichmäßig gewachsen, sondern auf einmal da gewesen.",
+  "frage": "Wovon hängt die Anziehung zweier Körper ab – von den Massen, vom Abstand?",
+  "predict": [
+   "Bei doppeltem Abstand bleibt weniger als die Hälfte übrig; die Anziehung nimmt schneller ab.",
+   "Doppelter Abstand halbiert die Anziehung, dreifacher Abstand drittelt sie.",
+   "Die Anziehung wirkt erst ab einer bestimmten Nähe. Weiter weg ist sie gar nicht vorhanden und schaltet sich dann plötzlich ein."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehung ab. Dieser Wert ist dein Ausgangswert, mit dem du alles Weitere vergleichst.",
+   "Verdopple mit ×2 Masse links die Masse der linken Kugel und lies ab. Drücke denselben Knopf noch einmal, sodass die Masse viermal so groß ist wie am Anfang, und lies wieder ab.",
+   "Setze zurück und verdopple stattdessen mit ×2 Abstand den Abstand, danach ein zweites Mal. Vergleiche beide Werte mit deinem Ausgangswert."
+  ],
+  "sicherheit": "Halte starke Magnete von Handys, Bankkarten und Uhren fern.",
+  "modellgrenze": "Ein Magnet zieht nur Eisen, Nickel und Kobalt an, die Gravitation jeden Körper. Die Abstandsregel dieser Seite gilt nur für die Gravitation.",
+  "tabCols": [
+   "Was ich verändere",
+   "Anziehung im Vergleich zum Ausgangswert"
+  ],
+  "tabRows": [
+   "Masse der linken Kugel verdoppelt",
+   "Masse der linken Kugel noch einmal verdoppelt (vierfach)",
+   "Abstand verdoppelt",
+   "Abstand noch einmal verdoppelt (vierfach)"
+  ],
+  "fachtext": "Zwei Körper ziehen sich gegenseitig an; wie stark, hängt von zwei Dingen ab. Je größer die Massen sind, desto stärker die Anziehung: Verdoppelt man eine Masse, verdoppelt sich auch die Kraft. Der Abstand wirkt in die andere Richtung und viel schneller. Verdoppelt man ihn, sinkt die Anziehung nicht auf die Hälfte, sondern auf ein Viertel; bei dreifachem Abstand bleibt nur ein Neuntel übrig. Deshalb hält die Sonne trotz ihrer gewaltigen Entfernung alle Planeten fest – sie ist einfach unvorstellbar massereich.",
+  "merksatz": [
+   {
+    "pre": "Je größer die Massen, desto stärker die Anziehung; je größer der Abstand, desto",
+    "loesung": "schwächer",
+    "post": " ist sie."
+   },
+   {
+    "pre": "Bei doppeltem Abstand bleibt nur noch ein",
+    "loesung": "Viertel",
+    "post": " der Anziehung übrig, bei vierfachem nur ein Sechzehntel."
+   }
+  ],
+  "beobachtung": "Bei festem Abstand wächst die Anziehung genauso wie die Masse: Bei doppelter Masse ist sie doppelt so groß, bei vierfacher Masse viermal so groß. Beim Abstand geschieht etwas anderes und viel schneller. Doppelter Abstand lässt nicht die Hälfte übrig, sondern nur ein Viertel des Ausgangswertes, vierfacher Abstand sogar nur ein Sechzehntel. Die Anziehung wird also schwächer, sobald der Abstand wächst, und zwar sehr steil. Auch beim Magneten wächst die Kraft erst dicht davor stark an – er folgt dabei allerdings einer eigenen Regel, nicht der Abstandsregel dieser Simulation.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die Sonne die Erde festhält, obwohl sie 150 Millionen Kilometer entfernt ist.",
+   "zeilen": 3,
+   "loesung": "Die Anziehung hängt von zwei Dingen ab, und beide wirken hier gegeneinander. Der riesige Abstand schwächt sie sehr stark ab, denn schon bei doppeltem Abstand bleibt nur ein Viertel übrig. Die Masse der Sonne ist aber gewaltig: Sie ist rund 330 000-mal so schwer wie die Erde und enthält fast die gesamte Masse des Sonnensystems. Dieser Massenanteil gleicht die große Entfernung mehr als aus, sodass am Ort der Erde noch genug Anziehung übrig bleibt, um sie auf ihrer Bahn zu halten.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum du die Anziehung zwischen dir und deinem Tisch nicht bemerkst.",
+  "ueberleitung": "Die Sonne zieht also kräftig genug, um die Erde zu halten. Umso merkwürdiger ist, dass die Erde nicht längst hineingestürzt ist. Draußen auf dem Feld hebt Ben einen Kieselstein auf.",
+  "auftrag": "Untersuche in der Simulation, wie sich die Anziehung ändert, wenn du Masse und Abstand verdoppelst.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "g6",
+  "titel": "Warum stürzt er nicht?",
+  "problem": "Ben wirft einen Kieselstein quer über das dunkle Feld. Der Stein fliegt ein Stück und landet im Gras. Er wirft noch einmal, viel fester – der Stein fliegt weiter, landet aber wieder. Alles, was er wirft, kommt herunter. Nur der helle Punkt am Himmel nicht.",
+  "frage": "Warum stürzt die Erde nicht in die Sonne, obwohl diese sie anzieht?",
+  "predict": [
+   "So weit draußen zieht die Sonne gar nicht mehr am Planeten. Weil ihn nichts mehr festhält, läuft er dort ganz von selbst im Kreis weiter.",
+   "Alles hängt an der Startgeschwindigkeit: Ist sie zu klein, stürzt der Planet in die Sonne; passt sie, läuft er auf einer fast kreisförmigen Bahn immer wieder herum.",
+   "Nach außen wirkt eine zweite Kraft, die genauso stark zieht wie die Sonne. Weil sich beide ausgleichen, bleibt der Planet auf seiner Bahn."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle die Startgeschwindigkeit quer zur Sonne auf 10 km/s ein und wähle „neu starten“. Schalte auf Zeitraffer ×4 und verfolge, ob der Planet an der Sonne vorbeikommt oder in sie hineinfällt.",
+   "Schalte Vergleichsspur an und lass den Planeten nacheinander mit 20 km/s, 30 km/s und 45 km/s laufen, dazwischen jeweils neu starten. Die alten Spuren bleiben stehen, so liegen alle vier Bahnen übereinander.",
+   "Gegenprobe am Tisch: Wirf auf dem Schulhof einen Ball erst sanft, dann so fest du kannst. Er fliegt jedes Mal weiter und landet doch wieder, und du siehst, was ihm gegenüber dem Planeten fehlt."
+  ],
+  "tabCols": [
+   "Startgeschwindigkeit quer zur Sonne",
+   "Wie verläuft die Bahn?"
+  ],
+  "tabRows": [
+   "10 km/s",
+   "20 km/s",
+   "30 km/s",
+   "45 km/s"
+  ],
+  "fachtext": "Die Sonne zieht den Planeten ständig zu sich; das ist dieselbe Gravitation, die auf der Erde alles nach unten zieht. Gleichzeitig ist der Planet quer dazu unterwegs, deshalb fällt er immerzu an der Sonne vorbei statt auf sie zu. Aus beidem zusammen entsteht seine Umlaufbahn, meist eine leicht gedehnte Ellipse. Ist er zu langsam, stürzt er hinein; ist er viel zu schnell, entkommt er für immer.",
+  "merksatz": [
+   {
+    "pre": "Die Sonne zieht den Planeten ständig zu sich. Weil er gleichzeitig quer dazu unterwegs ist, fällt er immerzu an ihr",
+    "post": ". So kommt sein Fall nie an.",
+    "loesung": "vorbei"
+   },
+   {
+    "pre": "Aus Anziehung und Querbewegung zusammen entsteht die geschlossene",
+    "post": " des Planeten. Sie ist meist eine leicht gedehnte Ellipse.",
+    "loesung": "Umlaufbahn"
+   }
+  ],
+  "beobachtung": "Bei 10 km/s ist der Anschub zu klein: Der Planet fällt nicht an der Sonne vorbei, sondern trifft sie – die Simulation meldet „stürzt in die Sonne“. Bei 20 km/s reicht es für eine lang gezogene Ellipse, die zwischen 0,29 AE und 1,00 AE hin und her läuft. Bei 30 km/s ist die Bahn fast ein Kreis, so wie bei der Erde; genau kreisrund wäre sie bei 29,8 km/s. Bei 45 km/s ist er zu schnell und entkommt – ab 42,1 km/s biegt die Spur nicht mehr zurück. Zwischen Hineinfallen und Entkommen liegt also nur ein schmaler Bereich, und genau darin laufen die Planeten.",
+  "aufgabe": {
+   "frage": "Erkläre, warum der Planet nicht in die Sonne stürzt, obwohl sie ihn ununterbrochen zu sich zieht.",
+   "zeilen": 3,
+   "loesung": "Die Sonne zieht den Planeten wirklich ununterbrochen zu sich, genau wie die Erde Bens Kieselstein zu sich zieht. Der Planet ist aber gleichzeitig quer dazu unterwegs, deshalb wird seine Bewegung nur zur Seite gebogen. Er fällt also die ganze Zeit, kommt bei der Sonne aber nie an, sondern fällt immerzu an ihr vorbei. Aus Anziehung und Querbewegung zusammen entsteht die Umlaufbahn. Würde man den Planeten stark abbremsen, stürzte er tatsächlich in die Sonne.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Beschreibe, was mit dem Mond geschähe, wenn man ihn auf seiner Bahn plötzlich anhalten könnte.",
+  "ueberleitung": "Am Bildschirm zieht ein einziger Planet ruhig seine Bahn. Draußen sind es acht – und Mia behauptet, einer von ihnen sei im Mittel leichter als dasselbe Volumen Wasser.",
+  "theme": "himmel7",
+  "name": "Warum fallen die Planeten nicht in die Sonne?",
+  "stufe": "grund",
+  "modellgrenze": "Die Simulation rechnet nur mit einer Sonne und einem Planeten; die Anziehung der Planeten untereinander sowie ihre wahren Größen und Abstände lässt sie weg.",
+  "auftrag": "Untersuche, welche Startgeschwindigkeit quer zur Sonne die Bahn zu einem Kreis schließt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g7",
+  "titel": "Die Kleinen und die Riesen",
+  "problem": "Mia hat den Saturn im Okular: ein blasses Kügelchen mit Henkeln. Kurz danach steht der Mars im Bild, klein und rostrot. In Bens Buch stehen beide gleich groß untereinander, als wären sie Geschwister. Über ihre wahre Größe verrät das Bild aber nichts, und keiner von beiden weiß, welcher der größere ist.",
+  "frage": "Worin unterscheiden sich die vier inneren Planeten von den vier äußeren?",
+  "predict": [
+   "Je weiter ein Planet von der Sonne weg steht, desto kleiner ist er. Die vier äußeren sind winzige, kalte Brocken, die kaum noch etwas abbekommen.",
+   "Alle acht Planeten sind feste Kugeln, auf denen du stehen könntest. Die äußeren sind nur größer und kälter.",
+   "Die vier inneren Planeten sind klein, fest und für ihre Größe schwer. Die vier äußeren sind viel größer, haben keine feste Oberfläche und sind für ihre Größe erstaunlich leicht."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle Größen. Die acht Planeten stehen dann im gleichen Maßstab nebeneinander. Suche den größten und den kleinsten heraus und merke dir, wo die Grenze zwischen den kleinen und den großen verläuft.",
+   "Öffne den Steckbrief nacheinander für Merkur, Erde, Jupiter und Neptun. Lies jedes Mal den Durchmesser ab und ob der Planet eine feste Oberfläche hat, und trage beides in die Tabelle ein.",
+   "Wähle Abstände und lass die Planeten mit Umlauf bei sehr schnell laufen. Achte darauf, dass die vier kleinen Planeten innen dicht beieinander kreisen und die vier großen weit außen."
+  ],
+  "tabCols": [
+   "Planet im Steckbrief",
+   "Durchmesser und Oberfläche"
+  ],
+  "tabRows": [
+   "Merkur",
+   "Erde",
+   "Jupiter",
+   "Neptun"
+  ],
+  "fachtext": "Die vier inneren Planeten Merkur, Venus, Erde und Mars besitzen feste Oberflächen und werden als Gesteinsplaneten bezeichnet. Die vier äußeren Planeten sind wesentlich größer. Jupiter und Saturn sind Gasriesen, Uranus und Neptun Eisriesen. Sie besitzen keine feste Oberfläche, auf der man stehen könnte. Die mittlere Dichte des Saturn ist geringer als die Dichte von Wasser.",
+  "merksatz": [
+   {
+    "pre": "Merkur, Venus, Erde und Mars besitzen feste Oberflächen. Wegen dieser Oberflächen nennt man die vier inneren Planeten",
+    "post": ".",
+    "loesung": "Gesteinsplaneten"
+   },
+   {
+    "pre": "Von den vier äußeren Planeten sind Jupiter und Saturn Gasriesen, Uranus und Neptun dagegen",
+    "post": ". Keiner von ihnen hat eine feste Oberfläche, auf der man stehen könnte.",
+    "loesung": "Eisriesen"
+   }
+  ],
+  "beobachtung": "In der Ansicht Größen sind die vier inneren Planeten deutlich kleiner als die vier äußeren. Merkur misst rund 4 900 km, die Erde rund 12 800 km, und beide haben laut Steckbrief eine feste Oberfläche. Jupiter ist mit rund 143 000 km etwa elfmal so breit wie die Erde, Neptun mit rund 49 500 km noch etwa viermal so breit. Keiner der vier äußeren hat eine feste Oberfläche, auf der man stehen könnte. Neptun ist der kleinste der vier Riesen und trotzdem viel größer als jeder der vier inneren Planeten.",
+  "aufgabe": {
+   "frage": "Begründe, warum man die acht Planeten in zwei Gruppen einteilt, und ordne den Saturn einer Gruppe zu.",
+   "zeilen": 3,
+   "loesung": "Die acht Planeten unterscheiden sich in Größe, Aufbau und Dichte zugleich. Merkur, Venus, Erde und Mars sind klein, besitzen feste Oberflächen und eine hohe Dichte; sie werden als Gesteinsplaneten bezeichnet. Die vier äußeren Planeten sind wesentlich größer und haben keine feste Oberfläche, auf der man stehen könnte: Jupiter und Saturn sind Gasriesen, Uranus und Neptun Eisriesen. Getrennt werden die beiden Gruppen durch den Asteroidengürtel zwischen Mars und Jupiter. Saturn gehört damit zu den äußeren Planeten, und zwar zu den Gasriesen; seine mittlere Dichte ist mit rund 0,7 g/cm³ geringer als die Dichte von Wasser.",
+   "komp": "UF3",
+   "afb": "II"
+  },
+  "alltag": "Recherchiere, warum Pluto seit 2006 nicht mehr zu den Planeten zählt, sondern als Zwergplanet gilt.",
+  "ueberleitung": "Auf dem Jupiter könnte Ben nicht einmal stehen, eine feste Oberfläche hat der Gasriese ja nicht. Wie stark der Riese an ihm ziehen würde, fragt er sich trotzdem. Abends läuft zu Hause ein alter Film über die Mondlandung.",
+  "theme": "himmel7",
+  "name": "Acht Planeten, zwei Sorten",
+  "stufe": "grund",
+  "modellgrenze": "Die Maßstabsansicht vergleicht nur Durchmesser, Abstände und Dichten; über den inneren Aufbau der Planeten oder ihre Temperaturen sagt sie nichts.",
+  "auftrag": "Vergleiche in der Ansicht Größen und im Steckbrief beide Gruppen miteinander.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g8",
+  "titel": "Hüpfen wie auf dem Mond",
+  "problem": "Ben hat abends den alten Film über die Mondlandung gesehen: Die Astronauten hüpfen in schweren Anzügen meterweit. Am nächsten Morgen stellt er sich auf die Personenwaage im Bad und teilt seine Zahl durch sechs. Mia sagt, er bringe auf dem Mond keinen Krümel weniger mit.",
+  "frage": "Wäre ich auf dem Mond wirklich leichter – oder nur mein Gewicht?",
+  "predict": [
+   "Die Federwaage zeigt auf dem Mond viel weniger an, ungefähr ein Sechstel. Die Masse des Objekts bleibt dabei völlig unverändert.",
+   "Auf dem Mond wird das Objekt selbst leichter: Es verliert dort einen Teil seines Stoffes und hat weniger Masse als auf der Erde.",
+   "Auf dem Mond gibt es gar keine Anziehung. Die Federwaage zeigt dort null, und am Boden bleiben die Astronauten nur wegen ihrer schweren Anzüge."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle in der Simulation Erde ein und lies beide Anzeigen ab: die Masse in Kilogramm und die Gewichtskraft in Newton.",
+   "Wähle nacheinander Mond und Jupiter und lies jedes Mal beide Werte ab. Trage sie in die Tabelle ein.",
+   "Teile bei jedem Himmelskörper die Gewichtskraft durch die Masse und vergleiche die drei Ergebnisse. Wähle danach noch einmal Erde und prüfe, ob dieselben Werte wie am Anfang erscheinen."
+  ],
+  "tabCols": [
+   "Eingestellter Himmelskörper",
+   "Masse in kg / Gewichtskraft in N"
+  ],
+  "tabRows": [
+   "Erde",
+   "Mond",
+   "Jupiter",
+   "Gegenprobe: noch einmal Erde"
+  ],
+  "fachtext": "Die Masse eines Körpers wird in Kilogramm angegeben und bleibt auf Erde, Mond und anderen Himmelskörpern gleich. Die Gewichtskraft hängt davon ab, wie stark ein Himmelskörper den Körper anzieht. Sie wird in Newton gemessen und von einer Federwaage angezeigt. Auf dem Mond beträgt die Gewichtskraft ungefähr ein Sechstel des Wertes auf der Erde. Eine Balkenwaage vergleicht dagegen zwei Massen.",
+  "merksatz": [
+   {
+    "pre": "Wie viel Stoff in einem Körper steckt, gibt seine",
+    "post": " an. Sie wird in Kilogramm angegeben und ist auf dem Mond genauso groß wie auf der Erde.",
+    "loesung": "Masse"
+   },
+   {
+    "pre": "Die Gewichtskraft eines Körpers wird in",
+    "post": " gemessen und von einer Federwaage angezeigt. Auf dem Mond beträgt sie ungefähr ein Sechstel des Wertes auf der Erde.",
+    "loesung": "Newton"
+   }
+  ],
+  "beobachtung": "Die Masse bleibt bei jedem Himmelskörper dieselbe: 60 Kilogramm. Die Federwaage zeigt dagegen jedes Mal etwas anderes an. Auf der Erde sind es rund 588 Newton, auf dem Mond nur etwa 96 Newton und damit ungefähr ein Sechstel davon, auf dem Jupiter dagegen rund 1488 Newton, also mehr als das Doppelte des Erdwertes. Geändert hat sich nicht die Person, sondern nur, wie stark der Himmelskörper an ihr zieht.",
+  "aufgabe": {
+   "frage": "Beurteile Bens Rechnung, die Zahl von seiner Personenwaage für den Mond einfach durch sechs zu teilen.",
+   "zeilen": 3,
+   "loesung": "Für die Kraft stimmt Bens Rechnung, für ihn selbst nicht. Eine Personenwaage misst eine Kraft und rechnet sie für die Bedingungen auf der Erde in einen Wert in Kilogramm um. Auf dem Mond würde sie deshalb einen anderen Wert anzeigen, obwohl sich die tatsächliche Masse nicht verändert. Die Gewichtskraft beträgt auf dem Mond ungefähr ein Sechstel des Wertes auf der Erde; in diesem Sinn passt Bens Division durch sechs. Seine Masse in Kilogramm bleibt dabei gleich, denn er verliert unterwegs keinen Krümel Stoff. Eine Balkenwaage vergleicht zwei Massen, deshalb bliebe das Massenverhältnis auch auf dem Mond gleich und sie zeigte dort dasselbe Ergebnis wie zu Hause. Mia hat also recht.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "alltag": "Erkläre, warum Astronauten auf dem Mond hüpfen können, obwohl ihr Anzug eine große Masse hat.",
+  "ueberleitung": "Der Mond zieht schwächer als die Erde, aber er zieht. Und zwar nicht nur an dem, was auf ihm steht: Im Urlaub liegt Bens Boot morgens im Wasser und mittags im Schlick.",
+  "theme": "himmel7",
+  "name": "Wäre ich auf dem Mond wirklich leichter?",
+  "stufe": "grund",
+  "modellgrenze": "Die Simulation zeigt nur die Anzeige der Federwaage; wie sich Gehen und Springen bei kleinerer Gewichtskraft anfühlen, gibt sie nicht wieder.",
+  "auftrag": "Vergleiche mit den Knöpfen Erde, Mond und Jupiter, welche der beiden Anzeigen sich ändert.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "g10",
+  "name": "Warum steigt und fällt das Meer zweimal am Tag?",
+  "theme": "himmel7",
+  "titel": "Zweimal am Tag",
+  "problem": "Im Urlaub liegt Bens Boot am Morgen im Wasser, mittags im Schlick und abends wieder im Wasser. Am nächsten Tag geschieht dasselbe, nur eine knappe Stunde später. Im Hafen hängt ein Zettel mit Uhrzeiten für die ganze Woche – jemand kann das offenbar vorhersagen.",
+  "frage": "Warum steigt und fällt das Meer zweimal am Tag?",
+  "predict": [
+   "Der Mond zieht das Wasser auf seiner Seite hoch; deshalb gibt es einmal am Tag Flut.",
+   "Es gibt zwei Wasserberge auf gegenüberliegenden Seiten; deshalb gibt es zweimal am Tag Flut.",
+   "Ebbe und Flut macht der Wind. Drückt er das Wasser ans Ufer, steigt es; dreht er, läuft es wieder ab."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Suche die Stellen, an denen das Wasser am höchsten steht. Halte fest, wie viele es sind und wo sie liegen.",
+   "Vergleiche die Anziehung auf das Wasser der Mondseite, auf den Erdmittelpunkt und auf das Wasser der Rückseite.",
+   "Drehe mit Erde von Hand drehen einmal ganz herum und zähle, wie oft dein Ort durch hohes Wasser läuft."
+  ],
+  "modellgrenze": "Die Simulation zeigt eine glatte Wasserkugel. In Wirklichkeit lenken Kontinente, flache Küsten und Meeresbecken das Wasser ab; deshalb kommt die Flut an manchen Orten Stunden später und fällt sehr unterschiedlich hoch aus.",
+  "tabCols": [
+   "Reglerstellung Erde von Hand drehen",
+   "Wasserstand an deinem Ort"
+  ],
+  "tabRows": [
+   "0 h",
+   "6 h",
+   "12 h",
+   "Gegenprobe: 0 h mit Sonne dazu"
+  ],
+  "fachtext": "Der Mond zieht nicht nur die Erde an, sondern auch jeden Tropfen Wasser darauf – und weil die Anziehung mit dem Abstand abnimmt, nicht überall gleich stark. Das Wasser auf der Mondseite ist ihm am nächsten und wird am stärksten gezogen; es türmt sich zum Mond hin auf. Der Erdmittelpunkt wird schon schwächer gezogen, das Wasser auf der Rückseite am schwächsten: Dort wird die feste Erde gewissermaßen unter dem Wasser weggezogen, und es bleibt als zweiter Berg zurück. Die Erde dreht sich an einem Tag einmal durch beide Berge hindurch. Weil der Mond währenddessen selbst ein Stück weiterwandert, dauert das genau genommen 24 Stunden und 50 Minuten – deshalb verschiebt sich alles Tag für Tag um knapp eine Stunde.",
+  "merksatz": [
+   {
+    "pre": "Weil die Anziehung des Mondes mit dem Abstand abnimmt, entstehen auf der Erde",
+    "loesung": "zwei",
+    "post": " Wasserberge, und zwar auf gegenüberliegenden Seiten."
+   },
+   {
+    "pre": "Weil sich die Erde an einem Tag einmal durch beide Berge dreht, gibt es an einem Ort zweimal am Tag",
+    "loesung": "Flut",
+    "post": "."
+   }
+  ],
+  "beobachtung": "In der Simulation türmt sich das Wasser an zwei Stellen auf: einmal genau zum Mond hin und einmal genau auf der abgewandten Seite. Dazwischen liegen zwei flache Stellen, jeweils eine Vierteldrehung entfernt. Steht dein Ort bei 0 h unter einem Berg, so liegt er bei 6 h flach, bei 12 h wieder hoch und bei 18 h wieder flach. Bei einer vollen Drehung von 24 h läuft er deshalb zweimal durch Flut und zweimal durch Ebbe, also ungefähr alle sechs Stunden ein Wechsel. Mit Sonne dazu bleiben es zwei Berge, sie fallen aber höher aus, wenn Sonne und Mond in einer Linie stehen.",
+  "aufgabe": {
+   "frage": "Erkläre, warum es auch auf der Seite Flut gibt, die vom Mond abgewandt ist.",
+   "zeilen": 3,
+   "loesung": "Die Anziehung des Mondes nimmt mit dem Abstand ab, sie ist also nicht überall auf der Erde gleich groß. Das Wasser auf der abgewandten Seite ist vom Mond am weitesten entfernt und wird deshalb am schwächsten gezogen. Der Erdmittelpunkt liegt näher am Mond und wird stärker gezogen als dieses Wasser. Die feste Erde wird dadurch gewissermaßen unter dem Wasser der Rückseite weggezogen, und das Wasser bleibt zurück; es türmt sich dort als zweiter Berg auf. Deshalb liegen die beiden Wasserberge einander gegenüber, und deshalb gibt es zweimal am Tag Flut und nicht nur einmal.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum ein Hafen einen Zeitplan für Ebbe und Flut für die ganze Woche aushängen kann.",
+  "ueberleitung": "Der Mond ist rund 384 000 Kilometer weit weg und bewegt trotzdem ganze Meere. Ben will wissen, wie weit erst die Planeten entfernt sind – und legt dafür einen Fußball auf den Schulhof.",
+  "auftrag": "Untersuche mit dem Regler Erde von Hand drehen, wie oft dein Ort durch einen Wasserberg läuft.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g4",
+  "titel": "Der Fußball und die Stecknadel",
+  "problem": "Auf Bens Sternkarte steht alles dicht beieinander: Mars, Saturn, der Polarstern und ein milchiges Band. Mit bloßem Auge sah der Saturn genauso klein aus wie jeder Stern. Mia legt einen Fußball auf den Schulhof und steckt eine Stecknadel daneben ins Gras. Wie weit beide auseinanderliegen müssten, weiß keiner.",
+  "frage": "Wie groß ist das Sonnensystem im Vergleich zur Milchstraße?",
+  "predict": [
+   "Wenn die Sonne ein Fußball ist, liegen die vier inneren Planeten alle in Armlänge um ihn herum, und der nächste Stern läge am Ende der Straße.",
+   "Der nächste Stern steht kaum weiter weg als die äußeren Planeten. Im Modell liegen Neptun und der Stern beide am Ende des Schulhofs.",
+   "Zwischen den Planeten liegt viel mehr leerer Raum, als jedes Bild zeigt: Schon der Mars liegt am anderen Ende des Schulhofs, der nächste Stern nicht einmal mehr auf diesem Kontinent."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Setze mit Zurücksetzen auf den Anfang und zoome Schritt für Schritt heraus. Halte fest, was neu ins Bild kommt.",
+   "Zoome weiter, bis die Sonne nur ein Punkt unter vielen ist, und zähle die Schritte. Suche beim Hineinzoomen ihre Stelle in der Scheibe.",
+   "Gegenprobe am Tisch: Lege auf dem Schulhof einen Fußball als Sonne hin und schreite 24 Meter bis zur Stecknadel ab."
+  ],
+  "tabCols": [
+   "Wie oft ich herausgezoomt habe",
+   "Was jetzt im Bild ist"
+  ],
+  "tabRows": [
+   "Ausgangsbild nach Zurücksetzen",
+   "zweimal herausgezoomt",
+   "viermal herausgezoomt",
+   "Gegenprobe: so weit herausgezoomt wie möglich"
+  ],
+  "fachtext": "Acht Planeten kreisen um die Sonne; mit ihr, ihren Monden und vielen Kleinkörpern bilden sie das Sonnensystem. Die Sonne ist ein Stern, einer von einigen hundert Milliarden in unserer Galaxie, der Milchstraße. Unsere Sonne steht nicht im Zentrum, sondern außerhalb der Mitte im Orionarm; das milchige Band ist unser Blick von innen an dieser Scheibe entlang. Galaxien bilden Gruppen und Haufen. Zwischen den Himmelskörpern liegen riesige leere Strecken.",
+  "merksatz": [
+   {
+    "pre": "Acht Planeten kreisen um die Sonne. Zusammen mit ihr, ihren Monden und vielen Kleinkörpern bilden sie das",
+    "post": ".",
+    "loesung": "Sonnensystem"
+   },
+   {
+    "pre": "Unsere Sonne ist einer von einigen hundert Milliarden Sternen in der",
+    "post": ". Sie befindet sich außerhalb ihres Zentrums, im Orionarm.",
+    "loesung": "Milchstraße"
+   }
+  ],
+  "beobachtung": "Im Ausgangsbild sind die Planeten zu erkennen, die um die Sonne kreisen; zusammen mit Monden und Kleinkörpern bilden sie das Sonnensystem. Nach wenigen Zoomschritten passt das ganze Sonnensystem in einen Punkt, und die Sonne ist nur noch einer von einigen hundert Milliarden Sternen der Milchstraße. Unsere Sonne sitzt dabei nicht in der Mitte, sondern außen im Orionarm der Scheibe; von dort aus blicken wir an der Scheibe entlang und sehen das milchige Band. Zoomst du noch weiter heraus, wird die ganze Milchstraße zu einem Fleck neben anderen Galaxien, die in Gruppen und Haufen zusammenstehen. Zwischen allem liegen riesige leere Strecken: Im Fußballmodell steht die Erde als Stecknadelkopf 24 Meter neben dem Ball, der nächste Stern aber 6300 Kilometer weit weg und damit weit außerhalb des Schulhofs.",
+  "aufgabe": {
+   "frage": "Beurteile das Bild vom Sonnensystem auf Bens Sternkarte, auf dem alle Planeten nebeneinander in eine Zeile passen.",
+   "zeilen": 3,
+   "loesung": "Das Bild stimmt in der Reihenfolge der Planeten, aber nicht in den Abständen. Damit alle auf eine Seite passen, müssen die Zwischenräume stark zusammengedrückt werden. Im Schulhofmodell liegt die Erde schon 24 Meter vom Fußball entfernt und ist dabei nur ein Stecknadelkopf. Das Weltall ist also fast überall leer. Für die Reihenfolge ist die Karte brauchbar, für Entfernungen taugt sie nicht.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "alltag": "Ben meint, auf Fotos sehe die Milchstraße wie eine Scheibe aus. Erkläre, warum wir sie am Himmel nur als schmales Band sehen.",
+  "ueberleitung": "Im Modell liegt der nächste Stern 6300 Kilometer weit weg, in Wirklichkeit rund 40 Billionen. In Kilometern wird jede Sternangabe unhandlich. Ben rechnet lieber in Zeit und will wissen, wie lange das Licht unterwegs war, das gerade jetzt in sein Okular fällt.",
+  "theme": "himmel7",
+  "name": "Wie groß ist das Sonnensystem wirklich?",
+  "stufe": "grund",
+  "modellgrenze": "Das Schulhofmodell gibt nur Größen und Abstände wieder; die Planeten liegen darin still, ihre Bahnen und Umlaufzeiten zeigt es nicht.",
+  "auftrag": "Untersuche in der Simulation, wie viele Zoomschritte bis zur Milchstraße und darüber hinaus nötig sind.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "g5",
+  "titel": "Wie alt ist dieses Licht?",
+  "problem": "Ben rechnet die Entfernung zum nächsten Stern in Kilometer um: rund 40 Billionen. In seinem Buch stehen stattdessen Angaben wie 4,2 Lichtjahre. Mia hält dagegen, dass ein Jahr eine Zeit ist und keine Strecke. Draußen steht der Stern ruhig über dem Feld, die Marker des Modells liegen im Gras.",
+  "frage": "Ist ein Lichtjahr eine Zeit oder eine Strecke?",
+  "predict": [
+   "Auch Licht braucht Zeit für seinen Weg. Beim Mond sind es Sekunden, bei der Sonne Minuten und beim nächsten Stern Jahre.",
+   "Licht ist so schnell, dass es praktisch keine Zeit braucht. Wir sehen Sonne und Sterne deshalb so, wie sie in diesem Augenblick gerade sind.",
+   "Ein Lichtjahr ist eine Zeit. Es sagt, wie lange das Licht eines Sterns zu uns unterwegs war, nicht wie weit er weg ist."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Setze die Simulation mit Zurücksetzen auf den Anfang und sende einen Lichtblitz zum Mond. Lies ab, wie lange er unterwegs ist, und trage die Zeit in die Tabelle ein.",
+   "Gehe mit weiter zum nächsten Ziel und sende dort erneut einen Lichtblitz. Notiere so die Laufzeit für die Sonne und für den nächsten Stern und achte darauf, ab welchem Ziel die Zeit nicht mehr in Minuten, sondern in Jahren angegeben wird.",
+   "Gehe mit näher wieder zurück zum Mond und sende noch einmal einen Lichtblitz. Prüfe, ob dieselbe Strecke wieder dieselbe Laufzeit ergibt."
+  ],
+  "tabCols": [
+   "Ziel in der Simulation",
+   "Laufzeit des Lichtblitzes"
+  ],
+  "tabRows": [
+   "Mond",
+   "Sonne",
+   "nächster Stern",
+   "Gegenprobe: mit näher zurück zum Mond"
+  ],
+  "fachtext": "Licht breitet sich mit rund 300 000 Kilometern in jeder Sekunde aus, sehr schnell, aber nicht unendlich schnell. Vom Mond braucht es bis zur Erde etwa 1,3 Sekunden, von der Sonne etwa 8,3 Minuten. Ein Lichtjahr ist keine Zeitangabe, sondern eine Strecke. Es bezeichnet die Entfernung, die Licht innerhalb eines Jahres zurücklegt. Ist ein Stern 4,2 Lichtjahre entfernt, sehen wir ihn so, wie er vor 4,2 Jahren ausgesehen hat.",
+  "merksatz": [
+   {
+    "pre": "Licht legt in einer Sekunde rund 300 000",
+    "post": " zurück. Von der Sonne bis zur Erde braucht es trotzdem etwa acht Minuten.",
+    "loesung": "Kilometer"
+   },
+   {
+    "pre": "Ein Lichtjahr ist keine Zeitangabe, sondern eine",
+    "post": ": diejenige, die das Licht innerhalb eines Jahres zurücklegt.",
+    "loesung": "Strecke"
+   }
+  ],
+  "beobachtung": "Zum Mond braucht der Lichtblitz etwa 1,3 Sekunden, zur Sonne etwa 8,3 Minuten, obwohl Licht in jeder Sekunde rund 300 000 Kilometer zurücklegt. Bis zum nächsten Stern sind es über vier Jahre, dort wird die Laufzeit in Jahren angegeben. Je weiter das Ziel entfernt liegt, desto länger ist das Licht unterwegs; die doppelte Strecke bedeutet die doppelte Laufzeit. Beim Mond kommt bei der Gegenprobe wieder derselbe Wert heraus, denn die Strecke hat sich nicht geändert. Ein Lichtjahr ist deshalb keine Zeitangabe, sondern die Strecke, die Licht in einem Jahr schafft. Vom Polarstern mit 430 Lichtjahren siehst du das Licht, das vor 430 Jahren losgeflogen ist, nicht den Stern von heute.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Ben den ruhigen Stern über dem Feld nicht so sieht, wie er in diesem Augenblick ist.",
+   "zeilen": 3,
+   "loesung": "Licht ist sehr schnell, braucht für jede Strecke aber trotzdem Zeit. Ein Lichtjahr ist dabei keine Zeitangabe, sondern eine Strecke: die Entfernung, die Licht innerhalb eines Jahres zurücklegt. Der Stern ist 4,2 Lichtjahre entfernt, für diese Strecke braucht sein Licht also 4,2 Jahre. Ben sieht ihn deshalb so, wie er vor 4,2 Jahren ausgesehen hat. Würde der Stern heute erlöschen, könnte Ben ihn noch gut vier Jahre lang weiter beobachten. Beim Mond gibt es denselben Effekt, mit 1,3 Sekunden fällt er nur niemandem auf.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Funkwellen sind so schnell wie Licht: Begründe, warum eine Antwort vom Mond rund 2,5 Sekunden braucht.",
+  "ueberleitung": "Der Stern bleibt ein Punkt, so lange Ben auch hinschaut, und der Saturn ein Kügelchen mit zwei Henkeln. Ben nimmt sein selbstgebautes Rohr auseinander und legt die beiden Linsen nebeneinander auf den Tisch.",
+  "theme": "himmel7",
+  "name": "Wie weit ist es im Weltall? (Lichtjahr)",
+  "stufe": "grund",
+  "modellgrenze": "Das Schrittmodell überträgt nur Entfernungen in Schritte; wie schnell das Licht wirklich unterwegs ist, lässt sich damit nicht nachstellen.",
+  "auftrag": "Vergleiche, wie lange ein Lichtblitz vom Mond, von der Sonne und vom nächsten Stern braucht.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "t1",
+  "titel": "Zwei Gläser auf der Leiste",
+  "problem": "Der Saturn im selbstgebauten Rohr bleibt ein Punkt mit Henkeln. Ben legt Opas Gläser neu auf die Holzleiste: vorn das große, schwache, hinten das kleine, starke. Beim Verschieben wird das Schild an der Bushaltestelle mal scharf und größer, mal ein verschmierter Fleck. Den passenden Abstand hat niemand notiert.",
+  "frage": "Warum zeigt ein Teleskop mehr Sterne als das bloße Auge?",
+  "predict": [
+   "Eine größere Öffnung vergrößert das Bild stärker. Man sieht dasselbe, nur größer.",
+   "Eine größere Öffnung sammelt mehr Licht. Man sieht zusätzlich Punkte, die vorher zu schwach waren.",
+   "Auf die Öffnung kommt es nicht an, sondern auf die Länge des Rohrs. Je weiter du die beiden Gläser auseinanderziehst, desto mehr Sterne siehst du."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle in der Simulation zuerst bloßes Auge ein und halte fest, wie viel du von dem Objekt erkennst. Wechsle dann auf mit Teleskop und beschreibe, was sich am Bild ändert.",
+   "Bleibe bei mit Teleskop und wechsle zwischen kleine Öffnung und große Öffnung hin und her. Zähle jedes Mal, wie viele lichtschwache Punkte noch zu sehen sind, und achte darauf, ob das Bild dabei größer wird oder nur heller.",
+   "Gegenprobe am Tisch: Fange mit einer Lupe das Bild eines fernen Fensters auf einem Blatt Papier auf und decke danach die halbe Linse mit Papier ab. Prüfe, ob das Bild kleiner oder nur dunkler wird."
+  ],
+  "tabCols": [
+   "Einstellung in der Simulation",
+   "Was ist zu sehen?"
+  ],
+  "tabRows": [
+   "bloßes Auge",
+   "mit Teleskop und kleine Öffnung",
+   "mit Teleskop und große Öffnung",
+   "Gegenprobe: von großer Öffnung zurück auf kleine Öffnung"
+  ],
+  "fachtext": "Ein Fernrohr aus zwei Sammellinsen heißt Kepler-Fernrohr. Vorn sitzt das Objektiv; es hat eine lange Brennweite und erzeugt vom fernen Schild ein kleines, umgekehrtes Zwischenbild. Hinten sitzt das Okular; es hat eine kurze Brennweite und wirkt darauf wie eine Lupe. Scharf wird das Bild, wenn der Abstand der Linsen der Summe beider Brennweiten entspricht; die Vergrößerung ist der Quotient aus Objektiv- und Okularbrennweite.",
+  "merksatz": [
+   {
+    "pre": "Im Fernrohr stehen Objektiv und Okular ungefähr so weit auseinander wie die",
+    "loesung": "Summe",
+    "post": " ihrer beiden Brennweiten."
+   },
+   {
+    "pre": "Die Vergrößerung wird umso größer, je kürzer die Brennweite des",
+    "loesung": "Okulars",
+    "post": " ist."
+   }
+  ],
+  "beobachtung": "Mit bloßem Auge bleibt die Stelle fast leer, nur die hellsten Punkte sind zu erkennen. Mit Teleskop erscheint dieselbe Stelle vergrößert, weil das Objektiv ein Bild im Rohr erzeugt und das Okular es wie eine Lupe zeigt. Bei kleiner Öffnung sind nur wenige Punkte da, bei großer Öffnung deutlich mehr, und die schwachen treten aus dem Hintergrund hervor. Schaltest du zurück auf die kleine Öffnung, verschwinden genau diese schwachen Punkte wieder. Die Öffnung ändert also nicht die Vergrößerung, sondern die gesammelte Lichtmenge. Beim Abdecken der Lupe zeigt sich dasselbe: Das Bild bleibt gleich groß und wird nur dunkler.",
+  "aufgabe": {
+   "frage": "Erkläre, warum Bens Rohr den Saturn stärker vergrößert, wenn er das hintere Glas gegen ein noch stärkeres tauscht, und was er dabei am Rohr ändern muss.",
+   "zeilen": 3,
+   "loesung": "Die Vergrößerung ist der Quotient aus der Brennweite des Objektivs und der des Okulars. Ein stärkeres hinteres Glas hat eine kürzere Brennweite, deshalb wird der Quotient größer und der Saturn erscheint größer. Ben muss das Rohr dabei kürzer machen, denn der passende Abstand ist wieder die Summe der beiden Brennweiten. Gleichzeitig wird das Bild dunkler und wackliger, weil dieselbe Lichtmenge auf eine größere Bildfläche verteilt wird. Ein immer stärkeres Okular bringt deshalb irgendwann keinen Gewinn mehr.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Finde heraus, welches Bauteil im Fernglas das Bild wieder aufrecht stellt.",
+  "sicherheit": "Richte die Lupe niemals auf die Sonne und schau nie durch sie hindurch – schon ein kurzer Blick zerstört die Augen.",
+  "ueberleitung": "Am Abend zeigt das Rohr den Orionnebel als grauen Fleck. Auf Bens Handy leuchtet dasselbe Gebiet in kräftigem Rot – aufgenommen von einem Teleskop, das Strahlung auffängt, für die Bens Auge blind ist.",
+  "stufe": "grund",
+  "theme": "teleskop",
+  "name": "Wie holt ein Teleskop ferne Objekte näher heran?",
+  "auftrag": "Vergleiche dieselbe Himmelsstelle mit bloßem Auge, mit kleiner und mit großer Öffnung.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "t2",
+  "titel": "Die Lampe, die keiner sieht",
+  "problem": "Auf Bens Handy leuchtet der Orionnebel rot, im Fernrohr bleibt er ein grauer Fleck. Mia sagt, das Bild sei falsch eingefärbt. Auf dem Sofa liegt die Fernbedienung. Ben drückt eine Taste: Die kleine Lampe vorn bleibt dunkel. Trotzdem schaltet der Fernseher um.",
+  "frage": "Was zeigt derselbe Himmelsausschnitt in Licht, das wir nicht sehen können?",
+  "predict": [
+   "Die Lampe leuchtet gar nicht, die Fernbedienung sendet Funkwellen. Im Display sieht man höchstens ein Flackern der Elektronik.",
+   "Die Lampe leuchtet nur sehr schwach. In einem ganz dunklen Zimmer könntest du sie mit bloßem Auge sehen.",
+   "Die Lampe sendet Licht aus, das unser Auge nicht wahrnehmen kann. Der Sensor der Kamera nimmt es trotzdem auf."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle in der Simulation am Boden ein und schalte nacheinander Licht, Infrarot, Radio und Röntgen durch. Halte für jeden Bereich fest, was von der Himmelsstelle zu sehen ist.",
+   "Wechsle auf im Weltraum und gehe dieselben vier Bereiche noch einmal durch. Vergleiche jeden Bereich mit dem, was du am Boden notiert hast, und halte fest, wo der Unterschied am größten ist.",
+   "Gegenprobe am Tisch: Halte eine Fernbedienung vor die Kamera eines Handys und drücke eine Taste. Prüfe, ob auf dem Display etwas leuchtet, das dein Auge nicht sieht."
+  ],
+  "tabCols": [
+   "Einstellung in der Simulation",
+   "Was ist zu sehen?"
+  ],
+  "tabRows": [
+   "am Boden, Licht",
+   "am Boden, Infrarot",
+   "am Boden, Röntgen",
+   "im Weltraum, Röntgen"
+  ],
+  "fachtext": "Sichtbares Licht ist nur ein kleiner Teil der elektromagnetischen Wellen. Hinter Rot beginnt die Infrarotstrahlung; die Fernbedienung sendet sie, unser Auge sieht sie nicht, der Kamerasensor schon. Auch am Himmel strahlen viele Objekte außerhalb des sichtbaren Bereichs; Infrarot- und Röntgenteleskope messen diese Strahlung. Weil sie keine natürliche Farbe hat, ordnet man jeder Stärke nachträglich eine Farbe zu: Falschfarben.",
+  "merksatz": [
+   {
+    "pre": "Hinter dem roten Ende des sichtbaren Lichts liegt die",
+    "loesung": "Infrarotstrahlung",
+    "post": ". Unser Auge nimmt sie nicht wahr."
+   },
+   {
+    "pre": "Ein Infrarot- oder Röntgenbild zeigt nachträglich zugeordnete",
+    "loesung": "Falschfarben",
+    "post": ". Sie geben an, wie stark die unsichtbare Strahlung an dieser Stelle ist."
+   }
+  ],
+  "beobachtung": "Jeder Bereich zeigt eine andere Struktur derselben Stelle. Im sichtbaren Licht sind vor allem einzelne Sterne zu sehen, im Infraroten dagegen warme Staubwolken, im Radiobereich weit ausgedehnte Strukturen und im Röntgenbereich einzelne sehr heiße Punkte. Am Boden kommt das Bild im sichtbaren Licht vollständig an, im Infraroten nur zum Teil, im Röntgenbereich bleibt das Feld dagegen leer, weil die Erdatmosphäre diese Strahlung nicht durchlässt. Erst mit der Einstellung im Weltraum erscheinen die heißen Röntgenpunkte. Die Farben in diesen Bildern sind keine echten Farben, sondern übersetzen die gemessene Stärke der Strahlung. Die Fernbedienung zeigt dasselbe im Kleinen: Auf dem Display leuchtet die Lampe, das Auge sieht nichts.",
+  "aufgabe": {
+   "frage": "Begründe, warum Mias Vorwurf, das rote Bild des Orionnebels sei nur falsch eingefärbt, so nicht stimmt.",
+   "zeilen": 3,
+   "loesung": "Das Bild stammt von einem Teleskop, das Strahlung außerhalb des sichtbaren Bereichs gemessen hat, zum Beispiel Infrarotstrahlung. Für diese Strahlung gibt es keine natürliche Farbe, weil unser Auge sie überhaupt nicht wahrnimmt. Damit man das Messergebnis überhaupt sehen kann, ordnet man jeder Strahlungsstärke eine Farbe zu; das nennt man Falschfarben – gewählt sind also die Farben, die Messwerte dahinter sind echt. Dass der Nebel im Fernrohr grau wirkt, hat einen anderen Grund: Bei so wenig Licht unterscheidet unser Auge keine Farben. Genauso ist es bei der Fernbedienung: Ihre Lampe leuchtet wirklich, nur eben unsichtbar für uns.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Nenne zwei Geräte aus eurer Wohnung, die mit Infrarotstrahlung arbeiten.",
+  "ueberleitung": "Zurück auf dem Feld steht der Orion im Okular, auf dem Handy daneben dasselbe Sternbild in Falschfarben. Unter dem Bild steht eine Zeile über einen der hellen Sterne: Er habe es bald hinter sich.",
+  "stufe": "grund",
+  "theme": "teleskop",
+  "name": "Wie sieht man mit besonderen Teleskopen unsichtbares Licht?",
+  "auftrag": "Untersuche die vier Bereiche und prüfe, welche davon am Boden überhaupt ankommen.",
+  "modellgrenze": "Die Farben dieser Bilder sind gewählt, nicht gesehen. Unser Auge nimmt Infrarot-, Radio- und Röntgenstrahlung überhaupt nicht wahr.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "t6",
+  "titel": "Wer zuerst ausgeht",
+  "problem": "Im Rohr steht der Orion. Mia zeigt auf zwei Sterne: einer blau-weiß, einer rot. Unter dem Teleskopbild steht, dem blau-weißen blieben noch ein paar Millionen Jahre, der Sonne dagegen fünf Milliarden. Ben stutzt: Der blaue ist der schwerere von beiden – und hat trotzdem weniger Zeit.",
+  "frage": "Warum leuchtet ein schwerer Stern heller und trotzdem kürzer?",
+  "predict": [
+   "Ein schwerer Stern verbraucht seinen Vorrat viel schneller und leuchtet deshalb kürzer als ein leichter.",
+   "Ein schwerer Stern hat mehr Vorrat im Kern, also leuchtet er länger als ein leichter.",
+   "Rot ist die Farbe eines Sterns, der schon fast abgekühlt ist. Der rote geht deshalb zuerst aus, der blau-weiße ist jung und hält lange durch."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle zuerst beim Regler „Masse des Sterns“ den Wert „1“ und lass den Lauf ganz durchlaufen. Halte fest, welche Farbe der Stern hat und welche Lebensdauer am Ende steht.",
+   "Stelle den Regler „Masse des Sterns“ nacheinander auf die anderen Werte, indem du „0,5“, „10“ und „25“ wählst. Nutze jedes Mal „Lauf neu starten“ und trage Farbe und Lebensdauer in die Tabelle ein.",
+   "Vergleiche den leichtesten mit dem schwersten Stern. Der schwere hat fünfzigmal so viel Wasserstoff im Vorrat – prüfe, ob er deshalb auch länger leuchtet."
+  ],
+  "tabCols": [
+   "Eingestellte Masse des Sterns",
+   "Farbe / Lebensdauer"
+  ],
+  "tabRows": [
+   "0,5 Sonnenmassen",
+   "1 Sonnenmasse",
+   "10 Sonnenmassen",
+   "25 Sonnenmassen"
+  ],
+  "fachtext": "Im Kern eines Sterns verschmelzen Wasserstoffkerne zu Helium; dabei wird Energie frei. Diese Kernfusion ist kein Verbrennen. Schwere Sterne sind im Kern heißer und verbrauchen ihren Vorrat viel schneller; sie leuchten blau-weiß und leben kürzer als leichte rote Sterne. Am Ende bläht sich der Stern zum Riesen auf; nach den Modellen enden leichte Sterne als Weiße Zwerge, schwere explodieren als Supernova.",
+  "merksatz": [
+   {
+    "pre": "Ein Stern leuchtet, weil in seinem Kern Wasserstoff zu Helium verschmilzt. Diese",
+    "loesung": "Kernfusion",
+    "post": " liefert seine gesamte Energie."
+   },
+   {
+    "pre": "Je schwerer ein Stern ist, desto heißer leuchtet er und desto",
+    "loesung": "kürzer",
+    "post": " ist seine Lebensdauer."
+   }
+  ],
+  "beobachtung": "Der Stern mit 0,5 Sonnenmassen leuchtet rot und schwach und hält von allen vier Einstellungen am längsten durch. Bei 1 Sonnenmasse ist der Stern gelb und kommt auf rund zehn Milliarden Jahre. Mit 10 Sonnenmassen wird er blau-weiß und heiß, seine Zeit schrumpft aber auf einige zehn Millionen Jahre, mit 25 Sonnenmassen bleiben nur noch wenige Millionen. Der schwere Stern hat zwar viel mehr Wasserstoff, doch in seinem Kern herrschen höherer Druck und höhere Temperatur, sodass die Kernfusion sehr viel schneller abläuft. Deshalb ist der Vorrat früher aufgebraucht und der blaue Stern lebt kürzer als die Sonne.",
+  "aufgabe": {
+   "frage": "Erkläre, warum der blau-weiße Stern im Orion trotz seiner größeren Masse früher am Ende ist als die Sonne, und nenne, was von beiden Sternen zuletzt übrig bleibt.",
+   "zeilen": 3,
+   "loesung": "Ein schwerer Stern hat zwar mehr Wasserstoff im Kern, aber dort ist es auch viel heißer, und die Kernfusion läuft dadurch sehr viel schneller ab. Deshalb strahlt er in jeder Sekunde riesige Energiemengen ab und leuchtet heiß und blau-weiß. Sein großer Vorrat ist so schon nach wenigen Millionen Jahren aufgebraucht, während die Sonne mit ihrem kleineren Vorrat sparsam umgeht und rund zehn Milliarden Jahre auskommt. Am Ende explodiert der schwere Stern als Supernova, die Sonne wird nach dem Riesenstadium nach den Modellen zu einem Weißen Zwerg. Mehr Masse bedeutet also nicht mehr Zeit, sondern weniger. Sehr massearme Sterne können sogar länger leben, als das Universum bisher existiert; ihr vollständiges Lebensende konnte deshalb noch nicht beobachtet werden. Modelle sagen voraus, dass auch sie schließlich als Weiße Zwerge enden.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Suche am Nachthimmel den Orion und beschreibe, welche Farben seine beiden hellsten Sterne haben.",
+  "ueberleitung": "Der Zeitraffer behauptet einfach, im Kern stecke Wasserstoff. Mia will wissen, woher jemand das wissen will – dort war nie einer. Auf Bens Fensterbank liegt noch das Prisma aus seinem Bauplan.",
+  "stufe": "grund",
+  "theme": "teleskop",
+  "name": "Warum leuchtet ein Stern – und warum nicht ewig?",
+  "auftrag": "Untersuche in der Simulation, wie die Masse Farbe und Lebensdauer eines Sterns bestimmt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "id": "t7",
+  "titel": "Streifen, die fehlen",
+  "problem": "Auf der Fensterbank liegt Bens Prisma. Er hält es in den schmalen Sonnenstreifen aus dem Rollospalt; das Farbband landet an der Wand. Mia geht mit der Lupe näher heran und findet mitten im Gelb einen hauchdünnen schwarzen Streifen. Im Farbband der Taschenlampe daneben fehlt nichts.",
+  "frage": "Woran erkennt man, woraus ein Stern besteht, ohne hinzufliegen?",
+  "predict": [
+   "Die dunklen Linien entstehen durch Staub oder Kratzer im Teleskop. Über die Stoffe im Stern sagen sie nichts.",
+   "Jedes Element lässt an anderen Stellen dunkle Linien zurück. Am Muster erkennt man, welche Stoffe im Stern stecken.",
+   "Die Farbe verrät den Stoff: Ein rötlicher Stern besteht aus anderen Stoffen als ein blau-weißer. Auf die dunklen Linien musst du nicht schauen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle „Glühlampe“ und sieh dir das Farbband genau an. Halte fest, ob irgendwo eine Farbe fehlt.",
+   "Wechsle zu „Stern 1 gelb“ und schiebe den Regler „Lupe – Wellenlänge“ langsam durch das Farbband, bis du auf einer dunklen Linie stehst. Lies die Wellenlänge in Nanometern ab; mit „Suchlauf“ findest du eine Linie, die du nicht triffst.",
+   "Schalte „Vergleichsstreifen einblenden“ ein und prüfe bei „Stern 2 blau-weiß“ und „Stern 3 rot“, ob dort Linien an denselben Wellenlängen sitzen."
+  ],
+  "tabCols": [
+   "Lichtquelle",
+   "Dunkle Linien – bei welchen Wellenlängen?"
+  ],
+  "tabRows": [
+   "Stern 1 gelb",
+   "Stern 2 blau-weiß",
+   "Stern 3 rot",
+   "Glühlampe"
+  ],
+  "fachtext": "Ein Prisma zerlegt Licht in seine Farben; dieses Farbband heißt Spektrum. Im Gas des Sterns schluckt jedes Element genau bestimmte Farben. Sie fehlen dann im Spektrum und hinterlassen dunkle Linien. Weil jedes Element sein eigenes Linienmuster hat, verrät es sich wie durch einen Fingerabdruck. So weiß man, dass Sterne vor allem aus Wasserstoff und Helium bestehen.",
+  "merksatz": [
+   {
+    "pre": "Ein Prisma zerlegt das Licht eines Sterns in ein",
+    "loesung": "Spektrum",
+    "post": ". Darin fehlen einzelne Farben als schmale dunkle Linien."
+   },
+   {
+    "pre": "Jedes Element schluckt ganz bestimmte Farben. Sein Linienmuster ist so eindeutig wie ein",
+    "loesung": "Fingerabdruck",
+    "post": " und verrät den Stoff über riesige Entfernungen hinweg."
+   }
+  ],
+  "beobachtung": "Das Farbband der Glühlampe läuft ohne Lücke von Rot bis Violett durch. Bei allen drei Sternen fehlen dagegen schmale Streifen mitten in den Farben. Stellst du die Lupe auf 656 nm, triffst du im roten Bereich eine dunkle Linie, die bei mehreren Sternen an genau derselben Stelle liegt; sie gehört zum Wasserstoff. Die Vergleichsstreifen zeigen, dass jedes Element sein festes Muster hat – die Lage der Linien bleibt gleich, nur ihre Anzahl und Stärke unterscheidet die Sterne. Aus der Lage kannst du also ablesen, welches Element in der Hülle eines Sterns steckt, ohne jemals dort gewesen zu sein.",
+  "aufgabe": {
+   "frage": "Erkläre, woher man weiß, dass in einem fernen Stern Wasserstoff steckt, obwohl noch nie jemand dort war.",
+   "zeilen": 3,
+   "loesung": "Das Licht entsteht tief im heißen Inneren des Sterns und muss auf dem Weg nach außen durch dessen Gasschichten hindurch. Dabei schluckt jedes Element genau die Farben, die zu ihm gehören, und diese Farben fehlen anschließend im Spektrum. Zurück bleibt ein Muster aus dunklen Linien an ganz bestimmten Stellen des Farbbands. Dasselbe Muster kann man im Labor mit reinem Wasserstoff erzeugen und vergleichen; es ist so eindeutig wie ein Fingerabdruck. Findet man es im Spektrum eines Sterns, steckt dort Wasserstoff – man muss nicht hinfliegen, das Licht bringt die Auskunft mit.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Betrachte eine Energiesparlampe durch eine CD und beschreibe, wie ihr Farbband aussieht.",
+  "ueberleitung": "Ben hält das Prisma nacheinander an einen zweiten und dritten Stern – und merkt erst dabei, wie viele es sind. Später liegen die beiden ohne Rohr auf der Decke, und über ihnen zieht ein milchiges Band quer über den Himmel.",
+  "stufe": "vertiefung",
+  "theme": "teleskop",
+  "name": "Woraus bestehen die Sterne?",
+  "auftrag": "Vergleiche das Farbband einer Glühlampe mit denen von drei Sternen und suche die fehlenden Streifen.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "id": "t8",
+  "titel": "Das Band über dem Feld",
+  "problem": "Ohne Rohr, flach auf der Decke: Über dem Feld zieht sich ein blasses Band quer über den Himmel. Mia sagt, das sei eine Wolke. Ben hält das Fernrohr hinein, und aus dem Band werden Sterne, dicht an dicht. Rechts und links davon stehen nur wenige.",
+  "frage": "Warum sehen wir die Milchstraße als schmales Band und nicht rundherum?",
+  "predict": [
+   "Unsere Sonne steht im Zentrum der Scheibe, und das helle Band ist deren weit entfernter Rand.",
+   "Wir stehen außerhalb der Scheibe und schauen von der Seite auf sie. Deshalb sehen wir sie als schmales Band.",
+   "Wir stecken selbst in der Scheibe. Längs durch sie hindurch stehen sehr viele Sterne hintereinander, quer heraus nur wenige."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Stelle den Regler „Ansicht drehen“ von von oben (0°) langsam bis zur Kantenansicht und halte fest, welche Form die Milchstraße von oben und welche sie von der Seite zeigt.",
+   "Lass den Regler „Sonne vom Zentrum“ auf 26 000 Lichtjahre stehen und wähle nacheinander „zur Mitte“, „nach außen“ und „quer heraus“. Trage für jede Richtung ein, wie dicht die Sterne im Blickfeld stehen.",
+   "Wähle „Gegenprobe: Sonne in die Mitte“ und sieh dir dieselben drei Richtungen noch einmal an. Geh danach mit „zurück auf 26 000 Lj“ auf die Ausgangslage."
+  ],
+  "tabCols": [
+   "Einstellung an der Simulation",
+   "Wie dicht stehen die Sterne?"
+  ],
+  "tabRows": [
+   "zur Mitte",
+   "nach außen",
+   "quer heraus",
+   "Gegenprobe: Sonne in die Mitte"
+  ],
+  "fachtext": "Unsere Sonne gehört zur Milchstraße, einer Scheibe aus einigen hundert Milliarden Sternen. Sie befindet sich nicht im Zentrum der Milchstraße, sondern außerhalb ihrer Mitte im Orionarm; von einem Rand zum anderen ist Licht rund 100 000 Jahre unterwegs. Weil wir selbst in der Scheibe stecken, blicken wir längs durch sie auf unzählige Sterne hintereinander – dieses helle Band nennen wir Milchstraße. Quer aus der Scheibe heraus sind es nur wenige.",
+  "merksatz": [
+   {
+    "pre": "Die Sonne ist einer von vielen Sternen der Milchstraße und befindet sich außerhalb ihres",
+    "loesung": "Zentrums",
+    "post": "."
+   },
+   {
+    "pre": "Als helles Band sehen wir die vielen Sterne, die",
+    "loesung": "längs",
+    "post": " durch die Scheibe hintereinanderstehen."
+   }
+  ],
+  "beobachtung": "Von oben zeigt die Milchstraße Spiralarme, an der Kante eine sehr flache Scheibe mit einer Verdickung in der Mitte. Die Sonne sitzt bei 26 000 Lichtjahren in einem Spiralarm, also weder im Zentrum noch am Rand. Blickst du zur Mitte, stehen die Sterne am dichtesten; nach außen sind es deutlich weniger, aber immer noch ein breites Band; quer heraus siehst du die wenigsten, weil die Scheibe in dieser Richtung schnell zu Ende ist. Setzt du die Sonne in die Mitte, sind alle Richtungen in der Ebene ungefähr gleich dicht besetzt, und der Unterschied zwischen Mitte und Außen verschwindet. Zurück auf 26 000 Lj ist er wieder da. Genau dieser Unterschied ist der Grund, warum wir das milchige Band sehen und warum es zur Mitte hin am hellsten ist.",
+  "aufgabe": {
+   "frage": "Erkläre Mia, warum das Band keine Wolke ist und warum es sich quer über den ganzen Himmel zieht.",
+   "zeilen": 3,
+   "loesung": "Im Fernrohr zerfällt das Band in einzelne Sterne; es ist also keine Wolke, sondern eine riesige Zahl weit entfernter Sterne. Unsere Sonne ist einer von vielen Sternen der Milchstraße und befindet sich nicht im Zentrum, sondern außerhalb ihrer Mitte im Orionarm. Wir stecken selbst in der Scheibe. Schauen wir längs durch sie hindurch, steht Stern hinter Stern, und ihr Licht verschmilzt für unser Auge zu einem hellen, milchigen Band. Schauen wir quer aus der Scheibe heraus, ist die Sternschicht dünn und der Himmel bleibt fast leer. Weil die Scheibe uns ringsum umgibt, läuft das Band einmal quer über den ganzen Himmel.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Finde heraus, warum man die Milchstraße in der Stadt kaum sieht, auf dem Feld aber gut.",
+  "ueberleitung": "Nicht im Zentrum der Scheibe – und die Erde nicht in der Mitte des Sonnensystems. Ben wischt durch seine Teleskopbilder und sagt, früher hätten die Leute eben nichts gewusst. Mia legt schweigend sechs Namenskarten auf den Tisch.",
+  "stufe": "grund",
+  "theme": "teleskop",
+  "name": "Die Milchstraße – wo stehen wir?",
+  "auftrag": "Untersuche, welche Form die Scheibe hat und wie dicht die Sterne in verschiedenen Richtungen stehen.",
+  "modellgrenze": "Die Sterne sind viel zu groß gezeichnet. In Wirklichkeit liegen zwischen ihnen so große Abstände, dass sie als Punkte unsichtbar blieben.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "id": "t3",
+  "titel": "Wer steht in der Mitte?",
+  "problem": "Auf Bens Handy liegen die Teleskopbilder nebeneinander. Ben sagt, früher hätten die Leute eben nichts gewusst. Mia hält dagegen: Wer ohne Glas hinaufschaut, sieht die Sonne wandern und die Erde stillstehen. Auf dem Tisch liegen sechs Namenskarten, vier Beobachtungen und ein leerer Zeitstrahl.",
+  "frage": "Welches Weltbild erklärt die Schleifen der Planeten mit weniger Zusatzannahmen?",
+  "predict": [
+   "Ein besserer Gedanke allein reichte nicht. Erst Beobachtungen, die zum alten Bild nicht passten, brachten es ins Wanken.",
+   "Kopernikus konnte beweisen, dass die Erde um die Sonne läuft. Danach glaubten alle sofort an sein Bild.",
+   "Das alte Bild mit der Erde in der Mitte konnte die Schleifen gar nicht erklären. Die Leute haben damals einfach geglaubt, was in den Büchern stand."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Erde in der Mitte (alt)“ und lass die Bahnen einmal ganz durchlaufen. Halte fest, welchen Weg ein Planet nimmt und was nötig ist, damit dabei eine Schleife entsteht.",
+   "Wähle „Sonne in der Mitte (heute)“ und lass dieselbe Zeit noch einmal laufen. Achte darauf, welche Form die einzelnen Bahnen jetzt haben und wann der äußere Planet von der Erde aus rückwärts zu laufen scheint. Mit „Zurücksetzen“ kannst du beide Weltbilder mehrfach nacheinander vergleichen.",
+   "Gegenprobe am Tisch: Legt eine Münze als Sonne auf ein Blatt Papier, geht mit zwei Fingern auf einem inneren und einem äußeren Kreis darum herum und schaut vom inneren Finger aus, wie der äußere sich beim Überholen kurz rückwärts vor der Wand zu bewegen scheint."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "Wie läuft ein Planet vor den Sternen?"
+  ],
+  "tabRows": [
+   "Erde in der Mitte (alt)",
+   "Sonne in der Mitte (heute)",
+   "Gegenprobe am Tisch: Münze als Sonne, zwei Finger auf Kreisen"
+  ],
+  "fachtext": "Ptolemäus beschrieb um 150 ein geozentrisches Weltbild: Alles kreist um die unbewegte Erde. Kopernikus stellte 1543 die Sonne in den Mittelpunkt seines Modells des Planetensystems. Galilei sah 1610 die Jupitermonde und die Venusphasen, Herschel entwarf 1785 ein frühes Modell der Milchstraße, Bessel maß 1838 eine Fixsternparallaxe. Hubble fand 1929 einen Zusammenhang zwischen Entfernung und Rotverschiebung ferner Galaxien.",
+  "merksatz": [
+   {
+    "pre": "Galilei sah Monde, die um Jupiter kreisen. Damit war die Erde nicht mehr der einzige",
+    "loesung": "Mittelpunkt",
+    "post": ", um den sich etwas dreht."
+   },
+   {
+    "pre": "Ein Weltbild wird nicht durch schönere Ideen abgelöst, sondern durch neue",
+    "loesung": "Beobachtungen",
+    "post": ", die nicht dazu passen."
+   }
+  ],
+  "beobachtung": "Im alten Weltbild läuft jeder Planet um die ruhende Erde, und für die beobachtete Schleife braucht es eine zusätzliche kleine Kreisbahn auf der großen. Im heutigen Weltbild laufen Erde und Planet beide auf einfachen Bahnen um die Sonne, ganz ohne solche Zusatzkreise. Die Schleife ist trotzdem zu sehen: Sie entsteht immer dann, wenn die schnellere Erde den äußeren Planeten überholt und du von der bewegten Erde aus hinschaust. Am Tisch geht es genauso, der äußere Finger scheint beim Überholen kurz zurückzulaufen, obwohl er ruhig weitergeht. Beide Weltbilder treffen also den Augenschein, das heliozentrische kommt dabei mit deutlich weniger Annahmen aus.",
+  "aufgabe": {
+   "frage": "Beurteile Bens Satz, die Leute früher hätten eben nichts gewusst. Stütze dich auf zwei Beobachtungen von deinem Zeitstrahl, darunter Bessels Messung von 1838.",
+   "zeilen": 3,
+   "loesung": "Bens Satz stimmt so nicht. Wer ohne Fernrohr hinaufschaut, sieht tatsächlich die Sonne wandern; das geozentrische Weltbild des Ptolemäus passte zu allem, was man damals beobachten konnte. Kopernikus stellte 1543 die Sonne in den Mittelpunkt seines Modells des Planetensystems, konnte das aber nicht beweisen. Erst neue Beobachtungen brachten das alte Bild ins Wanken: Galileis Jupitermonde zeigten 1610, dass nicht alles um die Erde kreist, und die vollständigen Venusphasen sind nur mit einer Venusbahn um die Sonne erklärbar. Bessel gelang 1838 die Messung einer Fixsternparallaxe; sie zeigte, dass sich die Erde wirklich bewegt. Die Menschen wussten also nicht nichts, ihnen fehlten die Messgeräte für die entscheidenden Beobachtungen.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "alltag": "Übertrage das Vorgehen auf die Behauptung, der Mond leuchte von selbst: Welche Beobachtung widerlegt sie?",
+  "ueberleitung": "Hubbles Galaxien bringen Ben zum nächsten Bild in seiner Liste. Es zeigt einen orangefarbenen Ring, und in der Mitte ist nichts – aufgenommen von acht Teleskopen gleichzeitig.",
+  "stufe": "vertiefung",
+  "theme": "teleskop",
+  "name": "Wie hat sich die Vorstellung vom Weltall verändert?",
+  "auftrag": "Vergleiche an der Simulation den Lauf eines Planeten in beiden Weltbildern.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "t4",
+  "titel": "Ein Ring um nichts",
+  "problem": "Auf Bens Bildschirm steht das berühmte Foto: ein orangefarbener Ring, in der Mitte tiefes Schwarz. Mia sagt, das sei ein Loch, in das alles hineinfällt. Ben spannt ein altes T-Shirt über einen Reifen, klemmt den Rand mit Wäscheklammern fest und legt eine schwere Stahlkugel in die Mitte.",
+  "frage": "Was geschieht mit einem Lichtstrahl, der dicht an einem schwarzen Loch vorbeiläuft?",
+  "predict": [
+   "Nur ganz nah wird der Strahl abgelenkt; weiter außen läuft er geradeaus weiter.",
+   "Der Strahl wird in jedem Abstand abgelenkt – je dichter, desto stärker. Ganz nah entkommt er gar nicht mehr.",
+   "Licht wiegt nichts und kann deshalb gar nicht angezogen werden. Der Strahl läuft in jedem Abstand geradeaus weiter."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle in der Simulation den Abstand „weit weg“ und nutze „Lichtstrahl senden“. Verfolge den Weg des Strahls und halte fest, ob er die gerade Richtung behält.",
+   "Setze mit „Zurücksetzen“ zurück und wiederhole den Versuch mit „mittel“ und danach mit „sehr nah“. Vergleiche die drei Bahnen miteinander und achte darauf, bei welchem Abstand der Strahl nicht mehr herauskommt.",
+   "Gegenprobe am Tisch: Spanne ein T-Shirt über einen Reifen und lege eine schwere Kugel in die Mitte. Rolle eine Murmel einmal weit außen und einmal dicht an der Kugel vorbei."
+  ],
+  "tabCols": [
+   "Eingestellter Abstand",
+   "Weg des Lichtstrahls"
+  ],
+  "tabRows": [
+   "weit weg",
+   "mittel",
+   "sehr nah",
+   "Gegenprobe: Murmel dicht an der Kugel"
+  ],
+  "fachtext": "Große Massen krümmen Raum und Zeit; Körper folgen dieser Krümmung. Ein Schwarzes Loch besitzt eine Grenze, die Ereignishorizont genannt wird. Von innerhalb dieser Grenze kann kein Lichtsignal nach außen gelangen. Auch Licht, das dicht an ihr vorbeiläuft, wird eingefangen oder stark abgelenkt. Deshalb zeigt das Foto in der Mitte einen dunklen Schatten, der größer ist als die Grenze selbst. Der helle Ring entsteht durch stark erhitzte Materie außerhalb des Schwarzen Lochs. Das Gummituch ist dafür nur ein vereinfachtes Modell.",
+  "merksatz": [
+   {
+    "pre": "Eine große Masse krümmt den",
+    "loesung": "Raum",
+    "post": " und die Zeit. Körper folgen dieser Krümmung."
+   },
+   {
+    "pre": "Ein Schwarzes Loch besitzt eine Grenze, die Ereignishorizont genannt wird. Von innerhalb dieser Grenze kann kein Lichtsignal nach außen",
+    "loesung": "gelangen",
+    "post": ". Auch Licht dicht daneben wird eingefangen; deshalb zeigt das Foto dort einen dunklen Schatten."
+   }
+  ],
+  "beobachtung": "Bei „weit weg“ läuft der Strahl fast geradeaus weiter und ist nur leicht gekrümmt. Bei „mittel“ macht er eine deutliche Kurve und verlässt das Bild in einer anderen Richtung, als er hineingelaufen ist. Bei „sehr nah“ kommt er nicht mehr heraus, denn er überschreitet den Ereignishorizont, und hinter dieser Grenze entkommt auch Licht nicht mehr. Die Mitte bleibt deshalb dunkel, und zwar über einen Bereich, der größer ist als die Grenze selbst; sichtbar ist nur der leuchtende Ring aus heißer Materie, die auf das Loch zustürzt. Im Tuchmodell zeigt sich dasselbe Muster: Weit außen rollt die Murmel fast gerade, dicht an der Kugel läuft sie in einer engen Spirale hinein.",
+  "aufgabe": {
+   "frage": "Erkläre mit dem Gummituchmodell, wie eine große Masse die Bahn anderer Körper beeinflussen kann. Nenne anschließend eine Grenze des Modells.",
+   "zeilen": 3,
+   "loesung": "Die schwere Kugel drückt eine Delle in das gespannte Tuch. Eine Murmel, die daran vorbeirollt, folgt dieser Delle: Ihre Bahn wird zur Kugel hin gebogen, und zwar umso stärker, je dichter sie vorbeirollt. Ohne die schwere Kugel rollt sie dagegen fast geradlinig. So zeigt das Modell, dass eine große Masse die Umgebung verändert und dadurch die Bahn anderer Körper beeinflusst; im Weltall krümmt eine große Masse Raum und Zeit, und Körper folgen dieser Krümmung. Das Gummituch ist aber nur ein vereinfachtes Modell. Es zeigt eine Fläche statt des dreidimensionalen Raums. Außerdem wird die Murmel durch die Schwerkraft der Erde nach unten gezogen und durch Reibung gebremst; deshalb fällt sie am Ende in die Delle.",
+   "komp": "E7",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum ein Schwarzes Loch dunkel erscheint und warum die Materie in seiner Umgebung trotzdem leuchten kann.",
+  "sicherheit": "Lege die schwere Kugel vorsichtig ab und stelle den Rahmen so, dass sie niemandem auf den Fuß fallen kann.",
+  "ueberleitung": "Ben scrollt weiter. Ganz unten in seiner Liste stehen Galaxien, deren Licht dreizehn Milliarden Jahre unterwegs war, und ein Wort, das Mia laut vorliest: Urknall.",
+  "stufe": "vertiefung",
+  "modellgrenze": "Das gespannte Tuch ist nur ein vereinfachtes Modell. Es zeigt eine Fläche statt des dreidimensionalen Raums. Außerdem wird die Murmel durch die Schwerkraft der Erde nach unten gezogen und durch Reibung gebremst.",
+  "theme": "teleskop",
+  "name": "Was passiert bei einem schwarzen Loch?",
+  "auftrag": "Untersuche in der Simulation die Ablenkung bei verschiedenen Abständen.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "t5",
+  "titel": "Punkte auf dem Ballon",
+  "problem": "Das letzte Bild in Bens Liste zeigt Galaxien, deren Licht dreizehn Milliarden Jahre unterwegs war. Mia will wissen, wo denn die Stelle liegt, an der alles losging – dahin müsste man das Fernrohr doch richten können. Auf dem Tisch liegen ein paar Luftballons und ein Filzstift.",
+  "frage": "Entfernen sich alle Galaxien gleich schnell voneinander?",
+  "predict": [
+   "Die Punkte in der Mitte bleiben, wo sie sind. Nur die Punkte am Rand wandern nach außen.",
+   "Alle Galaxien rücken gleich schnell voneinander weg. Wie weit zwei voneinander entfernt sind, spielt dabei keine Rolle.",
+   "Von jedem Punkt aus entfernen sich alle anderen, und der weiter entfernte rückt dabei stärker weg."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Suche dir vor dem Start eine nahe und eine weit entfernte Galaxie und merke dir ihre Lage. Lass danach mit „Urknall starten“ die Ausdehnung ablaufen und beobachte beide Galaxien gleichzeitig.",
+   "Gehe mit „zum Anfang“ zurück und lass den Vorgang noch einmal laufen. Wähle diesmal eine andere Galaxie als Ausgangspunkt und prüfe, ob sich von ihr aus alle übrigen ebenfalls entfernen.",
+   "Gegenprobe am Tisch: Male Punkte auf einen schlaffen Luftballon, miss zwei nahe und zwei weit entfernte Punktepaare und blase den Ballon weiter auf. Miss dieselben Abstände erneut."
+  ],
+  "tabCols": [
+   "Was ich beobachte",
+   "Wie weit entfernt es sich?"
+  ],
+  "tabRows": [
+   "nahe Galaxie",
+   "weit entfernte Galaxie",
+   "zwei Galaxien, die beide weit von uns weg liegen",
+   "Gegenprobe: zwei Punkte auf dem Ballon"
+  ],
+  "fachtext": "Wenn ein Ballon aufgeblasen wird, vergrößern sich die Abstände zwischen Punkten auf seiner Oberfläche. Ähnlich vergrößern sich im Universum die Abstände zwischen weit voneinander entfernten Galaxien. Der Urknall war keine Explosion an einem bestimmten Ort. Der Raum selbst dehnt sich aus.",
+  "merksatz": [
+   {
+    "pre": "Auf dem Ballon entfernen sich von jedem Punkt aus alle anderen. Einen",
+    "loesung": "Mittelpunkt",
+    "post": " der Ausdehnung gibt es nicht."
+   },
+   {
+    "pre": "Der Urknall fand nicht an einer bestimmten",
+    "loesung": "Stelle",
+    "post": " statt. Seitdem dehnt sich der Raum aus."
+   }
+  ],
+  "beobachtung": "Nach dem Start wachsen alle Abstände zwischen den Galaxien. Die nahe Galaxie rückt nur langsam weg, die weit entfernte legt in derselben Zeit eine deutlich größere Strecke zurück; je größer der Abstand, desto schneller die Entfernung. Auch zwei Galaxien, die beide weit von uns weg liegen, entfernen sich voneinander, denn nicht die Galaxien fliegen auseinander, sondern der Raum zwischen ihnen wird größer. Welche Galaxie du auch als Ausgangspunkt wählst, das Bild sieht gleich aus: Einen Mittelpunkt der Ausdehnung gibt es nicht. Auf dem Ballon wachsen ebenfalls alle Abstände, die weiten stärker als die nahen; das Modell hat aber eine Grenze, weil die Ballonhaut einen Rand besitzt und der Raum nicht.",
+  "aufgabe": {
+   "frage": "Erkläre Mia mit deinem Ballonversuch, warum sie das Fernrohr auf keine bestimmte Stelle richten kann, an der der Urknall stattgefunden hat.",
+   "zeilen": 3,
+   "loesung": "Auf dem Ballon entfernen sich beim Aufblasen alle Punkte voneinander, und von jedem Punkt aus sieht es so aus, als sei man selbst in der Mitte. Einen Punkt auf der Ballonhaut, von dem die Ausdehnung ausgeht, gibt es nicht. Im Universum ist es ähnlich: Der Urknall fand nicht an einer bestimmten Stelle statt, und seitdem dehnt sich der Raum selbst aus, sodass die Abstände zwischen weit entfernten Galaxien größer werden. Deshalb kann Mia das Fernrohr in keine Richtung drehen, um den Ort des Anfangs zu finden. Sie sieht in jeder Richtung dasselbe: ferne Galaxien, deren Abstand zu uns wächst.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Vergleiche einen Rosinenkuchen, der im Ofen aufgeht, mit dem Ballonmodell.",
+  "ueberleitung": "Der Ballon liegt schlaff auf dem Tisch, draußen wird es dunkel. Ben trägt das selbstgebaute Rohr zurück aufs Feld, über sich das Band der Milchstraße: zwei Gläser aus Opas Kiste, ein Stück Pappe – und darin Licht, das Jahrhunderte unterwegs war, um genau hier anzukommen.",
+  "stufe": "vertiefung",
+  "modellgrenze": "Der Ballon dehnt sich in den Raum des Zimmers aus. Für das Universum muss es jedoch keinen äußeren Raum geben, in den es sich ausdehnt. Außerdem werden aufgemalte Punkte auf dem Ballon größer, während Galaxien durch ihre eigene Gravitation zusammengehalten werden.",
+  "theme": "teleskop",
+  "name": "Wie ist das Weltall entstanden? (Urknall)",
+  "auftrag": "Vergleiche in der Simulation nahe und weit entfernte Galaxien miteinander.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ }
+]

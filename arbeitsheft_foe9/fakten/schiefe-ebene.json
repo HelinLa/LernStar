@@ -1,0 +1,159 @@
+[
+ {
+  "sim": "schiefe-ebene",
+  "ueberschrift": "📐 Warum geht ein schwerer Stein über eine Rampe leichter hoch?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "flach",
+    "ruft": "_sieSet('flach')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_sieSet('mittel')"
+   },
+   {
+    "aufschrift": "steil",
+    "ruft": "_sieSet('steil')"
+   },
+   {
+    "aufschrift": "Kraft",
+    "ruft": "_sieAns(0,0)"
+   },
+   {
+    "aufschrift": "Arbeit/Energie",
+    "ruft": "_sieAns(0,1)"
+   },
+   {
+    "aufschrift": "Zeit",
+    "ruft": "_sieAns(0,2)"
+   },
+   {
+    "aufschrift": "weniger Kraft, aber längerer Weg",
+    "ruft": "_sieAns(1,0)"
+   },
+   {
+    "aufschrift": "mehr Kraft und kürzerer Weg",
+    "ruft": "_sieAns(1,1)"
+   },
+   {
+    "aufschrift": "gar keinen Unterschied",
+    "ruft": "_sieAns(1,2)"
+   },
+   {
+    "aufschrift": "Kraft × Weg (die Arbeit)",
+    "ruft": "_sieAns(2,0)"
+   },
+   {
+    "aufschrift": "nur die Kraft",
+    "ruft": "_sieAns(2,1)"
+   },
+   {
+    "aufschrift": "nur der Weg",
+    "ruft": "_sieAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_sieSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_sieSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_sieSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('schiefeebene')"
+   }
+  ],
+  "hinweise": [
+   "Die Last (6 N) soll auf dieselbe Höhe. Verändere die Steilheit der Rampe. Wie viel Zugkraft brauchst du – und wie lang ist der Weg?",
+   "Eine schiefe Ebene (Rampe) spart Kraft: Je flacher die Rampe, desto kleiner die Zugkraft. Dafür ist der Weg länger. Kraft × Weg bleibt aber gleich – so viel wie beim senkrechten Heben.",
+   "Weniger Kraft erkauft man mit mehr Weg. Senkrecht heben: 6 N. Über die Rampe: weniger, aber weiter."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "sieStatus: mittlere Rampe: Zugkraft F = 3,0 N (statt 6 N senkrecht), Weg 2,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben."
+   },
+   {
+    "einstellung": "flach",
+    "text": "sieStatus: flache Rampe: Zugkraft F = 1,5 N (statt 6 N senkrecht), Weg 4,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "sieStatus: mittlere Rampe: Zugkraft F = 3,0 N (statt 6 N senkrecht), Weg 2,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben."
+   },
+   {
+    "einstellung": "steil",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben."
+   },
+   {
+    "einstellung": "Kraft",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✓ Richtig! Man braucht weniger Kraft – dafür einen längeren Weg."
+   },
+   {
+    "einstellung": "Arbeit/Energie",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Nein, die Arbeit (Kraft × Weg) bleibt gleich."
+   },
+   {
+    "einstellung": "Zeit",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht."
+   },
+   {
+    "einstellung": "weniger Kraft, aber längerer Weg",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✓ Richtig! Flacher → kleinere Zugkraft, aber weiter."
+   },
+   {
+    "einstellung": "mehr Kraft und kürzerer Weg",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Umgekehrt: flacher braucht weniger Kraft."
+   },
+   {
+    "einstellung": "gar keinen Unterschied",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich."
+   },
+   {
+    "einstellung": "Kraft × Weg (die Arbeit)",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✓ Richtig! Was man an Kraft spart, setzt man an Weg zu."
+   },
+   {
+    "einstellung": "nur die Kraft",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Die Kraft ist bei der Rampe kleiner."
+   },
+   {
+    "einstellung": "nur der Weg",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Der Weg ist bei der Rampe länger."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Der Weg ist bei der Rampe länger.  ||  sieSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Der Weg ist bei der Rampe länger.  ||  sieSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Der Weg ist bei der Rampe länger."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "sieStatus: steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.  ||  sieFb0: ✗ Um Zeit geht es hier nicht.  ||  sieFb1: ✗ Doch, die nötige Kraft ändert sich.  ||  sieFb2: ✗ Der Weg ist bei der Rampe länger."
+   }
+  ],
+  "bildtexte": [
+   "Höhe (gleich)",
+   "6 N",
+   "Zugkraft 3,0 N",
+   "senkrecht",
+   "Weg = 2,0 × Höhe",
+   "Zugkraft 1,5 N",
+   "Weg = 4,0 × Höhe",
+   "Zugkraft 4,5 N",
+   "Weg = 1,3 × Höhe"
+  ]
+ }
+]

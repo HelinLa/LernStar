@@ -1,0 +1,94 @@
+[
+ {
+  "kapitel": "motor",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Onlineshop bewirbt einen Magnethaken mit „Haltekraft 40 kg“. Beurteile, welche Angaben fehlen, damit man diese Aussage überhaupt nachprüfen kann.",
+    "erwartung": "Erwartet wird beides: die Einheit und die Bedingungen. „kg“ ist eine Masse, gemeint ist eine Haltekraft in Newton – 40 kg entsprächen rund 400 N. Außerdem fehlen: Unterlage und ihre Dicke, Luftspalt beziehungsweise Lack- oder Farbschicht, Zugrichtung (senkrecht abziehen oder abscheren) und Oberflächenbeschaffenheit. Ohne diese Angaben ist die Zahl nicht überprüfbar."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuch, mit dem ihr zeigen könnt, dass die Tragkraft eines Elektromagneten wirklich proportional zur Stromstärke wächst. Legt fest, was ihr messt und was ihr dabei konstant halten müsst.",
+    "erwartung": "Gemessen wird die Tragkraft in Abhängigkeit von der Stromstärke, etwa als Zahl gehaltener Büroklammern oder mit einem Kraftmesser. Konstant bleiben müssen: Windungszahl, Kern, Abstand und Kontaktfläche. Mindestens fünf Messwerte, Auftragung Tragkraft über Stromstärke; Proportionalität liegt vor, wenn die Punkte auf einer Geraden durch den Nullpunkt liegen. Als Fehlerquellen sind zu nennen: Erwärmung der Spule bei längerer Messung und die Sättigung des Eisenkerns bei großen Strömen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für eine Modellbahn stehen zwei Motoren zur Wahl. Motor A hat 60 Windungen und einen schwachen Magneten mit 0,10 T, Motor B hat 20 Windungen und einen starken Magneten mit 0,30 T. Beide laufen mit 2,0 A und haben 0,002 m² Spulenfläche. Entscheide begründet, welchen ihr nehmt.",
+    "erwartung": "Beide liefern dasselbe Drehmoment: A ergibt 60 · 0,10 · 2,0 · 0,002 = 0,024 N·m, B ergibt 20 · 0,30 · 2,0 · 0,002 = 0,024 N·m. Die Entscheidung muss deshalb über andere Kriterien laufen. Für B sprechen der kürzere Draht – also weniger Widerstand, weniger Erwärmung und geringeres Gewicht – sowie der schnellere Aufbau. Für A spricht, dass schwache Magnete billiger sind und nicht entmagnetisiert werden können. Erwartet wird eine begründete Wahl, nicht eine bestimmte."
+   }
+  ]
+ },
+ {
+  "kapitel": "netz",
+  "aufgaben": [
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuch, mit dem ihr zeigen könnt, dass die induzierte Spannung wirklich proportional zur Geschwindigkeit des Magneten wächst. Legt fest, was ihr messt und was dabei konstant bleiben muss.",
+    "erwartung": "Gemessen wird die Spitzenspannung in Abhängigkeit vom Tempo, etwa indem der Magnet auf einer schiefen Ebene aus verschiedenen Höhen durch die Spule gleitet – die Geschwindigkeit lässt sich dann aus der Fallhöhe berechnen oder mit einer Lichtschranke messen. Konstant bleiben müssen Windungszahl, Magnet und Weg durch die Spule. Mindestens fünf Messwerte, Auftragung Spannung über Geschwindigkeit; Proportionalität liegt vor, wenn die Punkte auf einer Ursprungsgeraden liegen. Als Fehlerquelle ist die Reibung auf der Bahn zu nennen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Eine Gemeinde soll entscheiden, ob eine neue 110-kV-Leitung als Freileitung auf Masten oder als Erdkabel gebaut wird. Das Erdkabel kostet etwa das Fünffache. Stellt Argumente für beide Seiten zusammen und entscheidet begründet.",
+    "erwartung": "Für die Freileitung: deutlich billiger, gut zugänglich für Wartung, Fehler schnell zu finden, bessere Kühlung durch die Luft. Für das Erdkabel: kein Eingriff ins Landschaftsbild, keine Gefahr für Vögel, kein Widerstand aus der Bevölkerung, keine Beeinträchtigung der Landwirtschaft. Gegen das Erdkabel: hohe Kosten, aufwendige Reparatur, erheblicher Eingriff in den Boden beim Bau. Erwartet wird eine begründete Entscheidung, die mindestens drei Kriterien gegeneinander abwägt – nicht eine bestimmte Wahl."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Werbetext für ein Ladegerät verspricht „100 % Wirkungsgrad ohne Energieverlust“. Beurteile diese Aussage mit dem, was du über Transformatoren weißt.",
+    "erwartung": "Die Aussage ist nicht haltbar. In jedem Transformator entstehen Verluste: Wirbelströme im Eisenkern, der Widerstand der Wicklungen und Feldanteile, die die zweite Spule nicht erreichen. Im Schulversuch lag der Wirkungsgrad bei rund 81 %; gute Netzteile erreichen 90 bis 95 %, aber niemals 100 %. Ein Hinweis auf den Energieerhaltungssatz genügt nicht – erwartet wird, dass mindestens zwei konkrete Verlustursachen genannt werden. Zusätzlich kann angemerkt werden, dass ein warmes Netzteil den Verlust unmittelbar sichtbar macht."
+   }
+  ]
+ },
+ {
+  "kapitel": "atomkern",
+  "aufgaben": [
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuchsplan, mit dem ihr die Halbwertsdicke von Blei für ein gegebenes Präparat bestimmen könnt. Legt fest, was ihr messt, wie oft und was ihr konstant halten müsst.",
+    "erwartung": "Gemessen wird die Zählrate in Abhängigkeit von der Bleidicke. Zuerst die Nullrate ohne Präparat bestimmen und von allen Werten abziehen. Konstant bleiben müssen Abstand, Messdauer und Geometrie. Mindestens fünf Dicken, jede Messung über eine längere Zeit wegen der statistischen Schwankung. Die Halbwertsdicke ist die Dicke, bei der die korrigierte Rate auf die Hälfte des Ausgangswerts gefallen ist. Als Fehlerquellen sind zu nennen: statistische Schwankung, Streustrahlung und die Totzeit des Zählrohrs."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Werbetext für ein Nahrungsergänzungsmittel wirbt mit „garantiert strahlungsfrei“. Beurteile diese Aussage.",
+    "erwartung": "Die Aussage ist physikalisch nicht haltbar. Jede Nahrung enthält Kalium, und davon sind 0,0117 % das radioaktive Kalium-40; ebenso enthält jedes organische Material Kohlenstoff-14. Vollständig strahlungsfrei kann ein Lebensmittel deshalb nicht sein – auch der menschliche Körper selbst strahlt. Erwartet wird zusätzlich die Einordnung, dass die Werbung mit einer Angst arbeitet, statt eine überprüfbare Eigenschaft zu benennen, und dass ein sinnvoller Vergleichsmaßstab die natürliche Belastung von rund 2 mSv im Jahr wäre."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Eine Schule überlegt, ihre alten Ionisationsrauchmelder mit Americium-241 durch optische Melder zu ersetzen. Stellt Argumente beider Seiten zusammen und entscheidet begründet.",
+    "erwartung": "Für den Austausch: Das Präparat muss als radioaktiver Stoff entsorgt werden und darf nicht in den Hausmüll; im Brandfall oder bei Beschädigung könnte es freigesetzt werden; optische Melder erfüllen denselben Zweck ohne Präparat. Gegen den Austausch: Im geschlossenen Gehäuse ist die Alphastrahlung außen nicht messbar; funktionierende Geräte wegzuwerfen erzeugt Abfall und Kosten; Ionisationsmelder sprechen auf offene Flammen schneller an. Erwartet wird eine begründete Abwägung mit mindestens drei Kriterien, nicht eine bestimmte Entscheidung."
+   }
+  ]
+ },
+ {
+  "kapitel": "kernenergie",
+  "aufgaben": [
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Eine Gemeinde soll entscheiden, ob auf ihrem Gebiet nach einem Endlagerstandort gesucht werden darf. Stellt die wichtigsten Argumente beider Seiten zusammen und entscheidet begründet.",
+    "erwartung": "Dafür: Irgendwo muss der bereits vorhandene Abfall hin, und die Verantwortung lässt sich nicht auf andere abschieben; die Suche bringt Untersuchungsaufträge und Sicherheit über den Untergrund; wer nicht mitsucht, überlässt die Entscheidung anderen. Dagegen: jahrzehntelange Bauarbeiten, Wertverlust von Grundstücken, Risiko über Zeiträume, die niemand überblickt, Misstrauen gegenüber Prognosen. Erwartet wird eine Abwägung mit mindestens drei Kriterien und eine offengelegte Gewichtung."
+   },
+   {
+    "komp": "E9",
+    "afb": "III",
+    "prompt": "Beurteilt die Aussage: „Weil die Fusion je Kernbaustein achtmal mehr Energie liefert als die Spaltung, sollte man Kernkraftwerke sofort durch Fusionskraftwerke ersetzen.“",
+    "erwartung": "Die Zahl stimmt: 6,68 MeV je Baustein gegenüber 0,85 MeV. Der Schluss ist trotzdem unzulässig, weil er von der Energieausbeute je Baustein auf die technische Machbarkeit schließt. Für die Fusion braucht man auf der Erde über hundert Millionen Grad, weil der Druck des Sonnenkerns nicht herstellbar ist; bislang gibt es kein Kraftwerk, das dauerhaft mehr Energie liefert als es aufnimmt. Erwartet wird die Unterscheidung zwischen „physikalisch günstiger“ und „technisch verfügbar“ sowie der Hinweis, dass man ein noch nicht existierendes Verfahren nicht als Ersatz einplanen kann."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "In einem Bericht heißt es, in der Umgebung eines Kernkraftwerks sei „erhöhte Radioaktivität“ gemessen worden – nämlich 2,4 mSv im Jahr. Beurteilt, ob diese Angabe einen Anlass zur Sorge darstellt.",
+    "erwartung": "Der Wert ist einzuordnen: Die mittlere natürliche Belastung in Deutschland liegt bei rund 2,0 mSv im Jahr, die gesamte mittlere Belastung bei rund 3,8 mSv. 2,4 mSv liegen damit im Bereich der normalen natürlichen Schwankung; in Gegenden mit hohem Radongehalt werden deutlich höhere Werte erreicht. Erwartet wird außerdem die Feststellung, dass „erhöht“ ohne Vergleichswert keine Information ist und dass entscheidend wäre, ob der Wert über dem ortsüblichen Untergrund liegt und welches Nuklid gemessen wurde."
+   }
+  ]
+ }
+]

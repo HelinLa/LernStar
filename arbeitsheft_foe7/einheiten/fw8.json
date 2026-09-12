@@ -1,0 +1,196 @@
+{
+ "seite": {
+  "id": "fw8",
+  "quelle": "ew9",
+  "sim": "sternparallaxe",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Kein Maßband bis zum Stern",
+  "name": "Wie weit ist ein Stern entfernt?",
+  "fachwoerter_neu": [
+   "Bogensekunde"
+  ],
+  "alltag": [
+   "Neben Wega steht auf der Karte: 25 Lichtjahre.",
+   "Nour fragt: Wer hat das nachgemessen?",
+   "Ein Maßband hilft bis zum Stern sicher nicht.",
+   "Winzige Winkel misst man in Bogensekunden (″)."
+  ],
+  "frage": "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
+  "predict": [
+   "Je weiter ein Stern weg ist, desto größer ist sein Winkel.",
+   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Proxima Centauri“ und lies den Winkel p und die Lichtjahre ab.",
+   "Vergleiche mit „61 Cygni“ und „Wega“. Trage alle Werte ein.",
+   "Wähle „Polarstern“ und drücke „Lupe ×100“, um den winzigen Sprung zu sehen.",
+   "Vergleiche: Wie ändert sich der Winkel mit der Entfernung?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Stern",
+   "Winkel p in ″",
+   "Entfernung in Lichtjahren"
+  ],
+  "tabRows": [
+   [
+    "Proxima Centauri",
+    "0,7686",
+    "4,2"
+   ],
+   [
+    "61 Cygni",
+    "",
+    ""
+   ],
+   [
+    "Wega",
+    "",
+    ""
+   ],
+   [
+    "Polarstern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je weiter ein Stern entfernt ist, desto",
+    "loesung": "kleiner",
+    "post": "ist sein gemessener Winkel p."
+   },
+   {
+    "pre": "So messen Forscher Entfernungen im All: mit winzigen",
+    "loesung": "Winkeln",
+    "post": "statt mit einem Maßband."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "Winkeln",
+   "Bogensekunde",
+   "springt",
+   "Entfernung"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation beim Polarstern?",
+   "antwort": "Der Polarstern ist 432,5 Lichtjahre entfernt. Sein Winkel ist nur 0,0075″. Sein Sprung wird erst mit der Lupe ×100 sichtbar."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Stern A hat den Winkel 0,7686″, Stern B nur 0,1302″. Welcher ist weiter weg?",
+    "optionen": [
+     "Stern B – kleiner Winkel heißt weiter weg.",
+     "Stern A – großer Winkel heißt weiter weg.",
+     "Beide sind gleich weit weg."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Je weiter der Stern, desto",
+      "loesung": "kleiner",
+      "post": "der Winkel p."
+     },
+     {
+      "pre": "Ein naher Stern",
+      "loesung": "springt",
+      "post": "vor den fernen Sternen hin und her."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum springt ein naher Stern im Laufe eines halben Jahres hin und her?",
+    "satzstarter": "Ein halbes Jahr später steht die Erde …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das Bild der Simulation: Juli und Januar, dazwischen liegen 2 AE.",
+   "h2": "Beginne so: Ein halbes Jahr später steht die Erde ein großes Stück weiter drüben. Der nahe Stern …",
+   "h3": "Fast fertige Antwort: Die Erde wandert um die Sonne. Ein halbes Jahr später schauen wir von der anderen Seite. Darum scheint der nahe Stern zu ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die Regel: kleiner Winkel – weiter weg.",
+   "Ich kann vier Sterne nach der Entfernung ordnen.",
+   "Ich kann den Sprung des nahen Sterns erklären."
+  ],
+  "zuhause": "Strecke den Daumen aus. Sieh ihn erst nur mit dem rechten, dann nur mit dem linken Auge an: Er springt vor dem Hintergrund hin und her.",
+  "bildauftrag": "[BILD: unten die Sonne mit der Erdbahn als flacher Ellipse, die Erde an zwei markierten Punkten „Januar“ und „Juli“; von beiden Punkten je eine Sichtlinie zu einem nahen Stern in der Bildmitte, dahinter eine ruhige Wand ferner Sterne; der kleine Winkel zwischen den Sichtlinien am Stern deutlich markiert mit Beschriftung „Winkel p“; große Beschriftung „der nahe Stern springt“; nur diese zwei Linien; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw8",
+  "lernziel": "Die Schülerinnen und Schüler schließen aus dem Vergleich von vier Sternen, dass ein Stern umso weiter entfernt ist, je kleiner sein gemessener Winkel p ist. Die Rechnung d = 1/p bleibt dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Statuszeilen aus diesem Lehrerteil als Karten. Für den Einstieg: der Daumen-Versuch aus dem Zuhause-Auftrag, ganz ohne Material.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Daumen-Versuch gemeinsam",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: Proxima Centauri → 0,7686″, 4,2 Lichtjahre · 61 Cygni → 0,2860″, 11,4 Lichtjahre · Wega → 0,1302″, 25,0 Lichtjahre · Polarstern → 0,0075″, 432,5 Lichtjahre, sein Sprung wird erst mit Lupe ×100 sichtbar.",
+  "merksatz": [
+   "kleiner",
+   "Winkeln"
+  ],
+  "tabelle_erwartet": [
+   [
+    "61 Cygni",
+    "0,2860",
+    "11,4"
+   ],
+   [
+    "Wega",
+    "0,1302",
+    "25,0"
+   ],
+   [
+    "Polarstern",
+    "0,0075",
+    "432,5"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Vergleich wie in der Tabelle: 0,1302″ ist der kleinere Winkel – Wega ist mit 25,0 Lichtjahren weiter weg als Proxima mit 4,2.",
+   "typische_fehler": [
+    "Die Regel wird umgedreht: großer Winkel wird mit großer Entfernung verbunden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "kleiner",
+    "springt"
+   ],
+   "typische_fehler": [
+    "„weniger“ statt der Wortbank-Form „kleiner“.",
+    "Der Sprung wird dem Stern selbst zugeschrieben statt unserem Blickwechsel."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Erde wandert um die Sonne. Ein halbes Jahr später steht sie 2 AE weiter drüben, und wir schauen von der anderen Seite. Darum scheint der nahe Stern vor den fernen Sternen hin und her zu springen.",
+   "alternativen": [
+    "Mit dem Daumen-Versuch begründet: zwei Augen, zwei Blickrichtungen – der Daumen springt.",
+    "Verweis auf das Bild der Simulation: Januar und Juli, dazwischen 2 AE."
+   ],
+   "typische_fehler": [
+    "Der Stern soll sich selbst bewegen.",
+    "Der Sprung wird dem Teleskop oder der Lupe zugeschrieben."
+   ]
+  },
+  "hilfe3_wort": "springen",
+  "schwache": [
+   "Nur Proxima und Polarstern vergleichen lassen, die zwei mittleren Sterne danach.",
+   "Die vier Winkel der Größe nach ordnen lassen, bevor die Regel formuliert wird.",
+   "Den Daumen-Versuch vor der Simulation machen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies beim Polarstern weiter – vom Boden aus ist der Winkel nicht mehr messbar, die Raumsonde Gaia schafft es.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungsmessung. Kompetenz E6 („Untersuchungen und Experimente auswerten“) – einziger E6-Träger des Förderhefts, gesichert über den Vier-Sterne-Vergleich; die Rechnung 1/p entfällt bewusst (Seitenplan, geprüft am 04.09.2026)."
+ }
+}

@@ -1,0 +1,190 @@
+{
+ "seite": {
+  "id": "fk4",
+  "quelle": "kf4",
+  "sim": "masse-gewicht",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei Zahlen für ein Klavier",
+  "name": "Masse oder Gewichtskraft?",
+  "fachwoerter_neu": [
+   "Masse m in Kilogramm (kg)",
+   "Gewichtskraft F"
+  ],
+  "alltag": [
+   "Nour und Jannis heben das Klavier auf die Bühne.",
+   "Die Waage im Musikraum zeigt Kilogramm, der Kraftmesser zeigt Newton.",
+   "Herr Kessler fragt: „Wie viel Newton sind das?“",
+   "„Schwer“ heißt hier nicht „schwierig“. Die Kraft ist groß."
+  ],
+  "frage": "Sind Masse und Gewichtskraft dasselbe?",
+  "predict": [
+   "Masse und Gewichtskraft sind dasselbe in anderen Einheiten.",
+   "Masse und Gewichtskraft sind zwei verschiedene Größen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke zuerst „100 g“. Sonst steht noch 1 kg da.",
+   "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage beides ein.",
+   "Drücke danach „1 kg“ und „2 kg“. Vergleiche die beiden Zeilen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Welche Masse zeigt die Statuszeile?",
+   "Welche Gewichtskraft steht dort?"
+  ],
+  "tabRows": [
+   [
+    "100 g",
+    "m = 100 g",
+    "F = 1,0 N"
+   ],
+   [
+    "1 kg",
+    "",
+    ""
+   ],
+   [
+    "2 kg",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Masse m sagt, wie viel Stoff im Körper steckt. Einheit:",
+    "loesung": "Kilogramm",
+    "post": "."
+   },
+   {
+    "pre": "Die Gewichtskraft F zieht den Körper nach unten. Einheit:",
+    "loesung": "Newton",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Kilogramm",
+   "Newton",
+   "19,6 N",
+   "gleich"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Gewichtskraft bei 1 kg?",
+   "antwort": "Gegeben: m = 1 kg. Gesucht: F. Formel: F = m · g, g = 9,8 N/kg. Einsetzen: F = 1 kg · 9,8 N/kg. Ergebnis: F = 9,8 N. Antwort: Bei 1 kg sind es 9,8 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was gilt für dasselbe Klavier?",
+    "optionen": [
+     "Die Masse steht in Kilogramm, die Gewichtskraft in Newton.",
+     "Masse und Gewichtskraft sind immer gleich groß.",
+     "Die Waage zeigt Newton, der Kraftmesser Kilogramm."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1 kg sind es 9,8 N. Bei 2 kg sind es",
+      "loesung": "19,6 N",
+      "post": "."
+     },
+     {
+      "pre": "Die Masse bleibt dabei",
+      "loesung": "gleich",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „2 kg sind 2 N.“ Erkläre den Fehler.",
+    "satzstarter": "Am Bildschirm steht bei 2 kg …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "g = 9,8 N/kg ist die feste Zahl der Erde. Ihren Namen lernst du auf der nächsten Seite.",
+   "h2": "Rechne so: 2 kg · 9,8 N/kg. Prüfe am Bildschirm.",
+   "h3": "Fast fertig: Bei 2 kg zeigt der Bildschirm 19,6 N. 2 kg und 2 N sind nicht ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was die Masse m ist.",
+   "Ich kann sagen, was die Gewichtskraft F ist.",
+   "Ich kann erklären, warum 2 kg nicht 2 N sind."
+  ],
+  "zuhause": "Sieh auf einer Packung Mehl nach. Dort steht die Masse in Kilogramm.",
+  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]"
+ },
+ "lehrer": {
+  "id": "fk4",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden die Masse m (Kilogramm, Menge an Stoff, bleibt gleich) von der Gewichtskraft F (Newton, Zugkraft der Erde) und lesen am Bildschirm ab, dass doppelte Masse doppelte Gewichtskraft bedeutet (1 kg gibt 9,8 N, 2 kg gibt 19,6 N).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Werte aus diesem Lehrerteil als drei Karten oder als Tabelle an der Tafel. Optional als Demonstration: Küchenwaage und Federkraftmesser mit demselben Gewichtsstück.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen oder vorlesen: 100 g → Masse m = 100 g, Gewichtskraft F = m · g = 1,0 N · 1 kg → Masse m = 1 kg, Gewichtskraft F = m · g = 9,8 N · 2 kg → Masse m = 2 kg, Gewichtskraft F = m · g = 19,6 N. Dazu der Satz, der bei jeder Einstellung dabeisteht: „Die Waage zeigt die Masse, der Kraftmesser die Kraft.“ Alternativ drei Standbilder der Simulation am Beamer zeigen.",
+  "merksatz": [
+   "Kilogramm",
+   "Newton"
+  ],
+  "tabelle_erwartet": [
+   [
+    "1 kg",
+    "m = 1 kg",
+    "F = 9,8 N"
+   ],
+   [
+    "2 kg",
+    "m = 2 kg",
+    "F = 19,6 N"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile zeigt für denselben Körper zwei verschiedene Zahlen: Masse m = 1 kg und Gewichtskraft F = 9,8 N. Der Satz am Ende der Statuszeile ordnet die Geräte zu: die Waage der Masse, der Kraftmesser der Kraft.",
+   "typische_fehler": [
+    "Option 0 wird gewählt, weil im Alltag „Gewicht“ und „Masse“ dasselbe meinen.",
+    "Option 2 wird gewählt, weil Waage und Kraftmesser noch vertauscht werden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "19,6 N",
+    "gleich"
+   ],
+   "typische_fehler": [
+    "„9,8 N“ wird verdoppelt zu „18,6 N“ oder „19,8 N“ (Übertrag beim Verdoppeln vergessen). Gegenprobe: 2 kg drücken, der Bildschirm zeigt 19,6 N.",
+    "In die zweite Lücke wird „doppelt“ geschrieben: Die Masse verdoppelt sich nicht von selbst, sie ist eingestellt und bleibt gleich.",
+    "Die Einheit N fehlt, es steht nur „19,6“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Am Bildschirm steht bei 2 kg die Gewichtskraft 19,6 N, nicht 2 N. Kilogramm und Newton sind zwei verschiedene Einheiten. 2 kg ist die Masse, 19,6 N ist die Gewichtskraft.",
+   "alternativen": [
+    "Rechenweg statt Ablesen: 2 kg · 9,8 N/kg = 19,6 N.",
+    "Verweis auf die Geräte: Die Waage zeigt 2 kg, der Kraftmesser zeigt 19,6 N, und beide messen denselben Körper.",
+    "Auch richtig ohne Zahl: Masse und Gewichtskraft sind nicht dasselbe, deshalb darf man die Zahl nicht einfach übernehmen."
+   ],
+   "typische_fehler": [
+    "Der Satz von Jannis wird nur wiederholt statt widerlegt.",
+    "Es wird nur „das ist falsch“ geschrieben, ohne den Bildschirmwert 19,6 N zu nennen.",
+    "Es wird behauptet, der Kraftmesser sei kaputt oder rechne um."
+   ]
+  },
+  "hilfe3_wort": "dasselbe (auch richtig: gleich, das Gleiche)",
+  "schwache": [
+   "Zuerst nur 1 kg und 2 kg vergleichen; die Zeile 100 g gemeinsam als Beispielzeile lesen und nicht selbst füllen.",
+   "Vor der Simulation den Bedienhinweis laut lesen: Der Bildschirm startet bei 1 kg, deshalb zuerst „100 g“ drücken.",
+   "Die zwei Wörter Kilogramm und Newton mit zwei Farben markieren: kg immer bei der Waage, N immer beim Kraftmesser.",
+   "Aufgabe 2 zuerst nur mündlich lösen und den Wert 19,6 N am Bildschirm gegenprüfen, dann erst schreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „200 g“ und „500 g“ und schreibe die beiden Gewichtskräfte aus der Statuszeile auf (2,0 N und 4,9 N). Nur ablesen, nicht rechnen.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm."
+ }
+}

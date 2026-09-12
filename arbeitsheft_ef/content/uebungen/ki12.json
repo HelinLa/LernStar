@@ -1,0 +1,72 @@
+{
+ "id": "ki12",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "S2",
+  "E6",
+  "E7"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Für die Gleitreibung setzt das Modell F_R = μ · F_N an; auf waagerechter Bahn ist die Normalkraft gerade die Gewichtskraft, also F_N =",
+   "loesung": "m · g",
+   "post": "."
+  },
+  {
+   "pre": "Der Reibungskoeffizient μ hängt allein von der Paarung der beteiligten Werkstoffe ab; als reine Verhältniszahl trägt er",
+   "loesung": "keine Einheit",
+   "post": "."
+  },
+  {
+   "pre": "Antriebskraft und Reibungskraft greifen am selben Wagen an und wirken auf einer Wirkungslinie in entgegengesetzte Richtungen; überlagert ergeben sie die resultierende Kraft F_res =",
+   "loesung": "F − F_R",
+   "post": ", und erst diese steht im Grundgesetz der Mechanik a = F_res / m."
+  },
+  {
+   "pre": "Verdoppelt man μ von 0,20 auf 0,40, so verdoppelt sich die Reibungskraft von 9,8 N auf 19,6 N; die Beschleunigung sinkt dabei nicht auf die Hälfte, sondern nur von 14,0 m/s² auf",
+   "loesung": "12,1 m/s²",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Verdoppelt man bei unveränderter Antriebskraft und Masse den Reibungskoeffizienten, so verdoppelt sich zwar die Reibungskraft, die Beschleunigung des Wagens halbiert sich dabei aber nicht.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil der Motor mit 80 N an einer Masse von 5 kg zieht, beschleunigt der Wagen in jeder Stellung des Reglers μ mit 16 m/s².",
+   "stimmt": false
+  },
+  {
+   "aussage": "Setzt man denselben Wagen mit einer kleineren Auflagefläche auf die Bahn, so fällt die Reibungskraft nach dem hier verwendeten Modell geringer aus.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Senkt man die Antriebskraft unter die angezeigte Reibungskraft, so bleibt der Wagen bei v = 0,0 m/s stehen, während der Infokasten weiterhin eine Reibungskraft ausweist.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias zieht den Regler μ von 0,20 auf 0,60 und sieht im Diagramm „Reibungskraft F_R“ sofort eine Stufe nach oben. Weil zugleich die Anzeige „v=“ ununterbrochen weiterzählt, schließt er: Die Reibungskraft wächst mit der Geschwindigkeit. Welche Antwort trifft zu?",
+  "optionen": [
+   "Tobias hat richtig geschlossen: Solange v weiter zunimmt, steigt auch F_R mit an; die Werte der Messreihe gelten deshalb nur für den ersten Augenblick nach dem Reglerwechsel.",
+   "Die Stufe stammt aus der vorigen Reglerstellung, deren Werte noch rund fünf Sekunden im Diagramm stehen bleiben. Wartet man sie ab, liegt die Linie über der ganzen Zeitachse waagerecht, obwohl v weiter hochzählt.",
+   "Die Stufe entsteht durch die Rasterung des Reglers, der in Schritten von 0,05 einrastet; F_R kann deshalb nur sprunghaft zunehmen und folgt der Geschwindigkeit in Stufen."
+  ],
+  "richtig": 1,
+  "erklaerung": "Die Stufe ist ein Nachhinken der Darstellung und kein physikalischer Befund: Nach jedem Reglerwechsel bleibt der alte Wert noch etwa fünf Sekunden im Fenster stehen, bis er links aus dem Diagramm gewandert ist. Erst danach darf man den Verlauf beurteilen – und dann liegt die Linie über der ganzen Zeitachse waagerecht, während „v=“ unverändert weiterzählt. Genau das sagt auch das Modell F_R = μ · F_N: Die Geschwindigkeit kommt darin gar nicht vor. Die Rasterung des Reglers erklärt die Stufe ebenfalls nicht, denn sie betrifft die Einstellung von μ und nicht die Zeitachse; F_R springt von 9,8 N auf 29,4 N, gleichgültig über wie viele Rastschritte man den Regler dorthin zieht."
+ },
+ "offen": {
+  "frage": "Auf dem Bildschirm steht nirgends, mit welchem Ortsfaktor die Simulation rechnet. Bestimme ihn aus der Tabellenzeile μ = 0,20 mit F_R = 9,8 N und aus der Reglerstellung μ = 1,00 mit F_R = 49,1 N, indem du F_R = μ · m · g nach g auflöst. Beurteile anschließend, auf wie viele Nachkommastellen sich der Ortsfaktor aus diesen Anzeigen sicher angeben lässt, und begründe, welche der beiden Stellungen die schärfere Aussage liefert.",
+  "prompt": "Auf dem Bildschirm steht nirgends, mit welchem Ortsfaktor die Simulation rechnet. Bestimme ihn aus der Tabellenzeile μ = 0,20 mit F_R = 9,8 N und aus der Reglerstellung μ = 1,00 mit F_R = 49,1 N, indem du F_R = μ · m · g nach g auflöst. Beurteile anschließend, auf wie viele Nachkommastellen sich der Ortsfaktor aus diesen Anzeigen sicher angeben lässt, und begründe, welche der beiden Stellungen die schärfere Aussage liefert.",
+  "zeilen": 5,
+  "loesung": "Aus F_R = μ · m · g folgt g = F_R / (μ · m), mit m = 5 kg. Zeile μ = 0,20: g = 9,8 N / (0,20 · 5 kg) = 9,8 N / 1,0 kg = 9,8 N/kg. Stellung μ = 1,00: g = 49,1 N / (1,00 · 5 kg) = 49,1 N / 5,0 kg = 9,82 N/kg. Beide Wege führen auf rund 9,8 N/kg, unterscheiden sich aber in der zweiten Nachkommastelle. Der Grund liegt in der Anzeige, die F_R nur auf eine Nachkommastelle angibt: Hinter 9,8 N kann jeder Wert von 9,75 N bis 9,85 N stehen, hinter 49,1 N jeder von 49,05 N bis 49,15 N. Umgerechnet ergibt das aus der ersten Zeile einen Ortsfaktor zwischen 9,75 N/kg und 9,85 N/kg, aus der zweiten dagegen nur zwischen 9,81 N/kg und 9,83 N/kg. Sicher angeben lässt sich deshalb allein die erste Nachkommastelle, also g ≈ 9,8 N/kg; wer 9,82 N/kg schreibt, gibt eine Genauigkeit vor, die die Anzeige nicht hergibt. Die schärfere Aussage liefert die Stellung μ = 1,00, denn dort trifft dieselbe Ableseunsicherheit von 0,05 N nach oben wie nach unten auf einen rund fünfmal größeren Messwert und fällt entsprechend weniger ins Gewicht. Wer den Ortsfaktor möglichst genau zurückrechnen will, liest also am oberen Anschlag ab und nicht am unteren."
+ }
+}

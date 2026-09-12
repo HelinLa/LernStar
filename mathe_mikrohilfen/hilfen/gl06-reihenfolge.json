@@ -1,0 +1,120 @@
+{
+  "kennung": "gl06",
+  "frage": "Womit fange ich an: Zahl daneben oder Zahl davor?",
+  "art": "rechenschritt",
+  "aufgabe": "a07",
+  "vorwissen": [
+    "Er weiß, dass 5x „fünf mal x“ bedeutet.",
+    "Er kann auf beiden Seiten dieselbe Zahl abziehen.",
+    "Er kann eine Zahl durch 5 teilen."
+  ],
+  "hilfe1": "Welche Zahl steht allein neben dem 5x?",
+  "skript": {
+    "A": {
+      "text": "Du hast jetzt 5x + 2 = 22.",
+      "woerter": 10
+    },
+    "B": {
+      "text": "Wir wollen zuerst die +2 wegbekommen.",
+      "woerter": 7
+    },
+    "C": {
+      "text": "Rechne zuerst auf beiden Seiten −2.",
+      "woerter": 7
+    },
+    "D": {
+      "text": "Die +2 steht allein. Das 5x heißt 5 mal x.",
+      "woerter": 12
+    },
+    "E": {
+      "text": "Jetzt muss dort 5x = 20 stehen.",
+      "woerter": 9
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 50,
+  "sekunden_sprache": 25.0,
+  "sekunden_gesamt": 28.0,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 5x + 2 = 22.",
+      "hervorgehoben": "die ganze Zeile 5x + 2 = 22"
+    },
+    "B": {
+      "sichtbar": "5x + 2 = 22 steht weiter da. Zwei Pfeile zeigen von unten nach oben: einer auf die 5, einer auf die +2. Der Pfeil auf die 5 ist blass, der Pfeil auf die +2 ist kräftig.",
+      "hervorgehoben": "der Pfeil auf die +2"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint −2. Unter der rechten Seite erscheint −2. Die Zeile 5x + 2 = 22 bleibt oben stehen.",
+      "hervorgehoben": "die beiden −2, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Die beiden −2 von vorher bleiben blass stehen. Um 5x liegt ein blaues Kästchen. Darunter steht klein 5 mal x. Die +2 steht ohne Kästchen.",
+      "hervorgehoben": "das blaue Kästchen um 5x"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile wird blass. Darunter steht groß 5x = 20.",
+      "hervorgehoben": "die neue Zeile 5x = 20"
+    },
+    "F": {
+      "sichtbar": "5x = 20 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "5x = 20"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zeile": "5x + 2 = 22"
+      }
+    ],
+    "B": [
+      {
+        "pfeile": {
+          "blass": "5",
+          "kraeftig": "+2"
+        }
+      }
+    ],
+    "C": [
+      {
+        "unterBeide": "−2"
+      }
+    ],
+    "D": [
+      {
+        "markiere": "5x",
+        "farbe": "blau"
+      },
+      {
+        "notiz": "5 mal x"
+      }
+    ],
+    "E": [
+      {
+        "neueZeile": "5x = 20"
+      }
+    ],
+    "F": [
+      {
+        "nurNoch": "5x = 20"
+      },
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "B ist übersetzt: der Baustein „pfeile“ ist nachgetragen (PROFIL §12.2), mit den Feldern „blass“ und „kraeftig“, zusammen EINE Hervorhebung. Die offene Frage aus §12.6 ist entschieden: die Pfeile stehen NUR in ihrem eigenen Teil. Sie sind eine Zeigegeste („womit fange ich an?“), kein Zustand der Tafel - und C und D erwähnen sie nicht mehr.",
+    "D, kleine Abweichung (unverändert): Die Bildbeschreibung sagt „Die beiden −2 von vorher bleiben blass stehen“. Die Szene lässt sie stehen, aber in voller Helligkeit. Blass wird auf der Tafel bisher nur alles zusammen, und zwar durch „neueZeile“; in D entsteht keine neue Zeile.",
+    "D, kleine Abweichung (unverändert): „notiz“ setzt „5 mal x“ als kleine Zeile unter das ganze Bild, also unter die beiden −2 und nicht unmittelbar unter das 5x."
+  ],
+  "hilfe3": {
+    "aufgabe": "a24",
+    "text": "Bei 3x + 4 = 25 rechnest du zuerst auf beiden Seiten −4.",
+    "kontrolle": "Dann steht dort 3x = 21."
+  },
+  "faengt_fehler_auf": "Der Schüler teilt zuerst nur das 5x durch 5. Dann steht x + 2 = 22."
+}

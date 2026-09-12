@@ -1,0 +1,30 @@
+{
+ "_hinweis": "Bild nicht 5:3? Hier steht, welcher Teil beim Beschneiden bleibt: oben, unten, mitte – oder eine Zahl von 0 (ganz oben) bis 1 (ganz unten).",
+ "s1": 0.8,
+ "s3": "unten",
+ "l3": {
+  "box": [
+   0.01,
+   0.062,
+   0.489,
+   0.928
+  ]
+ },
+ "l4": 0.12,
+ "sc3": {
+  "box": [
+   0.0,
+   0.0,
+   0.72,
+   0.63
+  ]
+ },
+ "sc1": {
+  "box": [
+   0.145,
+   0.0,
+   1.0,
+   0.705
+  ]
+ }
+}

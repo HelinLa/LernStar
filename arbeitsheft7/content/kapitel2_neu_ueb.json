@@ -1,0 +1,69 @@
+[
+{"id":"f8","theme":"farben",
+ "lueckensaetze":[
+  {"pre":"An jeder Oberfläche wird ein Teil des Lichts zurückgeworfen, ein Teil durchgelassen und ein Teil","loesung":"absorbiert","post":"."},
+  {"pre":"Wird Licht absorbiert, wird der getroffene Körper","loesung":"wärmer","post":"."},
+  {"pre":"Klares Fensterglas lässt das meiste Licht durch, wirft aber immer einen kleinen Rest","loesung":"zurück","post":"."},
+  {"pre":"Weißes Papier wirft viel Licht zurück, aber nicht gerichtet wie ein Spiegel, sondern nach allen Seiten","loesung":"gestreut","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"An einer Oberfläche geschieht immer nur eines: zurückwerfen oder durchlassen oder schlucken.","stimmt":false},
+  {"aussage":"Schwarzes Papier wird in der Sonne wärmer als ein Spiegel gleicher Größe.","stimmt":true},
+  {"aussage":"Eine Fensterscheibe wirft abends mehr Licht zurück als am Morgen.","stimmt":false},
+  {"aussage":"Die drei Anteile ergeben zusammen immer das ganze auftreffende Licht.","stimmt":true}],
+ "mc":{"frage":"Warum siehst du dich abends in der Fensterscheibe, am Morgen aber nicht?",
+  "optionen":["Weil das Glas nachts abkühlt und dadurch besser spiegelt.","Weil die Scheibe abends mehr Licht zurückwirft als am Morgen.","Weil abends draußen kaum Licht durchkommt und der stets gleiche zurückgeworfene Anteil das Hellste ist.","Weil dein Auge sich im Dunkeln umstellt und dann Spiegelbilder sehen kann."],
+  "richtig":2},
+ "offen":{"prompt":"Vergleiche, was mit dem Licht an einem Spiegel, an einer Fensterscheibe und an schwarzem Papier geschieht.","zeilen":4,
+  "loesung":"An allen drei Oberflächen geschieht dasselbe, nur mit ganz verschiedenen Anteilen. Der Spiegel wirft fast das gesamte Licht zurück, und zwar gerichtet, sodass ein scharfer heller Fleck entsteht; durchgelassen und geschluckt wird fast nichts. Die Fensterscheibe lässt das meiste Licht hindurch, wirft aber einen kleinen Anteil von etwa vier von hundert Teilen zurück und schluckt nur wenig. Schwarzes Papier lässt nichts durch und wirft fast nichts zurück; es schluckt fast das ganze Licht und wird dabei spürbar wärmer. Die Summe aus zurückgeworfenem, durchgelassenem und geschlucktem Anteil ist bei allen dreien das ganze auftreffende Licht."}},
+
+{"id":"f9","theme":"farben",
+ "lueckensaetze":[
+  {"pre":"Einfalls- und Reflexionswinkel werden nicht zur Spiegelfläche gemessen, sondern zum","loesung":"Lot","post":"."},
+  {"pre":"Das Lot steht auf der Spiegelfläche im Auftreffpunkt","loesung":"senkrecht","post":"."},
+  {"pre":"Einfallswinkel und Reflexionswinkel sind immer gleich","loesung":"groß","post":"."},
+  {"pre":"Fällt der Strahl genau entlang des Lotes ein, läuft er in sich selbst","loesung":"zurück","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"Einfallender und zurückgeworfener Strahl liegen auf derselben Seite des Lotes.","stimmt":false},
+  {"aussage":"Einfallender Strahl, Lot und zurückgeworfener Strahl liegen in einer Ebene.","stimmt":true},
+  {"aussage":"Bei einem Einfallswinkel von 30 Grad beträgt der Reflexionswinkel 60 Grad.","stimmt":false},
+  {"aussage":"Dreht man den Spiegel um 5 Grad, schwenkt der zurückgeworfene Strahl um 10 Grad.","stimmt":true}],
+ "mc":{"frage":"Ein Strahl trifft unter 35 Grad zum Lot auf einen Spiegel. Wie groß ist der Winkel zwischen dem einfallenden und dem zurückgeworfenen Strahl?",
+  "optionen":["35 Grad, denn beide Winkel sind gleich groß.","55 Grad, denn zusammen mit dem Lot ergeben sich 90 Grad.","70 Grad, denn beide Winkel liegen auf verschiedenen Seiten des Lotes und addieren sich.","90 Grad, denn das Lot steht senkrecht auf der Fläche."],
+  "richtig":2},
+ "offen":{"prompt":"Erkläre, warum man Einfalls- und Reflexionswinkel zum Lot misst und nicht zur Spiegelfläche.","zeilen":4,
+  "loesung":"Das Lot ist die Senkrechte auf der Fläche im Auftreffpunkt. Es ist auch dann eindeutig festgelegt, wenn die Fläche gekrümmt ist, denn zu jedem Punkt einer Kugel oder Linse gibt es genau eine Senkrechte. Die Fläche selbst hat an einer gekrümmten Stelle dagegen keine eindeutige Richtung, zu der man messen könnte. Zum Lot gemessen gilt außerdem in der ganzen Optik dieselbe einfache Regel, sowohl für die Reflexion als auch für die Brechung; man kann beide Vorgänge so mit denselben Winkeln beschreiben. Würde man zur Fläche messen, ergäbe sich zwar am ebenen Spiegel ebenfalls Gleichheit, für die Brechung wären die Regeln aber unnötig umständlich."}},
+
+{"id":"f10","theme":"farben",
+ "lueckensaetze":[
+  {"pre":"Seine Richtung ändert das Licht nur an der","loesung":"Grenze","post":"zwischen zwei Stoffen."},
+  {"pre":"Zwischen den Grenzflächen läuft das Licht immer","loesung":"geradeaus","post":"."},
+  {"pre":"Beim Übergang von Luft in Glas knickt der Strahl zum Lot","loesung":"hin","post":"."},
+  {"pre":"Glas ist optisch dichter als Luft; das Licht läuft darin","loesung":"langsamer","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"Im Inneren des Glases wird der Strahl ständig weiter abgelenkt.","stimmt":false},
+  {"aussage":"Der Winkel im Glas ist kleiner als der Winkel in der Luft.","stimmt":true},
+  {"aussage":"Ein Strahl genau auf dem Lot wird nicht gebrochen.","stimmt":true},
+  {"aussage":"Die Brechung entsteht dadurch, dass das Glas das Licht anzieht.","stimmt":false}],
+ "mc":{"frage":"Ein Strahl fällt unter 40 Grad zum Lot von Luft auf eine Glasplatte. Welcher Winkel im Glas ist möglich?",
+  "optionen":["55 Grad, denn der Strahl knickt vom Lot weg.","40 Grad, denn die Brechung ändert den Winkel nicht.","25 Grad, denn der Strahl knickt zum Lot hin.","0 Grad, denn im Glas läuft jeder Strahl auf dem Lot."],
+  "richtig":2},
+ "offen":{"prompt":"Beschreibe den Weg eines schräg einfallenden Strahls durch den Halbrundkörper und gib an, wo er seine Richtung ändert.","zeilen":4,
+  "loesung":"In der Luft vor dem Glas läuft der Strahl geradeaus auf den Nullpunkt zu. Genau dort, an der geraden Grenzfläche, ändert er seine Richtung: Er knickt zum Lot hin, der Winkel im Glas ist also kleiner als der in der Luft. Im Glas läuft er von dieser Stelle an wieder schnurgerade weiter, er wird unterwegs nicht noch einmal abgelenkt. An der runden Fläche tritt er ohne weiteren Knick aus, weil er dort vom Mittelpunkt des Halbkreises kommt und die gekrümmte Fläche deshalb senkrecht trifft; der Winkel zum Lot ist dort null. Hinter dem Glas läuft er wieder geradeaus. Der Strahl knickt also genau einmal, und zwar an der geraden Fläche."}},
+
+{"id":"f11","theme":"farben",
+ "lueckensaetze":[
+  {"pre":"Beim Übergang von Glas in Luft knickt der Strahl vom Lot","loesung":"weg","post":"."},
+  {"pre":"Der Winkel in der Luft ist dabei","loesung":"größer","post":"als der Winkel im Glas."},
+  {"pre":"Der Winkel im Glas, bei dem gerade kein Licht mehr austritt, heißt","loesung":"Grenzwinkel","post":"."},
+  {"pre":"Für Glas liegt er bei etwa 42","loesung":"Grad","post":"."}],
+ "richtigfalsch":[
+  {"aussage":"Oberhalb des Grenzwinkels tritt nur noch ein schwacher Strahl aus.","stimmt":false},
+  {"aussage":"Je näher der Winkel im Glas am Grenzwinkel liegt, desto heller wird der zurückgeworfene Strahl.","stimmt":true},
+  {"aussage":"Auch beim Übergang von Luft in Glas gibt es einen Grenzwinkel.","stimmt":false},
+  {"aussage":"Beim Grenzwinkel liegt der austretende Strahl flach in der Grenzfläche.","stimmt":true}],
+ "mc":{"frage":"Warum tritt oberhalb von etwa 42 Grad kein Licht mehr aus dem Glas aus?",
+  "optionen":["Weil das Glas ab diesem Winkel das ganze Licht schluckt.","Weil der Winkel in der Luft dann über 90 Grad liegen müsste, was es nicht gibt.","Weil der Strahl ab diesem Winkel im Glas langsamer wird als die Grenzfläche erlaubt.","Weil die Grenzfläche ab diesem Winkel wie ein schwarzer Körper wirkt."],
+  "richtig":1},
+ "offen":{"prompt":"Vergleiche den Übergang von Luft in Glas mit dem von Glas in Luft. Nenne eine Gemeinsamkeit und zwei Unterschiede.","zeilen":4,
+  "loesung":"Gemeinsam ist beiden, dass der Strahl seine Richtung nur an der Grenzfläche ändert und davor wie danach geradeaus läuft; ein Strahl genau auf dem Lot wird in beiden Fällen gar nicht gebrochen. Der erste Unterschied ist die Richtung des Knicks: Von Luft in Glas knickt der Strahl zum Lot hin und der Winkel wird kleiner, von Glas in Luft knickt er vom Lot weg und der Winkel wird größer. Der zweite Unterschied ist der Grenzwinkel: Von Glas in Luft erreicht der austretende Strahl schon bei etwa 42 Grad im Glas die 90 Grad, darüber tritt kein Licht mehr aus und alles wird zurückgeworfen. Von Luft in Glas kann das nicht passieren, weil der Winkel im Glas immer kleiner bleibt und selbst bei flachstem Einfall nur etwa 42 Grad erreicht."}}
+]

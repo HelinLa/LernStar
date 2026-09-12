@@ -1,0 +1,209 @@
+{
+ "seite": {
+  "id": "fv12",
+  "quelle": "ev13",
+  "sim": "wirkungsgrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Warme Luft aus dem Schaltschrank",
+  "name": "Wie viel Energie kommt beim Kunden an?",
+  "fachwoerter_neu": [
+   "Energie in Joule (J)"
+  ],
+  "alltag": [
+   "Jannis lädt sein Handy. Das Netzteil wird warm.",
+   "Bei den Stadtwerken bläst ein Lüfter warme Luft aus dem Schaltschrank.",
+   "Ein Schaltschrank ist ein Schrank voll Technik.",
+   "Energie misst man in Joule (J). Wie viel Prozent herauskommt, heißt Wirkungsgrad η (sprich: eta)."
+  ],
+  "frage": "Bleibt der Wirkungsgrad η gleich, wenn mehr Energie hineingeht?",
+  "predict": [
+   "Bei mehr Energie wird der Wirkungsgrad η größer.",
+   "Der Wirkungsgrad η bleibt gleich. Nur die Zahlen werden größer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Handy-Ladegerät“. Zeile 1 ist schon ausgefüllt.",
+   "Stelle den Regler auf 200 J, 600 J und 1200 J. Bleibe beim Handy-Ladegerät.",
+   "Trage die Zahlen und η ein.",
+   "Vergleiche die vier Zeilen. Was bleibt gleich?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Werte.",
+  "tabCols": [
+   "Wie viel Energie geht hinein?",
+   "Wie viel geht in den Akku?",
+   "Wie hoch ist der Wirkungsgrad η?"
+  ],
+  "tabRows": [
+   [
+    "1000 J",
+    "800 J",
+    "80 %"
+   ],
+   [
+    "200 J",
+    "",
+    ""
+   ],
+   [
+    "600 J",
+    "",
+    ""
+   ],
+   [
+    "1200 J",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Wirkungsgrad η sagt, wie viel Prozent herauskommt. Beim Ladegerät sind es",
+    "loesung": "80 %",
+    "post": "."
+   },
+   {
+    "pre": "Mehr Energie hinein heißt: η bleibt",
+    "loesung": "gleich",
+    "post": ". Nur die Joule-Zahlen werden größer."
+   }
+  ],
+  "wortbank": [
+   "80 %",
+   "gleich",
+   "480 J",
+   "120 J"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 der Tabelle ab?",
+   "antwort": "Am Bildschirm steht „hinein: 1000 J“ und „davon geladener Akku: 800 J“. Darüber steht „η = 80 %“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Regler steht auf 1200 J. Wie viel geht in den Akku?",
+    "optionen": [
+     "1200 J",
+     "240 J",
+     "960 J"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Ladegerät bekommt 600 J. In den Akku gehen",
+      "loesung": "480 J",
+      "post": "."
+     },
+     {
+      "pre": "Als Wärme gehen",
+      "loesung": "120 J",
+      "post": "verloren. η bleibt trotzdem 80 %."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Aus dem Schaltschrank kommt warme Luft. Ist diese Energie verloren? Prüfe: Ist sie noch da? Kann man sie nutzen?",
+    "satzstarter": "Die Energie ist noch …, aber man kann sie …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Statuszeile zeigt „als Wärme verloren: …“.",
+   "h2": "Beginne so: Die Energie ist noch da, aber man kann sie …",
+   "h3": "Fast fertig: Die Energie ist noch da, aber man kann sie nicht mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Wirkungsgrad η in der Statuszeile ablesen.",
+   "Ich weiß: Mehr Energie hinein ändert den Wirkungsgrad η nicht.",
+   "Ich kann begründen, ob warme Luft verlorene Energie ist."
+  ],
+  "zuhause": "Fasse dein Ladegerät an, während dein Handy lädt. Wird es warm?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei gleich breiten Feldern nebeneinander, gleicher Bildausschnitt, ruhiger heller Hintergrund. Unten in jedem Feld steht dasselbe Handy-Ladegerät (Netzteil mit Stecker), in allen drei Feldern exakt gleich groß gezeichnet — es ändert sich nur die Energiemenge, nicht das Gerät. Über jedem Ladegerät steht ein breites Rechteck als Energiemenge: eine FLÄCHE, kein dünner Streifen. Alle drei Rechtecke sind exakt gleich breit und nur unterschiedlich hoch. Das Maß gibt das GRÖSSTE Rechteck vor: Feld 3 ist höchstens doppelt so hoch wie breit. Daraus folgen Feld 2 (Höhe = Breite) und Feld 1 (Höhe = ein Drittel der Breite, also deutlich breiter als hoch). Links neben jedem Rechteck steht groß „hinein 200 J“, „hinein 600 J“, „hinein 1200 J“. Jedes Rechteck ist durch GENAU EINE waagerechte Trennlinie in zwei Flächen geteilt, und die Trennlinie sitzt in allen drei Rechtecken an derselben Stelle des Rechtecks: vier Fünftel unten, ein Fünftel oben. Der große untere Teil ist hell gefüllt und trägt in der Fläche die Aufschrift „geladener Akku 160 J“ beziehungsweise „geladener Akku 480 J“ und „geladener Akku 960 J“. Der kleine obere Teil ist dunkler gefüllt UND zusätzlich schraffiert (Farbe darf nicht das einzige Unterscheidungsmerkmal sein). Nur in Feld 3 ist diese Fläche hoch genug für Schrift: Dort steht „Wärme 240 J“ in der Fläche. In Feld 1 und Feld 2 stehen „Wärme 40 J“ und „Wärme 120 J“ ÜBER dem Rechteck, jeweils mit einer kurzen senkrechten Anschlusslinie hinab auf die schraffierte Fläche (nicht rechts daneben — dort steht der Maßstrich). Unter jedem Feld steht groß und in allen drei Feldern wortgleich „Wirkungsgrad η = 80 %“. Damit das gleiche Verhältnis sichtbar wird, steht am rechten Rand jedes Rechtecks derselbe kurze senkrechte Maßstrich mit der kleinen Beschriftung „4 von 5“, jeweils genau an der Trennlinie. Die Bildaussage ist: Die Flächen wachsen, die Aufteilung bleibt. KEINE Strahlen, Blitze, Funken oder Kabel, die aus dem Bild ins Leere laufen; das Ladegerät steckt in keiner Steckdose. KEINE Nebenbilder neben den drei Feldern — kein Handy, kein Schaltschrank, kein Lüfter, keine Personen, keine Sprechblasen. KEINE Energiepfeile als dünne Streifen: Die Menge wird allein durch die Höhe der breiten Flächen gezeigt. Keine weiteren Zahlen als die genannten. Große, gut lesbare Schrift, kein Rahmen, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv12",
+  "lernziel": "Die Schülerinnen und Schüler stellen am Handy-Ladegerät die hineingesteckte Energie nacheinander auf 200 J, 600 J und 1200 J und lesen ab, dass der Wirkungsgrad η dabei unverändert 80 % bleibt, während die Joule-Werte mitwachsen (160 J · 480 J · 960 J in den Akku, 40 J · 120 J · 240 J als Wärme). Sie formulieren das Ergebnis als Merksatz: η bleibt gleich, nur die Joule-Zahlen werden größer. (Die Wärmewerte wachsen mit, werden auf der Seite aber NICHT erhoben — die Tabelle hat keine Wärmespalte, und ein Wärmewert steht auf der ganzen Schülerseite nur ein einziges Mal, in Aufgabe 2. Wer die Wärme mitvergleichen lassen will, macht das mündlich an der Statuszeile oder am Bild, nicht über die Tabelle.) An zwei vorgegebenen Kriterien (Ist die Energie noch da? Kann man sie noch nutzen?) beurteilen sie, ob die warme Abluft aus dem Schaltschrank verlorene Energie ist. Fachlicher Name dieser Sache — nur für Sie, nicht auf der Schülerseite: Die Energie bleibt erhalten, wird aber entwertet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil, dazu die vierzeilige Tabelle der Schülerseite als Tafelbild. Optional als Alltagsbeleg: ein Handy zehn Minuten an einem Steckernetzteil laden lassen und das Netzteil danach von allen anfassen lassen — es wird handwarm, nicht heiß. Für die Erklär-Aufgabe genügt ein Foto eines Schaltschranks mit Lüftungsgitter; ein echter Schaltschrank wird nicht geöffnet.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit (einer stellt den Regler, einer liest vor und trägt ein, nach zwei Zeilen tauschen), Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst allein, danach im Tandem begründen lassen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Die Statuszeile steht am Bildschirm als Block untereinander; das Zeichen „|“ kommt dort nicht vor und wird hier nur zum Trennen im Zitat gebraucht. Karte 1 (Regler auf 1000 J, das ist der Startwert): „Handy-Ladegerät · η = 80 % | hinein: 1000 J | davon geladener Akku: 800 J | als Wärme verloren: 200 J“. Karte 2: „Handy-Ladegerät · η = 80 % | hinein: 200 J | davon geladener Akku: 160 J | als Wärme verloren: 40 J“. Karte 3: „Handy-Ladegerät · η = 80 % | hinein: 600 J | davon geladener Akku: 480 J | als Wärme verloren: 120 J“. Karte 4: „Handy-Ladegerät · η = 80 % | hinein: 1200 J | davon geladener Akku: 960 J | als Wärme verloren: 240 J“. Der letzte Satz jeder Statuszeile lautet auf allen vier Karten gleich: „Das Netzteil wird warm – das ist der verlorene Teil.“ Er darf vorgelesen werden, gehört aber nicht in die Tabelle. Karte 5 wird nur VORGELESEN und nicht aufgehängt: Der Bildtext der Simulation sagt, dass geladener Akku und Wärme zusammen wieder die hineingesteckte Energie ergeben — bei 200 J zusammen 200 J, bei 1200 J zusammen 1200 J. Dieser Text wechselt mit der Reglerstellung mit; als feste Karte neben 200 J und 600 J gehängt, würde er falsch. Wichtig beim Vorlesen: die vier Karten NACHEINANDER aufhängen und jedes Mal auf die Prozentzahl zeigen — der Lerneffekt der Seite ist, dass diese eine Zahl viermal dieselbe ist. Wer nur die fertige Tabelle austeilt, nimmt der Seite ihr Ergebnis.",
+  "merksatz": [
+   "80 %",
+   "gleich"
+  ],
+  "tabelle_erwartet": [
+   [
+    "200 J",
+    "160 J",
+    "80 %"
+   ],
+   [
+    "600 J",
+    "480 J",
+    "80 %"
+   ],
+   [
+    "1200 J",
+    "960 J",
+    "80 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Mit dem Regler auf 1200 J meldet die Statuszeile „davon geladener Akku: 960 J“ und „als Wärme verloren: 240 J“. Gefragt ist der Akku-Wert, also 960 J — dieselbe Zahl steht in der letzten Tabellenzeile. Die Antwort 1200 J ist die hineingesteckte Energie, die Antwort 240 J der Wärmeanteil. (Antworten werden hier bewusst über ihren Inhalt genannt und nicht über ihre Stelle: `seiten_nachbereiten.py` sortiert die Optionen dieser Einheit um.)",
+   "typische_fehler": [
+    "Wer 1200 J ankreuzt, denkt: Es geht alles in den Akku. Das ist genau die Fehlvorstellung der falschen Vermutung („Bei mehr Energie wird der Wirkungsgrad η größer.“). Auf die Statuszeile zeigen — dort stehen zwei verschiedene Zahlen untereinander, 960 J und 240 J.",
+    "Wer 240 J ankreuzt, hat den Akku-Wert und die Wärme vertauscht. Die Zeile „als Wärme verloren“ mit dem Finger abdecken und nur „davon geladener Akku“ lesen lassen.",
+    "Der Regler wird nicht bewegt und der Startwert 1000 J abgelesen (800 J). Diese Zahl kommt in keiner Option vor; nachfragen, welche Zahl gerade hinter „hinein:“ steht.",
+    "Der Regler springt beim Ziehen auf 1000 oder 1400 J — die Schrittweite ist 200 J. Kurz gemeinsam einstellen lassen und die Zeile „hinein: 1200 J“ vorlesen, bevor abgelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "480 J",
+    "120 J"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke kommt 600 J: Die hineingesteckte Energie wird für den Akku-Wert gehalten. Am Bildschirm stehen beide Zahlen untereinander, „hinein: 600 J“ und „davon geladener Akku: 480 J“.",
+    "In die zweite Lücke kommt 480 J: derselbe Wert zweimal. Die Ergänzungsfrage stellen — 480 J und wie viel ergeben zusammen 600 J?",
+    "Die Einheit J fehlt („480“). Die Wortbank enthält beide Zahlen mit Einheit; einmal abschreiben lassen.",
+    "Die Werte der 1200-J-Zeile (960 J und 240 J) werden eingesetzt, weil zuletzt dort gemessen wurde. Der Satz nennt aber 600 J.",
+    "Es wird gerechnet statt abgelesen (600 minus 480). Das Ergebnis stimmt, der Weg ist hier aber nicht verlangt — die Zahl steht am Bildschirm."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Energie ist noch da, aber man kann sie nicht mehr nutzen. Sie ist als warme Luft im Raum um den Schaltschrank verteilt. Deshalb sagt man: Sie ist verloren.",
+   "alternativen": [
+    "Mit einem Beispiel aus der Simulation statt aus dem Schaltschrank: „Beim Ladegerät gehen 200 J von 1000 J als Wärme weg. Die Wärme ist noch da, aber sie lädt das Handy nicht.“ — volle Wertung.",
+    "Gegenposition, wenn sie an beiden Kriterien geprüft ist: „Die Luft ist noch da und ganz warm. Man könnte damit im Winter den Raum heizen. Dann ist sie nicht verloren.“ Das ist fachlich richtig gedacht (Abwärmenutzung) und wird voll gewertet, solange der Satz „die Energie ist noch da“ vorkommt.",
+    "Kurzform mit beiden Kriterien in einem Satz: „Noch da, aber nicht mehr zu gebrauchen.“ — reicht.",
+    "Statt „nutzen“ auch: gebrauchen, verwenden, brauchen, etwas damit machen."
+   ],
+   "typische_fehler": [
+    "„Die Energie ist weg.“ Das ist die Leitplanke des Bandes: Energie geht nicht weg. Auf den Merksatz und auf die Wärme-Zahlen zurückverweisen — 240 J sind nicht verschwunden, sie stecken in der warmen Luft.",
+    "Nur das erste Kriterium wird beantwortet („Ja, die Energie ist noch da.“). Nachfragen: Und kann jemand sie noch nutzen?",
+    "Nur das zweite Kriterium wird beantwortet („Nein, die kann man nicht mehr brauchen.“). Nachfragen: Ist sie denn noch da?",
+    "Der Lüfter wird für den Fehler gehalten („Der Lüfter ist kaputt“ / „Der Schrank ist zu klein“). Alltagslösung statt Bewertung; auf den Merksatz zurückführen: Jedes Gerät gibt einen Teil als Wärme ab.",
+    "Der Merksatz wird abgeschrieben, ohne die beiden Prüffragen zu beantworten. Auf den Satzstarter zurückführen — er hat zwei Teile."
+   ]
+  },
+  "hilfe3_wort": "nutzen (auch richtig: gebrauchen, verwenden, brauchen)",
+  "schwache": [
+   "Die Statuszeile ist ein Block aus fünf untereinander stehenden Zeilen: „Handy-Ladegerät · η = 80 %“, „hinein: 1200 J“, „davon geladener Akku: 960 J“, „als Wärme verloren: 240 J“ und ein Erklärsatz. Ein Trennzeichen „|“ steht nirgends am Bildschirm. Vor dem ersten Ablesen gemeinsam den Finger auf die Zeile „davon geladener Akku“ legen und nur diese vorlesen lassen. Das Finden der richtigen Zeile ist hier die eigentliche Leseleistung.",
+   "Die Schrittweite ist 200 J: Jeder Zug springt auf die nächste runde Zahl. Wer 200 J einstellen will, zieht ganz nach links. Vor jedem Ablesen laut vorlesen lassen, was hinter „hinein:“ steht — sonst wird eine falsche Zeile eingetragen.",
+   "Zuerst nur die dritte Spalte ausfüllen lassen (η für alle vier Zeilen). Die viermal gleiche 80 % ist das Ergebnis der Seite; die Akku-Werte können danach oder gemeinsam an der Tafel ergänzt werden.",
+   "Das Zeichen η einmal an der Tafel schreiben, „eta“ danebenschreiben und laut sprechen lassen. Für DaZ-Lernende ist der griechische Buchstabe weder lesbar noch aussprechbar; er steht aber in jeder Statuszeile. Der Begriffssatz im Alltagsteil („Wie viel Prozent herauskommt, heißt Wirkungsgrad η“) steht bewusst für ALLE da und wird einmal gemeinsam gelesen; wer Förderband 9 (fe7) hatte, kennt ihn dort schon in fast gleicher Formulierung wieder.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen und die beiden Joule-Zahlen farbig markieren.",
+   "Für Aufgabe 3 die beiden Prüffragen einzeln an die Tafel schreiben und nacheinander mündlich beantworten lassen, bevor geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende. Achtung, der Regler steht nach Arbeitsschritt 2 auf 1200 J — er muss zuerst zurückgestellt werden, denn für den Wasserkocher ist nur die Stelle 1000 J belegt: „Stelle den Regler zuerst zurück auf 1000 J. Drücke dann ‚Wasserkocher‘ und lies die Statuszeile. Schreibe auf, was hier herauskommt.“ (Belegt: „davon Wärme im Wasser: 900 J“, „als Wärme verloren: 100 J“, „η = 90 %“.) Achtung, das ist die härteste Verwechslungsfalle dieser Simulation: Beim Wasserkocher ist Wärme der Nutzen, auf der ganzen übrigen Seite ist Wärme der Verlust — in derselben Zeile steht das Wort zweimal mit entgegengesetzter Bedeutung. Deshalb steht der Knopf bewusst nicht auf der Schülerseite. Nur mit Lernenden bearbeiten, die die vier Tabellenzeilen sicher gelöst haben, und danach gemeinsam auflösen. Zweite freiwillige Aufgabe ohne diese Falle — sie gilt wieder für das Ladegerät, der Knopf muss also erneut gedrückt werden: „Drücke wieder ‚Handy-Ladegerät‘. Stelle den Regler auf 2000 J und lies η ab.“ (Belegt: 80 %, 1600 J Akku, 400 J Wärme.)",
+  "kernlehrplan": "Inhaltsfeld Elektrizität und Energieversorgung · Wirkungsgrad. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen des Reglers auf drei Werte trägt E4, das EINTRAGEN der vier Zeilen in die Tabelle trägt K3 („Untersuchungen dokumentieren“) — bandweit einheitlich liegt K3 auf der Tabelle und NICHT auf dem Zuhause-Auftrag; „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Der Vergleich der vier Zeilen trägt UF3, die Feststellung „η bleibt gleich, die Joule-Werte wachsen“ trägt E6, die Vermutung zum gleichbleibenden η trägt UF1, die Erklär-Aufgabe mit den zwei vorgegebenen Kriterien trägt B1 (an vorgegebenen Kriterien beurteilen) und die Leitplanke UF4 („Energie bleibt erhalten, kann aber entwertet werden“). Der Zuhause-Auftrag trägt E2 (Wärme am eigenen Ladegerät wahrnehmen) und zeigt denselben Mechanismus wie die Bildschirmmessung — dasselbe Gerät, dieselbe Verlustwärme. FACHWORTZÄHLUNG: `fachwoerter_neu` = [„Energie in Joule (J)“] — EIN Fachwort von zwei erlaubten. „Energie in Joule (J)“ wird hier zum ersten Mal im Band gebraucht: Keine der Einheiten fv1 bis fv11 druckt einen einzigen J-Wert oder das Wort Joule (fv9 misst den Verlust in Watt, fv13 rechnet in Kilowattstunden). fv12 bringt elf J-Werte, die Tabellenspalte „Wie viel Energie geht hinein?“ mit „1000 J“, zwei J-Werte in der Wortbank und „Joule-Zahlen“ im Merksatz — nach Zählregel 3 ist das eine Einführung, also trägt fv12 den Slot. Der Alltagsteil führt das Wort deshalb ein („Energie misst man in Joule (J).“). Joule ist aus Förderband 9 bekannt (fe1, fe5), dort aber an einer ANDEREN Größe: fe1 führt „Arbeit W in Joule (J)“ ein, anderes Formelzeichen, andere Größe (Zählregel 1) — als Rückverweis für die Größe Energie taugt das nicht. Das Formelzeichen E wird nirgends gedruckt. „Wirkungsgrad η (in Prozent)“ zählt dagegen NICHT: Nach Zählregel 4 zählt jede zweite Einführung beim ersten Träger, und der liegt im Nachbarband — Förderheft 9, Einheit fe7 („Die alte Glühlampe im Scheinwerfer“), mit derselben Simulation, derselben Statuszeile und derselben Aussprachehilfe „eta“. Der Alltagsteil gibt η trotzdem einen eigenen Begriffssatz („Wie viel Prozent herauskommt, heißt Wirkungsgrad η (sprich: eta).“ — wortnah an fe7), weil ein Rückverweis auf ein Heft, das nicht jedes Kind hatte, hier nicht trägt: Auf Seite A muss sofort die Forscherfrage gelesen und die Spalte „Wie hoch ist der Wirkungsgrad η?“ viermal ausgefüllt werden; der Merksatz auf Seite B käme zu spät. Auch „Wärme“ ist Rückverweis (foe9/fe5). Das eigentlich Neue dieser Seite ist ohnehin keine Vokabel, sondern ein Befund: η hängt NICHT von der hineingesteckten Energie ab. ABGRENZUNG ZU foe9/fe7 (Dopplungsrisiko, ausdrücklich geprüft): fe7 vergleicht bei festen 1000 J vier MASCHINEN (Glühlampe, LED-Lampe, Benzinmotor, Elektromotor) und verbietet dabei den Regler wörtlich („Fasse den Regler nicht an“). fv12 macht genau das Gegenteil: EINE Maschine, dafür vier Reglerstellungen. Keine einzige Zeile der Tabelle, keine Aufgabe und kein Merksatzwort ist aus fe7 übernommen; Wiederholer bekommen hier neuen Stoff. EINE Ausnahme, geprüft: Die freiwillige Zusatzaufgabe von fe7 nimmt genau diesen Befund vorweg — dieselbe Maschine, dieselbe Reglerstellung 200 J, dieselbe Aussage („η bleibt 80 %, nur die Menge ändert sich“). Wer sie damals bearbeitet hat, bekommt hier die Bestätigung über vier Reglerstellungen statt über eine; bei diesen Lernenden gleich mit der Zusatzaufgabe (Wasserkocher) beginnen. Wer fe7 nicht hatte, kann die Seite trotzdem lösen — abgelesen wird nur, gerechnet wird nichts. BEWUSST VERMIEDEN: „Nutzen“ als Substantiv (steht am Bildschirm nur im Bildtext, nie in der Statuszeile — die Tabellenspalte fragt deshalb direkt „Wie viel geht in den Akku?“), „hineingesteckte Energie“ (Partizipialattribut, ersetzt durch „Mehr Energie hinein“), „entwertet“, „umgewandelt“, „Umspannwerk“. Die Formelzeichen Enutz, Everlust und Erein stehen nur hier, nie auf der Schülerseite. „Schaltschrank“ bekommt im Alltagsteil einen Begriffssatz und steht weder in der Wortbank noch in einer Lücke (Zählregel 2 und 5); „Netzteil“ und „Ladegerät“ ebenso. DATENLAGE UND FALLEN: (1) Alle Zahlen der Seite sind belegt — 1000 J/800 J, 200 J/160 J/40 J, 600 J/480 J/120 J, 1200 J/960 J/240 J, jeweils mit η = 80 %; ebenso die freiwillige Stelle 2000 J/1600 J/400 J. (Im gedruckten Text der Schülerseite stehen davon zehn verschiedene Zahlen; 160 J und 40 J kommen nur im Bild und hier vor.) (2) Kein Prozentrechnen: Dass „800 J von 1000 J“ und „η = 80 %“ dasselbe sagen, ist der Denkschritt — beide Zahlen stehen am Bildschirm NEBENEINANDER in derselben Statuszeile. Die Seite verlangt deshalb nirgends eine Prozentrechnung und auch nicht die Formel η = Enutz / Erein, obwohl sie im dritten Hinweistext der Simulation steht. Die Kernaufgabe des Regelhefts (aus 400 J Licht auf 8000 J zurückrechnen) ist gestrichen: rückwärts gerechneter Dreisatz, und für die Glühlampe zeigt die Simulation ohnehin nur den Fall 1000 J — sie wäre nicht durch die Heft-gegen-Sim-Regel gedeckt. (3) Der Regler: Sein Text im Faktendump lautet „Handy-Ladegerät hineingesteckte Energie: 1000 J“. Das ist ein Ausleseartefakt — simfakten nimmt die letzten Zeichen vor dem Schieberegler und erwischt dabei den Namen des zuletzt gedrückten Knopfes (in foe9/fe7 nachgemessen; die echte Aufschrift ist „hineingesteckte Energie: 1000 J“). Die Schülerseite zitiert den Reglertext deshalb NIRGENDS, sie verweist nur auf die Statuszeile. Nachgemessen ist außerdem — in foe9/fe7 mit simcheck/werte.js —, dass der Regler auf JEDE Maschine wirkt, nicht nur auf das Ladegerät: Die Glühlampe meldet bei 200 J 10 J Licht und 190 J Wärme. Der Arbeitsschritt sagt trotzdem „Bleibe beim Handy-Ladegerät“, damit niemand nebenbei eine andere Maschine drückt. Schrittweite 200 J, Bereich 200 bis 4000 J. (4) Wasserkocher: Der Knopf ist am Bildschirm da, steht aber weder in der Tabelle noch in einer Aufgabe — dort ist Wärme der Nutzen, auf der übrigen Seite der Verlust. Er ist in die freiwillige Zusatzaufgabe ausgelagert (siehe zusatz). Aus demselben Grund fehlen Glühlampe, LED-Lampe, Benzinmotor und Elektromotor: Sechs Maschinen passen nicht in den Rendervertrag (2–5 Zeilen bei gefüllter erster Zeile), und der Maschinenvergleich ist der Ertrag von foe9/fe7, nicht dieser Seite. (5) Undruckbare Zeichen: Die Überschrift der Simulation trägt ein Emoji vor dem Fragesatz. SourceSans3 hat dafür keine Glyphe; die Überschrift wird deshalb nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird. Die sechs Knopfnamen sind emojifrei und werden wörtlich zitiert. (6) Zeichen-Bruch: Die Statuszeile trennt mit „·“, das Heft schreibt Fließtext. Einmal ausdrücklich zeigen, dass „Handy-Ladegerät · η = 80 %“ eine einzige Zeile ist. (7) Nicht mehr offen: Ob die Simulation beim Anfassen des Reglers selbsttätig auf „Handy-Ladegerät“ umschaltet, ist in foe9/fe7 mit simcheck/werte.js entschieden — sie schaltet NICHT um, der Regler wirkt auf jede Maschine (Gegenbeweis: Glühlampe bei 200 J meldet 10 J Licht und 190 J Wärme). Dass alle zwanzig Reglerzustände des Faktendumps „Handy-Ladegerät“ tragen, ist allein ein Artefakt der Auslesereihenfolge: simfakten hat den Regler erst nach allen Knöpfen bewegt. WIRKLICH OFFEN ist nur noch, ob die Reglerbeschriftung beim Ziehen mitläuft; der Dump zeigt sie nur einmal, als Foto vor der Bedienung. Deshalb verweist die Seite ausschließlich auf die Zeile „hinein: …“ und nie auf den Reglertext. Sobald `fakten/wirkungsgrad.json` dazu ein Feld „nachgemessen“ trägt, kann der Arbeitsschritt gekürzt werden."
+ }
+}

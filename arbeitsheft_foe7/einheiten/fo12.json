@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fo12",
+  "quelle": "oi15",
+  "sim": "spektrum-unsichtbar",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Das Thermometer mit der schwarzen Kugel",
+  "name": "Welches Licht sehen wir nicht?",
+  "fachwoerter_neu": [
+   "Infrarot"
+  ],
+  "alltag": [
+   "In der Schublade liegt ein Thermometer mit schwarzer Kugel.",
+   "Auf dem Kärtchen daneben steht nur ein Name: Herschel.",
+   "Nour schiebt es im Farbfächer langsam über das letzte Rot hinaus.",
+   "Das unsichtbare Licht dahinter heißt Infrarot."
+  ],
+  "frage": "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
+  "predict": [
+   "Wo das Auge nichts sieht, kommt auch nichts an.",
+   "Hinter dem Rot kommt unsichtbares Licht an – dort wärmt es sogar am stärksten."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „555 nm – Grün“ und lies die Erwärmung ab.",
+   "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.",
+   "Drücke „940 nm – Fernbedienung“ und lies beide Angaben.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Stelle im Spektrum",
+   "Sieht das Auge etwas?",
+   "Erwärmung"
+  ],
+  "tabRows": [
+   [
+    "555 nm – Grün",
+    "ja",
+    "38 %"
+   ],
+   [
+    "700 nm – letztes Rot",
+    "",
+    ""
+   ],
+   [
+    "940 nm – Fernbedienung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Hinter dem letzten Rot kommt unsichtbares Licht an: das",
+    "loesung": "Infrarot",
+    "post": "."
+   },
+   {
+    "pre": "Man sieht es nicht, aber es",
+    "loesung": "wärmt",
+    "post": "dort am stärksten."
+   }
+  ],
+  "wortbank": [
+   "Infrarot",
+   "wärmt",
+   "unsichtbar",
+   "Thermometer",
+   "Erwärmung"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation bei „940 nm – Fernbedienung“?",
+   "antwort": "Das Auge sieht dort nichts. Die Erwärmung liegt bei 90 %. Das unsichtbare Infrarot wärmt stärker als das grüne Licht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo steigt das Thermometer am stärksten?",
+    "optionen": [
+     "Hinter dem letzten Rot, im Infrarot.",
+     "In der Mitte, beim grünen Licht.",
+     "Dort, wo das Auge am meisten sieht."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Licht hinter dem Rot heißt",
+      "loesung": "Infrarot",
+      "post": "."
+     },
+     {
+      "pre": "Es ist",
+      "loesung": "unsichtbar",
+      "post": ", aber das Thermometer zeigt es an."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Wie hat Herschel unsichtbares Licht entdeckt, ohne es zu sehen?",
+    "satzstarter": "Er schob ein Thermometer hinter das letzte Rot …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: Das Auge sieht nichts, die Erwärmung ist 90 %.",
+   "h2": "Beginne so: Herschel schob das Thermometer über das letzte Rot hinaus. Dort stieg es …",
+   "h3": "Fast fertige Antwort: Hinter dem Rot sah Herschel nichts. Aber sein Thermometer stieg dort am stärksten. So bewies er das unsichtbare ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, was hinter dem letzten Rot ankommt.",
+   "Ich kann Infrarot mit dem Thermometer nachweisen.",
+   "Ich kann Herschels Versuch erklären."
+  ],
+  "zuhause": "Nimm eine Fernbedienung und sieh auf die kleine Lampe vorn. Drücke eine Taste: Du siehst nichts – aber der Fernseher reagiert. Die Lampe sendet Infrarot.",
+  "bildauftrag": "[BILD: ein breiter Farbfächer von Violett bis Rot; rechts hinter dem Rot ein heller, leerer Bereich mit einem großen Thermometer, dessen Säule deutlich am höchsten steht; im grünen Bereich ein kleineres Thermometer mit niedriger Säule; große Beschriftungen „sichtbares Licht“, „letztes Rot“ und „Infrarot – unsichtbar“; keine Sonne, keine Strahlen; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fo12",
+  "lernziel": "Die Schülerinnen und Schüler weisen mit dem Thermometer nach, dass hinter dem sichtbaren Rot unsichtbares Licht ankommt (Infrarot), das dort am stärksten wärmt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten. Optional als Demonstration: Fernbedienung, deren Lampe durch eine Handykamera sichtbar wird.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Herschel-Geschichte gemeinsam lesen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: 555 nm Grün → sichtbar, Erwärmung 38 % · 700 nm letztes Rot → sichtbar, 62 % · 940 nm Fernbedienung → das Auge sieht nichts, Erwärmung 90 %. Alle Angaben als Anteil von dem, was bei 1100 nm ankommt.",
+  "merksatz": [
+   "Infrarot",
+   "wärmt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "700 nm – letztes Rot",
+    "ja",
+    "62 %"
+   ],
+   [
+    "940 nm – Fernbedienung",
+    "nein",
+    "90 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Statuszeile bei 940 nm: Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist.",
+   "typische_fehler": [
+    "Sichtbarkeit und Wärme werden gleichgesetzt: Wo es hell aussieht, soll es am wärmsten sein."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Infrarot",
+    "unsichtbar"
+   ],
+   "typische_fehler": [
+    "„Ultrarot“ oder „Ultraviolett“ statt „Infrarot“.",
+    "„schwarz“ statt „unsichtbar“ – kein Licht und unsichtbares Licht werden verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herschel schob ein Thermometer hinter das letzte Rot. Dort sah er nichts, aber das Thermometer stieg am stärksten. So bewies er: Dort kommt unsichtbares Licht an.",
+   "alternativen": [
+    "Mit der 940-nm-Zeile der Tabelle begründet.",
+    "Ergänzung: Die schwarze Kugel schluckt das Licht besonders gut und wird darum warm – wie das schwarze Papier auf fo1."
+   ],
+   "typische_fehler": [
+    "Herschel soll das Infrarot doch gesehen haben.",
+    "Das Thermometer soll Helligkeit messen statt Wärme."
+   ]
+  },
+  "hilfe3_wort": "Licht (auch richtig: Infrarot)",
+  "schwache": [
+   "Nur Grün und Fernbedienung vergleichen lassen, das letzte Rot weglassen.",
+   "Die drei Erwärmungswerte als Balken untereinander zeichnen lassen.",
+   "Den Fernbedienungs-Versuch aus dem Zuhause-Auftrag vorführen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „310 nm – Sonnenbrand“. Auch vor dem Violett gibt es unsichtbares Licht – das Ultraviolett.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Spektrum, Infrarot (Ultraviolett nur als Zusatzaufgabe). Kompetenz E5 wie auf der Quellseite oi15. Erwärmungswerte sind Modellwerte der Simulation (Anteil von 1100 nm)."
+ }
+}

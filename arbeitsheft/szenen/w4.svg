@@ -1,0 +1,49 @@
+<defs>
+  <radialGradient id="w4kerze" cx="0.62" cy="0.62" r="0.44">
+    <stop offset="0" stop-color="#FFCE7A" stop-opacity="0.34"/>
+    <stop offset="1" stop-color="#FFCE7A" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="w4kalt" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7C93B4" stop-opacity="0.22"/>
+    <stop offset="1" stop-color="#22283A" stop-opacity="0.42"/>
+  </linearGradient>
+  <linearGradient id="w4eis" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0" stop-color="#EDF5FA"/><stop offset="0.45" stop-color="#C9DDEA"/>
+    <stop offset="1" stop-color="#9FBACD"/>
+  </linearGradient>
+  <clipPath id="w4inFlasche"><rect x="-52" y="-250" width="104" height="250" rx="22"/></clipPath>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <!-- Luke mit straff genagelter Folie: milchig, dahinter kaltes Graublau -->
+  <rect x="628" y="86" width="234" height="222" rx="4" fill="#43536B"/>
+  <rect x="628" y="86" width="234" height="222" rx="4" fill="#B9C9D6" opacity="0.34"/>
+  <rect x="628" y="86" width="234" height="222" rx="4" fill="none" stroke="#2A1C08" stroke-width="9"/>
+  <g stroke="#DDE9F0" stroke-width="2" opacity="0.30" fill="none">
+    <path d="M652,86 C 664,150 646,220 660,306"/><path d="M742,86 C 752,160 736,232 746,306"/>
+    <path d="M826,86 C 836,150 820,224 830,306"/>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w4kalt)"/>
+  <!-- an der Folie vor der Luke laufen Tropfen herunter -->
+  <g opacity="0.95">
+    <g fill="#EAF4F8">
+      <ellipse cx="678" cy="150" rx="8" ry="12"/><rect x="675" y="150" width="5" height="52" opacity="0.45"/><ellipse cx="676" cy="146" rx="3" ry="4" fill="#FFFFFF"/>
+      <ellipse cx="726" cy="200" rx="9" ry="13"/><rect x="723" y="200" width="5" height="62" opacity="0.45"/><ellipse cx="724" cy="196" rx="3.4" ry="4.4" fill="#FFFFFF"/>
+      <ellipse cx="800" cy="164" rx="7" ry="10"/><rect x="797" y="164" width="4.5" height="44" opacity="0.45"/><ellipse cx="798" cy="161" rx="2.8" ry="3.6" fill="#FFFFFF"/>
+      <ellipse cx="762" cy="252" rx="8" ry="11"/><ellipse cx="760" cy="248" rx="3" ry="4" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <use href="#t_kiste" transform="translate(376,506) scale(0.94)"/>
+  <!-- die Flasche steht auf der Kiste, das Eis darin schwimmt noch -->
+  <g transform="translate(322,334) scale(0.92)">
+    <use href="#t_flasche" transform="translate(0,0)"/>
+    <g clip-path="url(#w4inFlasche)">
+      <path d="M-48,-96 L-20,-158 L12,-124 L46,-172 L48,-8 L-48,-8 Z" fill="url(#w4eis)"/>
+      <g stroke="#FFFFFF" stroke-width="2" opacity="0.5">
+        <path d="M-28,-96 L-6,-64"/><path d="M12,-92 L30,-52"/><path d="M-14,-118 L4,-92"/>
+      </g>
+      <ellipse cx="0" cy="-8" rx="46" ry="7" fill="#BCD6E4" opacity="0.5"/>
+    </g>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w4kerze)"/>
+  <use href="#t_kerze" transform="translate(486,340) scale(1.0)"/>

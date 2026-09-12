@@ -1,0 +1,206 @@
+[
+ {
+  "sim": "kernfusion",
+  "ueberschrift": "☀️ Woher nimmt die Sonne ihre Energie?",
+  "regler": [
+   {
+    "id": "fusT",
+    "beschriftung": "Temperatur: 15 Millionen °C",
+    "bereich": {
+     "min": "1",
+     "max": "30",
+     "step": "1",
+     "start": "15"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "↺ Zähler zurücksetzen",
+    "ruft": "_fusReset()"
+   }
+  ],
+  "hinweise": [
+   "In der Sonne wird nichts verbrannt. Dort werden Kerne zusammengebaut – aber nur, wenn es heiß genug ist. Dreh die Temperatur langsam hoch und pass auf, ab wann es losgeht.",
+   "Warum ist es so schwer, das auf der Erde nachzubauen? In der Sonne hilft die gewaltige Schwerkraft – sie presst das Gas auf 200 Milliarden bar zusammen. Auf der Erde gibt es diesen Druck nicht; deshalb müssen Fusionsanlagen auf über 100 Millionen Grad heizen, zehnmal heißer als der Sonnenkern.",
+   "Modellgrenze: Hier springen vier Kerne auf einmal zu Helium zusammen. In Wirklichkeit läuft das in mehreren Schritten ab, und dabei entstehen außerdem Positronen und Neutrinos, die einen kleinen Teil der Energie mitnehmen. Außerdem: Bei 15 Millionen Grad müsste ein einzelnes Proton im Mittel Milliarden von Jahren warten, bis es an der Reihe ist – nur weil die Sonne so unvorstellbar viele Protonen enthält, leuchtet sie trotzdem gleichmäßig.",
+   "4 Wasserstoffkerne → 1 Heliumkern · die fehlende Masse wird zu Energie · je Baustein rund achtmal mehr als bei der Spaltung"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "fusStatus: Temperatur im Kern: 15 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 0 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "↺ Zähler zurücksetzen",
+    "text": "fusStatus: Temperatur im Kern: 15 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 0 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 1",
+    "text": "fusStatus: Temperatur im Kern: 1 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 5",
+    "text": "fusStatus: Temperatur im Kern: 5 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 8",
+    "text": "fusStatus: Temperatur im Kern: 8 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 12",
+    "text": "fusStatus: Temperatur im Kern: 12 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 0 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 16",
+    "text": "fusStatus: Temperatur im Kern: 16 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 0 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 19",
+    "text": "fusStatus: Temperatur im Kern: 19 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 0 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 23",
+    "text": "fusStatus: Temperatur im Kern: 23 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 26",
+    "text": "fusStatus: Temperatur im Kern: 26 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 30",
+    "text": "fusStatus: Temperatur im Kern: 30 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 2",
+    "text": "fusStatus: Temperatur im Kern: 2 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 3",
+    "text": "fusStatus: Temperatur im Kern: 3 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 4",
+    "text": "fusStatus: Temperatur im Kern: 4 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 6",
+    "text": "fusStatus: Temperatur im Kern: 6 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 7",
+    "text": "fusStatus: Temperatur im Kern: 7 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 9",
+    "text": "fusStatus: Temperatur im Kern: 9 Millionen °C | | Es passiert nichts. Alle Kerne sind positiv geladen und stoßen sich ab. Bei dieser Temperatur sind sie zu langsam – sie prallen voneinander ab, bevor sie nah genug zusammenkommen. | | Erst ab etwa 10 Millionen Grad sind die Kerne so schnell, dass sie die Abstoßung überwinden. Im Inneren der Sonne herrschen 15 Millionen Grad. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 10",
+    "text": "fusStatus: Temperatur im Kern: 10 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 11",
+    "text": "fusStatus: Temperatur im Kern: 11 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 13",
+    "text": "fusStatus: Temperatur im Kern: 13 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 14",
+    "text": "fusStatus: Temperatur im Kern: 14 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 1 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 15",
+    "text": "fusStatus: Temperatur im Kern: 15 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 2 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 17",
+    "text": "fusStatus: Temperatur im Kern: 17 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 2 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 18",
+    "text": "fusStatus: Temperatur im Kern: 18 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 3 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 20",
+    "text": "fusStatus: Temperatur im Kern: 20 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 3 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 21",
+    "text": "fusStatus: Temperatur im Kern: 21 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 4 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 22",
+    "text": "fusStatus: Temperatur im Kern: 22 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 5 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 24",
+    "text": "fusStatus: Temperatur im Kern: 24 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 5 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 25",
+    "text": "fusStatus: Temperatur im Kern: 25 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 6 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 27",
+    "text": "fusStatus: Temperatur im Kern: 27 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 7 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 28",
+    "text": "fusStatus: Temperatur im Kern: 28 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 8 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   },
+   {
+    "einstellung": "Temperatur: 15 Millionen °C = 29",
+    "text": "fusStatus: Temperatur im Kern: 29 Millionen °C | | Es zündet. Die Kerne sind schnell genug, um trotz ihrer Abstoßung zusammenzukommen. Bisher entstanden hier 8 Heliumkerne. | | 4 ¹₁H → ⁴₂He | | Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u. | Ein Heliumkern wiegt nur 4,002603 u. | Es fehlen 4,031300 u − 4,002603 u = 0,028697 u. | Daraus wird Energie: 0,028697 u · 931,5 MeV/u = 26,73 MeV. | | Auf einen Kernbaustein umgerechnet: | Fusion: 26,73 MeV / 4 = 6,68 MeV | Spaltung: 200 MeV / 236 = 0,85 MeV | Die Fusion liefert also je Baustein rund das 7,9-fache der Kernspaltung. | | Die Sonne strahlt 3,85 · 10²⁶ Watt ab. Dafür muss sie in jeder Sekunde rund 9,0 · 10³⁷ Heliumkerne bauen – das sind etwa 601 Millionen Tonnen Wasserstoff je Sekunde. Und sie tut das seit 4,6 Milliarden Jahren."
+   }
+  ],
+  "bildtexte": [
+   "+",
+   "15 Millionen °C",
+   "Kerne verschmelzen · bisher 0 Heliumkerne",
+   "ab hier zündet es (10 Mio. °C)",
+   "Sonnenkern: 15 Mio. °C",
+   "1 Millionen °C",
+   "zu kalt – die Kerne prallen ab",
+   "5 Millionen °C",
+   "8 Millionen °C",
+   "12 Millionen °C",
+   "16 Millionen °C",
+   "19 Millionen °C",
+   "23 Millionen °C",
+   "He",
+   "Kerne verschmelzen · bisher 1 Heliumkerne",
+   "26 Millionen °C",
+   "30 Millionen °C",
+   "2 Millionen °C",
+   "3 Millionen °C",
+   "4 Millionen °C",
+   "6 Millionen °C",
+   "7 Millionen °C",
+   "9 Millionen °C",
+   "10 Millionen °C",
+   "11 Millionen °C",
+   "13 Millionen °C",
+   "14 Millionen °C",
+   "Kerne verschmelzen · bisher 2 Heliumkerne",
+   "17 Millionen °C",
+   "18 Millionen °C",
+   "Kerne verschmelzen · bisher 3 Heliumkerne",
+   "20 Millionen °C",
+   "21 Millionen °C",
+   "Kerne verschmelzen · bisher 4 Heliumkerne",
+   "22 Millionen °C",
+   "Kerne verschmelzen · bisher 5 Heliumkerne",
+   "24 Millionen °C",
+   "25 Millionen °C",
+   "Kerne verschmelzen · bisher 6 Heliumkerne",
+   "27 Millionen °C",
+   "Kerne verschmelzen · bisher 7 Heliumkerne",
+   "28 Millionen °C",
+   "Kerne verschmelzen · bisher 8 Heliumkerne",
+   "29 Millionen °C"
+  ]
+ }
+]

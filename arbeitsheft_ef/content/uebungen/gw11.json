@@ -1,0 +1,72 @@
+{
+ "id": "gw11",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "K2",
+  "K8",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Auf einer Raumstation drückt niemand auf eine Unterlage, weil Station und Besatzung gemeinsam",
+   "loesung": "frei fallen",
+   "post": "; angezogen werden beide weiterhin."
+  },
+  {
+   "pre": "Mit r = 6371 km + 400 km = 6,771 · 10⁶ m und G · M = 3,986 · 10¹⁴ m³/s² liefert g = G · M / r² in Bahnhöhe den Wert",
+   "loesung": "8,69 m/s²",
+   "post": "."
+  },
+  {
+   "pre": "Zählt man die erfüllten Kriterien, so kommt der Fachartikel auf vier und das Schulbuch auf drei. Der Zeitungsartikel erfüllt eines, das Netzvideo",
+   "loesung": "keines",
+   "post": "; daraus ergibt sich die Rangfolge."
+  },
+  {
+   "pre": "Die dritte Spalte des Datenblatts hält nur fest, was eine Quelle über sich selbst offenlegt. Ob ihre Aussage zutrifft, entscheidet dagegen die",
+   "loesung": "Rechnung",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Weil das Netzvideo keines der vier Kriterien erfüllt, ist damit bereits gezeigt, dass seine Behauptung über die fehlende Schwerkraft nicht zutrifft.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Die Behauptung des Zeitungsartikels lässt sich mit derselben Rechnung ebenso genau prüfen wie die des Schulbuchs, da beide dieselbe Bahnhöhe von 400 km betreffen.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Schulbuch und Fachartikel nennen denselben Zahlenwert für die Feldstärke in Bahnhöhe; im Rang trennt sie trotzdem ein Platz, weil das Schulbuch nicht begutachtet ist.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die aus den Bahndaten r = 6771 km und T = 5545 s berechnete Zentripetalbeschleunigung stimmt mit der Feldstärke überein, die G · M / r² für dieselbe Höhe liefert.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias will die Tafel abschließen und schreibt: „Der Fachartikel steht auf Rangplatz 1. Also gilt seine Aussage, und nachrechnen müssen wir nichts mehr.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Der Schluss trägt nicht: Der Rangplatz entsteht allein aus den vier Kriterien, also aus dem, was die Quelle über sich selbst offenlegt. Für die Aussage selbst spricht erst, dass die Bahndaten r = 6771 km und T = 5545 s über a = 4 · π² · r / T² auf 8,69 m/s² führen – denselben Wert, den G · M / r² für diese Höhe liefert.",
+   "Der Schluss trägt, denn der Fachartikel erfüllt als einzige der vier Quellenarten alle Kriterien. Wo Quellenangabe, Begutachtung, offene Daten und die Trennung von Beobachtung und Deutung zusammenkommen, ist die Aussage bereits geprüft und braucht keine eigene Rechnung mehr.",
+   "Der Schluss trägt nicht, weil der Fachartikel gar nicht vorn steht: Das Schulbuch nennt mit 8,69 m/s² einen fertigen Zahlenwert, der Fachartikel nur Bahndaten – und wer eine Zahl liefert, erfüllt mehr der vier Kriterien."
+  ],
+  "richtig": 0,
+  "erklaerung": "Verlässlichkeit und Richtigkeit sind zwei Urteile über verschiedene Dinge. Der Rangplatz stammt aus der dritten Spalte des Datenblatts, und die hält nur fest, was eine Quelle über sich selbst offenlegt: Quellenangabe, Begutachtung, offene Daten, Trennung von Beobachtung und Deutung. Ob die Aussage stimmt, steht dort nicht. Dafür spricht erst die doppelte Rechnung: Aus den Bahndaten folgt a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s², und dieselbe Zahl liefert G · M / r² = 3,986 · 10¹⁴ m³/s² : 4,585 · 10¹³ m² = 8,69 m/s². Dass zwei unabhängige Wege auf denselben Wert führen, stützt die Behauptung – der Rangplatz tut es nicht. Der Einwand, vier erfüllte Kriterien machten das Nachrechnen überflüssig, verwechselt genau das: Begutachtung macht einen Fehler unwahrscheinlicher, ersetzt die Prüfung aber nicht; das Datenblatt hält ausdrücklich fest, dass beides zu trennen ist. Auch der Vorrang des Schulbuchs lässt sich nicht halten: Es erfüllt drei Kriterien, weil es nicht begutachtet ist, der Fachartikel alle vier. Ob eine Quelle eine fertige Zahl nennt, gehört gar nicht zu den vier Kriterien – der Fachartikel legt mit r und T sogar die Daten offen, aus denen sich die Zahl gewinnen lässt."
+ },
+ "offen": {
+  "frage": "Das Netzvideo erfüllt keines der vier Kriterien, der Fachartikel alle vier. Widerlegen lässt sich die Behauptung des Videos trotzdem nicht mit der Rangfolge, sondern nur mit der Rechnung. Erläutere daran, was die vier Kriterien leisten und was nicht, und begründe, warum Schulbuch und Fachartikel im Rang dennoch auseinandertreten, obwohl beide Aussagen standhalten.",
+  "prompt": "Das Netzvideo erfüllt keines der vier Kriterien, der Fachartikel alle vier. Widerlegen lässt sich die Behauptung des Videos trotzdem nicht mit der Rangfolge, sondern nur mit der Rechnung. Erläutere daran, was die vier Kriterien leisten und was nicht, und begründe, warum Schulbuch und Fachartikel im Rang dennoch auseinandertreten, obwohl beide Aussagen standhalten.",
+  "zeilen": 5,
+  "loesung": "Die vier Kriterien prüfen die Quelle, nicht die Aussage. Sie erfassen, ob eine Quelle ihre Grundlage nennt, ob Fachleute sie begutachtet haben, ob ihre Daten offenliegen und ob Beobachtung und Deutung getrennt sind. Daraus entsteht die Rangfolge: Fachartikel vier Kriterien, Schulbuch drei, Zeitungsartikel eines, Netzvideo keines. Über wahr oder falsch sagt diese Zählung nichts – eine Quelle ohne jedes Kriterium könnte zufällig das Richtige behaupten, und eine begutachtete könnte sich irren. Beim Netzvideo entscheidet deshalb die Rechnung: Mit r = 6371 km + 400 km = 6,771 · 10⁶ m und G · M = 3,986 · 10¹⁴ m³/s² folgt g = 8,69 m/s², also 88,5 % des Bodenwerts 9,82 m/s², den dieselbe Formel für r = 6371 km liefert. Von fehlender Schwerkraft kann also keine Rede sein; die Behauptung ist widerlegt, gleichgültig auf welchem Rangplatz das Video steht. Umgekehrt trennt die Rechnung Schulbuch und Fachartikel nicht: Beide nennen für die Bahnhöhe denselben Wert, und beide halten stand. Ihr Rangunterschied hat einen anderen Grund – das Schulbuch nennt seine Quelle, legt Daten offen und trennt Beobachtung von Deutung, ist aber nicht begutachtet; der Fachartikel erfüllt zusätzlich auch dieses Kriterium. Die Kriterien sagen also, wie gut sich eine Aussage nachprüfen lässt, die Rechnung sagt, ob sie stimmt. Genau darin liegt der Nutzen der Kriterien: Weil der Fachartikel r = 6771 km und T = 5545 s offenlegt, lässt sich seine Aussage überhaupt unabhängig nachrechnen, während das Netzvideo keine Angabe macht, an der man es prüfen könnte."
+ }
+}

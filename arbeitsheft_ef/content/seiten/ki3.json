@@ -1,0 +1,53 @@
+{
+ "id": "ki3",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Drei Diagramme, eine Zahl",
+ "problem": "Der Wagen von Mira und Tobias rollt jetzt nicht mehr gleichmäßig, er wird immer schneller. Tobias drückt während einer Fahrt fünfmal die Stoppuhr und hat fünf Zeiten, fünf Wege und fünf Tachowerte – jedes Mal eine andere Geschwindigkeit. Er will den Mittelwert bilden. Mira widerspricht: Eine einzige Geschwindigkeit beschreibe keine Fahrt, die sich in jedem Augenblick ändert.",
+ "frage": "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
+ "auftrag": "Bestimme die Beschleunigung als Steigung deiner selbst gestoppten t-v-Geraden und vergleiche, was die Auftragungen t → s, t → v und t → a über diese Zahl hergeben.",
+ "predict": [
+  "Die gestoppten Wertepaare liegen im t-v-Diagramm auf einer Geraden durch den Ursprung. Ihre Steigung Δv/Δt ist für jedes Punktepaar dieselbe Zahl – und genau diese Zahl ist die Beschleunigung.",
+  "Weil der Wagen immer schneller wird, steigt die Punktreihe im t-v-Diagramm immer steiler an. Eine einzige Steigung für die ganze Fahrt gibt es deshalb nicht; man muss den Mittelwert der Geschwindigkeiten nehmen."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Drücke „Tabelle leeren“ und stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Der Wagen fährt bereits; drücke während einer Fahrt fünfmal „Zeit stoppen“, ungefähr gleichmäßig über die Bahn verteilt. Verpasst du den Start, setzt „neue Fahrt“ Uhr und Weg auf null zurück. Übertrage die fünf Zeilen mit t, s, v und der gerechneten Spalte a.",
+  "Wähle nacheinander die Auftragungen „t → s“, „t → v“ und „t → a“ und halte zu jeder fest, welche Form die Punktreihe hat und welche Zahl für a herauskommt. Bei „t → v“ liest du die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.",
+  "Stelle den Regler danach auf 4,0 m/s² – die Uhr beginnt eine neue Fahrt, die Tabelle bleibt stehen – und stoppe wieder fünfmal. Vergleiche in „t → v“ die beiden Steigungen und in „t → a“ die Höhen der beiden Waagerechten miteinander."
+ ],
+ "tabCols": [
+  "Form der Punktreihe, Steigung k",
+  "Wert für a in m/s²"
+ ],
+ "tabRows": [
+  "t → s bei a = 2,0 m/s²",
+  "t → v bei a = 2,0 m/s²",
+  "t → a bei a = 2,0 m/s²",
+  "t → v bei a = 4,0 m/s²"
+ ],
+ "fachtext": "Fünf gestoppte Wertepaare, und im t-v-Diagramm liegen sie auf einer Geraden durch den Ursprung – das ist der Befund, aus dem alles Weitere folgt. Auf einer Ursprungsgeraden hat der Quotient v/t für jeden Punkt denselben Wert; gleichbedeutend liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man v/t = a nach v um, steht v = a · t da: Die Formel ist das Ergebnis der Messung, nicht ihre Voraussetzung. Dass a während der Fahrt überhaupt konstant bleibt, prüft die Auftragung t → a nach – sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel, die in jedem Punkt eine andere Steigung hat; eine einzelne Zahl ist daraus nicht zu gewinnen.",
+ "merksatz": [
+  {
+   "pre": "Die Steigung Δv/Δt der t-v-Geraden ist für jedes Punktepaar gleich groß; diese eine Zahl heißt",
+   "loesung": "Beschleunigung",
+   "post": "und wird in m/s² angegeben."
+  },
+  {
+   "pre": "Aus v/t = a für jeden Punkt der Ursprungsgeraden folgt umgestellt v =",
+   "loesung": "a · t",
+   "post": "; die Formel ist gemessen, nicht behauptet."
+  }
+ ],
+ "beobachtung": "Wann du stoppst, entscheidest du selbst; die Uhr springt in Schritten von 0,02 s, Wegmesser und Tacho werden aus der angezeigten Zeit gebildet. Ein Durchgang bei a = 2,0 m/s² lieferte fünf Zeilen: t = 0,34 s mit s = 0,12 m und v = 0,68 m/s; t = 0,88 s mit s = 0,77 m und v = 1,76 m/s; t = 1,46 s mit s = 2,13 m und v = 2,92 m/s; t = 1,92 s mit s = 3,69 m und v = 3,84 m/s; t = 2,38 s mit s = 5,66 m und v = 4,76 m/s. Die gerechnete letzte Spalte bleibt in der ersten Zeile leer und zeigt danach viermal denselben Wert 2,00 m/s². Zu „t → s“ meldet die Auswertung: „Keine Gerade, sondern eine Parabel: s ~ t².“ – eine Zahl für a ist daraus nicht zu holen. Zu „t → v“ steht dort „Stoppuhr · a = 2,0 m/s² · 5 Messwerte“, darunter y = 2,000·x, R² = 1,0000 · erwartet: 2,000 und schließlich „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“ mit der Abweichung 0,00 %. Zu „t → a“ ergibt sich aus vier Punkten y = 0,0000·x + 2,0000, also eine Waagerechte auf der Höhe 2,00 m/s². Nach dem Umstellen auf 4,0 m/s² und fünf weiteren Stopps – von t = 0,26 s mit v = 1,04 m/s bis t = 1,72 s mit s = 5,92 m und v = 6,88 m/s – stehen in „t → v“ zwei Geraden untereinander, y = 2,000·x und y = 4,000·x, beide mit R² = 1,0000; in „t → a“ liegen die Waagerechten bei 2,0000 und 4,0000. Doppelte Beschleunigung, doppelte Steigung. Die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ wertet dabei immer nur die oberste Messreihe der Tabelle aus, hier also die Reihe zu 2,0 m/s².",
+ "aufgabe": {
+  "frage": "Berechne Δv/Δt zuerst aus dem ersten und dem letzten Wertepaar (t = 0,34 s mit v = 0,68 m/s und t = 2,38 s mit v = 4,76 m/s), dann aus den beiden letzten (t = 1,92 s mit v = 3,84 m/s und t = 2,38 s mit v = 4,76 m/s), und leite aus dem Ergebnis die Formel v = a · t her.",
+  "zeilen": 5,
+  "loesung": "Erstes Paar: Δv = 4,76 m/s − 0,68 m/s = 4,08 m/s und Δt = 2,38 s − 0,34 s = 2,04 s, also Δv/Δt = 4,08 m/s : 2,04 s = 2,00 m/s². Zweites Paar: Δv = 4,76 m/s − 3,84 m/s = 0,92 m/s und Δt = 2,38 s − 1,92 s = 0,46 s, also 0,92 m/s : 0,46 s = 2,00 m/s². Die beiden Paare liegen weit auseinander und liefern dennoch dieselbe Zahl; genau das steht auch in der a-Spalte, dort 2,00 in jeder Zeile ab der zweiten. Δv/Δt ist die Steigung der Verbindungsgeraden zweier Punkte. Ist sie für jedes Paar gleich, so liegen alle Punkte auf einer einzigen Geraden, und weil der Wagen aus der Ruhe startet, geht diese Gerade durch den Ursprung. Eine Ursprungsgerade mit der Steigung a heißt v/t = a für jeden Punkt; nach v umgestellt ergibt das v = a · t. Die Ausgleichsgerade bestätigt es mit y = 2,000·x bei R² = 1,0000."
+ },
+ "alltag": "Ein Kleinwagen soll laut Prospekt in 9,5 s von 0 auf 100 km/h beschleunigen. Rechne 100 km/h in m/s um, bestimme Δv/Δt und vergleiche das Ergebnis mit der Spanne 0,5 bis 8,0 m/s², die der Regler zulässt. Erkläre außerdem, warum zwei Punkte allein noch keine t-v-Gerade belegen.",
+ "alltagAfb": "II",
+ "alltagKomp": "S7",
+ "ueberleitung": "Die Auftragung t → v gab dir sofort eine Zahl. Dieselben Messwerte über t → s meldeten dagegen: keine Gerade, sondern eine Parabel. Auf der nächsten Seite siehst du, mit welchem Griff auch daraus eine Gerade wird – und wie du a ein zweites Mal gewinnst, diesmal aus dem Weg.",
+ "name": "Wie schnell wird der Wagen schneller?",
+ "theme": "ef_mechanik"
+}

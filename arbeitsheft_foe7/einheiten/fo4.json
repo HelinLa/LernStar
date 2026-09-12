@@ -1,0 +1,197 @@
+{
+ "seite": {
+  "id": "fo4",
+  "quelle": "oi5+oi6",
+  "sim": "brechung-austritt",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Wenn Licht nicht mehr herauskommt",
+  "name": "Wann kommt Licht nicht mehr heraus?",
+  "fachwoerter_neu": [
+   "Totalreflexion",
+   "Grenzwinkel"
+  ],
+  "alltag": [
+   "Jannis hält einen Glasklotz schräg gegen das Fenster.",
+   "Plötzlich wirkt eine Seite wie ein Spiegel.",
+   "Nour dreht den Klotz, bis das Bild kippt.",
+   "Den entscheidenden Winkel nennt man Grenzwinkel."
+  ],
+  "frage": "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
+  "predict": [
+   "Ab einem bestimmten Winkel tritt gar kein Licht mehr aus.",
+   "Licht tritt bei jedem Winkel aus, nur immer schräger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle den Winkel im Glas auf 20° und lies den Winkel in der Luft ab.",
+   "Stelle 25° ein und vergleiche beide Winkel.",
+   "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.",
+   "Trage ein, bei welchen Winkeln Licht austritt."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Winkel im Glas",
+   "Winkel in der Luft",
+   "Tritt Licht aus?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
+   [
+    "20°",
+    "",
+    ""
+   ],
+   [
+    "25°",
+    "",
+    ""
+   ],
+   [
+    "55°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von Glas in Luft knickt der Strahl vom Lot",
+    "loesung": "weg",
+    "post": ". Der Winkel in der Luft ist größer."
+   },
+   {
+    "pre": "Über dem Grenzwinkel von 41,8° tritt kein Licht mehr aus. Das nennt man",
+    "loesung": "Totalreflexion",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "weg",
+   "Totalreflexion",
+   "Grenzwinkel",
+   "größer",
+   "gefangen"
+  ],
+  "beispiel": {
+   "frage": "Der Winkel im Glas ist 55°. Was zeigt die Simulation?",
+   "antwort": "55° liegt über dem Grenzwinkel von 41,8°. Kein Licht tritt aus. Alles wird ins Glas zurückgeworfen. Das ist Totalreflexion."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Winkel im Glas ist 20°. Was meldet die Statuszeile?",
+    "optionen": [
+     "In der Luft sind es 31° – der Strahl tritt aus.",
+     "Kein Licht tritt aus – Totalreflexion.",
+     "In der Luft sind es auch genau 20°."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der entscheidende Winkel von 41,8° heißt",
+      "loesung": "Grenzwinkel",
+      "post": "."
+     },
+     {
+      "pre": "Bei der",
+      "loesung": "Totalreflexion",
+      "post": "wird alles Licht zurückgeworfen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "In einem Glasfaserkabel läuft Licht um Kurven bis ans Ende. Warum kommt es unterwegs nicht heraus?",
+    "satzstarter": "Das Licht trifft immer sehr schräg auf die Wand …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: Bei 55° tritt kein Licht aus.",
+   "h2": "Beginne so: Der Winkel an der Wand ist immer größer als der Grenzwinkel von 41,8°. Deshalb …",
+   "h3": "Fast fertige Antwort: Das Licht trifft schräger als der Grenzwinkel auf die Wand. Es tritt nie aus und bleibt im Glas ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wohin der Strahl von Glas in Luft knickt.",
+   "Ich kenne den Grenzwinkel des Glases.",
+   "Ich kann erklären, wie Licht im Glasfaserkabel bleibt."
+  ],
+  "zuhause": "Fülle ein Glas mit Wasser. Sieh von unten schräg gegen die Wasseroberfläche: Sie glänzt wie ein Spiegel.",
+  "bildauftrag": "[BILD: eine sanft gebogene Glasfaser im Querschnitt, groß und breit über die Bildfläche; innen läuft ein Lichtstrahl im Zickzack von links nach rechts und wird an der Wand jedes Mal vollständig zurückgeworfen; an einer Aufprallstelle der markierte Winkel mit Beschriftung „größer als 41,8°“; große Beschriftungen „Glasfaser“ und „Totalreflexion“; nur dieser eine Lichtweg, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo4",
+  "lernziel": "Die Schülerinnen und Schüler erkennen, dass Licht beim Übergang von Glas in Luft vom Lot weg gebrochen wird und über dem Grenzwinkel von 41,8° gar nicht mehr austritt (Totalreflexion), und erklären damit den Lichtweg im Glasfaserkabel.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Tafeltabelle. Optional als Demonstration: Laserpointer nur durch die Lehrkraft am Wasserbecken.",
+  "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Ergebnisse als Tafeltabelle: 0° im Glas → 0° in der Luft, tritt aus · 20° → 31°, tritt aus · 25° → 39°, tritt aus · 55° → über dem Grenzwinkel von 41,8°, kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion).",
+  "merksatz": [
+   "weg",
+   "Totalreflexion"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20°",
+    "31°",
+    "ja"
+   ],
+   [
+    "25°",
+    "39°",
+    "ja"
+   ],
+   [
+    "55°",
+    "kein Austritt",
+    "nein – Totalreflexion"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: Winkel im Glas 20°, in der Luft 31° – der Strahl knickt vom Lot weg.",
+   "typische_fehler": [
+    "Ein- und Austritt werden verwechselt: „zum Lot hin“ statt „vom Lot weg“."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Grenzwinkel",
+    "Totalreflexion"
+   ],
+   "typische_fehler": [
+    "„Grenzwert“ statt „Grenzwinkel“.",
+    "41,8° wird zu „42°“ gerundet – die Anzeige nennt 41,8°."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Licht trifft immer sehr schräg auf die Wand, schräger als der Grenzwinkel von 41,8°. Deshalb wird es jedes Mal vollständig zurückgeworfen. So bleibt es im Glas gefangen und läuft im Zickzack bis zum Ende.",
+   "alternativen": [
+    "Beschreibung des Zickzack-Wegs mit dem Bild der Glasfaser.",
+    "Verweis auf die 55°-Meldung der Simulation: kein Licht tritt aus."
+   ],
+   "typische_fehler": [
+    "„Die Faser ist innen verspiegelt“ – die Spiegel-Vorstellung wird wiederholt statt widerlegt.",
+    "Totalreflexion wird mit Brechung verwechselt."
+   ]
+  },
+  "hilfe3_wort": "gefangen",
+  "schwache": [
+   "Nur die Zeilen 20° und 55° eintragen lassen, 25° weglassen.",
+   "Mit den drei Knöpfen der Simulation arbeiten – sie springen genau auf die Merkwinkel.",
+   "„Vom Lot weg“ mit den Händen zeigen lassen: eine Hand ist das Lot, eine der Strahl."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler langsam von 40° auf 44° und finde die Stelle, an der die Meldung umspringt.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Totalreflexion und Lichtleiter. Kompetenzen E2 (Quellseite oi5) und UF4 (Anwendung Glasfaser, Quellseite oi6). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

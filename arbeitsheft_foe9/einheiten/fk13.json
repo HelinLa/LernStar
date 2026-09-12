@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fk13",
+  "quelle": "kf13",
+  "sim": "dichte",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei Klötze auf der Werkbank",
+  "name": "Warum sind gleich große Würfel verschieden schwer?",
+  "fachwoerter_neu": [
+   "Dichte ρ in kg/m³",
+   "Volumen V"
+  ],
+  "alltag": [
+   "Auf der Werkbank liegen zwei gleich große Würfel.",
+   "Nour hebt den weißen leicht, den grauen kaum.",
+   "Der Platz eines Würfels heißt Volumen V.",
+   "Die Masse in 1 m³ heißt Dichte ρ (sprich: rho)."
+  ],
+  "frage": "Warum hat der eine Würfel mehr Masse als der andere?",
+  "predict": [
+   "Bei gleichem Volumen V entscheidet der Stoff. Jeder Stoff hat eine eigene Dichte ρ.",
+   "Gleich große Würfel haben ungefähr gleich viel Masse."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Blei und suche die Zeile 2 · Die Masse.",
+   "Drücke Eisen und fülle die zweite Tabellenzeile aus.",
+   "Drücke Styropor und fülle die letzte Zeile aus.",
+   "Lies in Zeile 4: schwimmt oder sinkt der Würfel?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Stoff hast du gedrückt?",
+   "Wie groß ist die Masse m in kg?",
+   "Schwimmt der Würfel oder sinkt er?"
+  ],
+  "tabRows": [
+   [
+    "Blei",
+    "11,340 kg",
+    "sinkt"
+   ],
+   [
+    "Eisen",
+    "",
+    ""
+   ],
+   [
+    "Styropor",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Gleich groß heißt nicht gleich schwer. Die Masse in 1 m³ heißt",
+    "loesung": "Dichte",
+    "post": "ρ."
+   },
+   {
+    "pre": "Bei gleichem Volumen V hat der Stoff mit der größeren Dichte die größere",
+    "loesung": "Masse",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Dichte",
+   "Masse",
+   "1,000 kg",
+   "0,020 kg"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Masse des Bleiwürfels?",
+   "antwort": "Alle Würfel sind 10 cm lang. Zeile 2 zeigt: m = 11,340 kg. Zeile 4 sagt: Blei sinkt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Beide Würfel sind gleich groß. Warum hat Blei mehr Masse?",
+    "optionen": [
+     "Blei hat eine größere Dichte ρ als Styropor.",
+     "Der Bleiwürfel hat ein größeres Volumen V.",
+     "Gleich große Würfel haben gleich viel Masse."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "1 Liter Wasser hat die Masse",
+      "loesung": "1,000 kg",
+      "post": "."
+     },
+     {
+      "pre": "Der Styroporwürfel hat nur die Masse",
+      "loesung": "0,020 kg",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler braucht ein schweres Gegengewicht für eine kleine Kiste. Blei oder Styropor?",
+    "satzstarter": "Herr Kessler nimmt … , denn bei gleichem Volumen V …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Wasser steht in Zeile 4.",
+   "h2": "Beginne so: Herr Kessler nimmt den Stoff mit der größeren Dichte ρ …",
+   "h3": "Fast fertig: Blei hat eine große Dichte ρ, Styropor eine kleine. Ergänze: Er nimmt ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Masse m in Zeile 2 ablesen.",
+   "Ich weiß: Jeder Stoff hat eine eigene Dichte ρ.",
+   "Ich kann erklären, warum gleich große Würfel verschieden schwer sind."
+  ],
+  "zuhause": "Suche zwei gleich große Dinge aus verschiedenen Stoffen. Hebe beide an und vergleiche.",
+  "bildauftrag": "[BILD: drei gleich große Würfel nebeneinander auf einer gemeinsamen Tischlinie, alle exakt gleich groß gezeichnet. Über der Reihe eine einzige Beschriftung „alle Würfel: 10 cm lang · V = 1000 cm³“. Links ein glatter grauer Bleiwürfel, in der Mitte ein rauer dunkler Eisenwürfel, rechts ein körniger weißer Styroporwürfel — die Stoffe unterscheiden sich an der Oberfläche, nicht nur an der Farbe. Unter jedem Würfel in derselben großen Schrift die Masse: „m = 11,340 kg“, „m = 7,870 kg“, „m = 0,020 kg“. Rechts daneben, durch eine dünne senkrechte Linie abgetrennt, eine volle 1-Liter-Flasche mit der Beschriftung „1 Liter Wasser · m = 1,000 kg“. Keine Dichtezahlen, keine Waage, keine Pfeile, keine Deko; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fk13",
+  "lernziel": "Die Schülerinnen und Schüler lesen an drei gleich großen Würfeln von 10 cm Kantenlänge für Blei, Eisen und Styropor die Masse m in kg ab (Zeile 2 der Statuszeile) und dazu die Beobachtung schwimmt oder sinkt (Zeile 4). Sie begründen daran: Bei gleichem Volumen V entscheidet die Dichte ρ des Stoffes über die Masse. Gerechnet wird auf dieser Seite ausdrücklich nicht; ρ = m : V steht am Bildschirm, wird aber nicht eingesetzt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig für die Durchführung: Der Regler „Kantenlänge a: 10 cm“ bleibt unberührt — drei Knopfdrücke (Blei, Eisen, Styropor) genügen. Die Statuszeile ist EIN Block mit fünf nummerierten Abschnitten; gearbeitet wird nur mit Abschnitt 2 (Die Masse) und Abschnitt 4 (Der Vergleich mit Wasser). Abschnitt 3 nennt die Gewichtskraft in Newton (Blei 111,25 N · Eisen 77,20 N · Styropor 0,20 N) und steht unmittelbar unter der Masse — das ist die naheliegendste Fehlablesung. Die Zahlenpaare mit gleichen Ziffern vorher ansprechen: Der Bildtext schreibt „Blei · ρ = 11340 kg/m³“, der Ablesewert lautet „11,340“ kg; genauso Eisen 7870/7,870 und Styropor 20/0,020. Die Dichtezahlen kommen deshalb auf der Schülerseite gar nicht vor. Die Knöpfe heißen „Aluminium“ und „Fichtenholz“, die Balken darüber „Alu“ und „Fichte“ — beide Stoffe werden auf der Seite nicht abgefragt. Die digitale Waagenanzeige nicht ablesen lassen: Welche Zahl sie nach dem Einschwingen zeigt, ist nicht nachgemessen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Blei: m = 11,340 kg, „Die Dichte ist größer als die von Wasser – Blei sinkt.“ · Eisen: m = 7,870 kg, „Die Dichte ist größer als die von Wasser – Eisen sinkt.“ · Styropor: m = 0,020 kg, „Die Dichte ist kleiner als die von Wasser – Styropor schwimmt.“ Auf jeder Karte steht oben dieselbe Kopfzeile „alle Würfel: 10 cm lang · V = 1000 cm³“ — genau an dieser gleich bleibenden Zeile wird die Einsicht sichtbar. Als vierte Karte für Aufgabe 2 den Wasser-Anker: „1 Liter Wasser · m = 1,000 kg“ (Knopf „Wasser · genau 1 kg“). Diese Karte trägt bewusst KEIN Urteil schwimmt/sinkt — der Bildschirm schreibt bei Wasser nur „Wasser ist der Bezugsstoff: ρ = 1000 kg/m³.“ Deshalb steht Wasser auch nicht in der Tabelle. Alternativ die drei Statuszeilen am Beamer zeigen und den Finger auf Abschnitt 2 legen. Die Balkenlängen nicht ausmessen lassen: Styropor ist bei 0,020 kg praktisch nicht mehr sichtbar.",
+  "merksatz": [
+   "Dichte",
+   "Masse"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Eisen",
+    "7,870 kg",
+    "sinkt"
+   ],
+   [
+    "Styropor",
+    "0,020 kg",
+    "schwimmt"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Alle sechs Würfel haben dieselbe Kantenlänge von 10 cm, also dasselbe Volumen V = 1000 cm³ — die Statuszeile wiederholt das bei jedem Stoff in Abschnitt 1. Verschieden ist allein die Dichte ρ des Stoffes; daraus folgt in Abschnitt 2 die Masse: Blei 11,340 kg, Styropor 0,020 kg.",
+   "typische_fehler": [
+    "Antwort 0: Mehr Masse wird mit mehr Größe gleichgesetzt. Gegenprobe: Abschnitt 1 der Statuszeile ist bei allen Stoffen wortgleich.",
+    "Antwort 2: Die Vermutung „gleich groß heißt gleich schwer“ wird trotz Ablesewerten beibehalten — dieselbe Fehlvorstellung wie in der zweiten Vermutung auf Seite A.",
+    "Die Dichte wird als Eigenschaft des Würfels statt des Stoffes gelesen („dieser Würfel hat eine große Dichte“)."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,000 kg",
+    "0,020 kg"
+   ],
+   "typische_fehler": [
+    "Aus Abschnitt 3 abgelesen: Wasser 9,81 N und Styropor 0,20 N sind Gewichtskräfte, keine Massen. Masse und Gewichtskraft dürfen nie gleichgesetzt werden.",
+    "Die Dichtezahl statt der Masse eingetragen: „1000 kg“ oder „20 kg“ aus dem Bildtext.",
+    "0,020 kg wird als 0,20 kg gelesen; die zweite Nachkommastelle entscheidet.",
+    "Die Einheit kg fehlt, es wird nur die Zahl eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herr Kessler nimmt Blei, denn bei gleichem Volumen V hat Blei viel mehr Masse als Styropor. Blei hat die größere Dichte ρ. Deshalb passt genug Masse in die kleine Kiste.",
+   "alternativen": [
+    "Mit den Ablesewerten begründet: Gleich große Würfel — Blei 11,340 kg, Styropor nur 0,020 kg.",
+    "Umgekehrt formuliert: Styropor hat eine sehr kleine Dichte. Die Kiste wäre viel zu leicht.",
+    "Mit dem Wasser-Anker: 1 Liter Blei ist viel schwerer als 1 Liter Wasser, 1 Liter Styropor viel leichter."
+   ],
+   "typische_fehler": [
+    "Es wird nur „Blei“ genannt, ohne das gleiche Volumen V zu erwähnen; dann ist es geraten, nicht begründet.",
+    "Mit der Größe argumentiert („Blei ist größer“) statt mit der Dichte.",
+    "Aus schwimmt/sinkt geschlossen statt aus der Masse — der Auftrieb kommt erst in fk14."
+   ]
+  },
+  "hilfe3_wort": "Blei",
+  "schwache": [
+   "Zuerst nur Blei und Styropor vergleichen; die Zeile Eisen später oder gemeinsam ausfüllen.",
+   "Die Statuszeile ist ein langer Block mit fünf Abschnitten. Den Finger auf „2 · Die Masse“ legen und nur diese eine Zeile vorlesen lassen. Abschnitt 3 mit einem Blatt abdecken.",
+   "Die drei Nachkommastellen einmal gemeinsam sprechen: 11,340 kg heißt „elf Komma drei vier null Kilogramm“, nicht „elftausenddreihundertvierzig“.",
+   "Das Zeichen ρ einmal laut sprechen (rho) und daneben ein p schreiben, damit der Unterschied auffällt.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Den Wasser-Anker gegenständlich zeigen: eine volle 1-Liter-Flasche in die Hand geben — sie hat 1 kg Masse. Ein Würfel aus Wasser ist sonst kaum vorstellbar."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Aluminium und Fichtenholz und lies die Massen ab — Aluminium 2,700 kg, Fichtenholz 0,470 kg. Ordne alle fünf Stoffe nach ihrer Masse. Achtung für die Lehrkraft: Die Balken über der Reihe sind mit „Alu“ und „Fichte“ beschriftet, die Knöpfe mit „Aluminium“ und „Fichtenholz“ — der Namenswechsel ist der Grund, warum diese zwei Stoffe nicht auf der Schülerseite stehen.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), zweiter Teil · Dichte als Stoffeigenschaft, Masse und Volumen. Der Alltagsauftrag mit zwei gleich großen Dingen trägt UF2, die Erklär-Aufgabe zum Gegengewicht B2 (im Regelheft eine Vierfach-Auswahl mit langen Begründungstexten; hier als gestützte Auswahl aus zwei Möglichkeiten mit Satzstarter). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Dichte ρ wird hier eingeführt — fk12 spricht bewusst nur von der „schwereren Flüssigkeit“, fk14 verweist zurück. Diese Simulation rechnet intern mit g = 9,81 N/kg, fk4 und fk5 zeigen 9,8 N/kg; die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Nicht auf der Seite verwendet, weil im Dump nicht belegt: jeder Zustand mit verstellter Kantenlänge (alle Reglerstände wurden nur mit Styropor aufgezeichnet) und die Zahl der Waagenanzeige. Bewusst weggelassen: die Umrechnung 1000 cm³ = 0,001 m³, das Verhältnis „567-mal“ und V = a³ — alle drei stehen am Bildschirm, sind aber für die Zielgruppe nicht leistbar. Modellgrenze des Bildschirms: gerechnet wird mit massiven Würfeln ohne Hohlräume; bei Holz schwankt die Dichte je nach Sorte und Feuchte, 470 kg/m³ ist Fichte."
+ }
+}

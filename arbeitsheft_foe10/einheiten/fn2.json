@@ -1,0 +1,198 @@
+{
+ "seite": {
+  "id": "fn2",
+  "quelle": "rk2",
+  "sim": "geiger-mueller",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Knacken an der Wand",
+  "name": "Was ist radioaktive Strahlung?",
+  "fachwoerter_neu": [
+   "radioaktive Strahlung",
+   "Impuls"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. An der Wand knackt ein Gerät.",
+   "Strahlung aus Atomkernen heißt radioaktive Strahlung.",
+   "Das Gerät heißt Zählrohr. Jedes Teilchen macht darin einen Impuls. Jeden Impuls hörst du als Knacken.",
+   "Eine Physikerin dreht am Regler. Dann knackt es nicht mehr. Nour denkt: Das Zählrohr ist kaputt."
+  ],
+  "frage": "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
+  "predict": [
+   "Je mehr Spannung, desto besser zählt das Zählrohr.",
+   "Das Zählrohr zählt nur bei mittlerer Spannung. Zu wenig und zu viel sind schlecht."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke oben den Knopf „2 · Die Kennlinie“.",
+   "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.",
+   "Lies die Zahl hinter „Bereich“ ab. Trage sie ein.",
+   "Lies den Text unter der Zahl. Trage ein: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zählrohrspannung U",
+   "Welche Zahl steht hinter „Bereich“?",
+   "Was macht das Zählrohr hier?"
+  ],
+  "tabRows": [
+   [
+    "0 V",
+    "I",
+    "zählt nicht"
+   ],
+   [
+    "450 V",
+    "",
+    ""
+   ],
+   [
+    "650 V",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Radioaktive Strahlung kommt aus Atomkernen. Jedes Teilchen macht im Zählrohr einen kurzen",
+    "loesung": "Impuls",
+    "post": "."
+   },
+   {
+    "pre": "Bei etwa",
+    "loesung": "450 V",
+    "post": "arbeitet das Zählrohr richtig."
+   }
+  ],
+  "wortbank": [
+   "Impuls",
+   "450 V",
+   "zählt",
+   "heil"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile 0 V ab?",
+   "antwort": "Hinter „Bereich“ steht die Zahl I. Im Text darunter fehlen „zählt“ und „zerstört“. In die Tabelle kommt: I und „zählt nicht“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour stellt 650 V ein. Was passiert?",
+    "optionen": [
+     "Es zählt besonders gut.",
+     "Es geht kaputt.",
+     "Es zählt nichts, ist aber heil."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 0 V ist die Spannung zu klein. Das Zählrohr",
+      "loesung": "zählt",
+      "post": "nicht."
+     },
+     {
+      "pre": "Nour denkt: Das Zählrohr ist kaputt. Es ist aber",
+      "loesung": "heil",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Physikerin stellt 0 V ein. Warum knackt es nicht mehr?",
+    "satzstarter": "Es knackt nicht mehr, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl steht vorne im Textfeld, hinter dem Wort „Bereich“. „heil“ heißt: nicht kaputt.",
+   "h2": "Beginne so: Es knackt nicht mehr, weil die Spannung zu klein ist.",
+   "h3": "Fast fertig: Bei 0 V macht das Zählrohr keinen Impuls. Dann zählt es kein ___."
+  },
+  "selbstcheck": [
+   "Ich kann eine Spannung einstellen und den Bereich ablesen.",
+   "Ich kann sagen: Bei etwa 450 V zählt das Zählrohr die Teilchen.",
+   "Ich weiß: Bei 650 V geht das Zählrohr kaputt."
+  ],
+  "zuhause": "Zähle eine Minute die Autos auf eurer Straße. Ein Zählrohr zählt genauso einzeln.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei Zeilen, untereinander angeordnet und alle im selben Bildausschnitt. Links in jeder Zeile dasselbe liegende Zählrohr in Seitenansicht, dreimal identisch gezeichnet: ein Zylinder mit dünnem Draht in der Mitte und einem runden Fenster an der linken Stirnseite. Über jedem Rohr steht groß und gut lesbar die eingestellte Spannung, von oben nach unten „0 V“, „450 V“, „650 V“. Von links kommt in jeder Zeile GENAU EIN gerader Pfeil; er beginnt sichtbar an einem beschrifteten Kästchen „Strahlung“ und endet sichtbar am Fenster des Rohrs. Kein Pfeil endet im Leeren, kein Pfeil läuft am Rohr vorbei, und im Rohr werden keine weiteren Bahnen oder Linien gezeichnet. Rechts neben jedem Rohr steht das Ergebnis groß in Worten, dazu ein kleines Liniendiagramm derselben Größe: obere Zeile „zählt nicht“ mit einer glatten waagerechten Linie; mittlere Zeile „zählt“ mit drei deutlichen Ausschlägen auf der Linie; untere Zeile „geht kaputt“ mit einer einzigen Linie, die oben aus dem Rahmen läuft. Unter den drei Zeilen liegt über die ganze Bildbreite ein Spannungsband als FLÄCHE, mindestens ein Fünftel der Bildhöhe hoch, links „0“ und rechts „700“, mit den Marken „0“, „100“, „200“, „300“, „400“, „500“, „600“, „700“ und der Achsenbeschriftung „Spannung U / V“. Das Band ist in fünf verschieden helle Felder geteilt, und zwar an genau diesen Stellen: Feld I von 0 bis 20, Feld II von 20 bis 100, Feld III von 100 bis 300, Feld IV von 300 bis 600, Feld V ab 600 bis zum rechten Rand. Die Felder sind deshalb verschieden breit: I und II sind schmal, IV ist mit Abstand das breiteste. Die Zahlen „III“, „IV“ und „V“ stehen mittig und groß in ihrem Feld; „I“ und „II“ sind für ihr schmales Feld zu groß und stehen deshalb ebenso groß ÜBER dem Band, jede mit einem kurzen senkrechten Strich hinunter auf ihr Feld. Das Feld von 300 bis 600 ist das hellste und trägt zusätzlich das Wort „Betrieb“. Drei kräftige senkrechte Linien verbinden jedes Zählrohr mit seiner Stelle im Band: 0 V mit Feld I ganz am linken Bandanfang, 450 V mit Feld IV, 650 V mit Feld V. Die fünf Felder sind Flächen mit sichtbarer Höhe, keine dünnen Streifen. Genau drei Zählrohre, genau ein Strahlungspfeil je Zeile, genau ein Spannungsband. Keine zweiten kleinen Bilder am Rand, keine Detailausschnitte oder Lupen, keine Personen, keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn2",
+  "lernziel": "Die Schülerinnen und Schüler wissen, dass radioaktive Strahlung aus Atomkernen kommt und dass ein Zählrohr jedes einzelne Teilchen als kurzen Impuls anzeigt. Sie stellen an der Simulation drei Spannungen ein (0 V, 450 V, 650 V) und lesen im Bereichsfeld ZWEIMAL ab: die Zahl hinter dem Wort „Bereich“ (Spalte 2) und im Absatz darunter das Wort „zählt“ oder „zerstört“ (Spalte 3). Sie können sagen, was die Spannung entscheidet: bei 0 V kein Impuls, bei etwa 450 V zählt das Rohr, bei 650 V wird es zerstört. Sie unterscheiden dabei „das Gerät zählt nicht“ von „das Gerät ist kaputt“ — das ist die Auflösung der Alltagsgeschichte. Die Geschichte trägt diese Wendung seit dem 05.09.2026 auch wirklich: Der Alltagsteil endet mit „Dann knackt es nicht mehr. Nour denkt: Das Zählrohr ist kaputt.“ Vorher fehlten beide Sätze, und Aufgabe 2, Aufgabe 3 und dieser Lehrerteil beriefen sich auf eine Pointe, die auf der Seite nicht stand. Der Satz „Nour denkt: Das Zählrohr ist kaputt.“ steht bewusst zweimal, im Alltagsteil und in der zweiten Lücke von Aufgabe 2 — der Wortlaut ist für DaZ-Lernende der Wiedererkennungsanker über den Seitenwechsel hinweg, keine versehentliche Dopplung. Die Impulshöhen bei 200 V gegen 450 V gehören ausdrücklich NICHT hierher, sie sind das Lernziel von fn5 (Seitenplan vom 05.09.2026).",
+  "material": "Simulation über den QR-Code (LernStar), Knopf „2 · Die Kennlinie“. Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit dem Spannungsband. Ein echtes Zählrohr wird nicht gebraucht; liegt eines in der Sammlung, genügt es, den Lautsprecher einmal knacken zu lassen und die Betriebsspannung auf dem Typenschild zu zeigen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext, leicht geglättet: Die Anzeige wiederholt hinter dem Bereichsnamen noch einmal die römische Zahl („Bereich I – Rekombination I Nur wenige Volt: …“), und die Liste darunter schreibt ohne Leerzeichen („I Rekombination0–20 V“). Beides ist hier auseinandergezogen. Karte „0 V“: „Bereich I – Rekombination. Nur wenige Volt: Ein Teil der erzeugten Ionen rekombiniert wieder, bevor er die Elektroden erreicht. Der gemessene Strom steigt erst mit der Spannung.“ Karte „450 V“ (das ist zugleich der Ausgangszustand der Simulation): „Bereich IV – Auslösebereich (Plateau). Zwischen etwa 300 und 600 V zündet jedes Teilchen eine Entladung über das ganze Rohr. Jeder Impuls ist gleich groß, unabhängig von der Energie – man zählt die ANZAHL der Teilchen. Hier arbeitet das Zählrohr normalerweise (~450 V).“ Karte „650 V“: „Bereich V – Dauerentladung. Oberhalb ~600 V wächst die Ladungsträgerzahl lawinenartig zu einer Dauerentladung an – das zerstört das Zählrohr. Diesen Bereich meidet man.“ Dazu die Liste, die am Bildschirm in jedem Zustand danebensteht, als vierte Karte (mit eingefügten Leerzeichen): „I Rekombination 0–20 V · II Sättigungsstrom 20–100 V · III Proportionalbereich 100–300 V · IV Auslösebereich (Plateau) 300–600 V · V Dauerentladung 600–600+ V.“ Diese vier Grenzen tragen auch das Spannungsband des Bildauftrags; sie sind der einzige Beleg für die Feldbreiten. Wichtig: Auf die Schülerseite kommen von diesen Karten nur die ZAHLEN I, IV und V; die fünf Bereichsnamen bleiben bewusst im Lehrerteil (Fachwortgrenze, siehe unten). Als Tafelbild dazu das Spannungsband aus dem Bildauftrag dieser Seite. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "Impuls",
+   "450 V"
+  ],
+  "tabelle_erwartet": [
+   [
+    "450 V",
+    "IV",
+    "zählt"
+   ],
+   [
+    "650 V",
+    "V",
+    "geht kaputt"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Bei 650 V steht im Textfeld: „Bereich V – Dauerentladung … Oberhalb ~600 V wächst die Ladungsträgerzahl lawinenartig zu einer Dauerentladung an – das zerstört das Zählrohr. Diesen Bereich meidet man.“ „Es geht kaputt“ ist die A2-Fassung von „das zerstört das Zählrohr“. Die erste Option ist genau die Fehlvorstellung aus der ersten Vermutung (viel Spannung = gut). Die dritte Option beschreibt den Zustand bei 0 V und ist deshalb die typischste Verwechslung: Dort zählt das Rohr wirklich nichts und bleibt trotzdem heil — bei 650 V bleibt es eben nicht heil.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil die eigene Vermutung nicht überprüft, sondern behalten wurde. Gegenfrage: Was steht bei 650 V im Textfeld? Das Wort „zerstört“ suchen lassen.",
+    "Die dritte Option wird angekreuzt: Die Zeile 0 V und die Zeile 650 V werden vertauscht. Auf die eigene Tabelle zeigen — dort stehen beide Zeilen untereinander.",
+    "Es wird gar nicht umgestellt und weiter der Ausgangszustand 450 V abgelesen. Dann passt keine der drei Optionen; die Aufgabe bleibt leer. Nachfragen: Welche Zahl steht gerade im Regler?"
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "zählt",
+    "heil"
+   ],
+   "typische_fehler": [
+    "Statt „zählt“ wird „knackt“ eingesetzt. Inhaltlich nicht falsch, aber das Wort steht nicht in der Wortbank; einmal auf die vier Wörter zeigen lassen. Als Alternative gewertet werden darf es.",
+    "Statt „heil“ wird „kaputt“ eingesetzt — genau die Fehlvorstellung der Alltagsgeschichte, die der Lückensatz Nour selbst in den Mund legt. Den fertigen Satz laut vorlesen lassen: „Nour denkt: Das Zählrohr ist kaputt. Es ist aber kaputt.“ ergibt keinen Sinn.",
+    "„450 V“ wird in die erste Lücke gesetzt, weil es die auffälligste Zahl der Wortbank ist. Der Satz spricht aber von 0 V.",
+    "Die zweite Lücke bleibt leer, weil „heil“ unbekannt ist. Hilfe 1 gibt den Begriffssatz („heil heißt: nicht kaputt“); ergänzend das dritte Wort anbieten: heil = nicht kaputt = ganz."
+   ]
+  },
+  "a3": {
+   "erwartung": "Es knackt nicht mehr, weil die Spannung zu klein ist. Bei 0 V macht das Zählrohr keinen Impuls. Es zählt kein Teilchen. Das Gerät ist aber nicht kaputt — es braucht nur wieder etwa 450 V.",
+   "alternativen": [
+    "Kurzfassung ohne den Schlusssatz: „… weil bei 0 V kein Impuls entsteht.“ — reicht für die volle Wertung.",
+    "„… weil die Spannung zu klein ist.“ Das ist wörtlich der Satz aus Hilfe 2 und zugleich der erste Satz des Erwartungshorizonts — wer die Hilfe benutzt hat, hat ihn abgeschrieben. Er zählt als HALBE Lösung: richtig, aber noch nicht gedeutet. Für die volle Wertung muss der Impuls dazukommen („… und dann entsteht kein Impuls“). Bei diesem Satz also einmal nachfragen: Und was macht das Rohr dann? Nicht mit dem typischen Fehler „Nur ‚weil 0 V eingestellt ist‘“ verwechseln — dort wird nur die Zahl wiederholt, hier ist immerhin schon die Spannung als Ursache benannt.",
+    "Über die Tabelle begründet: „… weil bei 0 V in der dritten Spalte ‚zählt nicht‘ steht. Bei 450 V zählt es wieder.“",
+    "Über die Zahl begründet: „… weil bei 0 V Bereich I steht und das Rohr dort nicht zählt.“"
+   ],
+   "typische_fehler": [
+    "„… weil das Gerät kaputt ist.“ Das ist Nours Irrtum, unverändert übernommen; er steht wörtlich am Ende des Alltagsteils („Nour denkt: Das Zählrohr ist kaputt.“) und noch einmal in Aufgabe 2. Auf den Alltagsteil zeigen: Die Physikerin hat nur am Regler gedreht — mehr ist nicht passiert.",
+    "„… weil der Strom erst mit der Spannung steigt.“ Kein Irrtum, sondern ein vorhersehbarer Einwand: Der Satz steht bei 0 V wörtlich im Bereichsfeld („Der gemessene Strom steigt erst mit der Spannung.“). Er ist richtig abgelesen, beantwortet aber die gestellte Frage nicht — gefragt ist nach dem Knacken, also nach dem Impuls. Anerkennen und weiterfragen: Und was hört man dann am Lautsprecher? Achtung, nicht mit dem letzten typischen Fehler verwechseln: Wer das Wort „Strom“ aus dem Bildschirmtext übernimmt, hat es GELESEN und nicht mit der Spannung verwechselt; berichtigt wird trotzdem, weil eingestellt wird die Spannung.",
+    "„… weil keine Strahlung mehr da ist.“ Häufige Verwechslung von Quelle und Messgerät. Gegenfrage: Hat jemand das Präparat weggenommen? Am Bild zeigen: Der Strahlungspfeil kommt in allen drei Zeilen gleich.",
+    "„… weil die Spannung zu groß ist.“ Die beiden Enden der Skala werden vertauscht. Den Regler noch einmal auf 0 V und auf 650 V stellen lassen und beide Textfelder vergleichen.",
+    "Nur „weil 0 V eingestellt ist“ — die Zahl wird wiederholt, aber nicht gedeutet. Nachfragen: Und was macht das Rohr dann?",
+    "„… weil der Strom zu klein ist.“ Der Gedanke stimmt, das Wort nicht: Eingestellt wird die Spannung. Einmal berichtigen und am Regler zeigen, dass dort „Zählrohrspannung U“ steht. Nicht als richtige Fassung durchgehen lassen."
+   ]
+  },
+  "hilfe3_wort": "Teilchen",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Bedienelemente gelten: NUR der Knopf „2 · Die Kennlinie“ und der Regler „Zählrohrspannung U“. Auf der Schülerseite heißen die Stationsknöpfe durchgehend „Knopf“, nie „Karte“ — so wie in fn3 und fn5 an denselben Simulationen. Die Simulation hat vierzehn Knöpfe; sechs davon schalten die Station um, zwei stellen den Modus um (Proportionalbereich / Auslösebereich — die gehören zu fn5), einer hält die Animation an, vier bedienen die Messtabelle der Totzeit-Station, einer leert das Eingabefeld. Wer dort gerät, sieht ganz andere Zahlen.",
+   "Die Beispielzeile der Tabelle (0 V) gemeinsam am Bildschirm nachstellen, bevor selbst gearbeitet wird: Regler nach ganz links, dann mit dem Finger auf „Bereich“ und auf die Zahl dahinter zeigen.",
+   "Die römischen Zahlen I bis V sind für DaZ-Lernende eine eigene Hürde. Sie stehen im Bild der Kennlinie in den fünf Feldern und im Textfeld ganz vorne; einmal zusammen I – II – III – IV – V an die Tafel schreiben und mit 1 bis 5 danebenstellen. Abgeschrieben werden muss nur das Zeichen, gerechnet wird damit nie.",
+   "Der Papierstreifen darf NICHT den ganzen Fließtext abdecken: Sichtbar bleiben müssen die Zeile „Bereich …“ UND der Absatz direkt darunter — dort stehen die beiden Suchwörter, die Arbeitsschritt 4 verlangt („man zählt die ANZAHL der Teilchen“ bei 450 V, „das zerstört das Zählrohr“ bei 650 V). Abgedeckt wird alles ab der Liste „I Rekombination 0–20 V …“, also Liste und Schlusssatz: Der Schlusssatz steht in JEDEM Zustand da und enthält „Zählrate“ und „wählt“ — beim Suchen nach „zählt“ die häufigste Verwechslung. Wer noch mehr Entlastung braucht, füllt nur die mittlere Spalte aus — die dritte wird gemeinsam an der Tafel eingetragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und „heil“ mit „nicht kaputt“ übersetzen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler auf 90 V und dann auf 175 V und schreibe auf, welche Zahl jeweils hinter dem Wort „Bereich“ steht (erwartet: II und III). Zweite Stufe: Bei 300 V steht schon „IV“, bei 575 V noch „IV“, bei 600 V aber bereits „V“ — obwohl die Liste daneben „300–600 V“ angibt. Alle diese Zustände sind belegt. Die Unstimmigkeit ist ein guter Anlass, über Anzeigegrenzen zu sprechen; verlangt wird sie nicht.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Nachweis ionisierender Strahlung, Geiger-Müller-Zählrohr und Betriebsspannung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Spannungen trägt E4, das Ablesen des Textfeldes K2 (im Regelheft hing K2 an einem anderen Träger: am Alltagsauftrag von rk2, „Sammle zu Hause drei Beispiele, bei denen Strahlung gemessen wird“. Der entfällt hier — der Zuhause-Auftrag dieser Seite ist das Autozählen —, K2 wandert deshalb auf das Ablesen des Textfeldes. Die Verschiebung ist begründet, aber neu; sie darf nicht als Übernahme aus rk2 zitiert werden), das Eintragen in die Tabelle K3. K3 liegt bandweit auf dem AUSFÜLLEN DER TABELLE und nicht auf dem Zuhause-Auftrag: „Erkläre zu Hause jemandem …“ ist Präsentieren, nicht Dokumentieren (Seitenplan vom 05.09.2026). Der Vergleich der drei Zeilen trägt UF3, die Erklär-Aufgabe zur Alltagsgeschichte UF4 und E6, die Vermutung UF1. FACHWORTZÄHLUNG: neu sind genau ZWEI Wörter — „radioaktive Strahlung“ (Begriffssatz im Alltagsteil: „Strahlung aus Atomkernen heißt radioaktive Strahlung.“) und „Impuls“ (Merksatz-Lücke, Wortbank). GEPRÜFT UND BEWUSST SO GELASSEN: „Impuls“ bekommt keinen Satz der Form „So ein X heißt Impuls“, sondern wird über zwei Eigenschaften eingeführt — „Jedes Teilchen macht darin einen Impuls“ (woher er kommt) und „Jeden Impuls hörst du als Knacken“ (woran man ihn merkt); die Merksatz-Lücke wiederholt beides. Die naheliegende Umschreibung „… einen kurzen Stromstoß. So ein Stromstoß heißt Impuls“ ist abgelehnt: Sie kostet vier bis fünf Wörter, die diese Seite nicht hat, und schiebt genau das Wort „Strom“ auf die Schülerseite, das im fünften typischen Fehler zu Aufgabe 3 als Verwechslung mit der Spannung berichtigt werden muss. Wird das Wortbudget je angehoben, ist das die erste Stelle, an der nachgebessert wird — dann aber bandweit und mit „Ausschlag“ statt „Stromstoß“, denn so heißt die Hochachse des Kennlinienbilds am Bildschirm. Nicht gezählt: „Zählrohr“ — Gerätename mit Begriffssatz im Alltagsteil, steht weder in der Wortbank noch in einer Merksatz-Lücke (Zählregel 2). Nicht gezählt und nur als Rückverweis benutzt: „Spannung U in Volt (V)“ (eingeführt in Förderband 8, fs3; im Kapitel fv dieses Bandes durchgehend benutzt), „Atomkern“ (Zählregel 5, und zwar mit derselben Begründung, mit der fn1 schon „Kern“ freistellt: Alltagswort ohne Formelzeichen und ohne Einheit, weder in der Wortbank noch in einer Merksatz-Lücke. ACHTUNG, hier stand früher „Rückverweis auf fn1, die das Wort einführen muss“ — das ist falsch und war nachgeprüft: fn1 führt genau zwei Wörter ein, Proton und Neutron, und benutzt durchgehend „Kern“; „Atomkern“ steht dort nur in der Seitenüberschrift. Ein Begriffssatz in fn1 würde das Wort dort zum DRITTEN zählpflichtigen machen, deshalb bleibt es in beiden Einheiten ungezählt. Der Alltagsteil dieser Seite trägt es: „Strahlung aus Atomkernen heißt radioaktive Strahlung.“) und „Teilchen“ (Alltagswort ohne Formelzeichen und Einheit, Zählregel 5). BEWUSST GESTRICHEN, um das Limit zu halten: die fünf Bereichsnamen (Rekombination, Sättigungsstrom, Proportionalbereich, Auslösebereich, Dauerentladung) sowie Plateau, Lawine, ionisieren, Primärionisation, Totzeit und Nullrate. Fünf römische Ziffern plus fünf Namen wären zehn neue Wörter auf einer Seite. Die Schülerseite fragt deshalb nur nach der ZAHL hinter dem Wort „Bereich“. „Bereich“ selbst wird gar nicht als Begriff eingeführt, sondern nur als Wort auf dem Bildschirm GESUCHT: Die Seite fragt, welche Zahl dahinter steht, und prüft nirgends ab, was ein Bereich ist. Es steht deshalb weder in der Wortbank noch in einer Merksatz-Lücke und bekommt bewusst keinen Begriffssatz. (Zählregel 5 allein trägt diese Freistellung NICHT — sie setzt einen Begriffssatz im Alltagsteil voraus, und den gibt es hier nicht. Getragen wird sie davon, dass das Wort reine Suchmarke bleibt. Wer die Spalte je zu einer Verständnisfrage umbaut, muss das Wort einführen und zählen.) Ebenfalls nicht eingeführt: „Zählrate Z in Impulsen pro Sekunde“ — die Anzeige „2,0 /s im Mittel“ ist in JEDEM Zustand gleich, also gar kein Messwert dieser Seite; das Wort wäre ein drittes Fachwort ohne Gegenwert. ABGRENZUNG ZU fn5: Alpha, Beta und Gamma kommen auf dieser Seite kein einziges Mal vor, weder als griechisches Zeichen noch als Wort. Sie werden erst in fn3 eingeführt; das Regelheft hatte hier einen Reihenfolgefehler (rk2 verglich die Impulshöhen von Alpha, Beta und Gamma, obwohl rk3 sie erst danach einführt). Die Knöpfe „Proportionalbereich“ und „Auslösebereich“ und der Vergleich 200 V gegen 450 V bleiben vollständig fn5 vorbehalten — die Seite nennt sie nicht einmal. DATENLAGE UND FALLEN: (1) 10 V ist NICHT belegt. Der Seitenplan nennt 10 V als Beleg für „Bereich I“, im Faktendump fakten/geiger-mueller.json steht aber kein Zustand mit 10 V: aufgenommen ist jeder 25-V-Schritt von 0 bis 700 V, dazu 90, 265, 440 und 615 V. Der Regler kann 10 V (Schrittweite 5), der Zustand wurde nur nie fotografiert. Nach der Heft-gegen-Sim-Regel wird deshalb 0 V verlangt — dort steht wörtlich „Bereich I – Rekombination“, also genau die Anzeige, um die es geht. Sobald der Dump um einen 10-V-Zustand ergänzt ist, kann das nachgezogen werden; nötig ist es nicht. Zeile 79 des Seitenplans behauptete das Gegenteil („10 V ist als Bereich I belegt“) und ist am 05.09.2026 auf 0 V berichtigt worden — sonst holt die nächste Überarbeitung die 10 V zurück. (2) 600 V ist ein Fallwert: Bei U = 600 zeigt die Anzeige bereits „Bereich V – Dauerentladung“, obwohl die Liste daneben Bereich IV mit „300–600 V“ angibt. Die Zahl 600 kommt auf der Schülerseite deshalb in keiner Aufgabe vor und auch nicht im Selbstcheck. Sie steht dort nur an EINER Stelle: als Achsenmarke und als Feldgrenze im Spannungsband des Bildauftrags — und der Bildauftrag wird gedruckt, er IST Schülerseite. Das ist gewollt und kein Widerspruch zum Satz davor: NACHGEMESSEN am Zeichencode der Simulation (physics-sim.js, _gmzDrawKenn und _GMZ_BEREICHE, 05.09.2026) trägt das Kennlinienbild beim Knopf „2 · Die Kennlinie“ genau dieselben Marken (0, 100, 200, 300, 400, 500, 600, 700), dieselbe Achsenbeschriftung „Spannung U / V“ und dieselben fünf Feldgrenzen 0–20–100–300–600–700. Das gedruckte Band bildet also den Bildschirm nach, samt dessen eigener Unstimmigkeit — es behauptet nichts, was am Bildschirm nicht ebenso stünde. Deshalb bleibt es unverändert; die Zahlen daran zu streichen würde das Bild vom Bildschirm WEGBEWEGEN. Einzige gemessene Abweichung: Am Bildschirm steht „Betrieb“ als Marke bei 450 V, im Bildauftrag über dem ganzen Feld IV. Wer den Bildauftrag ändert, hält ihn gegen das Bildschirmbild, nicht gegen diesen Satz. Der dritte Selbstchecksatz hieß früher „Über 600 V geht das Zählrohr kaputt“ und verlangte damit eine Grenze, die die Seite nirgends nennt, nirgends ablesen lässt und nirgends herleitet; er heißt jetzt „Bei 650 V geht das Zählrohr kaputt“ und deckt sich mit Tabelle, Aufgabe 1 und Merksatz. Die Grenze „oberhalb ~600 V“ bleibt Lehrerwissen und steht nur auf der Ergebniskarte „650 V“ und im Spannungsband des Bildauftrags. (3) Die Listenzeile „V Dauerentladung 600–600+ V“ ist für A2 unlesbar. Deshalb fragt die dritte Tabellenspalte nicht nach Spannungsgrenzen, sondern nach dem, was das Rohr tut. (4) Der Bildschirm widerspricht sich selbst: Der Fließtext zu Bereich III sagt „Ab der Einsatzspannung (~300 V)“, die Liste daneben „100–300 V“. Die Seite verwendet weder das eine noch das andere. (5) Das Zählerfeld schreibt ohne Leerzeichen: „1Impulse 2,0 /s im Mittel“ — Lernende lesen „1Impulse“ als Zahl. Es wird hier nicht nur nicht gebraucht, es ist AUSSER SICHT, und das ist der Punkt: Das Feld zeigt in JEDEM Zustand „2,0 /s im Mittel“, auch bei 0 V und bei 650 V — es hängt gar nicht am Spannungsregler. Stünde es neben der Kennlinie, widerspräche es der vorausgefüllten Zeile „zählt nicht“. NACHGEMESSEN am Setzcode (physics-sim.js, 05.09.2026): gmzZaehler liegt im Block gmzS0, also beim Knopf „1 · Aufbau & Funktion“; gmzBereichText liegt in gmzS1, dem Knopf „2 · Die Kennlinie“. _gmzSetStation(1) setzt gmzS0 auf display:none. Wer Knopf 2 drückt — und das verlangt Arbeitsschritt 1 —, sieht den Zähler also nicht. Wird auf Knopf 1 danach gefragt, an der Tafel „2,0 Impulse pro Sekunde“ ausschreiben und dazusagen: Diese Anzeige gehört zur Animation auf Knopf 1 und wertet die eingestellte Spannung nicht aus. (6) Das Bereichsfeld hängt AUSSCHLIESSLICH am Spannungsregler. Die Knöpfe „Proportionalbereich“ und „Auslösebereich“ ändern es nicht — auch nach ihnen steht dort weiter „Bereich IV“, solange der Regler auf 450 steht. Wer die Klasse nach Bereichsnamen fragen lässt, bekommt widersprüchliche Antworten. (7) Der Faktendump zeigt alle Textfelder nebeneinander; welche Felder auf welchem Knopf sichtbar sind, ist daraus NICHT belegt — für diese Frage ist der Dump die falsche Quelle. Belegt ist es dagegen am Setzcode, und dort ist es nachgemessen (05.09.2026): Die sechs Stationsknöpfe schalten die Blöcke gmzS0 bis gmzS5 über display um. Auf „2 · Die Kennlinie“ (gmzS1) stehen das Kennlinienbild, der Regler „Zählrohrspannung U“ und das Bereichsfeld — der Zähler steht dort nicht (siehe Punkt 5). Arbeitsschritt 1 nennt den Knopf trotzdem ausdrücklich, bevor der Regler bewegt wird. (8) Die Zeile „zählt nicht“ bei 0 V ist die vorausgefüllte Beispielzeile, also eine Aussage der Seite und keine Ableseaufgabe. Sie ist gedeckt: Bei U = 0 liegt kein Feld an, und der Bildschirm schreibt für Bereich I, dass die Ionen rekombinieren, „bevor er die Elektroden erreicht“ — es entsteht kein Impuls. Sauber getrennt gehalten: Die Wendungen „zählt nicht“, „kein Impuls“ und „keinen Impuls“ kommen im GANZEN Faktendump 0-mal vor (gezählt am 05.09.2026). „zählt nicht“ ist also eine Formulierung der Seite, kein Zitat vom Bildschirm — deshalb steht sie in der vorausgefüllten Zeile und wird nirgends abgefragt. Widersprochen wird ihr am Bildschirm nichts: Das einzige Feld, das überhaupt eine Zählrate nennt, ist der Zähler, und der steht auf einem anderen Knopf (Punkt 5). Verlangt werden von den Lernenden nur die beiden Zeilen, deren Wortlaut am Bildschirm steht: 450 V („man zählt die ANZAHL der Teilchen“, „Hier arbeitet das Zählrohr normalerweise“) und 650 V („das zerstört das Zählrohr“). (8a) DIE SUCHWÖRTER SIND NACHGEZÄHLT: Arbeitsschritt 4 lässt im Absatz unter der Bereichszahl nach „zählt“ und „zerstört“ suchen. Gezählt im Faktendump, über das GANZE Bereichsfeld (Überschrift, Absatz, Liste, Schlusssatz): Bei 0 V steht „zählt“ 0-mal und „zerstört“ 0-mal, bei 450 V „zählt“ 1-mal und „zerstört“ 0-mal, bei 650 V „zählt“ 0-mal und „zerstört“ 1-mal. Beide Wörter sind also eindeutig, auch ohne Papierstreifen. Weil bei 0 V keines von beiden steht, ist die Beispielzeile „zählt nicht“ auch über den Arbeitsweg gedeckt und nicht bloß behauptet; das gelöste Beispiel sagt genau das. NICHT als Suchwort taugt „arbeitet“: Der Schlusssatz „Bei der üblichen Betriebsspannung von ~450 V arbeitet das Zählrohr im Auslösebereich (Plateau) …“ steht in JEDEM Zustand im selben Feld, also auch bei 0 V und bei 650 V. Der Papierstreifen deckt deshalb alles ab der Liste ab: Dort stehen „Zählrate“ und „wählt“, die beim Suchen nach „zählt“ am ehesten verwechselt werden (siehe Hinweise für schwache Lernende). (8b) WO DER DRITTE FALL GEREGELT IST: Arbeitsschritt 4 nennt nur zwei Regeln („zählt“ heißt zählt, „zerstört“ heißt geht kaputt) und ist damit unvollständig, wenn man ihn allein liest. Den dritten Fall — es steht keines von beiden da — trägt bewusst das GELÖSTE BEISPIEL: „Im Text darunter fehlen ‚zählt‘ und ‚zerstört‘. In die Tabelle kommt: I und ‚zählt nicht‘.“ Das ist die richtige Stelle, denn der dritte Fall tritt genau einmal auf, nämlich in der vorausgefüllten Beispielzeile 0 V; die beiden Zeilen, die die Lernenden selbst füllen, tragen je eines der beiden Wörter (450 V: „zählt“ 1-mal, „zerstört“ 0-mal; 650 V: „zählt“ 0-mal, „zerstört“ 1-mal — gezählt im Dump). Arbeitsschritt 4 bleibt deshalb bei zwei Regeln: Eine dritte Regel dort kostet rund zehn Wörter, die diese Seite nicht hat (379 von 380), und belastet A2-Lesende mit einer Verzweigung, die sie nie anwenden müssen. ZWINGEND: Dieser Mittelsatz des Beispiels darf beim Kürzen NICHT gestrichen werden — er ist die einzige Stelle der Seite, die den dritten Fall regelt. Wer Arbeitsschritt 4 doch um den dritten Fall ergänzen will, muss dieselben Wörter vorher woanders einsparen und den Satz im Beispiel stehen lassen. (9) Der Wechsel „empfangsbereit“ / „Totzeit – unempfindlich“ ist ein Ablauf und im Dump nicht als Folge belegt; eine Aufgabe dazu bräuchte eine Nachmessung. Sie gehört ohnehin nach fn5 und trägt dort E7. (10) Undruckbare Zeichen: Die Überschrift der Simulation und fünf Knöpfe (Anhalten, Messwert übernehmen, Beispielmessreihe, Tabelle leeren, Theoriefunktion) tragen ein Emoji oder Zierzeichen vor dem Wort. SourceSans3 hat dafür keine Glyphe; die Namen werden deshalb nirgends mit dem Zeichen zitiert, auch nicht hier im Lehrerteil. Das Mittelpunktzeichen in „2 · Die Kennlinie“ ist dagegen geprüft vorhanden und darf zitiert werden. (11) PLATZ AUF DER SEITE: Die Seite liegt bei 379 von 380 Wörtern (pruefe_profil.py, nach der Überarbeitung vom 05.09.2026) — ein Wort Luft. Jede weitere Ergänzung muss vorher gegenfinanziert werden, und zwar im Alltagsteil oder in den Arbeitsschritten; Hilfen und Selbstcheck bleiben unangetastet. Gesperrt sind außerdem der Mittelsatz des gelösten Beispiels (Punkt 8b) und der Alltagsteil ab „Dann knackt es nicht mehr“ (siehe Lernziel). Der Alltagsteil ist zusätzlich hart begrenzt: höchstens VIER Absätze, keiner über 16 Wörter — die Absätze 3 und 4 stehen bereits auf 16. (12) SATZLÄNGE: Die 22 gedruckten Sätze der Seite A liegen im Schnitt bei 6,9 Wörtern, nur 7 davon (32 %) im Profilkorridor 8–14 (nachgemessen nach der Überarbeitung vom 05.09.2026 über Alltag, Frage, Vermutung, Arbeitsschritte, Ersatzsatz und Zuhause-Auftrag). Das ist der Stand des GANZEN Bandes (alle 28 Einheiten zwischen 22 % und 73 %, fn2 damit im Mittelfeld) und für A2 eher Vor- als Nachteil. Nicht an fn2 einzeln reparieren: Das macht die Seite schwerer als ihre Nachbarn und verbraucht das Budget aus Punkt 11. Wenn, dann bandweit entscheiden oder die Profilregel als reine Obergrenze fassen."
+ }
+}

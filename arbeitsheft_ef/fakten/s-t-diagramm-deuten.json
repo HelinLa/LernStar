@@ -1,0 +1,566 @@
+[
+ {
+  "sim": "s-t-diagramm-deuten",
+  "ueberschrift": "📈 Was verrät die Steilheit einer Linie über die Bewegung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "steil",
+    "ruft": "_stgSet('steil')"
+   },
+   {
+    "aufschrift": "flach",
+    "ruft": "_stgSet('flach')"
+   },
+   {
+    "aufschrift": "waagerecht",
+    "ruft": "_stgSet('waagerecht')"
+   },
+   {
+    "aufschrift": "▶ Bewegung zeigen",
+    "ruft": "_stgToggle()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_stgReset()"
+   },
+   {
+    "aufschrift": "Je steiler, desto schneller",
+    "ruft": "_stgAns(0,0)"
+   },
+   {
+    "aufschrift": "Je steiler, desto langsamer",
+    "ruft": "_stgAns(0,1)"
+   },
+   {
+    "aufschrift": "Die Steilheit sagt nichts über das Tempo",
+    "ruft": "_stgAns(0,2)"
+   },
+   {
+    "aufschrift": "Stillstand (v = 0)",
+    "ruft": "_stgAns(1,0)"
+   },
+   {
+    "aufschrift": "Sehr schnelle Bewegung",
+    "ruft": "_stgAns(1,1)"
+   },
+   {
+    "aufschrift": "Gleichmäßiges Langsamerwerden",
+    "ruft": "_stgAns(1,2)"
+   },
+   {
+    "aufschrift": "Als Steigung: v = Δs / Δt",
+    "ruft": "_stgAns(2,0)"
+   },
+   {
+    "aufschrift": "Als Höhe des Punktes",
+    "ruft": "_stgAns(2,1)"
+   },
+   {
+    "aufschrift": "Als Länge der Zeitachse",
+    "ruft": "_stgAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_stgSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_stgSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_stgSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('stgraph')"
+   }
+  ],
+  "hinweise": [
+   "Jede Linie im s-t-Diagramm erzählt eine Bewegung. Wähle eine Linie und beobachte, was der Körper oben tut. Wie hängen Steilheit und Tempo zusammen?",
+   "Die Steilheit (Steigung) einer Linie im s-t-Diagramm ist die Geschwindigkeit: steil = schnell, flach = langsam, waagerecht = Stillstand (der Weg ändert sich nicht mehr). Man liest sie ab als Weg pro Zeit: v = Δs / Δt.",
+   "Ohne die Bewegung zu sehen, kannst du allein an der Linie erkennen, ob ein Körper schnell, langsam oder gar nicht fährt."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "steil",
+    "text": "stgStatus: Die Linie ist steil → der Körper bewegt sich schnell. Steigung ablesen: v = Δs/Δt = 12 m/s. | Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "steil · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist steil → der Körper bewegt sich schnell. Steigung ablesen: v = Δs/Δt = 12 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#ef4444 | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,100.00 | stroke| | set:fillStyle=#ef4444 | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#ef4444 | set:font=700 10px sans-serif | set:textAlign=left | fillText|steil → v = 12 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "steil · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist steil → der Körper bewegt sich schnell. Steigung ablesen: v = Δs/Δt = 12 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#ef4444 | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,100.00 | stroke| | set:fillStyle=#ef4444 | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#ef4444 | set:font=700 10px sans-serif | set:textAlign=left | fillText|steil → v = 12 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "steil · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist steil → der Körper bewegt sich schnell. Steigung ablesen: v = Δs/Δt = 12 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#ef4444 | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,100.00 | stroke| | set:fillStyle=#ef4444 | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#ef4444 | set:font=700 10px sans-serif | set:textAlign=left | fillText|steil → v = 12 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "steil · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist steil → der Körper bewegt sich schnell. Steigung ablesen: v = Δs/Δt = 12 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#ef4444 | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,100.00 | stroke| | set:fillStyle=#ef4444 | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#ef4444 | set:font=700 10px sans-serif | set:textAlign=left | fillText|steil → v = 12 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "flach",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "flach · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,175.60 | stroke| | set:fillStyle=#2563eb | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|flach → v = 4 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "flach · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,175.60 | stroke| | set:fillStyle=#2563eb | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|flach → v = 4 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "flach · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,175.60 | stroke| | set:fillStyle=#2563eb | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|flach → v = 4 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "flach · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist flach → der Körper bewegt sich langsam. Steigung ablesen: v = Δs/Δt = 4 m/s. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,175.60 | stroke| | set:fillStyle=#2563eb | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|flach → v = 4 m/s|52.00|112.00"
+   },
+   {
+    "einstellung": "waagerecht",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "waagerecht · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "waagerecht · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "waagerecht · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "waagerecht · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "▶ Bewegung zeigen",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,4 s, s = 0 m."
+   },
+   {
+    "einstellung": "▶ Bewegung zeigen · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,8 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|74.24,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "▶ Bewegung zeigen · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 1,2 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|89.36,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "▶ Bewegung zeigen · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 1,6 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|104.48,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "▶ Bewegung zeigen · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 2,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|119.60,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto schneller",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✓ Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell."
+   },
+   {
+    "einstellung": "Je steiler, desto schneller · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✓ Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto schneller · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✓ Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto schneller · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✓ Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto schneller · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✓ Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto langsamer",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Genau umgekehrt: steil bedeutet schnell."
+   },
+   {
+    "einstellung": "Je steiler, desto langsamer · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Genau umgekehrt: steil bedeutet schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto langsamer · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Genau umgekehrt: steil bedeutet schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto langsamer · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Genau umgekehrt: steil bedeutet schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Je steiler, desto langsamer · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Genau umgekehrt: steil bedeutet schnell.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Die Steilheit sagt nichts über das Tempo",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit."
+   },
+   {
+    "einstellung": "Die Steilheit sagt nichts über das Tempo · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Die Steilheit sagt nichts über das Tempo · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Die Steilheit sagt nichts über das Tempo · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Die Steilheit sagt nichts über das Tempo · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Stillstand (v = 0)",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✓ Richtig! Der Weg ändert sich nicht → der Körper ruht."
+   },
+   {
+    "einstellung": "Stillstand (v = 0) · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✓ Richtig! Der Weg ändert sich nicht → der Körper ruht.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Stillstand (v = 0) · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✓ Richtig! Der Weg ändert sich nicht → der Körper ruht.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Stillstand (v = 0) · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✓ Richtig! Der Weg ändert sich nicht → der Körper ruht.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Stillstand (v = 0) · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✓ Richtig! Der Weg ändert sich nicht → der Körper ruht.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Sehr schnelle Bewegung",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, waagerecht heißt: kein Weg-Zuwachs."
+   },
+   {
+    "einstellung": "Sehr schnelle Bewegung · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, waagerecht heißt: kein Weg-Zuwachs.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Sehr schnelle Bewegung · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, waagerecht heißt: kein Weg-Zuwachs.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Sehr schnelle Bewegung · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, waagerecht heißt: kein Weg-Zuwachs.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Sehr schnelle Bewegung · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, waagerecht heißt: kein Weg-Zuwachs.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Gleichmäßiges Langsamerwerden",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie."
+   },
+   {
+    "einstellung": "Gleichmäßiges Langsamerwerden · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Gleichmäßiges Langsamerwerden · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Gleichmäßiges Langsamerwerden · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Gleichmäßiges Langsamerwerden · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Steigung: v = Δs / Δt",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✓ Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit."
+   },
+   {
+    "einstellung": "Als Steigung: v = Δs / Δt · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✓ Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Steigung: v = Δs / Δt · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✓ Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Steigung: v = Δs / Δt · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✓ Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Steigung: v = Δs / Δt · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✓ Richtig! Geschwindigkeit = Weg-Zuwachs pro Zeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Höhe des Punktes",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit."
+   },
+   {
+    "einstellung": "Als Höhe des Punktes · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Höhe des Punktes · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Höhe des Punktes · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Höhe des Punktes · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Höhe ist der zurückgelegte Weg, nicht die Geschwindigkeit.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Länge der Zeitachse",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v."
+   },
+   {
+    "einstellung": "Als Länge der Zeitachse · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Länge der Zeitachse · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Länge der Zeitachse · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "Als Länge der Zeitachse · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.  ||  stgSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "stgStatus: Die Linie ist waagerecht → der Körper ist in Ruhe (v = 0 m/s). Der Weg bleibt gleich. | Aktuell: t = 0,0 s, s = 0 m.  ||  stgFb0: ✗ Doch – die Steigung ist gerade die Geschwindigkeit.  ||  stgFb1: ✗ Nein, das wäre eine sich verändernde Linie.  ||  stgFb2: ✗ Die Zeitachse allein sagt nichts über v.",
+    "bild": "beginPath| | moveTo|44.00,100.00 | lineTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|0|44.00|238.00 | fillText|2|119.60|238.00 | fillText|4|195.20|238.00 | fillText|6|270.80|238.00 | fillText|8|346.40|238.00 | fillText|10|422.00|238.00 | set:textAlign=right | fillText|0|40.00|229.00 | fillText|50|40.00|166.00 | fillText|100|40.00|103.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|241.00 | save| | translate|12.00,163.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#64748b | set:lineWidth=3 | beginPath| | moveTo|44.00,226.00 | lineTo|422.00,226.00 | stroke| | set:fillStyle=#64748b | beginPath| | arc|44.00,226.00,4.50,0.00,6.28 | fill| | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|waagerecht → v = 0|52.00|112.00"
+   }
+  ],
+  "bildtexte": [
+   "🚶",
+   "Bewegung: langsam",
+   "⏱ 0,0 s",
+   "0",
+   "2",
+   "4",
+   "6",
+   "8",
+   "10",
+   "50",
+   "100",
+   "t in s",
+   "s in m",
+   "flach → v = 4 m/s",
+   "🏃",
+   "Bewegung: schnell",
+   "steil → v = 12 m/s",
+   "🧍",
+   "Bewegung: in Ruhe",
+   "waagerecht → v = 0",
+   "⏱ 0,1 s",
+   "⏱ 0,2 s",
+   "⏱ 0,3 s",
+   "⏱ 0,4 s",
+   "⏱ 0,5 s",
+   "⏱ 0,6 s",
+   "⏱ 0,7 s",
+   "⏱ 0,8 s",
+   "⏱ 0,9 s",
+   "⏱ 1,0 s",
+   "⏱ 1,1 s",
+   "⏱ 1,2 s",
+   "⏱ 1,3 s",
+   "⏱ 1,4 s",
+   "⏱ 1,5 s",
+   "⏱ 1,6 s",
+   "⏱ 1,7 s",
+   "⏱ 1,8 s",
+   "⏱ 1,9 s",
+   "⏱ 2,0 s"
+  ]
+ }
+]

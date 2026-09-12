@@ -1,0 +1,1990 @@
+[
+ {
+  "id": "me1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "K2",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Bewegung beschreibt man mit den zwei Größen",
+    "loesung": "Weg und Zeit",
+    "post": "– gemessen in Metern und Sekunden."
+   },
+   {
+    "pre": "Legt ein Körper in gleichen Zeiten gleiche Wege zurück, heißt die Bewegung",
+    "loesung": "gleichförmig",
+    "post": "."
+   },
+   {
+    "pre": "Eine Momentaufnahme hält fest, welcher Weg zu welchem Zeitpunkt erreicht ist, und liefert ein",
+    "loesung": "Wertepaar",
+    "post": "aus Zeit und Weg."
+   },
+   {
+    "pre": "Eine Momentaufnahme bei t = 5,0 s zeigt für das Auto den Weg",
+    "loesung": "40 m",
+    "post": "; in jeweils 2,5 s kommen 20 m dazu."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wörter wie schnell oder langsam sind Messwerte, mit denen man eine Bewegung genau beschreibt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine Momentaufnahme liefert ein Wertepaar aus Zeit und Weg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei einer gleichförmigen Bewegung gehören zu gleichen Zeiten gleiche Wege.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Um eine Bewegung eindeutig zu beschreiben, genügt allein die Zeit.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Das Auto hält bei s = 100 m von selbst an. Welche Zeit zeigt die Statuszeile dann an?",
+   "optionen": [
+    "t = 10,0 s. Zu dieser Zeit ist das Auto aber erst 80 m weit gekommen.",
+    "t = 5,0 s. Nach 5,0 s steht in der Momentaufnahme jedoch erst s = 40 m.",
+    "t = 12,5 s, denn in jeweils 2,5 s kommen 20 m dazu, für 100 m braucht das Auto also 12,5 s.",
+    "t = 20,0 s. So lange fährt das Auto nicht, es hält schon bei s = 100 m an."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe, warum Ela und Tom ihren Streit mit den Momentaufnahmen klären können, das Wort schnell aber nicht hilft.",
+   "zeilen": 4,
+   "loesung": "Die Momentaufnahmen halten zu jedem Zeitpunkt den zurückgelegten Weg fest, zum Beispiel 20 m nach 2,5 s. Solche Zahlen kann jeder nachprüfen, auch wer nicht dabei war. Schnell und langsam sind dagegen nur Eindrücke ohne Messwert. Mit Weg und Zeit ist die Fahrt eindeutig beschrieben."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Geschwindigkeit heißt Strecke geteilt durch Zeit: v =",
+    "loesung": "s / t",
+    "post": "mit der Einheit m/s."
+   },
+   {
+    "pre": "Je kürzer die Zeit für dieselbe Strecke, desto",
+    "loesung": "größer",
+    "post": "ist die Geschwindigkeit."
+   },
+   {
+    "pre": "Bei mittel dauert die Fahrt über die 10-m-Strecke 5,0 s, das ergibt v =",
+    "loesung": "2,0 m/s",
+    "post": "."
+   },
+   {
+    "pre": "Die Zeit misst man noch genauer als mit der Stoppuhr mit",
+    "loesung": "Lichtschranken",
+    "post": ", die beim Durchfahren automatisch auslösen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei schnell stoppt die Lichtschranke schon nach 2,0 s, das ergibt v = 5,0 m/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine gemessene Zeit allein verrät bereits die Geschwindigkeit des Wagens.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Strecke bleibt bei allen drei Tempostufen 10 m, nur die Zeit ändert sich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je länger die Zeit für dieselbe Strecke, desto größer ist die Geschwindigkeit.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Wagen durchfährt die 10-m-Strecke in 4,0 s. Wie schnell ist er im Vergleich zu den Tempostufen?",
+   "optionen": [
+    "v = 10 m / 4,0 s = 2,5 m/s – er liegt zwischen mittel mit 2,0 m/s und schnell mit 5,0 m/s.",
+    "v = 4,0 m/s, denn die gestoppte Zeit ist schon die Geschwindigkeit. Die Zeit allein ist aber keine Geschwindigkeit.",
+    "v = 40 m/s, weil man Strecke und Zeit malnimmt. Für v teilt man die Strecke aber durch die Zeit.",
+    "v = 0,4 m/s, weil man die Zeit durch die Strecke teilt. Richtig ist v = s / t, also Strecke durch Zeit."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Ela für den Vergleich der Wagen nicht nur eine gestoppte Zeit, sondern eine Zahl mit Einheit verlangt.",
+   "zeilen": 4,
+   "loesung": "Zum Bestimmen der Geschwindigkeit braucht man zwei Messwerte: die Strecke s und die Zeit t. Erst v = s / t ergibt eine Zahl mit der Einheit m/s. Eine Zeit allein oder eine Strecke allein sagt über das Tempo nichts aus. Bei mittel ergeben 10 m in 5,0 s zum Beispiel v = 2,0 m/s."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me3",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E5",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "v = s / t gibt an, wie viele Meter ein Körper in jeder",
+    "loesung": "Sekunde",
+    "post": "zurücklegt."
+   },
+   {
+    "pre": "Doppelte Strecke in doppelter Zeit ergibt",
+    "loesung": "dieselbe",
+    "post": "Geschwindigkeit."
+   },
+   {
+    "pre": "Mit s = 200 m bei t = 10 s zeigt die Statuszeile v =",
+    "loesung": "20,0 m/s",
+    "post": "."
+   },
+   {
+    "pre": "Mit dem Formeldreieck wird v = s / t umgestellt zu s = v · t und t =",
+    "loesung": "s / v",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer die längere Strecke fährt, hat immer die größere Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei s = 50 m und t = 5 s ergibt sich wieder v = 10,0 m/s wie bei s = 100 m und t = 10 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man nur die Zeit, verdoppelt sich auch die Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Statuszeile rechnet v auch in km/h um: aus 10,0 m/s werden 36,0 km/h.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tom fährt 100 m in 10 s über den Hof und 50 m in 5 s durch den Flur. Welche Fahrt ist schneller?",
+   "optionen": [
+    "Die Hoffahrt, denn 100 m sind die längere Strecke. Die längere Strecke sagt über das Tempo aber nichts aus.",
+    "Die Hoffahrt, denn sie dauert 10 s statt 5 s. Eine längere Zeit bedeutet jedoch nicht mehr Tempo.",
+    "Die Flurfahrt, weil sie nur 5 s dauert. Zur kürzeren Zeit gehört hier aber auch die kürzere Strecke.",
+    "Beide sind gleich schnell: 100 m / 10 s = 10,0 m/s und 50 m / 5 s = 10,0 m/s."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Entscheide mit v = s / t den Streit: Ist der Wagen über den Hof (100 m in 10 s) besser als durch den Flur (50 m in 5 s)?",
+   "zeilen": 4,
+   "loesung": "Hof: v = 100 m / 10 s = 10,0 m/s. Flur: v = 50 m / 5 s = 10,0 m/s. Beide Fahrten sind gleich schnell, denn v vergleicht die Strecke mit der dafür benötigten Zeit. Tom verwechselt weiter kommen mit schneller sein – über den Hof ist der Wagen nur doppelt so lange unterwegs."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "K2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für den Einheitenwechsel gilt: 1 m/s =",
+    "loesung": "3,6 km/h",
+    "post": "."
+   },
+   {
+    "pre": "Von km/h nach m/s teilt man die Zahl durch",
+    "loesung": "3,6",
+    "post": "."
+   },
+   {
+    "pre": "Der Radfahrer fährt 5,0 m/s; das sind 5,0 m/s · 3,6 =",
+    "loesung": "18,0 km/h",
+    "post": "."
+   },
+   {
+    "pre": "In einer Stunde stecken 3600 Sekunden, in einem Kilometer",
+    "loesung": "1000 Meter",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Aus 14,0 m/s werden beim Auto in der Stadt 50,4 km/h.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Einheitenwechsel bleibt die Zahl gleich: 5 m/s sind auch 5 km/h.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Von m/s nach km/h multipliziert man die Zahl mit 3,6.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Fußgänger mit 1,5 m/s erreicht 15,0 km/h.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wer ist schneller: der Rollwagen mit 2 m/s oder das Auto des Hausmeisters mit 30 km/h?",
+   "optionen": [
+    "Der Rollwagen, denn 2 ist kleiner als 30, aber sein Wert steht in m/s. Zahlen mit verschiedenen Einheiten darf man aber nicht vergleichen.",
+    "Das Auto: 2 m/s sind 7,2 km/h, 30 km/h sind rund 8,3 m/s – in beiden Einheiten liegt das Auto vorn.",
+    "Beide gleich schnell, denn 2 und 30 sind nur zwei Namen für dasselbe Tempo. Die Umrechnung mit 3,6 zeigt aber verschiedene Werte.",
+    "Der Rollwagen, weil 2 m/s · 3,6 = 72 km/h ergibt. Richtig sind 2 · 3,6 = 7,2 km/h."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Rechne die Tempo-50-Grenze (50 km/h) in m/s um und vergleiche sie mit dem Beispiel Auto (Stadt) aus der Tabelle.",
+   "zeilen": 4,
+   "loesung": "50 km/h ÷ 3,6 ≈ 13,9 m/s. Das Beispiel Auto (Stadt) fährt mit 14,0 m/s, also 50,4 km/h. Beide Werte liegen dicht beieinander: Das Stadtauto ist knapp am erlaubten Tempo 50. Beim Einheitenwechsel ändert sich nur die Zahl, nicht die Geschwindigkeit selbst."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me5",
+  "komp": [
+   "UF1",
+   "K2",
+   "E2",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Je steiler die Linie im Weg-Zeit-Diagramm, desto",
+    "loesung": "schneller",
+    "post": "ist die Bewegung."
+   },
+   {
+    "pre": "Eine waagerechte Linie bedeutet",
+    "loesung": "Stillstand",
+    "post": "– es kommt kein Weg hinzu."
+   },
+   {
+    "pre": "Im Weg-Zeit-Diagramm steht die Zeit waagerecht und der",
+    "loesung": "Weg",
+    "post": "senkrecht."
+   },
+   {
+    "pre": "Bewegt sich ein Körper gleichförmig, entsteht im Diagramm eine",
+    "loesung": "Gerade",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei der Fahrt langsam ist die Gerade flach: in gleicher Zeit wenig Weg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Anstieg der Linie bedeutet, dass der Wagen bergauf fährt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine steile Linie bedeutet, dass der Körper langsam ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im waagerechten Abschnitt der Linie steht der Wagen auf der Fahrbahn still.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Toms Linie steigt erst, läuft dann waagerecht und steigt wieder. Was passiert im waagerechten Stück?",
+   "optionen": [
+    "Der Wagen steht still, denn es kommt kein Weg mehr hinzu.",
+    "Der Wagen fährt bergab, weil die Linie nicht mehr steigt. Die Linie zeigt aber den Weg, nicht die Höhe.",
+    "Der Wagen wird immer schneller, weil die Linie waagerecht wird. Eine waagerechte Linie bedeutet jedoch Stillstand.",
+    "Der Wagen fährt rückwärts, weil der Weg abnimmt. Im waagerechten Stück bleibt der Weg aber gleich."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Elas Linie ansteigt, obwohl Tom nie bergauf gefahren ist.",
+   "zeilen": 4,
+   "loesung": "Im Weg-Zeit-Diagramm zeigt die senkrechte Achse den zurückgelegten Weg, nicht die Höhe. Solange Tom fährt, wächst sein Weg, also steigt die Linie. Im waagerechten Abschnitt kommt kein Weg hinzu – dort stand Tom am Vorhang. Die Linie ist ein Diagramm der Bewegung, kein Bild der Strecke."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "K2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Beschleunigung gibt an, wie schnell sich die",
+    "loesung": "Geschwindigkeit",
+    "post": "ändert; ihre Einheit ist m/s²."
+   },
+   {
+    "pre": "Im v-t-Diagramm ist die Steigung der Ursprungsgeraden die",
+    "loesung": "Beschleunigung a",
+    "post": "."
+   },
+   {
+    "pre": "Startet ein Wagen aus der Ruhe bei konstantem a, gilt v =",
+    "loesung": "a · t",
+    "post": "."
+   },
+   {
+    "pre": "Bei a = 2,0 m/s² misst die Lichtschranke an der Marke 1,0 m die Geschwindigkeit v =",
+    "loesung": "2,0 m/s",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beschleunigung ist dasselbe wie eine hohe Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei konstanter Beschleunigung liegen die Messpunkte im v-t-Diagramm auf einer Ursprungsgeraden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Vervierfacht sich der Weg von 0,5 m auf 2,0 m, verdoppelt sich die Zeit nur.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei a = 4,0 m/s² verläuft die Gerade im v-t-Diagramm flacher als bei a = 2,0 m/s².",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "An der letzten Marke gilt a = 2,0 m/s² und t = 2,45 s. Wie groß ist dort die Geschwindigkeit?",
+   "optionen": [
+    "v = 2,0 m/s, denn das ist die Beschleunigung. Beschleunigung und Geschwindigkeit sind aber verschiedene Größen.",
+    "v = 1,225 m/s, weil man t durch a teilt. Richtig ist v = a · t, also a mal t.",
+    "v = 2,45 m/s, denn die Zeit ist schon die Geschwindigkeit. Die Zeit allein ist aber kein Tempo.",
+    "v = a · t = 2,0 m/s² · 2,45 s = 4,9 m/s – genau der Tabellenwert."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre mit v = a · t und dem v-t-Diagramm, woran man in der Simulation die Beschleunigung des Rollwagens abliest.",
+   "zeilen": 4,
+   "loesung": "Bei konstanter Beschleunigung wächst die Geschwindigkeit in jeder Sekunde um denselben Betrag, es gilt v = a · t. Im v-t-Diagramm liegen die Messpunkte deshalb auf einer Ursprungsgeraden. Ihre Steigung ist genau die Beschleunigung. Bei a = 2,0 m/s² meldet die Auswertung als Steigung rund 2,00 m/s²."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kräfte erkennt man nicht direkt, sondern an ihren",
+    "loesung": "Wirkungen",
+    "post": ": Verformung, Bewegungsänderung und Richtungsänderung."
+   },
+   {
+    "pre": "Auch Abbremsen ist eine",
+    "loesung": "Bewegungsänderung",
+    "post": "– dabei wirkt eine Kraft."
+   },
+   {
+    "pre": "Der ausgedrückte Schwamm und die eingedrückte Getränkedose gehören zur Wirkung",
+    "loesung": "Verformen",
+    "post": "."
+   },
+   {
+    "pre": "Der Schläger verformt den Tennisball kurz und kehrt zugleich seine",
+    "loesung": "Richtung",
+    "post": "um."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine Kraft erkennt man nur daran, dass etwas schneller wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der an der Wand abprallende Ball zeigt die Wirkung Richtung ändern.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Abbremsen des Fahrrads wirkt eine Kraft, obwohl es langsamer wird.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zu einer Situation gehört immer nur eine einzige Kraftwirkung.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tom bremst den rollenden Getränkewagen ab. Wirkt dabei eine Kraft?",
+   "optionen": [
+    "Nein, weil der Wagen nicht schneller wird. Auch Langsamerwerden ist aber eine Bewegungsänderung.",
+    "Nein, weil der Wagen sich nicht verformt. Eine Kraft kann sich auch durch eine Bewegungsänderung zeigen.",
+    "Ja, denn das Abbremsen ist eine Bewegungsänderung – auch Langsamerwerden verrät eine Kraft.",
+    "Ja, aber nur weil der Wagen die Richtung ändert. Beim Abbremsen bleibt die Richtung jedoch gleich."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe, dass beim Abbremsen des Getränkewagens eine Kraft wirkt, obwohl der Wagen dabei nicht schneller wird.",
+   "zeilen": 4,
+   "loesung": "Eine Kraft erkennt man an Verformung, Bewegungsänderung oder Richtungsänderung. Beim Abbremsen ändert sich die Bewegung, denn das Tempo nimmt ab. Auch Langsamerwerden ist eine Bewegungsänderung. Also wirkt eine Kraft – hier Toms Bremskraft entgegen der Fahrtrichtung."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me8",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "K3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Waage misst die Masse in kg, der Kraftmesser die",
+    "loesung": "Gewichtskraft",
+    "post": "in Newton."
+   },
+   {
+    "pre": "Es gilt F = m · g mit g =",
+    "loesung": "9,8 N/kg",
+    "post": "auf der Erde."
+   },
+   {
+    "pre": "Beim Körper 1 kg zeigt der Kraftmesser eine Gewichtskraft von",
+    "loesung": "9,8 N",
+    "post": "."
+   },
+   {
+    "pre": "Die Masse gibt an, wie viel",
+    "loesung": "Stoff",
+    "post": "in einem Körper steckt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 2 kg zeigt der Kraftmesser 19,6 N, also die doppelte Gewichtskraft von 1 kg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Masse eines Körpers bleibt überall gleich, die Gewichtskraft nicht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Kilogramm und Newton sind nur zwei Namen für dieselbe Angabe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Kraftmesser misst die Masse, die Waage die Gewichtskraft.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Wasserkanister hat die Masse 10 kg. Wie groß ist seine Gewichtskraft (g = 9,8 N/kg)?",
+   "optionen": [
+    "10 N, denn 10 kg sind 10 N. Kilogramm und Newton sind aber verschiedene Größen.",
+    "F = m · g = 10 kg · 9,8 N/kg = 98 N.",
+    "9,8 N, denn so groß ist der Ortsfaktor. Man muss ihn aber noch mit der Masse malnehmen.",
+    "1,02 N, weil man die Masse durch g teilt. Für die Gewichtskraft nimmt man Masse mal g."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum Toms Antwort Zehn Kilo nur die halbe Wahrheit ist, und berechne die Gewichtskraft des Kanisters (m = 10 kg, g = 9,8 N/kg).",
+   "zeilen": 5,
+   "loesung": "F = m · g = 10 kg · 9,8 N/kg = 98 N. Die Waage zeigt die Masse 10 kg – so viel Stoff steckt im Kanister. Was Tom in den Armen spürt, ist aber die Gewichtskraft von 98 N, mit der die Erde den Kanister nach unten zieht. Zehn Kilo nennt also nur die Masse, nicht die spürbare Kraft."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Masse eines Körpers ist an jedem Ort",
+    "loesung": "gleich",
+    "post": ", denn sie gibt die Stoffmenge an."
+   },
+   {
+    "pre": "Die Gewichtskraft F = m · g hängt vom",
+    "loesung": "Ortsfaktor g",
+    "post": "des Himmelskörpers ab."
+   },
+   {
+    "pre": "Auf dem Mond gilt g = 1,6 N/kg; für 60 kg ergibt das F =",
+    "loesung": "96 N",
+    "post": "."
+   },
+   {
+    "pre": "Auf dem Jupiter ist der Ortsfaktor mit g =",
+    "loesung": "24,8 N/kg",
+    "post": "am größten."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auf dem Mond verliert die Kiste sowohl Masse als auch Gewichtskraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf der Erde beträgt die Gewichtskraft der 60-kg-Masse 588 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Ortsfaktor g ist auf Mond, Erde und Jupiter gleich groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Gewichtskraft auf dem Mond ist nur etwa ein Sechstel der Gewichtskraft auf der Erde.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Können Ela und Tom zugleich recht haben – die Kiste ist auf dem Mond leichter, und in ihr steckt trotzdem gleich viel Stoff?",
+   "optionen": [
+    "Nein, wenn die Kiste leichter wird, nimmt auch ihre Masse ab. Die Masse ist aber an jedem Ort gleich.",
+    "Nein, auf dem Mond ändert sich gar nichts. Der Ortsfaktor ist dort aber kleiner als auf der Erde.",
+    "Ja, weil auf dem Mond auch die Masse kleiner wird. Die Masse bleibt aber überall gleich.",
+    "Ja, die Masse bleibt mit 60 kg gleich, nur die Gewichtskraft sinkt von 588 N auf 96 N."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne die Gewichtskraft der 60-kg-Masse auf dem Mond (g = 1,6 N/kg) und vergleiche sie mit der Erde (g = 9,8 N/kg).",
+   "zeilen": 4,
+   "loesung": "F = m · g = 60 kg · 1,6 N/kg = 96 N. Genau diesen Wert zeigt die Simulation für den Mond. Auf der Erde ergibt dieselbe Rechnung 60 kg · 9,8 N/kg = 588 N. Die Gewichtskraft auf dem Mond ist also nur etwa ein Sechstel der Gewichtskraft auf der Erde."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me10",
+  "komp": [
+   "UF1",
+   "K2",
+   "K1",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Zu einer Kraft gehören Betrag, Richtung und",
+    "loesung": "Angriffspunkt",
+    "post": "."
+   },
+   {
+    "pre": "Im Kraftpfeil zeigt die Länge den",
+    "loesung": "Betrag",
+    "post": "der Kraft, die Spitze die Richtung."
+   },
+   {
+    "pre": "Ein Pfeil für 6 N ist dreimal so",
+    "loesung": "lang",
+    "post": "wie ein Pfeil für 2 N."
+   },
+   {
+    "pre": "Weil zur Kraft immer eine Richtung gehört, nennt man sie eine",
+    "loesung": "gerichtete",
+    "post": "Größe."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Pfeilanfang markiert den Angriffspunkt der Kraft am Körper.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Für eine Kraft reicht eine einzige Zahl in Newton, die Richtung ergibt sich von selbst.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwei gleich große Kräfte mit verschiedenen Richtungen haben verschiedene Wirkungen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdreifacht man den Betrag von 2 N auf 6 N, bleibt der Pfeil gleich lang.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Simulation wird der Betrag von 2 N auf 6 N gestellt. Was passiert mit dem roten Pfeil?",
+   "optionen": [
+    "Er wird dreimal so lang, denn die Pfeillänge steht für den Betrag.",
+    "Er zeigt in eine andere Richtung, weil der Betrag die Richtung festlegt. Die Richtung zeigt aber die Pfeilspitze.",
+    "Er bleibt gleich lang, nur der Körper wird größer. Die Pfeillänge hängt aber vom Betrag ab.",
+    "Er wird kürzer, weil ein größerer Betrag einen kleineren Pfeil ergibt. Größerer Betrag heißt aber längerer Pfeil."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre mit dem Kraftpfeil, warum Toms Zug an der Kiste misslang, obwohl seine Kraft groß genug war.",
+   "zeilen": 4,
+   "loesung": "Toms Kraft hatte den richtigen Betrag, aber die falsche Richtung. Sein Kraftpfeil wäre lang genug gewesen, hätte aber zur Wand statt zur Rampe gezeigt. Da die Wirkung einer Kraft von Betrag und Richtung abhängt, rutschte die Kiste zur Wand. Erst ein gleich langer Pfeil in Richtung Rampe beschreibt den richtigen Zug."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kräfte in gleicher Richtung werden",
+    "loesung": "addiert",
+    "post": ", entgegengesetzte Kräfte subtrahiert."
+   },
+   {
+    "pre": "Die Gesamtkraft aus 3 N und 2 N in Gegenrichtung beträgt",
+    "loesung": "1 N",
+    "post": "in Richtung der größeren Kraft."
+   },
+   {
+    "pre": "Zeigen F1 = 3 N und F2 = 2 N beide nach rechts, ist die Gesamtkraft",
+    "loesung": "5 N",
+    "post": "nach rechts."
+   },
+   {
+    "pre": "Die beiden Einzelkräfte ersetzt man durch eine einzige Gesamtkraft, die",
+    "loesung": "Resultierende",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwei Kräfte ergeben zusammen immer eine größere Kraft, egal in welche Richtung sie ziehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 3 N gegen 3 N ist die Gesamtkraft 0 N, die Kräfte heben sich auf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Für die Bewegung des Körpers zählt nur die Gesamtkraft, nicht der einzelne Zug.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei entgegengesetzten Kräften addiert man ihre Beträge.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ela zieht mit 3 N, Tom mit 2 N in die entgegengesetzte Richtung. Wie groß ist die Gesamtkraft?",
+   "optionen": [
+    "5 N, denn man addiert 3 N und 2 N. Entgegengesetzte Kräfte werden aber subtrahiert.",
+    "0 N, denn die Kräfte heben sich auf. Gleich groß sind sie aber nur bei 3 N gegen 3 N.",
+    "1 N in Richtung von Ela, denn 3 N − 2 N = 1 N, und die größere Kraft gibt die Richtung.",
+    "6 N, weil man 3 N und 2 N malnimmt. Kräfte werden aber addiert oder subtrahiert, nicht malgenommen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage vom Tauziehen: Die stärkere Mannschaft gewinnt immer sofort.",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Beim Tauziehen wirken zwei Kräfte gegeneinander, für die Bewegung zählt nur die Gesamtkraft. Sind beide Mannschaften fast gleich stark, ist die Gesamtkraft klein oder sogar 0 N – dann steht das Band still, obwohl beide kräftig ziehen. Erst wenn eine Seite deutlich mehr zieht, bleibt eine Gesamtkraft in ihre Richtung übrig."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Zwei Kräfte heben sich auf, wenn sie gleich groß und",
+    "loesung": "entgegengesetzt",
+    "post": "gerichtet sind."
+   },
+   {
+    "pre": "Im Kräftegleichgewicht beträgt die Gesamtkraft",
+    "loesung": "0 N",
+    "post": "– der Körper bleibt in Ruhe."
+   },
+   {
+    "pre": "An der Lampe zieht die Gewichtskraft von 5 N nach unten und die Haltekraft des Seils nach",
+    "loesung": "oben",
+    "post": "."
+   },
+   {
+    "pre": "Bei einer Haltekraft von 7 N bleibt eine Gesamtkraft von",
+    "loesung": "2 N",
+    "post": "nach oben übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei einer Haltekraft von 5 N bleibt die Lampe in Ruhe, die Gesamtkraft ist 0 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine ruhende Lampe zeigt, dass an ihr gar keine Kräfte wirken.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einer Haltekraft von 3 N sinkt die Lampe, denn 2 N bleiben nach unten übrig.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Sobald eine der beiden Kräfte größer wird, bleibt die Lampe erst recht in Ruhe.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum saust der ruhende Scheinwerfer nicht herunter, obwohl die Gewichtskraft an ihm zieht?",
+   "optionen": [
+    "Weil in Ruhe keine Kräfte an ihm wirken. An ihm ziehen aber Gewichtskraft und Haltekraft zugleich.",
+    "Weil die Haltekraft des Seils genauso groß ist wie die Gewichtskraft – die Gesamtkraft ist 0 N.",
+    "Weil die Gewichtskraft nach oben zeigt. Die Gewichtskraft zieht aber immer nach unten.",
+    "Weil die Haltekraft größer ist als die Gewichtskraft. Dann würde die Lampe aber nach oben gezogen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum der ruhende Scheinwerfer nicht kräftefrei ist, und gib an, wie groß die Haltekraft des Seils in der Simulation sein muss.",
+   "zeilen": 4,
+   "loesung": "Am Scheinwerfer ziehen ständig zwei Kräfte: die Gewichtskraft nach unten und die Haltekraft des Seils nach oben. In der Simulation bleibt die Lampe genau dann in Ruhe, wenn die Haltekraft wie die Gewichtskraft 5 N beträgt. Dann ist die Gesamtkraft 0 N, die Kräfte heben sich auf. Ruhe entsteht hier durch Gleichgewicht, nicht durch Kräftefreiheit."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kraft und Gegenkraft sind gleich groß, entgegengesetzt gerichtet und wirken auf",
+    "loesung": "zwei verschiedene",
+    "post": "Körper."
+   },
+   {
+    "pre": "Beim Abstoßen wird der Körper mit der kleineren Masse",
+    "loesung": "schneller",
+    "post": "."
+   },
+   {
+    "pre": "Beim Boot wird die Person 60 kg mit 2,0 m/s, das Boot 300 kg nur mit",
+    "loesung": "0,40 m/s",
+    "post": "."
+   },
+   {
+    "pre": "Das kurze Wort für das Wechselwirkungsprinzip lautet actio =",
+    "loesung": "reactio",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nur der Körper, der aktiv stößt, übt eine Kraft aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kraft und Gegenkraft wirken auf zwei verschiedene Körper und heben sich deshalb nicht auf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei den Eisläufern mit je 60 kg wird einer schneller als der andere.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das leichte Gas wird 30-mal so schnell wie die Rakete.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum rollt Tom auf dem Rollbrett nach hinten, obwohl er nur den schweren Kistenwagen schiebt?",
+   "optionen": [
+    "Weil nur er eine Kraft ausübt und der Wagen keine zurück. Der Wagen übt aber eine gleich große Gegenkraft aus.",
+    "Weil seine Kraft sich selbst aufhebt. Kraft und Gegenkraft wirken aber auf zwei verschiedene Körper.",
+    "Weil er mehr Masse hat als der Wagen und deshalb schneller wird. Der schwerere Körper wird aber langsamer.",
+    "Weil der Wagen mit gleich großer Kraft zurückstößt und Tom weniger Masse hat, wird er schneller."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre mit dem Wechselwirkungsprinzip, warum Tom nach hinten rollt, während der beladene Kistenwagen kaum anrollt.",
+   "zeilen": 4,
+   "loesung": "Tom übt eine Kraft auf den Wagen aus; nach dem Wechselwirkungsprinzip übt der Wagen eine gleich große, entgegengesetzte Kraft auf Tom aus. Beide Kräfte wirken auf verschiedene Körper und heben sich nicht auf. Weil Tom weniger Masse hat als der beladene Wagen, wird er von der gleichen Kraft schneller – wie die Person, die mit 2,0 m/s vom 300-kg-Boot wegspringt, das nur 0,40 m/s erreicht."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me14",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Reibungskraft wirkt stets",
+    "loesung": "gegen die Bewegung",
+    "post": "– sie bremst das Anfahren und stoppt das Ausrollen."
+   },
+   {
+    "pre": "Bei μ = 0,30 und m = 5 kg zeigt das Bild F_R =",
+    "loesung": "14,7 N",
+    "post": "– unabhängig vom Tempo."
+   },
+   {
+    "pre": "Wie groß die Reibungskraft ist, hängt von der Rauheit der Flächen, dem",
+    "loesung": "Reibungskoeffizienten μ",
+    "post": ", und von der Gewichtskraft ab."
+   },
+   {
+    "pre": "Stellt man μ auf 0, rollt der Wagen ohne Antrieb",
+    "loesung": "endlos",
+    "post": "weiter."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ohne Antrieb bremst die Reibungskraft den Wagen bis zum Stillstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Reibungskraft wird größer, je schneller der Wagen fährt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Anfahren stört die Reibung: Nur der Teil der Antriebskraft über F_R hinaus macht schneller.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Reibung ist immer schlecht und sollte überall vermieden werden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Vor dem gebohnerten Streifen rollt der Wagen von allein weiter, auf dem rauen Boden nicht. Warum?",
+   "optionen": [
+    "Auf dem gebohnerten Streifen ist die Reibung klein, deshalb bremst kaum etwas den Wagen.",
+    "Auf dem gebohnerten Streifen ist die Reibung größer und schiebt den Wagen an. Reibung wirkt aber gegen die Bewegung.",
+    "Auf dem Streifen wirkt keine Gewichtskraft mehr, deshalb rollt er weiter. Die Gewichtskraft bleibt aber gleich.",
+    "Der raue Boden lässt den Wagen leichter anfahren. Die Reibung stört das Anfahren aber gerade."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne die Reibungskraft für μ = 1,00 und m = 20 kg (g = 9,81 N/kg) und vergleiche mit der Anzeige der Simulation.",
+   "zeilen": 4,
+   "loesung": "F_R = μ · m · g = 1,00 · 20 kg · 9,81 N/kg = 196,2 N. Stellt man den Regler μ ganz nach rechts und die Masse auf 20 kg, zeigt das Bild ebenfalls F_R = 196,2 N. Selbst die größte Antriebskraft F = 200 N liegt nur 3,8 N darüber – der Wagen wird kaum schneller."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me15",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Am Hebel gilt das Hebelgesetz F₁ · l₁ =",
+    "loesung": "F₂ · l₂",
+    "post": "."
+   },
+   {
+    "pre": "Je länger der Kraftarm im Vergleich zum Lastarm, desto",
+    "loesung": "kleiner",
+    "post": "die nötige Kraft."
+   },
+   {
+    "pre": "Mit dem Kraftarm l₁ = 1,00 m hält man die Last von 200 N schon mit",
+    "loesung": "50,00 N",
+    "post": "."
+   },
+   {
+    "pre": "Der Hebel spart Kraft, aber niemals",
+    "loesung": "Arbeit",
+    "post": "– der Weg der Hand wird im selben Verhältnis länger."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Hebel spart Kraft und dadurch auch Arbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei l₁ = 2,00 m genügen nur noch 25,00 N, die Hand läuft dafür 80,0 cm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In jeder Einstellung rechnet die Simulation W₁ = W₂ = 20,00 J vor.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein achtmal so langer Kraftarm senkt die Kraft auf das Achtfache.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wo ist beim Hebel die Kraft geblieben, die der Hausmeister im Vergleich zum direkten Ziehen spart?",
+   "optionen": [
+    "Sie ist ganz verschwunden, denn der Hebel spart Arbeit. Eine Maschine kann aber keine Arbeit sparen.",
+    "Sie steckt jetzt im Holzklotz am Drehpunkt. Der Drehpunkt nimmt aber keine Arbeit auf.",
+    "Sie wird durch einen längeren Weg der Hand ausgeglichen – Kraft mal Weg bleibt gleich.",
+    "Sie wird zu Wärme in der Eisenstange. Die Arbeit bleibt hier aber unverändert erhalten."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne mit dem Hebelgesetz die Kraft F₁ für die Last F₂ = 400 N am Kraftarm l₁ = 2,00 m (Lastarm l₂ = 0,25 m).",
+   "zeilen": 4,
+   "loesung": "F₁ = F₂ · l₂ : l₁ = 400 N · 0,25 m : 2,00 m = 50,00 N. Der Kraftarm ist 8,00-mal so lang wie der Lastarm, also genügt ein Achtel der Last. Die Simulation zeigt bei diesen Einstellungen ebenfalls F₁ = 50,00 N. Eine Hand hält so das Achtfache ihrer eigenen Kraft im Gleichgewicht."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me16",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Tragen n Seilstücke die Last, hält jedes nur den n-ten Teil: F =",
+    "loesung": "G : n",
+    "post": "."
+   },
+   {
+    "pre": "Beim Heben läuft die n-fache Seillänge durch die Hand: s =",
+    "loesung": "n · h",
+    "post": "."
+   },
+   {
+    "pre": "Bei n = 4 tragenden Seilstücken genügen für die Last von 600 N nur noch",
+    "loesung": "150,0 N",
+    "post": "Zugkraft."
+   },
+   {
+    "pre": "Goldene Regel der Mechanik: Kraft gespart heißt Weg",
+    "loesung": "bezahlt",
+    "post": "– die Arbeit bleibt gleich."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei n = 2 sind es 300,0 N Zugkraft und 4,0 m Seilweg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Flaschenzug spart nicht nur Kraft, sondern auch Arbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei n = 1 dreht die feste Rolle nur die Richtung um, die Kraft bleibt bei 600,0 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je mehr tragende Seilstücke, desto kürzer der Seilweg durch die Hand.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum läuft beim Flaschenzug mit n = 4 durch Toms Hände 8,0 m Seil, obwohl die Box nur 2,0 m steigt?",
+   "optionen": [
+    "Weil das Seil sich dabei dehnt und dadurch länger wird. Das Seil bleibt aber gleich lang.",
+    "Weil vier tragende Seilstücke kürzer werden müssen, läuft die vierfache Länge durch die Hand: s = n · h.",
+    "Weil die Rollen zusätzliches Seil abgeben. Die Seillänge ändert sich dadurch aber nicht.",
+    "Weil der Flaschenzug auch Arbeit spart und dafür Seil braucht. Die Arbeit bleibt aber gleich."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile, warum an Kränen und auf Segelbooten Flaschenzüge eingebaut sind, obwohl man mit ihnen viel mehr Seil ziehen muss.",
+   "zeilen": 4,
+   "loesung": "Ein Flaschenzug verteilt die Last auf mehrere tragende Seilstücke, dadurch sinkt die nötige Zugkraft, zum Beispiel bei n = 4 von 600 N auf 150,0 N. So kann ein Mensch oder ein kleiner Motor eine sehr schwere Last bewegen. Dass dafür viel mehr Seil durch die Hand läuft, nimmt man in Kauf – gespart wird Kraft, nicht Arbeit."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me17",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Je flacher die Rampe, desto kleiner die",
+    "loesung": "Zugkraft",
+    "post": "– und desto länger der Weg."
+   },
+   {
+    "pre": "Das Produkt Kraft × Weg bleibt bei jeder Rampe",
+    "loesung": "gleich groß",
+    "post": "– so groß wie beim senkrechten Heben."
+   },
+   {
+    "pre": "Bei der mittleren Rampe zeigt die Simulation eine Zugkraft von",
+    "loesung": "3,0 N",
+    "post": "bei doppeltem Weg."
+   },
+   {
+    "pre": "Senkrecht heben kostet dagegen die vollen",
+    "loesung": "6 N",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei der flachen Rampe genügt eine Zugkraft von 1,5 N, der Weg ist dafür 4,0-mal so lang wie die Höhe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Rampe spart Kraft und damit auch das Produkt Kraft × Weg.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je steiler die Rampe, desto kleiner die nötige Zugkraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In allen drei Fällen ergibt Kraft × Weg denselben Wert 6 wie beim direkten Heben.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Was spart Ela wirklich, wenn sie die Getränkekiste über die mittlere Rampe schiebt statt sie senkrecht zu heben?",
+   "optionen": [
+    "Sie spart Arbeit, denn die Zugkraft ist kleiner. Das Produkt Kraft × Weg bleibt aber gleich.",
+    "Sie spart Weg, weil die Rampe kürzer ist. Ihr Weg ist aber 2,0-mal so lang wie die Höhe.",
+    "Sie spart gar nichts, auch nicht Kraft. Die Zugkraft sinkt aber von 6 N auf 3,0 N.",
+    "Sie spart Kraft: 3,0 N statt 6 N – dafür wird ihr Weg doppelt so lang, Kraft × Weg bleibt 6."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Elas Vermutung, sie habe mit der Rampe insgesamt etwas gespart.",
+   "zeilen": 4,
+   "loesung": "Ela hat Kraft gespart: Auf der mittleren Rampe zieht sie mit 3,0 N statt mit 6 N. Dafür ist ihr Weg 2,0-mal so lang wie die Höhe. Kraft × Weg ergibt bei Rampe und direktem Heben denselben Wert 6 – insgesamt gespart hat sie also nichts. Die Rampe spart Kraft, aber nicht das Produkt aus Kraft und Weg."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me18",
+  "komp": [
+   "UF1",
+   "UF3",
+   "K2",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "So verschieden die Energieformen aussehen, gemessen wird jede in der Einheit",
+    "loesung": "Joule",
+    "post": "(J)."
+   },
+   {
+    "pre": "Ein Joule ist die Arbeit, ein Newton über einen",
+    "loesung": "Meter",
+    "post": "zu bewegen."
+   },
+   {
+    "pre": "Die Kiste auf dem Regal speichert als Lageenergie",
+    "loesung": "196,0 J",
+    "post": "und hebt den Sack 2,0 m hoch."
+   },
+   {
+    "pre": "Das Butterbrot speichert rund",
+    "loesung": "1000 kJ",
+    "post": "– es hebt den 10-kg-Sack über 10 km hoch."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die gespannte Sprungfeder speichert 5,0 J und hebt den Sack nur 5 cm hoch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Jede Energieform braucht ihre eigene Einheit und lässt sich nicht mit anderen vergleichen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Tasse heißer Tee speichert 50,2 kJ und hebt den Sack 511 m hoch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Butterbrot steckt weniger Energie als in der gespannten Sprungfeder.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum kann man Butterbrot, heißen Tee und eine Batterie mit demselben Maß vergleichen?",
+   "optionen": [
+    "Weil alle Energieformen in derselben Einheit Joule angegeben werden.",
+    "Weil in allen dreien Bewegungsenergie steckt. Im Tee steckt aber innere Energie, keine Bewegung.",
+    "Weil sie alle gleich viel Energie enthalten. Ihre Energiewerte sind aber sehr verschieden.",
+    "Weil man Wärme nicht mit Essen vergleichen kann. Beide lassen sich aber in Joule angeben."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne, wie viele gespannte Sprungfedern (je 5,0 J) zusammen so viel Energie speichern wie ein Butterbrot (1000 kJ).",
+   "zeilen": 4,
+   "loesung": "Ein Butterbrot speichert 1000 kJ = 1000000 J. Eine Sprungfeder speichert 5,0 J. 1000000 J : 5,0 J = 200000. Man bräuchte also 200000 gespannte Sprungfedern – im Essen steckt enorm viel chemische Energie."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me19",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "K2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Lageenergie berechnet man mit E = m · g · h und dem Ortsfaktor g =",
+    "loesung": "9,81 N/kg",
+    "post": "."
+   },
+   {
+    "pre": "Masse und Höhe zählen",
+    "loesung": "gleich stark",
+    "post": ": Verdoppeln erhöht die Lageenergie jeweils aufs Doppelte."
+   },
+   {
+    "pre": "Mit 5 kg aus 3 m Höhe zeigt die Simulation eine Lageenergie von",
+    "loesung": "147 J",
+    "post": "."
+   },
+   {
+    "pre": "Wer einen Klotz hochhebt, verrichtet Hubarbeit gegen die",
+    "loesung": "Gewichtskraft",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nur die Höhe zählt für die Lageenergie, die Masse spielt keine Rolle.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 10 kg aus 3 m Höhe zeigt die Simulation 294 J, der Pfahl fährt 74 cm tief.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Doppelte Höhe wirkt genauso stark wie doppelte Masse: In beiden Fällen verdoppelt sich die Pfahltiefe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Fallen bleibt die Lageenergie im Klotz und wird nicht frei.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum treibt derselbe Klotz den Pfahl tiefer, wenn Ela ihn aus doppelter Höhe fallen lässt?",
+   "optionen": [
+    "Weil der Klotz aus größerer Höhe schwerer wird. Die Masse bleibt aber gleich.",
+    "Weil nur die Aufprallgeschwindigkeit zählt und die sich verdoppelt. Sie steigt aber nur von 7,7 auf 10,8 m/s.",
+    "Weil die Lageenergie E = m · g · h mit der Höhe wächst: aus 147 J werden 294 J, der Pfahl fährt doppelt so tief.",
+    "Weil aus doppelter Höhe die doppelte Masse wird. Höhe und Masse sind aber verschiedene Größen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne die Lageenergie eines Klotzes mit m = 10 kg in h = 10 m Höhe (g = 9,81 N/kg) und prüfe mit der Simulation.",
+   "zeilen": 4,
+   "loesung": "E = m · g · h = 10 kg · 9,81 N/kg · 10 m = 981 J. Der Klotz speichert oben also 981 J Lageenergie. Genau diesen Wert zeigt die Simulation bei m = 10 kg und h = 10 m. Der Pfahl wird damit 245 cm tief eingeschlagen."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me20",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein bewegter Körper trägt Bewegungsenergie: E =",
+    "loesung": "½ · m · v²",
+    "post": "."
+   },
+   {
+    "pre": "Doppeltes Tempo bedeutet",
+    "loesung": "vierfache",
+    "post": "Bewegungsenergie – das Tempo zählt im Quadrat."
+   },
+   {
+    "pre": "Mit 4 kg und 4 m/s meldet die Statuszeile E =",
+    "loesung": "32 J",
+    "post": "."
+   },
+   {
+    "pre": "Trifft die Kugel den Klotz, verrichtet sie Schiebearbeit gegen die",
+    "loesung": "Reibung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach ×2 Masse zeigt die Statuszeile 64 J, der Klotz wird 0,32 m weit geschoben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Doppeltes Tempo und doppelte Masse wirken gleich stark auf die Energie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach ×2 Tempo beträgt die Energie 128 J, viermal so viel wie am Anfang.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Masse geht in der Formel im Quadrat ein, das Tempo nur einfach.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum schiebt doppeltes Tempo den Klotz viermal so weit, doppelte Masse aber nur doppelt so weit?",
+   "optionen": [
+    "Weil die Masse im Quadrat zählt und das Tempo nur einfach. In der Formel ist es aber genau umgekehrt.",
+    "Weil das Tempo in E = ½ · m · v² im Quadrat steht, die Masse aber nur einfach eingeht.",
+    "Weil beim schnelleren Wurf mehr Reibung entsteht. Die Schiebestrecke misst aber die Energie der Kugel.",
+    "Weil doppeltes Tempo auch die Masse verdoppelt. Masse und Tempo sind aber verschiedene Größen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre mit E = ½ · m · v², warum doppeltes Tempo den Klotz viermal so weit schiebt, doppelte Masse aber nur doppelt so weit.",
+   "zeilen": 4,
+   "loesung": "In der Formel geht die Masse einfach ein, das Tempo aber im Quadrat. Doppelte Masse macht aus 32 J deshalb 64 J, und die Schiebestrecke wächst von 0,16 m auf 0,32 m. Doppeltes Tempo macht aus 32 J dagegen 128 J, weil 8² viermal so groß ist wie 4². Darum rutscht der Klotz 0,64 m weit – viermal so weit wie zuerst."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me21",
+  "komp": [
+   "UF1",
+   "E5",
+   "E2",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Solange der Ball fliegt, bleibt die Summe aus Lage- und Bewegungsenergie",
+    "loesung": "gleich groß",
+    "post": "– Energie wandelt sich nur um."
+   },
+   {
+    "pre": "Beim Aufprall gibt der Ball einen Teil seiner Energie als",
+    "loesung": "Wärme",
+    "post": "an Boden und Luft ab."
+   },
+   {
+    "pre": "Beim Start zeigt das Infofeld E_pot =",
+    "loesung": "392 J",
+    "post": "und E_kin = 0 J."
+   },
+   {
+    "pre": "Beim Fallen wandelt sich Lageenergie in",
+    "loesung": "Bewegungsenergie",
+    "post": "um."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Energie des Balls wird beim Aufprall nach und nach vernichtet.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei Höhe 11,0 m stehen E_pot = 216 J und E_kin = 174 J, zusammen fast der Startwert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach dem ersten Aufprall erreicht der Ball nur noch 14,3 m, am höchsten Punkt E_pot = 280 J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Ball springt bei jedem Sprung wieder genauso hoch wie zuvor.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wer hat recht – Ela sagt, die Energie ist irgendwann weg, der Hausmeister sagt, Energie geht nie verloren?",
+   "optionen": [
+    "Ela, denn nach mehreren Sprüngen liegt der Ball still, seine Energie ist vernichtet. Sie ist aber nur als Wärme abgegeben.",
+    "Beide liegen falsch, denn im Flug wächst die Energie sogar. Im Flug bleibt die Summe aber gleich groß.",
+    "Ela, weil beim Aufprall Energie aus dem Nichts entsteht. Beim Aufprall gibt der Ball aber Energie ab.",
+    "Der Hausmeister: Beim Aufprall gibt der Ball Energie als Wärme an Boden und Luft ab – sie ist nicht vernichtet."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe mit den Energiewerten der Simulation, dass die Energie des Balls nicht vernichtet wird, obwohl jeder Sprung kleiner ausfällt.",
+   "zeilen": 4,
+   "loesung": "Im Flug bleibt die Summe aus E_pot und E_kin praktisch gleich: 216 J + 174 J ergeben 390 J, fast genau die 392 J vom Start. Kleiner wird der Energievorrat des Balls nur beim Aufprall: Von 392 J bleiben erst 280 J, dann 201 J übrig. Die Differenz wird als Wärme an Boden und Luft abgegeben. Die Energie wechselt also nur Ort und Form – vernichtet wird sie nicht."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "me22",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E5",
+   "K2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Leistung gibt an, wie schnell Arbeit verrichtet wird: P =",
+    "loesung": "W / t",
+    "post": ", gemessen in Watt."
+   },
+   {
+    "pre": "Bei fester Zugkraft gilt P =",
+    "loesung": "F · v",
+    "post": "– deshalb steigt die Leistung mit dem Tempo."
+   },
+   {
+    "pre": "Bei η = 80 % kommen von der Leistung nur",
+    "loesung": "80 %",
+    "post": "als Nutzleistung an, der Rest wird Wärme."
+   },
+   {
+    "pre": "Später im Lauf zeigt das Infofeld P = 204,8 W und P_nutz =",
+    "loesung": "164 W",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer dieselbe Arbeit in der halben Zeit schafft, bringt die doppelte Leistung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn die Kraft gleich bleibt, bleibt auch die Leistung gleich, egal wie schnell man zieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei η = 50 % bleibt von P = 211,2 W nur P_nutz = 106 W übrig, also die Hälfte.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Wirkungsgrad η gibt an, welcher Anteil der Leistung als Wärme genutzt wird.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tom zieht mit gleicher Kraft, aber im Laufschritt. Warum ist schnelles Ziehen anstrengender?",
+   "optionen": [
+    "Weil die Leistung mit dem Tempo wächst: P = F · v, obwohl die Kraft bei 100 N bleibt.",
+    "Weil beim schnellen Ziehen die Kraft größer wird. Die Kraft bleibt aber die ganze Zeit bei 100 N.",
+    "Weil die Arbeit beim schnellen Ziehen kleiner wird. Dieselbe Arbeit wird aber nur schneller verrichtet.",
+    "Weil der Wirkungsgrad beim Laufen auf 100 % steigt. Der Wirkungsgrad liegt hier aber bei 80 %."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne die Nutzleistung bei P = 204,8 W und η = 80 % und vergleiche mit der Anzeige der Simulation.",
+   "zeilen": 4,
+   "loesung": "P_nutz = 0,80 · 204,8 W = 163,84 W, gerundet 163,8 W. Die Simulation rundet auf ganze Watt und zeigt P_nutz = 164 W an – das passt zusammen. Als Verlust bleiben 204,8 W − 163,84 W = 40,96 W, also rund 41 W. Dieser Anteil wird, etwa durch Reibung, als Wärme abgegeben."
+  },
+  "theme": "gym_mechanik"
+ },
+ {
+  "id": "da1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Dichte ist die Masse je",
+    "loesung": "Volumen",
+    "post": "– für jeden Stoff eine feste Zahl: ρ = m : V."
+   },
+   {
+    "pre": "Ein Würfel aus Wasser mit 10 cm Kante hat das Volumen 1 dm³ und genau",
+    "loesung": "1 kg",
+    "post": "Masse – daher stammt die Einheit Kilogramm."
+   },
+   {
+    "pre": "Bei a = 10 cm bringt der Eisenwürfel 7,870 kg auf die Waage, der Styroporwürfel nur",
+    "loesung": "0,020 kg",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelst du die Kantenlänge, wird das Volumen V = a³",
+    "loesung": "achtmal",
+    "post": "so groß."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Blei hat mit 11340 kg/m³ eine viel größere Dichte als Styropor mit 20 kg/m³.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil der Styroporblock größer ist als die Bleikugel, muss er auch die größere Masse haben.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Würfel aus Wasser mit 10 cm Kantenlänge hat genau 1 kg Masse.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelst du die Kantenlänge eines Würfels, wird sein Volumen doppelt so groß.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ela vergleicht zwei gleich große Würfel mit a = 10 cm: einen aus Styropor, einen aus Blei. Wie unterscheiden sich ihre Massen?",
+   "optionen": [
+    "Beide Würfel sind gleich schwer, weil sie gleich groß sind. Bei gleichem Volumen entscheidet aber die Dichte über die Masse.",
+    "Der Bleiwürfel ist 567-mal so schwer, weil Blei mit 11340 kg/m³ eine viel größere Dichte hat als Styropor mit 20 kg/m³.",
+    "Der Styroporwürfel ist schwerer, weil er beide Arme füllt. Die Größe allein sagt jedoch nichts über die Masse.",
+    "Der Bleiwürfel ist genau doppelt so schwer. Blei hat aber nicht die doppelte, sondern die 567-fache Dichte von Styropor."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre mit dem Begriff Dichte, warum ein großer Styroporblock leichter sein kann als eine kleine Bleikugel.",
+   "zeilen": 4,
+   "loesung": "Wie schwer ein Körper ist, hängt nicht von der Größe allein ab, sondern von der Dichte, also der Masse je Volumen. Styropor hat mit 20 kg/m³ eine sehr kleine Dichte, Blei mit 11340 kg/m³ eine sehr große. Deshalb steckt in jedem Kubikzentimeter Blei viel mehr Masse. Ist der Bleikörper klein genug, wiegt er trotzdem weniger als der große, aber sehr leichte Styroporblock."
+  },
+  "theme": "gym_druck"
+ },
+ {
+  "id": "da2",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E5",
+   "UF2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Druck ist die Kraft je",
+    "loesung": "Fläche",
+    "post": ": p = F / A, gemessen in Pascal."
+   },
+   {
+    "pre": "Auf Turnschuhen mit 300 cm² drückt die Person mit 588,6 N, das ergibt",
+    "loesung": "19,6 kPa",
+    "post": "."
+   },
+   {
+    "pre": "Dieselbe Kraft auf der doppelten Fläche ergibt",
+    "loesung": "den halben Druck",
+    "post": "."
+   },
+   {
+    "pre": "Der Elefant drückt zwar mit 49050,0 N, wegen seiner großen Füße aber nur mit",
+    "loesung": "204,4 kPa",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil der Elefant viel schwerer ist, hinterlässt er tiefere Spuren als der Stöckelabsatz.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Stöckelabsatz mit 1 cm² erreicht die Person 5886,0 kPa – 300-mal so viel wie auf Turnschuhen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Um den Druck zu halbieren, musst du die Auflagefläche halbieren.",
+    "stimmt": false
+   },
+   {
+    "aussage": "1 Pascal ist 1 N/m² und damit ein sehr kleiner Druck; deshalb rechnet man meist in Kilopascal.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum sinken Elas Stöckelabsätze in den Rasen, die schwerere Getränkepalette auf breiter Fläche aber nicht?",
+   "optionen": [
+    "Weil der Absatz schwerer ist als die Palette. Die Palette ist aber viel schwerer und sinkt trotzdem nicht ein.",
+    "Weil auf den Absatz mehr Gewichtskraft wirkt als auf die Palette. Über das Einsinken entscheidet aber der Druck, nicht die Kraft allein.",
+    "Weil der Rasen unter dem Absatz weicher ist. Der Boden ist jedoch überall gleich; es zählt die Kraft je Fläche.",
+    "Der schmale Absatz bündelt die Kraft auf sehr kleine Fläche, so entsteht ein hoher Druck; die Palette verteilt ihre größere Kraft auf viel Fläche und drückt schwächer."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe mit p = F / A, warum Skier einen Menschen auf dem Schnee tragen, gewöhnliche Schuhe aber einsinken.",
+   "zeilen": 4,
+   "loesung": "Auf Skiern verteilt sich die Gewichtskraft auf eine sehr große Fläche von 2800 cm². Nach p = F / A ergibt das nur einen kleinen Druck von 2,1 kPa, den der Schnee tragen kann. Auf Turnschuhen mit 300 cm² wirkt dieselbe Kraft auf viel weniger Fläche, der Druck steigt auf 19,6 kPa. Je kleiner die Fläche, desto größer der Druck – deshalb sinkt der schmale Schuh eher ein als der breite Ski."
+  },
+  "theme": "gym_druck"
+ },
+ {
+  "id": "da3",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Schweredruck wächst mit der",
+    "loesung": "Tiefe",
+    "post": "und mit der Dichte: p = ρ · g · h."
+   },
+   {
+    "pre": "In 20 m Wassertiefe zeigt die Simulation",
+    "loesung": "196,2 kPa",
+    "post": "– doppelt so viel wie in 10 m."
+   },
+   {
+    "pre": "Je 10 m Wassertiefe kommen",
+    "loesung": "98,1 kPa",
+    "post": "dazu – fast ein ganzer Luftdruck."
+   },
+   {
+    "pre": "Auf der Wasseroberfläche lastet zusätzlich der Luftdruck von",
+    "loesung": "101,3 kPa",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In 40 m Tiefe ist der Schweredruck mit 392,4 kPa genau doppelt so groß wie in 20 m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei gleicher Tiefe von 10 m drückt Quecksilber mit 1334,2 kPa viel stärker als Öl mit 88,3 kPa.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Schweredruck hängt davon ab, wie viel Wasser insgesamt im Becken steht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Schweredruck wirkt nur nach unten, deshalb beult sich die Beckenwand nicht aus.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tom drückt außen gegen die Folienwand des Beckens: Oben gibt sie leicht nach, unten beult sie sich hart nach außen. Warum?",
+   "optionen": [
+    "Weil der Schweredruck mit der Tiefe wächst; unten lastet die höhere Wassersäule, und der Druck wirkt nach allen Seiten gegen die Wand.",
+    "Weil unten mehr Wasser ist als oben. In jeder Tiefe ist es aber dasselbe Wasser; entscheidend ist die Höhe der Säule darüber.",
+    "Weil das Wasser unten dichter ist als oben. Die Dichte des Wassers ist jedoch überall gleich; nur die Tiefe ändert sich.",
+    "Weil der Luftdruck nur unten wirkt. Der Luftdruck lastet aber auf der Oberfläche und ist überall gleich groß."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne, um wie viel der Schweredruck von 10 m auf 40 m Tiefe zunimmt, und erkläre den Zusammenhang mit der Tiefe.",
+   "zeilen": 4,
+   "loesung": "In 10 m Tiefe zeigt die Simulation 98,1 kPa, in 40 m Tiefe 392,4 kPa. Der Druck nimmt also um 392,4 kPa − 98,1 kPa = 294,3 kPa zu. Die Tiefe wird viermal so groß, und genau viermal so groß wird auch der Schweredruck. Das passt zu p = ρ · g · h: Bei gleicher Flüssigkeit ist der Schweredruck proportional zur Tiefe."
+  },
+  "theme": "gym_druck"
+ },
+ {
+  "id": "da4",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E5",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Luftdruck kommt vom Gewicht der Luftsäule",
+    "loesung": "über uns",
+    "post": "– auf Meereshöhe sind es 1013 hPa."
+   },
+   {
+    "pre": "Nach je etwa 5,5 km",
+    "loesung": "halbiert",
+    "post": "sich der Luftdruck – erst steil, dann flach."
+   },
+   {
+    "pre": "Auf der Zugspitze in 2962 m Höhe misst das Manometer noch",
+    "loesung": "699 hPa",
+    "post": ", also 69 % des Bodendrucks."
+   },
+   {
+    "pre": "An der Marke halber Druck in 5538 m Höhe sind genau",
+    "loesung": "507 hPa",
+    "post": "übrig – die Hälfte."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Luftdruck fällt mit der Höhe gleichmäßig, pro Kilometer immer gleich viele Hektopascal.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Mont Blanc in 4810 m Höhe sind noch 555 hPa oder 55 % des Bodendrucks übrig.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil Luft zusammendrückbar ist, liegt die dichteste Luft ganz unten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In 9000 m Höhe herrscht noch mehr als die Hälfte des Bodendrucks.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Elas Chipstüte ist oben auf der Zugspitze prall aufgebläht, unten im Tal war sie schlaff. Warum?",
+   "optionen": [
+    "Weil es oben kälter ist und sich die Luft ausdehnt. Entscheidend ist hier aber der geringere Luftdruck von außen.",
+    "Weil auf dem Berg mehr Luft über der Tüte liegt. Über dem Berg liegt jedoch weniger Luft, deshalb ist der Druck kleiner.",
+    "Weil der Luftdruck mit der Höhe sinkt; auf der Zugspitze drücken nur noch 699 hPa von außen, die Luft in der Tüte dehnt sich.",
+    "Weil der Luftdruck mit der Höhe gleichmäßig zunimmt. Der Luftdruck nimmt mit der Höhe aber ab, nicht zu."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe mit der Halbierungsregel, warum in rund 11 km Reiseflughöhe nur noch etwa ein Viertel des Bodendrucks herrscht.",
+   "zeilen": 4,
+   "loesung": "Nach je etwa 5,5 km halbiert sich der Luftdruck. Von 1013 hPa auf Meereshöhe wird er in 5,5 km auf 507 hPa halbiert und in 11 km noch einmal auf rund 253 hPa. Zweimal halbiert ist ein Viertel, deshalb bleibt in Reiseflughöhe nur etwa ein Viertel des Bodendrucks übrig. Die Simulation zeigt die erste Halbierung an der Marke halber Druck bei 5538 m mit 507 hPa."
+  },
+  "theme": "gym_druck"
+ },
+ {
+  "id": "da5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Auftrieb ist so groß wie die Gewichtskraft des",
+    "loesung": "verdrängten Wassers",
+    "post": "– das ist das Prinzip des Archimedes."
+   },
+   {
+    "pre": "Der massive Würfel hat G = 77,20 N, im Wasser wiegt er wegen des Auftriebs nur noch",
+    "loesung": "67,39 N",
+    "post": "."
+   },
+   {
+    "pre": "Ganz eingetaucht erfährt der Würfel in Süßwasser immer",
+    "loesung": "9,81 N",
+    "post": "Auftrieb – egal, wie schwer er ist."
+   },
+   {
+    "pre": "In Meerwasser steigt der Auftrieb auf",
+    "loesung": "10,06 N",
+    "post": ", weil das verdrängte Wasser dichter ist."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je schwerer der eingetauchte Würfel ist, desto größer wird sein Auftrieb.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 50 % Hohlraum sinkt die Gewichtskraft auf 38,60 N, der Auftrieb bleibt aber bei 9,81 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der massive Würfel sinkt, weil seine Gewichtskraft von 77,20 N größer ist als der Auftrieb von 9,81 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Auftrieb entsteht, weil das Wasser oben stärker gegen den Würfel drückt als unten.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum zieht der Eisenanker unter Wasser spürbar weniger am Seil, sinkt aber trotzdem?",
+   "optionen": [
+    "Weil das Wasser den Anker leichter macht, bis er schwerelos ist. Der Auftrieb von 9,81 N ist aber kleiner als die Gewichtskraft, der Anker sinkt.",
+    "Das Wasser übt einen Auftrieb von 9,81 N nach oben aus, so wiegt der Anker nur noch 67,39 N; weil seine Gewichtskraft von 77,20 N größer bleibt, sinkt er.",
+    "Weil sich die Masse des Ankers unter Wasser verringert. Die Masse bleibt jedoch gleich; nur die Gewichtskraft wird um den Auftrieb entlastet.",
+    "Weil der Auftrieb mit der Ankermasse wächst. Der Auftrieb hängt aber nicht vom Gewicht ab, sondern vom verdrängten Wasser."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum der Würfel bei 0 % und bei 50 % Hohlraum denselben Auftrieb von 9,81 N erfährt.",
+   "zeilen": 4,
+   "loesung": "Der Auftrieb ist nach Archimedes die Gewichtskraft des verdrängten Wassers: F_A = ρ · g · V. Ganz eingetaucht verdrängt der Würfel immer genau 1 Liter Wasser, ganz gleich, ob er massiv ist oder innen einen Hohlraum hat. Deshalb bleibt der Auftrieb bei 0 % und bei 50 % Hohlraum gleich, nämlich 9,81 N. Der Hohlraum ändert nur die Gewichtskraft, von 77,20 N auf 38,60 N, nicht den Auftrieb."
+  },
+  "theme": "gym_druck"
+ },
+ {
+  "id": "da6",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E5",
+   "K4"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Körper schwimmt, wenn seine mittlere Dichte",
+    "loesung": "kleiner",
+    "post": "ist als die Dichte der Flüssigkeit."
+   },
+   {
+    "pre": "Bei 88 % Hohlraum hat der Würfel die mittlere Dichte 944,4 kg/m³ und",
+    "loesung": "schwimmt",
+    "post": "."
+   },
+   {
+    "pre": "Bei 90 % Hohlraum liegen",
+    "loesung": "78,7 %",
+    "post": "des Würfels unter Wasser – genau ρ : ρ_Wasser."
+   },
+   {
+    "pre": "In dichterem Meerwasser schwimmt der Eisenwürfel schon ab",
+    "loesung": "87,0 %",
+    "post": "Hohlraum, in Süßwasser erst ab 87,3 %."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 87 % Hohlraum sinkt der Würfel in Süßwasser noch, weil seine mittlere Dichte mit 1023,1 kg/m³ über der von Wasser liegt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ob ein Körper schwimmt, entscheidet allein sein Gewicht: Schwere Körper sinken immer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In dichterem Meerwasser braucht der Würfel mehr Hohlraum zum Schwimmen als in Süßwasser.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Prozent mehr Hohlraum genügt: Bei 88 % schwimmt der Würfel, den 87 % noch nicht getragen hat.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Ela faltet aus Alufolie ein Boot – es schwimmt. Tom presst dieselbe Folie zu einer Kugel – sie sinkt. Was entscheidet über Schwimmen und Sinken?",
+   "optionen": [
+    "Die mittlere Dichte des ganzen Körpers: Das Boot umschließt viel Luft und ist im Mittel leichter als Wasser, die dichte Kugel schwerer.",
+    "Das Gewicht der Folie: Die schwere Folie sinkt. Die Folie wiegt aber in beiden Fällen gleich viel und entscheidet nicht.",
+    "Der Stoff der Folie: Alu geht je nach Form unter oder schwimmt. Es zählt aber nicht der Stoff, sondern die mittlere Dichte des Körpers.",
+    "Die Größe des Körpers: Das größere Boot schwimmt. Über das Schwimmen entscheidet aber die mittlere Dichte, nicht die Größe allein."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre mit dem Begriff mittlere Dichte, warum Elas Folienboot schwimmt, die gepresste Kugel aus derselben Folie aber sinkt.",
+   "zeilen": 4,
+   "loesung": "Das Boot umschließt viel Luft, deshalb ist seine mittlere Dichte aus Folie und Luft kleiner als die von Wasser – es schwimmt. In der gepressten Kugel ist der Hohlraum fast verschwunden, die mittlere Dichte liegt nahe an der des Metalls und damit über 1000 kg/m³ – sie sinkt. Es zählt also nicht der Stoff, sondern die mittlere Dichte des ganzen Körpers. Genauso schwimmt der Eisenwürfel der Simulation erst ab 87,3 % Hohlraum."
+  },
+  "theme": "gym_druck"
+ }
+]

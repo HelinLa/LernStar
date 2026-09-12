@@ -1,0 +1,172 @@
+[
+ {
+  "sim": "schwarzes-loch",
+  "ueberschrift": "🕳️ Schwarze Löcher – wenn die Gravitation extrem wird",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "➊ sehr nah",
+    "ruft": "_sllSet('nah')"
+   },
+   {
+    "aufschrift": "➋ mittel",
+    "ruft": "_sllSet('mittel')"
+   },
+   {
+    "aufschrift": "➌ weit weg",
+    "ruft": "_sllSet('fern')"
+   },
+   {
+    "aufschrift": "💡 Lichtstrahl senden",
+    "ruft": "_sllStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_sllReset()"
+   },
+   {
+    "aufschrift": "Es leuchtet sehr hell",
+    "ruft": "_sllAns(0,0)"
+   },
+   {
+    "aufschrift": "Nicht einmal Licht kann ihm entkommen",
+    "ruft": "_sllAns(0,1)"
+   },
+   {
+    "aufschrift": "Es ist ein sehr kalter Planet",
+    "ruft": "_sllAns(0,2)"
+   },
+   {
+    "aufschrift": "Der Äquator",
+    "ruft": "_sllAns(1,0)"
+   },
+   {
+    "aufschrift": "Der Ereignishorizont",
+    "ruft": "_sllAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Umlaufbahn",
+    "ruft": "_sllAns(1,2)"
+   },
+   {
+    "aufschrift": "Weil kein Licht herauskommt",
+    "ruft": "_sllAns(2,0)"
+   },
+   {
+    "aufschrift": "Weil es aus schwarzem Gestein ist",
+    "ruft": "_sllAns(2,1)"
+   },
+   {
+    "aufschrift": "Weil es nachts ist",
+    "ruft": "_sllAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_sllSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_sllSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_sllSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('schwarzeloch')"
+   }
+  ],
+  "hinweise": [
+   "Ein schwarzes Loch zieht so stark an, dass nicht einmal Licht entkommt. Schicke einen Lichtstrahl in verschiedenen Abständen vorbei. Was passiert?",
+   "Rund um ein schwarzes Loch gibt es eine Grenze, den Ereignishorizont. Was einmal darüber gerät, kommt nicht mehr heraus – auch Licht nicht. Deshalb ist es schwarz. Ein schwarzes Loch entsteht, wenn sehr viel Masse auf winzigem Raum zusammengedrückt wird.",
+   "Im Bild: Der helle Ring ist nicht das Loch – das Loch leuchtet nicht. Der Ring ist Licht, das um das Loch herumgelenkt wird. Das orange Band ist heißes Gas, das um das Loch kreist; die Seite, die auf uns zukommt, leuchtet heller.",
+   "Nah → verschluckt. | Weiter weg → nur abgelenkt. | Aus dem Ereignishorizont entkommt nichts."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam."
+   },
+   {
+    "einstellung": "➊ sehr nah",
+    "text": "sllStatus: Sehr nah: Der Lichtstrahl wird immer stärker zum Loch hin gebogen und verschwindet im Ereignishorizont – er kommt nie wieder heraus."
+   },
+   {
+    "einstellung": "➋ mittel",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam."
+   },
+   {
+    "einstellung": "➌ weit weg",
+    "text": "sllStatus: Weit weg: Der Lichtstrahl wird nur wenig zur Seite gezogen und läuft fast gerade weiter."
+   },
+   {
+    "einstellung": "💡 Lichtstrahl senden",
+    "text": "sllStatus: Weit weg: Der Lichtstrahl wird nur wenig zur Seite gezogen und läuft fast gerade weiter."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam."
+   },
+   {
+    "einstellung": "Es leuchtet sehr hell",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es leuchtet gerade nicht – es ist schwarz."
+   },
+   {
+    "einstellung": "Nicht einmal Licht kann ihm entkommen",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✓ Richtig! Die Anziehung ist so stark, dass sogar Licht gefangen bleibt."
+   },
+   {
+    "einstellung": "Es ist ein sehr kalter Planet",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse."
+   },
+   {
+    "einstellung": "Der Äquator",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Der Äquator gehört zu Planeten."
+   },
+   {
+    "einstellung": "Der Ereignishorizont",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✓ Richtig! Der Ereignishorizont ist der „Punkt ohne Wiederkehr\"."
+   },
+   {
+    "einstellung": "Die Umlaufbahn",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes."
+   },
+   {
+    "einstellung": "Weil kein Licht herauskommt",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✓ Richtig! Da kein Licht entkommt, sehen wir nur Schwarz."
+   },
+   {
+    "einstellung": "Weil es aus schwarzem Gestein ist",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Es besteht nicht aus Gestein."
+   },
+   {
+    "einstellung": "Weil es nachts ist",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Mit Tag und Nacht hat es nichts zu tun."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Mit Tag und Nacht hat es nichts zu tun.  ||  sllSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Mit Tag und Nacht hat es nichts zu tun.  ||  sllSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Mit Tag und Nacht hat es nichts zu tun."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "sllStatus: Mittlerer Abstand: Der Lichtstrahl läuft fast einmal ganz um das Loch herum und entkommt gerade noch – er fliegt fast dorthin zurück, wo er herkam.  ||  sllFb0: ✗ Es ist kein Planet, sondern extrem zusammengedrückte Masse.  ||  sllFb1: ✗ Eine Umlaufbahn ist etwas anderes.  ||  sllFb2: ✗ Mit Tag und Nacht hat es nichts zu tun."
+   }
+  ],
+  "bildtexte": [
+   "Ereignishorizont",
+   "Licht läuft ums Loch herum",
+   "Abstand: mittel",
+   "Abstand: sehr nah",
+   "Abstand: weit weg"
+  ]
+ }
+]

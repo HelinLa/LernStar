@@ -1,0 +1,210 @@
+[
+{
+"theme": "magnetismus",
+"id": "m1",
+"name": "Magnete und magnetische Felder",
+"problem": "Du hast zwei kleine Bausteine mit Magneten. Du hältst sie nah zusammen. Klack! Sie springen von allein aneinander. Drehst du einen Baustein um, drücken sie sich plötzlich weg.",
+"frage": "Wie kann ein Magnet etwas anziehen, ohne es zu berühren?",
+"predict": [
+"Um den Magneten herum ist ein unsichtbares Feld.",
+"Der Magnet ist klebrig und pappt einfach fest."
+],
+"forschen": [
+"Nähere einen Magneten langsam einer Büroklammer.",
+"Schiebe ein Blatt Papier dazwischen – wirkt er noch?"
+],
+"tabCols": [
+"Situation",
+"Wirkt der Magnet?"
+],
+"tabRows": [
+"ohne etwas dazwischen",
+"durch Papier",
+"aus der Luft"
+],
+"merksatz": [
+{
+"pre": "Um jeden Magneten liegt ein",
+"post": ".",
+"loesung": "Magnetfeld"
+},
+{
+"pre": "Er wirkt auch ohne",
+"post": ".",
+"loesung": "Berührung"
+}
+],
+"aufgabe": {
+"frage": "Erkläre mit dem Wort Magnetfeld, warum ein Magnet wirkt, ohne den Gegenstand zu berühren.",
+"zeilen": 3,
+"loesung": "Um jeden Magneten liegt ein Magnetfeld. Dieses unsichtbare Feld wirkt auch durch Luft und zieht das Eisen an, ohne es zu berühren."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m2",
+"name": "Welche Stoffe zieht ein Magnet an?",
+"problem": "Auf dem Schrottplatz hebt ein riesiger Magnet ein altes Auto hoch. Doch die glänzenden Alu-Räder daneben bleiben liegen. Zu Hause klebt dein Magnet an der Kühlschranktür. An der Alu-Dose klebt er nicht.",
+"frage": "Welche Sachen zieht ein Magnet an?",
+"predict": [
+"Der Magnet zieht nur manche Metalle an.",
+"Der Magnet zieht alles aus Metall an."
+],
+"forschen": [
+"Halte den Magneten an Nagel, Aludose, Klammer und Holz.",
+"Sortiere: Was wird angezogen, was nicht?"
+],
+"tabCols": [
+"Gegenstand",
+"angezogen?"
+],
+"tabRows": [
+"Eisennagel",
+"Aludose",
+"Büroklammer",
+"Holzklotz"
+],
+"merksatz": [
+{
+"pre": "Magnetisch sind nur Eisen, Nickel und",
+"post": ".",
+"loesung": "Kobalt"
+},
+{
+"pre": "„Metall“ ist nicht dasselbe wie",
+"post": ".",
+"loesung": "magnetisch"
+}
+],
+"aufgabe": {
+"frage": "Nenne zwei Dinge, die ein Magnet anzieht, und zwei, die er nicht anzieht.",
+"zeilen": 3,
+"loesung": "Anziehen: Eisennagel und Büroklammer (aus Eisen/Stahl). Nicht anziehen: Aludose und Holzklotz, weil sie nicht magnetisch sind."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m3",
+"name": "Wie wirken Magnetpole aufeinander?",
+"problem": "Ein Magnet macht deine Tasche zu. Sonst hält er den Deckel immer fest. Doch heute drückt er den Deckel plötzlich weg.",
+"frage": "Ziehen sich zwei Magnete immer an?",
+"predict": [
+"Ja, Magnete ziehen sich immer an.",
+"Nein, manchmal drücken sie sich weg."
+],
+"forschen": [
+"Nähere die Pole N und N.",
+"Dann N und S.",
+"Dann S und S."
+],
+"tabCols": [
+"Pole",
+"Was passiert?"
+],
+"tabRows": [
+"N und N",
+"N und S",
+"S und S"
+],
+"merksatz": [
+{
+"pre": "Gleiche Pole (N–N oder S–S)",
+"post": "sich.",
+"loesung": "stoßen"
+},
+{
+"pre": "Ungleiche Pole (N–S)",
+"post": "sich.",
+"loesung": "ziehen"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, wann sich zwei Magnete anziehen und wann sie sich abstoßen.",
+"zeilen": 3,
+"loesung": "Ungleiche Pole (Nord und Süd) ziehen sich an. Gleiche Pole (Nord und Nord oder Süd und Süd) stoßen sich ab."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m4",
+"name": "Wie sieht ein Magnetfeld aus?",
+"problem": "Du legst eine kleine Büroklammer auf den Tisch. Langsam schiebst du einen Magneten näher. Auf einmal springt die Klammer von allein an den Magneten. Und keiner hat sie angefasst!",
+"frage": "Wo am Magneten zieht es am stärksten?",
+"predict": [
+"An den beiden Enden vom Magneten.",
+"Genau in der Mitte vom Magneten."
+],
+"forschen": [
+"Streue Eisenspäne auf ein Blatt über einem Magneten.",
+"Bewege eine Kompassnadel um den Magneten herum."
+],
+"tabCols": [
+"Ort",
+"Wie ist das Feld?"
+],
+"tabRows": [
+"an den Polen",
+"in der Mitte",
+"weit weg"
+],
+"merksatz": [
+{
+"pre": "Feldlinien gehen von Nord nach",
+"post": ".",
+"loesung": "Süden"
+},
+{
+"pre": "Enge Linien = Feld",
+"post": ".",
+"loesung": "stark"
+}
+],
+"aufgabe": {
+"frage": "Beschreibe mit Worten, wie die Feldlinien um einen Stabmagneten verlaufen.",
+"zeilen": 3,
+"loesung": "Die Feldlinien gehen außen vom Nordpol zum Südpol. An den Polen liegen sie eng zusammen, dort ist das Feld am stärksten."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m5",
+"name": "Wie funktioniert ein Kompass?",
+"problem": "Du wanderst mit deiner Familie durch den Wald und verläufst dich. Dein Handy hat hier keinen Empfang. Du holst einen Kompass raus. Die kleine Nadel wackelt kurz und zeigt dann in eine Richtung.",
+"frage": "Warum zeigt die Kompassnadel immer nach Norden?",
+"predict": [
+"Die Nadel ist ein Magnet, die Erde auch.",
+"Der kalte Norden zieht die Nadel an."
+],
+"forschen": [
+"Dreh dich mit dem Kompass im Kreis.",
+"Halte ihn in Sonne und Schatten.",
+"Nähere einen Magneten."
+],
+"tabCols": [
+"Test",
+"Wohin zeigt die Nadel?"
+],
+"tabRows": [
+"im Freien",
+"im Schatten",
+"neben Magnet"
+],
+"merksatz": [
+{
+"pre": "Die Kompassnadel ist ein kleiner",
+"post": ".",
+"loesung": "Magnet"
+},
+{
+"pre": "Sie richtet sich im",
+"post": "aus.",
+"loesung": "Erdmagnetfeld"
+}
+],
+"aufgabe": {
+"frage": "Erkläre, warum die Kompassnadel nach Norden zeigt. Nutze die Wörter Magnet und Erdmagnetfeld.",
+"zeilen": 3,
+"loesung": "Die Kompassnadel ist ein kleiner Magnet. Die Erde ist auch ein großer Magnet mit einem Erdmagnetfeld. Darum dreht sich die Nadel und zeigt nach Norden."
+}
+}
+]

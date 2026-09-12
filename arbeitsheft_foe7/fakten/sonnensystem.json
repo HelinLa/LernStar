@@ -1,0 +1,115 @@
+[
+ {
+  "sim": "sonnensystem",
+  "ueberschrift": "🪐 Acht Planeten, zwei Sorten",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Umlauf",
+    "ruft": "_sosSetzen('ansicht','bahnen')"
+   },
+   {
+    "aufschrift": "Steckbrief",
+    "ruft": "_sosSetzen('ansicht','steckbrief')"
+   },
+   {
+    "aufschrift": "Größen",
+    "ruft": "_sosSetzen('ansicht','groessen')"
+   },
+   {
+    "aufschrift": "Abstände",
+    "ruft": "_sosSetzen('ansicht','abstaende')"
+   },
+   {
+    "aufschrift": "langsam",
+    "ruft": "_sosSetzen('tempo',0)"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_sosSetzen('tempo',1)"
+   },
+   {
+    "aufschrift": "sehr schnell",
+    "ruft": "_sosSetzen('tempo',2)"
+   }
+  ],
+  "hinweise": [
+   "Vier kleine Gesteinsplaneten innen, außen zwei Gasriesen und zwei Eisriesen. Größen und Abstände passen nie gleichzeitig auf einen Bildschirm – schalte um und sieh selbst.",
+   "Zwischen Mars und Jupiter liegt der Asteroidengürtel. Pluto ist seit 2006 kein Planet mehr, sondern ein Zwergplanet. Im Weltraum herrschen etwa −270 °C."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Umlauf",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Steckbrief",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Größen",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Abstände",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "langsam",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "schnell",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "sehr schnell",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   }
+  ],
+  "bildtexte": [
+   "Abstände gestaucht, Größen nicht maßstäblich",
+   "seit dem Start: 0,0 Erdjahre",
+   "Kruste (Gestein)",
+   "Mantel (Gestein)",
+   "Kern (Eisen)",
+   "Erde",
+   "Gesteinsplanet – feste Oberfläche",
+   "Durchmesser",
+   "12.756 km",
+   "Abstand zur Sonne",
+   "1 AE",
+   "Ein Umlauf",
+   "1 Jahr",
+   "Eine Drehung",
+   "24,0 Stunden",
+   "Temperatur",
+   "-93 °C bis 58 °C",
+   "Dichte",
+   "5,51 g/cm³",
+   "Monde",
+   "1",
+   "Lufthülle",
+   "Stickstoff und Sauerstoff",
+   "−270 °C",
+   "+500 °C",
+   "Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.",
+   "Sonne",
+   "Merkur",
+   "Venus",
+   "Mars",
+   "Jupiter",
+   "Saturn",
+   "Uranus",
+   "Neptun",
+   "Größen im gleichen Maßstab – die Abstände stimmen hier NICHT",
+   "Das Licht der Sonne ist unterwegs: 2 Minuten",
+   "Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein",
+   "Das Licht der Sonne ist unterwegs: 3 Minuten"
+  ]
+ }
+]

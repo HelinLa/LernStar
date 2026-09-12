@@ -1,0 +1,42 @@
+<defs>
+  <radialGradient id="s4licht" cx="0.72" cy="0.44" r="0.68">
+    <stop offset="0" stop-color="#FFD98F" stop-opacity="0.26"/>
+    <stop offset="0.42" stop-color="#FFC26A" stop-opacity="0.07"/>
+    <stop offset="1" stop-color="#0B0803" stop-opacity="0.58"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#s4licht)"/>
+  <use href="#t_brett" transform="translate(450,470) scale(1.6)"/>
+
+  <!-- Emmas Reihe: drei Laempchen, alle nur matt -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M112,398 C 150,362 176,362 208,392" stroke="#7A211C" stroke-width="9"/>
+    <path d="M112,398 C 150,362 176,362 208,392" stroke="#C9544A" stroke-width="6"/>
+    <path d="M236,392 C 268,362 296,362 328,392" stroke="#7A5F16" stroke-width="9"/>
+    <path d="M236,392 C 268,362 296,362 328,392" stroke="#E2B755" stroke-width="6"/>
+    <path d="M356,392 C 388,362 416,362 448,398" stroke="#7A5F16" stroke-width="9"/>
+    <path d="M356,392 C 388,362 416,362 448,398" stroke="#E2B755" stroke-width="6"/>
+  </g>
+  <use href="#t_batterie" transform="translate(86,426) scale(0.66)"/>
+  <g>
+    <ellipse cx="222" cy="362" rx="30" ry="30" fill="url(#warmSchein)" opacity="0.22" filter="url(#scheinKlein)"/>
+    <ellipse cx="342" cy="362" rx="30" ry="30" fill="url(#warmSchein)" opacity="0.22" filter="url(#scheinKlein)"/>
+    <ellipse cx="462" cy="362" rx="30" ry="30" fill="url(#warmSchein)" opacity="0.22" filter="url(#scheinKlein)"/>
+    <use href="#t_laempchen_aus" transform="translate(222,406) scale(0.9)"/>
+    <use href="#t_laempchen_aus" transform="translate(342,406) scale(0.9)"/>
+    <use href="#t_laempchen_aus" transform="translate(462,406) scale(0.9)"/>
+    <g opacity="0.30">
+      <use href="#t_laempchen_an" transform="translate(222,406) scale(0.9)"/>
+      <use href="#t_laempchen_an" transform="translate(342,406) scale(0.9)"/>
+      <use href="#t_laempchen_an" transform="translate(462,406) scale(0.9)"/>
+    </g>
+  </g>
+
+  <!-- zum Vergleich: das eine Laempchen von vorher, kraeftig -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M660,400 C 690,366 716,366 742,394" stroke="#7A211C" stroke-width="9"/>
+    <path d="M660,400 C 690,366 716,366 742,394" stroke="#C9544A" stroke-width="6"/>
+  </g>
+  <use href="#t_batterie" transform="translate(634,428) scale(0.66)"/>
+  <use href="#t_laempchen_an" transform="translate(766,408) scale(1.2)"/>

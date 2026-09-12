@@ -1,0 +1,1777 @@
+[
+ {
+  "id": "kp1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "K3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Zahl der Protonen heißt Kernladungszahl Z und legt allein das",
+    "loesung": "Element",
+    "post": "fest."
+   },
+   {
+    "pre": "Alle Kernbausteine zusammen ergeben die Massenzahl A =",
+    "loesung": "Z + N",
+    "post": "."
+   },
+   {
+    "pre": "Atome mit gleichem Z, aber verschiedenem N heißen",
+    "loesung": "Isotope",
+    "post": "."
+   },
+   {
+    "pre": "Kohlenstoff-12 hat 6 Protonen und 6 Neutronen und kommt mit einem Anteil von",
+    "loesung": "98,93 %",
+    "post": "vor."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kohlenstoff-14 hat weiterhin 6 Protonen, aber 8 Neutronen, und ist nicht stabil.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Chlor-35 und Chlor-37 sind Isotope, denn beide haben 17 Protonen, aber verschieden viele Neutronen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nimmt man zu einem Kohlenstoffkern zwei Neutronen hinzu, entsteht dadurch ein neues Element.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kalium-40 ist stabil, weil seine Halbwertszeit mit 1,25 Milliarden Jahren sehr groß ist.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Kohlenstoff-12 und Kohlenstoff-14 stehen im Schrank nebeneinander. Warum ist beides Kohlenstoff?",
+   "optionen": [
+    "Beide Kerne haben 6 Protonen, und allein die Protonenzahl legt das Element fest.",
+    "Beide haben dieselbe Massenzahl A. Ihre Massenzahlen sind aber 12 und 14 und damit verschieden.",
+    "Beide haben gleich viele Neutronen. Kohlenstoff-12 hat jedoch 6, Kohlenstoff-14 dagegen 8 Neutronen.",
+    "Beide sind stabil und zerfallen nie. Kohlenstoff-14 ist jedoch nicht stabil und zerfällt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre mithilfe der Kernladungszahl Z = 17, warum sowohl Chlor-35 als auch Chlor-37 zum Element Chlor gehören, und gib für beide die Neutronenzahl an.",
+   "zeilen": 4,
+   "loesung": "Beide Kerne haben Z = 17 Protonen, und allein die Protonenzahl legt das Element fest – deshalb ist beides Chlor. Die Neutronenzahl ist N = A − Z. Chlor-35 hat N = 35 − 17 = 18 Neutronen, Chlor-37 hat N = 37 − 17 = 20 Neutronen. Die unterschiedliche Neutronenzahl bestimmt nur die Sorte, nicht das Element."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Zerfallskonstante hängt über λ = ln 2 / T½ allein von der",
+    "loesung": "Halbwertszeit",
+    "post": "ab."
+   },
+   {
+    "pre": "Die Aktivität in Becquerel zählt die Zerfälle je",
+    "loesung": "Sekunde",
+    "post": "; 1 Bq ist ein Zerfall je Sekunde."
+   },
+   {
+    "pre": "Bei T½ = 5 s sind am Anfang N = 8000 Kerne da, und die Aktivität beträgt rund",
+    "loesung": "1109",
+    "post": "Zerfälle je Sekunde."
+   },
+   {
+    "pre": "Nach jeder Halbwertszeit ist im Mittel die",
+    "loesung": "Hälfte",
+    "post": "der Kerne übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil die Kernzahl N sinkt, sinkt auch die Aktivität A = λ · N im gleichen Takt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Solange noch Substanz da ist, strahlt ein Präparat immer gleich stark weiter.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zieht man T½ von 5 s auf 10 s, springt λ von 0,139/s auf 0,069/s und die Kurve fällt langsamer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Einem einzelnen Kern kann man ansehen, wann genau er zerfallen wird.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Bei T½ = 5 s ist die Aktivität am Start rund 1109 Zerfälle je Sekunde. Wie groß ist sie, wenn die Hälfte der Kerne zerfallen ist?",
+   "optionen": [
+    "Weiterhin rund 1109 Zerfälle je Sekunde. Die Aktivität hängt jedoch von der Kernzahl ab und sinkt mit ihr.",
+    "Rund 554,5 Zerfälle je Sekunde, weil mit halb so vielen Kernen auch die Aktivität auf die Hälfte fällt.",
+    "Rund 277,3 Zerfälle je Sekunde. Dieser Wert wird aber erst nach zwei Halbwertszeiten erreicht, nicht nach einer.",
+    "Null Zerfälle je Sekunde, das Präparat ist erschöpft. Es sind aber noch 4000 der 8000 Kerne übrig."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, wie viele der 8000 Kerne nach drei Halbwertszeiten im Mittel noch übrig sind, und gib an, auf welchen Bruchteil die Aktivität dabei sinkt.",
+   "zeilen": 4,
+   "loesung": "Nach jeder Halbwertszeit bleibt die Hälfte: 8000 → 4000 → 2000 → 1000. Nach drei Halbwertszeiten sind im Mittel 1000 Kerne übrig, als Rechnung 8000 · (½)³ = 1000. Weil die Aktivität A = λ · N mit N fällt, ist sie ebenfalls auf ein Achtel gesunken, von rund 1109 auf rund 139 Zerfälle je Sekunde."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp3",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E5",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Geiger-Müller-Zählrohr macht jedes ionisierende Teilchen zu einem zählbaren",
+    "loesung": "Spannungsimpuls",
+    "post": "."
+   },
+   {
+    "pre": "Während der Totzeit registriert das Rohr",
+    "loesung": "nichts",
+    "post": ", darum misst es hohe Raten zu klein."
+   },
+   {
+    "pre": "Bei einer wahren Rate von 2000 /s und τ = 100 µs beträgt der Verlust",
+    "loesung": "16,7 %",
+    "post": "."
+   },
+   {
+    "pre": "Mehr als 1/τ =",
+    "loesung": "10.000",
+    "post": "Impulse je Sekunde kann ein Rohr mit τ = 100 µs grundsätzlich nicht zählen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei einer wahren Rate von 9000 /s und τ = 100 µs misst das Rohr nur 4737 /s, der Verlust springt auf 47,4 %.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Zählrohr zählt jedes Teilchen, deshalb ist die gemessene Rate immer gleich der wahren Rate.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je schneller die Teilchen kommen, desto kleiner wird der Verlust durch die Totzeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die wahre Rate gewinnt man mit Z_kor = Z_mess / (1 − Z_mess · τ) zurück.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum zeigt ein Zählrohr bei einem starken Präparat weniger Teilchen an, als wirklich ankommen?",
+   "optionen": [
+    "Bei starken Präparaten werden die Teilchen langsamer. Die Totzeit hängt aber vom Rohr ab, nicht von der Geschwindigkeit der Teilchen.",
+    "Das Rohr zählt manche Teilchen doppelt und muss abziehen. Tatsächlich zählt es die Teilchen in der Totzeit gar nicht erst.",
+    "Nach jedem Impuls ist das Rohr für die Totzeit kurz blind, und bei hoher Rate fallen Teilchen in diese Pausen.",
+    "Das Gas im Rohr geht bei hoher Rate aus. Die gemessene Rate sinkt jedoch allein durch die Totzeit nach jedem Impuls."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne mit Z_mess = Z_wahr / (1 + Z_wahr · τ) die gemessene Rate für ein Rohr mit τ = 100 µs bei einer wahren Rate von 2000 /s und gib den Verlust in Prozent an.",
+   "zeilen": 4,
+   "loesung": "Mit τ = 100 µs = 0,0001 s gilt Z_mess = 2000 / (1 + 2000 · 0,0001) = 2000 / 1,2 = 1667 /s. Es fehlen 2000 − 1667 = 333 Impulse je Sekunde. Der Verlust ist 333 / 2000 = 0,167, also 16,7 %. Bei hohen Raten muss man deshalb auf die wahre Rate zurückrechnen."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ionisierende Strahlung schlägt aus Atomen",
+    "loesung": "Elektronen",
+    "post": "heraus."
+   },
+   {
+    "pre": "Für die Wirkung zählt nicht die Reichweite, sondern die",
+    "loesung": "Ionisationsdichte",
+    "post": "."
+   },
+   {
+    "pre": "Alphastrahlung mit 5,00 MeV erzeugt auf nur 3,5 cm rund",
+    "loesung": "4.202",
+    "post": "Ionenpaare je Millimeter."
+   },
+   {
+    "pre": "Der Strahlenschutz rechnet Alphastrahlung mit dem Wichtungsfaktor",
+    "loesung": "20",
+    "post": ", Beta und Gamma nur mit 1."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Am meisten richtet die Strahlung an, die am weitesten kommt; deshalb ist Gammastrahlung überall am schädlichsten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In Luft kostet ein Ionenpaar im Mittel 34 eV.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Betastrahlung mit 1,00 MeV kommt 3,0 m weit, ionisiert mit 9,8 Ionenpaaren je Millimeter aber viel dünner als Alphastrahlung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Alphastrahlung ist auch eingeatmet fast harmlos, weil sie nur wenige Zentimeter weit kommt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum ist Alphastrahlung außerhalb des Körpers fast harmlos, eingeatmet aber die gefährlichste der drei Strahlungsarten?",
+   "optionen": [
+    "Eingeatmet fliegt sie schneller als außerhalb des Körpers. Ihre Energie von 5,00 MeV ändert sich beim Einatmen jedoch nicht.",
+    "Sie kommt eingeatmet viel weiter als in Luft. Ihre Reichweite bleibt jedoch bei rund 3,5 cm, ganz gleich wo sie ist.",
+    "Im Körper wird aus der Alpha- eine Gammastrahlung. Die Strahlungsart wechselt beim Einatmen aber nicht.",
+    "Eingeatmet liegt ihre dichte Spur mit über 4.202 Ionenpaaren je Millimeter mitten im Gewebe; außen stoppt sie schon ein Blatt Papier."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe mit der Ionisationsdichte, warum der Strahlenschutz Alphastrahlung mit dem Wichtungsfaktor 20 rechnet, Beta- und Gammastrahlung dagegen nur mit 1.",
+   "zeilen": 4,
+   "loesung": "Alphastrahlung legt mit über 4.202 Ionenpaaren je Millimeter eine sehr dichte Spur und zerreißt auf kurzer Strecke viele Moleküle. Betastrahlung schafft nur 9,8 Ionenpaare je Millimeter, Gammastrahlung ionisiert gar nur vereinzelt – beide sind viel dünner. Weil für die Wirkung nicht die Reichweite, sondern die Ionisationsdichte zählt, rechnet man Alpha mit dem Faktor 20, Beta und Gamma nur mit 1."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Alphastrahlung besteht aus Heliumkernen und hält schon ein",
+    "loesung": "Blatt Papier",
+    "post": "ganz auf."
+   },
+   {
+    "pre": "Betastrahlung besteht aus schnellen",
+    "loesung": "Elektronen",
+    "post": "und wird von einigen Millimetern Aluminium aufgehalten."
+   },
+   {
+    "pre": "Gammastrahlung wird nach R = R₀·e^(−α·d) nur geschwächt, nie",
+    "loesung": "ganz gestoppt",
+    "post": "."
+   },
+   {
+    "pre": "Bei Gammastrahlung und Blei sind bei d = 6,0 mm noch",
+    "loesung": "50 %",
+    "post": "übrig, bei d = 12,0 mm nur noch 25 %."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Auch Gammastrahlung ist hinter genügend Blei irgendwann vollständig weg.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Alphastrahlung ist durch 6,0 mm Papier bereits zu 0,00 % durchgekommen, also vollständig gestoppt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Betastrahlung besteht aus Heliumkernen und wird schon von einem Blatt Papier aufgehalten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach jeder Halbwertsdicke von rund 6 mm Blei halbiert sich der durchgelassene Anteil der Gammastrahlung.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum schützt eine Bleischürze vor Gammastrahlung, hält sie aber nie ganz auf?",
+   "optionen": [
+    "Gammastrahlung aus Photonen wird nach R = R₀·e^(−α·d) nur exponentiell geschwächt, sodass immer ein Rest durchkommt.",
+    "Blei stoppt Gammastrahlung wie Papier die Alphastrahlung sofort. Gammastrahlung wird jedoch nur geschwächt, nicht schlagartig gestoppt.",
+    "Gammastrahlung hat eine feste Reichweite, die dünner als die Schürze ist. Eine feste Reichweite haben aber nur Alpha- und Betastrahlung.",
+    "Die Schürze wandelt Gamma- in Betastrahlung um. Die Strahlungsart wechselt in der Abschirmung jedoch nicht."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum bei Gammastrahlung und Blei bei d = 6,0 mm noch 50 % ankommen und bei d = 12,0 mm nur noch 25 %.",
+   "zeilen": 4,
+   "loesung": "Gammastrahlung wird nach R = R₀·e^(−α·d) nur exponentiell geschwächt. In Blei ist die Halbwertsdicke rund 6 mm; nach jeder Halbwertsdicke bleibt die Hälfte übrig. Bei d = 6,0 mm ist das eine Halbwertsdicke, also 50 %; bei d = 12,0 mm sind es zwei, also 25 %. Ganz null wird der Rest nie, weil die Exponentialfunktion nie exakt null erreicht."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein einzelner Kern altert nicht und zerfällt rein",
+    "loesung": "zufällig",
+    "post": "."
+   },
+   {
+    "pre": "Für die Menge gilt N(t) = N₀·(½)^(t/T½); nach jeder Halbwertszeit ist im Mittel die",
+    "loesung": "Hälfte",
+    "post": "übrig."
+   },
+   {
+    "pre": "Radon-220 hat laut Statuszeile die Halbwertszeit",
+    "loesung": "55,6 s",
+    "post": "."
+   },
+   {
+    "pre": "Die Halbwertszeit hängt allein vom Nuklid ab, nicht von Temperatur, Druck oder",
+    "loesung": "Alter",
+    "post": "der Probe."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach einer Halbwertszeit sind von 200 Kernen immer exakt 100 übrig.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein alter Kern zerfällt mit größerer Wahrscheinlichkeit als ein frischer, weil er schon lange gewartet hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei nur 200 Kernen liegt die gemessene Zahl jedes Mal ein paar Kerne neben der Erwartung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wählt man statt Radon-220 Kohlenstoff-14, ändert sich nur die Halbwertszeit auf 5730 Jahre; die Erwartung bleibt 200 → 100 → 50 → 25.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nach einer Halbwertszeit sind von 200 Radon-220-Kernen in einem Durchlauf 103 übrig statt der erwarteten 100. Wie passt das zusammen?",
+   "optionen": [
+    "Die Halbwertszeit war zu kurz eingestellt. Sie liegt aber fest bei 55,6 s und lässt sich nicht verstellen.",
+    "Jeder Kern zerfällt für sich und zufällig, deshalb schwankt die Zahl bei nur 200 Kernen sichtbar um die Erwartung.",
+    "Die drei zusätzlichen Kerne sind noch nicht alt genug zum Zerfallen. Kerne altern jedoch nicht und zerfallen unabhängig vom Alter.",
+    "Die Simulation hat sich verzählt. Erst bei rund 10²¹ Kernen ist die Abweichung nicht mehr messbar, bei 200 dagegen ist sie normal."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, welcher Bruchteil einer Iod-131-Probe nach 24 Tagen noch strahlt; die Halbwertszeit beträgt 8,02 Tage.",
+   "zeilen": 4,
+   "loesung": "24 Tage sind rund drei Halbwertszeiten, denn 3 · 8,02 Tage ≈ 24 Tage. Nach jeder Halbwertszeit bleibt die Hälfte: 100 % → 50 % → 25 % → 12,5 %. Es strahlt also noch etwa ein Achtel, rund 12,5 % der Probe. Mit N(t) = N₀·(½)^(t/T½) folgt derselbe Wert, denn (½)³ = 1/8."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ob ein Kern zerfällt, entscheidet das Verhältnis von Neutronen zu",
+    "loesung": "Protonen",
+    "post": "."
+   },
+   {
+    "pre": "Beim Alphazerfall sinkt die Massenzahl um 4 und die Kernladungszahl um",
+    "loesung": "2",
+    "post": "."
+   },
+   {
+    "pre": "Beim Betazerfall wandelt sich ein Neutron in ein Proton um; A bleibt gleich, Z steigt um",
+    "loesung": "1",
+    "post": "."
+   },
+   {
+    "pre": "Die Zerfallsreihe des Uran-238 endet nach 8 Alpha- und 6 Betazerfällen beim stabilen",
+    "loesung": "Blei-206",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei Uran-238 kommen auf ein Proton 1,59 Neutronen; der Kern hat zu viele Bausteine und ist unstabil.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der erste Zerfall von Uran-238 ist ein Alphazerfall: Aus 238 werden 234 und aus 92 Protonen 90, es entsteht Thorium-234.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Betazerfall sinkt die Massenzahl um 4.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Uran zerfällt Schritt für Schritt weiter, bis am Ende gar kein Kern mehr übrig ist.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum endet die Zerfallsreihe des Uran-238 gerade bei Blei-206?",
+   "optionen": [
+    "Weil Blei das schwerste Metall ist und nicht weiter zerfallen kann. Entscheidend ist aber allein das stabile Verhältnis von Neutronen zu Protonen im Blei-206.",
+    "Weil nach jedem Zerfall die Hälfte übrig bleibt und irgendwann Blei erreicht ist. Die Halbierung gilt jedoch für die Zeit, nicht für die Reihe der Kerne.",
+    "Weil acht Alphazerfälle A von 238 um 32 auf 206 senken und 92 − 8·2 + 6·1 = 82 die Kernladungszahl des stabilen Blei-206 ergibt.",
+    "Weil ausschließlich Betazerfälle stattfinden, die die Massenzahl senken. Betazerfälle lassen die Massenzahl aber unverändert; nur Alphazerfälle senken sie."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe mit der Alpha- und Betaregel, warum aus Uran-238 gerade Blei-206 entsteht und kein Kern mit anderer Massenzahl.",
+   "zeilen": 4,
+   "loesung": "Jeder Alphazerfall senkt die Massenzahl um 4, ein Betazerfall lässt sie unverändert. Bei 8 Alphazerfällen sinkt A von 238 um 8 · 4 = 32 auf 206; die Betazerfälle ändern A nicht. Für die Kernladungszahl gilt 92 − 8 · 2 + 6 · 1 = 82. Massenzahl 206 und Kernladungszahl 82 gehören zum stabilen Blei-206 – deshalb endet die Reihe genau dort."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp8",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die charakteristischen Linien entstehen, wenn eine Lücke in der",
+    "loesung": "K-Schale",
+    "post": "von oben aufgefüllt wird."
+   },
+   {
+    "pre": "Ein Elektron gibt höchstens seine ganze Energie e·U_A als ein einziges",
+    "loesung": "Röntgenquant",
+    "post": "ab."
+   },
+   {
+    "pre": "Bei Molybdän liegt die Kα-Linie bei",
+    "loesung": "72 pm",
+    "post": ", ganz gleich welche Spannung anliegt."
+   },
+   {
+    "pre": "Erhöht man U_A von 25 kV auf 40 kV, wandert die Grenzwellenlänge von 49,6 pm auf",
+    "loesung": "31,0 pm",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wechselt man bei 25 kV von Molybdän auf Kupfer, springen die Linien auf 155 pm und 139 pm, die Grenzwellenlänge bleibt 49,6 pm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Höhere Spannung macht die ganze Strahlung kurzwelliger, deshalb wandern auch die beiden scharfen Linien mit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Unter 20 kV zeigt Molybdän gar keine Linien, weil die Energie nicht reicht, ein K-Elektron herauszuschlagen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Grenzwellenlänge hängt vom Anodenmaterial ab und ist bei gleicher Spannung für Molybdän und Kupfer verschieden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Techniker dreht die Spannung höher. Das kurze Ende des Spektrums wandert, die beiden scharfen Zacken bleiben stehen. Warum?",
+   "optionen": [
+    "Die Linien sind zu schwach, um sichtbar zu wandern. Sie bleiben aber ohnehin stehen, weil sie vom Material und nicht von der Spannung abhängen.",
+    "Höhere Spannung verschiebt nur die Wärme, nicht die Strahlung. Die Grenzwellenlänge wandert aber sichtbar von 49,6 auf 31,0 pm.",
+    "Die Linien wandern in Wirklichkeit mit, nur langsamer. Sie behalten jedoch bei jeder Spannung ihren Platz bei 72 pm und 63 pm.",
+    "Die Grenzwellenlänge folgt aus e·U_A und wandert mit der Spannung; die scharfen Linien gehören zum Anodenmaterial und bleiben an ihrem Ort."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die beiden scharfen Linien beim Umschalten von Molybdän auf Kupfer springen, die Grenzwellenlänge bei gleicher Spannung aber gleich bleibt.",
+   "zeilen": 4,
+   "loesung": "Die scharfen Linien entstehen durch Übergänge auf die K-Schale des Anodenmaterials. Molybdän und Kupfer haben verschieden große Kernladungen, deshalb liegen ihre Linien bei verschiedenen Wellenlängen: 72 pm gegen 155 pm für Kα. Die Grenzwellenlänge dagegen hängt nur von der Beschleunigungsspannung ab, denn sie folgt aus e·U_A = h·f_max. Bei gleicher Spannung ist sie deshalb für beide Materialien gleich, hier 49,6 pm bei 25 kV."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Lorentzkraft steht immer",
+    "loesung": "senkrecht",
+    "post": "auf Geschwindigkeit und Magnetfeld."
+   },
+   {
+    "pre": "Für den Radius der Kreisbahn gilt r =",
+    "loesung": "m·v/(q·B)",
+    "post": "."
+   },
+   {
+    "pre": "Bei v = 5 und B = 5 ist r = 1,00; bei v = 9 und B = 1 steigt r auf",
+    "loesung": "9,00",
+    "post": "."
+   },
+   {
+    "pre": "Schaltet man bei v = 5 und B = 5 auf eine negative Ladung, bleibt r = 1,00, aber der Umlauf dreht",
+    "loesung": "gegen den Uhrzeigersinn",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein stärkeres Magnetfeld zwingt das Teilchen auf einen engeren Kreis, ein schnelleres Teilchen fliegt einen weiteren Bogen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je schneller das Teilchen fliegt, desto enger wird sein Kreis.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Lorentzkraft ändert den Betrag der Geschwindigkeit, nicht ihre Richtung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei v = 2 und B = 8 sinkt der Radius auf 0,25 relative Einheiten.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Wovon hängt der Radius der Kreisbahn eines geladenen Teilchens im Magnetfeld ab?",
+   "optionen": [
+    "Von v und B nach r = m·v/(q·B): mehr v vergrößert den Radius, mehr B verkleinert ihn.",
+    "Nur von der Geschwindigkeit; das Feld ändert nichts am Radius. Ein stärkeres Feld zwingt das Teilchen aber auf einen engeren Kreis.",
+    "Vom Vorzeichen der Ladung; positiv fliegt weiter als negativ. Bei v = 5 und B = 5 ist r jedoch für beide Vorzeichen 1,00.",
+    "Von der Aufenthaltsdauer im Feld. Der Radius folgt aber allein aus v geteilt durch B, nicht aus der Zeit."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne den Bahnradius für v = 10 und B = 5 und begründe, warum er größer ist als bei v = 5 und B = 5.",
+   "zeilen": 4,
+   "loesung": "Mit r = v : B ergibt sich r = 10 : 5 = 2,00 relative Einheiten. Bei v = 5 und B = 5 ist r = 5 : 5 = 1,00. Der Radius wächst, weil er zu v proportional ist: Doppelte Geschwindigkeit bedeutet doppelter Radius, solange B gleich bleibt. Das schnellere Teilchen fliegt deshalb den weiteren Bogen."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp10",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein langsames Neutron wird von einem Uran-235-Kern eingefangen; kurz entsteht daraus ein",
+    "loesung": "Uran-236",
+    "post": "-Kern, der auseinanderreißt."
+   },
+   {
+    "pre": "Kernbausteine und Protonen bleiben erhalten, nur aus dem fehlenden Massenrest wird Energie nach",
+    "loesung": "E = Δm·c²",
+    "post": "."
+   },
+   {
+    "pre": "Bei Barium + Krypton fehlen 0,1860 u, daraus werden",
+    "loesung": "173,3 MeV",
+    "post": "je Spaltung."
+   },
+   {
+    "pre": "Ein Kilogramm Uran-235 kommt auf 71 Billionen Joule, so viel wie rund",
+    "loesung": "2428 Tonnen",
+    "post": "Steinkohle."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Spalten bleibt auch die Masse erhalten; wie bei einer chemischen Reaktion verschwindet nichts.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei Barium + Krypton stehen auf beiden Seiten 236 Kernbausteine und 92 Protonen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Xenon + Strontium liefert 184,7 MeV, Cäsium + Rubidium 172,7 MeV je Spaltung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Spaltung eines Urankerns wird erst durch ein sehr schnelles Neutron ausgelöst.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Woher stammt die Energie, die bei der Spaltung eines Urankerns frei wird?",
+   "optionen": [
+    "Aus den zusätzlichen Neutronen, die neu entstehen. Die Zahl der Kernbausteine bleibt jedoch auf beiden Seiten mit 236 gleich.",
+    "Aus dem winzigen Massenrest, um den die Teilchen danach leichter sind; er wird nach E = Δm·c² zu Energie.",
+    "Aus der Ladung des langsamen Neutrons. Das Neutron trägt aber gar keine Ladung.",
+    "Aus Protonen, die beim Spalten verschwinden. Die Zahl der Protonen bleibt aber mit 92 auf beiden Seiten erhalten."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne aus dem Massenunterschied 0,1983 u die frei werdende Energie und begründe, warum die Bilanz der Kernbausteine trotz der fehlenden Masse aufgeht.",
+   "zeilen": 4,
+   "loesung": "Die Rechnung lautet E = 0,1983 u · 931,5 MeV/u = 184,7 MeV je Spaltung. Die fehlende Masse bedeutet keinen fehlenden Kernbaustein: Auf beiden Seiten stehen 236 Kernbausteine und 92 Protonen, diese Zahlen bleiben gleich. Die Bruchstücke sind nur insgesamt fester gebunden und wiegen deshalb zusammen etwas weniger. Dieser winzige Massenrest wird nach E = Δm·c² zu Energie, während die Teilchenbilanz aufgeht."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Vermehrungsfaktor k gibt an, wie viele der frei werdenden Neutronen im Mittel eine neue",
+    "loesung": "Spaltung",
+    "post": "auslösen."
+   },
+   {
+    "pre": "Jede Generation bleibt genauso groß wie die vorige nur bei k =",
+    "loesung": "1",
+    "post": "."
+   },
+   {
+    "pre": "Fährt man die Steuerstäbe tiefer ein, schlucken sie mehr Neutronen und k wird",
+    "loesung": "kleiner",
+    "post": "."
+   },
+   {
+    "pre": "Bei 20 % eingefahrenen Steuerstäben springt k auf 1,36 und die Lage wird",
+    "loesung": "überkritisch",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Reaktor läuft von selbst gleichmäßig; die Steuerstäbe schalten ihn nur an und aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 80 % eingefahrenen Steuerstäben sinkt k auf 0,64 und die Kette erstickt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei k = 1,36 bleibt jede Generation so groß wie die vorige.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Dass sich ein Reaktor überhaupt regeln lässt, verdankt man den verzögerten Neutronen.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum wird ein Kernkraftwerk genau bei k = 1 betrieben?",
+   "optionen": [
+    "Bei k = 1 ist der Reaktor abgeschaltet und sicher. Bei k = 1 laufen aber gerade gleich viele Spaltungen weiter, der Reaktor ist in Betrieb.",
+    "Bei k = 1 wächst die Leistung langsam und gleichmäßig an. Bei k = 1 bleibt die Zahl der Spaltungen jedoch gleich, sie wächst nicht.",
+    "Bei k = 1 löst jede Spaltung im Mittel genau eine neue aus, jede Generation bleibt gleich groß und die Leistung konstant.",
+    "Bei k = 1 ist der Brennstoff am besten ausgenutzt. Entscheidend ist aber, dass jede Generation gleich groß bleibt, nicht die Ausnutzung."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum ein Kernkraftwerk genau bei k = 1 betrieben wird und was bei k = 1,36 mit der Zahl der Spaltungen geschieht.",
+   "zeilen": 4,
+   "loesung": "Bei k = 1 löst jede Spaltung im Mittel genau eine neue aus. Dann bleibt jede Generation so groß wie die vorige, und das Kraftwerk gibt gleichmäßig dieselbe Leistung ab. Bei k = 1,36 werden aus 100 Spaltungen 136, jede Generation ist größer als die davor – nach 10 Generationen schon rund 22-mal so viele. Die Kette würde lawinenartig wachsen; die Steuerstäbe müssen k wieder auf 1 senken."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "K2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In der Sonne verschmelzen je vier Wasserstoffkerne zu einem",
+    "loesung": "Heliumkern",
+    "post": "."
+   },
+   {
+    "pre": "Weil alle Kerne positiv geladen sind, stoßen sie sich ab; erst ab etwa",
+    "loesung": "10 Millionen °C",
+    "post": "sind sie schnell genug."
+   },
+   {
+    "pre": "Vier Wasserstoffkerne wiegen 4,031300 u, ein Heliumkern nur 4,002603 u; es fehlen",
+    "loesung": "0,028697 u",
+    "post": "."
+   },
+   {
+    "pre": "Aus der fehlenden Masse werden 26,73 MeV, also je Kernbaustein",
+    "loesung": "6,68 MeV",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In der Sonne verbrennt Wasserstoff mit Sauerstoff wie ein riesiges Gasfeuer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Schon bei 5 Millionen °C zündet die Verschmelzung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je Kernbaustein liefert die Verschmelzung rund das 7,9-fache der Energie einer Uranspaltung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die bei der Verschmelzung fehlende Masse wird nach E = m · c² zu Energie.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Warum zündet die Verschmelzung in der Sonne erst oberhalb von rund 10 Millionen Grad?",
+   "optionen": [
+    "Erst dann ist genug Sauerstoff zum Verbrennen vorhanden. In der Sonne wird jedoch nichts verbrannt, sondern verschmolzen.",
+    "Erst dann reicht die Masse der Kerne aus. Die Masse der Kerne ändert sich mit der Temperatur aber nicht.",
+    "Erst dann werden die Kerne negativ und ziehen sich an. Die Kerne bleiben jedoch positiv geladen und stoßen sich ab.",
+    "Erst bei so hoher Temperatur sind die positiv geladenen Kerne schnell genug, ihre gegenseitige Abstoßung zu überwinden."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne aus den Massen die frei werdende Energie und begründe, warum die Sonne unterhalb von 10 Millionen Grad nicht zündet.",
+   "zeilen": 5,
+   "loesung": "Vier Wasserstoffkerne wiegen 4 · 1,007825 u = 4,031300 u, ein Heliumkern 4,002603 u. Es fehlen 0,028697 u; mal 931,5 MeV/u ergibt das 26,73 MeV je Heliumkern. Unterhalb von 10 Millionen Grad sind die Kerne zu langsam: Weil sie alle positiv geladen sind, stoßen sie sich ab und prallen voneinander ab, bevor sie nah genug zusammenkommen. Erst die hohe Temperatur gibt ihnen genug Tempo, die Abstoßung zu überwinden."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "kp13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Von den drei A wirkt der Abstand am stärksten, weil er",
+    "loesung": "quadratisch",
+    "post": "eingeht."
+   },
+   {
+    "pre": "Bei Gammastrahlung halbiert jede Halbwertsdicke von rund",
+    "loesung": "6,5 mm",
+    "post": "Blei die Strahlung."
+   },
+   {
+    "pre": "Verdoppelt man den Abstand von 100 cm auf 200 cm, sinkt die Dosisleistung von 92,7 µSv/h auf",
+    "loesung": "23,2 µSv/h",
+    "post": ", also auf ein Viertel."
+   },
+   {
+    "pre": "Die Wirkung auf den Körper wird als Dosis in",
+    "loesung": "Sievert",
+    "post": "gemessen, die Aktivität dagegen in Becquerel."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Halbiert man nur die Aufenthaltsdauer von 20 auf 10 Minuten, halbiert sich auch die Dosis von 30,90 auf 15,45 µSv.",
+    "stimmt": true
+   },
+   {
+    "aussage": "7 mm Blei sind 1,08 Halbwertsdicken; übrig bleibt der Anteil 0,474.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Doppelter Abstand, doppelte Bleidicke und halbe Zeit senken die Dosis jeweils um denselben Anteil.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Aktivität in Becquerel gibt an, welche Wirkung die Strahlung auf den Körper hat.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Aylin kann einen Schritt von 100 cm auf 200 cm zurücktreten oder 6,5 mm Blei dazwischenschieben. Was senkt die Dosis stärker?",
+   "optionen": [
+    "Der Schritt zurück, denn der Abstand geht quadratisch ein und senkt die Dosisleistung auf ein Viertel; 6,5 mm Blei halbieren nur.",
+    "Die 6,5 mm Blei, weil Blei jede Strahlung vollständig stoppt. Blei halbiert die Gammastrahlung aber nur je Halbwertsdicke, ein Rest kommt durch.",
+    "Beide gleich stark, weil beide die Dosis halbieren. Der doppelte Abstand senkt sie jedoch auf ein Viertel, nicht auf die Hälfte.",
+    "Die Aufenthaltsdauer, die hier gar nicht verändert wird. Gefragt sind nur Abstand und Blei, nicht die Zeit."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum ein Schritt vom Abstand 100 cm auf 200 cm die Dosis stärker senkt als 6,5 mm Blei dazwischen.",
+   "zeilen": 4,
+   "loesung": "Der Abstand geht quadratisch ein: Verdoppelt man ihn von 100 cm auf 200 cm, sinkt die Dosisleistung auf ein Viertel, im Beispiel von 92,7 auf 23,2 µSv/h. Eine Halbwertsdicke von 6,5 mm Blei halbiert die Strahlung dagegen nur, also auf die Hälfte. Ein Viertel ist weniger als die Hälfte – deshalb bringt der Schritt zurück mehr als der Millimeter Blei. Erst wenn kein Platz für Abstand ist, greift man zur Abschirmung."
+  },
+  "theme": "gym_kern"
+ },
+ {
+  "id": "eg1",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E4",
+   "E5"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Fließt Strom durch einen Draht, bilden die Feldlinien um ihn herum",
+    "loesung": "Kreise",
+    "post": "."
+   },
+   {
+    "pre": "Bei 3,0 A und 2,0 cm Abstand hat das Drahtfeld",
+    "loesung": "30,0 µT",
+    "post": "gegen ein Erdfeld von 20 µT."
+   },
+   {
+    "pre": "Das Drahtfeld berechnet man mit der Formel B =",
+    "loesung": "20 µT · I / r",
+    "post": "."
+   },
+   {
+    "pre": "Sind Draht- und Erdfeld gleich stark, steht die Nadel genau bei",
+    "loesung": "45°",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Schaltet man den Strom aus, dreht die Nadel sofort zurück nach Norden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei 3,0 A und 2,0 cm Abstand schlägt die Nadel um 56,3° nach Osten aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Draht zieht die Kompassnadel an wie ein Magnet ein Stück Eisen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 5,0 A und 1,0 cm Abstand schlägt die Nadel genau auf 90° aus.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Leon legt den Kompass neben das stromführende Kabel, und die Nadel dreht sich zur Seite. Womit erklärt man das?",
+   "optionen": [
+    "Um den Draht bildet sich ein Magnetfeld mit kreisförmigen Feldlinien; die Nadel stellt sich in die Richtung, die aus Erdfeld und Drahtfeld zusammen entsteht.",
+    "Der Draht zieht die Nadel an wie ein Magnet ein Stück Eisen. Ohne Strom ist der Draht aber kein Magnet und zieht nichts an.",
+    "Der Strom erwärmt den Draht, und die warme Luft schiebt die Nadel weg. Die Nadel dreht sich aber auch, wenn der Draht kalt bleibt.",
+    "Das Erdfeld verschwindet, sobald Strom fließt, und die Nadel wird frei. Das Erdfeld bleibt jedoch die ganze Zeit und zieht weiter nach Norden."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Kompassnadel selbst bei 5,0 A und kleinem Abstand nie ganz auf 90° nach Osten zeigt.",
+   "zeilen": 4,
+   "loesung": "Die Nadel stellt sich immer in die Richtung, die aus Erdfeld und Drahtfeld zusammen entsteht. Selbst wenn das Drahtfeld mit 100,0 µT das Fünffache des Erdfeldes beträgt, zieht das Erdfeld von 20 µT weiter nach Norden mit. Deshalb bleibt die Nadel bei 78,7° stehen und erreicht die vollen 90° nie. Erst ein unendlich großes Drahtfeld käme an 90° heran."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg2",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Kraft auf den Leiter berechnet man mit F =",
+    "loesung": "B · I · L",
+    "post": "."
+   },
+   {
+    "pre": "Bei 0,20 T und 5,0 A wirkt eine Kraft von 0,100 N, das sind",
+    "loesung": "10 Büroklammern",
+    "post": "."
+   },
+   {
+    "pre": "Die Richtung der Kraft findet man mit der Drei-Finger-Regel der",
+    "loesung": "rechten Hand",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man die Stromstärke von 5,0 A auf 10,0 A, steigt die Kraft auf",
+    "loesung": "0,200 N",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der stromdurchflossene Stab wird quer zu Strom und Feld weggeschoben, nicht angezogen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man nur die Stromstärke, bleibt die Kraft auf den Stab gleich groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 0,20 T und 5,0 A drückt eine Kraft von 0,100 N den Stab nach oben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Polt man Strom und Magnet zugleich um, kehrt sich die Kraftrichtung um.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Kupferstab hängt ruhig zwischen den Polen. Sobald Strom fließt, springt er nach oben. Wie kommt diese Bewegung zustande?",
+   "optionen": [
+    "Der Magnet zieht den stromführenden Stab an wie einen Nagel und hebt ihn zum stärkeren Pol. Ein Magnet zieht Kupfer aber gar nicht an.",
+    "Auf den stromdurchflossenen Leiter im Magnetfeld wirkt eine Kraft senkrecht zu Strom und Feld, die ihn quer wegschiebt.",
+    "Der Strom erwärmt den Stab, und die Wärme dehnt ihn nach oben aus. Bei 0 A müsste der Stab dann langsam absinken, doch er bleibt sofort ruhig.",
+    "Das Magnetfeld drückt gleichmäßig von allen Seiten und presst den Stab heraus. Eine allseitig gleiche Kraft würde den Stab aber gar nicht bewegen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum sich die Kraft auf den Stab verdoppelt, wenn man statt der Stromstärke das Magnetfeld von 0,20 T auf 0,40 T erhöht.",
+   "zeilen": 4,
+   "loesung": "Die Kraft ist F = B · I · L. Sowohl das Magnetfeld B als auch die Stromstärke I gehen einfach, also linear, in die Kraft ein. Verdoppelt man das Magnetfeld von 0,20 T auf 0,40 T bei gleichbleibenden 5,0 A, so verdoppelt sich die Kraft von 0,100 N auf 0,200 N. Es macht keinen Unterschied, ob man B oder I verdoppelt; das Ergebnis ist in beiden Fällen 0,200 N, also 20 Büroklammern."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg3",
+  "komp": [
+   "UF2",
+   "UF3",
+   "E6",
+   "K1"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Das Drehmoment des Motors berechnet man mit M =",
+    "loesung": "N · B · I · A",
+    "post": "."
+   },
+   {
+    "pre": "Der geteilte Ring mit zwei Schleifkontakten heißt",
+    "loesung": "Kommutator",
+    "post": "."
+   },
+   {
+    "pre": "Mit 20 Windungen, 0,20 T und 2,0 A beträgt das Drehmoment",
+    "loesung": "16,0 mN·m",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man die Windungszahl von 20 auf 40, steigt das Drehmoment auf",
+    "loesung": "32,0 mN·m",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Kommutator polt bei jeder halben Umdrehung den Strom in der Spule um.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Steht die Spulenfläche quer zum Feld, ist das Drehmoment am größten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ohne Kommutator läuft die Spule mit genug Strom von allein immer weiter durch.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 20 Windungen, 0,20 T und 2,0 A liefert der Motor ein Drehmoment von 16,0 mN·m.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nach einer halben Drehung müssten die zwei Kräfte die Spule eigentlich zurückdrücken. Warum läuft der Motor trotzdem rund weiter?",
+   "optionen": [
+    "Die Spule hat durch ihren Schwung so viel Wucht, dass die Kräfte sie nie stoppen. Ohne Kommutator bleibt sie aber schon nach einer halben Umdrehung stehen.",
+    "Das Magnetfeld dreht sich mit der Spule mit und schiebt sie immer weiter. Das Feld des Hufeisenmagneten steht jedoch fest und dreht sich nicht.",
+    "Der Kommutator polt bei jeder halben Umdrehung den Strom um, sodass die Kräfte immer in dieselbe Drehrichtung drücken.",
+    "Der Strom wird in der Kantenlage kurz stärker und schiebt die Spule über den toten Punkt. Die Stromstärke bleibt aber die ganze Umdrehung über gleich."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Spule ohne Kommutator nach einer halben Umdrehung stehen bleibt.",
+   "zeilen": 4,
+   "loesung": "Ohne Kommutator behält der Strom in der Spule seine Richtung. Nach einer halben Umdrehung steht die Spulenfläche quer zum Feld, und dort ist das Drehmoment null, weil M = N · B · I · A in dieser Lage null wird. Die Spule pendelt um diese Lage und bleibt schließlich stehen. Erst der Kommutator polt den Strom bei jeder halben Umdrehung um, sodass die Kräfte weiter in dieselbe Drehrichtung drücken und der Motor durchläuft."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg4",
+  "komp": [
+   "UF1",
+   "E2",
+   "E5",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Spannung wird in der Spule nur induziert, wenn sich der magnetische",
+    "loesung": "Fluss",
+    "post": "ändert."
+   },
+   {
+    "pre": "Die induzierte Spannung berechnet man mit U_ind =",
+    "loesung": "−N · dΦ/dt",
+    "post": "."
+   },
+   {
+    "pre": "Stellt man die Windungszahl von 10 auf 20, wird der Ausschlag",
+    "loesung": "doppelt so hoch",
+    "post": "."
+   },
+   {
+    "pre": "Ist der Magnet weit von der Spule entfernt, bleibt U_ind",
+    "loesung": "null",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein starker Magnet erzeugt schon dann eine Spannung, wenn er nur in der Nähe der Spule liegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelt man die Geschwindigkeit des Magneten, wird der Ausschlag doppelt so hoch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Spannung wird nur induziert, während sich der magnetische Fluss durch die Spule ändert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nicht die Änderung des Flusses, sondern das Magnetfeld selbst treibt die Ladungen an.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Magnet ist die ganze Zeit derselbe, doch der Zeiger schlägt nur beim Vorbeifahren aus. Woran liegt das?",
+   "optionen": [
+    "Der Magnet verliert beim schnellen Fahren kurz seine Kraft und lädt die Spule dabei auf. Der Magnet behält sein Feld jedoch die ganze Zeit über.",
+    "Die Spule zieht den vorbeifahrenden Magneten an und wird dadurch selbst zur Stromquelle. Anziehung allein erzeugt aber keine Spannung.",
+    "Erst die Reibung der Luft am schnellen Magneten erzeugt die Spannung in der Spule. Auch im Vakuum entstünde beim Vorbeifahren jedoch dieselbe Spannung.",
+    "Nur beim Vorbeifahren ändert sich der magnetische Fluss durch die Spule, und allein diese Änderung induziert eine Spannung."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Begründe, warum ein schneller Magnet einen höheren Ausschlag erzeugt als ein langsamer.",
+   "zeilen": 4,
+   "loesung": "Die induzierte Spannung hängt von der Schnelligkeit ab, mit der sich der Fluss ändert: U_ind = −N · dΦ/dt. Ein schneller Magnet durchläuft dieselbe Flussänderung in kürzerer Zeit, sodass dΦ/dt größer wird. Deshalb wächst der Ausschlag: Verdoppelt man die Geschwindigkeit von 5 auf 10 m/s, wird er doppelt so hoch. Nicht die Stärke des Feldes, sondern die Geschwindigkeit seiner Änderung entscheidet."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg5",
+  "komp": [
+   "UF1",
+   "E5",
+   "E7",
+   "K2"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Scheitelwert der Generatorspannung ist Û =",
+    "loesung": "n · B · A · ω",
+    "post": "."
+   },
+   {
+    "pre": "Bei f = 2,0 Hz und n = 8000 zeigt die Simulation einen Scheitelwert von",
+    "loesung": "0,658 V",
+    "post": "."
+   },
+   {
+    "pre": "Die Spannung ist am größten, wenn sich der magnetische Fluss am schnellsten",
+    "loesung": "ändert",
+    "post": "."
+   },
+   {
+    "pre": "Die Energie liefert nicht das Feld, sondern die Kraft, die die Spule",
+    "loesung": "dreht",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Generatorspannung ist am größten, wenn die Spulenfläche voll vom Feld durchsetzt wird.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Scheitelwert Û wächst proportional zur Windungszahl n.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Steht die Spulenfläche senkrecht zum Feld, erreicht die Spannung ihren Scheitelwert.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Kantenlage ändert sich der Fluss am schnellsten, und dort ist die Spannung am größten.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Im Generator wird nichts verbraucht und nichts aufgeladen, und doch kommt fortlaufend Spannung heraus. Woher stammt diese Energie?",
+   "optionen": [
+    "Aus der Kraft, die die Spule dreht; sie leistet die Arbeit, die als elektrische Energie herauskommt.",
+    "Aus dem Magnetfeld, das sich beim Drehen langsam aufbraucht. Das Feld der Feldspulen bleibt beim Drehen jedoch gleich stark.",
+    "Aus einer verborgenen Batterie im Sockel des Generators. Der Generator hat aber gar keine Batterie, es dreht sich nur die Spule.",
+    "Aus der Windungszahl n, die immer mehr Spannung nachliefert. Die Windungszahl legt nur die Höhe fest, sie ist selbst keine Energiequelle."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne, um welchen Faktor der Scheitelwert Û steigt, wenn man die Windungszahl n von 8000 auf 12000 erhöht, und belege es mit den Werten der Simulation.",
+   "zeilen": 4,
+   "loesung": "Der Scheitelwert wächst proportional zur Windungszahl: Û = n · B · A · ω. Von n = 8000 auf n = 12000 steigt die Windungszahl um den Faktor 12000 / 8000 = 1,5. Also muss auch Û um den Faktor 1,5 wachsen. Die Simulation bestätigt das: 0,658 V · 1,5 = 0,987 V, genau der abgelesene Wert bei n = 12000."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg6",
+  "komp": [
+   "UF2",
+   "UF4",
+   "E5",
+   "K3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Netzspannung folgt dem Gesetz U(t) = U_max · sin(ω·t) mit ω =",
+    "loesung": "2π·f",
+    "post": "."
+   },
+   {
+    "pre": "Für die Leistung zählt der Effektivwert U_eff = U_max /",
+    "loesung": "√2",
+    "post": "."
+   },
+   {
+    "pre": "Bei U_max = 325 V zeigt die Simulation einen Effektivwert von",
+    "loesung": "229,8 V",
+    "post": "."
+   },
+   {
+    "pre": "Die Sinuskurve läuft je Sekunde über die Nulllinie und zurück",
+    "loesung": "fünfzigmal",
+    "post": ", deshalb ist f = 50 Hz."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil die Wechselspannung im Mittel null ist, kann sie an einer Lampe keine Leistung umsetzen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Effektivwert einer Wechselspannung ist größer als ihr Scheitelwert U_max.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei U_max = 325 V beträgt der Effektivwert rund 230 V.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Für die umgesetzte Leistung zählt der Effektivwert, nicht der Mittelwert.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Die Wechselspannung ist im zeitlichen Mittel null. Wie kann sie eine Glühlampe dennoch heizen?",
+   "optionen": [
+    "Sie heizt gar nicht wirklich, die Lampe leuchtet nur durch die Spannungsspitzen kurz auf. Die Lampe glüht aber gleichmäßig, nicht im Takt der Spitzen.",
+    "Für die Leistung zählt nicht der Mittelwert, sondern der Effektivwert U_eff = U_max/√2, der eine gleichwertige Gleichspannung angibt.",
+    "Der Mittelwert ist in Wahrheit nicht null, sondern gleich U_max. Die positiven und negativen Halbwellen heben sich im Mittel jedoch auf.",
+    "Die Lampe wandelt nur die positiven Halbwellen um und lässt die negativen aus. Auch die negativen Halbwellen setzen aber Leistung um."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne den Effektivwert bei U_max = 400 V und vergleiche ihn mit dem Wert bei U_max = 250 V.",
+   "zeilen": 4,
+   "loesung": "Es gilt U_eff = U_max/√2. Bei U_max = 400 V ist U_eff = 400 V / √2 = 282,8 V. Bei U_max = 250 V ist U_eff = 250 V / √2 = 176,8 V. Beide Werte sind um den Faktor √2 kleiner als der jeweilige Scheitelwert. Die höhere Spitzenspannung führt also auch zu einem höheren Effektivwert, mit dem die Lampe mehr Leistung umsetzt."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg7",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E6",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Am Transformator gilt für die Spannungen U₁ / U₂ =",
+    "loesung": "N₁/N₂",
+    "post": "."
+   },
+   {
+    "pre": "Bei N₁/N₂ = 2,0 halbiert sich die Sekundärspannung auf",
+    "loesung": "115,0 V",
+    "post": "."
+   },
+   {
+    "pre": "Geht die Spannung hinauf, geht der Strom hinunter, denn die",
+    "loesung": "Leistung",
+    "post": "bleibt fast gleich."
+   },
+   {
+    "pre": "Das Produkt U₂ · I₂ bleibt in jedem Fall rund",
+    "loesung": "100 W",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Am Transformator gilt für die Spannungen U₁/U₂ = N₁/N₂.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Geht die Spannung im Trafo hinauf, so geht der Strom hinunter, weil die Leistung fast gleich bleibt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Setzt der Transformator die Spannung hoch, entsteht dabei zusätzliche Energie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei N₁/N₂ = 2,0 verdoppelt sich die Sekundärspannung U₂ auf 460,0 V.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Der Transformator setzt die Spannung von 230 V auf 460,0 V hoch. Entsteht dabei zusätzliche Energie?",
+   "optionen": [
+    "Ja, denn aus wenig Spannung wird viel; der Trafo gewinnt Energie dazu. Mit der höheren Spannung sinkt aber zugleich der Strom, sodass nichts hinzukommt.",
+    "Ja, der Eisenkern speichert Energie und gibt zusätzlich welche ab. Der Kern leitet nur den magnetischen Fluss weiter und liefert selbst keine Energie.",
+    "Nein, mit der höheren Spannung sinkt der Strom, sodass das Produkt P = U · I und damit die Leistung fast gleich bleibt.",
+    "Nein, weil die Spannung in Wahrheit gar nicht steigt, sondern gleich bleibt. Bei N₁/N₂ = 0,5 steigt die Sekundärspannung aber tatsächlich auf 460,0 V."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Berechne die Sekundärspannung U₂ und den Sekundärstrom I₂ bei U₁ = 230 V und N₁/N₂ = 0,5, wenn 100 W übertragen werden.",
+   "zeilen": 4,
+   "loesung": "Aus U₁/U₂ = N₁/N₂ folgt U₂ = U₁ / (N₁/N₂) = 230 V / 0,5 = 460,0 V. Bei erhaltener Leistung gilt I₂ = P/U₂ = 100 W / 460,0 V = 0,217 A. Die Spannung verdoppelt sich, der Strom sinkt auf die Hälfte. Das Produkt U₂ · I₂ = 460,0 V · 0,217 A bleibt rund 100 W – es entsteht keine zusätzliche Energie."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg8",
+  "komp": [
+   "UF4",
+   "E6",
+   "K2",
+   "B3"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Bei fester Leistung berechnet man den Leitungsstrom mit I =",
+    "loesung": "P/U",
+    "post": "."
+   },
+   {
+    "pre": "Der Verlust in der Leitung beträgt P_Verlust =",
+    "loesung": "R · I²",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man die Spannung, sinkt der Verlust auf ein",
+    "loesung": "Viertel",
+    "post": "."
+   },
+   {
+    "pre": "Bei U = 20 V fließt ein Leitungsstrom von",
+    "loesung": "0,320 A",
+    "post": "und der Verlust beträgt 2,21 W."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Leitungsverlust hängt vom Quadrat der Stromstärke ab, nicht von der Spannung selbst.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je höher die Spannung in der Leitung, desto mehr Energie geht in ihr verloren.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelt man die Übertragungsspannung, sinkt der Verlust auf ein Viertel.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei U = 20 V ist der Leitungsstrom kleiner als bei U = 80 V.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Netzbetreiber jagt absichtlich 380 000 Volt über Land, obwohl schon 230 Volt gefährlich sind. Warum nimmt er die hohe Spannung in Kauf?",
+   "optionen": [
+    "Weil hohe Spannung die Leitung erwärmt und so vor Vereisung schützt. Die hohe Spannung dient aber der Übertragung, nicht der Beheizung der Leitung.",
+    "Weil eine hohe Spannung den Widerstand der Leitung senkt. Der Leitungswiderstand R hängt jedoch nicht von der Spannung ab.",
+    "Weil mehr Spannung unmittelbar mehr Leistung ins Netz bringt. Die übertragene Leistung ist aber durch P = U · I festgelegt und nicht beliebig.",
+    "Weil bei fester Leistung eine höhere Spannung den Strom senkt und der Verlust P_Verlust = R · I² mit dem Quadrat des Stroms stark abnimmt."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne aus den Messwerten, um welchen Faktor der Verlust sinkt, wenn man die Übertragungsspannung von 20 V auf 80 V erhöht.",
+   "zeilen": 4,
+   "loesung": "Von 20 V auf 80 V wird die Spannung vervierfacht (80 / 20 = 4). Bei fester Leistung sinkt der Strom auf ein Viertel: von 0,320 A auf 0,080 A. Der Verlust geht mit dem Quadrat des Stroms, also sinkt er auf (1/4)² = 1/16. Die Messwerte bestätigen das: 2,21 W bei 20 V und 0,14 W bei 80 V, denn 2,21 W / 16 ≈ 0,14 W."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Wirkungsgrad ist der Nutzen geteilt durch die",
+    "loesung": "eingesetzte Energie",
+    "post": "."
+   },
+   {
+    "pre": "Die Glühlampe liefert aus 1000 J nur 50 J Licht, ihr Wirkungsgrad ist",
+    "loesung": "5 Prozent",
+    "post": "."
+   },
+   {
+    "pre": "Der verlorene Teil verschwindet nicht, er wird zu",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Die LED-Lampe macht aus 1000 J bereits 400 J Licht, das sind",
+    "loesung": "40 Prozent",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wirkungsgrad ist immer kleiner als 100 Prozent, weil ein Teil der Energie zu Wärme wird.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die als Wärme abgegebene Energie ist verschwunden und zählt nicht mehr mit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Glühlampe wandelt bei 1000 J rund 400 J in Licht um.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Elektromotor macht aus 1000 J etwa 900 J Bewegung, sein Wirkungsgrad ist 90 Prozent.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Aylins Glühlampe wird glühend heiß, obwohl sie doch Licht machen soll. Wohin geht der Teil des Stroms, der nicht als Licht herauskommt?",
+   "optionen": [
+    "Er wird zu Wärme; bei 1000 J gibt die Glühlampe 950 J als Wärme ab und nur 50 J als Licht.",
+    "Er verschwindet, weil die Lampe nicht die ganze Energie braucht. Energie kann aber nicht verschwinden, die Summe bleibt erhalten.",
+    "Er wird in der Lampe gespeichert und beim Ausschalten wieder frei. Die Lampe erlischt jedoch sofort und gibt nichts nach.",
+    "Er fließt ungenutzt in die Leitung zurück zum Kraftwerk. Der Strom, der die Lampe durchfließt, wird dort aber umgewandelt, nicht zurückgeschickt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne für den Benzinmotor bei 1000 J, wie viel Energie als Nutzen und wie viel als Wärme herauskommt.",
+   "zeilen": 4,
+   "loesung": "Der Benzinmotor hat einen Wirkungsgrad von 25 Prozent. Aus 1000 J werden also 0,25 · 1000 J = 250 J Bewegung als Nutzen. Der Rest wird zu Wärme: 1000 J − 250 J = 750 J. Nutzen und Verlust ergeben zusammen wieder 1000 J, denn die Energie bleibt erhalten. Im Vergleich zum Elektromotor mit 900 J Nutzen vergeudet der Benzinmotor also viel mehr als Wärme."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg10",
+  "komp": [
+   "UF1",
+   "UF4",
+   "E7",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Nach dem Energieerhaltungssatz bleibt die Gesamtmenge an Energie",
+    "loesung": "erhalten",
+    "post": ", nur ihre Brauchbarkeit sinkt."
+   },
+   {
+    "pre": "Die Kette startet mit 1000 J aus der Kohle; nach dem Kraftwerk sind noch",
+    "loesung": "400 J",
+    "post": "nutzbar."
+   },
+   {
+    "pre": "Bei jedem Schritt wird ein Teil der Energie zu",
+    "loesung": "Wärme",
+    "post": "und damit entwertet."
+   },
+   {
+    "pre": "Nach der LED-Lampe sind von den 1000 J nur noch",
+    "loesung": "147 J",
+    "post": "nutzbar."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil Energie erhalten bleibt, ist am Ende der Kette noch genauso viel nutzbare Energie da wie am Anfang.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach dem Kraftwerk sind von 1000 J noch 400 J nutzbar, 600 J sind Abwärme im Kühlturm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei jeder Umwandlung wird ein Teil der Energie zu Wärme und damit entwertet.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Am Ende der Kette ist die Energie verschwunden, deshalb muss man sparen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Energie geht nach dem Erhaltungssatz nie verloren. Warum ermahnt uns dann trotzdem überall jemand, Energie zu sparen?",
+   "optionen": [
+    "Weil die Gesamtmenge an Energie doch langsam kleiner wird. Die Summe bleibt aber in jeder Kette gleich, hier immer 1000 J.",
+    "Weil bei jedem Schritt ein Teil zu Wärme wird und am Ende der Kette 0 J nutzbar sind; man spart die Brauchbarkeit, nicht die Menge.",
+    "Weil die Energie am Ende zum Kraftwerk zurückfließt und dort fehlt. Die entwertete Energie wird jedoch zu lauwarmer Umgebung, sie fließt nicht zurück.",
+    "Weil Strom durch das Sparen im Kühlturm gespeichert werden kann. Der Kühlturm gibt die Abwärme nur ab und speichert nichts."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne, wie viel der ursprünglichen 1000 J nach der Leitung als Wärme abgegeben wurde, und begründe, warum die Gesamtmenge dennoch erhalten bleibt.",
+   "zeilen": 4,
+   "loesung": "Nach der Leitung sind noch 368 J nutzbar. Als Wärme abgegeben wurden bis dahin 1000 J − 368 J = 632 J. Diese 632 J sind nicht verschwunden, sondern als Abwärme in die Umgebung übergegangen, vor allem die 600 J im Kühlturm. Zählt man nutzbare Energie und abgegebene Wärme zusammen, ergibt sich wieder 1000 J. Die Gesamtmenge bleibt also erhalten, nur ihre Brauchbarkeit ist gesunken."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg11",
+  "komp": [
+   "UF3",
+   "K4",
+   "B1",
+   "B3"
+  ],
+  "afb": [
+   "II",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In Kohle- und Kernkraftwerken treibt heißer Dampf eine",
+    "loesung": "Turbine",
+    "post": "an, die den Generator dreht."
+   },
+   {
+    "pre": "Ein sicheres Netz braucht eine",
+    "loesung": "Mischung",
+    "post": "aus regelbaren und wetterabhängigen Kraftwerken."
+   },
+   {
+    "pre": "Das Kohlekraftwerk ist in Stunden regelbar, trägt aber Brennstoffkosten sowie CO₂ und",
+    "loesung": "Feinstaub",
+    "post": "."
+   },
+   {
+    "pre": "Das Kernkraftwerk läuft träge und eignet sich nur für die",
+    "loesung": "Grundlast",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine einzige, besonders gute Kraftwerksart reicht für die ganze Versorgung, wenn man nur genug davon baut.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In Kohle- und Kernkraftwerken treibt heißer Dampf eine Turbine an, die den Generator dreht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Kernkraftwerk lässt sich in Stunden schnell hoch- und herunterfahren.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Windpark und Solarpark brauchen keinen Brennstoff, liefern aber nur, wenn das Wetter mitspielt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Keine Zeile im Datenblatt schneidet in allen Spalten gut ab. Wie soll sich der Netzbetreiber dann für die Versorgung entscheiden?",
+   "optionen": [
+    "Er baut möglichst viele Kernkraftwerke, weil sie am gleichmäßigsten liefern. Kernkraftwerke sind aber träge und können Verbrauchsspitzen nicht abdecken.",
+    "Er setzt allein auf Wind und Sonne, weil sie keinen Brennstoff kosten. Bei Flaute und nachts liefern diese jedoch nichts.",
+    "Er kombiniert regelbare und wetterabhängige Kraftwerke und ergänzt Speicher, weil jede Art andere Stärken und Schwächen hat.",
+    "Er wählt einfach die billigste Zeile im Datenblatt aus. Der Preis allein sagt aber nichts über Regelbarkeit und Nebenwirkung aus."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile den Vorschlag, die Stadt allein mit einem großen Solarpark zu versorgen.",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag trägt nicht. Ein Solarpark braucht keinen Brennstoff und erzeugt keine Abgase, liefert aber nur bei Tag und nachts gar nicht. Auch tagsüber ist er nicht planbar, weil er vom Wetter abhängt. Ohne eine regelbare Ergänzung und ohne Speicher bliebe die Stadt nachts und bei schlechtem Wetter ohne Strom. Sinnvoll ist deshalb eine Mischung aus wetterabhängigen und regelbaren Kraftwerken."
+  },
+  "theme": "gym_energie"
+ },
+ {
+  "id": "eg12",
+  "komp": [
+   "UF2",
+   "E6",
+   "B2",
+   "B4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Verbrauchte Energie ist Leistung mal Zeit und wird gemessen in",
+    "loesung": "Kilowattstunden",
+    "post": "."
+   },
+   {
+    "pre": "Der Wechsel von der Glühlampe zur LED senkt den Verbrauch von 87,6 auf",
+    "loesung": "11,7 kWh",
+    "post": "im Jahr."
+   },
+   {
+    "pre": "Bei einem Preis von 0,30 € je Kilowattstunde bedeutet weniger Verbrauch zugleich weniger",
+    "loesung": "Kosten",
+    "post": "."
+   },
+   {
+    "pre": "Der Tausch des alten Kühlschranks bringt im Jahr eine Ersparnis von",
+    "loesung": "109,5 kWh",
+    "post": "oder 32,85 €."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine einzelne alte Glühlampe oder ein Standby-Gerät fällt im Jahr kaum ins Gewicht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Wechsel von der Glühlampe zur LED spart im Jahr nur wenige Kilowattstunden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verbrauchte Energie ist Leistung mal Zeit und wird in Kilowattstunden gemessen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Tausch des alten Kühlschranks spart im Jahr 109,5 kWh und 32,85 €.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nachts wird der Strom knapp, und Speicher sind teuer. Warum ist es oft klüger, den Verbrauch zu senken, statt mehr zu speichern?",
+   "optionen": [
+    "Weil ein sparsames Gerät den Strom nachts von selbst nachliefert. Ein sparsames Gerät verbraucht nur weniger, es liefert selbst keinen Strom.",
+    "Weil das Speichern den Strom im Kabel dauerhaft festhält. Strom lässt sich in der Leitung aber nicht speichern, dafür braucht es teure Speicher.",
+    "Weil eine einzelne Maßnahme im Jahr ohnehin kaum etwas bringt. Tatsächlich summieren sich schon einzelne Maßnahmen zu über 250 kWh im Jahr.",
+    "Weil jede Maßnahme das ganze Jahr über wirkt und so viele Kilowattstunden und Euro spart, ohne dass ein teurer Speicher nötig ist."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne die gesamte Ersparnis der drei Maßnahmen in Kilowattstunden pro Jahr und ordne sie nach ihrer Höhe.",
+   "zeilen": 4,
+   "loesung": "Die LED spart 75,9 kWh, der ausgeschaltete Standby 73,0 kWh und der neue Kühlschrank 109,5 kWh im Jahr. Zusammen sind das 75,9 + 73,0 + 109,5 = 258,4 kWh, also über 250 kWh. Der Kühlschrank spart am meisten, weil er rund um die Uhr läuft, danach die LED und zuletzt der Standby. Jede Maßnahme senkt den Bedarf dauerhaft, ohne dass man Strom speichern muss."
+  },
+  "theme": "gym_energie"
+ }
+]

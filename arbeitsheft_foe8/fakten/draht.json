@@ -1,0 +1,205 @@
+[
+ {
+  "sim": "draht",
+  "ueberschrift": "🧵 Wovon hängt der Widerstand eines Drahtes ab?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "kurz",
+    "ruft": "_drtSet('laenge','kurz')"
+   },
+   {
+    "aufschrift": "lang",
+    "ruft": "_drtSet('laenge','lang')"
+   },
+   {
+    "aufschrift": "dick",
+    "ruft": "_drtSet('dicke','dick')"
+   },
+   {
+    "aufschrift": "dünn",
+    "ruft": "_drtSet('dicke','duenn')"
+   },
+   {
+    "aufschrift": "Kupfer",
+    "ruft": "_drtSet('material','kupfer')"
+   },
+   {
+    "aufschrift": "Eisen",
+    "ruft": "_drtSet('material','eisen')"
+   },
+   {
+    "aufschrift": "Konstantan",
+    "ruft": "_drtSet('material','konstantan')"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_drtReset()"
+   },
+   {
+    "aufschrift": "Wenn er kurz und dick ist",
+    "ruft": "_drtAns(0,0)"
+   },
+   {
+    "aufschrift": "Wenn er lang und dünn ist",
+    "ruft": "_drtAns(0,1)"
+   },
+   {
+    "aufschrift": "Wenn er kalt ist",
+    "ruft": "_drtAns(0,2)"
+   },
+   {
+    "aufschrift": "Kupfer",
+    "ruft": "_drtAns(1,0)"
+   },
+   {
+    "aufschrift": "Konstantan",
+    "ruft": "_drtAns(1,1)"
+   },
+   {
+    "aufschrift": "Eisen",
+    "ruft": "_drtAns(1,2)"
+   },
+   {
+    "aufschrift": "wird kleiner",
+    "ruft": "_drtAns(2,0)"
+   },
+   {
+    "aufschrift": "wird größer",
+    "ruft": "_drtAns(2,1)"
+   },
+   {
+    "aufschrift": "bleibt gleich",
+    "ruft": "_drtAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_drtSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_drtSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_drtSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('draht')"
+   }
+  ],
+  "hinweise": [
+   "Verändere Länge, Dicke und Material des Drahtes – immer nur eine Größe. Beobachte, wie sich der Widerstand und der Strom ändern. (Nur ungefährliche Kleinspannung.)",
+   "Der Widerstand eines Drahtes ist größer, wenn der Draht länger oder dünner ist. Er hängt außerdem vom Material ab: Kupfer leitet sehr gut (kleiner Widerstand), Konstantan schlecht (großer Widerstand). | Modellgrenze: Die Simulation rechnet mit runden Werten (5 · 15 · 45 Ω). In Wirklichkeit ist der Unterschied noch größer – Konstantan hat etwa den 28-fachen spezifischen Widerstand von Kupfer, Eisen etwa den sechsfachen.",
+   "länger → mehr R · dünner → mehr R · Material zählt. | Immer nur eine Größe ändern!"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A."
+   },
+   {
+    "einstellung": "kurz",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A."
+   },
+   {
+    "einstellung": "lang",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A."
+   },
+   {
+    "einstellung": "dick",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A."
+   },
+   {
+    "einstellung": "dünn",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A."
+   },
+   {
+    "einstellung": "Kupfer",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A."
+   },
+   {
+    "einstellung": "Eisen",
+    "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A."
+   },
+   {
+    "einstellung": "Konstantan",
+    "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A."
+   },
+   {
+    "einstellung": "↺",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A."
+   },
+   {
+    "einstellung": "Wenn er kurz und dick ist",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand."
+   },
+   {
+    "einstellung": "Wenn er lang und dünn ist",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand."
+   },
+   {
+    "einstellung": "Wenn er kalt ist",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend."
+   },
+   {
+    "einstellung": "Kupfer",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter."
+   },
+   {
+    "einstellung": "Konstantan",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand)."
+   },
+   {
+    "einstellung": "Eisen",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen."
+   },
+   {
+    "einstellung": "wird kleiner",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand."
+   },
+   {
+    "einstellung": "wird größer",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand."
+   },
+   {
+    "einstellung": "bleibt gleich",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+   }
+  ],
+  "bildtexte": [
+   "4,5 V",
+   "Kupfer-Draht",
+   "A",
+   "0,90 A",
+   "R = 5 Ω",
+   "0,45 A",
+   "R = 10 Ω",
+   "0,23 A",
+   "R = 20 Ω",
+   "Eisen-Draht",
+   "0,07 A",
+   "R = 60 Ω",
+   "Konstantan-Draht",
+   "0,03 A",
+   "R = 180 Ω"
+  ]
+ }
+]

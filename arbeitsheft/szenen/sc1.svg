@@ -1,0 +1,35 @@
+<defs>
+  <radialGradient id="sc1licht" cx="0.46" cy="0.40" r="0.76">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+  <linearGradient id="sc1gummi" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E4655A"/><stop offset="0.42" stop-color="#B93A30"/>
+    <stop offset="1" stop-color="#7E211A"/>
+  </linearGradient>
+  <filter id="sc1blur" x="-20%" y="-60%" width="140%" height="220%">
+    <feGaussianBlur stdDeviation="2.6"/>
+  </filter>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#sc1licht)"/>
+  <use href="#t_keksdose" transform="translate(420,452) scale(1.25)"/>
+
+  <!-- das gespannte Band: mehrere Lagen uebereinander, es schwingt -->
+  <!-- Innenraum der Dose abdunkeln, damit das Band Kontrast bekommt -->
+  <g filter="url(#sc1blur)">
+    <path d="M200,214 C 300,160 540,160 640,262" stroke="url(#sc1gummi)" stroke-width="17" fill="none" opacity="0.20" stroke-linecap="round"/>
+    <path d="M200,215 C 300,200 540,200 640,263" stroke="url(#sc1gummi)" stroke-width="17" fill="none" opacity="0.30" stroke-linecap="round"/>
+    <path d="M200,220 C 300,330 540,330 640,268" stroke="url(#sc1gummi)" stroke-width="17" fill="none" opacity="0.20" stroke-linecap="round"/>
+    <path d="M200,221 C 300,374 540,374 640,269" stroke="url(#sc1gummi)" stroke-width="17" fill="none" opacity="0.20" stroke-linecap="round"/>
+  </g>
+  <path d="M200,217 C 300,270 540,270 640,265" stroke="#4E1310" stroke-width="22" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M200,217 C 300,270 540,270 640,265" stroke="url(#sc1gummi)" stroke-width="17" fill="none" stroke-linecap="round"/>
+  <path d="M222,215 C 310,268 530,268 618,263" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.26"/>
+  <!-- an den Auflagepunkten zieht das Band den Rand ein -->
+  <ellipse cx="200" cy="265" rx="13" ry="10" fill="#5E1812" opacity="0.65"/>
+  <ellipse cx="640" cy="265" rx="13" ry="10" fill="#5E1812" opacity="0.65"/>
+
+  <use href="#t_gummiband" transform="translate(180,492) rotate(-12) scale(0.95)"/>
+  <use href="#t_gummiband" transform="translate(716,486) rotate(9) scale(0.8)"/>

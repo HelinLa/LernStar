@@ -1,0 +1,166 @@
+[
+ {
+  "sim": "spannung",
+  "ueberschrift": "🔌 Was ist die elektrische Spannung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "1 Zelle (1,5 V)",
+    "ruft": "_spnSet(1)"
+   },
+   {
+    "aufschrift": "2 Zellen (3 V)",
+    "ruft": "_spnSet(2)"
+   },
+   {
+    "aufschrift": "3 Zellen (4,5 V)",
+    "ruft": "_spnSet(3)"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_spnReset()"
+   },
+   {
+    "aufschrift": "Der Antrieb, der die Ladungen treibt",
+    "ruft": "_spnAns(0,0)"
+   },
+   {
+    "aufschrift": "Die Menge der Ladungen",
+    "ruft": "_spnAns(0,1)"
+   },
+   {
+    "aufschrift": "Die Wärme der Lampe",
+    "ruft": "_spnAns(0,2)"
+   },
+   {
+    "aufschrift": "In Reihe",
+    "ruft": "_spnAns(1,0)"
+   },
+   {
+    "aufschrift": "Parallel zum Bauteil",
+    "ruft": "_spnAns(1,1)"
+   },
+   {
+    "aufschrift": "Gar nicht",
+    "ruft": "_spnAns(1,2)"
+   },
+   {
+    "aufschrift": "Die Spannung wird kleiner",
+    "ruft": "_spnAns(2,0)"
+   },
+   {
+    "aufschrift": "Die Spannung wird größer, die Lampe heller",
+    "ruft": "_spnAns(2,1)"
+   },
+   {
+    "aufschrift": "Nichts ändert sich",
+    "ruft": "_spnAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_spnSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_spnSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_spnSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('spannung')"
+   }
+  ],
+  "hinweise": [
+   "Setze eine, zwei oder drei Batteriezellen ein (je 1,5 V). Lies die Spannung am Voltmeter ab. Was passiert mit der Lampe? (Nur ungefährliche Kleinspannung.)",
+   "Die Spannung U ist der „Antrieb\" der Quelle: Sie treibt die Ladungen durch den Kreis. Mehr Zellen → mehr Volt → stärkerer Antrieb → mehr Strom → hellere Lampe. Einheit: Volt (V). Gemessen wird mit dem Voltmeter, das parallel angeschlossen wird.",
+   "Mehr Volt → stärkerer Antrieb → hellere Lampe. | Voltmeter misst parallel. (Analogie: Spannung = Wasserdruck.)"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach."
+   },
+   {
+    "einstellung": "1 Zelle (1,5 V)",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach."
+   },
+   {
+    "einstellung": "2 Zellen (3 V)",
+    "text": "spnStatus: Spannung U = 3 V (2 Zellen). Stärkerer Antrieb → mehr Strom → Lampe heller."
+   },
+   {
+    "einstellung": "3 Zellen (4,5 V)",
+    "text": "spnStatus: Spannung U = 4,5 V (3 Zellen). Stärkerer Antrieb → mehr Strom → Lampe am hellsten."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach."
+   },
+   {
+    "einstellung": "Der Antrieb, der die Ladungen treibt",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✓ Richtig! Die Spannung ist der Antrieb der Quelle."
+   },
+   {
+    "einstellung": "Die Menge der Ladungen",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Das wäre eher die Ladungsmenge/Stromstärke."
+   },
+   {
+    "einstellung": "Die Wärme der Lampe",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung."
+   },
+   {
+    "einstellung": "In Reihe",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ In Reihe kommt das Amperemeter."
+   },
+   {
+    "einstellung": "Parallel zum Bauteil",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✓ Richtig! Das Voltmeter wird parallel angeschlossen."
+   },
+   {
+    "einstellung": "Gar nicht",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel."
+   },
+   {
+    "einstellung": "Die Spannung wird kleiner",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Mehr Zellen → mehr Spannung, nicht weniger."
+   },
+   {
+    "einstellung": "Die Spannung wird größer, die Lampe heller",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✓ Richtig! Mehr Volt → stärkerer Antrieb → hellere Lampe."
+   },
+   {
+    "einstellung": "Nichts ändert sich",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Die Helligkeit ändert sich deutlich."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Die Helligkeit ändert sich deutlich.  ||  spnSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Die Helligkeit ändert sich deutlich.  ||  spnSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Die Helligkeit ändert sich deutlich."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "spnStatus: Spannung U = 1,5 V (1 Zelle). Stärkerer Antrieb → mehr Strom → Lampe schwach.  ||  spnFb0: ✗ Wärme ist nur eine Wirkung.  ||  spnFb1: ✗ Man schließt es sehr wohl an – parallel.  ||  spnFb2: ✗ Die Helligkeit ändert sich deutlich."
+   }
+  ],
+  "bildtexte": [
+   "1,5 V",
+   "V",
+   "Voltmeter (parallel)",
+   "U = 1,5 V  (Kleinspannung)",
+   "3 V",
+   "U = 3 V  (Kleinspannung)",
+   "4,5 V",
+   "U = 4,5 V  (Kleinspannung)"
+  ]
+ }
+]

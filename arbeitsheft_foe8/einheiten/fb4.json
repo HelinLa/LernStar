@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fb4",
+  "quelle": "be5+be7",
+  "sim": "gleichfoermig-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Kreidestriche auf dem Schulhof",
+  "name": "Was sagen die Abstände?",
+  "fachwoerter_neu": [
+   "gleichförmig",
+   "beschleunigt"
+  ],
+  "alltag": [
+   "Jannis fährt in der Fahrrad-AG eine Runde über den Schulhof.",
+   "Nour ruft jede Sekunde „jetzt“ und malt dann einen Kreidestrich.",
+   "So ein Kreidestrich heißt Sekunden-Marke.",
+   "Am Ende liegt eine Reihe von Strichen auf dem Boden."
+  ],
+  "frage": "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
+  "predict": [
+   "Jannis rollt immer weiter. Die Abstände werden nach hinten größer.",
+   "Bleibt das Tempo gleich, sind alle Abstände gleich groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies zuerst Zeile 1 der Tabelle. So startet die Simulation.",
+   "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.",
+   "Lies ab, welche Zahl bei v steht. Sieh dir die Abstände an. Fülle Zeile 2 aus.",
+   "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Welche Zahl steht bei v?",
+   "Wie sind die Abstände?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "70",
+    "gleich groß"
+   ],
+   [
+    "langsam",
+    "",
+    ""
+   ],
+   [
+    "schnell",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Alle Abstände der Sekunden-Marken sind gleich groß. Die Bewegung ist",
+    "loesung": "gleichförmig",
+    "post": "."
+   },
+   {
+    "pre": "Die Abstände werden größer oder kleiner. Die Bewegung ist",
+    "loesung": "beschleunigt",
+    "post": ". Das Tempo ändert sich."
+   }
+  ],
+  "wortbank": [
+   "gleichförmig",
+   "beschleunigt",
+   "schneller",
+   "langsamer"
+  ],
+  "beispiel": {
+   "frage": "Du drückst den Knopf „mittel“ und dann „▶ Fahren“. Was zeigt die Simulation?",
+   "antwort": "Bei v steht die Zahl 70. Die Sekunden-Marken haben alle den gleichen Abstand. Die Bewegung ist also gleichförmig."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du wählst „schnell“ und drückst „▶ Fahren“. Wie liegen die Sekunden-Marken?",
+    "optionen": [
+     "Sie liegen alle gleich weit auseinander.",
+     "Sie liegen immer weiter auseinander.",
+     "Sie liegen immer enger."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Wagen fährt los. Die Marken liegen immer weiter auseinander. Er wird",
+      "loesung": "schneller",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen bremst. Die Marken liegen immer enger. Er wird",
+      "loesung": "langsamer",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei schnell werden die Abstände immer größer.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Bei schnell sind die Abstände größer als bei langsam, aber …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei passen in den Merksatz, zwei in Aufgabe 2.",
+   "h2": "Beginne so: Bei schnell sind die Abstände größer als bei langsam. Sieh dann in Zeile 3 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Bei schnell fährt der Wagen die ganze Zeit gleich schnell. Alle Abstände sind größer als bei langsam. Aber in einer Fahrt bleiben alle Abstände ___ groß."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, welche Zahl in der Simulation bei v steht.",
+   "Ich kann an den Abständen der Marken erkennen, ob das Tempo gleich bleibt.",
+   "Ich kann sagen, was gleichförmig und was beschleunigt bedeutet."
+  ],
+  "zuhause": "Zähle beim Gehen leise die Sekunden mit. Lege bei jeder Sekunde einen kleinen Stein auf den Weg. Gehe einmal gleich schnell und einmal immer schneller. Vergleiche die Abstände der Steine.",
+  "bildauftrag": "[BILD: drei waagerechte Fahrbahnen untereinander, alle gleich lang und gleich breit; auf jeder Bahn derselbe kleine Wagen, immer am rechten Ende; hinter jedem Wagen fünf senkrechte Kreidestriche auf der Bahn; obere Bahn: die fünf Striche haben genau gleiche Abstände, Beschriftung „gleich groß – gleichförmig“; mittlere Bahn: die Striche liegen von links nach rechts immer weiter auseinander, Beschriftung „werden größer – wird schneller“; untere Bahn: die Striche rücken von links nach rechts immer enger zusammen, Beschriftung „werden enger – wird langsamer“; an einem einzelnen Strich der oberen Bahn ein dicker Pfeil mit dem großen Wort „Sekunden-Marke“; zwischen je zwei Strichen ein kurzer Maßpfeil; ruhiger heller Hintergrund, keine Zuschauer, keine Tempostriche, keine Zahlen, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fb4",
+  "lernziel": "Die Schülerinnen und Schüler deuten die Abstände der Sekunden-Marken: gleich große Abstände bedeuten eine gleichförmige Bewegung, größer werdende Abstände bedeuten, dass der Körper schneller wird, kleiner werdende, dass er langsamer wird. Beide Fälle mit sich änderndem Tempo heißen beschleunigt – auch das Bremsen. Der Doppelvergleich ist der eigentliche Denkschritt: Ein höheres Tempo macht alle Abstände größer, innerhalb einer Fahrt bleiben sie trotzdem gleich. Gerechnet wird nicht; das Weg-Zeit-Diagramm bleibt für fb5 zurückgehalten, obwohl die Simulation ihr Bild mit „s-t: Gerade“ beschriftet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: fünf kleine Steine, Bausteine oder Münzen. Optional als Gegenprobe auf dem Schulhof: Kreide und eine Person, die jede Sekunde „jetzt“ ruft.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (so startet die Simulation, Knopf „mittel“): „Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.“ Karte 2 (Knopf „langsam“): derselbe Satz mit v = 40. Karte 3 (Knopf „schnell“): derselbe Satz mit v = 110. Dazu an die Tafel drei Bahnen untereinander zeichnen, auf jeder fünf Striche mit gleichen Abständen – bei „schnell“ alle Abstände breiter, bei „langsam“ alle schmaler, aber auf jeder Bahn untereinander gleich. Die Anzeige nennt zu v KEINE Einheit; an der Tafel darf deshalb kein m/s ergänzt werden. Für den Anwendungsteil (Bild) die zwei Sätze der zweiten Simulation vorlesen: „Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.“ und „Bremsen: Die Geschwindigkeit wird immer kleiner. Die Sekunden-Marken werden immer enger.“",
+  "merksatz": [
+   "gleichförmig",
+   "beschleunigt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "langsam",
+    "40",
+    "gleich groß"
+   ],
+   [
+    "schnell",
+    "110",
+    "gleich groß"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Bei „schnell“ meldet die Statuszeile: Gleichförmige Bewegung mit v = 110 … die Marken haben gleiche Abstände. Das ist derselbe Satz wie bei „mittel“ und „langsam“, nur mit einer anderen Zahl. Die Abstände sind zwar breiter als bei „langsam“, untereinander aber gleich.",
+   "typische_fehler": [
+    "Antwort 2 („Sie liegen immer weiter auseinander“) wird gewählt: „schnell“ wird mit „wird schneller“ verwechselt. Der Wagen ist die ganze Fahrt über gleich schnell.",
+    "Antwort 2 wird auch gewählt, weil der Wagen ja immer weiter rollt – genau die Fehlvorstellung, die auf Seite A als falsche Vermutung angeboten wird („Jannis rollt immer weiter“).",
+    "Antwort 3 („Sie liegen immer enger“) wird gewählt, weil die Marken am Bildschirm nach hinten kleiner gezeichnet wirken."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "schneller",
+    "langsamer"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „gleichförmig“. Gleichförmig wäre es nur bei gleichen Abständen.",
+    "In Lücke 2 steht „beschleunigt“. Das ist nicht falsch gedacht, passt aber nicht in den Satz: Gesucht ist, wie sich das Tempo ändert.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei schnell sind die Abstände größer als bei langsam, aber sie bleiben untereinander gleich groß. Der Wagen fährt die ganze Zeit gleich schnell. Die Bewegung ist also gleichförmig.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: Bei „schnell“ steht derselbe Satz wie bei „langsam“, nur die Zahl bei v ist eine andere.",
+    "Verweis auf Zeile 2 und Zeile 3 der Tabelle: In beiden Zeilen steht in der letzten Spalte „gleich groß“.",
+    "Verweis auf das Bild: Nur auf der mittleren Bahn werden die Abstände größer, und dort wird der Wagen wirklich schneller."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Die zwei Vergleiche werden vermischt: „Die Abstände sind größer, also stimmt es.“ Größer als bei langsam – untereinander gleich.",
+    "„schnell“ wird als Vorgang gelesen („er wird schnell“) statt als eingestellte Stufe.",
+    "Die Antwort nennt nur die Zahl 110 und sagt nichts über die Abstände."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: genauso)",
+  "schwache": [
+   "Bedienreihenfolge vorweg ansagen: erst die Stufe wählen, dann „▶ Fahren“ drücken. „▶ Fahren“ übernimmt die zuletzt gewählte Stufe, und „Zurücksetzen“ springt auf v = 70 zurück. Wer die Reihenfolge tauscht, trägt eine falsche Zahl ein.",
+   "Das Wort „konstant“ steht in Klammern in der Statuszeile und wird auf der Schülerseite bewusst nicht verlangt. Die Seite sagt dafür „gleich groß“ und „das Tempo bleibt gleich“. Nachfragen kurz so beantworten, nicht als neues Fachwort einführen.",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten, Zeile 3 erst danach ergänzen.",
+   "Die Abstände auf dem Bildschirm mit zwei Fingern abgreifen und zum nächsten Abstand tragen – so wird „gleich groß“ mit der Hand geprüft.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: einen Stift gleichmäßig schieben und im Sekundentakt Klebepunkte setzen, danach absichtlich immer schneller schieben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 2 ab: „Gleiche Strecke pro Sekunde → gleiche Abstände.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · gleichförmige und beschleunigte Bewegung. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Aufgabe 1 (gleichförmig gegen beschleunigt unterscheiden); E2 über die Vermutung; E5 über den Vergleich der drei Fahrten (aus be5) und E6 über die Deutung von Beschleunigen und Bremsen (aus be7, hier als Bild und Aufgabe 2); B2 über Aufgabe 3. Das Weg-Zeit-Diagramm und damit K2 bleiben nach dem Seitenplan bei fb5."
+ }
+}

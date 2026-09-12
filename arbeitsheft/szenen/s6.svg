@@ -1,0 +1,26 @@
+<defs>
+  <radialGradient id="s6licht" cx="0.42" cy="0.36" r="0.78">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#s6licht)"/>
+  <!-- Emmas Notlicht vom Lenker, mit Klebeband zusammengehalten -->
+  <use href="#t_batterie" transform="translate(300,300) scale(1.0)"/>
+  <use href="#t_laempchen_an" transform="translate(560,318) scale(1.15)"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M336,268 C 400,214 480,220 536,268" stroke="#7A5F16" stroke-width="10"/>
+    <path d="M336,268 C 400,214 480,220 536,268" stroke="#E2B755" stroke-width="7"/>
+    <path d="M262,272 C 262,352 400,392 528,352" stroke="#7A211C" stroke-width="10"/>
+    <path d="M262,272 C 262,352 400,392 528,352" stroke="#C9544A" stroke-width="7"/>
+  </g>
+  <!-- ein Draht haengt schon halb ab: so macht sie es bisher aus -->
+  <use href="#t_klemme" transform="translate(268,268) rotate(-104) scale(0.95)"/>
+  <use href="#t_klebeband_rolle" transform="translate(796,278) scale(0.8)"/>
+  <!-- was auf dem Tisch liegt - der Schalter ist NICHT gebaut -->
+  <use href="#t_brettchen"   transform="translate(258,470) rotate(-3) scale(0.9)"/>
+  <use href="#t_reisszwecke" transform="translate(200,444) scale(1.4)"/>
+  <use href="#t_reisszwecke" transform="translate(314,444) scale(1.4)"/>
+  <use href="#t_bueroklammer" transform="translate(560,486) rotate(-12) scale(1.6)"/>

@@ -1,0 +1,25 @@
+<defs>
+  <radialGradient id="h1licht" cx="0.80" cy="0.30" r="0.86">
+    <stop offset="0" stop-color="#FFF0CC" stop-opacity="0.34"/>
+    <stop offset="0.44" stop-color="#FFE3A8" stop-opacity="0.08"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.48"/>
+  </radialGradient>
+  <linearGradient id="h1fleck" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0" stop-color="#FFF0C6" stop-opacity="0.55"/>
+    <stop offset="1" stop-color="#FFE0A0" stop-opacity="0.12"/>
+  </linearGradient>
+  <clipPath id="h1unten"><rect x="0" y="386" width="900" height="154"/></clipPath>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <use href="#t_luke_offen" transform="translate(714,192) scale(1.0)"/>
+  <!-- der Lichtfleck der Luke faellt schraeg auf Boden und Kiste -->
+  <g clip-path="url(#h1unten)">
+    <polygon points="614,296 826,296 706,540 356,540" fill="url(#h1fleck)"/>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="url(#h1licht)"/>
+
+  <use href="#t_kiste" transform="translate(330,512) scale(0.98)"/>
+  <use href="#t_handy" transform="translate(320,318) rotate(-5) scale(0.92)"/>
+  <use href="#t_blatt_kariert" transform="translate(556,470) rotate(7) scale(0.6)"/>
+  <use href="#t_bleistift" transform="translate(570,506) rotate(-11) scale(0.86)"/>

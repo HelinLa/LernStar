@@ -1,0 +1,1704 @@
+[
+ {
+  "id": "fk1",
+  "lernziel": "Die Schülerinnen und Schüler erkennen an Form, Tempo oder Richtung, dass eine Kraft gewirkt hat, und begründen, dass man die Kraft selbst nicht sehen kann. Sie unterscheiden außerdem eine Frage, die die Simulation beantworten kann, von Fragen, die sie nicht beantworten kann.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse als Karten oder als Tafelbild (siehe unten). Optional als Gegenprobe am Tisch: Knete, ein kleiner Wagen oder ein Stift, eine Kugel und ein Lineal.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten an die Tafel, in dieser Reihenfolge. Wichtig: Vor dem Druck auf „Kraft wirken lassen“ steht in der Statuszeile nur eine Ankündigung, die mit „Drücke auf“ beginnt. Die drei Ergebnissätze unten erscheinen erst danach. Karte 1 Bewegen (Wagen): „Die Kraft setzt den ruhenden Wagen in Bewegung – er wird schneller (Bewegungsänderung).“ – das Tempo ändert sich. Karte 2 Verformen (Knete): „Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ – die Form ändert sich. Karte 3 Richtung ändern (Ball): „Die Kraft von oben lenkt den rollenden Ball ab – seine Richtung ändert sich.“ – die Richtung ändert sich. Gegenprobe am Tisch: in Knete drücken, einen Stift anschieben, eine rollende Kugel mit dem Lineal ablenken.",
+  "merksatz": [
+   "Kraft",
+   "Wirkung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Verformen",
+    "„Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ (im Bild: „Wirkung: verformen“ und „verformt!“)",
+    "die Form"
+   ],
+   [
+    "Richtung ändern",
+    "„Die Kraft von oben lenkt den rollenden Ball ab – seine Richtung ändert sich.“",
+    "die Richtung"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nur Antwort 2 ist am Bildschirm zu beantworten: Die Statuszeile meldet „Die Kraft drückt die Knete zusammen – sie verformt den Körper.“, das Bild trägt den Text „Wirkung: verformen“. Die Simulation hat keinen einzigen Regler und zeigt keine Zahl und keine Einheit – weder eine Masse noch eine Zeit. Antwort 1 und 3 sind deshalb am Bildschirm nicht zu klären.",
+   "typische_fehler": [
+    "Antwort 1 wird angekreuzt, weil ein Wagen im Bild vorkommt – eine Masse zeigt die Simulation aber nirgends an.",
+    "Antwort 3 wird angekreuzt, weil der Ball rollt – eine Uhr oder eine Zeitangabe gibt es nicht.",
+    "Es werden mehrere Kreuze gesetzt, weil „beantworten“ als „passt dazu“ gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "unsichtbar",
+    "geändert"
+   ],
+   "typische_fehler": [
+    "„Wirkung“ statt „unsichtbar“ – die Wortbank wird der Reihe nach abgearbeitet.",
+    "„Der Wagen hat sich geändert“ – die Wirkung wird am Gegenstand festgemacht statt am Tempo."
+   ]
+  },
+  "a3": {
+   "erwartung": "Vorher rollte der Wagen, nachher steht er still. Sein Tempo hat sich geändert. Also hat eine Kraft gewirkt. Die Kraft selbst sieht man nicht.",
+   "alternativen": [
+    "Über die Hand: Die Hand drückt gegen den Wagen. Er wird langsamer und bleibt stehen. Das Tempo hat sich geändert.",
+    "Über den Nachweis allgemein: Weil sich etwas geändert hat, muss eine Kraft gewirkt haben."
+   ],
+   "typische_fehler": [
+    "„Weil er stehen bleibt“ – der Vergleich vorher/nachher fehlt.",
+    "Die Kraft wird an der Hand gesehen statt an der Wirkung („man sieht doch, wie er drückt“).",
+    "Das Abbremsen wird in der Simulation gesucht. Der Hinweistext neben der Statuszeile nennt es zwar („in Bewegung setzen oder abbremsen“), gezeigt wird es aber nicht – die Sim zeigt nur den Schubs aus der Ruhe. Abbremsen bleibt Alltags- und Erkläraufgabe."
+   ]
+  },
+  "hilfe3_wort": "Kraft",
+  "schwache": [
+   "Zuerst nur „Bewegen“ durchspielen und die fertige Beispielzeile gemeinsam laut lesen. Erst danach die beiden offenen Zeilen.",
+   "Die drei Wörter Form, Tempo und Richtung auf drei Kärtchen schreiben und beim Ausfüllen der dritten Spalte danebenlegen.",
+   "Die Antwortknöpfe der Simulation nicht benutzen: „Verformung“ und „Bewegungsänderung“ stehen dort doppelt, dann wird in der falschen Zeile geantwortet.",
+   "Vor Aufgabe 3 den Satzstarter laut vorsprechen lassen, bevor geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Suche auf dem Schulhof drei Vorgänge und schreibe zu jedem auf, was sich ändert – Form, Tempo oder Richtung.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraft und ihre Wirkungen. Diese Einheit ist der einzige Träger von E1 („Fragestellungen erkennen“) im Band – das leistet Aufgabe 1, die eine am Bildschirm beantwortbare Frage von zwei nicht beantwortbaren trennt; das bloße Ablesen wäre E2. Dazu UF1 und UF3 (Wirkungen benennen und zuordnen) sowie UF4 über den Zuhause-Auftrag. Nicht hier: Newton N (fk2) und das Kräftegleichgewicht (fk8). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fk2",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Federkraftmesser eine Kraft in Newton (N) ab und erklären, dass man nicht die Kraft selbst sieht, sondern die längere Feder. Gerechnet wird nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: echter Federkraftmesser mit zwei Hakengewichten.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel schreiben – wörtlich so, wie die Statuszeile es zeigt: Karte 1 „Feder leeren“ → „Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!“ · Karte 2 „Gewicht anhängen (1 N)“ → „Angehängte Kraft: F = 1 N. Die Feder ist um 1 cm gedehnt (Masse ≈ 100 g). Am Zeiger liest du die Kraft direkt ab.“ · Karte 3 „Gewicht abnehmen“ → wieder derselbe Text wie Karte 1. Alternativ drei Standbilder der Simulation am Beamer zeigen.",
+  "merksatz": [
+   "Newton (N)",
+   "länger"
+  ],
+  "tabelle_erwartet": [
+   [
+    "ein Gewicht anhängen",
+    "F = 1 N",
+    "um 1 cm gedehnt"
+   ],
+   [
+    "das Gewicht abnehmen",
+    "F = 0 N",
+    "entspannt"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Simulation gibt die Antwort wörtlich zurück: „Richtig! Die Einheit der Kraft ist das Newton (N).“ Auf der Skala stehen 0 N bis 5 N, keine Gramm.",
+   "typische_fehler": [
+    "Option 1 wird gewählt, weil die Statuszeile in Klammern „(Masse ≈ 100 g)“ nennt – die Simulation antwortet darauf: „Gramm ist eine Einheit der Masse.“",
+    "Option 2 wird gewählt, weil die Feder ja länger wird – gemessen wird aber die Kraft, nicht die Länge."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0 N",
+    "1 N"
+   ],
+   "typische_fehler": [
+    "„1 cm“ statt „1 N“ – die Zentimeterangabe aus derselben Statuszeile wird abgeschrieben.",
+    "Die Einheit N fehlt, es steht nur „0“ und „1“.",
+    "Beide Zeilen werden vertauscht, weil vorher nicht auf „Feder leeren“ gedrückt wurde."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Kraft ist unsichtbar. Man sieht nur die Feder. Unter der Kraft wird sie länger. An der Skala liest man dann die Zahl in Newton ab.",
+   "alternativen": [
+    "Über den Zeiger: Der Zeiger wandert mit der Feder mit und steht bei 1 N.",
+    "Über die Wirkung: Man sieht die Wirkung der Kraft, nicht die Kraft selbst.",
+    "Wörtlich aus dem Hinweis der Simulation: „Die Kraft selbst ist unsichtbar – die gedehnte Feder macht sie messbar.“"
+   ],
+   "typische_fehler": [
+    "Der Satz von Jannis wird nur wiederholt statt widerlegt.",
+    "Die Kraft wird mit dem Gewicht gleichgesetzt („man sieht das Gewicht“). Der Unterschied Masse/Gewichtskraft gehört erst zu fk4 und wird hier nicht vertieft."
+   ]
+  },
+  "hilfe3_wort": "länger (auch richtig: lang, gedehnt)",
+  "schwache": [
+   "Zuerst nur Zeile 1 und Zeile 2 der Tabelle bearbeiten; Zeile 3 später gemeinsam.",
+   "Vor dem Öffnen der Simulation die drei Knopfaufschriften laut lesen lassen: „Gewicht anhängen (1 N)“, „Gewicht abnehmen“, „Feder leeren“.",
+   "Die Statuszeile gemeinsam Wort für Wort lesen und die Zahl mit dem Finger zeigen lassen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe alle Zahlen ab, die auf der Skala der Simulation stehen (0 N bis 5 N). Wo müsste der Zeiger bei zwei Gewichten stehen? Schreibe deine Vermutung auf und prüfe sie am Bildschirm. Erwartet wird: „Angehängte Kraft: F = 2 N. Die Feder ist um 2 cm gedehnt (Masse ≈ 200 g).“ Bei 5 N ist Schluss – weiteres Drücken auf „Gewicht anhängen (1 N)“ ändert nichts mehr.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraft messen, Einheit Newton. Trägt UF1 (Kraft in Newton angeben) und E4 (die Messung am Bildschirm durchführen und die Werte eintragen – dieselbe Lesart wie in fb2 und fs1 von Band 8). Hinweis für die Lehrkraft: Die Simulation nennt in der Statuszeile „(Masse ≈ 100 g)“ – dieser Klammerwert bleibt auf der Schülerseite bewusst unbenutzt, Masse und Gewichtskraft werden erst in fk4 getrennt. Ebenfalls nur hier: Nachgemessen (simcheck/werte.js) zählt die Simulation in Schritten von 1 N von 0 N bis 5 N und bleibt dann bei 5 N stehen. Die Tabelle beschränkt sich trotzdem auf 0 N und 1 N, damit nur zwei Zustände zu unterscheiden sind; alles darüber steht im Zusatz. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fk3",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Bildschirm ab, wie weit sich eine weiche und eine harte Feder dehnen, und erklären: Mehr Kraft dehnt die Feder weiter; bei gleicher Kraft dehnt sich die harte Feder weniger weit. Federkonstante, Formel und Rechnung sind hier kein Thema.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei unterschiedlich harte Schraubenfedern, ein Stativ und gleiche Wägestücke.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei nachgemessenen Ergebnisse als Karten zeigen oder an die Tafel schreiben: weiche Feder, F = 1 N → 2 cm · weiche Feder, F = 2 N → 4 cm · harte Feder, F = 1 N → 1 cm. Vierte Karte für schnelle Lernende: harte Feder, F = 2 N → 2 cm.",
+  "merksatz": [
+   "länger",
+   "halb"
+  ],
+  "tabelle_erwartet": [
+   [
+    "weiche Feder",
+    "2 N",
+    "4 cm"
+   ],
+   [
+    "harte Feder",
+    "1 N",
+    "1 cm"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Gleiche Kraft, kleinere Einsinktiefe heißt härter. Puffer B sinkt nur 1 cm ein, Puffer A doppelt so tief – genau wie harte gegen weiche Feder bei F = 1 N.",
+   "typische_fehler": [
+    "„Puffer A“, weil tiefes Einsinken mit „gibt viel her, ist stark“ verwechselt wird.",
+    "„Beide gleich hart“, weil nur auf die gleiche Druckkraft geschaut wird statt auf die Wirkung."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "harte",
+    "weiche"
+   ],
+   "typische_fehler": [
+    "Vertauschen: der weiche Puffer wird unter das Klavier gelegt, weil „weich = schont“.",
+    "„hart“ statt „harte“ eingesetzt – die Wortbank gibt die passende Form vor."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei gleicher Kraft dehnt sich die harte Feder weniger weit als die weiche. Am Bildschirm sind es bei F = 1 N nur 1 cm statt 2 cm. Hart heißt also: Sie gibt weniger nach, nicht mehr.",
+   "alternativen": [
+    "Umkehrung: Die weiche Feder dehnt sich bei derselben Kraft doppelt so weit.",
+    "Vergleich mit den Puffern: Der harte Puffer sinkt weniger tief ein, obwohl Nour gleich stark drückt.",
+    "Verweis auf die Tabelle: beide Zeilen mit 1 N gegeneinander."
+   ],
+   "typische_fehler": [
+    "„Stark“ und „dehnt sich weit“ werden gleichgesetzt (die Fehlvorstellung aus predict).",
+    "Die Kraft wird nicht als gleich vorausgesetzt: „Bei der harten zieht man ja mehr.“",
+    "Es wird nur wiederholt, dass die Feder hart ist, ohne die Dehnung zu nennen."
+   ]
+  },
+  "hilfe3_wort": "weniger (auch richtig: nicht so weit, weniger stark)",
+  "schwache": [
+   "Zuerst nur die beiden 1-N-Zeilen vergleichen; die 2-N-Zeile später oder gemeinsam ergänzen.",
+   "Die gefüllte Beispielzeile laut lesen und die Stelle hinter dem Pfeil → am Beamer zeigen.",
+   "„2 cm“ und „0,5 N/cm“ in der Statuszeile gemeinsam unterscheiden.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle bei der harten Feder F = 2 N ein und lies ab (2 cm). Vergleiche mit der weichen Feder bei F = 2 N (4 cm).",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraftwirkung und Verformung; Alltagsauftrag Matratze/Sofakissen trägt E5. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Der Bildschirm zeigt zusätzlich D = F/s, „Federkonstante“, „proportional“ und das Hooke'sche Gesetz – im Förderheft bewusst kein Thema, aber Anknüpfung für den E-Kurs. Das Formelzeichen s meint hier die Dehnung in cm, in fe1 dagegen den Weg in m.",
+  "hinweise_intern": [
+   "Der Ausgangszustand der Simulation IST bereits die weiche Feder (F = 1 N → 2 cm). Schritt 1 wählt sie trotzdem ausdrücklich, sonst wird zweimal dieselbe Feder gemessen.",
+   "Einstellbereich nachgemessen (05.09.2026, simcheck/werte.js): F von 0 N bis 5 N in 1-N-Schritten. Weich: 1 N → 2 cm, 2 N → 4 cm, 3 N → 6 cm, 5 N → 10 cm. Hart: 1 N → 1 cm, 2 N → 2 cm, 3 N → 3 cm, 5 N → 5 cm. Beim Umschalten der Feder bleibt die eingestellte Kraft stehen.",
+   "Bei F = 0 N verschwindet die Angabe D = F/s aus der Statuszeile („Eingestellt: F = 0 N → Dehnung s = 0 cm.“). Darauf zielt Hilfe 1.",
+   "Die Simulation zeigt zusätzlich D = F/s, das Wort „Federkonstante“, „proportional“, „Steigung“ und das Hooke'sche Gesetz (F = D · s). Das ist hier bewusst NICHT Thema und steht auf keiner Schülerseite; für den E-Kurs kann es hier angeknüpft werden.",
+   "Die Messpunkt-Tabelle der Simulation läuft ohne Trennzeichen zusammen („FsD = F/s1 N1 cm1,0 N/cm“). Sie wird auf der Heftseite nicht gebraucht und soll nicht abgeschrieben werden.",
+   "Formelzeichen s ist hier die Dehnung in cm; in fe1 (Arbeit W = F · s) ist s der Weg in m. Beim Übergang ansprechen.",
+   "Kraft F in N wurde in fk2 eingeführt; fk3 verwendet sie nur weiter und führt kein neues Fachwort ein."
+  ]
+ },
+ {
+  "id": "fk4",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden die Masse m (Kilogramm, Menge an Stoff, bleibt gleich) von der Gewichtskraft F (Newton, Zugkraft der Erde) und lesen am Bildschirm ab, dass doppelte Masse doppelte Gewichtskraft bedeutet (1 kg gibt 9,8 N, 2 kg gibt 19,6 N).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Werte aus diesem Lehrerteil als drei Karten oder als Tabelle an der Tafel. Optional als Demonstration: Küchenwaage und Federkraftmesser mit demselben Gewichtsstück.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen oder vorlesen: 100 g → Masse m = 100 g, Gewichtskraft F = m · g = 1,0 N · 1 kg → Masse m = 1 kg, Gewichtskraft F = m · g = 9,8 N · 2 kg → Masse m = 2 kg, Gewichtskraft F = m · g = 19,6 N. Dazu der Satz, der bei jeder Einstellung dabeisteht: „Die Waage zeigt die Masse, der Kraftmesser die Kraft.“ Alternativ drei Standbilder der Simulation am Beamer zeigen.",
+  "merksatz": [
+   "Kilogramm",
+   "Newton"
+  ],
+  "tabelle_erwartet": [
+   [
+    "1 kg",
+    "m = 1 kg",
+    "F = 9,8 N"
+   ],
+   [
+    "2 kg",
+    "m = 2 kg",
+    "F = 19,6 N"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile zeigt für denselben Körper zwei verschiedene Zahlen: Masse m = 1 kg und Gewichtskraft F = 9,8 N. Der Satz am Ende der Statuszeile ordnet die Geräte zu: die Waage der Masse, der Kraftmesser der Kraft.",
+   "typische_fehler": [
+    "Option 0 wird gewählt, weil im Alltag „Gewicht“ und „Masse“ dasselbe meinen.",
+    "Option 2 wird gewählt, weil Waage und Kraftmesser noch vertauscht werden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "19,6 N",
+    "gleich"
+   ],
+   "typische_fehler": [
+    "„9,8 N“ wird verdoppelt zu „18,6 N“ oder „19,8 N“ (Übertrag beim Verdoppeln vergessen). Gegenprobe: 2 kg drücken, der Bildschirm zeigt 19,6 N.",
+    "In die zweite Lücke wird „doppelt“ geschrieben: Die Masse verdoppelt sich nicht von selbst, sie ist eingestellt und bleibt gleich.",
+    "Die Einheit N fehlt, es steht nur „19,6“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Am Bildschirm steht bei 2 kg die Gewichtskraft 19,6 N, nicht 2 N. Kilogramm und Newton sind zwei verschiedene Einheiten. 2 kg ist die Masse, 19,6 N ist die Gewichtskraft.",
+   "alternativen": [
+    "Rechenweg statt Ablesen: 2 kg · 9,8 N/kg = 19,6 N.",
+    "Verweis auf die Geräte: Die Waage zeigt 2 kg, der Kraftmesser zeigt 19,6 N, und beide messen denselben Körper.",
+    "Auch richtig ohne Zahl: Masse und Gewichtskraft sind nicht dasselbe, deshalb darf man die Zahl nicht einfach übernehmen."
+   ],
+   "typische_fehler": [
+    "Der Satz von Jannis wird nur wiederholt statt widerlegt.",
+    "Es wird nur „das ist falsch“ geschrieben, ohne den Bildschirmwert 19,6 N zu nennen.",
+    "Es wird behauptet, der Kraftmesser sei kaputt oder rechne um."
+   ]
+  },
+  "hilfe3_wort": "dasselbe (auch richtig: gleich, das Gleiche)",
+  "schwache": [
+   "Zuerst nur 1 kg und 2 kg vergleichen; die Zeile 100 g gemeinsam als Beispielzeile lesen und nicht selbst füllen.",
+   "Vor der Simulation den Bedienhinweis laut lesen: Der Bildschirm startet bei 1 kg, deshalb zuerst „100 g“ drücken.",
+   "Die zwei Wörter Kilogramm und Newton mit zwei Farben markieren: kg immer bei der Waage, N immer beim Kraftmesser.",
+   "Aufgabe 2 zuerst nur mündlich lösen und den Wert 19,6 N am Bildschirm gegenprüfen, dann erst schreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „200 g“ und „500 g“ und schreibe die beiden Gewichtskräfte aus der Statuszeile auf (2,0 N und 4,9 N). Nur ablesen, nicht rechnen.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm."
+ },
+ {
+  "id": "fk5",
+  "lernziel": "Die Schülerinnen und Schüler lesen den Ortsfaktor g in N/kg und die Gewichtskraft F für Mond, Erde und Jupiter am Bildschirm ab. Sie begründen, dass dabei nur die Gewichtskraft kleiner oder größer wird, die Masse aber überall gleich bleibt (m = 60 kg). Gerechnet wird auf dieser Seite ausdrücklich nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig: Die Simulation hat KEINEN Regler; die Masse ist fest auf 60 kg eingestellt, und nur die drei Ortsknöpfe verändern Bild und Statuszeile. Die Knöpfe tragen am Bildschirm ein kleines Bildzeichen vor dem Wort, im Heft steht nur das Wort (Mond, Erde, Jupiter). Die Statuszeile schreibt „Auf dem/der Mond:“ mit Schrägstrich — nicht abschreiben lassen, nur die Zahlen daraus entnehmen. Weiter unten trägt die Simulation ein Protokoll mit drei Abfrage-Knopfreihen unter der Überschrift „Minidiagnose“ und eine Selbsteinschätzung; beides wird auf dieser Seite nicht gebraucht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Erde: g = 9,8 N/kg, Masse m = 60 kg, Gewichtskraft F = 588 N · Mond: g = 1,6 N/kg, m = 60 kg, F = 96 N · Jupiter: g = 24,8 N/kg, m = 60 kg, F = 1488 N. Die Zeile „m = 60 kg“ steht auf jeder Karte gleich — genau daran wird die Einsicht sichtbar. Alternativ die drei Statuszeilen am Beamer zeigen.",
+  "merksatz": [
+   "gleich",
+   "1,6 N/kg"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Mond",
+    "1,6 N/kg",
+    "96 N"
+   ],
+   [
+    "Jupiter",
+    "24,8 N/kg",
+    "1488 N"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach dem Knopf Mond meldet die Statuszeile: g = 1,6 N/kg, Masse m = 60 kg (überall gleich), Gewichtskraft F = 96 N. Die Masse steht bei allen drei Orten bei 60 kg, nur g und F ändern sich.",
+   "typische_fehler": [
+    "„Auf dem Mond ist alles leichter“ wird auf die Masse übertragen (Antwort 1 oder 2).",
+    "Die 60 kg werden für eine Kraft gehalten; kg und N werden vertauscht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "9,8 N/kg",
+    "24,8 N/kg"
+   ],
+   "typische_fehler": [
+    "9,8 und 24,8 werden vertauscht, weil beide mit „,8“ enden.",
+    "Nur die Zahl wird eingetragen, die Einheit N/kg fehlt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das stimmt nicht, weil die Masse überall gleich bleibt. Am Bildschirm steht bei jedem Ort m = 60 kg. Nur der Ortsfaktor g ist auf dem Mond kleiner: 1,6 N/kg statt 9,8 N/kg. Darum wird dort nur die Gewichtskraft kleiner.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Masse m = 60 kg (überall gleich)“ steht bei Mond, Erde und Jupiter gleich da.",
+    "Der Mond zieht schwächer an dem Klavier als die Erde. Das Klavier hat aber gleich viel Stoff in sich."
+   ],
+   "typische_fehler": [
+    "Die Fehlvorstellung wird nur wiederholt statt widerlegt („Es ist eben leichter“).",
+    "„Auf dem Mond gibt es keine Schwerkraft“ — die Minidiagnose der Simulation antwortet darauf wörtlich: „Es gibt Schwerkraft – nur schwächer als auf der Erde.“",
+    "Masse und Gewichtskraft werden gleichgesetzt; beide Wörter werden für dasselbe benutzt."
+   ]
+  },
+  "hilfe3_wort": "Gewichtskraft",
+  "schwache": [
+   "Zuerst nur Erde und Mond vergleichen; die Zeile Jupiter später oder gemeinsam ausfüllen.",
+   "Die Einheit N/kg einmal laut sprechen lassen: Newton pro Kilogramm. Der Schrägstrich wird sonst als Oder-Zeichen gelesen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Das Alltagswort „leichter“ vorher klären: Es meint hier die Gewichtskraft, nicht die Masse."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Ordne Mond, Erde und Jupiter nach der Größe von g und schreibe die drei Werte untereinander auf. Wer mag, drückt in der Minidiagnose der Simulation den Knopf „Die Masse“ und liest die Rückmeldung vor: „Richtig! Die Masse (Materiemenge) ist überall gleich.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse, Gewichtskraft und Ortsfaktor. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Diese Simulation und masse-gewicht (fk4) zeigen g = 9,8 N/kg. Nachgemessen rechnen dagegen mit 9,81 N/kg: druck-flaeche, schweredruck, dichte und auftrieb (fk11 bis fk14) sowie arbeit, lageenergie und leistung-rs (fe1, fe2, fe6). Auf den Seiten fk11 bis fk14 kommt g gar nicht vor; nur fe2 zeigt den Wert 9,81 N/kg, wird dort aber ebenfalls nur abgelesen. Diese Seite hier liest g ab und rechnet nicht damit — für die Lernenden entsteht der Widerspruch deshalb nicht. Der Balkenvergleich rechts im Bild trägt die Beschriftungen „Mond: F = 96 N“, „Erde: F = 588 N“ und „Jupiter: F = 1488 N“ und darunter „Gewichtskraft im Vergleich (Masse überall 60 kg)“. Die Ableseaufgaben stützen sich trotzdem auf die Statuszeile, weil nur dort auch g steht."
+ },
+ {
+  "id": "fk6",
+  "lernziel": "Die Schülerinnen und Schüler lesen und zeichnen eine Kraft als Kraftpfeil: Die Länge des Pfeils zeigt, wie stark die Kraft ist (in Newton), die Pfeilrichtung zeigt die Richtung der Kraft. Sie begründen, warum die Zahl allein eine Kraft nicht beschreibt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Für den Zeichenauftrag: Lineal und unliniertes Blatt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zeichenauftrag und Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils der letzte Satz der Statuszeile plus ein gezeichneter Pfeil: 6 N und → → „Der Körper würde nach rechts gezogen.“ (langer Pfeil nach rechts) · 6 N und ↑ → „Der Körper würde nach oben gezogen.“ (gleich langer Pfeil nach oben) · 6 N und ↗ → „Der Körper würde schräg nach rechts oben gezogen.“ (gleich langer Pfeil schräg nach rechts oben). Danach die Vergleichskarte 2 N und → → „Der Körper würde nach rechts gezogen.“ mit einem deutlich kürzeren Pfeil. Wichtig: alle drei 6-N-Pfeile gleich lang zeichnen – nur so wird sichtbar, dass sich beim Richtungswechsel nur die Richtung ändert.",
+  "merksatz": [
+   "Kraftpfeil",
+   "stark"
+  ],
+  "tabelle_erwartet": [
+   [
+    "6 N und →",
+    "nach rechts",
+    "lang"
+   ],
+   [
+    "6 N und ↑",
+    "nach oben",
+    "lang"
+   ],
+   [
+    "6 N und ↗",
+    "schräg nach rechts oben",
+    "lang"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile endet nach 6 N und ↓ mit: Der Körper würde nach unten gezogen. Die Zahl 6 N bleibt beim Richtungswechsel stehen, es ändert sich nur die Richtung.",
+   "typische_fehler": [
+    "„nach rechts“ wird angekreuzt, weil das der Ausgangszustand ist und der Pfeil vorher dorthin zeigte.",
+    "Pfeilzeichen ↓ und ↑ werden verwechselt; Abhilfe: Zeichen und Wort gemeinsam an die Tafel schreiben."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "lang",
+    "oben"
+   ],
+   "typische_fehler": [
+    "„stark“ statt „lang“ – der Pfeil ist lang, die Kraft ist stark. Merksatz und Beispielzeile der Tabelle gemeinsam lesen: Spalte 3 fragt nach dem Pfeil, nicht nach der Kraft.",
+    "Bei der zweiten Lücke wird „rechts“ eingesetzt, weil vorher der Betrag eingestellt wurde und die Richtung noch auf → stand."
+   ]
+  },
+  "a3": {
+   "erwartung": "Jannis hat nicht recht, weil eine Kraft auch eine Richtung hat. Der Pfeil zeigt beides: Die Länge zeigt, wie stark die Kraft ist, die Pfeilrichtung zeigt die Richtung. 6 N nach oben wirken anders als 6 N nach unten.",
+   "alternativen": [
+    "Beispiel aus der Simulation: Bei 6 N und ↑ würde der Körper nach oben gezogen, bei 6 N und ↓ nach unten – die Zahl ist dieselbe.",
+    "Bezug auf das Klavier: Ein Pfeil nach unten und ein Pfeil nach schräg oben bedeuten etwas ganz anderes, auch wenn die Zahl gleich wäre.",
+    "Kurzform ohne Beispiel: „Die Zahl sagt nur, wie stark die Kraft ist. Sie sagt nicht, wohin sie zieht.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Jannis wird nur wiederholt statt widerlegt.",
+    "Es wird nur „der Pfeil ist länger“ genannt; die Richtung fehlt – genau darum geht die Aufgabe.",
+    "Der Angriffspunkt wird als Begründung genannt; das ist richtig gedacht, gehört aber nicht zum Lernziel dieser Seite."
+   ]
+  },
+  "hilfe3_wort": "Richtung",
+  "schwache": [
+   "Zuerst nur die Zahlen 2 N, 4 N und 6 N drücken und die Pfeillänge vergleichen; die Richtungsknöpfe erst danach freigeben.",
+   "Die fünf Pfeilzeichen mit dem passenden Wort auf Kärtchen legen (→ nach rechts, ← nach links, ↑ nach oben, ↓ nach unten, ↗ schräg nach rechts oben) und neben das Heft legen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Für den Zeichenauftrag ein Blatt mit vorgedrucktem Punkt und einer waagerechten Linie ausgeben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke 6 N und ↑, dann 6 N und ↓. Zeichne beide Pfeile untereinander und schreibe in einem Satz auf, was gleich bleibt und was sich ändert.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraft als gerichtete Größe, Darstellung durch Kraftpfeile; der Kernlehrplan nennt unter dem Basiskonzept Wechselwirkung ausdrücklich „Kraftvektoren“. Diese Einheit trägt K4 (Daten aufzeichnen und darstellen) über den Zeichenauftrag – der Kraftpfeil ist die Darstellung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Fachwortzählung: neu ist genau EIN Fachwort, „Kraftpfeil“. „Richtung“ und „Stärke“ bleiben nach Zählregel 5 Alltagswörter (kein Formelzeichen, keine Einheit) und stehen als Begriff nicht in der Wortbank; dort steht allein das Lückenadjektiv „stark“, wie „stärker“ in fk12. Das Wort „Größe“ stand im Entwurf in Wortbank und Merksatz-Lücke – dort hätte es als zweites Fachwort gezählt, außerdem meint es in fk4 schon etwas anderes („zwei verschiedene Größen“); die Seite sagt deshalb durchgehend „stark/Stärke“. Hinweise zur Wortwahl: Der Bildschirm schreibt „Betrag“, glossiert ihn aber selbst zweimal – „der Betrag (wie stark, in Newton)“ und der Antwortknopf „Den Betrag (die Stärke)“; die Überschrift der Simulation sagt „Größe“. „Betrag“ ist für DaZ ein falscher Freund (Geldbetrag) und bleibt weg, ebenso der Ausdruck „gerichtete Größe“ aus dem Hinweistext. „Angriffspunkt“ wird nicht eingeführt; wer das Fachwort braucht, klärt es mündlich am Bildtext „● = Angriffspunkt (wo die Kraft wirkt)“. Datenlage: Die Pfeillänge ist im Programm Betrag · 15 Pixel und hängt nicht von der Richtung ab – „kurz“ bei 2 N, „lang“ bei 6 N und „bleibt gleich lang“ beim Richtungswechsel sind damit belegt. Eine Längenzahl steht nirgends am Bildschirm und wird nicht verlangt; die Wortpaare der Spalte 3 sind reine Beobachtung am Bild, alle Werte der Spalte 2 stehen wörtlich im letzten Satz der Statuszeile."
+ },
+ {
+  "id": "fk7",
+  "lernziel": "Die Schülerinnen und Schüler bestimmen die Gesamtkraft aus zwei Kräften, die auf einer Linie an einem Körper ziehen: Bei gleicher Richtung werden die Beträge addiert, bei Gegenrichtung wird die kleinere Zahl von der größeren abgezogen. Sie geben an, dass die Gesamtkraft in die Richtung der größeren Kraft zeigt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die beiden Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Für den Alltagsversuch: ein Seil oder Handtuch und ein Karton.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils die eingestellten Kräfte und die Gesamtkraft dazu: „Richtung“ bei F1 → 3 N nach links und 2 N nach rechts → Gesamtkraft 1 N nach links (gegeneinander, abziehen: 3 N − 2 N = 1 N) · „– N“ bei F2 → 3 N nach links und 1 N nach rechts → Gesamtkraft 2 N nach links (gegeneinander, abziehen: 3 N − 1 N = 2 N). Die Ausgangskarte 3 N nach rechts und 2 N nach rechts → 5 N nach rechts (addieren: 3 N + 2 N = 5 N) steht als Beispielzeile schon im Heft; sie wird als Erstes gezeigt. Zu jeder Karte die zwei roten Pfeile und den grünen Pfeil aus dem Bildauftrag an die Tafel zeichnen.",
+  "merksatz": [
+   "addieren",
+   "abziehen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "„Richtung“ bei F1",
+    "3 N nach links und 2 N nach rechts",
+    "1 N nach links"
+   ],
+   [
+    "„– N“ bei F2",
+    "3 N nach links und 1 N nach rechts",
+    "2 N nach links"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Das ist die dritte Tabellenzeile: Die Statuszeile meldet dort „Gesamtkraft = 2 N nach links“. Beide Kräfte ziehen gegeneinander, also 3 N − 1 N = 2 N; die Richtung kommt von der größeren Kraft F1.",
+   "typische_fehler": [
+    "Option 2 (4 N nach links): Es wird addiert statt abgezogen – die Regel für gleiche Richtung wird auf die Gegenrichtung übertragen.",
+    "Option 3 (2 N nach rechts): Die Zahl stimmt, die Richtung nicht. Die Gesamtkraft zeigt immer dorthin, wohin die größere Kraft zieht.",
+    "F2 wird für die stärkere Kraft gehalten, weil sie in der Statuszeile an zweiter Stelle steht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5 N",
+    "1 N"
+   ],
+   "typische_fehler": [
+    "In der zweiten Lücke steht 5 N: Es wird addiert, obwohl die Kräfte gegeneinander ziehen.",
+    "In der zweiten Lücke steht 2 N oder 3 N – eine der beiden Einzelkräfte wird abgeschrieben statt gerechnet.",
+    "Die Richtung im Nachsatz wird überlesen. Beide Sätze deshalb einmal ganz vorlesen lassen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das stimmt nicht, weil zwei Kräfte auch gegeneinander ziehen können. Dann wird die kleinere Zahl von der größeren abgezogen. 3 N nach links und 2 N nach rechts ergeben nur 1 N nach links. Das ist weniger als 3 N allein.",
+   "alternativen": [
+    "Beispiel aus der Simulation ohne Rechnung: „Bei 3 N nach links und 2 N nach rechts steht in der Statuszeile nur 1 N. Vorher war eine Kraft schon 3 N groß.“",
+    "Alltagsbeispiel: Beim Tauziehen ziehen beide Mannschaften, und das Seil bewegt sich kaum. Zusammen kommt weniger heraus als bei einer Mannschaft allein.",
+    "Kurzform ohne Zahlen: „Nur wenn beide in dieselbe Richtung ziehen, wird es stärker.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Nour wird nur wiederholt statt widerlegt.",
+    "Es wird der Fall gleiche Richtung erklärt (3 N + 2 N = 5 N) – richtig gerechnet, aber am Thema der Aufgabe vorbei.",
+    "„Die Kräfte sind dann weg“ – die Kräfte wirken weiter, nur die Gesamtkraft ist kleiner. Am Bild mit den zwei roten Pfeilen zeigen."
+   ]
+  },
+  "hilfe3_wort": "abgezogen (auch richtig: subtrahiert, voneinander abgezogen)",
+  "schwache": [
+   "Zuerst nur die Beispielzeile gemeinsam laut lesen und dabei mit dem Finger auf die Statuszeile am Bildschirm zeigen; erst danach Zeile 2 bearbeiten.",
+   "Zwei Papierpfeile ausschneiden (lang = 3 N, kurz = 2 N) und vor jeder Zeile auf den Tisch legen: erst beide nebeneinander in eine Richtung, dann gegeneinander.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen und die beiden Rechenwörter farbig umranden.",
+   "Beim Bedienen die zwei Knopfgruppen mit Klebezetteln „F1“ und „F2“ markieren – die Aufschriften „– N“, „+ N“ und „Richtung“ stehen zweimal gleich da.",
+   "Bei Aufgabe 3 zuerst mündlich antworten lassen und den Satz dann gemeinsam aufschreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke bei F2 auf „+ N“ und dann auf „Richtung“. Jetzt ziehen beide Kräfte nach links. Lies die Gesamtkraft ab und schreibe auf, was sich gegenüber der ersten Tabellenzeile geändert hat und was gleich geblieben ist.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Zusammensetzen von Kräften auf einer Wirkungslinie. Hinweise zur Wortwahl und zu den Grenzen der Simulation: (1) Die Simulation schreibt „Gesamtkraft (Resultierende)“ – auf der Schülerseite steht nach der Ein-Name-Regel durchgehend nur „Gesamtkraft“; „Resultierende“ wird nicht eingeführt und steht nicht in der Wortbank. Neue Fachwörter führt diese Einheit nach dem Seitenplan keine ein. (2) Statt „entgegengesetzt/subtrahieren“ heißt es im Heft „gegeneinander/abziehen“; beide Bildschirmwörter dürfen mündlich genannt werden. (3) Die Statuszeile schreibt die Einzelkräfte mit Klammer („F1 = 3 N (rechts)“) und die Gesamtkraft mit Präposition („5 N nach rechts“) – das Heft benutzt überall nur die zweite Form. (4) Die Betragsstriche |3 N − 2 N| der Statuszeile werden nicht abgeschrieben; im Heft heißt es „die kleinere Zahl von der größeren abziehen“. (5) Die Reihenfolge der Arbeitsschritte ist bewusst gewählt: Wer zuerst bei F1 auf „– N“ drückt und danach die Richtung umkehrt, landet bei zwei gleich großen Kräften gegeneinander. Dieser Fall (Gesamtkraft 0 N) ist im Simulationsdump nicht belegt und gehört zu fk8 (Kräftegleichgewicht); er kommt hier deshalb nicht vor. Zurückstellen geht immer mit „+ N“. (6) Die drei Quizfragen der Simulation stellen eigene Aufgaben: Frage 1 „Zwei Kräfte 3 N und 2 N ziehen in dieselbe Richtung“ (Lösung „5 N“, Auswahl 5 N · 1 N · 6 N) – das sind genau die Werte der Beispielzeile; Frage 2 „Zwei Kräfte 5 N und 3 N ziehen in entgegengesetzte Richtungen“ (Lösung „2 N“, Auswahl 2 N · 8 N · 0 N); Frage 3 „Zwei gleich große Kräfte ziehen in entgegengesetzte Richtungen“ (Lösung „0 N (Gleichgewicht)“) – dieser Fall gehört zu fk8. Nur Frage 1 passt zu den eingestellten Werten; die Zahlen der Fragen 2 und 3 stehen nirgends in der Statuszeile. Die Fragen werden im Heft nicht als Ablesequelle benutzt und sollten erst nach der Tabelle freigegeben werden. (7) Vorwissen aus fk6: Jede Kraft hat eine Zahl und eine Richtung (Kraftpfeil). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fk8",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass an einem ruhenden Körper Kräfte wirken können: Sind Haltekraft und Gewichtskraft gleich groß und entgegengesetzt gerichtet, ist die Gesamtkraft null und der Körper bleibt in Ruhe (Kräftegleichgewicht). Sie erkennen, dass Ruhe nicht „keine Kräfte“ bedeutet, und lesen ab, dass bei 4 N Haltekraft 1 N nach unten übrig bleibt und die Lampe sich bewegt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: Lampe oder Beutel an einer Schnur, dazu ein Kraftmesser.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen; auf jeder Karte steht die Lampe mit zwei Pfeilen und darunter der Bildtext des Bildschirms. Karte 1 (Anfang, Haltekraft 5 N): Pfeil nach oben „Halte 5 N“, Pfeil nach unten „Gewicht 5 N“, darunter „Gesamtkraft = 0 N → Gleichgewicht (bleibt in Ruhe)“; die Statuszeile lautet dazu: „Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.“ Karte 2 (nach einmal – N): kurzer Pfeil nach oben „Halte 4 N“, unverändert langer Pfeil nach unten „Gewicht 5 N“, darunter „Gesamtkraft = 1 N nach unten → Bewegung!“; die Statuszeile lautet dazu: „Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“ Karte 3 (nach dem Knopf zurück in die Mitte): wieder Karte 1. Wichtig: die beiden Pfeile immer senkrecht übereinander zeichnen, damit das Aufheben sichtbar wird.",
+  "merksatz": [
+   "null",
+   "Kräftegleichgewicht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "4 N (nach – N)",
+    "Gesamtkraft = 1 N nach unten",
+    "Sie bewegt sich."
+   ],
+   [
+    "wieder 5 N",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach einmal – N steht im Bild unter der Lampe: „Gesamtkraft = 1 N nach unten → Bewegung!“. Die Statuszeile daneben sagt dasselbe: „Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten.“ Beide Stellen führen auf dieselbe Antwort; die Aufgabe fragt nach dem Bild, weil dort zusätzlich die Pfeillängen dazu passen.",
+   "typische_fehler": [
+    "„Gesamtkraft = 0 N“ wird angekreuzt, weil dieser Bildtext im Ausgangszustand die ganze Zeit dastand.",
+    "Es wird zweimal auf – N gedrückt; dann steht dort „Gesamtkraft = 2 N nach unten“ und keine Option passt. Vorher mit „zurück in die Mitte“ neu beginnen.",
+    "Option 3 wird gewählt: Wenn sich etwas bewegt, sei die Gewichtskraft „weg“ – Verwechslung von Ursache und Wirkung."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "unten",
+    "bewegt"
+   ],
+   "typische_fehler": [
+    "„oben“ statt „unten“ – die Richtung der übrig bleibenden Kraft wird mit der Richtung des Seils verwechselt.",
+    "Statt 1 N wird 4 N eingesetzt; dann fehlt der Schritt 5 N − 4 N. Am Bildtext gemeinsam nachlesen.",
+    "„bleibt“ statt „bewegt“, weil der Merksatz von Ruhe spricht und ungeprüft übernommen wird."
+   ]
+  },
+  "a3": {
+   "erwartung": "Es wirken zwei Kräfte, aber sie sind gleich groß und ziehen in verschiedene Richtungen. Die Gewichtskraft zieht nach unten, das Seil zieht mit der Haltekraft nach oben. Zusammen ergibt das die Gesamtkraft null. Darum hängt die Lampe still.",
+   "alternativen": [
+    "Mit den Zahlen der Simulation: „5 N nach oben und 5 N nach unten heben sich auf. Es bleibt 0 N übrig.“",
+    "Gegenprobe statt Beschreibung: „Wenn wirklich keine Kraft zöge, müsste das Seil auch schlaff sein. Es ist aber straff gespannt.“",
+    "Zweiter Fall als Beleg: „Bei 4 N Haltekraft bleibt 1 N übrig – dann bewegt sich die Lampe sofort. Also wirken Kräfte.“",
+    "Kurzform ohne Beispiel: „Die Kräfte sind da, sie gleichen sich aus.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Jannis wird nur wiederholt: „Es zieht nichts, weil sie sich nicht bewegt.“",
+    "Gesamtkraft null wird als „keine Kräfte“ gedeutet – genau die Fehlvorstellung, gegen die die Seite arbeitet. Die Simulation widerlegt sie selbst: „Doch, es wirken Kräfte – sie gleichen sich nur aus.“",
+    "Nur eine Kraft wird genannt (meist die Gewichtskraft); die Haltekraft des Seils fehlt.",
+    "Die beiden Kräfte werden addiert statt gegeneinander gerechnet (10 N)."
+   ]
+  },
+  "hilfe3_wort": "null (auch richtig: 0 N)",
+  "schwache": [
+   "Zuerst nur den Anfang und einmal – N vergleichen; den Knopf zurück in die Mitte erst danach freigeben.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen; „Kräftegleichgewicht“ dabei in zwei Teilen sprechen und schreiben (Kräfte – Gleichgewicht).",
+   "Zwei gleich lange Papierstreifen als Pfeile auf den Tisch legen und gegeneinander schieben; danach einen Streifen kürzen.",
+   "Den Bildtext unter der Lampe mit dem Finger zeigen lassen, bevor die Tabellenzeile geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Fragen der Minidiagnose (weit unter dem Bild, im Protokollteil) und schreibe auf, welche Rückmeldung du bekommen hast.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Kräftegleichgewicht am ruhenden Körper; trägt UF4 (Wissen vernetzen: Ruhe wird auf das Zusammenwirken zweier Kräfte zurückgeführt) und B1. Hinweise zur Wortwahl: Das Wort „Kräftegleichgewicht“ ist mit 18 Buchstaben für A2/DaZ schwer; es steht am Bildschirm im Hinweis neben der Statuszeile („… ist die Gesamtkraft 0 – die Lampe bleibt in Ruhe. Das heißt Kräftegleichgewicht.“); die Überschrift trägt dazu nur ein Waagen-Zeichen, nicht das Wort. Beim Sprechen in zwei Teilen zerlegen (Kräfte – Gleichgewicht). „Haltekraft“ bleibt Alltagswort mit Begriffssatz im Einstieg und steht bewusst nicht in der Wortbank; „Gesamtkraft“ und „Gewichtskraft“ sind Rückverweise auf fk7 bzw. fk4/fk5 und zählen dort. Nicht einführen: Normalkraft, Resultierende, Kräftefreiheit. Achtung: Die Rückmeldung des Bildschirms zur Buch-Frage schreibt „Gewichtskraft und Normalkraft wirken ständig“ – im Unterricht dafür „Kraft des Tisches“ sagen, so heißt es an anderer Stelle am Bildschirm auch („Tischkraft“). Der Reset-Knopf trägt am Bildschirm vor der Aufschrift ein Kreispfeil-Zeichen, das die Heftschrift nicht drucken kann; im Heft steht deshalb nur die Wortmarke „zurück in die Mitte“ – beim Vorstellen der Simulation einmal auf den Knopf zeigen. Die 5 N sind reine Anzeigewerte, eine Masse nennt die Simulation nicht; keine Rechnung mit F = m · g. Kompetenzcodes stehen nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fk9",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass ein angestoßener Wagen nur stehen bleibt, weil die Reibung ihn bremst. Sie lesen das Tempo v in m/s in der Statuszeile ab und beschreiben mit dem Wort Trägheit, dass ein Körper ohne bremsende Kraft sein Tempo und seine Richtung behält.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein Spielzeugauto auf Teppich und auf glattem Tisch.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils mit der Statuszeile im Wortlaut. Tisch: „Tisch (viel Reibung), Anstoß mit 8 m/s. Der Wagen stand nach 2,0 s still und war 8,0 m weit gekommen.“ – dazu der Bildtext „die Reibung bremst – deshalb bleibt er stehen“. Eis: „Eis (wenig Reibung), Anstoß mit 8 m/s. Der Wagen stand nach 16,0 s still und war 64,0 m weit gekommen.“ Weltall: „Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 8,0 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.“ Vierte Karte: „Je weniger Reibung, desto länger rollt der Wagen. Ohne Reibung hört er nie auf.“ Für Spalte 3 zählt nur die Zeit (2,0 s · 16,0 s · nie); die Weglängen 8,0 m und 64,0 m sind Zugabe und gehören in keine Tabellenspalte.",
+  "merksatz": [
+   "Trägheit",
+   "bremst"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Eis",
+    "wenig Reibung",
+    "nach 16,0 s steht er still"
+   ],
+   [
+    "Weltall",
+    "keine Reibung",
+    "er bleibt nie stehen"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Der Bus wird langsamer, auf den Becher wirkt keine bremsende Kraft. Er behält sein Tempo und rutscht deshalb nach vorn – wie der Wagen im Weltall: v immer noch 8,0 m/s.",
+   "typische_fehler": [
+    "Antwort 2: Trägheit wird für eine Kraft gehalten, die den Becher nach vorn drückt. Trägheit ist keine Kraft, sondern die Eigenschaft, Tempo und Richtung zu behalten.",
+    "Antwort 3: Es wird ein unsichtbarer Schubs gesucht, weil „von allein bewegt sich nichts“ die Alltagsvorstellung ist."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "länger",
+    "Tempo"
+   ],
+   "typische_fehler": [
+    "„bremst“ landet in der ersten Lücke, weil das Wort aus dem Merksatz noch im Kopf ist; der Satz spricht aber vom Rollen.",
+    "In die zweite Lücke wird „Trägheit“ gesetzt. Der Wagen behält sein Tempo; Trägheit ist nur der Name dafür."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im Weltall gibt es keine Reibung, deshalb bleibt das Tempo gleich. Das Raumschiff behält Tempo und Richtung von allein. Triebwerke braucht es nur zum Schnellerwerden, zum Bremsen oder zum Ändern der Richtung.",
+   "alternativen": [
+    "Bezug auf die Statuszeile: Im Weltall steht weiter v immer noch 8,0 m/s, obwohl niemand mehr anstößt.",
+    "Kurzform: „Ein Raumschiff wird von allein nicht langsamer.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Der Anstoß gilt als Vorrat, der leer wird (Impetus, genau Vermutung 1). Gegenfrage: Was soll ausgehen? Die Statuszeile zeigt v immer noch 8,0 m/s.",
+    "Begründung über Schwerelosigkeit („da ist ja nichts“). Die Simulation zeigt nur „keine Reibung“; deshalb spricht auch die Schülerseite nur von Reibung."
+   ]
+  },
+  "hilfe3_wort": "Bremsen (auch richtig: Schnellerwerden, Lenken, Richtung ändern)",
+  "schwache": [
+   "Zuerst nur Tisch und Weltall vergleichen, Eis erst danach dazunehmen.",
+   "Bedienreihenfolge auf einen Merkzettel: erst Untergrund, dann „Anstoßen“, dann „Zurücksetzen“. „Zurücksetzen“ springt immer auf Tisch – sonst wird dreimal derselbe Untergrund gemessen. Auf Eis dauert es 16 Sekunden, bis der Wagen steht; das ist kein Fehler.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Aufgabe 1 nachspielen: Stuhl anhalten, Radiergummi auf der Hand rutscht weiter."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen wörtlich ab und streiche an, welches Wort sich jedes Mal ändert.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Trägheit, Reibung als bremsende Kraft. Die Bildschirmzeile „Ohne Kraft ändert sich der Bewegungszustand nicht | Newtons 1. Gesetz“ steht nur hier; auf der Schülerseite heißt es „Tempo und Richtung“. Neu sind genau Trägheit und Tempo v in m/s. „Reibung“ ist ein Alltagswort ohne Formelzeichen und Einheit, zählt deshalb nicht mit (Zählregel 5); es bekommt im Alltagsteil einen Begriffssatz und steht weder in der Wortbank noch in einer Merksatz-Lücke. Diese Einheit ist Träger für „Tempo v in m/s“; fk10 und fe3 verweisen zurück (Zählregel 4) – fk10 zeigt am Bildschirm „Geschwindigkeit“, im Heft bleibt es „Tempo v“. Datenlage: Der Fakten-Dump zeigt nur den Weltall-Endzustand, weil simfakten jeden Knopf nur einmal drückt. Tisch und Eis wurden mit simcheck/werte.js nachgemessen: Tisch steht nach 2,0 s bei 8,0 m, Eis nach 16,0 s bei 64,0 m (Anstoß 8 m/s, a = −4,0 bzw. −0,5 m/s²). Spalte 3 nimmt darum die abgelesene Zeit; im Weltall gibt es keine Stoppzeit, dort heißt die Antwort „er bleibt nie stehen“. „Weg = 0,1 m“, „Weg = 0,3 m“ und das „nach 0,0 s“ des Dumps sind Momentaufnahmen während der Fahrt, gehören keinem Untergrund zu – nicht drucken. Kompetenzen: Aufgabe 3 trägt B2, die Tabelle E5."
+ },
+ {
+  "id": "fk10",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Kräfte immer paarweise auftreten: Drückt ein Körper, drückt der andere gleich stark zurück (Wechselwirkung, actio = reactio). Sie begründen, dass sich die beiden Kräfte nicht aufheben, weil sie auf zwei verschiedene Körper wirken, und lesen am Bildschirm ab, dass der leichtere Körper dabei schneller wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei Rollbretter oder zwei Bürostühle, auf denen sich zwei Lernende abstoßen; ein Luftballon für den Zuhause-Auftrag.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils der Wortlaut der Statuszeile, je Körper eine eigene Zeile: Karte 1 „Zwei Eisläufer stoßen sich ab. Beide Kräfte sind gleich groß (actio = reactio).“ Läufer A: 60 kg – 2,0 m/s · Läufer B: 60 kg – 2,0 m/s · „Gleiche Masse, gleiche Geschwindigkeit.“ Karte 2 „Vom Boot auf den Steg springen. Beide Kräfte sind gleich groß (actio = reactio).“ Boot: 300 kg – 0,40 m/s · Person: 60 kg – 2,0 m/s · „Der leichtere Körper wird 5-mal so schnell.“ Karte 3 „Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio).“ Rakete: 600 kg – 0,20 m/s · Gas: 20 kg – 6,0 m/s · „Der leichtere Körper wird 30-mal so schnell.“ Auf jede Karte zwei gleich lange, entgegengesetzte Pfeile zeichnen und daneben schreiben, auf welchen Körper jeder Pfeil wirkt. Wichtig: 0,20 und 2,0 an die Tafel untereinander schreiben – die beiden Zahlen werden am häufigsten verwechselt.",
+  "merksatz": [
+   "Wechselwirkung",
+   "verschiedene Körper"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Läufer B",
+    "60 kg",
+    "2,0 m/s"
+   ],
+   [
+    "Boot",
+    "300 kg",
+    "0,40 m/s"
+   ],
+   [
+    "Person",
+    "60 kg",
+    "2,0 m/s"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet nach „Rakete“: Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Die schwere Rakete ist die langsame, das leichte Gas das schnelle.",
+   "typische_fehler": [
+    "Option 2 wird angekreuzt: 0,20 und 6,0 werden vertauscht, weil die schwere Rakete für „stärker, also schneller“ gehalten wird.",
+    "0,20 m/s wird als 2,0 m/s gelesen – die beiden Zahlen stehen in derselben Zeile. Beim Vorlesen deutlich „null Komma zwei null“ sagen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gleich schnell",
+    "leichtere"
+   ],
+   "typische_fehler": [
+    "In der ersten Lücke steht „verschiedene Körper“, weil das Wort aus dem Merksatz zuerst einfällt; die Masse 60 kg / 60 kg gemeinsam noch einmal vorlesen.",
+    "In der zweiten Lücke steht „schwerere“ – Kernfehlvorstellung „der Schwerere drückt stärker“. Gegenbeleg ist der Bildtext „Kraft = Gegenkraft · gleiche Kraft, aber nicht dieselbe Geschwindigkeit“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour hat nicht recht, weil das Klavier genauso stark zurückdrückt. Die zwei Kräfte sind gleich groß. Sie wirken auf zwei verschiedene Körper: eine auf das Klavier, eine auf Jannis. Jannis ist viel leichter. Darum rollt nur er weg.",
+   "alternativen": [
+    "Belegt am Bildschirm-Beispiel Boot: Die Person drückt das Boot weg, das Boot drückt die Person zurück – die Person wird 5-mal so schnell.",
+    "Belegt am Beispiel Rakete: Die Rakete drückt das Gas nach unten, das Gas drückt die Rakete nach oben.",
+    "Kurzform ohne Beispiel: „Kräfte gibt es immer zu zweit. Wer drückt, wird auch gedrückt.“ – reicht für die volle Wertung.",
+    "Der Hinweis, dass das Klavier viel schwerer ist und sich deshalb kaum bewegt, gilt als richtig, solange auch die gleich große Kraft genannt wird."
+   ],
+   "typische_fehler": [
+    "„Die Kräfte heben sich auf, also passiert nichts“ – Verwechslung mit dem Kräftegleichgewicht aus fk8. Dort greifen beide Kräfte an EINEM Körper an, hier an zwei verschiedenen. Die Simulation sagt es wörtlich: „Nein – dann wäre es ein Gleichgewicht an einem Körper.“",
+    "„Das Klavier ist schwerer, also drückt es stärker“ – gleich große Kraft wird mit gleicher Wirkung verwechselt.",
+    "Nours Aussage wird nur wiederholt statt widerlegt.",
+    "Es wird nur der Massenunterschied genannt; die zweite Kraft fehlt – genau darum geht die Aufgabe."
+   ]
+  },
+  "hilfe3_wort": "Jannis (auch richtig: er, das Rollbrett)",
+  "schwache": [
+   "Zuerst nur Eisläufer und Boot vergleichen; die Rakete erst freigeben, wenn die Tabelle steht.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird – nur die letzte Spalte wird selbst ausgefüllt.",
+   "Die Zahlen 0,20 · 0,40 · 2,0 · 6,0 vorab auf Kärtchen legen und der Reihe nach zuordnen, statt sie aus der langen Statuszeile herauszusuchen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Den Versuch mit zwei Bürostühlen körperlich durchführen: beide stoßen sich ab, beide rollen weg – das trägt die Aussage „zwei verschiedene Körper“ ohne Lesen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Rakete und schreibe auf, welcher Körper leichter ist und welcher schneller wird. Beantworte danach die drei Fragen im Quiz der Simulation.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Wechselwirkungsprinzip (actio = reactio), Abgrenzung zum Kräftegleichgewicht. Wortwahl: Der Bildschirm schreibt „Geschwindigkeit“, das Heft durchgehend „Tempo v“ (in fk9 eingeführt) – beide Wörter im Unterricht einmal nebeneinander nennen. Der Bildschirm beschriftet die zweite Kraft als „Gegenkraft“; auf der Schülerseite steht nur „drückt zurück“, weil „Wechselwirkung“ das einzige neue Fachwort dieser Einheit ist (Fachwort-Zuteilung des Seitenplans). Wer „Gegenkraft“ mündlich einführt, zeigt dazu die beiden Bildpfeile „Kraft“ und „Gegenkraft“. „actio = reactio“ steht in jeder Statuszeile, bleibt aber Latein und wird nie als Lückenwort verlangt. Der Faktor 5-mal bzw. 30-mal wird abgelesen, nicht gerechnet – die Division durch eine Dezimalzahl ist für diese Zielgruppe zu schwer. Die Simulation kennt kein Rollbrett; das Rollbrett gehört nur zur Rahmengeschichte. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fk11",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei gleichbleibender Kraft (588,6 N) für Turnschuhe, Stöckelabsatz und Skier die Fläche A und den Druck p am Bildschirm ab. Sie begründen daran: Bei gleicher Kraft macht eine kleine Fläche einen großen Druck, eine große Fläche einen kleinen. Gerechnet wird auf dieser Seite ausdrücklich nicht; p = F / A steht am Bildschirm, wird aber nicht eingesetzt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig: Nur aus der STATUSZEILE ablesen lassen. Das Bild schreibt beim Stöckelabsatz „Druck: 5,89 MPa“ und oben „F = 589 N“, die Statuszeile dagegen „p = 5,89 MPa = 5886,0 kPa“ und „588,6 N“. Im Heft stehen durchgehend kPa und 588,6 N; MPa kommt auf der Schülerseite nicht vor. Der Bildschirm nennt die Fläche „Auflagefläche“, das Heft durchgehend „Fläche A“ — beide Wörter einmal nebeneinander nennen. Ebenso beim Kasten selbst: Über der Statuszeile steht am Bildschirm „Nachgerechnet“, das Heft sagt „Statuszeile“ — einmal zeigen, welcher Kasten gemeint ist. Die zwei Regler (Masse, Auflagefläche) bleiben unberührt, drei Knopfdrücke genügen. Der Knopf Elefant wird auf der Schülerseite nicht gebraucht (siehe Zusatz).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Turnschuhe: A = 300 cm² = 0,0300 m², p = 19,6 kPa · Stöckelabsatz: A = 1 cm² = 0,0001 m², p = 5886,0 kPa · Skier: A = 2800 cm² = 0,2800 m², p = 2,1 kPa. Auf jeder Karte steht oben dieselbe Kopfzeile „F = m · g = 60 kg · 9,81 N/kg = 588,6 N“ — genau an dieser gleich bleibenden Zeile wird die Einsicht sichtbar. Alternativ die drei Statuszeilen am Beamer zeigen. Den Vergleichsbalken der Simulation nicht ausmessen lassen: Er ist logarithmisch („Balken logarithmisch“), das Verhältnis 300 : 1 ist an der Länge nicht ablesbar.",
+  "merksatz": [
+   "Druck",
+   "kleiner"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Stöckelabsatz",
+    "1 cm²",
+    "5886,0 kPa"
+   ],
+   [
+    "Skier",
+    "2800 cm²",
+    "2,1 kPa"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile zeigt bei allen drei Knöpfen dieselbe Kraft: F = m · g = 60 kg · 9,81 N/kg = 588,6 N. Nur die Fläche A wechselt — 1 cm² gibt 5886,0 kPa, 300 cm² gibt 19,6 kPa, 2800 cm² gibt 2,1 kPa. Kleinste Fläche, größter Druck.",
+   "typische_fehler": [
+    "Antwort 1: „große Fläche“ wird mit „großer Druck“ gleichgesetzt; die Gegenläufigkeit ist die typische Bruchstelle.",
+    "Antwort 2: Weil die Kraft gleich bleibt, wird auch der Druck für gleich gehalten.",
+    "Der Druckbalken wird als Verhältnis gelesen. Er ist logarithmisch; der Stöckelabsatz wird dadurch massiv unterschätzt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5886,0 kPa",
+    "2,1 kPa"
+   ],
+   "typische_fehler": [
+    "Vom Bild statt aus der Statuszeile abgelesen: dort steht „Druck: 5,89 MPa“ — dieselbe Größe in einer anderen Einheit.",
+    "Die vierstellige Zahl 5886,0 wird neben 2,1 nicht als die größere gelesen; Ziffernzahl statt Wert.",
+    "Die Einheit kPa fehlt, es wird nur die Zahl eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die breiten Träger machen die Fläche A größer. Die Kraft bleibt gleich groß. Deshalb ist der Druck auf der Schulter kleiner, und der Rucksack schneidet nicht mehr ein.",
+   "alternativen": [
+    "Verweis auf die Tabelle: gleiche Kraft 588,6 N, aber 1 cm² gibt 5886,0 kPa und 2800 cm² nur 2,1 kPa.",
+    "Vergleich mit dem Podest: Die schmalen Rollen machen Dellen, die breiten Bretter nicht — gleiches Klavier, größere Fläche A.",
+    "Umgekehrt formuliert: Dünne Schnüre haben eine kleine Fläche A, deshalb ist dort der Druck groß."
+   ],
+   "typische_fehler": [
+    "Es wird mit dem Gewicht argumentiert („der Rucksack ist zu schwer“) statt mit der Fläche A.",
+    "Die Aussage wird nur wiederholt („breit tut nicht weh“), ohne Fläche und Druck zu nennen.",
+    "Kraft und Druck werden als dasselbe benutzt; beide Wörter stehen für dieselbe Sache."
+   ]
+  },
+  "hilfe3_wort": "kleiner",
+  "schwache": [
+   "Zuerst nur Turnschuhe und Stöckelabsatz vergleichen; die Zeile Skier später oder gemeinsam ausfüllen.",
+   "Die Statuszeile ist eine lange Zeile mit vier Abschnitten. Achtung: Im Abschnitt „Der Druck“ beginnen ZWEI Zeilen mit „p =“ — zuerst die Rechnung („p = F / A = 588,6 N / 0,0300 m²“), erst danach das Ergebnis („p = 19,6 kPa“). Gebraucht wird nur die zweite; sie ist die einzige Zeile, die „p =“ UND kPa trägt (kPa steht sonst nur noch in Klammern im Abschnitt „Zum Vergleich“). Den Finger darauflegen und nur diese vorlesen lassen.",
+   "Das lange Wort Auflagefläche vorher zerlegen: die Fläche, auf der etwas aufliegt. Danach nur noch „Fläche A“ benutzen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Die Einheit kPa einmal laut sprechen: Kilopascal. 1 kPa sind 1000 Pa — der Bildschirm sagt es im Hinweis."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Elefant und lies ab — F = 49050,0 N, A = 2400 cm², p = 204,4 kPa. Schreibe auf, was größer ist: der Druck des Elefanten oder der Druck der Person auf dem Stöckelabsatz (5886,0 kPa). Wichtig für die Lehrkraft: Der Elefant-Knopf verändert ZWEI Größen gleichzeitig (Masse 60 → 5000 kg und Fläche 300 → 2400 cm²). Er passt deshalb nicht in die Messreihe „gleiche Kraft, andere Fläche“ und bleibt Zusatzaufgabe.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Druck und Auflagefläche, Kraftwirkung auf Flächen. Der Alltagsauftrag mit Daumen und Bleistiftende trägt UF2, die Erklär-Aufgabe zum Rucksack B2. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Diese Simulation rechnet intern mit g = 9,81 N/kg, masse-gewicht und ortsfaktor (fk4, fk5) zeigen 9,8 N/kg. Die Förderseiten lesen nur ab und rechnen nie mit g — für die Lernenden entsteht der Widerspruch deshalb nicht. Reglerzustände: Im Dump liegen 600 cm² und 1200 cm² nur mit 4750 kg vor, weil simfakten jeden Regler nur einmal zieht. Mit simcheck/werte.js nachgemessen (_druMarke(60, 600) und _druMarke(60, 1200)): 60 kg auf 600 cm² geben p = 9,8 kPa, auf 1200 cm² p = 4,9 kPa. Belegt sind sie damit, auf der Seite stehen sie trotzdem nicht: Sie bleibt bei drei Knopfdrücken, ein Reglerschritt und eine Rechenaufgabe sprengten das Wortbudget der Doppelseite."
+ },
+ {
+  "id": "fk12",
+  "lernziel": "Die Schülerinnen und Schüler lesen den Schweredruck in der Simulation ab und erklären an den Messwerten: Der Schweredruck wird größer, wenn die Tiefe größer wird (Quecksilber 10 m: 1334,2 kPa → 40 m: 5336,6 kPa), und er wird bei gleicher Tiefe größer, wenn die Flüssigkeit schwerer ist (bei 10 m: Öl 88,3 kPa · Wasser 98,1 kPa · Quecksilber 1334,2 kPa). Gerechnet wird nicht; die Formel p = ρ · g · h steht am Bildschirm, wird auf der Schülerseite aber weder verlangt noch abgefragt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafeltabelle. Optional als Demonstration: eine hohe Flasche mit zwei Löchern übereinander, über einer Wanne geöffnet.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen; auf jeder Karte steht die Flüssigkeit, die Tiefe und darunter die Zeile des Bildschirms. Karte 1 (Ausgangszustand, Wasser, Tiefe 10 m): „Der Schweredruck · p = 98,1 kPa“. Karte 2 (Knopf Öl, Tiefe bleibt 10 m): „Der Schweredruck · p = 88,3 kPa“. Karte 3 (Knopf Quecksilber, Tiefe bleibt 10 m): „Der Schweredruck · p = 1334,2 kPa“. Karte 4 (danach Knopf 40 m – Tauchgrenze, Quecksilber bleibt eingestellt): „Der Schweredruck · p = 5336,6 kPa“. Die Karten in dieser Reihenfolge auflegen: Karte 1 bis 3 zeigen bei gleicher Tiefe die schwerere Flüssigkeit, Karte 3 zu Karte 4 zeigt die größere Tiefe. Als Tafeltabelle dieselben vier Zeilen mit den Spalten Flüssigkeit · Tiefe · Schweredruck p.",
+  "merksatz": [
+   "größer",
+   "stärker"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Öl",
+    "10 m",
+    "88,3 kPa"
+   ],
+   [
+    "Quecksilber",
+    "10 m",
+    "1334,2 kPa"
+   ],
+   [
+    "Quecksilber",
+    "40 m",
+    "5336,6 kPa"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach dem Knopf Quecksilber steht unter der Überschrift Der Schweredruck in der dritten Zeile: p = 1334,2 kPa = 13,34 bar. Die Tiefe ist dabei unverändert 10 m, es ändert sich allein die Flüssigkeit. Gelesen wird die Zahl vor kPa, nicht der bar-Wert und nicht der Gesamtdruck.",
+   "typische_fehler": [
+    "Option 1 wird angekreuzt, weil 98,1 kPa als erster Wert in der Tabelle steht und der Knopf an der Tiefe nichts ändert.",
+    "Statt der Zahl vor kPa wird 13,34 bar abgelesen; beide stehen in derselben Zeile.",
+    "Der Gesamtdruck 1435,5 kPa wird genommen, weil er größer und weiter unten in der Textwand steht.",
+    "Option 3 wird gewählt: „flüssiger“ wird mit „leichter“ gleichgesetzt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "88,3 kPa",
+    "5336,6 kPa"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht, weil beide Sätze mit einer Flüssigkeit beginnen; Hilfe: erst die Tiefe unterstreichen (10 m oder 40 m).",
+    "Beim Vergleich mit Wasser werden nur die Nachkommastellen angesehen: 88,3 gilt dann als größer als 98,1, weil 3 größer als 1 ist.",
+    "Statt 5336,6 kPa wird 53,37 bar aus derselben Zeile eingesetzt.",
+    "Das Komma wird als Tausenderpunkt gelesen: „5336,6“ wird zu „53366“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Unten ist das Wasser tiefer. Deshalb drückt es dort stärker. Der Schweredruck wird mit der Tiefe größer. Darum spritzt der untere Hahn weiter als der obere.",
+   "alternativen": [
+    "Mit Zahlen aus der Simulation: „An der Oberfläche ist die Tiefe klein, in 40 m ist der Druck viel größer. Genauso ist es im Tank.“",
+    "Über die Wassersäule: „Über dem unteren Hahn steht mehr Wasser als über dem oberen. Diese Höhe drückt.“",
+    "Kurzform ohne Beispiel: „Je tiefer, desto größer ist der Schweredruck.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Menge im Tank wird genannt statt der Tiefe: „Unten ist mehr Wasser im Tank.“ Richtig ist die Höhe der Flüssigkeit über dem Hahn, nicht die Gesamtmenge – die Simulation sagt es im Hinweis ausdrücklich.",
+    "Der Hahn wird für die Ursache gehalten: „Der untere Hahn ist größer.“ Beide Hähne sind gleich.",
+    "Die Beobachtung wird nur wiederholt: „Weil es unten stärker spritzt.“",
+    "Das Gewicht des Tanks wird angeführt statt der Tiefe."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: stärker, höher)",
+  "schwache": [
+   "Zuerst nur Wasser und Quecksilber bei 10 m vergleichen; Öl und die Tiefe 40 m erst danach freigeben.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und die Zahl 98,1 kPa am Bildschirm mit dem Finger zeigen lassen, bevor weitergearbeitet wird.",
+   "Die Bedienreihenfolge vorher an der Tafel festhalten: erst die Flüssigkeit drücken, dann die Tiefe. Die gewählte Flüssigkeit bleibt stehen – wer zuerst die Tiefe drückt, misst mit der falschen Flüssigkeit.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen; die beiden Zahlen dabei laut sprechen („achtundachtzig Komma drei“).",
+   "Für Aufgabe 2 die Tiefe in jedem Satz unterstreichen lassen (10 m oder 40 m), dann erst den Wert suchen.",
+   "Die Statusanzeige ist eine Textwand mit fett gedruckten Überschriften – bei Wasser vier, bei Öl und Quecksilber drei. Die erste heißt Der Schweredruck; der Wert steht in der dritten Zeile darunter. Alles ab der Überschrift Dazu kommt die Luft mit einem Blatt abdecken."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler Tiefe wieder auf 10 m, drücke Meerwasser und vergleiche mit Wasser (100,6 kPa gegen 98,1 kPa). Schreibe auf, welche Flüssigkeit schwerer ist und woran du das erkennst. Für rechenstarke Lernende zusätzlich die Aufgabe aus dem Regelheft: Wasser in 20 m Tiefe mit p = ρ · g · h berechnen (196,2 kPa) – dieser Wert steht nicht am Bildschirm, er muss gerechnet werden.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Druck in Flüssigkeiten, Schweredruck; trägt UF1 und UF4 (die Erklär-Aufgabe zum Wassertank), der Alltagsauftrag zum Ohrendruck UF4. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Wortwahl: Das Wort „Dichte“ kommt auf dieser Seite NICHT vor – es wird erst auf fk13 eingeführt; hier heißt es durchgehend „die schwerere Flüssigkeit“. „Druck p in Pascal“ ist ein Rückverweis auf fk11, dort steht auch die Umrechnung 1 kPa = 1000 Pa. Bedienung: Flüssigkeitsknöpfe und Tiefenknöpfe wirken auf dieselbe Anzeige, die gewählte Flüssigkeit bleibt stehen. Deshalb ist die Reihenfolge der Arbeitsschritte verbindlich – erst die Flüssigkeit, dann die Tiefe. Die Tiefe 10 m ist der Startwert des Reglers und wird für die ersten drei Zeilen nicht angefasst. Der Knopf „10 m – doppelter Druck“ wird auf der Seite bewusst nicht benutzt: „doppelt“ meint dort den Gesamtdruck einschließlich Luftdruck (98,1 + 101,3 = 199,4 kPa), und der Luftdruck kommt im Förderheft nicht vor. Nicht verwendet, weil sie zu einer zweiten Druckart, einem dritten Fachwort oder einem zweiten Mechanismus führen: Gesamtdruck und Luftdruck (101,3 kPa), die Luftblase mit dem 1,97-fachen Volumen und die Umrechnung in bar. Die Anzeige schreibt jeden Wert doppelt („p = 98,1 kPa = 0,98 bar“) und im Bild steht der Gesamtdruck in bar – die Seite legt deshalb kPa fest und benennt die Überschrift, unter der gelesen wird. Der Block „Die Zehn-Meter-Regel“ erscheint nur bei Wasser und Meerwasser, bei Öl und Quecksilber fehlt er; kein Ableseauftrag zeigt darauf. Das hydrostatische Paradoxon (die Menge im Gefäß ist egal) ist nicht bedienbar – es steht nur im Hinweistext der Simulation und taucht deshalb allein als Vermutung 1 und im Gespräch zu Aufgabe 3 auf, nie als Bildschirmaufgabe. Hinweis zum Band: Diese Simulation rechnet mit g = 9,81 N/kg, masse-gewicht und ortsfaktor (fk4, fk5) zeigen 9,8 N/kg; die Förderseiten lesen nur ab und rechnen nie mit g. Nicht gemessen und darum nicht verwendet: eine Tiefenreihe in Wasser (Wasser bei 0 m oder 20 m). Belegt ist Wasser nur bei 10 m; die Tiefenzeile der Tabelle läuft deshalb in Quecksilber."
+ },
+ {
+  "id": "fk13",
+  "lernziel": "Die Schülerinnen und Schüler lesen an drei gleich großen Würfeln von 10 cm Kantenlänge für Blei, Eisen und Styropor die Masse m in kg ab (Zeile 2 der Statuszeile) und dazu die Beobachtung schwimmt oder sinkt (Zeile 4). Sie begründen daran: Bei gleichem Volumen V entscheidet die Dichte ρ des Stoffes über die Masse. Gerechnet wird auf dieser Seite ausdrücklich nicht; ρ = m : V steht am Bildschirm, wird aber nicht eingesetzt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig für die Durchführung: Der Regler „Kantenlänge a: 10 cm“ bleibt unberührt — drei Knopfdrücke (Blei, Eisen, Styropor) genügen. Die Statuszeile ist EIN Block mit fünf nummerierten Abschnitten; gearbeitet wird nur mit Abschnitt 2 (Die Masse) und Abschnitt 4 (Der Vergleich mit Wasser). Abschnitt 3 nennt die Gewichtskraft in Newton (Blei 111,25 N · Eisen 77,20 N · Styropor 0,20 N) und steht unmittelbar unter der Masse — das ist die naheliegendste Fehlablesung. Die Zahlenpaare mit gleichen Ziffern vorher ansprechen: Der Bildtext schreibt „Blei · ρ = 11340 kg/m³“, der Ablesewert lautet „11,340“ kg; genauso Eisen 7870/7,870 und Styropor 20/0,020. Die Dichtezahlen kommen deshalb auf der Schülerseite gar nicht vor. Die Knöpfe heißen „Aluminium“ und „Fichtenholz“, die Balken darüber „Alu“ und „Fichte“ — beide Stoffe werden auf der Seite nicht abgefragt. Die digitale Waagenanzeige nicht ablesen lassen: Welche Zahl sie nach dem Einschwingen zeigt, ist nicht nachgemessen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Blei: m = 11,340 kg, „Die Dichte ist größer als die von Wasser – Blei sinkt.“ · Eisen: m = 7,870 kg, „Die Dichte ist größer als die von Wasser – Eisen sinkt.“ · Styropor: m = 0,020 kg, „Die Dichte ist kleiner als die von Wasser – Styropor schwimmt.“ Auf jeder Karte steht oben dieselbe Kopfzeile „alle Würfel: 10 cm lang · V = 1000 cm³“ — genau an dieser gleich bleibenden Zeile wird die Einsicht sichtbar. Als vierte Karte für Aufgabe 2 den Wasser-Anker: „1 Liter Wasser · m = 1,000 kg“ (Knopf „Wasser · genau 1 kg“). Diese Karte trägt bewusst KEIN Urteil schwimmt/sinkt — der Bildschirm schreibt bei Wasser nur „Wasser ist der Bezugsstoff: ρ = 1000 kg/m³.“ Deshalb steht Wasser auch nicht in der Tabelle. Alternativ die drei Statuszeilen am Beamer zeigen und den Finger auf Abschnitt 2 legen. Die Balkenlängen nicht ausmessen lassen: Styropor ist bei 0,020 kg praktisch nicht mehr sichtbar.",
+  "merksatz": [
+   "Dichte",
+   "Masse"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Eisen",
+    "7,870 kg",
+    "sinkt"
+   ],
+   [
+    "Styropor",
+    "0,020 kg",
+    "schwimmt"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Alle sechs Würfel haben dieselbe Kantenlänge von 10 cm, also dasselbe Volumen V = 1000 cm³ — die Statuszeile wiederholt das bei jedem Stoff in Abschnitt 1. Verschieden ist allein die Dichte ρ des Stoffes; daraus folgt in Abschnitt 2 die Masse: Blei 11,340 kg, Styropor 0,020 kg.",
+   "typische_fehler": [
+    "Antwort 0: Mehr Masse wird mit mehr Größe gleichgesetzt. Gegenprobe: Abschnitt 1 der Statuszeile ist bei allen Stoffen wortgleich.",
+    "Antwort 2: Die Vermutung „gleich groß heißt gleich schwer“ wird trotz Ablesewerten beibehalten — dieselbe Fehlvorstellung wie in der zweiten Vermutung auf Seite A.",
+    "Die Dichte wird als Eigenschaft des Würfels statt des Stoffes gelesen („dieser Würfel hat eine große Dichte“)."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,000 kg",
+    "0,020 kg"
+   ],
+   "typische_fehler": [
+    "Aus Abschnitt 3 abgelesen: Wasser 9,81 N und Styropor 0,20 N sind Gewichtskräfte, keine Massen. Masse und Gewichtskraft dürfen nie gleichgesetzt werden.",
+    "Die Dichtezahl statt der Masse eingetragen: „1000 kg“ oder „20 kg“ aus dem Bildtext.",
+    "0,020 kg wird als 0,20 kg gelesen; die zweite Nachkommastelle entscheidet.",
+    "Die Einheit kg fehlt, es wird nur die Zahl eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herr Kessler nimmt Blei, denn bei gleichem Volumen V hat Blei viel mehr Masse als Styropor. Blei hat die größere Dichte ρ. Deshalb passt genug Masse in die kleine Kiste.",
+   "alternativen": [
+    "Mit den Ablesewerten begründet: Gleich große Würfel — Blei 11,340 kg, Styropor nur 0,020 kg.",
+    "Umgekehrt formuliert: Styropor hat eine sehr kleine Dichte. Die Kiste wäre viel zu leicht.",
+    "Mit dem Wasser-Anker: 1 Liter Blei ist viel schwerer als 1 Liter Wasser, 1 Liter Styropor viel leichter."
+   ],
+   "typische_fehler": [
+    "Es wird nur „Blei“ genannt, ohne das gleiche Volumen V zu erwähnen; dann ist es geraten, nicht begründet.",
+    "Mit der Größe argumentiert („Blei ist größer“) statt mit der Dichte.",
+    "Aus schwimmt/sinkt geschlossen statt aus der Masse — der Auftrieb kommt erst in fk14."
+   ]
+  },
+  "hilfe3_wort": "Blei",
+  "schwache": [
+   "Zuerst nur Blei und Styropor vergleichen; die Zeile Eisen später oder gemeinsam ausfüllen.",
+   "Die Statuszeile ist ein langer Block mit fünf Abschnitten. Den Finger auf „2 · Die Masse“ legen und nur diese eine Zeile vorlesen lassen. Abschnitt 3 mit einem Blatt abdecken.",
+   "Die drei Nachkommastellen einmal gemeinsam sprechen: 11,340 kg heißt „elf Komma drei vier null Kilogramm“, nicht „elftausenddreihundertvierzig“.",
+   "Das Zeichen ρ einmal laut sprechen (rho) und daneben ein p schreiben, damit der Unterschied auffällt.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Den Wasser-Anker gegenständlich zeigen: eine volle 1-Liter-Flasche in die Hand geben — sie hat 1 kg Masse. Ein Würfel aus Wasser ist sonst kaum vorstellbar."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Aluminium und Fichtenholz und lies die Massen ab — Aluminium 2,700 kg, Fichtenholz 0,470 kg. Ordne alle fünf Stoffe nach ihrer Masse. Achtung für die Lehrkraft: Die Balken über der Reihe sind mit „Alu“ und „Fichte“ beschriftet, die Knöpfe mit „Aluminium“ und „Fichtenholz“ — der Namenswechsel ist der Grund, warum diese zwei Stoffe nicht auf der Schülerseite stehen.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), zweiter Teil · Dichte als Stoffeigenschaft, Masse und Volumen. Der Alltagsauftrag mit zwei gleich großen Dingen trägt UF2, die Erklär-Aufgabe zum Gegengewicht B2 (im Regelheft eine Vierfach-Auswahl mit langen Begründungstexten; hier als gestützte Auswahl aus zwei Möglichkeiten mit Satzstarter). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Dichte ρ wird hier eingeführt — fk12 spricht bewusst nur von der „schwereren Flüssigkeit“, fk14 verweist zurück. Diese Simulation rechnet intern mit g = 9,81 N/kg, fk4 und fk5 zeigen 9,8 N/kg; die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Nicht auf der Seite verwendet, weil im Dump nicht belegt: jeder Zustand mit verstellter Kantenlänge (alle Reglerstände wurden nur mit Styropor aufgezeichnet) und die Zahl der Waagenanzeige. Bewusst weggelassen: die Umrechnung 1000 cm³ = 0,001 m³, das Verhältnis „567-mal“ und V = a³ — alle drei stehen am Bildschirm, sind aber für die Zielgruppe nicht leistbar. Modellgrenze des Bildschirms: gerechnet wird mit massiven Würfeln ohne Hohlräume; bei Holz schwankt die Dichte je nach Sorte und Feuchte, 470 kg/m³ ist Fichte."
+ },
+ {
+  "id": "fk14",
+  "lernziel": "Die Schülerinnen und Schüler lesen an den vier Knöpfen der Simulation die mittlere Dichte des Eisenwürfels ab (7870 · 1023 · 944 · 787 kg/m³) und ordnen jedem Wert zu, ob der Würfel schwimmt oder sinkt. Sie begründen damit: Nicht der Stoff entscheidet, sondern die mittlere Dichte — unter 1000 kg/m³ schwimmt der Körper. Der Auftrieb wird benannt, aber nicht berechnet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Schüssel Wasser, ein Vollmetallstück und eine verschlossene leere Dose. Wichtig: Abgelesen wird nur aus den BILDTEXTEN am Würfel („Hohlraum 88 % · mittlere Dichte 944 kg/m³ · Süßwasser 1000 kg/m³“). Die Statuszeile zeigt dieselben Größen mit einer Stelle mehr (944,4 kg/m³, G = 9,26 N); beide Schreibweisen nie mischen. Der Regler bleibt unberührt — vier Knopfdrücke genügen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Karten schreiben und in dieser Reihenfolge zeigen — 1 „massiv – sinkt“: 7870 kg/m³, sinkt · 2 „87 % – sinkt noch“: 1023 kg/m³, sinkt · 3 „88 % – schwimmt gerade“: 944 kg/m³, schwimmt (94,4 % unter Wasser) · 4 „90 % – Schiff“: 787 kg/m³, schwimmt (78,7 % unter Wasser). Auf jeder Karte oben „mittlere Dichte“, unten dieselbe Zeile „Süßwasser 1000 kg/m³“ — an dieser gleich bleibenden Zahl wird die Grenze sichtbar. Alternativ die vier Standbilder am Beamer zeigen. Reihenfolge nicht ändern: Erst die fallende Reihe 7870 → 1023 → 944 → 787 zeigt, dass mehr Luft die mittlere Dichte kleiner macht.",
+  "merksatz": [
+   "Auftrieb",
+   "1000 kg/m³"
+  ],
+  "tabelle_erwartet": [
+   [
+    "87 % – sinkt noch",
+    "1023 kg/m³",
+    "sinkt"
+   ],
+   [
+    "88 % – schwimmt gerade",
+    "944 kg/m³",
+    "schwimmt"
+   ],
+   [
+    "90 % – Schiff",
+    "787 kg/m³",
+    "schwimmt"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nur 787 kg/m³ liegt unter 1000 kg/m³. Der Wert gehört zum Knopf „90 % – Schiff“; dort steht am Würfel „schwimmt – 78,7 % unter Wasser“. 7870 und 1023 kg/m³ liegen darüber, beide Würfel sinken.",
+   "typische_fehler": [
+    "1023 kg/m³ gilt als schwimmfähig, weil die Zahl „fast 1000“ ist. Genau hier liegt die Grenze: 1023 ist größer, der Würfel sinkt noch.",
+    "787 wird neben 7870 nach der Ziffernzahl gelesen und übersehen.",
+    "Es wird nach dem Stoff geurteilt („alles Eisen sinkt“) statt nach dem abgelesenen Wert."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "größer",
+    "sinkt"
+   ],
+   "typische_fehler": [
+    "„kleiner“ statt „größer“: 1023 und 1000 werden als gleich groß gelesen.",
+    "Die zweite Lücke wird mit „schwimmt“ gefüllt, weil der Merksatz nur bis „schwimmt“ gelesen wurde.",
+    "Die Prozentzahl 87 % wird mit der Dichte verwechselt und eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nicht die Größe entscheidet, sondern die mittlere Dichte. Ein Schiff aus Stahl ist innen fast nur Luft. Eisen und Luft zusammen haben eine mittlere Dichte unter 1000 kg/m³. Darum schwimmt es.",
+   "alternativen": [
+    "Verweis auf die Tabelle: Derselbe Würfel sinkt bei 7870 kg/m³ und schwimmt bei 787 kg/m³ — die Größe blieb gleich, nur der Luftanteil nicht.",
+    "Vergleich mit der Regentonne: Der kleine Vollstahlklotz sinkt, das größere hohle Rohr schwimmt.",
+    "Umgekehrt formuliert: Ein massiver Stahlblock schwimmt auch dann nicht, wenn man ihn viel größer macht."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur wiederholt („weil es so groß ist“), ohne Luft und mittlere Dichte zu nennen.",
+    "Es wird mit der Form allein argumentiert („weil es wie ein Schiff aussieht“).",
+    "Masse und Dichte werden gleichgesetzt („das Schiff ist leicht“) — ein Schiff ist sehr schwer."
+   ]
+  },
+  "hilfe3_wort": "schwimmt",
+  "schwache": [
+   "Zuerst nur „massiv – sinkt“ und „90 % – Schiff“ vergleichen; die beiden mittleren Zeilen später gemeinsam ausfüllen.",
+   "Die Zahl 1000 kg/m³ groß an die Tafel schreiben. Jeder abgelesene Wert wird nur mit dieser einen Zahl verglichen — größer oder kleiner, mehr nicht.",
+   "„Mittlere Dichte“ vorher am Bild klären: Eisen UND Luft stecken im selben Würfel und werden zusammen gewogen. Es ist nicht „die Dichte in der Mitte“. „Dichte“ selbst ist aus fk13 bekannt.",
+   "Der Bildtext ist eine lange Zeile mit drei Abschnitten. Den Finger auf den mittleren legen und nur „mittlere Dichte …“ vorlesen lassen.",
+   "Vor Aufgabe 2 die fünf Wörter der Wortbank abschreiben und jedes benutzte durchstreichen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke bei „90 % – Schiff“ zusätzlich „Meerwasser“ und vergleiche die Bildtexte — Süßwasser „schwimmt – 78,7 % unter Wasser“, Meerwasser „schwimmt – 76,8 % unter Wasser“, beide bei 787 kg/m³. Schreibe auf, in welchem Wasser das Schiff höher liegt. Für die Lehrkraft: Meerwasser hat 1025 kg/m³ und trägt deshalb besser. Die 1,9 Prozentpunkte Unterschied sind ohne Rechnung nicht zu deuten — darum stehen sie nicht auf der Schülerseite.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), zweiter Teil · Auftrieb, Schwimmen und Sinken, mittlere Dichte. Der Alltagsauftrag mit der Alufolie trägt E5, die Erklär-Aufgabe zum Schiff B2. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Fachwörter: neu ist allein „Auftrieb“. „Dichte ρ“ kommt aus fk13; „mittlere Dichte“ ist nach Zählregel 1 dieselbe Größe und zählt nicht als zweites Fachwort — es ist die Bildschirmschreibweise für den Würfel aus Eisen und Luft. Am Bildschirm stehen „F_A“, die Formel „F_A = ρ · g · V(eingetaucht)“ und im Hinweis „das Gewicht des verdrängten Wassers“ — das Wort „Auftriebskraft“ selbst steht dort nirgends. Formelzeichen und verdrängtes Wasser bleiben Lehrerwissen; sie wären ein zweites und drittes Fachwort, und die Zuteilung gibt fk14 allein „Auftrieb“. Zum Band: Die Simulation rechnet mit g = 9,81 N/kg, fk4 und fk5 zeigen 9,8 N/kg — die Förderseiten lesen nur ab und rechnen nie mit g. Die Grenze „ab 87,3 % Hohlraum“ ist am Regler nicht einstellbar (Schrittweite 1) und wird nicht benutzt; die Grenze heißt im Heft 1000 kg/m³. Für 87 % gibt es keinen Bildtext „sinkt“ — er stammt aus der Knopfaufschrift „87 % – sinkt noch“ und der Statuszeile („4 · Er sinkt“); alle Dichtewerte stehen dagegen wörtlich in den Bildtexten. Reglerzwischenwerte sind im Dump nur mit aktivem Meerwasser belegt und bleiben deshalb ungenutzt."
+ },
+ {
+  "id": "fe1",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Arbeit nur verrichtet wird, wenn Kraft und Weg in dieselbe Richtung zeigen. Sie berechnen die Arbeit beim Schieben mit W = F · s (100 N · 4 m = 400 J) und lesen die beiden anderen Werte am Bildschirm ab: 0 J beim waagerechten Tragen, 392 J beim Hochheben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Bücherkiste einmal über den Tisch schieben, einmal waagerecht durch den Raum tragen, einmal auf den Tisch heben.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile des Bildschirms. Karte 1 „Schieben“: „Du schiebst mit 100 N über 4 m. | Arbeit W = 100 N · 4 m = 400 J“, dazu der Bildtext „Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet“ und „verrichtete Arbeit: 400 J“. Karte 2 „Waagerecht tragen“: „Du hältst 196 N (20 kg) und gehst 4 m geradeaus. | Die Kraft zeigt nach oben, der Weg nach vorn. | Arbeit W = 0 J – physikalisch keine Arbeit.“, dazu der Bildtext „verrichtete Arbeit: 0 J“. Karte 3 „Hochheben“: „Du hebst 20 kg um 2,0 m hoch.“, dazu der Bildtext „verrichtete Arbeit: 392 J“. Die Zahl 196 N und die Zeile „Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m“ nur vorlesen, nie abfragen und nie herleiten lassen (siehe Kernlehrplan-Feld). Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "W = F · s",
+   "null"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Waagerecht tragen: 4 m",
+    "nein",
+    "0 J"
+   ],
+   [
+    "Hochheben: 2,0 m",
+    "ja",
+    "392 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Tragen ist der Fall aus der Statuszeile: „Die Kraft zeigt nach oben, der Weg nach vorn. | Arbeit W = 0 J – physikalisch keine Arbeit.“ Nicht die Anstrengung entscheidet und nicht die Länge des Weges, sondern die Richtung der Kraft.",
+   "typische_fehler": [
+    "Antwort 1 wird angekreuzt: Das Gewicht des Stuhls gilt als Beweis für Arbeit. Gegenfrage: In welche Richtung zeigt die Kraft, in welche der Weg?",
+    "Antwort 3 wird angekreuzt: Der zurückgelegte Weg allein gilt als Beweis. Am Bildschirm sind beim Tragen ebenfalls 4 m eingestellt – und trotzdem steht dort 0 J.",
+    "Alltagswort und Fachwort werden vermischt („anstrengend = Arbeit“). Beide Bedeutungen einmal nebeneinander an die Tafel schreiben."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "400 J",
+    "392 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Zahlen werden vertauscht, weil 400 und 392 dicht beieinander liegen. Hilfe: 400 J steht in der Statuszeile beim Schieben, 392 J im Bild beim Hochheben.",
+    "Statt 400 J wird 104 J geschrieben (addiert statt multipliziert). Die Formel W = F · s laut mitsprechen.",
+    "Die Einheit J fehlt oder es wird N geschrieben.",
+    "„null“ wird aus dem Merksatz übernommen, weil beide Lücken nach einer Zahl aussehen; die Sätze sprechen aber von Schieben und Hochheben.",
+    "In Lücke 1 wird „W = F · s“ eingetragen, weil die Formel jetzt auch in der Wortbank steht. Gefragt ist dort das Ergebnis, nicht der Rechenweg."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beim Tragen zeigt die Kraft nach oben, der Weg zeigt nach vorn. Kraft und Weg zeigen also nicht in dieselbe Richtung. Deshalb ist die Arbeit null, auch wenn das Tragen anstrengend ist.",
+   "alternativen": [
+    "Bezug auf den Bildschirm: Beim Tragen steht dort „Arbeit W = 0 J – physikalisch keine Arbeit“, obwohl 4 m eingestellt sind.",
+    "Vergleich mit dem Schieben: Dort zeigen Kraft und Weg in dieselbe Richtung, deshalb kommen 400 J heraus.",
+    "Kurzform ohne Begründungssatz: „Anstrengend ist nicht dasselbe wie Arbeit in der Physik.“ – reicht für die volle Wertung, wenn die Richtung genannt wird."
+   ],
+   "typische_fehler": [
+    "Die Anstrengung wird als Beweis wiederholt, ohne die Richtung zu nennen. Gegenfrage: Wohin zeigt die Kraft, wohin der Weg?",
+    "Es wird behauptet, beim Tragen wirke gar keine Kraft. Die Kraft ist da (der Bildschirm nennt 196 N), sie zeigt nur in die falsche Richtung.",
+    "Die Aussage wird auf jedes Tragen verallgemeinert. Beim Hochheben wird Arbeit verrichtet (392 J) – dort geht der Weg nach oben, wie die Kraft."
+   ]
+  },
+  "hilfe3_wort": "null (auch richtig: 0 J)",
+  "schwache": [
+   "Zuerst nur Schieben und Waagerecht tragen vergleichen; Hochheben erst danach dazunehmen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Die drei Situationen mit einer Federmappe nachspielen: über den Tisch schieben, vor dem Bauch durch den Raum tragen, auf den Stuhl heben. Dabei jedes Mal mit dem Finger zeigen, wohin die Kraft geht und wohin der Weg.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Das gelöste Beispiel Zeile für Zeile abdecken und mitsprechen, bevor Aufgabe 2 begonnen wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen des Bildschirms wörtlich ab. Streiche darin an, welches Wort verrät, ob Arbeit verrichtet wird.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm."
+ },
+ {
+  "id": "fe2",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Lageenergie eines angehobenen Körpers in der Statuszeile der Simulation ab und beschreiben, dass ein Körper oben Energie gespeichert hat. Sie belegen am Bildschirm, dass mehr Masse und mehr Höhe die Lageenergie größer machen, und dass doppelte Masse den Wert genau verdoppelt (147 J → 294 J). Gerechnet wird nicht; die Werte werden abgelesen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein schwerer und ein leichter Beutel, an einer Schnur auf zwei verschiedene Höhen gezogen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile wörtlich. Karte 1 (Start, kein Knopf): „Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J“. Karte 2 (Knopf „×2 Masse“): „Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J“. Karte 3 (Knopf „×2 Höhe“, direkt danach, ohne zurückzusetzen): „Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J“. Vierte Karte als Auswertung: „Schwerer oder höher heißt mehr Lageenergie.“ Für Aufgabe 1 zusätzlich die abgelesene Massereihe bei 3 m als Kärtchen: 1 kg → 29 J, 5 kg → 147 J, 10 kg → 294 J.",
+  "merksatz": [
+   "Lageenergie",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "×2 Masse",
+    "10 kg, 3 m",
+    "294 J"
+   ],
+   [
+    "×2 Höhe",
+    "10 kg, 6 m",
+    "589 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Beide Klötze hängen gleich hoch (3 m), also entscheidet die Masse. Die Statuszeile zeigt bei 1 kg 29 J und bei 10 kg 294 J. Der schwerere Klotz hat mehr Lageenergie.",
+   "typische_fehler": [
+    "Antwort 2: Nur die Höhe wird als wichtig angesehen, die Masse als egal – genau die falsche Vermutung von Seite A.",
+    "Antwort 1: „klein und leicht fällt schneller“ wird mit „hat mehr Energie“ verwechselt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "294",
+    "doppelt"
+   ],
+   "typische_fehler": [
+    "Es wird versucht, 10 · 9,81 · 3 im Kopf auszurechnen. Der Wert steht fertig in der Statuszeile und soll abgelesen werden.",
+    "In die erste Lücke wird 147 gesetzt (Wert der Startzeile), weil der Knopf „×2 Masse“ nicht gedrückt wurde.",
+    "„größer“ statt „doppelt“ – richtig gedacht, aber die Aufgabe fragt nach dem genauen Faktor, den die Anzeige zeigt (147 J → 294 J)."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Sack auf der Bühne hat mehr Lageenergie, weil er höher liegt. Beide Säcke sind gleich schwer. Nur die Höhe ist verschieden, und höher heißt mehr Lageenergie.",
+   "alternativen": [
+    "Bezug auf die Simulation: Bei 10 kg und 3 m stehen 294 J, bei 10 kg und 6 m stehen 589 J – gleiche Masse, mehr Höhe, mehr Energie.",
+    "Kurzform: „Der obere Sack liegt höher, darum hat er mehr Lageenergie.“ – reicht für die volle Wertung.",
+    "Begründung über das Herunterfallen: Der obere Sack kann tiefer fallen und den Pfahl weiter eintreiben."
+   ],
+   "typische_fehler": [
+    "Es wird ein Gewichtsunterschied erfunden („der obere ist schwerer“). Die Aufgabe sagt ausdrücklich: gleiche Säcke.",
+    "„Der untere hat mehr, weil er auf dem Boden liegt“ – Lageenergie wird mit Druck auf den Boden verwechselt.",
+    "Der Satzstarter wird nur abgeschrieben, ohne ein „weil“ zu füllen."
+   ]
+  },
+  "hilfe3_wort": "Lageenergie (auch richtig: Energie)",
+  "schwache": [
+   "Zuerst nur die beiden Massen bei 3 m vergleichen (147 J und 294 J), die dritte Zeile erst danach.",
+   "Bedienreihenfolge auf einen Merkzettel: erst ablesen, dann „×2 Masse“, dann sofort „×2 Höhe“. Wer zwischendurch „zurücksetzen“ drückt, bekommt für Zeile 3 falsche Werte.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Für Aufgabe 3 zwei gleich schwere Bücher auf Tisch und Boden legen und die Frage zuerst mündlich beantworten lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle die Masse nacheinander auf 1 kg, 2 kg und 4 kg (Höhe 3 m) und schreibe die drei abgelesenen Werte auf. Was fällt dir auf?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Lageenergie eines angehobenen Körpers. Neu ist genau ein Fachwort: Lageenergie. Höhe und Last bleiben Alltagswörter ohne Formelzeichen und ohne Einheit (Zählregel 5) und stehen deshalb nicht in der Wortbank; auf der Schülerseite steht „Wie hoch?“, nicht „Höhe h in m“. Hubarbeit und Joule gehören zu fe1 und werden hier nur wieder aufgenommen (Zählregel 4), Masse m in kg stammt aus fk4. Datenlage: Alle Werte sind abgelesen. 147 J → 294 J ist am Bildschirm exakt das Doppelte; 294 J → 589 J ist NUR ungefähr das Doppelte (2 · 294 = 588), weil die Anzeige rundet – deshalb steht auf der Schülerseite „doppelt“ nur beim Massenpaar. Der Knopf „×2 Höhe“ wirkt auf den Zustand NACH „×2 Masse“; Zeile 3 ist darum 10 kg / 6 m. Achtung Ortsfaktor: Diese Simulation rechnet mit 9,81 N/kg, die Simulationen zu fk4 und fk5 zeigen 9,8 N/kg. Die Förderseiten lesen nur ab und rechnen nie mit g, deshalb entsteht der Widerspruch für die Lernenden nicht. Die Pfahltiefe wird bewusst nicht gemessen (im Faktendump nicht belegt), und der Vergleich mit dem Tempo (doppelt = viermal) bleibt fe3 vorbehalten. Kompetenzen: Tabelle E5, Aufgabe 3 UF1, der Zuhause-Auftrag UF3."
+ },
+ {
+  "id": "fe3",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Bewegungsenergie E in Joule an der Statuszeile ab und beschreiben an der belegten Kette 32 J – 64 J – 256 J: doppelte Masse bringt doppelt so viel Bewegungsenergie, doppeltes Tempo v bringt viermal so viel. Sie übertragen das auf Tempo 30 vor Schulen. Gerechnet wird nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: zwei verschieden schwere Kugeln auf einer Rampe, die einen Holzklotz anschieben.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils mit der Statuszeile bis zum Energiewert. Die Statuszeile steht am Bildschirm zweizeilig; auf den Karten genauso untereinander schreiben. Karte 1 (Start): „4 kg mit 4 m/s“, darunter „E = ½ · 4 · 4² = 32 J“. Karte 2 (nach „×2 Masse“): „8 kg mit 4 m/s“, darunter „E = ½ · 8 · 4² = 64 J“. Karte 3 (nach „×2 Tempo“): „8 kg mit 8 m/s“, darunter „E = ½ · 8 · 8² = 256 J“. Dazu eine vierte Karte mit dem Bildtext der Simulation: „Bewegungsenergie E = ½ · m · v²“ und „das Tempo zählt doppelt: v steht im Quadrat“. Die Formel wird nur gezeigt und in einem Satz erklärt, nicht gerechnet. Die Aufforderung „Drücke ‚Rollen lassen‘“ am Ende der Statuszeile gehört nicht auf die Karten – Lernende halten sie sonst für einen Teil des Messwerts. Auf die Rückseite jeder Karte gehört die Strecke, die der Bildschirm erst nach dem Rollen meldet: „Klotz 0,16 m weit geschoben.“, dann 0,32 m, dann 1,28 m. Statt der Animation zwei Kugeln auf einer Rampe gegen einen Holzklotz laufen lassen und die Schiebestrecken vergleichen.",
+  "merksatz": [
+   "doppelt",
+   "viermal"
+  ],
+  "tabelle_erwartet": [
+   [
+    "×2 Masse",
+    "8 kg mit 4 m/s",
+    "64 J"
+   ],
+   [
+    "×2 Tempo",
+    "8 kg mit 8 m/s",
+    "256 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die belegte Kette zeigt es: 8 kg mit 4 m/s sind 64 J, 8 kg mit 8 m/s sind 256 J. Bei gleicher Masse und doppeltem Tempo v ist es viermal so viel. Ein Auto mit 60 km/h trägt deshalb viermal so viel Bewegungsenergie wie dasselbe Auto mit 30 km/h.",
+   "typische_fehler": [
+    "Antwort 1: Masse und Tempo werden gleich behandelt („doppelt ist doppelt“) – genau die Vermutung 2 auf Seite A.",
+    "Antwort 2: Das Tempo gilt nur als „wie schnell es weh tut“, nicht als Größe, die die Energie ändert.",
+    "Der Sprung 64 J → 256 J wird als „viermal, weil auch die Masse doppelt war“ gelesen. Die Masse bleibt in diesem Schritt bei 8 kg; nur v ändert sich."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "64 J",
+    "256 J"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird 128 J gesetzt (doppelt statt viermal gerechnet). 128 J steht am Bildschirm bei 16 kg mit 4 m/s – und bei 4 kg mit 8 m/s. In genau diesem Zustand landet, wer „×2 Tempo“ gleich aus dem Startzustand drückt, ohne vorher „×2 Masse“ zu drücken (nachgemessen).",
+    "Die beiden Werte werden vertauscht, weil „×2 Tempo“ als der kleinere Schritt gelesen wird.",
+    "Es wird nachgerechnet und dabei die Masse vergessen: 32 J · 4 = 128 J. Die Seite verlangt Ablesen, nicht Rechnen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Tempo v zählt mehr, weil doppeltes Tempo viermal so viel Bewegungsenergie bringt. Doppelte Masse bringt nur doppelt so viel. Ein schneller Ball kann also gefährlicher sein als ein schwerer.",
+   "alternativen": [
+    "Bezug auf die eigenen Messwerte: „Von 32 J auf 64 J ist doppelt, von 64 J auf 256 J ist viermal.“ – reicht für die volle Wertung.",
+    "Bezug auf die Schiebestrecke: „Beim doppelten Tempo schiebt die Kugel den Klotz viel weiter als bei doppelter Masse.“",
+    "Alltagsbezug: „Deshalb gilt vor Schulen Tempo 30 und nicht ein Gewichtslimit für Autos.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus deiner Tabelle zeigt das?",
+    "„Schwer ist egal“ – falsch, die Masse zählt ja auch, nur weniger stark.",
+    "Es wird mit der Formel argumentiert („v steht im Quadrat“). Fachlich richtig, aber nicht verlangt; der Zahlenvergleich genügt."
+   ]
+  },
+  "hilfe3_wort": "doppelt (auch richtig: nur halb so viel wie viermal, zweimal)",
+  "schwache": [
+   "Die Reihenfolge ist zwingend: erst „zurücksetzen“, dann „×2 Masse“, dann „×2 Tempo“. Die beiden Verdopplungs-Knöpfe wirken auf den aktuellen Zustand. Wer aus dem Startzustand gleich „×2 Tempo“ drückt, bekommt andere Zahlen als in der Tabelle. Die drei Schritte als Merkzettel auf den Tisch legen.",
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen (32 J und 64 J), Zeile 3 erst danach dazunehmen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird. Aus der Statuszeile wird nur der Teil bis „= 32 J“ vorgelesen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Die Regler nicht anfassen lassen. Krumme Massen ergeben Werte, die die Anzeige rundet (½ · 15 · 1² = 7,5, angezeigt wird 8 J)."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle die Masse nacheinander auf 4 kg, 8 kg und 16 kg (Tempo v bleibt 4 m/s) und schreibe die drei Energiewerte auf. Welche Regel erkennst du?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Bewegungsenergie. Neu ist genau ein Fachwort: Bewegungsenergie. „Tempo v in m/s“ wurde in fk9 eingeführt, hier wird nur zurückverwiesen (Zählregel 4); „Joule“ stammt aus fe1. Der Kernlehrplan sagt „Geschwindigkeit“, der Bildschirm schreibt „Tempo“ – im Heft durchgängig „Tempo v“. Das Wort „Quadrat“ steht bewusst nur im Formelkasten der Simulation, nie in Wortbank, Merksatz oder Aufgabe; es wäre ein zweites neues Fachwort. Die Simulation benutzt zwei Formelzeichen für dieselbe Größe („E“ in der Statuszeile, „Ebew“ im Hinweistext) – im Heft immer „E“. Datenlage: Belegt sind allein die drei Zustände 4 kg/4 m/s = 32 J, 8 kg/4 m/s = 64 J und 8 kg/8 m/s = 256 J. Der saubere Tempo-Vergleich bei gleicher Masse 4 kg (32 J → 128 J) ist NICHT nachgemessen und darf nicht gedruckt werden; deshalb läuft der Vierfach-Vergleich hier über 64 J → 256 J bei 8 kg, und der Masse-Sprung wird in Spalte 2 ausdrücklich mitgeschrieben. Die Anzeige rundet (7,5 → 8 J, 187,5 → 188 J), darum sind nur 4 kg, 8 kg und 16 kg zugelassen; die ganze 15-kg-Reihe des Dumps ist gesperrt. Die Schiebestrecke des Klotzes hat sehr wohl einen angezeigten Wert – sie steht aber erst NACH dem Rollen in der Statuszeile, weshalb sie im simfakten-Dump fehlt: nachgemessen 0,16 m (32 J), 0,32 m (64 J) und 1,28 m (256 J). Sie bleibt trotzdem ohne Tabelleneintrag: die Tabelle übt das Ablesen der Energie, die Strecke ist die Gegenprobe zum Anschauen. Kompetenzen: die Tabelle trägt E5, Aufgabe 1 und der Zuhause-Auftrag tragen B1."
+ },
+ {
+  "id": "fe4",
+  "lernziel": "Die Schülerinnen und Schüler beobachten die beiden Energiebalken E_pot und E_kin und beschreiben, was beim Fallen geschieht: Die Lageenergie wird kleiner, die Bewegungsenergie größer. Sie benennen den Startzustand (Höhe = 20,0 m · E_pot = 392 J · E_kin = 0 J) mit Hilfe der Wortbank und begründen E_kin = 0 J damit, dass der Ball am Anfang noch ruht. Sie geben den Erhaltungssatz als Fachwissen wieder (die Summe aus beiden bleibt gleich groß, Energie entsteht nicht neu und geht nicht verloren – Energieerhaltung) und nennen eine Grenze des Modells (E7). Gerechnet wird nicht: weder E_pot = m · g · h noch E_kin = ½ · m · v² kommen auf der Schülerseite vor. WICHTIG: Die drei Startzahlen werden NICHT vom Bildschirm abgelesen. Sie stehen dort gemessen nur rund eine Zehntelsekunde; deshalb gibt die Tabelle die Startspalte vor und die Wortbank die beiden Zahlen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag zu Hause: ein Ball, der gut springt, und ein Zollstock oder ein Maßband.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten vorlesen oder an die Tafel hängen. Karte 1 (Startzustand, Höhe h auf 20 m, Masse m auf 2 kg, beides unverändert): die vier Zeilen des Anzeigekastens untereinander – „Höhe = 20,0 m“ · „E_pot = 392 J“ · „E_kin = 0 J“ · „noch kein Aufprall“. Karte 2 (Startbild der Balken): ein sehr langer violetter Balken, daneben ein oranger Balken der Länge null. An den Balken stehen im Bild NUR die Kurzformen „E_pot“ und „E_kin“; die langen Namen „Potentielle Energie“ und „Kinetische Energie“ sind die Überschriften der beiden Kurvendiagramme darunter, keine Balkenbeschriftung. Karte 3 (während des Falls, gezeichnet, ohne Zahlen): der Balken „E_pot“ deutlich kürzer, der Balken „E_kin“ deutlich länger. Als Tafelbild dieselbe Dreispaltentabelle wie im Heft: Was liest du ab? · Was steht am Anfang da? · Was passiert beim Fallen? – mit den Zeilen Höhe, Lageenergie E_pot, Bewegungsenergie E_kin; die mittlere Spalte ist im Heft schon ausgefüllt. Auf Karte 3 bewusst KEINE Zahlen eintragen: Der Fall dauert gemessen nur rund zwei Sekunden, und die Seite verlangt an dieser Stelle auch keine Zahl.",
+  "merksatz": [
+   "kleiner",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Lageenergie E_pot",
+    "langer Balken",
+    "der Balken wird kürzer"
+   ],
+   [
+    "Bewegungsenergie E_kin",
+    "kein Balken",
+    "der Balken wird länger"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Richtig ist „Nur so lange, wie der Ball nach unten fällt.“ Nur dann wird der Balken E_pot kürzer und der Balken E_kin länger – beim Hochspringen ist es genau umgekehrt. Die Simulation hat keinen einzigen Knopf, keine Pause und kein Reset; sie läuft vom Öffnen an durch. Antwort 2 ist falsch, weil ein Bewegen des Höhenreglers den Lauf mitten im Fall verändert: gemessen sprang die Anzeige dabei von „E_pot = 389 J“ auf „E_pot = 94 J“. VORSICHT, FALLE: Der Satz „noch kein Aufprall“ taugt NICHT als Regel und steht deshalb in keinem Arbeitsschritt und in keiner Antwortmöglichkeit. Er bleibt nach dem ersten Aufsetzen stehen und wechselt erst beim ZWEITEN Aufsetzen (nach rund 5,4 Sekunden) zu „Sprunghöhe 14,3 m“. Wer sich auf ihn verlässt, liest noch beim Rücksprung auf 14,2 m ab, obwohl die Energiesumme längst gefallen ist: gemessen 392 J → 283 J → 203 J → 145 J, also rund 28 Prozent weniger bei jedem Aufprall.",
+   "typische_fehler": [
+    "„Immer“ wird angekreuzt, weil das Bild ununterbrochen weiterläuft und nichts es anhält – die Simulation hat weder Pause noch Reset.",
+    "Fall und Sprung werden nicht unterschieden: Beim Hochspringen wird E_pot wieder größer, und der Merksatz scheint falsch zu sein.",
+    "Die Regler werden als Startknöpfe missverstanden, weil die Simulation sonst keine Bedienelemente hat."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "392 J",
+    "0 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht; Hilfe: erst E_pot und E_kin im Satz unterstreichen, dann in der Wortbank suchen.",
+    "Statt 392 J wird die Achsenzahl „392.4“ abgeschrieben. Sie steht mit Dezimalpunkt oben an der Achse des E_pot-Diagramms und gehört nicht ins Heft; ins Heft gehört das Wort aus der Wortbank: „392 J“.",
+    "Statt der Anzeige „Höhe = 20,0 m“ wird der Regler „Höhe h: 20 m“ gelesen. Beide Zahlen stehen auf demselben Bild – für die Höhe ist das kein Fehler, für E_pot schon.",
+    "„0 J“ wird als „nichts da“ ausgelassen und das Feld bleibt leer."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Simulation zeigt nur Zahlen und zwei Balken. Sie hat keine Luft und keinen echten Ball. Sie sagt nicht, wie hoch ein echter Ball zurückspringt. Das muss man selbst messen.",
+   "alternativen": [
+    "Über die Regler: „Man kann nur die Höhe und die Masse einstellen. Alles andere kommt in der Simulation nicht vor.“",
+    "Über den Auftrag zu Hause: „Am Bildschirm sehe ich keinen Boden und keinen Ball aus Gummi. Wie hoch er zurückspringt, sehe ich erst beim echten Versuch.“",
+    "Kurzform ohne Beispiel: „Ein Modell zeigt nie alles.“ – reicht für die volle Wertung, wenn ein Beispiel genannt wird."
+   ],
+   "typische_fehler": [
+    "Die Simulation wird für falsch erklärt statt für unvollständig: „Die Simulation lügt.“ Ein Modell ist nicht falsch, es lässt etwas weg.",
+    "Es wird nur die Beobachtung wiederholt: „Da sind zwei Balken.“ Ohne Aussage darüber, was fehlt.",
+    "Der echte Ball wird gar nicht erwähnt; die Antwort bleibt beim Bildschirm."
+   ]
+  },
+  "hilfe3_wort": "zurückspringt (auch richtig: hochspringt, springt)",
+  "schwache": [
+   "Vor dem Arbeiten zeigen, wo die 20 m stehen: am Regler „Höhe h: 20 m“ und an der obersten Marke der Höhenleiter im Bild. Die Zahlen im Anzeigekasten laufen dafür zu schnell.",
+   "Zuerst nur die Bewegung des Balls anschauen, ohne Heft. Erst im zweiten Durchgang die Balken beobachten und die Tabelle ausfüllen.",
+   "Die Übersetzung vorab an die Tafel schreiben: „E_pot“ am linken Balken = Lageenergie · „E_kin“ am rechten Balken = Bewegungsenergie. Die langen Namen stehen nur über den beiden Diagrammen darunter.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und die Zahlen laut sprechen („dreihundertzweiundneunzig Joule“, „null Joule“).",
+   "Den Satz „Fasse die beiden Regler nicht an.“ vor dem Öffnen der Simulation gemeinsam lesen und die Geräte erst danach austeilen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Zeichne die zwei Balken für den Anfang und für die Mitte des Falls nebeneinander auf und schreibe unter jedes Bild einen Satz. Für rechenstarke Lernende die Aufgabe aus dem Regelheft: Berechne mit E_pot = m · g · h die Lageenergie bei 20 m und bei 10 m (m = 2 kg, g = 9,81 N/kg) und bilde die Differenz. Der berechnete Wert 196 J steht so nicht am Bildschirm: Bei halber Höhe springt die Anzeige gemessen von „E_pot = 199 J“ auf „E_pot = 195 J“; dort steht dann übrigens auch „E_kin = 195 J“ – beide Balken sind gleich lang.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Energieumwandlung und Energieerhaltung. Trägt UF1 und UF3 (Energieumwandlung beschreiben) und vor allem E7 „Modelle auswählen und Modellgrenzen angeben“ – E7 kommt im ganzen Kapitel el nur hier vor und ist über die Erklär-Aufgabe 3 gesichert. Der Alltagsauftrag mit dem Zollstock trägt E5. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. ZUSCHNITT UND MESSUNG: Die Einheit ist gegenüber el4 neu zugeschnitten, weil die Simulation ihr altes Lernziel nicht trägt. Nachgemessen wurde Bild für Bild (rauchtest.js-Umgebung, 16 ms je Bild): (1) Die Simulation hat KEINEN Knopf, keine Pause, kein Reset und keine HTML-Statuszeile – alle 47 Statuszeilen im Dump sind leer; die vier Anzeigezeilen stehen im Bild selbst. (2) Der erste Fall dauert nur rund 2 Sekunden (126 Bilder). Der Startzustand „Höhe = 20,0 m · E_pot = 392 J · E_kin = 0 J“ steht danach nie wieder da und ist schon nach rund einer Zehntelsekunde weg. Deshalb wird er auf der Schülerseite VORGEGEBEN (Tabelle, Wortbank) und nicht als Ableseauftrag verlangt. (3) Der Satz „noch kein Aufprall“ bleibt nach dem ersten Aufsetzen stehen; er wechselt erst beim zweiten Aufsetzen (rund 5,4 s) zu „Sprunghöhe 14,3 m“, und dann erscheint links eine gestrichelte Marke „letzte Sprunghöhe“. Als Ableseregel ist der Satz damit unbrauchbar; die Seite benutzt stattdessen die sichtbare Bewegung „der Ball fällt nach unten“, die sich bei jedem Sprung wiederholt. (4) Die Energiesumme fällt bei jedem Aufprall um rund 28 Prozent: gemessen 392 J → 283 J → 203 J → 145 J. Der Erhaltungssatz ist am Bildschirm also nicht belegt und nach dem Aufprall sogar widerlegt; er steht deshalb nur als Fachtext im Alltagsteil und im gelösten Beispiel, nie in einer Lücke und nie als Ableseauftrag. BEDIENUNG: Beide Regler bleiben unberührt. Der Höhenregler wirkt mitten im Lauf – gemessen sprang die Anzeige von „E_pot = 389 J“ auf „E_pot = 94 J“; der Masseregler ändert jede Zahl auf dem Bildschirm. Höhe h bleibt auf 20 m, Masse m auf 2 kg. WORTWAHL: An den beiden Balken steht im Bild NUR „E_pot“ und „E_kin“. „Potentielle Energie“ und „Kinetische Energie“ sind die Überschriften der beiden Kurvendiagramme darunter; sie stehen deshalb nicht in der Wortbank, in keiner Lücke und in keinem Tabellenkopf – sonst zählten sie als zwei weitere Fachwörter und die Einheit risse das Limit. Lageenergie E_pot (fe2) und Bewegungsenergie E_kin (fe3) sind Rückverweise, keine zweite Einführung. Das Wort „Wärme“ kommt hier NICHT vor; es gehört fe5 (Energie entwerten). Einziges neues Fachwort: Energieerhaltung. Die Überschrift der Simulation trägt ein Blitz-Zeichen; im Heft wird nur die Wortmarke genannt, weil die Satzschrift das Zeichen nicht kennt."
+ },
+ {
+  "id": "fe5",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Kette „Benzin → Fahrt“ ab, dass die Gesamtmenge der Energie bei 1000 J bleibt, während nach dem ersten Schritt nur noch 250 J zu gebrauchen sind und 750 J zu Wärme geworden sind. Sie begründen damit, warum man Energie trotzdem sparen soll: Nicht die Menge geht verloren, sondern das, was man noch gebrauchen kann – die Energie wird entwertet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die beiden Ergebniskarten aus diesem Lehrerteil plus das Balken-Tafelbild. Optional als Demonstration: ein Ladegerät oder ein Netzteil eine Viertelstunde laufen lassen und danach anfassen lassen (nur handwarme Geräte, nichts Heißes).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte 1 „Am Anfang“: „Benzin → Fahrt · Start: 1000 J Benzin | Noch nichts passiert. Drücke „nächster Schritt“. | zusammen immer noch 1000 J – keine ist verschwunden.“ Karte 2 „Nach Schritt 1“: „Benzin → Fahrt · Start: 1000 J Benzin | Schritt 1: Motor verbrennt das Benzin | davon weiter nutzbar: 250 J | als Wärme abgegeben: 750 J (Abgas und Kühlwasser) | zusammen immer noch 1000 J – keine ist verschwunden.“ Dazu als Tafelbild zwei gleich lange Balken untereinander: oben ganz grün „1000 J nutzbar“, unten ein grünes Viertel „250 J nutzbar“ und drei rote Viertel „750 J Wärme“. Die beiden Bildtexte dazuschreiben: „grün = noch nutzbar    rot = zu Wärme geworden“ und „die Gesamtlänge ändert sich nie: 1000 J“. Wichtig: Die Schritte 2 und 3 der Kette (Antrieb, Bremsen) werden weder gezeigt noch mit Zahlen genannt – siehe Kernlehrplan-Feld. Alternativ die beiden Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "gleich",
+   "gebrauchen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Nach Schritt 1 (Motor)",
+    "250 J",
+    "1000 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Der Bildschirm meldet nach einmal „nächster Schritt“: „Schritt 1: Motor verbrennt das Benzin | davon weiter nutzbar: 250 J | als Wärme abgegeben: 750 J (Abgas und Kühlwasser) | zusammen immer noch 1000 J – keine ist verschwunden.“ Die letzte Zeile beantwortet die Frage wörtlich. 250 J und 750 J stehen zwar auch dort, aber als Teile – zusammen ergeben sie wieder 1000 J.",
+   "typische_fehler": [
+    "Antwort 2 wird angekreuzt: Die zuletzt gelesene Zahl (250 J) gilt als neue Gesamtmenge. Gegenfrage: Wo sind die 750 J geblieben? Am Balken zeigen, dass er gleich lang bleibt.",
+    "Antwort 3 wird angekreuzt: Wärme gilt als „weg“, weil man sie nicht mehr sieht. Die Wärme steckt in Abgas und Kühlwasser – sie ist noch da, nur überall verteilt.",
+    "Es wird in der Kette „Kohle → Licht“ gemessen, weil das der Ausgangszustand ist; dann passen die Zahlen nicht. Erst „Benzin → Fahrt“ drücken."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "250 J",
+    "750 J"
+   ],
+   "typische_fehler": [
+    "Die beiden Zahlen werden vertauscht. Hilfe: Nach dem Motor ist das meiste schon Wärme – die große Zahl gehört zur Wärme.",
+    "Statt 750 J wird 1000 J eingesetzt, weil die Zeile „zusammen immer noch 1000 J“ im Kopf bleibt. Die Kontrollrechnung 1000 J − 250 J = 750 J steht im gelösten Beispiel.",
+    "Die Einheit J fehlt oder es wird W geschrieben (Verwechslung mit fe6)."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Menge bleibt gleich, aber ein großer Teil ist Wärme geworden. Diese Wärme ist überall verteilt. Man kann sie nicht mehr gebrauchen. Deshalb soll man Energie sparen.",
+   "alternativen": [
+    "Bezug auf die Zahlen: Von 1000 J sind nach dem Motor nur noch 250 J zu gebrauchen, 750 J sind Wärme.",
+    "Bezug auf den Bildschirm: Der Balken bleibt gleich lang, aber der grüne Teil wird immer kürzer.",
+    "Kurzform ohne Zahlen: „Gespart wird nicht die Menge, sondern das, was man noch gebrauchen kann.“ – reicht für die volle Wertung.",
+    "Alltagsbezug Scheinwerfer oder Ladegerät: Die Wärme geht in den Hof beziehungsweise in den Raum und ist dort für niemanden mehr zu gebrauchen."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne den Gegensatz „Menge gleich – brauchbar weniger“ zu nennen. Gegenfrage: Was ändert sich denn dann überhaupt?",
+    "Es wird doch wieder behauptet, Energie gehe verloren. Auf die letzte Bildschirmzeile zeigen: „zusammen immer noch 1000 J – keine ist verschwunden.“",
+    "Sparen wird moralisch begründet („weil es die Umwelt kaputt macht“) statt physikalisch. Die moralische Seite ist richtig, gehört aber zu fe7; hier zählt die Begründung über die Wärme."
+   ]
+  },
+  "hilfe3_wort": "gebrauchen (auch richtig: nutzen, brauchen)",
+  "schwache": [
+   "Die Bedienreihenfolge vorher gemeinsam üben: erst „Benzin → Fahrt“, dann „nächster Schritt“. Wer sich verdrückt hat, nimmt „zurücksetzen“.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Nur die zweite Spalte ausfüllen lassen; die dritte Spalte (immer 1000 J) gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Mit einem Blatt Papier arbeiten: ein Viertel abreißen und beiseitelegen, drei Viertel danebenlegen. Das Papier ist immer noch ganz da – aber nur das Viertel liegt noch brauchbar auf dem Tisch."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke am Bildschirm die andere Kette „Kohle → Licht“ und dann einmal „nächster Schritt“. Schreibe die Zeile „zusammen immer noch …“ ab. Gilt der Satz auch dort? Erwartete Antwort (nachgemessen, 05.09.2026): Ja. Dort steht „Schritt 1: Kraftwerk verbrennt die Kohle | davon weiter nutzbar: 400 J | als Wärme abgegeben: 600 J (Abwärme im Kühlturm) | zusammen immer noch 1000 J – keine ist verschwunden.“ Die Zahlen sind andere, der Satz ist derselbe.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · Energieentwertung: Energie bleibt erhalten, wird aber entwertet (Leitplanke aus dem geprüften Gutachten). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ablesen und Eintragen der Tabelle trägt E5, die Deutung der gleichbleibenden Summe UF1, die Erklär-Aufgabe zur Sparfrage UF4 und B1. Fachwortzählung: neu ist genau EIN Wort, „entwertet“ – es steht im Fachtext des Merksatzes, nicht in einer Lücke, wie bei fe4 der Erhaltungssatz. „Wärme“ ist nach Zählregel 5 ein Alltagswort ohne Formelzeichen und ohne Einheit; die Regel gilt nur mit ihren beiden Bedingungen, deshalb bekommt das Wort im Alltagsteil einen Begriffssatz („Es ist heiß: Das ist Wärme.“) und steht weder in der Wortbank noch in einer Lücke. Die Merksatz-Lücken sind „gleich“ und „gebrauchen“ – Alltagswörter ohne Begriffscharakter, wie „kleiner“ und „größer“ in fe4. „erhalten“ wird bewusst NICHT eingeführt: Nach Zählregel 4 gehört es fe4 (energieerhaltung); die Regelheft-Lücke von el5 lautete ebenfalls „erhalten“. Ebenfalls vermieden: „nutzbar“ (steht am Bildschirm als „davon weiter nutzbar: 250 J“, würde nach Zählregel 3 als Tabellenkopf- oder Aufgabenwort mitzählen). Der Tabellenkopf fragt deshalb „Wie viel kann man noch gebrauchen? (in J)“; „nutzbar“ erscheint nur in wörtlichen Bildschirmzitaten dieses Lehrerteils. „Brauchbarkeit“ ist Nominalstil und kommt auf der Schülerseite nicht vor. Datenlage: Im Dump `fakten/energie-entwerten.json` steht von der Benzin-Kette nur Schritt 1, weil simfakten jedes Bedienelement genau einmal drückt. Schritt 2 und 3 sind deshalb am 05.09.2026 von Hand nachgemessen (`node simcheck/werte.js physics-sim.js energie-entwerten` mit _eewSet('auto'), dann dreimal _eewWeiter()): Schritt 2 „Antrieb bis zu den Rädern“ – nutzbar 225 J, Wärme 775 J (Reibung im Getriebe); Schritt 3 „Auto bremst an der Ampel“ – nutzbar 0 J, Wärme 1000 J (heiße Bremsscheiben), dazu die Zeile „Nutzbar ist jetzt: 0 J. Die Energie ist noch da, aber sie taugt zu nichts mehr.“ Die Zahlen sind damit belegt; die Tabelle bleibt trotzdem bei zwei Zeilen, weil der freigegebene Seitenplan auf „nur die Kette Benzin → Fahrt“ zuschneidet und Schritt 2 (225 J) sich von Schritt 1 (250 J) zu wenig unterscheidet, um am Balken etwas zu zeigen. Die Wirkungsgrade der Bildtexte (η = 25 %, 90 %, 0 %, 40 %, 92 %) bleiben aus Tabellenkopf, Merksatz und Aufgaben heraus – „Wirkungsgrad“ gehört fe7. Knopfaufschriften: Am Bildschirm heißen die Knöpfe „▶ nächster Schritt“ und „↺ zurücksetzen“; gedruckt werden nur die Wortmarken, weil SourceSans3 ▶ und ↺ nicht kennt und als leeres Kästchen setzen würde – der Bildschirm selbst schreibt „Drücke „nächster Schritt“.“ ohne Zierzeichen, die Wortmarke ist also belegt. Die Überschrift trägt ein Emoji (♻️) und wird nirgends zitiert. Bedienhinweis auf der Schülerseite ist Pflicht: „Kohle → Licht“ ist am Bildschirm der ERSTE Knopf und zugleich der Ausgangszustand; wer sofort „nächster Schritt“ drückt, misst in der falschen Kette. Das steht so nirgends am Bildschirm."
+ },
+ {
+  "id": "fe6",
+  "lernziel": "Die Schülerinnen und Schüler lesen Arbeit W und Leistung P an der Statuszeile ab und bestimmen die Leistung mit P = W / t. Sie erklären an den belegten Werten 1962 J / 196 W (10 s) und 1962 J / 392 W (5 s): Bei halber Zeit bleibt die Arbeit gleich, die Leistung wird doppelt so groß. Die Arbeit wird abgelesen, nicht mit m · g · h gerechnet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: eine Kiste am Seil zweimal gleich hoch ziehen, einmal langsam und einmal schnell, mit Stoppuhr.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils nur bis zum Leistungswert. Karte 1 (Ausgangszustand, 50 kg · 4 m · 10 s): „Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W“. Karte 2 (nach „÷2 Zeit“): „Arbeit W = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W“. Karte 3 (20 kg · 4 m · 10 s): „Arbeit W = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W“. Dazu eine vierte Karte mit dem Bildtext der Simulation: „Arbeit W = 1962 J (ändert sich durch die Zeit NICHT)“ und „halbe Zeit → doppelte Leistung, gleiche Arbeit“. Der Rest der Statuszeile („das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf“) gehört NICHT auf die Karten; kW und PS kommen im Schülerteil nicht vor. Statt der Animation eine Kiste zweimal gleich hoch ziehen und nur die Zeit stoppen.",
+  "merksatz": [
+   "W / t",
+   "doppelt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nach ÷2 Zeit",
+    "1962 J",
+    "392 W"
+   ],
+   [
+    "20 kg in 10 s",
+    "785 J",
+    "79 W"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die beiden Statuszeilen stehen direkt nebeneinander: bei 10 s „Arbeit W = 1962 J … Leistung P = 196 W“, nach „÷2 Zeit“ bei 5 s „Arbeit W = 1962 J … Leistung P = 392 W“. Die Arbeit ist in beiden Zeilen dieselbe Zahl, nur die Leistung verdoppelt sich. Der Bildtext sagt es wörtlich: „Arbeit W = 1962 J (ändert sich durch die Zeit NICHT)“.",
+   "typische_fehler": [
+    "Antwort 2 wird gewählt: „schneller = mehr Arbeit“ – genau die Vermutung 1 auf Seite A. Gegenfrage: Welche Zahl steht in beiden Zeilen an derselben Stelle?",
+    "Antwort 3 wird gewählt, weil die Kiste ja gleich hoch kommt. Das stimmt für die Arbeit, nicht für die Leistung.",
+    "Die 392 wird für die Arbeit gehalten. Am Bildschirm ist 392 viermal belegt: 392 J bei 10 kg, 392 W bei 50 kg in 5 s, 392 W bei 100 kg in 10 s und 392 W bei 50 kg mit h = 8 m. Deshalb immer die Einheit mitlesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "392 W",
+    "79 W"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird „78,5 W“ geschrieben. Richtig gerechnet, aber die Anzeige rundet auf 79 W – beides wird gewertet, verlangt ist der Wert vom Bildschirm (Hilfe 2).",
+    "Die Einheit fehlt oder es wird „392 J“ geschrieben: Watt-W und Arbeits-W verwechselt.",
+    "1962 / 5 wird als 392,4 notiert. Der Bildschirm zeigt 392 W; die Simulation rundet selbst."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herr Kessler hat recht, weil die Arbeit nur von der Kiste und von der Höhe abhängt. Beide Kisten kommen gleich hoch, also ist die Arbeit gleich: 1962 J. Verschieden ist nur die Zeit. Nour war schneller, darum ist ihre Leistung doppelt so groß: 392 W statt 196 W.",
+   "alternativen": [
+    "Bezug auf die eigenen Messwerte: „In beiden Zeilen steht 1962 J, aber einmal 196 W und einmal 392 W.“ – reicht für die volle Wertung.",
+    "Bezug auf den Bildtext: „Die Arbeit ändert sich durch die Zeit nicht.“",
+    "Nour bekommt zusätzlich recht: Sie hat sich mehr angestrengt, weil ihre Leistung doppelt so groß war. Das ist kein Widerspruch – beide Aussagen dürfen im selben Text stehen."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne die Zahlen der eigenen Tabelle zu nennen. Nachfragen: Welche Zahl steht bei dir zweimal?",
+    "„Nour hat mehr Arbeit gemacht, weil sie außer Puste war.“ Anstrengung wird mit Arbeit gleichgesetzt.",
+    "Arbeit und Leistung werden im Antwortsatz vertauscht („die Leistung bleibt gleich, die Arbeit wird doppelt“)."
+   ]
+  },
+  "hilfe3_wort": "Leistung (auch richtig: Leistung P)",
+  "schwache": [
+   "Die Reihenfolge ist zwingend: erst „zurücksetzen“, dann „÷2 Zeit“, dann wieder „zurücksetzen“ und erst danach 20 kg einstellen. Wer die 20 kg nach dem Halbieren einstellt, hat noch 5 s stehen und liest 157 W statt der 79 W der Tabelle ab (nachgemessen). Die drei Schritte als Merkzettel auf den Tisch legen.",
+   "Für die 5 s den Knopf „÷2 Zeit“ nehmen, nicht den Zeitregler: Der Knopf trifft die 5 s in einem Griff, am Regler landen Lernende leicht auf 4 s (491 W) oder 6 s (327 W), und dann passt Zeile 2 nicht. Wer den Regler genau auf 5 s stellt, bekommt dieselben Zahlen wie über den Knopf (1962 J / 392 W, nachgemessen) – das ist kein Fehler, nur der längere Weg.",
+   "Die Statuszeile gemeinsam laut lesen und mit dem Finger nach „= 196 W“ stoppen. Der Rest der Zeile (kW, PS, „ungefähr wie: Radfahrer bergauf“) wird abgedeckt.",
+   "Der Knopf „Hochziehen“ ändert keine Zahl – die Werte stehen schon vorher da. Das vorher sagen, sonst suchen Lernende ihren Fehler.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. In „392 W“ und „79 W“ das W dick unterstreichen und laut „Watt“ dazusagen; in „W / t“ meint dasselbe W die Arbeit. Ein J steht in der Wortbank nicht – die Joule-Werte kommen aus der Tabelle."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 100 kg bei 4 m und 10 s ein. Der Bildschirm zeigt 3924 J und 392 W. Warum steht dort dieselbe Leistung wie bei 50 kg in 5 s – obwohl die Arbeit doppelt so groß ist?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Leistung P = W / t, Einheit Watt. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: die Tabelle trägt E5, Aufgabe 2 trägt UF2, Aufgabe 3 trägt B2 (Nour gegen Herrn Kessler abwägen), der Treppen-Auftrag trägt E5 im Alltag. Fachwortzählung: neu ist genau EIN Wort, „Leistung P in Watt (W)“ (Zählregel 1). „Arbeit W in Joule (J)“ zählt bei fe1 und wird hier nur wiederholt (Zählregel 4). „Zeit t in Sekunden (s)“ wird bewusst NICHT als Größe eingeführt: t erscheint nur in der Formel P = W / t, genau so, wie die Hinweiszeile des Bildschirms sie schreibt; Sekunden werden abgelesen, nie umgerechnet. Der Seitenplan weist fe6 nur das eine Wort zu. Doppeldeutiges W: Auf EINER Statuszeile steht W als Formelzeichen der Arbeit („Arbeit W = 1962 J“) und als Einheitenzeichen Watt („Leistung P = 196 W“). Deshalb schreiben Spaltenkopf, Merksatz und Alltagsteil „Watt“ aus, das Zeichen W bleibt der Arbeit vorbehalten, und der Bildauftrag trägt den Hinweis „das W hinter der Zahl heißt Watt“ einmal ins Bild. Datenlage: Belegt sind die Zustände 50 kg · 4 m · 10 s = 1962 J / 196 W, derselbe Zustand nach „÷2 Zeit“ = 1962 J / 392 W und 20 kg · 4 m · 10 s = 785 J / 79 W. Der Zustand „50 kg, 4 m, 5 s“ steht im Dump nur hinter dem Knopf „÷2 Zeit“: simfakten drückt jedes Element nur einmal, und beim Zeitregler stand die Höhe schon auf 5 m – alle Zeitregler-Zeilen des Dumps tragen deshalb 2453 J und dürfen nicht gedruckt werden. Mit simcheck/werte.js nachgemessen: Bei h = 4 m liefert der Zeitregler auf 5 s dieselbe Zeile wie der Knopf (1962 J / 392 W); die drei Regler sind voneinander unabhängig, keiner verstellt einen anderen. Schritt 2 verlangt trotzdem den Knopf, weil er die 5 s in einem Griff trifft – am Regler liegen 4 s (491 W) und 6 s (327 W) daneben. Für die dritte Zeile stehen bewusst 20 kg (785 J / 79 W) und nicht die 10 kg des Regelhefts: 392 käme sonst in zwei Rollen auf derselben Seite vor (392 J bei 10 kg gegen 392 W bei 50 kg in 5 s). Die Zahl 392 ist am Bildschirm viermal belegt, dreimal davon als Watt: 50 kg in 5 s, 100 kg in 10 s und 50 kg bei h = 8 m. Die Anzeige rundet selbst (1962 : 10 = 196,2 → 196 W; 1962 : 5 = 392,4 → 392 W; 785 : 10 = 78,5 → 79 W); das Heft verlangt nie 196,2, Hilfe 2 zeigt das Runden an 78,5 → 79 W. „Hochziehen“ ändert die Statuszeile nicht – Ausgangszustand und Zustand nach dem Druck sind wortgleich; Forschen-Schritt 1 sagt das ausdrücklich. Die Uhr („0,0 s von 10 s“) wird nicht abgelesen, ihr Endwert ist nicht nachgemessen. Der Ortsfaktor 9,81 N/kg steht mitten in der Statuszeile, gehört aber zu fe1/fk5: Hilfe 1 sagt einmal, dass die Zahl schon dasteht, gerechnet wird damit nicht. Der Band trägt g mit zwei Zahlen (9,8 in masse-gewicht und ortsfaktor, 9,81 hier und in den Druck-Simulationen); die Förderseiten lesen nur ab, für die Lernenden entsteht der Widerspruch nicht. kW und PS bleiben ganz draußen – zusätzlicher Grund: Bildtext und Statuszeile widersprechen sich dort (0,05 PS gegen 0,053 PS bei 10 kg). Knopfnamen im Heft nur als Wortmarke ohne Zierzeichen: „Hochziehen“ und „zurücksetzen“ ohne ihre Symbole; „÷2 Zeit“ steht mit dem Divisionszeichen, das SourceSans3 kennt. Die Reglerbeschriftung „tton> (Rundpfeil) zurücksetzen Masse m: 50 kg“ im Dump ist ein Ausleseartefakt (der Rundpfeil des Knopfes fehlt in SourceSans3 und wird hier deshalb nur benannt, nicht gesetzt), am Bildschirm steht „Masse m: 50 kg“ – im Heft nur „Masse m“ beziehungsweise „20 kg“. Aus dem Regelheft gestrichen: kW und PS, der Vergleich „ungefähr wie: Radfahrer bergauf“, der Vierzeiler und die 100-kg-Rechnung (AFB III); Letztere steht als freiwillige Zusatzaufgabe oben."
+ },
+ {
+  "id": "fe7",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Statuszeile ab, wie viel von 1000 J eine Maschine als Licht oder Bewegung abgibt und wie viel als Wärme verloren geht, und sie lesen den Wirkungsgrad η in Prozent ab (nur ablesen, nie rechnen). Mit diesen Werten beurteilen sie, ob es richtig ist, eine noch funktionierende Glühlampe gegen eine LED-Lampe zu tauschen (B3: Werte und Normen berücksichtigen). Die Aufgabe fragt bewusst NICHT nach dem günstigeren Preis – das wäre B2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: eine Glühlampe und eine LED-Lampe gleicher Helligkeit zwei Minuten brennen lassen und die Wärme aus 10 cm Abstand mit der flachen Hand vergleichen – nicht anfassen, die Glühlampe wird über 100 °C heiß.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Aufgabe 3 danach im Tandem begründen lassen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile bis zum Wärmewert (am Bildschirm stehen die Teile untereinander; das „|“ trennt sie hier nur im Zitat). Karte 1 (Ausgangszustand, kein Knopfdruck nötig): „Glühlampe · η = 5 % | hinein: 1000 J | davon Licht: 50 J | als Wärme verloren: 950 J“. Karte 2: „LED-Lampe · η = 40 % | hinein: 1000 J | davon Licht: 400 J | als Wärme verloren: 600 J“. Karte 3: „Benzinmotor · η = 25 % | hinein: 1000 J | davon Bewegung: 250 J | als Wärme verloren: 750 J“. Karte 4: „Elektromotor · η = 90 % | hinein: 1000 J | davon Bewegung: 900 J | als Wärme verloren: 100 J“. Dazu eine fünfte Karte mit dem Bildtext der Simulation: „was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1000 J“. Der letzte Satz jeder Statuszeile (zum Beispiel „Der Draht wird glühend heiß – deshalb leuchtet er überhaupt.“) darf vorgelesen werden, gehört aber nicht in die Tabelle. Als Tafelbild genügt die dreispaltige Tabelle der Schülerseite mit denselben vier Zeilen.",
+  "merksatz": [
+   "Wärme",
+   "Wirkungsgrad"
+  ],
+  "tabelle_erwartet": [
+   [
+    "LED-Lampe",
+    "400 J Licht",
+    "40 %"
+   ],
+   [
+    "Benzinmotor",
+    "250 J Bewegung",
+    "25 %"
+   ],
+   [
+    "Elektromotor",
+    "900 J Bewegung",
+    "90 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die drei Werte stehen in der eigenen Tabelle: 90 % beim Elektromotor, 25 % beim Benzinmotor, 5 % bei der Glühlampe. 90 % ist der größte Wert. Die Statuszeile schreibt ihn wörtlich: „Elektromotor · η = 90 %“.",
+   "typische_fehler": [
+    "Die Glühlampe wird gewählt, weil sie am hellsten wirkt oder am heißesten wird. Heiß heißt hier: viel Energie geht verloren.",
+    "Der Prozentwert wird als „wie stark die Maschine ist“ gelesen. η sagt nur, welcher Anteil ankommt, nicht wie viel Energie hineingeht.",
+    "Wer vorher den Knopf „Wasserkocher“ gedrückt hat, findet dort ebenfalls η = 90 % und hält die Aufgabe für mehrdeutig. Der Wasserkocher steht nicht in der Tabelle und nicht unter den drei Antworten; kurz benennen und auf die vier Zeilen der Tabelle zurückführen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "100 J",
+    "90 %"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird 900 J gesetzt – der Nutzen wird mit dem Rest verwechselt. Gefragt ist die Ergänzung auf 1000 J.",
+    "Es wird 1000 J minus 900 J gerechnet und 10 J notiert (Stellenfehler). Am Bildschirm steht „als Wärme verloren: 100 J“.",
+    "In die zweite Lücke kommt „90 J“ statt „90 %“. Der Wirkungsgrad hat keine Einheit Joule, er steht in Prozent.",
+    "Beide Lücken werden aus dem Merksatz abgeschrieben („Wärme“, „Wirkungsgrad“). Diese Wörter stehen zwar in der Wortbank, passen hier aber nicht in die Lücke."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ich finde den Tausch richtig, weil die Glühlampe von 1000 J nur 50 J zu Licht macht. 950 J werden Wärme. Die LED-Lampe macht 400 J Licht. Wer tauscht, verschwendet weniger Energie.",
+   "alternativen": [
+    "Ebenso gewertet wird die Gegenposition, wenn sie begründet ist: „Ich finde den Tausch nicht richtig, weil die alte Lampe noch geht. Man wirft etwas weg, das noch funktioniert. Ich tausche sie erst, wenn sie kaputt ist.“ B3 verlangt eine begründete Abwägung, nicht eine bestimmte Antwort.",
+    "Abwägende Mischform, volle Wertung: „Der Tausch ist richtig, weil so viel Energie verloren geht. Aber die alte Lampe soll nicht in den Müll, sondern als Ersatz aufgehoben werden.“",
+    "Bezug auf die eigene Tabelle statt auf die Zahlen im Text: „50 J gegen 400 J – die LED gibt viel mehr Licht ab.“ genügt als Begründung.",
+    "Bezug auf die Umwelt oder auf die Schulkasse ist zulässig, solange die abgelesenen Zahlen genannt werden."
+   ],
+   "typische_fehler": [
+    "Es wird nur mit dem Preis argumentiert („LED ist billiger im Strom“) ohne die abgelesenen Werte. Das ist B2, nicht B3 – nach den Zahlen aus der Tabelle nachfragen.",
+    "Die Antwort bleibt bei „ja, ist besser“ ohne Begründung. Auf den Satzstarter zurückführen: Der Teil nach „weil“ fehlt.",
+    "„Die Glühlampe macht keine Energie kaputt“ – richtig gemeint, aber unvollständig. Nachschärfen: Die Energie ist nicht weg, sie wird Wärme und nützt hier nichts.",
+    "Der Merksatz wird abgeschrieben, ohne die Frage nach dem Tauschen zu beantworten."
+   ]
+  },
+  "hilfe3_wort": "Energie (auch richtig: Strom, Wärme)",
+  "schwache": [
+   "Die Statuszeile ist ein Block aus fünf untereinander stehenden Zeilen – nachgemessen: „Glühlampe · η = 5 %“, „hinein: 1000 J“, „davon Licht: 50 J“, „als Wärme verloren: 950 J“ und der Erklärsatz. Ein Trennzeichen „|“ steht nirgends am Bildschirm. Vor dem ersten Knopfdruck gemeinsam den Finger auf die Zeile „davon Licht: 50 J“ legen und nur diese Zeile vorlesen lassen; danach die Zeile „als Wärme verloren“. Das Suchen in der richtigen Zeile ist hier die eigentliche Leseleistung.",
+   "Zuerst nur Glühlampe und LED-Lampe vergleichen (Zeile 1 und Zeile 2). Benzinmotor und Elektromotor erst danach dazunehmen – für Aufgabe 1 werden sie gebraucht, für Aufgabe 3 nicht.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird. Sie ist der Ausgangszustand und muss nicht erst gedrückt werden.",
+   "Das Zeichen η einmal an der Tafel schreiben, „eta“ danebenschreiben und laut sprechen lassen. Für DaZ-Lernende ist der griechische Buchstabe weder lesbar noch aussprechbar; er steht aber in jeder Statuszeile.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen und die beiden Zahlen („100 J“, „90 %“) farbig markieren.",
+   "Den Regler nicht anfassen lassen. Er trägt die Aufschrift „hineingesteckte Energie: 1000 J“ und wirkt auf JEDE Maschine – nachgemessen: bei der Glühlampe auf 200 J gestellt, meldet der Bildschirm „davon Licht: 10 J“ und „als Wärme verloren: 190 J“. Dann passt keine einzige Tabellenzeile mehr. Alle vier Zeilen gelten bei 1000 J."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Handy-Ladegerät“ und stelle den Regler auf 200 J. Schreibe auf, wie viel in den Akku geht und wie viel Wärme wird. (Belegt: bei 1000 J sind es 800 J Akku und 200 J Wärme, bei 200 J sind es 160 J Akku und 40 J Wärme. Der Wirkungsgrad η bleibt 80 % – die Anteile bleiben gleich, nur die Menge ändert sich. Das ist ein zweites Lernziel und deshalb hier freiwillig.)",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Wirkungsgrad. Einziger Träger von B3 „Werte und Normen berücksichtigen“ im Band – Aufgabe 3 muss deshalb erhalten bleiben und darf nicht in eine Preisfrage (B2) umformuliert werden. Neu ist genau ein Fachwort: Wirkungsgrad η in Prozent (Zählregel 1: Größe + Formelzeichen + Einheit = eins). „Wärme“ stammt aus fe5, „Joule“ aus fe1; fällt fe5 weg, muss „Wärme“ hier eingeführt werden und das Limit reißt. Glühlampe und LED-Lampe zählen nach Zählregel 2 nicht: Begriffssatz im Alltag, weder Wortbank noch Lücke. Benzinmotor und Elektromotor bekommen keinen Begriffssatz; sie zählen nach Zählregel 5 als Alltagswörter ohne Formelzeichen und Einheit und stehen ebenfalls weder in der Wortbank noch in einer Lücke. Das Wort „Nutzen“ steht bewusst nur im Lehrerteil und im Bildtext der Simulation, nie auf der Schülerseite – es wäre sonst ein zweites Fachwort. Datenlage: Alle sechs Statuszeilen bei 1000 J sind belegt. Die Formel η = Enutz / Erein steht zwar im dritten Hinweistext der Simulation, wird aber NICHT gedruckt: Der Rechenweg 50 J / 1000 J = 0,05 und der Schritt 0,05 → 5 % stehen nirgends am Bildschirm. η und die Joule-Werte stehen nebeneinander in derselben Zeile – deshalb ablesen statt umrechnen. Die Simulation mischt zwei Schreibweisen: Statuszeilen in Prozent, dritter Hinweis „η ist immer kleiner als 1“. Im Förderheft durchgängig Prozent; der Merksatz sagt „η ist nie 100 %“. Wasserkocher-Falle: Dort ist Wärme der Nutzen („davon Wärme im Wasser: 900 J | als Wärme verloren: 100 J“), auf der ganzen übrigen Seite ist Wärme der Rest. Der Knopf ist da und wird gedrückt; er gehört nicht in Tabelle und Aufgaben (siehe a1, typische Fehler). Elektromotor und Wasserkocher zeigen beide η = 90 % und 900 J. Regler nachgemessen (simcheck/werte.js): Er wirkt auf JEDE Maschine, nicht nur auf das Handy-Ladegerät – Glühlampe bei 200 J ergibt 10 J Licht und 190 J Wärme, Handy-Ladegerät bei 200 J ergibt 160 J Akku und 40 J Wärme. Seine Aufschrift lautet „hineingesteckte Energie: 1000 J“; die Fassung „Handy-Ladegerät hineingesteckte Energie: 1000 J“ im Faktendump ist ein Ausleseartefakt – simfakten nimmt die letzten 70 Zeichen vor dem Schieberegler und erwischt dabei den Namen des letzten Knopfes. Deshalb steht auf der Schülerseite „Fasse den Regler nicht an“; die Tabelle gilt nur bei 1000 J. Ebenfalls nachgemessen: Die Statuszeile ist ein Fünfzeilen-Block (br-getrennt), kein Feld mit „|“ – das Trennzeichen gehört allein der Schreibweise des Faktendumps. Kompetenzen: die Tabelle trägt E5, Aufgabe 1 trägt UF1, Aufgabe 3 trägt B3, der Zuhause-Auftrag trägt UF3."
+ },
+ {
+  "id": "fe8",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Hebel ab, dass ein längerer Kraftarm l₁ eine kleinere Kraft F₁ braucht, und beschreiben am Kraftweg, dass die Hand dafür einen längeren Weg läuft. Sie lesen die Arbeit als unveränderte 20,00 J ab und begründen damit: Der Hebel spart Kraft, aber keine Arbeit. Gerechnet wird nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein Lineal auf einem runden Stift als Drehpunkt, ein Buch als Last, einmal dicht am Stift und einmal am äußeren Ende gedrückt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Die Last bleibt auf allen Karten bei F₂ = 200 N, der Lastarm ist nicht einstellbar und immer l₂ = 0,25 m. Karte 1 (Ausgangszustand, Regler auf 1,00 m): „Kraftarm l₁ = 1,00 m · F₁ = 50,00 N · Kraftweg 40,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 2 (Knopf „gleich lang – nichts gespart“): „Kraftarm l₁ = 0,25 m · F₁ = 200,00 N · Kraftweg 10,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 3 (Knopf „doppelt so lang – halbe Kraft“, das gelöste Beispiel): „Kraftarm l₁ = 0,50 m · F₁ = 100,00 N · Kraftweg 20,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 4 (Knopf „achtfach – ein Achtel der Kraft“): „Kraftarm l₁ = 2,00 m · F₁ = 25,00 N · Kraftweg 80,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Dazu eine fünfte Karte mit den beiden Sätzen, die die Simulation anzeigt: „Der lange Arm spart Kraft – und kostet Weg“ (Bildzeile über dem Hebel) und „Der Hebel spart Kraft – niemals Arbeit“ (Zeile unter dem Bild). Als Tischversuch zur Gegenprobe: Lineal auf einem Stift, ein Buch dicht am Stift als Last, einmal dicht daneben und einmal ganz außen drücken lassen; beobachtet wird nur, wo es leichter geht und wie weit die drückende Hand nach unten läuft.",
+  "merksatz": [
+   "kleine",
+   "langen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "0,25 m",
+    "200,00 N",
+    "10,0 cm"
+   ],
+   [
+    "2,00 m",
+    "25,00 N",
+    "80,0 cm"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die eigene Tabelle trägt die Antwort: Von 0,25 m auf 2,00 m fällt die Kraft von 200,00 N auf 25,00 N, der Kraftweg wächst von 10,0 cm auf 80,0 cm. Eine noch längere Stange setzt diese Richtung fort – kleinere Kraft, längerer Weg.",
+   "typische_fehler": [
+    "Antwort 2: Kraft und Weg werden gleichgerichtet gedacht („leichter heißt auch kürzer“) – genau die Vermutung 1 auf Seite A.",
+    "Antwort 3: Der Lastweg wird mit dem Kraftweg verwechselt. Die Last steigt in jedem Zustand genau 10,0 cm; das steht auf allen Karten.",
+    "Die Knopfaufschriften werden als Antwort abgeschrieben („halbe Kraft“), ohne in die Tabelle zu sehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "200,00 N",
+    "80,0 cm"
+   ],
+   "typische_fehler": [
+    "„200 N“ statt „200,00 N“. Fachlich richtig, aber die Anzeige schreibt die Last ohne Nachkommastellen (F₂ = 200 N) und die Kraft mit zweien (F₁ = 200,00 N). Beide Schreibweisen stehen bei l₁ = 0,25 m nebeneinander und werden für zwei verschiedene Werte gehalten – hier ausdrücklich ansprechen.",
+    "In die zweite Lücke kommt „10,0 cm“: der Lastweg statt des Kraftwegs.",
+    "In die zweite Lücke kommt „8,00“ oder „achtfach“ aus dem Knopfnamen statt einer Länge."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im Bild steht bei jedem Kraftarm dieselbe Arbeit: 20,00 J. Die Kraft wird kleiner, aber der Weg wird genauso viel länger. Deshalb spart der Hebel nur Kraft, keine Arbeit.",
+   "alternativen": [
+    "Zahlenvergleich aus der eigenen Tabelle: „Bei 0,25 m sind es 200,00 N und 10,0 cm, bei 2,00 m nur 25,00 N, dafür 80,0 cm.“ – reicht für die volle Wertung.",
+    "Wörtlicher Bezug auf die Bildzeile „Der lange Arm spart Kraft – und kostet Weg“.",
+    "Alltagsbezug: „An der Türklinke geht es leichter, aber die Hand muss weiter mitlaufen.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus dem Bild zeigt das?",
+    "„Arbeit“ und „Kraft“ werden als dasselbe Wort benutzt („weniger Kraft ist weniger Arbeit“).",
+    "Es wird nachgerechnet (25,00 N · 0,80 m). Das ist nicht verlangt und führt über die verschwiegene Umrechnung 80,0 cm → 0,80 m in die Irre; die Arbeit wird nur abgelesen."
+   ]
+  },
+  "hilfe3_wort": "länger (auch richtig: weiter, größer)",
+  "schwache": [
+   "Die Vermutung muss VOR dem ersten Knopfdruck stehen. Die Knöpfe heißen „halbe Kraft“ und „ein Achtel der Kraft“ und nehmen das Ergebnis vorweg; wer zuerst drückt, hat die Forscherfrage schon beantwortet.",
+   "Zuerst nur Zeile 1 und Zeile 2 ausfüllen (1,00 m und 0,25 m), Zeile 3 erst danach dazunehmen.",
+   "Es gibt keinen Zurücksetzen-Knopf. Zurück zum Ausgangszustand kommt man nur, indem man den Regler wieder auf 1,00 m zieht. Das vorher zeigen.",
+   "Den Last-Regler nicht anfassen lassen. Er bleibt auf 200 N; sonst passen die Kraftwerte der Tabelle nicht mehr.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und die drei Zahlen im Bild zeigen lassen, bevor die Simulation weiterbedient wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „doppelt so lang – halbe Kraft“ und schreibe Kraft und Kraftweg auf. Ordne den Wert zwischen deine beiden Tabellenzeilen ein.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Hebel als Kraftwandler. Neu sind genau zwei Fachwörter: Hebel und Kraftarm l₁. „Drehpunkt“, „Kraftweg“ und „Lastweg“ bleiben nach Zählregel 5 Alltagswörter: Der Drehpunkt bekommt im Alltagsteil einen Begriffssatz, der Kraftweg steht als Klammer im Tabellenkopf, der Lastweg nur als Beschriftung im Bildauftrag – keines der drei steht in Wortbank, Merksatz-Lücke oder Aufgabe. „Kraft“ stammt aus fk1, „Newton (N)“ aus fk2, „Arbeit W in Joule“ aus fe1; alle drei werden hier nur wiederholt. Bewusst gestrichen: das Wort „Hebelgesetz“, „Lastarm l₂“ als Lernwort (der Lastarm ist in dieser Simulation gar nicht einstellbar und immer 0,25 m) – auch im Bildauftrag trägt diese Strecke nur ihr Maß „0,25 m“, ohne Namen und ohne Formelzeichen, sonst wäre sie nach Zählregel 5 das dritte Fachwort; ferner „Kraftwandler“, „masselos“ sowie die Formelzeichen s₁/s₂ und W₁/W₂ – acht indizierte Zeichen auf einer Doppelseite verwechselt die Zielgruppe systematisch, deshalb bleiben nur F₁, F₂ und l₁ stehen. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite; die Sache steht hier als „Die Arbeit bleibt gleich“. Datenlage: Alle gedruckten Werte stammen aus den Bildtexten der Simulation bei F₂ = 200 N – 1,00 m/50,00 N/40,0 cm, 0,25 m/200,00 N/10,0 cm, 0,50 m/100,00 N/20,0 cm, 2,00 m/25,00 N/80,0 cm, dazu durchgehend Lastweg 10,0 cm und „Arbeit beide Male 20,00 J“. Der Wert 0,50 m ist NUR über den Knopf „doppelt so lang – halbe Kraft“ belegt, nicht über die Reglerreihe; er steht deshalb im gelösten Beispiel und nicht in der Tabelle. Nachgemessen (simcheck/werte.js, Anzeige hebWertL1): Die Reglerbeschriftung springt nach jedem Knopfdruck mit – „achtfach“ zeigt 2,00, „gleich lang“ 0,25, „doppelt so lang“ 0,50. Abgefragt wird die Kraftarmlänge trotzdem aus dem Bild, weil dort auch Kraft, Wege und Arbeit nebeneinander stehen. Nicht nachgemessen und darum nicht gedruckt: jeder Zustand, in dem Kraftarm und Last gleichzeitig verstellt sind – die Last bleibt auf der ganzen Doppelseite bei 200 N. Modellgrenze für das Unterrichtsgespräch: Die Stange gilt als masselos und starr, Reibung im Drehpunkt und Durchbiegen sind nicht enthalten. Kompetenzen: die Tabelle trägt E5, Aufgabe 3 trägt E6, der Zuhause-Auftrag trägt UF4."
+ },
+ {
+  "id": "fe9",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation flaschenzug ab, wie Zugkraft und Handweg von der Zahl der tragenden Seilstücke abhängen (1 Seilstück: 600,0 N und 2,0 m · 2 Seilstücke: 300,0 N und 4,0 m · 4 Seilstücke: 150,0 N und 8,0 m). Sie benennen den Fall mit einem tragenden Seilstück als feste Rolle und den Fall mit zwei tragenden Seilstücken als lose Rolle und begründen an der dreimal gleichen Zugarbeit von 1200,0 J, dass keine Maschine Arbeit spart. Gerechnet wird nicht, es wird abgelesen und verglichen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: zwei Umlenkrollen, ein Seil und ein Kraftmesser an einem 10-N-Gewicht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen; alle Werte stehen so am Bildschirm. Karte 1 (Knopf „n = 1 · volle Kraft“): „An der unteren Flasche ziehen n = 1 Seilstücke. | F = 600 N / 1 = 600,0 N | Eine feste Rolle spart keine Kraft. Sie dreht nur die Richtung um. | s = 1 · 2,0 m = 2,0 m | Zugarbeit: W = F · s = 600,0 N · 2,0 m = 1200,0 J“. Karte 2 (Knopf „n = 2 · halbe Kraft“): „n = 2 Seilstücke. | F = 600 N / 2 = 300,0 N | Die Last verteilt sich auf 2 Seilstücke. Jedes trägt gleich viel. | s = 2 · 2,0 m = 4,0 m | Zugarbeit: W = F · s = 300,0 N · 4,0 m = 1200,0 J“. Karte 3 (Knopf „n = 4 · ein Viertel“): „n = 4 Seilstücke. | F = 600 N / 4 = 150,0 N | s = 4 · 2,0 m = 8,0 m | Zugarbeit: W = F · s = 150,0 N · 8,0 m = 1200,0 J“. Dazu eine vierte Karte mit der Hubarbeit, die in allen drei Fällen gleich bleibt: „Hubarbeit: W = G · h = 600 N · 2,0 m = 1200,0 J“. Die drei Karten nebeneinander hängen, damit die Reihe 600,0 N – 300,0 N – 150,0 N und die Reihe 2,0 m – 4,0 m – 8,0 m untereinander sichtbar werden. Als Tischversuch zur Gegenprobe: ein Gewicht am Kraftmesser erst direkt heben, dann über eine feste Rolle ziehen (gleiche Anzeige), dann an einer losen Rolle (halbe Anzeige, doppelt so viel Seil durch die Hand).",
+  "merksatz": [
+   "feste Rolle",
+   "lose Rolle"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Seilstücke",
+    "300,0 N",
+    "4,0 m"
+   ],
+   [
+    "4 Seilstücke",
+    "150,0 N",
+    "8,0 m"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Der Knopf „n = 4 · ein Viertel“ zeigt beides gleichzeitig: „F = 600 N / 4 = 150,0 N“ und „Zugarbeit: W = F · s = 150,0 N · 8,0 m = 1200,0 J“. Die Kraft wird ein Viertel, die Arbeit bleibt genau die Zahl, die schon der Knopf „n = 1 · volle Kraft“ anzeigt. In der Tabelle steht die Arbeit nicht – sie wird nur am Bildschirm verglichen.",
+   "typische_fehler": [
+    "Antwort 1: Mit der Kraft soll auch die Arbeit sinken – das ist die Fehlvorstellung aus Vermutung 2 auf Seite A. Gegenprobe: die Zeile „Zugarbeit“ bei allen drei Knöpfen vorlesen lassen.",
+    "Antwort 3: Der Knopfname „ein Viertel“ wird auf den Weg statt auf die Kraft bezogen. Hier hilft der Blick auf die eigene Tabellenspalte: die Kraft fällt, der Weg wächst.",
+    "1200,0 J wird für einen Druckfehler gehalten, weil die Zahl dreimal gleich ist. Die drei Ergebniskarten nebeneinander legen und die Zeile gemeinsam nachlesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "300,0 N",
+    "4,0 m"
+   ],
+   "typische_fehler": [
+    "600 N · 2 = 1200 N statt 600 N : 2 = 300,0 N – bei mehr Seilstücken wird geteilt, nicht malgenommen. Der Bildschirm schreibt den Schritt hin: „F = 600 N / 2 = 300,0 N“.",
+    "Beim Weg wird ebenfalls geteilt (2,0 m : 2 = 1,0 m). Genau umgekehrt: der Weg wird länger, weil beide Seilstücke kürzer werden müssen.",
+    "Die beiden Zahlen werden vertauscht, weil die Einheiten N und m nicht mitgelesen werden. Einheiten in der Wortbank mitsprechen lassen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Arbeit bleibt gleich, weil die Kraft zwar auf ein Viertel sinkt, der Weg deiner Hand aber viermal so lang wird. Der Bildschirm zeigt bei 1, 2 und 4 Seilstücken dieselbe Zugarbeit von 1200,0 J. Was du an Kraft sparst, zahlst du am Weg zurück.",
+   "alternativen": [
+    "Rein am Zahlenpaar: „150,0 N sind ein Viertel von 600,0 N, aber 8,0 m sind viermal 2,0 m.“ – reicht für die volle Wertung.",
+    "Über die eigene Tabelle: „In meiner Tabelle wird die Kraft kleiner und der Weg genauso viel größer.“",
+    "Alltagsbezug: „Am Baukran muss das Seil viel länger durch die Winde laufen, als der Haken steigt.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus deiner Tabelle zeigt das?",
+    "„Die Arbeit wird ein Viertel“ – die Zahl 1200,0 J wird nicht als Gegenbeleg genutzt. Sie steht nicht in der Tabelle (die hat nur Kraft und Weg), sondern nur am Bildschirm in der Zeile „Zugarbeit“; deshalb den vierten Arbeitsschritt noch einmal ausführen lassen.",
+    "Es wird mit W = F · s gerechnet. Fachlich richtig, aber nicht verlangt: 150,0 N · 8,0 m ist für die Zielgruppe zu schwer, der Vergleich der abgelesenen Zahlen genügt."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: gleich groß, 1200,0 J)",
+  "schwache": [
+   "Die Simulation startet NICHT bei 1 Seilstück, sondern bei n = 2 (300,0 N und 4,0 m). Wer nichts drückt, schreibt die falschen Zahlen in Zeile 1. Arbeitsschritt 1 – Knopf „n = 1 · volle Kraft“ – deshalb gemeinsam ausführen und die Beispielzeile daran prüfen.",
+   "Nur die drei Knöpfe benutzen lassen. Die beiden Regler bleiben unberührt: Der Last-Regler liefert bei 350 N, 450 N oder 950 N halbe Newton (87,5 N, 112,5 N, 237,5 N), und der Seilstück-Regler führt auf n = 3, das in der Tabelle nicht vorkommt.",
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen (600,0 N und 300,0 N), Zeile 3 erst danach dazunehmen.",
+   "Die lange Statuszeile abdecken und nur die drei Ablesestellen freilassen: die Zeile mit „F =“, die Zeile „3 · Der Weg“ und die Zeile „Zugarbeit“.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „300,0 N“ und „4,0 m“ zusammen mit der Einheit sprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schiebe den Regler „Tragende Seilstücke“ auf 3 und lies Kraft und Weg ab (200,0 N und 6,0 m). Passt der Wert zwischen deine Zeilen für 2 und 4 Seilstücke?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band."
+ },
+ {
+  "id": "fe10",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation die Drehzahl n₂ von Rad 2 für drei Zähnepaare ab (24 : 24 → 60,0 U/min · 30 : 10 → 180,0 U/min · 12 : 36 → 20,0 U/min) und begründen damit qualitativ: Weil beide Räder am Berührpunkt gleich viele Zähne durchschieben, hat das Rad mit wenigen Zähnen die große Drehzahl und das Rad mit vielen Zähnen die kleine. Gerechnet wird auf dieser Seite nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil plus das Zahnrad-Tafelbild. Optional als Demonstration: zwei ungleich große Zahnräder aus dem Bau- oder Technikkasten, jedes mit einem Klebestreifen als Markierung, von Hand langsam gedreht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Über allen vier Karten steht der Satz, den die Simulation in jeder Einstellung zeigt: „Am Berührpunkt | Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch.“ Karte 1 „gleich groß (24 : 24)“: „Rad 1: 60 U/min · 24 Zähne = 1440 Zähne je Minute | n₂ = 1440 Zähne je Minute : 24 Zähne | n₂ = 60,0 U/min“. Karte 2 „groß treibt klein – schneller“: „Rad 1: 60 U/min · 30 Zähne = 1800 Zähne je Minute | n₂ = 1800 Zähne je Minute : 10 Zähne | n₂ = 180,0 U/min“. Karte 3 „klein treibt groß – langsamer, kräftiger“: „Rad 1: 60 U/min · 12 Zähne = 720 Zähne je Minute | n₂ = 720 Zähne je Minute : 36 Zähne | n₂ = 20,0 U/min“. Karte 4 „40 auf 10 – vierfach schnell“ (nur für Aufgabe 1 nötig): „Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min“. Dazu als Tafelbild zwei ineinandergreifende Räder nebeneinander, links groß (30 Zähne, n₁ = 60 U/min), rechts klein (10 Zähne, n₂ = 180,0 U/min), an der Eingriffsstelle ein Pfeil mit „Hier passt jeder Zahn in eine Lücke“, und darunter die drei Zahlenpaare der Tabelle in einer Zeile. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen. Die Karten 2 und 3 sind Pflicht – sie füllen die beiden offenen Tabellenzeilen.",
+  "merksatz": [
+   "Drehzahl",
+   "langsam"
+  ],
+  "tabelle_erwartet": [
+   [
+    "30",
+    "10",
+    "180,0 U/min"
+   ],
+   [
+    "12",
+    "36",
+    "20,0 U/min"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Knopf „40 auf 10 – vierfach schnell“ zeigt der Bildschirm: „Rad 1: 60 U/min · 40 Zähne = 2400 Zähne je Minute | n₂ = 2400 Zähne je Minute : 10 Zähne | n₂ = 240,0 U/min“. Auch ohne Gerät ist die Antwort erschließbar: Rad 2 hat genau so wenige Zähne wie in Zeile 2 der Tabelle (10), Rad 1 aber mehr (40 statt 30). Die Drehzahl muss also über 180,0 U/min liegen; nur 240,0 U/min erfüllt das.",
+   "typische_fehler": [
+    "60,0 U/min wird angekreuzt: Das ist die Drehzahl von Rad 1 (n₁ = 60 U/min) und zugleich der Fall 24 : 24 aus der Beispielzeile. Gegenfrage: Hat Rad 2 hier genauso viele Zähne wie Rad 1?",
+    "20,0 U/min wird angekreuzt: Verwechslung mit dem umgekehrten Fall 12 : 36, in dem Rad 2 die vielen Zähne hat.",
+    "Es wird vermutet, das größere Rad 1 sei das schnellere. Am Berührpunkt zeigen: Beide schieben gleich viele Zähne durch, aber Rad 2 braucht dafür nur 10 statt 40 Zähne und ist deshalb viermal so oft herum."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "180,0 U/min",
+    "20,0 U/min"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht. Hilfe: In der ersten Lücke hat Rad 2 WENIGER Zähne als Rad 1 – dort gehört die große Zahl hin.",
+    "60,0 U/min wird eingesetzt, weil es die erste Zahl in der Tabelle ist. Sie gehört zur Beispielzeile 24 : 24.",
+    "Die Nachkommastelle wird weggelassen („180 U/min“). Der Bildschirm schreibt 180,0 U/min; so wird es auch abgeschrieben.",
+    "Statt U/min wird eine andere Einheit geschrieben (U/s, N, W). Der Alltagsteil löst die Einheit einmal auf: U/min heißt Umdrehungen je Minute."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Räder schieben am Berührpunkt gleich viele Zähne durch. Rad 2 hat weniger Zähne. Deshalb ist es schneller einmal herum. Mit dem Gewicht hat das nichts zu tun.",
+   "alternativen": [
+    "Bezug auf die Zahlen der Tabelle: Rad 1 mit 30 Zähnen dreht 60-mal je Minute, Rad 2 mit 10 Zähnen dreht 180,0 U/min – dreimal so oft.",
+    "Gegenbeispiel aus Zeile 3: Bei 12 : 36 ist Rad 2 das größere und dreht nur mit 20,0 U/min. Wäre das Gewicht schuld, müsste es dort auch schnell sein.",
+    "Kurzform ohne Zahlen: „Nicht das Gewicht entscheidet, sondern die Zahl der Zähne.“ – reicht für die volle Wertung.",
+    "Alltagsbezug Seilwinde: Jannis kurbelt dreimal, die Trommel dreht sich einmal – dort sitzen die vielen Zähne am zweiten Rad."
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird nur abgeschrieben, ohne Nours Behauptung zu widerlegen. Gegenfrage: Was wäre denn, wenn das kleine Rad aus Blei wäre?",
+    "„Weil es kleiner ist“ ohne Zähne. Nachfragen: Woran am Rad kann man es ablesen? Auf den Berührpunkt zeigen.",
+    "Rad 1 und Rad 2 werden verwechselt; erklärt wird der Fall 12 : 36. Dann ist die Begründung richtig, aber am falschen Rad – gemeinsam am Bild zuordnen."
+   ]
+  },
+  "hilfe3_wort": "groß (auch richtig: hoch)",
+  "schwache": [
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und den Knopf „gleich groß (24 : 24)“ zusammen drücken, bevor die Partnerarbeit beginnt.",
+   "Nur die zweite Tabellenzeile (30 : 10) ausfüllen lassen; die dritte Zeile gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die fünf Wörter der Wortbank einmal abschreiben lassen und die drei Drehzahlen darin einkreisen.",
+   "Mit zwei Zahnrädern aus dem Baukasten arbeiten: an beiden einen Klebestreifen anbringen und von Hand drehen, bis Rad 1 einmal herum ist. Rad 2 mitzählen lassen.",
+   "Die Spalten von rechts nach links lesen üben: erst „Wie groß ist n₂?“, dann zurück zu den Zähnezahlen – so bleibt der Zusammenhang wenige Zähne / große Drehzahl im Blick."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle am Bildschirm den Knopf „klein treibt groß – langsamer, kräftiger“ ein und lies die letzte Zeile im Statuskasten vor. Was gewinnt Rad 2 dort, obwohl es langsamer dreht?",
+  "kernlehrplan": "Inhaltsfeld Mechanische Arbeit, Energie und Leistung · Kraftwandler: Getriebe und Übersetzung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Zähnepaare und das Ablesen der Drehzahl trägt E5, das Vergleichen der drei Zeilen E6, die Deutung „wenige Zähne – große Drehzahl“ UF1 und UF3, die Erklär-Aufgabe gegen Nours Gewichts-Vorstellung UF4. Fachwortzählung: neu ist genau EIN Wort, „Drehzahl“ (mit Formelzeichen n und Einheit U/min – nach Zählregel 1 zusammen ein Fachwort). „Zähne“ ist nach Zählregel 5 ein Alltagswort und steht deshalb bewusst NICHT in der Wortbank und in keiner Merksatz-Lücke; „Zahnrad“ ist nach Zählregel 2 ein Gerätename mit Begriffssatz im Alltagsteil. Bewusst NICHT eingeführt: „Übersetzung i“ – der Seitenplan gibt fe10 nur ein Fachwort, deshalb kommt weder i noch das Verhältnis z₁ : z₂ auf der Schülerseite vor, obwohl der Bildschirm es zeigt („i = z₁ : z₂ = 30 : 10 = 3,00“). Ebenfalls gestrichen: „Drehmoment M“ – die Bildschirmdefinition „Kraft mal Hebelarm“ wäre ein weiteres Fachwort samt Produkt zweier Größen; die Sache steht nur in der freiwilligen Zusatzaufgabe und in Alltagssprache („langsamer, kräftiger“). „Antrieb“ und „Abtrieb“ werden vermieden, die Seite sagt durchgehend Rad 1 und Rad 2 – so beschriftet der Bildschirm die Räder ohnehin mit („Rad 1 · Antrieb“). Auch „Berührpunkt“ steht nicht als Fachwort, sondern nur als Bildmarke im Bildauftrag und im Tafelbild. Datenlage (wichtig): Benutzt werden allein der Ausgangszustand (30 : 10) und die vier Knöpfe. Der Faktendump enthält daneben 85 Reglerzustände (41-mal Regler „Rad 1“, 41-mal Regler „Rad 2“, 3-mal Regler „Antriebsdrehzahl“). Davon sind 44 unbrauchbar: In den Zuständen der Regler „Rad 2“ und „Antriebsdrehzahl“ hat simfakten den Regler „Rad 1“ auf 47 stehen gelassen – dort steht „Rad 1: 60 U/min · 47 Zähne = 2820 Zähne je Minute“ statt der 30 Zähne des Ausgangszustands. Die 41 Zustände des Reglers „Rad 1“ sind dagegen in sich stimmig (z₂ bleibt bei 10 Zähnen), werden auf dieser Seite aber nicht gebraucht. Kein Wert aus den Reglerzuständen steht im Heft; die Seite verlangt ausschließlich Knopf-Einstellungen und nennt die Regler nicht. Nachgemessen mit simcheck/werte.js: Der Regler „Antriebsdrehzahl“ verstellt n₁ wirklich (auf 10 gezogen zeigt der Bildschirm „Rad 1: 10 U/min“ und n₂ = 30,0 U/min), und jeder der vier Knöpfe stellt n₁ wieder auf 60 U/min. Deshalb sagt Forschen-Schritt 1 nicht, Rad 1 drehe „immer“ mit 60 U/min, sondern nennt den Knopf als Ursache. Nicht abgefragt werden außerdem: die Zeile „1800 : 60 s = 30,0 Zähne je Sekunde“ (würde mit einer Drehzahl von 30 verwechselt), die Umdrehungsdauer, der Umdrehungszähler und die Uhr im Bild (im Dump stehen alle auf null, die Endwerte sind nicht gemessen) sowie die Zeitlupe („eine Sekunde der Uhr im Bild dauert vier Sekunden in Wirklichkeit“) – auf dieser Seite wird gar nicht mit Zeit gearbeitet. Nachkommastellen werden nie gekürzt: 60,0 · 180,0 · 20,0 · 240,0 U/min, immer mit Dezimalkomma. Die Einheit U/min löst der Bildschirm nirgends auf; das geschieht einmal im Alltagsteil. Knopfaufschriften werden wörtlich zitiert und sind emojifrei; die Simulationsüberschrift trägt ein Emoji und wird deshalb nirgends zitiert. Modellgrenze der Simulation (Hinweis 3): gerechnet wird ohne Reibung und ohne Zahnspiel – das passt zur Leitplanke „ideale Maschinen gelten ohne Reibung“ und kann mündlich ergänzt werden; auf der Schülerseite steht es aus Platzgründen nicht. Rahmenbruch beachten: Die Seilwinde des Alltagsteils ist der UMGEKEHRTE Fall zum Startzustand der Simulation (Trommel langsamer). Genau deshalb steht Zeile 3 der Tabelle (12 : 36) auf der Seite – sie ist der Winden-Fall. Beim Besprechen ausdrücklich sagen: Bei der Winde sitzen die vielen Zähne am zweiten Rad."
+ },
+ {
+  "id": "fe11",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass die nötige Kraft F mit flacherer Rampe kleiner wird (steil 4,5 N · mittel 3,0 N · flach 1,5 N gegenüber 6 N beim senkrechten Heben), und dass der Weg dabei länger wird (1,3 × · 2,0 × · 4,0 × die Höhe). Sie benennen den Preis der Kraftersparnis in der Sache: Was an Kraft gespart wird, wird am Weg zurückgezahlt. Sie unterscheiden die Kraft F am Seil und die Gewichtskraft der Kiste: Die Last bleibt bei jeder Rampe 6 N. Fachlicher Name dieser Regel — nur für Sie, nicht auf der Schülerseite: goldene Regel der Mechanik.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Rampen. Optional als Demonstration: ein Brett an einen Tisch legen, eine Kiste am Kraftmesser einmal senkrecht heben und einmal über das flache Brett ziehen (nur Vergleich klein/groß, keine Messreihe).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte „flach“: „flache Rampe: Zugkraft F = 1,5 N (statt 6 N senkrecht), Weg 4,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Karte „mittel“ (das ist zugleich der Ausgangszustand der Simulation): „mittlere Rampe: Zugkraft F = 3,0 N (statt 6 N senkrecht), Weg 2,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Karte „steil“: „steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Dazu als Tafelbild drei Rampen untereinander, alle zur gleichen Höhe: dieselbe Kiste mit der Aufschrift „6 N“ auf jeder Rampe, daneben die Bildtexte „Höhe (gleich)“, „Zugkraft 4,5 N“ / „Weg = 1,3 × Höhe“, „Zugkraft 3,0 N“ / „Weg = 2,0 × Höhe“, „Zugkraft 1,5 N“ / „Weg = 4,0 × Höhe“. Wichtig beim Tafelbild: die Kisten-Aufschrift „6 N“ bleibt in allen drei Zeilen stehen — daran hängt Aufgabe 2. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "kleiner",
+   "länger"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "3,0 N",
+    "2,0 × Höhe"
+   ],
+   [
+    "steil",
+    "4,5 N",
+    "1,3 × Höhe"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „steil“ meldet die Statuszeile: „steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe.“ Dieselben zwei Zahlen stehen als Bildtexte „Zugkraft 4,5 N“ und „Weg = 1,3 × Höhe“ direkt an der Rampe — die zweite Option nennt beide. Die erste Option ist die flache Rampe (die Beispielzeile der Tabelle), die dritte mischt die Last 6 N mit dem Weg der flachen Rampe.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil die Beispielzeile der Tabelle im Blick liegt und nicht neu gemessen wurde. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt?",
+    "Die dritte Option wird angekreuzt: Die 6 N der Kiste werden für die Zugkraft gehalten. Am Bild zeigen: 6 N steht auf der Kiste, die Zugkraft steht am Pfeil.",
+    "Es wird gar nicht umgestellt und der Ausgangszustand (mittel, 3,0 N) abgelesen — diese Zahl kommt in keiner Option vor, die Aufgabe bleibt leer."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,5 N",
+    "schwer"
+   ],
+   "typische_fehler": [
+    "Statt 1,5 N wird 6 N eingesetzt: Kraft am Seil und Gewichtskraft werden gleichgesetzt. Der Bildtext „6 N“ steht bei jeder Rampe unverändert da — kleiner wird nur die Kraft F.",
+    "Statt „schwer“ wird „leicht“ oder „leichter“ geschrieben — genau die Fehlvorstellung aus der ersten Vermutung. Auf die drei Kisten des Tafelbildes zeigen: dreimal 6 N.",
+    "Die Einheit N fehlt („1,5“). Die Wortbank enthält sie mit Einheit; einmal abschreiben lassen.",
+    "Der Wert der mittleren Rampe (3,0 N) wird eingesetzt, weil zuletzt dort gemessen wurde. Der Satz nennt aber die flache Rampe."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour muss die flache Rampe nehmen, weil sie dort nur 1,5 N ziehen muss. Das ist weniger als 2 N. Bei der mittleren Rampe wären es 3,0 N und bei der steilen 4,5 N — das schafft sie nicht. Dafür ist ihr Weg auf der flachen Rampe länger.",
+   "alternativen": [
+    "Nur mit dem Vergleich der drei Zahlen, ohne Wegsatz: „flach, weil 1,5 N kleiner ist als 2 N“ — reicht für die volle Wertung.",
+    "Ausschlussweg: „mittel und steil gehen nicht, weil 3,0 N und 4,5 N mehr als 2 N sind. Also flach.“",
+    "Begründung über die Regel: „Je flacher die Rampe, desto kleiner die Zugkraft. Also muss Nour die flachste nehmen.“",
+    "Zusatz mit Preis: „Sie muss die Kiste dafür 4,0 × so weit ziehen wie hoch.“ — richtig, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "„steil“ wird gewählt, weil der Weg dort kurz ist. Nachfragen: Wie viel Kraft schafft Nour? Die Wegfrage kommt erst danach.",
+    "Es wird nur „die flache“ genannt, ohne Zahl. Nachfragen: Woran siehst du das? Die Zahl 1,5 N muss vorkommen (Hilfe 3 gibt sie vor).",
+    "Nour soll die Kiste leichter machen oder jemanden mitziehen lassen — Alltagslösung statt Ablesen. Auf die Tabelle zurückverweisen.",
+    "Die 6 N werden als Antwort genannt: Das ist die Last, nicht die Zugkraft."
+   ]
+  },
+  "hilfe3_wort": "flache (auch richtig: flachste)",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten: nur „flach“, „mittel“, „steil“. Neun weitere Knöpfe sind Quizfragen der Simulation, drei fragen nur nach dem eigenen Gefühl (unsicher / geht so / sicher), einer setzt das Protokoll zurück. Wer „Kraft“ drückt — das sieht aus wie eine Einstellung —, bekommt keinen neuen Messwert, sondern eine Quiz-Rückmeldung; die Statuszeile bleibt dabei auf der zuletzt eingestellten Rampe stehen (nachgemessen).",
+   "Die Beispielzeile der Tabelle (flach) gemeinsam laut lesen und im gelösten Beispiel die Stelle „= 1,5 N“ mit dem Finger zeigen, bevor die Simulation geöffnet wird.",
+   "Nur die Spalte „Zugkraft F in N“ ausfüllen lassen; die Weg-Spalte gemeinsam an der Tafel eintragen.",
+   "Die lange Statuszeile mit einem Papierstreifen abdecken, sodass nur „Zugkraft F = … N“ sichtbar bleibt.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Rechne für die flache Rampe Kraft mal Weg als Plusaufgabe: 1,5 + 1,5 + 1,5 + 1,5. Vergleiche dein Ergebnis mit der Zahl, die am Bildschirm hinter „Kraft × Weg =“ steht. Probiere es auch für die mittlere Rampe: 3,0 + 3,0.",
+  "kernlehrplan": "Inhaltsfeld Mechanische Arbeit, Energie und Leistung · einfache Maschinen: schiefe Ebene. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Rampen und das Eintragen der Tabelle trägt E4 und E5, der Vergleich der drei Zugkräfte UF3, die Erklär-Aufgabe zur 2-N-Grenze UF4 und E6, die Vermutung zur gleich bleibenden Last UF1. Zusammenlegung: Diese Doppelseite trägt el12 und el13 gemeinsam (Seitenplan vom 05.09.2026), mit EINEM Lernziel — flacher heißt kleinere Zugkraft und längerer Weg. Fachwortzählung: neu ist genau EIN Wort, „schiefe Ebene“, im Alltagsteil mit Begriffssatz eingeführt; „Rampe“ bleibt durchgehend das Alltagswort. Nicht neu eingeführt und deshalb nur als Rückverweis benutzt: Kraft (fk1), Newton N (fk2), Gewichtskraft F (fk4), Arbeit W (fe1). „Zugkraft“ wäre nach Zählregel 1 und 4 ein ZWEITES neues Fachwort — das Wort kommt im ganzen Band sonst kein einziges Mal vor. Die Schülerseite sagt deshalb durchgehend „Kraft F in N“, genau wie fe8 und fe9; der Bildschirmwortlaut „Zugkraft“ steht nur noch dort, wo der Bildschirm wörtlich zitiert wird (gelöstes Beispiel, Bildtexte des Bildauftrags), und wird nirgends gebraucht: nicht im Lernziel, nicht in der Tabellenspalte, nicht im Merksatz, nicht in der Wortbank, nicht in einer Aufgabe. Nach Zählregel 5 steht außerdem kein Alltagswort ohne Formelzeichen und Einheit in der Wortbank: „Weg“ ist deshalb aus der Wortbank heraus, die zweite Merksatzlücke fragt nach „länger“. Der Name „goldene Regel der Mechanik“ steht nach Zählregel 4 auf keiner Schülerseite des Bandes — weder hier noch bei fe9; auf beiden Seiten steht nur die Sache („Was du an Kraft sparst, zahlst du am Weg zurück“). Ebenfalls bewusst vermieden: „einfache Maschine“, „Steilheit“, „Hangabtriebskraft“ — das wären das zweite bis vierte Wort. Datenlage und Fallen: (1) Die „6“ hinter „Kraft × Weg =“ ist EINHEITENLOS, der Weg steht nur als Vielfaches der Höhe („4,0 × so lang wie die Höhe“), die Höhe selbst trägt keine Zahl (Bildtext nur „Höhe (gleich)“). Auf der Schülerseite darf deshalb nirgends „6 J“ stehen und keine Rechnung in Joule verlangt werden; die 1200,0 J des Flaschenzugs (fe9) dürfen nicht analog gebildet werden. (2) Rechenfalle steile Rampe: 4,5 × 1,3 = 5,85, die Simulation zeigt trotzdem „Kraft × Weg = 6“, weil sie den Wegfaktor 1,33… auf 1,3 rundet. Nachgerechnet werden darf nur flach (1,5 × 4,0 = 6) und mittel (3,0 × 2,0 = 6) — genau diese beiden stehen in der freiwilligen Zusatzaufgabe, und zwar als Additionsaufgabe, weil die Dezimalkomma-Multiplikation selbst eine Hürde ist. Der steile Wert wird nur abgelesen, nie multipliziert. (3) „senkrecht heben“ ist KEIN Bedienzustand: Es gibt nur die drei Knöpfe flach, mittel, steil. Die 6 N stehen als Bildtext „6 N“ und in jeder Statuszeile als „(statt 6 N senkrecht)“; der zugehörige Wegfaktor 1,0 steht nirgends am Bildschirm. Die vierte Tabellenzeile des Regelhefts entfällt deshalb — die Tabelle hat nur die drei messbaren Zeilen. (4) Zwei Namen für dieselbe Größe: Der Knopf heißt „Kraft“, die Statuszeile schreibt „Zugkraft F“. Die Schülerseite sagt durchgehend „Kraft F in N“ (das eingeführte Wort aus fk1/fk2); nennen Sie beim Bedienen beide Wörter einmal und zeigen Sie im gelösten Beispiel, dass „Zugkraft F = 1,5 N“ am Bildschirm dieselbe Größe meint. (5) Zeichen-Bruch: Die Simulation schreibt „×“, das Heft spricht von „mal“. Einmal ausdrücklich gleichsetzen. (6) Die Begründung des Regelhefts — nur ein Teil der Gewichtskraft wirkt entlang der Bohle, den Rest trägt die Unterlage — zeigt die Simulation NICHT: In den Bildtexten steht kein einziger Kraftpfeil und keine Zerlegung. Sie bleibt Merkwissen und darf nach der Heft-gegen-Sim-Regel keine Bildschirmaufgabe tragen; deshalb verbietet auch der Bildauftrag zerlegte Kräfte. (7) Undruckbare Zeichen: Vier Knöpfe der Simulation tragen vor dem Wort ein Emoji (unsicher / geht so / sicher / Protokoll zurücksetzen), ebenso die Überschrift der Simulation. SourceSans3 hat für diese Zeichen keine Glyphe; sie werden deshalb nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. (8) Offen und deshalb nicht verlangt: Ob die Simulation alle drei Rampen gleichzeitig zeigt oder nur die eingestellte, ist im Faktendump nicht belegt (alle Bildtexte stehen dort nebeneinander). Die Seite verlangt deshalb drei getrennte Messungen, nicht einen Vergleich aus einem Bildschirm. Ebenso unbelegt: was das Protokoll sammelt und ob nach einer Animation andere Werte erscheinen — die Seite fordert keinen Zustand nach einem Lauf. Sobald `fakten/schiefe-ebene.json` ein Feld „nachgemessen“ trägt, kann das nachgezogen werden. (9) Aufgabe 1 fragt bewusst nach den beiden ZAHLEN und nicht nach dem Bildtext im Wortlaut: So bleibt „Zugkraft“ aus der Aufgabe heraus, ohne dass die Seite etwas behauptet, was nicht am Bildschirm steht. Die Zahlenpaare selbst sind belegt (Status „Zugkraft F = 4,5 N“, Bildtext „Weg = 1,3 × Höhe“). Nachgemessen am 05.09.2026 mit simcheck/werte.js: Ein Quizknopf ändert die Statuszeile NICHT, sie bleibt auf der zuletzt eingestellten Rampe."
+ }
+]

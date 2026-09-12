@@ -1,0 +1,54 @@
+{
+ "id": "ki16",
+ "basiskonzept": "Erhaltung und Gleichgewicht",
+ "titel": "Die Summe mit Vorzeichen",
+ "problem": "Am Ende der Messstrecke lassen Mira und Tobias zwei Wagen aufeinanderprallen. Der leichte kommt zurück, der schwere fährt los. Für die Wettbewerbsmappe suchen sie eine Größe, die der Stoß nicht verändert. Tobias addiert, was die Lichtschranken danach melden, und hat mehr in der Hand als vorher – dabei hat niemand nachgeschoben.",
+ "frage": "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
+ "auftrag": "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
+ "predict": [
+  "Kugel 1 prallt zurück und Kugel 2 fährt an – nach dem Stoß sind beide unterwegs, vorher war es nur eine. Die beiden Impulse addieren sich deshalb, und p_ges ist danach größer als der Startwert.",
+  "p_ges behält seinen Startwert. Weil p₁ beim Zurückprallen negativ wird, zieht es von p₂ ab: Was Kugel 1 abgibt, nimmt Kugel 2 auf, und die Summe ändert sich beim Stoß nicht."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Beim Öffnen rollt die Kugel mit der Aufschrift m3 auf die ruhende Kugel m5 zu; der Regler „Masse 2 (kg)“ bleibt die ganze Seite über auf 5 kg stehen. Lies im Anzeigefeld über der Bahn die drei Zeilen p₁, p₂ und p_ges ab, solange die beiden noch getrennt sind – der Zusammenstoß kommt nach rund drei Sekunden. Mit „Stoß auslösen“ beginnt der Durchgang von vorn.",
+  "Stelle den Regler „Masse 1 (kg)“ auf 1 kg und starte mit „Stoß auslösen“ einen neuen Durchgang. Notiere p₁, p₂ und p_ges vor der Berührung und noch einmal danach, und verfolge dabei die Kurve „Gesamtimpuls“ im unteren Diagramm.",
+  "Der Stoß ist jetzt vorbei. Ziehe den Regler „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab. Halte außerdem die Zahl p₁ im Anzeigefeld gegen den Wert, den die Kurve „Impuls Ball 1“ im selben Augenblick anzeigt."
+ ],
+ "modellgrenze": "Wer einen Massenregler erst nach dem Zusammenstoß verstellt, sieht keinen Stoß mehr: Die Simulation rechnet p = m · v dann mit der neuen Masse und der alten Geschwindigkeit weiter. Zeile 4 der Tabelle ist deshalb eine Grenze des Modells, kein Gegenbeispiel zum Erhaltungssatz – ein wirklicher Körper ändert seine Masse unterwegs nicht. Maßstab: Die Simulation nimmt ihre Bildpunkte als Meter, deshalb gehören zu p₁ = 60,0 kg·m/s bei 1 kg schon 60 m/s – für rollende Kugeln unrealistisch hoch, und die Energien fallen entsprechend groß aus. An den beiden Bilanzen ändert das nichts.",
+ "tabCols": [
+  "p₁ und p₂ im Anzeigefeld (kg·m/s)",
+  "p_ges abgelesen – und p₁ + p₂ nachgerechnet"
+ ],
+ "tabRows": [
+  "m₁ = 3 kg · m₂ = 5 kg · vor dem Stoß",
+  "m₁ = 1 kg · m₂ = 5 kg · vor dem Stoß",
+  "m₁ = 1 kg · m₂ = 5 kg · nach dem Stoß",
+  "m₁ nach dem Stoß auf 2 kg · m₂ = 5 kg"
+ ],
+ "fachtext": "Der Impuls eines Körpers ist p = m · v. Weil v eine gerichtete Größe ist, ist p es ebenfalls: Auf einer geraden Bahn genügt ein Vorzeichen, um die Richtung festzuhalten – nach rechts positiv, nach links negativ. Der Gesamtimpuls zweier Körper ist deshalb die vorzeichenrichtige Summe p_ges = m₁ · v₁ + m₂ · v₂ und nicht die Summe der Beträge. Stoßen die beiden zusammen, üben sie nach dem dritten newtonschen Gesetz gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus – genau gleich lange. Jeder erfährt also denselben Kraftstoß F · Δt, nur mit umgekehrtem Vorzeichen: Δp₁ = −Δp₂. Was der eine an Impuls abgibt, nimmt der andere auf; die Summe bleibt unverändert. Das ist der Impulserhaltungssatz, und er gilt in jedem abgeschlossenen System, an dem von außen keine Kraft angreift. Den Ausgang eines Stoßes legt er allein aber nicht fest: Eine Gleichung genügt für zwei unbekannte Geschwindigkeiten nicht. Erst zusammen mit der Erhaltung der kinetischen Energie, die den elastischen Stoß gerade auszeichnet, folgen daraus für den geraden elastischen Stoß v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂) und v₂' = ((m₂ − m₁) · v₂ + 2 · m₁ · v₁) / (m₁ + m₂). Die kinetische Energie lässt sich aus demselben Messwert gewinnen: Aus E = ½ · m · v² und p = m · v wird E = p² / (2 · m). Der Unterschied der beiden Bilanzen steckt in diesem Quadrat: Der Impuls ist gerichtet, seine Summe kann kleiner ausfallen als die Summe der Beträge; die Energie ist nie negativ, ihre Anteile addieren sich immer. Beim elastischen Stoß bleiben beide Summen erhalten, beim unelastischen nur der Impuls – ein Teil der Bewegungsenergie geht in Verformung und Wärme. Gültigkeitsbereich: Die Simulation rechnet ausschließlich elastisch; einen unelastischen Stoß, bei dem die Körper zusammenkleben, kann man an ihr nicht einstellen. Beide Massenregler laufen von 1 kg bis 10 kg in Schritten von 1 kg, Reibung fehlt. Das Anzeigefeld nennt p₁ und p₂ mit Vorzeichen; die Kurve „Impuls Ball 1“ trägt dagegen den Betrag auf und bleibt auch nach dem Zurückprallen positiv – sie kennt kein Minus.",
+ "merksatz": [
+  {
+   "pre": "Beim Stoß gibt der eine Körper genau so viel Impuls ab, wie der andere aufnimmt; die Summe p_ges bleibt deshalb",
+   "loesung": "erhalten",
+   "post": ", solange von außen keine Kraft angreift."
+  },
+  {
+   "pre": "Anders als die Energie ist der Impuls p = m · v",
+   "loesung": "gerichtet",
+   "post": "; ein zurücklaufender Körper geht mit negativem Vorzeichen in die Summe ein."
+  }
+ ],
+ "beobachtung": "Beim Öffnen stehen m₁ = 3 kg und m₂ = 5 kg; die Kugeln tragen die Aufschriften m3 und m5. Das Anzeigefeld meldet p₁ = 180,0 · p₂ = 0,0 · p_ges = 180,0 kg·m/s – Kugel 2 liegt still, der ganze Impuls steckt in Kugel 1. Die Kurve „Gesamtimpuls“ läuft dabei waagerecht; ihre Achse nennt als größten und als kleinsten Wert dieselbe Zahl 180,0. Nach dem Umstellen auf m₁ = 1 kg und einem neuen Durchgang steht vor der Berührung p₁ = 60,0 · p₂ = 0,0 · p_ges = 60,0. Nach dem Zusammenstoß meldet dasselbe Feld p₁ = −40,0 · p₂ = 100,0 · p_ges = 60,0: Kugel 1 läuft mit negativem Impuls zurück, Kugel 2 fährt mit 100,0 kg·m/s los, und die Summe steht unverändert auf 60,0. Nachgerechnet ist −40,0 + 100,0 = 60,0; die Beträge ergäben dagegen 40,0 + 100,0 = 140,0, und so viel Impuls ist nicht da. Kugel 1 hat genau 100,0 kg·m/s abgegeben, und genau 100,0 kg·m/s sind bei Kugel 2 angekommen. Die Kurve „Gesamtimpuls“ bleibt über den Stoß hinweg auf 60,0 kg·m/s, während die Kurve „Impuls Ball 1“ von 60,0 auf 40,0 springt – sie trägt den Betrag auf und kennt kein Minus. Wird der Regler „Masse 1 (kg)“ erst danach auf 2 kg gezogen, meldet das Anzeigefeld p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0. Die Geschwindigkeiten sind dieselben geblieben, nur die Masse in p = m · v ist eine andere – ein Stoß war das nicht.",
+ "aufgabe": {
+  "frage": "Berechne für den Durchgang mit m₁ = 1 kg und m₂ = 5 kg aus den abgelesenen Impulsen mit E = p² / (2 · m) die kinetische Energie beider Kugeln vor und nach dem Stoß und begründe, warum p_ges gleich bleibt, p₁ aber das Vorzeichen wechselt.",
+  "zeilen": 5,
+  "loesung": "Für m₁ = 1 kg und m₂ = 5 kg gilt vor dem Stoß p₁ = 60,0 kg·m/s und p₂ = 0,0 kg·m/s. Damit ist E₁ = p₁² / (2 · m₁) = (60,0)² / (2 · 1 kg) = 3600 / 2 = 1800 J und E₂ = 0 J, zusammen E_ges = 1800 J. Nach dem Stoß steht p₁ = −40,0 kg·m/s und p₂ = 100,0 kg·m/s. Daraus folgt E₁ = (−40,0)² / (2 · 1 kg) = 1600 / 2 = 800 J und E₂ = (100,0)² / (2 · 5 kg) = 10000 / 10 = 1000 J, zusammen wieder E_ges = 1800 J. Beide Summen bleiben also erhalten, denn die Simulation rechnet elastisch. Verschieden ist, wie sie es tun: Der Impuls ist gerichtet, deshalb wird p₁ negativ, und die Summe −40,0 + 100,0 = 60,0 fällt kleiner aus als die Summe der Beträge 40,0 + 100,0 = 140,0. In E = p² / (2 · m) steht p dagegen im Quadrat; das Vorzeichen verschwindet, und die Anteile addieren sich als positive Zahlen zu 800 J + 1000 J = 1800 J. Kugel 1 hat 100,0 kg·m/s an Impuls abgegeben und 1000 J an Energie – zwei getrennte Bilanzen, die sich ohne die Masse nicht ineinander umrechnen lassen. Das Vorzeichen wechselt, weil die stoßende Masse die kleinere ist: In v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂) wird der Zähler negativ, sobald m₁ < m₂ ist. Mit p₁ = 60,0 kg·m/s und m₁ = 1 kg ist v₁ = 60 m/s, und die Formel liefert v₁' = ((1 − 5) · 60) / 6 = −40 m/s, also p₁ = −40,0 kg·m/s – genau der abgelesene Wert."
+ },
+ "alltag": "Lege zwei gleich große Murmeln auf eine glatte Fliese und schnippe die eine gegen die andere, die ruhig liegt: Die erste bleibt fast stehen, die zweite läuft mit etwa demselben Tempo weiter. Wiederhole das mit einem kleinen Klümpchen Knete zwischen beiden, sodass sie zusammenkleben und gemeinsam weiterrollen. Erkläre einer Person zu Hause, warum die Summe m · v in beiden Fällen dieselbe bleibt, das gemeinsame Tempo im zweiten Fall aber nur knapp halb so groß ist (die Knete wiegt mit) – und warum die Simulation nur den ersten der beiden Fälle zeigen kann.",
+ "alltagAfb": "II",
+ "alltagKomp": "S2",
+ "ueberleitung": "Damit ist die Messstrecke zu Ende. Auf ihr lief alles geradeaus, und ein einziges Vorzeichen genügte, um die Richtung festzuhalten. Im nächsten Kapitel biegen Mira und Tobias die Bahn zum Kreis. Dann ändert sich die Richtung in jedem Augenblick – der Impuls also auch, obwohl das Tempo gleich bleibt. Die erste Frage dort lautet, wie schnell ein Punkt auf der Kreisbahn überhaupt ist.",
+ "name": "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
+ "theme": "ef_mechanik"
+}

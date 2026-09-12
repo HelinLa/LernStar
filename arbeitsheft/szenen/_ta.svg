@@ -1,0 +1,21 @@
+  <!-- Pruefblatt: Standlinien und Ankerpunkte -->
+  <g stroke="#C4963A" stroke-width="1.5" stroke-dasharray="6 6">
+    <line x1="20" y1="215" x2="880" y2="215"/>
+    <line x1="20" y1="470" x2="880" y2="470"/>
+  </g>
+  <g fill="#C4963A">
+    <circle cx="80" cy="215" r="3"/><circle cx="200" cy="215" r="3"/>
+    <circle cx="300" cy="215" r="3"/><circle cx="410" cy="215" r="3"/>
+    <circle cx="520" cy="215" r="3"/><circle cx="700" cy="215" r="3"/>
+    <circle cx="230" cy="470" r="3"/><circle cx="660" cy="470" r="3"/>
+  </g>
+
+  <use href="#t_thermoskanne"  transform="translate(80,215) scale(0.46)"/>
+  <use href="#t_thermosbecher" transform="translate(200,215) scale(0.62)"/>
+  <use href="#t_metallbecher"  transform="translate(300,215) scale(0.62)"/>
+  <use href="#t_plastikbecher" transform="translate(410,215) scale(0.62)"/>
+  <use href="#t_eisflasche"    transform="translate(520,215) scale(0.6)"/>
+  <use href="#t_handschuh"     transform="translate(700,175) scale(0.72)"/>
+
+  <use href="#t_parkbank"      transform="translate(230,470) scale(0.62)"/>
+  <use href="#t_brotdose"      transform="translate(660,470) scale(0.72)"/>

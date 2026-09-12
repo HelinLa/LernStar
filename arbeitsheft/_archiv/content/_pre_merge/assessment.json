@@ -1,0 +1,772 @@
+[
+{
+"id": "licht",
+"clues": {
+"hinweise": [
+{
+"wort": "LICHT",
+"tipp": "Alles, was von selbst leuchtet, sendet das aus. Es wandert immer geradlinig, also schnurgerade, durch den Raum."
+},
+{
+"wort": "SONNE",
+"tipp": "Die große, glühende Kugel am Himmel. Sie wärmt uns am Tag und leuchtet ganz von selbst."
+},
+{
+"wort": "SCHATTEN",
+"tipp": "Der dunkle Bereich hinter einem Gegenstand, durch den kein Licht kommt. Steht das Ding näher an der Lampe, wird er größer."
+},
+{
+"wort": "LAMPE",
+"tipp": "Ein Gerät im Zimmer, das von selbst leuchtet. Du machst es mit einem Schalter an und aus."
+},
+{
+"wort": "AUGE",
+"tipp": "Dieses runde Körperteil in deinem Kopf fängt das Licht auf. Du hast zwei davon."
+},
+{
+"wort": "STRAHL",
+"tipp": "Mit so einer geraden Linie und einem Pfeil zeichnet man auf, welchen Weg das Licht nimmt."
+},
+{
+"wort": "KERZE",
+"tipp": "Sie ist aus Wachs, hat einen Docht und leuchtet mit einer kleinen Flamme, wenn man sie anzündet."
+},
+{
+"wort": "MOND",
+"tipp": "Er ist nachts am Himmel zu sehen. Er leuchtet aber nicht selbst, sondern wird nur von der Sonne angestrahlt."
+},
+{
+"wort": "WAND",
+"tipp": "Diese senkrechte Fläche begrenzt ein Zimmer. An ihr kann man einen Schatten gut erkennen."
+},
+{
+"wort": "HELL",
+"tipp": "So ist es in einem Raum, wenn ganz viel Licht da ist. Das Gegenteil davon steht auch im Rätsel."
+},
+{
+"wort": "DUNKEL",
+"tipp": "So ist es, wenn kein Licht da ist. Dann kannst du fast nichts erkennen, zum Beispiel nachts ohne Lampe."
+},
+{
+"wort": "SEHEN",
+"tipp": "Das kannst du nur, wenn Licht von einem Ding in dein Auge fällt. Im Finstern klappt es nicht."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann selbstleuchtende Körper (Sonne, Lampe, Kerze) von beleuchteten Körpern (Mond, Buch) unterscheiden.",
+"Ich kann erklären, dass sich Licht immer geradlinig, also in geraden Linien, ausbreitet.",
+"Ich kann erklären, dass ich einen Gegenstand nur sehe, wenn Licht von ihm in mein Auge fällt.",
+"Ich kann erklären, dass ein undurchsichtiger Körper einen Schatten wirft, weil er das Licht nicht durchlässt.",
+"Ich kann beschreiben, dass der Schatten größer wird, wenn der Körper näher an die Lampe rückt.",
+"Ich kann bei einer großen Lichtquelle den dunklen Kernschatten vom helleren Halbschatten unterscheiden."
+],
+"tipps": [
+"Male dir die Lichtstrahlen als gerade Pfeile von der Lichtquelle weg auf - so siehst du sofort, wo der Schatten entsteht.",
+"Präge dir die zwei Merksätze ein: 'Selbstleuchtend sendet eigenes Licht aus' und 'Ich sehe einen Gegenstand nur, wenn Licht von ihm in mein Auge fällt'.",
+"Überprüfe die Schatten-Regel mit deiner Handlampe: Gegenstand näher an die Lampe schieben und beobachten, wie der Schatten wächst."
+],
+"mini": [
+{
+"frage": "Nenne je zwei selbstleuchtende und zwei beleuchtete Körper und erkläre den Unterschied.",
+"loesung": "Selbstleuchtend (senden eigenes Licht aus): z. B. Sonne und Kerze. Beleuchtet (leuchten nicht selbst, werfen nur Licht zurück): z. B. Mond und Buch. Unterschied: Selbstleuchtende Körper erzeugen ihr Licht selbst. Beleuchtete Körper werden von anderem Licht angestrahlt und werfen einen Teil davon zurück - dieses zurückgeworfene Licht fällt in unser Auge, deshalb können wir sie sehen."
+},
+{
+"frage": "Warum siehst du ein Buch im ganz dunklen Zimmer nicht?",
+"loesung": "Weil kein Licht auf das Buch fällt, kann auch kein Licht vom Buch in dein Auge gelangen. Ich sehe einen Gegenstand nur, wenn Licht von ihm ins Auge fällt - im Dunkeln fehlt dieses Licht."
+},
+{
+"frage": "Du schiebst eine Figur näher an eine Lampe. Was passiert mit ihrem Schatten und warum?",
+"loesung": "Der Schatten wird größer. Je näher die Figur an der Lampe steht, desto mehr vom geradlinig auseinanderlaufenden Licht deckt sie ab, deshalb fällt der Schatten auf der Wand größer aus."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Körper, die selbst Licht aussenden, nennt man ",
+"loesung": "selbstleuchtende Körper",
+"post": ". Beispiele dafür sind die Sonne, eine Lampe und eine Kerze."
+},
+{
+"pre": "In der Luft breitet sich Licht immer ",
+"loesung": "geradlinig",
+"post": " aus, also in geraden Linien."
+},
+{
+"pre": "Einen Gegenstand können wir nur sehen, wenn Licht von ihm in unser ",
+"loesung": "Auge",
+"post": " fällt."
+},
+{
+"pre": "Ein Körper, durch den kein Licht hindurchgeht, ist ",
+"loesung": "undurchsichtig",
+"post": " und wirft deshalb einen Schatten."
+}
+],
+"a2": [
+{
+"aussage": "Die Sonne ist ein selbstleuchtender Körper.",
+"stimmt": true
+},
+{
+"aussage": "Der Mond sendet selbst Licht aus.",
+"stimmt": false
+},
+{
+"aussage": "Licht kann um eine Ecke herum fließen.",
+"stimmt": false
+},
+{
+"aussage": "Wir sehen ein Buch, weil Licht von ihm in unser Auge fällt.",
+"stimmt": true
+},
+{
+"aussage": "Je näher ein Gegenstand an der Lampe steht, desto kleiner wird sein Schatten.",
+"stimmt": false
+},
+{
+"aussage": "Bei einer großen Lichtquelle entstehen ein dunkler Kernschatten und ein hellerer Halbschatten.",
+"stimmt": true
+}
+],
+"mc": {
+"frage": "Welche Reihe enthält nur selbstleuchtende Körper?",
+"optionen": [
+"Sonne, Kerze, brennende Lampe",
+"Mond, Buch, Spiegel",
+"Sonne, Mond, Kerze",
+"Lampe, Buch, Tisch"
+],
+"richtig": 0
+},
+"offen": {
+"frage": "Erkläre, warum du in einem völlig dunklen Raum (ganz ohne Licht) einen Gegenstand nicht sehen kannst.",
+"zeilen": 3,
+"loesung": "Wir sehen einen Gegenstand nur dann, wenn Licht von ihm in unser Auge fällt. In einem völlig dunklen Raum gibt es kein Licht, das der Gegenstand zurückwerfen könnte. Darum fällt kein Licht in unser Auge und wir sehen nichts."
+},
+"transfer": {
+"frage": "Ben hält seine Hand vor eine Taschenlampe. Er bewegt die Hand näher an die Lampe heran. Was passiert mit dem Schatten an der Wand? Begründe kurz.",
+"zeilen": 2,
+"loesung": "Der Schatten an der Wand wird größer. Je näher der Körper an der Lichtquelle ist, desto größer wird sein Schatten."
+}
+}
+},
+{
+"id": "strom",
+"clues": {
+"hinweise": [
+{
+"wort": "STROM",
+"tipp": "Das fließt durch die Kabel und bringt die Lampe zum Leuchten. Du kannst es nicht sehen."
+},
+{
+"wort": "BATTERIE",
+"tipp": "Sie hat einen Plus- und einen Minuspol und liefert die Energie für den Stromkreis."
+},
+{
+"wort": "LAMPE",
+"tipp": "Sie leuchtet hell, wenn der Kreis geschlossen ist, und wird dabei warm."
+},
+{
+"wort": "SCHALTER",
+"tipp": "Damit kannst du den Strom an- und ausmachen, ohne ein Kabel abzuziehen."
+},
+{
+"wort": "KABEL",
+"tipp": "Ein dünner Draht mit Plastik drumherum, der die Teile miteinander verbindet."
+},
+{
+"wort": "LEITER",
+"tipp": "So nennt man ein Material, durch das der Strom gut hindurchfliessen kann."
+},
+{
+"wort": "KUPFER",
+"tipp": "Ein rotbraunes Metall, aus dem oft die Drähte im Inneren der Kabel sind."
+},
+{
+"wort": "KREIS",
+"tipp": "Der ganze geschlossene Weg, auf dem der Strom von der Batterie rundherum wieder zu ihr zurückfliesst."
+},
+{
+"wort": "REIHE",
+"tipp": "Bei dieser Schaltung hängen alle hintereinander. Geht eine Lampe aus, gehen alle aus."
+},
+{
+"wort": "PARALLEL",
+"tipp": "Bei dieser Schaltung hat jede Lampe ihren eigenen Weg und leuchtet ganz unabhängig."
+},
+{
+"wort": "ISOLATOR",
+"tipp": "Ein Material wie Plastik, Holz oder Glas, durch das der Strom nicht fließen kann."
+},
+{
+"wort": "METALL",
+"tipp": "Materialien wie Eisen oder Kupfer, die den Strom gut weiterleiten und oft glänzen."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann die Teile eines einfachen Stromkreises nennen: Batterie, Lampe, Kabel und oft einen Schalter.",
+"Ich kann erklären, dass die Lampe nur leuchtet, wenn der Stromkreis geschlossen ist.",
+"Ich kann Leiter (zum Beispiel Metalle wie Kupfer) und Isolatoren (zum Beispiel Plastik, Holz und Glas) unterscheiden.",
+"Ich kann beschreiben, wie eine Reihenschaltung funktioniert: Alle Lampen sind in einem Weg, und geht eine aus, gehen alle aus.",
+"Ich kann beschreiben, wie eine Parallelschaltung funktioniert: Jede Lampe hat ihren eigenen Weg und leuchtet unabhängig von den anderen.",
+"Ich kann einen einfachen Stromkreis mit den richtigen Symbolen zeichnen."
+],
+"tipps": [
+"Zeichne dir den Stromkreis auf und fahre mit dem Finger den Weg des Stroms von der Batterie zur Lampe und zurück nach. So merkst du dir schnell, ob der Kreis geschlossen ist.",
+"Präge dir zwei kurze Merksätze ein: 'Reihe = ein Weg für alle' und 'Parallel = jede hat ihren eigenen Weg'.",
+"Sortiere Gegenstände aus deinem Zimmer in Leiter (Metall) und Isolatoren (Plastik, Holz, Glas). Das hilft dir, dir den Unterschied zu merken."
+],
+"mini": [
+{
+"frage": "Warum leuchtet eine Lampe nicht, wenn der Schalter offen ist?",
+"loesung": "Weil der Stromkreis dann unterbrochen ist. Der Strom kann nicht mehr im Kreis fließen, und ohne fliessenden Strom leuchtet die Lampe nicht."
+},
+{
+"frage": "In einer Reihenschaltung leuchten drei Lampen. Eine Lampe geht kaputt. Was passiert mit den anderen beiden?",
+"loesung": "Die anderen beiden gehen auch aus. In der Reihenschaltung gibt es nur einen Weg. Ist er an einer Stelle unterbrochen, kann nirgends mehr Strom fließen."
+},
+{
+"frage": "Nenne je zwei Beispiele für einen Leiter und einen Isolator.",
+"loesung": "Leiter: Kupfer und Eisen (Metalle) leiten den Strom. Isolator: Plastik und Holz (auch Glas) leiten den Strom nicht."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Damit die Lampe leuchtet, muss der Stromkreis ",
+"post": " sein.",
+"loesung": "geschlossen"
+},
+{
+"pre": "Kupfer und andere Metalle leiten den Strom. Man nennt sie ",
+"post": ".",
+"loesung": "Leiter"
+},
+{
+"pre": "Plastik, Holz und Glas leiten keinen Strom. Man nennt sie ",
+"post": ".",
+"loesung": "Isolatoren"
+},
+{
+"pre": "Mit einem ",
+"post": " kann man den Stromkreis öffnen und schließen.",
+"loesung": "Schalter"
+}
+],
+"a2": [
+{
+"aussage": "In einem offenen Stromkreis leuchtet die Lampe.",
+"stimmt": false
+},
+{
+"aussage": "Kupfer ist ein guter Leiter für den Strom.",
+"stimmt": true
+},
+{
+"aussage": "Holz leitet den Strom sehr gut.",
+"stimmt": false
+},
+{
+"aussage": "In einer Reihenschaltung gehen alle Lampen aus, wenn eine Lampe herausgenommen wird.",
+"stimmt": true
+},
+{
+"aussage": "In einer Parallelschaltung hat jede Lampe ihren eigenen Weg.",
+"stimmt": true
+},
+{
+"aussage": "Ein Stromkreis funktioniert auch ohne eine Batterie.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Welches Material leitet den elektrischen Strom?",
+"optionen": [
+"Holz",
+"Kupfer",
+"Glas",
+"Plastik"
+],
+"richtig": 1
+},
+"offen": {
+"frage": "Erkläre, warum die Lampe nur leuchtet, wenn der Stromkreis geschlossen ist.",
+"zeilen": 3,
+"loesung": "Der Strom kann nur fließen, wenn der Weg von der Batterie durch die Kabel zur Lampe und wieder zurück geschlossen ist. Ist der Stromkreis offen, zum Beispiel durch einen offenen Schalter, fließt kein Strom und die Lampe bleibt dunkel."
+},
+"transfer": {
+"frage": "In einer Wohnung leuchtet die Lampe in der Küche weiter, obwohl im Wohnzimmer das Licht ausgeschaltet wurde. Welche Schaltung ist das? Begründe deine Antwort.",
+"zeilen": 2,
+"loesung": "Das ist eine Parallelschaltung. Jede Lampe hat ihren eigenen Weg für den Strom, deshalb leuchtet die Küchenlampe unabhängig von der Wohnzimmerlampe weiter."
+}
+}
+},
+{
+"id": "waerme",
+"clues": {
+"hinweise": [
+{
+"wort": "TEMPERATUR",
+"tipp": "Diese Größe sagt dir, wie heiß oder kalt etwas ist."
+},
+{
+"wort": "THERMOMETER",
+"tipp": "Mit diesem Gerät misst du, wie heiß oder kalt es ist."
+},
+{
+"wort": "CELSIUS",
+"tipp": "Nach diesem schwedischen Forscher ist die bekannte Skala benannt: 0 steht fürs Gefrieren, 100 fürs Kochen."
+},
+{
+"wort": "GRAD",
+"tipp": "In dieser Einheit gibst du an, wie heiß oder kalt es ist; das Zeichen dahinter ist ein kleiner Kreis."
+},
+{
+"wort": "SCHMELZEN",
+"tipp": "Das passiert mit einem Würfel aus dem Gefrierfach, wenn es heiß wird und er langsam flüssig wird."
+},
+{
+"wort": "EIS",
+"tipp": "Der harte, kalte Stoff, auf dem man im Winter Schlittschuh läuft."
+},
+{
+"wort": "DAMPF",
+"tipp": "Die heiße, weiße Wolke, die aufsteigt, wenn es im Kochtopf sprudelt und blubbert."
+},
+{
+"wort": "WASSER",
+"tipp": "Diese klare Flüssigkeit trinkst du jeden Tag; sie fällt als Regen und fuellt Seen und Flüsse."
+},
+{
+"wort": "ENERGIE",
+"tipp": "Wärme ist eine Form davon; sie fließt immer von heiß nach kalt, nie umgekehrt."
+},
+{
+"wort": "LEITUNG",
+"tipp": "So wandert die Wärme durch einen Löffel, den du in heißen Tee stellst."
+},
+{
+"wort": "STRAHLUNG",
+"tipp": "So kommt die Wärme der Sonne durch den leeren Weltraum zu uns."
+},
+{
+"wort": "WARM",
+"tipp": "Nicht kalt und nicht heiß, sondern angenehm dazwischen - so wie ein gemütliches Bett am Morgen."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann erklären, dass die Temperatur in Grad Celsius (°C) angibt, wie warm oder kalt etwas ist.",
+"Ich kann sagen, dass Wärme eine Form von Energie ist, die immer von warm nach kalt fließt.",
+"Ich kann erklären, wie ein Thermometer funktioniert: Die Flüssigkeit dehnt sich beim Erwärmen aus und steigt nach oben.",
+"Ich kann beschreiben, dass sich fast alle Stoffe beim Erwärmen ausdehnen und beim Abkühlen wieder zusammenziehen.",
+"Ich kann die drei Aggregatzustände fest, flüssig und gasförmig nennen und erklären, dass Eis schmilzt und Wasser verdampft.",
+"Ich kann die drei Arten der Wärmeübertragung unterscheiden: Wärmeleitung, Wärmeströmung und Wärmestrahlung."
+],
+"tipps": [
+"Lerne in kleinen Häppchen: Nimm dir jeden Tag nur ein Unterthema vor, statt alles auf einmal.",
+"Erkläre einer anderen Person (oder deinem Kuscheltier) laut, was Wärme ist und wie ein Thermometer funktioniert. Was du erklären kannst, hast du verstanden.",
+"Achte auf die Wörter warm und kalt: Merke dir, dass Wärme immer von warm nach kalt fließt, nie umgekehrt."
+],
+"mini": [
+{
+"frage": "Was ist der Unterschied zwischen Temperatur und Wärme?",
+"loesung": "Die Temperatur sagt, wie warm oder kalt etwas ist, und wird in Grad Celsius (°C) gemessen. Wärme ist eine Form von Energie, die von einem warmen zu einem kalten Ort fließt."
+},
+{
+"frage": "Warum steigt die Flüssigkeit im Thermometer, wenn es warm wird?",
+"loesung": "Beim Erwärmen dehnt sich die Flüssigkeit aus, sie braucht mehr Platz. Deshalb steigt sie im dünnen Röhrchen nach oben und zeigt eine höhere Temperatur an."
+},
+{
+"frage": "Nenne die drei Aggregatzustände und je ein Beispiel für Wasser.",
+"loesung": "Fest = Eis, flüssig = Wasser, gasförmig = Wasserdampf. Eis schmilzt zu Wasser, und Wasser verdampft zu Wasserdampf."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Die Temperatur wird in der Einheit ",
+"post": " gemessen.",
+"loesung": "Grad Celsius"
+},
+{
+"pre": "Wärme ist Energie, die immer von warm zu ",
+"post": " fließt.",
+"loesung": "kalt"
+},
+{
+"pre": "Beim Erwärmen dehnt sich die Flüssigkeit im Thermometer ",
+"post": ".",
+"loesung": "aus"
+},
+{
+"pre": "Wenn Eis schmilzt, geht es vom festen in den ",
+"post": " Zustand über.",
+"loesung": "flüssigen"
+}
+],
+"a2": [
+{
+"aussage": "Die Temperatur sagt, wie warm oder kalt ein Körper ist.",
+"stimmt": true
+},
+{
+"aussage": "Wärme fließt von einem kalten zu einem warmen Körper.",
+"stimmt": false
+},
+{
+"aussage": "Die meisten Stoffe dehnen sich beim Erwärmen aus.",
+"stimmt": true
+},
+{
+"aussage": "Ein Stoff kann fest, flüssig oder gasförmig sein.",
+"stimmt": true
+},
+{
+"aussage": "Eis ist Wasser im gasförmigen Zustand.",
+"stimmt": false
+},
+{
+"aussage": "Wärme kann sich nur durch Berührung ausbreiten.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Wie heißen die drei Arten der Wärmeübertragung?",
+"optionen": [
+"Schmelzen, Verdampfen, Gefrieren",
+"Fest, flüssig, gasförmig",
+"Wärmeleitung, Wärmeströmung, Wärmestrahlung",
+"Wärme, Kälte, Temperatur"
+],
+"richtig": 2
+},
+"offen": {
+"frage": "Erkläre, wie ein Thermometer die Temperatur anzeigen kann.",
+"zeilen": 3,
+"loesung": "Im Thermometer ist eine Flüssigkeit. Wird es wärmer, dehnt sich die Flüssigkeit aus und steigt im dünnen Röhrchen nach oben. Wird es kälter, zieht sie sich zusammen und sinkt. An der Höhe der Flüssigkeit kann man die Temperatur ablesen."
+},
+"transfer": {
+"frage": "Im Sommer sind die Schienen der Eisenbahn länger als im kalten Winter. Erkläre, warum das so ist.",
+"zeilen": 2,
+"loesung": "Im Sommer ist es warm. Das Metall der Schienen dehnt sich beim Erwärmen aus und wird dadurch länger. Im Winter ist es kalt, das Metall zieht sich zusammen und die Schienen werden wieder kürzer."
+}
+}
+},
+{
+"id": "schall",
+"clues": {
+"hinweise": [
+{
+"wort": "SCHALL",
+"tipp": "Alles, was du hören kannst, breitet sich so aus. Durch die Luft kommt es zu deinem Ohr - im Weltall, wo keine Luft ist, aber nicht."
+},
+{
+"wort": "TON",
+"tipp": "Ein einzelner Klang, zum Beispiel wenn du eine Taste am Klavier drückst."
+},
+{
+"wort": "SCHWINGEN",
+"tipp": "Das Hin- und Herwackeln, das ein Lineal am Tischrand macht - dabei hörst du etwas."
+},
+{
+"wort": "LAUT",
+"tipp": "So ist ein Geräusch, wenn du dir am liebsten die Ohren zuhalten möchtest. Es entsteht durch besonders starkes Wackeln."
+},
+{
+"wort": "LEISE",
+"tipp": "Das Gegenteil von laut. So sprichst du, wenn ein Baby nebenan schläft."
+},
+{
+"wort": "HOCH",
+"tipp": "So klingt ein Ton, wenn etwas sehr schnell wackelt - zum Beispiel das Piepsen einer kleinen Maus."
+},
+{
+"wort": "TIEF",
+"tipp": "So klingt ein Ton, wenn etwas langsam wackelt - zum Beispiel das Brummen eines großen Bären."
+},
+{
+"wort": "OHR",
+"tipp": "Damit hörst du. Du hast zwei davon, eins links und eins rechts am Kopf."
+},
+{
+"wort": "LUFT",
+"tipp": "Dieser unsichtbare Stoff ist überall um dich herum und trägt die Geräusche bis zu deinem Ohr."
+},
+{
+"wort": "SAITE",
+"tipp": "Ein gespannter Faden an der Gitarre. Zupfst du daran, fängt er an zu wackeln und klingt."
+},
+{
+"wort": "WELLE",
+"tipp": "So breitet sich der Schall aus - ähnlich wie die Ringe, die im Wasser entstehen, wenn ein Stein hineinfällt."
+},
+{
+"wort": "TROMMEL",
+"tipp": "Ein Musikinstrument, auf das man mit Stöcken oder Händen schlägt, damit es dumpf klingt."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann erklären, wie ein Ton entsteht: nämlich dadurch, dass etwas schwingt (zum Beispiel eine Gitarrensaite oder eine Stimmgabel).",
+"Ich kann sagen, warum ein Ton lauter oder leiser wird: Je stärker etwas schwingt, desto lauter ist der Ton.",
+"Ich kann sagen, warum ein Ton höher oder tiefer klingt: Je schneller etwas schwingt, desto höher ist der Ton.",
+"Ich kann erklären, dass sich Schall durch Luft und andere Stoffe ausbreitet, aber im Vakuum (dort ist nichts) nicht.",
+"Ich kann den Weg des Schalls durch mein Ohr beschreiben: vom Trommelfell über die Knochen ins Innenohr und dann ins Gehirn.",
+"Ich kann erklären, warum sehr laute Töne meinen Ohren schaden können."
+],
+"tipps": [
+"Sprich die Fachwörter (Schwingung, Trommelfell, Innenohr, Vakuum) laut aus und erkläre sie einem Freund oder deinen Eltern.",
+"Merke dir die zwei Regeln als Paar: stärker = lauter, schneller = höher.",
+"Zeichne den Weg des Schalls durch das Ohr auf und beschrifte die Teile: Trommelfell, Knochen, Innenohr, Gehirn."
+],
+"mini": [
+{
+"frage": "Wie entsteht ein Ton, und wann wird er lauter?",
+"loesung": "Ein Ton entsteht, wenn etwas schwingt. Je stärker die Schwingung ist, desto lauter wird der Ton."
+},
+{
+"frage": "Warum kannst du im Vakuum (z.B. im Weltall) nichts hören?",
+"loesung": "Schall braucht einen Stoff wie Luft, um sich auszubreiten. Im Vakuum ist nichts da, das die Schwingung weitergeben kann, deshalb hört man dort nichts."
+},
+{
+"frage": "Nenne den Weg des Schalls durch das Ohr der Reihe nach.",
+"loesung": "Der Schall bringt das Trommelfell zum Schwingen. Über kleine Knochen geht die Schwingung ins Innenohr und von dort als Signal ins Gehirn."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Ein Ton entsteht, wenn etwas ",
+"post": ".",
+"loesung": "schwingt"
+},
+{
+"pre": "Je stärker etwas schwingt, desto ",
+"post": " ist der Ton.",
+"loesung": "lauter"
+},
+{
+"pre": "Je schneller etwas schwingt, desto ",
+"post": " ist der Ton.",
+"loesung": "höher"
+},
+{
+"pre": "Im ",
+"post": " kann sich Schall nicht ausbreiten.",
+"loesung": "Vakuum"
+}
+],
+"a2": [
+{
+"aussage": "Ein Ton entsteht durch Schwingen.",
+"stimmt": true
+},
+{
+"aussage": "Schall breitet sich auch im Vakuum aus.",
+"stimmt": false
+},
+{
+"aussage": "Je schneller die Schwingung ist, desto höher klingt der Ton.",
+"stimmt": true
+},
+{
+"aussage": "Schall breitet sich nur durch Luft aus, aber nicht durch andere Stoffe.",
+"stimmt": false
+},
+{
+"aussage": "Sehr laute Töne können dem Ohr schaden.",
+"stimmt": true
+},
+{
+"aussage": "Der Schall gelangt zuerst ins Gehirn und danach zum Trommelfell.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Was passiert mit dem Ton, wenn etwas stärker schwingt?",
+"optionen": [
+"Der Ton wird lauter.",
+"Der Ton wird höher.",
+"Der Ton wird leiser.",
+"Der Ton hört ganz auf."
+],
+"richtig": 0
+},
+"offen": {
+"frage": "Erkläre, wie wir einen Ton hören können. Beschreibe den Weg des Schalls im Ohr.",
+"zeilen": 3,
+"loesung": "Der Schall bringt das Trommelfell zum Schwingen. Diese Schwingung wird über kleine Knochen ins Innenohr weitergegeben. Von dort geht das Signal ins Gehirn, und wir hören den Ton."
+},
+"transfer": {
+"frage": "Warum solltest du Musik über Kopfhörer nicht zu laut hören?",
+"zeilen": 2,
+"loesung": "Sehr laute Töne schwingen sehr stark und können das Ohr schaden. Wenn man leiser hört, schützt man sein Gehör."
+}
+}
+},
+{
+"id": "himmel",
+"clues": {
+"hinweise": [
+{
+"wort": "SONNE",
+"tipp": "Dieser riesige, glühende Stern steht in der Mitte und schenkt uns Licht und Wärme."
+},
+{
+"wort": "ERDE",
+"tipp": "Auf diesem Planeten leben wir Menschen zusammen mit Tieren und Pflanzen."
+},
+{
+"wort": "MOND",
+"tipp": "Er kreist um unseren Planeten und leuchtet am Nachthimmel, weil ihn die Sonne anstrahlt."
+},
+{
+"wort": "TAG",
+"tipp": "Die helle Zeit, in der bei uns gerade die Sonne scheint."
+},
+{
+"wort": "NACHT",
+"tipp": "Die dunkle Zeit, wenn unsere Seite der Erde von der Sonne weggedreht ist."
+},
+{
+"wort": "SOMMER",
+"tipp": "Die warme Jahreszeit mit langen Tagen, in der die Sonne hoch am Himmel steht."
+},
+{
+"wort": "WINTER",
+"tipp": "Die kalte Jahreszeit mit kurzen Tagen, in der es oft schneit."
+},
+{
+"wort": "VOLLMOND",
+"tipp": "Wenn wir die ganze, runde und helle Scheibe am Nachthimmel leuchten sehen."
+},
+{
+"wort": "SICHEL",
+"tipp": "Die schmale, gebogene Form, in der der Mond wie ein dünner Bogen aussieht."
+},
+{
+"wort": "PHASE",
+"tipp": "So nennt man die verschiedenen Formen, in denen sich der Mond nach und nach zeigt."
+},
+{
+"wort": "DREHEN",
+"tipp": "Das macht die Erde einmal in 24 Stunden um sich selbst - so entstehen Tag und Nacht."
+},
+{
+"wort": "JAHR",
+"tipp": "So lange braucht die Erde für eine ganze Runde um die Sonne."
+}
+]
+},
+"prep": {
+"kannIch": [
+"Ich kann erklären, dass sich die Erde in 24 Stunden einmal um sich selbst dreht und dadurch Tag und Nacht entstehen.",
+"Ich kann erklären, dass die geneigte Erde in einem Jahr um die Sonne wandert und so die Jahreszeiten entstehen.",
+"Ich kann beschreiben, dass der Mond von der Sonne beleuchtet wird und wir je nach Stellung verschiedene Mondphasen sehen (zum Beispiel Sichel und Vollmond).",
+"Ich kann erklären, dass bei einer Sonnenfinsternis der Mond zwischen Sonne und Erde steht und die Sonne verdeckt.",
+"Ich kann erklären, dass bei einer Mondfinsternis die Erde zwischen Sonne und Mond steht und ihr Schatten auf den Mond fällt.",
+"Ich kann Sonne, Erde und Mond richtig in eine Skizze einzeichnen und ihre Bewegung mit Pfeilen zeigen."
+],
+"tipps": [
+"Male dir jedes Thema als kleine Skizze auf: Sonne, Erde und Mond mit Pfeilen. So merkst du dir die Bewegungen viel leichter als mit Text.",
+"Verwechsle Sonnen- und Mondfinsternis nicht! Merksatz: Bei der Sonnenfinsternis ist der Mond in der Mitte, bei der Mondfinsternis ist die Erde in der Mitte.",
+"Erkläre die Themen einer anderen Person oder deinem Kuscheltier mit eigenen Worten. Was du frei erzählen kannst, sitzt wirklich."
+],
+"mini": [
+{
+"frage": "Warum wird es bei uns Tag und dann wieder Nacht?",
+"loesung": "Die Erde dreht sich in 24 Stunden einmal um sich selbst. Die Seite, die zur Sonne zeigt, hat Tag. Die Seite, die von der Sonne weg zeigt, hat Nacht."
+},
+{
+"frage": "Wodurch entstehen die Jahreszeiten?",
+"loesung": "Die Erde ist geneigt, ihre Achse steht schief. In einem Jahr umkreist sie einmal die Sonne. Mal ist unsere Halfte der Erde zur Sonne hin geneigt, dann ist bei uns Sommer. Mal ist sie von der Sonne weg geneigt, dann ist bei uns Winter. So entstehen Fruhling, Sommer, Herbst und Winter."
+},
+{
+"frage": "Was ist der Unterschied zwischen einer Sonnenfinsternis und einer Mondfinsternis?",
+"loesung": "Bei der Sonnenfinsternis steht der Mond zwischen Sonne und Erde und verdeckt die Sonne. Bei der Mondfinsternis steht die Erde zwischen Sonne und Mond, und der Schatten der Erde fallt auf den Mond."
+}
+]
+},
+"test": {
+"a1": [
+{
+"pre": "Die Erde dreht sich in ",
+"post": " einmal um sich selbst.",
+"loesung": "24 Stunden"
+},
+{
+"pre": "Durch die Drehung der Erde entstehen ",
+"post": ".",
+"loesung": "Tag und Nacht"
+},
+{
+"pre": "Die Erde umkreist die Sonne einmal in einem ",
+"post": ".",
+"loesung": "Jahr"
+},
+{
+"pre": "Weil die Erde geneigt ist, gibt es auf ihr die ",
+"post": ".",
+"loesung": "Jahreszeiten"
+}
+],
+"a2": [
+{
+"aussage": "Die Erde dreht sich in 24 Stunden einmal um sich selbst.",
+"stimmt": true
+},
+{
+"aussage": "Die Jahreszeiten entstehen, weil die Erde geneigt ist.",
+"stimmt": true
+},
+{
+"aussage": "Der Mond leuchtet mit eigenem Licht.",
+"stimmt": false
+},
+{
+"aussage": "Der Mond wird von der Sonne beleuchtet.",
+"stimmt": true
+},
+{
+"aussage": "Bei einer Mondfinsternis steht der Mond zwischen Sonne und Erde.",
+"stimmt": false
+},
+{
+"aussage": "Die Sonne dreht sich in 24 Stunden einmal um die Erde.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Was passiert bei einer Sonnenfinsternis?",
+"optionen": [
+"Der Mond steht zwischen Sonne und Erde.",
+"Die Erde steht zwischen Sonne und Mond.",
+"Die Sonne steht zwischen Erde und Mond.",
+"Der Mond leuchtet mit eigenem Licht."
+],
+"richtig": 0
+},
+"offen": {
+"frage": "Erkläre, warum es auf der Erde Tag und Nacht gibt.",
+"zeilen": 3,
+"loesung": "Die Erde dreht sich in 24 Stunden einmal um sich selbst. Die Seite, die gerade zur Sonne zeigt, hat Tag. Die Seite, die von der Sonne wegzeigt, hat Nacht."
+},
+"transfer": {
+"frage": "Am Abend siehst du am Himmel eine schmale Mondsichel. Warum sehen wir den Mond nicht immer als runde Scheibe?",
+"zeilen": 2,
+"loesung": "Der Mond wird von der Sonne beleuchtet. Je nach Stellung von Mond, Erde und Sonne sehen wir nur einen Teil der beleuchteten Seite, mal eine Sichel und mal den Vollmond."
+}
+}
+}
+]

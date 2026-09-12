@@ -1,0 +1,201 @@
+{
+ "seite": {
+  "id": "fs2",
+  "quelle": "st2",
+  "sim": "ladungen-kraft",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Zwei geladene Kugeln",
+  "name": "Was macht die Kraft größer?",
+  "fachwoerter_neu": [
+   "Kraft F"
+  ],
+  "alltag": [
+   "An zwei dünnen Fäden hängen zwei kleine Kugeln.",
+   "Jannis lädt beide Kugeln auf und schiebt sie langsam auseinander.",
+   "Zwischen den Kugeln zieht oder schiebt etwas – das ist die Kraft F.",
+   "Am Bildschirm steht die Kraft F so: 249,7 µN."
+  ],
+  "frage": "Was macht die Kraft F größer und was macht sie kleiner?",
+  "predict": [
+   "Doppelter Abstand macht die Kraft F halb so groß.",
+   "Doppelter Abstand macht die Kraft F nur ein Viertel so groß."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Die kleine grüne Kugel brauchst du hier nicht.",
+   "Drücke „Abstand verdoppeln“. Trage die Kraft F in Zeile 2 ein. Der Abstand bleibt jetzt 12,0 cm.",
+   "Stelle „Ladung je Kugel“ auf 4 nC. Trage die Kraft F in Zeile 3 ein.",
+   "Stelle „Ladung je Kugel“ auf 18 nC. Trage die Kraft F in Zeile 4 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Werte als Karten.",
+  "tabCols": [
+   "Ladung je Kugel",
+   "Abstand",
+   "Wie groß ist die Kraft F?"
+  ],
+  "tabRows": [
+   [
+    "10 nC",
+    "6,0 cm",
+    "249,7 µN"
+   ],
+   [
+    "10 nC",
+    "12,0 cm",
+    ""
+   ],
+   [
+    "4 nC",
+    "12,0 cm",
+    ""
+   ],
+   [
+    "18 nC",
+    "12,0 cm",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mehr Ladung auf den Kugeln macht die Kraft F",
+    "loesung": "größer",
+    "post": "."
+   },
+   {
+    "pre": "Doppelter Abstand macht die Kraft F nicht halb, sondern nur",
+    "loesung": "ein Viertel",
+    "post": "so groß."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "ein Viertel",
+   "kleiner",
+   "62,4 µN"
+  ],
+  "beispiel": {
+   "frage": "Der Abstand geht von 6,0 cm auf 12,0 cm. Was passiert mit der Kraft F?",
+   "antwort": "Vorher zeigt die Anzeige 249,7 µN. Danach zeigt sie 62,4 µN. Der Abstand ist doppelt so groß. Die Kraft F ist nur noch ein Viertel so groß."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „Abstand verdoppeln“. Was zeigt die Anzeige dann?",
+    "optionen": [
+     "Die Kraft F bleibt bei 249,7 µN.",
+     "Die Kraft F sinkt auf 62,4 µN.",
+     "Die Kraft F wird halb so groß."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 4 nC ist die Kraft F",
+      "loesung": "kleiner",
+      "post": "als bei 18 nC."
+     },
+     {
+      "pre": "Bei 10 nC und 12,0 cm zeigt die Anzeige nur noch",
+      "loesung": "62,4 µN",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Doppelter Abstand heißt halbe Kraft.“ Erkläre mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Zahlen stehen in deiner Tabelle.",
+   "h2": "Beginne so: Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm sind es …",
+   "h3": "Fast fertige Antwort: Der Abstand ist doppelt so groß. Die Kraft F ist aber nicht halb so groß. Von 249,7 µN bleiben nur 62,4 µN übrig. Ergänze: Das ist ___ der Kraft F."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F am Bildschirm ablesen.",
+   "Ich kann sagen, was mehr Ladung mit der Kraft F macht.",
+   "Ich weiß, dass doppelter Abstand nur ein Viertel der Kraft F lässt."
+  ],
+  "zuhause": "Reibe zwei Trinkhalme kräftig an deinem Pullover. Hänge sie dicht nebeneinander an dünnen Fäden auf. Schiebe sie langsam weiter auseinander. Schreibe auf, wann sie sich stärker abstoßen.",
+  "bildauftrag": "[BILD: derselbe Aufbau zweimal untereinander, gleich groß und gleich hell: oben hängen zwei Kugeln an dünnen Fäden dicht nebeneinander, die linke groß mit „+“, die rechte groß mit „–“ beschriftet, zwei kräftige Pfeile zeigen aufeinander zu, darunter die Beschriftungen „6,0 cm“ und „F = 249,7 µN“; unten dieselben zwei Kugeln doppelt so weit auseinander, die Pfeile deutlich kürzer und dünner, darunter „12,0 cm“ und „F = 62,4 µN“; große Beschriftungen, keine weiteren Kugeln, keine Feldlinien, keine grüne Probeladung, keine Formel; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fs2",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass mehr Ladung auf den Kugeln eine größere Kraft F ergibt und dass doppelter Abstand die Kraft F nicht halbiert, sondern auf ein Viertel verkleinert. Gerechnet wird nicht; nC und µN werden nur abgelesen und abgeschrieben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Werte aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei geriebene Trinkhalme an Fäden.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel heften, in genau dieser Reihenfolge: 10 nC bei 6,0 cm → F = 249,7 µN · 10 nC bei 12,0 cm → F = 62,4 µN · 4 nC bei 12,0 cm → F = 10,0 µN · 18 nC bei 12,0 cm → F = 202,2 µN. Die ersten beiden Karten nebeneinander legen (Abstand verdoppelt), die letzten beiden darunter (Ladung verändert, Abstand gleich).",
+  "merksatz": [
+   "größer",
+   "ein Viertel"
+  ],
+  "tabelle_erwartet": [
+   [
+    "10 nC",
+    "12,0 cm",
+    "62,4 µN"
+   ],
+   [
+    "4 nC",
+    "12,0 cm",
+    "10,0 µN"
+   ],
+   [
+    "18 nC",
+    "12,0 cm",
+    "202,2 µN"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „Abstand verdoppeln“ steht in der Statuszeile F = 62,4 µN. Vorher waren es 249,7 µN – das ist ein Viertel, nicht die Hälfte.",
+   "typische_fehler": [
+    "Antwort 2 („halb so groß“) wird gewählt: doppelter Abstand wird mit halber Kraft gleichgesetzt.",
+    "Die 249,7 µN werden abgeschrieben, weil der Wert oben in der Beispielzeile steht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "kleiner",
+    "62,4 µN"
+   ],
+   "typische_fehler": [
+    "„größer“ und „kleiner“ werden vertauscht, weil nur auf die Zahl 4 statt auf die Kraft geschaut wird.",
+    "Statt 62,4 µN wird 249,7 µN eingetragen (Zeile 1 und Zeile 2 der Tabelle verwechselt).",
+    "µN wird als „uN“ abgeschrieben – hier nur auf das Zeichen hinweisen, nicht als Fehler werten."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm sind es nur noch 62,4 µN. Der Abstand ist doppelt so groß. Die Kraft F ist aber nicht halb so groß, sondern nur ein Viertel so groß.",
+   "alternativen": [
+    "Rechnerisch begründet: 249,7 geteilt durch 4 ergibt ungefähr 62,4 – also ein Viertel. (Rechnen ist auf dieser Seite nicht verlangt, wird aber anerkannt.)",
+    "Mit der Hälfte argumentiert: Die Hälfte von 249,7 µN wäre viel mehr als 62,4 µN, also stimmt Nours Regel nicht.",
+    "Mit dem Bild argumentiert: Die Pfeile werden bei 12,0 cm viel kürzer als halb so lang."
+   ],
+   "typische_fehler": [
+    "Nours Satz wird nur wiederholt, ohne die zwei Werte zu nennen.",
+    "Es wird nur „ein Viertel“ geschrieben, ohne 249,7 µN und 62,4 µN zu vergleichen.",
+    "Die Ladung wird als Ursache genannt, obwohl sie in Zeile 1 und 2 gleich bleibt (10 nC)."
+   ]
+  },
+  "hilfe3_wort": "ein Viertel",
+  "schwache": [
+   "Nur die Zeilen 1 und 2 der Tabelle bearbeiten lassen; die Ladung erst in einer zweiten Runde verändern.",
+   "Die Beispielzeile gemeinsam laut lesen und die drei Zellen mit dem Finger am Bildschirm wiederfinden lassen, bevor etwas eingetragen wird.",
+   "Den Regler „Abstand“ nach dem Drücken von „Abstand verdoppeln“ nicht mehr anfassen lassen – sonst passen die Werte 10,0 µN und 202,2 µN nicht.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „62,4 µN“ dabei aus der eigenen Tabelle vorlesen.",
+   "Die grüne Probeladung am Bildschirm gemeinsam benennen und abhaken: Sie wird auf dieser Seite nicht gebraucht."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle bei 12,0 cm „Ladung je Kugel“ nacheinander auf 8 nC und auf 16 nC. Schreibe beide Kräfte auf (39,9 µN und 159,8 µN) und vergleiche sie.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung und ihre Kraftwirkung. Schwerpunkt E5 (Auswerten: Messwerte aus der Simulation ordnen und eine Regel daraus ablesen). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

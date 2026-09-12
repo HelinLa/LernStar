@@ -1,0 +1,71 @@
+{
+ "id": "gw9",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Sechs Planeten, eine Konstante",
+ "problem": "Für die Wettbewerbsmappe tippt Tobias eine Tabelle ab: sechs Planeten mit großer Halbachse und Umlaufzeit. Mira sucht darin einen Zusammenhang. Doppelter Bahnradius heißt nicht doppelte Umlaufzeit, das sieht sie sofort; auch mit dem Quadrat kommt sie nicht weiter. Tobias meint, wer die Regel kenne, brauche künftig nur noch eine der beiden Spalten.",
+ "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
+ "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
+ "predict": [
+  "Der Quotient T²/a³ hat für alle sechs Planeten denselben Wert. Kennt man von einem weiteren Körper nur die Umlaufzeit, lässt sich seine Halbachse damit berechnen, ohne sie zu messen.",
+  "Jeder Planet liefert seinen eigenen Wert, weil jeder eine andere Masse hat. Aus der Tabelle lässt sich deshalb keine gemeinsame Regel gewinnen."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab und notiere beide Werte mit ihren Einheiten.",
+  "Berechne zeilenweise a³ und T² und bilde daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Nachkommastellen, nicht schon die Zwischenwerte, sonst verschiebt sich das Ergebnis bei Merkur.",
+  "Trage Merkur, Erde, Jupiter und Saturn in die Tabelle ein, vergleiche die sechs Quotienten und entscheide, ob die Unterschiede aus der Regel selbst stammen oder aus der Stellenzahl der Tabelle."
+ ],
+ "daten": {
+  "titel": "Umlaufzeit und große Halbachse der Planeten",
+  "spalten": [
+   "Planet",
+   "große Halbachse a in AE",
+   "Umlaufzeit T in Jahren"
+  ],
+  "zeilen": [
+   ["Merkur", "0,387", "0,241"],
+   ["Venus", "0,723", "0,615"],
+   ["Erde", "1,000", "1,000"],
+   ["Mars", "1,524", "1,881"],
+   ["Jupiter", "5,203", "11,862"],
+   ["Saturn", "9,537", "29,457"]
+  ],
+  "quelle": "Siderische Umlaufzeiten und mittlere große Halbachsen der sechs klassischen Planeten, jeweils auf drei Nachkommastellen gerundet. 1 AE = 149,6 Mio. km.",
+  "merke": "Beide Spalten sind auf die Erde bezogen: 1 AE ist ihr mittlerer Sonnenabstand, 1 Jahr ihre Umlaufzeit. Deshalb steht in ihrer Zeile zweimal 1,000."
+ },
+ "tabCols": [
+  "a³ und T² des Planeten",
+  "Quotient T²/a³ (vier Stellen)"
+ ],
+ "tabRows": [
+  "Merkur",
+  "Erde",
+  "Jupiter",
+  "Saturn"
+ ],
+ "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, die heute sein drittes Gesetz heißt: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante gerade 1,00 – die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt: Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für die Ellipse gilt dasselbe, sobald man für a die große Halbachse einsetzt. Rechts steht nur die Masse M des Zentralkörpers, die Masse des umlaufenden Planeten fällt heraus. Genau deshalb genügt eine einzige gemessene Größe, um die andere vorherzusagen.",
+ "merksatz": [
+  {
+   "pre": "Drittes Keplersches Gesetz: Für alle Planeten der Sonne ist T²/a³",
+   "loesung": "konstant",
+   "post": ", in AE und Jahren gerade 1,00."
+  },
+  {
+   "pre": "Aus dem Gravitationsgesetz folgt T²/a³ =",
+   "loesung": "4π²/(G·M)",
+   "post": ". Die Konstante hängt nur von der Masse des Zentralkörpers ab."
+  }
+ ],
+ "beobachtung": "Trägst du die Quotienten selbst ein, steht dort sechsmal fast dieselbe Zahl. Merkur: T² = 0,05808 und a³ = 0,05796, also T²/a³ = 1,0021. Venus: 0,3782/0,3779 = 1,0008. Erde: 1,0000/1,0000 = 1,0000. Mars: 3,5382/3,5396 = 0,9996. Jupiter: 140,71/140,85 = 0,9990. Saturn: 867,71/867,43 = 1,0003. Von Merkur bis Saturn wächst die Halbachse auf knapp das 25-Fache und die Umlaufzeit auf das 122-Fache – die sechs Quotienten weichen trotzdem um weniger als 0,3 Prozent von 1,00 ab. Der größte Rest steht bei Merkur – er hat die kleinsten Zahlen der Tabelle, und dort wiegt die letzte gedruckte Stelle am schwersten: ±0,0005 in a = 0,387 verschiebt seinen Quotienten schon um vier Promille. Die Reste bleiben damit im Bereich der gedruckten Stellen: Für eine eigene Regel je Planet müssten die Quotienten deutlich auseinanderlaufen, nicht erst in der vierten Stelle. Ein einziger Wert, der um 20 Prozent danebenläge, würde dagegen zeigen, dass der Körper nicht die Sonne umläuft.",
+ "aufgabe": {
+  "frage": "Berechne die große Halbachse des Uranus. Wilhelm Herschel entdeckte ihn 1781 hinter der Saturnbahn. Gegeben ist allein seine Umlaufzeit T = 84,0 Jahre. Rechne mit T²/a³ = 1,00, T in Jahren und a in AE.",
+  "zeilen": 5,
+  "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Mit T = 84,0 Jahren ist T² = 7056, und die dritte Wurzel daraus ergibt a = 19,18. Die große Halbachse des Uranus beträgt also rund 19,2 AE, gut das 19-Fache des Erdabstands und etwa das Doppelte der Saturnbahn (9,537 AE). Die Probe bestätigt es: 84,0²/19,18³ = 7056/7055,8 = 1,00. Bemerkenswert ist, wie dieser Wert zustande kommt – gegeben war allein die Zeit für einen Umlauf, der Bahnradius ist vorhergesagt. Ein Tabellenwerk gibt 19,19 AE an."
+ },
+ "alltag": "Ein Fernsehsatellit steht über dem Äquator scheinbar still, seine Umlaufzeit beträgt genau 1,00 Tag. Der Mond umläuft dieselbe Erde in 27,3 Tagen bei einer Halbachse von 384 000 km. Berechne mit T²/a³ = konstant den Bahnradius des Satelliten und vergleiche ihn mit dem Erdradius von 6370 km.",
+ "alltagAfb": "II",
+ "alltagKomp": "E10",
+ "ueberleitung": "Die Regel gilt in dieser Form nur, wenn alle sechs Bahnen um dieselbe Sonne laufen. Auf der nächsten Seite beobachtest du dieselbe Marsbahn von der Erde aus – und siehst, warum der Planet dabei zeitweise rückwärts zu laufen scheint.",
+ "name": "Was verrät die Umlaufzeit über den Bahnradius?",
+ "theme": "ef_gravitation"
+}

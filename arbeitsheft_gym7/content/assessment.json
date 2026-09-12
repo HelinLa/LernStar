@@ -1,0 +1,382 @@
+[
+ {
+  "id": "gym_optik",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "REFLEXIONSGESETZ",
+     "tipp": "Diese Regel sagt: Am Spiegel ist der Reflexionswinkel genauso groß wie der Einfallswinkel – beide misst du zum Lot."
+    },
+    {
+     "wort": "VIRTUELL",
+     "tipp": "So heißt ein Bild, das du auf keinem Schirm auffangen kannst – im ebenen Spiegel und bei der Lupe siehst du so eines."
+    },
+    {
+     "wort": "BRECHUNG",
+     "tipp": "So heißt der Knick des Lichtstrahls an der Grenzfläche zwischen Luft und Glas."
+    },
+    {
+     "wort": "GRENZWINKEL",
+     "tipp": "41,8° – ab diesem Winkel im Glas kann das Licht die Grenzfläche nicht mehr verlassen."
+    },
+    {
+     "wort": "TOTALREFLEXION",
+     "tipp": "Dabei kommt vorn gar nichts mehr an: Über dem Grenzwinkel wird das gesamte Licht in das Glas zurückgeworfen."
+    },
+    {
+     "wort": "GLASFASER",
+     "tipp": "Ein dünner Glasfaden, in dem das Licht im Zickzack bis zum Ende läuft – sogar durch Bögen."
+    },
+    {
+     "wort": "SAMMELLINSE",
+     "tipp": "Ein Glas, das in der Mitte dicker ist und paralleles Licht in einem Punkt bündelt."
+    },
+    {
+     "wort": "BRENNWEITE",
+     "tipp": "Der Abstand von der Linse bis zu dem Punkt, in dem sich die gebündelten Strahlen treffen."
+    },
+    {
+     "wort": "ZERSTREUUNGSLINSE",
+     "tipp": "Ein Glas, das in der Mitte dünner ist und die Strahlen auseinanderlaufen lässt – es hilft kurzsichtigen Augen."
+    },
+    {
+     "wort": "NETZHAUT",
+     "tipp": "Die Fläche hinten im Auge, auf der das Bild scharf und umgekehrt entsteht."
+    },
+    {
+     "wort": "AKKOMMODATION",
+     "tipp": "So heißt das Scharfstellen des Auges: Kleine Muskeln wölben die Linse für Nahes stärker und machen sie für Fernes flacher."
+    },
+    {
+     "wort": "SPEKTRALFARBEN",
+     "tipp": "In diese Farben von Rot bis Violett zerlegt das Prisma weißes Licht – als Mischung stecken sie alle schon darin."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann das Reflexionsgesetz nennen und ausrechnen, dass der reflektierte Strahl beim Drehen des Spiegels um den doppelten Drehwinkel schwenkt.",
+    "Ich kann angeben, wo das Bild im ebenen Spiegel liegt, und begründen, warum es virtuell ist und sich nicht auffangen lässt.",
+    "Ich kann beschreiben, dass der Lichtstrahl nur an der Grenzfläche knickt und beim Übergang von Luft in Glas zum Lot hin gebrochen wird.",
+    "Ich kann mit dem Grenzwinkel von 41,8° erklären, wann Licht aus dem Glas austritt und wann Totalreflexion auftritt.",
+    "Ich kann erklären, warum das Licht in einer dünnen Glasfaser im Zickzack läuft und auch in Bögen gefangen bleibt.",
+    "Ich kann Sammellinse und Zerstreuungslinse an ihrer Form unterscheiden und die Brennweite als Abstand zwischen Linse und Brennpunkt angeben.",
+    "Ich kann mit den Gegenstandsweiten g = 199, 124, 97 und 40 vorhersagen, ob das Bild der Linse größer oder kleiner, aufrecht oder umgekehrt, reell oder virtuell ist.",
+    "Ich kann erklären, wie Auge und Kamera scharf stellen, und die passende Brillenlinse zu Kurzsichtigkeit und Weitsichtigkeit zuordnen.",
+    "Ich kann beschreiben, wie das Kepler-Fernrohr mit Objektiv und Okular den Mond 4-fach vergrößert und warum sein Bild auf dem Kopf steht.",
+    "Ich kann erklären, wie Prisma und Regentropfen weißes Licht in Spektralfarben zerlegen, wie ein Bildschirm additiv und ein Drucker subtraktiv mischt."
+   ],
+   "tipps": [
+    "Zeichne bei jeder Aufgabe zu Spiegel und Glas zuerst das Lot ein, die Senkrechte auf der Fläche. Alle Winkel dieses Kapitels werden zum Lot gemessen, nie zur Fläche selbst.",
+    "Lerne die vier Fälle der Sammellinse als feste Reihe mit f = 62 und 2f = 124: bei g = 199 verkleinert und umgekehrt, bei g = 124 gleich groß, bei g = 97 vergrößert und umgekehrt, bei g = 40 aufrecht, vergrößert und virtuell.",
+    "Merke dir die Richtung der Farbmischung: Der Bildschirm gibt Licht dazu (additiv – Rot und Grün ergeben Gelb, alle drei ergeben Weiß), der Drucker nimmt Licht weg (subtraktiv – alle drei Tinten übereinander ergeben Schwarz).",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: Grenzwinkel 41,8°, Lupe f = 58, Kamera scharf zwischen den Bildweiten 61 und 71, Fernrohr 4-fache Vergrößerung."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Strahl trifft mit 55° zum Lot auf einen Spiegel. Wie groß ist der Reflexionswinkel?",
+     "loesung": "55°, denn am Spiegel ist der Reflexionswinkel genauso groß wie der Einfallswinkel."
+    },
+    {
+     "frage": "Im Glaskörper trifft das Licht mit 50° von innen auf die Grenzfläche. Tritt es in die Luft aus?",
+     "loesung": "Nein. 50° liegt über dem Grenzwinkel von 41,8°, das gesamte Licht wird zurückgeworfen – Totalreflexion."
+    },
+    {
+     "frage": "Die Linse hat die Brennweite f = 62. Wie sieht das Bild bei der Gegenstandsweite g = 124 aus?",
+     "loesung": "g = 124 ist genau die doppelte Brennweite: Das Bild ist gleich groß, umgekehrt und reell."
+    },
+    {
+     "frage": "Am Bildschirm leuchten Rot mit 255 und Grün mit 255, Blau steht auf 0. Welche Farbe siehst du?",
+     "loesung": "Gelb, denn rotes und grünes Licht mischen sich additiv zu Gelb – ganz ohne gelbe Lämpchen."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Einfallswinkel und Reflexionswinkel sind am Spiegel gleich groß; gemessen werden beide zum",
+     "loesung": "Lot",
+     "post": ", der Senkrechten auf der Spiegelfläche."
+    },
+    {
+     "pre": "Weil sich hinter dem Spiegel keine echten Lichtstrahlen treffen, heißt das Spiegelbild",
+     "loesung": "virtuell",
+     "post": "."
+    },
+    {
+     "pre": "Beim Übergang von Luft in Glas knickt der Strahl",
+     "loesung": "zum Lot hin",
+     "post": ": Der Winkel im Glas ist kleiner als in der Luft."
+    },
+    {
+     "pre": "Der Abstand zwischen Linse und Brennpunkt heißt",
+     "loesung": "Brennweite",
+     "post": "; je stärker die Wölbung, desto kürzer ist sie."
+    },
+    {
+     "pre": "Ein Bildschirm mischt seine Farben",
+     "loesung": "additiv",
+     "post": ": Rot, Grün und Blau ergeben zusammen Weiß."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Das Spiegelbild liegt genauso weit hinter dem Spiegel, wie der Gegenstand davorsteht.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Drehst du den Spiegel um 10°, schwenkt der reflektierte Strahl ebenfalls um 10°.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Strahl, der genau auf dem Lot auftrifft, geht ohne Knick durch die Grenzfläche.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine Glasfaser muss innen verspiegelt sein, sonst käme das Licht nicht um die Kurve.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine Lupe zeigt nur dann ein vergrößertes, aufrechtes Bild, wenn der Gegenstand näher an ihr steht als die Brennweite.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Durch das Kepler-Fernrohr steht der Mond auf dem Kopf, weil das Okular das umgekehrte Zwischenbild wie eine Lupe vergrößert.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der Drucker mischt wie der Bildschirm: Cyan, Magenta und Gelb ergeben übereinander Weiß.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Jonas stößt an den Spiegelfuß und dreht den Spiegel dabei um 35°. Um wie viel Grad schwenkt der reflektierte Strahl?",
+    "optionen": [
+     "17,5°",
+     "35°",
+     "70°",
+     "90°"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum die Kamera zum Scharfstellen ihre Linse verschieben muss, während das Auge ohne Verschieben sofort scharf sieht.",
+    "zeilen": 5,
+    "loesung": "Scharf wird ein Bild nur, wenn Sensor oder Netzhaut genau dort stehen, wo sich die Strahlen eines Gegenstandspunktes treffen. Die Kameralinse kann ihre Form nicht ändern; deshalb verändert man beim Scharfstellen den Abstand zwischen Linse und Sensor, die Bildweite – in der Simulation ist das Bild nur zwischen den Bildweiten 61 und 71 scharf. Das Auge verschiebt dagegen keine Teile: Kleine Muskeln wölben die Augenlinse für Nahes stärker und machen sie für Fernes flacher. Durch diese Akkommodation liegt das Bild immer scharf auf der Netzhaut – automatisch und blitzschnell."
+   },
+   "transfer": {
+    "frage": "Mira sagt: „Der Regenbogen hängt fest am Himmel – wenn ich nah genug heranlaufe, stehe ich direkt unter ihm.“ Beurteile ihre Aussage.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nicht. Der Regenbogen ist kein Gegenstand, der an einem Ort hängt, sondern entsteht in unzähligen Regentropfen: In jedem Tropfen wird das Sonnenlicht beim Eintritt gebrochen, an der Rückwand reflektiert und beim Austritt in die Spektralfarben zerlegt. Weil jede Farbe den Tropfen in eine etwas andere Richtung verlässt, erreicht Mira aus jeder Richtung am Himmel eine andere Farbe – zusammen ergibt das den Bogen mit Rot außen und Violett innen. Zu sehen ist er nur mit der Sonne im Rücken und Regen vor ihr. Läuft Mira los, ändern sich diese Richtungen, und andere Tropfen liefern ihr den Bogen: Er weicht zurück, genau wie auf dem Schulhof beobachtet. Unter dem Bogen stehen kann niemand."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "kleiner Spiegel mit Halter und ein großer Wandspiegel für die Spiegelkiste",
+   "Lichtquelle mit Spaltblende für einen einzelnen und für drei parallele Strahlen",
+   "Winkelscheibe mit Gradskala und Geodreieck",
+   "halbrunder Glaskörper",
+   "Lampe mit einem Bündel dünner Glasfasern und ein biegsamer Lichtleiter",
+   "Linsenkiste mit Sammellinsen und Zerstreuungslinsen verschiedener Brennweiten",
+   "optische Bank mit Reitern, Gegenstandspfeil und weißem Schirm",
+   "Lupe und eine Briefmarke",
+   "aufklappbares Augenmodell",
+   "zwei Brillen aus dem Sammlungsschrank, eine für Kurzsichtige, eine für Weitsichtige",
+   "alte Kamera mit verschiebbarem Objektiv",
+   "Fernrohr der Schulsternwarte oder ein Fernglas",
+   "Prisma",
+   "Tablet oder Handy und eine Bildschirmlupe für die Leuchtpunkte",
+   "Farbfilter in Cyan, Magenta und Gelb, weißes Papier, Maßband und Lineal"
+  ]
+ },
+ {
+  "id": "gym_weltall",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "SELBSTLEUCHTER",
+     "tipp": "So nennt man die Sonne und alle Sterne, weil sie ihr Licht selbst erzeugen – Mond und Planeten werden dagegen nur beleuchtet."
+    },
+    {
+     "wort": "ERDACHSE",
+     "tipp": "Sie ist geneigt und zeigt das ganze Jahr über in dieselbe Richtung – genau deshalb gibt es Sommer und Winter."
+    },
+    {
+     "wort": "NEUMOND",
+     "tipp": "In dieser Stellung steht der Mond zwischen Sonne und Erde und zeigt uns seine dunkle Rückseite – im Fenster bleibt er ganz dunkel."
+    },
+    {
+     "wort": "KERNSCHATTEN",
+     "tipp": "Trifft dieser dunkelste Teil des Mondschattens die Erde, ist die Sonnenfinsternis total – im Halbschatten nur teilweise."
+    },
+    {
+     "wort": "ASTEROIDENGÜRTEL",
+     "tipp": "Er liegt zwischen Mars und Jupiter und trennt die vier kleinen Gesteinsplaneten von den vier großen Riesen."
+    },
+    {
+     "wort": "GRAVITATION",
+     "tipp": "So heißt die Anziehung zwischen allen Massen – sie zieht bei uns alles zum Erdmittelpunkt."
+    },
+    {
+     "wort": "UMLAUFBAHN",
+     "tipp": "So nennt man das ewige Vorbeifallen eines Planeten an der Sonne – zu langsam stürzt er hinein, zu schnell entkommt er."
+    },
+    {
+     "wort": "LICHTJAHR",
+     "tipp": "Das klingt nach einer Zeit, ist aber eine Entfernung: die Strecke, die das Licht in einem ganzen Jahr zurücklegt."
+    },
+    {
+     "wort": "PARALLAXENWINKEL",
+     "tipp": "Der halbe Sprung, den ein naher Stern vor den fernen Sternen macht, wenn die Erde von Januar bis Juli die Seite ihrer Bahn wechselt."
+    },
+    {
+     "wort": "KERNFUSION",
+     "tipp": "Dabei verschmelzen im Kern eines Sterns Wasserstoffkerne zu Helium – das setzt die Energie frei, mit der er leuchtet."
+    },
+    {
+     "wort": "EPIZYKEL",
+     "tipp": "Diese Zusatzkreise brauchte das alte Weltbild für die Schleifen der Planeten – das heutige kommt ohne einen einzigen aus."
+    },
+    {
+     "wort": "RÜCKSTOSS",
+     "tipp": "Damit kommt eine Rakete im leeren Weltall vom Fleck: Sie stößt Gas nach hinten aus und stößt sich an diesem Gas ab."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann Selbstleuchter wie Sonne und Sterne von beleuchteten Körpern wie Mond und Planeten unterscheiden und begründen, warum Mond und Planeten ohne Sonnenlicht sofort dunkel sind.",
+    "Ich kann die Jahreszeiten mit der geneigten Erdachse erklären: Im Sommer trifft das Licht steil auf wenige Kästchen und der Tag ist lang, im Winter flach auf viele Kästchen und der Tag ist kurz.",
+    "Ich kann die Mondphasen mit der Stellung des Mondes auf seiner Bahn erklären und begründen, warum der Schatten der Erde damit nichts zu tun hat.",
+    "Ich kann Sonnenfinsternis und Mondfinsternis auseinanderhalten und mit der gekippten Mondbahn begründen, warum beide selten sind, obwohl es jeden Monat Neumond und Vollmond gibt.",
+    "Ich kann die acht Planeten in Gesteinsplaneten, Gasriesen und Eisriesen einteilen und ihre Durchmesser und Umlaufzeiten vergleichen.",
+    "Ich kann erklären, dass ohne Luft alle Körper gleich schnell fallen, und die Fallzeiten auf Mond, Erde und Jupiter mit der Fallbeschleunigung g begründen.",
+    "Ich kann angeben, wie die beiden Massen und der Abstand die Gravitation bestimmen: Die Masse zählt einfach, der Abstand zählt doppelt.",
+    "Ich kann erklären, warum ein Planet nicht in die Sonne stürzt, und mit den Grenzwerten 29,8 km/s und 42,1 km/s vorhersagen, ob seine Bahn ein Kreis, eine Ellipse oder eine Flucht wird.",
+    "Ich kann erklären, was eine Waage wirklich misst, und begründen, warum eine Astronautin auf der Raumstation schwebt, obwohl die Erde weiter an ihr zieht.",
+    "Ich kann mit dem Lichtjahr und mit d = 1/p Entfernungen im Weltall angeben, aus dem Streifenmuster im Sternlicht die Elemente ablesen, das Leben eines Sterns nach seiner Masse vorhersagen, die beiden Weltbilder vergleichen und den Rückstoß einer Rakete berechnen."
+   ],
+   "tipps": [
+    "Frage bei jeder Finsternis zuerst: Wessen Schatten trifft wen? Bei der Sonnenfinsternis trifft der Mondschatten die Erde – das geht nur bei Neumond. Bei der Mondfinsternis läuft der Mond durch den Erdschatten – das geht nur bei Vollmond.",
+    "Lerne die Doppelregel der Gravitation als Sprechvers: Die Masse zählt einfach, der Abstand zählt doppelt. Doppelte Masse verdoppelt die Anziehung, doppelter Abstand lässt nur ein Viertel übrig, dreifacher Abstand ein Neuntel.",
+    "Prüfe bei allem, was schwebt, ob noch ein Boden drückt: Eine Waage misst nie die Gewichtskraft, sondern den Druck des Bodens gegen die Füße. Fällt der Boden genauso schnell wie du, zeigt sie 0 N – die Erde zieht trotzdem unverändert weiter.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: g = 9,8 m/s² auf der Erde, 29,8 km/s für die Kreisbahn und 42,1 km/s zum Entkommen, 300 000 km je Sekunde für das Licht, 4,2 Lichtjahre bis zum nächsten Stern."
+   ],
+   "mini": [
+    {
+     "frage": "Du stellst in der Simulation den Abstandsregler von 1 auf 2. Auf welchen Bruchteil sinkt die Anziehung?",
+     "loesung": "Auf ein Viertel, von 8,0 auf 2,0 Einheiten – der Abstand zählt doppelt."
+    },
+    {
+     "frage": "Ein Stern hat den Parallaxenwinkel p = 0,5 Bogensekunden. Wie weit ist er entfernt?",
+     "loesung": "d = 1/p = 1/0,5 = 2 Parsec. Ein kleinerer Winkel würde eine größere Entfernung bedeuten."
+    },
+    {
+     "frage": "Die Rakete mit 1000 kg stößt 20 kg Gas mit 600 m/s aus. Wie schnell wird sie?",
+     "loesung": "Der Impuls beträgt 20 kg · 600 m/s = 12000 kg·m/s; geteilt durch 1000 kg ergibt das 12 m/s."
+    },
+    {
+     "frage": "Das Aufzugseil reißt, der Aufzug fällt frei. Was zeigt die Waage unter der 60-kg-Person an?",
+     "loesung": "0 N, denn Boden und Person fallen gleich schnell – der Boden drückt nicht mehr, obwohl die Erde weiter zieht."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Sonne und alle Sterne sind",
+     "loesung": "Selbstleuchter",
+     "post": "– Mond und Planeten werden dagegen nur beleuchtet."
+    },
+    {
+     "pre": "Ursache der Jahreszeiten ist die",
+     "loesung": "geneigte Erdachse",
+     "post": "– nicht der Abstand zur Sonne."
+    },
+    {
+     "pre": "Eine Mondfinsternis gibt es nur bei Vollmond, wenn der Mond durch den",
+     "loesung": "Kernschatten",
+     "post": "der Erde läuft."
+    },
+    {
+     "pre": "Ein Lichtjahr ist keine Zeit, sondern eine",
+     "loesung": "Entfernung",
+     "post": ": die Strecke, die das Licht in einem Jahr zurücklegt."
+    },
+    {
+     "pre": "Im Kern eines Sterns verschmelzen Wasserstoffkerne zu Helium – diese",
+     "loesung": "Kernfusion",
+     "post": "setzt die Energie frei, mit der der Stern leuchtet."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ohne Luft fallen Stein und Feder gleich schnell und kommen zusammen unten an.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei jedem Neumond gibt es eine Sonnenfinsternis, weil der Mond dann zwischen Sonne und Erde steht.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der verfinsterte Mond erscheint kupferrot, weil die Lufthülle der Erde rotes Sonnenlicht in den Kernschatten lenkt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Jupiter und Saturn haben eine feste Oberfläche, auf der eine Raumsonde landen kann.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Im freien Fall zeigt eine Waage 0 N, obwohl die Erde unverändert weiter zieht.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Je schwerer ein Stern, desto länger lebt er, weil er mehr Brennstoff besitzt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Marsschleife ist nur scheinbar: Sie entsteht, wenn die schnellere Erde den Mars auf der Innenbahn überholt.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Die Rakete mit 1000 kg stößt 50 kg Gas mit 2000 m/s aus. Wie schnell wird sie?",
+    "optionen": [
+     "40 m/s",
+     "50 m/s",
+     "100 m/s",
+     "200 m/s"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre mit dem Aufzugversuch, was eine Waage wirklich misst, und begründe damit, warum eine Astronautin auf der Raumstation schwebt, obwohl die Erde dort fast genauso stark zieht wie am Boden.",
+    "zeilen": 5,
+    "loesung": "Eine Waage misst nie die Gewichtskraft selbst, sondern nur, wie stark der Boden gegen die Füße drückt. Steht der Aufzug still, hält der Boden die 60-kg-Person genau gegen die Erdanziehung, und die Waage zeigt 588 N. Reißt das Seil, fallen Boden und Person gleich schnell, der Boden drückt gar nicht mehr, und die Anzeige geht auf 0 N – die Erde zieht dabei völlig unverändert weiter. Genauso fällt die Raumstation mitsamt der Astronautin fortwährend um die Erde herum: Kein Boden drückt gegen ihre Füße, deshalb schwebt sie. Schwerelos heißt also nicht „keine Anziehung“, sondern „kein Druck vom Boden“."
+   },
+   "transfer": {
+    "frage": "Beim Abend an der Schulsternwarte behauptet ein Besucher: „Im Sommer ist es warm, weil die Erde dann näher an der Sonne steht – und der Halbmond entsteht, wenn der Erdschatten die halbe Mondscheibe verdeckt.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Wäre der Abstand die Ursache der Jahreszeiten, müsste es auf beiden Halbkugeln zugleich warm sein – in Australien ist aber Sommer, wenn bei uns Winter ist. Die Ursache ist die geneigte Erdachse: Im Sommer trifft das Licht mit 62° steil auf und verteilt sich auf 3 Kästchen, der Tag dauert 16,3 h; im Winter trifft es mit 16° flach auf 9 Kästchen, und der Tag schrumpft auf 7,7 h. Auch der zweite Teil ist falsch: Beleuchtet ist immer genau eine Hälfte der Mondkugel, und beim Halbmond steht der Mond seitlich der Erde, also gar nicht hinter ihr. Wir sehen nur je nach Blickrichtung unterschiedlich viel von der hellen Hälfte. Der Erdschatten trifft den Mond nur bei einer Mondfinsternis – dann färbt er ihn kupferrot."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Globus mit geneigter Achse und Taschenlampe als Sonne",
+   "heller Ball aus Styropor als Mond",
+   "acht Styroporkugeln für das Planetenmodell",
+   "Sonnenfinsternis-Brille mit geprüftem Filter",
+   "Astrokalender oder Sternkarten-App",
+   "Messingschraube und kleine Feder aus dem Etui",
+   "ein Blatt Papier, glatt und fest zusammengeknüllt",
+   "Personenwaage für den Aufzugversuch",
+   "Luftballon für den Rückstoßversuch",
+   "Prisma für das Farbband",
+   "Kochsalz und Gasbrenner für die gelbe Flamme",
+   "Wasserbecken, Holzstück und Stein für die Schwimmprobe",
+   "Himmelskarte, alt und neu, für den Weltbild-Vergleich",
+   "Fernrohr der Schulsternwarte oder ein Fernglas",
+   "Maßband, Geodreieck und Taschenrechner"
+  ]
+ }
+]

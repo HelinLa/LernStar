@@ -1,0 +1,208 @@
+{
+ "seite": {
+  "id": "fv4",
+  "quelle": "ev4+ev5",
+  "sim": "leiterkraft",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der aufgeschraubte Motor",
+  "name": "Warum bewegt sich ein Draht im Magnetfeld?",
+  "fachwoerter_neu": [
+   "Leiterlänge L in m"
+  ],
+  "alltag": [
+   "Bei den Stadtwerken sieht Jannis im offenen Motor Kupferdraht und Magnete.",
+   "Am Bildschirm heißt der Draht Stab. Das Magnetfeld B steht in Tesla (T).",
+   "Der Stab ist 10 cm lang. Diese Leiterlänge L ist 0,10 m.",
+   "Umpolen heißt: der Strom fließt andersherum."
+  ],
+  "frage": "Wohin drückt die Kraft F auf den Stab?",
+  "predict": [
+   "Der Magnet zieht den Stab zum Nordpol.",
+   "Der Stab wird quer geschoben, nicht angezogen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „zurücksetzen“. Lies den ersten Satz und die Zahl vor N. Den Absatz über drei Finger brauchst du nicht.",
+   "Stelle 0 A ein. Nimm nur den ersten Satz. Trage Zeile 2 ein.",
+   "Stelle 10,0 A ein. Trage Zeile 3 ein.",
+   "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“. Trage Zeile 4 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Wie groß ist die Kraft F in N?",
+   "Wohin wird der Stab gedrückt?"
+  ],
+  "tabRows": [
+   [
+    "5,0 A",
+    "0,100 N",
+    "nach oben"
+   ],
+   [
+    "0 A",
+    "",
+    ""
+   ],
+   [
+    "10,0 A",
+    "",
+    ""
+   ],
+   [
+    "5,0 A umgepolt",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Kraft auf den Stab ist F =",
+    "loesung": "B · I · L",
+    "post": ". Sie schiebt den Stab quer, nicht zum Pol."
+   },
+   {
+    "pre": "Polst du den Strom um, drückt sie",
+    "loesung": "andersherum",
+    "post": ". Sie bleibt gleich groß."
+   }
+  ],
+  "wortbank": [
+   "B · I · L",
+   "andersherum",
+   "0,10 m",
+   "0,200 N"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Kraft ab?",
+   "antwort": "Am Bildschirm steht: F = 0,20 T · 5,0 A · 0,10 m = 0,100 N. Wichtig ist nur die Zahl vor N: 0,100 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst bei 5,0 A „Strom umpolen“. Was steht am Bildschirm?",
+    "optionen": [
+     "0,100 N nach unten",
+     "0,200 N nach unten",
+     "0,100 N nach oben"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "In der Formel steht für L:",
+      "loesung": "0,10 m",
+      "post": "."
+     },
+     {
+      "pre": "Bei 10,0 A zeigt der Bildschirm",
+      "loesung": "0,200 N",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum bewegt sich der Stab bei 0 A nicht?",
+    "satzstarter": "Der Stab bewegt sich nicht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Der Stab bewegt sich nicht, weil kein …",
+   "h3": "Fast fertig: Am Bildschirm steht „Kein Strom – keine Kraft“. Ohne Strom wirkt keine ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F ablesen.",
+   "Ich kann sagen, wohin der Stab gedrückt wird.",
+   "Ich weiß: Ohne Strom wirkt keine Kraft."
+  ],
+  "zuhause": "Sieh dir einen Akkuschrauber an. Sein Schalter für links und rechts polt den Strom um.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Sachbild in EINEM durchgehenden Bildrahmen. Zwei Zeilen liegen übereinander, beide zeigen denselben Hufeisenmagneten von vorn, gleich groß und gleich hell; getrennt sind sie nur durch eine dünne graue Linie, nicht durch einen zweiten Rahmen. OBERE ZEILE: Hufeisenmagnet von vorn, der linke Pol trägt groß den Buchstaben N, der rechte Pol groß den Buchstaben S. Waagerecht zwischen den Polen hängt ein kupferfarbener runder Stab, an beiden Enden mit dünnen Drähten aufgehängt. Unter dem Stab eine waagerechte Maßlinie mit zwei kurzen Endstrichen und der großen Aufschrift „L = 10 cm = 0,10 m“. In der Mitte des Stabes ein kleiner heller Kreis mit einem dicken Punkt darin, daneben klein „Strom kommt auf dich zu“. Aus der Stabmitte geht GENAU EIN dicker gerader Pfeil senkrecht nach oben, daneben groß „F = 0,100 N“. Über der Zeile klein „B = 0,20 T · I = 5,0 A“. UNTERE ZEILE: derselbe Magnet, derselbe Stab, N wieder links, S wieder rechts, diesmal OHNE jede Kraftangabe: an dieser Zeile steht keine Zahl und kein „F = …“. In der Stabmitte derselbe kleine Kreis, diesmal mit einem Kreuz darin, daneben klein „Strom fließt von dir weg“. Aus der Stabmitte geht GENAU EIN dicker gerader Pfeil senkrecht nach unten. Links außen an dieser Zeile groß die Beschriftung „Strom umgepolt“. Die Aussage steht damit im Bild selbst: gleicher Magnet, nur der Pfeil kippt. Der Kraftwert der unteren Zeile fehlt mit Absicht — er ist die Antwort von Tabellenzeile 4 und von Aufgabe 1 und wird am Bildschirm abgelesen. Keine Feldlinien und keine Pfeile zwischen den Polen — der Bildschirm zeigt dort auch keine, und freie Linien enden sonst im Nichts. Kein zweiter Pfeil am Stab, keine zerlegten Kräfte, kein Pfeil, der auf einen Pol zeigt: der Stab wird geschoben, nicht angezogen. Keine gestreiften oder schraffierten Flächen, sondern durchgehend gefüllte Farbflächen. Keine kleinen Nebenbilder am Rand, keine Personen, keine Geräte, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv4",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, wie groß die Kraft F auf den Stab ist und wohin sie ihn drückt (Ausgangszustand 0,100 N nach oben, bei 10,0 A 0,200 N nach oben, bei 0 A 0,000 N und nichts passiert, nach dem Umpolen 0,100 N nach unten). Sie ordnen die drei Zahlen der Anzeige den drei Buchstaben der Formel F = B · I · L zu und wissen, dass die Leiterlänge L des Stabes 10 cm = 0,10 m beträgt. Sie benennen den Kern in der Sache: Der Stab wird quer geschoben, nicht zu einem Pol gezogen; ohne Strom wirkt keine Kraft; polt man den Strom um, dreht sich die Kraft, bleibt aber gleich groß. Gerechnet wird nichts — die Anzeige rechnet jede Zeile vollständig vor. Fachliche Namen nur für Sie, nicht auf der Schülerseite: Lorentzkraft und Drei-Finger-Regel der rechten Hand.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Stabzeilen. Optional als Demonstration: eine Leiterschaukel zwischen den Polen eines Hufeisenmagneten, Strom kurz einschalten und die Anschlüsse einmal vertauschen (nur Richtung zeigen, keine Messreihe).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte „5,0 A“ (das ist der Ausgangszustand nach dem Zurücksetzen): „Der Stab wird nach oben gedrückt. F = B · I · L. F = 0,20 T · 5,0 A · 0,10 m = 0,100 N.“ Karte „0 A“: „Kein Strom – keine Kraft. Der Stab hängt zwischen den Polen, und nichts passiert. Ein Magnetfeld allein schiebt einen Draht nicht. F = 0,20 T · 0,0 A · 0,10 m = 0,000 N.“ Karte „10,0 A“: „Der Stab wird nach oben gedrückt. F = 0,20 T · 10,0 A · 0,10 m = 0,200 N.“ Karte „5,0 A umgepolt“: „Der Stab wird nach unten gedrückt. F = 0,20 T · 5,0 A · 0,10 m = 0,100 N. Du hast eines von beiden umgepolt – die Kraft zeigt jetzt andersherum.“ Dazu als Tafelbild zwei Zeilen untereinander mit demselben Hufeisenmagneten: links N, rechts S, waagerechter Stab dazwischen, Maßlinie „L = 10 cm = 0,10 m“, in der oberen Zeile ein Pfeil nach oben mit „F = 0,100 N“, in der unteren Zeile derselbe Pfeil nach unten mit derselben Zahl und der Beschriftung „Strom umgepolt“. Wichtig beim Tafelbild: In beiden Zeilen steht dieselbe Zahl 0,100 N — daran hängt Aufgabe 1. Das gedruckte Bild der Schülerseite lässt die untere Zahl bewusst weg, weil dort die Simulation danebensteht; nur im Ersatz ohne Simulation wird sie angeschrieben. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "B · I · L",
+   "andersherum"
+  ],
+  "tabelle_erwartet": [
+   [
+    "0 A",
+    "0,000 N",
+    "nichts passiert"
+   ],
+   [
+    "10,0 A",
+    "0,200 N",
+    "nach oben"
+   ],
+   [
+    "5,0 A umgepolt",
+    "0,100 N",
+    "nach unten"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach „Strom umpolen“ bei I = 5,0 A meldet die Statuszeile zuerst „Der Stab wird nach unten gedrückt.“ und wenige Zeilen darunter unverändert „F = 0,20 T · 5,0 A · 0,10 m = 0,100 N“. Die erste Option nennt beide Angaben. Die dritte Option ist der Ausgangszustand vor dem Umpolen (er steht als Beispielzeile in der Tabelle), die erste steht wirklich so am Bildschirm — aber nur, wenn der Regler noch auf 10,0 A steht.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt: Die Zahl der zuletzt gemessenen Zeile (10,0 A) bleibt im Kopf. Gegenfrage: Auf welchem Wert steht der Regler jetzt?",
+    "Die dritte Option wird angekreuzt, weil nur die Beispielzeile abgeschrieben und gar nicht umgepolt wurde. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt?",
+    "Es wird vermutet, die Kraft müsse beim Umpolen kleiner werden. Auf die beiden Zeilen des Tafelbildes zeigen: zweimal 0,100 N, nur der Pfeil kippt.",
+    "Umgepolt wird bei 10,0 A statt bei 5,0 A. Dann meldet der Bildschirm „Der Stab wird nach unten gedrückt.“ und „F = 0,20 T · 10,0 A · 0,10 m = 0,200 N“ — die zweite Option ist also richtig abgelesen, nur beim falschen Strom (am 05.09.2026 mit simcheck/werte.js nachgemessen). Gegenfrage: Auf welchem Wert steht der Regler? Danach gemeinsam auf 5,0 A zurückstellen und neu ablesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,10 m",
+    "0,200 N"
+   ],
+   "typische_fehler": [
+    "Statt 0,10 m wird 10 cm eingesetzt. Beide Schreibweisen stehen auf der Seite nebeneinander („L = 10 cm = 0,10 m“); in der Formelzeile des Bildschirms steht die Meterangabe.",
+    "Statt 0,10 m wird 10 m oder 0,1 m geschrieben. Die Wortbank enthält die Form der Anzeige; einmal abschreiben lassen. Wer 10 statt 0,10 einsetzt, landet bei einem hundertfach zu großen Wert.",
+    "Statt 0,200 N wird 0,100 N eingesetzt: Der Regler wurde nicht auf 10,0 A gestellt oder die Beispielzeile wurde abgeschrieben.",
+    "Die Einheit fehlt („0,200“ oder „0,10“). Die Wortbank enthält beide Werte mit Einheit.",
+    "Das Ergebnis wird selbst ausgerechnet und dabei das Komma verschoben. Es wird nichts gerechnet — die Zahl steht am Bildschirm und wird abgeschrieben."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Stab bewegt sich nicht, weil kein Strom fließt. Am Bildschirm steht: „Kein Strom – keine Kraft.“ Und weiter: „Ein Magnetfeld allein schiebt einen Draht nicht.“ Die Anzeige rechnet F = 0,20 T · 0,0 A · 0,10 m = 0,000 N.",
+   "alternativen": [
+    "Nur mit der Zahl: „weil die Anzeige 0,000 N zeigt“ — reicht für die volle Wertung.",
+    "Über die Formel: „In F = B · I · L steht bei I eine Null. Dann ist alles null.“",
+    "Über den Magneten: „Der Magnet allein schiebt den Stab nicht. Es muss Strom fließen.“",
+    "Zusatz mit Gegenprobe: „Bei 5,0 A wird er nach oben gedrückt, bei 0 A gar nicht.“ — richtig, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Es wird „nach oben“ geantwortet, weil der Richtungsabsatz bei 0 A stehen bleibt („Nordpol links · Strom fließt nach vorn → Kraft nach oben“). Das ist die Hauptfalle dieser Seite: Bei 0 A gilt der erste Satz der Statuszeile, nicht der Richtungsabsatz. Arbeitsschritt 2 sagt das ausdrücklich („Nimm nur den ersten Satz.“); im Zweifel gemeinsam den ersten Satz vorlesen lassen.",
+    "„Der Magnet ist zu schwach“ oder „der Stab ist zu schwer“ — Alltagserklärung statt Ablesen. Auf die Anzeigezeile mit 0,000 N zurückverweisen.",
+    "„Kupfer ist kein Eisen, deshalb passiert nichts.“ Der Satz stimmt für das Anziehen, erklärt aber nicht die Seite: Bei 5,0 A bewegt sich derselbe Kupferstab sehr wohl. Nachfragen: Was ist da anders?",
+    "Es wird nur „weil kein Strom da ist“ ohne Bezug zur Anzeige geschrieben. Das ist inhaltlich richtig; die Zahl 0,000 N oder der Bildschirmsatz sollte ergänzt werden (Hilfe 3 gibt den Satz vor)."
+   ]
+  },
+  "hilfe3_wort": "Kraft",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Bedienelemente gelten: der Regler „Stromstärke I“, der Knopf „Strom umpolen“ und der Knopf „zurücksetzen“. Der Regler „Magnetfeld B“ bleibt auf 0,20 T stehen — sonst verschieben sich alle Zahlen der Tabelle. Der Knopf „Magnet umdrehen“ wird auf dieser Seite nicht gebraucht; er bleibt unberührt.",
+   "Die Statuszeile mit einem Papierstreifen abdecken, sodass nur der erste Satz und die Zeile „F = … N“ sichtbar bleiben. Der lange Absatz über die drei Finger und der Vergleich mit den Büroklammern werden auf dieser Seite nicht gebraucht.",
+   "Die Beispielzeile der Tabelle (5,0 A) gemeinsam laut lesen und im gelösten Beispiel mit dem Finger zeigen, welche Zahl zu B, welche zu I und welche zu L gehört, bevor die Simulation geöffnet wird.",
+   "Nur die Spalte „Wie groß ist die Kraft F in N?“ ausfüllen lassen; die Richtungsspalte gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und dabei „0,10 m“ und „0,200 N“ laut vorlesen — der Unterschied zwischen 0,10 und 0,200 entscheidet die Aufgabe.",
+   "Zum Umpolen die beiden Zeilen des Tafelbildes nebeneinanderlegen und nur den Pfeil vergleichen lassen: Die Zahl bleibt, der Pfeil kippt."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Zwei Anzeigezeilen vergleichen, beide wörtlich vom Bildschirm. Zeile 1: „F = 0,20 T · 4,0 A · 0,10 m = 0,080 N“. Zeile 2: „F = 0,10 T · 8,0 A · 0,10 m = 0,080 N“. Die Kraft ist gleich groß, die Einstellung ist verschieden. Frage: Woran liegt das? Erwartet wird die Beobachtung, dass B halbiert und I verdoppelt wurde. Der Weg zur zweiten Zeile braucht beide Regler (Magnetfeld B auf 0,10 T, Stromstärke I auf 8,0 A) und steht deshalb nur hier, nicht auf der Schülerseite. Ebenfalls nur für Sie, und nur in dieser Reihenfolge: Wer erst „Strom umpolen“ und DANN „Magnet umdrehen“ drückt, sieht die Kraft wieder nach oben zeigen — zwei Umkehrungen heben sich auf. Dreht man dagegen nach „zurücksetzen“ nur den Magneten um, zeigt die Kraft nach unten (am 05.09.2026 mit simcheck/werte.js nachgemessen). Beides bleibt vom Heft fern: der erste Fall, weil er als doppelte Verneinung formuliert werden müsste, der zweite, weil die Seite mit einem einzigen Knopf auskommt.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Kraft auf einen stromdurchflossenen Leiter im Magnetfeld, Grundlage des Elektromotors. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der Stromstärke und das Umpolen tragen E4, das Eintragen der Messwerte in die Tabelle trägt K3 (bandweite Festlegung vom 05.09.2026: K3 liegt auf dem Dokumentieren in der Tabelle, NICHT auf dem Zuhause-Auftrag — „Erkläre zu Hause jemandem …“ wäre Präsentieren), der Vergleich der vier Zustände UF3, die Erklär-Aufgabe zur Null-Strom-Zeile UF1 und E6, der Alltagsauftrag zum Akkuschrauber UF4 (Erbe der gestrichenen E-Kurs-Einheit ev5, Seitenplan vom 05.09.2026 — ev5 hatte die zwei vertauschten Anschlusskabel als Anker; der Links-rechts-Schalter ist derselbe Mechanismus, aber am Gerät sichtbar). Fachwortzählung: neu ist genau EIN Wort, „Leiterlänge L in m“ — es wird im Alltagsteil mit Begriffssatz eingeführt („Der Stab ist 10 cm lang. Diese Leiterlänge L ist 0,10 m.“) und ist unverzichtbar, weil L keinen Regler hat und nur als Bildtext „L = 10 cm“ bzw. als „0,10 m“ in der Formelzeile vorkommt. Nicht neu und deshalb nur Rückverweis: Magnetfeld B (fv2, dort in µT eingeführt), Stromstärke I in Ampere (Förderband 8, fs4), Kraft F in Newton (Förderband 9). Zur Einheit: Diese Simulation schreibt B in Tesla (T), fv2 in Mikrotesla (µT). Damit auf der Schülerseite kein Einheitenzeichen ohne Einführung steht, sagt der Alltagsteil ausdrücklich „Das Magnetfeld B steht in Tesla (T).“ B selbst ist nicht neu (fv2) und zählt deshalb nicht als zweites Fachwort. Die Umrechnung 1 T = 1 000 000 µT steht nach Seitenplan NUR hier; sagen Sie beim Bedienen einmal, dass T und µT dieselbe Größe messen, und lassen Sie den B-Regler unverändert auf 0,20 T. Bewusst NICHT eingeführt: Lorentzkraft (steht nur in einem Sim-Hinweis, wird nirgends gebraucht — wäre das zweite Wort), Drei-Finger-Regel der rechten Hand (Lernziel der gestrichenen Einheit ev5; sie fällt mit ev5 ersatzlos weg und wird auf der Schülerseite nicht ersetzt), technische Stromrichtung (nur Teil der Drei-Finger-Regel), senkrecht (das Heft sagt durchgehend „quer“ — dieses Wort benutzt der Bildschirm selbst: „hier wird quer geschoben“). Nach Zählregel 5 steht kein Alltagswort ohne Formelzeichen und Einheit in der Wortbank, wohl aber im Alltagsteil: „umpolen“ hat dort seinen Begriffssatz („Umpolen heißt: der Strom fließt andersherum.“), „quer“ seinen Bezugspunkt im Merksatz („quer, nicht zum Pol“). Nach der DaZ-Regel „immer dieselbe Bezeichnung“ heißt der Leiter auf der ganzen Seite „Stab“ (nicht Draht, Kupferstab oder Leiter); der Titel der Einheit spricht von „Draht“, deshalb setzt der Alltagsteil beides einmal ausdrücklich gleich. Ebenso nur EINE Form für das Vertauschen: „umpolen“. Datenlage und Fallen: (1) Der Nullzeilen-Widerspruch. Bei I = 0 A meldet die Statuszeile „Kein Strom – keine Kraft … nichts passiert“, zwei Absätze tiefer steht aber unverändert „Nordpol links · Strom fließt nach vorn → Kraft nach oben“. Die dritte Tabellenspalte darf ihre Antwort in dieser Zeile deshalb nur aus dem ersten Satz nehmen. Arbeitsschritt 2 sagt es ausdrücklich: „Nimm nur den ersten Satz.“, und Arbeitsschritt 1 sagt vorher, was überhaupt gelesen wird: der erste Satz und die Zahl vor N. Das Wort „Pfeil“ steht bewusst nicht mehr auf der Seite — im Bild gibt es Pfeile, in der Statuszeile nicht. In der Richtungsspalte der Null-Zeile zählen „nichts passiert“ und „keine Kraft“ gleichermaßen. (2) Längenfalle 10 cm gegen 0,10 m: Der Bildtext schreibt „L = 10 cm“, die Formelzeile rechnet mit „0,10 m“. Beide Schreibweisen stehen im Alltagsteil und im Bildauftrag nebeneinander. Wer 10 statt 0,10 einsetzt, erhält den hundertfachen Wert. (3) Es wird nichts gerechnet. „F = 0,20 T · 5,0 A · 0,10 m = 0,100 N“ ist ein Dreifachprodukt mit zwei Dezimalzahlen; für A2–B1 ist nicht die Physik die Hürde, sondern das Kommaverschieben. Die Anzeige rechnet die Zeile vollständig vor, Aufgabe 2 lässt deshalb nur eintragen und abschreiben. (4) Der Büroklammer-Vergleich der Simulation („0,100 N / 0,01 N = 10 Büroklammern“) wird nicht übernommen: eine Division zweier Kommazahlen plus ein Konjunktivsatz. Falls Lernende danach fragen: Es ist so groß wie die Gewichtskraft von 10 Büroklammern — nicht „10 Büroklammern schwer“. Masse und Gewichtskraft nie gleichsetzen. (5) Der Zustand „nur den Magneten umgedreht“ fehlte im Faktendump: dort wurde „Magnet umdrehen“ auf den bereits umgepolten Strom gedrückt, Meldung „Du hast beides umgepolt“. Am 05.09.2026 mit simcheck/werte.js nachgemessen (zurücksetzen, dann Magnet umdrehen): „Der Stab wird nach unten gedrückt.“ · „Nordpol rechts · Strom fließt nach vorn“ · F = 0,100 N. Im selben Durchgang gemessen: 10,0 A mit umgepoltem Strom ergibt 0,200 N nach unten. Der Knopf „Magnet umdrehen“ kommt auf der Schülerseite trotzdem nicht vor — die Seite kommt mit einem Bedienknopf aus und die Tabelle hat schon vier Zeilen; eine fünfte wäre jetzt aber belegt. (6) [NACHMESSEN] Alle Zustände des B-Reglers im Dump stehen bei I = 8,0 A, nicht beim Startwert 5,0 A — der Regler blieb vom vorigen Schritt stehen. Es gibt daher KEINEN belegten Zustand für B = 0,40 T bei I = 2,0 A; die entsprechende Rechenaufgabe des Regelhefts wurde nicht übernommen. Die freiwillige Zusatzaufgabe benutzt nur die zwei wörtlich belegten Zeilen 0,20 T · 4,0 A und 0,10 T · 8,0 A. (7) Der Ausgangszustand ist nur nach „zurücksetzen“ garantiert; deshalb steht dieser Knopf im ersten Arbeitsschritt. (8) Undruckbare Zeichen: Drei Knöpfe der Simulation tragen vor dem Wort ein Pfeilzeichen, ebenso die Überschrift ein Zahnradzeichen; die Bildtexte benutzen für die Stromrichtung einen Kreis mit Punkt und einen Kreis mit Kreuz. SourceSans3 hat für diese vier Zeichen keine Glyphe und druckt leere Kästchen. Sie werden deshalb nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird. Auf der Seite heißen die Knöpfe „Strom umpolen“ und „zurücksetzen“; die beiden Richtungszeichen werden im Bildauftrag als „Kreis mit einem Punkt darin“ und „Kreis mit einem Kreuz darin“ beschrieben und im Bild selbst beschriftet. (9) Die Begründung des Regelhefts über Feldlinien zeigt die Simulation nicht: In den Bildtexten steht keine einzige Feldlinie. Sie bleibt Merkwissen und trägt nach der Heft-gegen-Sim-Regel keine Bildschirmaufgabe; deshalb verbietet auch der Bildauftrag Feldlinien und freie Pfeile zwischen den Polen. (10) Der Modellgrenzensatz der Simulation („Die Formel F = B · I · L gilt nur, wenn der Draht senkrecht zum Feld liegt.“) steht bewusst nicht auf der Schülerseite: Der Stab liegt in allen belegten Zuständen quer, ein anderer Winkel ist nicht einstellbar. Nennen Sie ihn mündlich, wenn gefragt wird."
+ }
+}

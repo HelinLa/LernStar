@@ -1,0 +1,350 @@
+<!-- ============================================================
+     bau_holz.svg | Raum und Traeger: Waende, Boden, Kiste, Bretter, Lampe
+     Alle Teile: Licht von oben links. Anker steht im Kommentar.
+     ============================================================ -->
+
+<radialGradient id="b_wandEcken" cx="0.5" cy="0.42" r="0.72">
+  <stop offset="0.35" stop-color="#150D03" stop-opacity="0"/>
+  <stop offset="1" stop-color="#150D03" stop-opacity="0.46"/>
+</radialGradient>
+<linearGradient id="b_nah" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#150D03" stop-opacity="0"/>
+  <stop offset="1" stop-color="#150D03" stop-opacity="0.42"/>
+</linearGradient>
+<linearGradient id="b_kante" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#F2CB8E" stop-opacity="0.55"/>
+  <stop offset="1" stop-color="#F2CB8E" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="b_dachdunkel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#140D03" stop-opacity="0.62"/>
+  <stop offset="1" stop-color="#140D03" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="b_bodenS" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#241704" stop-opacity="0.5"/>
+  <stop offset="1" stop-color="#241704" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="b_boden" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#9C7136"/><stop offset="0.45" stop-color="#B98A4A"/>
+  <stop offset="1" stop-color="#8A6230"/>
+</linearGradient>
+<filter id="b_maserV" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.42 0.010" numOctaves="4" seed="7" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.42  0 0 0 0 0.27  0 0 0 0 0.10  0 0 0 0.40 0"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+<linearGradient id="b_korpus" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8A93A5"/><stop offset="0.22" stop-color="#5C6578"/>
+  <stop offset="0.62" stop-color="#39414F"/><stop offset="1" stop-color="#4E5766"/>
+</linearGradient>
+<linearGradient id="b_glas" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#C9D6E4" stop-opacity="0.85"/>
+  <stop offset="0.5" stop-color="#8C99AB" stop-opacity="0.7"/>
+  <stop offset="1" stop-color="#B7C4D4" stop-opacity="0.8"/>
+</linearGradient>
+<radialGradient id="b_lampenglasAn" cx="0.42" cy="0.5" r="0.6">
+  <stop offset="0" stop-color="#FFFDF2"/><stop offset="0.42" stop-color="#FFE9A8"/>
+  <stop offset="1" stop-color="#EFC069"/>
+</radialGradient>
+
+<!-- t_wand | Bretterwand von innen, senkrechte Bretter | 900 x 420 | Anker: obere linke Ecke -->
+<g id="t_wand">
+  <rect x="0" y="0" width="900" height="420" fill="#33240E"/>
+  <g filter="url(#b_maserV)">
+    <rect x="-8"  y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="84"  y="0" width="86" height="420" fill="url(#holzHell)"/>
+    <rect x="176" y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="176" y="0" width="86" height="420" fill="#2A1C08" opacity="0.06"/>
+    <rect x="268" y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="360" y="0" width="86" height="420" fill="url(#holzHell)"/>
+    <rect x="452" y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="544" y="0" width="86" height="420" fill="url(#holzHell)"/>
+    <rect x="544" y="0" width="86" height="420" fill="#2A1C08" opacity="0.05"/>
+    <rect x="636" y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="728" y="0" width="86" height="420" fill="url(#holz)"/>
+    <rect x="728" y="0" width="86" height="420" fill="#2A1C08" opacity="0.07"/>
+    <rect x="820" y="0" width="86" height="420" fill="url(#holzHell)"/>
+  </g>
+  <g>
+    <rect x="-8"  y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="73"  y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="84"  y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="165" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="176" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="257" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="268" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="349" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="360" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="441" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="452" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="533" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="544" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="625" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="636" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="717" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="728" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+    <rect x="809" y="0" width="5" height="420" fill="#2A1C08" opacity="0.22"/>
+    <rect x="820" y="0" width="4" height="420" fill="#FFFFFF" opacity="0.10"/>
+  </g>
+  <rect x="0" y="0" width="900" height="420" fill="#2C1C07" opacity="0.38"/>
+  <rect x="0" y="0" width="900" height="240" fill="url(#b_dachdunkel)"/>
+  <rect x="0" y="0" width="900" height="420" fill="url(#b_wandEcken)"/>
+</g>
+
+<!-- t_querbalken | waagerechter Balken quer durchs Bild | 928 x 46 | Anker: linke Kante Mitte -->
+<g id="t_querbalken">
+  <g filter="url(#weich)"><g filter="url(#maser)">
+    <rect x="0" y="-23" width="928" height="46" fill="url(#holz)"/>
+  </g></g>
+  <rect x="0" y="-23" width="928" height="6" fill="#FFFFFF" opacity="0.22"/>
+  <rect x="0" y="15"  width="928" height="8" fill="#2A1C08" opacity="0.30"/>
+</g>
+
+<!-- t_boden | Bretterboden, waagerechte Bretter | 900 x 140 | Anker: obere linke Ecke -->
+<g id="t_boden">
+  <rect x="0" y="0" width="900" height="140" fill="url(#b_boden)"/>
+  <g filter="url(#maser)"><rect x="0" y="0" width="900" height="140" fill="url(#b_boden)"/></g>
+  <rect x="0" y="0" width="900" height="34" fill="url(#b_bodenS)"/>
+  <g>
+    <rect x="0" y="44"  width="900" height="3" fill="#2A1C08" opacity="0.52"/>
+    <rect x="0" y="47"  width="900" height="2" fill="#F2CB8E" opacity="0.40"/>
+    <rect x="0" y="96"  width="900" height="3" fill="#2A1C08" opacity="0.52"/>
+    <rect x="0" y="99"  width="900" height="2" fill="#F2CB8E" opacity="0.40"/>
+  </g>
+  <ellipse cx="450" cy="30" rx="440" ry="30" fill="#1E1405" opacity="0.30" filter="url(#tiefe)"/>
+  <rect x="0" y="70" width="900" height="70" fill="url(#b_nah)"/>
+</g>
+
+<!-- t_kiste | Holzkiste von schraeg vorn | 320 x 230 | Anker: Standflaeche Mitte -->
+<g id="t_kiste">
+  <ellipse cx="6" cy="2" rx="176" ry="18" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <g filter="url(#weich)">
+    <!-- Deckel -->
+    <g filter="url(#maser)"><polygon points="-160,-196 132,-196 160,-172 -132,-172" fill="url(#holzHell)"/></g>
+    <!-- Front -->
+    <g filter="url(#maser)"><rect x="-132" y="-172" width="292" height="172" fill="url(#holz)"/></g>
+    <!-- Seite links -->
+    <g filter="url(#maser)"><polygon points="-160,-196 -132,-172 -132,0 -160,-22" fill="url(#holz)"/></g>
+  </g>
+  <polygon points="-160,-196 -132,-172 -132,0 -160,-22" fill="#241704" opacity="0.30"/>
+  <!-- Brettfugen der Front -->
+  <g>
+    <rect x="-132" y="-172" width="292" height="4" fill="#FFFFFF" opacity="0.22"/>
+    <rect x="-132" y="-118" width="292" height="3" fill="#2A1C08" opacity="0.34"/>
+    <rect x="-132" y="-115" width="292" height="2" fill="#F2CB8E" opacity="0.26"/>
+    <rect x="-132" y="-62"  width="292" height="3" fill="#2A1C08" opacity="0.34"/>
+    <rect x="-132" y="-59"  width="292" height="2" fill="#F2CB8E" opacity="0.26"/>
+    <rect x="-132" y="-4"   width="292" height="4" fill="#2A1C08" opacity="0.42"/>
+  </g>
+  <!-- Eckleisten -->
+  <g filter="url(#maser)">
+    <rect x="-132" y="-172" width="20" height="172" fill="url(#holzHell)"/>
+    <rect x="140"  y="-172" width="20" height="172" fill="url(#holzHell)"/>
+  </g>
+  <rect x="-132" y="-172" width="4" height="172" fill="#FFFFFF" opacity="0.24"/>
+  <rect x="156"  y="-172" width="4" height="172" fill="#2A1C08" opacity="0.26"/>
+  <!-- Deckelkanten -->
+  <polygon points="-160,-196 132,-196 132,-190 -160,-190" fill="#FFFFFF" opacity="0.22"/>
+  <polygon points="-132,-176 160,-176 160,-172 -132,-172" fill="#2A1C08" opacity="0.28"/>
+  <!-- Astloch -->
+  <ellipse cx="34" cy="-96" rx="11" ry="7" fill="#3A2711" opacity="0.65"/>
+  <ellipse cx="34" cy="-98" rx="7" ry="4" fill="#241704" opacity="0.5"/>
+</g>
+
+<!-- t_brett | einzelnes Brett, liegend | 400 x 62 | Anker: Mitte -->
+<g id="t_brett">
+  <ellipse cx="8" cy="26" rx="206" ry="14" fill="#241704" opacity="0.30" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)"><g filter="url(#maser)">
+    <rect x="-200" y="-31" width="400" height="62" rx="4" fill="url(#holzHell)"/>
+  </g></g>
+  <rect x="-200" y="-31" width="400" height="6" rx="3" fill="#FFFFFF" opacity="0.26"/>
+  <rect x="-200" y="23"  width="400" height="8" fill="#2A1C08" opacity="0.26"/>
+  <rect x="-200" y="-31" width="5" height="62" fill="#FFFFFF" opacity="0.12"/>
+  <rect x="195"  y="-31" width="5" height="62" fill="#2A1C08" opacity="0.20"/>
+</g>
+
+<!-- t_brettchen | kleines helles Brettchen fuer den Schalter | 230 x 140 | Anker: Mitte -->
+<g id="t_brettchen">
+  <ellipse cx="8" cy="62" rx="122" ry="16" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)"><g filter="url(#maser)">
+    <rect x="-115" y="-70" width="230" height="140" rx="7" fill="url(#holzHell)"/>
+  </g></g>
+  <rect x="-115" y="-70" width="230" height="7" rx="3" fill="#FFFFFF" opacity="0.30"/>
+  <rect x="-115" y="62"  width="230" height="8" rx="3" fill="#2A1C08" opacity="0.24"/>
+  <rect x="-115" y="-70" width="6" height="140" fill="#FFFFFF" opacity="0.14"/>
+  <rect x="109"  y="-70" width="6" height="140" fill="#2A1C08" opacity="0.18"/>
+</g>
+
+<!-- t_balken | Vierkantbalken in Perspektive, nah unten rechts | 760 x 200 | Anker: Mitte -->
+<g id="t_balken">
+  <g filter="url(#weich)">
+    <!-- Oberseite -->
+    <g filter="url(#maser)"><polygon points="-380,-14 300,-96 380,-74 -300,36" fill="url(#holzHell)"/></g>
+    <!-- Seitenflaeche -->
+    <g filter="url(#maser)"><polygon points="-300,36 380,-74 380,-16 -300,100" fill="url(#holz)"/></g>
+  </g>
+  <polygon points="-300,36 380,-74 380,-16 -300,100" fill="#241704" opacity="0.24"/>
+  <polygon points="-380,-14 300,-96 302,-90 -378,-8" fill="#FFFFFF" opacity="0.20"/>
+  <polygon points="-300,32 380,-78 380,-72 -300,38" fill="#F2CB8E" opacity="0.32"/>
+  <polygon points="-300,94 380,-20 380,-16 -300,100" fill="#2A1C08" opacity="0.42"/>
+  <!-- Saegespuren quer -->
+  <g stroke="#7A5426" stroke-width="1.4" opacity="0.22">
+    <path d="M-180,10 L-160,-22"/><path d="M-40,-12 L-20,-44"/><path d="M110,-36 L130,-66"/>
+    <path d="M250,-60 L270,-88"/>
+  </g>
+  <!-- zwei Astloecher -->
+  <ellipse cx="-90" cy="-8" rx="13" ry="6" fill="#3A2711" opacity="0.55" transform="rotate(-9 -90 -8)"/>
+  <ellipse cx="196" cy="-54" rx="10" ry="5" fill="#3A2711" opacity="0.5" transform="rotate(-9 196 -54)"/>
+</g>
+
+<!-- t_luke_zu | Fensterluke mit quer davor genageltem Brett | 260 x 220 | Anker: Mitte -->
+<g id="t_luke_zu">
+  <rect x="-130" y="-110" width="260" height="220" rx="4" fill="#0C0904"/>
+  <rect x="-130" y="-110" width="260" height="220" rx="4" fill="none" stroke="#2A1C08" stroke-width="7"/>
+  <!-- Lichtspalt ringsum -->
+  <rect x="-124" y="-104" width="248" height="208" rx="3" fill="none" stroke="#8FA8CC" stroke-width="3" stroke-opacity="0.5"/>
+  <!-- Brett davor -->
+  <g filter="url(#kontakt)"><g filter="url(#maser)">
+    <rect x="-150" y="-32" width="300" height="64" rx="4" fill="url(#holz)" transform="rotate(-4)"/>
+  </g></g>
+  <g transform="rotate(-4)">
+    <rect x="-150" y="-32" width="300" height="6" fill="#FFFFFF" opacity="0.20"/>
+    <rect x="-150" y="24"  width="300" height="8" fill="#2A1C08" opacity="0.34"/>
+  </g>
+  <circle cx="-108" cy="-4" r="6" fill="url(#stahl)"/><ellipse cx="-110" cy="-7" rx="2.6" ry="1.7" fill="url(#glanz)"/>
+  <circle cx="112"  cy="-20" r="6" fill="url(#stahl)"/><ellipse cx="110" cy="-23" rx="2.6" ry="1.7" fill="url(#glanz)"/>
+</g>
+
+<!-- t_luke_offen | offene Luke, Blick auf Lichtung und Tageshimmel | 260 x 220 | Anker: Mitte -->
+<g id="t_luke_offen">
+  <defs><linearGradient id="b_ausblick" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#BFD8EC"/><stop offset="0.52" stop-color="#DDEAF2"/>
+    <stop offset="0.53" stop-color="#8FB362"/><stop offset="1" stop-color="#4F7134"/>
+  </linearGradient></defs>
+  <rect x="-130" y="-110" width="260" height="220" rx="4" fill="url(#b_ausblick)"/>
+  <g opacity="0.55">
+    <path d="M-96,4 q-6,-52 -22,-78 q22,16 34,78 z" fill="#3E5B29"/>
+    <path d="M60,10 q10,-46 34,-70 q-14,26 -18,70 z" fill="#3E5B29"/>
+  </g>
+  <rect x="-130" y="-110" width="260" height="220" rx="4" fill="none" stroke="#2A1C08" stroke-width="8"/>
+  <rect x="-126" y="-106" width="252" height="10" fill="#241704" opacity="0.42"/>
+</g>
+
+<!-- t_lampe_aus | Taschenlampe, waagerecht, Glas rechts | 300 x 70 | Anker: Mitte -->
+<g id="t_lampe_aus">
+  <ellipse cx="-30" cy="26" rx="128" ry="12" fill="#241704" opacity="0.32" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-150" y="-16" width="16" height="32" rx="8" fill="url(#b_korpus)"/>
+    <rect x="-140" y="-18" width="152" height="36" rx="13" fill="url(#b_korpus)"/>
+    <rect x="-58"  y="-26" width="32" height="13" rx="6.5" fill="#39424F"/>
+    <polygon points="12,-19 44,-31 68,-31 68,31 44,31 12,19" fill="url(#stahl)"/>
+    <rect x="63" y="-31" width="9" height="62" rx="4.5" fill="url(#blech)"/>
+    <ellipse cx="70" cy="0" rx="8.5" ry="28" fill="url(#b_glas)"/>
+  </g>
+  <ellipse cx="70" cy="0" rx="8.5" ry="28" fill="none" stroke="#6E7887" stroke-width="2.4" stroke-opacity="0.8"/>
+  <g fill="#171C25" opacity="0.42">
+    <rect x="-134" y="-18" width="4" height="36"/><rect x="-126" y="-18" width="4" height="36"/>
+    <rect x="-118" y="-18" width="4" height="36"/>
+  </g>
+  <rect x="2" y="-18" width="5" height="36" fill="#171C25" opacity="0.35"/>
+  <ellipse cx="-66" cy="13"  rx="66" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-76" cy="-10" rx="50" ry="6" fill="url(#glanz)"/>
+  <ellipse cx="40"  cy="-17" rx="20" ry="6" fill="url(#glanz)"/>
+  <ellipse cx="40"  cy="22"  rx="22" ry="6" fill="url(#stahlWarm)" opacity="0.45"/>
+  <rect x="-56" y="-24" width="24" height="4" rx="2" fill="#FFFFFF" opacity="0.24"/>
+</g>
+
+<!-- t_lampe_an | dieselbe Lampe eingeschaltet, Glas leuchtet | 300 x 70 | Anker: Mitte -->
+<g id="t_lampe_an">
+  <ellipse cx="80" cy="0" rx="52" ry="52" fill="url(#warmSchein)" filter="url(#schein)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-150" y="-16" width="16" height="32" rx="8" fill="url(#b_korpus)"/>
+    <rect x="-140" y="-18" width="152" height="36" rx="13" fill="url(#b_korpus)"/>
+    <rect x="-58"  y="-26" width="32" height="13" rx="6.5" fill="#39424F"/>
+    <polygon points="12,-19 44,-31 68,-31 68,31 44,31 12,19" fill="url(#stahl)"/>
+    <rect x="63" y="-31" width="9" height="62" rx="4.5" fill="url(#blech)"/>
+  </g>
+  <ellipse cx="70" cy="0" rx="8.5" ry="28" fill="url(#b_lampenglasAn)"/>
+  <ellipse cx="70" cy="0" rx="8.5" ry="28" fill="none" stroke="#8A7A54" stroke-width="2.2" stroke-opacity="0.7"/>
+  <ellipse cx="70" cy="0" rx="5" ry="19" fill="#FFFDF2" opacity="0.9"/>
+  <g fill="#171C25" opacity="0.42">
+    <rect x="-134" y="-18" width="4" height="36"/><rect x="-126" y="-18" width="4" height="36"/>
+    <rect x="-118" y="-18" width="4" height="36"/>
+  </g>
+  <rect x="2" y="-18" width="5" height="36" fill="#171C25" opacity="0.35"/>
+  <ellipse cx="-66" cy="13"  rx="66" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-76" cy="-10" rx="50" ry="6" fill="url(#glanz)"/>
+  <ellipse cx="40"  cy="-17" rx="20" ry="6" fill="url(#glanz)"/>
+  <rect x="-56" y="-24" width="24" height="4" rx="2" fill="#FFFFFF" opacity="0.24"/>
+</g>
+
+<!-- t_waescheklammer | Holz-Waescheklammer, Maul oben | 42 x 112 | Anker: unten Mitte -->
+<g id="t_waescheklammer">
+  <g filter="url(#kontakt)">
+    <g filter="url(#maser)">
+      <path d="M -17,0 L -13,-64 L -19,-104 L -7,-108 L -3,-66 L -3,0 Z" fill="url(#holzHell)"/>
+      <path d="M 3,0 L 3,-66 L 7,-108 L 19,-104 L 13,-64 L 17,0 Z" fill="url(#holzHell)"/>
+    </g>
+  </g>
+  <path d="M -17,0 L -13,-64 L -19,-104 L -15,-105 L -10,-66 L -12,0 Z" fill="#FFFFFF" opacity="0.20"/>
+  <path d="M 10,0 L 12,-66 L 17,-105 L 19,-104 L 13,-64 L 17,0 Z" fill="#2A1C08" opacity="0.24"/>
+  <!-- Metallfeder -->
+  <g filter="url(#kontakt)">
+    <path d="M -13,-58 C -20,-52 -20,-40 -12,-36 L 12,-36 C 20,-40 20,-52 13,-58"
+          fill="none" stroke="url(#stahl)" stroke-width="5"/>
+    <circle cx="0" cy="-47" r="8" fill="none" stroke="url(#stahl)" stroke-width="5"/>
+  </g>
+  <path d="M -13,-58 C -19,-53 -19,-44 -13,-40" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.5"/>
+  <ellipse cx="-3" cy="-51" rx="4" ry="2.6" fill="url(#glanz)"/>
+</g>
+
+<!-- t_flaeche_holz | Holzflaeche von schraeg oben, fuellt die ganze Karte, Bretter quer
+     | 900 x 540 | Anker: obere linke Ecke -->
+<g id="t_flaeche_holz">
+  <rect x="0" y="0" width="900" height="540" fill="url(#b_boden)"/>
+  <g filter="url(#maser)"><rect x="0" y="0" width="900" height="540" fill="url(#b_boden)"/></g>
+  <g>
+    <rect x="0" y="86"  width="900" height="3" fill="#2A1C08" opacity="0.46"/>
+    <rect x="0" y="89"  width="900" height="2" fill="#F2CB8E" opacity="0.34"/>
+    <rect x="0" y="228" width="900" height="3" fill="#2A1C08" opacity="0.46"/>
+    <rect x="0" y="231" width="900" height="2" fill="#F2CB8E" opacity="0.34"/>
+    <rect x="0" y="374" width="900" height="3" fill="#2A1C08" opacity="0.46"/>
+    <rect x="0" y="377" width="900" height="2" fill="#F2CB8E" opacity="0.34"/>
+  </g>
+  <ellipse cx="196" cy="160" rx="15" ry="8" fill="#3A2711" opacity="0.42"/>
+  <ellipse cx="676" cy="304" rx="12" ry="6" fill="#3A2711" opacity="0.36"/>
+  <rect x="0" y="0" width="900" height="130" fill="url(#b_dachdunkel)" opacity="0.7"/>
+</g>
+
+<!-- t_handy | Smartphone, an etwas gelehnt, Bildschirm zeigt Nacht | 190 x 330 | Anker: unten Mitte -->
+<g id="t_handy">
+  <defs>
+    <linearGradient id="b_handyRand" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#6C7484"/><stop offset="0.5" stop-color="#3B4250"/>
+      <stop offset="1" stop-color="#242A36"/>
+    </linearGradient>
+    <linearGradient id="b_nachtfenster" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1226"/><stop offset="0.62" stop-color="#131C33"/>
+      <stop offset="1" stop-color="#080D1A"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="6" cy="2" rx="98" ry="13" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <g filter="url(#weich)">
+    <rect x="-88" y="-322" width="176" height="322" rx="18" fill="url(#b_handyRand)"/>
+  </g>
+  <rect x="-88" y="-322" width="176" height="322" rx="18" fill="none" stroke="#1A1F29" stroke-width="2.4" stroke-opacity="0.7"/>
+  <rect x="-84" y="-318" width="168" height="4" rx="2" fill="#FFFFFF" opacity="0.26"/>
+  <!-- Bildschirm: Nachtfenster mit ein paar Stadtlichtern -->
+  <rect x="-76" y="-306" width="152" height="290" rx="10" fill="url(#b_nachtfenster)"/>
+  <rect x="-58" y="-286" width="116" height="150" rx="4" fill="#06090F"/>
+  <rect x="-58" y="-286" width="116" height="150" rx="4" fill="none" stroke="#2C3A54" stroke-width="4"/>
+  <path d="M0,-286 v150" stroke="#2C3A54" stroke-width="4"/>
+  <g fill="#E7C87A">
+    <rect x="-44" y="-176" width="5" height="5" opacity="0.8"/><rect x="-30" y="-186" width="4" height="4" opacity="0.6"/>
+    <rect x="16" y="-180" width="5" height="5" opacity="0.75"/><rect x="34" y="-168" width="4" height="4" opacity="0.5"/>
+    <rect x="-16" y="-164" width="4" height="4" opacity="0.45"/><rect x="44" y="-190" width="4" height="4" opacity="0.55"/>
+  </g>
+  <rect x="-58" y="-136" width="116" height="12" fill="#0A0E18"/>
+  <ellipse cx="-30" cy="-268" rx="34" ry="26" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="0" cy="-312" r="4" fill="#141922"/>
+</g>

@@ -1,0 +1,164 @@
+[
+ {
+  "sim": "oersted",
+  "ueberschrift": "🧭 Kann elektrischer Strom eine Kompassnadel bewegen?",
+  "regler": [
+   {
+    "id": "oerI",
+    "beschriftung": "Stromstärke: 3,0 A",
+    "bereich": {
+     "min": "0",
+     "max": "5",
+     "step": "0.5",
+     "start": "3"
+    }
+   },
+   {
+    "id": "oerR",
+    "beschriftung": "Abstand Draht – Nadel: 2,0 cm",
+    "bereich": {
+     "min": "1",
+     "max": "5",
+     "step": "0.5",
+     "start": "2"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "⏻ Strom ausschalten",
+    "ruft": "_oerSchalter()"
+   },
+   {
+    "aufschrift": "⇄ umpolen",
+    "ruft": "_oerUmpolen()"
+   },
+   {
+    "aufschrift": "↓ Nadel unter den Draht",
+    "ruft": "_oerSeite()"
+   }
+  ],
+  "hinweise": [
+   "Genau diesen Versuch machte Hans Christian Ørsted im Jahr 1820 – zufällig, während einer Vorlesung. Was er sah, war der Anfang von allem: Elektrizität und Magnetismus haben miteinander zu tun.",
+   "Die Nadel dreht sich nie ganz quer zum Draht. Sie stellt sich zwischen die beiden Felder, die auf sie wirken: das Erdfeld nach Norden und das Feld des Drahtes quer dazu. Sind beide gleich stark, steht sie genau in der Mitte – bei 45°.",
+   "Modellgrenze: Gerechnet wird mit einem unendlich langen, geraden Draht; ein kurzes Stück Kabel erzeugt weniger. Der Wert 20 µT für das Erdfeld gilt für Deutschland – am Äquator ist der waagerechte Anteil fast doppelt so groß, an den Polen fast null. Und in einem echten Klassenzimmer stören Eisenträger, Lautsprecher und Handys die Nadel zusätzlich.",
+   "B = 20 µT · I / r · tan(Ausschlag) = BDraht / BErde · das Feld läuft im Kreis um den Draht"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "oerStatus: Strom an: 3,0 A, Abstand 2,0 cm. | | Feld des Drahtes: B = 20 µT · 3,0 / 2,0 = 30,0 µT | Erdfeld (waagerecht): 20 µT | | Die Nadel stellt sich zwischen beide Felder. Wie weit sie sich dreht, sagt das Verhältnis: | 30,0 µT / 20 µT = 1,50 → Ausschlag 56,3° nach Osten. | | Der Strom fließt nach Norden, die Nadel liegt über dem Draht. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "⏻ Strom ausschalten",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "⇄ umpolen",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "↓ Nadel unter den Draht",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 0",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 0.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 1.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 2",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 2.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 3",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 4",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 4.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Stromstärke: 3,0 A = 1",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 1",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 1.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 2",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 2.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 3",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 3.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 4",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 4.5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   },
+   {
+    "einstellung": "Abstand Draht – Nadel: 2,0 cm = 5",
+    "text": "oerAn: ⏻ Strom einschalten  ||  oerSeite: ↑ Nadel über den Draht  ||  oerStatus: Strom aus. Die Nadel zeigt nach Norden – wie jeder Kompass. Nur das Erdfeld wirkt auf sie, und das sind rund 20 µT. | | Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht ohne Strom ist kein Magnet. | | Zwei Proben, die alles zeigen: Polt man den Strom um, schlägt die Nadel zur anderen Seite aus. Legt man den Kompass unter statt über den Draht – ebenfalls andersherum. Das Feld des Drahtes läuft also im Kreis um ihn herum."
+   }
+  ],
+  "bildtexte": [
+   "N",
+   "S",
+   "W",
+   "O",
+   "Strom an: 3,0 A",
+   "Draht über der Nadel · Strom nach Norden · Abstand 2,0 cm",
+   "Feld des Drahtes: 30,0 µT   ·   Ausschlag 56,3° nach Osten",
+   "Erdfeld waagerecht: 20 µT",
+   "Strom aus",
+   "Die Nadel zeigt nach Norden",
+   "Draht über der Nadel · Strom nach Süden · Abstand 2,0 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 2,0 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 1,0 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 1,5 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 2,5 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 3,0 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 3,5 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 4,0 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 4,5 cm",
+   "Draht unter der Nadel · Strom nach Süden · Abstand 5,0 cm"
+  ]
+ }
+]

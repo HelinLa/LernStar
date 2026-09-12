@@ -1,0 +1,211 @@
+{
+ "seite": {
+  "id": "fn12",
+  "quelle": "rk13+rk14",
+  "sim": "strahlenschutz",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Nours Schritt zurück",
+  "name": "Wie schützt man sich vor Strahlung?",
+  "fachwoerter_neu": [
+   "Dosisleistung H′ (µSv/h)",
+   "Dosis H (µSv)"
+  ],
+  "alltag": [
+   "Nour macht Praktikum in der Nuklearmedizin und bekommt ein Messgerät.",
+   "So ein Messgerät heißt Dosimeter. Daneben steht eine Bleiwand.",
+   "Die Dosisleistung H′ in µSv/h sagt, wie schnell Strahlung ankommt.",
+   "Die Dosis H in µSv sagt, wie viel zusammenkommt."
+  ],
+  "frage": "Was hilft mehr: ein Schritt zurück oder Blei?",
+  "predict": [
+   "Doppelter Abstand halbiert die Dosisleistung H′.",
+   "Doppelter Abstand senkt die Dosisleistung H′ auf ein Viertel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Abstand auf 50 cm und lies beide Zahlen ab.",
+   "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.",
+   "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.",
+   "Trage die Zahlen ein. „Aufenthaltsdauer“ bleibt auf 20 Minuten."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Was stellst du ein?",
+   "Dosisleistung H′ (µSv/h)",
+   "Dosis H in 20 Minuten (µSv)"
+  ],
+  "tabRows": [
+   [
+    "50 cm",
+    "370,8 µSv/h",
+    "123,6 µSv"
+   ],
+   [
+    "100 cm",
+    "",
+    ""
+   ],
+   [
+    "200 cm",
+    "",
+    ""
+   ],
+   [
+    "50 cm, 7 mm Blei",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Verdoppelst du den Abstand, sinkt die Dosisleistung H′ auf",
+    "loesung": "ein Viertel",
+    "post": "."
+   },
+   {
+    "pre": "7 mm Blei senken sie nur auf rund die",
+    "loesung": "Hälfte",
+    "post": ". Abstand schützt stärker als Blei."
+   }
+  ],
+  "wortbank": [
+   "ein Viertel",
+   "Hälfte",
+   "92,7 µSv/h",
+   "30,9 µSv"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Am Regler steht 50 cm, im Bild steht 0,50 m. Oben links steht „Dosisleistung: 370,8 µSv/h“, darunter „in 20 Minuten: 123,6 µSv“. Sprich H′ als „H Strich“, µSv/h als „Mikrosievert pro Stunde“."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo steht die kleinste Zahl?",
+    "optionen": [
+     "50 cm mit 7 mm Blei: 175,8 µSv/h.",
+     "50 cm ohne Blei: 370,8 µSv/h.",
+     "100 cm ohne Blei: 92,7 µSv/h."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 100 cm steht die Dosisleistung",
+      "loesung": "92,7 µSv/h",
+      "post": "."
+     },
+     {
+      "pre": "In 20 Minuten kommt die Dosis",
+      "loesung": "30,9 µSv",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum geht Nour zurück, statt hinter die Bleiwand zu gehen?",
+    "satzstarter": "Nour geht zurück, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Beide Zahlen stehen im Bild untereinander. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Nour geht zurück, weil dort nur 92,7 µSv/h stehen.",
+   "h3": "Fast fertig: Blei lässt 175,8 µSv/h übrig, 100 cm nur 92,7 µSv/h. Der Abstand hilft ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Dosisleistung im Bild ablesen.",
+   "Ich weiß: Doppelter Abstand heißt ein Viertel.",
+   "Ich kann sagen, warum Abstand stärker schützt als Blei."
+  ],
+  "zuhause": "Schreibe zuerst zwei Abstände auf, den zweiten doppelt so groß. Leuchte aus beiden auf ein Blatt und vergleiche die Lichtflecke.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Beide Felder zeigen dieselbe Quelle in derselben Ansicht, nur der Abstand ist verschieden. Aufbau in beiden Feldern von oben nach unten, jeweils auf derselben Höhe: (1) eine große Überschrift, links „Abstand 1 m“, rechts „Abstand 2 m“. (2) Am linken Rand jedes Feldes ein kleiner, VOLL AUSGEFÜLLTER dunkler Kreis mit der Beschriftung „Quelle“; beide Kreise sind exakt gleich groß und liegen in beiden Feldern auf derselben Höhe. (3) Auf halber Höhe ein waagerechter Maßpfeil mit deutlichen Endstrichen an BEIDEN Enden, der vom Rand des Kreises bis zur Fläche reicht, darüber die Beschriftung „1 m“ bzw. „2 m“; der rechte Maßpfeil ist sichtbar doppelt so lang wie der linke. (4) Am rechten Ende des Maßpfeils die Fläche, auf die die Strahlung trifft. Links: EIN einzelnes Quadrat, satt und gleichmäßig in einer kräftigen Farbe VOLL AUSGEFÜLLT, mit deutlicher Umrandung, darunter groß die Beschriftung „1 Feld“. Rechts: VIER Quadrate, als Block von zwei mal zwei dicht aneinandergelegt, jedes einzelne exakt so groß wie das Quadrat links, alle vier in derselben helleren Farbe VOLL AUSGEFÜLLT, mit deutlichen Trennlinien zwischen den vier Quadraten, darunter groß die Beschriftung „4 Felder“. Dass die vier Quadrate rechts einzeln genauso groß sind wie das eine links, ist die ganze Aussage des Bildes und muss auf einen Blick zu sehen sein; zeichne dafür alle fünf Quadrate mit exakt derselben Kantenlänge. (5) Unter beiden Feldern gemeinsam eine einzige große Textzeile: „Dieselbe Strahlung verteilt sich auf viermal so viel Fläche.“ Drei Fehler, die hier besonders drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – die Quadrate werden als satte, geschlossene Farbflächen gezeichnet, niemals als Schraffur, Punktraster, Linienbündel oder dünne Striche; ein schraffiertes Quadrat liest sich als Muster und nicht als Fläche, und genau die Fläche trägt hier die Aussage. ZWEITENS Nebenbilder – es gibt genau diese zwei Felder, kein drittes, keine kleinen Zusatzbilder am Rand, keine Lupenausschnitte, keine Legendenkästen. Ganz besonders nicht im Bild: Dosimeter, Bleiwand, Bleischürze, Bleiplatte, Bodenmarkierung, Präparateschrank, Krankenhaus, Personen und Warnzeichen – die Bleiwirkung und die Geschichte gehören auf die Textseite, nicht in dieses Bild. DRITTENS Strahlengänge ins Leere – aus der Quelle führen keine Strahlen, keine Pfeilbündel, keine Zickzacklinien, keine Blitze, keine gestrichelten Linien und keine Kegel hinaus; es fliegt nichts aus dem Bild hinaus, und keine Linie endet frei im Weißraum. Die einzigen Pfeile im ganzen Bild sind die beiden waagerechten Maßpfeile, und beide haben an jedem Ende einen Endstrich, der sie sichtbar begrenzt. Ebenfalls nicht im Bild: Kugeln, Kugelschalen, Kreisbögen um die Quelle, einzelne Teilchen als Punkte, Zahlenwerte in µSv/h oder µSv und alles, was man zählen könnte außer den fünf Quadraten. Keine anderen Zahlen als 1 m, 2 m, 1 Feld und 4 Felder. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn12",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation vier Zustände ein und lesen im Bild jeweils zwei Zahlen ab: die Dosisleistung H′ in µSv/h und die Dosis H, die in 20 Minuten ankommt, in µSv (50 cm ohne Blei → 370,8 µSv/h und 123,6 µSv · 100 cm → 92,7 und 30,9 · 200 cm → 23,2 und 7,72 · 50 cm mit 7 mm Blei → 175,8 und 58,6). Sie vergleichen die beiden Schutzwege am selben Ausgangswert 370,8 µSv/h: Der Schritt von 50 cm auf 100 cm lässt ein Viertel übrig, 7 mm Blei lassen rund die Hälfte übrig. Daraus formulieren sie die Regel: Abstand schützt stärker als Blei. Zweitens unterscheiden sie die beiden Größen: Die Dosisleistung sagt, wie schnell Strahlung ankommt, die Dosis sagt, wie viel zusammengekommen ist; der ganze Unterschied steckt im „/h“. Fachlicher Grund der Viertelung — nur für Sie, nicht als Rechnung auf der Schülerseite: Die Strahlung verteilt sich auf eine Kugelfläche, und die wächst mit dem Quadrat des Abstands. Auf der Seite steht dafür nur das Bild mit einem gegen vier gleich große Felder. NICHT Thema dieser Seite: die Zeit als dritter Schutzweg (siehe Datenlage 3) und die Frage, wie dick Blei sein müsste (freiwillige Zusatzaufgabe).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit einem gegen vier Feldern. Optional als Gegenprobe im Raum: eine Taschenlampe und ein Blatt Papier — der Lichtfleck aus doppelter Entfernung ist viermal so groß und sichtbar blasser. Kein Präparat, kein Schülerversuch mit Strahlung.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit den Bildbeschriftungen im Wortlaut. Karte „50 cm“: „0,50 m · Dosisleistung: 370,8 µSv/h · in 20 Minuten: 123,6 µSv.“ Karte „100 cm“ (das ist zugleich der Ausgangszustand der Simulation): „1,00 m · Dosisleistung: 92,7 µSv/h · in 20 Minuten: 30,9 µSv.“ Karte „200 cm“: „2,00 m · Dosisleistung: 23,2 µSv/h · in 20 Minuten: 7,72 µSv.“ Karte „50 cm mit 7 mm Blei“: „0,50 m · 7 mm Blei · Dosisleistung: 175,8 µSv/h · in 20 Minuten: 58,6 µSv.“ Auf allen vier Karten steht die Aufenthaltsdauer fest auf 20 Minuten — sie wird nicht verändert. Sagen Sie beim Vorlesen jedes Mal beide Einheiten mit: Mikrosievert pro Stunde für die Dosisleistung, Mikrosievert für die Dosis. Dazu als Tafelbild zwei gleich große Felder nebeneinander: links ein Punkt „Quelle“, ein Maßpfeil „1 m“ und EIN ausgefülltes Quadrat mit der Beschriftung „1 Feld“; rechts derselbe Punkt, ein doppelt so langer Maßpfeil „2 m“ und VIER gleich große Quadrate als Zweier-Block mit der Beschriftung „4 Felder“. Wichtig beim Tafelbild: Die vier Quadrate rechts müssen einzeln genauso groß sein wie das eine links — daran hängt der Merksatz. Zeichnen Sie keine Strahlen aus der Quelle heraus; das Bild lebt von den Flächen. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen. Als lebendiger Ersatz eignet sich die Taschenlampe: Lichtfleck aus 20 cm und aus 40 cm auf dasselbe Blatt, einmal umranden. Sagen Sie die Modellgrenze dazu: Licht wird von der Wand zurückgeworfen, die Simulation rechnet mit einer punktförmigen Quelle im Freien.",
+  "merksatz": [
+   "ein Viertel",
+   "Hälfte"
+  ],
+  "tabelle_erwartet": [
+   [
+    "100 cm",
+    "92,7 µSv/h",
+    "30,9 µSv"
+   ],
+   [
+    "200 cm",
+    "23,2 µSv/h",
+    "7,72 µSv"
+   ],
+   [
+    "50 cm, 7 mm Blei",
+    "175,8 µSv/h",
+    "58,6 µSv"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Alle drei Zahlen stehen am Bildschirm und sind nachgemessen. Bei 50 cm ohne Blei zeigt das Bild „Dosisleistung: 370,8 µSv/h“. Schiebt man das Blei auf 7 mm, steht dort „175,8 µSv/h“ — rund die Hälfte. Geht man stattdessen auf 100 cm zurück, steht dort „92,7 µSv/h“ — ein Viertel. 92,7 ist die kleinste der drei Zahlen, deshalb ist die dritte Option richtig. Wer die zweite Option ankreuzt, hat den Abstandsregler nicht bewegt; die Anzeige steht dann noch auf 370,8 µSv/h. Die Fehlvorstellung der Seite steht nicht in den Optionen, sondern im predict-Kasten („Doppelter Abstand halbiert die Dosisleistung H′“) — widerlegt wird sie von der zweiten Tabellenzeile.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil Blei nach dem stärkeren Schutz aussieht — schwer, dick, sichtbar. Die zwei Zahlen nebeneinander an die Tafel schreiben: 175,8 gegen 92,7. Welche ist kleiner?",
+    "Die zweite Option wird angekreuzt, weil der Abstandsregler nicht bewegt wurde und die Anzeige noch auf 370,8 steht. Gegenfrage: Auf welcher Zahl steht dein Abstandsregler gerade?",
+    "Die Zahlen werden nach ihrer Ziffernzahl verglichen: 92,7 hat drei Ziffern, 175,8 hat vier, 370,8 hat vier — daraus wird „92,7 ist am größten“. Die drei Zahlen untereinander schreiben lassen, Komma unter Komma.",
+    "Es wird gar nicht verstellt und der Ausgangszustand der Simulation (100 cm, 92,7 µSv/h) für die 50-cm-Zeile gehalten. Die Simulation startet bei 100 cm; das einmal gemeinsam am Beamer zeigen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "92,7 µSv/h",
+    "30,9 µSv"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird „92,7 µSv“ geschrieben: Dosisleistung und Dosis werden gleichgesetzt. Genau dieser Fehler ist der Grund, warum in jeder Tabellenzeile beide Zahlen nebeneinander stehen. Auf das Bild zeigen: oben steht „Dosisleistung: 92,7 µSv/h“, darunter „in 20 Minuten: 30,9 µSv“ — zwei verschiedene Zahlen.",
+    "Die Einheit fehlt („92,7“ statt „92,7 µSv/h“) oder das „/h“ wird weggelassen. Die Wortbank enthält beide Schreibweisen vollständig; einmal abschreiben lassen und laut mitsprechen: Mikrosievert pro Stunde — Mikrosievert.",
+    "Die Werte werden vertauscht: 30,9 in die erste, 92,7 in die zweite Lücke. Rückfrage: Welche Zahl ist größer? In einer ganzen Stunde kommt mehr an als in 20 Minuten.",
+    "Statt der 100-cm-Werte werden die Werte der Beispielzeile (370,8 und 123,6) eingesetzt, weil sie schon fertig dastehen. Der Satz nennt aber 100 cm."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour geht einen Schritt zurück, weil der Abstand mehr hilft als das Blei. Bei 50 cm zeigt das Bild 370,8 µSv/h. Mit 7 mm Blei sind es noch 175,8 µSv/h, das ist rund die Hälfte. Bei 100 cm sind es nur 92,7 µSv/h, also ein Viertel. Der Schritt zurück senkt die Dosisleistung stärker. Wichtig für die Korrektur: Verglichen werden die beiden Wege EINZELN, jeder für sich vom selben Ausgangswert 370,8 µSv/h aus. Die 92,7 µSv/h sind OHNE Blei gemessen; mit Blei UND 100 cm zeigt das Bild 43,9 µSv/h. Diese Zahl steht in keiner Tabellenzeile und wird nicht verlangt.",
+   "alternativen": [
+    "Kurzform mit zwei Zahlen: „weil bei 100 cm nur 92,7 µSv/h stehen und mit Blei noch 175,8 µSv/h“ — reicht für die volle Wertung.",
+    "Über die Regel begründet: „weil doppelter Abstand ein Viertel bringt und Blei nur die Hälfte“ — ohne Zahlen, aber mit dem richtigen Vergleich.",
+    "Ohne Zahlen, aber sachlich richtig: „weil der Abstand stärker schützt als die Bleiwand“ — hier eine Zahl nachfragen.",
+    "Zusatz mit der Dosis: „In 20 Minuten sind es dann nur noch 30,9 µSv statt 123,6 µSv.“ — richtig abgelesen und weiterführend, aber nicht verlangt.",
+    "Zusatz mit dem Bild: „Weil sich die Strahlung auf viermal so viel Fläche verteilt.“ — richtig und erwünscht, ersetzt aber den Zahlenvergleich nicht."
+   ],
+   "typische_fehler": [
+    "Es wird nur „weil Abstand besser ist“ geschrieben, ohne eine einzige Zahl. Nachfragen: Woran siehst du das am Bildschirm? Hilfe 2 gibt die Zahl 92,7 µSv/h vor.",
+    "Das Blei wird für nutzlos erklärt („Blei bringt gar nichts“). Das ist falsch: 175,8 statt 370,8 ist die halbe Dosisleistung. Beides gilt — Blei hilft, Abstand hilft mehr.",
+    "Es wird über Angst oder Gefühl begründet („weil Strahlung gefährlich ist“). Zurückführen auf die Tabelle: Welche Zeile hat die kleinste Zahl?",
+    "Das Blei wird durch den Abstand ERSETZT („dann braucht sie die Wand nicht mehr“). Die Aufgabe stellt die beiden Wege nur zum Vergleich nebeneinander; im Raum wirken sie zusammen. Die Wand bleibt stehen, Nour geht nur weiter weg: bei 100 cm mit 7 mm Blei zeigt das Bild 43,9 µSv/h — noch einmal deutlich weniger als 92,7 µSv/h.",
+    "Die Zeit wird als Begründung genommen („weil sie kürzer bleibt“). Die Aufenthaltsdauer stand die ganze Zeit auf 20 Minuten und wurde nicht untersucht."
+   ]
+  },
+  "hilfe3_wort": "mehr (auch richtig: stärker, besser)",
+  "schwache": [
+   "Vorher gemeinsam üben, was bedient wird: Es gibt genau DREI Regler („Abstand“, „Blei dazwischen“, „Aufenthaltsdauer“) und keinen einzigen Knopf. Für diese Seite werden nur die ersten beiden gebraucht; der dritte bleibt auf 20 Minuten stehen. Kleben Sie notfalls einen Papierstreifen über den Zeitregler.",
+   "Der Einheitenwechsel ist die größte Hürde der Seite: Am Regler steht „50 cm“, im Bild und in der Statuszeile steht dafür „0,50 m“. Wer die 50 sucht, findet sie nicht. Einmal gemeinsam einstellen und beide Stellen zeigen: Das ist dieselbe Entfernung, nur anders geschrieben.",
+   "Nur die zweite Tabellenspalte (Dosisleistung H′) ausfüllen lassen; die dritte Spalte gemeinsam an der Tafel eintragen. Danach die vier Zahlenpaare laut nebeneinander lesen: 370,8 und 123,6 — 92,7 und 30,9 — 23,2 und 7,72 — 175,8 und 58,6.",
+   "Die lange Statuszeile mit einem Papierstreifen abdecken und nur mit den drei Bildbeschriftungen arbeiten: Abstand, „Dosisleistung: … µSv/h“ und „in 20 Minuten: … µSv“. Sie stehen im Bild dicht beieinander und sind kurz.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen, jeweils vollständig mit Einheit. Danach fragen: Welcher Eintrag hat ein „/h“ dahinter, welcher nicht?",
+   "Wer beim Erklären nicht anfängt, stellt noch einmal 50 cm mit 7 mm Blei und danach 100 cm ohne Blei ein und liest beide Zahlen laut vor. Die zwei Zahlen an den Rand schreiben lassen und danach den Satzstarter benutzen.",
+   "„Dosisleistung“ ist ein langes Wort. Es einmal in zwei Teilen an die Tafel schreiben: Dosis + Leistung. Die Seite sagt durchgehend „Dosisleistung H′“, gesprochen „H Strich“; sagen Sie den Strich beim Vorlesen jedes Mal mit, sonst wird er überlesen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, beides nur einstellen und ablesen, nichts rechnen. (1) Wie dick müsste das Blei sein, damit es genauso viel bringt wie der Schritt zurück? Bleibe bei 50 cm und probiere 7 mm, 10 mm und 13 mm. Erwartet: 175,8 · 127,6 · 92,7 µSv/h. Antwort: Bei 13 mm steht dieselbe Zahl da wie bei 100 cm ohne Blei — 92,7 µSv/h. Dreizehn Millimeter Blei ersetzen also einen halben Meter Luft. (2) Geht es noch weiter? Stelle 300 cm ein. Erwartet: 10,3 µSv/h und 3,43 µSv in 20 Minuten. Nicht verlangt wird die Rechnung, wie viele Millimeter Blei das wären: Sie braucht zwei ungenannte Zwischenschritte („ein Viertel heißt zweimal halbieren“ und „2 mal 6,5 mm“) und liegt über A2 und B1. Die Werte 127,6 µSv/h für 10 mm und 92,7 µSv/h für 13 mm bei 50 cm sowie 10,3 µSv/h bei 300 cm sind am 05.09.2026 nachgemessen.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Strahlenschutz: Abstand, Abschirmung, Aufenthaltsdauer. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der vier Zustände trägt E4, das Ablesen und Gegenüberstellen der beiden Größen E5, der Vergleich der vier Zeilen UF3, die Erklär-Aufgabe zum Schritt zurück UF4 und B1 (eine Schutzmaßnahme begründet auswählen), die Vermutung zur Viertelung UF1. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag. Der Zuhause-Auftrag trägt E4 mit eigenem Planungsschritt: Er verlangt zuerst das Aufschreiben der zwei Abstände und erst danach das Leuchten; ohne diesen Schritt wäre er reines Durchführen (E5) und E4 fiele im Band aus. ERBSCHAFT: Diese Doppelseite übernimmt rk13 UND die gestrichene E-Kurs-Einheit rk14 (Seitenplan vom 05.09.2026). Fachwortzählung: neu sind genau ZWEI Wörter, „Dosisleistung H′ in µSv/h“ und „Dosis H in µSv“ — nach Zählregel 1 ist jede Größe samt Formelzeichen und Einheit EIN Fachwort. Beide sind im Alltagsteil mit einem Begriffssatz eingeführt (schnell / viel). Damit ist das Limit ausgeschöpft; bewusst NICHT eingeführt, weil es das dritte bis siebte Wort wäre: „Abschirmung“ (so heißt die Statuszeile; das Heft sagt durchgehend „Blei“, wie der Regler „Blei dazwischen“), „Halbwertsdicke“ (steht am Bildschirm, gehört aber nach Zählregel 4 zum Nachfolger von rk3 und wird hier durch „rund die Hälfte“ ersetzt), „Äquivalentdosis“, „Becquerel“, „Sievert“ und „Millisievert“. Zu „Sievert“: Der Bildschirm schreibt an keiner Stelle die nackte Einheit Sv, sondern immer µSv beziehungsweise µSv/h. Die Schülerseite nennt deshalb nur Mikrosievert; der Lückensatz des Regelhefts („ein Mikrosievert ist ein Millionstel Sievert“) entfällt, weil „Millionstel“ über A2 liegt und Sievert auf der Seite nirgends gebraucht wird. Nicht neu eingeführt und nur als Rückverweis benutzt: Strahlung und Gammastrahlung (fn3), Halbwertszeit (fn6). „Dosimeter“ zählt nach Zählregel 2 nicht mit: Gerätename mit Begriffssatz im Alltagsteil, steht weder in der Wortbank noch in einer Merksatz-Lücke. „Bleiwand“, „Abstand“ und „Aufenthaltsdauer“ zählen nach Zählregel 5 nicht mit: Alltags- und Bildschirmwörter ohne Formelzeichen und ohne Einheit. Die Schülerseite sagt durchgehend „Bleiwand“, und das ist auch das, was die Simulation zeichnet: eine Wand vor der Quelle, beschriftet „7 mm Blei“. Die „Schürze aus Blei“ aus fn3 ist ein anderes Schutzmittel und kommt auf dieser Seite nicht vor; die beiden Bezeichnungen dürfen nicht vermischt werden. Das Wort „Zeit“ steht auf der Schülerseite nirgends – sie sagt „Aufenthaltsdauer“, wie der Regler. Datenlage und Fallen: (1) NACHGEMESSEN am 05.09.2026 mit den simcheck-Werkzeugen (Regler stzR, stzD, stzT). Der Zustand „50 cm mit 7 mm Blei“ — die vierte Tabellenzeile — fehlte im simfakten-Dump: Als der Bleiregler an der Reihe war, stand der Abstand schon auf 2,75 m, alle Blei-Zustände des Dumps gehören deshalb zu 2,75 m. Gemessen zeigt das Bild bei 50 cm mit 7 mm Blei „Dosisleistung: 175,8 µSv/h“ und „in 20 Minuten: 58,6 µSv“. Damit ist die vierte Zeile belegt und die Behauptung des Regelhefts („mit 7 mm Blei bleibt knapp die Hälfte übrig“) bestätigt: 175,8 von 370,8. Ebenfalls nachgemessen: 50 cm mit 13 mm Blei ergibt 92,7 µSv/h und 30,9 µSv, 50 cm mit 10 mm Blei ergibt 127,6 µSv/h — beide Werte stehen nur in der freiwilligen Zusatzaufgabe. (2) ZWEI QUELLEN, EINE genommen: Bild und Statuszeile runden verschieden. Bei 200 cm steht im Bild „in 20 Minuten: 7,72 µSv“, in der Statuszeile „= 7,73 µSv“; bei 50 cm mit 7 mm Blei steht im Bild „175,8 µSv/h“, in der Statuszeile „175,76 µSv/h“. Die Seite nennt deshalb durchgehend NUR die drei Bildbeschriftungen (Abstand · Dosisleistung · in 20 Minuten), die ohnehin dicht beieinanderstehen und kurz sind. Die zweite Zahl steht nur hier. Erkennen Sie beide Schreibweisen als richtig an. Zur LAGE dieser drei Beschriftungen: Sie stehen NICHT nebeneinander, wie der simfakten-Dump notiert, sondern die beiden Anzeigezeilen untereinander oben links (dieselbe x-Stelle, y = 24 und y = 42) und der Abstand unten am Boden – am Renderer nachgeprüft. Das gelöste Beispiel („oben links … darunter“) und Hilfe 1 („untereinander“) geben das richtig wieder und sind NICHT zu ändern. (3) Der Zeit-Strang ist NICHT abfragbar und wird deshalb nicht gefragt: Alle Aufenthaltsdauer-Zustände des Dumps wurden bei 2,75 m mit 39 mm Blei aufgenommen (H′ = 0,20 µSv/h); bei 1 Minute meldet die Anzeige „0,00 µSv“ und in der Vergleichszeile den Anzeigefehler „rund —-mal kleiner“. Der Zeitregler bleibt auf 20 Minuten stehen, und die Zeitregel („doppelt so lange, doppelte Dosis“) steht nur in diesem Lehrerteil. (4) Die Statuszeile zeigt in Zeile 2 Potenzrechnung: „7 mm sind 1,08 Halbwertsdicken“ und „Übrig bleibt der Anteil 0,5 hoch 1,08 = 0,474“. Im simfakten-Dump ist die Hochstellung des Exponenten verlorengegangen; die Zeile darf von dort nicht abgeschrieben werden und liegt ohnehin weit über A2 und B1. Abgefragt wird aus Zeile 2 nichts; gelesen wird das Bild. (5) DIESELBE ZAHL ZWEIMAL: Ohne Blei nennen Statuszeile 1 und Statuszeile 2 beide 370,8 µSv/h. MIT Blei sind es zwei verschiedene Zahlen (370,8 in Zeile 1, 175,76 in Zeile 2); gültig ist die aus Zeile 2; im Bild steht dafür 175,8, und die Seite nimmt durchgehend das Bild. Auch das ist ein Grund, mit dem Bild zu arbeiten und nicht mit der Statuszeile — im Bild steht nur eine Zahl. (6) EINHEITENWECHSEL auf demselben Bildschirm: Der Regler steht in Zentimetern („Abstand: 100 cm“), Bild und Statuszeile rechnen in Metern („0,50 m“). Das gelöste Beispiel sagt es ausdrücklich, und es steht als erster Hinweis für schwache Lernende. (7) DER VERGLEICHSSATZ WIRD NICHT ABGEFRAGT. Unter jeder Dosis steht am Bildschirm ein Alltagsvergleich, aber er WECHSELT — und zwar nicht mit dem Abstand, sondern mit der DOSIS, also auch mit dem Blei. Am Renderer nachgerechnet: bis 65 cm nennt der Bildschirm die Röntgenaufnahme (100,0 µSv; bei 50 cm „rund 1,2-mal so groß“), ab 70 cm den Flug Frankfurt–New York (40,0 µSv; bei 70 cm „rund 1,6-mal so groß“). Schon bei 50 cm mit 7 mm Blei nennt der Bildschirm den Flug („rund 1,5-mal so groß“) — ausgerechnet in dem Zustand, den die Seite selbst einstellen lässt. Bei 20 cm erscheint sogar der Jahresgrenzwert in Millisievert. Ausgerechnet der schlechteste Abstand erschiene dort als harmlos, und mSv stünde neben µSv. Keine Aufgabe der Seite verlangt „den Vergleich“; wer ihn mitliest, liest richtig. Der Beurteilungsschritt des Kapitels (B2, eine gemessene Zahl gegen einen Alltagswert halten) liegt im Förderband bei fn13, der Datenblattseite zur Medizin. (8) 20 cm bleibt aus Tabelle und Aufgaben draußen (2317,5 µSv/h, Vergleichszeile in mSv). (9) DAS ZEICHEN H′: Der Strich ist U+2032 (PRIME). Er ist in allen drei Schnitten von SourceSans3 vorhanden und geprüft — als Apostroph oder Akzent darf er nicht gesetzt werden. Gesprochen wird „H Strich“; das steht im gelösten Beispiel und im Hinweis für schwache Lernende, sonst liest die Zielgruppe den Strich gar nicht mit. Ebenso einmal aussprechen: µ heißt Mikro. (10) UNDRUCKBARE ZEICHEN: Die Überschrift der Simulation trägt vor dem Wort ein Emoji, und die Zeichnung enthält das Strahlenwarnzeichen als Bildtext. Für beide hat SourceSans3 keine Glyphe; sie werden nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Der Mittelpunkt · und das Hochzwei ² aus der Statuszeile sind dagegen geprüft vorhanden. (11) VORWISSEN: Die Seite setzt aus fn3 voraus, dass Gammastrahlung nur abgeschwächt, nie ganz gestoppt wird. Fehlt das, gilt „ein Rest kommt immer durch“ als Widerspruch zu „Blei schützt“. Ein Rückverweissatz im Unterrichtsgespräch genügt. Die Modellgrenze der Simulation gehört dazu: Gerechnet wird nur mit der Gammastrahlung von Cäsium-137; Alpha- und Betastrahlung hielten schon Luft und ein Blatt Papier auf, für sie stimmt keine dieser Zahlen. (12) BEWUSST OFFEN GELASSEN: Die Betreuungsfigur der Klinik ist im Ausgangsheft uneinheitlich — rk12 schreibt „Ihre Betreuerin“, rk13 „Der Medizinphysiker“. Solange der Figurenkanon des Bandes nicht festgelegt ist, kommt auf dieser Schülerseite KEINE Betreuungsperson vor; Nour handelt allein. Sobald Abdullah eine Figur benennt, kann sie hier und in fn11 und fn13 gleichlautend ergänzt werden. Ebenfalls offen und deshalb nicht verlangt: was die Simulation zeigt, wenn Blei und Abstand gleichzeitig auf Zwischenwerte gestellt werden, die nicht nachgemessen sind (der Bleiregler läuft in Millimeterschritten, der Abstandsregler in Fünferschritten)."
+ }
+}

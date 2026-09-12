@@ -1,0 +1,20 @@
+{
+  "name": "arbeitsheft",
+  "version": "1.0.0",
+  "description": "Erzeugt das Forscherheft Physik Klasse 5 (106 Seiten, 6 Kapitel) fuer die Realschule NRW. Die Einstiegsbilder werden aus svg/bauteile.svg zusammengesetzt (node bau.js), die Seiten aus content/*.json gesetzt (python3 build_book.py).",
+  "main": "index.js",
+  "scripts": {
+    "bilder": "node bau.js",
+    "bilder:pruefen": "node bau.js --pruefen",
+    "bilder:teile": "node bau.js --teile",
+    "bilder:blatt": "node bau.js --blatt",
+    "heft": "python3 build_book.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}

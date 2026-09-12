@@ -1,0 +1,55 @@
+{
+ "id": "gw4",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Zwei Kugeln, zwei Auftragungen",
+ "problem": "Für „Jugend forscht“ suchen Mira und Tobias eine Formel für die Anziehung zwischen zwei Körpern. Tobias setzt auf die Masse: Die Sonne habe eben unvorstellbar viel Masse. Mira setzt auf den Abstand: Neptun werde von derselben Sonne gehalten, nur dreißigmal weiter draußen. Zwei Größen also – aber zählen beide gleich viel?",
+ "frage": "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
+ "auftrag": "Bestimme unter Variablenkontrolle aus einer Messreihe, in welcher Auftragung die Messpunkte auf einer Ursprungsgeraden liegen, und rechne aus deren Steigung die Verhältniszahl der Simulation zurück.",
+ "predict": [
+  "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur noch ein Viertel – der Abstand zählt stärker.",
+  "Masse und Abstand zählen gleich viel: Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Ziehe die Regler „Masse der linken Kugel“ und „Masse der rechten Kugel“ auf 5; das Statusfeld meldet dann 200,0 Einheiten. Wähle „F über r auftragen“, drücke „Messreihe automatisch aufnehmen“ und lies in der Wertetabelle für jede der fünf Zeilen r, 1/r² und F ab. Lies daneben, warum das Auswertungsfeld hier keine Ausgleichsgerade zeichnet.",
+  "Wähle „F über 1/r² auftragen“, ohne an der Tabelle etwas zu ändern. Notiere die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R², die daneben stehende erwartete Steigung und die Zeile „Verhältniszahl der Simulation aus der Steigung k“. Wähle danach „F über m₁·m₂/r² auftragen“ und halte die dortige Steigung gegen diese Verhältniszahl.",
+  "Drücke „Tabelle leeren“, bestätige die Rückfrage, stelle den Regler „Abstand“ auf 2 und lass „Masse der rechten Kugel“ auf 5 stehen. Wähle „F über m₁ auftragen“, nimm mit „Messreihe automatisch aufnehmen“ die zweite Reihe auf und prüfe am Ergebniskasten, ob die aus der Steigung zurückgerechnete Masse der rechten Kugel zu deiner Reglerstellung passt."
+ ],
+ "tabCols": [
+  "Gewählte Auftragung",
+  "Punkte, Steigung k, R², Rückrechnung"
+ ],
+ "tabRows": [
+  "F über r · Massen 5 und 5",
+  "F über 1/r² · dieselbe Messreihe",
+  "F über m₁·m₂/r² · dieselbe Reihe",
+  "F über m₁ · zweite Reihe, Abstand 2"
+ ],
+ "fachtext": "Aus einer Messreihe wird eine Formel, indem man sie so aufträgt, dass eine Ursprungsgerade entsteht – erst deren Steigung ist eine Zahl, mit der sich weiterrechnen lässt. Über dem Abstand r gelingt das nicht: Die Punkte fallen erst steil, dann immer flacher, und an eine Kurve lässt sich keine Steigung anlegen. Der Ausweg heißt Linearisieren. Man rechnet zu jedem Messwert 1/r² aus und trägt F über dieser Größe auf; nun liegen dieselben Punkte auf einer Geraden durch den Ursprung. Damit ist F ~ 1/r² gemessen und nicht behauptet. Die Steigung k hängt noch von den beiden festgehaltenen Massen ab; teilt man sie durch m₁ · m₂, bleibt eine Zahl übrig, die für jede Messreihe dieselbe ist – die Verhältniszahl. Rückwärts gelesen heißt das k = 8 · m₁ · m₂. Hält man dagegen Abstand und zweite Masse fest, liegt F über m₁ ohne jede Umrechnung auf einer Ursprungsgeraden mit k = 8 · m₂ / r²; auch daraus lässt sich eine Größe zurückgewinnen, nämlich m₂. Beides zusammen ergibt F ~ m₁ · m₂ / r². Trägt man F über m₁ · m₂ / r² auf, steht die Verhältniszahl unmittelbar als Steigung da; dass dort auch Reihen mit ganz anderen Massen auf dieselbe Gerade fallen, zeigt sich erst, wenn man sie nebeneinander aufnimmt. In der Natur steht an ihrer Stelle die Gravitationskonstante G; die Simulation kennt sie nicht, weil sie in Einheiten statt in Newton zählt.",
+ "merksatz": [
+  {
+   "pre": "Aus der Kurve wird eine Gerade, sobald man F nicht über r, sondern über",
+   "loesung": "1/r²",
+   "post": "aufträgt."
+  },
+  {
+   "pre": "Die Steigung dieser Ursprungsgeraden ist k =",
+   "loesung": "8·m₁·m₂",
+   "post": "; durch m₁ · m₂ geteilt, ergibt sie für jede Messreihe dieselbe Verhältniszahl."
+  }
+ ],
+ "beobachtung": "Bei beiden Massen 5 meldet das Statusfeld 200,0 Einheiten – das 25,00-Fache des Ausgangswerts (8). „Messreihe automatisch aufnehmen“ legt fünf Zeilen an: r = 1 mit 1/r² = 1,0000 und F = 200,00 Einheiten, r = 2 mit 0,2500 und 50,00, r = 3 mit 0,1111 und 22,22, r = 4 mit 0,0625 und 12,50, r = 5 mit 0,0400 und 8,00. Über r liegen diese Punkte auf einer fallenden Kurve; das Auswertungsfeld zeichnet dort ausdrücklich keine Ausgleichsgerade, weil sich aus einer Kurve keine Steigung ablesen lässt. Über 1/r² steht dagegen „m₁ = 5 kg, m₂ = 5 kg · 5 Messwerte“, dazu y = 200,000·x, R² = 1,0000 und „erwartet: 200,000“. Der Ergebniskasten rechnet zurück: k / (m₁ · m₂) = 200,000 / 25 = 8,000 Einheiten je kg², Abweichung 0,00 %. In der Auftragung „F über m₁·m₂/r² auftragen“ liegt dieselbe Reihe auf y = 8,000·x – dort ist die Steigung unmittelbar die Verhältniszahl. Nach „Tabelle leeren“, Abstand 2 und der Reihe über m₁ enthält die Tabelle 10,00, 20,00, 30,00, 40,00 und 50,00 Einheiten, alle mit 1/r² = 0,2500; die Ausgleichsgerade lautet y = 10,000·x bei erwarteten 10,000, und der Ergebniskasten liefert m₂ = k · r² / 8 = 10,000 · 4 / 8 = 5,000 kg – genau die Stellung des Reglers „Masse der rechten Kugel“.",
+ "aufgabe": {
+  "frage": "Berechne mit der Steigung k = 200,000 Einheiten der Geraden über 1/r², welche Anziehung bei Abstand 10 zu erwarten wäre, und begründe, warum sich dieser Messpunkt in der Simulation nicht aufnehmen lässt.",
+  "zeilen": 4,
+  "komp": "S7",
+  "afb": "II",
+  "loesung": "Auf der Ursprungsgeraden gilt F = k · 1/r². Für r = 10 ist 1/r² = 1/100 = 0,0100, also F = 200,000 Einheiten · 0,0100 = 2,00 Einheiten. Zur Probe reicht die letzte Tabellenzeile: Bei r = 5 stehen dort 8,00 Einheiten, der doppelte Abstand bringt ein Viertel davon, und 8,00 : 4 = 2,00 Einheiten. Aufnehmen lässt sich dieser Punkt nicht, weil der Regler „Abstand“ bei 5 endet; r = 10 ist gar nicht einstellbar. Der Zahlenwert allein verrät das nicht: 2,00 Einheiten stehen sehr wohl in der Tabelle, sobald man m₁ = 1 kg, m₂ = 1 kg und r = 2 einstellt – ein Messpunkt ist erst durch alle drei Größen festgelegt. Die 2,00 Einheiten bei r = 10 sind deshalb eine Vorhersage aus der Ausgleichsgeraden, keine Messung, und sie gilt nur, solange die Gerade auch außerhalb des gemessenen Bereichs weiterläuft. Genau darin liegt der Gewinn der Linearisierung: Eine Gerade lässt sich verlängern, eine Kurve nicht ohne Weiteres."
+ },
+ "alltag": "Auf der Raumstation ISS ist der Abstand zum Erdmittelpunkt nur rund 1,06-mal so groß wie am Erdboden. Übertrage den Zusammenhang F ~ 1/r² auf diesen Fall und erkläre einer Person zu Hause in drei Sätzen, auf welchen Anteil der Anziehung das führt und warum ein größerer Abstand dort so wenig ausmacht.",
+ "alltagAfb": "II",
+ "alltagKomp": "K4",
+ "ueberleitung": "Die Steigung hat eine Verhältniszahl geliefert, keine Naturkonstante: Der Simulation fehlt das G, das aus dem Verhältnis eine Kraft in Newton macht, deshalb zählt sie in „Einheiten“. Auf der nächsten Seite wird aus der Anziehung ein Gewicht: Dieselbe Person bringt auf dem Mond eine andere Zahl auf die Waage, obwohl sich an ihr selbst nichts geändert hat – und du siehst, woran das liegt.",
+ "name": "Mehr Masse oder weniger Abstand – was wirkt stärker?",
+ "theme": "ef_gravitation"
+}

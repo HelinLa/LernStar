@@ -1,0 +1,72 @@
+{
+ "id": "ki11",
+ "komp": [
+  "S1",
+  "S6",
+  "S3",
+  "E6"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "In allen vier Einstellungen meldet die Zeile „Beim Lösen“ für F1 und F2 denselben Betrag von",
+   "loesung": "20,00 N",
+   "post": "."
+  },
+  {
+   "pre": "Weil beide Wagen denselben Kraftbetrag erfahren, folgt aus F = m · a: Die Beschleunigungen verhalten sich",
+   "loesung": "umgekehrt",
+   "post": "wie die Massen."
+  },
+  {
+   "pre": "Die gespannte Feder gibt die Höchstkraft über F = D · s0 vor; in dieser Beziehung steht",
+   "loesung": "keine Masse",
+   "post": "."
+  },
+  {
+   "pre": "Auch die Stoßdauer hängt von den Massen ab: Bei m1 = 5 kg und m2 = 5 kg zeigt die Simulation Δt =",
+   "loesung": "0,157 s",
+   "post": "; mit einem leichteren Wagen fällt sie kürzer aus."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Verdoppelt man m1 von 1 kg auf 2 kg, so halbiert sich der Betrag von a1 von 20,00 m/s² auf 10,00 m/s², während der Kraftbetrag bei 20,00 N bleibt.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Da F1 und F2 gleich groß und einander entgegengerichtet sind, bilden sie ein Kräftegleichgewicht; deshalb erfährt keiner der beiden Wagen eine Beschleunigung.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Zieht man m2 auf 1 kg, während m1 bei 5 kg bleibt, so steigt a2 auf +20,00 m/s², a1 bleibt bei -4,00 m/s², und die Stoßdauer sinkt von 0,157 s auf 0,091 s.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die Stoßdauer Δt fällt für die beiden Wagen verschieden aus, weil der leichtere Wagen die Feder früher verlässt als der schwerere.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira stößt sich auf dem Rollwagen an der Wand ab und rollt davon; die Wand bleibt unbewegt stehen. Tobias schließt daraus, gedrückt habe allein Mira. Welche Begründung widerlegt ihn?",
+  "optionen": [
+   "Auch die Wand drückt mit demselben Kraftbetrag zurück. Da in a = F/m die Masse im Nenner steht, fällt die Beschleunigung der ungleich größeren Masse unmerklich klein aus.",
+   "Die Wand drückt zwar ebenfalls, aber erst nach dem Abstoßen. Solange Mira sich abdrückt, wirkt allein ihre eigene Kraft, und nur diese setzt sie in Bewegung.",
+   "Die Wand leitet die Kraft vollständig ins Fundament ab. Auf Mira wirkt deshalb nur ihre eigene, nach hinten gerichtete Kraft, und diese treibt sie nach vorn."
+  ],
+  "richtig": 0,
+  "erklaerung": "Kräfte treten paarweise auf: Drückt Mira mit F auf die Wand, so drückt die Wand mit −F auf Mira. Die beiden Kräfte greifen an verschiedenen Körpern an und heben sich deshalb nicht auf; beschleunigt wird Mira allein durch die Kraft der Wand. Wie stark ein Körper dabei beschleunigt wird, entscheidet seine Masse: Bei demselben Kraftbetrag von 20,00 N zeigt die Simulation für 5 kg nur 4,00 m/s², für 1 kg dagegen 20,00 m/s². Die Wand hängt über das Fundament an der Erde; ihre Beschleunigung ist nach demselben Gesetz so klein, dass man sie nicht sieht – null ist sie nicht. Ein zeitliches Nacheinander gibt es ebenfalls nicht: Beide Kräfte des Paares bestehen zu jedem Zeitpunkt gleichzeitig. Und dass die Wand die Kraft ins Fundament ableitet, ändert nichts daran, dass sie Mira mit demselben Betrag zurückdrückt."
+ },
+ "offen": {
+  "frage": "Bei m1 = 1 kg und m2 = 5 kg zerlegt das Statusfeld die Federenergie 0,800 J in 0,667 J und 0,133 J, für die Impulssumme meldet es dagegen p1 + p2 = 0,000 kg·m/s. Erkläre, warum sich die beiden Impulse aufheben, die beiden Energien aber nicht, und begründe, welchem Wagen der größere Energieanteil zufällt.",
+  "prompt": "Bei m1 = 1 kg und m2 = 5 kg zerlegt das Statusfeld die Federenergie 0,800 J in 0,667 J und 0,133 J, für die Impulssumme meldet es dagegen p1 + p2 = 0,000 kg·m/s. Erkläre, warum sich die beiden Impulse aufheben, die beiden Energien aber nicht, und begründe, welchem Wagen der größere Energieanteil zufällt.",
+  "zeilen": 4,
+  "loesung": "Über die ganze Stoßdauer gilt F1 = −F2; daraus folgt Δp1 = −Δp2. Der Impuls ist gerichtet, die beiden Impulsänderungen sind gleich groß und entgegengesetzt, und da beide Wagen aus der Ruhe starten, bleibt p1 + p2 = 0,000 kg·m/s. Die Energie hat dagegen keine Richtung: Beide Wagen bewegen sich, und beide Beiträge sind positiv, gleichgültig wohin sie fahren. Sie addieren sich deshalb zu 0,667 J + 0,133 J = 0,800 J, also genau zur gespeicherten Federenergie. Den größeren Anteil erhält der leichtere Wagen, hier m1 = 1 kg mit 0,667 J. Beide tragen denselben Impulsbetrag, sodass die kleinere Masse mit der größeren Geschwindigkeit davonfährt: v1 = -1,155 m/s gegenüber v2 = +0,231 m/s, also das Fünffache. In die Bewegungsenergie geht die Geschwindigkeit quadratisch ein, die Masse dagegen nur einfach; ein Fünftel der Masse bei fünffacher Geschwindigkeit ergibt deshalb den fünffachen Energieanteil – und genau das zeigt das Statusfeld mit 0,667 J gegenüber 0,133 J."
+ },
+ "theme": "ef_mechanik"
+}

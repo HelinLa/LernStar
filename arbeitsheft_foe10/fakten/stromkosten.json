@@ -1,0 +1,228 @@
+[
+ {
+  "sim": "stromkosten",
+  "ueberschrift": "💶 Was kostet elektrische Energie?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "LED 10 W",
+    "ruft": "_kosSetG('led')"
+   },
+   {
+    "aufschrift": "TV 100 W",
+    "ruft": "_kosSetG('tv')"
+   },
+   {
+    "aufschrift": "Kühlschrank 150 W",
+    "ruft": "_kosSetG('kuehl')"
+   },
+   {
+    "aufschrift": "Wasserkocher 2000 W",
+    "ruft": "_kosSetG('kessel')"
+   },
+   {
+    "aufschrift": "1 h",
+    "ruft": "_kosSetH(1)"
+   },
+   {
+    "aufschrift": "3 h",
+    "ruft": "_kosSetH(3)"
+   },
+   {
+    "aufschrift": "8 h",
+    "ruft": "_kosSetH(8)"
+   },
+   {
+    "aufschrift": "24 h",
+    "ruft": "_kosSetH(24)"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_kosReset()"
+   },
+   {
+    "aufschrift": "In Watt (W)",
+    "ruft": "_kosAns(0,0)"
+   },
+   {
+    "aufschrift": "In Kilowattstunden (kWh)",
+    "ruft": "_kosAns(0,1)"
+   },
+   {
+    "aufschrift": "In Ampere (A)",
+    "ruft": "_kosAns(0,2)"
+   },
+   {
+    "aufschrift": "Kosten = Energie (kWh) · Preis pro kWh",
+    "ruft": "_kosAns(1,0)"
+   },
+   {
+    "aufschrift": "Kosten = Leistung · Spannung",
+    "ruft": "_kosAns(1,1)"
+   },
+   {
+    "aufschrift": "Kosten = Preis / Energie",
+    "ruft": "_kosAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine 10-W-LED (3 h/Tag)",
+    "ruft": "_kosAns(2,0)"
+   },
+   {
+    "aufschrift": "Ein 2000-W-Wasserkocher (1 h/Tag)",
+    "ruft": "_kosAns(2,1)"
+   },
+   {
+    "aufschrift": "Beide gleich",
+    "ruft": "_kosAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_kosSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_kosSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_kosSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('stromkosten')"
+   }
+  ],
+  "hinweise": [
+   "Der Stromzähler zählt die Energie in Kilowattstunden (kWh). Wähle ein Gerät und wie lange es pro Tag läuft. Was kostet das im Jahr? (Preis: 0,30 € pro kWh.)",
+   "Der Stromzähler misst die verbrauchte Energie in Kilowattstunden (kWh). Die Kosten berechnet man so: Kosten = Energie (kWh) · Preis pro kWh. Geräte mit hoher Leistung oder langer Laufzeit kosten am meisten.",
+   "Kosten = Energie (kWh) · Preis · 1 kWh kostet hier 0,30 €."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €."
+   },
+   {
+    "einstellung": "LED 10 W",
+    "text": "kosStatus: LED-Lampe (10 W) · 3 h/Tag → 0,03 kWh/Tag = 0,01 €/Tag. Im Jahr: 3,28 €."
+   },
+   {
+    "einstellung": "TV 100 W",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €."
+   },
+   {
+    "einstellung": "Kühlschrank 150 W",
+    "text": "kosStatus: Kühlschrank (150 W) · 3 h/Tag → 0,45 kWh/Tag = 0,13 €/Tag. Im Jahr: 49,27 €."
+   },
+   {
+    "einstellung": "Wasserkocher 2000 W",
+    "text": "kosStatus: Wasserkocher (2000 W) · 3 h/Tag → 6 kWh/Tag = 1,80 €/Tag. Im Jahr: 657,00 €."
+   },
+   {
+    "einstellung": "1 h",
+    "text": "kosStatus: Wasserkocher (2000 W) · 1 h/Tag → 2 kWh/Tag = 0,60 €/Tag. Im Jahr: 219,00 €."
+   },
+   {
+    "einstellung": "3 h",
+    "text": "kosStatus: Wasserkocher (2000 W) · 3 h/Tag → 6 kWh/Tag = 1,80 €/Tag. Im Jahr: 657,00 €."
+   },
+   {
+    "einstellung": "8 h",
+    "text": "kosStatus: Wasserkocher (2000 W) · 8 h/Tag → 16 kWh/Tag = 4,80 €/Tag. Im Jahr: 1752,00 €."
+   },
+   {
+    "einstellung": "24 h",
+    "text": "kosStatus: Wasserkocher (2000 W) · 24 h/Tag → 48 kWh/Tag = 14,40 €/Tag. Im Jahr: 5256,00 €."
+   },
+   {
+    "einstellung": "↺",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €."
+   },
+   {
+    "einstellung": "In Watt (W)",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Watt ist die Leistung, nicht die Energie."
+   },
+   {
+    "einstellung": "In Kilowattstunden (kWh)",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✓ Richtig! Der Zähler misst die Energie in kWh."
+   },
+   {
+    "einstellung": "In Ampere (A)",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke."
+   },
+   {
+    "einstellung": "Kosten = Energie (kWh) · Preis pro kWh",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✓ Richtig! Energie in kWh mal Preis pro kWh."
+   },
+   {
+    "einstellung": "Kosten = Leistung · Spannung",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ Das ergibt nicht die Kosten."
+   },
+   {
+    "einstellung": "Kosten = Preis / Energie",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht."
+   },
+   {
+    "einstellung": "Eine 10-W-LED (3 h/Tag)",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die LED verbraucht sehr wenig."
+   },
+   {
+    "einstellung": "Ein 2000-W-Wasserkocher (1 h/Tag)",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✓ Richtig! Hohe Leistung → viel Energie → mehr Kosten."
+   },
+   {
+    "einstellung": "Beide gleich",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die Geräte unterscheiden sich stark."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die Geräte unterscheiden sich stark.  ||  kosSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die Geräte unterscheiden sich stark.  ||  kosSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die Geräte unterscheiden sich stark."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "kosStatus: Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.  ||  kosFb0: ✗ Ampere ist die Stromstärke.  ||  kosFb1: ✗ So herum stimmt die Formel nicht.  ||  kosFb2: ✗ Die Geräte unterscheiden sich stark."
+   }
+  ],
+  "bildtexte": [
+   "Fernseher · 100 W · 3 h/Tag",
+   "0,3 kWh/Tag",
+   "⚡ Stromzähler",
+   "Kosten pro Jahr",
+   "0,09 € pro Tag",
+   "32,85 € pro Jahr",
+   "LED-Lampe · 10 W · 3 h/Tag",
+   "0,03 kWh/Tag",
+   "0,01 € pro Tag",
+   "3,28 € pro Jahr",
+   "Kühlschrank · 150 W · 3 h/Tag",
+   "0,45 kWh/Tag",
+   "0,13 € pro Tag",
+   "49,27 € pro Jahr",
+   "Wasserkocher · 2000 W · 3 h/Tag",
+   "6 kWh/Tag",
+   "1,80 € pro Tag",
+   "657,00 € pro Jahr",
+   "Wasserkocher · 2000 W · 1 h/Tag",
+   "2 kWh/Tag",
+   "0,60 € pro Tag",
+   "219,00 € pro Jahr",
+   "Wasserkocher · 2000 W · 8 h/Tag",
+   "16 kWh/Tag",
+   "4,80 € pro Tag",
+   "1752,00 € pro Jahr",
+   "Wasserkocher · 2000 W · 24 h/Tag",
+   "48 kWh/Tag",
+   "14,40 € pro Tag",
+   "5256,00 € pro Jahr"
+  ]
+ }
+]

@@ -1,0 +1,132 @@
+{
+ "seite": {
+  "id": "fo1",
+  "quelle": "oi1",
+  "sim": "licht-oberflaeche",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei Kisten ohne Beschriftung",
+  "name": "Was macht eine Oberfläche mit Licht?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Nour zieht eine Kiste aus dem Sammlungsschrank.",
+   "Darin liegen ein Spiegel, eine Glasscheibe und zwei Bögen Papier.",
+   "Jannis hält das schwarze Papier ins Licht: Es wird warm."
+  ],
+  "frage": "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
+  "predict": [
+   "Jede Oberfläche teilt das Licht in drei Anteile auf.",
+   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.",
+   "Trage die Zahlen für Fensterglas, schwarzes Papier und weißes Papier ein.",
+   "Berechne für jede Zeile die Summe der drei Zahlen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": ["Oberfläche", "zurück · hindurch · geschluckt", "Wie groß ist die Summe?"],
+  "tabRows": [
+   ["Spiegel", "95 % · 0 % · 5 %", "100 %"],
+   ["Fensterglas", "", ""],
+   ["schwarzes Papier", "", ""],
+   ["weißes Papier", "", ""]
+  ],
+  "merksatz": [
+   {"pre": "Eine Oberfläche teilt Licht in drei Anteile: zurück, hindurch, geschluckt. Zusammen ergeben die Anteile immer", "loesung": "100 Prozent", "post": "."},
+   {"pre": "Geschlucktes Licht macht den Körper", "loesung": "warm", "post": "."}
+  ],
+  "wortbank": ["100 Prozent", "warm", "zurück", "hindurch", "geschluckt"],
+  "beispiel": {
+   "frage": "Was macht schwarzes Papier mit dem Licht?",
+   "antwort": "Schwarzes Papier wirft 5 % zurück und schluckt 95 %. Hindurch geht nichts. Das geschluckte Licht macht das Papier warm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim Fensterglas?",
+    "optionen": [
+     "Das meiste Licht geht hindurch: 90 %.",
+     "Das meiste Licht wird zurückgeworfen.",
+     "Das meiste Licht wird geschluckt."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {"pre": "Die drei Anteile ergeben zusammen immer", "loesung": "100 Prozent", "post": "."},
+     {"pre": "Schwarzes Papier wird in der Sonne", "loesung": "warm", "post": ", weil es fast alles Licht schluckt."}
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Der Spiegel bleibt in der Sonne kühl, das schwarze Papier wird warm. Warum?",
+    "satzstarter": "Der Spiegel wirft fast alles Licht …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: Beim Spiegel steht bei „geschluckt“ nur 5 %.",
+   "h2": "Beginne so: Der Spiegel wirft 95 % zurück und schluckt fast nichts. Das schwarze Papier …",
+   "h3": "Fast fertige Antwort: Der Spiegel schluckt fast kein Licht und bleibt kühl. Schwarzes Papier schluckt 95 % des Lichts und wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Anteile des Lichts nennen.",
+   "Ich weiß, was die drei Anteile zusammen ergeben.",
+   "Ich kann erklären, warum schwarzes Papier warm wird."
+  ],
+  "zuhause": "Lege ein schwarzes und ein weißes Blatt in die Sonne. Fühle nach fünf Minuten: Welches Blatt ist wärmer?",
+  "bildauftrag": "[BILD: ein breiter Lichtstrahl trifft schräg auf eine stehende Glasscheibe; drei deutlich getrennte, beschriftete Pfeile: „zurück“ (läuft zur Lampe zurück), „hindurch“ (läuft hinter der Scheibe weiter), „geschluckt“ (endet in der Scheibe, kleine Wärmewellen); große Beschriftungen, nur diese eine Lichtspur, ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo1",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass eine Oberfläche das auftreffende Licht in die drei Anteile zurückgeworfen, hindurchgelassen und geschluckt aufteilt, die zusammen immer 100 Prozent ergeben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafeltabelle. Optional als Schülerversuch: schwarzes und weißes Papier in der Sonne oder unter einer starken Lampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen vorlesen oder als Tabelle an die Tafel: Spiegel → zurück 95 %, hindurch 0 %, geschluckt 5 % · Fensterglas → zurück 8 %, hindurch 90 %, geschluckt 2 % · schwarzes Papier → zurück 5 %, hindurch 0 %, geschluckt 95 % · weißes Papier → zurück 80 %, hindurch 0 %, geschluckt 20 %.",
+  "merksatz": ["100 Prozent", "warm"],
+  "tabelle_erwartet": [
+   ["Fensterglas", "8 % · 90 % · 2 %", "100 %"],
+   ["schwarzes Papier", "5 % · 0 % · 95 %", "100 %"],
+   ["weißes Papier", "80 % · 0 % · 20 %", "100 %"]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: Fensterglas: zurück 8 %, hindurch 90 %, geschluckt 2 %.",
+   "typische_fehler": [
+    "Glas wird als „macht nichts mit dem Licht“ gedeutet, weil man hindurchsehen kann."
+   ]
+  },
+  "a2": {
+   "loesungen": ["100 Prozent", "warm"],
+   "typische_fehler": [
+    "Die Summe wird nur für den Spiegel geprüft und dann als Sonderfall abgetan.",
+    "„heiß“ statt „warm“ – die Wortbank-Form wird nicht übernommen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Spiegel wirft fast alles Licht zurück und schluckt nur 5 %. Das schwarze Papier schluckt 95 %. Geschlucktes Licht macht den Körper warm.",
+   "alternativen": [
+    "Mit Zahlen aus der Tabelle: 5 % geschluckt beim Spiegel gegen 95 % beim schwarzen Papier.",
+    "Verweis auf den Versuch im Alltag: Das schwarze Papier wurde in der Sonne warm."
+   ],
+   "typische_fehler": [
+    "„Schwarz zieht die Sonne an“ – Farbe wird als Ursache genannt, nicht das Schlucken.",
+    "Warm werden wird mit Hindurchlassen verwechselt."
+   ]
+  },
+  "hilfe3_wort": "warm (auch richtig: wärmer)",
+  "schwache": [
+   "Zuerst nur Spiegel und schwarzes Papier vergleichen, die anderen zwei Zeilen später.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, erst dann die Simulation öffnen.",
+   "Die Summe 95 + 0 + 5 einmal gemeinsam an der Tafel rechnen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Winkel zum Lot auf 80° und prüfe, ob sich die drei Anteile ändern.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Oberflächen und Licht. Kompetenz UF3 wie auf der Quellseite oi1. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

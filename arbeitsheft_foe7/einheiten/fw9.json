@@ -1,0 +1,187 @@
+{
+ "seite": {
+  "id": "fw9",
+  "quelle": "ew10",
+  "sim": "sternleben",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Die Randnotiz auf der Sternkarte",
+  "name": "Wie lange leuchtet ein Stern?",
+  "fachwoerter_neu": [
+   "Kernfusion",
+   "Sonnenmasse"
+  ],
+  "alltag": [
+   "Auf einer Karte steht mit Bleistift: Auch die Sonne geht einmal aus.",
+   "Jannis zeigt auf einen dicken blauen Stern.",
+   "So ein Riese hält bestimmt am längsten durch, meint er.",
+   "Die Masse von Sternen misst man in Sonnenmassen."
+  ],
+  "frage": "Lebt ein schwerer Stern länger als ein leichter?",
+  "predict": [
+   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer.",
+   "Ein schwerer Stern hat mehr Brennstoff und lebt länger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1“ und sieh den ganzen Lebenslauf durch.",
+   "Lies die Lebensdauer ab und trage sie ein.",
+   "Drücke „10“ und vergleiche.",
+   "Prüfe mit „Gegenprobe 25“: Lebt er noch kürzer?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Masse",
+   "Lebensdauer",
+   "Länger oder kürzer als die Sonne?"
+  ],
+  "tabRows": [
+   [
+    "1 Sonnenmasse (Sonne)",
+    "10,0 Mrd. Jahre",
+    "—"
+   ],
+   [
+    "10 Sonnenmassen",
+    "",
+    ""
+   ],
+   [
+    "Gegenprobe 25",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Kern verschmelzen Wasserstoffkerne zu Helium. Das heißt",
+    "loesung": "Kernfusion",
+    "post": "– kein Verbrennen."
+   },
+   {
+    "pre": "Je größer die Masse, desto",
+    "loesung": "kürzer",
+    "post": "lebt der Stern."
+   }
+  ],
+  "wortbank": [
+   "Kernfusion",
+   "kürzer",
+   "Helium",
+   "Sonnenmasse",
+   "schneller"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation bei 10 Sonnenmassen?",
+   "antwort": "Der Stern leuchtet blau-weiß. Er lebt nur 31,6 Mio. Jahre. Die Sonne mit 1 Sonnenmasse lebt viel länger: 10,0 Mrd. Jahre."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Woher bekommt ein Stern seine Energie?",
+    "optionen": [
+     "Er verbrennt Sauerstoff wie ein Feuer.",
+     "Im Kern verschmelzen Wasserstoffkerne zu Helium.",
+     "Er sammelt Licht von anderen Sternen."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei der Kernfusion verschmelzen Wasserstoffkerne zu",
+      "loesung": "Helium",
+      "post": "."
+     },
+     {
+      "pre": "Ein schwerer Stern verbraucht seinen Brennstoff viel",
+      "loesung": "schneller",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der dicke Stern hat mehr Brennstoff und lebt darum länger.“ Was zeigt die Simulation?",
+    "satzstarter": "Der schwere Stern hat zwar mehr Brennstoff, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: 10 Sonnenmassen leben nur 31,6 Mio. Jahre.",
+   "h2": "Beginne so: Der schwere Stern hat mehr Brennstoff. Aber er verbraucht ihn viel …",
+   "h3": "Fast fertige Antwort: Der schwere Stern verbraucht seinen Brennstoff viel schneller. Darum lebt er ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Kernfusion ist.",
+   "Ich weiß, dass Fusion kein Verbrennen ist.",
+   "Ich kann die Masse-Regel der Sterne sagen."
+  ],
+  "zuhause": "Sieh am Abend zum Himmel: Manche Sterne wirken bläulich, andere rötlich. Die Farbe verrät etwas über den Stern.",
+  "bildauftrag": "[BILD: zwei Sterne nebeneinander im Vergleich; links ein gelber Stern in Sonnengröße mit Beschriftung „1 Sonnenmasse · lebt 10,0 Mrd. Jahre“, rechts ein deutlich größerer blau-weißer Stern mit Beschriftung „10 Sonnenmassen · lebt nur 31,6 Mio. Jahre“; darunter eine große Zeile „schwerer – schneller verbraucht – kürzer“; keine weiteren Objekte; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw9",
+  "lernziel": "Die Schülerinnen und Schüler begründen, dass ein Stern seine Energie aus der Kernfusion bezieht (kein Verbrennen) und umso kürzer lebt, je größer seine Masse ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten. Für das Gespräch: die Bleistift-Notiz aus dem Alltag („Auch die Sonne geht einmal aus“).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Ergebnisse als Karten zeigen: 1 Sonnenmasse → 10,0 Mrd. Jahre, gelb, am Ende bleibt ein Weißer Zwerg · 10 Sonnenmassen → 31,6 Mio. Jahre, blau-weiß, am Ende Supernova und Neutronenstern · Gegenprobe 25 → nur 3,2 Mio. Jahre.",
+  "merksatz": [
+   "Kernfusion",
+   "kürzer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "10 Sonnenmassen",
+    "31,6 Mio. Jahre",
+    "kürzer"
+   ],
+   [
+    "Gegenprobe 25",
+    "3,2 Mio. Jahre",
+    "noch kürzer"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Hinweis der Simulation: Im Kern verschmelzen Wasserstoffkerne zu Helium – kein Verbrennen, es gibt dort keinen Sauerstoff.",
+   "typische_fehler": [
+    "„Der Stern brennt“ – Verbrennen setzt Sauerstoff voraus, den es im Sternkern nicht gibt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Helium",
+    "schneller"
+   ],
+   "typische_fehler": [
+    "„Feuer“ oder „Asche“ statt „Helium“.",
+    "Mio. und Mrd. werden beim Vergleichen verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der schwere Stern hat zwar mehr Brennstoff. Aber er presst seinen Kern stärker zusammen und verbraucht den Brennstoff viel schneller. Darum lebt er kürzer: 31,6 Mio. statt 10,0 Mrd. Jahre.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: doppelte Masse heißt rund 11-mal so hohe Leuchtkraft und nur noch etwa ein Sechstel der Lebensdauer.",
+    "Mit der Gegenprobe 25 begründet: noch schwerer, noch kürzer (3,2 Mio. Jahre)."
+   ],
+   "typische_fehler": [
+    "Nur der größere Vorrat wird gesehen, der schnellere Verbrauch fehlt im zweiten Schritt.",
+    "Mio. und Mrd. Jahre werden gleichgesetzt."
+   ]
+  },
+  "hilfe3_wort": "kürzer",
+  "schwache": [
+   "Mio. und Mrd. in der Tabelle farbig markieren lassen.",
+   "Nur die Sterne 1 und 10 vergleichen, die Gegenprobe danach.",
+   "Die Lebensdauern als verschieden lange Balken zeichnen lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „0,5“. Der leichte Stern lebt 56,6 Mrd. Jahre und leuchtet rötlich.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Energieumwandlungen in Sternen. Kompetenz E2 wie auf der Quellseite ew10. Leitplanke: Kernfusion ist Verschmelzen von Atomkernen, kein Verbrennen. Weißer Zwerg, Supernova und Neutronenstern stehen bewusst nur hier."
+ }
+}

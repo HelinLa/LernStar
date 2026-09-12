@@ -1,0 +1,180 @@
+{
+ "seite": {
+  "id": "fs1",
+  "quelle": "st1",
+  "sim": "ladung",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Das Knistern im Pullover",
+  "name": "Wie wirken Ladungen aufeinander?",
+  "fachwoerter_neu": [
+   "Ladung"
+  ],
+  "alltag": [
+   "Nour zieht in der kalten Werkstatt ihren Pullover aus.",
+   "Es knistert laut, und ihre Haare stehen vom Kopf ab.",
+   "Beim Reiben bekommen Pullover und Haare eine Ladung.",
+   "Es gibt zwei Ladungen: positive (+) und negative (−)."
+  ],
+  "frage": "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
+  "predict": [
+   "Gleiche Ladung stößt ab. Ungleiche Ladung zieht an.",
+   "Zwei geladene Kugeln ziehen sich immer an."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Öffne die Simulation und lies die Statuszeile.",
+   "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.",
+   "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.",
+   "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Einstellung",
+   "Welche Ladung haben die zwei Kugeln?",
+   "Was machen die Kugeln?"
+  ],
+  "tabRows": [
+   [
+    "am Anfang",
+    "ungleiche Ladung",
+    "Sie ziehen sich an."
+   ],
+   [
+    "beide Kugeln − negativ",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Kugeln mit gleicher Ladung",
+    "loesung": "stoßen",
+    "post": "sich ab."
+   },
+   {
+    "pre": "Zwei Kugeln mit ungleicher Ladung",
+    "loesung": "ziehen",
+    "post": "sich an."
+   }
+  ],
+  "wortbank": [
+   "stoßen",
+   "ziehen",
+   "Ladung",
+   "ungleiche"
+  ],
+  "beispiel": {
+   "frage": "Eine Kugel ist positiv, die andere ist negativ. Was passiert?",
+   "antwort": "Die zwei Kugeln haben eine ungleiche Ladung. Darum ziehen sie sich an. In der Statuszeile steht: Sie ziehen sich an."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Beide Kugeln sind negativ. Was zeigt die Simulation?",
+    "optionen": [
+     "Die Kugeln stoßen sich ab.",
+     "Die Kugeln ziehen sich an.",
+     "Die Kugeln verlieren ihre Ladung."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim Reiben bekommt der Pullover eine",
+      "loesung": "Ladung",
+      "post": "."
+     },
+     {
+      "pre": "Pullover und Haare ziehen sich an. Sie haben",
+      "loesung": "ungleiche",
+      "post": "Ladung."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ich lade beide Kugeln negativ. Dann ziehen sie sich stark an.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Beide Kugeln haben dann …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2.",
+   "h2": "Beginne so: Beide Kugeln haben dann die gleiche Ladung. Sieh in deiner Tabelle nach, was dann passiert.",
+   "h3": "Fast fertige Antwort: Beide Kugeln sind negativ. Sie haben also die ___ Ladung. Darum stoßen sie sich ab."
+  },
+  "selbstcheck": [
+   "Ich weiß, dass es positive und negative Ladung gibt.",
+   "Ich kann sagen, was zwei Kugeln mit gleicher Ladung machen.",
+   "Ich kann erklären, warum sich geladene Kugeln nicht immer anziehen."
+  ],
+  "zuhause": "Reibe einen Luftballon an deinen Haaren. Halte ihn danach neben deine Haare. Schreibe auf, was du siehst.",
+  "bildauftrag": "[BILD: eine breite Zeichnung mit zwei gleich großen Feldern, getrennt durch eine dünne senkrechte Linie; links zwei Kugeln, die linke mit großem +, die rechte mit großem −, zwei kurze Pfeile zeigen aufeinander zu, darunter groß „ungleiche Ladung – sie ziehen sich an“; rechts zwei Kugeln, beide mit großem −, zwei kurze Pfeile zeigen voneinander weg, darunter groß „gleiche Ladung – sie stoßen sich ab“; alle Kugeln gleich groß, Zeichen sehr groß und kontrastreich, ruhiger heller Hintergrund, keine weiteren Gegenstände, keine Deko, keine Funken und keine Blitze]"
+ },
+ "lehrer": {
+  "id": "fs1",
+  "lernziel": "Die Schülerinnen und Schüler sagen voraus, ob sich zwei geladene Kugeln anziehen oder abstoßen: gleiche Ladung stößt ab, ungleiche Ladung zieht an. Sie erklären damit das Knistern beim Pullover und widerlegen die Fehlvorstellung „geladen heißt anziehen“.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: ein Luftballon je Kind.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Karten zeigen oder an die Tafel schreiben. Karte 1 (am Anfang): „Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.“ Karte 2 (nach dem Knopf „− negativ“ bei beiden Kugeln): „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“ Dazu die zwei Bildtexte der Simulation als Skizze an die Tafel: „ungleiche Ladung → anziehen“ und „gleiche Ladung → abstoßen“. Mehr Zustände zeigt die Simulation nicht; „beide positiv“ ist nicht belegt und wird nicht gefragt.",
+  "merksatz": [
+   "stoßen",
+   "ziehen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "beide Kugeln − negativ",
+    "gleiche Ladung",
+    "Sie stoßen sich ab."
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Knopf „− negativ“ bei beiden Kugeln meldet die Statuszeile: „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“ Im Bild steht dazu „gleiche Ladung → abstoßen“.",
+   "typische_fehler": [
+    "Antwort 1 wird gewählt: „Beide sind geladen, also ziehen sie sich an.“ Entscheidend ist aber der Vergleich beider Ladungen, nicht die Ladung einer Kugel.",
+    "Antwort 2 wird gewählt. Die Ladung bleibt bestehen; die Simulation meldet dazu im Quiz „Die Ladungen bleiben bestehen.“"
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Ladung",
+    "ungleiche"
+   ],
+   "typische_fehler": [
+    "In Lücke 2 steht „gleiche“. Pullover und Haare ziehen sich an, das gehört zur ungleichen Ladung.",
+    "In Lücke 1 wird ein Verb eingesetzt („reibt“, „zieht“); gesucht ist das Nomen Ladung."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Kugeln haben dann die gleiche Ladung. Gleiche Ladung stößt sich ab. Die Kugeln ziehen sich also nicht an, sie stoßen sich ab.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“",
+    "Verweis auf die zweite Tabellenzeile: Dort steht genau dieser Fall, und er endet mit Abstoßen.",
+    "Anziehen geht nur mit ungleicher Ladung, also mit einem Plus und einem Minus."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "„Zwei Minus sind mehr Ladung, also mehr Anziehung“ – die Menge wird mit der Art der Ladung verwechselt.",
+    "Die Kraft wird ganz bestritten („dann passiert nichts“); die Simulation meldet dazu „Es wirkt sehr wohl eine Kraft.“"
+   ]
+  },
+  "hilfe3_wort": "gleiche (auch richtig: selbe)",
+  "schwache": [
+   "Die erste Tabellenzeile gemeinsam laut lesen, erst danach die Simulation öffnen.",
+   "Die Wörter „gleiche“ und „ungleiche“ in zwei Farben markieren lassen; dieselben Farben für die zwei Tabellenzeilen benutzen.",
+   "Für Aufgabe 3 zwei Kärtchen mit − und − auf den Tisch legen und mit den Händen auseinanderschieben.",
+   "Wenn sich die Statuszeile nach dem ersten Knopf „− negativ“ nicht ändert, war diese Kugel schon negativ – dann den Knopf der anderen Kugel drücken.",
+   "Die Simulation rät „Verändere immer nur eine Ladung“. Hier werden beide Minus-Knöpfe gedrückt, damit sicher beide Kugeln negativ sind."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 1 ab: „Es gibt positive (+) und negative (−) Ladung.“",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung, Anziehung und Abstoßung. Kompetenzen stehen bewusst nur hier: UF1, UF2 und UF4 über Merksatz, Tabelle und Aufgabe 1; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); E4 über den Luftballon-Auftrag zu Hause – der Seitenplan sichert E4 ausdrücklich auf dieser Seite."
+ }
+}

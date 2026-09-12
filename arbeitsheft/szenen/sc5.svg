@@ -1,0 +1,74 @@
+<defs>
+  <radialGradient id="sc5licht" cx="0.38" cy="0.36" r="0.80">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.22"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+  <filter id="sc5weich" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="3"/>
+  </filter>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="-46" width="900" height="540" fill="url(#sc5licht)"/>
+
+  <use href="#t_schuessel" transform="translate(330,438) scale(1.25)"/>
+
+  <!-- Salzkoerner: liegende auf der Folie, fliegende darueber mit weichem Schatten -->
+  <g>
+    <g fill="#241704" opacity="0.30">
+      <ellipse cx="203" cy="275" rx="9" ry="3.6"/>
+      <ellipse cx="251" cy="265" rx="9" ry="3.6"/>
+      <ellipse cx="303" cy="269" rx="9" ry="3.6"/>
+      <ellipse cx="355" cy="277" rx="9" ry="3.6"/>
+      <ellipse cx="399" cy="265" rx="9" ry="3.6"/>
+      <ellipse cx="271" cy="283" rx="9" ry="3.6"/>
+      <ellipse cx="333" cy="285" rx="9" ry="3.6"/>
+      <ellipse cx="227" cy="287" rx="9" ry="3.6"/>
+      <ellipse cx="373" cy="289" rx="9" ry="3.6"/>
+    </g>
+    <g>
+      <rect x="194" y="262" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="194" y="262" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="242" y="252" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="242" y="252" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="294" y="256" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="294" y="256" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="346" y="264" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="346" y="264" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="390" y="252" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="390" y="252" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="262" y="270" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="262" y="270" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="324" y="272" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="324" y="272" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="218" y="274" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="218" y="274" width="12" height="5" rx="2" fill="#FFFFFF"/>
+      <rect x="364" y="276" width="12" height="12" rx="2.2" fill="#F4F7FA"/>
+      <rect x="364" y="276" width="12" height="5" rx="2" fill="#FFFFFF"/>
+    </g>
+    <g fill="#241704" opacity="0.24" filter="url(#sc5weich)">
+      <ellipse cx="219" cy="266" rx="13" ry="4.5"/>
+      <ellipse cx="293" cy="266" rx="14" ry="4.5"/>
+      <ellipse cx="371" cy="266" rx="13" ry="4.5"/>
+      <ellipse cx="255" cy="266" rx="12" ry="4.5"/>
+      <ellipse cx="327" cy="266" rx="13" ry="4.5"/>
+      <ellipse cx="405" cy="266" rx="12" ry="4.5"/>
+    </g>
+    <g>
+      <rect x="208" y="200" width="11" height="11" rx="2.4" fill="#FBFDFF" transform="rotate(-4 214 206)"/>
+      <rect x="208" y="200" width="11" height="4.6" rx="2" fill="#FFFFFF" transform="rotate(-4 214 206)"/>
+      <rect x="282" y="176" width="12" height="12" rx="2.4" fill="#FBFDFF" transform="rotate(1 288 182)"/>
+      <rect x="282" y="176" width="12" height="5.0" rx="2" fill="#FFFFFF" transform="rotate(1 288 182)"/>
+      <rect x="360" y="190" width="11" height="11" rx="2.4" fill="#FBFDFF" transform="rotate(10 366 196)"/>
+      <rect x="360" y="190" width="11" height="4.6" rx="2" fill="#FFFFFF" transform="rotate(10 366 196)"/>
+      <rect x="245" y="219" width="10" height="10" rx="2.4" fill="#FBFDFF" transform="rotate(9 250 224)"/>
+      <rect x="245" y="219" width="10" height="4.2" rx="2" fill="#FFFFFF" transform="rotate(9 250 224)"/>
+      <rect x="316" y="208" width="11" height="11" rx="2.4" fill="#FBFDFF" transform="rotate(-11 322 214)"/>
+      <rect x="316" y="208" width="11" height="4.6" rx="2" fill="#FFFFFF" transform="rotate(-11 322 214)"/>
+      <rect x="395" y="217" width="10" height="10" rx="2.4" fill="#FBFDFF" transform="rotate(-2 400 222)"/>
+      <rect x="395" y="217" width="10" height="4.2" rx="2" fill="#FFFFFF" transform="rotate(-2 400 222)"/>
+    </g>
+  </g>
+  <!-- der Topf steht daneben, dazwischen nur Luft -->
+  <use href="#t_topf_um" transform="translate(700,430) scale(0.92)"/>
+  <use href="#t_loeffel_metall" transform="translate(596,376) rotate(-30) scale(1.05)"/>

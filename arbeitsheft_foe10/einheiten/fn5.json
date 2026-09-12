@@ -1,0 +1,200 @@
+{
+ "seite": {
+  "id": "fn5",
+  "quelle": "rk5",
+  "sim": "geiger-mueller",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Knacken im Messraum",
+  "name": "Wie weist man Strahlung nach?",
+  "fachwoerter_neu": [
+   "Impulshöhe",
+   "Totzeit"
+  ],
+  "alltag": [
+   "Nour darf in den Messraum.",
+   "An der Wand knackt ein Zählrohr. Jedes Teilchen macht einen Impuls.",
+   "Wie hoch der Impuls ist, heißt Impulshöhe.",
+   "α ionisiert stark, γ ionisiert schwach. Stark heißt: sehr dicht."
+  ],
+  "frage": "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
+  "predict": [
+   "Bei etwa 200 V sind die Impulse verschieden hoch, bei etwa 450 V gleich.",
+   "α macht auch bei etwa 450 V den größten Impuls."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.",
+   "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.",
+   "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Ergänze die rechte Spalte.",
+   "Drücke „4 · Totzeit & wahre Zählrate“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Teilchen",
+   "Wie hoch ist der Impuls bei etwa 200 V?",
+   "Wie hoch ist der Impuls bei etwa 450 V?"
+  ],
+  "tabRows": [
+   [
+    "α",
+    "groß",
+    "gleich"
+   ],
+   [
+    "β",
+    "",
+    ""
+   ],
+   [
+    "γ",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Bei etwa 200 V zeigt die Impulshöhe, wie stark ein Teilchen",
+    "loesung": "ionisiert",
+    "post": "."
+   },
+   {
+    "pre": "Bei etwa 450 V ist jeder Impuls",
+    "loesung": "gleich",
+    "post": "hoch. Dann zählt das Rohr nur noch, wie viele Teilchen kommen."
+   }
+  ],
+  "wortbank": [
+   "ionisiert",
+   "gleich",
+   "mittel",
+   "klein"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile α ab?",
+   "antwort": "Bei „Proportionalbereich“ steht unter „Impulshöhe“: groß. Bei „Auslösebereich“ steht dort: gleich."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie hoch sind die Impulse bei etwa 450 V?",
+    "optionen": [
+     "groß, mittel, klein",
+     "gleich, gleich, gleich",
+     "klein, mittel, groß"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei etwa 200 V ist der Impuls von β",
+      "loesung": "mittel",
+      "post": "."
+     },
+     {
+      "pre": "Bei γ ist er",
+      "loesung": "klein",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nach jedem Impuls ist das Rohr kurz blind. Das heißt Totzeit. Je Sekunde kommen 2000 Teilchen. Gezählt werden nur 1667. Warum zählt es zu wenig?",
+    "satzstarter": "Das Zählrohr hat eine Grenze. Es zählt zu wenig, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Wörter stehen in der Wortbank. Lies nur unter der Überschrift mit der Spannung.",
+   "h2": "In der Totzeit merkt das Rohr nichts. Was ist mit Teilchen, die dann kommen?",
+   "h3": "Fast fertig: Das Rohr zählt zu wenig, weil es nach jedem Impuls kurz ___ ist."
+  },
+  "selbstcheck": [
+   "Ich kann die Impulshöhe von α, β und γ ablesen.",
+   "Ich kann sagen: Bei etwa 450 V ist jeder Impuls gleich.",
+   "Ich kann eine Grenze nennen: In der Totzeit verpasst das Rohr Teilchen."
+  ],
+  "zuhause": "Lass jemanden immer schneller klopfen. Wann kommst du nicht mehr mit?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Einstiegsbild mit GENAU EINER Szene — kein Vergleich, keine zwei Felder, keine Balkengruppe. In der Bildmitte liegt waagerecht EIN einzelnes Zählrohr in Seitenansicht: ein Zylinder mit dünnem Draht in der Mitte und einem runden Fenster an der linken Stirnseite. Von links kommt GENAU EIN gerader Pfeil; er beginnt sichtbar an einem beschrifteten Kästchen „ein Teilchen“ und endet sichtbar am Fenster des Rohrs. Kein zweiter Pfeil, keine Bahn und keine Lawine im Rohr, keine fliegenden Punkte, kein Pfeil, der im Leeren endet. Rechts vom Rohr führt GENAU EINE kurze Leitung waagerecht zu einem rechteckigen Anzeigefeld. Im Anzeigefeld liegt eine durchgehende waagerechte Grundlinie, und darauf steht GENAU EIN breites, vollflächig ausgefülltes Rechteck aufrecht: der Impuls. Keine Kurve, kein Zackenzug, keine zweite Spitze, kein Raster im Feld. Links neben dem Rechteck steht ein senkrechter Doppelpfeil von der Grundlinie bis zur Oberkante des Rechtecks, daneben groß und waagerecht das Wort „Impulshöhe“ — die einzige Beschriftung im Anzeigefeld. Über der ganzen Szene steht groß die Frage „Wie hoch ist der Impuls?“. Das Bild stellt die Frage der Seite und beantwortet sie NICHT: Deshalb ist nur dieser eine Impuls gezeichnet, es gibt keinen zweiten zum Vergleichen, keine drei verschieden hohen Rechtecke, keine Hilfslinie über mehrere Oberkanten, nirgends die Buchstaben α, β oder γ, nirgends die Wörter „groß“, „mittel“, „klein“ oder „gleich“ und keine Spannungsangabe „200 V“ oder „450 V“. Genau diese eine Szene und sonst nichts: kein zweites Feld, kein kleines Nebenbild, keine eingeklinkte Nahaufnahme des Drahtes, kein Bildschirmrahmen, keine Tabelle, keine Person, keine Sprechblase, keine Legende am Rand. Der Impuls ist eine FLÄCHE, deutlich breiter als ein Strich, gleichmäßig gefüllt, ohne Schraffur, ohne Muster, ohne Farbverlauf; drei dünne Striche nebeneinander wären falsch, ebenso ein gestreifter oder gerasterter Hintergrund. Ruhiger heller Hintergrund, große Schrift, viel Weißraum, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn5",
+  "lernziel": "Die Schülerinnen und Schüler lesen im Textfeld der Simulation ab, dass die Impulshöhe bei etwa 200 V der Ionisation folgt (α groß · β mittel · γ klein) und bei etwa 450 V nicht mehr (dreimal gleich). Sie benennen die Sache dahinter: Bei etwa 200 V verrät die Impulshöhe, wie stark ein Teilchen ionisiert; bei etwa 450 V zählt das Rohr nur noch, WIE VIELE Teilchen kommen. Zweites, gleichrangiges Ziel und der Grund, warum diese Doppelseite eigenständig bleibt: Sie GEBEN EINE GRENZE DES MESSGERÄTS AN und sagen sie auch — der Satzstarter von Aufgabe 3 beginnt deshalb mit „Das Zählrohr hat eine Grenze.“, und Selbstcheck 3 lautet „Ich kann eine Grenze nennen …“. Die Grenze selbst: Nach jedem Impuls ist das Rohr für kurze Zeit blind (Totzeit), deshalb zählt es bei starker Strahlung zu wenig (am Bildschirm: 2000 Teilchen je Sekunde, gezählt 1667). Das ist der E7-Anker des ganzen Bandes. Die Spannungskennlinie selbst wird hier NICHT erarbeitet; sie ist in fn2 erledigt und wird nur zurückverwiesen.",
+  "material": "Simulation über den QR-Code (LernStar), am besten je zwei Lernende an einem Gerät. Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Balkenfeldern. Ein echtes Präparat wird NICHT gebraucht und ist im Förderunterricht auch nicht vorgesehen; wenn ein Schulzählrohr vorhanden ist, genügt als Demonstration das Knacken bei der natürlichen Umgebungsstrahlung — ohne Messreihe, nur als Hörerlebnis zum Alltagstext.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten. Wenn die Zeit knapp wird, zuerst Aufgabe 3 sichern — sie trägt E7.",
+  "sozialform": "Simulation in Partnerarbeit (einer bedient, einer liest vor), Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen, Aufgabe 3 zum Schluss im Plenum sammeln",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen. Karte 1 „Proportionalbereich (~200 V)“ mit der Tabelle des Bildschirms: Teilchen | Primärionisation z | Impulshöhe — α (stark) | groß | groß · β (mittel) | mittel | mittel · γ (schwach) | klein | klein. Karte 2 „Auslösebereich (~450 V)“ mit derselben Tabelle: α (stark) | groß | gleich · β (mittel) | mittel | gleich · γ (schwach) | klein | gleich. WICHTIG beim Vorlesen: Ins Heft kommt allein die LETZTE Spalte, die Impulshöhe. Die mittlere Spalte „Primärionisation z“ sagt, wie dicht das Teilchen ionisiert, und trägt in beiden Karten dasselbe (groß · mittel · klein) — bei Karte 1 steht daneben zufällig dasselbe Wort, bei Karte 2 nicht mehr. Wer die Spalten verwechselt, merkt es deshalb erst bei 450 V. Sagen Sie außerdem ausdrücklich: „gleich heißt hier: alle drei sind gleich hoch“ — nicht „gleich“ im Sinne von „sofort“. Karte 3 für Aufgabe 3, im Wortlaut des Bildschirms, aber mit eingefügten Leerzeichen (die Anzeige klebt Zeichen und Zahl zusammen): „wahre Rate (Vorgabe) Zwahr 2000 /s · Totzeit τ 100 µs · gemessen (mit Totzeitverlust) 1667 /s“. Die Karten geben den Bildschirm wieder und tragen deshalb die Doppelangaben α (stark), β (mittel), γ (schwach); die Heft-Tabelle führt nur α, β und γ — beim Vorlesen also die Zeile am Buchstaben ansagen, nicht am Klammerwort. Dazu als Tafelbild zwei Balkenfelder nebeneinander auf einer gemeinsamen Grundlinie, links über den Balken „bei etwa 200 V“ (α hoch, β halb so hoch, γ niedrig), rechts „bei etwa 450 V“ (drei gleich hohe Balken). Dieses Tafelbild ist der Ort des Balkenvergleichs — im Heft steht er bewusst NICHT (siehe Kernlehrplan-Punkt 5). Es kommt erst an die Tafel, wenn die Klasse die Tabelle ausgefüllt hat; die Wörter groß/mittel/klein/gleich schreiben Sie erst dazu, wenn die Klasse sie genannt hat — sonst nimmt das Tafelbild der Tabelle die Arbeit weg.",
+  "merksatz": [
+   "ionisiert",
+   "gleich"
+  ],
+  "tabelle_erwartet": [
+   [
+    "β",
+    "mittel",
+    "gleich"
+   ],
+   [
+    "γ",
+    "klein",
+    "gleich"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach dem Knopf „Auslösebereich“ steht in der Spalte „Impulshöhe“ dreimal dasselbe Wort: gleich. Richtig ist deshalb „gleich, gleich, gleich“. „groß, mittel, klein“ ist die Impulshöhe bei etwa 200 V — richtig gelesen, aber im falschen Bereich; genau diese drei Wörter stehen bei etwa 450 V außerdem in der NACHBARSPALTE „Primärionisation z“, die hier nicht gemeint ist. „klein, mittel, groß“ dreht die Reihenfolge um und passt zu gar keinem Bildschirmzustand. Die Optionen werden vor dem Satz gestreut (seiten_nachbereiten.py) — prüfen Sie am Wortlaut, nicht an der Position.",
+   "typische_fehler": [
+    "„groß, mittel, klein“ wird angekreuzt. Zwei Ursachen sind gleich häufig, und sie brauchen verschiedene Rückfragen. Erstens die falsche SPALTE: Auch bei etwa 450 V steht groß · mittel · klein am Bildschirm — nämlich in der Spalte „Primärionisation z“ neben der Impulshöhe. Gegenfrage: In welcher Spalte hast du gelesen — „Primärionisation z“ oder „Impulshöhe“? Zweitens der falsche BEREICH: Die 200-V-Tabelle liegt noch offen im Heft. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt — „Proportionalbereich“ oder „Auslösebereich“?",
+    "„klein, mittel, groß“ wird angekreuzt: Die Reihenfolge sieht der anderen Wortreihe ähnlich und wird bei schnellem Lesen verwechselt. Die drei Wörter einmal laut in der Reihenfolge α – β – γ vorlesen lassen.",
+    "Es wird gar nicht angekreuzt, weil „gleich“ als „sofort“ verstanden wurde. Einmal ausschreiben: alle drei Impulse sind gleich hoch."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "mittel",
+    "klein"
+   ],
+   "typische_fehler": [
+    "Statt „mittel“ wird „gleich“ eingesetzt: Die beiden Spalten der Tabelle werden verwechselt. Der Satz nennt aber etwa 200 V — dort steht bei β das Wort mittel.",
+    "Bei γ wird „schwach“ eingesetzt. „schwach“ steht im vierten Alltagssatz und meint, wie dicht γ ionisiert — nicht die Impulshöhe. Die Heft-Tabelle führt bewusst nur α, β und γ, damit das Lösungswort nicht in derselben Zeile zum Abschreiben steht. Die Wortbank enthält das gesuchte Wort: klein. (Sie enthält auch „mittel“; beides steht auf Seite B, während die Tabelle auf Seite A ausgefüllt wird. Aufgabe 2 wäre über die Wortbank durch Ausschluss lösbar — geben Sie die Wortbank deshalb erst frei, wenn die Tabelle steht.)",
+    "Beide Lücken bleiben leer, weil der zweite Satz „Bei γ ist er“ nicht auf den ersten bezogen wird. Einmal gemeinsam lesen: „er“ ist der Impuls bei etwa 200 V.",
+    "Es wird „groß“ eingesetzt, die Zeile der Beispielzeile wird abgeschrieben statt der eigenen Messung."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Zählrohr hat eine Grenze. Es zählt zu wenig, weil es nach jedem Impuls kurz blind ist. In dieser Totzeit kommen weitere Teilchen an, aber das Rohr merkt sie nicht. Deshalb zählt es nur 1667 statt 2000. Je mehr Teilchen kommen, desto mehr gehen verloren. Gewertet wird BEIDES: die Grenze (das Gerät zählt nicht jedes Teilchen) und ihr Grund (die Totzeit).",
+   "alternativen": [
+    "Kurzform ohne den letzten Satz: „weil das Rohr in der Totzeit nichts merkt und die Teilchen dann nicht zählt“ — reicht für die volle Wertung.",
+    "Bild statt Begriff: „weil das Rohr eine kurze Pause macht und in der Pause Teilchen durchrutschen“.",
+    "Mit dem Zahlenpaar: „weil 2000 Teilchen kommen, aber 333 davon in die Totzeit fallen“ — richtig, die Differenz muss nicht gerechnet werden.",
+    "Umgekehrt formuliert: „weil das Rohr nicht schnell genug hintereinander zählen kann“ — trägt denselben Gedanken.",
+    "Als Grenzsatz ohne Zahlen: „weil das Zählrohr nicht jedes Teilchen zählen kann“ — das ist die Modellgrenze selbst und wird voll gewertet, auch wenn die Totzeit nicht noch einmal genannt wird."
+   ],
+   "typische_fehler": [
+    "Geantwortet wird mit der Impulshöhe: „weil bei 450 V alle Impulse gleich sind“. Das ist die andere Grenze der Seite und hier nicht gefragt. Nachfragen: Wovon reden die Zahlen 2000 und 1667 — von der Höhe oder von der Anzahl?",
+    "„Das Gerät ist kaputt“ oder „die Batterie ist leer“. Am Bildschirm zeigen: Auch ein heiles Rohr zählt zu wenig, das gehört zum Gerät dazu.",
+    "„Die Teilchen sind zu schwach.“ Die Stärke des Teilchens ändert hier nichts — die Totzeit gilt für jedes Teilchen gleich.",
+    "Es wird nur abgeschrieben: „weil es 1667 zählt“. Das ist die Beobachtung, nicht der Grund. Auf Hilfe 2 und danach auf Hilfe 3 verweisen — Hilfe 3 gibt den Grund vor („kurz blind“), nicht noch einmal die Beobachtung.",
+    "Die Antwort dreht die Richtung um: „deshalb zählt es zu viel“. Die zwei Zahlen nebeneinander an die Tafel schreiben und vergleichen lassen."
+   ]
+  },
+  "hilfe3_wort": "blind (auch richtig: unempfindlich, blind für Teilchen)",
+  "schwache": [
+   "Vorher gemeinsam festlegen, welche Knöpfe gelten: „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“ und „Auslösebereich“, ganz zum Schluss „4 · Totzeit & wahre Zählrate“. Die Simulation hat weitere Knöpfe und vier Regler, die im Pflichtteil nichts zu suchen haben; einer von ihnen wird erst in der freiwilligen Zusatzaufgabe gebraucht. Der Spannungsregler gehört zu fn2 und bleibt unberührt. „Proportionalbereich“ und „Auslösebereich“ sind auf dieser Seite nur Knopfaufschriften und Überschriften — einmal gemeinsam vorlesen, sie müssen nicht gemerkt werden.",
+   "Reihenfolge einhalten: erst die Tabelle vollständig ausfüllen, dann erst Station 4 für Aufgabe 3 öffnen. Wer zurück will, drückt wieder „3 · Proportional- oder Auslösebereich“.",
+   "Das richtige Textfeld mit einem Papierstreifen einrahmen. Gelesen wird nur das Feld, das mit „Proportionalbereich (~200 V)“ beziehungsweise „Auslösebereich (~450 V)“ überschrieben ist. Das Feld daneben zeigt die ganze Zeit „Bereich IV – Auslösebereich“ und ist die häufigste Fehlerquelle der Seite. Erkennbar wird der Fehler an der TABELLE, nicht an Aufgabe 1: In der mittleren Spalte steht dann zweimal „gleich“ — dort wurde das Bereichsfeld gelesen statt des Modusfeldes. In Aufgabe 1 fällt es nicht auf, weil das falsche Feld dort zufällig zur richtigen Antwort führt.",
+   "Nur die mittlere Spalte der Heft-Tabelle ausfüllen lassen (etwa 200 V); die rechte Spalte gemeinsam an der Tafel eintragen — dreimal dasselbe Wort.",
+   "Das Wort „gleich“ einmal an drei gleich hohen Strichen an der Tafel erklären: gleich hoch, nicht sofort.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Für Aufgabe 3 die beiden Zahlen 2000 und 1667 groß untereinander an die Tafel schreiben, bevor geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Bleibe bei „4 · Totzeit & wahre Zählrate“. Dort gibt es den Regler unter der Überschrift „Gemessene gegen wahre Zählrate“ — nur dieser läuft von 10 bis 9000. Achtung: Die Simulation hat einen ZWEITEN Regler, der ebenfalls „wahre Zählrate“ heißt (Bereich 200 bis 20000, Schrittweite 100); auf ihm ist 250 gar nicht einstellbar, und die unten genannten Werte gelten für ihn nicht. Stelle den richtigen Regler auf 250 und lies ab, wie viel gemessen wird (244 — fast alles). Schiebe ihn dann ganz nach rechts auf 9000 und lies wieder ab (4737 — nur etwa die Hälfte). Schreibe einen Satz: Je mehr Teilchen kommen, desto mehr verliert das Rohr. Der Regler „Totzeit τ“ bleibt dabei auf 100 µs stehen. Achtung beim Ansagen: 250 ist KEIN Anschlag. Der Regler läuft von 10 bis 9000; ganz links stehen 10 /s wahr und 10 /s gemessen, also gar kein sichtbarer Verlust. Nur „ganz nach rechts“ ist ein Endanschlag.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Nachweis ionisierender Strahlung mit dem Zählrohr. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. E7 („Modelle auswählen und Modellgrenzen angeben“) liegt auf dieser Doppelseite an ZWEI gleichrangigen Stellen, und sie ist der EINZIGE Träger von E7 im ganzen Band (Seitenplan vom 05.09.2026) — fällt sie weg, verliert der Band die Kompetenz. Erste Stelle: Aufgabe 3, die Totzeit-Aufgabe. Die Lernenden geben an, dass das Messgerät selbst eine Grenze hat und bei starker Strahlung zu wenig zählt (2000 gegen 1667). Damit die Grenze nicht nur gedacht, sondern AUSGESPROCHEN wird, beginnt der Satzstarter mit „Das Zählrohr hat eine Grenze.“, der Erwartungshorizont verlangt Grenze UND Grund, und Selbstcheck 3 lautet „Ich kann eine Grenze nennen: In der Totzeit verpasst das Rohr Teilchen.“ Zweite Stelle: der Merksatz — „Bei etwa 450 V ist jeder Impuls gleich hoch. Dann zählt das Rohr nur noch, wie viele Teilchen kommen.“ Die Energieinformation ist damit weg, es bleibt die Anzahl; genau der Satz, den der Bildschirm mit „man zählt die ANZAHL der Teilchen“ hergibt. Beide Stellen sind Modellgrenzen des Messgeräts, keine ist bloß Beiwerk; Aufgabe 3 darf gekürzt, aber nicht gestrichen werden. Weiter: das Umschalten und Ablesen der zwei Bildschirmtabellen trägt E4 und E5, das EINTRAGEN der Messwerte in die Tabelle trägt K3 („Untersuchungen dokumentieren“) — im ganzen Band liegt K3 auf dem Ausfüllen der Tabelle, nicht auf dem Zuhause-Auftrag, denn „erkläre jemandem …“ wäre Präsentieren; der Vergleich der drei Teilchen trägt UF3, das Ankreuzen der Vermutung E3 („Hypothesen entwickeln“) — nicht UF1; eine Vermutung ist Erkenntnisgewinnung. Beim Zusammenführen bandweit gegenprüfen: fn2, fv2 und fv11 führen die Vermutung noch unter UF1. Fachwortzählung: NEU sind genau ZWEI Wörter — „Impulshöhe“ und „Totzeit“. „Impulshöhe“ steht am Bildschirm als Spaltenkopf und wird im Heft an fünf Stellen gebraucht: im Begriffssatz des Alltags („Wie hoch der Impuls ist, heißt Impulshöhe.“), in Arbeitsschritt 2 und im Beispiel als Name der Bildschirmspalte (Arbeitsschritt 3 verweist mit „dieselbe Spalte“ darauf, wiederholt das Wort also nicht), im Vortext der ersten Merksatz-Lücke und in der ersten Selbstcheck-Aussage. In einer LÜCKE steht es nirgends — die beiden Merksatz-Lücken heißen „ionisiert“ und „gleich“; wer die Zählung nachprüft, findet es im Merksatz also nur im Vortext, nicht in der Lücke. Die Tabellenköpfe tragen es seit dem 05.09.2026 NICHT mehr: Sie fragen „Wie hoch ist der Impuls bei etwa 200 V?“ / „… bei etwa 450 V?“ — wortgleich mit der Forscherfrage, dem Merksatz und Aufgabe 1 (Profilregel „immer dieselbe Bezeichnung für dieselbe Sache“; so auch die Quellanalyse rk5). Der Begriffssatz des Alltags ist die Brücke zwischen der Bildschirmspalte „Impulshöhe“ und der Heftspalte „Wie hoch ist der Impuls …“. „Totzeit“ bekommt seinen Begriffssatz in Aufgabe 3 („Nach jedem Impuls ist das Rohr kurz blind. Das heißt Totzeit.“) und steht danach in Hilfe 2 und in der dritten Selbstcheck-Aussage — NICHT in Hilfe 3: Dort steht nur die Lücke für „blind“. NICHT in der Wortbank: Dort stehen nur die vier Wörter, die wirklich in eine Lücke gehören — ionisiert, gleich, mittel, klein. Das Wort begegnet den Lernenden damit erst dort, wo es erklärt wird. „Totzeit“ wird hier eingeführt und NICHT in fn2: Nach Zählregel 3 führt die Einheit ein Wort ein, die es für eine Aufgabe braucht, und gebraucht wird es allein hier. fn2 darf das Wort deshalb nur als Bildschirmtext streifen, nicht in Merksatz, Wortbank oder Tabelle nehmen — bitte beim Zusammenführen gegenprüfen. „Zählrohr“ zählt nicht: Gerätename, in fn2 mit Begriffssatz eingeführt (Zählregel 2 und 4). Hier steht es nur als Rückverweis, weder in der Wortbank noch in einer Lücke. [PRÜFEN — Entscheidung Abdullah, nicht hier wegzuargumentieren] „Proportionalbereich“ und „Auslösebereich“ stehen hier zum ERSTEN Mal im Band: fn2 hat die fünf Bereichsnamen ausdrücklich gestrichen, um sein Fachwortlimit zu halten, und nennt die beiden Knöpfe nicht einmal. Auf dieser Seite stehen sie ausschließlich als wörtlich zitierte Knopfaufschrift und Bildschirmüberschrift — in den Arbeitsschritten 1 bis 3 und im Beispiel, sonst nirgends; Hilfe 1 nennt sie seit dem 05.09.2026 nicht mehr, sie beschreibt die richtige Überschrift nur noch über die Spannung —, nie in Wortbank, Merksatz, Tabelle oder Aufgabe, und sie werden nirgends erklärt. Weglassen lassen sie sich nicht: Ohne diese beiden Knöpfe ist die Simulation nicht bedienbar, und die Heft-gegen-Sim-Regel verlangt den Wortlaut des Bildschirms. Eine Zählregel, die Knopfaufschriften wie Gerätenamen behandelt, gibt es aber NICHT: Regel 2 gilt nur für Geräte, Regel 5 nur für Alltagswörter, und Regel 3 sagt ausdrücklich, dass auch ein Wort zählt, das nur am Bildschirm steht. Streng gezählt stünden damit vier neue Fachwörter auf der Seite. Solange nicht entschieden ist, bleibt „fachwoerter_neu“ bei den zwei Wörtern, die das Heft wirklich einführt (Impulshöhe, Totzeit). Zu entscheiden ist: Kommt eine sechste Zählregel für zitierte Knopf- und Feldaufschriften ins FOERDER_PROFIL.md (dann bitte rückwirkend auch in fn2s Begründung), oder muss eines der beiden Wörter aus dem Schülertext? Dieselbe Frage trifft „Totzeit“ an einer Stelle: Sein Begriffssatz steht in Aufgabe 3 auf Seite B, die Knopfaufschrift „4 · Totzeit & wahre Zählrate“ aber schon in Arbeitsschritt 4 auf Seite A — das Wort begegnet den Lernenden also einmal, bevor es erklärt wird. Gezählt wird es hier ohnehin (es ist eines der beiden neuen Fachwörter); offen ist nur, ob die Reihenfolge geändert werden soll. Ohne den Knopfnamen ist die Station nicht auffindbar. Als Milderung stehen beide Bereichsnamen auf dieser Seite immer zusammen mit ihrer Spannung („Proportionalbereich (~200 V)“, „Auslösebereich (~450 V)“), und die Hinweise für schwache Lernende sagen, dass sie nicht gemerkt werden müssen. Rückverweise statt Neueinführung: α, β, γ (fn3) · ionisieren (fn4) · Zählrohr, Impuls und die 450 V (fn2). Zu fn4 genau: Dort werden „ionisieren“ und „Ionenpaar“ eingeführt, gearbeitet wird durchgehend mit „dicht“. „stark“ steht in fn4 nur als Frageadverb („Wie stark ionisiert γ Gamma laut Anzeige?“), nie als Wert; „mittel“ kommt dort kein einziges Mal vor. Das Wortfeld stark/mittel/schwach ist im Band also nirgends als Wert eingeführt — deshalb holt der vierte Alltagssatz die Bildschirmform „α (stark)“ eigens ab und bindet sie an fn4s Wort: „α ionisiert stark, γ ionisiert schwach. Stark heißt: sehr dicht.“ Der Reglername „Zählrohrspannung U“ gehört zu fn2 und kommt auf dieser Schülerseite gar nicht vor. Im Merksatz, in der Tabelle und in den Aufgaben heißt es durchgehend „bei etwa 200 V“ und „bei etwa 450 V“. Bewusst nicht eingeführt, obwohl am Bildschirm sichtbar: Primärionisation, Stoßionisation, Lawine, Fensterzählrohr, Proportionalzähler, Plateau, Nullrate, Spannungsimpuls sowie Z = N·z und Zkor = Zmess / (1 − Zmess·τ). Für die mittlere Bildschirmspalte „Primärionisation z“ benutzt die Seite fn4s Begriff: wie dicht ein Teilchen ionisiert. Auch „Zählrate“ ist NICHT eingeführt: Der Ausdruck steht nur in der Knopfaufschrift „4 · Totzeit & wahre Zählrate“, also wie ein Knopfname; Aufgabe 3 spricht von 2000 Teilchen je Sekunde und von 1667. Die Zeitangabe muss dort stehen — ohne sie ist der Totzeitverlust gar nicht begründbar. „je Sekunde“ ist keine Einführung von „Zählrate“: kein Formelzeichen, keine Einheit, nicht in der Wortbank (Zählregel 5). Datenlage und Fallen: (1) Zwei Felder widersprechen sich. Drückt man „Proportionalbereich“, wechselt NUR das Feld mit der Modusüberschrift; das Feld daneben zeigt weiter „Bereich IV – Auslösebereich (Plateau)“, weil der Spannungsregler auf 450 stehen bleibt. Wer dort liest, trägt zweimal „gleich“ ein und die ganze Seite kippt. Deshalb nennen die Arbeitsschritte 2 UND 3 die zugehörige Modusüberschrift wörtlich, und Hilfe 1 gibt das Unterscheidungsmerkmal als Regel: Nur die Modusüberschrift trägt die Spannung („(~200 V)“ / „(~450 V)“), das Bereichsfeld daneben trägt „(Plateau)“. (2) Der letzte Satz des Modusfeldes bleibt in BEIDEN Zuständen stehen („Ein Zählrohr, das im Auslösebereich betrieben wird, heißt Fensterzählrohr.“). Er steht damit mitten im Proportionalbereich-Text und liest sich für DaZ-Lernende wie ein Widerspruch — im Heft wird er nicht zitiert, weisen Sie ihn beim Bedienen einmal als „gehört nicht dazu“ aus. (3) DaZ-Falle „gleich“: Am Bildschirm steht in derselben Spalte einmal groß/mittel/klein und einmal gleich. „gleich“ heißt hier gleich hoch, nicht sofort — einmal ausdrücklich ausschreiben (steht so in den Hinweisen für schwache Lernende). (4) Die Bildschirmtabelle hat DREI Spalten: Teilchen | Primärionisation z | Impulshöhe. Ins Heft gehört allein die letzte. Im Proportionalzustand tragen beide Datenspalten dasselbe (groß · mittel · klein) — eine Verwechslung bleibt dort folgenlos und fällt erst bei 450 V auf, wo neben „groß“ die Impulshöhe „gleich“ steht. Deshalb nennen Arbeitsschritt 2, Arbeitsschritt 3 und das Beispiel die Spalte beim Namen; „mittlere“ und „rechte Spalte“ meinen immer die HEFT-Tabelle. (5) Der Zähler zeigt „1 Impulse 2,0 /s im Mittel“. Die 1 ist ein Zwischenstand vor der Animation; die Seite fragt deshalb NIE „Wie viele Impulse zählst du?“. Belegt ist allein „2,0 /s im Mittel“, und dieser Wert ändert sich beim Umschalten nicht — er kommt auf der Schülerseite gar nicht vor, auch damit er nicht mit den 200 V verwechselt wird. Ebenso klebt das Rechenfeld der Station 4 Zeichen und Zahl zusammen: „Zwahr2000 /s“, „Totzeit τ100 µs“, „1667 /s“. Beim Ansagen und auf der Ergebniskarte einmal mit Leerzeichen ausschreiben — sonst wird „Zwahr2000“ als eine Zahl gelesen (dieselbe Falle hält fn2 für den Zähler fest). (6) [NACHMESSEN] Ob auch das BILD beim Umschalten die Balken ändert, ist nicht belegt: Der Faktendump enthält nur die Bildtexte des Auslösezustands (z = groß, z = mittel, z = klein, gleich). Die Arbeitsschritte verlangen deshalb ausschließlich „lies die Tabelle“, nie „vergleiche die Balken am Bildschirm“. Der Bildauftrag zeigt seit dem 05.09.2026 KEINEN Balkenvergleich mehr, sondern ein einzelnes Rohr mit einem einzelnen Impuls und der Frage „Wie hoch ist der Impuls?“. Grund: build_pilot.seite_a setzt das Einstiegsbild oben rechts auf SEITE A — über dem Vermutungskasten und über der Tabelle. Ein Bild mit drei verschieden hohen und drei gleich hohen Balken hätte dort Vermutung 2 widerlegt und beide Datenspalten beantwortet, bevor die Simulation offen ist; dass es die Wörter groß/mittel/klein/gleich nicht trägt, hilft nichts — die HÖHEN sind das Ergebnis. Der Balkenvergleich steht jetzt allein im Lehrerteil als Tafelbild und kommt erst nach dem Ausfüllen an die Tafel. (7) Am Bildschirm sind die Zeilenbeschriftungen Doppelangaben: α (stark), β (mittel), γ (schwach); das Regelheft schreibt „α (stark ionisierend)“ — eine dritte Form. Die HEFT-Tabelle führt deshalb nur α, β und γ. Zwei Gründe: Erstens stand mit „β (mittel)“ die Lösung von Aufgabe 2 abschreibbar in derselben Zeile, während dieselbe Bewegung bei γ („schwach“ statt „klein“) als Fehler geführt wird — das ist für die Zielgruppe nicht durchschaubar. Zweitens ist das Wortfeld stark/mittel/schwach im Band nirgends als Wert eingeführt. „mittel“ steht in der Heft-Tabelle also nirgends neben β und ist nicht aus der Zeile abschreibbar; in der Wortbank auf Seite B steht es sehr wohl (dort stehen genau die vier Lückenwörter). Aufgabe 2 wäre über die Wortbank durch Ausschluss lösbar — Seite B liegt beim Arbeiten an Seite A auf der Rückseite, geben Sie die Wortbank trotzdem erst frei, wenn die Tabelle steht. (8) Die 200 V sind KEINE Reglerstellung. „etwa 200 V“ steckt allein in der Knopfaufschrift und in der Modusüberschrift „Proportionalbereich (~200 V)“. Wer die Lernenden 200 am Spannungsregler einstellen lässt, bekommt trotzdem die Auslöse-Tabelle. Die Schülerseite erwähnt den Regler deshalb nirgends; die Kennlinie ist in fn2 erarbeitet. (9) Aufgabe 3 und die Zusatzaufgabe hängen an Station „4 · Totzeit & wahre Zählrate“. Belegt sind dort der Ausgangszustand (Zwahr 2000 /s, τ 100 µs, gemessen 1667 /s) und die Reglerstellungen der Zusatzaufgabe (250 → 244, 9000 → 4737). ACHTUNG: Der Wortlaut „wahre Zählrate“ steht auf ZWEI Reglern. Belegt sind 244 und 4737 allein für den Regler unter der Überschrift „Gemessene gegen wahre Zählrate“ (10 bis 9000, Schrittweite 10, Start 2000); der zweite Regler dieses Namens läuft von 200 bis 20000 mit Schrittweite 100, auf ihm ist 250 gar nicht einstellbar. Die Zusatzaufgabe sagt das dazu. Auf dem ersten Regler ist 250 eine Stellung, KEIN Anschlag — „ganz nach links“ zeigt 10 /s wahr und 10 /s gemessen. Nur „ganz nach rechts auf 9000“ ist als Endanschlag belegt. Nicht belegt und deshalb nicht verlangt: was die Station beim Zurückschalten anzeigt und ob die Tabelle von Station 3 danach noch gefüllt dasteht — die Arbeitsschritte gehen deshalb in der Reihenfolge 3 vor 4 und kehren nicht zurück. Arbeitsschritt 4 öffnet die Station nur noch; die beiden Zahlen stehen in Aufgabe 3 und mussten nicht zweimal abgelesen werden (Wortbudget). (10) Undruckbare Zeichen: Mehrere Knöpfe und die Überschrift der Simulation tragen Emoji (Anhalten, Messwert übernehmen, Beispielmessreihe, Tabelle leeren). SourceSans3 hat dafür keine Glyphe; sie werden nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Die Knopfnamen dieser Seite tragen nur Ziffern, das Zeichen · und das kaufmännische Und und sind geprüft druckbar. (11) Diese Doppelseite und fn2 teilen sich die Simulation, aber nicht das Lernziel: fn2 arbeitet die Spannungskennlinie, fn5 die Impulshöhe und die Totzeit. Keine Zusammenlegung — der Seitenplan hält N = 28 nur mit beiden Seiten im Korridor, und E7 hinge sonst an keiner Seite. (12) Antwortpositionen: predictOk und a1.richtig stehen hier beide auf 1. Vor dem Satz läuft seiten_nachbereiten.py und verteilt sie bandweit reihum; a1.weg und die typischen Fehler nennen deshalb keine Positionen, sondern nur den Wortlaut der Optionen."
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "seite": {
+  "id": "fw5",
+  "quelle": "ew6",
+  "sim": "sonnensystem",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Acht gleich große Kugeln",
+  "name": "Wie unterscheiden sich die Planeten?",
+  "fachwoerter_neu": [
+   "Gesteinsplanet",
+   "Gasriese"
+  ],
+  "alltag": [
+   "Auf einer Karte sind acht Kugeln gleich groß gemalt.",
+   "Nour stutzt: Jupiter genauso groß wie Merkur?",
+   "Ein Maß steht nirgends dabei.",
+   "Es gibt zwei Sorten: Gesteinsplaneten und Gasriesen."
+  ],
+  "frage": "Was unterscheidet die inneren Planeten von den äußeren?",
+  "predict": [
+   "Alle acht sind gleich gebaut: Gestein mit fester Oberfläche.",
+   "Innen kreisen kleine Gesteinsplaneten, außen sehr große Riesen aus Gas und Eis."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Steckbrief“ und lies für die Erde Sorte und Durchmesser ab.",
+   "Drücke „Größen“ und vergleiche die acht Planeten.",
+   "Drücke „Umlauf“ und „sehr schnell“. Wer kommt öfter herum: innen oder außen?",
+   "Trage deine Beobachtungen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ansicht",
+   "Was zeigt das Bild?",
+   "Das erkenne ich"
+  ],
+  "tabRows": [
+   [
+    "Steckbrief",
+    "Erde: Gesteinsplanet, feste Oberfläche",
+    "innen gibt es festen Boden"
+   ],
+   [
+    "Größen",
+    "",
+    ""
+   ],
+   [
+    "Umlauf",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Innen kreisen vier kleine",
+    "loesung": "Gesteinsplaneten",
+    "post": "mit fester Oberfläche."
+   },
+   {
+    "pre": "Außen kreisen Gasriesen und Eisriesen; sie sind viel",
+    "loesung": "größer",
+    "post": ". Je weiter außen, desto länger der Umlauf."
+   }
+  ],
+  "wortbank": [
+   "Gesteinsplaneten",
+   "Gasriesen",
+   "größer",
+   "Oberfläche",
+   "Umlauf"
+  ],
+  "beispiel": {
+   "frage": "Was sagt der Steckbrief über die Erde?",
+   "antwort": "Die Erde ist ein Gesteinsplanet mit fester Oberfläche. Ihr Durchmesser ist 12.756 km. Ein Umlauf um die Sonne dauert 1 Jahr."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was gilt für die äußeren Planeten?",
+    "optionen": [
+     "Sie sind sehr groß und haben keinen festen Boden.",
+     "Sie sind klein und aus Gestein.",
+     "Sie brauchen für einen Umlauf kürzer als die inneren."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die inneren Planeten haben eine feste",
+      "loesung": "Oberfläche",
+      "post": "."
+     },
+     {
+      "pre": "Je weiter außen ein Planet kreist, desto länger dauert sein",
+      "loesung": "Umlauf",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum kann man auf dem Jupiter nicht landen?",
+    "satzstarter": "Der Jupiter ist ein Gasriese …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Wortbank: Zwei Wörter nennen die zwei Planeten-Sorten.",
+   "h2": "Beginne so: Der Jupiter ist ein Gasriese. Er hat keinen festen …",
+   "h3": "Fast fertige Antwort: Der Jupiter ist ein Gasriese. Eine Rakete findet dort keinen festen ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die zwei Sorten von Planeten.",
+   "Ich weiß, wo die kleinen und wo die großen kreisen.",
+   "Ich kann die Umlauf-Regel sagen."
+  ],
+  "zuhause": "Lege acht verschieden große Früchte oder Kugeln in eine Reihe: vier kleine innen, vier große außen. Sprich die Planetennamen dazu.",
+  "bildauftrag": "[BILD: die Sonne links am Rand, danach die acht Planeten in einer Reihe mit deutlich verschiedenen Größen: vier kleine Kugeln, dann vier große; unter den inneren die große Beschriftung „Gesteinsplaneten“, unter Jupiter und Saturn „Gasriesen“, unter Uranus und Neptun „Eisriesen“; die Namen unter jedem Planeten; Hinweiszeile „Abstände nicht maßstäblich“; keine Bahnlinien; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw5",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden die vier inneren Gesteinsplaneten von den äußeren Gas- und Eisriesen und kennen die Regel: je weiter außen, desto länger der Umlauf.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ansichten aus diesem Lehrerteil als Karten. Optional: acht verschieden große Kugeln oder Früchte (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ansichten als Karten zeigen: Steckbrief Erde → Gesteinsplanet, feste Oberfläche, Durchmesser 12.756 km, Umlauf 1 Jahr · Größen → vier kleine innen, vier sehr große außen (gleicher Maßstab, Abstände stimmen dort nicht) · Umlauf → die inneren Planeten kommen viel öfter herum als die äußeren.",
+  "merksatz": [
+   "Gesteinsplaneten",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Größen",
+    "vier kleine innen, vier große außen",
+    "die Sorten sind verschieden groß"
+   ],
+   [
+    "Umlauf",
+    "innen kommen die Planeten öfter herum",
+    "je weiter außen, desto länger der Umlauf"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Hinweis der Simulation: außen zwei Gasriesen und zwei Eisriesen – viel größer, ohne festen Boden.",
+   "typische_fehler": [
+    "Die Umlauf-Regel wird umgedreht: außen soll es schneller gehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Oberfläche",
+    "Umlauf"
+   ],
+   "typische_fehler": [
+    "„Boden“ statt der Wortbank-Form „Oberfläche“.",
+    "Umlauf und Drehung werden verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Jupiter ist ein Gasriese. Er hat keine feste Oberfläche. Eine Rakete findet dort keinen festen Boden zum Landen.",
+   "alternativen": [
+    "Vergleich mit dem Erd-Steckbrief: Die Erde hat eine feste Oberfläche, der Jupiter nicht.",
+    "Verweis auf die Größen-Ansicht: Gasriesen sind anders gebaut."
+   ],
+   "typische_fehler": [
+    "„Der Jupiter ist zu weit weg“ – die Entfernung wird statt des fehlenden Bodens genannt.",
+    "Gasriese wird als „Planet mit viel Wind“ gedeutet."
+   ]
+  },
+  "hilfe3_wort": "Boden (auch richtig: Oberfläche)",
+  "schwache": [
+   "Nur die Ansichten Steckbrief und Größen bearbeiten lassen, Umlauf danach.",
+   "Die acht Namen einmal laut in der Reihenfolge sprechen lassen.",
+   "Die Früchte-Reihe aus dem Zuhause-Auftrag im Unterricht legen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Abstände“. Warum können Größen und Abstände nie gleichzeitig maßstäblich sein? Lies die Zeile unter dem Bild.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Sonnensystem. Kompetenz E7 wie auf der Quellseite ew6. Von den sechs Fachwörtern des Regelhefts bleiben bewusst zwei; Dichte und Asteroidengürtel entfallen."
+ }
+}

@@ -1,0 +1,539 @@
+[
+ {
+  "sim": "kraefte-addieren",
+  "ueberschrift": "➕ Was passiert, wenn zwei Kräfte gleichzeitig ziehen?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "– N",
+    "ruft": "_kadB(1,-1)"
+   },
+   {
+    "aufschrift": "+ N",
+    "ruft": "_kadB(1,1)"
+   },
+   {
+    "aufschrift": "⇄ Richtung",
+    "ruft": "_kadDir(1)"
+   },
+   {
+    "aufschrift": "– N",
+    "ruft": "_kadB(2,-1)"
+   },
+   {
+    "aufschrift": "+ N",
+    "ruft": "_kadB(2,1)"
+   },
+   {
+    "aufschrift": "⇄ Richtung",
+    "ruft": "_kadDir(2)"
+   },
+   {
+    "aufschrift": "5 N",
+    "ruft": "_kadAns(0,0)"
+   },
+   {
+    "aufschrift": "1 N",
+    "ruft": "_kadAns(0,1)"
+   },
+   {
+    "aufschrift": "6 N",
+    "ruft": "_kadAns(0,2)"
+   },
+   {
+    "aufschrift": "2 N",
+    "ruft": "_kadAns(1,0)"
+   },
+   {
+    "aufschrift": "8 N",
+    "ruft": "_kadAns(1,1)"
+   },
+   {
+    "aufschrift": "0 N",
+    "ruft": "_kadAns(1,2)"
+   },
+   {
+    "aufschrift": "0 N (Gleichgewicht)",
+    "ruft": "_kadAns(2,0)"
+   },
+   {
+    "aufschrift": "doppelt so groß",
+    "ruft": "_kadAns(2,1)"
+   },
+   {
+    "aufschrift": "die Hälfte",
+    "ruft": "_kadAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_kadSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_kadSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_kadSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('kraefteadd')"
+   }
+  ],
+  "hinweise": [
+   "Zwei Kräfte wirken an einem Körper. Stelle Betrag und Richtung ein. Welche Gesamtkraft ergibt sich?",
+   "Wirken Kräfte längs einer Linie, so rechnet man sie zusammen: gleiche Richtung → addieren, entgegengesetzt → subtrahieren. Das Ergebnis ist die Gesamtkraft (Resultierende). Sind zwei gleich große Kräfte entgegengesetzt, ist die Gesamtkraft 0.",
+   "Zwei Schlepper in dieselbe Richtung ziehen stärker · beim Tauziehen zählt die Differenz."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N."
+   },
+   {
+    "einstellung": "– N",
+    "text": "kadStatus: F1 = 2 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 4 N nach rechts. Beide zeigen rechts → addieren: 2 N + 2 N = 4 N."
+   },
+   {
+    "einstellung": "– N · nach 50 Frames",
+    "text": "kadStatus: F1 = 2 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 4 N nach rechts. Beide zeigen rechts → addieren: 2 N + 2 N = 4 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|308.00,200.00 | stroke| | beginPath| | moveTo|308.00,200.00 | lineTo|300.98,203.84 | lineTo|300.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 4 N|264.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 75 Frames",
+    "text": "kadStatus: F1 = 2 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 4 N nach rechts. Beide zeigen rechts → addieren: 2 N + 2 N = 4 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|308.00,200.00 | stroke| | beginPath| | moveTo|308.00,200.00 | lineTo|300.98,203.84 | lineTo|300.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 4 N|264.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 100 Frames",
+    "text": "kadStatus: F1 = 2 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 4 N nach rechts. Beide zeigen rechts → addieren: 2 N + 2 N = 4 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|308.00,200.00 | stroke| | beginPath| | moveTo|308.00,200.00 | lineTo|300.98,203.84 | lineTo|300.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 4 N|264.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 125 Frames",
+    "text": "kadStatus: F1 = 2 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 4 N nach rechts. Beide zeigen rechts → addieren: 2 N + 2 N = 4 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|308.00,200.00 | stroke| | beginPath| | moveTo|308.00,200.00 | lineTo|300.98,203.84 | lineTo|300.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 4 N|264.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N."
+   },
+   {
+    "einstellung": "+ N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|330.00,200.00 | stroke| | beginPath| | moveTo|330.00,200.00 | lineTo|322.98,203.84 | lineTo|322.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|275.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|330.00,200.00 | stroke| | beginPath| | moveTo|330.00,200.00 | lineTo|322.98,203.84 | lineTo|322.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|275.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|330.00,200.00 | stroke| | beginPath| | moveTo|330.00,200.00 | lineTo|322.98,203.84 | lineTo|322.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|275.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (rechts), F2 = 2 N (rechts). Gesamtkraft = 5 N nach rechts. Beide zeigen rechts → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|330.00,200.00 | stroke| | beginPath| | moveTo|330.00,200.00 | lineTo|322.98,203.84 | lineTo|322.98,196.16 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|275.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links."
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 1 N (rechts). Gesamtkraft = 2 N nach links. Entgegengesetzt → subtrahieren: |3 N − 1 N| = 2 N nach links."
+   },
+   {
+    "einstellung": "– N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 1 N (rechts). Gesamtkraft = 2 N nach links. Entgegengesetzt → subtrahieren: |3 N − 1 N| = 2 N nach links.",
+    "bild": "moveTo|242.00,106.00 | lineTo|234.98,109.84 | lineTo|234.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 1 N|231.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|176.00,200.00 | stroke| | beginPath| | moveTo|176.00,200.00 | lineTo|183.02,196.16 | lineTo|183.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 2 N|198.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 1 N (rechts). Gesamtkraft = 2 N nach links. Entgegengesetzt → subtrahieren: |3 N − 1 N| = 2 N nach links.",
+    "bild": "moveTo|242.00,106.00 | lineTo|234.98,109.84 | lineTo|234.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 1 N|231.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|176.00,200.00 | stroke| | beginPath| | moveTo|176.00,200.00 | lineTo|183.02,196.16 | lineTo|183.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 2 N|198.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 1 N (rechts). Gesamtkraft = 2 N nach links. Entgegengesetzt → subtrahieren: |3 N − 1 N| = 2 N nach links.",
+    "bild": "moveTo|242.00,106.00 | lineTo|234.98,109.84 | lineTo|234.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 1 N|231.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|176.00,200.00 | stroke| | beginPath| | moveTo|176.00,200.00 | lineTo|183.02,196.16 | lineTo|183.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 2 N|198.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "– N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 1 N (rechts). Gesamtkraft = 2 N nach links. Entgegengesetzt → subtrahieren: |3 N − 1 N| = 2 N nach links.",
+    "bild": "moveTo|242.00,106.00 | lineTo|234.98,109.84 | lineTo|234.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 1 N|231.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|176.00,200.00 | stroke| | beginPath| | moveTo|176.00,200.00 | lineTo|183.02,196.16 | lineTo|183.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 2 N|198.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links."
+   },
+   {
+    "einstellung": "+ N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "+ N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (rechts). Gesamtkraft = 1 N nach links. Entgegengesetzt → subtrahieren: |3 N − 2 N| = 1 N nach links.",
+    "bild": "moveTo|264.00,106.00 | lineTo|256.98,109.84 | lineTo|256.98,102.16 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|242.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|198.00,200.00 | stroke| | beginPath| | moveTo|198.00,200.00 | lineTo|205.02,196.16 | lineTo|205.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 1 N|209.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N."
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "⇄ Richtung · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "5 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✓ Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N."
+   },
+   {
+    "einstellung": "5 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✓ Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "5 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✓ Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "5 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✓ Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "5 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✓ Richtig! Gleiche Richtung → addieren: 3 N + 2 N = 5 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "1 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Subtrahiert wird nur bei entgegengesetzter Richtung."
+   },
+   {
+    "einstellung": "1 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Subtrahiert wird nur bei entgegengesetzter Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "1 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Subtrahiert wird nur bei entgegengesetzter Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "1 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Subtrahiert wird nur bei entgegengesetzter Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "1 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Subtrahiert wird nur bei entgegengesetzter Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "6 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert."
+   },
+   {
+    "einstellung": "6 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "6 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "6 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "6 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "2 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✓ Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N."
+   },
+   {
+    "einstellung": "2 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✓ Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "2 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✓ Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "2 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✓ Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "2 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✓ Richtig! Entgegengesetzt → subtrahieren: 5 N − 3 N = 2 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "8 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Addiert wird nur bei gleicher Richtung."
+   },
+   {
+    "einstellung": "8 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Addiert wird nur bei gleicher Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "8 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Addiert wird nur bei gleicher Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "8 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Addiert wird nur bei gleicher Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "8 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Addiert wird nur bei gleicher Richtung.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften."
+   },
+   {
+    "einstellung": "0 N · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N (Gleichgewicht)",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✓ Richtig! Sie heben sich auf – Gesamtkraft 0 N."
+   },
+   {
+    "einstellung": "0 N (Gleichgewicht) · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✓ Richtig! Sie heben sich auf – Gesamtkraft 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N (Gleichgewicht) · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✓ Richtig! Sie heben sich auf – Gesamtkraft 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N (Gleichgewicht) · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✓ Richtig! Sie heben sich auf – Gesamtkraft 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "0 N (Gleichgewicht) · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✓ Richtig! Sie heben sich auf – Gesamtkraft 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "doppelt so groß",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie heben sich gegenseitig auf."
+   },
+   {
+    "einstellung": "doppelt so groß · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie heben sich gegenseitig auf.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "doppelt so groß · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie heben sich gegenseitig auf.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "doppelt so groß · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie heben sich gegenseitig auf.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "doppelt so groß · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie heben sich gegenseitig auf.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "die Hälfte",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N."
+   },
+   {
+    "einstellung": "die Hälfte · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "die Hälfte · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "die Hälfte · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "die Hälfte · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.  ||  kadSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "kadStatus: F1 = 3 N (links), F2 = 2 N (links). Gesamtkraft = 5 N nach links. Beide zeigen links → addieren: 3 N + 2 N = 5 N.  ||  kadFb0: ✗ Es wird addiert, nicht multipliziert.  ||  kadFb1: ✗ Null wäre es nur bei gleich großen Kräften.  ||  kadFb2: ✗ Nein, sie ergeben zusammen 0 N.",
+    "bild": "moveTo|176.00,106.00 | lineTo|183.02,102.16 | lineTo|183.02,109.84 | closePath| | fill| | set:fillStyle=#f59e0b | set:font=700 12px sans-serif | set:textAlign=center | fillText|F2 = 2 N|198.00|98.00 | set:strokeStyle=#e2e8f0 | set:lineWidth=1 | beginPath| | moveTo|20.00,150.00 | lineTo|420.00,150.00 | stroke| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Gesamtkraft:|24.00|176.00 | set:strokeStyle=#22c55e | set:fillStyle=#22c55e | set:lineWidth=3 | beginPath| | moveTo|220.00,200.00 | lineTo|110.00,200.00 | stroke| | beginPath| | moveTo|110.00,200.00 | lineTo|117.02,196.16 | lineTo|117.02,203.84 | closePath| | fill| | set:fillStyle=#22c55e | set:font=700 12px sans-serif | set:textAlign=center | fillText|F = 5 N|165.00|192.00 | set:fillStyle=#0f172a | beginPath| | arc|220.00,200.00,3.00,0.00,6.28 | fill|"
+   }
+  ],
+  "bildtexte": [
+   "F1 = 3 N",
+   "F2 = 2 N",
+   "Gesamtkraft:",
+   "F = 5 N",
+   "F1 = 2 N",
+   "F = 4 N",
+   "F = 1 N",
+   "F2 = 1 N",
+   "F = 2 N"
+  ]
+ }
+]

@@ -1,0 +1,64 @@
+[
+ {
+  "sim": "arbeit",
+  "ueberschrift": "💪 Wann leistet man wirklich Arbeit?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Schieben",
+    "ruft": "_arbSet('schieben')"
+   },
+   {
+    "aufschrift": "Waagerecht tragen",
+    "ruft": "_arbSet('tragen')"
+   },
+   {
+    "aufschrift": "Hochheben",
+    "ruft": "_arbSet('heben')"
+   },
+   {
+    "aufschrift": "▶ Ausführen",
+    "ruft": "_arbGo()"
+   }
+  ],
+  "hinweise": [
+   "Drei Situationen mit derselben Kiste. Stelle die Werte ein, drücke „Ausführen“ und vergleiche, wie viel Arbeit dabei herauskommt.",
+   "Arbeit gibt es nur, wenn die Kraft in Wegrichtung zeigt. Beim Tragen zeigt die Kraft nach oben, der Weg nach vorn – die Arbeit ist null, so anstrengend es sich auch anfühlt.",
+   "W = F · s | 1 Joule = 1 Newton · 1 Meter | Hubarbeit: W = m · g · h"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "arbRegler: Schiebekraft F: 100 Weg s: 4  ||  arbStatus: Du schiebst mit 100 N über 4 m. | Arbeit W = 100 N · 4 m = 400 J"
+   },
+   {
+    "einstellung": "Schieben",
+    "text": "arbRegler: Schiebekraft F: 100 Weg s: 4  ||  arbStatus: Du schiebst mit 100 N über 4 m. | Arbeit W = 100 N · 4 m = 400 J"
+   },
+   {
+    "einstellung": "Waagerecht tragen",
+    "text": "arbRegler: Masse der Kiste m: 20 getragener Weg s: 4  ||  arbStatus: Du hältst 196 N (20 kg) und gehst 4 m geradeaus. | Die Kraft zeigt nach oben, der Weg nach vorn. | Arbeit W = 0 J – physikalisch keine Arbeit."
+   },
+   {
+    "einstellung": "Hochheben",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "▶ Ausführen",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   }
+  ],
+  "bildtexte": [
+   "Kraft F",
+   "Weg s",
+   "Kiste über den Boden schieben",
+   "verrichtete Arbeit: 400 J",
+   "Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet",
+   "Kiste waagerecht tragen",
+   "verrichtete Arbeit: 0 J",
+   "Kraft ↑ und Weg → stehen senkrecht zueinander → W = 0",
+   "Kiste hochheben",
+   "verrichtete Arbeit: 392 J"
+  ]
+ }
+]

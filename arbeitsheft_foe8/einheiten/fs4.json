@@ -1,0 +1,203 @@
+{
+ "seite": {
+  "id": "fs4",
+  "quelle": "st4",
+  "sim": "stromstaerke",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Wie viel fließt da?",
+  "name": "Wie viel Strom fließt?",
+  "fachwoerter_neu": [
+   "Stromstärke I in Ampere (A)",
+   "Stromkreis (offen und geschlossen)"
+  ],
+  "alltag": [
+   "Über der Werkbank hängt eine Lampe an einer 4,5-V-Batterie.",
+   "Nour drückt den Schalter, und das Licht geht sofort aus.",
+   "Im Stromkreis liegt ein Messgerät für den Strom.",
+   "So ein Messgerät heißt Amperemeter."
+  ],
+  "frage": "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
+  "predict": [
+   "Bei offenem Kreis fließt noch ein kleiner Rest Strom weiter.",
+   "Bei offenem Kreis zeigt das Amperemeter sofort 0 A."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „mittel“ und trage die Stromstärke I in die Tabelle ein.",
+   "Drücke „stark“ und trage die Stromstärke I ein.",
+   "Drücke den Knopf „Schalter: geschlossen“. Damit öffnest du den Kreis.",
+   "Lies die Stromstärke ab und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die Stromstärke I?",
+   "Ist der Kreis offen oder geschlossen?"
+  ],
+  "tabRows": [
+   [
+    "Strom schwach",
+    "0,10 A",
+    "geschlossen"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "stark",
+    "",
+    ""
+   ],
+   [
+    "Schalter: geschlossen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Stromstärke I misst man in",
+    "loesung": "Ampere (A)",
+    "post": "."
+   },
+   {
+    "pre": "Ist der Stromkreis offen, fließt",
+    "loesung": "kein Strom",
+    "post": ", die Lampe bleibt dunkel."
+   }
+  ],
+  "wortbank": [
+   "Ampere (A)",
+   "kein Strom",
+   "0,60 A",
+   "geschlossen"
+  ],
+  "beispiel": {
+   "frage": "Bei welcher Einstellung fließt der meiste Strom?",
+   "antwort": "Bei „stark“ fließt der meiste Strom. Das Amperemeter zeigt dort 0,60 A. Bei „Strom schwach“ sind es nur 0,10 A. 0,60 A ist mehr als 0,10 A."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt das Amperemeter, wenn der Kreis offen ist?",
+    "optionen": [
+     "0 A – es fließt kein Strom.",
+     "0,10 A – es fließt noch ganz wenig Strom.",
+     "0,30 A – so viel wie am Anfang."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei „stark“ zeigt das Amperemeter",
+      "loesung": "0,60 A",
+      "post": "."
+     },
+     {
+      "pre": "Nur wenn der Stromkreis",
+      "loesung": "geschlossen",
+      "post": "ist, fließt Strom durch die Lampe."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der Strom wartet im Kabel, bis der Schalter wieder schließt.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Im offenen Stromkreis …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Im offenen Stromkreis fehlt der Weg für die Ladungen. Darum …",
+   "h3": "Fast fertige Antwort: Im offenen Stromkreis fehlt der Weg. Die Ladungen wandern nicht mehr. Ergänze den letzten Satz: Das Amperemeter zeigt dann ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Stromstärke I am Amperemeter ablesen.",
+   "Ich kann 0,10 A, 0,30 A und 0,60 A der Größe nach ordnen.",
+   "Ich kann erklären, warum im offenen Stromkreis 0 A fließt."
+  ],
+  "zuhause": "Suche zu Hause einen Lichtschalter. Schalte das Licht an und wieder aus. Der Schalter schließt und öffnet den Stromkreis. Schreibe auf, wann die Lampe leuchtet.",
+  "bildauftrag": "[BILD: einfaches Schaltbild in zwei großen Feldern nebeneinander, kräftige Linien, heller ruhiger Hintergrund. Links: geschlossener Stromkreis aus 4,5-V-Batterie, geschlossenem Schalter, Lampe und rundem Messgerät mit großem A; die Lampe leuchtet, am Messgerät steht groß „0,30 A“, darunter die Beschriftung „Kreis geschlossen“. Rechts: derselbe Kreis, aber der Schalter ist deutlich geöffnet und die Lücke im Draht gut sichtbar; die Lampe ist dunkel, am Messgerät steht groß „0 A“, darunter „Kreis offen“. Je Feld nur diese eine Leitungsschleife, keine zusätzlichen Drähte, keine Pfeile ins Leere, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fs4",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Stromstärke I in Ampere (A) am Amperemeter ab, ordnen die Werte 0,10 A, 0,30 A und 0,60 A der Größe nach und begründen, dass im offenen Stromkreis I = 0 A ist, weil die Ladungen keinen Weg mehr haben. Die Ladungen sind dabei nicht verbraucht, sie wandern nur nicht weiter.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: 4,5-V-Batterie, Lampe, Schalter und Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Bildschirm-Ergebnisse als vier Karten zeigen oder vorlesen: „Strom schwach“ → Stromstärke I = 0,10 A, Kreis geschlossen · „mittel“ → I = 0,30 A, Kreis geschlossen · „stark“ → I = 0,60 A, Kreis geschlossen · Knopf „Schalter: geschlossen“ gedrückt → „Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel.“ Als Tafelbild genügt dasselbe Schaltbild zweimal: einmal geschlossen mit 0,30 A, einmal offen mit 0 A. Ein echter Aufbau aus 4,5-V-Batterie, Lampe, Schalter und Amperemeter zeigt die vierte Karte live.",
+  "merksatz": [
+   "Ampere (A)",
+   "kein Strom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "0,30 A",
+    "geschlossen"
+   ],
+   [
+    "stark",
+    "0,60 A",
+    "geschlossen"
+   ],
+   [
+    "Schalter: geschlossen",
+    "0 A",
+    "offen"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Drücken des Knopfes „Schalter: geschlossen“ meldet die Statuszeile: „Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel.“ Im Schaltbild steht dann 0 A am Messgerät.",
+   "typische_fehler": [
+    "0,10 A wird angekreuzt, weil ein kleiner Rest Strom im Kabel vermutet wird.",
+    "0,30 A wird angekreuzt, weil der Startwert der Simulation im Kopf bleibt.",
+    "0 A wird als „das Gerät zeigt nichts an“ gelesen statt als gemessene Null."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,60 A",
+    "geschlossen"
+   ],
+   "typische_fehler": [
+    "0,10 A und 0,60 A werden vertauscht: 0,10 gilt als größer, weil dort eine 10 steht.",
+    "„offen“ statt „geschlossen“ – die beiden Wörter werden verwechselt.",
+    "Die Schlussnull wird weggelassen und aus 0,60 A wird 0,6 A geschrieben; sachlich richtig, aber die Simulation zeigt 0,60 A."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im offenen Stromkreis fehlt der Weg für die Ladungen. Die Ladungen wandern nicht mehr weiter. Das Amperemeter zeigt 0 A. Der Strom wartet nicht im Kabel.",
+   "alternativen": [
+    "Verweis auf die Meldung der Simulation: „Der Kreis ist offen – es fließen keine Ladungen.“",
+    "Die Ladungen sind noch da, sie bewegen sich nur nicht mehr; verbraucht wird nichts.",
+    "Der Schalter macht eine Lücke in den Kreis, und durch eine Lücke kommt nichts hindurch."
+   ],
+   "typische_fehler": [
+    "„Der Strom ist alle“ – Strom wird als Vorrat gedacht, der aufgebraucht wird.",
+    "Jannis’ Satz wird nur wiederholt, ohne den fehlenden Weg zu nennen.",
+    "Die Batterie wird für leer erklärt, obwohl sie weiter angeschlossen ist."
+   ]
+  },
+  "hilfe3_wort": "0 A (auch richtig: null Ampere)",
+  "schwache": [
+   "Zuerst nur „Strom schwach“ und den Schalter vergleichen; „mittel“ und „stark“ erst danach ergänzen.",
+   "Die drei Werte 0,10 A, 0,30 A und 0,60 A groß auf Karten schreiben und der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und den Wert am Bildschirm wiederfinden lassen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Den Knopf gemeinsam suchen: Er trägt die Aufschrift „Schalter: geschlossen“ und öffnet den Kreis erst beim Drücken."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die richtige Antwort zur letzten Frage ab.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Stromstärke I und der offene/geschlossene Stromkreis. Kompetenz E2 aus der Quellseite st4. Die Messposition „in Reihe“ bleibt bewusst fs5 vorbehalten. Kompetenzcodes stehen nur hier, nicht auf der Schülerseite."
+ }
+}

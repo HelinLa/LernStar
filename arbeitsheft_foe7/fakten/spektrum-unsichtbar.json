@@ -1,0 +1,285 @@
+[
+ {
+  "sim": "spektrum-unsichtbar",
+  "ueberschrift": "🌈 Welches Licht sehen wir nicht?",
+  "regler": [
+   {
+    "id": "uvlNm",
+    "beschriftung": "Stelle im Spektrum: 700 nm",
+    "bereich": {
+     "min": "300",
+     "max": "1100",
+     "step": "5",
+     "start": "700"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "310 nm – Sonnenbrand",
+    "ruft": "_uvlSprung(310)"
+   },
+   {
+    "aufschrift": "365 nm – Schwarzlicht",
+    "ruft": "_uvlSprung(365)"
+   },
+   {
+    "aufschrift": "555 nm – Grün",
+    "ruft": "_uvlSprung(555)"
+   },
+   {
+    "aufschrift": "700 nm – letztes Rot",
+    "ruft": "_uvlSprung(700)"
+   },
+   {
+    "aufschrift": "940 nm – Fernbedienung",
+    "ruft": "_uvlSprung(940)"
+   }
+  ],
+  "hinweise": [
+   "Ein Prisma fächert Sonnenlicht auf. Das Auge sieht nur einen schmalen Streifen davon – von Violett bis Rot. Schiebe das Thermometer über das ganze Band, auch über die Ränder hinaus, und sieh nach, wo es am stärksten steigt.",
+   "Warum wird es hinter Rot am wärmsten? Ein Prisma spreizt blaues Licht weit auseinander, rotes und infrarotes kaum. Rechts drängt sich die Energie deshalb auf wenigen Millimetern zusammen – dort steht das Thermometer im Dichtesten.",
+   "Modellgrenze: Gerechnet wird mit der Sonne als 5778 K heißem Körper und einem Prisma aus Quarzglas. Die Luft schluckt einen Teil des UV, Fensterglas fast alles – deshalb bekommt man hinter einer Scheibe keinen Sonnenbrand. Jenseits von 1100 nm ginge die Erwärmung noch weiter hinauf; dort lässt aber auch Quarzglas nicht mehr alles durch.",
+   "Links vom Violett: Ultraviolett · rechts vom Rot: Infrarot · beides ist Licht, beides sieht man nicht"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "uvlStatus: Wellenlänge: 700 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 62 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "310 nm – Sonnenbrand",
+    "text": "uvlStatus: Wellenlänge: 310 nm – Bereich: UV-B | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie an der Haut – dieser Anteil macht den Sonnenbrand. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 3 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-B bildet in der Haut Vitamin D, verbrennt sie aber auch. Sonnencreme hält genau diesen Bereich zurück."
+   },
+   {
+    "einstellung": "365 nm – Schwarzlicht",
+    "text": "uvlStatus: Wellenlänge: 365 nm – Bereich: UV-A | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Leuchtstoff – Waschmittel im Hemd leuchtet unter Schwarzlicht. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 8 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-A lässt Sicherheitsmerkmale auf Geldscheinen aufleuchten und bräunt die Haut."
+   },
+   {
+    "einstellung": "555 nm – Grün",
+    "text": "uvlStatus: Wellenlänge: 555 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 38 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "700 nm – letztes Rot",
+    "text": "uvlStatus: Wellenlänge: 700 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 62 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "940 nm – Fernbedienung",
+    "text": "uvlStatus: Wellenlänge: 940 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 90 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 300",
+    "text": "uvlStatus: Wellenlänge: 300 nm – Bereich: UV-B | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie an der Haut – dieser Anteil macht den Sonnenbrand. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 3 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-B bildet in der Haut Vitamin D, verbrennt sie aber auch. Sonnencreme hält genau diesen Bereich zurück."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 400",
+    "text": "uvlStatus: Wellenlänge: 400 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 13 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 500",
+    "text": "uvlStatus: Wellenlänge: 500 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 29 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 600",
+    "text": "uvlStatus: Wellenlänge: 600 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 46 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 700",
+    "text": "uvlStatus: Wellenlänge: 700 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 62 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 800",
+    "text": "uvlStatus: Wellenlänge: 800 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 76 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 900",
+    "text": "uvlStatus: Wellenlänge: 900 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 86 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 1000",
+    "text": "uvlStatus: Wellenlänge: 1000 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 94 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 1100",
+    "text": "uvlStatus: Wellenlänge: 1100 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 100 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 325",
+    "text": "uvlStatus: Wellenlänge: 325 nm – Bereich: UV-A | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Leuchtstoff – Waschmittel im Hemd leuchtet unter Schwarzlicht. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 5 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-A lässt Sicherheitsmerkmale auf Geldscheinen aufleuchten und bräunt die Haut."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 350",
+    "text": "uvlStatus: Wellenlänge: 350 nm – Bereich: UV-A | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Leuchtstoff – Waschmittel im Hemd leuchtet unter Schwarzlicht. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 7 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-A lässt Sicherheitsmerkmale auf Geldscheinen aufleuchten und bräunt die Haut."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 375",
+    "text": "uvlStatus: Wellenlänge: 375 nm – Bereich: UV-A | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Leuchtstoff – Waschmittel im Hemd leuchtet unter Schwarzlicht. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 10 % von dem, was bei 1100 nm ankommt. | Im Ultravioletten wärmt es kaum – gefährlich ist dieser Bereich nicht wegen der Wärme, sondern weil jedes einzelne Lichtteilchen so viel Energie trägt. | | UV-A lässt Sicherheitsmerkmale auf Geldscheinen aufleuchten und bräunt die Haut."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 425",
+    "text": "uvlStatus: Wellenlänge: 425 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 16 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 450",
+    "text": "uvlStatus: Wellenlänge: 450 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 20 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 475",
+    "text": "uvlStatus: Wellenlänge: 475 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 24 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 525",
+    "text": "uvlStatus: Wellenlänge: 525 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 33 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 550",
+    "text": "uvlStatus: Wellenlänge: 550 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 37 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 575",
+    "text": "uvlStatus: Wellenlänge: 575 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 42 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 625",
+    "text": "uvlStatus: Wellenlänge: 625 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 50 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 650",
+    "text": "uvlStatus: Wellenlänge: 650 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 54 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 675",
+    "text": "uvlStatus: Wellenlänge: 675 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 58 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 725",
+    "text": "uvlStatus: Wellenlänge: 725 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 66 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 750",
+    "text": "uvlStatus: Wellenlänge: 750 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 69 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 775",
+    "text": "uvlStatus: Wellenlänge: 775 nm – Bereich: sichtbares Licht | | Das Auge sieht diese Stelle. | Nachweisen kann man sie mit dem Auge. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 73 % von dem, was bei 1100 nm ankommt. | Zum Vergleich die beiden Ränder des Sichtbaren: Violett (400 nm) wärmt mit 13 %, Rot (700 nm) mit 62 %. Nach Rot hin wird es also wärmer. | | Nur dieser schmale Streifen erreicht die Sehzellen im Auge."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 825",
+    "text": "uvlStatus: Wellenlänge: 825 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 79 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 850",
+    "text": "uvlStatus: Wellenlänge: 850 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 81 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 875",
+    "text": "uvlStatus: Wellenlänge: 875 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 84 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 925",
+    "text": "uvlStatus: Wellenlänge: 925 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 88 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 950",
+    "text": "uvlStatus: Wellenlänge: 950 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 91 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 975",
+    "text": "uvlStatus: Wellenlänge: 975 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 92 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 1025",
+    "text": "uvlStatus: Wellenlänge: 1025 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 96 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 1050",
+    "text": "uvlStatus: Wellenlänge: 1050 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 97 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   },
+   {
+    "einstellung": "Stelle im Spektrum: 700 nm = 1075",
+    "text": "uvlStatus: Wellenlänge: 1075 nm – Bereich: Infrarot | | Das Auge sieht hier nichts. Die Stelle ist trotzdem hell – nur nicht für uns. | Nachweisen kann man sie mit einem Thermometer oder einer Wärmebildkamera. | | Was das Thermometer anzeigt | Erwärmung an dieser Stelle: 99 % von dem, was bei 1100 nm ankommt. | Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist. Genau das hat Herschel 1800 entdeckt. | | Die Fernbedienung sendet bei 940 nm. Die Handykamera sieht diesen Blitz – dein Auge nicht."
+   }
+  ],
+  "bildtexte": [
+   "Sonnenlicht",
+   "Quarzglas",
+   "380",
+   "780",
+   "◀ UV – unsichtbar",
+   "Infrarot – unsichtbar ▶",
+   "62 %",
+   "700 nm · sichtbares Licht",
+   "3 %",
+   "310 nm · UV-B",
+   "8 %",
+   "365 nm · UV-A",
+   "38 %",
+   "555 nm · sichtbares Licht",
+   "90 %",
+   "940 nm · Infrarot",
+   "300 nm · UV-B",
+   "13 %",
+   "400 nm · sichtbares Licht",
+   "29 %",
+   "500 nm · sichtbares Licht",
+   "46 %",
+   "600 nm · sichtbares Licht",
+   "76 %",
+   "800 nm · Infrarot",
+   "86 %",
+   "900 nm · Infrarot",
+   "94 %",
+   "1000 nm · Infrarot",
+   "100 %",
+   "1100 nm · Infrarot",
+   "5 %",
+   "325 nm · UV-A",
+   "7 %",
+   "350 nm · UV-A",
+   "10 %",
+   "375 nm · UV-A",
+   "16 %",
+   "425 nm · sichtbares Licht",
+   "20 %",
+   "450 nm · sichtbares Licht",
+   "24 %",
+   "475 nm · sichtbares Licht",
+   "33 %",
+   "525 nm · sichtbares Licht",
+   "37 %",
+   "550 nm · sichtbares Licht",
+   "42 %",
+   "575 nm · sichtbares Licht",
+   "50 %",
+   "625 nm · sichtbares Licht",
+   "54 %",
+   "650 nm · sichtbares Licht",
+   "58 %",
+   "675 nm · sichtbares Licht",
+   "66 %",
+   "725 nm · sichtbares Licht",
+   "69 %",
+   "750 nm · sichtbares Licht",
+   "73 %",
+   "775 nm · sichtbares Licht",
+   "79 %",
+   "825 nm · Infrarot",
+   "81 %",
+   "850 nm · Infrarot",
+   "84 %",
+   "875 nm · Infrarot",
+   "88 %",
+   "925 nm · Infrarot",
+   "91 %",
+   "950 nm · Infrarot",
+   "92 %",
+   "975 nm · Infrarot",
+   "96 %",
+   "1025 nm · Infrarot",
+   "97 %",
+   "1050 nm · Infrarot",
+   "99 %",
+   "1075 nm · Infrarot"
+  ]
+ }
+]

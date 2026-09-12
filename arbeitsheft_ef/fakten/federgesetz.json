@@ -1,0 +1,545 @@
+[
+ {
+  "sim": "federgesetz",
+  "ueberschrift": "📈 Warum wird eine Feder gleichmäßig länger?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "weiche Feder",
+    "ruft": "_fedSetFeder('weich')"
+   },
+   {
+    "aufschrift": "harte Feder",
+    "ruft": "_fedSetFeder('hart')"
+   },
+   {
+    "aufschrift": "◀ weniger",
+    "ruft": "_fedF_(-1)"
+   },
+   {
+    "aufschrift": "mehr ▶",
+    "ruft": "_fedF_(1)"
+   },
+   {
+    "aufschrift": "📍 Messpunkt",
+    "ruft": "_fedMessen()"
+   },
+   {
+    "aufschrift": "🗑 löschen",
+    "ruft": "_fedClear()"
+   },
+   {
+    "aufschrift": "Eine Gerade durch den Ursprung",
+    "ruft": "_fedAns(0,0)"
+   },
+   {
+    "aufschrift": "Eine gebogene Kurve",
+    "ruft": "_fedAns(0,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_fedAns(0,2)"
+   },
+   {
+    "aufschrift": "Sie verdoppelt sich",
+    "ruft": "_fedAns(1,0)"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_fedAns(1,1)"
+   },
+   {
+    "aufschrift": "Sie halbiert sich",
+    "ruft": "_fedAns(1,2)"
+   },
+   {
+    "aufschrift": "Hooke'sches Gesetz",
+    "ruft": "_fedAns(2,0)"
+   },
+   {
+    "aufschrift": "Ohmsches Gesetz",
+    "ruft": "_fedAns(2,1)"
+   },
+   {
+    "aufschrift": "Newtonsches Gesetz",
+    "ruft": "_fedAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_fedSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_fedSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_fedSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('federgesetz')"
+   }
+  ],
+  "hinweise": [
+   "Hänge verschiedene Kräfte an dieselbe Feder und miss die Dehnung. Nimm Messpunkte auf. Welche Form hat die Kurve?",
+   "Die Messpunkte liegen auf einer Geraden durch den Ursprung: Die Dehnung s ist proportional zur Kraft F. Das Verhältnis D = F/s bleibt gleich – das ist das Hooke'sche Gesetz (F = D · s). Im Diagramm ist D die Steigung: Die harte Feder ergibt die steilere Gerade.",
+   "Doppelte Kraft → doppelte Dehnung. | F = D · s · D = F/s bleibt konstant (Federkonstante)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "weiche Feder",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "weiche Feder · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|420.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 0,5 N/cm|250.48|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|120.80,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|weiche Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "weiche Feder · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|420.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 0,5 N/cm|250.48|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|120.80,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|weiche Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "weiche Feder · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|420.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 0,5 N/cm|250.48|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|120.80,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|weiche Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "weiche Feder · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|420.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 0,5 N/cm|250.48|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|120.80,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|weiche Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "harte Feder",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "harte Feder · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "harte Feder · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "harte Feder · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "harte Feder · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "◀ weniger",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "◀ weniger · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|46.00,202.00,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "◀ weniger · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|46.00,202.00,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "◀ weniger · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|46.00,202.00,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "◀ weniger · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|46.00,202.00,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "mehr ▶",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "mehr ▶ · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "mehr ▶ · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "mehr ▶ · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "mehr ▶ · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "📍 Messpunkt",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: F | s | D = F/s | 1 N | 1 cm | 1,0 N/cm"
+   },
+   {
+    "einstellung": "📍 Messpunkt · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: F | s | D = F/s | 1 N | 1 cm | 1,0 N/cm",
+    "bild": "set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | beginPath| | arc|83.40,166.40,4.50,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "📍 Messpunkt · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: F | s | D = F/s | 1 N | 1 cm | 1,0 N/cm",
+    "bild": "set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | beginPath| | arc|83.40,166.40,4.50,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "📍 Messpunkt · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: F | s | D = F/s | 1 N | 1 cm | 1,0 N/cm",
+    "bild": "set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | beginPath| | arc|83.40,166.40,4.50,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "📍 Messpunkt · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: F | s | D = F/s | 1 N | 1 cm | 1,0 N/cm",
+    "bild": "set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | beginPath| | arc|83.40,166.40,4.50,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "🗑 löschen",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "🗑 löschen · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "🗑 löschen · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "🗑 löschen · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "🗑 löschen · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0)."
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve."
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie verdoppelt sich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität)."
+   },
+   {
+    "einstellung": "Sie verdoppelt sich · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie verdoppelt sich · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie verdoppelt sich · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie verdoppelt sich · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität).",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr."
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie halbiert sich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung."
+   },
+   {
+    "einstellung": "Sie halbiert sich · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie halbiert sich · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie halbiert sich · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Sie halbiert sich · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn."
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Ohmsches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung."
+   },
+   {
+    "einstellung": "Ohmsches Gesetz · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Ohmsches Gesetz · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Ohmsches Gesetz · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Ohmsches Gesetz · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Newtonsches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht."
+   },
+   {
+    "einstellung": "Newtonsches Gesetz · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Newtonsches Gesetz · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Newtonsches Gesetz · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "Newtonsches Gesetz · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.",
+    "bild": "lineTo|420.00,59.60 | stroke| | fillText|4|42.00|62.60 | set:strokeStyle=rgba(100,116,139,0.25) | beginPath| | moveTo|46.00,24.00 | lineTo|420.00,24.00 | stroke| | fillText|5|42.00|27.00 | set:fillStyle=#cbd5e1 | set:font=11px sans-serif | set:textAlign=center | fillText|s in cm|233.00|232.00 | save| | translate|12.00,113.00 | rotate|-1.57 | fillText|F in N|0.00|0.00 | restore| | set:strokeStyle=rgba(74,222,128,0.55) | set:lineWidth=2 | setLineDash|5,4 | beginPath| | moveTo|46.00,202.00 | lineTo|233.00,24.00 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 11px sans-serif | set:textAlign=left | fillText|Steigung = D = 1,0 N/cm|153.24|113.44 | set:strokeStyle=#fbbf24 | set:lineWidth=2 | beginPath| | arc|83.40,166.40,5.00,0.00,6.28 | stroke| | set:fillStyle=#38bdf8 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|harte Feder|324.00|34.00"
+   }
+  ],
+  "bildtexte": [
+   "0",
+   "2",
+   "4",
+   "6",
+   "8",
+   "10",
+   "1",
+   "3",
+   "5",
+   "s in cm",
+   "F in N",
+   "Steigung = D = 0,5 N/cm",
+   "weiche Feder",
+   "Steigung = D = 1,0 N/cm",
+   "harte Feder"
+  ]
+ }
+]

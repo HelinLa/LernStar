@@ -1,0 +1,201 @@
+{
+ "seite": {
+  "id": "fv8",
+  "quelle": "ev9",
+  "sim": "transformator-schluessel",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Kasten, der brummt",
+  "name": "Wie ändert ein Transformator die Spannung?",
+  "fachwoerter_neu": [
+   "Sekundärspule",
+   "Wechselspannung"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen brummenden Kasten: einen Transformator.",
+   "Darin liegen zwei Spulen auf einem Eisenkern: links Primärspule, rechts Sekundärspule.",
+   "Jede Runde des Drahtes um die Spule heißt eine Windung.",
+   "Aus der Steckdose kommt Wechselspannung: Plus und Minus wechseln ständig."
+  ],
+  "frage": "Wovon hängt es ab, wie viel Volt aus der Sekundärspule kommen?",
+  "predict": [
+   "Die Windungen sind egal. Es kommen immer gleich viele Volt.",
+   "Mit mehr Windungen kommen mehr Volt aus der Sekundärspule."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „1 · Aufbau und Wirkungskette“. „Wechselspannung“ ist schon gedrückt.",
+   "Achte darauf: Du bewegst nur „Sekundär NS“. „Frequenz f“ bleibt, wie sie ist.",
+   "Stelle „Sekundär NS“ auf 500. Lies die Zahl bei „Volt“ ab.",
+   "Stelle „Sekundär NS“ auf 250. Trage beide Zahlen ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Welche Zahl steht bei „Volt“?",
+   "Mehr oder weniger Volt als vorher?"
+  ],
+  "tabRows": [
+   [
+    "1000 Windungen",
+    "8,80",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "500 Windungen",
+    "",
+    ""
+   ],
+   [
+    "250 Windungen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Hat die Sekundärspule mehr Windungen, kommen dort",
+    "loesung": "mehr",
+    "post": "Volt heraus. Weniger Windungen heißen weniger Volt."
+   },
+   {
+    "pre": "Ein Transformator arbeitet nur mit",
+    "loesung": "Wechselspannung",
+    "post": ". Nur dann ändert sich das Magnetfeld."
+   }
+  ],
+  "wortbank": [
+   "mehr",
+   "Wechselspannung",
+   "4,40 Volt",
+   "2,20 Volt"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Links stehen „Primär“ und „500 Wdg.“, rechts „Sekundär“ und „1000 Wdg.“. Wdg. heißt Windungen. „Sekundär“ heißt Sekundärspule. Im Kreis rechts steht 8,80, darunter Volt. In die Tabelle kommt 8,80."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was passiert, wenn die Sekundärspule weniger Windungen bekommt?",
+    "optionen": [
+     "Mehr Volt als vorher.",
+     "Weniger Volt als vorher.",
+     "Genauso viele Volt wie vorher."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 500 Windungen zeigt der Bildschirm",
+      "loesung": "4,40 Volt",
+      "post": "."
+     },
+     {
+      "pre": "Bei 250 Windungen sind es",
+      "loesung": "2,20 Volt",
+      "post": ". Wieder die Hälfte."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis drückt „Gleichspannung“. Die Zahl bei „Volt“ fällt fast auf null. Warum?",
+    "satzstarter": "Bei Gleichspannung wird die Spannung kleiner, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl steht rechts im Kreis über „Volt“. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Halb so viele Windungen heißt halb so viel Volt: ______ + ______ = 8,80.",
+   "h3": "Fast fertig: Bei Gleichspannung wird die Spannung kleiner, weil sich das Magnetfeld nicht mehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Zahl bei „Volt“ ablesen.",
+   "Ich kann meine Messwerte in die Tabelle eintragen.",
+   "Ich weiß: Ein Transformator braucht Wechselspannung."
+  ],
+  "zuhause": "Suche zu Hause ein Netzteil. Schreibe auf, wie viel Volt hinein- und herausgehen.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI Zeilen, untereinander in EINEM Bildausschnitt, gleiche Blickrichtung von vorn, gleiche Größe, gleiche Höhe, exakt dieselbe Anordnung. In jeder Zeile steht derselbe Transformator: in der Mitte ein aufrecht stehender, geschlossener Eisenkern als vollflächiger grauer Rahmen (ein Rechteck mit rechteckigem Loch in der Mitte), links am Rahmen eine rote Spule, rechts am Rahmen eine blaue Spule. Jede Spule ist ein Stapel dicker, deutlich voneinander getrennter Ringe auf dem Rahmenschenkel; die Ringe sind vollflächig gefüllt, nie schraffiert. Über der linken Spule steht groß „Primär“, darunter „500 Wdg.“; über der rechten Spule steht groß „Sekundär“, darunter die Windungszahl dieser Zeile. Links außen hängt an zwei Drähten ein roter Kreis mit einer liegenden Wellenlinie darin und der Beschriftung „5,0 V“ — das ist die Wechselspannungsquelle, in allen drei Zeilen gleich. Rechts außen hängt an zwei Drähten ein blauer Kreis mit einem großen „V“ oben, einer großen Zahl in der Mitte und dem Wort „Volt“ darunter. ZEILE 1 (oben): rechte Spule mit vielen Ringen, Beschriftung „1000 Wdg.“, im blauen Kreis die Zahl „8,80“; rechts neben der Zeile groß „mehr Windungen — mehr Volt“. ZEILE 2 (Mitte): rechte Spule mit genauso vielen Ringen wie die linke, Beschriftung „500 Wdg.“, im blauen Kreis die Zahl „4,40“; rechts daneben groß „gleich viele Windungen“. ZEILE 3 (unten): rechte Spule mit halb so vielen Ringen wie die linke, Beschriftung „250 Wdg.“, im blauen Kreis die Zahl „2,20“; rechts daneben groß „weniger Windungen — weniger Volt“. Die Zahl der gezeichneten Ringe muss von Zeile zu Zeile sichtbar abnehmen — daran hängt die ganze Aussage des Bildes; alles andere bleibt in allen drei Zeilen identisch. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — Eisenkern und Spulenringe werden als volle Farbflächen gezeichnet, nie als Blechschraffur, Strichmuster oder dünne Streifen; sonst verschwimmt der Kern beim Verkleinern zu Grau und die Ringe sind nicht mehr zählbar. (2) Nebenbilder — es gibt genau drei Zeilen: kein eingesetztes Detailfenster, kein Diagramm in der Ecke, kein Strommast, kein Kraftwerk, keine Steckdose, keine zweite Ansicht des Kerns. (3) Strahlengänge ins Leere — es werden KEINE Feldlinien, keine Magnetfeldpfeile, keine Flusspfeile im Kern, keine Strompfeile in den Drähten und keine Linien gezeichnet, die am Bildrand einfach aufhören; die einzigen Linien außerhalb der Bauteile sind die vier kurzen Drähte, die den roten Kreis links und den blauen Kreis rechts mit ihrer Spule verbinden, und die schließen sichtbar an beiden Enden an. Keine Personen, keine Formel, keine Pfeile zwischen den Zeilen, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv8",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation ausschließlich den Regler „Sekundär NS“ ein und lesen am Voltmeter rechts die Zahl ab: bei NP = 500 und UP = 5,0 V gehört NS = 1000 zu 8,80, NS = 500 zu 4,40 und NS = 250 zu 2,20. Sie lesen aus der eigenen Tabelle ab, dass die Spannung an der Sekundärspule an den Windungen der beiden Spulen hängt: mehr Windungen als auf der ersten Spule heißt mehr Volt, halb so viele Windungen heißt halb so viel Volt. Sie benennen dazu die Bedingung: Ein Transformator arbeitet nur mit Wechselspannung, weil sich das Magnetfeld ändern muss. Fachlicher Name des Verhältnisses NS/NP — nur für Sie, nicht auf der Schülerseite: Übersetzungsverhältnis.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Spulensätzen. Optional als Demonstration: zwei Steckspulen (500 und 1000 Windungen) auf einem geschlossenen Eisenkern, Wechselspannung 5 V aus dem Schulnetzgerät, ein Voltmeter an der zweiten Spule — Spulen einmal tauschen und die Anzeige vergleichen (nur Vergleich mehr/weniger, keine Messreihe). Sicherheit: ausschließlich Kleinspannung aus dem Schulnetzgerät, nie Netzspannung.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext, sinngemäß gekürzt. Gemeinsam gilt auf allen drei Karten: Station „1 · Aufbau und Wirkungskette“, Wechselspannung, Kern „geschlossen, laminiert“, Quelle links „5,0 V“, Primärspule „500 Wdg.“. Karte 1 (das ist zugleich der Ausgangszustand der Simulation): „Sekundär 1000 Wdg. — Voltmeter: 8,80 Volt. Im Kasten darunter steht: Aufwärtstransformator. Die Sekundärspule hat mehr Windungen, deshalb ist die Sekundärspannung größer als die Primärspannung.“ Karte 2: „Sekundär 500 Wdg. — Voltmeter: 4,40 Volt. Im Kasten darunter steht: Gleiche Windungszahlen. Spannung und Stromstärke bleiben (bis auf die Verluste) unverändert. […]“ Karte 3: „Sekundär 250 Wdg. — Voltmeter: 2,20 Volt. Im Kasten darunter steht: Abwärtstransformator. Weniger Windungen auf der Sekundärseite: weniger Spannung, dafür mehr Strom. […]“ Dazu als Tafelbild drei Zeilen untereinander, in jeder derselbe geschlossene Eisenkern mit der roten Primärspule links („Primär · 500 Wdg.“) und der blauen Sekundärspule rechts, links außen der Kreis mit der Wellenlinie und „5,0 V“, rechts außen der Kreis mit „V“, der Zahl und dem Wort „Volt“: Zeile 1 „1000 Wdg.“ und „8,80“, Zeile 2 „500 Wdg.“ und „4,40“, Zeile 3 „250 Wdg.“ und „2,20“. Wichtig beim Tafelbild: Die linke Spule und die 5,0 V bleiben in allen drei Zeilen unverändert stehen — daran hängt Aufgabe 1. Für die Erklär-Aufgabe zusätzlich eine vierte Karte: „Taste Gleichspannung: Im Augenblick des Einschaltens ist die Sekundärspannung genauso groß wie bei Wechselspannung — danach stirbt sie weg. Ein aufgebautes Magnetfeld ändert sich nicht mehr — und ohne Änderung keine Induktion.“ Sagen Sie vor dem Tastendruck an, dass die Simulation den Vorgang alle paar Sekunden neu abspielt: Die Zahl fällt fast auf null und springt dann wieder auf 8,80. Wer das nicht weiß, hält den Sprung für einen Fehler. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "mehr",
+   "Wechselspannung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "500 Windungen",
+    "4,40",
+    "weniger"
+   ],
+   [
+    "250 Windungen",
+    "2,20",
+    "weniger"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die eigene Tabelle beantwortet die Frage in drei Zahlen: 1000 Windungen gehören zu 8,80, 500 zu 4,40, 250 zu 2,20. Von oben nach unten werden die Windungen weniger und die Zahl bei „Volt“ wird kleiner. Der Bildschirm sagt dasselbe im Kasten unter den Reglern: „Abwärtstransformator. Weniger Windungen auf der Sekundärseite: weniger Spannung, dafür mehr Strom. […]“ Damit ist die zweite Option belegt. Die erste Option kehrt den Befund um, die zweite behauptet, die Windungszahl spiele keine Rolle — das ist genau die Vorstellung, die diese Doppelseite auflöst.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil „weniger Windungen“ mit „engere Wicklung, also stärker“ verwechselt wird. Auf die eigenen drei Zeilen zeigen und die Zahlen laut in der Reihenfolge 8,80 – 4,40 – 2,20 lesen lassen.",
+    "Die dritte Option wird angekreuzt: Die Zahlen wurden abgeschrieben, aber nicht verglichen. Nachfragen: Welche Zahl ist größer, 8,80 oder 2,20?",
+    "Es wird gar nicht umgestellt und dreimal der Ausgangszustand (1000 Windungen, 8,80) eingetragen. Dann sehen alle drei Zeilen gleich aus und die dritte Option wirkt richtig. Am Regler „Sekundär NS“ prüfen lassen, welche Zahl rechts daneben steht.",
+    "Zwei Kreuze werden gesetzt (weniger UND mehr). Nachfragen: Was ist bei 250 Windungen passiert?"
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "4,40 Volt",
+    "2,20 Volt"
+   ],
+   "typische_fehler": [
+    "Statt 4,40 wird 5,00 eingesetzt: Bei gleichen Windungszahlen wird die gleiche Spannung erwartet. Das ist der Rechenknick dieser Seite (siehe Datenlage, Punkt 2). Den Bildschirmsatz mitlesen lassen: „Spannung und Stromstärke bleiben bis auf die Verluste unverändert.“",
+    "Statt 2,20 wird 2,00 eingesetzt (Hälfte von 4,00 statt von 4,40) oder 1,10 (noch einmal halbiert). Hilfe 2 als Additionsaufgabe lesen lassen: Welche Zahl ergibt zusammen mit sich selbst 8,80? Für die zweite Lücke dieselbe Frage mit 4,40.",
+    "Die Einheit fehlt („4,40“). Die Wortbank enthält beide Werte mit dem Wort Volt; einmal abschreiben lassen.",
+    "Das Komma wird verschoben („44,0 Volt“, „0,44 Volt“). Die Zahl im blauen Kreis mit dem Finger nachfahren lassen; sie hat immer genau zwei Stellen hinter dem Komma.",
+    "Die Zahlen aus der Rechnung darunter werden abgeschrieben (4,400 und 2,200 mit drei Stellen). Das Voltmeter zeigt zwei Stellen — auf der Schülerseite gilt durchgehend die Voltmeter-Form."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei Gleichspannung wird die Spannung kleiner, weil sich das Magnetfeld nicht mehr ändert. Gleichspannung bleibt immer gleich, Plus und Minus wechseln nicht. Zuerst baut sich das Magnetfeld noch auf, deshalb zeigt das Voltmeter im ersten Augenblick noch etwas an. Danach steht das Feld still, und ohne Änderung entsteht keine Spannung mehr. Ein Transformator braucht deshalb Wechselspannung.",
+   "alternativen": [
+    "Kurzform mit dem Rückverweis auf fv6: „Ohne Änderung keine Induktion, also keine Spannung.“ — reicht für die volle Wertung.",
+    "Über die Wirkungskette begründet: „Die Kette bricht beim zweiten Schritt ab. Ohne Wechselspannung gibt es kein sich änderndes Magnetfeld.“",
+    "Alltagsvergleich aus fv6: „Wie der Magnet, der still in der Spule liegt — er ist da, aber es passiert nichts.“",
+    "Antwort über Plus und Minus: „Bei Gleichspannung wechseln Plus und Minus nicht mehr, deshalb bleibt alles gleich.“ — richtig und erwünscht."
+   ],
+   "typische_fehler": [
+    "„Weil der Strom zu schwach ist.“ Die Stromstärke wurde nicht verändert; verändert wurde nur die Spannungsart. Auf die beiden Tasten Wechselspannung / Gleichspannung zeigen.",
+    "„Weil der Eisenkern fehlt.“ Der Kern bleibt eingestellt („geschlossen, laminiert“). Am Fußtext des Bildes zeigen, dass dort weiter derselbe Kern steht.",
+    "Es wird eine Zahl als Antwort geschrieben („0 Volt“). Verlangt ist die Begründung, nicht ein Endwert. Die Anzeige läuft zudem im Kreis: Sie fällt fast auf null, springt nach wenigen Sekunden wieder auf 8,80 und fällt erneut. Es gibt also gar keinen festen Endwert zum Abschreiben (siehe Datenlage, Punkt 4).",
+    "„Weil die Spule kaputtgeht.“ Alltagslösung statt Übertragung. Auf den Bildschirmsatz zurückgehen: „Ein aufgebautes Magnetfeld ändert sich nicht mehr.“",
+    "Es wird nur „weil es Gleichspannung ist“ geschrieben. Nachfragen: Was ändert sich dann nicht mehr? Hilfe 3 gibt den Satz bis auf ein Wort vor."
+   ]
+  },
+  "hilfe3_wort": "ändert (auch richtig: bewegt, wechselt)",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Bedienelemente gelten: die Taste „1 · Aufbau und Wirkungskette“ ganz oben, die Taste „Wechselspannung“ und der EINE Regler „Sekundär NS“. Die Station hat genau vier Regler: „Spannung UP“, „Frequenz f“, „Primär NP“ und „Sekundär NS“ — drei davon bleiben unberührt. Die dreizehn Regler der ganzen Simulation verteilen sich auf sechs Stationen; die übrigen fünf Stationen werden auf dieser Seite nicht gebraucht. Besonders „Frequenz f“ liegt direkt neben „Spannung UP“ und lädt zum Verstellen ein — er ändert den Scheitelfluss, aber nicht die Zahl im Voltmeter. Arbeitsschritt 2 sagt das jetzt ausdrücklich.",
+   "Statt am Regler zu ziehen, gibt es für zwei der drei Zeilen eine Taste: In der Reihe „Spulensätze der Handreichung“ setzt „500 → 1000“ genau die erste und „500 → 250“ genau die dritte Tabellenzeile. Für die mittlere Zeile (500 Windungen) gibt es keine Taste; dort muss der Regler „Sekundär NS“ bewegt werden. Er rastet in Fünfziger-Schritten ein, 500 lässt sich also nicht verfehlen.",
+   "Den Startzustand gemeinsam ansehen: Die Simulation beginnt bei Primär 500 und Sekundär 1000, also bei 8,80. Genau diese Zeile steht schon in der Tabelle. Wer Schritt 3 ohne den Regler ausführt, trägt dreimal dieselbe Zahl ein und sieht keinen Unterschied.",
+   "Rechts neben dem Bild stehen unter den Reglern zwei Kästen. Der untere (Übersetzungsverhältnis, ideal erwartet, tatsächlich gemessen) wird auf dieser Seite nicht gebraucht — decken Sie nur ihn mit einem Papierstreifen ab. Der Kasten darüber („Aufwärtstransformator …“) bleibt sichtbar, er wird in Aufgabe 1 und 3 gebraucht, ebenso der Regler „Sekundär NS“ darüber. Die abzulesende Zahl steht links im Bild, im blauen Kreis mit „V“ und „Volt“.",
+   "Nur die mittlere Spalte ausfüllen lassen; die dritte Spalte („mehr oder weniger“) gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen, besonders 4,40 Volt und 2,20 Volt mit Komma und Einheit.",
+   "Für DaZ-Lernende die Abkürzung „Wdg.“ einmal am Bild erklären und daneben „Windungen“ an die Tafel schreiben. Ebenso die beiden Spulennamen mit einer Handbewegung zeigen: links hinein (Primär), rechts heraus (Sekundär)."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler „Sekundär NS“ auf 2000 — das ist doppelt so viel wie 1000. Sieh dann auf die Zahl im blauen Kreis. Ist sie mehr oder weniger als 8,80? Schreibe nur „mehr“ oder „weniger“ auf. Danach die Gegenprobe mit den Tasten: Drücke „500 → 250“ und dann „500 → 1000“ und beobachte, wie die Zahl springt. Hinweis für Sie: Bei NS = 2000 zeigt das Voltmeter 17,60; die Zahl steht bewusst nicht in der Aufgabe, weil sie eine Vervierfachung gegenüber 4,40 ist und der Band für A2–B1 nur Verdoppeln und Halbieren zulässt.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · der Transformator als Schlüsselexperiment: Spannungswandlung über die Windungszahlen, Wechselspannung als Bedingung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ankreuzen der Vermutung trägt E3, das Einstellen der beiden Windungszahlen E4, der Vergleich der drei Zahlen 8,80 / 4,40 / 2,20 trägt UF3, die Erklär-Aufgabe zur Gleichspannung UF2 und E6, die Aussage über die Bedingung Wechselspannung UF1. K3 („Untersuchungen dokumentieren“) liegt nach der Bandregel vom 05.09.2026 auf dem EINTRAGEN DER MESSWERTE IN DIE TABELLE, nicht auf dem Zuhause-Auftrag: „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Der Zuhause-Auftrag (Volt-Zahlen vom Netzteil abschreiben) ist reines Ablesen und trägt keinen Code. — Fachwortzählung: neu sind GENAU ZWEI Wörter. (1) „Sekundärspule“ — das Wort steht im Merksatz und in Aufgabe 1 und trägt damit zwei der vier Auslöser der Zählregel 3; Zählregel 2 hilft nicht, sie gilt für Messgerätenamen (Voltmeter, Amperemeter, Lichtschranke, Stoppuhr), nicht für Bauteilnamen. Derselbe Band hat das schon zweimal so entschieden: fv3 zählt „Elektromagnet“, fv5 „Kommutator“. Eingeführt im Alltagsteil mit dem Begriffssatz „Darin liegen zwei Spulen auf einem Eisenkern: links Primärspule, rechts Sekundärspule“; im Band vorher nirgends benutzt, also nach Zählregel 4 hier der erste Träger. (2) „Wechselspannung“ — dieser Platz war vorbereitet: fv7 hat das Wort ausdrücklich NICHT eingeführt und nach fv8 weitergereicht (siehe fv7, Fachwortzählung), weil der Transformator es als Voraussetzung braucht. Es steht im Alltagsteil mit Begriffssatz („Aus der Steckdose kommt Wechselspannung: Plus und Minus wechseln ständig“), in der Wortbank und in der zweiten Merksatz-Lücke. — Gestrichen gegenüber dem ersten Entwurf: „Windungszahl N“. Die Größe stand nur im Alltagsteil, zählte aber wegen des Formelzeichens nach Zählregel 5 und riss zusammen mit „Sekundärspule“ das Limit von zwei Wörtern. Die Seite braucht das Zeichen nirgends: Sie schreibt durchgehend „Windungen“ (Alltagsteil: „Jede Runde des Drahtes um die Spule heißt eine Windung“), die Tabellenzeilen sagen „1000 Windungen“, und NS erscheint allein im wörtlich zitierten Reglernamen „Sekundär NS“ der Arbeitsschritte — Arbeitsschritte sind kein Auslöser der Zählregel 3. Der Tabellenkopf heißt deshalb „Was hast du eingestellt?“ wie in fv4 und fv5. — Nicht gezählt und deshalb nur Rückverweis oder freigestellt: „Transformator“ ist nach Zählregel 2 ein Gerätename mit Begriffssatz im Alltagsteil; er steht weder in der Wortbank noch in einer Merksatz-Lücke (im Merksatztext darf er stehen, das ist die Sache selbst). „Primärspule“ bekommt im Alltagsteil ebenfalls einen Begriffssatz und steht in keiner Tabellenspalte, keinem Merksatz, keiner Aufgabe und keinem Lernziel — genau die Lage, in der fv3 „Spule“ und „Eisenkern“ freistellt. „Spule“, „Eisenkern“ und „Magnetfeld“ sind Rückverweise (fv3 führt „Im Kran steckt eine Spule mit Eisenkern“ bereits wörtlich, fv1/fv2 das Magnetfeld), „Spannung in Volt (V)“ stammt aus Förderband 8 (fs3), „Induktion“ aus fv6. Bewusst vermieden, weil sie das dritte bis sechste Wort wären: Übersetzungsverhältnis, Kopplungsgrad, Effektivwert, Wirbelstrom. — Datenlage und Fallen: (1) Alle drei Tabellenwerte sind nachgemessen, nicht gerechnet: am 05.09.2026 mit simcheck/werte.js in der Station „1 · Aufbau und Wirkungskette“ bei Wechselspannung, Kern „geschlossen, laminiert“, NP = 500, UP = 5,0 V, f = 50 Hz. Der Rechenwert US gemessen meldet 8,800 / 4,400 / 2,200 V; das Voltmeter im Bild rundet auf zwei Stellen und zeigt 8,80 / 4,40 / 2,20. Im Förderheft gilt durchgehend die Voltmeter-Form, sonst sucht das Kind eine dritte Ziffer. Der Faktendump verbürgte allein den Ausgangszustand (8,80); die beiden anderen Punkte waren als [NACHMESSEN] markiert und sind damit erledigt. (2) Der Rechenknick: Aus 500 zu 1000 Windungen folgt das Doppelte von 5,0 V, also 10,0 V — das Voltmeter zeigt aber 8,80. Ebenso zeigt es bei gleichen Windungszahlen nicht 5,00, sondern 4,40. Ursache ist der Kopplungsgrad k = 0,88; das Wort und die Zahl stehen bewusst auf keiner Schülerseite. Aufgefangen wird der Knick nicht durch einen Zusatzsatz, sondern durch die Bauart der Seite: Es wird nirgends gerechnet und nirgends mit der Primärspannung verglichen. Verglichen werden ausschließlich die drei abgelesenen Zahlen untereinander — und die verhalten sich sauber wie 2 : 1 : 0,5. Wenn ein Kind trotzdem fragt, warum es nicht 10,0 sind: „Nicht das ganze Magnetfeld kommt an der zweiten Spule an.“ Ein Satz, mehr nicht. Damit dieser Grundsatz auch für den Vermutungsteil gilt, ist die erste Vermutung ausgetauscht worden: Sie lautete „Aus der Sekundärspule kommen immer weniger Volt, als hineingehen“ und verlangte genau den Vergleich mit der Primärspannung, den die Seite nirgends anstellt und den der Merksatz nicht auflöst — ein Kind, das sie ankreuzte, bekam auf der ganzen Doppelseite keine Antwort. Jetzt heißt sie „Die Windungen sind egal. Es kommen immer gleich viele Volt.“; das ist das Gegenteil der zweiten Vermutung, der Merksatz erledigt beide, und es ist dieselbe Vorstellung, die lehrer.a1 als die dieser Doppelseite führt. Die Fehlvorstellung des Regelhefts (Sekundärspannung immer kleiner als Primärspannung) bleibt damit auf dieser Förderseite unbearbeitet: Sie ist ohne den Vergleich 5,0 V gegen 8,80 nicht prüfbar, und dieser Vergleich führt geradewegs in den Rechenknick. (3) Zwei Schreibweisen derselben Zahl auf demselben Bildschirm: Das Voltmeter zeigt „8,80“, die Rechnung darunter „8,800 V“. Deshalb fragt die Tabellenspalte nach der Zahl bei „Volt“ und nicht nach der Rechenzeile, und der Papierstreifen aus den Hinweisen für schwache Lernende deckt die Rechnung ab. (4) Gleichspannung: Hier stand bis zum Gegenlesen eine Zahlenreihe, die keine Messung sein kann. Prozentwert und Voltmeter-Zahl stammen am Bildschirm aus DEMSELBEN Augenblick und derselben Rechnung — der Kasten meldet Anteil = angezeigte Spannung / 8,80, der blaue Kreis zeigt dieselbe Spannung —, also gilt zwingend Voltmeter = 8,80 · Anteil/100. Die notierten Paare erfüllten das in keinem einzigen Fall. Die Reihe ist ersatzlos gestrichen. Verbürgt ist allein der Zustand aus dem Faktendump: „Nach 0 ms sind noch 100,0 % übrig.“ Belegt ist außerdem der Verlauf: Die Anzeige fällt vom Wechselspannungswert 8,80 mit der Zeitkonstanten τ = 20,0 ms ab und steht nach wenigen Sekunden Bildschirmzeit fast auf null. Wer Zahlen ins Heft nehmen will, muss sie mit simcheck/werte.js neu ziehen und Prozent und Volt aus DEMSELBEN Bild notieren. Zweites, bis dahin unbemerktes Verhalten: Die Simulation setzt die Zeit selbsttätig zurück und spielt den Abfall alle paar Sekunden neu ab — die Zahl springt dann wieder auf 8,80 und fällt erneut. Ein Kind, das den Knopf wirklich drückt, sieht also kein Sterben, sondern ein Pulsieren; der Ersatzweg sagt das jetzt vorher an. Die Aufgabe verlangt deshalb KEINEN Endwert, sondern nur die Begründung, und sie beschreibt den beobachtbaren Ausschnitt („fällt fast auf null“). (5) Die Zeitkonstante τ = 20,0 ms und das Zeichen τ stehen am Bildschirm, aber auf keiner Schülerseite: Das griechische Zeichen ist im Fördersatz nicht geprüft, und die Größe wird nicht gebraucht. (6) Der Bildschirm kürzt ab: „500 Wdg.“ Die Abkürzung ist für DaZ-Lernende unlesbar und wird deshalb im gelösten Beispiel einmal ausdrücklich übersetzt („Wdg. heißt Windungen“); im Fließtext der Seite steht immer „Windungen“. (7) Zwei Namen für dasselbe Bauteil: Der Aufgabentext des Regelhefts sagt „Eisenjoch“, der Bildschirm „Eisenkern“ und in der Kernwahl „geschlossen, laminiert“. Die Schülerseite sagt nur „Eisenkern“ — dasselbe Wort wie in fv3. (8) Die Kernwahl bleibt unberührt: „geschlossen, massiv“ (k = 0,55, dann 5,50) und „ohne Eisenkern“ (k = 0,12, dann 1,20) sind nachgemessen und belegt, gehören aber zum Thema Verluste und würden eine zweite Größe verändern. Die Simulation warnt selbst: „Verändere immer nur eine der drei Größen und halte die anderen fest.“ Genau deshalb bleibt NP auf 500 und nur NS wird bewegt. (9) Undruckbare Zeichen: ZWEI Tasten dieser Station tragen vor dem Wort ein Zeichen, das SourceSans3 nicht kennt — die zum Anhalten und die zum Zurücksetzen. Sie werden deshalb nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Nennen Sie sie im Unterricht mündlich („der Knopf zum Anhalten“). Die Tasten zum Übernehmen eines Messwerts, für die Beispielmessreihe und zum Leeren der Tabelle gehören zu den Stationen 2 und 4 und werden auf dieser Seite gar nicht gebraucht; ihr Haken wäre druckbar, die beiden anderen Zierzeichen sind es nicht. Die Tasten „1 · Aufbau und Wirkungskette“, „Wechselspannung“, „Gleichspannung“ und die Spulensätze „500 → 1000“ und „500 → 250“ tragen kein solches Zeichen und dürfen wörtlich stehen. Auch das Zeichen für Wechselspannung im roten Quellkreis wird nicht abgedruckt, sondern im Bildauftrag als „liegende Wellenlinie“ beschrieben. (10) Bewusst offen gelassen: Was die Station 2 („Spannungstransformation“) mit ihrer Messwerttabelle und ihrem Diagramm leistet, bleibt außen vor — dort steht kein Voltmeter, sondern nur die Rechenzeile mit drei Nachkommastellen, und die Messreihe des Regelhefts (NS = 250/500/1000/2000 bei NP = 500) verlangt vier Zeilen und eine Kurve. Der Vergleich mit der Zeile „ideal erwartet“, den das Regelheft im dritten Arbeitsschritt fordert, entfällt ersatzlos: Er ist genau der Rechenknick aus Punkt 2 und wäre auf A2–B1 nicht auflösbar. Ebenfalls nicht verlangt: die Stromtransformation (Station 4), die Wirbelströme (Station 3) und die Anwendungen (Station 6) — sie gehören zu fv9 und fv10 oder zu keiner Förderseite. Die zweite Fehlvorstellung des Regelhefts, Hochtransformieren erzeuge mehr Leistung, bleibt unbearbeitet: Leistung kommt in diesem Band erst später, und eine Aussage ohne prüfende Aufgabe darf nicht auf der Seite stehen."
+ }
+}

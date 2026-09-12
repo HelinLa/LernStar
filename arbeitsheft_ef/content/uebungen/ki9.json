@@ -1,0 +1,72 @@
+{
+ "id": "ki9",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "S6",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Über der Masse selbst liegen die Messpunkte auf einer Hyperbel; zu einer Ursprungsgeraden werden sie erst über dem",
+   "loesung": "Kehrwert 1/m",
+   "post": "."
+  },
+  {
+   "pre": "Die Kraftreihe bei m = 5 kg liefert y = 0,2000·x; die Masse ergibt sich als Kehrwert der Steigung, also aus m =",
+   "loesung": "1/k",
+   "post": ", und beträgt 5,000 kg."
+  },
+  {
+   "pre": "Trägt man die Massenreihe über 1/m auf, so ist die Steigung der Geraden gerade die festgehaltene",
+   "loesung": "Kraft F",
+   "post": "; ihre Einheit kg · m/s² ist das Newton."
+  },
+  {
+   "pre": "Eine krumme Auftragung durch eine neue Größe auf der x-Achse zur Geraden zu machen, heißt",
+   "loesung": "Linearisieren",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Die Kraftreihe bei m = 5 kg liegt über F auf einer Ursprungsgeraden; ihre Steigung 0,2000 1/kg ist der Kehrwert der eingestellten Masse.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Auch über der Masse ergeben dieselben Messwerte eine Gerade; dass dort keine Ausgleichsgerade gezeichnet wird, liegt allein an der zu kleinen Zahl der Messpunkte.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Die Steigung der Geraden über 1/m hat die Einheit kg · m/s² und ist damit selbst eine Kraft.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil beide Auswertungen R² = 1,0000 melden, ist auch der Faktor 1 vor F/m gemessen und nicht bloß durch die Einheit festgelegt.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Die Massenreihe bei F = 40 N ergibt über 1/m die Gerade y = 40,000·x. Was besagt die Steigung?",
+  "optionen": [
+   "Dass der Wagen in jeder Zeile mit 40,00 m/s² beschleunigt; die Steigung ist der Mittelwert der Spalte a.",
+   "Dass die Beschleunigung mit jedem zusätzlichen Kilogramm um 40,00 m/s² sinkt; die Steigung gibt die Änderung von a je Kilogramm an.",
+   "Dass die Steigung die festgehaltene Kraft ist: m/s² je 1/kg ergibt kg · m/s², also 40,00 N – genau die eingestellten 40 N."
+  ],
+  "richtig": 2,
+  "erklaerung": "Die Steigung einer Geraden trägt immer die Einheit ihrer y-Achse geteilt durch die ihrer x-Achse. Hier ist das (m/s²) : (1/kg) = kg · m/s², und das ist nach der Definition des Newton eine Kraft; der Zahlenwert 40,000 stimmt mit den eingestellten 40 N überein, deshalb meldet die Auswertung „Kraft F aus der Steigung k 40,00 N“. Ein Mittelwert kann es nicht sein: Die Spalte a reicht von 2,00 m/s² bis 40,00 m/s². Eine Änderung je Kilogramm wäre die Steigung in der Auftragung über m – und die gibt es nicht, weil dort eine Hyperbel liegt: zwischen 1 kg und 4 kg fällt a um 10,00 m/s² je Kilogramm, zwischen 4 kg und 20 kg nur um 0,50 m/s² je Kilogramm."
+ },
+ "offen": {
+  "frage": "Beurteile die Aussage von Tobias: „Die Auftragung über m zeigt den Zusammenhang genauso gut wie die über 1/m, sie ist eben krumm.“ Begründe, warum die Auswertung trotzdem den Kehrwert verlangt.",
+  "prompt": "Beurteile die Aussage von Tobias: „Die Auftragung über m zeigt den Zusammenhang genauso gut wie die über 1/m, sie ist eben krumm.“ Begründe, warum die Auswertung trotzdem den Kehrwert verlangt.",
+  "zeilen": 4,
+  "loesung": "Als Bild stimmt Tobias' Satz: Beide Auftragungen zeigen dieselben neun Messwerte, und die Hyperbel über m zeigt den Zusammenhang sogar anschaulich – doppelte Masse, halbe Beschleunigung. Was ihr fehlt, ist die Auswertbarkeit. Eine Kurve hat in jedem Punkt eine andere Steigung: bei F = 40 N fällt a zwischen 1 kg und 4 kg um 10,00 m/s² je Kilogramm, zwischen 4 kg und 20 kg nur noch um 0,50 m/s² je Kilogramm. Deshalb zeichnet das Programm dort keine Ausgleichsgerade, sondern meldet „Keine Gerade – trage 1/m auf.“ Über dem Kehrwert 1/m liegen dieselben Punkte auf einer Ursprungsgeraden mit y = 40,000·x und R² = 1,0000. Erst diese eine Steigung ist eine Zahl mit Einheit: (m/s²) je (1/kg) = kg · m/s² = N, und sie ergibt 40,00 N, also die eingestellte Kraft. Linearisieren dient also nicht der Schönheit der Zeichnung, sondern macht aus der Kurve eine Größe, die man ablesen und mit dem eingestellten Wert vergleichen kann – aus zwei solchen Steigungen (1/m aus der Kraftreihe, F aus der Massenreihe) entsteht F = m · a."
+ }
+}

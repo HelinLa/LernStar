@@ -1,0 +1,160 @@
+[
+ {
+  "sim": "kraftmesser",
+  "ueberschrift": "🪝 Wie misst man eine Kraft, die man nicht anfassen kann?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "➕ Gewicht anhängen (1 N)",
+    "ruft": "_krmAdd(1)"
+   },
+   {
+    "aufschrift": "➖ Gewicht abnehmen",
+    "ruft": "_krmAdd(-1)"
+   },
+   {
+    "aufschrift": "↺ Feder leeren",
+    "ruft": "_krmReset()"
+   },
+   {
+    "aufschrift": "Mit einem Federkraftmesser",
+    "ruft": "_krmAns(0,0)"
+   },
+   {
+    "aufschrift": "Mit einer Balkenwaage",
+    "ruft": "_krmAns(0,1)"
+   },
+   {
+    "aufschrift": "Mit einem Thermometer",
+    "ruft": "_krmAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Dehnung der Feder",
+    "ruft": "_krmAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Farbe der Feder",
+    "ruft": "_krmAns(1,1)"
+   },
+   {
+    "aufschrift": "Das Gewicht der Feder",
+    "ruft": "_krmAns(1,2)"
+   },
+   {
+    "aufschrift": "Newton (N)",
+    "ruft": "_krmAns(2,0)"
+   },
+   {
+    "aufschrift": "Gramm (g)",
+    "ruft": "_krmAns(2,1)"
+   },
+   {
+    "aufschrift": "Meter (m)",
+    "ruft": "_krmAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_krmSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_krmSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_krmSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('kraftmesser')"
+   }
+  ],
+  "hinweise": [
+   "Hänge Gewichte an die Feder. Je größer die Kraft, desto länger wird die Feder – am Zeiger liest du die Kraft in Newton (N) ab.",
+   "Ein Federkraftmesser nutzt aus, dass sich eine Feder unter einer Kraft dehnt. Die Dehnung ist ein Maß für die Kraft. Kraft wird in Newton (N) gemessen. Ein Gewicht von etwa 100 g zieht mit rund 1 N nach unten.",
+   "Die Kraft selbst ist unsichtbar – die gedehnte Feder macht sie messbar."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!"
+   },
+   {
+    "einstellung": "➕ Gewicht anhängen (1 N)",
+    "text": "krmStatus: Angehängte Kraft: F = 1 N. Die Feder ist um 1 cm gedehnt (Masse ≈ 100 g). Am Zeiger liest du die Kraft direkt ab."
+   },
+   {
+    "einstellung": "➖ Gewicht abnehmen",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!"
+   },
+   {
+    "einstellung": "↺ Feder leeren",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!"
+   },
+   {
+    "einstellung": "Mit einem Federkraftmesser",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✓ Richtig! Der Federkraftmesser nutzt die Dehnung einer Feder."
+   },
+   {
+    "einstellung": "Mit einer Balkenwaage",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Die Balkenwaage vergleicht Massen, nicht Kräfte."
+   },
+   {
+    "einstellung": "Mit einem Thermometer",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur."
+   },
+   {
+    "einstellung": "Die Dehnung der Feder",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✓ Richtig! Je größer die Kraft, desto größer die Dehnung."
+   },
+   {
+    "einstellung": "Die Farbe der Feder",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Die Farbe hat nichts mit der Kraft zu tun."
+   },
+   {
+    "einstellung": "Das Gewicht der Feder",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt."
+   },
+   {
+    "einstellung": "Newton (N)",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✓ Richtig! Die Einheit der Kraft ist das Newton (N)."
+   },
+   {
+    "einstellung": "Gramm (g)",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Gramm ist eine Einheit der Masse."
+   },
+   {
+    "einstellung": "Meter (m)",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Meter ist eine Einheit der Länge."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Meter ist eine Einheit der Länge.  ||  krmSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Meter ist eine Einheit der Länge.  ||  krmSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Meter ist eine Einheit der Länge."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "krmStatus: Keine Last: F = 0 N. Die Feder ist entspannt. Hänge ein Gewicht an!  ||  krmFb0: ✗ Ein Thermometer misst die Temperatur.  ||  krmFb1: ✗ Nicht die Feder selbst, sondern ihre Dehnung zählt.  ||  krmFb2: ✗ Meter ist eine Einheit der Länge."
+   }
+  ],
+  "bildtexte": [
+   "0 N",
+   "1 N",
+   "2 N",
+   "3 N",
+   "4 N",
+   "5 N",
+   "F = 0 N",
+   "Federkraftmesser",
+   "Skala in Newton",
+   "F = 1 N"
+  ]
+ }
+]

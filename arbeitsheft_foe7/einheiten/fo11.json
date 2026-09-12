@@ -1,0 +1,193 @@
+{
+ "seite": {
+  "id": "fo11",
+  "quelle": "oi14",
+  "sim": "farbmischung-additiv",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Die Lupe auf dem Bildschirm",
+  "name": "Wie macht der Bildschirm Farben?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Jannis hält die Lupe dicht an den alten Bildschirm.",
+   "Statt Weiß sieht er winzige rote, grüne und blaue Streifen.",
+   "Eine weiße Lampe findet er auf dem Glas nirgends."
+  ],
+  "frage": "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
+  "predict": [
+   "Rot, Grün und Blau zusammen ergeben im Auge Weiß.",
+   "Zwischen den Streifen sitzt eine versteckte weiße Lampe."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.",
+   "Drücke „aus“ und notiere alle drei Werte.",
+   "Drücke „Gelb“ und notiere die Werte.",
+   "Schiebe den Regler „Blau“ auf 255 und vergleiche mit dem Knopf „Weiß“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "R · G · B",
+   "Ergebnisfarbe"
+  ],
+  "tabRows": [
+   [
+    "Ausgangszustand",
+    "220 · 60 · 60",
+    "Rot"
+   ],
+   [
+    "aus",
+    "",
+    ""
+   ],
+   [
+    "Gelb",
+    "",
+    ""
+   ],
+   [
+    "Weiß",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Bildschirm mischt sein Licht aus",
+    "loesung": "Rot, Grün und Blau",
+    "post": "."
+   },
+   {
+    "pre": "Alle drei Werte auf 255 ergeben",
+    "loesung": "Weiß",
+    "post": ". Alle auf 0 ergeben Schwarz."
+   }
+  ],
+  "wortbank": [
+   "Rot, Grün und Blau",
+   "Weiß",
+   "Gelb",
+   "Schwarz",
+   "mischt"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation beim Knopf „Gelb“?",
+   "antwort": "Das Statusfeld meldet: Ergebnisfarbe Gelb mit R 255, G 255, B 0. Rot und Grün zusammen ergeben beim Licht Gelb. Blau ist ganz aus."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Alle drei Farben leuchten mit 255. Was entsteht?",
+    "optionen": [
+     "Braun",
+     "Schwarz",
+     "Weiß"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Bildschirm",
+      "loesung": "mischt",
+      "post": "alle Farben aus drei Lichtern."
+     },
+     {
+      "pre": "R 0, G 0 und B 0 ergeben",
+      "loesung": "Schwarz",
+      "post": "– kein Licht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Rot und Grün gemischt gibt Braun, wie im Malkasten.“ Was zeigt die Simulation stattdessen?",
+    "satzstarter": "Beim Licht ergibt Rot und Grün …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Gelb-Zeile der Tabelle: R 255, G 255, B 0.",
+   "h2": "Beginne so: Beim Licht ergibt Rot und Grün zusammen Gelb. Malfarben mischen sich anders, denn …",
+   "h3": "Fast fertige Antwort: Malfarben ergeben Braun. Licht mischt sich anders: Rot und Grün ergeben ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die drei Lichtfarben des Bildschirms.",
+   "Ich weiß, wie Weiß und wie Schwarz entstehen.",
+   "Ich kann Licht- und Malfarben unterscheiden."
+  ],
+  "zuhause": "Sieh mit einer Lupe ganz nah auf ein Handy- oder Fernsehbild. Suche die winzigen roten, grünen und blauen Streifen.",
+  "bildauftrag": "[BILD: drei große, sich überlappende Lichtkreise auf dunklem Grund: Rot, Grün und Blau; die Mitte, wo alle drei zusammenfallen, ist reines Weiß; die Überlappung von Rot und Grün ist Gelb; große Beschriftungen „Rot“, „Grün“, „Blau“, „Gelb“ und „Weiß“; keine weiteren Farbflächen oder Verläufe; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fo11",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass ein Bildschirm alle Farben aus rotem, grünem und blauem Licht zusammenmischt und dass alle drei zusammen Weiß ergeben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lupe dicht am Klassenbildschirm oder Handy.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: Ausgangszustand → Ergebnisfarbe Rot (R 220, G 60, B 60) · aus → Schwarz, kein Licht (R 0, G 0, B 0) · Gelb → R 255, G 255, B 0 · Weiß → R 255, G 255, B 255.",
+  "merksatz": [
+   "Rot, Grün und Blau",
+   "Weiß"
+  ],
+  "tabelle_erwartet": [
+   [
+    "aus",
+    "0 · 0 · 0",
+    "Schwarz (kein Licht)"
+   ],
+   [
+    "Gelb",
+    "255 · 255 · 0",
+    "Gelb"
+   ],
+   [
+    "Weiß",
+    "255 · 255 · 255",
+    "Weiß"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Alle drei zusammen ergeben Weiß.",
+   "typische_fehler": [
+    "Braun wird angekreuzt – die Malfarben-Erfahrung wird auf Licht übertragen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "mischt",
+    "Schwarz"
+   ],
+   "typische_fehler": [
+    "Schwarz wird als „dunkle Farbe“ gedeutet statt als „kein Licht“.",
+    "„macht“ statt der Wortbank-Form „mischt“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beim Licht ergibt Rot und Grün zusammen Gelb. Das zeigt der Knopf Gelb: R 255, G 255, B 0. Braun entsteht nur beim Mischen von Malfarben.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Braun entsteht beim Mischen von Malfarben, nicht von Licht.",
+    "Verweis auf die Gelb-Zeile der eigenen Tabelle."
+   ],
+   "typische_fehler": [
+    "Licht- und Malfarben werden weiter gleichgesetzt.",
+    "Eine eigene gelbe Lampe im Bildschirm wird vermutet."
+   ]
+  },
+  "hilfe3_wort": "Gelb",
+  "schwache": [
+   "Zuerst nur „aus“ und „Weiß“ vergleichen lassen: 0 gegen 255.",
+   "Die drei Zahlen immer in derselben Reihenfolge lesen lassen: R, dann G, dann B.",
+   "Die Streifen mit der Lupe am echten Bildschirm zeigen, bevor die Simulation startet."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle mit den drei Reglern deine Lieblingsfarbe ein und notiere ihre drei Zahlen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Farbmischung am Bildschirm. Kompetenz UF4 wie auf der Quellseite oi14. Der Fachbegriff additive Farbmischung fällt bewusst erst hier im Lehrerteil."
+ }
+}

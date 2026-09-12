@@ -1,3 +1,28 @@
 node_modules/
 .DS_Store
 simcheck/physics-sim.vorher.js
+
+# ── Arbeitshefte ─────────────────────────────────────────────────────────────
+# Die Quellen der 19 Baende gehoeren in die Versionsverwaltung: plan.py,
+# build_book.py, content/*.json, bilder/, img/, qr/. Sie hingen bis zum
+# 12.09.2026 an einer einzigen Festplatte - von tausenden Dateien waren SECHS
+# getrackt.
+#
+# Nicht hinein gehoert, was daraus erzeugt wird:
+arbeitsheft*/build/
+arbeitsheft*/prototyp/build/
+
+# Sicherungskopien neben den Dateien (.vor_<anlass>). Sie sind der Rueckweg
+# waehrend einer Aenderung, nicht Teil des Standes.
+*.vor_einstieg
+*.vor_einpassen
+*.vor_dritte
+*.vor_zeichen
+
+__pycache__/
+*.pyc
+
+# Der Schreibtisch legt beim iCloud-Abgleich Kopien wie "book_p99 3.png" und
+# "plan 2.py" an. Sie sehen aus wie Quellen, sind aber aeltere Staende - und
+# simcheck/seitenzahlen.py hat sich frueher daran verschluckt.
+* [0-9].*

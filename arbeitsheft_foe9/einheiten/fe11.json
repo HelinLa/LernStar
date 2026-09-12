@@ -1,0 +1,193 @@
+{
+ "seite": {
+  "id": "fe11",
+  "quelle": "el12+el13",
+  "sim": "schiefe-ebene",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Zwei Bretter an der Bühnenkante",
+  "name": "Was spart die Rampe?",
+  "fachwoerter_neu": [
+   "schiefe Ebene"
+  ],
+  "alltag": [
+   "Das Klavier soll auf die Bühne. Jannis hebt es nicht hoch.",
+   "Nour legt zwei Bretter schräg an die Bühnenkante.",
+   "So ein schräges Brett heißt in der Physik schiefe Ebene."
+  ],
+  "frage": "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
+  "predict": [
+   "Auf der flachen Rampe braucht Nour weniger Kraft. Die Kiste bleibt gleich schwer.",
+   "Auf der flachen Rampe wird die Kiste leichter."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.",
+   "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.",
+   "Trage Kraft und Weg für „mittel“ und „steil“ in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Rampe",
+   "Wie groß ist die Kraft F in N?",
+   "Wie lang ist der Weg?"
+  ],
+  "tabRows": [
+   [
+    "flach",
+    "1,5 N",
+    "4,0 × Höhe"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "steil",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je flacher die Rampe liegt, desto",
+    "loesung": "kleiner",
+    "post": "ist die nötige Kraft."
+   },
+   {
+    "pre": "Dafür wird der Weg",
+    "loesung": "länger",
+    "post": ". Was du an Kraft sparst, zahlst du am Weg zurück."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "länger",
+   "1,5 N",
+   "schwer"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die flache Rampe ab?",
+   "antwort": "Am Bildschirm steht: „Zugkraft F = 1,5 N … Weg 4,0 × so lang wie die Höhe.“ In die Tabelle kommt: 1,5 N und 4,0 × Höhe."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche zwei Zahlen stehen bei der steilen Rampe am Bildschirm?",
+    "optionen": [
+     "1,5 N · Weg = 4,0 × Höhe",
+     "4,5 N · Weg = 1,3 × Höhe",
+     "6 N · Weg = 4,0 × Höhe"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "An der flachen Rampe zieht Nour mit",
+      "loesung": "1,5 N",
+      "post": "."
+     },
+     {
+      "pre": "Die Kiste bleibt dabei genauso",
+      "loesung": "schwer",
+      "post": ". Am Bildschirm steht immer 6 N."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour kann höchstens 2 N ziehen. Welche Rampe muss sie nehmen?",
+    "satzstarter": "Nour muss die … Rampe nehmen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl vor dem N ist die Kraft F. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Nour muss die flache Rampe nehmen, weil …",
+   "h3": "Fast fertig: Flach heißt 1,5 N. Das ist weniger als 2 N. Nour nimmt die ___ Rampe."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F in der Statuszeile ablesen.",
+   "Ich kann sagen: flacher heißt kleinere Kraft und längerer Weg.",
+   "Ich weiß: Auf der Rampe wird die Kiste nicht leichter."
+  ],
+  "zuhause": "Suche eine Rampe in deiner Nähe. Ist sie steil oder flach?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei Rampen, untereinander angeordnet, alle im selben Bildausschnitt und alle zur GLEICHEN Höhe hinauf. Rechts steht in allen drei Zeilen dieselbe Bühnenkante; die Höhe ist einmal durchgehend mit einer senkrechten Maßlinie und der großen Beschriftung „Höhe (gleich)“ markiert. Auf jeder Rampe dieselbe rechteckige Kiste, jede Kiste trägt gut lesbar die Aufschrift „6 N“. Aus jeder Kiste geht genau EIN gerader Zugpfeil schräg nach oben, in Richtung der Rampe – oben kurz, unten lang: obere Rampe steil (kurzer Pfeil), mittlere Rampe mittel, untere Rampe flach (langer Pfeil). Beschriftung neben den Pfeilen von oben nach unten: „Zugkraft 4,5 N“, „Zugkraft 3,0 N“, „Zugkraft 1,5 N“. Unter jeder Rampe die Weglänge als waagerechter Doppelpfeil entlang der Bohle mit den Aufschriften „Weg = 1,3 × Höhe“, „Weg = 2,0 × Höhe“, „Weg = 4,0 × Höhe“; die drei Doppelpfeile werden von oben nach unten sichtbar länger. Genau diese drei Rampen, genau ein Pfeil je Kiste. KEINE zerlegten Kräfte, keine Hangabtriebs- oder Normalkraftpfeile, keine zweiten Pfeile an der Kiste, kein Seil um Rollen, keine Personen, keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fe11",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass die nötige Kraft F mit flacherer Rampe kleiner wird (steil 4,5 N · mittel 3,0 N · flach 1,5 N gegenüber 6 N beim senkrechten Heben), und dass der Weg dabei länger wird (1,3 × · 2,0 × · 4,0 × die Höhe). Sie benennen den Preis der Kraftersparnis in der Sache: Was an Kraft gespart wird, wird am Weg zurückgezahlt. Sie unterscheiden die Kraft F am Seil und die Gewichtskraft der Kiste: Die Last bleibt bei jeder Rampe 6 N. Fachlicher Name dieser Regel — nur für Sie, nicht auf der Schülerseite: goldene Regel der Mechanik.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Rampen. Optional als Demonstration: ein Brett an einen Tisch legen, eine Kiste am Kraftmesser einmal senkrecht heben und einmal über das flache Brett ziehen (nur Vergleich klein/groß, keine Messreihe).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte „flach“: „flache Rampe: Zugkraft F = 1,5 N (statt 6 N senkrecht), Weg 4,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Karte „mittel“ (das ist zugleich der Ausgangszustand der Simulation): „mittlere Rampe: Zugkraft F = 3,0 N (statt 6 N senkrecht), Weg 2,0 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Karte „steil“: „steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe. Kraft × Weg = 6 – genauso viel wie beim direkten Heben.“ Dazu als Tafelbild drei Rampen untereinander, alle zur gleichen Höhe: dieselbe Kiste mit der Aufschrift „6 N“ auf jeder Rampe, daneben die Bildtexte „Höhe (gleich)“, „Zugkraft 4,5 N“ / „Weg = 1,3 × Höhe“, „Zugkraft 3,0 N“ / „Weg = 2,0 × Höhe“, „Zugkraft 1,5 N“ / „Weg = 4,0 × Höhe“. Wichtig beim Tafelbild: die Kisten-Aufschrift „6 N“ bleibt in allen drei Zeilen stehen — daran hängt Aufgabe 2. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "kleiner",
+   "länger"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "3,0 N",
+    "2,0 × Höhe"
+   ],
+   [
+    "steil",
+    "4,5 N",
+    "1,3 × Höhe"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „steil“ meldet die Statuszeile: „steile Rampe: Zugkraft F = 4,5 N (statt 6 N senkrecht), Weg 1,3 × so lang wie die Höhe.“ Dieselben zwei Zahlen stehen als Bildtexte „Zugkraft 4,5 N“ und „Weg = 1,3 × Höhe“ direkt an der Rampe — die zweite Option nennt beide. Die erste Option ist die flache Rampe (die Beispielzeile der Tabelle), die dritte mischt die Last 6 N mit dem Weg der flachen Rampe.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt, weil die Beispielzeile der Tabelle im Blick liegt und nicht neu gemessen wurde. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt?",
+    "Die dritte Option wird angekreuzt: Die 6 N der Kiste werden für die Zugkraft gehalten. Am Bild zeigen: 6 N steht auf der Kiste, die Zugkraft steht am Pfeil.",
+    "Es wird gar nicht umgestellt und der Ausgangszustand (mittel, 3,0 N) abgelesen — diese Zahl kommt in keiner Option vor, die Aufgabe bleibt leer."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,5 N",
+    "schwer"
+   ],
+   "typische_fehler": [
+    "Statt 1,5 N wird 6 N eingesetzt: Kraft am Seil und Gewichtskraft werden gleichgesetzt. Der Bildtext „6 N“ steht bei jeder Rampe unverändert da — kleiner wird nur die Kraft F.",
+    "Statt „schwer“ wird „leicht“ oder „leichter“ geschrieben — genau die Fehlvorstellung aus der ersten Vermutung. Auf die drei Kisten des Tafelbildes zeigen: dreimal 6 N.",
+    "Die Einheit N fehlt („1,5“). Die Wortbank enthält sie mit Einheit; einmal abschreiben lassen.",
+    "Der Wert der mittleren Rampe (3,0 N) wird eingesetzt, weil zuletzt dort gemessen wurde. Der Satz nennt aber die flache Rampe."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour muss die flache Rampe nehmen, weil sie dort nur 1,5 N ziehen muss. Das ist weniger als 2 N. Bei der mittleren Rampe wären es 3,0 N und bei der steilen 4,5 N — das schafft sie nicht. Dafür ist ihr Weg auf der flachen Rampe länger.",
+   "alternativen": [
+    "Nur mit dem Vergleich der drei Zahlen, ohne Wegsatz: „flach, weil 1,5 N kleiner ist als 2 N“ — reicht für die volle Wertung.",
+    "Ausschlussweg: „mittel und steil gehen nicht, weil 3,0 N und 4,5 N mehr als 2 N sind. Also flach.“",
+    "Begründung über die Regel: „Je flacher die Rampe, desto kleiner die Zugkraft. Also muss Nour die flachste nehmen.“",
+    "Zusatz mit Preis: „Sie muss die Kiste dafür 4,0 × so weit ziehen wie hoch.“ — richtig, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "„steil“ wird gewählt, weil der Weg dort kurz ist. Nachfragen: Wie viel Kraft schafft Nour? Die Wegfrage kommt erst danach.",
+    "Es wird nur „die flache“ genannt, ohne Zahl. Nachfragen: Woran siehst du das? Die Zahl 1,5 N muss vorkommen (Hilfe 3 gibt sie vor).",
+    "Nour soll die Kiste leichter machen oder jemanden mitziehen lassen — Alltagslösung statt Ablesen. Auf die Tabelle zurückverweisen.",
+    "Die 6 N werden als Antwort genannt: Das ist die Last, nicht die Zugkraft."
+   ]
+  },
+  "hilfe3_wort": "flache (auch richtig: flachste)",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten: nur „flach“, „mittel“, „steil“. Neun weitere Knöpfe sind Quizfragen der Simulation, drei fragen nur nach dem eigenen Gefühl (unsicher / geht so / sicher), einer setzt das Protokoll zurück. Wer „Kraft“ drückt — das sieht aus wie eine Einstellung —, bekommt keinen neuen Messwert, sondern eine Quiz-Rückmeldung; die Statuszeile bleibt dabei auf der zuletzt eingestellten Rampe stehen (nachgemessen).",
+   "Die Beispielzeile der Tabelle (flach) gemeinsam laut lesen und im gelösten Beispiel die Stelle „= 1,5 N“ mit dem Finger zeigen, bevor die Simulation geöffnet wird.",
+   "Nur die Spalte „Zugkraft F in N“ ausfüllen lassen; die Weg-Spalte gemeinsam an der Tafel eintragen.",
+   "Die lange Statuszeile mit einem Papierstreifen abdecken, sodass nur „Zugkraft F = … N“ sichtbar bleibt.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Rechne für die flache Rampe Kraft mal Weg als Plusaufgabe: 1,5 + 1,5 + 1,5 + 1,5. Vergleiche dein Ergebnis mit der Zahl, die am Bildschirm hinter „Kraft × Weg =“ steht. Probiere es auch für die mittlere Rampe: 3,0 + 3,0.",
+  "kernlehrplan": "Inhaltsfeld Mechanische Arbeit, Energie und Leistung · einfache Maschinen: schiefe Ebene. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Rampen und das Eintragen der Tabelle trägt E4 und E5, der Vergleich der drei Zugkräfte UF3, die Erklär-Aufgabe zur 2-N-Grenze UF4 und E6, die Vermutung zur gleich bleibenden Last UF1. Zusammenlegung: Diese Doppelseite trägt el12 und el13 gemeinsam (Seitenplan vom 05.09.2026), mit EINEM Lernziel — flacher heißt kleinere Zugkraft und längerer Weg. Fachwortzählung: neu ist genau EIN Wort, „schiefe Ebene“, im Alltagsteil mit Begriffssatz eingeführt; „Rampe“ bleibt durchgehend das Alltagswort. Nicht neu eingeführt und deshalb nur als Rückverweis benutzt: Kraft (fk1), Newton N (fk2), Gewichtskraft F (fk4), Arbeit W (fe1). „Zugkraft“ wäre nach Zählregel 1 und 4 ein ZWEITES neues Fachwort — das Wort kommt im ganzen Band sonst kein einziges Mal vor. Die Schülerseite sagt deshalb durchgehend „Kraft F in N“, genau wie fe8 und fe9; der Bildschirmwortlaut „Zugkraft“ steht nur noch dort, wo der Bildschirm wörtlich zitiert wird (gelöstes Beispiel, Bildtexte des Bildauftrags), und wird nirgends gebraucht: nicht im Lernziel, nicht in der Tabellenspalte, nicht im Merksatz, nicht in der Wortbank, nicht in einer Aufgabe. Nach Zählregel 5 steht außerdem kein Alltagswort ohne Formelzeichen und Einheit in der Wortbank: „Weg“ ist deshalb aus der Wortbank heraus, die zweite Merksatzlücke fragt nach „länger“. Der Name „goldene Regel der Mechanik“ steht nach Zählregel 4 auf keiner Schülerseite des Bandes — weder hier noch bei fe9; auf beiden Seiten steht nur die Sache („Was du an Kraft sparst, zahlst du am Weg zurück“). Ebenfalls bewusst vermieden: „einfache Maschine“, „Steilheit“, „Hangabtriebskraft“ — das wären das zweite bis vierte Wort. Datenlage und Fallen: (1) Die „6“ hinter „Kraft × Weg =“ ist EINHEITENLOS, der Weg steht nur als Vielfaches der Höhe („4,0 × so lang wie die Höhe“), die Höhe selbst trägt keine Zahl (Bildtext nur „Höhe (gleich)“). Auf der Schülerseite darf deshalb nirgends „6 J“ stehen und keine Rechnung in Joule verlangt werden; die 1200,0 J des Flaschenzugs (fe9) dürfen nicht analog gebildet werden. (2) Rechenfalle steile Rampe: 4,5 × 1,3 = 5,85, die Simulation zeigt trotzdem „Kraft × Weg = 6“, weil sie den Wegfaktor 1,33… auf 1,3 rundet. Nachgerechnet werden darf nur flach (1,5 × 4,0 = 6) und mittel (3,0 × 2,0 = 6) — genau diese beiden stehen in der freiwilligen Zusatzaufgabe, und zwar als Additionsaufgabe, weil die Dezimalkomma-Multiplikation selbst eine Hürde ist. Der steile Wert wird nur abgelesen, nie multipliziert. (3) „senkrecht heben“ ist KEIN Bedienzustand: Es gibt nur die drei Knöpfe flach, mittel, steil. Die 6 N stehen als Bildtext „6 N“ und in jeder Statuszeile als „(statt 6 N senkrecht)“; der zugehörige Wegfaktor 1,0 steht nirgends am Bildschirm. Die vierte Tabellenzeile des Regelhefts entfällt deshalb — die Tabelle hat nur die drei messbaren Zeilen. (4) Zwei Namen für dieselbe Größe: Der Knopf heißt „Kraft“, die Statuszeile schreibt „Zugkraft F“. Die Schülerseite sagt durchgehend „Kraft F in N“ (das eingeführte Wort aus fk1/fk2); nennen Sie beim Bedienen beide Wörter einmal und zeigen Sie im gelösten Beispiel, dass „Zugkraft F = 1,5 N“ am Bildschirm dieselbe Größe meint. (5) Zeichen-Bruch: Die Simulation schreibt „×“, das Heft spricht von „mal“. Einmal ausdrücklich gleichsetzen. (6) Die Begründung des Regelhefts — nur ein Teil der Gewichtskraft wirkt entlang der Bohle, den Rest trägt die Unterlage — zeigt die Simulation NICHT: In den Bildtexten steht kein einziger Kraftpfeil und keine Zerlegung. Sie bleibt Merkwissen und darf nach der Heft-gegen-Sim-Regel keine Bildschirmaufgabe tragen; deshalb verbietet auch der Bildauftrag zerlegte Kräfte. (7) Undruckbare Zeichen: Vier Knöpfe der Simulation tragen vor dem Wort ein Emoji (unsicher / geht so / sicher / Protokoll zurücksetzen), ebenso die Überschrift der Simulation. SourceSans3 hat für diese Zeichen keine Glyphe; sie werden deshalb nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. (8) Offen und deshalb nicht verlangt: Ob die Simulation alle drei Rampen gleichzeitig zeigt oder nur die eingestellte, ist im Faktendump nicht belegt (alle Bildtexte stehen dort nebeneinander). Die Seite verlangt deshalb drei getrennte Messungen, nicht einen Vergleich aus einem Bildschirm. Ebenso unbelegt: was das Protokoll sammelt und ob nach einer Animation andere Werte erscheinen — die Seite fordert keinen Zustand nach einem Lauf. Sobald `fakten/schiefe-ebene.json` ein Feld „nachgemessen“ trägt, kann das nachgezogen werden. (9) Aufgabe 1 fragt bewusst nach den beiden ZAHLEN und nicht nach dem Bildtext im Wortlaut: So bleibt „Zugkraft“ aus der Aufgabe heraus, ohne dass die Seite etwas behauptet, was nicht am Bildschirm steht. Die Zahlenpaare selbst sind belegt (Status „Zugkraft F = 4,5 N“, Bildtext „Weg = 1,3 × Höhe“). Nachgemessen am 05.09.2026 mit simcheck/werte.js: Ein Quizknopf ändert die Statuszeile NICHT, sie bleibt auf der zuletzt eingestellten Rampe."
+ }
+}

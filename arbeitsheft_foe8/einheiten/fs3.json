@@ -1,0 +1,187 @@
+{
+ "seite": {
+  "id": "fs3",
+  "quelle": "st3",
+  "sim": "spannung",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Die Zahl mit dem V auf der Zelle",
+  "name": "Was sagt die Zahl mit dem V?",
+  "fachwoerter_neu": [
+   "Spannung U in Volt (V)"
+  ],
+  "alltag": [
+   "In der Werkstatt steht eine Kiste voller Batteriezellen.",
+   "Auf jeder Zelle steht 1,5 V.",
+   "Diese Zahl ist die Spannung U. Man misst sie in Volt (V).",
+   "Ein Voltmeter ist ein Messgerät für die Spannung."
+  ],
+  "frage": "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
+  "predict": [
+   "Mehr Zellen geben mehr Volt. Die Lampe leuchtet dann heller.",
+   "Mehr Zellen halten nur länger. Die Lampe bleibt gleich hell."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.",
+   "Lies in der Statuszeile, wie hell die Lampe leuchtet.",
+   "Drücke „2 Zellen (3 V)“ und trage die zweite Zeile ein.",
+   "Drücke „3 Zellen (4,5 V)“ und trage die dritte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zahl der Zellen",
+   "Welche Spannung U steht am Voltmeter?",
+   "Wie hell ist die Lampe?"
+  ],
+  "tabRows": [
+   [
+    "1 Zelle",
+    "1,5 V",
+    "schwach"
+   ],
+   [
+    "2 Zellen",
+    "",
+    ""
+   ],
+   [
+    "3 Zellen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Spannung U misst man in",
+    "loesung": "Volt",
+    "post": "(V)."
+   },
+   {
+    "pre": "Mehr Zellen geben mehr Spannung. Die Lampe leuchtet dann",
+    "loesung": "heller",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Volt",
+   "heller",
+   "1,5 V",
+   "4,5 V"
+  ],
+  "beispiel": {
+   "frage": "Nour setzt zwei Zellen ein. Was zeigt das Voltmeter?",
+   "antwort": "Jede Zelle gibt 1,5 V. Zwei Zellen geben zusammen 3 V, denn 1,5 V + 1,5 V = 3 V. Am Voltmeter steht U = 3 V. Die Lampe leuchtet heller als mit einer Zelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei drei Zellen?",
+    "optionen": [
+     "Am Voltmeter steht 1,5 V. Die Lampe bleibt gleich hell.",
+     "Am Voltmeter steht 3 V. Die Lampe wird dunkler.",
+     "Am Voltmeter steht 4,5 V. Die Lampe leuchtet am hellsten."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Zelle gibt",
+      "loesung": "1,5 V",
+      "post": ". Zwei Zellen geben zusammen 3 V."
+     },
+     {
+      "pre": "Drei Zellen geben zusammen",
+      "loesung": "4,5 V",
+      "post": ". Das ist die größte Spannung hier."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Zwei Zellen halten nur länger. Die Lampe bleibt gleich hell.“ Erkläre Jannis, warum das nicht stimmt.",
+    "satzstarter": "Mit zwei Zellen zeigt das Voltmeter …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Zwei davon sind Zahlen mit V.",
+   "h2": "Beginne so: Mit zwei Zellen zeigt das Voltmeter 3 V. Die Lampe …",
+   "h3": "Fast fertige Antwort: Eine Zelle gibt 1,5 V. Zwei Zellen geben 3 V. Mehr Volt heißt: Die Lampe leuchtet ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Spannung U am Voltmeter ablesen.",
+   "Ich weiß, dass man die Spannung U in Volt (V) misst.",
+   "Ich kann erklären, warum mehr Zellen die Lampe heller machen."
+  ],
+  "zuhause": "Suche zu Hause drei Batterien. Schreibe auf, wie viel Volt auf jeder steht. Kreise die größte Zahl ein.",
+  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, gleich groß und gleich gezeichnet; links eine Batteriezelle, in der Mitte zwei, rechts drei; in jedem Kreis eine Lampe und ein rundes Messgerät mit großem V; die Anzeigen lesen von links nach rechts 1,5 V, 3 V und 4,5 V; die Lampe leuchtet von links nach rechts sichtbar stärker; große Beschriftungen „1 Zelle“, „2 Zellen“, „3 Zellen“ unter den Kreisen; heller ruhiger Hintergrund, keine weiteren Bauteile, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fs3",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Spannung U in Volt (V) am Voltmeter ab und erklären, dass mehr Zellen mehr Volt geben und die Lampe dadurch heller leuchtet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Batteriehalter mit 1, 2 und 3 Zellen, Lämpchen und Voltmeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Bildschirm-Ergebnisse vorlesen oder als drei Karten zeigen: 1 Zelle → U = 1,5 V, Lampe schwach · 2 Zellen → U = 3 V, Lampe heller · 3 Zellen → U = 4,5 V, Lampe am hellsten. Alternativ dieselben drei Zeilen als Tabelle an die Tafel schreiben und die Zahlen 1,5 V + 1,5 V = 3 V daneben ausrechnen.",
+  "merksatz": [
+   "Volt",
+   "heller"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Zellen",
+    "3 V",
+    "heller"
+   ],
+   [
+    "3 Zellen",
+    "4,5 V",
+    "am hellsten"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet bei drei Zellen: Spannung U = 4,5 V (3 Zellen). Stärkerer Antrieb → mehr Strom → Lampe am hellsten.",
+   "typische_fehler": [
+    "Die Zahl 3 wird der Zahl der Zellen zugeordnet, deshalb wird „3 V“ angekreuzt.",
+    "1,5 V wird auch bei drei Zellen erwartet, weil nur die Aufschrift einer einzelnen Zelle gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,5 V",
+    "4,5 V"
+   ],
+   "typische_fehler": [
+    "1,5 V und 4,5 V werden vertauscht.",
+    "Statt 4,5 V wird 3 V eingesetzt, weil drei Zellen mit der Zahl 3 verbunden werden."
+   ]
+  },
+  "a3": {
+   "erwartung": "Mit zwei Zellen zeigt das Voltmeter 3 V. Mit einer Zelle sind es nur 1,5 V. Mehr Volt heißt: Die Lampe leuchtet heller. Sie hält nicht nur länger.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: bei 1 Zelle steht dort „Lampe schwach“, bei 2 Zellen „Lampe heller“.",
+    "Rechnung 1,5 V + 1,5 V = 3 V, verbunden mit dem Satz, dass die Lampe dabei heller wird."
+   ],
+   "typische_fehler": [
+    "Nur die Laufzeit wird beschrieben („hält doppelt so lang“), die Helligkeit fehlt.",
+    "Die Volt-Zahlen werden richtig genannt, aber nicht mit der Lampe verbunden."
+   ]
+  },
+  "hilfe3_wort": "heller (auch richtig: heller als mit einer Zelle)",
+  "schwache": [
+   "Zuerst nur 1 Zelle und 3 Zellen vergleichen; die mittlere Tabellenzeile erst danach ausfüllen.",
+   "Die Zahlenreihe 1,5 V – 3 V – 4,5 V gemeinsam laut lesen und 1,5 + 1,5 = 3 an der Tafel zeigen.",
+   "Spalte 3 als Ankreuz-Spalte anbieten: schwach / heller / am hellsten stehen schon da.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke den Knopf „Zurücksetzen“ (mit dem Kreispfeil davor). Sage vorher, welche Spannung danach am Voltmeter steht, und prüfe deine Vorhersage.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7), Basiskonzept Energie · Spannung U und Volt. Kompetenzen UF1, UF3, UF4, E6 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): UF1, UF3 und UF4 über Merksatz, Tabelle und Aufgabe 1; E6 über den Vergleich der drei Statuszeilen in Tabelle und Aufgabe 3; K1 über den Zuhause-Auftrag (Werte aus dem Alltag entnehmen und notieren). Der Merksatz „Das Voltmeter schließt man parallel an“ aus der Quellseite st3 bleibt fs5 vorbehalten – die Simulation spannung hat keinen Umschalter Reihe/parallel. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

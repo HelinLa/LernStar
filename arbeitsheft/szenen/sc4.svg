@@ -1,0 +1,45 @@
+<defs>
+  <linearGradient id="sc4himmel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#9CBBD8"/><stop offset="1" stop-color="#DCE4D4"/>
+  </linearGradient>
+  <linearGradient id="sc4wiese" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#78995A"/><stop offset="0.5" stop-color="#688C46"/>
+    <stop offset="1" stop-color="#42622C"/>
+  </linearGradient>
+  <radialGradient id="sc4tiefe" cx="0.30" cy="0.30" r="0.85">
+    <stop offset="0.35" stop-color="#1E1405" stop-opacity="0"/>
+    <stop offset="1" stop-color="#1E1405" stop-opacity="0.40"/>
+  </radialGradient>
+</defs>
+  <rect x="0" y="0" width="900" height="200" fill="url(#sc4himmel)"/>
+  <rect x="0" y="150" width="900" height="390" fill="url(#sc4wiese)"/>
+  <g opacity="0.68">
+    <use href="#t_baum_fern" transform="translate(120,186) scale(0.62)"/>
+    <use href="#t_baum_fern" transform="translate(300,180) scale(0.52)"/>
+    <use href="#t_baum_fern" transform="translate(500,182) scale(0.58)"/>
+    <use href="#t_baum_fern" transform="translate(700,186) scale(0.66)"/>
+  </g>
+  <!-- rechts hinten die Ecke der Bude -->
+  <g opacity="0.9"><use href="#t_bude" transform="translate(860,268) scale(0.6)"/></g>
+
+  <!-- Auflager -->
+  <g filter="url(#kontakt)">
+    <rect x="152" y="216" width="54" height="34" rx="4" fill="#9E7A5C"/>
+    <rect x="596" y="386" width="86" height="58" rx="5" fill="#9E7A5C"/>
+  </g>
+  <ellipse cx="180" cy="252" rx="46" ry="9" fill="#1E1405" opacity="0.3" filter="url(#tiefe)"/>
+  <ellipse cx="640" cy="446" rx="74" ry="13" fill="#1E1405" opacity="0.34" filter="url(#tiefe)"/>
+
+  <!-- der lange Balken laeuft nach hinten links weg -->
+  <use href="#t_balken" transform="translate(452,330) scale(1.0)"/>
+
+  <!-- Spuren: hinten der Loeffel, vorn die zusammengerollte Jacke als Kopfkissen -->
+  <use href="#t_loeffel_metall" transform="translate(196,196) rotate(-12) scale(0.42)"/>
+  <use href="#t_handtuch" transform="translate(690,392) rotate(-9) scale(1.0)"/>
+
+  <g opacity="0.85">
+    <use href="#t_grasbuschel" transform="translate(96,470) scale(0.9)"/>
+    <use href="#t_grasbuschel" transform="translate(330,502) scale(1.1)"/>
+    <use href="#t_grasbuschel" transform="translate(806,506) scale(1.0)"/>
+  </g>
+  <rect x="0" y="0" width="900" height="540" fill="url(#sc4tiefe)"/>

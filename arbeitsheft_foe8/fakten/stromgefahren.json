@@ -1,0 +1,165 @@
+[
+ {
+  "sim": "stromgefahren",
+  "ueberschrift": "⚠️ Gefahren des elektrischen Stroms &amp; Schutz",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "➕ Gerät anschließen",
+    "ruft": "_gefAdd(1)"
+   },
+   {
+    "aufschrift": "➖ Gerät entfernen",
+    "ruft": "_gefAdd(-1)"
+   },
+   {
+    "aufschrift": "↺ Sicherung zurücksetzen",
+    "ruft": "_gefReset()"
+   },
+   {
+    "aufschrift": "Sie macht den Strom größer",
+    "ruft": "_gefAns(0,0)"
+   },
+   {
+    "aufschrift": "Sie unterbricht den Stromkreis",
+    "ruft": "_gefAns(0,1)"
+   },
+   {
+    "aufschrift": "Sie tut nichts",
+    "ruft": "_gefAns(0,2)"
+   },
+   {
+    "aufschrift": "Ungefährlich",
+    "ruft": "_gefAns(1,0)"
+   },
+   {
+    "aufschrift": "Lebensgefährlich – nie berühren",
+    "ruft": "_gefAns(1,1)"
+   },
+   {
+    "aufschrift": "Nur bei Kindern gefährlich",
+    "ruft": "_gefAns(1,2)"
+   },
+   {
+    "aufschrift": "Mit der Steckdose (230 V)",
+    "ruft": "_gefAns(2,0)"
+   },
+   {
+    "aufschrift": "Nur mit ungefährlicher Kleinspannung",
+    "ruft": "_gefAns(2,1)"
+   },
+   {
+    "aufschrift": "Mit beliebiger Spannung",
+    "ruft": "_gefAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_gefSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_gefSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_gefSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('stromgefahr')"
+   }
+  ],
+  "hinweise": [
+   "Schließe immer mehr Geräte an eine Steckdose an. Wann wird der Strom zu groß – und was macht dann die Sicherung? (Modell mit ungefährlicher Kleinspannung.)",
+   "Zu viele Geräte an einer Steckdose ziehen zu viel Strom. Die Sicherung unterbricht dann den Stromkreis und schützt vor Überhitzung und Brand. Gefährlich sind außerdem: blanke/defekte Kabel, Wasser an Geräten, Steckdosen mit nassen Händen.",
+   "⚠️ Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher."
+   },
+   {
+    "einstellung": "➕ Gerät anschließen",
+    "text": "gefStatus: 2 Geräte → 12 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher."
+   },
+   {
+    "einstellung": "➖ Gerät entfernen",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher."
+   },
+   {
+    "einstellung": "↺ Sicherung zurücksetzen",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher."
+   },
+   {
+    "einstellung": "Sie macht den Strom größer",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie verstärkt den Strom nicht."
+   },
+   {
+    "einstellung": "Sie unterbricht den Stromkreis",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✓ Richtig! Sie unterbricht den Kreis und schützt vor Brand."
+   },
+   {
+    "einstellung": "Sie tut nichts",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein."
+   },
+   {
+    "einstellung": "Ungefährlich",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ 230 V sind sehr gefährlich."
+   },
+   {
+    "einstellung": "Lebensgefährlich – nie berühren",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✓ Richtig! Netzspannung ist lebensgefährlich – niemals damit experimentieren."
+   },
+   {
+    "einstellung": "Nur bei Kindern gefährlich",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich."
+   },
+   {
+    "einstellung": "Mit der Steckdose (230 V)",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Niemals mit der Steckdose experimentieren!"
+   },
+   {
+    "einstellung": "Nur mit ungefährlicher Kleinspannung",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✓ Richtig! Nur ungefährliche Kleinspannung (z. B. Batterien)."
+   },
+   {
+    "einstellung": "Mit beliebiger Spannung",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Nein – nur Kleinspannung ist erlaubt."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Nein – nur Kleinspannung ist erlaubt.  ||  gefSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Nein – nur Kleinspannung ist erlaubt.  ||  gefSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Nein – nur Kleinspannung ist erlaubt."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "gefStatus: 1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.  ||  gefFb0: ✗ Sie greift sehr wohl ein.  ||  gefFb1: ✗ Sie ist für alle gefährlich.  ||  gefFb2: ✗ Nein – nur Kleinspannung ist erlaubt."
+   }
+  ],
+  "bildtexte": [
+   "Sicherung",
+   "16 A",
+   "Strom: 6 A",
+   "Strom fließt sicher",
+   "Strom: 12 A"
+  ],
+  "nachgemessen": {
+   "warum": "simfakten betaetigt jedes Bedienelement nur EINMAL und erreicht deshalb nur 1 und 2 Geraete. Mit simcheck/werte.js mehrfach gedrueckt:",
+   "werte": [
+    "1 Geraet  -> 6 A. Das ist unter der Sicherungsgrenze (16 A) - der Strom fliesst sicher.",
+    "2 Geraete -> 12 A. Das ist unter der Sicherungsgrenze (16 A) - der Strom fliesst sicher.",
+    "3 Geraete -> 18 A. Das ist mehr als die Sicherung (16 A) erlaubt! Die Sicherung hat ausgeloest und den Kreis unterbrochen - so wird ein Brand verhindert.",
+    "4 Geraete -> 24 A (gleiche Ausloesemeldung) · 5 Geraete -> 30 A (gleiche Ausloesemeldung)"
+   ],
+   "folge": "Das Ausloesen DARF Lernziel sein. Die Tabelle traegt drei Zeilen: 1 / 2 / 3 Geraete."
+  }
+ }
+]

@@ -1,0 +1,426 @@
+[
+ {
+  "sim": "magnetfeld",
+  "ueberschrift": "🧭 Wie stark wirkt der Magnet an welcher Stelle?",
+  "regler": [
+   {
+    "id": "mffAngle",
+    "beschriftung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40°",
+    "bereich": {
+     "min": "0",
+     "max": "360",
+     "step": "5",
+     "start": "40"
+    }
+   },
+   {
+    "id": "mffRadius",
+    "beschriftung": "Abstand des Prüfkompasses vom Magneten: 95",
+    "bereich": {
+     "min": "55",
+     "max": "140",
+     "step": "5",
+     "start": "95"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "🧵 Feldlinien",
+    "ruft": "_mffToggle('showLines')"
+   },
+   {
+    "aufschrift": "🧭 Kompass-Raster",
+    "ruft": "_mffToggle('showGrid')"
+   },
+   {
+    "aufschrift": "Mit Feldlinien",
+    "ruft": "_mffAns(0,0)"
+   },
+   {
+    "aufschrift": "Mit Zahlen",
+    "ruft": "_mffAns(0,1)"
+   },
+   {
+    "aufschrift": "Mit Farben allein",
+    "ruft": "_mffAns(0,2)"
+   },
+   {
+    "aufschrift": "Von Süd zu Nord",
+    "ruft": "_mffAns(1,0)"
+   },
+   {
+    "aufschrift": "Von Nord zu Süd",
+    "ruft": "_mffAns(1,1)"
+   },
+   {
+    "aufschrift": "Im Kreis um die Mitte",
+    "ruft": "_mffAns(1,2)"
+   },
+   {
+    "aufschrift": "Weit weg vom Magneten",
+    "ruft": "_mffAns(2,0)"
+   },
+   {
+    "aufschrift": "Nah an den Polen",
+    "ruft": "_mffAns(2,1)"
+   },
+   {
+    "aufschrift": "Überall gleich",
+    "ruft": "_mffAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_mffSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_mffSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_mffSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('magfeld')"
+   }
+  ],
+  "hinweise": [
+   "Noahs Magnet aus der Bude, ringsum kleine Kompassnadeln. Fahre mit dem Prüfkompass an die Enden und an die Mitte des Magneten und verändere den Abstand. Vergleiche, an welchen Stellen die Nadel am kräftigsten gedreht wird.",
+   "Die kleine rote Nadelspitze zeigt in Feldrichtung. Außerhalb zeigen die Linien immer vom Nordpol (N) zum Südpol (S).",
+   "Feldlinien verlaufen vom Nordpol zum Südpol. | Wo die Linien dicht sind (nah an den Polen), ist das Feld am stärksten."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": ""
+   },
+   {
+    "einstellung": "🧵 Feldlinien",
+    "text": ""
+   },
+   {
+    "einstellung": "🧭 Kompass-Raster",
+    "text": ""
+   },
+   {
+    "einstellung": "Mit Feldlinien",
+    "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes."
+   },
+   {
+    "einstellung": "Mit Zahlen",
+    "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht."
+   },
+   {
+    "einstellung": "Mit Farben allein",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen."
+   },
+   {
+    "einstellung": "Von Süd zu Nord",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd."
+   },
+   {
+    "einstellung": "Von Nord zu Süd",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol."
+   },
+   {
+    "einstellung": "Im Kreis um die Mitte",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis."
+   },
+   {
+    "einstellung": "Weit weg vom Magneten",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer."
+   },
+   {
+    "einstellung": "Nah an den Polen",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten."
+   },
+   {
+    "einstellung": "Überall gleich",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 135",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 180",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 225",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 270",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 315",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 360",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 10",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 20",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 30",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 40",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 50",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 60",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 70",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 80",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 100",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 110",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 120",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 130",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 140",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 150",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 160",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 170",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 190",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 200",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 210",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 220",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 230",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 240",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 250",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 260",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 280",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 290",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 300",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 310",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 320",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 330",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 340",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 350",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 25",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 75",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 125",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 175",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 275",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 325",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 55",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 65",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 75",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 85",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 100",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 110",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 120",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 130",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 140",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 60",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 70",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 80",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 90",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 95",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 105",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 115",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 125",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 135",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   }
+  ],
+  "bildtexte": [
+   "N",
+   "S",
+   "Prüfkompass"
+  ]
+ }
+]

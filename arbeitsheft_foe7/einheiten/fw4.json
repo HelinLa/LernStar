@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw4",
+  "quelle": "ew5",
+  "sim": "planetenbahn",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Warum Planeten nicht abstürzen",
+  "name": "Warum stürzen Planeten nicht ab?",
+  "fachwoerter_neu": [
+   "Umlaufbahn"
+  ],
+  "alltag": [
+   "Zwischen den Karten liegt ein Bogen mit Planetenbahnen.",
+   "Jannis fragt: Die Sonne zieht doch an allem.",
+   "Warum liegt dann nicht längst alles in der Sonne?",
+   "Der Weg eines Planeten um die Sonne heißt Umlaufbahn."
+  ],
+  "frage": "Warum stürzt ein Planet nicht in die Sonne?",
+  "predict": [
+   "Der Planet ist quer zur Sonne schnell unterwegs und fällt immer vorbei.",
+   "Die Sonne ist zu weit weg und zieht ihn kaum an."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „ganz klein“ und lies die Bahnform ab.",
+   "Drücke „mittlerer Wert“ und vergleiche.",
+   "Drücke „Gegenprobe groß“ und lies die Meldung.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Anschub",
+   "Bahnform laut Anzeige",
+   "Kommt er zurück?"
+  ],
+  "tabRows": [
+   [
+    "ganz klein (6 km/s)",
+    "stürzt in die Sonne",
+    "nein"
+   ],
+   [
+    "mittlerer Wert (30 km/s)",
+    "",
+    ""
+   ],
+   [
+    "groß (50 km/s)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Sonne zieht den Planeten immer an. Weil er quer dazu schnell ist, fällt er immer an ihr",
+    "loesung": "vorbei",
+    "post": "."
+   },
+   {
+    "pre": "Dieses ewige Vorbeifallen ist die",
+    "loesung": "Umlaufbahn",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "vorbei",
+   "Umlaufbahn",
+   "stürzt",
+   "entkommt",
+   "Anschub"
+  ],
+  "beispiel": {
+   "frage": "Der Anschub ist nur 6 km/s. Was passiert?",
+   "antwort": "Der Anschub ist zu klein. Der Planet fällt nicht mehr an der Sonne vorbei. Er stürzt in die Sonne."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Anschub ist sehr groß (50 km/s). Was zeigt die Anzeige?",
+    "optionen": [
+     "Bahnform: fast ein Kreis.",
+     "Bahnform: stürzt in die Sonne.",
+     "Bahnform: entkommt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ist der Anschub zu klein,",
+      "loesung": "stürzt",
+      "post": "der Planet in die Sonne."
+     },
+     {
+      "pre": "Ist er zu groß,",
+      "loesung": "entkommt",
+      "post": "er für immer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Sonne zieht die Erde die ganze Zeit an. Warum stürzt die Erde trotzdem nicht hinein?",
+    "satzstarter": "Die Erde ist quer zur Sonne unterwegs …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die mittlere Zeile der Tabelle: Beim passenden Anschub wird die Bahn fast ein Kreis.",
+   "h2": "Beginne so: Die Erde ist quer zur Sonne schnell unterwegs. Darum fällt sie …",
+   "h3": "Fast fertige Antwort: Die Erde fällt ständig zur Sonne hin und ist zugleich schnell quer unterwegs. So fällt sie immer an der Sonne ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Fälle des Anschubs nennen.",
+   "Ich weiß, was eine Umlaufbahn ist.",
+   "Ich kann erklären, warum die Erde nicht abstürzt."
+  ],
+  "zuhause": "Lass eine Münze innen am Rand einer runden Schüssel kreisen. Ist sie zu langsam, rutscht sie zur Mitte.",
+  "bildauftrag": "[BILD: die Sonne in der Mitte, vom selben Startpunkt daneben drei farblich klar getrennte Bahnspuren: eine kurze Spur in die Sonne hinein (Beschriftung „zu klein: stürzt“), ein geschlossener Kreis (Beschriftung „passt: Umlaufbahn“) und eine offene Spur nach außen (Beschriftung „zu groß: entkommt“); am Startpunkt ein grüner Pfeil quer zur Sonne mit Beschriftung „Anschub“; keine weiteren Linien; dunkler, ruhiger Weltraum-Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw4",
+  "lernziel": "Die Schülerinnen und Schüler erklären, warum ein Planet trotz der ständigen Anziehung der Sonne nicht hineinstürzt: Er ist quer zur Sonne unterwegs und fällt bei passendem Anschub immer an ihr vorbei.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Anzeigen aus diesem Lehrerteil als Karten. Schülerversuch: Münze in einer runden Schüssel kreisen lassen (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Anzeigen als Karten zeigen: 6 km/s → stürzt in die Sonne, er kommt nicht wieder heraus · 30 km/s → fast ein Kreis, ein Umlauf dauert 1,02 Jahre, er kommt zurück · 50 km/s → entkommt, er kommt nicht zurück. Merkzeile der Anzeige: Für einen Kreis braucht er 29,8 km/s, ab 42,1 km/s entkommt er.",
+  "merksatz": [
+   "vorbei",
+   "Umlaufbahn"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittlerer Wert (30 km/s)",
+    "fast ein Kreis",
+    "ja"
+   ],
+   [
+    "groß (50 km/s)",
+    "entkommt",
+    "nein"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Statuszeile bei 50 km/s: Bahnform: entkommt – er kommt nicht zurück.",
+   "typische_fehler": [
+    "„Schnell heißt sicher auf der Bahn“ – dass zu viel Anschub hinausführt, überrascht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "stürzt",
+    "entkommt"
+   ],
+   "typische_fehler": [
+    "stürzt und entkommt werden vertauscht.",
+    "„fliegt weg“ statt der Wortbank-Form „entkommt“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Erde ist quer zur Sonne schnell unterwegs. Die Sonne zieht sie ständig an, aber die Erde fällt immer an ihr vorbei. Dieses Vorbeifallen ist ihre Umlaufbahn.",
+   "alternativen": [
+    "Hinweistext der Simulation zitieren: Dieses ewige Vorbeifallen ist die Umlaufbahn.",
+    "Mit der mittleren Tabellenzeile begründet: passender Anschub, fast ein Kreis."
+   ],
+   "typische_fehler": [
+    "„Die Sonne ist zu weit weg“ – die falsche Vermutung von Seite A wird wiederholt.",
+    "Der Planet soll kräftefrei „in Ruhe hängen“ – die Anziehung wirkt aber die ganze Zeit weiter."
+   ]
+  },
+  "hilfe3_wort": "vorbei",
+  "schwache": [
+   "Nur die Knöpfe und bearbeiten lassen, die Gegenprobe danach.",
+   "Die Bahnspur in der Simulation mit dem Finger nachfahren lassen.",
+   "Den Münzen-Versuch in der Schüssel zuerst zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „etwas darüber“. Die Bahn wird eine lang gezogene Ellipse, ein Umlauf dauert 2,53 Jahre.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Gravitationsfeld und Umlaufbahn. Kompetenz E8 wie auf der Quellseite ew5. Die Einheit AE und die Ellipse fallen bewusst in den Zusatz."
+ }
+}

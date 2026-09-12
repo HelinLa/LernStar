@@ -1,0 +1,189 @@
+{
+ "seite": {
+  "id": "fk1",
+  "quelle": "kf1",
+  "sim": "kraft-wirkung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Der unsichtbare Schubs",
+  "name": "Woran erkennt man eine Kraft?",
+  "fachwoerter_neu": [
+   "Kraft",
+   "Wirkung"
+  ],
+  "alltag": [
+   "Jannis drückt in die Knete, Nour schiebt den Rollwagen an.",
+   "Drücken und Schieben nennt man in der Physik Kraft.",
+   "Die Knete hat eine Form, der Wagen ein Tempo, ein Ball eine Richtung."
+  ],
+  "frage": "Woran erkennst du, dass eine Kraft gewirkt hat?",
+  "predict": [
+   "Eine Kraft erkennt man daran, was sich danach ändert.",
+   "Eine Kraft wirkt nur dann, wenn sich etwas verformt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Bewegen“, drücke „Kraft wirken lassen“ und lies die Statuszeile ab.",
+   "Wähle „Verformen“, drücke „Kraft wirken lassen“ und lies ab.",
+   "Wähle „Richtung ändern“, drücke „Kraft wirken lassen“ und lies ab.",
+   "Trage in die Tabelle ein, was sich jedes Mal ändert."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Was passiert am Bildschirm?",
+   "Was ändert sich: Form, Tempo oder Richtung?"
+  ],
+  "tabRows": [
+   [
+    "Bewegen",
+    "„Die Kraft setzt den ruhenden Wagen in Bewegung“ – er wird schneller.",
+    "das Tempo"
+   ],
+   [
+    "Verformen",
+    "",
+    ""
+   ],
+   [
+    "Richtung ändern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine",
+    "loesung": "Kraft",
+    "post": "kann man nicht sehen."
+   },
+   {
+    "pre": "Man erkennt sie an ihrer",
+    "loesung": "Wirkung",
+    "post": "– Form, Tempo oder Richtung ändern sich."
+   }
+  ],
+  "wortbank": [
+   "Kraft",
+   "Wirkung",
+   "unsichtbar",
+   "geändert"
+  ],
+  "beispiel": {
+   "frage": "Woran erkennst du beim Ball, dass eine Kraft gewirkt hat?",
+   "antwort": "Vorher rollt der Ball geradeaus. Die Kraft von oben lenkt ihn ab. Seine Richtung hat sich geändert. Also hat eine Kraft gewirkt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour hat drei Fragen. Welche kann der Bildschirm beantworten?",
+    "optionen": [
+     "Was ändert sich an der Knete?",
+     "Wie schwer ist der Wagen?",
+     "Wie lange rollt der Ball?"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Kraft ist",
+      "loesung": "unsichtbar",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen rollt plötzlich los. Sein Tempo hat sich",
+      "loesung": "geändert",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler hält den rollenden Wagen mit der Hand an. Woran erkennt man die Kraft?",
+    "satzstarter": "Vorher rollte der Wagen, nachher …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Vorher rollte der Wagen. Nachher steht er still.",
+   "h3": "Fast fertig: Das Tempo hat sich geändert. Also hat eine ___ gewirkt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, warum man eine Kraft nicht sieht.",
+   "Ich kann drei Wirkungen einer Kraft nennen.",
+   "Ich kann an einem Beispiel zeigen, dass eine Kraft gewirkt hat."
+  ],
+  "zuhause": "Suche zu Hause drei Dinge, die du verformen kannst. Drücke vorsichtig darauf und schreibe sie auf.",
+  "bildauftrag": "[BILD: eine einzige große Szene, durch eine schmale senkrechte Linie in zwei gleich große Hälften geteilt: links steht ein flacher Rollwagen still auf dem Schulhof, rechts rollt derselbe Wagen nach rechts weg; von links schiebt eine Hand gegen den Wagen, darüber ein dicker roter Pfeil mit der großen Beschriftung „Kraft“; unter den beiden Hälften groß „vorher: steht still“ und „nachher: rollt“; nur dieser eine Wagen, nur dieser eine Pfeil, keine Nebenbilder und keine Bewegungsstreifen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fk1",
+  "lernziel": "Die Schülerinnen und Schüler erkennen an Form, Tempo oder Richtung, dass eine Kraft gewirkt hat, und begründen, dass man die Kraft selbst nicht sehen kann. Sie unterscheiden außerdem eine Frage, die die Simulation beantworten kann, von Fragen, die sie nicht beantworten kann.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse als Karten oder als Tafelbild (siehe unten). Optional als Gegenprobe am Tisch: Knete, ein kleiner Wagen oder ein Stift, eine Kugel und ein Lineal.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten an die Tafel, in dieser Reihenfolge. Wichtig: Vor dem Druck auf „Kraft wirken lassen“ steht in der Statuszeile nur eine Ankündigung, die mit „Drücke auf“ beginnt. Die drei Ergebnissätze unten erscheinen erst danach. Karte 1 Bewegen (Wagen): „Die Kraft setzt den ruhenden Wagen in Bewegung – er wird schneller (Bewegungsänderung).“ – das Tempo ändert sich. Karte 2 Verformen (Knete): „Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ – die Form ändert sich. Karte 3 Richtung ändern (Ball): „Die Kraft von oben lenkt den rollenden Ball ab – seine Richtung ändert sich.“ – die Richtung ändert sich. Gegenprobe am Tisch: in Knete drücken, einen Stift anschieben, eine rollende Kugel mit dem Lineal ablenken.",
+  "merksatz": [
+   "Kraft",
+   "Wirkung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Verformen",
+    "„Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ (im Bild: „Wirkung: verformen“ und „verformt!“)",
+    "die Form"
+   ],
+   [
+    "Richtung ändern",
+    "„Die Kraft von oben lenkt den rollenden Ball ab – seine Richtung ändert sich.“",
+    "die Richtung"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nur Antwort 2 ist am Bildschirm zu beantworten: Die Statuszeile meldet „Die Kraft drückt die Knete zusammen – sie verformt den Körper.“, das Bild trägt den Text „Wirkung: verformen“. Die Simulation hat keinen einzigen Regler und zeigt keine Zahl und keine Einheit – weder eine Masse noch eine Zeit. Antwort 1 und 3 sind deshalb am Bildschirm nicht zu klären.",
+   "typische_fehler": [
+    "Antwort 1 wird angekreuzt, weil ein Wagen im Bild vorkommt – eine Masse zeigt die Simulation aber nirgends an.",
+    "Antwort 3 wird angekreuzt, weil der Ball rollt – eine Uhr oder eine Zeitangabe gibt es nicht.",
+    "Es werden mehrere Kreuze gesetzt, weil „beantworten“ als „passt dazu“ gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "unsichtbar",
+    "geändert"
+   ],
+   "typische_fehler": [
+    "„Wirkung“ statt „unsichtbar“ – die Wortbank wird der Reihe nach abgearbeitet.",
+    "„Der Wagen hat sich geändert“ – die Wirkung wird am Gegenstand festgemacht statt am Tempo."
+   ]
+  },
+  "a3": {
+   "erwartung": "Vorher rollte der Wagen, nachher steht er still. Sein Tempo hat sich geändert. Also hat eine Kraft gewirkt. Die Kraft selbst sieht man nicht.",
+   "alternativen": [
+    "Über die Hand: Die Hand drückt gegen den Wagen. Er wird langsamer und bleibt stehen. Das Tempo hat sich geändert.",
+    "Über den Nachweis allgemein: Weil sich etwas geändert hat, muss eine Kraft gewirkt haben."
+   ],
+   "typische_fehler": [
+    "„Weil er stehen bleibt“ – der Vergleich vorher/nachher fehlt.",
+    "Die Kraft wird an der Hand gesehen statt an der Wirkung („man sieht doch, wie er drückt“).",
+    "Das Abbremsen wird in der Simulation gesucht. Der Hinweistext neben der Statuszeile nennt es zwar („in Bewegung setzen oder abbremsen“), gezeigt wird es aber nicht – die Sim zeigt nur den Schubs aus der Ruhe. Abbremsen bleibt Alltags- und Erkläraufgabe."
+   ]
+  },
+  "hilfe3_wort": "Kraft",
+  "schwache": [
+   "Zuerst nur „Bewegen“ durchspielen und die fertige Beispielzeile gemeinsam laut lesen. Erst danach die beiden offenen Zeilen.",
+   "Die drei Wörter Form, Tempo und Richtung auf drei Kärtchen schreiben und beim Ausfüllen der dritten Spalte danebenlegen.",
+   "Die Antwortknöpfe der Simulation nicht benutzen: „Verformung“ und „Bewegungsänderung“ stehen dort doppelt, dann wird in der falschen Zeile geantwortet.",
+   "Vor Aufgabe 3 den Satzstarter laut vorsprechen lassen, bevor geschrieben wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Suche auf dem Schulhof drei Vorgänge und schreibe zu jedem auf, was sich ändert – Form, Tempo oder Richtung.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraft und ihre Wirkungen. Diese Einheit ist der einzige Träger von E1 („Fragestellungen erkennen“) im Band – das leistet Aufgabe 1, die eine am Bildschirm beantwortbare Frage von zwei nicht beantwortbaren trennt; das bloße Ablesen wäre E2. Dazu UF1 und UF3 (Wirkungen benennen und zuordnen) sowie UF4 über den Zuhause-Auftrag. Nicht hier: Newton N (fk2) und das Kräftegleichgewicht (fk8). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

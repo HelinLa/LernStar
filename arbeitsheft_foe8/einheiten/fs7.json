@@ -1,0 +1,202 @@
+{
+ "seite": {
+  "id": "fs7",
+  "quelle": "st7",
+  "sim": "draht",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Der lange dünne Draht",
+  "name": "Wovon hängt der Widerstand ab?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "In der Fahrrad-AG liegt eine Kiste voller Drahtrollen.",
+   "Manche Drähte sind kurz und dick. Andere sind lang und dünn.",
+   "Jannis klemmt sie nacheinander an dasselbe Netzteil mit 4,5 Volt.",
+   "Mal leuchtet die Lampe hell, mal schwach. Jeder Draht hat Widerstand."
+  ],
+  "frage": "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
+  "predict": [
+   "Ein langer und dünner Draht bremst stärker. Auch das Material zählt mit.",
+   "Jeder Draht aus Metall bremst gleich stark. Nur das Netzteil entscheidet."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „lang“. Trage den Widerstand R und die Stromstärke I ein.",
+   "Drücke „dünn“. Trage beide Werte in die nächste Zeile ein.",
+   "Drücke „Eisen“. Trage beide Werte in die letzte Zeile ein.",
+   "Vergleiche die vier Zeilen: Wo ist der Widerstand am größten?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Welcher Draht?",
+   "Widerstand R",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   [
+    "Kupfer, kurz, dick",
+    "5 Ω",
+    "0,90 A"
+   ],
+   [
+    "Kupfer, lang, dick",
+    "",
+    ""
+   ],
+   [
+    "Kupfer, lang, dünn",
+    "",
+    ""
+   ],
+   [
+    "Eisen, lang, dünn",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langer und dünner Draht hat mehr",
+    "loesung": "Widerstand",
+    "post": "als ein kurzer und dicker."
+   },
+   {
+    "pre": "Auch das Material zählt: Eisen bremst",
+    "loesung": "stärker",
+    "post": "als Kupfer. Länge und Dicke sind dabei gleich."
+   }
+  ],
+  "wortbank": [
+   "Widerstand",
+   "stärker",
+   "60 Ω",
+   "0,07 A"
+  ],
+  "beispiel": {
+   "frage": "Was passiert, wenn der kurze Kupfer-Draht länger wird?",
+   "antwort": "Am Anfang steht in der Statuszeile: Kupfer, kurz, dick mit R = 5 Ω und I = 0,90 A. Nach dem Knopf „lang“ steht dort R = 10 Ω und I = 0,45 A. Der Draht ist länger geworden. Also ist der Widerstand größer und der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Statuszeile, wenn du beim langen Kupfer-Draht auf „dünn“ drückst?",
+    "optionen": [
+     "Der Widerstand wird größer: von 10 Ω auf 20 Ω.",
+     "Der Widerstand wird kleiner: von 10 Ω auf 5 Ω.",
+     "Der Widerstand bleibt bei 10 Ω."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "„Kupfer, lang, dünn“ zeigt R = 20 Ω. „Eisen, lang, dünn“ zeigt",
+      "loesung": "60 Ω",
+      "post": "."
+     },
+     {
+      "pre": "Durch den Eisen-Draht fließen bei 4,5 Volt nur",
+      "loesung": "0,07 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis nimmt für die Lampe das längste dünne Drahtstück. Nour sagt: „Nimm lieber ein kurzes dickes Stück.“ Erkläre, warum Nour recht hat.",
+    "satzstarter": "Ein langer und dünner Draht hat …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Knöpfe bleiben eingestellt. Nach „lang“ bleibt der Draht lang. Der Knopf stellt alles zurück auf Kupfer, kurz, dick.",
+   "h2": "Lies die Statuszeile in drei Teilen: erst der Draht, dann R, dann I. Beginne so: Ein langer und dünner Draht hat mehr Widerstand. Darum fließt …",
+   "h3": "Fast fertige Antwort: Bei „Kupfer, lang, dünn“ sind es 20 Ω und 0,23 A. Bei „Kupfer, kurz, dick“ sind es 5 Ω und 0,90 A. Durch den kurzen dicken Draht fließt also ___ Strom."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile den Widerstand R und die Stromstärke I ablesen.",
+   "Ich weiß: länger und dünner heißt mehr Widerstand.",
+   "Ich kann erklären, warum durch einen kurzen dicken Draht mehr Strom fließt."
+  ],
+  "zuhause": "Suche zu Hause zwei Strohhalme: einen kurzen dicken und einen langen dünnen. Trinke Wasser durch beide. Durch welchen geht es leichter? Schreibe es auf. So ähnlich ist es beim Draht.",
+  "bildauftrag": "[BILD: vier einfache Stromkreise nebeneinander, alle mit demselben Netzteil „4,5 V“ und einem Messgerät „A“; von links nach rechts wird der Draht immer länger und dünner: links ein kurzer dicker Kupfer-Draht mit den großen Beschriftungen „R = 5 Ω“ und „0,90 A“, daneben ein langer dicker Kupfer-Draht mit „R = 10 Ω“ und „0,45 A“, daneben ein langer dünner Kupfer-Draht mit „R = 20 Ω“ und „0,23 A“, rechts ein langer dünner Eisen-Draht in anderer Farbe mit „R = 60 Ω“ und „0,07 A“; in jedem Kreis genau ein Strompfeil, der nach rechts hin deutlich dünner wird; keine Lampe, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs7",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass ein Draht mehr Widerstand hat, wenn er länger oder dünner ist, und dass bei gleicher Länge und Dicke auch das Material mitentscheidet (Kupfer 20 Ω gegen Eisen 60 Ω). Sie erklären, dass bei fester Spannung 4,5 V durch den Draht mit mehr Widerstand weniger Strom fließt. „Widerstand“ ist aus fs6 bekannt und wird hier nur verwendet, nicht neu eingeführt; die Seite trägt kein neues Fachwort. Konstantan (180 Ω) und jede Rechnung entfallen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, Amperemeter, ein kurzes dickes und ein langes dünnes Drahtstück.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge: „Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.“ · „Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.“ · „Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.“ · „Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.“ Die Karten nacheinander an die Tafel heften und dabei laut sagen, was sich von Karte zu Karte geändert hat — immer nur EINE Angabe. Die Klasse füllt daraus die Tabelle. Die Kombination „kurz, dünn“ steht bewusst nicht in der Tabelle: Sie würde die Reihenfolge unterbrechen, weil sich gegenüber jeder Nachbarzeile zwei Angaben auf einmal ändern.",
+  "merksatz": [
+   "Widerstand",
+   "stärker"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Kupfer, lang, dick",
+    "10 Ω",
+    "0,45 A"
+   ],
+   [
+    "Kupfer, lang, dünn",
+    "20 Ω",
+    "0,23 A"
+   ],
+   [
+    "Eisen, lang, dünn",
+    "60 Ω",
+    "0,07 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Vor dem Drücken steht in der Statuszeile „Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.“ Nach dem Knopf „dünn“ steht dort „Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.“ Der dünnere Draht hat also mehr Widerstand: 10 Ω werden zu 20 Ω.",
+   "typische_fehler": [
+    "„dünn“ wird mit „weniger Widerstand“ gleichgesetzt — dünn klingt nach leicht und schnell.",
+    "5 Ω wird gewählt: Der Wert des Ausgangszustands bleibt im Kopf stehen, obwohl der Draht längst lang ist.",
+    "Die Knöpfe merken sich den Zustand. Wer vorher „lang“ vergessen hat, liest einen anderen Draht ab als gemeint: Vor dem Drücken muss in der Statuszeile „Kupfer, lang, dick“ stehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "60 Ω",
+    "0,07 A"
+   ],
+   "typische_fehler": [
+    "R und I werden vertauscht: Beide Zahlen stehen in demselben Satz der Statuszeile.",
+    "Die 4,5 V aus der Statuszeile werden als Stromstärke abgeschrieben — sie stehen dort mitten zwischen den beiden gesuchten Zahlen: „… R = 60 Ω → bei 4,5 V fließt I = 0,07 A.“",
+    "0,07 A wird für mehr gehalten als 0,23 A: reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein langer und dünner Draht hat mehr Widerstand. Bei „Kupfer, lang, dünn“ zeigt die Simulation R = 20 Ω und I = 0,23 A. Bei „Kupfer, kurz, dick“ sind es nur 5 Ω, dafür fließen 0,90 A. Mit dem kurzen dicken Draht fließt also mehr Strom.",
+   "alternativen": [
+    "Argument nur über den Widerstand: 20 Ω sind viermal so viel wie 5 Ω, der lange dünne Draht bremst stärker.",
+    "Argument nur über den Strom: 0,90 A gegen 0,23 A bei derselben Spannung 4,5 V.",
+    "Verweis auf die Rückmeldung der Simulation: „Länger und dünner → mehr Widerstand.“",
+    "Bild vom Strohhalm aus dem Zuhause-Auftrag: Durch den kurzen dicken geht es leichter."
+   ],
+   "typische_fehler": [
+    "Es wird nur behauptet „der kurze ist besser“, ohne einen Wert aus der Tabelle zu nennen.",
+    "Länge und Dicke werden vertauscht: „dick bedeutet mehr Widerstand“.",
+    "Die Spannung wird für die Erklärung verantwortlich gemacht, obwohl sie in allen vier Zeilen 4,5 V beträgt.",
+    "Das Material wird zusätzlich genannt, obwohl beide Drahtstücke aus Kupfer sind — dann ist nicht mehr nur eine Größe verändert."
+   ]
+  },
+  "hilfe3_wort": "mehr (auch richtig: mehr Strom, stärkerer Strom, 0,90 A statt 0,23 A)",
+  "schwache": [
+   "Zuerst nur die beiden Randfälle vergleichen: „Kupfer, kurz, dick“ mit 5 Ω und „Kupfer, lang, dünn“ mit 20 Ω. Die Eisen-Zeile erst danach.",
+   "Den Knopf vor dem Start gemeinsam zeigen: Er stellt den Draht auf „Kupfer, kurz, dick“ zurück. Ohne ihn verlieren viele die Reihenfolge, weil die Knöpfe eingestellt bleiben.",
+   "Die Statuszeile laut in drei Teilen lesen: erst der Draht, dann R, dann I. Der Satz enthält mit 4,5 V eine Zahl mehr, als gebraucht wird.",
+   "Die vier Stromwerte 0,90 – 0,45 – 0,23 – 0,07 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen der Simulation. Richtig sind „Wenn er lang und dünn ist“, „Kupfer“ und „wird größer“. Wer danach noch Zeit hat, drückt „Konstantan“ und liest ab: R = 180 Ω und I = 0,03 A. Konstantan steht bewusst nicht auf der Schülerseite und darf hier dazukommen.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Widerstand eines Drahtes (Länge, Dicke, Material). Kompetenzen UF1, UF3, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108); die Quelle st7 trug UF4. E4 steckt in der Reihenfolge der Tabellenzeilen: Von Zeile zu Zeile wird immer nur EINE Größe verändert. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

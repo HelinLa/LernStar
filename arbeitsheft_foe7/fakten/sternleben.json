@@ -1,0 +1,162 @@
+[
+ {
+  "sim": "sternleben",
+  "ueberschrift": "⭐ Warum leuchtet ein Stern – und warum nicht ewig?",
+  "regler": [
+   {
+    "id": "stbM",
+    "beschriftung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse",
+    "bereich": {
+     "min": "0",
+     "max": "16",
+     "step": "1",
+     "start": "5"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "0,5",
+    "ruft": "_stbSetM(0.5)"
+   },
+   {
+    "aufschrift": "1",
+    "ruft": "_stbSetM(1)"
+   },
+   {
+    "aufschrift": "10",
+    "ruft": "_stbSetM(10)"
+   },
+   {
+    "aufschrift": "Gegenprobe 25",
+    "ruft": "_stbSetM(25)"
+   },
+   {
+    "aufschrift": "↺ Lauf neu starten",
+    "ruft": "_stbNeu()"
+   }
+  ],
+  "hinweise": [
+   "Stelle die Masse ein und lass den ganzen Lebenslauf im Zeitraffer durchlaufen: Gaswolke → Stern → Riese → Ende. Notiere jedes Mal Lebensdauer, Farbe und Ende.",
+   "Der Stern ist nicht maßstäblich gezeichnet: ein Roter Überriese wäre in Wirklichkeit viele hundertmal so groß wie der Stern davor.",
+   "Im Kern verschmelzen Wasserstoffkerne zu Helium. Das ist Kernfusion – kein Verbrennen: Es gibt dort keinen Sauerstoff, und aus einem Kilogramm Wasserstoff wird millionenfach mehr Energie frei als beim Verbrennen.",
+   "Ein schwerer Stern hat mehr Brennstoff, verbraucht ihn aber viel schneller: doppelte Masse heißt rund 11-mal so hohe Leuchtkraft und deshalb nur noch etwa ein Sechstel der Lebensdauer."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "stbStatus: 1 Sonnenmasse | Lebensdauer 10,0 Mrd. Jahre | Farbe gelb · Oberfläche etwa 5.800 K | Leuchtkraft etwa 1,0-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "0,5",
+    "text": "stbStatus: 0,5 Sonnenmassen | Lebensdauer 56,6 Mrd. Jahre | Farbe rötlich · Oberfläche etwa 3.800 K | Leuchtkraft etwa 0,088-mal die Sonne | Ende: Modelle sagen einen Weißen Zwerg voraus – beobachtet hat das noch nie jemand, denn so ein Stern lebt länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "1",
+    "text": "stbStatus: 1 Sonnenmasse | Lebensdauer 10,0 Mrd. Jahre | Farbe gelb · Oberfläche etwa 5.800 K | Leuchtkraft etwa 1,0-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "10",
+    "text": "stbStatus: 10 Sonnenmassen | Lebensdauer 31,6 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 22.000 K | Leuchtkraft etwa 3.200-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Neutronenstern. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Gegenprobe 25",
+    "text": "stbStatus: 25 Sonnenmassen | Lebensdauer 3,2 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 35.000 K | Leuchtkraft etwa 78.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Schwarzes Loch. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "↺ Lauf neu starten",
+    "text": "stbStatus: 25 Sonnenmassen | Lebensdauer 3,2 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 35.000 K | Leuchtkraft etwa 78.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Schwarzes Loch. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 0",
+    "text": "stbStatus: 0,1 Sonnenmassen | Lebensdauer 3.162 Mrd. Jahre | Farbe rot · Oberfläche etwa 2.800 K | Leuchtkraft etwa 0,00032-mal die Sonne | Ende: Modelle sagen einen Weißen Zwerg voraus – beobachtet hat das noch nie jemand, denn so ein Stern lebt länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 2",
+    "text": "stbStatus: 0,3 Sonnenmassen | Lebensdauer 203 Mrd. Jahre | Farbe rötlich · Oberfläche etwa 3.500 K | Leuchtkraft etwa 0,015-mal die Sonne | Ende: Modelle sagen einen Weißen Zwerg voraus – beobachtet hat das noch nie jemand, denn so ein Stern lebt länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 4",
+    "text": "stbStatus: 0,8 Sonnenmassen | Lebensdauer 17,5 Mrd. Jahre | Farbe gelb · Oberfläche etwa 5.100 K | Leuchtkraft etwa 0,46-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | Das ist länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 6",
+    "text": "stbStatus: 1,5 Sonnenmassen | Lebensdauer 3,6 Mrd. Jahre | Farbe gelblich-weiß · Oberfläche etwa 7.500 K | Leuchtkraft etwa 4,1-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 8",
+    "text": "stbStatus: 3 Sonnenmassen | Lebensdauer 642 Mio. Jahre | Farbe weiß-blau · Oberfläche etwa 11.600 K | Leuchtkraft etwa 47-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 10",
+    "text": "stbStatus: 8 Sonnenmassen | Lebensdauer 55,2 Mio. Jahre | Farbe weiß-blau · Oberfläche etwa 19.900 K | Leuchtkraft etwa 1.400-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Neutronenstern. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 12",
+    "text": "stbStatus: 15 Sonnenmassen | Lebensdauer 11,5 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 27.900 K | Leuchtkraft etwa 13.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Neutronenstern. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 14",
+    "text": "stbStatus: 25 Sonnenmassen | Lebensdauer 3,2 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 35.000 K | Leuchtkraft etwa 78.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Schwarzes Loch. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 16",
+    "text": "stbStatus: 40 Sonnenmassen | Lebensdauer 988.212 Jahre | Farbe blau-weiß · Oberfläche etwa 42.000 K | Leuchtkraft etwa 400.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Schwarzes Loch. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 1",
+    "text": "stbStatus: 0,2 Sonnenmassen | Lebensdauer 559 Mrd. Jahre | Farbe rot · Oberfläche etwa 3.200 K | Leuchtkraft etwa 0,0036-mal die Sonne | Ende: Modelle sagen einen Weißen Zwerg voraus – beobachtet hat das noch nie jemand, denn so ein Stern lebt länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 3",
+    "text": "stbStatus: 0,5 Sonnenmassen | Lebensdauer 56,6 Mrd. Jahre | Farbe rötlich · Oberfläche etwa 3.800 K | Leuchtkraft etwa 0,088-mal die Sonne | Ende: Modelle sagen einen Weißen Zwerg voraus – beobachtet hat das noch nie jemand, denn so ein Stern lebt länger, als das Weltall bisher alt ist (13,8 Mrd. Jahre). | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 5",
+    "text": "stbStatus: 1 Sonnenmasse | Lebensdauer 10,0 Mrd. Jahre | Farbe gelb · Oberfläche etwa 5.800 K | Leuchtkraft etwa 1,0-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 7",
+    "text": "stbStatus: 2 Sonnenmassen | Lebensdauer 1,8 Mrd. Jahre | Farbe weiß · Oberfläche etwa 9.000 K | Leuchtkraft etwa 11-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 9",
+    "text": "stbStatus: 5 Sonnenmassen | Lebensdauer 179 Mio. Jahre | Farbe weiß-blau · Oberfläche etwa 16.000 K | Leuchtkraft etwa 280-mal die Sonne | Ende: Erst Roter Riese, dann stößt er seine Hülle ab. Übrig bleibt ein Weißer Zwerg. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 11",
+    "text": "stbStatus: 10 Sonnenmassen | Lebensdauer 31,6 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 22.000 K | Leuchtkraft etwa 3.200-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Neutronenstern. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 13",
+    "text": "stbStatus: 20 Sonnenmassen | Lebensdauer 5,6 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 33.000 K | Leuchtkraft etwa 36.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Neutronenstern. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   },
+   {
+    "einstellung": "Lauf neu starten Masse des Sterns: 1 Sonnenmasse = 15",
+    "text": "stbStatus: 30 Sonnenmassen | Lebensdauer 2,0 Mio. Jahre | Farbe blau-weiß · Oberfläche etwa 37.600 K | Leuchtkraft etwa 150.000-mal die Sonne | Ende: Erst Roter Überriese, dann eine Supernova. Übrig bleibt ein Schwarzes Loch. | Gegenprobe: Die Lebensdauer fällt weiter. Sie steigt nie wieder – mehr Masse heißt immer kürzeres Leben. | gerade im Bild: Gaswolke zieht sich zusammen  ||  stbTab: MasseLebensdauerFarbeEnde0,5———1———10———25———Eine Zeile füllt sich, sobald dieser Stern einmal ganz durchgelaufen ist."
+   }
+  ],
+  "bildtexte": [
+   "Gaswolke zieht sich zusammen",
+   "kalte Wolke aus Wasserstoff und Staub",
+   "Sternentstehung",
+   "Lebensdauer 10,0 Mrd. Jahre",
+   "Lebensdauer 56,6 Mrd. Jahre",
+   "Lebensdauer 31,6 Mio. Jahre",
+   "Lebensdauer 3,2 Mio. Jahre",
+   "Lebensdauer 3.162 Mrd. Jahre",
+   "Lebensdauer 203 Mrd. Jahre",
+   "Lebensdauer 17,5 Mrd. Jahre",
+   "Lebensdauer 3,6 Mrd. Jahre",
+   "Lebensdauer 642 Mio. Jahre",
+   "Lebensdauer 55,2 Mio. Jahre",
+   "Lebensdauer 11,5 Mio. Jahre",
+   "Lebensdauer 988.212 Jahre",
+   "Lebensdauer 559 Mrd. Jahre",
+   "Lebensdauer 1,8 Mrd. Jahre",
+   "Lebensdauer 179 Mio. Jahre",
+   "Lebensdauer 5,6 Mio. Jahre",
+   "Lebensdauer 2,0 Mio. Jahre"
+  ]
+ }
+]

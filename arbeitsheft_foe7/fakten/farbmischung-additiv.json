@@ -1,0 +1,406 @@
+[
+ {
+  "sim": "farbmischung-additiv",
+  "ueberschrift": "🖥️ Wie entstehen Farben auf einem Bildschirm?",
+  "regler": [
+   {
+    "id": "admR",
+    "beschriftung": "Gelb ⬛ aus Rot: 220",
+    "bereich": {
+     "min": "0",
+     "max": "255",
+     "step": "15",
+     "start": "220"
+    }
+   },
+   {
+    "id": "admG",
+    "beschriftung": "Grün: 60",
+    "bereich": {
+     "min": "0",
+     "max": "255",
+     "step": "15",
+     "start": "60"
+    }
+   },
+   {
+    "id": "admB",
+    "beschriftung": "Blau: 60",
+    "bereich": {
+     "min": "0",
+     "max": "255",
+     "step": "15",
+     "start": "60"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "⬜ Weiß",
+    "ruft": "_admPreset(255,255,255)"
+   },
+   {
+    "aufschrift": "🟨 Gelb",
+    "ruft": "_admPreset(255,255,0)"
+   },
+   {
+    "aufschrift": "⬛ aus",
+    "ruft": "_admPreset(0,0,0)"
+   },
+   {
+    "aufschrift": "Schwarz",
+    "ruft": "_admAns(0,0)"
+   },
+   {
+    "aufschrift": "Weiß",
+    "ruft": "_admAns(0,1)"
+   },
+   {
+    "aufschrift": "Braun",
+    "ruft": "_admAns(0,2)"
+   },
+   {
+    "aufschrift": "Rot, Grün, Blau",
+    "ruft": "_admAns(1,0)"
+   },
+   {
+    "aufschrift": "Rot, Gelb, Blau",
+    "ruft": "_admAns(1,1)"
+   },
+   {
+    "aufschrift": "Schwarz, Weiß, Grau",
+    "ruft": "_admAns(1,2)"
+   },
+   {
+    "aufschrift": "Gelb",
+    "ruft": "_admAns(2,0)"
+   },
+   {
+    "aufschrift": "Braun",
+    "ruft": "_admAns(2,1)"
+   },
+   {
+    "aufschrift": "Violett",
+    "ruft": "_admAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_admSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_admSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_admSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('farbadd')"
+   }
+  ],
+  "hinweise": [
+   "Mische die drei Grundfarben des Lichts – Rot, Grün und Blau. Welche Farbe entsteht? Was ergeben alle drei zusammen?",
+   "Rot + Grün = Gelb, Grün + Blau = Cyan, Rot + Blau = Magenta. | Rot + Grün + Blau = Weiß."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 220, G 60, B 60)."
+   },
+   {
+    "einstellung": "⬜ Weiß",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 255, G 255, B 255)."
+   },
+   {
+    "einstellung": "🟨 Gelb",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 255, G 255, B 0)."
+   },
+   {
+    "einstellung": "⬛ aus",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0)."
+   },
+   {
+    "einstellung": "Schwarz",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Schwarz ist, wenn kein Licht leuchtet."
+   },
+   {
+    "einstellung": "Weiß",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✓ Richtig! Alle drei zusammen ergeben Weiß."
+   },
+   {
+    "einstellung": "Braun",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht."
+   },
+   {
+    "einstellung": "Rot, Grün, Blau",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✓ Richtig! Bildschirme arbeiten mit Rot, Grün und Blau (RGB)."
+   },
+   {
+    "einstellung": "Rot, Gelb, Blau",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind eher Malfarben."
+   },
+   {
+    "einstellung": "Schwarz, Weiß, Grau",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben."
+   },
+   {
+    "einstellung": "Gelb",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✓ Richtig! Rot + Grün ergibt beim Licht Gelb."
+   },
+   {
+    "einstellung": "Braun",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Braun bekommt man mit Malfarben."
+   },
+   {
+    "einstellung": "Violett",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau.  ||  admSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau.  ||  admSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 0",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 0, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 30",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 30, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 60",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 60, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 90",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 90, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 135",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 135, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 165",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 165, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 195",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 195, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 225",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 225, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 255",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 255, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 15",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 15, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 45",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 45, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 75",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Schwarz (kein Licht) (R 75, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 105",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 105, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 120",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 120, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 150",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 150, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 180",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 180, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 210",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 210, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Gelb ⬛ aus Rot: 220 = 240",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 0",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 0, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 30",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 30, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 60",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 60, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 90",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 90, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 135",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 135, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 165",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 165, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 195",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 195, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 225",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 225, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 255",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 255, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 15",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 15, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 45",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 45, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 75",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Rot (R 240, G 75, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 105",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 105, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 120",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 120, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 150",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 150, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 180",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 180, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 210",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 210, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Grün: 60 = 240",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 0",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 0).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 30",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 30).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 60",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 60).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 90",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 90).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 135",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 135).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 165",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 165).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 195",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 240, G 240, B 195).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 225",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 240, G 240, B 225).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 255",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 240, G 240, B 255).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 15",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 15).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 45",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 45).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 75",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Gelb (R 240, G 240, B 75).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 105",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 105).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 120",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 120).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 150",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 150).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 180",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Mischfarbe (R 240, G 240, B 180).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 210",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 240, G 240, B 210).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   },
+   {
+    "einstellung": "Blau: 60 = 240",
+    "text": "admStatus: 🎨 Ergebnisfarbe: Weiß (R 240, G 240, B 240).  ||  admFb0: ✗ Braun entsteht beim Mischen von Malfarben, nicht von Licht.  ||  admFb1: ✗ Das sind keine Lichtgrundfarben.  ||  admFb2: ✗ Violett entsteht aus Rot + Blau."
+   }
+  ],
+  "bildtexte": [
+   "R",
+   "G",
+   "B",
+   "Ergebnis",
+   "Rot",
+   "so mischt ein Bildschirm",
+   "Weiß",
+   "Gelb",
+   "Schwarz (kein Licht)",
+   "Mischfarbe"
+  ]
+ }
+]

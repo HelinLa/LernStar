@@ -1,0 +1,199 @@
+[
+ {
+  "sim": "reihe-widerstand",
+  "ueberschrift": "➕ Reihenschaltung von Widerständen",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "10 Ω",
+    "ruft": "_rwdSet(1,10)"
+   },
+   {
+    "aufschrift": "20 Ω",
+    "ruft": "_rwdSet(1,20)"
+   },
+   {
+    "aufschrift": "30 Ω",
+    "ruft": "_rwdSet(1,30)"
+   },
+   {
+    "aufschrift": "10 Ω",
+    "ruft": "_rwdSet(2,10)"
+   },
+   {
+    "aufschrift": "20 Ω",
+    "ruft": "_rwdSet(2,20)"
+   },
+   {
+    "aufschrift": "30 Ω",
+    "ruft": "_rwdSet(2,30)"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_rwdReset()"
+   },
+   {
+    "aufschrift": "R_ges = R₁ + R₂",
+    "ruft": "_rwdAns(0,0)"
+   },
+   {
+    "aufschrift": "R_ges = R₁ − R₂",
+    "ruft": "_rwdAns(0,1)"
+   },
+   {
+    "aufschrift": "R_ges kleiner als R₁",
+    "ruft": "_rwdAns(0,2)"
+   },
+   {
+    "aufschrift": "An jeder Stelle unterschiedlich",
+    "ruft": "_rwdAns(1,0)"
+   },
+   {
+    "aufschrift": "Überall gleich",
+    "ruft": "_rwdAns(1,1)"
+   },
+   {
+    "aufschrift": "Nur am ersten Widerstand",
+    "ruft": "_rwdAns(1,2)"
+   },
+   {
+    "aufschrift": "Er wird größer",
+    "ruft": "_rwdAns(2,0)"
+   },
+   {
+    "aufschrift": "Er wird kleiner",
+    "ruft": "_rwdAns(2,1)"
+   },
+   {
+    "aufschrift": "Er bleibt gleich",
+    "ruft": "_rwdAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_rwdSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_rwdSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_rwdSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('reihewid')"
+   }
+  ],
+  "hinweise": [
+   "Schalte zwei Widerstände hintereinander (in Reihe). Verändere ihre Werte. Wie groß ist der Gesamtwiderstand und der Strom? (Nur ungefährliche Kleinspannung, 6 V.)",
+   "In der Reihenschaltung addieren sich die Widerstände: Rges = R₁ + R₂. Der Strom ist überall gleich. Die Teilspannungen addieren sich zur Gesamtspannung (U = U₁ + U₂). Mehr Widerstände in Reihe → größerer Gesamtwiderstand → kleinerer Strom.",
+   "Rges = R₁ + R₂ · Strom überall gleich · U = U₁ + U₂."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "10 Ω",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "20 Ω",
+    "text": "rwdStatus: R_ges = 20 Ω + 20 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A. Teilspannungen: U₁ = 3,0 V, U₂ = 3,0 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "30 Ω",
+    "text": "rwdStatus: R_ges = 30 Ω + 20 Ω = 50 Ω. Strom (überall gleich) I = 0,12 A. Teilspannungen: U₁ = 3,6 V, U₂ = 2,4 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "10 Ω",
+    "text": "rwdStatus: R_ges = 30 Ω + 10 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A. Teilspannungen: U₁ = 4,5 V, U₂ = 1,5 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "20 Ω",
+    "text": "rwdStatus: R_ges = 30 Ω + 20 Ω = 50 Ω. Strom (überall gleich) I = 0,12 A. Teilspannungen: U₁ = 3,6 V, U₂ = 2,4 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "30 Ω",
+    "text": "rwdStatus: R_ges = 30 Ω + 30 Ω = 60 Ω. Strom (überall gleich) I = 0,10 A. Teilspannungen: U₁ = 3,0 V, U₂ = 3,0 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "↺",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V)."
+   },
+   {
+    "einstellung": "R_ges = R₁ + R₂",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✓ Richtig! In Reihe addieren sich die Widerstände."
+   },
+   {
+    "einstellung": "R_ges = R₁ − R₂",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ Subtrahiert wird nichts."
+   },
+   {
+    "einstellung": "R_ges kleiner als R₁",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner."
+   },
+   {
+    "einstellung": "An jeder Stelle unterschiedlich",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ In Reihe ist der Strom nicht unterschiedlich."
+   },
+   {
+    "einstellung": "Überall gleich",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✓ Richtig! Der Strom ist überall gleich groß."
+   },
+   {
+    "einstellung": "Nur am ersten Widerstand",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich."
+   },
+   {
+    "einstellung": "Er wird größer",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Mehr Widerstand macht den Strom nicht größer."
+   },
+   {
+    "einstellung": "Er wird kleiner",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✓ Richtig! Größerer Gesamtwiderstand → kleinerer Strom."
+   },
+   {
+    "einstellung": "Er bleibt gleich",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Der Strom ändert sich."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Der Strom ändert sich.  ||  rwdSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Der Strom ändert sich.  ||  rwdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Der Strom ändert sich."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "rwdStatus: R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A. Teilspannungen: U₁ = 2,0 V, U₂ = 4,0 V (zusammen 6 V).  ||  rwdFb0: ✗ In Reihe ist R_ges immer größer, nicht kleiner.  ||  rwdFb1: ✗ Er fließt durch alle Bauteile gleich.  ||  rwdFb2: ✗ Der Strom ändert sich."
+   }
+  ],
+  "bildtexte": [
+   "6 V",
+   "R₁ = 10 Ω",
+   "R₂ = 20 Ω",
+   "A",
+   "0,20 A",
+   "R_ges = 10 + 20 = 30 Ω",
+   "R₁ = 20 Ω",
+   "0,15 A",
+   "R_ges = 20 + 20 = 40 Ω",
+   "R₁ = 30 Ω",
+   "0,12 A",
+   "R_ges = 30 + 20 = 50 Ω",
+   "R₂ = 10 Ω",
+   "R_ges = 30 + 10 = 40 Ω",
+   "R₂ = 30 Ω",
+   "0,10 A",
+   "R_ges = 30 + 30 = 60 Ω"
+  ]
+ }
+]

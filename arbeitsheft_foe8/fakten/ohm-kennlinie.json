@@ -1,0 +1,186 @@
+[
+ {
+  "sim": "ohm-kennlinie",
+  "ueberschrift": "📈 Das Ohmsche Gesetz – die U-I-Kennlinie",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "10 Ω",
+    "ruft": "_ohgSetR('klein')"
+   },
+   {
+    "aufschrift": "20 Ω",
+    "ruft": "_ohgSetR('gross')"
+   },
+   {
+    "aufschrift": "◀ weniger",
+    "ruft": "_ohgU_(-1)"
+   },
+   {
+    "aufschrift": "mehr ▶",
+    "ruft": "_ohgU_(1)"
+   },
+   {
+    "aufschrift": "📍 Messpunkt",
+    "ruft": "_ohgMessen()"
+   },
+   {
+    "aufschrift": "🗑 löschen",
+    "ruft": "_ohgClear()"
+   },
+   {
+    "aufschrift": "Eine Gerade durch den Ursprung",
+    "ruft": "_ohgAns(0,0)"
+   },
+   {
+    "aufschrift": "Eine gekrümmte Kurve",
+    "ruft": "_ohgAns(0,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_ohgAns(0,2)"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_ohgAns(1,0)"
+   },
+   {
+    "aufschrift": "Sie verdoppelt sich",
+    "ruft": "_ohgAns(1,1)"
+   },
+   {
+    "aufschrift": "Sie halbiert sich",
+    "ruft": "_ohgAns(1,2)"
+   },
+   {
+    "aufschrift": "U = R · I",
+    "ruft": "_ohgAns(2,0)"
+   },
+   {
+    "aufschrift": "U = R + I",
+    "ruft": "_ohgAns(2,1)"
+   },
+   {
+    "aufschrift": "U = R / I",
+    "ruft": "_ohgAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_ohgSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_ohgSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_ohgSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('ohmgesetz')"
+   }
+  ],
+  "hinweise": [
+   "Stelle bei festem Widerstand verschiedene Spannungen ein und miss die Stromstärke. Trage die Messpunkte ein. Welche Form hat die Kurve? (Nur ungefährliche Kleinspannung.)",
+   "Die Messpunkte liegen auf einer Geraden durch den Ursprung: I ist proportional zu U. Das Verhältnis R = U/I bleibt gleich – das ist das Ohmsche Gesetz (U = R · I).",
+   "Doppelte Spannung → doppelter Strom. | U = R · I · R = U/I bleibt konstant."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,30 A · R = U/I = 10 Ω. Widerstand fest: 10 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "10 Ω",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,30 A · R = U/I = 10 Ω. Widerstand fest: 10 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "20 Ω",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "◀ weniger",
+    "text": "ohgStatus: Eingestellt: U = 1,5 V → I = 0,07 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "mehr ▶",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "📍 Messpunkt",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: UIR = U/I3 V0,15 A20 Ω"
+   },
+   {
+    "einstellung": "🗑 löschen",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✓ Richtig! I ist proportional zu U – eine Ursprungsgerade."
+   },
+   {
+    "einstellung": "Eine gekrümmte Kurve",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Bei einem ohmschen Widerstand ist sie gerade, nicht gekrümmt."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht."
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Bei doppelter Spannung ändert sich der Strom."
+   },
+   {
+    "einstellung": "Sie verdoppelt sich",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✓ Richtig! Doppelte Spannung → doppelter Strom (Proportionalität)."
+   },
+   {
+    "einstellung": "Sie halbiert sich",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner."
+   },
+   {
+    "einstellung": "U = R · I",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✓ Richtig! U = R · I (also R = U/I, I = U/R)."
+   },
+   {
+    "einstellung": "U = R + I",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Addiert wird hier nichts."
+   },
+   {
+    "einstellung": "U = R / I",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Das ist nicht die richtige Verknüpfung."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Das ist nicht die richtige Verknüpfung.  ||  ohgSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Das ist nicht die richtige Verknüpfung.  ||  ohgSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Das ist nicht die richtige Verknüpfung."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "ohgStatus: Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.  ||  ohgTable: Noch keine Messpunkte – stelle eine Spannung ein und tippe „Messpunkt\".  ||  ohgFb0: ✗ Sie steigt an, ist also nicht waagerecht.  ||  ohgFb1: ✗ Sie wird größer, nicht kleiner.  ||  ohgFb2: ✗ Das ist nicht die richtige Verknüpfung."
+   }
+  ],
+  "bildtexte": [
+   "0",
+   "1,5",
+   "3",
+   "4,5",
+   "6",
+   "0,0",
+   "0,2",
+   "0,4",
+   "U in V",
+   "I in A",
+   "R = 10 Ω",
+   "R = 20 Ω"
+  ]
+ }
+]

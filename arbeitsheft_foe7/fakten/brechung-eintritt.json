@@ -1,0 +1,147 @@
+[
+ {
+  "sim": "brechung-eintritt",
+  "ueberschrift": "🔷 Wo ändert das Licht beim Übergang von Luft in Glas seine Richtung?",
+  "regler": [
+   {
+    "id": "beiT",
+    "beschriftung": "ungebrochene Richtung Winkel in der Luft: 40°",
+    "bereich": {
+     "min": "0",
+     "max": "75",
+     "step": "5",
+     "start": "40"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "↓ genau auf das Lot",
+    "ruft": "_beiSetT(0)"
+   },
+   {
+    "aufschrift": "📏 ungebrochene Richtung",
+    "ruft": "_beiSpur()"
+   }
+  ],
+  "hinweise": [
+   "Der Strahl trifft auf die gerade Fläche des Halbrundkörpers. Verändere den Winkel und achte darauf, an welcher einzigen Stelle er knickt.",
+   "Vor dem Glas, im Glas und dahinter läuft der Strahl geradeaus. Geknickt ist er nur an der Grenze – dort heißt es Brechung.",
+   "Von Luft in Glas knickt er zum Lot hin: Der Winkel im Glas bleibt immer kleiner. Glas ist optisch dichter, das Licht läuft darin langsamer.",
+   "An der runden Fläche kein zweiter Knick – dort trifft der Strahl senkrecht auf, er kommt ja aus dem Mittelpunkt."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "beiStatus: 🔷 Winkel in der Luft 40°, im Glas 25° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "↓ genau auf das Lot",
+    "text": "beiStatus: 🔷 Auf dem Lot: kein Knick. Winkel in der Luft 0°, im Glas 0°."
+   },
+   {
+    "einstellung": "📏 ungebrochene Richtung",
+    "text": "beiStatus: 🔷 Auf dem Lot: kein Knick. Winkel in der Luft 0°, im Glas 0°."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 0",
+    "text": "beiStatus: 🔷 Auf dem Lot: kein Knick. Winkel in der Luft 0°, im Glas 0°."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 10",
+    "text": "beiStatus: 🔷 Winkel in der Luft 10°, im Glas 7° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 20",
+    "text": "beiStatus: 🔷 Winkel in der Luft 20°, im Glas 13° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 30",
+    "text": "beiStatus: 🔷 Winkel in der Luft 30°, im Glas 19° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 40",
+    "text": "beiStatus: 🔷 Winkel in der Luft 40°, im Glas 25° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 45",
+    "text": "beiStatus: 🔷 Winkel in der Luft 45°, im Glas 28° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 55",
+    "text": "beiStatus: 🔷 Winkel in der Luft 55°, im Glas 33° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 65",
+    "text": "beiStatus: 🔷 Winkel in der Luft 65°, im Glas 37° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 75",
+    "text": "beiStatus: 🔷 Winkel in der Luft 75°, im Glas 40° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 5",
+    "text": "beiStatus: 🔷 Winkel in der Luft 5°, im Glas 3° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 15",
+    "text": "beiStatus: 🔷 Winkel in der Luft 15°, im Glas 10° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 25",
+    "text": "beiStatus: 🔷 Winkel in der Luft 25°, im Glas 16° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 35",
+    "text": "beiStatus: 🔷 Winkel in der Luft 35°, im Glas 22° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 50",
+    "text": "beiStatus: 🔷 Winkel in der Luft 50°, im Glas 31° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 60",
+    "text": "beiStatus: 🔷 Winkel in der Luft 60°, im Glas 35° – der Strahl knickt zum Lot hin."
+   },
+   {
+    "einstellung": "ungebrochene Richtung Winkel in der Luft: 40° = 70",
+    "text": "beiStatus: 🔷 Winkel in der Luft 70°, im Glas 39° – der Strahl knickt zum Lot hin."
+   }
+  ],
+  "bildtexte": [
+   "Glas",
+   "Luft",
+   "Lot",
+   "hier knickt es",
+   "40°",
+   "25°",
+   "kein zweiter Knick",
+   "geradeaus – knicken – geradeaus",
+   "0°",
+   "10°",
+   "7°",
+   "20°",
+   "13°",
+   "30°",
+   "19°",
+   "45°",
+   "28°",
+   "55°",
+   "33°",
+   "65°",
+   "37°",
+   "75°",
+   "5°",
+   "3°",
+   "15°",
+   "16°",
+   "35°",
+   "22°",
+   "50°",
+   "31°",
+   "60°",
+   "70°",
+   "39°"
+  ]
+ }
+]

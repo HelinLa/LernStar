@@ -1,0 +1,1869 @@
+[
+ {
+  "theme": "magnetismus",
+  "id": "m1",
+  "name": "Magnete und magnetische Felder",
+  "problem": "Bens Schlüssel rutscht aus der Jacke. Er fällt durch den Gullyrost. Unten liegt er im nassen Laub, halb im Wasser. Der Schlüssel ist aus Stahl. Mit den Fingern kommt Ben nicht durch den Rost. Mia holt einen Magneten und eine Schnur.",
+  "frage": "Wie weit reicht die Wirkung eines Magneten?",
+  "predict": [
+   "Je größer der Abstand, desto schwächer die Wirkung. Ab einer Entfernung ist nichts mehr zu merken.",
+   "Der Magnet dreht die Nadel bei jedem Abstand gleich stark, solange er stark genug ist.",
+   "Kommt Laub oder Wasser dazwischen, hört die Wirkung sofort auf. Nur durch Luft zieht der Magnet."
+  ],
+  "forschen": [
+   "Schalte Feldlinien ein und stelle „Stelle am Magneten“ auf 0 Grad, also an das Ende. Stelle den Abstand ganz klein.",
+   "Vergrößere den Abstand Schritt für Schritt. Merke dir die Zahl, ab der die Nadel kaum noch gedreht wird.",
+   "Gegenprobe am Tisch: Nähere einen Magneten langsam einer Büroklammer. Lege dabei erst ein Blatt Papier dazwischen, dann ein dickes Buch."
+  ],
+  "tabCols": [
+   "Abstand eingestellt",
+   "Nadel wird gedreht? (ja / nein)"
+  ],
+  "tabRows": [
+   "kleiner Abstand",
+   "mittlerer Abstand",
+   "großer Abstand",
+   "Gegenprobe: Papier dazwischen"
+  ],
+  "merksatz": [
+   {
+    "pre": "Papier, nasses Laub und Wasser können die Wirkung eines Magneten nicht",
+    "post": ". Sie wirkt einfach hindurch.",
+    "loesung": "aufhalten"
+   },
+   {
+    "pre": "Mit größerem Abstand wird die Anziehung",
+    "post": ". Aus großer Tiefe holt ein schwacher Magnet nichts mehr herauf.",
+    "loesung": "schwächer"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Mias Magnet Bens Schlüssel durch nasses Laub und Wasser hochzieht, aus größerer Tiefe aber nicht.",
+   "zeilen": 3,
+   "loesung": "Laub und Wasser halten die magnetische Wirkung nicht auf. Deshalb erreicht sie den Schlüssel aus Stahl trotzdem. Liegt der Schlüssel tiefer, ist der Abstand zum Magneten größer. Dann ist die Anziehung zu schwach, um den Schlüssel zu heben. Ein stärkerer Magnet würde ihn auch aus dieser Tiefe holen.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Schlüssel liegt unten",
+  "ueberleitung": "Der Schlüssel hängt am Magneten. Beim Hochziehen fällt er zweimal wieder ab, und Mia angelt noch einmal. Dabei kommt allerlei mit hoch – Bens Zweitschlüssel aus Messing aber nicht.",
+  "fachtext": "Ein Magnet zieht Gegenstände aus Eisen und Stahl an. Bens Schlüssel ist aus Stahl, deshalb hält der Magnet ihn. Die magnetische Wirkung geht durch Papier, Laub und Wasser hindurch. Sie wird schwächer, je größer der Abstand ist. Ein starker Magnet zieht über eine größere Entfernung als ein schwacher.",
+  "alltag": "Beurteile die Vermutung: Ein Magnet in einer Plastikhülle zieht gar nichts mehr an.",
+  "beobachtung": "Bei kleinem Abstand dreht sich die Kompassnadel kräftig zum Magneten hin. Wird der Abstand größer, dreht sie sich immer schwächer, und ab einer bestimmten Zahl bewegt sie sich kaum noch. Die Wirkung hört also nicht plötzlich auf, sie wird nach und nach schwächer. Am Tisch zieht der Magnet die Büroklammer auch durch ein Blatt Papier an. Durch ein dickes Buch schafft er es nicht, weil der Abstand dann zu groß ist.",
+  "predictOk": 0,
+  "auftrag": "Untersuche mit dem Prüfkompass, bis zu welchem Abstand die Nadel noch gedreht wird.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m2",
+  "name": "Welche Stoffe zieht ein Magnet an?",
+  "problem": "Beim Angeln kommt allerlei mit hoch. Bens Schlüssel aus Stahl springt sofort an den Magneten. Sein Zweitschlüssel aus Messing bleibt unten liegen. Dabei sehen beide aus wie Metall. Im Gully liegen noch ein Kronkorken und eine Alulasche. Ben versteht das nicht.",
+  "frage": "Welche Stoffe zieht ein Magnet an?",
+  "predict": [
+   "Alles, was aus Metall ist, wird vom Magneten angezogen.",
+   "Nur bestimmte Stoffe wie Eisen und Stahl werden angezogen.",
+   "Der Magnet zieht alles an, was leicht genug ist. Schwere Sachen bleiben unten liegen."
+  ],
+  "forschen": [
+   "Wähle nacheinander Eisen-Nagel, Büroklammer (Stahl) und Nickel-Münze. Notiere jedes Mal, ob der Magnet hält.",
+   "Prüfe danach Alu-Dose, Kupfer-Draht und Holz-Stab. Vergleiche, was der Magnet mit ihnen macht.",
+   "Wähle zum Schluss Blech 1, Blech 2 und Blech 3. Finde heraus, welche Bleche der Magnet anzieht."
+  ],
+  "tabCols": [
+   "Das prüfe ich",
+   "Magnet hält? (ja / nein)"
+  ],
+  "tabRows": [
+   "Eisen-Nagel",
+   "Nickel-Münze",
+   "Alu-Dose",
+   "Gegenprobe: Blech 1, Blech 2, Blech 3"
+  ],
+  "merksatz": [
+   {
+    "pre": "Eisen, Stahl, Nickel und Kobalt sind",
+    "post": ". Aluminium, Kupfer und Messing sind es nicht.",
+    "loesung": "magnetisch"
+   },
+   {
+    "pre": "In Bens Zweitschlüssel aus Messing steckt kein",
+    "post": ". Deshalb hält der Magnet nicht daran.",
+    "loesung": "Eisen"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Beurteile Bens Satz: „Mein Zweitschlüssel ist wohl gar kein Metall.“ Begründe, was Mias Magnet wirklich anzeigt.",
+   "zeilen": 3,
+   "loesung": "Bens Satz stimmt nicht. Sein Zweitschlüssel ist Metall, nämlich Messing. In Messing steckt aber kein Eisen, deshalb hält der Magnet nicht daran. Auch zwei starke Magnete ändern das nicht. Ein Magnet unterscheidet magnetische von nicht magnetischen Stoffen, nicht Metall von Nichtmetall.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "titel": "Nicht alles kommt mit",
+  "ueberleitung": "Der richtige Schlüssel ist oben. Beim nächsten Mal soll es schneller gehen: Mia klebt zwei Magnete aneinander. Einmal zieht die Angel doppelt so stark – dreht sie einen um, hält kaum noch etwas.",
+  "fachtext": "Magnete ziehen nur wenige Stoffe an. Dazu gehören vor allem Eisen und Stahl, außerdem Nickel und Kobalt. Solche Stoffe nennst du magnetisch. Aluminium, Kupfer und Messing sind ebenfalls Metalle, aber nicht magnetisch. Auch ein stärkerer Magnet ändert daran nichts.",
+  "alltag": "Erkläre, warum sich Konservendosen aus Stahlblech mit einem Magneten von Aluminiumdosen trennen lassen.",
+  "beobachtung": "Der Eisen-Nagel, die Büroklammer (Stahl) und die Nickel-Münze bleiben am Magneten hängen. Die Alu-Dose und der Kupfer-Draht fallen ab, obwohl beide aus Metall sind. Der Holz-Stab wird auch nicht angezogen. Bei den Blechen siehst du es von außen nicht; erst der Magnet zeigt, in welchem Eisen steckt. Es kommt also darauf an, woraus ein Stück besteht.",
+  "predictOk": 1,
+  "auftrag": "Prüfe der Reihe nach, welche Stoffe der Magnet anzieht und welche nicht.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m3",
+  "name": "Wie wirken Magnetpole aufeinander?",
+  "problem": "Mia will die Angel stärker machen. Sie klebt zwei gleiche Magnete aneinander. Doch die beiden springen immer wieder auseinander. Die Magnete sehen an allen Enden gleich aus. Beschriftet ist nichts. Mia dreht sie hin und her. Sie findet keine Erklärung.",
+  "frage": "Wie wirken zwei Magnetpole aufeinander?",
+  "predict": [
+   "Bei einem großen Abstand d ziehen sich die Magnete immer an.",
+   "Ein Ende des Magneten zieht immer an, das andere Ende stößt immer ab.",
+   "So herum ziehen sich die Magnete an, umgedreht stoßen sie sich ab."
+  ],
+  "forschen": [
+   "Wähle Magnet an der Tür so herum und stelle Abstand d auf 5 cm. Lies ab, ob sich die Magnete anziehen oder abstoßen.",
+   "Wähle nun Magnet an der Tür umgedreht bei gleichem Abstand d. Lies wieder ab und vergleiche mit Schritt 1.",
+   "Stelle Abstand d auf 2 cm und danach auf 10 cm ein. Übernimm jeden Wert mit Messwert übernehmen."
+  ],
+  "tabCols": [
+   "Magnet an der Tür und Abstand d",
+   "Anziehen oder abstoßen?"
+  ],
+  "tabRows": [
+   "so herum, d = 5 cm",
+   "umgedreht, d = 5 cm",
+   "umgedreht, d = 2 cm",
+   "umgedreht, d = 10 cm"
+  ],
+  "merksatz": [
+   {
+    "pre": "Gleiche Pole stoßen sich ab, ungleiche Pole ziehen sich",
+    "post": ".",
+    "loesung": "an"
+   },
+   {
+    "pre": "Ein Magnet hat immer zwei Pole, niemals nur",
+    "post": ". Auch ein abgebrochenes Stück hat Nordpol und Südpol.",
+    "loesung": "einen"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Mias zwei Magnete auseinanderspringen. Sage voraus, wie sie die Magnete halten muss, damit sie zusammenkleben.",
+   "zeilen": 3,
+   "loesung": "Mia hielt zwei gleiche Pole gegeneinander. Gleiche Pole stoßen sich ab, deshalb sprangen die Magnete auseinander. Mia muss einen der beiden Magnete umdrehen. Dann treffen ein Nordpol und ein Südpol aufeinander. Ungleiche Pole ziehen sich an, und die Magnete halten fest zusammen.",
+   "komp": "E8",
+   "afb": "II"
+  },
+  "titel": "Zwei Magnete, zweimal anders",
+  "ueberleitung": "Die Doppelangel hält. Nur rutschte der Schlüssel an der Mitte des Magneten immer wieder ab. Am Nachmittag holt Mia Eisenspäne aus dem Werkraum. Sie will sehen, was um einen Magneten herum eigentlich los ist.",
+  "fachtext": "Jeder Magnet hat zwei Pole: einen Nordpol und einen Südpol. Hältst du zwei Nordpole aneinander, drücken sie sich spürbar weg. Nordpol und Südpol dagegen ziehen sich an. Eisen zieht jeder Pol an, der Nordpol genauso wie der Südpol. Zerbrichst du einen Magneten, hat jedes Stück wieder beide Pole.",
+  "alltag": "Übertrage dein Ergebnis auf eine Magnetschwebebahn, die knapp über der Schiene schwebt.",
+  "sicherheit": "Halte starke Magnete von Handys, Uhren und Chipkarten fern.",
+  "beobachtung": "Bei „Magnet an der Tür so herum“ ziehen sich die Magnete an. Nach dem Umdrehen stoßen sie sich ab, obwohl sonst alles gleich bleibt. Bei d = 2 cm ist die Wirkung stark, bei d = 10 cm nur noch schwach. Die Richtung ändert sich durch den Abstand aber nicht. Ob angezogen oder abgestoßen wird, hängt nur davon ab, welche Pole sich treffen.",
+  "predictOk": 2,
+  "auftrag": "Vergleiche, was geschieht, wenn du den Magneten umdrehst.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m4",
+  "name": "Wie sieht ein Magnetfeld aus?",
+  "problem": "Beim Angeln hielt der Schlüssel nicht überall am Magneten. Mal blieb er hängen, mal rutschte er ab. Ben findet dafür keinen Grund. Am Magneten selbst ist nichts zu sehen. Mia holt Eisenspäne aus dem Werkraum. Sie legt einen Stabmagneten unter eine Platte.",
+  "frage": "Wo ist ein Magnetfeld stark und wo ist es schwach?",
+  "predict": [
+   "Am Ende liegen die Feldlinien dicht. Über der Mitte sind sie weit auseinander.",
+   "In der Mitte ist der Magnet am stärksten, weil dort das meiste Eisen sitzt.",
+   "Rund um den Magneten ist die Wirkung überall gleich stark. Die Späne legen sich deshalb gleichmäßig hin."
+  ],
+  "forschen": [
+   "Schalte Feldlinien ein. Stelle „Stelle am Magneten“ auf 0 Grad und schau, wie dicht die Linien dort liegen.",
+   "Stelle nacheinander 40 Grad und 90 Grad ein. Lies jedes Mal ab, ob die Linien dicht oder weit auseinander liegen.",
+   "Gegenprobe am Tisch: Hänge eine Büroklammer an das Ende eines Magneten und danach an seine Mitte."
+  ],
+  "tabCols": [
+   "„Stelle am Magneten“ eingestellt",
+   "Feldlinien: dicht oder weit?"
+  ],
+  "tabRows": [
+   "0 Grad (am Ende)",
+   "40 Grad",
+   "90 Grad (über der Mitte)",
+   "Gegenprobe: Kompass-Raster bei 0 Grad"
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Eisenspäne liegen dort am dichtesten, wo das Magnetfeld stark ist: an den",
+    "post": ".",
+    "loesung": "Polen"
+   },
+   {
+    "pre": "Feldlinien kannst du nicht sehen. Sie sind ein",
+    "post": ", mit dem du das Magnetfeld darstellst.",
+    "loesung": "Modell"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Sage voraus, wo Bens Schlüsselbund an Mias Angel aus zwei Magneten hängen bleibt. Begründe deine Vorhersage.",
+   "zeilen": 4,
+   "loesung": "Der Schlüsselbund bleibt an den beiden äußeren Enden hängen. Dort liegen die Pole, und dort ist das Magnetfeld am stärksten. In der Mitte kleben Nordpol und Südpol aneinander. Dort ist das Feld schwach, deshalb rutscht der Bund ab. Die Eisenspäne haben genau dieses Muster gezeigt.",
+   "komp": "E8",
+   "afb": "II"
+  },
+  "titel": "Das unsichtbare Muster",
+  "ueberleitung": "Das Muster steht auf der Platte. Am nächsten Morgen nehmen die fünf die Abkürzung durch den Park, um nicht zu spät zu kommen.",
+  "fachtext": "Ein Magnet wirkt an seinen beiden Polen besonders stark. In der Mitte ist seine Wirkung schwach. Den Raum um einen Magneten, in dem seine Kraft wirkt, nennst du Magnetfeld. Eisenspäne machen dieses Magnetfeld sichtbar. Feldlinien sind nur ein Modell zum Zeichnen – Linien gibt es in Wirklichkeit nicht.",
+  "alltag": "Erkläre, warum ein Hufeisenmagnet mehr trägt, wenn beide Enden auf dem Eisen liegen.",
+  "sicherheit": "Magnete gehören nicht an Handys, Bankkarten und Uhren.",
+  "beobachtung": "Bei 0 Grad liegen die Feldlinien am Ende dicht beieinander. Bei 40 Grad wird der Abstand zwischen ihnen schon größer. Über der Mitte bei 90 Grad liegen sie am weitesten auseinander. Dort ist die Wirkung des Magneten am schwächsten. Das Kompass-Raster zeigt am Ende deutlich zum Pol hin.",
+  "predictOk": 0,
+  "auftrag": "Vergleiche mit dem Regler „Stelle am Magneten“, wo die Feldlinien dicht liegen.",
+  "modellgrenze": "Feldlinien sind gezeichnete Hilfslinien. Im Raum um den Magneten gibt es keine Fäden – die Wirkung ist überall, nicht nur auf den Linien.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m5",
+  "name": "Wie funktioniert ein Kompass?",
+  "problem": "Im Park sieht nach zehn Minuten jeder Weg gleich aus. Ben sucht mit seinem Kompass den Rückweg. Am Eisenzaun dreht sich die Nadel plötzlich zur Seite. Ein paar Schritte weiter zeigt sie wieder anders. Dabei hat Ben den Kompass nicht bewegt.",
+  "frage": "Warum zeigt eine Kompassnadel nach Norden?",
+  "predict": [
+   "Ist die Nadel einmal abgelenkt, bleibt sie für immer in dieser Richtung stehen.",
+   "Je näher der Magnet an der Nadel ist, desto stärker zieht er sie von Norden weg.",
+   "Die Nadel wird nach Norden gezogen, weil die Erde alles anzieht. Es ist dieselbe Kraft, die dich auf dem Boden hält."
+  ],
+  "forschen": [
+   "Schalte Erdmagnetfeld ein. Stelle „Magnet – Abstand“ auf 6 cm und lies ab, wohin die Nadelspitze zeigt.",
+   "Stelle „Magnet – Abstand“ nacheinander auf den kleinsten und den größten Wert. Lies jedes Mal die Richtung der Nadel ab.",
+   "Stelle wieder 6 cm ein und schalte Erdmagnetfeld aus. Stoße die Nadel mit „Nadel anstoßen“ an und lies ab, wohin sie sich stellt."
+  ],
+  "tabCols": [
+   "„Magnet – Abstand“ eingestellt",
+   "Wohin zeigt die Nadel?"
+  ],
+  "tabRows": [
+   "kleinster Abstand",
+   "6 cm",
+   "größter Abstand",
+   "Gegenprobe: 6 cm, Erdmagnetfeld aus"
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Magnetfeld der Erde heißt",
+    "post": ". Es reicht über die ganze Erde.",
+    "loesung": "Erdmagnetfeld"
+   },
+   {
+    "pre": "Damit ein Kompass richtig anzeigt, brauchst du Abstand zu allem aus",
+    "post": ".",
+    "loesung": "Eisen"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Bens Nadel am Eisenzaun zum Zaun zeigt. Begründe, wo Ben seinen Kompass ablesen muss.",
+   "zeilen": 4,
+   "loesung": "Dicht am Zaun zeigt die Nadel zum Zaun. Das Eisen des Zauns ist selbst schwach magnetisch und verändert dort das Magnetfeld. Deshalb richtet sich die Nadel nach dem Zaun statt nach Norden. Mitten auf der Wiese ist kein Eisen in der Nähe. Dort stellt sich die Nadel im Erdmagnetfeld ein, deshalb muss Ben dort ablesen.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Im Park zeigt der Kompass plötzlich anders",
+  "ueberleitung": "Mit dem Kompass finden alle fünf den Ausgang. Am selben Abend fällt zu Hause der Strom aus. Auf einmal ist es in der ganzen Wohnung stockdunkel.",
+  "fachtext": "Die Erde wirkt wie ein riesiger Magnet. Ihr Magnetfeld reicht überall hin, auch in den Park. Eine Kompassnadel ist ein kleiner Magnet und kann sich frei drehen. Deshalb stellt sie sich im Erdmagnetfeld ein und zeigt ungefähr nach Norden. Eisen in der Nähe lenkt sie ab.",
+  "alltag": "Nenne zwei Dinge in deinem Klassenraum, die eine Kompassnadel ablenken könnten.",
+  "beobachtung": "Beim kleinsten Abstand zeigt die Nadel fast genau zum Magneten. Bei 6 cm ist sie schräg abgelenkt. Beim größten Abstand zeigt sie wieder nach Norden. Ohne Erdmagnetfeld richtet sie sich nur noch nach dem Magneten. Stößt du sie an, pendelt sie hin und her und stellt sich wieder in dieselbe Richtung.",
+  "predictOk": 1,
+  "auftrag": "Untersuche, wann ein Magnet die Nadel von Norden wegzieht.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "licht",
+  "id": "l1",
+  "name": "Lichtquellen und Lichtausbreitung",
+  "problem": "Im ganzen Haus ist es dunkel. Emma zündet eine Kerze an. Am Fenster steht der Mond. Auf dem Schulranzen liegt der Reflektorstreifen. Emma richtet die Taschenlampe darauf und wieder weg. Sie fragt sich, was hier eigentlich selbst leuchtet.",
+  "frage": "Läuft Licht geradeaus oder um die Ecke?",
+  "predict": [
+   "Licht biegt um die Ecke. Auch bei versetzten Löchern kommt noch etwas an.",
+   "Das Licht der Kerze reicht nur ein kurzes Stück weit. Steht die Wand weiter weg, kommt auch bei geraden Löchern nichts mehr an.",
+   "Licht kommt nur an, wenn beide Löcher gerade hintereinander liegen."
+  ],
+  "forschen": [
+   "Stelle „Loch der 1. Blende“ auf 0 und „Loch der 2. Blende“ auf 0. Schau nach, ob hinten Licht an der Wand ankommt.",
+   "Lass die 1. Blende auf 0 und schiebe „Loch der 2. Blende“ nach oben und nach unten. Lies ab, wann das Licht verschwindet.",
+   "Stelle „Loch der 1. Blende“ auf +18. Probiere aus, bei welcher Zahl der 2. Blende wieder Licht ankommt."
+  ],
+  "tabCols": [
+   "1. Blende / 2. Blende eingestellt",
+   "Licht an der Wand: ja oder nein?"
+  ],
+  "tabRows": [
+   "beide auf 0",
+   "1. Blende 0, 2. Blende +18",
+   "1. Blende +18, 2. Blende 0",
+   "Gegenprobe: 1. Blende +18, 2. Blende passend"
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Sonne und ein Glühwürmchen senden selbst Licht aus. Beide sind",
+    "post": ".",
+    "loesung": "Lichtquellen"
+   },
+   {
+    "pre": "Der Mond leuchtet nicht selbst. Er wirft nur Sonnenlicht zurück und ist deshalb ein",
+    "post": ".",
+    "loesung": "beleuchteter Körper"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emma den Mond am Fenster leuchten sieht, obwohl dort oben kein Feuer brennt.",
+   "zeilen": 4,
+   "loesung": "Der Mond ist keine Lichtquelle, sondern ein beleuchteter Körper. Von der Sonne fällt Licht auf ihn. Er wirft einen Teil dieses Lichts zurück. Das zurückgeworfene Licht läuft geradlinig in Emmas Auge. Deshalb sieht Emma ihn leuchten, obwohl dort kein Feuer brennt.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Was leuchtet hier eigentlich?",
+  "ueberleitung": "Kerze und Taschenlampe reichen für den Flur. Emmas Handy bleibt trotzdem verschwunden. Sie weiß genau, dass es neben dem Sofa liegt – sehen kann sie es nicht.",
+  "fachtext": "Kerze und Taschenlampe senden selbst Licht aus. Solche Körper heißen Lichtquellen. Der Reflektorstreifen und das Buch leuchten nicht von selbst. Sie werfen nur das Licht zurück, das auf sie fällt, und heißen beleuchtete Körper. Von einer Lichtquelle breitet sich das Licht geradlinig nach allen Seiten aus.",
+  "alltag": "Nenne zwei Lichtquellen und zwei beleuchtete Körper, die dir auf deinem Schulweg begegnen.",
+  "beobachtung": "Stehen beide Löcher auf 0, kommt das Licht bis zur Wand. Schiebst du nur ein Loch zur Seite, wird der Lichtfleck kleiner und verschwindet. Erst wenn beide Löcher wieder gerade hintereinander liegen, kommt Licht an. Licht läuft geradlinig und macht keinen Bogen um die Blende herum.",
+  "predictOk": 2,
+  "auftrag": "Untersuche, wie die beiden Löcher stehen müssen, damit das Licht die Wand erreicht.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "licht",
+  "id": "l2",
+  "name": "Wie können wir einen Gegenstand sehen?",
+  "problem": "Emmas Handy liegt neben dem Sofa. Der Akku ist leer. Der Bildschirm bleibt schwarz. Im Zimmer brennt kein Licht. Emma reißt die Augen weit auf. Sie weiß genau, wo das Handy liegt. Sehen kann sie es trotzdem nicht.",
+  "frage": "Warum sehen wir einen Gegenstand im Dunkeln nicht?",
+  "predict": [
+   "Du siehst die Gummibärchen erst, wenn Licht auf sie fällt.",
+   "Die Gummibärchen siehst du auch ohne Licht, wenn du lange genug hinschaust.",
+   "Deine Augen schicken einen Sehstrahl aus und tasten die Gummibärchen ab. Darum brauchst du dafür kein Licht."
+  ],
+  "forschen": [
+   "Stelle Zimmerlicht auf aus. Wähle nacheinander Tuete Gummibaerchen, Katzenauge und Taschenlampe und notiere, was du siehst.",
+   "Stelle Zimmerlicht auf an. Wähle dieselben drei Dinge noch einmal und lies ab, was sich geändert hat.",
+   "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit der Taschenlampe auf einen Löffel und halte die Lampe dann daneben."
+  ],
+  "tabCols": [
+   "Das wähle ich (Zimmerlicht an/aus)",
+   "Sehe ich es? (ja / nein)"
+  ],
+  "tabRows": [
+   "Tuete Gummibaerchen, Zimmerlicht aus",
+   "Tuete Gummibaerchen, Zimmerlicht an",
+   "Katzenauge, Zimmerlicht an",
+   "Gegenprobe: Taschenlampe, Zimmerlicht aus"
+  ],
+  "merksatz": [
+   {
+    "pre": "Sehen braucht immer einen Weg: von der Lichtquelle über den Gegenstand bis in dein",
+    "post": ".",
+    "loesung": "Auge"
+   },
+   {
+    "pre": "Dein Auge sendet selbst kein Licht aus. Ohne Licht im Zimmer siehst du",
+    "post": ", auch nach langem Warten.",
+    "loesung": "nichts"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emma ihr Handy nicht sieht, obwohl es keinen halben Meter neben ihr liegt.",
+   "zeilen": 4,
+   "loesung": "Der Akku ist leer, das Handy sendet also kein eigenes Licht aus. Im dunklen Zimmer fällt auch kein Licht darauf. Deshalb kann das Handy nichts in Emmas Auge zurückwerfen. Ohne dieses Licht bleibt es unsichtbar. Auch langes Warten und weit offene Augen ändern daran nichts.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Es liegt doch direkt da",
+  "ueberleitung": "Das Handy ist wieder da. Auf dem Tisch brennt jetzt die Kerze. Als Ben den Milchkarton daneben stellt, erscheint an der Wand ein dunkler Klotz, doppelt so hoch wie der Karton.",
+  "fachtext": "Das Handy ist ein beleuchteter Körper. Es sendet kein eigenes Licht aus. Nur wenn Licht auf das Handy fällt, wirft es einen Teil davon zurück. Dieses Licht läuft geradlinig in dein Auge. Erst dann siehst du das Handy.",
+  "alltag": "Beurteile die Vermutung: Katzen sehen im völlig dunklen Raum, weil ihre Augen selbst leuchten.",
+  "beobachtung": "Bei ausgeschaltetem Zimmerlicht bleiben Tuete Gummibaerchen und Katzenauge unsichtbar. Stellst du Zimmerlicht auf an, siehst du beide sofort. Die Taschenlampe siehst du auch im Dunkeln, denn sie sendet selbst Licht aus. Gummibärchen und Katzenauge senden kein eigenes Licht. Sie werfen nur Licht zurück, das auf sie fällt, und dieses Licht läuft geradlinig in dein Auge.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, welche Dinge du ohne Zimmerlicht siehst und welche erst mit Licht.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "licht",
+  "id": "l3",
+  "name": "Wie entsteht ein Schatten?",
+  "problem": "Auf dem Tisch brennt eine Kerze. Ben stellt den Milchkarton rechts daneben. An der Wand erscheint ein dunkler Klotz. Jetzt schiebt Ben die Kerze zur Seite. Den Milchkarton fasst er dabei nicht an. Trotzdem bleibt der Klotz nicht an seinem Platz.",
+  "frage": "Wie entsteht ein Schatten?",
+  "predict": [
+   "Der Schatten gehört zum Gegenstand. Er bleibt liegen, auch wenn die Lampe tiefer steht.",
+   "Steht die Lampe tiefer, wandert der Schatten nach oben und wird länger.",
+   "Der Schatten wandert immer dorthin, wo die Lampe steht. Stellst du die Lampe tiefer, rutscht der Schatten nach unten."
+  ],
+  "forschen": [
+   "Stelle Lampe (Höhe) auf oben. Schau nach, wo das Schattenbild an der Wand liegt und wie lang es ist.",
+   "Stelle Lampe (Höhe) Schritt für Schritt tiefer. Lies jedes Mal ab, wohin der Schatten wandert und wie lang er wird.",
+   "Stelle Gegenstand auf weg. Schau nach, was dann von dem Schatten übrig bleibt."
+  ],
+  "tabCols": [
+   "Lampe (Höhe) eingestellt",
+   "Schatten: wo und wie lang?"
+  ],
+  "tabRows": [
+   "Lampe (Höhe): oben",
+   "Lampe etwas tiefer",
+   "Lampe ganz tief",
+   "Gegenprobe: Gegenstand weg"
+  ],
+  "merksatz": [
+   {
+    "pre": "Einen Schatten wirft ein Gegenstand nur, wenn er",
+    "post": "ist.",
+    "loesung": "undurchsichtig"
+   },
+   {
+    "pre": "Schiebst du die Lichtquelle nach links, wandert der Schatten nach",
+    "post": ".",
+    "loesung": "rechts"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Bens Klotz nach rechts wandert, sobald er die Kerze nach links schiebt.",
+   "zeilen": 4,
+   "loesung": "Der Klotz wandert nach rechts, obwohl der Karton stehen bleibt. Licht breitet sich geradlinig aus. Kerze, Milchkarton und Schattenbild liegen auf einer geraden Linie. Schiebt Ben die Kerze nach links, kippt diese Linie. Ihr Ende an der Wand rutscht dadurch nach rechts.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Klotz an der Wand",
+  "ueberleitung": "Jetzt trifft der Schatten die Stelle, die Ben will. Emma ist er zu klein. Sie will einen Klotz, der bis unter die Decke reicht – ohne einen größeren Karton zu holen.",
+  "fachtext": "Licht breitet sich geradlinig aus. Der Milchkarton ist undurchsichtig und hält das Licht auf. Hinter ihm bleibt ein Raum ohne Licht, der Schattenraum. Wo dieser Raum auf die Wand trifft, siehst du das Schattenbild. Lichtquelle, Karton und Schattenbild liegen auf einer geraden Linie.",
+  "alltag": "Zeichne von oben, wo dein Schatten liegt, wenn die Straßenlaterne hinter dir steht.",
+  "beobachtung": "Steht die Lampe oben, liegt das Schattenbild tief an der Wand und ist kurz. Stellst du die Lampe tiefer, wandert der Schatten nach oben und wird länger. Lampe, Gegenstand und Schattenbild liegen dabei immer auf einer geraden Linie. Stellst du Gegenstand auf weg, verschwindet das Schattenbild und die Wand bleibt hell.",
+  "predictOk": 1,
+  "auftrag": "Untersuche, wie das Schattenbild wandert, wenn du die Höhe der Lampe verstellst.",
+  "alltagKomp": "K1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "licht",
+  "id": "l4",
+  "name": "Wovon hängt die Größe des Schattens ab?",
+  "problem": "Emmas Schatten an der Wand ist ihr zu klein. Sie will einen Klotz bis unter die Decke. Einen größeren Karton hat sie nicht. Kerze und Wand sollen stehen bleiben. Nur den Milchkarton darf sie verschieben. Emma probiert und weiß nicht, wohin damit.",
+  "frage": "Wovon hängt die Größe eines Schattens ab?",
+  "predict": [
+   "Der Schatten ist immer so hoch wie der Pappwolf selbst.",
+   "Je heller die Lampe brennt, desto größer wird der Schatten. Auf den Abstand kommt es nicht an.",
+   "Je weiter der Pappwolf von der Bretterwand weg steht, desto größer wird sein Schatten."
+  ],
+  "forschen": [
+   "Schiebe mit Pappwolf verschieben den Wolf dicht an die Bretterwand. Lies ab, wie hoch sein Schatten ist, und wähle Messwert übernehmen.",
+   "Schiebe den Pappwolf Schritt für Schritt weiter von der Bretterwand weg. Wähle jedes Mal Messwert übernehmen und vergleiche die Werte.",
+   "Lass den Pappwolf stehen und schiebe mit Bretterwand verschieben die Wand weiter weg. Lies den neuen Schatten ab."
+  ],
+  "tabCols": [
+   "Das schiebe ich",
+   "Schatten wie hoch? (in cm)"
+  ],
+  "tabRows": [
+   "Pappwolf dicht an der Bretterwand",
+   "Pappwolf in der Mitte",
+   "Pappwolf weit von der Wand weg",
+   "Gegenprobe: Bretterwand weiter weg"
+  ],
+  "merksatz": [
+   {
+    "pre": "Je näher der Karton an der Kerze steht, desto",
+    "post": "wird sein Schatten an der Wand.",
+    "loesung": "größer"
+   },
+   {
+    "pre": "Der Karton selbst bleibt dabei gleich groß. Nur sein",
+    "post": "an der Wand verändert sich.",
+    "loesung": "Schattenbild"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, wohin Emma ihren Milchkarton stellen muss, damit sein Schatten bis unter die Decke reicht.",
+   "zeilen": 4,
+   "loesung": "Emma muss den Milchkarton dicht an die Kerze schieben. Sein Abstand zur Wand ist dann am größten. Das Licht der kleinen Flamme läuft nach allen Seiten auseinander, deshalb wird der Schattenraum bis zur Wand immer breiter. So reicht das Schattenbild bis unter die Decke. Der Karton selbst bleibt dabei gleich groß.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Bis unter die Decke",
+  "ueberleitung": "Der Riesenklotz steht. Dann zündet Emma die zweite Kerze an. Auf einmal sieht der Schatten ganz anders aus als vorher.",
+  "fachtext": "Eine Kerzenflamme ist eine kleine Lichtquelle. Von ihr läuft das Licht nach allen Seiten auseinander. Der Schattenraum hinter dem Karton wird deshalb immer breiter. Steht der Karton dicht an der Flamme, ist der Weg bis zur Wand lang. Der Schattenraum läuft weiter auseinander und das Schattenbild wird groß.",
+  "alltag": "Nenne zwei Beispiele aus dem Alltag, bei denen ein Schatten viel größer ist als der Gegenstand.",
+  "beobachtung": "Dicht an der Bretterwand ist der Schatten des Pappwolfs am kleinsten. Er ist dann etwa so hoch wie der Wolf selbst. Schiebst du den Wolf von der Wand weg, wird sein Schatten Schritt für Schritt höher. Schiebst du die Bretterwand weiter weg, wird der Schatten ebenfalls größer. Das Licht läuft auseinander, deshalb wird der Schattenraum immer breiter.",
+  "predictOk": 2,
+  "auftrag": "Untersuche, wie sich der Schatten ändert, wenn der Pappwolf von der Wand wegrückt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "licht",
+  "id": "l5",
+  "name": "Kern- und Halbschatten",
+  "frage": "Warum hat ein Schatten manchmal einen helleren Rand?",
+  "problem": "Zwei Kerzen stehen nebeneinander auf dem Tisch. Beide leuchten den Milchkarton an. An der Wand sieht der Schatten seltsam aus. Er hat keinen scharfen Rand mehr. Emma zählt sogar zwei Schattenränder. Mit nur einer Kerze war das anders.",
+  "predict": [
+   "Mit zwei Lampen bleibt die Mitte tiefschwarz und außen liegt ein grauer Rand.",
+   "Mit zwei Lampen siehst du zwei gleich schwarze Schatten nebeneinander.",
+   "Mit zwei Kerzen fällt mehr Licht auf die Wand. Der Schatten wird überall gleichmäßig grau."
+  ],
+  "forschen": [
+   "Stelle Quelle auf „punktförmig“. Wähle dann „nur eine Taschenlampe“ und schau dir den Rand des Schattens an der Wand an.",
+   "Wähle „zwei Lampen weit auseinander“. Vergleiche jetzt die Mitte des Schattens mit seinem Rand.",
+   "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit zwei Taschenlampen nebeneinander auf einen Ball vor der Wand."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Schatten: schwarz oder grau?"
+  ],
+  "tabRows": [
+   "Quelle punktförmig, nur eine Taschenlampe",
+   "zwei Lampen weit auseinander: Mitte",
+   "zwei Lampen weit auseinander: Rand",
+   "Gegenprobe am Tisch: zwei Taschenlampen"
+  ],
+  "merksatz": [
+   {
+    "pre": "Licht biegt sich nicht um den Karton herum. Es läuft immer",
+    "post": "weiter.",
+    "loesung": "geradlinig"
+   },
+   {
+    "pre": "Je weiter die beiden Kerzen auseinanderstehen, desto breiter wird der",
+    "post": "am Rand.",
+    "loesung": "Halbschatten"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emmas Schatten mit zwei Kerzen keinen scharfen Rand mehr hat.",
+   "zeilen": 4,
+   "loesung": "Mit zwei Kerzen ist die Mitte des Schattens tiefschwarz und der Rand blassgrau. In die Mitte kommt von keiner der beiden Kerzen Licht, das ist der Kernschatten. An den Rand kommt noch das Licht einer einzigen Kerze, das ist der Halbschatten. Zwischen beiden gibt es keine scharfe Grenze mehr. Bläst Emma eine Kerze aus, fehlt dieses Licht und der Rand wird wieder scharf.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Zwei Kerzen, ein komischer Schatten",
+  "ueberleitung": "Der seltsame Schatten ist geklärt. Der Sicherungskasten aber hängt im Flur um die Ecke, und die Taschenlampe leuchtet nun einmal geradeaus.",
+  "fachtext": "Jede der beiden Kerzen wirft ihr eigenes Schattenbild an die Wand. Wo kein Licht der beiden Kerzen hinkommt, ist der Schatten tiefschwarz. Diesen Bereich nennst du Kernschatten. Wo nur eine der beiden Kerzen hinleuchtet, bleibt es blassgrau. Diesen helleren Rand nennst du Halbschatten.",
+  "alltag": "Nenne zwei Beispiele aus dem Alltag, bei denen ein Schatten weiche graue Ränder hat.",
+  "sicherheit": "Leuchte mit der Taschenlampe niemandem direkt in die Augen.",
+  "beobachtung": "Mit nur einer Taschenlampe hat der Schatten einen scharfen Rand. Er ist überall gleich dunkel. Mit zwei Lampen weit auseinander bleibt die Mitte tiefschwarz, denn dorthin kommt von keiner Lampe Licht. Außen liegt ein blassgrauer Rand, weil dorthin nur eine der beiden Lampen leuchtet. Die Mitte ist der Kernschatten, der graue Rand der Halbschatten.",
+  "predictOk": 0,
+  "auftrag": "Vergleiche den Schatten bei einer Lampe und bei zwei weit auseinanderstehenden Lampen.",
+  "modellgrenze": "Im Versuch stehen zwei einzelne Lampen. Eine echte Lampe und die Sonne sind Flächen; ihr Halbschatten geht deshalb weich ineinander über.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "l6",
+  "theme": "licht",
+  "name": "Reflexionsgesetz & ebene Spiegel",
+  "titel": "Licht um die Ecke",
+  "problem": "Der Sicherungskasten hängt im Flur um die Ecke. Emma leuchtet mit der Taschenlampe hin, aber der Strahl geht geradeaus an der Wand vorbei. Ben hält den Schminkspiegel seiner Schwester in die Ecke und dreht ihn. Auf einmal liegt der Lichtfleck genau auf dem Kasten.",
+  "frage": "Nach welcher Regel wird Licht an einem Spiegel zurückgeworfen?",
+  "auftrag": "Miss den Einfallswinkel und den Winkel des zurückgeworfenen Strahls.",
+  "predict": [
+   "Der Strahl kommt immer senkrecht vom Spiegel zurück, ganz gleich wie er auftrifft.",
+   "Der Strahl läuft unter demselben Winkel zurück, unter dem er auftrifft.",
+   "Der Strahl läuft immer auf demselben Weg zur Lampe zurück. Wie du den Spiegel drehst, ist egal."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Einfallswinkel zum Lot auf 20 Grad ein und lies ab, unter welchem Winkel der Strahl zurückläuft. Wiederhole das mit 40 und mit 60 Grad.",
+   "Stelle den Einfallswinkel auf 0 Grad, also senkrecht auf den Spiegel, und halte fest, wohin der Strahl geht.",
+   "Stelle wieder 40 Grad ein und drehe dann den Spiegel um 10 Grad. Lies ab, um wie viel der Lichtfleck an der Wand weiterspringt."
+  ],
+  "tabCols": [
+   "Einfallswinkel zum Lot",
+   "Winkel des zurückgeworfenen Strahls"
+  ],
+  "tabRows": [
+   "20 Grad",
+   "40 Grad",
+   "60 Grad",
+   "0 Grad (senkrecht)"
+  ],
+  "fachtext": "Trifft Licht auf einen Spiegel, läuft es nicht geradeaus weiter, sondern wird zurückgeworfen. Gemessen wird dabei immer zum Lot – der Senkrechten auf der Spiegelfläche, nicht zur Fläche selbst. Einfallswinkel und Winkel des zurückgeworfenen Strahls sind gleich groß. Trifft der Strahl senkrecht auf, läuft er auf demselben Weg zurück. Deshalb kannst du mit einem Spiegel Licht gezielt um eine Ecke schicken.",
+  "merksatz": [
+   {
+    "pre": "Am Spiegel ist der Einfallswinkel genauso groß wie der Winkel des",
+    "loesung": "zurückgeworfenen",
+    "post": " Strahls."
+   },
+   {
+    "pre": "Beide Winkel misst man zum",
+    "loesung": "Lot",
+    "post": ", der Senkrechten auf der Spiegelfläche."
+   }
+  ],
+  "beobachtung": "Bei 20 Grad läuft der Strahl unter 20 Grad zurück, bei 40 Grad unter 40 Grad und bei 60 Grad unter 60 Grad – die beiden Winkel sind jedes Mal gleich groß. Bei 0 Grad trifft der Strahl senkrecht auf und läuft auf demselben Weg zurück. Drehst du den Spiegel bei 40 Grad um 10 Grad, so schwenkt der zurückgeworfene Strahl nicht um 10, sondern um 20 Grad. Der Grund: Beim Drehen dreht sich das Lot mit, und der Winkel ändert sich deshalb auf beiden Seiten.",
+  "aufgabe": {
+   "frage": "Erkläre, warum der Lichtfleck um 20 Grad springt, wenn du den Spiegel nur um 10 Grad drehst.",
+   "zeilen": 3,
+   "loesung": "Beide Winkel werden zum Lot gemessen, und das Lot steht senkrecht auf der Spiegelfläche. Dreht man den Spiegel um 10 Grad, dreht sich das Lot um dieselben 10 Grad mit. Der einfallende Strahl bleibt dabei stehen, sein Winkel zum Lot wird also um 10 Grad größer. Der zurückgeworfene Strahl hat denselben Winkel auf der anderen Seite des Lots und wandert deshalb noch einmal um 10 Grad weiter. Zusammen ergibt das 20 Grad. Eine kleine Drehung des Spiegels verschiebt den Lichtfleck also weit.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Erkläre, warum du im Außenspiegel eines Autos Dinge siehst, die hinter dir liegen.",
+  "modellgrenze": "Die Regel gilt für glatte Flächen. Auf rauem Papier wird das Licht in alle Richtungen zurückgeworfen – deshalb siehst du dort kein Spiegelbild.",
+  "ueberleitung": "Mit dem Spiegel liegt das Licht auf dem Sicherungskasten. Um zehn ist der Strom wieder da. Am nächsten Abend muss Emma von der Handballhalle nach Hause – und ihr Vorderlicht am Fahrrad geht nicht.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "strom",
+  "id": "s1",
+  "name": "Stromkreis und Schaltzeichen",
+  "problem": "Im Fahrradladen bekommt Emma einen Zettel ohne Bilder. Da steht ein Kreis mit einem Kreuz. Daneben zwei ungleich lange Striche und eine Linie mit Knick. Emma malt darunter, wie sie es meint. Die Batterie wird ein Klotz. Das Lämpchen wird eine Sonne. Ben baut danach etwas ganz anderes.",
+  "frage": "Warum versteht ein anderer meine Schaltung schneller mit Schaltzeichen?",
+  "predict": [
+   "Eigene Bilder reichen. Jeder erkennt Batterie und Lämpchen sofort wieder.",
+   "Ein Schaltplan muss genauso aussehen wie der Aufbau. Liegt ein Teil woanders, ist es eine andere Schaltung.",
+   "Nur mit festen, überall gleichen Zeichen baut ein anderer genau nach."
+  ],
+  "forschen": [
+   "Ordne jedem Bauteil aus der Kiste sein Zeichen vom Zettel zu.",
+   "Zeichne deinen Stromkreis zweimal: mit eigenen Bildern und nur mit Schaltzeichen. Lass beides nachbauen."
+  ],
+  "tabCols": [
+   "So zeichne ich",
+   "Nachbau stimmt? ja/nein"
+  ],
+  "tabRows": [
+   "Batterie als eigenes Bild (Gegenprobe)",
+   "Batterie als Schaltzeichen",
+   "ganzer Kreis mit eigenen Bildern",
+   "ganzer Kreis als Schaltplan"
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Schaltplan zeichnest du die Kabel als gerade",
+    "post": ".",
+    "loesung": "Linien"
+   },
+   {
+    "pre": "Eine Linie mit einem Knick ist das Schaltzeichen für den",
+    "post": ".",
+    "loesung": "Schalter"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre Emma, warum Ben nach ihrer Zeichnung einen anderen Stromkreis baut als gedacht.",
+   "zeilen": 3,
+   "loesung": "Emmas Bilder hat sie selbst erfunden. Ein Klotz kann vieles bedeuten, eine Sonne auch. Ben versteht sie deshalb anders und baut etwas anderes auf. Schaltzeichen sind dagegen fest vereinbart und überall gleich. Wer einen Schaltplan liest, baut genau denselben Stromkreis.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Zettel aus dem Fahrradladen",
+  "fachtext": "Für jedes Bauteil gibt es ein festes Schaltzeichen. Diese Zeichen sind auf der ganzen Welt gleich. Die Batterie zeigst du als zwei ungleich lange Striche, das Lämpchen als Kreis mit Kreuz. Eine Zeichnung nur aus Schaltzeichen heißt Schaltplan. Danach baut jeder genau denselben Stromkreis.",
+  "alltag": "Zeichne den Schaltplan für Emmas Fahrradlicht aus Batterie, Schalter und Lämpchen.",
+  "beobachtung": "Nach den eigenen Bildern baut der Partner etwas anderes auf als gemeint. Nach den Schaltzeichen und nach dem ganzen Schaltplan stimmt der Nachbau.",
+  "predictOk": 2,
+  "auftrag": "Vergleiche, ob dein Partner besser nach deinem Bild oder nach Schaltzeichen nachbaut.",
+  "alltagKomp": "K1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "strom",
+  "id": "s2",
+  "name": "Wann leuchtet eine Lampe?",
+  "problem": "Emma steht abends vor der Halle. Ihr Vorderlicht bleibt dunkel. Sie schiebt das Rad an. Der Dynamo surrt, hinten leuchtet das Rücklicht. Vorne bleibt es schwarz. Im Glas sieht sie den Draht der Birne. Er ist heil. Auch die Kabel haben keinen Riss.",
+  "frage": "Wann leuchtet eine Lampe und wann bleibt sie dunkel?",
+  "predict": [
+   "Das Lämpchen geht aus, sobald der Kreis an einer Stelle offen ist.",
+   "Nur der Schalter macht das Lämpchen aus. Am Kabel ändert sich nichts.",
+   "Ein Kabel von der Batterie zum Lämpchen reicht. Zurück muss nichts fließen."
+  ],
+  "forschen": [
+   "Stelle es so ein, dass „Schalter: geschlossen“ und „Kabel: heil“ dasteht. Schau nach, ob das Lämpchen leuchtet.",
+   "Drücke einmal auf „Schalter: geschlossen“. Lies ab, was jetzt dasteht, und beobachte dabei das Lämpchen.",
+   "Stelle den Schalter zurück und drücke stattdessen auf „Kabel: heil“. Beobachte das Lämpchen noch einmal."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Lämpchen leuchtet? ja/nein"
+  ],
+  "tabRows": [
+   "Schalter: geschlossen, Kabel: heil",
+   "Schalter umgestellt, Kabel: heil",
+   "Schalter: geschlossen, Kabel umgestellt",
+   "Gegenprobe: wieder wie am Anfang"
+  ],
+  "merksatz": [
+   {
+    "pre": "Fehlt eines der beiden Kabel, bleibt der Stromkreis",
+    "post": ". Das Lämpchen bleibt dunkel.",
+    "loesung": "offen"
+   },
+   {
+    "pre": "Eine einzige lockere Stelle unterbricht den ganzen Kreis. Dann fließt nirgends mehr",
+    "post": ".",
+    "loesung": "Strom"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emmas Vorderlicht dunkel bleiben kann, obwohl Birne und Kabel heil sind.",
+   "zeilen": 4,
+   "loesung": "Der elektrische Strom fließt nur, wenn der ganze Stromkreis geschlossen ist. Bei Emma ist der vordere Kreis irgendwo offen, zum Beispiel an einem lockeren Stecker. Dann fließt im ganzen vorderen Stromkreis kein Strom und die Lampe bleibt dunkel. Der hintere Kreis ist dagegen geschlossen. Darum leuchtet das Rücklicht.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Alles heil, und trotzdem dunkel",
+  "ueberleitung": "Der Stecker sitzt, das Licht brennt. Am nächsten Abend ist es wieder aus. Diesmal findet Emma den Grund am Gabelrohr: Dort ist das dünne Kabel durchgescheuert.",
+  "fachtext": "Batterie, Kabel und Lämpchen bilden zusammen einen Stromkreis. Die Batterie treibt den elektrischen Strom im geschlossenen Kreis an; sie liefert die elektrische Energie. Der Strom fließt nur, wenn der Kreis ringsum geschlossen ist. Deshalb braucht jede Lampe zwei Verbindungen zur Batterie. Eine lockere Klemme öffnet den Kreis, und die Lampe bleibt dunkel.",
+  "alltag": "Nenne zwei Beispiele aus dem Alltag, bei denen ein Gerät wegen einer losen Verbindung ausfällt.",
+  "sicherheit": "Merke dir fürs Leben: Baue Stromkreise nur mit Batterien, niemals an der Steckdose.",
+  "beobachtung": "Mit „Schalter: geschlossen“ und „Kabel: heil“ leuchtet das Lämpchen. Stellst du den Schalter um, ist der Kreis offen und das Lämpchen bleibt dunkel. Stellst du das Kabel um, geht das Licht genauso aus. Es ist also egal, an welcher Stelle der Kreis unterbrochen ist. Strom fließt nur, wenn der Kreis ringsum geschlossen ist.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, was geschieht, wenn du Schalter und Kabel umstellst.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "strom",
+  "id": "s3",
+  "name": "Welche Stoffe leiten Strom?",
+  "problem": "An der Fahrradgabel ist Emmas Kabel durchgescheuert. Der Draht darin hat eine Lücke. Bis nach Hause sind es zwanzig Minuten. Es ist dunkel. Emma kippt ihren Rucksack aus. Da liegen eine Büroklammer, Alufolie und ein Bleistift. Dazu ein Radiergummi, ein Lineal und ein Schlüssel.",
+  "frage": "Welche Stoffe leiten den Strom?",
+  "predict": [
+   "Alles, was hart und fest ist, lässt den Strom durch.",
+   "Nur Metalle und die Bleistiftmine lassen den Strom durch.",
+   "Durch jeden Stoff fließt ein bisschen Strom. Bei Gummi und Holz leuchtet das Lämpchen nur schwächer."
+  ],
+  "forschen": [
+   "Wähle nacheinander Büroklammer, Nagel und Münze. Notiere jedes Mal, ob das Lämpchen leuchtet.",
+   "Prüfe danach Holz-Stab, Plastik-Lineal, Glas-Stab und Radiergummi. Schreibe wieder auf, was du siehst.",
+   "Wähle zuletzt Alufolie und Bleistiftmine. Drücke dann „Alles zurücksetzen“ und beobachte das Lämpchen."
+  ],
+  "tabCols": [
+   "Das wähle ich aus",
+   "Lämpchen leuchtet? ja/nein"
+  ],
+  "tabRows": [
+   "Büroklammer, Nagel, Münze",
+   "Holz-Stab, Plastik-Lineal, Glas-Stab",
+   "Alufolie und Bleistiftmine",
+   "Gegenprobe: Radiergummi"
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine Büroklammer schließt die Lücke, weil Metall den elektrischen Strom",
+    "post": ".",
+    "loesung": "leitet"
+   },
+   {
+    "pre": "Die bunte Hülle um jedes Kabel ist ein",
+    "post": ". Sie schützt dich beim Anfassen.",
+    "loesung": "Nichtleiter"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Beurteile Emmas Idee, die Lücke im Kabel mit ihrem Radiergummi zu überbrücken.",
+   "zeilen": 4,
+   "loesung": "Emmas Idee funktioniert nicht. Gummi ist ein Nichtleiter, durch ihn fließt kein elektrischer Strom. Der Stromkreis bleibt an der Lücke offen und das Lämpchen dunkel. Mit der Büroklammer gelingt es dagegen, denn Metall ist ein Leiter. Damit ist der Stromkreis wieder geschlossen.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "titel": "Der Riss im Kabel",
+  "ueberleitung": "Mit der Büroklammer und etwas Isolierband kommt Emma nach Hause. Fürs Erste klemmt nun ein Notlicht am Lenker: Batterie, Lämpchen, zwei Drähte. Nur das Ausmachen ist jedes Mal eine Fummelei.",
+  "fachtext": "Stoffe, durch die der elektrische Strom fließen kann, heißen Leiter. Alle Metalle sind gute Leiter, ebenso die Bleistiftmine aus Graphit. Stoffe, durch die kein Strom fließt, heißen Nichtleiter. Dazu gehören Plastik, Gummi, Holz und Glas. Kabel haben deshalb innen einen Metalldraht und außen eine Hülle aus Kunststoff.",
+  "alltag": "Erkläre, warum Werkzeuge für Elektrikerinnen und Elektriker Griffe aus Kunststoff haben.",
+  "sicherheit": "Merke dir fürs Leben: Halte nie ein Metallstück an beide Pole einer Batterie zugleich – sie wird heiß.",
+  "beobachtung": "Bei Büroklammer, Nagel und Münze leuchtet das Lämpchen. Auch Alufolie und Bleistiftmine lassen den Strom durch. Holz-Stab, Plastik-Lineal, Glas-Stab und Radiergummi bleiben dunkel. Hart sein reicht also nicht: Der Glas-Stab ist hart und leitet trotzdem nicht. Es kommt darauf an, woraus ein Gegenstand besteht.",
+  "predictOk": 1,
+  "auftrag": "Untersuche, welche Gegenstände das Lämpchen zum Leuchten bringen.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Struktur der Materie"
+ },
+ {
+  "theme": "strom",
+  "id": "s4",
+  "name": "Reihenschaltung",
+  "problem": "Emma will vorne und hinten Licht. Sie hängt ein zweites Lämpchen hinter das erste. Heller wird es davon nicht. Beide funzeln nur noch schwach. Emma hängt trotzdem ein drittes dahinter. Dann lockert sich eines in der Fassung.",
+  "frage": "Was geschieht, wenn mehrere Lampen hintereinander hängen?",
+  "predict": [
+   "Die vorderste Lampe leuchtet am hellsten. Für die hinteren bleibt weniger übrig.",
+   "Aus beiden Polen der Batterie kommt Strom. Die mittlere Lampe leuchtet deshalb am hellsten.",
+   "Alle Lampen hängen an einem Weg. Drehst du eine heraus, gehen alle aus."
+  ],
+  "forschen": [
+   "Stelle Anzahl Lampen in Reihe auf 1 und lass Schalter geschlossen. Schau nach, wie hell die Lampe leuchtet.",
+   "Stelle Anzahl Lampen in Reihe nacheinander auf 2 und auf 3. Vergleiche jedes Mal, wie hell eine einzelne Lampe leuchtet.",
+   "Bleibe bei 3 Lampen und wähle bei Lampe 2 herausgedreht. Beobachte, was mit den anderen Lampen passiert."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Wie hell? Was leuchtet noch?"
+  ],
+  "tabRows": [
+   "Anzahl Lampen in Reihe: 1",
+   "Anzahl Lampen in Reihe: 2",
+   "Anzahl Lampen in Reihe: 3",
+   "3 Lampen, Lampe 2 herausgedreht"
+  ],
+  "merksatz": [
+   {
+    "pre": "Alle Lampen einer Reihenschaltung gehen zusammen an und zusammen",
+    "post": ".",
+    "loesung": "aus"
+   },
+   {
+    "pre": "Verbraucht wird nicht der Strom, sondern die elektrische",
+    "post": "der Batterie.",
+    "loesung": "Energie"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre Emma, warum alle drei Lämpchen ausgehen, obwohl sich nur eines gelockert hat.",
+   "zeilen": 4,
+   "loesung": "Emmas drei Lämpchen hängen hintereinander in einer Reihenschaltung. Für den elektrischen Strom gibt es darin nur einen einzigen Weg. Das lockere Lämpchen unterbricht den Stromkreis an dieser Stelle. Dann fließt nirgends mehr Strom, auch nicht durch die beiden festen Lämpchen. Deshalb gehen alle drei gleichzeitig aus.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Zwei Lampen, und beide funzeln",
+  "ueberleitung": "Drei Lämpchen in einer Reihe, und keins geht allein aus. Am Fahrradständer will Emma aber nur das Rücklicht anlassen. Vorne soll aus sein, damit die Batterie länger hält.",
+  "fachtext": "In einer Reihenschaltung gibt es nur einen Weg für den elektrischen Strom. Unterbrichst du den Stromkreis an einer Stelle, gehen alle Lampen aus. Durch alle Lampen fließt derselbe elektrische Strom. Keine Lampe verbraucht ihn. Je mehr Lampen in Reihe hängen, desto schwächer leuchtet jede.",
+  "alltag": "Beurteile die Vermutung: In einer Lichterkette bleiben alle Lampen an, wenn eine fehlt.",
+  "beobachtung": "Eine Lampe allein leuchtet am hellsten. Bei 2 Lampen in Reihe leuchtet jede schwächer. Bei 3 Lampen sind alle noch schwächer, aber untereinander gleich hell. Durch alle fließt derselbe Strom, denn es gibt nur einen Weg. Drehst du Lampe 2 heraus, ist dieser Weg unterbrochen und alle Lampen gehen aus.",
+  "predictOk": 2,
+  "auftrag": "Untersuche die Helligkeit bei 1, 2 und 3 Lampen und drehe dann Lampe 2 heraus.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "strom",
+  "id": "s5",
+  "name": "Parallelschaltung",
+  "problem": "Am Fahrradständer soll nur Emmas Rücklicht brennen. Dann ist ihr Rad im Dunkeln sichtbar. Das Vorderlicht soll aus bleiben. So hält die Batterie länger. Mit ihrer Reihe klappt das nicht. Entweder brennen beide Lämpchen oder keines. Am Lichtset ihres Nachbarn brennt hinten Licht, vorne nicht.",
+  "frage": "Warum lässt sich jede Lampe einzeln schalten?",
+  "predict": [
+   "Jede Lampe hat ihren eigenen Weg. Ihr Schalter schaltet nur sie selbst.",
+   "Stellst du einen Schalter auf aus, gehen beide Lampen aus. Sie hängen ja an einer Batterie.",
+   "Damit jede Lampe einzeln leuchten kann, braucht jede ihre eigene Batterie. Mit einer einzigen Batterie geht das nicht."
+  ],
+  "forschen": [
+   "Stelle Bens Schalter (Lampe 1) auf an und Jonas’ Schalter (Lampe 2) auf an. Lies ab, welche Lampen brennen.",
+   "Stelle Jonas’ Schalter (Lampe 2) auf aus. Beobachte, ob Lampe 1 weiterbrennt.",
+   "Stelle Bens Schalter (Lampe 1) auf aus und Jonas’ Schalter (Lampe 2) auf an. Lies ab, welche Lampe jetzt brennt."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Welche Lampe brennt?"
+  ],
+  "tabRows": [
+   "beide Schalter an",
+   "nur Bens Schalter an",
+   "nur Jonas’ Schalter an",
+   "beide Schalter aus"
+  ],
+  "merksatz": [
+   {
+    "pre": "In einer Parallelschaltung lässt sich jede Lampe",
+    "post": "schalten.",
+    "loesung": "einzeln"
+   },
+   {
+    "pre": "Zwei parallele Lämpchen leuchten ungefähr so hell wie eines",
+    "post": ". In Emmas Reihe funzeln beide.",
+    "loesung": "allein"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emma am Lichtset ihres Nachbarn das Vorderlicht ausschalten kann, ohne das Rücklicht zu verlieren.",
+   "zeilen": 4,
+   "loesung": "Beim Lichtset sind beide Lampen parallel geschaltet. Jede Lampe hat ihren eigenen Weg zur Batterie. Der Schalter vorne unterbricht nur diesen einen Weg. Der Stromkreis des Rücklichts bleibt geschlossen, dort fließt weiter elektrischer Strom. In Emmas Reihenschaltung gibt es dagegen nur einen Weg für beide Lampen.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Vorne aus, hinten an",
+  "ueberleitung": "Vorne aus, hinten an – das klappt jetzt. Hinter der Theke im Fahrradladen liegt aber noch etwas, das Emma nicht mehr loslässt.",
+  "fachtext": "In einer Parallelschaltung hat jede Lampe ihren eigenen Weg zur Batterie. Der elektrische Strom teilt sich auf diese Wege auf. Öffnest du einen Schalter, ist nur dieser eine Weg unterbrochen. Die andere Lampe brennt weiter, denn ihr Stromkreis bleibt geschlossen.",
+  "alltag": "Übertrage dein Ergebnis auf die Lampen in deiner Wohnung: Wie sind sie geschaltet?",
+  "beobachtung": "Sind beide Schalter an, brennen beide Lampen. Stellst du Jonas’ Schalter auf aus, brennt Lampe 1 allein weiter. Stellst du nur Bens Schalter auf aus, brennt Lampe 2 allein. Jede Lampe hat einen eigenen Weg zur Batterie. Ein offener Schalter unterbricht nur diesen einen Weg.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, welche Lampe brennt, wenn du die beiden Schalter einzeln bedienst.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "strom",
+  "id": "s6",
+  "name": "Der Schalter",
+  "titel": "Muss der Schalter an die Batterie?",
+  "problem": "Emmas Notlicht klemmt am Lenker: eine Batterie, ein Lämpchen, zwei Drähte. Zum Ausmachen zieht sie einen Draht von der Batterie, im Dunkeln, mit klammen Fingern. Einmal ist ihr der Draht auf beide Pole gerutscht und die Batterie wurde warm. Emma will einen Schalter. Nur: An welche Stelle im Kreis gehört er?",
+  "frage": "Wovon hängt es ab, ob dein Schalter den Stromkreis unterbricht?",
+  "predict": [
+   "Der Schalter muss direkt an der Batterie sitzen. Dort kommt der Strom heraus.",
+   "Die Büroklammer muss beide Reißzwecken berühren. Sonst kommt der Strom nicht weiter.",
+   "Bei einer kleinen Lücke springt der Strom über. Erst bei einem großen Abstand geht das Lämpchen aus."
+  ],
+  "forschen": [
+   "Baue aus dem Brettchen, den zwei Reißzwecken und der Büroklammer einen Schalter und setze ihn in deinen Stromkreis.",
+   "Prüfe den Schalter an drei Stellen im Kreis. Lege die Büroklammer als Gegenprobe auch nur auf eine Reißzwecke.",
+   "Setze den Schalter zuletzt dicht an die Batterie und danach hinter das Lämpchen. Halte fest, ob sich am Ergebnis etwas ändert."
+  ],
+  "tabCols": [
+   "Das probiere ich am Schalter",
+   "Lämpchen leuchtet? (ja / nein)"
+  ],
+  "tabRows": [
+   "Büroklammer liegt auf beiden Reißzwecken",
+   "Büroklammer nur auf einer Reißzwecke",
+   "Schalter dicht an der Batterie",
+   "Schalter hinter dem Lämpchen"
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Schalter ist eine Stelle im Stromkreis, die du",
+    "post": "und wieder schließen kannst.",
+    "loesung": "öffnen"
+   },
+   {
+    "pre": "Ein Schalter wirkt an jeder Stelle von Emmas Kreis",
+    "post": ". Er unterbricht dann den ganzen Stromkreis.",
+    "loesung": "gleich"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emmas Büroklammer aus Metall sein muss, ihr Brettchen aber aus Holz.",
+   "zeilen": 4,
+   "loesung": "Die Büroklammer schließt den Stromkreis. Dafür muss sie ein Leiter sein, also aus Metall. Das Brettchen soll den Strom gerade nicht weiterleiten. Holz ist ein Nichtleiter. So fließt der Strom nur über die Klammer und nur dann, wenn sie aufliegt.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "ueberleitung": "Der Schalter sitzt, das Notlicht geht an und aus. Im Fahrradladen zeichnet der Mann Emma auf, wie sie das Licht fest anschließen soll. Auf seinem Zettel ist kein einziges Bild.",
+  "auftrag": "Untersuche, an welcher Stelle die Leitung getrennt sein muss.",
+  "predictOk": 1,
+  "fachtext": "Ein Stromkreis muss geschlossen sein, damit Strom fließt. Ein Schalter ist nichts anderes als eine Stelle, an der du den Kreis absichtlich öffnen und wieder schließen kannst. Die Büroklammer verbindet dabei die beiden Reißzwecken; liegt sie nur auf einer, ist der Kreis offen. Wo im Kreis der Schalter sitzt, spielt keine Rolle: Eine einzige Unterbrechung hält den Strom überall an.",
+  "beobachtung": "Liegt die Büroklammer auf beiden Reißzwecken, leuchtet das Lämpchen. Legst du sie nur auf eine Reißzwecke, bleibt es dunkel – schon eine Lücke genügt. Setzt du den Schalter dicht an die Batterie, leuchtet das Lämpchen bei geschlossener Klammer und geht bei offener aus. Genau dasselbe geschieht, wenn der Schalter hinter dem Lämpchen sitzt. Die Stelle im Kreis ändert am Ergebnis also nichts.",
+  "alltag": "Suche in eurer Wohnung drei Schalter und beschreibe, was jeder von ihnen unterbricht.",
+  "sicherheit": "Nur mit einer Flachbatterie arbeiten – niemals an der Steckdose.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "waerme",
+  "id": "w1",
+  "name": "Sind Temperatur und Wärme das Gleiche?",
+  "problem": "Emma stellt einen kalten Metalllöffel in ihren heißen Tee. Sie rührt nicht und reibt ihn nicht. Nach kurzer Zeit fasst sie den Löffel wieder an. Er fühlt sich jetzt ganz anders an. Emma fragt sich, was dabei mit dem Tee passiert ist.",
+  "frage": "Sind Temperatur und Wärme dasselbe?",
+  "predict": [
+   "Am Ende sind es immer genau 50 °C, egal welche Menge du einstellst.",
+   "Schüttest du zwei Becher mit je 40 °C zusammen, zeigt das Thermometer danach 80 °C. Die Temperaturen zählen sich zusammen.",
+   "Das heiße Wasser wird kühler und das kalte wärmer, bis beide gleich warm sind."
+  ],
+  "forschen": [
+   "Stelle beim ersten Wasser Menge: 1 L und Temperatur: 80 °C ein, beim zweiten Menge: 1 L und Temperatur: 20 °C.",
+   "Wähle In Kontakt bringen und lies beide Temperaturen ab. Wähle danach Zurücksetzen und stelle beim zweiten Wasser Menge: 2 L ein.",
+   "Gegenprobe am Tisch: Stelle einen Löffel in ein Glas mit warmem Wasser. Fasse den Griff nach zwei Minuten an."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Wie warm ist es danach?"
+  ],
+  "tabRows": [
+   "1 L mit 80 °C und 1 L mit 20 °C",
+   "1 L mit 80 °C und 2 L mit 20 °C",
+   "Gegenprobe: Löffel im warmen Wasser"
+  ],
+  "merksatz": [
+   {
+    "pre": "Emmas Tee und ihr Löffel tauschen so lange Wärme aus, bis beide dieselbe",
+    "post": "haben.",
+    "loesung": "Temperatur"
+   },
+   {
+    "pre": "Kälte fließt nicht. Übertragen wird immer nur",
+    "post": "– und zwar vom wärmeren zum kälteren Körper.",
+    "loesung": "Wärme"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Emmas Metalllöffel im heißen Tee warm wird und ihr Tee dabei ein wenig kälter.",
+   "zeilen": 4,
+   "loesung": "Der Tee ist wärmer als der Löffel. Deshalb wird Wärme vom Tee auf den Löffel übertragen. Die Temperatur des Löffels steigt, die Temperatur des Tees sinkt. Das geht so lange, bis beide gleich warm sind. Aus dem Löffel fließt dabei keine Kälte in den Tee.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Löffel in der Teetasse",
+  "ueberleitung": "Der Löffel wird warm, der Tee kühler. Wie kalt es an diesem Morgen wirklich ist, weiß aber keiner. Jonas hängt das Thermometer an die Banklehne und begreift beim ersten Ablesen nichts.",
+  "fachtext": "Die Temperatur sagt dir, wie warm oder kalt ein Körper ist. Du misst sie mit einem Thermometer in Grad Celsius. Wärme ist dagegen Energie, die zwischen Körpern übertragen wird. Wärme geht immer von einem wärmeren auf einen kälteren Körper über.",
+  "alltag": "Nenne zwei Beispiele aus deinem Alltag, bei denen ein warmer Gegenstand von allein abkühlt.",
+  "sicherheit": "Nimm nur warmes Wasser aus der Leitung, kein kochendes.",
+  "beobachtung": "Beide Wasser gleichen sich an. Bei 1 L und 1 L treffen sie sich in der Mitte, also bei etwa 50 °C. Nimmst du beim kalten Wasser 2 L, wird es zusammen kühler als 50 °C. Das heiße Wasser gibt Wärme ab, das kalte nimmt sie auf. Auch dein Löffel im Glas wird am Griff wärmer.",
+  "predictOk": 2,
+  "auftrag": "Untersuche, wie warm heißes und kaltes Wasser zusammen werden.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "waerme",
+  "id": "w2",
+  "name": "Wie funktioniert ein Thermometer?",
+  "problem": "Das Thermometer hängt an der Lehne der Parkbank. Jonas nimmt es ab und hält es in der Faust. Nach kurzer Zeit bewegt sich der dünne Faden darin. Die Flüssigkeit hat Jonas dabei gar nicht angefasst. Er versteht nicht, was den Faden bewegt.",
+  "frage": "Wie zeigt ein Thermometer die Temperatur an?",
+  "predict": [
+   "Je wärmer es wird, desto höher steigt der Faden.",
+   "Bei allem Warmen steht der Faden gleich hoch, egal wie warm es ist.",
+   "Je länger du das Thermometer in der Faust hältst, desto weiter steigt der Faden. Er bleibt nicht stehen."
+  ],
+  "forschen": [
+   "Stelle die Temperatur auf 20 °C ein. Lies ab, bei welcher Zahl der Faden steht.",
+   "Wähle nacheinander „Eiswasser“, „Bens Faust“, „warmes Wasser“ und „kochendes Wasser“. Lies jedes Mal die Zahl ab.",
+   "Gegenprobe am Tisch: Stelle ein Thermometer in ein Glas kaltes Wasser. Lies nach zwei Minuten ab."
+  ],
+  "tabCols": [
+   "Das stelle ich ein",
+   "Faden: abgelesene Zahl"
+  ],
+  "tabRows": [
+   "Temperatur 20 °C",
+   "Eiswasser",
+   "Bens Faust",
+   "kochendes Wasser"
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Thermometer kommt keine Flüssigkeit dazu. Es ändert sich nur ihr",
+    "post": ".",
+    "loesung": "Volumen"
+   },
+   {
+    "pre": "Ein Thermometer zeigt erst richtig an, wenn es genauso",
+    "post": "ist wie seine Umgebung.",
+    "loesung": "warm"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Jonas' Faden in der Faust nach oben wandert, obwohl er die Flüssigkeit gar nicht angefasst hat.",
+   "zeilen": 4,
+   "loesung": "Jonas' Hand ist wärmer als die Luft im Park. Deshalb wird Wärme durch das Glas auf die Flüssigkeit übertragen. Die Flüssigkeit dehnt sich aus und braucht mehr Platz. Im engen Röhrchen kann sie nur nach oben ausweichen. An der kalten Lehne kühlt sie ab und der Faden sinkt.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Faden, der wandert",
+  "ueberleitung": "Jetzt kann jeder ablesen, wie kalt es ist. Beim Essen kommt das nächste Problem: Das Marmeladenglas aus der Brotdose bekommt Noah nicht auf, auch nicht mit dem Handschuh.",
+  "fachtext": "Die Flüssigkeit im Thermometer dehnt sich beim Erwärmen aus. Sie braucht dann mehr Platz und steigt im engen Röhrchen nach oben. Beim Abkühlen zieht sie sich zusammen, und der Faden sinkt. An der Skala liest du die Temperatur in Grad Celsius ab.",
+  "alltag": "Erkläre, warum ein Fieberthermometer einige Minuten unter der Achsel bleiben muss.",
+  "beobachtung": "Bei 20 °C steht der Faden in der Mitte. In „Eiswasser“ sinkt er weit nach unten. In „Bens Faust“ steigt er über den Startwert. In „warmes Wasser“ und „kochendes Wasser“ steht er noch höher, am höchsten im kochenden Wasser. Je wärmer die Flüssigkeit ist, desto mehr Platz braucht sie und desto weiter steigt sie im engen Röhrchen.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, wie sich der Faden verändert, wenn du die Temperatur einstellst.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "waerme",
+  "id": "w3",
+  "name": "Was geschieht beim Erwärmen von Stoffen?",
+  "problem": "Noah will sein Marmeladenglas aufmachen. Der Blechdeckel sitzt bombenfest. Er zieht und dreht mit aller Kraft. Auch mit dem Wollhandschuh bewegt sich nichts. Auf der Bank steht die Thermoskanne mit heißem Tee. Ein Werkzeug hat heute niemand dabei.",
+  "frage": "Dehnen sich alle Stoffe beim Erwärmen gleich stark aus?",
+  "predict": [
+   "Nur der flüssige Stoff dehnt sich aus. Der feste bleibt genau gleich groß.",
+   "Alle drei dehnen sich beim Erwärmen aus. Das Gas dehnt sich am stärksten aus.",
+   "Beim Erwärmen dehnt sich das Blech nach innen aus. Der Deckel sitzt danach noch fester."
+  ],
+  "forschen": [
+   "Wähle „fest“ und stelle die Temperatur auf 20 °C ein. Erhöhe dann auf 80 °C und beobachte, wie viel größer der Stoff wird.",
+   "Wähle „flüssig“ und danach „Gas“. Gehe jedes Mal wieder von 20 °C auf 80 °C und vergleiche, wer sich am stärksten ausdehnt.",
+   "Gegenprobe am Tisch: Halte den Blechdeckel eines Glases kurz in heißes Wasser und drehe ihn danach auf."
+  ],
+  "tabCols": [
+   "Stoff und Temperatur",
+   "Wie stark dehnt er sich aus?"
+  ],
+  "tabRows": [
+   "fest bei 80 °C",
+   "flüssig bei 80 °C",
+   "Gas bei 80 °C",
+   "Gegenprobe: fest wieder bei 20 °C"
+  ],
+  "merksatz": [
+   {
+    "pre": "Kühlt der Blechdeckel wieder ab, zieht er sich zusammen und sitzt wieder",
+    "post": ".",
+    "loesung": "fest"
+   },
+   {
+    "pre": "Der Wollhandschuh verbessert nur den Griff. Er überträgt keine",
+    "post": "auf den Deckel.",
+    "loesung": "Wärme"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Noahs Blechdeckel nach dem heißen Tee leicht aufgeht, mit dem Wollhandschuh aber nicht.",
+   "zeilen": 4,
+   "loesung": "Der heiße Tee überträgt Wärme auf den Blechdeckel. Das Metall dehnt sich aus und wird ein wenig weiter. Das Glas darunter bleibt kalt und gleich groß. Deshalb sitzt der Deckel lockerer und geht leicht auf. Der Wollhandschuh erwärmt den Deckel nicht, er verbessert nur den Griff.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der bockige Deckel",
+  "ueberleitung": "Der Deckel geht auf. Auf der Bank steht noch Mias Wasserflasche. Sie ist über Nacht draußen geblieben und das Wasser darin ist hart wie ein Stein.",
+  "fachtext": "Fast alle Stoffe dehnen sich beim Erwärmen aus. Beim Abkühlen ziehen sie sich wieder zusammen. Das nennst du Wärmeausdehnung. Metalle dehnen sich dabei stärker aus als Glas. Ein erwärmter Blechdeckel wird deshalb ein wenig weiter und sitzt lockerer.",
+  "alltag": "Erkläre, warum zwischen zwei Bahnschienen immer eine schmale Lücke bleibt.",
+  "sicherheit": "Heißes Wasser nur unter Aufsicht einer erwachsenen Person benutzen.",
+  "beobachtung": "Bei 20 °C sind alle drei Stoffe klein. Bei 80 °C wird der feste Stoff nur ein wenig größer. Der flüssige Stoff dehnt sich deutlicher aus, das Gas am stärksten. Stellst du wieder 20 °C ein, ziehen sich alle drei zusammen. Auch der warme Blechdeckel wird ein winziges bisschen weiter und geht deshalb leichter auf.",
+  "predictOk": 1,
+  "auftrag": "Vergleiche einen festen, einen flüssigen und einen gasförmigen Stoff.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Struktur der Materie"
+ },
+ {
+  "theme": "waerme",
+  "id": "w4",
+  "name": "Wie verändern sich Aggregatzustände?",
+  "problem": "In der Nacht hat es gefroren. Mias Wasserflasche steht auf der Parkbank, das Wasser darin ist zu Eis geworden. Später stellt Mia die Flasche an einen wärmeren Ort. Nach einiger Zeit ist das Eis weg – dabei war die Flasche die ganze Zeit verschlossen.",
+  "frage": "Bei welchen Temperaturen ist Wasser fest, flüssig oder gasförmig?",
+  "predict": [
+   "Wasser wird schon fest, sobald es kälter als 10 °C ist.",
+   "Eis schmilzt nur in der Sonne. Im Schatten bleibt es fest, auch wenn es dort warm ist.",
+   "Wasser wird erst bei 0 °C fest und erst bei 100 °C zu Wasserdampf."
+  ],
+  "forschen": [
+   "Stelle die Temperatur auf 20 °C ein. Lies ab, ob das Wasser fest, flüssig oder gasförmig ist.",
+   "Wähle „abkühlen“, bis du bei minus 10 °C bist. Beobachte, bei welcher Zahl das Wasser fest wird.",
+   "Wähle danach „erwärmen“ bis 110 °C. Beobachte, bei welcher Zahl aus dem Wasser Wasserdampf wird."
+  ],
+  "tabCols": [
+   "Temperatur eingestellt",
+   "Zustand: fest, flüssig, gasförmig"
+  ],
+  "tabRows": [
+   "20 °C",
+   "minus 10 °C",
+   "50 °C",
+   "110 °C"
+  ],
+  "merksatz": [
+   {
+    "pre": "Nimmt Eis Wärme aus seiner Umgebung auf, dann",
+    "post": " es. Sonnenschein ist dafür nicht nötig.",
+    "loesung": "schmilzt"
+   },
+   {
+    "pre": "Aus festem Eis wird flüssiges Wasser. Wasser ändert dabei seinen",
+    "post": ".",
+    "loesung": "Aggregatzustand"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum das Eis in Mias verschlossener Flasche verschwunden ist.",
+   "zeilen": 3,
+   "loesung": "Am wärmeren Ort ist die Umgebung wärmer als das Eis. Das Eis nimmt Wärme auf und schmilzt. Aus festem Eis wird flüssiges Wasser. Verschwunden ist nichts: Die Flasche war verschlossen, das Wasser ist noch darin – nur nicht mehr fest.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Aus Eis wird Wasser",
+  "ueberleitung": "Das Eis ist weg. Zum Aufwärmen gibt es noch einmal Tee. Drei Löffel stehen im Becher – und Ben zieht die Hand zurück, als er den aus Metall anfasst.",
+  "fachtext": "Wasser gibt es fest, flüssig und gasförmig. Diese drei Formen nennst du Aggregatzustände. Nimmt Eis Wärme aus seiner Umgebung auf, schmilzt es zu Wasser. Gibt Wasser Wärme ab, erstarrt es wieder zu Eis; wird es stark erwärmt, verdampft es zu Wasserdampf. Entscheidend ist also nicht die Sonne, sondern ob ein Stoff Wärme aufnimmt oder abgibt.",
+  "alltag": "Übertrage dein Ergebnis: Erkläre, warum ein Eis am Stiel in der Hand schneller schmilzt als auf dem Teller.",
+  "beobachtung": "Bei 20 °C ist das Wasser flüssig. Beim Abkühlen bleibt es zuerst flüssig. Erst bei 0 °C wird es fest, du siehst Eis. Erwärmst du wieder, schmilzt das Eis bei 0 °C zu Wasser. Bei 100 °C verdampft es und wird gasförmig.",
+  "predictOk": 2,
+  "auftrag": "Untersuche die drei Zustände in der Simulation nacheinander.",
+  "modellgrenze": "Die Werte 0 °C und 100 °C gelten bei normalem Luftdruck. Auf einem hohen Berg kocht Wasser schon bei niedrigerer Temperatur.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "waerme",
+  "id": "w5",
+  "name": "Wie wird Wärme übertragen?",
+  "problem": "Ben und Emma trinken heißen Tee. In einem Becher stehen drei Löffel: einer aus Metall, einer aus Holz, einer aus Kunststoff. Ben will den Metalllöffel herausnehmen und zieht die Hand sofort zurück. Die anderen beiden kann Emma problemlos anfassen.",
+  "frage": "Auf welchen Wegen wandert Wärme zu einem kalten Körper?",
+  "predict": [
+   "Bei allen drei Einstellungen wandert die Wärme vom warmen zum kalten Teil.",
+   "Wärme kann nur wandern, wenn sich warm und kalt berühren.",
+   "Wärme steigt immer nach oben. Hältst du den Löffel mit dem Stiel nach unten, bleibt er kalt."
+  ],
+  "forschen": [
+   "Wähle Leitung. Beobachte, an welcher Stelle es zuerst warm wird und wohin die Wärme von dort aus wandert.",
+   "Wähle danach Strömung und dann Strahlung. Lies jedes Mal ab, ob die Wärme das kalte Teil auch ohne Berührung erreicht.",
+   "Gegenprobe am Tisch: Stelle einen Metalllöffel und einen Holzlöffel in ein Glas mit warmem Wasser und fühle nach fünf Minuten."
+  ],
+  "tabCols": [
+   "Das wähle ich",
+   "Wohin wandert die Wärme?"
+  ],
+  "tabRows": [
+   "Leitung",
+   "Strömung",
+   "Strahlung",
+   "Gegenprobe: Löffel im warmen Wasser"
+  ],
+  "merksatz": [
+   {
+    "pre": "Metalle leiten Wärme",
+    "post": ". Deshalb wird der Stiel des Metalllöffels zuerst warm.",
+    "loesung": "gut"
+   },
+   {
+    "pre": "Holz und Kunststoff leiten Wärme",
+    "post": ". Ihre Stiele bleiben länger kühl.",
+    "loesung": "schlecht"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Begründe, warum der Griff eines Kochtopfs häufig aus Kunststoff oder Holz besteht.",
+   "zeilen": 3,
+   "loesung": "Kunststoff und Holz leiten Wärme schlecht. Die Wärme aus dem Topf wandert deshalb nur langsam in den Griff. Der Griff bleibt kühl genug zum Anfassen. Wäre er aus Metall, würde er so heiß wie der Topf selbst.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Zu heiß zum Anfassen",
+  "ueberleitung": "Auf dem Rückweg im Bus ist es laut. Ben hat abends Bandprobe im Keller. Der Nachbar hat dort schon zweimal an die Wand geklopft.",
+  "fachtext": "Wärme wandert immer vom wärmeren zum kälteren Körper. Wie schnell sie das tut, hängt vom Stoff ab. Metalle leiten Wärme gut: Der Stiel eines Metalllöffels ist schon nach kurzer Zeit warm. Holz und Kunststoff leiten Wärme schlecht, ihre Stiele bleiben länger kühl. Stoffe, die Wärme schlecht leiten, nennst du Wärmedämmstoffe.",
+  "alltag": "Erkläre, warum sich Fliesen im Bad kälter anfühlen als ein Teppich, obwohl beide gleich warm sind.",
+  "sicherheit": "Verwende warmes, nicht kochendes Wasser. Prüfe die Temperatur vorsichtig.",
+  "beobachtung": "Bei Leitung wandert die Wärme durch den Stoff hindurch, von der warmen Stelle zur kalten. Bei Strömung trägt die warme Luft oder das warme Wasser die Wärme nach oben mit. Bei Strahlung kommt die Wärme durch den freien Raum an, ganz ohne Berührung. In allen drei Fällen geht die Wärme immer vom wärmeren zum kälteren Körper. Am Tisch wird der Metallstiel schnell warm, der Holzstiel bleibt lange kühl.",
+  "predictOk": 0,
+  "auftrag": "Vergleiche Leitung, Strömung und Strahlung an der Simulation.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "schall",
+  "id": "sc1",
+  "name": "Wie entsteht ein Ton?",
+  "problem": "Jonas zupft eine Saite seiner Gitarre. Sofort brummt ein tiefer Ton durch den Keller. Er schaut genauer hin. Die Saite sieht auf einmal ganz verschwommen aus. Emma sagt: „Der Ton kommt aus dem hohlen Bauch.“ Jonas ist sich nicht sicher.",
+  "frage": "Wie entsteht ein Ton?",
+  "predict": [
+   "Der Ton bleibt noch kurz in der Luft, auch wenn das Band schon still steht.",
+   "Ohne Zittern gibt es keinen Ton.",
+   "Der Ton entsteht in der Luft im hohlen Bauch der Gitarre. Ohne diesen Hohlraum gibt es keinen Ton."
+  ],
+  "forschen": [
+   "Wähle Gummiband zupfen. Beobachte das Band ganz genau und höre hin, ob dabei ein Ton entsteht.",
+   "Wähle nun Finger auf das Band legen. Lies ab, ob das Band noch zittert und ob der Ton weitergeht.",
+   "Gegenprobe am Tisch: Spanne ein Gummiband zwischen deine Finger, zupfe es und stoppe es dann mit dem Daumen."
+  ],
+  "tabCols": [
+   "Das wähle ich",
+   "Zittert das Band? Klingt ein Ton?"
+  ],
+  "tabRows": [
+   "Gummiband zupfen",
+   "Finger auf das Band legen",
+   "noch einmal Gummiband zupfen",
+   "Gegenprobe: Gummiband zwischen den Fingern"
+  ],
+  "merksatz": [
+   {
+    "pre": "Jeder Ton beginnt mit einer",
+    "post": ". Ohne sie bleibt es still.",
+    "loesung": "Schwingung"
+   },
+   {
+    "pre": "Der hohle Körper macht den Ton nur lauter. Die schwingende Saite selbst ist die",
+    "post": ".",
+    "loesung": "Schallquelle"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Jonas' Saite beim Zupfen verschwommen aussieht und warum der Ton verschwindet, sobald er sie festhält.",
+   "zeilen": 4,
+   "loesung": "Die gezupfte Saite schwingt sehr schnell hin und her. Dein Auge kann dieser schnellen Bewegung nicht folgen. Es sieht die Saite an mehreren Stellen zugleich, darum wirkt sie verschwommen. Jonas' Finger stoppt die Schwingung sofort. Ohne Schwingung entsteht kein Schall, und der Ton ist weg.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Das Brummen aus der Gitarre",
+  "ueberleitung": "Der Ton ist da. Nur klopft der Nachbar schon wieder an die Wand. Jonas soll leiser spielen – aufhören will er nicht.",
+  "fachtext": "Ein Ton entsteht, wenn ein Gegenstand schnell hin und her schwingt. Diese Bewegung heißt Schwingung. Einen Gegenstand, der dabei Töne aussendet, nennst du Schallquelle. Die Saite gibt ihre Schwingung an die Luft und an den Gitarrenkörper weiter. Der Körper schwingt mit und macht den Ton lauter.",
+  "alltag": "Nenne zwei Instrumente aus dem Musikraum und den Teil, der bei ihnen schwingt.",
+  "beobachtung": "Nach dem Zupfen zittert das Gummiband schnell hin und her, und du hörst einen Ton. Dieses Zittern ist die Schwingung, das Band ist die Schallquelle. Legst du den Finger auf, hört das Zittern sofort auf. Im selben Augenblick ist auch der Ton weg. Am Tisch geht es genauso: kein Zittern, kein Ton.",
+  "predictOk": 1,
+  "auftrag": "Untersuche, ob ein Ton weitergeht, wenn das Gummiband nicht mehr zittert.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "schall",
+  "id": "sc2",
+  "name": "Wovon hängt die Lautstärke ab?",
+  "problem": "Jonas zupft die Saite ganz sanft. Im Keller ist er kaum zu hören. Dann zupft er fester. Sofort klopft der Nachbar an die Wand. Die Saite ist beide Male dieselbe. Jonas soll leiser spielen. Aufhören will er aber nicht.",
+  "frage": "Wovon hängt die Lautstärke ab?",
+  "predict": [
+   "Fester zupfen macht den Ton nicht nur lauter, sondern auch höher.",
+   "Die Lautstärke hängt von der Saite ab. Eine dicke Saite klingt immer lauter als eine dünne.",
+   "Je weiter das Band ausschlägt, desto lauter klingt sein Ton."
+  ],
+  "forschen": [
+   "Stelle „So fest zupft Ben am Gummiband“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.",
+   "Stelle danach mittel und dann fest ein. Lies jedes Mal ab, wie weit das Band ausschlägt und wie laut der Ton wird.",
+   "Vergleiche zum Schluss sanft und fest. Achte darauf, ob der Ton dabei nur lauter wird oder auch höher klingt."
+  ],
+  "tabCols": [
+   "So fest zupft Ben",
+   "Ausschlag und Lautstärke"
+  ],
+  "tabRows": [
+   "sanft",
+   "mittel",
+   "fest",
+   "Gegenprobe: klingt fest auch höher als sanft?"
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Nachbar klopft wegen der großen",
+    "post": ", nicht wegen der Tonhöhe.",
+    "loesung": "Amplitude"
+   },
+   {
+    "pre": "Leiser spielt Jonas, indem er die Saite weniger weit",
+    "post": "lässt.",
+    "loesung": "ausschlagen"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum der Nachbar Jonas' sanftes Zupfen nicht hört, beim festen Zupfen aber sofort an die Wand klopft.",
+   "zeilen": 4,
+   "loesung": "Beim sanften Zupfen schlägt die Saite nur wenig aus. Die Amplitude ist klein und der Ton bleibt leise. Ein so leiser Ton dringt kaum durch die dicke Kellerwand. Beim festen Zupfen wird die Amplitude viel größer. Dieser laute Ton reicht bis zum Nachbarn.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Nicht so laut!",
+  "ueberleitung": "Leiser geht. Nur klingt die Gitarre jetzt falsch neben Emmas Stimme. Ein Ton ist zu hoch, der nächste zu tief, und keiner weiß, woran das liegt.",
+  "fachtext": "Beim Zupfen schlägt die Saite hin und her aus. Wie weit sie dabei ausschlägt, nennst du Amplitude. Eine große Amplitude hörst du als lauten Ton. Die Lautstärke gibst du in Dezibel an. Die Tonhöhe ändert sich dabei nicht.",
+  "alltag": "Beurteile die Vermutung: „Wer leiser singt, singt automatisch auch tiefer.“",
+  "beobachtung": "Bei sanft schlägt das Band nur wenig aus und der Ton ist leise. Bei mittel wird der Ausschlag größer und die Lautstärke in Dezibel steigt. Bei fest schlägt das Band am weitesten aus, und der Ton ist am lautesten. Diesen Ausschlag nennst du Amplitude: große Amplitude heißt lauter Ton. Die Tonhöhe bleibt bei allen drei Einstellungen gleich.",
+  "predictOk": 2,
+  "sicherheit": "Zupfe kräftig, aber halte dein Ohr nicht dicht an die Saite.",
+  "auftrag": "Vergleiche Ausschlag und Lautstärke bei sanft, mittel und fest.",
+  "alltagKomp": "B2",
+  "alltagAfb": "III",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "schall",
+  "id": "sc3",
+  "name": "Wovon hängt die Tonhöhe ab?",
+  "problem": "Emma singt Jonas einen Ton vor. Er sucht ihn auf der Gitarre. Die dünne Saite klingt höher als die dicke. Trotzdem trifft keine Emmas Ton genau. Dann dreht Jonas an einem Stimmwirbel. Auf einmal klingt dieselbe Saite anders.",
+  "frage": "Wovon hängt die Tonhöhe ab?",
+  "predict": [
+   "Je mehr Schwingungen pro Sekunde, desto höher klingt der Ton.",
+   "Mehr Schwingungen pro Sekunde machen den Ton lauter, aber nicht höher.",
+   "Je fester du zupfst, desto höher klingt der Ton."
+  ],
+  "forschen": [
+   "Stelle „So schnell schwingt Emmas Glas (Schwingungen pro Sekunde)“ auf 200 Hz ein. Höre den Ton an.",
+   "Stelle danach 300 Hz und 800 Hz ein. Lies jedes Mal ab, ob der Ton höher oder tiefer klingt als vorher.",
+   "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an."
+  ],
+  "tabCols": [
+   "Schwingungen pro Sekunde",
+   "Ton hoch oder tief?"
+  ],
+  "tabRows": [
+   "200 Hz eingestellt",
+   "300 Hz eingestellt",
+   "800 Hz eingestellt",
+   "Gegenprobe: Glas mit viel Wasser"
+  ],
+  "merksatz": [
+   {
+    "pre": "Dreht Jonas am Stimmwirbel, steigt die",
+    "post": ". Ihr Ton klingt dann höher.",
+    "loesung": "Frequenz"
+   },
+   {
+    "pre": "Menschen hören Töne etwa zwischen 20 und 20 000",
+    "post": ".",
+    "loesung": "Hertz"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Jonas' Ton höher wird, sobald er am Stimmwirbel dreht, obwohl es dieselbe Saite bleibt.",
+   "zeilen": 4,
+   "loesung": "Beim Drehen am Wirbel wird die Saite straffer gespannt. Eine straffe Saite schwingt schneller hin und her. Ihre Frequenz steigt, und du hörst einen höheren Ton. Die Saite selbst hat sich nicht verändert, nur ihre Spannung. Fester zupfen würde den Ton dagegen nur lauter machen.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Zu hoch, zu tief",
+  "ueberleitung": "Die Gitarre stimmt. Später sitzt Ben in seinem Zimmer. Von nebenan brummt die Waschmaschine – und am lautesten, wenn er das Ohr an die Wand legt.",
+  "fachtext": "Die Frequenz gibt an, wie oft eine Saite in einer Sekunde schwingt. Du misst sie in Hertz. Je höher die Frequenz, desto höher klingt der Ton. Kurze, dünne und straff gespannte Saiten schwingen schneller. Wie fest du zupfst, ändert die Tonhöhe nicht.",
+  "alltag": "Vergleiche den Ton einer kleinen Flöte mit dem einer langen Bassflöte.",
+  "beobachtung": "Bei 200 Hz klingt der Ton tief. Bei 300 Hz ist er höher, bei 800 Hz am höchsten. Mehr Schwingungen pro Sekunde bedeuten also einen höheren Ton. Lauter wird er dabei nicht. Am Tisch klingt das Glas mit viel Wasser tiefer, denn es schwingt langsamer.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, wie sich der Ton von 200 Hz bis 800 Hz verändert.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "schall",
+  "id": "sc4",
+  "name": "Wie breitet sich Schall aus?",
+  "problem": "Ben sitzt in seinem Zimmer. Nebenan im Waschraum läuft eine Waschmaschine, zuerst hört er nur ein leises Brummen. Dann legt er sein Ohr an die Wand. Plötzlich klingt die Maschine viel lauter – obwohl die Wand geschlossen ist und keine Ritze hat.",
+  "frage": "Braucht Schall etwas, worin er sich ausbreiten kann?",
+  "predict": [
+   "Schall wandert am besten durch Luft, feste Stoffe halten ihn auf.",
+   "Durch den Balken aus Holz kommt der Schall besser an als durch Luft.",
+   "Schall kommt auch durch einen Raum ohne Luft. Einen Stoff zum Weiterwandern braucht er nicht."
+  ],
+  "forschen": [
+   "Wähle „Luft“ und höre, wie laut der Schall ankommt. Wähle dann „Wasser“ und vergleiche beides.",
+   "Wähle „Balken (Holz)“. Lies ab, ob der Schall dort lauter oder leiser ankommt als durch Luft.",
+   "Wähle zum Schluss „Vakuum (Weltall)“. Beobachte, ob überhaupt noch etwas bei dir ankommt."
+  ],
+  "tabCols": [
+   "Das wähle ich",
+   "Schall: laut, leise oder weg?"
+  ],
+  "tabRows": [
+   "Luft",
+   "Wasser",
+   "Balken (Holz)",
+   "Vakuum (Weltall)"
+  ],
+  "merksatz": [
+   {
+    "pre": "Schall breitet sich nicht nur durch Luft aus. Auch feste Stoffe wie Holz, Metall und Wände können ihn",
+    "post": ".",
+    "loesung": "übertragen"
+   },
+   {
+    "pre": "Dabei gibt ein Teil des Stoffes seine",
+    "post": " an den nächsten weiter.",
+    "loesung": "Schwingung"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum Ben die Waschmaschine besonders gut hört, wenn sein Ohr an der Wand liegt.",
+   "zeilen": 3,
+   "loesung": "Die laufende Waschmaschine bringt die Wand zum Mitschwingen. Diese Schwingung läuft durch die feste Wand bis zu Bens Ohr. Feste Stoffe leiten Schall besser als Luft. Mit angehobenem Kopf hört Ben nur den Teil, der durch die Luft kommt – und der ist viel leiser.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Nachbar hört alles",
+  "ueberleitung": "Jetzt ist klar, warum der Nachbar alles hört. Nach zwei Stunden Probe pfeift bei Emma das linke Ohr. Sie hat den ganzen Abend direkt vor dem Verstärker gesessen.",
+  "fachtext": "Schall entsteht, wenn etwas schwingt. Diese Schwingung braucht einen Stoff, durch den sie weiterwandern kann. Das kann Luft sein, aber auch Holz, Metall, Wasser oder eine Betonwand. Dabei gibt ein Teil des Stoffes seine Schwingung an den nächsten weiter. Feste Stoffe leiten Schall sogar besser als Luft – im luftleeren Raum hörst du gar nichts.",
+  "alltag": "Übertrage dein Ergebnis: Erkläre, warum du unter Wasser hörst, wenn jemand an den Beckenrand klopft.",
+  "beobachtung": "Durch Luft hörst du den Schall, aber eher leise. Durch Wasser kommt er lauter an, durch den Balken aus Holz am lautesten. Feste Stoffe geben die Schwingung also besser weiter als Luft. Im Vakuum hörst du gar nichts. Dort fehlt der Stoff, der die Schwingung übertragen kann.",
+  "predictOk": 1,
+  "auftrag": "Vergleiche Luft, Wasser, Holz und Vakuum miteinander.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "Wechselwirkung"
+ },
+ {
+  "theme": "schall",
+  "id": "sc5",
+  "name": "Wie funktioniert das Ohr?",
+  "problem": "Nach zwei Stunden Bandprobe pfeift bei Emma das linke Ohr. Sie hat direkt vor dem Verstärker gesessen. Noah spannt Frischhaltefolie straff über eine Schüssel. Er streut Salzkörner darauf und stellt sie vor den Lautsprecher. Niemand fasst die Schüssel an.",
+  "frage": "Was geschieht im Ohr, wenn es laut wird?",
+  "predict": [
+   "Bei lautem Anschlag schwingt das Trommelfell schneller, aber gleich weit.",
+   "Der Lautsprecher bläst Luft gegen die Folie. Deshalb hüpfen die Körner nur, wenn die Schüssel genau davor steht.",
+   "Je lauter der Topf angeschlagen wird, desto stärker schwingt das Trommelfell."
+  ],
+  "forschen": [
+   "Stelle „So laut schlägt Noah den Topf an“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.",
+   "Stelle danach mittel und laut ein. Lies jedes Mal ab, ob das Trommelfell schwächer oder stärker schwingt.",
+   "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand."
+  ],
+  "tabCols": [
+   "So laut angeschlagen",
+   "Trommelfell: wie stark schwingt es?"
+  ],
+  "tabRows": [
+   "leise",
+   "mittel",
+   "laut",
+   "Gegenprobe: Topf am Tisch kräftig angeschlagen"
+  ],
+  "merksatz": [
+   {
+    "pre": "Je lauter der Ton, desto stärker schwingt dein",
+    "post": ".",
+    "loesung": "Trommelfell"
+   },
+   {
+    "pre": "Sehr laute Töne schädigen die feinen Sinneszellen im",
+    "post": ". Dieser Schaden heilt nicht.",
+    "loesung": "Innenohr"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre mit Noahs Folie, warum Emmas Ohr nach zwei Stunden direkt vor dem Verstärker pfeift.",
+   "zeilen": 4,
+   "loesung": "Der laute Schall bringt Noahs Folie zum Zittern, darum hüpfen die Körner. Genauso bringt er Emmas Trommelfell zum Schwingen. Direkt vor dem Verstärker ist der Ton sehr laut, deshalb schwingt ihr Trommelfell sehr stark. Zwei Stunden lang überlastet das die feinen Sinneszellen in ihrem Innenohr. Sie melden dann Töne, die es gar nicht gibt.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Das Pfeifen im Ohr",
+  "ueberleitung": "Mit Kopfhörern und Eierkartons an der Wand darf die Band bleiben. Draußen ist es inzwischen um fünf dunkel. Im Sommer saßen sie um neun noch auf dem Hof.",
+  "fachtext": "Schall wandert als Schwingung durch die Luft. Er bringt die straffe Folie zum Mitschwingen. Genauso schwingt in deinem Ohr das Trommelfell. Über die Gehörknöchelchen geht die Schwingung ins Innenohr weiter. Dort machen feine Sinneszellen daraus Signale für dein Gehirn.",
+  "alltag": "Nenne zwei Situationen im Alltag, in denen du einen Gehörschutz tragen solltest.",
+  "sicherheit": "Stelle den Verstärker nur mäßig laut und halte dein Ohr nie davor.",
+  "beobachtung": "Bei leise schwingt das Trommelfell nur wenig. Bei mittel schwingt es deutlicher, bei laut am stärksten. Lauter Schall bringt es also weiter zum Schwingen. Von dort geht die Schwingung über die Gehörknöchelchen ins Innenohr. Sehr laute Töne lassen das Trommelfell sehr stark schwingen und können dem Ohr schaden.",
+  "predictOk": 2,
+  "auftrag": "Untersuche, wie stark das Trommelfell bei leise, mittel und laut schwingt.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "himmel",
+  "id": "h1",
+  "name": "Wie entstehen Tag und Nacht?",
+  "problem": "Ben ruft am Nachmittag Mia an. Sie besucht gerade ihre Großeltern in Japan. Bei Ben scheint die Sonne ins Zimmer. Auf dem Bildschirm ist es bei Mia stockdunkel. Sie gähnt und will ins Bett. Beide schauen im selben Moment aus dem Fenster.",
+  "frage": "Wie entstehen Tag und Nacht?",
+  "predict": [
+   "Immer ist genau eine Hälfte der Erde hell, egal wie weit du drehst.",
+   "Bei 180 Grad ist die ganze Erde dunkel, das ist die Nacht.",
+   "Nacht wird es, wenn sich der Mond vor die Sonne schiebt. Bei Mia steht er gerade davor."
+  ],
+  "forschen": [
+   "Halte mit Pause an und stelle Drehung auf 0 Grad ein. Sieh nach, wie viel von der Erde hell ist und wie viel dunkel.",
+   "Stelle danach 90, 180 und 270 Grad ein. Lies jedes Mal ab, ob dein Ort im Licht liegt oder im Schatten.",
+   "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Globus. Drehe ihn langsam und suche die Grenze zwischen hell und dunkel."
+  ],
+  "tabCols": [
+   "Drehung eingestellt",
+   "Dein Ort: Tag oder Nacht?"
+  ],
+  "tabRows": [
+   "0 Grad",
+   "90 Grad",
+   "180 Grad",
+   "270 Grad"
+  ],
+  "merksatz": [
+   {
+    "pre": "Die gedachte Linie, um die sich die Erde dreht, heißt",
+    "post": ".",
+    "loesung": "Erdachse"
+   },
+   {
+    "pre": "Weil sich die Erde weiterdreht, hat Mia einige Stunden später wieder",
+    "post": ".",
+    "loesung": "Tag"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Beurteile Noahs Satz: „Bei Mia ist es dunkel, weil sich der Mond vor die Sonne schiebt.“ Begründe mit Bens Videoanruf.",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nicht. Für die Nacht muss sich nichts vor die Sonne schieben. Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Bens Zimmer liegt gerade auf der hellen Hälfte, Japan auf der dunklen. Einige Stunden später hat sich die Erde weitergedreht, und bei Mia wird es Tag.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "titel": "Tag hier, Nacht dort",
+  "ueberleitung": "Tag und Nacht sind geklärt. Weiter unten in der Galerie liegen zwei Fotos derselben Straße: eines vom Januar mit Schnee, eines vom Juli.",
+  "fachtext": "Die Erde dreht sich in etwa 24 Stunden einmal um sich selbst. Dabei beleuchtet die Sonne immer nur eine Hälfte der Erdkugel. Auf dieser Hälfte ist Tag, auf der anderen ist Nacht. Durch die Drehung wandert jeder Ort abwechselnd durch Tag und Nacht. Der Mond hat damit nichts zu tun.",
+  "alltag": "Nenne zwei Beispiele aus dem Alltag, bei denen die Zeitverschiebung nach Japan wichtig ist.",
+  "beobachtung": "Bei jeder Einstellung ist genau die Hälfte der Erde hell, die andere liegt im Schatten. Dein Ort wandert beim Drehen durch beide Hälften. Zwischen 0 und 180 Grad wechselt er einmal von Tag zu Nacht. Bei 90 und 270 Grad steht er an der Grenze zwischen hell und dunkel, dort ist gerade Morgen oder Abend. Auch am Globus ist immer nur die Hälfte hell, die zur Lampe zeigt.",
+  "predictOk": 0,
+  "auftrag": "Untersuche mit dem Regler Drehung, wann dein Ort im Licht und wann im Schatten liegt.",
+  "modellgrenze": "Sonne und Erde sind im Bild viel zu nah beieinander gezeichnet. In Wirklichkeit ist die Sonne rund 150 Millionen Kilometer entfernt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "himmel",
+  "id": "h2",
+  "name": "Wie entstehen die Jahreszeiten?",
+  "problem": "Emma vergleicht zwei Fotos derselben Straße. Auf dem einen liegt Schnee, die Bäume sind kahl und die Schatten sind lang. Auf dem anderen sind die Bäume grün, die Sonne steht höher und die Schatten sind kurz. Beide Fotos entstanden mittags.",
+  "frage": "Warum ist es im Sommer wärmer als im Winter?",
+  "predict": [
+   "Im Winter zeigt unsere Erdhälfte von der Sonne weg, deshalb kommt bei uns gar kein Licht an.",
+   "Im Sommer trifft das Sonnenlicht steiler auf uns als im Winter.",
+   "Im Sommer ist die Erde näher an der Sonne als im Winter."
+  ],
+  "forschen": [
+   "Wähle Sommer und sieh nach, welche Erdhälfte zur Sonne geneigt ist. Achte darauf, wie steil das Licht bei uns auftrifft.",
+   "Wähle danach Herbst, Winter und Frühling. Vergleiche jedes Mal, wie steil oder wie flach das Licht bei uns ankommt.",
+   "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe steil und dann flach auf ein Blatt Papier. Vergleiche die Lichtflecke."
+  ],
+  "tabCols": [
+   "Jahreszeit eingestellt",
+   "Licht bei uns: steil oder flach?"
+  ],
+  "tabRows": [
+   "Sommer",
+   "Herbst",
+   "Winter",
+   "Gegenprobe: Frühling, so steil wie im Herbst?"
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Erdachse ist",
+    "post": ". Deshalb trifft das Sonnenlicht im Sommer steiler auf als im Winter.",
+    "loesung": "geneigt"
+   },
+   {
+    "pre": "Steil einfallendes Licht verteilt sich auf eine",
+    "post": " Fläche. Dort wird es wärmer.",
+    "loesung": "kleinere"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Beurteile die Aussage: „Im Sommer ist es wärmer, weil die Erde der Sonne näher ist.“",
+   "zeilen": 3,
+   "loesung": "Die Aussage stimmt nicht. Der Abstand zur Sonne ändert sich im Jahr nur wenig und ist nicht der Grund. Warm wird es, weil die Erdachse geneigt ist: Im Sommer trifft das Licht steiler auf und verteilt sich auf eine kleinere Fläche, außerdem sind die Tage länger. Wäre der Abstand der Grund, hätten Nord- und Südhalbkugel gleichzeitig Sommer – das ist nicht so.",
+   "komp": "B2",
+   "afb": "III"
+  },
+  "titel": "Vom Schnee zum Sonnenbrand",
+  "ueberleitung": "Warum es im Sommer heiß ist, ist geklärt. Weiter oben in der Galerie liegen acht Mondfotos von acht Abenden. Auf keinem sieht der Mond aus wie auf dem davor.",
+  "fachtext": "Die Erdachse ist geneigt. Deshalb treffen die Sonnenstrahlen im Sommer steiler auf unsere Erdhalbkugel als im Winter. Steil einfallendes Licht verteilt sich auf eine kleinere Fläche und erwärmt sie stärker. Flach einfallendes Licht verteilt dieselbe Energie auf eine größere Fläche. Dazu kommt: Im Sommer sind die Tage länger, die Sonne hat also mehr Zeit zum Erwärmen.",
+  "alltag": "Übertrage dein Ergebnis auf den Äquator: Begründe, warum es dort das ganze Jahr über heiß ist.",
+  "sicherheit": "Schaue niemals direkt in die Sonne, auch nicht ganz kurz.",
+  "beobachtung": "Im Sommer ist unsere Erdhälfte zur Sonne geneigt. Das Licht trifft dann steil auf und wärmt eine kleine Fläche stark. Im Winter ist sie von der Sonne weggeneigt. Licht kommt trotzdem an, aber flach, und verteilt sich auf eine größere Fläche. Frühling und Herbst liegen dazwischen und sehen sich sehr ähnlich. Auf dem Papier ist der steile Lichtfleck klein und hell, der flache groß und blass.",
+  "predictOk": 1,
+  "auftrag": "Vergleiche mit den Knöpfen Sommer und Winter, wie steil das Licht auftrifft.",
+  "alltagKomp": "UF4",
+  "alltagAfb": "II",
+  "basiskonzept": "Energie"
+ },
+ {
+  "theme": "himmel",
+  "id": "h3",
+  "name": "Warum verändert der Mond sein Aussehen?",
+  "problem": "Emma fotografiert seit zwei Wochen jeden Abend den Mond. Am Montag ist er nur eine dünne Sichel. Ein paar Tage später ist er halb. Dann steht er ganz rund über den Dächern. Fotografiert hat sie immer vom selben Fenster.",
+  "frage": "Warum verändert der Mond sein Aussehen?",
+  "predict": [
+   "Die Sonne beleuchtet mal mehr und mal weniger vom Mond.",
+   "Die Erde wirft ihren Schatten auf den Mond. Er deckt jeden Abend ein anderes Stück ab.",
+   "Wie viel wir vom hellen Teil sehen, hängt davon ab, wo der Mond gerade steht."
+  ],
+  "forschen": [
+   "Wähle Mond zwischen Sonne und Erde. Sieh nach, wie viel von der hellen Seite des Mondes du von der Erde aus siehst.",
+   "Wähle danach Mond seitlich – zunehmend, dann Mond der Sonne gegenüber, dann Mond seitlich – abnehmend. Lies jedes Mal die Form ab.",
+   "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Ball und bewege ihn langsam um deinen Kopf herum."
+  ],
+  "tabCols": [
+   "Stellung des Mondes",
+   "Form: Sichel, halb oder rund?"
+  ],
+  "tabRows": [
+   "Mond zwischen Sonne und Erde",
+   "Mond seitlich – zunehmend",
+   "Mond der Sonne gegenüber",
+   "Mond seitlich – abnehmend"
+  ],
+  "merksatz": [
+   {
+    "pre": "Für einen Umlauf um die Erde braucht der Mond etwa",
+    "post": ".",
+    "loesung": "vier Wochen"
+   },
+   {
+    "pre": "Sehen wir die ganze helle Hälfte, ist Vollmond. Sehen wir fast nichts vom Mond, ist",
+    "post": ".",
+    "loesung": "Neumond"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre Emma, warum sie am Montag nur eine dünne Sichel fotografiert hat, obwohl der ganze Mond am Himmel stand.",
+   "zeilen": 4,
+   "loesung": "Der Mond leuchtet nicht selbst, er wird von der Sonne beleuchtet. Beleuchtet ist immer nur eine Hälfte von ihm. Am Montag stand der Mond fast in Richtung Sonne. Von Emmas Fenster aus war deshalb nur ein schmaler Streifen der hellen Hälfte zu sehen. Mit dem Schatten der Erde hat das nichts zu tun.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Jeden Abend ein anderer Mond",
+  "ueberleitung": "Die Mondbilder ergeben endlich eine Reihe. Dann erzählt Ben von etwas anderem: An einem Mittag im letzten Sommer wurde es auf offener Straße plötzlich dunkel.",
+  "fachtext": "Der Mond leuchtet nicht selbst. Die Sonne beleuchtet immer nur eine Hälfte von ihm. Je nach seiner Stellung sehen wir mehr oder weniger von dieser hellen Hälfte. Diese wechselnden Formen heißen Mondphasen. Mit dem Schatten der Erde haben sie nichts zu tun.",
+  "alltag": "Zeichne in dein Heft, wie der Mond eine Woche nach Emmas Vollmond aussieht.",
+  "beobachtung": "Der Mond ist immer zur Hälfte hell, die Sonne beleuchtet ihn ständig gleich. Steht er zwischen Sonne und Erde, zeigt die helle Seite von uns weg und du siehst fast nichts. Seitlich siehst du genau die Hälfte davon. Steht er der Sonne gegenüber, ist er ganz rund. Mit dem Ball geht es genauso: Die Form hängt nur davon ab, wo er steht.",
+  "predictOk": 2,
+  "auftrag": "Untersuche, wie viel vom hellen Teil du bei den vier Stellungen siehst.",
+  "modellgrenze": "Der Mond ist im Bild viel zu groß und viel zu nah gezeichnet. In Wirklichkeit passen etwa 30 Erdkugeln zwischen Erde und Mond.",
+  "alltagKomp": "K1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "himmel",
+  "id": "h4",
+  "name": "Wie entsteht eine Sonnenfinsternis?",
+  "problem": "Ben steht mittags auf der Straße. Die Sonne scheint, am Himmel ist keine Wolke. Trotzdem wird es plötzlich dunkler, die Straßenlaternen gehen an und die Luft wird kühler. Nach ein paar Minuten ist das Tageslicht zurück.",
+  "frage": "Wie entsteht eine Sonnenfinsternis?",
+  "predict": [
+   "Nur wenn der Mond genau in der Linie steht, fällt sein Schatten auf die Erde.",
+   "Bei einer Sonnenfinsternis wird es auf der ganzen Erde dunkel.",
+   "Der Mond ist genauso groß wie die Sonne. Nur deshalb kann er sie ganz verdecken."
+  ],
+  "forschen": [
+   "Stelle Mondstellung auf 40. Schau nach, ob auf der Erde irgendwo ein dunkler Fleck liegt.",
+   "Stelle den Regler dann auf 20 und auf 10. Nutze zuletzt den Knopf „Ball genau in die Linie stellen“ und lies jedes Mal ab, wie der Fleck aussieht.",
+   "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit einer Taschenlampe auf einen Globus. Halte einen kleinen Ball genau dazwischen."
+  ],
+  "tabCols": [
+   "Mondstellung eingestellt",
+   "Dunkler Fleck auf der Erde?"
+  ],
+  "tabRows": [
+   "Mondstellung 40",
+   "Mondstellung 20",
+   "Mondstellung 10",
+   "Knopf: Ball genau in der Linie"
+  ],
+  "merksatz": [
+   {
+    "pre": "Bei einer Sonnenfinsternis steht der Mond zwischen Sonne und",
+    "post": ". Er verdeckt die Sonne teilweise oder ganz.",
+    "loesung": "Erde"
+   },
+   {
+    "pre": "Sein Schatten fällt nur auf einen",
+    "post": " Bereich der Erde. Deshalb sieht man sie nicht überall.",
+    "loesung": "kleinen"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre, warum es bei einer Sonnenfinsternis mitten am Tag dunkler wird.",
+   "zeilen": 3,
+   "loesung": "Der Mond schiebt sich zwischen Sonne und Erde und verdeckt die Sonnenscheibe. Ihr Licht erreicht Bens Ort nicht mehr, denn er liegt im Schatten des Mondes. Die Sonne leuchtet dabei die ganze Zeit weiter. Weil der Schatten über die Erde wandert, dauert es nur wenige Minuten.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Nacht am Mittag",
+  "ueberleitung": "Der dunkle Mittag ist geklärt. Ein letztes Foto bleibt übrig. Es ist nachts aufgenommen, der Vollmond steht groß über dem Hof – und er ist kupferrot.",
+  "fachtext": "Bei einer Sonnenfinsternis steht der Mond genau zwischen Sonne und Erde. Er verdeckt die Sonne teilweise oder vollständig. Der Mond ist viel kleiner als die Sonne, steht aber viel näher bei uns – deshalb reicht er aus, um die Sonnenscheibe zu verdecken. Sein Schatten trifft nur einen kleinen Bereich der Erde. Nur dort wird es mitten am Tag dunkel.",
+  "alltag": "Erkläre, warum dein Daumen vor dem Auge ein ganzes Haus verdecken kann.",
+  "sicherheit": "Blicke niemals ohne geeigneten Augenschutz direkt in die Sonne.",
+  "beobachtung": "Bei Mondstellung 40 steht der Mond neben der Linie und die Erde bleibt überall hell. Je kleiner du den Wert stellst, desto näher rückt der Schatten. Mit dem Knopf steht der Mond genau zwischen Sonne und Erde. Dann liegt ein kleiner dunkler Fleck auf der Erde. Nur dort wird es mitten am Tag dunkel, überall sonst ist weiter Tag.",
+  "predictOk": 0,
+  "auftrag": "Untersuche, bei welcher Mondstellung ein dunkler Fleck auf die Erde fällt.",
+  "modellgrenze": "Auch hier sind die Abstände viel zu klein. Weil die Mondbahn zusätzlich schräg liegt, gibt es nicht bei jedem Neumond eine Sonnenfinsternis.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "theme": "himmel",
+  "id": "h5",
+  "name": "Wie entsteht eine Mondfinsternis?",
+  "problem": "Auf dem letzten Foto ist der Vollmond kupferrot. Emma hat an diesem Abend viele Bilder aufgenommen. Zuerst steht der Mond groß und weiß über dem Hof. Nach und nach wird er dunkler. Am Ende schimmert er rot. Kein Wölkchen war am Himmel.",
+  "frage": "Wie entsteht eine Mondfinsternis?",
+  "predict": [
+   "Genau im Erdschatten ist der Mond völlig schwarz und gar nicht mehr zu sehen.",
+   "Je näher der Mond an der Schattenmitte steht, desto dunkler wird er.",
+   "Bei einer Mondfinsternis schiebt sich der Mond zwischen Sonne und Erde. Deshalb wird er dunkel."
+  ],
+  "forschen": [
+   "Stelle Mondbahn neben der Schattenmitte auf 40. Schau dir an, wie hell der Mond dort ist.",
+   "Stelle den Regler dann auf 20 und auf 10. Lies jedes Mal ab, wie viel vom Mond noch hell ist.",
+   "Nutze zuletzt den Knopf „Ball genau hinter den Globus stellen“. Beobachte in Ruhe, welche Farbe der Mond nun hat."
+  ],
+  "tabCols": [
+   "Mondbahn neben der Schattenmitte",
+   "Wie sieht der Mond aus?"
+  ],
+  "tabRows": [
+   "Regler auf 40",
+   "Regler auf 20",
+   "Regler auf 10",
+   "Knopf: Ball genau hinter dem Globus"
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine Mondfinsternis gibt es nur, wenn gerade",
+    "post": "ist.",
+    "loesung": "Vollmond"
+   },
+   {
+    "pre": "Eine Mondfinsternis ist keine Mondphase. Sehen können sie alle Menschen, bei denen gerade",
+    "post": "ist.",
+    "loesung": "Nacht"
+   }
+  ],
+  "aufgabe": {
+   "frage": "Erkläre Emma, warum ihr Vollmond auf den letzten Fotos kupferrot aussieht, obwohl kein Wölkchen am Himmel stand.",
+   "zeilen": 4,
+   "loesung": "Die Erde stand genau zwischen Sonne und Mond. Emmas Vollmond wanderte in den Erdschatten, deshalb wurde er immer dunkler. Die Lufthülle der Erde lenkt aber etwas Sonnenlicht in diesen Schatten hinein. Davon kommt vor allem das rote Licht durch, und der Mond schimmert kupferrot. Eine Mondphase ist das nicht.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "titel": "Der Mond wird rot",
+  "ueberleitung": "Ein Jahr, ein Handy voller Fotos. Alles darauf war Physik – und die Fragen, die ihr euch selbst gestellt habt, waren Forscherfragen.",
+  "fachtext": "Bei einer Mondfinsternis steht die Erde zwischen Sonne und Mond. Der Mond wandert dann in den Schatten der Erde und wird dunkel. Ganz schwarz wird er aber nicht. Die Lufthülle der Erde lenkt rotes Sonnenlicht in den Schatten hinein. Deshalb schimmert der Mond kupferrot.",
+  "alltag": "Erkläre, warum die Sonne kurz vor dem Untergang oft rot aussieht.",
+  "beobachtung": "Bei 40 liegt der Mond neben dem Schatten und leuchtet hell. Bei 20 wird ein Rand dunkel, bei 10 fehlt schon ein großes Stück. Mit dem Knopf steht der Mond genau hinter der Erde und liegt ganz im Schatten. Schwarz wird er trotzdem nicht. Die Lufthülle der Erde lenkt rotes Licht in den Schatten, deshalb schimmert er kupferrot.",
+  "predictOk": 1,
+  "auftrag": "Untersuche, wie sich der Mond verändert, wenn er in die Schattenmitte wandert.",
+  "modellgrenze": "Auch hier stehen die drei Körper viel zu dicht. Weil die Mondbahn schräg liegt, gibt es nicht bei jedem Vollmond eine Mondfinsternis.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "II",
+  "basiskonzept": "System"
+ },
+ {
+  "id": "s7",
+  "theme": "strom",
+  "name": "Elektromagnet",
+  "titel": "Der Knopf, der den Magneten anschaltet",
+  "problem": "Im Fahrradladen liegt hinter der Theke ein Gerät an einem Kabel. Der Mann drückt einen Knopf, und eine Handvoll Schrauben springt daran hoch. Lässt er den Knopf los, fallen alle wieder herunter. Bens Magnet an der Schnur konnte das nie – der zog immer.",
+  "frage": "Wovon hängt die Stärke eines Elektromagneten ab?",
+  "auftrag": "Miss die Tragkraft, wenn du nur die Windungszahl und dann nur den Strom änderst.",
+  "predict": [
+   "Ein Elektromagnet ist immer gleich stark, weil allein das Eisen im Kern die Stärke bestimmt.",
+   "Je länger du den Knopf gedrückt hältst, desto stärker wird der Magnet. Er lädt sich dabei langsam auf.",
+   "Je mehr Windungen die Spule hat und je größer der Strom ist, desto mehr trägt der Magnet."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle „Windungszahl N“ und stelle 50, 100 und 200 ein. Lies jedes Mal die Tragkraft ab; der Strom bleibt bei 2 A.",
+   "Stelle die Windungszahl auf 300 und vergleiche den Wert mit dem bei 150 Windungen.",
+   "Wähle „Stromstärke I“ und stelle nacheinander 1 A, 2 A und 4 A ein; die Windungszahl bleibt fest bei 150."
+  ],
+  "tabCols": [
+   "Was ich einstelle",
+   "Tragkraft in Büroklammern"
+  ],
+  "tabRows": [
+   "50 / 100 / 200 Windungen",
+   "150 und 300 Windungen",
+   "1 A / 2 A / 4 A"
+  ],
+  "fachtext": "Eine Spule mit Eisenkern wird zum Magneten, sobald Strom durch den Draht fließt. Hört der Strom auf, ist die magnetische Wirkung sofort weg – anders als beim Dauermagneten. Wie stark er zieht, hängt von der Windungszahl und von der Stromstärke ab: Verdoppelst du eine der beiden, verdoppelt sich die Tragkraft.",
+  "merksatz": [
+   {
+    "pre": "Eine stromdurchflossene Spule mit Eisenkern wirkt wie ein",
+    "loesung": "Magnet",
+    "post": " – ohne Strom hört die Wirkung sofort auf."
+   },
+   {
+    "pre": "Verdoppelt man die Windungszahl oder die Stromstärke, so verdoppelt sich die",
+    "loesung": "Tragkraft",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 2 A trägt die Spule mit 50 Windungen 3 Büroklammern, mit 100 Windungen 6 und mit 200 Windungen 12 – die Tragkraft wächst genauso wie die Windungszahl. Von 150 auf 300 Windungen geht sie von 9 auf 18 Klammern, also aufs Doppelte. Beim Strom ist es dasselbe: Mit 150 Windungen trägt die Spule bei 1 A fünf Klammern, bei 2 A neun und bei 4 A achtzehn, bei jeder Verdopplung also ungefähr doppelt so viele. Schaltest du den Strom ab, fällt alles sofort herunter.",
+  "aufgabe": {
+   "frage": "Erkläre, warum der Mann im Laden die Schrauben mit einem Knopfdruck wieder loslassen kann.",
+   "zeilen": 3,
+   "loesung": "Das Gerät ist kein Dauermagnet, sondern ein Elektromagnet: eine Spule aus Draht mit einem Eisenkern. Solange Strom durch den Draht fließt, wirkt der Eisenkern wie ein Magnet und hält die Schrauben fest. Drückt der Mann den Knopf, schließt er den Stromkreis; lässt er ihn los, ist der Kreis unterbrochen. Ohne Strom hört die magnetische Wirkung sofort auf, und die Schrauben fallen herunter. Bens Dauermagnet zieht dagegen immer, denn bei ihm lässt sich nichts ein- oder ausschalten.",
+   "komp": "UF1",
+   "afb": "II"
+  },
+  "alltag": "Nenne zwei Geräte in eurer Wohnung, in denen ein Elektromagnet steckt.",
+  "sicherheit": "Baue so etwas nur mit einer Flachbatterie. An der Steckdose ist der Versuch lebensgefährlich.",
+  "modellgrenze": "Bei einem echten Elektromagneten wächst die Tragkraft irgendwann nicht weiter – der Eisenkern kann nicht stärker werden.",
+  "ueberleitung": "Emma fährt jetzt mit Licht nach Hause. Nur ist es Ende Oktober geworden. Wenn sie ankommt, sind ihre Finger klamm – und der Tee, den sie mitgenommen hat, ist längst kalt.",
+  "alltagKomp": "UF1",
+  "alltagAfb": "I",
+  "basiskonzept": "Wechselwirkung"
+ }
+]

@@ -1,0 +1,156 @@
+[
+ {
+  "sim": "kraefte-gleichgewicht",
+  "ueberschrift": "⚖️ Warum bleibt eine hängende Lampe einfach hängen?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "– N",
+    "ruft": "_kggB(-1)"
+   },
+   {
+    "aufschrift": "+ N",
+    "ruft": "_kggB(1)"
+   },
+   {
+    "aufschrift": "↺ zurück in die Mitte",
+    "ruft": "_kggReset()"
+   },
+   {
+    "aufschrift": "Weil Haltekraft und Gewichtskraft gleich groß sind (Gesamtkraft 0)",
+    "ruft": "_kggAns(0,0)"
+   },
+   {
+    "aufschrift": "Weil keine Kräfte wirken",
+    "ruft": "_kggAns(0,1)"
+   },
+   {
+    "aufschrift": "Weil die Gewichtskraft verschwindet",
+    "ruft": "_kggAns(0,2)"
+   },
+   {
+    "aufschrift": "0 N",
+    "ruft": "_kggAns(1,0)"
+   },
+   {
+    "aufschrift": "5 N",
+    "ruft": "_kggAns(1,1)"
+   },
+   {
+    "aufschrift": "doppelt so groß",
+    "ruft": "_kggAns(1,2)"
+   },
+   {
+    "aufschrift": "Ja, sie sind im Gleichgewicht",
+    "ruft": "_kggAns(2,0)"
+   },
+   {
+    "aufschrift": "Nein, gar keine",
+    "ruft": "_kggAns(2,1)"
+   },
+   {
+    "aufschrift": "Nur wenn man es anstößt",
+    "ruft": "_kggAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_kggSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_kggSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_kggSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('kraeftegg')"
+   }
+  ],
+  "hinweise": [
+   "An der Lampe ziehen zwei Kräfte: die Gewichtskraft nach unten und die Haltekraft des Seils nach oben. Verändere die Haltekraft. Wann bleibt die Lampe in Ruhe?",
+   "Sind die Kräfte gleich groß und entgegengesetzt, ist die Gesamtkraft 0 – die Lampe bleibt in Ruhe. Das heißt Kräftegleichgewicht. Ist eine Kraft größer, ist die Gesamtkraft nicht null und die Bewegung ändert sich.",
+   "Ruhe bedeutet nicht „keine Kräfte“, sondern Kräfte im Gleichgewicht (Buch auf dem Tisch, hängende Lampe, Brücke)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe."
+   },
+   {
+    "einstellung": "– N",
+    "text": "kggStatus: Haltekraft 4 N < Gewichtskraft 5 N → Gesamtkraft 1 N nach unten. Die Lampe sinkt nach unten."
+   },
+   {
+    "einstellung": "+ N",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe."
+   },
+   {
+    "einstellung": "↺ zurück in die Mitte",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe."
+   },
+   {
+    "einstellung": "Weil Haltekraft und Gewichtskraft gleich groß sind (Gesamtkraft 0)",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✓ Richtig! Die Kräfte sind im Gleichgewicht, die Gesamtkraft ist 0."
+   },
+   {
+    "einstellung": "Weil keine Kräfte wirken",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Doch, es wirken Kräfte – sie gleichen sich nur aus."
+   },
+   {
+    "einstellung": "Weil die Gewichtskraft verschwindet",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen."
+   },
+   {
+    "einstellung": "0 N",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✓ Richtig! Im Gleichgewicht ist die Gesamtkraft null."
+   },
+   {
+    "einstellung": "5 N",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, die Einzelkräfte heben sich auf."
+   },
+   {
+    "einstellung": "doppelt so groß",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf."
+   },
+   {
+    "einstellung": "Ja, sie sind im Gleichgewicht",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✓ Richtig! Gewichtskraft und Tischkraft gleichen sich aus."
+   },
+   {
+    "einstellung": "Nein, gar keine",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Doch – Gewichtskraft und Normalkraft wirken ständig."
+   },
+   {
+    "einstellung": "Nur wenn man es anstößt",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Die Kräfte wirken auch im Ruhezustand."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Die Kräfte wirken auch im Ruhezustand.  ||  kggSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Die Kräfte wirken auch im Ruhezustand.  ||  kggSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Die Kräfte wirken auch im Ruhezustand."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "kggStatus: Haltekraft = Gewichtskraft = 5 N → Gesamtkraft 0 N. Gleichgewicht: Die Lampe bleibt in Ruhe.  ||  kggFb0: ✗ Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.  ||  kggFb1: ✗ Nein, sie heben sich gerade auf.  ||  kggFb2: ✗ Die Kräfte wirken auch im Ruhezustand."
+   }
+  ],
+  "bildtexte": [
+   "💡",
+   "Halte 5 N",
+   "Gewicht 5 N",
+   "Gesamtkraft = 0 N  →  Gleichgewicht (bleibt in Ruhe)",
+   "Halte 4 N",
+   "Gesamtkraft = 1 N nach unten  →  Bewegung!"
+  ]
+ }
+]

@@ -1,0 +1,205 @@
+{
+ "seite": {
+  "id": "fe7",
+  "quelle": "el7",
+  "sim": "wirkungsgrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Die alte Glühlampe im Scheinwerfer",
+  "name": "Wie viel Energie kommt an?",
+  "fachwoerter_neu": [
+   "Wirkungsgrad"
+  ],
+  "alltag": [
+   "Herr Kessler hält zwei Scheinwerfer hoch: einer mit Glühlampe, einer mit LED-Lampe.",
+   "Die alte Glühlampe wird im Betrieb sehr heiß.",
+   "Wie viel Prozent als Licht oder Bewegung herauskommt, heißt Wirkungsgrad η (sprich: eta)."
+  ],
+  "frage": "Wie viel von 1000 J wird bei einer Maschine wirklich Licht oder Bewegung?",
+  "predict": [
+   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme.",
+   "Eine Glühlampe macht ungefähr die Hälfte zu Licht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile. Fasse den Regler nicht an. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke „LED-Lampe“ und fülle Zeile 2 aus.",
+   "Drücke „Benzinmotor“ und „Elektromotor“. Fülle Zeile 3 und 4 aus.",
+   "Vergleiche: Wo kommt am meisten heraus?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Maschine",
+   "Was kommt bei 1000 J heraus?",
+   "Wie hoch ist der Wirkungsgrad η?"
+  ],
+  "tabRows": [
+   [
+    "Glühlampe",
+    "50 J Licht",
+    "5 %"
+   ],
+   [
+    "LED-Lampe",
+    "",
+    ""
+   ],
+   [
+    "Benzinmotor",
+    "",
+    ""
+   ],
+   [
+    "Elektromotor",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Teil der Energie wird Licht oder Bewegung. Der Rest wird",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Der",
+    "loesung": "Wirkungsgrad",
+    "post": "η sagt in Prozent, wie viel herauskommt. η ist nie 100 %."
+   }
+  ],
+  "wortbank": [
+   "Wärme",
+   "Wirkungsgrad",
+   "100 J",
+   "90 %"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt der Bildschirm bei der LED-Lampe?",
+   "antwort": "Hinein gehen 1000 J. Davon werden 400 J Licht. 600 J gehen als Wärme verloren. Der Wirkungsgrad η ist 40 %."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Maschine hat den höchsten Wirkungsgrad η?",
+    "optionen": [
+     "Der Elektromotor, η = 90 %.",
+     "Die Glühlampe, η = 5 %.",
+     "Der Benzinmotor, η = 25 %."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Elektromotor bekommt 1000 J. Davon werden 900 J Bewegung. Als Wärme gehen",
+      "loesung": "100 J",
+      "post": "verloren."
+     },
+     {
+      "pre": "Sein Wirkungsgrad η ist",
+      "loesung": "90 %",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die alte Glühlampe geht noch. Ist es richtig, sie trotzdem zu tauschen?",
+    "satzstarter": "Ich finde den Tausch richtig / nicht richtig, weil …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Statuszeile steht „davon Licht: 50 J“. Dieses Feld brauchst du.",
+   "h2": "900 J und die Wärme ergeben zusammen 1000 J.",
+   "h3": "Fast fertige Antwort: Die Glühlampe macht aus 1000 J nur 50 J Licht, die LED 400 J. Sie spart viel ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Wirkungsgrad η ablesen.",
+   "Ich weiß, was mit dem Rest der Energie passiert.",
+   "Ich kann begründen, ob der Tausch richtig ist."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte, die im Betrieb warm werden.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In jedem Feld steht links ein breiter Pfeil mit der großen Beschriftung „hinein 1000 J“, der in einen Scheinwerfer zeigt. Aus dem Scheinwerfer gehen zwei Pfeile heraus: einer nach oben rechts mit der Beschriftung „Licht“, einer nach unten rechts mit der Beschriftung „Wärme“. Die Breite der beiden Pfeile zeigt die Menge. Feld 1 oben groß „Glühlampe“: der Licht-Pfeil ist ein sehr schmaler Streifen mit „50 J“, der Wärme-Pfeil ist sehr breit mit „950 J“; unter dem Feld groß „Wirkungsgrad η = 5 %“. Feld 2 oben groß „LED-Lampe“: der Licht-Pfeil ist deutlich breiter mit „400 J“, der Wärme-Pfeil schmaler mit „600 J“; unter dem Feld groß „Wirkungsgrad η = 40 %“. Der Pfeil „hinein 1000 J“ ist in beiden Feldern exakt gleich breit, damit nur die Aufteilung verglichen wird. KEINE Lichtstrahlen, keine Strahlengänge, keine Blitze, keine Steckdose, keine zweite Lampe, keine Personen. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ "lehrer": {
+  "id": "fe7",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Statuszeile ab, wie viel von 1000 J eine Maschine als Licht oder Bewegung abgibt und wie viel als Wärme verloren geht, und sie lesen den Wirkungsgrad η in Prozent ab (nur ablesen, nie rechnen). Mit diesen Werten beurteilen sie, ob es richtig ist, eine noch funktionierende Glühlampe gegen eine LED-Lampe zu tauschen (B3: Werte und Normen berücksichtigen). Die Aufgabe fragt bewusst NICHT nach dem günstigeren Preis – das wäre B2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: eine Glühlampe und eine LED-Lampe gleicher Helligkeit zwei Minuten brennen lassen und die Wärme aus 10 cm Abstand mit der flachen Hand vergleichen – nicht anfassen, die Glühlampe wird über 100 °C heiß.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Aufgabe 3 danach im Tandem begründen lassen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile bis zum Wärmewert (am Bildschirm stehen die Teile untereinander; das „|“ trennt sie hier nur im Zitat). Karte 1 (Ausgangszustand, kein Knopfdruck nötig): „Glühlampe · η = 5 % | hinein: 1000 J | davon Licht: 50 J | als Wärme verloren: 950 J“. Karte 2: „LED-Lampe · η = 40 % | hinein: 1000 J | davon Licht: 400 J | als Wärme verloren: 600 J“. Karte 3: „Benzinmotor · η = 25 % | hinein: 1000 J | davon Bewegung: 250 J | als Wärme verloren: 750 J“. Karte 4: „Elektromotor · η = 90 % | hinein: 1000 J | davon Bewegung: 900 J | als Wärme verloren: 100 J“. Dazu eine fünfte Karte mit dem Bildtext der Simulation: „was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer 1000 J“. Der letzte Satz jeder Statuszeile (zum Beispiel „Der Draht wird glühend heiß – deshalb leuchtet er überhaupt.“) darf vorgelesen werden, gehört aber nicht in die Tabelle. Als Tafelbild genügt die dreispaltige Tabelle der Schülerseite mit denselben vier Zeilen.",
+  "merksatz": [
+   "Wärme",
+   "Wirkungsgrad"
+  ],
+  "tabelle_erwartet": [
+   [
+    "LED-Lampe",
+    "400 J Licht",
+    "40 %"
+   ],
+   [
+    "Benzinmotor",
+    "250 J Bewegung",
+    "25 %"
+   ],
+   [
+    "Elektromotor",
+    "900 J Bewegung",
+    "90 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die drei Werte stehen in der eigenen Tabelle: 90 % beim Elektromotor, 25 % beim Benzinmotor, 5 % bei der Glühlampe. 90 % ist der größte Wert. Die Statuszeile schreibt ihn wörtlich: „Elektromotor · η = 90 %“.",
+   "typische_fehler": [
+    "Die Glühlampe wird gewählt, weil sie am hellsten wirkt oder am heißesten wird. Heiß heißt hier: viel Energie geht verloren.",
+    "Der Prozentwert wird als „wie stark die Maschine ist“ gelesen. η sagt nur, welcher Anteil ankommt, nicht wie viel Energie hineingeht.",
+    "Wer vorher den Knopf „Wasserkocher“ gedrückt hat, findet dort ebenfalls η = 90 % und hält die Aufgabe für mehrdeutig. Der Wasserkocher steht nicht in der Tabelle und nicht unter den drei Antworten; kurz benennen und auf die vier Zeilen der Tabelle zurückführen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "100 J",
+    "90 %"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird 900 J gesetzt – der Nutzen wird mit dem Rest verwechselt. Gefragt ist die Ergänzung auf 1000 J.",
+    "Es wird 1000 J minus 900 J gerechnet und 10 J notiert (Stellenfehler). Am Bildschirm steht „als Wärme verloren: 100 J“.",
+    "In die zweite Lücke kommt „90 J“ statt „90 %“. Der Wirkungsgrad hat keine Einheit Joule, er steht in Prozent.",
+    "Beide Lücken werden aus dem Merksatz abgeschrieben („Wärme“, „Wirkungsgrad“). Diese Wörter stehen zwar in der Wortbank, passen hier aber nicht in die Lücke."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ich finde den Tausch richtig, weil die Glühlampe von 1000 J nur 50 J zu Licht macht. 950 J werden Wärme. Die LED-Lampe macht 400 J Licht. Wer tauscht, verschwendet weniger Energie.",
+   "alternativen": [
+    "Ebenso gewertet wird die Gegenposition, wenn sie begründet ist: „Ich finde den Tausch nicht richtig, weil die alte Lampe noch geht. Man wirft etwas weg, das noch funktioniert. Ich tausche sie erst, wenn sie kaputt ist.“ B3 verlangt eine begründete Abwägung, nicht eine bestimmte Antwort.",
+    "Abwägende Mischform, volle Wertung: „Der Tausch ist richtig, weil so viel Energie verloren geht. Aber die alte Lampe soll nicht in den Müll, sondern als Ersatz aufgehoben werden.“",
+    "Bezug auf die eigene Tabelle statt auf die Zahlen im Text: „50 J gegen 400 J – die LED gibt viel mehr Licht ab.“ genügt als Begründung.",
+    "Bezug auf die Umwelt oder auf die Schulkasse ist zulässig, solange die abgelesenen Zahlen genannt werden."
+   ],
+   "typische_fehler": [
+    "Es wird nur mit dem Preis argumentiert („LED ist billiger im Strom“) ohne die abgelesenen Werte. Das ist B2, nicht B3 – nach den Zahlen aus der Tabelle nachfragen.",
+    "Die Antwort bleibt bei „ja, ist besser“ ohne Begründung. Auf den Satzstarter zurückführen: Der Teil nach „weil“ fehlt.",
+    "„Die Glühlampe macht keine Energie kaputt“ – richtig gemeint, aber unvollständig. Nachschärfen: Die Energie ist nicht weg, sie wird Wärme und nützt hier nichts.",
+    "Der Merksatz wird abgeschrieben, ohne die Frage nach dem Tauschen zu beantworten."
+   ]
+  },
+  "hilfe3_wort": "Energie (auch richtig: Strom, Wärme)",
+  "schwache": [
+   "Die Statuszeile ist ein Block aus fünf untereinander stehenden Zeilen – nachgemessen: „Glühlampe · η = 5 %“, „hinein: 1000 J“, „davon Licht: 50 J“, „als Wärme verloren: 950 J“ und der Erklärsatz. Ein Trennzeichen „|“ steht nirgends am Bildschirm. Vor dem ersten Knopfdruck gemeinsam den Finger auf die Zeile „davon Licht: 50 J“ legen und nur diese Zeile vorlesen lassen; danach die Zeile „als Wärme verloren“. Das Suchen in der richtigen Zeile ist hier die eigentliche Leseleistung.",
+   "Zuerst nur Glühlampe und LED-Lampe vergleichen (Zeile 1 und Zeile 2). Benzinmotor und Elektromotor erst danach dazunehmen – für Aufgabe 1 werden sie gebraucht, für Aufgabe 3 nicht.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird. Sie ist der Ausgangszustand und muss nicht erst gedrückt werden.",
+   "Das Zeichen η einmal an der Tafel schreiben, „eta“ danebenschreiben und laut sprechen lassen. Für DaZ-Lernende ist der griechische Buchstabe weder lesbar noch aussprechbar; er steht aber in jeder Statuszeile.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen und die beiden Zahlen („100 J“, „90 %“) farbig markieren.",
+   "Den Regler nicht anfassen lassen. Er trägt die Aufschrift „hineingesteckte Energie: 1000 J“ und wirkt auf JEDE Maschine – nachgemessen: bei der Glühlampe auf 200 J gestellt, meldet der Bildschirm „davon Licht: 10 J“ und „als Wärme verloren: 190 J“. Dann passt keine einzige Tabellenzeile mehr. Alle vier Zeilen gelten bei 1000 J."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Handy-Ladegerät“ und stelle den Regler auf 200 J. Schreibe auf, wie viel in den Akku geht und wie viel Wärme wird. (Belegt: bei 1000 J sind es 800 J Akku und 200 J Wärme, bei 200 J sind es 160 J Akku und 40 J Wärme. Der Wirkungsgrad η bleibt 80 % – die Anteile bleiben gleich, nur die Menge ändert sich. Das ist ein zweites Lernziel und deshalb hier freiwillig.)",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Wirkungsgrad. Einziger Träger von B3 „Werte und Normen berücksichtigen“ im Band – Aufgabe 3 muss deshalb erhalten bleiben und darf nicht in eine Preisfrage (B2) umformuliert werden. Neu ist genau ein Fachwort: Wirkungsgrad η in Prozent (Zählregel 1: Größe + Formelzeichen + Einheit = eins). „Wärme“ stammt aus fe5, „Joule“ aus fe1; fällt fe5 weg, muss „Wärme“ hier eingeführt werden und das Limit reißt. Glühlampe und LED-Lampe zählen nach Zählregel 2 nicht: Begriffssatz im Alltag, weder Wortbank noch Lücke. Benzinmotor und Elektromotor bekommen keinen Begriffssatz; sie zählen nach Zählregel 5 als Alltagswörter ohne Formelzeichen und Einheit und stehen ebenfalls weder in der Wortbank noch in einer Lücke. Das Wort „Nutzen“ steht bewusst nur im Lehrerteil und im Bildtext der Simulation, nie auf der Schülerseite – es wäre sonst ein zweites Fachwort. Datenlage: Alle sechs Statuszeilen bei 1000 J sind belegt. Die Formel η = Enutz / Erein steht zwar im dritten Hinweistext der Simulation, wird aber NICHT gedruckt: Der Rechenweg 50 J / 1000 J = 0,05 und der Schritt 0,05 → 5 % stehen nirgends am Bildschirm. η und die Joule-Werte stehen nebeneinander in derselben Zeile – deshalb ablesen statt umrechnen. Die Simulation mischt zwei Schreibweisen: Statuszeilen in Prozent, dritter Hinweis „η ist immer kleiner als 1“. Im Förderheft durchgängig Prozent; der Merksatz sagt „η ist nie 100 %“. Wasserkocher-Falle: Dort ist Wärme der Nutzen („davon Wärme im Wasser: 900 J | als Wärme verloren: 100 J“), auf der ganzen übrigen Seite ist Wärme der Rest. Der Knopf ist da und wird gedrückt; er gehört nicht in Tabelle und Aufgaben (siehe a1, typische Fehler). Elektromotor und Wasserkocher zeigen beide η = 90 % und 900 J. Regler nachgemessen (simcheck/werte.js): Er wirkt auf JEDE Maschine, nicht nur auf das Handy-Ladegerät – Glühlampe bei 200 J ergibt 10 J Licht und 190 J Wärme, Handy-Ladegerät bei 200 J ergibt 160 J Akku und 40 J Wärme. Seine Aufschrift lautet „hineingesteckte Energie: 1000 J“; die Fassung „Handy-Ladegerät hineingesteckte Energie: 1000 J“ im Faktendump ist ein Ausleseartefakt – simfakten nimmt die letzten 70 Zeichen vor dem Schieberegler und erwischt dabei den Namen des letzten Knopfes. Deshalb steht auf der Schülerseite „Fasse den Regler nicht an“; die Tabelle gilt nur bei 1000 J. Ebenfalls nachgemessen: Die Statuszeile ist ein Fünfzeilen-Block (br-getrennt), kein Feld mit „|“ – das Trennzeichen gehört allein der Schreibweise des Faktendumps. Kompetenzen: die Tabelle trägt E5, Aufgabe 1 trägt UF1, Aufgabe 3 trägt B3, der Zuhause-Auftrag trägt UF3."
+ }
+}

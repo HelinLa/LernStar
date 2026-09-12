@@ -1,0 +1,3137 @@
+[
+ {
+  "id": "fo1",
+  "quelle": "oi1",
+  "sim": "licht-oberflaeche",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei Kisten ohne Beschriftung",
+  "name": "Was macht eine Oberfläche mit Licht?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Nour zieht eine Kiste aus dem Sammlungsschrank.",
+   "Darin liegen ein Spiegel, eine Glasscheibe und zwei Bögen Papier.",
+   "Jannis hält das schwarze Papier ins Licht: Es wird warm."
+  ],
+  "frage": "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
+  "predict": [
+   "Jede Oberfläche teilt das Licht in drei Anteile auf.",
+   "Jede Oberfläche macht nur eine einzige Sache mit dem Licht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.",
+   "Trage die Zahlen für Fensterglas, schwarzes Papier und weißes Papier ein.",
+   "Berechne für jede Zeile die Summe der drei Zahlen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Oberfläche",
+   "zurück · hindurch · geschluckt",
+   "Wie groß ist die Summe?"
+  ],
+  "tabRows": [
+   [
+    "Spiegel",
+    "95 % · 0 % · 5 %",
+    "100 %"
+   ],
+   [
+    "Fensterglas",
+    "",
+    ""
+   ],
+   [
+    "schwarzes Papier",
+    "",
+    ""
+   ],
+   [
+    "weißes Papier",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine Oberfläche teilt Licht in drei Anteile: zurück, hindurch, geschluckt. Zusammen ergeben die Anteile immer",
+    "loesung": "100 Prozent",
+    "post": "."
+   },
+   {
+    "pre": "Geschlucktes Licht macht den Körper",
+    "loesung": "warm",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "100 Prozent",
+   "warm",
+   "zurück",
+   "hindurch",
+   "geschluckt"
+  ],
+  "beispiel": {
+   "frage": "Was macht schwarzes Papier mit dem Licht?",
+   "antwort": "Schwarzes Papier wirft 5 % zurück und schluckt 95 %. Hindurch geht nichts. Das geschluckte Licht macht das Papier warm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim Fensterglas?",
+    "optionen": [
+     "Das meiste Licht geht hindurch: 90 %.",
+     "Das meiste Licht wird zurückgeworfen.",
+     "Das meiste Licht wird geschluckt."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die drei Anteile ergeben zusammen immer",
+      "loesung": "100 Prozent",
+      "post": "."
+     },
+     {
+      "pre": "Schwarzes Papier wird in der Sonne",
+      "loesung": "warm",
+      "post": ", weil es fast alles Licht schluckt."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Der Spiegel bleibt in der Sonne kühl, das schwarze Papier wird warm. Warum?",
+    "satzstarter": "Der Spiegel wirft fast alles Licht …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: Beim Spiegel steht bei „geschluckt“ nur 5 %.",
+   "h2": "Beginne so: Der Spiegel wirft 95 % zurück und schluckt fast nichts. Das schwarze Papier …",
+   "h3": "Fast fertige Antwort: Der Spiegel schluckt fast kein Licht und bleibt kühl. Schwarzes Papier schluckt 95 % des Lichts und wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Anteile des Lichts nennen.",
+   "Ich weiß, was die drei Anteile zusammen ergeben.",
+   "Ich kann erklären, warum schwarzes Papier warm wird."
+  ],
+  "zuhause": "Lege ein schwarzes und ein weißes Blatt in die Sonne. Fühle nach fünf Minuten: Welches Blatt ist wärmer?",
+  "bildauftrag": "[BILD: ein breiter Lichtstrahl trifft schräg auf eine stehende Glasscheibe; drei deutlich getrennte, beschriftete Pfeile: „zurück“ (läuft zur Lampe zurück), „hindurch“ (läuft hinter der Scheibe weiter), „geschluckt“ (endet in der Scheibe, kleine Wärmewellen); große Beschriftungen, nur diese eine Lichtspur, ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo2",
+  "quelle": "oi2+oi3",
+  "sim": "reflexionsgesetz",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der Spiegel",
+  "name": "Wie wirft der Spiegel Licht zurück?",
+  "fachwoerter_neu": [
+   "Einfallswinkel",
+   "Reflexionswinkel"
+  ],
+  "alltag": [
+   "Nour richtet die Lampe auf einen kleinen Spiegel.",
+   "Der Lichtfleck springt an die Wand.",
+   "Der Strahl kommt an und wird zurückgeworfen.",
+   "Dabei misst man zwei Winkel: Einfallswinkel und Reflexionswinkel."
+  ],
+  "frage": "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
+  "predict": [
+   "Der Reflexionswinkel ist immer kleiner als der Einfallswinkel.",
+   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Einfallswinkel zum Lot auf 0° und lies die Statuszeile.",
+   "Trage beide Winkel in die Tabelle ein.",
+   "Stelle nacheinander 20°, 40° und 80° ein und ergänze die Tabelle."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Einfallswinkel",
+   "Wie groß ist der Reflexionswinkel?",
+   "Sind beide Winkel gleich?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
+   [
+    "20°",
+    "",
+    ""
+   ],
+   [
+    "40°",
+    "",
+    ""
+   ],
+   [
+    "80°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Am Spiegel ist der Einfallswinkel genauso groß wie der",
+    "loesung": "Reflexionswinkel",
+    "post": ". Beide misst man zum Lot."
+   },
+   {
+    "pre": "Das Spiegelbild liegt genauso weit",
+    "loesung": "hinter",
+    "post": "dem Spiegel wie der Gegenstand davor. Dieses Bild heißt virtuell."
+   }
+  ],
+  "wortbank": [
+   "Reflexionswinkel",
+   "hinter",
+   "Einfallswinkel",
+   "Lot",
+   "virtuell"
+  ],
+  "beispiel": {
+   "frage": "Der Einfallswinkel ist 40°. Wie groß ist der Reflexionswinkel?",
+   "antwort": "Der Reflexionswinkel ist auch 40°. Beide Winkel sind am Spiegel immer gleich groß. Man misst beide zum Lot."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Einfallswinkel ist 80°. Was meldet die Statuszeile?",
+    "optionen": [
+     "Einfallswinkel = Reflexionswinkel = 40°.",
+     "Einfallswinkel = Reflexionswinkel = 0°.",
+     "Einfallswinkel = Reflexionswinkel = 80°."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beide Winkel misst man zum",
+      "loesung": "Lot",
+      "post": ", der Senkrechten auf dem Spiegel."
+     },
+     {
+      "pre": "Das Bild hinter dem Spiegel heißt",
+      "loesung": "virtuell",
+      "post": ". Man kann es nicht auffangen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis steht 2 Meter vor dem Spiegel. Wo liegt sein Spiegelbild?",
+    "satzstarter": "Das Spiegelbild liegt genauso weit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: In jeder Zeile sind beide Winkel gleich groß.",
+   "h2": "Beginne so: Das Spiegelbild liegt genauso weit hinter dem Spiegel, wie Jannis davor …",
+   "h3": "Fast fertige Antwort: Jannis steht 2 Meter vor dem Spiegel. Sein Bild liegt 2 Meter ___ dem Spiegel."
+  },
+  "selbstcheck": [
+   "Ich kann Einfallswinkel und Reflexionswinkel vergleichen.",
+   "Ich weiß, zu welcher Linie man beide Winkel misst.",
+   "Ich kann sagen, wo das Spiegelbild liegt."
+  ],
+  "zuhause": "Stelle eine Tasse etwa 30 cm vor einen Spiegel. Miss den Abstand mit einem Lineal. Schätze dann: Wie weit hinter dem Spiegel siehst du die Tasse?",
+  "bildauftrag": "[BILD: ein Lichtstrahl trifft schräg auf einen liegenden Spiegel und wird im gleichen Winkel zurückgeworfen; gestrichelte senkrechte Linie am Auftreffpunkt mit großer Beschriftung „Lot“; die beiden gleich großen Winkel deutlich markiert und beschriftet „Einfallswinkel“ und „Reflexionswinkel“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo3",
+  "quelle": "oi4",
+  "sim": "brechung-eintritt",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der halbrunde Glasklotz",
+  "name": "Warum knickt Licht im Glas?",
+  "fachwoerter_neu": [
+   "Brechung"
+  ],
+  "alltag": [
+   "In der Kiste liegt ein schwerer, halbrunder Glasklotz.",
+   "Nour schiebt ihn in das Licht der Lampe.",
+   "Im Glas läuft der Strahl plötzlich in eine andere Richtung.",
+   "Diesen Knick an der Grenze nennt man Brechung."
+  ],
+  "frage": "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
+  "predict": [
+   "Der Strahl knickt an der Grenze zum Lot hin.",
+   "Der Strahl knickt an der Grenze vom Lot weg."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „↓ genau auf das Lot“ und lies die Statuszeile.",
+   "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.",
+   "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.",
+   "Vergleiche: Ist der Winkel im Glas größer oder kleiner?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Winkel in der Luft",
+   "Wie groß ist der Winkel im Glas?",
+   "Knickt der Strahl?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "nein"
+   ],
+   [
+    "40°",
+    "",
+    ""
+   ],
+   [
+    "75°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von Luft in Glas knickt der Strahl zum",
+    "loesung": "Lot",
+    "post": "hin. Der Winkel im Glas ist kleiner."
+   },
+   {
+    "pre": "Genau auf dem Lot gibt es",
+    "loesung": "keinen Knick",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Lot",
+   "keinen Knick",
+   "Brechung",
+   "kleiner",
+   "Grenze"
+  ],
+  "beispiel": {
+   "frage": "Der Winkel in der Luft ist 40°. Was passiert im Glas?",
+   "antwort": "Im Glas ist der Winkel nur 25°. Der Strahl knickt an der Grenze zum Lot hin. Danach läuft er geradeaus weiter."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo knickt der Lichtstrahl?",
+    "optionen": [
+     "Der Strahl knickt überall im Glas ein bisschen.",
+     "Der Strahl knickt nur einmal: an der Grenze.",
+     "Der Strahl knickt erst hinter dem Glas."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Knick des Lichts an der Grenze heißt",
+      "loesung": "Brechung",
+      "post": "."
+     },
+     {
+      "pre": "Im Glas ist der Winkel",
+      "loesung": "kleiner",
+      "post": "als in der Luft."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour stellt den Strahl genau auf das Lot. Warum knickt er jetzt nicht?",
+    "satzstarter": "Auf dem Lot ist der Winkel …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die erste Zeile der Tabelle: Bei 0° steht „kein Knick“.",
+   "h2": "Beginne so: Auf dem Lot ist der Winkel 0°. Die Statuszeile meldet …",
+   "h3": "Fast fertige Antwort: Bei 0° meldet die Simulation: kein Knick. Der Strahl läuft einfach ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wo der Strahl knickt.",
+   "Ich weiß, in welche Richtung er von Luft in Glas knickt.",
+   "Ich kann den Sonderfall auf dem Lot erklären."
+  ],
+  "zuhause": "Stelle einen Löffel in ein Glas Wasser. Sieh von der Seite hinein: Der Löffel wirkt am Wasserrand geknickt.",
+  "bildauftrag": "[BILD: ein Lichtstrahl läuft schräg von links oben durch Luft auf die gerade Fläche eines halbrunden Glasklotzes; am Auftreffpunkt ein deutlicher Knick zum gestrichelten Lot hin, im Glas läuft der Strahl gerade weiter; große Beschriftungen „Luft“, „Glas“, „Lot“ und „hier knickt es“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo4",
+  "quelle": "oi5+oi6",
+  "sim": "brechung-austritt",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Wenn Licht nicht mehr herauskommt",
+  "name": "Wann kommt Licht nicht mehr heraus?",
+  "fachwoerter_neu": [
+   "Totalreflexion",
+   "Grenzwinkel"
+  ],
+  "alltag": [
+   "Jannis hält einen Glasklotz schräg gegen das Fenster.",
+   "Plötzlich wirkt eine Seite wie ein Spiegel.",
+   "Nour dreht den Klotz, bis das Bild kippt.",
+   "Den entscheidenden Winkel nennt man Grenzwinkel."
+  ],
+  "frage": "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
+  "predict": [
+   "Ab einem bestimmten Winkel tritt gar kein Licht mehr aus.",
+   "Licht tritt bei jedem Winkel aus, nur immer schräger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle den Winkel im Glas auf 20° und lies den Winkel in der Luft ab.",
+   "Stelle 25° ein und vergleiche beide Winkel.",
+   "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.",
+   "Trage ein, bei welchen Winkeln Licht austritt."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Winkel im Glas",
+   "Winkel in der Luft",
+   "Tritt Licht aus?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
+   [
+    "20°",
+    "",
+    ""
+   ],
+   [
+    "25°",
+    "",
+    ""
+   ],
+   [
+    "55°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Von Glas in Luft knickt der Strahl vom Lot",
+    "loesung": "weg",
+    "post": ". Der Winkel in der Luft ist größer."
+   },
+   {
+    "pre": "Über dem Grenzwinkel von 41,8° tritt kein Licht mehr aus. Das nennt man",
+    "loesung": "Totalreflexion",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "weg",
+   "Totalreflexion",
+   "Grenzwinkel",
+   "größer",
+   "gefangen"
+  ],
+  "beispiel": {
+   "frage": "Der Winkel im Glas ist 55°. Was zeigt die Simulation?",
+   "antwort": "55° liegt über dem Grenzwinkel von 41,8°. Kein Licht tritt aus. Alles wird ins Glas zurückgeworfen. Das ist Totalreflexion."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Winkel im Glas ist 20°. Was meldet die Statuszeile?",
+    "optionen": [
+     "In der Luft sind es 31° – der Strahl tritt aus.",
+     "Kein Licht tritt aus – Totalreflexion.",
+     "In der Luft sind es auch genau 20°."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der entscheidende Winkel von 41,8° heißt",
+      "loesung": "Grenzwinkel",
+      "post": "."
+     },
+     {
+      "pre": "Bei der",
+      "loesung": "Totalreflexion",
+      "post": "wird alles Licht zurückgeworfen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "In einem Glasfaserkabel läuft Licht um Kurven bis ans Ende. Warum kommt es unterwegs nicht heraus?",
+    "satzstarter": "Das Licht trifft immer sehr schräg auf die Wand …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: Bei 55° tritt kein Licht aus.",
+   "h2": "Beginne so: Der Winkel an der Wand ist immer größer als der Grenzwinkel von 41,8°. Deshalb …",
+   "h3": "Fast fertige Antwort: Das Licht trifft schräger als der Grenzwinkel auf die Wand. Es tritt nie aus und bleibt im Glas ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wohin der Strahl von Glas in Luft knickt.",
+   "Ich kenne den Grenzwinkel des Glases.",
+   "Ich kann erklären, wie Licht im Glasfaserkabel bleibt."
+  ],
+  "zuhause": "Fülle ein Glas mit Wasser. Sieh von unten schräg gegen die Wasseroberfläche: Sie glänzt wie ein Spiegel.",
+  "bildauftrag": "[BILD: eine sanft gebogene Glasfaser im Querschnitt, groß und breit über die Bildfläche; innen läuft ein Lichtstrahl im Zickzack von links nach rechts und wird an der Wand jedes Mal vollständig zurückgeworfen; an einer Aufprallstelle der markierte Winkel mit Beschriftung „größer als 41,8°“; große Beschriftungen „Glasfaser“ und „Totalreflexion“; nur dieser eine Lichtweg, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo5",
+  "quelle": "oi7",
+  "sim": "sammellinse",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei geschliffene Gläser",
+  "name": "Welches Glas bündelt das Licht?",
+  "fachwoerter_neu": [
+   "Sammellinse",
+   "Brennpunkt"
+  ],
+  "alltag": [
+   "In der Kiste liegen zwei runde Gläser ohne Aufschrift.",
+   "Das eine ist in der Mitte dick, das andere dünn.",
+   "Unter dem dicken Glas wird die Schrift der Sternkarte größer.",
+   "Ein Glas, das Licht bündelt, heißt Sammellinse."
+  ],
+  "frage": "Welches Glas bündelt paralleles Licht – und welches nicht?",
+  "predict": [
+   "Beide Gläser bündeln das Licht, das dünne nur schwächer.",
+   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle „in der Mitte dicker“ und lies die Statuszeile.",
+   "Trage ein, wo sich die Strahlen treffen.",
+   "Wähle „in der Mitte dünner“ und beobachte die Strahlen.",
+   "Ergänze die zweite Zeile der Tabelle."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Glas",
+   "Wohin laufen die Strahlen?",
+   "Gibt es einen hellen Punkt?"
+  ],
+  "tabRows": [
+   [
+    "in der Mitte dicker",
+    "sie treffen sich im Brennpunkt",
+    "ja, 90 hinter dem Glas"
+   ],
+   [
+    "in der Mitte dünner",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Glas, das in der Mitte dicker ist, heißt",
+    "loesung": "Sammellinse",
+    "post": ". Es bündelt paralleles Licht."
+   },
+   {
+    "pre": "Alle Strahlen treffen sich in einem Punkt: dem",
+    "loesung": "Brennpunkt",
+    "post": ". Dort ist es am hellsten."
+   }
+  ],
+  "wortbank": [
+   "Sammellinse",
+   "Brennpunkt",
+   "bündelt",
+   "auseinander",
+   "dicker"
+  ],
+  "beispiel": {
+   "frage": "Was macht das in der Mitte dünnere Glas mit dem Licht?",
+   "antwort": "Es lenkt die Strahlen auseinander. Hinter dem Glas entsteht nie ein heller Fleck. Es ist keine Sammellinse."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo treffen sich die Strahlen hinter der Sammellinse?",
+    "optionen": [
+     "Sie treffen sich schon in der Linse.",
+     "Sie treffen sich nie.",
+     "Sie treffen sich im Brennpunkt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Sammellinse",
+      "loesung": "bündelt",
+      "post": "das parallele Licht."
+     },
+     {
+      "pre": "Das dünne Glas lenkt die Strahlen",
+      "loesung": "auseinander",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Im Brennpunkt der Sammellinse ist es am hellsten und am heißesten. Warum?",
+    "satzstarter": "Alle Strahlen treffen sich …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Statuszeile: Dort steht, wo sich die Strahlen treffen.",
+   "h2": "Beginne so: Alle Strahlen treffen sich in einem einzigen Punkt. Ihr ganzes Licht …",
+   "h3": "Fast fertige Antwort: Im Brennpunkt kommt das Licht aller Strahlen zusammen. Darum ist es dort am hellsten und am ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Sammellinse am Aussehen erkennen.",
+   "Ich weiß, was im Brennpunkt passiert.",
+   "Ich kann sagen, was das dünne Glas mit Licht macht."
+  ],
+  "zuhause": "Halte eine Lupe dicht über ein Blatt mit kleiner Schrift. Die Lupe ist in der Mitte dicker – eine Sammellinse. Was passiert mit der Schrift?",
+  "bildauftrag": "[BILD: von links kommen drei parallele Lichtstrahlen, treffen auf eine stehende, in der Mitte dicke Linse und laufen dahinter in einem Punkt zusammen; der Punkt groß markiert mit Beschriftung „Brennpunkt“; weitere große Beschriftungen „paralleles Licht“ und „Sammellinse“; klare, getrennte Strahlen ohne Nebenbilder; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo6",
+  "quelle": "oi8+oi9",
+  "sim": "bild-linse",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Das Bild der Linse und die Lupe",
+  "name": "Wo entsteht das Bild der Linse?",
+  "fachwoerter_neu": [
+   "Brennweite"
+  ],
+  "alltag": [
+   "Jannis hält eine Linse gegen das Fenster.",
+   "Auf einem Zettel dahinter erscheint der Schulhof – klein und auf dem Kopf.",
+   "Nour hält dieselbe Linse dicht über die Sternkarte: Die Zahlen werden groß.",
+   "Der wichtige Abstand der Linse heißt Brennweite f."
+  ],
+  "frage": "Wovon hängt es ab, wie das Bild der Linse aussieht?",
+  "predict": [
+   "Es kommt darauf an, wie nah der Gegenstand an der Linse steht.",
+   "Das Bild einer Linse steht immer auf dem Kopf."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile.",
+   "Stelle 100 ein und vergleiche Größe und Lage des Bildes.",
+   "Stelle 25 ein – näher als die Brennweite f = 62.",
+   "Trage jedes Mal ein, wie das Bild aussieht."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Abstand g",
+   "Wie groß ist das Bild?",
+   "aufrecht oder umgekehrt?"
+  ],
+  "tabRows": [
+   [
+    "g = 190",
+    "verkleinert",
+    "umgekehrt"
+   ],
+   [
+    "g = 100",
+    "",
+    ""
+   ],
+   [
+    "g = 25",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Steht der Gegenstand weiter weg als die Brennweite, ist das Bild",
+    "loesung": "umgekehrt",
+    "post": "."
+   },
+   {
+    "pre": "Näher als die Brennweite wird es aufrecht und vergrößert – die Linse ist eine",
+    "loesung": "Lupe",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "umgekehrt",
+   "Lupe",
+   "aufrecht",
+   "vergrößert",
+   "Brennweite"
+  ],
+  "beispiel": {
+   "frage": "Nour hält die Karte bei g = 25 unter die Linse. Was sieht sie?",
+   "antwort": "25 ist kleiner als die Brennweite f = 62. Das Bild ist vergrößert und aufrecht. Die Linse arbeitet als Lupe."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann arbeitet die Sammellinse als Lupe?",
+    "optionen": [
+     "Wenn der Gegenstand sehr weit weg ist.",
+     "Wenn der Gegenstand näher ist als die Brennweite.",
+     "Immer, bei jedem Abstand."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Weiter weg als f steht das Bild",
+      "loesung": "umgekehrt",
+      "post": "."
+     },
+     {
+      "pre": "Näher als f ist das Bild aufrecht und",
+      "loesung": "vergrößert",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis fängt mit der Linse den Schulhof auf einem Zettel auf. Warum steht das Bild auf dem Kopf?",
+    "satzstarter": "Der Schulhof ist weiter weg als …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die erste Zeile der Tabelle: Bei g = 190 ist das Bild umgekehrt.",
+   "h2": "Beginne so: Der Schulhof ist weiter weg als die Brennweite. Darum steht sein Bild …",
+   "h3": "Fast fertige Antwort: Der Schulhof ist viel weiter weg als die Brennweite f = 62. Sein Bild ist klein und steht ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann das Bild umgekehrt ist.",
+   "Ich weiß, wann die Linse als Lupe arbeitet.",
+   "Ich kann die Brennweite f am Regler finden."
+  ],
+  "zuhause": "Halte eine Lupe dicht über eine Zeitung: Die Schrift ist groß und aufrecht. Strecke dann den Arm weit aus und sieh auf ein Fenster: Das Bild ist klein und steht auf dem Kopf.",
+  "bildauftrag": "[BILD: zweigeteilte Szene mit klarer Mittellinie; links hält eine Hand eine Lupe dicht über eine Sternkarte, die Zahlen darunter erscheinen groß und aufrecht; rechts dieselbe Lupe weit vor einem Fenster, auf einem Zettel dahinter erscheint das Fensterbild klein und auf dem Kopf; große Beschriftungen „näher als f: aufrecht“ und „weiter als f: umgekehrt“; keine gezeichneten Strahlengänge, keine Nebenbilder; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fo7",
+  "quelle": "oi10",
+  "sim": "auge",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Das aufklappbare Augenmodell",
+  "name": "Wie entsteht ein Bild im Auge?",
+  "fachwoerter_neu": [
+   "Netzhaut",
+   "Pupille"
+  ],
+  "alltag": [
+   "Zwischen den Karten steckt ein Augenmodell aus Kunststoff.",
+   "Innen sitzt eine dicke Linse, hinten eine rosa Schale.",
+   "Auf der Schale erscheint das Fensterkreuz – winzig und auf dem Kopf.",
+   "Die Schale hinten im Auge heißt Netzhaut."
+  ],
+  "frage": "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
+  "predict": [
+   "Zum Scharfstellen rückt die Netzhaut nach vorn oder hinten.",
+   "Zum Scharfstellen verformt sich die Linse im Auge."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.",
+   "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.",
+   "Schiebe den Regler „Pupille“ nach links und nach rechts. Lies beide Meldungen.",
+   "Trage deine Beobachtungen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Einstellung",
+   "Linse laut Statuszeile",
+   "Pupille laut Statuszeile"
+  ],
+  "tabRows": [
+   [
+    "Abstand weit",
+    "flacher (fern)",
+    "mittel"
+   ],
+   [
+    "Abstand nah",
+    "",
+    "mittel"
+   ],
+   [
+    "Pupille eng",
+    "flacher (fern)",
+    ""
+   ],
+   [
+    "Pupille weit",
+    "flacher (fern)",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Auf der Netzhaut entsteht ein",
+    "loesung": "umgekehrtes",
+    "post": "Bild."
+   },
+   {
+    "pre": "Scharf stellt das Auge mit der Linse. Die Pupille regelt nur die",
+    "loesung": "Helligkeit",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "umgekehrtes",
+   "Helligkeit",
+   "Netzhaut",
+   "Pupille",
+   "gewölbt"
+  ],
+  "beispiel": {
+   "frage": "Nour sieht ein Buch ganz nah an. Was macht ihre Augenlinse?",
+   "antwort": "Die Linse wölbt sich stärker. So bleibt das Bild auf der Netzhaut scharf. Die Statuszeile zeigt: Linse stark gewölbt (nah)."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie sieht das Bild auf der Netzhaut aus?",
+    "optionen": [
+     "Es steht auf dem Kopf und ist verkleinert.",
+     "Es steht aufrecht und ist vergrößert.",
+     "Es ist genauso groß wie der Gegenstand."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Bild entsteht hinten im Auge auf der",
+      "loesung": "Netzhaut",
+      "post": "."
+     },
+     {
+      "pre": "Die",
+      "loesung": "Pupille",
+      "post": "regelt, wie viel Licht ins Auge kommt."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Das Bild auf der Netzhaut ist umgekehrt. Warum sehen wir die Welt trotzdem aufrecht?",
+    "satzstarter": "Das Bild auf der Netzhaut steht auf dem Kopf, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies den Hinweis in der Simulation: Dort steht, wer das Bild umdreht.",
+   "h2": "Beginne so: Auf der Netzhaut steht das Bild auf dem Kopf. Unser Gehirn …",
+   "h3": "Fast fertige Antwort: Das Bild auf der Netzhaut ist umgekehrt. Unser Gehirn dreht es wieder ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, wo im Auge das Bild entsteht.",
+   "Ich kann sagen, wie das Auge scharf stellt.",
+   "Ich kenne die Aufgabe der Pupille."
+  ],
+  "zuhause": "Sieh in einen Spiegel und mache das Licht im Raum aus und wieder an. Beobachte deine Pupille: Sie wird weit und dann wieder eng.",
+  "bildauftrag": "[BILD: großer Querschnitt eines Auges von der Seite; vorn die Linse mit der Pupille davor, hinten die Netzhaut als Bogen; vor dem Auge steht ein kleiner Baum, auf der Netzhaut erscheint sein Bild winzig und auf dem Kopf; große Beschriftungen „Pupille“, „Linse“, „Netzhaut“ und „umgekehrtes Bild“; höchstens zwei ruhige Lichtlinien, keine gekreuzten Strahlenbündel; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fo8",
+  "quelle": "oi11",
+  "sim": "brille",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei Brillen ohne Etikett",
+  "name": "Wie hilft eine Brille?",
+  "fachwoerter_neu": [
+   "Zerstreuungslinse"
+  ],
+  "alltag": [
+   "Unter den Karten liegen zwei alte Brillen ohne Etikett.",
+   "Eine gehört zu einem kurzsichtigen Auge, eine zu einem weitsichtigen.",
+   "Aber welche passt zu welchem?",
+   "Ein Glas, das Licht auseinanderlenkt, heißt Zerstreuungslinse."
+  ],
+  "frage": "Welche Linse gehört zu welchem Sehfehler?",
+  "predict": [
+   "Kurzsichtige brauchen eine Zerstreuungslinse, Weitsichtige eine Sammellinse.",
+   "Beide Sehfehler brauchen dieselbe Linse, nur verschieden stark."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.",
+   "Drücke „Brille“ und lies die neue Meldung.",
+   "Wähle „weitsichtig“ und wiederhole beide Schritte.",
+   "Trage alle vier Ergebnisse in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Auge",
+   "Wo liegt das Bild?",
+   "scharf oder unscharf?"
+  ],
+  "tabRows": [
+   [
+    "kurzsichtig ohne Brille",
+    "vor der Netzhaut",
+    "unscharf"
+   ],
+   [
+    "kurzsichtig mit Brille",
+    "",
+    ""
+   ],
+   [
+    "weitsichtig ohne Brille",
+    "",
+    ""
+   ],
+   [
+    "weitsichtig mit Brille",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Kurzsichtige Augen brauchen eine",
+    "loesung": "Zerstreuungslinse",
+    "post": "."
+   },
+   {
+    "pre": "Weitsichtige Augen brauchen eine",
+    "loesung": "Sammellinse",
+    "post": ". Dann liegt das Bild genau auf der Netzhaut."
+   }
+  ],
+  "wortbank": [
+   "Zerstreuungslinse",
+   "Sammellinse",
+   "vor",
+   "hinter",
+   "scharf"
+  ],
+  "beispiel": {
+   "frage": "Jannis ist kurzsichtig. Welche Brille hilft ihm?",
+   "antwort": "Ohne Brille liegt das Bild vor der Netzhaut und ist unscharf. Ihm hilft eine Zerstreuungslinse. Mit Brille liegt das Bild genau auf der Netzhaut."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation beim weitsichtigen Auge ohne Brille?",
+    "optionen": [
+     "Das Bild liegt vor der Netzhaut.",
+     "Das Bild liegt genau auf der Netzhaut.",
+     "Das Bild liegt hinter der Netzhaut."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim kurzsichtigen Auge liegt das Bild",
+      "loesung": "vor",
+      "post": "der Netzhaut."
+     },
+     {
+      "pre": "Mit der richtigen Brille ist das Bild",
+      "loesung": "scharf",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum brauchen kurzsichtige und weitsichtige Augen verschiedene Linsen?",
+    "satzstarter": "Ohne Brille liegt das Bild einmal vor und einmal …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: vor der Netzhaut oder hinter der Netzhaut – das ist der Unterschied.",
+   "h2": "Beginne so: Beim kurzsichtigen Auge liegt das Bild vor der Netzhaut. Beim weitsichtigen …",
+   "h3": "Fast fertige Antwort: Das Bild liegt einmal vor und einmal hinter der Netzhaut. Darum braucht jedes Auge eine andere ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann kurzsichtig und weitsichtig unterscheiden.",
+   "Ich weiß, welche Linse welchem Auge hilft.",
+   "Ich kann sagen, wo das scharfe Bild liegen muss."
+  ],
+  "zuhause": "Frage zu Hause oder bei Freunden: Wer trägt eine Brille? Hilft sie beim Sehen in der Nähe oder in der Ferne?",
+  "bildauftrag": "[BILD: zwei große Augen-Querschnitte untereinander; oben ein kurzsichtiges Auge ohne Brille: zwei Lichtlinien treffen sich deutlich VOR der Netzhaut, Markierung „unscharf“; unten dasselbe Auge mit Brillenglas davor: Treffpunkt genau AUF der Netzhaut, Haken und Beschriftung „scharf“; große Beschriftungen „kurzsichtig“, „Zerstreuungslinse“, „Netzhaut“; je Auge nur zwei ruhige Linien, keine weiteren Strahlen; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fo9",
+  "quelle": "oi12",
+  "sim": "lochkamera",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Die Pappkiste mit dem Nadelloch",
+  "name": "Wie macht die Lochkamera ein Bild?",
+  "fachwoerter_neu": [
+   "Lochkamera"
+  ],
+  "alltag": [
+   "Hinten im Schrank steht eine schwarze Pappkiste.",
+   "Vorn hat sie nur ein Nadelloch, hinten eine Milchglas-Scheibe.",
+   "Jannis hält sie gegen das Fenster: Der Baum erscheint klein und auf dem Kopf.",
+   "So eine Kiste heißt Lochkamera."
+  ],
+  "frage": "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
+  "predict": [
+   "Ein größeres Loch macht das Bild größer.",
+   "Nur eine längere Kamera macht das Bild größer."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle die Bildweite b auf 29 cm und lies die Statuszeile.",
+   "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.",
+   "Schiebe den Regler „Lochgröße“ ganz nach rechts und lies die Statuszeile.",
+   "Trage alle vier Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Einstellung",
+   "Wie groß ist das Bild?",
+   "scharf oder unscharf?"
+  ],
+  "tabRows": [
+   [
+    "b = 29 cm, Loch klein",
+    "kleiner als der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 39 cm, Loch klein",
+    "",
+    ""
+   ],
+   [
+    "b = 51 cm, Loch klein",
+    "",
+    ""
+   ],
+   [
+    "b = 51 cm, Loch groß",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Bild der Lochkamera steht",
+    "loesung": "auf dem Kopf",
+    "post": ", weil sich die Strahlen im Loch kreuzen."
+   },
+   {
+    "pre": "Eine längere Kamera macht das Bild",
+    "loesung": "größer",
+    "post": ". Ein großes Loch macht es unscharf."
+   }
+  ],
+  "wortbank": [
+   "auf dem Kopf",
+   "größer",
+   "unscharf",
+   "geradeaus",
+   "Loch"
+  ],
+  "beispiel": {
+   "frage": "Warum steht das Bild der Lochkamera auf dem Kopf?",
+   "antwort": "Licht läuft immer geradeaus. Die Strahlen kreuzen sich im kleinen Loch. Darum kommt oben und unten vertauscht auf dem Schirm an."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann wird das Bild größer?",
+    "optionen": [
+     "Wenn die Kamera länger ist.",
+     "Wenn das Loch größer ist.",
+     "Wenn es im Raum dunkler ist."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Licht läuft immer",
+      "loesung": "geradeaus",
+      "post": "."
+     },
+     {
+      "pre": "Ein großes Loch macht das Bild hell, aber",
+      "loesung": "unscharf",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum macht ein kleines Loch das Bild scharf, ein großes Loch aber unscharf?",
+    "satzstarter": "Durch ein kleines Loch kommt nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: großes Loch – unscharf.",
+   "h2": "Beginne so: Durch ein kleines Loch kommt nur ein dünner Lichtstrahl. Durch ein großes Loch …",
+   "h3": "Fast fertige Antwort: Durch ein großes Loch treffen viele Strahlen dieselbe Stelle. Das Bild wird hell, aber ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann erklären, warum das Bild auf dem Kopf steht.",
+   "Ich weiß, wie das Bild größer wird.",
+   "Ich kenne den Nachteil eines großen Lochs."
+  ],
+  "zuhause": "Baue eine Lochkamera: Steche mit einer Nadel ein Loch in eine Pappschachtel. Spanne hinten Butterbrotpapier. Sieh im dunklen Raum damit auf eine helle Lampe.",
+  "bildauftrag": "[BILD: Querschnitt einer Lochkamera als schwarze Kiste; links davor ein leuchtender Pfeil nach oben, in der Kistenwand das kleine Loch, rechts auf dem Schirm derselbe Pfeil nach unten; genau zwei Lichtlinien, die sich im Loch kreuzen: eine von der Pfeilspitze, eine vom Pfeilfuß; große Beschriftungen „Loch“, „Schirm“ und „Bild (umgekehrt)“; keine weiteren Strahlen; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fo10",
+  "quelle": "oi13",
+  "sim": "prisma",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der Glaskeil in der Schublade",
+  "name": "Woraus besteht weißes Licht?",
+  "fachwoerter_neu": [
+   "Prisma",
+   "Spektralfarben"
+  ],
+  "alltag": [
+   "In der Kiste liegt ein schwerer Glaskeil.",
+   "So ein Glaskeil heißt Prisma.",
+   "Jannis hält das Prisma am Fenster ins Sonnenlicht.",
+   "Auf dem Tisch erscheint ein bunter Streifen aus vielen Farben."
+  ],
+  "frage": "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
+  "predict": [
+   "Das Prisma färbt das Licht bunt, so wie eine bunte Folie.",
+   "Die Farben stecken schon im weißen Licht. Das Prisma trennt sie nur."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle weißes Licht und lies die Meldung in der Statuszeile.",
+   "Trage in die Tabelle ein, was hinter dem Prisma erscheint.",
+   "Wähle nur Rot. Beobachte, ob sich das Licht noch auffächert.",
+   "Vergleiche mit nur Blau und ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Licht",
+   "Das erscheint hinter dem Prisma",
+   "Wie viele Farben siehst du?"
+  ],
+  "tabRows": [
+   [
+    "weißes Licht",
+    "ein Fächer aus allen Farben",
+    "viele Farben"
+   ],
+   [
+    "nur Rot",
+    "",
+    ""
+   ],
+   [
+    "nur Blau",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Weißes Licht besteht aus vielen verschiedenen",
+    "loesung": "Spektralfarben",
+    "post": "."
+   },
+   {
+    "pre": "Das Prisma",
+    "loesung": "bricht",
+    "post": "die Farben unterschiedlich stark und trennt sie so."
+   }
+  ],
+  "wortbank": [
+   "Spektralfarben",
+   "bricht",
+   "gebrochen",
+   "einfarbig"
+  ],
+  "beispiel": {
+   "frage": "Was macht das Prisma mit weißem Licht?",
+   "antwort": "Das Prisma zerlegt das weiße Licht in alle Spektralfarben. Rot steht am einen Rand, Violett am anderen. Die Farben waren schon vorher im Licht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Simulation bei nur Rot?",
+    "optionen": [
+     "Hinter dem Prisma erscheint wieder ein bunter Fächer.",
+     "Das rote Licht wird gebrochen, bleibt aber einfarbig.",
+     "Das rote Licht bleibt im Glas stecken."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Violett wird am stärksten",
+      "loesung": "gebrochen",
+      "post": ", Rot am wenigsten."
+     },
+     {
+      "pre": "Ein roter Strahl ist",
+      "loesung": "einfarbig",
+      "post": ". Er lässt sich nicht weiter zerlegen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das Prisma malt die Farben.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "Die Farben stecken schon …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Die Farben stecken schon im weißen Licht. Das Prisma …",
+   "h3": "Fast fertige Antwort: Weißes Licht ist eine Mischung aus Farben. Das Prisma trennt die Farben nur. Ergänze den letzten Satz: Ein Prisma kann Licht nicht ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, woraus weißes Licht besteht.",
+   "Ich kann erklären, was das Prisma mit dem Licht macht.",
+   "Ich weiß, warum rotes Licht einfarbig bleibt."
+  ],
+  "zuhause": "Denke an einen Regenbogen. Dort trennen Wassertropfen das Sonnenlicht in seine Farben. Male die Farben in der richtigen Reihenfolge an.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Versuchsaufbau: von links ein breiter weißer Lichtstrahl, in der Mitte ein Glasprisma, rechts ein aufgefächerter Farbverlauf von Rot bis Violett; nur diese eine Lichtspur, keine Nebenstrahlen oder Nebenbilder; große Beschriftungen „weißes Licht“, „Prisma“ und „Spektrum“; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fo11",
+  "quelle": "oi14",
+  "sim": "farbmischung-additiv",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Die Lupe auf dem Bildschirm",
+  "name": "Wie macht der Bildschirm Farben?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Jannis hält die Lupe dicht an den alten Bildschirm.",
+   "Statt Weiß sieht er winzige rote, grüne und blaue Streifen.",
+   "Eine weiße Lampe findet er auf dem Glas nirgends."
+  ],
+  "frage": "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
+  "predict": [
+   "Rot, Grün und Blau zusammen ergeben im Auge Weiß.",
+   "Zwischen den Streifen sitzt eine versteckte weiße Lampe."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.",
+   "Drücke „aus“ und notiere alle drei Werte.",
+   "Drücke „Gelb“ und notiere die Werte.",
+   "Schiebe den Regler „Blau“ auf 255 und vergleiche mit dem Knopf „Weiß“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "R · G · B",
+   "Ergebnisfarbe"
+  ],
+  "tabRows": [
+   [
+    "Ausgangszustand",
+    "220 · 60 · 60",
+    "Rot"
+   ],
+   [
+    "aus",
+    "",
+    ""
+   ],
+   [
+    "Gelb",
+    "",
+    ""
+   ],
+   [
+    "Weiß",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Bildschirm mischt sein Licht aus",
+    "loesung": "Rot, Grün und Blau",
+    "post": "."
+   },
+   {
+    "pre": "Alle drei Werte auf 255 ergeben",
+    "loesung": "Weiß",
+    "post": ". Alle auf 0 ergeben Schwarz."
+   }
+  ],
+  "wortbank": [
+   "Rot, Grün und Blau",
+   "Weiß",
+   "Gelb",
+   "Schwarz",
+   "mischt"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation beim Knopf „Gelb“?",
+   "antwort": "Das Statusfeld meldet: Ergebnisfarbe Gelb mit R 255, G 255, B 0. Rot und Grün zusammen ergeben beim Licht Gelb. Blau ist ganz aus."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Alle drei Farben leuchten mit 255. Was entsteht?",
+    "optionen": [
+     "Braun",
+     "Schwarz",
+     "Weiß"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Bildschirm",
+      "loesung": "mischt",
+      "post": "alle Farben aus drei Lichtern."
+     },
+     {
+      "pre": "R 0, G 0 und B 0 ergeben",
+      "loesung": "Schwarz",
+      "post": "– kein Licht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Rot und Grün gemischt gibt Braun, wie im Malkasten.“ Was zeigt die Simulation stattdessen?",
+    "satzstarter": "Beim Licht ergibt Rot und Grün …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Gelb-Zeile der Tabelle: R 255, G 255, B 0.",
+   "h2": "Beginne so: Beim Licht ergibt Rot und Grün zusammen Gelb. Malfarben mischen sich anders, denn …",
+   "h3": "Fast fertige Antwort: Malfarben ergeben Braun. Licht mischt sich anders: Rot und Grün ergeben ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die drei Lichtfarben des Bildschirms.",
+   "Ich weiß, wie Weiß und wie Schwarz entstehen.",
+   "Ich kann Licht- und Malfarben unterscheiden."
+  ],
+  "zuhause": "Sieh mit einer Lupe ganz nah auf ein Handy- oder Fernsehbild. Suche die winzigen roten, grünen und blauen Streifen.",
+  "bildauftrag": "[BILD: drei große, sich überlappende Lichtkreise auf dunklem Grund: Rot, Grün und Blau; die Mitte, wo alle drei zusammenfallen, ist reines Weiß; die Überlappung von Rot und Grün ist Gelb; große Beschriftungen „Rot“, „Grün“, „Blau“, „Gelb“ und „Weiß“; keine weiteren Farbflächen oder Verläufe; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fo12",
+  "quelle": "oi15",
+  "sim": "spektrum-unsichtbar",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Das Thermometer mit der schwarzen Kugel",
+  "name": "Welches Licht sehen wir nicht?",
+  "fachwoerter_neu": [
+   "Infrarot"
+  ],
+  "alltag": [
+   "In der Schublade liegt ein Thermometer mit schwarzer Kugel.",
+   "Auf dem Kärtchen daneben steht nur ein Name: Herschel.",
+   "Nour schiebt es im Farbfächer langsam über das letzte Rot hinaus.",
+   "Das unsichtbare Licht dahinter heißt Infrarot."
+  ],
+  "frage": "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
+  "predict": [
+   "Wo das Auge nichts sieht, kommt auch nichts an.",
+   "Hinter dem Rot kommt unsichtbares Licht an – dort wärmt es sogar am stärksten."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „555 nm – Grün“ und lies die Erwärmung ab.",
+   "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.",
+   "Drücke „940 nm – Fernbedienung“ und lies beide Angaben.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Stelle im Spektrum",
+   "Sieht das Auge etwas?",
+   "Erwärmung"
+  ],
+  "tabRows": [
+   [
+    "555 nm – Grün",
+    "ja",
+    "38 %"
+   ],
+   [
+    "700 nm – letztes Rot",
+    "",
+    ""
+   ],
+   [
+    "940 nm – Fernbedienung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Hinter dem letzten Rot kommt unsichtbares Licht an: das",
+    "loesung": "Infrarot",
+    "post": "."
+   },
+   {
+    "pre": "Man sieht es nicht, aber es",
+    "loesung": "wärmt",
+    "post": "dort am stärksten."
+   }
+  ],
+  "wortbank": [
+   "Infrarot",
+   "wärmt",
+   "unsichtbar",
+   "Thermometer",
+   "Erwärmung"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation bei „940 nm – Fernbedienung“?",
+   "antwort": "Das Auge sieht dort nichts. Die Erwärmung liegt bei 90 %. Das unsichtbare Infrarot wärmt stärker als das grüne Licht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo steigt das Thermometer am stärksten?",
+    "optionen": [
+     "Hinter dem letzten Rot, im Infrarot.",
+     "In der Mitte, beim grünen Licht.",
+     "Dort, wo das Auge am meisten sieht."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Licht hinter dem Rot heißt",
+      "loesung": "Infrarot",
+      "post": "."
+     },
+     {
+      "pre": "Es ist",
+      "loesung": "unsichtbar",
+      "post": ", aber das Thermometer zeigt es an."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Wie hat Herschel unsichtbares Licht entdeckt, ohne es zu sehen?",
+    "satzstarter": "Er schob ein Thermometer hinter das letzte Rot …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die letzte Zeile der Tabelle: Das Auge sieht nichts, die Erwärmung ist 90 %.",
+   "h2": "Beginne so: Herschel schob das Thermometer über das letzte Rot hinaus. Dort stieg es …",
+   "h3": "Fast fertige Antwort: Hinter dem Rot sah Herschel nichts. Aber sein Thermometer stieg dort am stärksten. So bewies er das unsichtbare ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, was hinter dem letzten Rot ankommt.",
+   "Ich kann Infrarot mit dem Thermometer nachweisen.",
+   "Ich kann Herschels Versuch erklären."
+  ],
+  "zuhause": "Nimm eine Fernbedienung und sieh auf die kleine Lampe vorn. Drücke eine Taste: Du siehst nichts – aber der Fernseher reagiert. Die Lampe sendet Infrarot.",
+  "bildauftrag": "[BILD: ein breiter Farbfächer von Violett bis Rot; rechts hinter dem Rot ein heller, leerer Bereich mit einem großen Thermometer, dessen Säule deutlich am höchsten steht; im grünen Bereich ein kleineres Thermometer mit niedriger Säule; große Beschriftungen „sichtbares Licht“, „letztes Rot“ und „Infrarot – unsichtbar“; keine Sonne, keine Strahlen; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fw1",
+  "quelle": "ew1",
+  "sim": "himmelskoerper",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Karton voller Sternkarten",
+  "name": "Was leuchtet am Nachthimmel?",
+  "fachwoerter_neu": [
+   "Selbstleuchter",
+   "Himmelskörper"
+  ],
+  "alltag": [
+   "Im Karton findet Jannis ein verblichenes Blatt.",
+   "Sonne, Mond und Planeten sind darauf gelb ausgemalt.",
+   "Nour fragt: Leuchtet der Mond genauso wie die Sonne?",
+   "Sonne, Mond, Sterne und Planeten heißen Himmelskörper."
+  ],
+  "frage": "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
+  "predict": [
+   "Der Mond leuchtet selbst, nur schwächer als die Sonne.",
+   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.",
+   "Trage ein, wer selbst leuchtet.",
+   "Drücke „Sonnenlicht abdecken“ und wähle wieder alle vier.",
+   "Ergänze: Wer ist jetzt dunkel, wer strahlt weiter?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Himmelskörper",
+   "Leuchtet er selbst?",
+   "Abgedeckt: hell oder dunkel?"
+  ],
+  "tabRows": [
+   [
+    "Sonne",
+    "ja – Selbstleuchter",
+    "hell"
+   ],
+   [
+    "Stern",
+    "",
+    ""
+   ],
+   [
+    "Mond",
+    "",
+    ""
+   ],
+   [
+    "Planet",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Sonne und alle Sterne leuchten selbst. Sie sind",
+    "loesung": "Selbstleuchter",
+    "post": "."
+   },
+   {
+    "pre": "Mond und Planeten sehen wir nur, weil die Sonne sie",
+    "loesung": "beleuchtet",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Selbstleuchter",
+   "beleuchtet",
+   "dunkel",
+   "ferne",
+   "Sonnenlicht"
+  ],
+  "beispiel": {
+   "frage": "Warum sehen wir den Mond am Himmel?",
+   "antwort": "Der Mond leuchtet nicht selbst. Die Sonne beleuchtet ihn. Wir sehen nur das zurückgeworfene Sonnenlicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ist ein Stern?",
+    "optionen": [
+     "Ein beleuchteter Felsen.",
+     "Ein Planet.",
+     "Eine ferne Sonne."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ohne Sonnenlicht ist der Mond sofort",
+      "loesung": "dunkel",
+      "post": "."
+     },
+     {
+      "pre": "Sterne sind",
+      "loesung": "ferne",
+      "post": "Sonnen und leuchten selbst."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour deckt in der Simulation das Sonnenlicht ab. Warum bleibt der Stern hell, der Planet aber nicht?",
+    "satzstarter": "Der Stern leuchtet selbst, aber der Planet …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: Nach dem Abdecken bleiben nur zwei Zeilen hell.",
+   "h2": "Beginne so: Der Stern ist ein Selbstleuchter. Der Planet dagegen …",
+   "h3": "Fast fertige Antwort: Der Stern leuchtet selbst und bleibt hell. Der Planet bekommt kein Sonnenlicht mehr und wird sofort ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann zwei Selbstleuchter nennen.",
+   "Ich weiß, warum wir den Mond sehen.",
+   "Ich kann erklären, was ohne Sonnenlicht passiert."
+  ],
+  "zuhause": "Sieh am Abend zum Himmel. Suche den Mond und einen hellen Stern. Welcher von beiden leuchtet selbst?",
+  "bildauftrag": "[BILD: links die große Sonne mit eigenen Strahlen; rechts der Mond, auf den ein breites Lichtband von der Sonne fällt und als schwächeres Band weiter zur Erde läuft; große Beschriftungen „leuchtet selbst“ an der Sonne und „wird beleuchtet“ am Mond; nur dieses eine Lichtband, keine weiteren Strahlen; dunkler, ruhiger Nachthimmel als Hintergrund]"
+ },
+ {
+  "id": "fw2",
+  "quelle": "ew2",
+  "sim": "tag-nacht",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Der staubige Globus",
+  "name": "Warum wird es Tag und Nacht?",
+  "fachwoerter_neu": [
+   "Erdachse"
+  ],
+  "alltag": [
+   "Jannis schreibt seiner Cousine in Neuseeland.",
+   "Ihre Antwort: Bei ihr ist gerade tiefe Nacht.",
+   "Dabei scheint hier die Sonne auf den Schulhof.",
+   "Die Linie, um die sich die Erde dreht, heißt Erdachse."
+  ],
+  "frage": "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
+  "predict": [
+   "Die Erde dreht sich. Tag hat die Seite, die zur Sonne zeigt.",
+   "Die Sonne wandert um die Erde herum."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Pause“, damit der Globus stehen bleibt.",
+   "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Sonne?",
+   "Stelle 180° ein und vergleiche.",
+   "Ergänze die letzte Zeile nach einer vollen Drehung."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Stellung",
+   "Wer hat Tag?",
+   "Wer hat Nacht?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "Yumi",
+    "Ben"
+   ],
+   [
+    "180°",
+    "",
+    ""
+   ],
+   [
+    "volle Drehung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Tag und Nacht entstehen, weil sich die Erde um ihre eigene",
+    "loesung": "Achse",
+    "post": "dreht."
+   },
+   {
+    "pre": "Eine volle Drehung dauert etwa",
+    "loesung": "24 Stunden",
+    "post": "– einen Tag."
+   }
+  ],
+  "wortbank": [
+   "Achse",
+   "24 Stunden",
+   "dreht",
+   "Tag",
+   "Nacht"
+  ],
+  "beispiel": {
+   "frage": "Bei Jannis ist Mittag. Warum ist in Neuseeland Nacht?",
+   "antwort": "Die Erde ist eine Kugel und dreht sich. Neuseeland zeigt gerade von der Sonne weg. Darum ist dort Nacht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum wird es bei uns Nacht?",
+    "optionen": [
+     "Die Erde dreht sich um sich selbst.",
+     "Die Sonne bewegt sich um die Erde.",
+     "Die Sonne wird nachts ausgeschaltet."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Erde",
+      "loesung": "dreht",
+      "post": "sich einmal in 24 Stunden."
+     },
+     {
+      "pre": "Die Seite zur Sonne hat",
+      "loesung": "Tag",
+      "post": ", die andere Seite hat Nacht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum ist es nie auf der ganzen Erde gleichzeitig Tag?",
+    "satzstarter": "Die Sonne beleuchtet immer nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Bei 0° hat Yumi Tag und Ben Nacht – gleichzeitig.",
+   "h2": "Beginne so: Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte …",
+   "h3": "Fast fertige Antwort: Die Sonne beleuchtet immer nur eine Hälfte der Erde. Die andere Hälfte liegt im Schatten und hat ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann erklären, wie Tag und Nacht entstehen.",
+   "Ich weiß, wie lange eine volle Drehung dauert.",
+   "Ich kann sagen, welche Seite Tag hat."
+  ],
+  "zuhause": "Drehe einen Globus oder einen Ball langsam vor einer Taschenlampe. Beobachte, wie ein Punkt darauf in Licht und Schatten wandert.",
+  "bildauftrag": "[BILD: links die Sonne, rechts die Erdkugel; die sonnenzugewandte Hälfte hell, die abgewandte Hälfte dunkel; ein gebogener Drehpfeil um die Erde; zwei markierte Punkte auf der Kugel: einer im Hellen mit Beschriftung „Tag“, einer im Dunkeln mit „Nacht“; große Beschriftung „die Erde dreht sich“; keine weiteren Pfeile; ruhiger dunkler Weltraum-Hintergrund]"
+ },
+ {
+  "id": "fw3",
+  "quelle": "ew3+ew4",
+  "sim": "gravitation",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Warum alles nach unten fällt",
+  "name": "Warum fällt alles nach unten?",
+  "fachwoerter_neu": [
+   "Gravitation"
+  ],
+  "alltag": [
+   "Eine schwere Schraube rutscht Jannis aus der Hand und schlägt sofort auf.",
+   "Nours Staubfeder schwebt langsam hinterher.",
+   "Jannis sagt: Das Schwere fällt eben schneller.",
+   "Die Anziehung zwischen allen Massen heißt Gravitation."
+  ],
+  "frage": "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
+  "predict": [
+   "Der Stein hat mehr Masse und kommt zuerst unten an.",
+   "Ohne Luft kommen Stein und Feder gleichzeitig unten an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.",
+   "Wähle den Mond und lies g und die Fallzeit ab.",
+   "Wähle Erde und Jupiter und ergänze die Tabelle.",
+   "Vergleiche: Wo fällt der Stein am schnellsten?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Himmelskörper",
+   "Anziehung g in m/s²",
+   "Fallzeit aus 1,50 m"
+  ],
+  "tabRows": [
+   [
+    "Mond",
+    "1,6",
+    "1,37 s"
+   ],
+   [
+    "Erde",
+    "",
+    ""
+   ],
+   [
+    "Jupiter",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Jede Masse zieht jede andere an. Diese Anziehung heißt",
+    "loesung": "Gravitation",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Luft fallen Stein und Feder",
+    "loesung": "gleich schnell",
+    "post": ". Bei doppeltem Abstand sinkt die Anziehung auf ein Viertel."
+   }
+  ],
+  "wortbank": [
+   "Gravitation",
+   "gleich schnell",
+   "Luft",
+   "Masse",
+   "ein Viertel"
+  ],
+  "beispiel": {
+   "frage": "Warum schwebt die Feder im rechten Rohr hinterher?",
+   "antwort": "Im rechten Rohr ist Luft. Die Luft bremst die leichte Feder an ihrer großen Fläche. Im luftleeren Rohr fällt sie genauso schnell wie der Stein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo fällt der Stein am schnellsten?",
+    "optionen": [
+     "Auf dem Mond.",
+     "Auf dem Jupiter.",
+     "Auf der Erde."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ohne Luft fallen alle Körper",
+      "loesung": "gleich schnell",
+      "post": "."
+     },
+     {
+      "pre": "Die",
+      "loesung": "Masse",
+      "post": "der Feder spielt beim Fallen keine Rolle."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Schwere fällt eben schneller.“ Was zeigt das luftleere Rohr?",
+    "satzstarter": "Im luftleeren Rohr kommen Stein und Feder …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das linke Rohr: Stein und Feder kommen zusammen unten an.",
+   "h2": "Beginne so: Im luftleeren Rohr kommen beide gleichzeitig an. Nur die Luft …",
+   "h3": "Fast fertige Antwort: Ohne Luft fallen Stein und Feder gleich schnell. Nicht die Masse bremst die Feder, sondern die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Gravitation ist.",
+   "Ich weiß, wie Stein und Feder ohne Luft fallen.",
+   "Ich kann Mond, Erde und Jupiter vergleichen."
+  ],
+  "zuhause": "Lass ein Radiergummi und ein glattes Blatt Papier gleichzeitig fallen. Knülle das Blatt dann fest zusammen und wiederhole den Versuch.",
+  "bildauftrag": "[BILD: zwei hohe Glasrohre nebeneinander; im linken Rohr (Beschriftung „ohne Luft“) fallen ein Stein und eine Feder auf genau gleicher Höhe; im rechten Rohr (Beschriftung „mit Luft“) liegt der Stein schon unten, die Feder schwebt noch weit oben; große Beschriftungen an beiden Rohren; ruhige Darstellung ohne viele Bewegungslinien; heller Hintergrund]"
+ },
+ {
+  "id": "fw4",
+  "quelle": "ew5",
+  "sim": "planetenbahn",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Warum Planeten nicht abstürzen",
+  "name": "Warum stürzen Planeten nicht ab?",
+  "fachwoerter_neu": [
+   "Umlaufbahn"
+  ],
+  "alltag": [
+   "Zwischen den Karten liegt ein Bogen mit Planetenbahnen.",
+   "Jannis fragt: Die Sonne zieht doch an allem.",
+   "Warum liegt dann nicht längst alles in der Sonne?",
+   "Der Weg eines Planeten um die Sonne heißt Umlaufbahn."
+  ],
+  "frage": "Warum stürzt ein Planet nicht in die Sonne?",
+  "predict": [
+   "Der Planet ist quer zur Sonne schnell unterwegs und fällt immer vorbei.",
+   "Die Sonne ist zu weit weg und zieht ihn kaum an."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „ganz klein“ und lies die Bahnform ab.",
+   "Drücke „mittlerer Wert“ und vergleiche.",
+   "Drücke „Gegenprobe groß“ und lies die Meldung.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Anschub",
+   "Bahnform laut Anzeige",
+   "Kommt er zurück?"
+  ],
+  "tabRows": [
+   [
+    "ganz klein (6 km/s)",
+    "stürzt in die Sonne",
+    "nein"
+   ],
+   [
+    "mittlerer Wert (30 km/s)",
+    "",
+    ""
+   ],
+   [
+    "groß (50 km/s)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Sonne zieht den Planeten immer an. Weil er quer dazu schnell ist, fällt er immer an ihr",
+    "loesung": "vorbei",
+    "post": "."
+   },
+   {
+    "pre": "Dieses ewige Vorbeifallen ist die",
+    "loesung": "Umlaufbahn",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "vorbei",
+   "Umlaufbahn",
+   "stürzt",
+   "entkommt",
+   "Anschub"
+  ],
+  "beispiel": {
+   "frage": "Der Anschub ist nur 6 km/s. Was passiert?",
+   "antwort": "Der Anschub ist zu klein. Der Planet fällt nicht mehr an der Sonne vorbei. Er stürzt in die Sonne."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Anschub ist sehr groß (50 km/s). Was zeigt die Anzeige?",
+    "optionen": [
+     "Bahnform: fast ein Kreis.",
+     "Bahnform: stürzt in die Sonne.",
+     "Bahnform: entkommt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ist der Anschub zu klein,",
+      "loesung": "stürzt",
+      "post": "der Planet in die Sonne."
+     },
+     {
+      "pre": "Ist er zu groß,",
+      "loesung": "entkommt",
+      "post": "er für immer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Sonne zieht die Erde die ganze Zeit an. Warum stürzt die Erde trotzdem nicht hinein?",
+    "satzstarter": "Die Erde ist quer zur Sonne unterwegs …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die mittlere Zeile der Tabelle: Beim passenden Anschub wird die Bahn fast ein Kreis.",
+   "h2": "Beginne so: Die Erde ist quer zur Sonne schnell unterwegs. Darum fällt sie …",
+   "h3": "Fast fertige Antwort: Die Erde fällt ständig zur Sonne hin und ist zugleich schnell quer unterwegs. So fällt sie immer an der Sonne ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Fälle des Anschubs nennen.",
+   "Ich weiß, was eine Umlaufbahn ist.",
+   "Ich kann erklären, warum die Erde nicht abstürzt."
+  ],
+  "zuhause": "Lass eine Münze innen am Rand einer runden Schüssel kreisen. Ist sie zu langsam, rutscht sie zur Mitte.",
+  "bildauftrag": "[BILD: die Sonne in der Mitte, vom selben Startpunkt daneben drei farblich klar getrennte Bahnspuren: eine kurze Spur in die Sonne hinein (Beschriftung „zu klein: stürzt“), ein geschlossener Kreis (Beschriftung „passt: Umlaufbahn“) und eine offene Spur nach außen (Beschriftung „zu groß: entkommt“); am Startpunkt ein grüner Pfeil quer zur Sonne mit Beschriftung „Anschub“; keine weiteren Linien; dunkler, ruhiger Weltraum-Hintergrund]"
+ },
+ {
+  "id": "fw5",
+  "quelle": "ew6",
+  "sim": "sonnensystem",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Acht gleich große Kugeln",
+  "name": "Wie unterscheiden sich die Planeten?",
+  "fachwoerter_neu": [
+   "Gesteinsplanet",
+   "Gasriese"
+  ],
+  "alltag": [
+   "Auf einer Karte sind acht Kugeln gleich groß gemalt.",
+   "Nour stutzt: Jupiter genauso groß wie Merkur?",
+   "Ein Maß steht nirgends dabei.",
+   "Es gibt zwei Sorten: Gesteinsplaneten und Gasriesen."
+  ],
+  "frage": "Was unterscheidet die inneren Planeten von den äußeren?",
+  "predict": [
+   "Alle acht sind gleich gebaut: Gestein mit fester Oberfläche.",
+   "Innen kreisen kleine Gesteinsplaneten, außen sehr große Riesen aus Gas und Eis."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Steckbrief“ und lies für die Erde Sorte und Durchmesser ab.",
+   "Drücke „Größen“ und vergleiche die acht Planeten.",
+   "Drücke „Umlauf“ und „sehr schnell“. Wer kommt öfter herum: innen oder außen?",
+   "Trage deine Beobachtungen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ansicht",
+   "Was zeigt das Bild?",
+   "Das erkenne ich"
+  ],
+  "tabRows": [
+   [
+    "Steckbrief",
+    "Erde: Gesteinsplanet, feste Oberfläche",
+    "innen gibt es festen Boden"
+   ],
+   [
+    "Größen",
+    "",
+    ""
+   ],
+   [
+    "Umlauf",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Innen kreisen vier kleine",
+    "loesung": "Gesteinsplaneten",
+    "post": "mit fester Oberfläche."
+   },
+   {
+    "pre": "Außen kreisen Gasriesen und Eisriesen; sie sind viel",
+    "loesung": "größer",
+    "post": ". Je weiter außen, desto länger der Umlauf."
+   }
+  ],
+  "wortbank": [
+   "Gesteinsplaneten",
+   "Gasriesen",
+   "größer",
+   "Oberfläche",
+   "Umlauf"
+  ],
+  "beispiel": {
+   "frage": "Was sagt der Steckbrief über die Erde?",
+   "antwort": "Die Erde ist ein Gesteinsplanet mit fester Oberfläche. Ihr Durchmesser ist 12.756 km. Ein Umlauf um die Sonne dauert 1 Jahr."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was gilt für die äußeren Planeten?",
+    "optionen": [
+     "Sie sind sehr groß und haben keinen festen Boden.",
+     "Sie sind klein und aus Gestein.",
+     "Sie brauchen für einen Umlauf kürzer als die inneren."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die inneren Planeten haben eine feste",
+      "loesung": "Oberfläche",
+      "post": "."
+     },
+     {
+      "pre": "Je weiter außen ein Planet kreist, desto länger dauert sein",
+      "loesung": "Umlauf",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum kann man auf dem Jupiter nicht landen?",
+    "satzstarter": "Der Jupiter ist ein Gasriese …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Wortbank: Zwei Wörter nennen die zwei Planeten-Sorten.",
+   "h2": "Beginne so: Der Jupiter ist ein Gasriese. Er hat keinen festen …",
+   "h3": "Fast fertige Antwort: Der Jupiter ist ein Gasriese. Eine Rakete findet dort keinen festen ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die zwei Sorten von Planeten.",
+   "Ich weiß, wo die kleinen und wo die großen kreisen.",
+   "Ich kann die Umlauf-Regel sagen."
+  ],
+  "zuhause": "Lege acht verschieden große Früchte oder Kugeln in eine Reihe: vier kleine innen, vier große außen. Sprich die Planetennamen dazu.",
+  "bildauftrag": "[BILD: die Sonne links am Rand, danach die acht Planeten in einer Reihe mit deutlich verschiedenen Größen: vier kleine Kugeln, dann vier große; unter den inneren die große Beschriftung „Gesteinsplaneten“, unter Jupiter und Saturn „Gasriesen“, unter Uranus und Neptun „Eisriesen“; die Namen unter jedem Planeten; Hinweiszeile „Abstände nicht maßstäblich“; keine Bahnlinien; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fw6",
+  "quelle": "ew7",
+  "sim": "entfernungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Wort auf der Rückseite",
+  "name": "Wie groß ist das Sonnensystem?",
+  "fachwoerter_neu": [
+   "Lichtjahr"
+  ],
+  "alltag": [
+   "Auf einer Sternkarte steht hinten das Wort Lichtjahre.",
+   "Jannis fragt: Ist das die Zeit, die der Stern alt ist?",
+   "Nour meint: Das klingt eher nach einer Strecke.",
+   "Ein Lichtjahr ist der Weg des Lichts in einem Jahr."
+  ],
+  "frage": "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
+  "predict": [
+   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs.",
+   "Licht ist so schnell, dass es sofort da ist."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.",
+   "Lies Entfernung und Zeit in der Statuszeile ab.",
+   "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.",
+   "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ziel",
+   "Entfernung laut Anzeige",
+   "Licht unterwegs"
+  ],
+  "tabRows": [
+   [
+    "Erde → Mond",
+    "384 000 km",
+    "1,3 Sekunden"
+   ],
+   [
+    "Erde → Sonne",
+    "",
+    ""
+   ],
+   [
+    "Erde → nächster Stern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Lichtjahr ist keine Zeit, sondern eine",
+    "loesung": "Strecke",
+    "post": ": der Weg des Lichts in einem Jahr."
+   },
+   {
+    "pre": "Je weiter das Ziel, desto",
+    "loesung": "länger",
+    "post": "ist das Licht unterwegs."
+   }
+  ],
+  "wortbank": [
+   "Strecke",
+   "länger",
+   "Lichtjahr",
+   "unterwegs",
+   "Vergangenheit"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Anzeige für Erde → Sonne?",
+   "antwort": "Die Entfernung ist etwa 150 Mio. km. Das Licht ist 8,3 Minuten unterwegs. Wir sehen die Sonne so, wie sie vor etwa 8 Minuten war."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ist ein Lichtjahr?",
+    "optionen": [
+     "Eine Zeit von einem Jahr.",
+     "Eine Strecke: der Weg des Lichts in einem Jahr.",
+     "Das Alter eines Sterns."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Je weiter ein Ziel entfernt ist, desto",
+      "loesung": "länger",
+      "post": "ist sein Licht unterwegs."
+     },
+     {
+      "pre": "Ein Blick zu fernen Sternen ist ein Blick in die",
+      "loesung": "Vergangenheit",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum sehen wir ferne Sterne so, wie sie früher waren?",
+    "satzstarter": "Das Licht der Sterne ist viele Jahre …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Vom Mond 1,3 Sekunden, von der Sonne schon 8,3 Minuten.",
+   "h2": "Beginne so: Das Licht der Sterne ist viele Jahre zu uns unterwegs. Wir sehen darum …",
+   "h3": "Fast fertige Antwort: Das Licht war viele Jahre unterwegs. Wir sehen den Stern so, wie er früher war – ein Blick in die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was ein Lichtjahr ist.",
+   "Ich kenne die Regel: weiter weg – länger unterwegs.",
+   "Ich kann den Blick in die Vergangenheit erklären."
+  ],
+  "zuhause": "Zähle bei einem Gewitter die Sekunden zwischen Blitz und Donner. Auch Schall braucht Zeit für seinen Weg – Licht ist nur viel schneller.",
+  "bildauftrag": "[BILD: links die Erde, nach rechts drei immer weiter entfernte Ziele: Mond, Sonne, Stern; von der Erde zu jedem Ziel ein Lichtband mit großer Zeit-Beschriftung „1,3 Sekunden“, „8,3 Minuten“, „gut 4 Jahre“; große Beschriftung „Licht braucht Zeit“; keine weiteren Linien; dunkler, ruhiger Weltraum-Hintergrund]"
+ },
+ {
+  "id": "fw7",
+  "quelle": "ew8",
+  "sim": "teleskop",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Zwei Linsen und ein Rohr",
+  "name": "Was macht das Fernrohr mit dem Bild?",
+  "fachwoerter_neu": [
+   "Objektiv",
+   "Okular"
+  ],
+  "alltag": [
+   "Das Fernrohr liegt in Einzelteilen auf dem Tisch.",
+   "Jannis hält die kleine Linse ans Auge – alles verschwommen.",
+   "Wie soll das den Mond herholen?",
+   "Die große Linse heißt Objektiv, die kleine Okular."
+  ],
+  "frage": "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
+  "predict": [
+   "Nur das Bild des Mondes wird größer. Es steht auf dem Kopf.",
+   "Das Fernrohr holt den Mond wirklich näher heran."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.",
+   "Drücke „mit Teleskop“ und lies die Vergrößerung ab.",
+   "Vergleiche „große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.",
+   "Trage alle drei Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ansicht",
+   "Größe und Lage",
+   "Helligkeit"
+  ],
+  "tabRows": [
+   [
+    "bloßes Auge",
+    "klein, richtig herum",
+    "Lichtschwaches unsichtbar"
+   ],
+   [
+    "Teleskop, große Öffnung",
+    "",
+    ""
+   ],
+   [
+    "Teleskop, kleine Öffnung",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Fernrohr holt den Mond nicht näher. Nur sein Bild wird",
+    "loesung": "größer",
+    "post": "– und es steht auf dem Kopf."
+   },
+   {
+    "pre": "Eine größere Öffnung sammelt mehr Licht. Das Bild wird",
+    "loesung": "heller",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "heller",
+   "Objektiv",
+   "Okular",
+   "auf dem Kopf"
+  ],
+  "beispiel": {
+   "frage": "Was meldet die Anzeige mit Teleskop?",
+   "antwort": "Die Vergrößerung ist 4-fach. Die gelbe Marke der Oberkante liegt jetzt unten. Das Bild steht also auf dem Kopf."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was macht die große Öffnung?",
+    "optionen": [
+     "Das Bild wird dunkler.",
+     "Gar nichts.",
+     "Es wird mehr Licht gesammelt – das Bild wird heller."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die große Linse vorn heißt",
+      "loesung": "Objektiv",
+      "post": "."
+     },
+     {
+      "pre": "Das",
+      "loesung": "Okular",
+      "post": "ist die Lupe für das Bild im Rohr."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Fernrohr holt den Mond näher heran.“ Stimmt das?",
+    "satzstarter": "Der Mond bleibt, wo er ist …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in den Merksatz: Nur das Bild wird größer.",
+   "h2": "Beginne so: Der Mond bleibt, wo er ist. Das Fernrohr macht nur sein Bild …",
+   "h3": "Fast fertige Antwort: Das Fernrohr holt nichts heran. Es macht nur das Bild des Mondes ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne Objektiv und Okular.",
+   "Ich weiß, wie herum das Bild im Fernrohr steht.",
+   "Ich kann sagen, was die große Öffnung bringt."
+  ],
+  "zuhause": "Halte eine Lupe mit gestrecktem Arm zum Fenster: Das Bild ist klein und steht auf dem Kopf. Genau so ein Bild entsteht im Rohr des Fernrohrs.",
+  "bildauftrag": "[BILD: ein langes Fernrohr im Querschnitt; links die große Linse mit Beschriftung „Objektiv“, rechts die kleine mit „Okular“, dahinter ein Auge; links vor dem Rohr ein kleiner Mond, im Sehfeld rechts ein großer Mond auf dem Kopf mit Beschriftung „4-fach · auf dem Kopf“; höchstens zwei ruhige Lichtlinien durch das Rohr; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fw8",
+  "quelle": "ew9",
+  "sim": "sternparallaxe",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Kein Maßband bis zum Stern",
+  "name": "Wie weit ist ein Stern entfernt?",
+  "fachwoerter_neu": [
+   "Bogensekunde"
+  ],
+  "alltag": [
+   "Neben Wega steht auf der Karte: 25 Lichtjahre.",
+   "Nour fragt: Wer hat das nachgemessen?",
+   "Ein Maßband hilft bis zum Stern sicher nicht.",
+   "Winzige Winkel misst man in Bogensekunden (″)."
+  ],
+  "frage": "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
+  "predict": [
+   "Je weiter ein Stern weg ist, desto größer ist sein Winkel.",
+   "Je weiter ein Stern weg ist, desto kleiner ist sein Winkel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Proxima Centauri“ und lies den Winkel p und die Lichtjahre ab.",
+   "Vergleiche mit „61 Cygni“ und „Wega“. Trage alle Werte ein.",
+   "Wähle „Polarstern“ und drücke „Lupe ×100“, um den winzigen Sprung zu sehen.",
+   "Vergleiche: Wie ändert sich der Winkel mit der Entfernung?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Stern",
+   "Winkel p in ″",
+   "Entfernung in Lichtjahren"
+  ],
+  "tabRows": [
+   [
+    "Proxima Centauri",
+    "0,7686",
+    "4,2"
+   ],
+   [
+    "61 Cygni",
+    "",
+    ""
+   ],
+   [
+    "Wega",
+    "",
+    ""
+   ],
+   [
+    "Polarstern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je weiter ein Stern entfernt ist, desto",
+    "loesung": "kleiner",
+    "post": "ist sein gemessener Winkel p."
+   },
+   {
+    "pre": "So messen Forscher Entfernungen im All: mit winzigen",
+    "loesung": "Winkeln",
+    "post": "statt mit einem Maßband."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "Winkeln",
+   "Bogensekunde",
+   "springt",
+   "Entfernung"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation beim Polarstern?",
+   "antwort": "Der Polarstern ist 432,5 Lichtjahre entfernt. Sein Winkel ist nur 0,0075″. Sein Sprung wird erst mit der Lupe ×100 sichtbar."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Stern A hat den Winkel 0,7686″, Stern B nur 0,1302″. Welcher ist weiter weg?",
+    "optionen": [
+     "Stern B – kleiner Winkel heißt weiter weg.",
+     "Stern A – großer Winkel heißt weiter weg.",
+     "Beide sind gleich weit weg."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Je weiter der Stern, desto",
+      "loesung": "kleiner",
+      "post": "der Winkel p."
+     },
+     {
+      "pre": "Ein naher Stern",
+      "loesung": "springt",
+      "post": "vor den fernen Sternen hin und her."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum springt ein naher Stern im Laufe eines halben Jahres hin und her?",
+    "satzstarter": "Ein halbes Jahr später steht die Erde …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das Bild der Simulation: Juli und Januar, dazwischen liegen 2 AE.",
+   "h2": "Beginne so: Ein halbes Jahr später steht die Erde ein großes Stück weiter drüben. Der nahe Stern …",
+   "h3": "Fast fertige Antwort: Die Erde wandert um die Sonne. Ein halbes Jahr später schauen wir von der anderen Seite. Darum scheint der nahe Stern zu ___ ."
+  },
+  "selbstcheck": [
+   "Ich kenne die Regel: kleiner Winkel – weiter weg.",
+   "Ich kann vier Sterne nach der Entfernung ordnen.",
+   "Ich kann den Sprung des nahen Sterns erklären."
+  ],
+  "zuhause": "Strecke den Daumen aus. Sieh ihn erst nur mit dem rechten, dann nur mit dem linken Auge an: Er springt vor dem Hintergrund hin und her.",
+  "bildauftrag": "[BILD: unten die Sonne mit der Erdbahn als flacher Ellipse, die Erde an zwei markierten Punkten „Januar“ und „Juli“; von beiden Punkten je eine Sichtlinie zu einem nahen Stern in der Bildmitte, dahinter eine ruhige Wand ferner Sterne; der kleine Winkel zwischen den Sichtlinien am Stern deutlich markiert mit Beschriftung „Winkel p“; große Beschriftung „der nahe Stern springt“; nur diese zwei Linien; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fw9",
+  "quelle": "ew10",
+  "sim": "sternleben",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Die Randnotiz auf der Sternkarte",
+  "name": "Wie lange leuchtet ein Stern?",
+  "fachwoerter_neu": [
+   "Kernfusion",
+   "Sonnenmasse"
+  ],
+  "alltag": [
+   "Auf einer Karte steht mit Bleistift: Auch die Sonne geht einmal aus.",
+   "Jannis zeigt auf einen dicken blauen Stern.",
+   "So ein Riese hält bestimmt am längsten durch, meint er.",
+   "Die Masse von Sternen misst man in Sonnenmassen."
+  ],
+  "frage": "Lebt ein schwerer Stern länger als ein leichter?",
+  "predict": [
+   "Ein schwerer Stern verbraucht seinen Brennstoff schneller und lebt kürzer.",
+   "Ein schwerer Stern hat mehr Brennstoff und lebt länger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „1“ und sieh den ganzen Lebenslauf durch.",
+   "Lies die Lebensdauer ab und trage sie ein.",
+   "Drücke „10“ und vergleiche.",
+   "Prüfe mit „Gegenprobe 25“: Lebt er noch kürzer?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Masse",
+   "Lebensdauer",
+   "Länger oder kürzer als die Sonne?"
+  ],
+  "tabRows": [
+   [
+    "1 Sonnenmasse (Sonne)",
+    "10,0 Mrd. Jahre",
+    "—"
+   ],
+   [
+    "10 Sonnenmassen",
+    "",
+    ""
+   ],
+   [
+    "Gegenprobe 25",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Kern verschmelzen Wasserstoffkerne zu Helium. Das heißt",
+    "loesung": "Kernfusion",
+    "post": "– kein Verbrennen."
+   },
+   {
+    "pre": "Je größer die Masse, desto",
+    "loesung": "kürzer",
+    "post": "lebt der Stern."
+   }
+  ],
+  "wortbank": [
+   "Kernfusion",
+   "kürzer",
+   "Helium",
+   "Sonnenmasse",
+   "schneller"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation bei 10 Sonnenmassen?",
+   "antwort": "Der Stern leuchtet blau-weiß. Er lebt nur 31,6 Mio. Jahre. Die Sonne mit 1 Sonnenmasse lebt viel länger: 10,0 Mrd. Jahre."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Woher bekommt ein Stern seine Energie?",
+    "optionen": [
+     "Er verbrennt Sauerstoff wie ein Feuer.",
+     "Im Kern verschmelzen Wasserstoffkerne zu Helium.",
+     "Er sammelt Licht von anderen Sternen."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei der Kernfusion verschmelzen Wasserstoffkerne zu",
+      "loesung": "Helium",
+      "post": "."
+     },
+     {
+      "pre": "Ein schwerer Stern verbraucht seinen Brennstoff viel",
+      "loesung": "schneller",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der dicke Stern hat mehr Brennstoff und lebt darum länger.“ Was zeigt die Simulation?",
+    "satzstarter": "Der schwere Stern hat zwar mehr Brennstoff, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: 10 Sonnenmassen leben nur 31,6 Mio. Jahre.",
+   "h2": "Beginne so: Der schwere Stern hat mehr Brennstoff. Aber er verbraucht ihn viel …",
+   "h3": "Fast fertige Antwort: Der schwere Stern verbraucht seinen Brennstoff viel schneller. Darum lebt er ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Kernfusion ist.",
+   "Ich weiß, dass Fusion kein Verbrennen ist.",
+   "Ich kann die Masse-Regel der Sterne sagen."
+  ],
+  "zuhause": "Sieh am Abend zum Himmel: Manche Sterne wirken bläulich, andere rötlich. Die Farbe verrät etwas über den Stern.",
+  "bildauftrag": "[BILD: zwei Sterne nebeneinander im Vergleich; links ein gelber Stern in Sonnengröße mit Beschriftung „1 Sonnenmasse · lebt 10,0 Mrd. Jahre“, rechts ein deutlich größerer blau-weißer Stern mit Beschriftung „10 Sonnenmassen · lebt nur 31,6 Mio. Jahre“; darunter eine große Zeile „schwerer – schneller verbraucht – kürzer“; keine weiteren Objekte; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fw10",
+  "quelle": "ew11",
+  "sim": "milchstrasse",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Das blasse Band",
+  "name": "Wo stehen wir in der Milchstraße?",
+  "fachwoerter_neu": [
+   "Milchstraße"
+  ],
+  "alltag": [
+   "Über die große Sternkarte läuft ein blasses Band.",
+   "Auf einer Seite ist es deutlich heller.",
+   "Nour meint: Dann steht die Sonne genau in der Mitte.",
+   "Unsere Sternenstadt heißt Milchstraße."
+  ],
+  "frage": "Steht die Sonne in der Mitte der Milchstraße?",
+  "predict": [
+   "Ja – darum sehen wir in alle Richtungen gleich viele Sterne.",
+   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.",
+   "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.",
+   "Drücke „Gegenprobe: Sonne in die Mitte“ und lies die Meldung.",
+   "Vergleiche: Passt die Gegenprobe zu unserem Himmel?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Blickrichtung",
+   "Sterne im Blickfeld",
+   "Band hell oder schwach?"
+  ],
+  "tabRows": [
+   [
+    "zur Mitte",
+    "203",
+    "hellstes Stück"
+   ],
+   [
+    "nach außen",
+    "",
+    ""
+   ],
+   [
+    "quer heraus",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Milchstraße ist eine flache",
+    "loesung": "Scheibe",
+    "post": "aus Sternen."
+   },
+   {
+    "pre": "Die Sonne steht nicht in der",
+    "loesung": "Mitte",
+    "post": "der Scheibe."
+   }
+  ],
+  "wortbank": [
+   "Scheibe",
+   "Mitte",
+   "Milchstraße",
+   "Band",
+   "mehr"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt der Blick quer aus der Scheibe heraus?",
+   "antwort": "Nur 5 Sterne stehen im Blickfeld. Quer heraus ist die Scheibe schnell zu Ende. Das Band fehlt dort."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum sehen wir am Himmel ein milchiges Band?",
+    "optionen": [
+     "Dort hängt eine helle Wolke aus Wasser.",
+     "Die Sonne beleuchtet den Nachthimmel.",
+     "Längs durch die Scheibe stehen sehr viele Sterne hintereinander."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Quer aus der",
+      "loesung": "Scheibe",
+      "post": "heraus sehen wir kaum Sterne."
+     },
+     {
+      "pre": "Zur Mitte hin stehen viel",
+      "loesung": "mehr",
+      "post": "Sterne im Blickfeld als nach außen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Wähle und begründe",
+    "frage": "Steht die Sonne in der Mitte – ja oder nein? Begründe mit zwei Zahlen aus deiner Tabelle.",
+    "satzstarter": "Nein, denn zur Mitte sehen wir … Sterne, nach außen nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: 203 Sterne zur Mitte, 50 nach außen.",
+   "h2": "Beginne so: Nein. Zur Mitte sehen wir 203 Sterne, nach außen nur 50. Darum …",
+   "h3": "Fast fertige Antwort: Beide Richtungen sind verschieden voll. Von der Mitte aus wären sie gleich. Also steht die Sonne nicht in der ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, welche Form die Milchstraße hat.",
+   "Ich kann das milchige Band erklären.",
+   "Ich kann begründen, wo die Sonne nicht steht."
+  ],
+  "zuhause": "Sieh in einer klaren, dunklen Nacht zum Himmel. Suche das blasse Band der Milchstraße – weit weg von Straßenlampen klappt es am besten.",
+  "bildauftrag": "[BILD: die Milchstraße als flache Scheibe von schräg oben, Spiralarme nur angedeutet; der Punkt der Sonne deutlich außerhalb der Mitte, groß beschriftet „Sonne“; von der Sonne drei Pfeile: ein langer zur Mitte (Beschriftung „203 Sterne“), ein kürzerer nach außen („50 Sterne“), ein kurzer quer aus der Scheibe („5 Sterne“); große Beschriftung „Milchstraße – eine flache Scheibe“; keine weiteren Linien; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fw11",
+  "quelle": "ew12",
+  "sim": "weltbild",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Zwei Weltbilder",
+  "name": "Wer steht in der Mitte?",
+  "fachwoerter_neu": [
+   "Weltbild"
+  ],
+  "alltag": [
+   "Auf einem vergilbten Blatt kreist alles um die Erde.",
+   "Jeder Planet läuft noch auf einem zweiten, kleinen Kreis.",
+   "Jannis sagt: Das ist doch falsch herum.",
+   "Ein Modell vom Aufbau des Himmels heißt Weltbild."
+  ],
+  "frage": "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
+  "predict": [
+   "Beide zeigen denselben Himmel, aber nur das heutige braucht keine Zusatzkreise.",
+   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.",
+   "Drücke „Sonne in der Mitte (heute)“ und vergleiche.",
+   "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?",
+   "Trage beide Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Weltbild",
+   "Wer steht in der Mitte?",
+   "Zusatzkreise (Epizykel) nötig?"
+  ],
+  "tabRows": [
+   [
+    "alt",
+    "die Erde",
+    "ja"
+   ],
+   [
+    "heute",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "In der Mitte des heutigen Weltbildes steht",
+    "loesung": "die Sonne",
+    "post": "."
+   },
+   {
+    "pre": "Das alte Weltbild brauchte Zusatzkreise (Epizykel), das heutige braucht",
+    "loesung": "keine",
+    "post": "– darum gilt es heute."
+   }
+  ],
+  "wortbank": [
+   "die Sonne",
+   "keine",
+   "Weltbild",
+   "Zusatzkreise",
+   "einfacher"
+  ],
+  "beispiel": {
+   "frage": "Was meldet die Simulation beim alten Weltbild?",
+   "antwort": "Die Erde steht in der Mitte. Der Himmel ließ sich gut vorhersagen – aber nur mit Zusatzkreisen für die Schleifen der Planeten."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie kam es zum heutigen Weltbild?",
+    "optionen": [
+     "Durch neue Beobachtungen, zum Beispiel mit dem Fernrohr.",
+     "Durch einen Zufall.",
+     "Weil ein König es befahl."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Im heutigen Weltbild steht",
+      "loesung": "die Sonne",
+      "post": "in der Mitte."
+     },
+     {
+      "pre": "Es erklärt denselben Himmel, ist aber",
+      "loesung": "einfacher",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Wähle und begründe",
+    "frage": "Beide Weltbilder zeigen denselben Himmel. Warum gilt heute das mit der Sonne in der Mitte? Kreise ein: Es ist einfacher / Es ist älter.",
+    "satzstarter": "Das heutige Weltbild ist …, denn es braucht …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Nur das alte Weltbild braucht Zusatzkreise.",
+   "h2": "Beginne so: Das heutige Weltbild ist einfacher, denn es braucht keine …",
+   "h3": "Fast fertige Antwort: Beide zeigen denselben Himmel. Das heutige Weltbild braucht dafür keine Zusatzkreise. Es ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann beide Weltbilder unterscheiden.",
+   "Ich weiß, was Zusatzkreise sind.",
+   "Ich kann begründen, warum das heutige Weltbild gilt."
+  ],
+  "zuhause": "Gehe eng um einen Stuhl herum, während jemand außen langsamer im Kreis geht. Beim Überholen scheint die andere Person rückwärts zu wandern – wie der Mars am Himmel.",
+  "bildauftrag": "[BILD: zwei Kreisbilder nebeneinander; links das alte Weltbild: die Erde in der Mitte, ein Planet auf einem großen Kreis und zusätzlich auf einem kleinen Zusatzkreis, Beschriftung „früher: mit Zusatzkreisen“; rechts das heutige: die Sonne in der Mitte, Erde und Mars auf je einem einfachen Kreis, Beschriftung „heute: ohne Zusatzkreise“; große Titel „alt“ und „heute“; wenige, klare Linien; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fw12",
+  "quelle": "ew13",
+  "sim": "schwarzes-loch",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Kreis um ein leeres Feld",
+  "name": "Wie findet man ein schwarzes Loch?",
+  "fachwoerter_neu": [
+   "Ereignishorizont"
+  ],
+  "alltag": [
+   "Auf einer Karte hat jemand einen Kreis in ein leeres Feld gemalt.",
+   "Daneben steht nur ein Fragezeichen.",
+   "Wie markiert man etwas, das man nicht sehen kann?",
+   "Die Grenze um ein schwarzes Loch heißt Ereignishorizont."
+  ],
+  "frage": "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
+  "predict": [
+   "Licht läuft unverändert vorbei, denn Licht wiegt nichts.",
+   "Je näher das Licht vorbeiläuft, desto stärker wird es gebogen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „weit weg“ und dann „Lichtstrahl senden“.",
+   "Lies die Statuszeile ab und trage ein.",
+   "Wiederhole mit „mittel“ und „sehr nah“.",
+   "Vergleiche die drei Wege im Bild."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Abstand",
+   "Was macht der Strahl?",
+   "Kommt er wieder heraus?"
+  ],
+  "tabRows": [
+   [
+    "weit weg",
+    "läuft fast gerade weiter",
+    "ja"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "sehr nah",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Grenze, hinter der nichts mehr entkommt, heißt",
+    "loesung": "Ereignishorizont",
+    "post": "."
+   },
+   {
+    "pre": "Man sieht nicht das Loch selbst, sondern das",
+    "loesung": "Licht",
+    "post": "in seiner Nähe."
+   }
+  ],
+  "wortbank": [
+   "Ereignishorizont",
+   "Licht",
+   "gebogen",
+   "verschluckt",
+   "nichts"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strahl bei „sehr nah“?",
+   "antwort": "Der Strahl wird immer stärker zum Loch hin gebogen. Er verschwindet im Ereignishorizont. Er kommt nie wieder heraus."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum ist ein schwarzes Loch schwarz?",
+    "optionen": [
+     "Es besteht aus schwarzem Gestein.",
+     "Weil kein Licht herauskommt.",
+     "Weil es dort Nacht ist."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nah am Loch wird der Lichtstrahl stark",
+      "loesung": "gebogen",
+      "post": "."
+     },
+     {
+      "pre": "Aus dem Ereignishorizont entkommt",
+      "loesung": "nichts",
+      "post": "– auch kein Licht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis: Wie kann man etwas markieren, das man gar nicht sehen kann?",
+    "satzstarter": "Man sieht das Loch nicht, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Der Strahl verrät das Loch durch seinen gebogenen Weg.",
+   "h2": "Beginne so: Man sieht das Loch nicht. Aber das Licht in seiner Nähe wird …",
+   "h3": "Fast fertige Antwort: Das Loch selbst leuchtet nicht. Wir erkennen es an seiner Wirkung auf das ___ in seiner Nähe."
+  },
+  "selbstcheck": [
+   "Ich weiß, was der Ereignishorizont ist.",
+   "Ich kann die drei Strahlwege beschreiben.",
+   "Ich kann erklären, wie man ein schwarzes Loch findet."
+  ],
+  "zuhause": "Spannt zu zweit ein Tuch. Legt einen schweren Ball in die Mitte und rollt eine Murmel vorbei: Nah am Ball wird ihre Bahn gebogen.",
+  "bildauftrag": "[BILD: in der Mitte ein schwarzer Kreis mit dünn markiertem Rand und großer Beschriftung „Ereignishorizont“; drei Lichtstrahlen laufen in verschiedenen Abständen vorbei: der äußere fast gerade (Beschriftung „weit weg“), der mittlere stark um das Loch herumgebogen („mittel“), der innere endet im Loch („sehr nah – verschluckt“); nur diese drei Linien; dunkler, ruhiger Hintergrund]"
+ },
+ {
+  "id": "fw13",
+  "quelle": "ew14",
+  "sim": "urknall",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Woher kommt alles?",
+  "name": "Wie hat sich das Weltall seit dem Urknall verändert?",
+  "fachwoerter_neu": [
+   "Urknall"
+  ],
+  "alltag": [
+   "Auf der letzten Sternkarte steht hinten: Und davor?",
+   "Sterne und Galaxien haben Nour und Jannis sortiert.",
+   "Aber woher kommt das alles?",
+   "Den heißen Anfang des Weltalls nennt man Urknall."
+  ],
+  "frage": "Wie hat sich das Weltall seit dem Urknall verändert?",
+  "predict": [
+   "Das Weltall war am Anfang winzig, heiß und dicht – und dehnt sich aus.",
+   "Das Weltall war schon immer so groß wie heute."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „zum Anfang“ und lies Zeitanzeige und Statuszeile.",
+   "Drücke „▶ Urknall starten“ und beobachte die Galaxien.",
+   "Vergleiche das Bild am Anfang mit dem Bild am Ende.",
+   "Trage alle Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Zeitpunkt",
+   "Wie liegen die Galaxien?",
+   "Was sagt die Statuszeile?"
+  ],
+  "tabRows": [
+   [
+    "am Anfang",
+    "alles auf winzigem Raum",
+    "unvorstellbar heiß und dicht"
+   ],
+   [
+    "in der Mitte des Ablaufs",
+    "",
+    ""
+   ],
+   [
+    "am Ende des Ablaufs",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Das Weltall begann vor etwa 13,8 Milliarden Jahren: winzig, heiß und",
+    "loesung": "dicht",
+    "post": "."
+   },
+   {
+    "pre": "Seitdem dehnt es sich aus. Die Abstände der Galaxien werden immer",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "dicht",
+   "größer",
+   "Urknall",
+   "dehnt",
+   "heiß"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation ganz am Anfang?",
+   "antwort": "Alles liegt auf winzigem Raum. Es ist unvorstellbar heiß und dicht. Die Zeitanzeige nennt die allerersten Augenblicke."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was macht das Weltall seit dem Urknall?",
+    "optionen": [
+     "Es schrumpft.",
+     "Es bleibt gleich groß.",
+     "Es dehnt sich aus."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Am Anfang war alles heiß und",
+      "loesung": "dicht",
+      "post": "."
+     },
+     {
+      "pre": "Das Weltall",
+      "loesung": "dehnt",
+      "post": "sich seit dem Urknall aus."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Sieh auf das Bild mit dem Luftballon. Warum entfernen sich alle Galaxien voneinander?",
+    "satzstarter": "Die Galaxien sind wie Punkte auf einem Ballon …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das Ballon-Bild: Beim Aufblasen wächst jeder Abstand zwischen den Punkten.",
+   "h2": "Beginne so: Die Galaxien sind wie Punkte auf einem Ballon. Bläst man ihn auf, …",
+   "h3": "Fast fertige Antwort: Beim Aufblasen wächst der Ballon überall. Darum wird der Abstand zwischen allen Punkten ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wie das Weltall begann.",
+   "Ich weiß, was sich seit dem Urknall ändert.",
+   "Ich kann das Ballon-Bild erklären."
+  ],
+  "zuhause": "Male drei Punkte auf einen Luftballon und blase ihn langsam auf. Beobachte, wie jeder Abstand zwischen den Punkten wächst.",
+  "bildauftrag": "[BILD: zweimal derselbe Luftballon nebeneinander: links klein aufgeblasen mit drei nah beieinanderliegenden Punkten, rechts groß aufgeblasen mit denselben drei Punkten weit auseinander; Pfeile zwischen den Punkten zeigen die gewachsenen Abstände; große Beschriftungen „vorher“ und „nachher“ und die Zeile „jeder Abstand wächst“; keine weiteren Objekte; ruhiger heller Hintergrund]"
+ }
+]

@@ -1,0 +1,72 @@
+[
+ {
+  "sim": "kernspaltung",
+  "ueberschrift": "⚛️ Wie holt man riesige Energie aus einem winzigen Kern?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "↺ Spaltung noch einmal",
+    "ruft": "_kspStart()"
+   },
+   {
+    "aufschrift": "⏸ Anhalten",
+    "ruft": "_kspPause()"
+   },
+   {
+    "aufschrift": "Barium + Krypton",
+    "ruft": "_kspSetWeg('ba')"
+   },
+   {
+    "aufschrift": "Xenon + Strontium",
+    "ruft": "_kspSetWeg('xe')"
+   },
+   {
+    "aufschrift": "Cäsium + Rubidium",
+    "ruft": "_kspSetWeg('cs')"
+   }
+  ],
+  "hinweise": [
+   "Ein langsames Neutron genügt. Der Urankern schluckt es, wird länglich und reißt auseinander. Achte auf die beiden Summen – und darauf, was trotzdem fehlt.",
+   "Warum ein langsames Neutron? Ein schnelles fliegt am Kern vorbei, bevor er es festhalten kann. Deshalb steht in jedem Reaktor ein Moderator – meist Wasser –, der die Neutronen abbremst.",
+   "Modellgrenze: Uran-235 spaltet sich nicht immer gleich. Es gibt über 30 verschiedene Paare von Bruchstücken; hier siehst du drei davon. Welches Paar entsteht, entscheidet der Zufall – die frei werdende Energie ist aber jedes Mal fast gleich groß. In Büchern steht oft 200 MeV; die Massenbilanz hier ergibt rund 175 MeV. Der Unterschied ist kein Fehler: Die Bruchstücke sind selbst radioaktiv und geben später noch einmal Energie ab. Zusammen kommt man auf die 200 MeV.",
+   "A und Z bleiben erhalten · die Masse nicht · der fehlende Rest ist die Energie: E = Δm · c²"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 141 + 92 + 3 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 56 + 36 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1860 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung. | | Das sind 173,3 MeV · 1,602 · 10⁻¹³ J/MeV = 2,78 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 71 Billionen Joule. | Dieselbe Energie liefern etwa 2428 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   },
+   {
+    "einstellung": "↺ Spaltung noch einmal",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 141 + 92 + 3 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 56 + 36 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1860 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung. | | Das sind 173,3 MeV · 1,602 · 10⁻¹³ J/MeV = 2,78 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 71 Billionen Joule. | Dieselbe Energie liefern etwa 2428 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   },
+   {
+    "einstellung": "⏸ Anhalten",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 141 + 92 + 3 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 56 + 36 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1860 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung. | | Das sind 173,3 MeV · 1,602 · 10⁻¹³ J/MeV = 2,78 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 71 Billionen Joule. | Dieselbe Energie liefern etwa 2428 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   },
+   {
+    "einstellung": "Barium + Krypton",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 141 + 92 + 3 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 56 + 36 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1860 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung. | | Das sind 173,3 MeV · 1,602 · 10⁻¹³ J/MeV = 2,78 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 71 Billionen Joule. | Dieselbe Energie liefern etwa 2428 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   },
+   {
+    "einstellung": "Xenon + Strontium",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹⁴⁰₅₄Xe + ⁹⁴₃₈Sr + 2 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 140 + 94 + 2 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 54 + 38 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1983 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1983 u · 931,5 MeV/u = 184,7 MeV je Spaltung. | | Das sind 184,7 MeV · 1,602 · 10⁻¹³ J/MeV = 2,96 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 76 Billionen Joule. | Dieselbe Energie liefern etwa 2588 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   },
+   {
+    "einstellung": "Cäsium + Rubidium",
+    "text": "kspStatus: Ein langsames Neutron fliegt auf den Urankern zu. | | ¹₀n + ²³⁵₉₂U → ¹³⁷₅₅Cs + ⁹⁶₃₇Rb + 3 ¹₀n | | Kernbausteine: links 1 + 235 = 236, rechts 137 + 96 + 3 = 236. Geht auf. | Protonen: links 0 + 92 = 92, rechts 55 + 37 = 92. Geht auch auf. | | Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1854 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: | E = 0,1854 u · 931,5 MeV/u = 172,7 MeV je Spaltung. | | Das sind 172,7 MeV · 1,602 · 10⁻¹³ J/MeV = 2,77 · 10⁻¹¹ J – winzig. Aber in 1 kg Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben 71 Billionen Joule. | Dieselbe Energie liefern etwa 2420 Tonnen Steinkohle – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge."
+   }
+  ],
+  "bildtexte": [
+   "²³⁵U",
+   "n",
+   "1 · Ein Neutron fliegt an",
+   "¹₀n + ²³⁵₉₂U  →  ¹⁴¹₅₆Ba + ⁹²₃₆Kr + 3 ¹₀n",
+   "frei werdende Energie: 173,3 MeV je Spaltung",
+   "¹₀n + ²³⁵₉₂U  →  ¹⁴⁰₅₄Xe + ⁹⁴₃₈Sr + 2 ¹₀n",
+   "frei werdende Energie: 184,7 MeV je Spaltung",
+   "¹₀n + ²³⁵₉₂U  →  ¹³⁷₅₅Cs + ⁹⁶₃₇Rb + 3 ¹₀n",
+   "frei werdende Energie: 172,7 MeV je Spaltung"
+  ]
+ }
+]

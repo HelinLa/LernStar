@@ -1,0 +1,89 @@
+{
+ "id": "ki7",
+ "basiskonzept": "Superposition und Komponenten",
+ "titel": "Zwei Kisten, ein schräges Seil",
+ "problem": "Vor der Regionalrunde von „Jugend forscht“ ziehen Mira und Tobias je eine Kiste über den verschneiten Hof, jede auf einem eigenen Schlitten. Tobias hält sein Seil fast waagerecht, Mira zieht ihres deutlich schräg nach oben. Beide ziehen mit derselben Kraft, doch bei Mira läuft der Schlitten spürbar leichter. Tobias vermutet einen Messfehler, Mira widerspricht.",
+ "frage": "Welcher Teil einer schräg ziehenden Kraft zieht den Schlitten vorwärts?",
+ "auftrag": "Bestimme aus dem Datenblatt die waagerechte und die senkrechte Komponente der Zugkraft und vergleiche, wie beide sich mit dem Winkel ändern.",
+ "predict": [
+  "Nur die waagerechte Komponente F · cos(α) zieht vorwärts, und sie wird mit wachsendem Winkel kleiner. Die senkrechte Komponente F · sin(α) zieht den Schlitten nach oben und entlastet ihn.",
+  "Der Schlitten wird bei jedem Winkel gleich stark vorwärts gezogen, denn die Zugkraft beträgt immer 200 N. Der Winkel ändert nur die Richtung des Seils, nicht die Wirkung."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Lies im Datenblatt die Zeilen für α = 0°, α = 30° und α = 60° ab und notiere beide Komponenten mit Einheit.",
+  "Rechne die Zeile α = 30° selbst nach: F · cos(30°) mit cos(30°) = 0,8660 und F · sin(30°) mit sin(30°) = 0,5000. Vergleiche dein Ergebnis mit den gedruckten Werten.",
+  "Ordne die fünf Zeilen danach, wie groß die waagerechte Komponente ist, und halte fest, was dabei mit der senkrechten Komponente geschieht."
+ ],
+ "tabCols": [
+  "Beide Komponenten aus dem Datenblatt",
+  "Was zieht vorwärts, was entlastet?"
+ ],
+ "tabRows": [
+  "α = 0°",
+  "α = 30°",
+  "α = 60°"
+ ],
+ "fachtext": "Eine Kraft ist eine vektorielle Größe: Sie hat einen Betrag und eine Richtung. Zieht ein Seil unter dem Winkel α zur Waagerechten, so lässt sich diese eine Kraft in zwei senkrecht zueinander stehende Anteile zerlegen, die zusammen genau dieselbe Wirkung haben wie sie. Die waagerechte Komponente beträgt F · cos(α), die senkrechte F · sin(α). Beide ergeben zusammen wieder F, aber nicht als Summe der Zahlen, sondern nach dem Satz des Pythagoras: (F · cos α)² + (F · sin α)² = F². Für den Schlitten heißt das: Vorwärts zieht allein die waagerechte Komponente. Die senkrechte Komponente hebt den Schlitten nicht vom Boden ab; sie verringert aber die Normalkraft F_N, mit der Schlitten und Boden aufeinandergedrückt werden. Damit greift die Zerlegung zugleich in die Reibung ein, denn die hängt von F_N ab.",
+ "merksatz": [
+  {
+   "pre": "Zieht ein Seil unter dem Winkel α zur Waagerechten, so beträgt die waagerechte Komponente",
+   "loesung": "F · cos(α)",
+   "post": "."
+  },
+  {
+   "pre": "Die senkrechte Komponente F · sin(α) drückt den Schlitten nicht auf den Boden, sondern",
+   "loesung": "entlastet ihn",
+   "post": "; deshalb sinkt die Reibung."
+  }
+ ],
+ "beobachtung": "Bei α = 0° steht im Datenblatt F · cos(α) = 200,0 N und F · sin(α) = 0,0 N: Die ganze Zugkraft zieht vorwärts, entlastet wird der Schlitten überhaupt nicht. Mit wachsendem Winkel sinkt die waagerechte Komponente auf 187,9 N bei 20°, 173,2 N bei 30°, 141,4 N bei 45° und schließlich 100,0 N bei 60°. Die senkrechte Komponente wächst gegenläufig von 0,0 N auf 173,2 N. Bei 45° sind beide gleich groß, je 141,4 N – zusammengezählt 282,8 N und damit weit mehr als die 200,0 N, mit denen überhaupt gezogen wird. Kräfte addieren sich eben als Pfeile, nicht als Zahlen: √(141,4² + 141,4²) = 200,0 N. Zwischen 30° und 60° tauschen die beiden Spalten ihre Werte, 173,2 N und 100,0 N stehen einmal so und einmal so herum.",
+ "aufgabe": {
+  "frage": "Berechne für α = 0° und für α = 20°, wie viel Zugkraft nach Abzug der Reibung zum Beschleunigen übrig bleibt, und begründe damit Miras Beobachtung. Der beladene Schlitten hat die Gewichtskraft 400,0 N; für Schlitten und Untergrund wird die Reibungszahl 0,30 angenommen, es gilt also F_R = 0,30 · (400,0 N − F · sin(α)).",
+  "zeilen": 5,
+  "loesung": "Beide Komponenten stehen im Datenblatt. Bei α = 0° sind es F · cos(0°) = 200,0 N und F · sin(0°) = 0,0 N. Die Normalkraft bleibt F_N = 400,0 N − 0,0 N = 400,0 N, die Reibung beträgt F_R = 0,30 · 400,0 N = 120,0 N. Zum Beschleunigen bleiben 200,0 N − 120,0 N = 80,0 N. Bei α = 20° stehen dort 187,9 N und 68,4 N. Die Normalkraft sinkt auf F_N = 400,0 N − 68,4 N = 331,6 N, die Reibung auf F_R = 0,30 · 331,6 N = 99,5 N. Übrig bleiben 187,9 N − 99,5 N = 88,4 N. Der Vortrieb ist bei 20° zwar um 12,1 N kleiner, die Reibung aber um 20,5 N – die Entlastung wiegt schwerer, und Mira zieht zu Recht schräg. Beliebig schräg darf sie aber nicht ziehen: Mit der Zeile α = 60° gerechnet, blieben nur noch 100,0 N − 0,30 · (400,0 N − 173,2 N) = 100,0 N − 68,0 N = 32,0 N übrig, viel weniger als die 80,0 N bei Tobias. Irgendwo dazwischen liegt der günstigste Winkel."
+ },
+ "alltag": "Beobachte an einem Rollkoffer, unter welchem Winkel der ausgezogene Griff zur Waagerechten steht, und erkläre mit F · cos(α) und F · sin(α), warum ein flach geführter Griff mehr Vortrieb liefert, ein steil geführter dagegen die Rollen entlastet.",
+ "alltagAfb": "II",
+ "alltagKomp": "S1",
+ "ueberleitung": "Wie stark diese Entlastung die Reibung wirklich verändert, misst du später im Kapitel an der Reibungssimulation. Zuerst aber lässt du das Seil ganz los: Auf der nächsten Seite geht es darum, was ein Körper tut, wenn überhaupt keine Kraft mehr an ihm zieht.",
+ "name": "Eine Kraft, zwei Richtungen",
+ "theme": "ef_mechanik",
+ "daten": {
+  "titel": "Zugkraft F = 200,0 N an einem Schlitten, in zwei Richtungen zerlegt",
+  "spalten": [
+   "Winkel α zur Waagerechten",
+   "waagerecht: F · cos(α)",
+   "senkrecht: F · sin(α)"
+  ],
+  "zeilen": [
+   [
+    "0°",
+    "200,0 N",
+    "0,0 N"
+   ],
+   [
+    "20°",
+    "187,9 N",
+    "68,4 N"
+   ],
+   [
+    "30°",
+    "173,2 N",
+    "100,0 N"
+   ],
+   [
+    "45°",
+    "141,4 N",
+    "141,4 N"
+   ],
+   [
+    "60°",
+    "100,0 N",
+    "173,2 N"
+   ]
+  ],
+  "quelle": "Berechnet für F = 200,0 N, gerundet auf eine Nachkommastelle. Der Winkel α wird zwischen Seil und Waagerechter gemessen; das Seil zieht schräg nach oben.",
+  "merke": "Die linke Spalte nennt den Winkel zwischen Seil und Waagerechter. Alle fünf Zeilen gehören zu ein und derselben Zugkraft von 200,0 N."
+ }
+}

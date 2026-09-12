@@ -1,0 +1,719 @@
+[
+ {
+  "id": "spannung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "LADUNG",
+     "tipp": "Davon gibt es zwei Arten: positive und negative."
+    },
+    {
+     "wort": "POSITIV",
+     "tipp": "So heißt die eine Ladungsart, Zeichen +."
+    },
+    {
+     "wort": "NEGATIV",
+     "tipp": "So heißt die andere Ladungsart, Zeichen −."
+    },
+    {
+     "wort": "STROM",
+     "tipp": "Bewegte Ladungen in einem geschlossenen Kreis."
+    },
+    {
+     "wort": "AMPERE",
+     "tipp": "Einheit der Stromstärke, Kurzzeichen A."
+    },
+    {
+     "wort": "SPANNUNG",
+     "tipp": "Der Antrieb für die Ladungen, Formelzeichen U."
+    },
+    {
+     "wort": "VOLT",
+     "tipp": "Einheit der Spannung, Kurzzeichen V."
+    },
+    {
+     "wort": "ZELLE",
+     "tipp": "Einzelne Batterie mit 1,5 V; drei davon ergeben 4,5 V."
+    },
+    {
+     "wort": "AMPEREMETER",
+     "tipp": "Dieses Gerät wird in Reihe eingebaut."
+    },
+    {
+     "wort": "VOLTMETER",
+     "tipp": "Dieses Gerät wird parallel angeschlossen."
+    },
+    {
+     "wort": "KURZSCHLUSS",
+     "tipp": "Das entsteht, wenn ein Amperemeter parallel liegt."
+    },
+    {
+     "wort": "WIDERSTAND",
+     "tipp": "Er lässt bei gleicher Spannung weniger Strom durch, je größer er ist."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann die beiden Ladungsarten nennen und angeben, wann sich zwei geladene Körper anziehen und wann sie sich abstoßen.",
+    "Ich kann erklären, was die Stromstärke angibt, und ihre Einheit nennen.",
+    "Ich kann erklären, was die Spannung im Stromkreis bewirkt, und ihre Einheit nennen.",
+    "Ich kann angeben, wie viele 1,5-V-Zellen für eine bestimmte Spannung nötig sind und warum sie hintereinander geschaltet werden.",
+    "Ich kann sagen, wie ein Amperemeter und wie ein Voltmeter angeschlossen wird, und begründen warum.",
+    "Ich kann erklären, warum ein parallel angeschlossenes Amperemeter einen Kurzschluss erzeugt.",
+    "Ich kann beschreiben, wovon die Stromstärke abhängt, und begründen, warum man immer nur eine Größe verändern darf."
+   ],
+   "tipps": [
+    "Schreibe die drei Größen mit Formelzeichen und Einheit auf eine Karte: Stromstärke I in Ampere, Spannung U in Volt, Widerstand R in Ohm. Sprich sie täglich einmal laut.",
+    "Präge dir die beiden Anschlussregeln mit einem Bild ein: Das Amperemeter steht mitten im Weg, das Voltmeter danebem an zwei Punkten.",
+    "Uebe die Reihe 1,5 V - 3 V - 4,5 V - 6 V so lange, bis du zu jeder Spannung sofort die Zahl der Zellen nennen kannst.",
+    "Oeffne die Simulationen noch einmal und sage vor jedem Klick laut, welchen Wert du erwartest. Erst dann lies ab."
+   ],
+   "mini": [
+    {
+     "frage": "Nenne die Einheiten von Stromstärke und Spannung mit ihren Kurzzeichen.",
+     "loesung": "Die Stromstärke wird in Ampere gemessen, Kurzzeichen A. Die Spannung wird in Volt gemessen, Kurzzeichen V."
+    },
+    {
+     "frage": "Wie viele 1,5-V-Zellen braucht man für 7,5 V, und wie werden sie geschaltet?",
+     "loesung": "7,5 V geteilt durch 1,5 V ergibt 5. Man braucht also fünf Zellen, hintereinander geschaltet, damit sich die Spannungen addieren."
+    },
+    {
+     "frage": "Ein Amperemeter wird parallel zur Lampe angeschlossen. Beschreibe, was geschieht.",
+     "loesung": "Es entsteht ein Kurzschluss. Weil das Amperemeter einen sehr kleinen Widerstand hat, fließt fast der ganze Strom durch das Gerät statt durch die Lampe. Der Strom wird sehr groß, und das Messgerät kann kaputtgehen."
+    },
+    {
+     "frage": "Bei mittlerem Widerstand fließen mit 1,5 V genau 0,10 A. Wie viel fließt mit 3 V?",
+     "loesung": "Doppelte Spannung bei gleichem Widerstand bedeutet doppelte Stromstärke, also 0,20 A."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Es gibt zwei Ladungsarten: positive und ",
+     "loesung": "negative",
+     "post": " Ladung."
+    },
+    {
+     "pre": "Die Stromstärke gibt an, wie viel Ladung in jeder ",
+     "loesung": "Sekunde",
+     "post": " fließt."
+    },
+    {
+     "pre": "Die Spannung ist der Antrieb für die Ladungen; ihre Einheit ist das ",
+     "loesung": "Volt",
+     "post": "."
+    },
+    {
+     "pre": "Das Amperemeter wird ",
+     "loesung": "in Reihe",
+     "post": " in den Stromkreis eingebaut."
+    },
+    {
+     "pre": "Bei gleichem Widerstand gilt: mehr Spannung, mehr ",
+     "loesung": "Strom",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Zwei positiv geladene Kugeln stoßen sich ab.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Im offenen Stromkreis fließt noch ein kleiner Strom.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Drei Zellen hintereinander liefern 4,5 V.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das Voltmeter wird in Reihe angeschlossen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein größerer Widerstand lässt bei gleicher Spannung weniger Strom durch.",
+     "stimmt": true
+    },
+    {
+     "aussage": "0,60 A sind sechsmal so viel wie 0,10 A.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Wer zwei Größen gleichzeitig verändert, kann die Ursache eindeutig zuordnen.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "An einer Lampe liegen 4,5 V, es fließen 0,30 A. Was gilt?",
+    "optionen": [
+     "Die Lampe hat einen Widerstand von 15 Ohm, denn R = U/I ergibt 4,5 V geteilt durch 0,30 A.",
+     "Die Lampe hat eine Spannung von 0,30 V. Spannung und Stromstärke sind verschiedene Größen.",
+     "Die Lampe hat einen Widerstand von 1,35 Ohm. Das wäre das Produkt, nicht der Quotient.",
+     "Die Lampe hat eine Stromstärke von 4,5 A. Die 4,5 gehören zur Spannung."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Amperemeter in Reihe und ein Voltmeter parallel angeschlossen wird.",
+    "zeilen": 4,
+    "loesung": "Das Amperemeter zählt, wie viel Ladung pro Sekunde vorbeikommt. Das gelingt nur, wenn der ganze Strom hindurchgeht, deshalb wird es in die Leitung eingebaut. Damit es den Kreis nicht stört, hat es einen sehr kleinen Widerstand; parallel angeschlossen würde es deshalb einen Kurzschluss erzeugen. Das Voltmeter misst dagegen den Unterschied zwischen zwei Punkten und muss an beiden gleichzeitig anliegen, also parallel. Sein Widerstand ist sehr groß, in Reihe würde es den Strom fast vollständig abwürgen."
+   },
+   "transfer": {
+    "frage": "Ben misst an seiner Seifenkiste einmal 0,20 A und einmal 0,60 A. Zwischen den Messungen hat er den Akku getauscht und ein anderes Kabel genommen. Erkläre, warum er daraus nicht schließen kann, welche Aenderung gewirkt hat, und beschreibe ein besseres Vorgehen.",
+    "zeilen": 5,
+    "loesung": "Beide Aenderungen wirken auf die Stromstärke: Ein stärkerer Akku bedeutet mehr Spannung und damit mehr Strom, ein dickeres Kabel bedeutet weniger Widerstand und ebenfalls mehr Strom. Weil Ben beides zugleich verändert hat, lässt sich aus der Endzahl nicht ablesen, welcher Anteil woher stammt; die Wirkungen könnten sich sogar teilweise aufheben. Besser wäre es, zweimal zu messen und jedes Mal nur eine Größe zu ändern: erst nur den Akku bei altem Kabel, dann nur das Kabel bei altem Akku. Alles übrige - Motor, Anschlüsse, Messgerät - muss beide Male gleich bleiben. Erst dann ist die Zuordnung eindeutig."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Flachbatterien 1,5 V",
+   "Lampchen mit Fassung",
+   "Kabel mit Klemmen",
+   "Amperemeter",
+   "Voltmeter",
+   "Schalter",
+   "Wollstoff und Kunststoffstab",
+   "Papierschnipsel",
+   "Taschenrechner"
+  ]
+ },
+ {
+  "id": "widerstand",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "WIDERSTAND",
+     "tipp": "Er bremst den Strom; Formelzeichen R."
+    },
+    {
+     "wort": "OHM",
+     "tipp": "Einheit des Widerstands."
+    },
+    {
+     "wort": "KENNLINIE",
+     "tipp": "Das Schaubild von I über U."
+    },
+    {
+     "wort": "GERADE",
+     "tipp": "So verläuft die Kennlinie eines ohmschen Bauteils."
+    },
+    {
+     "wort": "KUPFER",
+     "tipp": "Dieses Metall leitet von den dreien am besten."
+    },
+    {
+     "wort": "KONSTANTAN",
+     "tipp": "Dieses Material hat den größten Widerstand; man nimmt es für Heizdrähte."
+    },
+    {
+     "wort": "DICKE",
+     "tipp": "Je größer sie ist, desto kleiner der Widerstand des Drahtes."
+    },
+    {
+     "wort": "REIHE",
+     "tipp": "In dieser Schaltung addieren sich die Widerstände."
+    },
+    {
+     "wort": "PARALLEL",
+     "tipp": "In dieser Schaltung addieren sich die Ströme."
+    },
+    {
+     "wort": "TEILSPANNUNG",
+     "tipp": "So heißt die Spannung an einem einzelnen Widerstand der Reihe."
+    },
+    {
+     "wort": "POTENTIOMETER",
+     "tipp": "Ein Widerstand, dessen Wert sich stufenlos verstellen lässt."
+    },
+    {
+     "wort": "SCHLEIFER",
+     "tipp": "Er greift im Potentiometer die Widerstandsbahn ab."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, was ein Widerstand ist, und R aus U und I berechnen.",
+    "Ich kann eine Kennlinie deuten und sagen, was ihre Steigung bedeutet.",
+    "Ich kann begründen, warum eine Kennlinie durch den Nullpunkt geht.",
+    "Ich kann die drei Größen nennen, von denen der Widerstand eines Drahtes abhängt.",
+    "Ich kann in einer Reihenschaltung Gesamtwiderstand, Strom und beide Teilspannungen berechnen.",
+    "Ich kann begründen, warum der Gesamtwiderstand einer Parallelschaltung kleiner ist als jeder Einzelwiderstand.",
+    "Ich kann erklären, wie ein Potentiometer die Stromstärke stufenlos verändert."
+   ],
+   "tipps": [
+    "Lerne die drei Formen von R = U/I: nach U aufgelöst heißt sie U = R · I, nach I aufgelöst I = U/R. Schreibe alle drei untereinander.",
+    "Merke dir die beiden Schaltungen mit einem Satz: In Reihe addieren sich die Widerstände, parallel addieren sich die Ströme.",
+    "Zeichne zu jedem Draht-Versuch eine kleine Skizze: lang/kurz, dick/dünn, und schreibe den Widerstand daneben.",
+    "Rechne in der Reihenschaltung immer in dieser Reihenfolge: erst Gesamtwiderstand, dann Strom, dann Teilspannungen."
+   ],
+   "mini": [
+    {
+     "frage": "Durch ein Bauteil fließen bei 6 V genau 0,30 A. Berechne seinen Widerstand.",
+     "loesung": "R = U/I = 6 V geteilt durch 0,30 A = 20 Ohm."
+    },
+    {
+     "frage": "Zwei Widerstände mit 10 Ohm und 20 Ohm liegen in Reihe an 6 V. Berechne Gesamtwiderstand und Stromstärke.",
+     "loesung": "R = 10 Ohm + 20 Ohm = 30 Ohm. I = U/R = 6 V geteilt durch 30 Ohm = 0,20 A."
+    },
+    {
+     "frage": "Ein Kupferdraht (kurz, dick) hat 5 Ohm. Welchen Widerstand hat er doppelt so lang?",
+     "loesung": "Der Widerstand wächst mit der Länge: doppelte Länge, doppelter Widerstand, also 10 Ohm."
+    },
+    {
+     "frage": "Warum ist der Gesamtwiderstand zweier paralleler 10-Ohm-Widerstände nur 5 Ohm?",
+     "loesung": "Beide bekommen die volle Spannung und je einen eigenen Weg. Die Ströme addieren sich zum doppelten Gesamtstrom; bei gleicher Spannung und doppeltem Strom ist der Gesamtwiderstand halb so groß."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Einheit des Widerstands ist das ",
+     "loesung": "Ohm",
+     "post": ", Zeichen Omega."
+    },
+    {
+     "pre": "Aus Spannung und Stromstärke berechnet man den Widerstand als R = ",
+     "loesung": "U/I",
+     "post": "."
+    },
+    {
+     "pre": "Ein längerer Draht hat einen ",
+     "loesung": "größeren",
+     "post": " Widerstand als ein kurzer."
+    },
+    {
+     "pre": "In der Reihenschaltung ist die Stromstärke an jeder Stelle ",
+     "loesung": "gleich",
+     "post": " groß."
+    },
+    {
+     "pre": "In der Parallelschaltung liegt an beiden Widerständen die ",
+     "loesung": "gleiche",
+     "post": " Spannung."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei 4,5 V fließen durch 45 Ohm genau 0,10 A.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine steilere Kennlinie gehört zu einem größeren Widerstand.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein dünnerer Draht hat einen größeren Widerstand.",
+     "stimmt": true
+    },
+    {
+     "aussage": "In der Reihenschaltung bekommt jeder Widerstand die Hälfte des Stroms.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Zweimal 30 Ohm parallel ergeben 15 Ohm.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Am größeren Widerstand einer Reihe fällt die größere Teilspannung ab.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Potentiometer verändert die Spannung der Batterie.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "An 6 V liegen 10 Ohm und 20 Ohm in Reihe. Welche Teilspannung fällt am 10-Ohm-Widerstand ab?",
+    "optionen": [
+     "4,0 V, denn das ist der größere Anteil. Der fällt am 20-Ohm-Widerstand ab.",
+     "3,0 V, denn die Spannung teilt sich immer gleichmäßig. Sie teilt sich im Verhältnis der Widerstände.",
+     "2,0 V, denn I = 6 V geteilt durch 30 Ohm = 0,20 A, und 10 Ohm mal 0,20 A ergeben 2,0 V.",
+     "6,0 V, denn die Quelle liefert 6 V. Das ist die Summe beider Teilspannungen."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum der Gesamtwiderstand einer Parallelschaltung kleiner ist als jeder der beiden Einzelwiderstände.",
+    "zeilen": 4,
+    "loesung": "Entscheidend ist die Zahl der Wege, nicht die Zahl der Bauteile. In der Parallelschaltung liegt an beiden Widerständen die volle Spannung, und jeder bekommt einen eigenen Weg. Der erste lässt weiterhin genau so viel Strom durch wie vorher allein, der zweite kommt zusätzlich hinzu; der Gesamtstrom wächst also. Weil der Gesamtwiderstand als R = U/I berechnet wird und I größer geworden ist, während U gleich blieb, muss R kleiner geworden sein. Anschaulich: Zwei Türen nebeneinander lassen mehr Leute durch als eine."
+   },
+   "transfer": {
+    "frage": "An Bens Seifenkiste wird das dünne Kabel zum Motor nach einer Minute heiß, das dicke bleibt kalt. Erkläre mit dem Begriff Widerstand, woran das liegt, und was das für die Reichweite des Akkus bedeutet.",
+    "zeilen": 5,
+    "loesung": "Das dünne Kabel hat den größeren Widerstand, weil ein engerer Weg die Ladungen stärker bremst; bei gleicher Länge und gleichem Material verdoppelt sich der Widerstand, wenn der Draht halb so dick ist. Wo Strom durch einen Widerstand fließt, wird elektrische Energie in Wärme umgewandelt - deshalb erwärmt sich das dünne Kabel spürbar, das dicke dagegen kaum. Für die Reichweite ist das doppelt schlecht: Die Energie, die im Kabel als Wärme verlorengeht, fehlt am Motor, und der Akku ist früher leer. Außerdem fällt am Kabel eine Teilspannung ab, sodass am Motor weniger als die volle Akkuspannung ankommt und er langsamer läuft."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Widerstände 10 Ohm und 20 Ohm",
+   "Drähte aus Kupfer, Eisen und Konstantan",
+   "Potentiometer",
+   "Flachbatterie",
+   "Amperemeter",
+   "Voltmeter",
+   "Millimeterpapier",
+   "Lineal",
+   "Taschenrechner"
+  ]
+ },
+ {
+  "id": "leistung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "LEISTUNG",
+     "tipp": "Sie sagt, wie viel Energie in jeder Sekunde umgesetzt wird."
+    },
+    {
+     "wort": "WATT",
+     "tipp": "Einheit der Leistung."
+    },
+    {
+     "wort": "JOULE",
+     "tipp": "Einheit der Energie; ein Watt ist ein Joule je Sekunde."
+    },
+    {
+     "wort": "ENERGIE",
+     "tipp": "Sie ergibt sich als Leistung mal Zeit."
+    },
+    {
+     "wort": "KILOWATTSTUNDE",
+     "tipp": "Diese Einheit steht auf der Stromrechnung."
+    },
+    {
+     "wort": "PREIS",
+     "tipp": "Mal die Energie ergibt er die Kosten."
+    },
+    {
+     "wort": "SPAREN",
+     "tipp": "Das Ziel, wenn man Glühlampen gegen LED tauscht."
+    },
+    {
+     "wort": "STANDBY",
+     "tipp": "In diesem Zustand ziehen Geräte rund um die Uhr etwas Strom."
+    },
+    {
+     "wort": "SICHERUNG",
+     "tipp": "Sie unterbricht den Kreis bei zu großem Strom."
+    },
+    {
+     "wort": "WASSERKOCHER",
+     "tipp": "Gerät mit 2000 W in der Simulation."
+    },
+    {
+     "wort": "LED",
+     "tipp": "Sparsame Lampe mit nur 10 W."
+    },
+    {
+     "wort": "BRAND",
+     "tipp": "Das soll die Sicherung verhindern."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann die Leistung aus Spannung und Stromstärke berechnen und ihre Einheit nennen.",
+    "Ich kann die Energie aus Leistung und Zeit berechnen und in Kilowattstunden umrechnen.",
+    "Ich kann die Kosten für den Betrieb eines Gerätes im Jahr ausrechnen.",
+    "Ich kann begründen, warum ein Gerät mit kleiner Leistung teurer sein kann als eines mit großer.",
+    "Ich kann drei Sparmaßnahmen nach ihrer Ersparnis ordnen und meine Reihenfolge begründen.",
+    "Ich kann erklären, warum eine Sicherung auslöst, obwohl kein Gerät defekt ist."
+   ],
+   "tipps": [
+    "Schreibe die beiden Formeln untereinander: P = U · I und E = P · t. Merke dir, dass in der zweiten die Zeit dazukommt.",
+    "Rechne Wattstunden immer sofort in Kilowattstunden um, indem du durch 1000 teilst. Auf der Rechnung stehen nur kWh.",
+    "Präge dir eine Kette ein: Watt mal Stunden ergibt Wattstunden, geteilt durch 1000 ergibt Kilowattstunden, mal Preis ergibt Euro.",
+    "Ueberschlage bei jeder Aufgabe zuerst grob, bevor du genau rechnest. So merkst du sofort, wenn ein Komma verrutscht ist."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Motor nimmt bei 12 V eine Stromstärke von 3 A auf. Berechne seine Leistung.",
+     "loesung": "P = U · I = 12 V mal 3 A = 36 W."
+    },
+    {
+     "frage": "Ein Gerät mit 500 W läuft 4 Stunden. Berechne die Energie in Wh und in kWh.",
+     "loesung": "E = P · t = 500 W mal 4 h = 2000 Wh. Geteilt durch 1000 sind das 2 kWh."
+    },
+    {
+     "frage": "Eine LED mit 10 W brennt 3 Stunden am Tag. Berechne die Jahreskosten bei 0,30 Euro je kWh.",
+     "loesung": "E = 10 W mal 3 h = 30 Wh = 0,03 kWh am Tag. Kosten: 0,03 kWh mal 0,30 Euro = 0,009 Euro am Tag, im Jahr 0,009 mal 365 = rund 3,29 Euro."
+    },
+    {
+     "frage": "Drei Geräte mit je 6 A hängen an einer 16-A-Sicherung. Was geschieht?",
+     "loesung": "Die Ströme addieren sich zu 18 A. Das ist mehr als 16 A, die Sicherung löst aus und unterbricht den Stromkreis."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die elektrische Leistung berechnet man als P = ",
+     "loesung": "U · I",
+     "post": "."
+    },
+    {
+     "pre": "Die Einheit der Leistung ist das ",
+     "loesung": "Watt",
+     "post": "."
+    },
+    {
+     "pre": "Die umgesetzte Energie berechnet man als E = ",
+     "loesung": "P · t",
+     "post": "."
+    },
+    {
+     "pre": "1000 Wattstunden sind eine ",
+     "loesung": "Kilowattstunde",
+     "post": "."
+    },
+    {
+     "pre": "Die Sicherung unterbricht den Kreis, wenn der Strom über ",
+     "loesung": "16",
+     "post": " Ampere steigt."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei doppelter Spannung am selben Verbraucher wird die Leistung viermal so groß.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Watt und Kilowattstunde messen dasselbe.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Gerät mit kleiner Leistung kann hohe Jahreskosten verursachen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der Wasserkocher verbraucht bei einer Stunde am Tag 2 kWh.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine Sicherung löst nur aus, wenn ein Gerät defekt ist.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Das Ziehen der Stecker spart in der Simulation fast so viel wie der Lampentausch.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Wer die Betriebszeit verdoppelt, halbiert die umgesetzte Energie.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Föhn nimmt bei 230 V eine Stromstärke von 6 A auf und läuft täglich 10 Minuten. Was gilt?",
+    "optionen": [
+     "Seine Leistung beträgt 38 W. Das wäre der Widerstand in Ohm, nicht die Leistung.",
+     "Seine Leistung beträgt 236 W. Spannung und Stromstärke werden nicht addiert.",
+     "Seine Leistung beträgt 1380 W, und er setzt täglich 0,23 kWh um.",
+     "Seine Leistung beträgt 1380 W, und er setzt täglich 13,8 kWh um. Zehn Minuten sind nur ein Sechstel einer Stunde."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Begründe, warum ein Kühlschrank mit 150 W im Jahr mehr kostet als ein Wasserkocher mit 2000 W.",
+    "zeilen": 4,
+    "loesung": "Für die Kosten zählt nicht die Leistung allein, sondern die Energie, und die ist Leistung mal Zeit. Der Wasserkocher hat zwar die dreizehnfache Leistung, läuft aber nur etwa eine Stunde am Tag und kommt so auf 2 kWh. Der Kühlschrank läuft dagegen 24 Stunden; 150 W mal 24 h ergeben 3600 Wh, also 3,6 kWh. Die lange Laufzeit gleicht die kleinere Leistung mehr als aus. Bei 0,30 Euro je kWh sind das 394,20 Euro im Jahr gegenüber 219,00 Euro."
+   },
+   "transfer": {
+    "frage": "Bens Vater kann nur eine Sparmaßnahme bezahlen: Glühlampen gegen LED tauschen (spart 75,9 kWh), Stecker ziehen statt Standby (73,0 kWh) oder einen neuen Kühlschrank kaufen (109,5 kWh). Beurteile, welche er wählen sollte, und nenne einen Grund, der gegen die reine Rechnung spricht.",
+    "zeilen": 5,
+    "loesung": "Nach den Zahlen ist der neue Kühlschrank die beste Wahl: 109,5 kWh entsprechen bei 0,30 Euro je kWh einer Ersparnis von 32,85 Euro im Jahr, gegenüber 22,78 Euro beim Lampentausch und 21,90 Euro beim Steckerziehen. Gegen die reine Rechnung spricht vor allem der Preis: Ein neuer Kühlschrank kostet mehrere hundert Euro und hat sich erst nach vielen Jahren bezahlt gemacht, während das Steckerziehen gar nichts kostet und sofort wirkt. Auch die Herstellung des neuen Geräts verbraucht Energie und Rohstoffe. Wer wenig Geld hat, fängt deshalb sinnvollerweise beim Standby an und tauscht die Lampen nach und nach."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Geräte mit Typenschild",
+   "Stromrechnung als Beispiel",
+   "Energiemessgerät für die Steckdose",
+   "Taschenrechner",
+   "Steckdosenleiste mit Schalter",
+   "LED-Lampe und alte Glühlampe"
+  ]
+ },
+ {
+  "id": "tempo",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "GESCHWINDIGKEIT",
+     "tipp": "Strecke geteilt durch Zeit."
+    },
+    {
+     "wort": "STRECKE",
+     "tipp": "Formelzeichen s, gemessen in Metern."
+    },
+    {
+     "wort": "ZEIT",
+     "tipp": "Formelzeichen t, gemessen in Sekunden."
+    },
+    {
+     "wort": "STOPPUHR",
+     "tipp": "Damit misst man die Zeit für die Messstrecke."
+    },
+    {
+     "wort": "KONSTANT",
+     "tipp": "So ist die Geschwindigkeit bei einer gleichförmigen Bewegung."
+    },
+    {
+     "wort": "BESCHLEUNIGT",
+     "tipp": "So heißt eine Bewegung, bei der sich v ändert - auch beim Bremsen."
+    },
+    {
+     "wort": "BREMSEN",
+     "tipp": "Dabei rücken die Sekundenmarken enger zusammen."
+    },
+    {
+     "wort": "DIAGRAMM",
+     "tipp": "Darin trägt man Weg oder Geschwindigkeit über der Zeit auf."
+    },
+    {
+     "wort": "STEIGUNG",
+     "tipp": "Im Weg-Zeit-Diagramm verrät sie die Geschwindigkeit."
+    },
+    {
+     "wort": "STILLSTAND",
+     "tipp": "Das bedeutet eine waagerechte Linie im Weg-Zeit-Diagramm."
+    },
+    {
+     "wort": "BLITZER",
+     "tipp": "Er vergleicht gemessene und erlaubte Geschwindigkeit."
+    },
+    {
+     "wort": "TACHO",
+     "tipp": "Er zeigt im Fahrzeug Kilometer je Stunde an."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, wann ein Körper schneller ist als ein anderer, und warum die Ankunft allein nichts aussagt.",
+    "Ich kann aus Strecke und Zeit die Geschwindigkeit berechnen und die Formel nach t umstellen.",
+    "Ich kann zwischen m/s und km/h umrechnen und den Faktor 3,6 begründen.",
+    "Ich kann eine gleichförmige von einer beschleunigten Bewegung unterscheiden und beide an Sekundenmarken erkennen.",
+    "Ich kann ein Weg-Zeit-Diagramm lesen und sagen, was Steigung und waagerechte Abschnitte bedeuten.",
+    "Ich kann ein Geschwindigkeit-Zeit-Diagramm lesen und es vom Weg-Zeit-Diagramm unterscheiden.",
+    "Ich kann erklären, wann eine Geschwindigkeitsmessung im Verkehr auslöst."
+   ],
+   "tipps": [
+    "Lerne die Formel in allen drei Formen: v = s/t, s = v · t und t = s/v. Verdecke jeweils eine Größe und rechne sie aus.",
+    "Merke dir zwei Ankerwerte für die Umrechnung: 10 m/s sind 36 km/h, und 5 m/s sind 18 km/h.",
+    "Zeichne zu jeder Bewegungsart beide Diagramme nebeneinander. Der häufigste Fehler ist, eine waagerechte Linie im v-t-Diagramm für Stillstand zu halten.",
+    "Achte bei jedem Diagramm zuerst auf die Beschriftung der senkrechten Achse, erst danach auf den Verlauf der Linie."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Wagen legt 10 m in 4 s zurück. Berechne seine Geschwindigkeit.",
+     "loesung": "v = s/t = 10 m geteilt durch 4 s = 2,5 m/s."
+    },
+    {
+     "frage": "Rechne 5 m/s in Kilometer je Stunde um.",
+     "loesung": "5 m/s mal 3,6 ergeben 18 km/h."
+    },
+    {
+     "frage": "Die Sekundenmarken werden immer weiter auseinander. Was tut der Wagen?",
+     "loesung": "Er wird schneller. In jeder Sekunde legt er eine größere Strecke zurück, die Bewegung ist also beschleunigt."
+    },
+    {
+     "frage": "Im v-t-Diagramm verläuft die Linie waagerecht auf halber Höhe. Was bedeutet das?",
+     "loesung": "Die Geschwindigkeit bleibt gleich; der Wagen fährt gleichförmig weiter. Er steht gerade nicht, denn die Linie liegt nicht auf null."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Geschwindigkeit berechnet man als v = ",
+     "loesung": "s / t",
+     "post": "."
+    },
+    {
+     "pre": "Von m/s nach km/h rechnet man mal ",
+     "loesung": "3,6",
+     "post": "."
+    },
+    {
+     "pre": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit ",
+     "loesung": "gleich",
+     "post": "."
+    },
+    {
+     "pre": "Im Weg-Zeit-Diagramm bedeutet eine waagerechte Linie ",
+     "loesung": "Stillstand",
+     "post": "."
+    },
+    {
+     "pre": "Ausgelöst wird eine Messung, wenn die gemessene Geschwindigkeit über der ",
+     "loesung": "erlaubten",
+     "post": " liegt."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Wer zuerst ankommt, ist immer der Schnellere.",
+     "stimmt": false
+    },
+    {
+     "aussage": "50 m in 5 s und 200 m in 20 s ergeben dieselbe Geschwindigkeit.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Auch das Bremsen zählt zu den beschleunigten Bewegungen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine waagerechte Linie im v-t-Diagramm bedeutet Stillstand.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Linie im Weg-Zeit-Diagramm kann nicht fallen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "14 m/s entsprechen rund 50 km/h.",
+     "stimmt": true
+    },
+    {
+     "aussage": "70 km/h bei erlaubten 70 km/h lösen die Messung aus.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Auto fährt 100 m in 5 s. Wie schnell ist es in km/h?",
+    "optionen": [
+     "20 km/h, denn 100 geteilt durch 5 ergibt 20. Das ist der Wert in m/s.",
+     "36 km/h, denn 10 m/s sind 36 km/h. Hier sind es aber 20 m/s.",
+     "500 km/h, denn 100 mal 5 sind 500. Bei v = s/t wird geteilt, nicht multipliziert.",
+     "72 km/h, denn v = 100 m geteilt durch 5 s = 20 m/s, und 20 mal 3,6 ergeben 72 km/h."
+    ],
+    "richtig": 3
+   },
+   "offen": {
+    "frage": "Erkläre, warum eine waagerechte Linie im Weg-Zeit-Diagramm und im Geschwindigkeit-Zeit-Diagramm etwas Verschiedenes bedeutet.",
+    "zeilen": 4,
+    "loesung": "Der Unterschied liegt in der senkrechten Achse. Im Weg-Zeit-Diagramm steht dort der zurückgelegte Weg; bleibt er gleich, kommt kein Weg mehr dazu, und das heißt Stillstand. Im Geschwindigkeit-Zeit-Diagramm steht dort die Geschwindigkeit; bleibt sie gleich, so fährt der Wagen mit unverändertem Tempo weiter und steht gerade nicht - es sei denn, die Linie liegt genau auf null. Eine waagerechte Linie bedeutet also immer nur, dass sich die aufgetragene Größe nicht ändert. Welche Größe das ist, muss man an der Achse ablesen."
+   },
+   "transfer": {
+    "frage": "Bens Seifenkiste braucht für die 50-Meter-Strecke auf dem Hof 10 Sekunden. Berechne die Geschwindigkeit in m/s und in km/h und beurteile, ob die Kiste innerorts mit dem Verkehr mithalten könnte.",
+    "zeilen": 5,
+    "loesung": "Die Geschwindigkeit beträgt v = s/t = 50 m geteilt durch 10 s = 5 m/s. Umgerechnet sind das 5 mal 3,6 = 18 km/h. Innerorts sind meist 50 km/h erlaubt; das entspricht 50 geteilt durch 3,6, also rund 13,9 m/s. Die Kiste ist mit 5 m/s damit nur gut ein Drittel so schnell wie ein Auto, das die erlaubte Geschwindigkeit ausfährt. Mithalten könnte sie also nicht. Ihr Tempo entspricht ungefähr dem eines gemütlich fahrenden Radfahrers, was für ein Rennen auf einem abgesperrten Hof völlig ausreicht."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Maßband oder Zollstock",
+   "Stoppuhr oder Handy",
+   "Kreide zum Markieren",
+   "Millimeterpapier",
+   "Lineal",
+   "Taschenrechner"
+  ]
+ }
+]

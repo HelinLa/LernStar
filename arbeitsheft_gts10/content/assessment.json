@@ -1,0 +1,386 @@
+[
+ {
+  "id": "gts_versorgung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "MAGNETFELD",
+     "tipp": "Dieser Bereich umgibt jeden Magneten und jeden Draht, durch den Strom fließt; jede Kompassnadel darin richtet sich aus."
+    },
+    {
+     "wort": "FELDLINIEN",
+     "tipp": "Diese gedachten Kurven zeigen, wohin sich eine Kompassnadel stellt; außerhalb eines Stabmagneten laufen sie vom Nordpol zum Südpol, und wo sie dicht liegen, ist die Wirkung stark."
+    },
+    {
+     "wort": "ELEKTROMAGNET",
+     "tipp": "Diese Spule mit Eisenkern zieht nur an, solange Strom fließt; ihre Tragkraft wächst mit der Windungszahl und mit der Stromstärke."
+    },
+    {
+     "wort": "DREIFINGERREGEL",
+     "tipp": "Mit Daumen, Zeigefinger und Mittelfinger der rechten Hand sagst du vorher, wohin ein stromdurchflossener Stab im Feld gedrückt wird."
+    },
+    {
+     "wort": "KOMMUTATOR",
+     "tipp": "Dieser geteilte Ring auf der Welle tauscht bei jeder halben Umdrehung die Anschlüsse; ohne ihn pendelt die Spule des Motors zurück und bleibt stehen."
+    },
+    {
+     "wort": "INDUKTION",
+     "tipp": "So heißt der Vorgang, bei dem allein die Änderung des Feldes in einer Spule eine Spannung entstehen lässt; ein still liegender Magnet schafft das nicht."
+    },
+    {
+     "wort": "WECHSELSPANNUNG",
+     "tipp": "Diese Form der Spannung wechselt ständig ihr Vorzeichen und folgt dabei einer Sinuskurve; nur mit ihr arbeitet ein Transformator."
+    },
+    {
+     "wort": "TRANSFORMATOR",
+     "tipp": "Zwei Spulen auf einem gemeinsamen Eisenjoch: Ihre Spannungen verhalten sich wie ihre Windungszahlen."
+    },
+    {
+     "wort": "HOCHSPANNUNG",
+     "tipp": "Vor einer langen Fernleitung wird die Spannung weit heraufgesetzt; dadurch fließt für dieselbe Leistung ein kleinerer Strom, und der Verlust sinkt mit dessen Quadrat."
+    },
+    {
+     "wort": "TURBINE",
+     "tipp": "Dieses Rad wird in Kohle- und Kernkraftwerken von heißem Dampf angetrieben und dreht den Generator."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Diese Zahl gibt an, welcher Anteil der hineingesteckten Energie als Nutzen herauskommt; bei der Glühlampe sind es 5 %, bei der LED-Lampe 40 %."
+    },
+    {
+     "wort": "KILOWATTSTUNDE",
+     "tipp": "Diese Einheit zählt der Zähler im Keller; eine davon setzt ein Gerät mit 1000 W in einer Stunde um, und sie kostet hier 0,30 €."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann beschreiben, wie die Feldlinien um einen Stabmagneten und um einen stromdurchflossenen Draht verlaufen, und daraus begründen, warum die Kompassnadel am Pol am stärksten und über der Mitte kaum gedreht wird.",
+    "Ich kann erklären, warum eine Spule mit Eisenkern nur bei fließendem Strom ein Magnet ist, und angeben, dass ihre Tragkraft proportional zur Windungszahl und zur Stromstärke wächst.",
+    "Ich kann die Kraft auf einen stromdurchflossenen Stab im Magnetfeld mit F = B · I · L berechnen und mit der Drei-Finger-Regel der rechten Hand vorhersagen, wohin er gedrückt wird, auch nach dem Umpolen von Strom oder Magnet.",
+    "Ich kann erklären, warum sich eine Spule im Magnetfeld dreht und warum der Kommutator nötig ist, damit sie nach einer halben Umdrehung nicht zurückpendelt.",
+    "Ich kann begründen, dass eine Spannung nur entsteht, solange sich das Magnetfeld in der Spule ändert, und ausrechnen, wie sich Windungszahl, Feldstärke und Tempo auf die Spannung auswirken.",
+    "Ich kann am Generator erklären, warum die Spannung einer Sinuskurve folgt, und den Scheitelwert vom Effektivwert unterscheiden.",
+    "Ich kann am Transformator die Sekundärspannung aus dem Verhältnis der Windungszahlen berechnen und begründen, warum er nur mit Wechselspannung arbeitet.",
+    "Ich kann mit PVerlust = R · I² und I = P/U begründen, warum die Energie über weite Strecken mit Hochspannung übertragen wird, und die Kette aus Hoch- und Heruntertransformieren zwischen Kraftwerk und Steckdose beschreiben.",
+    "Ich kann Kraftwerksarten nach Brennstoff, Regelbarkeit und Nebenwirkungen vergleichen und begründen, warum ein sicheres Netz eine Mischung aus mehreren Arten braucht.",
+    "Ich kann den Wirkungsgrad mit η = Enutz / Erein berechnen, die Jahreskosten eines Geräts aus Leistung, Laufzeit und Preis je Kilowattstunde bestimmen und die drei Felder von Ladung, Magnet und Masse als Kraftwirkung ohne Berührung beschreiben."
+   ],
+   "tipps": [
+    "Übe die Drei-Finger-Regel mit der eigenen rechten Hand, nicht im Kopf: Daumen in die technische Stromrichtung, Zeigefinger vom Nordpol zum Südpol, Mittelfinger zeigt die Kraft. Halte die Hand an eine Skizze und prüfe danach mit dem Umpolen, ob sich die Richtung wirklich dreht. Zwei Umkehrungen zugleich heben sich auf.",
+    "Schreibe die sechs Formeln des Kapitels auf einen Zettel: F = B · I · L, M = N · B · I · A, US zu UP wie NS zu NP, PVerlust = R · I², η = Enutz / Erein und Kosten = Energie in kWh mal Preis. Stelle jede Formel nach jeder Größe um, bevor du eine Aufgabe rechnest.",
+    "Lege eine Tabelle mit zwei Spalten an, links Motor, rechts Generator. Trage ein, was hineingeht und was herauskommt: Beim Motor wird aus Strom im Magnetfeld eine Drehung, beim Generator wird aus einer Drehung im Magnetfeld eine Spannung. So verwechselst du die beiden Richtungen in der Klassenarbeit nicht.",
+    "Prüfe die Zahlen des Kapitels an den Seiten nach: 30,0 µT Drahtfeld bei 3,0 A und 2,0 cm gegen 20 µT Erdfeld, 0,100 N bei 0,20 T und 5,0 A, 16,0 Millinewtonmeter bei 20 Windungen, 0,300 V, 0,600 V und 1,200 V beim Induktionsversuch, 8,80 V beim Transformator mit k = 0,88, 2,21 W Verlust bei 20 V gegen 0,01 W bei 250 V, η = 5 % gegen 40 % und 0,30 € je Kilowattstunde."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Stab von 0,10 m Länge liegt in einem Feld von 0,20 T, durch ihn fließen 8,0 A. Wie groß ist die Kraft auf ihn?",
+     "loesung": "F = B · I · L = 0,20 T · 8,0 A · 0,10 m = 0,160 N. Die Kraft wirkt senkrecht zum Strom und senkrecht zum Feld; sie ist doppelt so groß wie die 0,080 N bei 4,0 A."
+    },
+    {
+     "frage": "Ein Transformator hat NP = 500 und NS = 1500. An der Primärspule liegen 6,0 V Wechselspannung. Welche Sekundärspannung erwartest du?",
+     "loesung": "Das Übersetzungsverhältnis ist NS/NP = 1500/500 = 3, also ideal US = 3 · 6,0 V = 18,0 V. Die Simulation zeigt weniger, weil sie mit dem Kopplungsgrad k = 0,88 rechnet: 0,88 · 18,0 V = 15,84 V."
+    },
+    {
+     "frage": "Bei einer Übertragungsspannung von 20 V beträgt der Verlust in der Leitung 2,21 W. Wie groß ist er bei 40 V, wenn dieselbe Leistung übertragen wird?",
+     "loesung": "Doppelte Spannung bedeutet halben Strom, und der Verlust wächst mit dem Quadrat des Stroms. Es bleibt also ein Viertel übrig: 2,21 W: 4 = 0,55 W. Genau diesen Wert zeigt auch die Tabelle in der Simulation."
+    },
+    {
+     "frage": "Ein Wasserkocher mit 2000 W läuft jeden Tag eine Stunde. Was kostet er im Jahr bei 0,30 € je Kilowattstunde?",
+     "loesung": "2000 W sind 2 kW, in einer Stunde also 2 kWh am Tag. Im Jahr sind das 365 · 2 kWh = 730 kWh, und 730 · 0,30 € = 219,00 €. Läuft er acht Stunden am Tag, ist es das Achtfache: 1752,00 €."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Um einen Draht, durch den Strom fließt, verlaufen die Feldlinien",
+     "loesung": "im Kreis",
+     "post": "; eine Kompassnadel daneben wird deshalb zur Seite gedreht und nicht angezogen."
+    },
+    {
+     "pre": "Die Kraft auf einen stromdurchflossenen Stab im Magnetfeld berechnest du mit",
+     "loesung": "F = B · I · L",
+     "post": "; sie wirkt senkrecht zum Strom und senkrecht zum Feld."
+    },
+    {
+     "pre": "In einer Spule entsteht eine Spannung nur, solange sich das Magnetfeld in ihr",
+     "loesung": "ändert",
+     "post": "; ein still liegender Magnet treibt keine Ladungen an."
+    },
+    {
+     "pre": "Am Transformator verhalten sich die beiden Spannungen wie die",
+     "loesung": "Windungszahlen",
+     "post": "der beiden Spulen; deshalb arbeitet er nur mit Wechselspannung."
+    },
+    {
+     "pre": "Den Wirkungsgrad berechnest du mit",
+     "loesung": "η = Enutz / Erein",
+     "post": "; er ist immer kleiner als 1, weil ein Teil der Energie als Wärme entweicht."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "An den Polen eines Stabmagneten liegen die Feldlinien dicht beieinander, dort ist das Feld am stärksten.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Elektromagnet behält seine Tragkraft auch dann, wenn der Strom abgeschaltet wird.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Polst du bei einem Motor den Strom und den Magneten zugleich um, dreht er sich weiter in dieselbe Richtung.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verzehnfachst du die Übertragungsspannung einer Leitung, sinkt der Verlust auf ein Hundertstel.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Transformator arbeitet auch mit Gleichspannung, wenn man sie nur groß genug wählt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Stromzähler im Keller misst die Energie in Kilowattstunden und nicht die Leistung in Watt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein sehr gut gebautes Gerät kann einen Wirkungsgrad von mehr als 1 erreichen.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Transformator hat NP = 200 Windungen auf der Primärseite und NS = 800 auf der Sekundärseite. An der Primärspule liegen 5,0 V Wechselspannung. Welche Spannung liefert er im Idealfall?",
+    "optionen": [
+     "1,25 V",
+     "10,0 V",
+     "20,0 V",
+     "40,0 V"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Generator nur Spannung liefert, solange sich seine Spule dreht, und warum die Spannung dabei einer Sinuskurve folgt.",
+    "zeilen": 5,
+    "loesung": "Eine Spannung entsteht nicht durch das Magnetfeld selbst, sondern nur durch dessen Änderung in der Spule. Steht die Spule still, ändert sich nichts, und der Zeiger bleibt auf null. Beim Drehen ändert sich die wirksame Fläche, also der Teil der Spulenfläche, den man als Schatten quer zum Feld sieht: A′ = A · cos φ. In der Lage φ = 0° ist dieser Schatten am größten, ändert sich für einen Augenblick aber kaum, deshalb ist die Spannung dort null. Bei φ = 90° ist der Schatten zum Strich geschrumpft, dafür ändert er sich am schnellsten, und die Spannung erreicht ihren Scheitelwert von 0,658 V; der Effektivwert liegt bei 0,465 V. Weil sich die wirksame Fläche gleichmäßig auf und ab verändert, ergibt sich als Kurve ein Sinus, und ihr Scheitelwert verdoppelt sich, wenn die Spule doppelt so schnell dreht."
+   },
+   "transfer": {
+    "frage": "Jannis' Freund sagt: „Wenn abends alle gleichzeitig kochen, muss der Windpark eben schneller drehen. Dann brauchen wir gar kein anderes Kraftwerk mehr.“ Beurteile diese Aussage.",
+    "zeilen": 6,
+    "loesung": "Die Aussage ist nicht haltbar. Wie schnell sich ein Windrad dreht, gibt der Wind vor und nicht der Verbrauch: Bei Flaute liefert der Windpark nichts, und niemand kann ihn hochfahren. Im Datenblatt steht der Wind deshalb beim Brennstoff am besten und bei der Planbarkeit am schlechtesten da. Hinzu kommt, dass die Drehzahl eines Generators die Spannung und die Frequenz bestimmt – verdoppelt man die Drehfrequenz, verdoppelt sich der Scheitelwert –, und beides muss im Netz gleich bleiben, darf also nicht nach dem Bedarf verstellt werden. Mehr Bedarf am Abend heißt mehr Leistung, und die muss aus regelbaren Kraftwerken oder aus Speichern kommen: Kohle- und Kernkraftwerke laufen gleichmäßig, sind aber nur langsam nachzuführen, ein Pumpspeicher liefert selbst keine Energie, verschiebt sie aber vom Überschuss in die Spitze. Ein sicheres Netz braucht darum eine Mischung, zum Beispiel Windpark und Pumpspeicher zusammen."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Stabmagnete und eine Schachtel kleiner Prüfkompasse",
+   "Eisenfeilspäne in einer Streudose und eine Glasplatte zum Sichtbarmachen der Feldlinien",
+   "dicker Kupferdraht auf einem Holzgestell, darunter ein Kompass (Aufbau von Oersted)",
+   "regelbares Netzgerät bis 12 V für Gleich- und Wechselspannung, mit Strombegrenzung",
+   "Experimentierkabel mit Krokodilklemmen, Steckbrett und Schalter",
+   "Spulen mit 250, 500, 1000 und 1200 Windungen",
+   "U-Kern mit aufsetzbarem Eisenjoch sowie einzelne Eisenkerne",
+   "Schale mit Büroklammern zum Messen der Tragkraft",
+   "Leiterschaukel aus Kupfer zwischen zwei Hufeisenmagneten",
+   "zerlegbarer Elektromotor mit geteiltem Kommutator und Schleifkontakten",
+   "Handkurbelgenerator und ein Fahrraddynamo mit Lämpchen",
+   "Demonstrationsgenerator, umschaltbar zwischen Schleifringen und Kommutator",
+   "Oszilloskop oder Messwerterfassung, um die Wechselspannung als Kurve zu zeigen",
+   "zwei Vielfachmessgeräte, eines als Amperemeter, eines als Voltmeter",
+   "Modell der Fernleitung: zwei Transformatoren, ein langer dünner Chrom-Nickel-Draht, ein dicker Kupferdraht und zwei gleiche Lämpchen",
+   "Datenblatt mit Steckbriefen von Kohle-, Kern-, Wind- und Pumpspeicherkraftwerk",
+   "Glühlampe und LED-Lampe mit vergleichbarer Helligkeit sowie Geräte mit Typenschild, zum Beispiel Wasserkocher und Ladegerät",
+   "Energiemessgerät für die Steckdose und eine alte Jahresrechnung der Stadtwerke",
+   "Millimeterpapier, Lineal und Taschenrechner"
+  ]
+ },
+ {
+  "id": "gts_kern",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "ISOTOPE",
+     "tipp": "So heißen Atome mit gleicher Protonenzahl, aber verschieden vielen Neutronen; Kohlenstoff-12 und Kohlenstoff-14 gehören zusammen dazu."
+    },
+    {
+     "wort": "MASSENZAHL",
+     "tipp": "Diese Zahl heißt A und zählt alle Bausteine im Kern zusammen, also Protonen und Neutronen; bei Uran-238 sind es 238."
+    },
+    {
+     "wort": "ZAEHLROHR",
+     "tipp": "Dieses Metallrohr mit Gas und einem dünnen Draht in der Mitte knackt bei jedem Teilchen und arbeitet am besten bei etwa 450 Volt."
+    },
+    {
+     "wort": "HALBWERTSDICKE",
+     "tipp": "So nennt man die Schicht, hinter der von der Gammastrahlung noch 50 Prozent ankommen; bei Blei sind das 6,0 mm."
+    },
+    {
+     "wort": "IONENPAAR",
+     "tipp": "So heißt das Doppel aus einem herausgeschlagenen Elektron und dem geladen zurückbleibenden Atom; in Luft kostet es im Mittel 34 eV."
+    },
+    {
+     "wort": "HALBWERTSZEIT",
+     "tipp": "Nach dieser Spanne ist im Mittel die Hälfte der Kerne zerfallen; bei Kohlenstoff-14 sind es 5730 Jahre, bei Iod-131 nur 8,02 Tage."
+    },
+    {
+     "wort": "ALPHAZERFALL",
+     "tipp": "Bei diesem Vorgang wirft ein Kern zwei Protonen und zwei Neutronen als Paket ab, A sinkt um 4 und Z sinkt um 2."
+    },
+    {
+     "wort": "KERNSPALTUNG",
+     "tipp": "Ein langsames Neutron trifft Uran-235, der Kern reißt in zwei Bruchstücke, und aus der fehlenden Masse werden rund 200 MeV."
+    },
+    {
+     "wort": "VERMEHRUNGSFAKTOR",
+     "tipp": "Diese Zahl k sagt, wie viele neue Spaltungen aus einer einzigen folgen; bei 1,00 läuft ein Kraftwerk gleichmäßig weiter."
+    },
+    {
+     "wort": "GENERATOR",
+     "tipp": "Erst in diesem Bauteil entsteht die elektrische Energie; angetrieben wird es von der Turbine, die der Dampf dreht."
+    },
+    {
+     "wort": "ENDLAGER",
+     "tipp": "So heißt ein Ort tief im stabilen Gestein, an dem langlebiger Abfall über viele Tausend Jahre auch ohne Aufsicht eingeschlossen bleibt."
+    },
+    {
+     "wort": "KERNFUSION",
+     "tipp": "Bei diesem Vorgang verschmelzen vier Wasserstoffkerne zu einem Heliumkern; im Modell zündet er erst ab etwa 10 Millionen Grad."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann den Aufbau eines Atomkerns aus Protonen und Neutronen beschreiben, aus Z und A die Neutronenzahl berechnen und erklären, warum Kohlenstoff-12 und Kohlenstoff-14 dasselbe Element sind.",
+    "Ich kann erklären, wie ein Zählrohr ein einzelnes Teilchen sichtbar macht, und begründen, warum man es mitten im Auslösebereich bei etwa 450 Volt betreibt.",
+    "Ich kann angeben, welches Material Alpha-, Beta- und Gammastrahlung aufhält, und mit der Halbwertsdicke von 6,0 mm Blei ausrechnen, wie viel Gammastrahlung hinter 12,0 mm und 18,0 mm noch ankommt.",
+    "Ich kann mit der Ionisationsdichte begründen, warum Alphastrahlung von außen kaum schadet, im Körper aber mit dem Wichtungsfaktor 20 gerechnet wird.",
+    "Ich kann die Halbwertszeit als Zufallsgesetz vieler Kerne erklären und aus dem Restanteil an Kohlenstoff-14 das Alter eines Fundes bestimmen.",
+    "Ich kann für Alpha- und Betazerfall angeben, wie sich Massenzahl und Kernladungszahl ändern, und die Reihe von Uran-238 bis zum stabilen Blei-206 nachvollziehen.",
+    "Ich kann beschreiben, was bei einer Kernspaltung mit dem Urankern geschieht, und begründen, dass die frei werdende Energie aus der fehlenden Masse stammt.",
+    "Ich kann mit dem Vermehrungsfaktor k erklären, wann eine Kettenreaktion erstirbt, gleichmäßig läuft oder davonläuft, und den Weg von der Wärme im Brennstab über Dampf und Turbine bis zum Generator beschreiben.",
+    "Ich kann begründen, warum langlebiger Abfall ein Endlager braucht, und erklären, wie Abstand, Zeit und Blei die Dosis senken.",
+    "Ich kann für Diagnose und Therapie den passenden Stoff auswählen, die Kernfusion in der Sonne von der Kernspaltung unterscheiden und meine Meinung zur Kernenergie mit Zahlen begründen."
+   ],
+   "tipps": [
+    "Zähle beim Halbieren die Schritte, statt zu multiplizieren. Schreibe die Kette 200 auf 100 auf 50 auf 25 einmal auf und benutze sie für beides: für die Halbwertszeit (nach drei Schritten sind von 200 Kernen noch 25 übrig) und für die Halbwertsdicke (nach 6,0 mm Blei 50 Prozent, nach 12,0 mm 25 Prozent, nach 18,0 mm 12,5 Prozent).",
+    "Schreibe dir zwei Kärtchen für die Zerfallsarten: Alpha bedeutet A minus 4 und Z minus 2, Beta bedeutet A bleibt gleich und Z plus 1. Prüfe die Kärtchen an der Reihe des Uran-238: 8 Alphazerfälle nehmen 8 mal 4 = 32 von der Massenzahl weg, 238 minus 32 = 206, und Z geht über 8 mal minus 2 und 6 mal plus 1 von 92 auf 82, also genau Blei-206.",
+    "Lege eine Tabelle mit drei Spalten an: Alpha, Beta, Gamma. Trage vier Zeilen ein: Was hält sie auf (Papier, 5 mm Aluminium, nur dickes Blei und selbst dort bleibt ein Rest), Ionenpaare je Millimeter (4.202, 9,8, nur vereinzelt), Wichtungsfaktor (20, 1, 1) und Einsatz in der Medizin (Therapie dicht an der Quelle, Therapie, Bild von außen).",
+    "Prüfe die Zahlen des Kapitels an den Seiten nach: 5730 Jahre für Kohlenstoff-14, 8,02 Tage für Iod-131, 30,17 Jahre für Cäsium-137, 6,0 mm Halbwertsdicke in Blei, 450 V im Auslösebereich, k = 1,00 im Kraftwerk, 173,3 MeV je Spaltung, 2428 Tonnen Steinkohle für ein Kilogramm Uran-235, 40 µSv für einen Flug nach New York und 100 µSv für eine Röntgenaufnahme der Lunge."
+   ],
+   "mini": [
+    {
+     "frage": "Uran-238 hat Z = 92 und A = 238. Gib Massenzahl und Kernladungszahl des Kerns an, der nach einem Alphazerfall übrig bleibt.",
+     "loesung": "Beim Alphazerfall sinkt A um 4 und Z um 2. Also A = 238 − 4 = 234 und Z = 92 − 2 = 90. Übrig bleibt Thorium-234."
+    },
+    {
+     "frage": "In einem Holzfund steckt noch ein Viertel des ursprünglichen Kohlenstoff-14. Wie alt ist der Fund ungefähr?",
+     "loesung": "Ein Viertel entspricht zwei Halbwertszeiten, denn die Hälfte von der Hälfte ist ein Viertel. Zwei Halbwertszeiten sind 2 · 5730 Jahre = 11460 Jahre. Der Fund ist also rund 11500 Jahre alt."
+    },
+    {
+     "frage": "In 50 cm Abstand zeigt das Messgerät 370,8 µSv/h. Welche Dosisleistung erwartest du in 200 cm Abstand?",
+     "loesung": "200 cm sind der vierfache Abstand. Der Abstand geht quadratisch ein, also bleibt ein Sechzehntel übrig: 370,8 µSv/h: 16 = 23,2 µSv/h."
+    },
+    {
+     "frage": "Bei einer Spaltung von Uran-235 in Barium und Krypton fehlen 0,1860 u an Masse. Berechne die frei werdende Energie.",
+     "loesung": "Es gilt E = Δm · 931,5 MeV/u. Also E = 0,1860 u · 931,5 MeV/u = 173,3 MeV. Die Energie stammt allein aus der Masse, die nach der Spaltung fehlt."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Zahl der Protonen im Kern legt fest, welches",
+     "loesung": "Element",
+     "post": "vorliegt; die Zahl der Neutronen bestimmt nur das Isotop."
+    },
+    {
+     "pre": "Alpha- und Betastrahlung haben eine feste Reichweite, Gammastrahlung wird dagegen nur",
+     "loesung": "abgeschwächt",
+     "post": ": Hinter jeder Halbwertsdicke von 6,0 mm Blei kommt noch die Hälfte an."
+    },
+    {
+     "pre": "Nach einer Halbwertszeit ist im Mittel die",
+     "loesung": "Hälfte",
+     "post": "der Kerne zerfallen; bei Kohlenstoff-14 dauert das 5730 Jahre."
+    },
+    {
+     "pre": "Beim Alphazerfall sinkt die Massenzahl um 4 und die Kernladungszahl um",
+     "loesung": "2",
+     "post": "; beim Betazerfall bleibt A gleich und Z steigt um 1."
+    },
+    {
+     "pre": "Ein Kernkraftwerk arbeitet dauerhaft mit dem Vermehrungsfaktor k =",
+     "loesung": "1,00",
+     "post": "; die elektrische Energie entsteht erst im Generator, den die Dampfturbine dreht."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Kohlenstoff-12 und Kohlenstoff-14 haben beide 6 Protonen, aber verschieden viele Neutronen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Alphastrahlung ist von außen besonders gefährlich, weil sie sogar durch mehrere Millimeter Aluminium kommt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Verdoppelst du den Abstand zur Quelle, sinkt die Dosisleistung auf ein Viertel.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Halbwertszeit eines Stoffes wird kürzer, wenn man ihn stark erwärmt oder zusammenpresst.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Im Auslösebereich bei etwa 450 Volt sind alle Impulse des Zählrohrs gleich hoch, egal welches Teilchen eingefallen ist.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei einer Kernspaltung wiegen die Bruchstücke zusammen genauso viel wie der Urankern vorher.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Auch in einem Kernkraftwerk treibt Dampf die Turbine an; nur die Wärmequelle ist eine andere als im Kohlekraftwerk.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Von einem Präparat sind nach 24 Tagen noch 25 von ursprünglich 200 Kernen übrig. Wie groß ist die Halbwertszeit dieses Stoffes?",
+    "optionen": [
+     "3 Tage",
+     "6 Tage",
+     "8 Tage",
+     "12 Tage"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum man ein Kernkraftwerk ein Dampfkraftwerk nennt, und begründe, wozu die Steuerstäbe dabei gebraucht werden.",
+    "zeilen": 5,
+    "loesung": "Die Kernspaltung liefert im Brennstab nur Wärme, niemals direkt Strom. Diese Wärme macht aus Wasser Dampf, der Dampf treibt eine Turbine, die Turbine dreht den Generator, und erst dort entsteht elektrische Energie. Genau diesen Weg gibt es auch im Kohlekraftwerk; verschieden ist allein die Wärmequelle, deshalb heißt auch das Kernkraftwerk ein Dampfkraftwerk. Die Steuerstäbe fangen einen Teil der Neutronen weg und stellen damit den Vermehrungsfaktor k ein. Sind sie zu 50 Prozent eingefahren, ist k = 1,00: Aus 500 Spaltungen werden wieder rund 500, die Wärme bleibt gleichmäßig. Fährt man sie heraus, steigt k auf 1,60 und die Kette wird überkritisch; fährt man sie ganz ein, sinkt k auf 0,40 und die Kette erstickt."
+   },
+   "transfer": {
+    "frage": "Jannis sagt: „Ein Stoff mit kurzer Halbwertszeit ist harmlos, der ist ja gleich wieder weg. Deshalb sollte man in der Medizin immer den Stoff mit der kürzesten Halbwertszeit nehmen, ganz egal welche Strahlung er aussendet.“ Beurteile seine beiden Sätze mit den Zahlen aus dem Kapitel.",
+    "zeilen": 6,
+    "loesung": "Der erste Satz stimmt so nicht. Eine kurze Halbwertszeit bedeutet, dass in jeder Sekunde besonders viele Kerne zerfallen; der Stoff strahlt dann kurz, aber kräftig, und harmlos ist er dabei nicht. Richtig ist nur, dass er nicht lange im Körper weiterstrahlt: Iod-131 mit 8,02 Tagen ist deshalb für eine Untersuchung besser geeignet als Cäsium-137 mit 30,17 Jahren. Der zweite Satz ist ebenfalls falsch, denn die Strahlungsart entscheidet mit. Für ein Bild aus dem Körperinneren braucht man Gammastrahlung, weil nur sie das Gewebe durchdringt und außen am Messgerät ankommt. Für eine Behandlung nimmt man dagegen Alpha- oder Betastrahlung, deren kurze Reichweite die Energie dort lässt, wo die kranken Zellen sitzen. Der Stoff muss außerdem lange genug halten, bis er am Ziel im Körper angekommen ist. Die Halbwertszeit muss also zur Aufgabe passen und nicht möglichst klein sein."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Geiger-Müller-Zählrohr mit Zählgerät, regelbarer Hochspannung und Stoppuhr",
+   "Schulpräparate für Alpha-, Beta- und Gammastrahlung in geschlossenen Halterungen, nur mit der Lehrkraft",
+   "Stativ mit Schiene und Maßband, damit sich Abstände von 5 cm bis 200 cm sicher einstellen lassen",
+   "Absorbersatz: Papierblätter, Aluminiumbleche von 1 mm bis 5 mm und Bleiplatten zu je 2 mm",
+   "Bleischürze aus der Röntgenpraxis zum Ansehen und Anheben",
+   "elektronisches Dosimeter oder Filmplakette zum Ansehen",
+   "Warnzeichen für radioaktive Stoffe und die Regeln des Strahlenschutzraums als Aushang",
+   "200 Würfel oder Münzen in einer flachen Schale für das Zerfallsmodell",
+   "Kugeln in zwei Farben für Protonen und Neutronen zum Bauen von Kernen",
+   "Nuklidkarte und ein Ausdruck der Zerfallsreihe von Uran-238 bis Blei-206",
+   "Datenblatt mit Halbwertszeiten von Radon-220, Iod-131, Cäsium-137, Kohlenstoff-14 und Uran-238",
+   "Datenblatt mit Vergleichsdosen: Flug nach New York 40 µSv, Röntgenaufnahme der Lunge 100 µSv",
+   "Nebelkammer mit Trockeneis, falls in der Sammlung vorhanden",
+   "Zeitungsberichte und Datenblätter zu Kernkraft, Endlager und Fusionsanlage für die Bewertung",
+   "Taschenrechner, Millimeterpapier und Lineal"
+  ]
+ }
+]

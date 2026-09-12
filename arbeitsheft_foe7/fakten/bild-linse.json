@@ -1,0 +1,307 @@
+[
+ {
+  "sim": "bild-linse",
+  "ueberschrift": "🔍 Wann entsteht ein vergrößertes oder verkleinertes Bild?",
+  "regler": [
+   {
+    "id": "bldG",
+    "beschriftung": "Gegenstandsweite g: 170 (f = 62, 2f = 124)",
+    "bereich": {
+     "min": "25",
+     "max": "200",
+     "step": "3",
+     "start": "170"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Wenn der Gegenstand näher als die Brennweite ist (g < f)",
+    "ruft": "_bldAns(0,0)"
+   },
+   {
+    "aufschrift": "Wenn er sehr weit weg ist",
+    "ruft": "_bldAns(0,1)"
+   },
+   {
+    "aufschrift": "Immer",
+    "ruft": "_bldAns(0,2)"
+   },
+   {
+    "aufschrift": "vergrößert und aufrecht",
+    "ruft": "_bldAns(1,0)"
+   },
+   {
+    "aufschrift": "verkleinert und umgekehrt",
+    "ruft": "_bldAns(1,1)"
+   },
+   {
+    "aufschrift": "gleich groß und aufrecht",
+    "ruft": "_bldAns(1,2)"
+   },
+   {
+    "aufschrift": "Es ist unsichtbar",
+    "ruft": "_bldAns(2,0)"
+   },
+   {
+    "aufschrift": "Es entsteht nur durch die gedachte Verlängerung der Strahlen",
+    "ruft": "_bldAns(2,1)"
+   },
+   {
+    "aufschrift": "Es ist immer umgekehrt",
+    "ruft": "_bldAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_bldSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_bldSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_bldSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('bildlinse')"
+   }
+  ],
+  "hinweise": [
+   "Verschiebe den Gegenstand vor der Sammellinse. Beobachte Größe, Lage und ob das Bild umgekehrt oder aufrecht ist. Die Brennpunkte F und 2F helfen dir.",
+   "g &gt; 2f: verkleinert, umgekehrt, reell | g = 2f: gleich groß, umgekehrt, reell | f &lt; g &lt; 2f: vergrößert, umgekehrt, reell | g &lt; f: vergrößert, aufrecht, virtuell (Lupe)",
+   "Näher als die Brennweite → aufrechtes, vergrößertes Lupenbild. | Weiter weg → umgekehrtes, reelles Bild."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell"
+   },
+   {
+    "einstellung": "Wenn der Gegenstand näher als die Brennweite ist (g < f)",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✓ Richtig! Innerhalb der Brennweite entsteht ein aufrechtes, vergrößertes, virtuelles Bild."
+   },
+   {
+    "einstellung": "Wenn er sehr weit weg ist",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Weit weg wird das Bild klein und umgekehrt."
+   },
+   {
+    "einstellung": "Immer",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab."
+   },
+   {
+    "einstellung": "vergrößert und aufrecht",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Weit weg wird es kleiner, nicht größer."
+   },
+   {
+    "einstellung": "verkleinert und umgekehrt",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✓ Richtig! g > 2f → verkleinert, umgekehrt, reell."
+   },
+   {
+    "einstellung": "gleich groß und aufrecht",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f."
+   },
+   {
+    "einstellung": "Es ist unsichtbar",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Man sieht es sehr wohl (z. B. durch die Lupe)."
+   },
+   {
+    "einstellung": "Es entsteht nur durch die gedachte Verlängerung der Strahlen",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✓ Richtig! Nur die rückwärtigen Verlängerungen der Strahlen treffen sich."
+   },
+   {
+    "einstellung": "Es ist immer umgekehrt",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht.  ||  bldSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht.  ||  bldSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 25",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 46",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 70",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 91",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 112",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 133",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 157",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 178",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 199",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 31",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 34",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 40",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 49",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 55",
+    "text": "bldStatus: 🖼 vergrößert · aufrecht · virtuell (Lupe)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 61",
+    "text": "bldStatus: 🖼 Bild im Unendlichen (Strahlen parallel)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 64",
+    "text": "bldStatus: 🖼 Bild im Unendlichen (Strahlen parallel)  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 76",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 79",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 85",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 94",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 100",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 106",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 109",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 115",
+    "text": "bldStatus: 🖼 vergrößert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 121",
+    "text": "bldStatus: 🖼 gleich groß · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 124",
+    "text": "bldStatus: 🖼 gleich groß · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 130",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 136",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 139",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 145",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 151",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 154",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 160",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 166",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 169",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 175",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 181",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 184",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 190",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 170 (f = 62, 2f = 124) = 196",
+    "text": "bldStatus: 🖼 verkleinert · umgekehrt · reell  ||  bldFb0: ✗ Nicht immer – es hängt von g ab.  ||  bldFb1: ✗ Aufrecht ist es nur bei g < f.  ||  bldFb2: ✗ Virtuelle Bilder sind gerade aufrecht."
+   }
+  ],
+  "bildtexte": [
+   "F",
+   "2F",
+   "Gegenstand",
+   "Bild (reell)",
+   "verkleinert · umgekehrt · reell",
+   "virtuelles Bild",
+   "vergrößert · aufrecht · virtuell (Lupe)",
+   "vergrößert · umgekehrt · reell",
+   "Strahlen parallel – Bild im Unendlichen",
+   "gleich groß · umgekehrt · reell"
+  ]
+ }
+]

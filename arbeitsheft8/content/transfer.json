@@ -1,0 +1,94 @@
+[
+ {
+  "kapitel": "spannung",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ben sagt: „Eine 9-Volt-Batterie ist gefährlicher als die Steckdose, weil 9 mehr ist als die 230 Milliampere von dort.“ Beurteile die Aussage und stelle sie richtig.",
+    "erwartung": "Zwei Fehler: Volt und Milliampere werden verwechselt, und die Steckdose führt 230 Volt. Gefährlich wird der Strom durch den Körper, den erst die hohe Spannung treibt. Erwartet wird die saubere Trennung der Größen."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt eine Messreihe, mit der ihr prüft, ob zwei Batterien in Reihe wirklich die doppelte Spannung liefern. Legt fest, was ihr messt und wie oft.",
+    "erwartung": "Gemessen wird die Spannung jeder Batterie einzeln und beider in Reihe, mehrfach und mit demselben Messgerät. Erwartet wird der Vergleich Summe/Messwert und der Hinweis auf Messungenauigkeit."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Nimm Stellung: Sollen Schülerinnen und Schüler im Physikunterricht mit 230 Volt arbeiten dürfen? Begründe mit Sicherheitsüberlegungen.",
+    "erwartung": "Erwartet wird eine abwägende Antwort: Lernwert gegen Lebensgefahr, Alternative Kleinspannung und Demonstrationsversuch durch die Lehrkraft. Eine bloße Meinung ohne Begründung reicht nicht."
+   }
+  ]
+ },
+ {
+  "kapitel": "widerstand",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Verkäufer sagt: „Dickere Kabel bringen bei jedem Gerät mehr Leistung.“ Beurteile die Aussage und nenne den Fall, in dem sie zutrifft.",
+    "erwartung": "Meist falsch: Das Gerät bestimmt die Leistung. Zutreffend nur bei langen Leitungen mit merklichem Spannungsabfall – dort kommt am Gerät mehr Spannung an. Erwartet wird diese Einschränkung."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant eine Messreihe, mit der ihr das Ohmsche Gesetz an einer Glühlampe prüft. Sagt vorher, ob ihr eine Gerade erwartet, und begründet.",
+    "erwartung": "Erwartet wird die Vorhersage einer gekrümmten Kennlinie: Der Draht wird heiß, sein Widerstand steigt. Messplan: Spannung schrittweise erhöhen, jeweils Strom messen, Wartezeit einplanen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für den Klassenraum stehen drei Verlängerungsschnüre zur Wahl. Stellt drei Kriterien auf, gewichtet sie und entscheidet.",
+    "erwartung": "Kriterien z. B. Leiterquerschnitt, Länge, Anzahl Steckplätze, Schalter, Prüfzeichen. Erwartet wird eine begründete Gewichtung und eine daraus folgende Wahl."
+   }
+  ]
+ },
+ {
+  "kapitel": "leistung",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Eine Anzeige verspricht: „Diese LED spart 90 % Strom.“ Beurteile, worauf sich die 90 % beziehen müssen, damit die Aussage stimmt.",
+    "erwartung": "Die Angabe gilt gegenüber einer Glühlampe gleicher Helligkeit, nicht gleicher Leistung. Ohne Bezugsgröße ist sie leer. Erwartet wird die Forderung nach dem Vergleichsmaßstab."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt ein Verfahren, mit dem ihr die Leistung eures Wasserkochers ohne Typenschild bestimmt. Nennt jede Größe, die ihr messen müsst.",
+    "erwartung": "Wassermasse, Anfangs- und Endtemperatur, Zeit. Daraus die zugeführte Energie und P = E/t. Erwartet wird der Hinweis, dass das Ergebnis wegen der Verluste unter der aufgenommenen Leistung liegt."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Nimm Stellung: Soll die Schule alte Geräte sofort durch sparsame ersetzen, auch wenn die alten noch laufen? Wäge Betriebsenergie und Herstellung gegeneinander ab.",
+    "erwartung": "Erwartet wird, dass auch die Herstellung Energie kostet und sich ein Tausch erst nach einer gewissen Laufzeit lohnt. Die Entscheidung muss beide Anteile nennen."
+   }
+  ]
+ },
+ {
+  "kapitel": "tempo",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "„Wer doppelt so schnell fährt, braucht den doppelten Bremsweg.“ Beurteile die Aussage und stelle sie mit einer Rechnung richtig.",
+    "erwartung": "Falsch: Der Bremsweg wächst mit dem Quadrat der Geschwindigkeit, also vervierfacht er sich. Nur der Reaktionsweg verdoppelt sich. Erwartet wird eine Rechnung mit zwei Tempowerten."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant eine Messung, mit der ihr die Durchschnittsgeschwindigkeit auf eurem Schulweg bestimmt. Legt Strecke, Zeitmessung und Zahl der Wiederholungen fest.",
+    "erwartung": "Strecke aus Karte oder Schrittzahl, Zeit mit Stoppuhr, mehrere Tage, Mittelwert. Erwartet wird die Unterscheidung von Durchschnitts- und Momentangeschwindigkeit."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Vor eurer Schule gilt Tempo 30. Nimm Stellung dazu, ob die Grenze auf 20 gesenkt werden sollte. Nenne mindestens ein physikalisches Argument.",
+    "erwartung": "Physikalisch: kürzerer Anhalteweg, geringere Aufprallenergie. Dagegen: längere Fahrzeiten, Ausweichverkehr. Erwartet wird eine begründete Position mit Zahlen."
+   }
+  ]
+ }
+]

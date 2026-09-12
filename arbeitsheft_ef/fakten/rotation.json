@@ -1,0 +1,563 @@
+[
+ {
+  "sim": "rotation",
+  "ueberschrift": "🌀 Rotation & Drehimpuls L = J · ω",
+  "regler": [
+   {
+    "id": "rotR",
+    "beschriftung": "phys-anim-cv\"> Armradius r: 80 px",
+    "bereich": {
+     "min": "20",
+     "max": "100",
+     "step": "5",
+     "start": "80"
+    }
+   },
+   {
+    "id": "rotM",
+    "beschriftung": "Masse m: 5 kg",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "5"
+    }
+   }
+  ],
+  "knoepfe": [],
+  "hinweise": [],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 20",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 20 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|212.59,144.00 | lineTo|218.26,144.00 | lineTo|223.92,144.00 | lineTo|229.58,144.00 | lineTo|235.25,144.00 | lineTo|240.91,144.00 | lineTo|246.58,144.00 | lineTo|252.24,144.00 | lineTo|257.90,144.00 | lineTo|263.57,144.00 | lineTo|269.23,144.00 | lineTo|274.90,144.00 | lineTo|280.56,144.00 | lineTo|286.22,144.00 | lineTo|291.89,144.00 | lineTo|297.55,144.00 | lineTo|303.22,144.00 | lineTo|308.88,144.00 | lineTo|314.54,144.00 | lineTo|320.21,144.00 | lineTo|325.87,144.00 | lineTo|331.54,144.00 | lineTo|337.20,144.00 | lineTo|342.86,144.00 | lineTo|348.53,144.00 | lineTo|354.19,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 20 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|294.54,144.00 | lineTo|299.08,144.00 | lineTo|303.62,144.00 | lineTo|308.15,144.00 | lineTo|312.69,144.00 | lineTo|317.23,144.00 | lineTo|321.77,144.00 | lineTo|326.31,144.00 | lineTo|330.85,144.00 | lineTo|335.38,144.00 | lineTo|339.92,144.00 | lineTo|344.46,144.00 | lineTo|349.00,144.00 | lineTo|353.54,144.00 | lineTo|358.08,144.00 | lineTo|362.62,144.00 | lineTo|367.15,144.00 | lineTo|371.69,144.00 | lineTo|376.23,144.00 | lineTo|380.77,144.00 | lineTo|385.31,144.00 | lineTo|389.85,144.00 | lineTo|394.38,144.00 | lineTo|398.92,144.00 | lineTo|403.46,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 20 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|322.08,144.00 | lineTo|325.51,144.00 | lineTo|328.95,144.00 | lineTo|332.39,144.00 | lineTo|335.83,144.00 | lineTo|339.26,144.00 | lineTo|342.70,144.00 | lineTo|346.14,144.00 | lineTo|349.57,144.00 | lineTo|353.01,144.00 | lineTo|356.45,144.00 | lineTo|359.88,144.00 | lineTo|363.32,144.00 | lineTo|366.76,144.00 | lineTo|370.19,144.00 | lineTo|373.63,144.00 | lineTo|377.07,144.00 | lineTo|380.50,144.00 | lineTo|383.94,144.00 | lineTo|387.38,144.00 | lineTo|390.82,144.00 | lineTo|394.25,144.00 | lineTo|397.69,144.00 | lineTo|401.13,144.00 | lineTo|404.56,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 20 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|338.86,144.00 | lineTo|341.63,144.00 | lineTo|344.39,144.00 | lineTo|347.16,144.00 | lineTo|349.92,144.00 | lineTo|352.69,144.00 | lineTo|355.45,144.00 | lineTo|358.22,144.00 | lineTo|360.98,144.00 | lineTo|363.75,144.00 | lineTo|366.52,144.00 | lineTo|369.28,144.00 | lineTo|372.05,144.00 | lineTo|374.81,144.00 | lineTo|377.58,144.00 | lineTo|380.34,144.00 | lineTo|383.11,144.00 | lineTo|385.88,144.00 | lineTo|388.64,144.00 | lineTo|391.41,144.00 | lineTo|394.17,144.00 | lineTo|396.94,144.00 | lineTo|399.70,144.00 | lineTo|402.47,144.00 | lineTo|405.23,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 30",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 30 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|358.28,144.00 | lineTo|360.27,144.00 | lineTo|362.26,144.00 | lineTo|364.25,144.00 | lineTo|366.24,144.00 | lineTo|368.22,144.00 | lineTo|370.21,144.00 | lineTo|372.20,144.00 | lineTo|374.19,144.00 | lineTo|376.18,144.00 | lineTo|378.17,144.00 | lineTo|380.16,144.00 | lineTo|382.15,144.00 | lineTo|384.13,144.00 | lineTo|386.12,144.00 | lineTo|388.11,144.00 | lineTo|390.10,144.00 | lineTo|392.09,144.00 | lineTo|394.08,144.00 | lineTo|396.07,144.00 | lineTo|398.06,144.00 | lineTo|400.04,144.00 | lineTo|402.03,144.00 | lineTo|404.02,144.00 | lineTo|406.01,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 30 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|364.40,144.00 | lineTo|366.15,144.00 | lineTo|367.89,144.00 | lineTo|369.64,144.00 | lineTo|371.38,144.00 | lineTo|373.12,144.00 | lineTo|374.87,144.00 | lineTo|376.61,144.00 | lineTo|378.35,144.00 | lineTo|380.10,144.00 | lineTo|381.84,144.00 | lineTo|383.59,144.00 | lineTo|385.33,144.00 | lineTo|387.07,144.00 | lineTo|388.82,144.00 | lineTo|390.56,144.00 | lineTo|392.31,144.00 | lineTo|394.05,144.00 | lineTo|395.79,144.00 | lineTo|397.54,144.00 | lineTo|399.28,144.00 | lineTo|401.02,144.00 | lineTo|402.77,144.00 | lineTo|404.51,144.00 | lineTo|406.26,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 30 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|369.18,144.00 | lineTo|370.74,144.00 | lineTo|372.29,144.00 | lineTo|373.84,144.00 | lineTo|375.39,144.00 | lineTo|376.95,144.00 | lineTo|378.50,144.00 | lineTo|380.05,144.00 | lineTo|381.61,144.00 | lineTo|383.16,144.00 | lineTo|384.71,144.00 | lineTo|386.26,144.00 | lineTo|387.82,144.00 | lineTo|389.37,144.00 | lineTo|390.92,144.00 | lineTo|392.47,144.00 | lineTo|394.03,144.00 | lineTo|395.58,144.00 | lineTo|397.13,144.00 | lineTo|398.68,144.00 | lineTo|400.24,144.00 | lineTo|401.79,144.00 | lineTo|403.34,144.00 | lineTo|404.89,144.00 | lineTo|406.45,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 30 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|373.02,144.00 | lineTo|374.42,144.00 | lineTo|375.82,144.00 | lineTo|377.22,144.00 | lineTo|378.62,144.00 | lineTo|380.02,144.00 | lineTo|381.42,144.00 | lineTo|382.81,144.00 | lineTo|384.21,144.00 | lineTo|385.61,144.00 | lineTo|387.01,144.00 | lineTo|388.41,144.00 | lineTo|389.81,144.00 | lineTo|391.21,144.00 | lineTo|392.61,144.00 | lineTo|394.01,144.00 | lineTo|395.41,144.00 | lineTo|396.81,144.00 | lineTo|398.21,144.00 | lineTo|399.60,144.00 | lineTo|401.00,144.00 | lineTo|402.40,144.00 | lineTo|403.80,144.00 | lineTo|405.20,144.00 | lineTo|406.60,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 40",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 40 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 40 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 40 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 40 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 50",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 50 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 50 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 50 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 50 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 60",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 60 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 60 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 60 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 60 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 70",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 70 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 70 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 70 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 70 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 80",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 80 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 80 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 80 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 80 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 90",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 90 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 90 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 90 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 90 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 100",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 100 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 100 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 100 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 100 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 25",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 25 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 25 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 25 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 25 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 35",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 35 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 35 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 35 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 35 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 45",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 45 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 45 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 45 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 45 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 55",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 55 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 55 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 55 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 55 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 65",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 65 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 65 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 65 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 65 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 75",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 75 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 75 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 75 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 75 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 85",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 85 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 85 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 85 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 85 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 95",
+    "text": ""
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 95 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 95 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 95 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "phys-anim-cv\"> Armradius r: 80 px = 95 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse m: 5 kg = 1",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse m: 5 kg = 1 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse m: 5 kg = 1 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse m: 5 kg = 1 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse m: 5 kg = 1 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|L [kg·m²/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|64.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#10b981 | set:font=700 11px sans-serif | fillText|L(t) – Drehimpuls = const|191.00|134.00"
+   }
+  ],
+  "bildtexte": [
+   "J = m·r² = 32.00 kg·m²",
+   "L = const = 64.00 kg·m²/s",
+   "r=80px",
+   "ω=2.00rad/s",
+   "J=32.00",
+   "ω(t) – kleines r → großes ω!",
+   "L(t) – Drehimpuls = const",
+   "ω [rad/s]",
+   "2.0",
+   "0.0",
+   "t [s]",
+   "L [kg·m²/s]",
+   "64.0",
+   "J = m·r² = 2.00 kg·m²",
+   "r=20px",
+   "ω=32.00rad/s",
+   "J=2.00",
+   "32.0",
+   "J = m·r² = 4.50 kg·m²",
+   "r=30px",
+   "ω=14.22rad/s",
+   "J=4.50",
+   "J = m·r² = 8.00 kg·m²",
+   "r=40px",
+   "ω=8.00rad/s",
+   "J=8.00",
+   "J = m·r² = 12.50 kg·m²",
+   "r=50px",
+   "ω=5.12rad/s",
+   "J=12.50",
+   "14.2",
+   "J = m·r² = 18.00 kg·m²",
+   "r=60px",
+   "ω=3.56rad/s",
+   "J=18.00",
+   "8.0",
+   "J = m·r² = 24.50 kg·m²",
+   "r=70px",
+   "ω=2.61rad/s",
+   "J=24.50",
+   "5.1",
+   "3.6",
+   "J = m·r² = 40.50 kg·m²",
+   "r=90px",
+   "ω=1.58rad/s",
+   "J=40.50",
+   "2.6",
+   "J = m·r² = 50.00 kg·m²",
+   "r=100px",
+   "ω=1.28rad/s",
+   "J=50.00",
+   "J = m·r² = 3.13 kg·m²",
+   "r=25px",
+   "ω=20.48rad/s",
+   "J=3.13",
+   "20.5",
+   "J = m·r² = 6.13 kg·m²",
+   "r=35px",
+   "ω=10.45rad/s",
+   "J=6.13",
+   "J = m·r² = 10.13 kg·m²",
+   "r=45px",
+   "ω=6.32rad/s",
+   "J=10.13",
+   "J = m·r² = 15.13 kg·m²",
+   "r=55px",
+   "ω=4.23rad/s",
+   "J=15.13",
+   "10.4",
+   "J = m·r² = 21.13 kg·m²",
+   "r=65px",
+   "ω=3.03rad/s",
+   "J=21.13",
+   "6.3",
+   "J = m·r² = 28.13 kg·m²",
+   "r=75px",
+   "ω=2.28rad/s",
+   "J=28.13",
+   "4.2",
+   "J = m·r² = 36.13 kg·m²",
+   "r=85px",
+   "ω=1.77rad/s",
+   "J=36.13",
+   "3.0",
+   "J = m·r² = 45.13 kg·m²",
+   "r=95px",
+   "ω=1.42rad/s",
+   "J=45.13",
+   "2.3",
+   "J = m·r² = 9.03 kg·m²",
+   "ω=7.09rad/s",
+   "J=9.03",
+   "7.1"
+  ]
+ }
+]

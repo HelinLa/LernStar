@@ -1,0 +1,72 @@
+{
+ "id": "ki13",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "S3",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Nicht der Betrag der Kraft entscheidet über die verrichtete Arbeit, sondern ihr Anteil in Wegrichtung; allgemein gilt daher W =",
+   "loesung": "F · s · cos(α)",
+   "post": ", wobei α der Winkel zwischen Kraft und Weg ist."
+  },
+  {
+   "pre": "Beim Schieben stehen die Regler auf F = 100 N und s = 4 m; der Balken am oberen Bildrand meldet daraufhin eine verrichtete Arbeit von",
+   "loesung": "400 J",
+   "post": "."
+  },
+  {
+   "pre": "Beim waagerechten Tragen der Kiste mit m = 20 kg nennt das Statusfeld eine Haltekraft von",
+   "loesung": "196 N",
+   "post": "; über die vollen 4 m bleibt W dennoch bei 0 J."
+  },
+  {
+   "pre": "Beim Anheben muss die Hubkraft die Gewichtskraft ausgleichen und zeigt längs des Hubwegs; für die Hubarbeit gilt deshalb W =",
+   "loesung": "m · g · h",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Beim Hochheben ist die an der Kiste verrichtete Arbeit kleiner als beim Schieben, obwohl dort mit 196 N die größere Kraft aufzubringen ist.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil an der Kiste W = 0 J verrichtet wird, setzt Tobias auf den vier getragenen Metern auch selbst keine Energie um.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Der Balken meldet 392 J, während 20 kg · 9,81 N/kg · 2,0 m genau 392,4 J ergibt; die Anzeige gibt die Hubarbeit also gerundet wieder.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Während der Hub abläuft, wächst der Wert im Balken zusammen mit dem Wegpfeil und erreicht die 392 J erst am oberen Ende der 2,0 m.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias bleibt bei seiner Rechnung: Er habe 196 N gehalten und sei damit volle 4 m gegangen; Kraft und Weg seien also beide vorhanden, nach W = F · s ergebe das einen Wert weit über null, und Miras null Joule seien ein Rechenfehler. Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Tobias hat recht: Sobald eine Kraft wirkt und der Körper sich dabei bewegt, wird nach W = F · s Arbeit verrichtet. Miras W = 0 J gälte nur für eine Kiste, die an Ort und Stelle bleibt.",
+   "Tobias übergeht eine Bedingung: Die kurze Form W = F · s ist der Sonderfall α = 0°. Beim Tragen zeigt die Haltekraft nach oben, der Weg nach vorn, also α = 90°; wegen cos(α) = 0 liefert das allgemeine Gesetz W = 0 J.",
+   "Beide rechnen richtig und meinen nur Verschiedenes: Tobias gibt die Arbeit an der Kiste an, Mira die Arbeit seiner Muskeln. Der Widerspruch ist deshalb nur ein scheinbarer."
+  ],
+  "richtig": 1,
+  "erklaerung": "Kraft und Weg allein genügen nicht – über die Arbeit entscheiden auch ihre Richtungen. Die kurze Form W = F · s gilt nur, solange beide in dieselbe Richtung zeigen; sie ist der Sonderfall α = 0° des allgemeinen Gesetzes W = F · s · cos(α). Beim waagerechten Tragen steht die Haltekraft senkrecht auf dem Weg, also α = 90° und cos(α) = 0: Die Komponente längs des Weges verschwindet, und mit ihr die Arbeit. Das Statusfeld meldet dazu passend „Arbeit W = 0 J – physikalisch keine Arbeit.“, und am unteren Bildrand steht der Satz über die senkrecht zueinander stehenden Richtungen. Die erste Deutung verwechselt Bewegung mit Bewegung in Kraftrichtung; nach ihr müsste auch der Balken einen Wert über null anzeigen, was er nicht tut. Die dritte dreht die Zuordnung um: Gerade Miras 0 J beziehen sich auf die Kiste. Dass Tobias' Muskelfasern dabei Energie umsetzen, ist unbestritten, wird an der Kiste aber nicht als Arbeit wirksam."
+ },
+ "offen": {
+  "frage": "Mira möchte das allgemeine Gesetz W = F · s · cos(α) an der Simulation prüfen und stellt fest, dass ihr das nur zum Teil gelingt. Lege dar, welche Aussagen über den Faktor cos(α) die drei angebotenen Vorgänge belegen und welche nicht, und begründe, wie sich der offen gebliebene Teil dennoch entscheiden lässt.",
+  "prompt": "Mira möchte das allgemeine Gesetz W = F · s · cos(α) an der Simulation prüfen und stellt fest, dass ihr das nur zum Teil gelingt. Lege dar, welche Aussagen über den Faktor cos(α) die drei angebotenen Vorgänge belegen und welche nicht, und begründe, wie sich der offen gebliebene Teil dennoch entscheiden lässt.",
+  "zeilen": 5,
+  "loesung": "Die Simulation stellt nur zwei Winkel her. Beim Schieben und beim Hochheben zeigen Kraft und Weg in dieselbe Richtung, also α = 0° und cos(α) = 1; die Anzeigen W = 100 N · 4 m = 400 J und W = 20 kg · 9,81 N/kg · 2,0 m = 392 J bestätigen für diesen Fall die verkürzte Form W = F · s beziehungsweise W = m · g · h. Beim waagerechten Tragen stehen Kraft und Weg senkrecht zueinander, also α = 90° und cos(α) = 0; die Anzeige W = 0 J bestätigt, dass dann selbst eine Haltekraft von 196 N über 4 m nichts beiträgt. Belegt sind damit die beiden Randwerte des Faktors, nicht aber sein Verhalten dazwischen: Ob cos(α) von 1 auf 0 gleichmäßig oder anders abnimmt, lässt sich an keinem der drei Vorgänge ablesen, denn ein Regler für den Winkel wird nirgends angeboten. Dieser Teil ist am Bildschirm nicht zu messen, sondern zu rechnen – man zerlegt die Kraft wie beim schräg gezogenen Schlitten in einen Anteil längs und einen quer zum Weg und setzt den längs gerichteten Anteil ein. Die beiden Grenzfälle widerlegen das Gesetz also nicht; sie prüfen es an seinen Rändern und lassen den Bereich dazwischen offen. Zu beachten bleibt außerdem, dass alle drei Formeln eine konstante Kraft und einen geraden Weg voraussetzen."
+ }
+}

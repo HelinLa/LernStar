@@ -1,0 +1,2325 @@
+[
+ {
+  "theme": "magnetismus",
+  "id": "m1",
+  "lueckensaetze": [
+   {
+    "pre": "Um jeden Magneten liegt ein unsichtbares",
+    "post": ". Es wirkt auch durch Papier und Luft.",
+    "loesung": "Magnetfeld"
+   },
+   {
+    "pre": "Ein Magnet zieht",
+    "post": "an, zum Beispiel eine Büroklammer.",
+    "loesung": "Eisen"
+   },
+   {
+    "pre": "Der Magnet wirkt auch ganz ohne",
+    "post": "auf die Büroklammer.",
+    "loesung": "Berührung"
+   },
+   {
+    "pre": "Das Magnetfeld wirkt auch durch dünne Sachen wie ein Blatt",
+    "post": ".",
+    "loesung": "Papier"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Magnet muss Eisen berühren, damit er es anzieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Um jeden Magneten liegt ein Magnetfeld.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Magnetfeld kann auch durch ein Blatt Papier wirken.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Magnet zieht jedes Material an, auch Holz und Plastik.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welches Material zieht ein Magnet an?",
+   "optionen": [
+    "Holz",
+    "Eisen",
+    "Glas",
+    "Plastik"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben sagt: „Ein Magnet muss die Büroklammer berühren, damit sie hochspringt.“ Finde den Fehler und verbessere den Satz.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Ein Magnet zieht die Büroklammer schon an, ohne sie zu berühren. Sein Magnetfeld wirkt auch durch die Luft."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m2",
+  "lueckensaetze": [
+   {
+    "pre": "Ein Magnet zieht nur die drei Metalle Eisen,",
+    "post": "und Kobalt an.",
+    "loesung": "Nickel"
+   },
+   {
+    "pre": "Das Metall",
+    "post": "wird von einem Magneten nicht angezogen.",
+    "loesung": "Aluminium"
+   },
+   {
+    "pre": "Nicht jedes Metall ist",
+    "post": ".",
+    "loesung": "magnetisch"
+   },
+   {
+    "pre": "Ein Nagel aus Eisen wird von einem Magneten",
+    "post": ".",
+    "loesung": "angezogen"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Magnet zieht Eisen an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Jedes Metall wird von einem Magneten angezogen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auch Kupfer bleibt an einem Magneten kleben.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nickel und Kobalt sind magnetisch.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Welche Stoffe zieht ein Magnet an?",
+   "optionen": [
+    "Eisen, Nickel und Kobalt",
+    "Holz, Plastik und Glas",
+    "Aluminium und Kupfer",
+    "Alle Metalle"
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "An deinem Kühlschrank halten kleine Magnete fest. Erkläre, warum die Magnete an der Kühlschranktür kleben bleiben.",
+   "zeilen": 3,
+   "loesung": "In der Kühlschranktür steckt Eisen. Weil Eisen magnetisch ist, zieht der Magnet die Tür an und bleibt daran kleben."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m3",
+  "lueckensaetze": [
+   {
+    "pre": "Jeder Magnet hat einen Nordpol und einen",
+    "post": ".",
+    "loesung": "Südpol"
+   },
+   {
+    "pre": "Gleiche Pole",
+    "post": "sich ab.",
+    "loesung": "stoßen"
+   },
+   {
+    "pre": "Ungleiche Pole",
+    "post": "sich an.",
+    "loesung": "ziehen"
+   },
+   {
+    "pre": "Ein Magnet hat immer zwei",
+    "post": ".",
+    "loesung": "Pole"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwei Nordpole ziehen sich an.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Nordpol und ein Südpol ziehen sich an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zwei Südpole stoßen sich ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Magnet hat nur einen Pol.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Du hältst zwei Nordpole aneinander. Was passiert?",
+   "optionen": [
+    "Sie stoßen sich ab.",
+    "Sie ziehen sich an.",
+    "Nichts passiert.",
+    "Sie kleben fest zusammen."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Zwei Magnete stoßen sich ab. Erkläre, was du tun musst, damit sie sich anziehen.",
+   "zeilen": 3,
+   "loesung": "Ich drehe einen der beiden Magnete um. Dann zeigen ein Nordpol und ein Südpol zueinander. Ungleiche Pole ziehen sich an."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m4",
+  "lueckensaetze": [
+   {
+    "pre": "Um jeden Magneten liegt ein unsichtbares",
+    "post": ".",
+    "loesung": "Magnetfeld"
+   },
+   {
+    "pre": "Mit",
+    "post": "kannst du das Magnetfeld sichtbar machen.",
+    "loesung": "Eisenspänen"
+   },
+   {
+    "pre": "Die Feldlinien gehen außen vom Nordpol zum",
+    "post": ".",
+    "loesung": "Südpol"
+   },
+   {
+    "pre": "An den",
+    "post": "ist das Magnetfeld am stärksten.",
+    "loesung": "Polen"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Magnetfeld kann man einfach so mit den Augen sehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Enge Feldlinien bedeuten ein starkes Magnetfeld.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Feldlinien laufen außen von Nord nach Süd.",
+    "stimmt": true
+   },
+   {
+    "aussage": "An den Polen ist das Magnetfeld am schwächsten.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wo ist das Magnetfeld eines Stabmagneten am stärksten?",
+   "optionen": [
+    "An den beiden Polen",
+    "Genau in der Mitte des Magneten",
+    "Weit weg vom Magneten"
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "An welcher Stelle eines Stabmagneten liegen die Eisenspäne am dichtesten? Begründe deine Antwort.",
+   "zeilen": 3,
+   "loesung": "Die Eisenspäne liegen an den beiden Polen am dichtesten. Dort ist das Magnetfeld am stärksten."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "magnetismus",
+  "id": "m5",
+  "lueckensaetze": [
+   {
+    "pre": "Die Kompassnadel ist ein kleiner",
+    "post": ".",
+    "loesung": "Magnet"
+   },
+   {
+    "pre": "Auch die Erde ist ein großer",
+    "post": ".",
+    "loesung": "Magnet"
+   },
+   {
+    "pre": "Der Nordpol der Nadel zeigt immer nach",
+    "post": ".",
+    "loesung": "Norden"
+   },
+   {
+    "pre": "Die Nadel steckt auf einer Spitze und kann sich frei",
+    "post": ".",
+    "loesung": "drehen"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Kompassnadel ist ein kleiner Magnet.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Erde ist selbst ein großer Magnet.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Kompassnadel zeigt immer nach Süden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Kompass braucht Batterien, damit die Nadel sich dreht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum dreht sich die Kompassnadel und zeigt nach Norden?",
+   "optionen": [
+    "Weil die Nadel aus Plastik ist.",
+    "Weil die Nadel ein Magnet ist und die Erde auch ein Magnet ist.",
+    "Weil die Sonne die Nadel anzieht."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Auf einer Wanderung im Wald wisst ihr nicht mehr, wohin. Erkläre, wie euch ein Kompass hilft, die richtige Richtung zu finden.",
+   "zeilen": 3,
+   "loesung": "Die Kompassnadel ist ein kleiner Magnet und zeigt immer nach Norden. Wenn wir wissen, wo Norden ist, können wir auch die anderen Richtungen bestimmen und den Weg finden."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "licht",
+  "id": "l1",
+  "lueckensaetze": [
+   {
+    "pre": "Die Sonne, eine Lampe und eine Kerze senden selbst Licht aus. Solche Körper nennt man ",
+    "post": ".",
+    "loesung": "selbstleuchtende Körper"
+   },
+   {
+    "pre": "Der Mond leuchtet nicht selbst. Er wird von der Sonne ",
+    "post": ".",
+    "loesung": "beleuchtet"
+   },
+   {
+    "pre": "Ein Buch sendet kein eigenes Licht aus. Es ist ein ",
+    "post": " Körper.",
+    "loesung": "beleuchteter"
+   },
+   {
+    "pre": "Licht breitet sich immer ",
+    "post": " aus.",
+    "loesung": "geradlinig"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Sonne ist ein selbstleuchtender Körper.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Mond sendet selbst Licht aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Licht breitet sich geradlinig aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Buch leuchtet im dunklen Zimmer von selbst.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welcher Körper sendet selbst Licht aus?",
+   "optionen": [
+    "Der Mond",
+    "Die brennende Kerze",
+    "Das Buch",
+    "Der Spiegel"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Eine Kerze und ein Buch stehen im dunklen Zimmer. Erkläre, warum du die Kerze sehen kannst, das Buch aber nicht.",
+   "zeilen": 3,
+   "loesung": "Die Kerze ist eine Lichtquelle und sendet selbst Licht aus. Darum sehen wir sie auch im Dunkeln. Das Buch sendet kein eigenes Licht aus. Ohne Licht, das auf es fällt, können wir es nicht sehen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "licht",
+  "id": "l2",
+  "lueckensaetze": [
+   {
+    "pre": "Wir können einen Gegenstand nur sehen, wenn",
+    "post": "von ihm in unser Auge kommt.",
+    "loesung": "Licht"
+   },
+   {
+    "pre": "Das Licht geht zuerst von der",
+    "post": "zum Gegenstand.",
+    "loesung": "Lichtquelle"
+   },
+   {
+    "pre": "Vom Gegenstand kommt das Licht dann in unser",
+    "post": ".",
+    "loesung": "Auge"
+   },
+   {
+    "pre": "In einem ganz dunklen Raum sehen wir",
+    "post": ", weil kein Licht da ist.",
+    "loesung": "nichts"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge kommt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch in völliger Dunkelheit können wir Gegenstände gut sehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Licht muss zuerst zum Gegenstand und dann in unser Auge gelangen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Unsere Augen senden selbst Strahlen aus, damit wir sehen können.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum können wir einen Ball sehen?",
+   "optionen": [
+    "Weil unser Auge Strahlen zum Ball schickt.",
+    "Weil der Ball auch im Dunkeln leuchtet.",
+    "Weil Licht vom Ball in unser Auge kommt.",
+    "Weil wir die Augen ganz fest zumachen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia sagt: „Meine Augen schicken Strahlen aus, damit ich sehen kann.“ Finde den Fehler und verbessere den Satz.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Die Augen schicken keine Strahlen aus. Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge kommt."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "licht",
+  "id": "l3",
+  "lueckensaetze": [
+   {
+    "pre": "Das Licht breitet sich immer ",
+    "post": " aus. Es macht also keinen Bogen.",
+    "loesung": "geradlinig"
+   },
+   {
+    "pre": "Ein Körper, durch den kein Licht scheint, nennt man ",
+    "post": ".",
+    "loesung": "undurchsichtig"
+   },
+   {
+    "pre": "Ein undurchsichtiger Körper hält das Licht auf. Hinter ihm entsteht ein dunkler ",
+    "post": ".",
+    "loesung": "Schatten"
+   },
+   {
+    "pre": "Ohne ",
+    "post": " gibt es auch keinen Schatten.",
+    "loesung": "Licht"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Licht breitet sich geradlinig aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Durch eine dicke Mauer aus Stein kann das Licht einfach hindurchscheinen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein undurchsichtiger Körper hält das Licht auf. Dahinter wird es dunkel.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch ohne Licht kann ein Schatten entstehen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wie entsteht ein Schatten?",
+   "optionen": [
+    "Ein undurchsichtiger Körper hält das geradlinige Licht auf.",
+    "Das Licht biegt um den Körper herum.",
+    "Der Körper leuchtet von selbst dunkel.",
+    "Der Boden saugt das Licht auf."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Was würde passieren, wenn du eine durchsichtige Glasscheibe in den Lichtstrahl hältst? Entsteht ein Schatten? Begründe.",
+   "zeilen": 3,
+   "loesung": "Hinter der Glasscheibe entsteht fast kein Schatten. Das Licht scheint durch das durchsichtige Glas hindurch. Nur undurchsichtige Gegenstände halten das Licht auf und werfen einen Schatten."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "licht",
+  "id": "l4",
+  "lueckensaetze": [
+   {
+    "pre": "Je näher der Gegenstand an der Lichtquelle steht, desto",
+    "post": "wird der Schatten.",
+    "loesung": "größer"
+   },
+   {
+    "pre": "Je weiter die Lichtquelle vom Gegenstand weg ist, desto",
+    "post": "wird der Schatten.",
+    "loesung": "kleiner"
+   },
+   {
+    "pre": "Damit ein Schatten entsteht, brauchst du Licht und einen",
+    "post": ", der das Licht aufhält.",
+    "loesung": "Gegenstand"
+   },
+   {
+    "pre": "Das Licht kommt aus der",
+    "post": ", zum Beispiel aus einer Lampe.",
+    "loesung": "Lichtquelle"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wenn du den Gegenstand ganz nah an die Lampe hältst, wird sein Schatten größer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je weiter die Lichtquelle weg ist, desto größer wird der Schatten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wenn du den Gegenstand von der Lampe weg bewegst, wird der Schatten kleiner.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Größe des Schattens hängt gar nicht vom Abstand ab.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Du möchtest den Schatten deiner Hand an der Wand größer machen. Was tust du?",
+   "optionen": [
+    "Ich halte die Hand weiter von der Lampe weg.",
+    "Ich halte die Hand ganz still.",
+    "Ich schalte eine zweite Lampe an.",
+    "Ich halte die Hand näher an die Lampe."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Zwei Kinder machen Handschatten. Bei Mia ist die Hand nah an der Lampe, bei Ben weit weg. Vergleiche: Wessen Schatten ist größer? Begründe.",
+   "zeilen": 3,
+   "loesung": "Mias Schatten ist größer. Je näher der Gegenstand an der Lampe ist, desto größer wird sein Schatten. Bens Hand ist weiter weg, darum ist sein Schatten kleiner."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "licht",
+  "id": "l5",
+  "lueckensaetze": [
+   {
+    "pre": "Der ganz dunkle Bereich hinter dem Gegenstand heißt ",
+    "post": ".",
+    "loesung": "Kernschatten"
+   },
+   {
+    "pre": "Der hellere Rand außen um den dunklen Teil heißt ",
+    "post": ".",
+    "loesung": "Halbschatten"
+   },
+   {
+    "pre": "Kern- und Halbschatten entstehen nur bei einer ",
+    "post": " Lichtquelle.",
+    "loesung": "großen"
+   },
+   {
+    "pre": "Im Halbschatten kommt nur ein ",
+    "post": " vom Licht an.",
+    "loesung": "Teil"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Kernschatten ist ganz dunkel.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Halbschatten ist heller als der Kernschatten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Halbschatten liegt in der Mitte und der Kernschatten außen herum.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einer großen Lampe gibt es nur einen Schatten ohne Halbschatten.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wo ist der Schatten am dunkelsten?",
+   "optionen": [
+    "Im Kernschatten",
+    "Im Halbschatten",
+    "Neben dem Schatten im hellen Licht"
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Was würde passieren, wenn statt vieler Lampen nur eine einzige kleine Lampe leuchtet? Hätte der Schatten dann auch einen helleren Rand? Begründe.",
+   "zeilen": 3,
+   "loesung": "Nein. Bei nur einer kleinen Lampe hat der Schatten fast keinen helleren Rand, er ist überall gleich dunkel. Kern- und Halbschatten entstehen erst bei einer großen oder mehreren Lampen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s1",
+  "lueckensaetze": [
+   {
+    "pre": "In einem Stromkreis sind alle Teile zu einem",
+    "post": "Kreis verbunden.",
+    "loesung": "geschlossenen"
+   },
+   {
+    "pre": "Ohne die",
+    "post": "fließt kein Strom durch den Kreis.",
+    "loesung": "Batterie"
+   },
+   {
+    "pre": "Mit einem",
+    "post": "kann man den Strom an- und ausschalten.",
+    "loesung": "Schalter"
+   },
+   {
+    "pre": "Bauteile zeichnet man in der Physik mit genormten",
+    "post": ".",
+    "loesung": "Schaltzeichen"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Batterie treibt den elektrischen Strom im geschlossenen Stromkreis an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Lampe erzeugt selbst den Strom.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit einem Schalter kann man den Stromkreis öffnen und schließen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Jeder darf sich seine Schaltzeichen selbst ausdenken.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welches Bauteil leuchtet, wenn Strom fließt?",
+   "optionen": [
+    "Die Lampe",
+    "Die Batterie",
+    "Die Leitung",
+    "Der Schalter"
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "In einer Taschenlampe steckt ein kleiner Stromkreis. Nenne die Bauteile, die darin stecken.",
+   "zeilen": 3,
+   "loesung": "In einer Taschenlampe stecken eine Batterie, ein Lämpchen, Leitungen (Kabel) und ein Schalter. Zusammen bilden sie einen geschlossenen Stromkreis."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s2",
+  "lueckensaetze": [
+   {
+    "pre": "Die Lampe leuchtet nur, wenn der Stromkreis",
+    "post": "ist.",
+    "loesung": "geschlossen"
+   },
+   {
+    "pre": "Der Strom fließt von der",
+    "post": "durch die Lampe und wieder zurück.",
+    "loesung": "Batterie"
+   },
+   {
+    "pre": "Wird der Weg unterbrochen, dann geht die Lampe",
+    "post": ".",
+    "loesung": "aus"
+   },
+   {
+    "pre": "Ein geschlossener Weg für den Strom heißt",
+    "post": ".",
+    "loesung": "Stromkreis"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Lampe leuchtet nur, wenn der Stromkreis geschlossen ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn ein Kabel locker ist und der Stromkreis offen bleibt, leuchtet die Lampe trotzdem.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Strom muss von der Batterie durch die Lampe und wieder zurück fließen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Lampe leuchtet auch ganz ohne Batterie.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wann leuchtet die Lampe?",
+   "optionen": [
+    "Wenn der Stromkreis unterbrochen ist",
+    "Wenn ein Kabel fehlt",
+    "Wenn der Stromkreis geschlossen ist",
+    "Wenn der Weg offen ist"
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Deine Taschenlampe leuchtet nicht mehr. Nenne zwei Gründe, warum sie aus bleiben kann.",
+   "zeilen": 3,
+   "loesung": "Die Batterie ist leer, oder der Stromkreis ist an einer Stelle unterbrochen. Zum Beispiel sitzt ein Kabel locker oder das Lämpchen ist nicht fest eingeschraubt. Dann kann der Strom nicht im Kreis fließen und die Lampe bleibt dunkel."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s3",
+  "lueckensaetze": [
+   {
+    "pre": "Metalle wie Kupfer und Eisen lassen den Strom durch. Man nennt sie ",
+    "post": ".",
+    "loesung": "Leiter"
+   },
+   {
+    "pre": "Plastik, Holz, Glas und Gummi lassen keinen Strom durch. Sie heißen ",
+    "post": " oder Isolatoren.",
+    "loesung": "Nichtleiter"
+   },
+   {
+    "pre": "Die Hülle von einem Kabel ist aus Plastik. Plastik ist ein ",
+    "post": ".",
+    "loesung": "Nichtleiter"
+   },
+   {
+    "pre": "Der Draht in einem Kabel ist aus dem Metall ",
+    "post": ". Es leitet den Strom sehr gut.",
+    "loesung": "Kupfer"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kupfer ist ein Metall und leitet den Strom.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Holz leitet den Strom gut.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Plastik ist ein Nichtleiter.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Gummi lässt den Strom durch.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welcher Stoff leitet den Strom?",
+   "optionen": [
+    "Eisen",
+    "Holz",
+    "Glas",
+    "Gummi"
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ordne die Dinge in Leiter und Nichtleiter: Kupferdraht, Holzstab, Eisennagel, Plastiklineal.",
+   "zeilen": 3,
+   "loesung": "Leiter: Kupferdraht und Eisennagel (beides Metalle). Nichtleiter: Holzstab und Plastiklineal."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "I"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s4",
+  "lueckensaetze": [
+   {
+    "pre": "In einer Reihenschaltung liegen die Lampen ",
+    "post": " in einem einzigen Weg.",
+    "loesung": "hintereinander"
+   },
+   {
+    "pre": "Für den Strom gibt es in der Reihenschaltung nur einen einzigen ",
+    "post": ".",
+    "loesung": "Weg"
+   },
+   {
+    "pre": "Nimmt man eine Lampe heraus, ist der Stromkreis ",
+    "post": " und alle Lampen gehen aus.",
+    "loesung": "unterbrochen"
+   },
+   {
+    "pre": "Zwei Lampen leuchten in der Reihenschaltung ",
+    "post": " als eine einzige Lampe.",
+    "loesung": "schwächer"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In einer Reihenschaltung liegen die Lampen hintereinander in einem Weg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Drehst du eine Lampe heraus, leuchten die anderen Lampen ganz normal weiter.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwei Lampen in Reihe leuchten heller als eine einzige Lampe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Reihenschaltung gibt es nur einen einzigen Weg für den Strom.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In einer Reihenschaltung drehst du eine von mehreren Lampen heraus. Wie verhalten sich die übrigen Lampen?",
+   "optionen": [
+    "Nur diese eine Lampe geht aus, die anderen leuchten weiter.",
+    "Alle Lampen leuchten plötzlich heller.",
+    "Alle Lampen gehen aus.",
+    "Es passiert gar nichts."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Sage voraus, wie sich die Helligkeit ändert, wenn du in einer Reihenschaltung ein drittes Lämpchen dazubaust. Begründe deine Antwort.",
+   "zeilen": 3,
+   "loesung": "Die Lämpchen werden dunkler. In der Reihenschaltung teilen sich alle Lämpchen den einen Weg. Je mehr Lämpchen hintereinander liegen, desto schwächer leuchtet jedes einzelne."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s5",
+  "lueckensaetze": [
+   {
+    "pre": "Bei der Parallelschaltung hat jede Lampe ihren eigenen ",
+    "loesung": "Weg",
+    "post": " für den Strom."
+   },
+   {
+    "pre": "Nimmt man eine Lampe heraus, dann leuchtet die andere Lampe ",
+    "loesung": "weiter",
+    "post": "."
+   },
+   {
+    "pre": "Bei der Parallelschaltung leuchtet jede Lampe gleich ",
+    "loesung": "hell",
+    "post": "."
+   },
+   {
+    "pre": "Der Strom teilt sich auf und fließt durch mehrere ",
+    "loesung": "Wege",
+    "post": " gleichzeitig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nimmt man eine Lampe heraus, gehen alle anderen Lampen auch aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der Parallelschaltung leuchtet jede Lampe gleich hell.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei der Parallelschaltung gibt es nur einen einzigen Weg für den Strom.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Du drehst bei einer Parallelschaltung eine von zwei Lampen heraus. Wie verhält sich die andere Lampe?",
+   "optionen": [
+    "Sie geht auch aus.",
+    "Sie leuchtet weiter.",
+    "Sie wird viel heller und geht kaputt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "In einem Zimmer hängen zwei Lampen. Eine geht kaputt, die andere leuchtet weiter. Erkläre, ob die Lampen in Reihe oder parallel geschaltet sind.",
+   "zeilen": 3,
+   "loesung": "Die Lampen sind parallel geschaltet. Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg zum Strom. Darum leuchtet die zweite Lampe weiter, auch wenn die erste kaputt ist."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "strom",
+  "id": "s6",
+  "lueckensaetze": [
+   {
+    "pre": "Mit einem ",
+    "post": " kann man den Stromkreis öffnen und schließen.",
+    "loesung": "Schalter"
+   },
+   {
+    "pre": "Ist der Schalter offen, ist der Stromkreis ",
+    "post": " und das Lämpchen bleibt dunkel.",
+    "loesung": "unterbrochen"
+   },
+   {
+    "pre": "Die Büroklammer im selbst gebauten Schalter muss aus ",
+    "post": " sein, damit der Strom durchfließt.",
+    "loesung": "Metall"
+   },
+   {
+    "pre": "Das Brettchen unter den Reißzwecken ist aus Holz. Holz ist ein ",
+    "post": ".",
+    "loesung": "Nichtleiter"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein offener Schalter unterbricht den Stromkreis.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Schalter wirkt nur, wenn er direkt neben der Batterie sitzt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit einem Schalter kann man den Stromkreis öffnen und wieder schließen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Schalter aus Plastik würde den Stromkreis genauso schließen wie einer aus Metall.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "An welcher Stelle des Stromkreises wirkt ein Schalter?",
+   "optionen": [
+    "Nur direkt an der Batterie",
+    "Nur direkt am Lämpchen",
+    "Nur zwischen zwei Kabeln",
+    "An jeder Stelle gleich"
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Im Klassenzimmer schaltet ein Schalter neben der Tür die Deckenlampe. Erkläre, warum es dabei nicht darauf ankommt, wie weit der Schalter von der Lampe entfernt ist.",
+   "zeilen": 3,
+   "loesung": "Der Schalter ist eine Stelle im Stromkreis, die man öffnen und schließen kann. Ist er offen, ist der ganze Kreis unterbrochen – egal, an welcher Stelle er sitzt. Deshalb wirkt er neben der Tür genauso wie direkt an der Lampe."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "waerme",
+  "id": "w1",
+  "lueckensaetze": [
+   {
+    "pre": "Die Temperatur sagt uns, wie ",
+    "loesung": "warm oder kalt",
+    "post": " ein Körper ist."
+   },
+   {
+    "pre": "Die Temperatur messen wir in Grad ",
+    "loesung": "Celsius",
+    "post": " mit einem Thermometer."
+   },
+   {
+    "pre": "Wärme ist eine Form von ",
+    "loesung": "Energie",
+    "post": "."
+   },
+   {
+    "pre": "Wärme fließt immer von einem warmen zu einem ",
+    "loesung": "kalten",
+    "post": " Körper."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Temperatur und Wärme bedeuten genau dasselbe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wärme ist Energie, die von einem warmen zu einem kalten Körper fließt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Temperatur wird in Grad Celsius angegeben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wärme fließt von einem kalten zu einem warmen Körper.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Was gibt die Temperatur eines Körpers an?",
+   "optionen": [
+    "Wie viel Energie der Körper an andere abgibt.",
+    "Wie schwer der Körper ist.",
+    "Wie warm oder kalt der Körper ist."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben sagt: „Der kalte Löffel zieht die Kälte aus dem heißen Wasser.“ Finde den Fehler und erkläre es richtig.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. „Kälte“ fließt nicht. Richtig ist: Die Wärme fließt vom heißen Wasser in den kalten Löffel. Darum wird der Löffel warm und das Wasser etwas kühler."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "waerme",
+  "id": "w2",
+  "lueckensaetze": [
+   {
+    "pre": "Wenn es warm wird, dehnt sich die",
+    "post": "im Thermometer aus.",
+    "loesung": "Flüssigkeit"
+   },
+   {
+    "pre": "Die Flüssigkeit steigt dann in der dünnen",
+    "post": "nach oben.",
+    "loesung": "Röhre"
+   },
+   {
+    "pre": "Beim Abkühlen",
+    "post": "die Flüssigkeit wieder nach unten.",
+    "loesung": "sinkt"
+   },
+   {
+    "pre": "An der Skala kann man die",
+    "post": "ablesen.",
+    "loesung": "Temperatur"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Erwärmen dehnt sich die Flüssigkeit aus und steigt nach oben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Abkühlen steigt die Flüssigkeit im Thermometer nach oben.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit einem Thermometer kann man messen, wie warm oder kalt etwas ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn es kalt wird, verschwindet die Flüssigkeit aus dem Thermometer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum steigt die Flüssigkeit im Thermometer, wenn es wärmer wird?",
+   "optionen": [
+    "Sie wird schwerer.",
+    "Sie dehnt sich aus.",
+    "Sie wird kälter."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Was würde mit der Flüssigkeit im Thermometer passieren, wenn du es von der warmen Hand in kaltes Wasser hältst? Begründe deine Vorhersage.",
+   "zeilen": 3,
+   "loesung": "Die Flüssigkeit würde nach unten sinken. Im kalten Wasser wird die Flüssigkeit kälter und braucht weniger Platz. Darum sinkt sie in der Röhre nach unten."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "waerme",
+  "id": "w3",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Erwärmen dehnen sich die meisten Stoffe ",
+    "post": ".",
+    "loesung": "aus"
+   },
+   {
+    "pre": "Beim Abkühlen ziehen sich die meisten Stoffe wieder ",
+    "post": ".",
+    "loesung": "zusammen"
+   },
+   {
+    "pre": "Beim Erwärmen brauchen die meisten Stoffe mehr",
+    "post": ".",
+    "loesung": "Platz"
+   },
+   {
+    "pre": "Auch",
+    "post": "dehnt sich beim Erwärmen aus, nicht nur Metall.",
+    "loesung": "Luft"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die meisten Stoffe dehnen sich beim Erwärmen aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Abkühlen werden fast alle Stoffe größer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nur feste Stoffe können sich ausdehnen, Luft und Wasser nicht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auch Luft dehnt sich beim Erwärmen aus.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Was passiert mit den meisten Stoffen, wenn man sie erwärmt?",
+   "optionen": [
+    "Sie ziehen sich zusammen.",
+    "Sie bleiben genau gleich groß.",
+    "Sie werden immer schwerer.",
+    "Sie dehnen sich aus."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Im Sommer hängen die Stromkabel zwischen zwei Masten weiter durch als im Winter. Erkläre, warum das so ist.",
+   "zeilen": 3,
+   "loesung": "Im Sommer ist es warm. Die Wärme lässt das Metall der Kabel sich ausdehnen. Deshalb werden die Kabel länger und hängen weiter durch. Im Winter ist es kalt. Das Metall zieht sich zusammen, und die Kabel sind kürzer und straffer."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "waerme",
+  "id": "w4",
+  "lueckensaetze": [
+   {
+    "pre": "Wenn ein fester Stoff warm wird, dann ",
+    "loesung": "schmilzt",
+    "post": " er zu einer Flüssigkeit."
+   },
+   {
+    "pre": "Wird eine Flüssigkeit sehr heiß, dann ",
+    "loesung": "verdampft",
+    "post": " sie zu Gas."
+   },
+   {
+    "pre": "Wenn Wasserdampf an einer kalten Flasche abkühlt, wird er wieder zu",
+    "post": ".",
+    "loesung": "Wasser"
+   },
+   {
+    "pre": "Wenn Wasser sehr kalt wird, dann ",
+    "loesung": "erstarrt",
+    "post": " es zu Eis."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Stoffe können fest, flüssig oder gasförmig sein.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Abkühlen verdampft eine Flüssigkeit zu Gas.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eis schmilzt, wenn es warm wird.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn Wasserdampf kalt wird, dann wird er wieder fest.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wie nennt man es, wenn eine Flüssigkeit beim Erwärmen zu Gas wird?",
+   "optionen": [
+    "Erstarren",
+    "Schmelzen",
+    "Verdampfen"
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Du holst eine kalte Flasche aus dem Kühlschrank. Nach kurzer Zeit sind außen kleine Wassertropfen an der Flasche. Erkläre, wie die Tropfen entstehen.",
+   "zeilen": 3,
+   "loesung": "In der Luft ist unsichtbarer Wasserdampf (Gas). An der kalten Flasche kühlt der Wasserdampf ab. Beim Abkühlen wird das Gas wieder flüssig. Das nennt man Kondensieren. So bilden sich die Wassertropfen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "waerme",
+  "id": "w5",
+  "lueckensaetze": [
+   {
+    "pre": "Wenn du einen heißen Löffel anfasst, wird deine Hand warm. Diese Art nennt man ",
+    "post": ".",
+    "loesung": "Wärmeleitung"
+   },
+   {
+    "pre": "Metalle leiten Wärme besonders ",
+    "post": ".",
+    "loesung": "gut"
+   },
+   {
+    "pre": "Holz und Plastik leiten Wärme",
+    "post": ".",
+    "loesung": "schlecht"
+   },
+   {
+    "pre": "Die Wärme wandert dabei immer von",
+    "post": "zu kalt.",
+    "loesung": "warm"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Metall leitet Wärme gut.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Holz leitet Wärme schlechter als Metall.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wärme wandert immer von einem warmen zu einem kalten Körper.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Holz leitet Wärme genauso gut wie Metall.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welcher Löffel wird in heißer Suppe am schnellsten heiß?",
+   "optionen": [
+    "Der Holzlöffel",
+    "Der Plastiklöffel",
+    "Der Metalllöffel"
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche einen Metalllöffel und einen Holzlöffel in heißer Suppe: Welcher Griff wird schneller heiß? Begründe.",
+   "zeilen": 3,
+   "loesung": "Der Griff vom Metalllöffel wird schneller heiß. Metall leitet die Wärme gut, darum wandert sie schnell bis zum Griff. Holz leitet die Wärme schlecht, darum bleibt der Holzgriff länger kühl."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "schall",
+  "id": "sc1",
+  "lueckensaetze": [
+   {
+    "pre": "Ein Ton entsteht, wenn etwas ",
+    "post": " (schnell hin und her zittert).",
+    "loesung": "schwingt"
+   },
+   {
+    "pre": "Die Schwingung geht von dem Gegenstand auf die ",
+    "post": " über.",
+    "loesung": "Luft"
+   },
+   {
+    "pre": "Hört das Schwingen auf, dann hört auch der ",
+    "post": " auf.",
+    "loesung": "Ton"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Ton entsteht, wenn etwas schwingt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Ton kann auch ohne Schwingung entstehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Schwingung geht auf die Luft über.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wenn das Schwingen aufhört, wird der Ton lauter.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Was muss passieren, damit ein Ton entsteht?",
+   "optionen": [
+    "Etwas schwingt schnell hin und her.",
+    "Etwas wird ganz kalt.",
+    "Etwas leuchtet hell."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Emma sagt: „Ein Ton entsteht, wenn etwas ganz still liegt.“ Finde den Fehler und verbessere den Satz.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Ein Ton entsteht nur, wenn etwas schnell hin und her schwingt. Wenn etwas still liegt, entsteht kein Ton."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "schall",
+  "id": "sc2",
+  "lueckensaetze": [
+   {
+    "pre": "Je weiter etwas schwingt, desto",
+    "post": "ist der Ton.",
+    "loesung": "lauter"
+   },
+   {
+    "pre": "Eine kleine",
+    "post": "macht einen leisen Ton.",
+    "loesung": "Schwingung"
+   },
+   {
+    "pre": "Wenn eine Saite nur wenig hin und her schwingt, ist der Ton",
+    "post": ".",
+    "loesung": "leise"
+   },
+   {
+    "pre": "Wie laut oder leise ein Ton ist, nennt man die",
+    "post": ".",
+    "loesung": "Lautstärke"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je stärker etwas schwingt, desto lauter ist der Ton.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine kleine Schwingung macht einen lauten Ton.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine große (weite) Schwingung macht einen lauten Ton.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Lautstärke hat nichts damit zu tun, wie weit etwas schwingt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wovon hängt die Lautstärke eines Tons ab?",
+   "optionen": [
+    "Von der Farbe des Instruments",
+    "Davon, wie weit etwas schwingt",
+    "Von der Uhrzeit"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Vergleiche: Du schlägst die Trommel einmal sanft und einmal fest an. Wann schwingt die Trommelhaut weiter, und wann ist der Ton lauter?",
+   "zeilen": 3,
+   "loesung": "Wenn ich fest anschlage, schwingt die Trommelhaut weiter und der Ton ist lauter. Wenn ich sanft anschlage, schwingt sie nur wenig und der Ton ist leiser."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "schall",
+  "id": "sc3",
+  "lueckensaetze": [
+   {
+    "pre": "Je schneller etwas schwingt, desto ",
+    "post": " ist der Ton.",
+    "loesung": "höher"
+   },
+   {
+    "pre": "Eine kurze Saite schwingt schnell. Der Ton ist deshalb ",
+    "post": ".",
+    "loesung": "hoch"
+   },
+   {
+    "pre": "Eine lange oder lockere Saite schwingt langsam. Der Ton ist deshalb ",
+    "post": ".",
+    "loesung": "tief"
+   },
+   {
+    "pre": "Die Hin- und Her-Bewegung einer Saite nennt man eine ",
+    "post": ".",
+    "loesung": "Schwingung"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je schneller eine Saite schwingt, desto höher ist der Ton.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine kurze Saite macht einen tiefen Ton.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wenn du eine Saite fester spannst, wird der Ton höher.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine lange, lockere Saite schwingt schnell und klingt hoch.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Du drückst eine Gitarrensaite so, dass nur ein kurzes Stück schwingt. Wie klingt der Ton?",
+   "optionen": [
+    "Tiefer als vorher",
+    "Höher als vorher",
+    "Genau gleich",
+    "Gar kein Ton"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Du klopfst an ein Glas mit viel Wasser und hörst einen tiefen Ton. Was würde passieren, wenn du etwas Wasser wegschüttest? Begründe deine Vorhersage.",
+   "zeilen": 3,
+   "loesung": "Der Ton würde höher werden. Mit weniger Wasser schwingt das Glas schneller. Je schneller etwas schwingt, desto höher klingt der Ton."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "schall",
+  "id": "sc4",
+  "lueckensaetze": [
+   {
+    "pre": "Schall entsteht durch eine ",
+    "post": ". Etwas zittert dabei ganz schnell hin und her.",
+    "loesung": "Schwingung"
+   },
+   {
+    "pre": "Meistens breitet sich Schall durch die ",
+    "post": " aus. Sie ist um uns herum.",
+    "loesung": "Luft"
+   },
+   {
+    "pre": "Schall breitet sich nicht nur nach vorne aus, sondern in alle ",
+    "post": ".",
+    "loesung": "Richtungen"
+   },
+   {
+    "pre": "Wo gar keine Luft ist, zum Beispiel im",
+    "post": ", gibt es keinen Schall.",
+    "loesung": "Weltall"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Schall kann sich auch durch Wasser ausbreiten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Vakuum (zum Beispiel im Weltall) kann man Schall hören.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Schall breitet sich immer nur in eine einzige Richtung aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Schall kann sich auch durch feste Stoffe wie Holz ausbreiten.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Wodurch kann sich Schall NICHT ausbreiten?",
+   "optionen": [
+    "Durch Luft",
+    "Durch ein Vakuum",
+    "Durch Wasser",
+    "Durch Holz"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Zwei Astronauten schweben ganz nah nebeneinander im Weltall. Warum können sie sich nicht einfach zurufen? Erkläre es mit dem Wort Schall.",
+   "zeilen": 3,
+   "loesung": "Im Weltall ist ein Vakuum. Dort gibt es keine Luft. Schall braucht aber Luft oder einen anderen Stoff, um sich auszubreiten. Ohne Luft kann kein Schall weitergegeben werden. Deshalb hören sich die Astronauten nicht und sprechen über Funk."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "schall",
+  "id": "sc5",
+  "lueckensaetze": [
+   {
+    "pre": "Der Schall bringt das",
+    "post": "im Ohr zum Schwingen.",
+    "loesung": "Trommelfell"
+   },
+   {
+    "pre": "Kleine",
+    "post": "leiten die Schwingung weiter ins Innenohr.",
+    "loesung": "Knochen"
+   },
+   {
+    "pre": "Vom Innenohr geht ein Signal zum",
+    "post": ", damit wir hören.",
+    "loesung": "Gehirn"
+   },
+   {
+    "pre": "Sehr laute Töne können das",
+    "post": "schädigen.",
+    "loesung": "Ohr"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Schall bringt das Trommelfell zum Schwingen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Sehr laute Töne sind gut für die Ohren.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kleine Knochen leiten die Schwingung ins Innenohr weiter.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Ohr hört ganz allein, ohne das Gehirn.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Wohin schickt das Innenohr das Signal, damit wir hören?",
+   "optionen": [
+    "Zum Fuß",
+    "Zum Gehirn",
+    "Zur Hand"
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Nenne zwei Dinge, wie du deine Ohren bei sehr lauter Musik schützen kannst.",
+   "zeilen": 3,
+   "loesung": "Zum Beispiel: einen Gehörschutz oder Ohrstöpsel tragen, weiter weg von den Lautsprechern stehen oder die Musik leiser machen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "I"
+  ]
+ },
+ {
+  "theme": "himmel",
+  "id": "h1",
+  "lueckensaetze": [
+   {
+    "pre": "Die Erde dreht sich in 24 Stunden einmal um sich ",
+    "post": ".",
+    "loesung": "selbst"
+   },
+   {
+    "pre": "Auf der Seite, die zur Sonne zeigt, ist gerade ",
+    "post": ".",
+    "loesung": "Tag"
+   },
+   {
+    "pre": "Auf der Seite, die von der Sonne weg zeigt, ist gerade ",
+    "post": ".",
+    "loesung": "Nacht"
+   },
+   {
+    "pre": "Tag und Nacht entstehen, weil sich die ",
+    "post": " dreht.",
+    "loesung": "Erde"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Erde dreht sich in 24 Stunden einmal um sich selbst.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nicht die Erde, sondern die Sonne dreht sich. Darum wird es Tag und Nacht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf der Seite der Erde, die zur Sonne zeigt, ist Tag.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Erde braucht nur eine Stunde für eine ganze Drehung.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum wird es auf der Erde Tag und Nacht?",
+   "optionen": [
+    "Weil die Sonne um die Erde läuft.",
+    "Weil die Sonne in der Nacht ausgeht.",
+    "Weil sich die Erde in 24 Stunden einmal dreht."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben sagt: „Es wird Nacht, weil die Sonne abends wegfliegt.“ Finde den Fehler und verbessere den Satz.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Die Sonne fliegt nicht weg. Die Erde dreht sich. Unsere Seite zeigt am Abend nicht mehr zur Sonne. Darum wird es bei uns Nacht."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "himmel",
+  "id": "h2",
+  "lueckensaetze": [
+   {
+    "pre": "Die Erde braucht ein ",
+    "post": " für eine Runde um die Sonne.",
+    "loesung": "Jahr"
+   },
+   {
+    "pre": "Die Erdachse steht nicht gerade, sie ist ",
+    "post": ". Darum gibt es Jahreszeiten.",
+    "loesung": "geneigt"
+   },
+   {
+    "pre": "Wenn unser Teil der Erde zur Sonne geneigt ist, haben wir ",
+    "post": ".",
+    "loesung": "Sommer"
+   },
+   {
+    "pre": "Im Winter steht die Sonne am Himmel ganz ",
+    "post": ", und die Tage sind kurz.",
+    "loesung": "tief"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die geneigte Erde wandert in einem Jahr einmal um die Sonne.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Winter ist unser Teil der Erde zur Sonne hin geneigt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Sommer ist unser Teil der Erde zur Sonne geneigt. Die Sonne steht hoch und die Tage sind lang.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Es ist Sommer, weil die Erde dann viel näher an der Sonne ist.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum ist bei uns Sommer?",
+   "optionen": [
+    "Die Erde kommt der Sonne ganz nah.",
+    "Die Sonne wird im Sommer größer.",
+    "Unser Teil der Erde ist zur Sonne geneigt."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia sagt: „Im Sommer ist es warm, weil die Erde dann näher an der Sonne ist.“ Finde den Fehler und erkläre, was wirklich stimmt.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Es liegt nicht am Abstand. Im Sommer ist unsere Hälfte der Erde zur Sonne geneigt. Die Sonne steht dann hoch und es wird warm."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "himmel",
+  "id": "h3",
+  "lueckensaetze": [
+   {
+    "pre": "Der Mond leuchtet nicht selbst. Er wird von der ",
+    "loesung": "Sonne",
+    "post": " beleuchtet."
+   },
+   {
+    "pre": "Wir sehen immer nur den Teil des Mondes, der gerade von der Sonne ",
+    "loesung": "beleuchtet",
+    "post": " wird."
+   },
+   {
+    "pre": "Die verschiedenen Formen des Mondes am Himmel nennt man ",
+    "loesung": "Mondphasen",
+    "post": "."
+   },
+   {
+    "pre": "Der Mond bewegt sich auf einer Bahn um die ",
+    "loesung": "Erde",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Mond macht sein eigenes Licht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Sonne beleuchtet den Mond.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wir sehen nicht immer die ganze beleuchtete Seite des Mondes.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Mond verändert wirklich seine Form und wird dabei kleiner.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum sieht der Mond an verschiedenen Tagen anders aus?",
+   "optionen": [
+    "Wolken verdecken einen Teil vom Mond.",
+    "Der Mond schrumpft und wächst danach wieder.",
+    "Der Mond schaltet sein Licht immer wieder an und aus.",
+    "Je nach Stellung sehen wir mehr oder weniger der beleuchteten Seite."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Ben sagt: „Der Mond ist eine Sichel, weil der Schatten der Erde einen Teil verdeckt.“ Finde den Fehler und erkläre, was wirklich stimmt.",
+   "zeilen": 3,
+   "loesung": "Der Satz ist falsch. Bei den Mondphasen wirft die Erde keinen Schatten auf den Mond. Wir sehen nur mal mehr, mal weniger von der Seite, die die Sonne beleuchtet."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "himmel",
+  "id": "h4",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer Sonnenfinsternis steht der ",
+    "post": " zwischen Sonne und Erde.",
+    "loesung": "Mond"
+   },
+   {
+    "pre": "Der Mond wirft seinen ",
+    "post": " auf die Erde.",
+    "loesung": "Schatten"
+   },
+   {
+    "pre": "Der Mond ",
+    "post": " die Sonne, deshalb wird es am Tag dunkel.",
+    "loesung": "verdeckt"
+   },
+   {
+    "pre": "Schau nie ohne ",
+    "post": " direkt in die Sonne.",
+    "loesung": "Schutz"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei einer Sonnenfinsternis steht der Mond zwischen Sonne und Erde.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei einer Sonnenfinsternis steht die Erde zwischen Sonne und Mond.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Mond wirft seinen Schatten auf die Erde.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Du darfst ohne Schutzbrille direkt in die Sonne schauen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Was passiert bei einer Sonnenfinsternis?",
+   "optionen": [
+    "Der Mond verdeckt die Sonne.",
+    "Die Erde verdeckt den Mond.",
+    "Die Sonne verdeckt den Mond."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Mia hält einen Ball vor eine Lampe. An der Wand entsteht ein dunkler Fleck. Erkläre, was das mit einer Sonnenfinsternis zu tun hat.",
+   "zeilen": 3,
+   "loesung": "Der Ball wirft einen Schatten auf die Wand. Der Ball ist wie der Mond, die Lampe ist wie die Sonne und die Wand ist wie die Erde. Bei einer Sonnenfinsternis schiebt sich der Mond vor die Sonne und wirft seinen Schatten auf die Erde. So wird es kurz dunkel."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "theme": "himmel",
+  "id": "h5",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer Mondfinsternis steht die ",
+    "post": " zwischen Sonne und Mond.",
+    "loesung": "Erde"
+   },
+   {
+    "pre": "Die Erde wirft ihren ",
+    "post": " auf den Mond.",
+    "loesung": "Schatten"
+   },
+   {
+    "pre": "Der Mond wird dunkel und sieht oft ",
+    "post": " aus.",
+    "loesung": "rötlich"
+   },
+   {
+    "pre": "Eine Mondfinsternis können wir nur bei ",
+    "post": " sehen.",
+    "loesung": "Vollmond"
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei einer Mondfinsternis steht die Erde zwischen Sonne und Mond.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Mond wirft bei einer Mondfinsternis seinen Schatten auf die Erde.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einer Mondfinsternis kann der Mond rötlich aussehen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei einer Mondfinsternis leuchtet der Mond heller als sonst.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum wird der Mond bei einer Mondfinsternis dunkel?",
+   "optionen": [
+    "Die Erde wirft ihren Schatten auf den Mond.",
+    "Der Mond geht aus wie eine Lampe.",
+    "Wolken verdecken den Mond."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche eine Sonnenfinsternis und eine Mondfinsternis: Was steht jeweils in der Mitte? Beschreibe den Unterschied.",
+   "zeilen": 3,
+   "loesung": "Bei einer Sonnenfinsternis steht der Mond in der Mitte, zwischen Sonne und Erde. Bei einer Mondfinsternis steht die Erde in der Mitte, zwischen Sonne und Mond."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "l6",
+  "theme": "licht",
+  "lueckensaetze": [
+   {
+    "pre": "Am Spiegel ist der Einfallswinkel genauso groß wie der",
+    "loesung": "Reflexionswinkel",
+    "post": "."
+   },
+   {
+    "pre": "Beide Winkel werden nicht zur Fläche gemessen, sondern zum",
+    "loesung": "Lot",
+    "post": "."
+   },
+   {
+    "pre": "Trifft der Strahl senkrecht auf den Spiegel, läuft er auf demselben Weg",
+    "loesung": "zurück",
+    "post": "."
+   },
+   {
+    "pre": "Drehst du den Spiegel um 10 Grad, schwenkt der zurückgeworfene Strahl um",
+    "loesung": "20 Grad",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei einem Einfallswinkel von 60 Grad läuft der Strahl unter 30 Grad zurück.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Lot steht senkrecht auf der Spiegelfläche.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf rauem Papier siehst du kein Spiegelbild, weil das Licht in alle Richtungen zurückgeworfen wird.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Spiegel kann Licht nur geradeaus weiterschicken.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Emma trifft mit dem Strahl unter 30 Grad zum Lot auf den Spiegel. Unter welchem Winkel läuft er zurück?",
+   "optionen": [
+    "Unter 30 Grad, denn Einfallswinkel und Reflexionswinkel sind gleich groß.",
+    "Unter 60 Grad, denn 30 Grad und 60 Grad ergänzen sich zu einem rechten Winkel.",
+    "Unter 15 Grad, denn der Winkel halbiert sich beim Zurückwerfen.",
+    "Das hängt von der Farbe des Lichts ab; für die Richtung spielt die Farbe keine Rolle."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Emma will den Lichtfleck weit nach rechts schieben, ohne die Taschenlampe zu bewegen. Erkläre, was sie mit dem Spiegel tun muss und warum das gut funktioniert.",
+   "zeilen": 4,
+   "loesung": "Sie muss den Spiegel drehen. Weil beide Winkel zum Lot gemessen werden und sich das Lot beim Drehen mitdreht, wandert der zurückgeworfene Strahl um den doppelten Winkel: Dreht sie den Spiegel um 10 Grad, springt der Lichtfleck um 20 Grad weiter. Das funktioniert deshalb so gut, weil eine kleine, genaue Drehung schon eine große Verschiebung erzeugt. Die Taschenlampe kann dabei ruhig liegen bleiben – der Einfallsstrahl bleibt gleich, nur die Spiegelfläche steht anders."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "s7",
+  "theme": "strom",
+  "lueckensaetze": [
+   {
+    "pre": "Eine Spule mit Eisenkern wirkt nur dann wie ein Magnet, wenn",
+    "loesung": "Strom",
+    "post": " fließt."
+   },
+   {
+    "pre": "Verdoppelt man die Windungszahl, so verdoppelt sich auch die",
+    "loesung": "Tragkraft",
+    "post": "."
+   },
+   {
+    "pre": "Bei 2 A und 100 Windungen trägt die Spule 6 Büroklammern, bei 200 Windungen",
+    "loesung": "12",
+    "post": "."
+   },
+   {
+    "pre": "Anders als ein Dauermagnet lässt sich ein Elektromagnet",
+    "loesung": "abschalten",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Elektromagnet zieht auch dann noch, wenn der Strom abgeschaltet ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 150 Windungen und 4 A trägt die Spule doppelt so viel wie bei 150 Windungen und 2 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Tragkraft hängt sowohl von der Windungszahl als auch von der Stromstärke ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Man darf einen Elektromagneten an der Steckdose bauen, wenn man vorsichtig ist.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine Spule mit 100 Windungen trägt bei 2 A sechs Büroklammern. Wie viele trägt sie bei 200 Windungen und gleichem Strom?",
+   "optionen": [
+    "Acht, denn es kommen zwei Klammern dazu. Die Tragkraft wächst aber nicht in Stufen, sondern verdoppelt sich.",
+    "Sechs, denn nur der Strom verändert die Tragkraft. Die Windungszahl wirkt genauso stark.",
+    "Zwölf, denn doppelte Windungszahl bedeutet doppelte Tragkraft.",
+    "Drei, denn die Kraft verteilt sich auf mehr Windungen. Mehr Windungen schwächen den Magneten nicht."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben will Schlüssel aus einem Gully holen. Beurteile, ob dafür sein Dauermagnet oder ein Elektromagnet besser geeignet ist, und begründe deine Wahl.",
+   "zeilen": 4,
+   "loesung": "Beide ziehen Eisen an, aber der Elektromagnet hat zwei Vorteile. Erstens lässt sich seine Stärke einstellen: über die Windungszahl und über die Stromstärke, und bei doppelter Windungszahl trägt er doppelt so viel. Zweitens lässt er sich abschalten – oben angekommen fällt der Schlüssel von selbst ab, während man ihn vom Dauermagneten abziehen muss. Dagegen steht, dass der Elektromagnet eine Batterie und Kabel braucht und im nassen Gully nichts an der Batterie nass werden darf. Für den kurzen Griff in den Gully reicht Bens Dauermagnet deshalb aus; für eine Anlage, die etwas gezielt aufnehmen und wieder loslassen soll, ist der Elektromagnet die richtige Wahl."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ }
+]

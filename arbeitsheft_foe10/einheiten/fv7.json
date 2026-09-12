@@ -1,0 +1,204 @@
+{
+ "seite": {
+  "id": "fv7",
+  "quelle": "ev8",
+  "sim": "generator",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Die Maschine im Kraftwerk",
+  "name": "Wie macht ein Generator Strom?",
+  "fachwoerter_neu": [
+   "Drehfrequenz f in Hertz (Hz)",
+   "Scheitelwert Û"
+  ],
+  "alltag": [
+   "Jannis steht bei den Stadtwerken vor einer Maschine.",
+   "Dampf dreht ein großes Rad. Dieses Rad heißt Turbine.",
+   "Die Turbine dreht eine Spule im Magnetfeld. Diese Maschine heißt Generator.",
+   "Wie schnell sich die Spule dreht, heißt Drehfrequenz f in Hertz (Hz)."
+  ],
+  "frage": "Wie ändert sich die Spannung, wenn sich die Spule schneller dreht?",
+  "predict": [
+   "Die Spannung wird größer, wenn sich die Spule schneller dreht.",
+   "Die Spannung bleibt gleich. Der Magnet allein macht sie."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke oben „1 · Der Grundversuch“. Drücke dann „Anhalten“.",
+   "Lies den Kasten „Scheitelwert Û“ ab. Das ist die größte Spannung.",
+   "Schiebe nur den Regler „Drehfrequenz f“ auf „1,0 Hz“. Lies „Scheitelwert Û“ ab. Trage ein.",
+   "Schiebe auf „4,0 Hz“. Lies wieder ab. Trage ein. Vergleiche jede Zeile mit der davor."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viel Hz stellst du ein?",
+   "Wie viel Volt zeigt „Scheitelwert Û“?",
+   "Mehr oder weniger als vorher?"
+  ],
+  "tabRows": [
+   [
+    "2,0 Hz",
+    "0,658 V",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "1,0 Hz",
+    "",
+    ""
+   ],
+   [
+    "4,0 Hz",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Generator entsteht Spannung, weil sich eine Spule im Magnetfeld",
+    "loesung": "dreht",
+    "post": "."
+   },
+   {
+    "pre": "Dreht sie sich doppelt so schnell, ist die Spannung",
+    "loesung": "doppelt so groß",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "dreht",
+   "doppelt so groß",
+   "größer",
+   "0,329 V",
+   "1,316 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 ab?",
+   "antwort": "Der Regler „Drehfrequenz f“ steht auf 2,0 Hz. Der Kasten „Scheitelwert Û“ zeigt 0,658 V. In die Tabelle kommt 0,658 V. Die drei anderen Regler bleiben stehen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Spule dreht sich schneller. Was zeigt „Scheitelwert Û“?",
+    "optionen": [
+     "Mehr Volt als vorher.",
+     "Gleich viel wie vorher.",
+     "Weniger Volt als vorher."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1,0 Hz zeigt „Scheitelwert Û“",
+      "loesung": "0,329 V",
+      "post": "."
+     },
+     {
+      "pre": "Bei 4,0 Hz zeigt „Scheitelwert Û“",
+      "loesung": "1,316 V",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Der Generator soll mehr Spannung liefern. Was muss die Turbine tun?",
+    "satzstarter": "Die Turbine muss …, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies „Scheitelwert Û“ ab, nicht „Spannung U“.",
+   "h2": "Beginne so: Die Turbine muss die Spule schneller drehen, weil …",
+   "h3": "Fast fertig: Schneller drehen heißt mehr Volt. Die Spannung wird ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Kasten „Scheitelwert Û“ ablesen.",
+   "Ich kann sagen: schneller drehen heißt mehr Volt.",
+   "Ich weiß: Im Generator dreht sich eine Spule im Magnetfeld."
+  ],
+  "zuhause": "Suche an einem Gerät das kleine Schild. Schreibe die Zahl vor „Hz“ auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Zuständen derselben Maschine, nebeneinander in EINEM Bildausschnitt, gleiche Blickrichtung von vorn, gleiche Größe, gleiche Höhe, dieselbe Grundplatte. In beiden Hälften steht dasselbe Gerät: links ein großer Magnetblock in einer vollen Farbfläche mit dem großen Buchstaben „N“ mitten darin, rechts ein gleich großer Magnetblock in einer deutlich anderen vollen Farbfläche mit dem großen Buchstaben „S“ mitten darin. Zwischen den beiden Blöcken steckt auf einer waagerechten Achse eine rechteckige Spule, gezeichnet als geschlossenes Rechteck aus dicken, deutlich voneinander getrennten Kupferwindungen; die Achse führt nach rechts aus dem Magnetspalt heraus. Um die Achse liegt genau EIN gebogener Drehpfeil mit einer einzigen Pfeilspitze. Unter jeder Hälfte steht groß und gut lesbar eine Anzeigetafel mit genau zwei Zeilen untereinander. LINKE HÄLFTE: Der Drehpfeil ist dünn und reicht nur über ein Viertel des Kreises; die Anzeigetafel trägt die Zeilen „Drehfrequenz f  1,0 Hz“ und „Scheitelwert Û  0,329 V“. RECHTE HÄLFTE: Derselbe Drehpfeil ist dick und reicht über den ganzen Kreis, dahinter drei kurze Tempostriche; die Anzeigetafel trägt die Zeilen „Drehfrequenz f  4,0 Hz“ und „Scheitelwert Û  1,316 V“. Unter beiden Hälften läuft eine durchgehende Zeile: „gleich geblieben: Strom 2,00 A · 8000 Windungen · Fläche 42 cm²“. Der Unterschied zwischen links und rechts darf an genau drei Stellen sichtbar sein: dünner kurzer Pfeil / dicker langer Pfeil mit Tempostrichen, 1,0 Hz / 4,0 Hz, 0,329 V / 1,316 V. Alles andere ist in beiden Hälften Strich für Strich identisch – daran hängt die ganze Aussage des Bildes. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen – die beiden Magnetblöcke werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Strichmuster oder dünne Streifen, und N und S stehen als große Buchstaben mitten in der Fläche; sonst verschwimmen sie beim Verkleinern zu Grau. (2) Nebenbilder – es gibt genau zwei Hälften: keine dritte Miniatur, kein Detailfenster, keine Sinuskurve, kein Messdiagramm in der Ecke, keine Lampe, kein Schatten der Spule, kein Kraftwerk und keine Turbine am Rand, keine Personen. (3) Strahlengänge ins Leere – es werden KEINE Feldlinien, keine Bögen zwischen den Polen, keine Strompfeile im Draht und keine Linien gezeichnet, die am Bildrand einfach aufhören; die einzigen Pfeile im ganzen Bild sind die zwei Drehpfeile um die Achse. Keine Formel, keine Winkelangabe, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv7",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation ausschließlich den Regler „Drehfrequenz f“ ein und lesen den Anzeigekasten „Scheitelwert Û“ ab: 1,0 Hz gehört zu 0,329 V, 2,0 Hz zu 0,658 V, 4,0 Hz zu 1,316 V. Aus der eigenen Tabelle lesen sie ab: doppelte Drehfrequenz bedeutet doppelte Spannung, vierfache Drehfrequenz vierfache Spannung. Sie benennen die Sache: Im Generator dreht sich eine Spule im Magnetfeld, und je schneller sie sich dreht, desto größer ist die Spannung. Fachliche Namen auf der Schülerseite: Drehfrequenz f in Hertz (Hz) und Scheitelwert Û. Turbine und Generator sind Gerätenamen und bekommen im Alltagsteil je einen Begriffssatz; sie zählen deshalb nicht mit. Nicht Lernziel dieser Doppelseite ist die Herkunft der Energie: Das Wort Energie kommt auf der Schülerseite nirgends vor, und Aufgabe 3 verlangt eine Handlung der Turbine, keine Aussage über Energie. Wer den Gedanken trotzdem hören will, findet ihn unter a3.alternativen („Es muss mehr Dampf auf die Turbine“) — erwünscht, aber nicht verlangt. Nur für Sie, nicht auf der Schülerseite: Es handelt sich um eine sinusförmige Wechselspannung mit Û = n · B · A · ω; das Wort Wechselspannung wird erst in fv8 eingeführt, wo der Transformator es zwingend braucht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Zuständen. Optional als Demonstration: ein Fahrraddynamo oder ein Handkurbelgenerator mit Lämpchen — einmal langsam, einmal schnell kurbeln und nur vergleichen, wie hell die Lampe wird (kein Messwert, keine Messreihe). Hinweis: Der Dynamo ist bewusst nur Demonstration und steht nicht im Zuhause-Auftrag — dort stünde er zum zweiten Mal, fv6 schickt die Kinder bereits ans Fahrrad.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit den Bildschirmwerten. Karte 1 (das ist zugleich der Ausgangszustand der Simulation, Station „1 · Der Grundversuch“): „Drehfrequenz f 2,0 Hz — Scheitelwert Û 0,658 V.“ Karte 2: „Drehfrequenz f 1,0 Hz — Scheitelwert Û 0,329 V.“ Karte 3: „Drehfrequenz f 4,0 Hz — Scheitelwert Û 1,316 V.“ Auf jeder Karte steht zusätzlich die Fußzeile mit den drei festen Einstellungen, die sich nicht ändern: „Spulenstrom I 2,00 A · Windungen n 8000 · Fläche A 42 cm²“. Die Karte gibt die WERTE wieder, nicht das Schriftbild: Am Bildschirm stehen Name, Zahl und Einheit untereinander in einem Kasten, und der Name steht in Versalien — dort ist also „SCHEITELWERT Û“, darunter „0,658“, darunter „V“ zu sehen. Auf der Karte darf das in einer Zeile stehen. Dazu als Tafelbild zwei Zustände nebeneinander, beide mit denselben zwei Magnetblöcken (N links, S rechts) und derselben Spule auf der Achse: links ein dünner kurzer Drehpfeil und daneben „Drehfrequenz f 1,0 Hz“ und „Scheitelwert Û 0,329 V“; rechts ein dicker langer Drehpfeil und daneben „Drehfrequenz f 4,0 Hz“ und „Scheitelwert Û 1,316 V“. Darunter in beiden Fällen: „gleich geblieben: Spulenstrom I 2,00 A · Windungen n 8000 · Fläche A 42 cm²“. Wichtig beim Tafelbild: Rechts ändert sich NUR der Pfeil und die zwei Zahlen — alles andere bleibt gleich stehen, daran hängt Aufgabe 1. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen; dafür genügt es, den Regler „Drehfrequenz f“ vorher dreimal einzustellen und abzufotografieren.",
+  "merksatz": [
+   "dreht",
+   "doppelt so groß"
+  ],
+  "tabelle_erwartet": [
+   [
+    "1,0 Hz",
+    "0,329 V",
+    "weniger"
+   ],
+   [
+    "4,0 Hz",
+    "1,316 V",
+    "mehr"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Antwort steht in der eigenen Tabelle: 1,0 Hz gehört zu 0,329 V, 2,0 Hz zu 0,658 V, 4,0 Hz zu 1,316 V. Schneller drehen heißt also mehr Volt — die Option „Mehr Volt als vorher.“ Die Option „Gleich viel wie vorher.“ ist genau die Fehlvorstellung aus dem Vermutungskasten („allein der Magnet macht die Spannung“); die Option „Weniger Volt als vorher.“ kehrt den gemessenen Befund um. (Die Optionen werden hier bewusst über ihren Wortlaut genannt und nicht über ihre Nummer: seiten_nachbereiten.py verschiebt beim Streuen den Inhalt der Optionen, eine Nummer wäre danach still falsch.) Wichtig ist, dass die Kinder den Kasten „Scheitelwert Û“ vergleichen und nicht den Kasten „Spannung U“ links daneben: Û steht still und folgt dem Regler, U läuft während der Drehung ständig weiter.",
+   "typische_fehler": [
+    "Angekreuzt wird „Gleich viel wie vorher.“: Der Magnet ist doch derselbe, also müsse auch die Spannung dieselbe sein. Auf die eigene Tabelle zeigen — dort stehen drei verschiedene Zahlen bei einem einzigen Magneten.",
+    "Angekreuzt wird „Weniger Volt als vorher.“, weil „schneller“ mit „kürzer“ und damit mit „weniger“ verwechselt wird. Die drei Zahlen 0,329 · 0,658 · 1,316 laut in dieser Reihenfolge vorlesen lassen.",
+    "Verglichen wird der Kasten „Spannung U“ statt „Scheitelwert Û“. Diese Zahl gehört zur laufenden Drehung: Nach „Anhalten“ friert sie an einer beliebigen Stelle der Kurve ein, beim nächsten Anlauf an einer anderen — irgendein Wert zwischen null und Û, mit beiden Vorzeichen. Eine feste Zahl gibt es dafür nicht und kann es nicht geben; nachgemessen am 05.09.2026 stand bei 2,0 Hz einmal 0,099 V dort, während Û 0,658 V zeigte. Nicht mit einem Papierstreifen arbeiten (die drei Kästen liegen NEBENeinander), sondern mit dem Finger auf den mittleren Kasten der unteren Reihe zeigen.",
+    "Es wird gar nicht verglichen, sondern die Merksatzlücke abgeschrieben. Nachfragen: Welche zwei Zahlen aus deiner Tabelle hast du benutzt?"
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,329 V",
+    "1,316 V"
+   ],
+   "typische_fehler": [
+    "Statt 0,329 V wird 0,658 V eingesetzt: Der Regler wurde nicht bewegt, die Simulation startet bei 2,0 Hz. Auf die Anzeige rechts neben dem Regler zeigen — dort muss „1,0 Hz“ stehen.",
+    "Die dritte Nachkommastelle fällt weg („0,32 V“, „1,31 V“) oder es wird gerundet („0,33 V“). Gerundet wird nicht: In die Tabelle kommt genau die Zahl, die am Bildschirm steht. Die Wortbank enthält beide Werte vollständig; einmal abschreiben lassen.",
+    "Das Komma wandert („3,29 V“, „13,16 V“). Die Zahl mit dem Finger am Bildschirm nachfahren lassen, Ziffer für Ziffer.",
+    "Die Einheit V fehlt. Beide Wortbankeinträge tragen sie; sie gehört mit in die Lücke.",
+    "Statt 1,316 V wird 2,632 V eingesetzt, weil zuletzt die freiwillige Zusatzaufgabe mit 8,0 Hz gerechnet wurde. Den Regler gemeinsam auf 4,0 Hz zurückschieben."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Turbine muss die Spule schneller drehen, weil dann die Spannung größer wird. Bei 1,0 Hz waren es 0,329 V, bei 4,0 Hz schon 1,316 V. Wer mehr Spannung will, muss also die Drehfrequenz f erhöhen.",
+   "alternativen": [
+    "Kurzform ohne Zahlen: „Die Turbine muss schneller drehen, weil schneller drehen mehr Volt bedeutet.“ — reicht für die volle Wertung.",
+    "Rückbezug auf die eigene Tabelle: „Bei uns stand bei 4,0 Hz mehr Volt als bei 1,0 Hz. Also muss die Turbine schneller werden.“",
+    "Mit der Verdopplung begründet: „Doppelt so schnell heißt doppelt so viel Spannung. Also schneller drehen.“",
+    "Über den Dampf begründet: „Es muss mehr Dampf auf die Turbine, dann dreht sie schneller.“ — richtig gedacht und erwünscht, aber nicht verlangt; der zweite Halbsatz muss trotzdem die Spannung nennen.",
+    "Mit dem Fachwort: „Die Drehfrequenz f muss größer werden.“ — volle Wertung, wenn die Folge für die Spannung dabeisteht."
+   ],
+   "typische_fehler": [
+    "„Die Turbine muss langsamer drehen.“ Der gemessene Zusammenhang wird umgekehrt. Auf die beiden Tabellenzeilen 1,0 Hz und 4,0 Hz zeigen und die Volt-Zahlen vergleichen lassen.",
+    "„Man braucht einen stärkeren Magneten.“ Sachlich nicht falsch, aber auf dieser Seite nicht untersucht — der Magnet wurde nie verändert. Zurückverweisen: Welchen einzigen Regler hast du bewegt?",
+    "Es wird nur „schneller“ geschrieben, ohne den Grund. Nachfragen: Und was wird dann größer? Hilfe 3 gibt den Satz bis auf ein Wort vor.",
+    "Es wird eine Zahl genannt, die nicht in der Tabelle steht (etwa „10 Hz“). Der Regler geht nur bis 8,0 Hz; verlangt ist ohnehin keine Zahl, sondern die Richtung.",
+    "„Der Generator muss größer gebaut werden.“ Alltagslösung statt Übertragung — auf die eigene Messreihe zurückverweisen."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: doppelt so groß, mehr Volt)",
+  "schwache": [
+   "Vorher gemeinsam klären, welches Bedienelement gilt: allein der oberste Regler der Gruppe „Generator einstellen“, beschriftet „Drehfrequenz f“. Darunter liegen drei weitere Regler — „Spulenstrom I“, „Windungen n“ und „Fläche A“ —, die auf 2,00 A, 8000 und 42 cm² stehen bleiben müssen. Wer daran zieht, liest andere Zahlen ab, und der Knopf „Zurücksetzen“ holt sie NICHT zurück: Er setzt nur die Zeit auf null. Der einzige sichere Weg zurück ist, die Simulation zu schließen und neu zu öffnen.",
+   "Den Startzustand gemeinsam ansehen: Die Simulation beginnt bei 2,0 Hz und 0,658 V. Genau diese Zeile steht schon in der Tabelle. Wer Schritt 3 überspringt, trägt dreimal denselben Wert ein und sieht keinen Unterschied. Die Schritte 3 und 4 verlangen deshalb jedes Mal ausdrücklich ein neues Ablesen („Lies … ab“, „Lies wieder ab“).",
+   "Die sechs Anzeigekästen stehen NICHT untereinander, sondern in einem Raster mit drei Spalten, also in zwei Reihen zu je drei Kästen: oben „Drehwinkel φ“, „Magnetfeld B“ und „wirksame Fläche A′“, unten „Spannung U“, „Scheitelwert Û“ und „Effektivwert“. Gebraucht wird allein der MITTLERE Kasten der UNTEREN Reihe. Links daneben steht „Spannung U“ (die Zahl springt bei jedem Blick), rechts daneben „Effektivwert“ mit einer dritten Volt-Zahl (bei 2,0 Hz 0,465 V) — beide werden verwechselt. Über „Scheitelwert Û“ steht keine Spannung, sondern eine Fläche in cm². Alle drei Volt-Kästen einmal gemeinsam mit dem Finger zeigen und dann nur auf „Scheitelwert Û“ tippen lassen. Ein waagerechter Papierstreifen hilft hier NICHT: Er deckt die drei Kästen der unteren Reihe zugleich ab oder zugleich auf.",
+   "Auf schmalen Geräten (unter 780 Pixel Breite) klappt das Raster der Simulation auf eine Spalte um: Regler und Anzeigekästen stehen dann UNTER der Zeichnung, nicht rechts daneben. Die Schülerseite nennt deshalb nirgends eine Richtung, sondern führt über den Namen des Kastens. Bei Tablet-Klassen einmal gemeinsam nach unten scrollen.",
+   "Der Regler ist stufenlos (0,2 bis 8, Schrittweite 0,1). Genau „1,0 Hz“ oder „4,0 Hz“ zu treffen ist mit Maus oder Finger schwer. Ansage: langsam schieben und dabei auf die fette Zahl unmittelbar neben dem Regler sehen, nicht auf den Regler selbst. Diese Zahl steht immer neben ihrem Regler, auch auf schmalen Geräten. Wer es nicht trifft, darf auch mit den Pfeiltasten weiterrücken.",
+   "Nur die zweite Tabellenspalte allein ausfüllen lassen; die dritte Spalte („mehr oder weniger als vorher“) danach gemeinsam an der Tafel eintragen. Verlangt wird sie jetzt ausdrücklich in Arbeitsschritt 4 („Vergleiche jede Zeile mit der davor“); die Beispielzeile trägt dort „Anfang, kein Vergleich“, weil es vor der ersten Zeile nichts zu vergleichen gibt.",
+   "Vor Aufgabe 2 die fünf Wörter der Wortbank einmal abschreiben lassen, besonders 0,329 V und 1,316 V mit Komma, drei Nachkommastellen und Einheit.",
+   "Für DaZ-Lernende die Wortfamilie vorab an der Tafel sammeln und mit einer Handbewegung zeigen: drehen — die Drehung — die Drehfrequenz. Dazu Hertz als „Umdrehungen in einer Sekunde“ einmal langsam vorsprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schiebe den Regler „Drehfrequenz f“ ganz nach rechts, bis „8,0 Hz“ dasteht. Lies den Kasten „Scheitelwert Û“ ab und schreibe die Zahl auf. Vergleiche sie mit deinem Wert bei 4,0 Hz: Ist sie doppelt so groß? (Am Bildschirm steht dort 2,632 V — nachgemessen am 05.09.2026 mit simcheck/werte.js; derselbe Wert steht auch im Faktendump fakten/generator.json. Doppelt so schnell, doppelt so viel Volt: 1,316 V und 2,632 V.)",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · der Generator als Umkehrung des Motors, Erzeugung von Spannung durch Drehung im Magnetfeld. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ankreuzen der Vermutung trägt E3, das Einstellen der drei Reglerstellungen E4, der Vergleich der drei Volt-Werte UF3, die Übertragung auf die Turbine im Kraftwerk UF2 und E6. UF1 wird NICHT mehr beansprucht: Es hing allein am Satz über die Herkunft der Energie, und dieser Satz hat auf der Schülerseite keinen Träger — das Wort Energie kommt dort kein einziges Mal vor, keine Aufgabe, kein Merksatz und kein Selbstchecksatz fragt danach. Lieber eine Kompetenz weniger als eine ohne Beleg. K3 („Untersuchungen dokumentieren“) liegt nach der Bandregel vom 05.09.2026 auf dem EINTRAGEN DER MESSWERTE IN DIE TABELLE, nicht auf dem Zuhause-Auftrag: „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Der Zuhause-Auftrag trägt K2 und verlangt jetzt auch das, womit er begründet wird: das kleine Schild an einem Gerät suchen und die Zahl vor „Hz“ aufschreiben. (Vorher stand dort nur die Ja/Nein-Frage, ob „Hz“ überhaupt dasteht — abgelesen wurde nichts, der K2-Beleg lief also ins Leere.) Rechnen Sie mit der Rückfrage, ob sich in der Waschmaschine etwas 50-mal je Sekunde dreht: Die 50 Hz auf dem Schild sind die Frequenz des Netzes, nicht die Drehzahl des Geräts. Diese Brücke steht bewusst NICHT auf der Schülerseite — sie gehört zu fv8 (Netz und Transformator) — und wird nur beantwortet, wenn die Frage kommt. — Fachwortzählung: neu sind GENAU ZWEI Wörter, „Drehfrequenz f in Hertz (Hz)“ und „Scheitelwert Û“. „Drehfrequenz f“ ist nach Zählregel 1 EIN Wort (Größe + Formelzeichen + Einheit) und bekommt seinen Begriffssatz im Alltagsteil („Wie schnell sich die Spule dreht, heißt Drehfrequenz f in Hertz (Hz)“). „Scheitelwert Û“ zählt ebenfalls; der frühere Freispruch als „zitierter Anzeigename“ war falsch und ist seit dem 05.09.2026 zurückgenommen: Zählregel 2 stellt allein GERÄTEnamen frei (Voltmeter, Amperemeter, Lichtschranke, Stoppuhr), und Zählregel 3 schließt die Ausrede ausdrücklich aus — „Auch ein Wort, das am Bildschirm steht … Wer es im Lernziel, in einer Tabellenspalte, im Merksatz oder in einer Aufgabe braucht, hat es eingeführt.“ Û steht an sieben Stellen der Schülerseite: Arbeitsschritt 2 und 3, zweite Tabellenspalte, Aufgabe 1, beide Lücken von Aufgabe 2, Hilfe 1 und Selbstcheck. Sein Begriffssatz steht unmittelbar bei der ersten Verwendung in Arbeitsschritt 2 („Das ist die größte Spannung“); abgelesen wird damit die längst eingeführte Größe Spannung in Volt (V) unter einem eigenen Namen. — Den Platz dafür macht „Generator“ frei: Es ist ein Gerätename, hat seinen Begriffssatz im Alltagsteil („Diese Maschine heißt Generator“), steht in keiner Merksatz-Lücke und seit dem 05.09.2026 auch nicht mehr in der Wortbank. Dort war es ein Füllwort — gebraucht werden allein dreht, doppelt so groß, größer, 0,329 V und 1,316 V —, und das Profil lässt in der Wortbank nur Wörter zu, die wirklich gebraucht werden. Damit greift Zählregel 2 sauber und „Generator“ zählt nicht. Der früher vorgesehene Ausweg („Wechselspannung wandert nach fv8“) war bereits verbraucht, fv8 führt Wechselspannung; ein dritter Fachwortplatz stand also nicht zur Verfügung. — „Turbine“ ist ebenfalls ein Gerätename und trägt Aufgabe 3, hatte aber bis zum 05.09.2026 keinen Begriffssatz. Er steht jetzt im Alltagsteil („Dampf dreht ein großes Rad. Dieses Rad heißt Turbine“). Damit ist der ERSTE Träger im Band bedient; fn10 darf das Wort nach Zählregel 4 nicht ein zweites Mal einführen, sondern verweist zurück — und hat dort einen Fachwortplatz frei. — „größer“ steht neu in der Wortbank, weil Hilfe 3 es als Lückenwort verlangt; ohne diesen Eintrag wäre die Zusage in Hilfe 1 („Alle Lückenwörter stehen in der Wortbank“) falsch. Die Wortbank hält damit fünf Einträge (erlaubt 4–7). — Was deshalb NICHT eingeführt wird: „Wechselspannung“ steht auf der Schülerseite nirgends und gehört zu fv8, wo der Transformator es ohnehin als Voraussetzung braucht. Die Sache selbst — die Spannung wechselt ständig die Richtung — bleibt auf dieser Doppelseite ganz außen vor und wird nicht angedeutet; sonst stünde eine neue Behauptung auf der Seite, die keine Aufgabe prüft. Ebenfalls nur Rückverweis und nicht neu: Induktion (fv6), Spule und Windungen (fv3/fv5), Magnetfeld (fv1/fv2), Spannung U in Volt (Förderband 8, fs3). Bewusst vermieden, weil sie das dritte bis siebte Wort wären: Effektivwert, Kreisfrequenz, Sinus, Schleifkontakt, Helmholtzspulen, Projektionsfläche. — Datenlage und Fallen: (1) Alle vier Zahlenpaare sind nachgemessen, am 05.09.2026 mit simcheck/werte.js am Anzeigekasten „Scheitelwert Û“ (DOM-Element genUmaxA) und an der Reglerbeschriftung (genFLbl): 1,0 Hz — 0,329 V · 2,0 Hz — 0,658 V (Ausgangszustand) · 4,0 Hz — 1,316 V · 8,0 Hz — 2,632 V. Reproduzierbar mit: node simcheck/werte.js physics-sim.js generator, Schritte _genSetF(1) auf genFLbl und _genToggle() auf genUmaxA (entsprechend für 4 und 8). Der Faktendump fakten/generator.json belegt wörtlich nur die Anzeige „2,0 Hz“; die Hz-Anzeigen „1,0 Hz“, „4,0 Hz“ und „8,0 Hz“ stehen dort NICHT — der Dump hält für diese Reglerstellungen nur den Zahlenwert f und die Kreisfrequenz ω fest. Bis der Dump um f = 1, 4 und 8 nachgezogen ist, hängt der Beleg deshalb an zwei Stellen des Quelltextes, die jeder Prüfer nachlesen kann: physics-sim.js:25150 setzt genFLbl auf _fpmNum(s.f, 1) + „ Hz“, und _fpmNum (physics-sim.js:9476) schreibt genau eine Nachkommastelle mit Dezimalkomma. Die Volt-Werte 0,329 · 0,658 · 1,316 · 2,632 stehen dagegen wörtlich im Dump. (2) Sechs Anzeigekästen, aber NICHT untereinander: Sie stehen in einem Raster mit drei Spalten (physics-sim.js:10189, .fpm-readout), also in zwei Reihen zu je drei Kästen — oben Drehwinkel φ · Magnetfeld B · wirksame Fläche A′, unten Spannung U · Scheitelwert Û · Effektivwert (physics-sim.js:24870–24875). „Scheitelwert Û“ ist der mittlere Kasten der unteren Reihe. LINKS daneben liegt „Spannung U“ (läuft während der Drehung ständig weiter), RECHTS daneben „Effektivwert“ (bei 2,0 Hz 0,465 V) — beides Volt-Zahlen, beides Verwechslungskandidaten. ÜBER Û steht keine Spannung, sondern die wirksame Fläche in cm². Ein waagerechter Papierstreifen taugt hier deshalb nicht; der frühere Rat, „alles außer der Û-Zeile“ abzudecken, ist zurückgenommen. In jedem Kasten stehen Name, Zahl und Einheit UNTEREINANDER, und der Name wird per CSS in Versalien gesetzt (.fpm-ro-k, text-transform: uppercase, physics-sim.js:10192): am Bildschirm steht also „SCHEITELWERT Û“, darunter „0,658“, darunter „V“. Die Ergebniskarten geben deshalb die WERTE wieder, nicht das Schriftbild. Deshalb ist „Anhalten“ Arbeitsschritt 1, und Hilfe 1 nennt beide Kästen ausdrücklich beim Namen. (2a) Das zweispaltige Raster klappt bei höchstens 780 Pixel Breite auf EINE Spalte um (physics-sim.js:10171–10173): Auf Tablet und Handy stehen Regler und Anzeigekästen unter der Zeichnung, nicht rechts daneben. Die Schülerseite nennt deshalb nirgends eine Richtung, sondern führt über den Namen des Kastens. Die Hz-Zahl bildet die Ausnahme: Sie steht als fette Beschriftung immer unmittelbar neben ihrem Regler, in jeder Bildschirmbreite. (3) Die Zahlen gelten NUR bei den drei festen Einstellungen Spulenstrom I 2,00 A, Windungen n 8000 und Fläche A 42 cm². Mit den vollen Reglernamen stehen sie in den Ergebniskarten und im ersten Hinweis bei „schwache“. Auf der Schülerseite stehen sie in der Fußleiste des Bildauftrags, dort seit dem 05.09.2026 OHNE Formelzeichen („gleich geblieben: Strom 2,00 A · 8000 Windungen · Fläche 42 cm²“): Mit „Spulenstrom I“, „Windungen n“ und „Fläche A“ hätte das Bild drei Größen samt Formelzeichen eingeführt, die keine Aufgabe braucht — und das ausgerechnet in dem einen Feld, das der Wortzähler nicht misst. Eine Regel über die Messlücke des Prüfers zu umgehen, ist keine Erfüllung. Das gelöste Beispiel nennt die drei Werte deshalb nicht mehr einzeln, sondern sagt nur, dass die drei anderen Regler stehen bleiben; Arbeitsschritt 3 isoliert den richtigen Regler ohnehin namentlich. Der Knopf „Zurücksetzen“ setzt nur die Zeit zurück (_genReset: t = 0, spur = []), NICHT die vier Regler — wer an einem der anderen drei gezogen hat, muss die Simulation neu öffnen. Das steht als erster Hinweis bei „schwache“. (4) Zwei Zahlen für dieselbe Spannung am selben Bildschirm: Die Kurve im Oszillogramm ist mit „0,66 V“ beschriftet, der Anzeigekasten nennt „0,658“. Die Tabellenspalte fragt ausdrücklich nach dem Kasten „Scheitelwert Û“, nicht nach der Kurve; gerundet wird nicht (Heft-gegen-Sim). (5) Drei Nachkommastellen sind für A2–B1 schwer abzuschreiben. Das Schreibfeld ist entsprechend groß gesetzt, beide Werte stehen zusätzlich in der Wortbank, und der Rechenweg wird nirgends verlangt: Die Verdopplung wird aus der eigenen Tabelle ABGELESEN, nie gerechnet. Aus demselben Grund trägt Aufgabe 2 keine zweite Verhältniszahl mehr: Der frühere Zusatz „Viermal so viel.“ nannte seinen Bezugspunkt nicht und stand gegen den Merksatz („doppelt so schnell, doppelt so groß“) und gegen die Tabellenspalte. Es bleibt bei EINER Verhältniszahl, und die trägt der Merksatz. Die Formel Û = n · B · A · ω steht auf der Schülerseite nirgends. (6) Der Regler ist stufenlos (0,2 bis 8, Schritt 0,1). Genau 1,0 oder 4,0 Hz zu treffen ist mit Maus oder Finger schwer; Arbeitsschritt 3 nennt deshalb die Zielanzeige („auf ‚1,0 Hz‘“), und bei „schwache“ steht der Hinweis, langsam zu schieben, dabei auf die fette Zahl neben dem Regler zu sehen und notfalls die Pfeiltasten zu nehmen. (7) Undruckbare Zeichen: Die Überschrift der Simulation und die Knöpfe „Anhalten“ und „Zurücksetzen“ tragen VOR dem Wort ein Zeichen, für das SourceSans3 keine Glyphe hat (U+26A1, U+23F8, U+21BA) — geprüft, nicht vermutet. Dieses vorangestellte Zeichen wird nirgends mitzitiert, weder auf der Schülerseite noch hier; die Knopfnamen selbst dürfen ohne das Zeichen stehen und tun das auch. Der Stationsknopf „1 · Der Grundversuch“ ist unbedenklich: Der Mittelpunkt U+00B7 ist in der Schrift vorhanden. Nach dem Drücken wechselt der Anhalten-Knopf seine Beschriftung auf ein Zeichen plus „Weiterdrehen“ — auch dieser Name wird auf der Schülerseite nicht gebraucht. (8) Der Bildauftrag lässt Lampe und Schatten der Spule bewusst WEG, obwohl sie das Kennzeichen dieser Simulation sind und die Erstanalyse sie im Bild behalten wollte. Grund: Diese Doppelseite fragt den Schatten an keiner Stelle ab — die ganze Projektionsflächen-Geschichte (A′ = A · cos, die vier ausgezeichneten Lagen, Station 2) ist gestrichen. Ein Schatten im Bild wäre damit ein unerklärtes Element und würde die gestrichene Trigonometrie durch die Hintertür zurückholen. Aus demselben Grund fehlen im Bild Feldlinien, Winkelmaße und jede Kurve. (9) Bewusst offen gelassen und deshalb nicht verlangt: Station 3 („Einstellen und Messwert übernehmen“) mit den Knöpfen „Messwert übernehmen“ und der Beispielmessreihe bleibt unbenutzt — sechs Regler dieser Station haben im simfakten-Dump gar keinen Status geliefert (genPhiSl, genF2, genI2, genN2, genA2, genET). Die Seite bleibt vollständig auf Station 1, wo Regler, Anzeigekasten und Rechnung nachweislich zusammenstehen. Ebenfalls offen: was die Simulation nach längerem Lauf im Messdiagramm sammelt und ob die Kurvenbeschriftung mitwandert; die Seite fordert keinen Zustand nach einem Lauf. (10) Reihenfolge im Band: fv6 hat Induktion eingeführt, fv7 verweist nur zurück und darf sie nach Zählregel 4 nicht ein zweites Mal einführen. Neu ist hier allein die Drehung statt des Hin-und-Her und der Zusammenhang zwischen Drehfrequenz und Spannung. Die Kette Turbine — Generator — Transformator — Netz steht in der Simulation als Bildtext von Station 5 und wird auf dieser Seite nur im Alltagsteil und in Aufgabe 3 als Rahmen benutzt, nicht abgefragt; fv8 nimmt sie auf. Der Zuhause-Auftrag von fv6 schickt die Kinder bereits an ein Fahrrad mit Dynamo; fv7 wiederholt diesen Anker deshalb nicht, sondern hält ihn als Demonstration im Material."
+ }
+}

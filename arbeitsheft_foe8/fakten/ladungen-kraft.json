@@ -1,0 +1,310 @@
+[
+ {
+  "sim": "ladungen-kraft",
+  "ueberschrift": "⚡ Wie wirken Ladungen aufeinander?",
+  "regler": [
+   {
+    "id": "ldkQ",
+    "beschriftung": "Ladung je Kugel: 10 nC",
+    "bereich": {
+     "min": "2",
+     "max": "20",
+     "step": "1",
+     "start": "10"
+    }
+   },
+   {
+    "id": "ldkR",
+    "beschriftung": "Abstand: 6,0 cm",
+    "bereich": {
+     "min": "20",
+     "max": "120",
+     "step": "5",
+     "start": "60"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Linke Kugel umpolen",
+    "ruft": "_ldkFlip(1)"
+   },
+   {
+    "aufschrift": "Rechte Kugel umpolen",
+    "ruft": "_ldkFlip(2)"
+   },
+   {
+    "aufschrift": "beide plus",
+    "ruft": "_ldkMarke(1, 1, 10, 6)"
+   },
+   {
+    "aufschrift": "plus und minus",
+    "ruft": "_ldkMarke(1, -1, 10, 6)"
+   },
+   {
+    "aufschrift": "Abstand verdoppeln",
+    "ruft": "_ldkMarke(1, -1, 10, 12)"
+   }
+  ],
+  "hinweise": [
+   "Zwei geladene Kugeln hängen an Fäden. Ändere ihre Vorzeichen und ihren Abstand und sieh nach, wohin die Kraft zeigt – und wie groß sie wird.",
+   "Woher kommt die Ladung überhaupt? Beim Reiben wechseln Elektronen von einem Stoff zum anderen. Keiner erzeugt Ladung – sie wird nur verschoben. Was der eine zu wenig hat, hat der andere zu viel.",
+   "Modellgrenze: Gerechnet wird mit zwei punktförmigen Ladungen. Echte Kugeln verschieben ihre Ladung gegenseitig; bei kleinen Abständen wird die Kraft dadurch etwas größer als hier angezeigt. 10 nC sind außerdem sehr wenig: Beim Pullover-Ausziehen kommen leicht das Hundertfache zusammen.",
+   "Die grüne Kugel ist eine Probeladung – ihre Spur zeigt, wohin die Kraft an jeder Stelle zeigt"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,06 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Linke Kugel umpolen",
+    "text": "ldkStatus: Links minus, rechts minus – gleiche Ladungen: sie stoßen sich ab. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,06 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Rechte Kugel umpolen",
+    "text": "ldkStatus: Links minus, rechts plus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,06 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "beide plus",
+    "text": "ldkStatus: Links plus, rechts plus – gleiche Ladungen: sie stoßen sich ab. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,06 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "plus und minus",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,06 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand verdoppeln",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,12 m)² | F = 62,4 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 15,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 2",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (2·10⁻⁹ C)² / (0,12 m)² | F = 2,5 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 0,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 4",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (4·10⁻⁹ C)² / (0,12 m)² | F = 10,0 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 2,5 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 7",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (7·10⁻⁹ C)² / (0,12 m)² | F = 30,6 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 7,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 9",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (9·10⁻⁹ C)² / (0,12 m)² | F = 50,6 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 12,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 11",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (11·10⁻⁹ C)² / (0,12 m)² | F = 75,5 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 18,9 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 13",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (13·10⁻⁹ C)² / (0,12 m)² | F = 105,5 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 26,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 16",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (16·10⁻⁹ C)² / (0,12 m)² | F = 159,8 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 39,9 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 18",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (18·10⁻⁹ C)² / (0,12 m)² | F = 202,2 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 50,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 20",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (20·10⁻⁹ C)² / (0,12 m)² | F = 249,7 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 62,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 3",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (3·10⁻⁹ C)² / (0,12 m)² | F = 5,6 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 1,4 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 5",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (5·10⁻⁹ C)² / (0,12 m)² | F = 15,6 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 3,9 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 6",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (6·10⁻⁹ C)² / (0,12 m)² | F = 22,5 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 5,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 8",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (8·10⁻⁹ C)² / (0,12 m)² | F = 39,9 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 10,0 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 10",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (10·10⁻⁹ C)² / (0,12 m)² | F = 62,4 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 15,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 12",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (12·10⁻⁹ C)² / (0,12 m)² | F = 89,9 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 22,5 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 14",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (14·10⁻⁹ C)² / (0,12 m)² | F = 122,3 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 30,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 15",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (15·10⁻⁹ C)² / (0,12 m)² | F = 140,4 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 35,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 17",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (17·10⁻⁹ C)² / (0,12 m)² | F = 180,4 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 45,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Ladung je Kugel: 10 nC = 19",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,12 m)² | F = 225,3 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 56,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 20",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,02 m)² | F = 8111,3 µN | | Der Abstand zählt doppelt. | Bei 4,0 cm, also dem doppelten Abstand, wären es nur noch 2027,8 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 35",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,04 m)² | F = 2648,6 µN | | Der Abstand zählt doppelt. | Bei 7,0 cm, also dem doppelten Abstand, wären es nur noch 662,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 45",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,04 m)² | F = 1602,2 µN | | Der Abstand zählt doppelt. | Bei 9,0 cm, also dem doppelten Abstand, wären es nur noch 400,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 60",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,06 m)² | F = 901,3 µN | | Der Abstand zählt doppelt. | Bei 12,0 cm, also dem doppelten Abstand, wären es nur noch 225,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 70",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,07 m)² | F = 662,1 µN | | Der Abstand zählt doppelt. | Bei 14,0 cm, also dem doppelten Abstand, wären es nur noch 165,5 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 85",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,09 m)² | F = 449,1 µN | | Der Abstand zählt doppelt. | Bei 17,0 cm, also dem doppelten Abstand, wären es nur noch 112,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 95",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,10 m)² | F = 359,5 µN | | Der Abstand zählt doppelt. | Bei 19,0 cm, also dem doppelten Abstand, wären es nur noch 89,9 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 110",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,11 m)² | F = 268,1 µN | | Der Abstand zählt doppelt. | Bei 22,0 cm, also dem doppelten Abstand, wären es nur noch 67,0 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 120",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,12 m)² | F = 225,3 µN | | Der Abstand zählt doppelt. | Bei 24,0 cm, also dem doppelten Abstand, wären es nur noch 56,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 25",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,03 m)² | F = 5191,2 µN | | Der Abstand zählt doppelt. | Bei 5,0 cm, also dem doppelten Abstand, wären es nur noch 1297,8 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 30",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,03 m)² | F = 3605,0 µN | | Der Abstand zählt doppelt. | Bei 6,0 cm, also dem doppelten Abstand, wären es nur noch 901,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 40",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,04 m)² | F = 2027,8 µN | | Der Abstand zählt doppelt. | Bei 8,0 cm, also dem doppelten Abstand, wären es nur noch 507,0 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 50",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,05 m)² | F = 1297,8 µN | | Der Abstand zählt doppelt. | Bei 10,0 cm, also dem doppelten Abstand, wären es nur noch 324,5 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 55",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,06 m)² | F = 1072,6 µN | | Der Abstand zählt doppelt. | Bei 11,0 cm, also dem doppelten Abstand, wären es nur noch 268,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 65",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,07 m)² | F = 767,9 µN | | Der Abstand zählt doppelt. | Bei 13,0 cm, also dem doppelten Abstand, wären es nur noch 192,0 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 75",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,07 m)² | F = 576,8 µN | | Der Abstand zählt doppelt. | Bei 15,0 cm, also dem doppelten Abstand, wären es nur noch 144,2 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 80",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,08 m)² | F = 507,0 µN | | Der Abstand zählt doppelt. | Bei 16,0 cm, also dem doppelten Abstand, wären es nur noch 126,7 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 90",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,09 m)² | F = 400,6 µN | | Der Abstand zählt doppelt. | Bei 18,0 cm, also dem doppelten Abstand, wären es nur noch 100,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 100",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,10 m)² | F = 324,5 µN | | Der Abstand zählt doppelt. | Bei 20,0 cm, also dem doppelten Abstand, wären es nur noch 81,1 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 105",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,10 m)² | F = 294,3 µN | | Der Abstand zählt doppelt. | Bei 21,0 cm, also dem doppelten Abstand, wären es nur noch 73,6 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   },
+   {
+    "einstellung": "Abstand: 6,0 cm = 115",
+    "text": "ldkStatus: Links plus, rechts minus – verschiedene Ladungen: sie ziehen sich an. | | Wie stark? | F = k · q · q / r² | F = 8,99·10⁹ · (19·10⁻⁹ C)² / (0,12 m)² | F = 245,3 µN | | Der Abstand zählt doppelt. | Bei 23,0 cm, also dem doppelten Abstand, wären es nur noch 61,3 µN – genau ein Viertel. Doppelter Abstand heißt nicht halbe Kraft, sondern ein Viertel. | | Die kleine Kugel im Bild ist eine Probeladung. Sie ist positiv und läuft immer dorthin, wohin die Kraft sie schiebt – ihre Spur ist eine Feldlinie."
+   }
+  ],
+  "bildtexte": [
+   "+",
+   "–",
+   "r = 6,0 cm",
+   "ziehen sich an",
+   "F = 249,7 µN",
+   "gleich stößt ab   ·   verschieden zieht an",
+   "doppelter Abstand → ein Viertel der Kraft",
+   "stoßen sich ab",
+   "r = 12,0 cm",
+   "F = 62,4 µN",
+   "F = 2,5 µN",
+   "F = 10,0 µN",
+   "F = 30,6 µN",
+   "F = 50,6 µN",
+   "F = 75,5 µN",
+   "F = 105,5 µN",
+   "F = 159,8 µN",
+   "F = 202,2 µN",
+   "F = 5,6 µN",
+   "F = 15,6 µN",
+   "F = 22,5 µN",
+   "F = 39,9 µN",
+   "F = 89,9 µN",
+   "F = 122,3 µN",
+   "F = 140,4 µN",
+   "F = 180,4 µN",
+   "F = 225,3 µN",
+   "r = 2,0 cm",
+   "F = 8111,3 µN",
+   "r = 3,5 cm",
+   "F = 2648,6 µN",
+   "r = 4,5 cm",
+   "F = 1602,2 µN",
+   "F = 901,3 µN",
+   "r = 7,0 cm",
+   "F = 662,1 µN",
+   "r = 8,5 cm",
+   "F = 449,1 µN",
+   "r = 9,5 cm",
+   "F = 359,5 µN",
+   "r = 11,0 cm",
+   "F = 268,1 µN",
+   "r = 2,5 cm",
+   "F = 5191,2 µN",
+   "r = 3,0 cm",
+   "F = 3605,0 µN",
+   "r = 4,0 cm",
+   "F = 2027,8 µN",
+   "r = 5,0 cm",
+   "F = 1297,8 µN",
+   "r = 5,5 cm",
+   "F = 1072,6 µN",
+   "r = 6,5 cm",
+   "F = 767,9 µN",
+   "r = 7,5 cm",
+   "F = 576,8 µN",
+   "r = 8,0 cm",
+   "F = 507,0 µN",
+   "r = 9,0 cm",
+   "F = 400,6 µN",
+   "r = 10,0 cm",
+   "F = 324,5 µN",
+   "r = 10,5 cm",
+   "F = 294,3 µN",
+   "r = 11,5 cm",
+   "F = 245,3 µN"
+  ]
+ }
+]

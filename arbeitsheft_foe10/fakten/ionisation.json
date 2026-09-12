@@ -1,0 +1,61 @@
+[
+ {
+  "sim": "ionisation",
+  "ueberschrift": "⚡ Was macht diese Strahlung so besonders?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "α Alpha",
+    "ruft": "_ionSetArt('a')"
+   },
+   {
+    "aufschrift": "β Beta",
+    "ruft": "_ionSetArt('b')"
+   },
+   {
+    "aufschrift": "γ Gamma",
+    "ruft": "_ionSetArt('g')"
+   }
+  ],
+  "hinweise": [
+   "Sie ionisiert: Auf ihrem Weg schlägt sie Elektronen aus Atomen heraus. Wo das in einer Zelle passiert, zerreißen Moleküle. Entscheidend ist nicht, wie weit die Strahlung kommt – sondern wie dicht sie unterwegs zuschlägt.",
+   "Ein Ionenpaar ist beides zusammen: das herausgeschlagene Elektron und das Atom, das ohne dieses Elektron zurückbleibt. Genau darauf beruhen auch alle Messgeräte – ein Geigerzähler zählt nichts anderes als solche Ionenpaare.",
+   "Modellgrenze: Gezeichnet sind nur einige Dutzend Ionisierungen; in Wirklichkeit sind es bei Alphastrahlung rund 147.000 auf 3,5 cm. Außerdem ionisiert ein Alphateilchen nicht gleichmäßig – kurz vor dem Stillstand wird die Spur am dichtesten. Und die 34 eV gelten für Luft; in Gewebe ist der Wert etwas anders.",
+   "α: kurz, aber sehr dicht · β: weiter, dünner · γ: sehr weit, sehr dünn"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ionStatus: Alphastrahlung (α) – ein Heliumkern – zwei Protonen und zwei Neutronen. | | Energie: 5,00 MeV, das sind 5.000.000 eV. | In Luft kostet es im Mittel 34 eV, einem Atom ein Elektron zu entreißen. | Also reicht die Energie für 5.000.000 eV / 34 eV = 147.059 Ionenpaare. | | Diese verteilt sie auf ihre Reichweite in Luft: 3,5 cm. | Das ergibt 4.202 Ionenpaare je Millimeter. | | Das ist eine sehr dichte Spur: Auf einem einzigen Millimeter werden über viertausend Atome zerlegt. Genau deshalb ist Alphastrahlung nach ein paar Zentimetern Luft am Ende – sie gibt ihre Energie sofort ab. | | Aufgehalten wird sie durch: ein Blatt Papier oder wenige Zentimeter Luft. | | Im Strahlenschutz rechnet man α mit dem Wichtungsfaktor 20. Dieselbe Energie richtet als Alphastrahlung zwanzigmal so viel Schaden an wie als Beta- oder Gammastrahlung – weil sie so dicht ionisiert. | | Wird ein alphastrahlender Stoff eingeatmet oder gegessen, gibt es kein Papier mehr dazwischen. Dann liegt die ganze Ionisierungsspur mitten im Gewebe – deshalb ist Alphastrahlung innen die gefährlichste von allen."
+   },
+   {
+    "einstellung": "α Alpha",
+    "text": "ionStatus: Alphastrahlung (α) – ein Heliumkern – zwei Protonen und zwei Neutronen. | | Energie: 5,00 MeV, das sind 5.000.000 eV. | In Luft kostet es im Mittel 34 eV, einem Atom ein Elektron zu entreißen. | Also reicht die Energie für 5.000.000 eV / 34 eV = 147.059 Ionenpaare. | | Diese verteilt sie auf ihre Reichweite in Luft: 3,5 cm. | Das ergibt 4.202 Ionenpaare je Millimeter. | | Das ist eine sehr dichte Spur: Auf einem einzigen Millimeter werden über viertausend Atome zerlegt. Genau deshalb ist Alphastrahlung nach ein paar Zentimetern Luft am Ende – sie gibt ihre Energie sofort ab. | | Aufgehalten wird sie durch: ein Blatt Papier oder wenige Zentimeter Luft. | | Im Strahlenschutz rechnet man α mit dem Wichtungsfaktor 20. Dieselbe Energie richtet als Alphastrahlung zwanzigmal so viel Schaden an wie als Beta- oder Gammastrahlung – weil sie so dicht ionisiert. | | Wird ein alphastrahlender Stoff eingeatmet oder gegessen, gibt es kein Papier mehr dazwischen. Dann liegt die ganze Ionisierungsspur mitten im Gewebe – deshalb ist Alphastrahlung innen die gefährlichste von allen."
+   },
+   {
+    "einstellung": "β Beta",
+    "text": "ionStatus: Betastrahlung (β) – ein Elektron aus dem Kern. | | Energie: 1,00 MeV, das sind 1.000.000 eV. | In Luft kostet es im Mittel 34 eV, einem Atom ein Elektron zu entreißen. | Also reicht die Energie für 1.000.000 eV / 34 eV = 29.412 Ionenpaare. | | Diese verteilt sie auf ihre Reichweite in Luft: 3,0 m. | Das ergibt 9,8 Ionenpaare je Millimeter. | | Verglichen mit Alphastrahlung ist das 429-mal dünner. Die Strahlung kommt deshalb viel weiter – richtet auf jedem einzelnen Millimeter aber viel weniger an. | | Aufgehalten wird sie durch: einige Millimeter Aluminium. | | Im Strahlenschutz rechnet man β mit dem Wichtungsfaktor 1. | | Betastrahlung kommt durch die Haut, verteilt ihre Wirkung aber auf einen viel längeren Weg."
+   },
+   {
+    "einstellung": "γ Gamma",
+    "text": "ionStatus: Gammastrahlung (γ) – kein Teilchen, sondern sehr energiereiches Licht. | | Energie: 0,66 MeV, das sind 660.000 eV. | In Luft kostet es im Mittel 34 eV, einem Atom ein Elektron zu entreißen. | Also reicht die Energie für 660.000 eV / 34 eV = 19.412 Ionenpaare. | | Anders als bei α und β lässt sich hier keine Reichweite angeben. Gammastrahlung wird nicht nach einer bestimmten Strecke aufgehalten, sondern nur immer weiter abgeschwächt – ein Teil kommt durch jede Wand. | In Luft ist erst nach rund 70 Metern die Hälfte weg, in Blei schon nach 6,5 Millimetern. | | Ein einzelnes Gammateilchen fliegt meist lange Strecken, ohne irgendetwas zu tun, und gibt seine Energie dann auf einen Schlag ab. Über den Weg gerechnet ionisiert es damit tausendfach dünner als Alphastrahlung. | | Aufgehalten wird sie durch: dicke Bleiwände – und selbst die nur zum Teil. | | Im Strahlenschutz rechnet man γ mit dem Wichtungsfaktor 1. | | Gammastrahlung durchdringt den ganzen Körper, ionisiert dabei aber nur sehr vereinzelt."
+   }
+  ],
+  "bildtexte": [
+   "α",
+   "Reichweite: 3,5 cm Luft",
+   "Alphastrahlung   5,00 MeV",
+   "4.202 Ionenpaare je Millimeter",
+   "● Atom   ● herausgeschlagenes Elektron   ● zurückbleibendes Ion",
+   "(gezeichnet sind nur einige der Ionisierungen – in Wirklichkeit sind es viel mehr)",
+   "β",
+   "Reichweite: 3,0 m Luft",
+   "Betastrahlung   1,00 MeV",
+   "9,8 Ionenpaare je Millimeter",
+   "γ",
+   "keine Reichweite – nach rund 70 m Luft ist erst die Hälfte weg",
+   "Gammastrahlung   0,66 MeV",
+   "ionisiert nur ganz vereinzelt"
+  ]
+ }
+]

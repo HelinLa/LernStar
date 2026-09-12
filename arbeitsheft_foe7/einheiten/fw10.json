@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw10",
+  "quelle": "ew11",
+  "sim": "milchstrasse",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Das blasse Band",
+  "name": "Wo stehen wir in der Milchstraße?",
+  "fachwoerter_neu": [
+   "Milchstraße"
+  ],
+  "alltag": [
+   "Über die große Sternkarte läuft ein blasses Band.",
+   "Auf einer Seite ist es deutlich heller.",
+   "Nour meint: Dann steht die Sonne genau in der Mitte.",
+   "Unsere Sternenstadt heißt Milchstraße."
+  ],
+  "frage": "Steht die Sonne in der Mitte der Milchstraße?",
+  "predict": [
+   "Ja – darum sehen wir in alle Richtungen gleich viele Sterne.",
+   "Nein – zur Mitte hin sehen wir viel mehr Sterne als nach außen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.",
+   "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.",
+   "Drücke „Gegenprobe: Sonne in die Mitte“ und lies die Meldung.",
+   "Vergleiche: Passt die Gegenprobe zu unserem Himmel?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Blickrichtung",
+   "Sterne im Blickfeld",
+   "Band hell oder schwach?"
+  ],
+  "tabRows": [
+   [
+    "zur Mitte",
+    "203",
+    "hellstes Stück"
+   ],
+   [
+    "nach außen",
+    "",
+    ""
+   ],
+   [
+    "quer heraus",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Milchstraße ist eine flache",
+    "loesung": "Scheibe",
+    "post": "aus Sternen."
+   },
+   {
+    "pre": "Die Sonne steht nicht in der",
+    "loesung": "Mitte",
+    "post": "der Scheibe."
+   }
+  ],
+  "wortbank": [
+   "Scheibe",
+   "Mitte",
+   "Milchstraße",
+   "Band",
+   "mehr"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt der Blick quer aus der Scheibe heraus?",
+   "antwort": "Nur 5 Sterne stehen im Blickfeld. Quer heraus ist die Scheibe schnell zu Ende. Das Band fehlt dort."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum sehen wir am Himmel ein milchiges Band?",
+    "optionen": [
+     "Dort hängt eine helle Wolke aus Wasser.",
+     "Die Sonne beleuchtet den Nachthimmel.",
+     "Längs durch die Scheibe stehen sehr viele Sterne hintereinander."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Quer aus der",
+      "loesung": "Scheibe",
+      "post": "heraus sehen wir kaum Sterne."
+     },
+     {
+      "pre": "Zur Mitte hin stehen viel",
+      "loesung": "mehr",
+      "post": "Sterne im Blickfeld als nach außen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Wähle und begründe",
+    "frage": "Steht die Sonne in der Mitte – ja oder nein? Begründe mit zwei Zahlen aus deiner Tabelle.",
+    "satzstarter": "Nein, denn zur Mitte sehen wir … Sterne, nach außen nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: 203 Sterne zur Mitte, 50 nach außen.",
+   "h2": "Beginne so: Nein. Zur Mitte sehen wir 203 Sterne, nach außen nur 50. Darum …",
+   "h3": "Fast fertige Antwort: Beide Richtungen sind verschieden voll. Von der Mitte aus wären sie gleich. Also steht die Sonne nicht in der ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, welche Form die Milchstraße hat.",
+   "Ich kann das milchige Band erklären.",
+   "Ich kann begründen, wo die Sonne nicht steht."
+  ],
+  "zuhause": "Sieh in einer klaren, dunklen Nacht zum Himmel. Suche das blasse Band der Milchstraße – weit weg von Straßenlampen klappt es am besten.",
+  "bildauftrag": "[BILD: die Milchstraße als flache Scheibe von schräg oben, Spiralarme nur angedeutet; der Punkt der Sonne deutlich außerhalb der Mitte, groß beschriftet „Sonne“; von der Sonne drei Pfeile: ein langer zur Mitte (Beschriftung „203 Sterne“), ein kürzerer nach außen („50 Sterne“), ein kurzer quer aus der Scheibe („5 Sterne“); große Beschriftung „Milchstraße – eine flache Scheibe“; keine weiteren Linien; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw10",
+  "lernziel": "Die Schülerinnen und Schüler schließen aus den Sternzahlen in drei Blickrichtungen, dass die Milchstraße eine flache Scheibe ist und die Sonne nicht in ihrer Mitte steht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen und die Gegenprobe aus diesem Lehrerteil als Karten.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: zur Mitte → 203 Sterne im Blickfeld, hellstes Stück des Bandes · nach außen → 50 Sterne, Band schwächer · quer heraus → 5 Sterne, kaum Band. Gegenprobe Sonne in der Mitte → beide Richtungen längs durch die Scheibe wären gleich dicht; genau das sehen wir am Himmel nicht.",
+  "merksatz": [
+   "Scheibe",
+   "Mitte"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nach außen",
+    "50",
+    "schwächer"
+   ],
+   [
+    "quer heraus",
+    "5",
+    "kaum Band"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Erklärung der Simulation: Längs durch die Scheibe stehen sehr viele Sterne hintereinander – das ergibt das milchige Band.",
+   "typische_fehler": [
+    "Das Band wird für eine echte Wolke gehalten."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Scheibe",
+    "mehr"
+   ],
+   "typische_fehler": [
+    "„Kugel“ statt „Scheibe“.",
+    "mehr und heller werden vertauscht eingesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nein. Zur Mitte sehen wir 203 Sterne, nach außen nur 50. Von der Mitte aus wären beide Richtungen gleich voll. Darum steht die Sonne nicht in der Mitte.",
+   "alternativen": [
+    "Die Gegenproben-Meldung zitieren: ein Band ohne helle und schwache Seite – genau das sehen wir nicht.",
+    "Zusatzwissen für das Gespräch: Die Sonne steht 26 000 Lichtjahre vom Zentrum – dieser Wert steht bewusst nur hier im Lehrerteil."
+   ],
+   "typische_fehler": [
+    "Die helle Seite wird mit „näher an der Sonne“ erklärt.",
+    "Die Wenn-dann-Logik der Gegenprobe wird als Tatsache gelesen."
+   ]
+  },
+  "hilfe3_wort": "Mitte",
+  "schwache": [
+   "Nur „zur Mitte“ und „quer heraus“ vergleichen lassen, „nach außen“ danach.",
+   "Die drei Sternzahlen als verschieden hohe Türme zeichnen lassen.",
+   "Die Ansicht mit dem Regler auf „von der Seite (90°)“ drehen: So flach ist die Scheibe."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drehe die Ansicht auf „von der Seite (90°)“. Die Scheibe ist hundertmal breiter als dick.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Milchstraße. Kompetenz UF4 wie auf der Quellseite ew11. Der Wert 26 000 Lichtjahre bleibt laut Seitenplan aus dem Merksatz und steht nur im Lehrerteil."
+ }
+}

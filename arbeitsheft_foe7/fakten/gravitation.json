@@ -1,0 +1,205 @@
+[
+ {
+  "sim": "gravitation",
+  "ueberschrift": "🌍 Die Gravitation – warum fällt alles nach unten?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🌙 Mond",
+    "ruft": "_grvSet('mond')"
+   },
+   {
+    "aufschrift": "🌍 Erde",
+    "ruft": "_grvSet('erde')"
+   },
+   {
+    "aufschrift": "🪐 Jupiter",
+    "ruft": "_grvSet('jupiter')"
+   },
+   {
+    "aufschrift": "⬇ Noch einmal fallen lassen",
+    "ruft": "_grvDrop()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_grvReset()"
+   },
+   {
+    "aufschrift": "Der Stein kommt zuerst an",
+    "ruft": "_grvAns(0,0)"
+   },
+   {
+    "aufschrift": "Beide kommen gleichzeitig an",
+    "ruft": "_grvAns(0,1)"
+   },
+   {
+    "aufschrift": "Die Feder kommt zuerst an",
+    "ruft": "_grvAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Luft an ihrer großen Fläche",
+    "ruft": "_grvAns(1,0)"
+   },
+   {
+    "aufschrift": "Ihre kleine Masse",
+    "ruft": "_grvAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Gravitation",
+    "ruft": "_grvAns(1,2)"
+   },
+   {
+    "aufschrift": "Auf dem Mond",
+    "ruft": "_grvAns(2,0)"
+   },
+   {
+    "aufschrift": "Auf der Erde",
+    "ruft": "_grvAns(2,1)"
+   },
+   {
+    "aufschrift": "Auf dem Jupiter",
+    "ruft": "_grvAns(2,2)"
+   },
+   {
+    "aufschrift": "doppelt so weit",
+    "ruft": "_grvAns(3,0)"
+   },
+   {
+    "aufschrift": "viermal so weit",
+    "ruft": "_grvAns(3,1)"
+   },
+   {
+    "aufschrift": "gleich weit",
+    "ruft": "_grvAns(3,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_grvSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_grvSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_grvSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('gravitation')"
+   }
+  ],
+  "hinweise": [
+   "Zwei Glasrohre, in jedem ein Stein und eine Feder. Aus dem linken Rohr wurde die Luft herausgepumpt (du siehst den Pumpenstutzen), das rechte ist mit Luft gefüllt. Beide werden im selben Augenblick losgelassen. Wer kommt zuerst unten an?",
+   "Jede Masse zieht jede andere Masse an – das ist die Gravitation. Je größer die Masse eines Himmelskörpers, desto stärker zieht er und desto schneller fällt alles bei ihm.",
+   "Die gestrichelten Linien 1–4 im linken Rohr sind gleich lange Zeitschritte. Miss mit den Augen nach: Der zweite Abschnitt ist dreimal, der dritte fünfmal so lang wie der erste. In der doppelten Zeit fällt der Stein also viermal so weit.",
+   "Der Versuch läuft in Zeitlupe – in Wirklichkeit wäre alles etwa dreimal so schnell vorbei.",
+   "Ohne Luft fallen Stein und Feder gleich schnell – die Masse ist dabei völlig egal. Erst die Luft bremst die leichte Feder aus."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "grvStatus: Erde: Die Anziehung ist hier mittelstark – so, wie du es kennst. Fallbeschleunigung g = 9,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,55 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "🌙 Mond",
+    "text": "grvStatus: Mond: Die Anziehung ist hier am schwächsten – nur etwa ein Sechstel der Erde. Fallbeschleunigung g = 1,6 m/s². Ein Fall aus 1,50 m Höhe dauert 1,37 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "🌍 Erde",
+    "text": "grvStatus: Erde: Die Anziehung ist hier mittelstark – so, wie du es kennst. Fallbeschleunigung g = 9,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,55 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "🪐 Jupiter",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "⬇ Noch einmal fallen lassen",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder."
+   },
+   {
+    "einstellung": "Der Stein kommt zuerst an",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Das denken viele – aber ohne Luft ist die Masse völlig egal."
+   },
+   {
+    "einstellung": "Beide kommen gleichzeitig an",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✓ Richtig! Ohne Luft fallen alle Körper gleich schnell."
+   },
+   {
+    "einstellung": "Die Feder kommt zuerst an",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller."
+   },
+   {
+    "einstellung": "Die Luft an ihrer großen Fläche",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✓ Richtig! Die Luft muss zur Seite gedrückt werden – das kostet die Feder Tempo."
+   },
+   {
+    "einstellung": "Ihre kleine Masse",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Nein. Im leeren Rohr ist dieselbe Feder genauso schnell wie der Stein."
+   },
+   {
+    "einstellung": "Die Gravitation",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft."
+   },
+   {
+    "einstellung": "Auf dem Mond",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✗ Dort ist die Anziehung am schwächsten – er fällt am langsamsten."
+   },
+   {
+    "einstellung": "Auf der Erde",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✗ Die Erde liegt in der Mitte."
+   },
+   {
+    "einstellung": "Auf dem Jupiter",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²)."
+   },
+   {
+    "einstellung": "doppelt so weit",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Schau auf die Zeitmarken: Die Abstände werden immer größer."
+   },
+   {
+    "einstellung": "viermal so weit",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✓ Richtig! Der Fallweg wächst viel schneller als die Zeit."
+   },
+   {
+    "einstellung": "gleich weit",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Nein – der Stein wird ja immer schneller."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Nein – der Stein wird ja immer schneller.  ||  grvSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Nein – der Stein wird ja immer schneller.  ||  grvSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Nein – der Stein wird ja immer schneller."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "grvStatus: Jupiter: Die Anziehung ist hier am stärksten – rund zweieinhalbmal so stark wie die Erde. Fallbeschleunigung g = 24,8 m/s². Ein Fall aus 1,50 m Höhe dauert 0,35 s. Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein und für die Feder.  ||  grvFb0: ✗ Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.  ||  grvFb1: ✗ Die Gravitation zieht sie nach unten – bremsen tut die Luft.  ||  grvFb2: ✓ Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).  ||  grvFb3: ✗ Nein – der Stein wird ja immer schneller."
+   }
+  ],
+  "bildtexte": [
+   "Anziehung g",
+   "Mond",
+   "Erde",
+   "Jupiter",
+   "1",
+   "2",
+   "3",
+   "4",
+   "Auf dem Erde · g = 9,8 m/s²",
+   "ohne Luft",
+   "mit Luft",
+   "Auf dem Mond · g = 1,6 m/s²",
+   "Auf dem Jupiter · g = 24,8 m/s²"
+  ]
+ }
+]

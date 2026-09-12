@@ -1,0 +1,206 @@
+{
+ "seite": {
+  "id": "fk12",
+  "quelle": "kf12",
+  "sim": "schweredruck",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Der untere Hahn spritzt weiter",
+  "name": "Warum drückt Wasser in der Tiefe mehr?",
+  "fachwoerter_neu": [
+   "Schweredruck"
+  ],
+  "alltag": [
+   "Neben der Bühne steht ein hoher Wassertank.",
+   "Oben läuft das Wasser nur träge aus dem Hahn.",
+   "Unten spritzt es Jannis quer über die Schuhe.",
+   "Den Druck durch die Flüssigkeit darüber nennt man Schweredruck."
+  ],
+  "frage": "Warum drückt das Wasser unten stärker als oben?",
+  "predict": [
+   "Der Schweredruck hängt davon ab, wie viel Wasser im Tank steht.",
+   "Der Schweredruck hängt von der Tiefe und von der Flüssigkeit ab."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies zuerst unter der Überschrift Der Schweredruck die Zahl vor kPa.",
+   "Drücke Öl und trage den Wert bei 10 m ein.",
+   "Drücke Quecksilber und fülle die dritte Zeile aus.",
+   "Drücke zuletzt 40 m – Tauchgrenze und ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Flüssigkeit",
+   "Wie tief ist es?",
+   "Wie groß ist der Schweredruck p?"
+  ],
+  "tabRows": [
+   [
+    "Wasser",
+    "10 m",
+    "98,1 kPa"
+   ],
+   [
+    "Öl",
+    "10 m",
+    ""
+   ],
+   [
+    "Quecksilber",
+    "10 m",
+    ""
+   ],
+   [
+    "Quecksilber",
+    "40 m",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je tiefer es geht, desto",
+    "loesung": "größer",
+    "post": "wird der Schweredruck."
+   },
+   {
+    "pre": "Eine schwerere Flüssigkeit drückt bei gleicher Tiefe",
+    "loesung": "stärker",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "stärker",
+   "88,3 kPa",
+   "5336,6 kPa"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Schweredruck in Wasser bei 10 m?",
+   "antwort": "Die Anzeige zeigt: p = 98,1 kPa. Die Zahl vor kPa kommt in die Tabelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Quecksilber. Wie groß ist der Schweredruck bei 10 m?",
+    "optionen": [
+     "Er bleibt bei 98,1 kPa wie in Wasser.",
+     "Er wird kleiner, weil Quecksilber dünner fließt.",
+     "Er springt auf 1334,2 kPa und ist viel größer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Öl ist leichter als Wasser. Bei 10 m zeigt die Anzeige nur",
+      "loesung": "88,3 kPa",
+      "post": "."
+     },
+     {
+      "pre": "In Quecksilber steigt der Wert bei 40 m auf",
+      "loesung": "5336,6 kPa",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum der untere Hahn stärker spritzt als der obere.",
+    "satzstarter": "Unten ist das Wasser tiefer. Deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies nur unter der Überschrift Der Schweredruck.",
+   "h2": "Beginne so: Unten ist das Wasser tiefer. Deshalb drückt es dort …",
+   "h3": "Fast fertig: Oben ist die Tiefe klein, unten ist sie groß. Der Schweredruck unten ist deshalb ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Schweredruck in der Anzeige ablesen.",
+   "Ich weiß: tiefer bedeutet mehr Schweredruck.",
+   "Ich kann erklären, warum der untere Hahn stärker spritzt."
+  ],
+  "zuhause": "Tauche im Schwimmbad zum Boden. Achte auf deine Ohren. Vergleiche oben und unten.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild, ein einziger hoher Wassertank in Seitenansicht auf ruhigem hellem Hintergrund. Der Tank ist bis oben mit blauem Wasser gefüllt. Am Tank sitzen genau zwei gleich große Hähne übereinander: einer dicht unter der Wasseroberfläche, einer ganz unten. Aus dem oberen Hahn tropft ein kurzer, schlaffer Wasserstrahl fast senkrecht nach unten; aus dem unteren Hahn schießt ein deutlich längerer Strahl weit nach rechts. Links am Tank eine große Tiefenskala mit den Marken 0 m und 10 m. Große Beschriftungen: am oberen Hahn „wenig Tiefe – kleiner Schweredruck“, am unteren Hahn „viel Tiefe – großer Schweredruck“. Keine weiteren Hähne, keine Pfeile, keine Personen, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fk12",
+  "lernziel": "Die Schülerinnen und Schüler lesen den Schweredruck in der Simulation ab und erklären an den Messwerten: Der Schweredruck wird größer, wenn die Tiefe größer wird (Quecksilber 10 m: 1334,2 kPa → 40 m: 5336,6 kPa), und er wird bei gleicher Tiefe größer, wenn die Flüssigkeit schwerer ist (bei 10 m: Öl 88,3 kPa · Wasser 98,1 kPa · Quecksilber 1334,2 kPa). Gerechnet wird nicht; die Formel p = ρ · g · h steht am Bildschirm, wird auf der Schülerseite aber weder verlangt noch abgefragt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafeltabelle. Optional als Demonstration: eine hohe Flasche mit zwei Löchern übereinander, über einer Wanne geöffnet.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen; auf jeder Karte steht die Flüssigkeit, die Tiefe und darunter die Zeile des Bildschirms. Karte 1 (Ausgangszustand, Wasser, Tiefe 10 m): „Der Schweredruck · p = 98,1 kPa“. Karte 2 (Knopf Öl, Tiefe bleibt 10 m): „Der Schweredruck · p = 88,3 kPa“. Karte 3 (Knopf Quecksilber, Tiefe bleibt 10 m): „Der Schweredruck · p = 1334,2 kPa“. Karte 4 (danach Knopf 40 m – Tauchgrenze, Quecksilber bleibt eingestellt): „Der Schweredruck · p = 5336,6 kPa“. Die Karten in dieser Reihenfolge auflegen: Karte 1 bis 3 zeigen bei gleicher Tiefe die schwerere Flüssigkeit, Karte 3 zu Karte 4 zeigt die größere Tiefe. Als Tafeltabelle dieselben vier Zeilen mit den Spalten Flüssigkeit · Tiefe · Schweredruck p.",
+  "merksatz": [
+   "größer",
+   "stärker"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Öl",
+    "10 m",
+    "88,3 kPa"
+   ],
+   [
+    "Quecksilber",
+    "10 m",
+    "1334,2 kPa"
+   ],
+   [
+    "Quecksilber",
+    "40 m",
+    "5336,6 kPa"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach dem Knopf Quecksilber steht unter der Überschrift Der Schweredruck in der dritten Zeile: p = 1334,2 kPa = 13,34 bar. Die Tiefe ist dabei unverändert 10 m, es ändert sich allein die Flüssigkeit. Gelesen wird die Zahl vor kPa, nicht der bar-Wert und nicht der Gesamtdruck.",
+   "typische_fehler": [
+    "Option 1 wird angekreuzt, weil 98,1 kPa als erster Wert in der Tabelle steht und der Knopf an der Tiefe nichts ändert.",
+    "Statt der Zahl vor kPa wird 13,34 bar abgelesen; beide stehen in derselben Zeile.",
+    "Der Gesamtdruck 1435,5 kPa wird genommen, weil er größer und weiter unten in der Textwand steht.",
+    "Option 3 wird gewählt: „flüssiger“ wird mit „leichter“ gleichgesetzt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "88,3 kPa",
+    "5336,6 kPa"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht, weil beide Sätze mit einer Flüssigkeit beginnen; Hilfe: erst die Tiefe unterstreichen (10 m oder 40 m).",
+    "Beim Vergleich mit Wasser werden nur die Nachkommastellen angesehen: 88,3 gilt dann als größer als 98,1, weil 3 größer als 1 ist.",
+    "Statt 5336,6 kPa wird 53,37 bar aus derselben Zeile eingesetzt.",
+    "Das Komma wird als Tausenderpunkt gelesen: „5336,6“ wird zu „53366“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Unten ist das Wasser tiefer. Deshalb drückt es dort stärker. Der Schweredruck wird mit der Tiefe größer. Darum spritzt der untere Hahn weiter als der obere.",
+   "alternativen": [
+    "Mit Zahlen aus der Simulation: „An der Oberfläche ist die Tiefe klein, in 40 m ist der Druck viel größer. Genauso ist es im Tank.“",
+    "Über die Wassersäule: „Über dem unteren Hahn steht mehr Wasser als über dem oberen. Diese Höhe drückt.“",
+    "Kurzform ohne Beispiel: „Je tiefer, desto größer ist der Schweredruck.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Menge im Tank wird genannt statt der Tiefe: „Unten ist mehr Wasser im Tank.“ Richtig ist die Höhe der Flüssigkeit über dem Hahn, nicht die Gesamtmenge – die Simulation sagt es im Hinweis ausdrücklich.",
+    "Der Hahn wird für die Ursache gehalten: „Der untere Hahn ist größer.“ Beide Hähne sind gleich.",
+    "Die Beobachtung wird nur wiederholt: „Weil es unten stärker spritzt.“",
+    "Das Gewicht des Tanks wird angeführt statt der Tiefe."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: stärker, höher)",
+  "schwache": [
+   "Zuerst nur Wasser und Quecksilber bei 10 m vergleichen; Öl und die Tiefe 40 m erst danach freigeben.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und die Zahl 98,1 kPa am Bildschirm mit dem Finger zeigen lassen, bevor weitergearbeitet wird.",
+   "Die Bedienreihenfolge vorher an der Tafel festhalten: erst die Flüssigkeit drücken, dann die Tiefe. Die gewählte Flüssigkeit bleibt stehen – wer zuerst die Tiefe drückt, misst mit der falschen Flüssigkeit.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen; die beiden Zahlen dabei laut sprechen („achtundachtzig Komma drei“).",
+   "Für Aufgabe 2 die Tiefe in jedem Satz unterstreichen lassen (10 m oder 40 m), dann erst den Wert suchen.",
+   "Die Statusanzeige ist eine Textwand mit fett gedruckten Überschriften – bei Wasser vier, bei Öl und Quecksilber drei. Die erste heißt Der Schweredruck; der Wert steht in der dritten Zeile darunter. Alles ab der Überschrift Dazu kommt die Luft mit einem Blatt abdecken."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler Tiefe wieder auf 10 m, drücke Meerwasser und vergleiche mit Wasser (100,6 kPa gegen 98,1 kPa). Schreibe auf, welche Flüssigkeit schwerer ist und woran du das erkennst. Für rechenstarke Lernende zusätzlich die Aufgabe aus dem Regelheft: Wasser in 20 m Tiefe mit p = ρ · g · h berechnen (196,2 kPa) – dieser Wert steht nicht am Bildschirm, er muss gerechnet werden.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Druck in Flüssigkeiten, Schweredruck; trägt UF1 und UF4 (die Erklär-Aufgabe zum Wassertank), der Alltagsauftrag zum Ohrendruck UF4. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Wortwahl: Das Wort „Dichte“ kommt auf dieser Seite NICHT vor – es wird erst auf fk13 eingeführt; hier heißt es durchgehend „die schwerere Flüssigkeit“. „Druck p in Pascal“ ist ein Rückverweis auf fk11, dort steht auch die Umrechnung 1 kPa = 1000 Pa. Bedienung: Flüssigkeitsknöpfe und Tiefenknöpfe wirken auf dieselbe Anzeige, die gewählte Flüssigkeit bleibt stehen. Deshalb ist die Reihenfolge der Arbeitsschritte verbindlich – erst die Flüssigkeit, dann die Tiefe. Die Tiefe 10 m ist der Startwert des Reglers und wird für die ersten drei Zeilen nicht angefasst. Der Knopf „10 m – doppelter Druck“ wird auf der Seite bewusst nicht benutzt: „doppelt“ meint dort den Gesamtdruck einschließlich Luftdruck (98,1 + 101,3 = 199,4 kPa), und der Luftdruck kommt im Förderheft nicht vor. Nicht verwendet, weil sie zu einer zweiten Druckart, einem dritten Fachwort oder einem zweiten Mechanismus führen: Gesamtdruck und Luftdruck (101,3 kPa), die Luftblase mit dem 1,97-fachen Volumen und die Umrechnung in bar. Die Anzeige schreibt jeden Wert doppelt („p = 98,1 kPa = 0,98 bar“) und im Bild steht der Gesamtdruck in bar – die Seite legt deshalb kPa fest und benennt die Überschrift, unter der gelesen wird. Der Block „Die Zehn-Meter-Regel“ erscheint nur bei Wasser und Meerwasser, bei Öl und Quecksilber fehlt er; kein Ableseauftrag zeigt darauf. Das hydrostatische Paradoxon (die Menge im Gefäß ist egal) ist nicht bedienbar – es steht nur im Hinweistext der Simulation und taucht deshalb allein als Vermutung 1 und im Gespräch zu Aufgabe 3 auf, nie als Bildschirmaufgabe. Hinweis zum Band: Diese Simulation rechnet mit g = 9,81 N/kg, masse-gewicht und ortsfaktor (fk4, fk5) zeigen 9,8 N/kg; die Förderseiten lesen nur ab und rechnen nie mit g. Nicht gemessen und darum nicht verwendet: eine Tiefenreihe in Wasser (Wasser bei 0 m oder 20 m). Belegt ist Wasser nur bei 10 m; die Tiefenzeile der Tabelle läuft deshalb in Quecksilber."
+ }
+}

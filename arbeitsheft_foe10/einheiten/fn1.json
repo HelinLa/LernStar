@@ -1,0 +1,209 @@
+{
+ "seite": {
+  "id": "fn1",
+  "quelle": "rk1",
+  "sim": "atombau-isotope",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Kühlschrank mit den Zahlen",
+  "name": "Woraus besteht ein Atomkern?",
+  "fachwoerter_neu": [
+   "Proton",
+   "Neutron"
+  ],
+  "alltag": [
+   "Nour macht Praktikum in der Nuklearmedizin. Dort steht ein Kühlschrank voller Fläschchen.",
+   "Auf jedem Fläschchen steht ein Name, dann ein Strich, dann eine Zahl: Kohlenstoff-12.",
+   "Vom selben Stoff gibt es mehrere Sorten. Nour fragt: Warum die Zahl?",
+   "Im Kern jedes Atoms sitzen Protonen und Neutronen. Protonen haben eine Plus-Ladung. Neutronen haben keine Ladung."
+  ],
+  "frage": "Welche Teilchen im Kern bestimmen den Namen?",
+  "predict": [
+   "Nur die Zahl der Protonen bestimmt den Namen. Mehr Neutronen geben nur eine andere Sorte.",
+   "Mehr Neutronen geben dem Kern einen anderen Namen. Dann ist es ein anderer Stoff."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Wasserstoff-1. Die erste Zeile der Tabelle ist schon ausgefüllt.",
+   "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.",
+   "Drücke Kohlenstoff-14. Trage die dritte Zeile ein.",
+   "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Trage die vierte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was stellst du ein?",
+   "Wie viele Protonen und Neutronen?",
+   "Welcher Name steht oben?"
+  ],
+  "tabRows": [
+   [
+    "Wasserstoff-1",
+    "1 Proton, 0 Neutronen",
+    "Wasserstoff-1"
+   ],
+   [
+    "Kohlenstoff-12",
+    "",
+    ""
+   ],
+   [
+    "Kohlenstoff-14",
+    "",
+    ""
+   ],
+   [
+    "Regler auf 8 Protonen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Zahl der",
+    "loesung": "Protonen",
+    "post": "bestimmt den Namen des Kerns."
+   },
+   {
+    "pre": "Mehr oder weniger",
+    "loesung": "Neutronen",
+    "post": "geben nur eine andere Sorte mit demselben Namen."
+   }
+  ],
+  "wortbank": [
+   "Protonen",
+   "Neutronen",
+   "Kohlenstoff",
+   "Sauerstoff"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du die erste Zeile aus?",
+   "antwort": "Drücke Wasserstoff-1. Oben steht der Name: Wasserstoff-1. Die Zeile darunter zeigt: 1 Proton, 0 Neutronen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Kohlenstoff-14. Was steht dann im Kern?",
+    "optionen": [
+     "6 Protonen und 8 Neutronen",
+     "6 Protonen und 6 Neutronen",
+     "8 Protonen und 6 Neutronen"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ein Kern mit 6 Protonen heißt immer",
+      "loesung": "Kohlenstoff",
+      "post": "."
+     },
+     {
+      "pre": "Ein Kern mit 8 Protonen heißt",
+      "loesung": "Sauerstoff",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Chlor-35 hat 17 Protonen und 18 Neutronen. Chlor-37 hat 17 Protonen und 20 Neutronen. Warum heißen beide Chlor?",
+    "satzstarter": "Beide heißen Chlor, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies im Statusfeld die Zeile mit den Protonen und Neutronen. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beide heißen Chlor, weil beide gleich viele …",
+   "h3": "Fast fertig: Chlor-35 hat 17 Protonen, Chlor-37 auch. Beide heißen Chlor, weil beide 17 ___ haben."
+  },
+  "selbstcheck": [
+   "Ich kann im Statusfeld die Protonen und Neutronen ablesen.",
+   "Ich kann sagen: Die Zahl der Protonen bestimmt den Namen.",
+   "Ich weiß: Mehr Neutronen geben nur eine andere Sorte."
+  ],
+  "zuhause": "Erzähle zu Hause: Warum heißen Kohlenstoff-12 und Kohlenstoff-14 beide Kohlenstoff?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Atomen, nebeneinander im selben Bildausschnitt, gleich groß, gleich aufgebaut, mit einer dünnen senkrechten Trennlinie dazwischen. Links die Überschrift „Kohlenstoff-12“, rechts die Überschrift „Kohlenstoff-14“. Jedes Atom besteht aus einem großen runden Kern in der Mitte und zwei dünnen Kreislinien um den Kern herum. Im Kern liegen einzelne, deutlich voneinander getrennte, vollflächig gefüllte runde Kugeln in zwei klar unterscheidbaren Sorten: Protonen sind rote Kugeln und tragen mittig ein großes „+“, Neutronen sind graue Kugeln und tragen KEIN Zeichen. Links liegen genau 6 rote und genau 6 graue Kugeln im Kern, rechts genau 6 rote und genau 8 graue. Die Zahl der grauen Kugeln ist der EINZIGE Unterschied zwischen den beiden Bildhälften – die roten Kugeln sind links und rechts gleich viele, gleich groß und gleich angeordnet, damit man den Unterschied durch Abzählen findet. Auf den beiden Kreislinien sitzen kleine blaue Kugeln mit einem „–“: zwei auf der inneren Linie, vier auf der äußeren, links wie rechts gleich. Beschriftungen groß und waagerecht, mit dünner Anschlusslinie an das gemeinte Teilchen, links: „6 Protonen  (+)“, „6 Neutronen  (ohne Ladung)“, „6 Elektronen  (–)“; rechts genauso, aber „8 Neutronen  (ohne Ladung)“. Unter dem linken Atom steht groß „Stabil.“, unter dem rechten groß „Nicht stabil.“. Unter beiden Atomen läuft eine gemeinsame Fußzeile mit zwei Sätzen: „6 mal (+)  und  6 mal (–)  →  nach außen neutral“ und „Kern hier 10 000-mal zu groß gezeichnet“. Drei Fehler, die hier drohen und die das Bild nicht machen darf: (1) Streifen statt Flächen – die Teilchen müssen einzelne, voll ausgefüllte, sauber getrennte Kreisflächen sein, kein gestreifter oder schraffierter Klumpen, und die zwei Bahnen sind dünne einzelne Linien, keine breiten Farbbänder oder Nebelringe. (2) Nebenbilder – im Bild stehen NUR diese zwei Atome: kein drittes Atom, kein Periodensystem, kein Vergrößerungskreis, keine kleine Wiederholung in einer Ecke, keine Legendenkästchen mit noch einmal denselben Kugeln. (3) Strahlengänge ins Leere – aus dem rechten Kern kommen KEINE Strahlen, Blitze, Wellen oder Pfeile heraus, obwohl darunter „Nicht stabil.“ steht; auf den Bahnen stehen keine Bewegungspfeile. Der einzige Pfeil im ganzen Bild ist der kleine Pfeil mitten im Fußzeilensatz „→ nach außen neutral“. Farbe ist nie das einzige Merkmal: Protonen kennt man am „+“, Elektronen am „–“, Neutronen daran, dass sie kein Zeichen tragen. Keine hoch- oder tiefgestellten Kernschreibweisen, keine Massenzahlen, keine weiteren Zahlen außer den genannten. Keine Personen, ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn1",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, welche und wie viele Teilchen in einem Atomkern sitzen (Wasserstoff-1: 1 Proton, 0 Neutronen · Kohlenstoff-12: 6 und 6 · Kohlenstoff-14: 6 und 8 · Protonen-Regler auf 8: Sauerstoff-16 mit 8 und 8). Sie erkennen daran die Regel dieser Doppelseite: Die Zahl der Protonen bestimmt das Element, die Zahl der Neutronen nur die Sorte innerhalb desselben Elements. Sie prüfen das an zwei Stellen gegen: am Regler (8 Protonen ergeben Sauerstoff-16, das Element wechselt) und am Paar Kohlenstoff-12 / Kohlenstoff-14 (der Name bleibt, nur die Neutronenzahl ändert sich). Zwei Fachnamen bleiben bewusst bei Ihnen und stehen nirgends auf der Schülerseite: Sorten desselben Elements heißen Isotope, und das, was die Protonenzahl festlegt, heißt Element. Die Seite sagt dafür durchgehend „Name“ und „Sorte“ (Begründung unten unter FACHWORTZÄHLUNG). Sprechen Sie beide Fachnamen im Unterrichtsgespräch ruhig aus.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Kohlenstoff-Kernen. Optional als Anschauung: zwölf rote und vierzehn graue Magnetplättchen an der Tafel, damit die Lernenden die beiden Kerne selbst legen können (6 rot + 6 grau, dann 6 rot + 8 grau).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Jede Karte trägt nur die Zeilen, die die Seite braucht: den Namen und die Kernzeile mit den beiden Zahlen – genau die zwei Spalten, die die Tabelle offen lässt. Die Stabilitätszeile steht zusätzlich darauf, weil das gedruckte Bild „Stabil.“ und „Nicht stabil.“ zeigt; abgefragt wird sie nirgends. Das Statusfeld der Simulation ist deutlich länger – es hat sechs bis sieben Zeilen: Kopfzeile mit Kernschreibweise und Klartextnamen, Kern-Zeile, Hüllen-Zeile mit den Elektronen, Summenzeile mit der Massenzahl A, Stabilitätszeile mit Prozentangabe oder Halbwertszeit, die Zeile „Stabile Sorten dieses Elements: … Solche Sorten nennt man Isotope.“ und bei manchen Kernen zum Schluss ein Sachsatz (bei Kohlenstoff: „C-14 entsteht laufend in der Luft – damit bestimmt man Alter.“). Alles außer den genannten Zeilen bleibt bewusst weg: Die Massenzahl A wird auf keiner Schülerseite dieses Förderhefts gebraucht – gerechnet wird damit erst im Regelheft (rk-Reihe). fn7 hält sie ebenso ausdrücklich von der Schülerseite fern; warten Sie also nicht auf eine spätere Förder-Einheit, die A einführt. Karte „Wasserstoff-1“: „Im Kern: 1 Proton und 0 Neutronen.“ / „Stabil.“ Karte „Kohlenstoff-12“: „Im Kern: 6 Protonen und 6 Neutronen.“ / „Stabil.“ Karte „Kohlenstoff-14“: „Im Kern: 6 Protonen und 8 Neutronen.“ / „Nicht stabil.“ Karte „Regler auf 8 Protonen“: „Sauerstoff-16“ / „Im Kern: 8 Protonen und 8 Neutronen.“ / „Stabil.“ – diese Karte trägt den Namen als eigene erste Zeile, weil er hier NICHT auf dem Bedienelement steht: Die Kinder lesen ihn oben ab und tragen ihn in die dritte Spalte ein (nachgemessen, siehe Datenlage, Punkt 3). Dazu als Tafelbild die zwei Kohlenstoff-Kerne nebeneinander, links 6 rote und 6 graue Kugeln, rechts 6 rote und 8 graue, mit den Bildtexten „6 Protonen  (+)“, „6 Neutronen  (ohne Ladung)“ bzw. „8 Neutronen  (ohne Ladung)“ und der Fußzeile „Kern hier 10 000-mal zu groß gezeichnet“. Wichtig beim Tafelbild: links und rechts gleich viele rote Kugeln stehen lassen – daran hängt Aufgabe 2 und die ganze Regel. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "Protonen",
+   "Neutronen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Kohlenstoff-12",
+    "6 Protonen, 6 Neutronen",
+    "Kohlenstoff-12"
+   ],
+   [
+    "Kohlenstoff-14",
+    "6 Protonen, 8 Neutronen",
+    "Kohlenstoff-14"
+   ],
+   [
+    "Regler auf 8 Protonen",
+    "8 Protonen, 8 Neutronen",
+    "Sauerstoff-16"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Knopf Kohlenstoff-14 meldet das Statusfeld: „Im Kern: 6 Protonen und 8 Neutronen, zusammen 14 Kernbausteine.“ Die Wahl „6 Protonen und 8 Neutronen“ nennt genau dieses Zahlenpaar und ist richtig. „6 Protonen und 6 Neutronen“ ist Kohlenstoff-12, also die Zeile darüber in der eigenen Tabelle. „8 Protonen und 6 Neutronen“ vertauscht die beiden Zahlen – mit 8 Protonen wäre es kein Kohlenstoff mehr, sondern Sauerstoff; das ist derselbe Denkfehler, den Forschen-Schritt 4 am Regler vorführt. (Der Weg nennt bewusst Inhalte und keine Plätze: seiten_nachbereiten.py stellt die Reihenfolge der drei Wahlmöglichkeiten um.)",
+   "typische_fehler": [
+    "Angekreuzt wird „6 Protonen und 6 Neutronen“, weil die Zeile Kohlenstoff-12 noch im Blick liegt und nicht neu gedrückt wurde. Gegenfrage: Welchen Knopf hast du zuletzt gedrückt?",
+    "Angekreuzt wird „8 Protonen und 6 Neutronen“: Die beiden Zahlen werden vertauscht. Am Tafelbild zeigen, dass links und rechts gleich viele rote Kugeln liegen – die 6 gehört zu den Protonen.",
+    "Es wird gar nichts umgestellt und der Ausgangszustand abgelesen. Achtung, das ist hier die Startfalle: Die Simulation startet bereits auf Kohlenstoff-12, deshalb liefert der Ausgangszustand „6 Protonen und 6 Neutronen“ und sieht richtig aus.",
+    "Die Zahl 14 aus dem Namen wird für eine der beiden Zahlen gehalten. Sie kommt in keiner Option vor; darauf hinweisen, dass 14 alle Teilchen zusammenzählt und in dieser Einheit nicht gebraucht wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Kohlenstoff",
+    "Sauerstoff"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird „Kohlenstoff-12“ mit Zahl geschrieben. Fachlich nicht falsch gedacht, für die Aufgabe aber zu eng: Auch Kohlenstoff-14 hat 6 Protonen. Gefragt ist der Name vor dem Strich; die Wortbank enthält ihn ohne Zahl.",
+    "In die zweite Lücke wird „Sauerstoff-16“ geschrieben. Das ist KEIN Ablesefehler: Auf dem vorgeschriebenen Weg steht nach Forschen-Schritt 4 wörtlich „Sauerstoff-16“ am Bildschirm (nachgemessen, siehe Datenlage, Punkt 3), und genau so gehört es auch in die dritte Tabellenspalte. Nicht als Fehler werten. In der Lücke ist nur der Namensteil vor dem Strich verlangt: Der Alltagsteil zeigt den Bau des Namens („ein Name, dann ein Strich, dann eine Zahl“), und die Wortbank führt „Sauerstoff“ ohne Zahl. Die Zahl also gemeinsam streichen und den Grund nennen: Sauerstoff-16 und Sauerstoff-18 heißen beide Sauerstoff.",
+    "Beide Lücken werden mit „Kohlenstoff“ gefüllt – die Vermutung „Neutronen ändern den Namen“ ist noch nicht abgelegt worden. Am Regler gemeinsam vorführen: Protonen-Regler bewegen, der Name oben wechselt. Bei der Auflösung der Vermutungen einen Satz ergänzen, den die Seite nicht sagt: Mehr Neutronen machen den Kern durchaus schwerer – Kohlenstoff-14 meldet „zusammen 14 Kernbausteine“ gegen 12 bei Kohlenstoff-12. Falsch ist allein der andere Name.",
+    "Die Lücken werden vertauscht. Auf die Zahlen im Satz zeigen: 6 Protonen gehören zu Kohlenstoff, 8 Protonen zu Sauerstoff."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide heißen Chlor, weil beide 17 Protonen im Kern haben. Die Zahl der Protonen bestimmt das Element. Chlor-35 und Chlor-37 unterscheiden sich nur in den Neutronen: 18 und 20. Das gibt zwei Sorten vom selben Element, aber kein neues Element.",
+   "alternativen": [
+    "Nur der erste Satz: „weil beide 17 Protonen haben“ – reicht für die volle Wertung.",
+    "Über den Unterschied begründet: „Nur die Neutronen sind verschieden, und die Neutronen ändern das Element nicht.“",
+    "Mit dem eigenen Beispiel verglichen: „Genau wie Kohlenstoff-12 und Kohlenstoff-14: gleiche Protonen, andere Neutronen, gleicher Name.“",
+    "Zusatz: „35 und 37 zählen alle Teilchen zusammen.“ – sachlich richtig, hier aber nicht verlangt und nicht zu fordern."
+   ],
+   "typische_fehler": [
+    "Es wird mit den Zahlen 35 und 37 begründet („weil beide mit 3 anfangen“). Zurück zu den Protonen: Die 17 steht in beiden Sätzen der Aufgabe.",
+    "Die Neutronen werden als Grund genannt („weil beide Neutronen haben“). Nachfragen: Wie viele Neutronen hat Chlor-35, wie viele Chlor-37? Sie sind verschieden – also kann das nicht der Grund sein.",
+    "Es wird nur „weil sie gleich sind“ geschrieben, ohne Zahl. Hilfe 3 gibt die 17 vor; die Zahl muss im Antwortsatz vorkommen.",
+    "Die beiden Chlor-Sorten werden für zwei verschiedene Elemente gehalten, die nur ähnlich heißen. Die Chlor-Knöpfe der Simulation nacheinander drücken lassen: Die Zeile mit den Protonen zeigt beide Male 17."
+   ]
+  },
+  "hilfe3_wort": "Protonen",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Bedienelemente gelten: die Knöpfe Wasserstoff-1, Kohlenstoff-12 und Kohlenstoff-14 sowie der obere Regler. Vier weitere Knöpfe (Helium-4, Chlor-35, Chlor-37, Kalium-40) werden auf Seite A nicht gebraucht. Die Chlor-Knöpfe kommen erst auf Seite B wieder vor: als Gegenprobe zu Aufgabe 3 und in der freiwilligen Zusatzaufgabe.",
+   "Startfalle vorwegnehmen: Die Simulation steht beim Öffnen schon auf Kohlenstoff-12. Deshalb beginnt Forschen-Schritt 1 mit Wasserstoff-1 – dort ändert sich sichtbar etwas, und der Knopf wirkt nicht kaputt. Diesen Grund einmal laut sagen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und im gelösten Beispiel beide Stellen mit dem Finger zeigen: den Namen „Wasserstoff-1“ oben und die Zahlen „1 Proton, 0 Neutronen“ darunter – bevor die Simulation geöffnet wird.",
+   "Das Statusfeld hat mehrere Zeilen. Alle bis auf die oberste Zeile mit dem Namen und die Zeile „Im Kern: …“ mit einem Papierstreifen abdecken; die Prozentzahlen (99,989 % bei Wasserstoff-1, 98,93 % bei Kohlenstoff-12, 99,757 % bei Sauerstoff-16), die Summenzeile und bei Kohlenstoff-14 die Zeile mit den 5730 Jahren stören sonst nur. Die 75,76 % gehören zu Chlor-35 und tauchen erst in der freiwilligen Zusatzaufgabe auf.",
+   "Die Reihenfolge der vier Forschen-Schritte ist zwingend, nicht nur bequem: Der Regler-Schritt liefert nur dann Sauerstoff-16, wenn davor der Knopf Kohlenstoff-14 gedrückt wurde – die Knöpfe stellen beide Regler mit, und die 8 Neutronen bleiben stehen. Wer stattdessen von Kohlenstoff-12 aus schiebt, landet bei Sauerstoff-14 und liest „Diesen Kern gibt es so nicht“; von Wasserstoff-1 aus bei Sauerstoff-8, ebenso (beide Zustände nachgemessen und in fakten/atombau-isotope.json abgelegt). Falls das passiert: Kohlenstoff-14 noch einmal drücken und den Regler erneut auf 8 ziehen.",
+   "Nur die dritte Spalte allein ausfüllen lassen (den Namen oben abschreiben), die zweite Spalte gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. Für Aufgabe 3 die beiden 17er in der Aufgabenstellung mit dem Textmarker anstreichen lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Chlor-35 und danach Chlor-37 und prüfe deine Antwort aus Aufgabe 3 am Statusfeld nach. Drücke danach Kalium-40 und lies ab, wie viele Protonen und Neutronen darin sitzen. Kalium-40 steckt in jeder Banane und auch in dir selbst.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Bau des Atomkerns, Elemente und ihre Sorten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Drücken der drei Knöpfe und das Verstellen des Protonen-Reglers trägt E4, das Ausfüllen der Tabelle trägt K3 (bandweite Festlegung vom 05.09.2026: K3 liegt auf dem Eintragen der Messwerte, NICHT auf dem Zuhause-Auftrag – „Erzähle zu Hause …“ wäre Präsentieren), der Vergleich Kohlenstoff-12 gegen Kohlenstoff-14 trägt UF3, die Chlor-Aufgabe UF4 und E5, die Vermutung zum Zusammenhang Neutronen/Element trägt UF1. E7 wird hier bewusst nicht beansprucht, es hängt im ganzen Band allein an fn5. FACHWORTZÄHLUNG: neu sind genau ZWEI Wörter, Proton und Neutron, beide im Alltagsteil in je einem eigenen Satz erklärt („Protonen haben eine Plus-Ladung. Neutronen haben keine Ladung.“) und beide in der Wortbank. Das Pluszeichen des Bildes ist damit aufgelöst; früher stand dafür nur „(+)“ hinter dem Wort. Vier weitere zählpflichtige Wörter der Regelfassung sind ausdrücklich NICHT eingeführt: (a) Massenzahl A und die Rechnung A = Z + N – die Simulation zeigt beides in jeder Statuszeile („zusammen 12 Kernbausteine“, „A = 6 + 6 = 12“), die Schülerseite verlangt es nirgends und die Ergebniskarten lassen die Zeile weg. Im Förderheft 10 wird auf KEINER Schülerseite mit A gerechnet – gerechnet wird damit erst im Regelheft (rk-Reihe); fn7 hält „Massenzahl A“ aus demselben Grund ausdrücklich von seiner Schülerseite fern. Warten Sie also nicht auf eine spätere Einheit dieses Bandes. (b) Kernladungszahl Z ebenso. (c) Nukleon bzw. Kernbaustein – kommt auf der Schülerseite kein einziges Mal vor; die Tabelle fragt nach Protonen und Neutronen einzeln, nie nach ihrer Summe. (d) Isotop – der Satz „Solche Sorten nennt man Isotope“ steht in 55 der 61 Statuszustände des Faktendumps, darunter in ALLEN VIER Zuständen, die die Kinder auf Seite A öffnen (Wasserstoff-1, Kohlenstoff-12, Kohlenstoff-14, Sauerstoff-16). Das Wort steht also nach jedem Knopfdruck auf dem Bildschirm, nicht bloß zweimal irgendwo. Auf der Schülerseite erscheint es trotzdem gar nicht, auch nicht als Bildschirmzitat. Rechnen Sie deshalb fest damit, dass in jeder Stunde jemand fragt, was Isotope sind; die Antwort lautet: „Das ist der Fachname für das, was wir Sorte nennen – gleiche Protonenzahl, andere Neutronenzahl.“ Danach weiter mit dem Wort Sorte arbeiten. Durchgehend benutzt wird stattdessen das Wort „Sorte“, das der Bildschirm selbst führt („Von allen Kohlenstoff-Atomen der Erde sind 98,93 % von dieser Sorte“, „Stabile Sorten dieses Elements“). Nennen Sie den Fachnamen im Unterrichtsgespräch, aber führen Sie ihn nicht als Merkwort ein. (e) Elektron – wird nur über das Bild und dessen wörtliche Beschriftung getragen („6 Elektronen  (–)“, „6 mal (+) und 6 mal (–) → nach außen neutral“); es gibt dazu keinen Textblock, keine Tabellenspalte und keine Aufgabe. (f) Element – dieses Wort trug in der ersten Fassung die halbe Seite: Lernziel, beide Merksatz-Hälften, Forscherfrage, beide Vermutungen, Forschen-Schritt 4 und Selbstcheck, zusammen acht Fundstellen. Damit war es nach Zählregel 3 eingeführt und wäre das DRITTE zählpflichtige Wort gewesen. Zählregel 5 trägt es nicht: Sie gilt für Alltagswörter (Form, Tempo, Richtung, Höhe, Last, Weg), und im Alltagsdeutsch heißt Element etwas anderes (Heizelement, Bauelement); einen Begriffssatz gab es zudem nicht, nur einen „Anker“. Die Seite sagt deshalb durchgehend „Name“ – so wie die Vorlage rk1 im Alltagsteil („Auf jedem Fläschchen steht ein Name und dahinter eine Zahl“) und so, wie die Einheit ohnehin argumentiert („heißt immer Kohlenstoff“, „Warum heißen beide Chlor?“, „Warum heißen Kohlenstoff-12 und Kohlenstoff-14 beide Kohlenstoff?“). Auch der Bildschirm zeigt einen Namen; Forschen-Schritt 4 sagt darum „Lies oben den Namen ab“, und die dritte Tabellenspalte („Welcher Name steht oben?“) nimmt ihn auf. Wie der Name gebaut ist, steht im Alltagsteil: „ein Name, dann ein Strich, dann eine Zahl“. Daran hängt, dass in Aufgabe 2 „Sauerstoff“ und nicht „Sauerstoff-16“ in die Lücke gehört; die Wortbank führt das Wort ohne Zahl. Verloren geht nichts: „Element“ steht im ganzen Band auf keiner einzigen anderen Schülerseite, und die Anschlusseinheit fn6 baut auf „Sorte“ auf („Eine Kernsorte wie Iod-131 heißt Nuklid“). Nach Zählregel 5 zählen außerdem nicht: Sorte, Name, Kern – Alltagswörter ohne Formelzeichen und ohne Einheit, keines steht in der Wortbank. „Sorte“ trägt den halben Merksatz und bekommt deshalb im Alltagsteil den Begriffssatz, den die Regel dafür verlangt: „Vom selben Stoff gibt es mehrere Sorten.“ „Stabil“ wird auf der Schülerseite gar nicht mehr verlangt – es steht nur noch im gedruckten Bild („Stabil.“ / „Nicht stabil.“), wie „Elektron“ auch, und ist damit nach Zählregel 3 nicht eingeführt. Damit steht die Einheit auch nicht mehr gegen fn7, das „stabil“ ausdrücklich als zählpflichtiges Wort von seiner Schülerseite fernhält. Nicht gezählt werden schließlich die beiden Stoffnamen der Wortbank, Kohlenstoff und Sauerstoff: Sie sind weder Größe noch Fachbegriff, sondern Namen von Stoffen, und die Aufgabe braucht sie in der Wortbank (der Rendervertrag verlangt jedes Lückenwort dort). So hält es der ganze Band – fn10 führt „Turbine“ und „Generator“ ebenso in der Wortbank, ohne sie zu zählen. Zählregel 5 in FOERDER_PROFIL.md deckt diesen Fall bisher nicht ausdrücklich ab; die Ergänzung ist bandweit fällig und liegt Abdullah vor. DATENLAGE UND FALLEN: (1) Startfalle: Der Ausgangszustand der Simulation IST bereits Kohlenstoff-12 mit 6 Protonen und 6 Neutronen. Der erste Schritt des Regelhefts („Drücke Kohlenstoff-12“) ändert deshalb nichts Sichtbares, und Lernende halten den Knopf für kaputt. Die Reihenfolge ist hier umgedreht: erst Wasserstoff-1, dann Kohlenstoff-12, dann Kohlenstoff-14. (2) Die Statuszeile schreibt „1 Protonen“ und „1 Kernbausteine“, also mit falschem Plural. Das gelöste Beispiel gibt den Wert wieder, nicht den Wortlaut: Es steht dort „1 Proton, 0 Neutronen“, genau so, wie es in die Tabelle kommt. Werte sind unverändert, nur die Grammatik ist geradegezogen – für DaZ-Lernende darf „1 Protonen“ nicht gedruckt werden. (3) NACHGEMESSEN am 05.09.2026 mit `simcheck/werte.js` auf dem Weg, den die Seite vorschreibt: Wasserstoff-1, Kohlenstoff-12, Kohlenstoff-14, dann Protonen-Regler auf 8. Die Beispielknöpfe stellen BEIDE Regler mit (`_atbBeispiel` setzt z und n und schreibt beide Reglerwerte zurück), nach Kohlenstoff-14 steht der Neutronen-Regler also auf 8. Wer dann den Protonen-Regler auf 8 zieht, hat 8 Protonen und 8 Neutronen; am Bildschirm steht wörtlich „Sauerstoff-16“, darunter „Im Kern: 8 Protonen und 8 Neutronen, zusammen 16 Kernbausteine.“ und „Stabil. Von allen Sauerstoff-Atomen der Erde sind 99,757 % von dieser Sorte.“ Der frühere Eintrag an dieser Stelle behauptete das Gegenteil („Diesen Kern gibt es so nicht“); das war ein Artefakt des Dumps, der die Regler erst nach dem Knopf Kalium-40 bewegt und deshalb überall 21 Neutronen mitgeschleppt hatte. Der gemessene Zustand steht jetzt in `fakten/atombau-isotope.json`. Folgen für die Seite: Die vierte Tabellenzeile ist belegt und wird eingetragen (8 Protonen, 8 Neutronen, Sauerstoff-16), und „Sauerstoff-16“ ist eine RICHTIGE Ablesung, kein Fehler. In Aufgabe 2 ist dagegen nur der Namensteil vor dem Strich verlangt; gelehrt wird diese Verkürzung im Alltagsteil und über die Wortbank. ACHTUNG, die Reihenfolge trägt das Ergebnis: von Kohlenstoff-12 aus ergibt derselbe Reglerzug Sauerstoff-14, von Wasserstoff-1 aus Sauerstoff-8 – beide melden „Diesen Kern gibt es so nicht“ (ebenfalls am 05.09.2026 nachgemessen; beide Zustände stehen seitdem als eigene Einträge in `fakten/atombau-isotope.json`, damit diese Begründung nachprüfbar ist und nicht nur im Fließtext steht). Deshalb steht der Regler-Schritt an vierter Stelle und nicht früher. (4) Ebenfalls nachgemessen: Die Reglerbeschriftung läuft mit. `_atbStatus()` schreibt die Zahlen in die Beschriftungen zurück; nach dem Weg oben steht dort „Protonen im Kern: 8“ und „Neutronen im Kern: 8“. Der Dump zeigt durchgehend die 6, weil simfakten die Beschriftung nur einmal beim Öffnen liest. Die Seite zitiert trotzdem keine Reglerbeschriftung mit Zahl; sie sagt nur „Stelle den Regler Protonen im Kern auf 8“. (5) Die Halbwertszeit steht bei Kohlenstoff-14 wörtlich im Status („seine Halbwertszeit beträgt 5730 Jahre“). Sie gehört nach Zählregel 4 zu fn6 und fn7. Die Tabelle fragt deshalb weder nach einer Zeitangabe noch nach der Stabilität: Die dritte Spalte nimmt den NAMEN auf, den Forschen-Schritt 4 abliest. Ohne diese Spalte hätte die Ablesung kein Feld und Aufgabe 2, Lücke 2 keine dokumentierte Quelle – die frühere Spalte „Ist dieser Kern stabil?“ ist genau dafür gewichen. Der Stabilitätsblick bleibt im gedruckten Bild und auf den Ergebniskarten erhalten. (6) Die Prozentzahlen im Status (98,93 % · 99,989 % · 75,76 % · 24,24 %) sind für das Lernziel nicht nötig und für A2/B1 eine Lesehürde; keine Spalte und keine Aufgabe fragt danach. Der Alltagsauftrag des Regelhefts – die mittlere Atommasse 35,45 u aus drei Vierteln Chlor-35 und einem Viertel Chlor-37 – ist ein gewichteter Mittelwert und entfällt ersatzlos. (7) Der Rechenschritt der Regel-Aufgabe (N = A − Z = 37 − 17 = 20) entfällt: zweistellige Subtraktion plus Begründung in einem Satz ist für die Zielgruppe zu viel, und die Neutronenzahl steht bei Chlor-37 ohnehin im Status. Aufgabe 3 gibt beide Zahlenpaare vor und verlangt nur die Begründung. (8) Die hoch- und tiefgestellte Kernschreibweise der Kopfzeile wird im Förderheft nicht verlangt; gearbeitet wird nur mit dem Klartextnamen. Sie taucht auch im Bildauftrag nicht auf – die dafür nötigen Ziffern fehlen in SourceSans3 und würden als leere Kästchen gedruckt. (9) UNDRUCKBARE ZEICHEN: Die Simulation setzt vor die Stabilitätsangaben Emoji – ein Häkchen-Emoji vor „Stabil.“, ein Strahlungs-Emoji vor „Nicht stabil.“ und ein Kreuzzeichen vor „Diesen Kern gibt es so nicht.“ SourceSans3 hat dafür keine Glyphe. Sie werden deshalb nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird; geschrieben wird nur das Wort. (10) MODELLGRENZE: Die Simulation nennt sie selbst – „Der Kern ist rund 10 000-mal zu groß gezeichnet – wäre das Atom ein Fußballstadion, wäre der Kern eine Erbse im Anstoßkreis“, und „Elektronen laufen nicht auf Kreisbahnen wie Planeten“. Der Bildauftrag trägt die erste Hälfte davon als Fußzeile mit und stellt das Größenverhältnis dadurch nicht als richtig dar. Der Erbsen-Vergleich eignet sich gut als mündlicher Einstieg, steht aber nicht auf der Schülerseite (Wortbudget). (11) Zwei Regler, zwei ganz verschiedene Wirkungen – das ist der Kern der Einheit und steht auch als Hinweis in der Simulation: Am Protonen-Regler wechselt das Element, am Neutronen-Regler bleibt das Element und nur die Sorte ändert sich. Der Neutronen-Regler wird auf der Schülerseite bewusst NICHT bedient: Von 19 Protonen ausgehend melden fast alle seine Zustände „Diesen Kern gibt es so nicht“, und ein Zustand, den es nicht gibt, taugt nicht als erste Messung. Der Neutronen-Unterschied wird stattdessen über das belegte Knopfpaar Kohlenstoff-12 / Kohlenstoff-14 gezeigt."
+ }
+}

@@ -1,0 +1,185 @@
+[
+ {
+  "sim": "wechselwirkung",
+  "ueberschrift": "↔️ Kraft und Gegenkraft – warum drücke ich zurück?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "⛸️ Eisläufer",
+    "ruft": "_wwkSet('skater')"
+   },
+   {
+    "aufschrift": "⛵ Boot",
+    "ruft": "_wwkSet('boot')"
+   },
+   {
+    "aufschrift": "🚀 Rakete",
+    "ruft": "_wwkSet('rakete')"
+   },
+   {
+    "aufschrift": "▶ Abstoßen",
+    "ruft": "_wwkGo()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_wwkReset()"
+   },
+   {
+    "aufschrift": "eine gleich große Gegenkraft",
+    "ruft": "_wwkAns(0,0)"
+   },
+   {
+    "aufschrift": "eine kleinere Gegenkraft",
+    "ruft": "_wwkAns(0,1)"
+   },
+   {
+    "aufschrift": "gar keine Gegenkraft",
+    "ruft": "_wwkAns(0,2)"
+   },
+   {
+    "aufschrift": "Auf zwei verschiedene Körper",
+    "ruft": "_wwkAns(1,0)"
+   },
+   {
+    "aufschrift": "Auf denselben Körper",
+    "ruft": "_wwkAns(1,1)"
+   },
+   {
+    "aufschrift": "Auf keinen Körper",
+    "ruft": "_wwkAns(1,2)"
+   },
+   {
+    "aufschrift": "Wegen der Gegenkraft (Rückstoß)",
+    "ruft": "_wwkAns(2,0)"
+   },
+   {
+    "aufschrift": "Weil das Wasser schiebt",
+    "ruft": "_wwkAns(2,1)"
+   },
+   {
+    "aufschrift": "Das ist Zufall",
+    "ruft": "_wwkAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_wwkSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_wwkSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_wwkSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('wechselwirkung')"
+   }
+  ],
+  "hinweise": [
+   "Wähle ein Beispiel und stoße ab. Achte auf die zwei Kräfte: Sie sind gleich groß, entgegengesetzt und wirken auf zwei verschiedene Körper.",
+   "Das Wechselwirkungsprinzip: Übt ein Körper eine Kraft auf einen zweiten aus, so übt der zweite eine gleich große, entgegengesetzte Kraft zurück (actio = reactio). Die beiden Kräfte wirken auf verschiedene Körper – darum heben sie sich nicht auf.",
+   "Abstoßen an der Wand, Rückstoß beim Bootssprung, Rakete – überall gilt: Kraft = Gegenkraft."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "wwkStatus: Zwei Eisläufer stoßen sich ab. Beide Kräfte sind gleich groß (actio = reactio). Läufer A: m = 60 kg → v = 2,0 m/s · Läufer B: m = 60 kg → v = 2,0 m/s. Gleiche Masse, gleiche Geschwindigkeit."
+   },
+   {
+    "einstellung": "⛸️ Eisläufer",
+    "text": "wwkStatus: Zwei Eisläufer stoßen sich ab. Beide Kräfte sind gleich groß (actio = reactio). Läufer A: m = 60 kg → v = 2,0 m/s · Läufer B: m = 60 kg → v = 2,0 m/s. Gleiche Masse, gleiche Geschwindigkeit."
+   },
+   {
+    "einstellung": "⛵ Boot",
+    "text": "wwkStatus: Vom Boot auf den Steg springen. Beide Kräfte sind gleich groß (actio = reactio). Boot: m = 300 kg → v = 0,40 m/s · Person: m = 60 kg → v = 2,0 m/s. Der leichtere Körper wird 5-mal so schnell."
+   },
+   {
+    "einstellung": "🚀 Rakete",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell."
+   },
+   {
+    "einstellung": "▶ Abstoßen",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell."
+   },
+   {
+    "einstellung": "eine gleich große Gegenkraft",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✓ Richtig! actio = reactio – gleich groß und entgegengesetzt."
+   },
+   {
+    "einstellung": "eine kleinere Gegenkraft",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Nein, die Gegenkraft ist genauso groß."
+   },
+   {
+    "einstellung": "gar keine Gegenkraft",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft."
+   },
+   {
+    "einstellung": "Auf zwei verschiedene Körper",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✓ Richtig! Darum heben sie sich nicht auf."
+   },
+   {
+    "einstellung": "Auf denselben Körper",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Nein – dann wäre es ein Gleichgewicht an einem Körper."
+   },
+   {
+    "einstellung": "Auf keinen Körper",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper."
+   },
+   {
+    "einstellung": "Wegen der Gegenkraft (Rückstoß)",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✓ Richtig! Die Person drückt das Boot zurück – Gegenkraft."
+   },
+   {
+    "einstellung": "Weil das Wasser schiebt",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das Wasser ist nicht die Ursache."
+   },
+   {
+    "einstellung": "Das ist Zufall",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das ist kein Zufall, sondern actio = reactio."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das ist kein Zufall, sondern actio = reactio.  ||  wwkSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das ist kein Zufall, sondern actio = reactio.  ||  wwkSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das ist kein Zufall, sondern actio = reactio."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "wwkStatus: Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio). Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Der leichtere Körper wird 30-mal so schnell.  ||  wwkFb0: ✗ Doch, es gibt immer eine Gegenkraft.  ||  wwkFb1: ✗ Sie wirken sehr wohl auf Körper.  ||  wwkFb2: ✗ Das ist kein Zufall, sondern actio = reactio."
+   }
+  ],
+  "bildtexte": [
+   "Zwei Eisläufer stoßen sich ab",
+   "⛸️",
+   "Gegenkraft",
+   "Kraft",
+   "Läufer A · 60 kg",
+   "Läufer B · 60 kg",
+   "Kraft = Gegenkraft  ·  gleiche Kraft, aber nicht dieselbe Geschwindigkeit",
+   "Vom Boot auf den Steg springen",
+   "⛵",
+   "🧍",
+   "Boot · 300 kg",
+   "Person · 60 kg",
+   "Rakete stößt Gas aus",
+   "🚀",
+   "💨",
+   "Kraft (Rakete hoch)",
+   "Gegenkraft (Gas runter)",
+   "Rakete · 600 kg",
+   "Gas · 20 kg"
+  ]
+ }
+]

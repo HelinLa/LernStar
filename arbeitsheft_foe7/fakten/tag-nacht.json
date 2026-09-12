@@ -1,0 +1,338 @@
+[
+ {
+  "sim": "tag-nacht",
+  "ueberschrift": "🌍 Tag hier, Nacht dort – wovon hängt es ab, ob es an einem Ort gerade Tag oder Nacht ist?",
+  "regler": [
+   {
+    "id": "tagD",
+    "beschriftung": "Erde von Hand drehen Drehung: 30°",
+    "bereich": {
+     "min": "0",
+     "max": "360",
+     "step": "5",
+     "start": "30"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "⏯ Pause",
+    "ruft": "_tagAuto()"
+   },
+   {
+    "aufschrift": "Die Sonne bewegt sich um die Erde",
+    "ruft": "_tagAns(0,0)"
+   },
+   {
+    "aufschrift": "Die Erde dreht sich um sich selbst",
+    "ruft": "_tagAns(0,1)"
+   },
+   {
+    "aufschrift": "Die Sonne wird nachts ausgeschaltet",
+    "ruft": "_tagAns(0,2)"
+   },
+   {
+    "aufschrift": "1 Stunde",
+    "ruft": "_tagAns(1,0)"
+   },
+   {
+    "aufschrift": "24 Stunden",
+    "ruft": "_tagAns(1,1)"
+   },
+   {
+    "aufschrift": "1 Jahr",
+    "ruft": "_tagAns(1,2)"
+   },
+   {
+    "aufschrift": "Die der Sonne zugewandte Seite",
+    "ruft": "_tagAns(2,0)"
+   },
+   {
+    "aufschrift": "Die von der Sonne abgewandte Seite",
+    "ruft": "_tagAns(2,1)"
+   },
+   {
+    "aufschrift": "Beide Seiten gleichzeitig",
+    "ruft": "_tagAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_tagSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_tagSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_tagSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('tagnacht')"
+   }
+  ],
+  "hinweise": [
+   "Links steht die Sonne – im Klassenversuch die Taschenlampe –, rechts der Globus. Wir schauen von oben auf den Nordpol: die Erdachse zeigt genau auf uns zu, deshalb liegt der Pol in der Mitte der Scheibe und alle Punkte darin liegen auf der Erdoberfläche. Der rote Punkt ist Bens Schnipsel auf der Lichtung mit der Bude. Yumis Schnipsel klebt genau gegenüber. Drehe den Globus Vierteldrehung für Vierteldrehung.",
+   "Trage zu jeder Stellung in deine Tabelle ein: So steht der Globus – Wer hat Sonne? (Ben / Yumi). Probiere auch die Stellung „Globus gar nicht drehen“.",
+   "Nicht die Sonne wandert – die Erde dreht sich. | Eine volle Drehung = ein Tag (24 Stunden)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag."
+   },
+   {
+    "einstellung": "⏯ Pause",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Die Sonne bewegt sich um die Erde",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich."
+   },
+   {
+    "einstellung": "Die Erde dreht sich um sich selbst",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht."
+   },
+   {
+    "einstellung": "Die Sonne wird nachts ausgeschaltet",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter."
+   },
+   {
+    "einstellung": "1 Stunde",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell."
+   },
+   {
+    "einstellung": "24 Stunden",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal."
+   },
+   {
+    "einstellung": "1 Jahr",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne."
+   },
+   {
+    "einstellung": "Die der Sonne zugewandte Seite",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag."
+   },
+   {
+    "einstellung": "Die von der Sonne abgewandte Seite",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht."
+   },
+   {
+    "einstellung": "Beide Seiten gleichzeitig",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 0",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 45",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 90",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 135",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 180",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 225",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 270",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 315",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 360",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 10",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 20",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 30",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 40",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 50",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 60",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 70",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 80",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 100",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 110",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 120",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 130",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 140",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 150",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 160",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 170",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 190",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 200",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 210",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 220",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 230",
+    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 240",
+    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 250",
+    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 260",
+    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 280",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 290",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 300",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 310",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 320",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 330",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 340",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 350",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 25",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 75",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 125",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 175",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 275",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 325",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   }
+  ],
+  "bildtexte": [
+   "Ben 🌙",
+   "Yumi ☀️",
+   "Sonne",
+   "Ben ☀️",
+   "Yumi 🌙"
+  ]
+ }
+]

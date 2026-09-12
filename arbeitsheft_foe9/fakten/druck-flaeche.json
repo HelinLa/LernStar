@@ -1,0 +1,501 @@
+[
+ {
+  "sim": "druck-flaeche",
+  "ueberschrift": "👣 Warum sinkt der schmale Fuß ein und der breite nicht?",
+  "regler": [
+   {
+    "id": "druM",
+    "beschriftung": "Masse: 60 kg",
+    "bereich": {
+     "min": "10",
+     "max": "5000",
+     "step": "10",
+     "start": "60"
+    }
+   },
+   {
+    "id": "druA",
+    "beschriftung": "Auflagefläche: 300 cm²",
+    "bereich": {
+     "min": "1",
+     "max": "3000",
+     "step": "1",
+     "start": "300"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Stöckelabsatz",
+    "ruft": "_druMarke(60, 1)"
+   },
+   {
+    "aufschrift": "Turnschuhe",
+    "ruft": "_druMarke(60, 300)"
+   },
+   {
+    "aufschrift": "Skier",
+    "ruft": "_druMarke(60, 2800)"
+   },
+   {
+    "aufschrift": "Elefant",
+    "ruft": "_druMarke(5000, 2400)"
+   }
+  ],
+  "hinweise": [
+   "Dieselbe Person, dieselbe Gewichtskraft – und trotzdem einmal ein Loch im Rasen und einmal nicht. Verändere die Auflagefläche und sieh nach, was mit dem Druck passiert.",
+   "Die Einheit: 1 Pascal ist 1 Newton je Quadratmeter – sehr wenig. Ein Blatt Papier auf dem Tisch drückt mit etwa 0,05 Pa. Deshalb rechnet man meist in Kilopascal (1 kPa = 1000 Pa) oder in bar (1 bar = 100 kPa).",
+   "Modellgrenze: Wie tief etwas wirklich einsinkt, hängt vom Boden ab – Schnee, Sand und Waldboden geben ganz verschieden nach. Das Bild zeigt deshalb nur den Vergleich, keine Zentimeter. Der Druckbalken ist logarithmisch, sonst wäre der Ski neben dem Absatz nicht mehr zu sehen.",
+   "Ein Elefant von 5 t drückt weniger auf den Boden als eine Person von 60 kg auf einem Stöckelabsatz"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark."
+   },
+   {
+    "einstellung": "Stöckelabsatz",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche."
+   },
+   {
+    "einstellung": "Turnschuhe",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark."
+   },
+   {
+    "einstellung": "Skier",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Elefant",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 10",
+    "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 630",
+    "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1260",
+    "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1880",
+    "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2510",
+    "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3130",
+    "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3750",
+    "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4380",
+    "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 5000",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 250",
+    "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 500",
+    "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 750",
+    "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1000",
+    "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1250",
+    "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1500",
+    "text": "druStatus: Die Kraft | F = m · g = 1500 kg · 9,81 N/kg = 14715,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 14715,0 N / 0,2400 m² | p = 61,3 kPa | | Zum Vergleich | Das ist 3,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1750",
+    "text": "druStatus: Die Kraft | F = m · g = 1750 kg · 9,81 N/kg = 17167,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 17167,5 N / 0,2400 m² | p = 71,5 kPa | | Zum Vergleich | Das ist 3,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2000",
+    "text": "druStatus: Die Kraft | F = m · g = 2000 kg · 9,81 N/kg = 19620,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 19620,0 N / 0,2400 m² | p = 81,8 kPa | | Zum Vergleich | Das ist 4,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2250",
+    "text": "druStatus: Die Kraft | F = m · g = 2250 kg · 9,81 N/kg = 22072,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 22072,5 N / 0,2400 m² | p = 92,0 kPa | | Zum Vergleich | Das ist 4,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2500",
+    "text": "druStatus: Die Kraft | F = m · g = 2500 kg · 9,81 N/kg = 24525,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24525,0 N / 0,2400 m² | p = 102,2 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2750",
+    "text": "druStatus: Die Kraft | F = m · g = 2750 kg · 9,81 N/kg = 26977,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 26977,5 N / 0,2400 m² | p = 112,4 kPa | | Zum Vergleich | Das ist 5,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3000",
+    "text": "druStatus: Die Kraft | F = m · g = 3000 kg · 9,81 N/kg = 29430,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 29430,0 N / 0,2400 m² | p = 122,6 kPa | | Zum Vergleich | Das ist 6,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3250",
+    "text": "druStatus: Die Kraft | F = m · g = 3250 kg · 9,81 N/kg = 31882,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 31882,5 N / 0,2400 m² | p = 132,8 kPa | | Zum Vergleich | Das ist 6,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3500",
+    "text": "druStatus: Die Kraft | F = m · g = 3500 kg · 9,81 N/kg = 34335,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 34335,0 N / 0,2400 m² | p = 143,1 kPa | | Zum Vergleich | Das ist 7,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4000",
+    "text": "druStatus: Die Kraft | F = m · g = 4000 kg · 9,81 N/kg = 39240,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 39240,0 N / 0,2400 m² | p = 163,5 kPa | | Zum Vergleich | Das ist 8,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4250",
+    "text": "druStatus: Die Kraft | F = m · g = 4250 kg · 9,81 N/kg = 41692,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 41692,5 N / 0,2400 m² | p = 173,7 kPa | | Zum Vergleich | Das ist 8,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4500",
+    "text": "druStatus: Die Kraft | F = m · g = 4500 kg · 9,81 N/kg = 44145,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 44145,0 N / 0,2400 m² | p = 183,9 kPa | | Zum Vergleich | Das ist 9,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4750",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 46597,5 N / 0,2400 m² | p = 194,2 kPa | | Zum Vergleich | Das ist 9,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 46597,5 N / 0,0001 m² | p = 465,98 MPa = 465975,0 kPa | | Zum Vergleich | Das ist 23750-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 376",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 376 cm² = 0,0376 m² | p = F / A = 46597,5 N / 0,0376 m² | p = 1,24 MPa = 1239,3 kPa | | Zum Vergleich | Das ist 63-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 751",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 751 cm² = 0,0751 m² | p = F / A = 46597,5 N / 0,0751 m² | p = 620,5 kPa | | Zum Vergleich | Das ist 32-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1126",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1126 cm² = 0,1126 m² | p = F / A = 46597,5 N / 0,1126 m² | p = 413,8 kPa | | Zum Vergleich | Das ist 21-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1501",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1501 cm² = 0,1501 m² | p = F / A = 46597,5 N / 0,1501 m² | p = 310,4 kPa | | Zum Vergleich | Das ist 15,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1875",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1875 cm² = 0,1875 m² | p = F / A = 46597,5 N / 0,1875 m² | p = 248,5 kPa | | Zum Vergleich | Das ist 12,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2250",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2250 cm² = 0,2250 m² | p = F / A = 46597,5 N / 0,2250 m² | p = 207,1 kPa | | Zum Vergleich | Das ist 10,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2625",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2625 cm² = 0,2625 m² | p = F / A = 46597,5 N / 0,2625 m² | p = 177,5 kPa | | Zum Vergleich | Das ist 9,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 3000",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 3000 cm² = 0,3000 m² | p = F / A = 46597,5 N / 0,3000 m² | p = 155,3 kPa | | Zum Vergleich | Das ist 7,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 100",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 100 cm² = 0,0100 m² | p = F / A = 46597,5 N / 0,0100 m² | p = 4,66 MPa = 4659,8 kPa | | Zum Vergleich | Das ist 238-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 200",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 200 cm² = 0,0200 m² | p = F / A = 46597,5 N / 0,0200 m² | p = 2,33 MPa = 2329,9 kPa | | Zum Vergleich | Das ist 119-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 300",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 46597,5 N / 0,0300 m² | p = 1,55 MPa = 1553,2 kPa | | Zum Vergleich | Das ist 79-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 400",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 400 cm² = 0,0400 m² | p = F / A = 46597,5 N / 0,0400 m² | p = 1,16 MPa = 1164,9 kPa | | Zum Vergleich | Das ist 59-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 500",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 500 cm² = 0,0500 m² | p = F / A = 46597,5 N / 0,0500 m² | p = 932,0 kPa | | Zum Vergleich | Das ist 48-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 600",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 600 cm² = 0,0600 m² | p = F / A = 46597,5 N / 0,0600 m² | p = 776,6 kPa | | Zum Vergleich | Das ist 40-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 700",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 700 cm² = 0,0700 m² | p = F / A = 46597,5 N / 0,0700 m² | p = 665,7 kPa | | Zum Vergleich | Das ist 34-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 800",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 800 cm² = 0,0800 m² | p = F / A = 46597,5 N / 0,0800 m² | p = 582,5 kPa | | Zum Vergleich | Das ist 30-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 900",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 900 cm² = 0,0900 m² | p = F / A = 46597,5 N / 0,0900 m² | p = 517,7 kPa | | Zum Vergleich | Das ist 26-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1000",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1000 cm² = 0,1000 m² | p = F / A = 46597,5 N / 0,1000 m² | p = 466,0 kPa | | Zum Vergleich | Das ist 24-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1100",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1100 cm² = 0,1100 m² | p = F / A = 46597,5 N / 0,1100 m² | p = 423,6 kPa | | Zum Vergleich | Das ist 22-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1200",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1200 cm² = 0,1200 m² | p = F / A = 46597,5 N / 0,1200 m² | p = 388,3 kPa | | Zum Vergleich | Das ist 19,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1300",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1300 cm² = 0,1300 m² | p = F / A = 46597,5 N / 0,1300 m² | p = 358,4 kPa | | Zum Vergleich | Das ist 18,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1400",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1400 cm² = 0,1400 m² | p = F / A = 46597,5 N / 0,1400 m² | p = 332,8 kPa | | Zum Vergleich | Das ist 17,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1500",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1500 cm² = 0,1500 m² | p = F / A = 46597,5 N / 0,1500 m² | p = 310,6 kPa | | Zum Vergleich | Das ist 15,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1600",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1600 cm² = 0,1600 m² | p = F / A = 46597,5 N / 0,1600 m² | p = 291,2 kPa | | Zum Vergleich | Das ist 14,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1700",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1700 cm² = 0,1700 m² | p = F / A = 46597,5 N / 0,1700 m² | p = 274,1 kPa | | Zum Vergleich | Das ist 14,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1800",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1800 cm² = 0,1800 m² | p = F / A = 46597,5 N / 0,1800 m² | p = 258,9 kPa | | Zum Vergleich | Das ist 13,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1900",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1900 cm² = 0,1900 m² | p = F / A = 46597,5 N / 0,1900 m² | p = 245,3 kPa | | Zum Vergleich | Das ist 12,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2000",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2000 cm² = 0,2000 m² | p = F / A = 46597,5 N / 0,2000 m² | p = 233,0 kPa | | Zum Vergleich | Das ist 11,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2100",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2100 cm² = 0,2100 m² | p = F / A = 46597,5 N / 0,2100 m² | p = 221,9 kPa | | Zum Vergleich | Das ist 11,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2200",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2200 cm² = 0,2200 m² | p = F / A = 46597,5 N / 0,2200 m² | p = 211,8 kPa | | Zum Vergleich | Das ist 10,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2300",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2300 cm² = 0,2300 m² | p = F / A = 46597,5 N / 0,2300 m² | p = 202,6 kPa | | Zum Vergleich | Das ist 10,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2400",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 46597,5 N / 0,2400 m² | p = 194,2 kPa | | Zum Vergleich | Das ist 9,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2500",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2500 cm² = 0,2500 m² | p = F / A = 46597,5 N / 0,2500 m² | p = 186,4 kPa | | Zum Vergleich | Das ist 9,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2600",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2600 cm² = 0,2600 m² | p = F / A = 46597,5 N / 0,2600 m² | p = 179,2 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2700",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2700 cm² = 0,2700 m² | p = F / A = 46597,5 N / 0,2700 m² | p = 172,6 kPa | | Zum Vergleich | Das ist 8,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2800",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 46597,5 N / 0,2800 m² | p = 166,4 kPa | | Zum Vergleich | Das ist 8,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2900",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2900 cm² = 0,2900 m² | p = F / A = 46597,5 N / 0,2900 m² | p = 160,7 kPa | | Zum Vergleich | Das ist 8,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 250",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 250 cm² = 0,0250 m² | p = F / A = 46597,5 N / 0,0250 m² | p = 1,86 MPa = 1863,9 kPa | | Zum Vergleich | Das ist 95-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 750",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 750 cm² = 0,0750 m² | p = F / A = 46597,5 N / 0,0750 m² | p = 621,3 kPa | | Zum Vergleich | Das ist 32-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1250",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1250 cm² = 0,1250 m² | p = F / A = 46597,5 N / 0,1250 m² | p = 372,8 kPa | | Zum Vergleich | Das ist 19,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 1750",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1750 cm² = 0,1750 m² | p = F / A = 46597,5 N / 0,1750 m² | p = 266,3 kPa | | Zum Vergleich | Das ist 13,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Auflagefläche: 300 cm² = 2750",
+    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2750 cm² = 0,2750 m² | p = F / A = 46597,5 N / 0,2750 m² | p = 169,4 kPa | | Zum Vergleich | Das ist 8,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   }
+  ],
+  "bildtexte": [
+   "F = 589 N",
+   "A = 300 cm²",
+   "Druck: 19,6 kPa",
+   "(Balken logarithmisch)",
+   "p = F / A",
+   "A = 1 cm²",
+   "Druck: 5,89 MPa",
+   "A = 2800 cm²",
+   "Druck: 2,1 kPa",
+   "F = 49050 N",
+   "A = 2400 cm²",
+   "Druck: 204,4 kPa",
+   "F = 98 N",
+   "Druck: 0,4 kPa",
+   "F = 6180 N",
+   "Druck: 25,8 kPa",
+   "F = 12361 N",
+   "Druck: 51,5 kPa",
+   "F = 18443 N",
+   "Druck: 76,8 kPa",
+   "F = 24623 N",
+   "Druck: 102,6 kPa",
+   "F = 30705 N",
+   "Druck: 127,9 kPa",
+   "F = 36788 N",
+   "Druck: 153,3 kPa",
+   "F = 42968 N",
+   "Druck: 179,0 kPa",
+   "F = 2453 N",
+   "Druck: 10,2 kPa",
+   "F = 4905 N",
+   "Druck: 20,4 kPa",
+   "F = 7358 N",
+   "Druck: 30,7 kPa",
+   "F = 9810 N",
+   "Druck: 40,9 kPa",
+   "F = 12263 N",
+   "Druck: 51,1 kPa",
+   "F = 14715 N",
+   "Druck: 61,3 kPa",
+   "F = 17168 N",
+   "Druck: 71,5 kPa",
+   "F = 19620 N",
+   "Druck: 81,8 kPa",
+   "F = 22073 N",
+   "Druck: 92,0 kPa",
+   "F = 24525 N",
+   "Druck: 102,2 kPa",
+   "F = 26978 N",
+   "Druck: 112,4 kPa",
+   "F = 29430 N",
+   "Druck: 122,6 kPa",
+   "F = 31883 N",
+   "Druck: 132,8 kPa",
+   "F = 34335 N",
+   "Druck: 143,1 kPa",
+   "F = 39240 N",
+   "Druck: 163,5 kPa",
+   "F = 41693 N",
+   "Druck: 173,7 kPa",
+   "F = 44145 N",
+   "Druck: 183,9 kPa",
+   "F = 46598 N",
+   "Druck: 194,2 kPa",
+   "Druck: 465,98 MPa",
+   "A = 376 cm²",
+   "Druck: 1,24 MPa",
+   "A = 751 cm²",
+   "Druck: 620,5 kPa",
+   "A = 1126 cm²",
+   "Druck: 413,8 kPa",
+   "A = 1501 cm²",
+   "Druck: 310,4 kPa",
+   "A = 1875 cm²",
+   "Druck: 248,5 kPa",
+   "A = 2250 cm²",
+   "Druck: 207,1 kPa",
+   "A = 2625 cm²",
+   "Druck: 177,5 kPa",
+   "A = 3000 cm²",
+   "Druck: 155,3 kPa",
+   "A = 100 cm²",
+   "Druck: 4,66 MPa",
+   "A = 200 cm²",
+   "Druck: 2,33 MPa",
+   "Druck: 1,55 MPa",
+   "A = 400 cm²",
+   "Druck: 1,16 MPa",
+   "A = 500 cm²",
+   "Druck: 932,0 kPa",
+   "A = 600 cm²",
+   "Druck: 776,6 kPa",
+   "A = 700 cm²",
+   "Druck: 665,7 kPa",
+   "A = 800 cm²",
+   "Druck: 582,5 kPa",
+   "A = 900 cm²",
+   "Druck: 517,7 kPa",
+   "A = 1000 cm²",
+   "Druck: 466,0 kPa",
+   "A = 1100 cm²",
+   "Druck: 423,6 kPa",
+   "A = 1200 cm²",
+   "Druck: 388,3 kPa",
+   "A = 1300 cm²",
+   "Druck: 358,4 kPa",
+   "A = 1400 cm²",
+   "Druck: 332,8 kPa",
+   "A = 1500 cm²",
+   "Druck: 310,6 kPa",
+   "A = 1600 cm²",
+   "Druck: 291,2 kPa",
+   "A = 1700 cm²",
+   "Druck: 274,1 kPa",
+   "A = 1800 cm²",
+   "Druck: 258,9 kPa",
+   "A = 1900 cm²",
+   "Druck: 245,3 kPa",
+   "A = 2000 cm²",
+   "Druck: 233,0 kPa",
+   "A = 2100 cm²",
+   "Druck: 221,9 kPa",
+   "A = 2200 cm²",
+   "Druck: 211,8 kPa",
+   "A = 2300 cm²",
+   "Druck: 202,6 kPa",
+   "A = 2500 cm²",
+   "Druck: 186,4 kPa",
+   "A = 2600 cm²",
+   "Druck: 179,2 kPa",
+   "A = 2700 cm²",
+   "Druck: 172,6 kPa",
+   "Druck: 166,4 kPa",
+   "A = 2900 cm²",
+   "Druck: 160,7 kPa",
+   "A = 250 cm²",
+   "Druck: 1,86 MPa",
+   "A = 750 cm²",
+   "Druck: 621,3 kPa",
+   "A = 1250 cm²",
+   "Druck: 372,8 kPa",
+   "A = 1750 cm²",
+   "Druck: 266,3 kPa",
+   "A = 2750 cm²",
+   "Druck: 169,4 kPa"
+  ]
+ }
+]

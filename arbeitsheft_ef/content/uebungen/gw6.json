@@ -1,0 +1,72 @@
+{
+ "id": "gw6",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "S7",
+  "K8"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Für jeden Ort im Erdfeld liefert die Beziehung",
+   "loesung": "g = G · M / r²",
+   "post": "die Werte des Datenblatts; G und M sind darin fest, veränderlich ist allein r."
+  },
+  {
+   "pre": "Der Abstand r wird dabei nicht ab dem Boden gezählt, sondern ab dem",
+   "loesung": "Erdmittelpunkt",
+   "post": "; dorthin zeigt an jedem Ort auch die Feldstärke."
+  },
+  {
+   "pre": "Auf der ISS-Bahn stehen 8,69 N/kg; gemessen am Wert 9,82 N/kg an der Erdoberfläche sind das rund",
+   "loesung": "89 Prozent",
+   "post": "."
+  },
+  {
+   "pre": "Mit wachsendem Abstand wird die Feldstärke beliebig klein, aber",
+   "loesung": "nie null",
+   "post": "; in der Zeile der Mondbahn stehen deshalb noch 0,0027 N/kg."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Der Navigationssatellit ist rund viermal so weit vom Erdmittelpunkt entfernt wie ein Punkt der Erdoberfläche; seine Feldstärke beträgt deshalb rund ein Viertel von 9,82 N/kg.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Der Abstand der ISS-Bahn vom Erdmittelpunkt übertrifft den Erdradius um etwa 6 Prozent, ihre Feldstärke liegt aber um etwa 11 Prozent unter 9,82 N/kg.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil an einem Ort für jeden Körper dieselbe Feldstärke gilt, erfahren auf der ISS-Bahn auch alle Körper dieselbe Kraft.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Die 8,69 N/kg der ISS-Zeile lassen sich auch ohne G und M gewinnen: Multipliziert man 9,82 N/kg mit (6371 : 6771)², so erhält man denselben Wert.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias rechnet die ISS-Zeile nach. In g = G · M / r² setzt er G = 6,674 · 10⁻¹¹ N·m²/kg², M = 5,972 · 10²⁴ kg und für den Abstand die Zahl aus dem Datenblatt ein, also r = 6771. Sein Taschenrechner zeigt 8,69 · 10⁶. Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Die Ziffernfolge stimmt bereits, nur die Größenordnung nicht: In G stecken Meter, im Datenblatt dagegen Kilometer. Mit r = 6 771 000 m wird r² um den Faktor 10⁶ größer, und es bleibt g = 8,69 N/kg.",
+   "Der Fehler steckt in der Masse: Für einen Ort außerhalb der Erde ist in M die Masse des dort kreisenden Körpers hinzuzurechnen; erst danach ergibt sich der Wert des Datenblatts.",
+   "Der Fehler steckt im Abstand: r ist von der Erdoberfläche aus zu zählen, für die ISS also r = 400. Mit diesem Wert sinkt das Ergebnis auf die 8,69 N/kg des Datenblatts."
+  ],
+  "richtig": 0,
+  "erklaerung": "Die Rechnung ist bis auf die Einheiten richtig geführt. G trägt die Einheit N·m²/kg², enthält also Meter; das Datenblatt gibt r dagegen in Kilometern an. Wer 6771 unverändert einsetzt, rechnet mit einem um den Faktor 10³ zu kleinen Abstand, im Nenner also mit einem um 10⁶ zu kleinen r² – genau darum steht die richtige Ziffernfolge 8,69 mit dem Faktor 10⁶ daneben. Mit r = 6 771 000 m fällt dieser Faktor weg und es bleibt g = 8,69 N/kg. Die Masse des kreisenden Körpers gehört nicht in die Rechnung: In g = G · M / r² steht allein die Masse des Zentralkörpers, denn die Probemasse wurde beim Übergang von F = G · M · m / r² zu g = F/m gerade herausgekürzt. Und r = 400 wäre doppelt falsch: Der Abstand zählt ab dem Erdmittelpunkt, und ein kleinerer Abstand im Nenner würde das Ergebnis nicht senken, sondern weiter vergrößern."
+ },
+ "offen": {
+  "frage": "In einem Forum steht: „Die Feldstärke ist keine Eigenschaft des Ortes, sondern des Körpers. Ein schwerer Satellit wird in 26 600 km Abstand ja stärker angezogen als ein leichter – für ihn ist das Feld dort also stärker.“ Beurteile diese Argumentationskette. Stütze dich auf g = F/m und auf die Zeile des Navigationssatelliten.",
+  "prompt": "In einem Forum steht: „Die Feldstärke ist keine Eigenschaft des Ortes, sondern des Körpers. Ein schwerer Satellit wird in 26 600 km Abstand ja stärker angezogen als ein leichter – für ihn ist das Feld dort also stärker.“ Beurteile diese Argumentationskette. Stütze dich auf g = F/m und auf die Zeile des Navigationssatelliten.",
+  "zeilen": 5,
+  "loesung": "Die Kette beginnt richtig und endet falsch. Richtig ist die Beobachtung: Am selben Ort erfährt der schwerere Körper die größere Kraft, denn in F = G · M · m / r² wächst F proportional zur Probemasse m – doppelte Masse, doppelte Kraft. Falsch ist der Schluss auf ein stärkeres Feld, weil dabei Kraft und Feldstärke gleichgesetzt werden. Die Feldstärke ist nicht die Kraft, sondern die Kraft je Kilogramm Probemasse: g = F/m. Weil F und m im selben Verhältnis wachsen, kürzt sich die Probemasse im Quotienten heraus, und es bleibt für jeden Körper derselbe Wert – in 26 600 km Abstand 0,563 N/kg, ob dort ein schwerer oder ein leichter Satellit kreist. Genau darin liegt der Gewinn der Feldbeschreibung: g hängt nur vom Zentralkörper und vom Ort ab, nicht vom Probekörper. Auch der Bau des Datenblatts zeigt das: Die Spalte führt zu jedem Ort genau einen Wert. Träfe die Behauptung zu, müssten zu jedem Ort so viele Feldstärken angegeben werden, wie es Körper gibt, und die 9,82 N/kg an der Erdoberfläche wären als Angabe wertlos. Verschieden ist zwischen schwerem und leichtem Satelliten allein die Kraft F = m · g, nicht das Feld, das sie hervorruft."
+ }
+}

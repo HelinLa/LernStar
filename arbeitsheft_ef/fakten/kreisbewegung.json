@@ -1,0 +1,810 @@
+[
+ {
+  "sim": "kreisbewegung",
+  "ueberschrift": "⭕ Kreisbewegung",
+  "regler": [
+   {
+    "id": "krOmega",
+    "beschriftung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "0.5",
+     "start": "3"
+    }
+   },
+   {
+    "id": "krR",
+    "beschriftung": "Radius r: 70 px",
+    "bereich": {
+     "min": "40",
+     "max": "100",
+     "step": "5",
+     "start": "70"
+    }
+   }
+  ],
+  "knoepfe": [],
+  "hinweise": [],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 1",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 1 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|212.59,196.00 | lineTo|218.26,196.00 | lineTo|223.92,196.00 | lineTo|229.58,196.00 | lineTo|235.25,196.00 | lineTo|240.91,196.00 | lineTo|246.58,196.00 | lineTo|252.24,196.00 | lineTo|257.90,196.00 | lineTo|263.57,196.00 | lineTo|269.23,196.00 | lineTo|274.90,196.00 | lineTo|280.56,196.00 | lineTo|286.22,196.00 | lineTo|291.89,196.00 | lineTo|297.55,196.00 | lineTo|303.22,196.00 | lineTo|308.88,196.00 | lineTo|314.54,196.00 | lineTo|320.21,196.00 | lineTo|325.87,196.00 | lineTo|331.54,196.00 | lineTo|337.20,196.00 | lineTo|342.86,196.00 | lineTo|348.53,196.00 | lineTo|354.19,196.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 1 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|294.54,196.00 | lineTo|299.08,196.00 | lineTo|303.62,196.00 | lineTo|308.15,196.00 | lineTo|312.69,196.00 | lineTo|317.23,196.00 | lineTo|321.77,196.00 | lineTo|326.31,196.00 | lineTo|330.85,196.00 | lineTo|335.38,196.00 | lineTo|339.92,196.00 | lineTo|344.46,196.00 | lineTo|349.00,196.00 | lineTo|353.54,196.00 | lineTo|358.08,196.00 | lineTo|362.62,196.00 | lineTo|367.15,196.00 | lineTo|371.69,196.00 | lineTo|376.23,196.00 | lineTo|380.77,196.00 | lineTo|385.31,196.00 | lineTo|389.85,196.00 | lineTo|394.38,196.00 | lineTo|398.92,196.00 | lineTo|403.46,196.00 | lineTo|408.00,196.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 1 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|322.08,196.00 | lineTo|325.51,196.00 | lineTo|328.95,196.00 | lineTo|332.39,196.00 | lineTo|335.83,196.00 | lineTo|339.26,196.00 | lineTo|342.70,196.00 | lineTo|346.14,196.00 | lineTo|349.57,196.00 | lineTo|353.01,196.00 | lineTo|356.45,196.00 | lineTo|359.88,196.00 | lineTo|363.32,196.00 | lineTo|366.76,196.00 | lineTo|370.19,196.00 | lineTo|373.63,196.00 | lineTo|377.07,196.00 | lineTo|380.50,196.00 | lineTo|383.94,196.00 | lineTo|387.38,196.00 | lineTo|390.82,196.00 | lineTo|394.25,196.00 | lineTo|397.69,196.00 | lineTo|401.13,196.00 | lineTo|404.56,196.00 | lineTo|408.00,196.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 1 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|338.86,196.00 | lineTo|341.63,196.00 | lineTo|344.39,196.00 | lineTo|347.16,196.00 | lineTo|349.92,196.00 | lineTo|352.69,196.00 | lineTo|355.45,196.00 | lineTo|358.22,196.00 | lineTo|360.98,196.00 | lineTo|363.75,196.00 | lineTo|366.52,196.00 | lineTo|369.28,196.00 | lineTo|372.05,196.00 | lineTo|374.81,196.00 | lineTo|377.58,196.00 | lineTo|380.34,196.00 | lineTo|383.11,196.00 | lineTo|385.88,196.00 | lineTo|388.64,196.00 | lineTo|391.41,196.00 | lineTo|394.17,196.00 | lineTo|396.94,196.00 | lineTo|399.70,196.00 | lineTo|402.47,196.00 | lineTo|405.23,196.00 | lineTo|408.00,196.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 2",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 2 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|358.28,170.00 | lineTo|360.27,170.00 | lineTo|362.26,170.00 | lineTo|364.25,170.00 | lineTo|366.24,170.00 | lineTo|368.22,170.00 | lineTo|370.21,170.00 | lineTo|372.20,170.00 | lineTo|374.19,170.00 | lineTo|376.18,170.00 | lineTo|378.17,170.00 | lineTo|380.16,170.00 | lineTo|382.15,170.00 | lineTo|384.13,170.00 | lineTo|386.12,170.00 | lineTo|388.11,170.00 | lineTo|390.10,170.00 | lineTo|392.09,170.00 | lineTo|394.08,170.00 | lineTo|396.07,170.00 | lineTo|398.06,170.00 | lineTo|400.04,170.00 | lineTo|402.03,170.00 | lineTo|404.02,170.00 | lineTo|406.01,170.00 | lineTo|408.00,170.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 2 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|364.40,170.00 | lineTo|366.15,170.00 | lineTo|367.89,170.00 | lineTo|369.64,170.00 | lineTo|371.38,170.00 | lineTo|373.12,170.00 | lineTo|374.87,170.00 | lineTo|376.61,170.00 | lineTo|378.35,170.00 | lineTo|380.10,170.00 | lineTo|381.84,170.00 | lineTo|383.59,170.00 | lineTo|385.33,170.00 | lineTo|387.07,170.00 | lineTo|388.82,170.00 | lineTo|390.56,170.00 | lineTo|392.31,170.00 | lineTo|394.05,170.00 | lineTo|395.79,170.00 | lineTo|397.54,170.00 | lineTo|399.28,170.00 | lineTo|401.02,170.00 | lineTo|402.77,170.00 | lineTo|404.51,170.00 | lineTo|406.26,170.00 | lineTo|408.00,170.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 2 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|369.18,170.00 | lineTo|370.74,170.00 | lineTo|372.29,170.00 | lineTo|373.84,170.00 | lineTo|375.39,170.00 | lineTo|376.95,170.00 | lineTo|378.50,170.00 | lineTo|380.05,170.00 | lineTo|381.61,170.00 | lineTo|383.16,170.00 | lineTo|384.71,170.00 | lineTo|386.26,170.00 | lineTo|387.82,170.00 | lineTo|389.37,170.00 | lineTo|390.92,170.00 | lineTo|392.47,170.00 | lineTo|394.03,170.00 | lineTo|395.58,170.00 | lineTo|397.13,170.00 | lineTo|398.68,170.00 | lineTo|400.24,170.00 | lineTo|401.79,170.00 | lineTo|403.34,170.00 | lineTo|404.89,170.00 | lineTo|406.45,170.00 | lineTo|408.00,170.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 2 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|373.02,170.00 | lineTo|374.42,170.00 | lineTo|375.82,170.00 | lineTo|377.22,170.00 | lineTo|378.62,170.00 | lineTo|380.02,170.00 | lineTo|381.42,170.00 | lineTo|382.81,170.00 | lineTo|384.21,170.00 | lineTo|385.61,170.00 | lineTo|387.01,170.00 | lineTo|388.41,170.00 | lineTo|389.81,170.00 | lineTo|391.21,170.00 | lineTo|392.61,170.00 | lineTo|394.01,170.00 | lineTo|395.41,170.00 | lineTo|396.81,170.00 | lineTo|398.21,170.00 | lineTo|399.60,170.00 | lineTo|401.00,170.00 | lineTo|402.40,170.00 | lineTo|403.80,170.00 | lineTo|405.20,170.00 | lineTo|406.60,170.00 | lineTo|408.00,170.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|210.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3.5",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3.5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|245.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3.5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|245.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3.5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|245.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3.5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|245.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4.5",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4.5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|315.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4.5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|315.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4.5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|315.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4.5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|315.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5.5",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5.5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5.5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5.5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5.5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6.5",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6.5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6.5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6.5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6.5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 8",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 8 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|560.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 8 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|560.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 8 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|560.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 8 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|560.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 9",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 9 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|630.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 9 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|630.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 9 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|630.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 9 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|630.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 10",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 10 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 10 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 10 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 10 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,198.60 | lineTo|379.59,198.60 | lineTo|380.77,198.60 | lineTo|381.95,198.60 | lineTo|383.14,198.60 | lineTo|384.32,198.60 | lineTo|385.51,198.60 | lineTo|386.69,198.60 | lineTo|387.87,198.60 | lineTo|389.06,198.60 | lineTo|390.24,198.60 | lineTo|391.42,198.60 | lineTo|392.61,198.60 | lineTo|393.79,198.60 | lineTo|394.98,198.60 | lineTo|396.16,198.60 | lineTo|397.34,198.60 | lineTo|398.53,198.60 | lineTo|399.71,198.60 | lineTo|400.90,198.60 | lineTo|402.08,198.60 | lineTo|403.26,198.60 | lineTo|404.45,198.60 | lineTo|405.63,198.60 | lineTo|406.82,198.60 | lineTo|408.00,198.60 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,198.60 | lineTo|379.59,198.60 | lineTo|380.77,198.60 | lineTo|381.95,198.60 | lineTo|383.14,198.60 | lineTo|384.32,198.60 | lineTo|385.51,198.60 | lineTo|386.69,198.60 | lineTo|387.87,198.60 | lineTo|389.06,198.60 | lineTo|390.24,198.60 | lineTo|391.42,198.60 | lineTo|392.61,198.60 | lineTo|393.79,198.60 | lineTo|394.98,198.60 | lineTo|396.16,198.60 | lineTo|397.34,198.60 | lineTo|398.53,198.60 | lineTo|399.71,198.60 | lineTo|400.90,198.60 | lineTo|402.08,198.60 | lineTo|403.26,198.60 | lineTo|404.45,198.60 | lineTo|405.63,198.60 | lineTo|406.82,198.60 | lineTo|408.00,198.60 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,198.60 | lineTo|379.59,198.60 | lineTo|380.77,198.60 | lineTo|381.95,198.60 | lineTo|383.14,198.60 | lineTo|384.32,198.60 | lineTo|385.51,198.60 | lineTo|386.69,198.60 | lineTo|387.87,198.60 | lineTo|389.06,198.60 | lineTo|390.24,198.60 | lineTo|391.42,198.60 | lineTo|392.61,198.60 | lineTo|393.79,198.60 | lineTo|394.98,198.60 | lineTo|396.16,198.60 | lineTo|397.34,198.60 | lineTo|398.53,198.60 | lineTo|399.71,198.60 | lineTo|400.90,198.60 | lineTo|402.08,198.60 | lineTo|403.26,198.60 | lineTo|404.45,198.60 | lineTo|405.63,198.60 | lineTo|406.82,198.60 | lineTo|408.00,198.60 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 3 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,198.60 | lineTo|379.59,198.60 | lineTo|380.77,198.60 | lineTo|381.95,198.60 | lineTo|383.14,198.60 | lineTo|384.32,198.60 | lineTo|385.51,198.60 | lineTo|386.69,198.60 | lineTo|387.87,198.60 | lineTo|389.06,198.60 | lineTo|390.24,198.60 | lineTo|391.42,198.60 | lineTo|392.61,198.60 | lineTo|393.79,198.60 | lineTo|394.98,198.60 | lineTo|396.16,198.60 | lineTo|397.34,198.60 | lineTo|398.53,198.60 | lineTo|399.71,198.60 | lineTo|400.90,198.60 | lineTo|402.08,198.60 | lineTo|403.26,198.60 | lineTo|404.45,198.60 | lineTo|405.63,198.60 | lineTo|406.82,198.60 | lineTo|408.00,198.60 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,190.80 | lineTo|379.59,190.80 | lineTo|380.77,190.80 | lineTo|381.95,190.80 | lineTo|383.14,190.80 | lineTo|384.32,190.80 | lineTo|385.51,190.80 | lineTo|386.69,190.80 | lineTo|387.87,190.80 | lineTo|389.06,190.80 | lineTo|390.24,190.80 | lineTo|391.42,190.80 | lineTo|392.61,190.80 | lineTo|393.79,190.80 | lineTo|394.98,190.80 | lineTo|396.16,190.80 | lineTo|397.34,190.80 | lineTo|398.53,190.80 | lineTo|399.71,190.80 | lineTo|400.90,190.80 | lineTo|402.08,190.80 | lineTo|403.26,190.80 | lineTo|404.45,190.80 | lineTo|405.63,190.80 | lineTo|406.82,190.80 | lineTo|408.00,190.80 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,190.80 | lineTo|379.59,190.80 | lineTo|380.77,190.80 | lineTo|381.95,190.80 | lineTo|383.14,190.80 | lineTo|384.32,190.80 | lineTo|385.51,190.80 | lineTo|386.69,190.80 | lineTo|387.87,190.80 | lineTo|389.06,190.80 | lineTo|390.24,190.80 | lineTo|391.42,190.80 | lineTo|392.61,190.80 | lineTo|393.79,190.80 | lineTo|394.98,190.80 | lineTo|396.16,190.80 | lineTo|397.34,190.80 | lineTo|398.53,190.80 | lineTo|399.71,190.80 | lineTo|400.90,190.80 | lineTo|402.08,190.80 | lineTo|403.26,190.80 | lineTo|404.45,190.80 | lineTo|405.63,190.80 | lineTo|406.82,190.80 | lineTo|408.00,190.80 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,190.80 | lineTo|379.59,190.80 | lineTo|380.77,190.80 | lineTo|381.95,190.80 | lineTo|383.14,190.80 | lineTo|384.32,190.80 | lineTo|385.51,190.80 | lineTo|386.69,190.80 | lineTo|387.87,190.80 | lineTo|389.06,190.80 | lineTo|390.24,190.80 | lineTo|391.42,190.80 | lineTo|392.61,190.80 | lineTo|393.79,190.80 | lineTo|394.98,190.80 | lineTo|396.16,190.80 | lineTo|397.34,190.80 | lineTo|398.53,190.80 | lineTo|399.71,190.80 | lineTo|400.90,190.80 | lineTo|402.08,190.80 | lineTo|403.26,190.80 | lineTo|404.45,190.80 | lineTo|405.63,190.80 | lineTo|406.82,190.80 | lineTo|408.00,190.80 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 4 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,190.80 | lineTo|379.59,190.80 | lineTo|380.77,190.80 | lineTo|381.95,190.80 | lineTo|383.14,190.80 | lineTo|384.32,190.80 | lineTo|385.51,190.80 | lineTo|386.69,190.80 | lineTo|387.87,190.80 | lineTo|389.06,190.80 | lineTo|390.24,190.80 | lineTo|391.42,190.80 | lineTo|392.61,190.80 | lineTo|393.79,190.80 | lineTo|394.98,190.80 | lineTo|396.16,190.80 | lineTo|397.34,190.80 | lineTo|398.53,190.80 | lineTo|399.71,190.80 | lineTo|400.90,190.80 | lineTo|402.08,190.80 | lineTo|403.26,190.80 | lineTo|404.45,190.80 | lineTo|405.63,190.80 | lineTo|406.82,190.80 | lineTo|408.00,190.80 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|700.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|350.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|350.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|350.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|350.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|420.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|420.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|420.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 6 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|420.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 7",
+    "text": ""
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 7 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 7 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 7 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "vas> ω (Winkelgeschwindigkeit): 3 rad/s = 7 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 40",
+    "text": ""
+   },
+   {
+    "einstellung": "Radius r: 70 px = 40 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,177.43 | lineTo|379.59,177.43 | lineTo|380.77,177.43 | lineTo|381.95,177.43 | lineTo|383.14,177.43 | lineTo|384.32,177.43 | lineTo|385.51,177.43 | lineTo|386.69,177.43 | lineTo|387.87,177.43 | lineTo|389.06,177.43 | lineTo|390.24,177.43 | lineTo|391.42,177.43 | lineTo|392.61,177.43 | lineTo|393.79,177.43 | lineTo|394.98,177.43 | lineTo|396.16,177.43 | lineTo|397.34,177.43 | lineTo|398.53,177.43 | lineTo|399.71,177.43 | lineTo|400.90,177.43 | lineTo|402.08,177.43 | lineTo|403.26,177.43 | lineTo|404.45,177.43 | lineTo|405.63,177.43 | lineTo|406.82,177.43 | lineTo|408.00,177.43 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 40 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,177.43 | lineTo|379.59,177.43 | lineTo|380.77,177.43 | lineTo|381.95,177.43 | lineTo|383.14,177.43 | lineTo|384.32,177.43 | lineTo|385.51,177.43 | lineTo|386.69,177.43 | lineTo|387.87,177.43 | lineTo|389.06,177.43 | lineTo|390.24,177.43 | lineTo|391.42,177.43 | lineTo|392.61,177.43 | lineTo|393.79,177.43 | lineTo|394.98,177.43 | lineTo|396.16,177.43 | lineTo|397.34,177.43 | lineTo|398.53,177.43 | lineTo|399.71,177.43 | lineTo|400.90,177.43 | lineTo|402.08,177.43 | lineTo|403.26,177.43 | lineTo|404.45,177.43 | lineTo|405.63,177.43 | lineTo|406.82,177.43 | lineTo|408.00,177.43 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 40 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,177.43 | lineTo|379.59,177.43 | lineTo|380.77,177.43 | lineTo|381.95,177.43 | lineTo|383.14,177.43 | lineTo|384.32,177.43 | lineTo|385.51,177.43 | lineTo|386.69,177.43 | lineTo|387.87,177.43 | lineTo|389.06,177.43 | lineTo|390.24,177.43 | lineTo|391.42,177.43 | lineTo|392.61,177.43 | lineTo|393.79,177.43 | lineTo|394.98,177.43 | lineTo|396.16,177.43 | lineTo|397.34,177.43 | lineTo|398.53,177.43 | lineTo|399.71,177.43 | lineTo|400.90,177.43 | lineTo|402.08,177.43 | lineTo|403.26,177.43 | lineTo|404.45,177.43 | lineTo|405.63,177.43 | lineTo|406.82,177.43 | lineTo|408.00,177.43 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 40 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,177.43 | lineTo|379.59,177.43 | lineTo|380.77,177.43 | lineTo|381.95,177.43 | lineTo|383.14,177.43 | lineTo|384.32,177.43 | lineTo|385.51,177.43 | lineTo|386.69,177.43 | lineTo|387.87,177.43 | lineTo|389.06,177.43 | lineTo|390.24,177.43 | lineTo|391.42,177.43 | lineTo|392.61,177.43 | lineTo|393.79,177.43 | lineTo|394.98,177.43 | lineTo|396.16,177.43 | lineTo|397.34,177.43 | lineTo|398.53,177.43 | lineTo|399.71,177.43 | lineTo|400.90,177.43 | lineTo|402.08,177.43 | lineTo|403.26,177.43 | lineTo|404.45,177.43 | lineTo|405.63,177.43 | lineTo|406.82,177.43 | lineTo|408.00,177.43 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 50",
+    "text": ""
+   },
+   {
+    "einstellung": "Radius r: 70 px = 50 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,166.29 | lineTo|379.59,166.29 | lineTo|380.77,166.29 | lineTo|381.95,166.29 | lineTo|383.14,166.29 | lineTo|384.32,166.29 | lineTo|385.51,166.29 | lineTo|386.69,166.29 | lineTo|387.87,166.29 | lineTo|389.06,166.29 | lineTo|390.24,166.29 | lineTo|391.42,166.29 | lineTo|392.61,166.29 | lineTo|393.79,166.29 | lineTo|394.98,166.29 | lineTo|396.16,166.29 | lineTo|397.34,166.29 | lineTo|398.53,166.29 | lineTo|399.71,166.29 | lineTo|400.90,166.29 | lineTo|402.08,166.29 | lineTo|403.26,166.29 | lineTo|404.45,166.29 | lineTo|405.63,166.29 | lineTo|406.82,166.29 | lineTo|408.00,166.29 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 50 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,166.29 | lineTo|379.59,166.29 | lineTo|380.77,166.29 | lineTo|381.95,166.29 | lineTo|383.14,166.29 | lineTo|384.32,166.29 | lineTo|385.51,166.29 | lineTo|386.69,166.29 | lineTo|387.87,166.29 | lineTo|389.06,166.29 | lineTo|390.24,166.29 | lineTo|391.42,166.29 | lineTo|392.61,166.29 | lineTo|393.79,166.29 | lineTo|394.98,166.29 | lineTo|396.16,166.29 | lineTo|397.34,166.29 | lineTo|398.53,166.29 | lineTo|399.71,166.29 | lineTo|400.90,166.29 | lineTo|402.08,166.29 | lineTo|403.26,166.29 | lineTo|404.45,166.29 | lineTo|405.63,166.29 | lineTo|406.82,166.29 | lineTo|408.00,166.29 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 50 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,166.29 | lineTo|379.59,166.29 | lineTo|380.77,166.29 | lineTo|381.95,166.29 | lineTo|383.14,166.29 | lineTo|384.32,166.29 | lineTo|385.51,166.29 | lineTo|386.69,166.29 | lineTo|387.87,166.29 | lineTo|389.06,166.29 | lineTo|390.24,166.29 | lineTo|391.42,166.29 | lineTo|392.61,166.29 | lineTo|393.79,166.29 | lineTo|394.98,166.29 | lineTo|396.16,166.29 | lineTo|397.34,166.29 | lineTo|398.53,166.29 | lineTo|399.71,166.29 | lineTo|400.90,166.29 | lineTo|402.08,166.29 | lineTo|403.26,166.29 | lineTo|404.45,166.29 | lineTo|405.63,166.29 | lineTo|406.82,166.29 | lineTo|408.00,166.29 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 50 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,166.29 | lineTo|379.59,166.29 | lineTo|380.77,166.29 | lineTo|381.95,166.29 | lineTo|383.14,166.29 | lineTo|384.32,166.29 | lineTo|385.51,166.29 | lineTo|386.69,166.29 | lineTo|387.87,166.29 | lineTo|389.06,166.29 | lineTo|390.24,166.29 | lineTo|391.42,166.29 | lineTo|392.61,166.29 | lineTo|393.79,166.29 | lineTo|394.98,166.29 | lineTo|396.16,166.29 | lineTo|397.34,166.29 | lineTo|398.53,166.29 | lineTo|399.71,166.29 | lineTo|400.90,166.29 | lineTo|402.08,166.29 | lineTo|403.26,166.29 | lineTo|404.45,166.29 | lineTo|405.63,166.29 | lineTo|406.82,166.29 | lineTo|408.00,166.29 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|490.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 55",
+    "text": ""
+   },
+   {
+    "einstellung": "Radius r: 70 px = 55 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 55 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 55 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 55 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|385.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 65",
+    "text": ""
+   },
+   {
+    "einstellung": "Radius r: 70 px = 65 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 65 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 65 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   },
+   {
+    "einstellung": "Radius r: 70 px = 65 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|v [px/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|455.0|50.00|156.00 | set:textAlign=right | fillText|0.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#f97316 | set:font=700 11px sans-serif | fillText|Bahngeschwindigkeit v|191.00|134.00"
+   }
+  ],
+  "bildtexte": [
+   "v (tangential)",
+   "F_z (Zentripetal)",
+   "ω=3rad/s",
+   "v≈21.0",
+   "F_z≈315.0N",
+   "Winkel φ(t)",
+   "Bahngeschwindigkeit v",
+   "φ [°]",
+   "5.5",
+   "2.8",
+   "t [s]",
+   "v [px/s]",
+   "210.0",
+   "0.0",
+   "8.3",
+   "11.0",
+   "ω=1rad/s",
+   "v≈7.0",
+   "F_z≈35.0N",
+   "11.9",
+   "12.8",
+   "13.8",
+   "14.7",
+   "15.6",
+   "16.5",
+   "17.4",
+   "18.3",
+   "19.3",
+   "20.2",
+   "21.1",
+   "22.0",
+   "22.9",
+   "23.8",
+   "24.8",
+   "25.7",
+   "26.6",
+   "27.5",
+   "28.4",
+   "29.3",
+   "30.3",
+   "31.2",
+   "32.1",
+   "33.0",
+   "33.9",
+   "34.8",
+   "35.8",
+   "36.7",
+   "37.6",
+   "38.5",
+   "39.4",
+   "40.3",
+   "41.3",
+   "42.2",
+   "43.1",
+   "44.0",
+   "44.9",
+   "45.8",
+   "46.8",
+   "47.7",
+   "48.6",
+   "49.5",
+   "50.4",
+   "51.3",
+   "52.3",
+   "53.2",
+   "54.1",
+   "55.0",
+   "55.9",
+   "56.8",
+   "57.8",
+   "58.7",
+   "59.6",
+   "60.5",
+   "61.4",
+   "62.3",
+   "63.3",
+   "64.2",
+   "65.1",
+   "66.0",
+   "66.9",
+   "67.8",
+   "68.8",
+   "69.7",
+   "70.6",
+   "71.5",
+   "72.4",
+   "73.3",
+   "74.3",
+   "75.2",
+   "76.1",
+   "77.0",
+   "77.9",
+   "78.8",
+   "79.8",
+   "80.7",
+   "81.6",
+   "82.5",
+   "83.4",
+   "84.3",
+   "85.3",
+   "86.2",
+   "87.1",
+   "88.0",
+   "88.9",
+   "89.8",
+   "90.8",
+   "91.7",
+   "92.6",
+   "93.5",
+   "94.4",
+   "95.3",
+   "96.3",
+   "97.2",
+   "98.1",
+   "99.0",
+   "99.9",
+   "100.8",
+   "101.8",
+   "102.7",
+   "103.6",
+   "104.5",
+   "105.4",
+   "106.3",
+   "107.3",
+   "108.2",
+   "109.1",
+   "110.0",
+   "110.9",
+   "111.8",
+   "112.8",
+   "113.7",
+   "114.6",
+   "115.5",
+   "116.4",
+   "117.3",
+   "118.3",
+   "119.2",
+   "120.1",
+   "121.0",
+   "121.9",
+   "122.8",
+   "123.8",
+   "124.7",
+   "125.6",
+   "ω=2rad/s",
+   "v≈14.0",
+   "F_z≈140.0N",
+   "127.4",
+   "129.3",
+   "131.1",
+   "132.9",
+   "134.8",
+   "136.6",
+   "138.4",
+   "140.3",
+   "142.1",
+   "143.9",
+   "145.8",
+   "147.6",
+   "149.4",
+   "151.3",
+   "153.1",
+   "154.9",
+   "156.8",
+   "158.6",
+   "160.4",
+   "162.3",
+   "164.1",
+   "165.9",
+   "167.8",
+   "169.6",
+   "171.4",
+   "173.3",
+   "175.1",
+   "176.9",
+   "178.8",
+   "180.6",
+   "182.4",
+   "184.3",
+   "186.1",
+   "187.9",
+   "189.8",
+   "191.6",
+   "193.4",
+   "195.3",
+   "197.1",
+   "198.9",
+   "200.8",
+   "202.6",
+   "204.4",
+   "206.3",
+   "208.1",
+   "209.9",
+   "211.8",
+   "213.6",
+   "215.4",
+   "217.3",
+   "219.1",
+   "220.9",
+   "222.8",
+   "224.6",
+   "226.4",
+   "228.3",
+   "230.1",
+   "231.9",
+   "233.8",
+   "235.6",
+   "237.4",
+   "239.3",
+   "241.1",
+   "242.9",
+   "244.8",
+   "246.6",
+   "248.4",
+   "250.3",
+   "252.1",
+   "253.9",
+   "255.8",
+   "257.6",
+   "259.4",
+   "261.3",
+   "263.1",
+   "264.9",
+   "266.8",
+   "268.6",
+   "270.4",
+   "272.3",
+   "274.1",
+   "275.9",
+   "277.8",
+   "279.6",
+   "281.4",
+   "283.3",
+   "285.1",
+   "286.9",
+   "288.8",
+   "290.6",
+   "292.4",
+   "294.3",
+   "296.1",
+   "297.9",
+   "299.8",
+   "301.6",
+   "303.4",
+   "305.3",
+   "307.1",
+   "308.9",
+   "310.8",
+   "312.6",
+   "314.4",
+   "316.3",
+   "318.1",
+   "319.9",
+   "321.8",
+   "323.6",
+   "325.4",
+   "327.3",
+   "329.1",
+   "330.9",
+   "332.8",
+   "334.6",
+   "336.4",
+   "338.3",
+   "340.1",
+   "341.9",
+   "343.8",
+   "345.6",
+   "347.4",
+   "349.3",
+   "351.1",
+   "352.9",
+   "354.8",
+   "ω=3.5rad/s",
+   "v≈24.5",
+   "F_z≈428.8N",
+   "358.0",
+   "245.0",
+   "1.2",
+   "0.6",
+   "ω=4.5rad/s",
+   "v≈31.5",
+   "F_z≈708.8N",
+   "315.0",
+   "ω=5.5rad/s",
+   "v≈38.5",
+   "F_z≈1058.8N",
+   "385.0",
+   "357.9",
+   "ω=6.5rad/s",
+   "v≈45.5",
+   "F_z≈1478.8N",
+   "455.0",
+   "0.9",
+   "ω=8rad/s",
+   "v≈56.0",
+   "F_z≈2240.0N",
+   "560.0",
+   "ω=9rad/s",
+   "v≈63.0",
+   "F_z≈2835.0N",
+   "630.0",
+   "359.4",
+   "ω=10rad/s",
+   "v≈70.0",
+   "F_z≈3500.0N",
+   "700.0",
+   "1.4",
+   "359.8",
+   "ω=4rad/s",
+   "v≈28.0",
+   "F_z≈560.0N",
+   "1.0",
+   "0.4",
+   "ω=5rad/s",
+   "v≈35.0",
+   "F_z≈875.0N",
+   "350.0",
+   "357.4",
+   "ω=6rad/s",
+   "v≈42.0",
+   "F_z≈1260.0N",
+   "420.0",
+   "358.2",
+   "ω=7rad/s",
+   "v≈49.0",
+   "F_z≈1715.0N",
+   "490.0",
+   "358.7",
+   "0.7",
+   "F_z≈980.0N",
+   "F_z≈1225.0N",
+   "2.6",
+   "1.9",
+   "358.1",
+   "1.3",
+   "357.5",
+   "F_z≈1347.5N",
+   "356.8",
+   "356.2",
+   "F_z≈1592.5N"
+  ]
+ }
+]

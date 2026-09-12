@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw6",
+  "quelle": "ew7",
+  "sim": "entfernungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Wort auf der Rückseite",
+  "name": "Wie groß ist das Sonnensystem?",
+  "fachwoerter_neu": [
+   "Lichtjahr"
+  ],
+  "alltag": [
+   "Auf einer Sternkarte steht hinten das Wort Lichtjahre.",
+   "Jannis fragt: Ist das die Zeit, die der Stern alt ist?",
+   "Nour meint: Das klingt eher nach einer Strecke.",
+   "Ein Lichtjahr ist der Weg des Lichts in einem Jahr."
+  ],
+  "frage": "Wie lange ist das Licht von fernen Zielen zu uns unterwegs?",
+  "predict": [
+   "Auch Licht braucht Zeit. Je weiter weg, desto länger ist es unterwegs.",
+   "Licht ist so schnell, dass es sofort da ist."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.",
+   "Lies Entfernung und Zeit in der Statuszeile ab.",
+   "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.",
+   "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Ziel",
+   "Entfernung laut Anzeige",
+   "Licht unterwegs"
+  ],
+  "tabRows": [
+   [
+    "Erde → Mond",
+    "384 000 km",
+    "1,3 Sekunden"
+   ],
+   [
+    "Erde → Sonne",
+    "",
+    ""
+   ],
+   [
+    "Erde → nächster Stern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Lichtjahr ist keine Zeit, sondern eine",
+    "loesung": "Strecke",
+    "post": ": der Weg des Lichts in einem Jahr."
+   },
+   {
+    "pre": "Je weiter das Ziel, desto",
+    "loesung": "länger",
+    "post": "ist das Licht unterwegs."
+   }
+  ],
+  "wortbank": [
+   "Strecke",
+   "länger",
+   "Lichtjahr",
+   "unterwegs",
+   "Vergangenheit"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Anzeige für Erde → Sonne?",
+   "antwort": "Die Entfernung ist etwa 150 Mio. km. Das Licht ist 8,3 Minuten unterwegs. Wir sehen die Sonne so, wie sie vor etwa 8 Minuten war."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ist ein Lichtjahr?",
+    "optionen": [
+     "Eine Zeit von einem Jahr.",
+     "Eine Strecke: der Weg des Lichts in einem Jahr.",
+     "Das Alter eines Sterns."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Je weiter ein Ziel entfernt ist, desto",
+      "loesung": "länger",
+      "post": "ist sein Licht unterwegs."
+     },
+     {
+      "pre": "Ein Blick zu fernen Sternen ist ein Blick in die",
+      "loesung": "Vergangenheit",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum sehen wir ferne Sterne so, wie sie früher waren?",
+    "satzstarter": "Das Licht der Sterne ist viele Jahre …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Vom Mond 1,3 Sekunden, von der Sonne schon 8,3 Minuten.",
+   "h2": "Beginne so: Das Licht der Sterne ist viele Jahre zu uns unterwegs. Wir sehen darum …",
+   "h3": "Fast fertige Antwort: Das Licht war viele Jahre unterwegs. Wir sehen den Stern so, wie er früher war – ein Blick in die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was ein Lichtjahr ist.",
+   "Ich kenne die Regel: weiter weg – länger unterwegs.",
+   "Ich kann den Blick in die Vergangenheit erklären."
+  ],
+  "zuhause": "Zähle bei einem Gewitter die Sekunden zwischen Blitz und Donner. Auch Schall braucht Zeit für seinen Weg – Licht ist nur viel schneller.",
+  "bildauftrag": "[BILD: links die Erde, nach rechts drei immer weiter entfernte Ziele: Mond, Sonne, Stern; von der Erde zu jedem Ziel ein Lichtband mit großer Zeit-Beschriftung „1,3 Sekunden“, „8,3 Minuten“, „gut 4 Jahre“; große Beschriftung „Licht braucht Zeit“; keine weiteren Linien; dunkler, ruhiger Weltraum-Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw6",
+  "lernziel": "Die Schülerinnen und Schüler geben an, dass ein Lichtjahr eine Strecke ist, und wenden die Regel an: Je weiter ein Ziel entfernt ist, desto länger ist sein Licht zu uns unterwegs.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Für das Gespräch: das Blitz-Donner-Beispiel aus dem Zuhause-Auftrag.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Erde → Mond: 384 000 km, das Licht ist 1,3 Sekunden unterwegs · Erde → Sonne: 150 Mio. km, 8,3 Minuten · Erde → nächster Stern: gut 4 Lichtjahre, das Licht ist gut 4 Jahre unterwegs. Dazu: Wir sehen jedes Ziel so, wie es beim Start des Lichts war.",
+  "merksatz": [
+   "Strecke",
+   "länger"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Erde → Sonne",
+    "150 Mio. km",
+    "8,3 Minuten"
+   ],
+   [
+    "Erde → nächster Stern",
+    "gut 4 Lichtjahre",
+    "gut 4 Jahre"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Ein Lichtjahr ist eine Entfernung – die Strecke, die Licht in einem Jahr zurücklegt.",
+   "typische_fehler": [
+    "Das Wort „Jahr“ im Kompositum wird als Zeitangabe gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "länger",
+    "Vergangenheit"
+   ],
+   "typische_fehler": [
+    "„weiter“ statt der Wortbank-Form „länger“.",
+    "Der Blick in die Vergangenheit wird für Einbildung gehalten."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Licht der Sterne ist viele Jahre zu uns unterwegs. Es zeigt uns den Stern so, wie er beim Start des Lichts war. Darum blicken wir in die Vergangenheit.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Das Licht war viele Jahre unterwegs – wir sehen einen früheren Zustand.",
+    "Mit der Sonnen-Zeile begründet: Schon die Sonne sehen wir 8 Minuten verspätet."
+   ],
+   "typische_fehler": [
+    "„Weil die Sterne alt sind.“",
+    "Die Laufzeit wird dem Auge statt dem Licht zugeschrieben."
+   ]
+  },
+  "hilfe3_wort": "Vergangenheit",
+  "schwache": [
+   "Nur Mond und Sonne eintragen lassen, den Stern danach.",
+   "Die großen Zahlen mit dem Finger in Dreiergruppen lesen lassen.",
+   "Das Blitz-Donner-Beispiel vor der Simulation besprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Gehe mit „weiter ▶“ bis zur Andromeda-Galaxie – etwa 2,5 Millionen Lichtjahre.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungen im Weltall. Kompetenz UF4 wie auf der Quellseite ew7. Astronomische Werte als Näherungswerte kennzeichnen; die Rechnung 60 · 300 000 km entfällt bewusst."
+ }
+}

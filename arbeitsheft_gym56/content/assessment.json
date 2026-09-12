@@ -1,0 +1,754 @@
+[
+ {
+  "id": "gym_waerme",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "THERMOMETER",
+     "tipp": "Dieses Messgerät hat eine gefärbte Flüssigkeit in einer sehr engen Röhre; wird es wärmer, klettert die Säule nach oben."
+    },
+    {
+     "wort": "TEMPERATUR",
+     "tipp": "Sie sagt dir, wie warm etwas ist; du liest sie am Thermometer in °C ab."
+    },
+    {
+     "wort": "LEITUNG",
+     "tipp": "Auf diesem Wärmeweg gibt ein Teilchen die Wärme an das nächste weiter – in einem Metalllöffel klappt das besonders gut."
+    },
+    {
+     "wort": "STRAHLUNG",
+     "tipp": "Dieser Wärmeweg braucht gar keinen Stoff und durchquert sogar den leeren Raum, so wie die Wärme der Sonne."
+    },
+    {
+     "wort": "STYROPOR",
+     "tipp": "Dieser weiße Dämmstoff schließt viele kleine Luftkammern ein; in seiner Hülle blieb das Wasser in der Messreihe am längsten heiß."
+    },
+    {
+     "wort": "TEILCHEN",
+     "tipp": "Sie bleiben bei jedem Wechsel dieselben und werden nie größer – nur ihre Ordnung, ihre Abstände und ihre Bewegung ändern sich."
+    },
+    {
+     "wort": "SCHMELZEN",
+     "tipp": "So heißt der Übergang bei 0 °C, bei dem aus hartem Eis flüssiges Wasser wird."
+    },
+    {
+     "wort": "SIEDEN",
+     "tipp": "Das macht Wasser bei 100 °C: Seine Teilchen fliegen frei und schnell als Gas davon."
+    },
+    {
+     "wort": "KONDENSIEREN",
+     "tipp": "So heißt es, wenn Wasserdampf beim Abkühlen wieder flüssig wird."
+    },
+    {
+     "wort": "ERSTARREN",
+     "tipp": "Das tut Wasser unter 0 °C: Seine Teilchen ordnen sich in ein festes Gitter."
+    },
+    {
+     "wort": "ANOMALIE",
+     "tipp": "So heißt die Besonderheit des Wassers: Bei 4 °C ist es am dichtesten, kühlt es weiter ab, dehnt es sich wieder ein wenig aus."
+    },
+    {
+     "wort": "DICHTE",
+     "tipp": "Bei Eis beträgt sie nur 917 kg/m³, bei Wasser rund 1000 kg/m³ – deshalb schwimmt Eis oben."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, warum die Säule im Thermometer beim Erwärmen steigt, und die beiden festen Vergleichspunkte 0 °C bei Eiswasser und 100 °C bei kochendem Wasser nennen.",
+    "Ich kann Temperatur und Wärme unterscheiden und begründen, dass die Wärme in einem Gefäß von der Temperatur und von der Menge abhängt.",
+    "Ich kann vorhersagen, was beim Kontakt von warmem und kaltem Wasser passiert, und die Mischtemperatur aus der Simulation angeben.",
+    "Ich kann die drei Wege der Wärme – Leitung, Strömung und Strahlung – beschreiben und zu jedem Weg ein Beispiel nennen.",
+    "Ich kann erklären, warum Styropor und Watte gut dämmen und Alufolie kaum, und gute Dämmung im Diagramm an der flachen Abkühlkurve erkennen.",
+    "Ich kann mit dem Teilchenmodell erklären, warum sich Stoffe beim Erwärmen ausdehnen, obwohl die Teilchen selbst nicht größer werden.",
+    "Ich kann vergleichen, wie stark sich Festkörper, Flüssigkeiten und Gase ausdehnen, und die Werte 12 %, 30 % und 110 % aus der Simulation richtig zuordnen.",
+    "Ich kann die Übergänge Schmelzen, Erstarren, Sieden und Kondensieren mit den Temperaturen 0 °C und 100 °C beschreiben.",
+    "Ich kann mit dem Teilchenmodell erklären, was die Teilchen in Eis, flüssigem Wasser und Wasserdampf tun und warum nasse Wischstreifen schon bei Zimmertemperatur trocknen.",
+    "Ich kann mit der Anomalie des Wassers und den Dichtewerten 999,97 kg/m³ und 917 kg/m³ erklären, warum Eis oben schwimmt und ein See im Winter von oben zufriert."
+   ],
+   "tipps": [
+    "Halte die beiden Wörter sauber auseinander: Die Temperatur liest du am Thermometer in °C ab, die Wärme ist Energie und hängt auch von der Menge ab. Frage dich bei jeder Aufgabe zuerst, welches von beiden gemeint ist.",
+    "Merke dir die drei Wärmewege mit je einem Bild aus dem Kapitel: der Löffel im heißen Tee für die Leitung, der Topf mit aufsteigendem Wasser für die Strömung, die Sonne im leeren Raum für die Strahlung.",
+    "Beim Teilchenmodell gilt immer: Die Teilchen bleiben dieselben und werden nie größer. Es ändern sich nur ihre Bewegung, ihre Abstände und ihre Ordnung – beim Erwärmen, beim Schmelzen und beim Sieden.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: 0 °C und 100 °C als feste Punkte der Skala, nach 10 min etwa 32,1 °C ohne Dämmung und 65,4 °C im Styropor, größte Dichte 999,97 kg/m³ bei 4 °C, Eis nur 917 kg/m³."
+   ],
+   "mini": [
+    {
+     "frage": "Bei welchen zwei Proben liegen die festen Vergleichspunkte der Thermometerskala, und welche Werte gehören dazu?",
+     "loesung": "Bei Eiswasser (0 °C) und bei kochendem Wasser (100 °C)."
+    },
+    {
+     "frage": "1 L Wasser mit 80 °C kommt mit 2 L Wasser mit 20 °C in Kontakt. Welche Mischtemperatur stellt sich etwa ein?",
+     "loesung": "Etwa 40 °C, denn die Wärme fließt so lange vom warmen zum kalten Wasser, bis beide dieselbe Temperatur haben."
+    },
+    {
+     "frage": "Die Statuszeile zeigt bei 100 °C: Metallstab etwa 12 %, Wasser etwa 30 %, Luft etwa 110 %. Welcher Zustand dehnt sich am stärksten aus?",
+     "loesung": "Das Gas: Die Luft dehnt sich mit etwa 110 % am stärksten aus, der Festkörper am wenigsten."
+    },
+    {
+     "frage": "Warum schwimmen Eiswürfel im Wasserglas immer oben?",
+     "loesung": "Eis hat mit 917 kg/m³ eine kleinere Dichte als Wasser mit rund 1000 kg/m³ – 1 kg Eis braucht mehr Platz als 1 kg Wasser."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Skala des Thermometers hat zwei feste Vergleichspunkte: 0 °C bei Eiswasser und 100 °C bei",
+     "loesung": "kochendem Wasser",
+     "post": "."
+    },
+    {
+     "pre": "Wie viel Wärme in einem Gefäß steckt, hängt von der Temperatur und von der",
+     "loesung": "Menge",
+     "post": "ab."
+    },
+    {
+     "pre": "Die drei Wege der Wärme heißen Leitung,",
+     "loesung": "Strömung",
+     "post": "und Strahlung."
+    },
+    {
+     "pre": "Styropor dämmt gut, weil es viel ruhende",
+     "loesung": "Luft",
+     "post": "einschließt – sie leitet Wärme sehr schlecht."
+    },
+    {
+     "pre": "Wasser hat bei",
+     "loesung": "4 °C",
+     "post": "seine größte Dichte; dieses Wasser sinkt im See ganz nach unten."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei Bens Faust zeigt das Thermometer 37 °C, bei warmem Wasser 45 °C – die Säule steht beim warmen Wasser höher.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Zwei gleich warme Gefäße enthalten immer auch gleich viel Wärme – auf die Menge kommt es nicht an.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim Kontakt fließt Wärme so lange vom Warmen zum Kalten, bis beide Gefäße dieselbe Temperatur haben.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Wärmestrahlung durchquert sogar den leeren Raum – so kommt die Wärme der Sonne zu uns.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Alufolie dämmt besonders gut, weil Metall die Wärme gut speichert.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim Sieden verwandeln sich die Wasserteilchen in Luftteilchen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Im Wintersee liegt das Wasser mit 4 °C ganz unten am Grund, und das Eis schwimmt an der Oberfläche.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Aras bringt 1 L Wasser mit 80 °C und 2 L Wasser mit 20 °C in Kontakt. Welche Mischtemperatur zeigt die Simulation danach etwa an?",
+    "optionen": [
+     "etwa 20 °C",
+     "etwa 30 °C",
+     "etwa 40 °C",
+     "etwa 50 °C"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre mit dem Teilchenmodell, was mit den Teilchen eines Eiswürfels geschieht, wenn er erst schmilzt und das Wasser anschließend zum Sieden gebracht wird.",
+    "zeilen": 5,
+    "loesung": "Im Eis sitzen die Teilchen fest in einem Gitter und zittern nur. Oberhalb von 0 °C reißen sie sich los: Das Eis schmilzt, die Teilchen bleiben dicht beieinander, werden aber beweglich. Ab 100 °C siedet das Wasser, und die Teilchen fliegen frei und schnell als Gas davon. Bei beiden Übergängen bleiben es dieselben Wasserteilchen – nur ihre Ordnung und ihre Bewegung ändern sich."
+   },
+   "transfer": {
+    "frage": "Aras behauptet: „Mein dicker Wollpullover wärmt von selbst – deshalb ist mir darin so warm.“ Beurteile seine Aussage.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nicht. Der Pullover erzeugt keine Wärme – läge er nur im Schrank, bliebe er zimmerwarm. Die Wärme kommt von Aras' Körper. Wolle schließt wie Styropor viel ruhende Luft ein, und ruhende Luft leitet Wärme sehr schlecht. Der Pullover bremst also den Wärmestrom vom warmen Körper zur kälteren Luft, genau wie die Hülle aus Watte/Wolle in der Messreihe: Dort hatte das Wasser nach 10 min noch etwa 58,3 °C, ohne Dämmung nur noch etwa 32,1 °C. Aras ist warm, weil seine eigene Wärme langsamer entweicht – nicht, weil der Pullover heizt."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Flüssigkeitsthermometer mit °C-Skala und ein digitales Thermometer zum Vergleich",
+   "Becherglas mit Eiswasser und ein Wasserkocher für heißes Wasser (bedient nur Herr Weber)",
+   "große Thermoskanne und ein kleiner Becher",
+   "Löffel aus Metall und aus Holz",
+   "Teelicht mit Halter, Metallstab und Wachskügelchen für den Leitungsversuch",
+   "hohes Glasgefäß mit warmem Wasser und etwas Tinte für den Strömungsversuch",
+   "kleiner Heizstrahler für den Strahlungsversuch (bedient nur Herr Weber)",
+   "fünf gleiche Becher mit Hüllen aus Alufolie, Papier, Watte/Wolle und Styropor sowie einer ohne Dämmung",
+   "Stoppuhr",
+   "Metallkugel mit passendem Ring aus dem Sammlungsschrank",
+   "Schraubglas mit fest sitzendem Metalldeckel",
+   "Eiswürfel, Schälchen und ein Glas Wasser",
+   "Messbecher und Waage",
+   "kariertes Papier, Geodreieck und Buntstifte für die Abkühlkurven"
+  ]
+ },
+ {
+  "id": "gym_strom",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "STROMKREIS",
+     "tipp": "Batterie, Kabel, Schalter und Lämpchen bilden ihn zusammen – nur wenn er nirgendwo offen ist, kann der Strom fließen."
+    },
+    {
+     "wort": "SCHALTPLAN",
+     "tipp": "Diese Zeichnung mit festen Zeichen kann jeder lesen und danach den Aufbau nachbauen – die Lampe ist darin ein Kreis mit einem Kreuz."
+    },
+    {
+     "wort": "ISOLATOR",
+     "tipp": "So nennt man einen Nichtleiter auch – Holz, Plastik, Glas und Gummi gehören dazu."
+    },
+    {
+     "wort": "GRAPHIT",
+     "tipp": "Aus diesem Stoff besteht die Bleistiftmine – er leitet Strom, obwohl er gar kein Metall ist."
+    },
+    {
+     "wort": "REIHENSCHALTUNG",
+     "tipp": "So heißt es, wenn alle Lampen hintereinander am einzigen Stromweg hängen – dreht man eine heraus, gehen alle aus."
+    },
+    {
+     "wort": "PARALLELSCHALTUNG",
+     "tipp": "So heißt es, wenn jede Lampe ihren eigenen Weg zur Batterie hat und voll hell leuchtet, egal was die andere macht."
+    },
+    {
+     "wort": "WAHRHEITSTABELLE",
+     "tipp": "In dieser Übersicht steht 0 für offen und 1 für geschlossen – so siehst du auf einen Blick, wann die Lampe an ist."
+    },
+    {
+     "wort": "ELEKTRONEN",
+     "tipp": "Diese winzigen Teilchen füllen jeden Kupferdraht – sie zappeln wild durcheinander, wandern aber nur im Schneckentempo voran."
+    },
+    {
+     "wort": "SICHERUNG",
+     "tipp": "Sie unterbricht den Stromkreis, sobald mehr als 16 A fließen, und schützt die Leitung so vor Überhitzung und Brand."
+    },
+    {
+     "wort": "MAGNETFELD",
+     "tipp": "So heißt der unsichtbare Bereich um jeden Magneten, den du mit kleinen Kompassnadeln aufspüren kannst."
+    },
+    {
+     "wort": "ELEMENTARMAGNETE",
+     "tipp": "Diese winzigen Magnete stecken in jedem Stück Eisen – zeigen sie alle in dieselbe Richtung, wird der Nagel selbst zum Magneten."
+    },
+    {
+     "wort": "KOMPASS",
+     "tipp": "Seine drehbare Nadel ist selbst ein kleiner Magnet – ihre rote Spitze zeigt nach Norden, solange kein anderer Magnet daneben liegt."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass das Lämpchen nur im geschlossenen Stromkreis leuchtet und dass schon eine einzige Unterbrechung den Strom im ganzen Kreis stoppt – egal, an welcher Stelle sie sitzt.",
+    "Ich kann einen Stromkreis als Schaltplan zeichnen und lesen und die festen Schaltzeichen für Batterie, Lampe, Schalter und Leitung erkennen.",
+    "Ich kann Stoffe in Leiter und Nichtleiter (Isolatoren) einteilen und begründen, warum alle Metalle und Graphit leiten, Holz, Plastik, Glas und Gummi aber nicht.",
+    "Ich kann Reihen- und Parallelschaltung an der Zahl der Stromwege unterscheiden und angeben, dass in Reihe jede Lampe schwächer leuchtet: 100 % bei einer, 50 % bei zwei, 33 % bei drei Lampen.",
+    "Ich kann vorhersagen, was mit den anderen Lampen passiert, wenn eine Lampe herausgedreht wird – in der Reihenschaltung gehen alle aus, in der Parallelschaltung leuchtet die andere voll weiter.",
+    "Ich kann die UND-Schaltung und die ODER-Schaltung mit einer Wahrheitstabelle aus 0 und 1 beschreiben: Bei UND ist die Lampe nur in 1 von 4 Zeilen an, bei ODER in 3 von 4.",
+    "Ich kann die vier Wirkungen des elektrischen Stroms nennen – Licht, Wärme, magnetische Wirkung und Bewegung – und jedem Gerät seine Energieumwandlung zuordnen.",
+    "Ich kann mit dem Gartenschlauch-Vergleich erklären, warum die Lampe sofort leuchtet, obwohl die Elektronen nur mit 0,0490 mm/s wandern: Der Anstoß läuft mit rund 200 000 km/s durch die Leitung.",
+    "Ich kann begründen, dass sich die Ströme mehrerer Geräte an einer Steckdose addieren und die Sicherung über der Grenze von 16 A auslöst, bevor die Leitung heiß wird.",
+    "Ich kann beschreiben, was ein Magnet anzieht (nur Stoffe mit Eisen, Nickel oder Kobalt), wie das Magnetfeld mit Feldlinien sichtbar wird, wie geordnete Elementarmagnete einen Nagel zum Magneten machen und warum die Kompassnadel nach Norden zeigt."
+   ],
+   "tipps": [
+    "Stelle dir bei jeder Schaltungsaufgabe zuerst die Prüffrage: Wie viele Wege hat der Strom? Ein einziger Weg bedeutet Reihe – alle Lampen hängen zusammen. Eigene Wege bedeuten parallel – jede Lampe leuchtet für sich.",
+    "Lerne die Zahlenreihen des Kapitels als feste Ketten: Helligkeit je Lampe 100 %, 50 %, 33 % – und beim Kraftmesser 15,0 – 3,8 – 0,9 – 0,4 Skalenteile für 2, 4, 8 und 12 cm Abstand.",
+    "Frage bei Magnetaufgaben immer zuerst nach dem Stoff: Enthält er Eisen, Nickel oder Kobalt? Metall allein genügt nicht – die Alu-Dose und der Kupfer-Draht bleiben liegen, obwohl beide aus Metall sind.",
+    "Schreibe die wichtigsten Zahlen auf einen Zettel und prüfe sie an den Seiten nach: 16 A Grenze der Sicherung, 230 V Netzspannung, 0,0490 mm/s Wandern der Elektronen bei der Leselampe, 5,7 Stunden für einen Meter Kabel."
+   ],
+   "mini": [
+    {
+     "frage": "Lina stellt den Schieberegler auf 3 Lampen in Reihe. Welche Helligkeit je Lampe zeigt die Simulation?",
+     "loesung": "33 %, denn die drei Lampen teilen sich die Batterie – jede einzelne leuchtet schwächer, je mehr es sind."
+    },
+    {
+     "frage": "Bei ODER · parallel steht S1 = 1 und S2 = 0. Was zeigt die Anzeige unter der Lampe?",
+     "loesung": "Lampe = 1 (leuchtet), denn bei ODER genügt schon 1 geschlossener Schalter von 2 – der Strom nimmt den geschlossenen Zweig."
+    },
+    {
+     "frage": "Jedes Gerät zieht 6 A. Aras schließt drei Geräte an dieselbe Leiste an. Was macht die Sicherung?",
+     "loesung": "Die Ströme addieren sich zu 18 A – mehr, als die Sicherung mit 16 A erlaubt. Sie löst aus und unterbricht den Kreis, alle Geräte gehen aus."
+    },
+    {
+     "frage": "Der Kraftmesser zeigt bei 2 cm Abstand 15,0 Skalenteile. Was zeigt er bei 4 cm?",
+     "loesung": "Nur noch 3,8 Skalenteile – beim doppelten Abstand bleibt rund ein Viertel der Kraft übrig, nicht die Hälfte."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Das Lämpchen leuchtet nur, wenn der Stromkreis",
+     "loesung": "geschlossen",
+     "post": "ist – schon eine einzige Lücke stoppt den Strom im ganzen Kreis."
+    },
+    {
+     "pre": "Stoffe, die Strom hindurchlassen, heißen",
+     "loesung": "Leiter",
+     "post": "; Holz, Plastik, Glas und Gummi sind Nichtleiter."
+    },
+    {
+     "pre": "In der Reihenschaltung hat der Strom nur einen einzigen Weg – in der",
+     "loesung": "Parallelschaltung",
+     "post": "hat jede Lampe ihren eigenen."
+    },
+    {
+     "pre": "Steigt der Strom über die Grenze von",
+     "loesung": "16 A",
+     "post": ", löst die Sicherung aus und unterbricht den Stromkreis."
+    },
+    {
+     "pre": "Ein Magnet zieht nur Stoffe an, die Eisen, Nickel oder",
+     "loesung": "Kobalt",
+     "post": "enthalten – Stahl gehört dazu, weil er zum größten Teil aus Eisen besteht."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei 2 Lampen in Reihe zeigt die Simulation eine Helligkeit je Lampe von 50 %.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Lampe direkt an der Batterie leuchtet am hellsten, denn sie bekommt den Strom zuerst und verbraucht einen Teil davon.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei der ODER-Schaltung ist die Lampe in 3 von 4 Zeilen der Wahrheitstabelle an.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Elektronen sausen mit Lichtgeschwindigkeit durch das Kabel – nur deshalb geht die Lampe sofort an.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Spule (Elektromagnet) zeigt allein die magnetische Wirkung und lenkt im Bild eine Kompassnadel ab.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Beim doppelten Abstand zwischen zwei Magneten bleibt genau die Hälfte der Kraft übrig.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Sägt man einen magnetisierten Nagel durch, hat jedes der beiden Stücke wieder einen Nordpol und einen Südpol.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "An der Steckdosenleiste zieht jedes Gerät 6 A, die Sicherung hat die Grenze von 16 A. Wie viele Geräte laufen gerade noch sicher, ohne dass die Sicherung auslöst?",
+    "optionen": [
+     "1 Gerät",
+     "2 Geräte",
+     "3 Geräte",
+     "4 Geräte"
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Bei Omas alter Lichterkette gehen alle Lämpchen aus, sobald ein einziges kaputt ist – in der Wohnung brennt die Küchenlampe aber weiter, obwohl die Flurlampe ausgeschaltet ist. Erkläre beide Beobachtungen mit den Stromwegen.",
+    "zeilen": 5,
+    "loesung": "Bei der alten Lichterkette hängen alle Lämpchen hintereinander in einem einzigen Stromkreis – das ist eine Reihenschaltung. Der Strom hat nur diesen einen Weg. Ein kaputtes Lämpchen reißt in den Weg eine Lücke, dann kann nirgendwo mehr Strom fließen, und alle Lämpchen bleiben dunkel. Die Lampen in der Wohnung sind dagegen parallel geschaltet: Jede Lampe bildet mit der Stromquelle ihren eigenen geschlossenen Kreis und hat ihren eigenen Schalter. Schaltet man die Flurlampe aus, wird nur ihr eigener Weg unterbrochen. Der Kreis der Küchenlampe bleibt geschlossen, deshalb leuchtet sie voll weiter."
+   },
+   "transfer": {
+    "frage": "Aras behauptet: „Ein Magnet zieht alles an, was aus Metall ist – und je weiter weg etwas ist, desto schwächer zieht er, ganz gleichmäßig.“ Beurteile beide Teile der Aussage mit Beispielen und Messwerten aus den Simulationen.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Erstens zieht ein Magnet nur Stoffe an, die Eisen, Nickel oder Kobalt enthalten. Die Alu-Dose und der Kupfer-Draht bleiben liegen, obwohl Aluminium und Kupfer Metalle sind. Die Büroklammer aus Stahl springt dagegen zum Magneten, weil Stahl zum größten Teil aus Eisen besteht. Zweitens nimmt die Kraft zwar mit dem Abstand ab, aber nicht gleichmäßig: Bei 2 cm zeigt der Kraftmesser 15,0 Skalenteile, beim doppelten Abstand von 4 cm nur noch 3,8 – es bleibt also rund ein Viertel übrig, nicht die Hälfte. Bei 12 cm sind es nur noch 0,4 Skalenteile. Deshalb spürt man an der Schranktür lange gar nichts, und erst kurz vor dem Rahmen reißt es die Tür kräftig zu."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Flachbatterie, Kabel mit Klemmen, Lämpchen mit Fassung und ein Schalter",
+   "zusätzliche Lämpchen und Fassungen für Reihen- und Parallelschaltung",
+   "Zettel mit den Schaltzeichen aus der Kiste und kariertes Papier",
+   "Prüfkiste mit neun Gegenständen: Büroklammer, Nagel, Münze, Alufolie, Bleistiftmine, Holz-Stab, Plastik-Lineal, Glas-Stab und Radiergummi",
+   "zwei Bretter mit je zwei Schaltern und einer Lampe für die UND- und die ODER-Schaltung",
+   "Glühlampe, Heizdraht, Spule (Elektromagnet) und ein kleiner Elektromotor",
+   "zwei Stabmagnete mit Halter, ein Kraftmesser und ein Lineal mit Zentimeter-Skala",
+   "Beutel mit Magneten und Testgegenstände: Eisen-Nagel, Büroklammer aus Stahl, Nickel-Münze, Alu-Dose und Kupfer-Draht",
+   "Prüfkompass oder mehrere kleine Kompassnadeln für das Feldlinien-Bild",
+   "Eisennagel und Büroklammern zum Magnetisieren",
+   "ein Blatt Papier für den Magnet-Test unter dem Papier",
+   "Kompass in der Dose mit rot markierter Nadelspitze"
+  ]
+ },
+ {
+  "id": "gym_schall",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "SCHALLQUELLE",
+     "tipp": "So nennt man jeden Gegenstand, der schwingt und dabei einen Ton aussendet – das Gummiband, das Trommelfell und deine Stimmbänder."
+    },
+    {
+     "wort": "SCHWINGUNG",
+     "tipp": "Das sehr schnelle Hin und Her eines Gegenstands – oft so schnell, dass er verschwommen aussieht."
+    },
+    {
+     "wort": "FREQUENZ",
+     "tipp": "Diese Zahl verrät, wie oft etwas in jeder Sekunde schwingt – je größer sie ist, desto höher klingt der Ton."
+    },
+    {
+     "wort": "HERTZ",
+     "tipp": "Die Einheit der Frequenz, kurz Hz – 100 davon bedeuten 100 Schwingungen in jeder Sekunde."
+    },
+    {
+     "wort": "AMPLITUDE",
+     "tipp": "Der größte Ausschlag einer Schwingung – ist er groß, wird der Ton laut, die Tonhöhe ändert sich dabei nicht."
+    },
+    {
+     "wort": "DEZIBEL",
+     "tipp": "In dieser Einheit, kurz dB, gibt man an, wie laut ein Geräusch ist."
+    },
+    {
+     "wort": "VAKUUM",
+     "tipp": "So heißt der leere Raum ohne Teilchen, in dem keine Schwingung weitergegeben werden kann – im Weltall bliebe eine Glocke stumm."
+    },
+    {
+     "wort": "HALL",
+     "tipp": "Schall, den eine weit entfernte, harte Wand zurückwirft und der deshalb etwas später bei dir ankommt – wie in der Turnhalle."
+    },
+    {
+     "wort": "VERDICHTUNG",
+     "tipp": "An diesen Stellen drängen sich die Luftteilchen beim Schall zusammen – bei 100 Hz liegen sie 3,43 m auseinander, bei 2000 Hz nur 0,17 m."
+    },
+    {
+     "wort": "OHRMUSCHEL",
+     "tipp": "Sie sammelt den Schall ein und leitet ihn in den Gehörgang – hältst du die Hände wie Schalen dahinter, hörst du leise Geräusche besser."
+    },
+    {
+     "wort": "TROMMELFELL",
+     "tipp": "Das dünne Häutchen in deinem Ohr, das im Takt des Schalls schwingt – bei lauten Tönen stärker als bei leisen."
+    },
+    {
+     "wort": "SCHNECKE",
+     "tipp": "Dieses gewundene Teil im Ohr macht aus der Schwingung Signale für den Hörnerv."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass ein Ton nur entsteht, solange ein Gegenstand schwingt, und Beispiele für Schallquellen nennen.",
+    "Ich kann mit der Frequenz in Hertz begründen, warum ein Ton hoch oder tief klingt, und die Werte 100 Hz und 800 Hz den Tonhöhen zuordnen.",
+    "Ich kann mit der Amplitude erklären, warum ein Ton laut oder leise ist, und weiß, dass die Lautstärke in Dezibel gemessen wird.",
+    "Ich kann beschreiben, wie die Teilchen eines Stoffes die Schwingung weitergeben, und die Schallgeschwindigkeiten in Luft und Wasser vergleichen.",
+    "Ich kann begründen, warum im Vakuum kein Schall ankommt.",
+    "Ich kann mit der Schallgeschwindigkeit von 343 m/s erklären, warum es in großen Räumen hallt und in kleinen nicht.",
+    "Ich kann die Grenze von 85 dB nennen und die vier Wege gegen Lärm aufzählen und vergleichen.",
+    "Ich kann die sechs Stationen des Ohrs in der richtigen Reihenfolge nennen und das Ohr als Empfänger des Schalls einordnen.",
+    "Ich kann beschreiben, wie das Trommelfell bei leisen und bei lauten Tönen schwingt.",
+    "Ich kann mit dem Hörbereich von 20 Hz bis 20 000 Hz erklären, warum ein Hund die Hundepfeife hört und ein Mensch nicht."
+   ],
+   "tipps": [
+    "Halte die beiden Stellschrauben eines Tons immer auseinander: Die Frequenz macht ihn hoch oder tief, die Amplitude macht ihn laut oder leise. Festes Zupfen ändert nur die Amplitude – niemals die Tonhöhe.",
+    "Merke dir die Kette des Kapitels: Ohne Schwingung kein Ton, ohne Stoff kein Schall, ohne Ohr kein Hören. Prüfe bei jeder Aufgabe, welches Glied der Kette gerade fehlt.",
+    "Lerne die sechs Stationen des Ohrs als feste Reihe: Ohrmuschel – Gehörgang – Trommelfell – Gehörknöchelchen – Schnecke – Hörnerv. Und denke daran: Erst das Gehirn hört den Ton.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: 343 m/s in Luft, etwa 1500 m/s in Wasser, 85 dB als Lärmgrenze, Hörbereich von 20 Hz bis 20 000 Hz."
+   ],
+   "mini": [
+    {
+     "frage": "Eine Saite schwingt 500-mal in jeder Sekunde. Welche Frequenz hat ihr Ton – und klingt er höher oder tiefer als ein Ton mit 100 Hz?",
+     "loesung": "500 Hz, denn die Frequenz zählt die Schwingungen pro Sekunde. Je größer die Frequenz, desto höher der Ton – 500 Hz klingt also höher als 100 Hz."
+    },
+    {
+     "frage": "Der Frequenzregler steht auf 1000 Hz. Wie weit liegen die Verdichtungen auseinander, und wie schnell ist der Schall?",
+     "loesung": "Die Verdichtungen rücken auf 0,34 m zusammen. Die Geschwindigkeit bleibt c = 343 m/s – sie ist bei jeder Frequenz gleich."
+    },
+    {
+     "frage": "Die Statuszeile zeigt: 76 dB am Ohr. Ist das auf Dauer gefährlich für das Gehör?",
+     "loesung": "Nein, gefährlich wird es erst ab etwa 85 dB – dann kann Schall auf Dauer das Gehör schädigen."
+    },
+    {
+     "frage": "Eine Hundepfeife schwingt 25 000-mal in jeder Sekunde. Warum hörst du sie nicht?",
+     "loesung": "Ihre Frequenz beträgt 25 000 Hz. Menschen hören nur Töne bis etwa 20 000 Hz, darum bleibt der Pfiff für dich stumm – für den Hund nicht."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Ein Ton entsteht nur, solange ein Gegenstand",
+     "loesung": "schwingt",
+     "post": "– er bewegt sich dabei ganz schnell hin und her."
+    },
+    {
+     "pre": "Die Zahl der Schwingungen pro Sekunde heißt",
+     "loesung": "Frequenz",
+     "post": "; man misst sie in Hertz (Hz)."
+    },
+    {
+     "pre": "Der größte Ausschlag einer Schwingung heißt",
+     "loesung": "Amplitude",
+     "post": "– je größer sie ist, desto lauter der Ton."
+    },
+    {
+     "pre": "Schall braucht einen Stoff: Im",
+     "loesung": "Vakuum",
+     "post": "gibt es keine Teilchen, darum kommt dort kein Ton an."
+    },
+    {
+     "pre": "Das dünne Häutchen im Ohr, das im Takt des Schalls schwingt, heißt",
+     "loesung": "Trommelfell",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Wie fest man eine Saite zupft, ändert ihre Tonhöhe nicht.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Hohe Töne sind in Luft schneller unterwegs als tiefe – deshalb kommt ihr Schall zuerst an.",
+     "stimmt": false
+    },
+    {
+     "aussage": "In Wasser breitet sich der Schall mit etwa 1500 m/s aus, viel schneller als in Luft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ab etwa 85 dB kann Lärm auf Dauer das Gehör schädigen, auch wenn dabei nichts wehtut.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der Schallschutz (Absorption) senkt die Zahl am Ohr stärker als der Gehörschutz.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Fledermäuse hören sogar Töne um 100 000 Hz.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei 800 Hz liegen die Wellenberge weiter auseinander als bei 100 Hz.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Emmas Glas schwingt mit 300 Hz. Wie viele Schwingungen macht es in 2 Sekunden?",
+    "optionen": [
+     "150 Schwingungen",
+     "300 Schwingungen",
+     "302 Schwingungen",
+     "600 Schwingungen"
+    ],
+    "richtig": 3
+   },
+   "offen": {
+    "frage": "Erkläre mit Frequenz und Amplitude, worin sich ein tiefer, lauter Ton von einem hohen, leisen Ton unterscheidet – und was du dabei an der Schwingungskurve auf dem Bildschirm siehst.",
+    "zeilen": 5,
+    "loesung": "Ein tiefer, lauter Ton hat eine kleine Frequenz und eine große Amplitude: Die Schallquelle schwingt langsam, schlägt aber weit aus. Auf dem Bildschirm liegen die Wellenberge weit auseinander, und die Kurve schlägt hoch aus. Ein hoher, leiser Ton ist genau das Gegenteil: große Frequenz, kleine Amplitude – die Wellenberge rücken dicht zusammen, und die Kurve bleibt flach. Tonhöhe und Lautstärke lassen sich also getrennt voneinander verstellen."
+   },
+   "transfer": {
+    "frage": "Im Kino explodiert ein Raumschiff im Weltall mit lautem Krachen. Nach dem Film sagt Aras: „Beim Konzert stelle ich mich direkt vor die Lautsprecherbox – solange meine Ohren nicht wehtun, passiert ihnen auch nichts.“ Beurteile beide Dinge: den Filmton und Aras' Aussage.",
+    "zeilen": 6,
+    "loesung": "Der Filmton ist physikalisch falsch: Im Weltall ist es wie im Vakuum der Simulation – es gibt keine Teilchen, die die Schwingung weitergeben könnten. Die Explosion wäre in Wirklichkeit stumm, das Krachen ist nur für den Kinosaal dazugemischt. Auch Aras' Aussage stimmt nicht: Ab etwa 85 dB kann Schall auf Dauer das Gehör schädigen, und ein Schaden am Gehör tut meist gar nicht weh – er bleibt aber für immer. Direkt vor der Box kommen besonders viele dB am Ohr an. Besser wäre es, den Abstand zu vergrößern – in der Simulation sinkt die Zahl am Ohr so von 94 dB auf 76 dB – oder einen Gehörschutz zu tragen."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Keksdose mit gespanntem Gummiband",
+   "Saitenbrett mit dicken und dünnen Saiten",
+   "kleine Trommel mit Schlägel und ein Tamburin",
+   "Stimmgabel",
+   "Topf mit gespannter Folie und Reiskörnern",
+   "drei gleiche Gläser, Wasserkrug und Löffel",
+   "aufklappbares Ohrmodell",
+   "Kapselgehörschutz aus dem Sammlungsschrank",
+   "Maßband und Stoppuhr",
+   "ein Stück Teppich und eine Fliese zum Vergleichen des Nachklangs",
+   "zwei Becher und eine lange Schnur für das Schnurtelefon"
+  ]
+ },
+ {
+  "id": "gym_licht",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "GERADLINIG",
+     "tipp": "So breitet sich Licht immer aus: Es läuft geradeaus weiter und kann nicht um die Ecke laufen."
+    },
+    {
+     "wort": "LICHTSTRAHL",
+     "tipp": "Als diese gerade Linie zeichnen wir den Weg des Lichts in unser Heft."
+    },
+    {
+     "wort": "LICHTQUELLE",
+     "tipp": "So nennt man Kerze, Taschenlampe und Sonne, weil sie selbst leuchten – wir sehen sie sogar im Dunkeln."
+    },
+    {
+     "wort": "GERICHTET",
+     "tipp": "So wirft der Spiegel das Licht zurück: geordnet in eine einzige Richtung. Nur deshalb zeigt er ein Spiegelbild."
+    },
+    {
+     "wort": "ABSORBIEREN",
+     "tipp": "Das Fachwort dafür, dass eine dunkle Fläche das Licht schluckt – das geschluckte Licht macht sie wärmer."
+    },
+    {
+     "wort": "REFLEKTIEREN",
+     "tipp": "Das Fachwort dafür, dass eine helle oder blanke Fläche das Licht zurückwirft und deshalb kühl bleibt."
+    },
+    {
+     "wort": "LICHTABGEWANDT",
+     "tipp": "So heißt die Seite des Gegenstands, die von der Lampe wegzeigt – genau dort liegt immer der Schatten."
+    },
+    {
+     "wort": "KERNSCHATTEN",
+     "tipp": "In diesen tiefdunklen Bereich gelangt gar kein Licht der Quelle."
+    },
+    {
+     "wort": "HALBSCHATTEN",
+     "tipp": "Der blassgraue Saum am Rand des Schattens – in ihn fällt noch Licht von einem Teil der Quelle."
+    },
+    {
+     "wort": "LOCHKAMERA",
+     "tipp": "Eine Dose mit einem winzigen Loch vorn, die ein umgekehrtes Bild auf das Papier hinten malt."
+    },
+    {
+     "wort": "SPEKTRUM",
+     "tipp": "Das farbige Band von Violett bis Rot, das ein Prisma aus weißem Sonnenlicht an die Wand malt."
+    },
+    {
+     "wort": "INFRAROT",
+     "tipp": "Das unsichtbare Licht hinter dem roten Rand – bei 940 nm zeigt das Thermometer dort 90 % Erwärmung."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass sich Licht geradlinig ausbreitet, und mit den beiden Blenden begründen, warum es nur ankommt, wenn Lampe und beide Löcher auf einer geraden Linie liegen.",
+    "Ich kann begründen, warum wir Lichtquellen wie die Kerze sogar im Dunkeln sehen, andere Dinge aber nur, wenn Licht auf sie fällt und von ihnen ins Auge zurückgeworfen wird.",
+    "Ich kann mit den Prozentzahlen von Spiegel, Fensterglas, schwarzem und weißem Papier erklären, warum nur der Spiegel ein Spiegelbild zeigt.",
+    "Ich kann mit den Endtemperaturen von 63 °C bis 26 °C erklären, warum dunkle Flächen in der Sonne heißer werden als helle und blanke.",
+    "Ich kann angeben, dass der Schatten auf der lichtabgewandten Seite liegt, und vorhersagen, wohin er wandert, wenn die Lampe bewegt wird.",
+    "Ich kann vorhersagen, wie sich die Schattengröße B ändert, wenn die Bretterwand weiter wegrückt oder der Pappwolf näher an die Lampe kommt.",
+    "Ich kann Kernschatten und Halbschatten unterscheiden und erklären, warum ein Halbschatten nur bei einer ausgedehnten Lichtquelle entsteht.",
+    "Ich kann erklären, warum das Bild der Lochkamera auf dem Kopf steht, und angeben, wie Bildweite und Lochgröße das Bild verändern.",
+    "Ich kann beschreiben, dass hinter dem roten Rand des Spektrums das Infrarot liegt und vor dem violetten Rand das Ultraviolett – und wie man beide nachweist.",
+    "Ich kann mit den Messwerten der Stationen Behauptungen prüfen, zum Beispiel mit den 80 % beim weißen Papier oder den 90 % Erwärmung bei 940 nm."
+   ],
+   "tipps": [
+    "Zeichne bei jeder Schattenaufgabe zuerst die geraden Lichtstrahlen von der Lampe an den Kanten des Gegenstands vorbei. Dann siehst du sofort: Der Schatten liegt auf der lichtabgewandten Seite und wandert in die Gegenrichtung der Lampe.",
+    "Frage dich bei jeder Fläche, was sie mit dem Licht macht: zurückwerfen, hindurchlassen oder schlucken. Der Spiegel wirft zurück, das Fensterglas lässt hindurch, das schwarze Papier schluckt – und nur das geschluckte Licht macht warm.",
+    "Merke dir für das Spiegelbild: Es zählt nicht, wie viel Licht zurückkommt, sondern wie geordnet. Weißes Papier wirft 80 % zurück und zeigt trotzdem kein Bild, weil es das Licht nach allen Seiten streut.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Stationen nach: +18 und +36 bei den Blenden, 63 °C bei Schwarz, B = 6,0 cm bei b = 30 cm, 90 % Erwärmung bei 940 nm."
+   ],
+   "mini": [
+    {
+     "frage": "Das Loch der 1. Blende steht auf +18. Auf welche Zahl musst du das Loch der 2. Blende stellen, damit das Licht durchkommt?",
+     "loesung": "Auf +36, denn die 2. Blende steht doppelt so weit von der Lampe entfernt wie die 1. Blende – deshalb passt immer die doppelte Zahl."
+    },
+    {
+     "frage": "Die Bretterwand rückt von b = 30 cm auf b = 60 cm. Wie hoch wird der Schatten des Pappwolfs?",
+     "loesung": "12,0 cm statt 6,0 cm – der doppelte Wandabstand macht den Schatten genau doppelt so hoch."
+    },
+    {
+     "frage": "Welche der vier Flächen bleibt in derselben Sonne am kühlsten, und welche Endtemperatur erreicht sie?",
+     "loesung": "Die silberne (blanke) Fläche: Sie bleibt bei 26 °C, weil sie das meiste Licht reflektiert."
+    },
+    {
+     "frage": "Woran erkennst du in der Simulation, dass bei 940 nm Licht ankommt, obwohl das Auge dort nichts sieht?",
+     "loesung": "Am Thermometer: Es zeigt bei 940 nm eine Erwärmung von 90 % – mehr als beim letzten Rot mit 62 %."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Licht breitet sich",
+     "loesung": "geradlinig",
+     "post": "aus – darum kommt es nur an, wenn Lampe und beide Löcher auf einer geraden Linie liegen."
+    },
+    {
+     "pre": "Kerze, Taschenlampe und Sonne leuchten selbst – sie sind",
+     "loesung": "Lichtquellen",
+     "post": "."
+    },
+    {
+     "pre": "Der Schatten liegt immer auf der",
+     "loesung": "lichtabgewandten",
+     "post": "Seite des Gegenstands."
+    },
+    {
+     "pre": "Der blassgraue Saum am Rand des Schattens heißt",
+     "loesung": "Halbschatten",
+     "post": "; in ihn fällt noch Licht von einem Teil der Quelle."
+    },
+    {
+     "pre": "Hinter dem roten Rand des Spektrums liegt das unsichtbare",
+     "loesung": "Infrarot",
+     "post": "; es erwärmt das Thermometer am stärksten."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Weißes Papier wirft 80 % des Lichts zurück und zeigt trotzdem kein Spiegelbild.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die schwarze Fläche bleibt in der Sonne bei 26 °C, die silberne wird 63 °C heiß.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Wird der Gegenstand entfernt, entsteht kein Schatten, denn nichts blockiert das Licht.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Rückt die Bretterwand von b = 30 cm auf b = 90 cm, wächst der Schatten von 6,0 cm auf 18,0 cm.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei einer punktförmigen Lichtquelle hat der Schatten einen breiten Halbschatten.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein großes Loch macht das Bild der Lochkamera scharf, aber dunkel.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei 365 nm sieht das Auge nichts – nachweisen kann man dieses Licht mit Waschmittel, das unter Schwarzlicht leuchtet.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Die Bretterwand steht bei b = 30 cm, die Anzeige zeigt die Schattengröße B = 6,0 cm. Lina schiebt die Wand auf b = 90 cm. Welche Schattengröße zeigt die Anzeige jetzt?",
+    "optionen": [
+     "6,0 cm",
+     "12,0 cm",
+     "18,0 cm",
+     "24,0 cm"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum das Bild der Lochkamera auf dem Kopf steht, und beschreibe, was mit dem Bild passiert, wenn Lina das Loch größer macht.",
+    "zeilen": 5,
+    "loesung": "Vom oberen Ende des Gegenstands läuft ein Lichtstrahl durch das Loch schräg nach unten, vom unteren Ende einer schräg nach oben. Im Loch kreuzen sich die Strahlen, darum landet auf dem Schirm oben, was am Gegenstand unten ist – das Bild steht auf dem Kopf. Macht Lina das Loch größer, wird das Bild zwar heller, aber unscharf: Von jedem Punkt des Gegenstands treffen dann viele Strahlen auf verschiedene Stellen des Schirms, und das Bild verschmiert. Nur ein kleines Loch lässt ein dünnes Strahlenbündel durch und macht das Bild scharf."
+   },
+   "transfer": {
+    "frage": "Aras behauptet: „Der Mond ist eine Lichtquelle – und mein weißes T-Shirt müsste besser spiegeln als der dunkle Spiegel, weil es viel heller aussieht.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Der Mond leuchtet nicht selbst, er ist keine Lichtquelle: Die Sonne beleuchtet ihn, und er wirft dieses Licht ins Auge zurück – so wie das Zimmerlicht die Tüte Gummibärchen sichtbar macht. Beim Spiegeln kommt es nicht auf die Helligkeit an, sondern darauf, wie geordnet eine Fläche das Licht zurückwirft. Weißer Stoff ist wie weißes Papier winzig rau: Er wirft zwar 80 % des Lichts zurück, streut es aber nach allen Seiten – darum sieht er hell aus, zeigt aber kein Bild. Der Spiegel wirft 95 % gerichtet in eine einzige Richtung zurück, und nur so entsteht ein Spiegelbild."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "zwei Taschenlampen",
+   "zwei Pappstreifen mit kleinem Loch als Blenden",
+   "weißer Schirm und die Bretterwand als Bühne",
+   "Kerze mit Halter",
+   "Tüte Gummibärchen als Testgegenstand",
+   "kleiner Spiegel",
+   "weißes und schwarzes Tonpapier und eine Glasscheibe",
+   "glatte und zerknitterte Alufolie",
+   "vier Deckel oder Platten: schwarz, dunkelrot, weiß und silber (blank)",
+   "Thermometer",
+   "Pappfigur und Pappwolf für das Schattenspiel",
+   "Blechdose mit winzigem Loch und Butterbrotpapier",
+   "dreikantiger Glasklotz (Prisma)",
+   "Fernbedienung und Handykamera",
+   "Maßband und Lineal"
+  ]
+ }
+]

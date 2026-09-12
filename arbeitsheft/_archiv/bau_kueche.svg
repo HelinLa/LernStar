@@ -1,0 +1,630 @@
+<!-- ============================================================
+     BAUTEILE: Kueche - Becher, Kerze, Topf, Glas
+     Fragment ohne <svg>-Wurzel. Materialien kommen aus _stil.svg.
+     Eigene Verlaeufe/Filter dieser Datei beginnen mit b_.
+     ============================================================ -->
+
+<!-- ===== eigene Verlaeufe ===== -->
+<linearGradient id="b_email" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#A5B2BB"/><stop offset="0.09" stop-color="#DFE7EB"/>
+  <stop offset="0.32" stop-color="#FCFDFD"/><stop offset="0.60" stop-color="#E6EDEF"/>
+  <stop offset="0.85" stop-color="#B4C0C7"/><stop offset="1" stop-color="#8B99A3"/>
+</linearGradient>
+<linearGradient id="b_blau" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#152F53"/><stop offset="0.20" stop-color="#3C74BC"/>
+  <stop offset="0.44" stop-color="#5089D1"/><stop offset="0.76" stop-color="#28548E"/>
+  <stop offset="1" stop-color="#122A4C"/>
+</linearGradient>
+<radialGradient id="b_innen" cx="0.40" cy="0.26" r="0.86">
+  <stop offset="0" stop-color="#66594B"/><stop offset="0.48" stop-color="#3A2F25"/>
+  <stop offset="1" stop-color="#191410"/>
+</radialGradient>
+<radialGradient id="b_innenK" cx="0.40" cy="0.26" r="0.86">
+  <stop offset="0" stop-color="#5A6572"/><stop offset="0.46" stop-color="#2F3742"/>
+  <stop offset="1" stop-color="#12161C"/>
+</radialGradient>
+<radialGradient id="b_tee" cx="0.34" cy="0.26" r="0.88">
+  <stop offset="0" stop-color="#C4761E"/><stop offset="0.44" stop-color="#8B4611"/>
+  <stop offset="1" stop-color="#43200A"/>
+</radialGradient>
+<linearGradient id="b_holzS" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFE7BE" stop-opacity="0.34"/>
+  <stop offset="0.40" stop-color="#8A5E24" stop-opacity="0"/>
+  <stop offset="1" stop-color="#331F06" stop-opacity="0.48"/>
+</linearGradient>
+<linearGradient id="b_russ" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#241E17" stop-opacity="0"/>
+  <stop offset="0.5" stop-color="#241E17" stop-opacity="0.42"/>
+  <stop offset="1" stop-color="#100D0A" stop-opacity="0.82"/>
+</linearGradient>
+<linearGradient id="b_russO" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#100D0A" stop-opacity="0.78"/>
+  <stop offset="0.5" stop-color="#241E17" stop-opacity="0.38"/>
+  <stop offset="1" stop-color="#241E17" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="b_pet" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.62"/>
+  <stop offset="0.13" stop-color="#DDECEF" stop-opacity="0.26"/>
+  <stop offset="0.52" stop-color="#BCD8DE" stop-opacity="0.22"/>
+  <stop offset="0.83" stop-color="#87ACB4" stop-opacity="0.34"/>
+  <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.55"/>
+</linearGradient>
+<linearGradient id="b_kappe" x1="0" y1="0" x2="0.35" y2="1">
+  <stop offset="0" stop-color="#6EA8D8"/><stop offset="0.38" stop-color="#3671AC"/>
+  <stop offset="0.8" stop-color="#204F7D"/><stop offset="1" stop-color="#2E5F91"/>
+</linearGradient>
+<linearGradient id="b_gruenglas" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#E6F5E7" stop-opacity="0.80"/>
+  <stop offset="0.14" stop-color="#A8CEAE" stop-opacity="0.34"/>
+  <stop offset="0.58" stop-color="#82AE8B" stop-opacity="0.24"/>
+  <stop offset="0.88" stop-color="#5E8A69" stop-opacity="0.34"/>
+  <stop offset="1" stop-color="#DCEFDD" stop-opacity="0.70"/>
+</linearGradient>
+<linearGradient id="b_aufstrich" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#7A4318"/><stop offset="0.38" stop-color="#50260D"/>
+  <stop offset="1" stop-color="#1F1005"/>
+</linearGradient>
+<linearGradient id="b_wachs" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#DDD5C2"/><stop offset="0.20" stop-color="#FAF6EC"/>
+  <stop offset="0.58" stop-color="#F1E9D9"/><stop offset="1" stop-color="#C7BCA5"/>
+</linearGradient>
+<linearGradient id="b_weissK" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#BFC6C2"/><stop offset="0.14" stop-color="#F5F7F3"/>
+  <stop offset="0.50" stop-color="#FDFEFB"/><stop offset="0.82" stop-color="#DBE0D9"/>
+  <stop offset="1" stop-color="#A3ACA5"/>
+</linearGradient>
+<linearGradient id="b_rot" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#B01C15"/><stop offset="0.38" stop-color="#F04024"/>
+  <stop offset="0.72" stop-color="#D2261A"/><stop offset="1" stop-color="#7C100D"/>
+</linearGradient>
+
+<!-- ===== eigene Filter ===== -->
+<filter id="b_sprenkel" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="1.25" numOctaves="3" seed="19" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.17  0 0 0 0 0.20  0 0 0 0 0.25  0 0 0 1.15 -0.60"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+<filter id="b_dampfW" x="-90%" y="-90%" width="280%" height="280%">
+  <feGaussianBlur stdDeviation="5"/>
+</filter>
+<filter id="b_dampfB" x="-90%" y="-90%" width="280%" height="280%">
+  <feGaussianBlur stdDeviation="11"/>
+</filter>
+<filter id="b_schattenS" x="-90%" y="-90%" width="280%" height="280%">
+  <feGaussianBlur stdDeviation="3.6"/>
+</filter>
+<filter id="b_kaustik" x="-140%" y="-140%" width="380%" height="380%">
+  <feGaussianBlur stdDeviation="2.8"/>
+</filter>
+
+
+<!-- t_becher | Emaillebecher | nominal 150 x 175 | Anker: Standflaeche Mitte -->
+<g id="t_becher">
+  <!-- Henkel liegt hinter dem Koerper -->
+  <g filter="url(#kontakt)">
+    <path d="M 49,-138 C 84,-134 86,-70 45,-66" fill="none" stroke="#79868F" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 49,-138 C 84,-134 86,-70 45,-66" fill="none" stroke="#EDF2F3" stroke-width="14.5" stroke-linecap="round"/>
+    <path d="M 49,-134 C 78,-130 80,-74 45,-71" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-opacity="0.8" stroke-linecap="round"/>
+  </g>
+  <!-- 1 Koerper -->
+  <g filter="url(#kontakt)">
+    <g filter="url(#b_sprenkel)">
+      <path d="M -52,-164 L -41,-9 A 41,9 0 0 0 41,-9 L 52,-164 A 52,12 0 0 0 -52,-164 Z" fill="url(#b_email)"/>
+    </g>
+  </g>
+  <!-- 2 Kontur -->
+  <path d="M -52,-164 L -41,-9 A 41,9 0 0 0 41,-9 L 52,-164 A 52,12 0 0 0 -52,-164 Z"
+        fill="none" stroke="#37444F" stroke-width="2.2" stroke-opacity="0.48"/>
+  <!-- Abplatzer -->
+  <path d="M -26,-93 q 9,-7 15,-1 q 4,7 -5,10 q -12,2 -10,-9 z" fill="#8FA0AC" opacity="0.8"/>
+  <path d="M -24,-92 q 7,-5 11,-1 q 3,5 -4,7 q -9,1 -7,-6 z" fill="#39454F"/>
+  <path d="M 19,-55 q 8,-5 11,1 q 1,7 -7,7 q -7,-1 -4,-8 z" fill="#8FA0AC" opacity="0.7"/>
+  <path d="M 21,-54 q 6,-3 8,1 q 1,5 -5,5 q -5,-1 -3,-6 z" fill="#39454F"/>
+  <!-- blauer Randstreifen aussen -->
+  <path d="M -52,-164 A 52,12 0 0 0 52,-164 L 50.4,-148 A 50.4,11.6 0 0 1 -50.4,-148 Z" fill="url(#b_blau)"/>
+  <!-- Rand + dunkle Oeffnung -->
+  <ellipse cx="0" cy="-164" rx="52" ry="12" fill="url(#b_blau)"/>
+  <ellipse cx="0" cy="-163.2" rx="45.5" ry="9.9" fill="url(#b_innen)"/>
+  <path d="M -41,-163 A 42,8.4 0 0 1 41,-163" fill="none" stroke="#9C8E7B" stroke-width="5" stroke-opacity="0.45"/>
+  <path d="M -49,-168 A 50,11 0 0 1 24,-174" fill="none" stroke="#BFD8F2" stroke-width="2.6" stroke-opacity="0.7"/>
+  <!-- 3 warmer Rueckwurf unten -->
+  <ellipse cx="0" cy="-34" rx="31" ry="10" fill="url(#stahlWarm)" opacity="0.36"/>
+  <path d="M 45,-152 L 36,-18" stroke="#78868F" stroke-width="4.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <!-- 4 harter Glanz oben links -->
+  <ellipse cx="-27" cy="-110" rx="11" ry="38" fill="url(#glanz)"/>
+  <ellipse cx="-31" cy="-133" rx="5" ry="14" fill="#FFFFFF" opacity="0.8"/>
+</g>
+
+
+<!-- t_becher_tee | Emaillebecher gefuellt | nominal 150 x 175 | Anker: Standflaeche Mitte -->
+<g id="t_becher_tee">
+  <g filter="url(#kontakt)">
+    <path d="M 49,-138 C 84,-134 86,-70 45,-66" fill="none" stroke="#79868F" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 49,-138 C 84,-134 86,-70 45,-66" fill="none" stroke="#EDF2F3" stroke-width="14.5" stroke-linecap="round"/>
+    <path d="M 49,-134 C 78,-130 80,-74 45,-71" fill="none" stroke="#FFFFFF" stroke-width="4.2" stroke-opacity="0.8" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#kontakt)">
+    <g filter="url(#b_sprenkel)">
+      <path d="M -52,-164 L -41,-9 A 41,9 0 0 0 41,-9 L 52,-164 A 52,12 0 0 0 -52,-164 Z" fill="url(#b_email)"/>
+    </g>
+  </g>
+  <path d="M -52,-164 L -41,-9 A 41,9 0 0 0 41,-9 L 52,-164 A 52,12 0 0 0 -52,-164 Z"
+        fill="none" stroke="#37444F" stroke-width="2.2" stroke-opacity="0.48"/>
+  <path d="M -26,-93 q 9,-7 15,-1 q 4,7 -5,10 q -12,2 -10,-9 z" fill="#8FA0AC" opacity="0.8"/>
+  <path d="M -24,-92 q 7,-5 11,-1 q 3,5 -4,7 q -9,1 -7,-6 z" fill="#39454F"/>
+  <path d="M 19,-55 q 8,-5 11,1 q 1,7 -7,7 q -7,-1 -4,-8 z" fill="#8FA0AC" opacity="0.7"/>
+  <path d="M 21,-54 q 6,-3 8,1 q 1,5 -5,5 q -5,-1 -3,-6 z" fill="#39454F"/>
+  <path d="M -52,-164 A 52,12 0 0 0 52,-164 L 50.4,-148 A 50.4,11.6 0 0 1 -50.4,-148 Z" fill="url(#b_blau)"/>
+  <ellipse cx="0" cy="-164" rx="52" ry="12" fill="url(#b_blau)"/>
+  <ellipse cx="0" cy="-163.2" rx="45.5" ry="9.9" fill="url(#b_innen)"/>
+  <!-- Tee -->
+  <ellipse cx="0" cy="-163" rx="43.5" ry="9.2" fill="url(#b_tee)"/>
+  <path d="M -39,-162 A 40,7.6 0 0 1 39,-162" fill="none" stroke="#E09A46" stroke-width="2.6" stroke-opacity="0.45"/>
+  <ellipse cx="-15" cy="-166" rx="15" ry="3.4" fill="#FFE9B8" opacity="0.6"/>
+  <ellipse cx="16" cy="-160" rx="9" ry="2.2" fill="#FFD48A" opacity="0.3"/>
+  <path d="M -49,-168 A 50,11 0 0 1 24,-174" fill="none" stroke="#BFD8F2" stroke-width="2.6" stroke-opacity="0.7"/>
+  <ellipse cx="0" cy="-34" rx="31" ry="10" fill="url(#stahlWarm)" opacity="0.36"/>
+  <path d="M 45,-152 L 36,-18" stroke="#78868F" stroke-width="4.5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <ellipse cx="-27" cy="-110" rx="11" ry="38" fill="url(#glanz)"/>
+  <ellipse cx="-31" cy="-133" rx="5" ry="14" fill="#FFFFFF" opacity="0.8"/>
+</g>
+
+
+<!-- t_dampf | aufsteigender Dampf | nominal 160 x 190 | Anker: unten Mitte -->
+<g id="t_dampf">
+  <!-- breiter, sehr weicher Dunst -->
+  <g filter="url(#b_dampfB)">
+    <path d="M 0,-8 C 16,-30 10,-56 -6,-84 C -18,-108 6,-134 -2,-166 C -4,-176 -4,-182 -4,-188"
+          fill="none" stroke="#FFF7E8" stroke-width="24" stroke-linecap="round" opacity="0.12"/>
+    <path d="M 26,-6 C 40,-26 28,-52 40,-78 C 50,-100 46,-128 38,-150"
+          fill="none" stroke="#FFF7E8" stroke-width="18" stroke-linecap="round" opacity="0.10"/>
+    <path d="M -26,-6 C -40,-24 -28,-50 -42,-76 C -52,-96 -48,-122 -40,-142"
+          fill="none" stroke="#FFF7E8" stroke-width="17" stroke-linecap="round" opacity="0.10"/>
+  </g>
+  <!-- Schwaden, nach oben duenner werdend -->
+  <g filter="url(#b_dampfW)" fill="none" stroke="#FFF7E8" stroke-linecap="round">
+    <path d="M 0,-6 C 14,-24 16,-40 6,-56" stroke-width="18" opacity="0.19"/>
+    <path d="M 6,-56 C -6,-74 -18,-88 -8,-108" stroke-width="13" opacity="0.20"/>
+    <path d="M -8,-108 C 2,-128 10,-142 0,-164" stroke-width="8" opacity="0.18"/>
+    <path d="M 0,-164 C -5,-176 -6,-182 -4,-188" stroke-width="4" opacity="0.13"/>
+
+    <path d="M 26,-6 C 38,-24 42,-38 34,-54" stroke-width="14" opacity="0.17"/>
+    <path d="M 34,-54 C 26,-70 34,-86 44,-100" stroke-width="10" opacity="0.17"/>
+    <path d="M 44,-100 C 52,-114 48,-130 40,-148" stroke-width="6" opacity="0.14"/>
+
+    <path d="M -26,-6 C -38,-22 -42,-36 -34,-50" stroke-width="13" opacity="0.17"/>
+    <path d="M -34,-50 C -26,-66 -36,-80 -46,-94" stroke-width="9" opacity="0.16"/>
+    <path d="M -46,-94 C -54,-108 -50,-124 -42,-140" stroke-width="5.5" opacity="0.13"/>
+
+    <path d="M 12,-4 C 22,-18 8,-30 15,-46" stroke-width="10" opacity="0.13"/>
+    <path d="M 15,-46 C 20,-58 12,-66 16,-78" stroke-width="6.5" opacity="0.11"/>
+  </g>
+</g>
+
+
+<!-- t_loeffel_metall | Metalloeffel schraeg | nominal 210 x 46 | Anker: Mitte -->
+<g id="t_loeffel_metall">
+ <g transform="rotate(-8)">
+  <!-- 1 Koerper -->
+  <g filter="url(#kontakt)">
+    <path d="M -46,-6.6 C -14,-9.2 34,-8.6 90,-7 C 100,-6.8 100,6.8 90,7 C 34,8.6 -14,9.2 -46,6.6 Z" fill="url(#stahl)"/>
+    <ellipse cx="-70" cy="0" rx="35" ry="19" fill="url(#stahl)"/>
+  </g>
+  <!-- 2 Kontur -->
+  <ellipse cx="-70" cy="0" rx="35" ry="19" fill="none" stroke="#28303E" stroke-width="1.9" stroke-opacity="0.5"/>
+  <path d="M -46,-6.6 C -14,-9.2 34,-8.6 90,-7 C 100,-6.8 100,6.8 90,7 C 34,8.6 -14,9.2 -46,6.6 Z"
+        fill="none" stroke="#28303E" stroke-width="1.9" stroke-opacity="0.5"/>
+  <!-- Laffe hohl -->
+  <ellipse cx="-70" cy="1.5" rx="28" ry="13.5" fill="#59677A"/>
+  <path d="M -96,4.5 A 28,12.5 0 0 0 -44,4.5" fill="none" stroke="#D8E4F0" stroke-width="4.4" stroke-opacity="0.7"/>
+  <path d="M -95,-2 A 27,11.5 0 0 1 -45,-2" fill="none" stroke="#1E2733" stroke-width="3.6" stroke-opacity="0.42"/>
+  <!-- 3 warmer Rueckwurf unten -->
+  <ellipse cx="14" cy="6.2" rx="54" ry="4" fill="url(#stahlWarm)" opacity="0.6"/>
+  <ellipse cx="-70" cy="14" rx="24" ry="4.6" fill="url(#stahlWarm)" opacity="0.55"/>
+  <!-- 4 harter Glanz oben links -->
+  <ellipse cx="18" cy="-4.4" rx="58" ry="2.8" fill="url(#glanz)"/>
+  <rect x="-34" y="-3.4" width="76" height="2.8" rx="1.4" fill="#FFFFFF" opacity="0.6"/>
+  <ellipse cx="-80" cy="-10" rx="16" ry="4.4" fill="url(#glanz)"/>
+  <ellipse cx="-62" cy="7.5" rx="14" ry="3" fill="#FFFFFF" opacity="0.3"/>
+ </g>
+</g>
+
+
+<!-- t_loeffel_holz | Holzloeffel schraeg | nominal 210 x 46 | Anker: Mitte -->
+<g id="t_loeffel_holz">
+ <g transform="rotate(-8)">
+  <g filter="url(#kontakt)">
+    <g filter="url(#maser)">
+      <path d="M -44,-7.4 C -12,-10.4 36,-9.6 90,-8 C 101,-7.6 101,7.6 90,8 C 36,9.6 -12,10.4 -44,7.4 Z" fill="url(#holzHell)"/>
+      <ellipse cx="-71" cy="0" rx="34" ry="18" fill="url(#holzHell)"/>
+    </g>
+  </g>
+  <!-- Volumen: hell oben, dunkel unten -->
+  <path d="M -44,-7.4 C -12,-10.4 36,-9.6 90,-8 C 101,-7.6 101,7.6 90,8 C 36,9.6 -12,10.4 -44,7.4 Z" fill="url(#b_holzS)"/>
+  <ellipse cx="-71" cy="0" rx="34" ry="18" fill="url(#b_holzS)"/>
+  <!-- Kontur -->
+  <ellipse cx="-71" cy="0" rx="34" ry="18" fill="none" stroke="#3D2708" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M -44,-7.4 C -12,-10.4 36,-9.6 90,-8 C 101,-7.6 101,7.6 90,8 C 36,9.6 -12,10.4 -44,7.4 Z"
+        fill="none" stroke="#3D2708" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- Laffe hohl -->
+  <ellipse cx="-71" cy="1.5" rx="26" ry="12.5" fill="#9A7038" opacity="0.85"/>
+  <path d="M -95,5 A 26,11.5 0 0 0 -47,5" fill="none" stroke="#E6C48E" stroke-width="4" stroke-opacity="0.5"/>
+  <path d="M -94,-2 A 25,10.5 0 0 1 -48,-2" fill="none" stroke="#43290A" stroke-width="3.4" stroke-opacity="0.42"/>
+  <!-- helle Fasenkante oben, dunkler Schattenstrich unten -->
+  <path d="M -30,-6.4 C 8,-8.6 46,-8 90,-6.4" fill="none" stroke="#F2D8A6" stroke-width="3" stroke-opacity="0.5"/>
+  <path d="M -30,7 C 8,8.4 46,8 92,6.6" fill="none" stroke="#3A2306" stroke-width="3.2" stroke-opacity="0.4"/>
+  <!-- Maserlinien -->
+  <path d="M -20,-2.5 C 14,-4.2 50,-3.8 92,-2.8" fill="none" stroke="#7A5218" stroke-width="1.9" stroke-opacity="0.45"/>
+  <path d="M -18,1.6 C 16,0.6 52,1 92,1.8" fill="none" stroke="#7A5218" stroke-width="1.9" stroke-opacity="0.4"/>
+  <path d="M -95,-6 C -84,-13 -58,-14 -48,-7" fill="none" stroke="#7A5218" stroke-width="2" stroke-opacity="0.32"/>
+  <path d="M -95,7 C -84,14 -58,15 -47,8" fill="none" stroke="#7A5218" stroke-width="2" stroke-opacity="0.28"/>
+  <!-- matter breiter Reflex -->
+  <ellipse cx="24" cy="-2.6" rx="46" ry="2.6" fill="#FFFFFF" opacity="0.17"/>
+  <ellipse cx="-80" cy="-10" rx="17" ry="4.4" fill="#FFFFFF" opacity="0.15"/>
+ </g>
+</g>
+
+
+<!-- t_kerze | Kerze im Glas | nominal 110 x 150 | Anker: Standflaeche Mitte -->
+<g id="t_kerze">
+  <ellipse cx="0" cy="-104" rx="66" ry="76" fill="url(#warmSchein)" filter="url(#schein)" opacity="0.9"/>
+  <!-- 1 Glasbecher -->
+  <g filter="url(#kontakt)">
+    <path d="M -40,-96 L -37,-8 A 37,8 0 0 0 37,-8 L 40,-96 A 40,10 0 0 0 -40,-96 Z" fill="#DCE8EA" opacity="0.22"/>
+  </g>
+  <path d="M -40,-96 L -37,-8 A 37,8 0 0 0 37,-8 L 40,-96 A 40,10 0 0 0 -40,-96 Z" fill="url(#glasK)"/>
+  <!-- Wachs -->
+  <path d="M -34,-84 L -32,-18 A 32,7 0 0 0 32,-18 L 34,-84 A 34,8.4 0 0 0 -34,-84 Z" fill="url(#b_wachs)"/>
+  <path d="M -34,-80 L -32.4,-24" fill="none" stroke="#A8A190" stroke-width="2.6" stroke-opacity="0.45"/>
+  <path d="M 34,-80 L 32.4,-24" fill="none" stroke="#7C7666" stroke-width="3" stroke-opacity="0.45"/>
+  <ellipse cx="0" cy="-84" rx="34" ry="8.4" fill="#FDF9EF"/>
+  <ellipse cx="0" cy="-84" rx="34" ry="8.4" fill="none" stroke="#9C9484" stroke-width="1.8" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-83" rx="24" ry="5.4" fill="#E2D6BB" opacity="0.75"/>
+  <ellipse cx="0" cy="-60" rx="34" ry="24" fill="url(#warmSchein)" opacity="0.45"/>
+  <!-- Docht -->
+  <path d="M 0,-84 C 2,-92 -2,-96 -1,-101" fill="none" stroke="#33281B" stroke-width="3.2" stroke-linecap="round"/>
+  <!-- Flamme -->
+  <ellipse cx="0" cy="-118" rx="26" ry="34" fill="url(#warmSchein)" filter="url(#scheinKlein)"/>
+  <path d="M -1,-100 C -13,-111 -12,-125 0,-143 C 12,-125 13,-111 1,-100 Z" fill="url(#flamme)"/>
+  <path d="M -0.5,-102 C -6,-110 -5,-119 0,-130 C 5,-119 6,-110 0.5,-102 Z" fill="#FFF8DC" opacity="0.9"/>
+  <!-- Glas: Kanten, Rand, Boden -->
+  <path d="M -39.6,-90 L -36.6,-16" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-opacity="0.8" stroke-linecap="round"/>
+  <path d="M 39.4,-90 L 36.4,-16" fill="none" stroke="#5E8288" stroke-width="2.8" stroke-opacity="0.45" stroke-linecap="round"/>
+  <path d="M 36,-88 L 33.4,-20" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.4"/>
+  <ellipse cx="-22" cy="-58" rx="6" ry="26" fill="url(#glanz)" opacity="0.8"/>
+  <ellipse cx="0" cy="-96" rx="40" ry="10" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.8"/>
+  <ellipse cx="0" cy="-95" rx="35.5" ry="8.6" fill="none" stroke="#6F9298" stroke-width="1.8" stroke-opacity="0.45"/>
+  <ellipse cx="0" cy="-14" rx="34" ry="9" fill="#FFFFFF" opacity="0.34"/>
+  <ellipse cx="0" cy="-11" rx="29" ry="6" fill="#8FB4BA" opacity="0.5"/>
+  <path d="M -36,-20 A 36,9 0 0 0 36,-20" fill="none" stroke="#5E8288" stroke-width="2.2" stroke-opacity="0.4"/>
+  <!-- Kontaktschatten mit Kaustik -->
+  <ellipse cx="4" cy="2" rx="46" ry="10" fill="#3A2B14" opacity="0.34" filter="url(#b_schattenS)"/>
+  <ellipse cx="8" cy="3" rx="19" ry="5" fill="#FFEAAE" opacity="0.9" filter="url(#b_kaustik)"/>
+</g>
+
+
+<!-- t_teelicht | Teelicht im Blechhalter | nominal 90 x 46 | Anker: Standflaeche Mitte -->
+<g id="t_teelicht">
+  <ellipse cx="0" cy="-26" rx="44" ry="36" fill="url(#warmSchein)" filter="url(#schein)" opacity="0.9"/>
+  <g filter="url(#kontakt)">
+    <path d="M -34,-16 L -30,-5 A 30,5 0 0 0 30,-5 L 34,-16 A 34,7 0 0 0 -34,-16 Z" fill="url(#blech)"/>
+  </g>
+  <path d="M -34,-16 L -30,-5 A 30,5 0 0 0 30,-5 L 34,-16 A 34,7 0 0 0 -34,-16 Z"
+        fill="none" stroke="#2C3542" stroke-width="1.8" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-16" rx="30.5" ry="5.8" fill="url(#b_wachs)"/>
+  <ellipse cx="0" cy="-15.5" rx="22" ry="3.6" fill="#E6DAC1" opacity="0.7"/>
+  <path d="M -30,-13 L -29.4,-7" stroke="#1E2733" stroke-width="2.4" stroke-opacity="0.35"/>
+  <path d="M -14,-11 L -13.6,-4" stroke="#1E2733" stroke-width="2.4" stroke-opacity="0.3"/>
+  <path d="M 14,-11 L 13.6,-4" stroke="#1E2733" stroke-width="2.4" stroke-opacity="0.3"/>
+  <path d="M 30,-13 L 29.4,-7" stroke="#1E2733" stroke-width="2.4" stroke-opacity="0.35"/>
+  <ellipse cx="0" cy="-7" rx="22" ry="4" fill="url(#stahlWarm)" opacity="0.6"/>
+  <ellipse cx="0" cy="-16" rx="34" ry="7" fill="none" stroke="#E4EAF2" stroke-width="2.4" stroke-opacity="0.7"/>
+  <ellipse cx="-14" cy="-13" rx="15" ry="2.8" fill="url(#glanz)"/>
+  <path d="M -33,-14 L -29,-4" stroke="#1E2733" stroke-width="2.6" stroke-opacity="0.45"/>
+  <path d="M 33,-14 L 29,-4" stroke="#1E2733" stroke-width="2.6" stroke-opacity="0.45"/>
+  <ellipse cx="0" cy="-20" rx="10" ry="3" fill="#3A2E20" opacity="0.4"/>
+  <path d="M 0,-17 C 1,-20 -1,-22 0,-24" fill="none" stroke="#33281B" stroke-width="2.8" stroke-linecap="round"/>
+  <ellipse cx="0" cy="-32" rx="16" ry="21" fill="url(#warmSchein)" filter="url(#scheinKlein)"/>
+  <path d="M -0.8,-21 C -8,-28 -7,-37 0,-47 C 7,-37 8,-28 0.8,-21 Z" fill="url(#flamme)"/>
+  <path d="M -0.4,-22 C -4,-27 -3,-33 0,-39 C 3,-33 4,-27 0.4,-22 Z" fill="#FFF8DC" opacity="0.9"/>
+</g>
+
+
+<!-- t_topf | kleiner Blechtopf | nominal 260 x 170 | Anker: Standflaeche Mitte -->
+<g id="t_topf">
+  <!-- Griffe hinter dem Rand -->
+  <g filter="url(#kontakt)">
+    <path d="M -96,-138 C -126,-136 -128,-112 -100,-114" fill="none" stroke="#5D6979" stroke-width="14" stroke-linecap="round"/>
+    <path d="M -96,-138 C -126,-136 -128,-112 -100,-114" fill="none" stroke="#A9B5C4" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 96,-138 C 126,-136 128,-112 100,-114" fill="none" stroke="#5D6979" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 96,-138 C 126,-136 128,-112 100,-114" fill="none" stroke="#A9B5C4" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M -97,-134 C -121,-132 -123,-116 -101,-117" fill="none" stroke="#E2E9F1" stroke-width="3.2" stroke-opacity="0.65" stroke-linecap="round"/>
+  <path d="M 95,-134 C 119,-132 121,-116 99,-117" fill="none" stroke="#E2E9F1" stroke-width="3.2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <!-- 1 Koerper -->
+  <g filter="url(#kontakt)">
+    <path d="M -96,-146 L -82,-12 A 82,12 0 0 0 82,-12 L 96,-146 A 96,19 0 0 0 -96,-146 Z" fill="url(#blech)"/>
+  </g>
+  <!-- angerusster Boden -->
+  <path d="M -89,-70 L -82,-12 A 82,12 0 0 0 82,-12 L 89,-70 Z" fill="url(#b_russ)"/>
+  <path d="M -89,-70 L -82,-12 A 82,12 0 0 0 82,-12 L 89,-70 Z" fill="url(#b_russ)" opacity="0.45"/>
+  <!-- 2 Kontur -->
+  <path d="M -96,-146 L -82,-12 A 82,12 0 0 0 82,-12 L 96,-146 A 96,19 0 0 0 -96,-146 Z"
+        fill="none" stroke="#2C3542" stroke-width="2.4" stroke-opacity="0.5"/>
+  <!-- 3 warmer Rueckwurf unten -->
+  <ellipse cx="0" cy="-56" rx="60" ry="12" fill="url(#stahlWarm)" opacity="0.42"/>
+  <!-- 4 harter Glanz oben links -->
+  <ellipse cx="-48" cy="-96" rx="15" ry="42" fill="url(#glanz)"/>
+  <ellipse cx="-54" cy="-124" rx="6" ry="17" fill="#FFFFFF" opacity="0.7"/>
+  <path d="M 86,-138 L 76,-30" stroke="#22293A" stroke-width="7" stroke-opacity="0.22" stroke-linecap="round"/>
+  <!-- umgeschlagener Rand -->
+  <path d="M -100,-150 A 100,19 0 0 0 100,-150 L 98,-138 A 98,18.6 0 0 1 -98,-138 Z" fill="#7C8899"/>
+  <ellipse cx="0" cy="-150" rx="100" ry="19" fill="url(#blech)"/>
+  <ellipse cx="0" cy="-150" rx="100" ry="19" fill="none" stroke="#2C3542" stroke-width="2.2" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-148.6" rx="88" ry="15.6" fill="url(#b_innenK)"/>
+  <path d="M -82,-148 A 84,13 0 0 1 82,-148" fill="none" stroke="#93A0AF" stroke-width="6" stroke-opacity="0.35"/>
+  <path d="M -95,-155 A 97,16 0 0 1 46,-167" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-opacity="0.7"/>
+  <path d="M -70,-141 A 92,17 0 0 0 76,-142" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.25"/>
+</g>
+
+
+<!-- t_topf_um | Blechtopf umgedreht | nominal 260 x 170 | Anker: Standflaeche Mitte -->
+<g id="t_topf_um">
+  <!-- Rand liegt auf dem Tisch -->
+  <g filter="url(#kontakt)">
+    <ellipse cx="0" cy="-12" rx="102" ry="12" fill="#7C8899"/>
+  </g>
+  <!-- Griffe -->
+  <g filter="url(#kontakt)">
+    <path d="M -95,-26 C -125,-28 -127,-52 -99,-50" fill="none" stroke="#5D6979" stroke-width="14" stroke-linecap="round"/>
+    <path d="M -95,-26 C -125,-28 -127,-52 -99,-50" fill="none" stroke="#A9B5C4" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 95,-26 C 125,-28 127,-52 99,-50" fill="none" stroke="#5D6979" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 95,-26 C 125,-28 127,-52 99,-50" fill="none" stroke="#A9B5C4" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <path d="M -97,-30 C -121,-32 -123,-48 -101,-47" fill="none" stroke="#E2E9F1" stroke-width="3.2" stroke-opacity="0.6" stroke-linecap="round"/>
+  <path d="M 95,-30 C 119,-32 121,-48 99,-47" fill="none" stroke="#E2E9F1" stroke-width="3.2" stroke-opacity="0.45" stroke-linecap="round"/>
+  <!-- 1 Koerper -->
+  <g filter="url(#kontakt)">
+    <path d="M -82,-150 L -96,-14 A 96,10 0 0 0 96,-14 L 82,-150 A 82,13 0 0 0 -82,-150 Z" fill="url(#blech)"/>
+  </g>
+  <!-- 2 Kontur -->
+  <path d="M -82,-150 L -96,-14 A 96,10 0 0 0 96,-14 L 82,-150 A 82,13 0 0 0 -82,-150 Z"
+        fill="none" stroke="#2C3542" stroke-width="2.4" stroke-opacity="0.5"/>
+  <!-- angerusster Boden oben -->
+  <path d="M -82,-150 A 82,13 0 0 0 82,-150 L 87,-100 L -87,-100 Z" fill="url(#b_russO)"/>
+  <ellipse cx="0" cy="-150" rx="82" ry="13" fill="#3B342C"/>
+  <ellipse cx="0" cy="-150" rx="82" ry="13" fill="url(#b_russO)" opacity="0.6"/>
+  <ellipse cx="0" cy="-150" rx="64" ry="9.6" fill="none" stroke="#151210" stroke-width="3" stroke-opacity="0.45"/>
+  <ellipse cx="0" cy="-150" rx="82" ry="13" fill="none" stroke="#1A1712" stroke-width="2.4" stroke-opacity="0.5"/>
+  <path d="M -76,-155 A 80,11 0 0 1 34,-162" fill="none" stroke="#B6BCC4" stroke-width="3" stroke-opacity="0.4"/>
+  <!-- 3 warmer Rueckwurf unten -->
+  <ellipse cx="0" cy="-28" rx="76" ry="12" fill="url(#stahlWarm)" opacity="0.5"/>
+  <!-- 4 harter Glanz oben links -->
+  <ellipse cx="-56" cy="-84" rx="14" ry="40" fill="url(#glanz)"/>
+  <ellipse cx="-50" cy="-112" rx="6" ry="16" fill="#FFFFFF" opacity="0.6"/>
+  <path d="M 82,-130 L 90,-34" stroke="#22293A" stroke-width="7" stroke-opacity="0.22" stroke-linecap="round"/>
+  <!-- Randwulst vorn -->
+  <ellipse cx="0" cy="-12" rx="102" ry="12" fill="none" stroke="#2C3542" stroke-width="2.2" stroke-opacity="0.5"/>
+  <path d="M -96,-8 A 100,11 0 0 0 96,-8" fill="none" stroke="#E2E9F1" stroke-width="3" stroke-opacity="0.35"/>
+</g>
+
+
+<!-- t_glas_voll | Trinkglas fast voll | nominal 110 x 165 | Anker: Standflaeche Mitte -->
+<g id="t_glas_voll">
+  <ellipse cx="5" cy="2" rx="47" ry="10" fill="#3A2B14" opacity="0.4" filter="url(#b_schattenS)"/>
+  <ellipse cx="10" cy="3" rx="18" ry="5" fill="#FFEFB6" opacity="0.95" filter="url(#b_kaustik)"/>
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="#E4EFF0" opacity="0.34"/>
+  <!-- Wasser -->
+  <path d="M -38.4,-142 L -33,-11 A 33,7 0 0 0 33,-11 L 38.4,-142 A 38.4,9.5 0 0 0 -38.4,-142 Z" fill="#A9CFD4" opacity="0.55"/>
+  <path d="M -38.4,-142 L -33,-11 A 33,7 0 0 0 33,-11 L 38.4,-142 A 38.4,9.5 0 0 0 -38.4,-142 Z" fill="url(#wasser)"/>
+  <ellipse cx="0" cy="-142" rx="38.4" ry="9.5" fill="#C2DFE0"/>
+  <ellipse cx="0" cy="-142" rx="38.4" ry="9.5" fill="none" stroke="#6E969C" stroke-width="2" stroke-opacity="0.55"/>
+  <path d="M -35,-142 A 36.4,8.1 0 0 1 35,-142" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-opacity="0.85"/>
+  <!-- Glas -->
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="url(#glasK)"/>
+  <ellipse cx="0" cy="-15" rx="33" ry="9" fill="#FFFFFF" opacity="0.34"/>
+  <ellipse cx="0" cy="-11" rx="29" ry="6" fill="#A9C6CB" opacity="0.45"/>
+  <path d="M -39.6,-152 L -33.8,-14" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-opacity="0.85" stroke-linecap="round"/>
+  <path d="M 39.4,-152 L 33.6,-14" fill="none" stroke="#4F757C" stroke-width="3" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M 35.6,-150 L 30.4,-20" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.45"/>
+  <ellipse cx="-24" cy="-92" rx="7" ry="48" fill="url(#glanz)"/>
+  <ellipse cx="0" cy="-158" rx="40" ry="10" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.85"/>
+  <ellipse cx="0" cy="-157" rx="35.6" ry="8.6" fill="none" stroke="#6F9298" stroke-width="1.9" stroke-opacity="0.45"/>
+</g>
+
+
+<!-- t_glas_halb | Trinkglas halb voll | nominal 110 x 165 | Anker: Standflaeche Mitte -->
+<g id="t_glas_halb">
+  <ellipse cx="5" cy="2" rx="47" ry="10" fill="#3A2B14" opacity="0.4" filter="url(#b_schattenS)"/>
+  <ellipse cx="10" cy="3" rx="18" ry="5" fill="#FFEFB6" opacity="0.95" filter="url(#b_kaustik)"/>
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="#E4EFF0" opacity="0.34"/>
+  <path d="M -37.2,-88 L -33,-11 A 33,7 0 0 0 33,-11 L 37.2,-88 A 37.2,9.1 0 0 0 -37.2,-88 Z" fill="#A9CFD4" opacity="0.55"/>
+  <path d="M -37.2,-88 L -33,-11 A 33,7 0 0 0 33,-11 L 37.2,-88 A 37.2,9.1 0 0 0 -37.2,-88 Z" fill="url(#wasser)"/>
+  <ellipse cx="0" cy="-88" rx="37.2" ry="9.1" fill="#C2DFE0"/>
+  <ellipse cx="0" cy="-88" rx="37.2" ry="9.1" fill="none" stroke="#6E969C" stroke-width="2" stroke-opacity="0.55"/>
+  <path d="M -34,-88 A 35.2,7.699999999999999 0 0 1 34,-88" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-opacity="0.85"/>
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="url(#glasK)"/>
+  <ellipse cx="0" cy="-15" rx="33" ry="9" fill="#FFFFFF" opacity="0.34"/>
+  <ellipse cx="0" cy="-11" rx="29" ry="6" fill="#A9C6CB" opacity="0.45"/>
+  <path d="M -39.6,-152 L -33.8,-14" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-opacity="0.85" stroke-linecap="round"/>
+  <path d="M 39.4,-152 L 33.6,-14" fill="none" stroke="#4F757C" stroke-width="3" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M 35.6,-150 L 30.4,-20" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.45"/>
+  <ellipse cx="-24" cy="-92" rx="7" ry="48" fill="url(#glanz)"/>
+  <ellipse cx="0" cy="-158" rx="40" ry="10" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.85"/>
+  <ellipse cx="0" cy="-157" rx="35.6" ry="8.6" fill="none" stroke="#6F9298" stroke-width="1.9" stroke-opacity="0.45"/>
+</g>
+
+
+<!-- t_glas_leer | Trinkglas fast leer | nominal 110 x 165 | Anker: Standflaeche Mitte -->
+<g id="t_glas_leer">
+  <ellipse cx="5" cy="2" rx="47" ry="10" fill="#3A2B14" opacity="0.4" filter="url(#b_schattenS)"/>
+  <ellipse cx="10" cy="3" rx="18" ry="5" fill="#FFEFB6" opacity="0.95" filter="url(#b_kaustik)"/>
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="#E4EFF0" opacity="0.34"/>
+  <path d="M -34.9,-32 L -33,-11 A 33,7 0 0 0 33,-11 L 34.9,-32 A 34.9,8.4 0 0 0 -34.9,-32 Z" fill="#A9CFD4" opacity="0.55"/>
+  <path d="M -34.9,-32 L -33,-11 A 33,7 0 0 0 33,-11 L 34.9,-32 A 34.9,8.4 0 0 0 -34.9,-32 Z" fill="url(#wasser)"/>
+  <ellipse cx="0" cy="-32" rx="34.9" ry="8.4" fill="#C2DFE0"/>
+  <ellipse cx="0" cy="-32" rx="34.9" ry="8.4" fill="none" stroke="#6E969C" stroke-width="2" stroke-opacity="0.55"/>
+  <path d="M -31,-32 A 32.9,7.0 0 0 1 31,-32" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-opacity="0.85"/>
+  <path d="M -40,-158 L -34,-8 A 34,8 0 0 0 34,-8 L 40,-158 A 40,10 0 0 0 -40,-158 Z" fill="url(#glasK)"/>
+  <ellipse cx="0" cy="-15" rx="33" ry="9" fill="#FFFFFF" opacity="0.34"/>
+  <ellipse cx="0" cy="-11" rx="29" ry="6" fill="#A9C6CB" opacity="0.45"/>
+  <path d="M -39.6,-152 L -33.8,-14" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-opacity="0.85" stroke-linecap="round"/>
+  <path d="M 39.4,-152 L 33.6,-14" fill="none" stroke="#4F757C" stroke-width="3" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M 35.6,-150 L 30.4,-20" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.45"/>
+  <ellipse cx="-24" cy="-92" rx="7" ry="48" fill="url(#glanz)"/>
+  <ellipse cx="0" cy="-158" rx="40" ry="10" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.85"/>
+  <ellipse cx="0" cy="-157" rx="35.6" ry="8.6" fill="none" stroke="#6F9298" stroke-width="1.9" stroke-opacity="0.45"/>
+</g>
+
+
+<!-- t_flasche | Plastik-Wasserflasche | nominal 120 x 300 | Anker: Standflaeche Mitte -->
+<g id="t_flasche">
+  <ellipse cx="5" cy="2" rx="52" ry="11" fill="#3A2B14" opacity="0.38" filter="url(#b_schattenS)"/>
+  <ellipse cx="10" cy="3" rx="18" ry="4.6" fill="#FFEFB6" opacity="0.8" filter="url(#b_kaustik)"/>
+  <path d="M -45,-24 C -47,-120 -47,-168 -45,-202 C -43,-224 -32,-234 -22,-244 C -17,-249 -16,-252 -16,-258
+           L -16,-270 L 16,-270 L 16,-258 C 16,-252 17,-249 22,-244 C 32,-234 43,-224 45,-202
+           C 47,-168 47,-120 45,-24 L 42,-9 A 42,9 0 0 1 -42,-9 Z" fill="#E6F0F1" opacity="0.30"/>
+  <!-- Wasser -->
+  <path d="M -43,-214 C -44,-160 -44,-100 -43,-26 L -39,-13 A 39,7.5 0 0 0 39,-13 L 43,-26
+           C 44,-100 44,-160 43,-214 A 43,7 0 0 0 -43,-214 Z" fill="url(#wasser)" opacity="0.75"/>
+  <ellipse cx="0" cy="-214" rx="43" ry="7" fill="#C6E2E3"/>
+  <ellipse cx="0" cy="-214" rx="43" ry="7" fill="none" stroke="#6E969C" stroke-width="1.9" stroke-opacity="0.5"/>
+  <path d="M -39,-214 A 41,6 0 0 1 39,-214" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.8"/>
+  <!-- Kunststoff -->
+  <path d="M -45,-24 C -47,-120 -47,-168 -45,-202 C -43,-224 -32,-234 -22,-244 C -17,-249 -16,-252 -16,-258
+           L -16,-270 L 16,-270 L 16,-258 C 16,-252 17,-249 22,-244 C 32,-234 43,-224 45,-202
+           C 47,-168 47,-120 45,-24 L 42,-9 A 42,9 0 0 1 -42,-9 Z" fill="url(#b_pet)"/>
+  <path d="M -45,-24 C -47,-120 -47,-168 -45,-202 C -43,-224 -32,-234 -22,-244 C -17,-249 -16,-252 -16,-258
+           L -16,-270 L 16,-270 L 16,-258 C 16,-252 17,-249 22,-244 C 32,-234 43,-224 45,-202
+           C 47,-168 47,-120 45,-24 L 42,-9 A 42,9 0 0 1 -42,-9 Z"
+        fill="none" stroke="#5E8288" stroke-width="2" stroke-opacity="0.4"/>
+  <!-- Laengsrillen -->
+  <path d="M -28,-44 L -28,-192" stroke="#6E9298" stroke-width="2.6" stroke-opacity="0.35"/>
+  <path d="M -24.6,-44 L -24.6,-192" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.45"/>
+  <path d="M -8,-44 L -8,-194" stroke="#6E9298" stroke-width="2.6" stroke-opacity="0.3"/>
+  <path d="M -4.6,-44 L -4.6,-194" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.35"/>
+  <path d="M 12,-44 L 12,-194" stroke="#6E9298" stroke-width="2.6" stroke-opacity="0.3"/>
+  <path d="M 15.4,-44 L 15.4,-194" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.3"/>
+  <path d="M 30,-44 L 30,-190" stroke="#6E9298" stroke-width="2.6" stroke-opacity="0.34"/>
+  <path d="M 33.4,-44 L 33.4,-190" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.26"/>
+  <!-- weicher breiter Kunststoff-Reflex + Kantenlicht -->
+  <ellipse cx="-24" cy="-118" rx="13" ry="70" fill="#FFFFFF" opacity="0.22"/>
+  <path d="M -44.6,-200 C -46,-120 -46,-70 -44.4,-30" fill="none" stroke="#FFFFFF" stroke-width="3.6" stroke-opacity="0.85" stroke-linecap="round"/>
+  <path d="M 44.6,-200 C 46,-120 46,-70 44.4,-30" fill="none" stroke="#4F757C" stroke-width="3" stroke-opacity="0.45" stroke-linecap="round"/>
+  <path d="M 40.8,-196 C 42,-120 42,-72 40.6,-34" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.45"/>
+  <path d="M -43,-214 C -41,-228 -31,-236 -21,-246 C -18,-249 -17,-252 -17,-257" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.7" stroke-linecap="round"/>
+  <ellipse cx="0" cy="-16" rx="38" ry="9" fill="#FFFFFF" opacity="0.28"/>
+  <!-- Halsring -->
+  <rect x="-18" y="-268" width="36" height="8" rx="3.5" fill="#DDE9EB" opacity="0.85"/>
+  <rect x="-18" y="-268" width="36" height="3" rx="1.5" fill="#FFFFFF" opacity="0.7"/>
+  <!-- Schraubverschluss -->
+  <g filter="url(#kontakt)">
+    <rect x="-20" y="-296" width="40" height="30" rx="5" fill="url(#b_kappe)"/>
+  </g>
+  <rect x="-20" y="-296" width="40" height="30" rx="5" fill="none" stroke="#12314C" stroke-width="1.8" stroke-opacity="0.5"/>
+  <path d="M -13,-293 L -13,-269 M -6.5,-294 L -6.5,-268 M 0,-294 L 0,-268 M 6.5,-294 L 6.5,-268 M 13,-293 L 13,-269"
+        stroke="#12314C" stroke-width="2.2" stroke-opacity="0.4"/>
+  <rect x="-16" y="-294" width="26" height="5" rx="2.5" fill="#FFFFFF" opacity="0.4"/>
+  <ellipse cx="0" cy="-270" rx="17" ry="3" fill="url(#stahlWarm)" opacity="0.4"/>
+</g>
+
+
+<!-- t_glasdose | Schraubglas mit dunklem Aufstrich | nominal 150 x 190 | Anker: Standflaeche Mitte -->
+<g id="t_glasdose">
+  <ellipse cx="6" cy="2" rx="74" ry="12" fill="#3A2B14" opacity="0.42" filter="url(#b_schattenS)"/>
+  <ellipse cx="14" cy="4" rx="20" ry="5" fill="#FFEFB6" opacity="0.75" filter="url(#b_kaustik)"/>
+  <path d="M -66,-24 C -67,-70 -67,-100 -65,-122 C -62,-138 -54,-142 -50,-150 L 50,-150
+           C 54,-142 62,-138 65,-122 C 67,-100 67,-70 66,-24 L 62,-9 A 62,9 0 0 1 -62,-9 Z" fill="#DCE9DC" opacity="0.4"/>
+  <!-- dunkler Aufstrich -->
+  <path d="M -61,-122 C -62,-88 -62,-58 -61,-26 L -56,-14 A 56,8 0 0 0 56,-14 L 61,-26
+           C 62,-58 62,-88 61,-122 A 61,10 0 0 0 -61,-122 Z" fill="url(#b_aufstrich)"/>
+  <ellipse cx="0" cy="-122" rx="61" ry="10" fill="#63341A"/>
+  <ellipse cx="-18" cy="-123" rx="24" ry="4.4" fill="#96592C" opacity="0.55"/>
+  <ellipse cx="0" cy="-122" rx="61" ry="10" fill="none" stroke="#2A1508" stroke-width="2" stroke-opacity="0.5"/>
+  <!-- gruenliches Glas -->
+  <path d="M -66,-24 C -67,-70 -67,-100 -65,-122 C -62,-138 -54,-142 -50,-150 L 50,-150
+           C 54,-142 62,-138 65,-122 C 67,-100 67,-70 66,-24 L 62,-9 A 62,9 0 0 1 -62,-9 Z" fill="url(#b_gruenglas)"/>
+  <path d="M -66,-24 C -67,-70 -67,-100 -65,-122 C -62,-138 -54,-142 -50,-150 L 50,-150
+           C 54,-142 62,-138 65,-122 C 67,-100 67,-70 66,-24 L 62,-9 A 62,9 0 0 1 -62,-9 Z"
+        fill="none" stroke="#2E4C34" stroke-width="2.2" stroke-opacity="0.45"/>
+  <ellipse cx="0" cy="-18" rx="58" ry="10" fill="#FFFFFF" opacity="0.24"/>
+  <path d="M -65.6,-116 C -66.6,-80 -66.6,-52 -65,-26" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.8" stroke-linecap="round"/>
+  <path d="M 65.6,-116 C 66.6,-80 66.6,-52 65,-26" fill="none" stroke="#33553B" stroke-width="3.2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M 61,-114 C 62,-80 62,-54 60.6,-30" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.4"/>
+  <ellipse cx="-40" cy="-80" rx="10" ry="40" fill="url(#glanz)" opacity="0.85"/>
+  <!-- Blechdeckel -->
+  <g filter="url(#kontakt)">
+    <path d="M -56,-176 L -56,-148 A 56,12 0 0 0 56,-148 L 56,-176 A 56,12 0 0 0 -56,-176 Z" fill="url(#blech)"/>
+  </g>
+  <path d="M -50,-172 L -50,-142 M -40,-175 L -40,-145 M -30,-177 L -30,-147 M -20,-178 L -20,-148
+           M -10,-179 L -10,-149 M 0,-179 L 0,-149 M 10,-179 L 10,-149 M 20,-178 L 20,-148
+           M 30,-177 L 30,-147 M 40,-175 L 40,-145 M 50,-172 L 50,-142"
+        stroke="#3E4A5A" stroke-width="2.6" stroke-opacity="0.32"/>
+  <path d="M -56,-176 L -56,-148 A 56,12 0 0 0 56,-148 L 56,-176 A 56,12 0 0 0 -56,-176 Z"
+        fill="none" stroke="#2C3542" stroke-width="2.2" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-153" rx="46" ry="9" fill="url(#stahlWarm)" opacity="0.45"/>
+  <ellipse cx="0" cy="-176" rx="56" ry="12" fill="url(#blech)"/>
+  <ellipse cx="0" cy="-176" rx="56" ry="12" fill="none" stroke="#2C3542" stroke-width="2.2" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-176" rx="44" ry="9" fill="none" stroke="#5C6A7C" stroke-width="2.6" stroke-opacity="0.45"/>
+  <ellipse cx="-20" cy="-180" rx="26" ry="5" fill="url(#glanz)"/>
+</g>
+
+
+<!-- t_thermometer | Stabthermometer | nominal 70 x 380 | Anker: unten Mitte -->
+<g id="t_thermometer">
+  <!-- 1 Skalentafel -->
+  <g filter="url(#kontakt)">
+    <rect x="-22" y="-374" width="44" height="374" rx="11" fill="url(#b_weissK)"/>
+  </g>
+  <!-- 2 Kontur -->
+  <rect x="-22" y="-374" width="44" height="374" rx="11" fill="none" stroke="#5C635C" stroke-width="2" stroke-opacity="0.45"/>
+  <!-- Aufhaengeloch -->
+  <circle cx="0" cy="-357" r="6.5" fill="#8C9289"/>
+  <circle cx="0" cy="-356" r="5" fill="#3E443E"/>
+  <path d="M -4.5,-360 A 6.5,6.5 0 0 1 4,-361" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.6"/>
+  <!-- Skalenstriche -->
+  <g stroke="#454F4A" stroke-opacity="0.8" stroke-linecap="round">
+    <path d="M -19,-44 h 11" stroke-width="2.8"/>
+    <path d="M -14,-60 h 6" stroke-width="2.6"/>
+    <path d="M -19,-76 h 11" stroke-width="2.8"/>
+    <path d="M -14,-92 h 6" stroke-width="2.6"/>
+    <path d="M -19,-108 h 11" stroke-width="2.8"/>
+    <path d="M -14,-124 h 6" stroke-width="2.6"/>
+    <path d="M -19,-140 h 11" stroke-width="2.8"/>
+    <path d="M -14,-156 h 6" stroke-width="2.6"/>
+    <path d="M -19,-172 h 11" stroke-width="2.8"/>
+    <path d="M -14,-188 h 6" stroke-width="2.6"/>
+    <path d="M -19,-204 h 11" stroke-width="2.8"/>
+    <path d="M -14,-220 h 6" stroke-width="2.6"/>
+    <path d="M -19,-236 h 11" stroke-width="2.8"/>
+    <path d="M -14,-252 h 6" stroke-width="2.6"/>
+    <path d="M -19,-268 h 11" stroke-width="2.8"/>
+    <path d="M -14,-284 h 6" stroke-width="2.6"/>
+    <path d="M -19,-300 h 11" stroke-width="2.8"/>
+    <path d="M -14,-316 h 6" stroke-width="2.6"/>
+    <path d="M -19,-332 h 11" stroke-width="2.8"/>
+  </g>
+  <g stroke="#454F4A" stroke-opacity="0.55" stroke-linecap="round" stroke-width="2.6">
+    <path d="M 8,-44 h 11"/><path d="M 8,-76 h 11"/><path d="M 8,-108 h 11"/><path d="M 8,-140 h 11"/>
+    <path d="M 8,-172 h 11"/><path d="M 8,-204 h 11"/><path d="M 8,-236 h 11"/><path d="M 8,-268 h 11"/>
+    <path d="M 8,-300 h 11"/><path d="M 8,-332 h 11"/>
+  </g>
+  <!-- Glasroehrchen -->
+  <rect x="-6.5" y="-344" width="13" height="326" rx="6.5" fill="#CFE0E2" opacity="0.55"/>
+  <rect x="-6.5" y="-344" width="13" height="326" rx="6.5" fill="url(#glasK)"/>
+  <!-- roter Faden mit Vorratsgefaess -->
+  <circle cx="0" cy="-18" r="10.5" fill="url(#b_rot)"/>
+  <rect x="-3.4" y="-112" width="6.8" height="96" rx="3.4" fill="url(#b_rot)"/>
+  <circle cx="0" cy="-18" r="10.5" fill="none" stroke="#6E0F0B" stroke-width="1.8" stroke-opacity="0.5"/>
+  <ellipse cx="-3.5" cy="-22" rx="3" ry="4" fill="#FFFFFF" opacity="0.5"/>
+  <!-- Glasglanz -->
+  <path d="M -3.6,-338 L -3.6,-120" stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.7"/>
+  <path d="M 4.4,-338 L 4.4,-30" stroke="#5E8288" stroke-width="2" stroke-opacity="0.4"/>
+  <rect x="-6.5" y="-344" width="13" height="326" rx="6.5" fill="none" stroke="#5E8288" stroke-width="1.8" stroke-opacity="0.4"/>
+  <!-- 3 warmer Rueckwurf unten / 4 Glanz oben links -->
+  <ellipse cx="0" cy="-8" rx="17" ry="6" fill="url(#stahlWarm)" opacity="0.5"/>
+  <rect x="-19" y="-348" width="6" height="320" rx="3" fill="#FFFFFF" opacity="0.5"/>
+  <ellipse cx="-15" cy="-300" rx="4.5" ry="40" fill="url(#glanz)"/>
+  <path d="M 19,-344 L 19,-30" stroke="#6E756D" stroke-width="4" stroke-opacity="0.28" stroke-linecap="round"/>
+</g>

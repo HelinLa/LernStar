@@ -1,0 +1,656 @@
+[
+ {
+  "sim": "beschleunigung",
+  "ueberschrift": "🚀 Beschleunigte Bewegung – v = a·t und s = ½a·t² messen",
+  "regler": [
+   {
+    "id": "bslA",
+    "beschriftung": "d\"> Beschleunigung a: 2,0 m/s²",
+    "bereich": {
+     "min": "0.5",
+     "max": "8",
+     "step": "0.5",
+     "start": "2"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "⏱ Lichtschranken-Messfahrt",
+    "ruft": "_bslMessen()"
+   },
+   {
+    "aufschrift": "📋 Beispielmessreihe",
+    "ruft": "_bslDemo()"
+   },
+   {
+    "aufschrift": "🗑 Tabelle leeren",
+    "ruft": "_bslClear()"
+   },
+   {
+    "aufschrift": "t → v",
+    "ruft": "_bslSetPreset(0)"
+   },
+   {
+    "aufschrift": "t → s",
+    "ruft": "_bslSetPreset(1)"
+   },
+   {
+    "aufschrift": "t² → s",
+    "ruft": "_bslSetPreset(2)"
+   },
+   {
+    "aufschrift": "ƒ Theoriefunktion",
+    "ruft": "_bslTheorieFn()"
+   },
+   {
+    "aufschrift": "Feld leeren",
+    "ruft": "_bslClearFn()"
+   }
+  ],
+  "hinweise": [
+   "Der Wagen startet aus der Ruhe. Jede Lichtschranke misst die Zeit und die Momentangeschwindigkeit. Danach mit einer anderen Beschleunigung wiederholen.",
+   "Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.",
+   "v = a·t (Gerade, Steigung a) | s = ½a·t² (Parabel → Gerade nach t²)"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung."
+   },
+   {
+    "einstellung": "t → v · mit Messreihe",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,9 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,46 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 2,016·x R² = 0,9999 · erwartet: 2,000 Beschleunigung a = Steigung der v-t-Geraden 2,02 m/s² · Literatur: 2,00 Abweichung 1,00 % v = a·t ⇒ a = Δv/Δt Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung."
+   },
+   {
+    "einstellung": "t → s · mit Messreihe",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,4 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,46 | 4,9 | ✕  ||  bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung."
+   },
+   {
+    "einstellung": "t² → s · mit Messreihe",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,13 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,001·x R² = 0,9999 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,00 m/s² · Literatur: 2,00 Abweichung 0,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "⏱ Lichtschranken-Messfahrt",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,004·x R² = 1,0000 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,01 m/s² · Literatur: 2,00 Abweichung 0,50 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "⏱ Lichtschranken-Messfahrt · nach 50 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,004·x R² = 1,0000 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,01 m/s² · Literatur: 2,00 Abweichung 0,50 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|255.50,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|263.50,180.00,4.00,0.00,6.28 | arc|281.50,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|272.50,156.00 | lineTo|305.52,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "⏱ Lichtschranken-Messfahrt · nach 75 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,004·x R² = 1,0000 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,01 m/s² · Literatur: 2,00 Abweichung 0,50 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|358.60,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|366.60,180.00,4.00,0.00,6.28 | arc|384.60,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|375.60,156.00 | lineTo|415.02,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,9 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "⏱ Lichtschranken-Messfahrt · nach 100 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,004·x R² = 1,0000 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,01 m/s² · Literatur: 2,00 Abweichung 0,50 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|18.26,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|26.26,180.00,4.00,0.00,6.28 | arc|44.26,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|35.26,156.00 | lineTo|40.12,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,6 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "⏱ Lichtschranken-Messfahrt · nach 125 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕  ||  bslFit: a = 2,0 m/s² · 6 Messwerte y = 1,004·x R² = 1,0000 · erwartet: 1,000 Beschleunigung a = 2 × Steigung 2,01 m/s² · Literatur: 2,00 Abweichung 0,50 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|41.21,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|49.21,180.00,4.00,0.00,6.28 | arc|67.21,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|58.21,156.00 | lineTo|69.48,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 1,0 | 0,5 | 0,99 | 1,0 | ✕ | 1,0 | 1,0 | 1,42 | 1,4 | ✕ | 1,0 | 2,0 | 1,99 | 2,0 | ✕ | 1,0 | 3,0 | 2,46 | 2,5 | ✕ | 1,0 | 4,5 | 3,01 | 3,0 | ✕ | 1,0 | 6,0 | 3,48 | 3,5 | ✕ | 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 0,99 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 4,0 | 0,5 | 0,50 | 2,0 | ✕ | 4,0 | 1,0 | 0,70 | 2,9 | ✕ | 4,0 | 2,0 | 1,00 | 4,0 | ✕ | 4,0 | 3,0 | 1,23 | 4,9 | ✕ | 4,0 | 4,5 | 1,50 | 6,0 | ✕ | 4,0 | 6,0 | 1,73 | 6,9 | ✕  ||  bslFit: a = 1,0 m/s² · 6 Messwerte y = 0,4964·x R² = 1,0000 · erwartet: 0,5000 a = 2,0 m/s² · 12 Messwerte y = 1,005·x R² = 1,0000 · erwartet: 1,000 a = 4,0 m/s² · 6 Messwerte y = 2,001·x R² = 1,0000 · erwartet: 2,000 Beschleunigung a = 2 × Steigung 0,99 m/s² · Literatur: 1,00 Abweichung 1,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe · nach 50 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 1,0 | 0,5 | 0,99 | 1,0 | ✕ | 1,0 | 1,0 | 1,42 | 1,4 | ✕ | 1,0 | 2,0 | 1,99 | 2,0 | ✕ | 1,0 | 3,0 | 2,46 | 2,5 | ✕ | 1,0 | 4,5 | 3,01 | 3,0 | ✕ | 1,0 | 6,0 | 3,48 | 3,5 | ✕ | 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 0,99 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 4,0 | 0,5 | 0,50 | 2,0 | ✕ | 4,0 | 1,0 | 0,70 | 2,9 | ✕ | 4,0 | 2,0 | 1,00 | 4,0 | ✕ | 4,0 | 3,0 | 1,23 | 4,9 | ✕ | 4,0 | 4,5 | 1,50 | 6,0 | ✕ | 4,0 | 6,0 | 1,73 | 6,9 | ✕  ||  bslFit: a = 1,0 m/s² · 6 Messwerte y = 0,4964·x R² = 1,0000 · erwartet: 0,5000 a = 2,0 m/s² · 12 Messwerte y = 1,005·x R² = 1,0000 · erwartet: 1,000 a = 4,0 m/s² · 6 Messwerte y = 2,001·x R² = 1,0000 · erwartet: 2,000 Beschleunigung a = 2 × Steigung 0,99 m/s² · Literatur: 1,00 Abweichung 1,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|141.76,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|149.76,180.00,4.00,0.00,6.28 | arc|167.76,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|158.76,156.00 | lineTo|182.82,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe · nach 75 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 1,0 | 0,5 | 0,99 | 1,0 | ✕ | 1,0 | 1,0 | 1,42 | 1,4 | ✕ | 1,0 | 2,0 | 1,99 | 2,0 | ✕ | 1,0 | 3,0 | 2,46 | 2,5 | ✕ | 1,0 | 4,5 | 3,01 | 3,0 | ✕ | 1,0 | 6,0 | 3,48 | 3,5 | ✕ | 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 0,99 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 4,0 | 0,5 | 0,50 | 2,0 | ✕ | 4,0 | 1,0 | 0,70 | 2,9 | ✕ | 4,0 | 2,0 | 1,00 | 4,0 | ✕ | 4,0 | 3,0 | 1,23 | 4,9 | ✕ | 4,0 | 4,5 | 1,50 | 6,0 | ✕ | 4,0 | 6,0 | 1,73 | 6,9 | ✕  ||  bslFit: a = 1,0 m/s² · 6 Messwerte y = 0,4964·x R² = 1,0000 · erwartet: 0,5000 a = 2,0 m/s² · 12 Messwerte y = 1,005·x R² = 1,0000 · erwartet: 1,000 a = 4,0 m/s² · 6 Messwerte y = 2,001·x R² = 1,0000 · erwartet: 2,000 Beschleunigung a = 2 × Steigung 0,99 m/s² · Literatur: 1,00 Abweichung 1,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|219.36,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|227.36,180.00,4.00,0.00,6.28 | arc|245.36,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|236.36,156.00 | lineTo|266.82,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe · nach 100 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 1,0 | 0,5 | 0,99 | 1,0 | ✕ | 1,0 | 1,0 | 1,42 | 1,4 | ✕ | 1,0 | 2,0 | 1,99 | 2,0 | ✕ | 1,0 | 3,0 | 2,46 | 2,5 | ✕ | 1,0 | 4,5 | 3,01 | 3,0 | ✕ | 1,0 | 6,0 | 3,48 | 3,5 | ✕ | 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 0,99 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 4,0 | 0,5 | 0,50 | 2,0 | ✕ | 4,0 | 1,0 | 0,70 | 2,9 | ✕ | 4,0 | 2,0 | 1,00 | 4,0 | ✕ | 4,0 | 3,0 | 1,23 | 4,9 | ✕ | 4,0 | 4,5 | 1,50 | 6,0 | ✕ | 4,0 | 6,0 | 1,73 | 6,9 | ✕  ||  bslFit: a = 1,0 m/s² · 6 Messwerte y = 0,4964·x R² = 1,0000 · erwartet: 0,5000 a = 2,0 m/s² · 12 Messwerte y = 1,005·x R² = 1,0000 · erwartet: 1,000 a = 4,0 m/s² · 6 Messwerte y = 2,001·x R² = 1,0000 · erwartet: 2,000 Beschleunigung a = 2 × Steigung 0,99 m/s² · Literatur: 1,00 Abweichung 1,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|315.17,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|323.17,180.00,4.00,0.00,6.28 | arc|341.17,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|332.17,156.00 | lineTo|369.04,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,6 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe · nach 125 Frames",
+    "text": "bslTbody: 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 1,00 | 2,0 | ✕ | 2,0 | 2,0 | 1,42 | 2,8 | ✕ | 2,0 | 3,0 | 1,73 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,3 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 1,0 | 0,5 | 0,99 | 1,0 | ✕ | 1,0 | 1,0 | 1,42 | 1,4 | ✕ | 1,0 | 2,0 | 1,99 | 2,0 | ✕ | 1,0 | 3,0 | 2,46 | 2,5 | ✕ | 1,0 | 4,5 | 3,01 | 3,0 | ✕ | 1,0 | 6,0 | 3,48 | 3,5 | ✕ | 2,0 | 0,5 | 0,71 | 1,4 | ✕ | 2,0 | 1,0 | 0,99 | 2,0 | ✕ | 2,0 | 2,0 | 1,41 | 2,8 | ✕ | 2,0 | 3,0 | 1,72 | 3,5 | ✕ | 2,0 | 4,5 | 2,12 | 4,2 | ✕ | 2,0 | 6,0 | 2,44 | 4,9 | ✕ | 4,0 | 0,5 | 0,50 | 2,0 | ✕ | 4,0 | 1,0 | 0,70 | 2,9 | ✕ | 4,0 | 2,0 | 1,00 | 4,0 | ✕ | 4,0 | 3,0 | 1,23 | 4,9 | ✕ | 4,0 | 4,5 | 1,50 | 6,0 | ✕ | 4,0 | 6,0 | 1,73 | 6,9 | ✕  ||  bslFit: a = 1,0 m/s² · 6 Messwerte y = 0,4964·x R² = 1,0000 · erwartet: 0,5000 a = 2,0 m/s² · 12 Messwerte y = 1,005·x R² = 1,0000 · erwartet: 1,000 a = 4,0 m/s² · 6 Messwerte y = 2,001·x R² = 1,0000 · erwartet: 2,000 Beschleunigung a = 2 × Steigung 0,99 m/s² · Literatur: 1,00 Abweichung 1,00 % s = ½·a·t² ⇒ a = 2·(s/t²) Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|14.18,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|22.18,180.00,4.00,0.00,6.28 | arc|40.18,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|31.18,156.00 | lineTo|33.48,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|63.73,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|71.73,180.00,4.00,0.00,6.28 | arc|89.73,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|80.73,156.00 | lineTo|95.83,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,9 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|115.82,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|123.82,180.00,4.00,0.00,6.28 | arc|141.82,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|132.82,156.00 | lineTo|154.33,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,7 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|186.13,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|194.13,180.00,4.00,0.00,6.28 | arc|212.13,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|203.13,156.00 | lineTo|231.04,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,5 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|274.66,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|282.66,180.00,4.00,0.00,6.28 | arc|300.66,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|291.66,156.00 | lineTo|325.96,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → v",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung."
+   },
+   {
+    "einstellung": "t → v · nach 50 Frames",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|21.39,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|29.39,180.00,4.00,0.00,6.28 | arc|47.39,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|38.39,156.00 | lineTo|44.54,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → v · nach 75 Frames",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|47.99,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|55.99,180.00,4.00,0.00,6.28 | arc|73.99,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|64.99,156.00 | lineTo|77.53,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,6 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → v · nach 100 Frames",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|92.80,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|100.80,180.00,4.00,0.00,6.28 | arc|118.80,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|109.80,156.00 | lineTo|128.74,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → v · nach 125 Frames",
+    "text": "bslFit: Ursprungsgerade ⇒ v ~ t. Die Steigung ist direkt die Beschleunigung a = Δv/Δt. Aus der Ruhe heraus gilt v = a·t.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) v(t) = a · t Steigung = a = 2,0 m/s² (aktuell gewählt) Die Geschwindigkeit wächst gleichmäßig mit der Zeit. Die Steigung der v-t-Geraden ist die Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|155.82,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|163.82,180.00,4.00,0.00,6.28 | arc|181.82,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|172.82,156.00 | lineTo|198.17,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → s",
+    "text": "bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung."
+   },
+   {
+    "einstellung": "t → s · nach 50 Frames",
+    "text": "bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|336.52,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|344.52,180.00,4.00,0.00,6.28 | arc|362.52,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|353.52,156.00 | lineTo|391.66,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → s · nach 75 Frames",
+    "text": "bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|15.86,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|23.86,180.00,4.00,0.00,6.28 | arc|41.86,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|32.86,156.00 | lineTo|36.44,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → s · nach 100 Frames",
+    "text": "bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|35.16,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|43.16,180.00,4.00,0.00,6.28 | arc|61.16,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|52.16,156.00 | lineTo|62.15,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t → s · nach 125 Frames",
+    "text": "bslFit: Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.  ||  bslTheo: Erwarteter Funktionstyp quadratische Funktion (Parabel) s(t) = ½ · a · t² a = 2,0 m/s² Der Weg wächst quadratisch mit der Zeit – typisch für gleichmäßige Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|72.69,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|80.69,180.00,4.00,0.00,6.28 | arc|98.69,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|89.69,156.00 | lineTo|106.07,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t² → s",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "t² → s · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|202.38,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|210.38,180.00,4.00,0.00,6.28 | arc|228.38,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|219.38,156.00 | lineTo|248.57,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,6 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t² → s · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|294.55,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|302.55,180.00,4.00,0.00,6.28 | arc|320.55,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|311.55,156.00 | lineTo|347.14,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t² → s · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|13.23,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|21.23,180.00,4.00,0.00,6.28 | arc|39.23,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|30.23,156.00 | lineTo|31.26,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "t² → s · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|25.26,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|33.26,180.00,4.00,0.00,6.28 | arc|51.26,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|42.26,156.00 | lineTo|49.68,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,9 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² eingesetzt: f(x) = 1*x Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² eingesetzt: f(x) = 1*x Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|103.95,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|111.95,180.00,4.00,0.00,6.28 | arc|129.95,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|120.95,156.00 | lineTo|141.17,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,5 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² eingesetzt: f(x) = 1*x Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|170.61,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|178.61,180.00,4.00,0.00,6.28 | arc|196.61,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|187.61,156.00 | lineTo|214.24,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² eingesetzt: f(x) = 1*x Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|255.50,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|263.50,180.00,4.00,0.00,6.28 | arc|281.50,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|272.50,156.00 | lineTo|305.52,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² eingesetzt: f(x) = 1*x Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|358.60,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|366.60,180.00,4.00,0.00,6.28 | arc|384.60,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|375.60,156.00 | lineTo|415.02,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,9 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "Feld leeren",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "Feld leeren · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|41.21,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|49.21,180.00,4.00,0.00,6.28 | arc|67.21,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|58.21,156.00 | lineTo|69.48,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "Feld leeren · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|82.38,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|90.38,180.00,4.00,0.00,6.28 | arc|108.38,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|99.38,156.00 | lineTo|117.04,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "Feld leeren · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|141.76,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|149.76,180.00,4.00,0.00,6.28 | arc|167.76,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|158.76,156.00 | lineTo|182.82,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "Feld leeren · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|219.36,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|227.36,180.00,4.00,0.00,6.28 | arc|245.36,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|236.36,156.00 | lineTo|266.82,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 0.5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 0.5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|117.05,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|125.05,180.00,4.00,0.00,6.28 | arc|143.05,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|134.05,156.00 | lineTo|144.87,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 0,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 0.5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|150.11,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|158.11,180.00,4.00,0.00,6.28 | arc|176.11,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|167.11,156.00 | lineTo|179.53,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 0,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,6 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 0.5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|187.73,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|195.73,180.00,4.00,0.00,6.28 | arc|213.73,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|204.73,156.00 | lineTo|218.74,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 0,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 0.5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|229.89,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|237.89,180.00,4.00,0.00,6.28 | arc|255.89,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|246.89,156.00 | lineTo|262.51,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 0,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1.5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1.5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|39.24,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|47.24,180.00,4.00,0.00,6.28 | arc|65.24,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|56.24,156.00 | lineTo|65.65,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1.5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|72.85,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|80.85,180.00,4.00,0.00,6.28 | arc|98.85,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|89.85,156.00 | lineTo|104.06,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1.5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|120.12,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|128.12,180.00,4.00,0.00,6.28 | arc|146.12,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|137.12,156.00 | lineTo|156.13,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1.5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|181.05,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|189.05,180.00,4.00,0.00,6.28 | arc|207.05,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|198.05,156.00 | lineTo|221.86,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 2.5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 2.5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|30.50,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|38.50,180.00,4.00,0.00,6.28 | arc|56.50,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|47.50,156.00 | lineTo|57.42,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 2.5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|70.12,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|78.12,180.00,4.00,0.00,6.28 | arc|96.12,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|87.12,156.00 | lineTo|105.04,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 2.5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|132.51,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|140.51,180.00,4.00,0.00,6.28 | arc|158.51,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|149.51,156.00 | lineTo|175.43,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 2.5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|217.67,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|225.67,180.00,4.00,0.00,6.28 | arc|243.67,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|234.67,156.00 | lineTo|268.59,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 2,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 3.5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 3.5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|44.24,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|52.24,180.00,4.00,0.00,6.28 | arc|70.24,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|61.24,156.00 | lineTo|76.92,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 3,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 3.5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|104.81,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|112.81,180.00,4.00,0.00,6.28 | arc|130.81,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|121.81,156.00 | lineTo|148.69,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 3,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 3.5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|197.25,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|205.25,180.00,4.00,0.00,6.28 | arc|223.25,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|214.25,156.00 | lineTo|252.33,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 3,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 3.5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 1,75 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|321.57,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|329.57,180.00,4.00,0.00,6.28 | arc|347.57,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|338.57,156.00 | lineTo|387.85,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 3,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 6,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 4.5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 4.5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|91.72,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|99.72,180.00,4.00,0.00,6.28 | arc|117.72,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|108.72,156.00 | lineTo|136.95,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 4,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,5 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 4.5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|192.55,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|200.55,180.00,4.00,0.00,6.28 | arc|218.55,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|209.55,156.00 | lineTo|252.17,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 4,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 5,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 4.5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|334.35,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|342.35,180.00,4.00,0.00,6.28 | arc|360.35,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|351.35,156.00 | lineTo|408.38,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 4,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 7,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 4.5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,25 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|22.48,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|30.48,180.00,4.00,0.00,6.28 | arc|48.48,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|39.48,156.00 | lineTo|49.27,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 4,5 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 5",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 5 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|176.54,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|184.54,180.00,4.00,0.00,6.28 | arc|202.54,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|193.54,156.00 | lineTo|236.42,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 5,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 5,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 5 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|321.35,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|329.35,180.00,4.00,0.00,6.28 | arc|347.35,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|338.35,156.00 | lineTo|397.23,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 5,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 7,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 5 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|22.33,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|30.33,180.00,4.00,0.00,6.28 | arc|48.33,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|39.33,156.00 | lineTo|49.57,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 5,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 1,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 5 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 2,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|74.24,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|82.24,180.00,4.00,0.00,6.28 | arc|100.24,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|91.24,156.00 | lineTo|117.48,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 5,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 6",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 6 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|375.02,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|383.02,180.00,4.00,0.00,6.28 | arc|401.02,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|392.02,156.00 | lineTo|461.91,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 6,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 8,7 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 6 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|38.18,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|46.18,180.00,4.00,0.00,6.28 | arc|64.18,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|55.18,156.00 | lineTo|73.61,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 6,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 6 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|117.96,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|125.96,180.00,4.00,0.00,6.28 | arc|143.96,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|134.96,156.00 | lineTo|172.60,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 6,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,7 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 6 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|252.39,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|260.39,180.00,4.00,0.00,6.28 | arc|278.39,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|269.39,156.00 | lineTo|326.23,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 6,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 7,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 7",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 7 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|86.65,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|94.65,180.00,4.00,0.00,6.28 | arc|112.65,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|103.65,156.00 | lineTo|137.70,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 7,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 4,3 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 7 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|215.43,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|223.43,180.00,4.00,0.00,6.28 | arc|241.43,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|232.43,156.00 | lineTo|288.88,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 7,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 7,1 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 7 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|13.20,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|21.20,180.00,4.00,0.00,6.28 | arc|39.20,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|30.20,156.00 | lineTo|32.00,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 7,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 0,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 7 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 3,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|50.18,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|58.18,180.00,4.00,0.00,6.28 | arc|76.18,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|67.18,156.00 | lineTo|91.37,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 7,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 8",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 4,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 8 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 4,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|358.60,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|366.60,180.00,4.00,0.00,6.28 | arc|384.60,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|375.60,156.00 | lineTo|445.60,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 8,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 9,9 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 8 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 4,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|41.21,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|49.21,180.00,4.00,0.00,6.28 | arc|67.21,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|58.21,156.00 | lineTo|80.74,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 8,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 8 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 4,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|141.76,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|149.76,180.00,4.00,0.00,6.28 | arc|167.76,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|158.76,156.00 | lineTo|206.89,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 8,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 6,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 8 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 4,00 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|315.17,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|323.17,180.00,4.00,0.00,6.28 | arc|341.17,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|332.17,156.00 | lineTo|402.17,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 8,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 9,2 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung."
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1 · nach 50 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|121.45,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|129.45,180.00,4.00,0.00,6.28 | arc|147.45,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|138.45,156.00 | lineTo|154.06,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,0 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1 · nach 75 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|170.45,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|178.45,180.00,4.00,0.00,6.28 | arc|196.45,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|187.45,156.00 | lineTo|206.26,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,4 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1 · nach 100 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|228.55,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|236.55,180.00,4.00,0.00,6.28 | arc|254.55,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|245.55,156.00 | lineTo|267.57,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 2,8 m/s|30.00|40.00"
+   },
+   {
+    "einstellung": "d\"> Beschleunigung a: 2,0 m/s² = 1 · nach 125 Frames",
+    "text": "bslFit: Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.  ||  bslTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) s(t²) = (a/2) · t² Steigung = a/2 = 0,50 m/s² Durch das Quadrieren der Zeit wird aus der Parabel eine Gerade durch den Ursprung. Die Steigung ist die halbe Beschleunigung.",
+    "bild": "set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|4,5|286.15|202.00 | set:strokeStyle=#cbd5e1 | set:lineWidth=2 | beginPath| | moveTo|371.54,134.00 | lineTo|371.54,180.00 | stroke| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=center | fillText|6,0|371.54|202.00 | set:fillStyle=#64748b | set:font=700 10px sans-serif | set:textAlign=left | fillText|Lichtschranken bei s (m):|30.00|220.00 | set:fillStyle=#7c3aed | beginPath| | roundRect|295.77,162.00,34.00,18.00,4.00 | fill| | set:fillStyle=#1e293b | beginPath| | arc|303.77,180.00,4.00,0.00,6.28 | arc|321.77,180.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#16a34a | set:lineWidth=3 | beginPath| | moveTo|312.77,156.00 | lineTo|337.98,156.00 | stroke| | set:fillStyle=#1e293b | set:font=700 12px sans-serif | set:textAlign=left | fillText|a = 1,0 m/s²|30.00|22.00 | set:fillStyle=#16a34a | set:font=11px sans-serif | fillText|v = 3,2 m/s|30.00|40.00"
+   }
+  ],
+  "bildtexte": [
+   "0,0",
+   "0,2",
+   "0,4",
+   "0,6",
+   "0,8",
+   "1,0",
+   "t in s",
+   "v in m/s",
+   "Noch keine Messwerte aufgenommen",
+   "0,5",
+   "2,0",
+   "3,0",
+   "4,5",
+   "6,0",
+   "Lichtschranken bei s (m):",
+   "a = 2,0 m/s²",
+   "v = 0,0 m/s",
+   "v = 0,1 m/s",
+   "0,1",
+   "0,3",
+   "0,7",
+   "1,2",
+   "1,4",
+   "1,6",
+   "1,5",
+   "2,5",
+   "1,8",
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "v = 0,2 m/s",
+   "v = 0,3 m/s",
+   "v = 0,4 m/s",
+   "v = 0,5 m/s",
+   "v = 0,6 m/s",
+   "v = 0,7 m/s",
+   "v = 0,8 m/s",
+   "v = 0,9 m/s",
+   "s in m",
+   "6",
+   "v = 1,0 m/s",
+   "v = 1,1 m/s",
+   "v = 1,2 m/s",
+   "v = 1,3 m/s",
+   "v = 1,4 m/s",
+   "v = 1,5 m/s",
+   "v = 1,6 m/s",
+   "v = 1,7 m/s",
+   "t² in s²",
+   "v = 1,8 m/s",
+   "v = 1,9 m/s",
+   "v = 2,0 m/s",
+   "v = 2,1 m/s",
+   "v = 2,2 m/s",
+   "v = 2,3 m/s",
+   "v = 2,4 m/s",
+   "v = 2,5 m/s",
+   "v = 2,6 m/s",
+   "v = 2,7 m/s",
+   "v = 2,8 m/s",
+   "v = 2,9 m/s",
+   "v = 3,0 m/s",
+   "v = 3,1 m/s",
+   "v = 3,2 m/s",
+   "v = 3,3 m/s",
+   "v = 3,4 m/s",
+   "v = 3,5 m/s",
+   "v = 3,6 m/s",
+   "v = 3,7 m/s",
+   "v = 3,8 m/s",
+   "v = 3,9 m/s",
+   "v = 4,0 m/s",
+   "v = 4,1 m/s",
+   "v = 4,2 m/s",
+   "v = 4,3 m/s",
+   "v = 4,4 m/s",
+   "v = 4,5 m/s",
+   "v = 4,6 m/s",
+   "v = 4,7 m/s",
+   "v = 4,8 m/s",
+   "v = 4,9 m/s",
+   "v = 5,0 m/s",
+   "v = 5,1 m/s",
+   "8",
+   "10",
+   "12",
+   "a = 0,5 m/s²",
+   "a = 1,5 m/s²",
+   "a = 2,5 m/s²",
+   "v = 5,2 m/s",
+   "v = 5,3 m/s",
+   "v = 5,4 m/s",
+   "v = 5,5 m/s",
+   "v = 5,6 m/s",
+   "v = 5,7 m/s",
+   "a = 3,5 m/s²",
+   "v = 6,0 m/s",
+   "v = 6,1 m/s",
+   "v = 6,2 m/s",
+   "v = 6,3 m/s",
+   "v = 6,4 m/s",
+   "v = 6,5 m/s",
+   "v = 6,6 m/s",
+   "v = 6,7 m/s",
+   "v = 5,8 m/s",
+   "v = 5,9 m/s",
+   "a = 4,5 m/s²",
+   "v = 6,8 m/s",
+   "v = 6,9 m/s",
+   "v = 7,0 m/s",
+   "v = 7,1 m/s",
+   "v = 7,2 m/s",
+   "v = 7,3 m/s",
+   "v = 7,4 m/s",
+   "v = 7,5 m/s",
+   "v = 7,6 m/s",
+   "a = 5,0 m/s²",
+   "v = 7,7 m/s",
+   "v = 7,8 m/s",
+   "v = 7,9 m/s",
+   "v = 8,0 m/s",
+   "a = 6,0 m/s²",
+   "v = 8,1 m/s",
+   "v = 8,2 m/s",
+   "v = 8,3 m/s",
+   "v = 8,4 m/s",
+   "v = 8,5 m/s",
+   "v = 8,6 m/s",
+   "v = 8,7 m/s",
+   "a = 7,0 m/s²",
+   "v = 8,8 m/s",
+   "v = 9,0 m/s",
+   "v = 9,1 m/s",
+   "v = 9,2 m/s",
+   "v = 9,3 m/s",
+   "v = 9,4 m/s",
+   "v = 9,5 m/s",
+   "a = 8,0 m/s²",
+   "v = 9,6 m/s",
+   "v = 9,7 m/s",
+   "v = 9,9 m/s",
+   "v = 10,0 m/s",
+   "v = 10,1 m/s",
+   "a = 1,0 m/s²"
+  ]
+ }
+]

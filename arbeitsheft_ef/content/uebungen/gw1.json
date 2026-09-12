@@ -1,0 +1,72 @@
+{
+ "id": "gw1",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "E11",
+  "E10"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Überstreicht der Zeiger von der Drehachse zum Körper in gleichen Zeiten gleiche Winkel, so ist der Quotient Δφ/Δt konstant; er heißt",
+   "loesung": "Winkelgeschwindigkeit ω",
+   "post": "und wird in 1 rad/s angegeben."
+  },
+  {
+   "pre": "Der Winkel wird dabei im Bogenmaß gemessen; ein voller Umlauf entspricht",
+   "loesung": "2π rad",
+   "post": "."
+  },
+  {
+   "pre": "Im Bogenmaß gilt für den Bogen s = φ · r. Setzt man das in Δs/Δt ein, so folgt",
+   "loesung": "v = ω · r",
+   "post": "; dabei ist r der Abstand des Punktes von der Drehachse."
+  },
+  {
+   "pre": "Bei der gleichförmigen Kreisbewegung bleibt der Betrag der Bahngeschwindigkeit unverändert, ihre Richtung nicht: Der Geschwindigkeitsvektor zeigt in jedem Augenblick",
+   "loesung": "tangential zur Bahn",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Weil Mira weiter innen sitzt als Tobias, überstreicht ihr Sitz in jeder Sekunde einen kleineren Winkel.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Bei festem Radius wächst der in der Zeile v≈ angezeigte Wert proportional zur eingestellten Winkelgeschwindigkeit.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die Kurve im Diagramm „Bahngeschwindigkeit v“ verläuft waagerecht, obwohl der Ball seine Bewegungsrichtung fortlaufend ändert.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Zieht man bei ω = 7 rad/s den Regler „Radius r“ von 70 px auf 40 px, so wird der grüne Pfeil am Ball entsprechend kürzer.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias verkleinert bei ω = 7 rad/s den Radius von 70 px auf 40 px und liest unmittelbar danach den obersten Achsenwert im Diagramm „Bahngeschwindigkeit v“ ab. Dort steht 490,0. Diesen Wert notiert er als neues Messergebnis. Welcher Einwand trifft zu?",
+  "optionen": [
+   "Die Anzeige ist brauchbar, sie führt nur eine andere Einheit: 490,0 px/s entsprechen geteilt durch 10 einer Bahngeschwindigkeit von 49,0.",
+   "Das Diagramm zeigt stets den größten bisher erreichten Wert und behält ihn nach dem Verkleinern des Radius dauerhaft bei.",
+   "Das Diagramm skaliert sich selbst und hinkt rund fünf Sekunden nach; 490,0 gehört noch zu r = 70 px. Abgelesen wird die Zeile v≈ mit 28,0."
+  ],
+  "richtig": 2,
+  "erklaerung": "Die Zahl 490,0 ist nicht falsch, sondern veraltet: Sie gehört zur vorigen Reglerstellung r = 70 px, in der die Zeile v≈ den Wert 49,0 trägt – die stehende Achsenanzeige führt in px/s den zehnfachen Wert. Das Diagramm skaliert sich selbst und braucht rund fünf Sekunden, bis es der neuen Stellung folgt; danach steht dort 280,0, passend zu v≈ 28,0. Einen Höchstwert behält es nicht bei, die Kurve liegt anschließend wieder am oberen Rand. Verlässlich ist deshalb allein die Zeile v≈ im Anzeigefeld, denn sie ändert sich sofort mit dem Regler."
+ },
+ "offen": {
+  "frage": "Tobias hält als Ergebnis fest: „Der Wert der Zeile v≈ geteilt durch ω ergibt bei r = 70 px jedes Mal 7,0 – das ist genau der eingestellte Radius.“ Beurteile diese Aussage. Erkläre, warum der Quotient 7,0 und nicht 70 beträgt, und begründe mit v = ω · r, welche Einheit die Zeile v≈ trägt, obwohl dort keine angegeben ist.",
+  "prompt": "Tobias hält als Ergebnis fest: „Der Wert der Zeile v≈ geteilt durch ω ergibt bei r = 70 px jedes Mal 7,0 – das ist genau der eingestellte Radius.“ Beurteile diese Aussage. Erkläre, warum der Quotient 7,0 und nicht 70 beträgt, und begründe mit v = ω · r, welche Einheit die Zeile v≈ trägt, obwohl dort keine angegeben ist.",
+  "zeilen": 4,
+  "loesung": "Die Messung stimmt, die Deutung nur zur Hälfte. Aus v = ω · r folgt r = v/ω, der Quotient ist also tatsächlich der Radius – aber nicht die am Regler abgelesene Zahl in px. Die Simulation zeichnet 10 px als 1 m, die 70 px stehen deshalb für 7,0 m, und genau diese Zahl erscheint: 21,0 : 3 rad/s = 7,0, ebenso 42,0 : 6 rad/s = 7,0 und 49,0 : 7 rad/s = 7,0. Bei 40 px, also 4,0 m, ergibt sich 28,0 : 7 rad/s = 4,0. Weil der Winkel im Bogenmaß als Verhältnis zweier Längen gebildet wird, trägt ω · r die Einheit m/s; die Zeile v≈ gibt also Meter pro Sekunde an, auch ohne aufgedruckte Einheit. Tobias muss seinen Satz um den Maßstab ergänzen: Der Quotient ist der Radius in Metern."
+ }
+}

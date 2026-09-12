@@ -1,0 +1,185 @@
+[
+ {
+  "sim": "himmelskoerper",
+  "ueberschrift": "✨ Sonne, Mond und Sterne – was leuchtet am Himmel?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "☀️ Sonne",
+    "ruft": "_hksSel('sonne')"
+   },
+   {
+    "aufschrift": "⭐ Stern",
+    "ruft": "_hksSel('stern')"
+   },
+   {
+    "aufschrift": "🌙 Mond",
+    "ruft": "_hksSel('mond')"
+   },
+   {
+    "aufschrift": "🪐 Planet",
+    "ruft": "_hksSel('planet')"
+   },
+   {
+    "aufschrift": "🌑 Sonnenlicht abdecken",
+    "ruft": "_hksLicht()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_hksReset()"
+   },
+   {
+    "aufschrift": "Mond und Planeten",
+    "ruft": "_hksAns(0,0)"
+   },
+   {
+    "aufschrift": "Sonne und Sterne",
+    "ruft": "_hksAns(0,1)"
+   },
+   {
+    "aufschrift": "Nur der Mond",
+    "ruft": "_hksAns(0,2)"
+   },
+   {
+    "aufschrift": "Er leuchtet selbst",
+    "ruft": "_hksAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Sonne beleuchtet ihn",
+    "ruft": "_hksAns(1,1)"
+   },
+   {
+    "aufschrift": "Er ist aus Feuer",
+    "ruft": "_hksAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine ferne Sonne",
+    "ruft": "_hksAns(2,0)"
+   },
+   {
+    "aufschrift": "Ein beleuchteter Felsen",
+    "ruft": "_hksAns(2,1)"
+   },
+   {
+    "aufschrift": "Ein Planet",
+    "ruft": "_hksAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_hksSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_hksSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_hksSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('himmel')"
+   }
+  ],
+  "hinweise": [
+   "Tippe einen Himmelskörper an. Schiebe dann die Blende vor die Sonne – sie fängt das Sonnenlicht ab. Welche Körper leuchten weiter – und welche werden sofort dunkel?",
+   "Selbstleuchter geben eigenes Licht ab: die Sonne und alle Sterne (Sterne sind ferne Sonnen). Mond und Planeten leuchten nicht selbst – wir sehen sie nur, weil die Sonne sie beleuchtet.",
+   "Sonnenlicht abgedeckt → nur Sonne & Sterne leuchten weiter, Mond & Planet sind sofort dunkel."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie."
+   },
+   {
+    "einstellung": "☀️ Sonne",
+    "text": "hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie."
+   },
+   {
+    "einstellung": "⭐ Stern",
+    "text": "hksStatus: ⭐ Sterne sind ferne Sonnen – sie leuchten selbst (Selbstleuchter)."
+   },
+   {
+    "einstellung": "🌙 Mond",
+    "text": "hksStatus: 🌙 Der Mond leuchtet nicht selbst. Wir sehen ihn nur, weil die Sonne ihn beleuchtet."
+   },
+   {
+    "einstellung": "🪐 Planet",
+    "text": "hksStatus: 🪐 Planeten leuchten nicht selbst. Sie werden von der Sonne beleuchtet."
+   },
+   {
+    "einstellung": "🌑 Sonnenlicht abdecken",
+    "text": "hksLicht: ☀️ Sonnenlicht wieder freigeben  ||  hksStatus: 🪐 Planeten leuchten nicht selbst. Sie werden von der Sonne beleuchtet. Die Blende deckt das Sonnenlicht ab: Zu ihm kommt kein Licht mehr – er ist sofort dunkel und leuchtet nicht nach."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie."
+   },
+   {
+    "einstellung": "Mond und Planeten",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Diese leuchten nicht selbst – sie werden beleuchtet."
+   },
+   {
+    "einstellung": "Sonne und Sterne",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✓ Richtig! Sonne und Sterne sind Selbstleuchter."
+   },
+   {
+    "einstellung": "Nur der Mond",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst."
+   },
+   {
+    "einstellung": "Er leuchtet selbst",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond leuchtet nicht selbst."
+   },
+   {
+    "einstellung": "Die Sonne beleuchtet ihn",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✓ Richtig! Wir sehen das von ihm zurückgeworfene Sonnenlicht."
+   },
+   {
+    "einstellung": "Er ist aus Feuer",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer."
+   },
+   {
+    "einstellung": "Eine ferne Sonne",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✓ Richtig! Sterne sind sehr weit entfernte Sonnen."
+   },
+   {
+    "einstellung": "Ein beleuchteter Felsen",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein beleuchteter Felsen leuchtet nicht selbst – ein Stern schon."
+   },
+   {
+    "einstellung": "Ein Planet",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein Planet leuchtet nicht selbst, ein Stern schon."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein Planet leuchtet nicht selbst, ein Stern schon.  ||  hksSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein Planet leuchtet nicht selbst, ein Stern schon.  ||  hksSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein Planet leuchtet nicht selbst, ein Stern schon."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "hksLicht: 🌑 Sonnenlicht abdecken  ||  hksStatus: ☀️ Die Sonne ist ein Stern und leuchtet selbst (Selbstleuchter). Auch ohne fremdes Licht strahlt sie.  ||  hksFb0: ✗ Der Mond leuchtet gerade nicht selbst.  ||  hksFb1: ✗ Der Mond besteht aus Gestein, nicht aus Feuer.  ||  hksFb2: ✗ Ein Planet leuchtet nicht selbst, ein Stern schon."
+   }
+  ],
+  "bildtexte": [
+   "Sonnenlicht scheint",
+   "Sonne: leuchtet selbst",
+   "Die Sonne ist ein Stern – nur ganz nah bei uns",
+   "Stern: leuchtet selbst",
+   "Winziger Punkt: sein Licht zittert in unserer Luft",
+   "Mond: wird beleuchtet",
+   "Läuft um die Erde – und hat kein eigenes Licht",
+   "Planet: wird beleuchtet",
+   "Kleines Scheibchen statt Punkt: funkelt kaum",
+   "Blende deckt das Sonnenlicht ab",
+   "Kein Sonnenlicht mehr – sofort dunkel, kein Nachleuchten"
+  ]
+ }
+]

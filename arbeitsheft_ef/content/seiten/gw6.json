@@ -1,0 +1,85 @@
+{
+ "id": "gw6",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Vier Orte, ein Feld",
+ "problem": "In einem Video über die Raumstation ISS schwebt eine Astronautin durch das Labormodul. Der Kommentar sagt: Dort oben gebe es keine Schwerkraft mehr. Tobias findet das einleuchtend, die Station sei ja im Weltall. Mira wird misstrauisch: Die Bahnhöhe von 400 Kilometern sei gegen den Erdradius von 6371 Kilometern verschwindend wenig. Ein Datenblatt mit vier Abständen soll entscheiden.",
+ "frage": "Wie stark ist das Feld der Erde dort, wo Menschen schwerelos schweben?",
+ "auftrag": "Vergleiche die vier Feldstärken des Datenblatts und prüfe, ob in der Bahnhöhe der ISS überhaupt noch ein Gravitationsfeld vorhanden ist.",
+ "predict": [
+  "Ein Feld reicht nur begrenzt weit. In 400 km Höhe ist das Erdfeld praktisch zu Ende und die Feldstärke dort nahezu null – deshalb schweben die Menschen in der ISS.",
+  "Die Feldstärke sinkt mit 1/r², und 400 km sind gegen 6371 km wenig. In der ISS wirken deshalb noch fast neun Newton je Kilogramm; das Schweben muss einen anderen Grund haben."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Übertrage zu jedem Ort den Abstand r in die Tabelle und rechne für die ISS-Zeile nach, wie viel davon Höhe über dem Erdboden ist – der Erdradius steht in der ersten Zeile.",
+  "Bilde für jede Zeile den Anteil g : 9,82 N/kg am Wert an der Erdoberfläche und trage ihn in die Tabelle ein.",
+  "Prüfe eine Zeile nach: Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."
+ ],
+ "daten": {
+  "titel": "Feldstärke g der Erde in vier Abständen",
+  "spalten": [
+   "Ort",
+   "Abstand vom Erdmittelpunkt r in km",
+   "Feldstärke g in N/kg"
+  ],
+  "zeilen": [
+   [
+    "Erdoberfläche",
+    "6371",
+    "9,82"
+   ],
+   [
+    "Raumstation ISS",
+    "6771",
+    "8,69"
+   ],
+   [
+    "Navigationssatellit",
+    "26 600",
+    "0,563"
+   ],
+   [
+    "Mondbahn",
+    "384 400",
+    "0,0027"
+   ]
+  ],
+  "quelle": "Eigene Rechnung im Kugelmodell ohne Erddrehung; der gemessene Ortsfaktor 9,81 N/kg weicht deshalb leicht ab. Mondbahn: mittlerer Abstand.",
+  "merke": "Alle vier Werte folgen aus g = G · M / r² mit G = 6,674 · 10⁻¹¹ N·m²/kg² und M = 5,972 · 10²⁴ kg. Der Abstand r zählt ab dem Erdmittelpunkt, nicht ab dem Boden."
+ },
+ "tabCols": [
+  "Ort und Abstand r in km",
+  "g in N/kg und Anteil an 9,82 N/kg"
+ ],
+ "tabRows": [
+  "Erdoberfläche",
+  "Raumstation ISS",
+  "Navigationssatellit",
+  "Mondbahn"
+ ],
+ "fachtext": "Ein Feld ordnet jedem Punkt des Raums eine physikalische Größe zu. Beim Gravitationsfeld ist das die Feldstärke g = F/m, also die Kraft je Kilogramm Probemasse an diesem Ort; ihre Einheit ist 1 N/kg. Der Gewinn dieser Beschreibung: g hängt nur noch vom Zentralkörper und vom Ort ab, nicht mehr vom Probekörper. Teilt man das Gravitationsgesetz F = G · M · m / r² durch m, bleibt g = G · M / r². Die Feldstärke zeigt überall zum Erdmittelpunkt und nimmt mit dem Quadrat des Abstands ab: doppelter Abstand, ein Viertel der Feldstärke. Sie wird beliebig klein, aber nie null – ein Feld hat keinen Rand. Der Ortsfaktor 9,81 N/kg ist deshalb kein eigener Naturwert, sondern nur der Wert dieses Feldes an der Erdoberfläche.",
+ "merksatz": [
+  {
+   "pre": "Aus F = G·M·m/r² wird durch Division durch m die Feldstärke",
+   "loesung": "g = G·M/r²",
+   "post": "mit der Einheit 1 N/kg."
+  },
+  {
+   "pre": "In der ISS herrscht Schwerelosigkeit, weil Station und Mensch gemeinsam",
+   "loesung": "fallen",
+   "post": "– nicht, weil dort kein Feld wäre."
+  }
+ ],
+ "beobachtung": "Das Datenblatt zeigt an der Erdoberfläche g = 9,82 N/kg. Auf der ISS-Bahn, nur 400 km höher, stehen 8,69 N/kg: 8,69 : 9,82 = 0,885, also rund 89 Prozent des Werts am Boden. Beim Navigationssatelliten, 26 600 km vom Erdmittelpunkt entfernt, sind es 0,563 N/kg, das sind 5,7 Prozent; an der Mondbahn bleiben 0,0027 N/kg. Der Abstand wächst dabei von 6371 km auf 384 400 km, also auf das 60,3fache, und die Feldstärke fällt um den Faktor 9,82 : 0,0027 = 3637 – bis auf die Rundung genau 60,3² = 3636. In keiner Zeile steht eine Null: Das Feld wird schwächer, es hört nirgends auf.",
+ "aufgabe": {
+  "frage": "Erkläre, warum eine Astronautin von 60 kg in der ISS schwebt, obwohl das Datenblatt dort 8,69 N/kg ausweist, und berechne die Kraft, die das Erdfeld auf sie ausübt.",
+  "zeilen": 5,
+  "loesung": "Die Feldstärke ist dort nicht null: 8,69 : 9,82 = 0,885, also rund 89 Prozent des Werts an der Erdoberfläche. Auf die Astronautin wirkt F = m · g = 60 kg · 8,69 N/kg = 521,4 N, mehr als ein halbes Kilonewton. Diese Kraft fehlt also nicht: Sie beschleunigt die Astronautin ständig zum Erdmittelpunkt hin. Station, Ausrüstung und Mensch liegen im selben Feld, werden gleich stark beschleunigt und fallen gemeinsam um die Erde herum. Zwischen Astronautin und Wand wird deshalb keine Kraft mehr übertragen, und genau dieses Ausbleiben nennt man Schwerelosigkeit. „Schwerelos“ heißt hier „frei fallend“, nicht „ohne Feld“."
+ },
+ "alltag": "Berechne mit g = G · M / r² die Feldstärke in der Reiseflughöhe eines Verkehrsflugzeugs (11 km über dem Boden, also r = 6382 km) und beurteile, ob ein Koffer dort merklich leichter wird als am Flughafen.",
+ "alltagAfb": "II",
+ "alltagKomp": "S7",
+ "ueberleitung": "Ob ein Körper, der ständig fällt, dabei wirklich auf einer Kreisbahn bleibt, rechnest du an der Planetenbahn nach. Vorher fehlt eine Zahl, die in jeder Zeile dieses Datenblatts steckt: die Masse M der Erde. Auf eine Waage hat sie noch nie jemand gestellt.",
+ "name": "Was ist ein Feld?",
+ "theme": "ef_gravitation"
+}

@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw3",
+  "quelle": "ew3+ew4",
+  "sim": "gravitation",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Warum alles nach unten fällt",
+  "name": "Warum fällt alles nach unten?",
+  "fachwoerter_neu": [
+   "Gravitation"
+  ],
+  "alltag": [
+   "Eine schwere Schraube rutscht Jannis aus der Hand und schlägt sofort auf.",
+   "Nours Staubfeder schwebt langsam hinterher.",
+   "Jannis sagt: Das Schwere fällt eben schneller.",
+   "Die Anziehung zwischen allen Massen heißt Gravitation."
+  ],
+  "frage": "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
+  "predict": [
+   "Der Stein hat mehr Masse und kommt zuerst unten an.",
+   "Ohne Luft kommen Stein und Feder gleichzeitig unten an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.",
+   "Wähle den Mond und lies g und die Fallzeit ab.",
+   "Wähle Erde und Jupiter und ergänze die Tabelle.",
+   "Vergleiche: Wo fällt der Stein am schnellsten?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Himmelskörper",
+   "Anziehung g in m/s²",
+   "Fallzeit aus 1,50 m"
+  ],
+  "tabRows": [
+   [
+    "Mond",
+    "1,6",
+    "1,37 s"
+   ],
+   [
+    "Erde",
+    "",
+    ""
+   ],
+   [
+    "Jupiter",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Jede Masse zieht jede andere an. Diese Anziehung heißt",
+    "loesung": "Gravitation",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Luft fallen Stein und Feder",
+    "loesung": "gleich schnell",
+    "post": ". Bei doppeltem Abstand sinkt die Anziehung auf ein Viertel."
+   }
+  ],
+  "wortbank": [
+   "Gravitation",
+   "gleich schnell",
+   "Luft",
+   "Masse",
+   "ein Viertel"
+  ],
+  "beispiel": {
+   "frage": "Warum schwebt die Feder im rechten Rohr hinterher?",
+   "antwort": "Im rechten Rohr ist Luft. Die Luft bremst die leichte Feder an ihrer großen Fläche. Im luftleeren Rohr fällt sie genauso schnell wie der Stein."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo fällt der Stein am schnellsten?",
+    "optionen": [
+     "Auf dem Mond.",
+     "Auf dem Jupiter.",
+     "Auf der Erde."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ohne Luft fallen alle Körper",
+      "loesung": "gleich schnell",
+      "post": "."
+     },
+     {
+      "pre": "Die",
+      "loesung": "Masse",
+      "post": "der Feder spielt beim Fallen keine Rolle."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Schwere fällt eben schneller.“ Was zeigt das luftleere Rohr?",
+    "satzstarter": "Im luftleeren Rohr kommen Stein und Feder …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh auf das linke Rohr: Stein und Feder kommen zusammen unten an.",
+   "h2": "Beginne so: Im luftleeren Rohr kommen beide gleichzeitig an. Nur die Luft …",
+   "h3": "Fast fertige Antwort: Ohne Luft fallen Stein und Feder gleich schnell. Nicht die Masse bremst die Feder, sondern die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Gravitation ist.",
+   "Ich weiß, wie Stein und Feder ohne Luft fallen.",
+   "Ich kann Mond, Erde und Jupiter vergleichen."
+  ],
+  "zuhause": "Lass ein Radiergummi und ein glattes Blatt Papier gleichzeitig fallen. Knülle das Blatt dann fest zusammen und wiederhole den Versuch.",
+  "bildauftrag": "[BILD: zwei hohe Glasrohre nebeneinander; im linken Rohr (Beschriftung „ohne Luft“) fallen ein Stein und eine Feder auf genau gleicher Höhe; im rechten Rohr (Beschriftung „mit Luft“) liegt der Stein schon unten, die Feder schwebt noch weit oben; große Beschriftungen an beiden Rohren; ruhige Darstellung ohne viele Bewegungslinien; heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw3",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass jede Masse jede andere anzieht (Gravitation) und ohne Luft alle Körper gleich schnell fallen, und geben die Abstandsregel als Merkwissen wieder: Bei doppeltem Abstand bleibt ein Viertel der Anziehung.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Schülerversuch: Radiergummi und Blatt Papier (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: Mond → g = 1,6 m/s², Fall aus 1,50 m dauert 1,37 s · Erde → g = 9,8 m/s², 0,55 s · Jupiter → g = 24,8 m/s², 0,35 s. Dazu immer: Ohne Luft gilt diese Zeit für den Stein und für die Feder.",
+  "merksatz": [
+   "Gravitation",
+   "gleich schnell"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Erde",
+    "9,8",
+    "0,55 s"
+   ],
+   [
+    "Jupiter",
+    "24,8",
+    "0,35 s"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).",
+   "typische_fehler": [
+    "Die Je-desto-Beziehung wird umgedreht: großes g wird mit langer Fallzeit verbunden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gleich schnell",
+    "Masse"
+   ],
+   "typische_fehler": [
+    "„Die Feder ist leichter und darum langsamer“ – die Luft wird nicht als Bremse genannt.",
+    "Masse und Gewicht werden durcheinandergebracht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im luftleeren Rohr kommen Stein und Feder gleichzeitig unten an. Die Masse spielt beim Fallen keine Rolle. Nur die Luft bremst die Feder – darum wirkt es im Alltag so, als fiele Schweres schneller.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Ohne Luft fallen alle Körper gleich schnell.",
+    "Mit dem geknüllten Blatt aus dem Zuhause-Versuch begründet."
+   ],
+   "typische_fehler": [
+    "Die Fehlvorstellung wird wiederholt statt am Rohr geprüft.",
+    "Die Gravitation soll die Feder bremsen – bremsen tut die Luft."
+   ]
+  },
+  "hilfe3_wort": "Luft",
+  "schwache": [
+   "Nur Mond und Jupiter vergleichen lassen, die Erd-Zeile danach.",
+   "Die Dezimalzahlen mit dem Finger unter dem Komma lesen lassen.",
+   "Den Radiergummi-Blatt-Versuch vor der Simulation zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die vierte Quizfrage – wie weit fällt der Stein in der doppelten Zeit? Prüfe mit den Zeitmarken 1 bis 4 im linken Rohr.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Gravitationskraft. Kompetenzen E5 (Quellseite ew3) und UF4 (Quellseite ew4; die Abstandsregel steht als Merkwissen im Merksatz, ohne Bildschirm-Aufgabe). Leitplanke: Masse und Gewichtskraft nie gleichsetzen."
+ }
+}

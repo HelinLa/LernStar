@@ -1,0 +1,276 @@
+[
+ {
+  "sim": "elektromagnet",
+  "ueberschrift": "🧲⚡ Wie stark ist ein Elektromagnet?",
+  "regler": [
+   {
+    "id": "elmVar",
+    "beschriftung": "Stromstärke ändern Windungszahl N: 150",
+    "bereich": {
+     "min": "50",
+     "max": "300",
+     "step": "50",
+     "start": "150"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "🌀 Windungszahl ändern",
+    "ruft": "_elmSetMode('windungen')"
+   },
+   {
+    "aufschrift": "⚡ Stromstärke ändern",
+    "ruft": "_elmSetMode('strom')"
+   },
+   {
+    "aufschrift": "＋ Messwert übernehmen",
+    "ruft": "_elmMessen()"
+   },
+   {
+    "aufschrift": "📋 Beispielmessreihe",
+    "ruft": "_elmDemo()"
+   },
+   {
+    "aufschrift": "🗑 Tabelle leeren",
+    "ruft": "_elmClear()"
+   },
+   {
+    "aufschrift": "Windungen N → Tragkraft",
+    "ruft": "_elmSetPreset(0)"
+   },
+   {
+    "aufschrift": "Strom I → Tragkraft",
+    "ruft": "_elmSetPreset(1)"
+   },
+   {
+    "aufschrift": "ƒ Theoriefunktion",
+    "ruft": "_elmTheorieFn()"
+   },
+   {
+    "aufschrift": "Feld leeren",
+    "ruft": "_elmClearFn()"
+   },
+   {
+    "aufschrift": "Immer",
+    "ruft": "_elmAns(0,0)"
+   },
+   {
+    "aufschrift": "Nur wenn Strom fließt",
+    "ruft": "_elmAns(0,1)"
+   },
+   {
+    "aufschrift": "Nur nachts",
+    "ruft": "_elmAns(0,2)"
+   },
+   {
+    "aufschrift": "Sie halbiert sich",
+    "ruft": "_elmAns(1,0)"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_elmAns(1,1)"
+   },
+   {
+    "aufschrift": "Sie verdoppelt sich",
+    "ruft": "_elmAns(1,2)"
+   },
+   {
+    "aufschrift": "Ein Kupferkern",
+    "ruft": "_elmAns(2,0)"
+   },
+   {
+    "aufschrift": "Ein Eisenkern",
+    "ruft": "_elmAns(2,1)"
+   },
+   {
+    "aufschrift": "Ein Holzstab",
+    "ruft": "_elmAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_elmSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_elmSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_elmSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('elmag')"
+   }
+  ],
+  "hinweise": [
+   "Eine Spule mit Eisenkern wird zum Magneten, sobald Strom fließt. Sie hebt Büroklammern. Verändere nur eine Größe und miss die Tragkraft.",
+   "Tragkraft jetzt: 9 Büroklammern · nur mit ungefährlicher Batterie-Kleinspannung!",
+   "Erlaubt: x, pi, + − * / ^, sqrt(), sin(), cos(), abs(), exp(), ln(). Malpunkt immer schreiben.",
+   "Mehr Windungen → stärker | Mehr Strom → stärker | der Eisenkern verstärkt den Magneten"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ N. Je mehr Windungen, desto stärker der Magnet – doppelt so viele Windungen = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · I · N I fest = 2 A Mehr Windungen bündeln das Magnetfeld stärker. Die Tragkraft wächst gleichmäßig mit der Windungszahl."
+   },
+   {
+    "einstellung": "🌀 Windungszahl ändern",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ N. Je mehr Windungen, desto stärker der Magnet – doppelt so viele Windungen = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · I · N I fest = 2 A Mehr Windungen bündeln das Magnetfeld stärker. Die Tragkraft wächst gleichmäßig mit der Windungszahl."
+   },
+   {
+    "einstellung": "⚡ Stromstärke ändern",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "＋ Messwert übernehmen",
+    "text": "elmFit: Mindestens zwei Messwerte je Messreihe nötig. | Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "📋 Beispielmessreihe",
+    "text": "elmTbody: 150 2 9 ✕ 150 1 4 ✕ 150 2 9 ✕ 150 3 13 ✕ 150 4 18 ✕ 150 5 23 ✕  ||  elmFit: Windungen fest bei N = 150 · 6 Messwerte y = 4,508·x R² = 0,9994 · erwartet: 4,500 Tragkraft pro Ampere (Steigung) 4,51 Klammern/A · Literatur: 4,50 Abweichung — % T = k·N·I ⇒ mehr Strom = stärker Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "🗑 Tabelle leeren",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "Windungen N → Tragkraft",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ N. Je mehr Windungen, desto stärker der Magnet – doppelt so viele Windungen = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · I · N I fest = 2 A Mehr Windungen bündeln das Magnetfeld stärker. Die Tragkraft wächst gleichmäßig mit der Windungszahl."
+   },
+   {
+    "einstellung": "Strom I → Tragkraft",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "ƒ Theoriefunktion",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 eingesetzt: f(x) = 4.5*x Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "Feld leeren",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke."
+   },
+   {
+    "einstellung": "Immer",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Ohne Strom ist die Spule kein Magnet. Schalte den Strom in Gedanken aus."
+   },
+   {
+    "einstellung": "Nur wenn Strom fließt",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✓ Richtig! Nur bei Stromfluss entsteht das Magnetfeld – das ist der Vorteil."
+   },
+   {
+    "einstellung": "Nur nachts",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂"
+   },
+   {
+    "einstellung": "Sie halbiert sich",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✗ Mehr Windungen machen den Magneten stärker, nicht schwächer."
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✗ Schau ins Diagramm – die Gerade steigt an."
+   },
+   {
+    "einstellung": "Sie verdoppelt sich",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade)."
+   },
+   {
+    "einstellung": "Ein Kupferkern",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Kupfer ist nicht magnetisch – es verstärkt nichts."
+   },
+   {
+    "einstellung": "Ein Eisenkern",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✓ Richtig! Der Eisenkern bündelt und verstärkt das Magnetfeld."
+   },
+   {
+    "einstellung": "Ein Holzstab",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten.  ||  elmSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten.  ||  elmSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 50",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 100",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 150",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 200",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 250",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   },
+   {
+    "einstellung": "Stromstärke ändern Windungszahl N: 150 = 300",
+    "text": "elmFit: Ursprungsgerade ⇒ Tragkraft ~ I. Je größer die Stromstärke, desto stärker der Magnet – doppelter Strom = doppelte Tragkraft.  ||  elmTheo: Erwarteter Funktionstyp proportionale Funktion (Ursprungsgerade) T = k · N · I N fest = 150 Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.  ||  elmFb0: ✗ Mit der Uhrzeit hat es nichts zu tun 🙂  ||  elmFb1: ✓ Richtig! Doppelte Windungszahl → doppelte Tragkraft (Ursprungsgerade).  ||  elmFb2: ✗ Holz hat keine Wirkung auf den Magneten."
+   }
+  ],
+  "bildtexte": [
+   "0,0",
+   "0,2",
+   "0,4",
+   "0,6",
+   "0,8",
+   "1,0",
+   "Windungszahl N",
+   "Tragkraft (Büroklammern)",
+   "Noch keine Messwerte aufgenommen",
+   "Eisenkern",
+   "150 Windungen",
+   "I = 2 A",
+   "Tragkraft: 9 Büroklammern",
+   "(Anzeige bis 24 Stück)",
+   "Stromstärke I in A",
+   "0,5",
+   "1,5",
+   "2,0",
+   "0",
+   "2",
+   "4",
+   "6",
+   "8",
+   "10",
+   "1",
+   "3",
+   "5",
+   "15",
+   "20",
+   "25",
+   "I = 50 A",
+   "Tragkraft: 225 Büroklammern",
+   "I = 100 A",
+   "Tragkraft: 450 Büroklammern",
+   "I = 150 A",
+   "Tragkraft: 675 Büroklammern",
+   "I = 200 A",
+   "Tragkraft: 900 Büroklammern",
+   "I = 250 A",
+   "Tragkraft: 1125 Büroklammern",
+   "I = 300 A",
+   "Tragkraft: 1350 Büroklammern"
+  ]
+ }
+]

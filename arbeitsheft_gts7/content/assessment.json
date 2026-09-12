@@ -1,0 +1,379 @@
+[
+ {
+  "id": "gts_optik",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "REFLEXIONSGESETZ",
+     "tipp": "Diese Regel sagt, dass der Einfallswinkel am Spiegel genauso groß ist wie der Winkel des zurückgeworfenen Strahls; beide misst du zum Lot."
+    },
+    {
+     "wort": "VIRTUELL",
+     "tipp": "So heißt ein Bild, das du auf keinem Schirm auffangen kannst, weil sich dort gar keine echten Strahlen treffen."
+    },
+    {
+     "wort": "BRECHUNG",
+     "tipp": "So heißt das Knicken des Lichts an der Grenzfläche zwischen Luft und Glas."
+    },
+    {
+     "wort": "TOTALREFLEXION",
+     "tipp": "Dabei kommt gar nichts mehr heraus: Über 41,8° im Glas wird alles Licht in das Glas zurückgeworfen."
+    },
+    {
+     "wort": "GRENZWINKEL",
+     "tipp": "Der Wert von 41,8°, ab dem das Licht das Glas nicht mehr verlassen kann."
+    },
+    {
+     "wort": "LICHTLEITER",
+     "tipp": "Ein dünner, biegsamer Glasstab, in dem das Licht im Zickzack bis zum Ende läuft und dabei sogar die Kurve schafft."
+    },
+    {
+     "wort": "SAMMELLINSE",
+     "tipp": "Ein Glas, das in der Mitte dicker ist und paralleles Licht in einem Punkt bündelt."
+    },
+    {
+     "wort": "BRENNWEITE",
+     "tipp": "Der Abstand von der Linse bis zu dem Punkt, in dem sich die gebündelten Strahlen treffen."
+    },
+    {
+     "wort": "ZERSTREUUNGSLINSE",
+     "tipp": "Ein Glas, das in der Mitte dünner ist und die Strahlen auseinanderlaufen lässt; kurzsichtige Augen brauchen es."
+    },
+    {
+     "wort": "NETZHAUT",
+     "tipp": "Die Fläche hinten im Auge, auf der ein umgekehrtes Bild scharf entstehen muss."
+    },
+    {
+     "wort": "LOCHKAMERA",
+     "tipp": "Eine Kiste ohne Linse, in der ein winziges Loch ein umgekehrtes Bild auf den Schirm wirft."
+    },
+    {
+     "wort": "INFRAROT",
+     "tipp": "Unsichtbares Licht hinter dem roten Rand des Spektrums, das du als Wärme spürst."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass eine Oberfläche das Licht zurückwirft, hindurchlässt und schluckt und dass diese drei Anteile zusammen immer 100 % ergeben.",
+    "Ich kann angeben, wo das Bild im ebenen Spiegel liegt, und begründen, warum man es nicht auffangen kann.",
+    "Ich kann das Reflexionsgesetz anwenden und ausrechnen, um wie viel Grad der Strahl schwenkt, wenn ich den Spiegel drehe.",
+    "Ich kann beschreiben, an welcher Stelle und in welche Richtung ein Strahl beim Eintritt in das Glas geknickt wird.",
+    "Ich kann mit dem Grenzwinkel von 41,8° erklären, wann Licht aus dem Glas austritt und wann Totalreflexion auftritt.",
+    "Ich kann erklären, warum das Licht in einem gebogenen Lichtleiter bis zum Ende gefangen bleibt.",
+    "Ich kann Sammellinse und Zerstreuungslinse an ihrer Form unterscheiden und die Brennweite in einer Zeichnung zeigen.",
+    "Ich kann vorhersagen, ob das Bild einer Sammellinse größer oder kleiner, aufrecht oder umgekehrt, reell oder virtuell ist.",
+    "Ich kann beschreiben, wie im Auge ein scharfes Bild entsteht, und die passende Brille zu Kurzsichtigkeit und Weitsichtigkeit zuordnen.",
+    "Ich kann mit B/G = b/g die Bildgröße der Lochkamera berechnen und erklären, wie ein Prisma weißes Licht zerlegt, wie ein Bildschirm Farben mischt und woran man unsichtbares Licht erkennt."
+   ],
+   "tipps": [
+    "Zeichne bei jeder Aufgabe zu Spiegel und Glas zuerst das Lot ein, also die Senkrechte auf der Fläche. Alle Winkel dieses Kapitels werden zum Lot gemessen, nie zur Fläche selbst.",
+    "Lerne die vier Fälle der Sammellinse als feste Reihe: weiter als 2f klein und umgekehrt, genau bei 2f gleich groß, zwischen f und 2f größer und umgekehrt, näher als f aufrecht, größer und virtuell.",
+    "Mache bei jedem Bild den Papiertest im Kopf: Kannst du es auf einem Schirm auffangen, ist es reell. Bleibt das Papier leer, ist es virtuell – so bei Spiegel und Lupe.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: 95 % zurück beim Spiegel, Grenzwinkel 41,8°, f = 62 und 2f = 124 beim Linsenversuch, sichtbares Licht von 380 bis 780 nm."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Strahl trifft mit 35° zum Lot auf einen Spiegel. Wie groß ist der Reflexionswinkel?",
+     "loesung": "35°, denn am Spiegel ist der Einfallswinkel genauso groß wie der Reflexionswinkel."
+    },
+    {
+     "frage": "Du stehst 80 cm vor einem ebenen Spiegel. Wie weit hinter dem Spiegel liegt dein Bild?",
+     "loesung": "80 cm, denn das Bild liegt immer genauso weit dahinter wie der Gegenstand davor."
+    },
+    {
+     "frage": "Du drehst den Spiegel um 15°. Um wie viel Grad schwenkt der zurückgeworfene Strahl?",
+     "loesung": "Um 30°, also um den doppelten Drehwinkel, weil sich das Lot mitdreht."
+    },
+    {
+     "frage": "Eine Lupe hat die Brennweite f = 58. Bei welchen Abständen g zeigt sie ein vergrößertes, aufrechtes Bild?",
+     "loesung": "Nur bei g kleiner als 58, also innerhalb der Brennweite. Ab g = 58 kippt das Bild und ist nicht mehr aufrecht."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Am Spiegel ist der Einfallswinkel genauso groß wie der",
+     "loesung": "Reflexionswinkel",
+     "post": "; beide misst du zum Lot."
+    },
+    {
+     "pre": "Von Luft in Glas wird der Strahl",
+     "loesung": "zum Lot hin",
+     "post": "gebrochen, von Glas in Luft dagegen vom Lot weg."
+    },
+    {
+     "pre": "Liegt der Winkel im Glas über dem Grenzwinkel von 41,8°, tritt kein Licht mehr aus. Das heißt",
+     "loesung": "Totalreflexion",
+     "post": "."
+    },
+    {
+     "pre": "Der Abstand von der Sammellinse bis zum Brennpunkt heißt",
+     "loesung": "Brennweite",
+     "post": "."
+    },
+    {
+     "pre": "Im Auge entsteht das Bild auf der",
+     "loesung": "Netzhaut",
+     "post": "; es steht dort umgekehrt und ist reell."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein Spiegel wirft 95 % des Lichts zurück und bleibt in der Sonne deshalb fast kühl.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Drehst du den Spiegel um 25°, schwenkt der zurückgeworfene Strahl ebenfalls um 25°.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Das Bild im ebenen Spiegel liegt genauso weit hinter dem Spiegel wie der Gegenstand davor.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine Lupe zeigt nur dann ein vergrößertes, aufrechtes Bild, wenn der Gegenstand näher an ihr steht als die Brennweite.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine Glasfaser muss innen verspiegelt sein, sonst käme das Licht nicht um die Kurve.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein größeres Loch macht das Bild der Lochkamera größer.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Hinter dem roten Rand des Spektrums liegt Infrarot: Das Auge sieht dort nichts, das Thermometer misst aber die stärkste Erwärmung.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein 20 cm hoher Pfeil steht bei g = 40 cm vor dem Loch einer Lochkamera. Der Schirm sitzt bei b = 60 cm. Wie hoch ist das Bild auf dem Schirm?",
+    "optionen": [
+     "13,3 cm",
+     "20 cm",
+     "30 cm",
+     "40 cm"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein kurzsichtiges Auge eine Zerstreuungslinse braucht, ein weitsichtiges Auge dagegen eine Sammellinse.",
+    "zeilen": 5,
+    "loesung": "Ein scharfes Bild entsteht nur, wenn sich die Lichtstrahlen genau auf der Netzhaut treffen. Beim kurzsichtigen Auge bündelt das Auge zu stark, der Treffpunkt liegt schon vor der Netzhaut. Eine Zerstreuungslinse fächert das Licht vorher auf, dadurch rutscht der Treffpunkt nach hinten genau auf die Netzhaut. Beim weitsichtigen Auge bündelt das Auge zu schwach, der Treffpunkt liegt hinter der Netzhaut. Eine Sammellinse bündelt zusätzlich und holt ihn nach vorn auf die Netzhaut."
+   },
+   "transfer": {
+    "frage": "Jannis sagt: „Das Prisma färbt das weiße Licht bunt ein, und der Bildschirm macht es genauso.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Das Prisma färbt nichts ein, es trennt nur: Weißes Licht ist bereits eine Mischung aller Spektralfarben, und weil Violett stärker gebrochen wird als Rot, laufen die Farben hinter dem Glas auseinander. Schickst du nur Rot hinein, kommt Rot wieder heraus – das Prisma kann nichts hinzufügen, was nicht schon drin ist. Der Bildschirm arbeitet genau andersherum: Er besitzt gar keine weiße Lampe, sondern nur rote, grüne und blaue Leuchtflächen, deren Licht das Auge zusammenzählt. Bei R 255, G 255, B 255 entsteht so Weiß, bei R 255, G 255, B 0 entsteht Gelb. Das Prisma zerlegt also, der Bildschirm mischt zusammen."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "ebener Spiegel mit Halter und ein Handspiegel",
+   "Lichtquelle mit Spaltblende für einen einzelnen und für drei parallele Strahlen",
+   "Winkelscheibe mit Gradskala und Geodreieck",
+   "halbrunder Glaskörper",
+   "biegsamer Lichtleiter aus Kunststoff oder ein Glasfaserbündel",
+   "optische Bank mit Reitern, Gegenstandspfeil und weißem Schirm",
+   "Sammellinsen und Zerstreuungslinsen mit verschiedenen Brennweiten",
+   "Lupe",
+   "aufklappbares Augenmodell",
+   "zwei Brillen aus dem Sammlungsschrank, eine für Kurzsichtige, eine für Weitsichtige",
+   "Lochkamera aus Pappe mit Alufolie, Nadel und Transparentpapier",
+   "Prisma",
+   "rote, grüne und blaue LED-Lampen oder eine Bildschirmlupe für die Bildpunkte",
+   "Thermometer mit geschwärzter Kugel",
+   "schwarzes und weißes Papier, eine Glasscheibe, Maßband und Lineal"
+  ]
+ },
+ {
+  "id": "gts_weltall",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "SELBSTLEUCHTER",
+     "tipp": "Himmelskörper, der eigenes Licht abgibt, zum Beispiel die Sonne oder ein ferner Stern."
+    },
+    {
+     "wort": "ERDACHSE",
+     "tipp": "Gedachte Linie, um die sich unser Planet in etwa 24 Stunden einmal herumdreht."
+    },
+    {
+     "wort": "GRAVITATION",
+     "tipp": "Anziehung, die jede Masse auf jede andere ausübt und die alles nach unten fallen lässt."
+    },
+    {
+     "wort": "UMLAUFBAHN",
+     "tipp": "Geschlossener Weg, auf dem ein Planet ewig an der Sonne vorbeifällt."
+    },
+    {
+     "wort": "GESTEINSPLANET",
+     "tipp": "Kleiner, dichter Körper mit fester Oberfläche nahe bei der Sonne, wie Merkur oder die Erde."
+    },
+    {
+     "wort": "LICHTJAHR",
+     "tipp": "Strecke, die das schnellste Signal des Weltalls in zwölf Monaten zurücklegt."
+    },
+    {
+     "wort": "OKULAR",
+     "tipp": "Linse mit kurzer Brennweite am Fernrohr, durch die du hindurchschaust wie durch eine Lupe."
+    },
+    {
+     "wort": "KERNFUSION",
+     "tipp": "Vorgang im Inneren eines Sterns, bei dem Wasserstoff zu Helium verschmilzt und Energie frei wird."
+    },
+    {
+     "wort": "MILCHSTRASSE",
+     "tipp": "Flache Scheibe aus Sternen, in der unsere Sonne 26 000 Lichtjahre vom Zentrum entfernt steckt."
+    },
+    {
+     "wort": "EPIZYKEL",
+     "tipp": "Zusatzkreis, den das alte Weltbild für die Schleifen der Planeten brauchte."
+    },
+    {
+     "wort": "EREIGNISHORIZONT",
+     "tipp": "Grenze um ein schwarzes Loch, hinter der auch Licht nicht mehr herauskommt."
+    },
+    {
+     "wort": "URKNALL",
+     "tipp": "Sehr heißer und dichter Anfang des Weltalls vor etwa 13,8 Milliarden Jahren."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann Selbstleuchter und beleuchtete Körper unterscheiden und erklären, warum der Mond ohne Sonnenlicht sofort dunkel ist.",
+    "Ich kann erklären, dass Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um ihre eigene Achse dreht.",
+    "Ich kann beschreiben, dass jede Masse jede andere anzieht, und angeben, dass eine doppelte Masse die Anziehung verdoppelt, der doppelte Abstand aber nur ein Viertel übrig lässt.",
+    "Ich kann erklären, warum ein Planet mit passendem Anschub immer an der Sonne vorbeifällt, statt in sie zu stürzen.",
+    "Ich kann die vier inneren Gesteinsplaneten von den äußeren Gas- und Eisriesen unterscheiden und begründen, warum Größen und Abstände nicht gleichzeitig maßstäblich in ein Bild passen.",
+    "Ich kann erklären, dass ein Lichtjahr eine Entfernung ist, und begründen, warum wir die Sonne so sehen, wie sie vor 8,3 Minuten war.",
+    "Ich kann beschreiben, wie Objektiv und Okular ein vergrößertes, umgekehrtes Bild erzeugen, und aus dem Parallaxenwinkel p mit d = 1 / p die Entfernung eines Sterns berechnen.",
+    "Ich kann begründen, warum ein schwerer Stern kürzer lebt als ein leichter, und Farbe und Ende eines Sterns seiner Masse zuordnen.",
+    "Ich kann angeben, wo die Sonne in der Scheibe der Milchstraße steht, und begründen, warum sich das Weltbild mit der Sonne in der Mitte durchgesetzt hat.",
+    "Ich kann erklären, woran man ein schwarzes Loch erkennt, obwohl es kein Licht aussendet, und mit dem Bild vom Luftballon beschreiben, wie sich das Weltall seit dem Urknall ausdehnt."
+   ],
+   "tipps": [
+    "Lerne die Begriffe immer paarweise: Selbstleuchter und beleuchteter Körper, Gesteinsplanet und Gasriese, Weißer Zwerg und Neutronenstern. Sage zu jedem Paar einen Satz, der beide voneinander trennt.",
+    "Sprich die Anziehungsregel laut mit: Jede Masse zählt einfach, der Abstand zählt doppelt. Prüfe sie an den Zahlen der Simulation: 8,0 Einheiten am Start, nach ×2 Masse 16,0 Einheiten, nach ×2 Abstand nur noch 4,0 Einheiten.",
+    "Zeichne das Sonnensystem zweimal klein in dein Heft: einmal die Größen, einmal die Abstände. So merkst du dir, warum beides nie gleichzeitig maßstäblich in ein Bild passt.",
+    "Schreibe die Entfernungen als Laufzeiten des Lichts auf einen Papierstreifen: Mond 1,3 Sekunden, Sonne 8,3 Minuten, nächster Stern 4,2 Lichtjahre. Decke die Zahlen ab und sage sie der Reihe nach auf."
+   ],
+   "mini": [
+    {
+     "frage": "Nenne zwei Himmelskörper, die selbst leuchten, und zwei, die nur beleuchtet werden.",
+     "loesung": "Selbst leuchten die Sonne und jeder andere Stern. Nur beleuchtet werden der Mond und die Planeten; sie werfen das Sonnenlicht zurück."
+    },
+    {
+     "frage": "Wie lange braucht die Erde für eine volle Drehung um ihre eigene Achse?",
+     "loesung": "Etwa 24 Stunden. Genau diese Zeit nennen wir einen Tag."
+    },
+    {
+     "frage": "Die Anziehung zweier Kugeln beträgt 8,0 Einheiten. Wie groß ist sie, wenn du eine der beiden Massen verdoppelst?",
+     "loesung": "16,0 Einheiten. Jede Masse zählt einfach, deshalb verdoppelt sich die Anziehung."
+    },
+    {
+     "frage": "Ist ein Lichtjahr eine Zeit oder eine Strecke?",
+     "loesung": "Eine Strecke: der Weg, den das Licht in einem Jahr zurücklegt."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Sonne und alle anderen Sterne geben eigenes Licht ab; sie sind",
+     "loesung": "Selbstleuchter",
+     "post": "."
+    },
+    {
+     "pre": "Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um ihre eigene",
+     "loesung": "Achse",
+     "post": "dreht."
+    },
+    {
+     "pre": "Verdoppelst du den Abstand zweier Massen, bleibt nur noch",
+     "loesung": "ein Viertel",
+     "post": "der Anziehung übrig."
+    },
+    {
+     "pre": "Die Strecke, die das Licht in einem Jahr zurücklegt, nennt man ein",
+     "loesung": "Lichtjahr",
+     "post": "."
+    },
+    {
+     "pre": "Nach der Urknalltheorie begann das Weltall vor etwa",
+     "loesung": "13,8 Milliarden Jahren",
+     "post": "und dehnt sich seitdem aus."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Der Mond leuchtet selbst, nur schwächer als die Sonne.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Während bei uns Nacht ist, hat die gegenüberliegende Seite der Erde zur selben Zeit Tag.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Im luftleeren Rohr kommen Stein und Feder gleichzeitig unten an.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelt man den Abstand zweier Massen, halbiert sich ihre Anziehung.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die vier inneren Planeten sind Gesteinsplaneten mit fester Oberfläche.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Stern mit 10 Sonnenmassen lebt länger als die Sonne, weil er mehr Brennstoff hat.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Sonne steht 26 000 Lichtjahre vom Zentrum der Milchstraße entfernt, also nicht in ihrer Mitte.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Warum stürzt die Erde nicht in die Sonne, obwohl die Sonne sie ohne Pause anzieht?",
+    "optionen": [
+     "Weil die Sonne so weit weg ist, dass ihre Anziehung die Erde gar nicht mehr erreicht.",
+     "Weil die Luft zwischen Sonne und Erde die Erde abbremst.",
+     "Weil die Erde zugleich quer zur Sonne unterwegs ist und deshalb immer wieder an ihr vorbeifällt.",
+     "Weil der Mond die Erde genauso stark in die Gegenrichtung zieht."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum jeder Blick zu einem fernen Stern ein Blick in die Vergangenheit ist.",
+    "zeilen": 5,
+    "loesung": "Licht ist zwar das Schnellste, was es gibt, rund 300 000 Kilometer in jeder Sekunde, aber es braucht trotzdem Zeit für seinen Weg. Von der Sonne ist es 8,3 Minuten unterwegs, vom nächsten Stern schon 4,2 Jahre. Was du gerade siehst, hat der Stern also vor dieser Zeit abgeschickt. In der Zwischenzeit kann er sich verändert haben, ohne dass wir es schon wissen. Je weiter das Ziel entfernt ist, desto länger ist sein Licht unterwegs und desto weiter blickst du zurück."
+   },
+   "transfer": {
+    "frage": "Nour behauptet: „Ein Fernrohr mit doppelt so großer Öffnung zeigt den Mond doppelt so groß.“ Beurteile ihre Aussage und gib an, was die größere Öffnung wirklich bringt.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nicht. Wie groß das Bild erscheint, hängt allein von den Brennweiten ab: Vergrößerung ist die Brennweite des Objektivs geteilt durch die Brennweite des Okulars. Die Öffnung entscheidet dagegen darüber, wie viel Licht das Fernrohr einsammelt. Eine doppelt so große Öffnung macht das Bild deshalb heller, nicht größer; in der Simulation heißt es bei großer Öffnung hell und lichtstark, bei kleiner nur mäßig hell. Der Nutzen der großen Öffnung liegt darin, dass lichtschwache Sterne überhaupt erst sichtbar werden und mehr Einzelheiten erkennbar sind. Größer wird das Bild erst, wenn du ein Okular mit kürzerer Brennweite einsetzt."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "drehbare Sternkarte",
+   "Globus",
+   "Taschenlampe",
+   "Styroporkugel oder Ball als Modell von Erde und Mond",
+   "Klebepunkte und Filzstift zum Markieren des Wohnorts",
+   "Modell des Sonnensystems oder Bildkarten der acht Planeten",
+   "Maßband und langes Seil für die Abstände auf dem Schulhof",
+   "Fernrohr aus dem Sammlungsschrank mit Objektiv- und Okularlinse",
+   "Fallrohr mit Stein und Feder",
+   "Blatt Papier und ein Buch für den Fallversuch",
+   "Luftballon und Faden",
+   "Schlüsselbund an einer Schnur"
+  ]
+ }
+]

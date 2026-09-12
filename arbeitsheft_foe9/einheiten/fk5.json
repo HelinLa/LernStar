@@ -1,0 +1,187 @@
+{
+ "seite": {
+  "id": "fk5",
+  "quelle": "kf5",
+  "sim": "ortsfaktor",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Das Klavier auf dem Mond",
+  "name": "Wäre das Klavier auf dem Mond leichter?",
+  "fachwoerter_neu": [
+   "Ortsfaktor g in N/kg"
+  ],
+  "alltag": [
+   "Nour und Jannis schieben das schwere Klavier auf die Bühne.",
+   "Jannis stöhnt: „Auf dem Mond wäre das leichter.“",
+   "Der Ortsfaktor g sagt, wie stark ein Ort zieht."
+  ],
+  "frage": "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
+  "predict": [
+   "Die Masse bleibt gleich. Nur die Gewichtskraft wird kleiner.",
+   "Das Klavier hat auf dem Mond weniger Masse."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle Mond und lies g und F in der Statuszeile ab.",
+   "Trage beide Werte in die Zeile Mond ein.",
+   "Wiederhole das mit Jupiter.",
+   "Vergleiche: Welche Zahl bleibt überall gleich?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wo bist du?",
+   "Wie groß ist der Ortsfaktor g?",
+   "Wie groß ist F bei 60 kg?"
+  ],
+  "tabRows": [
+   [
+    "Erde",
+    "9,8 N/kg",
+    "588 N"
+   ],
+   [
+    "Mond",
+    "",
+    ""
+   ],
+   [
+    "Jupiter",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Masse bleibt überall",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Auf dem Mond ist der Ortsfaktor g nur",
+    "loesung": "1,6 N/kg",
+    "post": ". Die Gewichtskraft wird dort kleiner."
+   }
+  ],
+  "wortbank": [
+   "gleich",
+   "1,6 N/kg",
+   "9,8 N/kg",
+   "24,8 N/kg"
+  ],
+  "beispiel": {
+   "frage": "Was bedeutet g = 9,8 N/kg auf der Erde?",
+   "antwort": "Die Erde zieht an jedem Kilogramm mit 9,8 Newton. Nour hat 60 kg Masse. Ihre Gewichtskraft ist 588 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ändert sich, wenn du Mond wählst?",
+    "optionen": [
+     "Die Masse wird kleiner, die Gewichtskraft bleibt gleich.",
+     "Die Gewichtskraft wird kleiner, die Masse bleibt gleich.",
+     "Masse und Gewichtskraft werden beide kleiner."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Auf der Erde zeigt der Bildschirm den Ortsfaktor",
+      "loesung": "9,8 N/kg",
+      "post": "."
+     },
+     {
+      "pre": "Auf dem Jupiter zeigt er",
+      "loesung": "24,8 N/kg",
+      "post": ". Dort ist die Gewichtskraft am größten."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Klavier hat auf dem Mond weniger Masse.“ Erkläre, warum das falsch ist.",
+    "satzstarter": "Das stimmt nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Das stimmt nicht, weil die Masse überall gleich bleibt …",
+   "h3": "Fast fertige Antwort: Auf dem Mond ist g kleiner. Der Mond zieht schwächer. Ergänze: Kleiner wird nur die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Ortsfaktor g am Bildschirm ablesen.",
+   "Ich weiß, dass die Masse überall gleich bleibt.",
+   "Ich kann sagen, warum die Gewichtskraft auf dem Mond kleiner ist."
+  ],
+  "zuhause": "Halte eine Packung Zucker mit 1 kg in der Hand. Auf dem Mond bleibt die Masse 1 kg.",
+  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund: links Mondboden, Mitte Erdboden, rechts Jupiter-Wolkenboden. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung, mit der großen Beschriftung „m = 60 kg“ über dem Kopf. Unter jeder Person ein einzelner dicker Pfeil senkrecht nach unten, alle drei gleich dick, aber unterschiedlich lang: links kurz mit „F = 96 N“, Mitte mittel mit „F = 588 N“, rechts sehr lang mit „F = 1488 N“. Über jedem Feld groß der Ort und der Ortsfaktor: „Mond · g = 1,6 N/kg“, „Erde · g = 9,8 N/kg“, „Jupiter · g = 24,8 N/kg“. Nur diese drei Pfeile, keine weiteren Pfeile, keine Sterne, keine Rakete, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fk5",
+  "lernziel": "Die Schülerinnen und Schüler lesen den Ortsfaktor g in N/kg und die Gewichtskraft F für Mond, Erde und Jupiter am Bildschirm ab. Sie begründen, dass dabei nur die Gewichtskraft kleiner oder größer wird, die Masse aber überall gleich bleibt (m = 60 kg). Gerechnet wird auf dieser Seite ausdrücklich nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig: Die Simulation hat KEINEN Regler; die Masse ist fest auf 60 kg eingestellt, und nur die drei Ortsknöpfe verändern Bild und Statuszeile. Die Knöpfe tragen am Bildschirm ein kleines Bildzeichen vor dem Wort, im Heft steht nur das Wort (Mond, Erde, Jupiter). Die Statuszeile schreibt „Auf dem/der Mond:“ mit Schrägstrich — nicht abschreiben lassen, nur die Zahlen daraus entnehmen. Weiter unten trägt die Simulation ein Protokoll mit drei Abfrage-Knopfreihen unter der Überschrift „Minidiagnose“ und eine Selbsteinschätzung; beides wird auf dieser Seite nicht gebraucht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Erde: g = 9,8 N/kg, Masse m = 60 kg, Gewichtskraft F = 588 N · Mond: g = 1,6 N/kg, m = 60 kg, F = 96 N · Jupiter: g = 24,8 N/kg, m = 60 kg, F = 1488 N. Die Zeile „m = 60 kg“ steht auf jeder Karte gleich — genau daran wird die Einsicht sichtbar. Alternativ die drei Statuszeilen am Beamer zeigen.",
+  "merksatz": [
+   "gleich",
+   "1,6 N/kg"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Mond",
+    "1,6 N/kg",
+    "96 N"
+   ],
+   [
+    "Jupiter",
+    "24,8 N/kg",
+    "1488 N"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach dem Knopf Mond meldet die Statuszeile: g = 1,6 N/kg, Masse m = 60 kg (überall gleich), Gewichtskraft F = 96 N. Die Masse steht bei allen drei Orten bei 60 kg, nur g und F ändern sich.",
+   "typische_fehler": [
+    "„Auf dem Mond ist alles leichter“ wird auf die Masse übertragen (Antwort 1 oder 2).",
+    "Die 60 kg werden für eine Kraft gehalten; kg und N werden vertauscht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "9,8 N/kg",
+    "24,8 N/kg"
+   ],
+   "typische_fehler": [
+    "9,8 und 24,8 werden vertauscht, weil beide mit „,8“ enden.",
+    "Nur die Zahl wird eingetragen, die Einheit N/kg fehlt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das stimmt nicht, weil die Masse überall gleich bleibt. Am Bildschirm steht bei jedem Ort m = 60 kg. Nur der Ortsfaktor g ist auf dem Mond kleiner: 1,6 N/kg statt 9,8 N/kg. Darum wird dort nur die Gewichtskraft kleiner.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Masse m = 60 kg (überall gleich)“ steht bei Mond, Erde und Jupiter gleich da.",
+    "Der Mond zieht schwächer an dem Klavier als die Erde. Das Klavier hat aber gleich viel Stoff in sich."
+   ],
+   "typische_fehler": [
+    "Die Fehlvorstellung wird nur wiederholt statt widerlegt („Es ist eben leichter“).",
+    "„Auf dem Mond gibt es keine Schwerkraft“ — die Minidiagnose der Simulation antwortet darauf wörtlich: „Es gibt Schwerkraft – nur schwächer als auf der Erde.“",
+    "Masse und Gewichtskraft werden gleichgesetzt; beide Wörter werden für dasselbe benutzt."
+   ]
+  },
+  "hilfe3_wort": "Gewichtskraft",
+  "schwache": [
+   "Zuerst nur Erde und Mond vergleichen; die Zeile Jupiter später oder gemeinsam ausfüllen.",
+   "Die Einheit N/kg einmal laut sprechen lassen: Newton pro Kilogramm. Der Schrägstrich wird sonst als Oder-Zeichen gelesen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Das Alltagswort „leichter“ vorher klären: Es meint hier die Gewichtskraft, nicht die Masse."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Ordne Mond, Erde und Jupiter nach der Größe von g und schreibe die drei Werte untereinander auf. Wer mag, drückt in der Minidiagnose der Simulation den Knopf „Die Masse“ und liest die Rückmeldung vor: „Richtig! Die Masse (Materiemenge) ist überall gleich.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse, Gewichtskraft und Ortsfaktor. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Diese Simulation und masse-gewicht (fk4) zeigen g = 9,8 N/kg. Nachgemessen rechnen dagegen mit 9,81 N/kg: druck-flaeche, schweredruck, dichte und auftrieb (fk11 bis fk14) sowie arbeit, lageenergie und leistung-rs (fe1, fe2, fe6). Auf den Seiten fk11 bis fk14 kommt g gar nicht vor; nur fe2 zeigt den Wert 9,81 N/kg, wird dort aber ebenfalls nur abgelesen. Diese Seite hier liest g ab und rechnet nicht damit — für die Lernenden entsteht der Widerspruch deshalb nicht. Der Balkenvergleich rechts im Bild trägt die Beschriftungen „Mond: F = 96 N“, „Erde: F = 588 N“ und „Jupiter: F = 1488 N“ und darunter „Gewichtskraft im Vergleich (Masse überall 60 kg)“. Die Ableseaufgaben stützen sich trotzdem auf die Statuszeile, weil nur dort auch g steht."
+ }
+}

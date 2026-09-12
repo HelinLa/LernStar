@@ -1,0 +1,53 @@
+{
+ "id": "ki9",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Ein Regler nach dem anderen",
+ "problem": "Am Wettbewerbsstand soll ihr Wagen auf drei Metern möglichst schnell werden. Tobias dreht den Zugmotor eine Stufe höher, Mira nimmt stattdessen Ballast vom Wagen herunter. Beide behaupten, ihr Griff bringe mehr. Weil sie gestern immer beides zugleich verändert haben, entscheidet die Messreihe gar nichts. Am Bildschirm gibt es für jede Größe einen eigenen Regler.",
+ "frage": "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
+ "auftrag": "Bestimme aus zwei Messreihen, wie die Beschleunigung von Kraft und Masse abhängt: Nimm je eine Reihe unter Variablenkontrolle auf und suche die Auftragung, in der die Messpunkte auf einer Ursprungsgeraden liegen.",
+ "predict": [
+  "Über der Masse aufgetragen liegen die Messpunkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt der Beschleunigung denselben Betrag weg, gleichgültig, wie schwer der Wagen schon ist.",
+  "Über der Kraft liegen die Messpunkte auf einer Ursprungsgeraden, über der Masse dagegen auf einer krummen Kurve; erst über dem Kehrwert 1/m wird daraus wieder eine Ursprungsgerade."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Lass den Regler „Masse m“ auf 5 kg stehen, wähle die Auftragung „a über F auftragen“ und nimm mit „Messreihe automatisch aufnehmen“ die ganze Kraftreihe auf – acht Zeilen von F = 10 N bis F = 200 N. Lies im Auswertungsfeld die Geradengleichung, R² und die Zeile „Masse m aus der Steigung k“ ab.",
+  "Drücke „Tabelle leeren“ und bestätige die Rückfrage, sonst wertet das Feld die Kraftreihe mit aus. Stelle „Kraft F“ auf 40 N, wähle „a über m auftragen“ und nimm erneut mit „Messreihe automatisch aufnehmen“ auf – diesmal fährt die Masse in neun Zeilen von 1 kg bis 20 kg. Halte fest, welche Form die Punktfolge hat und was das Auswertungsfeld statt einer Steigung meldet.",
+  "Wechsle mit „a über 1/m auftragen“ zum mittleren der drei Reiter: dieselben neun Messwerte, nur eine andere x-Achse. Lies Steigung und R² ab und vergleiche die Zeile „Kraft F aus der Steigung k“ mit der Kraft, die am Regler eingestellt ist."
+ ],
+ "tabCols": [
+  "Auftragung und festgehaltene Größe",
+  "Was die Auswertung meldet"
+ ],
+ "tabRows": [
+  "a über F (m = 5 kg fest): Steigung k",
+  "a über F: Masse m aus k, also 1/k",
+  "a über m (F = 40 N fest): Kurvenform",
+  "a über 1/m: Steigung k, also Kraft F"
+ ],
+ "fachtext": "Eine resultierende Kraft ändert den Bewegungszustand: Bleibt F während der Fahrt konstant, ist auch die Beschleunigung a konstant. Wovon a abhängt, entscheidet keine Behauptung, sondern die Form der Messpunkte. Erste Reihe, Masse festgehalten: Über F aufgetragen liegen die Punkte auf einer Ursprungsgeraden, also a ~ F. Ihre Steigung hat die Einheit 1/kg und ist der Kehrwert der Masse – aus m = 1/k kommt die eingestellte Masse zurück. Zweite Reihe, Kraft festgehalten: Über m aufgetragen entsteht eine Hyperbel, und aus einer krummen Kurve lässt sich keine Steigung ablesen. Deshalb wird linearisiert, also die Größe auf der x-Achse so gewählt, dass eine Gerade herauskommt. Hier ist es der Kehrwert 1/m: Dieselben Messwerte liegen dort auf einer Ursprungsgeraden, deren Steigung die festgehaltene Kraft ist. Beide Reihen ergeben a ~ F/m; dass vor F/m der Faktor 1 steht, ist nicht gemessen, sondern festgelegt: Die Einheit Newton ist so definiert, dass 1 N = 1 kg · m/s² gilt. Damit ist a = F/m, üblich geschrieben F = m · a, für konstante Masse; die Impulsfassung kommt später. Gültigkeitsbereich: Die Simulation rechnet ohne Reibung und ohne Luftwiderstand, die eingestellte Kraft ist zugleich die resultierende Kraft, und die Messwerte streuen nicht.",
+ "merksatz": [
+  {
+   "pre": "Über der Masse selbst liegen die Messpunkte auf einer Hyperbel; über dem Kehrwert 1/m dagegen auf einer",
+   "loesung": "Ursprungsgeraden",
+   "post": "."
+  },
+  {
+   "pre": "Die Steigung dieser Geraden ist die festgehaltene Kraft; zusammen mit der Steigung 1/m der Kraftreihe und der Festlegung 1 N = 1 kg · m/s² folgt F =",
+   "loesung": "m · a",
+   "post": "."
+  }
+ ],
+ "beobachtung": "Erste Messreihe, „a über F auftragen“ bei m = 5 kg: Die Tabelle füllt sich mit acht Zeilen von einem Reglerende zum anderen, die Spalte a zeigt zu F = 10 N den Wert 2,00 m/s², zu 50 N 10,00 m/s², zu 110 N 22,00 m/s² und zu 200 N 40,00 m/s². Alle Punkte liegen auf einer Ursprungsgeraden: „m = 5 kg · 8 Messwerte“, y = 0,2000·x bei R² = 1,0000, erwartet 0,2000; darunter steht „Masse m aus der Steigung k 5,000 kg · eingestellt: 5,000 kg“ mit der Abweichung 0,00 %. Zweite Messreihe nach „Tabelle leeren“ bei F = 40 N, neun Zeilen: 1 kg ergibt 40,00 m/s², 4 kg ergibt 10,00 m/s², 10 kg ergibt 4,00 m/s², 20 kg ergibt 2,00 m/s². Über m aufgetragen liegen diese Punkte auf einer Hyperbel; dort wird gar keine Ausgleichsgerade gezeichnet, gemeldet wird „Keine Gerade – trage 1/m auf.“ Über 1/m aufgetragen sind es dieselben Messwerte auf einer Ursprungsgeraden: y = 40,000·x bei R² = 1,0000 und „Kraft F aus der Steigung k 40,00 N · eingestellt: 40,00 N“. Die Spalte m · a steht auf der eingestellten Kraft, außer in den beiden Zeilen, in denen a gerundet werden muss: bei m = 3 kg ergibt 3 · 13,33 = 39,99 und bei m = 14 kg ergibt 14 · 2,86 = 40,04 statt 40,00.",
+ "aufgabe": {
+  "frage": "Bestimme die Steigung der Geraden „a über 1/m“ von Hand aus den Tabellenzeilen m = 4 kg und m = 20 kg und begründe, warum dieselbe Rechnung in der Auftragung über m keine brauchbare Zahl liefert.",
+  "zeilen": 5,
+  "loesung": "Aus der Tabelle: zu m = 4 kg gehören 1/m = 0,2500 1/kg und a = 10,00 m/s², zu m = 20 kg gehören 1/m = 0,0500 1/kg und a = 2,00 m/s². Die Steigung ist k = Δa : Δ(1/m) = (10,00 − 2,00) m/s² : (0,2500 − 0,0500) 1/kg = 8,00 : 0,2000 = 40,0. Ihre Einheit ist (m/s²) je (1/kg), also kg · m/s² = N: k = 40,0 N, genau die eingestellte Kraft. Das Programm meldet für alle Zeilen y = 40,000·x und „Kraft F aus der Steigung k 40,00 N“. Über m gerechnet gibt es dagegen keine einheitliche Steigung: zwischen 4 kg und 20 kg ergibt (2,00 − 10,00) : (20 − 4) = −0,50 m/s² je Kilogramm, zwischen 1 kg und 4 kg dagegen (10,00 − 40,00) : (4 − 1) = −10,00 m/s² je Kilogramm – zwanzigmal so steil. Eine Hyperbel hat in jedem Punkt eine andere Steigung, deshalb ist dort keine Ausgleichsgerade zu ziehen und keine Größe abzulesen. Genau dafür linearisiert man."
+ },
+ "alltag": "Ein Einkaufswagen hat leer die Masse 10 kg, voll beladen 30 kg. Du schiebst ihn beide Male mit derselben Kraft von 60 N an. Sage mit F = m · a beide Beschleunigungen voraus und erkläre einer Person zu Hause, warum der volle Wagen nur ein Drittel davon erreicht, solange man die Rollreibung vernachlässigt. 30 kg liegen außerhalb des Reglers – die Vorhersage kommt hier aus dem Gesetz, nicht vom Bildschirm.",
+ "alltagAfb": "II",
+ "alltagKomp": "S1",
+ "ueberleitung": "Am Wagen zog genau eine Kraft, und er wurde immer schneller. Über der Messstrecke hängt dagegen eine Werkstattlampe an einem Federkraftmesser, der ruhig bei 5 N steht – und trotzdem bewegt sie sich nicht. Auf der nächsten Seite prüfst du, was F = m · a für diesen Fall verlangt.",
+ "name": "Wovon hängt die Beschleunigung ab?",
+ "theme": "ef_mechanik"
+}

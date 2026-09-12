@@ -1,0 +1,11 @@
+  <rect x="0" y="0" width="900" height="240" fill="#8FA8B8"/>
+  <use href="#t_asphalt" transform="translate(0,240)"/>
+  <use href="#t_bordstein" transform="translate(0,152)"/>
+  <use href="#t_gullyloch" transform="translate(200,410)"/>
+  <use href="#t_gullyrost" transform="translate(200,410)"/>
+  <use href="#t_laub" transform="translate(560,292)"/>
+  <use href="#t_stabmagnet" transform="translate(560,400)"/>
+  <use href="#t_magnetschnur" transform="translate(800,110)"/>
+  <use href="#t_kronkorken" transform="translate(452,480)"/>
+  <use href="#t_ringzieher" transform="translate(548,486)"/>
+  <use href="#t_schluessel_messing" transform="translate(660,486)"/>

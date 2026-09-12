@@ -1,0 +1,63 @@
+{
+  "kennung": "gl05",
+  "frage": "Wie bekomme ich die −4 weg?",
+  "art": "rechenschritt",
+  "aufgabe": "a04",
+  "vorwissen": [
+    "Er weiß, dass 2x „zwei mal x“ bedeutet.",
+    "Er kann im Kopf 10 + 4 rechnen.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen."
+  ],
+  "hilfe1": "Welche Zahl wird hier abgezogen?",
+  "skript": {
+    "A": { "text": "Du hast jetzt 2x − 4 = 10.", "woerter": 10 },
+    "B": { "text": "Wir wollen die −4 wegbekommen.", "woerter": 6 },
+    "C": { "text": "Rechne auf beiden Seiten +4.", "woerter": 6 },
+    "D": { "text": "Plus 4 hebt die minus 4 auf.", "woerter": 7 },
+    "E": { "text": "Jetzt muss dort 2x = 14 stehen.", "woerter": 9 },
+    "F": { "text": "Jetzt bist du wieder dran.", "woerter": 5 }
+  },
+  "woerter_gesamt": 43,
+  "sekunden_sprache": 21.5,
+  "sekunden_gesamt": 24.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 2x − 4 = 10.",
+      "hervorgehoben": "die ganze Zeile 2x − 4 = 10"
+    },
+    "B": {
+      "sichtbar": "2x − 4 = 10 steht weiter da. Um die −4 liegt ein roter Ring.",
+      "hervorgehoben": "die −4"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint +4. Unter der rechten Seite erscheint +4. Die Zeile 2x − 4 = 10 bleibt oben stehen.",
+      "hervorgehoben": "die beiden +4, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Links steht jetzt −4 + 4. Daraus wird eine grüne 0.",
+      "hervorgehoben": "das Paar −4 und +4"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile wird blass. Darunter steht groß 2x = 14.",
+      "hervorgehoben": "die neue Zeile 2x = 14"
+    },
+    "F": {
+      "sichtbar": "2x = 14 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "2x = 14"
+    }
+  },
+  "szene": {
+    "A": [{ "zeile": "2x − 4 = 10" }],
+    "B": [{ "ring": "−4", "farbe": "rot" }],
+    "C": [{ "unterBeide": "+4" }],
+    "D": [{ "hebeAuf": ["−4", "+4"], "wird": "0" }],
+    "E": [{ "neueZeile": "2x = 14" }],
+    "F": [{ "nurNoch": "2x = 14" }, { "halte": 3 }]
+  },
+  "hilfe3": {
+    "aufgabe": "a23",
+    "text": "Bei 4x − 2 = 10 rechnest du auf beiden Seiten +2.",
+    "kontrolle": "Dann steht dort 4x = 12."
+  },
+  "faengt_fehler_auf": "Der Schüler rechnet minus 4 statt plus 4 und schreibt 2x = 6."
+}

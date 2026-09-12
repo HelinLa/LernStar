@@ -1,0 +1,140 @@
+{
+  "kennung": "gl10",
+  "frage": "Wie mache ich die Probe?",
+  "art": "rechenschritt",
+  "aufgabe": "a20",
+  "vorwissen": [
+    "Er weiß, dass 4x „vier mal x“ bedeutet.",
+    "Er kann 4 · 4 + 3 im Kopf rechnen.",
+    "Er weiß, dass links und rechts zwei Seiten sind."
+  ],
+  "hilfe1": "Wo steht in 4x + 3 das x?",
+  "skript": {
+    "A": {
+      "text": "Du hast 4x + 3 = 19. Heraus kam die 4.",
+      "woerter": 13
+    },
+    "B": {
+      "text": "Wir prüfen, ob die 4 wirklich stimmt.",
+      "woerter": 7
+    },
+    "C": {
+      "text": "Setze die 4 für das x ein.",
+      "woerter": 7
+    },
+    "D": {
+      "text": "Nur bei der richtigen Zahl sind beide Seiten gleich.",
+      "woerter": 9
+    },
+    "E": {
+      "text": "Links steht dann 19. Rechts steht auch 19.",
+      "woerter": 8
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 49,
+  "sekunden_sprache": 24.5,
+  "sekunden_gesamt": 27.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. Oben steht groß 4x + 3 = 19. Darunter steht deine 4.",
+      "hervorgehoben": "die 4 unter der Zeile"
+    },
+    "B": {
+      "sichtbar": "4x + 3 = 19 steht weiter da. Um die 4 darunter liegt ein roter Ring.",
+      "hervorgehoben": "die 4 im roten Ring"
+    },
+    "C": {
+      "sichtbar": "Links steht jetzt 4 · 4 + 3 statt 4x + 3. Rechts steht weiter 19.",
+      "hervorgehoben": "die eingesetzte 4 in 4 · 4"
+    },
+    "D": {
+      "sichtbar": "Die Zeile 4 · 4 + 3 = 19 bleibt blass stehen. Darüber erscheint eine Waage: links die eingesetzte Seite, rechts die 19. Die Waage steht gerade.",
+      "hervorgehoben": "die gerade stehende Waage"
+    },
+    "E": {
+      "sichtbar": "Links wird 4 · 4 + 3 zu 19. Rechts steht 19. Beide 19 werden grün.",
+      "hervorgehoben": "die zwei grünen 19"
+    },
+    "F": {
+      "sichtbar": "Die beiden grünen 19 stehen allein im Bild und bleiben drei Sekunden stehen.",
+      "hervorgehoben": "die beiden grünen 19"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zusammen": [
+          {
+            "zeile": "4x + 3 = 19"
+          },
+          {
+            "kasten": "4"
+          }
+        ]
+      }
+    ],
+    "B": [
+      {
+        "ring": "4",
+        "farbe": "rot"
+      }
+    ],
+    "C": [
+      {
+        "ersetze": {
+          "was": "4x",
+          "durch": "4 · 4"
+        }
+      }
+    ],
+    "D": [
+      {
+        "waage": {
+          "links": "4 · 4 + 3",
+          "rechts": "19"
+        }
+      }
+    ],
+    "E": [
+      {
+        "zusammen": [
+          {
+            "ersetze": {
+              "was": "4 · 4 + 3",
+              "durch": "19",
+              "farbe": "gruen"
+            }
+          },
+          {
+            "markiere": "19",
+            "farbe": "gruen"
+          }
+        ]
+      }
+    ],
+    "F": [
+      {
+        "nurNoch": "19"
+      },
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "A, „deine 4“: als Baustein „kasten“ nachgetragen (PROFIL §12.2) - eine GEGEBENE Zahl im neutralen Kasten, damit sie nicht als Rechenzeile missverstanden wird. Ein grauer Kasten bewertet nichts und ist deshalb keine der vier Bedeutungsfarben (§12.3).",
+    "D, Abweichung: „Darüber erscheint eine Waage“ - die Tafel wächst nach unten, die Waage steht deshalb UNTER der Zeile, nicht über ihr.",
+    "D, Abweichung: „Die Zeile 4 · 4 + 3 = 19 bleibt blass stehen“ - sie bleibt stehen, aber in voller Helligkeit. Blass wird auf der Tafel nur alles zusammen, durch „neueZeile“; in D entsteht keine neue Zeile (derselbe Punkt wie in gl06 D).",
+    "E, Abweichung: Die Waage aus D trägt links weiter „4 · 4 + 3“, während die Zeile darüber schon 19 = 19 zeigt. Die Bildbeschreibung von E sagt über die Waage nichts; sie bleibt deshalb, wie D sie gesetzt hat."
+  ],
+  "hilfe3": {
+    "aufgabe": "a21",
+    "text": "Bei 2x + 5 = 17 setzt du die 6 für das x ein.",
+    "kontrolle": "Links wird 2x + 5 zu 17. Rechts steht auch 17."
+  },
+  "faengt_fehler_auf": "Der Schüler rechnet die linke Seite aus und vergleicht sie nicht mit der 19."
+}

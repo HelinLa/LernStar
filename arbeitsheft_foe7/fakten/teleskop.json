@@ -1,0 +1,172 @@
+[
+ {
+  "sim": "teleskop",
+  "ueberschrift": "🔭 Das Teleskop – wie holt man ferne Objekte näher heran?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "👁 bloßes Auge",
+    "ruft": "_tskMit(false)"
+   },
+   {
+    "aufschrift": "🔭 mit Teleskop",
+    "ruft": "_tskMit(true)"
+   },
+   {
+    "aufschrift": "◦ kleine Öffnung",
+    "ruft": "_tskOeff('klein')"
+   },
+   {
+    "aufschrift": "◯ große Öffnung",
+    "ruft": "_tskOeff('gross')"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_tskReset()"
+   },
+   {
+    "aufschrift": "Es sammelt mehr Licht und vergrößert",
+    "ruft": "_tskAns(0,0)"
+   },
+   {
+    "aufschrift": "Es bringt die Sterne wirklich näher",
+    "ruft": "_tskAns(0,1)"
+   },
+   {
+    "aufschrift": "Es macht Sterne mit Strom heller",
+    "ruft": "_tskAns(0,2)"
+   },
+   {
+    "aufschrift": "Das Bild wird dunkler",
+    "ruft": "_tskAns(1,0)"
+   },
+   {
+    "aufschrift": "Es wird mehr Licht gesammelt (heller)",
+    "ruft": "_tskAns(1,1)"
+   },
+   {
+    "aufschrift": "Gar nichts",
+    "ruft": "_tskAns(1,2)"
+   },
+   {
+    "aufschrift": "Durch die Linsen bzw. Spiegel des Teleskops",
+    "ruft": "_tskAns(2,0)"
+   },
+   {
+    "aufschrift": "Durch die Erddrehung",
+    "ruft": "_tskAns(2,1)"
+   },
+   {
+    "aufschrift": "Durch die Farbe des Glases",
+    "ruft": "_tskAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_tskSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_tskSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_tskSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('teleskop')"
+   }
+  ],
+  "hinweise": [
+   "Schau den Mond zuerst mit bloßem Auge an, dann durch das Fernrohr. Verfolge die gelbe Marke (Oberkante) und die blaue Marke (Unterkante): Wie herum steht der Mond im Sehfeld? Verändere danach die Öffnung. Was wird größer, was wird heller?",
+   "Das Kepler-Fernrohr hat zwei Sammellinsen. Das Objektiv (lange Brennweite) erzeugt im Rohr ein umgekehrtes Zwischenbild; das Okular (kurze Brennweite) ist die Lupe, mit der du dieses Zwischenbild anschaust. Deshalb steht das Bild auf dem Kopf. Vergrößerung = Brennweite Objektiv : Brennweite Okular. Scharf wird es nur, wenn der Abstand der Linsen genau die Summe der beiden Brennweiten ist – dafür zieht man das Okularrohr aus.",
+   "Die zweite Aufgabe des Teleskops: Licht sammeln. Je größer die Öffnung des Objektivs, desto heller das Bild – erst dann werden lichtschwache Objekte überhaupt sichtbar.",
+   "V = f(Objektiv) : f(Okular) | scharf bei Abstand = f(Objektiv) + f(Okular) | Bild auf dem Kopf | große Öffnung → helleres Bild."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar."
+   },
+   {
+    "einstellung": "👁 bloßes Auge",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar."
+   },
+   {
+    "einstellung": "🔭 mit Teleskop",
+    "text": "tskStatus: 🔭 Zwei Sammellinsen: Das Objektiv (lange Brennweite) entwirft im Rohr ein umgekehrtes Zwischenbild, das Okular (kurze Brennweite) wirkt darauf wie eine Lupe – darum siehst du den Mond vergrößert und auf dem Kopf. Vergrößerung = Brennweite Objektiv : Brennweite Okular = 4-fach. Scharf ist das Bild nur, wenn der Linsenabstand genau die Summe beider Brennweiten ist; der Auszug fährt hier von selbst hin und her. Große Öffnung: Das Bild ist hell und lichtstark (eine große Öffnung sammelt mehr Licht)."
+   },
+   {
+    "einstellung": "◦ kleine Öffnung",
+    "text": "tskStatus: 🔭 Zwei Sammellinsen: Das Objektiv (lange Brennweite) entwirft im Rohr ein umgekehrtes Zwischenbild, das Okular (kurze Brennweite) wirkt darauf wie eine Lupe – darum siehst du den Mond vergrößert und auf dem Kopf. Vergrößerung = Brennweite Objektiv : Brennweite Okular = 4-fach. Scharf ist das Bild nur, wenn der Linsenabstand genau die Summe beider Brennweiten ist; der Auszug fährt hier von selbst hin und her. Kleine Öffnung: Das Bild ist nur mäßig hell (eine große Öffnung sammelt mehr Licht)."
+   },
+   {
+    "einstellung": "◯ große Öffnung",
+    "text": "tskStatus: 🔭 Zwei Sammellinsen: Das Objektiv (lange Brennweite) entwirft im Rohr ein umgekehrtes Zwischenbild, das Okular (kurze Brennweite) wirkt darauf wie eine Lupe – darum siehst du den Mond vergrößert und auf dem Kopf. Vergrößerung = Brennweite Objektiv : Brennweite Okular = 4-fach. Scharf ist das Bild nur, wenn der Linsenabstand genau die Summe beider Brennweiten ist; der Auszug fährt hier von selbst hin und her. Große Öffnung: Das Bild ist hell und lichtstark (eine große Öffnung sammelt mehr Licht)."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar."
+   },
+   {
+    "einstellung": "Es sammelt mehr Licht und vergrößert",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✓ Richtig! Ein Teleskop vergrößert und sammelt mehr Licht."
+   },
+   {
+    "einstellung": "Es bringt die Sterne wirklich näher",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Die Objekte bleiben, wo sie sind – nur das Bild wird größer."
+   },
+   {
+    "einstellung": "Es macht Sterne mit Strom heller",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht."
+   },
+   {
+    "einstellung": "Das Bild wird dunkler",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Genau umgekehrt – größer heißt heller."
+   },
+   {
+    "einstellung": "Es wird mehr Licht gesammelt (heller)",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✓ Richtig! Eine große Öffnung sammelt mehr Licht."
+   },
+   {
+    "einstellung": "Gar nichts",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit."
+   },
+   {
+    "einstellung": "Durch die Linsen bzw. Spiegel des Teleskops",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✓ Richtig! Linsen oder Spiegel erzeugen das vergrößerte Bild."
+   },
+   {
+    "einstellung": "Durch die Erddrehung",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Erddrehung vergrößert nichts."
+   },
+   {
+    "einstellung": "Durch die Farbe des Glases",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Farbe des Glases ist dafür nicht verantwortlich."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Farbe des Glases ist dafür nicht verantwortlich.  ||  tskSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Farbe des Glases ist dafür nicht verantwortlich.  ||  tskSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Farbe des Glases ist dafür nicht verantwortlich."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "tskStatus: 👁 Mit bloßem Auge ist der Mond klein, du erkennst kaum Einzelheiten – und er steht richtig herum. Sehr lichtschwache Objekte bleiben ganz unsichtbar.  ||  tskFb0: ✗ Ein Teleskop hat keinen Strom und erzeugt kein eigenes Licht.  ||  tskFb1: ✗ Die Öffnung ist entscheidend für die Helligkeit.  ||  tskFb2: ✗ Die Farbe des Glases ist dafür nicht verantwortlich."
+   }
+  ],
+  "bildtexte": [
+   "bloßes Auge",
+   "so klein siehst du ihn",
+   "Objektiv",
+   "Okular",
+   "scharf · 4-fach · umgekehrt"
+  ]
+ }
+]

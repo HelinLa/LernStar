@@ -1,0 +1,94 @@
+[
+ {
+  "kapitel": "optik",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Bekannter sagt: „Je stärker die Brille, desto besser sieht man.“ Beurteile die Aussage und begründe mit dem, was du über Brennweite und Bildentstehung weißt.",
+    "erwartung": "Falsch: Die Brille muss zum Auge passen, nicht möglichst stark sein. Eine zu starke Linse verschiebt das Bild vor die Netzhaut. Erwartet wird der Bezug auf Brennweite und Bildort."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuch, mit dem ihr die Brennweite von drei Lupen vergleicht, ohne auf die Beschriftung zu sehen. Legt fest, was ihr messt und was gleich bleiben muss.",
+    "erwartung": "Ein weit entfernter heller Gegenstand wird scharf auf einen Schirm abgebildet; der Abstand Linse–Schirm ist näherungsweise die Brennweite. Gleich bleiben: Gegenstand, Abstand, Raumhelligkeit."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für den Physikraum soll ein Satz Linsen gekauft werden. Stellt drei Kriterien auf, gewichtet sie und entscheidet begründet.",
+    "erwartung": "Kriterien z. B. Brennweiten-Auswahl, Bruchfestigkeit, Fassung/Handhabung, Preis. Erwartet wird eine Gewichtung mit Begründung und eine daraus folgende Entscheidung."
+   }
+  ]
+ },
+ {
+  "kapitel": "farben",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Hersteller wirbt mit einer „100 % blickdichten Sichtschutzfolie“. Beurteile, was diese Angabe physikalisch bedeuten müsste und wie ihr sie prüfen könntet.",
+    "erwartung": "„Blickdicht“ hieße: kein gerichtetes Licht kommt hindurch, nur Streulicht. Prüfbar mit einer Lampe hinter der Folie in einem dunklen Raum. Erwartet wird die Unterscheidung von undurchsichtig und durchscheinend."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant einen Versuch, der zeigt, dass weißes Licht aus mehreren Farben besteht – und einen zweiten, der die Farben wieder zusammenführt.",
+    "erwartung": "Zerlegung mit Prisma oder Wasserschale und Spiegel; Zusammenführung mit einer zweiten Linse oder einer schnell gedrehten Farbscheibe. Erwartet wird, dass beide Richtungen genannt werden."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Nachts leuchten viele Werbetafeln. Nimm Stellung zu einem Verbot nach 22 Uhr. Nenne ein Argument aus der Physik und eines aus dem Alltag.",
+    "erwartung": "Physik: Streulicht am Himmel überstrahlt schwache Objekte, Lichtverschmutzung. Alltag: Werbung, Sicherheitsgefühl, Stromkosten. Erwartet wird eine begründete eigene Position."
+   }
+  ]
+ },
+ {
+  "kapitel": "himmel7",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "„Astronauten sind schwerelos, weil im Weltall keine Schwerkraft wirkt.“ Beurteile diesen Satz und schreibe die tragfähige Erklärung auf.",
+    "erwartung": "Falsch: In der Raumstation wirkt fast die volle Erdanziehung. Station und Besatzung fallen gemeinsam um die Erde herum; deshalb spürt man kein Gewicht. Erwartet wird der freie Fall als Erklärung."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt ein Modell, mit dem ihr in der Klasse die Größenverhältnisse im Sonnensystem zeigt. Begründet, warum ihr Größen und Abstände nicht im selben Maßstab darstellen könnt.",
+    "erwartung": "Im gemeinsamen Maßstab wäre die Erde bei sonnengroßem Fußball nur stecknadelkopfgroß und 30 m entfernt. Erwartet wird ein konkreter Maßstab und die Begründung der Trennung beider Darstellungen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für eine Mondmission darf jede Person nur wenige Kilogramm mitnehmen. Stellt drei Kriterien auf, nach denen ihr auswählt, und gewichtet sie.",
+    "erwartung": "Kriterien z. B. Überlebenswichtigkeit, Masse, Ersetzbarkeit, Mehrfachnutzen. Erwartet wird eine Gewichtung mit Begründung, nicht eine Wunschliste."
+   }
+  ]
+ },
+ {
+  "kapitel": "teleskop",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Eine Schlagzeile lautet: „Forscher sehen den Urknall.“ Beurteile, was daran zutrifft und was nicht.",
+    "erwartung": "Man sieht nicht den Urknall selbst, sondern die Hintergrundstrahlung aus der Zeit rund 380 000 Jahre danach. Erwartet wird die Unterscheidung zwischen Ereignis und ältestem sichtbaren Licht."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Große Teleskope kosten Milliarden. Nimm Stellung dazu, ob dieses Geld gut angelegt ist. Nenne je ein Argument dafür und dagegen und entscheide dich begründet.",
+    "erwartung": "Dafür: Grundlagenforschung, technische Nebenprodukte, Ausbildung. Dagegen: andere dringende Aufgaben, unsicherer Nutzen. Erwartet wird eine eigene, begründete Position."
+   },
+   {
+    "komp": "K7",
+    "afb": "III",
+    "prompt": "Stelle in einer kurzen Präsentation dar, wie sich das Weltbild von der Erde als Mittelpunkt zum heutigen Bild gewandelt hat. Nenne für jeden Schritt die Beobachtung, die ihn erzwungen hat.",
+    "erwartung": "Erwartet werden mindestens drei Stationen mit der jeweils auslösenden Beobachtung (z. B. Planetenschleifen, Jupitermonde, Phasen der Venus, Spektren) – nicht nur Namen und Jahreszahlen."
+   }
+  ]
+ }
+]

@@ -1,0 +1,52 @@
+{
+ "id": "gw3",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Acht Punkte, eine Steigung",
+ "problem": "Für die Jury von Jugend forscht reicht Mira die Formel nicht; sie will die Zentripetalkraft gemessen haben. Tobias übernimmt den ersten Messpunkt und stutzt: Im Statusfeld stehen 35,53 N, in seiner Tabelle 35,65 N. Die Kraftmessdose streut um etwa 1,5 %. Trägt eine Messreihe aus solchen Werten trotzdem ein belastbares Ergebnis?",
+ "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
+ "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
+ "predict": [
+  "Weil jeder einzelne Messwert um bis zu 1,5 % danebenliegt, kann auch die Masse aus der Steigung höchstens auf 1,5 % genau herauskommen.",
+  "Die Ausgleichsgerade mittelt die Streuung über alle Punkte hinweg. Die Masse aus der Steigung trifft den eingestellten Wert deshalb deutlich besser als eine Einzelmessung."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Drücke zuerst „Tabelle leeren“, damit du mit einer leeren Tabelle beginnst. Notiere dann bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Zentripetalkraft F_z aus dem Statusfeld „Alle Größen der Kreisbewegung“, drücke „Messpunkt übernehmen“ und notiere auch den Wert, der dafür in der Tabelle erscheint. Vergleiche beide.",
+  "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, die daneben stehende erwartete Steigung, das Bestimmtheitsmaß R², die Masse aus der Steigung und deren Abweichung ab.",
+  "Leere die Tabelle – sonst rechnet der Ergebniskasten nicht mit deiner neuen Reihe –, wähle „F über f² auftragen“ und nimm die Messreihe erneut auf. Leere die Tabelle danach ein drittes Mal, stelle „Masse m“ auf 1,50 kg, wähle wieder „F über r auftragen“ und nimm die Reihe auf. Rechne aus ihrer Steigung mit m = k/(4·π²·f²) die Masse selbst nach und halte sie gegen den Ergebniskasten."
+ ],
+ "tabCols": [
+  "Steigung k und erwartete Steigung",
+  "Masse aus der Steigung und Abweichung"
+ ],
+ "tabRows": [
+  "F über r · m = 0,50 kg, f = 1,50 Hz",
+  "F über f² · m = 0,50 kg, r = 0,80 m",
+  "F über r · m = 1,50 kg, f = 1,50 Hz"
+ ],
+ "fachtext": "Setzt man ω = 2·π·f in a_z = ω²·r ein, wird a_z = 4·π²·f²·r und damit F_z = m·a_z = 4·π²·m·f²·r. Eine Messreihe wertet man aus, indem man so aufträgt, dass eine Ursprungsgerade entsteht: Bei festem m und f gehört zu F_z(r) die Steigung k = 4·π²·m·f². Hält man dagegen m und r fest, ergibt F_z über f eine Parabel; erst über f² liegt F_z(f²) = 4·π²·m·r · f² wieder auf einer Ursprungsgeraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. Weil in der Steigung außer der gesuchten Größe nur bekannte stehen, lässt sie sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose, die Steigung über viele Punkte deutlich weniger. Das Bestimmtheitsmaß R² steht dabei so gut wie immer bei 0,9999 oder 1,0000 – das heißt nur, dass die Streuung gegenüber dem Messbereich klein ist, nicht, dass fehlerfrei gemessen wurde.",
+ "merksatz": [
+  {
+   "pre": "Trägt man F_z über r auf, so ist die Steigung",
+   "loesung": "4·π²·m·f²",
+   "post": "und hat die Einheit N/m."
+  },
+  {
+   "pre": "Aus dieser Steigung k folgt die Masse m =",
+   "loesung": "k/(4·π²·f²)",
+   "post": "."
+  }
+ ],
+ "beobachtung": "Die Kraftmessdose streut: Jeder Durchgang gibt andere Zahlen, und der Tabellenwert stimmt so gut wie nie genau mit dem Statusfeld überein. In unserem Durchgang stand das so da: Bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz meldet das Statusfeld T = 0,667 s, ω = 9,4248 rad/s, v = 7,53984 m/s, a_z = 71,06 m/s² und F_z = 35,53 N; „Messpunkt übernehmen“ trug dafür 35,65 N in die Tabelle ein. Nach „Messreihe automatisch aufnehmen“ standen acht Wertepaare da – der von Hand übernommene Punkt oben, darunter die Radien von 0,2 m aufwärts. Nach dem Radius sortiert: 0,2 m mit 8,84 N, 0,4 m mit 17,85 N, 0,6 m mit 26,64 N, 0,8 m mit 35,65 N, 0,9 m mit 40,28 N, 1,1 m mit 49,09 N, 1,3 m mit 57,07 N und 1,5 m mit 66,62 N. Das Auswertungsfeld meldete „m = 0,5 kg, f = 1,5 Hz · 8 Messwerte“, dazu y = 44,383·x bei R² = 1,0000 und erwartet 44,413, darunter „Masse m aus der Steigung k 0,500 kg · eingestellt: 0,500 kg“ mit der Abweichung 0,00 %. Die Rückrechnung geht auf: 4·π²·(1,50 Hz)² = 88,83 1/s², und 44,383 N/m : 88,83 1/s² ≈ 0,500 kg. Deine Zahlen sind andere: R² zeigt fast immer 0,9999 oder 1,0000, die Abweichung der zurückgerechneten Masse liegt fast immer unter 1 % und springt dabei in Schritten von etwa 0,2 %, weil die Masse auf drei Nachkommastellen angezeigt wird. Die erwarteten Steigungen der beiden anderen Reihen stehen ebenso im Auswertungsfeld: 15,791 N·s² für die f²-Reihe bei m = 0,50 kg und r = 0,80 m, 133,240 N/m für die r-Reihe bei m = 1,50 kg, die aus sieben Messwerten besteht. Auch dort trifft die zurückgerechnete Masse auf wenige Zehntelprozent.",
+ "aufgabe": {
+  "frage": "Berechne aus deinem notierten Tabellenwert bei r = 0,80 m aus Schritt 1 über m = F_z / a_z mit a_z = 71,06 m/s² die Masse. Vergleiche ihre Abweichung mit der Abweichung, die du für die erste Messreihe in die Tabelle eingetragen hast, und begründe den Unterschied.",
+  "zeilen": 4,
+  "loesung": "In unserem Durchgang stand dort 35,65 N: m = F_z / a_z = 35,65 N : 71,06 m/s² = 0,5017 kg. Eingestellt sind 0,500 kg, die Abweichung beträgt also (0,5017 kg − 0,500 kg) : 0,500 kg = 0,0034, das sind 0,34 %. Die Ausgleichsgerade über acht Messwerte kam auf 0,500 kg mit 0,07 % – in diesem Durchgang rund fünfmal näher am eingestellten Wert; im Mittel gewinnt die Ausgleichsgerade etwa den Faktor zwei bis drei. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose von etwa 1,5 %; über acht Punkte mittelt sie sich zum großen Teil heraus – am stärksten wirken dabei die Punkte mit großem Radius. Eine Einzelmessung kann den Wert zufällig auch besser treffen; verlassen kann man sich darauf nicht."
+ },
+ "alltag": "Auf dem Typenschild einer Wäscheschleuder stehen 1400 Umdrehungen je Minute und ein Trommelradius von 0,24 m. Bestimme daraus die Umlauffrequenz f in Hz und die Kraft, mit der die Trommelwand ein Wäschestück von 0,20 kg auf der Kreisbahn hält. Erkläre danach einer Person zu Hause, warum die doppelte Drehzahl die vierfache Kraft bedeutet.",
+ "alltagAfb": "II",
+ "alltagKomp": "S7",
+ "ueberleitung": "Die Steigung hat die Masse zurückgegeben, weil in F_z = 4·π²·m·f²·r nur eine Größe unbekannt war. Auf der nächsten Seite hält kein Faden mehr: Dort zieht die Anziehung zweier Massen – und die wächst nicht mit dem Abstand, sie schrumpft mit ihm.",
+ "name": "Was sagt eine Messreihe über die Zentripetalkraft?",
+ "theme": "ef_gravitation"
+}

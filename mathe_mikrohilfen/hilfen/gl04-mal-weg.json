@@ -1,0 +1,63 @@
+{
+  "kennung": "gl04",
+  "frage": "Wie bekomme ich die 3 vor dem x weg?",
+  "art": "rechenschritt",
+  "aufgabe": "a05",
+  "vorwissen": [
+    "Er weiß, dass 3x „drei mal x“ bedeutet.",
+    "Er kann 15 : 3 im Kopf rechnen.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen."
+  ],
+  "hilfe1": "Welche Zahl steht vor dem x?",
+  "skript": {
+    "A": { "text": "Du hast jetzt 3x = 15.", "woerter": 8 },
+    "B": { "text": "Wir wollen die 3 vor dem x wegbekommen.", "woerter": 8 },
+    "C": { "text": "Teile auf beiden Seiten durch 3.", "woerter": 6 },
+    "D": { "text": "3x heißt 3 mal x. Teilen hebt das Malnehmen auf.", "woerter": 11 },
+    "E": { "text": "Jetzt muss dort x = 15 : 3 stehen.", "woerter": 11 },
+    "F": { "text": "Jetzt bist du wieder dran.", "woerter": 5 }
+  },
+  "woerter_gesamt": 49,
+  "sekunden_sprache": 24.5,
+  "sekunden_gesamt": 27.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 3x = 15.",
+      "hervorgehoben": "die ganze Zeile 3x = 15"
+    },
+    "B": {
+      "sichtbar": "3x = 15 steht weiter da. Um die 3 vor dem x liegt ein roter Ring.",
+      "hervorgehoben": "die 3 vor dem x"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint : 3. Unter der rechten Seite erscheint : 3. Die Zeile 3x = 15 bleibt oben stehen.",
+      "hervorgehoben": "die beiden : 3, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Links steht jetzt 3x : 3. Daraus wird ein grünes x.",
+      "hervorgehoben": "das Paar 3x und : 3"
+    },
+    "E": {
+      "sichtbar": "Die Zeile 3x = 15 wird blass. Darunter steht groß x = 15 : 3.",
+      "hervorgehoben": "die neue Zeile x = 15 : 3"
+    },
+    "F": {
+      "sichtbar": "x = 15 : 3 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "x = 15 : 3"
+    }
+  },
+  "szene": {
+    "A": [{ "zeile": "3x = 15" }],
+    "B": [{ "ring": "3", "farbe": "rot" }],
+    "C": [{ "unterBeide": ": 3" }],
+    "D": [{ "hebeAuf": ["3x", ": 3"], "wird": "x" }],
+    "E": [{ "neueZeile": "x = 15 : 3" }],
+    "F": [{ "nurNoch": "x = 15 : 3" }, { "halte": 3 }]
+  },
+  "hilfe3": {
+    "aufgabe": "a22",
+    "text": "Bei 4x = 24 teilst du auf beiden Seiten durch 4.",
+    "kontrolle": "Dann steht dort x = 24 : 4."
+  },
+  "faengt_fehler_auf": "Der Schüler rechnet −3 statt zu teilen und schreibt x = 12."
+}

@@ -1,0 +1,201 @@
+{
+ "seite": {
+  "id": "fk10",
+  "quelle": "kf10",
+  "sim": "wechselwirkung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Rückwärts auf dem Rollbrett",
+  "name": "Warum rollt das Rollbrett zurück?",
+  "fachwoerter_neu": [
+   "Wechselwirkung"
+  ],
+  "alltag": [
+   "Jannis steht auf einem Rollbrett mit vier Rollen.",
+   "Er drückt fest gegen das schwere Klavier.",
+   "Das Klavier bleibt stehen. Jannis rollt rückwärts weg."
+  ],
+  "frage": "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
+  "predict": [
+   "Nur Jannis drückt. Das Klavier drückt nicht zurück.",
+   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke Eisläufer. Trage das Tempo v von Läufer B ein.",
+   "Drücke Boot. Trage das Tempo v von Boot und Person ein.",
+   "Drücke Rakete. Lies die Statuszeile.",
+   "Vergleiche: Wer ist leichter? Wer wird schneller?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Körper",
+   "Wie schwer ist der Körper?",
+   "Wie groß ist das Tempo v?"
+  ],
+  "tabRows": [
+   [
+    "Läufer A",
+    "60 kg",
+    "2,0 m/s"
+   ],
+   [
+    "Läufer B",
+    "60 kg",
+    ""
+   ],
+   [
+    "Boot",
+    "300 kg",
+    ""
+   ],
+   [
+    "Person",
+    "60 kg",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Drückst du einen Körper, drückt er zurück. Das heißt",
+    "loesung": "Wechselwirkung",
+    "post": "."
+   },
+   {
+    "pre": "Die zwei Kräfte sind gleich groß. Sie wirken auf zwei",
+    "loesung": "verschiedene Körper",
+    "post": ". Darum heben sie sich nicht auf."
+   }
+  ],
+  "wortbank": [
+   "Wechselwirkung",
+   "verschiedene Körper",
+   "gleich schnell",
+   "leichtere"
+  ],
+  "beispiel": {
+   "frage": "Was passiert beim Beispiel Boot?",
+   "antwort": "Die Person drückt das Boot weg. Das Boot drückt die Person zurück. Beide Kräfte sind gleich groß. Die Person ist leichter. Darum wird sie 5-mal so schnell."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Rakete. Was steht in der Statuszeile?",
+    "optionen": [
+     "Die Rakete wird 0,20 m/s schnell, das Gas 6,0 m/s.",
+     "Die Rakete wird 6,0 m/s schnell, das Gas 0,20 m/s.",
+     "Rakete und Gas werden beide gleich schnell."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Läufer A und Läufer B haben beide 60 kg. Sie werden",
+      "loesung": "gleich schnell",
+      "post": "."
+     },
+     {
+      "pre": "Bei der Rakete wird der",
+      "loesung": "leichtere",
+      "post": "Körper 30-mal so schnell."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das Klavier drückt gar nicht zurück.“ Erkläre Nour, warum das falsch ist.",
+    "satzstarter": "Nour hat nicht recht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du benutzt hast.",
+   "h2": "Beginne so: Nour hat nicht recht, weil das Klavier genauso stark zurückdrückt.",
+   "h3": "Fast fertig: Beide Kräfte sind gleich groß. Jannis ist viel leichter als das Klavier. Darum rollt nur ___ weg."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Wechselwirkung heißt.",
+   "Ich weiß, dass beide Kräfte gleich groß sind.",
+   "Ich kann erklären, warum der leichtere Körper schneller wird."
+  ],
+  "zuhause": "Blase einen Luftballon auf und lass ihn los. Die Luft geht nach hinten, der Ballon fliegt nach vorn.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild mit EINER einzigen Szene: eine Person springt von einem Boot auf den Bootssteg; die Szene ist von der Seite gezeigt; von der Person geht ein roter Pfeil nach links auf das Boot, vom Boot ein GENAU GLEICH LANGER roter Pfeil nach rechts auf die Person; beide Pfeile liegen auf derselben Höhe und starten an den Händen bzw. am Bootsrand, sie unterscheiden sich in nichts außer der Richtung; große Beschriftungen unter den Körpern: „Boot · 300 kg“ und „Person · 60 kg“, darüber die Tempo-Angaben „0,40 m/s“ und „2,0 m/s“; unten groß der Satz „gleiche Kraft – aber nicht gleiches Tempo“; keine weiteren Pfeile, keine Bewegungslinien, keine Nebenbilder, keine Deko, kein zweites Beispiel im Bild; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fk10",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Kräfte immer paarweise auftreten: Drückt ein Körper, drückt der andere gleich stark zurück (Wechselwirkung, actio = reactio). Sie begründen, dass sich die beiden Kräfte nicht aufheben, weil sie auf zwei verschiedene Körper wirken, und lesen am Bildschirm ab, dass der leichtere Körper dabei schneller wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei Rollbretter oder zwei Bürostühle, auf denen sich zwei Lernende abstoßen; ein Luftballon für den Zuhause-Auftrag.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils der Wortlaut der Statuszeile, je Körper eine eigene Zeile: Karte 1 „Zwei Eisläufer stoßen sich ab. Beide Kräfte sind gleich groß (actio = reactio).“ Läufer A: 60 kg – 2,0 m/s · Läufer B: 60 kg – 2,0 m/s · „Gleiche Masse, gleiche Geschwindigkeit.“ Karte 2 „Vom Boot auf den Steg springen. Beide Kräfte sind gleich groß (actio = reactio).“ Boot: 300 kg – 0,40 m/s · Person: 60 kg – 2,0 m/s · „Der leichtere Körper wird 5-mal so schnell.“ Karte 3 „Rakete stößt Gas aus. Beide Kräfte sind gleich groß (actio = reactio).“ Rakete: 600 kg – 0,20 m/s · Gas: 20 kg – 6,0 m/s · „Der leichtere Körper wird 30-mal so schnell.“ Auf jede Karte zwei gleich lange, entgegengesetzte Pfeile zeichnen und daneben schreiben, auf welchen Körper jeder Pfeil wirkt. Wichtig: 0,20 und 2,0 an die Tafel untereinander schreiben – die beiden Zahlen werden am häufigsten verwechselt.",
+  "merksatz": [
+   "Wechselwirkung",
+   "verschiedene Körper"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Läufer B",
+    "60 kg",
+    "2,0 m/s"
+   ],
+   [
+    "Boot",
+    "300 kg",
+    "0,40 m/s"
+   ],
+   [
+    "Person",
+    "60 kg",
+    "2,0 m/s"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet nach „Rakete“: Rakete: m = 600 kg → v = 0,20 m/s · Gas: m = 20 kg → v = 6,0 m/s. Die schwere Rakete ist die langsame, das leichte Gas das schnelle.",
+   "typische_fehler": [
+    "Option 2 wird angekreuzt: 0,20 und 6,0 werden vertauscht, weil die schwere Rakete für „stärker, also schneller“ gehalten wird.",
+    "0,20 m/s wird als 2,0 m/s gelesen – die beiden Zahlen stehen in derselben Zeile. Beim Vorlesen deutlich „null Komma zwei null“ sagen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gleich schnell",
+    "leichtere"
+   ],
+   "typische_fehler": [
+    "In der ersten Lücke steht „verschiedene Körper“, weil das Wort aus dem Merksatz zuerst einfällt; die Masse 60 kg / 60 kg gemeinsam noch einmal vorlesen.",
+    "In der zweiten Lücke steht „schwerere“ – Kernfehlvorstellung „der Schwerere drückt stärker“. Gegenbeleg ist der Bildtext „Kraft = Gegenkraft · gleiche Kraft, aber nicht dieselbe Geschwindigkeit“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour hat nicht recht, weil das Klavier genauso stark zurückdrückt. Die zwei Kräfte sind gleich groß. Sie wirken auf zwei verschiedene Körper: eine auf das Klavier, eine auf Jannis. Jannis ist viel leichter. Darum rollt nur er weg.",
+   "alternativen": [
+    "Belegt am Bildschirm-Beispiel Boot: Die Person drückt das Boot weg, das Boot drückt die Person zurück – die Person wird 5-mal so schnell.",
+    "Belegt am Beispiel Rakete: Die Rakete drückt das Gas nach unten, das Gas drückt die Rakete nach oben.",
+    "Kurzform ohne Beispiel: „Kräfte gibt es immer zu zweit. Wer drückt, wird auch gedrückt.“ – reicht für die volle Wertung.",
+    "Der Hinweis, dass das Klavier viel schwerer ist und sich deshalb kaum bewegt, gilt als richtig, solange auch die gleich große Kraft genannt wird."
+   ],
+   "typische_fehler": [
+    "„Die Kräfte heben sich auf, also passiert nichts“ – Verwechslung mit dem Kräftegleichgewicht aus fk8. Dort greifen beide Kräfte an EINEM Körper an, hier an zwei verschiedenen. Die Simulation sagt es wörtlich: „Nein – dann wäre es ein Gleichgewicht an einem Körper.“",
+    "„Das Klavier ist schwerer, also drückt es stärker“ – gleich große Kraft wird mit gleicher Wirkung verwechselt.",
+    "Nours Aussage wird nur wiederholt statt widerlegt.",
+    "Es wird nur der Massenunterschied genannt; die zweite Kraft fehlt – genau darum geht die Aufgabe."
+   ]
+  },
+  "hilfe3_wort": "Jannis (auch richtig: er, das Rollbrett)",
+  "schwache": [
+   "Zuerst nur Eisläufer und Boot vergleichen; die Rakete erst freigeben, wenn die Tabelle steht.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird – nur die letzte Spalte wird selbst ausgefüllt.",
+   "Die Zahlen 0,20 · 0,40 · 2,0 · 6,0 vorab auf Kärtchen legen und der Reihe nach zuordnen, statt sie aus der langen Statuszeile herauszusuchen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Den Versuch mit zwei Bürostühlen körperlich durchführen: beide stoßen sich ab, beide rollen weg – das trägt die Aussage „zwei verschiedene Körper“ ohne Lesen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Rakete und schreibe auf, welcher Körper leichter ist und welcher schneller wird. Beantworte danach die drei Fragen im Quiz der Simulation.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Wechselwirkungsprinzip (actio = reactio), Abgrenzung zum Kräftegleichgewicht. Wortwahl: Der Bildschirm schreibt „Geschwindigkeit“, das Heft durchgehend „Tempo v“ (in fk9 eingeführt) – beide Wörter im Unterricht einmal nebeneinander nennen. Der Bildschirm beschriftet die zweite Kraft als „Gegenkraft“; auf der Schülerseite steht nur „drückt zurück“, weil „Wechselwirkung“ das einzige neue Fachwort dieser Einheit ist (Fachwort-Zuteilung des Seitenplans). Wer „Gegenkraft“ mündlich einführt, zeigt dazu die beiden Bildpfeile „Kraft“ und „Gegenkraft“. „actio = reactio“ steht in jeder Statuszeile, bleibt aber Latein und wird nie als Lückenwort verlangt. Der Faktor 5-mal bzw. 30-mal wird abgelesen, nicht gerechnet – die Division durch eine Dezimalzahl ist für diese Zielgruppe zu schwer. Die Simulation kennt kein Rollbrett; das Rollbrett gehört nur zur Rahmengeschichte. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

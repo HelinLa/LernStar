@@ -1,0 +1,72 @@
+{
+ "id": "gw3",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "S6",
+  "E7",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Setzt man ω = 2·π·f in a_z = ω²·r ein und multipliziert mit der Masse, so erhält man F_z =",
+   "loesung": "4·π²·m·f²·r",
+   "post": "."
+  },
+  {
+   "pre": "Hält man m und r fest, liegen die Punkte von F_z über f auf einer Parabel; eine Ursprungsgerade ergibt sich erst, wenn man F_z über",
+   "loesung": "f²",
+   "post": "aufträgt."
+  },
+  {
+   "pre": "Aus der Steigung k dieser Geraden folgt bei bekanntem Radius r die Masse m =",
+   "loesung": "k/(4·π²·r)",
+   "post": "."
+  },
+  {
+   "pre": "Bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz meldet das Statusfeld a_z = 71,06 m/s²; als Zentripetalkraft steht dort",
+   "loesung": "35,53 N",
+   "post": ", in die Tabelle übernommen wird dagegen 35,65 N."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Die erwartete Steigung der F_z-über-r-Geraden beträgt bei m = 0,50 kg 44,413 N/m und bei m = 1,50 kg 133,240 N/m; das Verhältnis dieser beiden Steigungen entspricht dem Verhältnis der eingestellten Massen.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Da beide Reihen bei m = 0,50 kg aufgenommen wurden, müssten die erwartete Steigung der r-Reihe (44,413 N/m) und die der f²-Reihe (15,791 N·s²) übereinstimmen; ihre Verschiedenheit weist auf einen Auswertungsfehler hin.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Der von Hand übernommene Messpunkt bei r = 0,80 m steht mit genau dem Wert in der Tabelle, den das Statusfeld unmittelbar davor angezeigt hat.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Wer vor der zweiten Messreihe die Tabelle nicht leert, erhält im Ergebniskasten keine Auswertung, die allein zur neuen Reihe gehört.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Mira notiert für die Jury: „Das Bestimmtheitsmaß beträgt R² = 1,0000, unsere Messreihe ist also fehlerfrei.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Die Aussage geht zu weit: R² sagt nur, wie eng die acht Punkte an der Ausgleichsgeraden liegen. Wie gut die Reihe trifft, liest man am Vergleich der gemessenen Steigung 44,383 N/m mit der erwarteten 44,413 N/m ab.",
+   "Die Aussage trifft zu: Bei R² = 1,0000 liegt jeder Messpunkt exakt auf der Ausgleichsgeraden, die Kraftmessdose hat in diesem Durchgang also nicht gestreut.",
+   "Die Aussage ist falsch, weil R² allein von der Zahl der Messwerte abhängt; bei acht aufgenommenen Punkten ergibt sich 1,0000 zwangsläufig."
+  ],
+  "richtig": 0,
+  "erklaerung": "R² misst nur den Zusammenhalt der Punkte um die Ausgleichsgerade und steht in dieser Simulation fast immer bei 0,9999 oder 1,0000; das heißt lediglich, dass die Streuung gegenüber dem Messbereich klein ist. Über die Richtigkeit entscheidet der Vergleich mit der erwarteten Steigung: 44,383 N/m gegen 44,413 N/m, daraus die Abweichung von 0,07 %. Dass die Kraftmessdose sehr wohl streut, zeigt schon der erste Punkt – 35,53 N im Statusfeld gegen 35,65 N in der Tabelle. Von der Zahl der Messwerte hängt R² nicht ab."
+ },
+ "offen": {
+  "frage": "Für die dritte Reihe – m = 1,50 kg, f = 1,50 Hz, F_z über r – nennt das Auswertungsfeld die erwartete Steigung 133,240 N/m und zählt sieben Messwerte, während die erste Reihe acht enthielt. Bestätige mit 4·π²·f² = 88,83 1/s² die eingestellte Masse und erkläre, woher der Unterschied zwischen sieben und acht Messwerten stammt.",
+  "prompt": "Für die dritte Reihe – m = 1,50 kg, f = 1,50 Hz, F_z über r – nennt das Auswertungsfeld die erwartete Steigung 133,240 N/m und zählt sieben Messwerte, während die erste Reihe acht enthielt. Bestätige mit 4·π²·f² = 88,83 1/s² die eingestellte Masse und erkläre, woher der Unterschied zwischen sieben und acht Messwerten stammt.",
+  "zeilen": 4,
+  "loesung": "m = k/(4·π²·f²) = 133,240 N/m : 88,83 1/s² = 1,4999 kg, also die eingestellten 1,50 kg. Mit der Zahl der Messwerte hat das nichts zu tun: „Messreihe automatisch aufnehmen“ legt sieben Radien in die Tabelle – 0,2 m, 0,4 m, 0,6 m, 0,9 m, 1,1 m, 1,3 m und 1,5 m. In der ersten Reihe stand zusätzlich der von Hand übernommene Punkt bei r = 0,80 m mit 35,65 N schon in der Tabelle; vor dem dritten Durchgang wurde sie dagegen geleert. Auf das Ergebnis wirkt sich der eine Punkt kaum aus: Auch aus sieben Werten kommt die zurückgerechnete Masse auf wenige Zehntelprozent heran, die Abweichungen liegen meist zwischen 0,1 % und 0,5 %. Zu beachten bleibt, dass 1,4999 kg aus der erwarteten Steigung folgt; die gemessene Steigung weicht in jedem Durchgang etwas davon ab, weil die Kraftmessdose um etwa 1,5 % streut."
+ }
+}

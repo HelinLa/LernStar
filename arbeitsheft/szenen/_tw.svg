@@ -1,0 +1,7 @@
+  <rect x="0" y="0" width="900" height="540" fill="#EFE3CB"/>
+  <use href="#t_ranzen" transform="translate(170,470)"/>
+  <use href="#t_kerzenhalter" transform="translate(420,470)"/>
+  <use href="#t_milchkarton" transform="translate(560,470)"/>
+  <use href="#t_streichholz" transform="translate(760,200) scale(2)"/>
+  <use href="#t_leuchtsterne" transform="translate(740,420)"/>
+  <line x1="0" y1="470" x2="900" y2="470" stroke="#C4963A" stroke-width="1" stroke-dasharray="6 6"/>

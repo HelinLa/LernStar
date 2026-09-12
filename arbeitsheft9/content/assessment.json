@@ -1,0 +1,740 @@
+[
+ {
+  "id": "kraefte",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "NEWTON",
+     "tipp": "Einheit, in der du den Betrag einer Kraft angibst; ihr Kurzzeichen ist N."
+    },
+    {
+     "wort": "KRAFTMESSER",
+     "tipp": "Gerät mit einer Feder im Rohr, an dessen Skala ein Zeiger den Betrag einer Kraft anzeigt."
+    },
+    {
+     "wort": "DEHNUNG",
+     "tipp": "Das Stück, um das eine Feder unter Zug länger wird; ihr Formelzeichen ist s."
+    },
+    {
+     "wort": "FEDERKONSTANTE",
+     "tipp": "Quotient aus Kraft und Federverlängerung; je größer dieser Wert ist, desto härter ist die Feder."
+    },
+    {
+     "wort": "MASSE",
+     "tipp": "Sie gibt an, wie viel Stoff in einem Körper steckt, wird in Kilogramm angegeben und bleibt auch auf dem Mond gleich."
+    },
+    {
+     "wort": "GEWICHTSKRAFT",
+     "tipp": "Die Kraft, mit der die Erde an einem Körper zieht; du berechnest sie mit F = m · g."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Er gibt an, wie viel Newton auf ein Kilogramm Masse entfallen; auf der Erde sind es 9,8 N/kg."
+    },
+    {
+     "wort": "GESAMTKRAFT",
+     "tipp": "Sie ersetzt zwei Kräfte auf derselben Geraden und hat genau dieselbe Wirkung wie beide zusammen."
+    },
+    {
+     "wort": "GLEICHGEWICHT",
+     "tipp": "Zustand, in dem sich alle Kräfte an einem Körper aufheben, sodass er in Ruhe bleibt."
+    },
+    {
+     "wort": "GEGENKRAFT",
+     "tipp": "Sie ist gleich groß, zeigt in die entgegengesetzte Richtung und greift am anderen Körper an; ohne sie gibt es keine Kraft."
+    },
+    {
+     "wort": "RAMPE",
+     "tipp": "Schräge Fläche, über die du eine Last mit kleinerer Zugkraft, dafür auf längerem Weg nach oben ziehst."
+    },
+    {
+     "wort": "REIBUNG",
+     "tipp": "Kraft zwischen zwei Flächen, die entgegen der Bewegung wirkt und einen angeschobenen Wagen von allein anhalten lässt."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann an einem Beispiel erklären, woran man erkennt, dass eine Kraft gewirkt hat.",
+    "Ich kann Alltagssituationen den drei Wirkungen Verformen, Bewegen und Richtungsänderung zuordnen und begründen, warum manchmal zwei Wirkungen zugleich auftreten.",
+    "Ich kann erklären, wie ein Kraftmesser eine Kraft über die Dehnung seiner Feder anzeigt, und Kräfte in Newton ablesen.",
+    "Ich kann die Federkonstante mit D = F / s berechnen und damit entscheiden, welche von zwei Federn die härtere ist.",
+    "Ich kann Masse und Gewichtskraft unterscheiden und die Gewichtskraft mit F = m · g und g = 9,8 N/kg berechnen.",
+    "Ich kann begründen, warum sich beim Wechsel zum Mond die Gewichtskraft ändert, die Masse aber nicht.",
+    "Ich kann eine Kraft als Pfeil mit Betrag und Richtung darstellen und die Gesamtkraft zweier Kräfte auf einer Geraden bestimmen.",
+    "Ich kann ein Kräftegleichgewicht an einem Körper von einem Paar aus Kraft und Gegenkraft an zwei Körpern unterscheiden.",
+    "Ich kann mit der goldenen Regel der Mechanik erklären, warum eine Rampe Kraft spart, und mit der Reibungskraft, warum ein Wagen von allein stehen bleibt."
+   ],
+   "tipps": [
+    "Öffne die Simulationen noch einmal und stelle genau die Werte ein, die in deiner eigenen Tabelle stehen. Wenn die Anzeige zeigt, was du notiert hast, sitzt der Zusammenhang; weicht sie ab, findest du sofort die Zeile, die du nachbessern musst.",
+    "Lege dir eine Karteikarte mit den beiden Formeln F = m · g und D = F / s an und schreibe die Einheiten dahinter: N, kg, N/kg, cm, N/cm. Schreibe beim Rechnen jede Einheit mit, dann merkst du selbst, wenn ein Ergebnis nicht stimmen kann.",
+    "Zeichne zu jeder Aufgabe die Kraftpfeile, bevor du rechnest. Länge für den Betrag, Spitze für die Richtung – daran siehst du auf einen Blick, ob addiert oder subtrahiert wird.",
+    "Erkläre jemandem zu Hause in eigenen Worten den Unterschied zwischen Masse und Gewichtskraft. Was du laut erklären kannst, hast du auch im Test parat."
+   ],
+   "mini": [
+    {
+     "frage": "Eine Umzugskiste hat die Masse m = 8 kg. Berechne ihre Gewichtskraft auf der Erde.",
+     "loesung": "F = m · g = 8 kg · 9,8 N/kg = 78,4 N. Die Kiste hat also die Masse 8 kg und die Gewichtskraft 78,4 N."
+    },
+    {
+     "frage": "Eine Feder dehnt sich bei F = 3 N um s = 6 cm. Berechne ihre Federkonstante und vergleiche sie mit der harten Feder aus der Simulation, die D = 1,0 N/cm hat.",
+     "loesung": "D = F / s = 3 N : 6 cm = 0,5 N/cm. Dieser Wert ist kleiner als 1,0 N/cm, die Feder ist also weicher als die harte Feder aus der Simulation."
+    },
+    {
+     "frage": "An einer Kiste ziehen F1 = 5 N nach rechts und F2 = 2 N nach links. Gib Betrag und Richtung der Gesamtkraft an.",
+     "loesung": "Die beiden Kräfte zeigen in entgegengesetzte Richtungen, deshalb wird der kleinere Betrag abgezogen: F = 5 N − 2 N = 3 N. Die Gesamtkraft beträgt 3 N nach rechts, weil die größere Kraft nach rechts zieht."
+    },
+    {
+     "frage": "Nenne die drei Wirkungen einer Kraft und ordne jeder ein Beispiel aus dem Keller zu.",
+     "loesung": "Verformen: Der Karton bekommt an der Wand eine Delle. Bewegen: Der Rollwagen steht still und rollt nach dem Schubs los. Richtungsänderung: Der Tennisball prallt an der Kellertür ab und rollt zurück. Beim Abprallen treten Verformung und Richtungsänderung sogar zusammen auf."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Eine Kraft erkennst du immer an ihrer ",
+     "loesung": "Wirkung",
+     "post": ": Form, Geschwindigkeit oder Bewegungsrichtung eines Körpers ändern sich."
+    },
+    {
+     "pre": "Der Quotient D = F / s heißt ",
+     "loesung": "Federkonstante",
+     "post": " und ist für eine bestimmte Feder immer gleich groß."
+    },
+    {
+     "pre": "Die Gewichtskraft berechnest du mit F = m · ",
+     "loesung": "g",
+     "post": "; auf der Erde beträgt dieser Ortsfaktor 9,8 N/kg."
+    },
+    {
+     "pre": "Im Kräftegleichgewicht beträgt die Gesamtkraft ",
+     "loesung": "0 N",
+     "post": ", und der Körper bleibt in Ruhe."
+    },
+    {
+     "pre": "Die Reibungskraft wirkt immer entgegen der ",
+     "loesung": "Bewegung",
+     "post": " und bremst den Körper ab."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Eine Kraft kann einen Körper verformen, ihn schneller oder langsamer machen oder seine Bewegungsrichtung ändern.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Kilogramm und Newton sind nur zwei Namen für dieselbe Größe, eine Kiste mit 1 kg zieht also mit 1 N nach unten.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Verdoppelt man die Kraft an einer Feder, so verdoppelt sich auch ihre Dehnung, solange die Feder nicht überdehnt wird.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Auf dem Mond hat ein Körper eine kleinere Masse als auf der Erde, deshalb kann man ihn dort leichter tragen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Zeigen zwei Kräfte in entgegengesetzte Richtungen, so addiert man ihre Beträge.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Kraft und Gegenkraft sind gleich groß, greifen aber an zwei verschiedenen Körpern an und heben sich deshalb nicht auf.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Über eine flache Rampe brauchst du eine kleinere Zugkraft als beim senkrechten Heben, dafür wird der Weg länger.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Eine Kiste hat auf der Erde die Masse 10 kg. Welche Aussage gilt für dieselbe Kiste auf dem Mond mit g = 1,6 N/kg?",
+    "optionen": [
+     "Ihre Masse beträgt 10 kg, ihre Gewichtskraft 16 N.",
+     "Ihre Masse beträgt 1,6 kg, ihre Gewichtskraft 98 N.",
+     "Masse und Gewichtskraft sind beide auf etwa ein Sechstel gesunken.",
+     "Ihre Masse beträgt 10 kg, ihre Gewichtskraft weiterhin 98 N."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Erkläre den Unterschied zwischen dem Kräftegleichgewicht an der ruhig hängenden Lampe und dem Paar aus Kraft und Gegenkraft, wenn Ben sich auf dem Rollbrett vom Sofa abstößt.",
+    "zeilen": 4,
+    "loesung": "An der Lampe greifen beide Kräfte am selben Körper an: Die Gewichtskraft von 5 N zieht die Lampe nach unten, das Kabel hält mit 5 N nach oben dagegen. Weil sie gleich groß sind und entgegengesetzt zeigen, ist die Gesamtkraft 0 N und die Lampe bleibt in Ruhe. Beim Abstoßen drückt Ben das Sofa nach vorn, und das Sofa drückt Ben mit derselben Kraft zurück. Auch diese beiden Kräfte sind gleich groß und entgegengesetzt, sie greifen aber an zwei verschiedenen Körpern an. Deshalb heben sie sich nicht auf, sondern beide Körper setzen sich in Bewegung: das Sofa nach vorn, Ben rückwärts auf dem Rollbrett. Entscheidend ist also, ob die Kräfte an einem Körper oder an zwei Körpern angreifen."
+   },
+   "transfer": {
+    "frage": "Lena bringt am Flughafen ihren Koffer zum Schalter. Die Gepäckwaage zeigt 18 kg an. Auf dem glatten Steinboden rollt der Koffer nach einem Schubs noch weit, auf dem Teppich vor dem Schalter bleibt er fast sofort stehen. Berechne die Gewichtskraft des Koffers, erkläre den Unterschied zwischen den beiden Böden und gib an, welche Größe die Gepäckwaage in Wirklichkeit misst.",
+    "zeilen": 5,
+    "loesung": "Die Gewichtskraft beträgt F = m · g = 18 kg · 9,8 N/kg = 176,4 N. Der Koffer hat also die Masse 18 kg und eine Gewichtskraft von rund 176 N. Nach dem Schubs treibt ihn keine Kraft mehr an, es wirkt nur noch die Reibungskraft zwischen Rollen und Boden, und die zeigt entgegen der Bewegung. Der Teppich ist rau, seine Reibungskraft ist groß und bremst den Koffer schnell aus; der glatte Steinboden reibt wenig, deshalb rollt der Koffer dort viel weiter. Die Waage misst nicht direkt die Masse, sondern die Kraft, mit der der Koffer nach unten drückt; sie rechnet diese Kraft mit dem Ortsfaktor der Erde in Kilogramm um. Auf dem Mond würde dieselbe Waage deshalb eine falsche Zahl anzeigen, obwohl die Masse des Koffers unverändert 18 kg wäre."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Weiche Knete",
+   "Haushaltsschwamm",
+   "Zwei Federwaagen bis 10 N",
+   "Weiche und harte Schraubenfeder",
+   "Gewichtsstücke zu je 100 g",
+   "Küchenwaage",
+   "Lineal oder Maßband",
+   "Holzklotz mit Haken",
+   "Brett als Rampe",
+   "Handtuch als raue Unterlage"
+  ]
+ },
+ {
+  "id": "bewegung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "GESCHWINDIGKEIT",
+     "tipp": "Diese Größe fasst Weg und Zeit in einer Zahl zusammen und wird in Metern je Sekunde angegeben."
+    },
+    {
+     "wort": "BESCHLEUNIGUNG",
+     "tipp": "Sie sagt, wie viel Tempo in jeder Sekunde dazukommt, und hat die Einheit m/s²."
+    },
+    {
+     "wort": "WERTEPAAR",
+     "tipp": "Zwei zusammengehörende Zahlen aus einer Momentaufnahme, hier Zeit und zurückgelegter Weg."
+    },
+    {
+     "wort": "STEIGUNG",
+     "tipp": "Die Steilheit einer Linie im Weg-Zeit-Diagramm; sie verrät dir das Tempo."
+    },
+    {
+     "wort": "REAKTIONSWEG",
+     "tipp": "Diese Strecke fährt das Auto noch mit vollem Tempo weiter, bevor der Fuß überhaupt die Bremse berührt."
+    },
+    {
+     "wort": "ANHALTEWEG",
+     "tipp": "Die ganze Strecke von der Gefahr bis zum Stillstand, also beide Teilstrecken zusammen."
+    },
+    {
+     "wort": "REIBUNG",
+     "tipp": "Diese bremsende Kraft zwischen Wagen und Untergrund sorgt dafür, dass ein angestoßener Körper doch stehen bleibt."
+    },
+    {
+     "wort": "LUFTWIDERSTAND",
+     "tipp": "Diese bremsende Kraft hängt von Fläche, Form und Tempo ab und lässt die Feder trudeln."
+    },
+    {
+     "wort": "VAKUUM",
+     "tipp": "Ein Raum ganz ohne Luft; darin sind Stein und Feder gleichzeitig unten."
+    },
+    {
+     "wort": "SCHWERELOS",
+     "tipp": "So fühlt man sich, wenn kein Boden mehr gegen die Füße drückt und die Waage 0 N zeigt."
+    },
+    {
+     "wort": "UMLAUFBAHN",
+     "tipp": "Auf ihr fällt ein Körper dauerhaft zur Erde, ohne sie jemals zu treffen."
+    },
+    {
+     "wort": "IMPULS",
+     "tipp": "Das Produkt aus Masse und Geschwindigkeit, angegeben in kg·m/s; Gas und Rakete bekommen davon gleich viel."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann eine Bewegung mit Wertepaaren aus Zeit t und Weg s vollständig beschreiben.",
+    "Ich kann mit v = s : t eine Geschwindigkeit berechnen und Werte zwischen m/s und km/h umrechnen.",
+    "Ich kann eine gleichförmige von einer beschleunigten Bewegung unterscheiden und das an den Markenabständen begründen.",
+    "Ich kann aus einem Weg-Zeit-Diagramm ablesen, ob ein Körper fährt oder steht, und die Steigung als Geschwindigkeit deuten.",
+    "Ich kann mit a = Δv/Δt eine Beschleunigung berechnen und erklären, was ein negatives Vorzeichen bedeutet.",
+    "Ich kann Reaktionsweg, Bremsweg und Anhalteweg unterscheiden und begründen, warum der Bremsweg bei doppeltem Tempo viermal so lang wird.",
+    "Ich kann erklären, warum im Vakuum alle Körper gleich schnell fallen und warum die Feder in Luft zurückbleibt.",
+    "Ich kann mit der Trägheit erklären, warum ich beim Anfahren nach hinten und beim Bremsen nach vorn kippe.",
+    "Ich kann mit dem Impuls m · v begründen, warum sich eine Rakete auch im leeren Raum abstoßen kann."
+   ],
+   "tipps": [
+    "Öffne die Simulationen des Kapitels noch einmal und stelle genau die Werte ein, die in deiner eigenen Tabelle stehen. Prüfe, ob die Anzeige dieselben Zahlen liefert wie beim ersten Durchgang, und rechne mindestens einen Wert von Hand nach.",
+    "Schreibe bei jeder Rechnung die Einheit mit, auch in den Zwischenschritten. Wenn am Ende m/s statt m herauskommt, hast du die Formel vertauscht.",
+    "Lerne die beiden Umrechnungen fest: von m/s nach km/h mit 3,6 multiplizieren, zurück durch 3,6 teilen. So sind 10 m/s gleich 36 km/h und 100 km/h rund 28 m/s.",
+    "Halte v und a streng auseinander. Die Geschwindigkeit sagt, wie schnell ein Körper gerade ist, die Beschleunigung nur, wie viel Tempo in jeder Sekunde dazukommt oder verloren geht."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Transporter fährt gleichförmig und legt in 6,0 s genau 60 m zurück. Berechne seine Geschwindigkeit in m/s und in km/h.",
+     "loesung": "v = s : t = 60 m : 6,0 s = 10 m/s. Umgerechnet sind das 10 m/s · 3,6 = 36 km/h."
+    },
+    {
+     "frage": "Ben wiegt 60 kg und steht auf einer Waage im Aufzug, der mit a = 2,0 m/s² nach oben beschleunigt. Berechne die Anzeige der Waage (g = 9,8 m/s²).",
+     "loesung": "F = m · (g + a) = 60 kg · (9,8 m/s² + 2,0 m/s²) = 60 kg · 11,8 m/s² = 708 N. In Ruhe wären es dagegen nur F = m · g = 60 kg · 9,8 m/s² = 588 N."
+    },
+    {
+     "frage": "Ein Wagen steht zunächst still und ist nach 3,2 s genau 8,0 m/s schnell. Berechne seine Beschleunigung.",
+     "loesung": "a = Δv/Δt = (8,0 m/s − 0,0 m/s) : 3,2 s = 2,5 m/s². In jeder Sekunde kommen also 2,5 m/s dazu."
+    },
+    {
+     "frage": "Bei 50 km/h beträgt der Reaktionsweg 15 m und der Bremsweg 25 m. Gib den Anhalteweg an und nenne die beiden Werte für 100 km/h.",
+     "loesung": "Anhalteweg = Reaktionsweg + Bremsweg = 15 m + 25 m = 40 m. Bei 100 km/h verdoppelt sich der Reaktionsweg auf 30 m, der Bremsweg vervierfacht sich auf 100 m, zusammen 130 m."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Geschwindigkeit berechnest du mit v = s : t, du teilst also den Weg durch die ",
+     "loesung": "Zeit",
+     "post": "."
+    },
+    {
+     "pre": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit ",
+     "loesung": "konstant",
+     "post": ", und die Marken auf der Bahn liegen alle gleich weit auseinander."
+    },
+    {
+     "pre": "Die Beschleunigung a gibt an, wie viel Geschwindigkeit in jeder ",
+     "loesung": "Sekunde",
+     "post": " dazukommt; ihre Einheit ist m/s²."
+    },
+    {
+     "pre": "Anhalteweg = Bremsweg + ",
+     "loesung": "Reaktionsweg",
+     "post": ", denn während der Reaktionszeit fährt das Auto mit unvermindertem Tempo weiter."
+    },
+    {
+     "pre": "Wirkt allein die Gewichtskraft, fallen alle Körper mit g = 9,8 m/s² und damit ",
+     "loesung": "gleich",
+     "post": " schnell, ganz gleich wie groß ihre Masse ist."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Wer bei einem Rennen weiter vorn liegt, ist immer auch der schnellere.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine waagerechte Linie im Weg-Zeit-Diagramm bedeutet, dass der Körper in Ruhe ist und v = 0 m/s gilt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelt man das Tempo, wird auch der Bremsweg doppelt so lang.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Auch ein bremsendes Auto ist beschleunigt; seine Beschleunigung hat dann ein negatives Vorzeichen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Im Vakuum sind Stein und Feder gleichzeitig unten, hier nach jeweils 1,4 s.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Im frei fallenden Aufzug zeigt die Waage 0 N, weil die Masse der Person auf 0 kg gesunken ist.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine Rakete braucht Luft, von der sie sich abstoßen kann, und funktioniert deshalb im Weltall nicht.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Ein Transporter fährt aus dem Stand los und beschleunigt gleichmäßig mit a = 2 m/s². Wie schnell ist er nach 3,2 s?",
+    "optionen": [
+     "2,0 m/s, denn a = 2 m/s² bedeutet ein Dauertempo von 2 m/s",
+     "3,2 m/s, denn nach 3,2 s ist er 3,2 m/s schnell",
+     "6,4 m/s, denn es gilt v = a · t = 2 m/s² · 3,2 s",
+     "0,6 m/s, denn es gilt v = a : t = 2 m/s² : 3,2 s"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre mit den Werten aus der Simulation, warum der Anhalteweg bei 100 km/h mehr als dreimal so lang ist wie bei 50 km/h, obwohl das Tempo nur verdoppelt wurde.",
+    "zeilen": 4,
+    "loesung": "Der Anhalteweg besteht aus zwei Teilen, die unterschiedlich stark wachsen. Der Reaktionsweg wächst genauso stark wie das Tempo: Er steigt von 15 m auf 30 m, also auf das Doppelte, weil das Auto in derselben Reaktionszeit doppelt so weit kommt. Der Bremsweg wächst dagegen viel stärker, denn es muss doppelt so viel Geschwindigkeit abgebaut werden, und das dauert doppelt so lange, wobei das Auto zusätzlich doppelt so schnell unterwegs ist. Deshalb vervierfacht er sich von 25 m auf 100 m. Zusammen ergibt das 40 m statt vorher und 130 m nachher, also mehr als das Dreifache. Ein Auto ist bei 100 km/h somit deutlich schwerer zu beherrschen, als das doppelte Tempo vermuten lässt."
+   },
+   "transfer": {
+    "frage": "Lena springt mit einem Fallschirm aus einem Flugzeug. In den ersten Sekunden wird sie immer schneller, danach fällt sie mit gleichbleibenden 55 m/s. Als sie den Schirm öffnet, geht ihre Geschwindigkeit auf 6 m/s zurück und bleibt dann wieder gleich. Erkläre mit Gewichtskraft und Luftwiderstand alle vier Abschnitte und gib an, wie groß ihre Beschleunigung während der beiden gleichbleibenden Abschnitte ist.",
+    "zeilen": 5,
+    "loesung": "Unmittelbar nach dem Absprung ist Lena noch langsam, deshalb ist der Luftwiderstand klein und fast nur die Gewichtskraft F = m · g wirkt. Sie wird mit rund 9,8 m/s² schneller, so wie jeder frei fallende Körper. Mit wachsendem Tempo nimmt der Luftwiderstand zu, bis er genauso groß ist wie die Gewichtskraft. Beide Kräfte heben sich dann auf, es bleibt keine beschleunigende Kraft übrig, und Lena fällt gleichförmig mit 55 m/s, also rund 198 km/h; dort ist a = 0 m/s². Beim Öffnen des Schirms wird die Fläche schlagartig viel größer, der Luftwiderstand übertrifft die Gewichtskraft, und die übrig bleibende Kraft zeigt nach oben. Das ist eine negative Beschleunigung, also eine Verzögerung, und Lena wird langsamer. Bei 6 m/s ist der Luftwiderstand des großen Schirms wieder genauso groß wie die Gewichtskraft, die Kräfte gleichen sich erneut aus und a ist wieder 0 m/s². In beiden gleichbleibenden Abschnitten ist die Beschleunigung also null, obwohl Lena die ganze Zeit fällt."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Stoppuhr oder Handy mit Stoppuhrfunktion, je Gruppe eine",
+   "Maßband oder Zollstock sowie eine freie Messstrecke von 20 m im Flur",
+   "Klebestreifen und Kreide zum Markieren von Stellen auf dem Boden",
+   "Spielzeugauto oder Rollwagen mit einer Schnur zum gleichmäßigen Ziehen",
+   "Fahrbahn oder glattes Brett als schiefe Ebene, dazu Bücher zum Unterlegen",
+   "Kariertes Papier oder Millimeterpapier und ein Lineal für die Diagramme",
+   "Schlüsselbund und Radiergummi für den Fallversuch, dazu ein Kissen als Unterlage",
+   "Ein festes Buch und ein Blatt Papier für den Versuch zum Luftwiderstand",
+   "Personenwaage für den Versuch zum Aufzug",
+   "Murmel oder kleine Stahlkugel, die über die Tischkante rollen darf",
+   "Bürostuhl mit Rollen und ein schwerer Ball für den Rückstoß"
+  ]
+ },
+ {
+  "id": "energie",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "JOULE",
+     "tipp": "Die Einheit, in der jede Energieform gemessen wird, ganz gleich ob Wärme, Bewegung oder Höhe. Kurzzeichen J."
+    },
+    {
+     "wort": "ARBEIT",
+     "tipp": "Sie wird als Kraft mal Weg berechnet – aber nur, wenn die Kraft in Wegrichtung zeigt."
+    },
+    {
+     "wort": "HUBARBEIT",
+     "tipp": "Diese Arbeit hängt nur von Masse und gewonnener Höhe ab, nicht davon, wie lang der Weg dorthin war."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Die Größe mit dem Zeichen g und dem Wert 9,81 N/kg, die in jeder Hubarbeit steckt."
+    },
+    {
+     "wort": "LAGEENERGIE",
+     "tipp": "Sie steckt schon in einem Körper, der ganz ruhig oben liegt, und wird beim Fallen wieder frei."
+    },
+    {
+     "wort": "QUADRAT",
+     "tipp": "So steht die Geschwindigkeit in der Formel für die Bewegungsenergie – deshalb zählt Tempo doppelt."
+    },
+    {
+     "wort": "ENERGIEERHALTUNG",
+     "tipp": "Der Satz, nach dem Energie weder erzeugt noch vernichtet, sondern nur umgewandelt werden kann."
+    },
+    {
+     "wort": "REIBUNG",
+     "tipp": "Sie sorgt dafür, dass ein rollender Körper stehen bleibt, und macht dabei aus Bewegung Wärme."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Er sagt, welcher Anteil der hineingesteckten Energie als Nutzen herauskommt, und trägt das Zeichen η."
+    },
+    {
+     "wort": "LEISTUNG",
+     "tipp": "Arbeit geteilt durch Zeit; sie sagt, wie schnell gearbeitet wird, nicht wie viel."
+    },
+    {
+     "wort": "WATT",
+     "tipp": "Diese Einheit bedeutet ein Joule je Sekunde und steht auf jedem Elektrogerät."
+    },
+    {
+     "wort": "ENTWERTUNG",
+     "tipp": "Sie erklärt, warum man sparen muss, obwohl die Energiemenge doch erhalten bleibt."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann verschiedene Energieformen benennen und weiß, dass alle in Joule gemessen werden.",
+    "Ich kann mit W = F · s eine Arbeit berechnen und begründen, wann die Arbeit null ist.",
+    "Ich kann mit W = m · g · h eine Hubarbeit berechnen und erklären, warum nur die Höhe zählt.",
+    "Ich kann die Lageenergie eines angehobenen Körpers berechnen und deuten.",
+    "Ich kann mit E = ½ · m · v² rechnen und erklären, warum doppeltes Tempo die vierfache Energie bedeutet.",
+    "Ich kann den Energieerhaltungssatz formulieren und an einem fallenden oder springenden Körper anwenden.",
+    "Ich kann erklären, wohin die Energie geht, wenn ein Körper durch Reibung stehen bleibt.",
+    "Ich kann mit η = E nutz : E rein einen Wirkungsgrad berechnen und begründen, warum er nie 100 % erreicht.",
+    "Ich kann mit P = W / t eine Leistung berechnen sowie zwischen W, kW und PS umrechnen."
+   ],
+   "tipps": [
+    "Öffne die Simulationen des Kapitels noch einmal und stelle genau die Werte ein, die in deiner eigenen Tabelle stehen. Prüfe, ob die Anzeige dieselben Zahlen liefert, und rechne mindestens einen Wert von Hand nach.",
+    "Halte Arbeit und Leistung streng auseinander. Die Arbeit sagt, wie viel insgesamt umgesetzt wurde, die Leistung nur, wie schnell das geschah. In W = m · g · h kommt keine Zeit vor, in P = W / t sehr wohl.",
+    "Merke dir die drei Formeln als Familie: W = F · s ist die Grundform, W = m · g · h ist derselbe Ausdruck mit der Gewichtskraft, und E = ½ · m · v² ist die einzige, in der etwas im Quadrat steht.",
+    "Bei jeder Aufgabe zur Energieerhaltung hilft dieselbe Frage: Wo war die Energie vorher, wo ist sie nachher? Verschwinden kann sie nie, sie wechselt nur die Form – meistens am Ende in Wärme."
+   ],
+   "mini": [
+    {
+     "frage": "Ben hebt eine Kiste mit 25 kg um 1,60 m an. Berechne die Hubarbeit.",
+     "loesung": "W = m · g · h = 25 kg · 9,81 N/kg · 1,60 m = 392,4 J, also rund 392 J."
+    },
+    {
+     "frage": "Ein Ball mit 0,5 kg rollt mit 6,0 m/s. Berechne seine Bewegungsenergie.",
+     "loesung": "E = ½ · m · v² = 0,5 · 0,5 kg · (6,0 m/s)² = 0,25 · 36 = 9,0 J."
+    },
+    {
+     "frage": "Ein Motor nimmt 800 J auf und gibt 200 J als Bewegung ab. Berechne den Wirkungsgrad.",
+     "loesung": "η = E nutz : E rein = 200 J : 800 J = 0,25, also 25 %. Die übrigen 600 J werden zu Wärme."
+    },
+    {
+     "frage": "Mia verrichtet 2400 J Hubarbeit in 8,0 s. Berechne ihre Leistung in Watt und in PS.",
+     "loesung": "P = W / t = 2400 J : 8,0 s = 300 W. In PS sind das 300 W : 735,5 W = 0,41 PS."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Jede Energieform wird in derselben Einheit gemessen, nämlich in ",
+     "loesung": "Joule",
+     "post": " mit dem Kurzzeichen J."
+    },
+    {
+     "pre": "Arbeit wird nur verrichtet, wenn die Kraft in Richtung des ",
+     "loesung": "Weges",
+     "post": " zeigt; sonst ist W = 0."
+    },
+    {
+     "pre": "Die Hubarbeit berechnet man als W = m · g · h mit dem Ortsfaktor g = ",
+     "loesung": "9,81",
+     "post": " N/kg."
+    },
+    {
+     "pre": "In der Formel E = ½ · m · v² steht die Geschwindigkeit im ",
+     "loesung": "Quadrat",
+     "post": ", die Masse dagegen einfach."
+    },
+    {
+     "pre": "Die Leistung berechnet man als P = W / t; ihre Einheit ist das ",
+     "loesung": "Watt",
+     "post": ", also ein Joule je Sekunde."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Wer eine schwere Kiste waagerecht durch einen Flur trägt, verrichtet an ihr keine Arbeit.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Körper, der ruhig auf einem Regal liegt, besitzt keine Energie.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei doppelter Geschwindigkeit vervierfacht sich die Bewegungsenergie.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Wenn ein Ball von allein ausrollt und liegen bleibt, ist seine Energie vernichtet worden.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei jeder wirklichen Maschine ist der Wirkungsgrad kleiner als 100 Prozent.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Wer dieselbe Kiste schneller in den dritten Stock trägt, verrichtet dabei mehr Arbeit.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Am Ende einer Energiekette ist die Energiemenge noch vollständig vorhanden, aber nicht mehr nutzbar.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Achterbahnwagen startet ohne Antrieb aus 30 m Höhe. Warum kann er einen 35 m hohen Hügel keinesfalls überwinden?",
+    "optionen": [
+     "Weil seine gesamte Energie der Lageenergie aus 30 m entspricht und für 35 m mehr Energie nötig wäre.",
+     "Weil er unterwegs zu langsam wird. Im Tal ist er sogar am schnellsten, das Tempo allein ist nicht das Hindernis.",
+     "Weil die Reibung ihn vorher stoppt. Reibung verstärkt das Problem, doch selbst ganz ohne sie reichte die Energie nicht.",
+     "Weil sein Gewicht zu groß ist. Die Masse kürzt sich heraus und spielt für die erreichbare Höhe keine Rolle."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Eine Glühlampe setzt von 1000 J nur 50 J in Licht um, eine LED dagegen 400 J. Berechne beide Wirkungsgrade und erkläre, wo der jeweils fehlende Anteil bleibt.",
+    "zeilen": 5,
+    "loesung": "Für die Glühlampe gilt η = 50 J : 1000 J = 0,05, also 5 Prozent. Für die LED gilt η = 400 J : 1000 J = 0,40, also 40 Prozent. Die LED liefert damit bei gleichem Aufwand achtmal so viel Licht. Der fehlende Anteil ist in beiden Fällen nicht verschwunden, denn Energie bleibt erhalten. Bei der Glühlampe werden 950 J zu Wärme, weil der Draht glühend heiß werden muss, um überhaupt zu leuchten. Bei der LED sind es 600 J, die als Wärme im Bauteil und im Vorschaltgerät entstehen. Deshalb wird eine Glühlampe im Betrieb so heiß, dass man sie nicht anfassen kann, eine LED dagegen nur handwarm."
+   },
+   "transfer": {
+    "frage": "Bens Vater sagt: „Der Strom ist doch nicht weg, wenn die Lampe brennt – also kann ich sie ruhig anlassen.“ Beurteile diese Aussage physikalisch und begründe, warum Energiesparen trotzdem sinnvoll ist.",
+    "zeilen": 6,
+    "loesung": "Der erste Teil der Aussage stimmt: Nach dem Energieerhaltungssatz kann Energie weder erzeugt noch vernichtet werden. Die Energie, die durch die Lampe fließt, ist danach immer noch vollständig vorhanden. Der Schluss daraus ist jedoch falsch, weil er die Entwertung übersieht. Von 1000 J aus der Kohle bleiben nach dem Kraftwerk nur 400 J nutzbar, nach der Leitung 368 J und nach der Lampe 147 J. Sobald das Licht von Wänden und Möbeln aufgenommen wird, sind alle 1000 J zu Wärme bei Zimmertemperatur geworden. Solche Wärme lässt sich nicht mehr nutzen, denn jede Maschine braucht dafür einen Temperaturunterschied. Gespart wird deshalb nicht die Energiemenge, sondern ihre Brauchbarkeit – und damit die begrenzten Vorräte an Kohle, Öl und Gas, aus denen wir hochwertige Energie überhaupt erst gewinnen."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Zollstock oder Maßband zum Messen von Höhen und Rücksprunghöhen",
+   "Küchenwaage oder Personenwaage zum Bestimmen von Massen",
+   "Stoppuhr oder Handy mit Stoppuhrfunktion, je Gruppe eine",
+   "Federkraftmesser bis 10 N für die Messung von Zug- und Reibungskräften",
+   "Ein Flummi und ein weicher Ball zum Vergleich der Rücksprunghöhen",
+   "Holzklotz und Schnur zum Ziehen über verschiedene Untergründe",
+   "Ein Buch als Rampe sowie eine Murmel oder eine Stahlkugel",
+   "Knete oder ein Sandkasten als weiche Unterlage für Fallversuche",
+   "Verpackungen von Lampen und Elektrogeräten mit Wattangaben",
+   "Eine Lebensmittelpackung mit Angaben in Kilojoule",
+   "Kariertes Papier und Lineal für Tabellen und Auswertungen"
+  ]
+ },
+ {
+  "id": "kraftwerke",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "STROMMIX",
+     "tipp": "So nennt man die Anteile der verschiedenen Quellen an der Stromerzeugung."
+    },
+    {
+     "wort": "GENERATOR",
+     "tipp": "Dieses Bauteil macht aus Drehbewegung elektrische Energie – im Kraftwerk wie im Fahrraddynamo."
+    },
+    {
+     "wort": "TURBINE",
+     "tipp": "Der Dampf trifft auf ihre Schaufeln und bringt sie zum Drehen."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Er sagt, welcher Anteil der Brennstoffenergie am Ende als Strom herauskommt."
+    },
+    {
+     "wort": "ERNEUERBAR",
+     "tipp": "So heißt eine Quelle, die sich schneller erneuert, als wir sie nutzen können."
+    },
+    {
+     "wort": "REICHWEITE",
+     "tipp": "Sie sagt, wie lange die bekannten Vorräte beim heutigen Verbrauch noch reichen."
+    },
+    {
+     "wort": "TREIBHAUSEFFEKT",
+     "tipp": "Ohne ihn wäre die Erde −18 °C kalt; zu viel davon macht sie zu warm."
+    },
+    {
+     "wort": "KOHLENDIOXID",
+     "tipp": "Dieses Gas entsteht beim Verbrennen und ist von 280 auf 427 ppm gestiegen."
+    },
+    {
+     "wort": "DUNKELFLAUTE",
+     "tipp": "Bedeckt und windstill zugleich – dann liefern Sonne und Wind fast nichts."
+    },
+    {
+     "wort": "PUMPSPEICHER",
+     "tipp": "Dieses Kraftwerk pumpt Wasser bergauf und lässt es später wieder herunter."
+    },
+    {
+     "wort": "KLIMA",
+     "tipp": "Der Mittelwert des Wetters über einen langen Zeitraum, meist dreißig Jahre."
+    },
+    {
+     "wort": "NACHHALTIG",
+     "tipp": "So nennt man eine Nutzung, die kommenden Generationen nichts wegnimmt."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, was der Strommix ist, und die Anteile eines Datenblatts auswerten.",
+    "Ich kann beschreiben, wie in einem Wärmekraftwerk aus Brennstoff Strom wird.",
+    "Ich kann Wirkungsgrade verschiedener Kraftwerke vergleichen und den Unterschied begründen.",
+    "Ich kann erneuerbare und nicht erneuerbare Energieträger unterscheiden und je zwei Beispiele nennen.",
+    "Ich kann erklären, warum Wind und Sonne allein die Versorgung nicht sichern.",
+    "Ich kann Speicher nach Wirkungsgrad und Dauer vergleichen und eine Auswahl begründen.",
+    "Ich kann den natürlichen vom zusätzlichen Treibhauseffekt unterscheiden.",
+    "Ich kann Wetter und Klima auseinanderhalten und an Zahlen belegen, dass sich das Klima ändert.",
+    "Ich kann eine Aussage zur Energieversorgung mit Daten beurteilen statt nur zu meinen."
+   ],
+   "tipps": [
+    "Arbeite die Datenblätter des Kapitels noch einmal durch und rechne jede Zusammenzählung selbst nach. Wer die Zahlen einmal von Hand addiert hat, behält sie.",
+    "Halte Leistung und Ertrag streng auseinander. Die Leistung in kW sagt, wie stark eine Anlage höchstens ist; der Ertrag in kWh sagt, was im Jahr wirklich zusammenkommt.",
+    "Merke dir den Unterschied zwischen Wetter und Klima an einem einzigen Beispiel: 2010 war mit 7,8 °C ein kaltes Jahr und liegt trotzdem mitten in der Erwärmung.",
+    "Bei Bewertungsaufgaben zählt nicht deine Meinung, sondern ob du sie mit einer Zahl aus dem Datenblatt stützt. Schreibe die Zahl immer mit hin."
+   ],
+   "mini": [
+    {
+     "frage": "Windkraft liefert 33 %, Photovoltaik 14 %, Biomasse 8 % und Wasserkraft 5 %. Berechne den erneuerbaren Anteil.",
+     "loesung": "33 % + 14 % + 8 % + 5 % = 60 %. Damit stammen 60 % des Stroms aus erneuerbaren Quellen und 40 % aus den übrigen Trägern."
+    },
+    {
+     "frage": "Ein Gas-und-Dampf-Kraftwerk hat einen Wirkungsgrad von 60 %, ein Braunkohlekraftwerk 38 %. Erkläre, was das für 1000 J Brennstoffenergie bedeutet.",
+     "loesung": "Aus 1000 J werden im Gas-und-Dampf-Kraftwerk 600 J Strom und 400 J Abwärme. Im Braunkohlekraftwerk sind es nur 380 J Strom und 620 J Abwärme."
+    },
+    {
+     "frage": "Ein Windrad liefert 9 000 000 kWh im Jahr, ein Haushalt braucht 4 000 kWh. Berechne, wie viele Haushalte das Windrad versorgt.",
+     "loesung": "9 000 000 kWh : 4 000 kWh = 2250. Ein einziges Windrad deckt also den Jahresbedarf von rund 2250 Haushalten."
+    },
+    {
+     "frage": "Der CO₂-Anteil der Luft stieg von 280 ppm im Jahr 1750 auf 427 ppm im Jahr 2025. Berechne die Zunahme in ppm und in Prozent.",
+     "loesung": "427 ppm − 280 ppm = 147 ppm Zunahme. In Prozent: 147 : 280 = 0,525, also rund 53 % mehr als 1750."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Anteile der verschiedenen Quellen an der Stromerzeugung nennt man den ",
+     "loesung": "Strommix",
+     "post": "."
+    },
+    {
+     "pre": "In jedem Wärmekraftwerk treibt Dampf eine Turbine an, und diese dreht den ",
+     "loesung": "Generator",
+     "post": "."
+    },
+    {
+     "pre": "Der Wirkungsgrad sagt, welcher Anteil der Brennstoffenergie als ",
+     "loesung": "Strom",
+     "post": " herauskommt."
+    },
+    {
+     "pre": "Der CO₂-Anteil der Luft ist von 280 ppm im Jahr 1750 auf 427 ppm im Jahr 2025 ",
+     "loesung": "gestiegen",
+     "post": "."
+    },
+    {
+     "pre": "Das Wetter beschreibt einen einzelnen Tag, das Klima dagegen einen Zeitraum von rund dreißig ",
+     "loesung": "Jahren",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "In Deutschland stammten 2024 mehr als die Hälfte des Stroms aus erneuerbaren Quellen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Kernkraftwerk arbeitet nach einem völlig anderen Grundprinzip als ein Kohlekraftwerk.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Gas-und-Dampf-Kraftwerk hat einen höheren Wirkungsgrad als ein Braunkohlekraftwerk.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Weil im Mittel genug Wind und Sonne da sind, reichen Windräder und Solaranlagen allein aus.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ohne den natürlichen Treibhauseffekt läge die mittlere Temperatur der Erde bei −18 °C.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein einzelnes kaltes Jahr widerlegt, dass sich das Klima erwärmt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Auch Wind- und Solaranlagen verursachen CO₂, allerdings beim Bau und nicht im Betrieb.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Wind und Sonne decken an fünf Tagen 130 %, 15 %, 70 %, 155 % und 10 % des Bedarfs. Welcher Schluss ist richtig?",
+    "optionen": [
+     "Im Mittel reicht es fast, an einzelnen Tagen fehlt aber der größte Teil – man braucht Speicher oder andere Kraftwerke.",
+     "Es reicht immer, denn im Mittel kommt man auf 76 %. Ein Mittelwert hilft an einem windstillen Tag jedoch niemandem.",
+     "Es reicht nie, denn an zwei Tagen sind es unter 20 %. An zwei anderen Tagen wird sogar mehr erzeugt als gebraucht.",
+     "Die Zahlen widersprechen einander. Sie beschreiben nur verschiedene Wetterlagen und passen gut zusammen."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Ein Braunkohlekraftwerk verursacht 1150 g CO₂ je kWh, ein Windrad an Land 12 g. Berechne, um welchen Faktor sich die Werte unterscheiden, und erkläre, warum beim Windrad überhaupt CO₂ anfällt.",
+    "zeilen": 5,
+    "loesung": "Der Faktor beträgt 1150 g : 12 g = 95,8, also rund das Sechsundneunzigfache. Beim Braunkohlekraftwerk entsteht das CO₂ im Betrieb, denn Kohle wird verbrannt und ihr Kohlenstoff verbindet sich dabei mit Sauerstoff aus der Luft. Beim Windrad entsteht im Betrieb überhaupt kein CO₂. Die 12 g je kWh stammen vollständig aus dem Bau und dem späteren Rückbau: aus der Herstellung von Stahl, Beton und Rotorblättern, aus dem Transport und aus der Montage. Rechnet man diesen Aufwand auf alle Kilowattstunden um, die das Windrad in zwanzig bis dreißig Jahren liefert, so bleiben je Kilowattstunde nur diese wenigen Gramm übrig."
+   },
+   "transfer": {
+    "frage": "Eine Stadt mit 40 000 Einwohnern braucht 200 000 000 kWh Strom im Jahr. Auf 400 000 m² Dachfläche ließen sich je m² 150 kWh gewinnen, dazu wären 8 Windräder mit je 9 000 000 kWh möglich. Berechne, welchen Anteil beides zusammen deckt, und beurteile, was für den Rest nötig wäre.",
+    "zeilen": 6,
+    "loesung": "Die Dächer liefern 400 000 m² · 150 kWh = 60 000 000 kWh. Die Windräder liefern 8 · 9 000 000 kWh = 72 000 000 kWh. Zusammen sind das 132 000 000 kWh. Bezogen auf den Bedarf sind das 132 000 000 : 200 000 000 = 0,66, also 66 %. Ein Drittel des Bedarfs bliebe damit offen. Hinzu kommt ein zweites Problem: Die 66 % sind eine Jahressumme, kein verlässlicher Tageswert. An einem bedeckten und windstillen Tag liefern beide Anlagen fast nichts, an einem stürmischen sonnigen Tag mehr als gebraucht wird. Für den Rest bräuchte die Stadt deshalb sowohl zusätzliche Erzeugung als auch Speicher, die Überschüsse aufnehmen und bei Flaute wieder abgeben. Ein Pumpspeicherkraftwerk mit 80 % Wirkungsgrad käme dafür in Frage."
+   }
+  },
+  "material": [
+   "Stromrechnung einer Familie mit der Angabe des Strommixes",
+   "Verpackungen von Elektrogeräten mit Wattangaben",
+   "Fahrraddynamo mit Lämpchen, je Gruppe einer",
+   "Kleiner Solarmodul-Baustein mit Motor oder Summer",
+   "Windrädchen aus Papier und ein Föhn",
+   "Thermometer und zwei verschließbare Gläser für den Treibhausversuch",
+   "Zwei Blätter Papier, eines schwarz, eines weiß, sowie eine helle Lampe",
+   "Zollstock und Taschenrechner",
+   "Kariertes Papier und Lineal für Diagramme",
+   "Atlas oder Stadtplan der eigenen Stadt",
+   "Zugang zu einem Rechner für die Recherche zum eigenen Wohnort"
+  ]
+ }
+]

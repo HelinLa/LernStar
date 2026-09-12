@@ -1,0 +1,48 @@
+[
+ {
+  "kapitel": "gym_kern",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "In einem Onlinevideo warnt jemand: „Bananen enthalten radioaktives Kalium-40, deshalb sind sie gefährlich – iss lieber keine.“ Aylin weiß aus dem Klinikum, dass Kalium-40 eine Halbwertszeit von 1,25 Milliarden Jahren hat. Beurteile die Warnung mit dem, was du über Halbwertszeit, Aktivität und Dosis gelernt hast, und begründe, ob du wegen einer Banane besorgt sein müsstest.",
+    "erwartung": "Die Schülerin trennt Aktivität und Gefahr. Sie erkennt, dass eine sehr große Halbwertszeit von 1,25 Milliarden Jahren eine sehr kleine Zerfallskonstante λ = ln 2 / T½ und damit eine winzige Aktivität bedeutet: Von den Kalium-40-Kernen zerfällt je Sekunde nur ein verschwindend kleiner Bruchteil, weil sich die Zerfälle über Milliarden Jahre verteilen. Sie unterscheidet die Aktivität in Becquerel von der Dosis in Sievert und folgert, dass die tatsächliche Belastung durch eine einzelne Banane winzig ist und im Bereich der ohnehin vorhandenen natürlichen Strahlung liegt. Als Bewertung hält sie fest, dass die pauschale Warnung übertrieben ist, dass Radioaktivität aber real und nicht null ist und dass für ein Urteil die Dosis zählt, nicht das bloße Wort radioaktiv. Häufige Fehler: radioaktiv wird mit gefährlich gleichgesetzt; die lange Halbwertszeit wird für besonders gefährlich statt für besonders wenig aktiv gehalten; Aktivität in Becquerel und Dosis in Sievert werden vermischt; die Warnung wird ohne Begründung nur als Unsinn abgetan."
+   },
+   {
+    "komp": "E5",
+    "afb": "III",
+    "prompt": "Bei einer Ausgrabung findet ein Team ein Stück Holzkohle aus einer alten Feuerstelle. Ein Labor misst, dass darin nur noch ein Achtel des Kohlenstoff-14 steckt, das frisches Holz enthält. Kohlenstoff-14 hat eine Halbwertszeit von 5730 Jahren. Bestimme das Alter der Holzkohle und erläutere, warum sich Kohlenstoff-14 überhaupt für eine solche Altersbestimmung eignet.",
+    "erwartung": "Die Schülerin erkennt, dass ein Achtel drei Halbwertszeiten entspricht, weil (½)³ = 1/8, und rechnet 3 · 5730 Jahre = 17.190 Jahre. Sie begründet die Eignung damit, dass Kohlenstoff-14 instabil ist und nach der festen Halbwertszeit von 5730 Jahren zerfällt, unabhängig von Temperatur, Druck oder Umgebung, sodass der verbliebene Anteil wie eine Uhr das Alter anzeigt. Sie kann N(t) = N₀·(½)^(t/T½) nennen und daraus denselben Wert ableiten. Als Einordnung erwähnt sie, dass eine Halbwertszeit in der Größenordnung von Jahrtausenden gerade zu archäologischen Zeiträumen passt, während ein sehr kurzlebiges oder ein sehr langlebiges Nuklid dafür ungeeignet wäre. Häufige Fehler: Ein Achtel wird als ein Achtel der Zeit statt als drei Halbwertszeiten gedeutet; es wird einmal durch 8 statt dreimal halbiert gerechnet; die Halbwertszeit wird für von der Umgebung abhängig gehalten; das Ergebnis wird ohne Bezug auf die drei Halbierungen genannt."
+   },
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Nach einem Reaktorunfall im Ausland verteilen Behörden zuerst Iodtabletten und warnen kurz vor Milch aus der Region; Jahre später sind es dagegen immer noch Pilze und Wildschweine, die wegen Cäsium-137 belastet sein können. Iod-131 hat rund 8 Tage, Cäsium-137 rund 30 Jahre Halbwertszeit. Ein besorgter Nachbar versteht nicht, warum die eine Warnung schnell endet und die andere so lange gilt. Erkläre es ihm verständlich in wenigen Sätzen.",
+    "erwartung": "Die Schülerin überträgt die Halbwertszeit auf die beiden Nuklide und formuliert es adressatengerecht. Sie erklärt, dass Iod-131 mit rund 8 Tagen Halbwertszeit sehr schnell zerfällt: Nach etwa acht Tagen ist die Hälfte weg, nach wenigen Wochen strahlt kaum noch etwas, deshalb endet diese Warnung rasch. Cäsium-137 dagegen hat rund 30 Jahre Halbwertszeit; nach 30 Jahren ist erst die Hälfte zerfallen, sodass es über Jahrzehnte im Boden bleibt und über Pflanzen, Pilze und Tiere in die Nahrung gelangt. Sie vermeidet unerklärte Fachwörter oder erläutert sie kurz und nennt als Kern, dass eine kurze Halbwertszeit schnelle Entwarnung, eine lange dagegen langes Dranbleiben bedeutet. Häufige Fehler: Kurze und lange Halbwertszeit werden vertauscht; es wird behauptet, nach einer Halbwertszeit sei alles weg; die Aktivität wird mit der Menge des Stoffs verwechselt; die Erklärung bleibt für einen Laien zu fachsprachlich."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_energie",
+  "aufgaben": [
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "In einem Werbevideo hält jemand einen sehr starken Magneten dicht an eine Spule, an der eine kleine Lampe hängt, und behauptet: „So lade ich mein Handy ganz ohne Strom auf - solange der Magnet nur nah genug an der Spule liegt, liefert er dauernd Energie, völlig gratis.“ Prüfe die Behauptung mit dem, was du über Induktion gelernt hast, und schreibe eine begründete Antwort an den Verkäufer.",
+    "erwartung": "Die Schülerin erkennt, dass ein ruhender Magnet keine Spannung erzeugt, egal wie stark oder nah er ist. Sie begründet das mit U_ind = −N · dΦ/dt: Nur die Änderung des magnetischen Flusses induziert eine Spannung; liegt der Magnet still, ist der Fluss zwar groß, ändert sich aber nicht, sodass dΦ/dt = 0 und U = 0 ist. Die Lampe leuchtet also nur, während der Magnet bewegt wird, und die dafür nötige Energie liefert die Hand, die ihn schiebt, nicht der Magnet selbst - der behält sein Feld unverändert. Sie folgert, dass es keine Gratisenergie gibt und schlägt eine Prüfung vor: den Magneten einmal still halten (Lampe bleibt dunkel) und einmal hin- und herbewegen (Lampe leuchtet). Häufige Fehler: Ein starkes oder nahes Feld wird mit einer Spannung gleichgesetzt; die notwendige Bewegung wird vergessen; die Energie wird für gratis gehalten, statt sie der bewegenden Hand zuzuordnen; die Behauptung wird nur als „falsch“ abgetan, ohne den Fluss und seine Änderung zu nennen."
+   },
+   {
+    "komp": "E3",
+    "afb": "III",
+    "prompt": "Aylins Handy-Ladegerät, ein kleines Steckernetzteil, macht aus den 230 V der Steckdose 5 V für das Handy und wird im Betrieb spürbar warm. Entwickle einen Versuch, mit dem Nour und Leon den Wirkungsgrad des Ladegeräts messen und zugleich zeigen, wohin der fehlende Teil der Energie geht. Beschreibe Aufbau, Messschritte und die Gegenprobe.",
+    "erwartung": "Die Schülerin plant, an beiden Seiten die Leistung zu bestimmen. Auf der Eingangsseite misst oder liest sie die aufgenommene Leistung P_ein aus Netzspannung und Strom (oder einem Zwischenzähler); auf der Ausgangsseite schließt sie einen bekannten Verbraucher an und misst mit Voltmeter und Amperemeter U₂ und I₂, sodass P_aus = U₂ · I₂. Den Wirkungsgrad berechnet sie als η = P_aus / P_ein, entsprechend η = E_nutz / E_rein, und erwartet einen Wert unter 100 Prozent. Sie sagt vorher, dass der fehlende Teil als Wärme abgegeben wird, und weist das nach, indem sie das warme Gehäuse fühlt oder seine Erwärmung misst; als Gegenprobe hält sie fest, dass Nutzleistung und Verlustleistung zusammen die aufgenommene Leistung ergeben müssen, und wiederholt die Messung mehrfach. Häufige Fehler: Nur die Ausgangsseite wird gemessen; Spannung wird mit Leistung verwechselt, statt P = U · I zu bilden; die spürbare Wärme wird nicht als der Verlustanteil erkannt; es wird nur eine einzige Messung notiert; ein Wirkungsgrad von 100 Prozent oder mehr wird für möglich gehalten."
+   },
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Leons Onkel sagt beim Abendessen: „Energiesparen ist Unsinn - ihr habt im Physikunterricht doch selbst gelernt, dass Energie nie verloren geht. Also ist sie hinterher noch komplett da.“ Formuliere eine begründete Antwort, die den Denkfehler aufdeckt und mit Zahlen erklärt, was Sparen wirklich bedeutet.",
+    "erwartung": "Die Schülerin trennt die erhaltene Menge von der sinkenden Brauchbarkeit. Sie bestätigt, dass die Gesamtmenge nach dem Energieerhaltungssatz gleich bleibt, widerlegt aber, dass sie „komplett da“ im Sinne von nutzbar bleibt: Bei jeder Umwandlung wird ein Teil zu Wärme bei Umgebungstemperatur, die sich nicht mehr sinnvoll nutzen lässt - die Energie wird entwertet. Sie belegt das mit einer Kette, etwa Kohle → Licht: Von 1000 J sind nach dem Kraftwerk noch 400 J, nach der Leitung 368 J, nach der Lampe 147 J und am Ende 0 J nutzbar, obwohl die Summe immer 1000 J beträgt. Sparen heißt deshalb, die noch brauchbare Energie nicht unnötig zu entwerten und weniger erzeugen zu müssen, was Brennstoff, Abgase und Geld spart - etwa 0,30 € je Kilowattstunde, sodass allein der Wechsel zur LED rund 75,9 kWh im Jahr einspart. Der Onkel hat also recht, dass die Menge erhalten bleibt, aber unrecht, dass sie als Nutzen erhalten bleibt. Häufige Fehler: Dem Onkel wird zugestimmt; es wird behauptet, Energie verschwinde; Menge und Brauchbarkeit werden verwechselt; es werden keine Zahlen aus einer Kette oder einer Sparmaßnahme genannt."
+   }
+  ]
+ }
+]

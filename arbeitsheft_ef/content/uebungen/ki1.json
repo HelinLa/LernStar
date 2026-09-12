@@ -1,0 +1,72 @@
+{
+ "id": "ki1",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "S6",
+  "K3",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Beim Stoppen werden drei Größen abgelesen: die Zeit t an der Uhr, der Weg s am Wegmesser und die Geschwindigkeit v am",
+   "loesung": "Tacho",
+   "post": "."
+  },
+  {
+   "pre": "Trägt man die gestoppten Wertepaare im t-s-Diagramm auf, so liegen sie auf einer",
+   "loesung": "Ursprungsgeraden",
+   "post": "."
+  },
+  {
+   "pre": "Aus zwei beliebigen Punkten dieser Geraden ergibt sich die Geschwindigkeit als Differenzenquotient v =",
+   "loesung": "Δs/Δt",
+   "post": "."
+  },
+  {
+   "pre": "Im t-v-Diagramm ist die Steigung null; die Geschwindigkeit steht dort als",
+   "loesung": "Achsenabschnitt",
+   "post": "der Waagerechten."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Die Steigung der t-s-Geraden hängt davon ab, in welchen Abständen die Stoppuhr gedrückt wurde.",
+   "stimmt": false
+  },
+  {
+   "aussage": "In der ersten Zeile jeder Fahrt bleibt die Spalte a leer, weil für a = Δv/Δt die vorherige Zeile derselben Fahrt fehlt.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Im t-a-Diagramm zählt die Simulation zu einer Messreihe eine Zeile weniger als im t-s-Diagramm.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil die t-v-Gerade waagerecht verläuft, wächst auch der Weg s während der Fahrt nicht weiter an.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias hat bei 4,0 m/s fünfmal gestoppt, danach den Regler auf 7,0 m/s gestellt und wieder fünfmal gestoppt. Nun stehen zwei Geraden im t-s-Diagramm. Er liest den Ergebniskasten ganz unten ab und notiert dessen Zahl als Geschwindigkeit seiner zweiten Reihe. Welcher Einwand trifft zu?",
+  "optionen": [
+   "Der Ergebniskasten mittelt über beide Messreihen und gehört deshalb zu keiner von beiden.",
+   "Der Ergebniskasten gehört zur langsamsten Reihe, also zu der mit 4,0 m/s.",
+   "Der Ergebniskasten gehört zur zuletzt aufgenommenen Reihe, also zu der mit 7,0 m/s."
+  ],
+  "richtig": 1,
+  "erklaerung": "Über dem Kasten steht jede Reihe einzeln: „Stoppuhr · v = 4,0 m/s“ mit y = 4,000·x und „Stoppuhr · v = 7,0 m/s“ mit y = 7,000·x. Der Ergebniskasten darunter wertet immer die langsamste Reihe aus – hier die mit 4,0 m/s; das bestätigt auch seine Zeile „eingestellt für diese Reihe: 4,00 m/s“. Gemittelt wird nichts. Für seine zweite Reihe muss Tobias die Steigung 7,000 aus der zugehörigen Zeile darüber ablesen."
+ },
+ "offen": {
+  "frage": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
+  "prompt": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
+  "zeilen": 4,
+  "loesung": "Beide Wege stimmen überein, weil die Uhr in Schritten von 0,02 s springt und der Wegmesser den Weg als s = v · t bildet: In jeder Zeile ist s genau das v-fache von t, hier 8,96 m = 4,00 m/s · 2,24 s. Der Quotient s/t einer einzelnen Zeile ist deshalb schon die Steigung selbst, und eine Ausgleichsgerade durch lauter exakte Punkte liefert nichts anderes – daher y = 4,000·x und R² = 1,0000 nach jeder Stoppfolge. Verallgemeinern lässt sich das nicht: Diese Übereinstimmung ist eine Eigenschaft der digitalen Anzeige, nicht der Messmethode. Sobald eine Zeit wirklich gestoppt und nicht aus s = v · t zurückgerechnet wird, streut jede Ablesung; dann liefert eine einzelne Zeile einen zufälligen Wert, die Steigung aus allen Punkten dagegen einen belastbaren. Genau dieser Fall steht auf der nächsten Seite."
+ }
+}

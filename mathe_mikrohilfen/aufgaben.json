@@ -1,0 +1,415 @@
+{
+ "stand": "2026-09-11",
+ "band": "FELO MATHEMATIK 8 — Mikrohilfen GLEICHUNGEN",
+ "hinweis": "Grundwahrheit der Reihe. Jede Mikrohilfe zeigt auf genau EINE Kennung hier. Die Kontrollzeile (Teil E) nennt konkrete Zahlen - steht die Aufgabe auf dem Arbeitsblatt anders, luegt das Video. schritte[0] ist der Zustand, in dem der Schueler die Hilfe aufruft; der letzte Schritt ist die Loesung. falsch listet die typischen Falschergebnisse: nur was hier steht, darf eine Hilfe aussprechen - und nur mit Verneinung oder Fragezeichen. Das Feld gegeben (optional) nennt die Zahl eines ZWEITEN Buchstabens, der in den Schritten vorkommt - ohne es koennte der Pruefer eine Gleichung mit zwei Buchstaben nicht nachrechnen und wuerde die Bruecke zum Einsetzverfahren gar nicht erst zulassen. pruefe_mikrohilfe.py rechnet ALLE schritte, loesung und falsch selbst nach (siehe PROFIL.md 6.1). Das Feld geplant_fuer ist reine Dokumentation und wird NICHT geprueft.",
+ "blaetter": {
+  "GL-1": "Arbeitsblatt Gleichungen 1 — Zahl daneben, Zahl davor",
+  "GL-2": "Arbeitsblatt Gleichungen 2 — x auf beiden Seiten"
+ },
+ "aufgaben": [
+  {
+   "kennung": "a01",
+   "blatt": "GL-1",
+   "nummer": "1",
+   "aufgabe": "Fasse zusammen: 2x + 5x",
+   "typ": "term",
+   "variable": "x",
+   "schritte": [
+    "2x + 5x",
+    "7x"
+   ],
+   "falsch": [
+    "10x"
+   ],
+   "loesung": "7x",
+   "geplant_fuer": "noch keine Hilfe - Aufgabe des Blattes ohne Mikrohilfe"
+  },
+  {
+   "kennung": "a02",
+   "blatt": "GL-1",
+   "nummer": "2",
+   "aufgabe": "Löse: x + 6 = 14",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "x + 6 = 14",
+    "x = 8"
+   ],
+   "falsch": [
+    "x = 20",
+    "x = 14"
+   ],
+   "loesung": "x = 8",
+   "geplant_fuer": "gl03"
+  },
+  {
+   "kennung": "a03",
+   "blatt": "GL-1",
+   "nummer": "3",
+   "aufgabe": "Löse: 3x + 5 = 20",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "3x + 5 = 20",
+    "3x = 15",
+    "x = 5"
+   ],
+   "falsch": [
+    "3x = 20"
+   ],
+   "loesung": "x = 5",
+   "geplant_fuer": "gl02 (Maßstab-Hilfe)"
+  },
+  {
+   "kennung": "a04",
+   "blatt": "GL-1",
+   "nummer": "4",
+   "aufgabe": "Löse: 2x − 4 = 10",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "2x − 4 = 10",
+    "2x = 14",
+    "x = 7"
+   ],
+   "falsch": [
+    "2x = 6"
+   ],
+   "loesung": "x = 7",
+   "geplant_fuer": "gl05"
+  },
+  {
+   "kennung": "a05",
+   "blatt": "GL-1",
+   "nummer": "5",
+   "aufgabe": "Löse: 3x = 15",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "3x = 15",
+    "x = 15 : 3",
+    "x = 5"
+   ],
+   "falsch": [
+    "x = 12"
+   ],
+   "loesung": "x = 5",
+   "geplant_fuer": "gl04 — der ausgeschriebene Teilschritt „x = 15 : 3“ ist Absicht: er ist der EINZIGE spaetere Zustand, den die Kontrollzeile von gl04 nennen kann, ohne die Loesung auszusprechen (PROFIL 4). Ohne ihn muesste das Video x = 5 zeigen, und der Schueler schreibt ab."
+  },
+  {
+   "kennung": "a06",
+   "blatt": "GL-1",
+   "nummer": "6",
+   "aufgabe": "Löse: x − 9 = 3",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "x − 9 = 3",
+    "x = 12"
+   ],
+   "falsch": [
+    "x = −6"
+   ],
+   "loesung": "x = 12",
+   "geplant_fuer": "gl01"
+  },
+  {
+   "kennung": "a07",
+   "blatt": "GL-1",
+   "nummer": "7",
+   "aufgabe": "Löse: 5x + 2 = 22",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "5x + 2 = 22",
+    "5x = 20",
+    "x = 4"
+   ],
+   "falsch": [
+    "5x = 22",
+    "x + 2 = 22"
+   ],
+   "loesung": "x = 4",
+   "geplant_fuer": "gl06"
+  },
+  {
+   "kennung": "a08",
+   "blatt": "GL-2",
+   "nummer": "1",
+   "aufgabe": "Fasse zusammen: 3x + 2",
+   "typ": "term",
+   "variable": "x",
+   "schritte": [
+    "3x + 2"
+   ],
+   "falsch": [
+    "5x"
+   ],
+   "loesung": "3x + 2",
+   "geplant_fuer": "gl08 (Maßstab-Hilfe)"
+  },
+  {
+   "kennung": "a09",
+   "blatt": "GL-2",
+   "nummer": "2",
+   "aufgabe": "Löse: 5x = 2x + 12",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "5x = 2x + 12",
+    "3x = 12",
+    "x = 4"
+   ],
+   "falsch": [
+    "5x = 12"
+   ],
+   "loesung": "x = 4",
+   "geplant_fuer": "gl09"
+  },
+  {
+   "kennung": "a10",
+   "blatt": "GL-2",
+   "nummer": "3",
+   "aufgabe": "In x + y = 10 weißt du schon: x = 4. Berechne y.",
+   "typ": "gleichung",
+   "variable": "y",
+   "gegeben": {
+    "x": 4
+   },
+   "schritte": [
+    "x + y = 10",
+    "4 + y = 10",
+    "y = 6"
+   ],
+   "falsch": [
+    "y = 14"
+   ],
+   "loesung": "y = 6",
+   "geplant_fuer": "gl11 — die Bruecke zum Einsetzverfahren. schritte[0] traegt BEIDE Buchstaben, weil genau das der Startzustand auf dem Blatt ist; erst schritte[1] ist die Gleichung mit einem Buchstaben. Ohne diesen ersten Schritt waere das Einsetzen schon geschehen, bevor die Hilfe anfaengt, und der EINE Arbeitsschritt von gl11 haette keinen Ort. Das Feld gegeben sagt dem Pruefer, welche Zahl fuer den zweiten Buchstaben gilt - er rechnet alle drei Schritte damit nach (PROFIL 6.1)"
+  },
+  {
+   "kennung": "a11",
+   "blatt": "GL-1",
+   "nummer": "8",
+   "aufgabe": "Löse: 4x + 7 = 31",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "4x + 7 = 31",
+    "4x = 24",
+    "x = 6"
+   ],
+   "falsch": [],
+   "loesung": "x = 6",
+   "geplant_fuer": "Hilfe 3 von gl02"
+  },
+  {
+   "kennung": "a12",
+   "blatt": "GL-2",
+   "nummer": "4",
+   "aufgabe": "Fasse zusammen: 4x + 3",
+   "typ": "term",
+   "variable": "x",
+   "schritte": [
+    "4x + 3"
+   ],
+   "falsch": [
+    "7x"
+   ],
+   "loesung": "4x + 3",
+   "geplant_fuer": "Hilfe 3 von gl08"
+  },
+  {
+   "kennung": "a13",
+   "blatt": "GL-2",
+   "nummer": "5",
+   "aufgabe": "Löse: 3x + 2x = 20",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "3x + 2x = 20",
+    "5x = 20",
+    "x = 4"
+   ],
+   "falsch": [
+    "6x = 20"
+   ],
+   "loesung": "x = 4",
+   "geplant_fuer": "gl07 — als GLEICHUNG, nicht als Term: bei einem Term mit zwei Schritten wäre das Zwischenergebnis die Lösung, und die darf Teil E nicht nennen (PROFIL 4)"
+  },
+  {
+   "kennung": "a14",
+   "blatt": "GL-2",
+   "nummer": "6",
+   "aufgabe": "Löse: 4x + 3x = 21",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "4x + 3x = 21",
+    "7x = 21",
+    "x = 3"
+   ],
+   "falsch": [
+    "12x = 21"
+   ],
+   "loesung": "x = 3",
+   "geplant_fuer": "Hilfe 3 von gl07"
+  },
+  {
+   "kennung": "a15",
+   "blatt": "GL-2",
+   "nummer": "7",
+   "aufgabe": "In x + y = 20 weißt du schon: x = 8. Berechne y.",
+   "typ": "gleichung",
+   "variable": "y",
+   "gegeben": {
+    "x": 8
+   },
+   "schritte": [
+    "x + y = 20",
+    "8 + y = 20",
+    "y = 12"
+   ],
+   "falsch": [
+    "y = 28"
+   ],
+   "loesung": "y = 12",
+   "geplant_fuer": "Hilfe 3 von gl11 — eigene Zeile, weil auch Hilfe 3 eine Aufgabe braucht, die sonst niemand benutzt. Gleiche Bauart wie a10: zwei Buchstaben im Startzustand, gegeben nennt die bekannte Zahl"
+  },
+  {
+   "kennung": "a19",
+   "blatt": "GL-2",
+   "nummer": "11",
+   "aufgabe": "Löse: 7x = 3x + 20",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "7x = 3x + 20",
+    "4x = 20",
+    "x = 5"
+   ],
+   "falsch": [],
+   "loesung": "x = 5",
+   "geplant_fuer": "Hilfe 3 von gl09"
+  },
+  {
+   "kennung": "a20",
+   "blatt": "GL-2",
+   "nummer": "12",
+   "aufgabe": "Du hast bei 4x + 3 = 19 die Zahl 4 heraus. Mache die Probe.",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "4x + 3 = 19",
+    "x = 4"
+   ],
+   "falsch": [],
+   "loesung": "x = 4",
+   "geplant_fuer": "gl10 (Probe) — schritte[0] ist die Gleichung, die der Schueler vor sich hat; die gefundene 4 steht im zweiten Schritt und wird im Sprechertext bewusst NICHT als „x = 4“ ausgesprochen (PROFIL 4)"
+  },
+  {
+   "kennung": "a21",
+   "blatt": "GL-2",
+   "nummer": "13",
+   "aufgabe": "Du hast bei 2x + 5 = 17 die Zahl 6 heraus. Mache die Probe.",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "2x + 5 = 17",
+    "x = 6"
+   ],
+   "falsch": [],
+   "loesung": "x = 6",
+   "geplant_fuer": "Hilfe 3 von gl10"
+  },
+  {
+   "kennung": "a22",
+   "blatt": "GL-1",
+   "nummer": "9",
+   "aufgabe": "Löse: 4x = 24",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "4x = 24",
+    "x = 24 : 4",
+    "x = 6"
+   ],
+   "falsch": [
+    "x = 20"
+   ],
+   "loesung": "x = 6",
+   "geplant_fuer": "Hilfe 3 von gl04 — gedruckte Zeile, damit der Schueler den Startzustand 4x = 24 auf dem Blatt wirklich findet. Teilschritt „x = 24 : 4“ wie bei a05: Hilfe 3 zeigt den einen Schritt und loest die Aufgabe NICHT fertig"
+  },
+  {
+   "kennung": "a23",
+   "blatt": "GL-1",
+   "nummer": "10",
+   "aufgabe": "Löse: 4x − 2 = 10",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "4x − 2 = 10",
+    "4x = 12",
+    "x = 3"
+   ],
+   "falsch": [
+    "4x = 8"
+   ],
+   "loesung": "x = 3",
+   "geplant_fuer": "Hilfe 3 von gl05"
+  },
+  {
+   "kennung": "a24",
+   "blatt": "GL-1",
+   "nummer": "11",
+   "aufgabe": "Löse: 3x + 4 = 25",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "3x + 4 = 25",
+    "3x = 21",
+    "x = 7"
+   ],
+   "falsch": [
+    "3x = 29"
+   ],
+   "loesung": "x = 7",
+   "geplant_fuer": "Hilfe 3 von gl06 — eigene Zeile, weil gl06 vorher auf a04 zeigte und damit die Aufgabe von gl05 vorweggenommen hat (PROFIL 4/9). Zuerst durch 3 zu teilen führt hier auf Brüche, das Wegnehmen der +4 nicht: die Reihenfolge zeigt sich an der Aufgabe selbst"
+  },
+  {
+   "kennung": "a25",
+   "blatt": "GL-1",
+   "nummer": "12",
+   "aufgabe": "Löse: x + 8 = 15",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "x + 8 = 15",
+    "x = 7"
+   ],
+   "falsch": [
+    "x = 23"
+   ],
+   "loesung": "x = 7",
+   "geplant_fuer": "Hilfe 3 von gl01 — eigene Zeile, weil gl01 vorher auf a03 zeigte und damit die Maßstab-Aufgabe von gl02 vorweggenommen hat (PROFIL 4/9), gleiche Lage wie bei a24. Bewusst mit PLUS: gl01 markiert die Zahl neben dem x, und der Schritt darf nicht am Minuszeichen hängen. a01 und a10 kämen nicht in Frage — a01 ist ein Term ohne Gleichheitszeichen (kein „x allein\" als Ziel), a10 ist die Brücke zum Einsetzverfahren"
+  },
+  {
+   "kennung": "a26",
+   "blatt": "GL-1",
+   "nummer": 13,
+   "aufgabe": "Löse: 2x + 9 = 15",
+   "typ": "gleichung",
+   "variable": "x",
+   "schritte": [
+    "2x + 9 = 15",
+    "2x = 6",
+    "x = 3"
+   ],
+   "falsch": [
+    "2x = 15"
+   ],
+   "loesung": "x = 3",
+   "geplant_fuer": "Hilfe 3 von gl03"
+  }
+ ]
+}

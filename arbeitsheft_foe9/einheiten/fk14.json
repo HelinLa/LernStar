@@ -1,0 +1,201 @@
+{
+ "seite": {
+  "id": "fk14",
+  "quelle": "kf14",
+  "sim": "auftrieb",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Ein Stahlrohr in der Regentonne",
+  "name": "Warum schwimmt ein Schiff aus Eisen?",
+  "fachwoerter_neu": [
+   "Auftrieb"
+  ],
+  "alltag": [
+   "Beim Aufräumen fällt ein Stück Vollstahl in die Regentonne und sinkt.",
+   "Jannis wirft ein verschlossenes Stahlrohr hinterher. Es bleibt oben.",
+   "Im Rohr steckt Luft. Eisen und Luft zusammen ergeben die mittlere Dichte."
+  ],
+  "frage": "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
+  "predict": [
+   "Eisen ist schwerer als Wasser. Jedes Stück Eisen sinkt, egal welche Form.",
+   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „massiv – sinkt“ und lies die mittlere Dichte ab.",
+   "Drücke „87 % – sinkt noch“ und dann „88 % – schwimmt gerade“.",
+   "Drücke „90 % – Schiff“ und vergleiche jede Zahl mit 1000 kg/m³."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die mittlere Dichte?",
+   "Schwimmt der Würfel oder sinkt er?"
+  ],
+  "tabRows": [
+   [
+    "massiv – sinkt",
+    "7870 kg/m³",
+    "sinkt"
+   ],
+   [
+    "87 % – sinkt noch",
+    "",
+    ""
+   ],
+   [
+    "88 % – schwimmt gerade",
+    "",
+    ""
+   ],
+   [
+    "90 % – Schiff",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Unten drückt das Wasser stärker als oben. Diese Kraft nach oben heißt",
+    "loesung": "Auftrieb",
+    "post": "."
+   },
+   {
+    "pre": "Ein Körper schwimmt, wenn seine mittlere Dichte kleiner als",
+    "loesung": "1000 kg/m³",
+    "post": "ist."
+   }
+  ],
+  "wortbank": [
+   "Auftrieb",
+   "1000 kg/m³",
+   "größer",
+   "sinkt",
+   "schwimmt"
+  ],
+  "beispiel": {
+   "frage": "Warum sinkt der massive Würfel?",
+   "antwort": "Der Bildschirm zeigt 7870 kg/m³. Das ist größer als 1000 kg/m³. Darum sinkt der Würfel."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Würfel schwimmt?",
+    "optionen": [
+     "Der Würfel mit 7870 kg/m³.",
+     "Der Würfel mit 787 kg/m³.",
+     "Der Würfel mit 1023 kg/m³."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 87 % zeigt der Bildschirm 1023 kg/m³. Das ist",
+      "loesung": "größer",
+      "post": "als 1000 kg/m³."
+     },
+     {
+      "pre": "Darum",
+      "loesung": "sinkt",
+      "post": "der Würfel noch."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ein Schiff aus Stahl schwimmt, weil es so groß ist.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Nicht die Größe entscheidet, sondern …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Vergleiche jede Zahl mit 1000 kg/m³.",
+   "h2": "Beginne so: Nicht die Größe entscheidet, sondern die mittlere Dichte. Ein Schiff ist innen …",
+   "h3": "Fast fertig: Ein Schiff ist innen fast nur Luft. Seine mittlere Dichte bleibt unter 1000 kg/m³. Ergänze: Darum ___ es."
+  },
+  "selbstcheck": [
+   "Ich kann die mittlere Dichte am Bildschirm ablesen.",
+   "Ich weiß: Unter 1000 kg/m³ schwimmt der Würfel.",
+   "Ich kann erklären, warum ein Schiff aus Eisen schwimmt."
+  ],
+  "zuhause": "Knülle Alufolie zu einer Kugel und lege sie in Wasser. Forme dann ein flaches Schiffchen daraus.",
+  "bildauftrag": "[BILD: zwei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund, gleiche Wasserlinie, gleicher Bildausschnitt. In beiden Feldern dieselbe Regentonne im Schnitt, das Wasser hellblau, glatt, ohne Wellen und ohne Spiegelbild, am Wasser die Beschriftung „Wasser 1000 kg/m³“. Links liegt ein massiver grauer Stahlklotz unten am Boden der Tonne, darunter groß das Wort „sinkt“. Rechts schwimmt ein gleich großes, verschlossenes Stahlrohr an der Oberfläche; es ist aufgeschnitten gezeichnet, sodass der große Luftraum innen weiß und deutlich sichtbar ist und die Wand als dünner grauer Rand erscheint. Der Luftraum trägt die Beschriftung „Luft“, die Wand die Beschriftung „Eisen“, darunter groß das Wort „schwimmt“. Beide Körper sind exakt gleich groß gezeichnet, damit nur der Luftraum den Unterschied macht. Keine Pfeile, keine Kraftpfeile, keine Zahlenwerte außer der Wasserbeschriftung, keine Personen, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fk14",
+  "lernziel": "Die Schülerinnen und Schüler lesen an den vier Knöpfen der Simulation die mittlere Dichte des Eisenwürfels ab (7870 · 1023 · 944 · 787 kg/m³) und ordnen jedem Wert zu, ob der Würfel schwimmt oder sinkt. Sie begründen damit: Nicht der Stoff entscheidet, sondern die mittlere Dichte — unter 1000 kg/m³ schwimmt der Körper. Der Auftrieb wird benannt, aber nicht berechnet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Schüssel Wasser, ein Vollmetallstück und eine verschlossene leere Dose. Wichtig: Abgelesen wird nur aus den BILDTEXTEN am Würfel („Hohlraum 88 % · mittlere Dichte 944 kg/m³ · Süßwasser 1000 kg/m³“). Die Statuszeile zeigt dieselben Größen mit einer Stelle mehr (944,4 kg/m³, G = 9,26 N); beide Schreibweisen nie mischen. Der Regler bleibt unberührt — vier Knopfdrücke genügen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Karten schreiben und in dieser Reihenfolge zeigen — 1 „massiv – sinkt“: 7870 kg/m³, sinkt · 2 „87 % – sinkt noch“: 1023 kg/m³, sinkt · 3 „88 % – schwimmt gerade“: 944 kg/m³, schwimmt (94,4 % unter Wasser) · 4 „90 % – Schiff“: 787 kg/m³, schwimmt (78,7 % unter Wasser). Auf jeder Karte oben „mittlere Dichte“, unten dieselbe Zeile „Süßwasser 1000 kg/m³“ — an dieser gleich bleibenden Zahl wird die Grenze sichtbar. Alternativ die vier Standbilder am Beamer zeigen. Reihenfolge nicht ändern: Erst die fallende Reihe 7870 → 1023 → 944 → 787 zeigt, dass mehr Luft die mittlere Dichte kleiner macht.",
+  "merksatz": [
+   "Auftrieb",
+   "1000 kg/m³"
+  ],
+  "tabelle_erwartet": [
+   [
+    "87 % – sinkt noch",
+    "1023 kg/m³",
+    "sinkt"
+   ],
+   [
+    "88 % – schwimmt gerade",
+    "944 kg/m³",
+    "schwimmt"
+   ],
+   [
+    "90 % – Schiff",
+    "787 kg/m³",
+    "schwimmt"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nur 787 kg/m³ liegt unter 1000 kg/m³. Der Wert gehört zum Knopf „90 % – Schiff“; dort steht am Würfel „schwimmt – 78,7 % unter Wasser“. 7870 und 1023 kg/m³ liegen darüber, beide Würfel sinken.",
+   "typische_fehler": [
+    "1023 kg/m³ gilt als schwimmfähig, weil die Zahl „fast 1000“ ist. Genau hier liegt die Grenze: 1023 ist größer, der Würfel sinkt noch.",
+    "787 wird neben 7870 nach der Ziffernzahl gelesen und übersehen.",
+    "Es wird nach dem Stoff geurteilt („alles Eisen sinkt“) statt nach dem abgelesenen Wert."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "größer",
+    "sinkt"
+   ],
+   "typische_fehler": [
+    "„kleiner“ statt „größer“: 1023 und 1000 werden als gleich groß gelesen.",
+    "Die zweite Lücke wird mit „schwimmt“ gefüllt, weil der Merksatz nur bis „schwimmt“ gelesen wurde.",
+    "Die Prozentzahl 87 % wird mit der Dichte verwechselt und eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nicht die Größe entscheidet, sondern die mittlere Dichte. Ein Schiff aus Stahl ist innen fast nur Luft. Eisen und Luft zusammen haben eine mittlere Dichte unter 1000 kg/m³. Darum schwimmt es.",
+   "alternativen": [
+    "Verweis auf die Tabelle: Derselbe Würfel sinkt bei 7870 kg/m³ und schwimmt bei 787 kg/m³ — die Größe blieb gleich, nur der Luftanteil nicht.",
+    "Vergleich mit der Regentonne: Der kleine Vollstahlklotz sinkt, das größere hohle Rohr schwimmt.",
+    "Umgekehrt formuliert: Ein massiver Stahlblock schwimmt auch dann nicht, wenn man ihn viel größer macht."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur wiederholt („weil es so groß ist“), ohne Luft und mittlere Dichte zu nennen.",
+    "Es wird mit der Form allein argumentiert („weil es wie ein Schiff aussieht“).",
+    "Masse und Dichte werden gleichgesetzt („das Schiff ist leicht“) — ein Schiff ist sehr schwer."
+   ]
+  },
+  "hilfe3_wort": "schwimmt",
+  "schwache": [
+   "Zuerst nur „massiv – sinkt“ und „90 % – Schiff“ vergleichen; die beiden mittleren Zeilen später gemeinsam ausfüllen.",
+   "Die Zahl 1000 kg/m³ groß an die Tafel schreiben. Jeder abgelesene Wert wird nur mit dieser einen Zahl verglichen — größer oder kleiner, mehr nicht.",
+   "„Mittlere Dichte“ vorher am Bild klären: Eisen UND Luft stecken im selben Würfel und werden zusammen gewogen. Es ist nicht „die Dichte in der Mitte“. „Dichte“ selbst ist aus fk13 bekannt.",
+   "Der Bildtext ist eine lange Zeile mit drei Abschnitten. Den Finger auf den mittleren legen und nur „mittlere Dichte …“ vorlesen lassen.",
+   "Vor Aufgabe 2 die fünf Wörter der Wortbank abschreiben und jedes benutzte durchstreichen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke bei „90 % – Schiff“ zusätzlich „Meerwasser“ und vergleiche die Bildtexte — Süßwasser „schwimmt – 78,7 % unter Wasser“, Meerwasser „schwimmt – 76,8 % unter Wasser“, beide bei 787 kg/m³. Schreibe auf, in welchem Wasser das Schiff höher liegt. Für die Lehrkraft: Meerwasser hat 1025 kg/m³ und trägt deshalb besser. Die 1,9 Prozentpunkte Unterschied sind ohne Rechnung nicht zu deuten — darum stehen sie nicht auf der Schülerseite.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), zweiter Teil · Auftrieb, Schwimmen und Sinken, mittlere Dichte. Der Alltagsauftrag mit der Alufolie trägt E5, die Erklär-Aufgabe zum Schiff B2. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Fachwörter: neu ist allein „Auftrieb“. „Dichte ρ“ kommt aus fk13; „mittlere Dichte“ ist nach Zählregel 1 dieselbe Größe und zählt nicht als zweites Fachwort — es ist die Bildschirmschreibweise für den Würfel aus Eisen und Luft. Am Bildschirm stehen „F_A“, die Formel „F_A = ρ · g · V(eingetaucht)“ und im Hinweis „das Gewicht des verdrängten Wassers“ — das Wort „Auftriebskraft“ selbst steht dort nirgends. Formelzeichen und verdrängtes Wasser bleiben Lehrerwissen; sie wären ein zweites und drittes Fachwort, und die Zuteilung gibt fk14 allein „Auftrieb“. Zum Band: Die Simulation rechnet mit g = 9,81 N/kg, fk4 und fk5 zeigen 9,8 N/kg — die Förderseiten lesen nur ab und rechnen nie mit g. Die Grenze „ab 87,3 % Hohlraum“ ist am Regler nicht einstellbar (Schrittweite 1) und wird nicht benutzt; die Grenze heißt im Heft 1000 kg/m³. Für 87 % gibt es keinen Bildtext „sinkt“ — er stammt aus der Knopfaufschrift „87 % – sinkt noch“ und der Statuszeile („4 · Er sinkt“); alle Dichtewerte stehen dagegen wörtlich in den Bildtexten. Reglerzwischenwerte sind im Dump nur mit aktivem Meerwasser belegt und bleiben deshalb ungenutzt."
+ }
+}

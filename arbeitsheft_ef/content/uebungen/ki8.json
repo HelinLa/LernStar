@@ -1,0 +1,72 @@
+{
+ "id": "ki8",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "E11",
+  "B1"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Ein Körper behält seinen Bewegungszustand – die Geschwindigkeit nach Betrag und Richtung – genau so lange bei, wie die resultierende Kraft an ihm den Wert",
+   "loesung": "null",
+   "post": "hat."
+  },
+  {
+   "pre": "Der Regler „Externe Kraft F“ gibt nicht eine einzelne der angreifenden Kräfte wieder, sondern deren",
+   "loesung": "Summe",
+   "post": "; Antrieb und Reibung dürfen also durchaus wirken."
+  },
+  {
+   "pre": "Bei F = 0 N und der größten geprüften Anfangsgeschwindigkeit meldet das weiße Kästchen auch nach längerem Lauf noch v =",
+   "loesung": "40,0 m/s",
+   "post": "."
+  },
+  {
+   "pre": "Weil v bei verschwindender resultierender Kraft konstant bleibt, wächst der Weg gleichförmig; für ihn gilt s =",
+   "loesung": "v · t",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Ein Wagen behält sein Tempo nur dann bei, wenn an ihm überhaupt keine Kraft angreift.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Ein Wagen, der dauerhaft in Ruhe verharrt, wird vom ersten Newton'schen Gesetz mit erfasst.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Zieht man v₀ bei F = 0 N von 20 m/s auf 12 m/s, so nimmt der Wagen das neue Tempo an und behält es anschließend bei.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Je größer v₀ bei F = 0 N eingestellt wird, desto länger dauert es, bis der Wagen von selbst zum Stehen kommt.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira vergleicht die vier Läufe zu v₀ = 5 m/s, 12 m/s, 20 m/s und 40 m/s und findet die Diagramme nicht unterscheidbar: Die Linie v(t) läuft jedes Mal waagerecht ganz oben am Rand. Sie schließt daraus, das Diagramm sei für diese Messreihe wertlos. Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Das Diagramm zeigt sehr wohl etwas, nämlich dass v über die ganze Breite konstant bleibt; den Betrag von v gibt es nur deshalb nicht preis, weil die Achse auf den jeweils größten Messwert skaliert. Dafür ist das weiße Kästchen zuständig.",
+   "Mira hat recht: Sehen vier Läufe gleich aus, so lässt sich aus dem Diagramm zu keinem von ihnen etwas entnehmen; die Messreihe ist erst mit einer anderen Darstellung auswertbar.",
+   "Die vier Bilder gleichen sich, weil sich bei F = 0 N stets dieselbe Geschwindigkeit einstellt; das gewählte v₀ wirkt sich allein auf den zurückgelegten Weg aus."
+  ],
+  "richtig": 0,
+  "erklaerung": "Aus dem waagerechten Verlauf über die ganze Breite liest man genau die gesuchte Aussage ab: v ändert sich bei F = 0 N nicht. Gleich hoch liegen die Linien nur, weil das Diagramm seine Achse auf den größten Messwert dehnt – eine konstante Größe landet dadurch immer am oberen Rand. Wertlos ist es deshalb nicht, es beantwortet nur eine andere Frage als die nach dem Betrag; diesen liefert das weiße Kästchen mit 5,0 m/s, 12,0 m/s, 20,0 m/s und 40,0 m/s. Die dritte Deutung widerspricht eben diesen Anzeigen: Der Wagen behält das eingestellte v₀ und gleicht sich keinem gemeinsamen Wert an."
+ },
+ "offen": {
+  "frage": "Mira wendet ein, die Simulation könne den ruhenden Wagen gar nicht zeigen, weil sich v₀ erst ab 5 m/s einstellen lässt; das erste Newton'sche Gesetz sei am Bildschirm also nur zur Hälfte prüfbar. Nimm zu diesem Einwand Stellung und beziehe dabei die Sicht eines Beobachters ein, der sich mit 20 m/s neben dem Wagen bewegt.",
+  "prompt": "Mira wendet ein, die Simulation könne den ruhenden Wagen gar nicht zeigen, weil sich v₀ erst ab 5 m/s einstellen lässt; das erste Newton'sche Gesetz sei am Bildschirm also nur zur Hälfte prüfbar. Nimm zu diesem Einwand Stellung und beziehe dabei die Sicht eines Beobachters ein, der sich mit 20 m/s neben dem Wagen bewegt.",
+  "zeilen": 4,
+  "loesung": "In einem Punkt trifft Miras Beobachtung zu: Der Regler beginnt bei 5 m/s, die Einstellung v = 0 ist am Bildschirm nicht erreichbar. Ihr Schluss trägt trotzdem nicht. Für die Ruhe macht das Gesetz keine zweite Aussage, denn sie ist der Sonderfall v = 0 derselben Aussage: Bei verschwindender resultierender Kraft bleibt der Bewegungszustand erhalten, gleichgültig welchen Wert v hat. Hinzu kommt, dass die Antwort auf die Frage nach Ruhe oder Bewegung vom Beobachter abhängt. Wer sich mit 20 m/s neben dem Wagen herbewegt, sieht genau jenen Wagen ruhen, der im Bild mit v₀ = 20 m/s läuft – derselbe Vorgang, zwei Beschreibungen, und in beiden ist F = 0 N. Der geprüfte Fall schließt den vermeintlich ungeprüften also ein; die fehlende Reglerstellung ist eine Grenze der Bedienung, keine Lücke im Gesetz."
+ }
+}

@@ -1,0 +1,1345 @@
+[
+ {
+  "id": "fs1",
+  "lernziel": "Die Schülerinnen und Schüler sagen voraus, ob sich zwei geladene Kugeln anziehen oder abstoßen: gleiche Ladung stößt ab, ungleiche Ladung zieht an. Sie erklären damit das Knistern beim Pullover und widerlegen die Fehlvorstellung „geladen heißt anziehen“.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: ein Luftballon je Kind.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Karten zeigen oder an die Tafel schreiben. Karte 1 (am Anfang): „Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.“ Karte 2 (nach dem Knopf „− negativ“ bei beiden Kugeln): „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“ Dazu die zwei Bildtexte der Simulation als Skizze an die Tafel: „ungleiche Ladung → anziehen“ und „gleiche Ladung → abstoßen“. Mehr Zustände zeigt die Simulation nicht; „beide positiv“ ist nicht belegt und wird nicht gefragt.",
+  "merksatz": [
+   "stoßen",
+   "ziehen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "beide Kugeln − negativ",
+    "gleiche Ladung",
+    "Sie stoßen sich ab."
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Knopf „− negativ“ bei beiden Kugeln meldet die Statuszeile: „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“ Im Bild steht dazu „gleiche Ladung → abstoßen“.",
+   "typische_fehler": [
+    "Antwort 1 wird gewählt: „Beide sind geladen, also ziehen sie sich an.“ Entscheidend ist aber der Vergleich beider Ladungen, nicht die Ladung einer Kugel.",
+    "Antwort 2 wird gewählt. Die Ladung bleibt bestehen; die Simulation meldet dazu im Quiz „Die Ladungen bleiben bestehen.“"
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Ladung",
+    "ungleiche"
+   ],
+   "typische_fehler": [
+    "In Lücke 2 steht „gleiche“. Pullover und Haare ziehen sich an, das gehört zur ungleichen Ladung.",
+    "In Lücke 1 wird ein Verb eingesetzt („reibt“, „zieht“); gesucht ist das Nomen Ladung."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Kugeln haben dann die gleiche Ladung. Gleiche Ladung stößt sich ab. Die Kugeln ziehen sich also nicht an, sie stoßen sich ab.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.“",
+    "Verweis auf die zweite Tabellenzeile: Dort steht genau dieser Fall, und er endet mit Abstoßen.",
+    "Anziehen geht nur mit ungleicher Ladung, also mit einem Plus und einem Minus."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "„Zwei Minus sind mehr Ladung, also mehr Anziehung“ – die Menge wird mit der Art der Ladung verwechselt.",
+    "Die Kraft wird ganz bestritten („dann passiert nichts“); die Simulation meldet dazu „Es wirkt sehr wohl eine Kraft.“"
+   ]
+  },
+  "hilfe3_wort": "gleiche (auch richtig: selbe)",
+  "schwache": [
+   "Die erste Tabellenzeile gemeinsam laut lesen, erst danach die Simulation öffnen.",
+   "Die Wörter „gleiche“ und „ungleiche“ in zwei Farben markieren lassen; dieselben Farben für die zwei Tabellenzeilen benutzen.",
+   "Für Aufgabe 3 zwei Kärtchen mit − und − auf den Tisch legen und mit den Händen auseinanderschieben.",
+   "Wenn sich die Statuszeile nach dem ersten Knopf „− negativ“ nicht ändert, war diese Kugel schon negativ – dann den Knopf der anderen Kugel drücken.",
+   "Die Simulation rät „Verändere immer nur eine Ladung“. Hier werden beide Minus-Knöpfe gedrückt, damit sicher beide Kugeln negativ sind."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 1 ab: „Es gibt positive (+) und negative (−) Ladung.“",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung, Anziehung und Abstoßung. Kompetenzen stehen bewusst nur hier: UF1, UF2 und UF4 über Merksatz, Tabelle und Aufgabe 1; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); E4 über den Luftballon-Auftrag zu Hause – der Seitenplan sichert E4 ausdrücklich auf dieser Seite."
+ },
+ {
+  "id": "fs2",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass mehr Ladung auf den Kugeln eine größere Kraft F ergibt und dass doppelter Abstand die Kraft F nicht halbiert, sondern auf ein Viertel verkleinert. Gerechnet wird nicht; nC und µN werden nur abgelesen und abgeschrieben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Werte aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei geriebene Trinkhalme an Fäden.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel heften, in genau dieser Reihenfolge: 10 nC bei 6,0 cm → F = 249,7 µN · 10 nC bei 12,0 cm → F = 62,4 µN · 4 nC bei 12,0 cm → F = 10,0 µN · 18 nC bei 12,0 cm → F = 202,2 µN. Die ersten beiden Karten nebeneinander legen (Abstand verdoppelt), die letzten beiden darunter (Ladung verändert, Abstand gleich).",
+  "merksatz": [
+   "größer",
+   "ein Viertel"
+  ],
+  "tabelle_erwartet": [
+   [
+    "10 nC",
+    "12,0 cm",
+    "62,4 µN"
+   ],
+   [
+    "4 nC",
+    "12,0 cm",
+    "10,0 µN"
+   ],
+   [
+    "18 nC",
+    "12,0 cm",
+    "202,2 µN"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „Abstand verdoppeln“ steht in der Statuszeile F = 62,4 µN. Vorher waren es 249,7 µN – das ist ein Viertel, nicht die Hälfte.",
+   "typische_fehler": [
+    "Antwort 2 („halb so groß“) wird gewählt: doppelter Abstand wird mit halber Kraft gleichgesetzt.",
+    "Die 249,7 µN werden abgeschrieben, weil der Wert oben in der Beispielzeile steht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "kleiner",
+    "62,4 µN"
+   ],
+   "typische_fehler": [
+    "„größer“ und „kleiner“ werden vertauscht, weil nur auf die Zahl 4 statt auf die Kraft geschaut wird.",
+    "Statt 62,4 µN wird 249,7 µN eingetragen (Zeile 1 und Zeile 2 der Tabelle verwechselt).",
+    "µN wird als „uN“ abgeschrieben – hier nur auf das Zeichen hinweisen, nicht als Fehler werten."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei 6,0 cm sind es 249,7 µN. Bei 12,0 cm sind es nur noch 62,4 µN. Der Abstand ist doppelt so groß. Die Kraft F ist aber nicht halb so groß, sondern nur ein Viertel so groß.",
+   "alternativen": [
+    "Rechnerisch begründet: 249,7 geteilt durch 4 ergibt ungefähr 62,4 – also ein Viertel. (Rechnen ist auf dieser Seite nicht verlangt, wird aber anerkannt.)",
+    "Mit der Hälfte argumentiert: Die Hälfte von 249,7 µN wäre viel mehr als 62,4 µN, also stimmt Nours Regel nicht.",
+    "Mit dem Bild argumentiert: Die Pfeile werden bei 12,0 cm viel kürzer als halb so lang."
+   ],
+   "typische_fehler": [
+    "Nours Satz wird nur wiederholt, ohne die zwei Werte zu nennen.",
+    "Es wird nur „ein Viertel“ geschrieben, ohne 249,7 µN und 62,4 µN zu vergleichen.",
+    "Die Ladung wird als Ursache genannt, obwohl sie in Zeile 1 und 2 gleich bleibt (10 nC)."
+   ]
+  },
+  "hilfe3_wort": "ein Viertel",
+  "schwache": [
+   "Nur die Zeilen 1 und 2 der Tabelle bearbeiten lassen; die Ladung erst in einer zweiten Runde verändern.",
+   "Die Beispielzeile gemeinsam laut lesen und die drei Zellen mit dem Finger am Bildschirm wiederfinden lassen, bevor etwas eingetragen wird.",
+   "Den Regler „Abstand“ nach dem Drücken von „Abstand verdoppeln“ nicht mehr anfassen lassen – sonst passen die Werte 10,0 µN und 202,2 µN nicht.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „62,4 µN“ dabei aus der eigenen Tabelle vorlesen.",
+   "Die grüne Probeladung am Bildschirm gemeinsam benennen und abhaken: Sie wird auf dieser Seite nicht gebraucht."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle bei 12,0 cm „Ladung je Kugel“ nacheinander auf 8 nC und auf 16 nC. Schreibe beide Kräfte auf (39,9 µN und 159,8 µN) und vergleiche sie.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung und ihre Kraftwirkung. Schwerpunkt E5 (Auswerten: Messwerte aus der Simulation ordnen und eine Regel daraus ablesen). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs3",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Spannung U in Volt (V) am Voltmeter ab und erklären, dass mehr Zellen mehr Volt geben und die Lampe dadurch heller leuchtet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Batteriehalter mit 1, 2 und 3 Zellen, Lämpchen und Voltmeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Bildschirm-Ergebnisse vorlesen oder als drei Karten zeigen: 1 Zelle → U = 1,5 V, Lampe schwach · 2 Zellen → U = 3 V, Lampe heller · 3 Zellen → U = 4,5 V, Lampe am hellsten. Alternativ dieselben drei Zeilen als Tabelle an die Tafel schreiben und die Zahlen 1,5 V + 1,5 V = 3 V daneben ausrechnen.",
+  "merksatz": [
+   "Volt",
+   "heller"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Zellen",
+    "3 V",
+    "heller"
+   ],
+   [
+    "3 Zellen",
+    "4,5 V",
+    "am hellsten"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet bei drei Zellen: Spannung U = 4,5 V (3 Zellen). Stärkerer Antrieb → mehr Strom → Lampe am hellsten.",
+   "typische_fehler": [
+    "Die Zahl 3 wird der Zahl der Zellen zugeordnet, deshalb wird „3 V“ angekreuzt.",
+    "1,5 V wird auch bei drei Zellen erwartet, weil nur die Aufschrift einer einzelnen Zelle gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,5 V",
+    "4,5 V"
+   ],
+   "typische_fehler": [
+    "1,5 V und 4,5 V werden vertauscht.",
+    "Statt 4,5 V wird 3 V eingesetzt, weil drei Zellen mit der Zahl 3 verbunden werden."
+   ]
+  },
+  "a3": {
+   "erwartung": "Mit zwei Zellen zeigt das Voltmeter 3 V. Mit einer Zelle sind es nur 1,5 V. Mehr Volt heißt: Die Lampe leuchtet heller. Sie hält nicht nur länger.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: bei 1 Zelle steht dort „Lampe schwach“, bei 2 Zellen „Lampe heller“.",
+    "Rechnung 1,5 V + 1,5 V = 3 V, verbunden mit dem Satz, dass die Lampe dabei heller wird."
+   ],
+   "typische_fehler": [
+    "Nur die Laufzeit wird beschrieben („hält doppelt so lang“), die Helligkeit fehlt.",
+    "Die Volt-Zahlen werden richtig genannt, aber nicht mit der Lampe verbunden."
+   ]
+  },
+  "hilfe3_wort": "heller (auch richtig: heller als mit einer Zelle)",
+  "schwache": [
+   "Zuerst nur 1 Zelle und 3 Zellen vergleichen; die mittlere Tabellenzeile erst danach ausfüllen.",
+   "Die Zahlenreihe 1,5 V – 3 V – 4,5 V gemeinsam laut lesen und 1,5 + 1,5 = 3 an der Tafel zeigen.",
+   "Spalte 3 als Ankreuz-Spalte anbieten: schwach / heller / am hellsten stehen schon da.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke den Knopf „Zurücksetzen“ (mit dem Kreispfeil davor). Sage vorher, welche Spannung danach am Voltmeter steht, und prüfe deine Vorhersage.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7), Basiskonzept Energie · Spannung U und Volt. Kompetenzen UF1, UF3, UF4, E6 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): UF1, UF3 und UF4 über Merksatz, Tabelle und Aufgabe 1; E6 über den Vergleich der drei Statuszeilen in Tabelle und Aufgabe 3; K1 über den Zuhause-Auftrag (Werte aus dem Alltag entnehmen und notieren). Der Merksatz „Das Voltmeter schließt man parallel an“ aus der Quellseite st3 bleibt fs5 vorbehalten – die Simulation spannung hat keinen Umschalter Reihe/parallel. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs4",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Stromstärke I in Ampere (A) am Amperemeter ab, ordnen die Werte 0,10 A, 0,30 A und 0,60 A der Größe nach und begründen, dass im offenen Stromkreis I = 0 A ist, weil die Ladungen keinen Weg mehr haben. Die Ladungen sind dabei nicht verbraucht, sie wandern nur nicht weiter.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: 4,5-V-Batterie, Lampe, Schalter und Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Bildschirm-Ergebnisse als vier Karten zeigen oder vorlesen: „Strom schwach“ → Stromstärke I = 0,10 A, Kreis geschlossen · „mittel“ → I = 0,30 A, Kreis geschlossen · „stark“ → I = 0,60 A, Kreis geschlossen · Knopf „Schalter: geschlossen“ gedrückt → „Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel.“ Als Tafelbild genügt dasselbe Schaltbild zweimal: einmal geschlossen mit 0,30 A, einmal offen mit 0 A. Ein echter Aufbau aus 4,5-V-Batterie, Lampe, Schalter und Amperemeter zeigt die vierte Karte live.",
+  "merksatz": [
+   "Ampere (A)",
+   "kein Strom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "0,30 A",
+    "geschlossen"
+   ],
+   [
+    "stark",
+    "0,60 A",
+    "geschlossen"
+   ],
+   [
+    "Schalter: geschlossen",
+    "0 A",
+    "offen"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach dem Drücken des Knopfes „Schalter: geschlossen“ meldet die Statuszeile: „Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel.“ Im Schaltbild steht dann 0 A am Messgerät.",
+   "typische_fehler": [
+    "0,10 A wird angekreuzt, weil ein kleiner Rest Strom im Kabel vermutet wird.",
+    "0,30 A wird angekreuzt, weil der Startwert der Simulation im Kopf bleibt.",
+    "0 A wird als „das Gerät zeigt nichts an“ gelesen statt als gemessene Null."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,60 A",
+    "geschlossen"
+   ],
+   "typische_fehler": [
+    "0,10 A und 0,60 A werden vertauscht: 0,10 gilt als größer, weil dort eine 10 steht.",
+    "„offen“ statt „geschlossen“ – die beiden Wörter werden verwechselt.",
+    "Die Schlussnull wird weggelassen und aus 0,60 A wird 0,6 A geschrieben; sachlich richtig, aber die Simulation zeigt 0,60 A."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im offenen Stromkreis fehlt der Weg für die Ladungen. Die Ladungen wandern nicht mehr weiter. Das Amperemeter zeigt 0 A. Der Strom wartet nicht im Kabel.",
+   "alternativen": [
+    "Verweis auf die Meldung der Simulation: „Der Kreis ist offen – es fließen keine Ladungen.“",
+    "Die Ladungen sind noch da, sie bewegen sich nur nicht mehr; verbraucht wird nichts.",
+    "Der Schalter macht eine Lücke in den Kreis, und durch eine Lücke kommt nichts hindurch."
+   ],
+   "typische_fehler": [
+    "„Der Strom ist alle“ – Strom wird als Vorrat gedacht, der aufgebraucht wird.",
+    "Jannis’ Satz wird nur wiederholt, ohne den fehlenden Weg zu nennen.",
+    "Die Batterie wird für leer erklärt, obwohl sie weiter angeschlossen ist."
+   ]
+  },
+  "hilfe3_wort": "0 A (auch richtig: null Ampere)",
+  "schwache": [
+   "Zuerst nur „Strom schwach“ und den Schalter vergleichen; „mittel“ und „stark“ erst danach ergänzen.",
+   "Die drei Werte 0,10 A, 0,30 A und 0,60 A groß auf Karten schreiben und der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und den Wert am Bildschirm wiederfinden lassen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Den Knopf gemeinsam suchen: Er trägt die Aufschrift „Schalter: geschlossen“ und öffnet den Kreis erst beim Drücken."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die richtige Antwort zur letzten Frage ab.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Stromstärke I und der offene/geschlossene Stromkreis. Kompetenz E2 aus der Quellseite st4. Die Messposition „in Reihe“ bleibt bewusst fs5 vorbehalten. Kompetenzcodes stehen nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs5",
+  "lernziel": "Die Schülerinnen und Schüler bauen in der Simulation das Amperemeter in Reihe und das Voltmeter parallel zur Lampe ein und begründen mit der Statuszeile, warum das Voltmeter in der Leitung die Lampe dunkel lässt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil mit Kleinspannung, Lampe, Amperemeter und Voltmeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Bildschirm-Meldungen als Ergebniskarten auslegen oder an die Tafel schreiben: (1) Amperemeter → „✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).“ · (2) Voltmeter, in Reihe → „✗ Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel.“ · (3) Voltmeter, parallel → „✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V).“ Dazu drei Skizzen an die Tafel: A mitten in der Leitung, V mitten in der Leitung, V neben der Lampe.",
+  "merksatz": [
+   "in Reihe",
+   "parallel"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Voltmeter",
+    "in Reihe",
+    "✗ Lampe bleibt dunkel"
+   ],
+   [
+    "Voltmeter",
+    "parallel",
+    "✓ misst 4,5 V"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile meldet nach dem Knopf „parallel“: ✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V). Das Voltmeter hängt neben der Lampe, nicht in der Leitung.",
+   "typische_fehler": [
+    "„In Reihe in die Leitung“ wird gewählt, weil beide Geräte gleich aussehen und das Amperemeter dort liegt.",
+    "„Direkt an die Batteriepole“ wird gewählt, weil der Strom scheinbar aus der Batterie kommt; die Simulation meldet dazu einen Kurzschluss."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "fließen",
+    "dunkel"
+   ],
+   "typische_fehler": [
+    "„in Reihe“ oder „parallel“ werden noch einmal eingesetzt, weil sie oben im Merksatz stehen.",
+    "Beide Lückenwörter werden vertauscht („Der Strom muss durch das Amperemeter dunkel.“) – hier Wortart und Satzsinn gemeinsam prüfen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das geht nicht, weil in der Leitung dann fast kein Strom fließt. Darum bleibt die Lampe dunkel. Jannis muss das Voltmeter parallel neben die Lampe hängen.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel.“",
+    "Jannis hat die beiden Geräte verwechselt: Nur das Amperemeter gehört in die Leitung.",
+    "Beschreibung statt Fachwort: Das Voltmeter muss mit zwei Kabeln links und rechts an die Lampe."
+   ],
+   "typische_fehler": [
+    "Nur der Fehler wird benannt („falsch angeschlossen“), der richtige Einbau fehlt.",
+    "„in Reihe“ und „parallel“ werden vertauscht, weil beide Geräte gleich aussehen.",
+    "Die Anzeige gilt als Beweis: Auch falsch eingebaut zeigt das Voltmeter eine Zahl (~4,5 V) – die Tilde bitte nicht als Teil der Zahl lesen lassen."
+   ]
+  },
+  "hilfe3_wort": "parallel",
+  "schwache": [
+   "Erst nur den Knopf „Amperemeter“ drücken und die Beispielzeile der Tabelle gemeinsam laut lesen; das Voltmeter folgt in einer zweiten Runde.",
+   "Zwei Wortkarten „in Reihe“ und „parallel“ auf den Tisch legen und zu den beiden Skizzen schieben lassen, bevor geschrieben wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen.",
+   "Auf die Knopf-Falle hinweisen: Der Bedienknopf heißt „parallel“, die Quiz-Antwort „Parallel zum Bauteil“ – gemeinsam einmal zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke im Quiz der Simulation die Antwort „Direkt an die Batteriepole“ und schreibe auf, was die Simulation dazu meldet.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Messgeräte für Stromstärke und Spannung. Kompetenzcodes (UF1, E5, K1, B2) stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs6",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei fester Spannung 4,5 V an drei Bauteilen den Widerstand R in Ohm (Ω) und die Stromstärke I ab und erklären daran: großer Widerstand, kleiner Strom. Die Berechnung R = U/I ist auf dieser Seite bewusst weggelassen und bleibt dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, Amperemeter, dicker Kupferdraht und Widerstandsdraht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen: „kleiner Widerstand“ → dicker Kupferdraht: Widerstand R = 3 Ω, bei U = 4,5 V fließt I = 1,50 A · „mittel“ → Glühdraht: Widerstand R = 15 Ω, bei U = 4,5 V fließt I = 0,30 A · „großer Widerstand“ → Widerstandsdraht: Widerstand R = 45 Ω, bei U = 4,5 V fließt I = 0,10 A. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Bauteilnamen stehen absichtlich nur hier, nicht auf der Schülerseite.",
+  "merksatz": [
+   "Widerstand",
+   "kleiner Strom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "kleiner Widerstand",
+    "3 Ω",
+    "1,50 A"
+   ],
+   [
+    "großer Widerstand",
+    "45 Ω",
+    "0,10 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet beim Knopf „großer Widerstand“: Widerstand R = 45 Ω. Bei U = 4,5 V fließt I = 0,10 A. Von 0,30 A auf 0,10 A wird der Strom also kleiner.",
+   "typische_fehler": [
+    "1,50 A wird gewählt, weil „groß“ mit „viel Strom“ gleichgesetzt wird (Sim-Rückmeldung: „✗ Ein größerer Widerstand macht den Strom nicht größer.“).",
+    "0,30 A wird gewählt: der Wert des Ausgangszustands bleibt im Kopf stehen (Sim: „✗ Der Strom ändert sich sehr wohl.“).",
+    "0,10 A wird für größer gehalten als 0,30 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,50 A",
+    "0,10 A"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht.",
+    "Statt der Stromstärke wird der Widerstand eingetragen (3 Ω, 45 Ω).",
+    "1,50 A wird als „einhundertfünfzig“ gelesen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein großer Widerstand bremst den Strom stark. Darum fließt weniger Strom. Bei 45 Ω sind es nur 0,10 A, bei 3 Ω dagegen 1,50 A. Die Spannung war jedes Mal 4,5 V.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: „Größerer Widerstand → kleinerer Strom“.",
+    "Verweis auf die eigene Tabelle: 15 Ω → 0,30 A, 3 Ω → 1,50 A, 45 Ω → 0,10 A – und die Spannung bleibt 4,5 V.",
+    "Bild vom Bremsen: Wer stärker bremst, wird nicht schneller."
+   ],
+   "typische_fehler": [
+    "Der Widerstand wird als Verstärker gedacht (Sim: „✗ Verstärken tut er den Strom nicht.“).",
+    "Es wird behauptet, der Widerstand erzeuge die Spannung (Sim: „✗ Spannung erzeugt die Quelle, nicht der Widerstand.“).",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "kleiner (auch richtig: schwächer, weniger)",
+  "schwache": [
+   "Zuerst nur die zwei Randfälle „kleiner Widerstand“ und „großer Widerstand“ vergleichen; die Zeile „mittel“ ist schon ausgefüllt.",
+   "Die drei Zahlen 1,50 – 0,30 – 0,10 vorher auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Das Zeichen Ω an der Tafel als gesprochenes Wort einführen: 15 Ω heißt „fünfzehn Ohm“. Sonst wird es als leeres Symbol abgeschrieben.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe die drei richtigen Antworten auf („Er hemmt den Strom“, „Kleiner“, „Ohm (Ω)“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrischer Widerstand. Kompetenzen UF1, UF2, UF3 und B2 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). UF4 hing an der Rechnung R = U/I und bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs7",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass ein Draht mehr Widerstand hat, wenn er länger oder dünner ist, und dass bei gleicher Länge und Dicke auch das Material mitentscheidet (Kupfer 20 Ω gegen Eisen 60 Ω). Sie erklären, dass bei fester Spannung 4,5 V durch den Draht mit mehr Widerstand weniger Strom fließt. „Widerstand“ ist aus fs6 bekannt und wird hier nur verwendet, nicht neu eingeführt; die Seite trägt kein neues Fachwort. Konstantan (180 Ω) und jede Rechnung entfallen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, Amperemeter, ein kurzes dickes und ein langes dünnes Drahtstück.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge: „Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.“ · „Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.“ · „Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.“ · „Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.“ Die Karten nacheinander an die Tafel heften und dabei laut sagen, was sich von Karte zu Karte geändert hat — immer nur EINE Angabe. Die Klasse füllt daraus die Tabelle. Die Kombination „kurz, dünn“ steht bewusst nicht in der Tabelle: Sie würde die Reihenfolge unterbrechen, weil sich gegenüber jeder Nachbarzeile zwei Angaben auf einmal ändern.",
+  "merksatz": [
+   "Widerstand",
+   "stärker"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Kupfer, lang, dick",
+    "10 Ω",
+    "0,45 A"
+   ],
+   [
+    "Kupfer, lang, dünn",
+    "20 Ω",
+    "0,23 A"
+   ],
+   [
+    "Eisen, lang, dünn",
+    "60 Ω",
+    "0,07 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Vor dem Drücken steht in der Statuszeile „Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.“ Nach dem Knopf „dünn“ steht dort „Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.“ Der dünnere Draht hat also mehr Widerstand: 10 Ω werden zu 20 Ω.",
+   "typische_fehler": [
+    "„dünn“ wird mit „weniger Widerstand“ gleichgesetzt — dünn klingt nach leicht und schnell.",
+    "5 Ω wird gewählt: Der Wert des Ausgangszustands bleibt im Kopf stehen, obwohl der Draht längst lang ist.",
+    "Die Knöpfe merken sich den Zustand. Wer vorher „lang“ vergessen hat, liest einen anderen Draht ab als gemeint: Vor dem Drücken muss in der Statuszeile „Kupfer, lang, dick“ stehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "60 Ω",
+    "0,07 A"
+   ],
+   "typische_fehler": [
+    "R und I werden vertauscht: Beide Zahlen stehen in demselben Satz der Statuszeile.",
+    "Die 4,5 V aus der Statuszeile werden als Stromstärke abgeschrieben — sie stehen dort mitten zwischen den beiden gesuchten Zahlen: „… R = 60 Ω → bei 4,5 V fließt I = 0,07 A.“",
+    "0,07 A wird für mehr gehalten als 0,23 A: reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ein langer und dünner Draht hat mehr Widerstand. Bei „Kupfer, lang, dünn“ zeigt die Simulation R = 20 Ω und I = 0,23 A. Bei „Kupfer, kurz, dick“ sind es nur 5 Ω, dafür fließen 0,90 A. Mit dem kurzen dicken Draht fließt also mehr Strom.",
+   "alternativen": [
+    "Argument nur über den Widerstand: 20 Ω sind viermal so viel wie 5 Ω, der lange dünne Draht bremst stärker.",
+    "Argument nur über den Strom: 0,90 A gegen 0,23 A bei derselben Spannung 4,5 V.",
+    "Verweis auf die Rückmeldung der Simulation: „Länger und dünner → mehr Widerstand.“",
+    "Bild vom Strohhalm aus dem Zuhause-Auftrag: Durch den kurzen dicken geht es leichter."
+   ],
+   "typische_fehler": [
+    "Es wird nur behauptet „der kurze ist besser“, ohne einen Wert aus der Tabelle zu nennen.",
+    "Länge und Dicke werden vertauscht: „dick bedeutet mehr Widerstand“.",
+    "Die Spannung wird für die Erklärung verantwortlich gemacht, obwohl sie in allen vier Zeilen 4,5 V beträgt.",
+    "Das Material wird zusätzlich genannt, obwohl beide Drahtstücke aus Kupfer sind — dann ist nicht mehr nur eine Größe verändert."
+   ]
+  },
+  "hilfe3_wort": "mehr (auch richtig: mehr Strom, stärkerer Strom, 0,90 A statt 0,23 A)",
+  "schwache": [
+   "Zuerst nur die beiden Randfälle vergleichen: „Kupfer, kurz, dick“ mit 5 Ω und „Kupfer, lang, dünn“ mit 20 Ω. Die Eisen-Zeile erst danach.",
+   "Den Knopf vor dem Start gemeinsam zeigen: Er stellt den Draht auf „Kupfer, kurz, dick“ zurück. Ohne ihn verlieren viele die Reihenfolge, weil die Knöpfe eingestellt bleiben.",
+   "Die Statuszeile laut in drei Teilen lesen: erst der Draht, dann R, dann I. Der Satz enthält mit 4,5 V eine Zahl mehr, als gebraucht wird.",
+   "Die vier Stromwerte 0,90 – 0,45 – 0,23 – 0,07 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen der Simulation. Richtig sind „Wenn er lang und dünn ist“, „Kupfer“ und „wird größer“. Wer danach noch Zeit hat, drückt „Konstantan“ und liest ab: R = 180 Ω und I = 0,03 A. Konstantan steht bewusst nicht auf der Schülerseite und darf hier dazukommen.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Widerstand eines Drahtes (Länge, Dicke, Material). Kompetenzen UF1, UF3, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108); die Quelle st7 trug UF4. E4 steckt in der Reihenfolge der Tabellenzeilen: Von Zeile zu Zeile wird immer nur EINE Größe verändert. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs8",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei festem Widerstand von 20 Ω zu zwei Spannungen (1,5 V und 3 V) die Stromstärke aus der Statuszeile ab und begründen daran: doppelte Spannung bedeutet ungefähr doppelt so viel Strom. Das ohmsche Gesetz U = R · I, das Wort „proportional“ und jede Rechnung sind auf dieser Seite bewusst weggelassen – fs8 führt laut freigegebenem Seitenplan KEIN neues Fachwort ein. Spannung U, Stromstärke I und Widerstand R sind aus fs3, fs4 und fs6 bekannt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil mit 1,5 V und 3 V, ein Widerstand mit 20 Ω und ein Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (nach „20 Ω“ und einmal „◀ weniger“): „Eingestellt: U = 1,5 V → I = 0,07 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.“ · Karte 2 (nach einmal „mehr ▶“): „Eingestellt: U = 3 V → I = 0,15 A · R = U/I = 20 Ω. Widerstand fest: 20 Ω.“ · Karte 3 (nach „10 Ω“): „Eingestellt: U = 3 V → I = 0,30 A · R = U/I = 10 Ω. Widerstand fest: 10 Ω.“ Die Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle (Karte 1 = Zeile 1, Karte 2 = Zeile 2, Karte 3 = Zeile 3). Der Zusatz „R = U/I“ steht auf den Karten, weil er wörtlich am Bildschirm steht – er wird auf dieser Seite nicht besprochen. Die Simulation hat KEINEN Regler: die Spannung springt nur über „◀ weniger“ und „mehr ▶“ in Schritten von 1,5 V.",
+  "merksatz": [
+   "doppelter Strom",
+   "0,15 A"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20 Ω",
+    "3 V",
+    "0,15 A"
+   ],
+   [
+    "10 Ω",
+    "3 V",
+    "0,30 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Nach „20 Ω“ und einmal „◀ weniger“ meldet die Statuszeile: U = 1,5 V → I = 0,07 A. Ein Druck auf „mehr ▶“ macht daraus: U = 3 V → I = 0,15 A. Der Strom steigt also von 0,07 A auf 0,15 A, der Widerstand bleibt 20 Ω.",
+   "typische_fehler": [
+    "„bleibt bei 0,07 A“ wird gewählt: fester Widerstand wird mit festem Strom verwechselt (Sim-Rückmeldung: „✗ Bei doppelter Spannung ändert sich der Strom.“).",
+    "„steigt auf 0,30 A“ wird gewählt: der Knopf „10 Ω“ war noch aktiv oder wurde zusätzlich gedrückt – 0,30 A gehört zu 10 Ω bei 3 V.",
+    "0,07 A wird für größer gehalten als 0,15 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,07 A",
+    "0,30 A"
+   ],
+   "typische_fehler": [
+    "Die beiden Werte werden vertauscht; 0,30 A gehört zu „10 Ω“, nicht zu „20 Ω“.",
+    "0,15 A wird eingetragen, weil es der auffälligste Wert der Seite ist (er steht schon im Merksatz).",
+    "Die Einheit A fehlt oder wird durch V ersetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei 1,5 Volt fließen 0,07 A. Bei 3 Volt fließen 0,15 A. Der Widerstand war beide Male 20 Ω. Doppelte Spannung bedeutet also ungefähr doppelt so viel Strom.",
+   "alternativen": [
+    "Nur mit der eigenen Tabelle argumentiert: von 0,07 A auf 0,15 A – das ist ungefähr das Doppelte.",
+    "Verweis auf die Rückmeldung der Simulation: „✓ Richtig! Doppelte Spannung → doppelter Strom (Proportionalität).“ Das Wort in Klammern wird auf dieser Seite nicht verlangt und muss nicht erklärt werden.",
+    "Antwort ohne Zahlen, aber mit klarer Richtung: Mehr Spannung drückt mehr Strom durch dasselbe Bauteil. Als Zwischenschritt annehmen, dann nach einer Zahl aus der Tabelle fragen."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen.",
+    "Der Widerstand wird für verändert gehalten; er bleibt in beiden Zeilen 20 Ω.",
+    "0,07 · 2 = 0,14 wird gerechnet und die Anzeige 0,15 A für falsch erklärt – siehe Rundungshinweis unten."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: doppelt so groß, stärker, mehr)",
+  "schwache": [
+   "Zuerst nur Zeile 1 und Zeile 2 vergleichen – dort steht beide Male 20 Ω. Zeile 3 mit dem Knopf „10 Ω“ erst danach angehen.",
+   "Die Knopffolge vorher an der Tafel notieren: „20 Ω“ → „◀ weniger“ → „mehr ▶“ → „10 Ω“. Die Simulation hat keinen Regler; wer 1,5 V „einstellen“ soll, sucht sonst vergeblich.",
+   "Die drei Zahlen 0,07 – 0,15 – 0,30 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "Rundungshinweis für die Lehrkraft: Die Anzeige rundet. 0,07 A · 2 ergibt 0,14 A, die Simulation zeigt bei 3 V aber 0,15 A. Deshalb steht auf der Schülerseite überall „ungefähr doppelt so viel“ und nie „genau doppelt“. Wer nachrechnet, hat gut gearbeitet: die Rundung benennen, nicht wegdiskutieren."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die Frage mit den drei Antwortknöpfen „Sie bleibt gleich“ / „Sie verdoppelt sich“ / „Sie halbiert sich“ und schreibe die Rückmeldung ab. Wer mag, drückt danach „20 Ω“ und dann „Messpunkt“; die Simulation trägt dann 3 V | 0,15 A | 20 Ω in ihre eigene Tabelle ein. Ohne den Druck auf „20 Ω“ steht die Simulation nach Schritt 3 noch auf 10 Ω und trägt 3 V | 0,30 A | 10 Ω ein.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Zusammenhang von Spannung und Stromstärke bei festem Widerstand. Kompetenzen UF1, E6 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan hier einzeln gesichert und sitzt bewusst im Selbstcheck („Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen“), gestützt durch Aufgabe 3. UF4 und K3 hingen am ohmschen Gesetz U = R · I und an der Rechnung I = U/R; beides bleibt dem Regelheft gts8 vorbehalten, weil fs8 kein neues Fachwort einführen darf. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs9",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass sich in der Reihenschaltung die beiden Widerstände zum Gesamtwiderstand addieren (R_ges = R₁ + R₂) und dass der Strom an jeder Stelle gleich groß ist. Sie erkennen: größerer Gesamtwiderstand, kleinerer Strom. Die Teilspannungen U₁ und U₂ sowie jede Rechnung mit I = U / R_ges bleiben bewusst dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 6 V, zwei Widerstände zum Hintereinanderschalten, Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, immer bei 6 V: R₁ = 10 Ω, R₂ = 20 Ω → „R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A.“ · R₁ = 20 Ω, R₂ = 20 Ω → „R_ges = 20 Ω + 20 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A.“ · R₁ = 30 Ω, R₂ = 30 Ω → „R_ges = 30 Ω + 30 Ω = 60 Ω. Strom (überall gleich) I = 0,10 A.“ Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Teilspannungen U₁ und U₂, die am Bildschirm mitlaufen, stehen absichtlich nicht auf der Schülerseite.",
+  "merksatz": [
+   "Reihenschaltung",
+   "Gesamtwiderstand"
+  ],
+  "tabelle_erwartet": [
+   [
+    "R₁ = 20 Ω, R₂ = 20 Ω",
+    "40 Ω",
+    "0,15 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 30 Ω",
+    "60 Ω",
+    "0,10 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach dem Druck auf 20 Ω in der Knopfreihe „R₁:“ meldet die Statuszeile: „R_ges = 20 Ω + 20 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A.“ Die Widerstände werden addiert, nicht subtrahiert.",
+   "typische_fehler": [
+    "Es wird subtrahiert (20 Ω − 20 Ω = 0 Ω); die Sim antwortet auf den passenden Quizknopf mit „✗ Subtrahiert wird nichts.“",
+    "R_ges wird für kleiner oder gleich R₁ gehalten; Sim-Rückmeldung: „✗ In Reihe ist R_ges immer größer, nicht kleiner.“",
+    "Gedrückt wird die Reihe „R₂:“ statt „R₁:“. R₂ steht schon auf 20 Ω, die Anzeige bleibt bei 10 Ω + 20 Ω = 30 Ω und passt zu keiner Antwort."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "60 Ω",
+    "0,10 A"
+   ],
+   "typische_fehler": [
+    "50 Ω und 0,12 A aus dem gelösten Beispiel abgeschrieben (das gilt für 30 Ω + 20 Ω).",
+    "Einheiten vertauscht: „60 A“ und „0,10 Ω“.",
+    "0,10 A wird für mehr gehalten als 0,20 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a3": {
+   "erwartung": "In der Reihenschaltung fließt der Strom nur auf einem Weg. Er ist an jeder Stelle gleich groß. Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt das Messgerät 0,10 A, vor und hinter jedem Widerstand. Strom wird nicht verbraucht. Die beiden Widerstände bremsen ihn gemeinsam, deshalb fließt insgesamt weniger als vorher.",
+   "alternativen": [
+    "Verweis auf die Simulation: Der Quizknopf „Überall gleich“ bekommt die Rückmeldung „✓ Richtig! Der Strom ist überall gleich groß.“",
+    "Verweis auf die eigene Tabelle: Es gibt in jeder Zeile nur EINEN Stromwert, nicht zwei.",
+    "Bild vom einen Weg: Alle Autos auf einer einspurigen Straße fahren gleich oft an jeder Stelle vorbei; unterwegs verschwindet keines."
+   ],
+   "typische_fehler": [
+    "Strom wird als Vorrat gedacht, der unterwegs aufgebraucht wird (Sim: „✗ Er fließt durch alle Bauteile gleich.“).",
+    "Verwechslung mit der Spannung: Die Teilspannungen sind wirklich verschieden (am Bildschirm z. B. U₁ = 3,6 V und U₂ = 2,4 V bei 30 Ω + 20 Ω). Wer das gesehen hat, überträgt es fälschlich auf den Strom.",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Messwert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "genauso (auch richtig: gleich, gleich viel)",
+  "schwache": [
+   "Vorher auf die Beschriftungen „R₁:“ und „R₂:“ links neben den beiden Knopfreihen zeigen. Wer sie übersieht, verstellt den falschen Widerstand – die häufigste Fehlbedienung dieser Seite. Wer mag, markiert die Reihen zusätzlich mit farbigen Klebepunkten.",
+   "Nur Zeile 1 und Zeile 3 vergleichen lassen (30 Ω → 0,20 A gegen 60 Ω → 0,10 A). Die Halbierung ist viel deutlicher zu sehen als der Schritt von 0,20 A auf 0,15 A.",
+   "Die Zahlen 0,20 – 0,15 – 0,10 auf Kärtchen der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "Die beiden neuen Wörter laut in ihre Teile zerlegen: Reihe + Schaltung, gesamt + Widerstand. Danach einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe auf, welche Antworten ein Häkchen bekommen („R_ges = R₁ + R₂“, „Überall gleich“, „Er wird kleiner“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Reihenschaltung von Widerständen. Kompetenzen UF1, UF2, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Teilspannungen und die Rechnung I = U / R_ges hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs10",
+  "lernziel": "Die Schülerinnen und Schüler lesen in der Parallelschaltung die beiden Ströme I₁ und I₂ sowie den Gesamtstrom I aus der Statuszeile ab und erklären an eigenen Messwerten: Die zwei Ströme addieren sich zum Gesamtstrom, I = I₁ + I₂. Der Gesamtwiderstand steht zwar daneben, wird hier aber bewusst weggelassen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 4,5 V, zwei Widerstände 10 Ω und 20 Ω, drei Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen (die Quelle liefert immer 4,5 V, R_ges auf den Karten weglassen): 1) R₁ = 10 Ω, R₂ = 20 Ω → I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A · 2) R₁ = 30 Ω, R₂ = 20 Ω → I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A · 3) R₁ = 30 Ω, R₂ = 10 Ω → I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Dazu die Zeile unter dem Sim-Bild: „I = I₁ + I₂ = 0,68 A“.",
+  "merksatz": [
+   "Parallelschaltung",
+   "Gesamtstrom"
+  ],
+  "tabelle_erwartet": [
+   [
+    "R₁ = 30 Ω, R₂ = 20 Ω",
+    "I₁ = 0,15 A, I₂ = 0,23 A",
+    "0,38 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 10 Ω",
+    "I₁ = 0,15 A, I₂ = 0,45 A",
+    "0,60 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Nachgerechnet: 0,15 A + 0,15 A = 0,30 A.",
+   "typische_fehler": [
+    "0,15 A: Die Regel der Reihenschaltung („überall derselbe Strom“) wird übertragen. Sim: „✗ Der Gesamtstrom ist die Summe der Zweigströme.“",
+    "0,00 A: Die Ströme werden voneinander abgezogen. Sim: „✗ Subtrahiert wird nichts.“ Andere halbieren, weil „teilen“ als „halbieren“ gelesen wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,23 A",
+    "0,38 A"
+   ],
+   "typische_fehler": [
+    "0,15 A und 0,23 A vertauscht: Es wurde die falsche Knopfreihe gedrückt – beide Reihen sind gleich beschriftet.",
+    "Statt zu addieren wird subtrahiert: 0,23 A − 0,15 A = 0,08 A.",
+    "R₁ = 20 Ω mit R₂ = 20 Ω nicht einstellen lassen: Die Anzeige rundet dort auf I = 0,45 A, nachgerechnet wären es 0,23 A + 0,23 A = 0,46 A. Deshalb fehlt diese Einstellung auf der Schülerseite."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Gesamtstrom ist größer als der Strom auf einem einzelnen Weg. In meiner Tabelle fließen 0,15 A und 0,23 A. Zusammen sind das 0,38 A. Der Strom wird nicht weniger. Er verteilt sich nur auf zwei Wege.",
+   "alternativen": [
+    "Verweis auf die Antwortknöpfe der Simulation: Richtig ist „I = I₁ + I₂“, die Rückmeldung lautet „✓ Richtig! Die Zweigströme addieren sich.“",
+    "Bild von der zweiten Tür: Öffnet sich ein zweiter Ausgang, kommen insgesamt mehr Leute heraus, nicht weniger."
+   ],
+   "typische_fehler": [
+    "Der Strom wird als Vorrat gedacht, der sich beim Teilen aufbraucht. Strom wird nicht verbraucht, er verteilt sich nur.",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: mehr, stärker)",
+  "schwache": [
+   "Zuerst nur die Beispielzeile und die zweite Tabellenzeile bearbeiten; die dritte Zeile ist freiwillig.",
+   "Die zwei Knopfreihen gemeinsam am Beamer suchen, bevor gedrückt wird: Vor der oberen Reihe steht „R₁:“, vor der unteren „R₂:“. Die Knopfaufschriften sind in beiden Reihen gleich.",
+   "Das Tiefgestellte einmal laut klären: I₁ heißt „I eins“, I₂ heißt „I zwei“. Die Addition 0,15 + 0,23 an der Tafel untereinander schreiben lassen – das Rechnen mit Komma ist hier die Hürde, nicht die Physik."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Fragen. Schreibe die richtige Antwort zum Strom auf („I = I₁ + I₂“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Parallelschaltung und Stromstärke im verzweigten Stromkreis. Kompetenzen UF1, UF2, UF3 und E2 (Heft 3108). Der Gesamtwiderstand braucht die Kehrwertformel und bleibt dem Regelheft gts8 vorbehalten. Codes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs11",
+  "lernziel": "Die Schülerinnen und Schüler lesen im Bild der Simulation die drei Werte Wandern (0,0490 mm/s), Zappeln (1 570 000 m/s) und Signal (200 000 000 m/s) ab und erklären damit, warum die Lampe sofort leuchtet, obwohl die Elektronen sehr langsam wandern. Die Formel v = I / (n · A · e) und jede Umrechnung von Sekunden in Stunden sind auf dieser Seite bewusst weggelassen und bleiben dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Werte aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: ein langer Gartenschlauch, der schon voll Wasser ist, und ein Wasserhahn.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Fünf Ergebniskarten im Wortlaut des Bildschirms zeigen oder vorlesen. Zustand: Knopf „Leselampe“, Bildtext „I = 1,0 A · A = 1,50 mm²“. Karte 1 „Zappeln: 1 570 000 m/s“ · Karte 2 „Wandern: 0,0490 mm/s“ · Karte 3 „Signal: 200 000 000 m/s – die Lampe geht sofort an“. Karte 4 aus der Statuszeile: „Für einen Meter Kabel braucht ein Elektron damit 20406 Sekunden – das sind 5,7 Stunden.“ Karte 5 für das gelöste Beispiel: Knopf „Wasserkocher“, Bildtext „I = 9,0 A · A = 1,50 mm²“ → „Wandern: 0,4410 mm/s“. Karten 1 bis 3 nebeneinander an die Tafel heften; die Klasse füllt daraus die Tabelle. Karte 4 erst zu Aufgabe 2 aufdecken.",
+  "merksatz": [
+   "langsam",
+   "Signal"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Zappeln",
+    "1 570 000 m/s",
+    "schnell"
+   ],
+   [
+    "Signal",
+    "200 000 000 m/s",
+    "schnell"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Im Bild stehen die drei Werte untereinander: „Zappeln: 1 570 000 m/s“, „Wandern: 0,0490 mm/s“, „Signal: 200 000 000 m/s – die Lampe geht sofort an“. Das Wandern ist der mit Abstand kleinste Wert, das Signal der größte. Also stimmt nur Aussage 2.",
+   "typische_fehler": [
+    "Aussage 1 wird gewählt: „sofort“ wird mit „gleich schnell“ gleichgesetzt – die Lampe geht sofort an, also müssten auch die Elektronen sofort da sein.",
+    "Aussage 3 wird gewählt: Zappeln und Wandern werden verwechselt, weil beides die Elektronen betrifft. Die Simulation trennt es ausdrücklich: „Zappeln ist nicht Wandern.“",
+    "mm/s und m/s werden nicht unterschieden. 0,0490 gilt dann als großer Wert, weil vier Ziffern dastehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,7 Stunden",
+    "1 570 000 m/s"
+   ],
+   "typische_fehler": [
+    "„20406 Sekunden“ wird eingetragen statt „5,7 Stunden“ – beide Zahlen stehen im selben Satz der Statuszeile. Beides meint dieselbe Zeit; die Wortbank gibt die Stundenform vor.",
+    "Die beiden Wortbank-Einträge werden vertauscht, „5,7 Stunden“ landet beim Zappeln.",
+    "„1 570 000 m/s“ wird ohne Einheit abgeschrieben oder zu „1570“ verkürzt.",
+    "Die Lücke wird mit „0,0490 mm/s“ gefüllt: Wandern und Zappeln werden gleichgesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Draht ist schon voller Elektronen. Sie wandern nur 0,0490 mm/s, also sehr langsam. Das Signal ist mit 200 000 000 m/s sofort in der ganzen Leitung. Es schiebt auch die Elektronen in der Lampe an. Kein Elektron muss die drei Meter bis zur Lampe fahren.",
+   "alternativen": [
+    "Bild vom Gartenschlauch (steht so in der Simulation): Der Schlauch ist schon voll Wasser. Drehst du den Hahn auf, kommt vorne sofort Wasser – aber nicht das, was du gerade eingefüllt hast.",
+    "Verweis auf die eigene Tabelle: 0,0490 mm/s beim Wandern gegen 200 000 000 m/s beim Signal.",
+    "Verweis auf die Statuszeile: „Weil nicht das einzelne Elektron ankommen muss. Der Anstoß läuft durch die ganze Leitung – mit rund 200 000 km/s.“ Achtung: Die Statuszeile sagt „Anstoß“, das Bild und die Schülerseite sagen durchgehend „Signal“. Beim Vorlesen bitte „Signal“ sagen, sonst stehen zwei Namen für dieselbe Sache im Raum.",
+    "Verweis auf Aufgabe 2: Ein Elektron braucht für einen Meter Kabel 5,7 Stunden. So lange wartet niemand auf das Licht."
+   ],
+   "typische_fehler": [
+    "„Die Elektronen sind eben superschnell“ wird nur wiederholt; kein Wert aus der Tabelle wird genannt.",
+    "Das Zappeln wird als Erklärung genommen: „Sie zappeln ja mit 1 570 000 m/s.“ Das Zappeln geht kreuz und quer und bringt kein Elektron voran.",
+    "Es wird gesagt, der Strom oder die Ladung werde in der Lampe verbraucht. Ladung wird nicht verbraucht: Die Elektronen sind vorher und nachher da, sie wandern nur.",
+    "Der Draht wird als leer gedacht: Die Elektronen müssten erst vom Netzteil bis zur Lampe geschickt werden."
+   ]
+  },
+  "hilfe3_wort": "fahren (auch richtig: wandern, zurücklegen, laufen)",
+  "schwache": [
+   "Zuerst nur zwei Zeilen vergleichen lassen: „Wandern“ und „Signal“. Die Zeile „Zappeln“ erst danach ausfüllen, sonst stehen drei Größenordnungen gleichzeitig auf dem Tisch.",
+   "Die drei Werte vorher als Kärtchen der Größe nach ordnen lassen. Der Vergleich 0,0490 mm/s gegen 200 000 000 m/s ist die eigentliche Hürde, nicht die Physik.",
+   "mm/s und m/s an der Tafel als gesprochene Wörter einführen: „Millimeter je Sekunde“ und „Meter je Sekunde“. Sonst wird das kleine m überlesen.",
+   "Die Bedienreihenfolge fest vorgeben: erst „Leselampe“ drücken, dann ablesen. Wer „Handy-Ladegerät“ drückt, sieht im Bild „I = 0,5 A · A = 0,75 mm²“; das Wandern bleibt dabei bei 0,0490 mm/s. Die Tabelle stimmt dann zwar, die untere Bildzeile passt aber nicht zum Beispiel.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen; „1 570 000 m/s“ dabei laut mitsprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Wasserkocher“ und lies in der Statuszeile ab, wie lange ein Elektron jetzt für einen Meter Kabel braucht (2267 Sekunden – das sind 0,6 Stunden). Vergleiche mit den 5,7 Stunden bei der Leselampe und schreibe einen Satz dazu.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Bewegung der Elektronen im Leiter, Ladung wird nicht verbraucht. Kompetenzen UF1, UF2, E5 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): E5 über das Ordnen der drei Werte in der Tabelle, E6 über die Modellgrenze (das Wandern ist im Bild stark beschleunigt gezeichnet). UF4 und K3 hingen an der Formel v = I / (n · A · e) und an der Rechnung „3 m bei 0,0490 mm/s“; beides bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs12",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, wie lange der Donner aus 1,0 km, 2,0 km und 3,0 km bis zu ihnen braucht. Sie erklären: Blitz und Donner starten zur gleichen Zeit, das Licht ist sofort da, der Donner läuft nur mit 343 m/s und kommt darum später an. Die Feldstärke, die Schwelle 300 kV/m, die Einheit kV/m und jede eigene Rechnung mit t = s / v bleiben dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: eine Stoppuhr, mit der die Klasse 2,92 s, 5,83 s und 8,75 s einmal laut abzählt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen; eingestellt wird nur der Regler „Entfernung des Gewitters“. 1,0 km → „t = s / v = 1000 m / 343 m/s = 2,92 s“ und „Das Licht braucht für dieselbe Strecke nur 3 Millionstel Sekunden.“ · 2,0 km → „t = s / v = 2000 m / 343 m/s = 5,83 s“ und „Das Licht braucht für dieselbe Strecke nur 7 Millionstel Sekunden.“ · 3,0 km → „t = s / v = 3000 m / 343 m/s = 8,75 s“ und „Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden.“ Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Abschnitte 1 bis 3 der Statuszeile (Ladungstrennung, Schwelle 300 kV/m, 30 kA und 30.000 K) bleiben abgedeckt – sie stehen absichtlich nicht auf der Schülerseite.",
+  "merksatz": [
+   "sofort",
+   "langsamer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2,0 km",
+    "5,83 s",
+    "7 Millionstel Sekunden"
+   ],
+   [
+    "3,0 km",
+    "8,75 s",
+    "10 Millionstel Sekunden"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Bei 3,0 km meldet Abschnitt 4 der Statuszeile „t = s / v = 3000 m / 343 m/s = 8,75 s“ und darunter „Das Licht braucht für dieselbe Strecke nur 10 Millionstel Sekunden.“ Die 8,75 s gehören also zum Donner, nicht zum Licht.",
+   "typische_fehler": [
+    "Antwort 0 wird gewählt: Die beiden Zeiten sind vertauscht. Die Sätze sehen fast gleich aus, nur das Subjekt ist verschieden – für DaZ-Lernende die häufigste Falle dieser Seite.",
+    "Antwort 1 wird gewählt: Licht und Donner gelten als gleich schnell, weil beide „zur gleichen Zeit starten“. Starten und Ankommen werden verwechselt.",
+    "Die Zeit wird am Regler gesucht statt in Abschnitt 4; der Regler zeigt nur „Entfernung des Gewitters: 3,0 km“."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,83 s",
+    "10 Millionstel Sekunden"
+   ],
+   "typische_fehler": [
+    "2,92 s aus der Beispielzeile abgeschrieben; dieser Wert gilt für 1,0 km, nicht für 2,0 km.",
+    "„5,83 km“ statt „5,83 s“ – die Einheit des Reglers wird mitgenommen.",
+    "10 Millionstel Sekunden werden für länger gehalten als 8,75 s, weil 10 größer ist als 8,75."
+   ]
+  },
+  "a3": {
+   "erwartung": "Blitz und Donner starten zur gleichen Zeit. Der Donner entsteht nicht später. Das Licht ist sofort bei uns, der Donner läuft nur mit 343 m/s. Bei 3,0 km braucht er 8,75 s. Darum hören wir ihn später, obwohl er gleichzeitig entstanden ist.",
+   "alternativen": [
+    "Verweis auf die eigene Tabelle: Die Zeit des Donners wächst mit der Entfernung (2,92 s · 5,83 s · 8,75 s), die Zeit des Lichts bleibt winzig.",
+    "Verweis auf Abschnitt 4 der Statuszeile: „Die heiße Luft dehnt sich schlagartig aus. Das ist der Knall.“ Der Knall gehört zum Blitz selbst.",
+    "Eigenes Bild: Ein Feuerwerk sieht man sofort, den Knall hört man später – losgegangen ist es trotzdem nur einmal."
+   ],
+   "typische_fehler": [
+    "Der Unterschied zwischen „entstehen“ und „ankommen“ wird nicht gemacht; die Antwort wiederholt Jannis' Satz nur mit anderen Wörtern.",
+    "Die Behauptung wird bloß verneint („stimmt nicht“), ohne eine Zeit aus der Tabelle zu nennen.",
+    "Der Donner gilt als etwas, das der Blitz erst danach auslöst. Richtig ist: Derselbe Blitz macht Licht und Knall im selben Augenblick."
+   ]
+  },
+  "hilfe3_wort": "langsamer (auch richtig: langsam, langsamer unterwegs)",
+  "schwache": [
+   "Den Regler „Feld zwischen Wolke und Boden“ vorher einmal auf 310 stellen (Knopf „knapp darüber“) und danach nicht mehr anfassen. Er gehört zu einem anderen Lernziel und lenkt sonst ab.",
+   "Zuerst nur 1,0 km und 3,0 km vergleichen lassen (2,92 s gegen 8,75 s); die Zeile 2,0 km später ergänzen.",
+   "Die dritte Spalte „Wie lange braucht das Licht?“ zunächst abdecken. Erst wenn die Donner-Spalte steht, den Vergleich anschließen.",
+   "Die drei Zeiten 2,92 s – 5,83 s – 8,75 s auf Kärtchen der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "„Millionstel Sekunden“ gemeinsam laut lesen und mit einem Fingerschnippen vergleichen: kürzer als jedes Schnippen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke in der Simulation den Knopf „knapp darüber“ und beobachte die Anzeige „Zählen: … von 8,75 s“. Schreibe auf, bei welcher Sekunde der Donner ankommt.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gewitter, Blitz und Donner. Kompetenzen UF1, E2, E5 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Feldstärke, die Durchbruchschwelle 300 kV/m und die Entfernungsbestimmung mit t = s / v hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fs13",
+  "lernziel": "Die Schülerinnen und Schüler zählen die Ströme mehrerer Geräte an einer Steckdose zusammen, vergleichen den Gesamtstrom mit der Grenze der Sicherung (16 A) und erklären, dass die Sicherung den Stromkreis unterbricht, bevor die Leitung in der Wand heiß wird. Die Rechnung P = U · I aus st13 entfällt vollständig. Die Leistungs-Simulation liefert nur den kurzen Anwendungsgedanken „nicht jedes Gerät zieht gleich viel Strom“ im Zuhause-Auftrag – ohne eigene Aufgabe und ohne das Wort Leistung auf der Schülerseite.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. KEIN Schülerversuch an der Steckdose – 230 V sind lebensgefährlich. Wenn überhaupt, dann als Demonstration mit ungefährlicher Kleinspannung: Netzteil, Feinsicherung im Halter, zwei bis drei kleine Verbraucher.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in dieser Reihenfolge: „1 Gerät → 6 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.“ · „2 Geräte → 12 A. Das ist unter der Sicherungsgrenze (16 A) – der Strom fließt sicher.“ · „3 Geräte → 18 A. Das ist mehr als die Sicherung (16 A) erlaubt! Die Sicherung hat ausgelöst und den Kreis unterbrochen – so wird ein Brand verhindert.“ Daneben ein Tafelbild der Sicherung mit der Aufschrift „16 A“ und die Bildtexte „Strom: 6 A“ und „Strom: 12 A“. Die Klasse füllt daraus die Tabelle. Der Warnhinweis der Simulation gehört an die Tafel dazu: „Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!“ Die dritte Karte ist nachgemessen (simcheck/werte.js); der übliche simfakten-Dump erreicht diesen Zustand nicht.",
+  "merksatz": [
+   "addieren sich",
+   "Sicherung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2 Geräte",
+    "12 A",
+    "Sie lässt den Strom fließen."
+   ],
+   [
+    "3 Geräte",
+    "18 A",
+    "Sie unterbricht den Stromkreis."
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach zweimaligem Drücken von „Gerät anschließen“ meldet die Statuszeile: „3 Geräte → 18 A. Das ist mehr als die Sicherung (16 A) erlaubt! Die Sicherung hat ausgelöst und den Kreis unterbrochen – so wird ein Brand verhindert.“ Rechenweg der Lerngruppe: 6 A + 6 A + 6 A = 18 A, und 18 A ist mehr als 16 A.",
+   "typische_fehler": [
+    "Die falsche Vermutung von Seite A wird festgehalten: Jedes Gerät habe seinen eigenen Strom, also passiere nichts. Die Summe 6 + 6 + 6 = 18 A widerlegt das.",
+    "6 A wird in jede Zeile geschrieben: Die Geräte werden gezählt, die Ströme aber nicht addiert.",
+    "Nach dem Auslösen wird weiter „Gerät anschließen“ gedrückt, ohne „Sicherung zurücksetzen“ zu benutzen. Die Meldung bleibt dieselbe und wirkt wie ein Fehler des Geräts."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "18 A",
+    "unterbrochen"
+   ],
+   "typische_fehler": [
+    "„16 A“ statt „18 A“ eingesetzt: Die Grenze der Sicherung wird mit dem gemessenen Strom verwechselt.",
+    "„12 A“ aus Zeile 2 der Tabelle abgeschrieben.",
+    "„addieren sich“ landet in der zweiten Lücke, weil es das erste Wort der Wortbank ist."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei zu vielen Geräten wird der Strom größer als 16 A. So ein großer Strom macht das Kabel in der Wand heiß. Die Sicherung unterbricht den Stromkreis vorher. Dann kann kein Brand entstehen. Die Sicherung schützt die Leitung, nicht das einzelne Gerät.",
+   "alternativen": [
+    "Verweis auf die Simulation: Der Antwortknopf „Sie unterbricht den Stromkreis“ bekommt die Rückmeldung „✓ Richtig! Sie unterbricht den Kreis und schützt vor Brand.“",
+    "Verweis auf die eigene Tabelle: 18 A ist mehr als 16 A – deshalb steht in Zeile 3 „Sie unterbricht den Stromkreis.“",
+    "Antwort ohne Fachwörter: Die Sicherung gibt mit Absicht als Erste nach. So bleibt das Kabel in der Wand kühl."
+   ],
+   "typische_fehler": [
+    "Die Sicherung wird als Schutz für das einzelne Gerät gedacht, nicht für die Leitung in der Wand.",
+    "„Damit nichts kaputtgeht“ – ohne die Kette großer Strom → heißes Kabel → Brand.",
+    "Die Frage wird mit dem Merksatz beantwortet (Ströme addieren sich), die Erwärmung des Kabels fehlt.",
+    "Eine stärkere Sicherung (25 A) wird als Lösung vorgeschlagen. Hier gegensteuern: Dann fließt noch mehr Strom durch dasselbe Kabel."
+   ]
+  },
+  "hilfe3_wort": "Brand (auch richtig: Feuer)",
+  "schwache": [
+   "Sechs gleiche Kärtchen mit „6 A“ auslegen. Für jedes angeschlossene Gerät ein Kärtchen dazulegen und laut mitzählen: 6, 12, 18.",
+   "Die Grenze auf einen roten Streifen schreiben („16 A“) und neben die Kärtchenreihe legen. Sobald die Reihe über den Streifen hinausragt, löst die Sicherung aus.",
+   "Vor Aufgabe 2 nur die zwei Zahlen 16 A und 18 A nebeneinanderlegen: Welche ist größer? Erst danach den Lückentext lesen.",
+   "Das Wort Sicherung einmal abschreiben lassen und durchgängig benutzen – nie „Schalter“, „Automat“ oder „Stecker“ dafür sagen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Gerät anschließen“ ein viertes und ein fünftes Mal und schreibe die beiden Ströme auf (24 A und 30 A). Die Meldung der Sicherung bleibt dabei dieselbe. Drücke danach „Sicherung zurücksetzen“ und beantworte die drei Fragen der Simulation.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gefahren des elektrischen Stroms und Schutzmaßnahmen. Kompetenzen UF1, UF4, E4 und B3 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). B3 hängt im ganzen Band allein an dieser Seite; der Erklär-Slot gehört deshalb der Sicherung allein (Seitenplan, gesicherte Einzelträger-Kompetenzen). K1 wird über den Zuhause-Auftrag eingelöst – bewusst ohne den Sicherungskasten, den die Zielgruppe nicht öffnen soll. Die Leistungsrechnung P = U · I aus st13 bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fb1",
+  "lernziel": "Die Schülerinnen und Schüler entscheiden bei gleicher Fahrzeit, welches von zwei Autos schneller ist: Wer in der gleichen Zeit die größere Strecke zurücklegt, hat die größere Geschwindigkeit. Sie widerlegen damit die Fehlvorstellung „das Größere ist schneller“ und die Fehlvorstellung „die Strecke allein entscheidet“. Gerechnet wird hier nicht; v = s / t folgt erst auf fb2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: ein Flur, Schulhof oder Gehweg und eine Person, die „los“ und „stopp“ ruft.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (Auto A mittel, Auto B schnell – so startet die Simulation): „Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Karte 2 (Auto A schnell, Auto B schnell): „Beide Autos sind gleich schnell – sie kommen gleich weit.“ Karte 3 (Auto A schnell, Auto B langsam): „Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Die Simulation setzt vor die Meldung einen roten Punkt für Auto A und einen blauen für Auto B; dieselben Farben stehen an den zwei Knopfreihen. Dazu an die Tafel zwei gleich lange Zeitpfeile untereinander zeichnen und darunter zwei verschieden lange Streckenpfeile. Zahlenwerte zeigt diese Simulation nicht – auf der Seite wird deshalb nichts gerechnet und nichts abgelesen außer der Meldung.",
+  "merksatz": [
+   "schneller",
+   "Geschwindigkeit"
+  ],
+  "tabelle_erwartet": [
+   [
+    "schnell",
+    "schnell",
+    "beide gleich schnell"
+   ],
+   [
+    "schnell",
+    "langsam",
+    "Auto A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Bei Auto A schnell und Auto B mittel meldet die Statuszeile: „Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Diese Einstellung steht bewusst nicht in der Tabelle; Zeile 3 (Auto B langsam) liefert dieselbe Meldung.",
+   "typische_fehler": [
+    "Antwort 3 wird gewählt, weil Auto B in Zeile 1 der Tabelle vorne lag. Die Einstellung hat sich aber geändert.",
+    "Antwort 2 wird gewählt: „Beide fahren doch.“ Gleich schnell meldet die Simulation nur, wenn beide Autos auf demselben Tempo stehen (Zeile 2).",
+    "Mittel wird für „mittelmäßig gut“ gehalten und nicht als Tempo unter schnell gelesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "weit",
+    "langsamer"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „schnell“. Gesucht ist, wie weit die Autos kommen – die Statuszeile sagt „sie kommen gleich weit“.",
+    "In Lücke 2 steht „schneller“. Auto B steht auf langsam, es ist also langsamer als Auto A.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Größe sagt nichts über die Geschwindigkeit. Beide Räder müssen gleich lange fahren. Schneller ist das Rad, das dabei weiter kommt.",
+   "alternativen": [
+    "Verweis auf die Simulation, sobald das Protokoll freigeschaltet ist: Auf die Antwort „Wenn es größer ist“ meldet die Minidiagnose „Die Größe sagt nichts über die Geschwindigkeit.“",
+    "Verweis auf Zeile 2 und Zeile 3 der Tabelle: Nur das eingestellte Tempo ändert sich, und nur davon hängt die Meldung ab.",
+    "Verweis auf das Bild: Zwei gleich große Autos, und trotzdem kommt eines in derselben Zeit weiter."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Die Zeit fehlt in der Antwort: „Schneller ist, wer weiter kommt.“ Ohne gleiche Fahrzeit sagt die Strecke nichts.",
+    "Bauart statt Bewegung: „Das größere Rad hat größere Räder, also fährt es weiter.“ Entscheidend ist die Strecke in gleicher Zeit.",
+    "Jannis wird nur widersprochen („stimmt gar nicht“), ohne das richtige Kennzeichen zu nennen."
+   ]
+  },
+  "hilfe3_wort": "weiter (auch richtig: weiter vorne)",
+  "schwache": [
+   "Bedienhinweis vorweg geben: Die zwei Knopfreihen tragen dieselben Aufschriften langsam, mittel und schnell. Die obere Reihe gehört zu Auto A (roter Punkt), die untere zu Auto B (blauer Punkt).",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten, Zeile 3 erst danach ergänzen.",
+   "Beim Rennen mit dem Finger neben beiden Autos mitfahren, damit „gleiche Zeit“ körperlich erfahrbar wird.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: zwei gleich große Spielzeugautos gleich lange schieben und die Endpunkte mit Klebestreifen markieren."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Die drei Fragen stehen in der Simulation unter „Minidiagnose“ – sie sitzen im Protokoll, das erst mit dem Passwort der Lehrkraft aufgeht. Nach dem Freischalten: Beantworte die drei Fragen und schreibe die Rückmeldung zu Frage 2 ab: „Geschwindigkeit = Strecke pro Zeit.“ Diese Wortformel wird auf fb2 gebraucht.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Geschwindigkeit als Vergleich von Strecke und Zeit. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Tabelle; E2 über die Vermutung und das Rennen bei gleicher Fahrzeit; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); K3 über den Auftrag zu Hause. Der Seitenplan hält v = s / t für fb2 zurück."
+ },
+ {
+  "id": "fb2",
+  "lernziel": "Die Schülerinnen und Schüler messen an der 10-m-Messstrecke der Simulation die Zeit t, lesen die Strecke s = 10 m ab und bestimmen daraus mit v = s / t die Geschwindigkeit in m/s. An den drei Messwerten begründen sie: Bei gleicher Strecke gehört zur halben Zeit die doppelte Geschwindigkeit, nicht die halbe. Neu sind genau zwei Fachwörter: Strecke s in Meter (m) und Zeit t in Sekunden (s). Das Wort Geschwindigkeit stammt aus fb1; dort wird noch nicht gerechnet. Formelzeichen v und Einheit m/s kommen hier mit der Formel v = s / t dazu und gehören zu diesem einen Wort – sie zählen nicht als drittes Fachwort. Die Umstellungen s = v · t und t = s / v aus be3 sind gestrichen; sie bleiben dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Gegenprobe im Flur: 10 m mit dem Maßband abmessen, Stoppuhr, ein Rollbrett oder ein Spielzeugauto.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut des Bildschirms zeigen oder vorlesen; die Strecke ist immer s = 10 m: Karte 1 – Tempo langsam → Stoppuhr „10,0s“ → im Bild steht „v = s / t = 10 m / 10,0 s = 1,0 m/s“ · Karte 2 – Tempo mittel → Stoppuhr „5,0s“ → „v = s / t = 10 m / 5,0 s = 2,0 m/s“ · Karte 3 – Tempo schnell → Stoppuhr „2,0s“ → „v = s / t = 10 m / 2,0 s = 5,0 m/s“. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Dieselben Werte stehen nach jedem Lauf auch rechts in der Statuszeile, dort in der Form „Gemessen: s = 10 m, t = 5,0 s → v = s / t = 2,0 m/s.“ Vor dem Lauf zeigt die Statuszeile nur „Bereit. Messstrecke s = 10 m. Drücke „Messung starten“.“ – wer nicht startet, sieht auf der Stoppuhr „0,0s“ und bekommt keine Werte. Hinweis zur Schreibweise: Die Stoppuhr schreibt „10,0s“ ohne Leerzeichen, die Rechnung darunter „10,0 s“ mit Leerzeichen. Gemeint ist dieselbe Zeit; das einmal ansagen, sonst wird nach zwei verschiedenen Werten gesucht.",
+  "merksatz": [
+   "Zeit t",
+   "s / t"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "5,0 s",
+    "2,0 m/s"
+   ],
+   [
+    "schnell",
+    "2,0 s",
+    "5,0 m/s"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Eine Geschwindigkeit kann man nicht direkt ablesen. Man braucht zwei Messwerte: die Strecke s (in der Simulation immer 10 m; „s = 10 m“ steht im Bild unter der Messstrecke) und die Zeit t für genau diese Strecke (Stoppuhr im Bild). Erst v = s / t macht daraus die Geschwindigkeit. Genau so steht es auch neben der Messung auf dem Bildschirm: „Zum Messen der Geschwindigkeit braucht man zwei Größen: die Strecke s (mit dem Maßband) und die Zeit t (mit Stoppuhr oder Lichtschranke). Daraus berechnet man v = s / t. Einheit: Meter pro Sekunde (m/s).“",
+   "typische_fehler": [
+    "„Nur die Zeit“ wird gewählt, weil die Stoppuhr im Bild am auffälligsten ist. Gegenfrage: 10,0 s wofür? Ohne die Strecke fehlt die zweite Größe.",
+    "„Nur die Strecke“ wird gewählt, weil „s = 10 m“ schon im Bild steht und wie ein Ergebnis aussieht. Gegenfrage: Alle drei Fahrten gehen über dieselben 10 m und sind trotzdem verschieden schnell.",
+    "Es wird eine Zeit ohne zugehörige Strecke gestoppt („der Bus war 3 Sekunden zu sehen“). Die Zeit muss zu einer festen Strecke gehören."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "2,0 s",
+    "5,0 m/s"
+   ],
+   "typische_fehler": [
+    "5,0 s statt 2,0 s: Die Zeilen mittel und schnell werden vertauscht. Grund ist der Bildschirm – jede Fahrt läuft gleich lange ab (rund zweieinhalb Sekunden echte Zeit), nur die Zahl auf der Stoppuhr ist anders.",
+    "Die Einheit fehlt: „5,0“ statt „5,0 m/s“. Die Einheit gehört zum Ergebnis dazu.",
+    "10 und 2,0 werden vertauscht (2,0 geteilt durch 10 = 0,2). Oben steht die Strecke, unten die Zeit.",
+    "Die Zeit wird in die v-Spalte geschrieben: 2,0 s statt 5,0 m/s."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei mittel ist die Zeit 5,0 s. Das ist die Hälfte von 10,0 s. Die Geschwindigkeit ist aber 2,0 m/s und nicht 0,5 m/s. Sie wird also doppelt so groß und nicht halb so groß. Die Strecke bleibt immer gleich: 10 m. Wer weniger Zeit braucht, ist schneller.",
+   "alternativen": [
+    "Über den Rechenweg: 10 m / 10,0 s = 1,0 m/s und 10 m / 5,0 s = 2,0 m/s. Durch eine kleinere Zahl geteilt gibt ein größeres Ergebnis.",
+    "Über die dritte Zeile: 2,0 s sind ein Fünftel von 10,0 s, und 5,0 m/s sind das Fünffache von 1,0 m/s.",
+    "Über ein Alltagsbild: Wer für denselben Schulweg nur die halbe Zeit braucht, ist doppelt so schnell."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen.",
+    "„Halbe Zeit, halbe Geschwindigkeit“ wird beibehalten: Die Hälfte wird auf beide Größen übertragen. Gegenmittel ist der direkte Vergleich der Zeilen langsam und mittel.",
+    "Die Strecke wird für veränderlich gehalten. In dieser Simulation ist s immer 10 m; nur t und v ändern sich."
+   ]
+  },
+  "hilfe3_wort": "doppelt so groß (auch richtig: zweimal so groß, größer)",
+  "schwache": [
+   "Seite B erst austeilen, wenn die Tabelle auf Seite A ausgefüllt ist: Hilfe 2 und Hilfe 3 nennen die Werte der Zeile mittel, Aufgabe 2 die der Zeile schnell.",
+   "Nur die Zeilen langsam und mittel messen lassen; die Zeile schnell ist freiwillig.",
+   "Die drei Zeichen vorher an die Tafel schreiben und laut benennen: s ist die Strecke in Meter, t ist die Zeit in Sekunden, v ist die Geschwindigkeit in Meter pro Sekunde.",
+   "Die Divisionen 10 : 10, 10 : 5 und 10 : 2 vor der Simulation im Kopf üben. Das Teilen ist hier die eigentliche Hürde, nicht die Physik.",
+   "Einmal gemeinsam ansehen: Die Fahrt am Bildschirm dauert bei jedem Tempo gleich lange. Nur die Zahl auf der Stoppuhr ist anders. Sonst wird die echte Wartezeit für die Messzeit gehalten."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Vor jedem Lauf die Zeit vorhersagen, dann „Messung starten“ drücken und die Vorhersage mit der Stoppuhr vergleichen. Danach die Zeilen langsam und schnell vergleichen: Die Zeit wird ein Fünftel so groß, die Geschwindigkeit fünfmal so groß. Als Merksatz dient der Satz unter der Simulation: „Strecke s messen + Zeit t stoppen → v = s / t · Einheit m/s.“ Nicht in das Protokoll ganz unten schicken: Es ist passwortgeschützt und beim Öffnen zu; die drei Testfragen dort sind für diese Seite nicht erreichbar.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit messen und berechnen. Kompetenzen UF1, UF2, E4 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). E4 wird hier gesichert: Aufgabe 1 lässt entscheiden, welche zwei Größen überhaupt gemessen werden müssen, der Zuhause-Auftrag lässt dieselbe Messung selbst planen und durchführen. Die Einheit legt be2 und be3 zusammen; beide trugen dieselbe Merksatz-Lücke v = s / t. Die Umstellungen s = v · t und t = s / v bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fb3",
+  "lernziel": "Die Schülerinnen und Schüler rechnen einen Wert von m/s in km/h um, indem sie mit 3,6 multiplizieren, und begründen daran: Die Zahl wird größer, die Bewegung bleibt dieselbe. Nur diese eine Richtung wird verlangt – die Rückrichtung km/h → m/s ist laut freigegebenem Seitenplan bewusst weggelassen, ebenso die Herleitung des Faktors über 3600 Sekunden. Neu eingeführt wird auf dieser Seite genau EIN Fachwort: km/h. „Tempo“ ist auf der ganzen Seite das eine Alltagswort für dieselbe Sache; „Geschwindigkeit“ kommt aus fb1 und wird hier nicht erneut eingeführt, m/s aus fb2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional: ein Fahrradtacho aus der Fahrrad-AG zum Herumzeigen – auf ihm steht km/h.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (nach „Fußgänger“): „1,5 m/s · 3,6 = 5,4 km/h. (Rückwärts: 5,4 km/h ÷ 3,6 = 1,5 m/s.)“ · Karte 2 (nach „Radfahrer“): „5,0 m/s · 3,6 = 18,0 km/h. (Rückwärts: 18,0 km/h ÷ 3,6 = 5,0 m/s.)“ · Karte 3 (nach „Auto (Stadt)“): „14,0 m/s · 3,6 = 50,4 km/h. (Rückwärts: 50,4 km/h ÷ 3,6 = 14,0 m/s.)“ Die Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle (Karte 1 = Zeile 1, Karte 2 = Zeile 2, Karte 3 = Zeile 3). Der Klammerzusatz „(Rückwärts: …)“ steht wörtlich am Bildschirm und deshalb auch auf den Karten – er wird auf dieser Seite NICHT besprochen; beim Vorlesen den Klammerteil weglassen oder auf den Karten abdecken. Wichtig für den Ersatzweg wie für die Simulation: Es gibt KEINEN Regler. Die drei Werte der Tabelle kommen über die Knöpfe „Fußgänger“, „Radfahrer“ und „Auto (Stadt)“, dazu gibt es „ICE“. Den Wert ändern außerdem zwei Pfeilknöpfe: „◀ langsamer“ macht aus 10,0 m/s 9,0 m/s (Statuszeile dann: „9,0 m/s · 3,6 = 32,4 km/h“), „schneller ▶“ führt von 9,0 m/s zurück auf 10,0 m/s. Der Rundpfeil-Knopf stellt den Anfangswert 10,0 m/s wieder her.",
+  "merksatz": [
+   "mal 3,6",
+   "3,6 km/h"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Radfahrer",
+    "5,0 m/s",
+    "18,0 km/h"
+   ],
+   [
+    "Auto (Stadt)",
+    "14,0 m/s",
+    "50,4 km/h"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach „Radfahrer“ beginnt die Statuszeile mit „5,0 m/s · 3,6 = 18,0 km/h.“ – dahinter steht am Bildschirm noch der Klammerzusatz „(Rückwärts: 18,0 km/h ÷ 3,6 = 5,0 m/s.)“, der hier nicht gebraucht wird. Derselbe Wert steht in Zeile 2 der eigenen Tabelle – die Aufgabe prüft, ob die Tabelle richtig ausgefüllt wurde. Gerechnet werden muss hier nichts.",
+   "typische_fehler": [
+    "„5,4 km/h“ wird gewählt: das ist die vorgegebene Beispielzeile (Zeile 1, Fußgänger). Der Knopf „Radfahrer“ wurde nicht gedrückt oder die Statuszeile nicht neu gelesen.",
+    "„50,4 km/h“ wird gewählt: dieser Wert gehört zu „Auto (Stadt)“ mit 14,0 m/s, also zu Zeile 3.",
+    "Alle drei Zeilen werden für gleich gehalten, weil in jeder „· 3,6“ steht; verglichen wird dann nur der Faktor statt des Ergebnisses."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,4 km/h",
+    "50,4 km/h"
+   ],
+   "typische_fehler": [
+    "5,4 und 50,4 werden vertauscht – die beiden Zahlen sehen einander sehr ähnlich. Erst die m/s-Werte vergleichen (1,5 gegen 14,0), dann eintragen.",
+    "„3,6 km/h“ wird eingetragen: 3,6 ist die Zahl zum Malnehmen, kein Ergebnis. Der Wert 3,6 km/h gehört allein zu 1 m/s.",
+    "Die Einheit fehlt oder es steht m/s statt km/h; die Wortbank gibt die Einheit vor.",
+    "Es wird gerechnet statt abgelesen: 14,0 · 3,6 ist für diese Gruppe nicht zumutbar und auf der Seite auch nicht verlangt – der Wert steht am Bildschirm und in Zeile 3."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beide Zahlen gehören zu derselben Runde. 5,0 m/s sind mal 3,6 gerechnet 18,0 km/h. Nur die Einheit ist anders. Jannis fährt gleich schnell.",
+   "alternativen": [
+    "Mit der eigenen Tabelle begründet: In Zeile 2 stehen 5,0 m/s und 18,0 km/h nebeneinander – eine Fahrt, zwei Einheiten.",
+    "Mit dem Bildschirm begründet: Die Statuszeile schreibt beide Zahlen in eine einzige Rechnung: „5,0 m/s · 3,6 = 18,0 km/h.“",
+    "Ohne Rechnung, aber mit klarer Aussage: In km/h steht immer die größere Zahl, schneller wird das Rad davon nicht. Als Zwischenschritt annehmen und dann nach der Rechnung mit 3,6 fragen."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne eine der beiden Zahlen zu nennen.",
+    "18,0 km/h und 5,0 m/s werden für zwei verschiedene Fahrten gehalten – der Kern der Seite ist genau das Gegenteil.",
+    "Der Faktor wird als 1000 angenommen (Ergebnis 5000 statt 18,0). Die Simulation widerlegt das selbst: Der Antwortknopf „Mal 1000“ meldet „✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.“ Diese Fehlvorstellung steht bewusst als die falsche Vermutung auf Seite A.",
+    "Es wird geteilt statt malgenommen. Die Simulation meldet dazu bei „Durch 3,6“: „✗ Das wäre der Weg zurück (km/h → m/s).“ Den Rückweg hier nicht vertiefen – er ist nicht Gegenstand dieser Seite."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: genauso, gleich schnell)",
+  "schwache": [
+   "Die Knopffolge vorher an die Tafel schreiben: „Fußgänger“ → „Radfahrer“ → „Auto (Stadt)“. Die Simulation hat KEINEN Regler; wer 5,0 m/s „einstellen“ soll, sucht sonst vergeblich.",
+   "Zeile 1 der Tabelle gemeinsam laut lesen und in der Statuszeile wiederfinden, erst danach Zeile 2 allein ausfüllen lassen.",
+   "Nicht rechnen lassen: Alle Zahlen der Tabelle und der Aufgaben 1 und 2 stehen fertig am Bildschirm. Gerechnet wird nur im gelösten Beispiel (10,0 · 3,6 = 36,0), und dort ist der Weg vorgedruckt.",
+   "Die vier Zahlen 3,6 – 5,4 – 18,0 – 50,4 auf Kärtchen der Größe nach ordnen lassen. Der Dezimalvergleich ist hier die eigentliche Hürde, nicht die Physik.",
+   "„ICE“ (Statuszeile: „83,0 m/s · 3,6 = 298,8 km/h“) erst ganz am Schluss und nur zum Staunen zeigen. Die Zahl gehört nicht in die Tabelle und nicht in eine Aufgabe."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die eingebauten Fragen mit den Antwortknöpfen und schreibe die Rückmeldung zu „Mal 3,6“ ab: „✓ Richtig! m/s · 3,6 = km/h.“ Wer mag, drückt danach „ICE“ und schreibt die ganze Statuszeile ab. Bedienhinweis: Es gibt drei Fragen mit je einer eigenen Rückmeldezeile, und der Knopf „3,6 km/h“ kommt in zwei verschiedenen Fragen vor – einmal meldet er „✓ Richtig! 1 m/s = 3,6 km/h.“, einmal „✗ Das ist nur 1 m/s.“ Beides stimmt; die Rückmeldung gehört jeweils zur eigenen Frage.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit in verschiedenen Einheiten. Kompetenzen UF1, UF4 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan neben fs8 hier einzeln gesichert und sitzt in Aufgabe 3: Die Lernenden begründen mit zwei Zahlen aus der eigenen Tabelle, dass 18,0 km/h und 5,0 m/s dieselbe Bewegung meinen. UF4 trägt die Umrechnung selbst. Die Rückrichtung km/h → m/s bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fb4",
+  "lernziel": "Die Schülerinnen und Schüler deuten die Abstände der Sekunden-Marken: gleich große Abstände bedeuten eine gleichförmige Bewegung, größer werdende Abstände bedeuten, dass der Körper schneller wird, kleiner werdende, dass er langsamer wird. Beide Fälle mit sich änderndem Tempo heißen beschleunigt – auch das Bremsen. Der Doppelvergleich ist der eigentliche Denkschritt: Ein höheres Tempo macht alle Abstände größer, innerhalb einer Fahrt bleiben sie trotzdem gleich. Gerechnet wird nicht; das Weg-Zeit-Diagramm bleibt für fb5 zurückgehalten, obwohl die Simulation ihr Bild mit „s-t: Gerade“ beschriftet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: fünf kleine Steine, Bausteine oder Münzen. Optional als Gegenprobe auf dem Schulhof: Kreide und eine Person, die jede Sekunde „jetzt“ ruft.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (so startet die Simulation, Knopf „mittel“): „Gleichförmige Bewegung mit v = 70 (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.“ Karte 2 (Knopf „langsam“): derselbe Satz mit v = 40. Karte 3 (Knopf „schnell“): derselbe Satz mit v = 110. Dazu an die Tafel drei Bahnen untereinander zeichnen, auf jeder fünf Striche mit gleichen Abständen – bei „schnell“ alle Abstände breiter, bei „langsam“ alle schmaler, aber auf jeder Bahn untereinander gleich. Die Anzeige nennt zu v KEINE Einheit; an der Tafel darf deshalb kein m/s ergänzt werden. Für den Anwendungsteil (Bild) die zwei Sätze der zweiten Simulation vorlesen: „Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.“ und „Bremsen: Die Geschwindigkeit wird immer kleiner. Die Sekunden-Marken werden immer enger.“",
+  "merksatz": [
+   "gleichförmig",
+   "beschleunigt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "langsam",
+    "40",
+    "gleich groß"
+   ],
+   [
+    "schnell",
+    "110",
+    "gleich groß"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Bei „schnell“ meldet die Statuszeile: Gleichförmige Bewegung mit v = 110 … die Marken haben gleiche Abstände. Das ist derselbe Satz wie bei „mittel“ und „langsam“, nur mit einer anderen Zahl. Die Abstände sind zwar breiter als bei „langsam“, untereinander aber gleich.",
+   "typische_fehler": [
+    "Antwort 2 („Sie liegen immer weiter auseinander“) wird gewählt: „schnell“ wird mit „wird schneller“ verwechselt. Der Wagen ist die ganze Fahrt über gleich schnell.",
+    "Antwort 2 wird auch gewählt, weil der Wagen ja immer weiter rollt – genau die Fehlvorstellung, die auf Seite A als falsche Vermutung angeboten wird („Jannis rollt immer weiter“).",
+    "Antwort 3 („Sie liegen immer enger“) wird gewählt, weil die Marken am Bildschirm nach hinten kleiner gezeichnet wirken."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "schneller",
+    "langsamer"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „gleichförmig“. Gleichförmig wäre es nur bei gleichen Abständen.",
+    "In Lücke 2 steht „beschleunigt“. Das ist nicht falsch gedacht, passt aber nicht in den Satz: Gesucht ist, wie sich das Tempo ändert.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei schnell sind die Abstände größer als bei langsam, aber sie bleiben untereinander gleich groß. Der Wagen fährt die ganze Zeit gleich schnell. Die Bewegung ist also gleichförmig.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: Bei „schnell“ steht derselbe Satz wie bei „langsam“, nur die Zahl bei v ist eine andere.",
+    "Verweis auf Zeile 2 und Zeile 3 der Tabelle: In beiden Zeilen steht in der letzten Spalte „gleich groß“.",
+    "Verweis auf das Bild: Nur auf der mittleren Bahn werden die Abstände größer, und dort wird der Wagen wirklich schneller."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Die zwei Vergleiche werden vermischt: „Die Abstände sind größer, also stimmt es.“ Größer als bei langsam – untereinander gleich.",
+    "„schnell“ wird als Vorgang gelesen („er wird schnell“) statt als eingestellte Stufe.",
+    "Die Antwort nennt nur die Zahl 110 und sagt nichts über die Abstände."
+   ]
+  },
+  "hilfe3_wort": "gleich (auch richtig: genauso)",
+  "schwache": [
+   "Bedienreihenfolge vorweg ansagen: erst die Stufe wählen, dann „▶ Fahren“ drücken. „▶ Fahren“ übernimmt die zuletzt gewählte Stufe, und „Zurücksetzen“ springt auf v = 70 zurück. Wer die Reihenfolge tauscht, trägt eine falsche Zahl ein.",
+   "Das Wort „konstant“ steht in Klammern in der Statuszeile und wird auf der Schülerseite bewusst nicht verlangt. Die Seite sagt dafür „gleich groß“ und „das Tempo bleibt gleich“. Nachfragen kurz so beantworten, nicht als neues Fachwort einführen.",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten, Zeile 3 erst danach ergänzen.",
+   "Die Abstände auf dem Bildschirm mit zwei Fingern abgreifen und zum nächsten Abstand tragen – so wird „gleich groß“ mit der Hand geprüft.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: einen Stift gleichmäßig schieben und im Sekundentakt Klebepunkte setzen, danach absichtlich immer schneller schieben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 2 ab: „Gleiche Strecke pro Sekunde → gleiche Abstände.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · gleichförmige und beschleunigte Bewegung. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Aufgabe 1 (gleichförmig gegen beschleunigt unterscheiden); E2 über die Vermutung; E5 über den Vergleich der drei Fahrten (aus be5) und E6 über die Deutung von Beschleunigen und Bremsen (aus be7, hier als Bild und Aufgabe 2); B2 über Aufgabe 3. Das Weg-Zeit-Diagramm und damit K2 bleiben nach dem Seitenplan bei fb5."
+ },
+ {
+  "id": "fb5",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Linie im Weg-Zeit-Diagramm ab, wie der Wagen fährt: steil bedeutet schnell, flach bedeutet langsam, waagerecht bedeutet, dass er still steht. Sie begründen außerdem, dass bei einer waagerechten Linie die Zeit weiterläuft und nur der Weg nicht mehr wächst. Gerechnet wird hier nichts: Die Simulation zeigt keine Achsenwerte, keine Sekunden und keine Meter.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag „Zu Hause“ kariertes Papier oder das Heft benutzen: Auf der Seite selbst ist kein Platz zum Zeichnen, das Seitenbild zeigt die drei Linien nur als Muster.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (schnell – so startet die Simulation): „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“ Karte 2 (langsam): „Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.“ Karte 3 (mit Pause): „Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.“ Dazu an die Tafel ein Achsenkreuz zeichnen, unten „t (Zeit)“, links „s (Weg)“ – genau so heißen die Beschriftungen auch am Bildschirm. In dieses Kreuz nacheinander drei Linien legen: eine steile, eine flache und eine, die erst steigt, dann waagerecht läuft und dann wieder steigt. Zahlen gehören nicht dazu: Die Simulation hat keine Regler und zeigt weder Achsenwerte noch Sekunden oder Meter. Auf der Seite wird deshalb nichts gerechnet und nichts abgelesen außer der Meldung und dem Verlauf der Linie.",
+  "merksatz": [
+   "flache",
+   "steht still"
+  ],
+  "tabelle_erwartet": [
+   [
+    "langsam",
+    "flach",
+    "Er fährt langsam."
+   ],
+   [
+    "mit Pause",
+    "steigt – waagerecht – steigt wieder",
+    "Er fährt, hält an, fährt weiter."
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Steil heißt: in gleicher Zeit viel Weg. Genau das meldet die Simulation bei der schnellen Fahrt: „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“ Wagen B hat die steile Linie, also ist Wagen B schneller. Die Aufgabe ist reines Zuordnen (K2); begründet wird erst in Aufgabe 3.",
+   "typische_fehler": [
+    "Antwort 1 wird gewählt, weil die flache Linie „ruhiger“ und damit gleichmäßiger aussieht.",
+    "Antwort 2 wird gewählt, weil beide Wagen gleich lange fahren. Gleich ist hier nur die Zeit, nicht der Weg.",
+    "Die Linie wird als Bild der Straße gelesen: steil = Berg = anstrengend = langsam. Das ist genau die Fehlvorstellung, die auf Seite A als falsche Vermutung angeboten wird („Der Wagen muss ja bergauf“)."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "schneller",
+    "waagerecht"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „flache“. Gesucht ist der Vergleich der beiden Fahrten: Nour hat die steile Linie.",
+    "In Lücke 2 steht „senkrecht“. Die zwei Wörter unterscheiden sich nur in der ersten Silbe; eine senkrechte Linie kommt in dieser Simulation gar nicht vor.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Zeit läuft weiter, aber der Weg wird nicht länger. Der Wagen steht still. Deshalb bleibt die Linie waagerecht.",
+   "alternativen": [
+    "Verweis auf die Simulation: Auf die Antwort „Sehr schnell“ meldet sie „Waagerecht bedeutet kein Weg pro Zeit.“, richtig ist „Der Körper steht still“.",
+    "Verweis auf die Fahrt „mit Pause“: Der Wagen steht auf der Fahrbahn, und die Linie läuft trotzdem weiter nach rechts.",
+    "Verweis auf das Achsenkreuz: Nach rechts läuft die Zeit t. Solange die Linie nach rechts weitergeht, läuft auch die Zeit weiter."
+   ],
+   "typische_fehler": [
+    "Jannis wird nur widersprochen („stimmt nicht“), ohne den Weg zu nennen.",
+    "Weg und Zeit werden vertauscht: „Der Weg läuft weiter, die Zeit nicht.“",
+    "„Der Wagen fährt ruhig weiter“ – die falsche Vermutung von Seite A wird nicht korrigiert; die Linie stiege dann aber weiter an.",
+    "Die Antwort beschreibt nur die Linie („sie ist gerade“), ohne zu sagen, was der Wagen macht."
+   ]
+  },
+  "hilfe3_wort": "steht still (auch richtig: hält an, bewegt sich nicht)",
+  "schwache": [
+   "Bedienfalle vorweg ansagen: Schon beim Öffnen und nach „Zurücksetzen“ steht in der Statuszeile „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“, obwohl noch nichts gewählt wurde. Deshalb ist Zeile 1 der Tabelle die schnelle Fahrt: erst wählen, dann lesen.",
+   "Die drei Knöpfe heißen im Heft genauso wie am Bildschirm: langsam, schnell, mit Pause. Keine anderen Namen benutzen, also nicht „Halt am Tor“ und nicht „Fahrt mit Pause“.",
+   "Die Überschrift sagt „Weg-Zeit-Bild“, danach heißt es im ganzen Heft „Weg-Zeit-Diagramm“. Den Begriffssatz im Alltagsteil einmal laut lesen lassen.",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten (schnell gegen langsam), die Pause in Zeile 3 erst danach.",
+   "„waagerecht“ und „senkrecht“ vor dem Ausfüllen mit dem Arm zeigen lassen; beide Wörter an die Tafel schreiben.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: Ein Finger wandert gleichmäßig über ein Blatt und bleibt bei „Pause“ stehen, während eine zweite Person laut weiterzählt. So wird hörbar, dass die Zeit weiterläuft."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 3 ab: „Konstante Geschwindigkeit → Gerade.“ Das Wort „konstant“ steht auf fb4. Erkläre danach in einem Satz, warum eine gleichmäßige Fahrt keine Kurve ergibt.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Weg-Zeit-Diagramm. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: K2 über die Tabelle und Aufgabe 1 (Informationen aus Diagramm und Statuszeile entnehmen) – dieser Code hängt im ganzen Band allein an dieser Seite und ist deshalb reines Ablesen und Zuordnen geblieben; B2 über Aufgabe 3 (Jannis' Behauptung prüfen), der Erklär-Slot gehört B2 allein; UF1 über den Merksatz; K3 über den Auftrag zu Hause (Weg-Zeit-Diagramm des eigenen Schulwegs auf kariertem Papier; das im Seitenplan angedachte vorgedruckte Achsenkreuz entfällt – der Renderer hat auf Seite B keine Zeichenfläche, und der Bildkasten auf Seite A ist mit 52 × 28 mm zu klein dafür). Die gestrichene MC-Zugfahrt aus be6 wird nicht ersetzt: Die Simulation zeigt keine Zeitwerte, aus denen man ablesen könnte."
+ },
+ {
+  "id": "fb6",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Linie im Tempo-Zeit-Diagramm ab, ob ein Wagen gleich schnell fährt, schneller wird oder langsamer wird. Sie unterscheiden die waagerechte Linie (gleichförmige Fahrt) vom Stillstand, der als Linie ganz unten erscheint. Die Steilheit bleibt weg: Die Simulation zeigt dazu keinen Wert.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten von unten. Gegenprobe: ein Spielzeugauto anschieben, rollen lassen, abbremsen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten zeigen: kleines Achsenkreuz (senkrecht Tempo, waagerecht Zeit), Linie, Wortlaut der Statuszeile. „konstant“ (auch Ausgangszustand und Zustand nach „Zurücksetzen“): waagerechte Linie – „der Wagen fährt gleich schnell (gleichförmig)“. „beschleunigen“: ansteigende Linie – „die Geschwindigkeit wird immer größer“. „bremsen“: fallende Linie – „die Geschwindigkeit wird immer kleiner (bis der Wagen steht)“. Dazu ein viertes Achsenkreuz an der Tafel: Linie ganz unten, beschriftet „steht still“ – diesen Fall nennt die Simulation nur in einer Rückmeldung.",
+  "merksatz": [
+   "gleichförmig",
+   "langsamer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "beschleunigen",
+    "ansteigend",
+    "wird größer"
+   ],
+   [
+    "bremsen",
+    "fallend",
+    "wird kleiner"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Fallende Linie = Knopf „bremsen“. Die Statuszeile meldet dort „die Geschwindigkeit wird immer kleiner (bis der Wagen steht)“; so steht es auch in Zeile 3 der Tabelle.",
+   "typische_fehler": [
+    "Antwort 2 („Er wird schneller“): Die Linie wird von rechts nach links gelesen.",
+    "Antwort 1 („Er fährt gleich schnell“): Der Wagen fährt ja noch – gleich schnell wäre waagerecht.",
+    "Die fallende Linie wird als Rückwärtsfahrt gedeutet; senkrecht steht das Tempo."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "ansteigende",
+    "fallende"
+   ],
+   "typische_fehler": [
+    "„ansteigende“ und „fallende“ werden vertauscht, weil beide Sätze gleich anfangen. Hilfe: erst die Knopfaufschrift markieren.",
+    "In die Lücke wird die Knopfaufschrift geschrieben, oder beide Lücken bekommen dasselbe Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Eine waagerechte Linie zeigt, dass das Tempo gleich bleibt. Der Wagen fährt gleichförmig weiter. Er steht nur, wenn die Linie ganz unten liegt.",
+   "alternativen": [
+    "Statuszeile bei „konstant“: „der Wagen fährt gleich schnell (gleichförmig)“ – von Stehen ist keine Rede.",
+    "Rückmeldung der Simulation: „Stillstand wäre die Linie ganz unten (v = 0).“"
+   ],
+   "typische_fehler": [
+    "Waagerecht wird mit Stillstand gleichgesetzt – die Kernfehlvorstellung dieser Einheit; sie steht deshalb schon in der Vermutung.",
+    "Übertragung aus fb5: Im Weg-Zeit-Diagramm bedeutet waagerecht wirklich Stillstand. Der Vergleich gehört ins Gespräch, nicht auf die Schülerseite – diese Simulation zeigt kein Weg-Zeit-Diagramm.",
+    "Die Höhe der Linie wird als Weg gedeutet. Senkrecht steht das Tempo."
+   ]
+  },
+  "hilfe3_wort": "unten (auch richtig: unten bei null)",
+  "schwache": [
+   "Bedienhinweis vorweg: „konstant“, „beschleunigen“ und „bremsen“ stellen nur ein. Erst „▶ Fahren“ zeichnet die Linie, „Zurücksetzen“ stellt wieder „konstant“ ein.",
+   "Zeile 1 der Tabelle laut lesen und die waagerechte Linie mit dem Finger nachfahren; danach erst Zeile 2, zuletzt Zeile 3 (bremsen).",
+   "Die Anzeige „v jetzt“ abdecken; sie ändert sich ständig und lenkt von der Linie ab."
+  ],
+  "zusatz": "Freiwillig: die drei Fragen in der Simulation beantworten und die richtigen Rückmeldungen abschreiben.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Tempo-Zeit-Diagramme auswerten. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 über den Merksatz; UF2 über Tabelle und Aufgabe 1 (waagerecht, ansteigend und fallend auseinanderhalten); E5 über den Vergleich der drei Einstellungen; B2 über Aufgabe 3 (Jannis' Behauptung prüfen). UF1, UF2 und E5 stammen aus be8. K2 steht hier bewusst nicht: Der Code hängt nach dem Seitenplan allein an fb5, und fb4 hält ihn dort ebenfalls frei."
+ },
+ {
+  "id": "fb7",
+  "lernziel": "Die Schülerinnen und Schüler lesen Reaktionsweg und Bremsweg bei 50, 100 und 30 km/h in der Statuszeile ab und rechnen daraus den Anhalteweg aus (15 m + 25 m = 40 m · 30 m + 100 m = 130 m · 9 m + 9 m = 18 m). Sie begründen, dass das Auto auf dem Reaktionsweg noch mit vollem Tempo weiterfährt. Am Paar 50 km/h und 100 km/h stellen sie fest: Der Bremsweg wird viermal so lang (25 m → 100 m). Die Faustformeln (v/10)·3 und (v/10)² aus dem Hinweistext werden hier nicht gerechnet; der Ausdruck „Quadrat der Geschwindigkeit“ wird nicht gebraucht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag zu Hause: ein Flur, eine Turnhalle oder der Schulhof – nicht die Straße.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Die Statuszeile steht am Bildschirm in zwei Zeilen; so gehört sie auch auf die Karte. Karte 1 (so startet die Simulation): Zeile 1 „Tempo v = 50 km/h. Aktuell: Reaktionsphase (noch volles Tempo).“, Zeile 2 „Reaktionsweg = 15 m · Bremsweg = 25 m · Anhalteweg = 40 m.“ Karte 2 (Knopf „100 km/h“): dieselben Zeilen mit „Tempo v = 100 km/h“ und „Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.“ Karte 3 (Knopf „30 km/h“): dieselben Zeilen mit „Tempo v = 30 km/h“ und „Reaktionsweg = 9 m · Bremsweg = 9 m · Anhalteweg = 18 m.“ Die Karte mit 30 km/h bewusst zuletzt zeigen: Dort sind beide Zahlen 9 m, und wer damit beginnt, merkt sich „Reaktionsweg = Bremsweg“. Dazu an die Tafel für jedes Tempo einen gelben Balken (Reaktion) und daran anschließend einen roten Balken (Bremsen) zeichnen, maßstäblich in Metern. Die Simulation zeigt außerdem einen Vergleich der Bremswege: 30 km/h – 9 m, 50 km/h – 25 m, 100 km/h – 100 m; diese drei Balken genügen als Tafelbild für Aufgabe 1.",
+  "merksatz": [
+   "Anhalteweg",
+   "Reaktionsweg"
+  ],
+  "tabelle_erwartet": [
+   [
+    "100 km/h",
+    "30 m",
+    "100 m"
+   ],
+   [
+    "30 km/h",
+    "9 m",
+    "9 m"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Zeile 1 der Tabelle (50 km/h): Bremsweg 25 m. Zeile 2 (100 km/h): Bremsweg 100 m. Aus 25 m werden 100 m, das ist viermal so viel. Dieselbe Reihe steht in der Simulation im Vergleich der Bremswege: 30 km/h – 9 m, 50 km/h – 25 m, 100 km/h – 100 m.",
+   "typische_fehler": [
+    "Option 2 („doppelt so lang“) – die häufigste Fehlvorstellung: Das Tempo verdoppelt sich, also scheint auch der Weg doppelt zu werden. Nur der Reaktionsweg verdoppelt sich (15 m → 30 m), der Bremsweg wird viermal so lang.",
+    "Statt des Bremswegs wird der Anhalteweg verglichen (40 m → 130 m). Gefragt ist nur die mittlere der drei Zahlen.",
+    "Verglichen wird mit Zeile 3 (30 km/h). Dort sind Reaktionsweg und Bremsweg beide 9 m – daraus entsteht der Fehlschluss, beide Wege seien immer gleich lang."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "18 m",
+    "130 m"
+   ],
+   "typische_fehler": [
+    "Nur eine der beiden Zahlen wird abgeschrieben: 9 m statt 18 m, 100 m statt 130 m.",
+    "Die Zahlen werden nebeneinandergeschrieben statt addiert: aus 9 und 9 wird 99.",
+    "Es wird abgezogen statt addiert: 100 m − 30 m = 70 m.",
+    "Die Einheit m fehlt. Die Simulation schreibt jede Länge mit m."
+   ]
+  },
+  "a3": {
+   "erwartung": "Zuerst siehst du die Gefahr. In dieser Zeit fährt das Auto mit vollem Tempo weiter. Das ist der Reaktionsweg. Danach kommt noch der Bremsweg. Bei 30 km/h sind das zusammen 18 m.",
+   "alternativen": [
+    "Mit den Zahlen der Statuszeile: Bei 30 km/h steht dort Reaktionsweg = 9 m · Bremsweg = 9 m · Anhalteweg = 18 m. 18 m sind mehr als eine Autolänge.",
+    "Mit dem Bild: Der gelbe Teil kommt vor dem Bremsen, der rote Teil beim Bremsen. Beide zusammen sind der Anhalteweg.",
+    "Mit einem eigenen Beispiel: Auch beim Fahrrad rollt man noch weiter, bis die Hand die Bremse zieht."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Nur der Bremsweg wird genannt, der Reaktionsweg fehlt – genau der Teil, den Nour übersieht.",
+    "„Das Auto bremst schon, während man die Gefahr sieht.“ Auf dem Reaktionsweg fährt es noch mit vollem Tempo.",
+    "Tempo 30 gilt als so langsam, dass die Zahlen gar nicht erst geprüft werden."
+   ]
+  },
+  "hilfe3_wort": "Bremsweg (auch richtig: Weg beim Bremsen)",
+  "schwache": [
+   "Zuerst nur Zeile 1 und Zeile 2 ausfüllen (50 km/h und 100 km/h). Zeile 3 mit 30 km/h erst danach – dort sind beide Zahlen 9 m und werden sonst verwechselt.",
+   "Bedienhinweis vorweg geben: Die drei Tempo-Knöpfe „30 km/h“, „50 km/h“ und „100 km/h“ stehen nebeneinander unter dem Bild, darunter der Knopf „▶ Gefahr! (Start)“. Die Statuszeile beginnt mit dem Wort „Tempo“; je nach Bildschirmbreite steht sie rechts neben dem Bild oder darunter. Beim Öffnen ist 50 km/h eingestellt.",
+   "Die Statuszeile drängt drei Längen in eine Zeile, getrennt nur durch Punkte. Mit einem Lineal abdecken, sodass immer nur eine Angabe sichtbar ist, und mit dem Finger erst auf das Wort und dann auf die Zahl zeigen.",
+   "Vor Aufgabe 2 die zwei Additionen 9 + 9 und 30 + 100 mündlich üben.",
+   "Im Bild den Reaktionsweg gelb und den Bremsweg rot nachmalen lassen, danach die Klammer für den Anhalteweg darunterziehen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die erste Quizfrage in der Simulation. Drücke den Knopf „Reaktionsweg + Bremsweg“ und schreibe die Rückmeldung ab: „✓ Richtig! Beide Teile zusammen ergeben den Anhalteweg.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Anhalteweg und Sicherheit im Straßenverkehr. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 und UF2 über Merksatz und Tabelle (Reaktionsweg, Bremsweg, Anhalteweg auseinanderhalten); E2 über die Vermutung; E5 über den Vergleich der Bremswege bei 50 km/h und 100 km/h; B2 über Aufgabe 3 und den Auftrag zu Hause (Nours Behauptung an Messwerten prüfen). Der Seitenplan hält den Zusammenhang mit dem Quadrat der Geschwindigkeit sprachlich draußen: Er wird nur als „viermal so lang“ an den zwei abgelesenen Zahlen gezeigt."
+ }
+]

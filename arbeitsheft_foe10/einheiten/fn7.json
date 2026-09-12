@@ -1,0 +1,210 @@
+{
+ "seite": {
+  "id": "fn7",
+  "quelle": "rk7+rk8",
+  "sim": "zerfall-halbwertszeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Ein Holzstück aus dem Moor",
+  "name": "Wie alt ist der Fund?",
+  "fachwoerter_neu": [
+   "Alphazerfall",
+   "Betazerfall"
+  ],
+  "alltag": [
+   "Nour liest von einem Holzstück aus einem Moor. Das Holzstück ist ein Fund.",
+   "Das Museum kennt sein Alter. Kein Zettel lag dabei.",
+   "Im Holz steckt Kohlenstoff-14. Dieser Kern zerfällt langsam. Dabei wird er ein anderer Stoff.",
+   "Beim Alphazerfall fliegt ein Paket weg. Beim Betazerfall fliegt ein Elektron weg."
+  ],
+  "frage": "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
+  "predict": [
+   "Zwei Halbwertszeiten. 50 Kerne sind ein Viertel von 200.",
+   "Vier Halbwertszeiten. 200 geteilt durch 50 ist vier."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.",
+   "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.",
+   "Lies im dritten Teil die Zahl hinter „Erwartet hätte man“ ab.",
+   "Drücke „eine Halbwertszeit weiter“ noch zweimal. Lies Teil 2 und 3 ab. Trage alle Zahlen ohne Punkt ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Halbwertszeiten?",
+   "Wie viele Jahre sind vergangen?",
+   "Wie viele Kerne erwartet man?"
+  ],
+  "tabRows": [
+   [
+    "0",
+    "0 Jahre",
+    "200"
+   ],
+   [
+    "1",
+    "",
+    ""
+   ],
+   [
+    "2",
+    "",
+    ""
+   ],
+   [
+    "3",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Nach jeder Halbwertszeit erwartet man die Hälfte: 200, 100, 50,",
+    "loesung": "25",
+    "post": "."
+   },
+   {
+    "pre": "Zähle die Halbwertszeiten. Bei Kohlenstoff-14 dauert jede 5730 Jahre. So kennst du das",
+    "loesung": "Alter",
+    "post": "des Fundes."
+   }
+  ],
+  "wortbank": [
+   "25",
+   "Alter",
+   "5730 Jahre",
+   "Viertel"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile?",
+   "antwort": "Am Bildschirm steht: 0 Jahre. Darunter: „Erwartet hätte man 200.“"
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Von 200 Kernen sind noch 50 übrig. Wie alt ist der Fund?",
+    "optionen": [
+     "11460 Jahre – das sind zwei Halbwertszeiten.",
+     "5730 Jahre – das ist eine Halbwertszeit.",
+     "17190 Jahre – das sind drei Halbwertszeiten."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Halbwertszeit von Kohlenstoff-14 dauert",
+      "loesung": "5730 Jahre",
+      "post": "."
+     },
+     {
+      "pre": "Nach zwei Halbwertszeiten ist noch ein",
+      "loesung": "Viertel",
+      "post": "übrig. Das sind 50 von 200."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour misst 49 von 200 Kernen. Warum sagt sie: zwei Halbwertszeiten?",
+    "satzstarter": "Nour sagt zwei Halbwertszeiten, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile hat drei Teile. Teil 2 nennt die Jahre, Teil 3 die erwartete Zahl.",
+   "h2": "Beginne so: Nour sagt zwei Halbwertszeiten, weil 49 fast …",
+   "h3": "Fast fertig: Zu zwei Halbwertszeiten gehören 50 Kerne. 49 ist fast ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Jahre in der Statuszeile ablesen.",
+   "Ich kann die Reihe 200, 100, 50, 25 fortsetzen.",
+   "Ich kann aus den übrigen Kernen das Alter ablesen."
+  ],
+  "zuhause": "Falte ein Blatt Papier zweimal in der Mitte. Falte es wieder auf. Wie viele Teile sind es?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Zeitband aus GENAU VIER gleich großen quadratischen Kernfeldern, nebeneinander in einer Reihe, alle im selben Bildausschnitt, gleiche Größe, gleicher heller Hintergrund. Jedes Feld zeigt DIESELBEN 200 Kernpunkte an DENSELBEN Stellen — locker und unregelmäßig über die ganze Fläche gestreut, ohne Raster, ohne Reihen, ohne Spalten. Von links nach rechts sind immer mehr Punkte offene Kreise: im ersten Feld sind alle 200 ausgefüllt, im zweiten noch 100, im dritten noch 50, im vierten noch 25. Entscheidend für die Komposition: Die offenen Kreise liegen in jedem Feld kreuz und quer über die GANZE Fläche verstreut, mitten zwischen den ausgefüllten — sie dürfen keinen Streifen, keine Reihe, keine Spalte, keine obere oder linke Hälfte, keinen Rand, keinen Block und kein erkennbares Muster bilden. Daran hängt die Aussage des Bildes: Es zerfällt überall gleich, nicht von einer Seite her. Zwischen je zwei Feldern GENAU EIN kurzer waagerechter Pfeil, darüber gut lesbar „eine Halbwertszeit weiter“. Über jedem Feld groß die erwartete Zahl, von links nach rechts: „erwartet: 200 Kerne“, „erwartet: 100 Kerne“, „erwartet: 50 Kerne“, „erwartet: 25 Kerne“. Unter der Reihe eine durchgehende waagerechte Zeitlinie mit vier Marken, jede genau unter der Mitte ihres Feldes, beschriftet „0 Jahre“, „5730 Jahre“, „11460 Jahre“, „17190 Jahre“ — die Jahreszahlen ohne Punkt und ohne Komma schreiben. Der einzige weitere Pfeil des Bildes steht am vierten Feld: ein kurzer senkrechter Pfeil, der oben am Feld „25 Kerne“ beginnt und unten genau auf der Marke „17190 Jahre“ endet, daneben die Beschriftung „Kerne zählen – Alter ablesen“. Dieser Pfeil muss sichtbar an beiden Enden andocken und darf nirgends frei auslaufen. Unten links, einmal für alle vier Felder, die Zeichenerklärung: „● noch nicht zerfallen    ○ zerfallen“. Sonst nichts: kein fünftes Feld, kein Diagramm, keine Kurve, keine Achsen, keine kleinen Nebenbilder am Rand — also kein Moor, kein Baum, kein Holzstück, kein Museum, kein Labor, keine Personen und keine Sprechblasen. Ebenso nichts, was aus den Kernen herausfliegt: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Alpha-, Beta- oder Gammazeichen, keine gestrichelten Linien ins Leere. Keine anderen Zahlen als die genannten. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn7",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation Kohlenstoff-14 ein und schreiten dreimal weiter. Sie lesen dabei zwei Angaben ab, die bei jedem Lauf gleich sind: die vergangene Zeit (0 · 5730 · 11460 · 17190 Jahre) und die erwartete Zahl der Kerne (200 · 100 · 50 · 25). Aus dieser Kette lesen sie rückwärts: Ein Rest von etwa 50 Kernen bedeutet zwei Halbwertszeiten, also 11460 Jahre. Die Forscherfrage auf Seite A fragt dabei nur nach der Zahl der Halbwertszeiten; den Schritt zu den Jahren macht erst Aufgabe 1. Vorher fragte sie nach den Jahren, und keine der beiden Vermutungen antwortete darauf — eine Vermutung, die es getan hätte, hätte Aufgabe 1 verraten (Gegenlesen 05.09.2026). Beide Vermutungen nennen jetzt eine Zahl von Halbwertszeiten, und die Tabelle entscheidet darüber: Vermutung 2 („200 geteilt durch 50 ist vier“) ist genau der Fehler, den der Lösungsteil zu Aufgabe 1 an dritter Stelle führt — er steht jetzt zum Ankreuzen da und wird nach zwei Schritten am Bildschirm widerlegt. Das ist die Altersbestimmung mit Kohlenstoff-14 und das eigentliche Lernziel dieser Doppelseite — die Halbwertszeit selbst ist in fn6 eingeführt und wird hier nur noch benutzt. Zweitens erkennen sie an einem Beispiel wieder, dass die gemessene Zahl streut (49 statt 50) und trotzdem eindeutig auf zwei Halbwertszeiten zeigt. Als Merkwissen, ohne eigene Aufgabe, steht im Alltagsteil das Erbe der gestrichenen E-Kurs-Einheit rk8: Beim Alphazerfall fliegt ein Paket weg, beim Betazerfall ein Elektron. Die beiden Sätze beantworten die Frage, wohin die Kerne gehen, die in der Tabelle fehlen. Der Satz „Der Kern wird ein anderer Stoff“ steht deshalb nicht mehr bei Alpha und Beta, sondern direkt bei „zerfällt“ im dritten Alltagssatz — dort erklärt er das Wort, das die Seite wirklich benutzt. Das Lernziel schrieb ihm vorher eine Widerlegung der zweiten Vermutung zu; die leistet die Seite nicht, widerlegt wird die zweite Vermutung allein durch die Kette 200 – 100 – 50 (Gegenlesen 05.09.2026). Alphazerfall und Betazerfall sind zugleich die beiden neuen Fachwörter dieser Seite, deshalb bekommt jedes einen eigenen vollständigen Satz mit einem Bild (Paket · Elektron); die erste Fassung packte beide in einen Satz, dessen zweite Hälfte kein Verb hatte. Nur für Sie, nicht auf der Schülerseite: Zerfallsreihe, Massenzahl A, Kernladungszahl Z, Nuklidkarte, Zerfallsgesetz N(t) = N₀ · (½)^(t/T½).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den vier Kernfeldern. Optional als Gegenprobe am Tisch, passend zum Zuhause-Auftrag: ein Blatt Papier zweimal in der Mitte falten, wieder auffalten und die Teile zählen — vier gleiche Teile, also ein Viertel, genau der Stand nach der zweiten Halbwertszeit und damit die Probe auf Vermutung 1 und auf die zweite Lücke von Aufgabe 2. Der Auftrag lief vorher über drei Faltungen auf ein Achtel; das Wort steht auf der Schülerseite nirgends, „Viertel“ dagegen in Wortbank und Aufgabe 2, und der Auftrag endete ohne Frage (Gegenlesen 05.09.2026). Wer will, faltet danach ein drittes Mal — acht Teile, ein Achtel, der Stand nach der dritten Halbwertszeit. Kein radioaktives Präparat nötig, es gibt hier keinen Schülerversuch. Taschenrechner ausdrücklich erlaubt; gerechnet werden muss aber nichts, alle Jahreszahlen stehen am Bildschirm.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Karte 0 „Start“: „Kohlenstoff-14, Halbwertszeit 5730 Jahre. Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig. Erwartet hätte man 200.“ Karte 1: „Nach einer Halbwertszeit – das sind 5730 Jahre – sind noch 103 von 200 Kernen übrig. Erwartet hätte man 100.“ Karte 2: „Nach 2 Halbwertszeiten – das sind 11460 Jahre – sind noch 49 von 200 Kernen übrig. Erwartet hätte man 50.“ Karte 3: „Nach 3 Halbwertszeiten – das sind 17190 Jahre – sind noch 22 von 200 Kernen übrig. Erwartet hätte man 25.“ Sagen Sie beim Vorlesen zweimal ausdrücklich dazu: Die 103, 49 und 22 sind Messwerte EINES Laufs; am Gerät steht jedes Mal eine andere Zahl. Gleich bleiben nur die Jahreszahlen und die erwarteten 200 · 100 · 50 · 25 — und genau diese beiden Angaben kommen in die Tabelle. Zwei Hinweise zum Wortlaut: Der Bildschirm schreibt die Jahre im zweiten Teil der Statuszeile mit Tausenderpunkt („11.460 Jahre“), im ersten Teil ohne („Halbwertszeit 5730 Jahre“). Das Heft druckt sie durchgehend ohne Punkt; schreiben Sie sie auch an der Tafel ohne Punkt, sonst lesen DaZ-Lernende ein Dezimalkomma. Auf der Schülerseite steht das seit dem Gegenlesen ausdrücklich in Arbeitsschritt 4 („Trage alle Zahlen ohne Punkt ein“). Und der Zähler heißt auf Karte 1 „einer Halbwertszeit“, ab Karte 2 „2 Halbwertszeiten“ — das ist der Bildschirmtext, keine Unachtsamkeit. Dazu als Tafelbild vier gleich große Kernfelder nebeneinander, alle mit denselben 200 unregelmäßig gestreuten Punkten: im ersten alle ausgefüllt, dann 100, 50, 25 ausgefüllt, die offenen Kreise jedes Mal kreuz und quer über die ganze Fläche — nie als Streifen oder als halbes Feld, sonst entsteht die Vorstellung, der Zerfall wandere von einer Seite her. Unter die Felder eine Zeitlinie mit den Marken 0 Jahre, 5730 Jahre, 11460 Jahre, 17190 Jahre. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "25",
+   "Alter"
+  ],
+  "tabelle_erwartet": [
+   [
+    "1",
+    "5730 Jahre",
+    "100"
+   ],
+   [
+    "2",
+    "11460 Jahre",
+    "50"
+   ],
+   [
+    "3",
+    "17190 Jahre",
+    "25"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Kette der erwarteten Kerne steht in der Tabelle: 200 · 100 · 50 · 25. Ein Rest von 50 ist die dritte Zahl der Kette, also sind zwei Halbwertszeiten vergangen. Die Statuszeile nennt dazu die Zeit: nach 2 Halbwertszeiten sind 11460 Jahre vergangen — am Bildschirm mit Tausenderpunkt („11.460 Jahre“), im Heft ohne. Richtig ist deshalb die Angabe 11460 Jahre. Die Antwort 5730 Jahre gehört zu 100 übrigen Kernen (eine Halbwertszeit), die Antwort 17190 Jahre zu 25 übrigen Kernen (drei Halbwertszeiten). Das ist die Umkehrung des Ablesens und der eigentliche Denkschritt der Seite: nicht von der Zeit auf den Rest, sondern vom Rest auf die Zeit. Die drei Zahlen stehen alle am Bildschirm, keine ist gerechnet.",
+   "typische_fehler": [
+    "Die Halbwertszeit selbst wird genannt (5730 Jahre), weil das die einzige Zahl ist, die im ersten Teil der Statuszeile steht. Gegenfrage: Wie viele Kerne wären nach 5730 Jahren noch übrig? Auf die Tabellenzeile mit der 100 zeigen.",
+    "Es wird eine Stufe zu weit gezählt (17190 Jahre): 200, 100, 50 sind DREI Zahlen, aber nur ZWEI Halbwertszeiten liegen dazwischen. Mit dem Finger die Pfeile zwischen den Feldern des Bildes abzählen, nicht die Felder.",
+    "Es wird versucht, 200 durch 50 zu teilen und die 4 als Zahl der Halbwertszeiten zu nehmen. Nicht rechnen lassen, sondern die Kette laut mitsprechen: 200 – 100 – 50.",
+    "Es wird gar nicht abgelesen, sondern die Zahl 49 aus Aufgabe 3 gesucht. Die steht hier nicht; Aufgabe 1 nennt glatt 50."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5730 Jahre",
+    "Viertel"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird 11460 Jahre eingesetzt — die Zahl steht in der eigenen Tabelle eine Zeile tiefer. Der Satz fragt aber nach EINER Halbwertszeit. Auf die Tabellenzeile mit der 1 in der ersten Spalte zurückverweisen.",
+    "Die Einheit fehlt („5730“). Die Wortbank enthält sie mit Einheit; einmal abschreiben lassen. Betonen: Bei Kohlenstoff-14 sind es Jahre, bei Radon-220 aus fn6 waren es Sekunden.",
+    "In die zweite Lücke wird „Hälfte“ geschrieben — die Hälfte ist die erste Stufe, das Viertel die zweite. Am Bild die Felder 100 und 50 nebeneinander zeigen.",
+    "In die zweite Lücke wird „Achtel“ geschrieben, weil dreimal gedrückt wurde. Der Satz nennt zwei Halbwertszeiten; das Achtel gehört zur 25.",
+    "Die 50 wird als Prozentwert gelesen. Die Seite zählt in Kernen; die Prozentspalte des Bildschirms gibt es im Förderheft bewusst nicht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nour sagt zwei Halbwertszeiten, weil 49 fast genau 50 ist. Am Bildschirm steht daneben: Erwartet hätte man 50. Genau 50 kommt selten heraus, weil jeder Kern für sich zerfällt. Zwei Halbwertszeiten sind bei Kohlenstoff-14 11460 Jahre. So alt ist der Fund ungefähr.",
+   "alternativen": [
+    "Kurzform ohne Jahreszahl: „Weil 49 fast 50 ist und 50 zu zwei Halbwertszeiten gehört.“ — reicht für die volle Wertung.",
+    "Über die Kette begründet: „200, dann 100, dann 50. Sie ist bei 50 angekommen, also zweimal.“",
+    "Über den Zufall begründet: „Die gemessene Zahl schwankt immer ein bisschen. 49 und 50 sind praktisch dasselbe.“ — der Rückverweis auf fn6, sehr erwünscht.",
+    "Mit dem Zusatz, dass ein Rest von 49 kein anderes Alter ergibt, weil die nächste Stufe erst bei 25 liegt — richtig, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Nour habe sich verzählt oder falsch gemessen. Genau umgekehrt: Die Abweichung ist normal, sie steht am Bildschirm selbst („Erwartet hätte man 50“). Beide Zahlen nebeneinander an die Tafel schreiben.",
+    "Es wird auf 49 Halbwertszeiten geschlossen — die Zahl der übrigen Kerne wird mit der Zahl der Schritte verwechselt. Auf die drei Tabellenspalten zeigen und laut benennen, was in welcher steht.",
+    "Nur „weil es ungefähr passt“, ohne eine der beiden Zahlen. Nachfragen: Welche zwei Zahlen vergleichst du? Hilfe 3 gibt die 50 vor.",
+    "Die Erklärung dreht sich um das Moor oder das Museum statt um die Zahlen — Thema verfehlt. Auf den Satz in Anführungszeichen zeigen und fragen: Welche Zahl hat Nour gemessen?"
+   ]
+  },
+  "hilfe3_wort": "50",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten. Die Simulation hat KEINE Regler, nur sieben Knöpfe: fünf Nuklide, einen Schrittknopf und einen zum Zurücksetzen. Gebraucht werden hier genau zwei: „Kohlenstoff-14“ und „eine Halbwertszeit weiter“. Der Knopf „eine Halbwertszeit weiter“ trägt am Bildschirm vor dem Wort ein Zeichen, das die Heftschrift nicht kennt; deshalb ist es nirgends abgedruckt. Der Knopf „Kohlenstoff-14“ steht ohne Zeichen da. Zeigen Sie die zwei Knöpfe einmal am Beamer.",
+   "Nachgemessen und beruhigend: Ein Druck auf „Kohlenstoff-14“ setzt den Schrittzähler von selbst auf null zurück, auch wenn vorher schon geschritten wurde. Wer sich verdrückt hat, drückt einfach noch einmal „Kohlenstoff-14“ und fängt bei „Nach 0 Halbwertszeiten“ neu an.",
+   "Die Statuszeile mit einem Papierstreifen in drei Teile trennen und nur den gebrauchten Teil freilassen: Teil 1 nennt Nuklid und Halbwertszeit, Teil 2 die Jahre, Teil 3 die erwartete Zahl. Ohne diese Trennung wird regelmäßig die gemessene Kernzahl aus Teil 2 in die dritte Spalte geschrieben — und die ist bei jedem Kind eine andere.",
+   "Der Papierstreifen reicht für Teil 3 NICHT: Teil 3 trägt ab dem ersten Schritt selbst zwei Zahlen — „Erwartet hätte man 100. Im letzten Schritt sind 97 Kerne zerfallen.“ Nur die erste gehört in die Tabelle; die zweite ist wieder eine Zufallszahl (nachgemessen 97 · 54 · 27) und steht innerhalb desselben Teils. Arbeitsschritt 3 nennt deshalb seit dem Gegenlesen den Wortlaut am Bildschirm: die Zahl hinter „Erwartet hätte man“. Wer in der dritten Spalte 97, 54 oder 27 findet, zeigt auf diesen Nachsatz und liest beide Zahlen der Zeile laut vor. Das gelöste Beispiel kann den Fall nicht vorwegnehmen: Es arbeitet an der Startzeile, und dort fehlt der Nachsatz noch (Gegenlesen 05.09.2026).",
+   "Nur die mittlere Tabellenspalte (Jahre) ausfüllen lassen; die dritte Spalte gemeinsam an der Tafel eintragen und dabei laut halbieren: 200 – 100 – 50 – 25.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. „5730 Jahre“ mit Einheit abschreiben, nicht nur die Zahl. Die fünfstelligen Zahlen ziffernweise vorsprechen: eins-eins-vier-sechs-null. Der Punkt am Bildschirm („11.460“) wird nicht mitgeschrieben; Arbeitsschritt 4 sagt das jetzt auch auf der Schülerseite.",
+   "Wer beim Erklären nicht anfängt, schreibt zuerst nur die zwei Zahlen 49 und 50 untereinander an den Rand und sagt, wie weit sie auseinanderliegen. Danach den Satzstarter benutzen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Weiterzählen: Drücke ein viertes Mal „eine Halbwertszeit weiter“ und lies ab, wie viele Jahre dann vergangen sind und wie viele Kerne man erwartet. Erwartet: 22920 Jahre und 13 Kerne — die 13 ist die gerundete Hälfte von 25, das darf auffallen. (2) Addieren statt Multiplizieren, Taschenrechner erlaubt: 5730 + 5730 = 11460 und 5730 + 5730 + 5730 = 17190. Vergleiche dein Ergebnis mit den Zahlen aus deiner Tabelle. Bewusst NICHT verlangt: 3 · 5730 im Kopf und jede Rechnung mit Brüchen.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Altersbestimmung mit Kohlenstoff-14. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen des Nuklids und die drei Schritte tragen E4, das AUSFÜLLEN DER TABELLE trägt K3 („Untersuchungen dokumentieren“) — bandeinheitlich liegt K3 auf der Tabelle und nie auf dem Zuhause-Auftrag, denn „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Das Rückwärtslesen vom Rest auf die Zeit (Aufgabe 1) trägt E5 und UF4, die Erklär-Aufgabe zur Streuung E6 und UF1, die Vermutung zum Viertel UF2. Getrenntes Lernziel: fn6 und fn7 teilen die Simulation, aber nicht das Lernziel — fn6 fragt, was eine Halbwertszeit ist und warum die Zahl schwankt; fn7 fragt nach dem Alter eines Fundes. Die Halbwertszeit wird hier nicht noch einmal eingeführt, sondern benutzt (Zählregel 4). Fachwortzählung: neu sind genau ZWEI Einträge, „Alphazerfall“ und „Betazerfall“ — die beiden Erbe-Wörter aus der gestrichenen E-Kurs-Einheit rk8. Jedes zählt nach Zählregel 3 für sich: Zusammenfassen erlaubt allein Zählregel 1, und die deckt Größe + Formelzeichen + Einheit („Spannung U in Volt“), nicht ein Wortpaar, das zufällig in einem Satz steht. Beide werden im Alltagsteil sofort erklärt und mit einem Bild unterschieden (Paket beim Alphazerfall, Elektron beim Betazerfall); der zweite Satz nennt die gemeinsame Aussage, dass der Kern zu einem anderen Stoff wird. Sie stehen NICHT in der Wortbank, NICHT in einer Merksatzlücke, NICHT in einer Tabellenspalte und in keiner Aufgabe — die Simulation zeigt zu ihnen nichts, und nach der Heft-gegen-Sim-Regel darf deshalb auch nichts abgefragt werden. Sprechen Sie die beiden Sätze einmal laut mit und lassen Sie sie stehen; sie sind Merkwissen, kein Prüfstoff. Stellen Sie dabei mündlich die Verbindung zu fn3 her: Beim Alphazerfall entsteht die Alphastrahlung aus fn3, beim Betazerfall die Betastrahlung — sonst stehen vier ähnliche Wörter unverbunden nebeneinander. Zählen tun nur die beiden Zerfälle; die Strahlungsarten hängen nach Zählregel 4 an fn3. Das eigentliche Lernziel der Seite bringt KEIN zählendes Fachwort mit: Das Wort „Altersbestimmung“ steht nirgends auf der Schülerseite, dort heißt es durchgehend „das Alter des Fundes“, „Restmenge“ heißt auf der Schülerseite durchgehend „übrig“ — das Wort „Rest“ kommt dort seit dem Gegenlesen gar nicht mehr vor: Selbstcheck 3 („Ich kann aus den übrigen Kernen das Alter ablesen.“) und die Pfeilbeschriftung des Bildes („Kerne zählen – Alter ablesen“) sind nachgezogen, „Kohlenstoff-14“ ist ein Nuklidname und damit ein Beispiel wie Radon-220 in fn6 (gezählt hat dort der Oberbegriff „Nuklid“), und die Halbwertszeit wird nach Zählregel 4 nur benutzt. Die erste Fassung dieser Seite führte „Altersbestimmung mit Kohlenstoff-14“ als ersten und „Alphazerfall und Betazerfall“ als zweiten Eintrag; das waren nach den fünf Zählregeln in Wahrheit DREI Einträge, und der erste hatte auf der Schülerseite kein Wort, an dem er hing (Gegenlesen 05.09.2026). Nicht neu eingeführt und nur als Rückverweis benutzt: Halbwertszeit T½ und Nuklid (fn6), Atomkern (fn1), Zerfall (fn6 — auf der Schülerseite von fn1 steht das Wort kein einziges Mal, gemessen über alle Seiten des Bandes; die erste Fassung schrieb es fn1 zu, Gegenlesen 05.09.2026), Alphastrahlung (α) und Betastrahlung (β) (fn3), radioaktive Strahlung (fn2), Elektron (fn4 — deshalb darf der Betazerfall-Satz es benutzen, ohne ein drittes Fachwort aufzumachen). „Paket“ im Alphazerfall-Satz ist ein Alltagswort ohne Formelzeichen und Einheit; was in dem Paket steckt (zwei Protonen und zwei Neutronen, ein Heliumkern), sagen Sie nur mündlich, wenn gefragt wird. Bewusst NICHT auf der Schülerseite, weil es das dritte bis sechste Wort wäre: „Zerfallsreihe“, „Massenzahl A“, „Kernladungszahl Z“, „stabil“, „Nuklidkarte“, „Heliumkern“ — der ganze Rechen- und Diagrammteil von rk8 entfällt ersatzlos, er war der schwerste Rechenschritt des Kapitels. Ebenso draußen: „Prozent“ und „datieren“. Nicht zählend nach Zählregel 5 sind die Alltagswörter ohne Formelzeichen und Einheit: „Fund“ (bekommt im Alltag den Begriffssatz „Das Holzstück ist ein Fund.“), „Viertel“, „Rest“, „Jahr“. Dass „Viertel“ trotzdem in der Wortbank steht, ist kein Verstoß gegen Zählregel 5, sondern Pflicht des Rendervertrags: Jedes Lückenwort einer Aufgabe und jedes Merksatz-Lückenwort MUSS in der Wortbank stehen, pruefe_profil.py meldet sonst einen Fehler. Der Halbsatz „und stehen nicht in der Wortbank“ in Zählregel 5 beschreibt den Normalfall und kann keine Bedingung sein — sonst dürfte kein Alltagswort je Lückenwort werden; fn6 hat aus demselben Grund „Hälfte“ in der Wortbank. Erklärt wird „Viertel“ an der Zahl: ein Viertel von 200 sind 50 (Vermutung 1 und Aufgabe 2). Datenlage und Fallen: (1) NACHGEMESSEN am 05.09.2026 mit simcheck/werte.js, vier Läufe, davon drei mit Kohlenstoff-14: Der Faktendump enthielt für Kohlenstoff-14 nur den Startzustand, weil simfakten jeden Knopf nur EINMAL drückt. Ohne diese Messung hätte auf der Seite keine Jahreszahl außer 5730 stehen dürfen. Belegt sind jetzt: 0 Jahre / 200 · 5730 Jahre / 100 · 11460 Jahre / 50 · 17190 Jahre / 25 · 22920 Jahre / 13. Die Messung steht in fakten/zerfall-halbwertszeit.json unter „nachgemessen“ und als vier zusätzliche Statuszeilen. (2) Was deterministisch ist und was nicht: Jahreszahl und erwartete Kernzahl sind bei jedem Lauf gleich — nur sie stehen in Tabelle und Merksatz. Die GEMESSENE Kernzahl ist zufällig; drei Läufe mit Kohlenstoff-14 ergaben nach einem Schritt 117, 103, 104 und nach zwei Schritten 69, 49, 52; die vierte Zahl der Messreihe (107) stammt von Radon-220 und gehört nicht hierher. Sie darf nie als gedruckte Lösung erscheinen und kommt deshalb nur dort vor, wo sie ausdrücklich Nours Messung ist (Aufgabe 3: „Nour misst 49“). Die Beispielzeile der Tabelle ist die Startzeile (0 Jahre / 200) — die einzige, die deterministisch UND wörtlich in der Statuszeile steht. Das gelöste Beispiel auf Seite B führt genau diese vorausgefüllte Zeile vor, wie fn5 (Zeile α), fn6 (Radon-220) und fn8 (Barium + Krypton). Die erste Fassung ließ es an der noch offenen Zeile nach zwei Schritten arbeiten und verriet damit beides auf einmal: den Inhalt dieser Zeile und die Lösung von Aufgabe 1 (Gegenlesen 05.09.2026). Aus demselben Grund steht der einzige senkrechte Pfeil des Bildes am VIERTEN Feld (25 Kerne → 17190 Jahre) und nicht mehr am dritten (50 Kerne → 11460 Jahre): Dort führte er genau die Zuordnung vor, nach der Aufgabe 1 wortgleich fragt — und das Bild liegt aufgeschlagen daneben. Am vierten Feld zeigt er dasselbe Verfahren und stützt zusätzlich die Fehlerdiagnose „eine Stufe zu weit gezählt (17190)“. Aus demselben Grund heißt es im Merksatz „erwartet man die Hälfte“ und nicht „ist die Hälfte übrig“, und die vier Bildfelder sind mit „erwartet: 200 Kerne“ … „erwartet: 25 Kerne“ beschriftet: Am Bildschirm stehen 103, 49 und 22, und Aufgabe 3 lebt genau von diesem Unterschied. Der Merksatz nennt außerdem ausdrücklich Kohlenstoff-14 — ohne diesen Namen liest ein Kind „jede Halbwertszeit dauert 5730 Jahre“, und daneben stehen auf demselben Bildschirm 55,6 s, 8,02 Tage, 30,17 Jahre und 24.110 Jahre. (3) Tausenderpunkt: Derselbe Bildschirm schreibt dieselbe Zahl zweimal verschieden — Teil 1 „Halbwertszeit 5730 Jahre“ ohne Trennzeichen, Teil 2 „das sind 5.730 Jahre“ mit Punkt. Das Heft druckt nach der Hausregel „Dezimalkomma, nie Dezimalpunkt“ durchgehend ohne Punkt (5730, 11460, 17190, 22920); ein Punkt würde von DaZ-Lernenden als Komma gelesen. Aus demselben Grund ist Plutonium-239 („24.110 Jahre“) hier wie in fn6 kein Thema. Weisen Sie beim Bedienen einmal auf den Punkt am Bildschirm hin; seit dem Gegenlesen sagt es auch Arbeitsschritt 4 („Trage alle Zahlen ohne Punkt ein“), damit das Kind den Hinweis dort hat, wo es die Tabelle füllt. (4) Der Schrittzähler wird von einem Nuklid-Knopf zurückgesetzt — nachgemessen, nachdem zuvor zwei Schritte mit Radon-220 gelaufen waren. Arbeitsschritt 1 braucht deshalb kein vorheriges „Zurücksetzen“; die offene Frage aus fn6 ist damit beantwortet. (5) Prozent entfällt vollständig. Der Bildschirm zeigt 100,0 % · 51,5 % · 24,5 % · 11,0 %; das sind Prozent von 200 und dazu zufällig streuend — zwei Hürden übereinander. Die Seite zählt ausschließlich in Kernen. (6) Der Wortlaut der Statuszeile wechselt: „Nach 0 Halbwertszeiten“, dann „Nach einer Halbwertszeit“, dann „Nach 2 Halbwertszeiten“. Wer die erste Spalte streng nach dem Bildschirm ausfüllen will, findet einmal ein Wort statt einer Ziffer. Die Tabelle gibt die erste Spalte deshalb vollständig vor (0, 1, 2, 3) und lässt nur die beiden Lesespalten offen. (7) Was die Simulation NICHT zeigt und was deshalb nirgends verlangt wird: dass nur Material von Lebewesen datierbar ist, dass die Aufnahme von Kohlenstoff-14 mit dem Tod aufhört, und alles über Alpha- und Betazerfall. Die Kette Lebewesen–Tod–Vorrat braucht drei Sätze und ist für A2 zu viel; sie steht weder im Alltag noch in einer Aufgabe. Erzählen Sie sie mündlich, wenn gefragt wird, warum das bei einem Stein nicht geht. Die beiden Erbe-Sätze zu Alpha- und Betazerfall bleiben aus demselben Grund ohne Aufgabe. (8) Ebenfalls nicht verlangt: das Diagramm mit den Kurven „erwartet: jedes Mal die Hälfte“ und „gemessen“. Es ist am Bildschirm vorhanden, aber ein Kurvenvergleich wäre die dritte neue Anforderung; deshalb zeigt der Bildauftrag ein Zeitband statt eines Diagramms. Das ist eine Entscheidung für das ganze Kapitel und keine Verschiebung: fn6 hatte den Vergleich auf fn7 verwiesen, hier trägt er nicht, weil beide Seiten schon zwei neue Anforderungen tragen. Der Kurvenvergleich entfällt damit im ganzen Band; der Verweis in fn6 ist nachgezogen. (9) Undruckbare Zeichen: Der Schrittknopf, der Rücksetzknopf und die Überschrift der Simulation tragen je ein Zeichen, für das SourceSans3 keine Glyphe hat. Es wird nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und es sonst als leeres Kästchen druckte. Die Knöpfe heißen im Heft durchgehend „Kohlenstoff-14“, „eine Halbwertszeit weiter“ und „Zurücksetzen“. Die Zeichen ● und ○ der Zeichenerklärung sind geprüft vorhanden und dürfen im Bildauftrag stehen. (10) Bewusst offen gelassen: die Formel N(t) = N₀ · (½)^(t/T½), die Modellgrenze mit 10²¹ Kernen aus fn6, und die Frage, wie ein Labor die Kerne überhaupt zählt — dazu zeigt die Simulation nichts. Hilfestufung: Hilfe 2 ist ein ABGESCHNITTENER Satzstarter („… weil 49 fast …“) und nennt die 50 nicht. Die erste Fassung schrieb den Satz zu Ende und war damit die voll gewertete Antwort auf Aufgabe 3 — dazu nahm sie Hilfe 3 ihr Lösungswort vorweg, obwohl der Lehrerteil an zwei Stellen sagt, die 50 komme erst aus Hilfe 3. Der Renderer druckt alle drei Hilfen offen unter die Schreiblinien; ein zu Ende geschriebener Satzstarter steht dem Kind also beim Schreiben vor Augen (Gegenlesen 05.09.2026). Kein Text der Seite nennt eine Antwortposition; seiten_nachbereiten.py darf Vermutungen und Optionen frei umsortieren."
+ }
+}

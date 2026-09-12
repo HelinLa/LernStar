@@ -1,0 +1,172 @@
+[
+ {
+  "sim": "kraft-wirkung",
+  "ueberschrift": "💪 Woran erkennt man, dass eine Kraft wirkt?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🟢 Verformen",
+    "ruft": "_kwkSet('verform')"
+   },
+   {
+    "aufschrift": "🛒 Bewegen",
+    "ruft": "_kwkSet('bewegen')"
+   },
+   {
+    "aufschrift": "⚽ Richtung ändern",
+    "ruft": "_kwkSet('umlenken')"
+   },
+   {
+    "aufschrift": "💥 Kraft wirken lassen",
+    "ruft": "_kwkGo()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_kwkReset()"
+   },
+   {
+    "aufschrift": "An ihrer Wirkung (Form, Tempo oder Richtung ändern sich)",
+    "ruft": "_kwkAns(0,0)"
+   },
+   {
+    "aufschrift": "Man sieht die Kraft selbst",
+    "ruft": "_kwkAns(0,1)"
+   },
+   {
+    "aufschrift": "An ihrer Farbe",
+    "ruft": "_kwkAns(0,2)"
+   },
+   {
+    "aufschrift": "Verformung",
+    "ruft": "_kwkAns(1,0)"
+   },
+   {
+    "aufschrift": "Bewegungsänderung",
+    "ruft": "_kwkAns(1,1)"
+   },
+   {
+    "aufschrift": "gar keine Kraft",
+    "ruft": "_kwkAns(1,2)"
+   },
+   {
+    "aufschrift": "Verformung",
+    "ruft": "_kwkAns(2,0)"
+   },
+   {
+    "aufschrift": "Richtungsänderung",
+    "ruft": "_kwkAns(2,1)"
+   },
+   {
+    "aufschrift": "Bewegungsänderung",
+    "ruft": "_kwkAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_kwkSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_kwkSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_kwkSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('kraftwirkung')"
+   }
+  ],
+  "hinweise": [
+   "Eine Kraft sieht man nicht – aber man erkennt sie an ihrer Wirkung. Wähle eine Wirkung und lass die Kraft wirken.",
+   "Eine Kraft kann einen Körper verformen, ihn in Bewegung setzen oder abbremsen oder seine Richtung ändern. Immer wenn sich Form, Tempo oder Richtung ändern, hat eine Kraft gewirkt.",
+   "Kräfte erkennt man nur an dem, was sie bewirken – nicht am Aussehen der Kraft selbst."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kwkStatus: 🟢 Verformen: Drücke auf „Kraft wirken lassen“: Was passiert mit der weichen Knete?"
+   },
+   {
+    "einstellung": "🟢 Verformen",
+    "text": "kwkStatus: 🟢 Verformen: Drücke auf „Kraft wirken lassen“: Was passiert mit der weichen Knete?"
+   },
+   {
+    "einstellung": "🛒 Bewegen",
+    "text": "kwkStatus: 🛒 Bewegen: Drücke auf „Kraft wirken lassen“: Der ruhende Wagen bekommt einen Schubs."
+   },
+   {
+    "einstellung": "⚽ Richtung ändern",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß."
+   },
+   {
+    "einstellung": "💥 Kraft wirken lassen",
+    "text": "kwkStatus: ⚽ Richtung ändern: Die Kraft von oben lenkt den rollenden Ball ab – seine Richtung ändert sich."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß."
+   },
+   {
+    "einstellung": "An ihrer Wirkung (Form, Tempo oder Richtung ändern sich)",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✓ Richtig! Kräfte sind unsichtbar – man erkennt sie nur an ihrer Wirkung."
+   },
+   {
+    "einstellung": "Man sieht die Kraft selbst",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Nein, eine Kraft selbst ist unsichtbar."
+   },
+   {
+    "einstellung": "An ihrer Farbe",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe."
+   },
+   {
+    "einstellung": "Verformung",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Der Ball wird hier nicht platt gedrückt."
+   },
+   {
+    "einstellung": "Bewegungsänderung",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✓ Richtig! Aus der Ruhe schneller werden ist eine Bewegungsänderung."
+   },
+   {
+    "einstellung": "gar keine Kraft",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben."
+   },
+   {
+    "einstellung": "Verformung",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✓ Richtig! Der Schwamm wird verformt."
+   },
+   {
+    "einstellung": "Richtungsänderung",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er ändert dabei nicht die Richtung."
+   },
+   {
+    "einstellung": "Bewegungsänderung",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er bewegt sich dabei nicht fort."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er bewegt sich dabei nicht fort.  ||  kwkSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er bewegt sich dabei nicht fort.  ||  kwkSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er bewegt sich dabei nicht fort."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "kwkStatus: ⚽ Richtung ändern: Drücke auf „Kraft wirken lassen“: Der Ball rollt geradeaus und bekommt einen Stoß.  ||  kwkFb0: ✗ Kräfte haben keine Farbe.  ||  kwkFb1: ✗ Doch – ohne Kraft würde er liegen bleiben.  ||  kwkFb2: ✗ Er bewegt sich dabei nicht fort."
+   }
+  ],
+  "bildtexte": [
+   "Wirkung: verformen",
+   "Kraft",
+   "Wirkung: bewegen",
+   "Start",
+   "Wirkung: Richtung ändern",
+   "ohne Kraft: geradeaus"
+  ]
+ }
+]

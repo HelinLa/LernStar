@@ -1,0 +1,196 @@
+{
+ "seite": {
+  "id": "fv3",
+  "quelle": "ev3",
+  "sim": "elektromagnet",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Kran auf dem Schrottplatz",
+  "name": "Wie baut man einen Magneten zum Anschalten?",
+  "fachwoerter_neu": [
+   "Elektromagnet",
+   "Tragkraft"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen Kran auf dem Schrottplatz.",
+   "Der Kran hält schweres Eisen fest. Dann lässt er los.",
+   "Im Kran steckt eine Spule aus Draht. Der Eisenstab darin heißt Eisenkern.",
+   "Beide zusammen sind ein Elektromagnet. Wie viel er halten kann, heißt Tragkraft."
+  ],
+  "frage": "Wie ändert sich die Tragkraft, wenn mehr Strom fließt?",
+  "predict": [
+   "Die Tragkraft wird größer. Der Magnet hält mehr Klammern.",
+   "Die Tragkraft bleibt gleich. Mehr Strom ändert nichts."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst „Stromstärke ändern“. Sonst füllt sich die falsche Tabelle.",
+   "Drücke danach „Beispielmessreihe“. Lies die Tragkraft bei 1 A, 3 A und 5 A ab.",
+   "Trage die zwei Zahlen ein. Vergleiche jede Zeile mit der davor.",
+   "Lies am Bildschirm den Satz über den Eisenkern."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Welche Stromstärke I?",
+   "Wie viele Büroklammern hält der Magnet?",
+   "Mehr oder weniger als vorher?"
+  ],
+  "tabRows": [
+   [
+    "1 A",
+    "deine Zahl vom Bildschirm",
+    "Anfang, kein Vergleich"
+   ],
+   [
+    "3 A",
+    "",
+    ""
+   ],
+   [
+    "5 A",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Elektromagnet ist nur ein Magnet, solange",
+    "loesung": "Strom",
+    "post": "fließt."
+   },
+   {
+    "pre": "Mehr Strom macht die Tragkraft",
+    "loesung": "größer",
+    "post": ". Ohne Strom fallen die Büroklammern herunter."
+   }
+  ],
+  "wortbank": [
+   "Strom",
+   "größer",
+   "kleiner",
+   "ausschalten"
+  ],
+  "beispiel": {
+   "frage": "Wie füllst du die Zeile für 3 A?",
+   "antwort": "Bei 3 A steht in der Spalte „Tragkraft (Büroklammern)“ eine Zahl. Diese Zahl schreibst du in die Tabelle. Sie ist größer als bei 1 A. In die letzte Spalte schreibst du: mehr."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Kern macht den Magneten stärker?",
+    "optionen": [
+     "Ein Kupferkern",
+     "Ein Holzstab",
+     "Ein Eisenkern"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Kranfahrer will den Schrott loslassen. Er muss den Strom",
+      "loesung": "ausschalten",
+      "post": "."
+     },
+     {
+      "pre": "Bei 1 A hält der Magnet weniger Klammern. Die Tragkraft ist dort",
+      "loesung": "kleiner",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum nimmt der Kran einen Elektromagneten und keinen normalen Magneten?",
+    "satzstarter": "Der Kran nimmt einen Elektromagneten, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Für Aufgabe 1 hilft der Satz oben am Bildschirm.",
+   "h2": "Beginne so: Der Kran nimmt einen Elektromagneten, weil er den Strom …",
+   "h3": "Fast fertig: Der Kran nimmt einen Elektromagneten, weil er den Strom ___ kann. Dann fällt der Schrott herunter."
+  },
+  "selbstcheck": [
+   "Ich kann die Tragkraft ablesen und in die Tabelle eintragen.",
+   "Ich kann sagen: Mehr Strom macht die Tragkraft größer.",
+   "Ich weiß: Ohne Strom ist die Spule kein Magnet."
+  ],
+  "zuhause": "Prüfe zu Hause einen Kühlschrankmagneten. Kannst du ihn ausschalten?",
+  "bildauftrag": "[BILD: eine einzige große, kontrastreiche Szene, kein Vorher-Nachher und keine Bildfolge. Links oben ragt der Ausleger eines Schrottplatzkrans ins Bild, daran hängt an einem Stahlseil eine große runde Magnetplatte waagerecht über einem Schrotthaufen. An der Unterseite der Platte klebt ein unregelmäßiges Büschel aus Eisenschrott (verbogene Stäbe, Blechstücke) – bewusst als dichtes, ineinander hängendes Büschel gezeichnet, NICHT als abzählbare Reihe gleicher Teile, und ohne jede Zahl daneben. Rechts im selben Bild öffnet sich EIN rundes Ausschnittfenster in die Magnetplatte hinein, mit zwei dünnen geraden Führungslinien an der Platte angebunden, sodass klar bleibt: Das ist dieselbe Platte von innen, kein zweites Bild. Im Fenster liegt waagerecht ein dicker Eisenstab als geschlossene graue Fläche mit der großen Beschriftung „Eisenkern“; darum sind gleichmäßige Drahtwindungen gewickelt, deutlich als runder Draht mit Zwischenraum gezeichnet und mit der Beschriftung „Spule aus Draht“. Aus der Spule treten genau ZWEI Drahtenden heraus, sie laufen als zwei durchgehende Linien am Stahlseil entlang nach oben zu einem gut sichtbaren Kippschalter mit heruntergedrücktem Hebel (Beschriftung „Schalter: an“) und weiter zu einem einfachen Batteriesymbol (Beschriftung „Batterie“). Beide Drahtenden enden sichtbar an Schalter und Batterie, keines läuft ins Leere aus. Weitere Beschriftungen groß und waagerecht: „Kranmagnet“ an der Platte, „Schrott aus Eisen“ am Haufen. Drei Fehler, die hier drohen und ausdrücklich nicht vorkommen dürfen: (1) KEINE Magnetfeldlinien und keine Feldpfeile – weder Bögen um die Spule noch Pfeile, die frei im Bild aufhören; die einzigen Linien, die vom Magneten weggehen, sind die zwei Drähte, und die enden an Schalter und Batterie. (2) KEIN Nebenbild – kein zweites Kranbild daneben, kein ausgeschalteter Zustand, kein Diagramm, kein Vergleichsstreifen am Rand; nur diese eine Szene mit dem einen Ausschnittfenster. (3) Eisenkern und Magnetplatte sind geschlossene graue Flächen, KEINE Schraffur und keine Streifenmuster – gestreift ist im ganzen Bild nur der gewickelte Draht, und der ist Draht. Außerdem: keine Zahlen im Bild (keine Ampere-Angabe, keine Stückzahl), keine Personen, kein weiterer Text als die sechs genannten Beschriftungen. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv3",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation die Stromreihe ein, lesen die Tragkraft in Büroklammern ab und tragen sie ein. Sie erkennen daran zwei Dinge: Der Elektromagnet ist nur ein Magnet, solange Strom fließt, und mehr Strom macht die Tragkraft größer. WICHTIG FÜR DIE KORREKTUR: Die Tragkraft dieser Simulation ist eine Zufallszahl. Über 14 Läufe gemessen schwankt sie um rund eine Klammer nach oben oder unten. Belegt sind die beiden Zeilen, die im Heft verglichen werden: bei 1 A kamen 4 oder 5 Klammern heraus, bei 5 A 22 oder 23. Für die mittlere Zeile 3 A liegt bisher ein einziger Lauf vor (13) – eine Spanne ist dort noch nicht gemessen, erwarten Sie also keine bestimmte Zahl. Wie breit die Streuung werden kann, zeigt eine Stromstärke, die im Heft gar nicht vorkommt: bei 4 A lieferten die Läufe 17, 18 oder 19. Es gibt deshalb auf dieser Doppelseite KEINEN richtigen Zahlenwert. Verglichen wird nur die Richtung: Von Zeile zu Zeile wird die Zahl größer. Streichen Sie keine Schülerzahl als falsch an – auch dann nicht, wenn zwei Kinder nebeneinander verschiedene Zahlen haben. Genau darum fragt die dritte Tabellenspalte nach „mehr oder weniger als vorher?“ und nicht nach einem Sollwert. Der fachliche Zusammenhang dahinter – die Tragkraft wächst gleichmäßig mit der Stromstärke – steht nur hier, nicht auf der Schülerseite.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten, die Sie nach der folgenden Anleitung selbst anlegen – gedruckt stehen sie hier bewusst nicht, weil die Simulation ihre Zahlen bei jedem Lauf neu würfelt. Optional als Demonstration: ein Eisennagel, ein paar Meter isolierter Draht und eine Flachbatterie – Nagel umwickeln, Drahtenden an die Batterie halten, Büroklammern aufnehmen und durch Abnehmen eines Drahtendes wieder fallen lassen. Nur mit ungefährlicher Batterie-Kleinspannung arbeiten; die Simulation schreibt diesen Hinweis selbst in ihre Statuszeile. Der Draht wird dabei warm – kurz halten.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Bester Weg: Öffnen Sie die Simulation einmal vorher selbst, drücken Sie „Stromstärke ändern“ und danach „Beispielmessreihe“ und schreiben Sie IHRE drei Zahlen für 1 A, 3 A und 5 A auf drei Karten. Diese Zahlen gelten dann für die Klasse. Sie stehen bewusst nicht gedruckt hier: Die Simulation würfelt sie bei jedem Lauf neu. Die Karte „1 A“ ist dabei nur der Vergleichswert – im Heft ist diese Zeile schon als Beispiel gesetzt, eingetragen werden die Zeilen 3 A und 5 A. Zweiter Weg, ganz ohne Gerät: drei Karten nur mit Worten – Karte „1 A“: „wenige Büroklammern“, Karte „3 A“: „deutlich mehr als bei 1 A“, Karte „5 A“: „am meisten, fast die ganze Anzeige“. Am Bildschirm steht dazu die Grenze „(Anzeige bis 24 Stück)“. In die mittlere Tabellenspalte kommt dann der Kartentext statt einer Zahl; die dritte Spalte („mehr oder weniger als vorher?“) bleibt unverändert die eigentliche Aufgabe und funktioniert mit Worten genauso. Dazu als Tafelbild der Kranmagnet im Schnitt: ein Eisenstab mit dem Wort „Eisenkern“, darum gewickelter Draht mit dem Wort „Spule aus Draht“, zwei Drahtenden zu einem Schalter und einer Batterie. Darunter groß die drei Sätze, die in der Simulation dauerhaft oben stehen: „Mehr Windungen → stärker“, „Mehr Strom → stärker“, „der Eisenkern verstärkt den Magneten“. Diese drei Sätze tragen Aufgabe 1.",
+  "merksatz": [
+   "Strom",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "3 A",
+    "eigene Zahl der Klasse – sie schwankt bei jedem Lauf, kein Sollwert",
+    "mehr"
+   ],
+   [
+    "5 A",
+    "eigene Zahl der Klasse – sie schwankt bei jedem Lauf, kein Sollwert",
+    "mehr"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Antwort steht dauerhaft oben am Bildschirm, in der Hinweiszeile: „der Eisenkern verstärkt den Magneten“. Genau dorthin schickt Arbeitsschritt 4 auf Seite A („Lies am Bildschirm den Satz über den Eisenkern.“) – die Klasse hat die Zeile also schon gelesen, bevor sie ankreuzt; Hilfe 1 verweist nur noch einmal darauf. Wer die drei Knöpfe drückt, bekommt außerdem die Rückmeldungen: bei „Ein Eisenkern“ ✓ „Richtig! Der Eisenkern bündelt und verstärkt das Magnetfeld.“, bei „Ein Kupferkern“ ✗ „Kupfer ist nicht magnetisch – es verstärkt nichts.“, bei „Ein Holzstab“ ✗ „Holz hat keine Wirkung auf den Magneten.“ Die drei Antworttexte der Aufgabe sind wörtlich die drei Knöpfe der Simulation.",
+   "typische_fehler": [
+    "„Ein Kupferkern“ wird angekreuzt, weil der Draht der Spule aus Kupfer ist. Zwei Rollen trennen: Der Draht leitet den Strom, der Kern verstärkt den Magneten. Am Bild zeigen: Draht außen, Kern innen.",
+    "„Ein Holzstab“ wird angekreuzt, weil Holz „leicht“ ist und der Kran ja etwas heben soll. Rückmeldung der Simulation vorlesen lassen.",
+    "Alle drei Knöpfe werden nacheinander gedrückt, bis das Häkchen kommt, ohne zu lesen. Erst die Hinweiszeile oben lesen lassen, dann ankreuzen, dann prüfen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "ausschalten",
+    "kleiner"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „einschalten“. Der Satz sagt aber: Der Kranfahrer will loslassen. Am Tafelbild den Schalter zeigen und einmal laut durchspielen: Strom aus, Schrott fällt.",
+    "In Lücke 1 steht „abschalten“ oder „ausmachen“. In der Sache richtig, voll werten; die Wortbank gibt die verlangte Form „ausschalten“ vor, einmal abschreiben lassen.",
+    "In Lücke 2 steht „größer“ statt „kleiner“ – der Vergleich wurde von der falschen Seite gelesen. Zurück in die Tabelle: 1 A ist die erste Zeile, 5 A die letzte.",
+    "Beide Lücken bekommen dasselbe Wort. Vier Wörter stehen in der Wortbank, jedes wird in den Aufgaben genau einmal gebraucht – zwei davon im Merksatz. („ausschalten“ steht zusätzlich in Hilfe 3; das ist die Hilfe, keine weitere Lücke.)"
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Kran nimmt einen Elektromagneten, weil er ihn ausschalten kann. Ohne Strom ist die Spule kein Magnet. Dann fällt der Schrott von allein herunter. Ein normaler Magnet hält immer. Damit bekäme der Kranfahrer die Last nicht wieder los.",
+   "alternativen": [
+    "Kurzfassung ohne den zweiten Satz: „weil er ihn ausschalten kann und der Schrott dann herunterfällt“ – reicht für die volle Wertung.",
+    "Über den Vorteil formuliert, wie ihn die Simulation nennt: „Nur bei Stromfluss entsteht das Magnetfeld – das ist der Vorteil.“",
+    "Umgekehrter Weg über den Dauermagneten: „Ein normaler Magnet klebt immer fest, man bekommt den Schrott nicht wieder ab.“",
+    "Zusatz, richtig aber nicht verlangt: „Mit mehr Strom kann er auch schwerere Teile heben.“"
+   ],
+   "typische_fehler": [
+    "Es wird die Stärke genannt statt der Schaltbarkeit: „weil er stärker ist“. Nachfragen: Wie bekommt der Kran den Schrott wieder los?",
+    "Der Elektromagnet wird für den stärksten Magneten überhaupt gehalten. Die Seite behauptet das nicht – verglichen wird nur an- und ausschalten.",
+    "Als Lösung wird vorgeschlagen, den Schrott abzuschütteln oder herunterzuziehen. Alltagslösung statt Physik; auf den Schalter im Bild zurückverweisen.",
+    "Es wird nur „weil er Strom hat“ geschrieben. Der zweite Halbsatz fehlt: Was passiert, wenn der Strom weg ist? Hilfe 3 gibt genau diesen Schritt vor."
+   ]
+  },
+  "hilfe3_wort": "ausschalten (auch richtig: abschalten, ausmachen) – das Wort steht in der Wortbank, wie Hilfe 1 es zusagt",
+  "schwache": [
+   "Vorher gemeinsam festlegen, welche zwei Knöpfe die Tabelle füllen: „Stromstärke ändern“ und danach „Beispielmessreihe“. Wer stattdessen „Windungszahl ändern“ drückt, bekommt die Windungsreihe – die Tabelle füllt sich dann mit anderen Zeilen und passt nicht zum Heft. Dazu gehören noch die drei Antwortknöpfe der Bildschirmfrage „Ein Kupferkern / Ein Eisenkern / Ein Holzstab“: Sie sind die Selbstkontrolle zu Aufgabe 1 und dürfen ausdrücklich gedrückt werden. Nicht gebraucht werden hier: die beiden anderen Quizfragen, „Messwert übernehmen“, „Tabelle leeren“, „Theoriefunktion“, „Feld leeren“, zwei Knöpfe für die Diagrammwahl, drei Knöpfe für das eigene Gefühl und einer, der das Protokoll zurücksetzt.",
+   "Vor dem Öffnen ansagen: Eure Zahlen dürfen sich von denen der Nachbarn unterscheiden. Niemand hat deshalb falsch gemessen. Gleich bleibt nur, dass die Zahl nach unten hin größer wird.",
+   "In der Bildschirmtabelle mit dem Finger die Spalte „Stromstärke I in A“ abfahren und nur die Zeilen 1 A, 3 A und 5 A suchen. Die Zeile mit 2 A und die mit 4 A überspringen wir. Die Zahl bei 1 A wird nur gelesen, nicht geschrieben: Sie ist der Vergleichswert für die Zeile 3 A; ins Heft kommen zwei Zahlen.",
+   "Nur die mittlere Spalte allein ausfüllen lassen; die dritte Spalte („mehr oder weniger als vorher?“) gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und laut lesen: Strom, größer, kleiner, ausschalten."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Öffne die Simulation ein zweites Mal. Drücke wieder „Stromstärke ändern“ und „Beispielmessreihe“. Vergleiche die neuen Zahlen mit deinen ersten. Sind einzelne Zahlen anders geworden? Und bleibt die Reihenfolge trotzdem gleich – 1 A am wenigsten, 5 A am meisten? Schreibe einen Satz dazu.",
+  "kernlehrplan": "Inhaltsfeld 10 Elektrische Energieversorgung · Basiskonzept Wechselwirkung: Magnetfelder von Leitern und Spulen. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der Stromreihe und das Ablesen tragen E4 und E5; K3 liegt im ganzen Band einheitlich auf dem AUSFÜLLEN DER TABELLE, hier also auf dem Eintragen der zwei Tragkraft-Zahlen und der Spalte „mehr oder weniger als vorher?“ – nicht auf dem Zuhause-Auftrag, der Präsentieren wäre; der Vergleich der Zeilen UF3; Aufgabe 1 (Kupferkern – Eisenkern – Holzstab auseinanderhalten und den passenden Kern auswählen) zusammen mit Merksatz 1 (Spule + Eisenkern + Strom ergeben den Elektromagneten) UF2; die Erklär-Aufgabe zum Kran UF4 und E6; Merksatz 1 und Selbstcheck 3 („Ohne Strom ist die Spule kein Magnet“) UF1. Abgleich mit der Quellanalyse: Sie führt für ev3 UF1, UF2, UF4 und E6; alle vier bleiben, UF2 ausdrücklich, weil ev3 in dieser Sequenz sein alleiniger Träger ist. E4, E5 und UF3 kommen hinzu, weil das Förderheft die Messreihe selbst einstellen, ablesen und zeilenweise vergleichen lässt, statt eine fertige Tabelle auszuwerten; K3 liegt bandweit einheitlich auf der Tabelle (Entscheidung des Seitenplans). Fachwortzählung: neu sind genau ZWEI Wörter, „Elektromagnet“ und „Tragkraft“, beide im Alltagsteil mit Begriffssatz eingeführt („Beide zusammen sind ein Elektromagnet.“ / „Wie viel er halten kann, heißt Tragkraft.“). „Spule“ und „Eisenkern“ tragen im Alltagsteil jetzt ebenfalls einen Begriffssatz („Im Kran steckt eine Spule aus Draht. Der Eisenstab darin heißt Eisenkern.“) und stehen weder in der Wortbank noch in einer Merksatz-Lücke; sie zählen deshalb nach Zählregel 2 nicht mit. Dieser Satz muss stehen bleiben: „Eisenkern“ ist die Lösung von Aufgabe 1, kommt in den Bänden 7, 8 und 9 kein einziges Mal vor und wird von fv8 („Darin liegen zwei Spulen auf einem Eisenkern“) als bekannt vorausgesetzt – fv3 ist der einzige mögliche Träger. „Windungen“ kommt auf der Schülerseite bewusst NICHT mehr vor: Arbeitsschritt 1 warnt jetzt mit „Sonst füllt sich die falsche Tabelle“ statt mit einem Wort, das das Kind am Bildschirm nirgends wiederfindet. Dort heißen die Bedienelemente „Windungszahl ändern“ und „Windungszahl N“ – nennen Sie das beim Bedienen einmal, damit niemand den falschen Knopf drückt. „Stromstärke I in A“ wird hier NICHT eingeführt, sie stammt aus dem Elektrizitätskapitel (Förderband 8, fs4) und ist nach Zählregel 4 nur Rückverweis. Bewusst vermieden, weil es das dritte bis siebte Wort wäre: proportional, Ursprungsgerade, Steigung, Theoriefunktion, Magnetfeld B. Datenlage und Fallen: (1) DIE TRAGKRAFT IST EINE ZUFALLSZAHL. In 14 Läufen gemessen, geordnet nach den Zeilen des Hefts: 1 A ergab 4 oder 5 Klammern, 5 A ergab 22 oder 23; für 3 A liegt bisher genau ein Lauf vor (13), die Spanne dort ist nicht gemessen. Wie breit die Streuung werden kann, zeigt 4 A mit 17, 18 oder 19 – diese Stromstärke kommt im Heft nicht vor und ist hier nur der Beleg für die Schwankung. Auf der Schülerseite, in der Tabelle, im Lösungsteil und in jeder Aufgabe steht deshalb KEIN fester Tragkraft-Wert. Die dritte Tabellenspalte fragt nach der Richtung, nicht nach einer Zahl; „tabelle_erwartet“ oben trägt aus demselben Grund Worte statt Zahlen. Wer hier einen Sollwert nachträgt, macht jede zweite Schülerlösung falsch. (2) Der Arbeitsschritt MUSS den Knopf „Stromstärke ändern“ nennen. Ohne ihn bleibt die Simulation im Ausgangszustand mit fest eingestellten 2 A und zeigt beim Knopf „Beispielmessreihe“ die Windungsreihe statt der Stromreihe; die Tabelle im Heft passt dann nicht. Nachgelesen im Faktendump: Der Ausgangszustand meldet „I fest = 2 A“, erst nach „Stromstärke ändern“ meldet er „N fest = 150“. (3) Die Beispielmessreihe legt Zeilen für 1, 2, 3, 4 und 5 A an, alle bei 150 Windungen. Das Heft nimmt daraus 1 A, 3 A und 5 A – drei Zeilen genügen für die Richtung, und die Sprünge sind groß genug, dass die Zufallsschwankung sie nicht umdreht. GESCHRIEBEN werden davon aber nur zwei: Die 1-A-Zeile ist die gedruckte Beispielzeile und deshalb getönt, ohne Schreiblinie; der Renderer zieht eine Linie nur für leere Zellen ab Zeile 2. Arbeitsschritt 2 lässt alle drei Zeilen ABLESEN (die 1-A-Zahl ist der Vergleichswert), Arbeitsschritt 3 verlangt genau zwei Eintragungen, und das gelöste Beispiel erklärt die Zeile für 3 A – nicht die schon fertige erste Zeile. (4) Die Verdopplungsregel des Bildschirms („doppelter Strom = doppelte Tragkraft“) steht bewusst NICHT auf der Schülerseite. Sie ist mit den schwankenden Zahlen nicht nachprüfbar: Schon in der Beispielmessreihe verdoppelt sich die Zahl von 1 A auf 2 A nicht sauber, und bei 4 A schwankt sie über drei Werte. Gesagt wird nur: mehr Strom, mehr Tragkraft. (5) Ebenfalls nicht verlangt: die Windungsreihe. Für 50 und 300 Windungen ist im Faktendump kein einziger Messwert belegt, nur die Merkzeile „Mehr Windungen → stärker“. Die bleibt qualitativ und trägt keine Bildschirmaufgabe. (6) Zwei Zahlen des Regelhefts sind falsch und dürfen nicht zurückkommen: die Steigung „4,42 Büroklammern pro Ampere“ (am Bildschirm steht 4,51 Klammern pro Ampere, y = 4,508·x bei R² = 0,9994) und „22 Klammern bei 5 A“ als fester Wert. Gerechnet wird auf dieser Seite ohnehin nicht. (7) Werkzeugartefakt: Im Faktendump stehen Bildtexte wie „I = 50 A“ mit 225 Büroklammern bis „I = 300 A“ mit 1350 Büroklammern. Sie entstehen, wenn der Windungsregler bei stehendem Strommodus bewegt wird. 300 A widerspricht dem Bildschirmhinweis „nur mit ungefährlicher Batterie-Kleinspannung“ – diese Zahlen gehören nicht ins Heft und nicht an die Tafel. (8) Anzeigegrenze: Am Bildschirm steht „(Anzeige bis 24 Stück)“, und bei 5 A liegt die Zahl schon dicht darunter. Stellen Sie keine Zusatzfrage, deren Ergebnis über 24 läge. (9) Undruckbare Zeichen: Sechs Knöpfe der Simulation und ihre Überschrift tragen vor dem Wort ein Emoji, eine Rückmeldung endet mit einem Smiley. SourceSans3 hat dafür keine Glyphe. Alle Knopfnamen stehen deshalb überall ohne dieses Zeichen – auch hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. (10) Offen gelassen und deshalb nicht abgefragt: der Reglerbereich im Strommodus (der Dump zeigt nur den Windungsregler von 50 bis 300), was das Protokoll sammelt, und ob „Tabelle leeren“ und ein zweiter Durchgang neue Zufallszahlen erzeugen – die Zusatzaufgabe lässt die Simulation deshalb neu öffnen und ist so formuliert, dass sie auch dann trägt, wenn die Zahlen gleich bleiben. Das Wort „Schütz“ aus dem Regelheft entfällt ersatzlos; der Alltagsanker ist durchgehend der Schrottplatzkran und zeigt denselben Mechanismus."
+ }
+}

@@ -1,0 +1,177 @@
+[
+ {
+  "sim": "stromstaerke",
+  "ueberschrift": "🔋 Was ist der elektrische Strom (Stromstärke)?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Strom schwach",
+    "ruft": "_staSet('schwach')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_staSet('mittel')"
+   },
+   {
+    "aufschrift": "stark",
+    "ruft": "_staSet('stark')"
+   },
+   {
+    "aufschrift": "🔘 Schalter: geschlossen",
+    "ruft": "_staSchalter()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_staReset()"
+   },
+   {
+    "aufschrift": "Aus Wärme",
+    "ruft": "_staAns(0,0)"
+   },
+   {
+    "aufschrift": "Aus bewegten Ladungen",
+    "ruft": "_staAns(0,1)"
+   },
+   {
+    "aufschrift": "Aus Licht",
+    "ruft": "_staAns(0,2)"
+   },
+   {
+    "aufschrift": "Parallel zur Lampe",
+    "ruft": "_staAns(1,0)"
+   },
+   {
+    "aufschrift": "In Reihe in den Stromkreis",
+    "ruft": "_staAns(1,1)"
+   },
+   {
+    "aufschrift": "Außen ans Gehäuse",
+    "ruft": "_staAns(1,2)"
+   },
+   {
+    "aufschrift": "0 A (kein Strom)",
+    "ruft": "_staAns(2,0)"
+   },
+   {
+    "aufschrift": "Genauso groß wie vorher",
+    "ruft": "_staAns(2,1)"
+   },
+   {
+    "aufschrift": "Doppelt so groß",
+    "ruft": "_staAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_staSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_staSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_staSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('stromstaerke')"
+   }
+  ],
+  "hinweise": [
+   "Im geschlossenen Kreis fließen Ladungen. Verändere, wie viel fließt, und lies die Stromstärke am Amperemeter ab. Mit dem Schalter öffnest du den Kreis. (Nur ungefährliche Kleinspannung: 4,5-V-Batterie.)",
+   "Der elektrische Strom besteht aus bewegten Ladungen. Die Stromstärke I gibt an, wie viel Ladung pro Sekunde fließt. Je mehr Ladungen pro Sekunde, desto größer die Stromstärke – und desto heller die Lampe. Einheit: Ampere (A). Gemessen wird mit dem Amperemeter, das in Reihe im Kreis liegt.",
+   "Kreis offen → kein Strom (I = 0 A). | Amperemeter misst die Stromstärke in Reihe."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller."
+   },
+   {
+    "einstellung": "Strom schwach",
+    "text": "staStatus: Stromstärke I = 0,10 A (schwach). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller."
+   },
+   {
+    "einstellung": "stark",
+    "text": "staStatus: Stromstärke I = 0,60 A (stark). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller."
+   },
+   {
+    "einstellung": "🔘 Schalter: geschlossen",
+    "text": "staStatus: Der Kreis ist offen – es fließen keine Ladungen. Stromstärke I = 0 A, die Lampe bleibt dunkel."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller."
+   },
+   {
+    "einstellung": "Aus Wärme",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Wärme kann entstehen, ist aber nicht der Strom selbst."
+   },
+   {
+    "einstellung": "Aus bewegten Ladungen",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✓ Richtig! Strom ist die Bewegung von Ladungen."
+   },
+   {
+    "einstellung": "Aus Licht",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst."
+   },
+   {
+    "einstellung": "Parallel zur Lampe",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Parallel wird das Voltmeter geschaltet."
+   },
+   {
+    "einstellung": "In Reihe in den Stromkreis",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✓ Richtig! Das Amperemeter liegt in Reihe – der Strom fließt hindurch."
+   },
+   {
+    "einstellung": "Außen ans Gehäuse",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen."
+   },
+   {
+    "einstellung": "0 A (kein Strom)",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✓ Richtig! Bei offenem Kreis fließt kein Strom."
+   },
+   {
+    "einstellung": "Genauso groß wie vorher",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Ohne geschlossenen Kreis fließt nichts."
+   },
+   {
+    "einstellung": "Doppelt so groß",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Der Strom wird nicht größer, sondern null."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Der Strom wird nicht größer, sondern null.  ||  staSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Der Strom wird nicht größer, sondern null.  ||  staSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Der Strom wird nicht größer, sondern null."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "staSchalter: 🔘 Schalter: geschlossen  ||  staStatus: Stromstärke I = 0,30 A (mittel). Mehr Ladungen pro Sekunde → größere Stromstärke → Lampe heller.  ||  staFb0: ✗ Licht ist eine Wirkung, nicht der Strom selbst.  ||  staFb1: ✗ Es muss im Stromkreis liegen.  ||  staFb2: ✗ Der Strom wird nicht größer, sondern null."
+   }
+  ],
+  "bildtexte": [
+   "4,5 V",
+   "Schalter",
+   "A",
+   "0,30 A",
+   "Strom mittel – I = 0,30 A",
+   "0,10 A",
+   "Strom schwach – I = 0,10 A",
+   "0,60 A",
+   "Strom stark – I = 0,60 A",
+   "0 A",
+   "Kreis offen – kein Strom"
+  ]
+ }
+]

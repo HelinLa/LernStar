@@ -1,0 +1,191 @@
+{
+ "seite": {
+  "id": "fk11",
+  "quelle": "kf11",
+  "sim": "druck-flaeche",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Vier Dellen im neuen Podest",
+  "name": "Warum sinkt der schmale Fuß ein?",
+  "fachwoerter_neu": [
+   "Druck p in Pascal (Pa)",
+   "Fläche A"
+  ],
+  "alltag": [
+   "Die schmalen Rollen des Klaviers drücken Dellen in das Podest.",
+   "Herr Kessler legt breite Bretter unter: keine Delle mehr.",
+   "Die Fläche, auf der etwas aufliegt, heißt Fläche A."
+  ],
+  "frage": "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
+  "predict": [
+   "Bei gleicher Kraft entscheidet die Fläche A: kleine Fläche, großer Druck.",
+   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Turnschuhe. Lies bei p die Zahl vor kPa.",
+   "Drücke Stöckelabsatz und fülle die zweite Zeile aus.",
+   "Drücke Skier und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die Fläche A?",
+   "Wie groß ist der Druck p?"
+  ],
+  "tabRows": [
+   [
+    "Turnschuhe",
+    "300 cm²",
+    "19,6 kPa"
+   ],
+   [
+    "Stöckelabsatz",
+    "",
+    ""
+   ],
+   [
+    "Skier",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Gleiche Kraft auf einer kleinen Fläche A macht einen großen",
+    "loesung": "Druck",
+    "post": "."
+   },
+   {
+    "pre": "Wird die Fläche A größer, dann wird der Druck",
+    "loesung": "kleiner",
+    "post": ". Den Druck p misst man in Pascal (Pa)."
+   }
+  ],
+  "wortbank": [
+   "Druck",
+   "kleiner",
+   "5886,0 kPa",
+   "2,1 kPa"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Druck unter Turnschuhen?",
+   "antwort": "Die Kraft ist 588,6 N. Die Fläche A ist 300 cm². Die Statuszeile zeigt: p = 19,6 kPa. 1 kPa sind 1000 Pa."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Kraft bleibt 588,6 N. Wo wird der Druck am größten?",
+    "optionen": [
+     "Auf den Skiern, weil die Fläche A am größten ist.",
+     "Auf dem Stöckelabsatz, weil die Fläche A am kleinsten ist.",
+     "Überall gleich, weil die Kraft gleich bleibt."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Stöckelabsatz hat 1 cm² Fläche A. Der Druck ist",
+      "loesung": "5886,0 kPa",
+      "post": "."
+     },
+     {
+      "pre": "Skier haben 2800 cm² Fläche A. Der Druck ist nur",
+      "loesung": "2,1 kPa",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nours Rucksack tut an dünnen Schnüren weh, an breiten Trägern nicht. Erkläre das.",
+    "satzstarter": "Die breiten Träger machen die Fläche A größer. Deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies bei p die Zahl vor kPa.",
+   "h2": "Beginne so: Deshalb ist der Druck auf der Schulter …",
+   "h3": "Fast fertig: Die Kraft bleibt gleich, die Fläche A wird größer. Ergänze: Der Druck wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Druck p in der Statuszeile ablesen.",
+   "Ich weiß: kleine Fläche A, großer Druck.",
+   "Ich kann erklären, warum breite Bretter keine Dellen machen."
+  ],
+  "zuhause": "Drücke mit dem Daumen gegen deine Handfläche. Drücke dann gleich stark mit dem stumpfen Bleistiftende.",
+  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund, gleiche Bodenlinie. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung. Über jeder Person derselbe einzelne dicke Pfeil senkrecht nach unten, in allen drei Feldern exakt gleich lang und gleich dick, beschriftet „F = 588,6 N“. Unterschiedlich ist nur der Fuß und die Fläche darunter, jeweils dick rot markiert: links ein einzelner schmaler Absatz mit „A = 1 cm²“, Mitte ein Turnschuh mit „A = 300 cm²“, rechts ein langer Ski mit „A = 2800 cm²“. Unter jedem Feld groß der Druckwert: „p = 5886,0 kPa“, „p = 19,6 kPa“, „p = 2,1 kPa“. Der Boden zeigt links ein tiefes Loch, in der Mitte eine flache Mulde, rechts eine glatte Fläche. Nur diese drei Pfeile, keine weiteren Pfeile, keine Balken, keine Deko, kein Elefant]"
+ },
+ "lehrer": {
+  "id": "fk11",
+  "lernziel": "Die Schülerinnen und Schüler lesen bei gleichbleibender Kraft (588,6 N) für Turnschuhe, Stöckelabsatz und Skier die Fläche A und den Druck p am Bildschirm ab. Sie begründen daran: Bei gleicher Kraft macht eine kleine Fläche einen großen Druck, eine große Fläche einen kleinen. Gerechnet wird auf dieser Seite ausdrücklich nicht; p = F / A steht am Bildschirm, wird aber nicht eingesetzt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Wichtig: Nur aus der STATUSZEILE ablesen lassen. Das Bild schreibt beim Stöckelabsatz „Druck: 5,89 MPa“ und oben „F = 589 N“, die Statuszeile dagegen „p = 5,89 MPa = 5886,0 kPa“ und „588,6 N“. Im Heft stehen durchgehend kPa und 588,6 N; MPa kommt auf der Schülerseite nicht vor. Der Bildschirm nennt die Fläche „Auflagefläche“, das Heft durchgehend „Fläche A“ — beide Wörter einmal nebeneinander nennen. Ebenso beim Kasten selbst: Über der Statuszeile steht am Bildschirm „Nachgerechnet“, das Heft sagt „Statuszeile“ — einmal zeigen, welcher Kasten gemeint ist. Die zwei Regler (Masse, Auflagefläche) bleiben unberührt, drei Knopfdrücke genügen. Der Knopf Elefant wird auf der Schülerseite nicht gebraucht (siehe Zusatz).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Karten schreiben und in dieser Reihenfolge zeigen — Turnschuhe: A = 300 cm² = 0,0300 m², p = 19,6 kPa · Stöckelabsatz: A = 1 cm² = 0,0001 m², p = 5886,0 kPa · Skier: A = 2800 cm² = 0,2800 m², p = 2,1 kPa. Auf jeder Karte steht oben dieselbe Kopfzeile „F = m · g = 60 kg · 9,81 N/kg = 588,6 N“ — genau an dieser gleich bleibenden Zeile wird die Einsicht sichtbar. Alternativ die drei Statuszeilen am Beamer zeigen. Den Vergleichsbalken der Simulation nicht ausmessen lassen: Er ist logarithmisch („Balken logarithmisch“), das Verhältnis 300 : 1 ist an der Länge nicht ablesbar.",
+  "merksatz": [
+   "Druck",
+   "kleiner"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Stöckelabsatz",
+    "1 cm²",
+    "5886,0 kPa"
+   ],
+   [
+    "Skier",
+    "2800 cm²",
+    "2,1 kPa"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile zeigt bei allen drei Knöpfen dieselbe Kraft: F = m · g = 60 kg · 9,81 N/kg = 588,6 N. Nur die Fläche A wechselt — 1 cm² gibt 5886,0 kPa, 300 cm² gibt 19,6 kPa, 2800 cm² gibt 2,1 kPa. Kleinste Fläche, größter Druck.",
+   "typische_fehler": [
+    "Antwort 1: „große Fläche“ wird mit „großer Druck“ gleichgesetzt; die Gegenläufigkeit ist die typische Bruchstelle.",
+    "Antwort 2: Weil die Kraft gleich bleibt, wird auch der Druck für gleich gehalten.",
+    "Der Druckbalken wird als Verhältnis gelesen. Er ist logarithmisch; der Stöckelabsatz wird dadurch massiv unterschätzt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5886,0 kPa",
+    "2,1 kPa"
+   ],
+   "typische_fehler": [
+    "Vom Bild statt aus der Statuszeile abgelesen: dort steht „Druck: 5,89 MPa“ — dieselbe Größe in einer anderen Einheit.",
+    "Die vierstellige Zahl 5886,0 wird neben 2,1 nicht als die größere gelesen; Ziffernzahl statt Wert.",
+    "Die Einheit kPa fehlt, es wird nur die Zahl eingetragen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die breiten Träger machen die Fläche A größer. Die Kraft bleibt gleich groß. Deshalb ist der Druck auf der Schulter kleiner, und der Rucksack schneidet nicht mehr ein.",
+   "alternativen": [
+    "Verweis auf die Tabelle: gleiche Kraft 588,6 N, aber 1 cm² gibt 5886,0 kPa und 2800 cm² nur 2,1 kPa.",
+    "Vergleich mit dem Podest: Die schmalen Rollen machen Dellen, die breiten Bretter nicht — gleiches Klavier, größere Fläche A.",
+    "Umgekehrt formuliert: Dünne Schnüre haben eine kleine Fläche A, deshalb ist dort der Druck groß."
+   ],
+   "typische_fehler": [
+    "Es wird mit dem Gewicht argumentiert („der Rucksack ist zu schwer“) statt mit der Fläche A.",
+    "Die Aussage wird nur wiederholt („breit tut nicht weh“), ohne Fläche und Druck zu nennen.",
+    "Kraft und Druck werden als dasselbe benutzt; beide Wörter stehen für dieselbe Sache."
+   ]
+  },
+  "hilfe3_wort": "kleiner",
+  "schwache": [
+   "Zuerst nur Turnschuhe und Stöckelabsatz vergleichen; die Zeile Skier später oder gemeinsam ausfüllen.",
+   "Die Statuszeile ist eine lange Zeile mit vier Abschnitten. Achtung: Im Abschnitt „Der Druck“ beginnen ZWEI Zeilen mit „p =“ — zuerst die Rechnung („p = F / A = 588,6 N / 0,0300 m²“), erst danach das Ergebnis („p = 19,6 kPa“). Gebraucht wird nur die zweite; sie ist die einzige Zeile, die „p =“ UND kPa trägt (kPa steht sonst nur noch in Klammern im Abschnitt „Zum Vergleich“). Den Finger darauflegen und nur diese vorlesen lassen.",
+   "Das lange Wort Auflagefläche vorher zerlegen: die Fläche, auf der etwas aufliegt. Danach nur noch „Fläche A“ benutzen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben und jedes benutzte durchstreichen.",
+   "Die Einheit kPa einmal laut sprechen: Kilopascal. 1 kPa sind 1000 Pa — der Bildschirm sagt es im Hinweis."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke Elefant und lies ab — F = 49050,0 N, A = 2400 cm², p = 204,4 kPa. Schreibe auf, was größer ist: der Druck des Elefanten oder der Druck der Person auf dem Stöckelabsatz (5886,0 kPa). Wichtig für die Lehrkraft: Der Elefant-Knopf verändert ZWEI Größen gleichzeitig (Masse 60 → 5000 kg und Fläche 300 → 2400 cm²). Er passt deshalb nicht in die Messreihe „gleiche Kraft, andere Fläche“ und bleibt Zusatzaufgabe.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Druck und Auflagefläche, Kraftwirkung auf Flächen. Der Alltagsauftrag mit Daumen und Bleistiftende trägt UF2, die Erklär-Aufgabe zum Rucksack B2. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Hinweis zum Band: Diese Simulation rechnet intern mit g = 9,81 N/kg, masse-gewicht und ortsfaktor (fk4, fk5) zeigen 9,8 N/kg. Die Förderseiten lesen nur ab und rechnen nie mit g — für die Lernenden entsteht der Widerspruch deshalb nicht. Reglerzustände: Im Dump liegen 600 cm² und 1200 cm² nur mit 4750 kg vor, weil simfakten jeden Regler nur einmal zieht. Mit simcheck/werte.js nachgemessen (_druMarke(60, 600) und _druMarke(60, 1200)): 60 kg auf 600 cm² geben p = 9,8 kPa, auf 1200 cm² p = 4,9 kPa. Belegt sind sie damit, auf der Seite stehen sie trotzdem nicht: Sie bleibt bei drei Knopfdrücken, ein Reglerschritt und eine Rechenaufgabe sprengten das Wortbudget der Doppelseite."
+ }
+}

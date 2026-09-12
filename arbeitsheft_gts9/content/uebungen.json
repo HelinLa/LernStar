@@ -1,0 +1,1919 @@
+[
+ {
+  "id": "kf1",
+  "komp": [
+   "UF1",
+   "UF3",
+   "E1",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Kraft erkennt man nur an ihrer",
+    "loesung": "Wirkung",
+    "post": "."
+   },
+   {
+    "pre": "Kräfte können Form, Tempo oder",
+    "loesung": "Richtung",
+    "post": "ändern."
+   },
+   {
+    "pre": "Jannis drückt mit dem Daumen in die Knete, sie wird dabei",
+    "loesung": "verformt",
+    "post": "."
+   },
+   {
+    "pre": "Bleiben Form, Tempo und Richtung gleich, dann heben sich die Kräfte",
+    "loesung": "gegenseitig auf",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine Kraft wirkt nur dann, wenn sich ein Körper verformt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Ball rollt zuerst geradeaus, nach dem Stoß von oben ändert sich seine Richtung. Also hat eine Kraft gewirkt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch beim Abbremsen des Rollwagens wirkt eine Kraft, weil sich sein Tempo ändert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Kraft selbst kann man im Bild sehen, ihre Wirkung dagegen nicht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis stellt seinen vollen Rucksack auf die Matratze im Zeltlager, und sie sinkt tief ein. Woran erkennt man hier, dass eine Kraft wirkt?",
+   "optionen": [
+    "Man sieht die Kraft als kurzen Strich zwischen Rucksack und Matratze. Kräfte sind aber unsichtbar, sichtbar ist immer nur ihre Wirkung.",
+    "An der Wirkung: Die Matratze ändert ihre Form, sie wird eingedrückt.",
+    "Gar nicht, denn der Rucksack bewegt sich ja nicht. Eine Kraft zeigt sich aber auch an einer Verformung, nicht nur an einer Bewegung.",
+    "Daran, dass es beim Abstellen leise knarzt. Ein Geräusch ist keine der drei Kraftwirkungen Form, Tempo oder Richtung."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum Herr Kessler sagt: „Auch beim Stoppen des Rollwagens wirkt eine Kraft“, obwohl der Wagen danach still steht.",
+   "zeilen": 4,
+   "loesung": "Beim Stoppen ändert sich das Tempo des Wagens: Vorher rollt er, danach steht er. Eine solche Bewegungsänderung ist eine Kraftwirkung, also hat eine Kraft gewirkt. Dass der Wagen am Ende still steht, spricht nicht dagegen, denn die Kraft hat ihn ja gerade abgebremst."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kräfte misst man in",
+    "loesung": "Newton (N)",
+    "post": "."
+   },
+   {
+    "pre": "Der Federkraftmesser nutzt die",
+    "loesung": "Dehnung",
+    "post": "der Feder."
+   },
+   {
+    "pre": "Ein Gewicht von etwa 100 Gramm zieht mit rund",
+    "loesung": "einem Newton",
+    "post": "nach unten."
+   },
+   {
+    "pre": "Hängt Nour drei Gewichte an, zeigt der Zeiger",
+    "loesung": "3 N",
+    "post": "an."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ohne Last zeigt der Federkraftmesser F = 0 N, die Feder ist dann entspannt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Hängt man ein Gewicht von etwa 100 g an, zeigt der Kraftmesser rund 1 N an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf der Skala des Federkraftmessers stehen Gramm, denn er misst, wie viel Stoff im Körper steckt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Feder wird unter Zug kürzer: Je größer die Kraft, desto stärker zieht sie sich zusammen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour hängt ihre Sporttasche an eine kleine Kofferwaage, in der eine Feder steckt. Warum kann sie an dem Gerät überhaupt eine Kraft ablesen?",
+   "optionen": [
+    "Weil das Gerät die Kraft direkt anzeigt, sobald sie hineinfließt. Eine Kraft fließt aber nirgendwohin, ablesbar ist nur eine Wirkung.",
+    "Weil der Zeiger zeigt, wie viel Stoff in der Tasche steckt. Das wäre die Masse in Gramm, auf einer Kraftskala steht dagegen Newton.",
+    "Weil die Feder bei jeder Last gleich weit nachgibt und nur der Zeiger mitwandert. Gäbe sie immer gleich weit nach, könnte man verschiedene Kräfte gar nicht unterscheiden.",
+    "Weil die Feder unter dem Zug länger wird und zu jeder Dehnung genau eine Kraft gehört. Die Skala übersetzt die Dehnung in Newton."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bestimme, wie weit die Feder aus der Simulation gedehnt ist, wenn der Zeiger 3 N anzeigt, und gib an, welche Masse dazu passt.",
+   "zeilen": 4,
+   "loesung": "Zu F = 1 N gehören in der Simulation 1 cm Dehnung und etwa 100 g. Kraft und Dehnung wachsen im gleichen Maß, zu 3 N gehören also 3 cm. Die angehängte Masse beträgt dann rund 300 g. Der Wert lässt sich ablesen, denn die Skala reicht von 0 N bis 5 N."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf3",
+  "komp": [
+   "UF1",
+   "E6",
+   "UF2",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Doppelte Kraft bedeutet doppelte",
+    "loesung": "Dehnung",
+    "post": "."
+   },
+   {
+    "pre": "Die Federkonstante berechnet man mit D =",
+    "loesung": "F / s",
+    "post": "."
+   },
+   {
+    "pre": "Im Diagramm liegen alle Messpunkte auf einer Geraden durch den",
+    "loesung": "Nullpunkt",
+    "post": "."
+   },
+   {
+    "pre": "Die harte Feder hat die Federkonstante",
+    "loesung": "1,0 N/cm",
+    "post": ", die weiche nur 0,5 N/cm."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei doppelter Kraft dehnt sich die weiche Feder viermal so weit, weil die Dehnung quadratisch wächst.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die harte Feder dehnt sich bei F = 2 N um 2 cm, ihre Federkonstante bleibt dabei 1,0 N/cm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je größer die Federkonstante D ist, desto weiter dehnt sich eine Feder bei gleicher Kraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Kraft-Dehnungs-Diagramm gehört die steilere Gerade zur harten Feder.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Herr Kessler legt unter zwei Podestfüße Gummipuffer. Unter derselben Last sinkt Puffer A um 2 cm ein, Puffer B nur um 1 cm. Was gilt für die beiden?",
+   "optionen": [
+    "Puffer B ist der härtere: Bei gleicher Kraft gibt er weniger nach, seine Federkonstante ist doppelt so groß.",
+    "Puffer A ist der härtere, weil sich bei ihm mehr tut. Wer bei gleicher Kraft weiter nachgibt, ist aber gerade der weichere.",
+    "Beide sind gleich hart, denn beide tragen dieselbe Last. Entscheidend ist nicht die Last allein, sondern wie weit sie den Puffer eindrückt.",
+    "Puffer B hat die kleinere Federkonstante, weil seine Dehnung kleiner ist. In D = F / s wird D bei kleinerer Dehnung aber größer, nicht kleiner."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Berechne, welche Kraft die harte Feder um 4 cm dehnt, und vergleiche sie mit der Kraft, die die weiche Feder um 4 cm dehnt.",
+   "zeilen": 4,
+   "loesung": "Für die harte Feder gilt F = D · s = 1,0 N/cm · 4 cm = 4 N. Für die weiche Feder gilt F = 0,5 N/cm · 4 cm = 2 N. Für dieselbe Dehnung braucht die harte Feder also die doppelte Kraft. Das passt zu ihrer doppelt so großen Federkonstante."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Masse misst man in",
+    "loesung": "Kilogramm",
+    "post": ", die Gewichtskraft in Newton."
+   },
+   {
+    "pre": "Die Gewichtskraft berechnet man mit F =",
+    "loesung": "m · g",
+    "post": "."
+   },
+   {
+    "pre": "Der Ortsfaktor g beträgt auf der Erde",
+    "loesung": "9,8 N/kg",
+    "post": "."
+   },
+   {
+    "pre": "Zu einer Masse von 2 kg gehört auf der Erde die Gewichtskraft",
+    "loesung": "19,6 N",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Waage im Musikraum zeigt die Masse an, der Kraftmesser dagegen die Gewichtskraft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Masse und Gewichtskraft sind dasselbe, die Waage rechnet nur in eine andere Einheit um.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelt sich die Masse eines Körpers, dann verdoppelt sich auch seine Gewichtskraft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Körper mit der Masse 1 kg hat auf der Erde eine Gewichtskraft von 1 N.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Aufzug der Schule hängt ein Schild: „Höchstlast 630 kg“. Jannis will wissen, wie viel Newton das sind. Wie rechnet er richtig?",
+   "optionen": [
+    "630 kg sind 630 N, denn ein Kilogramm ist ein Newton. Kilogramm misst aber die Masse und Newton die Kraft, dasselbe ist beides nicht.",
+    "Er teilt: 630 kg: 9,8 N/kg sind etwa 64 N. Beim Teilen kommt aus der großen Masse eine viel zu kleine Kraft heraus, man muss malnehmen.",
+    "Er rechnet F = m · g = 630 kg · 9,8 N/kg = 6174 N.",
+    "Er kann es nicht ausrechnen, weil auf dem Schild schon eine Kraft steht. Mit Kilogramm steht dort eine Masse, und daraus lässt sich mit g die Kraft berechnen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Satz: „Das Klavier hat 250 Kilogramm, also drückt es mit 250 Newton auf den Boden.“",
+   "zeilen": 5,
+   "loesung": "Der Satz stimmt nicht. Die 250 kg geben nur die Masse an, also wie viel Stoff im Klavier steckt. Auf den Boden drückt dagegen die Gewichtskraft F = m · g = 250 kg · 9,8 N/kg = 2450 N. Jannis verwechselt Masse und Gewichtskraft, seine Zahl ist rund zehnmal zu klein."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf5",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF2",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Masse eines Körpers bleibt überall",
+    "loesung": "gleich",
+    "post": ", die Gewichtskraft nicht."
+   },
+   {
+    "pre": "Die Gewichtskraft berechnet man mit F =",
+    "loesung": "m · g",
+    "post": "aus Masse und Ortsfaktor."
+   },
+   {
+    "pre": "Auf dem Mond ist der Ortsfaktor g nur",
+    "loesung": "1,6 N/kg",
+    "post": ", darum ist die Gewichtskraft dort kleiner."
+   },
+   {
+    "pre": "Bei m = 60 kg meldet die Statuszeile auf der Erde eine Gewichtskraft von",
+    "loesung": "588 N",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Klavier mit der Masse 250 kg hat auf dem Mond eine Gewichtskraft von 400 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf dem Mond hat das Klavier weniger Masse als auf der Erde, deshalb ist es dort leichter.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Ortsfaktor g ist auf jedem Himmelskörper gleich groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Jupiter ist die Gewichtskraft desselben Körpers größer als auf der Erde.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour packt für eine Mondreise eine Wasserflasche mit der Masse 2 kg ein. Was gilt für die Flasche nach der Landung auf dem Mond?",
+   "optionen": [
+    "Ihre Masse ist dort nur noch etwa ein Sechstel, also rund 0,33 kg. Der Ort ändert aber nur die Gewichtskraft, nicht die Masse.",
+    "Ihre Masse bleibt 2 kg, ihre Gewichtskraft sinkt von 19,6 N auf 3,2 N.",
+    "Masse und Gewichtskraft bleiben beide gleich, denn es ist dieselbe Flasche. Der Ortsfaktor ist auf dem Mond jedoch kleiner, also ändert sich die Gewichtskraft.",
+    "Ihre Gewichtskraft bleibt 19,6 N, dafür wird ihre Masse kleiner. Es ist genau umgekehrt: Die Masse bleibt, die Gewichtskraft ändert sich."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage von Jannis: „Auf dem Mond wäre das Klavier leichter, weil es dort weniger Masse hat.“ Begründe mit dem Ortsfaktor.",
+   "zeilen": 4,
+   "loesung": "Der zweite Teil der Aussage stimmt nicht. Die Masse eines Körpers bleibt überall gleich, sie ändert sich beim Wechsel des Himmelskörpers nicht. Kleiner wird allein die Gewichtskraft, weil der Ortsfaktor auf dem Mond nur 1,6 N/kg statt 9,8 N/kg beträgt. Aus F = m · g folgt bei gleicher Masse darum eine kleinere Kraft."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf6",
+  "komp": [
+   "UF1",
+   "UF4",
+   "K3",
+   "K4"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Länge des Pfeils zeigt den",
+    "loesung": "Betrag",
+    "post": "der Kraft in Newton."
+   },
+   {
+    "pre": "Dort, wo der Pfeil beginnt, liegt der",
+    "loesung": "Angriffspunkt",
+    "post": "."
+   },
+   {
+    "pre": "Zu einer Kraft gehören Betrag, Angriffspunkt und",
+    "loesung": "Richtung",
+    "post": "."
+   },
+   {
+    "pre": "Weil auch die Richtung zu ihr gehört, ist die Kraft eine",
+    "loesung": "gerichtete Größe",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine Kraft ist vollständig beschrieben, wenn man ihren Betrag in Newton kennt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwei Pfeile für je 6 N sind gleich lang, auch wenn sie in verschiedene Richtungen zeigen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Pfeil für 4 N ist länger als der Pfeil für 2 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Stellt man bei 6 N die Richtung von rechts auf oben um, wird der Pfeil kürzer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour zieht ihren Rollkoffer am ausgezogenen Griff mit 30 N schräg nach oben. Jannis soll diese Kraft in den Bühnenplan einzeichnen. Was muss er zeichnen?",
+   "optionen": [
+    "Nur die Zahl 30 N neben den Koffer, ein Pfeil ist überflüssig. Die Zahl allein verrät aber nicht, wohin die Kraft zieht.",
+    "Einen Pfeil senkrecht nach unten, denn Kräfte wirken immer nach unten. Nour zieht hier jedoch schräg nach oben.",
+    "Einen Pfeil doppelt so lang wie bei 15 N, die Richtung ist dabei egal. Ohne Richtung ist die Kraft aber nur halb beschrieben.",
+    "Einen Pfeil, der am Griff beginnt, schräg nach oben zeigt und dessen Länge zu 30 N passt."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile die Meinung von Jannis: „Ein Pfeil ist doch ein Pfeil, die Zahl daneben reicht völlig aus.“",
+   "zeilen": 4,
+   "loesung": "Jannis hat nicht recht. Die Zahl nennt nur den Betrag der Kraft in Newton. Der Pfeil zeigt zusätzlich die Richtung, und dort, wo er beginnt, liegt der Angriffspunkt. Erst diese drei Angaben zusammen beschreiben eine Kraft vollständig."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf7",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF2",
+   "E4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Bei gleicher Richtung werden die Beträge",
+    "loesung": "addiert",
+    "post": "."
+   },
+   {
+    "pre": "Bei entgegengesetzter Richtung werden sie",
+    "loesung": "subtrahiert",
+    "post": "."
+   },
+   {
+    "pre": "Die eine Kraft, die zwei Kräfte zusammen ersetzt, heißt Gesamtkraft oder",
+    "loesung": "Resultierende",
+    "post": "."
+   },
+   {
+    "pre": "F1 = 3 N und F2 = 2 N, beide nach rechts, ergeben zusammen",
+    "loesung": "5 N",
+    "post": "nach rechts."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwei Kräfte an einem Körper werden immer addiert, ganz gleich wohin sie zeigen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "F1 = 3 N nach links und F2 = 2 N nach rechts ergeben zusammen 1 N nach links.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Sind zwei entgegengesetzte Kräfte gleich groß, bleibt als Gesamtkraft die größere von beiden übrig.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei entgegengesetzten Kräften zeigt die Gesamtkraft in die Richtung der größeren Kraft.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Beim Tauziehen im Sportunterricht zieht Nours Mannschaft mit 900 N nach links, die andere Mannschaft mit 750 N nach rechts. Wie groß ist die Gesamtkraft am Seil?",
+   "optionen": [
+    "150 N nach links, denn bei entgegengesetzten Kräften wird der kleinere Betrag vom größeren abgezogen.",
+    "1650 N nach links, weil beide Mannschaften ziehen. Addiert wird aber nur, wenn beide in dieselbe Richtung ziehen.",
+    "0 N, denn beim Tauziehen halten sich zwei Mannschaften immer die Waage. Null bleibt nur übrig, wenn beide Kräfte gleich groß sind.",
+    "150 N nach rechts, weil die kleinere Kraft die Richtung vorgibt. Die Gesamtkraft zeigt jedoch dorthin, wohin die größere Kraft zieht."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Begründe, warum sich das Rohr am Kran keinen Zentimeter bewegt, obwohl Nour und Jannis beide kräftig am Seil ziehen.",
+   "zeilen": 4,
+   "loesung": "Nour zieht nach links und Jannis nach rechts. Beide Kräfte liegen auf einer Linie und zeigen in entgegengesetzte Richtungen, deshalb werden ihre Beträge subtrahiert und nicht addiert. Weil beide etwa gleich stark ziehen, bleibt als Gesamtkraft fast nichts übrig. Ohne Gesamtkraft ändert sich am Rohr nichts."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf8",
+  "komp": [
+   "UF1",
+   "UF4",
+   "UF2",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Im Kräftegleichgewicht ist die Gesamtkraft",
+    "loesung": "null",
+    "post": "."
+   },
+   {
+    "pre": "Ruhe bedeutet nicht, dass",
+    "loesung": "keine Kräfte wirken",
+    "post": "."
+   },
+   {
+    "pre": "An der hängenden Lampe zieht die Gewichtskraft nach unten und die",
+    "loesung": "Haltekraft",
+    "post": "des Seils nach oben."
+   },
+   {
+    "pre": "Sinkt die Haltekraft auf 4 N, bleibt eine Gesamtkraft von",
+    "loesung": "1 N",
+    "post": "nach unten übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "An dem ruhenden Scheinwerfer wirken Kräfte, sie gleichen sich aber genau aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Körper, der sich nicht bewegt, ist kräftefrei.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei Haltekraft = Gewichtskraft = 5 N meldet die Anzeige eine Gesamtkraft von 0 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Gewichtskraft der Lampe verschwindet, sobald das Seil sie festhält.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nours Rucksack hängt still an einem Haken in der Garderobe. Seine Gewichtskraft beträgt 40 N. Was gilt für die Kräfte am Rucksack?",
+   "optionen": [
+    "Am Rucksack wirkt gar keine Kraft mehr, weil er sich nicht bewegt. Die Erde zieht ihn aber weiterhin nach unten.",
+    "Der Haken hält mit 80 N nach oben dagegen, sonst würde der Rucksack fallen. Dann bliebe eine Gesamtkraft von 40 N nach oben übrig und der Rucksack würde sich bewegen.",
+    "Der Haken hält mit 40 N nach oben dagegen, die Gesamtkraft ist deshalb 0 N.",
+    "Die Gewichtskraft ist am Haken auf 0 N gesunken, darum hängt er ruhig. Die Gewichtskraft hängt aber nur von Masse und Ortsfaktor ab und bleibt 40 N."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile den Satz von Jannis über den ruhenden Scheinwerfer: „An dem Ding zieht doch nichts mehr.“ Nutze die Werte aus deiner Untersuchung.",
+   "zeilen": 5,
+   "loesung": "Der Satz ist falsch. Am Scheinwerfer zieht die Gewichtskraft mit 5 N nach unten und die Haltekraft des Seils mit 5 N nach oben. Beide Kräfte sind gleich groß und entgegengesetzt gerichtet, deshalb ist die Gesamtkraft 0 N und der Scheinwerfer bleibt in Ruhe. Sinkt die Haltekraft auf 4 N, bleibt 1 N nach unten übrig und die Lampe bewegt sich."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Wirkt keine Kraft oder gleichen sich alle Kräfte aus, dann ändert sich der",
+    "loesung": "Bewegungszustand",
+    "post": "nicht."
+   },
+   {
+    "pre": "Auf dem Tisch wirkt die",
+    "loesung": "Reibung",
+    "post": "entgegen der Bewegung und bremst den Wagen ab."
+   },
+   {
+    "pre": "Das Trägheitsgesetz ist Newtons",
+    "loesung": "erstes Gesetz",
+    "post": "."
+   },
+   {
+    "pre": "Im Weltall zeigt die Statuszeile dauerhaft",
+    "loesung": "8,0 m/s",
+    "post": ", der Wagen wird nie langsamer."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wagen bleibt von allein stehen, weil der Anstoß in ihm nach und nach aufgebraucht ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf Eis rollt der Wagen mit demselben Anstoß von 8 m/s weiter als auf dem Tisch, weil dort weniger Reibung wirkt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Weltall zeigt die Anzeige weiter 8,0 m/s, weil dort keine Kraft den Wagen bremst.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Damit ein Körper mit gleichem Tempo weiterfährt, muss ständig eine Kraft in Fahrtrichtung an ihm ziehen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Herr Kessler stellt seinen Kaffeebecher auf das Armaturenbrett des Transporters. An der Ampel bremst er, und der Becher rutscht nach vorn gegen die Scheibe. Woran liegt das?",
+   "optionen": [
+    "Beim Bremsen wirkt eine Kraft nach vorn und schiebt den Becher mit. Die Bremskraft zeigt aber nach hinten, entgegen der Fahrtrichtung.",
+    "Der Becher wird beim Bremsen leichter und rutscht deshalb los. Seine Gewichtskraft ändert sich beim Bremsen jedoch überhaupt nicht.",
+    "Der Becher behält sein Tempo bei, während der Transporter langsamer wird. Erst die Reibung auf dem Armaturenbrett bremst auch ihn ab.",
+    "Die Trägheit ist eine Kraft, die den Becher nach vorn drückt. Trägheit ist aber keine Kraft, sondern die Eigenschaft, Tempo und Richtung beizubehalten."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Aussage: „Ein Raumschiff braucht ständig laufende Triebwerke, sonst bleibt es im Weltall stehen.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Im Weltall wirkt keine Reibung, also fehlt die bremsende Kraft, und der Bewegungszustand ändert sich nicht. In der Simulation zeigt die Anzeige im Weltall deshalb weiter 8,0 m/s, obwohl niemand mehr schiebt. Ein Triebwerk braucht das Raumschiff nur, wenn es schneller oder langsamer werden oder die Richtung ändern soll."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf10",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kraft und Gegenkraft sind immer",
+    "loesung": "gleich groß",
+    "post": "und entgegengesetzt gerichtet."
+   },
+   {
+    "pre": "Die beiden Kräfte wirken auf",
+    "loesung": "verschiedene Körper",
+    "post": "und heben sich deshalb nicht auf."
+   },
+   {
+    "pre": "Das Wechselwirkungsprinzip nennt man auch",
+    "loesung": "actio gleich reactio",
+    "post": "."
+   },
+   {
+    "pre": "Das Boot mit 300 kg bewegt sich nur mit",
+    "loesung": "0,40 m/s",
+    "post": "zurück, die Person mit 60 kg dagegen mit 2,0 m/s."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die beiden Eisläufer haben je 60 kg und gleiten nach dem Abstoßen beide mit 2,0 m/s auseinander.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Rakete hat mit 600 kg die größere Masse, deshalb drückt sie stärker auf das Gas als das Gas auf sie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kraft und Gegenkraft sind gleich groß und entgegengesetzt, also heben sie sich auf und es bewegt sich nichts.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Gas mit 20 kg erreicht 6,0 m/s, die Rakete mit 600 kg nur 0,20 m/s: Der leichtere Körper wird schneller.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour springt aus einem kleinen Ruderboot auf den Steg. Im selben Augenblick rutscht das Boot ein Stück vom Steg weg. Warum passiert das?",
+   "optionen": [
+    "Nour drückt das Boot beim Absprung nach hinten, und das Boot drückt sie genauso stark nach vorn. Beide Kräfte wirken auf verschiedene Körper, deshalb bewegen sich beide.",
+    "Nur Nour übt eine Kraft aus, das Boot ist dafür viel zu leicht. Jeder Körper drückt aber genauso stark zurück, wie auf ihn gedrückt wird.",
+    "Kraft und Gegenkraft heben sich auf, das Boot müsste liegen bleiben. Die beiden Kräfte wirken aber auf verschiedene Körper und heben sich nicht auf.",
+    "Das Wasser schiebt das leichter gewordene Boot weg, sobald Nour heraus ist. Dann müsste das Boot auch wegtreiben, wenn sie langsam aussteigt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Begründe, warum Jannis auf dem Rollbrett weit zurückrollt, die schwere Traverse aber an ihrem Platz liegen bleibt, obwohl Kraft und Gegenkraft gleich groß sind.",
+   "zeilen": 4,
+   "loesung": "Jannis drückt gegen die Traverse, und die Traverse drückt genauso stark zurück. Beide Kräfte sind gleich groß, sie wirken aber auf verschiedene Körper und heben sich deshalb nicht auf. Jannis hat zusammen mit dem Rollbrett viel weniger Masse als die Traverse, und derselbe Druck bringt ihn dadurch stärker in Fahrt. Genauso ist es beim Boot: Die Person mit 60 kg erreicht 2,0 m/s, das Boot mit 300 kg nur 0,40 m/s."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf11",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Den Druck berechnet man mit p =",
+    "loesung": "F / A",
+    "post": ", also Kraft geteilt durch Auflagefläche."
+   },
+   {
+    "pre": "Bei gleicher Kraft gilt: doppelte Fläche,",
+    "loesung": "halber Druck",
+    "post": "."
+   },
+   {
+    "pre": "Die Einheit des Drucks ist das",
+    "loesung": "Pascal",
+    "post": "; ein Pascal ist ein Newton je Quadratmeter."
+   },
+   {
+    "pre": "Auf Turnschuhen mit 300 cm² zeigt die Anzeige",
+    "loesung": "19,6 kPa",
+    "post": ", auf Skiern mit 2800 cm² nur 2,1 kPa."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Elefant hat die viel größere Masse, deshalb drückt er auch stärker auf den Boden als ein Stöckelabsatz.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf Skiern und auf Turnschuhen hat die Person dieselbe Gewichtskraft von 588,6 N, aber einen ganz anderen Druck.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelst du bei gleicher Kraft die Auflagefläche, dann verdoppelt sich auch der Druck.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Stöckelabsatz mit 1 cm² erzeugt 5886,0 kPa und damit 300-mal so viel Druck wie die Turnschuhe mit 300 cm².",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour trägt ihren vollen Rucksack. An den dünnen Schnüren schneiden die Träger in ihre Schultern, mit breiten Polstern nicht. Woran liegt das?",
+   "optionen": [
+    "Die breiten Polster machen den Rucksack leichter, deshalb tut er weniger weh. Der Rucksack hat aber mit beiden Trägern genau dieselbe Gewichtskraft.",
+    "Die Polster nehmen einen Teil der Kraft auf und leiten sie am Körper vorbei. Die Kraft bleibt jedoch gleich groß, sie verteilt sich nur anders.",
+    "Breite Träger erzeugen einen größeren Druck, und großer Druck tut weniger weh. Ein größerer Druck würde aber noch tiefer einschneiden.",
+    "Dieselbe Kraft verteilt sich auf eine größere Fläche. Nach p = F / A wird der Druck dadurch kleiner, und die Träger schneiden nicht mehr ein."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne den Druck, wenn die 49050,0 N des Elefanten statt auf 2400 cm² nur auf 1200 cm² drücken. Begründe damit die Dellen im Podest unter den schmalen Rollen.",
+   "zeilen": 5,
+   "loesung": "1200 cm² sind 0,1200 m². Damit ist p = F / A = 49050,0 N / 0,1200 m² = 408 750 Pa, also rund 408,8 kPa und doppelt so viel wie die abgelesenen 204,4 kPa auf 2400 cm². Halb so große Fläche bedeutet bei gleicher Kraft doppelten Druck. Genau deshalb drücken die vier schmalen Rollen Dellen ins Podest, die breiten Bretter von Herrn Kessler dagegen nicht."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Den Schweredruck berechnet man mit p =",
+    "loesung": "ρ·g·h",
+    "post": ", also Dichte mal Ortsfaktor mal Tiefe."
+   },
+   {
+    "pre": "Je 10 m Wassertiefe kommen rund",
+    "loesung": "98,1 kPa",
+    "post": "dazu."
+   },
+   {
+    "pre": "Über allem liegt zusätzlich der Luftdruck von etwa",
+    "loesung": "101,3 kPa",
+    "post": "."
+   },
+   {
+    "pre": "Quecksilber hat die Dichte 13.600 kg/m³ und zeigt bei 10 m Tiefe",
+    "loesung": "1334,2 kPa",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In 10 m Wassertiefe steigt der Gesamtdruck auf 199,4 kPa und damit auf fast das Doppelte des Luftdrucks.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In einem breiten Becken ist der Druck in 10 m Tiefe größer als in einem schmalen Rohr, weil mehr Wasser darübersteht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei gleicher Tiefe drückt Meerwasser mit 100,6 kPa stärker als Öl mit 88,3 kPa, denn seine Dichte ist größer.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In 20 m Tiefe ist der Schweredruck viermal so groß wie in 10 m Tiefe, weil die doppelte Tiefe vierfach zählt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour taucht im Schwimmbad zum Beckenboden. Nach ein paar Metern drückt es kräftig in ihren Ohren, obwohl das Becken oben und unten gleich breit ist. Warum wird der Druck größer?",
+   "optionen": [
+    "Am Boden steht mehr Wasser als weiter oben, und das drückt schwerer. Für den Schweredruck zählt aber nur die Tiefe, nicht die Wassermenge.",
+    "Über ihren Ohren steht jetzt eine höhere Wassersäule. Nach p = ρ·g·h wächst der Schweredruck mit der Tiefe, deshalb drückt es unten stärker.",
+    "Unten am Boden staut sich der Druck, weil das Wasser nicht weiter nach unten kann. Der Druck wirkt aber an jeder Stelle nach allen Seiten gleich stark.",
+    "Der Luftdruck von 101,3 kPa wird unter Wasser immer größer. Der Luftdruck bleibt gleich, dazu kommt nur der Schweredruck des Wassers."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne den Schweredruck in Öl mit der Dichte 900 kg/m³ in 20 m Tiefe und vergleiche ihn mit dem Wert für Wasser in derselben Tiefe.",
+   "zeilen": 4,
+   "loesung": "p = ρ · g · h = 900 kg/m³ · 9,81 N/kg · 20 m = 176 580 Pa, also rund 176,6 kPa. In Wasser sind es bei 20 m 196,2 kPa, denn Wasser hat mit 1000 kg/m³ die größere Dichte. Bei gleicher Tiefe drückt die dichtere Flüssigkeit also stärker. In beiden Fällen gilt: doppelte Tiefe, doppelter Schweredruck, denn p wächst gleichmäßig mit h."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Masse je Volumen eines Stoffes nennt man",
+    "loesung": "Dichte",
+    "post": "; ihr Zeichen ist ρ."
+   },
+   {
+    "pre": "Ein Würfel mit 10 cm Kante hat das Volumen",
+    "loesung": "1000 cm³",
+    "post": ", also genau 1 Liter."
+   },
+   {
+    "pre": "Der Bleiwürfel mit 10 cm Kante hat die Masse",
+    "loesung": "11,340 kg",
+    "post": ", der gleich große Styroporwürfel nur 0,020 kg."
+   },
+   {
+    "pre": "Haben zwei Körper dasselbe Volumen, so hat der Stoff mit der größeren Dichte auch die größere",
+    "loesung": "Masse",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil beide Würfel 10 cm Kante haben, ist auch ihre Masse ungefähr gleich groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Würfel mit 10 cm Kante hat 1000 cm³ Volumen, das sind 0,001 m³ oder genau 1 Liter.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Bleiwürfel hat 567-mal so viel Masse wie der gleich große Styroporwürfel.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Sägt man den Eisenwürfel in zwei gleiche Hälften, hat jede Hälfte nur noch die halbe Dichte.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour will zu Hause eine Zimmertür offen halten. Im Keller liegen zwei Würfel mit 10 cm Kante, einer aus Fichtenholz und einer aus Eisen. Welchen nimmt sie als Türstopper?",
+   "optionen": [
+    "Den Holzwürfel, denn beide sind gleich groß und deshalb gleich schwer. Bei gleichem Volumen entscheidet aber die Dichte: Eisen hat 7870 kg/m³, Fichtenholz nur 470 kg/m³.",
+    "Den Eisenwürfel, denn bei 1000 cm³ bringt er 7,870 kg auf die Waage, der Holzwürfel dagegen nur 0,470 kg.",
+    "Den Holzwürfel, denn Holz ist fester und hält die Tür besser. Wie fest ein Stoff ist, sagt nichts über seine Masse; der Holzwürfel ist rund 17-mal leichter.",
+    "Beide zusammen, denn zwei Würfel haben die doppelte Dichte. Die Dichte gehört zum Stoff und ändert sich nicht, wenn man mehr Würfel nimmt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum Jannis mit „gleich groß, gleich schwer“ falschliegt. Nutze die Werte von Blei und Styropor.",
+   "zeilen": 4,
+   "loesung": "Beide Würfel haben V = 1000 cm³, also dasselbe Volumen. Die Masse hängt aber von der Dichte des Stoffes ab, denn es gilt ρ = m: V. Blei hat 11340 kg/m³ und kommt auf 11,340 kg, Styropor nur 20 kg/m³ und damit auf 0,020 kg. Der Bleiwürfel hat deshalb 567-mal so viel Masse, obwohl er genauso groß ist."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "kf14",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Auftriebskraft ist so groß wie die Gewichtskraft des",
+    "loesung": "verdrängten Wassers",
+    "post": "."
+   },
+   {
+    "pre": "Ob ein Körper schwimmt, entscheidet nicht der Stoff, sondern seine",
+    "loesung": "mittlere Dichte",
+    "post": "."
+   },
+   {
+    "pre": "Wasser drückt von unten",
+    "loesung": "stärker",
+    "post": "als von oben; dieser Unterschied wirkt nach oben."
+   },
+   {
+    "pre": "Der massive Würfel zieht mit 77,20 N nach unten, der Auftrieb beträgt nur",
+    "loesung": "9,81 N",
+    "post": "; es bleiben 67,39 N übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 88 % Hohlraum hat der Würfel die mittlere Dichte 944,4 kg/m³ und bleibt oben.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eisen hat eine größere Dichte als Wasser, deshalb sinkt jedes Stück Eisen, egal welche Form es hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je schwerer ein Körper ist, desto größer ist auch seine Auftriebskraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der massive Würfel sinkt, weil seine Gewichtskraft von 77,20 N viel größer ist als der Auftrieb von 9,81 N.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour legt beim Aufräumen eine leere, fest verschlossene Farbdose in die Regentonne. Sie schwimmt. Dieselbe Dose, randvoll mit Farbe, geht sofort unter. Woran liegt das?",
+   "optionen": [
+    "Die volle Dose ist größer und verdrängt deshalb weniger Wasser. Beide Dosen sind gleich groß, und die volle verdrängt genauso viel Wasser wie die leere.",
+    "Blech sinkt immer, denn allein der Stoff entscheidet. Dann dürfte auch die leere Dose nicht oben bleiben, denn sie besteht aus demselben Blech.",
+    "Die Farbe drückt von innen auf den Boden der Dose und schiebt sie nach unten. Kräfte im Inneren heben sich auf; nach außen zählt nur die Gewichtskraft der ganzen Dose.",
+    "Beide Dosen verdrängen gleich viel Wasser und bekommen denselben Auftrieb. Die volle Dose hat aber die größere mittlere Dichte, ihre Gewichtskraft ist größer als der Auftrieb."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Behauptung: „Ein Schiff aus Stahl schwimmt nur, weil es so groß ist.“",
+   "zeilen": 4,
+   "loesung": "Die Behauptung trifft es nicht. Entscheidend ist nicht die Größe, sondern die mittlere Dichte des ganzen Körpers. Ein Schiff umschließt sehr viel Luft, dadurch fällt seine mittlere Dichte unter 1000 kg/m³, beim Würfel ab 87,3 % Hohlraum. Ein gleich großer massiver Stahlblock hätte dagegen 7870 kg/m³ und würde sinken."
+  },
+  "theme": "gts_kraefte"
+ },
+ {
+  "id": "el1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF3",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Arbeit ist Kraft mal Weg in Kraftrichtung: W =",
+    "loesung": "F · s",
+    "post": ". Die Einheit ist das Joule."
+   },
+   {
+    "pre": "Stehen Kraft und Weg senkrecht zueinander, ist die Arbeit",
+    "loesung": "null",
+    "post": "– so anstrengend es auch ist."
+   },
+   {
+    "pre": "Beim Schieben mit 100 N über 4 m verrichtest du",
+    "loesung": "400 J",
+    "post": "Arbeit."
+   },
+   {
+    "pre": "Für 20 kg, die 2,0 m hoch gehoben werden, ergibt sich eine Hubarbeit von",
+    "loesung": "392 J",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer eine Kiste mit 100 N vier Meter weit schiebt, verrichtet 400 J Arbeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil das Tragen über den Hof schwer fällt, ist die verrichtete Arbeit größer als null.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Hubarbeit für 20 kg auf 2,0 m Höhe beträgt 40 J, denn man rechnet Masse mal Höhe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Arbeit wird nur verrichtet, wenn die Kraft den Körper in ihre eigene Richtung verschiebt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour trägt eine volle Getränkekiste waagerecht vom Hoftor bis zur Bühne und ist danach außer Atem. Wie viel Arbeit hat sie dabei im physikalischen Sinn verrichtet?",
+   "optionen": [
+    "Sehr viel, denn sie ist danach außer Atem. Anstrengung ist in der Physik aber kein Maß für die Arbeit.",
+    "196 N mal den Weg, denn sie hält die Kiste die ganze Strecke lang. Die Haltekraft zeigt jedoch nach oben und der Weg nach vorn, deshalb zählt sie hier nicht.",
+    "Null Joule, denn die Haltekraft zeigt nach oben und der Weg nach vorn.",
+    "Genauso viel wie beim Hochheben um dieselbe Strecke, denn die Kiste bleibt gleich schwer. Beim Heben zeigt die Kraft aber in Wegrichtung, beim Tragen nicht."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche die Arbeit beim Schieben der Kiste mit 100 N über 4 m mit der Hubarbeit, wenn dieselbe Kiste mit 20 kg um 2,0 m gehoben wird. Gib beide Werte an.",
+   "zeilen": 4,
+   "loesung": "Beim Schieben gilt W = F · s = 100 N · 4 m = 400 J. Beim Heben gilt W = m · g · h = 20 kg · 9,81 N/kg · 2,0 m = 392 J. Beide Male zeigen Kraft und Weg in dieselbe Richtung, deshalb wird jedes Mal Arbeit verrichtet. Die Werte unterscheiden sich, weil die Kräfte (100 N und 196 N) und die Wege (4 m und 2,0 m) verschieden groß sind."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Lageenergie hängt von der Masse, dem Ortsfaktor und der",
+    "loesung": "Höhe",
+    "post": "ab."
+   },
+   {
+    "pre": "Doppelte Masse bedeutet",
+    "loesung": "doppelte Energie",
+    "post": "– bei doppelter Höhe gilt dasselbe."
+   },
+   {
+    "pre": "Ein Rohrbündel mit 5 kg in 3 m Höhe speichert",
+    "loesung": "147 J",
+    "post": "."
+   },
+   {
+    "pre": "Auf der Erde rechnest du mit dem Ortsfaktor",
+    "loesung": "9,81 N/kg",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelst du nur die Höhe, wird die Lageenergie viermal so groß.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Körper mit 10 kg in 3 m Höhe speichert 294 J, also doppelt so viel wie 5 kg in derselben Höhe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Hubarbeit, die du beim Anheben verrichtest, steckt danach als Lageenergie in dem Körper.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Rohr, das oben still auf der Traverse liegt, hat keine Energie, weil es sich nicht bewegt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis stellt zwei gleich schwere Farbeimer mit je 10 kg ins Hallenregal: einen in 3 m Höhe, den anderen in 6 m Höhe. Wie unterscheidet sich ihre Lageenergie?",
+   "optionen": [
+    "Der obere hat ungefähr doppelt so viel: 589 J statt 294 J.",
+    "Der obere hat viermal so viel, weil die Höhe im Quadrat steht. In E = m · g · h steht die Höhe aber nur einfach.",
+    "Beide haben gleich viel, denn die Eimer sind gleich schwer. Für die Lageenergie zählt neben der Masse aber auch die Höhe.",
+    "Der obere hat 3 J mehr, weil er 3 m höher steht. Die Höhe muss man jedoch mit Masse und Ortsfaktor multiplizieren, statt sie als Joule zu zählen."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Bestimme die Lageenergie eines 5 kg schweren Werkzeugkastens, der 6 m hoch auf der Traverse liegt, und vergleiche sie mit den 294 J des 10 kg schweren Kabelsacks in 3 m Höhe.",
+   "zeilen": 4,
+   "loesung": "E = m · g · h = 5 kg · 9,81 N/kg · 6 m = 294 J. Beide speichern also gleich viel Lageenergie. Die halbe Masse wird durch die doppelte Höhe genau ausgeglichen, weil Masse und Höhe beide einfach in der Formel stehen."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In der Formel E = ½ · m · v² steht das Tempo im",
+    "loesung": "Quadrat",
+    "post": "."
+   },
+   {
+    "pre": "Doppeltes Tempo bedeutet deshalb",
+    "loesung": "vierfache Energie",
+    "post": ", doppelte Masse nur doppelte."
+   },
+   {
+    "pre": "Eine Kabeltrommel mit 4 kg bei 4 m/s trägt",
+    "loesung": "32 J",
+    "post": "Bewegungsenergie mit sich."
+   },
+   {
+    "pre": "Bei 8 kg und 8 m/s zeigt die Statuszeile",
+    "loesung": "256 J",
+    "post": "an."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Doppeltes Tempo verdoppelt auch die Bewegungsenergie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 8 kg und 4 m/s sind es 128 J, denn man rechnet Masse mal Tempo im Quadrat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelst du nur die Masse, steigt die Bewegungsenergie von 32 J auf 64 J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mit 8 kg und 8 m/s schiebt die Trommel den Klotz am weitesten von allen drei Einstellungen.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Auf dem Hof rollen zwei gleich schwere Kabeltrommeln auf einen Eimer zu. Die zweite ist doppelt so schnell wie die erste. Wie viel Bewegungsenergie steckt in der schnelleren?",
+   "optionen": [
+    "Doppelt so viel, weil sie doppelt so schnell ist. Das Tempo geht aber im Quadrat in die Formel ein und nicht einfach.",
+    "Gleich viel, denn beide Trommeln haben dieselbe Masse. Zur Bewegungsenergie gehört neben der Masse aber auch das Tempo.",
+    "Achtmal so viel, weil zum Quadrat noch die doppelte Masse kommt. Die Masse ist hier jedoch bei beiden Trommeln gleich.",
+    "Viermal so viel, denn das Tempo steht im Quadrat, und 2² ist 4."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Aussage: „Wenn die Kabeltrommel doppelt so schwer ist, ist das genauso gefährlich, wie wenn sie doppelt so schnell rollt.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Doppelte Masse verdoppelt die Bewegungsenergie: Aus 32 J werden 64 J. Doppeltes Tempo vervierfacht sie dagegen, weil das Tempo im Quadrat steht: Aus 64 J werden 256 J. Das Tempo ist also die gefährlichere Größe."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beim Fallen wandelt sich Lageenergie um in",
+    "loesung": "Bewegungsenergie",
+    "post": "."
+   },
+   {
+    "pre": "Die Summe aus E_pot und E_kin bleibt dabei",
+    "loesung": "gleich groß",
+    "post": "– Energie geht nicht verloren."
+   },
+   {
+    "pre": "Ein Ball mit 2 kg hat in 20 m Höhe eine Lageenergie von",
+    "loesung": "392 J",
+    "post": "."
+   },
+   {
+    "pre": "Durch die Reibung an der Luft wird ein Teil der Energie zu",
+    "loesung": "Wärme",
+    "post": "und fehlt beim Zurückspringen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ganz oben besitzt der Ball nur Lageenergie, seine Bewegungsenergie beträgt 0 J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Fallen entsteht neue Energie, sonst wäre der Ball unten nicht so schnell.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Start aus 5 m Höhe steht bei der Anzeige „Höhe = 4,9 m“ E_pot = 97 J und E_kin = 1 J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil der Ball nicht ganz bis zur Hand zurückspringt, ist ein Teil der Energie verschwunden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour lässt vom Bühnenrand einen 2 kg schweren Ball aus 20 m Höhe fallen. Auf halbem Weg, in 10 m Höhe, will Jannis wissen, wie viel Bewegungsenergie der Ball dort schon hat.",
+   "optionen": [
+    "0 J, denn die Bewegungsenergie entsteht erst beim Aufprall. In 10 m Höhe ist der Ball aber längst in Fahrt.",
+    "196 J, denn die Hälfte der Lageenergie hat sich bereits in Bewegungsenergie umgewandelt.",
+    "392 J, denn die ganze Lageenergie von oben ist schon umgewandelt. Die halbe Höhe fehlt jedoch noch, also steckt die halbe Energie weiter in der Lage.",
+    "784 J, weil sich die Energie beim Fallen verdoppelt. Beim Fallen entsteht aber keine neue Energie, sie wird nur getauscht."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Erkläre, warum der Tennisball nach dem Aufprall nicht ganz bis zu Jannis’ Hand zurückspringt, obwohl Energie nicht verloren geht.",
+   "zeilen": 4,
+   "loesung": "Auf dem Weg nach unten reibt der Ball an der Luft, beim Aufprall wird er kurz verformt. Dabei wandelt sich ein Teil der Energie in Wärme um. Diese Wärme fehlt ihm als Bewegungsenergie für den Rückweg, deshalb bleibt er unter der Starthöhe. Verschwunden ist die Energie nicht, sie steckt nur in einer Form, die den Ball nicht mehr nach oben bringt."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Bei jeder Umwandlung bleibt die Gesamtmenge der Energie",
+    "loesung": "erhalten",
+    "post": ", nur ihre Brauchbarkeit sinkt."
+   },
+   {
+    "pre": "Ein Teil der Energie wird jedes Mal zu",
+    "loesung": "Wärme",
+    "post": "und ist danach nicht mehr nutzbar."
+   },
+   {
+    "pre": "Von den 1000 J der Benzin-Kette sind nach dem Motor nur noch",
+    "loesung": "250 J",
+    "post": "nutzbar."
+   },
+   {
+    "pre": "Energie, die nur noch als feine Wärme in der Luft steckt, nennen Fachleute",
+    "loesung": "entwertet",
+    "post": ", obwohl ihre Menge gleich geblieben ist."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei jedem Schritt der Benzin-Kette geht ein Teil der Energie verloren, am Ende sind weniger als 1000 J übrig.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach dem Motor sind von 1000 J noch 250 J nutzbar, die übrigen 750 J stecken als Wärme in Abgas und Kühlwasser.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Am Ende jeder Energiekette steht Wärme, die so fein verteilt ist, dass niemand sie mehr gebrauchen kann.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Steht in der Kohle-Kette η = 0 %, dann ist an dieser Stelle Energie vernichtet worden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour fährt mit ihrem Vater zum Baumarkt. Auf dem Parkplatz hält sie die Hand dicht an die Bremsscheibe: Die ist heiß. Wo steckt die Energie, die vorher im Benzin war?",
+   "optionen": [
+    "Sie ist beim Bremsen vernichtet worden, denn das Auto steht jetzt still. Energie kann man aber nicht vernichten, sie wird nur umgewandelt.",
+    "Sie steckt noch vollständig als Bewegung im Auto, weil die Menge ja erhalten bleibt. Das Auto steht aber, Bewegung ist keine mehr da.",
+    "Sie steckt jetzt als Wärme in Bremsen, Abgas und Luft. Die Menge ist gleich geblieben, nutzen kann man diese Wärme aber nicht mehr.",
+    "Sie ist zu Licht in den Scheinwerfern geworden, denn dorthin fließt der Strom. Für das Licht geht nur ein winziger Teil weg, der große Rest wird Wärme."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile die Behauptung: „Der heiße Scheinwerfer verliert Energie an den Hof.“",
+   "zeilen": 4,
+   "loesung": "Die Behauptung stimmt so nicht. Verloren geht nichts: Die Energie steckt jetzt in der warmen Luft über dem Hof, die Gesamtmenge bleibt gleich. Verloren geht nur die Brauchbarkeit, denn diese Wärme ist so fein verteilt, dass sie niemand mehr nutzen kann. Richtig sagt man: Die Energie wurde entwertet."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für die Leistung gilt P =",
+    "loesung": "W / t",
+    "post": ", also Arbeit geteilt durch Zeit."
+   },
+   {
+    "pre": "Ein Watt ist genau ein Joule je",
+    "loesung": "Sekunde",
+    "post": ", man schreibt dafür 1 J/s."
+   },
+   {
+    "pre": "Mit 50 kg, 4 m und 10 s zeigt die Anzeige die Arbeit",
+    "loesung": "1962 J",
+    "post": "an."
+   },
+   {
+    "pre": "Halbierst du die Zeit, bleibt die Arbeit gleich, die Leistung wird",
+    "loesung": "doppelt so groß",
+    "post": "und steigt auf 392 W."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Jannis und Nour verrichten dieselbe Arbeit, obwohl Nour nur die halbe Zeit braucht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer schneller zieht, verrichtet mehr Arbeit: Aus 1962 J werden in 5 s dann 3924 J.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Watt und Joule messen dasselbe, man darf die beiden Einheiten beliebig austauschen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit 10 kg statt 50 kg sinkt die Leistung in derselben Zeit von 196 W auf 39 W.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis und sein Vater tragen zu Hause dieselbe Getränkekiste in den ersten Stock. Jannis braucht dafür 20 s, sein Vater nimmt zwei Stufen auf einmal und schafft es in 10 s. Was gilt?",
+   "optionen": [
+    "Beide verrichten dieselbe Arbeit, aber der Vater bringt die doppelte Leistung.",
+    "Der Vater verrichtet die doppelte Arbeit, weil er sich stärker anstrengt. Die Arbeit hängt aber nur von Last und Höhe ab, nicht von der Zeit.",
+    "Jannis verrichtet mehr Arbeit, weil er die Kiste doppelt so lange trägt. Für die Arbeit zählt jedoch die Höhe und nicht die Dauer.",
+    "Beide bringen dieselbe Leistung, weil die Kiste gleich schwer ist. Zur Leistung gehört aber auch die Zeit, und die ist hier verschieden."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche Arbeit und Leistung von Jannis und Nour mit den Werten der Simulation: 50 kg, 4 m, einmal in 10 s und einmal in 5 s.",
+   "zeilen": 4,
+   "loesung": "Die Arbeit ist bei beiden gleich groß: 50 kg auf 4 m ergeben 1962 J, die Zeit steht in dieser Rechnung gar nicht. Verschieden ist die Leistung. In 10 s sind es 196 W, in 5 s dagegen 392 W. Herr Kessler hat also recht: gleiche Arbeit, aber doppelte Leistung."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für den Wirkungsgrad gilt η =",
+    "loesung": "Enutz / Erein",
+    "post": ", meist gibt man ihn in Prozent an."
+   },
+   {
+    "pre": "Der nicht genutzte Teil der Energie wird immer zu",
+    "loesung": "Wärme",
+    "post": "und verschwindet nicht."
+   },
+   {
+    "pre": "Von 1000 J werden bei der Glühlampe nur",
+    "loesung": "50 J",
+    "post": "zu Licht, bei der LED-Lampe dagegen 400 J."
+   },
+   {
+    "pre": "Weil immer ein Teil zu Wärme wird, bleibt der Wirkungsgrad kleiner als",
+    "loesung": "100 Prozent",
+    "post": ", auch bei guten Maschinen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Elektromotor werden von 1000 J ganze 900 J zu Bewegung und nur 100 J zu Wärme.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nutzen und Wärme ergeben zusammen immer wieder die hineingesteckte Energie.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Glühlampe hat η = 50 %, sie macht also die Hälfte der Energie zu Licht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine Maschine mit η = 100 % ist möglich, man muss sie nur gut genug bauen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Zu Hause vergleicht Nour zwei Lampen, die gleich hell leuchten: eine alte Glühlampe und eine LED. Nach zehn Minuten ist die Glühlampe heiß, die LED nur handwarm. Woran liegt das?",
+   "optionen": [
+    "Die Glühlampe braucht mehr Strom, weil sie heller leuchtet. Beide Lampen leuchten hier jedoch gleich hell.",
+    "Die LED gibt ihre Wärme nur schneller an die Luft ab, ihr Wirkungsgrad ist derselbe. Dann müsste die LED aber genauso viel Energie brauchen.",
+    "Bei der Glühlampe geht Energie verloren, bei der LED nicht. Verloren geht nie etwas, die Energie wird nur zu Wärme statt zu Licht.",
+    "Die Glühlampe macht mit η = 5 % nur 50 J von 1000 J zu Licht, den Rest zu Wärme. Die LED schafft mit η = 40 % viel mehr Licht und heizt weniger."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Vorschlag: „Im Winter lassen wir die alte Glühlampe drin, die heizt die Werkstatt gleich mit.“",
+   "zeilen": 4,
+   "loesung": "Ein wahrer Kern steckt darin: Die Glühlampe macht aus 1000 J tatsächlich 950 J Wärme. Als Lampe taugt sie trotzdem wenig, denn nur 50 J werden Licht, bei der LED sind es 400 J. Zum Heizen ist eine Heizung gemacht, zum Leuchten die Lampe. Wer die Glühlampe drinlässt, zahlt teuren Strom für schlechtes Licht."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el8",
+  "komp": [
+   "UF1",
+   "E6",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Am Hebel gilt F₁ · l₁ =",
+    "loesung": "F₂ · l₂",
+    "post": ", also Kraft mal Kraftarm gleich Last mal Lastarm."
+   },
+   {
+    "pre": "Ein Hebel spart Kraft, aber niemals",
+    "loesung": "Arbeit",
+    "post": ", denn der Weg wird genauso viel länger."
+   },
+   {
+    "pre": "Bei einem Kraftarm von 1,00 m und einer Last von 200 N reicht eine Kraft von",
+    "loesung": "50,00 N",
+    "post": "aus."
+   },
+   {
+    "pre": "Die Last steigt dabei 10,0 cm, deine Hand läuft dafür",
+    "loesung": "40,0 cm",
+    "post": "weit."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Mit der langen Stange wird auch die Arbeit kleiner, weil man weniger Kraft braucht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ist der Kraftarm viermal so lang wie der Lastarm, reicht ein Viertel der Kraft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach „achtfach“ reichen 25,00 N, dadurch sinkt die Arbeit von 20,00 J auf 10,00 J.",
+    "stimmt": false
+   },
+   {
+    "aussage": "W₁ und W₂ betragen bei jeder eingestellten Hebellänge 20,00 J.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour hebelt zu Hause den Deckel von einer Farbdose. Erst nimmt sie einen kurzen Schraubendreher, dann einen langen. Was ändert sich mit dem langen?",
+   "optionen": [
+    "Sie braucht genau dieselbe Kraft, es dauert nur länger. Ein längerer Kraftarm ändert aber sehr wohl die nötige Kraft.",
+    "Sie braucht weniger Kraft, muss den Griff dafür aber einen längeren Weg bewegen. Die Arbeit bleibt gleich.",
+    "Sie braucht weniger Kraft und verrichtet deshalb auch weniger Arbeit. Der Weg wird jedoch genau um denselben Faktor länger, wie die Kraft kleiner wird.",
+    "Sie braucht mehr Kraft, weil der lange Schraubendreher schwerer ist. Für das Hebeln zählt die Länge des Kraftarms und nicht das Gewicht."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne die Arbeit W₁ für den Kraftarm 2,00 m und beurteile damit Jannis’ Satz: „Die lange Stange spart auch Arbeit.“",
+   "zeilen": 4,
+   "loesung": "Bei l₁ = 2,00 m reichen 25,00 N, und die Hand läuft dafür 80,0 cm. Damit ist W₁ = 25,00 N · 0,80 m = 20,00 J. Das ist genau so viel wie bei 1,00 m und genau so viel wie W₂ an der Last. Jannis’ Satz stimmt also nicht: Der Hebel spart Kraft, aber keine Arbeit."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "An der festen Rolle ändert sich nur die",
+    "loesung": "Richtung",
+    "post": "der Kraft, nicht ihre Größe."
+   },
+   {
+    "pre": "Weil an der losen Rolle zwei Seilstücke tragen, ist die Zugkraft nur",
+    "loesung": "halb so groß",
+    "post": ", der Weg dafür doppelt so lang."
+   },
+   {
+    "pre": "Ohne Rolle hebst du die Last mit 600 N zwei Meter hoch; die Anzeige nennt dafür",
+    "loesung": "1200 J",
+    "post": "Arbeit."
+   },
+   {
+    "pre": "Hängt eine Last von 1000 N an einer losen Rolle, so zeigt der Kraftmesser",
+    "loesung": "500 N",
+    "post": "an."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die feste Rolle halbiert die Zugkraft, weil sie das Seil umlenkt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "An der losen Rolle sinkt die Kraft auf 300 N, dafür ziehst du 4,0 m Seil durch die Hand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ohne Rolle, mit fester Rolle und mit loser Rolle bleibt die Arbeit gleich 1200 J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die lose Rolle die Kraft halbiert, sinkt auch die Arbeit auf 600 J.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Oben an der Fahnenstange auf dem Schulhof sitzt eine Rolle. Nour zieht das Seil nach unten und die Fahne fährt dabei nach oben. Was bringt ihr diese Rolle?",
+   "optionen": [
+    "Die Rolle halbiert die nötige Kraft, weil das Seil über sie umgelenkt wird. Umlenken allein spart nichts, denn die Fahne hängt weiter an einem einzigen tragenden Seilstück.",
+    "Nour darf nach unten ziehen, statt nach oben zu heben; die Kraft bleibt dabei so groß wie die Gewichtskraft der Fahne.",
+    "Die Rolle verkürzt den Weg der Fahne und spart so Arbeit. Die Fahne muss aber die ganze Masthöhe hinauf, und die Arbeit bleibt gleich.",
+    "Die Rolle verdoppelt den Seilweg und halbiert dafür die Kraft. Das gilt nur für eine lose Rolle, die Rolle am Mast ist jedoch fest angeschraubt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Vorschlag: „Wir schrauben eine zweite feste Rolle unter das Hallendach, dann brauchen wir nur noch die halbe Kraft.“",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag hilft nicht. Auch mit zwei festen Rollen hängt die Last an einem einzigen tragenden Seilstück, deshalb bleibt die Zugkraft bei 600 N und die Anzeige meldet weiter „gespart: 0 %“. Erst eine lose Rolle bringt ein zweites tragendes Seilstück; dann sind es 300 N, dafür 4,0 m Seilweg. Feste Rollen ändern nur die Zugrichtung."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el10",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E8",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ziehen n Seilstücke an der Last, so berechnest du die Zugkraft mit F =",
+    "loesung": "G / n",
+    "post": ", also Gewichtskraft geteilt durch die Zahl der Seilstücke."
+   },
+   {
+    "pre": "Damit die Last um die Höhe h steigt, läuft durch deine Hand der Weg s =",
+    "loesung": "n · h",
+    "post": ", die Arbeit bleibt dabei unverändert."
+   },
+   {
+    "pre": "Bei 600 N Last und vier tragenden Seilstücken zeigt die Anzeige eine Zugkraft von",
+    "loesung": "150,0 N",
+    "post": "und einen Weg von 8,0 m."
+   },
+   {
+    "pre": "Kraft mal Weg ergibt jedes Mal 1200,0 J; diesen Zusammenhang nennt man die",
+    "loesung": "goldene Regel",
+    "post": "der Mechanik."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei n = 2 sinkt die Zugkraft auf 300,0 N und der Seilweg wächst auf 4,0 m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mit vier tragenden Seilstücken sinkt auch die Arbeit auf ein Viertel, also auf 300,0 J.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Flaschenzug spart Kraft, aber keine Arbeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man die Zahl der tragenden Seilstücke, so wird der Weg der Hand halbiert.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Beim Umzug zieht Nours Vater ein Sofa mit der Gewichtskraft 600 N über einen Flaschenzug 2,0 m hoch auf den Balkon. Vier Seilstücke tragen das Sofa. Was liest er am Kraftmesser und am Seil ab?",
+   "optionen": [
+    "150,0 N Zugkraft und 2,0 m Seil, weil sich nur die Kraft ändert. Der Seilweg wächst aber im selben Verhältnis mit und beträgt 8,0 m.",
+    "600,0 N Zugkraft und 8,0 m Seil, denn die Zugkraft ist immer so groß wie die Gewichtskraft. Vier tragende Seilstücke teilen die Last jedoch untereinander auf.",
+    "150,0 N Zugkraft und 8,0 m Seil, dafür nur noch 300,0 J Arbeit. Die Arbeit bleibt aber 1200,0 J, denn 150,0 N mal 8,0 m ergibt genau diesen Wert.",
+    "150,0 N Zugkraft und 8,0 m Seil, und die Arbeit beträgt weiterhin 1200,0 J."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Rechnung: „Mit vier statt zwei tragenden Seilstücken schaffe ich das Klavier mit der halben Arbeit nach oben.“",
+   "zeilen": 4,
+   "loesung": "Die Rechnung stimmt nicht. Mit n = 4 sinkt die Zugkraft zwar von 300,0 N auf 150,0 N, doch der Seilweg wächst von 4,0 m auf 8,0 m. Beide Male ergibt Kraft mal Weg 1200,0 J, genau wie die Hubarbeit 600 N · 2,0 m. Jannis verwechselt Kraft mit Arbeit: Der Flaschenzug spart nur Kraft."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el11",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Am Berührpunkt laufen bei beiden Rädern gleich viele",
+    "loesung": "Zähne",
+    "post": "durch, deshalb gilt n₁ · z₁ = n₂ · z₂."
+   },
+   {
+    "pre": "Die Übersetzung berechnest du mit i =",
+    "loesung": "z₁: z₂",
+    "post": ", also aus dem Verhältnis der Zähnezahlen."
+   },
+   {
+    "pre": "Bei 24 zu 24 Zähnen dreht sich Rad 2 mit",
+    "loesung": "60,0 U/min",
+    "post": "und damit genauso schnell wie Rad 1."
+   },
+   {
+    "pre": "Was ein Zahnrad an Drehzahl gewinnt, verliert es am",
+    "loesung": "Drehmoment",
+    "post": ", der Drehwirkung an der Achse."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Das kleinere Zahnrad dreht sich schneller, weil es leichter ist und weniger Schwung braucht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 30 zu 10 Zähnen dreht sich Rad 2 mit 180,0 U/min, also dreimal so oft wie Rad 1.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Getriebe, das die Drehzahl vervierfacht, vervierfacht auch das Drehmoment.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 12 zu 36 Zähnen dreht sich Rad 2 langsamer, sein Drehmoment ist dafür dreimal so groß.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour schaltet am Berg vorn auf das kleine Kettenblatt und hinten auf das größte Ritzel. Was merkt sie beim Weiterfahren?",
+   "optionen": [
+    "Das Hinterrad dreht sich bei einer Kurbelumdrehung seltener, dafür geht das Treten leichter.",
+    "Das Hinterrad dreht sich seltener und sie muss trotzdem kräftiger treten. Was an Drehzahl verloren geht, kommt jedoch als Drehmoment zurück.",
+    "Das Hinterrad dreht sich öfter, weil hinten jetzt das größere Rad sitzt. Am Berührpunkt laufen gleich viele Zähne durch, deshalb ist gerade das Rad mit mehr Zähnen seltener herum.",
+    "An der Drehzahl ändert sich nichts, nur das Treten wird leichter. Die Übersetzung hängt aber allein vom Verhältnis der Zähnezahlen ab, und das hat sich geändert."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Begründe, warum Jannis die Kurbel der Seilwinde dreimal herumdrehen muss, bis sich die Trommel einmal gedreht hat, und warum das Kurbeln dabei so leicht geht.",
+   "zeilen": 5,
+   "loesung": "Am Berührpunkt laufen bei beiden Rädern gleich viele Zähne durch, es gilt n₁ · z₁ = n₂ · z₂. Damit die Trommel bei drei Kurbelumdrehungen nur einmal herumkommt, muss ihr Rad dreimal so viele Zähne haben wie das Kurbelrad; die Übersetzung ist i = 1: 3. Was an Drehzahl verloren geht, gewinnt die Trommel als Drehmoment: Ihre Drehwirkung ist dreimal so groß. Deshalb geht das Kurbeln leicht, obwohl die Last dieselbe bleibt."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Rampe nennt man in der Physik",
+    "loesung": "schiefe Ebene",
+    "post": "."
+   },
+   {
+    "pre": "Je flacher die Rampe liegt, desto",
+    "loesung": "kleiner",
+    "post": "ist die nötige Zugkraft."
+   },
+   {
+    "pre": "Die schiefe Ebene gehört zu den einfachen",
+    "loesung": "Maschinen",
+    "post": "."
+   },
+   {
+    "pre": "Statt 6 N beim senkrechten Heben genügen an der flachen Rampe",
+    "loesung": "1,5 N",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je steiler die Rampe steht, desto weniger Zugkraft brauchst du.",
+    "stimmt": false
+   },
+   {
+    "aussage": "An der mittleren Rampe genügen 3,0 N, senkrechtes Heben verlangt dagegen 6 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Höhe, um die die Kiste steigt, ist bei jeder Rampe dieselbe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auf der flachen Rampe ist die Gewichtskraft der Kiste kleiner als beim senkrechten Heben.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour will ihr Fahrrad in den Keller schieben. Neben der kurzen, steilen Rampe liegt eine doppelt so lange, flache Rampe. Beide enden an derselben Tür. Womit braucht sie die kleinste Schiebekraft?",
+   "optionen": [
+    "Mit der kurzen, steilen Rampe, weil der Weg dort kürzer ist. Ein kurzer Weg spart aber Weg und keine Kraft.",
+    "Mit beiden gleich viel, denn das Fahrrad bleibt gleich schwer. Die Gewichtskraft bleibt zwar dieselbe, doch entlang der Bohle wirkt nur ein Teil von ihr.",
+    "Mit der steilen Rampe, weil das Rad dort schneller oben ist. Das Tempo sagt jedoch nichts über die nötige Kraft aus.",
+    "Mit der langen, flachen Rampe, denn je flacher die Bohle liegt, desto kleiner ist der Anteil der Gewichtskraft entlang der Bohle."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bestimme, welche der drei Rampen Nour nehmen muss, wenn sie höchstens 2 N ziehen kann, und begründe deine Wahl mit den Messwerten.",
+   "zeilen": 4,
+   "loesung": "Die steile Rampe verlangt 4,5 N und die mittlere 3,0 N. Beide Werte liegen über der Grenze von 2 N. Nur die flache Rampe kommt mit 1,5 N aus, Nour muss also die flache Rampe nehmen. Dafür schiebt sie die Kiste über den 4,0-fachen Weg der Höhe."
+  },
+  "theme": "gts_energie"
+ },
+ {
+  "id": "el13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "K4",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Arbeit berechnet man mit",
+    "loesung": "F · s",
+    "post": "."
+   },
+   {
+    "pre": "Was man an Kraft spart, setzt man an",
+    "loesung": "Weg",
+    "post": "zu."
+   },
+   {
+    "pre": "Diesen Zusammenhang nennt man die goldene Regel der",
+    "loesung": "Mechanik",
+    "post": "."
+   },
+   {
+    "pre": "Bei allen drei Rampen ergibt Kraft mal Weg den Wert",
+    "loesung": "6",
+    "post": ", genau wie beim senkrechten Heben."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "An der flachen Rampe ist die Zugkraft kleiner als an der steilen, das Produkt aus Kraft und Weg bleibt aber gleich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer die Kiste über die lange Bohle schiebt, verrichtet nur die halbe Arbeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil das Schieben über die flache Rampe länger dauert, wird dabei mehr Arbeit verrichtet.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim senkrechten Heben mit 6 N ist die Arbeit genauso groß wie an der steilen Rampe mit 4,5 N.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis schiebt eine Kiste über eine lange Bohle auf die Ladefläche des Transporters und ruft: „Über die Bohle ist das nur die halbe Arbeit!“ Was sagst du dazu?",
+   "optionen": [
+    "Er hat recht, denn er zieht ja nur mit der halben Kraft. Die halbe Kraft wirkt aber über den doppelten Weg, die Arbeit bleibt gleich.",
+    "Er irrt sich: Die Kraft wird halb so groß, dafür wird der Weg doppelt so lang. Kraft mal Weg bleibt derselbe Wert.",
+    "Er hat recht, weil die Kiste auf der Bohle leichter wird. Die Gewichtskraft der Kiste ändert sich durch die Bohle jedoch nicht.",
+    "Er irrt sich, weil das Schieben länger dauert und deshalb mehr Arbeit kostet. Die Zeit gehört zur Leistung, nicht zur Arbeit."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Vergleiche die flache Rampe mit einem Flaschenzug aus vier Seilstücken. Nenne, was beide Maschinen für dich tun und was keine von beiden schafft.",
+   "zeilen": 4,
+   "loesung": "Beide Maschinen verkleinern die nötige Kraft auf ein Viertel: die flache Rampe von 6 N auf 1,5 N, der Flaschenzug von 600 N auf 150 N. Dafür verlängern beide den Weg um denselben Faktor vier. Kraft mal Weg bleibt deshalb in beiden Fällen unverändert. Arbeit spart also keine der beiden Maschinen, das verbietet die goldene Regel der Mechanik."
+  },
+  "theme": "gts_energie"
+ }
+]

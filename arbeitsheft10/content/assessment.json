@@ -1,0 +1,741 @@
+[
+ {
+  "id": "motor",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "MAGNETFELD",
+     "tipp": "Der Raum um einen Magneten oder einen stromdurchflossenen Draht, in dem eine magnetische Kraft wirkt."
+    },
+    {
+     "wort": "POL",
+     "tipp": "Stelle eines Magneten, an der er am stärksten wirkt; jeder Magnet hat zwei davon."
+    },
+    {
+     "wort": "KOMPASS",
+     "tipp": "Gerät mit frei drehbarer Nadel, das die Richtung des stärksten Magnetfeldes an seinem Ort anzeigt."
+    },
+    {
+     "wort": "ELEKTROMAGNET",
+     "tipp": "Spule mit Eisenkern, die nur so lange magnetisch ist, wie Strom durch sie fließt."
+    },
+    {
+     "wort": "WINDUNGSZAHL",
+     "tipp": "Anzahl der Drahtschleifen einer Spule; ihr Formelzeichen ist N."
+    },
+    {
+     "wort": "EISENKERN",
+     "tipp": "Stab im Inneren einer Spule, der das Magnetfeld erheblich verstärkt."
+    },
+    {
+     "wort": "TRAGKRAFT",
+     "tipp": "Größe, die angibt, wie viel ein Elektromagnet halten kann; hier gemessen in Büroklammern."
+    },
+    {
+     "wort": "LORENTZKRAFT",
+     "tipp": "Kraft auf einen stromdurchflossenen Leiter im Magnetfeld; sie steht senkrecht auf Strom und Feld."
+    },
+    {
+     "wort": "DREHMOMENT",
+     "tipp": "Drehende Wirkung eines Kräftepaars; du berechnest sie mit M = N · B · I · A."
+    },
+    {
+     "wort": "KOMMUTATOR",
+     "tipp": "Geteilter Ring im Motor, der den Strom bei jeder halben Umdrehung umpolt."
+    },
+    {
+     "wort": "OERSTED",
+     "tipp": "Däne, der 1820 entdeckte, dass ein stromdurchflossener Draht eine Kompassnadel bewegt."
+    },
+    {
+     "wort": "TESLA",
+     "tipp": "Einheit der magnetischen Flussdichte mit dem Kurzzeichen T."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, was ein Magnetfeld ist und woran man erkennt, wo es am stärksten ist.",
+    "Ich kann begründen, wohin eine Kompassnadel zeigt und warum sie sich neben einem Magneten anders einstellt.",
+    "Ich kann den Versuch von Ørsted beschreiben und daraus folgern, dass jeder stromdurchflossene Draht ein Magnetfeld hat.",
+    "Ich kann erklären, wie ein Elektromagnet aufgebaut ist und warum man ihn abschalten kann.",
+    "Ich kann angeben, wie Windungszahl und Stromstärke die Tragkraft eines Elektromagneten beeinflussen.",
+    "Ich kann die vier Wirkungen des elektrischen Stroms nennen und Geräten zuordnen.",
+    "Ich kann mit F = B · I · L die Kraft auf einen stromdurchflossenen Leiter berechnen.",
+    "Ich kann mit der Drei-Finger-Regel der rechten Hand die Richtung dieser Kraft vorhersagen.",
+    "Ich kann erklären, wie im Motor aus zwei Kräften eine Drehung wird und wozu der Kommutator dient.",
+    "Ich kann mit M = N · B · I · A das Drehmoment berechnen und beurteilen, was einen Motor kräftiger macht."
+   ],
+   "tipps": [
+    "Öffne die Simulationen noch einmal und stelle genau die Werte ein, die in deiner eigenen Tabelle stehen. Stimmt die Anzeige mit deinen Notizen überein, sitzt der Zusammenhang; weicht sie ab, findest du sofort die Zeile, die du nachbessern musst.",
+    "Lege dir eine Karteikarte mit den beiden Formeln F = B · I · L und M = N · B · I · A an. Schreibe hinter jede Größe, in welcher Einheit sie eingesetzt wird – die Länge in Metern, nicht in Zentimetern.",
+    "Übe die Drei-Finger-Regel mit der eigenen rechten Hand, nicht nur im Kopf. Daumen ist der Strom, Zeigefinger das Feld von Nord nach Süd, Mittelfinger die Kraft. Drei Beispiele reichen, damit es sitzt.",
+    "Merke dir für den Kommutator einen einzigen Satz: Er polt bei jeder halben Umdrehung um, damit die Kräfte weiter in dieselbe Drehrichtung drücken. Wer diesen Satz sagen kann, kann auch begründen, was ohne ihn passiert."
+   ],
+   "mini": [
+    {
+     "frage": "Berechne die Kraft auf einen 10 cm langen Leiter mit I = 6,0 A in einem Feld von 0,20 T.",
+     "loesung": "F = B · I · L = 0,20 T · 6,0 A · 0,10 m = 0,120 N. Das entspricht der Gewichtskraft von rund 12 Büroklammern zu je 0,01 N."
+    },
+    {
+     "frage": "Berechne mit B = 20 µT · I / r das Feld eines Drahtes bei I = 2,0 A und r = 4,0 cm und vergleiche es mit dem Erdfeld von 20 µT.",
+     "loesung": "B = 20 µT · 2,0 / 4,0 = 10,0 µT. Das ist nur halb so stark wie das waagerechte Erdfeld. Die Kompassnadel schlägt deshalb um weniger als 45° aus."
+    },
+    {
+     "frage": "Eine Spule trägt bei 100 Windungen und 2 A sechs Büroklammern. Bestimme die Tragkraft bei 200 Windungen und 3 A.",
+     "loesung": "Die Windungszahl wird verdoppelt: 12 Klammern. Die Stromstärke wird anderthalbfach: 12 · 1,5 = 18 Büroklammern."
+    },
+    {
+     "frage": "Berechne das Drehmoment einer Spule mit 40 Windungen bei B = 0,25 T, I = 2,0 A und A = 0,002 m².",
+     "loesung": "M = N · B · I · A = 40 · 0,25 T · 2,0 A · 0,002 m² = 0,040 N·m, also 40 mN·m."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Den Raum um einen Magneten, in dem er wirkt, nennt man sein ",
+     "loesung": "Magnetfeld",
+     "post": "; am stärksten ist es an den Polen."
+    },
+    {
+     "pre": "Auch um jeden stromdurchflossenen Draht liegt ein Magnetfeld; es verläuft in ",
+     "loesung": "Kreisen",
+     "post": " um ihn herum."
+    },
+    {
+     "pre": "Eine Spule mit Eisenkern, die nur bei fließendem Strom magnetisch ist, heißt ",
+     "loesung": "Elektromagnet",
+     "post": "."
+    },
+    {
+     "pre": "Auf einen stromdurchflossenen Leiter im Magnetfeld wirkt die Kraft F = B · I · ",
+     "loesung": "L",
+     "post": "."
+    },
+    {
+     "pre": "Der geteilte Ring, der den Strom bei jeder halben Umdrehung umpolt, heißt ",
+     "loesung": "Kommutator",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein Magnet wirkt an seinen Polen stärker als in seiner Mitte.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Kupferdraht ohne Strom lenkt eine Kompassnadel ab.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Verdoppelt man die Windungszahl einer Spule, so verdoppelt sich ihre Tragkraft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Kraft auf einen stromdurchflossenen Leiter zieht ihn zum Magneten hin.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Polt man Strom und Magnet zugleich um, so bleibt die Kraftrichtung gleich.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ohne Kommutator dreht sich die Motorspule durch ihren Schwung endlos weiter.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei einer Glühlampe treten Licht- und Wärmewirkung zugleich auf.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Leiter von 20 cm Länge liegt in einem Feld von 0,15 T; es fließen 4,0 A. Wie groß ist die Kraft auf ihn?",
+    "optionen": [
+     "0,120 N, denn F = 0,15 T · 4,0 A · 0,20 m.",
+     "12,0 N, denn die Länge wird in Zentimetern eingesetzt. In der Formel steht sie jedoch in Metern.",
+     "0,60 N, denn man multipliziert nur Feld und Stromstärke. Die Länge gehört ebenfalls in die Rechnung.",
+     "0,030 N, denn durch die Länge wird geteilt. Sie wird aber multipliziert."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Elektromagnet für einen Schrottplatzkran geeignet ist, ein gleich starker Dauermagnet dagegen nicht.",
+    "zeilen": 4,
+    "loesung": "Beide könnten das Wrack heben. Der Unterschied liegt beim Loslassen: Ein Dauermagnet wirkt immer, das Wrack müsste mit großer Kraft abgerissen werden und ließe sich nicht an einer bestimmten Stelle ablegen. Der Elektromagnet dagegen ist nur magnetisch, solange Strom durch seine Spule fließt. Der Kranführer schaltet ab, das Magnetfeld verschwindet sofort, und die Last fällt genau dort herunter, wo sie hinsoll. Für einen Kran ist also allein der schaltbare Magnet brauchbar."
+   },
+   "transfer": {
+    "frage": "In einem Baumarkt wird ein Akkuschrauber mit „doppeltem Drehmoment gegenüber dem Vorgängermodell“ beworben. Im Kleingedruckten steht, dass der neue Akku 18 V statt 9 V liefert, während Motor und Magnete unverändert blieben. Beurteile, ob die Werbeaussage physikalisch begründet ist.",
+    "zeilen": 6,
+    "loesung": "Das Drehmoment eines Motors ist M = N · B · I · A. Von diesen vier Größen sind N, B und A unverändert geblieben. Übrig bleibt die Stromstärke I. Bei doppelter Spannung und gleichem Widerstand der Spule fließt nach I = U / R tatsächlich der doppelte Strom, und damit verdoppelt sich das Drehmoment. Die Aussage ist also begründet – allerdings mit zwei Einschränkungen: Der doppelte Strom erwärmt die Spule viermal so stark, und der Eisenkern kann in die Sättigung geraten, sodass B nicht mehr voll wirkt. Im Dauerbetrieb wird das versprochene Drehmoment deshalb nicht unbegrenzt erreicht."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Hufeisenmagnet und zwei Stabmagnete",
+   "Kompass, klein",
+   "Eisennägel und Büroklammern",
+   "Isolierter Kupferlackdraht, etwa 5 m",
+   "Eisennagel als Spulenkern",
+   "Flachbatterie 4,5 V",
+   "Netzgerät mit einstellbarer Kleinspannung",
+   "Krokodilklemmen und Kabel",
+   "Aluminiumstab oder starrer Kupferdraht",
+   "Bausatz oder Modell eines Gleichstrommotors"
+  ]
+ },
+ {
+  "id": "netz",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "INDUKTION",
+     "tipp": "Entstehen einer Spannung durch ein sich änderndes Magnetfeld – ganz ohne Batterie."
+    },
+    {
+     "wort": "GENERATOR",
+     "tipp": "Spule, die sich im Magnetfeld dreht und dabei ohne Unterbrechung Spannung liefert."
+    },
+    {
+     "wort": "WECHSELSPANNUNG",
+     "tipp": "Spannung, die fortlaufend ihr Vorzeichen wechselt; im Netz 50-mal je Sekunde."
+    },
+    {
+     "wort": "HERTZ",
+     "tipp": "Einheit der Frequenz mit dem Kurzzeichen Hz; das Netz arbeitet mit 50 davon."
+    },
+    {
+     "wort": "LENZ",
+     "tipp": "Nach ihm heißt die Regel, dass der induzierte Strom seiner Ursache entgegenwirkt."
+    },
+    {
+     "wort": "TRANSFORMATOR",
+     "tipp": "Zwei Spulen auf einem Eisenkern; er ändert eine Wechselspannung ohne leitende Verbindung."
+    },
+    {
+     "wort": "EISENKERN",
+     "tipp": "Er bündelt das Magnetfeld und führt es von der einen Spule zur anderen."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Verhältnis von herausgeholter zu hineingesteckter Leistung, angegeben in Prozent."
+    },
+    {
+     "wort": "HOCHSPANNUNG",
+     "tipp": "Damit transportiert man Energie über große Entfernungen, weil dann der Strom klein bleibt."
+    },
+    {
+     "wort": "WIRBELSTROM",
+     "tipp": "Ringförmiger Strom im Eisenkern selbst; er erwärmt ihn und kostet Energie."
+    },
+    {
+     "wort": "GLEICHRICHTER",
+     "tipp": "Bauteil im Ladegerät, das aus Wechselstrom Gleichstrom macht."
+    },
+    {
+     "wort": "UMSPANNWERK",
+     "tipp": "Anlage, in der die Spannung von einer Netzebene auf die nächste geändert wird."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass eine Spannung nur entsteht, solange sich das Magnetfeld ändert.",
+    "Ich kann angeben, wovon die Höhe der induzierten Spannung abhängt.",
+    "Ich kann die Lenzsche Regel formulieren und damit begründen, warum das Treten am Dynamo schwerer wird.",
+    "Ich kann beschreiben, wie ein Generator aufgebaut ist und warum er Wechselspannung liefert.",
+    "Ich kann begründen, warum die Steckdose keine festen Pole hat.",
+    "Ich kann Gleich- und Wechselstrom unterscheiden und Geräten zuordnen.",
+    "Ich kann erklären, wie ein Transformator Energie ohne leitende Verbindung überträgt.",
+    "Ich kann mit dem Verhältnis der Windungszahlen die Sekundärspannung berechnen.",
+    "Ich kann mit P = R · I² den Verlust auf einer Leitung berechnen.",
+    "Ich kann begründen, warum das Netz mit Hochspannung arbeitet, und die Spannungsebenen nennen."
+   ],
+   "tipps": [
+    "Prüfe deine Tabellen noch einmal an den Simulationen nach. Stelle genau die Werte ein, die du notiert hast; weicht die Anzeige ab, findest du sofort die Zeile, die du nachbessern musst.",
+    "Merke dir für die Induktion einen einzigen Satz: Nicht das Feld zählt, sondern seine Änderung. Damit lassen sich Dynamo, Generator, Transformator und der springende Ring auf einmal erklären.",
+    "Schreibe dir die drei Formeln dieses Kapitels untereinander: U = N · B · A · v / d, die Verhältnisgleichung am Transformator und P = R · I². Notiere hinter jede, welche Größe darin quadratisch vorkommt – es ist nur eine.",
+    "Übe die Kette vom Kraftwerk zur Steckdose als Reihenfolge von Zahlen: einige Tausend Volt, dann 380 000, dann 110 000, dann 20 000, dann 230. Wer die Reihe kennt, kann jeden Transformator dazwischen begründen."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Aufbau liefert bei 300 Windungen und 25 cm/s eine Spannung von 0,075 V. Berechne die Spannung bei 600 Windungen und 50 cm/s.",
+     "loesung": "Beide Größen werden verdoppelt, also wird die Spannung viermal so groß: 0,075 V · 4 = 0,300 V."
+    },
+    {
+     "frage": "Ein Transformator hat primär 500 und sekundär 250 Windungen. Berechne die ideale Sekundärspannung bei 8,0 V primär.",
+     "loesung": "Das Verhältnis beträgt 250 / 500 = 0,50. Ideal erwartet man also 0,50 · 8,0 V = 4,0 V."
+    },
+    {
+     "frage": "Auf einer Leitung mit R = 5,0 Ω fließen 2,0 A. Berechne den Verlust.",
+     "loesung": "P = R · I² = 5,0 Ω · 2,0 A · 2,0 A = 20 W."
+    },
+    {
+     "frage": "Erkläre in einem Satz, warum ein Transformator an einer Batterie nicht dauerhaft arbeitet.",
+     "loesung": "Eine Batterie liefert Gleichspannung; das Magnetfeld im Kern ändert sich dann nach dem Einschalten nicht mehr, und ohne Änderung wird keine Spannung induziert."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Eine Spannung entsteht in einer Spule nur, wenn sich das Magnetfeld ",
+     "loesung": "ändert",
+     "post": "."
+    },
+    {
+     "pre": "Die Regel, dass der induzierte Strom seiner Ursache entgegenwirkt, heißt ",
+     "loesung": "Lenzsche",
+     "post": " Regel."
+    },
+    {
+     "pre": "Eine Spule, die sich im Magnetfeld dreht und Spannung liefert, ist ein ",
+     "loesung": "Generator",
+     "post": "."
+    },
+    {
+     "pre": "Am Transformator verhalten sich die Spannungen wie die ",
+     "loesung": "Windungszahlen",
+     "post": "."
+    },
+    {
+     "pre": "Der Verlust auf einer Leitung berechnet sich als P = R · ",
+     "loesung": "I²",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein Magnet, der still in einer Spule liegt, erzeugt dauerhaft eine Spannung.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim Herausziehen des Magneten kehrt sich das Vorzeichen der Spannung um.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der induzierte Strom wirkt der Änderung entgegen, die ihn hervorruft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Transformator arbeitet auch mit Gleichspannung dauerhaft.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Steigt die Spannung am Transformator, so sinkt die Stromstärke.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei doppelter Stromstärke verdoppelt sich der Verlust auf der Leitung.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Zwischen je zwei Spannungsebenen des Netzes steht ein Transformator.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Auf einer Leitung mit R = 10,0 Ω fließen 0,50 A. Wie groß ist der Verlust?",
+    "optionen": [
+     "2,5 W, denn P = 10,0 Ω · 0,50 A · 0,50 A.",
+     "5,0 W, denn P = R · I. Die Stromstärke geht jedoch quadratisch ein.",
+     "20 W, denn man teilt durch den Strom. Der Strom wird aber multipliziert.",
+     "0,25 W, denn man nimmt nur das Quadrat des Stroms. Der Widerstand gehört ebenfalls dazu."
+    ],
+    "richtig": 0
+   },
+   "offen": {
+    "frage": "Erkläre, warum das Treten am Fahrrad schwerer wird, sobald der Dynamo Strom liefert, und woher die Energie für das Licht kommt.",
+    "zeilen": 4,
+    "loesung": "Im Dynamo wird durch die Drehung eine Spannung induziert. Sobald die Lampe angeschlossen ist, fließt ein Strom. Nach der Lenzschen Regel erzeugt dieser Strom ein Magnetfeld, das der Drehung entgegenwirkt – der Dynamo wird gebremst. Diese Bremskraft muss man mit den Beinen überwinden. Die Energie für das Licht stammt also aus der Muskelarbeit; sie wird nicht erzeugt, sondern nur umgewandelt."
+   },
+   "transfer": {
+    "frage": "In der Zeitung steht, eine neue Gleichstrom-Fernleitung von der Nordsee nach Bayern werde mit 525 000 Volt betrieben. Ein Leserbrief hält das für unsinnig: Gleichstrom lasse sich doch gar nicht transformieren, deshalb arbeite das ganze Netz mit Wechselstrom. Beurteile den Einwand.",
+    "zeilen": 6,
+    "loesung": "Der Leserbrief hat in einem Punkt recht: Ein gewöhnlicher Transformator arbeitet nur mit Wechselspannung, weil nur ein sich änderndes Magnetfeld eine Spannung induziert. Genau deshalb ist das Verteilnetz mit seinen vielen Spannungsebenen ein Wechselstromnetz. Der Schluss daraus ist aber falsch. Bei einer sehr langen Punkt-zu-Punkt-Leitung wird nur an zwei Stellen umgespannt, und dort setzt man heute Leistungselektronik statt eines Transformators ein. Gleichstrom hat auf langen Strecken sogar Vorteile: Es entstehen keine Blindströme, und Erdkabel lassen sich damit weit länger bauen. Der Einwand beschreibt also richtig, warum das Verteilnetz mit Wechselstrom arbeitet, übersieht jedoch, dass für eine einzelne lange Trasse andere Überlegungen gelten."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Spule mit 600 Windungen",
+   "Starker Stabmagnet",
+   "Spannungsmesser mit Nullpunkt in der Mitte",
+   "Fahrraddynamo mit Lampe",
+   "Kupferrohr, etwa 50 cm",
+   "Neodym-Magnet, passend zum Rohr",
+   "Transformator-Baukasten mit Spulen zu 250, 500 und 1000 Windungen",
+   "Geschlossener Eisenkern",
+   "Zwei Vielfachmessgeräte",
+   "Modell-Fernleitung mit dünnem Widerstandsdraht"
+  ]
+ },
+ {
+  "id": "atomkern",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "PROTON",
+     "tipp": "Positiv geladenes Kernteilchen; seine Anzahl bestimmt das Element."
+    },
+    {
+     "wort": "NEUTRON",
+     "tipp": "Kernteilchen ohne elektrische Ladung; seine Anzahl unterscheidet die Isotope."
+    },
+    {
+     "wort": "ISOTOP",
+     "tipp": "Atomsorte mit gleicher Protonenzahl, aber anderer Neutronenzahl."
+    },
+    {
+     "wort": "MASSENZAHL",
+     "tipp": "Summe aus Protonen und Neutronen; sie steht oben links am Elementsymbol."
+    },
+    {
+     "wort": "RADIOAKTIVITAET",
+     "tipp": "Von selbst ablaufende Umwandlung instabiler Atomkerne."
+    },
+    {
+     "wort": "RADON",
+     "tipp": "Radioaktives Gas aus dem Boden; es liefert den größten Teil der natürlichen Dosis."
+    },
+    {
+     "wort": "IONENPAAR",
+     "tipp": "Herausgeschlagenes Elektron und zurückbleibendes Ion zusammen."
+    },
+    {
+     "wort": "ZAEHLROHR",
+     "tipp": "Gasgefülltes Gerät, das einzelne Teilchen über eine Elektronenlawine zählt."
+    },
+    {
+     "wort": "NULLRATE",
+     "tipp": "Impulse, die ein Zählrohr auch ohne Präparat misst."
+    },
+    {
+     "wort": "HALBWERTSDICKE",
+     "tipp": "Materialdicke, nach der von Gammastrahlung noch die Hälfte übrig ist."
+    },
+    {
+     "wort": "HALBWERTSZEIT",
+     "tipp": "Zeit, nach der im Mittel die Hälfte der Kerne zerfallen ist."
+    },
+    {
+     "wort": "NUKLIDKARTE",
+     "tipp": "Darstellung aller Kerne über Protonen- und Neutronenzahl; stabile liegen im Tal."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann den Aufbau eines Atoms beschreiben und begründen, warum es nach außen ungeladen ist.",
+    "Ich kann erklären, was Isotope sind, und die krummen Zahlen im Periodensystem deuten.",
+    "Ich kann begründen, warum manche Kerne zerfallen und andere nicht.",
+    "Ich kann angeben, woher die natürliche Strahlung stammt und welchen Anteil Radon hat.",
+    "Ich kann erklären, was ionisierende Strahlung im Gewebe anrichtet.",
+    "Ich kann beschreiben, wie ein Geiger-Müller-Zählrohr arbeitet und was die Nullrate ist.",
+    "Ich kann die drei Strahlungsarten nach Aufbau, Ladung und Reichweite unterscheiden.",
+    "Ich kann angeben, womit sich jede Strahlungsart abschirmen lässt.",
+    "Ich kann Zerfallsgleichungen für Alpha- und Betazerfall aufstellen.",
+    "Ich kann mit der Halbwertszeit rechnen und das Alter einer Probe bestimmen."
+   ],
+   "tipps": [
+    "Öffne die Simulationen noch einmal und stelle genau die Werte ein, die in deiner Tabelle stehen. Weicht die Anzeige ab, findest du sofort die Zeile, die du nachbessern musst.",
+    "Zeichne dir eine kleine Tabelle mit drei Spalten für α, β und γ. Trage darin ein: Was ist es, welche Ladung, was hält es auf, wie weit kommt es. Vier Zeilen genügen für die halbe Klassenarbeit.",
+    "Übe die beiden Zerfallsregeln als Zahlenpaar: Alpha heißt minus 4 und minus 2, Beta heißt null und plus 1. Damit lässt sich jede Gleichung in zehn Sekunden prüfen.",
+    "Halbwertszeiten rechnest du am schnellsten in Schritten: eine Hälfte, ein Viertel, ein Achtel, ein Sechzehntel. Wer diese Reihe im Kopf hat, braucht keine Formel."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Kern hat 11 Protonen und 12 Neutronen. Gib Element, Massenzahl und die Schreibweise an.",
+     "loesung": "Die Ordnungszahl 11 gehört zu Natrium. A = 11 + 12 = 23, also Natrium-23, geschrieben als ²³₁₁Na."
+    },
+    {
+     "frage": "Welcher Kern entsteht, wenn Polonium-210 mit Z = 84 einen Alphazerfall durchläuft?",
+     "loesung": "A sinkt um 4 auf 206, Z um 2 auf 82. Das ist Blei-206."
+    },
+    {
+     "frage": "Von einer Probe sind nach 4 Halbwertszeiten noch 50 Kerne übrig. Wie viele waren es am Anfang?",
+     "loesung": "Nach vier Halbwertszeiten ist ein Sechzehntel übrig. Also waren es 50 · 16 = 800 Kerne."
+    },
+    {
+     "frage": "Wie viel Prozent der Gammastrahlung kommen durch 12 mm Blei, wenn die Halbwertsdicke 6 mm beträgt?",
+     "loesung": "12 mm sind zwei Halbwertsdicken. Übrig bleibt ein Viertel, also 25 %."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Welches Element vorliegt, bestimmt allein die Zahl der ",
+     "loesung": "Protonen",
+     "post": " im Kern."
+    },
+    {
+     "pre": "Atome mit gleicher Protonenzahl, aber verschiedener Neutronenzahl heißen ",
+     "loesung": "Isotope",
+     "post": "."
+    },
+    {
+     "pre": "Beim Alphazerfall sinkt die Massenzahl um ",
+     "loesung": "4",
+     "post": " und die Kernladungszahl um 2."
+    },
+    {
+     "pre": "Strahlung, die aus Atomen Elektronen herausschlägt, heißt ",
+     "loesung": "ionisierend",
+     "post": "."
+    },
+    {
+     "pre": "Die Zeit, nach der im Mittel die Hälfte der Kerne zerfallen ist, heißt ",
+     "loesung": "Halbwertszeit",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Die Neutronenzahl bestimmt, um welches Element es sich handelt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Atom ist nach außen ungeladen, obwohl es geladene Teilchen enthält.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Alphastrahlung wird schon von einem Blatt Papier aufgehalten.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Gammastrahlung lässt sich mit genügend Blei vollständig aufhalten.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim Betazerfall bleibt die Massenzahl unverändert.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Kühlt man eine Probe ab, so verlängert sich ihre Halbwertszeit.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Auch ohne Präparat misst ein Zählrohr eine geringe Zählrate.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Von einer Probe ist nach einer bestimmten Zeit noch ein Sechzehntel der Kerne übrig. Wie viele Halbwertszeiten sind vergangen?",
+    "optionen": [
+     "Zwei, denn ein Viertel wäre die Hälfte der Hälfte. Ein Sechzehntel erfordert vier Halbierungen.",
+     "Vier, denn die Hälfte der Hälfte der Hälfte der Hälfte ist ein Sechzehntel.",
+     "Sechzehn, denn der Nenner gibt die Zahl der Halbwertszeiten an. Er gibt an, durch wie viel geteilt wurde.",
+     "Acht, denn man halbiert sechzehn. Vier Halbierungen führen von 1 auf ein Sechzehntel."
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Erkläre, warum Alphastrahlung von außen fast harmlos ist, eingeatmet dagegen die gefährlichste der drei Strahlungsarten.",
+    "zeilen": 4,
+    "loesung": "Alphastrahlung erzeugt auf jedem Millimeter über viertausend Ionenpaare – weit mehr als Beta- oder Gammastrahlung. Genau deshalb ist sie nach wenigen Zentimetern Luft am Ende und wird von der obersten, abgestorbenen Hautschicht vollständig aufgehalten; von außen erreicht sie lebendes Gewebe gar nicht. Wird ein Alphastrahler eingeatmet oder gegessen, liegt kein Schutz mehr dazwischen: Die sehr dichte Ionisierungsspur liegt dann mitten im Gewebe. Deshalb rechnet man im Strahlenschutz mit dem Wichtungsfaktor 20."
+   },
+   "transfer": {
+    "frage": "Bei einem archäologischen Fund werden zwei Proben untersucht: ein Holzbalken und ein Bronzebeschlag. Für den Balken ergibt die C-14-Messung noch ein Viertel des ursprünglichen Gehalts. Der Beschlag lässt sich mit dieser Methode nicht datieren. Bestimme das Alter des Balkens und erkläre, warum die Methode beim Beschlag versagt.",
+    "zeilen": 6,
+    "loesung": "Ein Viertel bleibt nach zwei Halbwertszeiten übrig. Zwei Halbwertszeiten sind 2 · 5730 Jahre = 11.460 Jahre; der Balken ist also rund 11.500 Jahre alt. Beim Beschlag versagt die Methode aus einem grundsätzlichen Grund: Sie setzt voraus, dass die Probe zu Lebzeiten Kohlenstoff aus der Luft aufgenommen und die Aufnahme mit dem Tod beendet hat. Bronze ist eine Metalllegierung, die nie gelebt hat und praktisch keinen Kohlenstoff enthält – es gibt nichts zu messen. Für Metall müsste man andere Verfahren nutzen, etwa die Datierung anhand der Fundschicht oder der Herstellungstechnik."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Geiger-Müller-Zählrohr mit Zählgerät",
+   "Schulpräparate, umschlossen",
+   "Blatt Papier als Absorber",
+   "Aluminiumbleche verschiedener Dicke",
+   "Bleiplatten zu je 2 mm",
+   "Paranussmehl und gebrannter Ziegel als Vergleichsproben",
+   "Stoppuhr",
+   "Periodensystem",
+   "Nuklidkarte oder Ausdruck des Kartenausschnitts",
+   "Maßband zur Abstandsmessung"
+  ]
+ },
+ {
+  "id": "kernenergie",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "KERNSPALTUNG",
+     "tipp": "Zerbrechen eines schweren Kerns nach dem Einfang eines langsamen Neutrons."
+    },
+    {
+     "wort": "MODERATOR",
+     "tipp": "Stoff im Reaktor, der Neutronen abbremst; meist gewöhnliches Wasser."
+    },
+    {
+     "wort": "STEUERSTAB",
+     "tipp": "Bauteil aus Bor oder Cadmium, das Neutronen wegschluckt."
+    },
+    {
+     "wort": "KETTENREAKTION",
+     "tipp": "Folge von Spaltungen, bei der jede die nächste auslöst."
+    },
+    {
+     "wort": "KRITISCH",
+     "tipp": "Zustand, in dem der Vermehrungsfaktor genau 1 beträgt."
+    },
+    {
+     "wort": "NACHZERFALLSWAERME",
+     "tipp": "Wärme, die nach dem Abschalten aus dem Zerfall der Spaltprodukte stammt."
+    },
+    {
+     "wort": "SIEVERT",
+     "tipp": "Einheit der Strahlendosis; im Alltag rechnet man in Tausendsteln davon."
+    },
+    {
+     "wort": "ABSTAND",
+     "tipp": "Das wirksamste der drei A; er geht quadratisch in die Dosisleistung ein."
+    },
+    {
+     "wort": "ENDLAGER",
+     "tipp": "Ort, an dem stark strahlender Abfall dauerhaft verwahrt werden soll."
+    },
+    {
+     "wort": "PLUTONIUM",
+     "tipp": "Element mit der Ordnungszahl 94; sein Isotop 239 hat 24.110 Jahre Halbwertszeit."
+    },
+    {
+     "wort": "KERNFUSION",
+     "tipp": "Zusammenbauen leichter Kerne; so gewinnt die Sonne ihre Energie."
+    },
+    {
+     "wort": "MASSENDEFEKT",
+     "tipp": "Massenunterschied, der bei Kernumwandlungen zu Energie wird."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, wofür radioaktive Stoffe in der Medizin eingesetzt werden.",
+    "Ich kann technische Anwendungen nennen und angeben, welche Eigenschaft dabei genutzt wird.",
+    "Ich kann die Anteile der jährlichen Strahlendosis in Deutschland nennen und einordnen.",
+    "Ich kann die drei A des Strahlenschutzes anwenden und begründen, welches am stärksten wirkt.",
+    "Ich kann eine Spaltungsgleichung prüfen und den Massendefekt in Energie umrechnen.",
+    "Ich kann erklären, wie der Vermehrungsfaktor k eine Kettenreaktion steuert.",
+    "Ich kann die Kette vom Reaktor bis zur Steckdose in vier Schritten beschreiben.",
+    "Ich kann erklären, warum ein Reaktor auch nach dem Abschalten gekühlt werden muss.",
+    "Ich kann mit Halbwertszeiten begründen, warum ein Endlager so lange dichthalten muss.",
+    "Ich kann Fusion und Spaltung anhand der Energie je Kernbaustein vergleichen und die Kernenergie begründet bewerten."
+   ],
+   "tipps": [
+    "Prüfe deine Tabellen an den Simulationen nach. Stelle genau die Werte ein, die du notiert hast; weicht die Anzeige ab, findest du sofort die Zeile, die du nachbessern musst.",
+    "Merke dir für den Strahlenschutz die drei Wirkungsweisen als drei verschiedene Rechnungen: Abstand quadratisch, Abschirmung halbierend, Zeit einfach. Wer das trennt, verwechselt sie in der Arbeit nicht.",
+    "Für Kettenreaktionen genügt eine einzige Zahl: k. Schreibe dir drei Zeilen auf – k kleiner 1 erstirbt, k gleich 1 Kraftwerk, k größer 1 lawinenartig.",
+    "Bei der Bewertungsaufgabe zählt nicht deine Meinung, sondern deine Begründung. Nenne mindestens drei Kriterien, sage zu jedem, was dafür und was dagegen spricht, und lege offen, welches für dich am schwersten wiegt."
+   ],
+   "mini": [
+    {
+     "frage": "Prüfe die Gleichung ¹₀n + ²³⁵₉₂U → ¹⁴⁰₅₄Xe + ⁹⁴₃₈Sr + 2 ¹₀n auf ihre Summen.",
+     "loesung": "Massenzahlen links 1 + 235 = 236, rechts 140 + 94 + 2 = 236. Kernladungszahlen links 0 + 92 = 92, rechts 54 + 38 = 92. Beide Summen stimmen."
+    },
+    {
+     "frage": "Berechne die Energie einer Spaltung, bei der 0,1854 u Masse fehlen.",
+     "loesung": "E = 0,1854 u · 931,5 MeV/u = 172,7 MeV."
+    },
+    {
+     "frage": "Auf welchen Teil sinkt die Dosisleistung, wenn man den Abstand vervierfacht?",
+     "loesung": "Der Abstand geht quadratisch ein: vier zum Quadrat ist sechzehn, also auf ein Sechzehntel."
+    },
+    {
+     "frage": "Bei k = 1,2 – auf das Wievielfache wächst die Spaltungszahl nach fünf Generationen?",
+     "loesung": "1,2 hoch 5 ergibt rund 2,5. Aus 500 Spaltungen würden also etwa 1250."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Damit ein Urankern gespalten wird, muss ihn ein ",
+     "loesung": "langsames",
+     "post": " Neutron treffen."
+    },
+    {
+     "pre": "Ein Kernkraftwerk arbeitet dauerhaft bei k gleich ",
+     "loesung": "1",
+     "post": "."
+    },
+    {
+     "pre": "Die elektrische Energie entsteht erst im ",
+     "loesung": "Generator",
+     "post": "."
+    },
+    {
+     "pre": "Am stärksten wirkt beim Strahlenschutz der ",
+     "loesung": "Abstand",
+     "post": "."
+    },
+    {
+     "pre": "Das Zusammenbauen leichter Kerne zu schwereren heißt ",
+     "loesung": "Kernfusion",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei der Kernspaltung wiegen die Bruchstücke zusammen weniger als der Ausgangskern.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Reaktor kann wie eine Atombombe explodieren.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Nach dem Einfahren der Steuerstäbe muss weiter gekühlt werden.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Halbe Aufenthaltsdauer bedeutet ein Viertel der Dosis.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Den größten Anteil der natürlichen Jahresdosis liefert Radon.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Fusion liefert je Kernbaustein weniger Energie als die Spaltung.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Kernkraftwerk ist im Kern ein Dampfkraftwerk.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Auf welchen Teil sinkt die Dosisleistung, wenn man den Abstand von 1,0 m auf 4,0 m vergrößert?",
+    "optionen": [
+     "Auf ein Viertel, denn der Abstand wird vervierfacht. Er geht jedoch quadratisch ein.",
+     "Auf ein Achtel, denn man verdoppelt zweimal. Zwei Verdopplungen des Abstands ergeben ein Sechzehntel.",
+     "Auf ein Sechzehntel, denn der Abstand geht quadratisch ein und vier zum Quadrat ist sechzehn.",
+     "Sie bleibt gleich, denn die Quelle ist unverändert. Die Dosisleistung hängt vom Abstand ab."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Reaktor auch nach dem vollständigen Einfahren aller Steuerstäbe noch tagelang gekühlt werden muss.",
+    "zeilen": 4,
+    "loesung": "Die Steuerstäbe schlucken Neutronen und beenden damit die Kettenreaktion – aber nicht den Zerfall der bereits entstandenen Spaltprodukte. Diese Bruchstücke sind selbst radioaktiv und geben weiter Energie ab; man nennt das Nachzerfallswärme. Sie beträgt anfangs einige Prozent der vollen Leistung und klingt erst über Tage und Wochen ab. Fällt die Kühlung in dieser Zeit aus, kann der Kern trotz abgeschalteter Kettenreaktion schmelzen. Genau das geschah 2011 in Fukushima."
+   },
+   "transfer": {
+    "frage": "In einer Diskussion sagt jemand: „Ein Kernkraftwerk ist klimaneutral, also ist es die beste Lösung.“ Ein anderer entgegnet: „Wegen des Mülls darf man es auf keinen Fall nutzen.“ Beurteile beide Aussagen und entwickle daraus eine eigene, begründete Position.",
+    "zeilen": 6,
+    "loesung": "Beide Aussagen greifen zu kurz, weil sie jeweils nur ein Kriterium betrachten. Zur ersten: Im Betrieb entstehen tatsächlich kaum Treibhausgase, wohl aber beim Bau, beim Uranabbau und beim Rückbau – „klimaneutral“ ist also zu stark formuliert. Außerdem folgt aus einem einzelnen Vorteil nicht, dass etwas insgesamt die beste Lösung ist. Zur zweiten: Das Endlagerproblem ist real und betrifft Zeiträume von Hunderttausenden Jahren; daraus folgt aber nicht zwingend ein Verbot, sondern zunächst die Frage, wie schwer dieses Kriterium gegenüber anderen wiegt. Eine tragfähige Position nennt mindestens drei Kriterien – etwa Klima, Unfallrisiko und Abfall –, sagt zu jedem, was dafür und was dagegen spricht, und legt ausdrücklich offen, welches den Ausschlag gibt und warum."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Periodensystem und Nuklidkarte",
+   "Taschenrechner",
+   "Bleiplatten zu je 2 mm",
+   "Maßband",
+   "Geiger-Müller-Zählrohr",
+   "Ausdruck der Dosis-Tabelle des Bundesamts für Strahlenschutz",
+   "Modell eines Reaktordruckbehälters oder Schnittbild",
+   "Zeitungsartikel zur Endlagersuche",
+   "Karteikarten für die Bewertungsargumente"
+  ]
+ }
+]

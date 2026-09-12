@@ -1,0 +1,250 @@
+[
+ {
+  "id": "ft1",
+  "theme": "foe_optik",
+  "titel": "Fördertest 1 · Sehen, spiegeln, brechen",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Eine Oberfläche teilt das Licht in drei Anteile. Was ergeben die Anteile zusammen?",
+      "optionen": [
+       "50 Prozent.",
+       "Je nach Farbe verschieden viel.",
+       "Immer 100 Prozent."
+      ],
+      "richtig": 2
+     },
+     {
+      "frage": "Der Einfallswinkel am Spiegel ist 30°. Wie groß ist der Reflexionswinkel?",
+      "optionen": [
+       "Auch 30°.",
+       "60°.",
+       "0°."
+      ],
+      "richtig": 0
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Licht knickt an der Grenze von Luft und Glas.",
+      "Brechung"
+     ],
+     [
+      "Über 41,8° kommt kein Licht mehr aus dem Glas.",
+      "Totalreflexion"
+     ],
+     [
+      "Dieses Glas ist in der Mitte dicker und bündelt Licht.",
+      "Sammellinse"
+     ],
+     [
+      "Dieser Glaskeil zerlegt weißes Licht in Farben.",
+      "Prisma"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "auf dem Kopf",
+     "Zerstreuungslinse",
+     "Brennpunkt",
+     "Infrarot"
+    ],
+    "luecken": [
+     {
+      "pre": "Das Bild der Lochkamera steht",
+      "loesung": "auf dem Kopf",
+      "post": "."
+     },
+     {
+      "pre": "Kurzsichtigen Augen hilft eine",
+      "loesung": "Zerstreuungslinse",
+      "post": "."
+     },
+     {
+      "pre": "Hinter der Sammellinse treffen sich die Strahlen im",
+      "loesung": "Brennpunkt",
+      "post": "."
+     },
+     {
+      "pre": "Hinter dem letzten Rot kommt unsichtbares Licht an: das",
+      "loesung": "Infrarot",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Nour hält ein Prisma in weißes Licht. Dahinter erscheint ein bunter Fächer. Erkläre, woher die Farben kommen.",
+    "satzstarter": "Die Farben stecken schon …",
+    "zeilen": 4,
+    "erwartung": "Die Farben stecken schon im weißen Licht. Das Prisma bricht sie unterschiedlich stark und trennt sie so. Es malt die Farben nicht.",
+    "teilpunkte": [
+     "Farben stecken schon im weißen Licht (1 P)",
+     "das Prisma trennt sie durch Brechung (1 P)",
+     "das Prisma erzeugt oder malt keine Farben (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ },
+ {
+  "id": "ft2",
+  "theme": "foe_weltall",
+  "titel": "Fördertest 2 · Der Blick ins Weltall",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Warum sehen wir den Mond am Himmel?",
+      "optionen": [
+       "Er leuchtet selbst.",
+       "Die Sonne beleuchtet ihn.",
+       "Er besteht aus Feuer."
+      ],
+      "richtig": 1
+     },
+     {
+      "frage": "Wie lange braucht die Erde für eine volle Drehung um ihre Achse?",
+      "optionen": [
+       "Etwa 24 Stunden.",
+       "Etwa 1 Stunde.",
+       "Etwa 1 Jahr."
+      ],
+      "richtig": 0
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Die Strecke, die Licht in einem Jahr zurücklegt.",
+      "Lichtjahr"
+     ],
+     [
+      "Die Grenze, hinter der nichts mehr entkommt.",
+      "Ereignishorizont"
+     ],
+     [
+      "Wasserstoffkerne verschmelzen zu Helium.",
+      "Kernfusion"
+     ],
+     [
+      "Der heiße, dichte Anfang des Weltalls.",
+      "Urknall"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "gleich schnell",
+     "Gesteinsplaneten",
+     "kleiner",
+     "Scheibe"
+    ],
+    "luecken": [
+     {
+      "pre": "Ohne Luft fallen Stein und Feder",
+      "loesung": "gleich schnell",
+      "post": "."
+     },
+     {
+      "pre": "Innen im Sonnensystem kreisen die vier kleinen",
+      "loesung": "Gesteinsplaneten",
+      "post": "."
+     },
+     {
+      "pre": "Je weiter ein Stern entfernt ist, desto",
+      "loesung": "kleiner",
+      "post": "ist sein Winkel p."
+     },
+     {
+      "pre": "Die Milchstraße ist eine flache",
+      "loesung": "Scheibe",
+      "post": "aus Sternen."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Die Sonne zieht die Erde die ganze Zeit an. Erkläre, warum die Erde trotzdem nicht in die Sonne stürzt.",
+    "satzstarter": "Die Erde ist quer zur Sonne …",
+    "zeilen": 4,
+    "erwartung": "Die Erde ist quer zur Sonne schnell unterwegs. Die Sonne zieht sie ständig an, aber die Erde fällt immer an ihr vorbei. Dieses Vorbeifallen ist ihre Umlaufbahn.",
+    "teilpunkte": [
+     "die Erde ist quer zur Sonne unterwegs (1 P)",
+     "sie fällt immer an der Sonne vorbei (1 P)",
+     "das Vorbeifallen ist die Umlaufbahn (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ }
+]

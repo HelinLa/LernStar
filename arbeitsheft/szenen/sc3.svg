@@ -1,0 +1,15 @@
+<defs>
+  <radialGradient id="sc3licht" cx="0.5" cy="0.34" r="0.78">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.22"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#sc3licht)"/>
+  <use href="#t_glas_5" transform="translate(158,392) scale(1.12)"/>
+  <use href="#t_glas_4" transform="translate(304,392) scale(1.12)"/>
+  <use href="#t_glas_3" transform="translate(450,392) scale(1.12)"/>
+  <use href="#t_glas_2" transform="translate(596,392) scale(1.12)"/>
+  <use href="#t_glas_1" transform="translate(742,392) scale(1.12)"/>
+  <use href="#t_loeffel_metall" transform="translate(450,478) rotate(-4) scale(1.25)"/>

@@ -1,0 +1,94 @@
+[
+ {
+  "kapitel": "kraefte",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Werbetext sagt: „Dieser Magnet hebt 50 kg.“ Beurteile, welche Angaben fehlen, damit man die Aussage prüfen kann.",
+    "erwartung": "Es fehlen: Unterlage und deren Dicke, Luftspalt, Zugrichtung, Oberflächenbeschaffenheit. Außerdem ist „hebt kg“ ungenau – gemeint ist eine Haltekraft in Newton. Erwartet wird beides."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuch, der zeigt, dass eine Rampe Kraft spart, aber keine Arbeit. Legt fest, was ihr messt.",
+    "erwartung": "Gemessen werden Zugkraft mit der Federwaage und der zurückgelegte Weg – einmal senkrecht, einmal über die Rampe auf dieselbe Höhe. Produkt Kraft mal Weg vergleichen. Reibung als Fehlerquelle nennen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für den Umzug der Physiksammlung stehen Rampe, Flaschenzug und Tragen zur Wahl. Stellt Kriterien auf, gewichtet sie und entscheidet begründet.",
+    "erwartung": "Kriterien z. B. nötige Kraft, Zeit, Sicherheit, Platzbedarf, Zahl der Helfenden. Erwartet wird eine Gewichtung mit Begründung, nicht nur eine Aufzählung."
+   }
+  ]
+ },
+ {
+  "kapitel": "bewegung",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "„Ein Gurt nützt nichts, wenn man nur langsam fährt.“ Beurteile die Aussage mit dem, was du über Trägheit weißt.",
+    "erwartung": "Falsch: Auch bei 30 km/h behält der Körper sein Tempo, wenn das Auto abrupt stoppt. Erwartet wird eine Abschätzung, welcher Fallhöhe das entspricht, oder zumindest der Bezug auf die Trägheit."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant eine Messung, mit der ihr eure eigene Reaktionszeit bestimmt, und berechnet daraus den Reaktionsweg bei 50 km/h.",
+    "erwartung": "Lineal-Fallversuch, mehrfach, Mittelwert; Umrechnung der Fallstrecke in eine Zeit. Danach s = v · t mit v = 13,9 m/s. Erwartet wird eine plausible Zeit zwischen 0,15 und 0,3 s."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Nimm Stellung: Sollen auf dem Schulgelände Fahrräder nur Schritttempo fahren dürfen? Begründe mit Anhalteweg und Sichtweite.",
+    "erwartung": "Erwartet wird die Verknüpfung von Geschwindigkeit, Reaktions- und Bremsweg mit den engen, unübersichtlichen Wegen – und eine begründete Entscheidung, die auch den Nutzen des Radfahrens nennt."
+   }
+  ]
+ },
+ {
+  "kapitel": "energie",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Eine Anzeige verspricht ein Gerät, das „Energie erzeugt“. Beurteile die Formulierung und schreibe sie physikalisch richtig auf.",
+    "erwartung": "Energie wird nicht erzeugt, sondern umgewandelt. Richtig wäre z. B. „wandelt Bewegungsenergie in elektrische Energie um“. Erwartet wird der Bezug auf den Energieerhaltungssatz."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt ein Verfahren, mit dem ihr den Wirkungsgrad eures Wasserkochers abschätzt. Nennt jede Größe und eine Fehlerquelle.",
+    "erwartung": "Nutzen: m · c · ΔT des Wassers. Aufwand: P · t vom Typenschild. Verhältnis bilden. Fehlerquellen: Wärme an Kanne und Umgebung, Verdampfen, ungenaue Temperaturmessung."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Die Schule will Energie sparen. Stellt drei Maßnahmen auf, ordnet sie nach eingesparter Energie je eingesetztem Euro und begründet die Reihenfolge.",
+    "erwartung": "Erwartet wird eine Rangfolge mit Begründung; grobe Abschätzungen genügen, aber die Größenordnungen müssen zueinander passen (z. B. Beleuchtung gegen Dämmung)."
+   }
+  ]
+ },
+ {
+  "kapitel": "kraftwerke",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Eine Schlagzeile lautet: „Deutschland deckte seinen Strom an einem Sonntag komplett aus Erneuerbaren.“ Beurteile, was diese Meldung aussagt und was nicht.",
+    "erwartung": "Sie gilt für einzelne Stunden mit wenig Verbrauch und viel Wind oder Sonne, nicht für das Jahr und nicht für die gesamte Energie (Wärme, Verkehr). Erwartet wird die Unterscheidung von Momentaufnahme und Jahresbilanz."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Ein Windrad soll zwei Kilometer vom Ort entfernt gebaut werden. Nimm Stellung. Nenne je zwei Argumente der Befürworter und der Gegner und entscheide dich begründet.",
+    "erwartung": "Dafür: CO₂-Vermeidung, Wertschöpfung vor Ort, Unabhängigkeit. Dagegen: Landschaftsbild, Schattenwurf, Geräusch, Vogelschutz. Erwartet werden je zwei Argumente UND eine eigene begründete Entscheidung."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für ein neues Kraftwerk stehen Gas, Wind und Solar zur Wahl. Stellt vier Kriterien auf, gewichtet sie und begründet eure Entscheidung.",
+    "erwartung": "Kriterien z. B. CO₂ je Kilowattstunde, Verfügbarkeit bei Flaute und Nacht, Kosten, Flächenbedarf, Bauzeit. Erwartet wird eine nachvollziehbare Gewichtung, keine bloße Präferenz."
+   }
+  ]
+ }
+]

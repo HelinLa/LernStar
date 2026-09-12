@@ -1,0 +1,145 @@
+[
+ {
+  "sim": "urknall",
+  "ueberschrift": "💥 Die Urknalltheorie – wie ist das Weltall entstanden?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "▶ Urknall starten",
+    "ruft": "_urkStart()"
+   },
+   {
+    "aufschrift": "↺ zum Anfang",
+    "ruft": "_urkReset()"
+   },
+   {
+    "aufschrift": "Kalt und leer",
+    "ruft": "_urkAns(0,0)"
+   },
+   {
+    "aufschrift": "Heiß und dicht",
+    "ruft": "_urkAns(0,1)"
+   },
+   {
+    "aufschrift": "Genau wie heute",
+    "ruft": "_urkAns(0,2)"
+   },
+   {
+    "aufschrift": "Es schrumpft",
+    "ruft": "_urkAns(1,0)"
+   },
+   {
+    "aufschrift": "Es dehnt sich aus",
+    "ruft": "_urkAns(1,1)"
+   },
+   {
+    "aufschrift": "Es bleibt gleich",
+    "ruft": "_urkAns(1,2)"
+   },
+   {
+    "aufschrift": "Etwa 13,8 Milliarden Jahre",
+    "ruft": "_urkAns(2,0)"
+   },
+   {
+    "aufschrift": "Etwa 5 000 Jahre",
+    "ruft": "_urkAns(2,1)"
+   },
+   {
+    "aufschrift": "Etwa 1 Million Jahre",
+    "ruft": "_urkAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_urkSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_urkSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_urkSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('urknall')"
+   }
+  ],
+  "hinweise": [
+   "Starte die Zeit beim Urknall. Beobachte, wie sich das Weltall ausdehnt und die Galaxien sich voneinander entfernen.",
+   "",
+   "Nach der Urknalltheorie begann das Weltall vor etwa 13,8 Milliarden Jahren in einem heißen, dichten Zustand und dehnt sich seitdem aus. Beweis: Fast alle Galaxien entfernen sich von uns – wie Punkte auf einem Luftballon, der aufgeblasen wird.",
+   "Heiß &amp; dicht → Ausdehnung → erste Sterne &amp; Galaxien → heute. | Das Weltall dehnt sich weiter aus."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht."
+   },
+   {
+    "einstellung": "▶ Urknall starten",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht."
+   },
+   {
+    "einstellung": "↺ zum Anfang",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht."
+   },
+   {
+    "einstellung": "Kalt und leer",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Am Anfang war es nicht kalt."
+   },
+   {
+    "einstellung": "Heiß und dicht",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✓ Richtig! Am Anfang war alles unvorstellbar heiß und dicht."
+   },
+   {
+    "einstellung": "Genau wie heute",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang."
+   },
+   {
+    "einstellung": "Es schrumpft",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es wird nicht kleiner."
+   },
+   {
+    "einstellung": "Es dehnt sich aus",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✓ Richtig! Das Weltall dehnt sich seit dem Urknall aus."
+   },
+   {
+    "einstellung": "Es bleibt gleich",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer."
+   },
+   {
+    "einstellung": "Etwa 13,8 Milliarden Jahre",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✓ Richtig! Rund 13,8 Milliarden Jahre."
+   },
+   {
+    "einstellung": "Etwa 5 000 Jahre",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ So jung ist das Weltall bei Weitem nicht."
+   },
+   {
+    "einstellung": "Etwa 1 Million Jahre",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ Es ist viel, viel älter als eine Million Jahre."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ Es ist viel, viel älter als eine Million Jahre.  ||  urkSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ Es ist viel, viel älter als eine Million Jahre.  ||  urkSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ Es ist viel, viel älter als eine Million Jahre."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "urkZeit: Zeit seit dem Urknall: die allerersten Augenblicke  ||  urkStatus: Urknall: Ganz am Anfang ist alles auf winzigem Raum – unvorstellbar heiß und dicht.  ||  urkFb0: ✗ Heute sieht es ganz anders aus als am Anfang.  ||  urkFb1: ✗ Es verändert sich sehr wohl – es wird größer.  ||  urkFb2: ✗ Es ist viel, viel älter als eine Million Jahre."
+   }
+  ],
+  "bildtexte": [
+   "Urknall",
+   "die allerersten Augenblicke nach dem Urknall"
+  ]
+ }
+]

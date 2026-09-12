@@ -1,0 +1,185 @@
+[
+ {
+  "sim": "bremsweg-jg9",
+  "ueberschrift": "🚦 Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "30 km/h",
+    "ruft": "_brwSet(30)"
+   },
+   {
+    "aufschrift": "50 km/h",
+    "ruft": "_brwSet(50)"
+   },
+   {
+    "aufschrift": "100 km/h",
+    "ruft": "_brwSet(100)"
+   },
+   {
+    "aufschrift": "▶ Gefahr! (Start)",
+    "ruft": "_brwToggle()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_brwReset()"
+   },
+   {
+    "aufschrift": "Reaktionsweg + Bremsweg",
+    "ruft": "_brwAns(0,0)"
+   },
+   {
+    "aufschrift": "Nur dem Bremsweg",
+    "ruft": "_brwAns(0,1)"
+   },
+   {
+    "aufschrift": "Nur dem Reaktionsweg",
+    "ruft": "_brwAns(0,2)"
+   },
+   {
+    "aufschrift": "Er wird viermal so lang",
+    "ruft": "_brwAns(1,0)"
+   },
+   {
+    "aufschrift": "Er wird doppelt so lang",
+    "ruft": "_brwAns(1,1)"
+   },
+   {
+    "aufschrift": "Er bleibt gleich",
+    "ruft": "_brwAns(1,2)"
+   },
+   {
+    "aufschrift": "Vom Quadrat der Geschwindigkeit",
+    "ruft": "_brwAns(2,0)"
+   },
+   {
+    "aufschrift": "Von der Farbe des Autos",
+    "ruft": "_brwAns(2,1)"
+   },
+   {
+    "aufschrift": "Von der Uhrzeit",
+    "ruft": "_brwAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_brwSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_brwSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_brwSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('bremsweg')"
+   }
+  ],
+  "hinweise": [
+   "Zwischen „Gefahr sehen\" und „Stehen\" vergeht überraschend viel Weg. Wähle ein Tempo und starte: Wie lang ist der Reaktions­weg, der Brems­weg – und was passiert bei doppelter Geschwindigkeit?",
+   "Der Anhalteweg besteht aus zwei Teilen: dem Reaktionsweg (du fährst noch mit vollem Tempo weiter, bis du reagierst – wächst mit v) und dem Bremsweg (bis zum Stillstand). Der Bremsweg wächst mit dem Quadrat der Geschwindigkeit: doppeltes Tempo → vierfacher Bremsweg.",
+   "Faustformeln: Reaktionsweg = (v/10)·3 · Bremsweg = (v/10)² · Anhalteweg = beide zusammen."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "brwStatus: Tempo v = 50 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 15 m · Bremsweg = 25 m · Anhalteweg = 40 m."
+   },
+   {
+    "einstellung": "30 km/h",
+    "text": "brwStatus: Tempo v = 30 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 9 m · Bremsweg = 9 m · Anhalteweg = 18 m."
+   },
+   {
+    "einstellung": "50 km/h",
+    "text": "brwStatus: Tempo v = 50 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 15 m · Bremsweg = 25 m · Anhalteweg = 40 m."
+   },
+   {
+    "einstellung": "100 km/h",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m."
+   },
+   {
+    "einstellung": "▶ Gefahr! (Start)",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m."
+   },
+   {
+    "einstellung": "Reaktionsweg + Bremsweg",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✓ Richtig! Beide Teile zusammen ergeben den Anhalteweg."
+   },
+   {
+    "einstellung": "Nur dem Bremsweg",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Reaktionsweg gehört auch dazu."
+   },
+   {
+    "einstellung": "Nur dem Reaktionsweg",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu."
+   },
+   {
+    "einstellung": "Er wird viermal so lang",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✓ Richtig! Bremsweg ∝ v² – doppeltes Tempo = vierfacher Bremsweg."
+   },
+   {
+    "einstellung": "Er wird doppelt so lang",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nur doppelt wäre er, wenn er linear von v abhinge – tut er aber nicht."
+   },
+   {
+    "einstellung": "Er bleibt gleich",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab."
+   },
+   {
+    "einstellung": "Vom Quadrat der Geschwindigkeit",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✓ Richtig! Der Bremsweg wächst mit v²."
+   },
+   {
+    "einstellung": "Von der Farbe des Autos",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Farbe spielt keine Rolle."
+   },
+   {
+    "einstellung": "Von der Uhrzeit",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Uhrzeit spielt keine Rolle."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Uhrzeit spielt keine Rolle.  ||  brwSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Uhrzeit spielt keine Rolle.  ||  brwSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Uhrzeit spielt keine Rolle."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "brwStatus: Tempo v = 100 km/h. Aktuell: 🟡 Reaktionsphase (noch volles Tempo). | Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.  ||  brwFb0: ✗ Der Bremsweg gehört auch dazu.  ||  brwFb1: ✗ Nein, er hängt stark vom Tempo ab.  ||  brwFb2: ✗ Die Uhrzeit spielt keine Rolle."
+   }
+  ],
+  "bildtexte": [
+   "Reaktion 15 m",
+   "Bremsweg 25 m",
+   "🧒",
+   "🚗",
+   "🟡 Reaktion – noch volles Tempo",
+   "v = 50 km/h   Anhalteweg 40 m",
+   "Bremsweg im Vergleich (∝ v²):",
+   "30 km/h",
+   "9 m",
+   "50 km/h",
+   "25 m",
+   "100 km/h",
+   "100 m",
+   "Reaktion 9 m",
+   "Bremsweg 9 m",
+   "v = 30 km/h   Anhalteweg 18 m",
+   "Reaktion 30 m",
+   "Bremsweg 100 m",
+   "v = 100 km/h   Anhalteweg 130 m"
+  ]
+ }
+]

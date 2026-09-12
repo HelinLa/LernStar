@@ -1,0 +1,250 @@
+[
+ {
+  "id": "ft1",
+  "theme": "foe_kraefte",
+  "titel": "Fördertest 1 · Kräfte auf der Bühne",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Woran erkennt man, dass eine Kraft gewirkt hat?",
+      "optionen": [
+       "Man sieht die Kraft selbst.",
+       "Form, Tempo oder Richtung haben sich geändert.",
+       "An der Farbe des Körpers."
+      ],
+      "richtig": 1
+     },
+     {
+      "frage": "Eine Lampe hängt still an einem Seil. Was gilt für die Kräfte?",
+      "optionen": [
+       "Die Gesamtkraft ist null.",
+       "Es wirkt gar keine Kraft.",
+       "Die Haltekraft ist größer."
+      ],
+      "richtig": 0
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Sie sagt, wie viel Stoff in einem Körper steckt.",
+      "Masse"
+     ],
+     [
+      "Sie zieht einen Körper nach unten.",
+      "Gewichtskraft"
+     ],
+     [
+      "Gleiche Kraft auf kleiner Fläche macht ihn groß.",
+      "Druck"
+     ],
+     [
+      "Die Kraft nach oben, die einen Körper schwimmen lässt.",
+      "Auftrieb"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "Newton (N)",
+     "9,8 N/kg",
+     "Trägheit",
+     "tiefer"
+    ],
+    "luecken": [
+     {
+      "pre": "Kräfte misst man in",
+      "loesung": "Newton (N)",
+      "post": "."
+     },
+     {
+      "pre": "Auf der Erde ist der Ortsfaktor g",
+      "loesung": "9,8 N/kg",
+      "post": "."
+     },
+     {
+      "pre": "Ein Körper behält von allein sein Tempo. Das heißt",
+      "loesung": "Trägheit",
+      "post": "."
+     },
+     {
+      "pre": "Je",
+      "loesung": "tiefer",
+      "post": " es im Wasser geht, desto größer wird der Schweredruck."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Ein Podest steht auf vier schmalen Füßen und sinkt in den Rasen ein. Jannis legt Bretter unter die Füße. Erkläre, warum das hilft.",
+    "satzstarter": "Die Kraft bleibt gleich, aber die Fläche …",
+    "zeilen": 4,
+    "erwartung": "Die Kraft bleibt gleich, aber die Fläche wird größer. Bei größerer Fläche wird der Druck kleiner. Darum sinkt das Podest nicht mehr ein.",
+    "teilpunkte": [
+     "die Kraft bleibt gleich (1 P)",
+     "die Fläche wird größer (1 P)",
+     "größere Fläche bedeutet kleineren Druck (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ },
+ {
+  "id": "ft2",
+  "theme": "foe_energie",
+  "titel": "Fördertest 2 · Arbeit, Energie und Maschinen",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Wann wird in der Physik Arbeit verrichtet?",
+      "optionen": [
+       "Immer, wenn man sich anstrengt.",
+       "Nur beim Tragen einer schweren Kiste.",
+       "Wenn Kraft und Weg in dieselbe Richtung zeigen."
+      ],
+      "richtig": 2
+     },
+     {
+      "frage": "Ein Ball fällt nach unten. Was passiert mit der Energie?",
+      "optionen": [
+       "Die Lageenergie wird kleiner, die Bewegungsenergie größer.",
+       "Beide werden kleiner.",
+       "Die Energie verschwindet."
+      ],
+      "richtig": 0
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Sie steckt in einem Körper, der oben liegt.",
+      "Lageenergie"
+     ],
+     [
+      "Sie steckt in einem Körper, der rollt.",
+      "Bewegungsenergie"
+     ],
+     [
+      "Arbeit geteilt durch Zeit.",
+      "Leistung"
+     ],
+     [
+      "Er sagt in Prozent, wie viel Energie als Nutzen herauskommt.",
+      "Wirkungsgrad"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "Wärme",
+     "kleine",
+     "lose Rolle",
+     "länger"
+    ],
+    "luecken": [
+     {
+      "pre": "Bei jedem Schritt wird ein Teil der Energie zu",
+      "loesung": "Wärme",
+      "post": "."
+     },
+     {
+      "pre": "Ein langer Kraftarm braucht eine",
+      "loesung": "kleine",
+      "post": " Kraft."
+     },
+     {
+      "pre": "Eine",
+      "loesung": "lose Rolle",
+      "post": " halbiert die Kraft und verdoppelt den Weg."
+     },
+     {
+      "pre": "Je flacher die Rampe, desto kleiner die Kraft – dafür wird der Weg",
+      "loesung": "länger",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Nour zieht das Klavier über eine flache Rampe nach oben statt es zu heben. Sie sagt: „So spare ich Arbeit.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Die Rampe spart Kraft, aber …",
+    "zeilen": 4,
+    "erwartung": "Die Rampe spart Kraft, aber der Weg wird dafür länger. Kraft mal Weg bleibt gleich. Nour spart also Kraft, keine Arbeit.",
+    "teilpunkte": [
+     "die Rampe spart Kraft (1 P)",
+     "der Weg wird dafür länger (1 P)",
+     "die Arbeit bleibt gleich (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ }
+]

@@ -1,0 +1,293 @@
+[
+ {
+  "sim": "sternparallaxe",
+  "ueberschrift": "📐 Wie misst man die Entfernung zu einem Stern?",
+  "regler": [
+   {
+    "id": "plxD",
+    "beschriftung": "Entfernung: 1,3 Parsec",
+    "bereich": {
+     "min": "10",
+     "max": "1500",
+     "step": "1",
+     "start": "13"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Proxima Centauri",
+    "ruft": "_plxStern(1.301)"
+   },
+   {
+    "aufschrift": "61 Cygni",
+    "ruft": "_plxStern(3.497)"
+   },
+   {
+    "aufschrift": "Wega",
+    "ruft": "_plxStern(7.68)"
+   },
+   {
+    "aufschrift": "Polarstern",
+    "ruft": "_plxStern(132.6)"
+   },
+   {
+    "aufschrift": "Lupe ×1",
+    "ruft": "_plxLupe(1)"
+   },
+   {
+    "aufschrift": "Lupe ×10",
+    "ruft": "_plxLupe(10)"
+   },
+   {
+    "aufschrift": "Lupe ×100",
+    "ruft": "_plxLupe(100)"
+   }
+  ],
+  "hinweise": [
+   "Ein Maßband hilft nicht. Man misst einen Winkel: Halte einen Finger vor die Nase und schließe abwechselnd ein Auge – der Finger springt. Genau das macht die Erde mit einem nahen Stern, nur dass ihre beiden „Augen“ ein halbes Jahr auseinanderliegen.",
+   "Woher kommt d = 1/p? Das ist keine zweite Formel, sondern die Festlegung des Parsec: Ein Parsec ist die Entfernung, aus der 1 AE unter genau 1 Bogensekunde erscheint. Doppelt so weit heißt halber Winkel.",
+   "Modellgrenze: Die obere Zeichnung ist nicht maßstäblich – Proxima Centauri steht 270 000-mal weiter weg als die Sonne; maßstäblich läge der Stern 20 km neben dem Bildschirm. Außerdem läuft der Stern hier auf einer geraden Linie hin und her. Das gilt nur für Sterne in der Ebene der Erdbahn; sonst beschreibt er eine kleine Ellipse.",
+   "Bessel maß 1838 als Erster eine Sternparallaxe: 0,314″ an 61 Cygni – heute misst man 0,286″"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "plxStatus: Entfernung: 1,301 Parsec – das sind 4,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 1,301 = 0,7686 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 1,5373″. | | So klein ist das: eine 1-Euro-Münze aus 6,2 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,7686″. | | Verschiebung im Bild unten: 26,1 Bildpunkte."
+   },
+   {
+    "einstellung": "Proxima Centauri",
+    "text": "plxStatus: Entfernung: 1,301 Parsec – das sind 4,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 1,301 = 0,7686 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 1,5373″. | | So klein ist das: eine 1-Euro-Münze aus 6,2 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,7686″. | | Verschiebung im Bild unten: 26,1 Bildpunkte."
+   },
+   {
+    "einstellung": "61 Cygni",
+    "text": "plxStatus: Entfernung: 3,497 Parsec – das sind 11,4 Lichtjahre. | | Der gemessene Winkel | p = 1 / 3,497 = 0,2860 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,5719″. | | So klein ist das: eine 1-Euro-Münze aus 16,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,2860″. | | Verschiebung im Bild unten: 9,7 Bildpunkte."
+   },
+   {
+    "einstellung": "Wega",
+    "text": "plxStatus: Entfernung: 7,680 Parsec – das sind 25,0 Lichtjahre. | | Der gemessene Winkel | p = 1 / 7,680 = 0,1302 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,2604″. | | So klein ist das: eine 1-Euro-Münze aus 36,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,1302″. | | Verschiebung im Bild unten: 4,4 Bildpunkte."
+   },
+   {
+    "einstellung": "Polarstern",
+    "text": "plxStatus: Entfernung: 132,6 Parsec – das sind 432,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 132,6 = 0,0075 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0151″. | | So klein ist das: eine 1-Euro-Münze aus 635,9 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: unter einem Bildpunkt. | Man sieht nichts mehr – dafür ist die Lupe da."
+   },
+   {
+    "einstellung": "Lupe ×1",
+    "text": "plxStatus: Entfernung: 132,6 Parsec – das sind 432,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 132,6 = 0,0075 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0151″. | | So klein ist das: eine 1-Euro-Münze aus 635,9 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: unter einem Bildpunkt. | Man sieht nichts mehr – dafür ist die Lupe da."
+   },
+   {
+    "einstellung": "Lupe ×10",
+    "text": "plxStatus: Entfernung: 132,6 Parsec – das sind 432,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 132,6 = 0,0075 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0151″. | | So klein ist das: eine 1-Euro-Münze aus 635,9 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 2,6 Bildpunkte (10-fach vergrößert)."
+   },
+   {
+    "einstellung": "Lupe ×100",
+    "text": "plxStatus: Entfernung: 132,6 Parsec – das sind 432,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 132,6 = 0,0075 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0151″. | | So klein ist das: eine 1-Euro-Münze aus 635,9 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 25,6 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 10",
+    "text": "plxStatus: Entfernung: 1,000 Parsec – das sind 3,3 Lichtjahre. | | Der gemessene Winkel | p = 1 / 1,000 = 1,0000 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 2,0000″. | | So klein ist das: eine 1-Euro-Münze aus 4,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 1,0000″. | | Verschiebung im Bild unten: 3400,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 196",
+    "text": "plxStatus: Entfernung: 19,6 Parsec – das sind 63,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 19,6 = 0,0510 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,1020″. | | So klein ist das: eine 1-Euro-Münze aus 94,0 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0510″. | | Verschiebung im Bild unten: 173,5 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 383",
+    "text": "plxStatus: Entfernung: 38,3 Parsec – das sind 124,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 38,3 = 0,0261 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0522″. | | So klein ist das: eine 1-Euro-Münze aus 183,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0261″. | | Verschiebung im Bild unten: 88,8 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 569",
+    "text": "plxStatus: Entfernung: 56,9 Parsec – das sind 185,6 Lichtjahre. | | Der gemessene Winkel | p = 1 / 56,9 = 0,0176 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0351″. | | So klein ist das: eine 1-Euro-Münze aus 272,9 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0176″. | | Verschiebung im Bild unten: 59,8 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 755",
+    "text": "plxStatus: Entfernung: 75,5 Parsec – das sind 246,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 75,5 = 0,0132 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0265″. | | So klein ist das: eine 1-Euro-Münze aus 362,1 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0132″. | | Verschiebung im Bild unten: 45,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 941",
+    "text": "plxStatus: Entfernung: 94,1 Parsec – das sind 306,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 94,1 = 0,0106 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0213″. | | So klein ist das: eine 1-Euro-Münze aus 451,3 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0106″. | | Verschiebung im Bild unten: 36,1 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1128",
+    "text": "plxStatus: Entfernung: 112,8 Parsec – das sind 367,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 112,8 = 0,0089 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0177″. | | So klein ist das: eine 1-Euro-Münze aus 541,0 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 30,1 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1314",
+    "text": "plxStatus: Entfernung: 131,4 Parsec – das sind 428,6 Lichtjahre. | | Der gemessene Winkel | p = 1 / 131,4 = 0,0076 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0152″. | | So klein ist das: eine 1-Euro-Münze aus 630,1 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 25,9 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1500",
+    "text": "plxStatus: Entfernung: 150,0 Parsec – das sind 489,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 150,0 = 0,0067 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0133″. | | So klein ist das: eine 1-Euro-Münze aus 719,3 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 22,7 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 50",
+    "text": "plxStatus: Entfernung: 5,000 Parsec – das sind 16,3 Lichtjahre. | | Der gemessene Winkel | p = 1 / 5,000 = 0,2000 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,4000″. | | So klein ist das: eine 1-Euro-Münze aus 24,0 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,2000″. | | Verschiebung im Bild unten: 680,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 100",
+    "text": "plxStatus: Entfernung: 10,0 Parsec – das sind 32,6 Lichtjahre. | | Der gemessene Winkel | p = 1 / 10,0 = 0,1000 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,2000″. | | So klein ist das: eine 1-Euro-Münze aus 48,0 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,1000″. | | Verschiebung im Bild unten: 340,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 150",
+    "text": "plxStatus: Entfernung: 15,0 Parsec – das sind 48,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 15,0 = 0,0667 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,1333″. | | So klein ist das: eine 1-Euro-Münze aus 71,9 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0667″. | | Verschiebung im Bild unten: 226,7 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 200",
+    "text": "plxStatus: Entfernung: 20,0 Parsec – das sind 65,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 20,0 = 0,0500 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,1000″. | | So klein ist das: eine 1-Euro-Münze aus 95,9 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0500″. | | Verschiebung im Bild unten: 170,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 250",
+    "text": "plxStatus: Entfernung: 25,0 Parsec – das sind 81,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 25,0 = 0,0400 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0800″. | | So klein ist das: eine 1-Euro-Münze aus 119,9 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0400″. | | Verschiebung im Bild unten: 136,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 300",
+    "text": "plxStatus: Entfernung: 30,0 Parsec – das sind 97,8 Lichtjahre. | | Der gemessene Winkel | p = 1 / 30,0 = 0,0333 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0667″. | | So klein ist das: eine 1-Euro-Münze aus 143,9 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0333″. | | Verschiebung im Bild unten: 113,3 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 350",
+    "text": "plxStatus: Entfernung: 35,0 Parsec – das sind 114,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 35,0 = 0,0286 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0571″. | | So klein ist das: eine 1-Euro-Münze aus 167,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0286″. | | Verschiebung im Bild unten: 97,1 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 400",
+    "text": "plxStatus: Entfernung: 40,0 Parsec – das sind 130,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 40,0 = 0,0250 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0500″. | | So klein ist das: eine 1-Euro-Münze aus 191,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0250″. | | Verschiebung im Bild unten: 85,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 450",
+    "text": "plxStatus: Entfernung: 45,0 Parsec – das sind 146,8 Lichtjahre. | | Der gemessene Winkel | p = 1 / 45,0 = 0,0222 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0444″. | | So klein ist das: eine 1-Euro-Münze aus 215,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0222″. | | Verschiebung im Bild unten: 75,6 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 500",
+    "text": "plxStatus: Entfernung: 50,0 Parsec – das sind 163,1 Lichtjahre. | | Der gemessene Winkel | p = 1 / 50,0 = 0,0200 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0400″. | | So klein ist das: eine 1-Euro-Münze aus 239,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0200″. | | Verschiebung im Bild unten: 68,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 550",
+    "text": "plxStatus: Entfernung: 55,0 Parsec – das sind 179,4 Lichtjahre. | | Der gemessene Winkel | p = 1 / 55,0 = 0,0182 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0364″. | | So klein ist das: eine 1-Euro-Münze aus 263,8 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0182″. | | Verschiebung im Bild unten: 61,8 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 600",
+    "text": "plxStatus: Entfernung: 60,0 Parsec – das sind 195,7 Lichtjahre. | | Der gemessene Winkel | p = 1 / 60,0 = 0,0167 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0333″. | | So klein ist das: eine 1-Euro-Münze aus 287,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0167″. | | Verschiebung im Bild unten: 56,7 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 650",
+    "text": "plxStatus: Entfernung: 65,0 Parsec – das sind 212,0 Lichtjahre. | | Der gemessene Winkel | p = 1 / 65,0 = 0,0154 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0308″. | | So klein ist das: eine 1-Euro-Münze aus 311,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0154″. | | Verschiebung im Bild unten: 52,3 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 700",
+    "text": "plxStatus: Entfernung: 70,0 Parsec – das sind 228,3 Lichtjahre. | | Der gemessene Winkel | p = 1 / 70,0 = 0,0143 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0286″. | | So klein ist das: eine 1-Euro-Münze aus 335,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0143″. | | Verschiebung im Bild unten: 48,6 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 750",
+    "text": "plxStatus: Entfernung: 75,0 Parsec – das sind 244,6 Lichtjahre. | | Der gemessene Winkel | p = 1 / 75,0 = 0,0133 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0267″. | | So klein ist das: eine 1-Euro-Münze aus 359,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0133″. | | Verschiebung im Bild unten: 45,3 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 800",
+    "text": "plxStatus: Entfernung: 80,0 Parsec – das sind 260,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 80,0 = 0,0125 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0250″. | | So klein ist das: eine 1-Euro-Münze aus 383,7 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0125″. | | Verschiebung im Bild unten: 42,5 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 850",
+    "text": "plxStatus: Entfernung: 85,0 Parsec – das sind 277,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 85,0 = 0,0118 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0235″. | | So klein ist das: eine 1-Euro-Münze aus 407,6 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0118″. | | Verschiebung im Bild unten: 40,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 900",
+    "text": "plxStatus: Entfernung: 90,0 Parsec – das sind 293,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 90,0 = 0,0111 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0222″. | | So klein ist das: eine 1-Euro-Münze aus 431,6 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0111″. | | Verschiebung im Bild unten: 37,8 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 950",
+    "text": "plxStatus: Entfernung: 95,0 Parsec – das sind 309,8 Lichtjahre. | | Der gemessene Winkel | p = 1 / 95,0 = 0,0105 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0211″. | | So klein ist das: eine 1-Euro-Münze aus 455,6 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0105″. | | Verschiebung im Bild unten: 35,8 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1000",
+    "text": "plxStatus: Entfernung: 100,0 Parsec – das sind 326,2 Lichtjahre. | | Der gemessene Winkel | p = 1 / 100,0 = 0,0100 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0200″. | | So klein ist das: eine 1-Euro-Münze aus 479,6 km Entfernung. | | Von der Erde aus messbar: Ein gutes Teleskop am Boden schafft etwa 0,01″, hier sind es 0,0100″. | | Verschiebung im Bild unten: 34,0 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1050",
+    "text": "plxStatus: Entfernung: 105,0 Parsec – das sind 342,5 Lichtjahre. | | Der gemessene Winkel | p = 1 / 105,0 = 0,0095 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0190″. | | So klein ist das: eine 1-Euro-Münze aus 503,5 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 32,4 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1100",
+    "text": "plxStatus: Entfernung: 110,0 Parsec – das sind 358,8 Lichtjahre. | | Der gemessene Winkel | p = 1 / 110,0 = 0,0091 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0182″. | | So klein ist das: eine 1-Euro-Münze aus 527,5 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 30,9 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1150",
+    "text": "plxStatus: Entfernung: 115,0 Parsec – das sind 375,1 Lichtjahre. | | Der gemessene Winkel | p = 1 / 115,0 = 0,0087 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0174″. | | So klein ist das: eine 1-Euro-Münze aus 551,5 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 29,6 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1200",
+    "text": "plxStatus: Entfernung: 120,0 Parsec – das sind 391,4 Lichtjahre. | | Der gemessene Winkel | p = 1 / 120,0 = 0,0083 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0167″. | | So klein ist das: eine 1-Euro-Münze aus 575,5 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 28,3 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1250",
+    "text": "plxStatus: Entfernung: 125,0 Parsec – das sind 407,7 Lichtjahre. | | Der gemessene Winkel | p = 1 / 125,0 = 0,0080 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0160″. | | So klein ist das: eine 1-Euro-Münze aus 599,5 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 27,2 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1300",
+    "text": "plxStatus: Entfernung: 130,0 Parsec – das sind 424,0 Lichtjahre. | | Der gemessene Winkel | p = 1 / 130,0 = 0,0077 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0154″. | | So klein ist das: eine 1-Euro-Münze aus 623,4 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 26,2 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1350",
+    "text": "plxStatus: Entfernung: 135,0 Parsec – das sind 440,3 Lichtjahre. | | Der gemessene Winkel | p = 1 / 135,0 = 0,0074 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0148″. | | So klein ist das: eine 1-Euro-Münze aus 647,4 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 25,2 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1400",
+    "text": "plxStatus: Entfernung: 140,0 Parsec – das sind 456,6 Lichtjahre. | | Der gemessene Winkel | p = 1 / 140,0 = 0,0071 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0143″. | | So klein ist das: eine 1-Euro-Münze aus 671,4 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 24,3 Bildpunkte (100-fach vergrößert)."
+   },
+   {
+    "einstellung": "Entfernung: 1,3 Parsec = 1450",
+    "text": "plxStatus: Entfernung: 145,0 Parsec – das sind 472,9 Lichtjahre. | | Der gemessene Winkel | p = 1 / 145,0 = 0,0069 Bogensekunden. | Über ein halbes Jahr springt der Stern um das Doppelte hin und her: 0,0138″. | | So klein ist das: eine 1-Euro-Münze aus 695,4 km Entfernung. | | Vom Boden aus nicht mehr messbar – die Luft verwischt das Bild bei etwa 0,01″. Die Raumsonde Gaia schafft es: Sie misst noch 0,00002″. | | Verschiebung im Bild unten: 23,4 Bildpunkte (100-fach vergrößert)."
+   }
+  ],
+  "bildtexte": [
+   "Sonne",
+   "nicht maßstäblich",
+   "Juli",
+   "Stern",
+   "2 AE",
+   "Blick durchs Fernrohr",
+   "ohne Vergrößerung",
+   "p = 0,7686″   ·   d = 1/p = 1,3 pc",
+   "p = 0,2860″   ·   d = 1/p = 3,5 pc",
+   "p = 0,1302″   ·   d = 1/p = 7,7 pc",
+   "p = 0,0075″   ·   d = 1/p = 132,6 pc",
+   "10-fach vergrößert",
+   "100-fach vergrößert",
+   "p = 1,0000″   ·   d = 1/p = 1,0 pc",
+   "p = 0,0510″   ·   d = 1/p = 19,6 pc",
+   "p = 0,0261″   ·   d = 1/p = 38,3 pc",
+   "p = 0,0176″   ·   d = 1/p = 56,9 pc",
+   "p = 0,0132″   ·   d = 1/p = 75,5 pc",
+   "p = 0,0106″   ·   d = 1/p = 94,1 pc",
+   "p = 0,0089″   ·   d = 1/p = 112,8 pc",
+   "p = 0,0076″   ·   d = 1/p = 131,4 pc",
+   "p = 0,0067″   ·   d = 1/p = 150,0 pc",
+   "p = 0,2000″   ·   d = 1/p = 5,0 pc",
+   "p = 0,1000″   ·   d = 1/p = 10,0 pc",
+   "p = 0,0667″   ·   d = 1/p = 15,0 pc",
+   "p = 0,0500″   ·   d = 1/p = 20,0 pc",
+   "p = 0,0400″   ·   d = 1/p = 25,0 pc",
+   "p = 0,0333″   ·   d = 1/p = 30,0 pc",
+   "p = 0,0286″   ·   d = 1/p = 35,0 pc",
+   "p = 0,0250″   ·   d = 1/p = 40,0 pc",
+   "p = 0,0222″   ·   d = 1/p = 45,0 pc",
+   "p = 0,0200″   ·   d = 1/p = 50,0 pc",
+   "p = 0,0182″   ·   d = 1/p = 55,0 pc",
+   "p = 0,0167″   ·   d = 1/p = 60,0 pc",
+   "p = 0,0154″   ·   d = 1/p = 65,0 pc",
+   "p = 0,0143″   ·   d = 1/p = 70,0 pc",
+   "p = 0,0133″   ·   d = 1/p = 75,0 pc",
+   "p = 0,0125″   ·   d = 1/p = 80,0 pc",
+   "p = 0,0118″   ·   d = 1/p = 85,0 pc",
+   "p = 0,0111″   ·   d = 1/p = 90,0 pc",
+   "p = 0,0105″   ·   d = 1/p = 95,0 pc",
+   "p = 0,0100″   ·   d = 1/p = 100,0 pc",
+   "p = 0,0095″   ·   d = 1/p = 105,0 pc",
+   "p = 0,0091″   ·   d = 1/p = 110,0 pc",
+   "p = 0,0087″   ·   d = 1/p = 115,0 pc",
+   "p = 0,0083″   ·   d = 1/p = 120,0 pc",
+   "p = 0,0080″   ·   d = 1/p = 125,0 pc",
+   "p = 0,0077″   ·   d = 1/p = 130,0 pc",
+   "p = 0,0074″   ·   d = 1/p = 135,0 pc",
+   "p = 0,0071″   ·   d = 1/p = 140,0 pc",
+   "p = 0,0069″   ·   d = 1/p = 145,0 pc"
+  ]
+ }
+]

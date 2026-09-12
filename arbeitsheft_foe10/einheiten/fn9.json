@@ -1,0 +1,209 @@
+{
+ "seite": {
+  "id": "fn9",
+  "quelle": "rk10",
+  "sim": "kettenreaktion",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Beitrag im Aufenthaltsraum",
+  "name": "Wie hält man eine Kettenreaktion in Schach?",
+  "fachwoerter_neu": [
+   "Steuerstäbe",
+   "Vermehrungsfaktor k"
+  ],
+  "alltag": [
+   "Nour sieht einen Beitrag über Reaktoren.",
+   "Eine Spaltung löst neue Spaltungen aus: eine Kette. Am Bildschirm heißt eine Runde Generation.",
+   "Steuerstäbe sind Stangen im Reaktor. Sie fangen Neutronen weg.",
+   "Der Vermehrungsfaktor k sagt: So viele neue Spaltungen folgen aus einer Spaltung."
+  ],
+  "frage": "Was macht k, wenn die Steuerstäbe weiter drin sind?",
+  "predict": [
+   "Je weiter die Steuerstäbe drin sind, desto weniger Spaltungen folgen.",
+   "Die Steuerstäbe bremsen kaum. k bleibt über 1,00."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Schiebe den Regler auf 0 %. Lies k und die Zahl darunter.",
+   "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk.",
+   "Stelle 75 % und 100 % ein. Trage alles ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt deine Lehrkraft die Ergebnisse.",
+  "tabCols": [
+   "Wie weit drin?",
+   "Wie groß ist k?",
+   "Aus 100 Spaltungen werden wie viele?"
+  ],
+  "tabRows": [
+   [
+    "0 %",
+    "1,60",
+    "160"
+   ],
+   [
+    "50 %",
+    "",
+    ""
+   ],
+   [
+    "75 %",
+    "",
+    ""
+   ],
+   [
+    "100 %",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je weiter die Steuerstäbe drin sind, desto",
+    "loesung": "kleiner",
+    "post": "wird k."
+   },
+   {
+    "pre": "Ein Kernkraftwerk läuft mit k =",
+    "loesung": "1,00",
+    "post": ". Jede Runde bleibt gleich groß."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "1,00",
+   "1,60",
+   "0,40"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du bei 0 % ab?",
+   "antwort": "Am Bildschirm steht: „Steuerstäbe 0 % eingefahren → Vermehrungsfaktor k = 1,60“. Die 500 brauchst du nicht. Darunter: „Aus 100 Spaltungen werden … 160.“ In die Tabelle kommt: 1,60 und 160."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Steuerstäbe sind ganz drin (100 %). Was macht die Kette?",
+    "optionen": [
+     "Sie läuft gleichmäßig weiter. Aus 100 werden rund 100.",
+     "Sie wächst lawinenartig. Aus 100 werden 40 mehr.",
+     "Sie erstickt (hört auf). Aus 100 werden nur 40."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 0 % ist k =",
+      "loesung": "1,60",
+      "post": ". Aus 100 werden 160."
+     },
+     {
+      "pre": "Bei 100 % ist k =",
+      "loesung": "0,40",
+      "post": ". Aus 100 werden nur 40."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum lässt man die Steuerstäbe nicht ganz draußen?",
+    "satzstarter": "Man lässt die Steuerstäbe nicht ganz draußen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "k steht am Bildschirm in der ersten Zeile. Die Wortbank hilft bei Merksatz und Aufgabe 2.",
+   "h2": "Schreibe den Satzstarter ab. Lies k bei 0 % in der Tabelle ab.",
+   "h3": "Fast fertig: Bei 0 % werden aus 100 Spaltungen 160. Das ist mehr als 100. Jede Runde wird ___."
+  },
+  "selbstcheck": [
+   "Ich kann den Vermehrungsfaktor k ablesen.",
+   "Ich weiß: Weiter drin bedeutet kleineres k.",
+   "Ich weiß: Ein Kernkraftwerk läuft mit k = 1,00."
+  ],
+  "zuhause": "Stelle Dominosteine auf. Jeder wirft genau einen um. Wie groß ist k?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Jedes Feld zeigt denselben Reaktor in derselben Ansicht, nur die Steuerstäbe stehen verschieden tief. Aufbau in jedem Feld von oben nach unten, in allen drei Feldern auf derselben Höhe: (1) eine große Überschrift „Steuerstäbe 0 % drin“ bzw. „Steuerstäbe 50 % drin“ bzw. „Steuerstäbe 100 % drin“. (2) Ein aufrecht stehendes Rechteck als Reaktor, mit deutlicher Umrandung; darin fünf gleich breite, hellgraue, VOLL AUSGEFÜLLTE senkrechte Balken als Brennstäbe, gleichmäßig verteilt und deutlich voneinander getrennt. (3) Drei dunkle, ebenfalls VOLL AUSGEFÜLLTE senkrechte Stäbe, die von oben zwischen die Brennstäbe fahren – das sind die Steuerstäbe. Ihre Eintauchtiefe ist der ganze Unterschied zwischen den Feldern und muss auf einen Blick zu sehen sein: links stehen sie vollständig über dem Reaktor und ragen gar nicht hinein, in der Mitte reichen sie bis zur halben Höhe des Rechtecks, rechts reichen sie bis zum Boden des Rechtecks. Neben dem linken Reaktor eine senkrechte Maßlinie mit der Beschriftung „Höhe des Reaktors“, damit die halbe Tiefe in der Mitte ablesbar ist. (4) Darunter, in allen drei Feldern an derselben Stelle und in derselben sehr großen Schrift: „k = 1,60“ · „k = 1,00“ · „k = 0,40“. (5) Ganz unten je drei aufrechte, voll ausgefüllte Säulen nebeneinander auf einer gemeinsamen Grundlinie, beschriftet „1. Runde“, „2. Runde“, „3. Runde“; alle neun Säulen haben dieselbe Breite und dieselbe Grundlinie, und die erste Säule ist in allen drei Feldern exakt gleich hoch. Links werden die Säulen von links nach rechts deutlich höher, in der Mitte bleiben alle drei genau gleich hoch, rechts werden sie deutlich niedriger. Diese neun Säulen tragen die Aussage des Bildes und müssen als klar getrennte Flächen erkennbar sein. Drei Fehler, die hier drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – Brennstäbe, Steuerstäbe und Säulen werden als breite, gefüllte Rechtecke gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Reaktor liest sich als Muster und nicht als Bauteil. ZWEITENS Nebenbilder – es gibt genau diese drei Felder, kein viertes, keine kleinen Zusatzbilder am Rand, keine eingesetzten Lupenausschnitte, keine Legendenkästen mit weiteren Szenen. Ganz besonders: kein Kühlturm, kein Wasser, kein Dampf, keine Turbine, kein Generator, keine Stromleitung – der Aufbau des Kraftwerks ist nicht Thema dieser Seite. DRITTENS Strahlengänge ins Leere – aus dem Reaktor führen keine Pfeile, keine Strahlen, keine Zickzacklinien, keine Blitze und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus. Der einzige Richtungshinweis im Bild sind die Steuerstäbe, die von oben nach unten in den Reaktor reichen. Ebenfalls nicht im Bild: einzelne Neutronen als Punkte, verzweigte Spaltungsbäume, gestreute Punktwolken und alles, was man zählen könnte – gezählt werden soll hier nichts. Keine anderen Zahlen als 0 %, 50 %, 100 %, 1,60, 1,00, 0,40 sowie die drei Rundennummern. Keine Personen, keine Warnzeichen, keine Deko. Große Schrift, viel Weißraum.]"
+ },
+ "lehrer": {
+  "id": "fn9",
+  "lernziel": "Die Schülerinnen und Schüler stellen an der Simulation vier Stellungen der Steuerstäbe ein und lesen dazu den Vermehrungsfaktor k ab (0 % → k = 1,60 · 50 % → k = 1,00 · 75 % → k = 0,70 · 100 % → k = 0,40). Sie lesen in derselben Zeile die zugehörige Spaltungszahl mit (160 · rund 100 · 70 · 40), tragen beides in die Tabelle ein und formulieren daraus die Regel: Je weiter die Steuerstäbe im Reaktor drin sind, desto kleiner wird k. Sie benennen k = 1,00 als den Wert, mit dem ein Kernkraftwerk Tag und Nacht läuft, und begründen, warum man die Stäbe nicht ganz draußen lässt. Fachlich tragend ist dabei: k ist ein FAKTOR, kein Zuwachs – aus 100 Spaltungen werden bei k = 0,40 vierzig, nicht vierzig mehr. Begriffe nur für Sie, nicht auf der Schülerseite: unterkritisch (k < 1), kritisch (k = 1), überkritisch (k > 1) sowie die verzögerten Neutronen, denen der Reaktor seine Regelbarkeit verdankt. NICHT Thema dieser Seite: der Aufbau des Kraftwerks von der Wärme über Dampf und Turbine zum Generator. Die Simulation hält dafür einen eigenen Hinweistext bereit; er gehört zu fn10, das dieselbe Simulation mit eigenem Lernziel benutzt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Reaktoren. Optional als Gegenprobe am Tisch: eine Schachtel Dominosteine je Gruppe – einmal eine Reihe, in der jeder Stein genau einen umwirft, und einmal ein Aufbau, in dem ein Stein zwei umwirft. Das ist zugleich der Zuhause-Auftrag; erwartet wird dort k = 1, weil aus einem umgeworfenen Stein genau ein neuer wird. Kein Präparat, kein Schülerversuch.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext. Karte „0 %“: „Steuerstäbe 0 % eingefahren, Vermehrungsfaktor k = 1,60. Generation 0: 500 Spaltungen. Aus 100 Spaltungen werden in der nächsten Generation 160. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 110-mal so viele.“ Karte „50 %“ (das ist zugleich der Ausgangszustand der Simulation): „Steuerstäbe 50 % eingefahren, Vermehrungsfaktor k = 1,00. Generation 0: 500 Spaltungen. Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht.“ Karte „75 %“: „Steuerstäbe 75 % eingefahren, Vermehrungsfaktor k = 0,70. Aus 100 Spaltungen werden in der nächsten Generation nur 70. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter.“ Karte „100 %“: „Steuerstäbe 100 % eingefahren, Vermehrungsfaktor k = 0,40. Aus 100 Spaltungen werden in der nächsten Generation nur 40. Jede Generation ist kleiner als die davor – die Kette erstickt.“ Den Wortwechsel sagt der Alltagsteil jetzt selbst („Am Bildschirm heißt eine Runde Generation“); lesen Sie den Satz beim Vorlesen der Karten einmal mit, auf der Seite steht sonst durchgehend „Runde“. Zwei Stellen der Statuszeile lassen Sie beim Vorlesen bewusst weg: das Meldungswort hinter dem k-Wert (unterkritisch, kritisch, überkritisch) – es sind drei zusätzliche Fachwörter und reißt das Limit dieser Seite – und den letzten Teil über die Energie je Spaltung, der mit Megaelektronenvolt und Zehnerpotenzen arbeitet. Dazu als Tafelbild drei Reaktoren nebeneinander, alle gleich groß: ein aufrechtes Rechteck mit fünf hellen Brennstäben, darüber drei dunkle Steuerstäbe, die links gar nicht, in der Mitte halb und rechts ganz hineinreichen. Unter jeden Reaktor groß „k = 1,60“, „k = 1,00“, „k = 0,40“ und darunter die Spaltungszahl 160, rund 100, nur 40. Ganz unten je drei gleich breite Säulen auf einer Linie: links steigend, in der Mitte gleich hoch, rechts fallend. Wichtig beim Tafelbild: Die drei mittleren Säulen müssen sichtbar exakt gleich hoch sein – daran hängt der Merksatz. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen. Als lebendiger Ersatz eignen sich Dominosteine: eine Reihe, in der jeder Stein genau einen umwirft, ist k = 1; ein Aufbau, in dem ein Stein zwei umwirft, ist k = 2 und reißt nach wenigen Runden ab, weil die Steine ausgehen. Sagen Sie die Modellgrenze dazu: Dominosteine werden angestoßen, Neutronen fliegen von selbst.",
+  "merksatz": [
+   "kleiner",
+   "1,00"
+  ],
+  "tabelle_erwartet": [
+   [
+    "50 %",
+    "1,00",
+    "rund 100"
+   ],
+   [
+    "75 %",
+    "0,70",
+    "70"
+   ],
+   [
+    "100 %",
+    "0,40",
+    "40"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Bei 100 % meldet der Bildschirm: „Steuerstäbe 100 % eingefahren → Vermehrungsfaktor k = 0,40 … Aus 100 Spaltungen werden in der nächsten Generation nur 40. Jede Generation ist kleiner als die davor – die Kette erstickt.“ Die dritte Option nennt genau diese beiden Aussagen und ist richtig. Die erste Option ist der Zustand bei 50 % (k = 1,00, wieder rund 100) – sie ist am Bildschirm belegt, gehört aber zu einer anderen Reglerstellung. Die zweite Option ist die eigentliche Falle dieser Seite: Wer „0,40“ als „40“ liest, hält k für einen Zuwachs und erwartet 40 Spaltungen MEHR; aus dem Erlöschen wird so ein Wachstum. Die Option nennt bewusst keine ausgerechnete Zahl – „140“ stand hier früher und ist am Bildschirm an keiner Reglerstellung belegt. Zeigen Sie dazu die Tabellenzeile: neben der 0,40 steht „40“, und 40 ist weniger als 100.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt: Das Komma in 0,40 wird überlesen, k gilt als Zuwachs „plus 40“, und aus 100 werden 140. Gegenfrage: Sind 40 mehr oder weniger als 100? Danach die erste Tabellenzeile danebenlegen – dort steht 1,60 neben 160, hier 0,40 neben 40.",
+    "Die erste Option wird angekreuzt, weil der Regler noch auf 50 % steht oder weil die Simulation dort startet. Gegenfrage: Auf welcher Zahl steht dein Regler gerade?",
+    "Es wird gar nicht verstellt und der Ausgangszustand abgelesen; dann passt nur die erste Option, und die ist für 100 % falsch. Den Regler gemeinsam bis zum Anschlag rechts ziehen lassen.",
+    "„erstickt“ wird als „explodiert“ gelesen, weil das Wort unbekannt ist. Die Option führt deshalb die Umschreibung „(hört auf)“ mit. Wenn das nicht reicht: einmal an der Kerze zeigen – die Kette hört auf, es wird immer weniger."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,60",
+    "0,40"
+   ],
+   "typische_fehler": [
+    "In die zweite Lücke wird „40“ statt „0,40“ geschrieben. Genau dieser Fehler ist der Grund, warum in derselben Zeile die 40 danebensteht: 0,40 ist der Faktor, 40 ist die Zahl der Spaltungen. Die Wortbank enthält die Schreibweise mit Komma; einmal abschreiben lassen.",
+    "In die erste Lücke wird „160“ statt „1,60“ geschrieben – dieselbe Verwechslung in die andere Richtung. Auf die Beispielzeile der Tabelle zeigen, dort stehen beide Zahlen nebeneinander.",
+    "Die Werte werden vertauscht: 0,40 bei 0 % und 1,60 bei 100 %. Rückfrage über den Merksatz: Weiter drin bedeutet kleiner. 0 % heißt gar nicht drin.",
+    "Statt 1,60 wird 1,00 eingesetzt, weil das die bekannteste Zahl der Seite ist. Der Satz nennt aber 0 %; 1,00 gehört zu 50 %."
+   ]
+  },
+  "a3": {
+   "erwartung": "Man lässt die Steuerstäbe nicht ganz draußen, weil k dann 1,60 ist. Aus 100 Spaltungen werden 160. Jede Runde ist größer als die davor, die Kette wächst lawinenartig. Ein Kernkraftwerk braucht aber k = 1,00, damit jede Runde gleich groß bleibt.",
+   "alternativen": [
+    "Kurzform ohne Zahlen: „Weil die Kettenreaktion dann immer größer wird und nicht mehr gleichmäßig läuft.“ – reicht für die volle Wertung.",
+    "Über die Regel begründet: „Je weniger die Stäbe drin sind, desto größer wird k. Bei 0 % ist k größer als 1.“",
+    "Über den Vergleich begründet: „Bei 0 % werden aus 100 Spaltungen 160, bei 50 % nur wieder 100. Das Kraftwerk braucht die 100.“",
+    "Mit dem Bildschirmsatz zur Zukunft: „Nach 10 Generationen wären es rund 110-mal so viele.“ – richtig abgelesen und weiterführend, aber nicht verlangt.",
+    "Formulierungen wie „außer Kontrolle“ oder „es wird zu viel“ zählen, solange das Wachsen von Runde zu Runde genannt ist."
+   ],
+   "typische_fehler": [
+    "Es wird nur „weil es gefährlich ist“ geschrieben, ohne Bezug zu k oder zur Zahl der Spaltungen. Nachfragen: Woran siehst du das am Bildschirm? Hilfe 2 führt in die Tabellenzeile 0 %; dort steht 1,60.",
+    "Die Richtung wird gedreht: „Weil k dann zu klein wird.“ Auf die Tabelle zurückverweisen – 1,60 ist die größte Zahl der Spalte.",
+    "Es wird über Hitze oder Explosion argumentiert, ohne dass die Simulation das zeigt. Zurückführen auf das Ablesbare: mehr Spaltungen in jeder Generation. Wärme und Dampf sind Thema von fn10.",
+    "Die Antwort erklärt, warum man die Stäbe ganz hineinschiebt (Abschalten). Das ist richtig, beantwortet aber die andere Frage. Auf den Satzstarter zeigen."
+   ]
+  },
+  "hilfe3_wort": "größer (auch richtig: immer größer, lawinenartig größer). Dieses Wort steht bewusst NICHT in der Wortbank – die Wortbank enthält als einziges Adjektiv „kleiner“, also genau die Umkehrung. Hilfe 3 trägt die Richtung deshalb selbst („Das ist mehr als 100“), und Hilfe 1 verspricht die Wortbank nur noch für Merksatz und Aufgabe 2.",
+  "schwache": [
+   "Vorher gemeinsam üben, was bedient wird: Es gibt genau EINEN Regler („Steuerstäbe eingefahren“) und drei Knöpfe. Für diese Seite wird nur der Regler gebraucht, kein einziger Knopf. Die Knöpfe sind deshalb nirgends abgedruckt; bei zweien von ihnen kennt die Heftschrift außerdem das Zeichen vor dem Wort nicht. Zeigen Sie einmal am Beamer, dass der Regler links bei 0 % und rechts bei 100 % anschlägt.",
+   "Die Statuszeile mit einem Papierstreifen abdecken, sodass nur „Vermehrungsfaktor k = …“ sichtbar bleibt. Erst wenn die zweite Spalte der Tabelle steht, den Streifen tiefer schieben und den Satz „Aus 100 Spaltungen werden …“ freigeben. Dazwischen liegt „Generation 0: 500 Spaltungen“; das gelöste Beispiel sagt ausdrücklich, dass diese 500 nicht gebraucht wird. Ohne Führung wird sie trotzdem gern abgeschrieben.",
+   "Nur die zweite Tabellenspalte ausfüllen lassen; die dritte Spalte gemeinsam an der Tafel eintragen. Die vier Zahlenpaare laut nebeneinander lesen: 1,60 und 160 – 1,00 und rund 100 – 0,70 und 70 – 0,40 und 40. Das Mitsprechen macht das Komma hörbar.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen, jeweils mit Komma. Danach fragen: Welche Zahl ist größer, 0,40 oder 1,00?",
+   "Wer beim Erklären nicht anfängt, stellt zuerst noch einmal 0 % und dann 50 % ein und liest beide k-Werte laut vor. Die zwei Zahlen an den Rand schreiben lassen und danach den Satzstarter benutzen.",
+   "„eingefahren“ ist ein schwieriges Wort. Auf der Seite steht durchgehend „wie weit die Steuerstäbe drin sind“. Zeigen Sie das Bildschirmwort einmal und sagen Sie dazu: eingefahren heißt drin.",
+   "Am Bildschirm steht in jeder Meldung das Wort „Generation“. Der Alltagsteil übersetzt es jetzt selbst: „Am Bildschirm heißt eine Runde Generation.“ Lesen Sie diesen Satz beim Einstieg einmal laut mit; auf der Seite heißt es sonst durchgehend „Runde“. Abgefragt wird das Wort nirgends, im gelösten Beispiel ist es aus dem Zitat herausgekürzt."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen – beide nur ablesen und vergleichen, nichts umrechnen. (1) Wo kippt es? Stelle nacheinander 40 %, 45 % und 55 % ein und schreibe die drei k-Werte auf. Erwartet: 1,12 · 1,06 · 0,94. Antwort: Zwischen 45 % und 55 % wird k kleiner als 1,00; ab da erstickt die Kette. (2) Wird es gleichmäßig kleiner? Stelle 5 %, 20 % und 35 % ein; der Regler wandert jedes Mal um 15 Prozentpunkte weiter. Erwartet: 1,54 · 1,36 · 1,18. Antwort: Gleich große Schritte am Regler machen k jedes Mal um gleich viel kleiner – hier je 0,18. Alle sechs Stellungen sind im Faktendump belegt und stehen in keiner Tabellenzeile der Schülerseite; es muss also wirklich abgelesen werden. 50 % ist hier mit Absicht nicht dabei: Das ist der Startwert des Reglers und steht schon in Tabellenzeile 2. Nicht verlangt wird die Frage, wie viele Spaltungen es nach 10 Generationen sind – die Simulation nennt für 0 % „rund 110-mal so viele“, das Nachrechnen wäre Potenzrechnung und liegt über A2 und B1.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · gesteuerte Kettenreaktion, Steuerstäbe und Vermehrungsfaktor k. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der vier Reglerstellungen trägt E4, das Ablesen und Gegenüberstellen von k und Spaltungszahl E5, der Vergleich der vier k-Werte UF3, die Erklär-Aufgabe zur 0-%-Stellung UF1 und E6, die Vermutung zur Wirkung der Stäbe UF4. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag: Die Dominoreihe zu Hause ist ein Alltagsanker zum selben Mechanismus, kein Dokumentieren. Arbeitsschritt 3 sagt deshalb ausdrücklich „Trage alles ein“ – dieser Satz fehlte in einer früheren Fassung als einziger im ganzen Band, und ohne ihn hatte K3 auf der Seite keinen Träger: Sechs Tabellenzellen blieben ohne Auftrag. Fachwortzählung: neu sind genau ZWEI Wörter, „Steuerstäbe“ und „Vermehrungsfaktor k“ (Größe plus Formelzeichen, ohne Einheit – nach Zählregel 1 EIN Wort). Beide bekommen ihren Begriffssatz im Alltagsteil: „Steuerstäbe sind Stangen im Reaktor. Sie fangen Neutronen weg.“ und „Der Vermehrungsfaktor k sagt: So viele neue Spaltungen folgen aus einer Spaltung.“ Der zweite Satz ist wörtlich die Hinweiszeile der Simulation und der KERN der Analyse; ohne ihn lernte das Kind nur, wie k sich VERHÄLT, nie, was k bedeutet, und auch der Zuhause-Auftrag (Dominoreihe, k = 1) wäre nicht lösbar. „Steuerstäbe“ MUSS mitzählen, obwohl es ein Bauteilname ist: Zählregel 2 stellt Gerätenamen frei und meint damit Messgeräte (Voltmeter, Amperemeter, Lichtschranke, Stoppuhr) – so hat es derselbe Band schon dreimal entschieden (fv3 zählt „Elektromagnet“, fv5 „Kommutator“, fv8 „Sekundärspule“, und fn2 stellt umgekehrt „Zählrohr“ als echtes Messgerät frei). Hier steht das Wort obendrein in der Forscherfrage, im Merksatz-Vortext, im Tabellenkopf-Zusammenhang und in zwei Aufgaben, trifft also gleich mehrere Auslöser von Zählregel 3. Eine frühere Fassung dieser Seite hatte es freigestellt; das war eine Neuauslegung der Regel und ist zurückgenommen. „Kettenreaktion“ steht deshalb nur noch in der SEITENÜBERSCHRIFT und an keiner anderen Stelle der Schülerseite – kein Begriffssatz, keine Wortbank, keine Merksatz-Lücke, keine Aufgabe. Das ist im Band eingeführt und geprüft: fn1 trägt „Atomkern“ genauso allein in der Überschrift und benutzt auf der Seite durchgehend „Kern“. Gearbeitet wird hier mit „Kette“ – dem Wort, das die Simulation selbst benutzt („die Kette wächst lawinenartig“ · „läuft gleichmäßig weiter“ · „erstickt“); ein Alltagswort ohne Formelzeichen und ohne Einheit, das nach Zählregel 5 nicht zählt. Der Alltagsteil sagt einmal, worum es geht: „Eine Spaltung löst neue Spaltungen aus: eine Kette.“ Sprechen Sie das Wort Kettenreaktion ruhig dazu und zeigen Sie auf die Überschrift; abgefragt wird es nicht. Für fn8 ändert das nichts: Es darf das Wort nach Zählregel 4 weiterhin nicht einführen, sondern höchstens vorbereiten – und tut das über die drei gezeichneten Folgeneutronen. „Generation“ wird nicht mehr nur an die Lehrkraft weitergereicht: Der Alltagsteil sagt „Am Bildschirm heißt eine Runde Generation.“ Das Wort steht in jeder Meldung, die das Kind liest, und muss dort wiedererkannt werden; „Runde“ ist ein Alltagswort ohne Formelzeichen und ohne Einheit und zählt nach Zählregel 5 nicht. Der Bildauftrag beschriftet aus demselben Grund „1. Runde“, „2. Runde“, „3. Runde“ – die Simulation zählt ab „Generation 0“, eine Beschriftung „Generation 1, 2, 3“ hätte dem widersprochen. Nicht neu eingeführt und nur als Rückverweis benutzt: Neutron (fn1), Kernspaltung und Spaltung (fn8), Atomkern (fn1). Bewusst NICHT auf der Schülerseite, weil es das dritte bis fünfte Wort wäre: „unterkritisch“, „kritisch“, „überkritisch“. Die Simulation schreibt sie hinter jedem k-Wert; die Seite ersetzt sie durch die Bildschirmsätze derselben Zeile – „die Kette wächst lawinenartig“, „läuft gleichmäßig weiter“, „erstickt“. Für die Anschlussfähigkeit stehen die drei Wörter hier und in den Ergebniskarten-Hinweisen; beim Vorlesen der Karten werden sie weggelassen. Ebenfalls vermieden: „Reaktor herunterfahren“ als Fachwendung, „Moderator“, „verzögerte Neutronen“, „Megaelektronenvolt“. Datenlage und Fallen: (1) Alle vier Ablesestellen der Tabelle sind im Faktendump belegt (0 % → 1,60 · 50 % → 1,00 · 75 % → 0,70 · 100 % → 0,40), ebenso die zugehörigen Spaltungszahlen 160, „wieder rund 100“, „nur 70“, „nur 40“. Belegt sind außerdem 5, 10, 13, 15, 20, 25, 30, 35, 38, 40, 45, 55, 60, 63, 65, 70, 80, 85, 88, 90, 95 Prozent; aus dieser Reihe stammen die Werte der freiwilligen Zusatzaufgabe. Zwischenwerte wie 51 % sind NICHT belegt und dürfen nicht abgefragt werden, obwohl der Regler in Einerschritten läuft. (2) Die Zahl der nächsten Generation SCHWANKT und wird nirgends abgefragt: Der Faktendump zeigt bei 50 % „Generation 1: 493 Spaltungen (vorher 500)“, die Beobachtung des Regelhefts nennt 503. Die Richtig-Falsch-Aussage des Regelhefts („zeigt die nächste Generation 503 Spaltungen statt 500“) ist nicht reproduzierbar und entfällt ersatzlos. Die dritte Tabellenspalte fragt deshalb nach dem festen Satz „Aus 100 Spaltungen werden …“ und nicht nach der Generationenzahl. (3) Die Seite benutzt KEINEN der drei Knöpfe. Das ist Absicht und deckt zwei offene Stellen ab: Der Zustand „100 % und dann eine Generation weiter“ fehlt im Dump, weil simfakten jeden Knopf nur einmal und nur bei 50 % betätigt; und bei 80 bis 95 % steht im Dump „Generation 1: 330 Spaltungen (vorher 500)“ – ein Rest aus dem vorher gedrückten Knopf, nicht das Ergebnis des Reglers. Solange nicht nachgemessen ist, ob der Generationenzähler beim Ziehen des Reglers stehen bleibt, darf keine Aufgabe eine Reihenfolge aus Knopf und Regler verlangen. Sobald `fakten/kettenreaktion.json` einen nachgemessenen Zustand dafür trägt, kann ein vierter Arbeitsschritt ergänzt werden. (4a) Der Bildauftrag trug zunächst unter jedem Reaktor zusätzlich die Zeile „Aus 100 Spaltungen werden …“. Die rechte davon war wörtlich die richtige Option von Aufgabe 1; sie ist gestrichen, die Aussage tragen jetzt die neun Säulen (steigend · gleich hoch · fallend). Die drei k-Werte bleiben dagegen ausdrücklich stehen, obwohl 1,60 und 0,40 die Lücken von Aufgabe 2 füllen und 1,00 die zweite Merksatz-Lücke. Das ist kein Widerspruch, sondern Hausstil: In 23 der 28 Einheiten dieses Bandes steht mindestens ein Lösungswert im Bild – das Bild ist im Förderheft ein Lesehalt, kein Rätsel, und die drei Zahlen sind der einzige Grund, warum die drei Felder überhaupt unterscheidbar sind. Am Bildschirm zu holen bleiben die ganze Zeile 75 % (k = 0,70 · 70), die dritte Tabellenspalte in allen drei offenen Zeilen und der Kraftwerkssatz bei 50 %. Wer die Ablesearbeit vergrößern will, deckt beim Austeilen die k-Zeile des Bildes ab. (4) Bildfalle: Unter der Zeichnung steht „(gezeichnet: 260 von 500)“. Wer die Punkte zählt, kommt auf 260. Es wird deshalb nirgends gezählt, und der Bildauftrag enthält bewusst keine Punktwolke, sondern Säulen mit Beschriftung. (5) Kommafalle: 0,40 wird von schwachen Lesern als 40 gelesen. Darum steht in jeder Tabellenzeile die Spaltungszahl neben dem k-Wert, die Wortbank enthält 1,60 und 0,40 mit Komma, und der mittlere Distraktor von Aufgabe 1 („Aus 100 werden 40 mehr“) macht die Fehlvorstellung ausdrücklich sichtbar: k ist ein Faktor, kein Zuwachs. Er nennt mit Absicht keine ausgerechnete Zahl. Früher stand dort „Aus 100 Spaltungen werden 140“ – diese 140 ist am Bildschirm an keiner Reglerstellung belegt (k geht 1,60 · 1,54 · 1,48 · 1,44 · 1,42 · 1,36 …, ein k von 1,40 gibt es nicht), und die Datenregel des Profils kennt für Distraktoren keine Ausnahme. „40 mehr“ trifft den Denkfehler genauer und erfindet nichts. (6) Der Bildschirmsatz „Nach 10 solchen Generationen wären es schon rund 110-mal so viele“ wird nur abgelesen, nie nachgerechnet: 1,60 hoch 10 ist Potenzrechnung. (7) Die zweite Hinweiszeile der Simulation beschreibt den Weg vom Reaktor über Wärme, Dampf und Turbine zum Generator. Sie steht am Bildschirm und ist damit belegt, gehört aber vollständig zu fn10 – dieselbe Simulation, eigenes Lernziel (Seitenplan vom 05.09.2026, keine Zusammenlegung). Diese Seite fragt nichts davon ab, und der Bildauftrag verbietet Kühlturm, Dampf, Turbine und Generator ausdrücklich, damit die Doppelseite nicht vorwegnimmt, was zwei Seiten weiter aufgebaut wird. (8) Die dritte Hinweiszeile nennt die Modellgrenze (hier ein paar Tausend Spaltungen, im Reaktor rund zehn hoch neunzehn in jeder Sekunde) sowie Temperatur, Dampfblasen und Alter der Brennstäbe. Zehnerpotenzen dieser Größe sind auf A2 und B1 nicht fassbar; die Seite sagt davon nichts. Erwähnen Sie es mündlich, wenn gefragt wird, ob man k in Wirklichkeit einfach am Regler dreht – nein, und genau das ist der Unterschied zwischen Modell und Reaktor. (9) Der letzte Teil jeder Bildschirmmeldung rechnet die Energie je Spaltung in Megaelektronenvolt und Joule um. Er wird weder zitiert noch abgefragt; die Hochzahlen dieser Angabe hat die Satzschrift ohnehin nicht. Arbeitsschritt 2 schickt das Kind deshalb zum „Satz über das Kernkraftwerk“ und nicht zum „letzten Satz“ – der letzte Satz der Meldung ist die Energieangabe. (10) Undruckbare Zeichen: Die Überschrift der Simulation (U+1F39B) und ZWEI der drei Knöpfe tragen vor dem Wort ein Zeichen, für das SourceSans3 keine Glyphe hat – „nächste Generation“ (U+23ED) und „Zurücksetzen“ (U+21BA). Sie werden nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Nachgemessen gegen SourceSans3 Regular, Medium und Bold ist dagegen U+25B6 vorhanden, das Zeichen vor „Laufen lassen“: Dieser Knopf dürfte zitiert werden, falls fn10 ihn an derselben Simulation braucht. Der Pfeil → aus der Bildschirmmeldung ist ebenfalls geprüft vorhanden und darf stehen. (11) Bewusst offen gelassen: Was der Knopf „Laufen lassen“ über mehrere Generationen zeigt, ist im Dump nur mit einem einzigen Folgezustand belegt und wird nicht verlangt. Ebenso offen bleibt, wie die Simulation die Punkte auf die Fläche verteilt und ob die Zeichnung bei jedem Lauf gleich aussieht."
+ }
+}

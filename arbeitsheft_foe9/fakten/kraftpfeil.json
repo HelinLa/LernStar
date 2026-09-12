@@ -1,0 +1,196 @@
+[
+ {
+  "sim": "kraftpfeil",
+  "ueberschrift": "➡️ Hat eine Kraft nur eine Größe – oder auch eine Richtung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "2 N",
+    "ruft": "_kpfSetB(2)"
+   },
+   {
+    "aufschrift": "4 N",
+    "ruft": "_kpfSetB(4)"
+   },
+   {
+    "aufschrift": "6 N",
+    "ruft": "_kpfSetB(6)"
+   },
+   {
+    "aufschrift": "→",
+    "ruft": "_kpfSetD('rechts')"
+   },
+   {
+    "aufschrift": "←",
+    "ruft": "_kpfSetD('links')"
+   },
+   {
+    "aufschrift": "↑",
+    "ruft": "_kpfSetD('oben')"
+   },
+   {
+    "aufschrift": "↓",
+    "ruft": "_kpfSetD('unten')"
+   },
+   {
+    "aufschrift": "↗",
+    "ruft": "_kpfSetD('schraeg')"
+   },
+   {
+    "aufschrift": "Betrag und Richtung (und Angriffspunkt)",
+    "ruft": "_kpfAns(0,0)"
+   },
+   {
+    "aufschrift": "Nur der Betrag",
+    "ruft": "_kpfAns(0,1)"
+   },
+   {
+    "aufschrift": "Nur die Richtung",
+    "ruft": "_kpfAns(0,2)"
+   },
+   {
+    "aufschrift": "Den Betrag (die Stärke)",
+    "ruft": "_kpfAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Richtung",
+    "ruft": "_kpfAns(1,1)"
+   },
+   {
+    "aufschrift": "Den Angriffspunkt",
+    "ruft": "_kpfAns(1,2)"
+   },
+   {
+    "aufschrift": "Nein, verschiedene Wirkung",
+    "ruft": "_kpfAns(2,0)"
+   },
+   {
+    "aufschrift": "Ja, immer gleich",
+    "ruft": "_kpfAns(2,1)"
+   },
+   {
+    "aufschrift": "Nur bei großen Kräften verschieden",
+    "ruft": "_kpfAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_kpfSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_kpfSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_kpfSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('kraftpfeil')"
+   }
+  ],
+  "hinweise": [
+   "Stelle den Betrag (die Stärke) und die Richtung der Kraft ein. Beobachte den Kraftpfeil: Was verändert sich?",
+   "Zu einer Kraft gehören immer drei Dinge: der Betrag (wie stark, in Newton) – das ist die Länge des Pfeils; die Richtung – das ist die Pfeilrichtung; und der Angriffspunkt – dort, wo die Kraft wirkt (Start des Pfeils). Eine Kraft ist eine gerichtete Größe.",
+   "Gleicher Betrag, andere Richtung → andere Wirkung. Darum zeichnet man Kräfte als Pfeile."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "kpfStatus: Kraft: Betrag 4 N, Richtung nach rechts. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach rechts gezogen."
+   },
+   {
+    "einstellung": "2 N",
+    "text": "kpfStatus: Kraft: Betrag 2 N, Richtung nach rechts. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach rechts gezogen."
+   },
+   {
+    "einstellung": "4 N",
+    "text": "kpfStatus: Kraft: Betrag 4 N, Richtung nach rechts. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach rechts gezogen."
+   },
+   {
+    "einstellung": "6 N",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung nach rechts. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach rechts gezogen."
+   },
+   {
+    "einstellung": "→",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung nach rechts. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach rechts gezogen."
+   },
+   {
+    "einstellung": "←",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung nach links. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach links gezogen."
+   },
+   {
+    "einstellung": "↑",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung nach oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach oben gezogen."
+   },
+   {
+    "einstellung": "↓",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung nach unten. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde nach unten gezogen."
+   },
+   {
+    "einstellung": "↗",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen."
+   },
+   {
+    "einstellung": "Betrag und Richtung (und Angriffspunkt)",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✓ Richtig! Eine Kraft hat Betrag, Richtung und Angriffspunkt."
+   },
+   {
+    "einstellung": "Nur der Betrag",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Der Betrag allein reicht nicht – die Richtung fehlt."
+   },
+   {
+    "einstellung": "Nur die Richtung",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt."
+   },
+   {
+    "einstellung": "Den Betrag (die Stärke)",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✓ Richtig! Je länger der Pfeil, desto größer die Kraft."
+   },
+   {
+    "einstellung": "Die Richtung",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Die Richtung zeigt die Pfeilrichtung, nicht die Länge."
+   },
+   {
+    "einstellung": "Den Angriffspunkt",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils."
+   },
+   {
+    "einstellung": "Nein, verschiedene Wirkung",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✓ Richtig! Die Richtung entscheidet mit über die Wirkung."
+   },
+   {
+    "einstellung": "Ja, immer gleich",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Nein, die Richtung macht einen Unterschied."
+   },
+   {
+    "einstellung": "Nur bei großen Kräften verschieden",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Die Richtung zählt bei jeder Kraft."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Die Richtung zählt bei jeder Kraft.  ||  kpfSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Die Richtung zählt bei jeder Kraft.  ||  kpfSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Die Richtung zählt bei jeder Kraft."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "kpfStatus: Kraft: Betrag 6 N, Richtung schräg nach rechts oben. Die Pfeillänge zeigt den Betrag, die Pfeilrichtung die Richtung. Der Körper würde schräg nach rechts oben gezogen.  ||  kpfFb0: ✗ Die Richtung allein reicht nicht – der Betrag fehlt.  ||  kpfFb1: ✗ Der Angriffspunkt ist der Startpunkt des Pfeils.  ||  kpfFb2: ✗ Die Richtung zählt bei jeder Kraft."
+   }
+  ],
+  "bildtexte": [
+   "4 N",
+   "Pfeil-Länge = Betrag (Stärke)",
+   "Pfeil-Richtung = Richtung der Kraft",
+   "● = Angriffspunkt (wo die Kraft wirkt)",
+   "2 N",
+   "6 N"
+  ]
+ }
+]

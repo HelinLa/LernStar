@@ -1,0 +1,192 @@
+{
+ "seite": {
+  "id": "fs9",
+  "quelle": "st9",
+  "sim": "reihe-widerstand",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Was passiert hintereinander?",
+  "name": "Zwei Widerstände in einer Reihe",
+  "fachwoerter_neu": [
+   "Reihenschaltung",
+   "Gesamtwiderstand"
+  ],
+  "alltag": [
+   "Jannis zieht eine alte Lichterkette aus der Kiste der Fahrrad-AG.",
+   "Alle Lämpchen hängen an einem Kabel, eines hinter dem anderen. So etwas heißt Reihenschaltung.",
+   "Nour dreht das Netzteil auf. Die Kette leuchtet nur schwach.",
+   "Jedes Lämpchen bremst den Strom. Alle Bremsen zusammen heißen Gesamtwiderstand R_ges."
+  ],
+  "frage": "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
+  "predict": [
+   "Der Strom ist an jeder Stelle gleich groß.",
+   "Am zweiten Widerstand kommt weniger Strom an als am ersten."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
+   "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.",
+   "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.",
+   "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie stehen R₁ und R₂?",
+   "Wie groß ist R_ges?",
+   "Wie groß ist der Strom I?"
+  ],
+  "tabRows": [
+   [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "30 Ω",
+    "0,20 A"
+   ],
+   [
+    "R₁ = 20 Ω, R₂ = 20 Ω",
+    "",
+    ""
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 30 Ω",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Widerstände liegen hintereinander. Das ist eine",
+    "loesung": "Reihenschaltung",
+    "post": "."
+   },
+   {
+    "pre": "Der",
+    "loesung": "Gesamtwiderstand",
+    "post": "ist so groß wie R₁ + R₂. Der Strom ist überall gleich groß."
+   }
+  ],
+  "wortbank": [
+   "Reihenschaltung",
+   "Gesamtwiderstand",
+   "60 Ω",
+   "0,10 A"
+  ],
+  "beispiel": {
+   "frage": "Wie groß sind R_ges und der Strom I bei R₁ = 30 Ω und R₂ = 20 Ω?",
+   "antwort": "Die Statuszeile zeigt: R_ges = 30 Ω + 20 Ω = 50 Ω. Der Strom ist überall gleich: I = 0,12 A. Bei R_ges = 30 Ω waren es noch 0,20 A. Der Gesamtwiderstand ist größer, also ist der Strom kleiner."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt die Statuszeile bei R₁ = 20 Ω und R₂ = 20 Ω?",
+    "optionen": [
+     "R_ges = 0 Ω, denn 20 Ω − 20 Ω = 0 Ω.",
+     "R_ges = 20 Ω. Der Gesamtwiderstand bleibt so groß wie R₁.",
+     "R_ges = 40 Ω, denn 20 Ω + 20 Ω = 40 Ω."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt die Statuszeile R_ges =",
+      "loesung": "60 Ω",
+      "post": "."
+     },
+     {
+      "pre": "In der ganzen Reihe fließt derselbe Strom von",
+      "loesung": "0,10 A",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Am zweiten Widerstand kommt weniger Strom an.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "In der Reihenschaltung fließt der Strom …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile rechnet dir alles vor: R_ges = 30 Ω + 20 Ω = 50 Ω. Die erste Zahl gehört zu R₁, die zweite zu R₂.",
+   "h2": "Beginne so: In der Reihenschaltung fließt der Strom nur auf einem Weg. Darum …",
+   "h3": "Fast fertige Antwort: Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt die Anzeige 0,10 A. Dieser Wert gilt vor und hinter jedem Widerstand. Am zweiten Widerstand kommt also nicht weniger an, sondern ___ viel."
+  },
+  "selbstcheck": [
+   "Ich kann in der Statuszeile R_ges und den Strom I ablesen.",
+   "Ich weiß: In der Reihenschaltung ist R_ges so groß wie R₁ + R₂.",
+   "Ich kann erklären, dass der Strom an jeder Stelle gleich groß ist."
+  ],
+  "zuhause": "Suche zu Hause eine Lichterkette. Schau nach, wie die Lämpchen am Kabel hängen. Hängen sie alle hintereinander in einer Reihe? Zähle die Lämpchen und schreibe die Zahl auf.",
+  "bildauftrag": "[BILD: zwei einfache Stromkreise nebeneinander, jeder ein einziger geschlossener Weg ohne Abzweigung; links die Quelle „6 V“, im Kreis hintereinander „R₁ = 10 Ω“ und „R₂ = 20 Ω“, ein Messgerät „A“ zeigt „0,20 A“, darunter groß „R_ges = 10 + 20 = 30 Ω“; rechts die Quelle „6 V“, hintereinander „R₁ = 30 Ω“ und „R₂ = 30 Ω“, das Messgerät „A“ zeigt „0,10 A“, darunter groß „R_ges = 30 + 30 = 60 Ω“; die Strompfeile sind innerhalb eines Kreises überall gleich dick, im rechten Kreis aber deutlich dünner als im linken; keine Abzweigung, kein zweiter Weg, keine weiteren Bauteile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fs9",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass sich in der Reihenschaltung die beiden Widerstände zum Gesamtwiderstand addieren (R_ges = R₁ + R₂) und dass der Strom an jeder Stelle gleich groß ist. Sie erkennen: größerer Gesamtwiderstand, kleinerer Strom. Die Teilspannungen U₁ und U₂ sowie jede Rechnung mit I = U / R_ges bleiben bewusst dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: Netzteil 6 V, zwei Widerstände zum Hintereinanderschalten, Amperemeter.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, immer bei 6 V: R₁ = 10 Ω, R₂ = 20 Ω → „R_ges = 10 Ω + 20 Ω = 30 Ω. Strom (überall gleich) I = 0,20 A.“ · R₁ = 20 Ω, R₂ = 20 Ω → „R_ges = 20 Ω + 20 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A.“ · R₁ = 30 Ω, R₂ = 30 Ω → „R_ges = 30 Ω + 30 Ω = 60 Ω. Strom (überall gleich) I = 0,10 A.“ Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Die Teilspannungen U₁ und U₂, die am Bildschirm mitlaufen, stehen absichtlich nicht auf der Schülerseite.",
+  "merksatz": [
+   "Reihenschaltung",
+   "Gesamtwiderstand"
+  ],
+  "tabelle_erwartet": [
+   [
+    "R₁ = 20 Ω, R₂ = 20 Ω",
+    "40 Ω",
+    "0,15 A"
+   ],
+   [
+    "R₁ = 30 Ω, R₂ = 30 Ω",
+    "60 Ω",
+    "0,10 A"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach dem Druck auf 20 Ω in der Knopfreihe „R₁:“ meldet die Statuszeile: „R_ges = 20 Ω + 20 Ω = 40 Ω. Strom (überall gleich) I = 0,15 A.“ Die Widerstände werden addiert, nicht subtrahiert.",
+   "typische_fehler": [
+    "Es wird subtrahiert (20 Ω − 20 Ω = 0 Ω); die Sim antwortet auf den passenden Quizknopf mit „✗ Subtrahiert wird nichts.“",
+    "R_ges wird für kleiner oder gleich R₁ gehalten; Sim-Rückmeldung: „✗ In Reihe ist R_ges immer größer, nicht kleiner.“",
+    "Gedrückt wird die Reihe „R₂:“ statt „R₁:“. R₂ steht schon auf 20 Ω, die Anzeige bleibt bei 10 Ω + 20 Ω = 30 Ω und passt zu keiner Antwort."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "60 Ω",
+    "0,10 A"
+   ],
+   "typische_fehler": [
+    "50 Ω und 0,12 A aus dem gelösten Beispiel abgeschrieben (das gilt für 30 Ω + 20 Ω).",
+    "Einheiten vertauscht: „60 A“ und „0,10 Ω“.",
+    "0,10 A wird für mehr gehalten als 0,20 A – reiner Dezimalvergleich, keine Sachfrage."
+   ]
+  },
+  "a3": {
+   "erwartung": "In der Reihenschaltung fließt der Strom nur auf einem Weg. Er ist an jeder Stelle gleich groß. Bei R₁ = 30 Ω und R₂ = 30 Ω zeigt das Messgerät 0,10 A, vor und hinter jedem Widerstand. Strom wird nicht verbraucht. Die beiden Widerstände bremsen ihn gemeinsam, deshalb fließt insgesamt weniger als vorher.",
+   "alternativen": [
+    "Verweis auf die Simulation: Der Quizknopf „Überall gleich“ bekommt die Rückmeldung „✓ Richtig! Der Strom ist überall gleich groß.“",
+    "Verweis auf die eigene Tabelle: Es gibt in jeder Zeile nur EINEN Stromwert, nicht zwei.",
+    "Bild vom einen Weg: Alle Autos auf einer einspurigen Straße fahren gleich oft an jeder Stelle vorbei; unterwegs verschwindet keines."
+   ],
+   "typische_fehler": [
+    "Strom wird als Vorrat gedacht, der unterwegs aufgebraucht wird (Sim: „✗ Er fließt durch alle Bauteile gleich.“).",
+    "Verwechslung mit der Spannung: Die Teilspannungen sind wirklich verschieden (am Bildschirm z. B. U₁ = 3,6 V und U₂ = 2,4 V bei 30 Ω + 20 Ω). Wer das gesehen hat, überträgt es fälschlich auf den Strom.",
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Messwert aus der Tabelle zu nennen."
+   ]
+  },
+  "hilfe3_wort": "genauso (auch richtig: gleich, gleich viel)",
+  "schwache": [
+   "Vorher auf die Beschriftungen „R₁:“ und „R₂:“ links neben den beiden Knopfreihen zeigen. Wer sie übersieht, verstellt den falschen Widerstand – die häufigste Fehlbedienung dieser Seite. Wer mag, markiert die Reihen zusätzlich mit farbigen Klebepunkten.",
+   "Nur Zeile 1 und Zeile 3 vergleichen lassen (30 Ω → 0,20 A gegen 60 Ω → 0,10 A). Die Halbierung ist viel deutlicher zu sehen als der Schritt von 0,20 A auf 0,15 A.",
+   "Die Zahlen 0,20 – 0,15 – 0,10 auf Kärtchen der Größe nach ordnen lassen, bevor die Tabelle gefüllt wird.",
+   "Die beiden neuen Wörter laut in ihre Teile zerlegen: Reihe + Schaltung, gesamt + Widerstand. Danach einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe auf, welche Antworten ein Häkchen bekommen („R_ges = R₁ + R₂“, „Überall gleich“, „Er wird kleiner“).",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Reihenschaltung von Widerständen. Kompetenzen UF1, UF2, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Teilspannungen und die Rechnung I = U / R_ges hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

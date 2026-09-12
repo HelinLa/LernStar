@@ -1,0 +1,353 @@
+[
+ {
+  "sim": "lochkamera",
+  "ueberschrift": "📷 Wie macht ein kleines Loch ein Bild?",
+  "regler": [
+   {
+    "id": "locG",
+    "beschriftung": "Gegenstandsweite g: 40 cm",
+    "bereich": {
+     "min": "20",
+     "max": "60",
+     "step": "2",
+     "start": "40"
+    }
+   },
+   {
+    "id": "locB",
+    "beschriftung": "Bildweite b (Kameralänge): 30 cm",
+    "bereich": {
+     "min": "15",
+     "max": "55",
+     "step": "2",
+     "start": "30"
+    }
+   },
+   {
+    "id": "locH",
+    "beschriftung": "Lochgröße: klein",
+    "bereich": {
+     "min": "1",
+     "max": "6",
+     "step": "1",
+     "start": "2"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Richtig herum",
+    "ruft": "_locAns(0,0)"
+   },
+   {
+    "aufschrift": "Auf dem Kopf (umgekehrt)",
+    "ruft": "_locAns(0,1)"
+   },
+   {
+    "aufschrift": "Seitlich gekippt",
+    "ruft": "_locAns(0,2)"
+   },
+   {
+    "aufschrift": "Wenn die Kamera (Bildweite b) länger ist",
+    "ruft": "_locAns(1,0)"
+   },
+   {
+    "aufschrift": "Wenn das Loch größer ist",
+    "ruft": "_locAns(1,1)"
+   },
+   {
+    "aufschrift": "Wenn es dunkler ist",
+    "ruft": "_locAns(1,2)"
+   },
+   {
+    "aufschrift": "Damit das Bild bunt wird",
+    "ruft": "_locAns(2,0)"
+   },
+   {
+    "aufschrift": "Damit das Bild scharf wird",
+    "ruft": "_locAns(2,1)"
+   },
+   {
+    "aufschrift": "Damit es heller wird",
+    "ruft": "_locAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_locSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_locSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_locSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('lochkamera')"
+   }
+  ],
+  "hinweise": [
+   "Vor einer Lochblende steht ein leuchtender Pfeil, dahinter ein Schirm. Verändere die Abstände und die Lochgröße. Wie sieht das Bild aus?",
+   "Das Bild ist immer umgekehrt (steht auf dem Kopf). Kleines Loch → scharfes, aber dunkleres Bild. Großes Loch → heller, aber unscharf.",
+   "Licht breitet sich geradlinig aus → durch das Loch entsteht ein umgekehrtes Bild. | B/G = b/g"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf."
+   },
+   {
+    "einstellung": "Richtig herum",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten."
+   },
+   {
+    "einstellung": "Auf dem Kopf (umgekehrt)",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen."
+   },
+   {
+    "einstellung": "Seitlich gekippt",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt."
+   },
+   {
+    "einstellung": "Wenn die Kamera (Bildweite b) länger ist",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g)."
+   },
+   {
+    "einstellung": "Wenn das Loch größer ist",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer."
+   },
+   {
+    "einstellung": "Wenn es dunkler ist",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht."
+   },
+   {
+    "einstellung": "Damit das Bild bunt wird",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun."
+   },
+   {
+    "einstellung": "Damit das Bild scharf wird",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler)."
+   },
+   {
+    "einstellung": "Damit es heller wird",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 20",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 26",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 30",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 36",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 40",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 46",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 50",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 56",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 60",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 22",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 24",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 28",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 32",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 34",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 38",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 42",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 44",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 48",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 52",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 54",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 58",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 15",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 21",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 25",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 31",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 35",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 41",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 45",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 51",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 55",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 17",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 19",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 23",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 27",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 29",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 33",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 37",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 39",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 43",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 47",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 49",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Bildweite b (Kameralänge): 30 cm = 53",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 1",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 2",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 3",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, etwas unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 4",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, etwas unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 5",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Lochgröße: klein = 6",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   }
+  ],
+  "bildtexte": [
+   "Gegenstand",
+   "Loch",
+   "Schirm",
+   "Bild (umgekehrt)"
+  ]
+ }
+]

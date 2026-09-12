@@ -1,0 +1,193 @@
+{
+ "seite": {
+  "id": "fb1",
+  "quelle": "be1",
+  "sim": "v-begriff",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Das Wettrennen am Bildschirm",
+  "name": "Wer ist schneller?",
+  "fachwoerter_neu": [
+   "Geschwindigkeit"
+  ],
+  "alltag": [
+   "Nour und Jannis machen in der Fahrrad-AG zwei Räder fertig.",
+   "Jannis sagt: „Mein Rad ist schneller, es ist größer.“",
+   "Wie schnell sich etwas bewegt, nennt man Geschwindigkeit.",
+   "Am Bildschirm lassen die beiden zuerst zwei Autos um die Wette fahren."
+  ],
+  "frage": "Woran erkennst du, welches der zwei Autos schneller ist?",
+  "predict": [
+   "Schneller ist das Auto, das in gleicher Zeit weiter kommt.",
+   "Schneller ist das Auto, das die größere Strecke schafft."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.",
+   "Lies die Statuszeile unter „Wer ist schneller?“. Zeile 1 ist schon ausgefüllt.",
+   "Drücke bei Auto A den Knopf „schnell“ und dann „Rennen starten“. Trage Zeile 2 ein.",
+   "Drücke bei Auto B den Knopf „langsam“ und dann „Rennen starten“. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Tempo bei Auto A",
+   "Tempo bei Auto B",
+   "Wer ist schneller?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "schnell",
+    "Auto B"
+   ],
+   [
+    "schnell",
+    "schnell",
+    ""
+   ],
+   [
+    "schnell",
+    "langsam",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Bei gleicher Zeit ist das Auto mit der größeren Strecke",
+    "loesung": "schneller",
+    "post": "."
+   },
+   {
+    "pre": "Die",
+    "loesung": "Geschwindigkeit",
+    "post": "sagt, wie schnell sich etwas bewegt."
+   }
+  ],
+  "wortbank": [
+   "schneller",
+   "langsamer",
+   "Geschwindigkeit",
+   "weit"
+  ],
+  "beispiel": {
+   "frage": "Auto A steht auf mittel. Auto B steht auf schnell. Wer ist schneller?",
+   "antwort": "Beide Autos fahren gleich lange. Auto B kommt dabei weiter als Auto A. In der Statuszeile steht: Auto B ist schneller. Auto B hat also die größere Geschwindigkeit."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Auto A steht auf schnell. Auto B steht auf mittel. Was meldet die Statuszeile?",
+    "optionen": [
+     "Auto A ist schneller.",
+     "Beide Autos sind gleich schnell.",
+     "Auto B ist schneller."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beide Autos stehen auf schnell. Dann kommen sie gleich",
+      "loesung": "weit",
+      "post": "."
+     },
+     {
+      "pre": "Auto A steht auf schnell. Auto B steht auf langsam. Auto B ist",
+      "loesung": "langsamer",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Mein Rad ist schneller, weil es größer ist.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Die Größe sagt nichts über …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2.",
+   "h2": "Beginne so: Die Größe sagt nichts über die Geschwindigkeit. Sieh danach in Zeile 2 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Die Größe sagt nichts über die Geschwindigkeit. Beide Räder fahren gleich lange. Schneller ist das Rad, das dabei ___ kommt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was das Wort Geschwindigkeit bedeutet.",
+   "Ich kann an der Statuszeile ablesen, welches Auto schneller ist.",
+   "Ich kann erklären, warum die Größe nichts über das Tempo sagt."
+  ],
+  "zuhause": "Geht zu zweit los, wenn eine Person „los“ ruft. Bleibt beide stehen, wenn dieselbe Person „stopp“ ruft. Schreibe auf, wer weiter gekommen ist und damit schneller war.",
+  "bildauftrag": "[BILD: eine breite Zeichnung mit zwei waagerechten Fahrbahnen übereinander; oben ein rotes Auto mit großem A, unten ein blaues Auto mit großem B, beide Autos genau gleich groß; beide starten links an derselben senkrechten Startlinie; das blaue Auto B steht deutlich weiter rechts als das rote Auto A; über beiden Bahnen eine einzelne große Uhr mit der Beschriftung „gleiche Zeit“; unter jeder Bahn ein Maßpfeil von der Startlinie bis zum Auto, beschriftet „zurückgelegte Strecke“; ganz unten groß „Gleiche Zeit, mehr Strecke – schneller“; ruhiger heller Hintergrund, keine Zuschauer, keine Tempostriche, keine Deko]"
+ },
+ "lehrer": {
+  "id": "fb1",
+  "lernziel": "Die Schülerinnen und Schüler entscheiden bei gleicher Fahrzeit, welches von zwei Autos schneller ist: Wer in der gleichen Zeit die größere Strecke zurücklegt, hat die größere Geschwindigkeit. Sie widerlegen damit die Fehlvorstellung „das Größere ist schneller“ und die Fehlvorstellung „die Strecke allein entscheidet“. Gerechnet wird hier nicht; v = s / t folgt erst auf fb2.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder Tafelbild. Für den Auftrag zu Hause: ein Flur, Schulhof oder Gehweg und eine Person, die „los“ und „stopp“ ruft.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (Auto A mittel, Auto B schnell – so startet die Simulation): „Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Karte 2 (Auto A schnell, Auto B schnell): „Beide Autos sind gleich schnell – sie kommen gleich weit.“ Karte 3 (Auto A schnell, Auto B langsam): „Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Die Simulation setzt vor die Meldung einen roten Punkt für Auto A und einen blauen für Auto B; dieselben Farben stehen an den zwei Knopfreihen. Dazu an die Tafel zwei gleich lange Zeitpfeile untereinander zeichnen und darunter zwei verschieden lange Streckenpfeile. Zahlenwerte zeigt diese Simulation nicht – auf der Seite wird deshalb nichts gerechnet und nichts abgelesen außer der Meldung.",
+  "merksatz": [
+   "schneller",
+   "Geschwindigkeit"
+  ],
+  "tabelle_erwartet": [
+   [
+    "schnell",
+    "schnell",
+    "beide gleich schnell"
+   ],
+   [
+    "schnell",
+    "langsam",
+    "Auto A"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Bei Auto A schnell und Auto B mittel meldet die Statuszeile: „Auto A ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Diese Einstellung steht bewusst nicht in der Tabelle; Zeile 3 (Auto B langsam) liefert dieselbe Meldung.",
+   "typische_fehler": [
+    "Antwort 3 wird gewählt, weil Auto B in Zeile 1 der Tabelle vorne lag. Die Einstellung hat sich aber geändert.",
+    "Antwort 2 wird gewählt: „Beide fahren doch.“ Gleich schnell meldet die Simulation nur, wenn beide Autos auf demselben Tempo stehen (Zeile 2).",
+    "Mittel wird für „mittelmäßig gut“ gehalten und nicht als Tempo unter schnell gelesen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "weit",
+    "langsamer"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „schnell“. Gesucht ist, wie weit die Autos kommen – die Statuszeile sagt „sie kommen gleich weit“.",
+    "In Lücke 2 steht „schneller“. Auto B steht auf langsam, es ist also langsamer als Auto A.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Größe sagt nichts über die Geschwindigkeit. Beide Räder müssen gleich lange fahren. Schneller ist das Rad, das dabei weiter kommt.",
+   "alternativen": [
+    "Verweis auf die Simulation, sobald das Protokoll freigeschaltet ist: Auf die Antwort „Wenn es größer ist“ meldet die Minidiagnose „Die Größe sagt nichts über die Geschwindigkeit.“",
+    "Verweis auf Zeile 2 und Zeile 3 der Tabelle: Nur das eingestellte Tempo ändert sich, und nur davon hängt die Meldung ab.",
+    "Verweis auf das Bild: Zwei gleich große Autos, und trotzdem kommt eines in derselben Zeit weiter."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Die Zeit fehlt in der Antwort: „Schneller ist, wer weiter kommt.“ Ohne gleiche Fahrzeit sagt die Strecke nichts.",
+    "Bauart statt Bewegung: „Das größere Rad hat größere Räder, also fährt es weiter.“ Entscheidend ist die Strecke in gleicher Zeit.",
+    "Jannis wird nur widersprochen („stimmt gar nicht“), ohne das richtige Kennzeichen zu nennen."
+   ]
+  },
+  "hilfe3_wort": "weiter (auch richtig: weiter vorne)",
+  "schwache": [
+   "Bedienhinweis vorweg geben: Die zwei Knopfreihen tragen dieselben Aufschriften langsam, mittel und schnell. Die obere Reihe gehört zu Auto A (roter Punkt), die untere zu Auto B (blauer Punkt).",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten, Zeile 3 erst danach ergänzen.",
+   "Beim Rennen mit dem Finger neben beiden Autos mitfahren, damit „gleiche Zeit“ körperlich erfahrbar wird.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: zwei gleich große Spielzeugautos gleich lange schieben und die Endpunkte mit Klebestreifen markieren."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Die drei Fragen stehen in der Simulation unter „Minidiagnose“ – sie sitzen im Protokoll, das erst mit dem Passwort der Lehrkraft aufgeht. Nach dem Freischalten: Beantworte die drei Fragen und schreibe die Rückmeldung zu Frage 2 ab: „Geschwindigkeit = Strecke pro Zeit.“ Diese Wortformel wird auf fb2 gebraucht.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Geschwindigkeit als Vergleich von Strecke und Zeit. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Tabelle; E2 über die Vermutung und das Rennen bei gleicher Fahrzeit; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); K3 über den Auftrag zu Hause. Der Seitenplan hält v = s / t für fb2 zurück."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "id": "ki6",
+ "komp": [
+  "S1",
+  "E6",
+  "S3",
+  "E3"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Waagerecht wirkt keine Kraft; senkrecht zieht die Gewichtskraft, die Kugel fällt dort gleichmäßig",
+   "loesung": "beschleunigt",
+   "post": "."
+  },
+  {
+   "pre": "Über h aufgetragen ist die Fallzeit eine krumme Kurve. Erst nach dem Quadrieren von t_F liegen die Punkte auf einer",
+   "loesung": "Ursprungsgeraden",
+   "post": "."
+  },
+  {
+   "pre": "Deren Steigung ist k = 2/g = 0,2039 s²/m; zurückgerechnet ergibt g = 2/k =",
+   "loesung": "9,809 m/s²",
+   "post": "."
+  },
+  {
+   "pre": "In der Auftragung t_F über v₀ liegen alle acht Messpunkte auf einer Waagerechten – ihre Steigung ist",
+   "loesung": "null",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Bei h = 20 m gehört zu v₀ = 6 m/s die Wurfweite 12,12 m und zu v₀ = 12 m/s die Wurfweite 24,23 m; die Ursprungsgerade x_W über v₀ hat dort die Steigung 2,019 s.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil die Auftragung t_F über h im Ursprung beginnt, ist sie bereits eine Ursprungsgerade; ihre Steigung liefert den Ortsfaktor.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Für die Waagerechte t_F über v₀ muss das Häkchen „Ausgleichsgerade durch den Ursprung“ ausgeschaltet sein, sonst wird die Gerade zum Nullpunkt gezwungen.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Nach dem Wechsel von „t_F über v₀ auftragen“ zu „x_W über v₀ auftragen“ muss die Messreihe neu aufgenommen werden.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira misst bei h = 20 m acht Fallzeiten für v₀ von 2 m/s bis 20 m/s. Woran erkennt sie, dass v₀ die Fallzeit nicht ändert?",
+  "optionen": [
+   "An der Ursprungsgeraden x_W über v₀ mit der Steigung 2,019 s: Sie zeigt, dass die Wurfweite proportional zu v₀ wächst.",
+   "Am Bestimmtheitsmaß R² = 1,0000: Ein so hoher Wert belegt, dass die Fallzeit von der Abwurfgeschwindigkeit unabhängig ist.",
+   "Daran, dass alle acht Punkte auf einer Waagerechten liegen: Die Ausgleichsgerade heißt y = 0,0000·x + 2,0193, die Steigung ist null."
+  ],
+  "richtig": 2,
+  "erklaerung": "Gefragt ist nach der Fallzeit, also muss t_F auf der senkrechten und v₀ auf der waagerechten Achse stehen. In dieser Auftragung liegen die acht Messpunkte von v₀ = 2 m/s bis 20 m/s auf einer Waagerechten: Die Ausgleichsgerade lautet y = 0,0000·x + 2,0193, ihre Steigung ist null und ihr Achsenabschnitt die Fallzeit 2,0193 s. Eine Steigung null heißt genau: Verändert man v₀, ändert sich t_F nicht – das ist der Beweis, den drei Einzelmessungen nicht liefern können. Die Ursprungsgerade x_W über v₀ mit der Steigung 2,019 s beantwortet eine andere Frage; sie zeigt, dass v₀ die Wurfweite proportional vergrößert, nicht die Zeit. Und R² misst allein, wie eng die Punkte an der Ausgleichsgeraden liegen: Es ist auch dann 1,0000, wenn die Gerade steil verläuft, sagt über die Unabhängigkeit also nichts aus."
+ },
+ "offen": {
+  "frage": "Erläutere, warum sich aus der Auftragung t_F über h keine Steigung ablesen lässt, wie das Quadrieren der Fallzeit das ändert und warum erst die Auftragung t_F über v₀ Miras Vermutung widerlegt.",
+  "prompt": "Erläutere, warum sich aus der Auftragung t_F über h keine Steigung ablesen lässt, wie das Quadrieren der Fallzeit das ändert und warum erst die Auftragung t_F über v₀ Miras Vermutung widerlegt.",
+  "zeilen": 5,
+  "loesung": "In der Auftragung t_F über h liegen die neun Messpunkte auf einer nach rechts abflachenden Kurve: Von h = 5 m auf h = 20 m, also auf das Vierfache, wächst die Fallzeit nur von 1,0096 s auf 2,0193 s, also auf das Doppelte. Eine Kurve hat in jedem Punkt eine andere Steigung, deshalb lässt sich aus ihr keine einzelne Zahl und damit keine Formel gewinnen. Quadriert man die Fallzeit, wird daraus eine Ursprungsgerade t_F² = k · h mit y = 0,2039·x und R² = 1,0000 – das ist das Linearisieren. Jetzt gibt es genau eine Steigung, und sie hat eine physikalische Bedeutung: k = 2/g, also g = 2/k = 9,809 m/s², neben dem Literaturwert 9,810 m/s². Miras Vermutung betrifft aber v₀, und v₀ steht in dieser Auftragung gar nicht auf einer Achse – in allen neun Zeilen ist v₀ = 8 m/s. Widerlegt wird sie erst, wenn v₀ selbst auf die x-Achse kommt: Acht Messpunkte bei h = 20 m ergeben y = 0,0000·x + 2,0193, eine Waagerechte. Steigung null heißt, dass sich die Fallzeit über den ganzen Reglerweg von 2 m/s bis 20 m/s nicht ändert."
+ },
+ "theme": "ef_mechanik"
+}

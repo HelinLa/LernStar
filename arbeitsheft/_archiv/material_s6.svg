@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 200" width="1136" height="200">
+<defs><clipPath id="f"><rect width="1136" height="200" rx="14"/></clipPath></defs>
+<g clip-path="url(#f)">
+<rect width="1136" height="200" fill="#f4eede"/>
+<g font-family="Helvetica,Arial" font-size="17" fill="#5d5646" text-anchor="middle">
+
+  <!-- Holzbrettchen -->
+  <g><rect x="46" y="58" width="126" height="60" rx="7" fill="#cda877" stroke="#a9834f" stroke-width="3"/>
+     <g stroke="#bb9564" stroke-width="2.5" opacity=".9">
+       <line x1="60" y1="76" x2="158" y2="76"/><line x1="60" y1="92" x2="158" y2="92"/>
+       <line x1="60" y1="106" x2="158" y2="106"/></g>
+     <text x="109" y="152">Holzbrettchen</text></g>
+
+  <!-- zwei Reisszwecken -->
+  <g><g transform="translate(236,88)">
+       <ellipse cx="0" cy="-14" rx="24" ry="9" fill="#c3cbdb" stroke="#8c96ac" stroke-width="2.5"/>
+       <path d="M-3 -8 L0 24 L3 -8 Z" fill="#9aa4ba" stroke="#79839a" stroke-width="2"/></g>
+     <g transform="translate(298,88)">
+       <ellipse cx="0" cy="-14" rx="24" ry="9" fill="#c3cbdb" stroke="#8c96ac" stroke-width="2.5"/>
+       <path d="M-3 -8 L0 24 L3 -8 Z" fill="#9aa4ba" stroke="#79839a" stroke-width="2"/></g>
+     <text x="267" y="152">zwei Reißzwecken</text></g>
+
+  <!-- Bueroklammer -->
+  <g><g transform="translate(422,88) rotate(-22)">
+       <rect x="-16" y="-34" width="32" height="68" rx="16" fill="none" stroke="#a6b0c4" stroke-width="6"/>
+       <rect x="-8"  y="-34" width="16" height="50" rx="8"  fill="none" stroke="#a6b0c4" stroke-width="6"/></g>
+     <text x="422" y="152">Büroklammer</text></g>
+
+  <!-- Kabel -->
+  <g><path d="M508 76 C 546 52, 578 106, 616 82" stroke="#c9544a" stroke-width="7" fill="none" stroke-linecap="round"/>
+     <path d="M508 102 C 546 78, 578 132, 616 108" stroke="#e2b755" stroke-width="7" fill="none" stroke-linecap="round"/>
+     <text x="562" y="152">Kabel</text></g>
+
+  <!-- Batterie -->
+  <g><rect x="700" y="62" width="130" height="46" rx="7" fill="#4a5570" stroke="#2a3346" stroke-width="3"/>
+     <text x="765" y="92" font-size="16" fill="#a9b3c7" letter-spacing="1.5">4,5 V</text>
+     <rect x="722" y="50" width="9" height="14" rx="3" fill="#bcc5d6"/>
+     <rect x="794" y="42" width="9" height="22" rx="3" fill="#bcc5d6"/>
+     <text x="765" y="152">Batterie</text></g>
+
+  <!-- Lampe mit Fassung -->
+  <g><rect x="928" y="92" width="34" height="26" rx="4" fill="#93a0bd" stroke="#6f7c97" stroke-width="2.5"/>
+     <circle cx="945" cy="74" r="24" fill="#ffdd95" stroke="#e6b158" stroke-width="3"/>
+     <path d="M935 70 q10 12 20 0" stroke="#d5952f" stroke-width="2.6" fill="none"/>
+     <text x="945" y="152">Lampe</text></g>
+</g></g>
+<rect x="1.5" y="1.5" width="1133" height="197" rx="14" fill="none" stroke="#d9c893" stroke-width="3"/>
+</svg>

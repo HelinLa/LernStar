@@ -1,0 +1,213 @@
+[
+ {
+  "sim": "federgesetz",
+  "ueberschrift": "📈 Warum wird eine Feder gleichmäßig länger?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "weiche Feder",
+    "ruft": "_fedSetFeder('weich')"
+   },
+   {
+    "aufschrift": "harte Feder",
+    "ruft": "_fedSetFeder('hart')"
+   },
+   {
+    "aufschrift": "◀ weniger",
+    "ruft": "_fedF_(-1)"
+   },
+   {
+    "aufschrift": "mehr ▶",
+    "ruft": "_fedF_(1)"
+   },
+   {
+    "aufschrift": "📍 Messpunkt",
+    "ruft": "_fedMessen()"
+   },
+   {
+    "aufschrift": "🗑 löschen",
+    "ruft": "_fedClear()"
+   },
+   {
+    "aufschrift": "Eine Gerade durch den Ursprung",
+    "ruft": "_fedAns(0,0)"
+   },
+   {
+    "aufschrift": "Eine gebogene Kurve",
+    "ruft": "_fedAns(0,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_fedAns(0,2)"
+   },
+   {
+    "aufschrift": "Sie verdoppelt sich",
+    "ruft": "_fedAns(1,0)"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_fedAns(1,1)"
+   },
+   {
+    "aufschrift": "Sie halbiert sich",
+    "ruft": "_fedAns(1,2)"
+   },
+   {
+    "aufschrift": "Hooke'sches Gesetz",
+    "ruft": "_fedAns(2,0)"
+   },
+   {
+    "aufschrift": "Ohmsches Gesetz",
+    "ruft": "_fedAns(2,1)"
+   },
+   {
+    "aufschrift": "Newtonsches Gesetz",
+    "ruft": "_fedAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_fedSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_fedSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_fedSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('federgesetz')"
+   }
+  ],
+  "hinweise": [
+   "Hänge verschiedene Kräfte an dieselbe Feder und miss die Dehnung. Nimm Messpunkte auf. Welche Form hat die Kurve?",
+   "Die Messpunkte liegen auf einer Geraden durch den Ursprung: Die Dehnung s ist proportional zur Kraft F. Das Verhältnis D = F/s bleibt gleich – das ist das Hooke'sche Gesetz (F = D · s). Im Diagramm ist D die Steigung: Die harte Feder ergibt die steilere Gerade.",
+   "Doppelte Kraft → doppelte Dehnung. | F = D · s · D = F/s bleibt konstant (Federkonstante)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "weiche Feder",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 2 cm · D = F/s = 0,5 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "harte Feder",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "◀ weniger",
+    "text": "fedStatus: Eingestellt: F = 0 N → Dehnung s = 0 cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "mehr ▶",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "📍 Messpunkt",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: FsD = F/s1 N1 cm1,0 N/cm"
+   },
+   {
+    "einstellung": "🗑 löschen",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✓ Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0)."
+   },
+   {
+    "einstellung": "Eine gebogene Kurve",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Im elastischen Bereich ist es eine Gerade, keine Kurve."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen."
+   },
+   {
+    "einstellung": "Sie verdoppelt sich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✓ Richtig! Doppelte Kraft → doppelte Dehnung (Proportionalität)."
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Nein, größere Kraft dehnt die Feder mehr."
+   },
+   {
+    "einstellung": "Sie halbiert sich",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung."
+   },
+   {
+    "einstellung": "Hooke'sches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✓ Richtig! Das ist das Hooke'sche Gesetz für Federn."
+   },
+   {
+    "einstellung": "Ohmsches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das Ohmsche Gesetz gilt für Strom und Spannung."
+   },
+   {
+    "einstellung": "Newtonsches Gesetz",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht.  ||  fedSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "fedStatus: Eingestellt: F = 1 N → Dehnung s = 1 cm · D = F/s = 1,0 N/cm.  ||  fedTable: Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\".  ||  fedFb0: ✗ Dann würde sich die Feder gar nicht dehnen.  ||  fedFb1: ✗ Umgekehrt: mehr Kraft bedeutet mehr Dehnung.  ||  fedFb2: ✗ Das passt hier nicht."
+   }
+  ],
+  "bildtexte": [
+   "0",
+   "2",
+   "4",
+   "6",
+   "8",
+   "10",
+   "1",
+   "3",
+   "5",
+   "s in cm",
+   "F in N",
+   "Steigung = D = 0,5 N/cm",
+   "weiche Feder",
+   "Steigung = D = 1,0 N/cm",
+   "harte Feder"
+  ],
+  "nachgemessen": {
+   "wann": "2026-09-05",
+   "womit": "node simcheck/werte.js physics-sim.js federgesetz (Knopffolge _fedSetFeder/_fedF_)",
+   "warum": "simfakten drückt „mehr ▶“ nur EINMAL; jeder Dump-Zustand endet bei F = 1 N. Ohne diese Messung durften Tabellenzeilen ab 2 N nicht gedruckt werden (Hürde aus analyse_schritt1).",
+   "einstellbereich": "F = 0 N bis 5 N in Schritten von 1 N; beim Umschalten der Feder bleibt die eingestellte Kraft stehen.",
+   "weiche Feder": {
+    "1 N": "2 cm",
+    "2 N": "4 cm",
+    "3 N": "6 cm",
+    "5 N": "10 cm"
+   },
+   "harte Feder": {
+    "1 N": "1 cm",
+    "2 N": "2 cm",
+    "3 N": "3 cm",
+    "5 N": "5 cm"
+   },
+   "statuszeilen": [
+    "Eingestellt: F = 2 N → Dehnung s = 4 cm · D = F/s = 0,5 N/cm.",
+    "Eingestellt: F = 2 N → Dehnung s = 2 cm · D = F/s = 1,0 N/cm.",
+    "Eingestellt: F = 5 N → Dehnung s = 10 cm · D = F/s = 0,5 N/cm.",
+    "Eingestellt: F = 5 N → Dehnung s = 5 cm · D = F/s = 1,0 N/cm."
+   ]
+  }
+ }
+]

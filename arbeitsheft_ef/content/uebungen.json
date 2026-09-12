@@ -1,0 +1,2018 @@
+[
+ {
+  "id": "ki1",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "S6",
+   "K3",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beim Stoppen werden drei Größen abgelesen: die Zeit t an der Uhr, der Weg s am Wegmesser und die Geschwindigkeit v am",
+    "loesung": "Tacho",
+    "post": "."
+   },
+   {
+    "pre": "Trägt man die gestoppten Wertepaare im t-s-Diagramm auf, so liegen sie auf einer",
+    "loesung": "Ursprungsgeraden",
+    "post": "."
+   },
+   {
+    "pre": "Aus zwei beliebigen Punkten dieser Geraden ergibt sich die Geschwindigkeit als Differenzenquotient v =",
+    "loesung": "Δs/Δt",
+    "post": "."
+   },
+   {
+    "pre": "Im t-v-Diagramm ist die Steigung null; die Geschwindigkeit steht dort als",
+    "loesung": "Achsenabschnitt",
+    "post": "der Waagerechten."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Steigung der t-s-Geraden hängt davon ab, in welchen Abständen die Stoppuhr gedrückt wurde.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der ersten Zeile jeder Fahrt bleibt die Spalte a leer, weil für a = Δv/Δt die vorherige Zeile derselben Fahrt fehlt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im t-a-Diagramm zählt die Simulation zu einer Messreihe eine Zeile weniger als im t-s-Diagramm.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die t-v-Gerade waagerecht verläuft, wächst auch der Weg s während der Fahrt nicht weiter an.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias hat bei 4,0 m/s fünfmal gestoppt, danach den Regler auf 7,0 m/s gestellt und wieder fünfmal gestoppt. Nun stehen zwei Geraden im t-s-Diagramm. Er liest den Ergebniskasten ganz unten ab und notiert dessen Zahl als Geschwindigkeit seiner zweiten Reihe. Welcher Einwand trifft zu?",
+   "optionen": [
+    "Der Ergebniskasten mittelt über beide Messreihen und gehört deshalb zu keiner von beiden.",
+    "Der Ergebniskasten gehört zur langsamsten Reihe, also zu der mit 4,0 m/s.",
+    "Der Ergebniskasten gehört zur zuletzt aufgenommenen Reihe, also zu der mit 7,0 m/s."
+   ],
+   "richtig": 1,
+   "erklaerung": "Über dem Kasten steht jede Reihe einzeln: „Stoppuhr · v = 4,0 m/s“ mit y = 4,000·x und „Stoppuhr · v = 7,0 m/s“ mit y = 7,000·x. Der Ergebniskasten darunter wertet immer die langsamste Reihe aus – hier die mit 4,0 m/s; das bestätigt auch seine Zeile „eingestellt für diese Reihe: 4,00 m/s“. Gemittelt wird nichts. Für seine zweite Reihe muss Tobias die Steigung 7,000 aus der zugehörigen Zeile darüber ablesen."
+  },
+  "offen": {
+   "frage": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
+   "prompt": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
+   "zeilen": 4,
+   "loesung": "Beide Wege stimmen überein, weil die Uhr in Schritten von 0,02 s springt und der Wegmesser den Weg als s = v · t bildet: In jeder Zeile ist s genau das v-fache von t, hier 8,96 m = 4,00 m/s · 2,24 s. Der Quotient s/t einer einzelnen Zeile ist deshalb schon die Steigung selbst, und eine Ausgleichsgerade durch lauter exakte Punkte liefert nichts anderes – daher y = 4,000·x und R² = 1,0000 nach jeder Stoppfolge. Verallgemeinern lässt sich das nicht: Diese Übereinstimmung ist eine Eigenschaft der digitalen Anzeige, nicht der Messmethode. Sobald eine Zeit wirklich gestoppt und nicht aus s = v · t zurückgerechnet wird, streut jede Ablesung; dann liefert eine einzelne Zeile einen zufälligen Wert, die Steigung aus allen Punkten dagegen einen belastbaren. Genau dieser Fall steht auf der nächsten Seite."
+  }
+ },
+ {
+  "id": "ki2",
+  "komp": [
+   "S6",
+   "S7",
+   "E4",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Liegen die gestoppten Wertepaare auf einer Ursprungsgeraden, ist der Weg zur Zeit",
+    "loesung": "proportional",
+    "post": "; es gilt s = v · t."
+   },
+   {
+    "pre": "Die Geschwindigkeit ist die Steigung der t-s-Geraden, also der Differenzenquotient v =",
+    "loesung": "Δs/Δt",
+    "post": "."
+   },
+   {
+    "pre": "Bei der Auftragung t → v liegen die Punkte einer Messreihe auf einer Waagerechten; ihr",
+    "loesung": "Achsenabschnitt",
+    "post": "ist die Geschwindigkeit."
+   },
+   {
+    "pre": "Weil der Tacho in jeder Zeile denselben Wert zeigt, ist Δv null – die t-a-Gerade liegt auf der",
+    "loesung": "Nulllinie",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Steigung der Ausgleichsgeraden nutzt alle Zeilen einer Messreihe, ein einzelner Quotient s/t dagegen nur eine.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer erst spät auf „Zeit stoppen“ drückt, erhält eine steilere t-s-Gerade als jemand, der früh stoppt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einer gleichförmigen Fahrt ist die Steigung der t-v-Geraden null, ihr Achsenabschnitt dagegen die Geschwindigkeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine zweite Messreihe mit größerer Reglerstellung liefert im t-s-Diagramm eine flachere Gerade.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine gestoppte Messreihe ergibt im t-s-Diagramm die Ursprungsgerade y = 6,000·x. Was folgt daraus?",
+   "optionen": [
+    "Der Wagen legt zwar in jeder Sekunde 6,00 m zurück, wird dabei aber langsam schneller. Eine wachsende Geschwindigkeit würde die Punktfolge krümmen; hier liegen die Punkte jedoch auf einer Geraden.",
+    "Die Zahl 6,000 gibt den Weg an, den der Wagen insgesamt zurückgelegt hat. Der Gesamtweg steht aber in der Spalte s der letzten Zeile und nicht in der Steigung.",
+    "Die Geschwindigkeit beträgt 6,00 m/s: Sie ist die Steigung der Geraden und damit aus allen Zeilen der Reihe zugleich gewonnen."
+   ],
+   "richtig": 2,
+   "erklaerung": "Eine Ursprungsgerade im t-s-Diagramm bedeutet s ~ t, also s = k · t mit festem Faktor k. Dieser Faktor ist die Steigung, seine Einheit ist Meter je Sekunde – damit ist k die Geschwindigkeit, und aus der Messung wird das Weg-Zeit-Gesetz s = v · t. Hier ist k = 6,000, die Fahrt lief also mit 6,00 m/s. Schneller werden kann der Wagen dabei nicht: Eine wachsende Geschwindigkeit krümmt die Punktfolge, und die Gegenprobe t → a legt alle Werte auf die Nulllinie. Der Gesamtweg ist die Steigung ebenfalls nicht; er steht in der Spalte s der letzten Zeile und hängt davon ab, wann zuletzt gestoppt wurde – die Steigung hängt davon gerade nicht ab."
+  },
+  "offen": {
+   "frage": "Beurteile die Protokollangabe „v = 4,0 m/s, abgelesen am Regler“ und beschreibe, wie sich dieselbe Zahl aus einer eigenen Messreihe gewinnen lässt.",
+   "prompt": "Beurteile die Protokollangabe „v = 4,0 m/s, abgelesen am Regler“ und beschreibe, wie sich dieselbe Zahl aus einer eigenen Messreihe gewinnen lässt.",
+   "zeilen": 4,
+   "loesung": "Die Angabe ist keine Messung, sondern eine Einstellung: Sie steht schon vor der Fahrt fest und würde auch dann dort stehen, wenn niemand gestoppt hätte. Gemessen wird die Geschwindigkeit so: Während der Fahrt mehrfach „Zeit stoppen“ drücken, sodass die Wertetabelle mindestens fünf Zeilen mit Zeit, Weg und Tachowert trägt. Diese Wertepaare in der Auftragung t → s eintragen; sie liegen auf einer Ursprungsgeraden. Deren Steigung Δs/Δt hat die Einheit Meter je Sekunde und ist die gesuchte Geschwindigkeit – gewonnen aus allen Zeilen zugleich, nicht aus einer. Die Gegenprobe liefern t → v, wo der Achsenabschnitt der Waagerechten dieselbe Zahl wiederholt, und t → a, wo alle Werte auf der Nulllinie liegen."
+  },
+  "theme": "ef_mechanik"
+ },
+ {
+  "id": "ki3",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S6",
+   "E4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Jeder Druck auf „Zeit stoppen“ schreibt eine Zeile mit t, s und v in die Tabelle. Die letzte Spalte wird nicht abgelesen, sondern aus zwei aufeinanderfolgenden Zeilen gerechnet als",
+    "loesung": "Δv/Δt",
+    "post": "."
+   },
+   {
+    "pre": "Liegen die Punkte im t-v-Diagramm auf einer Geraden durch den Ursprung, so hat v/t für jeden Punkt denselben Wert a; nach v umgestellt heißt das v =",
+    "loesung": "a · t",
+    "post": "."
+   },
+   {
+    "pre": "Die Auftragung t → a bildet Δv/Δt aus je zwei Tabellenzeilen und liefert für eine gestoppte Messreihe eine",
+    "loesung": "Waagerechte",
+    "post": "; ihre Höhe ist die Beschleunigung, ihre Steigung null."
+   },
+   {
+    "pre": "Bei a = 2,0 m/s² meldet die Auswertung nach fünf gestoppten Werten die Ausgleichsgerade y = 2,000·x, dahinter erwartet: 2,000 und dazu das Bestimmtheitsmaß R² =",
+    "loesung": "1,0000",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Stellt man den Regler von 2,0 m/s² auf 4,0 m/s² und stoppt erneut fünfmal, so ist die Steigung der zweiten t-v-Geraden doppelt so groß wie die der ersten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dieselben gestoppten Messwerte liefern auch in der Auftragung t → s eine Ursprungsgerade, aus deren Steigung sich a ablesen lässt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Welchen Wert Δv/Δt annimmt, hängt davon ab, welche zwei Zeilen der Messreihe man dafür heranzieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der ersten Zeile einer Fahrt bleibt die a-Spalte leer, weil zum Bilden von Δv/Δt eine zweite Zeile derselben Fahrt fehlt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias bildet aus seinen fünf gestoppten Geschwindigkeiten den Mittelwert und will ihn als Beschleunigung des Wagens angeben. Welcher Einwand trifft zu?",
+   "optionen": [
+    "Der Mittelwert wäre brauchbar, sobald R² genau 1,0000 beträgt; darunter darf man ihn nicht verwenden.",
+    "Ein Mittelwert der v-Werte hat die Einheit m/s und bleibt eine Geschwindigkeit; gesucht ist dagegen die Steigung Δv/Δt der t-v-Geraden in m/s².",
+    "Statt des Mittelwerts ist der größte gestoppte Wert 4,76 m/s einzusetzen, denn er gehört zum Ende der Fahrt."
+   ],
+   "richtig": 1,
+   "erklaerung": "Beide falschen Antworten bleiben bei Geschwindigkeiten stehen. Die Beschleunigung ist keine der fünf gestoppten Geschwindigkeiten, sondern der Quotient Δv/Δt – die Steigung der t-v-Geraden. Die Auswertung meldet dazu y = 2,000·x und darunter „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“. R² beschreibt nur, wie eng die Punkte an der Geraden liegen, und entscheidet deshalb nicht darüber, welche Größe gesucht ist."
+  },
+  "offen": {
+   "frage": "Beurteile Miras Satz: „Die Formel v = a · t haben wir nicht angewendet, wir haben sie gemessen.“ Begründe mit deiner Messreihe, welcher Befund am Bildschirm die Formel trägt, und erkläre, wozu die Auftragung t → a zusätzlich gebraucht wird.",
+   "prompt": "Beurteile Miras Satz: „Die Formel v = a · t haben wir nicht angewendet, wir haben sie gemessen.“ Begründe mit deiner Messreihe, welcher Befund am Bildschirm die Formel trägt, und erkläre, wozu die Auftragung t → a zusätzlich gebraucht wird.",
+   "zeilen": 5,
+   "loesung": "Mira hat recht. Gemessen werden zunächst nur Wertepaare aus Uhr und Tacho. Der Befund am Bildschirm ist die Form der Punktreihe: Im t-v-Diagramm liegen die fünf gestoppten Punkte auf einer Geraden durch den Ursprung, die Auswertung meldet y = 2,000·x bei R² = 1,0000. Eine Ursprungsgerade bedeutet, dass v/t für jeden Punkt denselben Wert a hat; nach v umgestellt ergibt das v = a · t. Die Formel ist damit das Ergebnis der Messung und nicht ihr Ausgangspunkt. Die Auftragung t → a prüft die stillschweigende Voraussetzung nach: Sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte auf der Höhe 2,00 m/s². Erst weil sich a während der Fahrt nicht ändert, darf man überhaupt von einer einzigen Beschleunigung sprechen und v = a · t für die ganze Fahrt schreiben."
+  }
+ },
+ {
+  "id": "ki4",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S6",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Aus der Ruhe heraus gilt v = a · t; der Weg bis zur Zeit t ist die Fläche unter dieser Geraden, also s =",
+    "loesung": "½ · a · t²",
+    "post": "."
+   },
+   {
+    "pre": "Trägt man s über t² auf, so wird aus der Parabel eine",
+    "loesung": "Ursprungsgerade",
+    "post": ", deren Steigung an jeder Stelle denselben Wert hat."
+   },
+   {
+    "pre": "In dieser Auftragung gilt s = (a/2) · t²; für die Beschleunigung folgt daraus a =",
+    "loesung": "2 · Steigung",
+    "post": "."
+   },
+   {
+    "pre": "Aus einem einzelnen gestoppten Wertepaar erhält man diese Steigung als Quotient",
+    "loesung": "s/t²",
+    "post": "; genauer wird der Wert, wenn eine Ausgleichsgerade alle Punkte der Messreihe auswertet."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Wagen, der bei unveränderter Beschleunigung die doppelte Zeit unterwegs ist, legt den vierfachen Weg zurück.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Auftragung s über t² ergibt nur für kleine Beschleunigungen eine Gerade; bei a = 4,0 m/s² krümmt sich die Punktreihe erneut.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In der ersten Zeile jeder Fahrt bleibt die gerechnete Spalte a leer, weil Δv/Δt zwei aufeinanderfolgende Zeilen derselben Fahrt braucht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bildet man statt s/t² den Quotienten s/t, so kommt bei jedem Stopp derselbe Wert heraus.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Zwei Stopps derselben Fahrt liefern t = 1,20 s mit s = 1,44 m und t = 2,40 s mit s = 5,76 m. Woran erkennt man daran, dass die Punkte im s-t²-Diagramm auf einer Ursprungsgeraden liegen?",
+   "optionen": [
+    "Daran, dass sich die Wege wie die Zeiten verhalten: 5,76 m zu 1,44 m entspricht 2,40 s zu 1,20 s.",
+    "Daran, dass beide Stopps denselben Quotienten s/t² ergeben: 1,44 m : 1,44 s² und 5,76 m : 5,76 s² sind beide 1,00 m/s².",
+    "Daran, dass der Quotient s/t² zum Ende der Fahrt hin wächst und die Punktreihe deshalb immer steiler ansteigt."
+   ],
+   "richtig": 1,
+   "erklaerung": "Eine Ursprungsgerade ist gerade dadurch gekennzeichnet, dass der Quotient aus Ordinate und Abszisse an jeder Stelle denselben Wert hat – hier der Quotient s/t². Aus t = 1,20 s folgt t² = 1,44 s² und 1,44 m : 1,44 s² = 1,00 m/s²; aus t = 2,40 s folgt t² = 5,76 s² und 5,76 m : 5,76 s² = 1,00 m/s². Wegen s/t² = a/2 ist a = 2 · 1,00 m/s² = 2,00 m/s², also die eingestellte Beschleunigung. Ein mit der Fahrtdauer wachsender Quotient würde dagegen bedeuten, dass die Punkte eben nicht auf einer Geraden liegen. Und ein Verhältnis der Wege wie das der Zeiten ist gar nicht zu erwarten: Die doppelte Zeit gehört zum vierfachen Weg (1,44 m und 5,76 m), denn der Weg wächst mit t², nicht mit t."
+  },
+  "offen": {
+   "frage": "Mira will die Beschleunigung allein aus dem t-s-Diagramm ihrer fünf gestoppten Wertepaare gewinnen und legt dazu an drei Stellen der Parabel ein Lineal an. Beurteile dieses Vorgehen und erläutere, was die Auftragung s über t² daran ändert.",
+   "prompt": "Mira will die Beschleunigung allein aus dem t-s-Diagramm ihrer fünf gestoppten Wertepaare gewinnen und legt dazu an drei Stellen der Parabel ein Lineal an. Beurteile dieses Vorgehen und erläutere, was die Auftragung s über t² daran ändert.",
+   "zeilen": 4,
+   "loesung": "Das Vorgehen kann nicht zum Ziel führen: Eine Parabel besitzt in jedem Punkt eine andere Steigung, drei angelegte Lineale liefern deshalb drei verschiedene Zahlen und keinen einzigen, für die ganze Fahrt gültigen Wert. Genau das meldet auch das Auswertungsfeld nach der Wahl von „t → s“ – es nennt keine Steigung, sondern rät, t zu quadrieren. Trägt man s über t² auf, so geht s = ½ · a · t² in s = (a/2) · x mit x = t² über – eine Ursprungsgerade, deren Steigung überall gleich ist. Erst dadurch entsteht eine eindeutige Zahl: die Steigung a/2 und daraus a = 2 · Steigung. Für ein einzelnes gestopptes Wertepaar ist diese Steigung s/t², für die ganze Messreihe liefert die Ausgleichsgerade den genaueren Wert (im gezeigten Durchgang y = 1,000·x und damit a = 2,00 m/s²). Dass es gleichgültig ist, wann gestoppt wurde, bestätigen die beiden anderen Auftragungen: „t → v“ liefert dieselbe Beschleunigung als Steigung, „t → a“ als Höhe einer Waagerechten. Linearisieren heißt also, die Achsen so zu wählen, dass die vermutete Beziehung als Gerade sichtbar wird – erst eine Gerade liefert eine Zahl."
+  }
+ },
+ {
+  "id": "ki5",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "S6",
+   "E8",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Aus einer Kurve lässt sich keine Steigung ablesen. Trägt man s nicht über t, sondern über",
+    "loesung": "t²",
+    "post": "auf, liegen die Messpunkte auf einer Ursprungsgeraden."
+   },
+   {
+    "pre": "Wegen s = ½ · g · t² ist die Steigung k dieser Ursprungsgeraden gleich",
+    "loesung": "g/2",
+    "post": "; die Fallbeschleunigung folgt daraus als g = 2 · k."
+   },
+   {
+    "pre": "Die Auftragung v über t braucht den Fallweg gar nicht: Wegen v = g · t ist ihre Steigung unmittelbar",
+    "loesung": "g",
+    "post": "."
+   },
+   {
+    "pre": "Beide Geraden stammen aus derselben Messreihe. Dass sie verschiedene Werte für g liefern, liegt am festen Rechenschritt von Δt =",
+    "loesung": "0,016 s",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "In der Auftragung s über t liegen die Messpunkte des freien Falls auf einer Ursprungsgeraden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Steigung der Ausgleichsgeraden in der Auftragung t² → s ist halb so groß wie die Fallbeschleunigung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Messpunkte aus zwei verschiedenen Fallhöhen liegen in der Auftragung t² → s auf zwei verschiedenen Geraden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der aus der Geraden s über t² zurückgerechnete Wert für g liegt über dem aus der Geraden v über t.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Eine Messreihe aus 50 m ergibt in der Auftragung t² → s die Ausgleichsgerade y = 4,942·x und in der Auftragung t → v die Gerade y = 9,815·x, beide mit R² = 1,0000. Welche Auswertung ist richtig?",
+   "optionen": [
+    "Aus der ersten Geraden folgt g = 4,942 m/s², aus der zweiten g = 9,815 m/s². Die erste Auftragung liefert nur den halben Wert und ist zur Bestimmung von g deshalb ungeeignet.",
+    "Aus der ersten Geraden folgt g = 2 · 4,942 m/s² = 9,884 m/s², aus der zweiten unmittelbar g = 9,815 m/s². Der Wert aus dem Weg liegt höher, weil die Simulation den Weg in Schritten aufsummiert.",
+    "Weil beide Geraden R² = 1,0000 erreichen, sind beide Werte gleich gut. Die Differenz von 0,069 m/s² ist die Messunsicherheit beim Ablesen der Messpunkte."
+   ],
+   "richtig": 1,
+   "erklaerung": "Aus s = ½ · g · t² folgt für die Auftragung s über t² die Steigung k = g/2, also g = 2 · 4,942 m/s² = 9,884 m/s²; wer die Steigung selbst als g nimmt, halbiert das Ergebnis. Aus v = g · t folgt für die Auftragung v über t dagegen k = g, hier also 9,815 m/s². R² = 1,0000 sagt nur, wie gut die Punkte auf einer Geraden liegen, und nicht, ob die Gerade das Richtige misst: Beide Geraden passen perfekt, und trotzdem unterscheiden sich die g-Werte um 0,069 m/s². Eine Messunsicherheit ist das nicht: Die Zahlen entstehen nicht durch Ablesen, sondern durch Rechnen. Der Unterschied ist bis auf die letzte Stelle wiederholbar und zeigt immer nach oben, weil der Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende aufsummiert wird."
+  },
+  "offen": {
+   "frage": "Berechne aus den Tabellenzeilen t = 0,96 s mit v = 9,42 m/s und t = 2,24 s mit v = 21,97 m/s die Steigung der Geraden v über t und begründe, warum gerade dieser Auswerteweg vom Rechenverfahren der Simulation nicht verfälscht wird.",
+   "prompt": "Berechne aus den Tabellenzeilen t = 0,96 s mit v = 9,42 m/s und t = 2,24 s mit v = 21,97 m/s die Steigung der Geraden v über t und begründe, warum gerade dieser Auswerteweg vom Rechenverfahren der Simulation nicht verfälscht wird.",
+   "zeilen": 4,
+   "loesung": "k = (21,97 m/s − 9,42 m/s) / (2,24 s − 0,96 s) = 12,55 m/s / 1,28 s = 9,80 m/s². Weil v = g · t gilt, ist die Steigung dieser Ursprungsgeraden schon die Fallbeschleunigung: g = 9,80 m/s², dicht am Literaturwert 9,81 m/s² (die Ausgleichsgerade über alle neun Punkte liefert 9,815 m/s²). Verfälscht wird dieser Weg nicht, weil die Simulation in jedem Rechenschritt v um genau g · Δt erhöht – v = g · t ist im Verfahren also exakt. Nur der Weg wird aufsummiert, und zwar mit der Geschwindigkeit am Schrittende; deshalb fällt allein s zu groß aus und allein die Gerade s über t² liefert ein zu großes g."
+  }
+ },
+ {
+  "id": "ki6",
+  "komp": [
+   "S1",
+   "E6",
+   "S3",
+   "E3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Waagerecht wirkt keine Kraft; senkrecht zieht die Gewichtskraft, die Kugel fällt dort gleichmäßig",
+    "loesung": "beschleunigt",
+    "post": "."
+   },
+   {
+    "pre": "Über h aufgetragen ist die Fallzeit eine krumme Kurve. Erst nach dem Quadrieren von t_F liegen die Punkte auf einer",
+    "loesung": "Ursprungsgeraden",
+    "post": "."
+   },
+   {
+    "pre": "Deren Steigung ist k = 2/g = 0,2039 s²/m; zurückgerechnet ergibt g = 2/k =",
+    "loesung": "9,809 m/s²",
+    "post": "."
+   },
+   {
+    "pre": "In der Auftragung t_F über v₀ liegen alle acht Messpunkte auf einer Waagerechten – ihre Steigung ist",
+    "loesung": "null",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei h = 20 m gehört zu v₀ = 6 m/s die Wurfweite 12,12 m und zu v₀ = 12 m/s die Wurfweite 24,23 m; die Ursprungsgerade x_W über v₀ hat dort die Steigung 2,019 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Auftragung t_F über h im Ursprung beginnt, ist sie bereits eine Ursprungsgerade; ihre Steigung liefert den Ortsfaktor.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Für die Waagerechte t_F über v₀ muss das Häkchen „Ausgleichsgerade durch den Ursprung“ ausgeschaltet sein, sonst wird die Gerade zum Nullpunkt gezwungen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach dem Wechsel von „t_F über v₀ auftragen“ zu „x_W über v₀ auftragen“ muss die Messreihe neu aufgenommen werden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira misst bei h = 20 m acht Fallzeiten für v₀ von 2 m/s bis 20 m/s. Woran erkennt sie, dass v₀ die Fallzeit nicht ändert?",
+   "optionen": [
+    "An der Ursprungsgeraden x_W über v₀ mit der Steigung 2,019 s: Sie zeigt, dass die Wurfweite proportional zu v₀ wächst.",
+    "Am Bestimmtheitsmaß R² = 1,0000: Ein so hoher Wert belegt, dass die Fallzeit von der Abwurfgeschwindigkeit unabhängig ist.",
+    "Daran, dass alle acht Punkte auf einer Waagerechten liegen: Die Ausgleichsgerade heißt y = 0,0000·x + 2,0193, die Steigung ist null."
+   ],
+   "richtig": 2,
+   "erklaerung": "Gefragt ist nach der Fallzeit, also muss t_F auf der senkrechten und v₀ auf der waagerechten Achse stehen. In dieser Auftragung liegen die acht Messpunkte von v₀ = 2 m/s bis 20 m/s auf einer Waagerechten: Die Ausgleichsgerade lautet y = 0,0000·x + 2,0193, ihre Steigung ist null und ihr Achsenabschnitt die Fallzeit 2,0193 s. Eine Steigung null heißt genau: Verändert man v₀, ändert sich t_F nicht – das ist der Beweis, den drei Einzelmessungen nicht liefern können. Die Ursprungsgerade x_W über v₀ mit der Steigung 2,019 s beantwortet eine andere Frage; sie zeigt, dass v₀ die Wurfweite proportional vergrößert, nicht die Zeit. Und R² misst allein, wie eng die Punkte an der Ausgleichsgeraden liegen: Es ist auch dann 1,0000, wenn die Gerade steil verläuft, sagt über die Unabhängigkeit also nichts aus."
+  },
+  "offen": {
+   "frage": "Erläutere, warum sich aus der Auftragung t_F über h keine Steigung ablesen lässt, wie das Quadrieren der Fallzeit das ändert und warum erst die Auftragung t_F über v₀ Miras Vermutung widerlegt.",
+   "prompt": "Erläutere, warum sich aus der Auftragung t_F über h keine Steigung ablesen lässt, wie das Quadrieren der Fallzeit das ändert und warum erst die Auftragung t_F über v₀ Miras Vermutung widerlegt.",
+   "zeilen": 5,
+   "loesung": "In der Auftragung t_F über h liegen die neun Messpunkte auf einer nach rechts abflachenden Kurve: Von h = 5 m auf h = 20 m, also auf das Vierfache, wächst die Fallzeit nur von 1,0096 s auf 2,0193 s, also auf das Doppelte. Eine Kurve hat in jedem Punkt eine andere Steigung, deshalb lässt sich aus ihr keine einzelne Zahl und damit keine Formel gewinnen. Quadriert man die Fallzeit, wird daraus eine Ursprungsgerade t_F² = k · h mit y = 0,2039·x und R² = 1,0000 – das ist das Linearisieren. Jetzt gibt es genau eine Steigung, und sie hat eine physikalische Bedeutung: k = 2/g, also g = 2/k = 9,809 m/s², neben dem Literaturwert 9,810 m/s². Miras Vermutung betrifft aber v₀, und v₀ steht in dieser Auftragung gar nicht auf einer Achse – in allen neun Zeilen ist v₀ = 8 m/s. Widerlegt wird sie erst, wenn v₀ selbst auf die x-Achse kommt: Acht Messpunkte bei h = 20 m ergeben y = 0,0000·x + 2,0193, eine Waagerechte. Steigung null heißt, dass sich die Fallzeit über den ganzen Reglerweg von 2 m/s bis 20 m/s nicht ändert."
+  },
+  "theme": "ef_mechanik"
+ },
+ {
+  "id": "ki7",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S7",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Eine Kraft ist eine vektorielle Größe: Zu ihrem Betrag gehört stets auch die",
+    "loesung": "Richtung",
+    "post": ", in die sie wirkt."
+   },
+   {
+    "pre": "Zieht ein Seil unter dem Winkel α zur Waagerechten, so zieht den Schlitten allein die waagerechte Komponente",
+    "loesung": "F · cos(α)",
+    "post": "vorwärts."
+   },
+   {
+    "pre": "Die senkrechte Komponente F · sin(α) hebt den Schlitten nicht vom Boden ab, verringert aber die",
+    "loesung": "Normalkraft F_N",
+    "post": ", mit der Schlitten und Boden aufeinandergedrückt werden; deshalb sinkt zugleich die Reibung."
+   },
+   {
+    "pre": "Wächst der Winkel α von 0° auf 60°, so sinkt die waagerechte Komponente von 200,0 N auf",
+    "loesung": "100,0 N",
+    "post": ", während die senkrechte Komponente gegenläufig auf 173,2 N wächst."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die waagerechte Komponente in der Zeile α = 30° ist genauso groß wie die senkrechte Komponente in der Zeile α = 60°.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt sich der Winkel von 30° auf 60°, so halbiert sich die waagerechte Komponente.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je größer der Winkel α, desto stärker wird der Schlitten auf den Boden gedrückt, denn die senkrechte Komponente F · sin(α) wächst mit α.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei α = 0° ist die Normalkraft genauso groß wie die Gewichtskraft des beladenen Schlittens von 400,0 N, weil die senkrechte Komponente dort 0,0 N beträgt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias liest die Zeile α = 45° ab, addiert 141,4 N und 141,4 N zu 282,8 N und schließt daraus, dass das Seil in dieser Zeile mit 282,8 N belastet wird. Welche Antwort trifft zu?",
+   "optionen": [
+    "Die beiden Komponenten stehen senkrecht aufeinander und addieren sich deshalb nach dem Satz des Pythagoras; die Wurzel aus (141,4 N)² + (141,4 N)² ergibt 200,0 N.",
+    "Die Rechnung stimmt: Die 200,0 N in der Überschrift des Datenblatts nennen nur den vorwärts gerichteten Anteil, belastet wird das Seil mit der Summe beider Anteile.",
+    "Beide Zahlen sind zu halbieren, weil sich die Zugkraft bei α = 45° gleichmäßig auf zwei Richtungen verteilt; zu erwarten wären je 100,0 N."
+   ],
+   "richtig": 0,
+   "erklaerung": "Kräfte addieren sich als Pfeile, nicht als Zahlen. Weil die waagerechte und die senkrechte Komponente senkrecht aufeinanderstehen, gilt (F · cos α)² + (F · sin α)² = F². Eingesetzt ergibt (141,4 N)² + (141,4 N)² gerade (200,0 N)², und die Wurzel daraus ist 200,0 N – genau die Zugkraft aus der Überschrift des Datenblatts. Diese 200,0 N sind also der Betrag der ganzen Zugkraft und nicht ihr waagerechter Anteil; vorwärts ziehen bei α = 45° nur 141,4 N. Auch das Halbieren führt in die Irre: Aus je 100,0 N ergäbe sich nach Pythagoras eine Zugkraft von nur 141,4 N."
+  },
+  "offen": {
+   "frage": "Mira folgert aus dem Datenblatt: „Je größer der Winkel α, desto leichter läuft der Schlitten.“ Prüfe diese Behauptung, indem du für α = 30° und für α = 60° mit F_R = 0,30 · (400,0 N − F · sin(α)) berechnest, wie viel Zugkraft nach Abzug der Reibung übrig bleibt. Vergleiche mit den bereits bekannten Werten 80,0 N für α = 0° und 88,4 N für α = 20° und begründe dein Urteil.",
+   "prompt": "Mira folgert aus dem Datenblatt: „Je größer der Winkel α, desto leichter läuft der Schlitten.“ Prüfe diese Behauptung, indem du für α = 30° und für α = 60° mit F_R = 0,30 · (400,0 N − F · sin(α)) berechnest, wie viel Zugkraft nach Abzug der Reibung übrig bleibt. Vergleiche mit den bereits bekannten Werten 80,0 N für α = 0° und 88,4 N für α = 20° und begründe dein Urteil.",
+   "zeilen": 5,
+   "loesung": "Für α = 30° stehen im Datenblatt F · cos(30°) = 173,2 N und F · sin(30°) = 100,0 N. Damit ist F_N = 400,0 N − 100,0 N = 300,0 N und F_R = 0,30 · 300,0 N = 90,0 N; übrig bleiben 173,2 N − 90,0 N = 83,2 N. Für α = 60° gilt F · cos(60°) = 100,0 N und F · sin(60°) = 173,2 N, also F_N = 400,0 N − 173,2 N = 226,8 N und F_R = 0,30 · 226,8 N = 68,0 N; übrig bleiben 100,0 N − 68,0 N = 32,0 N. Die vier Werte ergeben die Reihe 80,0 N bei 0°, 88,4 N bei 20°, 83,2 N bei 30° und 32,0 N bei 60°. Miras Behauptung gilt also nur am Anfang: Solange der Winkel klein ist, senkt die Entlastung die Reibung stärker, als der Vortrieb F · cos(α) abnimmt. Danach kehrt sich das Verhältnis um, denn F · cos(α) fällt immer schneller, während von der Reibung ohnehin nur noch ein Rest abzuziehen ist. Bei 60° bleiben weniger als die Hälfte der 80,0 N übrig, mit denen Tobias waagerecht zieht. Richtig ist deshalb eine eingeschränkte Fassung: Schräg ziehen lohnt sich, aber nur bis zu einem günstigsten Winkel, der nach diesen vier Zeilen zwischen 0° und 30° liegen muss."
+  }
+ },
+ {
+  "id": "ki8",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "E11",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Körper behält seinen Bewegungszustand – die Geschwindigkeit nach Betrag und Richtung – genau so lange bei, wie die resultierende Kraft an ihm den Wert",
+    "loesung": "null",
+    "post": "hat."
+   },
+   {
+    "pre": "Der Regler „Externe Kraft F“ gibt nicht eine einzelne der angreifenden Kräfte wieder, sondern deren",
+    "loesung": "Summe",
+    "post": "; Antrieb und Reibung dürfen also durchaus wirken."
+   },
+   {
+    "pre": "Bei F = 0 N und der größten geprüften Anfangsgeschwindigkeit meldet das weiße Kästchen auch nach längerem Lauf noch v =",
+    "loesung": "40,0 m/s",
+    "post": "."
+   },
+   {
+    "pre": "Weil v bei verschwindender resultierender Kraft konstant bleibt, wächst der Weg gleichförmig; für ihn gilt s =",
+    "loesung": "v · t",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Wagen behält sein Tempo nur dann bei, wenn an ihm überhaupt keine Kraft angreift.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Wagen, der dauerhaft in Ruhe verharrt, wird vom ersten Newton'schen Gesetz mit erfasst.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zieht man v₀ bei F = 0 N von 20 m/s auf 12 m/s, so nimmt der Wagen das neue Tempo an und behält es anschließend bei.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je größer v₀ bei F = 0 N eingestellt wird, desto länger dauert es, bis der Wagen von selbst zum Stehen kommt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira vergleicht die vier Läufe zu v₀ = 5 m/s, 12 m/s, 20 m/s und 40 m/s und findet die Diagramme nicht unterscheidbar: Die Linie v(t) läuft jedes Mal waagerecht ganz oben am Rand. Sie schließt daraus, das Diagramm sei für diese Messreihe wertlos. Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Das Diagramm zeigt sehr wohl etwas, nämlich dass v über die ganze Breite konstant bleibt; den Betrag von v gibt es nur deshalb nicht preis, weil die Achse auf den jeweils größten Messwert skaliert. Dafür ist das weiße Kästchen zuständig.",
+    "Mira hat recht: Sehen vier Läufe gleich aus, so lässt sich aus dem Diagramm zu keinem von ihnen etwas entnehmen; die Messreihe ist erst mit einer anderen Darstellung auswertbar.",
+    "Die vier Bilder gleichen sich, weil sich bei F = 0 N stets dieselbe Geschwindigkeit einstellt; das gewählte v₀ wirkt sich allein auf den zurückgelegten Weg aus."
+   ],
+   "richtig": 0,
+   "erklaerung": "Aus dem waagerechten Verlauf über die ganze Breite liest man genau die gesuchte Aussage ab: v ändert sich bei F = 0 N nicht. Gleich hoch liegen die Linien nur, weil das Diagramm seine Achse auf den größten Messwert dehnt – eine konstante Größe landet dadurch immer am oberen Rand. Wertlos ist es deshalb nicht, es beantwortet nur eine andere Frage als die nach dem Betrag; diesen liefert das weiße Kästchen mit 5,0 m/s, 12,0 m/s, 20,0 m/s und 40,0 m/s. Die dritte Deutung widerspricht eben diesen Anzeigen: Der Wagen behält das eingestellte v₀ und gleicht sich keinem gemeinsamen Wert an."
+  },
+  "offen": {
+   "frage": "Mira wendet ein, die Simulation könne den ruhenden Wagen gar nicht zeigen, weil sich v₀ erst ab 5 m/s einstellen lässt; das erste Newton'sche Gesetz sei am Bildschirm also nur zur Hälfte prüfbar. Nimm zu diesem Einwand Stellung und beziehe dabei die Sicht eines Beobachters ein, der sich mit 20 m/s neben dem Wagen bewegt.",
+   "prompt": "Mira wendet ein, die Simulation könne den ruhenden Wagen gar nicht zeigen, weil sich v₀ erst ab 5 m/s einstellen lässt; das erste Newton'sche Gesetz sei am Bildschirm also nur zur Hälfte prüfbar. Nimm zu diesem Einwand Stellung und beziehe dabei die Sicht eines Beobachters ein, der sich mit 20 m/s neben dem Wagen bewegt.",
+   "zeilen": 4,
+   "loesung": "In einem Punkt trifft Miras Beobachtung zu: Der Regler beginnt bei 5 m/s, die Einstellung v = 0 ist am Bildschirm nicht erreichbar. Ihr Schluss trägt trotzdem nicht. Für die Ruhe macht das Gesetz keine zweite Aussage, denn sie ist der Sonderfall v = 0 derselben Aussage: Bei verschwindender resultierender Kraft bleibt der Bewegungszustand erhalten, gleichgültig welchen Wert v hat. Hinzu kommt, dass die Antwort auf die Frage nach Ruhe oder Bewegung vom Beobachter abhängt. Wer sich mit 20 m/s neben dem Wagen herbewegt, sieht genau jenen Wagen ruhen, der im Bild mit v₀ = 20 m/s läuft – derselbe Vorgang, zwei Beschreibungen, und in beiden ist F = 0 N. Der geprüfte Fall schließt den vermeintlich ungeprüften also ein; die fehlende Reglerstellung ist eine Grenze der Bedienung, keine Lücke im Gesetz."
+  }
+ },
+ {
+  "id": "ki9",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S6",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Über der Masse selbst liegen die Messpunkte auf einer Hyperbel; zu einer Ursprungsgeraden werden sie erst über dem",
+    "loesung": "Kehrwert 1/m",
+    "post": "."
+   },
+   {
+    "pre": "Die Kraftreihe bei m = 5 kg liefert y = 0,2000·x; die Masse ergibt sich als Kehrwert der Steigung, also aus m =",
+    "loesung": "1/k",
+    "post": ", und beträgt 5,000 kg."
+   },
+   {
+    "pre": "Trägt man die Massenreihe über 1/m auf, so ist die Steigung der Geraden gerade die festgehaltene",
+    "loesung": "Kraft F",
+    "post": "; ihre Einheit kg · m/s² ist das Newton."
+   },
+   {
+    "pre": "Eine krumme Auftragung durch eine neue Größe auf der x-Achse zur Geraden zu machen, heißt",
+    "loesung": "Linearisieren",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Kraftreihe bei m = 5 kg liegt über F auf einer Ursprungsgeraden; ihre Steigung 0,2000 1/kg ist der Kehrwert der eingestellten Masse.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch über der Masse ergeben dieselben Messwerte eine Gerade; dass dort keine Ausgleichsgerade gezeichnet wird, liegt allein an der zu kleinen Zahl der Messpunkte.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Steigung der Geraden über 1/m hat die Einheit kg · m/s² und ist damit selbst eine Kraft.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil beide Auswertungen R² = 1,0000 melden, ist auch der Faktor 1 vor F/m gemessen und nicht bloß durch die Einheit festgelegt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Die Massenreihe bei F = 40 N ergibt über 1/m die Gerade y = 40,000·x. Was besagt die Steigung?",
+   "optionen": [
+    "Dass der Wagen in jeder Zeile mit 40,00 m/s² beschleunigt; die Steigung ist der Mittelwert der Spalte a.",
+    "Dass die Beschleunigung mit jedem zusätzlichen Kilogramm um 40,00 m/s² sinkt; die Steigung gibt die Änderung von a je Kilogramm an.",
+    "Dass die Steigung die festgehaltene Kraft ist: m/s² je 1/kg ergibt kg · m/s², also 40,00 N – genau die eingestellten 40 N."
+   ],
+   "richtig": 2,
+   "erklaerung": "Die Steigung einer Geraden trägt immer die Einheit ihrer y-Achse geteilt durch die ihrer x-Achse. Hier ist das (m/s²) : (1/kg) = kg · m/s², und das ist nach der Definition des Newton eine Kraft; der Zahlenwert 40,000 stimmt mit den eingestellten 40 N überein, deshalb meldet die Auswertung „Kraft F aus der Steigung k 40,00 N“. Ein Mittelwert kann es nicht sein: Die Spalte a reicht von 2,00 m/s² bis 40,00 m/s². Eine Änderung je Kilogramm wäre die Steigung in der Auftragung über m – und die gibt es nicht, weil dort eine Hyperbel liegt: zwischen 1 kg und 4 kg fällt a um 10,00 m/s² je Kilogramm, zwischen 4 kg und 20 kg nur um 0,50 m/s² je Kilogramm."
+  },
+  "offen": {
+   "frage": "Beurteile die Aussage von Tobias: „Die Auftragung über m zeigt den Zusammenhang genauso gut wie die über 1/m, sie ist eben krumm.“ Begründe, warum die Auswertung trotzdem den Kehrwert verlangt.",
+   "prompt": "Beurteile die Aussage von Tobias: „Die Auftragung über m zeigt den Zusammenhang genauso gut wie die über 1/m, sie ist eben krumm.“ Begründe, warum die Auswertung trotzdem den Kehrwert verlangt.",
+   "zeilen": 4,
+   "loesung": "Als Bild stimmt Tobias' Satz: Beide Auftragungen zeigen dieselben neun Messwerte, und die Hyperbel über m zeigt den Zusammenhang sogar anschaulich – doppelte Masse, halbe Beschleunigung. Was ihr fehlt, ist die Auswertbarkeit. Eine Kurve hat in jedem Punkt eine andere Steigung: bei F = 40 N fällt a zwischen 1 kg und 4 kg um 10,00 m/s² je Kilogramm, zwischen 4 kg und 20 kg nur noch um 0,50 m/s² je Kilogramm. Deshalb zeichnet das Programm dort keine Ausgleichsgerade, sondern meldet „Keine Gerade – trage 1/m auf.“ Über dem Kehrwert 1/m liegen dieselben Punkte auf einer Ursprungsgeraden mit y = 40,000·x und R² = 1,0000. Erst diese eine Steigung ist eine Zahl mit Einheit: (m/s²) je (1/kg) = kg · m/s² = N, und sie ergibt 40,00 N, also die eingestellte Kraft. Linearisieren dient also nicht der Schönheit der Zeichnung, sondern macht aus der Kurve eine Größe, die man ablesen und mit dem eingestellten Wert vergleichen kann – aus zwei solchen Steigungen (1/m aus der Kraftreihe, F aus der Massenreihe) entsteht F = m · a."
+  }
+ },
+ {
+  "id": "ki10",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "K8",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beide an der Lampe angreifenden Kräfte liegen auf einer Wirkungslinie; statt der vektoriellen Addition genügt deshalb die vorzeichenbehaftete Summe F_res =",
+    "loesung": "F_H − F_G",
+    "post": "."
+   },
+   {
+    "pre": "Was im Fachtext resultierende Kraft heißt, führt das Statusfeld unter der Bezeichnung",
+    "loesung": "Gesamtkraft",
+    "post": "; statt des Vorzeichens steht dort die Richtung."
+   },
+   {
+    "pre": "Die Aussage des Trägheitsprinzips gilt nur in einem Bezugssystem, das selbst nicht beschleunigt wird; ein solches Bezugssystem heißt",
+    "loesung": "Inertialsystem",
+    "post": "."
+   },
+   {
+    "pre": "Erst wenn die resultierende Kraft von null abweicht, ändert sich der Bewegungszustand, und zwar nach",
+    "loesung": "F_res = m · a",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach einmal „– N“ und nach zweimal „+ N“ meldet das Statusfeld denselben Betrag der Gesamtkraft; verschieden ist allein die Richtung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Lampe im Ausgangszustand ruht, ist das Seil dort entlastet und der eingehängte Kraftmesser zeigt 0 N an.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im dritten Schritt kommt die Lampe am unteren Bildrand zum Stehen, obwohl das Statusfeld weiterhin eine Gesamtkraft nach unten meldet; dieser Stillstand ist eine Grenze der Darstellung und kein physikalischer Befund.",
+    "stimmt": true
+   },
+   {
+    "aussage": "„Zurück in die Mitte“ setzt neben der Haltekraft auch die Gewichtskraft auf ihren Ausgangswert zurück, weil beide Kräfte in der Simulation miteinander gekoppelt sind.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira drückt zweimal „+ N“ und sieht die Lampe nach oben steigen. Tobias hält dazu fest: „Das Seil zieht jetzt mit 6 N, und genau diese 6 N beschleunigen die Lampe nach oben.“ Welche Beurteilung seiner Begründung trifft zu?",
+   "optionen": [
+    "Sie trägt: Sobald die Haltekraft größer als die Gewichtskraft ist, gibt ihr Betrag die beschleunigende Kraft an, denn nur sie zeigt in die Bewegungsrichtung.",
+    "Sie trägt nicht: Beschleunigt wird die Lampe allein von der resultierenden Kraft F_res = 6 N − 5 N = 1 N nach oben; die Gewichtskraft verschwindet nicht, sondern wirkt unverändert weiter.",
+    "Sie trägt nicht: Beschleunigt wird die Lampe von der Summe beider Beträge, also von 6 N + 5 N = 11 N nach oben."
+   ],
+   "richtig": 1,
+   "erklaerung": "Der Bewegungszustand ändert sich nach F_res = m · a, und F_res ist die vorzeichenbehaftete Summe der beiden Kräfte auf der gemeinsamen Wirkungslinie: 6 N − 5 N = 1 N nach oben – genau das meldet auch das Statusfeld. Der Betrag der Haltekraft allein taugt dafür nicht, denn bei 5 N wäre die Lampe nach derselben Überlegung ebenfalls beschleunigt, obwohl sie dort in Ruhe bleibt. Die Beträge zu addieren ist falsch, weil die beiden Kräfte entgegengesetzt gerichtet sind; die Summe 11 N käme nur heraus, wenn beide in dieselbe Richtung zeigten. Mit m = 0,51 kg folgt aus 1 N eine Beschleunigung von 1,96 m/s² nach oben, aus 6 N dagegen der rund sechsfache Wert."
+  },
+  "offen": {
+   "frage": "Nach dem dritten Schritt steht die Lampe am unteren Bildrand still, während das Statusfeld unverändert „Gesamtkraft 1 N nach unten“ meldet. Tobias notiert: „Jetzt ist die Lampe wieder im Gleichgewicht, sie bewegt sich ja nicht mehr.“ Beurteile seine Begründung und erläutere, woran hier die Darstellung und nicht die Physik an ihre Grenze stößt.",
+   "prompt": "Nach dem dritten Schritt steht die Lampe am unteren Bildrand still, während das Statusfeld unverändert „Gesamtkraft 1 N nach unten“ meldet. Tobias notiert: „Jetzt ist die Lampe wieder im Gleichgewicht, sie bewegt sich ja nicht mehr.“ Beurteile seine Begründung und erläutere, woran hier die Darstellung und nicht die Physik an ihre Grenze stößt.",
+   "zeilen": 4,
+   "loesung": "Tobias schließt erneut von der Ruhe auf das Gleichgewicht, und der Schluss trägt wieder nicht: Gleichgewicht bedeutet F_res = 0 N, und genau das steht nicht im Statusfeld – dort stehen unverändert 1 N nach unten. Mit m = 0,51 kg wäre die Lampe damit weiterhin mit a = 1 N / 0,51 kg = 1,96 m/s² nach unten beschleunigt; physikalisch dürfte sie also gerade nicht stehen bleiben. Der Stillstand hat eine andere Ursache: Die Zeichnung zeigt nur den Beginn der Bewegung und lässt die Lampe am unteren Bildrand anhalten, und die Statuszeile wird nur beim Drücken neu geschrieben. Beide Angaben beschreiben deshalb verschiedene Dinge – die Zeile den Kräftezustand, das Bild eine abgeschnittene Bewegung –, und nur die Kräfte entscheiden über das Gleichgewicht: Erst „zurück in die Mitte“ macht Haltekraft und Gewichtskraft wieder gleich groß und damit F_res = 0 N. Zu ergänzen ist die zweite Grenze: Wird die Gesamtkraft null, steht die Lampe sofort still, statt gleichförmig weiterzulaufen. Auch das ist eine Eigenart der Darstellung, nicht des Trägheitsprinzips."
+  }
+ },
+ {
+  "id": "ki11",
+  "komp": [
+   "S1",
+   "S6",
+   "S3",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In allen vier Einstellungen meldet die Zeile „Beim Lösen“ für F1 und F2 denselben Betrag von",
+    "loesung": "20,00 N",
+    "post": "."
+   },
+   {
+    "pre": "Weil beide Wagen denselben Kraftbetrag erfahren, folgt aus F = m · a: Die Beschleunigungen verhalten sich",
+    "loesung": "umgekehrt",
+    "post": "wie die Massen."
+   },
+   {
+    "pre": "Die gespannte Feder gibt die Höchstkraft über F = D · s0 vor; in dieser Beziehung steht",
+    "loesung": "keine Masse",
+    "post": "."
+   },
+   {
+    "pre": "Auch die Stoßdauer hängt von den Massen ab: Bei m1 = 5 kg und m2 = 5 kg zeigt die Simulation Δt =",
+    "loesung": "0,157 s",
+    "post": "; mit einem leichteren Wagen fällt sie kürzer aus."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelt man m1 von 1 kg auf 2 kg, so halbiert sich der Betrag von a1 von 20,00 m/s² auf 10,00 m/s², während der Kraftbetrag bei 20,00 N bleibt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Da F1 und F2 gleich groß und einander entgegengerichtet sind, bilden sie ein Kräftegleichgewicht; deshalb erfährt keiner der beiden Wagen eine Beschleunigung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zieht man m2 auf 1 kg, während m1 bei 5 kg bleibt, so steigt a2 auf +20,00 m/s², a1 bleibt bei -4,00 m/s², und die Stoßdauer sinkt von 0,157 s auf 0,091 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Stoßdauer Δt fällt für die beiden Wagen verschieden aus, weil der leichtere Wagen die Feder früher verlässt als der schwerere.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira stößt sich auf dem Rollwagen an der Wand ab und rollt davon; die Wand bleibt unbewegt stehen. Tobias schließt daraus, gedrückt habe allein Mira. Welche Begründung widerlegt ihn?",
+   "optionen": [
+    "Auch die Wand drückt mit demselben Kraftbetrag zurück. Da in a = F/m die Masse im Nenner steht, fällt die Beschleunigung der ungleich größeren Masse unmerklich klein aus.",
+    "Die Wand drückt zwar ebenfalls, aber erst nach dem Abstoßen. Solange Mira sich abdrückt, wirkt allein ihre eigene Kraft, und nur diese setzt sie in Bewegung.",
+    "Die Wand leitet die Kraft vollständig ins Fundament ab. Auf Mira wirkt deshalb nur ihre eigene, nach hinten gerichtete Kraft, und diese treibt sie nach vorn."
+   ],
+   "richtig": 0,
+   "erklaerung": "Kräfte treten paarweise auf: Drückt Mira mit F auf die Wand, so drückt die Wand mit −F auf Mira. Die beiden Kräfte greifen an verschiedenen Körpern an und heben sich deshalb nicht auf; beschleunigt wird Mira allein durch die Kraft der Wand. Wie stark ein Körper dabei beschleunigt wird, entscheidet seine Masse: Bei demselben Kraftbetrag von 20,00 N zeigt die Simulation für 5 kg nur 4,00 m/s², für 1 kg dagegen 20,00 m/s². Die Wand hängt über das Fundament an der Erde; ihre Beschleunigung ist nach demselben Gesetz so klein, dass man sie nicht sieht – null ist sie nicht. Ein zeitliches Nacheinander gibt es ebenfalls nicht: Beide Kräfte des Paares bestehen zu jedem Zeitpunkt gleichzeitig. Und dass die Wand die Kraft ins Fundament ableitet, ändert nichts daran, dass sie Mira mit demselben Betrag zurückdrückt."
+  },
+  "offen": {
+   "frage": "Bei m1 = 1 kg und m2 = 5 kg zerlegt das Statusfeld die Federenergie 0,800 J in 0,667 J und 0,133 J, für die Impulssumme meldet es dagegen p1 + p2 = 0,000 kg·m/s. Erkläre, warum sich die beiden Impulse aufheben, die beiden Energien aber nicht, und begründe, welchem Wagen der größere Energieanteil zufällt.",
+   "prompt": "Bei m1 = 1 kg und m2 = 5 kg zerlegt das Statusfeld die Federenergie 0,800 J in 0,667 J und 0,133 J, für die Impulssumme meldet es dagegen p1 + p2 = 0,000 kg·m/s. Erkläre, warum sich die beiden Impulse aufheben, die beiden Energien aber nicht, und begründe, welchem Wagen der größere Energieanteil zufällt.",
+   "zeilen": 4,
+   "loesung": "Über die ganze Stoßdauer gilt F1 = −F2; daraus folgt Δp1 = −Δp2. Der Impuls ist gerichtet, die beiden Impulsänderungen sind gleich groß und entgegengesetzt, und da beide Wagen aus der Ruhe starten, bleibt p1 + p2 = 0,000 kg·m/s. Die Energie hat dagegen keine Richtung: Beide Wagen bewegen sich, und beide Beiträge sind positiv, gleichgültig wohin sie fahren. Sie addieren sich deshalb zu 0,667 J + 0,133 J = 0,800 J, also genau zur gespeicherten Federenergie. Den größeren Anteil erhält der leichtere Wagen, hier m1 = 1 kg mit 0,667 J. Beide tragen denselben Impulsbetrag, sodass die kleinere Masse mit der größeren Geschwindigkeit davonfährt: v1 = -1,155 m/s gegenüber v2 = +0,231 m/s, also das Fünffache. In die Bewegungsenergie geht die Geschwindigkeit quadratisch ein, die Masse dagegen nur einfach; ein Fünftel der Masse bei fünffacher Geschwindigkeit ergibt deshalb den fünffachen Energieanteil – und genau das zeigt das Statusfeld mit 0,667 J gegenüber 0,133 J."
+  },
+  "theme": "ef_mechanik"
+ },
+ {
+  "id": "ki12",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "S2",
+   "E6",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für die Gleitreibung setzt das Modell F_R = μ · F_N an; auf waagerechter Bahn ist die Normalkraft gerade die Gewichtskraft, also F_N =",
+    "loesung": "m · g",
+    "post": "."
+   },
+   {
+    "pre": "Der Reibungskoeffizient μ hängt allein von der Paarung der beteiligten Werkstoffe ab; als reine Verhältniszahl trägt er",
+    "loesung": "keine Einheit",
+    "post": "."
+   },
+   {
+    "pre": "Antriebskraft und Reibungskraft greifen am selben Wagen an und wirken auf einer Wirkungslinie in entgegengesetzte Richtungen; überlagert ergeben sie die resultierende Kraft F_res =",
+    "loesung": "F − F_R",
+    "post": ", und erst diese steht im Grundgesetz der Mechanik a = F_res / m."
+   },
+   {
+    "pre": "Verdoppelt man μ von 0,20 auf 0,40, so verdoppelt sich die Reibungskraft von 9,8 N auf 19,6 N; die Beschleunigung sinkt dabei nicht auf die Hälfte, sondern nur von 14,0 m/s² auf",
+    "loesung": "12,1 m/s²",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelt man bei unveränderter Antriebskraft und Masse den Reibungskoeffizienten, so verdoppelt sich zwar die Reibungskraft, die Beschleunigung des Wagens halbiert sich dabei aber nicht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil der Motor mit 80 N an einer Masse von 5 kg zieht, beschleunigt der Wagen in jeder Stellung des Reglers μ mit 16 m/s².",
+    "stimmt": false
+   },
+   {
+    "aussage": "Setzt man denselben Wagen mit einer kleineren Auflagefläche auf die Bahn, so fällt die Reibungskraft nach dem hier verwendeten Modell geringer aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Senkt man die Antriebskraft unter die angezeigte Reibungskraft, so bleibt der Wagen bei v = 0,0 m/s stehen, während der Infokasten weiterhin eine Reibungskraft ausweist.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias zieht den Regler μ von 0,20 auf 0,60 und sieht im Diagramm „Reibungskraft F_R“ sofort eine Stufe nach oben. Weil zugleich die Anzeige „v=“ ununterbrochen weiterzählt, schließt er: Die Reibungskraft wächst mit der Geschwindigkeit. Welche Antwort trifft zu?",
+   "optionen": [
+    "Tobias hat richtig geschlossen: Solange v weiter zunimmt, steigt auch F_R mit an; die Werte der Messreihe gelten deshalb nur für den ersten Augenblick nach dem Reglerwechsel.",
+    "Die Stufe stammt aus der vorigen Reglerstellung, deren Werte noch rund fünf Sekunden im Diagramm stehen bleiben. Wartet man sie ab, liegt die Linie über der ganzen Zeitachse waagerecht, obwohl v weiter hochzählt.",
+    "Die Stufe entsteht durch die Rasterung des Reglers, der in Schritten von 0,05 einrastet; F_R kann deshalb nur sprunghaft zunehmen und folgt der Geschwindigkeit in Stufen."
+   ],
+   "richtig": 1,
+   "erklaerung": "Die Stufe ist ein Nachhinken der Darstellung und kein physikalischer Befund: Nach jedem Reglerwechsel bleibt der alte Wert noch etwa fünf Sekunden im Fenster stehen, bis er links aus dem Diagramm gewandert ist. Erst danach darf man den Verlauf beurteilen – und dann liegt die Linie über der ganzen Zeitachse waagerecht, während „v=“ unverändert weiterzählt. Genau das sagt auch das Modell F_R = μ · F_N: Die Geschwindigkeit kommt darin gar nicht vor. Die Rasterung des Reglers erklärt die Stufe ebenfalls nicht, denn sie betrifft die Einstellung von μ und nicht die Zeitachse; F_R springt von 9,8 N auf 29,4 N, gleichgültig über wie viele Rastschritte man den Regler dorthin zieht."
+  },
+  "offen": {
+   "frage": "Auf dem Bildschirm steht nirgends, mit welchem Ortsfaktor die Simulation rechnet. Bestimme ihn aus der Tabellenzeile μ = 0,20 mit F_R = 9,8 N und aus der Reglerstellung μ = 1,00 mit F_R = 49,1 N, indem du F_R = μ · m · g nach g auflöst. Beurteile anschließend, auf wie viele Nachkommastellen sich der Ortsfaktor aus diesen Anzeigen sicher angeben lässt, und begründe, welche der beiden Stellungen die schärfere Aussage liefert.",
+   "prompt": "Auf dem Bildschirm steht nirgends, mit welchem Ortsfaktor die Simulation rechnet. Bestimme ihn aus der Tabellenzeile μ = 0,20 mit F_R = 9,8 N und aus der Reglerstellung μ = 1,00 mit F_R = 49,1 N, indem du F_R = μ · m · g nach g auflöst. Beurteile anschließend, auf wie viele Nachkommastellen sich der Ortsfaktor aus diesen Anzeigen sicher angeben lässt, und begründe, welche der beiden Stellungen die schärfere Aussage liefert.",
+   "zeilen": 5,
+   "loesung": "Aus F_R = μ · m · g folgt g = F_R / (μ · m), mit m = 5 kg. Zeile μ = 0,20: g = 9,8 N / (0,20 · 5 kg) = 9,8 N / 1,0 kg = 9,8 N/kg. Stellung μ = 1,00: g = 49,1 N / (1,00 · 5 kg) = 49,1 N / 5,0 kg = 9,82 N/kg. Beide Wege führen auf rund 9,8 N/kg, unterscheiden sich aber in der zweiten Nachkommastelle. Der Grund liegt in der Anzeige, die F_R nur auf eine Nachkommastelle angibt: Hinter 9,8 N kann jeder Wert von 9,75 N bis 9,85 N stehen, hinter 49,1 N jeder von 49,05 N bis 49,15 N. Umgerechnet ergibt das aus der ersten Zeile einen Ortsfaktor zwischen 9,75 N/kg und 9,85 N/kg, aus der zweiten dagegen nur zwischen 9,81 N/kg und 9,83 N/kg. Sicher angeben lässt sich deshalb allein die erste Nachkommastelle, also g ≈ 9,8 N/kg; wer 9,82 N/kg schreibt, gibt eine Genauigkeit vor, die die Anzeige nicht hergibt. Die schärfere Aussage liefert die Stellung μ = 1,00, denn dort trifft dieselbe Ableseunsicherheit von 0,05 N nach oben wie nach unten auf einen rund fünfmal größeren Messwert und fällt entsprechend weniger ins Gewicht. Wer den Ortsfaktor möglichst genau zurückrechnen will, liest also am oberen Anschlag ab und nicht am unteren."
+  }
+ },
+ {
+  "id": "ki13",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S3",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Nicht der Betrag der Kraft entscheidet über die verrichtete Arbeit, sondern ihr Anteil in Wegrichtung; allgemein gilt daher W =",
+    "loesung": "F · s · cos(α)",
+    "post": ", wobei α der Winkel zwischen Kraft und Weg ist."
+   },
+   {
+    "pre": "Beim Schieben stehen die Regler auf F = 100 N und s = 4 m; der Balken am oberen Bildrand meldet daraufhin eine verrichtete Arbeit von",
+    "loesung": "400 J",
+    "post": "."
+   },
+   {
+    "pre": "Beim waagerechten Tragen der Kiste mit m = 20 kg nennt das Statusfeld eine Haltekraft von",
+    "loesung": "196 N",
+    "post": "; über die vollen 4 m bleibt W dennoch bei 0 J."
+   },
+   {
+    "pre": "Beim Anheben muss die Hubkraft die Gewichtskraft ausgleichen und zeigt längs des Hubwegs; für die Hubarbeit gilt deshalb W =",
+    "loesung": "m · g · h",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Hochheben ist die an der Kiste verrichtete Arbeit kleiner als beim Schieben, obwohl dort mit 196 N die größere Kraft aufzubringen ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil an der Kiste W = 0 J verrichtet wird, setzt Tobias auf den vier getragenen Metern auch selbst keine Energie um.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Balken meldet 392 J, während 20 kg · 9,81 N/kg · 2,0 m genau 392,4 J ergibt; die Anzeige gibt die Hubarbeit also gerundet wieder.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Während der Hub abläuft, wächst der Wert im Balken zusammen mit dem Wegpfeil und erreicht die 392 J erst am oberen Ende der 2,0 m.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias bleibt bei seiner Rechnung: Er habe 196 N gehalten und sei damit volle 4 m gegangen; Kraft und Weg seien also beide vorhanden, nach W = F · s ergebe das einen Wert weit über null, und Miras null Joule seien ein Rechenfehler. Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Tobias hat recht: Sobald eine Kraft wirkt und der Körper sich dabei bewegt, wird nach W = F · s Arbeit verrichtet. Miras W = 0 J gälte nur für eine Kiste, die an Ort und Stelle bleibt.",
+    "Tobias übergeht eine Bedingung: Die kurze Form W = F · s ist der Sonderfall α = 0°. Beim Tragen zeigt die Haltekraft nach oben, der Weg nach vorn, also α = 90°; wegen cos(α) = 0 liefert das allgemeine Gesetz W = 0 J.",
+    "Beide rechnen richtig und meinen nur Verschiedenes: Tobias gibt die Arbeit an der Kiste an, Mira die Arbeit seiner Muskeln. Der Widerspruch ist deshalb nur ein scheinbarer."
+   ],
+   "richtig": 1,
+   "erklaerung": "Kraft und Weg allein genügen nicht – über die Arbeit entscheiden auch ihre Richtungen. Die kurze Form W = F · s gilt nur, solange beide in dieselbe Richtung zeigen; sie ist der Sonderfall α = 0° des allgemeinen Gesetzes W = F · s · cos(α). Beim waagerechten Tragen steht die Haltekraft senkrecht auf dem Weg, also α = 90° und cos(α) = 0: Die Komponente längs des Weges verschwindet, und mit ihr die Arbeit. Das Statusfeld meldet dazu passend „Arbeit W = 0 J – physikalisch keine Arbeit.“, und am unteren Bildrand steht der Satz über die senkrecht zueinander stehenden Richtungen. Die erste Deutung verwechselt Bewegung mit Bewegung in Kraftrichtung; nach ihr müsste auch der Balken einen Wert über null anzeigen, was er nicht tut. Die dritte dreht die Zuordnung um: Gerade Miras 0 J beziehen sich auf die Kiste. Dass Tobias' Muskelfasern dabei Energie umsetzen, ist unbestritten, wird an der Kiste aber nicht als Arbeit wirksam."
+  },
+  "offen": {
+   "frage": "Mira möchte das allgemeine Gesetz W = F · s · cos(α) an der Simulation prüfen und stellt fest, dass ihr das nur zum Teil gelingt. Lege dar, welche Aussagen über den Faktor cos(α) die drei angebotenen Vorgänge belegen und welche nicht, und begründe, wie sich der offen gebliebene Teil dennoch entscheiden lässt.",
+   "prompt": "Mira möchte das allgemeine Gesetz W = F · s · cos(α) an der Simulation prüfen und stellt fest, dass ihr das nur zum Teil gelingt. Lege dar, welche Aussagen über den Faktor cos(α) die drei angebotenen Vorgänge belegen und welche nicht, und begründe, wie sich der offen gebliebene Teil dennoch entscheiden lässt.",
+   "zeilen": 5,
+   "loesung": "Die Simulation stellt nur zwei Winkel her. Beim Schieben und beim Hochheben zeigen Kraft und Weg in dieselbe Richtung, also α = 0° und cos(α) = 1; die Anzeigen W = 100 N · 4 m = 400 J und W = 20 kg · 9,81 N/kg · 2,0 m = 392 J bestätigen für diesen Fall die verkürzte Form W = F · s beziehungsweise W = m · g · h. Beim waagerechten Tragen stehen Kraft und Weg senkrecht zueinander, also α = 90° und cos(α) = 0; die Anzeige W = 0 J bestätigt, dass dann selbst eine Haltekraft von 196 N über 4 m nichts beiträgt. Belegt sind damit die beiden Randwerte des Faktors, nicht aber sein Verhalten dazwischen: Ob cos(α) von 1 auf 0 gleichmäßig oder anders abnimmt, lässt sich an keinem der drei Vorgänge ablesen, denn ein Regler für den Winkel wird nirgends angeboten. Dieser Teil ist am Bildschirm nicht zu messen, sondern zu rechnen – man zerlegt die Kraft wie beim schräg gezogenen Schlitten in einen Anteil längs und einen quer zum Weg und setzt den längs gerichteten Anteil ein. Die beiden Grenzfälle widerlegen das Gesetz also nicht; sie prüfen es an seinen Rändern und lassen den Bereich dazwischen offen. Zu beachten bleibt außerdem, dass alle drei Formeln eine konstante Kraft und einen geraden Weg voraussetzen."
+  }
+ },
+ {
+  "id": "ki14",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "E5",
+   "E3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Gemessen wird nicht die Energie, sondern der Schiebeweg s: Der Klotz wird gegen F = 200 N geschoben; aus dieser Arbeit folgt E =",
+    "loesung": "F · s",
+    "post": "."
+   },
+   {
+    "pre": "Über v liegen die Messpunkte krumm, über v² auf einer Ursprungsgeraden. Dieses Umrechnen der x-Achse, bis eine Gerade entsteht, heißt",
+    "loesung": "Linearisieren",
+    "post": "."
+   },
+   {
+    "pre": "Bei m = 4 kg hat die Gerade in der Auftragung E über v² die Steigung k = 2,0 kg. Aus m = 2 · k folgt daraus die Masse",
+    "loesung": "4,0 kg",
+    "post": " – genau der eingestellte Wert."
+   },
+   {
+    "pre": "In der Auftragung E über m ist die Steigung k = v²/2. Bei v = 4 m/s beträgt sie 8,0 m²/s², und aus v = √(2 · k) folgt das Tempo",
+    "loesung": "4,0 m/s",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Wechsel zu „E über v² auftragen“ wiederholt keine Messung: Dieselben neun Wertepaare liegen nur anders aufgetragen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Punkte über v nicht auf einer Geraden liegen, ist die Messreihe unbrauchbar und muss wiederholt werden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Steigung über v² hat die Einheit J/(m²/s²) = kg und liefert deshalb über m = 2 · k die Masse zurück.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mischt man Punkte mit 4 kg und mit 8 kg in eine Reihe, liegen über v² trotzdem alle auf einer Ursprungsgeraden.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira verstellt beim Messen abwechselnd „Masse m“ und „Tempo v“. Über v² liegen ihre acht Punkte danach auf mehreren Geraden. Was folgt daraus?",
+   "optionen": [
+    "Die Punkte fallen auseinander, weil die Kugel auf dem längeren Weg Energie verliert. Mit kleineren Tempowerten läge wieder alles auf einer Geraden.",
+    "Die Auftragung über v² ist für gemischte Reihen falsch gewählt; sobald Mira auf „E über v auftragen“ wechselt, liegt alles auf einer Geraden.",
+    "Die Steigung ist m/2 – jede Masse hat also ihre eigene Gerade. Für eine auswertbare Reihe muss die Masse fest bleiben und allein das Tempo laufen."
+   ],
+   "richtig": 2,
+   "erklaerung": "Die Steigung in der Auftragung E über v² ist m/2 und hängt damit von der Masse ab: 4 kg gehören zur Steigung 2,0 kg, 8 kg zur Steigung 4,0 kg. Wer beide Massen in eine Reihe mischt, misst zwei Geraden gleichzeitig – die Simulation gibt jeder Masse deshalb eine eigene Farbe. Der Fehler liegt nicht an der Auftragung und auch nicht an Verlusten: Die Kugel verliert unterwegs nichts, und in der Auftragung E über v liegen dieselben Punkte erst recht nicht auf einer Geraden, sondern auf mehreren Parabeln. Abhilfe schafft allein die Variablenkontrolle – eine Größe festhalten, die andere durchfahren; genau das tut „Messreihe automatisch aufnehmen“."
+  },
+  "offen": {
+   "frage": "Tobias will sich die Auftragung sparen: Zwei Messpunkte bei 4 m/s und 8 m/s genügten, denn wenn die Energie dabei von 32 J auf 128 J steigt, sei das Quadrat bewiesen. Beurteile seinen Vorschlag und begründe mit der Messreihe, was die Auftragung über v² zusätzlich leistet.",
+   "prompt": "Tobias will sich die Auftragung sparen: Zwei Messpunkte bei 4 m/s und 8 m/s genügten, denn wenn die Energie dabei von 32 J auf 128 J steigt, sei das Quadrat bewiesen. Beurteile seinen Vorschlag und begründe mit der Messreihe, was die Auftragung über v² zusätzlich leistet.",
+   "zeilen": 4,
+   "loesung": "Die beiden Werte stimmen, sie beweisen aber nichts: Durch zwei Punkte passt immer auch eine Gerade. Die Gerade durch (4 m/s | 32 J) und (8 m/s | 128 J) hat die Steigung (128 J − 32 J) : (8 m/s − 4 m/s) = 24 J je m/s und den Achsenabschnitt 32 J − 4 · 24 J = −64 J; sie träfe beide Punkte genauso gut wie die Parabel. Erst weitere Messwerte trennen die beiden Modelle: Bei 1 m/s sagt die Gerade 24 J − 64 J = −40 J voraus, gemessen werden 2 J. Die Auftragung über v² prüft alle neun Punkte auf einmal. Dass die Gerade durch den Ursprung geht, ist dabei keine Beobachtung, sondern das gesetzte Häkchen „Ausgleichsgerade durch den Ursprung“; der Nachweis ist, dass sie trotz dieses Zwangs R² = 1,0000 erreicht – nimmt man das Häkchen heraus, steht dort y = 2,000·x + 0,0000. Außerdem liefert erst die Steigung k = 2,0 kg über m = 2 · k die Masse 4,00 kg zurück; aus Tobias' Faktor 4 folgt keine einzige Größe."
+  }
+ },
+ {
+  "id": "ki15",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "S3",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Auftragung F über s ergibt eine Ursprungsgerade, und ihre Steigung ist unmittelbar die",
+    "loesung": "Federkonstante",
+    "post": "; bei D = 20 N/m lautet die Fitzeile y = 20,000·x."
+   },
+   {
+    "pre": "Über s aufgetragen liegt die Energie auf einer Parabel ohne ablesbare Steigung. Deshalb wird",
+    "loesung": "linearisiert",
+    "post": ": Auf die x-Achse kommt s² statt s."
+   },
+   {
+    "pre": "Über s² ergibt dieselbe Messreihe die Gerade y = 10,000·x. Die Federkonstante folgt daraus erst durch",
+    "loesung": "Verdoppeln",
+    "post": ", also D = 2 · k = 20,000 N/m."
+   },
+   {
+    "pre": "Die Steigung der E-s²-Geraden ist nur halb so groß wie D, weil die Energie die",
+    "loesung": "Dreiecksfläche",
+    "post": "unter der Kraftgeraden ist – halb so groß wie das Rechteck F · s."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei der Messreihe mit D = 50 N/m nennt „F über s auftragen“ die Steigung 50,000 N/m, „E über s² auftragen“ dagegen 25,000 N/m; beide Zahlen stammen aus denselben sieben Messwerten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Auswertung unter der Messreihe vergleicht bei D = 20 N/m die Zeilen zu 5 cm und 10 cm: Die Kraft wächst auf das 2,0-fache, die Energie auf das 4,0-fache.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Punkte der Auftragung E über s dicht beieinander liegen, lässt sich auch dort eine Steigung ablesen; sie beträgt D/2.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Aus der Steigung der E-s²-Geraden folgt die Federkonstante durch Halbieren, aus k = 10,000 N/m also D = 5 N/m.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira liest bei der Messreihe mit D = 20 N/m unter „E über s² auftragen“ die Steigung k = 10,000 N/m ab und notiert: „Die Federkonstante dieser Feder ist 10 N/m.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Der Schluss trägt: Die Steigung jeder Ursprungsgeraden einer Messreihe ist die Federkonstante. Damit sind 10,000 N/m der gesuchte Wert, und die 20,000 N/m der ersten Auftragung gehören zu einer anderen Größe.",
+    "Der Schluss trägt nicht: Die Steigung der E-s²-Geraden ist D/2. Die Federkonstante folgt erst durch Verdoppeln, D = 2 · k = 20,000 N/m – genau der Wert, den die F-s-Gerade unmittelbar als Steigung ausweist.",
+    "Der Schluss trägt nicht: Über s² ist die Steigung doppelt so groß wie D. Aus 10,000 N/m folgt deshalb D = 5 N/m, und die F-s-Gerade zeigt einen anderen Ausschnitt derselben Feder."
+   ],
+   "richtig": 1,
+   "erklaerung": "Aufgetragen wird E = ½ · D · s². Steht s² auf der x-Achse, so ist der Vorfaktor vor x gerade ½ · D, und genau diesen Vorfaktor liefert der Fit als Steigung k. Aus k = 10,000 N/m folgt deshalb D = 2 · k = 20,000 N/m; der Ergebniskasten druckt diese Rückrechnung Zeile für Zeile und meldet gegen die eingestellten 20 N/m eine Abweichung von 0,00 %. Wer jede Ursprungsgerade gleich behandelt, übersieht, dass es auf die aufgetragenen Größen ankommt und nicht auf die Form der Kurve: Beide Auftragungen sind Ursprungsgeraden, aber nur die F-s-Gerade hat D als Steigung. Wer die Rückrechnung umdreht und statt zu verdoppeln halbiert, käme auf 5 N/m – ein Wert, der zu keiner der beiden Fitzeilen passt. Die Probe ist einfach: Eine Messreihe, zwei Auftragungen, aber nur eine Feder – am Ende muss zweimal dieselbe Federkonstante herauskommen."
+  },
+  "offen": {
+   "frage": "Erkläre, warum dieselbe Messreihe zwei verschiedene Steigungen liefert – 20,000 N/m unter „F über s auftragen“ und 10,000 N/m unter „E über s² auftragen“ –, begründe, weshalb der Faktor ½ zwischen ihnen kein Rechenzufall ist, und beurteile, was das R² = 1,0000 beider Geraden über die Messung aussagt.",
+   "prompt": "Erkläre, warum dieselbe Messreihe zwei verschiedene Steigungen liefert – 20,000 N/m unter „F über s auftragen“ und 10,000 N/m unter „E über s² auftragen“ –, begründe, weshalb der Faktor ½ zwischen ihnen kein Rechenzufall ist, und beurteile, was das R² = 1,0000 beider Geraden über die Messung aussagt.",
+   "zeilen": 5,
+   "loesung": "Die beiden Geraden tragen verschiedene Größen auf, deshalb bedeuten ihre Steigungen Verschiedenes. Über s aufgetragen gilt F = D · s: Die Steigung ist D selbst, hier 20,000 N/m. Über s² aufgetragen gilt E = ½ · D · s²; steht s² auf der x-Achse, so ist der Vorfaktor vor x gerade ½ · D, und genau ihn liefert der Fit mit 10,000 N/m. Zurückgerechnet ist D = 2 · k = 20,000 N/m, und damit stimmen beide Wege überein – wie es sein muss, denn es ist eine einzige Feder. Der Faktor ½ ist kein Rechenzufall, sondern die Fläche unter der Kraftgeraden. Beim Spannen wächst die Kraft von null bis F = D · s; die verrichtete Arbeit ist deshalb nicht das Rechteck F · s, sondern das Dreieck darunter mit der Grundseite s und der Höhe F, und ein Dreieck ist halb so groß wie das Rechteck mit denselben Seiten. Genau diese Halbierung taucht in der Steigung wieder auf. Der Zwischenschritt über s war nötig, um das zu sehen: Dort ergibt dieselbe Messreihe eine Parabel, und eine Parabel hat keine ablesbare Steigung. Das Ersetzen von s durch s² auf der x-Achse ist das Linearisieren, und erst danach steht wieder eine Zahl da, die man deuten kann. Das R² = 1,0000 sagt über die Güte einer echten Messung dagegen nichts aus. Die Simulation rechnet mit einer idealen Feder und einer reibungsfreien Bahn, ihre Punkte liegen deshalb exakt auf der Kurve des Modells; Messunsicherheiten gibt es hier gar nicht. An einer echten Fahrbahn streuen die Punkte, R² bleibt unter 1, und erst dann ist der Wert ein Maß dafür, wie gut Modell und Messung zusammenpassen."
+  }
+ },
+ {
+  "id": "ki16",
+  "theme": "ef_mechanik",
+  "komp": [
+   "S1",
+   "E6",
+   "E8",
+   "S2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Weil die Geschwindigkeit v eine gerichtete Größe ist, ist auch p = m · v gerichtet; auf einer geraden Bahn hält deshalb schon ein einziges",
+    "loesung": "Vorzeichen",
+    "post": "die Richtung fest – nach rechts positiv, nach links negativ."
+   },
+   {
+    "pre": "Nach dem dritten newtonschen Gesetz drücken beide Körper gleich lange mit gleich großer, entgegengesetzt gerichteter Kraft aufeinander; für die Impulsänderungen folgt daraus Δp₁ =",
+    "loesung": "−Δp₂",
+    "post": "."
+   },
+   {
+    "pre": "Beim Durchgang mit m₁ = 1 kg und m₂ = 5 kg meldet das Anzeigefeld nach der Berührung p₂ = 100,0 kg·m/s und p_ges = 60,0 kg·m/s; für die zurücklaufende Kugel 1 steht dort demnach p₁ =",
+    "loesung": "−40,0 kg·m/s",
+    "post": "."
+   },
+   {
+    "pre": "Aus E = ½ · m · v² und p = m · v lässt sich die kinetische Energie unmittelbar aus dem abgelesenen Impuls gewinnen:",
+    "loesung": "E = p² / (2 · m)",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer nach dem Stoß die beiden Beträge addiert, kommt auf 140,0 kg·m/s und damit auf mehr Impuls, als vor der Berührung im System steckte.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Kurve „Impuls Ball 1“ fällt beim Zusammenstoß auf −40,0 und bestätigt damit den Wert, den das Anzeigefeld für p₁ nennt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kugel 1 gibt beim Stoß mehr Impuls ab, als sie vorher besaß: Ihre Impulsänderung beträgt 100,0 kg·m/s, ihr Wert vor der Berührung nur 60,0 kg·m/s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Da die Simulation ohne Reibung rechnet, ließe sich an ihr auch ein unelastischer Stoß einstellen, bei dem die beiden Kugeln zusammenkleben und p_ges trotzdem erhalten bleibt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira will aus dem gemessenen Gesamtimpuls p_ges = 60,0 kg·m/s allein vorhersagen, mit welchen Impulsen die beiden Kugeln nach der Berührung auseinanderlaufen. Warum reicht der Impulserhaltungssatz dafür nicht aus?",
+   "optionen": [
+    "Eine einzige Gleichung legt zwei unbekannte Geschwindigkeiten nicht fest. Erst die zusätzliche Bedingung des elastischen Stoßes – die Erhaltung der kinetischen Energie – führt auf p₁ = −40,0 kg·m/s und p₂ = 100,0 kg·m/s.",
+    "Der Erhaltungssatz gilt nur, solange die Kugeln einander nicht berühren. Während des Stoßes wirken innere Kräfte, und die Summe p_ges weicht für diesen Augenblick von 60,0 kg·m/s ab.",
+    "Der Gesamtimpuls fasst nur Beträge zusammen und verliert dabei die Richtungen. Vorherzusagen wäre deshalb zunächst die Summe 40,0 + 100,0 = 140,0 kg·m/s, aus der sich die beiden Anteile ergeben."
+   ],
+   "richtig": 0,
+   "erklaerung": "Der Impulserhaltungssatz liefert für den geraden Stoß genau eine Gleichung: m₁ · v₁ + m₂ · v₂ bleibt erhalten. Gesucht sind darin zwei Größen, die beiden Geschwindigkeiten nach dem Stoß; eine Gleichung mit zwei Unbekannten legt sie nicht fest. Die zweite Bedingung steuert die Energie bei: Beim elastischen Stoß bleibt auch die kinetische Energie erhalten, und erst beide Sätze zusammen ergeben v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂). Mit m₁ = 1 kg, m₂ = 5 kg und v₁ = 60 m/s folgt v₁' = ((1 − 5) · 60) / 6 = −40 m/s, also p₁ = −40,0 kg·m/s und über die Summe p₂ = 100,0 kg·m/s – genau die beiden abgelesenen Werte. Dass der Satz während der Berührung aussetze, widerlegt die Simulation selbst: Die Kurve „Gesamtimpuls“ läuft über den Stoß hinweg waagerecht auf 60,0 kg·m/s. Und p_ges ist nicht die Summe der Beträge, sondern die vorzeichenrichtige Summe; 140,0 kg·m/s an Impuls sind im System nicht vorhanden."
+  },
+  "offen": {
+   "frage": "Tobias zieht den Regler „Masse 1 (kg)“ erst nach dem Zusammenstoß von 1 kg auf 2 kg. Das Anzeigefeld meldet daraufhin p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0 kg·m/s. Er hält fest: „Der Gesamtimpuls ist von 60,0 auf 20,0 kg·m/s gefallen – der Erhaltungssatz gilt also nicht immer.“ Prüfe seine Zahlen rechnerisch und beurteile, was diese Tabellenzeile in Wirklichkeit belegt.",
+   "prompt": "Tobias zieht den Regler „Masse 1 (kg)“ erst nach dem Zusammenstoß von 1 kg auf 2 kg. Das Anzeigefeld meldet daraufhin p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0 kg·m/s. Er hält fest: „Der Gesamtimpuls ist von 60,0 auf 20,0 kg·m/s gefallen – der Erhaltungssatz gilt also nicht immer.“ Prüfe seine Zahlen rechnerisch und beurteile, was diese Tabellenzeile in Wirklichkeit belegt.",
+   "zeilen": 5,
+   "loesung": "Abgelesen und nachgerechnet sind die Zahlen richtig. Nach dem Stoß gilt für Kugel 1 p₁ = −40,0 kg·m/s bei m₁ = 1 kg, ihre Geschwindigkeit ist also v₁' = −40 m/s. Daran ändert das Verstellen des Reglers nichts: Die Simulation rechnet p = m · v mit der neuen Masse und der alten Geschwindigkeit weiter und meldet deshalb p₁ = 2 kg · (−40 m/s) = −80,0 kg·m/s. Kugel 2 bleibt unberührt bei p₂ = 100,0 kg·m/s, und die Summe ist −80,0 + 100,0 = 20,0 kg·m/s. Der Fehlbetrag von 40,0 kg·m/s ist genau das zusätzliche Kilogramm mal 40 m/s. Der Schluss daraus trägt trotzdem nicht. Der Impulserhaltungssatz gilt für ein abgeschlossenes System, an dem von außen keine Kraft angreift und dessen Körper dieselben bleiben. Zwischen den beiden Ablesungen ist aber kein Stoß abgelaufen, sondern von außen die Masse eines Körpers verändert worden – ein wirklicher Körper ändert seine Masse unterwegs nicht. Die Zeile ist damit eine Grenze des Modells und kein Gegenbeispiel zum Erhaltungssatz. Prüfen lässt sich der Satz nur so wie in den beiden Zeilen davor: die Masse vor „Stoß auslösen“ einstellen und p_ges vor und nach der Berührung vergleichen. Dort steht beide Male 60,0 kg·m/s, und die Kurve „Gesamtimpuls“ bleibt über den Stoß hinweg waagerecht."
+  }
+ },
+ {
+  "id": "gw1",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "E11",
+   "E10"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Überstreicht der Zeiger von der Drehachse zum Körper in gleichen Zeiten gleiche Winkel, so ist der Quotient Δφ/Δt konstant; er heißt",
+    "loesung": "Winkelgeschwindigkeit ω",
+    "post": "und wird in 1 rad/s angegeben."
+   },
+   {
+    "pre": "Der Winkel wird dabei im Bogenmaß gemessen; ein voller Umlauf entspricht",
+    "loesung": "2π rad",
+    "post": "."
+   },
+   {
+    "pre": "Im Bogenmaß gilt für den Bogen s = φ · r. Setzt man das in Δs/Δt ein, so folgt",
+    "loesung": "v = ω · r",
+    "post": "; dabei ist r der Abstand des Punktes von der Drehachse."
+   },
+   {
+    "pre": "Bei der gleichförmigen Kreisbewegung bleibt der Betrag der Bahngeschwindigkeit unverändert, ihre Richtung nicht: Der Geschwindigkeitsvektor zeigt in jedem Augenblick",
+    "loesung": "tangential zur Bahn",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil Mira weiter innen sitzt als Tobias, überstreicht ihr Sitz in jeder Sekunde einen kleineren Winkel.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei festem Radius wächst der in der Zeile v≈ angezeigte Wert proportional zur eingestellten Winkelgeschwindigkeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Kurve im Diagramm „Bahngeschwindigkeit v“ verläuft waagerecht, obwohl der Ball seine Bewegungsrichtung fortlaufend ändert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zieht man bei ω = 7 rad/s den Regler „Radius r“ von 70 px auf 40 px, so wird der grüne Pfeil am Ball entsprechend kürzer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias verkleinert bei ω = 7 rad/s den Radius von 70 px auf 40 px und liest unmittelbar danach den obersten Achsenwert im Diagramm „Bahngeschwindigkeit v“ ab. Dort steht 490,0. Diesen Wert notiert er als neues Messergebnis. Welcher Einwand trifft zu?",
+   "optionen": [
+    "Die Anzeige ist brauchbar, sie führt nur eine andere Einheit: 490,0 px/s entsprechen geteilt durch 10 einer Bahngeschwindigkeit von 49,0.",
+    "Das Diagramm zeigt stets den größten bisher erreichten Wert und behält ihn nach dem Verkleinern des Radius dauerhaft bei.",
+    "Das Diagramm skaliert sich selbst und hinkt rund fünf Sekunden nach; 490,0 gehört noch zu r = 70 px. Abgelesen wird die Zeile v≈ mit 28,0."
+   ],
+   "richtig": 2,
+   "erklaerung": "Die Zahl 490,0 ist nicht falsch, sondern veraltet: Sie gehört zur vorigen Reglerstellung r = 70 px, in der die Zeile v≈ den Wert 49,0 trägt – die stehende Achsenanzeige führt in px/s den zehnfachen Wert. Das Diagramm skaliert sich selbst und braucht rund fünf Sekunden, bis es der neuen Stellung folgt; danach steht dort 280,0, passend zu v≈ 28,0. Einen Höchstwert behält es nicht bei, die Kurve liegt anschließend wieder am oberen Rand. Verlässlich ist deshalb allein die Zeile v≈ im Anzeigefeld, denn sie ändert sich sofort mit dem Regler."
+  },
+  "offen": {
+   "frage": "Tobias hält als Ergebnis fest: „Der Wert der Zeile v≈ geteilt durch ω ergibt bei r = 70 px jedes Mal 7,0 – das ist genau der eingestellte Radius.“ Beurteile diese Aussage. Erkläre, warum der Quotient 7,0 und nicht 70 beträgt, und begründe mit v = ω · r, welche Einheit die Zeile v≈ trägt, obwohl dort keine angegeben ist.",
+   "prompt": "Tobias hält als Ergebnis fest: „Der Wert der Zeile v≈ geteilt durch ω ergibt bei r = 70 px jedes Mal 7,0 – das ist genau der eingestellte Radius.“ Beurteile diese Aussage. Erkläre, warum der Quotient 7,0 und nicht 70 beträgt, und begründe mit v = ω · r, welche Einheit die Zeile v≈ trägt, obwohl dort keine angegeben ist.",
+   "zeilen": 4,
+   "loesung": "Die Messung stimmt, die Deutung nur zur Hälfte. Aus v = ω · r folgt r = v/ω, der Quotient ist also tatsächlich der Radius – aber nicht die am Regler abgelesene Zahl in px. Die Simulation zeichnet 10 px als 1 m, die 70 px stehen deshalb für 7,0 m, und genau diese Zahl erscheint: 21,0 : 3 rad/s = 7,0, ebenso 42,0 : 6 rad/s = 7,0 und 49,0 : 7 rad/s = 7,0. Bei 40 px, also 4,0 m, ergibt sich 28,0 : 7 rad/s = 4,0. Weil der Winkel im Bogenmaß als Verhältnis zweier Längen gebildet wird, trägt ω · r die Einheit m/s; die Zeile v≈ gibt also Meter pro Sekunde an, auch ohne aufgedruckte Einheit. Tobias muss seinen Satz um den Maßstab ergänzen: Der Quotient ist der Radius in Metern."
+  }
+ },
+ {
+  "id": "gw2",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "S5",
+   "K8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der rote Kraftpfeil zeigt in jeder Winkelstellung φ zum",
+    "loesung": "Mittelpunkt",
+    "post": "der Kreisbahn."
+   },
+   {
+    "pre": "Umlaufzeit T und Umlauffrequenz f sind Kehrwerte voneinander; es gilt",
+    "loesung": "T = 1/f",
+    "post": "."
+   },
+   {
+    "pre": "Für die Zentripetalbeschleunigung gibt es zwei gleichwertige Ausdrücke: a_z = v²/r und, mit ω statt v, a_z =",
+    "loesung": "ω²·r",
+    "post": "(in m/s²)."
+   },
+   {
+    "pre": "Nach dem zweiten Newton'schen Gesetz gehört dazu eine Kraft in derselben Richtung: F_z =",
+    "loesung": "m · a_z",
+    "post": "; in der Ausgangsstellung sind das 35,53 N."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zieht man allein den Regler für die Masse von 0,50 kg auf 1,00 kg, so verdoppelt sich mit F_z auch die Zentripetalbeschleunigung a_z.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der grüne Geschwindigkeitspfeil und der rote Kraftpfeil stehen in jeder Winkelstellung senkrecht aufeinander.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Kettenkarussell greift an einem Sitz neben Gewichtskraft und Kettenkraft zusätzlich eine eigene Zentripetalkraft nach innen an.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Erhöht man bei r = 0,80 m und f = 1,50 Hz die Masse auf 2,00 kg, so zeigt die Simulation F_z = 142,1 N, während T weiterhin 0,667 s beträgt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias startet die Simulation neu und will die Umlaufzeit belegen. Hinter „daraus gemessene Umlaufzeit“ steht noch ein Strich, während die „Uhr der Simulation“ daneben bereits weiterzählt. Er notiert deshalb den Stand dieser Uhr als Umlaufzeit T. Welcher Einwand trifft zu?",
+   "optionen": [
+    "Bei f = 1,50 Hz lässt sich die Umlaufzeit gar nicht messen; der Strich verschwindet erst, wenn die Umlauffrequenz erhöht wird.",
+    "Die „Uhr der Simulation“ gibt zwar die Umlaufzeit an, weicht aber wegen der Messunsicherheit von T = 1/f ab; verlässlich wird sie erst nach mehreren Umläufen.",
+    "Die „Uhr der Simulation“ gibt die gesamte Laufzeit seit dem Start an; die gemessene Umlaufzeit erscheint erst nach einem vollen Umlauf und beträgt dann T = 0,667 s."
+   ],
+   "richtig": 2,
+   "erklaerung": "Die beiden Anzeigen messen Verschiedenes. Die „Uhr der Simulation“ läuft ab dem Start durch und gibt die gesamte Laufzeit an; ihr Stand wächst über jeden Umlauf hinaus und ist deshalb keine Umlaufzeit. Das Feld „daraus gemessene Umlaufzeit“ bleibt so lange ein Strich, bis der Drehwinkel φ einmal ganz herumgelaufen ist; danach steht dort T = 0,667 s, genau der Wert der Rechenzeile T = 1/f. An der Umlauffrequenz muss dafür nichts verstellt werden, und eine Abweichung zwischen gemessener und gerechneter Umlaufzeit tritt hier nicht auf."
+  },
+  "offen": {
+   "frage": "Tobias zieht allein den Masse-Regler von 0,50 kg auf 2,00 kg und liest F_z = 142,1 N ab. Er folgert: „Bei größerer Masse wird der Körper stärker beschleunigt.“ Beurteile diese Folgerung anhand der drei Zeilen für a_z und begründe mit a_z = ω²·r und F_z = m · a_z, welche Größe hier von der Masse abhängt und welche nicht.",
+   "prompt": "Tobias zieht allein den Masse-Regler von 0,50 kg auf 2,00 kg und liest F_z = 142,1 N ab. Er folgert: „Bei größerer Masse wird der Körper stärker beschleunigt.“ Beurteile diese Folgerung anhand der drei Zeilen für a_z und begründe mit a_z = ω²·r und F_z = m · a_z, welche Größe hier von der Masse abhängt und welche nicht.",
+   "zeilen": 5,
+   "loesung": "Die Folgerung trägt nicht. In allen drei Einstellungen steht für die Zentripetalbeschleunigung derselbe Wert a_z = 71,06 m/s², denn a_z = ω²·r enthält nur ω = 9,4248 rad/s und r = 0,80 m; die Masse kommt darin nicht vor. Weil Radius und Umlauffrequenz unangetastet bleiben, ändern sich auch T = 0,667 s und v = 7,53984 m/s nicht – beschleunigt wird der Körper bei 2,00 kg also genauso stark wie bei 0,50 kg. Von der Masse abhängig ist allein die Kraft: F_z = m · a_z wächst proportional zu m, von 35,53 N über 71,06 N auf 142,1 N. Die größere Kraft ist gerade nötig, damit an der größeren Masse dieselbe Zentripetalbeschleunigung zustande kommt. Tobias schließt von der gewachsenen Kraft fälschlich auf eine gewachsene Beschleunigung; belegen ließe sich seine Aussage nur mit einer Änderung von a_z, und die zeigt die Messreihe nicht."
+  }
+ },
+ {
+  "id": "gw3",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "S6",
+   "E7",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Setzt man ω = 2·π·f in a_z = ω²·r ein und multipliziert mit der Masse, so erhält man F_z =",
+    "loesung": "4·π²·m·f²·r",
+    "post": "."
+   },
+   {
+    "pre": "Hält man m und r fest, liegen die Punkte von F_z über f auf einer Parabel; eine Ursprungsgerade ergibt sich erst, wenn man F_z über",
+    "loesung": "f²",
+    "post": "aufträgt."
+   },
+   {
+    "pre": "Aus der Steigung k dieser Geraden folgt bei bekanntem Radius r die Masse m =",
+    "loesung": "k/(4·π²·r)",
+    "post": "."
+   },
+   {
+    "pre": "Bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz meldet das Statusfeld a_z = 71,06 m/s²; als Zentripetalkraft steht dort",
+    "loesung": "35,53 N",
+    "post": ", in die Tabelle übernommen wird dagegen 35,65 N."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die erwartete Steigung der F_z-über-r-Geraden beträgt bei m = 0,50 kg 44,413 N/m und bei m = 1,50 kg 133,240 N/m; das Verhältnis dieser beiden Steigungen entspricht dem Verhältnis der eingestellten Massen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Da beide Reihen bei m = 0,50 kg aufgenommen wurden, müssten die erwartete Steigung der r-Reihe (44,413 N/m) und die der f²-Reihe (15,791 N·s²) übereinstimmen; ihre Verschiedenheit weist auf einen Auswertungsfehler hin.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der von Hand übernommene Messpunkt bei r = 0,80 m steht mit genau dem Wert in der Tabelle, den das Statusfeld unmittelbar davor angezeigt hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wer vor der zweiten Messreihe die Tabelle nicht leert, erhält im Ergebniskasten keine Auswertung, die allein zur neuen Reihe gehört.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mira notiert für die Jury: „Das Bestimmtheitsmaß beträgt R² = 1,0000, unsere Messreihe ist also fehlerfrei.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Die Aussage geht zu weit: R² sagt nur, wie eng die acht Punkte an der Ausgleichsgeraden liegen. Wie gut die Reihe trifft, liest man am Vergleich der gemessenen Steigung 44,383 N/m mit der erwarteten 44,413 N/m ab.",
+    "Die Aussage trifft zu: Bei R² = 1,0000 liegt jeder Messpunkt exakt auf der Ausgleichsgeraden, die Kraftmessdose hat in diesem Durchgang also nicht gestreut.",
+    "Die Aussage ist falsch, weil R² allein von der Zahl der Messwerte abhängt; bei acht aufgenommenen Punkten ergibt sich 1,0000 zwangsläufig."
+   ],
+   "richtig": 0,
+   "erklaerung": "R² misst nur den Zusammenhalt der Punkte um die Ausgleichsgerade und steht in dieser Simulation fast immer bei 0,9999 oder 1,0000; das heißt lediglich, dass die Streuung gegenüber dem Messbereich klein ist. Über die Richtigkeit entscheidet der Vergleich mit der erwarteten Steigung: 44,383 N/m gegen 44,413 N/m, daraus die Abweichung von 0,07 %. Dass die Kraftmessdose sehr wohl streut, zeigt schon der erste Punkt – 35,53 N im Statusfeld gegen 35,65 N in der Tabelle. Von der Zahl der Messwerte hängt R² nicht ab."
+  },
+  "offen": {
+   "frage": "Für die dritte Reihe – m = 1,50 kg, f = 1,50 Hz, F_z über r – nennt das Auswertungsfeld die erwartete Steigung 133,240 N/m und zählt sieben Messwerte, während die erste Reihe acht enthielt. Bestätige mit 4·π²·f² = 88,83 1/s² die eingestellte Masse und erkläre, woher der Unterschied zwischen sieben und acht Messwerten stammt.",
+   "prompt": "Für die dritte Reihe – m = 1,50 kg, f = 1,50 Hz, F_z über r – nennt das Auswertungsfeld die erwartete Steigung 133,240 N/m und zählt sieben Messwerte, während die erste Reihe acht enthielt. Bestätige mit 4·π²·f² = 88,83 1/s² die eingestellte Masse und erkläre, woher der Unterschied zwischen sieben und acht Messwerten stammt.",
+   "zeilen": 4,
+   "loesung": "m = k/(4·π²·f²) = 133,240 N/m : 88,83 1/s² = 1,4999 kg, also die eingestellten 1,50 kg. Mit der Zahl der Messwerte hat das nichts zu tun: „Messreihe automatisch aufnehmen“ legt sieben Radien in die Tabelle – 0,2 m, 0,4 m, 0,6 m, 0,9 m, 1,1 m, 1,3 m und 1,5 m. In der ersten Reihe stand zusätzlich der von Hand übernommene Punkt bei r = 0,80 m mit 35,65 N schon in der Tabelle; vor dem dritten Durchgang wurde sie dagegen geleert. Auf das Ergebnis wirkt sich der eine Punkt kaum aus: Auch aus sieben Werten kommt die zurückgerechnete Masse auf wenige Zehntelprozent heran, die Abweichungen liegen meist zwischen 0,1 % und 0,5 %. Zu beachten bleibt, dass 1,4999 kg aus der erwarteten Steigung folgt; die gemessene Steigung weicht in jedem Durchgang etwas davon ab, weil die Kraftmessdose um etwa 1,5 % streut."
+  }
+ },
+ {
+  "id": "gw4",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "K8",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Über dem Abstand r liegen die fünf Messpunkte auf einer fallenden Kurve; eine Steigung ist daraus nicht abzulesen, und das Auswertungsfeld zeichnet dort bewusst keine",
+    "loesung": "Ausgleichsgerade",
+    "post": "."
+   },
+   {
+    "pre": "Erst wenn man F nicht über r, sondern über 1/r² aufträgt, entsteht eine Ursprungsgerade. Diesen Rechenschritt nennt man",
+    "loesung": "Linearisieren",
+    "post": "."
+   },
+   {
+    "pre": "Bei beiden Massen 5 kg meldet das Auswertungsfeld y = 200,000·x bei R² = 1,0000. Durch m₁ · m₂ = 25 geteilt, ergibt diese Steigung die Verhältniszahl",
+    "loesung": "8,000 Einheiten je kg²",
+    "post": "."
+   },
+   {
+    "pre": "Trägt man F dagegen über m₁ auf, so liegen die Punkte ohne jede Umrechnung auf einer Geraden; bei m₂ = 5 kg und Abstand 2 beträgt ihre Steigung",
+    "loesung": "10,000",
+    "post": ", und daraus rechnet der Ergebniskasten m₂ = 5,000 kg zurück."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwischen zwei Messpunkten einer auswertbaren Reihe darf nur eine Größe verändert werden; die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In der Auftragung „F über r auftragen“ fehlt die Ausgleichsgerade, weil fünf Messwerte für eine Gerade zu wenige sind.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Dieselben fünf Messwerte ergeben über 1/r² die Gerade y = 200,000·x und in der Auftragung „F über m₁·m₂/r² auftragen“ die Gerade y = 8,000·x.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Aus der Steigung der Geraden über 1/r² lässt sich die Anziehung zwischen den beiden Kugeln in Newton angeben, sobald der Abstand bekannt ist.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias trägt die Messreihe über 1/r² auf, liest y = 200,000·x ab und notiert für die Jury: „Die Steigung 200 ist die Naturkonstante dieser beiden Kugeln.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Tobias hat recht: R² = 1,0000 zeigt, dass jeder Messpunkt genau auf der Geraden liegt. Eine Steigung, die so exakt herauskommt, kann nur eine Naturkonstante sein.",
+    "Die Steigung gehört zu dieser einen Messreihe: Unter „Erwarteter Funktionstyp“ steht „Steigung = 8 · m₁ · m₂ = 8 · 5 · 5 = 200“. Erst k geteilt durch m₁ · m₂ ergibt die für jede Reihe gleiche Verhältniszahl 8,000 Einheiten je kg².",
+    "Eine Steigung ist hier gar keine physikalische Größe, weil auf der x-Achse mit 1/r² eine reine Zahl steht. Ablesbar ist an der Geraden allein, dass die Anziehung mit wachsendem Abstand abnimmt."
+   ],
+   "richtig": 1,
+   "erklaerung": "Die Steigung der 1/r²-Geraden ist k = 8 · m₁ · m₂ und hängt damit an den beiden eingestellten Massen: Bei 5 kg und 5 kg sind es 200,000, bei anderen Massen eine andere Zahl. Konstant bleibt erst k / (m₁ · m₂) = 200,000 / 25 = 8,000 Einheiten je kg² – dieselbe Zahl für jede Messreihe. Wie stark die Steigung von der Einstellung abhängt, zeigt die zweite Reihe: über m₁ bei m₂ = 5 kg und Abstand 2 lautet sie 10,000. Dass 1/r² eine reine Zahl ist, macht die Steigung nicht wertlos, sondern gibt ihr gerade die Einheit der Anziehung; und R² = 1,0000 sagt nur, wie eng die Punkte an der Geraden liegen, nicht, was die Steigung bedeutet. In der Natur steht an der Stelle der Verhältniszahl die Gravitationskonstante G – die kennt die Simulation nicht, weil sie in Einheiten statt in Newton zählt."
+  },
+  "offen": {
+   "frage": "Mira nimmt nach dem Leeren der Tabelle bei m₂ = 5 kg und Abstand 2 die Reihe über m₁ auf. Erkläre, warum diese Auftragung ohne Linearisierung auskommt, die Abstandsreihe aber nicht, und begründe, warum die Steigung 10,000 die Masse der rechten Kugel verrät.",
+   "prompt": "Mira nimmt nach dem Leeren der Tabelle bei m₂ = 5 kg und Abstand 2 die Reihe über m₁ auf. Erkläre, warum diese Auftragung ohne Linearisierung auskommt, die Abstandsreihe aber nicht, und begründe, warum die Steigung 10,000 die Masse der rechten Kugel verrät.",
+   "zeilen": 4,
+   "loesung": "Die Masse geht in der ersten Potenz ein: F = (8 · m₂ / r²) · m₁. Trägt man F über m₁ auf, steht auf der x-Achse also genau die Größe, zu der F proportional ist – 10,00, 20,00, 30,00, 40,00 und 50,00 Einheiten zu m₁ = 1 bis 5 kg –, und die Punkte liegen ohne Umrechnung auf einer Ursprungsgeraden. Der Abstand geht dagegen im Quadrat und im Nenner ein; über r ergibt das eine fallende Kurve, aus der keine Steigung abzulesen ist. Erst die Ersatzgröße 1/r² auf der x-Achse macht daraus eine Gerade, und das ist das Linearisieren. Die Steigung der m₁-Geraden ist k = 8 · m₂ / r². Darin sind der Abstand r = 2 und die Verhältniszahl 8 bekannt, unbekannt ist allein m₂; also lässt sich nach ihr auflösen: m₂ = k · r² / 8 = 10,000 · 4 / 8 = 5,000 kg. Genau das steht im Ergebniskasten, und es stimmt mit dem Regler „Masse der rechten Kugel“ überein. Gemessen wurde die rechte Masse damit nicht unmittelbar, sondern über ihre Wirkung auf die Steigung – der übliche Weg, wenn eine Größe selbst nicht zugänglich ist."
+  }
+ },
+ {
+  "id": "gw5",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "S7",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Aus der Masse eines Körpers und dem Ortsfaktor ergibt sich die Gewichtskraft nach der Vorschrift F =",
+    "loesung": "m · g",
+    "post": ", die die Simulation selbst in ihr Statusfeld schreibt."
+   },
+   {
+    "pre": "Der Ortsfaktor gibt die Kraft je Kilogramm an; als Quotient g = F / m trägt er deshalb die Einheit",
+    "loesung": "N/kg",
+    "post": "."
+   },
+   {
+    "pre": "Dieselbe Person erfährt auf der Erde 588 N und auf dem Mond 96 N. Der Quotient dieser beiden Kräfte beträgt",
+    "loesung": "6,125",
+    "post": "und stimmt mit dem Quotienten der beiden Ortsfaktoren überein."
+   },
+   {
+    "pre": "Die Einheit Newton ist über 1 N = 1 kg · m/s² festgelegt. Teilt man beide Seiten durch 1 kg, so folgt 1 N/kg =",
+    "loesung": "1 m/s²",
+    "post": "; die Angabe aus dem Fallversuch und die Angabe je Kilogramm meinen daher dieselbe Größe."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Von den drei Zahlen des Statusfelds bleibt beim Wechsel zwischen Mond, Erde und Jupiter allein die Masse unverändert stehen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Da die Gewichtskraft auf dem Mond nur etwa ein Sechstel des Erdwerts beträgt, ist von der Person dort auch nur ein Sechstel der Masse vorhanden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Für eine Person von 75 kg liefern die Ortsfaktoren der Simulation auf dem Mond 120 N und auf der Erde 735 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Quotient aus angezeigter Gewichtskraft und Masse fällt für Mond, Erde und Jupiter verschieden aus; er ist deshalb keine für den einzelnen Ort feste Zahl.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias vergleicht die beiden Angaben für g: In Kapitel 1 stand 9,81 m/s² aus dem Fallversuch, im Statusfeld steht 9,8 N/kg. Er schließt daraus, es handle sich um zwei verschiedene Größen mit zufällig ähnlichen Zahlen. Welche Begründung widerlegt ihn?",
+   "optionen": [
+    "Die beiden Angaben sind tatsächlich verschieden: 9,81 ist ein Messwert, 9,8 dagegen ein reiner Rechenwert, den die Division 588 N / 60 kg liefert. Nur weil beide Zahlen dicht beieinanderliegen, darf man sie nebeneinander benutzen.",
+    "Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s², die Einheit ist also dieselbe. Und weil im freien Fall allein die Gewichtskraft wirkt, folgt aus m · g = m · a auch a = g – Einheit und Zahlenwert stimmen überein.",
+    "Die Einheiten m/s² und N/kg lassen sich nicht ineinander überführen; übereinstimmen kann allein der Zahlenwert. Weil im freien Fall a = g gilt, beschreiben die beiden Größen aber dasselbe Verhalten."
+   ],
+   "richtig": 1,
+   "erklaerung": "Beide Teile des Nachweises sind nötig. Zuerst die Einheit: Newton ist über 1 N = 1 kg · m/s² festgelegt; nach Division durch 1 kg bleibt 1 N/kg = 1 m/s². Die Einheiten sind damit nicht bloß ineinander umrechenbar, sondern dieselbe – wer das bestreitet, hält an einem Unterschied fest, den es nicht gibt. Dann der Zahlenwert: Im freien Fall wirkt nur die Gewichtskraft, es gilt also m · g = m · a. Die Masse kürzt sich heraus und es bleibt a = g. Dass sie sich kürzen lässt, ist der eigentliche Kern: Links steht die schwere Masse, rechts die träge – erst weil beide Zahlen gleich groß sind, ist die Gleichsetzung erlaubt. Der Unterschied zwischen 9,81 und 9,8 hat damit nichts zu tun: Gemessen sind 9,81 N/kg, die Simulation rundet auf eine Nachkommastelle. Die Division 588 N / 60 kg liefert deshalb keinen bloßen Rechenwert, sondern genau diesen gerundeten Ortsfaktor zurück."
+  },
+  "offen": {
+   "frage": "Mira teilt die für den Mond angezeigte Gewichtskraft durch die Masse: 96 N / 60 kg = 1,6 N/kg. Sie hält fest: „Damit habe ich den Ortsfaktor der Simulation überprüft.“ Beurteile, was diese Rückwärtsrechnung belegen kann und was nicht, und gib an, wofür sie stattdessen ein Beleg ist.",
+   "prompt": "Mira teilt die für den Mond angezeigte Gewichtskraft durch die Masse: 96 N / 60 kg = 1,6 N/kg. Sie hält fest: „Damit habe ich den Ortsfaktor der Simulation überprüft.“ Beurteile, was diese Rückwärtsrechnung belegen kann und was nicht, und gib an, wofür sie stattdessen ein Beleg ist.",
+   "zeilen": 5,
+   "loesung": "Gerechnet ist die Zeile richtig: 96 N / 60 kg = 1,6 N/kg, und für den Jupiter ergibt 1488 N / 60 kg ebenso die angezeigten 24,8 N/kg. Als Überprüfung des Ortsfaktors taugt die Rechnung dennoch nicht. Die Simulation misst die Kraft nicht, sie rechnet sie aus Masse und Ortsfaktor nach der Vorschrift F = m · g, die sie im Statusfeld selbst nennt. Wer die angezeigte Kraft wieder durch dieselbe Masse teilt, macht genau diesen Rechenschritt rückgängig und muss zwangsläufig die Zahl zurückerhalten, die vorher eingesetzt worden ist. Bestätigt wird damit die Rechnung der Anzeige, nicht der Wert selbst; ein Ergebnis, das gar nicht anders ausfallen kann, prüft nichts. Ob auf dem Mond wirklich 1,6 N/kg herrschen, kann nur eine vom Modell unabhängige Quelle klären – etwa ein Fallversuch vor Ort, wie er in Kapitel 1 für die Erde 9,81 m/s² ergeben hat. Dass die Simulation für die Erde 9,8 N/kg statt der gemessenen 9,81 N/kg ausweist, zeigt ohnehin, dass ihre Zahlen gesetzt und gerundet und nicht gemessen sind. Ein Beleg ist die Rückwärtsrechnung trotzdem, nur für etwas anderes: dafür, was der Ortsfaktor bedeutet. F/m ist die Kraft je Kilogramm, und an einem Ort kommt dabei für jede Masse dieselbe Zahl heraus – mit 75 kg statt 60 kg liefert der Mond 120 N und damit erneut 120 N / 75 kg = 1,6 N/kg. Genau deshalb ist g eine Größe des Ortes und keine Eigenschaft der Person."
+  }
+ },
+ {
+  "id": "gw6",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "S7",
+   "K8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für jeden Ort im Erdfeld liefert die Beziehung",
+    "loesung": "g = G · M / r²",
+    "post": "die Werte des Datenblatts; G und M sind darin fest, veränderlich ist allein r."
+   },
+   {
+    "pre": "Der Abstand r wird dabei nicht ab dem Boden gezählt, sondern ab dem",
+    "loesung": "Erdmittelpunkt",
+    "post": "; dorthin zeigt an jedem Ort auch die Feldstärke."
+   },
+   {
+    "pre": "Auf der ISS-Bahn stehen 8,69 N/kg; gemessen am Wert 9,82 N/kg an der Erdoberfläche sind das rund",
+    "loesung": "89 Prozent",
+    "post": "."
+   },
+   {
+    "pre": "Mit wachsendem Abstand wird die Feldstärke beliebig klein, aber",
+    "loesung": "nie null",
+    "post": "; in der Zeile der Mondbahn stehen deshalb noch 0,0027 N/kg."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Navigationssatellit ist rund viermal so weit vom Erdmittelpunkt entfernt wie ein Punkt der Erdoberfläche; seine Feldstärke beträgt deshalb rund ein Viertel von 9,82 N/kg.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Abstand der ISS-Bahn vom Erdmittelpunkt übertrifft den Erdradius um etwa 6 Prozent, ihre Feldstärke liegt aber um etwa 11 Prozent unter 9,82 N/kg.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil an einem Ort für jeden Körper dieselbe Feldstärke gilt, erfahren auf der ISS-Bahn auch alle Körper dieselbe Kraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die 8,69 N/kg der ISS-Zeile lassen sich auch ohne G und M gewinnen: Multipliziert man 9,82 N/kg mit (6371 : 6771)², so erhält man denselben Wert.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias rechnet die ISS-Zeile nach. In g = G · M / r² setzt er G = 6,674 · 10⁻¹¹ N·m²/kg², M = 5,972 · 10²⁴ kg und für den Abstand die Zahl aus dem Datenblatt ein, also r = 6771. Sein Taschenrechner zeigt 8,69 · 10⁶. Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Die Ziffernfolge stimmt bereits, nur die Größenordnung nicht: In G stecken Meter, im Datenblatt dagegen Kilometer. Mit r = 6 771 000 m wird r² um den Faktor 10⁶ größer, und es bleibt g = 8,69 N/kg.",
+    "Der Fehler steckt in der Masse: Für einen Ort außerhalb der Erde ist in M die Masse des dort kreisenden Körpers hinzuzurechnen; erst danach ergibt sich der Wert des Datenblatts.",
+    "Der Fehler steckt im Abstand: r ist von der Erdoberfläche aus zu zählen, für die ISS also r = 400. Mit diesem Wert sinkt das Ergebnis auf die 8,69 N/kg des Datenblatts."
+   ],
+   "richtig": 0,
+   "erklaerung": "Die Rechnung ist bis auf die Einheiten richtig geführt. G trägt die Einheit N·m²/kg², enthält also Meter; das Datenblatt gibt r dagegen in Kilometern an. Wer 6771 unverändert einsetzt, rechnet mit einem um den Faktor 10³ zu kleinen Abstand, im Nenner also mit einem um 10⁶ zu kleinen r² – genau darum steht die richtige Ziffernfolge 8,69 mit dem Faktor 10⁶ daneben. Mit r = 6 771 000 m fällt dieser Faktor weg und es bleibt g = 8,69 N/kg. Die Masse des kreisenden Körpers gehört nicht in die Rechnung: In g = G · M / r² steht allein die Masse des Zentralkörpers, denn die Probemasse wurde beim Übergang von F = G · M · m / r² zu g = F/m gerade herausgekürzt. Und r = 400 wäre doppelt falsch: Der Abstand zählt ab dem Erdmittelpunkt, und ein kleinerer Abstand im Nenner würde das Ergebnis nicht senken, sondern weiter vergrößern."
+  },
+  "offen": {
+   "frage": "In einem Forum steht: „Die Feldstärke ist keine Eigenschaft des Ortes, sondern des Körpers. Ein schwerer Satellit wird in 26 600 km Abstand ja stärker angezogen als ein leichter – für ihn ist das Feld dort also stärker.“ Beurteile diese Argumentationskette. Stütze dich auf g = F/m und auf die Zeile des Navigationssatelliten.",
+   "prompt": "In einem Forum steht: „Die Feldstärke ist keine Eigenschaft des Ortes, sondern des Körpers. Ein schwerer Satellit wird in 26 600 km Abstand ja stärker angezogen als ein leichter – für ihn ist das Feld dort also stärker.“ Beurteile diese Argumentationskette. Stütze dich auf g = F/m und auf die Zeile des Navigationssatelliten.",
+   "zeilen": 5,
+   "loesung": "Die Kette beginnt richtig und endet falsch. Richtig ist die Beobachtung: Am selben Ort erfährt der schwerere Körper die größere Kraft, denn in F = G · M · m / r² wächst F proportional zur Probemasse m – doppelte Masse, doppelte Kraft. Falsch ist der Schluss auf ein stärkeres Feld, weil dabei Kraft und Feldstärke gleichgesetzt werden. Die Feldstärke ist nicht die Kraft, sondern die Kraft je Kilogramm Probemasse: g = F/m. Weil F und m im selben Verhältnis wachsen, kürzt sich die Probemasse im Quotienten heraus, und es bleibt für jeden Körper derselbe Wert – in 26 600 km Abstand 0,563 N/kg, ob dort ein schwerer oder ein leichter Satellit kreist. Genau darin liegt der Gewinn der Feldbeschreibung: g hängt nur vom Zentralkörper und vom Ort ab, nicht vom Probekörper. Auch der Bau des Datenblatts zeigt das: Die Spalte führt zu jedem Ort genau einen Wert. Träfe die Behauptung zu, müssten zu jedem Ort so viele Feldstärken angegeben werden, wie es Körper gibt, und die 9,82 N/kg an der Erdoberfläche wären als Angabe wertlos. Verschieden ist zwischen schwerem und leichtem Satelliten allein die Kraft F = m · g, nicht das Feld, das sie hervorruft."
+  }
+ },
+ {
+  "id": "gw7",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "S5",
+   "K8",
+   "E3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Drei Größen des newtonschen Kraftgesetzes lassen sich abmessen: die beiden Massen und ihr Abstand. Die vierte ist die",
+    "loesung": "Gravitationskonstante G",
+    "post": "; sie folgt allein aus einer Kraftmessung."
+   },
+   {
+    "pre": "Aus dem Datenblatt folgt m₁ · m₂ = 158 kg · 0,73 kg = 115,34 kg²; für das Quadrat des Mittelpunktabstands ergibt sich r² =",
+    "loesung": "0,0529 m²",
+    "post": "."
+   },
+   {
+    "pre": "Mit G · m₁ · m₂ = 7,70 · 10⁻⁹ N·m² liefert die Division durch r² die Anziehung zwischen großer und kleiner Kugel: F =",
+    "loesung": "1,46 · 10⁻⁷ N",
+    "post": "; diese Kraft verdrillt den Draht."
+   },
+   {
+    "pre": "Für den Ortsfaktor am Erdboden gilt g = G · M / R². Nach der Masse der Erde umgestellt heißt dieselbe Gleichung M =",
+    "loesung": "g · R² / G",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Balken kommt erst zur Ruhe, wenn der verdrillte Draht die Anziehung der Kugeln aufwiegt; aus dem erreichten Drehwinkel folgt deshalb F.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil Cavendish sein Ergebnis 1798 als Dichte der Erde angab, hat die Drehwaage keine Naturkonstante geliefert, sondern eine Eigenschaft der Erde.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Teilt man die Gewichtskraft m₂ · g = 7,16 N durch die berechnete Anziehung zur großen Kugel, so erhält man eine Zahl der Größenordnung 10⁷.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Abstand r, der in F = G · m₁ · m₂ / r² quadratisch eingeht, ist die im Datenblatt genannte Länge des Waagebalkens von 1,8 m.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Mira trägt in ihre Wettbewerbsmappe ein: „Im Gartenhaus von Henry Cavendish wurde 1798 die Masse der Erde gemessen.“ Welche Beurteilung dieser Aussage trifft zu?",
+   "optionen": [
+    "Sie trifft zu: Die Erde zieht an den beiden kleinen Kugeln, und der Drehwinkel des Balkens ist damit unmittelbar ein Maß für ihre Masse.",
+    "Sie zieht zwei Schritte zusammen: Gemessen wurde die Kraft zwischen zwei bekannten Bleimassen, und daraus folgt G = F · r² / (m₁ · m₂). Die Erdmasse ergibt sich erst danach aus M = g · R² / G.",
+    "Sie ist in jeder Hinsicht falsch: Der Versuch liefert allein die Dichte der Erde, wie Cavendish sie 1798 angegeben hat; auf eine Masse führt er grundsätzlich nicht."
+   ],
+   "richtig": 1,
+   "erklaerung": "Die Erde spielt im Gartenhaus keine Rolle: Ihre Anziehung zieht senkrecht an dem waagerecht hängenden Balken und dreht ihn nicht. Was den Draht verdrillt, ist die waagerechte Anziehung zwischen den Bleikugeln – mit m₁ = 158 kg, m₂ = 0,73 kg und r = 0,23 m sind das F = 1,46 · 10⁻⁷ N. Weil m₁, m₂ und r abgemessen sind und F gemessen wird, bleibt in F = G · m₁ · m₂ / r² genau eine Unbekannte; umgestellt ergibt sich G = F · r² / (m₁ · m₂). Erst diese Naturkonstante trennt in g = G · M / R² das Produkt G · M auf, und M = g · R² / G führt mit g = 9,81 N/kg und R = 6,37 · 10⁶ m auf 5,96 · 10²⁴ kg. Auch die dritte Beurteilung trägt nicht: Der Versuch liefert weder Dichte noch Masse unmittelbar, sondern eine Naturkonstante – Dichte und Masse der Erde sind beide erst die Folgerung daraus. Falsch an Miras Satz ist also nicht das Ziel, sondern die übersprungene Zwischenstufe."
+  },
+  "offen": {
+   "frage": "Tobias rechnet nach: 7,16 N : 1,46 · 10⁻⁷ N ergibt rund 4,9 · 10⁷. Er schließt daraus: „Eine Kraft, die 4,9 · 10⁷-mal kleiner ist als das Gewicht der kleinen Kugel, lässt sich nicht messen – Cavendish kann diesen Wert nicht bestimmt haben.“ Prüfe seine Rechnung und beurteile seinen Schluss anhand des Aufbaus der Drehwaage.",
+   "prompt": "Tobias rechnet nach: 7,16 N : 1,46 · 10⁻⁷ N ergibt rund 4,9 · 10⁷. Er schließt daraus: „Eine Kraft, die 4,9 · 10⁷-mal kleiner ist als das Gewicht der kleinen Kugel, lässt sich nicht messen – Cavendish kann diesen Wert nicht bestimmt haben.“ Prüfe seine Rechnung und beurteile seinen Schluss anhand des Aufbaus der Drehwaage.",
+   "zeilen": 5,
+   "loesung": "Die Rechnung stimmt: Eine kleine Kugel wiegt m₂ · g = 0,73 kg · 9,81 N/kg = 7,16 N, die Anziehung zur großen Kugel beträgt F = 1,46 · 10⁻⁷ N, und der Quotient ist rund 4,9 · 10⁷. Der Schluss trägt trotzdem nicht, denn Tobias vergleicht zwei Kräfte, die im Versuch gar nicht gegeneinander arbeiten. Die Gewichtskraft zieht senkrecht nach unten und wird vom Draht getragen; die gesuchte Anziehung wirkt waagerecht und dreht den Balken um genau diese Aufhängung. Gemessen wird also nicht ein winziger Anteil einer großen Kraft, sondern eine kleine Kraft gegen einen sehr geringen Widerstand: Der dünne Draht setzt der Verdrillung wenig entgegen, und der 1,8 m lange Waagebalken verlängert den Hebelarm, sodass aus der winzigen Kraft ein ablesbarer Drehwinkel wird. Entscheidend ist zusätzlich die Abschirmung – beobachtet wird durch Fernrohre von außen, weil schon ein Luftzug im Raum größer wäre als die zu messende Kraft. Der Aufbau ist damit ein Verfahren, das für genau diese Größenordnung gebaut ist. Dass der Ausschlag überhaupt zustande kommt, ist zugleich der Nachweis, dass sich beliebige Massen anziehen: Im Gartenhaus war kein Himmelskörper beteiligt."
+  }
+ },
+ {
+  "id": "gw8",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "K8",
+   "S2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung genau quer dazu, so ändert die Kraft nur die Richtung der Geschwindigkeit, nicht ihren",
+    "loesung": "Betrag",
+    "post": "; genau das ist der Kreisfall."
+   },
+   {
+    "pre": "Setzt man auf der Kreisbahn die Gravitationskraft gleich der nötigen Zentripetalkraft, so kürzt sich die Masse m des Planeten heraus, und es bleibt v =",
+    "loesung": "√(G·M/r)",
+    "post": ". Der Kreiswert hängt damit allein vom Abstand ab, nicht davon, was dort kreist."
+   },
+   {
+    "pre": "Weicht die Startgeschwindigkeit vom Kreiswert ab, wird die Bahn zur Ellipse. Ist sie kleiner als 29,8 km/s, so ist der Startabstand von 1,00 AE zugleich der",
+    "loesung": "größte Abstand",
+    "post": "der Bahn."
+   },
+   {
+    "pre": "Bei 30 km/s nennt die Statuszeile als Bahnform",
+    "loesung": "fast ein Kreis",
+    "post": ", dazu 1,00 AE und 1,03 AE bei 1,02 Jahren."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 18 km/s und bei 36 km/s meldet die Statuszeile dieselbe Bahnform, obwohl der Startabstand 1,00 AE im einen Fall der größte und im anderen der kleinste Abstand der Bahn ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein doppelt so schwerer Planet bräuchte im Abstand 1,00 AE für eine Kreisbahn eine größere Startgeschwindigkeit als 29,8 km/s.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Weil die Bahnform zwischen 15 km/s und 16 km/s sprunghaft umschlägt, lässt sich bei wiederholtem Start nicht vorhersagen, welche der beiden Bahnen entsteht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei der Einstellung 42 km/s durchläuft der Planet den sonnennahen Teil seiner Bahn mit größerer Bahngeschwindigkeit als den 171 AE entfernten Umkehrpunkt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias will für den Bericht die Grenze zwischen Sturz und Umlauf angeben. Er liest die feste Zeile „Für einen Kreis braucht er 29,8 km/s“ und schreibt: „Unterhalb von 29,8 km/s stürzt der Planet in die Sonne.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Die Aussage trifft zu: Unterhalb des Kreiswertes ist der Startabstand nicht mehr der kleinste, sondern der größte Abstand der Bahn; damit fehlt der Ellipse der äußere Umkehrpunkt, und der Planet fällt zur Sonne.",
+    "Die Grenze ist zu hoch angesetzt: Zwischen 16 km/s und 29,8 km/s meldet die Statuszeile eine lang gezogene Ellipse, bei 18 km/s mit 0,22 AE und 1,00 AE. Erst unterhalb von 16 km/s führt die Bahn so dicht an der Sonne vorbei, dass der Planet sie trifft.",
+    "Der Kreiswert grenzt nicht die Bahnformen gegeneinander ab, sondern die Umlaufzeiten: Unterhalb von 29,8 km/s dauert ein Umlauf länger als ein Jahr, oberhalb weniger."
+   ],
+   "richtig": 1,
+   "erklaerung": "Die Statuszeile widerlegt die Grenze unmittelbar. Bei 18 km/s und bei 24 km/s – beide unterhalb von 29,8 km/s – steht dort „lang gezogene Ellipse“ mit 0,22 AE und 1,00 AE beziehungsweise 0,48 AE und 1,00 AE; der Planet fällt also weiterhin an der Sonne vorbei, nur auf einer engeren Bahn. Der Sturz beginnt erst deutlich weiter unten: Bei 15 km/s meldet die Zeile noch „stürzt in die Sonne“, ab 16 km/s eine Ellipse mit 0,17 AE und 1,00 AE. Der Kreiswert trennt nicht Sturz von Umlauf, sondern nur die beiden Lagen der Ellipse – darunter liegt der Start außen, darüber innen; ein äußerer Umkehrpunkt fehlt in keinem der beiden Fälle. Über die Umlaufzeit entscheidet der Kreiswert ebenfalls nicht so, wie die dritte Angabe behauptet: Bei 18 km/s dauert ein Umlauf 0,48 Jahre, also weniger als ein Jahr, obwohl 18 km/s unter dem Kreiswert liegt."
+  },
+  "offen": {
+   "frage": "Der Fluchtwert 42,1 km/s ist gerade das √2-fache des Kreiswertes 29,8 km/s. Für die untere Grenze gibt es keine solche Rechnung: Zwischen 15 km/s und 16 km/s wechselt die Statuszeile von „stürzt in die Sonne“ zu einer Ellipse mit 0,17 AE und 1,00 AE. Erläutere, worin sich die Aussagekraft der beiden Grenzen unterscheidet, und begründe, welche von ihnen aus v = √(G·M/r) vorhersagbar ist und welche nicht.",
+   "prompt": "Der Fluchtwert 42,1 km/s ist gerade das √2-fache des Kreiswertes 29,8 km/s. Für die untere Grenze gibt es keine solche Rechnung: Zwischen 15 km/s und 16 km/s wechselt die Statuszeile von „stürzt in die Sonne“ zu einer Ellipse mit 0,17 AE und 1,00 AE. Erläutere, worin sich die Aussagekraft der beiden Grenzen unterscheidet, und begründe, welche von ihnen aus v = √(G·M/r) vorhersagbar ist und welche nicht.",
+   "zeilen": 5,
+   "loesung": "Die obere Grenze folgt aus dem Modell selbst. Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen v = √(2·G·M/r); beide Ausdrücke unterscheiden sich bei jedem Abstand r nur um den Faktor √2. Aus 29,8 km/s folgt deshalb zwingend 1,414 · 29,8 km/s = 42,14 km/s, gerundet die angezeigten 42,1 km/s. Diese Grenze ist eine Vorhersage: Sie braucht keinen weiteren Versuch und hängt allein von G, M und r ab. Die untere Grenze steht auf anderem Grund. Zu kleine Startgeschwindigkeiten liefern nach demselben Modell ebenfalls Ellipsen – die Bahn hört nicht auf zu bestehen, sie führt nur immer dichter an der Sonne vorbei. Bei 16 km/s beträgt der kleinste Abstand noch 0,17 AE; wird die Startgeschwindigkeit weiter verringert, rückt dieser Punkt in die Sonne hinein, und die Anzeige meldet den Treffer. Ob ein Vorbeiflug noch einer ist, entscheidet also nicht das Kraftgesetz, sondern die Ausdehnung des Zentralkörpers. Deshalb ist der Umschlag zwischen 15 km/s und 16 km/s auch kein glatter Wert und ließ sich nur durch Ausprobieren in Einerschritten einkreisen. Die eine Grenze ist eine Aussage des Modells, die andere eine Eigenschaft des konkreten Körpers: Wäre die Sonne kleiner, läge der Umschlag bei einer kleineren Startgeschwindigkeit, während 42,1 km/s unverändert bliebe."
+  }
+ },
+ {
+  "id": "gw9",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "E7",
+   "S2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Kepler fand 1619, dass sich die Quadrate der Umlaufzeiten wie die dritten Potenzen der großen Halbachsen verhalten. Misst man T in Jahren und a in Astronomischen Einheiten, so trägt der Quotient T²/a³ für jeden Planeten der Sonne den Zahlenwert",
+    "loesung": "1,00",
+    "post": "; die Zeile der Erde zeigt ihn unmittelbar."
+   },
+   {
+    "pre": "Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, so ergibt sich T²/a³ =",
+    "loesung": "4π²/(G·M)",
+    "post": ". Der Quotient hängt damit allein vom Zentralkörper ab."
+   },
+   {
+    "pre": "Von den beiden Massen, die in dieser Herleitung auftreten, bleibt im Quotienten nur die des Zentralkörpers stehen; heraus kürzt sich die",
+    "loesung": "des umlaufenden Planeten",
+    "post": ". Wie schwer der Körper selbst ist, dessen Bahn man betrachtet, spielt für die Regel also keine Rolle."
+   },
+   {
+    "pre": "Jupiter liefert T² = 140,71 und a³ = 140,85. Auf vier Nachkommastellen gerundet beträgt sein Quotient damit",
+    "loesung": "0,9990",
+    "post": "; von den sechs eingetragenen Werten ist er der kleinste."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die große Halbachse wächst von Merkur bis Saturn auf knapp das 25-Fache, die Umlaufzeit dagegen auf das 122-Fache. Weil beide Spalten so unterschiedlich stark zunehmen, kann T²/a³ nicht in allen sechs Zeilen denselben Wert ergeben.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Den größten Abstand zu 1,00 zeigt ausgerechnet der Planet mit den kleinsten Zahlen der Tabelle, weil bei ihm die letzte gedruckte Stelle am schwersten wiegt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Trüge man den Mond in dieselbe Tabelle ein und rechnete seine Umlaufzeit in Jahre und seine Halbachse in AE um, so ergäbe auch seine Zeile den Quotienten 1,00.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wer bei Merkur bereits a³ und T² auf vier Nachkommastellen rundet und erst danach dividiert, erhält einen anderen Quotienten als bei umgekehrter Reihenfolge.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias vergleicht die sechs eingetragenen Quotienten – von 0,9990 bei Jupiter bis 1,0021 bei Merkur – und bleibt bei seinem Einwand: „Sechs verschiedene Zahlen sind sechs verschiedene Werte. Jeder Planet hat also doch seine eigene Regel.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Die Unterschiede stehen erst in der vierten Nachkommastelle und bleiben unter 0,3 Prozent, während Halbachse und Umlaufzeit auf das 25- bzw. 122-Fache wachsen. Sie stammen aus den drei gedruckten Stellen der Tabelle: Bei Merkur verschiebt ±0,0005 in a = 0,387 den Quotienten schon um vier Promille.",
+    "Tobias hat recht: Die sechs Werte unterscheiden sich nachweisbar, und eine Regel, die nur ungefähr gilt, ist keine. Erst wenn in allen Zeilen dieselbe Zahl stünde, wäre der Zusammenhang belegt.",
+    "Der Einwand entfällt durch gröberes Runden: Auf zwei Nachkommastellen steht in allen sechs Zeilen 1,00, womit die Gleichheit gezeigt ist. Wie groß die Reste vorher waren, muss dann nicht mehr geprüft werden."
+   ],
+   "richtig": 0,
+   "erklaerung": "Über die Regel entscheidet nicht, ob sechs Zahlen exakt übereinstimmen, sondern ob ihre Unterschiede größer ausfallen, als die Daten selbst hergeben. Alle sechs Werte liegen zwischen 0,9990 und 1,0021, weichen also um weniger als 0,3 Prozent von 1,00 ab – und das über einen Bereich, in dem die Halbachse auf knapp das 25-Fache und die Umlaufzeit auf das 122-Fache anwächst. Die Tabelle führt drei Nachkommastellen; allein eine Unsicherheit von ±0,0005 in a = 0,387 verschiebt Merkurs Quotienten um vier Promille und erklärt seinen Rest von 1,0021 vollständig. Ein Wert, der um etwa 20 Prozent danebenläge, wäre dagegen ein Befund – er zeigte, dass der Körper nicht die Sonne umläuft. Tobias' Einwand verlangt damit eine Genauigkeit, die drei gedruckte Stellen gar nicht hergeben können. Wer den Streit umgekehrt durch gröberes Runden beenden will, zeigt ebenfalls nichts: Auf zwei Nachkommastellen verschwindet der Rest, aber gerade er war zu beurteilen – deshalb wird auf vier Nachkommastellen gerundet, und zwar erst der Quotient und nicht schon a³ und T²."
+  },
+  "offen": {
+   "frage": "Tobias schreibt in die Wettbewerbsmappe: „Wer die Regel kennt, braucht künftig nur noch eine der beiden Spalten.“ Prüfe den Satz. Bestimme dazu für Mars aus T = 1,881 Jahren die große Halbachse und vergleiche sie mit der Tabelle. Gib anschließend an, unter welchen Bedingungen eine solche Vorhersage trägt und welche Größe sich aus T²/a³ grundsätzlich nicht gewinnen lässt.",
+   "prompt": "Tobias schreibt in die Wettbewerbsmappe: „Wer die Regel kennt, braucht künftig nur noch eine der beiden Spalten.“ Prüfe den Satz. Bestimme dazu für Mars aus T = 1,881 Jahren die große Halbachse und vergleiche sie mit der Tabelle. Gib anschließend an, unter welchen Bedingungen eine solche Vorhersage trägt und welche Größe sich aus T²/a³ grundsätzlich nicht gewinnen lässt.",
+   "zeilen": 5,
+   "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Für Mars ist T² = 1,881² = 3,5382; die dritte Wurzel daraus ergibt a = 1,5238, gerundet 1,524 AE – genau der Wert, der in der Tabelle steht. Die Spalte der Halbachsen lässt sich also aus der Spalte der Umlaufzeiten zurückgewinnen, und ebenso umgekehrt; für Uranus liefert dieselbe Rechnung aus T = 84,0 Jahren die 19,2 AE. Tobias' Satz trägt aber nur unter drei Bedingungen. Erstens muss der Körper denselben Zentralkörper umlaufen: Nach T²/a³ = 4π²/(G·M) hängt der Quotient von dessen Masse M ab, für einen Mond der Erde stünde dort ein anderer Wert. Zweitens gilt der Zahlenwert 1,00 nur, solange T in Jahren und a in Astronomischen Einheiten gemessen wird. Drittens ist die Vorhersage nur so genau wie die eingesetzte Zahl – bei Merkur verschiebt ±0,0005 in a = 0,387 den Quotienten bereits um vier Promille. Nicht gewinnen lässt sich aus T²/a³ die Masse des umlaufenden Planeten: Sie fällt bei der Herleitung heraus und kommt in der Gleichung gar nicht mehr vor. Aus einer Bahn folgt deshalb allenfalls etwas über den Zentralkörper, nichts über den Planeten selbst."
+  }
+ },
+ {
+  "id": "gw10",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "S2",
+   "E8",
+   "E9"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Schleife des Mars erzeugt im geozentrischen Modell ein zweiter Kreis, auf dem der Planet zusätzlich zu seiner großen Bahn umläuft; dieser heißt",
+    "loesung": "Epizykel",
+    "post": "."
+   },
+   {
+    "pre": "Beide Tafeln sagen denselben Himmel voraus; an der Schleife allein lassen sich die Weltbilder daher nicht",
+    "loesung": "unterscheiden",
+    "post": "."
+   },
+   {
+    "pre": "Zu a = 1,524 AE liefert das dritte Keplergesetz für den Mars T = 1,88 Jahre; für den Abstand zweier Überholungen folgt 1 : (1 : 1,00 − 1 : 1,88) =",
+    "loesung": "2,1",
+    "post": "Jahre."
+   },
+   {
+    "pre": "Dass sich die Erde wirklich bewegt, wies erst Bessel 1838 nach, und zwar mit der",
+    "loesung": "Fixsternparallaxe",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Streifen unter den Tafeln zeigt in beiden Modellen dieselbe rückläufige Bewegung des Mars.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mit den Jupitermonden von 1610 war zugleich nachgewiesen, dass die Erde sich bewegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Laut Statuszeile ließ sich der Himmel mit der geozentrischen Anordnung nicht vorhersagen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Im Kästchen „Jupitermonde“ braucht der innerste Mond für einen Umlauf weniger Zeit als der äußerste.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Mira nennt die Schleife des Mars den Beweis für den Umlauf der Erde. Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Mira hat recht: Nur der Umlauf der Erde kann die Blickrichtung zum Mars zurückdrehen. In der linken Tafel läuft der Mars stets vorwärts, und genau daran ist diese Anordnung gescheitert.",
+    "Der Schluss trägt nicht: Die Statuszeile meldet für beide Tafeln denselben Himmel – rechts erzeugt ihn das Überholen auf der inneren Bahn, links ein zweiter Kreis je Planet. Eine für beide Modelle gleiche Vorhersage schließt keines aus.",
+    "Der Schluss trägt nicht, weil die Schleife ein zufälliges Ereignis ohne feste Wiederkehr ist; aus einer unregelmäßig auftretenden Beobachtung lässt sich grundsätzlich kein Modell prüfen."
+   ],
+   "richtig": 1,
+   "erklaerung": "Der Streifen unter den Tafeln zeigt bei beiden Modellen dasselbe Bild, und die Statuszeile bescheinigt der heliozentrischen Anordnung „genau denselben Himmel“. Auch die linke Tafel bringt die Schleife also zustande – dort über den Epizykel, den kleinen gestrichelten Zusatzkreis neben der großen Marsbahn; die Zeile unter den Tafeln zählt geozentrisch 2 Kreise je Planet, heliozentrisch 1 Kreis je Planet. Damit fällt die erste Beurteilung: Sie behauptet für die linke Tafel eine Vorhersage, die diese gar nicht macht. Der Einwand mit dem Zufall trifft ebenso wenig: Die Schleife folgt zwingend aus den Umlaufzeiten, zu T = 1,88 Jahre gehört ein Abstand von 2,1 Jahren zwischen zwei Überholungen. Miras Fehler liegt nicht bei der Regelmäßigkeit, sondern in der Logik – eine für beide Modelle gleiche Vorhersage kann keines von beiden ausschließen. Den Ausschlag gaben erst die Jupitermonde und die Venusphasen von 1610."
+  },
+  "offen": {
+   "frage": "Tobias wählt das heliozentrische Modell allein wegen des geringeren Aufwands – ein Kreis statt zweier. Beurteile diese Begründung, beziehe ein, dass die Simulation die aufgeräumte heutige Fassung zeigt, und gib an, was ein Modell erst ausschließt.",
+   "prompt": "Tobias wählt das heliozentrische Modell allein wegen des geringeren Aufwands – ein Kreis statt zweier. Beurteile diese Begründung, beziehe ein, dass die Simulation die aufgeräumte heutige Fassung zeigt, und gib an, was ein Modell erst ausschließt.",
+   "zeilen": 4,
+   "loesung": "Als Beobachtung ist der Vergleich richtig: Die Zeile unter den Tafeln zählt geozentrisch 2 Kreise je Planet und heliozentrisch 1 Kreis je Planet, für den Mars also einen Kreis statt zweier. Als Entscheidungsgrund trägt er trotzdem nicht, denn beide Anordnungen sagen denselben Himmel voraus; Sparsamkeit ist ein Argument, aber kein Beweis. Hinzu kommt, dass die Simulation die aufgeräumte heutige Fassung zeigt: Kopernikus selbst brauchte 1543 noch Zusatzkreise, weil er an gleichförmigen Kreisen festhielt – ohne sie kommt erst Keplers Ellipse aus. Der Vorsprung an Einfachheit war damals also kleiner, als die rechte Tafel ihn erscheinen lässt; ein Urteil allein über die Zahl der Kreise stützt sich auf einen Darstellungsstand, den es 1543 noch gar nicht gab. Ausschließen ließ sich der ptolemäische Aufbau erst durch Beobachtungen, für die er keinen Platz hat: 1610 sah Galilei im Fernrohr die Monde des Jupiter – also kreist nicht alles um die Erde – und vor allem die Phasen der Venus, die dieser Aufbau nicht zulässt. Dass sich die Erde wirklich bewegt, war damit noch nicht gezeigt; diesen Nachweis lieferte erst Bessel 1838 mit der Fixsternparallaxe."
+  }
+ },
+ {
+  "id": "gw11",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "K2",
+   "K8",
+   "E11"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Auf einer Raumstation drückt niemand auf eine Unterlage, weil Station und Besatzung gemeinsam",
+    "loesung": "frei fallen",
+    "post": "; angezogen werden beide weiterhin."
+   },
+   {
+    "pre": "Mit r = 6371 km + 400 km = 6,771 · 10⁶ m und G · M = 3,986 · 10¹⁴ m³/s² liefert g = G · M / r² in Bahnhöhe den Wert",
+    "loesung": "8,69 m/s²",
+    "post": "."
+   },
+   {
+    "pre": "Zählt man die erfüllten Kriterien, so kommt der Fachartikel auf vier und das Schulbuch auf drei. Der Zeitungsartikel erfüllt eines, das Netzvideo",
+    "loesung": "keines",
+    "post": "; daraus ergibt sich die Rangfolge."
+   },
+   {
+    "pre": "Die dritte Spalte des Datenblatts hält nur fest, was eine Quelle über sich selbst offenlegt. Ob ihre Aussage zutrifft, entscheidet dagegen die",
+    "loesung": "Rechnung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Weil das Netzvideo keines der vier Kriterien erfüllt, ist damit bereits gezeigt, dass seine Behauptung über die fehlende Schwerkraft nicht zutrifft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Behauptung des Zeitungsartikels lässt sich mit derselben Rechnung ebenso genau prüfen wie die des Schulbuchs, da beide dieselbe Bahnhöhe von 400 km betreffen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Schulbuch und Fachartikel nennen denselben Zahlenwert für die Feldstärke in Bahnhöhe; im Rang trennt sie trotzdem ein Platz, weil das Schulbuch nicht begutachtet ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die aus den Bahndaten r = 6771 km und T = 5545 s berechnete Zentripetalbeschleunigung stimmt mit der Feldstärke überein, die G · M / r² für dieselbe Höhe liefert.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Tobias will die Tafel abschließen und schreibt: „Der Fachartikel steht auf Rangplatz 1. Also gilt seine Aussage, und nachrechnen müssen wir nichts mehr.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Der Schluss trägt nicht: Der Rangplatz entsteht allein aus den vier Kriterien, also aus dem, was die Quelle über sich selbst offenlegt. Für die Aussage selbst spricht erst, dass die Bahndaten r = 6771 km und T = 5545 s über a = 4 · π² · r / T² auf 8,69 m/s² führen – denselben Wert, den G · M / r² für diese Höhe liefert.",
+    "Der Schluss trägt, denn der Fachartikel erfüllt als einzige der vier Quellenarten alle Kriterien. Wo Quellenangabe, Begutachtung, offene Daten und die Trennung von Beobachtung und Deutung zusammenkommen, ist die Aussage bereits geprüft und braucht keine eigene Rechnung mehr.",
+    "Der Schluss trägt nicht, weil der Fachartikel gar nicht vorn steht: Das Schulbuch nennt mit 8,69 m/s² einen fertigen Zahlenwert, der Fachartikel nur Bahndaten – und wer eine Zahl liefert, erfüllt mehr der vier Kriterien."
+   ],
+   "richtig": 0,
+   "erklaerung": "Verlässlichkeit und Richtigkeit sind zwei Urteile über verschiedene Dinge. Der Rangplatz stammt aus der dritten Spalte des Datenblatts, und die hält nur fest, was eine Quelle über sich selbst offenlegt: Quellenangabe, Begutachtung, offene Daten, Trennung von Beobachtung und Deutung. Ob die Aussage stimmt, steht dort nicht. Dafür spricht erst die doppelte Rechnung: Aus den Bahndaten folgt a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s², und dieselbe Zahl liefert G · M / r² = 3,986 · 10¹⁴ m³/s² : 4,585 · 10¹³ m² = 8,69 m/s². Dass zwei unabhängige Wege auf denselben Wert führen, stützt die Behauptung – der Rangplatz tut es nicht. Der Einwand, vier erfüllte Kriterien machten das Nachrechnen überflüssig, verwechselt genau das: Begutachtung macht einen Fehler unwahrscheinlicher, ersetzt die Prüfung aber nicht; das Datenblatt hält ausdrücklich fest, dass beides zu trennen ist. Auch der Vorrang des Schulbuchs lässt sich nicht halten: Es erfüllt drei Kriterien, weil es nicht begutachtet ist, der Fachartikel alle vier. Ob eine Quelle eine fertige Zahl nennt, gehört gar nicht zu den vier Kriterien – der Fachartikel legt mit r und T sogar die Daten offen, aus denen sich die Zahl gewinnen lässt."
+  },
+  "offen": {
+   "frage": "Das Netzvideo erfüllt keines der vier Kriterien, der Fachartikel alle vier. Widerlegen lässt sich die Behauptung des Videos trotzdem nicht mit der Rangfolge, sondern nur mit der Rechnung. Erläutere daran, was die vier Kriterien leisten und was nicht, und begründe, warum Schulbuch und Fachartikel im Rang dennoch auseinandertreten, obwohl beide Aussagen standhalten.",
+   "prompt": "Das Netzvideo erfüllt keines der vier Kriterien, der Fachartikel alle vier. Widerlegen lässt sich die Behauptung des Videos trotzdem nicht mit der Rangfolge, sondern nur mit der Rechnung. Erläutere daran, was die vier Kriterien leisten und was nicht, und begründe, warum Schulbuch und Fachartikel im Rang dennoch auseinandertreten, obwohl beide Aussagen standhalten.",
+   "zeilen": 5,
+   "loesung": "Die vier Kriterien prüfen die Quelle, nicht die Aussage. Sie erfassen, ob eine Quelle ihre Grundlage nennt, ob Fachleute sie begutachtet haben, ob ihre Daten offenliegen und ob Beobachtung und Deutung getrennt sind. Daraus entsteht die Rangfolge: Fachartikel vier Kriterien, Schulbuch drei, Zeitungsartikel eines, Netzvideo keines. Über wahr oder falsch sagt diese Zählung nichts – eine Quelle ohne jedes Kriterium könnte zufällig das Richtige behaupten, und eine begutachtete könnte sich irren. Beim Netzvideo entscheidet deshalb die Rechnung: Mit r = 6371 km + 400 km = 6,771 · 10⁶ m und G · M = 3,986 · 10¹⁴ m³/s² folgt g = 8,69 m/s², also 88,5 % des Bodenwerts 9,82 m/s², den dieselbe Formel für r = 6371 km liefert. Von fehlender Schwerkraft kann also keine Rede sein; die Behauptung ist widerlegt, gleichgültig auf welchem Rangplatz das Video steht. Umgekehrt trennt die Rechnung Schulbuch und Fachartikel nicht: Beide nennen für die Bahnhöhe denselben Wert, und beide halten stand. Ihr Rangunterschied hat einen anderen Grund – das Schulbuch nennt seine Quelle, legt Daten offen und trennt Beobachtung von Deutung, ist aber nicht begutachtet; der Fachartikel erfüllt zusätzlich auch dieses Kriterium. Die Kriterien sagen also, wie gut sich eine Aussage nachprüfen lässt, die Rechnung sagt, ob sie stimmt. Genau darin liegt der Nutzen der Kriterien: Weil der Fachartikel r = 6771 km und T = 5545 s offenlegt, lässt sich seine Aussage überhaupt unabhängig nachrechnen, während das Netzvideo keine Angabe macht, an der man es prüfen könnte."
+  }
+ },
+ {
+  "id": "gw12",
+  "theme": "ef_gravitation",
+  "komp": [
+   "S1",
+   "E6",
+   "K8",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In der Lichtuhr läuft ein Photon zwischen Blitzlampe und Spiegel hin und her. Ein solches Hin und Her heißt ein",
+    "loesung": "Takt",
+    "post": "; seine Dauer ist der Weg geteilt durch c."
+   },
+   {
+    "pre": "Station 4 nennt bei v/c = 0,600 für den Kehrwert 1/√(1−β²) den Wert 1,250. Diese Größe heißt",
+    "loesung": "Lorentzfaktor γ",
+    "post": "."
+   },
+   {
+    "pre": "Bei v = 0,60·c zeigt Station 4 den Faktor √(1−β²) = 0,8000. Während in A eine Stunde vergeht, vergehen in der bewegten Uhr deshalb nur",
+    "loesung": "48,0 min",
+    "post": "."
+   },
+   {
+    "pre": "Der Faktor √(1−β²) wird nie größer als 1. Zwischen denselben beiden Ereignissen vergeht in der bewegten Uhr also stets die",
+    "loesung": "kürzere Zeitspanne",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Station 3 beziffert eine Zeitspanne der bewegten Uhr bei v = 0,60·c auf 80,0 % der in A gemessenen; die 160 Ticks je 200 ruhende an Station 6 führen auf denselben Anteil.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Trägt man statt f² über β² den Faktor f unmittelbar über v/c auf, so liegen die vier Messpunkte auf derselben Geraden mit dem Achsenabschnitt 1 und der Steigung −1.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Station 4 gibt für v/c = 0,950 den Faktor 0,3122 an, die Zählung an Station 6 dagegen 62 Ticks je 200 und damit 0,310. Beide Angaben lassen sich vereinbaren, weil sich nur ganze Ticks zählen lassen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dass auch B die Uhren in A langsamer gehen sieht, macht die Herleitung widersprüchlich: Tatsächlich kann nur eine der beiden Uhren die kürzere Zeitspanne anzeigen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Tobias überträgt die Anzeige zu v = 0,95·c in den Bericht: „Der Faktor beträgt 3,203; in der bewegten Uhr vergeht je Stunde in A also das 3,203-Fache dieser Stunde.“ Welche Beurteilung trifft zu?",
+   "optionen": [
+    "Der Faktor steht verkehrt herum. 3,203 ist der Lorentzfaktor γ und gibt an, um welchen Faktor der A-Takt länger dauert; für die Zeitspanne in der bewegten Uhr gilt √(1−β²) = 0,3122, und Station 4 nennt dazu 18,7 min je Stunde.",
+    "Die Angabe stimmt, denn auch Station 2 meldet bei v/c = 0,95 den Wert 3,203. Beide Stationen beschreiben dieselbe Uhr, der Faktor gilt daher unverändert für die bewegte Uhr.",
+    "Die Angabe lässt sich nicht entscheiden, weil 0,3122 und 3,203 zwei gleichwertige Schreibweisen desselben Faktors sind; welche der beiden Uhren mehr anzeigt, legt die Herleitung nicht fest."
+   ],
+   "richtig": 0,
+   "erklaerung": "Die beiden Zahlen sind Kehrwerte voneinander: 0,3122 · 3,203 = 1,000. Genau deshalb entscheidet die Zuordnung, und die Herleitung legt sie fest – aus Δtbew = ΔtRuh·√(1−v²/c²) folgt, dass die bewegte Uhr mit dem Faktor kleiner als 1 zu rechnen ist. Station 2 sagt dasselbe von der anderen Seite: Dort ist der A-Takt um den Faktor 3,203 länger als der B-Takt, nicht die Anzeige der bewegten Uhr größer. Station 4 druckt dazu unmittelbar 18,7 min je Stunde, und Station 6 zählt bei 0,95·c 62 Ticks gegen 200 ruhende – die bewegte Uhr tickt seltener, sie kann also nicht mehr anzeigen. Damit ist auch die dritte Beurteilung erledigt: Zwei Kehrwerte sind keine gleichwertigen Schreibweisen für dieselbe Aussage, sondern gehören zu zwei verschiedenen Uhren."
+  },
+  "offen": {
+   "frage": "Station 6 zählt bei vier Geschwindigkeiten die Ticks der bewegten Uhr und wertet die vier Messpunkte zu f² = 1,000 − 1,000·β² mit R² = 0,99998 aus; als Theoriefunktion sind Achsenabschnitt 1 und Steigung −1 vorgegeben. Leite aus Δtbew = ΔtRuh·√(1−v²/c²) her, warum gerade diese Gerade zu erwarten ist, und beurteile, was die Übereinstimmung über die Herleitung mit dem Satz des Pythagoras aussagt und was sie über die Konstanz von c nicht aussagt.",
+   "prompt": "Station 6 zählt bei vier Geschwindigkeiten die Ticks der bewegten Uhr und wertet die vier Messpunkte zu f² = 1,000 − 1,000·β² mit R² = 0,99998 aus; als Theoriefunktion sind Achsenabschnitt 1 und Steigung −1 vorgegeben. Leite aus Δtbew = ΔtRuh·√(1−v²/c²) her, warum gerade diese Gerade zu erwarten ist, und beurteile, was die Übereinstimmung über die Herleitung mit dem Satz des Pythagoras aussagt und was sie über die Konstanz von c nicht aussagt.",
+   "zeilen": 5,
+   "loesung": "Der gemessene Faktor ist das Verhältnis der beiden Zeitspannen: f = n/200 = Δtbew/ΔtRuh. Nach der Herleitung ist Δtbew/ΔtRuh = √(1−β²), also f = √(1−β²). Quadrieren beseitigt die Wurzel und liefert f² = 1 − β². Über β² aufgetragen ist das eine Gerade mit dem Achsenabschnitt 1 und der Steigung −1 – genau die vorgegebene Theoriefunktion; die Auswertung f² = 1,000 − 1,000·β² trifft beide Kennzahlen. Die Messwerte bestätigen das auch einzeln: Bei v = 0,60·c ist f = 0,800, also f² = 0,640, und mit β² = 0,360 ergibt die Summe 1,000. Dass R² mit 0,99998 knapp unter 1 bleibt, liegt an der Zählung selbst: Bei v = 0,95·c nennt Station 4 den Faktor 0,3122, gezählt werden aber 62 von 200 Ticks und damit 0,310 – feiner als ein ganzer Tick lässt sich nicht messen. Die Übereinstimmung sagt deshalb aus, dass die aus dem Satz des Pythagoras gewonnene Formel die Zählergebnisse von 0,10·c bis 0,95·c nicht nur der Tendenz nach, sondern der Größe nach richtig vorhersagt. Sie sagt aber nichts über die Konstanz von c aus: Dass das Photon auch auf dem schrägen Weg mit c läuft, ist die Voraussetzung, aus der die Formel abgeleitet und nach der die Simulation gebaut wurde. Ein Modell kann seine eigene Grundannahme nicht prüfen; dafür braucht es Messungen außerhalb des Modells, und Station 5 nennt dazu die kosmischen Myonen sowie die etwa 38 µs pro Tag, um die unkorrigierte GPS-Uhren abweichen."
+  }
+ }
+]

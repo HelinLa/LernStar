@@ -1,0 +1,72 @@
+{
+ "id": "gw9",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "E7",
+  "S2"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Kepler fand 1619, dass sich die Quadrate der Umlaufzeiten wie die dritten Potenzen der großen Halbachsen verhalten. Misst man T in Jahren und a in Astronomischen Einheiten, so trägt der Quotient T²/a³ für jeden Planeten der Sonne den Zahlenwert",
+   "loesung": "1,00",
+   "post": "; die Zeile der Erde zeigt ihn unmittelbar."
+  },
+  {
+   "pre": "Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, so ergibt sich T²/a³ =",
+   "loesung": "4π²/(G·M)",
+   "post": ". Der Quotient hängt damit allein vom Zentralkörper ab."
+  },
+  {
+   "pre": "Von den beiden Massen, die in dieser Herleitung auftreten, bleibt im Quotienten nur die des Zentralkörpers stehen; heraus kürzt sich die",
+   "loesung": "des umlaufenden Planeten",
+   "post": ". Wie schwer der Körper selbst ist, dessen Bahn man betrachtet, spielt für die Regel also keine Rolle."
+  },
+  {
+   "pre": "Jupiter liefert T² = 140,71 und a³ = 140,85. Auf vier Nachkommastellen gerundet beträgt sein Quotient damit",
+   "loesung": "0,9990",
+   "post": "; von den sechs eingetragenen Werten ist er der kleinste."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Die große Halbachse wächst von Merkur bis Saturn auf knapp das 25-Fache, die Umlaufzeit dagegen auf das 122-Fache. Weil beide Spalten so unterschiedlich stark zunehmen, kann T²/a³ nicht in allen sechs Zeilen denselben Wert ergeben.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Den größten Abstand zu 1,00 zeigt ausgerechnet der Planet mit den kleinsten Zahlen der Tabelle, weil bei ihm die letzte gedruckte Stelle am schwersten wiegt.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Trüge man den Mond in dieselbe Tabelle ein und rechnete seine Umlaufzeit in Jahre und seine Halbachse in AE um, so ergäbe auch seine Zeile den Quotienten 1,00.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Wer bei Merkur bereits a³ und T² auf vier Nachkommastellen rundet und erst danach dividiert, erhält einen anderen Quotienten als bei umgekehrter Reihenfolge.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias vergleicht die sechs eingetragenen Quotienten – von 0,9990 bei Jupiter bis 1,0021 bei Merkur – und bleibt bei seinem Einwand: „Sechs verschiedene Zahlen sind sechs verschiedene Werte. Jeder Planet hat also doch seine eigene Regel.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Die Unterschiede stehen erst in der vierten Nachkommastelle und bleiben unter 0,3 Prozent, während Halbachse und Umlaufzeit auf das 25- bzw. 122-Fache wachsen. Sie stammen aus den drei gedruckten Stellen der Tabelle: Bei Merkur verschiebt ±0,0005 in a = 0,387 den Quotienten schon um vier Promille.",
+   "Tobias hat recht: Die sechs Werte unterscheiden sich nachweisbar, und eine Regel, die nur ungefähr gilt, ist keine. Erst wenn in allen Zeilen dieselbe Zahl stünde, wäre der Zusammenhang belegt.",
+   "Der Einwand entfällt durch gröberes Runden: Auf zwei Nachkommastellen steht in allen sechs Zeilen 1,00, womit die Gleichheit gezeigt ist. Wie groß die Reste vorher waren, muss dann nicht mehr geprüft werden."
+  ],
+  "richtig": 0,
+  "erklaerung": "Über die Regel entscheidet nicht, ob sechs Zahlen exakt übereinstimmen, sondern ob ihre Unterschiede größer ausfallen, als die Daten selbst hergeben. Alle sechs Werte liegen zwischen 0,9990 und 1,0021, weichen also um weniger als 0,3 Prozent von 1,00 ab – und das über einen Bereich, in dem die Halbachse auf knapp das 25-Fache und die Umlaufzeit auf das 122-Fache anwächst. Die Tabelle führt drei Nachkommastellen; allein eine Unsicherheit von ±0,0005 in a = 0,387 verschiebt Merkurs Quotienten um vier Promille und erklärt seinen Rest von 1,0021 vollständig. Ein Wert, der um etwa 20 Prozent danebenläge, wäre dagegen ein Befund – er zeigte, dass der Körper nicht die Sonne umläuft. Tobias' Einwand verlangt damit eine Genauigkeit, die drei gedruckte Stellen gar nicht hergeben können. Wer den Streit umgekehrt durch gröberes Runden beenden will, zeigt ebenfalls nichts: Auf zwei Nachkommastellen verschwindet der Rest, aber gerade er war zu beurteilen – deshalb wird auf vier Nachkommastellen gerundet, und zwar erst der Quotient und nicht schon a³ und T²."
+ },
+ "offen": {
+  "frage": "Tobias schreibt in die Wettbewerbsmappe: „Wer die Regel kennt, braucht künftig nur noch eine der beiden Spalten.“ Prüfe den Satz. Bestimme dazu für Mars aus T = 1,881 Jahren die große Halbachse und vergleiche sie mit der Tabelle. Gib anschließend an, unter welchen Bedingungen eine solche Vorhersage trägt und welche Größe sich aus T²/a³ grundsätzlich nicht gewinnen lässt.",
+  "prompt": "Tobias schreibt in die Wettbewerbsmappe: „Wer die Regel kennt, braucht künftig nur noch eine der beiden Spalten.“ Prüfe den Satz. Bestimme dazu für Mars aus T = 1,881 Jahren die große Halbachse und vergleiche sie mit der Tabelle. Gib anschließend an, unter welchen Bedingungen eine solche Vorhersage trägt und welche Größe sich aus T²/a³ grundsätzlich nicht gewinnen lässt.",
+  "zeilen": 5,
+  "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Für Mars ist T² = 1,881² = 3,5382; die dritte Wurzel daraus ergibt a = 1,5238, gerundet 1,524 AE – genau der Wert, der in der Tabelle steht. Die Spalte der Halbachsen lässt sich also aus der Spalte der Umlaufzeiten zurückgewinnen, und ebenso umgekehrt; für Uranus liefert dieselbe Rechnung aus T = 84,0 Jahren die 19,2 AE. Tobias' Satz trägt aber nur unter drei Bedingungen. Erstens muss der Körper denselben Zentralkörper umlaufen: Nach T²/a³ = 4π²/(G·M) hängt der Quotient von dessen Masse M ab, für einen Mond der Erde stünde dort ein anderer Wert. Zweitens gilt der Zahlenwert 1,00 nur, solange T in Jahren und a in Astronomischen Einheiten gemessen wird. Drittens ist die Vorhersage nur so genau wie die eingesetzte Zahl – bei Merkur verschiebt ±0,0005 in a = 0,387 den Quotienten bereits um vier Promille. Nicht gewinnen lässt sich aus T²/a³ die Masse des umlaufenden Planeten: Sie fällt bei der Herleitung heraus und kommt in der Gleichung gar nicht mehr vor. Aus einer Bahn folgt deshalb allenfalls etwas über den Zentralkörper, nichts über den Planeten selbst."
+ }
+}

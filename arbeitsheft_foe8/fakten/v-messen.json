@@ -1,0 +1,187 @@
+[
+ {
+  "sim": "v-messen",
+  "ueberschrift": "⏱️ Wie misst man eine Geschwindigkeit?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "langsam",
+    "ruft": "_vmsSet('langsam')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_vmsSet('mittel')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_vmsSet('schnell')"
+   },
+   {
+    "aufschrift": "▶ Messung starten",
+    "ruft": "_vmsStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_vmsReset()"
+   },
+   {
+    "aufschrift": "Nur die Zeit",
+    "ruft": "_vmsAns(0,0)"
+   },
+   {
+    "aufschrift": "Strecke und Zeit",
+    "ruft": "_vmsAns(0,1)"
+   },
+   {
+    "aufschrift": "Nur die Strecke",
+    "ruft": "_vmsAns(0,2)"
+   },
+   {
+    "aufschrift": "v = s · t",
+    "ruft": "_vmsAns(1,0)"
+   },
+   {
+    "aufschrift": "v = s / t",
+    "ruft": "_vmsAns(1,1)"
+   },
+   {
+    "aufschrift": "v = t / s",
+    "ruft": "_vmsAns(1,2)"
+   },
+   {
+    "aufschrift": "0,5 m/s",
+    "ruft": "_vmsAns(2,0)"
+   },
+   {
+    "aufschrift": "2 m/s",
+    "ruft": "_vmsAns(2,1)"
+   },
+   {
+    "aufschrift": "50 m/s",
+    "ruft": "_vmsAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_vmsSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_vmsSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_vmsSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('vmessen')"
+   }
+  ],
+  "hinweise": [
+   "Der Wagen fährt eine Messstrecke von 10 m. Eine Lichtschranke stoppt die Zeit. Aus Strecke und Zeit berechnest du die Geschwindigkeit: v = s / t.",
+   "Zum Messen der Geschwindigkeit braucht man zwei Größen: die Strecke s (mit dem Maßband) und die Zeit t (mit Stoppuhr oder Lichtschranke). Daraus berechnet man v = s / t. Einheit: Meter pro Sekunde (m/s).",
+   "Strecke s messen + Zeit t stoppen → v = s / t · Einheit m/s."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "schnell",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "▶ Messung starten",
+    "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "Nur die Zeit",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht."
+   },
+   {
+    "einstellung": "Strecke und Zeit",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t."
+   },
+   {
+    "einstellung": "Nur die Strecke",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht."
+   },
+   {
+    "einstellung": "v = s · t",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht."
+   },
+   {
+    "einstellung": "v = s / t",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit)."
+   },
+   {
+    "einstellung": "v = t / s",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch."
+   },
+   {
+    "einstellung": "0,5 m/s",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t."
+   },
+   {
+    "einstellung": "2 m/s",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s."
+   },
+   {
+    "einstellung": "50 m/s",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
+   }
+  ],
+  "bildtexte": [
+   "Start",
+   "Ziel",
+   "s = 10 m",
+   "0,0s",
+   "⏱ Stoppuhr",
+   "Tempo: mittel",
+   "Tempo: langsam",
+   "Tempo: schnell"
+  ],
+  "nachgemessen": {
+   "warum": "simfakten fotografiert vor dem Lauf und sieht deshalb nur '0,0s'. Aus physics-sim.js (_VMS_SPEED, _VMS_S, _vmsDraw) ausgelesen: nach dem Lauf zeichnet die Sim Stoppuhrzeit UND die fertige Rechnung.",
+   "werte": [
+    "Strecke immer s = 10 m",
+    "langsam: v = 1 m/s -> Stoppuhr 10,0s -> Anzeige 'v = s / t = 10 m / 10,0 s = 1,0 m/s'",
+    "mittel:  v = 2 m/s -> Stoppuhr  5,0s -> Anzeige 'v = s / t = 10 m / 5,0 s = 2,0 m/s'",
+    "schnell: v = 5 m/s -> Stoppuhr  2,0s -> Anzeige 'v = s / t = 10 m / 2,0 s = 5,0 m/s'",
+    "Statuszeile rechts NACH dem Lauf (_vmsStatus, Zweig fertig): 'Gemessen: s = 10 m, t = 5,0 s → v = s / t = 2,0 m/s.' - ebenso mit 10,0 s / 1,0 m/s und 2,0 s / 5,0 m/s",
+    "Die Fahrt dauert bei JEDEM Tempo gleich lang: prog += dt / 2.5, also rund 2,5 s Wanduhrzeit. Nur die Zahl auf der Stoppuhr unterscheidet sich - Wartezeit ist NICHT Messzeit.",
+    "Bildpositionen (_vmsDraw): Ergebniszeile ganz oben, Stoppuhr darunter mittig ('⏱ Stoppuhr'), 's = 10 m' unter der Messstrecke, 'Start' und 'Ziel' an den gestrichelten Linien."
+   ],
+   "folge": "Die Tabelle darf Zeit und Geschwindigkeit verlangen - aber erst NACH 'Messung starten'. Der Forschen-Schritt muss das Druecken ausdruecklich nennen. ACHTUNG Gate: Das Protokoll unter der Simulation (_abWrap, _AB_PW, _abUnlocked=false) ist beim Oeffnen passwortgeschuetzt. Die drei Minidiagnose-Fragen samt Rueckmeldungen ('✓ Richtig! Man braucht die Strecke s und die Zeit t.' usw.) und die Knoepfe _vmsAns/_vmsSelf/_abClear stehen zwar im DOM - simfakten sieht und drueckt sie -, sind fuer Lernende aber nicht erreichbar. Heftseiten duerfen weder dorthin schicken noch diese Rueckmeldungen zitieren."
+  }
+ }
+]

@@ -1,0 +1,2324 @@
+{
+  "summary": "Erzeugt je Unterthema eine Uebungsseite (Lueckentext, Richtig/Falsch, MC, offene Frage) fuer 25 Klasse-5-Physik-Themen und prueft Physik",
+  "agentCount": 48,
+  "logs": [
+    "[stall] agent \"ueb:w2\" stalled (no progress) after 204s — retrying (1/5)",
+    "[ueb:w1] failed: API Error: Connection closed mid-response. The response above may be incomplete.",
+    "[ueb:s4] failed: API Error: Connection closed mid-response. The response above may be incomplete."
+  ],
+  "result": [
+    {
+      "theme": "licht",
+      "id": "l1",
+      "lueckensaetze": [
+        {
+          "pre": "Die Sonne, eine Lampe und eine Kerze senden selbst Licht aus. Solche Körper nennt man ",
+          "post": ".",
+          "loesung": "selbstleuchtende Körper"
+        },
+        {
+          "pre": "Der Mond leuchtet nicht selbst. Er wird von der Sonne ",
+          "post": ".",
+          "loesung": "beleuchtet"
+        },
+        {
+          "pre": "Ein Buch sendet kein eigenes Licht aus. Es ist ein ",
+          "post": " Körper.",
+          "loesung": "beleuchteter"
+        },
+        {
+          "pre": "Licht breitet sich immer ",
+          "post": " aus.",
+          "loesung": "geradlinig"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die Sonne ist ein selbstleuchtender Körper.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Der Mond sendet selbst Licht aus.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Licht breitet sich geradlinig aus.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Ein Buch leuchtet im dunklen Zimmer von selbst.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Welcher Körper sendet selbst Licht aus?",
+        "optionen": [
+          "Der Mond",
+          "Die brennende Kerze",
+          "Das Buch",
+          "Der Spiegel"
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "In deinem Zimmer ist es abends ganz dunkel. Du kannst dein Spielzeug nicht sehen. Was musst du tun, damit du es wieder siehst? Erkläre mit dem Wort Licht.",
+        "zeilen": 3,
+        "loesung": "Ich mache das Licht an, zum Beispiel eine Lampe. Die Lampe sendet Licht aus. Das Licht fällt auf das Spielzeug. So wird das Spielzeug beleuchtet, und ich kann es sehen."
+      }
+    },
+    {
+      "theme": "licht",
+      "id": "l2",
+      "lueckensaetze": [
+        {
+          "pre": "Wir können einen Gegenstand nur sehen, wenn",
+          "post": "von ihm in unser Auge kommt.",
+          "loesung": "Licht"
+        },
+        {
+          "pre": "Das Licht geht zuerst von der",
+          "post": "zum Gegenstand.",
+          "loesung": "Lichtquelle"
+        },
+        {
+          "pre": "Vom Gegenstand kommt das Licht dann in unser",
+          "post": ".",
+          "loesung": "Auge"
+        },
+        {
+          "pre": "In einem ganz dunklen Raum sehen wir",
+          "post": ", weil kein Licht da ist.",
+          "loesung": "nichts"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge kommt.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Auch in völliger Dunkelheit können wir Gegenstände gut sehen.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Das Licht muss zuerst zum Gegenstand und dann in unser Auge gelangen.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Unsere Augen senden selbst Strahlen aus, damit wir sehen können.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum können wir einen Ball sehen?",
+        "optionen": [
+          "Weil Licht vom Ball in unser Auge kommt.",
+          "Weil unser Auge Strahlen zum Ball schickt.",
+          "Weil der Ball auch im Dunkeln leuchtet.",
+          "Weil wir die Augen ganz fest zumachen."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Abends suchst du in deinem Zimmer dein Spielzeug. Das Licht ist aus und es ist ganz dunkel. Warum kannst du das Spielzeug nicht sehen? Was musst du tun?",
+        "zeilen": 3,
+        "loesung": "Im Dunkeln kommt kein Licht vom Spielzeug in mein Auge. Deshalb sehe ich es nicht. Ich muss das Licht anmachen. Dann fällt Licht auf das Spielzeug, wird von ihm zurückgeworfen und kommt in mein Auge. So kann ich es wieder sehen."
+      }
+    },
+    {
+      "theme": "licht",
+      "id": "l3",
+      "lueckensaetze": [
+        {
+          "pre": "Das Licht breitet sich immer ",
+          "post": " aus. Es macht also keinen Bogen.",
+          "loesung": "geradlinig"
+        },
+        {
+          "pre": "Ein Körper, durch den kein Licht scheint, nennt man ",
+          "post": ".",
+          "loesung": "undurchsichtig"
+        },
+        {
+          "pre": "Ein undurchsichtiger Körper hält das Licht auf. Hinter ihm entsteht ein dunkler ",
+          "post": ".",
+          "loesung": "Schatten"
+        },
+        {
+          "pre": "Ohne ",
+          "post": " gibt es auch keinen Schatten.",
+          "loesung": "Licht"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Licht breitet sich geradlinig aus.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Durch eine dicke Mauer aus Stein kann das Licht einfach hindurchscheinen.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Ein undurchsichtiger Körper hält das Licht auf. Dahinter wird es dunkel.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Auch ohne Licht kann ein Schatten entstehen.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wie entsteht ein Schatten?",
+        "optionen": [
+          "Das Licht biegt um den Körper herum.",
+          "Der Körper leuchtet von selbst dunkel.",
+          "Ein undurchsichtiger Körper hält das geradlinige Licht auf.",
+          "Der Boden saugt das Licht auf."
+        ],
+        "richtig": 2
+      },
+      "offen": {
+        "prompt": "Du stehst draußen in der Sonne. Warum siehst du deinen eigenen Schatten auf dem Boden? Erkläre es mit dem Wort Licht.",
+        "zeilen": 3,
+        "loesung": "Das Sonnenlicht breitet sich geradlinig aus. Mein Körper ist undurchsichtig und hält das Licht auf. Hinter mir kommt kein Licht auf den Boden. Dort ist es dunkler. Das ist mein Schatten."
+      }
+    },
+    {
+      "theme": "licht",
+      "id": "l4",
+      "lueckensaetze": [
+        {
+          "pre": "Je näher der Gegenstand an der Lichtquelle steht, desto",
+          "post": "wird der Schatten.",
+          "loesung": "größer"
+        },
+        {
+          "pre": "Je weiter die Lichtquelle vom Gegenstand weg ist, desto",
+          "post": "wird der Schatten.",
+          "loesung": "kleiner"
+        },
+        {
+          "pre": "Damit ein Schatten entsteht, brauchst du Licht und einen",
+          "post": ", der das Licht aufhält.",
+          "loesung": "Gegenstand"
+        },
+        {
+          "pre": "Das Licht kommt aus der",
+          "post": ", zum Beispiel aus einer Lampe.",
+          "loesung": "Lichtquelle"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Wenn du den Gegenstand ganz nah an die Lampe hältst, wird sein Schatten größer.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Je weiter die Lichtquelle weg ist, desto größer wird der Schatten.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Wenn du den Gegenstand von der Lampe weg bewegst, wird der Schatten kleiner.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Die Größe des Schattens hängt gar nicht vom Abstand ab.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Du möchtest den Schatten deiner Hand an der Wand größer machen. Was tust du?",
+        "optionen": [
+          "Ich halte die Hand näher an die Lampe.",
+          "Ich halte die Hand weiter von der Lampe weg.",
+          "Ich halte die Hand ganz still.",
+          "Ich schalte eine zweite Lampe an."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Du machst mit einer Taschenlampe Schattentiere an der Wand. Wie kannst du dein Schattentier größer machen? Erkläre kurz.",
+        "zeilen": 3,
+        "loesung": "Ich halte meine Hand näher an die Taschenlampe. Je näher der Gegenstand an der Lichtquelle ist, desto größer wird sein Schatten an der Wand."
+      }
+    },
+    {
+      "theme": "licht",
+      "id": "l5",
+      "lueckensaetze": [
+        {
+          "pre": "Der ganz dunkle Bereich hinter dem Gegenstand heißt ",
+          "post": ".",
+          "loesung": "Kernschatten"
+        },
+        {
+          "pre": "Der hellere Rand außen um den dunklen Teil heißt ",
+          "post": ".",
+          "loesung": "Halbschatten"
+        },
+        {
+          "pre": "Kern- und Halbschatten entstehen nur bei einer ",
+          "post": " Lichtquelle.",
+          "loesung": "großen"
+        },
+        {
+          "pre": "Im Halbschatten kommt nur ein ",
+          "post": " vom Licht an.",
+          "loesung": "Teil"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Der Kernschatten ist ganz dunkel.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Der Halbschatten ist heller als der Kernschatten.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Der Halbschatten liegt in der Mitte und der Kernschatten außen herum.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Bei einer großen Lampe gibt es nur einen Schatten ohne Halbschatten.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wo ist der Schatten am dunkelsten?",
+        "optionen": [
+          "Im Kernschatten",
+          "Im Halbschatten",
+          "Neben dem Schatten im hellen Licht"
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "In der Sporthalle hängen viele große Lampen an der Decke. Warum hat dein Schatten am Boden einen ganz dunklen Teil und außen einen helleren Rand? Erkläre kurz.",
+        "zeilen": 3,
+        "loesung": "Die großen Lampen sind eine große Lichtquelle. In der Mitte kommt gar kein Licht hin, dort ist der dunkle Kernschatten. Am Rand kommt noch ein Teil vom Licht an, dort ist der hellere Halbschatten."
+      }
+    },
+    {
+      "theme": "strom",
+      "id": "s1",
+      "lueckensaetze": [
+        {
+          "pre": "Die Batterie ist die",
+          "post": "im Stromkreis. Sie liefert den Strom.",
+          "loesung": "Stromquelle"
+        },
+        {
+          "pre": "Die Lampe ist ein",
+          "post": ". Sie leuchtet, wenn Strom fließt.",
+          "loesung": "Verbraucher"
+        },
+        {
+          "pre": "Mit einem",
+          "post": "kann man den Strom an- und ausschalten.",
+          "loesung": "Schalter"
+        },
+        {
+          "pre": "Bauteile zeichnet man in der Physik mit genormten",
+          "post": ".",
+          "loesung": "Schaltzeichen"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die Batterie ist die Stromquelle im Stromkreis.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Die Lampe erzeugt selbst den Strom.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Mit einem Schalter kann man den Stromkreis öffnen und schließen.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Jeder darf sich seine Schaltzeichen selbst ausdenken.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Welches Bauteil ist der Verbraucher im Stromkreis?",
+        "optionen": [
+          "Die Lampe",
+          "Die Batterie",
+          "Die Leitung",
+          "Der Schalter"
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Du hast eine Taschenlampe. Welche Teile eines Stromkreises stecken darin? Warum leuchtet die Lampe erst, wenn du den Schalter drückst?",
+        "zeilen": 3,
+        "loesung": "In der Taschenlampe sind eine Batterie (Stromquelle), eine Lampe (Verbraucher), Leitungen und ein Schalter. Wenn du den Schalter drückst, wird der Stromkreis geschlossen. Erst dann fließt Strom und die Lampe leuchtet."
+      }
+    },
+    {
+      "theme": "strom",
+      "id": "s2",
+      "lueckensaetze": [
+        {
+          "pre": "Die Lampe leuchtet nur, wenn der Stromkreis",
+          "post": "ist.",
+          "loesung": "geschlossen"
+        },
+        {
+          "pre": "Der Strom fließt von der",
+          "post": "durch die Lampe und wieder zurück.",
+          "loesung": "Batterie"
+        },
+        {
+          "pre": "Wird der Weg unterbrochen, dann geht die Lampe",
+          "post": ".",
+          "loesung": "aus"
+        },
+        {
+          "pre": "Ein geschlossener Weg für den Strom heißt",
+          "post": ".",
+          "loesung": "Stromkreis"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die Lampe leuchtet nur, wenn der Stromkreis geschlossen ist.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Wenn ein Kabel locker ist und der Stromkreis offen bleibt, leuchtet die Lampe trotzdem.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Der Strom muss von der Batterie durch die Lampe und wieder zurück fließen.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Eine Lampe leuchtet auch ganz ohne Batterie.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wann leuchtet die Lampe?",
+        "optionen": [
+          "Wenn der Stromkreis geschlossen ist",
+          "Wenn der Stromkreis unterbrochen ist",
+          "Wenn ein Kabel fehlt",
+          "Wenn der Weg offen ist"
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Deine Taschenlampe leuchtet nicht mehr. Nenne zwei Gründe, warum sie aus bleiben kann.",
+        "zeilen": 3,
+        "loesung": "Die Batterie ist leer, oder der Stromkreis ist unterbrochen. Zum Beispiel ist ein Kabel locker oder der Schalter ist aus. Dann kann der Strom nicht durch die Lampe fließen und sie bleibt dunkel."
+      }
+    },
+    {
+      "theme": "strom",
+      "id": "s3",
+      "lueckensaetze": [
+        {
+          "pre": "Metalle wie Kupfer und Eisen lassen den Strom durch. Man nennt sie ",
+          "post": ".",
+          "loesung": "Leiter"
+        },
+        {
+          "pre": "Plastik, Holz, Glas und Gummi lassen keinen Strom durch. Sie heißen ",
+          "post": " oder Isolatoren.",
+          "loesung": "Nichtleiter"
+        },
+        {
+          "pre": "Die Hülle von einem Kabel ist aus Plastik. Plastik ist ein ",
+          "post": ".",
+          "loesung": "Nichtleiter"
+        },
+        {
+          "pre": "Der Draht in einem Kabel ist aus dem Metall ",
+          "post": ". Es leitet den Strom sehr gut.",
+          "loesung": "Kupfer"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Kupfer ist ein Metall und leitet den Strom.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Holz leitet den Strom gut.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Plastik ist ein Nichtleiter.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Gummi lässt den Strom durch.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Welcher Stoff leitet den Strom?",
+        "optionen": [
+          "Holz",
+          "Glas",
+          "Eisen",
+          "Gummi"
+        ],
+        "richtig": 2
+      },
+      "offen": {
+        "prompt": "Warum ist die Hülle von einem Kabel aus Plastik und der Draht innen aus Metall? Erkläre.",
+        "zeilen": 3,
+        "loesung": "Der Draht innen ist aus Metall, zum Beispiel Kupfer. Metall ist ein Leiter und lässt den Strom durch. Die Hülle außen ist aus Plastik. Plastik ist ein Nichtleiter. So kommt der Strom nicht nach außen. Man kann das Kabel sicher anfassen."
+      }
+    },
+    {
+      "theme": "strom",
+      "id": "s5",
+      "lueckensaetze": [
+        {
+          "pre": "Bei der Parallelschaltung hat jede Lampe ihren eigenen ",
+          "loesung": "Weg",
+          "post": " für den Strom."
+        },
+        {
+          "pre": "Nimmt man eine Lampe heraus, dann leuchtet die andere Lampe ",
+          "loesung": "weiter",
+          "post": "."
+        },
+        {
+          "pre": "Bei der Parallelschaltung leuchtet jede Lampe gleich ",
+          "loesung": "hell",
+          "post": "."
+        },
+        {
+          "pre": "Der Strom teilt sich auf und fließt durch mehrere ",
+          "loesung": "Wege",
+          "post": " gleichzeitig."
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Bei der Parallelschaltung hat jede Lampe ihren eigenen Weg.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Nimmt man eine Lampe heraus, gehen alle anderen Lampen auch aus.",
+          "stimmt": false
+        },
+        {
+          "aussage": "In der Parallelschaltung leuchtet jede Lampe gleich hell.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Bei der Parallelschaltung gibt es nur einen einzigen Weg für den Strom.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Du drehst bei einer Parallelschaltung eine von zwei Lampen heraus. Was passiert mit der anderen Lampe?",
+        "optionen": [
+          "Sie leuchtet weiter.",
+          "Sie geht auch aus.",
+          "Sie wird viel heller und geht kaputt."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "In einem Zimmer hängen zwei Lampen an der Decke. Eine Lampe geht kaputt, aber die andere leuchtet weiter. Sind die Lampen in Reihe oder parallel geschaltet? Erkläre kurz, warum.",
+        "zeilen": 3,
+        "loesung": "Die Lampen sind parallel geschaltet. Jede Lampe hat ihren eigenen Weg für den Strom. Darum leuchtet die andere Lampe weiter, auch wenn eine kaputt ist."
+      }
+    },
+    {
+      "theme": "waerme",
+      "id": "w2",
+      "lueckensaetze": [
+        {
+          "pre": "Wenn es warm wird, dehnt sich die",
+          "post": "im Thermometer aus.",
+          "loesung": "Flüssigkeit"
+        },
+        {
+          "pre": "Die Flüssigkeit steigt dann in der dünnen",
+          "post": "nach oben.",
+          "loesung": "Röhre"
+        },
+        {
+          "pre": "Beim Abkühlen",
+          "post": "die Flüssigkeit wieder nach unten.",
+          "loesung": "sinkt"
+        },
+        {
+          "pre": "An der Skala kann man die",
+          "post": "ablesen.",
+          "loesung": "Temperatur"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Beim Erwärmen dehnt sich die Flüssigkeit aus und steigt nach oben.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Beim Abkühlen steigt die Flüssigkeit im Thermometer nach oben.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Mit einem Thermometer kann man messen, wie warm oder kalt etwas ist.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Wenn es kalt wird, verschwindet die Flüssigkeit aus dem Thermometer.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum steigt die Flüssigkeit im Thermometer, wenn es wärmer wird?",
+        "optionen": [
+          "Sie dehnt sich aus.",
+          "Sie wird schwerer.",
+          "Sie wird kälter."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Du legst ein Thermometer in warmes Wasser. Was passiert mit der Flüssigkeit im Thermometer? Erkläre in eigenen Worten.",
+        "zeilen": 3,
+        "loesung": "Die Flüssigkeit wird warm und dehnt sich aus. Deshalb steigt sie in der dünnen Röhre nach oben. An der Skala kann man dann ablesen, dass das Wasser warm ist."
+      }
+    },
+    {
+      "theme": "waerme",
+      "id": "w3",
+      "lueckensaetze": [
+        {
+          "pre": "Beim Erwärmen dehnen sich die meisten Stoffe ",
+          "post": ".",
+          "loesung": "aus"
+        },
+        {
+          "pre": "Beim Abkühlen ziehen sich die meisten Stoffe wieder ",
+          "post": ".",
+          "loesung": "zusammen"
+        },
+        {
+          "pre": "Stoffe können fest, flüssig oder ",
+          "post": " sein.",
+          "loesung": "gasförmig"
+        },
+        {
+          "pre": "Die Wärme lässt die kleinen ",
+          "post": " im Stoff schneller wackeln.",
+          "loesung": "Teilchen"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die meisten Stoffe dehnen sich beim Erwärmen aus.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Beim Abkühlen werden fast alle Stoffe größer.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Nur feste Stoffe können sich ausdehnen, Luft und Wasser nicht.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Auch Luft dehnt sich beim Erwärmen aus.",
+          "stimmt": true
+        }
+      ],
+      "mc": {
+        "frage": "Was passiert mit den meisten Stoffen, wenn man sie erwärmt?",
+        "optionen": [
+          "Sie ziehen sich zusammen.",
+          "Sie dehnen sich aus.",
+          "Sie bleiben genau gleich groß.",
+          "Sie werden immer schwerer."
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "Im Sommer hängen die Stromkabel zwischen zwei Masten weiter durch als im Winter. Erkläre, warum das so ist.",
+        "zeilen": 3,
+        "loesung": "Im Sommer ist es warm. Die Wärme lässt das Metall der Kabel sich ausdehnen. Deshalb werden die Kabel länger und hängen weiter durch. Im Winter ist es kalt. Das Metall zieht sich zusammen, und die Kabel sind kürzer und straffer."
+      }
+    },
+    {
+      "theme": "waerme",
+      "id": "w4",
+      "lueckensaetze": [
+        {
+          "pre": "Wenn ein fester Stoff warm wird, dann ",
+          "loesung": "schmilzt",
+          "post": " er zu einer Flüssigkeit."
+        },
+        {
+          "pre": "Wird eine Flüssigkeit sehr heiß, dann ",
+          "loesung": "verdampft",
+          "post": " sie zu Gas."
+        },
+        {
+          "pre": "Kühlt ein Gas ab, dann ",
+          "loesung": "kondensiert",
+          "post": " es zu einer Flüssigkeit."
+        },
+        {
+          "pre": "Wenn Wasser sehr kalt wird, dann ",
+          "loesung": "erstarrt",
+          "post": " es zu Eis."
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Stoffe können fest, flüssig oder gasförmig sein.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Beim Abkühlen verdampft eine Flüssigkeit zu Gas.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Eis schmilzt, wenn es warm wird.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Wenn Wasserdampf kalt wird, dann wird er wieder fest.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wie nennt man es, wenn eine Flüssigkeit beim Erwärmen zu Gas wird?",
+        "optionen": [
+          "Erstarren",
+          "Verdampfen",
+          "Schmelzen"
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "Du holst eine kalte Flasche aus dem Kühlschrank. Nach kurzer Zeit sind außen kleine Wassertropfen an der Flasche. Erkläre, wie die Tropfen entstehen.",
+        "zeilen": 3,
+        "loesung": "In der Luft ist unsichtbarer Wasserdampf (Gas). An der kalten Flasche kühlt der Wasserdampf ab. Beim Abkühlen wird das Gas wieder flüssig. Das nennt man Kondensieren. So bilden sich die Wassertropfen."
+      }
+    },
+    {
+      "theme": "waerme",
+      "id": "w5",
+      "lueckensaetze": [
+        {
+          "pre": "Wenn du einen heißen Löffel anfasst, wird deine Hand warm. Diese Art nennt man ",
+          "post": ".",
+          "loesung": "Wärmeleitung"
+        },
+        {
+          "pre": "Metalle leiten Wärme besonders ",
+          "post": ".",
+          "loesung": "gut"
+        },
+        {
+          "pre": "In Wasser und in Luft wird die Wärme durch ",
+          "post": " übertragen.",
+          "loesung": "Wärmeströmung"
+        },
+        {
+          "pre": "Die Wärme der Sonne kommt als ",
+          "post": " zu uns.",
+          "loesung": "Wärmestrahlung"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Metall leitet Wärme gut.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Bei der Wärmeströmung sinkt das warme Wasser nach unten.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Die Wärme der Sonne kommt durch Wärmestrahlung zu uns.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Holz leitet Wärme genauso gut wie Metall.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wie kommt die Wärme der Sonne zur Erde?",
+        "optionen": [
+          "Durch Wärmeleitung",
+          "Durch Wärmeströmung",
+          "Durch Wärmestrahlung"
+        ],
+        "richtig": 2
+      },
+      "offen": {
+        "prompt": "Zwei Löffel liegen in einem heißen Topf: einer aus Metall, einer aus Holz. Welcher wird schneller heiß? Erkläre warum.",
+        "zeilen": 3,
+        "loesung": "Der Löffel aus Metall wird schneller heiß. Metall leitet die Wärme sehr gut. Holz leitet die Wärme schlecht. Darum bleibt der Holzlöffel länger kühl."
+      }
+    },
+    {
+      "theme": "schall",
+      "id": "sc1",
+      "lueckensaetze": [
+        {
+          "pre": "Ein Ton entsteht, wenn etwas ",
+          "post": " (schnell hin und her zittert).",
+          "loesung": "schwingt"
+        },
+        {
+          "pre": "Die Schwingung geht von dem Gegenstand auf die ",
+          "post": " über.",
+          "loesung": "Luft"
+        },
+        {
+          "pre": "Hört das Schwingen auf, dann hört auch der ",
+          "post": " auf.",
+          "loesung": "Ton"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Ein Ton entsteht, wenn etwas schwingt.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Ein Ton kann auch ohne Schwingung entstehen.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Die Schwingung geht auf die Luft über.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Wenn das Schwingen aufhört, wird der Ton lauter.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Was muss passieren, damit ein Ton entsteht?",
+        "optionen": [
+          "Etwas schwingt schnell hin und her.",
+          "Etwas wird ganz kalt.",
+          "Etwas leuchtet hell."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Du zupfst an einer Gitarrensaite und hörst einen Ton. Nach kurzer Zeit wird der Ton leiser und hört auf. Erkläre, warum.",
+        "zeilen": 3,
+        "loesung": "Die Saite schwingt schnell hin und her. Die Schwingung geht auf die Luft über, darum hörst du einen Ton. Die Saite schwingt immer weniger, deshalb wird der Ton leiser. Wenn die Saite still steht, hört der Ton auf."
+      }
+    },
+    {
+      "theme": "schall",
+      "id": "sc2",
+      "lueckensaetze": [
+        {
+          "pre": "Je weiter etwas schwingt, desto",
+          "post": "ist der Ton.",
+          "loesung": "lauter"
+        },
+        {
+          "pre": "Eine kleine",
+          "post": "macht einen leisen Ton.",
+          "loesung": "Schwingung"
+        },
+        {
+          "pre": "Wenn eine Saite nur wenig hin und her schwingt, ist der Ton",
+          "post": ".",
+          "loesung": "leise"
+        },
+        {
+          "pre": "Wie laut oder leise ein Ton ist, nennt man die",
+          "post": ".",
+          "loesung": "Lautstärke"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Je stärker etwas schwingt, desto lauter ist der Ton.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Eine kleine Schwingung macht einen lauten Ton.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Eine große (weite) Schwingung macht einen lauten Ton.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Die Lautstärke hat nichts damit zu tun, wie weit etwas schwingt.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wovon hängt die Lautstärke eines Tons ab?",
+        "optionen": [
+          "Von der Farbe des Instruments",
+          "Davon, wie weit etwas schwingt",
+          "Von der Uhrzeit"
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "Du schlägst eine Trommel einmal ganz sanft und einmal ganz fest. Erkläre, warum sie unterschiedlich laut klingt.",
+        "zeilen": 3,
+        "loesung": "Wenn ich die Trommel fest schlage, schwingt das Trommelfell weit. Das ist eine große Schwingung, darum ist der Ton laut. Schlage ich sanft, schwingt das Fell nur wenig (kleine Schwingung), und der Ton ist leise."
+      }
+    },
+    {
+      "theme": "schall",
+      "id": "sc3",
+      "lueckensaetze": [
+        {
+          "pre": "Je schneller etwas schwingt, desto ",
+          "post": " ist der Ton.",
+          "loesung": "höher"
+        },
+        {
+          "pre": "Eine kurze Saite schwingt schnell. Der Ton ist deshalb ",
+          "post": ".",
+          "loesung": "hoch"
+        },
+        {
+          "pre": "Eine lange oder lockere Saite schwingt langsam. Der Ton ist deshalb ",
+          "post": ".",
+          "loesung": "tief"
+        },
+        {
+          "pre": "Die Hin- und Her-Bewegung einer Saite nennt man eine ",
+          "post": ".",
+          "loesung": "Schwingung"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Je schneller eine Saite schwingt, desto höher ist der Ton.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Eine kurze Saite macht einen tiefen Ton.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Wenn du eine Saite fester spannst, wird der Ton höher.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Eine lange, lockere Saite schwingt schnell und klingt hoch.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Du drückst eine Gitarrensaite so, dass nur ein kurzes Stück schwingt. Wie klingt der Ton?",
+        "optionen": [
+          "Höher als vorher",
+          "Tiefer als vorher",
+          "Genau gleich",
+          "Gar kein Ton"
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Bei einer Gitarre sind die Saiten unterschiedlich dick und werden verschieden fest gespannt. Erkläre, warum die eine Saite höher klingt als die andere. Benutze die Wörter schnell, langsam, hoch und tief.",
+        "zeilen": 3,
+        "loesung": "Eine dünne, fest gespannte Saite schwingt schnell. Darum klingt sie hoch. Eine dicke oder lockere Saite schwingt langsam. Darum klingt sie tief."
+      }
+    },
+    {
+      "theme": "schall",
+      "id": "sc4",
+      "lueckensaetze": [
+        {
+          "pre": "Schall entsteht durch eine ",
+          "post": ". Etwas zittert dabei ganz schnell hin und her.",
+          "loesung": "Schwingung"
+        },
+        {
+          "pre": "Meistens breitet sich Schall durch die ",
+          "post": " aus. Sie ist um uns herum.",
+          "loesung": "Luft"
+        },
+        {
+          "pre": "Schall breitet sich nicht nur nach vorne aus, sondern in alle ",
+          "post": ".",
+          "loesung": "Richtungen"
+        },
+        {
+          "pre": "Im ",
+          "post": " gibt es keinen Schall, weil dort keine Luft ist.",
+          "loesung": "Vakuum"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Schall kann sich auch durch Wasser ausbreiten.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Im Vakuum (zum Beispiel im Weltall) kann man Schall hören.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Schall breitet sich immer nur in eine einzige Richtung aus.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Schall kann sich auch durch feste Stoffe wie Holz ausbreiten.",
+          "stimmt": true
+        }
+      ],
+      "mc": {
+        "frage": "Wodurch kann sich Schall NICHT ausbreiten?",
+        "optionen": [
+          "Durch Luft",
+          "Durch Wasser",
+          "Durch ein Vakuum",
+          "Durch Holz"
+        ],
+        "richtig": 2
+      },
+      "offen": {
+        "prompt": "Zwei Astronauten schweben ganz nah nebeneinander im Weltall. Warum können sie sich nicht einfach zurufen? Erkläre es mit dem Wort Schall.",
+        "zeilen": 3,
+        "loesung": "Im Weltall ist ein Vakuum. Dort gibt es keine Luft. Schall braucht aber Luft oder einen anderen Stoff, um sich auszubreiten. Ohne Luft kann kein Schall weitergegeben werden. Deshalb hören sich die Astronauten nicht und sprechen über Funk."
+      }
+    },
+    {
+      "theme": "schall",
+      "id": "sc5",
+      "lueckensaetze": [
+        {
+          "pre": "Der Schall bringt das",
+          "post": "im Ohr zum Schwingen.",
+          "loesung": "Trommelfell"
+        },
+        {
+          "pre": "Kleine",
+          "post": "leiten die Schwingung weiter ins Innenohr.",
+          "loesung": "Knochen"
+        },
+        {
+          "pre": "Vom Innenohr geht ein Signal zum",
+          "post": ", damit wir hören.",
+          "loesung": "Gehirn"
+        },
+        {
+          "pre": "Sehr laute Töne können das",
+          "post": "schädigen.",
+          "loesung": "Ohr"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Schall bringt das Trommelfell zum Schwingen.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Sehr laute Töne sind gut für die Ohren.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Kleine Knochen leiten die Schwingung ins Innenohr weiter.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Das Ohr hört ganz allein, ohne das Gehirn.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Wohin schickt das Innenohr das Signal, damit wir hören?",
+        "optionen": [
+          "Zum Fuß",
+          "Zum Gehirn",
+          "Zur Hand"
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "Auf einem Konzert ist die Musik sehr laut und deine Ohren tun weh. Schreibe zwei Dinge auf, wie du deine Ohren schützen kannst.",
+        "zeilen": 3,
+        "loesung": "Ich kann etwas weiter weg von den Lautsprechern stehen. Ich kann Ohrstöpsel oder einen Gehörschutz tragen. So kommen die lauten Töne nicht so stark ins Ohr und das Ohr nimmt keinen Schaden."
+      }
+    },
+    {
+      "theme": "himmel",
+      "id": "h1",
+      "lueckensaetze": [
+        {
+          "pre": "Die Erde dreht sich in 24 Stunden einmal um sich ",
+          "post": ".",
+          "loesung": "selbst"
+        },
+        {
+          "pre": "Auf der Seite, die zur Sonne zeigt, ist gerade ",
+          "post": ".",
+          "loesung": "Tag"
+        },
+        {
+          "pre": "Auf der Seite, die von der Sonne weg zeigt, ist gerade ",
+          "post": ".",
+          "loesung": "Nacht"
+        },
+        {
+          "pre": "Tag und Nacht entstehen, weil sich die ",
+          "post": " dreht.",
+          "loesung": "Erde"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die Erde dreht sich in 24 Stunden einmal um sich selbst.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Nicht die Erde, sondern die Sonne dreht sich. Darum wird es Tag und Nacht.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Auf der Seite der Erde, die zur Sonne zeigt, ist Tag.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Die Erde braucht nur eine Stunde für eine ganze Drehung.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum wird es auf der Erde Tag und Nacht?",
+        "optionen": [
+          "Weil sich die Erde in 24 Stunden einmal dreht.",
+          "Weil die Sonne um die Erde läuft.",
+          "Weil die Sonne in der Nacht ausgeht."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Bei dir ist es gerade Mittag und die Sonne scheint. Auf der anderen Seite der Erde ist zur gleichen Zeit Nacht. Erkläre mit eigenen Worten, warum das so ist.",
+        "zeilen": 3,
+        "loesung": "Die Erde dreht sich. Deine Seite zeigt gerade zur Sonne, darum hast du Tag. Die andere Seite zeigt von der Sonne weg, darum ist dort Nacht."
+      }
+    },
+    {
+      "theme": "himmel",
+      "id": "h2",
+      "lueckensaetze": [
+        {
+          "pre": "Die Erde braucht ein ",
+          "post": " für eine Runde um die Sonne.",
+          "loesung": "Jahr"
+        },
+        {
+          "pre": "Die Erdachse steht nicht gerade, sie ist ",
+          "post": ". Darum gibt es Jahreszeiten.",
+          "loesung": "geneigt"
+        },
+        {
+          "pre": "Wenn unser Teil der Erde zur Sonne geneigt ist, haben wir ",
+          "post": ".",
+          "loesung": "Sommer"
+        },
+        {
+          "pre": "Im Winter steht die Sonne am Himmel ganz ",
+          "post": ", und die Tage sind kurz.",
+          "loesung": "tief"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Die geneigte Erde wandert in einem Jahr einmal um die Sonne.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Im Winter ist unser Teil der Erde zur Sonne hin geneigt.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Im Sommer ist unser Teil der Erde zur Sonne geneigt. Die Sonne steht hoch und die Tage sind lang.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Es ist Sommer, weil die Erde dann viel näher an der Sonne ist.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum ist bei uns Sommer?",
+        "optionen": [
+          "Unser Teil der Erde ist zur Sonne geneigt.",
+          "Die Erde kommt der Sonne ganz nah.",
+          "Die Sonne wird im Sommer größer."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Im Sommer kannst du abends um 21 Uhr noch draußen spielen, weil es hell ist. Im Winter ist es um 21 Uhr schon dunkel. Erkläre kurz, warum das so ist.",
+        "zeilen": 3,
+        "loesung": "Im Sommer ist unser Teil der Erde zur Sonne geneigt. Darum steht die Sonne hoch und die Tage sind lang. Es bleibt abends länger hell. Im Winter ist unser Teil weggeneigt. Die Tage sind kurz, und es wird früh dunkel."
+      }
+    },
+    {
+      "theme": "himmel",
+      "id": "h3",
+      "lueckensaetze": [
+        {
+          "pre": "Der Mond leuchtet nicht selbst. Er wird von der ",
+          "loesung": "Sonne",
+          "post": " beleuchtet."
+        },
+        {
+          "pre": "Wir sehen immer nur den Teil des Mondes, der gerade von der Sonne ",
+          "loesung": "beleuchtet",
+          "post": " wird."
+        },
+        {
+          "pre": "Die verschiedenen Formen des Mondes am Himmel nennt man ",
+          "loesung": "Mondphasen",
+          "post": "."
+        },
+        {
+          "pre": "Der Mond bewegt sich auf einer Bahn um die ",
+          "loesung": "Erde",
+          "post": "."
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Der Mond macht sein eigenes Licht.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Die Sonne beleuchtet den Mond.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Wir sehen nicht immer die ganze beleuchtete Seite des Mondes.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Der Mond verändert wirklich seine Form und wird dabei kleiner.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum sieht der Mond an verschiedenen Tagen anders aus?",
+        "optionen": [
+          "Wolken verdecken einen Teil vom Mond.",
+          "Je nach Stellung sehen wir mehr oder weniger der beleuchteten Seite.",
+          "Der Mond schrumpft und wächst danach wieder.",
+          "Der Mond schaltet sein Licht immer wieder an und aus."
+        ],
+        "richtig": 1
+      },
+      "offen": {
+        "prompt": "Du siehst abends nur eine schmale, sichelförmige Mondscheibe am Himmel. Erkläre einem jüngeren Kind, warum wir gerade nicht den ganzen runden Mond sehen.",
+        "zeilen": 3,
+        "loesung": "Die Sonne beleuchtet immer nur eine Seite des Mondes. Weil der Mond gerade so zur Erde steht, sehen wir nur einen kleinen Teil der beleuchteten Seite. Deshalb sieht der Mond wie eine schmale Sichel aus."
+      }
+    },
+    {
+      "theme": "himmel",
+      "id": "h4",
+      "lueckensaetze": [
+        {
+          "pre": "Bei einer Sonnenfinsternis steht der ",
+          "post": " zwischen Sonne und Erde.",
+          "loesung": "Mond"
+        },
+        {
+          "pre": "Der Mond wirft seinen ",
+          "post": " auf die Erde.",
+          "loesung": "Schatten"
+        },
+        {
+          "pre": "Der Mond ",
+          "post": " die Sonne, deshalb wird es am Tag dunkel.",
+          "loesung": "verdeckt"
+        },
+        {
+          "pre": "Schau nie ohne ",
+          "post": " direkt in die Sonne.",
+          "loesung": "Schutz"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Bei einer Sonnenfinsternis steht der Mond zwischen Sonne und Erde.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Bei einer Sonnenfinsternis steht die Erde zwischen Sonne und Mond.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Der Mond wirft seinen Schatten auf die Erde.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Du darfst ohne Schutzbrille direkt in die Sonne schauen.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Was passiert bei einer Sonnenfinsternis?",
+        "optionen": [
+          "Der Mond verdeckt die Sonne.",
+          "Die Erde verdeckt den Mond.",
+          "Die Sonne verdeckt den Mond."
+        ],
+        "richtig": 0
+      },
+      "offen": {
+        "prompt": "Lisa hält einen Ball vor eine Lampe. An der Wand entsteht ein dunkler Fleck. Erkläre, was das mit einer Sonnenfinsternis zu tun hat.",
+        "zeilen": 3,
+        "loesung": "Der Ball wirft einen Schatten auf die Wand. Der Ball ist wie der Mond, die Lampe ist wie die Sonne und die Wand ist wie die Erde. Bei einer Sonnenfinsternis schiebt sich der Mond vor die Sonne und wirft seinen Schatten auf die Erde. So wird es kurz dunkel."
+      }
+    },
+    {
+      "theme": "himmel",
+      "id": "h5",
+      "lueckensaetze": [
+        {
+          "pre": "Bei einer Mondfinsternis steht die ",
+          "post": " zwischen Sonne und Mond.",
+          "loesung": "Erde"
+        },
+        {
+          "pre": "Die Erde wirft ihren ",
+          "post": " auf den Mond.",
+          "loesung": "Schatten"
+        },
+        {
+          "pre": "Der Mond wird dunkel und sieht oft ",
+          "post": " aus.",
+          "loesung": "rötlich"
+        },
+        {
+          "pre": "Eine Mondfinsternis können wir nur bei ",
+          "post": " sehen.",
+          "loesung": "Vollmond"
+        }
+      ],
+      "richtigfalsch": [
+        {
+          "aussage": "Bei einer Mondfinsternis steht die Erde zwischen Sonne und Mond.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Der Mond wirft bei einer Mondfinsternis seinen Schatten auf die Erde.",
+          "stimmt": false
+        },
+        {
+          "aussage": "Bei einer Mondfinsternis kann der Mond rötlich aussehen.",
+          "stimmt": true
+        },
+        {
+          "aussage": "Bei einer Mondfinsternis leuchtet der Mond heller als sonst.",
+          "stimmt": false
+        }
+      ],
+      "mc": {
+        "frage": "Warum wird der Mond bei einer Mondfinsternis dunkel?",
+        "optionen": [
+          "Der Mond geht aus wie eine Lampe.",
+          "Wolken verdecken den Mond.",
+          "Die Erde wirft ihren Schatten auf den Mond."
+        ],
+        "richtig": 2
+      },
+      "offen": {
+        "prompt": "Erkläre einem Freund mit eigenen Worten, warum der Mond bei einer Mondfinsternis dunkel wird. Denke dabei an einen Schatten, den du schon einmal selbst gesehen hast.",
+        "zeilen": 3,
+        "loesung": "Die Erde steht zwischen Sonne und Mond. So fällt der Schatten der Erde auf den Mond. Der Mond bekommt kein direktes Sonnenlicht mehr und wird dunkel. Oft sieht er dann rötlich aus. Das ist wie mein eigener Schatten, wenn ich in der Sonne stehe."
+      }
+    }
+  ],
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Uebungen"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Pruefung"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "ueb:l1",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a59b9dd6a2f7cfeb6",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992593721,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Lichtquellen und Lichtausbreitung\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Selbstleuchtende Koerper (Sonne, Lampe, Kerze, Feuer) senden selbst Licht aus. Beleuchtete Koerper (Mond, Buch) leuchten nicht selbst. Licht br…",
+      "lastProgressAt": 1786992612840,
+      "tokens": 13957,
+      "toolCalls": 1,
+      "durationMs": 19119,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Sonne, eine Lampe und eine Kerze senden selbst Licht aus. Solche Körper nennt man \",\"post\":\".\",\"loesung\":\"selbstleuchtende Körper\"},{\"pre\":\"Der Mond leuchtet nicht selbst. Er wird von der Sonne \",\"post\":\".\",\"loesung\":\"beleuchtet\"},{\"pre\":\"Ein Buch senden wir kein Licht. Es ist ein \",\"post\":\" Körper.\",\"loesung\":\"beleuchteter\"},{\"pre\":\"Licht breitet sich immer \",\"post\":…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "ueb:l2",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a33f1eb23f4aa87a0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992594066,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie koennen wir einen Gegenstand sehen?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge gelangt (Lichtquelle zum Gegenstand, dann ins Auge). Ohne Licht sehen wi…",
+      "lastProgressAt": 1786992618892,
+      "tokens": 13946,
+      "toolCalls": 1,
+      "durationMs": 24826,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wir können einen Gegenstand nur sehen, wenn\",\"post\":\"von ihm in unser Auge kommt.\",\"loesung\":\"Licht\"},{\"pre\":\"Das Licht geht zuerst von der\",\"post\":\"zum Gegenstand.\",\"loesung\":\"Lichtquelle\"},{\"pre\":\"Vom Gegenstand kommt das Licht dann in unser\",\"post\":\".\",\"loesung\":\"Auge\"},{\"pre\":\"In einem ganz dunklen Raum sehen wir\",\"post\":\", weil kein Licht da ist.\",\"loesung\":\"nichts\"}…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "ueb:l3",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "acb81e26a64765622",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992595168,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entsteht ein Schatten?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Licht breitet sich geradlinig aus. Ein undurchsichtiger Koerper haelt das Licht auf, dahinter entsteht ein dunkler Schatten.\nErzeuge genau vier Teile:…",
+      "lastProgressAt": 1786992619133,
+      "tokens": 13922,
+      "toolCalls": 1,
+      "durationMs": 23965,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Das Licht breitet sich immer \",\"post\":\" aus. Es macht also keinen Bogen.\",\"loesung\":\"geradlinig\"},{\"pre\":\"Ein Körper, durch den kein Licht scheint, nennt man \",\"post\":\".\",\"loesung\":\"undurchsichtig\"},{\"pre\":\"Ein undurchsichtiger Körper hält das Licht auf. Hinter ihm entsteht ein dunkler \",\"post\":\".\",\"loesung\":\"Schatten\"},{\"pre\":\"Ohne \",\"post\":\" gibt es auch keinen Schatten…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "ueb:l4",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a950bc4767b68aa42",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992594661,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wovon haengt die Groesse des Schattens ab?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Je naeher der Gegenstand an der Lichtquelle, desto groesser der Schatten. Je weiter die Lichtquelle weg, desto kleiner der Schatten.\nE…",
+      "lastProgressAt": 1786992621446,
+      "tokens": 13929,
+      "toolCalls": 1,
+      "durationMs": 26785,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je näher der Gegenstand an der Lichtquelle steht, desto\",\"post\":\"wird der Schatten.\",\"loesung\":\"größer\"},{\"pre\":\"Je weiter die Lichtquelle vom Gegenstand weg ist, desto\",\"post\":\"wird der Schatten.\",\"loesung\":\"kleiner\"},{\"pre\":\"Damit ein Schatten entsteht, brauchst du Licht und einen\",\"post\":\", der das Licht aufhält.\",\"loesung\":\"Gegenstand\"},{\"pre\":\"Das Licht kommt aus der…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "ueb:l5",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a68d47a03bd465b8e",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992594254,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Kern- und Halbschatten\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Bei einer grossen Lichtquelle entsteht ein ganz dunkler Kernschatten und aussen herum ein hellerer Halbschatten.\nErzeuge genau vier Teile:\n1) lueckensaetz…",
+      "lastProgressAt": 1786992615119,
+      "tokens": 13912,
+      "toolCalls": 1,
+      "durationMs": 20865,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der ganz dunkle Bereich hinter dem Gegenstand heißt \",\"post\":\".\",\"loesung\":\"Kernschatten\"},{\"pre\":\"Der hellere Rand außen um den dunklen Teil heißt \",\"post\":\".\",\"loesung\":\"Halbschatten\"},{\"pre\":\"Kern- und Halbschatten entstehen nur bei einer \",\"post\":\" Lichtquelle.\",\"loesung\":\"großen\"},{\"pre\":\"Im Halbschatten kommt nur ein \",\"post\":\" vom Licht an.\",\"loesung\":\"Teil\"}],\"ric…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "ueb:s1",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "ae138618f1fcb138c",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992595749,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Stromkreis und Schaltzeichen\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Ein Stromkreis besteht aus Batterie (Stromquelle), Lampe (Verbraucher), Leitungen und oft einem Schalter. Bauteile zeichnet man mit genormten Schalt…",
+      "lastProgressAt": 1786992615749,
+      "tokens": 13944,
+      "toolCalls": 1,
+      "durationMs": 20000,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Batterie ist die\",\"post\":\"im Stromkreis. Sie liefert den Strom.\",\"loesung\":\"Stromquelle\"},{\"pre\":\"Die Lampe ist ein\",\"post\":\". Sie leuchtet, wenn Strom fließt.\",\"loesung\":\"Verbraucher\"},{\"pre\":\"Mit einem\",\"post\":\"kann man den Strom an- und ausschalten.\",\"loesung\":\"Schalter\"},{\"pre\":\"Bauteile malt man in der Physik mit genormten\",\"post\":\".\",\"loesung\":\"Schaltzeichen\"}],…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "ueb:s2",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "aff267ffd50feb5f8",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992614739,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wann leuchtet eine Lampe?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Die Lampe leuchtet nur, wenn der Stromkreis geschlossen ist (durchgehender Weg von der Batterie durch die Lampe und zurueck). Bei Unterbrechung geht si…",
+      "lastProgressAt": 1786992634125,
+      "tokens": 13942,
+      "toolCalls": 1,
+      "durationMs": 19386,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Lampe leuchtet nur, wenn der Stromkreis\",\"post\":\"ist.\",\"loesung\":\"geschlossen\"},{\"pre\":\"Der Strom fließt von der\",\"post\":\"durch die Lampe und wieder zurück.\",\"loesung\":\"Batterie\"},{\"pre\":\"Wird der Weg unterbrochen, dann geht die Lampe\",\"post\":\".\",\"loesung\":\"aus\"},{\"pre\":\"Ein geschlossener Weg für den Strom heißt\",\"post\":\".\",\"loesung\":\"Stromkreis\"}],\"richtigfalsch\":[{\"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "ueb:s3",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a928e5fae992932a0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992616843,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Welche Stoffe leiten Strom?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Leiter (Metalle wie Kupfer, Eisen) lassen Strom durch. Nichtleiter/Isolatoren (Plastik, Holz, Glas, Gummi) lassen keinen Strom durch.\nErzeuge genau v…",
+      "lastProgressAt": 1786992637179,
+      "tokens": 13939,
+      "toolCalls": 1,
+      "durationMs": 20335,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Metalle wie Kupfer und Eisen lassen den Strom durch. Man nennt sie \",\"post\":\".\",\"loesung\":\"Leiter\"},{\"pre\":\"Plastik, Holz, Glas und Gummi lassen keinen Strom durch. Sie heißen \",\"post\":\" oder Isolatoren.\",\"loesung\":\"Nichtleiter\"},{\"pre\":\"Die Hülle von einem Kabel ist aus Plastik. Plastik ist ein \",\"post\":\".\",\"loesung\":\"Nichtleiter\"},{\"pre\":\"Der Draht in einem Kabel ist au…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 9,
+      "label": "ueb:s4",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a411ad5694271d5f3",
+      "model": "claude-opus-4-8[1m]",
+      "state": "error",
+      "startedAt": 1786992617487,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Reihenschaltung\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): In Reihe liegen Lampen hintereinander in einem Weg. Nimmt man eine heraus, gehen alle aus. Zwei Lampen leuchten schwaecher.\nErzeuge genau vier Teile:\n1) lueckens…",
+      "lastProgressAt": 1786992827089,
+      "error": "API Error: Connection closed mid-response. The response above may be incomplete.",
+      "tokens": 13918,
+      "toolCalls": 0,
+      "durationMs": 209602
+    },
+    {
+      "type": "workflow_agent",
+      "index": 10,
+      "label": "ueb:s5",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "ab4ad17c95bb2c321",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992620937,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Parallelschaltung\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Parallel hat jede Lampe ihren eigenen Weg. Nimmt man eine heraus, leuchtet die andere weiter. Jede leuchtet gleich hell.\nErzeuge genau vier Teile:\n1) lueckensa…",
+      "lastProgressAt": 1786992849588,
+      "tokens": 13917,
+      "toolCalls": 1,
+      "durationMs": 228651,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei der Parallelschaltung hat jede Lampe ihren eigenen \",\"loesung\":\"Weg\",\"post\":\" für den Strom.\"},{\"pre\":\"Nimmt man eine Lampe heraus, dann leuchtet die andere Lampe \",\"loesung\":\"weiter\",\"post\":\".\"},{\"pre\":\"Bei der Parallelschaltung leuchtet jede Lampe gleich \",\"loesung\":\"hell\",\"post\":\".\"},{\"pre\":\"Der Strom teilt sich auf und fließt durch mehrere \",\"loesung\":\"Wege\",\"post…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 11,
+      "label": "ueb:w1",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a9af7b15af44b8509",
+      "model": "claude-opus-4-8[1m]",
+      "state": "error",
+      "startedAt": 1786992620870,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Sind Temperatur und Waerme das Gleiche?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Temperatur sagt, wie warm/kalt ein Koerper ist (Grad Celsius). Waerme ist Energie, die von warm nach kalt fliesst. Beides ist nicht dasse…",
+      "lastProgressAt": 1786992827086,
+      "error": "API Error: Connection closed mid-response. The response above may be incomplete.",
+      "tokens": 13940,
+      "toolCalls": 0,
+      "durationMs": 206215
+    },
+    {
+      "type": "workflow_agent",
+      "index": 12,
+      "label": "ueb:w2 (retry 1)",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a7ca84fb261ef79b0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992623111,
+      "queuedAt": 1786992591161,
+      "attempt": 2,
+      "lastAttemptReason": "stalled",
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie funktioniert ein Thermometer?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Im Thermometer dehnt sich eine Fluessigkeit beim Erwaermen aus und steigt in der Roehre; beim Abkuehlen sinkt sie. So liest man die Temperatur …",
+      "lastProgressAt": 1786992847060,
+      "tokens": 27874,
+      "toolCalls": 1,
+      "durationMs": 223948,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn es warm wird, dehnt sich die\",\"post\":\"im Thermometer aus.\",\"loesung\":\"Flüssigkeit\"},{\"pre\":\"Die Flüssigkeit steigt dann in der dünnen\",\"post\":\"nach oben.\",\"loesung\":\"Röhre\"},{\"pre\":\"Beim Abkühlen\",\"post\":\"die Flüssigkeit wieder nach unten.\",\"loesung\":\"sinkt\"},{\"pre\":\"An der Skala kann man die\",\"post\":\"ablesen.\",\"loesung\":\"Temperatur\"}],\"richtigfalsch\":[{\"aussage\":\"Be…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 13,
+      "label": "ueb:w3",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "af697f9696b6a1cac",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992636067,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Was geschieht beim Erwaermen von Stoffen?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Die meisten Stoffe dehnen sich beim Erwaermen aus und ziehen sich beim Abkuehlen zusammen (fest, fluessig, gasfoermig).\nErzeuge genau v…",
+      "lastProgressAt": 1786992851057,
+      "tokens": 13931,
+      "toolCalls": 1,
+      "durationMs": 214990,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Beim Erwärmen dehnen sich die meisten Stoffe \",\"post\":\".\",\"loesung\":\"aus\"},{\"pre\":\"Beim Abkühlen ziehen sich die meisten Stoffe wieder \",\"post\":\".\",\"loesung\":\"zusammen\"},{\"pre\":\"Stoffe können fest, flüssig oder \",\"post\":\" sein.\",\"loesung\":\"gasförmig\"},{\"pre\":\"Die Wärme lässt die kleinen \",\"post\":\" im Stoff schneller wackeln.\",\"loesung\":\"Teilchen\"}],\"richtigfalsch\":[{\"auss…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 14,
+      "label": "ueb:w4",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "ab7df73577db97f06",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992827154,
+      "queuedAt": 1786992591161,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie veraendern sich Aggregatzustaende?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Stoffe sind fest, fluessig oder gasfoermig. Beim Erwaermen schmilzt fest zu fluessig und verdampft zu Gas; beim Abkuehlen erstarrt und kon…",
+      "lastProgressAt": 1786992857811,
+      "tokens": 13945,
+      "toolCalls": 1,
+      "durationMs": 30657,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn ein fester Stoff warm wird, dann \",\"loesung\":\"schmilzt\",\"post\":\" er zu einer Flüssigkeit.\"},{\"pre\":\"Wird eine Flüssigkeit sehr heiß, dann \",\"loesung\":\"verdampft\",\"post\":\" sie zu Gas.\"},{\"pre\":\"Kühlt ein Gas ab, dann \",\"loesung\":\"kondensiert\",\"post\":\" es zu einer Flüssigkeit.\"},{\"pre\":\"Wenn Wasser sehr kalt wird, dann \",\"loesung\":\"erstarrt\",\"post\":\" es zu Eis.\"}],\"ric…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 15,
+      "label": "ueb:w5",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a41452aded2b8b9d9",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992831783,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie wird Waerme uebertragen?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Waerme wird uebertragen durch Waermeleitung (Beruehrung, Metall), Waermestroemung (Fluessigkeiten/Gase) und Waermestrahlung (Sonne).\nErzeuge genau v…",
+      "lastProgressAt": 1786992852768,
+      "tokens": 13932,
+      "toolCalls": 1,
+      "durationMs": 20984,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn du einen heißen Löffel anfasst, wird deine Hand warm. Diese Art nennt man \",\"post\":\".\",\"loesung\":\"Wärmeleitung\"},{\"pre\":\"Metalle leiten Wärme besonders \",\"post\":\".\",\"loesung\":\"gut\"},{\"pre\":\"In Wasser und in Luft wird die Wärme durch \",\"post\":\" übertragen.\",\"loesung\":\"Wärmeströmung\"},{\"pre\":\"Die Wärme der Sonne kommt als \",\"post\":\" zu uns.\",\"loesung\":\"Wärmestrahlung\"}…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 16,
+      "label": "ueb:sc1",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a636884cf3266b1c9",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992830214,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entsteht ein Ton?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Ein Ton entsteht, wenn etwas schwingt (schnell hin und her zittert). Die Schwingung geht auf die Luft ueber. Hoert das Schwingen auf, hoert der Ton auf.\nEr…",
+      "lastProgressAt": 1786992849610,
+      "tokens": 13936,
+      "toolCalls": 1,
+      "durationMs": 19395,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Ein Ton entsteht, wenn etwas \",\"post\":\" (schnell hin und her zittert).\",\"loesung\":\"schwingt\"},{\"pre\":\"Die Schwingung geht von dem Gegenstand auf die \",\"post\":\" über.\",\"loesung\":\"Luft\"},{\"pre\":\"Hört das Schwingen auf, dann hört auch der \",\"post\":\" auf.\",\"loesung\":\"Ton\"}],\"richtigfalsch\":[{\"aussage\":\"Ein Ton entsteht, wenn etwas schwingt.\",\"stimmt\":true},{\"aussage\":\"Die Sch…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 17,
+      "label": "ueb:sc2",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "acb8718b4789ae1ac",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992849414,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wovon haengt die Lautstaerke ab?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Je staerker (weiter) etwas schwingt, desto lauter. Kleine Schwingung = leise, grosse Schwingung = laut.\nErzeuge genau vier Teile:\n1) lueckensaet…",
+      "lastProgressAt": 1786992873743,
+      "tokens": 13915,
+      "toolCalls": 1,
+      "durationMs": 24329,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je weiter etwas schwingt, desto\",\"post\":\"ist der Ton.\",\"loesung\":\"lauter\"},{\"pre\":\"Eine kleine\",\"post\":\"macht einen leisen Ton.\",\"loesung\":\"Schwingung\"},{\"pre\":\"Wenn eine Saite nur wenig hin und her schwingt, ist der Ton\",\"post\":\".\",\"loesung\":\"leise\"},{\"pre\":\"Wie laut oder leise ein Ton ist, nennt man die\",\"post\":\".\",\"loesung\":\"Lautstärke\"}],\"richtigfalsch\":[{\"aussage\":\"J…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 18,
+      "label": "ueb:sc3",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a064875b0a33f2200",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992851729,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wovon haengt die Tonhoehe ab?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Je schneller etwas schwingt, desto hoeher der Ton. Kurze/gespannte Saiten schwingen schnell (hoch), lange/lockere langsam (tief).\nErzeuge genau vie…",
+      "lastProgressAt": 1786992866713,
+      "tokens": 13933,
+      "toolCalls": 1,
+      "durationMs": 14983,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je schneller etwas schwingt, desto \",\"post\":\" ist der Ton.\",\"loesung\":\"höher\"},{\"pre\":\"Eine kurze Saite schwingt schnell. Der Ton ist deshalb \",\"post\":\".\",\"loesung\":\"hoch\"},{\"pre\":\"Eine lange oder lockere Saite schwingt langsam. Der Ton ist deshalb \",\"post\":\".\",\"loesung\":\"tief\"},{\"pre\":\"Wie schnell etwas schwingt, nennt man die \",\"post\":\".\",\"loesung\":\"Schwingung\"}],\"richt…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 19,
+      "label": "ueb:sc4",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "add7b004aa128d929",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992851930,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie breitet sich Schall aus?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Schall breitet sich als Schwingung durch Luft und andere Stoffe (Wasser, Holz) in alle Richtungen aus. Im Vakuum gibt es keinen Schall.\nErzeuge gena…",
+      "lastProgressAt": 1786992874715,
+      "tokens": 13928,
+      "toolCalls": 1,
+      "durationMs": 22785,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Schall entsteht durch eine \",\"post\":\". Etwas zittert dabei ganz schnell hin und her.\",\"loesung\":\"Schwingung\"},{\"pre\":\"Meistens breitet sich Schall durch die \",\"post\":\" aus. Sie ist um uns herum.\",\"loesung\":\"Luft\"},{\"pre\":\"Schall breitet sich nicht nur nach vorne aus, sondern in alle \",\"post\":\".\",\"loesung\":\"Richtungen\"},{\"pre\":\"Im \",\"post\":\" gibt es keinen Schall, weil dor…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 20,
+      "label": "ueb:sc5",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a8aa2d0ba551f683d",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992853639,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie funktioniert das Ohr?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Schall bringt das Trommelfell zum Schwingen. Ueber kleine Knochen gelangt die Schwingung ins Innenohr und als Signal ins Gehirn. Sehr laute Toene schad…",
+      "lastProgressAt": 1786992876996,
+      "tokens": 13943,
+      "toolCalls": 1,
+      "durationMs": 23357,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der Schall bringt das\",\"post\":\"im Ohr zum Schwingen.\",\"loesung\":\"Trommelfell\"},{\"pre\":\"Kleine\",\"post\":\"leiten die Schwingung weiter ins Innenohr.\",\"loesung\":\"Knochen\"},{\"pre\":\"Vom Innenohr geht ein Signal zum\",\"post\":\", damit wir hören.\",\"loesung\":\"Gehirn\"},{\"pre\":\"Sehr laute Töne können das\",\"post\":\"schädigen.\",\"loesung\":\"Ohr\"}],\"richtigfalsch\":[{\"aussage\":\"Schall bringt…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 21,
+      "label": "ueb:h1",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a0fb315b8daa1a14b",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992855122,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entstehen Tag und Nacht?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Die Erde dreht sich in 24 Stunden einmal um sich selbst. Die Sonnenseite hat Tag, die abgewandte Seite Nacht. Die Erde dreht sich, nicht die Sonne.\n…",
+      "lastProgressAt": 1786992876515,
+      "tokens": 13944,
+      "toolCalls": 1,
+      "durationMs": 21393,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Erde dreht sich in 24 Stunden einmal um sich \",\"post\":\".\",\"loesung\":\"selbst\"},{\"pre\":\"Auf der Seite, die zur Sonne zeigt, ist gerade \",\"post\":\".\",\"loesung\":\"Tag\"},{\"pre\":\"Auf der Seite, die von der Sonne weg zeigt, ist gerade \",\"post\":\".\",\"loesung\":\"Nacht\"},{\"pre\":\"Tag und Nacht entstehen, weil sich die \",\"post\":\" dreht.\",\"loesung\":\"Erde\"}],\"richtigfalsch\":[{\"aussage\"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 22,
+      "label": "ueb:h2",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "a027a13737ea17f2d",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992859601,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entstehen die Jahreszeiten?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Die geneigte Erde wandert in einem Jahr um die Sonne. Zur Sonne geneigt = Sommer (Sonne hoch, lange Tage), weggeneigt = Winter.\nErzeuge genau vie…",
+      "lastProgressAt": 1786992883388,
+      "tokens": 13933,
+      "toolCalls": 1,
+      "durationMs": 23787,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Erde braucht ein \",\"post\":\" für eine Runde um die Sonne.\",\"loesung\":\"Jahr\"},{\"pre\":\"Die Erdachse steht nicht gerade, sie ist \",\"post\":\". Darum gibt es Jahreszeiten.\",\"loesung\":\"geneigt\"},{\"pre\":\"Wenn unser Teil der Erde zur Sonne geneigt ist, haben wir \",\"post\":\".\",\"loesung\":\"Sommer\"},{\"pre\":\"Im Winter steht die Sonne am Himmel ganz \",\"post\":\", und die Tage sind kurz.…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 23,
+      "label": "ueb:h3",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "ab63aec58ad4fdafd",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992868554,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Warum veraendert der Mond sein Aussehen?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Der Mond leuchtet nicht selbst, die Sonne beleuchtet ihn. Je nach Stellung auf der Bahn um die Erde sehen wir mehr oder weniger der bele…",
+      "lastProgressAt": 1786992889075,
+      "tokens": 13953,
+      "toolCalls": 1,
+      "durationMs": 20521,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der Mond leuchtet nicht selbst. Er wird von der \",\"loesung\":\"Sonne\",\"post\":\" beleuchtet.\"},{\"pre\":\"Wir sehen immer nur den Teil des Mondes, der gerade von der Sonne \",\"loesung\":\"beleuchtet\",\"post\":\" wird.\"},{\"pre\":\"Die verschiedenen Formen des Mondes am Himmel nennt man \",\"loesung\":\"Mondphasen\",\"post\":\".\"},{\"pre\":\"Der Mond bewegt sich auf einer Bahn um die \",\"loesung\":\"Er…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 24,
+      "label": "ueb:h4",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "af708750065888cd6",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992875534,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entsteht eine Sonnenfinsternis?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Der Mond steht zwischen Sonne und Erde und wirft seinen Schatten auf die Erde; er verdeckt die Sonne. Nie ohne Schutz in die Sonne schauen.\nE…",
+      "lastProgressAt": 1786992897609,
+      "tokens": 13940,
+      "toolCalls": 1,
+      "durationMs": 22074,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei einer Sonnenfinsternis steht der \",\"post\":\" zwischen Sonne und Erde.\",\"loesung\":\"Mond\"},{\"pre\":\"Der Mond wirft seinen \",\"post\":\" auf die Erde.\",\"loesung\":\"Schatten\"},{\"pre\":\"Der Mond \",\"post\":\" die Sonne, deshalb wird es am Tag dunkel.\",\"loesung\":\"verdeckt\"},{\"pre\":\"Schau nie ohne \",\"post\":\" direkt in die Sonne.\",\"loesung\":\"Schutz\"}],\"richtigfalsch\":[{\"aussage\":\"Bei e…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 25,
+      "label": "ueb:h5",
+      "phaseIndex": 1,
+      "phaseTitle": "Uebungen",
+      "agentId": "ad5570e7a7779b3a0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992876480,
+      "queuedAt": 1786992591162,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Du bist Realschul-Physiklehrkraft und entwirfst eine UEBUNGSSEITE fuer Klasse 5 (Kinder ~10 Jahre) zum Unterthema \"Wie entsteht eine Mondfinsternis?\". EINFACHE Schuelersprache (A2), kurze Saetze, echte Umlaute ä ö ü ß, ORIGINAL.\nPHYSIK-KERN (muss stimmen): Die Erde steht zwischen Sonne und Mond und wirft ihren Schatten auf den Mond; der Mond wird dunkel und oft roetlich.\nErzeuge genau vier Teile:\n…",
+      "lastProgressAt": 1786992899770,
+      "tokens": 13924,
+      "toolCalls": 1,
+      "durationMs": 23290,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei einer Mondfinsternis steht die \",\"post\":\" zwischen Sonne und Mond.\",\"loesung\":\"Erde\"},{\"pre\":\"Die Erde wirft ihren \",\"post\":\" auf den Mond.\",\"loesung\":\"Schatten\"},{\"pre\":\"Der Mond wird dunkel und sieht oft \",\"post\":\" aus.\",\"loesung\":\"rötlich\"},{\"pre\":\"Eine Mondfinsternis können wir nur bei \",\"post\":\" sehen.\",\"loesung\":\"Vollmond\"}],\"richtigfalsch\":[{\"aussage\":\"Bei eine…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 26,
+      "label": "pruef:l1",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "af126db26d4779184",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992879777,
+      "queuedAt": 1786992612844,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Lichtquellen und Lichtausbreitung\": Physik richtig (Kern: Selbstleuchtende Koerper (Sonne, Lampe, Kerze, Feuer) senden selbst Licht aus. Beleuchtete Koerper (Mond, Buch) leuchten nicht selbst. Licht breitet sich geradlinig aus.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen pa…",
+      "lastProgressAt": 1786992916380,
+      "tokens": 14390,
+      "toolCalls": 1,
+      "durationMs": 36602,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Sonne, eine Lampe und eine Kerze senden selbst Licht aus. Solche Körper nennt man \",\"post\":\".\",\"loesung\":\"selbstleuchtende Körper\"},{\"pre\":\"Der Mond leuchtet nicht selbst. Er wird von der Sonne \",\"post\":\".\",\"loesung\":\"beleuchtet\"},{\"pre\":\"Ein Buch sendet kein eigenes Licht aus. Es ist ein \",\"post\":\" Körper.\",\"loesung\":\"beleuchteter\"},{\"pre\":\"Licht breitet sich immer \"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 27,
+      "label": "pruef:l5",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a88e6497358257787",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992879680,
+      "queuedAt": 1786992615123,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Kern- und Halbschatten\": Physik richtig (Kern: Bei einer grossen Lichtquelle entsteht ein ganz dunkler Kernschatten und aussen herum ein hellerer Halbschatten.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig? Kindgerecht, echte Umla…",
+      "lastProgressAt": 1786992926592,
+      "tokens": 14355,
+      "toolCalls": 1,
+      "durationMs": 46912,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der ganz dunkle Bereich hinter dem Gegenstand heißt \",\"post\":\".\",\"loesung\":\"Kernschatten\"},{\"pre\":\"Der hellere Rand außen um den dunklen Teil heißt \",\"post\":\".\",\"loesung\":\"Halbschatten\"},{\"pre\":\"Kern- und Halbschatten entstehen nur bei einer \",\"post\":\" Lichtquelle.\",\"loesung\":\"großen\"},{\"pre\":\"Im Halbschatten kommt nur ein \",\"post\":\" vom Licht an.\",\"loesung\":\"Teil\"}],\"ric…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 28,
+      "label": "pruef:s1",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "acba45a1708f8822c",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992885216,
+      "queuedAt": 1786992615754,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Stromkreis und Schaltzeichen\": Physik richtig (Kern: Ein Stromkreis besteht aus Batterie (Stromquelle), Lampe (Verbraucher), Leitungen und oft einem Schalter. Bauteile zeichnet man mit genormten Schaltzeichen.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ po…",
+      "lastProgressAt": 1786992919807,
+      "tokens": 14384,
+      "toolCalls": 1,
+      "durationMs": 34591,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Batterie ist die\",\"post\":\"im Stromkreis. Sie liefert den Strom.\",\"loesung\":\"Stromquelle\"},{\"pre\":\"Die Lampe ist ein\",\"post\":\". Sie leuchtet, wenn Strom fließt.\",\"loesung\":\"Verbraucher\"},{\"pre\":\"Mit einem\",\"post\":\"kann man den Strom an- und ausschalten.\",\"loesung\":\"Schalter\"},{\"pre\":\"Bauteile zeichnet man in der Physik mit genormten\",\"post\":\".\",\"loesung\":\"Schaltzeichen…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 29,
+      "label": "pruef:l2",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a1092ba9bca9db4fd",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992890780,
+      "queuedAt": 1786992618897,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie koennen wir einen Gegenstand sehen?\": Physik richtig (Kern: Wir sehen einen Gegenstand nur, wenn Licht von ihm in unser Auge gelangt (Lichtquelle zum Gegenstand, dann ins Auge). Ohne Licht sehen wir nichts.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ p…",
+      "lastProgressAt": 1786992925245,
+      "tokens": 14493,
+      "toolCalls": 1,
+      "durationMs": 34465,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wir können einen Gegenstand nur sehen, wenn\",\"post\":\"von ihm in unser Auge kommt.\",\"loesung\":\"Licht\"},{\"pre\":\"Das Licht geht zuerst von der\",\"post\":\"zum Gegenstand.\",\"loesung\":\"Lichtquelle\"},{\"pre\":\"Vom Gegenstand kommt das Licht dann in unser\",\"post\":\".\",\"loesung\":\"Auge\"},{\"pre\":\"In einem ganz dunklen Raum sehen wir\",\"post\":\", weil kein Licht da ist.\",\"loesung\":\"nichts\"}…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 30,
+      "label": "pruef:l3",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a891ade12654363b3",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992899681,
+      "queuedAt": 1786992619138,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entsteht ein Schatten?\": Physik richtig (Kern: Licht breitet sich geradlinig aus. Ein undurchsichtiger Koerper haelt das Licht auf, dahinter entsteht ein dunkler Schatten.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig? Kindger…",
+      "lastProgressAt": 1786992936780,
+      "tokens": 14406,
+      "toolCalls": 1,
+      "durationMs": 37099,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Das Licht breitet sich immer \",\"post\":\" aus. Es macht also keinen Bogen.\",\"loesung\":\"geradlinig\"},{\"pre\":\"Ein Körper, durch den kein Licht scheint, nennt man \",\"post\":\".\",\"loesung\":\"undurchsichtig\"},{\"pre\":\"Ein undurchsichtiger Körper hält das Licht auf. Hinter ihm entsteht ein dunkler \",\"post\":\".\",\"loesung\":\"Schatten\"},{\"pre\":\"Ohne \",\"post\":\" gibt es auch keinen Schatten…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 31,
+      "label": "pruef:l4",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "adb6caaa889cf5072",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992901536,
+      "queuedAt": 1786992621449,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wovon haengt die Groesse des Schattens ab?\": Physik richtig (Kern: Je naeher der Gegenstand an der Lichtquelle, desto groesser der Schatten. Je weiter die Lichtquelle weg, desto kleiner der Schatten.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Muster…",
+      "lastProgressAt": 1786992947755,
+      "tokens": 14440,
+      "toolCalls": 1,
+      "durationMs": 46219,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je näher der Gegenstand an der Lichtquelle steht, desto\",\"post\":\"wird der Schatten.\",\"loesung\":\"größer\"},{\"pre\":\"Je weiter die Lichtquelle vom Gegenstand weg ist, desto\",\"post\":\"wird der Schatten.\",\"loesung\":\"kleiner\"},{\"pre\":\"Damit ein Schatten entsteht, brauchst du Licht und einen\",\"post\":\", der das Licht aufhält.\",\"loesung\":\"Gegenstand\"},{\"pre\":\"Das Licht kommt aus der…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 32,
+      "label": "pruef:s2",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "adcb9ce6d68c6bf87",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992918080,
+      "queuedAt": 1786992634130,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wann leuchtet eine Lampe?\": Physik richtig (Kern: Die Lampe leuchtet nur, wenn der Stromkreis geschlossen ist (durchgehender Weg von der Batterie durch die Lampe und zurueck). Bei Unterbrechung geht sie aus.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post…",
+      "lastProgressAt": 1786992951051,
+      "tokens": 14406,
+      "toolCalls": 1,
+      "durationMs": 32971,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Lampe leuchtet nur, wenn der Stromkreis\",\"post\":\"ist.\",\"loesung\":\"geschlossen\"},{\"pre\":\"Der Strom fließt von der\",\"post\":\"durch die Lampe und wieder zurück.\",\"loesung\":\"Batterie\"},{\"pre\":\"Wird der Weg unterbrochen, dann geht die Lampe\",\"post\":\".\",\"loesung\":\"aus\"},{\"pre\":\"Ein geschlossener Weg für den Strom heißt\",\"post\":\".\",\"loesung\":\"Stromkreis\"}],\"richtigfalsch\":[{\"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 33,
+      "label": "pruef:s3",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a6d69dadb1c5430e7",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992921539,
+      "queuedAt": 1786992637183,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Welche Stoffe leiten Strom?\": Physik richtig (Kern: Leiter (Metalle wie Kupfer, Eisen) lassen Strom durch. Nichtleiter/Isolatoren (Plastik, Holz, Glas, Gummi) lassen keinen Strom durch.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richti…",
+      "lastProgressAt": 1786992953691,
+      "tokens": 14367,
+      "toolCalls": 1,
+      "durationMs": 32152,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Metalle wie Kupfer und Eisen lassen den Strom durch. Man nennt sie \",\"post\":\".\",\"loesung\":\"Leiter\"},{\"pre\":\"Plastik, Holz, Glas und Gummi lassen keinen Strom durch. Sie heißen \",\"post\":\" oder Isolatoren.\",\"loesung\":\"Nichtleiter\"},{\"pre\":\"Die Hülle von einem Kabel ist aus Plastik. Plastik ist ein \",\"post\":\".\",\"loesung\":\"Nichtleiter\"},{\"pre\":\"Der Draht in einem Kabel ist au…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 34,
+      "label": "pruef:w2",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a9fe116f6e42da7bc",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992926954,
+      "queuedAt": 1786992847066,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie funktioniert ein Thermometer?\": Physik richtig (Kern: Im Thermometer dehnt sich eine Fluessigkeit beim Erwaermen aus und steigt in der Roehre; beim Abkuehlen sinkt sie. So liest man die Temperatur ab.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? M…",
+      "lastProgressAt": 1786992969661,
+      "tokens": 14376,
+      "toolCalls": 1,
+      "durationMs": 42707,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn es warm wird, dehnt sich die\",\"post\":\"im Thermometer aus.\",\"loesung\":\"Flüssigkeit\"},{\"pre\":\"Die Flüssigkeit steigt dann in der dünnen\",\"post\":\"nach oben.\",\"loesung\":\"Röhre\"},{\"pre\":\"Beim Abkühlen\",\"post\":\"die Flüssigkeit wieder nach unten.\",\"loesung\":\"sinkt\"},{\"pre\":\"An der Skala kann man die\",\"post\":\"ablesen.\",\"loesung\":\"Temperatur\"}],\"richtigfalsch\":[{\"aussage\":\"Be…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 35,
+      "label": "pruef:s5",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a958916907000fbaf",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992928293,
+      "queuedAt": 1786992849592,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Parallelschaltung\": Physik richtig (Kern: Parallel hat jede Lampe ihren eigenen Weg. Nimmt man eine heraus, leuchtet die andere weiter. Jede leuchtet gleich hell.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig? Kindgerecht, echte U…",
+      "lastProgressAt": 1786992968068,
+      "tokens": 14426,
+      "toolCalls": 1,
+      "durationMs": 39774,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei der Parallelschaltung hat jede Lampe ihren eigenen \",\"loesung\":\"Weg\",\"post\":\" für den Strom.\"},{\"pre\":\"Nimmt man eine Lampe heraus, dann leuchtet die andere Lampe \",\"loesung\":\"weiter\",\"post\":\".\"},{\"pre\":\"Bei der Parallelschaltung leuchtet jede Lampe gleich \",\"loesung\":\"hell\",\"post\":\".\"},{\"pre\":\"Der Strom teilt sich auf und fließt durch mehrere \",\"loesung\":\"Wege\",\"post…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 36,
+      "label": "pruef:sc1",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "acf394a5844f3ba8c",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992939825,
+      "queuedAt": 1786992849613,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entsteht ein Ton?\": Physik richtig (Kern: Ein Ton entsteht, wenn etwas schwingt (schnell hin und her zittert). Die Schwingung geht auf die Luft ueber. Hoert das Schwingen auf, hoert der Ton auf.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterl…",
+      "lastProgressAt": 1786992972546,
+      "tokens": 14319,
+      "toolCalls": 1,
+      "durationMs": 32720,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Ein Ton entsteht, wenn etwas \",\"post\":\" (schnell hin und her zittert).\",\"loesung\":\"schwingt\"},{\"pre\":\"Die Schwingung geht von dem Gegenstand auf die \",\"post\":\" über.\",\"loesung\":\"Luft\"},{\"pre\":\"Hört das Schwingen auf, dann hört auch der \",\"post\":\" auf.\",\"loesung\":\"Ton\"}],\"richtigfalsch\":[{\"aussage\":\"Ein Ton entsteht, wenn etwas schwingt.\",\"stimmt\":true},{\"aussage\":\"Ein Ton…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 37,
+      "label": "pruef:w3",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a03c91c3d985f1f90",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992949534,
+      "queuedAt": 1786992851062,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Was geschieht beim Erwaermen von Stoffen?\": Physik richtig (Kern: Die meisten Stoffe dehnen sich beim Erwaermen aus und ziehen sich beim Abkuehlen zusammen (fest, fluessig, gasfoermig).)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richti…",
+      "lastProgressAt": 1786992983914,
+      "tokens": 14396,
+      "toolCalls": 1,
+      "durationMs": 34380,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Beim Erwärmen dehnen sich die meisten Stoffe \",\"post\":\".\",\"loesung\":\"aus\"},{\"pre\":\"Beim Abkühlen ziehen sich die meisten Stoffe wieder \",\"post\":\".\",\"loesung\":\"zusammen\"},{\"pre\":\"Stoffe können fest, flüssig oder \",\"post\":\" sein.\",\"loesung\":\"gasförmig\"},{\"pre\":\"Die Wärme lässt die kleinen \",\"post\":\" im Stoff schneller wackeln.\",\"loesung\":\"Teilchen\"}],\"richtigfalsch\":[{\"auss…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 38,
+      "label": "pruef:w5",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a75568dcf1a7e0075",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992952973,
+      "queuedAt": 1786992852773,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie wird Waerme uebertragen?\": Physik richtig (Kern: Waerme wird uebertragen durch Waermeleitung (Beruehrung, Metall), Waermestroemung (Fluessigkeiten/Gase) und Waermestrahlung (Sonne).)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richti…",
+      "lastProgressAt": 1786992989846,
+      "tokens": 14344,
+      "toolCalls": 1,
+      "durationMs": 36873,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn du einen heißen Löffel anfasst, wird deine Hand warm. Diese Art nennt man \",\"post\":\".\",\"loesung\":\"Wärmeleitung\"},{\"pre\":\"Metalle leiten Wärme besonders \",\"post\":\".\",\"loesung\":\"gut\"},{\"pre\":\"In Wasser und in Luft wird die Wärme durch \",\"post\":\" übertragen.\",\"loesung\":\"Wärmeströmung\"},{\"pre\":\"Die Wärme der Sonne kommt als \",\"post\":\" zu uns.\",\"loesung\":\"Wärmestrahlung\"}…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 39,
+      "label": "pruef:w4",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a5b0f959bedecf4bb",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992955604,
+      "queuedAt": 1786992857815,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie veraendern sich Aggregatzustaende?\": Physik richtig (Kern: Stoffe sind fest, fluessig oder gasfoermig. Beim Erwaermen schmilzt fest zu fluessig und verdampft zu Gas; beim Abkuehlen erstarrt und kondensiert es.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre __…",
+      "lastProgressAt": 1786992998403,
+      "tokens": 14417,
+      "toolCalls": 1,
+      "durationMs": 42799,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Wenn ein fester Stoff warm wird, dann \",\"loesung\":\"schmilzt\",\"post\":\" er zu einer Flüssigkeit.\"},{\"pre\":\"Wird eine Flüssigkeit sehr heiß, dann \",\"loesung\":\"verdampft\",\"post\":\" sie zu Gas.\"},{\"pre\":\"Kühlt ein Gas ab, dann \",\"loesung\":\"kondensiert\",\"post\":\" es zu einer Flüssigkeit.\"},{\"pre\":\"Wenn Wasser sehr kalt wird, dann \",\"loesung\":\"erstarrt\",\"post\":\" es zu Eis.\"}],\"ric…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 40,
+      "label": "pruef:sc3",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a645a8b12058906d0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992969857,
+      "queuedAt": 1786992866718,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wovon haengt die Tonhoehe ab?\": Physik richtig (Kern: Je schneller etwas schwingt, desto hoeher der Ton. Kurze/gespannte Saiten schwingen schnell (hoch), lange/lockere langsam (tief).)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig?…",
+      "lastProgressAt": 1786993010225,
+      "tokens": 14383,
+      "toolCalls": 1,
+      "durationMs": 40367,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je schneller etwas schwingt, desto \",\"post\":\" ist der Ton.\",\"loesung\":\"höher\"},{\"pre\":\"Eine kurze Saite schwingt schnell. Der Ton ist deshalb \",\"post\":\".\",\"loesung\":\"hoch\"},{\"pre\":\"Eine lange oder lockere Saite schwingt langsam. Der Ton ist deshalb \",\"post\":\".\",\"loesung\":\"tief\"},{\"pre\":\"Die Hin- und Her-Bewegung einer Saite nennt man eine \",\"post\":\".\",\"loesung\":\"Schwingun…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 41,
+      "label": "pruef:sc2",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a4e5391d630f4367b",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992971336,
+      "queuedAt": 1786992873747,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wovon haengt die Lautstaerke ab?\": Physik richtig (Kern: Je staerker (weiter) etwas schwingt, desto lauter. Kleine Schwingung = leise, grosse Schwingung = laut.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig? Kindgerecht, echte Uml…",
+      "lastProgressAt": 1786993005137,
+      "tokens": 14343,
+      "toolCalls": 1,
+      "durationMs": 33801,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Je weiter etwas schwingt, desto\",\"post\":\"ist der Ton.\",\"loesung\":\"lauter\"},{\"pre\":\"Eine kleine\",\"post\":\"macht einen leisen Ton.\",\"loesung\":\"Schwingung\"},{\"pre\":\"Wenn eine Saite nur wenig hin und her schwingt, ist der Ton\",\"post\":\".\",\"loesung\":\"leise\"},{\"pre\":\"Wie laut oder leise ein Ton ist, nennt man die\",\"post\":\".\",\"loesung\":\"Lautstärke\"}],\"richtigfalsch\":[{\"aussage\":\"J…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 42,
+      "label": "pruef:sc4",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "ad07254a9be9da09d",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992974245,
+      "queuedAt": 1786992874718,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie breitet sich Schall aus?\": Physik richtig (Kern: Schall breitet sich als Schwingung durch Luft und andere Stoffe (Wasser, Holz) in alle Richtungen aus. Im Vakuum gibt es keinen Schall.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung ric…",
+      "lastProgressAt": 1786993015359,
+      "tokens": 14403,
+      "toolCalls": 1,
+      "durationMs": 41113,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Schall entsteht durch eine \",\"post\":\". Etwas zittert dabei ganz schnell hin und her.\",\"loesung\":\"Schwingung\"},{\"pre\":\"Meistens breitet sich Schall durch die \",\"post\":\" aus. Sie ist um uns herum.\",\"loesung\":\"Luft\"},{\"pre\":\"Schall breitet sich nicht nur nach vorne aus, sondern in alle \",\"post\":\".\",\"loesung\":\"Richtungen\"},{\"pre\":\"Im \",\"post\":\" gibt es keinen Schall, weil dor…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 43,
+      "label": "pruef:h1",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a94050bf599b70443",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992985623,
+      "queuedAt": 1786992876519,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entstehen Tag und Nacht?\": Physik richtig (Kern: Die Erde dreht sich in 24 Stunden einmal um sich selbst. Die Sonnenseite hat Tag, die abgewandte Seite Nacht. Die Erde dreht sich, nicht die Sonne.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Muste…",
+      "lastProgressAt": 1786993021152,
+      "tokens": 14418,
+      "toolCalls": 1,
+      "durationMs": 35529,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Erde dreht sich in 24 Stunden einmal um sich \",\"post\":\".\",\"loesung\":\"selbst\"},{\"pre\":\"Auf der Seite, die zur Sonne zeigt, ist gerade \",\"post\":\".\",\"loesung\":\"Tag\"},{\"pre\":\"Auf der Seite, die von der Sonne weg zeigt, ist gerade \",\"post\":\".\",\"loesung\":\"Nacht\"},{\"pre\":\"Tag und Nacht entstehen, weil sich die \",\"post\":\" dreht.\",\"loesung\":\"Erde\"}],\"richtigfalsch\":[{\"aussage\"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 44,
+      "label": "pruef:sc5",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a2fe6fc593123f28e",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786992991783,
+      "queuedAt": 1786992877001,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie funktioniert das Ohr?\": Physik richtig (Kern: Schall bringt das Trommelfell zum Schwingen. Ueber kleine Knochen gelangt die Schwingung ins Innenohr und als Signal ins Gehirn. Sehr laute Toene schaden dem Ohr.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___…",
+      "lastProgressAt": 1786993026155,
+      "tokens": 14348,
+      "toolCalls": 1,
+      "durationMs": 34372,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der Schall bringt das\",\"post\":\"im Ohr zum Schwingen.\",\"loesung\":\"Trommelfell\"},{\"pre\":\"Kleine\",\"post\":\"leiten die Schwingung weiter ins Innenohr.\",\"loesung\":\"Knochen\"},{\"pre\":\"Vom Innenohr geht ein Signal zum\",\"post\":\", damit wir hören.\",\"loesung\":\"Gehirn\"},{\"pre\":\"Sehr laute Töne können das\",\"post\":\"schädigen.\",\"loesung\":\"Ohr\"}],\"richtigfalsch\":[{\"aussage\":\"Schall bringt…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 45,
+      "label": "pruef:h2",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a34822f5ce1b8c9c3",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786993000104,
+      "queuedAt": 1786992883393,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entstehen die Jahreszeiten?\": Physik richtig (Kern: Die geneigte Erde wandert in einem Jahr um die Sonne. Zur Sonne geneigt = Sommer (Sonne hoch, lange Tage), weggeneigt = Winter.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig?…",
+      "lastProgressAt": 1786993042483,
+      "tokens": 14462,
+      "toolCalls": 1,
+      "durationMs": 42379,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Die Erde braucht ein \",\"post\":\" für eine Runde um die Sonne.\",\"loesung\":\"Jahr\"},{\"pre\":\"Die Erdachse steht nicht gerade, sie ist \",\"post\":\". Darum gibt es Jahreszeiten.\",\"loesung\":\"geneigt\"},{\"pre\":\"Wenn unser Teil der Erde zur Sonne geneigt ist, haben wir \",\"post\":\".\",\"loesung\":\"Sommer\"},{\"pre\":\"Im Winter steht die Sonne am Himmel ganz \",\"post\":\", und die Tage sind kurz.…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 46,
+      "label": "pruef:h3",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a71cc01db1b151ec0",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786993006878,
+      "queuedAt": 1786992889077,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Warum veraendert der Mond sein Aussehen?\": Physik richtig (Kern: Der Mond leuchtet nicht selbst, die Sonne beleuchtet ihn. Je nach Stellung auf der Bahn um die Erde sehen wir mehr oder weniger der beleuchteten Seite (Mondphasen).)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen …",
+      "lastProgressAt": 1786993051737,
+      "tokens": 14473,
+      "toolCalls": 1,
+      "durationMs": 44858,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Der Mond leuchtet nicht selbst. Er wird von der \",\"loesung\":\"Sonne\",\"post\":\" beleuchtet.\"},{\"pre\":\"Wir sehen immer nur den Teil des Mondes, der gerade von der Sonne \",\"loesung\":\"beleuchtet\",\"post\":\" wird.\"},{\"pre\":\"Die verschiedenen Formen des Mondes am Himmel nennt man \",\"loesung\":\"Mondphasen\",\"post\":\".\"},{\"pre\":\"Der Mond bewegt sich auf einer Bahn um die \",\"loesung\":\"Er…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 47,
+      "label": "pruef:h4",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a69f48088e39fe874",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786993011927,
+      "queuedAt": 1786992897613,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entsteht eine Sonnenfinsternis?\": Physik richtig (Kern: Der Mond steht zwischen Sonne und Erde und wirft seinen Schatten auf die Erde; er verdeckt die Sonne. Nie ohne Schutz in die Sonne schauen.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Muster…",
+      "lastProgressAt": 1786993039817,
+      "tokens": 14434,
+      "toolCalls": 1,
+      "durationMs": 27890,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei einer Sonnenfinsternis steht der \",\"post\":\" zwischen Sonne und Erde.\",\"loesung\":\"Mond\"},{\"pre\":\"Der Mond wirft seinen \",\"post\":\" auf die Erde.\",\"loesung\":\"Schatten\"},{\"pre\":\"Der Mond \",\"post\":\" die Sonne, deshalb wird es am Tag dunkel.\",\"loesung\":\"verdeckt\"},{\"pre\":\"Schau nie ohne \",\"post\":\" direkt in die Sonne.\",\"loesung\":\"Schutz\"}],\"richtigfalsch\":[{\"aussage\":\"Bei e…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 48,
+      "label": "pruef:h5",
+      "phaseIndex": 2,
+      "phaseTitle": "Pruefung",
+      "agentId": "a440314be201daf06",
+      "model": "claude-opus-4-8[1m]",
+      "state": "done",
+      "startedAt": 1786993017183,
+      "queuedAt": 1786992899774,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "promptPreview": "Fach-/Didaktikpruefer Physik Klasse 5. Pruefe zum Thema \"Wie entsteht eine Mondfinsternis?\": Physik richtig (Kern: Die Erde steht zwischen Sonne und Mond und wirft ihren Schatten auf den Mond; der Mond wird dunkel und oft roetlich.)? richtigfalsch-Werte korrekt und gemischt? mc genau eine richtige Option (Index korrekt)? lueckensatz-loesungen passen in pre ___ post? Musterloesung richtig? Kindgere…",
+      "lastProgressAt": 1786993053200,
+      "tokens": 14429,
+      "toolCalls": 1,
+      "durationMs": 36017,
+      "resultPreview": "{\"lueckensaetze\":[{\"pre\":\"Bei einer Mondfinsternis steht die \",\"post\":\" zwischen Sonne und Mond.\",\"loesung\":\"Erde\"},{\"pre\":\"Die Erde wirft ihren \",\"post\":\" auf den Mond.\",\"loesung\":\"Schatten\"},{\"pre\":\"Der Mond wird dunkel und sieht oft \",\"post\":\" aus.\",\"loesung\":\"rötlich\"},{\"pre\":\"Eine Mondfinsternis können wir nur bei \",\"post\":\" sehen.\",\"loesung\":\"Vollmond\"}],\"richtigfalsch\":[{\"aussage\":\"Bei eine…"
+    }
+  ],
+  "totalTokens": 693509,
+  "totalToolCalls": 46
+}

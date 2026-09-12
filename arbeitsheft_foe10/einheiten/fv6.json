@@ -1,0 +1,204 @@
+{
+ "seite": {
+  "id": "fv6",
+  "quelle": "ev7",
+  "sim": "induktion-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Aufbau ohne Batterie",
+  "name": "Wie entsteht Spannung ohne Batterie?",
+  "fachwoerter_neu": [
+   "Induktion"
+  ],
+  "alltag": [
+   "Jannis findet bei den Stadtwerken keine Batterie.",
+   "Am Bildschirm liegen nur ein Magnet, eine Spule und ein Messgerät.",
+   "Bewegung erzeugt Spannung. Das heißt Induktion.",
+   "Am Fahrrad erzeugt ein Dynamo die Spannung für das Licht."
+  ],
+  "frage": "Wann zeigt das Messgerät eine Spannung an?",
+  "predict": [
+   "Der Magnet liegt in der Spule. Also zeigt das Messgerät weiter Spannung.",
+   "Das Messgerät zeigt nur Spannung, solange sich der Magnet bewegt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Beobachte das Messgerät. Der Magnet fährt hinein, liegt still, fährt heraus.",
+   "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.",
+   "Stelle „Tempo des Magneten“ auf 100 cm/s. Lies ab und trage ein.",
+   "Lies ab, wenn der Magnet still liegt. Trage ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Werte.",
+  "tabCols": [
+   "Wie stark ist der Magnet?",
+   "Wie schnell fährt der Magnet?",
+   "Wie viel Volt zeigt das Messgerät?"
+  ],
+  "tabRows": [
+   [
+    "mittel",
+    "50 cm/s",
+    "0,300 V"
+   ],
+   [
+    "stark",
+    "50 cm/s",
+    ""
+   ],
+   [
+    "stark",
+    "100 cm/s",
+    ""
+   ],
+   [
+    "stark",
+    "er liegt still",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Spannung entsteht nur, solange sich der Magnet",
+    "loesung": "bewegt",
+    "post": ". Ohne Bewegung sind es 0,000 V."
+   },
+   {
+    "pre": "Der Magnet fährt doppelt so schnell. Dann zeigt das Messgerät",
+    "loesung": "doppelte Spannung",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "bewegt",
+   "doppelte Spannung",
+   "1,200 V",
+   "0,000 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die erste Zeile ab?",
+   "antwort": "Der Magnet ist mittel, Tempo 50 cm/s. Am Bildschirm steht: „Messgerät: 0,300 V“. In die Tabelle kommt 0,300 V."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann zeigt das Messgerät eine Spannung an?",
+    "optionen": [
+     "Nur solange der Magnet still liegt.",
+     "Immer, weil der Magnet da ist.",
+     "Nur solange sich der Magnet bewegt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Magnet ist stark. Bei 50 cm/s zeigt das Messgerät 0,600 V. Bei 100 cm/s zeigt es",
+      "loesung": "1,200 V",
+      "post": "."
+     },
+     {
+      "pre": "Der Magnet liegt still. Das Messgerät zeigt",
+      "loesung": "0,000 V",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Das Fahrrad steht still. Warum geht das Dynamolicht aus?",
+    "satzstarter": "Das Licht geht aus, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies den Satz laut und probiere jedes Wort aus.",
+   "h2": "Doppelt heißt zweimal: 0,600 V + 0,600 V = ______ V.",
+   "h3": "Fast fertig: Das Licht geht aus, weil sich der Magnet im Dynamo nicht mehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann das Messgerät Spannung anzeigt.",
+   "Ich kann aus meiner Tabelle ablesen: schneller heißt mehr Volt.",
+   "Ich kann erklären, warum das Dynamolicht ausgeht, wenn das Rad steht."
+  ],
+  "zuhause": "Suche ein Fahrrad mit Dynamo. Drehe das Rad. Wann leuchtet die Lampe?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI Zuständen desselben Aufbaus, nebeneinander in EINEM Bildausschnitt, gleiche Blickrichtung von der Seite, gleiche Größe, gleiche Höhe, dieselbe Tischkante. In beiden Hälften steht dasselbe Gerät: eine liegende Spule als geschlossener, hell ausgefüllter Zylinderkörper mit dicken, deutlich voneinander getrennten Kupferringen darauf, daneben ein rundes Messgerät mit Skala und einem Zeiger. Über der Spule die Beschriftung „600 Windungen“, über dem Messgerät „Spannungsmesser“. Der Stabmagnet ist ein liegender Balken aus ZWEI vollflächigen Farbhälften, links die eine Farbe, rechts die andere, mit den großen Buchstaben „N“ und „S“ mitten in den Flächen. LINKE HÄLFTE: Der Magnet steht vor der Spulenöffnung, genau EIN dicker gerader Pfeil führt vom Magneten waagerecht in die Spule hinein; der Zeiger des Messgeräts schlägt deutlich nach rechts aus. Bildtexte links: „Magnet wird hineingeschoben“ und groß „Spannung: 0,300 V“. RECHTE HÄLFTE: Derselbe Magnet liegt mitten in der Spule, es gibt KEINEN Pfeil, der Zeiger steht senkrecht auf Null. Bildtexte rechts: „Magnet liegt still – in der Spule“ und groß „Spannung: 0,000 V – der Magnet bewegt sich nicht“. Unter beiden Hälften läuft eine durchgehende Zeile: „keine Batterie im Aufbau – nur ein Magnet, eine Spule und ein Messgerät“. Der Unterschied zwischen links und rechts darf an genau drei Stellen sichtbar sein: Pfeil da / kein Pfeil, Zeiger ausgeschlagen / Zeiger auf Null, 0,300 V / 0,000 V. Alles andere ist in beiden Hälften identisch – daran hängt die ganze Aussage des Bildes. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen – Magnetpole und Spulenkörper werden als volle Farbflächen gezeichnet, nie als Schraffur, Strichmuster oder dünne Streifen; sonst verschwimmen N und S beim Verkleinern zu Grau. (2) Nebenbilder – es gibt genau zwei Hälften: keine dritte Miniatur, kein eingesetztes Detailfenster, kein Diagramm in der Ecke, keine Fahrradlampe, kein Kraftwerk am Rand. (3) Strahlengänge ins Leere – es werden KEINE Feldlinien, keine Bögen um den Magneten, keine Strompfeile im Draht und keine Linien gezeichnet, die am Bildrand einfach aufhören; der einzige Pfeil im ganzen Bild ist der Bewegungspfeil links. Keine Batterie, kein Netzkabel, keine Personen, keine Formel, keine weiteren Zahlen als die genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv6",
+  "lernziel": "Die Schülerinnen und Schüler zeigen an der Simulation, dass eine Spannung nur entsteht, solange sich der Magnet bewegt: bewegter Magnet 0,300 V bzw. 0,600 V, still liegender Magnet 0,000 V. Sie lesen aus der eigenen Tabelle ab, dass ein stärkerer Magnet und ein doppeltes Tempo den Wert verdoppeln (mittel 50 cm/s = 0,300 V, stark 50 cm/s = 0,600 V, stark 100 cm/s = 1,200 V). Sie benennen die Sache: Nicht der Magnet liefert die Energie, sondern die Hand, die schiebt. Fachlicher Name auf der Schülerseite: Induktion.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Zuständen. Optional als Demonstration: Stabmagnet, Spule mit vielen Windungen und ein empfindlicher Spannungsmesser — Magnet einmal langsam, einmal schnell durch die Spule schieben und einmal darin liegen lassen (nur Vergleich klein/groß/null, keine Messreihe).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Der Wortlaut ist der des Bildschirms, aber OHNE die Tesla-Angabe in Klammern — sie steht dort in der Fußzeile und wird nur mündlich erklärt. Karte 1 (zugleich der Ausgangszustand): „Der Magnet wird hineingeschoben. Messgerät: 0,300 V. 600 Windungen · Magnet mittel · Tempo 50 cm/s.“ Karte 2 wie Karte 1, aber „Magnet stark“ und „Messgerät: 0,600 V“. Karte 3 wie Karte 2, aber „Tempo 100 cm/s“ und „Messgerät: 1,200 V“. Karte 4: „Der Magnet liegt still – mitten in der Spule. Messgerät: 0,000 V. Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern.“ Dazu als Tafelbild dieselben zwei Zustände wie im gedruckten Bild: links der Magnet mit EINEM Pfeil in die Spule, Zeiger ausgeschlagen, „Spannung: 0,300 V“; rechts derselbe Magnet still in der Spule, kein Pfeil, Zeiger auf Null, „Spannung: 0,000 V – der Magnet bewegt sich nicht“. Darunter beide Male: „keine Batterie im Aufbau – nur ein Magnet, eine Spule und ein Messgerät“. Rechts fehlt NUR der Pfeil — daran hängt Aufgabe 1. Der Zeiger ist eine Zeichenentscheidung des Hefts (der Bildschirm gibt den Wert als Zahl aus); Tafelbild und gedrucktes Bild zeigen deshalb bewusst dasselbe Gerät. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "bewegt",
+   "doppelte Spannung"
+  ],
+  "tabelle_erwartet": [
+   [
+    "stark",
+    "50 cm/s",
+    "0,600 V"
+   ],
+   [
+    "stark",
+    "100 cm/s",
+    "1,200 V"
+   ],
+   [
+    "stark",
+    "er liegt still",
+    "0,000 V"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Simulation zeigt beide Zustände nacheinander an derselben Anzeige. Solange oben steht „Der Magnet wird hineingeschoben“, meldet das Messgerät einen Wert (0,300 V im Ausgangszustand). Sobald oben steht „Der Magnet liegt still – mitten in der Spule“, meldet es 0,000 V, und daneben steht: „Null Volt – obwohl der Magnet da ist. Er liegt nur still.“ Damit ist die dritte Option belegt. Die erste Option kehrt den Befund um, die zweite ist die Vermutung aus dem Vorhersagekasten.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt: Der Magnet ist doch da, also muss auch Spannung da sein. Auf die Anzeige 0,000 V zeigen und den Bildschirmsatz mitlesen lassen: „Ein Magnet allein erzeugt keine Spannung.“",
+    "Die erste Option wird angekreuzt, weil „liegt still“ im Text vorkommt und als Schlüsselwort abgeschrieben wird. Beide Sätze langsam gegenüberstellen: still = 0,000 V, bewegt = mehr als null.",
+    "Es wird nicht abgewartet, bis der Magnet still liegt — die Anzeige wird nur einmal im Vorbeigehen angesehen. Die Simulation läuft von allein weiter; ein zweiter Durchgang ohne Bedienen genügt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "1,200 V",
+    "0,000 V"
+   ],
+   "typische_fehler": [
+    "Statt 1,200 V wird 0,900 V eingesetzt: Der Schritt 0,600 → 1,200 V wird als „plus 0,300“ gelesen. Genau dafür ist Hilfe 2 da: 0,600 V + 0,600 V. Erst danach das Wort „doppelt“ benutzen.",
+    "In die zweite Lücke kommt ein Wert größer als null, weil die letzte Tabellenzeile („er liegt still“) nicht ausgefüllt wurde. Auf diese Zeile und auf Karte 4 zurückgehen.",
+    "Die Einheit V fehlt („1,200“). Die Wortbank enthält beide Werte mit Einheit; einmal abschreiben lassen.",
+    "Das Komma wird verschoben („12,00 V“). Die dreistellige Nachkommastelle mit dem Finger auf dem Bildschirm nachfahren lassen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Licht geht aus, weil sich im Dynamo nichts mehr bewegt. Steht das Rad, dreht sich der Magnet im Dynamo nicht mehr. Ohne Bewegung entsteht keine Spannung — genau wie bei dem Magneten, der still in der Spule liegt (0,000 V). Sobald das Rad wieder rollt, leuchtet die Lampe wieder.",
+   "alternativen": [
+    "Kurzform mit dem Fachwort: „Ohne Bewegung gibt es keine Induktion, also keine Spannung.“ — reicht für die volle Wertung.",
+    "Rückbezug auf die eigene Tabelle: „Bei uns stand 0,000 V, als der Magnet still lag. Beim stehenden Rad ist es genauso.“",
+    "Antwort über die Energie: „Die Energie kommt von den Beinen, die treten. Wer nicht tritt, gibt keine Energie ab.“ — richtig und erwünscht, aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "„Weil die Batterie leer ist.“ Der Dynamo hat keine Batterie — auf den Bildschirmsatz „keine Batterie im Aufbau“ zurückgehen.",
+    "„Weil der Magnet kaputt oder aufgebraucht ist.“ Das ist die Fehlvorstellung, die diese Einheit auflöst: Der Magnet wird nicht schwächer, die Energie kommt aus der Bewegung.",
+    "Es wird nur „weil das Rad steht“ geschrieben, ohne den Magneten zu nennen. Nachfragen: Was steht denn im Dynamo still? Hilfe 3 gibt den Satz bis auf ein Wort vor."
+   ]
+  },
+  "hilfe3_wort": "bewegt (auch richtig: dreht, dreht sich)",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Bedienelemente gelten: die drei Knöpfe schwach, mittel, stark und der Regler „Tempo des Magneten“. Den Regler „Windungen der Spule“ auf 600 stehen lassen — er wird erst in der Zusatzaufgabe gebraucht.",
+   "Den Startzustand gemeinsam ansehen: Die Simulation beginnt bei „mittel“ und 50 cm/s, also bei 0,300 V. Genau diese Zeile steht schon in der Tabelle. Wer Schritt 2 ohne „stark“ ausführt, trägt zweimal denselben Wert ein und sieht keinen Unterschied.",
+   "Die Formelzeile unter dem Messwert mit einem Papierstreifen abdecken. Die erste Zeile (was der Magnet gerade tut) und der Messwert darunter bleiben sichtbar — beide werden gebraucht, die eine für Aufgabe 1, die andere für die Tabelle.",
+   "Nur die dritte Spalte ausfüllen lassen; die ersten beiden Spalten sind bereits vorgegeben.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank abschreiben lassen, besonders 1,200 V und 0,000 V mit Komma und Einheit. Für DaZ-Lernende vorher die drei Zustandswörter an der Tafel sammeln und mit einer Handbewegung zeigen: hineinschieben – still liegen – herausziehen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Magneten auf „stark“ und das Tempo zurück auf 50 cm/s. Schiebe dann den Regler „Windungen der Spule“ von 600 auf 1200. Warte, bis oben steht „Der Magnet wird hineingeschoben“, und lies das Messgerät ab. Vergleiche mit deiner Tabellenzeile für 600 Windungen. — Erwartet wird 1,200 V, also genau doppelt so viel wie die 0,600 V bei 600 Windungen. Der Wert ist nachgemessen (05.09.2026, simcheck/werte.js mit indN=1200, Magnet stark, Tempo 50 cm/s: „Messgerät: 1,200 V“), nicht gerechnet. Den Bildschirmsatz „doppelt so viele Windungen – doppelte Spannung“ erst NACH dem Ablesen dazunehmen — vorher nimmt er die Antwort vorweg.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Induktion als Grundlage jedes Generators. Die Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Ankreuzen der Vermutung E3 · Einstellen von „stark“ und 100 cm/s E4 · Vergleich der drei Werte UF3 · Übertragung auf den Dynamo UF2 und E6 · Aussage zur Energieherkunft UF1. K3 („Untersuchungen dokumentieren“) liegt nach der Bandregel vom 05.09.2026 auf dem Eintragen der Messwerte in die Tabelle, nicht auf dem Zuhause-Auftrag: „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Der Zuhause-Auftrag (Rad von Hand drehen) ist reines Beobachten und trägt keinen Code. Neu eingeführt ist genau EIN Fachwort: Induktion. Rückverweise, nicht neu: Spannung U in Volt (V) (fs3), Spule und Windungen (fv3), Magnet und Magnetfeld (fv1/fv2). Die Herleitung der Zählung und die Datenlage zur Simulation stehen im Feld notizen; es wird nicht gedruckt.",
+  "notizen": "ARBEITSNOTIZEN — werden NICHT gesetzt (build_pilot.seite_l liest dieses Feld nicht). Sie standen bis zum 05.09.2026 im Feld kernlehrplan und haben die Lehrerseite um rund 1000 Einheiten über den Satzspiegel geschoben.\n\nFACHWORTZÄHLUNG. Neu ist genau EIN Wort: „Induktion“, im Alltagsteil mit dem Begriffssatz „Bewegung erzeugt Spannung. Das heißt Induktion.“ eingeführt. Es steht NICHT in der Wortbank und in keiner Lücke — die Lücke fragt nach der Sache („bewegt“), nicht nach dem Namen; die Wortbank enthält nur die vier Lückenwörter. „Spannungsmesser“ und „Dynamo“ zählen nach Zählregel 2 nicht: Gerätenamen mit Begriffssatz im Alltagsteil, nicht in der Wortbank, in keiner Lücke. „Dynamo“ bekam diesen Begriffssatz erst am 05.09.2026 („Am Fahrrad erzeugt ein Dynamo die Spannung für das Licht.“); davor wurde das Wort in Aufgabe 3, Hilfe 3 und im Zuhause-Auftrag benutzt, ohne je eingeführt zu sein. „Tempo“ zählt nach Zählregel 5 nicht: Die Einheit cm/s steht nur in der zitierten Reglerbeschriftung („Tempo des Magneten“) und in den Ablesewerten der Tabelle, nie als eingeführte Größe mit Formelzeichen UND Einheit. Sobald „Tempo v in cm/s“ geschrieben würde, zählt es. (Regel 5 nennt Formelzeichen ODER Einheit; die frühere Begründung prüfte nur auf Formelzeichen und gab die Regel damit falsch wieder.) Der zweite Fachwort-Platz bleibt frei, weil die Einheit ohne ein zweites Fachwort auskommt — Spule, Windungen, Magnetfeld und Spannung sind Rückverweise. Er wird NICHT an fv7 weitergereicht: Plätze gelten je Lerneinheit, und fv7 hat seine beiden eigenen längst belegt (Generator, Drehfrequenz f in Hertz (Hz)). Bewusst vermieden, weil sie das zweite bis fünfte Wort wären: Tesla (T), Fläche A, Windungszahl N, Vorzeichen als Rechenbegriff, Lenzsche Regel. Die Tesla-Werte (0,02 T · 0,05 T · 0,10 T) stehen in der Fußzeile des Bildschirms — mündlich erklären, nicht abschreiben lassen.\n\nDATENLAGE UND FALLEN. (1) Der Bildschirm zeigt die Formel U = N · B · A · v / d mit vier Formelzeichen, drei Einheiten und d = 0,02 m als reinem Modellwert. Für A2–B1 nicht leistbar; sie erscheint auf der Schülerseite nirgends. Die Verdopplung wird aus der eigenen Tabelle ABGELESEN, nicht gerechnet. (2) Der Windungen-Regler ist BRAUCHBAR — nachgemessen am 05.09.2026; die Behauptung der Erstanalyse, er zeige immer 0,000 V, ist widerlegt. Die 0,000 V in allen zwölf Windungen-Zuständen des Dumps sind ein Zeitproblem der Aufnahme, kein Reglerfehler: Auch der Zustand „Windungen der Spule: 600 = 600“ — der Regler zurück auf seinen eigenen Startwert — meldet 0,000 V. Dort steht in der Fußzeile aber „600 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s“, NICHT die Einstellung des Ausgangszustands („Magnet mittel (0,05 T) · Tempo 50 cm/s“). 95 cm/s ist eine der drei Tempo-Stufen, bei denen der Magnet im Moment der Aufnahme stillliegt. Die Null hängt also am Bewegungszustand, nicht an der Windungszahl. Alle zwölf Windungen-Zustände wurden bei Tempo 95 cm/s abgegriffen. Gegenprobe mit dem Rechentest (simcheck/werte.js, indN=1200, Magnet stark, Tempo 50 cm/s, Phase „wird hineingeschoben“): „Messgerät: 1,200 V“, bei 600 Windungen unter sonst gleichen Einstellungen „Messgerät: 0,600 V“. Damit ist die Verdopplung über die Windungszahl am Messgerät belegt und die Zusatzaufgabe darf einen Zahlenwert verlangen. Auf der Schülerseite bleibt der Regler trotzdem auf 600 (so steht es auch im Bildtext „600 Windungen“); die Tabelle bekommt keine vierte Zeile, weil die Doppelseite bereits am Wortbudget liegt. (3) Alle vier Tabellenwerte sind als Messgerät-Anzeige belegt: 0,300 V (Ausgangszustand und Knopf „mittel“), 0,600 V (Knopf „stark“), 1,200 V (Tempo 100 cm/s) und 0,000 V (Magnet liegt still). Bei 80, 85 und 95 cm/s stand der Magnet im Moment der Aufnahme still (0,000 V); 90 cm/s ist mit 1,080 V belegt. Ungeprüft ist damit KEINE Stufe des Reglers — verlangt werden trotzdem nur 50 und 100 cm/s, weil nur diese beiden im Heft gebraucht werden. (Die frühere Fassung behauptete, alles zwischen 76 und 99 cm/s sei ungeprüft; das war falsch, und zwar genau in dem Block, dessen Aufgabe es ist festzuhalten, welche Werte belegt sind.) (4) Der Vorzeichenwechsel beim Herausziehen steht am Bildschirm NUR als Satz („Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen“); im ganzen Dump gibt es keinen negativen Messwert. Er bekommt deshalb keinen Ablese-, Eintrage- oder Rechenauftrag und steht auf der Schülerseite gar nicht — mündlich erwähnen, wenn ein Kind einen Ausschlag in die andere Richtung sieht. (5) Sprachhürde „ändern“: Der Bildschirm sagt „es muss sich etwas ändern“. DaZ-Lernende beziehen das auf den Magneten selbst („der Magnet wird anders“). Die Seite schreibt deshalb durchgehend „solange sich der Magnet bewegt“; die Feldänderung bleibt Ihr Fachwissen. (6) Modellgrenze (nur für Sie): Hier ist die Spannung während der ganzen Fahrt gleich groß. In Wirklichkeit steigt sie an, wenn der Pol in die Spule eintritt, und fällt wieder ab — der Zeiger würde zucken, nicht stehen. Nicht auf die Schülerseite, sonst wird „gleich groß“ zur zusätzlichen neuen Information. (7) Undruckbare Zeichen: Die Überschrift der Simulation trägt vor dem ersten Wort ein Emoji. SourceSans3 hat dafür keine Glyphe; die Überschrift wird deshalb nirgends zitiert — auch nicht im Lehrerteil, der mit derselben Schrift gesetzt wird. Die drei Knöpfe schwach, mittel, stark tragen kein Zierzeichen und dürfen wörtlich stehen. (8) Fehlvorstellung, die bleiben muss: „Die Energie steckt im Magneten und wird aufgebraucht.“ Der Bildschirm löst sie in einem Satz auf: „Nicht aus dem Magneten – der wird nicht schwächer. Sie kommt aus der Hand, die schiebt.“ Das ist das Basiskonzept Energie dieser Einheit; es steht im Lernziel und in den Alternativen zu Aufgabe 3 und darf nicht dem Wortbudget zum Opfer fallen. (9) Bewusst offen: Ob die Simulation den Herausziehen-Zustand als eigene Statuszeile mit eigenem Wert meldet, ist nicht belegt — der Dump kennt nur „wird hineingeschoben“ und „liegt still“. Schritt 1 lässt deshalb nur BEOBACHTEN und verlangt für das Herausziehen keinen Tabelleneintrag. (10) Zeiger oder Zahl? Der Bildschirm gibt den Wert als Zahl aus („Messgerät: 0,300 V“); das Wort „Zeiger“ steht dort nur im Modellgrenzen-Hinweis. Der Arbeitsschritt sagt deshalb „Beobachte das Messgerät“, nicht „Beobachte den Zeiger“. Im gedruckten Bild UND im Tafelbild ist das Messgerät mit Skala und Zeiger gezeichnet — bewusst in beiden, denn die Klasse ohne Simulation sieht genau diese zwei Bilder nebeneinander; ein Zeiger nur im einen von beiden wäre für sie der auffälligere Widerspruch. Ein Zeiger auf Null gegen einen ausgeschlagenen Zeiger ist außerdem der stärkste sichtbare Unterschied der zwei Zustände, und die Zahl steht in beiden Hälften daneben. Die Begründung steht kurz auch im gedruckten Feld ersatz_ohne_simulation, damit eine Lehrkraft, die gegen den Bildschirm vergleicht, den Unterschied als Absicht erkennt."
+ }
+}

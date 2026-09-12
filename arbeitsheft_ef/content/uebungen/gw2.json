@@ -1,0 +1,72 @@
+{
+ "id": "gw2",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "S5",
+  "K8"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Der rote Kraftpfeil zeigt in jeder Winkelstellung φ zum",
+   "loesung": "Mittelpunkt",
+   "post": "der Kreisbahn."
+  },
+  {
+   "pre": "Umlaufzeit T und Umlauffrequenz f sind Kehrwerte voneinander; es gilt",
+   "loesung": "T = 1/f",
+   "post": "."
+  },
+  {
+   "pre": "Für die Zentripetalbeschleunigung gibt es zwei gleichwertige Ausdrücke: a_z = v²/r und, mit ω statt v, a_z =",
+   "loesung": "ω²·r",
+   "post": "(in m/s²)."
+  },
+  {
+   "pre": "Nach dem zweiten Newton'schen Gesetz gehört dazu eine Kraft in derselben Richtung: F_z =",
+   "loesung": "m · a_z",
+   "post": "; in der Ausgangsstellung sind das 35,53 N."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Zieht man allein den Regler für die Masse von 0,50 kg auf 1,00 kg, so verdoppelt sich mit F_z auch die Zentripetalbeschleunigung a_z.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Der grüne Geschwindigkeitspfeil und der rote Kraftpfeil stehen in jeder Winkelstellung senkrecht aufeinander.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Beim Kettenkarussell greift an einem Sitz neben Gewichtskraft und Kettenkraft zusätzlich eine eigene Zentripetalkraft nach innen an.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Erhöht man bei r = 0,80 m und f = 1,50 Hz die Masse auf 2,00 kg, so zeigt die Simulation F_z = 142,1 N, während T weiterhin 0,667 s beträgt.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias startet die Simulation neu und will die Umlaufzeit belegen. Hinter „daraus gemessene Umlaufzeit“ steht noch ein Strich, während die „Uhr der Simulation“ daneben bereits weiterzählt. Er notiert deshalb den Stand dieser Uhr als Umlaufzeit T. Welcher Einwand trifft zu?",
+  "optionen": [
+   "Bei f = 1,50 Hz lässt sich die Umlaufzeit gar nicht messen; der Strich verschwindet erst, wenn die Umlauffrequenz erhöht wird.",
+   "Die „Uhr der Simulation“ gibt zwar die Umlaufzeit an, weicht aber wegen der Messunsicherheit von T = 1/f ab; verlässlich wird sie erst nach mehreren Umläufen.",
+   "Die „Uhr der Simulation“ gibt die gesamte Laufzeit seit dem Start an; die gemessene Umlaufzeit erscheint erst nach einem vollen Umlauf und beträgt dann T = 0,667 s."
+  ],
+  "richtig": 2,
+  "erklaerung": "Die beiden Anzeigen messen Verschiedenes. Die „Uhr der Simulation“ läuft ab dem Start durch und gibt die gesamte Laufzeit an; ihr Stand wächst über jeden Umlauf hinaus und ist deshalb keine Umlaufzeit. Das Feld „daraus gemessene Umlaufzeit“ bleibt so lange ein Strich, bis der Drehwinkel φ einmal ganz herumgelaufen ist; danach steht dort T = 0,667 s, genau der Wert der Rechenzeile T = 1/f. An der Umlauffrequenz muss dafür nichts verstellt werden, und eine Abweichung zwischen gemessener und gerechneter Umlaufzeit tritt hier nicht auf."
+ },
+ "offen": {
+  "frage": "Tobias zieht allein den Masse-Regler von 0,50 kg auf 2,00 kg und liest F_z = 142,1 N ab. Er folgert: „Bei größerer Masse wird der Körper stärker beschleunigt.“ Beurteile diese Folgerung anhand der drei Zeilen für a_z und begründe mit a_z = ω²·r und F_z = m · a_z, welche Größe hier von der Masse abhängt und welche nicht.",
+  "prompt": "Tobias zieht allein den Masse-Regler von 0,50 kg auf 2,00 kg und liest F_z = 142,1 N ab. Er folgert: „Bei größerer Masse wird der Körper stärker beschleunigt.“ Beurteile diese Folgerung anhand der drei Zeilen für a_z und begründe mit a_z = ω²·r und F_z = m · a_z, welche Größe hier von der Masse abhängt und welche nicht.",
+  "zeilen": 5,
+  "loesung": "Die Folgerung trägt nicht. In allen drei Einstellungen steht für die Zentripetalbeschleunigung derselbe Wert a_z = 71,06 m/s², denn a_z = ω²·r enthält nur ω = 9,4248 rad/s und r = 0,80 m; die Masse kommt darin nicht vor. Weil Radius und Umlauffrequenz unangetastet bleiben, ändern sich auch T = 0,667 s und v = 7,53984 m/s nicht – beschleunigt wird der Körper bei 2,00 kg also genauso stark wie bei 0,50 kg. Von der Masse abhängig ist allein die Kraft: F_z = m · a_z wächst proportional zu m, von 35,53 N über 71,06 N auf 142,1 N. Die größere Kraft ist gerade nötig, damit an der größeren Masse dieselbe Zentripetalbeschleunigung zustande kommt. Tobias schließt von der gewachsenen Kraft fälschlich auf eine gewachsene Beschleunigung; belegen ließe sich seine Aussage nur mit einer Änderung von a_z, und die zeigt die Messreihe nicht."
+ }
+}

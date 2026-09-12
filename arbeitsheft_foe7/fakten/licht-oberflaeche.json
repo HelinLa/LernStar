@@ -1,0 +1,152 @@
+[
+ {
+  "sim": "licht-oberflaeche",
+  "ueberschrift": "🔦 Was passiert, wenn Licht auf eine Oberfläche trifft?",
+  "regler": [
+   {
+    "id": "lobT",
+    "beschriftung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45°",
+    "bereich": {
+     "min": "0",
+     "max": "80",
+     "step": "5",
+     "start": "45"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "🪞 Spiegel",
+    "ruft": "_lobSetF('spiegel')"
+   },
+   {
+    "aufschrift": "🪟 Fensterglas",
+    "ruft": "_lobSetF('glas')"
+   },
+   {
+    "aufschrift": "⬛ schwarzes Papier",
+    "ruft": "_lobSetF('schwarz')"
+   },
+   {
+    "aufschrift": "⬜ weißes Papier",
+    "ruft": "_lobSetF('weiss')"
+   }
+  ],
+  "hinweise": [
+   "Ein Lichtstrahl trifft schräg auf eine Fläche. Wähle die Oberfläche und beobachte, wie sich das Licht aufteilt.",
+   "An jeder Oberfläche geschieht alles drei gleichzeitig – nur mit verschieden großen Anteilen. Zusammen ergeben sie immer das ganze auftreffende Licht.",
+   "Der geschluckte Anteil macht den Körper wärmer. Deshalb heizt sich schwarzes Papier in der Sonne auf, ein Spiegel dagegen kaum.",
+   "Spiegel wirft gerichtet zurück | weißes Papier streut nach allen Seiten | schwarzes Papier schluckt fast alles"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "lobStatus: 🔦 Spiegel: zurück 95 %, hindurch 0 %, geschluckt 5 %."
+   },
+   {
+    "einstellung": "🪞 Spiegel",
+    "text": "lobStatus: 🔦 Spiegel: zurück 95 %, hindurch 0 %, geschluckt 5 %."
+   },
+   {
+    "einstellung": "🪟 Fensterglas",
+    "text": "lobStatus: 🔦 Fensterglas: zurück 8 %, hindurch 90 %, geschluckt 2 %."
+   },
+   {
+    "einstellung": "⬛ schwarzes Papier",
+    "text": "lobStatus: 🔦 schwarzes Papier: zurück 5 %, hindurch 0 %, geschluckt 95 %."
+   },
+   {
+    "einstellung": "⬜ weißes Papier",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 0",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 10",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 20",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 30",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 40",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 50",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 60",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 70",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 80",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 5",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 15",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 25",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 35",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 45",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 55",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 65",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   },
+   {
+    "einstellung": "ton> Einfallswinkel einstellen Winkel zum Lot: 45° = 75",
+    "text": "lobStatus: 🔦 weißes Papier: zurück 80 %, hindurch 0 %, geschluckt 20 %."
+   }
+  ],
+  "bildtexte": [
+   "Luft",
+   "Spiegel",
+   "Lot",
+   "zurück",
+   "95 %",
+   "hindurch",
+   "0 %",
+   "geschluckt",
+   "5 %",
+   "zusammen immer 100 % – nur die Anteile ändern sich",
+   "Fensterglas",
+   "8 %",
+   "90 %",
+   "2 %",
+   "schwarzes Papier",
+   "weißes Papier",
+   "80 %",
+   "20 %"
+  ]
+ }
+]

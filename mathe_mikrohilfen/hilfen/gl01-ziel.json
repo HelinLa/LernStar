@@ -1,0 +1,63 @@
+{
+  "kennung": "gl01",
+  "frage": "Was soll am Ende allein stehen?",
+  "art": "rechenschritt",
+  "aufgabe": "a06",
+  "vorwissen": [
+    "Er weiß, dass x für eine unbekannte Zahl steht.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen.",
+    "Er kann eine Zahl in einer Zeile mit einem Ring markieren."
+  ],
+  "hilfe1": "Welche Zahl steht neben dem x?",
+  "skript": {
+    "A": { "text": "Du hast jetzt x − 9 = 3.", "woerter": 9 },
+    "B": { "text": "Am Ende soll das x allein stehen.", "woerter": 7 },
+    "C": { "text": "Markiere die −9 neben dem x.", "woerter": 7 },
+    "D": { "text": "Wenn das x allein steht, kannst du seine Zahl ablesen.", "woerter": 10 },
+    "E": { "text": "Jetzt ist nur die −9 markiert, nicht das x.", "woerter": 10 },
+    "F": { "text": "Jetzt bist du wieder dran.", "woerter": 5 }
+  },
+  "woerter_gesamt": 48,
+  "sekunden_sprache": 24.0,
+  "sekunden_gesamt": 27.0,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß x − 9 = 3.",
+      "hervorgehoben": "die ganze Zeile x − 9 = 3"
+    },
+    "B": {
+      "sichtbar": "x − 9 = 3 bleibt oben stehen. Darunter erscheint blass eine Zielzeile: links das x, rechts ein leeres Feld.",
+      "hervorgehoben": "das x allein in der blassen Zielzeile"
+    },
+    "C": {
+      "sichtbar": "In der Zeile x − 9 = 3 bekommt die −9 einen roten Ring. Die blasse Zielzeile bleibt unverändert darunter.",
+      "hervorgehoben": "der rote Ring um die −9"
+    },
+    "D": {
+      "sichtbar": "Oben x − 9 = 3 mit dem roten Ring um die −9. Unten in der Zielzeile steht das x, dahinter das leere Feld.",
+      "hervorgehoben": "das leere Feld hinter dem x"
+    },
+    "E": {
+      "sichtbar": "Nur die −9 in x − 9 = 3 trägt den roten Ring. Das x trägt keinen Ring. Die Zielzeile ist wieder blass.",
+      "hervorgehoben": "der rote Ring um die −9"
+    },
+    "F": {
+      "sichtbar": "x − 9 = 3 mit dem roten Ring um die −9 bleibt drei Sekunden stehen.",
+      "hervorgehoben": "der rote Ring um die −9"
+    }
+  },
+  "szene": {
+    "A": [{ "zeile": "x − 9 = 3" }],
+    "B": [{ "zielzeile": "x" }],
+    "C": [{ "ring": "−9", "farbe": "rot" }],
+    "D": [{ "ring": "−9", "farbe": "rot" }],
+    "E": [{ "ring": "−9", "farbe": "rot" }],
+    "F": [{ "halte": 3 }]
+  },
+  "hilfe3": {
+    "aufgabe": "a25",
+    "text": "Nimm x + 8 = 15. Markiere die +8.",
+    "kontrolle": "Dann ist nur die +8 neben dem x markiert."
+  },
+  "faengt_fehler_auf": "Der Schüler markiert das x statt der −9 und weiß nicht, was allein stehen soll."
+}

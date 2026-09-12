@@ -1,0 +1,217 @@
+{
+ "seite": {
+  "id": "fv13",
+  "quelle": "ev14",
+  "sim": "stromkosten",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Die Rechnung am Tresen",
+  "name": "Was kostet ein Gerät im Jahr?",
+  "fachwoerter_neu": [
+   "Energie in Kilowattstunden (kWh)",
+   "Strompreis in €/kWh"
+  ],
+  "alltag": [
+   "Eine Kundin steht am Tresen der Stadtwerke. Jannis hört zu.",
+   "Ihre Rechnung für das Jahr ist sehr hoch.",
+   "Der Stromzähler zählt die Energie in Kilowattstunden (kWh).",
+   "Am Tresen steht der Strompreis: 1 kWh kostet 0,30 €."
+  ],
+  "frage": "Wovon hängt es ab, was ein Gerät im Jahr kostet?",
+  "predict": [
+   "Ein starkes Gerät kostet viel, auch bei kurzer Zeit.",
+   "Am meisten kostet das Gerät, das am längsten läuft."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile ab. Nimm nur die Zahl hinter „Im Jahr:“.",
+   "Drücke „LED 10 W“. Trage die Zahl ein.",
+   "Drücke „Wasserkocher 2000 W“. Trage die Zahl ein.",
+   "Drücke „1 h“. Der Wasserkocher bleibt gewählt. Trage die Zahl ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Welches Gerät läuft?",
+   "Wie lange am Tag?",
+   "Was kostet es im Jahr?"
+  ],
+  "tabRows": [
+   [
+    "Fernseher 100 W",
+    "3 h",
+    "32,85 €"
+   ],
+   [
+    "LED 10 W",
+    "3 h",
+    ""
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "3 h",
+    ""
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "1 h",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Stromzähler misst die Energie in",
+    "loesung": "Kilowattstunden",
+    "post": "(kWh), nicht in Watt."
+   },
+   {
+    "pre": "Die Kosten rechnest du so: Energie ·",
+    "loesung": "Preis",
+    "post": ". 1 kWh kostet 0,30 €."
+   }
+  ],
+  "wortbank": [
+   "Kilowattstunden",
+   "Preis",
+   "0,60 €",
+   "219,00 €"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Zeile 1 ab?",
+   "antwort": "Am Bildschirm steht: „Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.“ In die Tabelle kommt 32,85 €."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was misst der Stromzähler? Prüfe am Bildschirm.",
+    "optionen": [
+     "In Kilowattstunden (kWh)",
+     "In Watt (W)",
+     "In Ampere (A)"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1 h zählt der Stromzähler 2 kWh. 2 · 0,30 € =",
+      "loesung": "0,60 €",
+      "post": "am Tag."
+     },
+     {
+      "pre": "Bei 1 h steht am Bildschirm: Im Jahr",
+      "loesung": "219,00 €",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Kundin sagt: „Es war nur die Lampe.“ Hat sie recht?",
+    "satzstarter": "Die Kundin hat …, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Nimm nur die Zahl hinter „Im Jahr:“.",
+   "h2": "Beginne so: Die Kundin hat nicht recht, weil …",
+   "h3": "Fast fertig: Die Kundin hat nicht recht, weil die LED nur 3,28 € kostet. Der Wasserkocher bei 1 h kostet ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Kosten im Jahr am Bildschirm ablesen.",
+   "Ich kann sagen: Der Stromzähler misst Energie in Kilowattstunden.",
+   "Ich kann zwei Geräte nach den Kosten im Jahr vergleichen."
+  ],
+  "zuhause": "Lies zu Hause die W-Zahl am Wasserkocher ab. Schreibe sie auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU VIER Feldern, nebeneinander in EINEM Bildausschnitt, gleiche Größe, gleiche Höhe, gleiche Blickrichtung von vorn, alle auf einer durchgehenden waagerechten Grundlinie. Jedes Feld ist Strich für Strich gleich aufgebaut und enthält genau drei Dinge untereinander: oben das Gerät als einfache, satt ausgefüllte Silhouette, darunter EINE Beschriftungszeile, ganz unten eine rechteckige Tafel in voller Farbfläche mit der kleinen Aufschrift „Kosten pro Jahr“ und darunter dem Betrag in sehr großer dunkler Schrift. FELD 1: ein Fernseher als liegendes Rechteck auf kurzem Fuß; Zeile „Fernseher · 100 W · 3 h/Tag“; Tafel „32,85 € pro Jahr“. FELD 2: eine LED-Lampe als kleiner Birnenumriss; Zeile „LED-Lampe · 10 W · 3 h/Tag“; Tafel „3,28 € pro Jahr“. FELD 3: ein Wasserkocher als hohe Kanne mit Griff und Ausguss; Zeile „Wasserkocher · 2000 W · 3 h/Tag“; Tafel „657,00 € pro Jahr“. FELD 4: derselbe Wasserkocher, Strich für Strich gleich gezeichnet wie in Feld 3; Zeile „Wasserkocher · 2000 W · 1 h/Tag“; Tafel „219,00 € pro Jahr“. Über allen vier Feldern läuft eine einzige durchgehende Kopfzeile: „1 kWh kostet 0,30 €“. Unter Feld 1 und Feld 2 steht gemeinsam die große Beschriftung „gleiche Zeit, anderes Gerät“, unter Feld 3 und Feld 4 gemeinsam „gleiches Gerät, andere Zeit“ — daran hängt die ganze Aussage des Bildes. Die vier Tafeln sind alle GLEICH GROSS: Der Unterschied steckt allein in der Zahl, nie in der Fläche. Ein Balkendiagramm ist ausdrücklich ausgeschlossen — 3,28 € und 657,00 € unterscheiden sich um das Zweihundertfache, maßstäbliche Balken wären auf dieser Seite nicht zeichenbar und würden falsch abgelesen. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die vier Geräte und die vier Tafeln werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Raster, Punktmuster oder dünne Streifen, und die Beträge stehen als große dunkle Ziffern mitten in der hellen Tafel; sonst verschwimmt beim Verkleinern alles zu Grau. (2) Nebenbilder — es gibt genau vier Felder: keine fünfte Miniatur, kein Kreisdiagramm, kein Münzstapel, kein Geldschein, kein Rechnungsblatt, kein Zählerkasten mit Zahlenrollen in der Ecke, kein Tresen, keine Kundin, keine Personen, kein Kraftwerk. (3) Strahlengänge ins Leere — es werden KEINE Kabel, Stecker, Blitze, Strompfeile oder Flusslinien gezeichnet und keine Linie, die am Bildrand einfach aufhört; zwischen Gerät und Tafel steht in jedem Feld genau EIN kurzer gerader Pfeil nach unten, und das sind die einzigen vier Pfeile im ganzen Bild. Keine weiteren Zahlen als die genannten, keine Formel, keine Prozentangabe, kein Vergleichspfeil zwischen den Feldern. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv13",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, was ein Gerät im Jahr kostet, und tragen drei Werte in die dritte Tabellenspalte ein; Zeile 1 ist als Beispiel vollständig vorgefüllt. Sie erkennen dabei zwei Zusammenhänge getrennt voneinander: Bei gleicher Laufzeit (3 h/Tag) hängen die Jahreskosten davon ab, wie stark das Gerät ist — LED-Lampe (10 W) 3,28 €, Fernseher (100 W) 32,85 €, Wasserkocher (2000 W) 657,00 €. Beim gleichen Gerät hängen sie von der Laufzeit ab — Wasserkocher bei 3 h/Tag 657,00 €, bei 1 h/Tag 219,00 €. Sie benennen die Sache: Der Stromzähler misst die Energie in Kilowattstunden (kWh), nicht in Watt, und die Kosten sind Energie mal Preis (hier 0,30 € für 1 kWh). Sie beurteilen die Aussage der Kundin: Ein starkes Gerät kostet auch bei einer Stunde am Tag mehr (219,00 €) als eine kleine Lampe bei drei Stunden (3,28 €). Fachlich für Sie, nicht auf der Schülerseite: Die W-Zahl auf dem Gerät ist die Leistung P, und es gilt E = P · t. Das Wort „Leistung“ steht auf der Schülerseite bewusst an keiner Stelle, und auch die Ersatzkarte für den Weg ohne Simulation umgeht es. Die Größe Leistung P wird im ganzen Band 10 nirgends eingeführt; die Einheit Watt (W) trägt fv9 als „Verlust in Watt (W)“, fv13 verweist nur darauf zurück (siehe Fachwortzählung unten).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten und die Prüffragen-Karte aus diesem Lehrerteil, dazu das Tafelbild mit den vier Feldern. Optional als Anschauung: ein Wasserkocher und eine LED-Lampe mit ihren Typenschildern nebeneinanderlegen und nur die beiden W-Zahlen vorlesen lassen (kein Messgerät, keine Messreihe). Wer einen Zählerkasten im Gebäude zeigen darf, zeigt die Rollen und die Aufschrift kWh — mehr wird nicht gebraucht.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmwortlaut der Statuszeile. Karte 1 (zugleich der Ausgangszustand, den die Simulation ohne jeden Tastendruck zeigt): „Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.“ Karte 2: „LED-Lampe (10 W) · 3 h/Tag → 0,03 kWh/Tag = 0,01 €/Tag. Im Jahr: 3,28 €.“ Karte 3: „Wasserkocher (2000 W) · 3 h/Tag → 6 kWh/Tag = 1,80 €/Tag. Im Jahr: 657,00 €.“ Karte 4: „Wasserkocher (2000 W) · 1 h/Tag → 2 kWh/Tag = 0,60 €/Tag. Im Jahr: 219,00 €.“ Auf jeder Karte steht zusätzlich die Fußzeile, die am Bildschirm als Hinweis danebensteht: „Kosten = Energie (kWh) · Preis · 1 kWh kostet hier 0,30 €.“ Dazu eine fünfte Karte für Aufgabe 1, weil die Simulation die Antwort dort selbst gibt: Frage „Was misst der Stromzähler?“, darunter die drei Antworten „In Watt (W)“, „In Kilowattstunden (kWh)“, „In Ampere (A)“ und darunter die richtige Rückmeldung im Wortlaut: „✓ Richtig! Der Zähler misst die Energie in kWh.“ Die beiden falschen Rückmeldungen des Bildschirms nennen die Wörter „Leistung“ und „Stromstärke“; ohne Simulation ist diese Karte das Einzige, was die Klasse in der Hand hat, und „Leistung“ wäre dort das dritte Fachwort. Auf der Karte stehen sie deshalb umschrieben: „✗ Watt ist etwas anderes als Kilowattstunden.“ und „✗ Ampere gehört nicht zum Stromzähler.“ Beide bitte erst NACH dem Ankreuzen aufdecken. Als Tafelbild vier Felder nebeneinander, jedes mit dem Gerät, der Zeile aus dem Bildtext („Fernseher · 100 W · 3 h/Tag“, „LED-Lampe · 10 W · 3 h/Tag“, „Wasserkocher · 2000 W · 3 h/Tag“, „Wasserkocher · 2000 W · 1 h/Tag“) und darunter der Jahreszahl in großer Schrift. Wichtig beim Tafelbild: Die vier Kästen für die Jahreszahl sind gleich groß — kein Balkendiagramm, die Zahlen unterscheiden sich um das Zweihundertfache. Alternativ die vier Bildschirmzustände als Standbilder am Beamer zeigen; dafür genügt es, vorher LED, Wasserkocher und danach den Stundenknopf einmal zu drücken und abzufotografieren.",
+  "merksatz": [
+   "Kilowattstunden",
+   "Preis"
+  ],
+  "tabelle_erwartet": [
+   [
+    "LED 10 W",
+    "3 h",
+    "3,28 €"
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "3 h",
+    "657,00 €"
+   ],
+   [
+    "Wasserkocher 2000 W",
+    "1 h",
+    "219,00 €"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Simulation stellt dieselbe Frage selbst und trägt genau diese drei Antworten als Knöpfe. Wer „In Kilowattstunden (kWh)“ drückt, liest: „✓ Richtig! Der Zähler misst die Energie in kWh.“ Bei „In Watt (W)“ meldet sie „✗ Watt ist die Leistung, nicht die Energie.“, bei „In Ampere (A)“ meldet sie „✗ Ampere ist die Stromstärke.“ Die Aufgabe ist damit am Bildschirm selbst prüfbar; die Lernenden korrigieren sich ohne Lehrkraft. Der Beleg steht außerdem in jeder Statuszeile: Hinter dem Pfeil steht immer kWh/Tag, nie W — beim Fernseher zum Beispiel „0,3 kWh/Tag“, bei der LED „0,03 kWh/Tag“, beim Wasserkocher „6 kWh/Tag“ und „2 kWh/Tag“. Die Reihenfolge der drei Antworten auf dem Papier setzt seiten_nachbereiten.py (Streuung der Antwortpositionen im Kapitel); sie kann sich beim nächsten Lauf ändern und wird deshalb im Unterricht nirgends als Merkmal benutzt. Die Knöpfe am Bildschirm bleiben, wo sie sind.",
+   "typische_fehler": [
+    "„In Watt (W)“ wird angekreuzt: Auf jedem Gerät und auf jedem Knopf steht eine W-Zahl, also scheint W die Einheit des Zählers zu sein. Die Simulation antwortet darauf selbst; danach gemeinsam die Statuszeile ansehen — die Zahl hinter dem Pfeil trägt kWh.",
+    "„In Ampere (A)“ wird angekreuzt, weil A aus Förderband 8 als Einheit rund um den Strom bekannt ist. Die Rückmeldung der Simulation vorlesen lassen; A gehört zur Stromstärke und kommt auf dieser Seite sonst nicht vor.",
+    "Beide Wörter enthalten „Watt“, deshalb werden sie für dasselbe gehalten. Das lange Wort an der Tafel in drei Teilen aufschreiben: Kilo — watt — stunden. Die Stunde ist der Unterschied: Der Zähler zählt, wie lange etwas läuft.",
+    "Es wird geraten und danach am Bildschirm gedrückt, bis das Häkchen kommt. Ansage: erst ankreuzen, dann prüfen. Sonst prüft die Simulation nicht die Antwort, sondern die Geduld."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,60 €",
+    "219,00 €"
+   ],
+   "typische_fehler": [
+    "Statt 0,60 € wird 0,09 € eingesetzt: Das ist der Tageswert des Fernsehers aus der Beispielzeile. Der Satz nennt aber ausdrücklich 1 h; die Statuszeile muss „1 h/Tag“ zeigen.",
+    "Statt 219,00 € wird 657,00 € eingesetzt: Der Wasserkocher stand zuletzt auf 3 h; die Lücke nennt „Bei 1 h“. Auf die Statuszeile zeigen und den Knopf „1 h“ noch einmal drücken lassen.",
+    "Die Rechnung wird als 6,00 € oder 60 € geschrieben: 2 · 0,30 € wird wie 2 · 3 € gerechnet. Als Plusaufgabe an der Tafel zeigen: 0,30 € + 0,30 € = 0,60 €. Das Ergebnis steht danach zur Kontrolle wörtlich am Bildschirm.",
+    "Die Nachkommastellen fallen weg („219 €“ statt „219,00 €“). Am Bildschirm steht die Zahl mit zwei Stellen hinter dem Komma; die Wortbank enthält sie vollständig, einmal abschreiben lassen.",
+    "Das Eurozeichen fehlt. Beide Wortbankeinträge tragen es; es gehört mit in die Lücke."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Kundin hat nicht recht, weil die Lampe fast nichts kostet. Die LED kostet im Jahr 3,28 €. Der Wasserkocher läuft nur 1 Stunde am Tag und kostet im Jahr 219,00 €. Ein starkes Gerät kostet also viel mehr als eine kleine Lampe, auch wenn es kürzer läuft.",
+   "alternativen": [
+    "Kurzform mit zwei Zahlen: „Die Kundin hat nicht recht, weil 3,28 € viel weniger sind als 219,00 €.“ — reicht für die volle Wertung.",
+    "Ohne Zahlen, mit der Sache: „Sie hat nicht recht, weil ein starkes Gerät auch in kurzer Zeit viel Energie braucht.“",
+    "Über die eigene Tabelle: „Bei uns stand beim Wasserkocher die größte Zahl und bei der LED die kleinste.“",
+    "Teilweise zugestimmt: „Sie hat recht, dass die Lampe wenig kostet. Aber die hohe Rechnung kommt nicht von der Lampe.“ — volle Wertung, wenn ein zweites Gerät genannt wird.",
+    "Über den Preis begründet: „1 kWh kostet 0,30 €. Der Wasserkocher braucht viele kWh, die Lampe fast keine.“",
+    "Mit dem Fernseher statt der LED begründet (32,85 € gegen 219,00 €) — richtig, wenn beide Zahlen genannt werden; die LED ist nur das deutlichere Beispiel."
+   ],
+   "typische_fehler": [
+    "„Die Kundin hat recht, weil die Lampe die ganze Zeit an war.“ Die Laufzeit wird allein für ausschlaggebend gehalten — genau die Fehlvorstellung aus dem Vermutungskasten. Die beiden Tabellenzeilen nebeneinanderlegen: LED bei 3 h und Wasserkocher bei 1 h.",
+    "Es wird nur „nein“ geschrieben, ohne Grund. Nachfragen: Welche zwei Zahlen aus deiner Tabelle zeigen das? Hilfe 3 gibt den Satz bis auf eine Zahl vor.",
+    "Es wird der Tageswert genannt (0,60 €) statt des Jahreswertes. Der Satz der Kundin handelt von der Jahresrechnung, und die Tabellenspalte fragt „Was kostet es im Jahr?“.",
+    "Die Kundin soll den Anbieter wechseln oder sparen. Alltagslösung statt Ablesen — auf die eigene Tabelle zurückverweisen.",
+    "Es wird behauptet, der Zähler sei kaputt oder der Wasserkocher defekt. Die Seite fragt nach den abgelesenen Kosten, nicht nach einer Ursache außerhalb des Bildschirms.",
+    "Der Wasserkocher wird für teurer gehalten, weil er 2000 W hat — ohne die Laufzeit zu nennen. Sachlich richtig, aber die Begründung muss die Stunde am Tag mitnennen, sonst ist es dieselbe Einseitigkeit wie bei der Kundin."
+   ]
+  },
+  "hilfe3_wort": "219,00 € — bei Hilfe 3 zählt die Zahl, nicht die Schreibweise („219 Euro“ ist hier richtig). In der Lücke von Aufgabe 2 wird dagegen vollständig abgeschrieben: 219,00 € mit Komma, zwei Nachkommastellen und Eurozeichen, so wie es am Bildschirm und in der Wortbank steht.",
+  "schwache": [
+   "Vorher gemeinsam klären, welche Knöpfe gelten: die vier Gerätenamen und die Stundenzahlen, in dieser Reihenfolge — erst das Gerät, dann die Stunden. Sonst rechnet die Simulation mit dem alten Gerät weiter. Die übrigen Knöpfe gehören zu drei Prüffragen und zur eigenen Einschätzung; einer davon setzt alles zurück, trägt aber nur ein Zeichen und keinen Namen und wird im Heft deshalb nirgends genannt. Wer sich verdrückt hat, braucht ihn auch nicht: einfach das richtige Gerät neu drücken und danach die Stundenzahl.",
+   "Die Statuszeile enthält FÜNF Zahlen hintereinander (Watt, Stunden am Tag, Kilowattstunden am Tag, Euro am Tag, Euro im Jahr). Gefragt ist nur die letzte. Die Stundenzahl steht außerdem noch einmal in Spalte 2 der Tabelle und ist dort vorgegeben — sie wird nirgends abgelesen. Mit einem Papierstreifen alles abdecken, bis nur noch „Im Jahr: …“ sichtbar ist. Das ist die häufigste Fehlerquelle der ganzen Seite.",
+   "Zwei Namen für dasselbe Gerät: Der Knopf heißt „LED 10 W“, die Statuszeile schreibt „LED-Lampe (10 W)“. Beides einmal gemeinsam mit dem Finger zeigen. Beim Fernseher heißt der Knopf noch einmal anders; er wird auf der Schülerseite nicht gebraucht, weil die Simulation dort von selbst startet.",
+   "Für DaZ-Lernende das lange Wort vorab an der Tafel zerlegen und langsam vorsprechen: Kilo — watt — stunde. Dazu die Wortfamilie: der Zähler — er zählt — der Stromzähler. Kilowattstunden ist die Form, die in die Lücke passt.",
+   "Nur die dritte Tabellenspalte ausfüllen lassen; die ersten beiden Spalten sind vorgegeben und werden gemeinsam gelesen, bevor die Simulation geöffnet wird.",
+   "Die Beispielzeile der Tabelle (Fernseher) gemeinsam laut lesen und im gelösten Beispiel die Stelle „Im Jahr: 32,85 €“ mit dem Finger zeigen. Diese Zeile steht schon da, ohne dass ein Knopf gedrückt wurde.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen — mit Komma, zwei Nachkommastellen und Eurozeichen.",
+   "Auf der ganzen Seite wird genau EINMAL gerechnet: 2 · 0,30 €. Wer damit Mühe hat, schreibt es als Plusaufgabe 0,30 € + 0,30 €. Ansage: erst rechnen, dann am Bildschirm prüfen — die Wortbank dient danach nur der Schreibweise. Alle anderen Zahlen werden abgelesen, nie ausgerechnet.",
+   "Das Zeichen · vor dem Merksatz einmal an der Tafel zeigen und laut „mal“ sprechen. Für A2 und DaZ ist es nicht selbsterklärend, und es steht an zwei tragenden Stellen: in der zweiten Merksatz-Lücke und in der einzigen Rechnung der Seite.",
+   "Die W-Zahl auf den Knöpfen ist nichts Neues: In fv9 stand der Verlust der Leitung in Watt (W). Einmal daran erinnern und weitergehen — die Seite führt Watt nicht ein zweites Mal ein und verlangt an keiner Stelle, die Zahl zu erklären. Gebraucht wird nur, dass 2000 W mehr ist als 10 W."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Kühlschrank 150 W“ und danach „3 h“. Am Bildschirm steht: „Kühlschrank (150 W) · 3 h/Tag → 0,45 kWh/Tag = 0,13 €/Tag. Im Jahr: 49,27 €.“ Vergleiche mit dem Wasserkocher bei 1 h (219,00 €): Der Kühlschrank läuft dreimal so lange und kostet trotzdem viel weniger. Danach die letzte Prüffrage der Simulation beantworten — die richtige Antwort heißt dort „Ein 2000-W-Wasserkocher (1 h/Tag)“, die Rückmeldung lautet „✓ Richtig! Hohe Leistung → viel Energie → mehr Kosten.“ Bewusst NICHT auf der Schülerseite: die Knöpfe „8 h“ und „24 h“. Sie liefern 1752,00 € und 5256,00 € — vierstellige Beträge, die die Simulation ohne Tausenderpunkt setzt und die für A2-B1 kaum vorlesbar und beim Abschreiben fehleranfällig sind. Wer sie trotzdem ausprobiert, liest sie nur vor und trägt sie nicht ein.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Energie, Leistung und Kosten elektrischer Geräte; der Stromzähler und die Kilowattstunde. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ankreuzen der Vermutung trägt E3, das Einstellen der vier Bildschirmzustände E4, das EINTRAGEN DER DREI MESSWERTE IN DIE TABELLE trägt K3 (Zeile 1 ist vorgefüllt; dort wird kein Knopf gedrückt) („Untersuchungen dokumentieren“) — so ist es für den ganzen Band am 05.09.2026 entschieden worden, weil die bisherigen K3-Träger einen Zuhause-Auftrag „Erkläre jemandem …“ trugen und das Präsentieren ist, nicht Dokumentieren. Der Vergleich der vier Jahreszahlen trägt UF3, die einzige Rechnung UF4, und die Beurteilung der Kundenaussage in Aufgabe 3 trägt B2. Der Zuhause-Auftrag (Typenschild suchen und die W-Zahl aufschreiben) ist reines Ablesen und trägt K2 wie im Ausgangsheft ev14; er trägt hier ausdrücklich NICHT K3. — Fachwortzählung: neu sind GENAU ZWEI Wörter. (1) „Energie in Kilowattstunden (kWh)“ — die Größe Energie selbst ist Rückverweis auf Förderband 9; neu und in dieser Einheit tragend ist die Einheit Kilowattstunde. Sie steht im Alltagsteil mit Begriffssatz („Der Stromzähler zählt die Energie in Kilowattstunden (kWh)“), in der Wortbank und in der ersten Merksatz-Lücke. (2) „Strompreis in Euro pro Kilowattstunde (€/kWh)“ — im Alltagsteil mit Begriffssatz und Zahl eingeführt („Am Tresen steht der Strompreis: 1 kWh kostet 0,30 €“ — der Satz nennt jetzt den Ort; „steht daneben“ hatte auf der Seite keinen Bezugspunkt, und „Preiszettel“ stand nur im Ausgangsheft ev14); das Wort „Preis“ steht in der Wortbank und in der zweiten Merksatz-Lücke und ist deshalb nach Zählregel 5 NICHT als freies Alltagswort zu behandeln, sondern zu zählen. Der Wert 0,30 € steht wörtlich im Hinweistext der Simulation. — Die Einheit Watt (W) ist hier KEIN drittes Fachwort, sondern ein Rückverweis. Eingeführt hat sie fv9 als „Verlust in Watt (W)“, mit Begriffssatz im Alltagsteil („In jedem Draht wird Energie zu Wärme. Den Verlust zeigt der Bildschirm in Watt (W).“). Nach Zählregel 4 darf fv13 sie kein zweites Mal einführen — genau das tat die erste Fassung: Im gelösten Beispiel stand „Die Zahl 100 W sagt, wie stark das Gerät ist“ und gab derselben Einheit einen zweiten, inhaltlich anderen Begriffssatz (Gerätestärke statt Leitungsverlust). Der Satz ist gestrichen; das Beispiel zeigt jetzt nur noch, wie Zeile 1 abgelesen wird. Zählregel 2 trägt an dieser Stelle nicht — sie gilt für GERÄTENAMEN (Voltmeter, Lichtschranke), nicht für Einheiten, und sie verlangt den Begriffssatz im Alltagsteil, nicht im Beispiel. Watt erscheint auf der Schülerseite nur noch in zitierten Knopf- und Gerätenamen („LED 10 W“, „Wasserkocher 2000 W“, „Fernseher 100 W“), in der zitierten Antwortmöglichkeit „In Watt (W)“ und im Merksatzschluss „nicht in Watt“ — überall als Rückverweis, nirgends mit Begriffssatz, nicht in der Wortbank, nicht in einer Lücke. Der mündliche Verweis auf fv9 steht als letzter Punkt bei „schwache“. Genauso behandelt: Stromstärke in Ampere (A) aus Förderband 8, die in der Antwortmöglichkeit „In Ampere (A)“ vorkommt und in keiner Lücke steht. — Die GRÖSSE „Leistung P in Watt (W)“ wird im ganzen Band 10 nirgends eingeführt. Die frühere [PRÜFEN]-Marke ist damit aufgelöst, und zwar negativ: fv9 schiebt die Größe ausdrücklich auf fv12 und fv13, fv10 vermeidet sie bewusst, fv12 führt überhaupt kein neues Fachwort mehr, fv13 braucht sie nicht. Das ist kein Loch, sondern die Entscheidung: Diese Doppelseite kommt mit der Zahl auf dem Knopf und der Einheit aus fv9 aus, und der Strompreis bleibt deshalb das zweite Fachwort. Das Wort „Leistung“ steht auf der Schülerseite an keiner Stelle — nicht im Lernziel, nicht in einer Tabellenspalte, nicht im Merksatz, nicht in der Wortbank, nicht in einer Aufgabe — und auch die Ersatzkarte für den Weg ohne Simulation umgeht es. OFFEN IN fv9: Dort steht noch der Satz, fv12 und fv13 „brauchen“ die Größe Leistung P. Er ist nach dieser Entscheidung dort zu berichtigen; fv13 verweist auf fv9 als Träger der Einheit W. Bewusst vermieden, weil sie das dritte bis sechste Wort wären: Verbrauch, Grundpreis, Arbeitspreis, Jahresverbrauch, Standby. — Rechenhürde (Vorgabe des Seitenplans): Für A2-B1 wird nur EINE Multiplikation verlangt, und zwar 2 · 0,30 € = 0,60 € — einstellig mal glatt, und das Ergebnis steht als „0,60 €/Tag“ wörtlich in derselben Statuszeile, ist also selbst prüfbar. „0,60 €“ steht zusätzlich in der Wortbank, und das bleibt so: Der Rendervertrag verlangt jedes Lückenwort der Aufgabe 2 in der Wortbank (pruefe_profil.py prüft beides — Wortbank 4 bis 7 Einträge und jedes Lückenwort darin), und Füllwörter zum Auffüllen sind nach dem Profil verboten. Das Rechnen sichert deshalb nicht die Wortbank, sondern die Ansage: erst 0,30 € + 0,30 € rechnen, dann am Bildschirm prüfen, die Wortbank zuletzt nur für die Schreibweise (steht so im Rechenhinweis bei „schwache“). Alles andere wird ABGELESEN. Was die Simulation an zwei- und dreistelligen Rechnungen anzeigt (2000 W · 3 h → 6 kWh/Tag, 6 · 0,30 € = 1,80 €/Tag, 1,80 € · 365), wird nirgends nachgerechnet und darf auch mündlich nicht verlangt werden; die Umrechnung von Watt in Kilowatt kommt auf der Seite gar nicht vor. Aus dem Regelheft sind deshalb ersatzlos gestrichen: die dreistufige Rechnung mit dem Ergebnis 54,00 € (steht nirgends am Bildschirm), der Satz „rund zweihundertmal so hoch“ (verlangt still das Verhältnis 657,00 : 3,28) und die Richtig-Falsch-Aussage über eine Verdopplung von 1 h auf 2 h — einen Knopf „2 h“ gibt es nicht, das wäre ein Heft-gegen-Sim-Verstoß. Der Zwei-Größen-Vergleich (Wasserkocher bei 1 h gegen Kühlschrank bei 3 h) ist aus dem Hauptteil herausgenommen und steht als freiwillige Zusatzaufgabe im Lehrerteil; die Tabelle verändert immer nur EINE Größe. — Datenlage und Fallen: (1) Alle vier Tabellenwerte sind im Faktendump belegt: Ausgangszustand „Fernseher (100 W) · 3 h/Tag → 0,3 kWh/Tag = 0,09 €/Tag. Im Jahr: 32,85 €.“, „LED-Lampe (10 W) · 3 h/Tag … Im Jahr: 3,28 €.“, „Wasserkocher (2000 W) · 3 h/Tag … Im Jahr: 657,00 €.“ und „Wasserkocher (2000 W) · 1 h/Tag → 2 kWh/Tag = 0,60 €/Tag. Im Jahr: 219,00 €.“ (2) Der Dump betätigt jedes Bedienelement nur EINMAL: Fotografiert sind LED, Fernseher und Kühlschrank ausschließlich bei 3 h/Tag und die Stundenknöpfe ausschließlich mit dem Wasserkocher. Für „LED bei 1 h“ oder „Fernseher bei 8 h“ gibt es keinen gemessenen Wert; die Seite verlangt deshalb ausschließlich die belegten Kombinationen, und die Arbeitsschritte schreiben die Reihenfolge fest (erst Gerät, dann Stunden) mit dem ausdrücklichen Zusatz „Der Wasserkocher bleibt gewählt“. Ob ein neu gewähltes Gerät nach „24 h“ auf 24 h stehen bleibt, ist nicht belegt — die Seite fordert nach einer Stundenänderung keinen Gerätewechsel mehr. (3) Die Statuszeile trägt fünf Zahlen (Watt, Stunden am Tag, Kilowattstunden am Tag, Euro am Tag, Euro im Jahr); gefragt ist nur die letzte. Die Stundenzahl steht zwischen Gerätename und Pfeil und taucht in Spalte 2 der Tabelle noch einmal auf, wird dort aber vorgegeben. Die Tabellenspalte heißt deshalb wörtlich „Was kostet es im Jahr?“ und nicht „Kosten“ — sonst wird 0,09 € eingetragen. Derselbe Grund steht hinter Arbeitsschritt 1 und Hilfe 1, die beide die Stelle „Im Jahr:“ ausdrücklich nennen. (4) 8 h und 24 h sind gemessen (1752,00 € und 5256,00 €), stehen aber bewusst nicht auf der Seite: Die Simulation setzt vierstellige Beträge ohne Tausenderpunkt, was für A2-B1 kaum vorlesbar ist. Höchster Wert auf der Schülerseite ist 657,00 €. (5) Zwei Namen für dieselbe Sache am selben Bildschirm: Der Knopf heißt „LED 10 W“, die Statuszeile „LED-Lampe (10 W)“; der Fernseherknopf trägt sogar ein drittes Wort. Die Tabelle benutzt für die Zeilen, die gedrückt werden, die KNOPFNAMEN („LED 10 W“, „Wasserkocher 2000 W“) und für die vorgefüllte Beispielzeile eine gekürzte Statuszeile: Der Bildschirm schreibt „Fernseher (100 W)“, die Tabellenzelle „Fernseher 100 W“ ohne Klammern, damit alle vier Zeilen gleich gebaut sind. Gedrückt wird dort kein Knopf, weil die Simulation genau in diesem Zustand startet. Der Fernseherknopf wird deshalb auf der Schülerseite nirgends zitiert. Ein Hinweis dazu steht bei „schwache“. (6) Zeichen-Bruch: Die Simulation schreibt in der Formel „·“; auf der Seite steht dasselbe Zeichen im Merksatz und in Aufgabe 2. Es wird einmal ausdrücklich als „mal“ gesprochen; der Auftrag dazu steht als vorletzter Punkt bei „schwache“. Der Pfeil „→“ der Statuszeile ist in der Satzschrift vorhanden und wird im gelösten Beispiel wörtlich mitzitiert. (7) Undruckbare Zeichen: Die Überschrift der Simulation trägt ein Geldschein-Zeichen, der Bildtext über dem Zähler ein Blitzzeichen (U+26A1), der Rücksetzknopf besteht NUR aus einem Pfeilzeichen (U+21BA) ohne Wort, und vier weitere Knöpfe (drei zur eigenen Einschätzung, einer zum Protokoll) tragen Emoji. SourceSans3 hat für keines dieser Zeichen eine Glyphe — gemessen an der Schriftdatei, nicht vermutet. Sie werden deshalb nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Der Rücksetzknopf lässt sich damit im Heft überhaupt nicht benennen; „schwache“ beschreibt stattdessen den Weg ohne ihn. Unbedenklich und geprüft vorhanden sind „€“, „·“, „→“, „✓“ und „✗“. (8) Aufgabe 1 ist die erste Prüffrage der Simulation im Wortlaut ihrer drei Antwortknöpfe. Das ist Absicht: Die Kernverwechslung Watt gegen Kilowattstunde — beide Wörter enthalten „Watt“ — entscheidet der Bildschirm selbst, und die Lernenden korrigieren sich daran ohne Lehrkraft. Die Rückmeldung „✗ Watt ist die Leistung, nicht die Energie.“ kommt vom Bildschirm; das Wort „Leistung“ steht deshalb nicht im Heft, und die Seite verlangt an keiner Stelle, es zu benutzen. (9) Bewusst offen gelassen und deshalb nicht verlangt: Die zweite und dritte Prüffrage der Simulation („Wie berechnet man die Kosten?“ und der Vergleich LED gegen Wasserkocher) werden auf der Schülerseite nicht abgefragt — die zweite steht als Sache im Merksatz, die dritte als Sache in Aufgabe 3; beide erscheinen im Lehrerteil als Ergebniskarte und als freiwillige Zusatzaufgabe. Ebenfalls offen: was das Protokoll der Simulation sammelt und ob die Prüffragen einzeln oder nacheinander erscheinen; im Faktendump stehen die Rückmeldungen der drei Blöcke nach einem Durchlauf gleichzeitig da. Die Seite fordert keinen Zustand, der von dieser Reihenfolge abhängt. (10) Reihenfolge im Band: fv12 hat den Wirkungsgrad behandelt, fv13 schließt das Kapitel mit der Rechnung ab, die beim Kunden ankommt. Der Bogen zum Kapitelanfang (Jannis' Praktikum bei den Stadtwerken) wird im Alltagsteil geschlossen, ohne dass eine frühere Größe neu eingeführt wird."
+ }
+}

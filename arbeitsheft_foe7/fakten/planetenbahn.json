@@ -1,0 +1,248 @@
+[
+ {
+  "sim": "planetenbahn",
+  "ueberschrift": "🪐 Warum fallen die Planeten nicht in die Sonne?",
+  "regler": [
+   {
+    "id": "pbnV",
+    "beschriftung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s",
+    "bereich": {
+     "min": "6",
+     "max": "54",
+     "step": "1",
+     "start": "6"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "➊ ganz klein",
+    "ruft": "_pbnWahl(6)"
+   },
+   {
+    "aufschrift": "➋ mittlerer Wert",
+    "ruft": "_pbnWahl(30)"
+   },
+   {
+    "aufschrift": "➌ etwas darüber",
+    "ruft": "_pbnWahl(36)"
+   },
+   {
+    "aufschrift": "➍ Gegenprobe groß",
+    "ruft": "_pbnWahl(50)"
+   },
+   {
+    "aufschrift": "↺ neu starten",
+    "ruft": "_pbnStart()"
+   },
+   {
+    "aufschrift": "🕐 Zeitraffer ×1",
+    "ruft": "_pbnRaffer()"
+   },
+   {
+    "aufschrift": "👁 Vergleichsspur an",
+    "ruft": "_pbnGeist()"
+   }
+  ],
+  "hinweise": [
+   "Der Planet startet immer neben der Sonne, im gleichen Abstand wie die Erde (1 AE). Sein Anschub geht quer zur Sonne – der grüne Pfeil zeigt ihn. Vergrößere die Startgeschwindigkeit Schritt für Schritt und sieh zu, was aus der Bahn wird.",
+   "Die Sonne zieht den Planeten die ganze Zeit zu sich – sie hört keinen Moment damit auf. Weil er zugleich seitwärts unterwegs ist, fällt er immerzu an ihr vorbei statt auf sie. Dieses ewige Vorbeifallen ist die Umlaufbahn.",
+   "Ist der Anschub zu klein, reicht das Vorbeifallen nicht – der Planet trifft die Sonne. Ist er sehr groß, zieht die Sonne zwar weiter an ihm, holt ihn aber nicht mehr zurück. Die Anziehung wird mit dem Abstand rasch schwächer: bei doppeltem Abstand nur noch ein Viertel so stark.",
+   "Sonne und Planet sind viel größer gezeichnet, als sie im Maßstab wären – sonst wären beide nur Pünktchen. Der Balken unten links zeigt, wie lang 1 AE gerade im Bild ist.",
+   "ganz klein → stürzt hinein | 29,8 km/s → fast ein Kreis | etwas mehr → lang gezogene Ellipse | ab 42,1 km/s → weg für immer"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 6 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "➊ ganz klein",
+    "text": "pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 6 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "➋ mittlerer Wert",
+    "text": "pbnStatus: Bahnform: fast ein Kreis | Anschub quer zur Sonne: 30 km/s | kleinster Abstand: 1,00 AE · größter: 1,03 AE | ein Umlauf dauert 1,02 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "➌ etwas darüber",
+    "text": "pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 36 km/s | kleinster Abstand: 1,00 AE · größter: 2,71 AE | ein Umlauf dauert 2,53 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "➍ Gegenprobe groß",
+    "text": "pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 50 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "↺ neu starten",
+    "text": "pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 50 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "🕐 Zeitraffer ×1",
+    "text": "pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 50 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "👁 Vergleichsspur an",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 50 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 6",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 6 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 12",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 12 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 18",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 18 km/s | kleinster Abstand: 0,22 AE · größter: 1,00 AE | ein Umlauf dauert 0,48 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 24",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 24 km/s | kleinster Abstand: 0,48 AE · größter: 1,00 AE | ein Umlauf dauert 0,64 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 30",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: fast ein Kreis | Anschub quer zur Sonne: 30 km/s | kleinster Abstand: 1,00 AE · größter: 1,03 AE | ein Umlauf dauert 1,02 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 36",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 36 km/s | kleinster Abstand: 1,00 AE · größter: 2,71 AE | ein Umlauf dauert 2,53 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 42",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 42 km/s | kleinster Abstand: 1,00 AE · größter: 171 AE | ein Umlauf dauert 800 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 48",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 48 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 54",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 54 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 8",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 8 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 10",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 10 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 14",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 14 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 16",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 16 km/s | kleinster Abstand: 0,17 AE · größter: 1,00 AE | ein Umlauf dauert 0,45 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 20",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 20 km/s | kleinster Abstand: 0,29 AE · größter: 1,00 AE | ein Umlauf dauert 0,52 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 22",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 22 km/s | kleinster Abstand: 0,38 AE · größter: 1,00 AE | ein Umlauf dauert 0,57 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 26",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: Ellipse | Anschub quer zur Sonne: 26 km/s | kleinster Abstand: 0,62 AE · größter: 1,00 AE | ein Umlauf dauert 0,73 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 28",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: fast ein Kreis | Anschub quer zur Sonne: 28 km/s | kleinster Abstand: 0,79 AE · größter: 1,00 AE | ein Umlauf dauert 0,85 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 32",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: Ellipse | Anschub quer zur Sonne: 32 km/s | kleinster Abstand: 1,00 AE · größter: 1,36 AE | ein Umlauf dauert 1,29 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 34",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: Ellipse | Anschub quer zur Sonne: 34 km/s | kleinster Abstand: 1,00 AE · größter: 1,87 AE | ein Umlauf dauert 1,72 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 38",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 38 km/s | kleinster Abstand: 1,00 AE · größter: 4,37 AE | ein Umlauf dauert 4,40 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 40",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 40 km/s | kleinster Abstand: 1,00 AE · größter: 9,18 AE | ein Umlauf dauert 11,48 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 44",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 44 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 46",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 46 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 50",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 50 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 52",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 52 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 15",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: stürzt in die Sonne | Anschub quer zur Sonne: 15 km/s | Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie. | Er kommt nicht wieder heraus. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 25",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: Ellipse | Anschub quer zur Sonne: 25 km/s | kleinster Abstand: 0,54 AE · größter: 1,00 AE | ein Umlauf dauert 0,68 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 35",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: lang gezogene Ellipse | Anschub quer zur Sonne: 35 km/s | kleinster Abstand: 1,00 AE · größter: 2,23 AE | ein Umlauf dauert 2,05 Jahre | Er kommt zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   },
+   {
+    "einstellung": "Vergleichsspur an Startgeschwindigkeit quer zur Sonne: 6 km/s = 45",
+    "text": "pbnGeistBtn: 👁 Vergleichsspur aus  ||  pbnStatus: Bahnform: entkommt | Anschub quer zur Sonne: 45 km/s | kleinster Abstand: 1,00 AE (das ist der Start) | größter Abstand: keiner – er wird immer weiter | Er kommt nicht zurück. | Für einen Kreis braucht er 29,8 km/s · ab 42,1 km/s entkommt er."
+   }
+  ],
+  "bildtexte": [
+   "1 AE",
+   "Anschub quer zur Sonne: 6 km/s",
+   "Bahn: stürzt in die Sonne",
+   "Abstand zur Sonne 1,00 AE",
+   "Anschub quer zur Sonne: 30 km/s",
+   "Bahn: fast ein Kreis",
+   "Anschub quer zur Sonne: 36 km/s",
+   "Bahn: lang gezogene Ellipse",
+   "Anschub quer zur Sonne: 50 km/s",
+   "Bahn: entkommt",
+   "Abstand zur Sonne 1,01 AE",
+   "Abstand zur Sonne 1,02 AE",
+   "Abstand zur Sonne 1,04 AE",
+   "Abstand zur Sonne 1,06 AE",
+   "Abstand zur Sonne 0,99 AE",
+   "Anschub quer zur Sonne: 12 km/s",
+   "Anschub quer zur Sonne: 18 km/s",
+   "Anschub quer zur Sonne: 24 km/s",
+   "Anschub quer zur Sonne: 42 km/s",
+   "Anschub quer zur Sonne: 48 km/s",
+   "Anschub quer zur Sonne: 54 km/s",
+   "Anschub quer zur Sonne: 8 km/s",
+   "Anschub quer zur Sonne: 10 km/s",
+   "Anschub quer zur Sonne: 14 km/s",
+   "Anschub quer zur Sonne: 16 km/s",
+   "Anschub quer zur Sonne: 20 km/s",
+   "Anschub quer zur Sonne: 22 km/s",
+   "Anschub quer zur Sonne: 26 km/s",
+   "Bahn: Ellipse",
+   "Anschub quer zur Sonne: 28 km/s",
+   "Anschub quer zur Sonne: 32 km/s",
+   "Anschub quer zur Sonne: 34 km/s",
+   "Anschub quer zur Sonne: 38 km/s",
+   "Anschub quer zur Sonne: 40 km/s",
+   "Anschub quer zur Sonne: 44 km/s",
+   "Anschub quer zur Sonne: 46 km/s",
+   "Anschub quer zur Sonne: 52 km/s",
+   "Anschub quer zur Sonne: 15 km/s",
+   "Anschub quer zur Sonne: 25 km/s",
+   "Anschub quer zur Sonne: 35 km/s",
+   "Anschub quer zur Sonne: 45 km/s"
+  ]
+ }
+]

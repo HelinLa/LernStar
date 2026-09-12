@@ -1,0 +1,198 @@
+[
+ {
+  "sim": "v-formel",
+  "ueberschrift": "🧮 Wie berechnet man eine Geschwindigkeit? (v = s / t)",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "50 m",
+    "ruft": "_vstSetS(50)"
+   },
+   {
+    "aufschrift": "100 m",
+    "ruft": "_vstSetS(100)"
+   },
+   {
+    "aufschrift": "200 m",
+    "ruft": "_vstSetS(200)"
+   },
+   {
+    "aufschrift": "5 s",
+    "ruft": "_vstSetT(5)"
+   },
+   {
+    "aufschrift": "10 s",
+    "ruft": "_vstSetT(10)"
+   },
+   {
+    "aufschrift": "20 s",
+    "ruft": "_vstSetT(20)"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_vstReset()"
+   },
+   {
+    "aufschrift": "v = s · t",
+    "ruft": "_vstAns(0,0)"
+   },
+   {
+    "aufschrift": "v = s / t",
+    "ruft": "_vstAns(0,1)"
+   },
+   {
+    "aufschrift": "v = t / s",
+    "ruft": "_vstAns(0,2)"
+   },
+   {
+    "aufschrift": "20 m/s",
+    "ruft": "_vstAns(1,0)"
+   },
+   {
+    "aufschrift": "2 m/s",
+    "ruft": "_vstAns(1,1)"
+   },
+   {
+    "aufschrift": "2000 m/s",
+    "ruft": "_vstAns(1,2)"
+   },
+   {
+    "aufschrift": "s = v · t",
+    "ruft": "_vstAns(2,0)"
+   },
+   {
+    "aufschrift": "s = v / t",
+    "ruft": "_vstAns(2,1)"
+   },
+   {
+    "aufschrift": "s = t / v",
+    "ruft": "_vstAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_vstSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_vstSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_vstSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('vformel')"
+   }
+  ],
+  "hinweise": [
+   "Stelle Strecke s und Zeit t ein. Die Geschwindigkeit berechnet man mit v = s / t. Das Formeldreieck zeigt, wie man umstellt.",
+   "Die Geschwindigkeit ist v = s / t (Strecke geteilt durch Zeit), Einheit m/s. Aus dem Formeldreieck folgt: Strecke s = v · t und Zeit t = s / v. So kann man jede der drei Größen berechnen.",
+   "v = s / t · s = v · t · t = s / v · Einheit m/s."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)"
+   },
+   {
+    "einstellung": "50 m",
+    "text": "vstStatus: v = s / t = 50 m / 10 s = 5,0 m/s. (Das sind 18,0 km/h.)"
+   },
+   {
+    "einstellung": "100 m",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)"
+   },
+   {
+    "einstellung": "200 m",
+    "text": "vstStatus: v = s / t = 200 m / 10 s = 20,0 m/s. (Das sind 72,0 km/h.)"
+   },
+   {
+    "einstellung": "5 s",
+    "text": "vstStatus: v = s / t = 200 m / 5 s = 40,0 m/s. (Das sind 144,0 km/h.)"
+   },
+   {
+    "einstellung": "10 s",
+    "text": "vstStatus: v = s / t = 200 m / 10 s = 20,0 m/s. (Das sind 72,0 km/h.)"
+   },
+   {
+    "einstellung": "20 s",
+    "text": "vstStatus: v = s / t = 200 m / 20 s = 10,0 m/s. (Das sind 36,0 km/h.)"
+   },
+   {
+    "einstellung": "↺",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)"
+   },
+   {
+    "einstellung": "v = s · t",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ Multipliziert wird nicht."
+   },
+   {
+    "einstellung": "v = s / t",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✓ Richtig! v = s / t."
+   },
+   {
+    "einstellung": "v = t / s",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch."
+   },
+   {
+    "einstellung": "20 m/s",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✓ Richtig! v = 200 m / 10 s = 20 m/s."
+   },
+   {
+    "einstellung": "2 m/s",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ Das wäre 10 s auf 200 m falsch gerechnet."
+   },
+   {
+    "einstellung": "2000 m/s",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht."
+   },
+   {
+    "einstellung": "s = v · t",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✓ Richtig! s = v · t (aus dem Formeldreieck)."
+   },
+   {
+    "einstellung": "s = v / t",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ Geteilt wird hier nicht."
+   },
+   {
+    "einstellung": "s = t / v",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ So herum stimmt es nicht."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ So herum stimmt es nicht.  ||  vstSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ So herum stimmt es nicht.  ||  vstSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ So herum stimmt es nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "vstStatus: v = s / t = 100 m / 10 s = 10,0 m/s. (Das sind 36,0 km/h.)  ||  vstFb0: ✗ So herum ist es falsch.  ||  vstFb1: ✗ So groß ist die Geschwindigkeit nicht.  ||  vstFb2: ✗ So herum stimmt es nicht."
+   }
+  ],
+  "bildtexte": [
+   "s",
+   "v",
+   "·",
+   "t",
+   "Formeldreieck",
+   "s = 100 m",
+   "t = 10 s",
+   "v = s/t = 10,0 m/s",
+   "schneller v → schnellere Fahrt",
+   "s = 50 m",
+   "v = s/t = 5,0 m/s",
+   "s = 200 m",
+   "v = s/t = 20,0 m/s",
+   "t = 5 s",
+   "v = s/t = 40,0 m/s",
+   "t = 20 s"
+  ]
+ }
+]

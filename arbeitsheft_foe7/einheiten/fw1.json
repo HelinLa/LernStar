@@ -1,0 +1,197 @@
+{
+ "seite": {
+  "id": "fw1",
+  "quelle": "ew1",
+  "sim": "himmelskoerper",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Karton voller Sternkarten",
+  "name": "Was leuchtet am Nachthimmel?",
+  "fachwoerter_neu": [
+   "Selbstleuchter",
+   "Himmelskörper"
+  ],
+  "alltag": [
+   "Im Karton findet Jannis ein verblichenes Blatt.",
+   "Sonne, Mond und Planeten sind darauf gelb ausgemalt.",
+   "Nour fragt: Leuchtet der Mond genauso wie die Sonne?",
+   "Sonne, Mond, Sterne und Planeten heißen Himmelskörper."
+  ],
+  "frage": "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
+  "predict": [
+   "Der Mond leuchtet selbst, nur schwächer als die Sonne.",
+   "Nur Sonne und Sterne leuchten selbst. Der Mond wirft Sonnenlicht zurück."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.",
+   "Trage ein, wer selbst leuchtet.",
+   "Drücke „Sonnenlicht abdecken“ und wähle wieder alle vier.",
+   "Ergänze: Wer ist jetzt dunkel, wer strahlt weiter?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Himmelskörper",
+   "Leuchtet er selbst?",
+   "Abgedeckt: hell oder dunkel?"
+  ],
+  "tabRows": [
+   [
+    "Sonne",
+    "ja – Selbstleuchter",
+    "hell"
+   ],
+   [
+    "Stern",
+    "",
+    ""
+   ],
+   [
+    "Mond",
+    "",
+    ""
+   ],
+   [
+    "Planet",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Sonne und alle Sterne leuchten selbst. Sie sind",
+    "loesung": "Selbstleuchter",
+    "post": "."
+   },
+   {
+    "pre": "Mond und Planeten sehen wir nur, weil die Sonne sie",
+    "loesung": "beleuchtet",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Selbstleuchter",
+   "beleuchtet",
+   "dunkel",
+   "ferne",
+   "Sonnenlicht"
+  ],
+  "beispiel": {
+   "frage": "Warum sehen wir den Mond am Himmel?",
+   "antwort": "Der Mond leuchtet nicht selbst. Die Sonne beleuchtet ihn. Wir sehen nur das zurückgeworfene Sonnenlicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ist ein Stern?",
+    "optionen": [
+     "Ein beleuchteter Felsen.",
+     "Ein Planet.",
+     "Eine ferne Sonne."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ohne Sonnenlicht ist der Mond sofort",
+      "loesung": "dunkel",
+      "post": "."
+     },
+     {
+      "pre": "Sterne sind",
+      "loesung": "ferne",
+      "post": "Sonnen und leuchten selbst."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour deckt in der Simulation das Sonnenlicht ab. Warum bleibt der Stern hell, der Planet aber nicht?",
+    "satzstarter": "Der Stern leuchtet selbst, aber der Planet …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: Nach dem Abdecken bleiben nur zwei Zeilen hell.",
+   "h2": "Beginne so: Der Stern ist ein Selbstleuchter. Der Planet dagegen …",
+   "h3": "Fast fertige Antwort: Der Stern leuchtet selbst und bleibt hell. Der Planet bekommt kein Sonnenlicht mehr und wird sofort ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann zwei Selbstleuchter nennen.",
+   "Ich weiß, warum wir den Mond sehen.",
+   "Ich kann erklären, was ohne Sonnenlicht passiert."
+  ],
+  "zuhause": "Sieh am Abend zum Himmel. Suche den Mond und einen hellen Stern. Welcher von beiden leuchtet selbst?",
+  "bildauftrag": "[BILD: links die große Sonne mit eigenen Strahlen; rechts der Mond, auf den ein breites Lichtband von der Sonne fällt und als schwächeres Band weiter zur Erde läuft; große Beschriftungen „leuchtet selbst“ an der Sonne und „wird beleuchtet“ am Mond; nur dieses eine Lichtband, keine weiteren Strahlen; dunkler, ruhiger Nachthimmel als Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw1",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden Selbstleuchter (Sonne und Sterne) von beleuchteten Körpern (Mond und Planeten), die wir nur sehen, solange Sonnenlicht auf sie fällt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional: Taschenlampe und Ball als beleuchteter Körper im abgedunkelten Raum.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Sonne → leuchtet selbst (Selbstleuchter) · Stern → ferne Sonne, leuchtet selbst · Mond → leuchtet nicht selbst, die Sonne beleuchtet ihn · Planet → wird von der Sonne beleuchtet. Nach „Sonnenlicht abdecken“: Mond und Planet sofort dunkel, Sonne und Stern strahlen unverändert weiter.",
+  "merksatz": [
+   "Selbstleuchter",
+   "beleuchtet"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Stern",
+    "ja – Selbstleuchter",
+    "hell"
+   ],
+   [
+    "Mond",
+    "nein – wird beleuchtet",
+    "dunkel"
+   ],
+   [
+    "Planet",
+    "nein – wird beleuchtet",
+    "dunkel"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Sterne sind sehr weit entfernte Sonnen.",
+   "typische_fehler": [
+    "Der Stern wird als kleiner Lichtpunkt ohne eigenes Licht gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dunkel",
+    "ferne"
+   ],
+   "typische_fehler": [
+    "„aus“ statt der Wortbank-Form „dunkel“.",
+    "Die Passivform „wird beleuchtet“ wird aktiv missverstanden: „der Mond beleuchtet“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Stern leuchtet selbst, er ist ein Selbstleuchter. Der Planet leuchtet nicht selbst. Ohne Sonnenlicht ist er sofort dunkel.",
+   "alternativen": [
+    "Mit der Statuszeile begründet: Zu ihm kommt kein Licht mehr – er ist sofort dunkel und leuchtet nicht nach.",
+    "Mit der eigenen Tabelle begründet: zwei Zeilen hell, zwei dunkel."
+   ],
+   "typische_fehler": [
+    "Ein Nachleuchten des Planeten wird vermutet.",
+    "Stern und Planet werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "dunkel",
+  "schwache": [
+   "Zuerst nur Sonne und Mond vergleichen lassen, Stern und Planet danach.",
+   "Das Wort „beleuchtet“ markieren und als „bekommt Licht“ übersetzen lassen.",
+   "Vier Kärtchen mit den Himmelskörpern in zwei Gruppen sortieren lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Himmelskörper. Kompetenz UF1 wie auf der Quellseite ew1. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

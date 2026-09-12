@@ -1,0 +1,595 @@
+[
+ {
+  "sim": "gleichfoermige-bewegung",
+  "ueberschrift": "📏 Warum ist „gleich schnell“ nicht dasselbe wie „gleich weit“?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "langsam",
+    "ruft": "_glbSet('langsam')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_glbSet('mittel')"
+   },
+   {
+    "aufschrift": "schnell",
+    "ruft": "_glbSet('schnell')"
+   },
+   {
+    "aufschrift": "▶ Start",
+    "ruft": "_glbToggle()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_glbReset()"
+   },
+   {
+    "aufschrift": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten",
+    "ruft": "_glbAns(0,0)"
+   },
+   {
+    "aufschrift": "Immer schneller werden",
+    "ruft": "_glbAns(0,1)"
+   },
+   {
+    "aufschrift": "Stillstand",
+    "ruft": "_glbAns(0,2)"
+   },
+   {
+    "aufschrift": "Eine Gerade durch den Ursprung",
+    "ruft": "_glbAns(1,0)"
+   },
+   {
+    "aufschrift": "Eine gebogene Kurve",
+    "ruft": "_glbAns(1,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_glbAns(1,2)"
+   },
+   {
+    "aufschrift": "doppelter Weg",
+    "ruft": "_glbAns(2,0)"
+   },
+   {
+    "aufschrift": "gleicher Weg",
+    "ruft": "_glbAns(2,1)"
+   },
+   {
+    "aufschrift": "halber Weg",
+    "ruft": "_glbAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_glbSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_glbSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_glbSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('glbew')"
+   }
+  ],
+  "hinweise": [
+   "Der Wagen fährt mit gleichbleibendem Tempo. Jede Sekunde setzt er eine Marke. Wie groß sind die Abstände – und wie sieht das s-t-Diagramm aus?",
+   "Bei einer gleichförmigen Bewegung ist die Geschwindigkeit konstant: In gleichen Zeiten werden gleiche Wege zurückgelegt (die Sekundenmarken haben gleiche Abstände). Im s-t-Diagramm ergibt sich eine Gerade durch den Ursprung – der Weg ist proportional zur Zeit.",
+   "Gleich schnell heißt: gleiche Wege pro Sekunde – der Wagen kommt aber trotzdem immer weiter."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "langsam",
+    "text": "glbStatus: Tempo v = 6 m/s (konstant). In jeder Sekunde 6 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "langsam · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 6 m/s (konstant). In jeder Sekunde 6 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "langsam · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 6 m/s (konstant). In jeder Sekunde 6 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "langsam · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 6 m/s (konstant). In jeder Sekunde 6 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "langsam · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 6 m/s (konstant). In jeder Sekunde 6 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "mittel",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "mittel · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "mittel · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "mittel · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "mittel · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 10 m/s (konstant). In jeder Sekunde 10 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "schnell",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "schnell · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "schnell · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "schnell · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "schnell · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "▶ Start",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,4 s, s = 6 m."
+   },
+   {
+    "einstellung": "▶ Start · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,8 s, s = 12 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|60.80,203.04 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "▶ Start · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 1,2 s, s = 18 m.",
+    "bild": "stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|69.20,196.56 | stroke| | set:fillStyle=#f59e0b | beginPath| | arc|65.00,199.80,3.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "▶ Start · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 1,6 s, s = 24 m.",
+    "bild": "stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|77.60,190.08 | stroke| | set:fillStyle=#f59e0b | beginPath| | arc|65.00,199.80,3.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "▶ Start · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 2,0 s, s = 30 m.",
+    "bild": "beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|86.00,183.60 | stroke| | set:fillStyle=#f59e0b | beginPath| | arc|65.00,199.80,3.50,0.00,6.28 | fill| | beginPath| | arc|86.00,183.60,3.50,0.00,6.28 | fill| | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✓ Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich."
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✓ Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✓ Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✓ Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✓ Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Immer schneller werden",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Das wäre eine beschleunigte Bewegung."
+   },
+   {
+    "einstellung": "Immer schneller werden · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Das wäre eine beschleunigte Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Immer schneller werden · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Das wäre eine beschleunigte Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Immer schneller werden · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Das wäre eine beschleunigte Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Immer schneller werden · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Das wäre eine beschleunigte Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Stillstand",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht."
+   },
+   {
+    "einstellung": "Stillstand · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✓ Richtig! Weg proportional zur Zeit → Ursprungsgerade."
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✓ Richtig! Weg proportional zur Zeit → Ursprungsgerade.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✓ Richtig! Weg proportional zur Zeit → Ursprungsgerade.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✓ Richtig! Weg proportional zur Zeit → Ursprungsgerade.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine Gerade durch den Ursprung · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✓ Richtig! Weg proportional zur Zeit → Ursprungsgerade.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Eine Kurve gehört zur beschleunigten Bewegung."
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Eine Kurve gehört zur beschleunigten Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Eine Kurve gehört zur beschleunigten Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Eine Kurve gehört zur beschleunigten Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine gebogene Kurve · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Eine Kurve gehört zur beschleunigten Bewegung.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "Eine waagerechte Linie · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "doppelter Weg",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✓ Richtig! s ist proportional zu t."
+   },
+   {
+    "einstellung": "doppelter Weg · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✓ Richtig! s ist proportional zu t.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "doppelter Weg · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✓ Richtig! s ist proportional zu t.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "doppelter Weg · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✓ Richtig! s ist proportional zu t.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "doppelter Weg · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✓ Richtig! s ist proportional zu t.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "gleicher Weg",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, der Weg wächst mit der Zeit."
+   },
+   {
+    "einstellung": "gleicher Weg · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, der Weg wächst mit der Zeit.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "gleicher Weg · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, der Weg wächst mit der Zeit.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "gleicher Weg · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, der Weg wächst mit der Zeit.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "gleicher Weg · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, der Weg wächst mit der Zeit.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "halber Weg",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg."
+   },
+   {
+    "einstellung": "halber Weg · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "halber Weg · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "halber Weg · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "halber Weg · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.  ||  glbSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "glbStatus: Tempo v = 15 m/s (konstant). In jeder Sekunde 15 m → alle Marken gleich weit. Aktuell: t = 0,0 s, s = 0 m.  ||  glbFb0: ✗ Bei Stillstand ändert sich der Weg gar nicht.  ||  glbFb1: ✗ Waagerecht wäre Stillstand.  ||  glbFb2: ✗ Nein, mehr Zeit bedeutet mehr Weg.",
+    "bild": "beginPath| | moveTo|296.00,108.00 | lineTo|296.00,216.00 | stroke| | fillText|12|296.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|359.00,108.00 | lineTo|359.00,216.00 | stroke| | fillText|15|359.00|228.00 | set:strokeStyle=rgba(100,116,139,0.2) | beginPath| | moveTo|422.00,108.00 | lineTo|422.00,216.00 | stroke| | fillText|18|422.00|228.00 | set:textAlign=right | fillText|0|40.00|219.00 | fillText|50|40.00|165.00 | fillText|100|40.00|111.00 | set:fillStyle=#cbd5e1 | set:textAlign=center | fillText|t in s|233.00|230.00 | save| | translate|12.00,162.00 | rotate|-1.57 | fillText|s in m|0.00|0.00 | restore| | set:strokeStyle=#2563eb | set:lineWidth=2.5 | beginPath| | moveTo|44.00,216.00 | lineTo|44.00,216.00 | stroke| | set:fillStyle=#f59e0b | set:fillStyle=#2563eb | set:font=700 10px sans-serif | set:textAlign=left | fillText|s-t-Diagramm: Gerade|50.00|120.00"
+   }
+  ],
+  "bildtexte": [
+   "🚗",
+   "v = 10 m/s",
+   "⏱ 0,0 s   📏 0 m",
+   "0",
+   "3",
+   "6",
+   "9",
+   "12",
+   "15",
+   "18",
+   "50",
+   "100",
+   "t in s",
+   "s in m",
+   "s-t-Diagramm: Gerade",
+   "v = 6 m/s",
+   "v = 15 m/s",
+   "⏱ 0,0 s   📏 1 m",
+   "⏱ 0,1 s   📏 1 m",
+   "⏱ 0,1 s   📏 2 m",
+   "⏱ 0,2 s   📏 2 m",
+   "⏱ 0,2 s   📏 3 m",
+   "⏱ 0,2 s   📏 4 m",
+   "⏱ 0,3 s   📏 4 m",
+   "⏱ 0,3 s   📏 5 m",
+   "⏱ 0,4 s   📏 5 m",
+   "⏱ 0,4 s   📏 6 m",
+   "⏱ 0,4 s   📏 7 m",
+   "⏱ 0,5 s   📏 7 m",
+   "⏱ 0,5 s   📏 8 m",
+   "⏱ 0,6 s   📏 8 m",
+   "⏱ 0,6 s   📏 9 m",
+   "⏱ 0,6 s   📏 10 m",
+   "⏱ 0,7 s   📏 10 m",
+   "⏱ 0,7 s   📏 11 m",
+   "⏱ 0,8 s   📏 11 m",
+   "⏱ 0,8 s   📏 12 m",
+   "⏱ 0,8 s   📏 13 m",
+   "⏱ 0,9 s   📏 13 m",
+   "⏱ 0,9 s   📏 14 m",
+   "⏱ 1,0 s   📏 14 m",
+   "⏱ 1,0 s   📏 15 m",
+   "1s",
+   "⏱ 1,0 s   📏 16 m",
+   "⏱ 1,1 s   📏 16 m",
+   "⏱ 1,1 s   📏 17 m",
+   "⏱ 1,2 s   📏 17 m",
+   "⏱ 1,2 s   📏 18 m",
+   "⏱ 1,2 s   📏 19 m",
+   "⏱ 1,3 s   📏 19 m",
+   "⏱ 1,3 s   📏 20 m",
+   "⏱ 1,4 s   📏 20 m",
+   "⏱ 1,4 s   📏 21 m",
+   "⏱ 1,4 s   📏 22 m",
+   "⏱ 1,5 s   📏 22 m",
+   "⏱ 1,5 s   📏 23 m",
+   "⏱ 1,6 s   📏 23 m",
+   "⏱ 1,6 s   📏 24 m",
+   "⏱ 1,6 s   📏 25 m",
+   "⏱ 1,7 s   📏 25 m",
+   "⏱ 1,7 s   📏 26 m",
+   "⏱ 1,8 s   📏 26 m",
+   "⏱ 1,8 s   📏 27 m",
+   "⏱ 1,8 s   📏 28 m",
+   "⏱ 1,9 s   📏 28 m",
+   "⏱ 1,9 s   📏 29 m",
+   "⏱ 2,0 s   📏 29 m",
+   "⏱ 2,0 s   📏 30 m",
+   "2s"
+  ]
+ }
+]

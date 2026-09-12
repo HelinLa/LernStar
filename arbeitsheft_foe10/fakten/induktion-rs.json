@@ -1,0 +1,284 @@
+[
+ {
+  "sim": "induktion-rs",
+  "ueberschrift": "🧲 Kann ein bewegter Magnet Strom erzeugen – ohne Batterie?",
+  "regler": [
+   {
+    "id": "indV",
+    "beschriftung": "Tempo des Magneten: 50 cm/s",
+    "bereich": {
+     "min": "5",
+     "max": "100",
+     "step": "5",
+     "start": "50"
+    }
+   },
+   {
+    "id": "indN",
+    "beschriftung": "Windungen der Spule: 600",
+    "bereich": {
+     "min": "100",
+     "max": "1200",
+     "step": "100",
+     "start": "600"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "schwach",
+    "ruft": "_indSetMag('schwach')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_indSetMag('mittel')"
+   },
+   {
+    "aufschrift": "stark",
+    "ruft": "_indSetMag('stark')"
+   }
+  ],
+  "hinweise": [
+   "Im Aufbau steckt keine Stromquelle: nur ein Magnet, eine Spule, ein Messgerät. Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen. Sieh genau hin, wann das Gerät ausschlägt – und wann nicht.",
+   "Woher kommt die Energie? Nicht aus dem Magneten – der wird nicht schwächer. Sie kommt aus der Hand, die schiebt. Wer den Magneten schneller bewegt, muss auch kräftiger drücken. Genau davon lebt jedes Kraftwerk: Eine Turbine dreht Magnete an Spulen vorbei, und die Energie dafür liefert Dampf, Wasser oder Wind.",
+   "Modellgrenze: Hier ist die Spannung während der ganzen Fahrt gleich groß. In Wirklichkeit steigt sie an, wenn der Pol in die Spule eintritt, und fällt wieder ab – der Zeiger würde zucken, nicht stehen. Auch die Formel U = N · B · A · v / d ist eine Vereinfachung: Sie tut so, als baue sich das Feld auf genau 2 cm gleichmäßig auf.",
+   "Nur die Änderung erzeugt Spannung · mehr Windungen, mehr Tempo, stärkerer Magnet – jedes für sich verdoppelt"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,300 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,05 T · 0,0004 m² · 0,50 m/s / 0,02 m | U = 0,300 V | | 600 Windungen · Magnet mittel (0,05 T) · Tempo 50 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "schwach",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,120 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,02 T · 0,0004 m² · 0,50 m/s / 0,02 m | U = 0,120 V | | 600 Windungen · Magnet schwach (0,02 T) · Tempo 50 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,300 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,05 T · 0,0004 m² · 0,50 m/s / 0,02 m | U = 0,300 V | | 600 Windungen · Magnet mittel (0,05 T) · Tempo 50 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "stark",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,600 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,50 m/s / 0,02 m | U = 0,600 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 50 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 5",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,060 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,05 m/s / 0,02 m | U = 0,060 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 5 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 15",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,180 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,15 m/s / 0,02 m | U = 0,180 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 15 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 30",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,360 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,30 m/s / 0,02 m | U = 0,360 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 30 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 40",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,480 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,40 m/s / 0,02 m | U = 0,480 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 40 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 55",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,660 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,55 m/s / 0,02 m | U = 0,660 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 55 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 65",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,780 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,65 m/s / 0,02 m | U = 0,780 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 65 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 75",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,900 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,75 m/s / 0,02 m | U = 0,900 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 75 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 90",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 1,080 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,90 m/s / 0,02 m | U = 1,080 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 90 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 100",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 1,200 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 1,00 m/s / 0,02 m | U = 1,200 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 100 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 10",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,120 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,10 m/s / 0,02 m | U = 0,120 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 10 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 20",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,240 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,20 m/s / 0,02 m | U = 0,240 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 20 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 25",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,300 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,25 m/s / 0,02 m | U = 0,300 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 25 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 35",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,420 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,35 m/s / 0,02 m | U = 0,420 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 35 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 45",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,540 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,45 m/s / 0,02 m | U = 0,540 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 45 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 50",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,600 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,50 m/s / 0,02 m | U = 0,600 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 50 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 60",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,720 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,60 m/s / 0,02 m | U = 0,720 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 60 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 70",
+    "text": "indStatus: Der Magnet wird hineingeschoben. | Messgerät: 0,840 V | | Beim Hineinschieben und beim Herausziehen zeigt das Gerät entgegengesetzte Vorzeichen – der Strom fließt jeweils andersherum. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,70 m/s / 0,02 m | U = 0,840 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 70 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 80",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,80 m/s / 0,02 m | U = 0,960 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 80 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 85",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,85 m/s / 0,02 m | U = 1,020 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 85 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Tempo des Magneten: 50 cm/s = 95",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,140 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 100",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 100 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 0,190 V | | 100 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 200",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 200 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 0,380 V | | 200 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 400",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 400 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 0,760 V | | 400 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 500",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 500 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 0,950 V | | 500 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 700",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 700 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,330 V | | 700 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 800",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 800 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,520 V | | 800 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 900",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 900 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,710 V | | 900 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 1100",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 1100 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 2,090 V | | 1100 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 1200",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 1200 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 2,280 V | | 1200 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 300",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 300 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 0,570 V | | 300 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 600",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 600 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,140 V | | 600 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   },
+   {
+    "einstellung": "Windungen der Spule: 600 = 1000",
+    "text": "indStatus: Der Magnet liegt still – mitten in der Spule. | Messgerät: 0,000 V | | Null Volt – obwohl der Magnet da ist. Er liegt nur still. Ein Magnet allein erzeugt keine Spannung; es muss sich etwas ändern. | | Wie groß ist die Spannung, solange er sich bewegt? | U = N · B · A · v / d | U = 1000 · 0,10 T · 0,0004 m² · 0,95 m/s / 0,02 m | U = 1,900 V | | 1000 Windungen · Magnet stark (0,10 T) · Tempo 95 cm/s | | Alle drei gehen einfach ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung."
+   }
+  ],
+  "bildtexte": [
+   "600 Windungen",
+   "N",
+   "S",
+   "0,300 V",
+   "Spannungsmesser",
+   "Magnet wird hineingeschoben",
+   "keine Batterie im Aufbau – nur ein Magnet, eine Spule und ein Messgerät",
+   "Spannung: 0,300 V",
+   "Tempo 50 cm/s   ·   600 Windungen   ·   Magnet mittel (0,05 T)",
+   "0,120 V",
+   "Spannung: 0,120 V",
+   "Tempo 50 cm/s   ·   600 Windungen   ·   Magnet schwach (0,02 T)",
+   "0,600 V",
+   "Spannung: 0,600 V",
+   "Tempo 50 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,060 V",
+   "Spannung: 0,060 V",
+   "Tempo 5 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,180 V",
+   "Spannung: 0,180 V",
+   "Tempo 15 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,360 V",
+   "Spannung: 0,360 V",
+   "Tempo 30 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,480 V",
+   "Spannung: 0,480 V",
+   "Tempo 40 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,660 V",
+   "Spannung: 0,660 V",
+   "Tempo 55 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,780 V",
+   "Spannung: 0,780 V",
+   "Tempo 65 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,900 V",
+   "Spannung: 0,900 V",
+   "Tempo 75 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "1,080 V",
+   "Spannung: 1,080 V",
+   "Tempo 90 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "1,200 V",
+   "Spannung: 1,200 V",
+   "Tempo 100 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "Tempo 10 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,240 V",
+   "Spannung: 0,240 V",
+   "Tempo 20 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "Tempo 25 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,420 V",
+   "Spannung: 0,420 V",
+   "Tempo 35 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,540 V",
+   "Spannung: 0,540 V",
+   "Tempo 45 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,720 V",
+   "Spannung: 0,720 V",
+   "Tempo 60 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "0,840 V",
+   "Spannung: 0,840 V",
+   "Tempo 70 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "liegt still",
+   "0,000 V",
+   "Magnet liegt still – in der Spule",
+   "Spannung: 0,000 V – der Magnet bewegt sich nicht",
+   "Tempo 80 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "Tempo 85 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "Tempo 95 cm/s   ·   600 Windungen   ·   Magnet stark (0,10 T)",
+   "100 Windungen",
+   "Tempo 95 cm/s   ·   100 Windungen   ·   Magnet stark (0,10 T)",
+   "200 Windungen",
+   "Tempo 95 cm/s   ·   200 Windungen   ·   Magnet stark (0,10 T)",
+   "400 Windungen",
+   "Tempo 95 cm/s   ·   400 Windungen   ·   Magnet stark (0,10 T)",
+   "500 Windungen",
+   "Tempo 95 cm/s   ·   500 Windungen   ·   Magnet stark (0,10 T)",
+   "700 Windungen",
+   "Tempo 95 cm/s   ·   700 Windungen   ·   Magnet stark (0,10 T)",
+   "800 Windungen",
+   "Tempo 95 cm/s   ·   800 Windungen   ·   Magnet stark (0,10 T)",
+   "900 Windungen",
+   "Tempo 95 cm/s   ·   900 Windungen   ·   Magnet stark (0,10 T)",
+   "1100 Windungen",
+   "Tempo 95 cm/s   ·   1100 Windungen   ·   Magnet stark (0,10 T)",
+   "1200 Windungen",
+   "Tempo 95 cm/s   ·   1200 Windungen   ·   Magnet stark (0,10 T)",
+   "300 Windungen",
+   "Tempo 95 cm/s   ·   300 Windungen   ·   Magnet stark (0,10 T)",
+   "1000 Windungen",
+   "Tempo 95 cm/s   ·   1000 Windungen   ·   Magnet stark (0,10 T)"
+  ]
+ }
+]

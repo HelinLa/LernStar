@@ -1,0 +1,304 @@
+[
+ {
+  "sim": "reflexionsgesetz",
+  "ueberschrift": "📐 Nach welcher Regel wird Licht am Spiegel zurückgeworfen?",
+  "regler": [
+   {
+    "id": "rfgT",
+    "beschriftung": "Strahl auf das Lot Einfallswinkel zum Lot: 40°",
+    "bereich": {
+     "min": "0",
+     "max": "80",
+     "step": "5",
+     "start": "40"
+    }
+   },
+   {
+    "id": "rfgD",
+    "beschriftung": "Spiegel drehen: 0°",
+    "bereich": {
+     "min": "-25",
+     "max": "25",
+     "step": "1",
+     "start": "0"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "↺ Spiegel zurückstellen",
+    "ruft": "_rfgSetD(0)"
+   },
+   {
+    "aufschrift": "↓ Strahl auf das Lot",
+    "ruft": "_rfgSetT(0)"
+   }
+  ],
+  "hinweise": [
+   "Stelle den Einfallswinkel ein und drehe dann den Spiegel. Achte darauf, um wie viel der Lichtfleck an der Wand weiterspringt.",
+   "Gemessen wird immer zum Lot, der Senkrechten auf der Spiegelfläche – nicht zur Fläche selbst.",
+   "Beim Drehen dreht sich das Lot mit. Deshalb schwenkt der zurückgeworfene Strahl um den doppelten Winkel.",
+   "Einfallswinkel = Reflexionswinkel | Spiegel um a gedreht → Strahl um 2a geschwenkt"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°."
+   },
+   {
+    "einstellung": "↺ Spiegel zurückstellen",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°."
+   },
+   {
+    "einstellung": "↓ Strahl auf das Lot",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 75",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 75°."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -25",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°. Spiegel um 25° gedreht → Strahl um 50° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -19",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 56°. Spiegel um 19° gedreht → Strahl um 38° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -12",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 63°. Spiegel um 12° gedreht → Strahl um 24° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -6",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 69°. Spiegel um 6° gedreht → Strahl um 12° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 0",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 75°."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 6",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 81°. Spiegel um 6° gedreht → Strahl um 12° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 13",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 88°. Spiegel um 13° gedreht → Strahl um 26° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 19",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 86°. Spiegel um 19° gedreht → Strahl um 38° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 25",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°. Spiegel um 25° gedreht → Strahl um 50° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -24",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 51°. Spiegel um 24° gedreht → Strahl um 48° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -22",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 53°. Spiegel um 22° gedreht → Strahl um 44° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -20",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°. Spiegel um 20° gedreht → Strahl um 40° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -18",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 57°. Spiegel um 18° gedreht → Strahl um 36° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -16",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 59°. Spiegel um 16° gedreht → Strahl um 32° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -14",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 61°. Spiegel um 14° gedreht → Strahl um 28° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -10",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°. Spiegel um 10° gedreht → Strahl um 20° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -8",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 67°. Spiegel um 8° gedreht → Strahl um 16° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -4",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 71°. Spiegel um 4° gedreht → Strahl um 8° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -2",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 73°. Spiegel um 2° gedreht → Strahl um 4° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 2",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 77°. Spiegel um 2° gedreht → Strahl um 4° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 4",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 79°. Spiegel um 4° gedreht → Strahl um 8° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 8",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 83°. Spiegel um 8° gedreht → Strahl um 16° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 10",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 85°. Spiegel um 10° gedreht → Strahl um 20° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 12",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 87°. Spiegel um 12° gedreht → Strahl um 24° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 14",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 89°. Spiegel um 14° gedreht → Strahl um 28° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 16",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 89°. Spiegel um 16° gedreht → Strahl um 32° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 18",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 87°. Spiegel um 18° gedreht → Strahl um 36° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 20",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 85°. Spiegel um 20° gedreht → Strahl um 40° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 22",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 83°. Spiegel um 22° gedreht → Strahl um 44° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 24",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 81°. Spiegel um 24° gedreht → Strahl um 48° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -15",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°. Spiegel um 15° gedreht → Strahl um 30° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = -5",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°. Spiegel um 5° gedreht → Strahl um 10° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 5",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°. Spiegel um 5° gedreht → Strahl um 10° geschwenkt."
+   },
+   {
+    "einstellung": "Spiegel drehen: 0° = 15",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 90°. Spiegel um 15° gedreht → Strahl um 30° geschwenkt."
+   }
+  ],
+  "bildtexte": [
+   "Lot",
+   "40°",
+   "Einfallswinkel = Reflexionswinkel",
+   "0°",
+   "10°",
+   "20°",
+   "30°",
+   "50°",
+   "60°",
+   "70°",
+   "80°",
+   "5°",
+   "15°",
+   "25°",
+   "35°",
+   "45°",
+   "55°",
+   "65°",
+   "75°",
+   "56°",
+   "63°",
+   "69°",
+   "81°",
+   "88°",
+   "86°",
+   "51°",
+   "53°",
+   "57°",
+   "59°",
+   "61°",
+   "67°",
+   "71°",
+   "73°",
+   "77°",
+   "79°",
+   "83°",
+   "85°",
+   "87°",
+   "89°",
+   "90°"
+  ]
+ }
+]

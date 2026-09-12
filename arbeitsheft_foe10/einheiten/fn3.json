@@ -1,0 +1,198 @@
+{
+ "seite": {
+  "id": "fn3",
+  "quelle": "rk3",
+  "sim": "absorption-strahlung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Die Schürze aus Blei",
+  "name": "Welche Strahlung kommt wie weit?",
+  "fachwoerter_neu": [
+   "drei Arten von Strahlung: Alphastrahlung (α), Betastrahlung (β), Gammastrahlung (γ)"
+  ],
+  "alltag": [
+   "Nour hat Praktikum in der Nuklearmedizin. Dort hängt eine Schürze aus Blei.",
+   "Im Labor nebenan reicht eine Scheibe aus Aluminium. Beides ist richtig.",
+   "Es gibt drei Arten von Strahlung: Alphastrahlung (α), Betastrahlung (β) und Gammastrahlung (γ).",
+   "Das Gerät, aus dem die Strahlung kommt, heißt Strahler."
+  ],
+  "frage": "Welches Material hält welche Strahlung auf?",
+  "predict": [
+   "Papier hält Alphastrahlung auf. Durch Blei kommt noch Gammastrahlung.",
+   "Alphastrahlung kommt am weitesten. Sie geht sogar durch Blei."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.",
+   "Drücke „γ-Strahlung“ und „Blei“. Vergleiche mit der Beispielzeile.",
+   "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Trage die Zeile ein.",
+   "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Trage die letzte Zeile ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Ergebniskarten.",
+  "tabCols": [
+   "Strahlung und Material",
+   "Wie viel kommt durch?",
+   "Was heißt das?"
+  ],
+  "tabRows": [
+   [
+    "γ-Strahlung und Blei",
+    "50,2 % kommen durch",
+    "Ungefähr die Hälfte kommt durch"
+   ],
+   [
+    "α-Strahlung und Papier",
+    "",
+    ""
+   ],
+   [
+    "β-Strahlung und Aluminium",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Papier hält Alphastrahlung auf. Aluminium hält",
+    "loesung": "Betastrahlung",
+    "post": "auf."
+   },
+   {
+    "pre": "Gammastrahlung kommt durch Blei. Sie wird dabei nur",
+    "loesung": "schwächer",
+    "post": ". Ein kleiner Rest kommt immer durch."
+   }
+  ],
+  "wortbank": [
+   "Betastrahlung",
+   "schwächer",
+   "Blei",
+   "50,2 %"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du ab, wie viel durch das Blei kommt?",
+   "antwort": "Ich drücke „γ-Strahlung“ und „Blei“. Oben rechts im Bild steht „50,2 % kommen durch“. Das schreibe ich in die Tabelle. Das ist ungefähr die Hälfte."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welches Material hält Alphastrahlung (α) auf?",
+    "optionen": [
+     "Blei",
+     "Aluminium",
+     "Papier"
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nour trägt in der Nuklearmedizin eine Schürze aus",
+      "loesung": "Blei",
+      "post": "."
+     },
+     {
+      "pre": "Hinter 6,0 mm Blei kommen noch",
+      "loesung": "50,2 %",
+      "post": "durch."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "In der Nuklearmedizin ist Gammastrahlung (γ). Warum reicht dort keine Schürze aus Papier?",
+    "satzstarter": "Papier reicht nicht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Prozentzahl steht oben rechts im Bild. Die Zahl unter der Platte ist die Dicke.",
+   "h2": "Beginne so: Papier reicht nicht, weil Gammastrahlung …",
+   "h3": "Fast fertig: Gammastrahlung geht durch Papier hindurch. Nur Blei macht sie ___."
+  },
+  "selbstcheck": [
+   "Ich kann die drei Arten von Strahlung nennen.",
+   "Ich kann sagen, welches Material welche Strahlung aufhält.",
+   "Ich weiß: Hinter Blei kommt noch ein Rest Gammastrahlung an."
+  ],
+  "zuhause": "Frage zu Hause: Wer hat schon einmal eine Schürze aus Blei getragen?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild in DREI gleich aufgebauten Bildzeilen untereinander, alle im selben Ausschnitt, gleiche Größe, gleicher Abstand. Jede Zeile zeigt denselben Weg von links nach rechts: links ein kleiner grauer Kasten mit der großen Beschriftung „Strahler“, in der Mitte eine aufrecht stehende Platte, rechts ein Kasten mit der Beschriftung „Zählrohr“. Alle drei Platten sind GLEICH breit und gleich hoch — sie unterscheiden sich nur in Farbe und Beschriftung; unter jeder Platte steht dieselbe Maßangabe „6,0 mm“ (am Bildschirm sind alle drei Platten auf denselben Wert eingestellt, das Bild darf davon nicht abweichen). Die Strahlung wird in jeder Zeile als EINE zusammenhängende, flächig gefüllte Bahn zwischen Strahler und Platte gezeichnet — eine breite, weiche Fläche in der Farbe der Zeile, NICHT als mehrere dünne parallele Striche oder Streifen und nicht als Pfeilbündel. Am linken Rand jeder Zeile steht groß, welche Strahlung gemeint ist: obere Zeile „Alphastrahlung (α)“, mittlere Zeile „Betastrahlung (β)“, untere Zeile „Gammastrahlung (γ)“. Rechts oben in jeder Zeile steht groß der abgelesene Anteil, genau wie am Bildschirm: obere Zeile „0,0 % kommen durch“, mittlere Zeile „0,0 % kommen durch“, untere Zeile „50,2 % kommen durch“. Obere Zeile: die Platte ist hellgelb wie am Bildschirm, mit dunkler Kontur, und trägt oben die Beschriftung „Papier“; die gefüllte Bahn endet sichtbar INNERHALB der Papierplatte, rechts von der Platte ist die Fläche vollständig leer und sauber, der Kasten „Zählrohr“ steht dort blass und ohne jede Bahn davor. Mittlere Zeile: die Platte ist silbergrau und trägt oben die Beschriftung „Aluminium“; die Bahn endet ebenso innerhalb dieser Platte, rechts davon bleibt es leer, das „Zählrohr“ steht blass. Untere Zeile: die Platte ist dunkelgrau und trägt oben die Beschriftung „Blei“; hier läuft die Bahn DURCH die Platte hindurch bis an den Kasten „Zählrohr“ heran, ist rechts der Platte aber deutlich blasser und nur noch halb so hoch wie links. Wichtig für die Komposition: jede gezeichnete Bahn endet an einem Gegenstand — entweder in einer Platte oder am Zählrohr; keine Bahn und kein Pfeil darf frei im Bild auslaufen oder ins Leere zeigen. Ebenso wichtig: EIN einziges durchgehendes Bild mit diesen drei Zeilen, keine kleinen Nebenbilder, keine eingesetzten Kästchen, keine Legende am Rand, kein zweites Diagramm. Keine Kurven, keine Achsen, keine Formeln, kein Warnzeichen für Radioaktivität, keine Personen, keine Zahlen außer „6,0 mm“, „0,0 % kommen durch“ und „50,2 % kommen durch“. Ruhiger heller Hintergrund, sehr große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn3",
+  "lernziel": "Die Schülerinnen und Schüler ordnen die drei Arten von Strahlung den Materialien zu, die sie aufhalten: Papier hält Alphastrahlung auf, Aluminium hält Betastrahlung auf, Blei macht Gammastrahlung nur schwächer. Abgelesen werden am Bildschirm die drei Prozentwerte: Alle drei Zustände tragen eine Prozentzahl oben rechts IM BILD (linke Fensterhälfte) — bei Alphastrahlung mit Papier und bei Betastrahlung mit Aluminium „0,0 % kommen durch“, bei Gammastrahlung mit 6,0 mm Blei „50,2 % kommen durch“, also ungefähr die Hälfte. Die Zuordnung selbst — Papier für Alpha, Aluminium für Beta — ist die Regel, die dazugehört; sie lässt sich bei 6,0 mm an diesen Zahlen NICHT auseinanderhalten, weil dort jede Platte dicker ist als die Reichweite von Alpha- und Betastrahlung. Nachgemessen: Alle sechs Alpha- und Beta-Kombinationen zeigen 0,0 %. Wer die Regel am Bildschirm zeigen will, nimmt die Faustregel-Tabelle rechts neben dem Bild (in der α-Zeile steht nur bei Papier das Wort „stoppt“, in der β-Zeile nur bei Aluminium eine Dicke „~3 mm“) — nicht die Prozentwerte. Sie halten die Sicherheitsaussage fest: Ein kleiner Rest kommt immer durch; deshalb schützt zusätzlich der Abstand (das ist das Thema von fn12). Der Alltagseinstieg vergleicht zwei Räume — sagen Sie beim Besprechen einmal ausdrücklich, wofür die Aluminiumscheibe im Labor gut ist: Dort arbeitet man mit Betastrahlung, dafür reicht Aluminium; in der Nuklearmedizin ist Gammastrahlung, dafür braucht es die Bleischürze. Sonst bleibt die halbe Vergleichsfrage offen. Fachlicher Name dieser 6,0 mm — nur für Sie, nicht auf der Schülerseite: Halbwertsdicke für Blei bei Cs-137.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Zeilen. Zum Anfassen genügen ein Blatt Papier und ein Stück Alufolie (reine Materialproben, KEIN Strahler). Das Bleistück oder Bleiband aus der Sammlung bleibt bei der Lehrkraft und wird nur herumgezeigt: Blei ist ein Gefahrstoff, es reibt ab und darf nicht in Kinderhände; wer es doch angefasst hat, wäscht sich die Hände. Aluminiumblech hat scharfe Kanten — nur entgratet verwenden, besser gleich Alufolie nehmen. Es wird in dieser Einheit kein radioaktives Präparat gebraucht und keines gezeigt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten mit dem Bildschirmtext wörtlich, dazu ein Tafelbild mit drei Zeilen. Ergebniskarte „Gamma und Blei“: „Strahler — Blei — Zählrohr. Unter der Platte steht: 6,0 mm. Oben rechts im Bild steht: 50,2 % kommen durch.“ Ergebniskarte „Alpha und Papier“: „Strahler — Papier — Zählrohr. Unter der Platte steht: 6,0 mm. Oben rechts im Bild steht: 0,0 % kommen durch.“ Ergebniskarte „Beta und Aluminium“ genauso, nur mit „Aluminium“ und ebenfalls „0,0 % kommen durch“. Alle drei Zustände sind an der laufenden Simulation nachgemessen (simcheck/werte.js, Element absDurch und die Bildbeschriftung), nicht aus dem Faktendump geraten. Tafelbild: drei Zeilen untereinander, jede von links nach rechts „Strahler — Platte — Zählrohr“. Zeile 1 Platte „Papier“, die Bahn endet in der Platte. Zeile 2 Platte „Aluminium“, die Bahn endet in der Platte. Zeile 3 Platte „Blei“, die Bahn läuft hindurch und wird rechts dünner. Unter jeder Platte steht „6,0 mm“, rechts oben in jeder Zeile der Prozentwert. Wichtig: In Zeile 1 und 2 endet die Bahn AN der Platte — daran hängt der Merksatz. Alternativ die Simulation am Beamer öffnen: Der Ausgangszustand zeigt bereits Gammastrahlung, Blei, 6,0 mm und den Prozentwert; für die beiden anderen Zeilen genügen zwei Knopfdrücke.",
+  "merksatz": [
+   "Betastrahlung",
+   "schwächer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "α-Strahlung und Papier",
+    "0,0 % kommen durch",
+    "Es kommt nichts durch. (Auch richtig: Papier hält Alphastrahlung ganz auf.)"
+   ],
+   [
+    "β-Strahlung und Aluminium",
+    "0,0 % kommen durch",
+    "Es kommt nichts durch. (Auch richtig: Aluminium hält Betastrahlung ganz auf.)"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Richtig ist „Papier“. Der Merksatz sagt es im ersten Satz: Papier hält Alphastrahlung auf. Die Aufgabe prüft die Zuordnung aus dem Merksatz und aus der eigenen Tabelle, keine Fangfrage. Nur für Sie: Aluminium und Blei halten Alphastrahlung physikalisch ebenfalls auf — die Faustregel-Tabelle am Bildschirm hakt in der α-Zeile alle drei Materialien ab. Auf der Schülerseite steht das nirgends; wer es trotzdem einwendet, hat die Tabelle am Bildschirm gelesen und liegt richtig. Antworten Sie: Papier ist das Material, das die Seite der Alphastrahlung zuordnet, weil es dafür schon genügt. Eine Frage nach dem „dünnsten“ Material wäre falsch gestellt — am Bildschirm und im gedruckten Bild sind alle drei Platten 6,0 mm dick.",
+   "typische_fehler": [
+    "„Blei“ wird angekreuzt, weil Blei auf der Seite am häufigsten vorkommt und schwer wirkt. Zurück zum Merksatz: Blei steht dort in der zweiten Zeile und gehört zur Gammastrahlung.",
+    "„Aluminium“ wird angekreuzt: Alpha und Beta werden verwechselt. Die drei Zeilen der eigenen Tabelle nebeneinander zeigen und die Reihenfolge Papier – Aluminium – Blei mitsprechen lassen.",
+    "Es wird gar nichts angekreuzt, weil das Zeichen (α) unbekannt bleibt. Immer Wort und Zeichen zusammen vorlesen: „Alphastrahlung, Zeichen alpha“."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Blei",
+    "50,2 %"
+   ],
+   "typische_fehler": [
+    "Statt „50,2 %“ wird „50 %“ geschrieben. Am Bildschirm stehen nämlich ZWEI Zahlen für dasselbe: oben rechts im Bild „50,2 % kommen durch“, im großen Textfeld daneben „50 % der Strahlung kommen durch“. Beide sind richtig, und wer „50 %“ schreibt, hat korrekt abgelesen — nur eben die andere Anzeige. Die Seite legt sich durchgehend auf die Zahl oben rechts IM BILD fest; sagen Sie das einmal ausdrücklich und lassen Sie den Bildwert nachschreiben. (Dieselbe Doppelung gibt es bei α und β: oben rechts „0,0 %“, im Textfeld „0,00 %“.)",
+    "Das Prozentzeichen fehlt („50,2“). Die Wortbank enthält es mit Zeichen; einmal abschreiben lassen.",
+    "In die erste Lücke wird „Papier“ gesetzt, obwohl das Wort gar nicht in der Wortbank steht — es steht nur im Merksatz und in Aufgabe 1. Rückfrage: Welche Strahlung ist in der Nuklearmedizin? Papier hilft dort nicht.",
+    "Statt „50,2 %“ wird „6,0 mm“ eingesetzt: Dicke und Anteil werden vertauscht. Die zwei Bildbeschriftungen nebeneinander an die Tafel schreiben und die Frage dazusagen: Wie dick? Wie viel kommt durch?"
+   ]
+  },
+  "a3": {
+   "erwartung": "Papier reicht nicht, weil Gammastrahlung durch Papier hindurchgeht. Papier hält nur Alphastrahlung auf. Gegen Gammastrahlung hilft Blei: Es macht die Strahlung schwächer. Deshalb ist die Schürze aus Blei.",
+   "alternativen": [
+    "Kurzform ohne zweiten Satz: „Papier reicht nicht, weil Gammastrahlung durch Papier geht.“ — reicht für die volle Wertung.",
+    "Über die Zeichnung begründet: „In der oberen Zeile bleibt die Strahlung im Papier stecken, in der unteren geht sie durch das Blei. Papier ist nur für Alphastrahlung gut.“",
+    "Mit dem Messwert: „Sogar durch 6,0 mm Blei kommen noch 50,2 %. Durch Papier käme noch viel mehr.“ — richtig und besonders gut beobachtet.",
+    "Ehrliche Einschränkung im Satz: „Auch Blei hält nicht alles auf, aber viel mehr als Papier.“ — richtig, das ist die Sicherheitsaussage."
+   ],
+   "typische_fehler": [
+    "„Weil Papier zu dünn ist.“ Das ist die Dickenerklärung statt der Materialerklärung. Rückfrage: Würde ein dickes Buch reichen? Nein — es kommt auf die Art der Strahlung an.",
+    "„Weil Papier kaputtgeht.“ Alltagsbild statt Physik. Auf den Merksatz zeigen: Papier hält Alphastrahlung auf, sonst nichts.",
+    "Es wird nur „weil Blei besser ist“ geschrieben, ohne die Strahlung zu nennen. Nachfragen: Welche Strahlung ist in der Nuklearmedizin?",
+    "„Weil Blei alles aufhält.“ Diese Übertreibung muss korrigiert werden: Ein kleiner Rest kommt immer durch — genau das steht als 50,2 % im Bild."
+   ]
+  },
+  "hilfe3_wort": "schwächer",
+  "schwache": [
+   "Vorher gemeinsam festlegen, welche Knöpfe gelten: „1 · Drei Strahlungsarten“, dann die drei Strahlungsknöpfe und die drei Materialknöpfe. Die Knöpfe „2 · Das Absorptionsgesetz“, „3 · Halbwertsdicke bestimmen“, „4 · Wie γ-Strahlung wechselwirkt“, „5 · Biologische Wirkung & Medizin“ und „6 · Messreihe aufnehmen“ führen auf Kurven, Formeln und eine Messtabelle und werden hier nicht gebraucht. Ebenso wenig die Knöpfe „Halbwertsdicke“, „Logarithmieren“, „Quotienten“, „d → R“, „d → ln R“, „Messwert übernehmen“, „Handreichungs-Messreihe“, „Tabelle leeren“, „Theoriefunktion“ und „Feld leeren“. Im ganzen Lehrerteil heißen diese Schaltflächen „Knopf“; „Ergebniskarte“ ist immer das gedruckte Blatt.",
+   "Die drei Materialknöpfe stehen am Bildschirm in der Zeile „Absorber“ — darüber steht „Strahlungsart“, darunter „Dicke d“. Auf der Schülerseite heißt es durchgehend „Material“; zeigen Sie die Zeile einmal gemeinsam, sonst suchen die Lernenden nach einer Beschriftung „Material“, die es am Bildschirm nicht gibt.",
+   "Bei 6,0 mm zeigt auch Papier bei Betastrahlung „0,0 % kommen durch“ (nachgemessen) — die Simulation rechnet für Alpha und Beta mit festen Reichweiten, und 6,0 mm liegen über jeder davon. Deshalb steht in Arbeitsschritt 4 zuerst „Aluminium“ und erst danach „β-Strahlung“: Der Zwischenzustand ist dann Alpha mit Aluminium und nicht Beta mit Papier. Papier gegen Betastrahlung nicht ausprobieren lassen; die Faustregel-Tabelle am Bildschirm sagt dort „schwächt“, die Prozentzahl sagt 0,0 %.",
+   "Den Regler für die Dicke nicht anfassen lassen. Er steht beim Öffnen genau richtig, und unter der Platte steht dann „6,0 mm“. Nur zu dieser Einstellung sind die drei Prozentwerte nachgemessen; wer schiebt, bekommt Zahlen, die im Heft nirgends vorkommen. Wer versehentlich geschoben hat: Simulation neu öffnen.",
+   "Die drei Beschriftungen „6,0 mm“, „0,0 % kommen durch“ und „50,2 % kommen durch“ vorher an die Tafel schreiben und gemeinsam laut lesen. Dazu sagen, WO sie stehen: die Prozentzahl oben rechts im Bild, die Dicke unter der Platte. Das Bild steht in der LINKEN Fensterhälfte; rechts daneben steht dieselbe Zahl noch einmal, anders gerundet („50 % der Strahlung kommen durch“, bei Alpha und Beta „0,00 %“). Gelesen wird die Zahl IM Bild. Dann müssen die Lernenden am Bildschirm nur noch wiedererkennen, nicht entziffern.",
+   "Nur die mittlere Spalte der Tabelle ausfüllen lassen (das Abschreiben vom Bildschirm); die Spalte „Was heißt das?“ gemeinsam an der Tafel eintragen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. Für „50,2 %“ das Komma und das Prozentzeichen ausdrücklich mitsprechen.",
+   "Wort und griechisches Zeichen immer zusammen lesen: „Alphastrahlung, Zeichen alpha“. Die Zeichen α, β, γ nie allein an die Tafel schreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, als Denkaufgabe ohne Bildschirm: Hinter 6,0 mm Blei kommt ungefähr die Hälfte durch. Wie viel käme wohl hinter der doppelten Dicke durch? Antwort: ungefähr ein Viertel, also die Hälfte von der Hälfte. Wichtig: Diese Zahl wird NICHT am Bildschirm nachgesehen (siehe Kernlehrplan-Feld, Punkt 3). Wer will, zeichnet eine zweite Bleiplatte hinter die erste.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Absorption von Alpha-, Beta- und Gammastrahlung durch Papier, Aluminium und Blei. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der Simulation trägt E4, das Eintragen der beiden offenen Zeilen in die Tabelle trägt K3 (Zeile 1 ist die vorausgefüllte Beispielzeile) — nach der Bandregel liegt K3 im ganzen Heft auf dem Ausfüllen der Tabelle und NICHT auf dem Zuhause-Auftrag; „Frage zu Hause …“ ist Präsentieren, nicht Dokumentieren. Die Zuordnung Material – Strahlungsart trägt UF3, die Erklär-Aufgabe zur Bleischürze UF4, die Vermutung zur Reichweite UF1. Die Aussage „Ein kleiner Rest kommt immer durch“ ist die Bewertungsgrundlage für den Strahlenschutz und wird in fn12 wieder aufgenommen. Fachwortzählung: neu ist genau EIN Wort — die Dreiergruppe „drei Arten von Strahlung: Alphastrahlung (α), Betastrahlung (β), Gammastrahlung (γ)“. Sie wird nach der Zählregel als EIN Fachwort geführt, weil sie im Alltagsteil in einem einzigen Begriffssatz als Gruppe eingeführt und danach immer als Gruppe benutzt wird; drei getrennte Einführungen wären drei Wörter und würden das Limit reißen. Bewusst NICHT auf der Schülerseite und deshalb auch nicht gezählt: „Halbwertsdicke“ (der fachliche Name der 6,0 mm — er steht nur in diesem Lehrerteil; das Wort ähnelt „Halbwertszeit“ aus fn6 zu stark, um beide kurz nacheinander einzuführen), „Reichweite“ (Merksatzlücke des Regelhefts, hier ersetzt durch die Materialien selbst), „Photonen“ (Lückensatz der Regelheft-Übungsseite), „Absorption“, „ionisierend“ und „Isotop“. „Zählrohr“ und „Strahler“ sind nach Zählregel 2 Gerätenamen: „Zählrohr“ wurde in fn2 eingeführt, „Strahler“ bekommt hier den Begriffssatz „Das Gerät, aus dem die Strahlung kommt, heißt Strahler.“ im Alltagsteil (er fehlte, obwohl das Wort im Bild und im Tafelbild steht — es ist im ganzen Band nur hier gebraucht). Beide stehen nicht in der Wortbank und nicht in einer Merksatzlücke. „Schürze“, „Platte“, „Dicke“ sind Alltagswörter ohne Formelzeichen und ohne Einheit (Zählregel 5) und stehen deshalb nicht in der Wortbank. „Blei“ steht dagegen sehr wohl in der Wortbank, als Lückenwort von Aufgabe 2. Es ist ein Stoffname ohne Formelzeichen und ohne Einheit — genau wie „Papier“ und „Aluminium“, die die Seite ebenso benutzt — und zählt nach Zählregel 5 trotzdem nicht; sonst wären Papier und Aluminium mitzuzählen und die Einheit könnte gar nicht gebaut werden. Abweichung vom Regelheft rk3: Dort steht im Labor eine dünne Scheibe aus KUNSTSTOFF. Hier ist es eine Scheibe aus Aluminium. Grund: Der Vergleich soll nur Materialien benutzen, die die Seite auch behandelt — sonst bleibt für die Lernenden offen, wofür der Kunststoff gut ist, und der aufgemachte Vergleich wird nur zur Hälfte eingelöst. Fachlich ist beides richtig; in echten Laboren nimmt man gegen Betastrahlung gern Kunststoff, weil dabei weniger Bremsstrahlung entsteht. Das gehört nicht auf die Schülerseite. Datenlage und Fallen: (1) Der Faktendump ist hier eine Falle, keine Quelle. Alle 23 status-Einträge in fakten/absorption-strahlung.json tragen den leeren Text, und die bildtexte stehen als EINE flache Liste ohne Zuordnung zum jeweiligen Zustand. Daraus folgt NICHT, dass am Bildschirm nichts steht: Die Simulation hat kein status-Element, aber ein großes Textfeld (absDurch) und beschriftet außerdem jeden Zustand im Bild. Eine frühere Fassung dieses Feldes hat „steht nicht im Dump“ mit „steht nicht am Bildschirm“ verwechselt und darauf den halben Seitenbau gestützt. Wer hier etwas behauptet, misst es vorher mit simcheck/werte.js nach. Weil die Seite trotzdem keine Statuszeile zitieren kann, heißt die Tabellenspalte „Wie viel kommt durch?“ und nicht „Was meldet die Statuszeile?“. (2) Alle drei Messzustände sind nachgemessen (node simcheck/werte.js physics-sim.js absorption-strahlung, Element absDurch, dazu die Canvas-Beschriftung): α + Papier + 6,0 mm → im Bild oben rechts „0,0 % kommen durch“, im Textfeld „0,00 % der Strahlung kommen durch. Vollständig gestoppt.“; β + Aluminium + 6,0 mm ebenso; γ + Blei + 6,0 mm → im Bild „50,2 % kommen durch“, im Textfeld „50 % der Strahlung kommen durch“ (nachgerechnet passt der Wert zur ebenfalls gedruckten Steigung: 6,0 mm ist genau die Halbwertsdicke). Die Tabelle trägt deshalb DREI Messzeilen, und die Arbeitsschritte lassen ablesen statt nur ansehen. Abgelesen sind aber NUR die drei Prozentwerte. Die Zuordnung Papier/Aluminium/Blei ist an ihnen nicht zu erkennen: Bei 6,0 mm liefern alle SECHS Alpha- und Beta-Kombinationen denselben Wert 0,0 % (nachgemessen mit werte.js: α und β mit Papier, Aluminium und Blei), nur die Gamma-Zeile trägt einen Unterschied (Papier 100 %, Aluminium 89 %, Blei 50 %). Die Zuordnung steht im Merksatz und in der Faustregel-Tabelle rechts neben dem Bild; die Seite behauptet nicht, sie sei aus den drei Prozentwerten hergeleitet. Zur Ehrlichkeit gehört auch: An 2,0 mm ließe sich der Beta-Unterschied zeigen (Papier 0 %, Aluminium 33 %) — das kollidiert aber mit der Regel, den Dickenregler nicht anzufassen, und mit den gedruckten „6,0 mm“ im Bild. Der Regler bleibt stehen. ACHTUNG Doppelanzeige: Bild und Textfeld runden verschieden (Bild eine Nachkommastelle, Textfeld null bzw. zwei). Die Seite legt sich durchgehend auf den Bildwert fest — Arbeitsschritte, Beispiel und Hilfe 1 sagen „oben rechts im Bild“, nie nur „oben rechts am Bildschirm“: Station 1 steht in einem Zweispalter (links das Bild, rechts das große Textfeld), oben rechts im FENSTER steht also der Textfeldwert; der typische Fehler 1 zu Aufgabe 2 benennt die zweite Anzeige ausdrücklich, damit niemand eine richtige Ablesung als Fehler behandelt. (3) 12,0 mm Blei sind NICHT belegt. Die Rechnung des Regelhefts (nach doppelter Dicke noch 25 Prozent) steht deshalb nicht auf der Schülerseite und wird auch in der freiwilligen Zusatzaufgabe nur gedacht, nicht am Bildschirm geprüft. Für A2–B1 käme sonst noch eine Dezimaldivision dazu (50,2 : 2), die die Seite nicht tragen kann. (4) Der Regler ist im Dump verstümmelt beschriftet („erAluminiumBlei Dicke d“, offenbar aus der Materialzeile zusammengelaufen). Sein Name wird deshalb nirgends genannt; die Seite spricht nur von der Beschriftung „6,0 mm“ unter der Platte, und die Lernenden fassen den Regler gar nicht an. Der Startwert steht auf 6, das Bild zeigt also von selbst den gemessenen Zustand — und zwar für jedes der drei Materialien, weil die Plattenbreite am Bildschirm nur an der Reglerstellung hängt, nicht am Material. Die Zeichnung im Heft zeigt deshalb alle drei Platten gleich dick und unter jeder „6,0 mm“; eine frühere Fassung zeichnete Papier dünn und Blei dicker und widersprach damit dem Bildschirm, den die Lernenden gar nicht verstellen dürfen. (5) Die Messreihe des Knopfes „6 · Messreihe aufnehmen“ (Blei 0 mm, 3 mm, 5 mm, 8 mm) streut statistisch und liefert bei jedem Aufruf andere Zahlen. Sie darf nie als feste Tabelle ins Heft; der Knopf wird gar nicht benutzt. (6) Formelsprache am Bildschirm — das Absorptionsgesetz, der Logarithmus, die Steigung, die Photonenenergie — liegt weit über dem Niveau. Nichts davon steht auf der Schülerseite; der Hinweis unter den Knöpfen wird nicht vorgelesen. Ebenso wenig die Erklärzeile des Textfeldes zu γ („wird exponentiell geschwächt, R = R₀·e−α·d“) — gelesen wird nur die Prozentzahl. (7) Undruckbare Zeichen: Die Überschrift der Simulation und drei Knöpfe tragen Emoji, die SourceSans3 nicht kennt; sie werden nirgends zitiert, auch nicht hier — die Knöpfe heißen im Lehrerteil „Messwert übernehmen“, „Handreichungs-Messreihe“, „Tabelle leeren“ und „Theoriefunktion“, jeweils ohne das Zeichen davor. Ebenso fehlt der Schrift das Strahlenwarnzeichen, das als Bildbeschriftung am Strahler steht; es kommt weder auf die Seite noch in den Bildauftrag. Die griechischen Buchstaben α, β und γ sind dagegen in allen drei Schnitten vorhanden und gedruckt geprüft. (8) Zwei Zahlformate: Das Bild schreibt „50,2 %“ mit Komma, der Merksatz sagt „die Hälfte“. Beides muss zusammen ausgesprochen werden, sonst halten Lernende die Zahl für einen Widerspruch. (9) Nachgemessen und damit nicht mehr offen: Beim Umschalten der Strahlungsart ändert sich die Prozentangabe sofort mit, und die Simulation zeigt immer nur das GEWÄHLTE Material, nie drei nebeneinander. Die Seite verlangt deshalb kein Nebeneinander vom Bildschirm — der Vergleich der drei Zeilen entsteht in der eigenen Tabelle und im gedruckten Bild."
+ }
+}

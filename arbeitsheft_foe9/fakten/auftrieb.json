@@ -1,0 +1,262 @@
+[
+ {
+  "sim": "auftrieb",
+  "ueberschrift": "🚢 Warum schwimmt ein Schiff aus Eisen?",
+  "regler": [
+   {
+    "id": "aufH",
+    "beschriftung": "Hohlraum im Würfel: 0 %",
+    "bereich": {
+     "min": "0",
+     "max": "95",
+     "step": "1",
+     "start": "0"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "massiv – sinkt",
+    "ruft": "_aufMarke(0)"
+   },
+   {
+    "aufschrift": "87 % – sinkt noch",
+    "ruft": "_aufMarke(87)"
+   },
+   {
+    "aufschrift": "88 % – schwimmt gerade",
+    "ruft": "_aufMarke(88)"
+   },
+   {
+    "aufschrift": "90 % – Schiff",
+    "ruft": "_aufMarke(90)"
+   },
+   {
+    "aufschrift": "Süßwasser",
+    "ruft": "_aufFluid('wasser')"
+   },
+   {
+    "aufschrift": "Meerwasser",
+    "ruft": "_aufFluid('meer')"
+   }
+  ],
+  "hinweise": [
+   "Ein massiver Eisenwürfel geht unter – das weiß jeder. Höhle ihn Schritt für Schritt aus und finde heraus, ab wann er oben bleibt.",
+   "Warum trägt Wasser überhaupt? Unten drückt es stärker als oben – der Unterschied wirkt nach oben. Diese Kraft ist genau so groß wie das Gewicht des verdrängten Wassers. Das hat Archimedes gefunden.",
+   "Modellgrenze: Gerechnet wird mit einem Würfel und mit ruhigem Wasser. Ein echtes Schiff schwimmt nur stabil, wenn die Ladung tief und mittig liegt – sonst kippt es, obwohl die Dichte stimmt. Der Hohlraum ist hier als Luft gedacht; Wasser im Leck macht die mittlere Dichte sofort wieder größer.",
+   "Nicht der Stoff entscheidet, sondern die mittlere Dichte · schwimmend gilt: eingetauchter Anteil = ρ : ρWasser"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 0 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 1,000 = 7870,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 7870,0 kg/m³ · 0,001 m³ = 7,870 kg | G = m · g = 7,870 kg · 9,81 N/kg = 77,20 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1000 kg/m³ · 9,81 N/kg · 0,001 m³ = 9,81 N | | 4 · Er sinkt | G = 77,20 N ist größer als FA = 9,81 N. | Es bleiben 67,39 N nach unten übrig. Im Wasser wiegt er also nur noch 67,39 N statt 77,20 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "massiv – sinkt",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 0 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 1,000 = 7870,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 7870,0 kg/m³ · 0,001 m³ = 7,870 kg | G = m · g = 7,870 kg · 9,81 N/kg = 77,20 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1000 kg/m³ · 9,81 N/kg · 0,001 m³ = 9,81 N | | 4 · Er sinkt | G = 77,20 N ist größer als FA = 9,81 N. | Es bleiben 67,39 N nach unten übrig. Im Wasser wiegt er also nur noch 67,39 N statt 77,20 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "87 % – sinkt noch",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 87 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,130 = 1023,1 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 1023,1 kg/m³ · 0,001 m³ = 1,023 kg | G = m · g = 1,023 kg · 9,81 N/kg = 10,04 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1000 kg/m³ · 9,81 N/kg · 0,001 m³ = 9,81 N | | 4 · Er sinkt | G = 10,04 N ist größer als FA = 9,81 N. | Es bleiben 0,23 N nach unten übrig. Im Wasser wiegt er also nur noch 0,23 N statt 10,04 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "88 % – schwimmt gerade",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 88 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,120 = 944,4 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 944,4 kg/m³ · 0,001 m³ = 0,944 kg | G = m · g = 0,944 kg · 9,81 N/kg = 9,26 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1000 kg/m³ · 9,81 N/kg · 0,000944 m³ = 9,26 N | | 4 · Er schwimmt | FA = 9,26 N = G — Gleichgewicht. | Unter Wasser liegen 94,4 % des Würfels. Das ist genau ρ : ρWasser = 944,4 : 1000. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "90 % – Schiff",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 90 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,100 = 787,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 787,0 kg/m³ · 0,001 m³ = 0,787 kg | G = m · g = 0,787 kg · 9,81 N/kg = 7,72 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1000 kg/m³ · 9,81 N/kg · 0,000787 m³ = 7,72 N | | 4 · Er schwimmt | FA = 7,72 N = G — Gleichgewicht. | Unter Wasser liegen 78,7 % des Würfels. Das ist genau ρ : ρWasser = 787,0 : 1000. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Süßwasser",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 90 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,100 = 787,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 787,0 kg/m³ · 0,001 m³ = 0,787 kg | G = m · g = 0,787 kg · 9,81 N/kg = 7,72 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1000 kg/m³ · 9,81 N/kg · 0,000787 m³ = 7,72 N | | 4 · Er schwimmt | FA = 7,72 N = G — Gleichgewicht. | Unter Wasser liegen 78,7 % des Würfels. Das ist genau ρ : ρWasser = 787,0 : 1000. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1000 kg/m³ fällt – bei diesem Eisenwürfel ab 87,3 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Meerwasser",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 90 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,100 = 787,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 787,0 kg/m³ · 0,001 m³ = 0,787 kg | G = m · g = 0,787 kg · 9,81 N/kg = 7,72 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1025 kg/m³ · 9,81 N/kg · 0,000768 m³ = 7,72 N | | 4 · Er schwimmt | FA = 7,72 N = G — Gleichgewicht. | Unter Wasser liegen 76,8 % des Würfels. Das ist genau ρ : ρWasser = 787,0 : 1025. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 0",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 0 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 1,000 = 7870,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 7870,0 kg/m³ · 0,001 m³ = 7,870 kg | G = m · g = 7,870 kg · 9,81 N/kg = 77,20 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 77,20 N ist größer als FA = 10,06 N. | Es bleiben 67,15 N nach unten übrig. Im Wasser wiegt er also nur noch 67,15 N statt 77,20 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 12",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 12 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,880 = 6925,6 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 6925,6 kg/m³ · 0,001 m³ = 6,926 kg | G = m · g = 6,926 kg · 9,81 N/kg = 67,94 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 67,94 N ist größer als FA = 10,06 N. | Es bleiben 57,88 N nach unten übrig. Im Wasser wiegt er also nur noch 57,88 N statt 67,94 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 24",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 24 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,760 = 5981,2 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 5981,2 kg/m³ · 0,001 m³ = 5,981 kg | G = m · g = 5,981 kg · 9,81 N/kg = 58,68 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 58,68 N ist größer als FA = 10,06 N. | Es bleiben 48,62 N nach unten übrig. Im Wasser wiegt er also nur noch 48,62 N statt 58,68 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 36",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 36 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,640 = 5036,8 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 5036,8 kg/m³ · 0,001 m³ = 5,037 kg | G = m · g = 5,037 kg · 9,81 N/kg = 49,41 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 49,41 N ist größer als FA = 10,06 N. | Es bleiben 39,36 N nach unten übrig. Im Wasser wiegt er also nur noch 39,36 N statt 49,41 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 48",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 48 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,520 = 4092,4 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 4092,4 kg/m³ · 0,001 m³ = 4,092 kg | G = m · g = 4,092 kg · 9,81 N/kg = 40,15 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 40,15 N ist größer als FA = 10,06 N. | Es bleiben 30,09 N nach unten übrig. Im Wasser wiegt er also nur noch 30,09 N statt 40,15 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 59",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 59 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,410 = 3226,7 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 3226,7 kg/m³ · 0,001 m³ = 3,227 kg | G = m · g = 3,227 kg · 9,81 N/kg = 31,65 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 31,65 N ist größer als FA = 10,06 N. | Es bleiben 21,60 N nach unten übrig. Im Wasser wiegt er also nur noch 21,60 N statt 31,65 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 71",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 71 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,290 = 2282,3 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 2282,3 kg/m³ · 0,001 m³ = 2,282 kg | G = m · g = 2,282 kg · 9,81 N/kg = 22,39 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 22,39 N ist größer als FA = 10,06 N. | Es bleiben 12,33 N nach unten übrig. Im Wasser wiegt er also nur noch 12,33 N statt 22,39 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 83",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 83 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,170 = 1337,9 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 1337,9 kg/m³ · 0,001 m³ = 1,338 kg | G = m · g = 1,338 kg · 9,81 N/kg = 13,12 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 13,12 N ist größer als FA = 10,06 N. | Es bleiben 3,07 N nach unten übrig. Im Wasser wiegt er also nur noch 3,07 N statt 13,12 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 95",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 95 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,050 = 393,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 393,5 kg/m³ · 0,001 m³ = 0,394 kg | G = m · g = 0,394 kg · 9,81 N/kg = 3,86 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1025 kg/m³ · 9,81 N/kg · 0,000384 m³ = 3,86 N | | 4 · Er schwimmt | FA = 3,86 N = G — Gleichgewicht. | Unter Wasser liegen 38,4 % des Würfels. Das ist genau ρ : ρWasser = 393,5 : 1025. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 5",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 5 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,950 = 7476,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 7476,5 kg/m³ · 0,001 m³ = 7,477 kg | G = m · g = 7,477 kg · 9,81 N/kg = 73,34 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 73,34 N ist größer als FA = 10,06 N. | Es bleiben 63,29 N nach unten übrig. Im Wasser wiegt er also nur noch 63,29 N statt 73,34 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 10",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 10 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,900 = 7083,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 7083,0 kg/m³ · 0,001 m³ = 7,083 kg | G = m · g = 7,083 kg · 9,81 N/kg = 69,48 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 69,48 N ist größer als FA = 10,06 N. | Es bleiben 59,43 N nach unten übrig. Im Wasser wiegt er also nur noch 59,43 N statt 69,48 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 15",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 15 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,850 = 6689,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 6689,5 kg/m³ · 0,001 m³ = 6,689 kg | G = m · g = 6,689 kg · 9,81 N/kg = 65,62 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 65,62 N ist größer als FA = 10,06 N. | Es bleiben 55,57 N nach unten übrig. Im Wasser wiegt er also nur noch 55,57 N statt 65,62 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 20",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 20 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,800 = 6296,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 6296,0 kg/m³ · 0,001 m³ = 6,296 kg | G = m · g = 6,296 kg · 9,81 N/kg = 61,76 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 61,76 N ist größer als FA = 10,06 N. | Es bleiben 51,71 N nach unten übrig. Im Wasser wiegt er also nur noch 51,71 N statt 61,76 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 25",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 25 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,750 = 5902,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 5902,5 kg/m³ · 0,001 m³ = 5,902 kg | G = m · g = 5,902 kg · 9,81 N/kg = 57,90 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 57,90 N ist größer als FA = 10,06 N. | Es bleiben 47,85 N nach unten übrig. Im Wasser wiegt er also nur noch 47,85 N statt 57,90 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 30",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 30 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,700 = 5509,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 5509,0 kg/m³ · 0,001 m³ = 5,509 kg | G = m · g = 5,509 kg · 9,81 N/kg = 54,04 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 54,04 N ist größer als FA = 10,06 N. | Es bleiben 43,99 N nach unten übrig. Im Wasser wiegt er also nur noch 43,99 N statt 54,04 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 35",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 35 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,650 = 5115,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 5115,5 kg/m³ · 0,001 m³ = 5,115 kg | G = m · g = 5,115 kg · 9,81 N/kg = 50,18 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 50,18 N ist größer als FA = 10,06 N. | Es bleiben 40,13 N nach unten übrig. Im Wasser wiegt er also nur noch 40,13 N statt 50,18 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 40",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 40 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,600 = 4722,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 4722,0 kg/m³ · 0,001 m³ = 4,722 kg | G = m · g = 4,722 kg · 9,81 N/kg = 46,32 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 46,32 N ist größer als FA = 10,06 N. | Es bleiben 36,27 N nach unten übrig. Im Wasser wiegt er also nur noch 36,27 N statt 46,32 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 45",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 45 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,550 = 4328,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 4328,5 kg/m³ · 0,001 m³ = 4,329 kg | G = m · g = 4,329 kg · 9,81 N/kg = 42,46 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 42,46 N ist größer als FA = 10,06 N. | Es bleiben 32,41 N nach unten übrig. Im Wasser wiegt er also nur noch 32,41 N statt 42,46 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 50",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 50 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,500 = 3935,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 3935,0 kg/m³ · 0,001 m³ = 3,935 kg | G = m · g = 3,935 kg · 9,81 N/kg = 38,60 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 38,60 N ist größer als FA = 10,06 N. | Es bleiben 28,55 N nach unten übrig. Im Wasser wiegt er also nur noch 28,55 N statt 38,60 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 55",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 55 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,450 = 3541,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 3541,5 kg/m³ · 0,001 m³ = 3,541 kg | G = m · g = 3,541 kg · 9,81 N/kg = 34,74 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 34,74 N ist größer als FA = 10,06 N. | Es bleiben 24,69 N nach unten übrig. Im Wasser wiegt er also nur noch 24,69 N statt 34,74 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 60",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 60 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,400 = 3148,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 3148,0 kg/m³ · 0,001 m³ = 3,148 kg | G = m · g = 3,148 kg · 9,81 N/kg = 30,88 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 30,88 N ist größer als FA = 10,06 N. | Es bleiben 20,83 N nach unten übrig. Im Wasser wiegt er also nur noch 20,83 N statt 30,88 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 65",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 65 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,350 = 2754,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 2754,5 kg/m³ · 0,001 m³ = 2,755 kg | G = m · g = 2,755 kg · 9,81 N/kg = 27,02 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 27,02 N ist größer als FA = 10,06 N. | Es bleiben 16,97 N nach unten übrig. Im Wasser wiegt er also nur noch 16,97 N statt 27,02 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 70",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 70 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,300 = 2361,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 2361,0 kg/m³ · 0,001 m³ = 2,361 kg | G = m · g = 2,361 kg · 9,81 N/kg = 23,16 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 23,16 N ist größer als FA = 10,06 N. | Es bleiben 13,11 N nach unten übrig. Im Wasser wiegt er also nur noch 13,11 N statt 23,16 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 75",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 75 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,250 = 1967,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 1967,5 kg/m³ · 0,001 m³ = 1,968 kg | G = m · g = 1,968 kg · 9,81 N/kg = 19,30 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 19,30 N ist größer als FA = 10,06 N. | Es bleiben 9,25 N nach unten übrig. Im Wasser wiegt er also nur noch 9,25 N statt 19,30 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 80",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 80 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,200 = 1574,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 1574,0 kg/m³ · 0,001 m³ = 1,574 kg | G = m · g = 1,574 kg · 9,81 N/kg = 15,44 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 15,44 N ist größer als FA = 10,06 N. | Es bleiben 5,39 N nach unten übrig. Im Wasser wiegt er also nur noch 5,39 N statt 15,44 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 85",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 85 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,150 = 1180,5 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 1180,5 kg/m³ · 0,001 m³ = 1,181 kg | G = m · g = 1,181 kg · 9,81 N/kg = 11,58 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Ganz eingetaucht verdrängt er sein volles Volumen: | FA = 1025 kg/m³ · 9,81 N/kg · 0,001 m³ = 10,06 N | | 4 · Er sinkt | G = 11,58 N ist größer als FA = 10,06 N. | Es bleiben 1,53 N nach unten übrig. Im Wasser wiegt er also nur noch 1,53 N statt 11,58 N. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   },
+   {
+    "einstellung": "Hohlraum im Würfel: 0 % = 90",
+    "text": "aufStatus: 1 · Die mittlere Dichte | Eisen hat 7870 kg/m³. Bei 90 % Hohlraum bleibt davon: | ρ = 7870 kg/m³ · 0,100 = 787,0 kg/m³ | | 2 · Die Gewichtskraft | m = ρ · V = 787,0 kg/m³ · 0,001 m³ = 0,787 kg | G = m · g = 0,787 kg · 9,81 N/kg = 7,72 N | | 3 · Der Auftrieb | FA = ρWasser · g · Veingetaucht | Der Würfel taucht nur so weit ein, bis der Auftrieb die Gewichtskraft trägt. | FA = 1025 kg/m³ · 9,81 N/kg · 0,000768 m³ = 7,72 N | | 4 · Er schwimmt | FA = 7,72 N = G — Gleichgewicht. | Unter Wasser liegen 76,8 % des Würfels. Das ist genau ρ : ρWasser = 787,0 : 1025. | | Die Grenze | Schwimmen beginnt, sobald die mittlere Dichte unter 1025 kg/m³ fällt – bei diesem Eisenwürfel ab 87,0 % Hohlraum. | | Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt."
+   }
+  ],
+  "bildtexte": [
+   "G = 77,2 N",
+   "F_A = 9,8 N",
+   "Hohlraum 0 %  ·  mittlere Dichte 7870 kg/m³  ·  Süßwasser 1000 kg/m³",
+   "sinkt",
+   "F_A = ρ · g · V(eingetaucht)",
+   "Luft",
+   "G = 10,0 N",
+   "Hohlraum 87 %  ·  mittlere Dichte 1023 kg/m³  ·  Süßwasser 1000 kg/m³",
+   "G = 9,3 N",
+   "F_A = 9,3 N",
+   "Hohlraum 88 %  ·  mittlere Dichte 944 kg/m³  ·  Süßwasser 1000 kg/m³",
+   "schwimmt – 94,4 % unter Wasser",
+   "G = 7,7 N",
+   "F_A = 7,7 N",
+   "Hohlraum 90 %  ·  mittlere Dichte 787 kg/m³  ·  Süßwasser 1000 kg/m³",
+   "schwimmt – 78,7 % unter Wasser",
+   "Hohlraum 90 %  ·  mittlere Dichte 787 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "schwimmt – 76,8 % unter Wasser",
+   "F_A = 10,1 N",
+   "Hohlraum 0 %  ·  mittlere Dichte 7870 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 67,9 N",
+   "Hohlraum 12 %  ·  mittlere Dichte 6926 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 58,7 N",
+   "Hohlraum 24 %  ·  mittlere Dichte 5981 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 49,4 N",
+   "Hohlraum 36 %  ·  mittlere Dichte 5037 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 40,1 N",
+   "Hohlraum 48 %  ·  mittlere Dichte 4092 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 31,7 N",
+   "Hohlraum 59 %  ·  mittlere Dichte 3227 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 22,4 N",
+   "Hohlraum 71 %  ·  mittlere Dichte 2282 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 13,1 N",
+   "Hohlraum 83 %  ·  mittlere Dichte 1338 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 3,9 N",
+   "F_A = 3,9 N",
+   "Hohlraum 95 %  ·  mittlere Dichte 394 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "schwimmt – 38,4 % unter Wasser",
+   "G = 73,3 N",
+   "Hohlraum 5 %  ·  mittlere Dichte 7477 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 69,5 N",
+   "Hohlraum 10 %  ·  mittlere Dichte 7083 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 65,6 N",
+   "Hohlraum 15 %  ·  mittlere Dichte 6690 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 61,8 N",
+   "Hohlraum 20 %  ·  mittlere Dichte 6296 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 57,9 N",
+   "Hohlraum 25 %  ·  mittlere Dichte 5903 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 54,0 N",
+   "Hohlraum 30 %  ·  mittlere Dichte 5509 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 50,2 N",
+   "Hohlraum 35 %  ·  mittlere Dichte 5116 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 46,3 N",
+   "Hohlraum 40 %  ·  mittlere Dichte 4722 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 42,5 N",
+   "Hohlraum 45 %  ·  mittlere Dichte 4329 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 38,6 N",
+   "Hohlraum 50 %  ·  mittlere Dichte 3935 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 34,7 N",
+   "Hohlraum 55 %  ·  mittlere Dichte 3541 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 30,9 N",
+   "Hohlraum 60 %  ·  mittlere Dichte 3148 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 27,0 N",
+   "Hohlraum 65 %  ·  mittlere Dichte 2755 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 23,2 N",
+   "Hohlraum 70 %  ·  mittlere Dichte 2361 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 19,3 N",
+   "Hohlraum 75 %  ·  mittlere Dichte 1968 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 15,4 N",
+   "Hohlraum 80 %  ·  mittlere Dichte 1574 kg/m³  ·  Meerwasser 1025 kg/m³",
+   "G = 11,6 N",
+   "Hohlraum 85 %  ·  mittlere Dichte 1181 kg/m³  ·  Meerwasser 1025 kg/m³"
+  ]
+ }
+]

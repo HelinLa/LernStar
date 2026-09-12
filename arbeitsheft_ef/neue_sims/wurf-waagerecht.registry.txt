@@ -1,0 +1,9 @@
+  // ── WAAGERECHTER WURF (EF) – Superposition: gleichförmig quer, beschleunigt senkrecht ──
+  'wurf-waagerecht': modal => {
+    _wwfInit();
+    modal.innerHTML = _wwfHTML();
+    _wwfStatus();
+    _wwfListe();
+    _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
+    _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+  },

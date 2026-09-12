@@ -1,0 +1,190 @@
+[
+ {
+  "sim": "kettenreaktion",
+  "ueberschrift": "🎛️ Wie verhindert man, dass eine Kettenreaktion außer Kontrolle gerät?",
+  "regler": [
+   {
+    "id": "ketStab",
+    "beschriftung": "Steuerstäbe eingefahren: 50 %",
+    "bereich": {
+     "min": "0",
+     "max": "100",
+     "step": "1",
+     "start": "50"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "⏭ nächste Generation",
+    "ruft": "_ketSchritt()"
+   },
+   {
+    "aufschrift": "▶ Laufen lassen",
+    "ruft": "_ketLauf()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_ketReset()"
+   }
+  ],
+  "hinweise": [
+   "Jede Spaltung setzt zwei bis drei Neutronen frei. Die meisten fliegen davon oder werden geschluckt – nur ein Teil trifft einen neuen Kern. Wie groß dieser Teil ist, bestimmen die Steuerstäbe. Die Zahl dazu heißt k: Sie sagt, wie viele neue Spaltungen aus einer Spaltung folgen.",
+   "Vom Reaktor zur Steckdose sind es vier Schritte: Die Bruchstücke fliegen auseinander und erhitzen den Brennstab. Die Wärme macht aus Wasser Dampf. Der Dampf treibt eine Turbine. Die Turbine dreht den Generator. Nur der letzte Schritt macht Strom – alles davor ist ganz gewöhnliche Wärmekraftwerks-Technik. Ein Kernkraftwerk ist ein Dampfkraftwerk, dessen Feuer aus Kernspaltung besteht.",
+   "Modellgrenze: Hier zählen ein paar Tausend Spaltungen; in einem Reaktor sind es rund 10¹⁹ in jeder Sekunde. Und k lässt sich in Wirklichkeit nicht einfach am Regler drehen – es hängt außerdem von Temperatur, Dampfblasen und dem Alter der Brennstäbe ab. Dass ein Reaktor überhaupt regelbar ist, liegt an einem Glücksfall: Ein kleiner Teil der Neutronen kommt erst Sekunden später aus den Bruchstücken. Ohne diese „verzögerten Neutronen“ ginge alles zu schnell zum Nachsteuern.",
+   "k &lt; 1 erstirbt · k = 1 Kraftwerk · k &gt; 1 lawinenartig"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "ketStatus: Steuerstäbe 50 % eingefahren → Vermehrungsfaktor k = 1,00 | kritisch – genau richtig | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "⏭ nächste Generation",
+    "text": "ketStatus: Steuerstäbe 50 % eingefahren → Vermehrungsfaktor k = 1,00 | kritisch – genau richtig | | Generation 1: 493 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 493 Spaltungen zusammen ergeben 15,8 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "▶ Laufen lassen",
+    "text": "ketStatus: Steuerstäbe 50 % eingefahren → Vermehrungsfaktor k = 1,00 | kritisch – genau richtig | | Generation 1: 493 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 493 Spaltungen zusammen ergeben 15,8 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "ketStatus: Steuerstäbe 50 % eingefahren → Vermehrungsfaktor k = 1,00 | kritisch – genau richtig | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 0",
+    "text": "ketStatus: Steuerstäbe 0 % eingefahren → Vermehrungsfaktor k = 1,60 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 160. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 110-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 13",
+    "text": "ketStatus: Steuerstäbe 13 % eingefahren → Vermehrungsfaktor k = 1,44 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 144. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 39-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 25",
+    "text": "ketStatus: Steuerstäbe 25 % eingefahren → Vermehrungsfaktor k = 1,30 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 130. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 14-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 38",
+    "text": "ketStatus: Steuerstäbe 38 % eingefahren → Vermehrungsfaktor k = 1,14 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 114. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 4-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 50",
+    "text": "ketStatus: Steuerstäbe 50 % eingefahren → Vermehrungsfaktor k = 1,00 | kritisch – genau richtig | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden wieder rund 100. Jede Generation ist so groß wie die davor – die Kette läuft gleichmäßig weiter. Genau so arbeitet ein Kernkraftwerk: k = 1, Tag und Nacht. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 63",
+    "text": "ketStatus: Steuerstäbe 63 % eingefahren → Vermehrungsfaktor k = 0,84 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 84. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 75",
+    "text": "ketStatus: Steuerstäbe 75 % eingefahren → Vermehrungsfaktor k = 0,70 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 70. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 88",
+    "text": "ketStatus: Steuerstäbe 88 % eingefahren → Vermehrungsfaktor k = 0,54 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 54. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 100",
+    "text": "ketStatus: Steuerstäbe 100 % eingefahren → Vermehrungsfaktor k = 0,40 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 40. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 5",
+    "text": "ketStatus: Steuerstäbe 5 % eingefahren → Vermehrungsfaktor k = 1,54 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 154. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 75-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 10",
+    "text": "ketStatus: Steuerstäbe 10 % eingefahren → Vermehrungsfaktor k = 1,48 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 148. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 50-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 15",
+    "text": "ketStatus: Steuerstäbe 15 % eingefahren → Vermehrungsfaktor k = 1,42 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 142. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 33-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 20",
+    "text": "ketStatus: Steuerstäbe 20 % eingefahren → Vermehrungsfaktor k = 1,36 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 136. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 22-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 30",
+    "text": "ketStatus: Steuerstäbe 30 % eingefahren → Vermehrungsfaktor k = 1,24 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 124. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 9-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 35",
+    "text": "ketStatus: Steuerstäbe 35 % eingefahren → Vermehrungsfaktor k = 1,18 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 118. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 5-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 40",
+    "text": "ketStatus: Steuerstäbe 40 % eingefahren → Vermehrungsfaktor k = 1,12 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 112. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 3-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 45",
+    "text": "ketStatus: Steuerstäbe 45 % eingefahren → Vermehrungsfaktor k = 1,06 | überkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation 106. Jede Generation ist größer als die davor – die Kette wächst lawinenartig. Nach 10 solchen Generationen wären es schon rund 2-mal so viele. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 55",
+    "text": "ketStatus: Steuerstäbe 55 % eingefahren → Vermehrungsfaktor k = 0,94 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 94. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 60",
+    "text": "ketStatus: Steuerstäbe 60 % eingefahren → Vermehrungsfaktor k = 0,88 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 88. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 65",
+    "text": "ketStatus: Steuerstäbe 65 % eingefahren → Vermehrungsfaktor k = 0,82 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 82. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 70",
+    "text": "ketStatus: Steuerstäbe 70 % eingefahren → Vermehrungsfaktor k = 0,76 | unterkritisch | | Generation 0: 500 Spaltungen. | | Aus 100 Spaltungen werden in der nächsten Generation nur 76. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 500 Spaltungen zusammen ergeben 16,0 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 80",
+    "text": "ketStatus: Steuerstäbe 80 % eingefahren → Vermehrungsfaktor k = 0,64 | unterkritisch | | Generation 1: 330 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden in der nächsten Generation nur 64. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 330 Spaltungen zusammen ergeben 10,6 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 85",
+    "text": "ketStatus: Steuerstäbe 85 % eingefahren → Vermehrungsfaktor k = 0,58 | unterkritisch | | Generation 1: 330 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden in der nächsten Generation nur 58. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 330 Spaltungen zusammen ergeben 10,6 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 90",
+    "text": "ketStatus: Steuerstäbe 90 % eingefahren → Vermehrungsfaktor k = 0,52 | unterkritisch | | Generation 1: 330 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden in der nächsten Generation nur 52. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 330 Spaltungen zusammen ergeben 10,6 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   },
+   {
+    "einstellung": "Steuerstäbe eingefahren: 50 % = 95",
+    "text": "ketStatus: Steuerstäbe 95 % eingefahren → Vermehrungsfaktor k = 0,46 | unterkritisch | | Generation 1: 330 Spaltungen (vorher 500). | | Aus 100 Spaltungen werden in der nächsten Generation nur 46. Jede Generation ist kleiner als die davor – die Kette erstickt. So fährt man einen Reaktor herunter. | | Jede Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Diese 330 Spaltungen zusammen ergeben 10,6 · 10⁻⁹ J – so wenig, dass man es nicht spürt. Ein Kraftwerk braucht deshalb rund 10¹⁹ Spaltungen in jeder Sekunde, um auf 300 Megawatt zu kommen."
+   }
+  ],
+  "bildtexte": [
+   "Steuerstäbe 50 % eingefahren   ·   k = 1,00",
+   "Generation 0:  500 Spaltungen",
+   "Spaltungen je Generation",
+   "(gezeichnet: 260 von 500)",
+   "Generation 1:  493 Spaltungen",
+   "(gezeichnet: 260 von 493)",
+   "Steuerstäbe 0 % eingefahren   ·   k = 1,60",
+   "Steuerstäbe 13 % eingefahren   ·   k = 1,44",
+   "Steuerstäbe 25 % eingefahren   ·   k = 1,30",
+   "Steuerstäbe 38 % eingefahren   ·   k = 1,14",
+   "Steuerstäbe 63 % eingefahren   ·   k = 0,84",
+   "Steuerstäbe 75 % eingefahren   ·   k = 0,70",
+   "Steuerstäbe 88 % eingefahren   ·   k = 0,54",
+   "Steuerstäbe 100 % eingefahren   ·   k = 0,40",
+   "Steuerstäbe 5 % eingefahren   ·   k = 1,54",
+   "Steuerstäbe 10 % eingefahren   ·   k = 1,48",
+   "Steuerstäbe 15 % eingefahren   ·   k = 1,42",
+   "Steuerstäbe 20 % eingefahren   ·   k = 1,36",
+   "Steuerstäbe 30 % eingefahren   ·   k = 1,24",
+   "Steuerstäbe 35 % eingefahren   ·   k = 1,18",
+   "Steuerstäbe 40 % eingefahren   ·   k = 1,12",
+   "Steuerstäbe 45 % eingefahren   ·   k = 1,06",
+   "Steuerstäbe 55 % eingefahren   ·   k = 0,94",
+   "Steuerstäbe 60 % eingefahren   ·   k = 0,88",
+   "Steuerstäbe 65 % eingefahren   ·   k = 0,82",
+   "Steuerstäbe 70 % eingefahren   ·   k = 0,76",
+   "Steuerstäbe 80 % eingefahren   ·   k = 0,64",
+   "Generation 1:  330 Spaltungen",
+   "(gezeichnet: 260 von 330)",
+   "Steuerstäbe 85 % eingefahren   ·   k = 0,58",
+   "Steuerstäbe 90 % eingefahren   ·   k = 0,52",
+   "Steuerstäbe 95 % eingefahren   ·   k = 0,46"
+  ]
+ }
+]

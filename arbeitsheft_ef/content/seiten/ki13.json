@@ -1,0 +1,52 @@
+{
+ "id": "ki13",
+ "basiskonzept": "Superposition und Komponenten",
+ "titel": "Vier Meter getragen, null Joule",
+ "problem": "Beim Abbau der Messstrecke nimmt Tobias die Kiste mit den Lichtschranken auf und trägt sie vier Meter weit durch den Flur zurück. Er schnauft und nennt das die schwerste Arbeit des ganzen Tages. Mira rechnet nebenher mit und behauptet, er habe an der Kiste genau null Joule Arbeit verrichtet. Sein Rücken ist anderer Meinung.",
+ "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
+ "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
+ "predict": [
+  "Es zählt nur der Anteil der Kraft, der in die Richtung zeigt, in die sich die Kiste bewegt. Beim waagerechten Tragen gibt es diesen Anteil nicht – deshalb kommt dort keine Arbeit heraus, so anstrengend es sich auch anfühlt.",
+  "Wer eine Last trägt, verrichtet Arbeit: Die Haltekraft wirkt über den ganzen Weg von 4 m. Beim Tragen muss deshalb mindestens so viel Arbeit herauskommen wie beim Schieben derselben Kiste."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Drücke „Schieben“. Der Regler „Schiebekraft F“ steht auf 100 N, der Regler „Weg s“ auf 4 m – lass beide in der ganzen Messreihe stehen. Notiere aus dem Statusfeld die Rechnung für W, den Wert im Balken am oberen und den Satz am unteren Bildrand.",
+  "Drücke „Waagerecht tragen“. Die Regler heißen jetzt „Masse der Kiste m“ (20 kg) und „getragener Weg s“ – derselbe Regler wie eben, er bleibt auf 4 m. Welche Haltekraft nennt das Statusfeld, wie groß ist W, was sagt der Satz am unteren Bildrand?",
+  "Drücke „Hochheben“; „Masse der Kiste m“ bleibt auf 20 kg, „Höhe h“ steht auf 2,0 m. Drücke „Ausführen“, verfolge den wachsenden Wegpfeil und schreibe den Rechenweg ab. Prüfe nach, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
+ ],
+ "tabCols": [
+  "Kraft und Weg laut Statusfeld",
+  "W in J · Richtung von Kraft und Weg"
+ ],
+ "tabRows": [
+  "Schieben",
+  "Waagerecht tragen",
+  "Hochheben"
+ ],
+ "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs eines Weges verschiebt. Entscheidend ist dabei nicht der Betrag der Kraft, sondern ihre Komponente in Wegrichtung. Zerlegt man die Kraft – wie schon beim schräg gezogenen Schlitten – in einen Anteil längs und einen Anteil quer zum Weg, so trägt allein der längs gerichtete Anteil bei: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Für α = 0° wird daraus die einfache Form W = F · s, für α = 90° ist cos(α) = 0 und damit W = 0 J, gleichgültig wie groß F ist. Die Einheit der Arbeit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben muss die Hubkraft die Gewichtskraft F_G = m · g ausgleichen; sie zeigt längs des Hubwegs, deshalb gilt W = m · g · h. Wie schnell die Arbeit verrichtet wird, sagt die Leistung P = W / t mit der Einheit 1 Watt = 1 Joule je Sekunde; sie unterscheidet zwei Vorgänge, die dieselbe Arbeit in verschiedener Zeit verrichten. Gültigkeitsbereich: Alle drei Formeln setzen eine konstante Kraft und einen geraden Weg voraus. Die Simulation zeigt nur die beiden Grenzfälle α = 0° und α = 90°; Zwischenwinkel muss man rechnen. Und W = 0 J heißt nicht, dass der Träger keine Energie umsetzt – seine Muskelfasern spannen sich unablässig nach und verbrauchen dabei Energie; an der Kiste wird davon nichts als Arbeit wirksam, weil sie sich nicht in Kraftrichtung bewegt.",
+ "merksatz": [
+  {
+   "pre": "Arbeit verrichtet allein die Kraftkomponente",
+   "loesung": "längs des Weges",
+   "post": "; quer dazu bleibt W = 0 J."
+  },
+  {
+   "pre": "Für eine konstante Kraft in Wegrichtung gilt W =",
+   "loesung": "F · s",
+   "post": ", und 1 J = 1 N · 1 m."
+  }
+ ],
+ "beobachtung": "Nach „Schieben“ stehen die Regler auf „Schiebekraft F: 100“ und „Weg s: 4“; das Statusfeld darunter meldet „Du schiebst mit 100 N über 4 m.“ und „Arbeit W = 100 N · 4 m = 400 J“. Das Bild ist mit „Kiste über den Boden schieben“ überschrieben, der Balken am oberen Bildrand nennt „verrichtete Arbeit: 400 J“, und am unteren Bildrand steht „Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet“. Nach „Waagerecht tragen“ heißen die Regler „Masse der Kiste m: 20“ und „getragener Weg s: 4“; das Statusfeld meldet „Du hältst 196 N (20 kg) und gehst 4 m geradeaus.“, „Die Kraft zeigt nach oben, der Weg nach vorn.“ und „Arbeit W = 0 J – physikalisch keine Arbeit.“ Der Balken steht bei „verrichtete Arbeit: 0 J“, der Satz am unteren Bildrand lautet „Kraft ↑ und Weg → stehen senkrecht zueinander → W = 0“. Trotz 196 N über volle 4 m bleibt W also null. Nach „Hochheben“ stehen „Masse der Kiste m: 20“ und „Höhe h: 2,0“; das Statusfeld nennt „Du hebst 20 kg um 2,0 m hoch.“ und „Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J“, der Balken meldet „verrichtete Arbeit: 392 J“, und unten steht wieder der Satz über die gleiche Richtung von Kraft und Weg. Nachgerechnet ergibt 20 · 9,81 · 2,0 = 392,4, die Anzeige rundet also auf ganze Joule ab. Während „Ausführen“ läuft, wächst der Pfeil „Weg s“ nach oben und der Pfeil „Kraft F“ wandert mit der Kiste mit; die 392 J stehen dabei von Anfang an im Balken – er meldet also die Arbeit für den ganzen Hub, nicht die bis zu diesem Augenblick verrichtete. Am Ende ergänzt das Statusfeld den Vermerk, dass ausgeführt wurde.",
+ "aufgabe": {
+  "frage": "Berechne aus den drei angezeigten Arbeitswerten die Leistung, wenn Tobias für jeden der drei Vorgänge 2,5 s braucht, und begründe, warum beim Tragen sowohl W als auch P null werden, obwohl er dabei 196 N hält.",
+  "zeilen": 5,
+  "loesung": "Es gilt P = W / t. Schieben: W = 100 N · 4 m = 400 J, also P = 400 J / 2,5 s = 160 W. Waagerecht tragen: W = 0 J, also P = 0 J / 2,5 s = 0 W. Hochheben: mit dem angezeigten Wert W = 392 J folgt P = 392 J / 2,5 s = 156,8 W; rechnet man mit dem ungerundeten Wert 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, sind es 156,96 W, also rund 157 W. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg nach vorn – der Winkel beträgt 90°. Die Komponente längs des Weges ist 196 N · cos(90°) = 0 N, damit W = 0 N · 4 m = 0 J und P = 0 J / 2,5 s = 0 W. Die Anstrengung ist echt, sie steckt in der Muskelarbeit des Trägers; an der Kiste wird sie nicht als Arbeit wirksam, weil die Kiste ihre Höhe nicht ändert."
+ },
+ "alltag": "Trage deinen Schulrucksack zehn Schritte durch den Flur, dann eine Treppe hinauf. Wiege ihn, miss die Stufenhöhe, zähle die Stufen und stoppe die Zeit. Rechne m · g · h und W / t zweimal – nur Rucksack, dann Rucksack samt Körper –, entscheide, welche der beiden Zahlen deine Leistung in Watt ist, und begründe, warum der Flur nicht zählt.",
+ "alltagAfb": "II",
+ "alltagKomp": "S7",
+ "ueberleitung": "Die 392 J vom Hochheben sind nicht verschwunden – sie stecken jetzt in der angehobenen Kiste. Auf der nächsten Seite lässt du sie wieder los und misst, wie viel Energie in einem bewegten Körper steckt. Ob dabei eine Verdopplung des Tempos genauso viel zählt wie eine der Masse, entscheidet dort eine Messreihe.",
+ "name": "Wann wird wirklich Arbeit verrichtet?",
+ "theme": "ef_mechanik"
+}

@@ -1,0 +1,38 @@
+<!-- nacht -->
+<defs>
+  <linearGradient id="s2boden" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#31333B"/><stop offset="1" stop-color="#16171C"/>
+  </linearGradient>
+  <linearGradient id="s2wand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2A3049"/><stop offset="1" stop-color="#171B2A"/>
+  </linearGradient>
+  <radialGradient id="s2tuer" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#FFE7B0" stop-opacity="0.5"/>
+    <stop offset="1" stop-color="#FFD98F" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="s2rot" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#FF7060" stop-opacity="0.62"/>
+    <stop offset="0.45" stop-color="#E03828" stop-opacity="0.24"/>
+    <stop offset="1" stop-color="#C9231A" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+  <rect x="0" y="0" width="900" height="400" fill="url(#s2wand)"/>
+  <!-- erleuchteter Hallenausgang -->
+  <rect x="646" y="112" width="164" height="288" rx="6" fill="#3B4463"/>
+  <rect x="660" y="126" width="136" height="274" rx="4" fill="#E8CF98" opacity="0.5"/>
+  <rect x="726" y="126" width="4" height="274" fill="#3B4463" opacity="0.8"/>
+  <ellipse cx="728" cy="270" rx="230" ry="230" fill="url(#s2tuer)"/>
+  <g stroke="#3E4763" stroke-width="3" opacity="0.42">
+    <path d="M0,140 H620"/><path d="M0,240 H620"/><path d="M0,336 H620"/>
+  </g>
+  <rect x="0" y="392" width="900" height="148" fill="url(#s2boden)"/>
+  <rect x="0" y="392" width="900" height="5" fill="#4A505C" opacity="0.55"/>
+  <!-- Fahrradstaender -->
+  <g stroke="#6E7684" stroke-width="9" fill="none" stroke-linecap="round">
+    <path d="M126,486 v-58 h52 v58"/><path d="M262,486 v-58 h52 v58"/>
+  </g>
+  <ellipse cx="452" cy="486" rx="290" ry="20" fill="#0A0B0E" opacity="0.5" filter="url(#tiefe)"/>
+  <use href="#t_fahrrad" transform="translate(452,478) scale(0.92)"/>
+  <!-- hinten brennt das Ruecklicht, vorne bleibt es schwarz -->
+  <ellipse cx="184" cy="330" rx="86" ry="86" fill="url(#s2rot)"/>
+  <use href="#t_ruecklicht_an" transform="translate(184,344) scale(0.66)"/>

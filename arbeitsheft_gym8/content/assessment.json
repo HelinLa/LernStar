@@ -1,0 +1,379 @@
+[
+ {
+  "id": "gym_mechanik",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "GESCHWINDIGKEIT",
+     "tipp": "Diese Größe teilt die Strecke durch die Zeit; sie wird in Metern pro Sekunde angegeben, und je kürzer die Zeit für dieselbe Strecke, desto größer ist sie."
+    },
+    {
+     "wort": "BESCHLEUNIGUNG",
+     "tipp": "Sie sagt, wie schnell sich das Tempo ändert; ihre Einheit ist m/s², und im v-t-Diagramm ist sie die Steigung der Ursprungsgeraden."
+    },
+    {
+     "wort": "GEWICHTSKRAFT",
+     "tipp": "Die Kraft in Newton, mit der die Erde jeden Körper nach unten zieht; man berechnet sie mit F = m · g."
+    },
+    {
+     "wort": "ORTSFAKTOR",
+     "tipp": "Dieser Wert g ist auf dem Mond nur 1,6 N/kg, auf der Erde 9,8 N/kg und auf dem Jupiter 24,8 N/kg."
+    },
+    {
+     "wort": "KRAFTPFEIL",
+     "tipp": "Damit zeichnet man eine Kraft: Die Länge zeigt den Betrag, die Spitze die Richtung, der Punkt am Anfang den Angriffspunkt."
+    },
+    {
+     "wort": "RESULTIERENDE",
+     "tipp": "So heißt die eine Gesamtkraft, die zwei Kräfte längs derselben Linie zusammen ersetzt."
+    },
+    {
+     "wort": "GLEICHGEWICHT",
+     "tipp": "Sind zwei Kräfte gleich groß und entgegengesetzt, ist die Gesamtkraft 0 N und der Körper bleibt in Ruhe."
+    },
+    {
+     "wort": "WECHSELWIRKUNG",
+     "tipp": "Zu jeder Kraft gehört eine gleich große Gegenkraft auf einen zweiten Körper – kurz actio = reactio."
+    },
+    {
+     "wort": "REIBUNG",
+     "tipp": "Diese Kraft wirkt immer gegen die Bewegung: Sie erschwert das Anfahren und bringt den Wagen ohne Antrieb zum Stehen."
+    },
+    {
+     "wort": "HEBELGESETZ",
+     "tipp": "Die Regel F₁ · l₁ = F₂ · l₂: Ein langer Kraftarm spart Kraft, kostet dafür im selben Verhältnis mehr Weg."
+    },
+    {
+     "wort": "FLASCHENZUG",
+     "tipp": "Mit ihm hält jedes tragende Seilstück nur einen Teil der Last – dafür läuft entsprechend mehr Seil durch die Hand."
+    },
+    {
+     "wort": "LAGEENERGIE",
+     "tipp": "Die Energie, die in einem hochgehobenen Körper steckt; man berechnet sie mit E = m · g · h."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann eine Bewegung mit den beiden Größen Weg und Zeit beschreiben und aus Wertepaaren erkennen, ob sie gleichförmig ist.",
+    "Ich kann mit v = s / t eine Geschwindigkeit berechnen und Werte zwischen m/s und km/h umrechnen, denn 1 m/s = 3,6 km/h.",
+    "Ich kann aus einem Weg-Zeit-Diagramm ablesen, ob ein Körper schnell fährt, langsam fährt oder stillsteht.",
+    "Ich kann die Beschleunigung als Steigung im v-t-Diagramm deuten und mit v = a · t die Geschwindigkeit berechnen.",
+    "Ich kann eine Kraft an ihren drei Wirkungen erkennen: Verformung, Bewegungsänderung und Richtungsänderung.",
+    "Ich kann Masse und Gewichtskraft unterscheiden und mit F = m · g und g = 9,8 N/kg die Gewichtskraft berechnen.",
+    "Ich kann eine Kraft als Pfeil mit Betrag, Richtung und Angriffspunkt zeichnen und zwei Kräfte längs einer Linie zu einer Gesamtkraft zusammenfassen.",
+    "Ich kann mit dem Kräftegleichgewicht erklären, warum ein ruhender Körper nicht kräftefrei ist, und das Wechselwirkungsprinzip actio = reactio anwenden.",
+    "Ich kann an Hebel, Flaschenzug und Rampe zeigen, dass man Kraft spart, aber keine Arbeit – das ist die Goldene Regel der Mechanik.",
+    "Ich kann Lageenergie mit E = m · g · h und Bewegungsenergie mit E = ½ · m · v² berechnen, die Energieerhaltung am springenden Ball erklären und mit P = F · v die Leistung bestimmen."
+   ],
+   "tipps": [
+    "Zeichne bei jeder Kraftaufgabe zuerst den Kraftpfeil ein: Länge für den Betrag, Spitze für die Richtung, Punkt für den Angriffspunkt. So siehst du sofort, ob sich zwei Kräfte addieren, subtrahieren oder aufheben.",
+    "Trenne im Kopf immer Masse und Gewichtskraft: Kilogramm zeigt die Waage und bleibt überall gleich, Newton zeigt der Kraftmesser. Erst F = m · g mit dem passenden Ortsfaktor g bringt beide zusammen.",
+    "Bei Hebel, Flaschenzug und Rampe gilt dieselbe Regel: Was du an Kraft sparst, zahlst du am Weg. Rechne Kraft × Weg nach, dann kommt beide Male dieselbe Arbeit heraus.",
+    "Schreibe die festen Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: 1 m/s = 3,6 km/h, g = 9,8 N/kg auf der Erde und 1,6 N/kg auf dem Mond, und merke dir: doppeltes Tempo bedeutet vierfache Bewegungsenergie."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Wagen durchfährt die 10-m-Strecke in 5,0 s. Wie groß ist seine Geschwindigkeit?",
+     "loesung": "v = s / t = 10 m / 5,0 s = 2,0 m/s. Das ist genau die Tempostufe mittel."
+    },
+    {
+     "frage": "Wie groß ist die Gewichtskraft einer Masse von 2 kg auf der Erde (g = 9,8 N/kg)?",
+     "loesung": "F = m · g = 2 kg · 9,8 N/kg = 19,6 N. Die Waage zeigt dabei weiterhin die Masse 2 kg an."
+    },
+    {
+     "frage": "Ela zieht mit 3 N nach rechts, Tom mit 2 N nach links am Becken. Wie groß ist die Gesamtkraft?",
+     "loesung": "3 N − 2 N = 1 N nach rechts, also in Richtung der größeren Kraft. Entgegengesetzte Kräfte werden subtrahiert."
+    },
+    {
+     "frage": "Ein Klotz mit 5 kg liegt in 3 m Höhe. Wie viel Lageenergie speichert er (g = 9,81 N/kg)?",
+     "loesung": "E = m · g · h = 5 kg · 9,81 N/kg · 3 m = 147 J. Genau diesen Wert zeigt auch die Simulation."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Für den Einheitenwechsel gilt: 1 m/s =",
+     "loesung": "3,6 km/h",
+     "post": "."
+    },
+    {
+     "pre": "Die Masse misst man mit der Waage in Kilogramm, die Gewichtskraft mit dem Kraftmesser in",
+     "loesung": "Newton",
+     "post": "."
+    },
+    {
+     "pre": "Sind zwei Kräfte gleich groß und entgegengesetzt, ist die Gesamtkraft 0 N – man spricht vom",
+     "loesung": "Kräftegleichgewicht",
+     "post": "."
+    },
+    {
+     "pre": "Am Hebel gilt das Hebelgesetz",
+     "loesung": "F₁ · l₁ = F₂ · l₂",
+     "post": "."
+    },
+    {
+     "pre": "Lageenergie berechnet man mit E =",
+     "loesung": "m · g · h",
+     "post": "; das Ergebnis steht in Joule."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei einer gleichförmigen Bewegung gehören zu gleichen Zeiten gleiche Wege.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Doppelte Strecke in doppelter Zeit ergibt die doppelte Geschwindigkeit.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Masse eines Körpers ist auf dem Mond kleiner als auf der Erde.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Kraft und Gegenkraft sind gleich groß, entgegengesetzt gerichtet und wirken auf zwei verschiedene Körper.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die Reibungskraft wird größer, je schneller der Wagen fährt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Flaschenzug mit vier tragenden Seilstücken senkt die Zugkraft auf ein Viertel, dafür läuft die vierfache Seillänge durch die Hand.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Doppeltes Tempo vervierfacht die Bewegungsenergie, weil das Tempo im Quadrat zählt.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Flaschenzug mit n = 3 tragenden Seilstücken hebt eine Last von 600 N um 2,0 m. Wie groß sind Zugkraft und Seilweg?",
+    "optionen": [
+     "F = 600,0 N und s = 2,0 m, denn die feste Rolle spart keine Kraft.",
+     "F = 300,0 N und s = 4,0 m, wie bei zwei tragenden Seilstücken.",
+     "F = 200,0 N und s = 6,0 m, denn F = G : n und s = n · h.",
+     "F = 1800,0 N und s = 0,67 m, weil man die Last mit n malnimmt."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum Hebel, Flaschenzug und Rampe zwar Kraft sparen, aber niemals Arbeit.",
+    "zeilen": 5,
+    "loesung": "Alle drei sind einfache Maschinen, für die dieselbe Goldene Regel der Mechanik gilt: Was man an Kraft spart, muss man am Weg zugeben. Am Hebel wird mit einem langen Kraftarm die nötige Kraft kleiner, dafür beschreibt die Hand den längeren Bogen. Beim Flaschenzug trägt jedes der n Seilstücke nur den n-ten Teil der Last, dafür läuft die n-fache Seillänge durch die Hand. Auf der flachen Rampe genügt eine kleine Zugkraft, dafür wird der Weg entsprechend länger. In jedem Fall bleibt das Produkt aus Kraft und Weg – die Arbeit – gleich groß. Eine Maschine, die Arbeit spart, gibt es nicht."
+   },
+   "transfer": {
+    "frage": "Tom behauptet: „Auf dem Mond hat unsere Bühnenkiste weniger Masse, deshalb kann ich sie dort mit einem Finger heben.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Der erste Teil stimmt nicht, der zweite hat einen wahren Kern. Die Masse gibt an, wie viel Stoff in der Kiste steckt; sie ist an jedem Ort gleich, auf dem Mond also genauso groß wie auf der Erde. Was sich ändert, ist die Gewichtskraft F = m · g, denn der Ortsfaktor beträgt auf dem Mond nur 1,6 N/kg statt 9,8 N/kg. Eine 60-kg-Kiste hat auf der Erde die Gewichtskraft 588 N, auf dem Mond aber nur 96 N – etwa ein Sechstel. Deshalb fühlt sie sich dort viel leichter an und ließe sich mit weniger Kraft heben, obwohl in ihr gleich viel Stoff steckt. Tom verwechselt also die gleichbleibende Masse mit der kleiner gewordenen Gewichtskraft."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Fahrbahn oder ein langer Tisch mit Rollwagen und eine 10-m-Messstrecke",
+   "zwei Lichtschranken, eine Stoppuhr und ein Maßband",
+   "Federkraftmesser mit verschiedenen Messbereichen",
+   "Waage und ein Satz Massestücke von 100 g bis 2 kg",
+   "leerer Wasserkanister und Getränkekisten zum Wiegen und Ziehen",
+   "stabile Stange als Hebel mit einem Holzklotz als Drehpunkt",
+   "Flaschenzug mit festen und losen Rollen und ein langes Seil",
+   "schiefe Ebene als Rampe mit verstellbarer Neigung",
+   "Wagen mit Zusatzgewichten für die Reibungsversuche",
+   "Sprungfeder, ein Gummiball und ein schwerer Klotz",
+   "Holzpfahl und ein Kasten mit Sand für den Einschlagversuch",
+   "Rollbrett für den Abstoßversuch",
+   "Kugel und ein verschiebbarer Klotz für die Bewegungsenergie",
+   "Lineal, Geodreieck und Millimeterpapier für die Diagramme"
+  ]
+ },
+ {
+  "id": "gym_druck",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "DICHTE",
+     "tipp": "Die Masse je Volumen, für jeden Stoff eine feste Zahl; du berechnest sie mit ρ = m : V."
+    },
+    {
+     "wort": "VOLUMEN",
+     "tipp": "Verdoppelst du die Kantenlänge eines Würfels, wird diese Größe nach a³ gleich achtmal so groß."
+    },
+    {
+     "wort": "KILOGRAMM",
+     "tipp": "Diese Masseneinheit stammt von einem Würfel aus Wasser mit 1 dm³, der genau 1 davon wiegt."
+    },
+    {
+     "wort": "DRUCK",
+     "tipp": "Die Kraft je Fläche, gemessen in Pascal; du berechnest sie mit p = F / A."
+    },
+    {
+     "wort": "PASCAL",
+     "tipp": "Die Einheit des Drucks: 1 davon ist nur 1 N/m² und damit sehr wenig, deshalb rechnet man meist in Kilo."
+    },
+    {
+     "wort": "SCHWEREDRUCK",
+     "tipp": "Er wächst mit der Tiefe und mit der Dichte der Flüssigkeit; du berechnest ihn mit p = ρ · g · h."
+    },
+    {
+     "wort": "LUFTDRUCK",
+     "tipp": "Das Gewicht der Luftsäule über uns; auf Meereshöhe sind es 1013 hPa."
+    },
+    {
+     "wort": "MANOMETER",
+     "tipp": "Dieses Messgerät zeigt dir den Luftdruck an, auf der Zugspitze zum Beispiel noch 699 hPa."
+    },
+    {
+     "wort": "AUFTRIEB",
+     "tipp": "Die Kraft nach oben im Wasser; sie ist so groß wie die Gewichtskraft des verdrängten Wassers."
+    },
+    {
+     "wort": "ARCHIMEDES",
+     "tipp": "Nach diesem Forscher heißt das Prinzip, dass der Auftrieb gleich der Gewichtskraft des verdrängten Wassers ist."
+    },
+    {
+     "wort": "WASSERLINIE",
+     "tipp": "Beim schwimmenden Körper verrät sie den Dichtevergleich: Der eingetauchte Anteil ist genau ρ : ρ_Wasser."
+    },
+    {
+     "wort": "SCHWIMMEN",
+     "tipp": "Das tut ein Körper, sobald seine mittlere Dichte kleiner ist als die Dichte der Flüssigkeit."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann die Dichte als Masse je Volumen erklären und mit ρ = m : V begründen, warum ein großer Styroporblock leichter sein kann als eine kleine Bleikugel.",
+    "Ich kann angeben, dass ein Würfel aus Wasser mit 1 dm³ genau 1 kg wiegt, und daraus die Masse gleich großer Würfel aus anderen Stoffen abschätzen.",
+    "Ich kann mit p = F / A erklären, warum eine kleine Auflagefläche einen hohen Druck erzeugt und Skier den Menschen tragen, schmale Schuhe aber einsinken.",
+    "Ich kann den Druck in Pascal und Kilopascal angeben und beschreiben, wie er sich ändert, wenn ich die Kraft halbiere oder die Fläche verdopple.",
+    "Ich kann mit p = ρ · g · h begründen, warum der Schweredruck mit der Tiefe wächst und je 10 m Wassertiefe um 98,1 kPa zunimmt.",
+    "Ich kann erklären, dass der Schweredruck nach allen Seiten wirkt und nicht von der Form des Gefäßes oder der Wassermenge insgesamt abhängt.",
+    "Ich kann beschreiben, dass der Luftdruck vom Gewicht der Luftsäule kommt, auf Meereshöhe 1013 hPa beträgt und mit der Höhe erst steil, dann flach abnimmt.",
+    "Ich kann mit der Halbierungsregel von etwa 5,5 km den Luftdruck in großer Höhe abschätzen.",
+    "Ich kann den Auftrieb mit F_A = ρ · g · V berechnen und begründen, dass er nur vom verdrängten Wasser abhängt, nicht von der Masse des Körpers.",
+    "Ich kann mit dem Vergleich von mittlerer Dichte und Flüssigkeitsdichte vorhersagen, ob ein Körper steigt, schwebt oder sinkt."
+   ],
+   "tipps": [
+    "Schreibe zu jeder Aufgabe zuerst die passende Formel hin: ρ = m : V für die Dichte, p = F / A für den Druck, p = ρ · g · h für den Schweredruck und F_A = ρ · g · V für den Auftrieb. Dann setzt du nur noch die Zahlen ein.",
+    "Achte auf die Einheiten: Rechne das Volumen in m³, dann kommt die Masse in kg und der Druck in Pascal heraus. Merke dir 1 dm³ = 0,001 m³ und 1 kPa = 1000 Pa und wandle vor dem Einsetzen um.",
+    "Lerne die festen Zahlen des Kapitels und prüfe sie an den Seiten nach: Wasser 1000 kg/m³, Blei 11340 kg/m³, Luftdruck 101,3 kPa oder 1013 hPa, je 10 m Wassertiefe 98,1 kPa und für den 1-Liter-Würfel 9,81 N Auftrieb in Süßwasser.",
+    "Trenne Kraft und Druck sowie Masse und Dichte sauber: Nicht der schwerere Körper sinkt ein, sondern der mit dem höheren Druck; nicht der größere Körper wiegt mehr, sondern der mit der höheren Dichte."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Eisenwürfel mit a = 10 cm hat V = 0,001 m³. Wie groß ist seine Masse, wenn Eisen die Dichte 7870 kg/m³ hat?",
+     "loesung": "m = ρ · V = 7870 kg/m³ · 0,001 m³ = 7,870 kg – genau der Wert der Simulation."
+    },
+    {
+     "frage": "Auf 300 cm² erzeugt eine Person mit 588,6 N einen Druck von 19,6 kPa. Wie groß ist der Druck, wenn dieselbe Kraft auf die doppelte Fläche von 600 cm² wirkt?",
+     "loesung": "Die doppelte Fläche ergibt den halben Druck: 19,6 kPa : 2 = 9,8 kPa."
+    },
+    {
+     "frage": "In 10 m Wassertiefe zeigt die Simulation 98,1 kPa. Wie groß ist der Schweredruck in 30 m Tiefe?",
+     "loesung": "Die dreifache Tiefe ergibt den dreifachen Druck: 3 · 98,1 kPa = 294,3 kPa, denn der Schweredruck ist proportional zur Tiefe."
+    },
+    {
+     "frage": "Auf Meereshöhe sind es 1013 hPa. Wie groß ist der Luftdruck nach der Halbierungsregel in etwa 5,5 km Höhe?",
+     "loesung": "Nach je 5,5 km halbiert sich der Druck: 1013 hPa : 2 ≈ 507 hPa – der Wert an der Marke halber Druck."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Masse je Volumen heißt",
+     "loesung": "Dichte",
+     "post": "; sie ist für jeden Stoff eine feste Zahl: ρ = m : V."
+    },
+    {
+     "pre": "Die Kraft je Fläche nennt man Druck und berechnet sie mit",
+     "loesung": "p = F / A",
+     "post": ", gemessen in Pascal."
+    },
+    {
+     "pre": "Der Schweredruck wächst mit der Tiefe; je 10 m Wassertiefe kommen",
+     "loesung": "98,1 kPa",
+     "post": "dazu."
+    },
+    {
+     "pre": "Der Luftdruck auf Meereshöhe beträgt",
+     "loesung": "1013 hPa",
+     "post": "und sinkt mit der Höhe erst steil, dann flach."
+    },
+    {
+     "pre": "Der Auftrieb ist so groß wie die Gewichtskraft des",
+     "loesung": "verdrängten Wassers",
+     "post": "; das ist das Prinzip des Archimedes."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Bei gleicher Größe entscheidet die Dichte über die Masse: Ein Bleiwürfel ist 567-mal so schwer wie ein gleich großer Styroporwürfel.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelst du die Kantenlänge eines Würfels, wird sein Volumen doppelt so groß.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Um den Druck zu halbieren, kannst du die Kraft halbieren oder die Auflagefläche verdoppeln.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der Schweredruck hängt davon ab, wie viel Wasser insgesamt im Becken steht.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Luftdruck nimmt mit der Höhe gleichmäßig ab, pro Kilometer immer gleich viele Hektopascal.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Auftrieb eines ganz eingetauchten Würfels bleibt bei 0 % und bei 50 % Hohlraum gleich groß, nämlich 9,81 N in Süßwasser.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Körper schwimmt, sobald seine mittlere Dichte kleiner ist als die Dichte der Flüssigkeit.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Taucher schwimmt 30 m tief in einem Süßwassersee (ρ = 1000 kg/m³, g = 9,81 N/kg). Wie groß ist der Schweredruck in dieser Tiefe?",
+    "optionen": [
+     "196,2 kPa",
+     "392,4 kPa",
+     "98,1 kPa",
+     "294,3 kPa"
+    ],
+    "richtig": 3
+   },
+   "offen": {
+    "frage": "Erkläre mit p = F / A, warum ein schwerer Elefant keine tieferen Spuren im Boden hinterlässt als eine leichtere Person auf Stöckelabsätzen.",
+    "zeilen": 5,
+    "loesung": "Über das Einsinken entscheidet nicht die Kraft allein, sondern der Druck p = F / A, also die Kraft je Fläche. Der Elefant drückt zwar mit 49050,0 N und damit viel stärker als die Person mit nur 588,6 N. Seine breiten Füße verteilen diese Kraft aber auf rund 2400 cm², während der schmale Absatz sie auf nur 1 cm² bündelt. So kommt der Elefant nur auf 204,4 kPa, der Absatz dagegen auf 5886,0 kPa. Weil der Druck unter dem Absatz viel größer ist, sinkt er tiefer ein – trotz der viel kleineren Gewichtskraft."
+   },
+   "transfer": {
+    "frage": "Lena sagt: „Ein Stein wird unter Wasser leichter, weil das Wasser einen Teil seiner Masse wegnimmt. Und je schwerer der Stein ist, desto größer ist auch sein Auftrieb.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Unter Wasser wird nicht die Masse kleiner, sondern die Gewichtskraft wird durch den Auftrieb entlastet: Das Wasser drückt von unten stärker gegen den Stein als von oben, übrig bleibt eine Kraft nach oben. Der massive Würfel der Simulation wiegt so nur noch 67,39 N statt 77,20 N, seine Masse bleibt dabei gleich. Auch der zweite Teil ist falsch: Der Auftrieb hängt nicht vom Gewicht ab, sondern nur vom verdrängten Wasser, F_A = ρ · g · V. Ganz eingetaucht verdrängt der Würfel immer genau 1 Liter und erfährt in Süßwasser immer 9,81 N Auftrieb – ob er massiv oder innen hohl ist. Ein schwererer Körper bekommt also nicht mehr Auftrieb; er sinkt nur eher, weil seine größere Gewichtskraft den festen Auftrieb übersteigt."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "eine Küchenwaage oder Balkenwaage",
+   "gleich große Würfel aus verschiedenen Stoffen, etwa Eisen, Aluminium, Fichtenholz und Styropor",
+   "ein Messbecher oder Messzylinder zum Bestimmen des Volumens",
+   "zwei gleich große Becher, einer mit Wasser und einer mit Öl",
+   "verschiedene Auflageflächen: ein Schuh mit schmalem Absatz und ein flacher Schuh, dazu ein Holzbrett",
+   "eine flache Schale mit feinem Sand oder Knetmasse für die Abdrücke",
+   "eine hohe Plastikflasche mit drei Löchern übereinander",
+   "ein durchsichtiges Becken oder Aquarium mit Wasser",
+   "ein Federkraftmesser (Newtonmeter)",
+   "ein Eisenwürfel oder Metallblock an einer Schnur",
+   "Alufolie zum Falten eines Bootes und zum Pressen einer Kugel",
+   "Kochsalz, um aus Süßwasser Meerwasser zu machen, und ein rohes Ei",
+   "Maßband und Lineal"
+  ]
+ }
+]

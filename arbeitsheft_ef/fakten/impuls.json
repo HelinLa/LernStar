@@ -1,0 +1,551 @@
+[
+ {
+  "sim": "impuls",
+  "ueberschrift": "💥 Impuls & Stoß – p = m · v",
+  "regler": [
+   {
+    "id": "impM1",
+    "beschriftung": "hys-anim-cv\"> Masse 1 (kg): 3 kg",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "3"
+    }
+   },
+   {
+    "id": "impM2",
+    "beschriftung": "Masse 2 (kg): 5 kg",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "5"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "🔄 Stoß auslösen",
+    "ruft": "_impReset()"
+   }
+  ],
+  "hinweise": [],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": ""
+   },
+   {
+    "einstellung": "🔄 Stoß auslösen",
+    "text": ""
+   },
+   {
+    "einstellung": "🔄 Stoß auslösen · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|189.94,222.00 | lineTo|195.60,222.00 | lineTo|201.26,222.00 | lineTo|206.93,222.00 | lineTo|212.59,222.00 | lineTo|218.26,222.00 | lineTo|223.92,222.00 | lineTo|229.58,222.00 | lineTo|235.25,222.00 | lineTo|240.91,222.00 | lineTo|246.58,222.00 | lineTo|252.24,222.00 | lineTo|257.90,222.00 | lineTo|263.57,222.00 | lineTo|269.23,222.00 | lineTo|274.90,222.00 | lineTo|280.56,222.00 | lineTo|286.22,222.00 | lineTo|291.89,222.00 | lineTo|297.55,222.00 | lineTo|303.22,222.00 | lineTo|308.88,222.00 | lineTo|314.54,222.00 | lineTo|320.21,222.00 | lineTo|325.87,222.00 | lineTo|331.54,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "🔄 Stoß auslösen · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|288.41,222.00 | lineTo|293.19,222.00 | lineTo|297.97,222.00 | lineTo|302.76,222.00 | lineTo|307.54,222.00 | lineTo|312.32,222.00 | lineTo|317.11,222.00 | lineTo|321.89,222.00 | lineTo|326.68,222.00 | lineTo|331.46,222.00 | lineTo|336.24,222.00 | lineTo|341.03,222.00 | lineTo|345.81,222.00 | lineTo|350.59,222.00 | lineTo|355.38,222.00 | lineTo|360.16,222.00 | lineTo|364.95,222.00 | lineTo|369.73,222.00 | lineTo|374.51,222.00 | lineTo|379.30,222.00 | lineTo|384.08,222.00 | lineTo|388.86,222.00 | lineTo|393.65,222.00 | lineTo|398.43,222.00 | lineTo|403.22,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "🔄 Stoß auslösen · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|318.61,222.00 | lineTo|322.18,222.00 | lineTo|325.76,222.00 | lineTo|329.33,222.00 | lineTo|332.91,222.00 | lineTo|336.48,222.00 | lineTo|340.06,222.00 | lineTo|343.64,222.00 | lineTo|347.21,222.00 | lineTo|350.79,222.00 | lineTo|354.36,222.00 | lineTo|357.94,222.00 | lineTo|361.52,222.00 | lineTo|365.09,222.00 | lineTo|368.67,222.00 | lineTo|372.24,222.00 | lineTo|375.82,222.00 | lineTo|379.39,222.00 | lineTo|382.97,222.00 | lineTo|386.55,222.00 | lineTo|390.12,222.00 | lineTo|393.70,222.00 | lineTo|397.27,222.00 | lineTo|400.85,222.00 | lineTo|404.42,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "🔄 Stoß auslösen · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|336.63,222.00 | lineTo|339.48,222.00 | lineTo|342.34,222.00 | lineTo|345.19,222.00 | lineTo|348.05,222.00 | lineTo|350.90,222.00 | lineTo|353.76,222.00 | lineTo|356.61,222.00 | lineTo|359.47,222.00 | lineTo|362.32,222.00 | lineTo|365.18,222.00 | lineTo|368.03,222.00 | lineTo|370.89,222.00 | lineTo|373.74,222.00 | lineTo|376.60,222.00 | lineTo|379.45,222.00 | lineTo|382.31,222.00 | lineTo|385.16,222.00 | lineTo|388.02,222.00 | lineTo|390.87,222.00 | lineTo|393.73,222.00 | lineTo|396.58,222.00 | lineTo|399.44,222.00 | lineTo|402.29,222.00 | lineTo|405.15,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 1",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 1 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|357.14,222.00 | lineTo|359.17,222.00 | lineTo|361.21,222.00 | lineTo|363.24,222.00 | lineTo|365.28,222.00 | lineTo|367.31,222.00 | lineTo|369.34,222.00 | lineTo|371.38,222.00 | lineTo|373.41,222.00 | lineTo|375.45,222.00 | lineTo|377.48,222.00 | lineTo|379.52,222.00 | lineTo|381.55,222.00 | lineTo|383.59,222.00 | lineTo|385.62,222.00 | lineTo|387.66,222.00 | lineTo|389.69,222.00 | lineTo|391.72,222.00 | lineTo|393.76,222.00 | lineTo|395.79,222.00 | lineTo|397.83,222.00 | lineTo|399.86,222.00 | lineTo|401.90,222.00 | lineTo|403.93,222.00 | lineTo|405.97,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 1 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|363.53,222.00 | lineTo|365.31,222.00 | lineTo|367.09,222.00 | lineTo|368.86,222.00 | lineTo|370.64,222.00 | lineTo|372.42,222.00 | lineTo|374.20,222.00 | lineTo|375.98,222.00 | lineTo|377.76,222.00 | lineTo|379.54,222.00 | lineTo|381.32,222.00 | lineTo|383.10,222.00 | lineTo|384.87,222.00 | lineTo|386.65,222.00 | lineTo|388.43,222.00 | lineTo|390.21,222.00 | lineTo|391.99,222.00 | lineTo|393.77,222.00 | lineTo|395.55,222.00 | lineTo|397.33,222.00 | lineTo|399.11,222.00 | lineTo|400.88,222.00 | lineTo|402.66,222.00 | lineTo|404.44,222.00 | lineTo|406.22,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 1 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|368.49,222.00 | lineTo|370.07,222.00 | lineTo|371.65,222.00 | lineTo|373.23,222.00 | lineTo|374.81,222.00 | lineTo|376.39,222.00 | lineTo|377.97,222.00 | lineTo|379.55,222.00 | lineTo|381.13,222.00 | lineTo|382.71,222.00 | lineTo|384.29,222.00 | lineTo|385.88,222.00 | lineTo|387.46,222.00 | lineTo|389.04,222.00 | lineTo|390.62,222.00 | lineTo|392.20,222.00 | lineTo|393.78,222.00 | lineTo|395.36,222.00 | lineTo|396.94,222.00 | lineTo|398.52,222.00 | lineTo|400.10,222.00 | lineTo|401.68,222.00 | lineTo|403.26,222.00 | lineTo|404.84,222.00 | lineTo|406.42,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 1 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|372.46,222.00 | lineTo|373.88,222.00 | lineTo|375.30,222.00 | lineTo|376.72,222.00 | lineTo|378.14,222.00 | lineTo|379.57,222.00 | lineTo|380.99,222.00 | lineTo|382.41,222.00 | lineTo|383.83,222.00 | lineTo|385.25,222.00 | lineTo|386.67,222.00 | lineTo|388.10,222.00 | lineTo|389.52,222.00 | lineTo|390.94,222.00 | lineTo|392.36,222.00 | lineTo|393.78,222.00 | lineTo|395.20,222.00 | lineTo|396.63,222.00 | lineTo|398.05,222.00 | lineTo|399.47,222.00 | lineTo|400.89,222.00 | lineTo|402.31,222.00 | lineTo|403.73,222.00 | lineTo|405.16,222.00 | lineTo|406.58,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 2",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 2 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 2 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 2 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 2 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|180.0|50.00|156.00 | set:textAlign=right | fillText|20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 3",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 3 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|60.0|50.00|156.00 | set:textAlign=right | fillText|-20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 3 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|60.0|50.00|156.00 | set:textAlign=right | fillText|-20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 3 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|60.0|50.00|156.00 | set:textAlign=right | fillText|-20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 3 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|60.0|50.00|156.00 | set:textAlign=right | fillText|-20.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 4",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 4 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|20.0|50.00|156.00 | set:textAlign=right | fillText|-60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 4 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|20.0|50.00|156.00 | set:textAlign=right | fillText|-60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 4 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|20.0|50.00|156.00 | set:textAlign=right | fillText|-60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 4 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|20.0|50.00|156.00 | set:textAlign=right | fillText|-60.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 6",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 6 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-20.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 6 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-20.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 6 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-20.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 6 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-20.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 7",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 7 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 7 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 7 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 7 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 8",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 8 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-220.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 8 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-220.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 8 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-220.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 8 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-220.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 9",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 9 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-180.0|50.00|156.00 | set:textAlign=right | fillText|-260.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 9 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-180.0|50.00|156.00 | set:textAlign=right | fillText|-260.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 9 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-180.0|50.00|156.00 | set:textAlign=right | fillText|-260.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 9 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-180.0|50.00|156.00 | set:textAlign=right | fillText|-260.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 10",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 10 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-220.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 10 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-220.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 10 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-220.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 10 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,222.00 | lineTo|379.59,222.00 | lineTo|380.77,222.00 | lineTo|381.95,222.00 | lineTo|383.14,222.00 | lineTo|384.32,222.00 | lineTo|385.51,222.00 | lineTo|386.69,222.00 | lineTo|387.87,222.00 | lineTo|389.06,222.00 | lineTo|390.24,222.00 | lineTo|391.42,222.00 | lineTo|392.61,222.00 | lineTo|393.79,222.00 | lineTo|394.98,222.00 | lineTo|396.16,222.00 | lineTo|397.34,222.00 | lineTo|398.53,222.00 | lineTo|399.71,222.00 | lineTo|400.90,222.00 | lineTo|402.08,222.00 | lineTo|403.26,222.00 | lineTo|404.45,222.00 | lineTo|405.63,222.00 | lineTo|406.82,222.00 | lineTo|408.00,222.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-220.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 5",
+    "text": ""
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 5 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 5 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 5 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "hys-anim-cv\"> Masse 1 (kg): 3 kg = 5 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 1",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 1 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,175.20 | lineTo|379.59,175.20 | lineTo|380.77,175.20 | lineTo|381.95,175.20 | lineTo|383.14,175.20 | lineTo|384.32,175.20 | lineTo|385.51,175.20 | lineTo|386.69,175.20 | lineTo|387.87,175.20 | lineTo|389.06,175.20 | lineTo|390.24,175.20 | lineTo|391.42,175.20 | lineTo|392.61,175.20 | lineTo|393.79,175.20 | lineTo|394.98,175.20 | lineTo|396.16,175.20 | lineTo|397.34,175.20 | lineTo|398.53,175.20 | lineTo|399.71,175.20 | lineTo|400.90,175.20 | lineTo|402.08,175.20 | lineTo|403.26,175.20 | lineTo|404.45,175.20 | lineTo|405.63,175.20 | lineTo|406.82,175.20 | lineTo|408.00,175.20 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 1 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,175.20 | lineTo|379.59,175.20 | lineTo|380.77,175.20 | lineTo|381.95,175.20 | lineTo|383.14,175.20 | lineTo|384.32,175.20 | lineTo|385.51,175.20 | lineTo|386.69,175.20 | lineTo|387.87,175.20 | lineTo|389.06,175.20 | lineTo|390.24,175.20 | lineTo|391.42,175.20 | lineTo|392.61,175.20 | lineTo|393.79,175.20 | lineTo|394.98,175.20 | lineTo|396.16,175.20 | lineTo|397.34,175.20 | lineTo|398.53,175.20 | lineTo|399.71,175.20 | lineTo|400.90,175.20 | lineTo|402.08,175.20 | lineTo|403.26,175.20 | lineTo|404.45,175.20 | lineTo|405.63,175.20 | lineTo|406.82,175.20 | lineTo|408.00,175.20 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 1 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,175.20 | lineTo|379.59,175.20 | lineTo|380.77,175.20 | lineTo|381.95,175.20 | lineTo|383.14,175.20 | lineTo|384.32,175.20 | lineTo|385.51,175.20 | lineTo|386.69,175.20 | lineTo|387.87,175.20 | lineTo|389.06,175.20 | lineTo|390.24,175.20 | lineTo|391.42,175.20 | lineTo|392.61,175.20 | lineTo|393.79,175.20 | lineTo|394.98,175.20 | lineTo|396.16,175.20 | lineTo|397.34,175.20 | lineTo|398.53,175.20 | lineTo|399.71,175.20 | lineTo|400.90,175.20 | lineTo|402.08,175.20 | lineTo|403.26,175.20 | lineTo|404.45,175.20 | lineTo|405.63,175.20 | lineTo|406.82,175.20 | lineTo|408.00,175.20 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 1 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,175.20 | lineTo|379.59,175.20 | lineTo|380.77,175.20 | lineTo|381.95,175.20 | lineTo|383.14,175.20 | lineTo|384.32,175.20 | lineTo|385.51,175.20 | lineTo|386.69,175.20 | lineTo|387.87,175.20 | lineTo|389.06,175.20 | lineTo|390.24,175.20 | lineTo|391.42,175.20 | lineTo|392.61,175.20 | lineTo|393.79,175.20 | lineTo|394.98,175.20 | lineTo|396.16,175.20 | lineTo|397.34,175.20 | lineTo|398.53,175.20 | lineTo|399.71,175.20 | lineTo|400.90,175.20 | lineTo|402.08,175.20 | lineTo|403.26,175.20 | lineTo|404.45,175.20 | lineTo|405.63,175.20 | lineTo|406.82,175.20 | lineTo|408.00,175.20 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-300.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 2",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 2 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,202.50 | lineTo|379.59,202.50 | lineTo|380.77,202.50 | lineTo|381.95,202.50 | lineTo|383.14,202.50 | lineTo|384.32,202.50 | lineTo|385.51,202.50 | lineTo|386.69,202.50 | lineTo|387.87,202.50 | lineTo|389.06,202.50 | lineTo|390.24,202.50 | lineTo|391.42,202.50 | lineTo|392.61,202.50 | lineTo|393.79,202.50 | lineTo|394.98,202.50 | lineTo|396.16,202.50 | lineTo|397.34,202.50 | lineTo|398.53,202.50 | lineTo|399.71,202.50 | lineTo|400.90,202.50 | lineTo|402.08,202.50 | lineTo|403.26,202.50 | lineTo|404.45,202.50 | lineTo|405.63,202.50 | lineTo|406.82,202.50 | lineTo|408.00,202.50 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 2 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,202.50 | lineTo|379.59,202.50 | lineTo|380.77,202.50 | lineTo|381.95,202.50 | lineTo|383.14,202.50 | lineTo|384.32,202.50 | lineTo|385.51,202.50 | lineTo|386.69,202.50 | lineTo|387.87,202.50 | lineTo|389.06,202.50 | lineTo|390.24,202.50 | lineTo|391.42,202.50 | lineTo|392.61,202.50 | lineTo|393.79,202.50 | lineTo|394.98,202.50 | lineTo|396.16,202.50 | lineTo|397.34,202.50 | lineTo|398.53,202.50 | lineTo|399.71,202.50 | lineTo|400.90,202.50 | lineTo|402.08,202.50 | lineTo|403.26,202.50 | lineTo|404.45,202.50 | lineTo|405.63,202.50 | lineTo|406.82,202.50 | lineTo|408.00,202.50 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 2 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,202.50 | lineTo|379.59,202.50 | lineTo|380.77,202.50 | lineTo|381.95,202.50 | lineTo|383.14,202.50 | lineTo|384.32,202.50 | lineTo|385.51,202.50 | lineTo|386.69,202.50 | lineTo|387.87,202.50 | lineTo|389.06,202.50 | lineTo|390.24,202.50 | lineTo|391.42,202.50 | lineTo|392.61,202.50 | lineTo|393.79,202.50 | lineTo|394.98,202.50 | lineTo|396.16,202.50 | lineTo|397.34,202.50 | lineTo|398.53,202.50 | lineTo|399.71,202.50 | lineTo|400.90,202.50 | lineTo|402.08,202.50 | lineTo|403.26,202.50 | lineTo|404.45,202.50 | lineTo|405.63,202.50 | lineTo|406.82,202.50 | lineTo|408.00,202.50 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 2 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,202.50 | lineTo|379.59,202.50 | lineTo|380.77,202.50 | lineTo|381.95,202.50 | lineTo|383.14,202.50 | lineTo|384.32,202.50 | lineTo|385.51,202.50 | lineTo|386.69,202.50 | lineTo|387.87,202.50 | lineTo|389.06,202.50 | lineTo|390.24,202.50 | lineTo|391.42,202.50 | lineTo|392.61,202.50 | lineTo|393.79,202.50 | lineTo|394.98,202.50 | lineTo|396.16,202.50 | lineTo|397.34,202.50 | lineTo|398.53,202.50 | lineTo|399.71,202.50 | lineTo|400.90,202.50 | lineTo|402.08,202.50 | lineTo|403.26,202.50 | lineTo|404.45,202.50 | lineTo|405.63,202.50 | lineTo|406.82,202.50 | lineTo|408.00,202.50 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-100.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 3",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 3 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 3 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 3 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 3 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-140.0|50.00|156.00 | set:textAlign=right | fillText|-180.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 4",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 4 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-120.0|50.00|156.00 | set:textAlign=right | fillText|-160.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 4 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-120.0|50.00|156.00 | set:textAlign=right | fillText|-160.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 4 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-120.0|50.00|156.00 | set:textAlign=right | fillText|-160.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 4 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-120.0|50.00|156.00 | set:textAlign=right | fillText|-160.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 6",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 6 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-80.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 6 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-80.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 6 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-80.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 6 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-80.0|50.00|156.00 | set:textAlign=right | fillText|-140.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 7",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 7 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-120.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 7 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-120.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 7 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-120.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 7 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-60.0|50.00|156.00 | set:textAlign=right | fillText|-120.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 8",
+    "text": ""
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 8 · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-40.0|50.00|156.00 | set:textAlign=right | fillText|-80.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 8 · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-40.0|50.00|156.00 | set:textAlign=right | fillText|-80.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 8 · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-40.0|50.00|156.00 | set:textAlign=right | fillText|-80.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   },
+   {
+    "einstellung": "Masse 2 (kg): 5 kg = 8 · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|378.40,144.00 | lineTo|379.59,144.00 | lineTo|380.77,144.00 | lineTo|381.95,144.00 | lineTo|383.14,144.00 | lineTo|384.32,144.00 | lineTo|385.51,144.00 | lineTo|386.69,144.00 | lineTo|387.87,144.00 | lineTo|389.06,144.00 | lineTo|390.24,144.00 | lineTo|391.42,144.00 | lineTo|392.61,144.00 | lineTo|393.79,144.00 | lineTo|394.98,144.00 | lineTo|396.16,144.00 | lineTo|397.34,144.00 | lineTo|398.53,144.00 | lineTo|399.71,144.00 | lineTo|400.90,144.00 | lineTo|402.08,144.00 | lineTo|403.26,144.00 | lineTo|404.45,144.00 | lineTo|405.63,144.00 | lineTo|406.82,144.00 | lineTo|408.00,144.00 | stroke| | set:fillStyle=#374151 | set:font=700 11px sans-serif | fillText|p_ges [kg·m/s]|56.00|158.00 | set:fillStyle=#6b7280 | set:font=10px sans-serif | fillText|-40.0|50.00|156.00 | set:textAlign=right | fillText|-80.0|50.00|222.00 | set:textAlign=left | fillText|t [s]|392.00|236.00 | set:fillStyle=#059669 | set:font=700 11px sans-serif | fillText|Gesamtimpuls|191.00|134.00"
+   }
+  ],
+  "bildtexte": [
+   "m3",
+   "m5",
+   "p₁=180.0",
+   "p₂=0.0",
+   "p_ges=180.0",
+   "Impuls Ball 1",
+   "Gesamtimpuls",
+   "p₁ [kg·m/s]",
+   "180.0",
+   "t [s]",
+   "p_ges [kg·m/s]",
+   "m1",
+   "p₁=60.0",
+   "p_ges=60.0",
+   "60.0",
+   "p₁=-40.0",
+   "p₂=100.0",
+   "40.0",
+   "m2",
+   "p₁=-80.0",
+   "p_ges=20.0",
+   "20.0",
+   "p₁=-120.0",
+   "p_ges=-20.0",
+   "-20.0",
+   "120.0",
+   "m4",
+   "p₁=-160.0",
+   "p_ges=-60.0",
+   "160.0",
+   "-60.0",
+   "80.0",
+   "m6",
+   "p₁=-240.0",
+   "p_ges=-140.0",
+   "240.0",
+   "-140.0",
+   "m7",
+   "p₁=-280.0",
+   "p_ges=-180.0",
+   "280.0",
+   "-180.0",
+   "m8",
+   "p₁=-320.0",
+   "p_ges=-220.0",
+   "320.0",
+   "-220.0",
+   "m9",
+   "p₁=-360.0",
+   "p_ges=-260.0",
+   "360.0",
+   "-260.0",
+   "m10",
+   "p₁=-400.0",
+   "p_ges=-300.0",
+   "400.0",
+   "-300.0",
+   "p₁=-200.0",
+   "p_ges=-100.0",
+   "200.0",
+   "-100.0",
+   "p₂=20.0",
+   "p₂=40.0",
+   "p_ges=-160.0",
+   "p₂=60.0",
+   "p₂=80.0",
+   "p_ges=-120.0",
+   "-120.0",
+   "-160.0",
+   "p₂=120.0",
+   "p_ges=-80.0",
+   "-80.0",
+   "p₂=140.0",
+   "p₂=160.0",
+   "p_ges=-40.0",
+   "-40.0"
+  ]
+ }
+]

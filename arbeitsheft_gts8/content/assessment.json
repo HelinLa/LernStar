@@ -1,0 +1,379 @@
+[
+ {
+  "id": "gts_strom",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "LADUNG",
+     "tipp": "Davon gibt es eine positive und eine negative Sorte; gleiche stoßen sich ab, ungleiche ziehen sich an."
+    },
+    {
+     "wort": "SPANNUNG",
+     "tipp": "Dieser Antrieb der Quelle schiebt die Ladungen durch den geschlossenen Kreis; jede Zelle liefert davon 1,5 V."
+    },
+    {
+     "wort": "STROMSTAERKE",
+     "tipp": "Diese Größe gibt an, wie viel Ladung in jeder Sekunde durch den Draht wandert; gemessen wird sie in Ampere."
+    },
+    {
+     "wort": "VOLTMETER",
+     "tipp": "Dieses Gerät hängst du neben ein Bauteil und nicht in den Kreis hinein; du liest daran den Antrieb in der Einheit V ab."
+    },
+    {
+     "wort": "WIDERSTAND",
+     "tipp": "Diese Größe berechnest du aus U geteilt durch I, ihre Einheit ist Ohm; je größer sie ist, desto weniger fließt bei gleicher Spannung."
+    },
+    {
+     "wort": "KONSTANTAN",
+     "tipp": "Aus diesem Draht baut man Heizwendeln, weil die Elektronen darin viel schwerer vorankommen als in Kupfer: 180 Ω statt 20 Ω beim gleichen Stück."
+    },
+    {
+     "wort": "REIHENSCHALTUNG",
+     "tipp": "Hier gibt es für die Ladungen nur einen einzigen Weg, deshalb ist die Stromstärke überall gleich groß und die Widerstände addieren sich."
+    },
+    {
+     "wort": "PARALLELSCHALTUNG",
+     "tipp": "Hier hat jedes Bauteil seinen eigenen Weg von einem Pol zum anderen; an allen liegt dieselbe Spannung, und fällt eines aus, leuchten die übrigen weiter."
+    },
+    {
+     "wort": "DRIFTGESCHWINDIGKEIT",
+     "tipp": "So heißt das langsame Wandern der Elektronen im Kupferdraht: bei 1,0 A nur 0,0490 mm in jeder Sekunde."
+    },
+    {
+     "wort": "DONNER",
+     "tipp": "Dieser Knall entsteht, weil sich die Luft im heißen Blitzkanal schlagartig ausdehnt; er läuft mit 343 m/s und kommt deshalb später an als das Licht."
+    },
+    {
+     "wort": "LEISTUNG",
+     "tipp": "Diese Größe sagt, wie viel Energie ein Gerät in jeder Sekunde umsetzt; du berechnest sie mit P = U · I und misst sie in Watt."
+    },
+    {
+     "wort": "SICHERUNG",
+     "tipp": "Dieses Bauteil unterbricht den Stromkreis, sobald der Gesamtstrom über seine Grenze von 16 A steigt, damit das Kabel in der Wand nicht zu heiß wird."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, warum sich gleiche Ladungen abstoßen und ungleiche anziehen, und diese Kraft an Beispielen aus dem Alltag wiedererkennen.",
+    "Ich kann begründen, dass bei doppeltem Abstand nur noch ein Viertel der Kraft zwischen zwei Ladungen übrig bleibt, und dazu rechnen.",
+    "Ich kann die Spannung als Antrieb der Quelle beschreiben und ausrechnen, welche Spannung mehrere Zellen zu je 1,5 V hintereinander liefern.",
+    "Ich kann erklären, was die Stromstärke angibt, und begründen, warum im offenen Stromkreis 0 A fließen und die Lampe dunkel bleibt.",
+    "Ich kann ein Amperemeter in Reihe und ein Voltmeter parallel anschließen und erklären, was passiert, wenn ich beide vertausche.",
+    "Ich kann den Widerstand mit R = U/I berechnen und angeben, warum bei gleicher Spannung durch einen größeren Widerstand weniger Strom fließt.",
+    "Ich kann begründen, wie Länge, Dicke und Material den Widerstand eines Drahtes verändern, und daraus die Wahl eines Leitungsdrahtes ableiten.",
+    "Ich kann mit U = R · I rechnen und aus zwei Messpunkten im U-I-Diagramm weitere Werte ablesen.",
+    "Ich kann Reihenschaltung und Parallelschaltung unterscheiden und für beide angeben, wie sich Stromstärke, Spannung und Gesamtwiderstand verhalten.",
+    "Ich kann die Leistung mit P = U · I berechnen, die Wanderung der Elektronen von der Wirkung des Anstoßes unterscheiden und beurteilen, wann an einer Mehrfachsteckdose die Sicherung auslöst."
+   ],
+   "tipps": [
+    "Merke dir den Platz der beiden Messgeräte mit einem Bild: Der Strom muss durch das Amperemeter hindurch, deshalb liegt es in Reihe im Kreis. Die Spannung wird zwischen zwei Punkten abgegriffen, deshalb hängt das Voltmeter parallel neben dem Bauteil.",
+    "Schreibe die drei Formeln des Kapitels auf einen Zettel: R = U/I, U = R · I und P = U · I. Übe an jeder Formel, sie nach jeder der drei Größen umzustellen, bevor du eine Aufgabe rechnest.",
+    "Lege eine Tabelle mit zwei Spalten an, links Reihenschaltung, rechts Parallelschaltung. Trage für beide ein, was mit Stromstärke, Spannung und Gesamtwiderstand passiert: in Reihe überall gleicher Strom und R_ges größer, parallel überall gleiche Spannung und R_ges kleiner.",
+    "Prüfe die Zahlen des Kapitels an den Seiten nach: 1,5 V je Zelle und 4,5 V bei drei Zellen, 249,7 µN bei 6,0 cm und nur 62,4 µN bei doppeltem Abstand, 3 Ω, 15 Ω und 45 Ω bei 4,5 V, 300 kV/m bis zum Blitz, 343 m/s für den Donner und 16 A für die Sicherung."
+   ],
+   "mini": [
+    {
+     "frage": "An einer 6-V-Quelle liegen 20 Ω und 30 Ω in Reihe. Wie groß sind Gesamtwiderstand und Stromstärke?",
+     "loesung": "R_ges = 20 Ω + 30 Ω = 50 Ω, denn in der Reihenschaltung addieren sich die Widerstände. Daraus folgt I = 6 V: 50 Ω = 0,12 A."
+    },
+    {
+     "frage": "Durch einen Glühdraht mit 15 Ω fließen bei 4,5 V genau 0,30 A. Welche Stromstärke fließt bei 9 V?",
+     "loesung": "0,60 A. Bei festem Widerstand wächst der Strom im gleichen Verhältnis wie die Spannung: doppelte Spannung, doppelter Strom."
+    },
+    {
+     "frage": "Eine Lampe zieht bei 6 V eine Stromstärke von 1,20 A. Wie groß ist ihre Leistung?",
+     "loesung": "P = U · I = 6 V · 1,20 A = 7,20 W. Nur ein kleiner Teil davon wird Licht, der größte Teil Wärme."
+    },
+    {
+     "frage": "Du zählst nach dem Blitz 9 Sekunden bis zum Donner. Wie weit ist das Gewitter entfernt?",
+     "loesung": "s = v · t = 343 m/s · 9 s = 3087 m, also rund 3,1 km. Die Faustregel drei Sekunden je Kilometer liefert 3 km und schätzt damit etwas zu klein."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Gleiche Ladungen stoßen sich ab, ungleiche",
+     "loesung": "ziehen sich an",
+     "post": "; die Kraft wirkt, ohne dass sich die Körper berühren."
+    },
+    {
+     "pre": "Die Stromstärke misst man in Ampere. Dazu liegt das Amperemeter",
+     "loesung": "in Reihe",
+     "post": "im Stromkreis, das Voltmeter dagegen parallel zum Bauteil."
+    },
+    {
+     "pre": "Den Widerstand berechnest du mit",
+     "loesung": "R = U/I",
+     "post": "; seine Einheit ist das Ohm, kurz Ω."
+    },
+    {
+     "pre": "In der Parallelschaltung liegt an beiden Zweigen",
+     "loesung": "die gleiche Spannung",
+     "post": ", und der Gesamtwiderstand ist kleiner als der kleinste Einzelwiderstand."
+    },
+    {
+     "pre": "Die elektrische Leistung berechnest du mit",
+     "loesung": "P = U · I",
+     "post": "; sie wird in Watt gemessen und sagt, wie viel Energie pro Sekunde umgesetzt wird."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Verdoppelst du den Abstand zwischen zwei geladenen Kugeln, bleibt nur noch ein Viertel der Kraft übrig.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Drei Zellen zu je 1,5 V hintereinander geschaltet liefern zusammen 3 V.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein langer, dünner Draht hat mehr Widerstand als ein kurzer, dicker Draht aus demselben Material.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Öffnet der Schalter den Stromkreis, wartet der Strom im Kabel, bis der Schalter wieder schließt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Lampe leuchtet sofort, obwohl die Elektronen im Draht nur Bruchteile eines Millimeters je Sekunde vorankommen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "In der Reihenschaltung ist der Gesamtwiderstand kleiner als jeder einzelne Widerstand.",
+     "stimmt": false
+    },
+    {
+     "aussage": "An einer Mehrfachsteckdose addieren sich die Ströme aller Geräte in der Zuleitung.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "An einer 6-V-Quelle liegen ein Widerstand von 10 Ω und einer von 20 Ω in Reihe. Wie groß ist die Stromstärke im Kreis?",
+    "optionen": [
+     "0,10 A",
+     "0,20 A",
+     "0,30 A",
+     "0,90 A"
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Erkläre, warum in einer Reihenschaltung überall die gleiche Stromstärke fließt, in einer Parallelschaltung dagegen an jedem Bauteil die gleiche Spannung liegt.",
+    "zeilen": 5,
+    "loesung": "In der Reihenschaltung gibt es für die Ladungen nur einen einzigen Weg. Was an einer Stelle vorbeikommt, muss auch an jeder anderen Stelle vorbei, deshalb ist die Stromstärke im ganzen Kreis gleich groß; die Widerstände addieren sich zu R_ges = R₁ + R₂, und die Teilspannungen ergeben zusammen die Spannung der Quelle. In der Parallelschaltung hat dagegen jedes Bauteil seinen eigenen Weg von einem Pol zum anderen. Beide Zweige hängen mit ihren Enden an denselben zwei Punkten, deshalb liegt an beiden dieselbe Spannung. Die Zweigströme addieren sich an der Verzweigung zum Gesamtstrom I = I₁ + I₂, und weil der Strom mehr Wege hat, ist R_ges kleiner als der kleinste Einzelwiderstand."
+   },
+   "transfer": {
+    "frage": "Jannis sagt: „Ein Verlängerungskabel ist doch nur eine Leitung. Deshalb ist es egal, ob es dünn oder dick ist, und ich kann es für den Heizlüfter auch aufgerollt auf der Trommel lassen.“ Beurteile seine Aussage.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nicht. Auch ein Kabel hat einen Widerstand, und der hängt von Länge, Dicke und Material ab: In der Simulation stieg der Widerstand desselben Kupferdrahtes von 5 Ω auf 20 Ω, als er lang und dünn wurde, und die Stromstärke sank dabei von 0,90 A auf 0,23 A. Kabel und Gerät liegen in Reihe, deshalb fällt am Kabel eine Teilspannung ab, und am Gerät bleibt weniger übrig als gedacht. Wo Strom durch einen Widerstand fließt, wird nach P = U · I Energie umgesetzt, und zwar als Wärme. Ein aufgerolltes Kabel kann diese Wärme kaum abgeben, weil die Windungen sich gegenseitig aufheizen; die Isolierung kann schmelzen, bevor die Sicherung bei 16 A auslöst. Für einen Heizlüfter braucht man deshalb ein kurzes, dickes Kabel, und die Trommel muss ganz abgerollt werden."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Hartgummistab, Glasstab, Wolltuch und kleine Papierschnipsel",
+   "zwei Kugeln aus Holundermark an dünnen Fäden mit Stativ",
+   "Batteriezellen zu 1,5 V mit Haltern für eine, zwei und drei Zellen",
+   "regelbares Netzgerät bis 6 V mit Strombegrenzung",
+   "Experimentierkabel mit Krokodilklemmen, Steckbrett und ein Schalter",
+   "Lampenfassungen mit Glühlämpchen für 6 V",
+   "zwei Vielfachmessgeräte, eines als Amperemeter, eines als Voltmeter",
+   "Widerstände mit 10 Ω, 20 Ω und 30 Ω",
+   "Drahtrollen aus Kupfer, Eisen und Konstantan in verschiedenen Längen und Dicken",
+   "Widerstandsdraht auf einem Brett mit Millimeterskala und Schieber",
+   "Schaltbrett für Reihen- und Parallelschaltung",
+   "alte Lichterkette, deren Lämpchen hintereinander hängen",
+   "Mehrfachsteckdose sowie eine ausgebaute Schmelzsicherung und ein Sicherungsautomat zum Ansehen",
+   "Geräte mit Typenschild, zum Beispiel Wasserkocher, Ladegerät und Lötkolben, zum Ablesen der Wattzahl",
+   "Millimeterpapier, Lineal und Stoppuhr"
+  ]
+ },
+ {
+  "id": "gts_bewegung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "GESCHWINDIGKEIT",
+     "tipp": "Diese Größe sagt, wie schnell ein Körper ist; du berechnest sie als Strecke geteilt durch Zeit und gibst sie in Meter pro Sekunde an."
+    },
+    {
+     "wort": "MESSSTRECKE",
+     "tipp": "Das abgesteckte Stück auf dem Schulhof, das der Wagen abfährt; am Bildschirm ist es 10 m lang und bleibt bei jeder Fahrt gleich."
+    },
+    {
+     "wort": "LICHTSCHRANKE",
+     "tipp": "Dieses Gerät startet und stoppt die Uhr von selbst und misst deshalb genauer als eine Hand, bei der immer eine Reaktionszeit dazukommt."
+    },
+    {
+     "wort": "FORMELDREIECK",
+     "tipp": "Diese kleine Merkhilfe zeigt dir auf einen Blick, dass aus v = s / t auch s = v · t und t = s / v wird."
+    },
+    {
+     "wort": "UMRECHNUNGSFAKTOR",
+     "tipp": "Die Zahl 3,6 trägt diesen Namen: Mit ihr kommst du von Meter pro Sekunde zu Kilometer pro Stunde und wieder zurück."
+    },
+    {
+     "wort": "GLEICHFOERMIG",
+     "tipp": "So heißt eine Bewegung, bei der das Tempo konstant bleibt und alle Sekunden-Marken gleich weit auseinanderliegen."
+    },
+    {
+     "wort": "WEGZEITDIAGRAMM",
+     "tipp": "In diesem Schaubild steht unten die Zeit und senkrecht die bis dahin zurückgelegte Strecke; eine Gerade bedeutet dort konstantes Tempo."
+    },
+    {
+     "wort": "STEILHEIT",
+     "tipp": "Daran erkennst du im s-t-Schaubild, wie schnell der Wagen ist: Je stärker die Linie ansteigt, desto größer sein Tempo."
+    },
+    {
+     "wort": "STILLSTAND",
+     "tipp": "Das bedeutet eine waagerechte Linie im s-t-Schaubild: Die Zeit läuft weiter, der Weg wächst aber nicht mehr."
+    },
+    {
+     "wort": "BESCHLEUNIGT",
+     "tipp": "So heißt eine Bewegung, bei der sich das Tempo ändert; die Sekunden-Marken liegen dann nicht mehr gleich weit auseinander und die s-t-Linie ist gebogen."
+    },
+    {
+     "wort": "REAKTIONSWEG",
+     "tipp": "Diese Strecke fährt das Auto mit vollem Tempo weiter, bis der Fuß nach dem Erkennen der Gefahr auf der Bremse liegt."
+    },
+    {
+     "wort": "ANHALTEWEG",
+     "tipp": "Die gesamte Strecke vom Erkennen der Gefahr bis zum Stehen; bei 50 km/h sind es 40 m, bei 100 km/h schon 130 m."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann begründen, warum man Strecke und Zeit immer zusammen betrachten muss, um zu entscheiden, welches von zwei Rädern schneller ist.",
+    "Ich kann eine Strecke und eine Zeit messen und daraus mit v = s / t die Geschwindigkeit in Meter pro Sekunde berechnen.",
+    "Ich kann erklären, warum eine Lichtschranke die Zeit genauer misst als eine Stoppuhr in der Hand.",
+    "Ich kann mit dem Formeldreieck die Formel umstellen und mit s = v · t und t = s / v auch die Strecke oder die Zeit ausrechnen.",
+    "Ich kann vorhersagen, wie sich v ändert, wenn ich bei gleicher Zeit die Strecke verdopple oder bei gleicher Strecke die Zeit halbiere.",
+    "Ich kann mit dem Faktor 3,6 zwischen m/s und km/h umrechnen und zwei Angaben erst dann vergleichen, wenn beide dieselbe Einheit haben.",
+    "Ich kann eine gleichförmige Bewegung an gleichen Abständen der Sekunden-Marken und an einer Geraden im Weg-Zeit-Diagramm erkennen.",
+    "Ich kann im Weg-Zeit-Diagramm an der Steilheit der Linie ablesen, ob ein Wagen schnell fährt, langsam fährt oder steht.",
+    "Ich kann im v-t-Diagramm eine steigende, eine waagerechte und eine fallende Linie dem Beschleunigen, der gleichförmigen Fahrt und dem Bremsen zuordnen.",
+    "Ich kann Reaktionsweg, Bremsweg und Anhalteweg unterscheiden und begründen, warum doppeltes Tempo den Bremsweg viermal so lang macht."
+   ],
+   "tipps": [
+    "Schreibe bei jeder Rechnung zuerst „gegeben“ und „gesucht“ auf und setze die Einheiten mit ein. Meter geteilt durch Sekunden ergibt m/s – daran merkst du sofort, ob du in die richtige Richtung geteilt hast.",
+    "Merke dir die Richtung des Faktors 3,6 an einem Beispiel aus dem Heft: Der Radfahrer mit 5,0 m/s fährt 18,0 km/h. Die Zahl in km/h ist immer die größere, von m/s aus wird also multipliziert.",
+    "Schau bei jedem Diagramm zuerst auf die Beschriftung der senkrechten Achse. Steht dort der Weg, bedeutet eine waagerechte Linie Stillstand. Steht dort die Geschwindigkeit, bedeutet dieselbe Linie eine gleichförmige Fahrt.",
+    "Präge dir die drei Anhaltewege der Simulation ein: 30 km/h → 18 m, 50 km/h → 40 m, 100 km/h → 130 m. Mit diesen Zahlen kannst du jede Behauptung über Sicherheitsabstände sofort nachprüfen."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Wagen durchfährt die Messstrecke von 10 m in 4 s. Wie groß ist seine Geschwindigkeit?",
+     "loesung": "v = s / t = 10 m / 4 s = 2,5 m/s."
+    },
+    {
+     "frage": "Rechne 20,0 m/s in km/h um.",
+     "loesung": "20,0 m/s · 3,6 = 72,0 km/h."
+    },
+    {
+     "frage": "Was bedeutet eine waagerechte Linie im Weg-Zeit-Diagramm?",
+     "loesung": "Der Weg wächst nicht mehr, die Zeit läuft aber weiter: Der Wagen steht still."
+    },
+    {
+     "frage": "Bei 50 km/h beträgt der Bremsweg 25 m. Wie lang ist er bei 100 km/h?",
+     "loesung": "100 m, denn bei doppeltem Tempo wird der Bremsweg viermal so lang."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Geschwindigkeit berechnest du mit v =",
+     "loesung": "s / t",
+     "post": ", ihre Einheit ist Meter pro Sekunde."
+    },
+    {
+     "pre": "Von m/s zu km/h rechnest du",
+     "loesung": "mal 3,6",
+     "post": "; ein Radfahrer mit 5,0 m/s fährt also 18,0 km/h."
+    },
+    {
+     "pre": "Liegen alle Sekunden-Marken gleich weit auseinander, ist die Bewegung",
+     "loesung": "gleichförmig",
+     "post": "; im Weg-Zeit-Diagramm ergibt sie eine Gerade."
+    },
+    {
+     "pre": "Eine waagerechte Linie im Weg-Zeit-Diagramm bedeutet",
+     "loesung": "Stillstand",
+     "post": ", im v-t-Diagramm dagegen konstantes Tempo."
+    },
+    {
+     "pre": "Reaktionsweg und Bremsweg ergeben zusammen den",
+     "loesung": "Anhalteweg",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein Wagen, der die Messstrecke von 10 m in 5 s durchfährt, ist 2 m/s schnell.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Halbierst du bei gleicher Strecke die Zeit, wird auch die Geschwindigkeit halbiert.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine Lichtschranke misst die Zeit genauer als eine Stoppuhr in der Hand, weil bei ihr keine Reaktionszeit dazukommt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei einer gleichförmigen Fahrt werden die Abstände der Sekunden-Marken nach hinten hin immer größer.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Im Weg-Zeit-Diagramm gehört eine steilere Gerade zu einer größeren Geschwindigkeit.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Eine fallende Linie im v-t-Diagramm bedeutet, dass der Wagen rückwärts fährt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Steigt das Tempo von 50 km/h auf 100 km/h, wächst der Bremsweg von 25 m auf 100 m.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Bus legt 900 m in 60 s zurück. Wie schnell fährt er in Kilometern pro Stunde?",
+    "optionen": [
+     "15 km/h",
+     "41,7 km/h",
+     "54 km/h",
+     "150 km/h"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Jannis braucht für eine Strecke von 40 m genau 8 s, Nour für dieselbe Strecke 5 s. Berechne beide Geschwindigkeiten und erkläre, wessen Linie im Weg-Zeit-Diagramm steiler verläuft.",
+    "zeilen": 5,
+    "loesung": "Gegeben ist jeweils s = 40 m, gesucht ist v. Für Jannis gilt v = s / t = 40 m / 8 s = 5,0 m/s, für Nour v = 40 m / 5 s = 8,0 m/s. Nour ist also schneller, obwohl beide dieselbe Strecke gefahren sind – entschieden hat die kürzere Zeit. Weil Nour in jeder Sekunde mehr Weg zurücklegt, steigt ihre Linie im Weg-Zeit-Diagramm steiler an als die von Jannis. In km/h sind das 18,0 km/h und 28,8 km/h."
+   },
+   "transfer": {
+    "frage": "Auf dem Schulhof liegen zwei Reihen Kreidestriche nebeneinander, in beiden Reihen ist zwischen zwei Strichen genau eine Sekunde vergangen. In Reihe A sind alle Abstände gleich groß, in Reihe B werden sie immer größer. Nour sagt: „Reihe B gehört zum schnelleren Rad.“ Beurteile ihre Aussage und beschreibe, welche Linien die beiden Fahrten im Weg-Zeit-Diagramm und im v-t-Diagramm ergeben.",
+    "zeilen": 6,
+    "loesung": "Nours Aussage lässt sich so nicht halten. Gleiche Abstände bedeuten nur, dass Rad A in jeder Sekunde die gleiche Strecke schafft, also gleichförmig fährt. Wachsende Abstände bedeuten, dass Rad B beschleunigt, also immer schneller wird. Über den Vergleich der beiden Räder sagt das noch nichts: Rad B kann am Anfang deutlich langsamer gewesen sein als A und erst später an ihm vorbeiziehen. Entscheiden kann man nur, indem man einzelne Abstände direkt miteinander vergleicht, also die in derselben Sekunde zurückgelegten Strecken. Im Weg-Zeit-Diagramm ergibt A eine Gerade und B eine nach oben gebogene Kurve; im v-t-Diagramm verläuft die Linie von A waagerecht, die von B steigt an."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Maßband oder Gliedermaßstab zum Abstecken der Messstrecke",
+   "Straßenkreide für die Startlinie, die Ziellinie und die Sekunden-Marken",
+   "Stoppuhren, für jede Gruppe mindestens eine",
+   "Lichtschranke mit Zeitmessgerät für die Gegenprobe",
+   "Fahrbahn mit Wagen und Startvorrichtung",
+   "Rollwagen oder Spielzeugauto mit einstellbarem Antrieb",
+   "ein Fahrrad aus der AG mit Fahrradtacho",
+   "Markierungshütchen für Abschnitte auf dem Schulhof",
+   "Kreppband für die Marken im Flur und im Klassenraum",
+   "Millimeterpapier, Lineal und Geodreieck für die Diagramme",
+   "Taschenrechner",
+   "Klemmbrett mit vorbereiteten Messtabellen"
+  ]
+ }
+]

@@ -1,0 +1,172 @@
+[
+ {
+  "sim": "widerstand",
+  "ueberschrift": "🚧 Was ist ein elektrischer Widerstand?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "kleiner Widerstand",
+    "ruft": "_widSet('klein')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_widSet('mittel')"
+   },
+   {
+    "aufschrift": "großer Widerstand",
+    "ruft": "_widSet('gross')"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_widReset()"
+   },
+   {
+    "aufschrift": "Er verstärkt den Strom",
+    "ruft": "_widAns(0,0)"
+   },
+   {
+    "aufschrift": "Er hemmt den Strom",
+    "ruft": "_widAns(0,1)"
+   },
+   {
+    "aufschrift": "Er erzeugt Spannung",
+    "ruft": "_widAns(0,2)"
+   },
+   {
+    "aufschrift": "Größer",
+    "ruft": "_widAns(1,0)"
+   },
+   {
+    "aufschrift": "Kleiner",
+    "ruft": "_widAns(1,1)"
+   },
+   {
+    "aufschrift": "Gleich",
+    "ruft": "_widAns(1,2)"
+   },
+   {
+    "aufschrift": "Ampere (A)",
+    "ruft": "_widAns(2,0)"
+   },
+   {
+    "aufschrift": "Volt (V)",
+    "ruft": "_widAns(2,1)"
+   },
+   {
+    "aufschrift": "Ohm (Ω)",
+    "ruft": "_widAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_widSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_widSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_widSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('widerstand')"
+   }
+  ],
+  "hinweise": [
+   "Die Spannung bleibt gleich (4,5 V). Baue verschiedene Bauteile ein und beobachte den Strom. Was macht ein großer Widerstand mit dem Strom? (Nur ungefährliche Kleinspannung.)",
+   "Jedes Bauteil setzt dem Strom einen Widerstand entgegen. Bei gleicher Spannung gilt: großer Widerstand → kleiner Strom. Man berechnet ihn aus Spannung und Stromstärke: R = U / I. Einheit: Ohm (Ω).",
+   "Gleiche Spannung, größerer Widerstand → weniger Strom. | R = U/I, Einheit Ohm (Ω)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I)."
+   },
+   {
+    "einstellung": "kleiner Widerstand",
+    "text": "widStatus: dicker Kupferdraht: Widerstand R = 3 Ω. Bei U = 4,5 V fließt I = 1,50 A. Größerer Widerstand → kleinerer Strom (R = U/I)."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I)."
+   },
+   {
+    "einstellung": "großer Widerstand",
+    "text": "widStatus: Widerstandsdraht: Widerstand R = 45 Ω. Bei U = 4,5 V fließt I = 0,10 A. Größerer Widerstand → kleinerer Strom (R = U/I)."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I)."
+   },
+   {
+    "einstellung": "Er verstärkt den Strom",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Verstärken tut er den Strom nicht."
+   },
+   {
+    "einstellung": "Er hemmt den Strom",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✓ Richtig! Der Widerstand hemmt (bremst) den Strom."
+   },
+   {
+    "einstellung": "Er erzeugt Spannung",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand."
+   },
+   {
+    "einstellung": "Größer",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Ein größerer Widerstand macht den Strom nicht größer."
+   },
+   {
+    "einstellung": "Kleiner",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✓ Richtig! Großer Widerstand → kleiner Strom."
+   },
+   {
+    "einstellung": "Gleich",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl."
+   },
+   {
+    "einstellung": "Ampere (A)",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✗ Ampere ist die Einheit der Stromstärke."
+   },
+   {
+    "einstellung": "Volt (V)",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✗ Volt ist die Einheit der Spannung."
+   },
+   {
+    "einstellung": "Ohm (Ω)",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✓ Richtig! Der Widerstand wird in Ohm (Ω) gemessen."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✓ Richtig! Der Widerstand wird in Ohm (Ω) gemessen.  ||  widSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✓ Richtig! Der Widerstand wird in Ohm (Ω) gemessen.  ||  widSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✓ Richtig! Der Widerstand wird in Ohm (Ω) gemessen."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "widStatus: Glühdraht: Widerstand R = 15 Ω. Bei U = 4,5 V fließt I = 0,30 A. Größerer Widerstand → kleinerer Strom (R = U/I).  ||  widFb0: ✗ Spannung erzeugt die Quelle, nicht der Widerstand.  ||  widFb1: ✗ Der Strom ändert sich sehr wohl.  ||  widFb2: ✓ Richtig! Der Widerstand wird in Ohm (Ω) gemessen."
+   }
+  ],
+  "bildtexte": [
+   "4,5 V",
+   "R = 15 Ω",
+   "Glühdraht",
+   "A",
+   "0,30 A",
+   "R = 15 Ω   →   I = 0,30 A",
+   "R = 3 Ω",
+   "dicker Kupferdraht",
+   "1,50 A",
+   "R = 3 Ω   →   I = 1,50 A",
+   "R = 45 Ω",
+   "Widerstandsdraht",
+   "0,10 A",
+   "R = 45 Ω   →   I = 0,10 A"
+  ]
+ }
+]

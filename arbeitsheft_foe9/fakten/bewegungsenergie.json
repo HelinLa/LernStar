@@ -1,0 +1,244 @@
+[
+ {
+  "sim": "bewegungsenergie",
+  "ueberschrift": "⚽ Warum kann ein rollender Ball etwas umwerfen?",
+  "regler": [
+   {
+    "id": "bgeM",
+    "beschriftung": "utton> ↺ zurücksetzen Masse m: 4 kg",
+    "bereich": {
+     "min": "1",
+     "max": "16",
+     "step": "1",
+     "start": "4"
+    }
+   },
+   {
+    "id": "bgeV",
+    "beschriftung": "Tempo v: 4 m/s",
+    "bereich": {
+     "min": "1",
+     "max": "12",
+     "step": "1",
+     "start": "4"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "▶ Rollen lassen",
+    "ruft": "_bgeGo()"
+   },
+   {
+    "aufschrift": "×2 Masse",
+    "ruft": "_bgeVerdopple('m')"
+   },
+   {
+    "aufschrift": "×2 Tempo",
+    "ruft": "_bgeVerdopple('v')"
+   },
+   {
+    "aufschrift": "↺ zurücksetzen",
+    "ruft": "_bgeInit();_bgeSync()"
+   }
+  ],
+  "hinweise": [
+   "Die Kugel trifft einen Klotz und schiebt ihn ein Stück weit. Die Schiebestrecke zeigt, wie viel Energie in der Bewegung steckte.",
+   "Verdopple erst die Masse, dann das Tempo – und vergleiche die beiden Schiebestrecken. Sie sind nicht gleich.",
+   "Ebew = ½ · m · v² | doppelte Masse → doppelte Energie | doppeltes Tempo → vierfache Energie"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "bgeStatus: 4 kg mit 4 m/s | E = ½ · 4 · 4² = 32 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "▶ Rollen lassen",
+    "text": "bgeStatus: 4 kg mit 4 m/s | E = ½ · 4 · 4² = 32 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "×2 Masse",
+    "text": "bgeStatus: 8 kg mit 4 m/s | E = ½ · 8 · 4² = 64 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "×2 Tempo",
+    "text": "bgeStatus: 8 kg mit 8 m/s | E = ½ · 8 · 8² = 256 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "↺ zurücksetzen",
+    "text": "bgeStatus: 4 kg mit 4 m/s | E = ½ · 4 · 4² = 32 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 1",
+    "text": "bgeStatus: 1 kg mit 4 m/s | E = ½ · 1 · 4² = 8 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 3",
+    "text": "bgeStatus: 3 kg mit 4 m/s | E = ½ · 3 · 4² = 24 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 5",
+    "text": "bgeStatus: 5 kg mit 4 m/s | E = ½ · 5 · 4² = 40 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 7",
+    "text": "bgeStatus: 7 kg mit 4 m/s | E = ½ · 7 · 4² = 56 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 9",
+    "text": "bgeStatus: 9 kg mit 4 m/s | E = ½ · 9 · 4² = 72 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 10",
+    "text": "bgeStatus: 10 kg mit 4 m/s | E = ½ · 10 · 4² = 80 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 12",
+    "text": "bgeStatus: 12 kg mit 4 m/s | E = ½ · 12 · 4² = 96 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 14",
+    "text": "bgeStatus: 14 kg mit 4 m/s | E = ½ · 14 · 4² = 112 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 16",
+    "text": "bgeStatus: 16 kg mit 4 m/s | E = ½ · 16 · 4² = 128 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 2",
+    "text": "bgeStatus: 2 kg mit 4 m/s | E = ½ · 2 · 4² = 16 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 4",
+    "text": "bgeStatus: 4 kg mit 4 m/s | E = ½ · 4 · 4² = 32 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 6",
+    "text": "bgeStatus: 6 kg mit 4 m/s | E = ½ · 6 · 4² = 48 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 8",
+    "text": "bgeStatus: 8 kg mit 4 m/s | E = ½ · 8 · 4² = 64 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 11",
+    "text": "bgeStatus: 11 kg mit 4 m/s | E = ½ · 11 · 4² = 88 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 13",
+    "text": "bgeStatus: 13 kg mit 4 m/s | E = ½ · 13 · 4² = 104 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 4 kg = 15",
+    "text": "bgeStatus: 15 kg mit 4 m/s | E = ½ · 15 · 4² = 120 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 1",
+    "text": "bgeStatus: 15 kg mit 1 m/s | E = ½ · 15 · 1² = 8 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 2",
+    "text": "bgeStatus: 15 kg mit 2 m/s | E = ½ · 15 · 2² = 30 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 4",
+    "text": "bgeStatus: 15 kg mit 4 m/s | E = ½ · 15 · 4² = 120 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 5",
+    "text": "bgeStatus: 15 kg mit 5 m/s | E = ½ · 15 · 5² = 188 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 7",
+    "text": "bgeStatus: 15 kg mit 7 m/s | E = ½ · 15 · 7² = 368 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 8",
+    "text": "bgeStatus: 15 kg mit 8 m/s | E = ½ · 15 · 8² = 480 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 9",
+    "text": "bgeStatus: 15 kg mit 9 m/s | E = ½ · 15 · 9² = 608 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 11",
+    "text": "bgeStatus: 15 kg mit 11 m/s | E = ½ · 15 · 11² = 908 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 12",
+    "text": "bgeStatus: 15 kg mit 12 m/s | E = ½ · 15 · 12² = 1080 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 3",
+    "text": "bgeStatus: 15 kg mit 3 m/s | E = ½ · 15 · 3² = 68 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 6",
+    "text": "bgeStatus: 15 kg mit 6 m/s | E = ½ · 15 · 6² = 270 J | Drücke „Rollen lassen“."
+   },
+   {
+    "einstellung": "Tempo v: 4 m/s = 10",
+    "text": "bgeStatus: 15 kg mit 10 m/s | E = ½ · 15 · 10² = 750 J | Drücke „Rollen lassen“."
+   }
+  ],
+  "bildtexte": [
+   "4",
+   "Bewegungsenergie E = ½ · m · v²",
+   "32 J",
+   "v = 4 m/s",
+   "das Tempo zählt doppelt: v steht im Quadrat",
+   "8",
+   "64 J",
+   "256 J",
+   "v = 8 m/s",
+   "1",
+   "8 J",
+   "3",
+   "24 J",
+   "5",
+   "40 J",
+   "7",
+   "56 J",
+   "9",
+   "72 J",
+   "10",
+   "80 J",
+   "12",
+   "96 J",
+   "14",
+   "112 J",
+   "16",
+   "128 J",
+   "2",
+   "16 J",
+   "6",
+   "48 J",
+   "11",
+   "88 J",
+   "13",
+   "104 J",
+   "15",
+   "120 J",
+   "v = 1 m/s",
+   "30 J",
+   "v = 2 m/s",
+   "188 J",
+   "v = 5 m/s",
+   "368 J",
+   "v = 7 m/s",
+   "480 J",
+   "608 J",
+   "v = 9 m/s",
+   "908 J",
+   "v = 11 m/s",
+   "1080 J",
+   "v = 12 m/s",
+   "68 J",
+   "v = 3 m/s",
+   "270 J",
+   "v = 6 m/s",
+   "750 J",
+   "v = 10 m/s"
+  ]
+ }
+]

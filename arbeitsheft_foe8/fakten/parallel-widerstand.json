@@ -1,0 +1,202 @@
+[
+ {
+  "sim": "parallel-widerstand",
+  "ueberschrift": "⑃ Parallelschaltung von Widerständen",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "10 Ω",
+    "ruft": "_pwdSet(1,10)"
+   },
+   {
+    "aufschrift": "20 Ω",
+    "ruft": "_pwdSet(1,20)"
+   },
+   {
+    "aufschrift": "30 Ω",
+    "ruft": "_pwdSet(1,30)"
+   },
+   {
+    "aufschrift": "10 Ω",
+    "ruft": "_pwdSet(2,10)"
+   },
+   {
+    "aufschrift": "20 Ω",
+    "ruft": "_pwdSet(2,20)"
+   },
+   {
+    "aufschrift": "30 Ω",
+    "ruft": "_pwdSet(2,30)"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_pwdReset()"
+   },
+   {
+    "aufschrift": "An beiden gleich",
+    "ruft": "_pwdAns(0,0)"
+   },
+   {
+    "aufschrift": "Sie teilt sich auf",
+    "ruft": "_pwdAns(0,1)"
+   },
+   {
+    "aufschrift": "Am ersten größer",
+    "ruft": "_pwdAns(0,2)"
+   },
+   {
+    "aufschrift": "I = I₁ − I₂",
+    "ruft": "_pwdAns(1,0)"
+   },
+   {
+    "aufschrift": "I = I₁ + I₂",
+    "ruft": "_pwdAns(1,1)"
+   },
+   {
+    "aufschrift": "I ist überall gleich",
+    "ruft": "_pwdAns(1,2)"
+   },
+   {
+    "aufschrift": "Größer als beide",
+    "ruft": "_pwdAns(2,0)"
+   },
+   {
+    "aufschrift": "Kleiner als der kleinste",
+    "ruft": "_pwdAns(2,1)"
+   },
+   {
+    "aufschrift": "Genau dazwischen",
+    "ruft": "_pwdAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_pwdSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_pwdSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_pwdSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('parallelwid')"
+   }
+  ],
+  "hinweise": [
+   "Schalte zwei Widerstände nebeneinander (parallel). Verändere ihre Werte. Wie groß ist der Gesamtstrom und der Gesamtwiderstand? (Nur ungefährliche Kleinspannung, 4,5 V.)",
+   "In der Parallelschaltung liegt an beiden Widerständen die gleiche Spannung. Die Ströme addieren sich: I = I₁ + I₂. Weil es mehr Wege für den Strom gibt, wird der Gesamtwiderstand kleiner als der kleinste Einzelwiderstand.",
+   "Gleiche Spannung an beiden · I = I₁ + I₂ · Rges kleiner als jeder Einzelwiderstand."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω)."
+   },
+   {
+    "einstellung": "10 Ω",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω)."
+   },
+   {
+    "einstellung": "20 Ω",
+    "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω)."
+   },
+   {
+    "einstellung": "30 Ω",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω)."
+   },
+   {
+    "einstellung": "10 Ω",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω)."
+   },
+   {
+    "einstellung": "20 Ω",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω)."
+   },
+   {
+    "einstellung": "30 Ω",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω)."
+   },
+   {
+    "einstellung": "↺",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω)."
+   },
+   {
+    "einstellung": "An beiden gleich",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an."
+   },
+   {
+    "einstellung": "Sie teilt sich auf",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung."
+   },
+   {
+    "einstellung": "Am ersten größer",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung."
+   },
+   {
+    "einstellung": "I = I₁ − I₂",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts."
+   },
+   {
+    "einstellung": "I = I₁ + I₂",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich."
+   },
+   {
+    "einstellung": "I ist überall gleich",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme."
+   },
+   {
+    "einstellung": "Größer als beide",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer."
+   },
+   {
+    "einstellung": "Kleiner als der kleinste",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand."
+   },
+   {
+    "einstellung": "Genau dazwischen",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
+   }
+  ],
+  "bildtexte": [
+   "4,5 V",
+   "R₁ = 10 Ω",
+   "0,45 A",
+   "R₂ = 20 Ω",
+   "0,23 A",
+   "A",
+   "0,68 A",
+   "I = I₁ + I₂ = 0,68 A",
+   "R₁ = 20 Ω",
+   "I = I₁ + I₂ = 0,45 A",
+   "R₁ = 30 Ω",
+   "0,15 A",
+   "0,38 A",
+   "I = I₁ + I₂ = 0,38 A",
+   "R₂ = 10 Ω",
+   "0,60 A",
+   "I = I₁ + I₂ = 0,60 A",
+   "R₂ = 30 Ω",
+   "0,30 A",
+   "I = I₁ + I₂ = 0,30 A"
+  ]
+ }
+]

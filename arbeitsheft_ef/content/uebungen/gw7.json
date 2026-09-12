@@ -1,0 +1,72 @@
+{
+ "id": "gw7",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "S5",
+  "K8",
+  "E3"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Drei Größen des newtonschen Kraftgesetzes lassen sich abmessen: die beiden Massen und ihr Abstand. Die vierte ist die",
+   "loesung": "Gravitationskonstante G",
+   "post": "; sie folgt allein aus einer Kraftmessung."
+  },
+  {
+   "pre": "Aus dem Datenblatt folgt m₁ · m₂ = 158 kg · 0,73 kg = 115,34 kg²; für das Quadrat des Mittelpunktabstands ergibt sich r² =",
+   "loesung": "0,0529 m²",
+   "post": "."
+  },
+  {
+   "pre": "Mit G · m₁ · m₂ = 7,70 · 10⁻⁹ N·m² liefert die Division durch r² die Anziehung zwischen großer und kleiner Kugel: F =",
+   "loesung": "1,46 · 10⁻⁷ N",
+   "post": "; diese Kraft verdrillt den Draht."
+  },
+  {
+   "pre": "Für den Ortsfaktor am Erdboden gilt g = G · M / R². Nach der Masse der Erde umgestellt heißt dieselbe Gleichung M =",
+   "loesung": "g · R² / G",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Der Balken kommt erst zur Ruhe, wenn der verdrillte Draht die Anziehung der Kugeln aufwiegt; aus dem erreichten Drehwinkel folgt deshalb F.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil Cavendish sein Ergebnis 1798 als Dichte der Erde angab, hat die Drehwaage keine Naturkonstante geliefert, sondern eine Eigenschaft der Erde.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Teilt man die Gewichtskraft m₂ · g = 7,16 N durch die berechnete Anziehung zur großen Kugel, so erhält man eine Zahl der Größenordnung 10⁷.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Der Abstand r, der in F = G · m₁ · m₂ / r² quadratisch eingeht, ist die im Datenblatt genannte Länge des Waagebalkens von 1,8 m.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira trägt in ihre Wettbewerbsmappe ein: „Im Gartenhaus von Henry Cavendish wurde 1798 die Masse der Erde gemessen.“ Welche Beurteilung dieser Aussage trifft zu?",
+  "optionen": [
+   "Sie trifft zu: Die Erde zieht an den beiden kleinen Kugeln, und der Drehwinkel des Balkens ist damit unmittelbar ein Maß für ihre Masse.",
+   "Sie zieht zwei Schritte zusammen: Gemessen wurde die Kraft zwischen zwei bekannten Bleimassen, und daraus folgt G = F · r² / (m₁ · m₂). Die Erdmasse ergibt sich erst danach aus M = g · R² / G.",
+   "Sie ist in jeder Hinsicht falsch: Der Versuch liefert allein die Dichte der Erde, wie Cavendish sie 1798 angegeben hat; auf eine Masse führt er grundsätzlich nicht."
+  ],
+  "richtig": 1,
+  "erklaerung": "Die Erde spielt im Gartenhaus keine Rolle: Ihre Anziehung zieht senkrecht an dem waagerecht hängenden Balken und dreht ihn nicht. Was den Draht verdrillt, ist die waagerechte Anziehung zwischen den Bleikugeln – mit m₁ = 158 kg, m₂ = 0,73 kg und r = 0,23 m sind das F = 1,46 · 10⁻⁷ N. Weil m₁, m₂ und r abgemessen sind und F gemessen wird, bleibt in F = G · m₁ · m₂ / r² genau eine Unbekannte; umgestellt ergibt sich G = F · r² / (m₁ · m₂). Erst diese Naturkonstante trennt in g = G · M / R² das Produkt G · M auf, und M = g · R² / G führt mit g = 9,81 N/kg und R = 6,37 · 10⁶ m auf 5,96 · 10²⁴ kg. Auch die dritte Beurteilung trägt nicht: Der Versuch liefert weder Dichte noch Masse unmittelbar, sondern eine Naturkonstante – Dichte und Masse der Erde sind beide erst die Folgerung daraus. Falsch an Miras Satz ist also nicht das Ziel, sondern die übersprungene Zwischenstufe."
+ },
+ "offen": {
+  "frage": "Tobias rechnet nach: 7,16 N : 1,46 · 10⁻⁷ N ergibt rund 4,9 · 10⁷. Er schließt daraus: „Eine Kraft, die 4,9 · 10⁷-mal kleiner ist als das Gewicht der kleinen Kugel, lässt sich nicht messen – Cavendish kann diesen Wert nicht bestimmt haben.“ Prüfe seine Rechnung und beurteile seinen Schluss anhand des Aufbaus der Drehwaage.",
+  "prompt": "Tobias rechnet nach: 7,16 N : 1,46 · 10⁻⁷ N ergibt rund 4,9 · 10⁷. Er schließt daraus: „Eine Kraft, die 4,9 · 10⁷-mal kleiner ist als das Gewicht der kleinen Kugel, lässt sich nicht messen – Cavendish kann diesen Wert nicht bestimmt haben.“ Prüfe seine Rechnung und beurteile seinen Schluss anhand des Aufbaus der Drehwaage.",
+  "zeilen": 5,
+  "loesung": "Die Rechnung stimmt: Eine kleine Kugel wiegt m₂ · g = 0,73 kg · 9,81 N/kg = 7,16 N, die Anziehung zur großen Kugel beträgt F = 1,46 · 10⁻⁷ N, und der Quotient ist rund 4,9 · 10⁷. Der Schluss trägt trotzdem nicht, denn Tobias vergleicht zwei Kräfte, die im Versuch gar nicht gegeneinander arbeiten. Die Gewichtskraft zieht senkrecht nach unten und wird vom Draht getragen; die gesuchte Anziehung wirkt waagerecht und dreht den Balken um genau diese Aufhängung. Gemessen wird also nicht ein winziger Anteil einer großen Kraft, sondern eine kleine Kraft gegen einen sehr geringen Widerstand: Der dünne Draht setzt der Verdrillung wenig entgegen, und der 1,8 m lange Waagebalken verlängert den Hebelarm, sodass aus der winzigen Kraft ein ablesbarer Drehwinkel wird. Entscheidend ist zusätzlich die Abschirmung – beobachtet wird durch Fernrohre von außen, weil schon ein Luftzug im Raum größer wäre als die zu messende Kraft. Der Aufbau ist damit ein Verfahren, das für genau diese Größenordnung gebaut ist. Dass der Ausschlag überhaupt zustande kommt, ist zugleich der Nachweis, dass sich beliebige Massen anziehen: Im Gartenhaus war kein Himmelskörper beteiligt."
+ }
+}

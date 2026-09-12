@@ -1,0 +1,72 @@
+{
+ "id": "gw4",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "K8",
+  "B1"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Über dem Abstand r liegen die fünf Messpunkte auf einer fallenden Kurve; eine Steigung ist daraus nicht abzulesen, und das Auswertungsfeld zeichnet dort bewusst keine",
+   "loesung": "Ausgleichsgerade",
+   "post": "."
+  },
+  {
+   "pre": "Erst wenn man F nicht über r, sondern über 1/r² aufträgt, entsteht eine Ursprungsgerade. Diesen Rechenschritt nennt man",
+   "loesung": "Linearisieren",
+   "post": "."
+  },
+  {
+   "pre": "Bei beiden Massen 5 kg meldet das Auswertungsfeld y = 200,000·x bei R² = 1,0000. Durch m₁ · m₂ = 25 geteilt, ergibt diese Steigung die Verhältniszahl",
+   "loesung": "8,000 Einheiten je kg²",
+   "post": "."
+  },
+  {
+   "pre": "Trägt man F dagegen über m₁ auf, so liegen die Punkte ohne jede Umrechnung auf einer Geraden; bei m₂ = 5 kg und Abstand 2 beträgt ihre Steigung",
+   "loesung": "10,000",
+   "post": ", und daraus rechnet der Ergebniskasten m₂ = 5,000 kg zurück."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Zwischen zwei Messpunkten einer auswertbaren Reihe darf nur eine Größe verändert werden; die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht.",
+   "stimmt": true
+  },
+  {
+   "aussage": "In der Auftragung „F über r auftragen“ fehlt die Ausgleichsgerade, weil fünf Messwerte für eine Gerade zu wenige sind.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Dieselben fünf Messwerte ergeben über 1/r² die Gerade y = 200,000·x und in der Auftragung „F über m₁·m₂/r² auftragen“ die Gerade y = 8,000·x.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Aus der Steigung der Geraden über 1/r² lässt sich die Anziehung zwischen den beiden Kugeln in Newton angeben, sobald der Abstand bekannt ist.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias trägt die Messreihe über 1/r² auf, liest y = 200,000·x ab und notiert für die Jury: „Die Steigung 200 ist die Naturkonstante dieser beiden Kugeln.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Tobias hat recht: R² = 1,0000 zeigt, dass jeder Messpunkt genau auf der Geraden liegt. Eine Steigung, die so exakt herauskommt, kann nur eine Naturkonstante sein.",
+   "Die Steigung gehört zu dieser einen Messreihe: Unter „Erwarteter Funktionstyp“ steht „Steigung = 8 · m₁ · m₂ = 8 · 5 · 5 = 200“. Erst k geteilt durch m₁ · m₂ ergibt die für jede Reihe gleiche Verhältniszahl 8,000 Einheiten je kg².",
+   "Eine Steigung ist hier gar keine physikalische Größe, weil auf der x-Achse mit 1/r² eine reine Zahl steht. Ablesbar ist an der Geraden allein, dass die Anziehung mit wachsendem Abstand abnimmt."
+  ],
+  "richtig": 1,
+  "erklaerung": "Die Steigung der 1/r²-Geraden ist k = 8 · m₁ · m₂ und hängt damit an den beiden eingestellten Massen: Bei 5 kg und 5 kg sind es 200,000, bei anderen Massen eine andere Zahl. Konstant bleibt erst k / (m₁ · m₂) = 200,000 / 25 = 8,000 Einheiten je kg² – dieselbe Zahl für jede Messreihe. Wie stark die Steigung von der Einstellung abhängt, zeigt die zweite Reihe: über m₁ bei m₂ = 5 kg und Abstand 2 lautet sie 10,000. Dass 1/r² eine reine Zahl ist, macht die Steigung nicht wertlos, sondern gibt ihr gerade die Einheit der Anziehung; und R² = 1,0000 sagt nur, wie eng die Punkte an der Geraden liegen, nicht, was die Steigung bedeutet. In der Natur steht an der Stelle der Verhältniszahl die Gravitationskonstante G – die kennt die Simulation nicht, weil sie in Einheiten statt in Newton zählt."
+ },
+ "offen": {
+  "frage": "Mira nimmt nach dem Leeren der Tabelle bei m₂ = 5 kg und Abstand 2 die Reihe über m₁ auf. Erkläre, warum diese Auftragung ohne Linearisierung auskommt, die Abstandsreihe aber nicht, und begründe, warum die Steigung 10,000 die Masse der rechten Kugel verrät.",
+  "prompt": "Mira nimmt nach dem Leeren der Tabelle bei m₂ = 5 kg und Abstand 2 die Reihe über m₁ auf. Erkläre, warum diese Auftragung ohne Linearisierung auskommt, die Abstandsreihe aber nicht, und begründe, warum die Steigung 10,000 die Masse der rechten Kugel verrät.",
+  "zeilen": 4,
+  "loesung": "Die Masse geht in der ersten Potenz ein: F = (8 · m₂ / r²) · m₁. Trägt man F über m₁ auf, steht auf der x-Achse also genau die Größe, zu der F proportional ist – 10,00, 20,00, 30,00, 40,00 und 50,00 Einheiten zu m₁ = 1 bis 5 kg –, und die Punkte liegen ohne Umrechnung auf einer Ursprungsgeraden. Der Abstand geht dagegen im Quadrat und im Nenner ein; über r ergibt das eine fallende Kurve, aus der keine Steigung abzulesen ist. Erst die Ersatzgröße 1/r² auf der x-Achse macht daraus eine Gerade, und das ist das Linearisieren. Die Steigung der m₁-Geraden ist k = 8 · m₂ / r². Darin sind der Abstand r = 2 und die Verhältniszahl 8 bekannt, unbekannt ist allein m₂; also lässt sich nach ihr auflösen: m₂ = k · r² / 8 = 10,000 · 4 / 8 = 5,000 kg. Genau das steht im Ergebniskasten, und es stimmt mit dem Regler „Masse der rechten Kugel“ überein. Gemessen wurde die rechte Masse damit nicht unmittelbar, sondern über ihre Wirkung auf die Steigung – der übliche Weg, wenn eine Größe selbst nicht zugänglich ist."
+ }
+}

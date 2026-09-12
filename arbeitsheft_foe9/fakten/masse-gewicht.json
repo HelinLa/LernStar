@@ -1,0 +1,184 @@
+[
+ {
+  "sim": "masse-gewicht",
+  "ueberschrift": "⚖️ Ist „schwer“ dasselbe wie „viel Masse“?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "100 g",
+    "ruft": "_mgwSet(0)"
+   },
+   {
+    "aufschrift": "200 g",
+    "ruft": "_mgwSet(1)"
+   },
+   {
+    "aufschrift": "500 g",
+    "ruft": "_mgwSet(2)"
+   },
+   {
+    "aufschrift": "1 kg",
+    "ruft": "_mgwSet(3)"
+   },
+   {
+    "aufschrift": "2 kg",
+    "ruft": "_mgwSet(4)"
+   },
+   {
+    "aufschrift": "Mit einer Waage (in kg)",
+    "ruft": "_mgwAns(0,0)"
+   },
+   {
+    "aufschrift": "Mit einem Kraftmesser (in N)",
+    "ruft": "_mgwAns(0,1)"
+   },
+   {
+    "aufschrift": "Mit einem Thermometer",
+    "ruft": "_mgwAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Kraft, mit der die Erde den Körper anzieht",
+    "ruft": "_mgwAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Menge an Stoff im Körper",
+    "ruft": "_mgwAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Temperatur des Körpers",
+    "ruft": "_mgwAns(1,2)"
+   },
+   {
+    "aufschrift": "F = m · g",
+    "ruft": "_mgwAns(2,0)"
+   },
+   {
+    "aufschrift": "F = m / g",
+    "ruft": "_mgwAns(2,1)"
+   },
+   {
+    "aufschrift": "F = m + g",
+    "ruft": "_mgwAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_mgwSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_mgwSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_mgwSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('massegewicht')"
+   }
+  ],
+  "hinweise": [
+   "Wähle einen Körper. Die Waage misst seine Masse (in Gramm/Kilogramm), der Kraftmesser seine Gewichtskraft (in Newton). Was ist der Unterschied?",
+   "Die Masse ist die Menge an Stoff im Körper (Einheit kg). Sie ändert sich nicht. Die Gewichtskraft ist die Kraft, mit der die Erde den Körper nach unten zieht (Einheit N). Man berechnet sie mit F = m · g (g = 9,8 N/kg).",
+   "Masse misst man mit der Waage (kg), Gewichtskraft mit dem Kraftmesser (N). „Schwer“ meint eine große Gewichtskraft."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "mgwStatus: Masse m = 1 kg (bleibt gleich). Gewichtskraft F = m · g = 9,8 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "100 g",
+    "text": "mgwStatus: Masse m = 100 g (bleibt gleich). Gewichtskraft F = m · g = 1,0 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "200 g",
+    "text": "mgwStatus: Masse m = 200 g (bleibt gleich). Gewichtskraft F = m · g = 2,0 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "500 g",
+    "text": "mgwStatus: Masse m = 500 g (bleibt gleich). Gewichtskraft F = m · g = 4,9 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "1 kg",
+    "text": "mgwStatus: Masse m = 1 kg (bleibt gleich). Gewichtskraft F = m · g = 9,8 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "2 kg",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft."
+   },
+   {
+    "einstellung": "Mit einer Waage (in kg)",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✓ Richtig! Die Masse misst man mit einer Waage in kg/g."
+   },
+   {
+    "einstellung": "Mit einem Kraftmesser (in N)",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Der Kraftmesser misst die Gewichtskraft in Newton."
+   },
+   {
+    "einstellung": "Mit einem Thermometer",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur."
+   },
+   {
+    "einstellung": "Die Kraft, mit der die Erde den Körper anzieht",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✓ Richtig! Sie wird in Newton gemessen: F = m · g."
+   },
+   {
+    "einstellung": "Die Menge an Stoff im Körper",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das ist die Masse (in kg), nicht die Gewichtskraft."
+   },
+   {
+    "einstellung": "Die Temperatur des Körpers",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun."
+   },
+   {
+    "einstellung": "F = m · g",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✓ Richtig! Gewichtskraft = Masse · Ortsfaktor."
+   },
+   {
+    "einstellung": "F = m / g",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht geteilt."
+   },
+   {
+    "einstellung": "F = m + g",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht addiert."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht addiert.  ||  mgwSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht addiert.  ||  mgwSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht addiert."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "mgwStatus: Masse m = 2 kg (bleibt gleich). Gewichtskraft F = m · g = 19,6 N. Die Waage zeigt die Masse, der Kraftmesser die Kraft.  ||  mgwFb0: ✗ Ein Thermometer misst die Temperatur.  ||  mgwFb1: ✗ Das hat mit der Gewichtskraft nichts zu tun.  ||  mgwFb2: ✗ Nein, es wird multipliziert, nicht addiert."
+   }
+  ],
+  "bildtexte": [
+   "F = m · g   (g = 9,8 N/kg)",
+   "1 kg",
+   "F = 9,8 N",
+   "⚖️ Masse (Waage)",
+   "🪝 Gewichtskraft (Kraftmesser)",
+   "9,8 N",
+   "100 g",
+   "F = 1,0 N",
+   "1,0 N",
+   "200 g",
+   "F = 2,0 N",
+   "2,0 N",
+   "500 g",
+   "F = 4,9 N",
+   "4,9 N",
+   "2 kg",
+   "F = 19,6 N",
+   "19,6 N"
+  ]
+ }
+]

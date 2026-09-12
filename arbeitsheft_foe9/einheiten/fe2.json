@@ -1,0 +1,189 @@
+{
+ "seite": {
+  "id": "fe2",
+  "quelle": "el2",
+  "sim": "lageenergie",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Sack liegt oben still",
+  "name": "Wo steckt die Energie oben?",
+  "fachwoerter_neu": [
+   "Lageenergie"
+  ],
+  "alltag": [
+   "Nour zieht einen schweren Sack auf die Bühne.",
+   "Oben liegt der Sack still und hat trotzdem Energie.",
+   "Diese gespeicherte Energie heißt Lageenergie."
+  ],
+  "frage": "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
+  "predict": [
+   "Die Höhe zählt mehr als die Masse.",
+   "Masse und Höhe zählen gleich stark."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.",
+   "Drücke „×2 Masse“ und trage den Wert in die Tabelle ein.",
+   "Drücke danach „×2 Höhe“ und trage ein. Setze vorher nicht zurück.",
+   "Vergleiche die drei Werte."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Werte.",
+  "tabCols": [
+   "Welchen Knopf drückst du?",
+   "Wie schwer? Wie hoch?",
+   "Wie viel Lageenergie?"
+  ],
+  "tabRows": [
+   [
+    "keinen (Start)",
+    "5 kg, 3 m",
+    "147 J"
+   ],
+   [
+    "×2 Masse",
+    "10 kg, 3 m",
+    ""
+   ],
+   [
+    "×2 Höhe",
+    "10 kg, 6 m",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Körper oben hat gespeicherte Energie. Sie heißt",
+    "loesung": "Lageenergie",
+    "post": "."
+   },
+   {
+    "pre": "Schwerer oder höher: dann ist die Lageenergie",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Lageenergie",
+   "größer",
+   "doppelt",
+   "294"
+  ],
+  "beispiel": {
+   "frage": "Wie viel Lageenergie hat ein Klotz mit 5 kg auf 3 m?",
+   "antwort": "Die Statuszeile zeigt: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J. Antwort: Der Klotz hat oben 147 J Lageenergie."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Zwei Klötze hängen auf 3 m Höhe. Welcher hat mehr Lageenergie?",
+    "optionen": [
+     "Der Klotz mit 1 kg. Die Anzeige zeigt 29 J.",
+     "Der Klotz mit 10 kg. Die Anzeige zeigt 294 J.",
+     "Beide gleich viel. Sie hängen gleich hoch."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "E = 10 kg · 9,81 N/kg · 3 m =",
+      "loesung": "294",
+      "post": "J. Lies den Wert in der Statuszeile ab."
+     },
+     {
+      "pre": "Doppelte Masse gibt",
+      "loesung": "doppelt",
+      "post": "so viel Lageenergie."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Zwei gleiche Säcke: einer liegt auf der Bühne, einer am Boden. Erkläre den Unterschied.",
+    "satzstarter": "Der Sack auf der Bühne hat mehr Lageenergie, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Die Werte stehen in der Statuszeile.",
+   "h2": "Beginne so: Der Sack auf der Bühne liegt höher, deshalb …",
+   "h3": "Fast fertig: Beide Säcke sind gleich schwer. Der obere liegt höher. Er hat mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Lageenergie in der Statuszeile ablesen.",
+   "Ich weiß: schwerer oder höher heißt mehr Lageenergie.",
+   "Ich kann sagen, welcher Sack mehr Lageenergie hat."
+  ],
+  "zuhause": "Suche drei Dinge, die höher liegen als dein Kopf. Ordne sie nach der Lageenergie.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus drei gleich breiten Feldern nebeneinander, alle mit derselben Bodenlinie und demselben Pfahl im Boden, Seitenansicht. In jedem Feld hängt ein Klotz über dem Pfahl. Feld 1: kleiner Klotz, groß beschriftet „5 kg“, links ein Maßstrich vom Boden bis zum Klotz mit „3 m“, unter dem Feld groß „147 J“. Feld 2: derselbe Maßstrich „3 m“, aber ein doppelt so großer Klotz, beschriftet „10 kg“, darunter groß „294 J“. Feld 3: derselbe große Klotz „10 kg“, der Maßstrich reicht doppelt so hoch und trägt „6 m“, darunter groß „589 J“. Die drei Maßstriche sind maßstäblich zueinander, der Boden liegt in allen drei Feldern auf gleicher Höhe. Über dem ganzen Bild eine große Zeile: „Schwerer oder höher heißt mehr Lageenergie.“ KEINE Bewegungspfeile, keine fallenden Klötze, keine Formel im Bild. Ruhiger heller Hintergrund, keine Personen, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fe2",
+  "lernziel": "Die Schülerinnen und Schüler lesen die Lageenergie eines angehobenen Körpers in der Statuszeile der Simulation ab und beschreiben, dass ein Körper oben Energie gespeichert hat. Sie belegen am Bildschirm, dass mehr Masse und mehr Höhe die Lageenergie größer machen, und dass doppelte Masse den Wert genau verdoppelt (147 J → 294 J). Gerechnet wird nicht; die Werte werden abgelesen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein schwerer und ein leichter Beutel, an einer Schnur auf zwei verschiedene Höhen gezogen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit der Statuszeile wörtlich. Karte 1 (Start, kein Knopf): „Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J“. Karte 2 (Knopf „×2 Masse“): „Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J“. Karte 3 (Knopf „×2 Höhe“, direkt danach, ohne zurückzusetzen): „Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J“. Vierte Karte als Auswertung: „Schwerer oder höher heißt mehr Lageenergie.“ Für Aufgabe 1 zusätzlich die abgelesene Massereihe bei 3 m als Kärtchen: 1 kg → 29 J, 5 kg → 147 J, 10 kg → 294 J.",
+  "merksatz": [
+   "Lageenergie",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "×2 Masse",
+    "10 kg, 3 m",
+    "294 J"
+   ],
+   [
+    "×2 Höhe",
+    "10 kg, 6 m",
+    "589 J"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Beide Klötze hängen gleich hoch (3 m), also entscheidet die Masse. Die Statuszeile zeigt bei 1 kg 29 J und bei 10 kg 294 J. Der schwerere Klotz hat mehr Lageenergie.",
+   "typische_fehler": [
+    "Antwort 2: Nur die Höhe wird als wichtig angesehen, die Masse als egal – genau die falsche Vermutung von Seite A.",
+    "Antwort 1: „klein und leicht fällt schneller“ wird mit „hat mehr Energie“ verwechselt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "294",
+    "doppelt"
+   ],
+   "typische_fehler": [
+    "Es wird versucht, 10 · 9,81 · 3 im Kopf auszurechnen. Der Wert steht fertig in der Statuszeile und soll abgelesen werden.",
+    "In die erste Lücke wird 147 gesetzt (Wert der Startzeile), weil der Knopf „×2 Masse“ nicht gedrückt wurde.",
+    "„größer“ statt „doppelt“ – richtig gedacht, aber die Aufgabe fragt nach dem genauen Faktor, den die Anzeige zeigt (147 J → 294 J)."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Sack auf der Bühne hat mehr Lageenergie, weil er höher liegt. Beide Säcke sind gleich schwer. Nur die Höhe ist verschieden, und höher heißt mehr Lageenergie.",
+   "alternativen": [
+    "Bezug auf die Simulation: Bei 10 kg und 3 m stehen 294 J, bei 10 kg und 6 m stehen 589 J – gleiche Masse, mehr Höhe, mehr Energie.",
+    "Kurzform: „Der obere Sack liegt höher, darum hat er mehr Lageenergie.“ – reicht für die volle Wertung.",
+    "Begründung über das Herunterfallen: Der obere Sack kann tiefer fallen und den Pfahl weiter eintreiben."
+   ],
+   "typische_fehler": [
+    "Es wird ein Gewichtsunterschied erfunden („der obere ist schwerer“). Die Aufgabe sagt ausdrücklich: gleiche Säcke.",
+    "„Der untere hat mehr, weil er auf dem Boden liegt“ – Lageenergie wird mit Druck auf den Boden verwechselt.",
+    "Der Satzstarter wird nur abgeschrieben, ohne ein „weil“ zu füllen."
+   ]
+  },
+  "hilfe3_wort": "Lageenergie (auch richtig: Energie)",
+  "schwache": [
+   "Zuerst nur die beiden Massen bei 3 m vergleichen (147 J und 294 J), die dritte Zeile erst danach.",
+   "Bedienreihenfolge auf einen Merkzettel: erst ablesen, dann „×2 Masse“, dann sofort „×2 Höhe“. Wer zwischendurch „zurücksetzen“ drückt, bekommt für Zeile 3 falsche Werte.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Für Aufgabe 3 zwei gleich schwere Bücher auf Tisch und Boden legen und die Frage zuerst mündlich beantworten lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle die Masse nacheinander auf 1 kg, 2 kg und 4 kg (Höhe 3 m) und schreibe die drei abgelesenen Werte auf. Was fällt dir auf?",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Lageenergie eines angehobenen Körpers. Neu ist genau ein Fachwort: Lageenergie. Höhe und Last bleiben Alltagswörter ohne Formelzeichen und ohne Einheit (Zählregel 5) und stehen deshalb nicht in der Wortbank; auf der Schülerseite steht „Wie hoch?“, nicht „Höhe h in m“. Hubarbeit und Joule gehören zu fe1 und werden hier nur wieder aufgenommen (Zählregel 4), Masse m in kg stammt aus fk4. Datenlage: Alle Werte sind abgelesen. 147 J → 294 J ist am Bildschirm exakt das Doppelte; 294 J → 589 J ist NUR ungefähr das Doppelte (2 · 294 = 588), weil die Anzeige rundet – deshalb steht auf der Schülerseite „doppelt“ nur beim Massenpaar. Der Knopf „×2 Höhe“ wirkt auf den Zustand NACH „×2 Masse“; Zeile 3 ist darum 10 kg / 6 m. Achtung Ortsfaktor: Diese Simulation rechnet mit 9,81 N/kg, die Simulationen zu fk4 und fk5 zeigen 9,8 N/kg. Die Förderseiten lesen nur ab und rechnen nie mit g, deshalb entsteht der Widerspruch für die Lernenden nicht. Die Pfahltiefe wird bewusst nicht gemessen (im Faktendump nicht belegt), und der Vergleich mit dem Tempo (doppelt = viermal) bleibt fe3 vorbehalten. Kompetenzen: Tabelle E5, Aufgabe 3 UF1, der Zuhause-Auftrag UF3."
+ }
+}

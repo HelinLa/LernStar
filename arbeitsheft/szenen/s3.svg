@@ -1,0 +1,68 @@
+<!-- nacht -->
+<defs>
+  <linearGradient id="s3wand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#252C42"/><stop offset="1" stop-color="#191D2B"/>
+  </linearGradient>
+  <linearGradient id="s3boden" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3A3D46"/><stop offset="1" stop-color="#1C1E24"/>
+  </linearGradient>
+  <radialGradient id="s3fleck" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#FFEFCC" stop-opacity="0.42"/>
+    <stop offset="0.55" stop-color="#FFE2A6" stop-opacity="0.12"/>
+    <stop offset="1" stop-color="#FFE2A6" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="s3vig2" cx="0.42" cy="0.40" r="0.80">
+    <stop offset="0.30" stop-color="#080A10" stop-opacity="0"/>
+    <stop offset="1" stop-color="#080A10" stop-opacity="0.62"/>
+  </radialGradient>
+  <linearGradient id="s3iso" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0" stop-color="#3A414C"/><stop offset="0.4" stop-color="#171B22"/>
+    <stop offset="1" stop-color="#0C0F14"/>
+  </linearGradient>
+  <linearGradient id="s3kupfer" x1="0" y1="0" x2="0.3" y2="1">
+    <stop offset="0" stop-color="#FFDCA6"/><stop offset="0.42" stop-color="#D9913F"/>
+    <stop offset="1" stop-color="#8A5322"/>
+  </linearGradient>
+</defs>
+  <rect x="0" y="0" width="900" height="410" fill="url(#s3wand)"/>
+  <rect x="0" y="402" width="900" height="138" fill="url(#s3boden)"/>
+  <rect x="0" y="402" width="900" height="5" fill="#4A505C" opacity="0.5"/>
+
+  <!-- die Gabel gross im Vordergrund -->
+  <ellipse cx="272" cy="534" rx="196" ry="22" fill="#080A10" opacity="0.6" filter="url(#tiefe)"/>
+  <use href="#t_fahrrad_kopf" transform="translate(272,556) scale(1.42)"/>
+
+  <!-- das Licht faellt auf die Bruchstelle -->
+  <ellipse cx="252" cy="250" rx="190" ry="180" fill="url(#s3fleck)"/>
+
+  <!-- die durchgescheuerte Stelle liegt auf dem Kabel der Gabel -->
+  <g transform="translate(236,246) rotate(77) scale(1.2)">
+    <g filter="url(#kontakt)">
+      <rect x="-132" y="-11" width="96" height="22" rx="11" fill="url(#s3iso)"/>
+      <rect x="36"  y="-11" width="96" height="22" rx="11" fill="url(#s3iso)"/>
+    </g>
+    <rect x="-132" y="-9" width="96" height="5" rx="2.5" fill="#FFFFFF" opacity="0.16"/>
+    <rect x="36"   y="-9" width="96" height="5" rx="2.5" fill="#FFFFFF" opacity="0.16"/>
+    <!-- aufgeplatzte Isolierung, dahinter die blanken Draehte -->
+    <path d="M-36,-11 L-22,-16 L-12,-7 L-20,0 L-10,7 L-24,15 L-36,11 Z" fill="url(#s3iso)"/>
+    <path d="M36,-11 L22,-17 L12,-6 L20,1 L10,8 L24,15 L36,11 Z" fill="url(#s3iso)"/>
+    <g stroke="url(#s3kupfer)" stroke-linecap="round" fill="none">
+      <path d="M-30,-3 C -22,-6 -16,-4 -11,-6" stroke-width="5"/>
+      <path d="M-30,3 C -20,5 -15,2 -9,3" stroke-width="4"/>
+      <path d="M30,-4 C 22,-7 16,-3 10,-7" stroke-width="4"/>
+      <path d="M30,4 C 20,6 14,3 8,5" stroke-width="4"/>
+    </g>
+    <ellipse cx="-11" cy="-5" rx="3" ry="2.4" fill="#FFE7BE"/>
+    <ellipse cx="9"   cy="-6" rx="3" ry="2.4" fill="#FFE7BE"/>
+  </g>
+
+  <rect x="0" y="0" width="900" height="540" fill="url(#s3vig2)"/>
+
+  <!-- was im Rucksack war -->
+  <use href="#t_rucksack"      transform="translate(736,290) rotate(-5) scale(0.66)"/>
+  <use href="#t_pausenbrot"    transform="translate(628,376) rotate(6) scale(0.8)"/>
+  <use href="#t_bueroklammer"  transform="translate(768,382) rotate(-16) scale(1.8)"/>
+  <use href="#t_schluessel"    transform="translate(830,418) rotate(14) scale(0.84)"/>
+  <use href="#t_muenze"        transform="translate(672,436) scale(1.25)"/>
+  <use href="#t_bleistift"     transform="translate(628,462) rotate(-7) scale(0.78)"/>
+  <use href="#t_radierer"      transform="translate(772,452) rotate(8) scale(1.2)"/>

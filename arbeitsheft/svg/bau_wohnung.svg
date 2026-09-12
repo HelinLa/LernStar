@@ -1,0 +1,593 @@
+<!-- ===========================================================================
+     Werkstatt: Wohnung bei Stromausfall (Licht)
+     Eigene Verlaeufe und Filter tragen das Praefix b_w.
+     =========================================================================== -->
+
+<!-- ===== Zimmerwand: Putz, Fussleiste ===== -->
+<linearGradient id="b_wPutz" x1="0" y1="0" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#D6C9B0"/><stop offset="0.42" stop-color="#CBBEA4"/>
+  <stop offset="0.82" stop-color="#BAAC91"/><stop offset="1" stop-color="#AC9E83"/>
+</linearGradient>
+<linearGradient id="b_wPutzLicht" x1="0" y1="0" x2="1" y2="0.35">
+  <stop offset="0" stop-color="#FFF6E2" stop-opacity="0.30"/>
+  <stop offset="0.45" stop-color="#FFF6E2" stop-opacity="0.06"/>
+  <stop offset="1" stop-color="#3B2C18" stop-opacity="0.16"/>
+</linearGradient>
+<radialGradient id="b_wLichtfleck" cx="0.24" cy="0.1" r="0.72">
+  <stop offset="0" stop-color="#FFF6E2" stop-opacity="0.26"/>
+  <stop offset="0.55" stop-color="#FFF6E2" stop-opacity="0.09"/>
+  <stop offset="1" stop-color="#FFF6E2" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="b_wSockelSchatten" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#3B2C18" stop-opacity="0"/>
+  <stop offset="1" stop-color="#3B2C18" stop-opacity="0.26"/>
+</linearGradient>
+<linearGradient id="b_wLeiste" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFDF6"/><stop offset="0.30" stop-color="#F4EEE0"/>
+  <stop offset="0.72" stop-color="#E7DFCE"/><stop offset="1" stop-color="#D2C7B2"/>
+</linearGradient>
+
+<!-- ===== Fenster bei Nacht ===== -->
+<linearGradient id="b_wNachtHimmel" x1="0" y1="0" x2="0.2" y2="1" >
+  <stop offset="0" stop-color="#0B1230"/><stop offset="0.46" stop-color="#152046"/>
+  <stop offset="0.82" stop-color="#22345F"/><stop offset="1" stop-color="#33456E"/>
+</linearGradient>
+<linearGradient id="b_wRahmen" x1="0" y1="0" x2="0.35" y2="1">
+  <stop offset="0" stop-color="#FFFCF3"/><stop offset="0.38" stop-color="#F2EADA"/>
+  <stop offset="0.78" stop-color="#DCD2BE"/><stop offset="1" stop-color="#C3B79F"/>
+</linearGradient>
+<linearGradient id="b_wBank" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFFDF6"/><stop offset="0.34" stop-color="#EFE7D6"/>
+  <stop offset="0.6" stop-color="#D9CFB9"/><stop offset="1" stop-color="#BCB094"/>
+</linearGradient>
+<linearGradient id="b_wScheibe" x1="0" y1="0" x2="0.7" y2="1">
+  <stop offset="0" stop-color="#CFE2FF" stop-opacity="0.22"/>
+  <stop offset="0.4" stop-color="#CFE2FF" stop-opacity="0.05"/>
+  <stop offset="1" stop-color="#8FB0E8" stop-opacity="0.10"/>
+</linearGradient>
+
+<!-- ===== Tisch ===== -->
+<linearGradient id="b_wTischKante" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#E4BC80"/><stop offset="0.24" stop-color="#C5904A"/>
+  <stop offset="0.72" stop-color="#A87434"/><stop offset="1" stop-color="#7E551F"/>
+</linearGradient>
+<linearGradient id="b_wBein" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#D3A063"/><stop offset="0.22" stop-color="#C79350"/>
+  <stop offset="0.62" stop-color="#9D6E2F"/><stop offset="1" stop-color="#77501C"/>
+</linearGradient>
+
+<!-- ===== Milchkarton ===== -->
+<linearGradient id="b_wKarton" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#4F86C6"/><stop offset="0.30" stop-color="#3E71B0"/>
+  <stop offset="0.82" stop-color="#2F5D97"/><stop offset="1" stop-color="#274F81"/>
+</linearGradient>
+<linearGradient id="b_wKartonS" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#1F4370"/><stop offset="1" stop-color="#173553"/>
+</linearGradient>
+<linearGradient id="b_wKartonWeiss" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.4" stop-color="#F6F3EA"/>
+  <stop offset="1" stop-color="#DED8C9"/>
+</linearGradient>
+
+<!-- ===== Leuchtsterne ===== -->
+<radialGradient id="b_wSternF" cx="0.38" cy="0.3" r="0.78">
+  <stop offset="0" stop-color="#F0FFE0"/><stop offset="0.42" stop-color="#CBEDA6"/>
+  <stop offset="0.8" stop-color="#A6D683"/><stop offset="1" stop-color="#87BB68"/>
+</radialGradient>
+<radialGradient id="b_wSternSchein" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#D6FFB0" stop-opacity="0.78"/>
+  <stop offset="0.4" stop-color="#A8EE86" stop-opacity="0.26"/>
+  <stop offset="1" stop-color="#8FE06E" stop-opacity="0"/>
+</radialGradient>
+
+<!-- ===== Ranzen ===== -->
+<linearGradient id="b_wRanzen" x1="0" y1="0" x2="1" y2="0.2">
+  <stop offset="0" stop-color="#2F5E86"/><stop offset="0.28" stop-color="#254D71"/>
+  <stop offset="0.74" stop-color="#1A3A58"/><stop offset="1" stop-color="#132B42"/>
+</linearGradient>
+<linearGradient id="b_wRanzenS" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#16334D"/><stop offset="1" stop-color="#0E2236"/>
+</linearGradient>
+<linearGradient id="b_wDeckel" x1="0" y1="0" x2="0.25" y2="1">
+  <stop offset="0" stop-color="#3A6E99"/><stop offset="0.4" stop-color="#2A5679"/>
+  <stop offset="1" stop-color="#1A3A58"/>
+</linearGradient>
+<linearGradient id="b_wReflex" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#F4F8FC"/><stop offset="0.22" stop-color="#D3DDE7"/>
+  <stop offset="0.55" stop-color="#AEBAC8"/><stop offset="0.8" stop-color="#C8D3DE"/>
+  <stop offset="1" stop-color="#8E9AA9"/>
+</linearGradient>
+<pattern id="b_wPerl" patternUnits="userSpaceOnUse" width="8" height="8">
+  <circle cx="2.2" cy="2.2" r="1.5" fill="#FFFFFF" opacity="0.55"/>
+  <circle cx="6.2" cy="6.2" r="1.5" fill="#FFFFFF" opacity="0.40"/>
+  <circle cx="6.2" cy="2.2" r="1.0" fill="#59636F" opacity="0.30"/>
+  <circle cx="2.2" cy="6.2" r="1.0" fill="#59636F" opacity="0.26"/>
+</pattern>
+
+<!-- ===== Kerzenhalter ===== -->
+<linearGradient id="b_wTeller" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.45" stop-color="#F0EADD"/>
+  <stop offset="1" stop-color="#CFC6B2"/>
+</linearGradient>
+<linearGradient id="b_wGlasHalter" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.50"/>
+  <stop offset="0.16" stop-color="#D8E6E8" stop-opacity="0.20"/>
+  <stop offset="0.68" stop-color="#A9C0C4" stop-opacity="0.20"/>
+  <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.42"/>
+</linearGradient>
+
+<!-- ===== Streichholz ===== -->
+<linearGradient id="b_wKohle" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#4A4038"/><stop offset="0.5" stop-color="#2A241F"/>
+  <stop offset="1" stop-color="#141110"/>
+</linearGradient>
+<linearGradient id="b_wSpan" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#F0DCB4"/><stop offset="0.34" stop-color="#DDBF87"/>
+  <stop offset="0.78" stop-color="#C29F63"/><stop offset="1" stop-color="#9C7A45"/>
+</linearGradient>
+
+
+<!-- t_zimmerwand | glatte Zimmerwand mit Fussleiste | nominal 900 x 420 | Anker: obere linke Ecke -->
+<g id="t_zimmerwand">
+  <rect x="0" y="0" width="900" height="420" fill="url(#b_wPutz)"/>
+  <g filter="url(#rauh)" opacity="0.26">
+    <rect x="0" y="0" width="900" height="382" fill="url(#b_wPutz)"/>
+  </g>
+  <!-- Lichtstimmung: oben links heller, rechts unten dunkler -->
+  <rect x="0" y="0" width="900" height="382" fill="url(#b_wLichtfleck)"/>
+  <rect x="0" y="0" width="900" height="382" fill="url(#b_wPutzLicht)"/>
+  <!-- Schattenstrich ueber der Leiste -->
+  <rect x="0" y="326" width="900" height="56" fill="url(#b_wSockelSchatten)"/>
+  <rect x="0" y="378" width="900" height="4" fill="#4A3823" opacity="0.32"/>
+  <!-- Fussleiste mit Profil -->
+  <g>
+    <rect x="0" y="382" width="900" height="38" fill="url(#b_wLeiste)"/>
+    <rect x="0" y="382" width="900" height="5" rx="2" fill="#FFFFFF" opacity="0.85"/>
+    <rect x="0" y="388" width="900" height="3" fill="#B7A98F" opacity="0.55"/>
+    <rect x="0" y="391" width="900" height="2" fill="#FFFDF4" opacity="0.75"/>
+    <rect x="0" y="400" width="900" height="2.4" fill="#B7A98F" opacity="0.40"/>
+    <rect x="0" y="402" width="900" height="1.6" fill="#FFFDF4" opacity="0.55"/>
+    <rect x="0" y="414" width="900" height="6" fill="#5A4A33" opacity="0.34"/>
+  </g>
+</g>
+<!-- t_fenster_nacht | Fenster bei Nacht mit Kreuzsprosse und Bank | nominal 300 x 380 | Anker: Mitte -->
+<g id="t_fenster_nacht">
+  <!-- Laibungsschatten auf der Wand -->
+  <rect x="-146" y="-186" width="292" height="352" rx="6" fill="#241A0C" opacity="0.30" filter="url(#tiefe)"/>
+  <!-- Nachthimmel hinter der Scheibe -->
+  <rect x="-122" y="-176" width="244" height="322" fill="url(#b_wNachtHimmel)"/>
+  <g fill="#EAF1FF">
+    <circle cx="-84" cy="-140" r="1.9" opacity="0.85"/>
+    <circle cx="-38" cy="-108" r="1.3" opacity="0.6"/>
+    <circle cx="46"  cy="-152" r="2.2" opacity="0.9"/>
+    <circle cx="88"  cy="-96"  r="1.4" opacity="0.65"/>
+    <circle cx="-96" cy="-44"  r="1.1" opacity="0.5"/>
+    <circle cx="18"  cy="-64"  r="1.6" opacity="0.7"/>
+    <circle cx="104" cy="-160" r="1.2" opacity="0.55"/>
+    <circle cx="-56" cy="-166" r="1.2" opacity="0.55"/>
+  </g>
+  <!-- ferne Daecher, damit Tiefe entsteht -->
+  <g fill="#080D1E" opacity="0.9">
+    <path d="M-122,66 L-122,20 L-92,-2 L-62,20 L-62,66 Z"/>
+    <path d="M-64,66 L-64,34 L-26,34 L-26,66 Z"/>
+    <path d="M18,66 L18,10 L44,-8 L70,10 L70,66 Z"/>
+    <path d="M70,66 L70,40 L122,40 L122,66 Z"/>
+  </g>
+  <rect x="-122" y="60" width="244" height="86" fill="#060B1A" opacity="0.75"/>
+  <!-- Spiegelung im Glas -->
+  <rect x="-122" y="-176" width="244" height="322" fill="url(#b_wScheibe)"/>
+  <path d="M-122,-96 L-30,-176 L36,-176 L-122,-38 Z" fill="#FFFFFF" opacity="0.07"/>
+  <!-- Rahmen -->
+  <g filter="url(#kontakt)">
+    <path d="M-140,-190 L140,-190 L140,160 L-140,160 Z
+             M-122,-176 L-122,146 L122,146 L122,-176 Z" fill="url(#b_wRahmen)" fill-rule="evenodd"/>
+  </g>
+  <!-- Kreuzsprosse -->
+  <g filter="url(#kontakt)">
+    <rect x="-8" y="-176" width="16" height="322" fill="url(#b_wRahmen)"/>
+    <rect x="-122" y="-24" width="244" height="15" fill="url(#b_wRahmen)"/>
+  </g>
+  <!-- Falz: innen dunkel, oben hell -->
+  <g>
+    <rect x="-122" y="-176" width="244" height="5" fill="#7C6F58" opacity="0.5"/>
+    <rect x="-122" y="-176" width="5" height="322" fill="#7C6F58" opacity="0.35"/>
+    <rect x="117" y="-176" width="5" height="322" fill="#FFFFFF" opacity="0.55"/>
+    <rect x="-122" y="140" width="244" height="6" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="-140" y="-190" width="280" height="5" fill="#FFFFFF" opacity="0.8"/>
+    <rect x="-140" y="-190" width="5" height="350" fill="#FFFFFF" opacity="0.55"/>
+    <rect x="134" y="-190" width="6" height="350" fill="#8A7C64" opacity="0.45"/>
+    <rect x="-8" y="-176" width="4" height="322" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="3" y="-176" width="5" height="322" fill="#8A7C64" opacity="0.42"/>
+    <rect x="-122" y="-24" width="244" height="4" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="-122" y="-13" width="244" height="4" fill="#8A7C64" opacity="0.42"/>
+  </g>
+  <!-- Fensterbank -->
+  <ellipse cx="4" cy="188" rx="150" ry="10" fill="#241A0C" opacity="0.26" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <path d="M-158,152 L158,152 L162,178 L-162,178 Z" fill="url(#b_wBank)"/>
+    <rect x="-162" y="176" width="324" height="9" rx="4" fill="#CFC3A6"/>
+  </g>
+  <path d="M-158,152 L158,152 L158,158 L-158,158 Z" fill="#FFFFFF" opacity="0.75"/>
+  <rect x="-162" y="181" width="324" height="4" fill="#6B5B3E" opacity="0.4"/>
+  <path d="M-140,160 L140,160 L140,166 L-140,166 Z" fill="#8A7C64" opacity="0.28"/>
+</g>
+
+<!-- t_tisch | Holztisch von der Seite | nominal 520 x 300 | Anker: Standflaeche Mitte -->
+<g id="t_tisch">
+  <ellipse cx="6" cy="-4" rx="258" ry="26" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <!-- hintere Beine, weiter innen und hoeher: Perspektive -->
+  <g filter="url(#maser)">
+    <path d="M-206,-266 L-172,-266 L-166,-24 L-198,-24 Z" fill="url(#b_wBein)"/>
+    <path d="M172,-266 L206,-266 L212,-24 L182,-24 Z" fill="url(#b_wBein)"/>
+  </g>
+  <path d="M-206,-266 L-172,-266 L-166,-24 L-198,-24 Z" fill="#241704" opacity="0.45"/>
+  <path d="M172,-266 L206,-266 L212,-24 L182,-24 Z" fill="#241704" opacity="0.45"/>
+  <!-- Zarge zwischen den Beinen -->
+  <g filter="url(#maser)">
+    <path d="M-226,-252 L226,-252 L226,-212 L-226,-212 Z" fill="url(#holz)"/>
+  </g>
+  <path d="M-226,-252 L226,-252 L226,-244 L-226,-244 Z" fill="#241704" opacity="0.42"/>
+  <path d="M-226,-218 L226,-218 L226,-212 L-226,-212 Z" fill="#241704" opacity="0.30"/>
+  <!-- vordere Beine, kraeftig -->
+  <g filter="url(#kontakt)"><g filter="url(#maser)">
+    <path d="M-244,-244 L-202,-244 L-196,0 L-238,0 Z" fill="url(#holzHell)"/>
+    <path d="M202,-244 L244,-244 L238,0 L196,0 Z" fill="url(#holzHell)"/>
+  </g></g>
+  <g>
+    <path d="M-244,-244 L-234,-244 L-228,0 L-238,0 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M-208,-244 L-202,-244 L-196,0 L-202,0 Z" fill="#2A1C08" opacity="0.38"/>
+    <path d="M-244,-6 L-196,-6 L-196,0 L-238,0 Z" fill="#2A1C08" opacity="0.34"/>
+    <path d="M202,-244 L212,-244 L208,0 L198,0 Z" fill="#FFFFFF" opacity="0.16"/>
+    <path d="M236,-244 L244,-244 L238,0 L231,0 Z" fill="#2A1C08" opacity="0.40"/>
+    <path d="M196,-6 L244,-6 L238,0 L196,0 Z" fill="#2A1C08" opacity="0.34"/>
+  </g>
+  <!-- Platte: Deckflaeche in Perspektive, dann die dicke Kante -->
+  <g filter="url(#weich)">
+    <g filter="url(#maser)">
+      <path d="M-236,-300 L236,-300 L260,-282 L-260,-282 Z" fill="url(#holzHell)"/>
+    </g>
+    <path d="M-260,-282 L260,-282 L260,-262 A 14,14 0 0 1 246,-250 L-246,-250 A 14,14 0 0 1 -260,-262 Z"
+          fill="url(#b_wTischKante)"/>
+  </g>
+  <g filter="url(#maser)" opacity="0.7">
+    <path d="M-260,-282 L260,-282 L260,-262 A 14,14 0 0 1 246,-250 L-246,-250 A 14,14 0 0 1 -260,-262 Z"
+          fill="url(#b_wTischKante)"/>
+  </g>
+  <!-- Fase oben, Schattenstrich unten -->
+  <path d="M-236,-300 L236,-300 L241,-296 L-241,-296 Z" fill="#FFFFFF" opacity="0.34"/>
+  <path d="M-260,-282 L260,-282 L260,-276 L-260,-276 Z" fill="#FFF3D8" opacity="0.6"/>
+  <path d="M-254,-258 L254,-258 L248,-250 L-248,-250 Z" fill="#2A1C08" opacity="0.40"/>
+  <!-- Maserungslinien auf der Deckflaeche -->
+  <g stroke="#8A5F27" stroke-width="1.8" opacity="0.28" fill="none">
+    <path d="M-228,-295 C-116,-292 60,-296 228,-293"/>
+    <path d="M-244,-288 C-100,-285 90,-289 246,-286"/>
+    <path d="M-200,-291 C-80,-289 40,-292 180,-290"/>
+  </g>
+  <ellipse cx="-96" cy="-291" rx="120" ry="4" fill="#FFFFFF" opacity="0.16"/>
+  <ellipse cx="-100" cy="-268" rx="130" ry="6" fill="#FFFFFF" opacity="0.10"/>
+</g>
+<!-- t_milchkarton | Milchkarton mit Giebelfalte und Schraubverschluss | nominal 130 x 250 | Anker: Standflaeche Mitte -->
+<g id="t_milchkarton">
+  <ellipse cx="4" cy="-2" rx="58" ry="11" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <!-- Korpus vorn -->
+    <path d="M-50,-166 L26,-166 L26,0 L-50,0 Z" fill="url(#b_wKarton)"/>
+    <!-- Korpus Seite -->
+    <path d="M26,-166 L52,-180 L52,-14 L26,0 Z" fill="url(#b_wKartonS)"/>
+    <!-- Giebel vorn -->
+    <path d="M-50,-166 L26,-166 L15,-220 L-39,-220 Z" fill="url(#b_wKarton)"/>
+    <!-- Giebel Seite -->
+    <path d="M26,-166 L52,-180 L41,-228 L15,-220 Z" fill="url(#b_wKartonS)"/>
+    <!-- Falzfahne oben -->
+    <path d="M-39,-220 L15,-220 L15,-242 L-39,-242 Z" fill="url(#b_wKarton)"/>
+    <path d="M15,-220 L41,-228 L41,-250 L15,-242 Z" fill="url(#b_wKartonS)"/>
+  </g>
+  <!-- matte Papieroberflaeche -->
+  <g filter="url(#rauh)" opacity="0.33">
+    <path d="M-50,-166 L26,-166 L26,0 L-50,0 Z" fill="url(#b_wKarton)"/>
+    <path d="M-50,-166 L26,-166 L15,-220 L-39,-220 Z" fill="url(#b_wKarton)"/>
+  </g>
+  <!-- weisser Streifen -->
+  <path d="M-50,-112 L26,-112 L26,-74 L-50,-74 Z" fill="url(#b_wKartonWeiss)"/>
+  <path d="M26,-112 L52,-126 L52,-88 L26,-74 Z" fill="#D6D0C2"/>
+  <path d="M-50,-112 L26,-112 L26,-107 L-50,-107 Z" fill="#FFFFFF" opacity="0.85"/>
+  <path d="M-50,-79 L26,-79 L26,-74 L-50,-74 Z" fill="#8E887A" opacity="0.35"/>
+  <!-- Kanten und Falze -->
+  <path d="M-50,-166 L-50,0" stroke="#8FBCE8" stroke-width="2.6" stroke-opacity="0.45" fill="none"/>
+  <path d="M26,-166 L26,0" stroke="#0E2A47" stroke-width="2.4" stroke-opacity="0.55" fill="none"/>
+  <path d="M-50,-166 L26,-166 L52,-180" stroke="#0E2A47" stroke-width="2.2" stroke-opacity="0.4" fill="none"/>
+  <!-- Giebelfalten: die typischen Knicke -->
+  <path d="M-39,-220 L-12,-166" stroke="#0E2A47" stroke-width="2.2" stroke-opacity="0.34" fill="none"/>
+  <path d="M15,-220 L-12,-166" stroke="#0E2A47" stroke-width="2.2" stroke-opacity="0.34" fill="none"/>
+  <path d="M-12,-220 L-12,-166" stroke="#9BC4E8" stroke-width="1.8" stroke-opacity="0.26" fill="none"/>
+  <path d="M-50,-166 L-39,-220" stroke="#9BC4E8" stroke-width="1.8" stroke-opacity="0.30" fill="none"/>
+  <path d="M26,-166 L15,-220" stroke="#0B2136" stroke-width="2" stroke-opacity="0.4" fill="none"/>
+  <path d="M-39,-220 L15,-220" stroke="#0B2136" stroke-width="2.8" stroke-opacity="0.5" fill="none"/>
+  <path d="M15,-242 L15,-220" stroke="#0B2136" stroke-width="2.2" stroke-opacity="0.42" fill="none"/>
+  <path d="M-39,-242 L15,-242 L41,-250" stroke="#FFFFFF" stroke-width="2.6" stroke-opacity="0.40" fill="none"/>
+  <path d="M-39,-234 L15,-234" stroke="#0B2136" stroke-width="1.8" stroke-opacity="0.3" fill="none"/>
+  <!-- Schraubverschluss auf der Giebelschraege -->
+  <g filter="url(#kontakt)">
+    <path d="M20,-196 L46,-203 L46,-219 L20,-212 Z" fill="#B9412F"/>
+    <ellipse cx="33" cy="-215.5" rx="13.4" ry="6.4" fill="#D95B44"/>
+  </g>
+  <g fill="#8A2C1E" opacity="0.5">
+    <rect x="21" y="-211" width="2.6" height="14"/><rect x="27" y="-212.6" width="2.6" height="14"/>
+    <rect x="33" y="-214.2" width="2.6" height="14"/><rect x="39" y="-215.8" width="2.6" height="14"/>
+  </g>
+  <ellipse cx="33" cy="-215.5" rx="13.4" ry="6.4" fill="none" stroke="#7C2517" stroke-width="1.4" stroke-opacity="0.5"/>
+  <ellipse cx="29" cy="-217" rx="6.4" ry="3" fill="url(#glanz)" opacity="0.75"/>
+  <!-- Volumen -->
+  <path d="M-50,-166 L-33,-166 L-33,0 L-50,0 Z" fill="#FFFFFF" opacity="0.10"/>
+  <path d="M9,-166 L26,-166 L26,0 L9,0 Z" fill="#08192B" opacity="0.18"/>
+  <ellipse cx="-25" cy="-140" rx="16" ry="40" fill="url(#glanz)" opacity="0.16"/>
+  <path d="M-50,-12 L26,-12 L26,0 L-50,0 Z" fill="#08192B" opacity="0.24"/>
+</g>
+<!-- t_leuchtsterne | fuenf aufgeklebte Leuchtsterne | nominal 260 x 180 | Anker: Mitte -->
+<g id="t_leuchtsterne">
+  <g transform="translate(-92,-46) rotate(-14) scale(0.62)">
+    <ellipse cx="0" cy="-4" rx="74" ry="74" fill="url(#b_wSternSchein)" filter="url(#scheinKlein)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="#2C3A22" opacity="0.26" transform="translate(3,5)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="url(#b_wSternF)"/>
+    <path d="M0,0 L0,-50 L12.3,-17 Z" fill="#5C8F45" opacity="0.1"/>
+    <path d="M0,0 L47.6,-15.5 L20,6.5 Z" fill="#5C8F45" opacity="0.22"/>
+    <path d="M0,0 L29.4,40.5 L0,21 Z" fill="#5C8F45" opacity="0.3"/>
+    <path d="M0,0 L-29.4,40.5 L-20,6.5 Z" fill="#5C8F45" opacity="0.26"/>
+    <path d="M0,0 L-47.6,-15.5 L-12.3,-17 Z" fill="#5C8F45" opacity="0.14"/>
+    <path d="M0,0 L-12.3,-17 L0,-50 Z" fill="#FBFFF0" opacity="0.3"/>
+    <path d="M0,0 L12.3,-17 L47.6,-15.5 Z" fill="#FBFFF0" opacity="0.16"/>
+    <path d="M0,0 L20,6.5 L29.4,40.5 Z" fill="#FBFFF0" opacity="0.06"/>
+    <path d="M0,0 L0,21 L-29.4,40.5 Z" fill="#FBFFF0" opacity="0.05"/>
+    <path d="M0,0 L-20,6.5 L-47.6,-15.5 Z" fill="#FBFFF0" opacity="0.22"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="none" stroke="#5E8F47" stroke-width="2.42" stroke-opacity="0.5"/>
+    <path d="M-3,-42 L-8,-19 L-30,-16" fill="none" stroke="#FBFFF0" stroke-width="3.87" stroke-opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-10" rx="12" ry="9" fill="#FBFFF0" opacity="0.18"/>
+  </g>
+  <g transform="translate(14,-70) rotate(22) scale(0.44)">
+    <ellipse cx="0" cy="-4" rx="74" ry="74" fill="url(#b_wSternSchein)" filter="url(#scheinKlein)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="#2C3A22" opacity="0.26" transform="translate(3,5)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="url(#b_wSternF)"/>
+    <path d="M0,0 L0,-50 L12.3,-17 Z" fill="#5C8F45" opacity="0.1"/>
+    <path d="M0,0 L47.6,-15.5 L20,6.5 Z" fill="#5C8F45" opacity="0.22"/>
+    <path d="M0,0 L29.4,40.5 L0,21 Z" fill="#5C8F45" opacity="0.3"/>
+    <path d="M0,0 L-29.4,40.5 L-20,6.5 Z" fill="#5C8F45" opacity="0.26"/>
+    <path d="M0,0 L-47.6,-15.5 L-12.3,-17 Z" fill="#5C8F45" opacity="0.14"/>
+    <path d="M0,0 L-12.3,-17 L0,-50 Z" fill="#FBFFF0" opacity="0.3"/>
+    <path d="M0,0 L12.3,-17 L47.6,-15.5 Z" fill="#FBFFF0" opacity="0.16"/>
+    <path d="M0,0 L20,6.5 L29.4,40.5 Z" fill="#FBFFF0" opacity="0.06"/>
+    <path d="M0,0 L0,21 L-29.4,40.5 Z" fill="#FBFFF0" opacity="0.05"/>
+    <path d="M0,0 L-20,6.5 L-47.6,-15.5 Z" fill="#FBFFF0" opacity="0.22"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="none" stroke="#5E8F47" stroke-width="3.41" stroke-opacity="0.5"/>
+    <path d="M-3,-42 L-8,-19 L-30,-16" fill="none" stroke="#FBFFF0" stroke-width="5.45" stroke-opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-10" rx="12" ry="9" fill="#FBFFF0" opacity="0.18"/>
+  </g>
+  <g transform="translate(84,-30) rotate(-8) scale(0.72)">
+    <ellipse cx="0" cy="-4" rx="74" ry="74" fill="url(#b_wSternSchein)" filter="url(#scheinKlein)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="#2C3A22" opacity="0.26" transform="translate(3,5)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="url(#b_wSternF)"/>
+    <path d="M0,0 L0,-50 L12.3,-17 Z" fill="#5C8F45" opacity="0.1"/>
+    <path d="M0,0 L47.6,-15.5 L20,6.5 Z" fill="#5C8F45" opacity="0.22"/>
+    <path d="M0,0 L29.4,40.5 L0,21 Z" fill="#5C8F45" opacity="0.3"/>
+    <path d="M0,0 L-29.4,40.5 L-20,6.5 Z" fill="#5C8F45" opacity="0.26"/>
+    <path d="M0,0 L-47.6,-15.5 L-12.3,-17 Z" fill="#5C8F45" opacity="0.14"/>
+    <path d="M0,0 L-12.3,-17 L0,-50 Z" fill="#FBFFF0" opacity="0.3"/>
+    <path d="M0,0 L12.3,-17 L47.6,-15.5 Z" fill="#FBFFF0" opacity="0.16"/>
+    <path d="M0,0 L20,6.5 L29.4,40.5 Z" fill="#FBFFF0" opacity="0.06"/>
+    <path d="M0,0 L0,21 L-29.4,40.5 Z" fill="#FBFFF0" opacity="0.05"/>
+    <path d="M0,0 L-20,6.5 L-47.6,-15.5 Z" fill="#FBFFF0" opacity="0.22"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="none" stroke="#5E8F47" stroke-width="2.08" stroke-opacity="0.5"/>
+    <path d="M-3,-42 L-8,-19 L-30,-16" fill="none" stroke="#FBFFF0" stroke-width="3.33" stroke-opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-10" rx="12" ry="9" fill="#FBFFF0" opacity="0.18"/>
+  </g>
+  <g transform="translate(-30,42) rotate(9) scale(0.5)">
+    <ellipse cx="0" cy="-4" rx="74" ry="74" fill="url(#b_wSternSchein)" filter="url(#scheinKlein)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="#2C3A22" opacity="0.26" transform="translate(3,5)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="url(#b_wSternF)"/>
+    <path d="M0,0 L0,-50 L12.3,-17 Z" fill="#5C8F45" opacity="0.1"/>
+    <path d="M0,0 L47.6,-15.5 L20,6.5 Z" fill="#5C8F45" opacity="0.22"/>
+    <path d="M0,0 L29.4,40.5 L0,21 Z" fill="#5C8F45" opacity="0.3"/>
+    <path d="M0,0 L-29.4,40.5 L-20,6.5 Z" fill="#5C8F45" opacity="0.26"/>
+    <path d="M0,0 L-47.6,-15.5 L-12.3,-17 Z" fill="#5C8F45" opacity="0.14"/>
+    <path d="M0,0 L-12.3,-17 L0,-50 Z" fill="#FBFFF0" opacity="0.3"/>
+    <path d="M0,0 L12.3,-17 L47.6,-15.5 Z" fill="#FBFFF0" opacity="0.16"/>
+    <path d="M0,0 L20,6.5 L29.4,40.5 Z" fill="#FBFFF0" opacity="0.06"/>
+    <path d="M0,0 L0,21 L-29.4,40.5 Z" fill="#FBFFF0" opacity="0.05"/>
+    <path d="M0,0 L-20,6.5 L-47.6,-15.5 Z" fill="#FBFFF0" opacity="0.22"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="none" stroke="#5E8F47" stroke-width="3.0" stroke-opacity="0.5"/>
+    <path d="M-3,-42 L-8,-19 L-30,-16" fill="none" stroke="#FBFFF0" stroke-width="4.8" stroke-opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-10" rx="12" ry="9" fill="#FBFFF0" opacity="0.18"/>
+  </g>
+  <g transform="translate(76,58) rotate(-26) scale(0.38)">
+    <ellipse cx="0" cy="-4" rx="74" ry="74" fill="url(#b_wSternSchein)" filter="url(#scheinKlein)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="#2C3A22" opacity="0.26" transform="translate(3,5)"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="url(#b_wSternF)"/>
+    <path d="M0,0 L0,-50 L12.3,-17 Z" fill="#5C8F45" opacity="0.1"/>
+    <path d="M0,0 L47.6,-15.5 L20,6.5 Z" fill="#5C8F45" opacity="0.22"/>
+    <path d="M0,0 L29.4,40.5 L0,21 Z" fill="#5C8F45" opacity="0.3"/>
+    <path d="M0,0 L-29.4,40.5 L-20,6.5 Z" fill="#5C8F45" opacity="0.26"/>
+    <path d="M0,0 L-47.6,-15.5 L-12.3,-17 Z" fill="#5C8F45" opacity="0.14"/>
+    <path d="M0,0 L-12.3,-17 L0,-50 Z" fill="#FBFFF0" opacity="0.3"/>
+    <path d="M0,0 L12.3,-17 L47.6,-15.5 Z" fill="#FBFFF0" opacity="0.16"/>
+    <path d="M0,0 L20,6.5 L29.4,40.5 Z" fill="#FBFFF0" opacity="0.06"/>
+    <path d="M0,0 L0,21 L-29.4,40.5 Z" fill="#FBFFF0" opacity="0.05"/>
+    <path d="M0,0 L-20,6.5 L-47.6,-15.5 Z" fill="#FBFFF0" opacity="0.22"/>
+    <path d="M0,-50 L12.3,-17 L47.6,-15.5 L20,6.5 L29.4,40.5 L0,21 L-29.4,40.5 L-20,6.5 L-47.6,-15.5 L-12.3,-17 L0,-50 Z" fill="none" stroke="#5E8F47" stroke-width="3.95" stroke-opacity="0.5"/>
+    <path d="M-3,-42 L-8,-19 L-30,-16" fill="none" stroke="#FBFFF0" stroke-width="6.32" stroke-opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="-6" cy="-10" rx="12" ry="9" fill="#FBFFF0" opacity="0.18"/>
+  </g>
+</g>
+<!-- t_ranzen | Schulranzen mit Reflektorstreifen | nominal 300 x 300 | Anker: Standflaeche Mitte -->
+<g id="t_ranzen">
+  <ellipse cx="0" cy="-6" rx="140" ry="20" fill="#241704" opacity="0.34" filter="url(#tiefe)"/>
+  <!-- Traeger: zwei gepolsterte Schultergurte, ueber die Oberkante gelegt -->
+  <g filter="url(#kontakt)">
+    <path d="M-114,-236 C-126,-286 -70,-300 -56,-242" stroke="#132B42" stroke-width="30" fill="none" stroke-linecap="round"/>
+    <path d="M16,-238 C6,-288 62,-300 76,-244" stroke="#0E2236" stroke-width="30" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M-122,-238 C-134,-292 -68,-308 -52,-244" stroke="#6E97BC" stroke-width="3.4" stroke-opacity="0.36" fill="none"/>
+  <path d="M8,-240 C-2,-294 64,-308 80,-246" stroke="#6E97BC" stroke-width="3.2" stroke-opacity="0.26" fill="none"/>
+  <path d="M-104,-238 C-114,-278 -74,-288 -62,-246" stroke="#08192B" stroke-width="3" stroke-opacity="0.42" fill="none"/>
+  <path d="M26,-240 C16,-280 56,-290 68,-248" stroke="#08192B" stroke-width="3" stroke-opacity="0.42" fill="none"/>
+  <path d="M-114,-244 C-124,-284 -74,-296 -58,-250" stroke="#08192B" stroke-width="2" stroke-opacity="0.3"
+        stroke-dasharray="8 7" fill="none"/>
+  <!-- Korpus: rechte Seitenflaeche -->
+  <g filter="url(#kontakt)">
+    <path d="M78,-236 L122,-260 L122,-30 C122,-16 116,-8 106,-4 L78,0 Z" fill="url(#b_wRanzenS)"/>
+    <!-- Korpus: Vorderseite -->
+    <path d="M-130,-224 C-130,-234 -122,-240 -110,-240 L58,-240 C72,-240 78,-232 78,-220
+             L78,-22 C78,-8 70,0 54,0 L-106,0 C-122,0 -130,-8 -130,-22 Z" fill="url(#b_wRanzen)"/>
+  </g>
+  <g filter="url(#rauh)" opacity="0.42">
+    <path d="M-130,-224 C-130,-234 -122,-240 -110,-240 L58,-240 C72,-240 78,-232 78,-220
+             L78,-22 C78,-8 70,0 54,0 L-106,0 C-122,0 -130,-8 -130,-22 Z" fill="url(#b_wRanzen)"/>
+  </g>
+  <path d="M-130,-224 C-130,-234 -122,-240 -110,-240 L-84,-240 L-84,0 L-106,0 C-122,0 -130,-8 -130,-22 Z"
+        fill="#9CC8EC" opacity="0.12"/>
+  <path d="M52,-240 L58,-240 C72,-240 78,-232 78,-220 L78,-22 C78,-8 70,0 54,0 L42,0 Z"
+        fill="#061625" opacity="0.34"/>
+  <path d="M-130,-20 L78,-20 L78,-22 C78,-8 70,0 54,0 L-106,0 C-122,0 -130,-8 -130,-22 Z"
+        fill="#061625" opacity="0.32"/>
+  <!-- Quernaht ueber der Vorderseite -->
+  <path d="M-126,-32 L74,-32" stroke="#08192B" stroke-width="2.4" stroke-opacity="0.4" fill="none"/>
+  <path d="M-126,-29 L74,-29" stroke="#9CC8EC" stroke-width="1.6" stroke-opacity="0.2" fill="none"/>
+  <!-- REFLEKTORSTREIFEN quer ueber die Vorderseite -->
+  <g>
+    <path d="M-130,-96 L78,-96 L78,-54 L-130,-54 Z" fill="url(#b_wReflex)"/>
+    <path d="M-130,-96 L78,-96 L78,-54 L-130,-54 Z" fill="url(#b_wPerl)"/>
+    <path d="M-130,-96 L78,-96 L78,-90 L-130,-90 Z" fill="#FFFFFF" opacity="0.85"/>
+    <path d="M-130,-86 L78,-86 L78,-76 L-130,-76 Z" fill="#FFFFFF" opacity="0.34"/>
+    <path d="M-130,-60 L78,-60 L78,-54 L-130,-54 Z" fill="#3F4A58" opacity="0.55"/>
+    <path d="M-130,-97 L78,-97" stroke="#0B1B2A" stroke-width="2" stroke-opacity="0.5" fill="none"/>
+    <path d="M-130,-53 L78,-53" stroke="#0B1B2A" stroke-width="2" stroke-opacity="0.5" fill="none"/>
+  </g>
+  <!-- REFLEKTORSTREIFEN an der Seite -->
+  <g>
+    <path d="M78,-96 L122,-120 L122,-78 L78,-54 Z" fill="url(#b_wReflex)"/>
+    <path d="M78,-96 L122,-120 L122,-78 L78,-54 Z" fill="url(#b_wPerl)" opacity="0.8"/>
+    <path d="M78,-96 L122,-120 L122,-114 L78,-90 Z" fill="#FFFFFF" opacity="0.6"/>
+    <path d="M78,-96 L122,-120 L122,-78 L78,-54 Z" fill="#0B1B2A" opacity="0.20"/>
+  </g>
+  <!-- Deckel mit Seitenwange -->
+  <g filter="url(#kontakt)">
+    <path d="M78,-220 L122,-244 L122,-152 C122,-140 114,-132 100,-130 L78,-126 Z" fill="#12293F"/>
+    <path d="M-136,-226 C-136,-238 -126,-246 -112,-246 L60,-246 C76,-246 84,-236 84,-222
+             L84,-146 C84,-132 72,-124 54,-124 L-108,-124 C-126,-124 -136,-132 -136,-146 Z"
+          fill="url(#b_wDeckel)"/>
+  </g>
+  <g filter="url(#rauh)" opacity="0.38">
+    <path d="M-136,-226 C-136,-238 -126,-246 -112,-246 L60,-246 C76,-246 84,-236 84,-222
+             L84,-146 C84,-132 72,-124 54,-124 L-108,-124 C-126,-124 -136,-132 -136,-146 Z"
+          fill="url(#b_wDeckel)"/>
+  </g>
+  <path d="M-136,-226 C-136,-238 -126,-246 -112,-246 L60,-246 C76,-246 84,-236 84,-222 L84,-216
+           C84,-230 74,-240 60,-240 L-112,-240 C-126,-240 -136,-234 -136,-220 Z" fill="#FFFFFF" opacity="0.24"/>
+  <path d="M-136,-160 L84,-160 L84,-146 C84,-132 72,-124 54,-124 L-108,-124 C-126,-124 -136,-132 -136,-146 Z"
+        fill="#08192B" opacity="0.34"/>
+  <path d="M-136,-146 C-136,-132 -126,-124 -108,-124 L54,-124 C72,-124 84,-132 84,-146
+           L84,-140 C84,-126 72,-118 54,-118 L-108,-118 C-126,-118 -136,-126 -136,-140 Z"
+        fill="#0A1E30" opacity="0.7"/>
+  <!-- Steppnaht am Deckelrand -->
+  <path d="M-128,-152 C-128,-140 -116,-133 -100,-133 L48,-133 C64,-133 76,-140 76,-152"
+        stroke="#9EC2E4" stroke-width="2" stroke-opacity="0.35" stroke-dasharray="8 6" fill="none"/>
+  <path d="M-128,-236 L74,-236" stroke="#9EC2E4" stroke-width="1.8" stroke-opacity="0.22" fill="none"/>
+  <!-- Schnallen: Riemen unter dem Deckel hervor -->
+  <g>
+    <path d="M-84,-140 L-58,-140 L-58,-100 L-84,-100 Z" fill="#1B3A55"/>
+    <path d="M-84,-140 L-78,-140 L-78,-100 L-84,-100 Z" fill="#7FA3C4" opacity="0.28"/>
+    <g filter="url(#kontakt)"><rect x="-88" y="-122" width="34" height="26" rx="5" fill="url(#stahl)"/></g>
+    <rect x="-82" y="-116" width="22" height="13" rx="3" fill="#1B2434" opacity="0.55"/>
+    <rect x="-85" y="-119" width="28" height="5" rx="2.4" fill="url(#glanz)"/>
+    <path d="M18,-140 L44,-140 L44,-100 L18,-100 Z" fill="#1B3A55"/>
+    <path d="M18,-140 L24,-140 L24,-100 L18,-100 Z" fill="#7FA3C4" opacity="0.28"/>
+    <g filter="url(#kontakt)"><rect x="14" y="-122" width="34" height="26" rx="5" fill="url(#stahl)"/></g>
+    <rect x="20" y="-116" width="22" height="13" rx="3" fill="#1B2434" opacity="0.55"/>
+    <rect x="17" y="-119" width="28" height="5" rx="2.4" fill="url(#glanz)"/>
+  </g>
+  <!-- Silhouettenkontur -->
+  <path d="M-130,-224 C-130,-234 -122,-240 -110,-240 L58,-240 C72,-240 78,-232 78,-220
+           L78,-22 C78,-8 70,0 54,0 L-106,0 C-122,0 -130,-8 -130,-22 Z"
+        fill="none" stroke="#081625" stroke-width="2.6" stroke-opacity="0.45"/>
+  <path d="M-136,-226 C-136,-238 -126,-246 -112,-246 L60,-246 C76,-246 84,-236 84,-222
+           L84,-146 C84,-132 72,-124 54,-124 L-108,-124 C-126,-124 -136,-132 -136,-146 Z"
+        fill="none" stroke="#081625" stroke-width="2.4" stroke-opacity="0.4"/>
+  <!-- Fuesschen -->
+  <g fill="#0B1B2A">
+    <rect x="-116" y="-7" width="30" height="9" rx="4"/>
+    <rect x="36" y="-7" width="30" height="9" rx="4"/>
+  </g>
+</g>
+<!-- t_kerzenhalter | Kerze im Glashalter auf einem Unterteller | nominal 130 x 190 | Anker: Standflaeche Mitte -->
+<g id="t_kerzenhalter">
+  <ellipse cx="0" cy="-108" rx="72" ry="86" fill="url(#warmSchein)" filter="url(#schein)" opacity="0.9"/>
+  <!-- Unterteller -->
+  <ellipse cx="4" cy="-2" rx="66" ry="14" fill="#241704" opacity="0.36" filter="url(#b_schattenS)"/>
+  <g filter="url(#kontakt)">
+    <path d="M-62,-10 A 62,15 0 0 0 62,-10 L 58,-16 A 58,14 0 0 1 -58,-16 Z" fill="url(#b_wTeller)"/>
+    <ellipse cx="0" cy="-16" rx="58" ry="14" fill="url(#b_wTeller)"/>
+  </g>
+  <ellipse cx="0" cy="-16" rx="58" ry="14" fill="none" stroke="#B5AB95" stroke-width="1.8" stroke-opacity="0.55"/>
+  <ellipse cx="0" cy="-18" rx="44" ry="10" fill="#E6DECD" opacity="0.8"/>
+  <ellipse cx="0" cy="-18" rx="44" ry="10" fill="none" stroke="#B5AB95" stroke-width="1.4" stroke-opacity="0.4"/>
+  <path d="M-56,-20 A 58,14 0 0 1 -6,-30" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.85" fill="none" stroke-linecap="round"/>
+  <ellipse cx="0" cy="-22" rx="40" ry="8" fill="url(#warmSchein)" opacity="0.55"/>
+  <!-- Glashalter -->
+  <g filter="url(#kontakt)">
+    <path d="M-33,-114 L-30,-24 A 30,8 0 0 0 30,-24 L 33,-114 A 33,9 0 0 0 -33,-114 Z"
+          fill="#DCE8EA" opacity="0.22"/>
+  </g>
+  <path d="M-33,-114 L-30,-24 A 30,8 0 0 0 30,-24 L 33,-114 A 33,9 0 0 0 -33,-114 Z" fill="url(#b_wGlasHalter)"/>
+  <!-- Wachs im Glas -->
+  <path d="M-27,-104 L-25,-32 A 25,6 0 0 0 25,-32 L 27,-104 A 27,7 0 0 0 -27,-104 Z" fill="url(#b_wachs)"/>
+  <!-- Kerze ueber dem Glasrand -->
+  <path d="M-24,-158 L-25,-104 A 25,7 0 0 0 25,-104 L 24,-158 A 24,7 0 0 0 -24,-158 Z" fill="url(#b_wachs)"/>
+  <path d="M-24,-154 L-24.6,-112" stroke="#ABA292" stroke-width="2.6" stroke-opacity="0.45" fill="none"/>
+  <path d="M24,-154 L24.6,-112" stroke="#7C7666" stroke-width="3" stroke-opacity="0.45" fill="none"/>
+  <ellipse cx="0" cy="-158" rx="24" ry="7" fill="#FDF9EF"/>
+  <ellipse cx="0" cy="-158" rx="24" ry="7" fill="none" stroke="#9C9484" stroke-width="1.6" stroke-opacity="0.5"/>
+  <ellipse cx="0" cy="-157" rx="16" ry="4" fill="#E2D6BB" opacity="0.75"/>
+  <!-- Wachstropfen am Rand -->
+  <path d="M-19,-152 C-23,-142 -22,-132 -18,-130 C-14,-132 -14,-144 -19,-152 Z" fill="#FFFBF0" opacity="0.85"/>
+  <path d="M13,-153 C10,-146 11,-138 14,-137 C17,-139 17,-147 13,-153 Z" fill="#FFFBF0" opacity="0.7"/>
+  <!-- Docht -->
+  <path d="M0,-158 C2,-166 -2,-170 -1,-175" fill="none" stroke="#33281B" stroke-width="3" stroke-linecap="round"/>
+  <!-- Flamme -->
+  <ellipse cx="0" cy="-190" rx="24" ry="30" fill="url(#warmSchein)" filter="url(#scheinKlein)"/>
+  <path d="M-1,-174 C-12,-184 -11,-197 0,-214 C11,-197 12,-184 1,-174 Z" fill="url(#flamme)"/>
+  <path d="M-0.5,-176 C-6,-183 -5,-191 0,-201 C5,-191 6,-183 0.5,-176 Z" fill="#FFF8DC" opacity="0.9"/>
+  <!-- Glas: Rand, Kanten, warmer Schimmer -->
+  <ellipse cx="0" cy="-112" rx="26" ry="20" fill="url(#warmSchein)" opacity="0.5"/>
+  <path d="M-32.6,-108 L-29.8,-32" stroke="#FFFFFF" stroke-width="3.2" stroke-opacity="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M32.4,-108 L29.6,-32" stroke="#5E8288" stroke-width="2.6" stroke-opacity="0.45" fill="none" stroke-linecap="round"/>
+  <path d="M28,-106 L26,-38" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.4" fill="none"/>
+  <ellipse cx="-18" cy="-76" rx="5" ry="22" fill="url(#glanz)" opacity="0.75"/>
+  <ellipse cx="0" cy="-114" rx="33" ry="9" fill="none" stroke="#FFFFFF" stroke-width="2.8" stroke-opacity="0.8"/>
+  <ellipse cx="0" cy="-113" rx="29" ry="7.4" fill="none" stroke="#6F9298" stroke-width="1.6" stroke-opacity="0.45"/>
+  <path d="M-30,-30 A 30,8 0 0 0 30,-30" fill="none" stroke="#5E8288" stroke-width="2" stroke-opacity="0.4"/>
+  <ellipse cx="0" cy="-28" rx="28" ry="7" fill="#FFFFFF" opacity="0.30"/>
+  <!-- Kaustik auf dem Teller -->
+  <ellipse cx="6" cy="-14" rx="20" ry="6" fill="#FFEAAE" opacity="0.9" filter="url(#b_kaustik)"/>
+</g>
+
+<!-- t_streichholz | brennendes Streichholz, schraeg | nominal 120 x 40 | Anker: Mitte -->
+<g id="t_streichholz">
+  <ellipse cx="44" cy="-13" rx="36" ry="36" fill="url(#warmSchein)" filter="url(#scheinKlein)"/>
+  <g filter="url(#kontakt)">
+    <path d="M-57,16 L-54,8 L31,-8 L33,0 Z" fill="url(#b_wSpan)"/>
+  </g>
+  <path d="M-57,16 L-54,8 L31,-8 L31.6,-5.6 L-56,14 Z" fill="#FFF6E0" opacity="0.6"/>
+  <path d="M-56.2,15.2 L33,0 L32.6,2 L-56.6,16.4 Z" fill="#5E4620" opacity="0.45"/>
+  <g stroke="#9C7A45" stroke-width="1" stroke-opacity="0.32" fill="none">
+    <path d="M-50,12.6 L26,-3"/><path d="M-46,14.4 L22,0.6"/>
+  </g>
+  <!-- verkohlte Spitze -->
+  <g filter="url(#kontakt)">
+    <path d="M29,-8 C40,-12 50,-15 55,-16.5 C57.6,-13 57.6,-9 55,-6 C48,-4.6 39,-2.2 32,-0.6 Z" fill="url(#b_wKohle)"/>
+  </g>
+  <path d="M29,-8 C40,-12 50,-15 55,-16.5 C56,-15.4 56.6,-14.2 57,-13 C48,-11.2 39,-8.8 30,-6.4 Z"
+        fill="#8A7B6A" opacity="0.34"/>
+  <path d="M28,-6.6 C34,-8.4 41,-10.2 47,-12" stroke="#C4491A" stroke-width="2.8" stroke-opacity="0.6" fill="none" stroke-linecap="round"/>
+  <ellipse cx="52" cy="-11" rx="8" ry="6.4" fill="#FF7A2A" opacity="0.38"/>
+  <!-- Flamme -->
+  <path d="M47,-13 C35,-20 40,-31 51,-44 C60,-30 60,-19 53,-11 Z" fill="url(#flamme)"/>
+  <path d="M48.5,-14 C43.5,-20 46,-26 51,-35 C56.5,-26 55,-19 51.5,-13 Z" fill="#FFF8DC" opacity="0.92"/>
+</g>

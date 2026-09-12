@@ -1,0 +1,132 @@
+{
+  "kennung": "gl11",
+  "frage": "Wie rechne ich weiter, wenn ich x schon kenne?",
+  "art": "rechenschritt",
+  "aufgabe": "a10",
+  "vorwissen": [
+    "Er weiß, dass x und y für zwei verschiedene Zahlen stehen.",
+    "Er kann einfache Gleichungen mit einem Buchstaben lösen.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen."
+  ],
+  "hilfe1": "Für welchen Buchstaben kennst du die Zahl schon?",
+  "skript": {
+    "A": {
+      "text": "Du hast x + y = 10. Für x steht die 4.",
+      "woerter": 13
+    },
+    "B": {
+      "text": "Wir wollen eine Gleichung mit nur einem Buchstaben.",
+      "woerter": 8
+    },
+    "C": {
+      "text": "Setze die 4 für das x ein.",
+      "woerter": 7
+    },
+    "D": {
+      "text": "x und 4 sind dieselbe Zahl.",
+      "woerter": 6
+    },
+    "E": {
+      "text": "Jetzt muss dort 4 + y = 10 stehen.",
+      "woerter": 10
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 49,
+  "sekunden_sprache": 24.5,
+  "sekunden_gesamt": 27.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß x + y = 10. Darunter steht in einem grauen Kasten die 4 für das x.",
+      "hervorgehoben": "die ganze Zeile x + y = 10"
+    },
+    "B": {
+      "sichtbar": "x + y = 10 bleibt oben stehen. Darunter erscheint blass eine Zielzeile mit nur einem Buchstaben, dem y.",
+      "hervorgehoben": "das einzelne y in der blassen Zielzeile"
+    },
+    "C": {
+      "sichtbar": "In der oberen Zeile wird das x blass. An seiner Stelle erscheint die 4. Der graue Kasten bleibt daneben stehen.",
+      "hervorgehoben": "die 4 an der Stelle des x"
+    },
+    "D": {
+      "sichtbar": "Um das blasse x und um die 4 im grauen Kasten liegt je ein gelber Ring. Zwischen den beiden Ringen steht ein Gleichheitszeichen.",
+      "hervorgehoben": "die beiden gelben Ringe um x und 4"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile wird blass. Darunter steht groß 4 + y = 10.",
+      "hervorgehoben": "die neue Zeile 4 + y = 10"
+    },
+    "F": {
+      "sichtbar": "4 + y = 10 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "4 + y = 10"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zusammen": [
+          {
+            "zeile": "x + y = 10"
+          },
+          {
+            "kasten": "4"
+          }
+        ]
+      }
+    ],
+    "B": [
+      {
+        "zielzeile": "y"
+      }
+    ],
+    "C": [
+      {
+        "ersetze": {
+          "was": "x",
+          "durch": "4"
+        }
+      }
+    ],
+    "D": [
+      {
+        "zusammen": [
+          {
+            "ring": "4",
+            "farbe": "gelb"
+          },
+          {
+            "ring": "4",
+            "farbe": "gelb"
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "neueZeile": "4 + y = 10"
+      }
+    ],
+    "F": [
+      {
+        "nurNoch": "4 + y = 10"
+      },
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "C/D, echter Bruch zwischen Prosa und Bildsprache: C verlangt, dass das x BLASS stehen bleibt und die 4 an seiner Stelle erscheint - zwei Zeichen an einem Platz. „ersetze“ tauscht; das x ist danach weg. Deshalb kann D nicht „um das blasse x“ ringen: Die Szene ringt stattdessen die eingesetzte 4 in der Zeile und die 4 im Kasten - zweimal dieselbe Zahl, was der gesprochene Satz („x und 4 sind dieselbe Zahl“) trägt, aber nicht dasselbe zeigt wie die Prosa. Entweder bekommt die Bildsprache ein „ersetze“, das den alten Term blass stehen lässt, oder die Bildbeschreibung von C/D wird nachgezogen.",
+    "D, Abweichung: „Zwischen den beiden Ringen steht ein Gleichheitszeichen“ - die Bildsprache kennt kein Zeichen ZWISCHEN zwei Hervorhebungen auf verschiedenen Zeilen. Es fehlt im Bild.",
+    "B, Abweichung: Die Zielzeile zeigt nur den Buchstaben y. Die Bildbeschreibung nennt keinen weiteren Text („eine Zielzeile mit nur einem Buchstaben, dem y“), also steht auch nichts weiter da."
+  ],
+  "hilfe3": {
+    "aufgabe": "a15",
+    "text": "Setze bei x + y = 20 die 8 für das x ein.",
+    "kontrolle": "Dann steht dort 8 + y = 20."
+  },
+  "faengt_fehler_auf": "Der Schüler setzt die 4 nicht ein, sondern zählt sie dazu: y = 14."
+}

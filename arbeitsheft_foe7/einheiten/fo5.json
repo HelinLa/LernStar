@@ -1,0 +1,177 @@
+{
+ "seite": {
+  "id": "fo5",
+  "quelle": "oi7",
+  "sim": "sammellinse",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Zwei geschliffene Gläser",
+  "name": "Welches Glas bündelt das Licht?",
+  "fachwoerter_neu": [
+   "Sammellinse",
+   "Brennpunkt"
+  ],
+  "alltag": [
+   "In der Kiste liegen zwei runde Gläser ohne Aufschrift.",
+   "Das eine ist in der Mitte dick, das andere dünn.",
+   "Unter dem dicken Glas wird die Schrift der Sternkarte größer.",
+   "Ein Glas, das Licht bündelt, heißt Sammellinse."
+  ],
+  "frage": "Welches Glas bündelt paralleles Licht – und welches nicht?",
+  "predict": [
+   "Beide Gläser bündeln das Licht, das dünne nur schwächer.",
+   "Nur das dicke Glas bündelt. Das dünne lenkt die Strahlen auseinander."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle „in der Mitte dicker“ und lies die Statuszeile.",
+   "Trage ein, wo sich die Strahlen treffen.",
+   "Wähle „in der Mitte dünner“ und beobachte die Strahlen.",
+   "Ergänze die zweite Zeile der Tabelle."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Glas",
+   "Wohin laufen die Strahlen?",
+   "Gibt es einen hellen Punkt?"
+  ],
+  "tabRows": [
+   [
+    "in der Mitte dicker",
+    "sie treffen sich im Brennpunkt",
+    "ja, 90 hinter dem Glas"
+   ],
+   [
+    "in der Mitte dünner",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Glas, das in der Mitte dicker ist, heißt",
+    "loesung": "Sammellinse",
+    "post": ". Es bündelt paralleles Licht."
+   },
+   {
+    "pre": "Alle Strahlen treffen sich in einem Punkt: dem",
+    "loesung": "Brennpunkt",
+    "post": ". Dort ist es am hellsten."
+   }
+  ],
+  "wortbank": [
+   "Sammellinse",
+   "Brennpunkt",
+   "bündelt",
+   "auseinander",
+   "dicker"
+  ],
+  "beispiel": {
+   "frage": "Was macht das in der Mitte dünnere Glas mit dem Licht?",
+   "antwort": "Es lenkt die Strahlen auseinander. Hinter dem Glas entsteht nie ein heller Fleck. Es ist keine Sammellinse."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wo treffen sich die Strahlen hinter der Sammellinse?",
+    "optionen": [
+     "Sie treffen sich schon in der Linse.",
+     "Sie treffen sich nie.",
+     "Sie treffen sich im Brennpunkt."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Die Sammellinse",
+      "loesung": "bündelt",
+      "post": "das parallele Licht."
+     },
+     {
+      "pre": "Das dünne Glas lenkt die Strahlen",
+      "loesung": "auseinander",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Im Brennpunkt der Sammellinse ist es am hellsten und am heißesten. Warum?",
+    "satzstarter": "Alle Strahlen treffen sich …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Statuszeile: Dort steht, wo sich die Strahlen treffen.",
+   "h2": "Beginne so: Alle Strahlen treffen sich in einem einzigen Punkt. Ihr ganzes Licht …",
+   "h3": "Fast fertige Antwort: Im Brennpunkt kommt das Licht aller Strahlen zusammen. Darum ist es dort am hellsten und am ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Sammellinse am Aussehen erkennen.",
+   "Ich weiß, was im Brennpunkt passiert.",
+   "Ich kann sagen, was das dünne Glas mit Licht macht."
+  ],
+  "zuhause": "Halte eine Lupe dicht über ein Blatt mit kleiner Schrift. Die Lupe ist in der Mitte dicker – eine Sammellinse. Was passiert mit der Schrift?",
+  "bildauftrag": "[BILD: von links kommen drei parallele Lichtstrahlen, treffen auf eine stehende, in der Mitte dicke Linse und laufen dahinter in einem Punkt zusammen; der Punkt groß markiert mit Beschriftung „Brennpunkt“; weitere große Beschriftungen „paralleles Licht“ und „Sammellinse“; klare, getrennte Strahlen ohne Nebenbilder; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo5",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass die in der Mitte dickere Sammellinse paralleles Licht im Brennpunkt bündelt, und unterscheiden sie vom in der Mitte dünneren Glas, das die Strahlen auseinanderlenkt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lupe über kleiner Schrift (wie im Zuhause-Auftrag). Kein Bündeln von Sonnenlicht – Brandgefahr.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die zwei Statuszeilen vorlesen oder als Karten zeigen: in der Mitte dicker → Sammellinse, die Strahlen treffen sich im Brennpunkt, 90 hinter dem Glas, dort ist es am hellsten und heißesten · in der Mitte dünner → die Strahlen laufen auseinander, hinter dem Glas entsteht nie ein heller Fleck.",
+  "merksatz": [
+   "Sammellinse",
+   "Brennpunkt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "in der Mitte dünner",
+    "sie laufen auseinander",
+    "nein, nie ein heller Fleck"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile nennt den Treffpunkt: im Brennpunkt, 90 hinter dem Glas.",
+   "typische_fehler": [
+    "„In der Linse“ – der Brennpunkt liegt hinter der Linse, nicht in ihr."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "bündelt",
+    "auseinander"
+   ],
+   "typische_fehler": [
+    "„sammelt“ statt „bündelt“ – die Wortbank-Form wird nicht übernommen.",
+    "„zerstreut sich überall“ statt der klaren Richtung „auseinander“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Alle Strahlen treffen sich im Brennpunkt. Das Licht aller Strahlen kommt dort zusammen. Darum ist es dort am hellsten und am heißesten.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: im Brennpunkt ist es am hellsten und heißesten.",
+    "Vergleich: viele Lampen leuchten auf denselben Fleck."
+   ],
+   "typische_fehler": [
+    "Hell und heiß werden als zwei verschiedene Ursachen gedeutet.",
+    "Der Brennpunkt wird in die Linse gelegt."
+   ]
+  },
+  "hilfe3_wort": "heißesten (auch richtig: wärmsten)",
+  "schwache": [
+   "Nur mit den zwei Knöpfen arbeiten lassen, den Regler zunächst nicht anfassen.",
+   "Eine echte Lupe herumgeben: in der Mitte dicker – Sammellinse.",
+   "Im Beispiel den Satz „keine Sammellinse“ unterstreichen lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Verändere den Regler der Wölbung und beobachte, wie der Brennpunkt näher heranrückt oder weiter wegwandert.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Linsen. Kompetenz E5 wie auf der Quellseite oi7. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

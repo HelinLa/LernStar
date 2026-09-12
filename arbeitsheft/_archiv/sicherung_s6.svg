@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1136 178" width="1136" height="178">
+<g font-family="Helvetica,Arial">
+ <g id="p1">
+  <rect x="150" y="98" width="196" height="44" rx="6" fill="#cda877" stroke="#a9834f" stroke-width="3"/>
+  <circle cx="192" cy="120" r="10" fill="#c3cbdb" stroke="#8c96ac" stroke-width="3"/>
+  <circle cx="304" cy="120" r="10" fill="#c3cbdb" stroke="#8c96ac" stroke-width="3"/>
+  <rect x="185" y="110" width="126" height="20" rx="10" fill="none" stroke="#8d97ab" stroke-width="7"/>
+  <path d="M150 120 L96 120 L96 74" stroke="#c9544a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <path d="M346 120 L404 120 L404 74" stroke="#e2b755" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <rect x="64" y="42" width="64" height="32" rx="6" fill="#4a5570" stroke="#2a3346" stroke-width="3"/>
+  <text x="96" y="32" font-size="15" fill="#6a6252" text-anchor="middle">Batterie</text>
+  <circle cx="404" cy="48" r="24" fill="#ffdd95" stroke="#e6b158" stroke-width="3"/>
+  <g stroke="#f0b93f" stroke-width="4" stroke-linecap="round">
+    <line x1="404" y1="10" x2="404" y2="0"/><line x1="436" y1="24" x2="446" y2="17"/>
+    <line x1="372" y1="24" x2="362" y2="17"/></g>
+  <text x="255" y="168" font-size="19" font-weight="600" fill="#1c5c3a" text-anchor="middle">Stromkreis geschlossen – die Lampe leuchtet</text>
+ </g>
+ <g transform="translate(578,0)">
+  <rect x="150" y="98" width="196" height="44" rx="6" fill="#cda877" stroke="#a9834f" stroke-width="3"/>
+  <circle cx="192" cy="120" r="10" fill="#c3cbdb" stroke="#8c96ac" stroke-width="3"/>
+  <circle cx="304" cy="120" r="10" fill="#c3cbdb" stroke="#8c96ac" stroke-width="3"/>
+  <g transform="rotate(-48 192 120)">
+    <rect x="185" y="110" width="126" height="20" rx="10" fill="none" stroke="#8d97ab" stroke-width="7"/></g>
+  <path d="M150 120 L96 120 L96 74" stroke="#c9544a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <path d="M346 120 L404 120 L404 74" stroke="#e2b755" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <rect x="64" y="42" width="64" height="32" rx="6" fill="#4a5570" stroke="#2a3346" stroke-width="3"/>
+  <text x="96" y="32" font-size="15" fill="#6a6252" text-anchor="middle">Batterie</text>
+  <circle cx="404" cy="48" r="24" fill="#e2ded2" stroke="#b9b3a3" stroke-width="3"/>
+  <text x="255" y="168" font-size="19" font-weight="600" fill="#9c3b32" text-anchor="middle">Stromkreis offen – die Lampe bleibt dunkel</text>
+ </g>
+ <line x1="568" y1="18" x2="568" y2="150" stroke="#e0d5b8" stroke-width="2"/>
+</g></svg>

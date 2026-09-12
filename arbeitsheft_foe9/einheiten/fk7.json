@@ -1,0 +1,189 @@
+{
+ "seite": {
+  "id": "fk7",
+  "quelle": "kf7",
+  "sim": "kraefte-addieren",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei ziehen am selben Seil",
+  "name": "Was passiert, wenn zwei ziehen?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Am Kran hängt ein schweres Rohr.",
+   "Nour und Jannis ziehen am Seil nach rechts. Das Rohr rutscht.",
+   "Dann zieht Jannis nach links.",
+   "Beide Kräfte zusammen ergeben die Gesamtkraft."
+  ],
+  "frage": "Wann wird die Gesamtkraft größer, wann kleiner?",
+  "predict": [
+   "Nur bei gleicher Richtung wird addiert. Sonst wird abgezogen.",
+   "Zwei Kräfte werden immer addiert. Die Richtung ist egal."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile ab. Zeile 1 ist schon ausgefüllt.",
+   "Drücke bei F1 auf „Richtung“. Prüfe: F1 zieht jetzt nach links. Trage Zeile 2 ein.",
+   "Drücke bei F2 auf „– N“. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die beiden Ergebnisse.",
+  "tabCols": [
+   "Was drückst du?",
+   "Welche Kräfte zeigt die Statuszeile?",
+   "Wie groß ist die Gesamtkraft?"
+  ],
+  "tabRows": [
+   [
+    "nichts",
+    "3 N nach rechts und 2 N nach rechts",
+    "5 N nach rechts"
+   ],
+   [
+    "„Richtung“ bei F1",
+    "",
+    ""
+   ],
+   [
+    "„– N“ bei F2",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Kräfte ziehen auf einer Linie in die gleiche Richtung. Dann musst du die Zahlen",
+    "loesung": "addieren",
+    "post": "."
+   },
+   {
+    "pre": "Sie ziehen gegeneinander. Dann musst du die kleinere Zahl von der größeren",
+    "loesung": "abziehen",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "addieren",
+   "abziehen",
+   "5 N",
+   "1 N"
+  ],
+  "beispiel": {
+   "frage": "3 N und 2 N ziehen nach links. Wie groß ist die Gesamtkraft?",
+   "antwort": "Beide ziehen nach links. Also addiere: 3 N + 2 N = 5 N. Die Gesamtkraft ist 5 N nach links."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "F1 zieht 3 N nach links. F2 zieht 1 N nach rechts. Wie groß ist die Gesamtkraft?",
+    "optionen": [
+     "2 N nach links.",
+     "4 N nach links.",
+     "2 N nach rechts."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "3 N nach rechts und 2 N nach rechts ergeben",
+      "loesung": "5 N",
+      "post": "nach rechts."
+     },
+     {
+      "pre": "3 N nach links und 2 N nach rechts ergeben",
+      "loesung": "1 N",
+      "post": "nach links."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Zwei Kräfte sind immer stärker als eine.“ Warum stimmt das nicht?",
+    "satzstarter": "Das stimmt nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Denk an den Kraftpfeil: Zahl und Richtung.",
+   "h2": "Beginne so: Das stimmt nicht, weil zwei Kräfte auch gegeneinander ziehen können.",
+   "h3": "Fast fertig: 3 N nach links und 2 N nach rechts ergeben nur 1 N. Sie werden ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann zwei Kräfte in gleicher Richtung addieren.",
+   "Ich kann bei Gegenrichtung die kleinere Zahl abziehen.",
+   "Ich kann sagen, wohin die Gesamtkraft zeigt."
+  ],
+  "zuhause": "Zieht zu zweit einen Karton: erst beide nach rechts, dann gegeneinander. Schreibe auf, was leichter geht.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleich große Bildhälften nebeneinander, durch einen dünnen senkrechten Strich getrennt. Beide Hälften zeigen denselben grauen Kasten auf derselben waagerechten Linie – nur diese eine Linie, keine schrägen Pfeile. LINKS: ein roter Pfeil startet am Kasten und zeigt nach rechts, beschriftet „F1 = 3 N“; direkt darunter ein kürzerer roter Pfeil, ebenfalls nach rechts, beschriftet „F2 = 2 N“; darunter ein langer grüner Pfeil nach rechts mit der großen Beschriftung „Gesamtkraft 5 N nach rechts“. RECHTS: derselbe Kasten, ein roter Pfeil nach LINKS mit „F1 = 3 N“, darunter ein kürzerer roter Pfeil nach RECHTS mit „F2 = 2 N“, darunter ein sehr kurzer grüner Pfeil nach links mit der großen Beschriftung „Gesamtkraft 1 N nach links“. Über der linken Hälfte steht groß „gleiche Richtung: addieren“, über der rechten „gegeneinander: abziehen“. Alle roten Pfeile beginnen am Kasten, die grünen Pfeile stehen frei darunter. Keine weiteren Pfeile, keine Nebenbilder, keine Deko, ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fk7",
+  "lernziel": "Die Schülerinnen und Schüler bestimmen die Gesamtkraft aus zwei Kräften, die auf einer Linie an einem Körper ziehen: Bei gleicher Richtung werden die Beträge addiert, bei Gegenrichtung wird die kleinere Zahl von der größeren abgezogen. Sie geben an, dass die Gesamtkraft in die Richtung der größeren Kraft zeigt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die beiden Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Für den Alltagsversuch: ein Seil oder Handtuch und ein Karton.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Zwei Ergebniskarten vorlesen oder an die Tafel hängen – jeweils die eingestellten Kräfte und die Gesamtkraft dazu: „Richtung“ bei F1 → 3 N nach links und 2 N nach rechts → Gesamtkraft 1 N nach links (gegeneinander, abziehen: 3 N − 2 N = 1 N) · „– N“ bei F2 → 3 N nach links und 1 N nach rechts → Gesamtkraft 2 N nach links (gegeneinander, abziehen: 3 N − 1 N = 2 N). Die Ausgangskarte 3 N nach rechts und 2 N nach rechts → 5 N nach rechts (addieren: 3 N + 2 N = 5 N) steht als Beispielzeile schon im Heft; sie wird als Erstes gezeigt. Zu jeder Karte die zwei roten Pfeile und den grünen Pfeil aus dem Bildauftrag an die Tafel zeichnen.",
+  "merksatz": [
+   "addieren",
+   "abziehen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "„Richtung“ bei F1",
+    "3 N nach links und 2 N nach rechts",
+    "1 N nach links"
+   ],
+   [
+    "„– N“ bei F2",
+    "3 N nach links und 1 N nach rechts",
+    "2 N nach links"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Das ist die dritte Tabellenzeile: Die Statuszeile meldet dort „Gesamtkraft = 2 N nach links“. Beide Kräfte ziehen gegeneinander, also 3 N − 1 N = 2 N; die Richtung kommt von der größeren Kraft F1.",
+   "typische_fehler": [
+    "Option 2 (4 N nach links): Es wird addiert statt abgezogen – die Regel für gleiche Richtung wird auf die Gegenrichtung übertragen.",
+    "Option 3 (2 N nach rechts): Die Zahl stimmt, die Richtung nicht. Die Gesamtkraft zeigt immer dorthin, wohin die größere Kraft zieht.",
+    "F2 wird für die stärkere Kraft gehalten, weil sie in der Statuszeile an zweiter Stelle steht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5 N",
+    "1 N"
+   ],
+   "typische_fehler": [
+    "In der zweiten Lücke steht 5 N: Es wird addiert, obwohl die Kräfte gegeneinander ziehen.",
+    "In der zweiten Lücke steht 2 N oder 3 N – eine der beiden Einzelkräfte wird abgeschrieben statt gerechnet.",
+    "Die Richtung im Nachsatz wird überlesen. Beide Sätze deshalb einmal ganz vorlesen lassen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das stimmt nicht, weil zwei Kräfte auch gegeneinander ziehen können. Dann wird die kleinere Zahl von der größeren abgezogen. 3 N nach links und 2 N nach rechts ergeben nur 1 N nach links. Das ist weniger als 3 N allein.",
+   "alternativen": [
+    "Beispiel aus der Simulation ohne Rechnung: „Bei 3 N nach links und 2 N nach rechts steht in der Statuszeile nur 1 N. Vorher war eine Kraft schon 3 N groß.“",
+    "Alltagsbeispiel: Beim Tauziehen ziehen beide Mannschaften, und das Seil bewegt sich kaum. Zusammen kommt weniger heraus als bei einer Mannschaft allein.",
+    "Kurzform ohne Zahlen: „Nur wenn beide in dieselbe Richtung ziehen, wird es stärker.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Die Aussage von Nour wird nur wiederholt statt widerlegt.",
+    "Es wird der Fall gleiche Richtung erklärt (3 N + 2 N = 5 N) – richtig gerechnet, aber am Thema der Aufgabe vorbei.",
+    "„Die Kräfte sind dann weg“ – die Kräfte wirken weiter, nur die Gesamtkraft ist kleiner. Am Bild mit den zwei roten Pfeilen zeigen."
+   ]
+  },
+  "hilfe3_wort": "abgezogen (auch richtig: subtrahiert, voneinander abgezogen)",
+  "schwache": [
+   "Zuerst nur die Beispielzeile gemeinsam laut lesen und dabei mit dem Finger auf die Statuszeile am Bildschirm zeigen; erst danach Zeile 2 bearbeiten.",
+   "Zwei Papierpfeile ausschneiden (lang = 3 N, kurz = 2 N) und vor jeder Zeile auf den Tisch legen: erst beide nebeneinander in eine Richtung, dann gegeneinander.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen und die beiden Rechenwörter farbig umranden.",
+   "Beim Bedienen die zwei Knopfgruppen mit Klebezetteln „F1“ und „F2“ markieren – die Aufschriften „– N“, „+ N“ und „Richtung“ stehen zweimal gleich da.",
+   "Bei Aufgabe 3 zuerst mündlich antworten lassen und den Satz dann gemeinsam aufschreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke bei F2 auf „+ N“ und dann auf „Richtung“. Jetzt ziehen beide Kräfte nach links. Lies die Gesamtkraft ab und schreibe auf, was sich gegenüber der ersten Tabellenzeile geändert hat und was gleich geblieben ist.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Zusammensetzen von Kräften auf einer Wirkungslinie. Hinweise zur Wortwahl und zu den Grenzen der Simulation: (1) Die Simulation schreibt „Gesamtkraft (Resultierende)“ – auf der Schülerseite steht nach der Ein-Name-Regel durchgehend nur „Gesamtkraft“; „Resultierende“ wird nicht eingeführt und steht nicht in der Wortbank. Neue Fachwörter führt diese Einheit nach dem Seitenplan keine ein. (2) Statt „entgegengesetzt/subtrahieren“ heißt es im Heft „gegeneinander/abziehen“; beide Bildschirmwörter dürfen mündlich genannt werden. (3) Die Statuszeile schreibt die Einzelkräfte mit Klammer („F1 = 3 N (rechts)“) und die Gesamtkraft mit Präposition („5 N nach rechts“) – das Heft benutzt überall nur die zweite Form. (4) Die Betragsstriche |3 N − 2 N| der Statuszeile werden nicht abgeschrieben; im Heft heißt es „die kleinere Zahl von der größeren abziehen“. (5) Die Reihenfolge der Arbeitsschritte ist bewusst gewählt: Wer zuerst bei F1 auf „– N“ drückt und danach die Richtung umkehrt, landet bei zwei gleich großen Kräften gegeneinander. Dieser Fall (Gesamtkraft 0 N) ist im Simulationsdump nicht belegt und gehört zu fk8 (Kräftegleichgewicht); er kommt hier deshalb nicht vor. Zurückstellen geht immer mit „+ N“. (6) Die drei Quizfragen der Simulation stellen eigene Aufgaben: Frage 1 „Zwei Kräfte 3 N und 2 N ziehen in dieselbe Richtung“ (Lösung „5 N“, Auswahl 5 N · 1 N · 6 N) – das sind genau die Werte der Beispielzeile; Frage 2 „Zwei Kräfte 5 N und 3 N ziehen in entgegengesetzte Richtungen“ (Lösung „2 N“, Auswahl 2 N · 8 N · 0 N); Frage 3 „Zwei gleich große Kräfte ziehen in entgegengesetzte Richtungen“ (Lösung „0 N (Gleichgewicht)“) – dieser Fall gehört zu fk8. Nur Frage 1 passt zu den eingestellten Werten; die Zahlen der Fragen 2 und 3 stehen nirgends in der Statuszeile. Die Fragen werden im Heft nicht als Ablesequelle benutzt und sollten erst nach der Tabelle freigegeben werden. (7) Vorwissen aus fk6: Jede Kraft hat eine Zahl und eine Richtung (Kraftpfeil). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

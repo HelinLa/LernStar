@@ -1,0 +1,149 @@
+{
+  "kennung": "gl07",
+  "frage": "Wie fasse ich 3x + 2x zusammen?",
+  "art": "rechenschritt",
+  "aufgabe": "a13",
+  "vorwissen": [
+    "Er weiß, dass 3x „drei mal x“ bedeutet.",
+    "Er kann 3 Äpfel und 2 Äpfel zusammenzählen.",
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen."
+  ],
+  "hilfe1": "Wie viele x sind es zusammen?",
+  "skript": {
+    "A": {
+      "text": "Du hast jetzt 3x + 2x = 20.",
+      "woerter": 11
+    },
+    "B": {
+      "text": "Wir wollen 3x + 2x zusammenfassen.",
+      "woerter": 8
+    },
+    "C": {
+      "text": "Zähle 3x und 2x zusammen.",
+      "woerter": 7
+    },
+    "D": {
+      "text": "Beide Teile haben ein x. Dann zählst du nur die Zahlen davor zusammen.",
+      "woerter": 13
+    },
+    "E": {
+      "text": "Jetzt muss dort 5x = 20 stehen.",
+      "woerter": 9
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 53,
+  "sekunden_sprache": 26.5,
+  "sekunden_gesamt": 29.5,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß 3x + 2x = 20.",
+      "hervorgehoben": "die ganze Zeile 3x + 2x = 20"
+    },
+    "B": {
+      "sichtbar": "3x + 2x = 20 steht weiter da. Um 3x und um 2x liegt je ein gelber Ring.",
+      "hervorgehoben": "die beiden gelben Ringe um 3x und 2x"
+    },
+    "C": {
+      "sichtbar": "Die Zeile 3x + 2x = 20 bleibt oben stehen. Darunter erscheint ein gelbes Feld mit 3x + 2x, ohne die 20.",
+      "hervorgehoben": "das gelbe Feld mit 3x + 2x"
+    },
+    "D": {
+      "sichtbar": "Im gelben Feld bleibt 3x + 2x stehen. Unter jedem x liegt ein Kästchen mit einem x; die zwei Kästchen sehen gleich aus. Dann werden die 3 und die 2 davor groß.",
+      "hervorgehoben": "die große 3 und die große 2 vor dem x"
+    },
+    "E": {
+      "sichtbar": "Die alte Zeile und das gelbe Feld werden blass. Darunter steht groß 5x = 20.",
+      "hervorgehoben": "die neue Zeile 5x = 20"
+    },
+    "F": {
+      "sichtbar": "5x = 20 steht allein im Bild und bleibt drei Sekunden stehen.",
+      "hervorgehoben": "5x = 20"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zeile": "3x + 2x = 20"
+      }
+    ],
+    "B": [
+      {
+        "zusammen": [
+          {
+            "ring": "3x",
+            "farbe": "gelb"
+          },
+          {
+            "ring": "2x",
+            "farbe": "gelb"
+          }
+        ]
+      }
+    ],
+    "C": [
+      {
+        "zusammen": [
+          {
+            "zeile": "3x + 2x"
+          },
+          {
+            "markiere": "3x + 2x",
+            "farbe": "gelb"
+          }
+        ]
+      }
+    ],
+    "D": [
+      {
+        "zusammen": [
+          {
+            "buendel": [
+              {
+                "unter": "x",
+                "inhalt": "x"
+              },
+              {
+                "unter": "x",
+                "inhalt": "x"
+              }
+            ]
+          },
+          {
+            "gross": "3"
+          },
+          {
+            "gross": "2"
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "neueZeile": "5x = 20"
+      }
+    ],
+    "F": [
+      {
+        "nurNoch": "5x = 20"
+      },
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "B und C sind übersetzt: Der Regelkonflikt ist zentral entschieden, nicht örtlich umgangen. §12.4 kennt jetzt „zusammen“ - ein Bündel Bausteine, das das Auge als EINEN Vorgang liest und das als EINE Hervorhebung zählt. Genau so liest die Bildbeschreibung selbst: „die beiden gelben Ringe um 3x und 2x“ ist ein hervorgehoben, nicht zwei.",
+    "D ist übersetzt: das Kästchen-Bündel heißt „buendel“ und hängt unter den genannten Termen, das Größerwerden heißt „gross“ (PROFIL §12.2). Beide sind für gl07 D UND gl08 D zusammen entworfen, wie §12.6 es verlangt hat.",
+    "D, kleine Abweichung: Die Bildbeschreibung sagt „Dann werden die 3 und die 2 davor groß“ - erst die Kästchen, dann das Größerwerden. Die Bildsprache kennt keine Reihenfolge innerhalb eines Teils; beides erscheint gemeinsam."
+  ],
+  "hilfe3": {
+    "aufgabe": "a14",
+    "text": "Bei 4x + 3x zählst du 4 und 3 zusammen.",
+    "kontrolle": "Dann steht dort 7x = 21."
+  },
+  "faengt_fehler_auf": "Der Schüler malnimmt 3 und 2 und schreibt 6x = 20."
+}

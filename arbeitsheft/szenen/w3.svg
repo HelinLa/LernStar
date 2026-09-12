@@ -1,0 +1,13 @@
+<defs>
+  <radialGradient id="w3licht" cx="0.40" cy="0.36" r="0.78">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.44"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#w3licht)"/>
+  <use href="#t_handtuch" transform="translate(180,486) rotate(-6) scale(1.05)"/>
+  <use href="#t_dampf" transform="translate(700,268) scale(0.9)"/>
+  <use href="#t_becher_tee" transform="translate(700,432) scale(1.05)"/>
+  <use href="#t_glasdose" transform="translate(400,448) scale(1.3)"/>

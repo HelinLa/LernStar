@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fb5",
+  "quelle": "be6",
+  "sim": "weg-zeit-diagramm",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Linien an der Werkstattwand",
+  "name": "Was verrät die Linie im Weg-Zeit-Bild?",
+  "fachwoerter_neu": [
+   "Weg-Zeit-Diagramm"
+  ],
+  "alltag": [
+   "In der Werkstatt hängt ein großes Blatt Papier an der Wand.",
+   "Nour zeichnet darauf jede Messfahrt als Linie.",
+   "So ein Bild heißt Weg-Zeit-Diagramm.",
+   "Jannis sieht nur Striche und fragt: „Was soll man daran erkennen?“"
+  ],
+  "frage": "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
+  "predict": [
+   "Die steile Linie gehört zur schnellen Fahrt. In gleicher Zeit ist der Weg groß.",
+   "Die steile Linie gehört zur langsamen Fahrt. Der Wagen muss ja bergauf."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „schnell“ und dann „▶ Fahren“. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.",
+   "Lies die Statuszeile und trage Zeile 2 in die Tabelle ein.",
+   "Drücke „mit Pause“ und dann „▶ Fahren“. Trage danach Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Fahrt?",
+   "Wie sieht die Linie aus?",
+   "Was macht der Wagen?"
+  ],
+  "tabRows": [
+   [
+    "schnell",
+    "steil",
+    "Er fährt schnell."
+   ],
+   [
+    "langsam",
+    "",
+    ""
+   ],
+   [
+    "mit Pause",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Im Weg-Zeit-Diagramm zeigt eine steile Linie eine schnelle Fahrt. Eine",
+    "loesung": "flache",
+    "post": "Linie zeigt eine langsame Fahrt."
+   },
+   {
+    "pre": "Eine waagerechte Linie zeigt: Der Wagen",
+    "loesung": "steht still",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "flache",
+   "steht still",
+   "schneller",
+   "waagerecht"
+  ],
+  "beispiel": {
+   "frage": "Du drückst „schnell“ und dann „▶ Fahren“. Was zeigt die Simulation?",
+   "antwort": "Die Linie steigt steil nach oben. In der Statuszeile steht: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg. In gleicher Zeit ist der Weg also groß. Der Wagen fährt schnell."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Zwei Wagen fahren gleich lange. Die Linie von Wagen A ist flach. Die Linie von Wagen B ist steil. Wer ist schneller?",
+    "optionen": [
+     "Wagen A ist schneller.",
+     "Wagen B ist schneller.",
+     "Beide sind gleich schnell."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nours Linie ist steil, die Linie von Jannis ist flach. Nour ist",
+      "loesung": "schneller",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen hält am Tor an. Seine Linie ist dort",
+      "loesung": "waagerecht",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Linie ist waagerecht. Also bleibt die Zeit stehen.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Die Zeit läuft weiter, aber …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Wortbank stehen vier Wörter. Zwei davon passen in Aufgabe 2. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Die Zeit läuft weiter, aber der Weg wird nicht länger. Sieh danach in Zeile 3 deiner Tabelle nach.",
+   "h3": "Fast fertige Antwort: Die Zeit läuft weiter. Der Weg wird nicht länger. Deshalb bleibt die Linie waagerecht. Ergänze den letzten Satz: Der Wagen ___ ."
+  },
+  "selbstcheck": [
+   "Ich weiß, was ein Weg-Zeit-Diagramm zeigt.",
+   "Ich kann an der Linie ablesen, ob der Wagen schnell oder langsam fährt.",
+   "Ich kann erklären, was eine waagerechte Linie bedeutet."
+  ],
+  "zuhause": "Zeichne deinen Schulweg als Weg-Zeit-Diagramm. Steil heißt schnell. Flach heißt langsam. Waagerecht heißt: Du wartest an der Ampel.",
+  "bildauftrag": "[BILD: EIN einzelnes Weg-Zeit-Diagramm im Querformat, das den ganzen Bildkasten füllt. Der Kasten ist gemessen 306 × 168 pt, gedruckt also nur etwa 52 mm breit und 28 mm hoch – deshalb nur wenige, sehr große Elemente und kein zweites Bild daneben. Dicke Achsen auf ruhigem hellem Grund, unten beschriftet „t (Zeit)“, links beschriftet „s (Weg)“, keine Zahlen und keine Striche an den Achsen. Darin genau drei Linien, die alle im Ursprung starten: eine steile gerade Linie mit der Beschriftung „schnell“, eine flache gerade Linie mit der Beschriftung „langsam“, und eine dritte Linie mit der Beschriftung „mit Pause“, die erst steigt, dann ein Stück waagerecht läuft und danach wieder steigt. Jede Linie in einer anderen Farbe UND einer anderen Strichart (durchgezogen, gestrichelt, gepunktet), damit sie auch in Schwarz-Weiß unterscheidbar sind; die Beschriftung steht jeweils direkt am Ende der Linie und muss bei 52 mm Bildbreite noch lesbar sein. Keine Straße, kein Fahrrad, keine Deko im Bild]"
+ },
+ "lehrer": {
+  "id": "fb5",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Linie im Weg-Zeit-Diagramm ab, wie der Wagen fährt: steil bedeutet schnell, flach bedeutet langsam, waagerecht bedeutet, dass er still steht. Sie begründen außerdem, dass bei einer waagerechten Linie die Zeit weiterläuft und nur der Weg nicht mehr wächst. Gerechnet wird hier nichts: Die Simulation zeigt keine Achsenwerte, keine Sekunden und keine Meter.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag „Zu Hause“ kariertes Papier oder das Heft benutzen: Auf der Seite selbst ist kein Platz zum Zeichnen, das Seitenbild zeigt die drei Linien nur als Muster.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Karte 1 (schnell – so startet die Simulation): „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“ Karte 2 (langsam): „Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.“ Karte 3 (mit Pause): „Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.“ Dazu an die Tafel ein Achsenkreuz zeichnen, unten „t (Zeit)“, links „s (Weg)“ – genau so heißen die Beschriftungen auch am Bildschirm. In dieses Kreuz nacheinander drei Linien legen: eine steile, eine flache und eine, die erst steigt, dann waagerecht läuft und dann wieder steigt. Zahlen gehören nicht dazu: Die Simulation hat keine Regler und zeigt weder Achsenwerte noch Sekunden oder Meter. Auf der Seite wird deshalb nichts gerechnet und nichts abgelesen außer der Meldung und dem Verlauf der Linie.",
+  "merksatz": [
+   "flache",
+   "steht still"
+  ],
+  "tabelle_erwartet": [
+   [
+    "langsam",
+    "flach",
+    "Er fährt langsam."
+   ],
+   [
+    "mit Pause",
+    "steigt – waagerecht – steigt wieder",
+    "Er fährt, hält an, fährt weiter."
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Steil heißt: in gleicher Zeit viel Weg. Genau das meldet die Simulation bei der schnellen Fahrt: „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“ Wagen B hat die steile Linie, also ist Wagen B schneller. Die Aufgabe ist reines Zuordnen (K2); begründet wird erst in Aufgabe 3.",
+   "typische_fehler": [
+    "Antwort 1 wird gewählt, weil die flache Linie „ruhiger“ und damit gleichmäßiger aussieht.",
+    "Antwort 2 wird gewählt, weil beide Wagen gleich lange fahren. Gleich ist hier nur die Zeit, nicht der Weg.",
+    "Die Linie wird als Bild der Straße gelesen: steil = Berg = anstrengend = langsam. Das ist genau die Fehlvorstellung, die auf Seite A als falsche Vermutung angeboten wird („Der Wagen muss ja bergauf“)."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "schneller",
+    "waagerecht"
+   ],
+   "typische_fehler": [
+    "In Lücke 1 steht „flache“. Gesucht ist der Vergleich der beiden Fahrten: Nour hat die steile Linie.",
+    "In Lücke 2 steht „senkrecht“. Die zwei Wörter unterscheiden sich nur in der ersten Silbe; eine senkrechte Linie kommt in dieser Simulation gar nicht vor.",
+    "Beide Lücken werden mit demselben Wort gefüllt; die Wortbank hat für jede Lücke ein eigenes Wort."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Zeit läuft weiter, aber der Weg wird nicht länger. Der Wagen steht still. Deshalb bleibt die Linie waagerecht.",
+   "alternativen": [
+    "Verweis auf die Simulation: Auf die Antwort „Sehr schnell“ meldet sie „Waagerecht bedeutet kein Weg pro Zeit.“, richtig ist „Der Körper steht still“.",
+    "Verweis auf die Fahrt „mit Pause“: Der Wagen steht auf der Fahrbahn, und die Linie läuft trotzdem weiter nach rechts.",
+    "Verweis auf das Achsenkreuz: Nach rechts läuft die Zeit t. Solange die Linie nach rechts weitergeht, läuft auch die Zeit weiter."
+   ],
+   "typische_fehler": [
+    "Jannis wird nur widersprochen („stimmt nicht“), ohne den Weg zu nennen.",
+    "Weg und Zeit werden vertauscht: „Der Weg läuft weiter, die Zeit nicht.“",
+    "„Der Wagen fährt ruhig weiter“ – die falsche Vermutung von Seite A wird nicht korrigiert; die Linie stiege dann aber weiter an.",
+    "Die Antwort beschreibt nur die Linie („sie ist gerade“), ohne zu sagen, was der Wagen macht."
+   ]
+  },
+  "hilfe3_wort": "steht still (auch richtig: hält an, bewegt sich nicht)",
+  "schwache": [
+   "Bedienfalle vorweg ansagen: Schon beim Öffnen und nach „Zurücksetzen“ steht in der Statuszeile „Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.“, obwohl noch nichts gewählt wurde. Deshalb ist Zeile 1 der Tabelle die schnelle Fahrt: erst wählen, dann lesen.",
+   "Die drei Knöpfe heißen im Heft genauso wie am Bildschirm: langsam, schnell, mit Pause. Keine anderen Namen benutzen, also nicht „Halt am Tor“ und nicht „Fahrt mit Pause“.",
+   "Die Überschrift sagt „Weg-Zeit-Bild“, danach heißt es im ganzen Heft „Weg-Zeit-Diagramm“. Den Begriffssatz im Alltagsteil einmal laut lesen lassen.",
+   "Zuerst nur Zeile 1 und Zeile 2 bearbeiten (schnell gegen langsam), die Pause in Zeile 3 erst danach.",
+   "„waagerecht“ und „senkrecht“ vor dem Ausfüllen mit dem Arm zeigen lassen; beide Wörter an die Tafel schreiben.",
+   "Die vier Wörter der Wortbank vor Aufgabe 2 einmal abschreiben lassen.",
+   "Als Gegenprobe auf dem Tisch: Ein Finger wandert gleichmäßig über ein Blatt und bleibt bei „Pause“ stehen, während eine zweite Person laut weiterzählt. So wird hörbar, dass die Zeit weiterläuft."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 3 ab: „Konstante Geschwindigkeit → Gerade.“ Das Wort „konstant“ steht auf fb4. Erkläre danach in einem Satz, warum eine gleichmäßige Fahrt keine Kurve ergibt.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Weg-Zeit-Diagramm. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: K2 über die Tabelle und Aufgabe 1 (Informationen aus Diagramm und Statuszeile entnehmen) – dieser Code hängt im ganzen Band allein an dieser Seite und ist deshalb reines Ablesen und Zuordnen geblieben; B2 über Aufgabe 3 (Jannis' Behauptung prüfen), der Erklär-Slot gehört B2 allein; UF1 über den Merksatz; K3 über den Auftrag zu Hause (Weg-Zeit-Diagramm des eigenen Schulwegs auf kariertem Papier; das im Seitenplan angedachte vorgedruckte Achsenkreuz entfällt – der Renderer hat auf Seite B keine Zeichenfläche, und der Bildkasten auf Seite A ist mit 52 × 28 mm zu klein dafür). Die gestrichene MC-Zugfahrt aus be6 wird nicht ersetzt: Die Simulation zeigt keine Zeitwerte, aus denen man ablesen könnte."
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "id": "ki14",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "E5",
+  "E3"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Gemessen wird nicht die Energie, sondern der Schiebeweg s: Der Klotz wird gegen F = 200 N geschoben; aus dieser Arbeit folgt E =",
+   "loesung": "F · s",
+   "post": "."
+  },
+  {
+   "pre": "Über v liegen die Messpunkte krumm, über v² auf einer Ursprungsgeraden. Dieses Umrechnen der x-Achse, bis eine Gerade entsteht, heißt",
+   "loesung": "Linearisieren",
+   "post": "."
+  },
+  {
+   "pre": "Bei m = 4 kg hat die Gerade in der Auftragung E über v² die Steigung k = 2,0 kg. Aus m = 2 · k folgt daraus die Masse",
+   "loesung": "4,0 kg",
+   "post": " – genau der eingestellte Wert."
+  },
+  {
+   "pre": "In der Auftragung E über m ist die Steigung k = v²/2. Bei v = 4 m/s beträgt sie 8,0 m²/s², und aus v = √(2 · k) folgt das Tempo",
+   "loesung": "4,0 m/s",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Der Wechsel zu „E über v² auftragen“ wiederholt keine Messung: Dieselben neun Wertepaare liegen nur anders aufgetragen.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil die Punkte über v nicht auf einer Geraden liegen, ist die Messreihe unbrauchbar und muss wiederholt werden.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Die Steigung über v² hat die Einheit J/(m²/s²) = kg und liefert deshalb über m = 2 · k die Masse zurück.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Mischt man Punkte mit 4 kg und mit 8 kg in eine Reihe, liegen über v² trotzdem alle auf einer Ursprungsgeraden.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira verstellt beim Messen abwechselnd „Masse m“ und „Tempo v“. Über v² liegen ihre acht Punkte danach auf mehreren Geraden. Was folgt daraus?",
+  "optionen": [
+   "Die Punkte fallen auseinander, weil die Kugel auf dem längeren Weg Energie verliert. Mit kleineren Tempowerten läge wieder alles auf einer Geraden.",
+   "Die Auftragung über v² ist für gemischte Reihen falsch gewählt; sobald Mira auf „E über v auftragen“ wechselt, liegt alles auf einer Geraden.",
+   "Die Steigung ist m/2 – jede Masse hat also ihre eigene Gerade. Für eine auswertbare Reihe muss die Masse fest bleiben und allein das Tempo laufen."
+  ],
+  "richtig": 2,
+  "erklaerung": "Die Steigung in der Auftragung E über v² ist m/2 und hängt damit von der Masse ab: 4 kg gehören zur Steigung 2,0 kg, 8 kg zur Steigung 4,0 kg. Wer beide Massen in eine Reihe mischt, misst zwei Geraden gleichzeitig – die Simulation gibt jeder Masse deshalb eine eigene Farbe. Der Fehler liegt nicht an der Auftragung und auch nicht an Verlusten: Die Kugel verliert unterwegs nichts, und in der Auftragung E über v liegen dieselben Punkte erst recht nicht auf einer Geraden, sondern auf mehreren Parabeln. Abhilfe schafft allein die Variablenkontrolle – eine Größe festhalten, die andere durchfahren; genau das tut „Messreihe automatisch aufnehmen“."
+ },
+ "offen": {
+  "frage": "Tobias will sich die Auftragung sparen: Zwei Messpunkte bei 4 m/s und 8 m/s genügten, denn wenn die Energie dabei von 32 J auf 128 J steigt, sei das Quadrat bewiesen. Beurteile seinen Vorschlag und begründe mit der Messreihe, was die Auftragung über v² zusätzlich leistet.",
+  "prompt": "Tobias will sich die Auftragung sparen: Zwei Messpunkte bei 4 m/s und 8 m/s genügten, denn wenn die Energie dabei von 32 J auf 128 J steigt, sei das Quadrat bewiesen. Beurteile seinen Vorschlag und begründe mit der Messreihe, was die Auftragung über v² zusätzlich leistet.",
+  "zeilen": 4,
+  "loesung": "Die beiden Werte stimmen, sie beweisen aber nichts: Durch zwei Punkte passt immer auch eine Gerade. Die Gerade durch (4 m/s | 32 J) und (8 m/s | 128 J) hat die Steigung (128 J − 32 J) : (8 m/s − 4 m/s) = 24 J je m/s und den Achsenabschnitt 32 J − 4 · 24 J = −64 J; sie träfe beide Punkte genauso gut wie die Parabel. Erst weitere Messwerte trennen die beiden Modelle: Bei 1 m/s sagt die Gerade 24 J − 64 J = −40 J voraus, gemessen werden 2 J. Die Auftragung über v² prüft alle neun Punkte auf einmal. Dass die Gerade durch den Ursprung geht, ist dabei keine Beobachtung, sondern das gesetzte Häkchen „Ausgleichsgerade durch den Ursprung“; der Nachweis ist, dass sie trotz dieses Zwangs R² = 1,0000 erreicht – nimmt man das Häkchen heraus, steht dort y = 2,000·x + 0,0000. Außerdem liefert erst die Steigung k = 2,0 kg über m = 2 · k die Masse 4,00 kg zurück; aus Tobias' Faktor 4 folgt keine einzige Größe."
+ }
+}

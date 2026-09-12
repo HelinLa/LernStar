@@ -1,0 +1,194 @@
+{
+ "seite": {
+  "id": "fb2",
+  "quelle": "be2+be3",
+  "sim": "v-messen",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Messen und ausrechnen",
+  "name": "Wie misst und rechnet man das Tempo?",
+  "fachwoerter_neu": [
+   "Strecke s in Meter (m)",
+   "Zeit t in Sekunden (s)"
+  ],
+  "alltag": [
+   "Nour und Jannis wollen wissen, wie schnell ein Rad fährt.",
+   "Nour misst auf dem Schulhof eine Strecke s in Meter (m) ab.",
+   "Jannis stoppt dazu die Zeit t mit einer Stoppuhr.",
+   "Eine Stoppuhr misst die Zeit t in Sekunden (s)."
+  ],
+  "frage": "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
+  "predict": [
+   "Bei kleinerer Zeit ist die Geschwindigkeit kleiner. Die Strecke bleibt ja gleich.",
+   "Bei kleinerer Zeit ist die Geschwindigkeit größer. Die Strecke bleibt ja gleich."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke den Knopf langsam und danach den Knopf „Messung starten“.",
+   "Vergleiche die Zeit im Bild mit der ersten Zeile der Tabelle.",
+   "Drücke mittel und dann „Messung starten“. Trage die zweite Zeile ein.",
+   "Drücke schnell und dann „Messung starten“. Ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welches Tempo hast du gedrückt?",
+   "Welche Zeit t zeigt die Stoppuhr?",
+   "Welche Geschwindigkeit v steht im Bild?"
+  ],
+  "tabRows": [
+   [
+    "langsam",
+    "10,0 s",
+    "1,0 m/s"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "schnell",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Du misst zuerst die Strecke s. Dann stoppst du die",
+    "loesung": "Zeit t",
+    "post": "."
+   },
+   {
+    "pre": "Die Geschwindigkeit rechnest du so aus: v =",
+    "loesung": "s / t",
+    "post": ". Die Einheit ist Meter pro Sekunde (m/s)."
+   }
+  ],
+  "wortbank": [
+   "Zeit t",
+   "s / t",
+   "2,0 s",
+   "5,0 m/s"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Geschwindigkeit beim Tempo langsam?",
+   "antwort": "Gegeben: Strecke s = 10 m und Zeit t = 10,0 s. Gesucht: die Geschwindigkeit v. Formel: v = s / t. Einsetzen: v = 10 m / 10,0 s. Ergebnis: v = 1,0 m/s. Antwort: Der Wagen fährt 1,0 m/s schnell. Genau das steht auch im Bild."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Auf dem Schulweg fährt ein Bus vorbei. Du willst seine Geschwindigkeit messen. Was musst du messen?",
+    "optionen": [
+     "Nur die Zeit t. Die Strecke muss man nicht messen.",
+     "Erst die Strecke s, dann die Zeit t für diese Strecke.",
+     "Nur die Strecke s. Die Zeit muss man nicht messen."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beim Tempo schnell zeigt die Stoppuhr die Zeit t =",
+      "loesung": "2,0 s",
+      "post": "."
+     },
+     {
+      "pre": "Rechne: 10 m geteilt durch 2,0 s =",
+      "loesung": "5,0 m/s",
+      "post": ". Das zeigt auch das Bild."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Bei der halben Zeit ist die Geschwindigkeit auch halb so groß.“ Erkläre Jannis mit deiner Tabelle, warum das nicht stimmt.",
+    "satzstarter": "Bei mittel ist die Zeit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Strecke ist immer s = 10 m.",
+   "h2": "Beginne so: Bei mittel ist die Zeit 5,0 s. Das ist die Hälfte von 10,0 s. Die Geschwindigkeit ist dann …",
+   "h3": "Fast fertige Antwort: Bei langsam misst du 10,0 s und 1,0 m/s. Bei mittel misst du 5,0 s und 2,0 m/s. Die Zeit wird halb so groß. Die Geschwindigkeit wird also ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, welche zwei Größen ich für v messen muss.",
+   "Ich kann die Zeit t und die Geschwindigkeit v im Bild ablesen.",
+   "Ich kann mit v = s / t die Geschwindigkeit ausrechnen."
+  ],
+  "zuhause": "Miss zu Hause eine Strecke s von 10 m ab. Gehe die Strecke normal ab. Jemand stoppt dabei deine Zeit t. Rechne dann v = s / t aus. Schreibe deine Geschwindigkeit in m/s auf.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Messaufbau von der Seite: links eine senkrechte gestrichelte Linie mit der großen Beschriftung „Start“, rechts eine gleiche Linie mit „Ziel“; zwischen beiden Linien unten ein Doppelpfeil mit der großen Beschriftung „s = 10 m“; auf der Strecke ein einfacher grüner Wagen mit zwei Rädern, der nach rechts fährt; über dem Wagen eine große runde Stoppuhr mit der gut lesbaren Anzeige „10,0 s“ und der Beschriftung „Stoppuhr“; ganz oben quer über dem Bild in sehr großer Schrift die Zeile „v = s / t = 10 m / 10,0 s = 1,0 m/s“; nur dieser eine Aufbau, kein zweiter Wagen, keine zusätzlichen Pfeile, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Beschriftungen]"
+ },
+ "lehrer": {
+  "id": "fb2",
+  "lernziel": "Die Schülerinnen und Schüler messen an der 10-m-Messstrecke der Simulation die Zeit t, lesen die Strecke s = 10 m ab und bestimmen daraus mit v = s / t die Geschwindigkeit in m/s. An den drei Messwerten begründen sie: Bei gleicher Strecke gehört zur halben Zeit die doppelte Geschwindigkeit, nicht die halbe. Neu sind genau zwei Fachwörter: Strecke s in Meter (m) und Zeit t in Sekunden (s). Das Wort Geschwindigkeit stammt aus fb1; dort wird noch nicht gerechnet. Formelzeichen v und Einheit m/s kommen hier mit der Formel v = s / t dazu und gehören zu diesem einen Wort – sie zählen nicht als drittes Fachwort. Die Umstellungen s = v · t und t = s / v aus be3 sind gestrichen; sie bleiben dem Regelheft gts8 vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Gegenprobe im Flur: 10 m mit dem Maßband abmessen, Stoppuhr, ein Rollbrett oder ein Spielzeugauto.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut des Bildschirms zeigen oder vorlesen; die Strecke ist immer s = 10 m: Karte 1 – Tempo langsam → Stoppuhr „10,0s“ → im Bild steht „v = s / t = 10 m / 10,0 s = 1,0 m/s“ · Karte 2 – Tempo mittel → Stoppuhr „5,0s“ → „v = s / t = 10 m / 5,0 s = 2,0 m/s“ · Karte 3 – Tempo schnell → Stoppuhr „2,0s“ → „v = s / t = 10 m / 2,0 s = 5,0 m/s“. Karten in dieser Reihenfolge an die Tafel heften; die Klasse füllt daraus die Tabelle. Dieselben Werte stehen nach jedem Lauf auch rechts in der Statuszeile, dort in der Form „Gemessen: s = 10 m, t = 5,0 s → v = s / t = 2,0 m/s.“ Vor dem Lauf zeigt die Statuszeile nur „Bereit. Messstrecke s = 10 m. Drücke „Messung starten“.“ – wer nicht startet, sieht auf der Stoppuhr „0,0s“ und bekommt keine Werte. Hinweis zur Schreibweise: Die Stoppuhr schreibt „10,0s“ ohne Leerzeichen, die Rechnung darunter „10,0 s“ mit Leerzeichen. Gemeint ist dieselbe Zeit; das einmal ansagen, sonst wird nach zwei verschiedenen Werten gesucht.",
+  "merksatz": [
+   "Zeit t",
+   "s / t"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "5,0 s",
+    "2,0 m/s"
+   ],
+   [
+    "schnell",
+    "2,0 s",
+    "5,0 m/s"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Eine Geschwindigkeit kann man nicht direkt ablesen. Man braucht zwei Messwerte: die Strecke s (in der Simulation immer 10 m; „s = 10 m“ steht im Bild unter der Messstrecke) und die Zeit t für genau diese Strecke (Stoppuhr im Bild). Erst v = s / t macht daraus die Geschwindigkeit. Genau so steht es auch neben der Messung auf dem Bildschirm: „Zum Messen der Geschwindigkeit braucht man zwei Größen: die Strecke s (mit dem Maßband) und die Zeit t (mit Stoppuhr oder Lichtschranke). Daraus berechnet man v = s / t. Einheit: Meter pro Sekunde (m/s).“",
+   "typische_fehler": [
+    "„Nur die Zeit“ wird gewählt, weil die Stoppuhr im Bild am auffälligsten ist. Gegenfrage: 10,0 s wofür? Ohne die Strecke fehlt die zweite Größe.",
+    "„Nur die Strecke“ wird gewählt, weil „s = 10 m“ schon im Bild steht und wie ein Ergebnis aussieht. Gegenfrage: Alle drei Fahrten gehen über dieselben 10 m und sind trotzdem verschieden schnell.",
+    "Es wird eine Zeit ohne zugehörige Strecke gestoppt („der Bus war 3 Sekunden zu sehen“). Die Zeit muss zu einer festen Strecke gehören."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "2,0 s",
+    "5,0 m/s"
+   ],
+   "typische_fehler": [
+    "5,0 s statt 2,0 s: Die Zeilen mittel und schnell werden vertauscht. Grund ist der Bildschirm – jede Fahrt läuft gleich lange ab (rund zweieinhalb Sekunden echte Zeit), nur die Zahl auf der Stoppuhr ist anders.",
+    "Die Einheit fehlt: „5,0“ statt „5,0 m/s“. Die Einheit gehört zum Ergebnis dazu.",
+    "10 und 2,0 werden vertauscht (2,0 geteilt durch 10 = 0,2). Oben steht die Strecke, unten die Zeit.",
+    "Die Zeit wird in die v-Spalte geschrieben: 2,0 s statt 5,0 m/s."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei mittel ist die Zeit 5,0 s. Das ist die Hälfte von 10,0 s. Die Geschwindigkeit ist aber 2,0 m/s und nicht 0,5 m/s. Sie wird also doppelt so groß und nicht halb so groß. Die Strecke bleibt immer gleich: 10 m. Wer weniger Zeit braucht, ist schneller.",
+   "alternativen": [
+    "Über den Rechenweg: 10 m / 10,0 s = 1,0 m/s und 10 m / 5,0 s = 2,0 m/s. Durch eine kleinere Zahl geteilt gibt ein größeres Ergebnis.",
+    "Über die dritte Zeile: 2,0 s sind ein Fünftel von 10,0 s, und 5,0 m/s sind das Fünffache von 1,0 m/s.",
+    "Über ein Alltagsbild: Wer für denselben Schulweg nur die halbe Zeit braucht, ist doppelt so schnell."
+   ],
+   "typische_fehler": [
+    "Die Behauptung wird nur verneint („stimmt nicht“), ohne einen Wert aus der Tabelle zu nennen.",
+    "„Halbe Zeit, halbe Geschwindigkeit“ wird beibehalten: Die Hälfte wird auf beide Größen übertragen. Gegenmittel ist der direkte Vergleich der Zeilen langsam und mittel.",
+    "Die Strecke wird für veränderlich gehalten. In dieser Simulation ist s immer 10 m; nur t und v ändern sich."
+   ]
+  },
+  "hilfe3_wort": "doppelt so groß (auch richtig: zweimal so groß, größer)",
+  "schwache": [
+   "Seite B erst austeilen, wenn die Tabelle auf Seite A ausgefüllt ist: Hilfe 2 und Hilfe 3 nennen die Werte der Zeile mittel, Aufgabe 2 die der Zeile schnell.",
+   "Nur die Zeilen langsam und mittel messen lassen; die Zeile schnell ist freiwillig.",
+   "Die drei Zeichen vorher an die Tafel schreiben und laut benennen: s ist die Strecke in Meter, t ist die Zeit in Sekunden, v ist die Geschwindigkeit in Meter pro Sekunde.",
+   "Die Divisionen 10 : 10, 10 : 5 und 10 : 2 vor der Simulation im Kopf üben. Das Teilen ist hier die eigentliche Hürde, nicht die Physik.",
+   "Einmal gemeinsam ansehen: Die Fahrt am Bildschirm dauert bei jedem Tempo gleich lange. Nur die Zahl auf der Stoppuhr ist anders. Sonst wird die echte Wartezeit für die Messzeit gehalten."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Vor jedem Lauf die Zeit vorhersagen, dann „Messung starten“ drücken und die Vorhersage mit der Stoppuhr vergleichen. Danach die Zeilen langsam und schnell vergleichen: Die Zeit wird ein Fünftel so groß, die Geschwindigkeit fünfmal so groß. Als Merksatz dient der Satz unter der Simulation: „Strecke s messen + Zeit t stoppen → v = s / t · Einheit m/s.“ Nicht in das Protokoll ganz unten schicken: Es ist passwortgeschützt und beim Öffnen zu; die drei Testfragen dort sind für diese Seite nicht erreichbar.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit messen und berechnen. Kompetenzen UF1, UF2, E4 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). E4 wird hier gesichert: Aufgabe 1 lässt entscheiden, welche zwei Größen überhaupt gemessen werden müssen, der Zuhause-Auftrag lässt dieselbe Messung selbst planen und durchführen. Die Einheit legt be2 und be3 zusammen; beide trugen dieselbe Merksatz-Lücke v = s / t. Die Umstellungen s = v · t und t = s / v bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

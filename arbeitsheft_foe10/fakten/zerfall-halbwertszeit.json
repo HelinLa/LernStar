@@ -1,0 +1,121 @@
+[
+ {
+  "sim": "zerfall-halbwertszeit",
+  "ueberschrift": "☢️ Warum kann man nie sagen, wann ein Kern zerfällt?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "⏭ eine Halbwertszeit weiter",
+    "ruft": "_hwzSchritt()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_hwzReset()"
+   },
+   {
+    "aufschrift": "Radon-220",
+    "ruft": "_hwzSetNuk('rn220')"
+   },
+   {
+    "aufschrift": "Iod-131",
+    "ruft": "_hwzSetNuk('i131')"
+   },
+   {
+    "aufschrift": "Kohlenstoff-14",
+    "ruft": "_hwzSetNuk('c14')"
+   },
+   {
+    "aufschrift": "Cäsium-137",
+    "ruft": "_hwzSetNuk('cs137')"
+   },
+   {
+    "aufschrift": "Plutonium-239",
+    "ruft": "_hwzSetNuk('pu239')"
+   }
+  ],
+  "hinweise": [
+   "Jeder der 200 Kerne zerfällt für sich und zufällig. Schau, wie viele nach jeder Halbwertszeit übrig sind – und wie nah das an der erwarteten Zahl liegt.",
+   "Die Halbwertszeit T½ ist die Zeit, nach der im Mittel die Hälfte der Kerne zerfallen ist. Sie hängt allein vom Nuklid ab – nicht von Temperatur, Druck oder Alter der Probe. Ein einzelner Kern altert nicht: Ein Kern, der schon lange da ist, zerfällt im nächsten Moment mit derselben Wahrscheinlichkeit wie ein frischer.",
+   "Modellgrenze: 200 Kerne sind wenige. Deshalb weicht die gemessene Reihe sichtbar von der erwarteten ab. In einem Gramm Stoff stecken rund 10²¹ Kerne – dort ist die Abweichung nicht mehr messbar.",
+   "Für den einzelnen Kern gilt nur eine Wahrscheinlichkeit · für die Menge ein Gesetz: N(t) = N₀ · (½)^(t/T½)"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "⏭ eine Halbwertszeit weiter",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 107 von 200 Kernen übrig (53,5 %). | Erwartet hätte man 100. Im letzten Schritt sind 93 Kerne zerfallen."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Radon-220",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Iod-131",
+    "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Kohlenstoff-14",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Cäsium-137",
+    "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Plutonium-239",
+    "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Kohlenstoff-14, dann 1x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach einer Halbwertszeit – das sind 5.730 Jahre – sind noch 103 von 200 Kernen übrig (51,5 %). | Erwartet hätte man 100. Im letzten Schritt sind 97 Kerne zerfallen."
+   },
+   {
+    "einstellung": "Kohlenstoff-14, dann 2x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 2 Halbwertszeiten – das sind 11.460 Jahre – sind noch 49 von 200 Kernen übrig (24,5 %). | Erwartet hätte man 50. Im letzten Schritt sind 54 Kerne zerfallen."
+   },
+   {
+    "einstellung": "Kohlenstoff-14, dann 3x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 3 Halbwertszeiten – das sind 17.190 Jahre – sind noch 22 von 200 Kernen übrig (11,0 %). | Erwartet hätte man 25. Im letzten Schritt sind 27 Kerne zerfallen."
+   },
+   {
+    "einstellung": "Kohlenstoff-14, dann 4x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 4 Halbwertszeiten – das sind 22.920 Jahre – sind noch 14 von 200 Kernen übrig (7,0 %). | Erwartet hätte man 13. Im letzten Schritt sind 17 Kerne zerfallen."
+   }
+  ],
+  "bildtexte": [
+   "200 Kerne – jeder zerfällt für sich",
+   "● noch nicht zerfallen    ○ zerfallen",
+   "0",
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "50",
+   "100",
+   "150",
+   "200",
+   "Zeit in Halbwertszeiten",
+   "Zahl der Kerne",
+   "erwartet: jedes Mal die Hälfte",
+   "gemessen"
+  ],
+  "nachgemessen": {
+   "wann": "2026-09-05",
+   "womit": "node simcheck/werte.js physics-sim.js zerfall-halbwertszeit (Knopffolge _hwzSetNuk('c14') + _hwzSchritt, vier Laeufe)",
+   "warum": "simfakten drueckt jeden Knopf nur EINMAL. Im Dump war fuer Kohlenstoff-14 nur der Startzustand belegt (0 Halbwertszeiten, 0 Jahre, 200 von 200). Ohne diese Messung durfte fn7 keine Jahreszahl ausser 5730 drucken - die Altersbestimmung haette keine belegte Tabellenspalte gehabt.",
+   "deterministisch": "Jahreszahl und erwartete Kernzahl. 0 Jahre / 200 · 5730 Jahre / 100 · 11460 Jahre / 50 · 17190 Jahre / 25 · 22920 Jahre / 13. Die Wortform wechselt: 'Nach 0 Halbwertszeiten', 'Nach einer Halbwertszeit', danach 'Nach 2/3/4 Halbwertszeiten'.",
+   "zufaellig": "Die gemessene Zahl der uebrigen Kerne und der Prozentwert. Vier Laeufe nach einem Schritt: 117, 103, 104, 107 (Radon). Nach zwei Schritten: 69, 49, 52. Nach drei: 31, 22, 27. Diese Zahlen duerfen NIE als gedruckte Loesung erscheinen.",
+   "schrittzaehler": "Ein Druck auf einen Nuklid-Knopf setzt den Schrittzaehler zurueck - nachgemessen: nach zwei Schritten mit Radon-220 zeigte 'Kohlenstoff-14' sofort wieder 'Nach 0 Halbwertszeiten'. Ein vorheriges 'Zuruecksetzen' ist also nicht noetig (offene Frage aus fn6 damit beantwortet).",
+   "tausenderpunkt": "Der erste Teil der Statuszeile schreibt 'Halbwertszeit 5730 Jahre' OHNE Trennzeichen, der zweite Teil 'das sind 5.730 Jahre' MIT Tausenderpunkt. Dieselbe Zahl steht auf einem Bildschirm in zwei Schreibweisen. Das Foerderheft druckt sie nach der Hausregel 'Dezimalkomma, nie Dezimalpunkt' ohne Punkt: 5730, 11460, 17190."
+  }
+ }
+]

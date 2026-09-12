@@ -1,0 +1,196 @@
+{
+ "seite": {
+  "id": "fo2",
+  "quelle": "oi2+oi3",
+  "sim": "reflexionsgesetz",
+  "sicherheit": "Simulation",
+  "theme": "foe_optik",
+  "titel": "Der Spiegel",
+  "name": "Wie wirft der Spiegel Licht zurück?",
+  "fachwoerter_neu": [
+   "Einfallswinkel",
+   "Reflexionswinkel"
+  ],
+  "alltag": [
+   "Nour richtet die Lampe auf einen kleinen Spiegel.",
+   "Der Lichtfleck springt an die Wand.",
+   "Der Strahl kommt an und wird zurückgeworfen.",
+   "Dabei misst man zwei Winkel: Einfallswinkel und Reflexionswinkel."
+  ],
+  "frage": "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
+  "predict": [
+   "Der Reflexionswinkel ist immer kleiner als der Einfallswinkel.",
+   "Der Reflexionswinkel ist genauso groß wie der Einfallswinkel."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Einfallswinkel zum Lot auf 0° und lies die Statuszeile.",
+   "Trage beide Winkel in die Tabelle ein.",
+   "Stelle nacheinander 20°, 40° und 80° ein und ergänze die Tabelle."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Einfallswinkel",
+   "Wie groß ist der Reflexionswinkel?",
+   "Sind beide Winkel gleich?"
+  ],
+  "tabRows": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
+   [
+    "20°",
+    "",
+    ""
+   ],
+   [
+    "40°",
+    "",
+    ""
+   ],
+   [
+    "80°",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Am Spiegel ist der Einfallswinkel genauso groß wie der",
+    "loesung": "Reflexionswinkel",
+    "post": ". Beide misst man zum Lot."
+   },
+   {
+    "pre": "Das Spiegelbild liegt genauso weit",
+    "loesung": "hinter",
+    "post": "dem Spiegel wie der Gegenstand davor. Dieses Bild heißt virtuell."
+   }
+  ],
+  "wortbank": [
+   "Reflexionswinkel",
+   "hinter",
+   "Einfallswinkel",
+   "Lot",
+   "virtuell"
+  ],
+  "beispiel": {
+   "frage": "Der Einfallswinkel ist 40°. Wie groß ist der Reflexionswinkel?",
+   "antwort": "Der Reflexionswinkel ist auch 40°. Beide Winkel sind am Spiegel immer gleich groß. Man misst beide zum Lot."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Einfallswinkel ist 80°. Was meldet die Statuszeile?",
+    "optionen": [
+     "Einfallswinkel = Reflexionswinkel = 40°.",
+     "Einfallswinkel = Reflexionswinkel = 0°.",
+     "Einfallswinkel = Reflexionswinkel = 80°."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Beide Winkel misst man zum",
+      "loesung": "Lot",
+      "post": ", der Senkrechten auf dem Spiegel."
+     },
+     {
+      "pre": "Das Bild hinter dem Spiegel heißt",
+      "loesung": "virtuell",
+      "post": ". Man kann es nicht auffangen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis steht 2 Meter vor dem Spiegel. Wo liegt sein Spiegelbild?",
+    "satzstarter": "Das Spiegelbild liegt genauso weit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in deine Tabelle: In jeder Zeile sind beide Winkel gleich groß.",
+   "h2": "Beginne so: Das Spiegelbild liegt genauso weit hinter dem Spiegel, wie Jannis davor …",
+   "h3": "Fast fertige Antwort: Jannis steht 2 Meter vor dem Spiegel. Sein Bild liegt 2 Meter ___ dem Spiegel."
+  },
+  "selbstcheck": [
+   "Ich kann Einfallswinkel und Reflexionswinkel vergleichen.",
+   "Ich weiß, zu welcher Linie man beide Winkel misst.",
+   "Ich kann sagen, wo das Spiegelbild liegt."
+  ],
+  "zuhause": "Stelle eine Tasse etwa 30 cm vor einen Spiegel. Miss den Abstand mit einem Lineal. Schätze dann: Wie weit hinter dem Spiegel siehst du die Tasse?",
+  "bildauftrag": "[BILD: ein Lichtstrahl trifft schräg auf einen liegenden Spiegel und wird im gleichen Winkel zurückgeworfen; gestrichelte senkrechte Linie am Auftreffpunkt mit großer Beschriftung „Lot“; die beiden gleich großen Winkel deutlich markiert und beschriftet „Einfallswinkel“ und „Reflexionswinkel“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fo2",
+  "lernziel": "Die Schülerinnen und Schüler wenden das Reflexionsgesetz an (Einfallswinkel gleich Reflexionswinkel, beide zum Lot gemessen) und geben an, dass das Spiegelbild genauso weit hinter dem Spiegel liegt wie der Gegenstand davor und virtuell ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Winkelpaare aus diesem Lehrerteil als Tafeltabelle. Optional als Demonstration: Handspiegel und Taschenlampe. Für den Zuhause-Auftrag: Spiegel, Tasse, Lineal.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zuhause-Messauftrag in der Folgestunde vergleichen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen vorlesen oder als Tafeltabelle zeigen: 0° → 0° · 20° → 20° · 40° → 40° · 80° → 80°, jeweils „Einfallswinkel = Reflexionswinkel“. Dazu die Merkregel: Beide Winkel misst man zum Lot.",
+  "merksatz": [
+   "Reflexionswinkel",
+   "hinter"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20°",
+    "20°",
+    "ja"
+   ],
+   [
+    "40°",
+    "40°",
+    "ja"
+   ],
+   [
+    "80°",
+    "80°",
+    "ja"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet bei 80°: Einfallswinkel = Reflexionswinkel = 80°.",
+   "typische_fehler": [
+    "Der Winkel wird zur Spiegelfläche statt zum Lot gemessen und wirkt dadurch falsch."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Lot",
+    "virtuell"
+   ],
+   "typische_fehler": [
+    "„Linie“ oder „Strich“ statt „Lot“.",
+    "„unsichtbar“ statt „virtuell“ – das Bild ist sichtbar, aber nicht auffangbar."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Spiegelbild liegt genauso weit hinter dem Spiegel wie Jannis davor, also 2 Meter hinter dem Spiegel.",
+   "alternativen": [
+    "Mit dem Zuhause-Auftrag begründet: Abstand davor gleich Abstand dahinter, gemessen mit dem Lineal.",
+    "Ergänzung, dass das Bild virtuell ist und sich nicht auffangen lässt."
+   ],
+   "typische_fehler": [
+    "Das Bild wird „auf dem Spiegel“ verortet.",
+    "Vor und hinter dem Spiegel werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "hinter",
+  "schwache": [
+   "Nur die Winkelpaare 0° und 40° eintragen lassen, 20° und 80° weglassen.",
+   "Das Lot in der Simulation mit dem Finger nachfahren lassen, bevor gemessen wird.",
+   "Die Wörter Einfallswinkel und Reflexionswinkel einmal abschreiben und trennen lassen: Einfalls-Winkel."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler „Spiegel drehen“ auf 25° und lies ab, um wie viel Grad der Strahl schwenkt.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Reflexion am ebenen Spiegel. Kompetenzen E2 (Winkeluntersuchung, Quellseite oi3) und E4 (Messauftrag zu Hause, einziger E4-Träger des Förderhefts, Quellseite oi2). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

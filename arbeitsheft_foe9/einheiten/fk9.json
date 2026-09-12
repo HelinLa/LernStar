@@ -1,0 +1,188 @@
+{
+ "seite": {
+  "id": "fk9",
+  "quelle": "kf9",
+  "sim": "traegheit-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Niemand schiebt mehr",
+  "name": "Warum rutscht die Kiste weiter?",
+  "fachwoerter_neu": [
+   "Trägheit",
+   "Tempo v in m/s"
+  ],
+  "alltag": [
+   "Nour schiebt eine Kiste über den Boden und lässt los.",
+   "Die Kiste rutscht weiter und bleibt dann stehen.",
+   "Das Bremsen durch den Boden heißt Reibung.",
+   "Am Bildschirm steht v für das Tempo in Meter pro Sekunde (m/s)."
+  ],
+  "frage": "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
+  "predict": [
+   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter.",
+   "Der Anstoß ist in dem Wagen langsam aufgebraucht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.",
+   "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.",
+   "Wähle „Weltall“, stoße an und lies die Statuszeile.",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Untergrund wählst du?",
+   "Wie viel Reibung? (steht in der Statuszeile)",
+   "Wie lange rollt der Wagen?"
+  ],
+  "tabRows": [
+   [
+    "Tisch",
+    "viel Reibung",
+    "nach 2,0 s steht er still"
+   ],
+   [
+    "Eis",
+    "",
+    ""
+   ],
+   [
+    "Weltall",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Körper behält von allein sein Tempo und seine Richtung. Das heißt",
+    "loesung": "Trägheit",
+    "post": "."
+   },
+   {
+    "pre": "Nicht der Anstoß geht aus. Die Reibung",
+    "loesung": "bremst",
+    "post": "den Wagen ab."
+   }
+  ],
+  "wortbank": [
+   "Trägheit",
+   "bremst",
+   "länger",
+   "Tempo"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Statuszeile im Weltall nach dem Anstoßen?",
+   "antwort": "Sie meldet: v immer noch 8,0 m/s. Der Wagen behält sein Tempo. Hier bremst ihn keine Reibung."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Bus bremst. Der Becher rutscht nach vorn. Warum?",
+    "optionen": [
+     "Die Trägheit ist eine Kraft. Sie drückt den Becher nach vorn.",
+     "Der Becher wird von hinten angeschoben.",
+     "Der Becher behält sein Tempo. Der Bus wird langsamer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Auf dem Eis ist wenig Reibung. Der Wagen rollt darum",
+      "loesung": "länger",
+      "post": "als auf dem Tisch."
+     },
+     {
+      "pre": "Im Weltall zeigt v weiter 8,0 m/s. Der Wagen behält sein",
+      "loesung": "Tempo",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum ein Raumschiff keine dauernd laufenden Triebwerke braucht.",
+    "satzstarter": "Im Weltall gibt es keine Reibung, deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Trägheit ist keine Kraft. Sie schiebt nichts. Die Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Im Weltall gibt es keine Reibung, deshalb bleibt das Tempo gleich.",
+   "h3": "Fast fertig: Ein Raumschiff behält im Weltall sein Tempo. Die Triebwerke braucht es nur zum ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, warum die Kiste stehen bleibt.",
+   "Ich kann v in der Statuszeile ablesen.",
+   "Ich kann erklären, was Trägheit bedeutet."
+  ],
+  "zuhause": "Achte im Bus darauf, wohin dein Körper kippt, wenn er bremst. Schreibe einen Satz mit dem Wort Trägheit.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht eines Busses innen. Links über der Hälfte groß „Der Bus fährt“: ein Kind sitzt aufrecht auf dem Sitz, auf dem Klapptisch davor steht ein Becher gerade. Rechts über der Hälfte groß „Der Bus bremst“: dasselbe Kind auf demselben Sitz, der Oberkörper deutlich nach vorn geneigt, der Becher ist ein Stück nach vorn gerutscht. Fahrtrichtung in beiden Hälften nach rechts. KEINE Pfeile im Bild, vor allem kein Kraftpfeil, der den Becher nach vorn schiebt. Unter beiden Hälften eine gemeinsame große Zeile: „Der Körper behält sein Tempo.“ Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fk9",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass ein angestoßener Wagen nur stehen bleibt, weil die Reibung ihn bremst. Sie lesen das Tempo v in m/s in der Statuszeile ab und beschreiben mit dem Wort Trägheit, dass ein Körper ohne bremsende Kraft sein Tempo und seine Richtung behält.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein Spielzeugauto auf Teppich und auf glattem Tisch.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jeweils mit der Statuszeile im Wortlaut. Tisch: „Tisch (viel Reibung), Anstoß mit 8 m/s. Der Wagen stand nach 2,0 s still und war 8,0 m weit gekommen.“ – dazu der Bildtext „die Reibung bremst – deshalb bleibt er stehen“. Eis: „Eis (wenig Reibung), Anstoß mit 8 m/s. Der Wagen stand nach 16,0 s still und war 64,0 m weit gekommen.“ Weltall: „Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 8,0 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.“ Vierte Karte: „Je weniger Reibung, desto länger rollt der Wagen. Ohne Reibung hört er nie auf.“ Für Spalte 3 zählt nur die Zeit (2,0 s · 16,0 s · nie); die Weglängen 8,0 m und 64,0 m sind Zugabe und gehören in keine Tabellenspalte.",
+  "merksatz": [
+   "Trägheit",
+   "bremst"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Eis",
+    "wenig Reibung",
+    "nach 16,0 s steht er still"
+   ],
+   [
+    "Weltall",
+    "keine Reibung",
+    "er bleibt nie stehen"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Der Bus wird langsamer, auf den Becher wirkt keine bremsende Kraft. Er behält sein Tempo und rutscht deshalb nach vorn – wie der Wagen im Weltall: v immer noch 8,0 m/s.",
+   "typische_fehler": [
+    "Antwort 2: Trägheit wird für eine Kraft gehalten, die den Becher nach vorn drückt. Trägheit ist keine Kraft, sondern die Eigenschaft, Tempo und Richtung zu behalten.",
+    "Antwort 3: Es wird ein unsichtbarer Schubs gesucht, weil „von allein bewegt sich nichts“ die Alltagsvorstellung ist."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "länger",
+    "Tempo"
+   ],
+   "typische_fehler": [
+    "„bremst“ landet in der ersten Lücke, weil das Wort aus dem Merksatz noch im Kopf ist; der Satz spricht aber vom Rollen.",
+    "In die zweite Lücke wird „Trägheit“ gesetzt. Der Wagen behält sein Tempo; Trägheit ist nur der Name dafür."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im Weltall gibt es keine Reibung, deshalb bleibt das Tempo gleich. Das Raumschiff behält Tempo und Richtung von allein. Triebwerke braucht es nur zum Schnellerwerden, zum Bremsen oder zum Ändern der Richtung.",
+   "alternativen": [
+    "Bezug auf die Statuszeile: Im Weltall steht weiter v immer noch 8,0 m/s, obwohl niemand mehr anstößt.",
+    "Kurzform: „Ein Raumschiff wird von allein nicht langsamer.“ – reicht für die volle Wertung."
+   ],
+   "typische_fehler": [
+    "Der Anstoß gilt als Vorrat, der leer wird (Impetus, genau Vermutung 1). Gegenfrage: Was soll ausgehen? Die Statuszeile zeigt v immer noch 8,0 m/s.",
+    "Begründung über Schwerelosigkeit („da ist ja nichts“). Die Simulation zeigt nur „keine Reibung“; deshalb spricht auch die Schülerseite nur von Reibung."
+   ]
+  },
+  "hilfe3_wort": "Bremsen (auch richtig: Schnellerwerden, Lenken, Richtung ändern)",
+  "schwache": [
+   "Zuerst nur Tisch und Weltall vergleichen, Eis erst danach dazunehmen.",
+   "Bedienreihenfolge auf einen Merkzettel: erst Untergrund, dann „Anstoßen“, dann „Zurücksetzen“. „Zurücksetzen“ springt immer auf Tisch – sonst wird dreimal derselbe Untergrund gemessen. Auf Eis dauert es 16 Sekunden, bis der Wagen steht; das ist kein Fehler.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, bevor die Simulation geöffnet wird.",
+   "Aufgabe 1 nachspielen: Stuhl anhalten, Radiergummi auf der Hand rutscht weiter."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen wörtlich ab und streiche an, welches Wort sich jedes Mal ändert.",
+  "kernlehrplan": "Inhaltsfeld Kräfte · Trägheit, Reibung als bremsende Kraft. Die Bildschirmzeile „Ohne Kraft ändert sich der Bewegungszustand nicht | Newtons 1. Gesetz“ steht nur hier; auf der Schülerseite heißt es „Tempo und Richtung“. Neu sind genau Trägheit und Tempo v in m/s. „Reibung“ ist ein Alltagswort ohne Formelzeichen und Einheit, zählt deshalb nicht mit (Zählregel 5); es bekommt im Alltagsteil einen Begriffssatz und steht weder in der Wortbank noch in einer Merksatz-Lücke. Diese Einheit ist Träger für „Tempo v in m/s“; fk10 und fe3 verweisen zurück (Zählregel 4) – fk10 zeigt am Bildschirm „Geschwindigkeit“, im Heft bleibt es „Tempo v“. Datenlage: Der Fakten-Dump zeigt nur den Weltall-Endzustand, weil simfakten jeden Knopf nur einmal drückt. Tisch und Eis wurden mit simcheck/werte.js nachgemessen: Tisch steht nach 2,0 s bei 8,0 m, Eis nach 16,0 s bei 64,0 m (Anstoß 8 m/s, a = −4,0 bzw. −0,5 m/s²). Spalte 3 nimmt darum die abgelesene Zeit; im Weltall gibt es keine Stoppzeit, dort heißt die Antwort „er bleibt nie stehen“. „Weg = 0,1 m“, „Weg = 0,3 m“ und das „nach 0,0 s“ des Dumps sind Momentaufnahmen während der Fahrt, gehören keinem Untergrund zu – nicht drucken. Kompetenzen: Aufgabe 3 trägt B2, die Tabelle E5."
+ }
+}

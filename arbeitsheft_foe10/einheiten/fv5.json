@@ -1,0 +1,198 @@
+{
+ "seite": {
+  "id": "fv5",
+  "quelle": "ev6",
+  "sim": "elektromotor",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der geteilte Ring im Motor",
+  "name": "Wie wird aus der Kraft eine Drehung?",
+  "fachwoerter_neu": [
+   "Kommutator",
+   "Drehmoment M in Millinewtonmeter (mN·m)"
+  ],
+  "alltag": [
+   "Jannis sieht bei den Stadtwerken einen offenen Motor.",
+   "Auf einer Stange sitzt ein Ring aus zwei Hälften. Er heißt Kommutator.",
+   "Sein Betreuer sagt: „Ohne den Ring dreht sich nichts.“",
+   "Das Drehmoment M sagt, wie kräftig ein Motor dreht. M sagt nicht, wohin. Einheit: Millinewtonmeter (mN·m)."
+  ],
+  "frage": "Was macht die Spule, wenn der Kommutator aus ist?",
+  "predict": [
+   "Ohne Kommutator wackelt die Spule und bleibt stehen.",
+   "Ohne Kommutator dreht die Spule langsamer weiter."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Beobachte die Spule. Das ist Zeile 1.",
+   "Drücke den Knopf mit dem Wort Kommutator. Dort steht dann: Kommutator ist AUS.",
+   "Beobachte wieder. Lies M ab. Trage Zeile 2 ein.",
+   "Stelle die Windungen auf 40. Lies M ab. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du eingestellt?",
+   "Was macht die Spule?",
+   "Wie groß ist M?"
+  ],
+  "tabRows": [
+   [
+    "20 Windungen, Kommutator an",
+    "sie dreht immer weiter",
+    "16,0 mN·m"
+   ],
+   [
+    "20 Windungen, Kommutator aus",
+    "",
+    ""
+   ],
+   [
+    "40 Windungen, Kommutator aus",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Kraft drückt die eine Seite der Spule nach oben, die andere nach",
+    "loesung": "unten",
+    "post": ". So dreht sich die Spule."
+   },
+   {
+    "pre": "Ohne",
+    "loesung": "Kommutator",
+    "post": "wackelt die Spule und bleibt stehen."
+   }
+  ],
+  "wortbank": [
+   "unten",
+   "Kommutator",
+   "32,0 mN·m",
+   "doppelt"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du M ab?",
+   "antwort": "Am Bildschirm steht: „Das sind 16,0 Millinewtonmeter.“ Kurz schreibt man 16,0 mN·m. Die Zeile darüber brauchst du nicht."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nur der Kommutator geht aus. Was ändert sich?",
+    "optionen": [
+     "M wird kleiner. Die Spule bleibt stehen.",
+     "M bleibt gleich. Die Spule bleibt stehen.",
+     "M wird größer. Die Spule dreht weiter."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 20 Windungen steht 16,0 mN·m. Bei 40 Windungen steht",
+      "loesung": "32,0 mN·m",
+      "post": "."
+     },
+     {
+      "pre": "M ist also",
+      "loesung": "doppelt",
+      "post": "so groß."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Bei Jannis ist der geteilte Ring gebrochen. Sein Modellauto wackelt und bleibt stehen. Warum?",
+    "satzstarter": "Das Auto wackelt und bleibt stehen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. M steht am Bildschirm hinter „Das sind“.",
+   "h2": "Beginne so: Das Auto wackelt und bleibt stehen, weil der Strom …",
+   "h3": "Fast fertig: Der Strom fließt jetzt immer in dieselbe Richtung. Dann drückt die ___ die Spule zurück."
+  },
+  "selbstcheck": [
+   "Ich kann M am Bildschirm ablesen.",
+   "Ich kann sagen, was die Spule ohne Kommutator macht.",
+   "Ich weiß: doppelt so viele Windungen geben doppelt so viel M."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte mit Motor.",
+  "bildauftrag": "[BILD: ein einziges großes, kontrastreiches Vergleichsbild, in zwei gleich hohe Streifen untereinander geteilt – oben und unten steht DERSELBE Motor aus DERSELBEN Blickrichtung, gleiche Größe, gleiche Farben, nur der Kommutator ist verschieden. In beiden Streifen: links ein roter Magnetblock mit der großen weißen Aufschrift „N“, rechts ein blauer Magnetblock mit der großen weißen Aufschrift „S“; dazwischen eine rechteckige Drahtspule, die waagerecht auf einer Stange sitzt. Auf der Stange vorn der Kommutator als Ring, deutlich in zwei Hälften geteilt, mit zwei kleinen dunklen Kohleklötzchen, die von unten und oben daran anliegen. An jeder der beiden langen Spulenseiten sitzt ein kleiner heller Kreis als Stromzeichen: einmal ein Kreis mit einem dicken PUNKT in der Mitte, einmal ein Kreis mit einem dicken KREUZ. OBERER STREIFEN: der Ring ist ganz, die Spule liegt schräg nach links gekippt; der Kreis mit dem PUNKT sitzt an der linken, der Kreis mit dem KREUZ an der rechten Spulenseite. An der linken Spulenseite ein dicker gerader Pfeil senkrecht nach OBEN, an der rechten Spulenseite ein gleich dicker gerader Pfeil senkrecht nach UNTEN; beide Pfeile tragen gemeinsam die Beschriftung „Kraft auf die Leiterseite“. Ein breiter gebogener Pfeil führt einmal ganz um die Stange herum. Beschriftung groß am linken Rand „Kommutator AN“, darunter kleiner „sie dreht immer weiter“, dazu klein am Ring „der Ring dreht den Strom um“. UNTERER STREIFEN: derselbe Ring, aber in der Mitte mit einem sichtbaren Bruch; die Spule ist über die Senkrechte hinaus weitergedreht und liegt jetzt andersherum schräg als oben, nach rechts gekippt. Die beiden Stromzeichen sind mit der Spule mitgewandert: der Kreis mit dem PUNKT sitzt jetzt rechts, der Kreis mit dem KREUZ links. Die beiden Kraftpfeile sind genauso dick wie oben, zeigen aber andersherum – an der linken Spulenseite senkrecht nach UNTEN, an der rechten senkrecht nach OBEN; beide tragen gemeinsam die Beschriftung „Die Kraft drückt jetzt zurück“. Ein kurzer gebogener Pfeil geht nur ein Stück nach rechts und ein zweiter, kürzerer gebogener Pfeil weist gleich daneben wieder zurück – zusammen zeigen sie das Hin und Her. Beschriftung groß am linken Rand „Kommutator AUS“, darunter kleiner „sie wackelt und bleibt stehen“, dazu klein am Ring „der Strom bleibt gleich“. Unter beiden Streifen steht klein EINE gemeinsame Zeile, die die zwei Stromzeichen erklärt: „Kreis mit Punkt: Strom kommt heraus · Kreis mit Kreuz: Strom fließt hinein“. In BEIDEN Streifen steht rechts oben dieselbe Zeile „20 Windungen · M = 16,0 mN·m“ – gleich groß, gleiche Farbe, damit sofort auffällt: die Zahl M ändert sich hier nicht, wohl aber die Richtung der Kraft und die Bewegung. Die drohenden Bildfehler ausdrücklich vermeiden: KEINE Magnetfeldlinien und keine schraffierten Streifen zwischen den Polen (das Feld bleibt eine leere helle Fläche); KEINE kleinen Nebenbilder, keine Lupenkreise, keine Detailkästen am Rand – nur die zwei Streifen und die eine Erklärzeile darunter; KEINE Pfeile, die frei im Bild ins Leere zeigen: jeder Pfeil beginnt sichtbar an einer Spulenseite oder an der Stange. Ebenfalls nicht ins Bild: Drehzahlen, Umdrehungen je Minute, Stromstärke, Magnetfeldstärke, Formeln, Personen, Deko. Ruhiger heller Hintergrund, große Schrift, dicke Linien.]"
+ },
+ "lehrer": {
+  "id": "fv5",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass der Kommutator die Bewegung der Spule ändert, nicht die angezeigte Zahl M: Mit Kommutator läuft der Motor durch, ohne Kommutator wackelt die Spule und bleibt stehen — die angezeigte Zahl M bleibt in beiden Fällen 16,0 mN·m. Genau formuliert, nur für Sie: Die Anzeige nennt allein den Betrag des Drehmoments; das wirkende Drehmoment kehrt hinter der Senkrechten die Richtung um, deshalb drückt die Kraft die Spule zurück („und dann drückt die Kraft sie zurück“ steht wörtlich am Bildschirm). Die Schülerseite sagt dafür im Alltagsteil einen Satz: „M sagt nicht, wohin.“ Sie lesen außerdem ab, dass doppelt so viele Windungen ein doppelt so großes Drehmoment geben (20 Windungen 16,0 mN·m, 40 Windungen 32,0 mN·m). Sie erklären mit dem Kommutator, warum ein Modellauto mit gebrochenem geteiltem Ring nur wackelt und stehen bleibt. Fachlich dahinter — nur für Sie, nicht auf der Schülerseite: Der Kommutator polt den Strom in der Spule bei jeder halben Umdrehung um, deshalb drückt die Kraft immer in dieselbe Drehrichtung.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Motorbildern. Optional als Demonstration: ein zerlegter Spielzeugmotor oder ein Ankermodell, an dem der geteilte Ring und die zwei Kohlebürsten gezeigt werden (nur ansehen und benennen, keine Messung).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte 1 (das ist zugleich der Ausgangszustand der Simulation, 20 Windungen, Kommutator an): „M = 20 · 0,20 T · 2,0 A · 0,002 m² = 0,0160 N·m. Das sind 16,0 Millinewtonmeter. Kommutator ist eingeschaltet. Bei jeder halben Umdrehung polt er den Strom in der Spule um. Dadurch drückt die Kraft immer in dieselbe Drehrichtung – der Motor läuft durch.“ Karte 2 (derselbe Regler, Kommutator ausgeschaltet): „Das sind 16,0 Millinewtonmeter. Kommutator ist ausgeschaltet. Sieh zu, was passiert: Die Spule dreht sich an, kommt über die Senkrechte hinaus – und dann drückt die Kraft sie zurück. Sie pendelt und bleibt stehen.“ Karte 3 (40 Windungen, Kommutator weiterhin ausgeschaltet): „M = 40 · 0,20 T · 2,0 A · 0,002 m² = 0,0320 N·m. Das sind 32,0 Millinewtonmeter. Kommutator ist ausgeschaltet. Sie pendelt und bleibt stehen.“ Wichtig beim Vorlesen: Karte 1 und Karte 2 tragen dieselbe Zahl 16,0 — daran hängt Aufgabe 1. Übersetzen Sie beim Vorlesen laut mit: „pendelt“ heißt auf dieser Seite „wackelt hin und her“, „kommt über die Senkrechte hinaus“ heißt „geht noch ein Stück weiter“. Dazu als Tafelbild zwei Motoren untereinander, beide mit N links und S rechts: oben der ganze geteilte Ring mit der Beschriftung „Kommutator AN“, einem Pfeil nach oben an der linken und einem Pfeil nach unten an der rechten Spulenseite und einem Pfeil rundherum; unten derselbe Ring mit einem Bruch, der Beschriftung „Kommutator AUS“, einem kurzen Pfeil hin und zurück und den beiden Kraftpfeilen ANDERSHERUM — links nach unten, rechts nach oben. Die umgedrehten Pfeile sind wichtig: Zeichnen Sie unten dieselben Pfeile wie oben, steht an der Tafel ein Drehmoment an einer Spule, die stehen bleibt. In beide Zeilen dieselbe Zeile „20 Windungen · M = 16,0 mN·m“ schreiben und stehen lassen. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "unten",
+   "Kommutator"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20 Windungen, Kommutator aus",
+    "sie wackelt und bleibt stehen",
+    "16,0 mN·m"
+   ],
+   [
+    "40 Windungen, Kommutator aus",
+    "sie wackelt und bleibt stehen",
+    "32,0 mN·m"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Zeile 1 und Zeile 2 der Tabelle stehen direkt untereinander und unterscheiden sich nur im Kommutator. In beiden Zeilen meldet die Statuszeile „Das sind 16,0 Millinewtonmeter.“ — M bleibt also gleich. Verschieden ist nur der zweite Teil: mit Kommutator „der Motor läuft durch“, ohne Kommutator „Sie pendelt und bleibt stehen“. Damit ist die zweite Option richtig. Die erste und die dritte Option behaupten beide eine Änderung von M; die gibt es in der Simulation nur, wenn ein Regler bewegt wird.",
+   "typische_fehler": [
+    "Die dritte Option wird angekreuzt: Ohne den Ring scheint der Motor „freier“ zu laufen, also kräftiger. Auf die zwei Tabellenzeilen zeigen: dieselbe Zahl, zweimal 16,0 mN·m.",
+    "Die erste Option wird angekreuzt: Der Kommutator gilt als Antrieb, der beim Abschalten Kraft wegnimmt. Zurückfragen: Welcher Regler ist die Windungszahl? Der Kommutator ist kein Regler, er ist ein Knopf.",
+    "Es wird gar nichts angekreuzt, weil die Spule nach dem Abschalten schon still steht und nichts mehr zu sehen ist. Die Seite neu laden lassen und den Knopf erst dann drücken, wenn beide hinsehen.",
+    "Es wird zusätzlich die Windungszahl verstellt, dann ändert sich M doch — und die Aufgabe scheint falsch. Der Aufgabentext sagt „Nur der Kommutator geht aus“ — der Windungsregler bleibt also stehen, wie in Zeile 1 und Zeile 2 der Tabelle."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "32,0 mN·m",
+    "doppelt"
+   ],
+   "typische_fehler": [
+    "Statt 32,0 mN·m wird 0,0320 N·m abgeschrieben — die lange Zeile aus der Formel. Beide Zeilen meinen denselben Wert. Auf dieser Seite gilt nur die Millinewtonmeter-Zeile; umgerechnet wird nicht.",
+    "Die Einheit fehlt („32,0“). Die Wortbank enthält sie mit Einheit; einmal abschreiben lassen.",
+    "Statt „doppelt“ steht „vierfach“ oder „viermal“ da — die bekannteste Fehlvorstellung zu dieser Simulation. Achtung: Die letzte Zeile der Anzeige nennt „doppelt“ schon selbst (Falle 12); ein Kind, das dort abschreibt, hat die Aufgabe nicht verstanden. Nebeneinander an die Tafel: 16,0 und 32,0. Ein zweiter Bildschirmwert stützt es: 10 Windungen geben 8,0 mN·m, 20 Windungen geben 16,0 mN·m.",
+    "Es wird 16,0 mN·m eingesetzt, weil zuletzt Zeile 2 ausgefüllt wurde. Der Satz nennt aber 40 Windungen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Auto wackelt und bleibt stehen, weil der Strom in der Spule immer in dieselbe Richtung fließt. Der geteilte Ring ist gebrochen und dreht ihn nicht mehr um. Deshalb drückt die Kraft die Spule nach einer halben Umdrehung zurück — genau wie am Bildschirm ohne Kommutator.",
+   "alternativen": [
+    "Kurzform ohne den Strom: „weil der Kommutator kaputt ist. Dann wackelt die Spule und bleibt stehen.“ — reicht für die volle Wertung.",
+    "Über den Vergleich mit der Simulation: „Am Bildschirm passiert dasselbe, wenn ich den Kommutator ausschalte. Die Spule wackelt und bleibt stehen.“",
+    "Über die Kraft: „Die Kraft drückt danach in die falsche Richtung, also zurück.“",
+    "Zusatz, der über das Verlangte hinausgeht: „Ein echter Motor hat mehrere Spulen, damit er nicht hängen bleibt.“ — richtig, steht aber nur im Hinweis der Simulation."
+   ],
+   "typische_fehler": [
+    "„Weil der Strom weg ist“ oder „weil der Akku leer ist“. Gegenfrage: Warum wackelt es dann überhaupt? Ohne Strom stünde der Motor sofort still — am Bildschirm steht dafür „Kein Strom – der Motor steht“.",
+    "„Weil der Magnet die Spule festhält.“ Das ist die häufigste Fehlvorstellung. Zurück zu fv4: Die Kraft zieht die Spule nicht zum Pol hin, sie drückt quer — die eine Seite nach oben, die andere nach unten.",
+    "Es wird nur „weil der Ring kaputt ist“ geschrieben, ohne Folge. Nachfragen: Und was macht die Spule dann? Hilfe 3 gibt den letzten Schritt vor (Lückenwort: Kraft).",
+    "Das Drehmoment wird als Begründung genannt („weil M zu klein ist“). M ist hier gar nicht verändert worden; auf Aufgabe 1 zurückverweisen."
+   ]
+  },
+  "hilfe3_wort": "Kraft",
+  "schwache": [
+   "Vorher gemeinsam klären, welcher Knopf gilt. Die Simulation hat nur zwei Knöpfe: den Kommutator-Knopf und einen zum Zurücksetzen. Der Kommutator-Knopf zeigt den ZUSTAND, nicht die Handlung: Er trägt die Aufschrift „Kommutator ist AN“ und schaltet beim Drücken AUS; danach steht dort „Kommutator ist AUS“. Wer „Kommutator ist AN“ als Befehl liest, drückt ihn zweimal und wundert sich. Sagen Sie den Satz einmal laut vor: Einmal drücken heißt ausschalten.",
+   "Nachgemessen und wichtig für die Vorbereitung: Nach dem Knopf zum Zurücksetzen steht im Faktendump weiterhin „Kommutator ist AUS“. Ob dieser Knopf den Kommutator wieder einschaltet, ist damit NICHT belegt. Zum Wiedereinschalten lassen Sie die Seite neu laden oder denselben Knopf noch einmal drücken. Die Schülerseite braucht das nicht: Sie geht nur einmal von AN nach AUS und danach nie zurück.",
+   "Nur die Spalte „Was macht die Spule?“ ausfüllen lassen; die M-Spalte gemeinsam an der Tafel eintragen. Zwei Wortkarten dazulegen: „dreht immer weiter“ und „wackelt und bleibt stehen“.",
+   "Die lange Statuszeile mit einem Papierstreifen abdecken, sodass nur die Zeile „Das sind 16,0 Millinewtonmeter.“ sichtbar bleibt. Das gilt hier für ALLE, nicht nur für schwache Lernende: Die Formelzeile darüber wird auf dieser Seite nicht gebraucht, und die letzte Zeile der Anzeige nennt die Lösung von Aufgabe 2 vorweg (Falle 12).",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und die Zahlen 16,0 und 32,0 groß nebeneinander an den Rand schreiben.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und im gelösten Beispiel die Stelle „16,0 mN·m“ mit dem Finger zeigen, bevor die Simulation geöffnet wird."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle die Windungen auf 10 und lies M ab. Schreibe die drei Werte untereinander: 10 Windungen, 20 Windungen, 40 Windungen. Was fällt dir an den Zahlen auf? (Am Bildschirm stehen 8,0 mN·m, 16,0 mN·m und 32,0 mN·m — jedes Mal doppelt so viel.) Der Kommutator bleibt dabei aus, die anderen beiden Regler bleiben stehen.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Elektromotor: Kraft auf den stromdurchflossenen Leiter, geteilter Ring. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Eintragen der beiden eigenen Messzeilen in die Tabelle trägt K3 („Untersuchungen dokumentieren“) — Zeile 1 ist die vorausgefüllte Beispielzeile des Rendervertrags und wird nicht selbst eingetragen — im ganzen Band liegt K3 einheitlich auf der Tabelle, nicht auf dem Zuhause-Auftrag; „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Das Trennen von „mit Kommutator“ und „ohne Kommutator“ bei gleichem Drehmoment trägt UF2, der Merksatz und Aufgabe 1 tragen UF1, die Erklär-Aufgabe verbindet die Kraft auf den Draht aus fv4 mit der Drehung und trägt UF4, das gezielte Hinsehen beim Abschalten trägt E2, die Übertragung auf das Modellauto trägt E8 (fv5 ist im Kapitel der einzige Träger von E8). E7 wird ausdrücklich NICHT beansprucht: Die Modellgrenzen der Simulation (mehrere Spulen auf dem Anker, Gegenspannung, Enddrehzahl) stehen nur in ihrem Hinweistext und werden auf der Schülerseite nirgends verlangt. Fachwortzählung: neu sind genau ZWEI Wörter — „Kommutator“ (Begriffssatz im Alltagsteil: ein Ring aus zwei Hälften auf einer Stange) und „Drehmoment M in Millinewtonmeter (mN·m)“ (nach Zählregel 1 ein Wort, nicht drei; Begriffssatz im Alltagsteil, wörtlich nach der Bildschirmzeile „Drehmoment – wie kräftig dreht der Motor?“). Nicht neu und deshalb nur Rückverweis: Spule und Windungen (fv3), Kraft (fv4), Stromstärke I in Ampere (Band 9). Nach Zählregel 4 bewusst NICHT eingeführt und auf der Schülerseite nirgends benutzt: Welle, Anker, Kohlebürste, Polwender, Stromwender, Drehrichtung, Umpolen, Umdrehung. Der Sim-Hinweis nennt dasselbe Teil dreifach („der Kommutator, auch Polwender oder Stromwender genannt“); das verstößt gegen „Immer dieselbe Bezeichnung“, deshalb steht im Heft durchgehend nur „Kommutator“ — die beiden anderen Wörter kennen Sie jetzt, falls ein Kind sie am Bildschirm liest. „Welle“ steht nur im Bildauftrag und im Tafelbild, in keinem Satz der Schülerseite und in keiner Aufgabe — dieselbe Lösung wie in fn10. Auf der Schülerseite heißt das Teil „Stange“: Alltagswort ohne Formelzeichen und ohne Einheit (Zählregel 5), im Band schon in fn9 benutzt, zählt nicht mit und braucht keinen Begriffssatz. Eine frühere Fassung trug „Welle“ in der Überschrift der Doppelseite und im Begriffssatz zum Kommutator — also an der prominentesten Stelle der Seite und als Träger der Definition des Hauptfachworts, ohne es je einzuführen; im übrigen Band meint „Welle“ überall die Wasserwelle oder die Wellenlinie. Die Überschrift heißt deshalb jetzt „Der geteilte Ring im Motor“. Datenlage und Fallen: (1) Dieselbe Statuszeile nennt denselben Wert zweimal verschieden: „= 0,0160 N·m“ in der Formelzeile und „Das sind 16,0 Millinewtonmeter.“ darunter. Die Umrechnung (Faktor 1000, vier Nachkommastellen, führende Nullen) ist auf A2–B1 nicht zumutbar. Die Seite liest deshalb ausschließlich die Millinewtonmeter-Zeile; das gelöste Beispiel sagt das ausdrücklich („Die lange Zeile darüber brauchst du nicht.“) und zitiert die Formelzeile bewusst NICHT — auf der Schülerseite steht damit nirgends eine Zahl in N·m, auch nicht im Beispiel. (2) Die Fläche steht in derselben Zeile zweimal verschieden: „0,002 m²“ in der Formel, „20 cm²“ hinter „Zurzeit“. Deshalb wird A nirgends angefasst, steht in keiner Tabellenspalte und in keiner Aufgabe. (3) Die Formel M = N · B · I · A steht am Bildschirm, wird auf der Schülerseite aber nur angesehen, nie eingesetzt: vier Faktoren sind zu viel, und die Formel-Lücke der Regelheft-Übungsseite entfällt ersatzlos. Verstellt wird allein der Windungs-Regler; die beiden anderen Regler bleiben auf ihren Startwerten. (4) Magnetfeld B: Der Bildschirm schreibt „0,20 T“. Eingeführt wurde im Förderband aber die Mikrotesla-Einheit (fv2, µT); die Umrechnung 1 T = 1 000 000 µT steht nur im Lehrerband. Auf der Schülerseite von fv5 kommt deshalb keine Zahl in Tesla vor — weder in der Tabelle, noch in einer Aufgabe, noch im Bildauftrag. Falls ein Kind die Zeile am Bildschirm liest: „0,20 T“ ist dasselbe Magnetfeld wie in fv2, nur in der großen Einheit geschrieben; es bleibt hier die ganze Zeit gleich. (5) [NACHMESSEN] Der Zustand „40 Windungen mit Kommutator AN“ ist im Faktendump NICHT belegt: simfakten hat den Kommutator-Knopf genau einmal gedrückt, danach blieb er für alle Reglerstellungen aus. Die Tabellenzeile des Regelhefts „40 Windungen, Kommutator AN“ wäre damit unbelegt. Die Förderseite umgeht das und misst 20/AN, 20/AUS, 40/AUS — der Kommutator wird genau einmal umgeschaltet und danach nie wieder. Soll die AN-Zeile jemals zurück, muss der Zustand vorher nachgemessen werden. (6) [NACHMESSEN] Auch der Rückweg ist unbelegt: Nach dem Knopf zum Zurücksetzen steht im Dump weiterhin „Kommutator ist AUS“. Die Seite verlangt deshalb an keiner Stelle, den Kommutator wieder einzuschalten. (7) [NACHMESSEN] Drehzahl und Umdrehungszähler sind nicht reproduzierbar: Die Statuszeile im Ausgangszustand meldet „Bisher 0 volle Umdrehungen, gerade rund 0 Umdrehungen je Minute.“, die Bildtexte zeigen dagegen wechselnde Werte bis 32 Umdrehungen je Minute und immer 0 volle Umdrehungen (simfakten fotografiert vor der Animation). Drehzahl wird deshalb weder in der Tabelle noch in einer Aufgabe verlangt und steht auch nicht im Bildauftrag. (8) Undruckbare Zeichen: Beide Knöpfe der Simulation tragen vor dem Wort ein Zierzeichen, ebenso die Überschrift der Simulation und die Zeile mit den Strom- und Kraftsymbolen. SourceSans3 hat dafür keine Glyphe; sie werden nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Deshalb steht im Arbeitsschritt „Drücke den Knopf mit dem Wort Kommutator“ statt eines Knopfnamens mit Zeichen. (9) Wortschatz: Die Statuszeile arbeitet auf B2-Niveau („kommt über die Senkrechte hinaus“, „pendelt“, „Drehrichtung“, „polt um“, „entgegengesetzte Richtungen“). Die Seite ersetzt das durchgehend: „geht ein Stück weiter“, „wackelt und bleibt stehen“, „der Strom fließt immer in dieselbe Richtung“, „die eine Seite nach oben, die andere nach unten“. Die frühere Fassung sagte in Hilfe 3 „Der Strom fließt nicht mehr andersherum“ — zwei Verneinungen in einem Satz, vom Profil verboten; sie ist positiv umformuliert. Sprechen Sie beim gemeinsamen Ablesen beide Fassungen einmal nebeneinander aus. Für den Zustand ohne Kommutator benutzt die Schülerseite durchgehend genau EINE Formulierung: „wackelt und bleibt stehen“ — in der Vermutung, in der Tabelle, im Merksatz, im Satzstarter von Aufgabe 3 und in beiden Bildstreifen. „ruckt“, „dreht ein Stück“ und „nach einer halben Umdrehung“ standen in einer früheren Fassung nebeneinander und sind gestrichen; „Umdrehung“ kommt auf keiner anderen Schülerseite des Bandes vor und bleibt dem Lehrerteil vorbehalten. (10) Der Alltagsauftrag des Regelhefts (Akkuschrauber oder Handmixer: woran merkt man, dass der Motor mehr Kraft aufbringen muss) ist ersetzt. Er zeigt einen anderen Mechanismus als diese Seite — Belastung und Gegenspannung stehen in der Simulation ausdrücklich als Modellgrenze und werden nirgends angezeigt. An seiner Stelle steht das Modellauto mit gebrochenem geteiltem Ring: derselbe Mechanismus wie am Bildschirm. Der Zuhause-Auftrag verlangt nur noch das Suchen von Motoren und behauptet keinen Mechanismus. (11) Fachliche Leitplanke für das Unterrichtsgespräch: Die Kraft zieht die Spule nicht zum Pol hin, sie drückt quer — Rückverweis auf fv4. Ohne diesen Satz erklären Lernende das Stehenbleiben mit „der Magnet hält sie fest“; genau das ist der zweite typische Fehler bei Aufgabe 3. (12) Die letzte Zeile der Anzeige nimmt die Lösung von Aufgabe 2 und von Selbstcheck 3 wörtlich vorweg: „Was macht ihn kräftiger? Alle vier Größen gehen einfach ein: doppelt so viele Windungen, doppelte Stromstärke, doppelt starker Magnet oder doppelte Spulenfläche – jedes für sich verdoppelt das Drehmoment.“ Sie steht in JEDEM Zustand da, auch schon im Ausgangszustand, bevor ein Kind etwas verstellt hat (nachgemessen im Faktendump, status[0]). Wer dort abschreibt, füllt Aufgabe 2 richtig aus, ohne etwas verstanden zu haben. Gegenmaßnahme: der Papierstreifen aus dem Hinweis für schwache Lernende — er gilt hier für ALLE. Hilfe 1 zeigt deshalb nicht mehr pauschal auf „die Statuszeile“, sondern auf die Stelle hinter „Das sind“."
+ }
+}

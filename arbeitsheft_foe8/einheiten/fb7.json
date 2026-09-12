@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fb7",
+  "quelle": "be9",
+  "sim": "bremsweg-jg9",
+  "sicherheit": "Simulation",
+  "theme": "foe_bewegung",
+  "titel": "Bis das Auto steht",
+  "name": "Wie weit fährt ein Auto bis zum Halt?",
+  "fachwoerter_neu": [
+   "Reaktionsweg",
+   "Anhalteweg"
+  ],
+  "alltag": [
+   "Nour und Jannis stehen an der Einfahrt der Fahrrad-Werkstatt.",
+   "Nour meint: Bei Tempo 30 steht ein Auto sofort.",
+   "Jannis sagt: Du siehst die Gefahr und trittst erst dann auf die Bremse.",
+   "Bis dahin fährt das Auto weiter. Dieser Weg heißt Reaktionsweg."
+  ],
+  "frage": "Woraus besteht der Weg, bis das Auto wirklich steht?",
+  "predict": [
+   "Zu diesem Weg gehört auch das Stück, bevor das Auto bremst.",
+   "Zu diesem Weg gehört nur das Stück, in dem das Auto bremst."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.",
+   "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Zeile 1 (50 km/h) ist schon ausgefüllt.",
+   "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.",
+   "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Tempo",
+   "Wie lang ist der Reaktionsweg?",
+   "Wie lang ist der Bremsweg?"
+  ],
+  "tabRows": [
+   [
+    "50 km/h",
+    "15 m",
+    "25 m"
+   ],
+   [
+    "100 km/h",
+    "",
+    ""
+   ],
+   [
+    "30 km/h",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Reaktionsweg und Bremsweg ergeben zusammen den",
+    "loesung": "Anhalteweg",
+    "post": "."
+   },
+   {
+    "pre": "Auf dem",
+    "loesung": "Reaktionsweg",
+    "post": "fährt das Auto noch mit vollem Tempo weiter."
+   }
+  ],
+  "wortbank": [
+   "Anhalteweg",
+   "Reaktionsweg",
+   "18 m",
+   "130 m"
+  ],
+  "beispiel": {
+   "frage": "Bei 50 km/h zeigt die Statuszeile: Reaktionsweg = 15 m · Bremsweg = 25 m. Wie lang ist der Anhalteweg?",
+   "antwort": "Gegeben: Reaktionsweg 15 m und Bremsweg 25 m. Gesucht: der Anhalteweg. Rechnung: 15 m + 25 m = 40 m. Antwort: Der Anhalteweg ist 40 m lang. Die Statuszeile zeigt auch 40 m."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was passiert mit dem Bremsweg von 50 km/h auf 100 km/h? Sieh in deiner Tabelle nach.",
+    "optionen": [
+     "Er wird viermal so lang: aus 25 m werden 100 m.",
+     "Er wird doppelt so lang: aus 25 m werden 50 m.",
+     "Er bleibt gleich: 25 m."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 30 km/h zeigt die Simulation Reaktionsweg 9 m und Bremsweg 9 m. Zusammen sind das",
+      "loesung": "18 m",
+      "post": "."
+     },
+     {
+      "pre": "Bei 100 km/h sind es 30 m und 100 m. Der Anhalteweg ist dann",
+      "loesung": "130 m",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Bei Tempo 30 steht ein Auto sofort.“ Erkläre Nour, warum das nicht stimmt.",
+    "satzstarter": "Zuerst siehst du die Gefahr, …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Einträge der Wortbank werden gebraucht: zwei Wörter im Merksatz, zwei Zahlen in Aufgabe 2.",
+   "h2": "Rechne in Aufgabe 2 so: Reaktionsweg + Bremsweg = Anhalteweg. Bei 30 km/h heißt das 9 m + 9 m.",
+   "h3": "Fast fertige Antwort: Zuerst siehst du die Gefahr. In dieser Zeit fährt das Auto mit vollem Tempo weiter. Das ist der Reaktionsweg. Danach kommt noch der ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann Reaktionsweg und Bremsweg in der Statuszeile ablesen.",
+   "Ich kann aus zwei Zahlen den Anhalteweg ausrechnen.",
+   "Ich kann erklären, warum ein Auto nicht sofort steht."
+  ],
+  "zuhause": "Zähle auf dem Flur oder dem Schulhof 18 große Schritte ab, nicht an der Straße. Ein großer Schritt ist ungefähr 1 m. So weit fährt ein Auto bei 30 km/h noch, bis es steht.",
+  "bildauftrag": "[BILD: Seitenansicht einer geraden Straße über die volle Bildbreite; ganz links ein einzelnes Auto mit der Angabe „v = 50 km/h“, ganz rechts am Straßenrand ein wartendes Kind; unter der Straße zwei gleich hohe Balken direkt hintereinander: links ein kürzerer gelb schraffierter Balken mit der großen Aufschrift „Reaktionsweg 15 m“, rechts ein längerer roter Balken mit „Bremsweg 25 m“; darunter eine durchgehende Klammer über beide Balken mit der Aufschrift „Anhalteweg 40 m“; nur dieses eine Auto, keine zweite Fahrt, keine Tempostriche, keine weiteren Fahrzeuge; heller ruhiger Hintergrund ohne Deko]"
+ },
+ "lehrer": {
+  "id": "fb7",
+  "lernziel": "Die Schülerinnen und Schüler lesen Reaktionsweg und Bremsweg bei 50, 100 und 30 km/h in der Statuszeile ab und rechnen daraus den Anhalteweg aus (15 m + 25 m = 40 m · 30 m + 100 m = 130 m · 9 m + 9 m = 18 m). Sie begründen, dass das Auto auf dem Reaktionsweg noch mit vollem Tempo weiterfährt. Am Paar 50 km/h und 100 km/h stellen sie fest: Der Bremsweg wird viermal so lang (25 m → 100 m). Die Faustformeln (v/10)·3 und (v/10)² aus dem Hinweistext werden hier nicht gerechnet; der Ausdruck „Quadrat der Geschwindigkeit“ wird nicht gebraucht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten oder als Tafelbild. Für den Auftrag zu Hause: ein Flur, eine Turnhalle oder der Schulhof – nicht die Straße.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten im Wortlaut der Statuszeile zeigen oder vorlesen, in genau dieser Reihenfolge. Die Statuszeile steht am Bildschirm in zwei Zeilen; so gehört sie auch auf die Karte. Karte 1 (so startet die Simulation): Zeile 1 „Tempo v = 50 km/h. Aktuell: Reaktionsphase (noch volles Tempo).“, Zeile 2 „Reaktionsweg = 15 m · Bremsweg = 25 m · Anhalteweg = 40 m.“ Karte 2 (Knopf „100 km/h“): dieselben Zeilen mit „Tempo v = 100 km/h“ und „Reaktionsweg = 30 m · Bremsweg = 100 m · Anhalteweg = 130 m.“ Karte 3 (Knopf „30 km/h“): dieselben Zeilen mit „Tempo v = 30 km/h“ und „Reaktionsweg = 9 m · Bremsweg = 9 m · Anhalteweg = 18 m.“ Die Karte mit 30 km/h bewusst zuletzt zeigen: Dort sind beide Zahlen 9 m, und wer damit beginnt, merkt sich „Reaktionsweg = Bremsweg“. Dazu an die Tafel für jedes Tempo einen gelben Balken (Reaktion) und daran anschließend einen roten Balken (Bremsen) zeichnen, maßstäblich in Metern. Die Simulation zeigt außerdem einen Vergleich der Bremswege: 30 km/h – 9 m, 50 km/h – 25 m, 100 km/h – 100 m; diese drei Balken genügen als Tafelbild für Aufgabe 1.",
+  "merksatz": [
+   "Anhalteweg",
+   "Reaktionsweg"
+  ],
+  "tabelle_erwartet": [
+   [
+    "100 km/h",
+    "30 m",
+    "100 m"
+   ],
+   [
+    "30 km/h",
+    "9 m",
+    "9 m"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Zeile 1 der Tabelle (50 km/h): Bremsweg 25 m. Zeile 2 (100 km/h): Bremsweg 100 m. Aus 25 m werden 100 m, das ist viermal so viel. Dieselbe Reihe steht in der Simulation im Vergleich der Bremswege: 30 km/h – 9 m, 50 km/h – 25 m, 100 km/h – 100 m.",
+   "typische_fehler": [
+    "Option 2 („doppelt so lang“) – die häufigste Fehlvorstellung: Das Tempo verdoppelt sich, also scheint auch der Weg doppelt zu werden. Nur der Reaktionsweg verdoppelt sich (15 m → 30 m), der Bremsweg wird viermal so lang.",
+    "Statt des Bremswegs wird der Anhalteweg verglichen (40 m → 130 m). Gefragt ist nur die mittlere der drei Zahlen.",
+    "Verglichen wird mit Zeile 3 (30 km/h). Dort sind Reaktionsweg und Bremsweg beide 9 m – daraus entsteht der Fehlschluss, beide Wege seien immer gleich lang."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "18 m",
+    "130 m"
+   ],
+   "typische_fehler": [
+    "Nur eine der beiden Zahlen wird abgeschrieben: 9 m statt 18 m, 100 m statt 130 m.",
+    "Die Zahlen werden nebeneinandergeschrieben statt addiert: aus 9 und 9 wird 99.",
+    "Es wird abgezogen statt addiert: 100 m − 30 m = 70 m.",
+    "Die Einheit m fehlt. Die Simulation schreibt jede Länge mit m."
+   ]
+  },
+  "a3": {
+   "erwartung": "Zuerst siehst du die Gefahr. In dieser Zeit fährt das Auto mit vollem Tempo weiter. Das ist der Reaktionsweg. Danach kommt noch der Bremsweg. Bei 30 km/h sind das zusammen 18 m.",
+   "alternativen": [
+    "Mit den Zahlen der Statuszeile: Bei 30 km/h steht dort Reaktionsweg = 9 m · Bremsweg = 9 m · Anhalteweg = 18 m. 18 m sind mehr als eine Autolänge.",
+    "Mit dem Bild: Der gelbe Teil kommt vor dem Bremsen, der rote Teil beim Bremsen. Beide zusammen sind der Anhalteweg.",
+    "Mit einem eigenen Beispiel: Auch beim Fahrrad rollt man noch weiter, bis die Hand die Bremse zieht."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung.",
+    "Nur der Bremsweg wird genannt, der Reaktionsweg fehlt – genau der Teil, den Nour übersieht.",
+    "„Das Auto bremst schon, während man die Gefahr sieht.“ Auf dem Reaktionsweg fährt es noch mit vollem Tempo.",
+    "Tempo 30 gilt als so langsam, dass die Zahlen gar nicht erst geprüft werden."
+   ]
+  },
+  "hilfe3_wort": "Bremsweg (auch richtig: Weg beim Bremsen)",
+  "schwache": [
+   "Zuerst nur Zeile 1 und Zeile 2 ausfüllen (50 km/h und 100 km/h). Zeile 3 mit 30 km/h erst danach – dort sind beide Zahlen 9 m und werden sonst verwechselt.",
+   "Bedienhinweis vorweg geben: Die drei Tempo-Knöpfe „30 km/h“, „50 km/h“ und „100 km/h“ stehen nebeneinander unter dem Bild, darunter der Knopf „▶ Gefahr! (Start)“. Die Statuszeile beginnt mit dem Wort „Tempo“; je nach Bildschirmbreite steht sie rechts neben dem Bild oder darunter. Beim Öffnen ist 50 km/h eingestellt.",
+   "Die Statuszeile drängt drei Längen in eine Zeile, getrennt nur durch Punkte. Mit einem Lineal abdecken, sodass immer nur eine Angabe sichtbar ist, und mit dem Finger erst auf das Wort und dann auf die Zahl zeigen.",
+   "Vor Aufgabe 2 die zwei Additionen 9 + 9 und 30 + 100 mündlich üben.",
+   "Im Bild den Reaktionsweg gelb und den Bremsweg rot nachmalen lassen, danach die Klammer für den Anhalteweg darunterziehen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die erste Quizfrage in der Simulation. Drücke den Knopf „Reaktionsweg + Bremsweg“ und schreibe die Rückmeldung ab: „✓ Richtig! Beide Teile zusammen ergeben den Anhalteweg.“",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Anhalteweg und Sicherheit im Straßenverkehr. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 und UF2 über Merksatz und Tabelle (Reaktionsweg, Bremsweg, Anhalteweg auseinanderhalten); E2 über die Vermutung; E5 über den Vergleich der Bremswege bei 50 km/h und 100 km/h; B2 über Aufgabe 3 und den Auftrag zu Hause (Nours Behauptung an Messwerten prüfen). Der Seitenplan hält den Zusammenhang mit dem Quadrat der Geschwindigkeit sprachlich draußen: Er wird nur als „viermal so lang“ an den zwei abgelesenen Zahlen gezeigt."
+ }
+}

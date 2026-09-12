@@ -1,0 +1,526 @@
+[
+ {
+  "sim": "lageenergie",
+  "ueberschrift": "📦 Wo steckt die Energie, wenn etwas oben liegt?",
+  "regler": [
+   {
+    "id": "lgeM",
+    "beschriftung": "utton> ↺ zurücksetzen Masse m: 5 kg",
+    "bereich": {
+     "min": "1",
+     "max": "20",
+     "step": "1",
+     "start": "5"
+    }
+   },
+   {
+    "id": "lgeH",
+    "beschriftung": "Höhe h: 3 m",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "3"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "▶ Fallen lassen",
+    "ruft": "_lgeGo()"
+   },
+   {
+    "aufschrift": "×2 Masse",
+    "ruft": "_lgeVerdopple('m')"
+   },
+   {
+    "aufschrift": "×2 Höhe",
+    "ruft": "_lgeVerdopple('h')"
+   },
+   {
+    "aufschrift": "↺ zurücksetzen",
+    "ruft": "_lgeInit();_lgeSync()"
+   }
+  ],
+  "hinweise": [
+   "Der Klotz fällt auf einen Pfahl und treibt ihn in den Boden. Je tiefer der Pfahl kommt, desto mehr Energie hatte der Klotz oben.",
+   "Verdopple einmal die Masse und einmal die Höhe. Beide zählen gleich stark – anders als beim Tempo.",
+   "Elage = m · g · h | g = 9,81 N/kg | Ergebnis in Joule"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "▶ Fallen lassen",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Aufprall mit 7,7 m/s, Pfahl 37 cm tief eingeschlagen."
+   },
+   {
+    "einstellung": "▶ Fallen lassen · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Aufprall mit 7,7 m/s, Pfahl 37 cm tief eingeschlagen.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,169.11,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,165.11,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,114.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,114.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|128.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=700 12px sans-serif | fillText|Pfahl 37 cm tief – die Energie war oben schon da|220.00|238.00"
+   },
+   {
+    "einstellung": "▶ Fallen lassen · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Aufprall mit 7,7 m/s, Pfahl 37 cm tief eingeschlagen.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,169.11,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,165.11,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,114.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,114.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|128.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=700 12px sans-serif | fillText|Pfahl 37 cm tief – die Energie war oben schon da|220.00|238.00"
+   },
+   {
+    "einstellung": "▶ Fallen lassen · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Aufprall mit 7,7 m/s, Pfahl 37 cm tief eingeschlagen.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,169.11,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,165.11,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,114.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,114.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|128.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=700 12px sans-serif | fillText|Pfahl 37 cm tief – die Energie war oben schon da|220.00|238.00"
+   },
+   {
+    "einstellung": "▶ Fallen lassen · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Aufprall mit 7,7 m/s, Pfahl 37 cm tief eingeschlagen.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,169.11,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,165.11,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,114.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,114.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|128.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=700 12px sans-serif | fillText|Pfahl 37 cm tief – die Energie war oben schon da|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Masse",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "×2 Masse · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,70.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,70.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|86.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,61.80,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|294 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Masse · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,70.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,70.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|86.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,61.80,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|294 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Masse · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,70.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,70.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|86.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,61.80,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|294 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Masse · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,70.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,70.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|86.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,61.80,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|294 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Höhe",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "×2 Höhe · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,58.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 6 m|144.00|97.00 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,31.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,31.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|47.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Höhe · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,58.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 6 m|144.00|97.00 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,31.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,31.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|47.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Höhe · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,58.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 6 m|144.00|97.00 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,31.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,31.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|47.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "×2 Höhe · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,58.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 6 m|144.00|97.00 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|206.50,31.00,27.00,27.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|206.50,31.00,27.00,27.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|220.00|47.50 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|211.45,79.90,17.10,17.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|211.45,79.90,17.10,17.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|1 kg|220.00|91.45 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,6.18,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|29 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|211.45,79.90,17.10,17.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|211.45,79.90,17.10,17.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|1 kg|220.00|91.45 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,6.18,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|29 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|211.45,79.90,17.10,17.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|211.45,79.90,17.10,17.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|1 kg|220.00|91.45 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,6.18,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|29 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|211.45,79.90,17.10,17.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|211.45,79.90,17.10,17.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|1 kg|220.00|91.45 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,6.18,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|29 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.35,77.70,19.30,19.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.35,77.70,19.30,19.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|3 kg|220.00|90.35 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,18.54,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|88 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.35,77.70,19.30,19.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.35,77.70,19.30,19.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|3 kg|220.00|90.35 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,18.54,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|88 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.35,77.70,19.30,19.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.35,77.70,19.30,19.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|3 kg|220.00|90.35 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,18.54,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|88 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.35,77.70,19.30,19.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.35,77.70,19.30,19.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|3 kg|220.00|90.35 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,18.54,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|88 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.70,74.40,22.60,22.60 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.70,74.40,22.60,22.60 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|6 kg|220.00|88.70 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,37.08,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|177 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.70,74.40,22.60,22.60 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.70,74.40,22.60,22.60 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|6 kg|220.00|88.70 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,37.08,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|177 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.70,74.40,22.60,22.60 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.70,74.40,22.60,22.60 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|6 kg|220.00|88.70 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,37.08,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|177 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.70,74.40,22.60,22.60 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.70,74.40,22.60,22.60 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|6 kg|220.00|88.70 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,37.08,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|177 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.60,72.20,24.80,24.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.60,72.20,24.80,24.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|8 kg|220.00|87.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,49.44,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|235 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.60,72.20,24.80,24.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.60,72.20,24.80,24.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|8 kg|220.00|87.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,49.44,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|235 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.60,72.20,24.80,24.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.60,72.20,24.80,24.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|8 kg|220.00|87.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,49.44,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|235 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.60,72.20,24.80,24.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.60,72.20,24.80,24.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|8 kg|220.00|87.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,49.44,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|235 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|205.95,68.90,28.10,28.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|205.95,68.90,28.10,28.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|11 kg|220.00|85.95 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,67.98,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|324 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|205.95,68.90,28.10,28.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|205.95,68.90,28.10,28.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|11 kg|220.00|85.95 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,67.98,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|324 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|205.95,68.90,28.10,28.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|205.95,68.90,28.10,28.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|11 kg|220.00|85.95 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,67.98,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|324 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|205.95,68.90,28.10,28.10 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|205.95,68.90,28.10,28.10 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|11 kg|220.00|85.95 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,67.98,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|324 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|204.85,66.70,30.30,30.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|204.85,66.70,30.30,30.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|13 kg|220.00|84.85 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,80.34,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|383 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|204.85,66.70,30.30,30.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|204.85,66.70,30.30,30.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|13 kg|220.00|84.85 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,80.34,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|383 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|204.85,66.70,30.30,30.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|204.85,66.70,30.30,30.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|13 kg|220.00|84.85 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,80.34,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|383 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|204.85,66.70,30.30,30.30 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|204.85,66.70,30.30,30.30 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|13 kg|220.00|84.85 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,80.34,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|383 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|203.75,64.50,32.50,32.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|203.75,64.50,32.50,32.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|15 kg|220.00|83.75 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,92.70,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|441 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|203.75,64.50,32.50,32.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|203.75,64.50,32.50,32.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|15 kg|220.00|83.75 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,92.70,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|441 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|203.75,64.50,32.50,32.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|203.75,64.50,32.50,32.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|15 kg|220.00|83.75 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,92.70,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|441 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|203.75,64.50,32.50,32.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|203.75,64.50,32.50,32.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|15 kg|220.00|83.75 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,92.70,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|441 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|202.10,61.20,35.80,35.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|202.10,61.20,35.80,35.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|18 kg|220.00|82.10 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,111.24,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|530 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|202.10,61.20,35.80,35.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|202.10,61.20,35.80,35.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|18 kg|220.00|82.10 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,111.24,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|530 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|202.10,61.20,35.80,35.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|202.10,61.20,35.80,35.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|18 kg|220.00|82.10 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,111.24,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|530 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|202.10,61.20,35.80,35.80 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|202.10,61.20,35.80,35.80 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|18 kg|220.00|82.10 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,111.24,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|530 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|201.00,59.00,38.00,38.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|201.00,59.00,38.00,38.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|220.00|81.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|201.00,59.00,38.00,38.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|201.00,59.00,38.00,38.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|220.00|81.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|201.00,59.00,38.00,38.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|201.00,59.00,38.00,38.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|220.00|81.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|201.00,59.00,38.00,38.00 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|201.00,59.00,38.00,38.00 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|220.00|81.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,123.60,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|589 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.90,78.80,18.20,18.20 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.90,78.80,18.20,18.20 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|2 kg|220.00|90.90 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,12.36,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|59 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.90,78.80,18.20,18.20 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.90,78.80,18.20,18.20 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|2 kg|220.00|90.90 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,12.36,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|59 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.90,78.80,18.20,18.20 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.90,78.80,18.20,18.20 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|2 kg|220.00|90.90 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,12.36,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|59 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|210.90,78.80,18.20,18.20 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|210.90,78.80,18.20,18.20 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|2 kg|220.00|90.90 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,12.36,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|59 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.80,76.60,20.40,20.40 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.80,76.60,20.40,20.40 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|4 kg|220.00|89.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,24.72,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|118 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.80,76.60,20.40,20.40 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.80,76.60,20.40,20.40 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|4 kg|220.00|89.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,24.72,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|118 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.80,76.60,20.40,20.40 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.80,76.60,20.40,20.40 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|4 kg|220.00|89.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,24.72,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|118 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.80,76.60,20.40,20.40 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.80,76.60,20.40,20.40 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|4 kg|220.00|89.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,24.72,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|118 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|209.25,75.50,21.50,21.50 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|209.25,75.50,21.50,21.50 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|5 kg|220.00|89.25 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,30.90,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|147 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.15,73.30,23.70,23.70 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.15,73.30,23.70,23.70 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|7 kg|220.00|88.15 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,43.26,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|206 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.15,73.30,23.70,23.70 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.15,73.30,23.70,23.70 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|7 kg|220.00|88.15 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,43.26,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|206 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.15,73.30,23.70,23.70 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.15,73.30,23.70,23.70 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|7 kg|220.00|88.15 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,43.26,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|206 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|208.15,73.30,23.70,23.70 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|208.15,73.30,23.70,23.70 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|7 kg|220.00|88.15 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,43.26,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|206 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9 · nach 50 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.05,71.10,25.90,25.90 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.05,71.10,25.90,25.90 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|9 kg|220.00|87.05 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,55.62,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|265 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9 · nach 75 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.05,71.10,25.90,25.90 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.05,71.10,25.90,25.90 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|9 kg|220.00|87.05 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,55.62,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|265 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9 · nach 100 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.05,71.10,25.90,25.90 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.05,71.10,25.90,25.90 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|9 kg|220.00|87.05 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,55.62,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|265 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9 · nach 125 Frames",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“.",
+    "bild": "set:strokeStyle=#0ea5e9 | set:lineWidth=1.5 | setLineDash|4,3 | beginPath| | moveTo|150.00,97.00 | lineTo|150.00,136.00 | stroke| | setLineDash| | set:fillStyle=#0369a1 | set:font=700 11px sans-serif | set:textAlign=right | fillText|h = 3 m|144.00|116.50 | set:fillStyle=#78350f | fillRect|211.00,136.00,18.00,60.00 | set:fillStyle=#451a03 | fillRect|207.00,132.00,26.00,7.00 | set:fillStyle=#475569 | fillRect|207.05,71.10,25.90,25.90 | set:strokeStyle=#1e293b | set:lineWidth=2 | strokeRect|207.05,71.10,25.90,25.90 | set:fillStyle=#e2e8f0 | set:font=700 10px sans-serif | set:textAlign=center | fillText|9 kg|220.00|87.05 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Lageenergie E = m · g · h|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,15.00 | set:fillStyle=#7c3aed | fillRect|14.00,34.00,55.62,15.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|265 J|20.00|45.00 | set:textAlign=center | set:fillStyle=#fef3c7 | set:font=11px sans-serif | fillText|Masse und Höhe zählen gleich stark|220.00|238.00"
+   }
+  ],
+  "bildtexte": [
+   "h = 3 m",
+   "5 kg",
+   "Lageenergie E = m · g · h",
+   "147 J",
+   "Masse und Höhe zählen gleich stark",
+   "Pfahl 37 cm tief – die Energie war oben schon da",
+   "10 kg",
+   "294 J",
+   "h = 6 m",
+   "589 J",
+   "1 kg",
+   "29 J",
+   "3 kg",
+   "88 J",
+   "6 kg",
+   "177 J",
+   "8 kg",
+   "235 J",
+   "11 kg",
+   "324 J",
+   "13 kg",
+   "383 J",
+   "15 kg",
+   "441 J",
+   "18 kg",
+   "530 J",
+   "20 kg",
+   "2 kg",
+   "59 J",
+   "4 kg",
+   "118 J",
+   "7 kg",
+   "206 J",
+   "9 kg",
+   "265 J"
+  ]
+ }
+]

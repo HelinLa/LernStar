@@ -1,0 +1,262 @@
+[
+ {
+  "sim": "feste-rolle",
+  "ueberschrift": "🪝 Was bringt eine Rolle an der Decke?",
+  "regler": [
+   {
+    "id": "rolG",
+    "beschriftung": "Last: 600 N",
+    "bereich": {
+     "min": "100",
+     "max": "1000",
+     "step": "50",
+     "start": "600"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "Ohne Rolle",
+    "ruft": "_rolMarke('ohne')"
+   },
+   {
+    "aufschrift": "Feste Rolle",
+    "ruft": "_rolMarke('fest')"
+   },
+   {
+    "aufschrift": "Lose Rolle",
+    "ruft": "_rolMarke('lose')"
+   },
+   {
+    "aufschrift": "600 N an der festen Rolle",
+    "ruft": "_rolMarke('fest', 600)"
+   },
+   {
+    "aufschrift": "600 N an der losen Rolle",
+    "ruft": "_rolMarke('lose', 600)"
+   },
+   {
+    "aufschrift": "Schwerster Fall: 1000 N",
+    "ruft": "_rolMarke('lose', 1000)"
+   }
+  ],
+  "hinweise": [
+   "Dieselbe Last soll 2,0 m hoch. Vergleiche die drei Arten zu ziehen und achte auf die beiden Wegmarken rechts: der Weg der Last und der Weg der Hand sind nicht immer gleich lang.",
+   "Zähle die tragenden Seilstücke. An der festen Rolle hängt die Last an einem Seilstück – deshalb bleibt die Kraft gleich groß. An der losen Rolle hängt sie an zwei Seilstücken – jedes trägt die Hälfte. Die feste Rolle ist trotzdem nützlich: Du ziehst nach unten, und dabei hilft dein eigenes Gewicht mit. Genau darum hängen Rollen an Baukränen und an Fahnenmasten.",
+   "Modellgrenze: Gerechnet wird ohne Reibung im Lager und ohne das Gewicht von Seil und Rolle. Bei schweren Lasten kostet das nur einige Prozent mehr Kraft – bei leichten fällt das Eigengewicht der Rolle deutlich stärker ins Gewicht. Ein Teil der Arbeit wird außerdem zu Wärme. Zwei weitere Annahmen: Das Seil wird beim Ziehen nicht länger, und beide Seilstücke hängen senkrecht. Ziehst du an der losen Rolle schräg, brauchst du mehr als die halbe Kraft.",
+   "Die feste Rolle dreht die Richtung · die lose Rolle halbiert die Kraft und verdoppelt den Weg · die Arbeit bleibt gleich"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "rolStatus: Feste Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt an der Decke. Die Last hängt an einem Seilstück, und dieses eine Seilstück trägt alles. | F = G = 600 N → gespart: 0 % | | Der Weg deiner Hand | s = h = 2,0 m | | Die Arbeit | W = F · s = 600 N · 2,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Ohne Rolle",
+    "text": "rolStatus: Ohne Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Du hältst die ganze Last selbst. | F = G = 600 N | | Der Weg deiner Hand | s = h = 2,0 m | | Die Arbeit | W = F · s = 600 N · 2,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Feste Rolle",
+    "text": "rolStatus: Feste Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt an der Decke. Die Last hängt an einem Seilstück, und dieses eine Seilstück trägt alles. | F = G = 600 N → gespart: 0 % | | Der Weg deiner Hand | s = h = 2,0 m | | Die Arbeit | W = F · s = 600 N · 2,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Lose Rolle",
+    "text": "rolStatus: Lose Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 600 N : 2 = 300 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 300 N · 4,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "600 N an der festen Rolle",
+    "text": "rolStatus: Feste Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt an der Decke. Die Last hängt an einem Seilstück, und dieses eine Seilstück trägt alles. | F = G = 600 N → gespart: 0 % | | Der Weg deiner Hand | s = h = 2,0 m | | Die Arbeit | W = F · s = 600 N · 2,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "600 N an der losen Rolle",
+    "text": "rolStatus: Lose Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 600 N : 2 = 300 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 300 N · 4,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Schwerster Fall: 1000 N",
+    "text": "rolStatus: Lose Rolle | Last G = 1000 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 1000 N : 2 = 500 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 500 N · 4,0 m = 2000 J | | Der Vergleich bei 1000 N | ohne Rolle: F = 1000 N · s = 2,0 m · W = 2000 J | feste Rolle: F = 1000 N · s = 2,0 m · W = 2000 J | lose Rolle: F = 500 N · s = 4,0 m · W = 2000 J | | Dreimal dieselbe Arbeit: 2000 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 100",
+    "text": "rolStatus: Lose Rolle | Last G = 100 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 100 N : 2 = 50 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 50 N · 4,0 m = 200 J | | Der Vergleich bei 100 N | ohne Rolle: F = 100 N · s = 2,0 m · W = 200 J | feste Rolle: F = 100 N · s = 2,0 m · W = 200 J | lose Rolle: F = 50 N · s = 4,0 m · W = 200 J | | Dreimal dieselbe Arbeit: 200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 200",
+    "text": "rolStatus: Lose Rolle | Last G = 200 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 200 N : 2 = 100 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 100 N · 4,0 m = 400 J | | Der Vergleich bei 200 N | ohne Rolle: F = 200 N · s = 2,0 m · W = 400 J | feste Rolle: F = 200 N · s = 2,0 m · W = 400 J | lose Rolle: F = 100 N · s = 4,0 m · W = 400 J | | Dreimal dieselbe Arbeit: 400 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 350",
+    "text": "rolStatus: Lose Rolle | Last G = 350 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 350 N : 2 = 175 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 175 N · 4,0 m = 700 J | | Der Vergleich bei 350 N | ohne Rolle: F = 350 N · s = 2,0 m · W = 700 J | feste Rolle: F = 350 N · s = 2,0 m · W = 700 J | lose Rolle: F = 175 N · s = 4,0 m · W = 700 J | | Dreimal dieselbe Arbeit: 700 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 450",
+    "text": "rolStatus: Lose Rolle | Last G = 450 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 450 N : 2 = 225 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 225 N · 4,0 m = 900 J | | Der Vergleich bei 450 N | ohne Rolle: F = 450 N · s = 2,0 m · W = 900 J | feste Rolle: F = 450 N · s = 2,0 m · W = 900 J | lose Rolle: F = 225 N · s = 4,0 m · W = 900 J | | Dreimal dieselbe Arbeit: 900 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 550",
+    "text": "rolStatus: Lose Rolle | Last G = 550 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 550 N : 2 = 275 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 275 N · 4,0 m = 1100 J | | Der Vergleich bei 550 N | ohne Rolle: F = 550 N · s = 2,0 m · W = 1100 J | feste Rolle: F = 550 N · s = 2,0 m · W = 1100 J | lose Rolle: F = 275 N · s = 4,0 m · W = 1100 J | | Dreimal dieselbe Arbeit: 1100 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 650",
+    "text": "rolStatus: Lose Rolle | Last G = 650 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 650 N : 2 = 325 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 325 N · 4,0 m = 1300 J | | Der Vergleich bei 650 N | ohne Rolle: F = 650 N · s = 2,0 m · W = 1300 J | feste Rolle: F = 650 N · s = 2,0 m · W = 1300 J | lose Rolle: F = 325 N · s = 4,0 m · W = 1300 J | | Dreimal dieselbe Arbeit: 1300 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 800",
+    "text": "rolStatus: Lose Rolle | Last G = 800 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 800 N : 2 = 400 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 400 N · 4,0 m = 1600 J | | Der Vergleich bei 800 N | ohne Rolle: F = 800 N · s = 2,0 m · W = 1600 J | feste Rolle: F = 800 N · s = 2,0 m · W = 1600 J | lose Rolle: F = 400 N · s = 4,0 m · W = 1600 J | | Dreimal dieselbe Arbeit: 1600 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 900",
+    "text": "rolStatus: Lose Rolle | Last G = 900 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 900 N : 2 = 450 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 450 N · 4,0 m = 1800 J | | Der Vergleich bei 900 N | ohne Rolle: F = 900 N · s = 2,0 m · W = 1800 J | feste Rolle: F = 900 N · s = 2,0 m · W = 1800 J | lose Rolle: F = 450 N · s = 4,0 m · W = 1800 J | | Dreimal dieselbe Arbeit: 1800 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 1000",
+    "text": "rolStatus: Lose Rolle | Last G = 1000 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 1000 N : 2 = 500 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 500 N · 4,0 m = 2000 J | | Der Vergleich bei 1000 N | ohne Rolle: F = 1000 N · s = 2,0 m · W = 2000 J | feste Rolle: F = 1000 N · s = 2,0 m · W = 2000 J | lose Rolle: F = 500 N · s = 4,0 m · W = 2000 J | | Dreimal dieselbe Arbeit: 2000 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 150",
+    "text": "rolStatus: Lose Rolle | Last G = 150 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 150 N : 2 = 75 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 75 N · 4,0 m = 300 J | | Der Vergleich bei 150 N | ohne Rolle: F = 150 N · s = 2,0 m · W = 300 J | feste Rolle: F = 150 N · s = 2,0 m · W = 300 J | lose Rolle: F = 75 N · s = 4,0 m · W = 300 J | | Dreimal dieselbe Arbeit: 300 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 250",
+    "text": "rolStatus: Lose Rolle | Last G = 250 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 250 N : 2 = 125 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 125 N · 4,0 m = 500 J | | Der Vergleich bei 250 N | ohne Rolle: F = 250 N · s = 2,0 m · W = 500 J | feste Rolle: F = 250 N · s = 2,0 m · W = 500 J | lose Rolle: F = 125 N · s = 4,0 m · W = 500 J | | Dreimal dieselbe Arbeit: 500 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 300",
+    "text": "rolStatus: Lose Rolle | Last G = 300 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 300 N : 2 = 150 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 150 N · 4,0 m = 600 J | | Der Vergleich bei 300 N | ohne Rolle: F = 300 N · s = 2,0 m · W = 600 J | feste Rolle: F = 300 N · s = 2,0 m · W = 600 J | lose Rolle: F = 150 N · s = 4,0 m · W = 600 J | | Dreimal dieselbe Arbeit: 600 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 400",
+    "text": "rolStatus: Lose Rolle | Last G = 400 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 400 N : 2 = 200 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 200 N · 4,0 m = 800 J | | Der Vergleich bei 400 N | ohne Rolle: F = 400 N · s = 2,0 m · W = 800 J | feste Rolle: F = 400 N · s = 2,0 m · W = 800 J | lose Rolle: F = 200 N · s = 4,0 m · W = 800 J | | Dreimal dieselbe Arbeit: 800 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 500",
+    "text": "rolStatus: Lose Rolle | Last G = 500 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 500 N : 2 = 250 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 250 N · 4,0 m = 1000 J | | Der Vergleich bei 500 N | ohne Rolle: F = 500 N · s = 2,0 m · W = 1000 J | feste Rolle: F = 500 N · s = 2,0 m · W = 1000 J | lose Rolle: F = 250 N · s = 4,0 m · W = 1000 J | | Dreimal dieselbe Arbeit: 1000 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 600",
+    "text": "rolStatus: Lose Rolle | Last G = 600 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 600 N : 2 = 300 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 300 N · 4,0 m = 1200 J | | Der Vergleich bei 600 N | ohne Rolle: F = 600 N · s = 2,0 m · W = 1200 J | feste Rolle: F = 600 N · s = 2,0 m · W = 1200 J | lose Rolle: F = 300 N · s = 4,0 m · W = 1200 J | | Dreimal dieselbe Arbeit: 1200 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 700",
+    "text": "rolStatus: Lose Rolle | Last G = 700 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 700 N : 2 = 350 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 350 N · 4,0 m = 1400 J | | Der Vergleich bei 700 N | ohne Rolle: F = 700 N · s = 2,0 m · W = 1400 J | feste Rolle: F = 700 N · s = 2,0 m · W = 1400 J | lose Rolle: F = 350 N · s = 4,0 m · W = 1400 J | | Dreimal dieselbe Arbeit: 1400 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 750",
+    "text": "rolStatus: Lose Rolle | Last G = 750 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 750 N : 2 = 375 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 375 N · 4,0 m = 1500 J | | Der Vergleich bei 750 N | ohne Rolle: F = 750 N · s = 2,0 m · W = 1500 J | feste Rolle: F = 750 N · s = 2,0 m · W = 1500 J | lose Rolle: F = 375 N · s = 4,0 m · W = 1500 J | | Dreimal dieselbe Arbeit: 1500 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 850",
+    "text": "rolStatus: Lose Rolle | Last G = 850 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 850 N : 2 = 425 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 425 N · 4,0 m = 1700 J | | Der Vergleich bei 850 N | ohne Rolle: F = 850 N · s = 2,0 m · W = 1700 J | feste Rolle: F = 850 N · s = 2,0 m · W = 1700 J | lose Rolle: F = 425 N · s = 4,0 m · W = 1700 J | | Dreimal dieselbe Arbeit: 1700 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   },
+   {
+    "einstellung": "Last: 600 N = 950",
+    "text": "rolStatus: Lose Rolle | Last G = 950 N · Hubhöhe h = 2,0 m | | Die Kraft | Die Rolle hängt im Seil und wandert mit. Die Last hängt an zwei Seilstücken, jedes trägt die Hälfte. | F = G : 2 = 950 N : 2 = 475 N → gespart: 50 % | | Der Weg deiner Hand | Beide Seilstücke müssen um h kürzer werden. | s = 2 · h = 2 · 2,0 m = 4,0 m | | Die Arbeit | W = F · s = 475 N · 4,0 m = 1900 J | | Der Vergleich bei 950 N | ohne Rolle: F = 950 N · s = 2,0 m · W = 1900 J | feste Rolle: F = 950 N · s = 2,0 m · W = 1900 J | lose Rolle: F = 475 N · s = 4,0 m · W = 1900 J | | Dreimal dieselbe Arbeit: 1900 J. Was du an Kraft sparst, zahlst du am Weg zurück."
+   }
+  ],
+  "bildtexte": [
+   "0 m",
+   "1 m",
+   "2 m",
+   "3 m",
+   "4 m",
+   "600 N",
+   "G",
+   "Hand",
+   "F",
+   "Feste Rolle",
+   "F = 600 N",
+   "s = 2,0 m",
+   "W = 1200 J",
+   "Nur die Richtung ändert sich.",
+   "Last ▲",
+   "0,0 m",
+   "Hand ▼",
+   "Wegmarken – gleicher Maßstab wie links",
+   "Hubhöhe h = 2,0 m · Last G = 600 N",
+   "Ohne Rolle",
+   "Heben von Hand nach oben.",
+   "Hand ▲",
+   "Lose Rolle",
+   "F = 300 N",
+   "s = 4,0 m",
+   "Halbe Kraft, doppelter Weg.",
+   "1000 N",
+   "F = 500 N",
+   "W = 2000 J",
+   "Hubhöhe h = 2,0 m · Last G = 1000 N",
+   "100 N",
+   "F = 50 N",
+   "W = 200 J",
+   "Hubhöhe h = 2,0 m · Last G = 100 N",
+   "200 N",
+   "F = 100 N",
+   "W = 400 J",
+   "Hubhöhe h = 2,0 m · Last G = 200 N",
+   "0,1 m",
+   "0,2 m",
+   "350 N",
+   "F = 175 N",
+   "W = 700 J",
+   "Hubhöhe h = 2,0 m · Last G = 350 N",
+   "450 N",
+   "F = 225 N",
+   "W = 900 J",
+   "Hubhöhe h = 2,0 m · Last G = 450 N",
+   "550 N",
+   "F = 275 N",
+   "W = 1100 J",
+   "Hubhöhe h = 2,0 m · Last G = 550 N",
+   "650 N",
+   "F = 325 N",
+   "W = 1300 J",
+   "Hubhöhe h = 2,0 m · Last G = 650 N",
+   "800 N",
+   "F = 400 N",
+   "W = 1600 J",
+   "Hubhöhe h = 2,0 m · Last G = 800 N",
+   "900 N",
+   "F = 450 N",
+   "W = 1800 J",
+   "0,4 m",
+   "Hubhöhe h = 2,0 m · Last G = 900 N",
+   "150 N",
+   "F = 75 N",
+   "W = 300 J",
+   "Hubhöhe h = 2,0 m · Last G = 150 N",
+   "250 N",
+   "F = 125 N",
+   "W = 500 J",
+   "Hubhöhe h = 2,0 m · Last G = 250 N",
+   "300 N",
+   "F = 150 N",
+   "W = 600 J",
+   "Hubhöhe h = 2,0 m · Last G = 300 N",
+   "400 N",
+   "F = 200 N",
+   "W = 800 J",
+   "Hubhöhe h = 2,0 m · Last G = 400 N",
+   "0,3 m",
+   "0,6 m",
+   "500 N",
+   "F = 250 N",
+   "W = 1000 J",
+   "Hubhöhe h = 2,0 m · Last G = 500 N",
+   "700 N",
+   "F = 350 N",
+   "W = 1400 J",
+   "Hubhöhe h = 2,0 m · Last G = 700 N",
+   "750 N",
+   "F = 375 N",
+   "W = 1500 J",
+   "Hubhöhe h = 2,0 m · Last G = 750 N",
+   "850 N",
+   "F = 425 N",
+   "W = 1700 J",
+   "Hubhöhe h = 2,0 m · Last G = 850 N",
+   "950 N",
+   "F = 475 N",
+   "W = 1900 J",
+   "0,8 m",
+   "Hubhöhe h = 2,0 m · Last G = 950 N"
+  ]
+ }
+]

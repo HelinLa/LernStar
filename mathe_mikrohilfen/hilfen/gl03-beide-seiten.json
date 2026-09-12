@@ -1,0 +1,128 @@
+{
+  "kennung": "gl03",
+  "frage": "Warum muss ich auf beiden Seiten dasselbe rechnen?",
+  "art": "fehler",
+  "aufgabe": "a02",
+  "vorwissen": [
+    "Er weiß, dass links und rechts vom Gleichheitszeichen zwei Seiten stehen.",
+    "Er kann im Kopf 14 − 6 rechnen.",
+    "Er hat eine Waage schon einmal gesehen."
+  ],
+  "hilfe1": "Was passiert, wenn du nur links −6 rechnest?",
+  "skript": {
+    "A": {
+      "text": "Du hast jetzt x + 6 = 14.",
+      "woerter": 9
+    },
+    "B": {
+      "text": "Beide Seiten sollen gleich schwer bleiben.",
+      "woerter": 6
+    },
+    "C": {
+      "text": "Rechne auf beiden Seiten −6.",
+      "woerter": 6
+    },
+    "D": {
+      "text": "Rechnest du nur links, kippt die Waage.",
+      "woerter": 7
+    },
+    "E": {
+      "text": "Unter beiden Seiten steht −6, nicht nur links.",
+      "woerter": 9
+    },
+    "F": {
+      "text": "Jetzt bist du wieder dran.",
+      "woerter": 5
+    }
+  },
+  "woerter_gesamt": 42,
+  "sekunden_sprache": 21.0,
+  "sekunden_gesamt": 24.0,
+  "bild": {
+    "A": {
+      "sichtbar": "Das Bild ist leer. In der Mitte steht groß x + 6 = 14.",
+      "hervorgehoben": "die ganze Zeile x + 6 = 14"
+    },
+    "B": {
+      "sichtbar": "Unter der Zeile erscheint eine Waage. Links liegt x + 6, rechts liegt 14. Der Balken ist gerade.",
+      "hervorgehoben": "der gerade Balken der Waage"
+    },
+    "C": {
+      "sichtbar": "Unter der linken Seite erscheint −6. Unter der rechten Seite erscheint −6. Der Balken bleibt gerade.",
+      "hervorgehoben": "die beiden −6, gleichzeitig eingeblendet"
+    },
+    "D": {
+      "sichtbar": "Daneben läuft die Gegenprobe: nur links liegt eine −6. Der Balken kippt nach rechts. Darunter steht x = 14 und daneben ein rotes Kreuz.",
+      "hervorgehoben": "der kippende Balken"
+    },
+    "E": {
+      "sichtbar": "Die Waage steht wieder gerade. Unter beiden Seiten steht eine −6, links und rechts gleich.",
+      "hervorgehoben": "die beiden −6 unter dem geraden Balken"
+    },
+    "F": {
+      "sichtbar": "Die gerade Waage mit den beiden −6 bleibt drei Sekunden stehen.",
+      "hervorgehoben": "der gerade Balken mit den beiden −6"
+    }
+  },
+  "szene": {
+    "A": [
+      {
+        "zeile": "x + 6 = 14"
+      }
+    ],
+    "B": [
+      {
+        "waage": {
+          "links": "x + 6",
+          "rechts": "14"
+        }
+      }
+    ],
+    "C": [
+      {
+        "unterBeide": "−6"
+      }
+    ],
+    "D": [
+      {
+        "gegenprobe": [
+          {
+            "waage": {
+              "kippt": "rechts"
+            }
+          },
+          {
+            "unterLinks": "−6"
+          },
+          {
+            "zeile": "x = 14"
+          },
+          {
+            "kreuz": "x = 14"
+          }
+        ]
+      }
+    ],
+    "E": [
+      {
+        "unterBeide": "−6"
+      }
+    ],
+    "F": [
+      {
+        "halte": 3
+      }
+    ]
+  },
+  "szene_offen": [
+    "D, „Daneben läuft die Gegenprobe“: Die Tafel wächst nach unten, nicht zur Seite - es gibt kein „daneben“. Die Gegenprobe verstellt deshalb DIESELBE Waage, statt eine zweite neben sie zu stellen. Dafür spricht die Prosa von E selbst: „Die Waage steht wieder gerade“ - „wieder“ setzt voraus, dass es dieselbe Waage ist, die in D gekippt war.",
+    "D ist ein „gegenprobe“-Bündel, kein „zusammen“ - der Unterschied wurde am gerenderten Standbild gefunden. Mit „zusammen“ blieb das widerlegte x = 14 ✗ auch in E und F stehen, also ausgerechnet in den drei Sekunden, die der Schüler abschreibt. Eine Gegenprobe überlebt ihren Teil jetzt nicht (PROFIL §12.2).",
+    "E zeigt wieder dasselbe Bild wie C - das ist der Inhalt von E („Unter beiden Seiten steht −6, nicht nur links“). Sichtbar ist der Rückweg: Die gekippte Waage und das falsche Ergebnis verschwinden, die beiden −6 erscheinen neu."
+  ],
+  "hilfe3": {
+    "aufgabe": "a26",
+    "text": "Bei 2x + 9 = 15 schreibst du die −9 unter beide Seiten.",
+    "kontrolle": "Dann steht dort 2x = 6."
+  },
+  "faengt_fehler_auf": "Der Schüler rechnet die −6 nur links und schreibt x = 14."
+}

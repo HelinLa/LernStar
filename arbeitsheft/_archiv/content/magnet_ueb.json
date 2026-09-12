@@ -1,0 +1,295 @@
+[
+{
+"theme": "magnetismus",
+"id": "m1",
+"lueckensaetze": [
+{
+"pre": "Um jeden Magneten liegt ein unsichtbares",
+"post": ". Es wirkt auch durch Papier und Luft.",
+"loesung": "Magnetfeld"
+},
+{
+"pre": "Ein Magnet zieht",
+"post": "an, zum Beispiel eine Büroklammer.",
+"loesung": "Eisen"
+},
+{
+"pre": "Der Magnet wirkt auch ganz ohne",
+"post": "auf die Büroklammer.",
+"loesung": "Berührung"
+},
+{
+"pre": "Zwei Magnete können sich anziehen oder",
+"post": ", also voneinander wegdrücken.",
+"loesung": "abstoßen"
+}
+],
+"richtigfalsch": [
+{
+"aussage": "Ein Magnet muss Eisen berühren, damit er es anzieht.",
+"stimmt": false
+},
+{
+"aussage": "Um jeden Magneten liegt ein Magnetfeld.",
+"stimmt": true
+},
+{
+"aussage": "Das Magnetfeld kann auch durch ein Blatt Papier wirken.",
+"stimmt": true
+},
+{
+"aussage": "Ein Magnet zieht jedes Material an, auch Holz und Plastik.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Welches Material zieht ein Magnet an?",
+"optionen": [
+"Eisen",
+"Holz",
+"Glas",
+"Plastik"
+],
+"richtig": 0
+},
+"offen": {
+"prompt": "Du hängst mit einem Magneten einen Zettel an die Kühlschranktür. Erkläre, warum der Magnet hält, obwohl der Zettel aus Papier dazwischen liegt.",
+"zeilen": 3,
+"loesung": "Um den Magneten liegt ein Magnetfeld. Es wirkt durch das Papier hindurch und zieht das Eisen der Tür an. So hält der Magnet auch ohne direkte Berührung."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m2",
+"lueckensaetze": [
+{
+"pre": "Ein Magnet zieht nur die drei Metalle Eisen,",
+"post": "und Kobalt an.",
+"loesung": "Nickel"
+},
+{
+"pre": "Das Metall",
+"post": "wird von einem Magneten nicht angezogen.",
+"loesung": "Aluminium"
+},
+{
+"pre": "Nicht jedes Metall ist",
+"post": ".",
+"loesung": "magnetisch"
+},
+{
+"pre": "Ein Nagel aus Eisen wird von einem Magneten",
+"post": ".",
+"loesung": "angezogen"
+}
+],
+"richtigfalsch": [
+{
+"aussage": "Ein Magnet zieht Eisen an.",
+"stimmt": true
+},
+{
+"aussage": "Jedes Metall wird von einem Magneten angezogen.",
+"stimmt": false
+},
+{
+"aussage": "Auch Kupfer bleibt an einem Magneten kleben.",
+"stimmt": false
+},
+{
+"aussage": "Nickel und Kobalt sind magnetisch.",
+"stimmt": true
+}
+],
+"mc": {
+"frage": "Welche Stoffe zieht ein Magnet an?",
+"optionen": [
+"Holz, Plastik und Glas",
+"Eisen, Nickel und Kobalt",
+"Aluminium und Kupfer",
+"Alle Metalle"
+],
+"richtig": 1
+},
+"offen": {
+"prompt": "An deinem Kühlschrank halten kleine Magnete fest. Erkläre, warum die Magnete an der Kühlschranktür kleben bleiben.",
+"zeilen": 3,
+"loesung": "In der Kühlschranktür steckt Eisen. Weil Eisen magnetisch ist, zieht der Magnet die Tür an und bleibt daran kleben."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m3",
+"lueckensaetze": [
+{
+"pre": "Jeder Magnet hat einen Nordpol und einen",
+"post": ".",
+"loesung": "Südpol"
+},
+{
+"pre": "Gleiche Pole",
+"post": "sich ab.",
+"loesung": "stoßen"
+},
+{
+"pre": "Ungleiche Pole",
+"post": "sich an.",
+"loesung": "ziehen"
+},
+{
+"pre": "Ein Magnet hat immer zwei",
+"post": ".",
+"loesung": "Pole"
+}
+],
+"richtigfalsch": [
+{
+"aussage": "Zwei Nordpole ziehen sich an.",
+"stimmt": false
+},
+{
+"aussage": "Ein Nordpol und ein Südpol ziehen sich an.",
+"stimmt": true
+},
+{
+"aussage": "Zwei Südpole stoßen sich ab.",
+"stimmt": true
+},
+{
+"aussage": "Ein Magnet hat nur einen Pol.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Du hältst zwei Nordpole aneinander. Was passiert?",
+"optionen": [
+"Sie stoßen sich ab.",
+"Sie ziehen sich an.",
+"Nichts passiert.",
+"Sie kleben fest zusammen."
+],
+"richtig": 0
+},
+"offen": {
+"prompt": "Du hast zwei Magnete. Sie stoßen sich ab. Was musst du tun, damit sie sich anziehen? Erkläre kurz.",
+"zeilen": 3,
+"loesung": "Ich drehe einen Magnet um. Dann treffen ein Nordpol und ein Südpol zusammen und die Magnete ziehen sich an."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m4",
+"lueckensaetze": [
+{
+"pre": "Um jeden Magneten liegt ein unsichtbares",
+"post": ".",
+"loesung": "Magnetfeld"
+},
+{
+"pre": "Mit",
+"post": "kannst du das Magnetfeld sichtbar machen.",
+"loesung": "Eisenspänen"
+},
+{
+"pre": "Die Feldlinien gehen außen vom Nordpol zum",
+"post": ".",
+"loesung": "Südpol"
+},
+{
+"pre": "An den",
+"post": "ist das Magnetfeld am stärksten.",
+"loesung": "Polen"
+}
+],
+"richtigfalsch": [
+{
+"aussage": "Ein Magnetfeld kann man einfach so mit den Augen sehen.",
+"stimmt": false
+},
+{
+"aussage": "Enge Feldlinien bedeuten ein starkes Magnetfeld.",
+"stimmt": true
+},
+{
+"aussage": "Die Feldlinien laufen außen von Nord nach Süd.",
+"stimmt": true
+},
+{
+"aussage": "An den Polen ist das Magnetfeld am schwächsten.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Wo ist das Magnetfeld eines Stabmagneten am stärksten?",
+"optionen": [
+"Genau in der Mitte des Magneten",
+"An den beiden Polen",
+"Weit weg vom Magneten"
+],
+"richtig": 1
+},
+"offen": {
+"prompt": "Lisa hält einen Kompass neben einen starken Magneten. Die Nadel dreht sich sofort. Erkläre, warum das passiert.",
+"zeilen": 3,
+"loesung": "Der Magnet hat ein Magnetfeld um sich herum. Dieses unsichtbare Feld wirkt auf die Kompassnadel und dreht sie."
+}
+},
+{
+"theme": "magnetismus",
+"id": "m5",
+"lueckensaetze": [
+{
+"pre": "Die Kompassnadel ist ein kleiner",
+"post": ".",
+"loesung": "Magnet"
+},
+{
+"pre": "Auch die Erde ist ein großer",
+"post": ".",
+"loesung": "Magnet"
+},
+{
+"pre": "Der Nordpol der Nadel zeigt immer nach",
+"post": ".",
+"loesung": "Norden"
+},
+{
+"pre": "Die Nadel steckt auf einer Spitze und kann sich frei",
+"post": ".",
+"loesung": "drehen"
+}
+],
+"richtigfalsch": [
+{
+"aussage": "Die Kompassnadel ist ein kleiner Magnet.",
+"stimmt": true
+},
+{
+"aussage": "Die Erde ist selbst ein großer Magnet.",
+"stimmt": true
+},
+{
+"aussage": "Die Kompassnadel zeigt immer nach Süden.",
+"stimmt": false
+},
+{
+"aussage": "Ein Kompass braucht Batterien, damit die Nadel sich dreht.",
+"stimmt": false
+}
+],
+"mc": {
+"frage": "Warum dreht sich die Kompassnadel und zeigt nach Norden?",
+"optionen": [
+"Weil die Nadel aus Plastik ist.",
+"Weil die Sonne die Nadel anzieht.",
+"Weil die Nadel ein Magnet ist und die Erde auch ein Magnet ist."
+],
+"richtig": 2
+},
+"offen": {
+"prompt": "Du machst mit deiner Familie eine Wanderung im Wald. Ihr wisst nicht mehr, in welche Richtung ihr laufen müsst. Wie hilft euch ein Kompass? Schreibe es auf.",
+"zeilen": 3,
+"loesung": "Weil die Nadel im Kompass ein kleiner Magnet ist und die Erde auch ein großer Magnet ist, dreht sich die Nadel frei und ihr Nordpol zeigt nach Norden, sodass du die richtige Richtung findest."
+}
+}
+]

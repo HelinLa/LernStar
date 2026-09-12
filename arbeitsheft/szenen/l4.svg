@@ -1,0 +1,39 @@
+<defs>
+  <radialGradient id="l4licht" cx="0.16" cy="0.58" r="0.92">
+    <stop offset="0" stop-color="#FFDD9C" stop-opacity="0.36"/>
+    <stop offset="0.34" stop-color="#FFC96F" stop-opacity="0.09"/>
+    <stop offset="1" stop-color="#0C0904" stop-opacity="0.44"/>
+  </radialGradient>
+  <clipPath id="l4wand"><rect x="0" y="0" width="900" height="414"/></clipPath>
+  <filter id="l4weich" x="-25%" y="-25%" width="150%" height="150%">
+    <feGaussianBlur stdDeviation="2.2"/>
+  </filter>
+</defs>
+  <use href="#t_wand" x="0" y="0"/>
+  <use href="#t_querbalken" transform="translate(-14,54)"/>
+  <use href="#t_boden" transform="translate(0,412)"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#l4licht)"/>
+
+  <!-- Riesenschatten: fuellt die ganze Wand, Ohren laufen oben aus dem Bild -->
+  <g clip-path="url(#l4wand)" filter="url(#l4weich)">
+    <use href="#t_wolf_form" transform="translate(556,424) scale(2.75)" fill="#241704" opacity="0.72"/>
+  </g>
+
+  <use href="#t_kiste" transform="translate(172,500) scale(0.86)"/>
+  <use href="#t_lampe_an" transform="translate(182,316) rotate(-2) scale(0.8)"/>
+
+  <!-- Pappfigur jetzt dicht vor dem Lampenglas -->
+  <ellipse cx="298" cy="472" rx="30" ry="7" fill="#241704" opacity="0.32" filter="url(#tiefe)"/>
+  <rect x="294" y="308" width="9" height="164" rx="4" fill="url(#holz)"/>
+  <rect x="294" y="308" width="3" height="164" fill="#FFFFFF" opacity="0.20"/>
+  <use href="#t_waescheklammer" transform="translate(298,326) scale(0.86)"/>
+  <use href="#t_pappfigur" transform="translate(298,312) scale(0.96)"/>
+
+  <!-- Kreidespuren: hier stand die Figur vorher -->
+  <g stroke="#EDE3CC" stroke-linecap="round" opacity="0.45">
+    <path d="M366,466 v16" stroke-width="5"/>
+  </g>
+  <g stroke="#EDE3CC" stroke-linecap="round" opacity="0.24">
+    <path d="M434,470 v16" stroke-width="5"/>
+  </g>
+  <use href="#t_lineal" transform="translate(268,452) rotate(-70) scale(0.56)"/>

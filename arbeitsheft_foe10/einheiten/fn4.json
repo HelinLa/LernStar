@@ -1,0 +1,198 @@
+{
+ "seite": {
+  "id": "fn4",
+  "quelle": "rk4",
+  "sim": "ionisation",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Fläschchen, das zubleibt",
+  "name": "Warum ist die Strahlung gefährlich?",
+  "fachwoerter_neu": [
+   "ionisieren und Ionenpaar",
+   "Elektron"
+  ],
+  "alltag": [
+   "Nour sieht im Praktikum ein Fläschchen mit einem gelben Zeichen.",
+   "Auf dem Fläschchen steht: nicht öffnen. Aber Papier hält Alphastrahlung auf.",
+   "Um den Kern eines Atoms sitzen winzige Elektronen. Strahlung schlägt eines heraus. Das heißt ionisieren.",
+   "Das Elektron und das Atom ohne Elektron heißen zusammen Ionenpaar."
+  ],
+  "frage": "Warum ist Alphastrahlung im Körper am gefährlichsten?",
+  "predict": [
+   "Gefährlich ist die Strahlung, die am weitesten kommt.",
+   "Gefährlich ist, wie dicht die Ionenpaare beieinanderliegen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke α Alpha und lies die Ionenpaare je Millimeter ab.",
+   "Drücke β Beta und trage beide Werte in die Tabelle ein.",
+   "Drücke γ Gamma. Trage zwei Wortangaben ein, keine Zahlen. Eine steht im letzten Satz.",
+   "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Strahlung",
+   "Wie viele Ionenpaare je Millimeter?",
+   "Wie weit kommt sie in Luft?"
+  ],
+  "tabRows": [
+   [
+    "α Alpha",
+    "4.202 (über viertausend)",
+    "3,5 cm"
+   ],
+   [
+    "β Beta",
+    "",
+    ""
+   ],
+   [
+    "γ Gamma",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beim Ionisieren wird aus einem Atom ein",
+    "loesung": "Elektron",
+    "post": "herausgeschlagen. Der Kern bleibt ganz. Der Stoff wird nicht radioaktiv."
+   },
+   {
+    "pre": "Gefährlich ist nicht, wie weit die Strahlung kommt, sondern wie",
+    "loesung": "dicht",
+    "post": "die Ionenpaare liegen."
+   }
+  ],
+  "wortbank": [
+   "Elektron",
+   "dicht",
+   "viertausend",
+   "9,8"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Zeile für α Alpha ab?",
+   "antwort": "In der Anzeige steht: „Das ergibt 4.202 Ionenpaare je Millimeter.“ Die Zeile darüber nennt 3,5 cm. In die Tabelle kommt: 4.202 (über viertausend) und 3,5 cm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie dicht ionisiert γ Gamma?",
+    "optionen": [
+     "nur sehr vereinzelt",
+     "19.412 Ionenpaare je Millimeter",
+     "sehr dicht"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Alphastrahlung macht über",
+      "loesung": "viertausend",
+      "post": "Ionenpaare je Millimeter."
+     },
+     {
+      "pre": "Betastrahlung kommt weiter, macht aber nur",
+      "loesung": "9,8",
+      "post": "Ionenpaare je Millimeter."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Warum ist Alphastrahlung im Körper gefährlicher als Gammastrahlung?",
+    "satzstarter": "Alphastrahlung ist im Körper gefährlicher, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Die Zahl steht vor „Ionenpaare“.",
+   "h2": "Schreibe erst beides auf: α macht ____ Ionenpaare je Millimeter, γ ionisiert ____.",
+   "h3": "Fast fertig: α macht über viertausend Ionenpaare je Millimeter, γ nur sehr vereinzelt. α ionisiert also sehr ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Ionenpaare je Millimeter am Bildschirm ablesen.",
+   "Ich kann sagen: dicht ionisieren ist gefährlicher als weit kommen.",
+   "Ich weiß: Beim Ionisieren bleibt der Kern ganz."
+  ],
+  "zuhause": "Streue Salz auf ein dunkles Blatt: einmal auf einen Fleck, einmal weit verteilt. Vergleiche: Wo liegt das Salz dichter?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei waagerechten Spuren, untereinander angeordnet, alle im selben Bildausschnitt und alle links an derselben senkrechten Startlinie beginnend. Links VOR der Startlinie steht der Ausgangszustand genau einmal, mittig auf halber Höhe der drei Spuren: ein großer heller Kreis mit dünnem Rand, auf dem Rand sitzt ein kleiner voller dunkler Punkt; darunter die Aufschrift „Atom“. Jede Spur ist eine dünne gerade Linie mit vielen einzelnen Marken darauf – NIE ein durchgezogener farbiger Balken oder Streifen: Die Marken müssen bis zur letzten einzeln erkennbar bleiben, denn genau ihre Dichte ist die Aussage des Bildes. Jeder Ionisierungsort auf einer Spur besteht aus GENAU ZWEI Marken dicht beieinander: ein kleiner voller dunkler Punkt (das herausgeschlagene Elektron) und daneben ein offener Ring, so groß wie das Atom links (das zurückbleibende Ion). Das Atom selbst wird in den Spuren NICHT noch einmal gezeichnet – es steht einmal links vor der Startlinie, und rechts davon steht nur, was nach dem Ionisieren übrig ist. Punkt und Ring unterscheiden sich in der FORM – voll gegen offen –, nie nur in der Farbe oder in der Randstärke. Die Ringe bleiben in allen drei Spuren UNVERSEHRT und rund – kein zersprungener, geplatzter oder zerbrochener Kern, keine Bruchstücke, keine Explosionssterne; herausgelöst wird nur der kleine Punkt. Über jeder Spur liegt ein deutlich gezeichnetes Rechteck als Lupenfenster mit der großen Aufschrift „1 Millimeter“; alle drei Fenster sind exakt gleich breit, denn sie sind der Vergleich. Oberste Spur: im Fenster stehen die Marken so dicht, dass sie sich fast berühren, die Linie endet kurz hinter dem Fenster an einem waagerechten Endstrich. Beschriftung rechts daneben in zwei Zeilen: „Alphastrahlung   5,00 MeV“ und „4.202 Ionenpaare je Millimeter“, darunter am Endstrich „Reichweite: 3,5 cm Luft“, klein darunter „(gezeichnet sind nur einige der Ionisierungen – in Wirklichkeit sind es viel mehr)“. Mittlere Spur: im Fenster liegen rund zehn Ionisierungsorte weit auseinander, die Linie läuft bis zum rechten Rand des Bildausschnitts und endet dort ebenfalls an einem Endstrich mit der Aufschrift „Reichweite: 3,0 m Luft“ – sie darf nirgends frei ins Leere auslaufen. Beschriftung: „Betastrahlung   1,00 MeV“ und „9,8 Ionenpaare je Millimeter“. Unterste Spur: im Fenster liegen vier bis fünf Ionisierungsorte, weit auseinander, sonst nichts; die Linie läuft ohne Endstrich über den rechten Rand hinaus und trägt dort die Aufschrift „keine Reichweite – nach rund 70 m Luft ist erst die Hälfte weg“. Beschriftung: „Gammastrahlung   0,66 MeV“ und „ionisiert nur ganz vereinzelt“. Klein unter der untersten Spur eine zweite Modellgrenze in derselben Schriftgröße: „(die Längen der drei Spuren sind nicht maßstäblich – 3,5 cm gegen 3,0 m = 300 cm)“. Ganz unten eine einzige Legendenzeile in derselben Schriftgröße, in der die drei Marken selbst abgebildet sind und nicht dreimal derselbe Punkt: Kreis mit Punkt auf dem Rand = „Atom“, kleiner voller Punkt = „herausgeschlagenes Elektron“, offener Ring = „zurückbleibendes Ion“. Genau diese drei Spuren, genau drei Lupenfenster, genau ein Atom links, genau eine Legende. Alles, was das Bild zeigt, steht in einer dieser drei Zeilen, im Atom links oder in der Legende – KEINE zweite kleine Nebenzeichnung am Rand: kein Fläschchen, kein gelbes Strahlenzeichen, kein Blatt Papier, keine Bleiplatte, kein Zählrohr, kein Körperumriss, keine Zelle, keine Personen. Keine Pfeile außer den drei Spurlinien selbst, und keine Spurlinie ohne beschriftetes Ende oder beschrifteten Randaustritt. Keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn4",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, was beim Ionisieren geschieht: Die Strahlung schlägt aus einem Atom ein Elektron heraus; das Elektron und das zurückbleibende Atom sind zusammen ein Ionenpaar. Sie lesen an der Simulation ab, wie viele Ionenpaare je Millimeter jede Strahlungsart erzeugt (α 4.202 · β 9,8 · γ nur sehr vereinzelt) und wie weit sie in Luft kommt (α 3,5 cm · β 3,0 m · γ lässt sich nicht angeben). Sie begründen daran, dass nicht die Weite über die Gefahr im Körper entscheidet, sondern die Dichte der Ionenpaare. Fachliche Leitplanke — bitte im Unterricht ausdrücklich sichern: Ionisieren heißt, dass ein Elektron aus der Hülle herausgeschlagen wird. Der Atomkern bleibt dabei ganz, er wird nicht zerstört, und der bestrahlte Stoff wird davon selbst nicht radioaktiv.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Spuren. Für den Zuhause-Auftrag genügen Salz und ein dunkles Blatt Papier; als Demonstration im Raum dasselbe auf dem Overheadprojektor. Kein Präparat, keine Quelle, kein Versuch mit echter Strahlung — diese Einheit ist reine Bildschirmarbeit.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede sinngleich gekürzt nach dem Bildschirmtext (die Karten kürzen, sie zitieren nicht Wort für Wort). Karte „α Alpha“: „Alphastrahlung (α) – ein Heliumkern. Energie 5,00 MeV. Diese verteilt sie auf ihre Reichweite in Luft: 3,5 cm. Das ergibt 4.202 Ionenpaare je Millimeter. Das ist eine sehr dichte Spur: Auf einem einzigen Millimeter werden über viertausend Atome zerlegt. Aufgehalten wird sie durch: ein Blatt Papier oder wenige Zentimeter Luft. Wird ein alphastrahlender Stoff eingeatmet oder gegessen, gibt es kein Papier mehr dazwischen. Dann liegt die ganze Ionisierungsspur mitten im Gewebe – deshalb ist Alphastrahlung innen die gefährlichste von allen.“ Karte „β Beta“: „Betastrahlung (β) – ein Elektron aus dem Kern. Energie 1,00 MeV. Diese verteilt sie auf ihre Reichweite in Luft: 3,0 m. Das ergibt 9,8 Ionenpaare je Millimeter. Die Strahlung kommt viel weiter – richtet auf jedem einzelnen Millimeter aber viel weniger an. Aufgehalten wird sie durch: einige Millimeter Aluminium.“ Karte „γ Gamma“: „Gammastrahlung (γ) – kein Teilchen, sondern sehr energiereiches Licht. Energie 0,66 MeV. Anders als bei α und β lässt sich hier keine Reichweite angeben. In Luft ist erst nach rund 70 Metern die Hälfte weg, in Blei schon nach 6,5 Millimetern. Aufgehalten wird sie durch: dicke Bleiwände – und selbst die nur zum Teil. Gammastrahlung durchdringt den ganzen Körper, ionisiert dabei aber nur sehr vereinzelt.“ Dazu als Tafelbild drei waagerechte Spuren untereinander, alle links an derselben Startlinie, über jeder ein gleich breites Rechteck mit der Aufschrift „1 Millimeter“: oben viele Punkte dicht an dicht, in der Mitte rund zehn Punkte weit auseinander, unten vier bis fünf Punkte. Wichtig beim Tafelbild: die Punkte einzeln zeichnen, nie als durchgezogenen Strich — die Dichte ist die ganze Aussage. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "Elektron",
+   "dicht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "β Beta",
+    "9,8",
+    "3,0 m"
+   ],
+   [
+    "γ Gamma",
+    "nur sehr vereinzelt",
+    "lässt sich nicht angeben"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Nach „γ Gamma“ endet die Anzeige mit dem Satz: „Gammastrahlung durchdringt den ganzen Körper, ionisiert dabei aber nur sehr vereinzelt.“ Genau diese Wortangabe gehört auch in die Tabelle. Die Antwort „19.412 Ionenpaare je Millimeter“ greift die 19.412 aus der Zeile „660.000 eV / 34 eV = 19.412 Ionenpaare“ heraus: Das ist die Anzahl für den ganzen Weg, nicht die Anzahl je Millimeter — je Millimeter nennt die Anzeige für γ überhaupt keine Zahl. Die Antwort „sehr dicht“ ist die Fehlvorstellung aus der Vermutung „Gefährlich ist die Strahlung, die am weitesten kommt“: Gammastrahlung kommt am weitesten, also müsse sie auch am dichtesten ionisieren.",
+   "typische_fehler": [
+    "Die Antwort „19.412 Ionenpaare je Millimeter“ wird angekreuzt, weil im γ-Text eine große Zahl steht und große Zahlen nach „viel“ aussehen. Am Bildschirm zeigen: Vor der 19.412 steht kein „je Millimeter“, sondern eine Rechnung für den ganzen Weg.",
+    "Die Antwort „sehr dicht“ wird angekreuzt: „durchdringt den ganzen Körper“ wird als „richtet überall Schaden an“ gelesen. Den Satz zu Ende lesen lassen — er endet mit „nur sehr vereinzelt“.",
+    "Es wird gar nicht umgestellt und der Ausgangszustand abgelesen — der zeigt Alphastrahlung. Vor dem Ablesen einmal laut sagen lassen, welcher Knopf gedrückt ist.",
+    "Es werden zwei Kreuze gesetzt, weil „nur sehr vereinzelt“ und „sehr dicht“ beide nach einer Beschreibung klingen. Die beiden Wörter gegenüberstellen: vereinzelt heißt selten, dicht heißt eng beieinander."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "viertausend",
+    "9,8"
+   ],
+   "typische_fehler": [
+    "In die erste Lücke wird „9,8“ und in die zweite „viertausend“ gesetzt — die Zeilen sind vertauscht. Auf die Tabelle zurückverweisen: α steht oben, β darunter.",
+    "Statt „viertausend“ wird „4“ eingesetzt: 4.202 wurde als Dezimalzahl gelesen („vier Komma zwei null zwei“). Das ist der Tausenderpunkt. Deshalb steht in der Beispielzeile ausdrücklich „(über viertausend)“, und am Bildschirm der Satz „Auf einem einzigen Millimeter werden über viertausend Atome zerlegt“.",
+    "In die zweite Lücke kommt „3,0“ — Reichweite und Ionenpaare werden verwechselt. Die Spaltenköpfe der Tabelle mit dem Finger zeigen lassen.",
+    "Die Lücke bleibt leer, weil beide Zahlen gesucht scheinen. Die Wortbank hat genau vier Wörter; zwei gehören zum Merksatz, zwei hierher."
+   ]
+  },
+  "a3": {
+   "erwartung": "Alphastrahlung ist im Körper gefährlicher, weil sie auf jedem Millimeter über viertausend Ionenpaare macht. Gammastrahlung ionisiert nur sehr vereinzelt. Alphastrahlung kommt zwar nur 3,5 cm weit, aber im Körper liegt diese dichte Spur mitten im Gewebe.",
+   "alternativen": [
+    "Nur der Zahlenvergleich, ohne den Satz zum Gewebe: „weil α 4.202 Ionenpaare je Millimeter macht und γ fast keine“ — reicht für die volle Wertung.",
+    "Begründung über die Regel des Merksatzes: „weil nicht zählt, wie weit die Strahlung kommt, sondern wie dicht die Ionenpaare liegen“.",
+    "Begründung über den Ort: „Von außen hält Papier die Alphastrahlung auf. Im Körper ist kein Papier dazwischen.“ — richtig und nah am Bildschirmtext.",
+    "Zusatz mit dem Faktor: „Dieselbe Energie richtet als Alphastrahlung zwanzigmal so viel Schaden an.“ — steht am Bildschirm, ist aber nicht verlangt."
+   ],
+   "typische_fehler": [
+    "Gammastrahlung wird als die gefährlichste genannt, weil sie durch alles kommt — genau die Fehlvorstellung aus der Vermutung „Gefährlich ist die Strahlung, die am weitesten kommt“. Auf die drei Lupenfenster des Bildes zeigen: gleich breit, oben voll, in der Mitte rund zehn Punkte, unten vier bis fünf.",
+    "Es wird nur „weil sie stärker ist“ geschrieben. Nachfragen: Woran siehst du das? Die Zahl für α muss vorkommen, für γ genügt die Angabe „nur sehr vereinzelt“ (Hilfe 3 gibt beides vor).",
+    "Die Angaben der letzten Spalte werden als 3,5 gegen 3,0 verglichen, Alpha gilt dann als die weiter fliegende Strahlung. Das gehört zur Tabelle, nicht zu dieser Aufgabe: die Einheiten mitlesen lassen (3,0 m sind 300 cm) und im Bild zeigen, dass die β-Spur bis zum Bildrand läuft, die α-Spur aber kurz hinter dem Lupenfenster endet.",
+    "Es wird geschrieben, Alphastrahlung zerstöre den Atomkern oder mache den Körper radioaktiv. Richtigstellen: Herausgeschlagen wird ein Elektron, der Kern bleibt ganz — beides steht jetzt im ersten Merksatz."
+   ]
+  },
+  "hilfe3_wort": "dicht (auch richtig: eng, gedrängt)",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten: es gibt genau drei, α Alpha, β Beta und γ Gamma, und keinen einzigen Regler. Die griechischen Buchstaben einmal an die Tafel schreiben und mit den deutschen Namen sprechen lassen.",
+   "Die Beispielzeile der Tabelle (α Alpha) gemeinsam laut lesen und im gelösten Beispiel die Stelle „4.202 Ionenpaare je Millimeter“ mit dem Finger zeigen, bevor die Simulation geöffnet wird.",
+   "Die lange Anzeige mit einem Papierstreifen abdecken, sodass nur die Zeile „Das ergibt … Ionenpaare je Millimeter“ sichtbar bleibt. Für Arbeitsschritt 3 den Streifen zweimal anhalten: einmal beim Absatz „Anders als bei α und β …“, einmal beim letzten Satz. Für Arbeitsschritt 4 den Streifen ans untere Ende schieben.",
+   "Nur die mittlere Spalte ausfüllen lassen; die Spalte mit der Reichweite gemeinsam an der Tafel eintragen.",
+   "Den Unterschied dicht/dünn körperlich zeigen: Salz erst auf einen Fleck streuen, dann über das ganze Blatt. Danach dieselben Wörter am Tafelbild wiederholen — „dicht“ meint hier die Spur, nicht die Dicke einer Bleiplatte wie in fn3.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen und laut sagen: viertausend ist eine Anzahl, 9,8 ist auch eine Anzahl."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies bei α Alpha und bei β Beta die Zeile mit dem Wichtungsfaktor. Am Bildschirm steht, dieselbe Energie richte als Alphastrahlung zwanzigmal so viel Schaden an wie als Beta- oder Gammastrahlung. Schreibe in einem Satz auf, warum das so ist. Zweite Möglichkeit: Zeichne selbst zwei gleich große Kästchen mit der Aufschrift „1 Millimeter“, male in das eine zehn Punkte und in das andere so viele, wie noch hineinpassen. Schreibe darunter, welches Kästchen zu α und welches zu β gehört.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · ionisierende Wirkung von Strahlung. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Beschreiben des Ionisierens trägt UF1, das Ordnen der drei Strahlungsarten nach der Dichte der Ionenpaare UF3, das Einstellen der drei Knöpfe und das Ablesen E4 und E5. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag — das Eintragen der vier Werte ist das Dokumentieren (die α-Zeile ist als Beispiel vollständig vorgedruckt und die Strahlungsnamen stehen in Spalte 1 — offen sind genau vier Zellen). Die Erklär-Aufgabe trägt E6, die Abwägung „nicht wie weit, sondern wie dicht“ trägt B2 (so schon im Ausgangsheft rk4 markiert). Nicht übernommen aus der Quellanalyse rk4 sind B1, UF2 und UF4 — weggelassen, nicht vergessen. B1 („an vorgegebenen Kriterien beurteilen“) verlangt vorgegebene Kriterien; diese Seite gibt keine vor, sondern lässt zwischen zwei Vermutungen wählen, und die eine Abwägung, die sie führt („nicht wie weit, sondern wie dicht“), ist bereits mit B2 belegt. UF2 (Konzepte auswählen) und UF4 (Wissen vernetzen) hingen in rk4 an der eV-Rechnung und am Wichtungsfaktor; beides ist gestrichen (siehe (4)), damit fehlt der Seite das Material für beide Codes. Verloren geht dadurch nichts: Gemessen über alle 28 Einheiten (grep über einheiten/*.json, die Sprachstufe „A2 bis B1“ herausgerechnet) steht UF4 im Lehrerteil von 23 und UF2 in dem von 7 Einheiten; B1 tragen fn12 (Kapitel Kern) und fv12 (Kapitel Versorgung) — fn6 und fv9 nennen den Code ausdrücklich nur in ihrer freiwilligen Zusatzaufgabe und zählen deshalb nicht als Träger. Die Profilregel „Keine KLP-Kompetenz darf verloren gehen“ gilt für den Band, nicht für die einzelne Seite. FACHWORTZÄHLUNG — am 05.09.2026 nach einem Gegengutachten berichtigt; die alte Zählung stimmte nicht: Neu sind genau ZWEI Einträge, „ionisieren und Ionenpaar“ (zusammen einer) und „Elektron“. (a) Warum „ionisieren und Ionenpaar“ EIN Eintrag ist: Dafür steht seit dem 05.09.2026 eine geschriebene Regel im FOERDER_PROFIL — Zählregel 6, „Tätigkeitswort und Ergebniswort desselben Vorgangs“. Vorher deckte KEINE der fünf Regeln diese Bündelung: Regel 1 gilt nur für Größe + Formelzeichen + Einheit, und ein Formelzeichen gibt es hier gar nicht (siehe (d)). Regel 6 trifft hier zu: Es ist derselbe Vorgang, einmal als Tätigkeit und einmal als das, was dabei entsteht; das Ergebniswort erklärt sich vollständig aus dem Vorgang („Ein Ionenpaar ist das, was beim Ionisieren entsteht“); und beide werden auf derselben Seite in einem Zug erklärt — am Bildschirm („Ein Ionenpaar ist beides zusammen: das herausgeschlagene Elektron und das Atom, das ohne dieses Elektron zurückbleibt“) wie im Alltagsteil in zwei aufeinanderfolgenden Sätzen. Die frühere Begründung berief sich zusätzlich auf fn7 („Alphazerfall und Betazerfall“) — das war nachweislich falsch: fn7 führt in fachwoerter_neu ZWEI Einträge, und das zu Recht, denn Alphazerfall und Betazerfall sind zwei verschiedene Vorgänge, nicht ein Vorgang mit seinem Ergebnis. Regel 6 sagt genau das jetzt ausdrücklich, fn7 bleibt unverändert richtig. Dass der Band die Wortfamilie schon vorher so behandelt hat, zeigt fn5: Dort steht „ionisiert“ in der Wortbank UND als Lösung der ersten Merksatzlücke, und fn5 zählt es trotzdem nicht — als Rückverweis hierher (Zählregel 4). Ohne Regel 6 stünde fn4 mit drei Einträgen über dem Limit und fn5 ebenso; die Regel bringt beide Seiten in Ordnung. Nicht gedeckt bleibt die Dreiergruppe der Strahlungsarten in fn3 — das ist keine Wortfamilie, sondern eine Gruppe, und dafür ist bis heute keine Regel geschrieben. (b) Warum „Elektron“ HIER zählt: Der frühere Lehrerteil berief sich auf einen Rückverweis nach fn1 — den gibt es nicht. fn1 führt das Wort ausdrücklich NICHT ein und schreibt das auch hin: „Elektron – wird nur über das Bild und dessen wörtliche Beschriftung getragen …; es gibt dazu keinen Textblock, keine Tabellenspalte und keine Aufgabe.“ In fn4 steht es im Alltagsteil, in der Wortbank und als Lösung der ersten Merksatzlücke; nach Zählregel 3 ist das eine Einführung. Nachgezählt mit `grep -l \"Elektron\" einheiten/*.json` (Treffer: fn1, fn4, fn7, fn8): fn4 ist die ERSTE Einheit, deren Schülerseite das Wort trägt. fn1 trägt es nur im Bildauftrag, fn8 nur im Lehrerteil, und fn7 benutzt es später zurückverweisend im Alltagsteil („Beim Alphazerfall fliegt ein Paket weg, beim Betazerfall ein Elektron“, Zählregel 4). Die frühere Formulierung „die einzige Einheit … außerhalb des Bildauftrags“ stimmte nicht — fn7 steht genauso da, nur später. Die Einführung liegt also hier, fn1 bleibt unverändert richtig, und Zählregel 4 (nur einmal im Band) ist gewahrt. Der Alltagsteil gibt dem Wort deshalb jetzt einen eigenen Anker: „Um den Kern eines Atoms sitzen winzige Elektronen.“ (c) Warum „Reichweite“ aus dem GEDRUCKTEN Text der Schülerseite verschwunden ist: Auch dieser angebliche Rückverweis (auf fn3) war falsch — er stammte ungeprüft aus der Regelheft-Analyse rk4. Im Förderband hat fn3 das Wort ausdrücklich gestrichen („„Reichweite“ (Merksatzlücke des Regelhefts, hier ersetzt durch die Materialien selbst)“), und fn4 war die einzige Einheit, deren Schülerseite es trug. Der zweite Merksatz heißt deshalb jetzt „Gefährlich ist nicht, wie weit die Strahlung kommt, sondern wie dicht die Ionenpaare liegen“, die Tabellenspalte fragte ohnehin schon „Wie weit kommt sie in Luft?“, die erwartete γ-Zelle heißt „lässt sich nicht angeben“, und das gelöste Beispiel zitiert nicht mehr den Bildtext „Reichweite: 3,5 cm Luft“. Im Bildauftrag darf das Wort stehen: „Reichweite: 3,5 cm Luft“, „Reichweite: 3,0 m Luft“ und „keine Reichweite – nach rund 70 m Luft ist erst die Hälfte weg“ sind wörtliche Bildschirmbeschriftungen, und für Bildtexte gilt dieselbe Handhabung wie für „Elektron“ in fn1. Von der Seite verbannt ist das Wort damit NICHT, nur aus ihrem gedruckten Text: Arbeitsschritt 3 schickt die Klasse auf den Satz „Anders als bei α und β lässt sich hier keine Reichweite angeben“, und wer daraus „keine Reichweite“ in die γ-Zelle schreibt, hat richtig abgelesen (siehe (3)). Handschriftlich darf das Wort also in der Tabelle stehen. (d) „Ionenpaare je Millimeter“ ist kein dritter Eintrag, aber die alte Begründung war die falsche: Zählregel 1 (Größe + Formelzeichen + Einheit) trägt das NICHT, denn ein Formelzeichen gibt es hier gar nicht. Es trägt die Profilregel „Immer dieselbe Bezeichnung für dieselbe Sache“: Der Bildschirm schreibt die Anzahl immer mit dieser Bezugsstrecke, es ist dasselbe Wort mit seiner Strecke, nicht ein zweites. Die Quellanalyse rk4 führt dafür ein eigenes Wort („Ionisationsdichte (Ionenpaare je Millimeter)“) — genau dieses Wort wird hier bewusst nicht benutzt. (e) „Ion“ wird nicht eingeführt: Es steht in keiner Wortbank, keiner Lücke und keiner Aufgabe und kommt nur als Bestandteil von „Ionenpaar“ sowie in der Legendenzeile des Bildes („zurückbleibendes Ion“) vor, weil das Bild den Bildschirm zeigt — dieselbe Bildtext-Handhabung wie unter (c). Die frühere Berufung auf „Zählregel 4“ war eine falsche Regelnummer: Regel 4 regelt, dass ein Wort nur einmal im Band eingeführt wird, und das Kriterium „weder Wortbank noch Lücke“ gehört zu Regel 2 und gilt dort nur für Gerätenamen. Bewusst NICHT eingeführt, obwohl am Bildschirm belegt: „Ionisationsdichte“ (das Regelheft benutzt es im Merksatz; hier heißt dieselbe Sache durchgehend „wie dicht die Ionenpaare liegen“ — als dritter Eintrag wäre es über dem Limit und für A2–B1 auch das längste Wort der Seite), „Wichtungsfaktor“ (Konvention des Strahlenschutzes, am Bildschirm nicht herleitbar; der Bildschirm sagt dasselbe alltagssprachlich als „zwanzigmal so viel Schaden“ — genau in dieser Form steht es in der freiwilligen Zusatzaufgabe), „Elektronenvolt eV“, „MeV“, „Heliumkern“, „Ionisierungsspur“ und „Hülle“. Datenlage und Fallen: (1) Zwei Zahlformate auf einer Seite. 4.202 trägt einen Tausenderpunkt, 9,8 ein Dezimalkomma. Wer nur Dezimalkomma kennt, liest 4.202 als „vier Komma zwei null zwei“ und hält Beta für dichter. Die Beispielzeile der Tabelle schreibt deshalb „4.202 (über viertausend)“, die Wortbank enthält „viertausend“ als Wort, und der Bildschirm stützt das mit dem Satz „Auf einem einzigen Millimeter werden über viertausend Atome zerlegt“. Auf der Schülerseite steht nirgends eine Zahl mit Dezimalpunkt. (2) Einheitenwechsel im Vergleich: α 3,5 cm gegen β 3,0 m. Der Bildschirm rechnet NICHT um. Wer nur 3,5 gegen 3,0 vergleicht, hält Alpha für die weiter fliegende Strahlung. Diese Falle liegt bei der TABELLE, nicht bei Aufgabe 3: Dort stehen α und γ gegeneinander, und γ hat gar keine Weitenangabe. Hilfe 2 gab bis zum 05.09.2026 dafür „3,0 m = 300 cm“ vor und wiederholte darunter wortgleich den schon gedruckten Satzstarter — für ein Kind, das an Aufgabe 3 hängt, war die Stufe damit leer. Sie trägt jetzt den teilgefüllten Vergleich, den Aufgabe 3 wirklich braucht. Die Umrechnung steht bei den typischen Fehlern zu Aufgabe 3 und gehört an die Tafel; auf der Schülerseite trägt das Bild die Aussage: Die α-Spur endet kurz hinter dem Lupenfenster, die β-Spur läuft bis zum Bildrand. Die Quellanalyse rk4 verlangt die Umrechnung ausdrücklich in Hilfe 2 — davon wird hier begründet abgewichen, weil Hilfe 2 im Förderheft die Stufe zu Aufgabe 3 ist. (3) Die γ-Zeile der Tabelle nimmt KEINE Zahl auf. Beide Zellen tragen Text, und beide sind aus der Statuszeile belegt, nicht nur aus den Bildtexten: „Anders als bei α und β lässt sich hier keine Reichweite angeben“ und „Gammastrahlung durchdringt den ganzen Körper, ionisiert dabei aber nur sehr vereinzelt“. Erwartet werden „nur sehr vereinzelt“ und „lässt sich nicht angeben“; als richtig gewertet werden ebenso „nach rund 70 m ist erst die Hälfte weg“ und die Bildtextform „nur ganz vereinzelt“ (der Bildtext schreibt „ganz“, die Statuszeile „sehr“). Für die Reichweitenzelle gilt außerdem „keine Reichweite“ als richtig — das ist die wörtlichste Lesart der Statuszeile und wird die häufigste Schülerantwort sein; sie ist von „lässt sich nicht angeben“ sachlich nicht zu unterscheiden. Grund für die Wahl der Statuszeile: simfakten listet die Bildtexte aller drei Knöpfe gesammelt und fotografiert vor der Animation; welcher Bildtext bei welcher Einstellung wirklich dasteht, ist damit NICHT je Zustand belegt. Die Statuszeilen dagegen sind je Knopf einzeln gemessen. Die Tabelle verlangt deshalb nur, was in der Statuszeile des jeweiligen Knopfes steht — und aus demselben Grund zitiert seit dem 05.09.2026 auch das gelöste Beispiel die Statuszeile („Das ergibt 4.202 Ionenpaare je Millimeter“) statt der beiden Bildtexte; vorher brach die einzige Musterlösung der Seite die eigene Beweisregel. Wichtig für Arbeitsschritt 3: Die beiden γ-Angaben stehen NICHT beieinander — die eine im dritten Absatz, die andere im letzten Satz. Der Schritt sagt deshalb nur noch, dass hier zwei Wortangaben und keine Zahlen verlangt sind, und nennt den letzten Satz; er hatte vorher behauptet, am γ-Bildschirm stünde etwas „statt der Zahlen“ — der zeigt in Wirklichkeit 0,66 · 660.000 · 34 · 19.412 · 70 · 6,5. Beide Fundstellen nennt der Papierstreifen-Tipp unter „schwache“. (4) Nicht verlangt und nicht gedruckt: die drei Divisionen 5.000.000 eV / 34 eV = 147.059, 1.000.000 eV / 34 eV = 29.412 und 660.000 eV / 34 eV = 19.412, die Umrechnung MeV in eV, der Vergleich „429-mal dünner“ (das wäre 4.202 geteilt durch 9,8) und die Halbwertsdicke 6,5 mm Blei. Siebenstellige Zahlen und Verhältnisrechnen sind für A2–B1 nicht leistbar; die Seite liest nur die beiden Ergebniswerte 4.202 und 9,8 ab. Die 19.412 taucht als Distraktor in Aufgabe 1 auf — nicht zum Rechnen, sondern damit die Klasse merkt, dass eine große Zahl auf dem Bildschirm noch keine Angabe je Millimeter ist. (5) Der entscheidende Satz — außen Papier, innen kein Papier — steht ganz am ENDE der Alpha-Statuszeile, nach rund vierzehn Zeilen. Schwache Leser kommen dort nicht an. Arbeitsschritt 4 benennt die Stelle deshalb ausdrücklich („den letzten Abschnitt“), und der Papierstreifen-Tipp unter „schwache“ nennt sie noch einmal. Der Schritt schaltet seit dem 05.09.2026 auch ausdrücklich zurück („Drücke wieder α Alpha“) — nach Schritt 3 steht die Simulation auf γ — und nennt sein Ziel. Sein Ergebnis wird nicht in die Tabelle eingetragen: Es ist die Begründung für Aufgabe 3 und steht dort als zulässige Alternative („Von außen hält Papier die Alphastrahlung auf. Im Körper ist kein Papier dazwischen.“). (6) Fachliche Leitplanke im Bild gelöst, nicht durch eine Verbotsliste: Das Bild trennt seit dem 05.09.2026 Vorher und Nachher. Links vor der Startlinie steht das Atom genau EINMAL — ein Ring mit einem kleinen vollen Punkt auf dem Rand. In den drei Spuren steht danach nur noch das Nachher: der herausgeschlagene Punkt (Elektron) und der unversehrte offene Ring (Ion). Damit kann das Bild die falsche Vorstellung „der Kern wird zerstört“ gar nicht erst erzeugen — der Ring bleibt ganz und rund. Und es kann auch die zweite nicht mehr erzeugen, die die frühere Fassung offenließ: Dort standen Atom und Ion als zwei fast gleiche große helle Kreise nebeneinander in derselben Spur, unterschieden nur durch die Randstärke; ein Kind konnte daraus lesen, aus einem Atom würden beim Ionisieren zwei Teilchen plus ein Elektron. Punkt und Ring unterscheiden sich jetzt in der Form, nicht in einer Feinheit der Zeichnung — die Layoutregel „Farbe nie als einziges Unterscheidungsmerkmal, feste Symbole“ gilt für Randstärken genauso. Aus demselben Grund bildet die Legendenzeile die drei Marken selbst ab: Die Bildschirmfassung schreibt dreimal dasselbe ● und wäre gedruckt nicht auseinanderzuhalten. Der Merksatz sagt denselben Satz noch einmal in Worten: „Der Kern bleibt ganz.“ Die dritte falsche Vorstellung — der bestrahlte Stoff werde selbst radioaktiv — zeigt der Bildschirm weder noch widerlegt er sie. Sie stand bis zum 05.09.2026 nur als zweite Aussage im dritten Selbstcheck-Kästchen und war auf der Seite durch nichts gedeckt: Ein Kind, das möglichst selbstständig arbeitet, konnte dieses Kästchen nicht ehrlich ankreuzen. Der Satz steht jetzt im ersten Merksatz („Der Kern bleibt ganz. Der Stoff wird nicht radioaktiv.“), den die Klasse selbst schreibt; das dritte Selbstcheck-Kästchen trägt dafür nur noch EINE Aussage. Auf der Seite ist der Satz damit gedeckt, am Bildschirm weiterhin nicht — sprechen Sie ihn im Unterrichtsgespräch trotzdem einmal ausdrücklich aus. Fachlich dahinter: Ionisieren verändert nur die Hülle; radioaktiv wird ein Stoff erst durch eine Kernreaktion, und die kommt in dieser Simulation nicht vor. (7) Fünf klassische Bildfehler, die hier wirklich drohten und über die Komposition gelöst sind: Streifen statt Flächen — die dichte Alphaspur wird schnell zu einem durchgezogenen Balken gezeichnet, womit die Punktdichte als Aussage verschwindet; der Auftrag verlangt bis zur letzten einzeln erkennbare Marken. Nebenbilder — ein Fläschchen, ein Strahlenzeichen, ein Körperumriss oder eine Zelle am Rand hätten den Vergleich der drei gleich breiten Lupenfenster zerrissen; alles, was das Bild zeigt, liegt in den drei Spurzeilen, im einen Atom links vor der Startlinie und in der Legende. Das Atom ist kein Nebenbild, sondern der Ausgangszustand des Vergleichs und steht auf halber Höhe in derselben Reihe. Strahlengänge ins Leere — die Beta- und Gammaspur liefen sonst als Pfeile aus dem Bild; α und β enden an einem beschrifteten Endstrich, γ tritt am Rand mit der ausgeschriebenen Begründung „keine Reichweite“ aus. Und viertens die stumme Übertreibung: Das γ-Lupenfenster zeigte zuerst genau EINEN Ionisierungsort gegen rund zehn bei β, also ein gezeichnetes Verhältnis von 1:10. Belegt ist nur „Über den Weg gerechnet ionisiert es damit tausendfach dünner als Alphastrahlung“ — das sind rund vier je Millimeter gegen 9,8 bei β, also eher 1:2,3. Der erste Anlauf zeichnete daraufhin zwei bis drei Ionisierungsorte — das ist 1:3 bis 1:5 und blieb damit auf halbem Weg stehen: Die Zahl war hergeleitet, aber nicht umgesetzt. Das Fenster zeigt deshalb jetzt vier bis fünf Ionisierungsorte gegen rund zehn bei β; die Aussage „γ ionisiert viel dünner“ trägt unverändert, und die α-Spur behält ihre ausgeschriebene Modellgrenze. Und fünftens der stumme Längenmaßstab: 3,5 cm gegen 3,0 m sind Faktor 86, gezeichnet ist rund 1:2 — die α-Spur endet kurz hinter dem Lupenfenster, die β-Spur läuft bis zum rechten Rand. Für die Punktdichte trug der Auftrag längst eine ausgeschriebene Modellgrenze, für die Länge keine; er trägt jetzt beide — für die Länge die Zeile „(die Längen der drei Spuren sind nicht maßstäblich – 3,5 cm gegen 3,0 m = 300 cm)“ unter der untersten Spur. Gestrichen ist dafür „alle gleich breit“ aus der Beschreibung der drei Spuren: Gleich breit sind die drei LUPENFENSTER, die Spuren selbst sind es gerade nicht — die eine endet kurz hinter dem Fenster, die andere am Bildrand. (8) Undruckbare Zeichen: Die Überschrift der Simulation trägt ein Emoji, für das SourceSans3 keine Glyphe hat. Sie wird deshalb nirgends zitiert, auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird. Die drei Knopfnamen „α Alpha“, „β Beta“ und „γ Gamma“ tragen KEIN Emoji; α, β und γ sind in allen drei Schnitten der Satzschrift geprüft vorhanden und dürfen wörtlich stehen. Ebenso geprüft vorhanden ist ● für die Legendenzeile des Bildes. (9) Offen gelassen und deshalb nicht verlangt: ob die Simulation die drei Spuren gleichzeitig oder nur die eingestellte zeigt, ist im Faktendump nicht belegt — die Bildtexte stehen dort gesammelt nebeneinander. Die Seite verlangt deshalb drei getrennte Ablesungen nacheinander, nie einen Vergleich aus einem einzigen Bildschirm. Ebenso unbelegt: ob nach einer Animation andere Werte erscheinen; die Seite fordert keinen Zustand nach einem Lauf. Sobald fakten/ionisation.json ein Feld „nachgemessen“ trägt, kann das nachgezogen werden. (10) Der Zuhause-Auftrag zeigt denselben Mechanismus wie die Seite: Salz einmal auf einen Fleck und einmal weit verteilt ist gleich viel Salz bei sehr verschiedener Dichte — genau der Unterschied zwischen α und β. Er ist bewusst KEIN Erzähl- oder Erklärauftrag: „Erkläre zu Hause jemandem …“ wäre Präsentieren und trüge K3 nicht. Er verlangte bis zum 05.09.2026 aber auch gar nichts — keine Beobachtungsfrage, keinen Vergleich, keinen Zählschritt; als einziger Alltagsauftrag des Kapitels war er reines Tun. Er endet deshalb jetzt mit dem Operator, den auch der Merksatz benutzt: „Vergleiche: Wo liegt das Salz dichter?“ Sechs Wörter, die aus dem Streuen eine Beobachtung machen; das Wortgewicht der Seite bleibt mit 378 unter dem Budget von 380, weil Aufgabe 1 und die erste Lücke von Aufgabe 2 zugleich kürzer geworden sind. (11) Die drei Aufgaben prüfen seit dem 05.09.2026 drei verschiedene Dinge. Aufgabe 1 hieß vorher „Welche Zahl steht bei β Beta am Bildschirm?“. Dieser Stamm war unterbestimmt: Auf dem β-Bildschirm steht die 34 wirklich („In Luft kostet es im Mittel 34 eV …“), nur eben als Energie — wer wörtlich liest, kreuzte den damaligen Distraktor „34“ zu Recht an. Und ihre Lösung 9,8 war zugleich die zweite Lücke von Aufgabe 2: Erkennen und Einsetzen prüften denselben Bildschirmwert. Aufgabe 1 liegt jetzt auf der γ-Zeile und prüft die Wortangabe (die andere Ablesekompetenz dieser Seite), Aufgabe 2 die beiden Zahlen, Aufgabe 3 die Begründung. Ihr Stamm hieß bis zum 05.09.2026 „Wie stark ionisiert γ Gamma laut Anzeige?“ — das „laut Anzeige“ behauptete, alle drei Optionen seien Bildschirmzeilen. Die Antwort „19.412 Ionenpaare je Millimeter“ ist aber gebaut: Die Anzeige schreibt „= 19.412 Ionenpaare“ ohne „je Millimeter“, und genau daran hängt die Falle. Die Frage heißt deshalb jetzt „Wie dicht ionisiert γ Gamma?“ und behauptet nichts mehr über die Herkunft der Optionen. Die Zahl-ist-nicht-Dichte-Falle bleibt erhalten — sie steckt jetzt im Distraktor „19.412 Ionenpaare je Millimeter“."
+ }
+}

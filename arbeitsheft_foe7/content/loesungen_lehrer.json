@@ -1,0 +1,1536 @@
+[
+ {
+  "id": "fo1",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass eine Oberfläche das auftreffende Licht in die drei Anteile zurückgeworfen, hindurchgelassen und geschluckt aufteilt, die zusammen immer 100 Prozent ergeben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten oder als Tafeltabelle. Optional als Schülerversuch: schwarzes und weißes Papier in der Sonne oder unter einer starken Lampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen vorlesen oder als Tabelle an die Tafel: Spiegel → zurück 95 %, hindurch 0 %, geschluckt 5 % · Fensterglas → zurück 8 %, hindurch 90 %, geschluckt 2 % · schwarzes Papier → zurück 5 %, hindurch 0 %, geschluckt 95 % · weißes Papier → zurück 80 %, hindurch 0 %, geschluckt 20 %.",
+  "merksatz": [
+   "100 Prozent",
+   "warm"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Fensterglas",
+    "8 % · 90 % · 2 %",
+    "100 %"
+   ],
+   [
+    "schwarzes Papier",
+    "5 % · 0 % · 95 %",
+    "100 %"
+   ],
+   [
+    "weißes Papier",
+    "80 % · 0 % · 20 %",
+    "100 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: Fensterglas: zurück 8 %, hindurch 90 %, geschluckt 2 %.",
+   "typische_fehler": [
+    "Glas wird als „macht nichts mit dem Licht“ gedeutet, weil man hindurchsehen kann."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "100 Prozent",
+    "warm"
+   ],
+   "typische_fehler": [
+    "Die Summe wird nur für den Spiegel geprüft und dann als Sonderfall abgetan.",
+    "„heiß“ statt „warm“ – die Wortbank-Form wird nicht übernommen."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Spiegel wirft fast alles Licht zurück und schluckt nur 5 %. Das schwarze Papier schluckt 95 %. Geschlucktes Licht macht den Körper warm.",
+   "alternativen": [
+    "Mit Zahlen aus der Tabelle: 5 % geschluckt beim Spiegel gegen 95 % beim schwarzen Papier.",
+    "Verweis auf den Versuch im Alltag: Das schwarze Papier wurde in der Sonne warm."
+   ],
+   "typische_fehler": [
+    "„Schwarz zieht die Sonne an“ – Farbe wird als Ursache genannt, nicht das Schlucken.",
+    "Warm werden wird mit Hindurchlassen verwechselt."
+   ]
+  },
+  "hilfe3_wort": "warm (auch richtig: wärmer)",
+  "schwache": [
+   "Zuerst nur Spiegel und schwarzes Papier vergleichen, die anderen zwei Zeilen später.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, erst dann die Simulation öffnen.",
+   "Die Summe 95 + 0 + 5 einmal gemeinsam an der Tafel rechnen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Winkel zum Lot auf 80° und prüfe, ob sich die drei Anteile ändern.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Oberflächen und Licht. Kompetenz UF3 wie auf der Quellseite oi1. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo2",
+  "lernziel": "Die Schülerinnen und Schüler wenden das Reflexionsgesetz an (Einfallswinkel gleich Reflexionswinkel, beide zum Lot gemessen) und geben an, dass das Spiegelbild genauso weit hinter dem Spiegel liegt wie der Gegenstand davor und virtuell ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Winkelpaare aus diesem Lehrerteil als Tafeltabelle. Optional als Demonstration: Handspiegel und Taschenlampe. Für den Zuhause-Auftrag: Spiegel, Tasse, Lineal.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zuhause-Messauftrag in der Folgestunde vergleichen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen vorlesen oder als Tafeltabelle zeigen: 0° → 0° · 20° → 20° · 40° → 40° · 80° → 80°, jeweils „Einfallswinkel = Reflexionswinkel“. Dazu die Merkregel: Beide Winkel misst man zum Lot.",
+  "merksatz": [
+   "Reflexionswinkel",
+   "hinter"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20°",
+    "20°",
+    "ja"
+   ],
+   [
+    "40°",
+    "40°",
+    "ja"
+   ],
+   [
+    "80°",
+    "80°",
+    "ja"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet bei 80°: Einfallswinkel = Reflexionswinkel = 80°.",
+   "typische_fehler": [
+    "Der Winkel wird zur Spiegelfläche statt zum Lot gemessen und wirkt dadurch falsch."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Lot",
+    "virtuell"
+   ],
+   "typische_fehler": [
+    "„Linie“ oder „Strich“ statt „Lot“.",
+    "„unsichtbar“ statt „virtuell“ – das Bild ist sichtbar, aber nicht auffangbar."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Spiegelbild liegt genauso weit hinter dem Spiegel wie Jannis davor, also 2 Meter hinter dem Spiegel.",
+   "alternativen": [
+    "Mit dem Zuhause-Auftrag begründet: Abstand davor gleich Abstand dahinter, gemessen mit dem Lineal.",
+    "Ergänzung, dass das Bild virtuell ist und sich nicht auffangen lässt."
+   ],
+   "typische_fehler": [
+    "Das Bild wird „auf dem Spiegel“ verortet.",
+    "Vor und hinter dem Spiegel werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "hinter",
+  "schwache": [
+   "Nur die Winkelpaare 0° und 40° eintragen lassen, 20° und 80° weglassen.",
+   "Das Lot in der Simulation mit dem Finger nachfahren lassen, bevor gemessen wird.",
+   "Die Wörter Einfallswinkel und Reflexionswinkel einmal abschreiben und trennen lassen: Einfalls-Winkel."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler „Spiegel drehen“ auf 25° und lies ab, um wie viel Grad der Strahl schwenkt.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Reflexion am ebenen Spiegel. Kompetenzen E2 (Winkeluntersuchung, Quellseite oi3) und E4 (Messauftrag zu Hause, einziger E4-Träger des Förderhefts, Quellseite oi2). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo3",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass Licht beim Übergang von Luft in Glas nur an der Grenzfläche geknickt wird (Brechung), und zwar zum Lot hin, sodass der Winkel im Glas kleiner ist als in der Luft.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Tafeltabelle. Optional als Schülerversuch: Löffel im Wasserglas (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen vorlesen oder als Tafeltabelle zeigen: auf dem Lot → 0° in der Luft, 0° im Glas, kein Knick · 40° in der Luft → 25° im Glas · 75° in der Luft → 40° im Glas. Dazu der Bildtext der Simulation: geradeaus – knicken – geradeaus.",
+  "merksatz": [
+   "Lot",
+   "keinen Knick"
+  ],
+  "tabelle_erwartet": [
+   [
+    "40°",
+    "25°",
+    "ja"
+   ],
+   [
+    "75°",
+    "40°",
+    "ja"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Bildtext der Simulation: „geradeaus – knicken – geradeaus“. Geknickt wird nur an der Grenze zwischen Luft und Glas.",
+   "typische_fehler": [
+    "Der Strahl soll auch an der runden Fläche knicken – dort trifft er aber senkrecht auf."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Brechung",
+    "kleiner"
+   ],
+   "typische_fehler": [
+    "„Spiegelung“ oder „Reflexion“ statt „Brechung“ – Verwechslung mit der Spiegelseite.",
+    "„größer“ statt „kleiner“ – die Richtung zum Lot hin ist nicht verstanden."
+   ]
+  },
+  "a3": {
+   "erwartung": "Auf dem Lot ist der Winkel 0°. Die Statuszeile meldet: kein Knick. Der Strahl läuft geradeaus durch das Glas weiter.",
+   "alternativen": [
+    "Verweis auf die erste Tabellenzeile: 0° und 0°, kein Knick.",
+    "Formulierung „senkrecht auf die Grenze, darum kein Knick“."
+   ],
+   "typische_fehler": [
+    "„Der Strahl ist zu schwach zum Knicken“ – der Winkel wird nicht als Ursache genannt.",
+    "0° wird als „kein Licht“ gedeutet."
+   ]
+  },
+  "hilfe3_wort": "geradeaus (auch richtig: weiter geradeaus)",
+  "schwache": [
+   "Zuerst nur die Zeilen 0° und 40° eintragen lassen, 75° später.",
+   "Das Lot in der Simulation mit dem Finger nachfahren lassen.",
+   "Den Zuhause-Versuch mit dem Löffel schon im Unterricht zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „ungebrochene Richtung“ und vergleiche den gestrichelten Weg mit dem echten Strahl.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo4",
+  "lernziel": "Die Schülerinnen und Schüler erkennen, dass Licht beim Übergang von Glas in Luft vom Lot weg gebrochen wird und über dem Grenzwinkel von 41,8° gar nicht mehr austritt (Totalreflexion), und erklären damit den Lichtweg im Glasfaserkabel.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Tafeltabelle. Optional als Demonstration: Laserpointer nur durch die Lehrkraft am Wasserbecken.",
+  "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Ergebnisse als Tafeltabelle: 0° im Glas → 0° in der Luft, tritt aus · 20° → 31°, tritt aus · 25° → 39°, tritt aus · 55° → über dem Grenzwinkel von 41,8°, kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion).",
+  "merksatz": [
+   "weg",
+   "Totalreflexion"
+  ],
+  "tabelle_erwartet": [
+   [
+    "20°",
+    "31°",
+    "ja"
+   ],
+   [
+    "25°",
+    "39°",
+    "ja"
+   ],
+   [
+    "55°",
+    "kein Austritt",
+    "nein – Totalreflexion"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Die Statuszeile meldet: Winkel im Glas 20°, in der Luft 31° – der Strahl knickt vom Lot weg.",
+   "typische_fehler": [
+    "Ein- und Austritt werden verwechselt: „zum Lot hin“ statt „vom Lot weg“."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Grenzwinkel",
+    "Totalreflexion"
+   ],
+   "typische_fehler": [
+    "„Grenzwert“ statt „Grenzwinkel“.",
+    "41,8° wird zu „42°“ gerundet – die Anzeige nennt 41,8°."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Licht trifft immer sehr schräg auf die Wand, schräger als der Grenzwinkel von 41,8°. Deshalb wird es jedes Mal vollständig zurückgeworfen. So bleibt es im Glas gefangen und läuft im Zickzack bis zum Ende.",
+   "alternativen": [
+    "Beschreibung des Zickzack-Wegs mit dem Bild der Glasfaser.",
+    "Verweis auf die 55°-Meldung der Simulation: kein Licht tritt aus."
+   ],
+   "typische_fehler": [
+    "„Die Faser ist innen verspiegelt“ – die Spiegel-Vorstellung wird wiederholt statt widerlegt.",
+    "Totalreflexion wird mit Brechung verwechselt."
+   ]
+  },
+  "hilfe3_wort": "gefangen",
+  "schwache": [
+   "Nur die Zeilen 20° und 55° eintragen lassen, 25° weglassen.",
+   "Mit den drei Knöpfen der Simulation arbeiten – sie springen genau auf die Merkwinkel.",
+   "„Vom Lot weg“ mit den Händen zeigen lassen: eine Hand ist das Lot, eine der Strahl."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle den Regler langsam von 40° auf 44° und finde die Stelle, an der die Meldung umspringt.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Totalreflexion und Lichtleiter. Kompetenzen E2 (Quellseite oi5) und UF4 (Anwendung Glasfaser, Quellseite oi6). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo5",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass die in der Mitte dickere Sammellinse paralleles Licht im Brennpunkt bündelt, und unterscheiden sie vom in der Mitte dünneren Glas, das die Strahlen auseinanderlenkt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lupe über kleiner Schrift (wie im Zuhause-Auftrag). Kein Bündeln von Sonnenlicht – Brandgefahr.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die zwei Statuszeilen vorlesen oder als Karten zeigen: in der Mitte dicker → Sammellinse, die Strahlen treffen sich im Brennpunkt, 90 hinter dem Glas, dort ist es am hellsten und heißesten · in der Mitte dünner → die Strahlen laufen auseinander, hinter dem Glas entsteht nie ein heller Fleck.",
+  "merksatz": [
+   "Sammellinse",
+   "Brennpunkt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "in der Mitte dünner",
+    "sie laufen auseinander",
+    "nein, nie ein heller Fleck"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile nennt den Treffpunkt: im Brennpunkt, 90 hinter dem Glas.",
+   "typische_fehler": [
+    "„In der Linse“ – der Brennpunkt liegt hinter der Linse, nicht in ihr."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "bündelt",
+    "auseinander"
+   ],
+   "typische_fehler": [
+    "„sammelt“ statt „bündelt“ – die Wortbank-Form wird nicht übernommen.",
+    "„zerstreut sich überall“ statt der klaren Richtung „auseinander“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Alle Strahlen treffen sich im Brennpunkt. Das Licht aller Strahlen kommt dort zusammen. Darum ist es dort am hellsten und am heißesten.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: im Brennpunkt ist es am hellsten und heißesten.",
+    "Vergleich: viele Lampen leuchten auf denselben Fleck."
+   ],
+   "typische_fehler": [
+    "Hell und heiß werden als zwei verschiedene Ursachen gedeutet.",
+    "Der Brennpunkt wird in die Linse gelegt."
+   ]
+  },
+  "hilfe3_wort": "heißesten (auch richtig: wärmsten)",
+  "schwache": [
+   "Nur mit den zwei Knöpfen arbeiten lassen, den Regler zunächst nicht anfassen.",
+   "Eine echte Lupe herumgeben: in der Mitte dicker – Sammellinse.",
+   "Im Beispiel den Satz „keine Sammellinse“ unterstreichen lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Verändere den Regler der Wölbung und beobachte, wie der Brennpunkt näher heranrückt oder weiter wegwandert.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Linsen. Kompetenz E5 wie auf der Quellseite oi7. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo6",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass das Bild der Sammellinse von der Gegenstandsweite abhängt: weiter als die Brennweite umgekehrt, näher als die Brennweite aufrecht und vergrößert – dann arbeitet die Linse als Lupe.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lupe über Zeitung und mit ausgestrecktem Arm (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: g = 190 → verkleinert, umgekehrt, reell · g = 100 → vergrößert, umgekehrt, reell · g = 25 → vergrößert, aufrecht, virtuell (Lupe). Der Regler nennt dazu f = 62 und 2f = 124.",
+  "merksatz": [
+   "umgekehrt",
+   "Lupe"
+  ],
+  "tabelle_erwartet": [
+   [
+    "g = 100",
+    "vergrößert",
+    "umgekehrt"
+   ],
+   [
+    "g = 25",
+    "vergrößert",
+    "aufrecht"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Innerhalb der Brennweite entsteht ein aufrechtes, vergrößertes, virtuelles Bild.",
+   "typische_fehler": [
+    "„Eine Lupe vergrößert immer“ – der Abstand wird ignoriert."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "umgekehrt",
+    "vergrößert"
+   ],
+   "typische_fehler": [
+    "„seitenverkehrt“ statt „umgekehrt“ – Verwechslung mit dem Spiegel.",
+    "„größer“ statt der Wortbank-Form „vergrößert“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Schulhof ist viel weiter weg als die Brennweite. Darum ist sein Bild verkleinert und steht auf dem Kopf. Man kann es auf dem Zettel auffangen.",
+   "alternativen": [
+    "Verweis auf die erste Tabellenzeile: g = 190 → verkleinert, umgekehrt.",
+    "Ergänzung aus der Statuszeile: Das Bild ist reell."
+   ],
+   "typische_fehler": [
+    "Der Zettel wird als Ursache gesehen („falsch herum gehalten“).",
+    "aufrecht/umgekehrt wird mit seitenverkehrt verwechselt."
+   ]
+  },
+  "hilfe3_wort": "umgekehrt (auch richtig: auf dem Kopf)",
+  "schwache": [
+   "Nur die Zeilen g = 190 und g = 25 vergleichen lassen, g = 100 später.",
+   "Am Regler die Marken f = 62 und 2f = 124 mit dem Finger zeigen lassen.",
+   "Das Wortpaar aufrecht/umgekehrt mit Pfeilen ↑ und ↓ neben die Tabelle schreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle g = 124 ein, genau 2f. Wie groß ist das Bild jetzt?",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Bilder der Sammellinse, Lupe. Kompetenzen K3 (Quellseite oi8, einziger K3-Träger des Förderhefts) und UF1 (Quellseite oi9). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo7",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass die Augenlinse auf der Netzhaut ein umgekehrtes Bild erzeugt und es durch Ändern ihrer Wölbung scharf hält, während die Pupille nur die Lichtmenge regelt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Meldungen aus diesem Lehrerteil als Karten. Optional: aufklappbares Augenmodell aus der Sammlung. Für den Zuhause-Auftrag: Spiegel und Zimmerlampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Meldungen als Karten zeigen: Abstand weit → Linse flacher (fern) · Abstand nah → Linse stark gewölbt (nah) · Pupille eng oder weit → regelt die Helligkeit. Dazu immer: Bild scharf auf der Netzhaut (umgekehrt).",
+  "merksatz": [
+   "umgekehrtes",
+   "Helligkeit"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Abstand nah",
+    "stark gewölbt (nah)",
+    "mittel"
+   ],
+   [
+    "Pupille eng",
+    "flacher (fern)",
+    "eng"
+   ],
+   [
+    "Pupille weit",
+    "flacher (fern)",
+    "weit"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+   "typische_fehler": [
+    "„aufrecht“ wird angekreuzt, weil wir die Welt aufrecht sehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Netzhaut",
+    "Pupille"
+   ],
+   "typische_fehler": [
+    "Netzhaut und Linse werden vertauscht.",
+    "Der Pupille wird das Scharfstellen zugeschrieben – sie regelt nur die Helligkeit."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Bild auf der Netzhaut steht auf dem Kopf, aber unser Gehirn dreht es wieder um. Darum sehen wir die Welt aufrecht.",
+   "alternativen": [
+    "Verweis auf den Hinweis der Simulation: das Gehirn dreht das Bild um.",
+    "Vergleich mit dem Augenmodell aus dem Alltag: Auf der Schale steht das Fensterkreuz auf dem Kopf, wir sehen es trotzdem aufrecht."
+   ],
+   "typische_fehler": [
+    "Die Netzhaut soll das Bild selbst drehen.",
+    "„Das Auge stellt das Bild richtig“ – das Gehirn wird nicht genannt."
+   ]
+  },
+  "hilfe3_wort": "um",
+  "schwache": [
+   "Erst nur den Abstands-Regler bearbeiten lassen, die Pupillen-Zeilen danach.",
+   "Die zwei Aufgaben trennen und anschreiben: Linse macht scharf, Pupille macht hell.",
+   "Die vorausgefüllten Zellen der Tabelle laut vorlesen lassen: Nur eine Sache ändert sich."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Auge. Kompetenz E2 wie auf der Quellseite oi10. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo8",
+  "lernziel": "Die Schülerinnen und Schüler ordnen zu, dass ein kurzsichtiges Auge eine Zerstreuungslinse und ein weitsichtiges Auge eine Sammellinse braucht, damit das Bild genau auf der Netzhaut liegt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Meldungen aus diesem Lehrerteil als Tafeltabelle. Optional: zwei echte Brillen mit unterschiedlichen Gläsern zum Durchsehen.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Zuhause-Umfrage in der Folgestunde sammeln",
+  "ersatz_ohne_simulation": "Die vier Meldungen als Tafeltabelle: kurzsichtig ohne Brille → Bild vor der Netzhaut, unscharf, nötig: Zerstreuungslinse · kurzsichtig mit Brille → Bild genau auf der Netzhaut, scharf · weitsichtig ohne Brille → Bild hinter der Netzhaut, unscharf, nötig: Sammellinse · weitsichtig mit Brille → Bild genau auf der Netzhaut, scharf.",
+  "merksatz": [
+   "Zerstreuungslinse",
+   "Sammellinse"
+  ],
+  "tabelle_erwartet": [
+   [
+    "kurzsichtig mit Brille",
+    "genau auf der Netzhaut",
+    "scharf"
+   ],
+   [
+    "weitsichtig ohne Brille",
+    "hinter der Netzhaut",
+    "unscharf"
+   ],
+   [
+    "weitsichtig mit Brille",
+    "genau auf der Netzhaut",
+    "scharf"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Die Statuszeile meldet: Ohne Brille: Bild liegt hinter der Netzhaut → unscharf. Nötig: Sammellinse.",
+   "typische_fehler": [
+    "kurzsichtig und weitsichtig werden vertauscht – das Wortpaar klingt ähnlich."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "vor",
+    "scharf"
+   ],
+   "typische_fehler": [
+    "vor und hinter werden vertauscht.",
+    "„gut“ statt der Wortbank-Form „scharf“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Ohne Brille liegt das Bild einmal vor und einmal hinter der Netzhaut. Darum braucht jedes Auge eine andere Linse: das kurzsichtige die Zerstreuungslinse, das weitsichtige die Sammellinse.",
+   "alternativen": [
+    "Mit den Tabellenzeilen begründet: zwei verschiedene Fehler, zwei verschiedene Linsen.",
+    "Zielsatz aus dem Hinweis: Das Bild muss genau auf die Netzhaut."
+   ],
+   "typische_fehler": [
+    "„Eine stärkere Brille hilft bei beiden“ – die Richtung des Fehlers wird ignoriert.",
+    "vor und hinter der Netzhaut werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "Linse (auch richtig: Brille)",
+  "schwache": [
+   "Erst das kurzsichtige Auge vollständig bearbeiten, dann erst das weitsichtige.",
+   "Die Wortteile kurz und weit farbig markieren lassen.",
+   "Eselsbrücke besprechen: kurzsichtig heißt, nur das Nahe ist scharf."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Sehfehler und Brille. Kompetenz UF2 wie auf der Quellseite oi11. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo9",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass die Lochkamera wegen der geradlinigen Ausbreitung des Lichts ein umgekehrtes Bild erzeugt, das mit längerer Kamera größer und mit größerem Loch heller, aber unscharf wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lochkamera aus Pappschachtel, Nadel und Butterbrotpapier (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Bastelauftrag als Hausaufgabe",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: b = 29 cm, Loch klein → umgekehrt, kleiner als der Gegenstand, scharf · b = 39 cm → etwa so groß wie der Gegenstand, scharf · b = 51 cm → größer als der Gegenstand, scharf · b = 51 cm, Loch groß → unscharf.",
+  "merksatz": [
+   "auf dem Kopf",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "b = 39 cm, Loch klein",
+    "etwa so groß wie der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 51 cm, Loch klein",
+    "größer als der Gegenstand",
+    "scharf"
+   ],
+   [
+    "b = 51 cm, Loch groß",
+    "größer als der Gegenstand",
+    "unscharf"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Größere Bildweite b → größeres Bild.",
+   "typische_fehler": [
+    "Das größere Loch wird als Ursache für ein größeres Bild angekreuzt – es macht das Bild nur unscharf."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "geradeaus",
+    "unscharf"
+   ],
+   "typische_fehler": [
+    "„schnell“ statt „geradeaus“ – die Ausbreitungsrichtung wird nicht genannt.",
+    "hell und scharf werden gleichgesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Durch ein kleines Loch kommt zu jedem Punkt nur ein dünner Strahl – das Bild ist scharf. Durch ein großes Loch treffen viele Strahlen dieselbe Stelle – das Bild wird hell, aber unscharf.",
+   "alternativen": [
+    "Verweis auf die Rückmeldung der Simulation: Ein kleines Loch gibt ein scharfes Bild, aber dunkler.",
+    "Vergleich der beiden letzten Tabellenzeilen: gleiches b, anderes Loch."
+   ],
+   "typische_fehler": [
+    "Hell wird als Zeichen für gut/scharf gedeutet.",
+    "Das Loch soll das Bild drehen – das Drehen kommt aber vom Kreuzen der Strahlen, bei jedem Loch."
+   ]
+  },
+  "hilfe3_wort": "unscharf",
+  "schwache": [
+   "Nur die Zeilen b = 29 cm und b = 51 cm vergleichen lassen.",
+   "Die Pfeillängen auf dem Schirm mit zwei Fingern abgreifen lassen.",
+   "Die gebastelte Lochkamera zuerst vorführen, dann die Simulation öffnen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Verändere die Gegenstandsweite g und beobachte, was mit der Bildgröße passiert.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Lochkamera, geradlinige Ausbreitung. Kompetenz E5 wie auf der Quellseite oi12. Die Formel B/G = b/g steht bewusst nur im Regelheft und fällt hier weg."
+ },
+ {
+  "id": "fo10",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass weißes Licht aus vielen Spektralfarben besteht, die das Prisma durch unterschiedlich starke Brechung trennt – und dass einfarbiges Licht nur gebrochen, aber nicht weiter zerlegt wird.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Ergebnisse aus diesem Lehrerteil als drei Karten oder als Tabelle an der Tafel. Optional als Demonstration: echtes Prisma und Taschenlampe.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ergebnisse vorlesen oder als Karten zeigen: weißes Licht → ein Fächer aus allen Farben (viele Farben) · nur Rot → ein roter Strich, nur gebrochen (eine Farbe) · nur Blau → ein blauer Strich, nur gebrochen (eine Farbe). Alternativ drei Standbilder der Simulation am Beamer zeigen.",
+  "merksatz": [
+   "Spektralfarben",
+   "bricht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nur Rot",
+    "ein roter Strich, nur gebrochen",
+    "eine Farbe"
+   ],
+   [
+    "nur Blau",
+    "ein blauer Strich, nur gebrochen",
+    "eine Farbe"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Statuszeile meldet bei nur Rot: Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt.",
+   "typische_fehler": [
+    "Auch bei Rot wird ein Fächer erwartet, weil Prisma mit bunt gleichgesetzt wird."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gebrochen",
+    "einfarbig"
+   ],
+   "typische_fehler": [
+    "„gespiegelt“ statt „gebrochen“ – Verwechslung mit dem Spiegel-Kapitel.",
+    "Die Reihenfolge Violett/Rot wird vertauscht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Farben stecken schon im weißen Licht. Das Prisma trennt die Farben nur. Ein Prisma kann Licht nicht anmalen.",
+   "alternativen": [
+    "Verweis auf die Statuszeile: Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt – ein einfarbiger Strahl bleibt einfarbig.",
+    "Vergleich mit der bunten Folie: Die Folie lässt nur eine Farbe durch, sie malt nichts an."
+   ],
+   "typische_fehler": [
+    "Prisma und Farbfolie werden gleichgesetzt.",
+    "„Das Prisma macht die Farben“ wird nur wiederholt statt widerlegt."
+   ]
+  },
+  "hilfe3_wort": "anmalen (auch richtig: färben)",
+  "schwache": [
+   "Zuerst nur weißes Licht und nur Rot vergleichen, nur Blau zunächst weglassen.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen, erst dann die Simulation öffnen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies die Reihenfolge der Farben aus dem Fächer der Simulation ab und schreibe sie auf.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Sonnenlicht und Spektrum. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fo11",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass ein Bildschirm alle Farben aus rotem, grünem und blauem Licht zusammenmischt und dass alle drei zusammen Weiß ergeben.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Lupe dicht am Klassenbildschirm oder Handy.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: Ausgangszustand → Ergebnisfarbe Rot (R 220, G 60, B 60) · aus → Schwarz, kein Licht (R 0, G 0, B 0) · Gelb → R 255, G 255, B 0 · Weiß → R 255, G 255, B 255.",
+  "merksatz": [
+   "Rot, Grün und Blau",
+   "Weiß"
+  ],
+  "tabelle_erwartet": [
+   [
+    "aus",
+    "0 · 0 · 0",
+    "Schwarz (kein Licht)"
+   ],
+   [
+    "Gelb",
+    "255 · 255 · 0",
+    "Gelb"
+   ],
+   [
+    "Weiß",
+    "255 · 255 · 255",
+    "Weiß"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Alle drei zusammen ergeben Weiß.",
+   "typische_fehler": [
+    "Braun wird angekreuzt – die Malfarben-Erfahrung wird auf Licht übertragen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "mischt",
+    "Schwarz"
+   ],
+   "typische_fehler": [
+    "Schwarz wird als „dunkle Farbe“ gedeutet statt als „kein Licht“.",
+    "„macht“ statt der Wortbank-Form „mischt“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Beim Licht ergibt Rot und Grün zusammen Gelb. Das zeigt der Knopf Gelb: R 255, G 255, B 0. Braun entsteht nur beim Mischen von Malfarben.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Braun entsteht beim Mischen von Malfarben, nicht von Licht.",
+    "Verweis auf die Gelb-Zeile der eigenen Tabelle."
+   ],
+   "typische_fehler": [
+    "Licht- und Malfarben werden weiter gleichgesetzt.",
+    "Eine eigene gelbe Lampe im Bildschirm wird vermutet."
+   ]
+  },
+  "hilfe3_wort": "Gelb",
+  "schwache": [
+   "Zuerst nur „aus“ und „Weiß“ vergleichen lassen: 0 gegen 255.",
+   "Die drei Zahlen immer in derselben Reihenfolge lesen lassen: R, dann G, dann B.",
+   "Die Streifen mit der Lupe am echten Bildschirm zeigen, bevor die Simulation startet."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle mit den drei Reglern deine Lieblingsfarbe ein und notiere ihre drei Zahlen.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Farbmischung am Bildschirm. Kompetenz UF4 wie auf der Quellseite oi14. Der Fachbegriff additive Farbmischung fällt bewusst erst hier im Lehrerteil."
+ },
+ {
+  "id": "fo12",
+  "lernziel": "Die Schülerinnen und Schüler weisen mit dem Thermometer nach, dass hinter dem sichtbaren Rot unsichtbares Licht ankommt (Infrarot), das dort am stärksten wärmt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten. Optional als Demonstration: Fernbedienung, deren Lampe durch eine Handykamera sichtbar wird.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Herschel-Geschichte gemeinsam lesen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: 555 nm Grün → sichtbar, Erwärmung 38 % · 700 nm letztes Rot → sichtbar, 62 % · 940 nm Fernbedienung → das Auge sieht nichts, Erwärmung 90 %. Alle Angaben als Anteil von dem, was bei 1100 nm ankommt.",
+  "merksatz": [
+   "Infrarot",
+   "wärmt"
+  ],
+  "tabelle_erwartet": [
+   [
+    "700 nm – letztes Rot",
+    "ja",
+    "62 %"
+   ],
+   [
+    "940 nm – Fernbedienung",
+    "nein",
+    "90 %"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Statuszeile bei 940 nm: Hier hinter dem Rot steigt es am stärksten – obwohl nichts zu sehen ist.",
+   "typische_fehler": [
+    "Sichtbarkeit und Wärme werden gleichgesetzt: Wo es hell aussieht, soll es am wärmsten sein."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Infrarot",
+    "unsichtbar"
+   ],
+   "typische_fehler": [
+    "„Ultrarot“ oder „Ultraviolett“ statt „Infrarot“.",
+    "„schwarz“ statt „unsichtbar“ – kein Licht und unsichtbares Licht werden verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Herschel schob ein Thermometer hinter das letzte Rot. Dort sah er nichts, aber das Thermometer stieg am stärksten. So bewies er: Dort kommt unsichtbares Licht an.",
+   "alternativen": [
+    "Mit der 940-nm-Zeile der Tabelle begründet.",
+    "Ergänzung: Die schwarze Kugel schluckt das Licht besonders gut und wird darum warm – wie das schwarze Papier auf fo1."
+   ],
+   "typische_fehler": [
+    "Herschel soll das Infrarot doch gesehen haben.",
+    "Das Thermometer soll Helligkeit messen statt Wärme."
+   ]
+  },
+  "hilfe3_wort": "Licht (auch richtig: Infrarot)",
+  "schwache": [
+   "Nur Grün und Fernbedienung vergleichen lassen, das letzte Rot weglassen.",
+   "Die drei Erwärmungswerte als Balken untereinander zeichnen lassen.",
+   "Den Fernbedienungs-Versuch aus dem Zuhause-Auftrag vorführen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „310 nm – Sonnenbrand“. Auch vor dem Violett gibt es unsichtbares Licht – das Ultraviolett.",
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Spektrum, Infrarot (Ultraviolett nur als Zusatzaufgabe). Kompetenz E5 wie auf der Quellseite oi15. Erwärmungswerte sind Modellwerte der Simulation (Anteil von 1100 nm)."
+ },
+ {
+  "id": "fw1",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden Selbstleuchter (Sonne und Sterne) von beleuchteten Körpern (Mond und Planeten), die wir nur sehen, solange Sonnenlicht auf sie fällt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebnisse aus diesem Lehrerteil als Karten. Optional: Taschenlampe und Ball als beleuchteter Körper im abgedunkelten Raum.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Sonne → leuchtet selbst (Selbstleuchter) · Stern → ferne Sonne, leuchtet selbst · Mond → leuchtet nicht selbst, die Sonne beleuchtet ihn · Planet → wird von der Sonne beleuchtet. Nach „Sonnenlicht abdecken“: Mond und Planet sofort dunkel, Sonne und Stern strahlen unverändert weiter.",
+  "merksatz": [
+   "Selbstleuchter",
+   "beleuchtet"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Stern",
+    "ja – Selbstleuchter",
+    "hell"
+   ],
+   [
+    "Mond",
+    "nein – wird beleuchtet",
+    "dunkel"
+   ],
+   [
+    "Planet",
+    "nein – wird beleuchtet",
+    "dunkel"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Sterne sind sehr weit entfernte Sonnen.",
+   "typische_fehler": [
+    "Der Stern wird als kleiner Lichtpunkt ohne eigenes Licht gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dunkel",
+    "ferne"
+   ],
+   "typische_fehler": [
+    "„aus“ statt der Wortbank-Form „dunkel“.",
+    "Die Passivform „wird beleuchtet“ wird aktiv missverstanden: „der Mond beleuchtet“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Stern leuchtet selbst, er ist ein Selbstleuchter. Der Planet leuchtet nicht selbst. Ohne Sonnenlicht ist er sofort dunkel.",
+   "alternativen": [
+    "Mit der Statuszeile begründet: Zu ihm kommt kein Licht mehr – er ist sofort dunkel und leuchtet nicht nach.",
+    "Mit der eigenen Tabelle begründet: zwei Zeilen hell, zwei dunkel."
+   ],
+   "typische_fehler": [
+    "Ein Nachleuchten des Planeten wird vermutet.",
+    "Stern und Planet werden vertauscht."
+   ]
+  },
+  "hilfe3_wort": "dunkel",
+  "schwache": [
+   "Zuerst nur Sonne und Mond vergleichen lassen, Stern und Planet danach.",
+   "Das Wort „beleuchtet“ markieren und als „bekommt Licht“ übersetzen lassen.",
+   "Vier Kärtchen mit den Himmelskörpern in zwei Gruppen sortieren lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation und sammle drei Häkchen.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Himmelskörper. Kompetenz UF1 wie auf der Quellseite ew1. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ },
+ {
+  "id": "fw2",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um ihre eigene Achse dreht und die Sonne immer nur eine Hälfte beleuchtet.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Stellungen aus diesem Lehrerteil als Karten. Klassenversuch: Globus und Taschenlampe im abgedunkelten Raum (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Globus-Versuch als Demonstration",
+  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → Ben hat Nacht (Mitternacht), Yumi hat gleichzeitig Tag · 180° → Ben hat Sonne, Yumi Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
+  "merksatz": [
+   "Achse",
+   "24 Stunden"
+  ],
+  "tabelle_erwartet": [
+   [
+    "180°",
+    "Ben",
+    "Yumi"
+   ],
+   [
+    "volle Drehung",
+    "Yumi",
+    "Ben"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+   "typische_fehler": [
+    "Die am Himmel wandernde Sonne wird als echte Bewegung der Sonne gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dreht",
+    "Tag"
+   ],
+   "typische_fehler": [
+    "„1 Jahr“ statt „24 Stunden“ – Drehung und Weg um die Sonne werden verwechselt.",
+    "Tag- und Nachtseite werden vertauscht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte liegt im eigenen Schatten der Erde. Darum ist immer irgendwo Nacht.",
+   "alternativen": [
+    "Mit Ben und Yumi begründet: Bei 0° hat Yumi Tag und Ben gleichzeitig Nacht.",
+    "Mit dem Globus-Versuch begründet: Die Lampe trifft nur eine Seite."
+   ],
+   "typische_fehler": [
+    "„Nachts ist die Sonne aus.“",
+    "Tag und Nacht werden mit Sommer und Winter vermischt."
+   ]
+  },
+  "hilfe3_wort": "Nacht",
+  "schwache": [
+   "Nur die Stellungen 0° und 180° bearbeiten lassen.",
+   "Bens roten Punkt in der Simulation mit dem Finger verfolgen lassen.",
+   "Den Globus-Versuch vor der Simulation real zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. Ben steht genau an der Grenze zwischen heller und dunkler Seite.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Die Rechnung 360° zu 24 Stunden fällt bewusst weg."
+ },
+ {
+  "id": "fw3",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass jede Masse jede andere anzieht (Gravitation) und ohne Luft alle Körper gleich schnell fallen, und geben die Abstandsregel als Merkwissen wieder: Bei doppeltem Abstand bleibt ein Viertel der Anziehung.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Schülerversuch: Radiergummi und Blatt Papier (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 60 Minuten: Seite A rund 25 Minuten, Seite B rund 35 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: Mond → g = 1,6 m/s², Fall aus 1,50 m dauert 1,37 s · Erde → g = 9,8 m/s², 0,55 s · Jupiter → g = 24,8 m/s², 0,35 s. Dazu immer: Ohne Luft gilt diese Zeit für den Stein und für die Feder.",
+  "merksatz": [
+   "Gravitation",
+   "gleich schnell"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Erde",
+    "9,8",
+    "0,55 s"
+   ],
+   [
+    "Jupiter",
+    "24,8",
+    "0,35 s"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).",
+   "typische_fehler": [
+    "Die Je-desto-Beziehung wird umgedreht: großes g wird mit langer Fallzeit verbunden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gleich schnell",
+    "Masse"
+   ],
+   "typische_fehler": [
+    "„Die Feder ist leichter und darum langsamer“ – die Luft wird nicht als Bremse genannt.",
+    "Masse und Gewicht werden durcheinandergebracht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im luftleeren Rohr kommen Stein und Feder gleichzeitig unten an. Die Masse spielt beim Fallen keine Rolle. Nur die Luft bremst die Feder – darum wirkt es im Alltag so, als fiele Schweres schneller.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Ohne Luft fallen alle Körper gleich schnell.",
+    "Mit dem geknüllten Blatt aus dem Zuhause-Versuch begründet."
+   ],
+   "typische_fehler": [
+    "Die Fehlvorstellung wird wiederholt statt am Rohr geprüft.",
+    "Die Gravitation soll die Feder bremsen – bremsen tut die Luft."
+   ]
+  },
+  "hilfe3_wort": "Luft",
+  "schwache": [
+   "Nur Mond und Jupiter vergleichen lassen, die Erd-Zeile danach.",
+   "Die Dezimalzahlen mit dem Finger unter dem Komma lesen lassen.",
+   "Den Radiergummi-Blatt-Versuch vor der Simulation zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die vierte Quizfrage – wie weit fällt der Stein in der doppelten Zeit? Prüfe mit den Zeitmarken 1 bis 4 im linken Rohr.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Gravitationskraft. Kompetenzen E5 (Quellseite ew3) und UF4 (Quellseite ew4; die Abstandsregel steht als Merkwissen im Merksatz, ohne Bildschirm-Aufgabe). Leitplanke: Masse und Gewichtskraft nie gleichsetzen."
+ },
+ {
+  "id": "fw4",
+  "lernziel": "Die Schülerinnen und Schüler erklären, warum ein Planet trotz der ständigen Anziehung der Sonne nicht hineinstürzt: Er ist quer zur Sonne unterwegs und fällt bei passendem Anschub immer an ihr vorbei.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Anzeigen aus diesem Lehrerteil als Karten. Schülerversuch: Münze in einer runden Schüssel kreisen lassen (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Anzeigen als Karten zeigen: 6 km/s → stürzt in die Sonne, er kommt nicht wieder heraus · 30 km/s → fast ein Kreis, ein Umlauf dauert 1,02 Jahre, er kommt zurück · 50 km/s → entkommt, er kommt nicht zurück. Merkzeile der Anzeige: Für einen Kreis braucht er 29,8 km/s, ab 42,1 km/s entkommt er.",
+  "merksatz": [
+   "vorbei",
+   "Umlaufbahn"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittlerer Wert (30 km/s)",
+    "fast ein Kreis",
+    "ja"
+   ],
+   [
+    "groß (50 km/s)",
+    "entkommt",
+    "nein"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Statuszeile bei 50 km/s: Bahnform: entkommt – er kommt nicht zurück.",
+   "typische_fehler": [
+    "„Schnell heißt sicher auf der Bahn“ – dass zu viel Anschub hinausführt, überrascht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "stürzt",
+    "entkommt"
+   ],
+   "typische_fehler": [
+    "stürzt und entkommt werden vertauscht.",
+    "„fliegt weg“ statt der Wortbank-Form „entkommt“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Erde ist quer zur Sonne schnell unterwegs. Die Sonne zieht sie ständig an, aber die Erde fällt immer an ihr vorbei. Dieses Vorbeifallen ist ihre Umlaufbahn.",
+   "alternativen": [
+    "Hinweistext der Simulation zitieren: Dieses ewige Vorbeifallen ist die Umlaufbahn.",
+    "Mit der mittleren Tabellenzeile begründet: passender Anschub, fast ein Kreis."
+   ],
+   "typische_fehler": [
+    "„Die Sonne ist zu weit weg“ – die falsche Vermutung von Seite A wird wiederholt.",
+    "Der Planet soll kräftefrei „in Ruhe hängen“ – die Anziehung wirkt aber die ganze Zeit weiter."
+   ]
+  },
+  "hilfe3_wort": "vorbei",
+  "schwache": [
+   "Nur die Knöpfe und bearbeiten lassen, die Gegenprobe danach.",
+   "Die Bahnspur in der Simulation mit dem Finger nachfahren lassen.",
+   "Den Münzen-Versuch in der Schüssel zuerst zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „etwas darüber“. Die Bahn wird eine lang gezogene Ellipse, ein Umlauf dauert 2,53 Jahre.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Gravitationsfeld und Umlaufbahn. Kompetenz E8 wie auf der Quellseite ew5. Die Einheit AE und die Ellipse fallen bewusst in den Zusatz."
+ },
+ {
+  "id": "fw5",
+  "lernziel": "Die Schülerinnen und Schüler unterscheiden die vier inneren Gesteinsplaneten von den äußeren Gas- und Eisriesen und kennen die Regel: je weiter außen, desto länger der Umlauf.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ansichten aus diesem Lehrerteil als Karten. Optional: acht verschieden große Kugeln oder Früchte (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ansichten als Karten zeigen: Steckbrief Erde → Gesteinsplanet, feste Oberfläche, Durchmesser 12.756 km, Umlauf 1 Jahr · Größen → vier kleine innen, vier sehr große außen (gleicher Maßstab, Abstände stimmen dort nicht) · Umlauf → die inneren Planeten kommen viel öfter herum als die äußeren.",
+  "merksatz": [
+   "Gesteinsplaneten",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Größen",
+    "vier kleine innen, vier große außen",
+    "die Sorten sind verschieden groß"
+   ],
+   [
+    "Umlauf",
+    "innen kommen die Planeten öfter herum",
+    "je weiter außen, desto länger der Umlauf"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Hinweis der Simulation: außen zwei Gasriesen und zwei Eisriesen – viel größer, ohne festen Boden.",
+   "typische_fehler": [
+    "Die Umlauf-Regel wird umgedreht: außen soll es schneller gehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Oberfläche",
+    "Umlauf"
+   ],
+   "typische_fehler": [
+    "„Boden“ statt der Wortbank-Form „Oberfläche“.",
+    "Umlauf und Drehung werden verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Jupiter ist ein Gasriese. Er hat keine feste Oberfläche. Eine Rakete findet dort keinen festen Boden zum Landen.",
+   "alternativen": [
+    "Vergleich mit dem Erd-Steckbrief: Die Erde hat eine feste Oberfläche, der Jupiter nicht.",
+    "Verweis auf die Größen-Ansicht: Gasriesen sind anders gebaut."
+   ],
+   "typische_fehler": [
+    "„Der Jupiter ist zu weit weg“ – die Entfernung wird statt des fehlenden Bodens genannt.",
+    "Gasriese wird als „Planet mit viel Wind“ gedeutet."
+   ]
+  },
+  "hilfe3_wort": "Boden (auch richtig: Oberfläche)",
+  "schwache": [
+   "Nur die Ansichten Steckbrief und Größen bearbeiten lassen, Umlauf danach.",
+   "Die acht Namen einmal laut in der Reihenfolge sprechen lassen.",
+   "Die Früchte-Reihe aus dem Zuhause-Auftrag im Unterricht legen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Abstände“. Warum können Größen und Abstände nie gleichzeitig maßstäblich sein? Lies die Zeile unter dem Bild.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Sonnensystem. Kompetenz E7 wie auf der Quellseite ew6. Von den sechs Fachwörtern des Regelhefts bleiben bewusst zwei; Dichte und Asteroidengürtel entfallen."
+ },
+ {
+  "id": "fw6",
+  "lernziel": "Die Schülerinnen und Schüler geben an, dass ein Lichtjahr eine Strecke ist, und wenden die Regel an: Je weiter ein Ziel entfernt ist, desto länger ist sein Licht zu uns unterwegs.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Für das Gespräch: das Blitz-Donner-Beispiel aus dem Zuhause-Auftrag.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Erde → Mond: 384 000 km, das Licht ist 1,3 Sekunden unterwegs · Erde → Sonne: 150 Mio. km, 8,3 Minuten · Erde → nächster Stern: gut 4 Lichtjahre, das Licht ist gut 4 Jahre unterwegs. Dazu: Wir sehen jedes Ziel so, wie es beim Start des Lichts war.",
+  "merksatz": [
+   "Strecke",
+   "länger"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Erde → Sonne",
+    "150 Mio. km",
+    "8,3 Minuten"
+   ],
+   [
+    "Erde → nächster Stern",
+    "gut 4 Lichtjahre",
+    "gut 4 Jahre"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Ein Lichtjahr ist eine Entfernung – die Strecke, die Licht in einem Jahr zurücklegt.",
+   "typische_fehler": [
+    "Das Wort „Jahr“ im Kompositum wird als Zeitangabe gedeutet."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "länger",
+    "Vergangenheit"
+   ],
+   "typische_fehler": [
+    "„weiter“ statt der Wortbank-Form „länger“.",
+    "Der Blick in die Vergangenheit wird für Einbildung gehalten."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das Licht der Sterne ist viele Jahre zu uns unterwegs. Es zeigt uns den Stern so, wie er beim Start des Lichts war. Darum blicken wir in die Vergangenheit.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Das Licht war viele Jahre unterwegs – wir sehen einen früheren Zustand.",
+    "Mit der Sonnen-Zeile begründet: Schon die Sonne sehen wir 8 Minuten verspätet."
+   ],
+   "typische_fehler": [
+    "„Weil die Sterne alt sind.“",
+    "Die Laufzeit wird dem Auge statt dem Licht zugeschrieben."
+   ]
+  },
+  "hilfe3_wort": "Vergangenheit",
+  "schwache": [
+   "Nur Mond und Sonne eintragen lassen, den Stern danach.",
+   "Die großen Zahlen mit dem Finger in Dreiergruppen lesen lassen.",
+   "Das Blitz-Donner-Beispiel vor der Simulation besprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Gehe mit „weiter ▶“ bis zur Andromeda-Galaxie – etwa 2,5 Millionen Lichtjahre.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungen im Weltall. Kompetenz UF4 wie auf der Quellseite ew7. Astronomische Werte als Näherungswerte kennzeichnen; die Rechnung 60 · 300 000 km entfällt bewusst."
+ },
+ {
+  "id": "fw7",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, wie das Fernrohr das Mondbild verändert: vergrößert (hier 4-fach), auf dem Kopf, und mit großer Öffnung heller – der Mond selbst bleibt, wo er ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ansichten aus diesem Lehrerteil als Karten. Optional: Lupe für den Zuhause-Versuch, echtes Fernrohr aus der Sammlung als Anschauung.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Ansichten als Karten zeigen: bloßes Auge → Mond klein, richtig herum, Lichtschwaches bleibt unsichtbar · mit Teleskop → Vergrößerung 4-fach, gelbe Marke liegt unten, Bild auf dem Kopf · große Öffnung → hell und lichtstark, kleine Öffnung → nur mäßig hell.",
+  "merksatz": [
+   "größer",
+   "heller"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Teleskop, große Öffnung",
+    "4-fach größer, auf dem Kopf",
+    "hell"
+   ],
+   [
+    "Teleskop, kleine Öffnung",
+    "4-fach größer, auf dem Kopf",
+    "nur mäßig hell"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Eine große Öffnung sammelt mehr Licht.",
+   "typische_fehler": [
+    "Größer und heller werden gleichgesetzt – die Öffnung ändert nur die Helligkeit."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Objektiv",
+    "Okular"
+   ],
+   "typische_fehler": [
+    "Objektiv und Okular werden vertauscht – Merkhilfe: das Okular ist am Auge."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nein. Der Mond bleibt, wo er ist. Das Fernrohr macht nur sein Bild größer – hier 4-fach – und stellt es auf den Kopf.",
+   "alternativen": [
+    "Rückmeldung der Simulation zitieren: Die Objekte bleiben, wo sie sind – nur das Bild wird größer.",
+    "Ergänzung: Mit großer Öffnung wird das Bild zusätzlich heller."
+   ],
+   "typische_fehler": [
+    "„Näher heranholen“ wird wörtlich verstanden.",
+    "Das Fernrohrbild soll aufrecht stehen."
+   ]
+  },
+  "hilfe3_wort": "größer",
+  "schwache": [
+   "Die gelbe Marke in beiden Ansichten mit dem Finger verfolgen lassen.",
+   "Zuerst nur bloßes Auge und Teleskop vergleichen, die Öffnungen danach.",
+   "Wortkarte anlegen: Okular = am Auge, Objektiv = am Objekt."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies in der Statuszeile, woraus die 4-fache Vergrößerung entsteht – aus den zwei Brennweiten der Linsen.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Fernrohr. Kompetenz UF4 wie auf der Quellseite ew8. Die Formel Vergrößerung = Brennweite Objektiv : Brennweite Okular fällt bewusst weg; die Anzeige „4-fach“ genügt."
+ },
+ {
+  "id": "fw8",
+  "lernziel": "Die Schülerinnen und Schüler schließen aus dem Vergleich von vier Sternen, dass ein Stern umso weiter entfernt ist, je kleiner sein gemessener Winkel p ist. Die Rechnung d = 1/p bleibt dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Statuszeilen aus diesem Lehrerteil als Karten. Für den Einstieg: der Daumen-Versuch aus dem Zuhause-Auftrag, ganz ohne Material.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Daumen-Versuch gemeinsam",
+  "ersatz_ohne_simulation": "Die vier Statuszeilen als Karten zeigen: Proxima Centauri → 0,7686″, 4,2 Lichtjahre · 61 Cygni → 0,2860″, 11,4 Lichtjahre · Wega → 0,1302″, 25,0 Lichtjahre · Polarstern → 0,0075″, 432,5 Lichtjahre, sein Sprung wird erst mit Lupe ×100 sichtbar.",
+  "merksatz": [
+   "kleiner",
+   "Winkeln"
+  ],
+  "tabelle_erwartet": [
+   [
+    "61 Cygni",
+    "0,2860",
+    "11,4"
+   ],
+   [
+    "Wega",
+    "0,1302",
+    "25,0"
+   ],
+   [
+    "Polarstern",
+    "0,0075",
+    "432,5"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Vergleich wie in der Tabelle: 0,1302″ ist der kleinere Winkel – Wega ist mit 25,0 Lichtjahren weiter weg als Proxima mit 4,2.",
+   "typische_fehler": [
+    "Die Regel wird umgedreht: großer Winkel wird mit großer Entfernung verbunden."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "kleiner",
+    "springt"
+   ],
+   "typische_fehler": [
+    "„weniger“ statt der Wortbank-Form „kleiner“.",
+    "Der Sprung wird dem Stern selbst zugeschrieben statt unserem Blickwechsel."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Erde wandert um die Sonne. Ein halbes Jahr später steht sie 2 AE weiter drüben, und wir schauen von der anderen Seite. Darum scheint der nahe Stern vor den fernen Sternen hin und her zu springen.",
+   "alternativen": [
+    "Mit dem Daumen-Versuch begründet: zwei Augen, zwei Blickrichtungen – der Daumen springt.",
+    "Verweis auf das Bild der Simulation: Januar und Juli, dazwischen 2 AE."
+   ],
+   "typische_fehler": [
+    "Der Stern soll sich selbst bewegen.",
+    "Der Sprung wird dem Teleskop oder der Lupe zugeschrieben."
+   ]
+  },
+  "hilfe3_wort": "springen",
+  "schwache": [
+   "Nur Proxima und Polarstern vergleichen lassen, die zwei mittleren Sterne danach.",
+   "Die vier Winkel der Größe nach ordnen lassen, bevor die Regel formuliert wird.",
+   "Den Daumen-Versuch vor der Simulation machen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies beim Polarstern weiter – vom Boden aus ist der Winkel nicht mehr messbar, die Raumsonde Gaia schafft es.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungsmessung. Kompetenz E6 („Untersuchungen und Experimente auswerten“) – einziger E6-Träger des Förderhefts, gesichert über den Vier-Sterne-Vergleich; die Rechnung 1/p entfällt bewusst (Seitenplan, geprüft am 04.09.2026)."
+ },
+ {
+  "id": "fw9",
+  "lernziel": "Die Schülerinnen und Schüler begründen, dass ein Stern seine Energie aus der Kernfusion bezieht (kein Verbrennen) und umso kürzer lebt, je größer seine Masse ist.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten. Für das Gespräch: die Bleistift-Notiz aus dem Alltag („Auch die Sonne geht einmal aus“).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die Ergebnisse als Karten zeigen: 1 Sonnenmasse → 10,0 Mrd. Jahre, gelb, am Ende bleibt ein Weißer Zwerg · 10 Sonnenmassen → 31,6 Mio. Jahre, blau-weiß, am Ende Supernova und Neutronenstern · Gegenprobe 25 → nur 3,2 Mio. Jahre.",
+  "merksatz": [
+   "Kernfusion",
+   "kürzer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "10 Sonnenmassen",
+    "31,6 Mio. Jahre",
+    "kürzer"
+   ],
+   [
+    "Gegenprobe 25",
+    "3,2 Mio. Jahre",
+    "noch kürzer"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Hinweis der Simulation: Im Kern verschmelzen Wasserstoffkerne zu Helium – kein Verbrennen, es gibt dort keinen Sauerstoff.",
+   "typische_fehler": [
+    "„Der Stern brennt“ – Verbrennen setzt Sauerstoff voraus, den es im Sternkern nicht gibt."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Helium",
+    "schneller"
+   ],
+   "typische_fehler": [
+    "„Feuer“ oder „Asche“ statt „Helium“.",
+    "Mio. und Mrd. werden beim Vergleichen verwechselt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der schwere Stern hat zwar mehr Brennstoff. Aber er presst seinen Kern stärker zusammen und verbraucht den Brennstoff viel schneller. Darum lebt er kürzer: 31,6 Mio. statt 10,0 Mrd. Jahre.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: doppelte Masse heißt rund 11-mal so hohe Leuchtkraft und nur noch etwa ein Sechstel der Lebensdauer.",
+    "Mit der Gegenprobe 25 begründet: noch schwerer, noch kürzer (3,2 Mio. Jahre)."
+   ],
+   "typische_fehler": [
+    "Nur der größere Vorrat wird gesehen, der schnellere Verbrauch fehlt im zweiten Schritt.",
+    "Mio. und Mrd. Jahre werden gleichgesetzt."
+   ]
+  },
+  "hilfe3_wort": "kürzer",
+  "schwache": [
+   "Mio. und Mrd. in der Tabelle farbig markieren lassen.",
+   "Nur die Sterne 1 und 10 vergleichen, die Gegenprobe danach.",
+   "Die Lebensdauern als verschieden lange Balken zeichnen lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „0,5“. Der leichte Stern lebt 56,6 Mrd. Jahre und leuchtet rötlich.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Energieumwandlungen in Sternen. Kompetenz E2 wie auf der Quellseite ew10. Leitplanke: Kernfusion ist Verschmelzen von Atomkernen, kein Verbrennen. Weißer Zwerg, Supernova und Neutronenstern stehen bewusst nur hier."
+ },
+ {
+  "id": "fw10",
+  "lernziel": "Die Schülerinnen und Schüler schließen aus den Sternzahlen in drei Blickrichtungen, dass die Milchstraße eine flache Scheibe ist und die Sonne nicht in ihrer Mitte steht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen und die Gegenprobe aus diesem Lehrerteil als Karten.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: zur Mitte → 203 Sterne im Blickfeld, hellstes Stück des Bandes · nach außen → 50 Sterne, Band schwächer · quer heraus → 5 Sterne, kaum Band. Gegenprobe Sonne in der Mitte → beide Richtungen längs durch die Scheibe wären gleich dicht; genau das sehen wir am Himmel nicht.",
+  "merksatz": [
+   "Scheibe",
+   "Mitte"
+  ],
+  "tabelle_erwartet": [
+   [
+    "nach außen",
+    "50",
+    "schwächer"
+   ],
+   [
+    "quer heraus",
+    "5",
+    "kaum Band"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Erklärung der Simulation: Längs durch die Scheibe stehen sehr viele Sterne hintereinander – das ergibt das milchige Band.",
+   "typische_fehler": [
+    "Das Band wird für eine echte Wolke gehalten."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "Scheibe",
+    "mehr"
+   ],
+   "typische_fehler": [
+    "„Kugel“ statt „Scheibe“.",
+    "mehr und heller werden vertauscht eingesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Nein. Zur Mitte sehen wir 203 Sterne, nach außen nur 50. Von der Mitte aus wären beide Richtungen gleich voll. Darum steht die Sonne nicht in der Mitte.",
+   "alternativen": [
+    "Die Gegenproben-Meldung zitieren: ein Band ohne helle und schwache Seite – genau das sehen wir nicht.",
+    "Zusatzwissen für das Gespräch: Die Sonne steht 26 000 Lichtjahre vom Zentrum – dieser Wert steht bewusst nur hier im Lehrerteil."
+   ],
+   "typische_fehler": [
+    "Die helle Seite wird mit „näher an der Sonne“ erklärt.",
+    "Die Wenn-dann-Logik der Gegenprobe wird als Tatsache gelesen."
+   ]
+  },
+  "hilfe3_wort": "Mitte",
+  "schwache": [
+   "Nur „zur Mitte“ und „quer heraus“ vergleichen lassen, „nach außen“ danach.",
+   "Die drei Sternzahlen als verschieden hohe Türme zeichnen lassen.",
+   "Die Ansicht mit dem Regler auf „von der Seite (90°)“ drehen: So flach ist die Scheibe."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drehe die Ansicht auf „von der Seite (90°)“. Die Scheibe ist hundertmal breiter als dick.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Milchstraße. Kompetenz UF4 wie auf der Quellseite ew11. Der Wert 26 000 Lichtjahre bleibt laut Seitenplan aus dem Merksatz und steht nur im Lehrerteil."
+ },
+ {
+  "id": "fw11",
+  "lernziel": "Die Schülerinnen und Schüler vergleichen das alte und das heutige Weltbild und begründen, dass sich das heutige durchgesetzt hat, weil es denselben Himmel ohne Zusatzkreise (Epizykel) erklärt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Statuszeilen aus diesem Lehrerteil als Karten. Für die Mars-Schleife: der Stuhl-Versuch aus dem Zuhause-Auftrag im Klassenraum.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die zwei Statuszeilen als Karten zeigen: Erde in der Mitte (alt) → Himmel gut vorhersagbar, aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen; die Anordnung selbst stimmt nicht · Sonne in der Mitte (heute) → derselbe Himmel, ohne einen einzigen Epizykel; so ist es heute gültig. Dazu: Der Mars läuft von der Erde aus zeitweise rückwärts – in beiden Modellen.",
+  "merksatz": [
+   "die Sonne",
+   "keine"
+  ],
+  "tabelle_erwartet": [
+   [
+    "heute",
+    "die Sonne",
+    "nein – keine"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Neue Beweise führten zum heliozentrischen Weltbild.",
+   "typische_fehler": [
+    "„Das alte war einfach dumm“ – dass es den Himmel gut vorhersagte, wird übersehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "die Sonne",
+    "einfacher"
+   ],
+   "typische_fehler": [
+    "„die Erde“ wird aus Gewohnheit eingesetzt.",
+    "„richtiger“ statt der Wortbank-Form „einfacher“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das heutige Weltbild ist einfacher, denn es braucht keine Zusatzkreise. Beide zeigen denselben Himmel – den Ausschlag gab die Einfachheit.",
+   "alternativen": [
+    "Mit dem Hinweis der Simulation ergänzt: Galilei sah 1610 die Jupitermonde und die Venusphasen – neue Beobachtungen sprachen für das heutige Bild.",
+    "Mit der Tabelle begründet: alt ja, heute keine Zusatzkreise."
+   ],
+   "typische_fehler": [
+    "richtig/falsch wird als Maßstab genommen statt einfacher/komplizierter.",
+    "Epizykel bleibt unübersetzt und unverstanden – immer „Zusatzkreis“ mitsprechen."
+   ]
+  },
+  "hilfe3_wort": "einfacher",
+  "schwache": [
+   "Das Wort „Zusatzkreis“ auf das alte Bild schreiben lassen.",
+   "Zuerst nur die Spalte „Wer steht in der Mitte?“ ausfüllen lassen.",
+   "Den Stuhl-Versuch zur Mars-Schleife gemeinsam vormachen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies den Hinweis der Simulation – Galilei sah 1610 die Jupitermonde: Also kreist nicht alles um die Erde.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Weltbilder. Kompetenz K1 (Quellseite ew12); die Beurteilung bleibt als gestützte Auswahl erhalten (B2, Seitenplan). Epizykel wird durchgehend als Zusatzkreis mitübersetzt."
+ },
+ {
+  "id": "fw12",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass man ein schwarzes Loch nicht direkt sehen kann, sondern es an seiner Wirkung auf das Licht in seiner Umgebung erkennt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Tuch, schwerer Ball und Murmel (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: weit weg → nur wenig zur Seite gezogen, läuft fast gerade weiter · mittel → läuft fast einmal ganz um das Loch herum und entkommt gerade noch · sehr nah → wird immer stärker gebogen und verschwindet im Ereignishorizont, kommt nie wieder heraus.",
+  "merksatz": [
+   "Ereignishorizont",
+   "Licht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "läuft fast einmal ums Loch herum",
+    "gerade noch"
+   ],
+   [
+    "sehr nah",
+    "wird verschluckt",
+    "nein"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Da kein Licht entkommt, sehen wir nur Schwarz.",
+   "typische_fehler": [
+    "Das schwarze Loch wird für einen dunklen, kalten Planeten gehalten."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gebogen",
+    "nichts"
+   ],
+   "typische_fehler": [
+    "„angezogen“ statt der Wortbank-Form „gebogen“.",
+    "„fast nichts“ – aus dem Ereignishorizont entkommt wirklich nichts."
+   ]
+  },
+  "a3": {
+   "erwartung": "Man sieht das Loch nicht. Aber das Licht in seiner Nähe wird gebogen, und heißes Gas leuchtet um das Loch herum. An dieser Wirkung erkennt man die Stelle – darum der Kreis auf der Karte.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: Der helle Ring ist nicht das Loch – er ist herumgelenktes Licht.",
+    "Mit der eigenen Tabelle begründet: Der gebogene Strahlweg verrät das Loch."
+   ],
+   "typische_fehler": [
+    "Man wolle das Loch als schwarzen Fleck direkt sehen – die Wirkung fehlt.",
+    "Der helle Ring wird für das Loch selbst gehalten."
+   ]
+  },
+  "hilfe3_wort": "Licht",
+  "schwache": [
+   "Die drei Strahlwege im Bild mit dem Finger nachfahren lassen.",
+   "Nur „weit weg“ und „sehr nah“ vergleichen lassen, „mittel“ danach.",
+   "Den Tuch-Versuch mit Ball und Murmel zuerst zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies den Hinweis zum orangen Band – heißes, kreisendes Gas; die Seite, die auf uns zukommt, leuchtet heller.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · schwarze Löcher. Kompetenz K2 (Quellseite ew13) – einziger K2-Träger des Förderhefts, deshalb laut Seitenplan nicht zusammengelegt."
+ },
+ {
+  "id": "fw13",
+  "lernziel": "Die Schülerinnen und Schüler beschreiben, dass das Weltall mit dem Urknall heiß und dicht begann und sich seitdem ausdehnt, sodass die Abstände zwischen den Galaxien immer größer werden.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Karten aus diesem Lehrerteil. Klassendemonstration: Luftballon mit drei aufgemalten Punkten (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Ballon-Demonstration gemeinsam",
+  "ersatz_ohne_simulation": "Die Karten zeigen: am Anfang → alles auf winzigem Raum, unvorstellbar heiß und dicht, Zeitanzeige: die allerersten Augenblicke · danach → die Galaxien rücken immer weiter auseinander, erste Sterne und Galaxien entstehen · am Ende → das heutige Weltall. Dazu der aufgeblasene Luftballon als Modell.",
+  "merksatz": [
+   "dicht",
+   "größer"
+  ],
+  "tabelle_erwartet": [
+   [
+    "in der Mitte des Ablaufs",
+    "rücken auseinander",
+    "erste Sterne und Galaxien entstehen"
+   ],
+   [
+    "am Ende des Ablaufs",
+    "weit auseinander",
+    "das heutige Weltall"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Rückmeldung der Simulation: Das Weltall dehnt sich seit dem Urknall aus.",
+   "typische_fehler": [
+    "Der Urknall wird als Explosion in einen schon fertigen Raum hinein gedacht."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "dicht",
+    "dehnt"
+   ],
+   "typische_fehler": [
+    "„dunkel“ statt „dicht“ – die Wörter klingen ähnlich.",
+    "„dreht“ statt „dehnt“ – Verwechslung der Verben."
+   ]
+  },
+  "a3": {
+   "erwartung": "Die Galaxien sind wie Punkte auf einem Ballon. Bläst man ihn auf, wächst jeder Abstand zwischen den Punkten. Genauso werden die Abstände zwischen den Galaxien immer größer.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: Fast alle Galaxien entfernen sich von uns – wie Punkte auf einem Luftballon.",
+    "Mit der eigenen Tabelle begründet: am Anfang eng zusammen, am Ende weit auseinander."
+   ],
+   "typische_fehler": [
+    "Die Galaxien sollen selbst durch einen fertigen Raum fliegen – es wächst der Raum dazwischen.",
+    "Milliarden und Millionen Jahre werden verwechselt."
+   ]
+  },
+  "hilfe3_wort": "größer",
+  "schwache": [
+   "Den Luftballon-Versuch real vorführen, bevor die Simulation startet.",
+   "Nur Anfang und Ende vergleichen lassen, die Mitte danach.",
+   "Die Zahl 13,8 Milliarden einmal mit allen Nullen anschreiben."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen der Simulation – eine fragt nach dem Alter des Weltalls.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Urknall. Kompetenz E5 wie auf der Quellseite ew14. Astronomische Werte als Modellwerte kennzeichnen; die Modellkritik am Ballon (AFB III) entfällt bewusst und bleibt dem Regelheft vorbehalten."
+ }
+]

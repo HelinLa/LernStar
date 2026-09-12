@@ -1,0 +1,711 @@
+<!-- ============================================================
+     bau_fahrrad.svg | Emmas Fahrrad und seine Beleuchtung
+     Fragment ohne <svg>-Wurzel. Eigene Verlaeufe/Filter: b_f*
+     Licht von oben links. Anker steht im Kommentar jedes Teils.
+     ============================================================ -->
+
+<linearGradient id="b_fRahmen" x1="0" y1="0" x2="0.35" y2="1">
+  <stop offset="0" stop-color="#8ADAE4"/><stop offset="0.16" stop-color="#3E9EAD"/>
+  <stop offset="0.52" stop-color="#1E6C79"/><stop offset="0.84" stop-color="#0F3D47"/>
+  <stop offset="1" stop-color="#256F7C"/>
+</linearGradient>
+<linearGradient id="b_fReifen" x1="0" y1="0" x2="0.3" y2="1">
+  <stop offset="0" stop-color="#4E5665"/><stop offset="0.3" stop-color="#252B34"/>
+  <stop offset="0.76" stop-color="#0E1116"/><stop offset="1" stop-color="#20252D"/>
+</linearGradient>
+<linearGradient id="b_fFelge" x1="0" y1="0" x2="0.25" y2="1">
+  <stop offset="0" stop-color="#F1F6FB"/><stop offset="0.3" stop-color="#C2CEDC"/>
+  <stop offset="0.66" stop-color="#8695A7"/><stop offset="1" stop-color="#B6C3D2"/>
+</linearGradient>
+<linearGradient id="b_fSattel" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#7A6049"/><stop offset="0.3" stop-color="#4E3B2C"/>
+  <stop offset="0.8" stop-color="#2A2018"/><stop offset="1" stop-color="#453427"/>
+</linearGradient>
+<linearGradient id="b_fGriff" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#4E555F"/><stop offset="0.42" stop-color="#23272E"/>
+  <stop offset="1" stop-color="#12151A"/>
+</linearGradient>
+<linearGradient id="b_fPlast" x1="0" y1="0" x2="0.32" y2="1">
+  <stop offset="0" stop-color="#626973"/><stop offset="0.22" stop-color="#343A42"/>
+  <stop offset="0.64" stop-color="#15181D"/><stop offset="1" stop-color="#2C323A"/>
+</linearGradient>
+<radialGradient id="b_fGlasAus" cx="0.36" cy="0.28" r="0.82">
+  <stop offset="0" stop-color="#F2F6F8"/><stop offset="0.34" stop-color="#CCD6DA"/>
+  <stop offset="0.72" stop-color="#9DAAB1"/><stop offset="1" stop-color="#71808A"/>
+</radialGradient>
+<radialGradient id="b_fGlasAn" cx="0.38" cy="0.32" r="0.84">
+  <stop offset="0" stop-color="#FFFEF7"/><stop offset="0.26" stop-color="#FFF3C8"/>
+  <stop offset="0.72" stop-color="#F8DFA0"/><stop offset="1" stop-color="#F0C468"/>
+</radialGradient>
+<radialGradient id="b_fReflex" cx="0.4" cy="0.32" r="0.8">
+  <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.4" stop-color="#DFE9EF"/>
+  <stop offset="0.8" stop-color="#A7B5BF"/><stop offset="1" stop-color="#7B8A94"/>
+</radialGradient>
+<linearGradient id="b_fRotAus" x1="0" y1="0" x2="0.25" y2="1">
+  <stop offset="0" stop-color="#AE4E40"/><stop offset="0.28" stop-color="#7E241C"/>
+  <stop offset="0.74" stop-color="#4C110C"/><stop offset="1" stop-color="#6D2018"/>
+</linearGradient>
+<radialGradient id="b_fRotAn" cx="0.4" cy="0.32" r="0.86">
+  <stop offset="0" stop-color="#FFE7D8"/><stop offset="0.2" stop-color="#FF7454"/>
+  <stop offset="0.62" stop-color="#E52512"/><stop offset="1" stop-color="#A20D06"/>
+</radialGradient>
+<radialGradient id="b_fRotSchein" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#FF6B52" stop-opacity="0.9"/>
+  <stop offset="0.38" stop-color="#EE2A14" stop-opacity="0.34"/>
+  <stop offset="1" stop-color="#C01508" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="b_fKupfer" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFE4B8"/><stop offset="0.24" stop-color="#EAA75F"/>
+  <stop offset="0.56" stop-color="#C0762E"/><stop offset="0.82" stop-color="#8A4C16"/>
+  <stop offset="1" stop-color="#D68C4C"/>
+</linearGradient>
+<linearGradient id="b_fIso" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#5B626D"/><stop offset="0.26" stop-color="#2B3038"/>
+  <stop offset="0.72" stop-color="#111419"/><stop offset="1" stop-color="#282D35"/>
+</linearGradient>
+<linearGradient id="b_fKette" x1="0" y1="0" x2="0.2" y2="1">
+  <stop offset="0" stop-color="#CBD5E0"/><stop offset="0.42" stop-color="#7E8B9B"/>
+  <stop offset="1" stop-color="#434C59"/>
+</linearGradient>
+<clipPath id="b_fClipKopf"><rect x="-216" y="-472" width="432" height="472"/></clipPath>
+
+<!-- Speichenrad, Mittelpunkt 0,0, Aussenradius 120. Nur als Baustein. -->
+<g id="b_fRad">
+  <circle cx="0" cy="0" r="110" fill="none" stroke="url(#b_fReifen)" stroke-width="21"/>
+  <circle cx="0" cy="0" r="115.5" fill="none" stroke="#3B424C" stroke-width="9" stroke-opacity="0.55"
+          stroke-dasharray="7 8.8"/>
+  <circle cx="0" cy="0" r="120" fill="none" stroke="#0A0C10" stroke-width="1.8" stroke-opacity="0.55"/>
+  <path d="M -78,-78 A 110 110 0 0 1 24,-107" fill="none" stroke="#A9B6C6" stroke-width="4"
+        stroke-opacity="0.34" stroke-linecap="round"/>
+  <ellipse cx="0" cy="98" rx="66" ry="13" fill="url(#stahlWarm)" opacity="0.4"/>
+  <!-- Speichen -->
+  <g stroke="#C3CEDC" stroke-width="2.2" stroke-linecap="round" opacity="0.92">
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(0)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(25.71)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(51.43)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(77.14)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(102.86)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(128.57)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(154.29)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(180)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(205.71)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(231.43)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(257.14)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(282.86)"/>
+    <line x1="3" y1="-13" x2="0" y2="-90" transform="rotate(308.57)"/>
+    <line x1="-3" y1="-13" x2="0" y2="-90" transform="rotate(334.29)"/>
+  </g>
+  <!-- Felge als Doppelring -->
+  <circle cx="0" cy="0" r="94.5" fill="none" stroke="url(#b_fFelge)" stroke-width="12"/>
+  <circle cx="0" cy="0" r="100.5" fill="none" stroke="#3D4653" stroke-width="1.6" stroke-opacity="0.75"/>
+  <circle cx="0" cy="0" r="88.5" fill="none" stroke="#3D4653" stroke-width="1.6" stroke-opacity="0.75"/>
+  <circle cx="0" cy="0" r="94.5" fill="none" stroke="#0F131A" stroke-width="2.6" stroke-opacity="0.28"
+          stroke-dasharray="1.6 24.4"/>
+  <path d="M -67,-67 A 94.5 94.5 0 0 1 30,-89.6" fill="none" stroke="#FFFFFF" stroke-width="4.4"
+        stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M 67,67 A 94.5 94.5 0 0 1 -30,89.6" fill="none" stroke="#0B0E14" stroke-width="4"
+        stroke-opacity="0.3" stroke-linecap="round"/>
+  <!-- Nabe -->
+  <circle cx="0" cy="0" r="14" fill="url(#stahl)"/>
+  <circle cx="0" cy="0" r="14" fill="none" stroke="#20262F" stroke-width="1.6" stroke-opacity="0.6"/>
+  <ellipse cx="-4" cy="-5" rx="6" ry="4" fill="url(#glanz)"/>
+  <circle cx="0" cy="0" r="4.6" fill="#232A34"/>
+</g>
+
+<!-- t_fahrrad | Alltagsrad von der Seite, faehrt nach rechts | nominal 640 x 380
+     | Anker: Bodenlinie, Mitte zwischen den Radaufstandspunkten -->
+<g id="t_fahrrad">
+  <ellipse cx="4" cy="4" rx="286" ry="15" fill="#241704" opacity="0.30" filter="url(#tiefe)"/>
+
+  <!-- Raeder -->
+  <use href="#b_fRad" transform="translate(-186,-120)"/>
+  <use href="#b_fRad" transform="translate(186,-120)"/>
+
+  <!-- Gepaecktraeger (hinten, hinter dem Rahmen) -->
+  <g stroke="#606C7B" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M -282,-263 L -193,-128"/>
+    <path d="M -150,-266 L -104,-247"/>
+  </g>
+  <g stroke="#D2DBE6" stroke-width="1.8" stroke-linecap="round" fill="none" stroke-opacity="0.65">
+    <path d="M -284,-262 L -195,-129"/>
+    <path d="M -152,-265 L -106,-246"/>
+  </g>
+  <g filter="url(#kontakt)">
+    <rect x="-300" y="-272" width="164" height="9" rx="4.5" fill="url(#b_fFelge)"/>
+  </g>
+  <rect x="-300" y="-272" width="164" height="3" rx="1.5" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="-300" y="-266" width="164" height="4" rx="2" fill="#0F131A" opacity="0.42"/>
+  <rect x="-296" y="-262" width="156" height="3.4" rx="1.7" fill="#5E6A79" opacity="0.6"/>
+  <g stroke="#8C99AA" stroke-width="2.6" stroke-opacity="0.75" fill="none">
+    <path d="M -292,-268 L -292,-263"/><path d="M -256,-268 L -256,-263"/>
+    <path d="M -220,-268 L -220,-263"/><path d="M -184,-268 L -184,-263"/>
+    <path d="M -148,-268 L -148,-263"/>
+  </g>
+
+  <!-- Schutzbleche -->
+  <g filter="url(#kontakt)">
+    <path d="M -60.1,-165.8 A 134 134 0 0 0 -311.9,-165.8 L -302.5,-162.4 A 124 124 0 0 1 -69.5,-162.4 Z"
+          fill="url(#blech)"/>
+    <path d="M 60.1,-165.8 A 134 134 0 0 1 318,-143.3 L 308.1,-141.5 A 124 124 0 0 0 69.5,-162.4 Z"
+          fill="url(#blech)"/>
+  </g>
+  <path d="M -60.1,-165.8 A 134 134 0 0 0 -311.9,-165.8" fill="none" stroke="#FFFFFF"
+        stroke-width="3" stroke-opacity="0.5"/>
+  <path d="M 60.1,-165.8 A 134 134 0 0 1 318,-143.3" fill="none" stroke="#FFFFFF"
+        stroke-width="3" stroke-opacity="0.5"/>
+  <path d="M -69.5,-162.4 A 124 124 0 0 1 -302.5,-162.4" fill="none" stroke="#1A2029"
+        stroke-width="2.4" stroke-opacity="0.5"/>
+  <path d="M 69.5,-162.4 A 124 124 0 0 1 308.1,-141.5" fill="none" stroke="#1A2029"
+        stroke-width="2.4" stroke-opacity="0.5"/>
+  <path d="M -120,-248 A 134 134 0 0 0 -232,-244" fill="none" stroke="#FFFFFF"
+        stroke-width="5" stroke-opacity="0.35" stroke-linecap="round"/>
+  <path d="M 122,-247 A 134 134 0 0 1 232,-244" fill="none" stroke="#FFFFFF"
+        stroke-width="5" stroke-opacity="0.35" stroke-linecap="round"/>
+
+  <!-- Kette -->
+  <path d="M -21.3,-133.6 L -183.9,-133.8" stroke="#20262E" stroke-width="5.8" stroke-linecap="round" fill="none"/>
+  <path d="M -32.7,-58.4 Q -110,-74.3 -188.1,-106.2" stroke="#20262E" stroke-width="5.8" stroke-linecap="round" fill="none"/>
+  <path d="M -21.3,-133.6 L -183.9,-133.8" stroke="url(#b_fKette)" stroke-width="3.6" fill="none"
+        stroke-dasharray="3 3.2"/>
+  <path d="M -32.7,-58.4 Q -110,-74.3 -188.1,-106.2" stroke="url(#b_fKette)" stroke-width="3.6" fill="none"
+        stroke-dasharray="3 3.2"/>
+  <!-- Ritzel -->
+  <circle cx="-186" cy="-120" r="15.6" fill="none" stroke="#5D6A7B" stroke-width="3" stroke-dasharray="2 2.51"/>
+  <circle cx="-186" cy="-120" r="13" fill="url(#stahl)"/>
+  <circle cx="-186" cy="-120" r="5" fill="#242A33"/>
+
+  <!-- Rahmen -->
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#08252B" stroke-opacity="0.55">
+      <path d="M -27,-96 L -83,-279" stroke-width="17"/>
+      <path d="M -27,-96 L 129,-234" stroke-width="18"/>
+      <path d="M -83,-279 L 115,-274" stroke-width="16"/>
+      <path d="M -83,-279 L -186,-120" stroke-width="11"/>
+      <path d="M -27,-96 L -186,-120" stroke-width="12"/>
+      <path d="M 115,-274 L 129,-234" stroke-width="21"/>
+    </g>
+    <g stroke="url(#b_fRahmen)">
+      <path d="M -27,-96 L -83,-279" stroke-width="13.5"/>
+      <path d="M -27,-96 L 129,-234" stroke-width="14.5"/>
+      <path d="M -83,-279 L 115,-274" stroke-width="12.5"/>
+      <path d="M -83,-279 L -186,-120" stroke-width="7.6"/>
+      <path d="M -27,-96 L -186,-120" stroke-width="8.6"/>
+      <path d="M 115,-274 L 129,-234" stroke-width="17.5"/>
+    </g>
+    <!-- Kantenglanz oben links -->
+    <g stroke="#A7E6EF" stroke-opacity="0.7" stroke-width="3" transform="translate(-2.6,-2.6)">
+      <path d="M -31,-108 L -79,-266"/>
+      <path d="M -18,-106 L 121,-228"/>
+      <path d="M -74,-278 L 106,-274"/>
+      <path d="M -87,-272 L -179,-130"/>
+      <path d="M -36,-99 L -177,-121"/>
+      <path d="M 116,-268 L 127,-240"/>
+    </g>
+    <!-- Schatten unten rechts -->
+    <g stroke="#07222A" stroke-opacity="0.45" stroke-width="2.6" transform="translate(2.6,2.8)">
+      <path d="M -31,-108 L -79,-266"/>
+      <path d="M -18,-106 L 121,-228"/>
+      <path d="M -74,-278 L 106,-274"/>
+      <path d="M -36,-99 L -177,-121"/>
+    </g>
+  </g>
+  <!-- warmer Rueckwurf unter den Rohren -->
+  <ellipse cx="50" cy="-152" rx="70" ry="9" fill="url(#stahlWarm)" opacity="0.42" transform="rotate(-41.5 50 -152)"/>
+  <ellipse cx="-106" cy="-104" rx="62" ry="7" fill="url(#stahlWarm)" opacity="0.38" transform="rotate(8.6 -106 -104)"/>
+
+  <!-- Tretlager, Kettenblatt, Kurbel, Pedal -->
+  <g transform="translate(-91,-137) rotate(-11)">
+    <rect x="-17" y="-6" width="34" height="12" rx="3" fill="#1B2029"/>
+    <rect x="-17" y="-6" width="34" height="2.6" rx="1.3" fill="#6E7784" opacity="0.5"/>
+  </g>
+  <path d="M -27,-96 L -87,-134" stroke="#39414D" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <path d="M -32,-99 L -84,-132" stroke="#7C8794" stroke-width="2.6" stroke-opacity="0.45" fill="none"/>
+  <circle cx="-27" cy="-96" r="40" fill="none" stroke="#8494A6" stroke-width="5" stroke-dasharray="3 3.98"/>
+  <circle cx="-27" cy="-96" r="35" fill="url(#stahl)"/>
+  <circle cx="-27" cy="-96" r="35" fill="none" stroke="#1D242D" stroke-width="1.8" stroke-opacity="0.6"/>
+  <g fill="#3C4553" opacity="0.8">
+    <circle cx="-11" cy="-112" r="8"/><circle cx="-43" cy="-112" r="8"/>
+    <circle cx="-43" cy="-80" r="8"/><circle cx="-11" cy="-80" r="8"/>
+  </g>
+  <ellipse cx="-38" cy="-108" rx="13" ry="8" fill="url(#glanz)"/>
+  <circle cx="-27" cy="-96" r="12" fill="url(#stahl)"/>
+  <circle cx="-27" cy="-96" r="4.4" fill="#20262F"/>
+  <g filter="url(#kontakt)">
+    <path d="M -27,-96 L 33,-58" stroke="url(#b_fFelge)" stroke-width="13" stroke-linecap="round" fill="none"/>
+  </g>
+  <path d="M -22,-100 L 30,-64" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.5" stroke-linecap="round" fill="none"/>
+  <g transform="translate(33,-58) rotate(-11)">
+    <rect x="-20" y="-7" width="40" height="14" rx="3.5" fill="url(#b_fPlast)"/>
+    <rect x="-20" y="-7" width="40" height="3.4" rx="1.7" fill="#FFFFFF" opacity="0.25"/>
+    <g fill="#0D1014" opacity="0.55">
+      <rect x="-14" y="-4" width="2.6" height="8"/><rect x="-6" y="-4" width="2.6" height="8"/>
+      <rect x="2" y="-4" width="2.6" height="8"/><rect x="10" y="-4" width="2.6" height="8"/>
+    </g>
+  </g>
+
+  <!-- Sattelstuetze und Sattel -->
+  <path d="M -83,-279 L -95,-336" stroke="url(#b_fFelge)" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <path d="M -87,-282 L -98,-332" stroke="#FFFFFF" stroke-width="2.6" stroke-opacity="0.5" fill="none"/>
+  <ellipse cx="-95" cy="-330" rx="13" ry="7" fill="#2C3542"/>
+  <g filter="url(#kontakt)">
+    <path d="M -34,-333 C -58,-349 -94,-359 -126,-357 C -148,-355 -157,-346 -153,-337
+             C -150,-329 -134,-323 -110,-322 C -80,-321 -50,-327 -35,-330 Z" fill="url(#b_fSattel)"/>
+  </g>
+  <path d="M -36,-335 C -58,-350 -94,-357 -124,-355 C -142,-353 -150,-347 -149,-340"
+        fill="none" stroke="#C4A886" stroke-width="3.4" stroke-opacity="0.6" stroke-linecap="round"/>
+  <path d="M -150,-331 C -142,-326 -122,-322 -104,-322 C -76,-322 -52,-326 -36,-329"
+        fill="none" stroke="#100B07" stroke-width="3.4" stroke-opacity="0.5" stroke-linecap="round"/>
+  <path d="M -46,-336 C -74,-345 -104,-350 -128,-349" fill="none" stroke="#0E0A07"
+        stroke-width="1.8" stroke-opacity="0.4"/>
+  <ellipse cx="-104" cy="-346" rx="26" ry="7" fill="url(#glanz)" opacity="0.28"/>
+
+  <!-- Vorbau, Lenker, Griff, Bremshebel -->
+  <path d="M 115,-274 L 106,-333" stroke="url(#b_fFelge)" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M 111,-278 L 103,-329" stroke="#FFFFFF" stroke-width="2.8" stroke-opacity="0.5" fill="none"/>
+  <path d="M 106,-334 C 120,-346 116,-355 98,-354 C 78,-353 62,-347 46,-340"
+        stroke="#26303B" stroke-width="12.5" stroke-linecap="round" fill="none"/>
+  <path d="M 106,-334 C 120,-346 116,-355 98,-354 C 78,-353 62,-347 46,-340"
+        stroke="url(#b_fFelge)" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M 108,-337 C 117,-345 113,-351 98,-350.5 C 80,-350 64,-344 50,-338"
+        stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.5" fill="none"/>
+  <path d="M 88,-350 C 74,-348 60,-343 47,-338" stroke="url(#b_fGriff)" stroke-width="14"
+        stroke-linecap="round" fill="none"/>
+  <path d="M 87,-353 C 74,-351 62,-346 50,-342" stroke="#7C8590" stroke-width="2.4"
+        stroke-opacity="0.5" stroke-linecap="round" fill="none"/>
+  <path d="M 96,-352 C 112,-346 124,-340 133,-333" stroke="#4A535F" stroke-width="6"
+        stroke-linecap="round" fill="none"/>
+  <path d="M 96,-352 C 112,-346 124,-340 133,-333" stroke="url(#b_fFelge)" stroke-width="3.6"
+        stroke-linecap="round" fill="none"/>
+
+  <!-- Gabelkrone, Steuersatz -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M 133,-227 C 152,-188 173,-153 186,-120" stroke="#08252B" stroke-opacity="0.55" stroke-width="13"/>
+    <path d="M 133,-227 C 152,-188 173,-153 186,-120" stroke="url(#b_fRahmen)" stroke-width="9.6"/>
+    <path d="M 130,-224 C 148,-188 169,-154 182,-124" stroke="#A7E6EF" stroke-opacity="0.6" stroke-width="2.6"/>
+  </g>
+  <rect x="106" y="-282" width="20" height="9" rx="4.5" fill="url(#b_fFelge)"/>
+  <rect x="120" y="-236" width="24" height="10" rx="5" fill="url(#b_fFelge)"/>
+  <circle cx="-186" cy="-120" r="6" fill="#2C3542"/>
+  <circle cx="186" cy="-120" r="6" fill="#2C3542"/>
+
+  <!-- Dynamo, Kabel und Frontlampe -->
+  <circle cx="167" cy="-157" r="6" fill="url(#b_fFelge)"/>
+  <path d="M 165,-161 L 139,-207" stroke="#0B0D11" stroke-width="19" stroke-linecap="round"
+        fill="none" stroke-opacity="0.65"/>
+  <path d="M 165,-161 L 139,-207" stroke="url(#b_fPlast)" stroke-width="15" stroke-linecap="round" fill="none"/>
+  <path d="M 161,-167 L 137,-202" stroke="#9AA3B0" stroke-width="2.6" stroke-opacity="0.55" fill="none"/>
+  <ellipse cx="135" cy="-214" rx="9" ry="6.4" fill="url(#b_fFelge)" transform="rotate(62 135 -214)"/>
+  <ellipse cx="135" cy="-214" rx="9" ry="6.4" fill="none" stroke="#3D4653" stroke-width="1.5"
+           stroke-opacity="0.7" transform="rotate(62 135 -214)"/>
+  <path d="M 158,-172 C 147,-196 139,-215 145,-231" stroke="#12151B" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+  <path d="M 145,-231 C 149,-239 153,-242 158,-242" stroke="#12151B" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+  <path d="M 150,-240 L 137,-231" stroke="#5D6875" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g filter="url(#kontakt)">
+    <ellipse cx="150" cy="-243" rx="5" ry="14" fill="#7E8B9B"/>
+    <rect x="150" y="-257" width="36" height="28" rx="8" fill="url(#blech)"/>
+    <rect x="182" y="-259" width="9" height="32" rx="4" fill="url(#b_fFelge)"/>
+    <ellipse cx="195" cy="-243" rx="7.5" ry="15" fill="url(#b_fGlasAus)"/>
+  </g>
+  <rect x="153" y="-255" width="28" height="4.4" rx="2.2" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="153" y="-233" width="30" height="4" rx="2" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="195" cy="-243" rx="7.5" ry="15" fill="none" stroke="#59636F" stroke-width="2.2" stroke-opacity="0.85"/>
+  <ellipse cx="194" cy="-248" rx="2.6" ry="5" fill="url(#glanz)" opacity="0.7"/>
+
+  <!-- Ruecklicht am hinteren Schutzblech -->
+  <g filter="url(#kontakt)">
+    <rect x="-316" y="-162" width="15" height="21" rx="4" fill="url(#b_fRotAus)"/>
+  </g>
+  <rect x="-313" y="-159" width="9" height="15" rx="2.5" fill="#8E2419"/>
+  <rect x="-316" y="-162" width="15" height="3" rx="1.5" fill="#FFFFFF" opacity="0.3"/>
+</g>
+
+<!-- t_fahrrad_kopf | Vorderpartie schraeg von vorn: Gabel, Rad, Schutzblech,
+     Lampe, Dynamo, Kabel | nominal 420 x 460 | Anker: unten Mitte -->
+<g id="t_fahrrad_kopf">
+ <g clip-path="url(#b_fClipKopf)">
+
+  <!-- hintere (ferne) Gabelscheide -->
+  <path d="M -65,-214 C -62,-188 -58,-166 -55,-146" stroke="#08252B" stroke-width="17"
+        stroke-linecap="round" fill="none"/>
+  <path d="M -65,-214 C -62,-188 -58,-166 -55,-146" stroke="#175662" stroke-width="13"
+        stroke-linecap="round" fill="none"/>
+
+  <!-- Vorderrad und Schutzblech, perspektivisch gestaucht -->
+  <g transform="translate(5,60) scale(0.835,1)">
+    <circle cx="0" cy="0" r="216.5" fill="none" stroke="url(#b_fReifen)" stroke-width="28"/>
+    <circle cx="0" cy="0" r="217" fill="none" stroke="#3B424C" stroke-width="15" stroke-opacity="0.5"
+            stroke-dasharray="12 15.1"/>
+    <circle cx="0" cy="0" r="230" fill="none" stroke="#0A0C10" stroke-width="2.4" stroke-opacity="0.55"/>
+    <path d="M -146,-146 A 206 206 0 0 1 40,-202" fill="none" stroke="#A9B6C6" stroke-width="6"
+          stroke-opacity="0.3" stroke-linecap="round"/>
+    <g stroke="#C3CEDC" stroke-width="4" stroke-linecap="round" opacity="0.9">
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(0)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(25.71)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(51.43)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(77.14)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(102.86)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(128.57)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(154.29)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(180)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(205.71)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(231.43)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(257.14)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(282.86)"/>
+      <line x1="5" y1="-26" x2="0" y2="-176" transform="rotate(308.57)"/>
+      <line x1="-5" y1="-26" x2="0" y2="-176" transform="rotate(334.29)"/>
+    </g>
+    <circle cx="0" cy="0" r="190.5" fill="none" stroke="url(#b_fFelge)" stroke-width="25"/>
+    <circle cx="0" cy="0" r="203" fill="none" stroke="#3D4653" stroke-width="2.4" stroke-opacity="0.75"/>
+    <circle cx="0" cy="0" r="178" fill="none" stroke="#3D4653" stroke-width="2.4" stroke-opacity="0.75"/>
+    <path d="M -134,-134 A 190.5 190.5 0 0 1 36,-187" fill="none" stroke="#FFFFFF" stroke-width="7"
+          stroke-opacity="0.5" stroke-linecap="round"/>
+    <!-- Schutzblech -->
+    <path d="M -240.6,-51.1 A 246 246 0 0 1 240.6,-51.1 L 226.9,-48.2 A 232 232 0 0 0 -226.9,-48.2 Z"
+          fill="url(#blech)"/>
+    <g transform="translate(0,-7)">
+      <path d="M -243.6,-51.8 A 249 249 0 0 1 243.6,-51.8" fill="none" stroke="#DEE8F0"
+            stroke-width="11" stroke-opacity="0.92" stroke-linecap="round"/>
+    </g>
+    <path d="M -240.6,-51.1 A 246 246 0 0 1 240.6,-51.1" fill="none" stroke="#5D6875"
+          stroke-width="2.4" stroke-opacity="0.55"/>
+    <path d="M -226.9,-48.2 A 232 232 0 0 1 226.9,-48.2" fill="none" stroke="#20262F"
+          stroke-width="3" stroke-opacity="0.5"/>
+    <path d="M -128,-208 A 246 246 0 0 1 -8,-246" fill="none" stroke="#FFFFFF" stroke-width="7"
+          stroke-opacity="0.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- nahe Gabelscheide -->
+  <path d="M -26,-198 C -16,-118 4,-28 19,60" stroke="#08252B" stroke-width="21"
+        stroke-linecap="round" fill="none" stroke-opacity="0.6"/>
+  <path d="M -26,-198 C -16,-118 4,-28 19,60" stroke="url(#b_fRahmen)" stroke-width="17"
+        stroke-linecap="round" fill="none"/>
+  <path d="M -31,-192 C -22,-118 -2,-30 13,56" stroke="#A7E6EF" stroke-width="4"
+        stroke-opacity="0.65" fill="none"/>
+  <path d="M -19,-190 C -10,-118 10,-30 25,56" stroke="#062027" stroke-width="3.4"
+        stroke-opacity="0.45" fill="none"/>
+
+  <!-- Gabelkrone und Steuerrohr -->
+  <g filter="url(#kontakt)">
+    <path d="M -72,-186 C -78,-208 -68,-220 -44,-221 L -22,-221 C -2,-220 2,-208 -6,-186 Z"
+          fill="url(#b_fRahmen)"/>
+  </g>
+  <path d="M -70,-200 C -68,-214 -56,-219 -42,-219" fill="none" stroke="#A7E6EF" stroke-width="4"
+        stroke-opacity="0.7" stroke-linecap="round"/>
+  <path d="M -34,-206 L -70,-322" fill="none" stroke="#08252B" stroke-width="26"
+        stroke-linecap="round" stroke-opacity="0.6"/>
+  <path d="M -34,-206 L -70,-322" stroke="url(#b_fRahmen)" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <path d="M -42,-210 L -77,-318" stroke="#A7E6EF" stroke-width="5" stroke-opacity="0.65"
+        stroke-linecap="round" fill="none"/>
+  <path d="M -26,-212 L -62,-320" stroke="#062027" stroke-width="4.4" stroke-opacity="0.45"
+        stroke-linecap="round" fill="none"/>
+  <ellipse cx="-68" cy="-320" rx="18" ry="7.5" fill="url(#b_fFelge)" transform="rotate(-17 -68 -320)"/>
+  <g transform="rotate(-17 -38 -210)">
+    <rect x="-52" y="-216" width="29" height="10" rx="4.5" fill="url(#b_fFelge)"/>
+    <ellipse cx="-37.5" cy="-216" rx="14.5" ry="5" fill="#C6D2DE"/>
+    <ellipse cx="-37.5" cy="-216" rx="14.5" ry="5" fill="none" stroke="#5D6875" stroke-width="1.4" stroke-opacity="0.6"/>
+    <rect x="-50" y="-214" width="24" height="2.6" rx="1.3" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+
+  <!-- Vorbau und Lenker -->
+  <path d="M -69,-318 L -90,-400" stroke="url(#b_fFelge)" stroke-width="19" stroke-linecap="round" fill="none"/>
+  <path d="M -75,-318 L -95,-394" stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.55" fill="none"/>
+  <path d="M -160,-414 C -130,-408 -112,-403 -90,-400 C -54,-396 8,-387 74,-378"
+        stroke="#26303B" stroke-width="19" stroke-linecap="round" fill="none"/>
+  <path d="M -160,-414 C -130,-408 -112,-403 -90,-400 C -54,-396 8,-387 74,-378"
+        stroke="url(#b_fFelge)" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M -156,-418 C -126,-412 -108,-407 -88,-404 C -52,-400 8,-391 72,-382"
+        stroke="#FFFFFF" stroke-width="3.6" stroke-opacity="0.5" fill="none"/>
+  <path d="M 20,-384 C 40,-381 58,-379 74,-377" stroke="url(#b_fGriff)" stroke-width="23"
+        stroke-linecap="round" fill="none"/>
+  <path d="M 22,-390 C 42,-387 58,-385 72,-383" stroke="#7C8590" stroke-width="3.4"
+        stroke-opacity="0.5" stroke-linecap="round" fill="none"/>
+  <path d="M -158,-414 C -142,-412 -132,-410 -124,-409" stroke="url(#b_fGriff)" stroke-width="17"
+        stroke-linecap="round" fill="none"/>
+  <rect x="-98" y="-408" width="18" height="16" rx="4" fill="url(#b_fFelge)"/>
+
+  <!-- Dynamo -->
+  <g filter="url(#kontakt)">
+    <rect x="-13" y="-44" width="28" height="17" rx="4" fill="url(#b_fFelge)"/>
+    <rect x="-17" y="-126" width="34" height="86" rx="12" fill="url(#b_fPlast)"/>
+    <rect x="-11" y="-138" width="22" height="15" rx="4" fill="url(#b_fFelge)"/>
+    <rect x="-16" y="-157" width="32" height="20" rx="4" fill="url(#stahl)"/>
+  </g>
+  <ellipse cx="0" cy="-157" rx="16" ry="5.2" fill="url(#b_fFelge)"/>
+  <g stroke="#4A535F" stroke-width="1.6" stroke-opacity="0.8">
+    <path d="M -12,-154 L -12,-140"/><path d="M -7,-155 L -7,-139"/><path d="M -2,-156 L -2,-138"/>
+    <path d="M 3,-156 L 3,-138"/><path d="M 8,-155 L 8,-139"/><path d="M 12,-154 L 12,-140"/>
+  </g>
+  <rect x="-13" y="-122" width="7" height="76" rx="3.5" fill="#FFFFFF" opacity="0.16"/>
+  <rect x="-17" y="-126" width="34" height="86" rx="12" fill="none" stroke="#080A0D"
+        stroke-width="2" stroke-opacity="0.55"/>
+  <ellipse cx="0" cy="-50" rx="14" ry="6" fill="url(#stahlWarm)" opacity="0.45"/>
+  <rect x="14" y="-96" width="16" height="18" rx="4" fill="url(#b_fPlast)"/>
+  <circle cx="22" cy="-87" r="4.4" fill="url(#stahl)"/>
+  <circle cx="1" cy="-35" r="5.4" fill="url(#stahl)"/>
+  <rect x="-2.4" y="-36.4" width="6.8" height="2.4" rx="1.2" fill="#242A33"/>
+
+  <!-- Kabel an der Gabel entlang nach oben -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M 30,-87 C 38,-122 10,-162 -12,-198" stroke="#0F1218" stroke-width="6"/>
+    <path d="M 30,-87 C 38,-122 10,-162 -12,-198" stroke="#454D59" stroke-width="2.4" stroke-opacity="0.7"/>
+    <path d="M -14,-206 C -28,-252 -44,-300 -58,-352" stroke="#0F1218" stroke-width="6"/>
+    <path d="M -14,-206 C -28,-252 -44,-300 -58,-352" stroke="#454D59" stroke-width="2.4" stroke-opacity="0.7"/>
+    <path d="M -13,-200 C 2,-216 20,-221 37,-217" stroke="#0F1218" stroke-width="6"/>
+    <path d="M -13,-200 C 2,-216 20,-221 37,-217" stroke="#454D59" stroke-width="2.4" stroke-opacity="0.7"/>
+  </g>
+  <g fill="url(#b_fFelge)">
+    <rect x="14" y="-134" width="12" height="9" rx="3" transform="rotate(-30 20 -130)"/>
+    <rect x="-2" y="-186" width="12" height="9" rx="3" transform="rotate(-44 4 -182)"/>
+  </g>
+
+  <!-- Frontlampe -->
+  <path d="M -9,-209 C 26,-206 60,-201 86,-196" stroke="#48515C" stroke-width="11"
+        stroke-linecap="round" fill="none"/>
+  <path d="M -9,-209 C 26,-206 60,-201 86,-196" stroke="url(#b_fFelge)" stroke-width="7.6"
+        stroke-linecap="round" fill="none"/>
+  <path d="M -7,-212 C 26,-209 58,-204 84,-199" stroke="#FFFFFF" stroke-width="2.2"
+        stroke-opacity="0.6" fill="none"/>
+  <circle cx="-11" cy="-209" r="5.6" fill="url(#stahl)"/>
+  <circle cx="-11" cy="-209" r="2.2" fill="#242A33"/>
+  <g transform="translate(102,-218) rotate(6)">
+    <g filter="url(#kontakt)">
+      <ellipse cx="-58" cy="0" rx="9" ry="30" fill="#7E8B9B"/>
+      <rect x="-58" y="-30" width="76" height="60" rx="16" fill="url(#blech)"/>
+      <rect x="14" y="-35" width="15" height="70" rx="6" fill="url(#b_fFelge)"/>
+    </g>
+    <rect x="-70" y="-16" width="13" height="9" rx="3" fill="#4A535F"/>
+    <rect x="-70" y="6" width="13" height="9" rx="3" fill="#4A535F"/>
+    <rect x="-52" y="-27" width="58" height="7" rx="3.5" fill="#FFFFFF" opacity="0.45"/>
+    <rect x="-52" y="20" width="60" height="8" rx="4" fill="url(#stahlWarm)" opacity="0.5"/>
+    <rect x="-58" y="-30" width="76" height="60" rx="16" fill="none" stroke="#20262F"
+          stroke-width="2.2" stroke-opacity="0.5"/>
+    <ellipse cx="30" cy="0" rx="14" ry="30" fill="url(#b_fReflex)"/>
+    <g fill="none" stroke="#8FA0AC" stroke-width="1.8" stroke-opacity="0.8">
+      <ellipse cx="30" cy="0" rx="10.5" ry="23"/><ellipse cx="30" cy="0" rx="7" ry="15.5"/>
+      <ellipse cx="30" cy="0" rx="3.6" ry="8"/>
+    </g>
+    <circle cx="30" cy="0" r="3.4" fill="#EFE3BC"/>
+    <ellipse cx="34" cy="0" rx="16" ry="33" fill="url(#b_fGlasAus)" opacity="0.78"/>
+    <ellipse cx="34" cy="0" rx="16" ry="33" fill="none" stroke="#5D6875" stroke-width="3" stroke-opacity="0.8"/>
+    <ellipse cx="28" cy="-14" rx="5" ry="11" fill="url(#glanz)" opacity="0.5"/>
+    <path d="M -30,26 C -10,32 8,32 20,28" fill="none" stroke="#0E1319" stroke-width="3" stroke-opacity="0.35"/>
+  </g>
+ </g>
+</g>
+
+<!-- t_lampe_vorn_aus | Fahrrad-Frontlampe, aus | nominal 130 x 100 | Anker: Mitte des Halters unten -->
+<g id="t_lampe_vorn_aus">
+  <ellipse cx="-2" cy="1" rx="52" ry="7" fill="#241704" opacity="0.28" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-9" y="-36" width="18" height="32" rx="4" fill="url(#blech)"/>
+    <rect x="-15" y="-7" width="30" height="7" rx="3" fill="url(#b_fFelge)"/>
+  </g>
+  <rect x="-15" y="-7" width="30" height="2.6" rx="1.3" fill="#FFFFFF" opacity="0.45"/>
+  <circle cx="0" cy="-21" r="5.4" fill="url(#stahl)"/>
+  <rect x="-3.4" y="-22.2" width="6.8" height="2.4" rx="1.2" fill="#242A33"/>
+  <g filter="url(#kontakt)">
+    <ellipse cx="-45" cy="-59" rx="8" ry="29" fill="#7E8B9B"/>
+    <rect x="-45" y="-88" width="68" height="58" rx="15" fill="url(#blech)"/>
+    <rect x="19" y="-93" width="14" height="68" rx="6" fill="url(#b_fFelge)"/>
+  </g>
+  <rect x="-57" y="-74" width="13" height="9" rx="3" fill="#4A535F"/>
+  <rect x="-57" y="-56" width="13" height="9" rx="3" fill="#4A535F"/>
+  <circle cx="-52" cy="-69.5" r="2.4" fill="#C6D0DC"/>
+  <circle cx="-52" cy="-51.5" r="2.4" fill="#C6D0DC"/>
+  <rect x="-45" y="-88" width="68" height="58" rx="15" fill="none" stroke="#20262F"
+        stroke-width="2.2" stroke-opacity="0.5"/>
+  <rect x="-40" y="-85" width="55" height="6.5" rx="3.2" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="-40" y="-38" width="57" height="7" rx="3.5" fill="url(#stahlWarm)" opacity="0.5"/>
+  <rect x="-31" y="-80" width="8" height="46" rx="4" fill="#FFFFFF" opacity="0.14"/>
+  <ellipse cx="34" cy="-59" rx="13" ry="28" fill="url(#b_fReflex)"/>
+  <g fill="none" stroke="#8FA0AC" stroke-width="1.7" stroke-opacity="0.8">
+    <ellipse cx="34" cy="-59" rx="9.6" ry="21"/><ellipse cx="34" cy="-59" rx="6.2" ry="14"/>
+    <ellipse cx="34" cy="-59" rx="3.2" ry="7"/>
+  </g>
+  <circle cx="34" cy="-59" r="3.2" fill="#D9D2BC"/>
+  <ellipse cx="37" cy="-59" rx="15" ry="31" fill="url(#b_fGlasAus)" opacity="0.9"/>
+  <ellipse cx="37" cy="-59" rx="15" ry="31" fill="#7E8A92" opacity="0.2"/>
+  <ellipse cx="37" cy="-59" rx="15" ry="31" fill="none" stroke="#5D6875" stroke-width="3" stroke-opacity="0.85"/>
+  <ellipse cx="32" cy="-72" rx="4.6" ry="10" fill="url(#glanz)" opacity="0.45"/>
+</g>
+
+<!-- t_lampe_vorn_an | dieselbe Lampe, eingeschaltet | nominal 130 x 100 | Anker: Mitte des Halters unten -->
+<g id="t_lampe_vorn_an">
+  <ellipse cx="46" cy="-59" rx="52" ry="48" fill="url(#warmSchein)" filter="url(#schein)"/>
+  <ellipse cx="-2" cy="1" rx="52" ry="7" fill="#241704" opacity="0.24" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-9" y="-36" width="18" height="32" rx="4" fill="url(#blech)"/>
+    <rect x="-15" y="-7" width="30" height="7" rx="3" fill="url(#b_fFelge)"/>
+  </g>
+  <rect x="-15" y="-7" width="30" height="2.6" rx="1.3" fill="#FFFFFF" opacity="0.45"/>
+  <circle cx="0" cy="-21" r="5.4" fill="url(#stahl)"/>
+  <rect x="-3.4" y="-22.2" width="6.8" height="2.4" rx="1.2" fill="#242A33"/>
+  <g filter="url(#kontakt)">
+    <ellipse cx="-45" cy="-59" rx="8" ry="29" fill="#7E8B9B"/>
+    <rect x="-45" y="-88" width="68" height="58" rx="15" fill="url(#blech)"/>
+    <rect x="19" y="-93" width="14" height="68" rx="6" fill="url(#b_fFelge)"/>
+  </g>
+  <rect x="-57" y="-74" width="13" height="9" rx="3" fill="#4A535F"/>
+  <rect x="-57" y="-56" width="13" height="9" rx="3" fill="#4A535F"/>
+  <circle cx="-52" cy="-69.5" r="2.4" fill="#C6D0DC"/>
+  <circle cx="-52" cy="-51.5" r="2.4" fill="#C6D0DC"/>
+  <rect x="-45" y="-88" width="68" height="58" rx="15" fill="none" stroke="#20262F"
+        stroke-width="2.2" stroke-opacity="0.5"/>
+  <rect x="-40" y="-85" width="55" height="6.5" rx="3.2" fill="#FFFFFF" opacity="0.5"/>
+  <rect x="-40" y="-38" width="57" height="7" rx="3.5" fill="url(#stahlWarm)" opacity="0.7"/>
+  <rect x="-31" y="-80" width="8" height="46" rx="4" fill="#FFFFFF" opacity="0.14"/>
+  <ellipse cx="37" cy="-59" rx="15" ry="31" fill="url(#b_fGlasAn)"/>
+  <ellipse cx="37" cy="-59" rx="15" ry="31" fill="none" stroke="#9A8654" stroke-width="2.6" stroke-opacity="0.75"/>
+  <ellipse cx="36" cy="-59" rx="9" ry="19" fill="#FFFCEC" opacity="0.85"/>
+  <ellipse cx="36" cy="-59" rx="4.2" ry="9" fill="#FFFFFF"/>
+  <ellipse cx="32" cy="-72" rx="4.2" ry="9" fill="url(#glanz)" opacity="0.7"/>
+</g>
+
+<!-- t_ruecklicht_aus | Fahrrad-Ruecklicht von hinten, aus | nominal 90 x 80 | Anker: Mitte des Halters unten -->
+<g id="t_ruecklicht_aus">
+  <ellipse cx="0" cy="1" rx="34" ry="6" fill="#241704" opacity="0.28" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-9" y="-26" width="18" height="24" rx="4" fill="url(#blech)"/>
+    <rect x="-15" y="-5" width="30" height="6" rx="3" fill="url(#b_fFelge)"/>
+    <rect x="-36" y="-72" width="72" height="50" rx="10" fill="url(#b_fRotAus)"/>
+  </g>
+  <circle cx="0" cy="-14" r="4.6" fill="url(#stahl)"/>
+  <rect x="-36" y="-72" width="72" height="50" rx="10" fill="none" stroke="#2A0906"
+        stroke-width="2.2" stroke-opacity="0.6"/>
+  <rect x="-29" y="-66" width="58" height="38" rx="6" fill="#5E140E"/>
+  <g fill="#7A1D14">
+    <rect x="-27" y="-64" width="3.4" height="34" rx="1.2"/><rect x="-20" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="-13" y="-64" width="3.4" height="34" rx="1.2"/><rect x="-6" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="1" y="-64" width="3.4" height="34" rx="1.2"/><rect x="8" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="15" y="-64" width="3.4" height="34" rx="1.2"/><rect x="22" y="-64" width="3.4" height="34" rx="1.2"/>
+  </g>
+  <g fill="#3B0A06" opacity="0.75">
+    <rect x="-23.6" y="-64" width="2" height="34"/><rect x="-16.6" y="-64" width="2" height="34"/>
+    <rect x="-9.6" y="-64" width="2" height="34"/><rect x="-2.6" y="-64" width="2" height="34"/>
+    <rect x="4.4" y="-64" width="2" height="34"/><rect x="11.4" y="-64" width="2" height="34"/>
+    <rect x="18.4" y="-64" width="2" height="34"/><rect x="25.4" y="-64" width="2" height="34"/>
+  </g>
+  <rect x="-29" y="-66" width="58" height="38" rx="6" fill="none" stroke="#2A0906"
+        stroke-width="2" stroke-opacity="0.6"/>
+  <rect x="-32" y="-69" width="64" height="5" rx="2.5" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="-32" y="-27" width="64" height="4" rx="2" fill="#1E0604" opacity="0.4"/>
+  <ellipse cx="-16" cy="-58" rx="11" ry="6" fill="url(#glanz)" opacity="0.4"/>
+</g>
+
+<!-- t_ruecklicht_an | dasselbe Ruecklicht, eingeschaltet | nominal 90 x 80 | Anker: Mitte des Halters unten -->
+<g id="t_ruecklicht_an">
+  <ellipse cx="0" cy="-46" rx="56" ry="48" fill="url(#b_fRotSchein)" filter="url(#schein)"/>
+  <ellipse cx="0" cy="1" rx="34" ry="6" fill="#241704" opacity="0.22" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-9" y="-26" width="18" height="24" rx="4" fill="url(#blech)"/>
+    <rect x="-15" y="-5" width="30" height="6" rx="3" fill="url(#b_fFelge)"/>
+    <rect x="-36" y="-72" width="72" height="50" rx="10" fill="url(#b_fRotAus)"/>
+  </g>
+  <circle cx="0" cy="-14" r="4.6" fill="url(#stahl)"/>
+  <rect x="-36" y="-72" width="72" height="50" rx="10" fill="none" stroke="#2A0906"
+        stroke-width="2.2" stroke-opacity="0.6"/>
+  <rect x="-29" y="-66" width="58" height="38" rx="6" fill="url(#b_fRotAn)"/>
+  <g fill="#FFB49A" opacity="0.55">
+    <rect x="-27" y="-64" width="3.4" height="34" rx="1.2"/><rect x="-20" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="-13" y="-64" width="3.4" height="34" rx="1.2"/><rect x="-6" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="1" y="-64" width="3.4" height="34" rx="1.2"/><rect x="8" y="-64" width="3.4" height="34" rx="1.2"/>
+    <rect x="15" y="-64" width="3.4" height="34" rx="1.2"/><rect x="22" y="-64" width="3.4" height="34" rx="1.2"/>
+  </g>
+  <g fill="#8C1408" opacity="0.55">
+    <rect x="-23.6" y="-64" width="2" height="34"/><rect x="-16.6" y="-64" width="2" height="34"/>
+    <rect x="-9.6" y="-64" width="2" height="34"/><rect x="-2.6" y="-64" width="2" height="34"/>
+    <rect x="4.4" y="-64" width="2" height="34"/><rect x="11.4" y="-64" width="2" height="34"/>
+    <rect x="18.4" y="-64" width="2" height="34"/><rect x="25.4" y="-64" width="2" height="34"/>
+  </g>
+  <ellipse cx="-4" cy="-48" rx="20" ry="13" fill="#FFEAD8" opacity="0.5"/>
+  <rect x="-29" y="-66" width="58" height="38" rx="6" fill="none" stroke="#5E140E"
+        stroke-width="2" stroke-opacity="0.6"/>
+  <rect x="-32" y="-69" width="64" height="5" rx="2.5" fill="#FFFFFF" opacity="0.35"/>
+  <rect x="-32" y="-27" width="64" height="4" rx="2" fill="#1E0604" opacity="0.35"/>
+</g>
+
+<!-- t_dynamo | Seitenlaeufer-Dynamo | nominal 110 x 130 | Anker: unten Mitte am Fuss -->
+<g id="t_dynamo">
+  <ellipse cx="2" cy="2" rx="34" ry="7" fill="#241704" opacity="0.32" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <path d="M -19,-8 L 19,-8 L 13,-31 L -13,-31 Z" fill="url(#blech)"/>
+    <rect x="-24" y="-9" width="48" height="9" rx="3.5" fill="url(#b_fFelge)"/>
+    <rect x="-24" y="-100" width="48" height="72" rx="12" fill="url(#b_fPlast)"/>
+    <rect x="-13" y="-115" width="26" height="17" rx="4" fill="url(#b_fFelge)"/>
+    <rect x="-19" y="-132" width="38" height="20" rx="4" fill="url(#stahl)"/>
+  </g>
+  <rect x="-24" y="-9" width="48" height="3" rx="1.5" fill="#FFFFFF" opacity="0.45"/>
+  <circle cx="0" cy="-17" r="5.6" fill="url(#stahl)"/>
+  <rect x="-3.6" y="-18.2" width="7.2" height="2.4" rx="1.2" fill="#242A33"/>
+  <circle cx="0" cy="-33" r="6.4" fill="url(#stahl)"/>
+  <circle cx="0" cy="-33" r="2.6" fill="#242A33"/>
+  <rect x="-19" y="-95" width="9" height="62" rx="4.5" fill="#FFFFFF" opacity="0.17"/>
+  <rect x="-24" y="-100" width="48" height="72" rx="12" fill="none" stroke="#080A0D"
+        stroke-width="2.2" stroke-opacity="0.55"/>
+  <ellipse cx="0" cy="-36" rx="18" ry="7" fill="url(#stahlWarm)" opacity="0.5"/>
+  <ellipse cx="-11" cy="-88" rx="7" ry="9" fill="url(#glanz)" opacity="0.5"/>
+  <ellipse cx="0" cy="-132" rx="19" ry="6" fill="url(#b_fFelge)"/>
+  <ellipse cx="0" cy="-132" rx="19" ry="6" fill="none" stroke="#3D4653" stroke-width="1.6" stroke-opacity="0.7"/>
+  <g stroke="#4A535F" stroke-width="1.7" stroke-opacity="0.85">
+    <path d="M -15,-128 L -15,-113"/><path d="M -10,-130 L -10,-112"/><path d="M -5,-131 L -5,-112"/>
+    <path d="M 0,-131 L 0,-112"/><path d="M 5,-131 L 5,-112"/><path d="M 10,-130 L 10,-112"/>
+    <path d="M 15,-128 L 15,-113"/>
+  </g>
+  <rect x="-19" y="-132" width="38" height="20" rx="4" fill="none" stroke="#20262F"
+        stroke-width="1.8" stroke-opacity="0.5"/>
+  <rect x="22" y="-72" width="18" height="20" rx="4" fill="url(#b_fPlast)"/>
+  <rect x="22" y="-72" width="18" height="4" rx="2" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="31" cy="-62" r="5" fill="url(#stahl)"/>
+  <path d="M 40,-60 C 48,-58 52,-52 52,-44" stroke="#0F1218" stroke-width="6"
+        stroke-linecap="round" fill="none"/>
+  <path d="M 40,-63 C 47,-61 50,-55 50,-46" stroke="#454D59" stroke-width="2.2"
+        stroke-opacity="0.7" fill="none"/>
+</g>
+
+<!-- t_kabel_riss | Kabelstueck, durchgescheuert, Kupferdraht getrennt | nominal 260 x 46 | Anker: Mitte -->
+<g id="t_kabel_riss">
+  <ellipse cx="2" cy="18" rx="124" ry="8" fill="#241704" opacity="0.3" filter="url(#tiefe)"/>
+  <g filter="url(#kontakt)">
+    <rect x="-130" y="-12" width="260" height="24" rx="12" fill="url(#b_fIso)"/>
+  </g>
+  <rect x="-126" y="-10" width="252" height="5.5" rx="2.75" fill="#9AA3B0" opacity="0.4"/>
+  <rect x="-126" y="5.5" width="252" height="5.5" rx="2.75" fill="#000000" opacity="0.34"/>
+  <!-- Scheuerspuren rings um den Riss -->
+  <g stroke="#B9C2CE" stroke-width="1.4" stroke-opacity="0.34" stroke-linecap="round" fill="none">
+    <path d="M -74,-6 L -58,-7"/><path d="M -82,-1 L -64,-2"/><path d="M -70,3 L -56,2"/>
+    <path d="M 60,-7 L 76,-6"/><path d="M 58,-2 L 78,-3"/><path d="M 62,3 L 74,2"/>
+  </g>
+  <!-- aufgeplatzte Isolierung: die Lippen stehen nach aussen -->
+  <path d="M -46,1 C -40,-16 -18,-23 -2,-22 C 15,-21 37,-16 45,-1
+           C 39,16 15,22 -1,21 C -18,20 -39,15 -46,1 Z" fill="url(#b_fIso)"/>
+  <path d="M -46,1 C -40,-16 -18,-23 -2,-22 C 15,-21 37,-16 45,-1" fill="none"
+        stroke="#A6AFBC" stroke-width="2.4" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M 45,-1 C 39,16 15,22 -1,21 C -18,20 -39,15 -46,1" fill="none"
+        stroke="#000000" stroke-width="2.6" stroke-opacity="0.4" stroke-linecap="round"/>
+  <g stroke="#0C0F14" stroke-width="2.6" stroke-linecap="round" fill="none">
+    <path d="M -46,1 L -56,-2"/><path d="M -45,3 L -54,6"/>
+    <path d="M 45,-1 L 55,2"/><path d="M 44,-3 L 53,-6"/>
+  </g>
+  <!-- Hohlraum -->
+  <path d="M -37,1 C -32,-11 -15,-16 -2,-15.5 C 12,-15 30,-11 36,-1
+           C 30,11 12,16 -1,15.5 C -15,15 -31,11 -37,1 Z" fill="#080A0E"/>
+  <path d="M -34,0 C -29,-9 -14,-13 -2,-12.5 C 11,-12 27,-9 33,-1" fill="none"
+        stroke="#3E4652" stroke-width="1.8" stroke-opacity="0.55"/>
+  <!-- blanker Kupferdraht - hier ist er GETRENNT -->
+  <path d="M -50,1 C -38,1 -27,0 -16,-2" stroke="#4E2607" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M -50,1 C -38,1 -27,0 -16,-2" stroke="url(#b_fKupfer)" stroke-width="8.6" stroke-linecap="round" fill="none"/>
+  <path d="M 50,3 C 38,3 27,4 16,6" stroke="#4E2607" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M 50,3 C 38,3 27,4 16,6" stroke="url(#b_fKupfer)" stroke-width="8.6" stroke-linecap="round" fill="none"/>
+  <path d="M -48,-3 C -37,-3 -28,-4 -19,-6" stroke="#FFE7BC" stroke-width="2.6"
+        stroke-opacity="0.9" stroke-linecap="round" fill="none"/>
+  <path d="M 48,-1 C 38,-1 30,0 21,2" stroke="#FFE7BC" stroke-width="2.6"
+        stroke-opacity="0.9" stroke-linecap="round" fill="none"/>
+  <g stroke="#8C5216" stroke-width="1.3" stroke-opacity="0.55" stroke-linecap="round" fill="none">
+    <path d="M -44,-3 L -40,3"/><path d="M -34,-3 L -30,3"/><path d="M -24,-4 L -21,2"/>
+    <path d="M 44,-1 L 40,5"/><path d="M 34,-1 L 30,5"/><path d="M 24,0 L 21,6"/>
+  </g>
+  <g stroke="#E9AC64" stroke-width="1.9" stroke-linecap="round" fill="none">
+    <path d="M -17,-3 L -10,-8"/><path d="M -17,-1 L -9,1"/><path d="M -17,-4 L -11,-10"/>
+    <path d="M 17,5 L 10,10"/><path d="M 17,7 L 9,9"/><path d="M 17,4 L 11,-1"/>
+  </g>
+</g>

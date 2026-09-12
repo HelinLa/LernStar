@@ -1,0 +1,200 @@
+{
+ "seite": {
+  "id": "fn8",
+  "quelle": "rk9",
+  "sim": "kernspaltung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Der Güterzug und der Würfel",
+  "name": "Was passiert bei einer Kernspaltung?",
+  "fachwoerter_neu": [
+   "Kernspaltung",
+   "fehlende Masse in u"
+  ],
+  "alltag": [
+   "Jannis sieht am Kraftwerk einen Güterzug voll Kohle.",
+   "Nour sagt: Ein Würfel aus Uran von knapp 4 cm liefert genauso viel.",
+   "Ein Neutron trifft einen Urankern. Er zerbricht in zwei Bruchstücke: das heißt Kernspaltung.",
+   "Winzige Massen misst man in u. Winzige Energien misst man in MeV."
+  ],
+  "frage": "Woher kommt die Energie bei einer Kernspaltung?",
+  "predict": [
+   "Alles wiegt zusammen gleich viel wie vorher. Die Energie kam vom Neutron.",
+   "Alles wiegt zusammen weniger als vorher. Daraus wird die Energie."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.",
+   "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.",
+   "Lies in der Statuszeile die Energie ab. Sie steht vor „je Spaltung“.",
+   "Wähle „Xenon + Strontium“. Trage beide Werte ein. Wiederhole das mit „Cäsium + Rubidium“."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Bruchstücke",
+   "Wie viel Masse fehlt?",
+   "Wie viel Energie wird frei?"
+  ],
+  "tabRows": [
+   [
+    "Barium + Krypton",
+    "0,1860 u",
+    "173,3 MeV"
+   ],
+   [
+    "Xenon + Strontium",
+    "",
+    ""
+   ],
+   [
+    "Cäsium + Rubidium",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langsames",
+    "loesung": "Neutron",
+    "post": "trifft den Urankern. Er zerbricht in zwei Bruchstücke."
+   },
+   {
+    "pre": "Die Bruchstücke wiegen zusammen weniger. Diese fehlende",
+    "loesung": "Masse",
+    "post": "wird zu Energie. Nichts verbrennt."
+   }
+  ],
+  "wortbank": [
+   "Neutron",
+   "Masse",
+   "0,1860 u",
+   "Energie"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Werte bei Barium + Krypton ab?",
+   "antwort": "In der Statuszeile steht: „… 0,1860 u weniger als vorher.“ Und: „… 173,3 MeV je Spaltung.“"
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Bei Xenon + Strontium fehlt mehr Masse als bei Barium + Krypton. Was folgt daraus?",
+    "optionen": [
+     "Es wird weniger Energie frei.",
+     "Es wird mehr Energie frei.",
+     "Die Energie bleibt gleich groß."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Barium + Krypton fehlen",
+      "loesung": "0,1860 u",
+      "post": "."
+     },
+     {
+      "pre": "Aus dieser fehlenden Masse wird",
+      "loesung": "Energie",
+      "post": "frei."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Energie kommt vom schnellen Neutron.“ Warum ist das falsch?",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Schreibe die Zahl mit Einheit ab.",
+   "h2": "Ein Teil der Antwort: Das langsame Neutron bringt fast keine Energie mit.",
+   "h3": "Fast fertig: Das Neutron ist langsam. Woher kommt die Energie? Aus der fehlenden ___."
+  },
+  "selbstcheck": [
+   "Ich kann Masse und Energie in der Statuszeile ablesen.",
+   "Ich weiß: Bei der Kernspaltung wird Masse zu Energie.",
+   "Ich weiß: Ein langsames Neutron löst die Kernspaltung aus."
+  ],
+  "zuhause": "Miss zu Hause eine Kante von knapp 4 cm ab. So klein ist der Würfel.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild, eine Reihe aus GENAU DREI gleich großen quadratischen Feldern nebeneinander. Alles im selben Bildausschnitt, gleicher heller Hintergrund, große Schrift, viel Weißraum. — FELD 1, darüber die Überschrift „1 · Ein Neutron fliegt an“: rechts in der Mitte eine große runde, gleichmäßig ausgefüllte Kugel mit der gut lesbaren Aufschrift „Uran-235“. Links davon, deutlich kleiner, ein einzelner Kreis mit der Aufschrift „n“, daneben klein „langsam“. Von diesem kleinen Kreis geht GENAU EIN gerader waagerechter Pfeil nach rechts; seine Spitze berührt den Rand der Kugel. Der Pfeil endet an der Kugel und nicht im Leeren. Sonst steht in Feld 1 nichts. — FELD 2, darüber „2 · Der Kern wird länglich“: an derselben Stelle wie in Feld 1, in derselben Größe und derselben Füllung, dieselbe Kugel, aber zu einer liegenden Erdnussform gedehnt und in der Mitte leicht eingeschnürt, weiterhin mit der Aufschrift „Uran-235“. In Feld 2 gibt es keinen Pfeil, keinen freien Kreis und keine zweite Form. — FELD 3, darüber „3 · Der Kern reißt auseinander“: aus der Mitte heraus zwei runde, gleichmäßig ausgefüllte Bruchstücke, das größere oben rechts mit der Aufschrift „Barium“, das kleinere unten rechts mit der Aufschrift „Krypton“; sie sind sichtbar voneinander weggerückt. Zwischen ihnen liegen GENAU DREI kleine Kreise mit der Aufschrift „n“, unregelmäßig verteilt, nicht auf einer Linie und nicht in einer Reihe. In Feld 3 gibt es keine Pfeile. — Sonst kommt im ganzen Bild nichts vor. Das Bild zeigt NUR den Hergang, nie das Ergebnis: kein Bilanzstreifen, keine zwei Quadrate mit einem Pfeil dazwischen, keine Beschriftung „wird zu“, keine Angabe zur fehlenden Masse, keine Angabe zur frei werdenden Energie, keine Zahl mit „u“ und keine Zahl mit „MeV“. Die Antwort auf die Forscherfrage steht in der Tabelle und im Merksatz; das Bild steht auf Seite A vor dem Vermutungskasten und darf sie nicht vorwegnehmen. Keine Nebenbilder am Rand: kein Kraftwerk, kein Reaktor, kein Kühlturm, kein Güterzug, kein Kohlehaufen, kein Uranwürfel, keine Waage, kein Diagramm, keine Personen, keine Sprechblasen, kein zweites Bruchstückpaar (Xenon, Strontium, Cäsium und Rubidium kommen im Bild nicht vor). Kein Pfeil endet im Leeren: Im ganzen Bild gibt es genau EINEN Pfeil, den waagerechten Neutronenpfeil in Feld 1, und er endet an der gezeichneten Kugel. Deshalb ausdrücklich nicht: Strahlenbündel aus den Bruchstücken, Blitze, Zacken, Explosionssterne, Wellenlinien, Funken, gestrichelte Linien nach außen, Flugbahnen der Neutronen. Keine Formel und keine Gleichung im Bild, keine hoch- oder tiefgestellten Zahlen, kein Reaktionspfeil zwischen Formeln, keine Zahlen außer den Schrittnummern 1, 2 und 3 der drei Feldüberschriften und der 235 im Wort „Uran-235“. Kein Feuer, keine Flamme, keine Rauchwolke — es verbrennt nichts.]"
+ },
+ "lehrer": {
+  "id": "fn8",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation für drei Spaltungswege ab, wie viel Masse fehlt und wie viel Energie frei wird (Barium + Krypton: 0,1860 u und 173,3 MeV · Xenon + Strontium: 0,1983 u und 184,7 MeV · Cäsium + Rubidium: 0,1854 u und 172,7 MeV). Sie tragen die beiden fehlenden Wertepaare in die Tabelle ein und stellen daran fest: Wo mehr Masse fehlt, wird mehr Energie frei. Daraus benennen sie die Leitplanke dieser Seite in der Sache: Bei der Kernspaltung wird Masse in Energie umgewandelt — es verbrennt nichts. Zweite Leitplanke: Ausgelöst wird die Spaltung durch den Beschuss mit einem langsamen Neutron; die Energie steckt nicht in dessen Bewegung. Fachliche Namen nur für Sie, nicht auf der Schülerseite: Massendefekt Δm, Äquivalenz von Masse und Energie, E = Δm · c², Umrechnung 931,5 MeV je u.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den drei Schritten und dem Bilanzstreifen. Es gibt hier KEINEN Schülerversuch und keine Gegenprobe am Tisch: Kernspaltung lässt sich im Klassenraum nicht nachstellen, und der Massenunterschied ist mit keiner Schulwaage messbar. Wer einen Gegenstand zum Anfassen braucht, nimmt einen echten Würfel von knapp 4 cm Kantenlänge — einen Holzklotz oder einen selbst gefalteten Papierwürfel — und ein Foto eines beladenen Güterzugs. Keine Streichholzschachtel — etwa 5 x 3,5 x 1,5 cm und gerade kein Würfel; begriffen werden soll die Kantenlänge — das ist der Größenvergleich des Alltagsteils, kein Modell der Spaltung. Dominosteine bleiben liegen: Die Kettenreaktion ist fn9.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Drei Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich. Karte „Barium + Krypton“ (das ist zugleich der Ausgangszustand der Simulation): „Ein langsames Neutron fliegt auf den Urankern zu. Kernbausteine: links 1 + 235 = 236, rechts 141 + 92 + 3 = 236. Geht auf. Protonen: links 0 + 92 = 92, rechts 56 + 36 = 92. Geht auch auf. Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1860 u weniger als vorher. Genau dieser Massenunterschied wird zu Energie: E = 0,1860 u · 931,5 MeV/u = 173,3 MeV je Spaltung.“ Karte „Xenon + Strontium“: „Kernbausteine: links 1 + 235 = 236, rechts 140 + 94 + 2 = 236. Geht auf. Protonen: links 0 + 92 = 92, rechts 54 + 38 = 92. Geht auch auf. Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1983 u weniger als vorher. E = 0,1983 u · 931,5 MeV/u = 184,7 MeV je Spaltung.“ Karte „Cäsium + Rubidium“: „Kernbausteine: links 1 + 235 = 236, rechts 137 + 96 + 3 = 236. Geht auf. Protonen: links 0 + 92 = 92, rechts 55 + 37 = 92. Geht auch auf. Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen 0,1854 u weniger als vorher. E = 0,1854 u · 931,5 MeV/u = 172,7 MeV je Spaltung.“ Die Kernbausteine- und Protonenzeilen bitte mit vorlesen, auch wenn die Schülerseite sie nicht abfragt: Sie tragen die eigentliche Denkhürde — die beiden Summen gehen auf, und trotzdem fehlt Masse. Die Reaktionsgleichung selbst steht auf keiner Karte; sie ist am Bildschirm mit hoch- und tiefgestellten Zahlen gesetzt und für diese Lerngruppe nicht lesbar. Dazu als Tafelbild drei Felder nebeneinander: (1) eine große Kugel „Uran-235“, links davon ein kleiner Kreis „n“ mit einem einzigen waagerechten Pfeil, der an der Kugel endet; (2) dieselbe Kugel, zu einer Erdnussform gedehnt und in der Mitte eingeschnürt; (3) zwei auseinandergerückte Bruchstücke „Barium“ und „Krypton“ und drei kleine Kreise „n“ dazwischen. Darunter über die ganze Breite, aber ERST BEIM SICHERN angeschrieben und nicht schon beim Vermuten: ein Quadrat „fehlende Masse: 0,1860 u“, ein breiter Pfeil „wird zu“, ein gleich großes Quadrat „frei werdende Energie: 173,3 MeV je Spaltung“. Dieser Bilanzstreifen ist die Antwort der Seite; er steht aus demselben Grund auch nicht im gedruckten Einstiegsbild. Wichtig beim Tafelbild: aus den Bruchstücken fliegen KEINE Strahlen, Blitze oder Zacken heraus, und die beiden Quadrate sind gleich groß — sonst wird aus der Bilanz eine Größenrelation, die es nicht gibt. Alternativ die drei Bildschirmzustände als Standbilder am Beamer zeigen.",
+  "merksatz": [
+   "Neutron",
+   "Masse"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Xenon + Strontium",
+    "0,1983 u",
+    "184,7 MeV"
+   ],
+   [
+    "Cäsium + Rubidium",
+    "0,1854 u",
+    "172,7 MeV"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die Aufgabe nennt den Vergleich der Massen selbst („Bei Xenon + Strontium fehlt mehr Masse als bei Barium + Krypton“), damit niemand 0,1983 u gegen 0,1860 u im Kopf sortieren muss. Gefragt ist allein die Folgerung; die drei Optionen sind bewusst kurz gehalten und beziehen sich alle auf Xenon + Strontium. In der Tabelle steht die Antwort schwarz auf weiß: Barium + Krypton 0,1860 u und 173,3 MeV, Xenon + Strontium 0,1983 u und 184,7 MeV. Mehr fehlende Masse bedeutet mehr Energie — die zweite Option („Es wird mehr Energie frei.“). Die erste Option kehrt den Zusammenhang um, die dritte behauptet, die Energie hänge gar nicht von der fehlenden Masse ab; beide widersprechen den zwei Zeilen der eigenen Tabelle. Beim Besprechen die Finger auf die zwei Zeilen legen und nur die vier Zahlen vorlesen lassen.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt: „mehr fehlt“ wird als „weniger bleibt übrig“ und damit als weniger Energie gelesen. Gegenfrage: Was steht bei Xenon + Strontium in der letzten Spalte — mehr oder weniger als 173,3 MeV?",
+    "Die dritte Option wird angekreuzt, weil 173,3 MeV und 184,7 MeV auf den ersten Blick ähnlich aussehen. Die beiden Zahlen untereinander an die Tafel schreiben und die erste Stelle vergleichen lassen.",
+    "Die Zeile für Xenon + Strontium ist leer geblieben, weil in der Simulation nicht umgestellt wurde. Dann fehlt die Grundlage der Aufgabe. Nachfragen: Welchen Knopf hast du zuletzt gedrückt? Erst die Tabelle fertig füllen.",
+    "Es wird mit Cäsium + Rubidium verglichen (0,1854 u gegen 0,1860 u). Diese beiden Zahlen unterscheiden sich erst an der dritten Stelle nach dem Komma (5 gegen 6) und sind für die Aufgabe nicht gemeint; die Aufgabe nennt ausdrücklich Xenon + Strontium."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "0,1860 u",
+    "Energie"
+   ],
+   "typische_fehler": [
+    "Die Einheit fehlt („0,1860“ statt „0,1860 u“). Der Anker in Arbeitsschritt 2 ist deshalb so gesetzt, dass die Einheit mitwandert: Vor „weniger als vorher“ steht „0,1860 u“ als Ganzes, nicht die nackte Zahl. Einmal vollständig abschreiben lassen; u steht für die Masse.",
+    "In die zweite Lücke wird „173,3 MeV“ eingesetzt, weil die Zahl in der ersten Tabellenzeile daneben steht. Der Satz fragt aber nicht nach dem Messwert, sondern danach, WAS aus der fehlenden Masse wird — und in der Wortbank steht dafür nur „Energie“. Den Satz laut vorlesen lassen: „Aus dieser fehlenden Masse wird … frei.“",
+    "Es wird der Wert von Xenon + Strontium eingesetzt (0,1983 u), weil zuletzt dieser Knopf gedrückt war. Der erste Satz nennt aber Barium + Krypton — das ist die vorgefüllte erste Tabellenzeile.",
+    "Statt der fehlenden Masse wird 236 oder 92 eingesetzt: Die Kernbausteine- und Protonenzahlen aus der Statuszeile werden für die Masse gehalten. Am Bildschirm zeigen, dass diese beiden Summen aufgehen und die fehlende Masse erst im Satz danach steht."
+   ]
+  },
+  "a3": {
+   "erwartung": "Jannis hat nicht recht, weil das Neutron langsam ist. In seiner Bewegung steckt fast keine Energie. Die Energie kommt aus der fehlenden Masse: Nach der Spaltung wiegen die Bruchstücke zusammen 0,1860 u weniger als vorher. Genau diese fehlende Masse wird zu Energie.",
+   "alternativen": [
+    "Kurzform ohne Zahl: „Weil das Neutron langsam ist und die Energie aus der fehlenden Masse kommt.“ — reicht für die volle Wertung.",
+    "Über die Messung begründet: „Am Bildschirm steht, dass die Bruchstücke 0,1860 u weniger wiegen. Daraus werden 173,3 MeV.“",
+    "Über den Vergleich der eigenen Tabelle begründet: „Bei allen drei Wegen fliegt dasselbe langsame Neutron an, und trotzdem kommt jedes Mal eine andere Energie heraus. Also kommt sie nicht vom Neutron.“ — die stärkste Begründung der Seite, sie zählt voll und wird ausdrücklich gelobt. Verlangt ist sie nicht: Drei Zeilen gegeneinander zu halten und dabei zu trennen, was gleich bleibt und was sich ändert, liegt über dem Niveau dieser Doppelseite.",
+    "Formulierungen wie „das Neutron macht nur den Anfang“ oder „das Neutron ist nur der Auslöser“ zählen, solange die fehlende Masse als Quelle genannt ist.",
+    "Wer zusätzlich schreibt, dass ein schnelles Neutron am Kern vorbeifliegen würde, hat den Bildschirmhinweis gelesen — richtig, aber nicht gefordert."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung. Nachfragen: Woran siehst du das? Das Wort „langsam“ oder die fehlende Masse muss vorkommen. Beides steht auf der Seite selbst — „langsam“ in Arbeitsschritt 1, im ersten Merksatz und im dritten Selbstcheck-Satz, die fehlende Masse im zweiten Merksatz und in der Tabelle; die Hilfen wiederholen es nur.",
+    "Es wird nur „weil das Neutron langsam ist“ geschrieben und die Quelle der Energie fehlt. Das ist die halbe Antwort; mit Hilfe 3 den zweiten Teil ergänzen lassen. Hilfe 2 nennt genau diesen ersten Teil und sagt mit „Ein Teil der Antwort“ dazu, dass damit noch nicht alles gesagt ist. Warum nicht, muss im Gespräch kommen: Ein langsames Neutron erklärt nur, dass die Energie nicht aus seiner Bewegung stammt — noch nicht, woher sie kommt.",
+    "Die Energie wird dem Zerbrechen selbst zugeschrieben: „weil der Kern zerplatzt“. Nachfragen: Woher kommt die Energie beim Zerplatzen? Auf den zweiten Merksatz und auf die beiden Spalten der eigenen Tabelle zeigen: mehr fehlende Masse, mehr Energie.",
+    "„Weil Uran brennt“ oder „weil das Uran verbrennt“. Das ist genau die Fehlvorstellung, gegen die die Leitplanke steht. Auf den Merksatz zurückgehen: Im Kern verbrennt nichts, es fehlt Masse. Der Güterzug Kohle im Alltagsteil ist der Gegensatz, nicht das Vorbild.",
+    "Die Bewegungsenergie wird verteidigt: „ein bisschen Energie hat das Neutron doch“. Stimmt, aber sie ist winzig gegen 173,3 MeV. Nicht vertiefen; der Vergleich der drei Wege genügt als Argument."
+   ]
+  },
+  "hilfe3_wort": "Masse",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten. Die Simulation hat KEINE Regler, nur fünf Knöpfe: drei für die Bruchstückpaare, einen zum Neustarten der Spaltung und einen zum Anhalten. Der Neustartknopf heißt im Heft „Spaltung noch einmal“; er trägt am Bildschirm ein Zeichen davor, das die Heftschrift nicht kennt und das deshalb nirgends abgedruckt ist. Ebenso die Überschrift der Simulation. Zeigen Sie die Knöpfe einmal am Beamer.",
+   "Der Anhalten-Knopf wird auf der Seite bewusst nicht gebraucht. Wer ihn drückt, macht nichts falsch, bekommt aber keinen neuen Messwert. Sagen Sie das vorher, sonst wird gesucht.",
+   "Die Statuszeile mit einem Papierstreifen abdecken und nur zwei Stellen freilassen: die Stelle mit „… 0,1860 u weniger als vorher“ und die Stelle mit „… 173,3 MeV je Spaltung“. Ohne diese Führung werden die Summen 236 und 92 abgeschrieben.",
+   "Nur die mittlere Tabellenspalte ausfüllen lassen; die Energiespalte gemeinsam an der Tafel eintragen. Die vorgefüllte erste Zeile vorher laut lesen und im gelösten Beispiel die Stellen „0,1860 u“ und „173,3 MeV“ mit dem Finger zeigen.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen, die eine Zahl mit Einheit — genau das sagt auch Hilfe 1. Wer die Ziffern nicht sicher abschreibt, bekommt die vorgefüllte erste Tabellenzeile daneben gelegt.",
+   "Wer beim Erklären nicht anfängt, liest zuerst die drei Energiewerte der eigenen Tabelle laut vor: 173,3 MeV, 184,7 MeV, 172,7 MeV. Danach die Frage: Bei allen drei Wegen fliegt dasselbe langsame Neutron an — warum ist die Energie trotzdem verschieden? Dann den Satzstarter benutzen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Ordnen ohne Rechnen: Schreibe die drei Energien aus deiner Tabelle untereinander — 173,3 MeV, 184,7 MeV, 172,7 MeV. Welcher Weg liefert die meiste Energie? Erwartet: Xenon + Strontium mit 184,7 MeV; dort fehlt auch die meiste Masse (0,1983 u). Nur die Energien ordnen lassen, nicht die Massen — 0,1860 u und 0,1854 u unterscheiden sich erst an der dritten Stelle nach dem Komma (5 gegen 6). (2) Suchen im Bildschirmtext: Drücke zuerst wieder „Barium + Krypton“ — nach Arbeitsschritt 4 steht die Simulation auf Cäsium + Rubidium. Ganz am Ende der Statuszeile steht, wie viel Steinkohle dieselbe Energie liefert. Wie viele Tonnen sind es? Erwartet: etwa 2428 Tonnen Steinkohle bei Barium + Krypton — ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge. Das ist der Satz aus dem Alltagsteil, jetzt am Bildschirm wiedergefunden. Nicht weiterrechnen: Die Zahlen davor (Joule je MeV, Kerne je Kilogramm, Billionen Joule) bleiben außen vor. Der Steinkohlesatz steht in allen drei Statusausgaben und trägt je Bruchstückpaar eine eigene Zahl: Barium + Krypton 2428 t, Xenon + Strontium 2588 t, Cäsium + Rubidium 2420 t. Ein Kind, das nach Arbeitsschritt 4 nicht zurückschaltet, findet also 2420 — das ist richtig abgelesen und keine falsche Antwort. Verlangt ist die Zahl des Alltagsteils, deshalb der Rückschalt-Satz oben.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Kernspaltung und die Herkunft der frei werdenden Energie. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Einstellen der drei Bruchstückpaare und Ablesen der zwei Werte E4, Eintragen der beiden Wertepaare in die Tabelle K3, der Vergleich „mehr fehlende Masse — mehr Energie“ UF3, die Erklär-Aufgabe UF1 und E6, die Vermutung UF4. Nicht auf dieser Seite: UF2 und B2, die die Quellanalyse zu rk9 zusätzlich führt — weggelassen, nicht vergessen. Die Seite lässt nichts abwägen und nichts auswählen; der Erklär-Slot gehört UF1 und E6. Im Band tragen B2 die Einheiten fn4, fn13, fn15, fv11 und fv13, UF2 die Einheiten fn7, fn10, fv3, fv6, fv7 und fv8 — es geht nichts verloren. K3 liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag: Das Abmessen von knapp 4 cm ist ein Größenanker, kein Dokumentieren. FACHWORTZÄHLUNG: neu sind genau ZWEI Wörter. „Kernspaltung“ wird im Alltagsteil mit Begriffssatz eingeführt („Ein Neutron trifft einen Urankern. Er zerbricht in zwei Bruchstücke: das heißt Kernspaltung.“) und steht im Selbstcheck und in der Frage. Dieser Satz trägt zugleich die zweite Leitplanke: Ausgelöst wird die Spaltung durch den Beschuss mit einem Neutron. Der Auslöser steht deshalb schon auf Seite A und nicht erst im Merksatz — ohne ihn wäre der Begriffssatz vom radioaktiven Zerfall aus fn6 und fn7 nicht zu unterscheiden, und angekreuzt wird vorher. „fehlende Masse in u“ ist nach Zählregel 1 EIN Wort (Größe plus Einheit); eingeführt wird es am Bildschirmwortlaut selbst — Arbeitsschritt 2, gelöstes Beispiel und Tabellenspalte sagen dasselbe wie die Statuszeile. Das Formelzeichen Δm steht bewusst NICHT auf der Schülerseite: Es käme nur einmal vor, träte sofort in E = Δm · c² auf und stünde dann neben der Schreibweise des Bildschirms (E = 0,1860 u · 931,5 MeV/u) — die Doppelung, die auf A2–B1 die Seite sprengt. Beide Formeln bleiben im Lehrerband. MeV läuft neben den zwei gezählten Fachwörtern mit; die Bedingung dafür ist erfüllt: Die Einheit bekommt im Alltagsteil einen Begriffssatz („Winzige Energien misst man in MeV.“) und steht weder in der Wortbank noch in einer Merksatz-Lücke. Genau abgegrenzt: MeV wird gelesen UND abgeschrieben — in der vorgefüllten ersten Tabellenzeile, im gelösten Beispiel und in den beiden Werten, die die Klasse selbst einträgt (184,7 MeV und 172,7 MeV). Abgefragt wird die Einheit dagegen nirgends: Kein Kind muss das Wort aus dem Kopf holen. Die zweite Lücke von Aufgabe 2 heißt deshalb „Aus dieser fehlenden Masse wird ___ frei“ mit der Lösung „Energie“ (Rückverweis auf Kapitel 1), und die Wortbank trägt [Neutron · Masse · 0,1860 u · Energie] — vier Einträge, jeder genau ein Lückenwort. „0,1860 u“ bleibt darin, weil u zum gezählten Fachwort gehört — dieselbe Bauart wie „55,6 s“ in fn6 und „0,600 V“ in fv6. Wer ganz sicher gehen will, druckt in Spalte 3 der offenen Zeilen „____ MeV“ vor. URAN wird nicht gezählt: Stoffname ohne Formelzeichen und ohne Einheit (Zählregel 5), in keiner Wortbank und in keiner Lücke — wie die sechs Bruchstücknamen der Tabelle. Im Band kommt das Wort nirgends vor fn8 vor. Der Alltagsteil sagt deshalb zuerst „ein Würfel aus Uran“ — damit steht Uran als Stoff da — und der nächste Satz nennt den Urankern; dieselbe Reihenfolge wie in fn14 mit Wasserstoff und Wasserstoffkernen. „Urankern“ steht nur im Merksatz-Nachsatz, nicht in seiner Lücke. Im Bild heißt derselbe Kern „Uran-235“, die wörtliche Bildschirmbeschriftung; sagen Sie beim Betrachten einmal ausdrücklich, dass beides dasselbe meint. Bewusst NICHT auf der Schülerseite, weil es das dritte bis siebte Wort wäre: „Massendefekt“, „Spaltprodukte“, „Moderator“, „Kettenreaktion“, „Nuklidschreibweise“. Das Ausgangsheft war bei zwei Namen für dieselbe Sache unentschieden — Tabellenspalte „Spaltprodukte“ gegen Fachtext und Bildschirm „Bruchstücke“. Das Förderheft sagt durchgehend „Bruchstücke“, und das Wort steht schon im Begriffssatz des Alltagsteils, bevor Tabellenkopf und Merksatz es brauchen. DATENLAGE UND FALLEN. (1) Nuklidschreibweise: Der Bildschirm setzt die Reaktionsgleichung mit hoch- und tiefgestellten Zahlen; für A2–B1 und Förderbedarf Lernen ist das nicht lesbar. Sie steht deshalb nirgends im Heft — nicht in der Tabelle, nicht in einer Aufgabe, nicht im Bildauftrag, nicht auf den Ergebniskarten. Wer danach fragt, bekommt mündlich die Lesehilfe: Die kleine Zahl oben zählt alle Kernbausteine, die untere die Protonen. Abgeschrieben wird sie nicht. (2) Die Anker der Arbeitsschritte: Die Umrechnungszahl 931,5 MeV je u steht am Bildschirm in derselben Zeile wie das Ergebnis. Die Arbeitsschritte 2 und 3 arbeiten deshalb mit wörtlichen Ankern aus der Statuszeile, und beide stehen HINTER dem gesuchten Wert, damit die Einheit mitwandert: „weniger als vorher“ (davor „0,1860 u“) und „je Spaltung“ (davor „173,3 MeV“). Beide kommen dort genau einmal vor. Kürzere Anker wie „u weniger“ schneiden die Einheit ab — genau der erste typische Fehler zu Aufgabe 2. „Am Ende der Zeile“ wäre falsch: Die Statuszeile läuft danach noch bis zum Satz über die Steinkohle. Gelesen wird nur das Ergebnis, gerechnet wird nichts; die Multiplikation 0,1983 mal 931,5 aus dem Regelheft entfällt vollständig. (3) Dritte Nachkommastelle: 0,1860 u und 0,1854 u unterscheiden sich erst an der dritten Stelle nach dem Komma — Ziffer für Ziffer: 1 und 1, 8 und 8, dann 6 gegen 5. Ein Auftrag „Ordne die Massen der Größe nach“ ist damit verboten. Aufgabe 1 vergleicht deshalb nur Barium + Krypton mit Xenon + Strontium (0,1860 gegen 0,1983, Unterschied schon an der zweiten Stelle) und nennt das Ergebnis selbst. Die freiwillige Zusatzaufgabe ordnet die ENERGIEN — 172,7, 173,3 und 184,7 unterscheiden sich an der Einerstelle und sind sicher lesbar. (4) Zehnerpotenzen: Der Bildschirm nennt am Ende vier Zahlen weit außerhalb der Zielgruppe (bis „2,56 · 10²⁴ Kerne“ und „71 Billionen Joule“). Keine kommt auf der Schülerseite vor, und keine trägt die Wortfolge „je Spaltung“ — deshalb bleibt dieser Anker eindeutig. Erhalten bleibt allein der Alltagsanker desselben Satzes: ein Güterzug Steinkohle gegen einen Uranwürfel von knapp 4 cm. Alltagsteil, Zuhause-Auftrag und Zusatzaufgabe sagen alle drei „knapp 4 cm“. (5) Drei Punkte sind am Bildschirm nicht belegt und begrenzen die Seite. Der Anhalten-Knopf liefert denselben Statustext wie der Ausgangszustand; kein Arbeitsschritt stützt sich auf ihn. Ob die Werte sofort nach dem Wählen dastehen oder erst nach der Animation, ist offen — Arbeitsschritt 1 stellt deshalb das Beobachten voran. Und ob immer nur die Energie des gewählten Paares zu sehen ist oder alle drei zugleich, ist ebenfalls offen: Die Seite liest die Energie deshalb nur aus der STATUSZEILE, nie aus einem Bildtext, und die Tabelle verlangt drei getrennte Messungen. (6) Modellgrenze: Der Bildschirm nennt selbst über 30 verschiedene Bruchstückpaare, den Zufall bei der Auswahl und den Unterschied zwischen der Massenbilanz (rund 175 MeV) und der Buchzahl 200 MeV, die die spätere Strahlung einschließt. Erwähnen Sie mündlich, dass es viele weitere Paare gibt — die Tabelle zeigt drei Beispiele, keine Liste. (7) Bewusst offen gelassen: Der Moderator („meist Wasser“) wäre ein weiteres Fachwort und gehört zu fn9 und fn10; das Wort „langsam“ trägt die Sache allein und steht in Arbeitsschritt 1, im ersten Merksatz, im dritten Selbstcheck-Satz und in den Hilfen 2 und 3. Die Zahl der frei werdenden Neutronen wird nirgends abgefragt; im Bild sind die drei Neutronen von Barium + Krypton gezeichnet und bereiten fn9 vor. Die Erhaltung der Kernbausteine (236 = 236) und der Protonen (92 = 92) trägt die eigentliche Denkhürde — die Bilanz geht auf, und trotzdem fehlt Masse — und wird nur auf den Ergebniskarten und im Tafelgespräch mitgelesen; als vierte Anforderung wäre sie zu viel. (8) Undruckbare Zeichen: Zwei Knöpfe der Simulation und ihre Überschrift tragen vor dem Wort ein Zeichen, für das die Heftschrift keine Glyphe hat; es würde als leeres Kästchen drucken und wird nirgends zitiert, auch nicht hier. Die Knöpfe heißen im Heft durchgehend „Spaltung noch einmal“, „Anhalten“, „Barium + Krypton“, „Xenon + Strontium“ und „Cäsium + Rubidium“. Aus demselben Grund stehen im Bildauftrag keine hoch- oder tiefgestellten Zahlen. (9) Das Bild nimmt die Antwort nicht vorweg: Das Einstiegsbild steht auf Seite A über dem Vermutungskasten und vor dem Forschen. Es zeigt deshalb nur den Hergang in drei Feldern — Neutron fliegt an, Kern wird länglich, Kern reißt auseinander — und keine Massen-Energie-Bilanz. Der Bilanzstreifen ist das Ergebnis der Seite; er gehört an die Tafel beim Sichern, nicht in ein Bild, das ein Kind vor dem Ankreuzen liest. (10) Die Hilfetreppe: Hilfe 1 zeigt auf die Wortbank und gehört zu Aufgabe 2, Hilfe 2 und Hilfe 3 gehören zu Aufgabe 3. Hilfe 2 trägt den ersten Teil der Erklärung und sagt mit „Ein Teil der Antwort“ dazu, dass damit noch nicht alles gesagt ist. Hilfe 3 wiederholt diesen ersten Teil, stellt die Frage nach der Herkunft der Energie noch einmal und lässt nur das letzte Wort offen: „Masse“. Wichtig: Keine der drei Hilfen druckt eine Lösung von Aufgabe 2 — weder den Messwert „0,1860 u“ der ersten Lücke noch eine Formulierung, die das Wort der zweiten Lücke seinem Satz zuordnet. Aus demselben Grund trägt diese zweite Lücke keinen Nachsatz „Nichts verbrennt.“ mehr: Der Satz steht an der stärkeren Stelle im zweiten Merksatz."
+ }
+}

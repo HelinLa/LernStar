@@ -1,0 +1,697 @@
+[
+ {
+  "id": "optik",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "LOCHKAMERA",
+     "tipp": "Ein dunkler Kasten mit einer winzigen Öffnung vorn und einem Schirm hinten. Das, was darin auf dem Schirm erscheint, steht auf dem Kopf."
+    },
+    {
+     "wort": "GERADLINIG",
+     "tipp": "So breitet sich Licht in klarer Luft aus: immer schnurstracks weiter, niemals um eine Ecke herum."
+    },
+    {
+     "wort": "SAMMELLINSE",
+     "tipp": "Ein Glas, das in der Mitte dicker ist als am Rand. Es vereinigt paralleles Licht in einem einzigen Punkt."
+    },
+    {
+     "wort": "BRENNPUNKT",
+     "tipp": "Die Stelle hinter einem gewölbten Glas, an der sich alle parallel eingefallenen Strahlen treffen und der Lichtfleck am kleinsten und hellsten ist."
+    },
+    {
+     "wort": "BRENNWEITE",
+     "tipp": "Der Abstand von der Linsenmitte bis zu der Stelle, an der paralleles Licht gebündelt wird. Je stärker das Glas gewölbt ist, desto kleiner ist dieser Wert."
+    },
+    {
+     "wort": "BILDWEITE",
+     "tipp": "Der Abstand von der Linsenmitte bis zum scharfen Bild auf dem Schirm. Rückt der Gegenstand näher, wächst dieser Wert."
+    },
+    {
+     "wort": "LUPE",
+     "tipp": "Ein stark gewölbtes Glas, das man dicht über die Schrift hält, damit sie aufrecht und größer erscheint."
+    },
+    {
+     "wort": "VIRTUELL",
+     "tipp": "So nennt man ein Bild, das nur für das Auge entsteht und sich auf keinem Schirm auffangen lässt."
+    },
+    {
+     "wort": "OBJEKTIV",
+     "tipp": "Die Linse vorn in einer Kamera. Sie wirft ein umgekehrtes, meist verkleinertes Bild auf Film oder Sensor."
+    },
+    {
+     "wort": "NETZHAUT",
+     "tipp": "Die lichtempfindliche Schicht hinten im Auge. Dort entsteht das umgekehrte, verkleinerte Bild."
+    },
+    {
+     "wort": "SEHNERV",
+     "tipp": "Über diese Leitung laufen die Signale der lichtempfindlichen Schicht ins Gehirn, das daraus unseren Seheindruck erzeugt."
+    },
+    {
+     "wort": "KURZSICHTIG",
+     "tipp": "So ist jemand, dessen Augapfel zu lang ist: Das Bild entsteht schon vor der Netzhaut, die Tafel bleibt verschwommen."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, warum das Bild in der Lochkamera auf dem Kopf steht, und begründen, warum ein größeres Loch heller, aber unschärfer abbildet.",
+    "Ich kann den Brennpunkt und die Brennweite einer Sammellinse beschreiben und die Brennweite eines Glases messen.",
+    "Ich kann angeben, wann eine Sammellinse ein verkleinertes, ein gleich großes oder ein vergrößertes Bild erzeugt und wann gar kein Bild entsteht.",
+    "Ich kann erklären, warum eine Lupe nur aus kurzem Abstand vergrößert, und beschreiben, was ein virtuelles Bild ist.",
+    "Ich kann beschreiben, wie eine Kamera durch Verschieben des Schirms scharf stellt und wie das Auge stattdessen die Form der Augenlinse ändert, während der Abstand zur Netzhaut gleich bleibt.",
+    "Ich kann begründen, warum wir die Welt aufrecht sehen, obwohl auf der Netzhaut ein umgekehrtes Bild entsteht: Die Sinneszellen schicken Signale über den Sehnerv, und das Gehirn erzeugt daraus den Seheindruck.",
+    "Ich kann erklären, welches Brillenglas Kurzsichtigen und welches Weitsichtigen hilft, und begründen, warum das Bild sonst nicht auf der Netzhaut liegt."
+   ],
+   "tipps": [
+    "Zeichne zu jedem Versuch eine kleine Skizze mit Gegenstand, Linse und Schirm und schreibe die gemessenen Abstände daran. Bilder bleiben besser im Kopf als Sätze.",
+    "Rechne die drei Fälle der Sammellinse an einem festen Zahlenbeispiel durch: Brennweite 10 cm, Gegenstand bei 50 cm, bei 20 cm und bei 7 cm. Sage jedes Mal laut, wie das Bild aussieht.",
+    "Nimm eine Lupe und ein Blatt mit kleiner Schrift und wiederhole den Kipp-Punkt mit den Händen: erst dicht auf dem Papier, dann langsam anheben. Erkläre einer anderen Person, was an der Brennweite passiert.",
+    "Öffne die Simulationen noch einmal und stelle genau die Werte aus deiner Tabelle ein. Sage vorher laut, was passieren wird – erst dann schau hin."
+   ],
+   "mini": [
+    {
+     "frage": "Du vergrößerst das Loch deiner Lochkamera von 0,5 mm auf 8 mm. Was ändert sich am Bild der Kerze?",
+     "loesung": "Das Bild wird deutlich heller, weil mehr Licht durch die Öffnung fällt. Gleichzeitig wird es unschärfer, weil jeder Punkt der Flamme nun einen kleinen Fleck erzeugt und sich diese Flecken überlagern. Bei 8 mm ist nur noch ein verschwommener heller Fleck ohne Flammenform zu sehen."
+    },
+    {
+     "frage": "Eine Lupe hat eine Brennweite von 8 cm. Wie weit darf sie höchstens über der Schrift stehen, damit die Buchstaben aufrecht und vergrößert erscheinen? Begründe kurz.",
+     "loesung": "Sie muss näher als 8 cm über dem Papier bleiben, also innerhalb der Brennweite. Nur dann entsteht das aufrechte, vergrößerte virtuelle Bild. Genau bei 8 cm verschwimmt die Schrift, darüber erscheint sie umgekehrt."
+    },
+    {
+     "frage": "Eine Sammellinse hat 10 cm Brennweite. Eine Kerze steht genau 20 cm davor. Wie groß ist das Bild auf dem Schirm und wie steht es?",
+     "loesung": "20 cm sind genau die doppelte Brennweite. Deshalb ist das Bild genauso groß wie die echte Flamme. Es steht umgekehrt auf dem Schirm und lässt sich dort auffangen."
+    },
+    {
+     "frage": "Auf Bens Netzhaut steht der Kirchturm auf dem Kopf. Warum sieht Ben ihn trotzdem aufrecht?",
+     "loesung": "Im Auge wird das Bild nicht gedreht. Die Sinneszellen der Netzhaut wandeln das Licht in Signale um und leiten sie über den Sehnerv ins Gehirn. Das Gehirn verarbeitet diese Signale und erzeugt daraus den Seheindruck; es dreht also kein fertiges Bild um."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Licht breitet sich",
+     "post": " aus; deshalb steht das Bild in der Lochkamera auf dem Kopf.",
+     "loesung": "geradlinig"
+    },
+    {
+     "pre": "Der Abstand von der Linsenmitte bis zum Brennpunkt heißt",
+     "post": ".",
+     "loesung": "Brennweite"
+    },
+    {
+     "pre": "Eine Kamera stellt scharf, indem sie die",
+     "post": " verändert, also den Abstand zwischen Objektiv und Schirm.",
+     "loesung": "Bildweite"
+    },
+    {
+     "pre": "Das Auge stellt dagegen scharf, indem die Augenlinse ihre",
+     "post": " ändert; der Abstand zur Netzhaut bleibt gleich.",
+     "loesung": "Form"
+    },
+    {
+     "pre": "Bei Kurzsichtigkeit entsteht das Bild vor der Netzhaut; scharf wird es erst mit einer",
+     "post": ".",
+     "loesung": "Zerstreuungslinse"
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein größeres Loch in der Lochkamera macht das Bild heller, gleichzeitig aber unschärfer.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das vergrößerte Bild, das man durch eine Lupe sieht, kann man auf einem Schirm auffangen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Steht ein Gegenstand genau in der doppelten Brennweite vor einer Sammellinse, ist sein Bild genauso groß wie er selbst.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das Gehirn dreht das Bild von der Netzhaut wieder um, damit wir alles aufrecht sehen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Je stärker eine Linse gewölbt ist, desto kürzer ist ihre Brennweite.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das Auge stellt scharf, indem es den Abstand zwischen Augenlinse und Netzhaut verändert.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Eine Sammellinse hat 10 cm Brennweite. Eine Kerze steht 15 cm vor der Linse. Was erscheint auf dem Schirm?",
+    "optionen": [
+     "Ein aufrechtes, vergrößertes Bild, das man auf dem Schirm auffangen kann.",
+     "Gar kein Bild, weil die Kerze näher als die doppelte Brennweite steht.",
+     "Ein umgekehrtes, vergrößertes Bild; der Schirm muss dafür weiter nach hinten als bei einer Kerze in 20 cm Abstand.",
+     "Ein umgekehrtes, verkleinertes Bild, genau wie bei einem weit entfernten Gegenstand."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Vergleiche das Bild einer Lochkamera mit dem Bild, das eine Sammellinse auf demselben Schirm erzeugt. Gehe dabei auf die Lage des Bildes, auf Helligkeit und Schärfe und auf das Scharfstellen ein.",
+    "zeilen": 5,
+    "loesung": "Beide erzeugen auf dem Schirm ein umgekehrtes Bild, denn bei beiden kreuzen sich die Lichtbündel. Bei der Lochkamera muss man zwischen Helligkeit und Schärfe abwägen: Ein feines Loch bildet scharf, aber sehr dunkel ab, ein großes Loch hell, aber verwaschen. Die Sammellinse lässt viel mehr Licht durch und bündelt es trotzdem wieder zu Punkten, deshalb ist ihr Bild hell und scharf zugleich. Dafür ist das Bild der Linse nur bei der passenden Bildweite scharf, der Schirm muss also je nach Abstand des Gegenstands verschoben werden. An der Lochkamera muss man dagegen gar nichts scharf stellen; schiebt man den Schirm weiter nach hinten, wird das Bild nur größer und dunkler."
+   },
+   "transfer": {
+    "frage": "Auf einer Klarsichtfolie liegt ein einzelner Wassertropfen. Legt man die Folie auf eine Zeitung, erscheint die Schrift unter dem Tropfen deutlich größer und steht richtig herum. Übertrage dein Wissen über Linsen: Erkläre, warum der Tropfen vergrößert, und begründe, wie dicht die Folie am Papier liegen muss.",
+    "zeilen": 5,
+    "loesung": "Der Wassertropfen ist in der Mitte dicker als am Rand und wirkt deshalb wie eine Sammellinse. Weil er sehr stark gewölbt ist, hat er eine sehr kurze Brennweite, und je kürzer die Brennweite, desto stärker die Vergrößerung. Die Schrift liegt fast direkt unter dem Tropfen, also näher am Glas als seine Brennweite. Dadurch treffen sich die Strahlen dahinter nicht, und das Auge sieht ein aufrechtes, vergrößertes virtuelles Bild, so wie bei einer Lupe. Hebt man die Folie weiter als die Brennweite vom Papier ab, verschwimmt die Schrift und erscheint danach umgekehrt.",
+    "vertiefung": true
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Lupe",
+   "Brillengläser (auch für Kurzsichtige)",
+   "Weißes Blatt Papier",
+   "Zeitungsseite",
+   "Fenster als fernes Motiv"
+  ]
+ },
+ {
+  "id": "farben",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "SPIEGELBILD",
+     "tipp": "Es liegt genauso weit hinter der glatten Fläche, wie der Gegenstand davorsteht, und hebt scheinbar die andere Hand."
+    },
+    {
+     "wort": "REFLEXION",
+     "tipp": "So heißt das Zurückwerfen von Licht an einer glatten Fläche. Der Winkel des zurückgeworfenen Strahls ist dabei genauso groß wie der Einfallswinkel."
+    },
+    {
+     "wort": "VIRTUELL",
+     "tipp": "So nennt man ein Bild, das sich auf keinem Schirm auffangen lässt, weil sich das Licht an dieser Stelle in Wirklichkeit nie trifft."
+    },
+    {
+     "wort": "BRECHUNG",
+     "tipp": "Die Richtungsänderung des Lichts an der Grenze zweier durchsichtiger Stoffe. Nur senkrecht einfallendes Licht bleibt davon unberührt."
+    },
+    {
+     "wort": "GRENZWINKEL",
+     "tipp": "Ab etwa 49 Grad tritt aus Wasser überhaupt kein Licht mehr in die Luft aus. Genau dieser Wert ist gemeint."
+    },
+    {
+     "wort": "GLASFASER",
+     "tipp": "Ein dünner, biegsamer Faden, der Licht im Zickzack über viele Kilometer trägt. An der Seite bleibt er dunkel, nur die Enden leuchten."
+    },
+    {
+     "wort": "PRISMA",
+     "tipp": "Ein Körper aus Glas mit zwei gegeneinander geneigten Flächen. Dahinter läuft weißes Licht sichtbar in ein Farbband auseinander."
+    },
+    {
+     "wort": "SPEKTRUM",
+     "tipp": "So heißt das aufgefächerte Farbband von Rot bis Violett auf dem weißen Papier."
+    },
+    {
+     "wort": "DISPERSION",
+     "tipp": "Der Fachbegriff für das Zerlegen von weißem Licht in seine Farben. Sie kommt zustande, weil Blau stärker abgelenkt wird als Rot."
+    },
+    {
+     "wort": "REGENBOGEN",
+     "tipp": "Nach einem Schauer steht er als farbiger Halbkreis um den Schatten deines Kopfes und lässt sich nie erreichen, so weit du auch läufst."
+    },
+    {
+     "wort": "ABSORPTION",
+     "tipp": "So heißt der Anteil des Lichts, der von einer Oberfläche geschluckt wird und den Körper wärmer macht."
+    },
+    {
+     "wort": "LOT",
+     "tipp": "Die Senkrechte auf einer Fläche im Auftreffpunkt; zu ihr werden in der Optik alle Winkel gemessen."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann an einer Oberfläche die drei Anteile des Lichts benennen und erklären, warum ich mich abends im Fenster sehe, am Morgen aber nicht.",
+    "Ich kann das Reflexionsgesetz am Lot einzeichnen und begründen, warum der Lichtfleck um den doppelten Winkel wandert, wenn ich den Spiegel drehe.",
+    "Ich kann angeben, wo das Spiegelbild eines Gegenstandes liegt, und begründen, warum es virtuell ist.",
+    "Ich kann angeben, an welcher Stelle ein Strahl seine Richtung ändert und zu welcher Seite er beim Übergang von Luft in Glas knickt.",
+    "Ich kann erklären, warum eine Münze im Wasser höher erscheint, als sie wirklich liegt, und warum ein Löffel im Glas geknickt aussieht.",
+    "Ich kann Einfallswinkel und Brechungswinkel am Lot einzeichnen und angeben, welcher von beiden beim Übergang von Luft in Glas größer ist.",
+    "Ich kann begründen, warum es beim Übergang von Glas in Luft einen Grenzwinkel gibt und beim umgekehrten Weg nicht, und damit erklären, warum eine Glasfaser Licht um Kurven führt.",
+    "Ich kann begründen, warum ein Prisma weißes Licht zerlegt, und erklären, wie daraus im Regentropfen ein Regenbogen wird."
+   ],
+   "tipps": [
+    "Zeichne zu jedem Versuch einen kleinen Strahlengang mit Lot, Einfallswinkel und Brechungswinkel. Wer den Strahl zeichnen kann, muss den Merksatz nicht auswendig lernen.",
+    "Hol dir einen Spiegel, ein Glas Wasser und ein Stück schwarzes Papier an den Tisch und erkläre jeden Versuch laut jemandem zu Hause. Die Stellen, an denen du stockst, sind genau deine Lücken.",
+    "Lege eine Merkkarte mit den fünf Wörtern Absorption, Reflexionsgesetz, Brechung, Grenzwinkel und Dispersion an. Schreibe zu jedem Wort einen Satz und ein Alltagsbeispiel dazu.",
+    "Öffne die Simulationen noch einmal und stelle genau die Werte aus deiner Tabelle ein. Sage vorher laut, was passieren wird – erst dann schau hin."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Teelicht steht 12 cm vor einem ebenen Spiegel. Wie weit hinter der Spiegelfläche liegt sein Bild, und lässt es sich dort auf Papier auffangen?",
+     "loesung": "Das Bild liegt 12 cm hinter der Spiegelfläche, denn Bildabstand und Gegenstandsabstand sind gleich groß. Auffangen lässt es sich nicht: Hinter dem Spiegel kommt gar kein Licht an, das Bild ist virtuell."
+    },
+    {
+     "frage": "Licht fällt unter 40 Grad aus Luft auf eine Glasfläche. Welcher Brechungswinkel kann stimmen: 25 Grad, 40 Grad oder 55 Grad? Begründe kurz.",
+     "loesung": "25 Grad ist richtig. Beim Übergang von Luft in Glas wird das Licht zum Lot hin gebrochen, der Brechungswinkel muss also kleiner sein als der Einfallswinkel von 40 Grad. Gleich groß wären beide Winkel nur bei senkrechtem Einfall, wo der Strahl überhaupt nicht geknickt wird; 55 Grad wäre eine Brechung vom Lot weg, die es hier nicht gibt."
+    },
+    {
+     "frage": "Auf einem Handybildschirm leuchtet eine Fläche türkis. Welche Leuchtfelder leuchten dort, welche bleiben dunkel?",
+     "loesung": "Es leuchten die grünen und die blauen Leuchtfelder, die roten bleiben dunkel. Türkises Licht gibt es im Bildschirm gar nicht; der Farbeindruck entsteht erst im Auge, weil die winzigen Felder so dicht beieinanderliegen."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Ein Spiegelbild lässt sich auf keinem Schirm auffangen, denn dort trifft sich in Wirklichkeit kein Licht; deshalb nennt man es ein",
+     "loesung": "virtuelles",
+     "post": " Bild."
+    },
+    {
+     "pre": "Geht Licht aus Luft in Glas, so wird es zum",
+     "loesung": "Lot",
+     "post": " hin gebrochen; der Brechungswinkel bleibt dabei kleiner als der Einfallswinkel."
+    },
+    {
+     "pre": "Beim Übergang von Wasser in Luft tritt über dem Grenzwinkel von etwa 49 Grad kein Licht mehr aus, sondern alles wird zurückgeworfen. Dieser Vorgang heißt",
+     "loesung": "Totalreflexion",
+     "post": "."
+    },
+    {
+     "pre": "Trifft Licht auf eine Oberfläche, wird ein Teil zurückgeworfen, ein Teil durchgelassen und ein Teil",
+     "loesung": "absorbiert",
+     "post": "; dabei wird der Körper wärmer."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Das Spiegelbild eines Gegenstandes lässt sich mit einem Blatt Papier hinter dem Spiegel auffangen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Eine Münze am Boden eines Bechers erscheint höher, als sie wirklich liegt, sobald Wasser im Becher steht.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Glas ist optisch dichter als Wasser und bricht das Licht bei gleichem Einfallswinkel stärker.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelt man den Einfallswinkel, so verdoppelt sich auch der Brechungswinkel.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Einen Regenbogen sieht man am besten, wenn man in Richtung Sonne blickt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Dreht man einen Spiegel um 10 Grad, so schwenkt der zurückgeworfene Strahl um 20 Grad.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Weißes Sonnenlicht fällt durch ein Prisma auf weißes Papier, und dort erscheint ein Farbband von Rot bis Violett. Woran liegt das?",
+    "optionen": [
+     "Das Glas färbt das Licht beim Durchgang ein und erzeugt dabei neue Farben.",
+     "Das Papier gibt die Farben zurück, die in ihm selbst stecken.",
+     "Die Farben stecken schon im weißen Licht und werden im Glas unterschiedlich stark gebrochen.",
+     "Das Licht wird im Prisma mehrfach hin und her zurückgeworfen, und durch diese Umwege entstehen die Farben."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Vergleiche, wie die Farben hinter einem Prisma und die Farben eines Regenbogens entstehen. Nenne eine Gemeinsamkeit und zwei Unterschiede.",
+    "zeilen": 4,
+    "loesung": "Gemeinsam ist beiden, dass weißes Sonnenlicht in seine Farben zerlegt wird, weil blaues Licht stärker gebrochen wird als rotes; die Farben werden also nicht erzeugt, sondern nur getrennt. Im Prisma wird das Licht an zwei geneigten Flächen gebrochen und läuft dahinter weiter, sodass man das Farbband hinter dem Glas auf einem Blatt auffangen kann. Im Regentropfen kommt zwischen den beiden Brechungen noch ein Rückwurf an der Rückseite dazu, das Licht kehrt also zur Sonnenseite zurück. Deshalb sieht man den Bogen nur mit der Sonne im Rücken und unter einem festen Winkel von etwa 42 Grad, während man das Prisma frei aufstellen und drehen kann. Außerdem liefert ein einziges Prisma das ganze Farbband, der Bogen dagegen entsteht erst dadurch, dass unzählige Tropfen jeweils eine Farbe ins Auge schicken."
+   },
+   "transfer": {
+    "frage": "Lena taucht im Schwimmbad unter und schaut schräg nach oben zur Wasseroberfläche. Statt der Hallendecke sieht sie dort den Beckenboden wie in einem Spiegel. Erkläre, wie das zustande kommt, und gib an, wohin sie blicken muss, um die Decke doch zu sehen.",
+    "zeilen": 4,
+    "loesung": "Unter Wasser trifft das Licht von innen auf die Grenzfläche zur Luft, also aus dem optisch dichteren in den optisch dünneren Stoff. Blickt Lena flach zur Oberfläche, ist der Winkel zum Lot größer als der Grenzwinkel für Wasser und Luft von etwa 49 Grad; dann tritt dort kein Licht von oben zu ihr durch, und das Licht vom Beckenboden wird vollständig zurückgeworfen. Genau dieses zurückgeworfene Licht erreicht ihr Auge, deshalb wirkt die Oberfläche an dieser Stelle wie ein Spiegel. Erst wenn sie steiler nach oben schaut, also näher an die Senkrechte, liegt der Winkel unter dem Grenzwinkel, und Licht von der Hallendecke kann gebrochen zu ihr durchtreten. Sie sieht die Decke deshalb nur wie durch ein rundes Fenster genau über sich.",
+    "vertiefung": true
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Taschenlampe",
+   "Spiegel",
+   "Schwarzes Papier",
+   "Weißes Blatt Papier",
+   "Münze",
+   "Glas Wasser",
+   "Prisma aus der Schulsammlung",
+   "Lineal"
+  ]
+ },
+ {
+  "id": "himmel7",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "STERN",
+     "tipp": "Ein Himmelskörper, der sein Licht selbst erzeugt. Im Fernrohr zittert und blitzt er meistens stärker als ein Planet, weil er uns nahezu punktförmig erscheint und sein dünnes Lichtbündel in der unruhigen Luft ständig abgelenkt wird."
+    },
+    {
+     "wort": "GEZEITEN",
+     "tipp": "Sammelname für Ebbe und Flut; sie entstehen, weil der Mond nicht überall auf der Erde gleich stark zieht."
+    },
+    {
+     "wort": "ZEITZONE",
+     "tipp": "Ein Streifen der Erde, in dem überall dieselbe Uhr gilt. Vierundzwanzig davon teilen die Kugel auf; von einem Streifen zum nächsten springt die Uhr um eine Stunde."
+    },
+    {
+     "wort": "GRAVITATION",
+     "tipp": "Die Anziehung zwischen allen Körpern, die Masse haben. Sie zieht die Münze zum Boden und hält die Erde bei der Sonne."
+    },
+    {
+     "wort": "SONNENSYSTEM",
+     "tipp": "Acht Planeten, ihre Monde und viele Kleinkörper bilden zusammen mit ihrem Zentralstern dieses Ganze."
+    },
+    {
+     "wort": "MILCHSTRASSE",
+     "tipp": "Unsere eigene Galaxie mit einigen hundert Milliarden Sternen. Weil wir weit außen in ihrer Scheibe sitzen und von innen an ihr entlangschauen, sehen wir sie als blasses Band am Nachthimmel."
+    },
+    {
+     "wort": "LICHTJAHR",
+     "tipp": "Keine Zeitangabe, sondern eine Strecke: So weit kommt ein Strahl aus einer Lampe in zwölf Monaten. Damit gibt man die Entfernungen zu den Sternen an."
+    },
+    {
+     "wort": "UMLAUFBAHN",
+     "tipp": "Der geschlossene Weg, auf dem ein Planet die Sonne immer wieder umkreist. Er entsteht aus Anziehung und Querbewegung zusammen und ist meist eine leicht gedehnte Ellipse."
+    },
+    {
+     "wort": "ABSTAND",
+     "tipp": "Wächst er auf das Doppelte, bleibt von der Anziehung nur ein Viertel übrig."
+    },
+    {
+     "wort": "EISRIESE",
+     "tipp": "So bezeichnet man Uranus und Neptun. Sie sind viel größer als die Erde und haben keine feste Oberfläche, unterscheiden sich im Aufbau aber von den beiden noch größeren Nachbarn weiter innen."
+    },
+    {
+     "wort": "FEDERWAAGE",
+     "tipp": "Dieses Messgerät hängt an einer gedehnten Spirale und zeigt in Newton an, wie stark ein Himmelskörper an einem Gegenstand zieht."
+    },
+    {
+     "wort": "NEWTON",
+     "tipp": "In dieser Einheit gibt man die Gewichtskraft an. Auf dem Mond misst man davon nur etwa ein Sechstel des Wertes von der Erde."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann selbstleuchtende und beleuchtete Körper unterscheiden und erklären, warum Sterne meistens stärker funkeln als Planeten.",
+    "Ich kann mit Globus und Lampe erklären, wie Tag und Nacht entstehen, und begründen, warum die Erde in 24 Zeitzonen eingeteilt ist.",
+    "Ich kann beschreiben, was Gravitation ist, und begründen, warum ohne Luft alle Körper gleich schnell fallen.",
+    "Ich kann angeben, wovon die Anziehung zweier Körper abhängt, und begründen, warum bei doppeltem Abstand nur ein Viertel übrig bleibt.",
+    "Ich kann Sonnensystem, Milchstraße und Galaxienhaufen der Größe nach ordnen und mit 300 000 km/s ausrechnen, wie lange das Licht für eine Strecke braucht.",
+    "Ich kann erklären, warum ein Planet nicht in die Sonne stürzt, obwohl sie ihn ständig anzieht, und beschreiben, wie sich seine Bahn bei zu kleiner und bei zu großer Geschwindigkeit ändert.",
+    "Ich kann die inneren Gesteinsplaneten von den äußeren Gasriesen und Eisriesen unterscheiden und Masse und Gewichtskraft mit Einheit und Messgerät auseinanderhalten.",
+    "Ich kann erklären, warum der Mond auf der Erde zwei Wasserberge erzeugt und es deshalb zweimal am Tag Flut gibt."
+   ],
+   "tipps": [
+    "Schreibe zu jedem der acht Themen den Merksatz auf eine Karteikarte: die Lücke auf die Vorderseite, das Lösungswort auf die Rückseite. Ziehe jeden Abend fünf Karten und sprich den ganzen Satz laut mit.",
+    "Lege eine Tabelle mit zwei Spalten an: „ändert sich unterwegs zum Mond„ und „bleibt überall gleich“. Trage Masse, Gewichtskraft, Kilogramm, Newton, Balkenwaage und Federwaage ein. Genau an dieser Unterscheidung entstehen die meisten Fehler.",
+    "Rechne Lichtlaufzeiten immer nach demselben Schema: Entfernung in Kilometern geteilt durch 300 000 ergibt Sekunden, geteilt durch 60 ergibt Minuten. Die beiden Planetengruppen präge dir mit einem Satz ein: vier kleine harte, dann der Asteroidengürtel, dann vier große ohne feste Oberfläche – Jupiter und Saturn als Gasriesen, Uranus und Neptun als Eisriesen.",
+    "Öffne die Simulationen noch einmal und stelle genau die Werte aus deiner Tabelle ein. Sage vorher laut, was herauskommt – erst dann lies ab."
+   ],
+   "mini": [
+    {
+     "frage": "Bens Masse beträgt 48 kg; auf der Erde zeigt eine Federwaage an ihm rund 480 Newton. Was zeigt dieselbe Federwaage auf dem Mond, und wie groß ist Bens Masse dort?",
+     "loesung": "Auf dem Mond beträgt die Gewichtskraft nur etwa ein Sechstel: 480 N : 6 = 80 N. Die Federwaage zeigt dort also rund 80 Newton an. Bens Masse bleibt dabei unverändert bei 48 Kilogramm, denn er verliert unterwegs keinen Stoff."
+    },
+    {
+     "frage": "Ordne zu: Merkur, Jupiter, Mars und Neptun. Welche gehören zu den inneren Gesteinsplaneten, welche zu den äußeren Planeten? Nenne bei den äußeren auch die genauere Bezeichnung.",
+     "loesung": "Merkur und Mars sind zwei der vier inneren Gesteinsplaneten: klein, mit fester Oberfläche und hoher Dichte. Jupiter und Neptun gehören zu den vier äußeren Planeten, die viel größer sind und keine feste Oberfläche haben, auf der man stehen könnte. Genauer ist Jupiter ein Gasriese, Neptun dagegen ein Eisriese – Eisriese ist auch Uranus, Gasriese außerdem Saturn. Getrennt werden die beiden Gruppen vom Asteroidengürtel zwischen Mars und Jupiter."
+    },
+    {
+     "frage": "Ein Planet wird auf seiner Umlaufbahn plötzlich stark abgebremst. Beschreibe, was mit ihm geschieht.",
+     "loesung": "Ohne die Querbewegung fehlt ihm das, was ihn an der Sonne vorbeifallen lässt. Die Anziehung biegt seine Bahn dann sofort nach innen, und er stürzt in die Sonne. Genau das zeigt am Bildschirm auch der kleinste Reglerwert."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Sonne und Sterne erzeugen ihr Licht ohne fremde Hilfe; sie sind",
+     "post": ". Mond und Planeten werfen dagegen nur Sonnenlicht zurück.",
+     "loesung": "selbstleuchtend"
+    },
+    {
+     "pre": "Der Planet fällt immerzu an der Sonne vorbei; aus Anziehung und Querbewegung zusammen entsteht seine",
+     "post": ", meist eine leicht gedehnte Ellipse.",
+     "loesung": "Umlaufbahn"
+    },
+    {
+     "pre": "Die vier äußeren Planeten haben keine feste Oberfläche, auf der man stehen könnte; ihre",
+     "post": " ist gering, bei Saturn im Mittel sogar kleiner als die von Wasser.",
+     "loesung": "Dichte"
+    },
+    {
+     "pre": "Eine Federwaage misst die Gewichtskraft in der Einheit",
+     "post": "; auf dem Mond zeigt sie nur etwa ein Sechstel des Erdwertes an.",
+     "loesung": "Newton"
+    },
+    {
+     "pre": "Verdoppelt man den Abstand zweier Körper, so bleibt von der Anziehung nur noch ein",
+     "loesung": "Viertel",
+     "post": "übrig."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Die Erde ist in 24 Zeitzonen eingeteilt; von einer zur nächsten springt die Uhr um eine Stunde.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Lichtpunkt, der im Fernrohr zittert, ist mit Sicherheit ein Stern, denn Planeten funkeln nie.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Planet stürzt nicht in die Sonne, weil sie ihn in dieser Entfernung gar nicht mehr anzieht.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Zwischen Mars und Jupiter liegt der Asteroidengürtel; er trennt die vier Gesteinsplaneten von den vier großen äußeren Planeten.",
+     "stimmt": true
+    },
+    {
+     "aussage": "In einem Rohr, aus dem die Luft herausgepumpt wurde, fallen eine Feder und eine Münze gleich schnell.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Lichtjahr gibt an, wie lange das Licht eines Sterns bis zu uns unterwegs war.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Auf der dem Mond abgewandten Seite der Erde gibt es keine Flut.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Im Schulhofmodell ist die Sonne ein Fußball und die Erde ein Stecknadelkopf in 24 Metern Abstand. Welche Aussage passt zu diesem Modell?",
+    "optionen": [
+     "Die Milchstraße wäre eine Kugel, in deren Mitte unsere Sonne läge.",
+     "Zwischen den Himmelskörpern liegen riesige leere Strecken; der Schulhof reicht deshalb nicht annähernd bis zum nächsten Stern.",
+     "Weil die Sterne zum Sonnensystem gehören, müsste der nächste Stern gleich hinter dem äußersten Planeten markiert werden.",
+     "Das Modell zeigt, dass die Planeten den größten Teil des Raumes im Sonnensystem ausfüllen."
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Auf dem Mond lässt ein Astronaut einen Hammer und eine Feder gleichzeitig los; danach hängt er beide nacheinander an eine Federwaage. Erkläre, warum sie gleichzeitig unten ankommen, und begründe, was die Federwaage dort im Vergleich zur Erde anzeigt und was eine Balkenwaage anzeigen würde.",
+    "zeilen": 5,
+    "loesung": "Die Gravitation zieht jeden Körper mit Masse zum Mond hin, und ohne Luft fallen dabei alle Körper gleich schnell, ganz gleich, wie schwer sie sind. Auf der Erde bremst der Luftwiderstand die Feder wegen ihrer großen Fläche und kleinen Masse stark; auf dem luftlosen Mond fällt dieser Einfluss weg, deshalb kommen Hammer und Feder tatsächlich gleichzeitig unten an. Die Federwaage misst die Gewichtskraft, also den Zug, mit dem der Himmelskörper an der Masse zieht. Weil der Mond schwächer zieht als die Erde, zeigt sie dort nur etwa ein Sechstel des Wertes von zu Hause. Eine Balkenwaage vergleicht dagegen Massen, und die Masse ändert sich nirgends; sie zeigt auf dem Mond deshalb genau dasselbe an wie auf der Erde."
+   },
+   "transfer": {
+    "frage": "Eine Raumstation kreist in etwa 400 Kilometern Höhe um die Erde, und die Astronauten schweben frei in ihrem Inneren. Übertrage dein Wissen aus diesem Kapitel: Erkläre, warum sie schweben, obwohl die Erde sie weiter anzieht, und beurteile, ob ihre Masse dort kleiner ist als auf der Erde.",
+    "zeilen": 5,
+    "loesung": "Die Erde zieht die Station und die Astronauten weiterhin an, denn die Gravitation wirkt zwischen allen Körpern mit Masse. Die Station ist aber gleichzeitig sehr schnell quer dazu unterwegs, deshalb fällt sie immerzu an der Erde vorbei, statt auf sie zu stürzen – genauso wie ein Planet an der Sonne vorbeifällt. Astronauten und Station fallen dabei gemeinsam, und ohne Luft fallen alle Körper gleich schnell, so dass niemand auf einen Boden gedrückt wird: Sie schweben. Ihre Masse ist dort genauso groß wie zu Hause, denn sie verlieren unterwegs keinen Stoff; nur eine Federwaage würde im gemeinsamen Fall nichts mehr anzeigen. Würde man die Station stark abbremsen, verlöre sie ihre Querbewegung und stürzte zur Erde.",
+    "vertiefung": true
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Taschenlampe",
+   "Styroporkugel",
+   "Globus",
+   "Münze",
+   "Blatt Papier",
+   "Magnet",
+   "Büroklammer",
+   "Kleiner Ball",
+   "Fußball",
+   "Stecknadel",
+   "Maßband"
+  ]
+ },
+ {
+  "id": "teleskop",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "OBJEKTIV",
+     "tipp": "Die vordere Linse im Fernrohr mit der langen Brennweite. Sie erzeugt vom fernen Schild ein kleines, umgekehrtes Zwischenbild."
+    },
+    {
+     "wort": "OKULAR",
+     "tipp": "Die hintere Linse im Fernrohr mit der kurzen Brennweite. Sie wirkt wie eine Lupe auf das Zwischenbild; je kürzer ihre Brennweite, desto stärker vergrößert das Rohr."
+    },
+    {
+     "wort": "INFRAROT",
+     "tipp": "Diese Strahlung schließt sich hinter dem roten Ende des sichtbaren Lichts an. Die Fernbedienung sendet damit ihre Signale, unser Auge nimmt davon nichts wahr."
+    },
+    {
+     "wort": "FALSCHFARBEN",
+     "tipp": "Farben, die einem gemessenen Bild erst nachträglich zugeordnet werden. Sie geben an, wie stark eine unsichtbare Strahlung an dieser Stelle ist."
+    },
+    {
+     "wort": "JUPITER",
+     "tipp": "Um diesen Planeten sah Galilei 1610 vier Monde kreisen. Damit war die Erde nicht mehr der einzige Mittelpunkt, um den sich etwas dreht."
+    },
+    {
+     "wort": "PARALLAXE",
+     "tipp": "Der lange vergeblich gesuchte Beweis dafür, dass sich die Erde bewegt. Bessel gelang die Messung an einem Fixstern erst 1838."
+    },
+    {
+     "wort": "KRUEMMUNG",
+     "tipp": "Eine große Masse verbiegt damit Raum und Zeit. Körper folgen dieser Verbiegung, und deshalb biegt sich auch die Bahn einer Murmel neben der schweren Kugel auf dem gespannten Tuch."
+    },
+    {
+     "wort": "URKNALL",
+     "tipp": "So heißt der Anfang vor etwa 13,8 Milliarden Jahren, als alles extrem dicht und heiß war. Er fand nicht an einer bestimmten Stelle statt; seitdem dehnt sich der Raum selbst aus."
+    },
+    {
+     "wort": "KERNFUSION",
+     "tipp": "Tief im Inneren eines Sterns verschmilzt dabei Wasserstoff zu Helium. Dieser Vorgang liefert die gesamte Energie des Sterns und ist kein Verbrennen."
+    },
+    {
+     "wort": "SUPERNOVA",
+     "tipp": "So endet ein sehr schwerer Stern: in einer gewaltigen Explosion. Ein leichter Stern wie die Sonne wird dagegen nach den Modellen zu einem Weißen Zwerg."
+    },
+    {
+     "wort": "SPEKTRUM",
+     "tipp": "Das Farbband, das ein Prisma aus dem Licht eines Sterns macht. Darin fehlen einzelne Farben als schmale dunkle Linien."
+    },
+    {
+     "wort": "MILCHSTRASSE",
+     "tipp": "Die Scheibe aus einigen hundert Milliarden Sternen, zu der auch unsere Sonne gehört. Als blasses Band zieht sie sich quer über den Nachthimmel."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass im Fernrohr das Objektiv ein kleines, umgekehrtes Zwischenbild erzeugt und das Okular wie eine Lupe darauf wirkt – und dabei den Linsenabstand als Summe und die Vergrößerung als Quotient der beiden Brennweiten angeben.",
+    "Ich kann beschreiben, dass sichtbares Licht nur ein schmaler Ausschnitt der elektromagnetischen Wellen ist, und erklären, was die Falschfarben eines Infrarot- oder Röntgenbildes bedeuten.",
+    "Ich kann an Galileis Jupitermonden und den Venusphasen erklären, warum das geozentrische Weltbild mit der unbewegten Erde im Mittelpunkt ins Wanken geriet, und begründen, dass dafür neue Beobachtungen nötig waren – bis hin zu Bessels Fixsternparallaxe von 1838.",
+    "Ich kann mit dem Gummituch und dem Ballon erklären, dass eine große Masse Raum und Zeit krümmt und dass sich der Raum zwischen den Galaxien ausdehnt – und zu jedem Modell eine Grenze nennen.",
+    "Ich kann begründen, warum ein schwerer Stern heißer leuchtet und kürzer lebt als ein leichter, und sagen, was nach den Modellen am Ende aus beiden wird.",
+    "Ich kann erklären, wie dunkle Linien im Spektrum die Stoffe eines Sterns verraten, und warum wir die Milchstraße als helles Band quer über den ganzen Himmel sehen, obwohl unsere Sonne nicht im Zentrum ihrer Scheibe steht."
+   ],
+   "tipps": [
+    "Lege zwei verschieden starke Lupen hintereinander auf ein Lineal und schau damit aus dem Fenster. Verschiebe die hintere, bis das Bild scharf steht, und vergleiche den Abstand mit den beiden Brennweiten zusammen.",
+    "Zeichne einen leeren Zeitstrahl und trage aus dem Kopf ein, wer wann was beobachtet hat (Ptolemäus, Kopernikus, Galilei, Herschel, Bessel, Hubble). Sprich danach laut zu Gummituch und Ballon: Was zeigt das Modell gut, und wo endet es?",
+    "Male ein Farbband mit drei dunklen Strichen und daneben eine Scheibe von der Seite mit einem Punkt außerhalb der Mitte für die Sonne. Erkläre jemandem zu Hause, was die Striche über die Stoffe im Stern verraten und warum wir längs durch die Scheibe ein helles Band sehen.",
+    "Öffne die Simulationen noch einmal und stelle genau die Werte aus deiner Tabelle ein. Sage vorher laut, was herauskommt – erst dann lies ab."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Objektiv hat 80 cm Brennweite, das Okular 4 cm. Wie lang ist das Rohr ungefähr, und wie stark vergrößert das Fernrohr?",
+     "loesung": "Das Rohr ist etwa 84 cm lang, denn der Abstand entspricht der Summe der Brennweiten (80 cm + 4 cm). Die Vergrößerung ist der Quotient 80 : 4, also 20-fach."
+    },
+    {
+     "frage": "Ein Stern hat zehn Sonnenmassen, ein zweiter eine halbe. Welcher leuchtet länger, und was wird nach den Modellen am Ende aus jedem?",
+     "loesung": "Der leichte Stern leuchtet viel länger. Im schweren Stern ist der Kern so heiß, dass die Kernfusion seinen großen Vorrat schon in einigen Millionen Jahren umsetzt; er explodiert am Ende als Supernova. Der leichte Stern kommt rund hundert Milliarden Jahre aus – länger, als das Universum bisher existiert. Sein Lebensende konnte deshalb noch nicht beobachtet werden; die Modelle sagen voraus, dass er als Weißer Zwerg endet."
+    },
+    {
+     "frage": "Warum blitzt die Lampe der Fernbedienung nur im Kamerabild auf, und wie nennt man die Farben, die man einem Infrarotbild nachträglich zuordnet?",
+     "loesung": "Sie sendet Infrarotstrahlung. Unser Auge nimmt sie nicht wahr, der Sensor der Kamera schon. Die nachträglich zugeordneten Farben heißen Falschfarben; sie geben die Stärke der Strahlung an."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Vergrößerung eines Fernrohrs ist der",
+     "loesung": "Quotient",
+     "post": " aus der Brennweite des Objektivs und der des Okulars."
+    },
+    {
+     "pre": "Hinter dem roten Ende des sichtbaren Lichts beginnt die",
+     "loesung": "Infrarotstrahlung",
+     "post": ". Unser Auge nimmt sie nicht wahr, der Sensor einer Handykamera schon."
+    },
+    {
+     "pre": "Ein Prisma zerlegt das Licht eines Sterns in ein",
+     "loesung": "Spektrum",
+     "post": ". Darin fehlen einzelne Farben als schmale dunkle Linien."
+    },
+    {
+     "pre": "Unsere Sonne steht nicht im Zentrum der Milchstraße. Weil wir selbst in ihrer Scheibe stecken, sehen wir längs durch sie ein helles",
+     "loesung": "Band",
+     "post": " quer über den ganzen Himmel."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Je weiter man Objektiv und Okular auseinanderzieht, desto größer wird das Bild des fernen Schildes.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die kräftigen Farben eines Röntgen- oder Infrarotbildes sind die echten Farben des aufgenommenen Gases.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Dass die Venus alle Phasen wie der Mond zeigt, lässt sich nur erklären, wenn sie um die Sonne läuft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Aus dem Bereich innerhalb des Ereignishorizonts gelangt kein Lichtsignal nach außen.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Den Ort, an dem der Urknall stattgefunden hat, kann man mit einem starken Teleskop am Himmel finden.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein schwerer Stern setzt seinen Wasserstoff schneller um und lebt deshalb kürzer als ein leichter.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Im Tuchmodell rollt eine Murmel weit außen an der schweren Kugel vorbei, etwa 20 cm entfernt. Was passiert, und was zeigt das?",
+    "optionen": [
+     "Sie rollt geradeaus weiter, denn abgelenkt werden nur Murmeln, die dicht vorbeirollen.",
+     "Sie wird von der Kugel weggedrückt, weil das Tuch dort straffer gespannt ist.",
+     "Ihre Bahn biegt sich leicht zur Kugel hin: Eine große Masse krümmt Raum und Zeit, und Körper folgen dieser Krümmung.",
+     "Sie verschwindet in der Delle, denn dort hat das Modell seinen Ereignishorizont."
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Ben sagt, die Leute früher hätten eben nichts gewusst. Beurteile diesen Satz mit zwei Beobachtungen Galileis und begründe, warum eine schönere Idee allein das alte Weltbild nicht abgelöst hätte.",
+    "zeilen": 4,
+    "loesung": "Bens Satz stimmt so nicht. Im geozentrischen Weltbild des Ptolemäus kreiste alles um die unbewegte Erde, und das passte zu allem, was man ohne Fernrohr sehen konnte: Die Sonne wandert, die Erde scheint stillzustehen. Kopernikus stellte 1543 die Sonne in den Mittelpunkt seines Modells des Planetensystems, konnte das aber nicht beweisen – eine schönere Idee allein reichte deshalb nicht. Erst Galileis Beobachtungen von 1610 brachten das alte Bild ins Wanken: Die vier Monde um Jupiter zeigten, dass nicht alles um die Erde kreist, und alle Phasen der Venus sind nur möglich, wenn sie die Sonne umläuft. Ein Weltbild wird also nicht durch bessere Gedanken abgelöst, sondern durch neue Beobachtungen, die nicht mehr dazu passen; dass sich die Erde wirklich bewegt, zeigte die Messung einer Fixsternparallaxe durch Bessel sogar erst 1838. Den Menschen fehlte nicht der Verstand, sondern das Messgerät."
+   },
+   "transfer": {
+    "frage": "Astronominnen vergleichen das Spektrum einer sehr fernen Galaxie mit dem einer nahen. Das Muster der dunklen Linien ist dasselbe, aber im fernen Spektrum sitzen alle Linien ein Stück weiter zum roten Ende hin. Übertrage dein Wissen aus dem Kapitel: Was verrät das über die Stoffe in dieser Galaxie, und was über ihre Bewegung?",
+    "zeilen": 4,
+    "vertiefung": true,
+    "loesung": "Das Muster der dunklen Linien ist so eindeutig wie ein Fingerabdruck, weil jedes Element genau bestimmte Farben schluckt. Weil in beiden Spektren dasselbe Muster steht, stecken in der fernen Galaxie dieselben Elemente wie in der nahen, vor allem Wasserstoff und Helium. Die Verschiebung aller Linien zum roten Ende ist die Rotverschiebung: Sie zeigt, dass sich der Abstand dieser Galaxie zu uns vergrößert, und zwar umso schneller, je weiter sie entfernt ist. Dabei fliegt sie nicht durch eine feste Umgebung davon, sondern der Raum zwischen ihr und uns dehnt sich aus – wie die Ballonhaut zwischen zwei aufgemalten Punkten. Aus einem einzigen Farbband liest man also beides ab: woraus die Galaxie besteht und dass sich das Weltall ausdehnt."
+   }
+  },
+  "material": [
+   "Simulation am Bildschirm",
+   "Lupe",
+   "Blatt Papier",
+   "Fernbedienung",
+   "Handy mit Kamera",
+   "Münze",
+   "Altes T-Shirt",
+   "Gymnastikreifen",
+   "Schwere Kugel",
+   "Murmel",
+   "Luftballons",
+   "Filzstift",
+   "Maßband"
+  ]
+ }
+]

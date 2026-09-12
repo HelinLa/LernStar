@@ -1,0 +1,155 @@
+[
+ {
+  "sim": "prisma",
+  "ueberschrift": "🌈 Welche Farben stecken im weißen Licht?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "⬜ weißes Licht",
+    "ruft": "_priSet('weiss')"
+   },
+   {
+    "aufschrift": "🟥 nur Rot",
+    "ruft": "_priSet('rot')"
+   },
+   {
+    "aufschrift": "🟦 nur Blau",
+    "ruft": "_priSet('blau')"
+   },
+   {
+    "aufschrift": "Es färbt es rot",
+    "ruft": "_priAns(0,0)"
+   },
+   {
+    "aufschrift": "Es zerlegt es in die Spektralfarben",
+    "ruft": "_priAns(0,1)"
+   },
+   {
+    "aufschrift": "Es macht es dunkler",
+    "ruft": "_priAns(0,2)"
+   },
+   {
+    "aufschrift": "Rot",
+    "ruft": "_priAns(1,0)"
+   },
+   {
+    "aufschrift": "Grün",
+    "ruft": "_priAns(1,1)"
+   },
+   {
+    "aufschrift": "Violett",
+    "ruft": "_priAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine einzelne Farbe",
+    "ruft": "_priAns(2,0)"
+   },
+   {
+    "aufschrift": "Eine Mischung aller Spektralfarben",
+    "ruft": "_priAns(2,1)"
+   },
+   {
+    "aufschrift": "Gar keine Farbe",
+    "ruft": "_priAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_priSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_priSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_priSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('prisma')"
+   }
+  ],
+  "hinweise": [
+   "Schicke weißes Licht durch ein Prisma. Was passiert? Und was passiert, wenn du nur eine einzelne Farbe hindurchschickst?",
+   "Weißes Licht ist eine Mischung aller Spektralfarben. Das Prisma bricht jede Farbe unterschiedlich stark (Violett am meisten, Rot am wenigsten) → das Licht wird zerlegt. Eine einzelne Farbe kann nicht weiter zerlegt werden.",
+   "Prisma zerlegt Weiß in Rot – Orange – Gelb – Grün – Blau – Violett. | Weiß = Mischung aller Farben."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "priStatus: 🌈 Das weiße Licht wird in alle Spektralfarben zerlegt (Rot bis Violett)."
+   },
+   {
+    "einstellung": "⬜ weißes Licht",
+    "text": "priStatus: 🌈 Das weiße Licht wird in alle Spektralfarben zerlegt (Rot bis Violett)."
+   },
+   {
+    "einstellung": "🟥 nur Rot",
+    "text": "priStatus: 🟥 Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig)."
+   },
+   {
+    "einstellung": "🟦 nur Blau",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig)."
+   },
+   {
+    "einstellung": "Es färbt es rot",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Das Prisma färbt nicht, es zerlegt."
+   },
+   {
+    "einstellung": "Es zerlegt es in die Spektralfarben",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✓ Richtig! Das Prisma zerlegt weißes Licht in seine Farben."
+   },
+   {
+    "einstellung": "Es macht es dunkler",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht."
+   },
+   {
+    "einstellung": "Rot",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✗ Rot wird am wenigsten gebrochen."
+   },
+   {
+    "einstellung": "Grün",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✗ Grün liegt in der Mitte."
+   },
+   {
+    "einstellung": "Violett",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt."
+   },
+   {
+    "einstellung": "Eine einzelne Farbe",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es ist keine einzelne Farbe."
+   },
+   {
+    "einstellung": "Eine Mischung aller Spektralfarben",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✓ Richtig! Weiß ist eine Mischung aller Spektralfarben."
+   },
+   {
+    "einstellung": "Gar keine Farbe",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es enthält alle Farben zusammen."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es enthält alle Farben zusammen.  ||  priSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es enthält alle Farben zusammen.  ||  priSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es enthält alle Farben zusammen."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "priStatus: 🟦 Blaues Licht wird nur gebrochen, aber nicht weiter zerlegt (bleibt einfarbig).  ||  priFb0: ✗ Dunkler wird es nicht.  ||  priFb1: ✓ Richtig! Violett wird am stärksten abgelenkt.  ||  priFb2: ✗ Es enthält alle Farben zusammen."
+   }
+  ],
+  "bildtexte": [
+   "Prisma",
+   "Rot",
+   "Violett",
+   "Spektrum: Weiß wird zerlegt",
+   "einfarbig – wird nicht zerlegt"
+  ]
+ }
+]

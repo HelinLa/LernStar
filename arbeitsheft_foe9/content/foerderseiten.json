@@ -1,0 +1,3079 @@
+[
+ {
+  "id": "fk1",
+  "quelle": "kf1",
+  "sim": "kraft-wirkung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Der unsichtbare Schubs",
+  "name": "Woran erkennt man eine Kraft?",
+  "fachwoerter_neu": [
+   "Kraft",
+   "Wirkung"
+  ],
+  "alltag": [
+   "Jannis drückt in die Knete, Nour schiebt den Rollwagen an.",
+   "Drücken und Schieben nennt man in der Physik Kraft.",
+   "Die Knete hat eine Form, der Wagen ein Tempo, ein Ball eine Richtung."
+  ],
+  "frage": "Woran erkennst du, dass eine Kraft gewirkt hat?",
+  "predict": [
+   "Eine Kraft erkennt man daran, was sich danach ändert.",
+   "Eine Kraft wirkt nur dann, wenn sich etwas verformt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Bewegen“, drücke „Kraft wirken lassen“ und lies die Statuszeile ab.",
+   "Wähle „Verformen“, drücke „Kraft wirken lassen“ und lies ab.",
+   "Wähle „Richtung ändern“, drücke „Kraft wirken lassen“ und lies ab.",
+   "Trage in die Tabelle ein, was sich jedes Mal ändert."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Was passiert am Bildschirm?",
+   "Was ändert sich: Form, Tempo oder Richtung?"
+  ],
+  "tabRows": [
+   [
+    "Bewegen",
+    "„Die Kraft setzt den ruhenden Wagen in Bewegung“ – er wird schneller.",
+    "das Tempo"
+   ],
+   [
+    "Verformen",
+    "",
+    ""
+   ],
+   [
+    "Richtung ändern",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine",
+    "loesung": "Kraft",
+    "post": "kann man nicht sehen."
+   },
+   {
+    "pre": "Man erkennt sie an ihrer",
+    "loesung": "Wirkung",
+    "post": "– Form, Tempo oder Richtung ändern sich."
+   }
+  ],
+  "wortbank": [
+   "Kraft",
+   "Wirkung",
+   "unsichtbar",
+   "geändert"
+  ],
+  "beispiel": {
+   "frage": "Woran erkennst du beim Ball, dass eine Kraft gewirkt hat?",
+   "antwort": "Vorher rollt der Ball geradeaus. Die Kraft von oben lenkt ihn ab. Seine Richtung hat sich geändert. Also hat eine Kraft gewirkt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour hat drei Fragen. Welche kann der Bildschirm beantworten?",
+    "optionen": [
+     "Was ändert sich an der Knete?",
+     "Wie schwer ist der Wagen?",
+     "Wie lange rollt der Ball?"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Eine Kraft ist",
+      "loesung": "unsichtbar",
+      "post": "."
+     },
+     {
+      "pre": "Der Wagen rollt plötzlich los. Sein Tempo hat sich",
+      "loesung": "geändert",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler hält den rollenden Wagen mit der Hand an. Woran erkennt man die Kraft?",
+    "satzstarter": "Vorher rollte der Wagen, nachher …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Vorher rollte der Wagen. Nachher steht er still.",
+   "h3": "Fast fertig: Das Tempo hat sich geändert. Also hat eine ___ gewirkt."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, warum man eine Kraft nicht sieht.",
+   "Ich kann drei Wirkungen einer Kraft nennen.",
+   "Ich kann an einem Beispiel zeigen, dass eine Kraft gewirkt hat."
+  ],
+  "zuhause": "Suche zu Hause drei Dinge, die du verformen kannst. Drücke vorsichtig darauf und schreibe sie auf.",
+  "bildauftrag": "[BILD: eine einzige große Szene, durch eine schmale senkrechte Linie in zwei gleich große Hälften geteilt: links steht ein flacher Rollwagen still auf dem Schulhof, rechts rollt derselbe Wagen nach rechts weg; von links schiebt eine Hand gegen den Wagen, darüber ein dicker roter Pfeil mit der großen Beschriftung „Kraft“; unter den beiden Hälften groß „vorher: steht still“ und „nachher: rollt“; nur dieser eine Wagen, nur dieser eine Pfeil, keine Nebenbilder und keine Bewegungsstreifen; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fk2",
+  "quelle": "kf2",
+  "sim": "kraftmesser",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Was der Zeiger verrät",
+  "name": "Wie misst man eine Kraft?",
+  "fachwoerter_neu": [
+   "Newton (N)"
+  ],
+  "alltag": [
+   "Herr Kessler legt ein Seil um das Klavier.",
+   "Er braucht eine Zahl: Wie fest zieht das Seil?",
+   "Ein Gerät mit Feder und Zeiger heißt Federkraftmesser."
+  ],
+  "frage": "Wie kannst du eine Kraft messen, die du nicht siehst?",
+  "predict": [
+   "Am Federkraftmesser liest man ab, wie viel Gramm ein Gewicht hat.",
+   "Die Feder wird länger. Daran kann man die Kraft ablesen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke auf „Feder leeren“ und lies die Statuszeile.",
+   "Drücke einmal auf „Gewicht anhängen (1 N)“ und fülle Zeile 2 aus.",
+   "Drücke auf „Gewicht abnehmen“ und fülle Zeile 3 aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Werte auf einer Ergebniskarte.",
+  "tabCols": [
+   "Was machst du am Bildschirm?",
+   "Welche Kraft steht in der Statuszeile?",
+   "Wie ist die Feder?"
+  ],
+  "tabRows": [
+   [
+    "Feder leeren",
+    "F = 0 N",
+    "entspannt"
+   ],
+   [
+    "ein Gewicht anhängen",
+    "",
+    ""
+   ],
+   [
+    "das Gewicht abnehmen",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Kräfte misst man in",
+    "loesung": "Newton (N)",
+    "post": "."
+   },
+   {
+    "pre": "Unter einer Kraft wird die Feder",
+    "loesung": "länger",
+    "post": ". Am Federkraftmesser liest du die Kraft ab."
+   }
+  ],
+  "wortbank": [
+   "Newton (N)",
+   "länger",
+   "0 N",
+   "1 N"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt der Federkraftmesser ohne Gewicht an?",
+   "antwort": "In der Statuszeile steht: F = 0 N. Die Feder ist entspannt. An ihr zieht nichts."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was liest du am Federkraftmesser ab?",
+    "optionen": [
+     "Wie viel Gramm ein Gewicht hat.",
+     "Wie groß die Kraft in Newton (N) ist.",
+     "Wie lang die Feder in Meter ist."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Ohne Gewicht steht in der Statuszeile: F =",
+      "loesung": "0 N",
+      "post": "."
+     },
+     {
+      "pre": "Mit einem Gewicht steht dort: F =",
+      "loesung": "1 N",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Man sieht die Kraft am Gerät.“ Erkläre, was man wirklich sieht.",
+    "satzstarter": "Die Kraft ist unsichtbar. Man sieht nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Lies die Statuszeile zweimal: einmal ohne Gewicht, einmal mit Gewicht.",
+   "h3": "Fast fertige Antwort: Man sieht nur die Feder. Unter der Kraft wird sie ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann eine Kraft am Federkraftmesser ablesen.",
+   "Ich kenne die Einheit der Kraft.",
+   "Ich kann erklären, warum man die Kraft selbst nicht sieht."
+  ],
+  "zuhause": "Suche zwei Federn, zum Beispiel im Kugelschreiber oder in einer Matratze. Drücke darauf und schreibe auf, was du spürst.",
+  "bildauftrag": "[BILD: großer, kontrastreicher Federkraftmesser von der Seite, senkrecht hängend; oben der Haken zum Aufhängen, in der Mitte die Feder, rechts daneben die Skala mit den Marken 0 N, 1 N, 2 N, 3 N, 4 N und 5 N; unten ein einzelnes Gewicht am Haken, der Zeiger steht genau auf 1 N; nur dieses eine Gerät, keine zweite Feder und keine Nebenszene; große Beschriftungen „Feder“, „Zeiger“ und „Skala in Newton“; ruhiger heller Hintergrund ohne Deko]"
+ },
+ {
+  "id": "fk3",
+  "quelle": "kf3",
+  "sim": "federgesetz",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Weicher Puffer, harter Puffer",
+  "name": "Warum gibt eine Feder nach?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Unter den Podestfüßen liegen Gummipuffer.",
+   "Nour drückt gleich stark auf zwei Puffer.",
+   "Der eine sinkt tief ein, der andere kaum."
+  ],
+  "frage": "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
+  "predict": [
+   "Die harte Feder dehnt sich bei 1 N weniger weit.",
+   "Beide Federn dehnen sich bei 1 N gleich weit."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „weiche Feder“ und drücke einmal „mehr ▶“.",
+   "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.",
+   "Drücke einmal „◀ weniger“ und wähle dann „harte Feder“.",
+   "Lies wieder ab. Fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Feder?",
+   "Wie groß ist die Kraft F in N?",
+   "Wie weit dehnt sie sich?"
+  ],
+  "tabRows": [
+   [
+    "weiche Feder",
+    "1 N",
+    "2 cm"
+   ],
+   [
+    "weiche Feder",
+    "2 N",
+    ""
+   ],
+   [
+    "harte Feder",
+    "1 N",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mehr Kraft macht die Feder",
+    "loesung": "länger",
+    "post": "."
+   },
+   {
+    "pre": "Bei gleicher Kraft dehnt sich die harte Feder nur",
+    "loesung": "halb",
+    "post": "so weit wie die weiche Feder."
+   }
+  ],
+  "wortbank": [
+   "länger",
+   "halb",
+   "harte",
+   "weiche"
+  ],
+  "beispiel": {
+   "frage": "Wie weit dehnt sich die weiche Feder bei F = 1 N?",
+   "antwort": "Hinter dem Pfeil → steht 2 cm. So weit dehnt sich die weiche Feder."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour drückt gleich stark auf zwei Puffer. Puffer A sinkt 2 cm ein, Puffer B nur 1 cm. Welcher ist härter?",
+    "optionen": [
+     "Puffer A, denn er sinkt tiefer ein.",
+     "Beide Puffer sind gleich hart.",
+     "Puffer B, denn er sinkt weniger ein."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Unter das schwere Klavier gehört der",
+      "loesung": "harte",
+      "post": "Puffer."
+     },
+     {
+      "pre": "Unter den leichten Lautsprecher passt der",
+      "loesung": "weiche",
+      "post": "Puffer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die harte Feder ist stärker, darum dehnt sie sich weiter.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Bei gleicher Kraft dehnt sich die harte Feder …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Hinter dem Pfeil → steht die Zahl, zum Beispiel 2 cm. Bei F = 0 N drücke „mehr ▶“.",
+   "h2": "Vergleiche in der Tabelle die beiden Zeilen mit 1 N.",
+   "h3": "Fast fertig: Bei 1 N dehnt sich die weiche Feder 2 cm, die harte nur 1 cm. Sie gibt also ___ nach."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was mehr Kraft mit einer Feder macht.",
+   "Ich kann am Bildschirm ablesen, wie weit die Feder nachgibt.",
+   "Ich weiß, dass die harte Feder bei gleicher Kraft weniger nachgibt."
+  ],
+  "zuhause": "Lege dasselbe Buch auf deine Matratze und dann auf ein Sofakissen. Vergleiche, wie tief es einsinkt.",
+  "bildauftrag": "[BILD: zwei senkrechte Schraubenfedern nebeneinander an einer Deckenschiene, an jeder hängt derselbe gleich große Metallklotz; die linke Feder ist genau doppelt so weit auseinandergezogen wie die rechte; daneben je ein großer Maßpfeil für die Dehnung, der linke genau doppelt so lang wie der rechte; große Beschriftungen „weiche Feder“, „harte Feder“ und „gleiche Kraft“ an den Klötzen; ruhiger heller Hintergrund, keine weiteren Federn, Gewichte oder Deko]"
+ },
+ {
+  "id": "fk4",
+  "quelle": "kf4",
+  "sim": "masse-gewicht",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei Zahlen für ein Klavier",
+  "name": "Masse oder Gewichtskraft?",
+  "fachwoerter_neu": [
+   "Masse m in Kilogramm (kg)",
+   "Gewichtskraft F"
+  ],
+  "alltag": [
+   "Nour und Jannis heben das Klavier auf die Bühne.",
+   "Die Waage im Musikraum zeigt Kilogramm, der Kraftmesser zeigt Newton.",
+   "Herr Kessler fragt: „Wie viel Newton sind das?“",
+   "„Schwer“ heißt hier nicht „schwierig“. Die Kraft ist groß."
+  ],
+  "frage": "Sind Masse und Gewichtskraft dasselbe?",
+  "predict": [
+   "Masse und Gewichtskraft sind dasselbe in anderen Einheiten.",
+   "Masse und Gewichtskraft sind zwei verschiedene Größen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke zuerst „100 g“. Sonst steht noch 1 kg da.",
+   "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage beides ein.",
+   "Drücke danach „1 kg“ und „2 kg“. Vergleiche die beiden Zeilen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Knopf",
+   "Welche Masse zeigt die Statuszeile?",
+   "Welche Gewichtskraft steht dort?"
+  ],
+  "tabRows": [
+   [
+    "100 g",
+    "m = 100 g",
+    "F = 1,0 N"
+   ],
+   [
+    "1 kg",
+    "",
+    ""
+   ],
+   [
+    "2 kg",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Masse m sagt, wie viel Stoff im Körper steckt. Einheit:",
+    "loesung": "Kilogramm",
+    "post": "."
+   },
+   {
+    "pre": "Die Gewichtskraft F zieht den Körper nach unten. Einheit:",
+    "loesung": "Newton",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Kilogramm",
+   "Newton",
+   "19,6 N",
+   "gleich"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Gewichtskraft bei 1 kg?",
+   "antwort": "Gegeben: m = 1 kg. Gesucht: F. Formel: F = m · g, g = 9,8 N/kg. Einsetzen: F = 1 kg · 9,8 N/kg. Ergebnis: F = 9,8 N. Antwort: Bei 1 kg sind es 9,8 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was gilt für dasselbe Klavier?",
+    "optionen": [
+     "Die Masse steht in Kilogramm, die Gewichtskraft in Newton.",
+     "Masse und Gewichtskraft sind immer gleich groß.",
+     "Die Waage zeigt Newton, der Kraftmesser Kilogramm."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 1 kg sind es 9,8 N. Bei 2 kg sind es",
+      "loesung": "19,6 N",
+      "post": "."
+     },
+     {
+      "pre": "Die Masse bleibt dabei",
+      "loesung": "gleich",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „2 kg sind 2 N.“ Erkläre den Fehler.",
+    "satzstarter": "Am Bildschirm steht bei 2 kg …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "g = 9,8 N/kg ist die feste Zahl der Erde. Ihren Namen lernst du auf der nächsten Seite.",
+   "h2": "Rechne so: 2 kg · 9,8 N/kg. Prüfe am Bildschirm.",
+   "h3": "Fast fertig: Bei 2 kg zeigt der Bildschirm 19,6 N. 2 kg und 2 N sind nicht ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was die Masse m ist.",
+   "Ich kann sagen, was die Gewichtskraft F ist.",
+   "Ich kann erklären, warum 2 kg nicht 2 N sind."
+  ],
+  "zuhause": "Sieh auf einer Packung Mehl nach. Dort steht die Masse in Kilogramm.",
+  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]"
+ },
+ {
+  "id": "fk5",
+  "quelle": "kf5",
+  "sim": "ortsfaktor",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Das Klavier auf dem Mond",
+  "name": "Wäre das Klavier auf dem Mond leichter?",
+  "fachwoerter_neu": [
+   "Ortsfaktor g in N/kg"
+  ],
+  "alltag": [
+   "Nour und Jannis schieben das schwere Klavier auf die Bühne.",
+   "Jannis stöhnt: „Auf dem Mond wäre das leichter.“",
+   "Der Ortsfaktor g sagt, wie stark ein Ort zieht."
+  ],
+  "frage": "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
+  "predict": [
+   "Die Masse bleibt gleich. Nur die Gewichtskraft wird kleiner.",
+   "Das Klavier hat auf dem Mond weniger Masse."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle Mond und lies g und F in der Statuszeile ab.",
+   "Trage beide Werte in die Zeile Mond ein.",
+   "Wiederhole das mit Jupiter.",
+   "Vergleiche: Welche Zahl bleibt überall gleich?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wo bist du?",
+   "Wie groß ist der Ortsfaktor g?",
+   "Wie groß ist F bei 60 kg?"
+  ],
+  "tabRows": [
+   [
+    "Erde",
+    "9,8 N/kg",
+    "588 N"
+   ],
+   [
+    "Mond",
+    "",
+    ""
+   ],
+   [
+    "Jupiter",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Masse bleibt überall",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Auf dem Mond ist der Ortsfaktor g nur",
+    "loesung": "1,6 N/kg",
+    "post": ". Die Gewichtskraft wird dort kleiner."
+   }
+  ],
+  "wortbank": [
+   "gleich",
+   "1,6 N/kg",
+   "9,8 N/kg",
+   "24,8 N/kg"
+  ],
+  "beispiel": {
+   "frage": "Was bedeutet g = 9,8 N/kg auf der Erde?",
+   "antwort": "Die Erde zieht an jedem Kilogramm mit 9,8 Newton. Nour hat 60 kg Masse. Ihre Gewichtskraft ist 588 N."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ändert sich, wenn du Mond wählst?",
+    "optionen": [
+     "Die Masse wird kleiner, die Gewichtskraft bleibt gleich.",
+     "Die Gewichtskraft wird kleiner, die Masse bleibt gleich.",
+     "Masse und Gewichtskraft werden beide kleiner."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Auf der Erde zeigt der Bildschirm den Ortsfaktor",
+      "loesung": "9,8 N/kg",
+      "post": "."
+     },
+     {
+      "pre": "Auf dem Jupiter zeigt er",
+      "loesung": "24,8 N/kg",
+      "post": ". Dort ist die Gewichtskraft am größten."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Das Klavier hat auf dem Mond weniger Masse.“ Erkläre, warum das falsch ist.",
+    "satzstarter": "Das stimmt nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du schon benutzt hast.",
+   "h2": "Beginne so: Das stimmt nicht, weil die Masse überall gleich bleibt …",
+   "h3": "Fast fertige Antwort: Auf dem Mond ist g kleiner. Der Mond zieht schwächer. Ergänze: Kleiner wird nur die ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Ortsfaktor g am Bildschirm ablesen.",
+   "Ich weiß, dass die Masse überall gleich bleibt.",
+   "Ich kann sagen, warum die Gewichtskraft auf dem Mond kleiner ist."
+  ],
+  "zuhause": "Halte eine Packung Zucker mit 1 kg in der Hand. Auf dem Mond bleibt die Masse 1 kg.",
+  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund: links Mondboden, Mitte Erdboden, rechts Jupiter-Wolkenboden. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung, mit der großen Beschriftung „m = 60 kg“ über dem Kopf. Unter jeder Person ein einzelner dicker Pfeil senkrecht nach unten, alle drei gleich dick, aber unterschiedlich lang: links kurz mit „F = 96 N“, Mitte mittel mit „F = 588 N“, rechts sehr lang mit „F = 1488 N“. Über jedem Feld groß der Ort und der Ortsfaktor: „Mond · g = 1,6 N/kg“, „Erde · g = 9,8 N/kg“, „Jupiter · g = 24,8 N/kg“. Nur diese drei Pfeile, keine weiteren Pfeile, keine Sterne, keine Rakete, keine Deko]"
+ },
+ {
+  "id": "fk6",
+  "quelle": "kf6",
+  "sim": "kraftpfeil",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Pfeile auf dem Bühnenplan",
+  "name": "Wie zeichnet man eine Kraft auf?",
+  "fachwoerter_neu": [
+   "Kraftpfeil"
+  ],
+  "alltag": [
+   "Herr Kessler malt an das Klavier einen dicken Pfeil nach unten.",
+   "So ein Pfeil für eine Kraft heißt Kraftpfeil.",
+   "Jannis sagt: „Die Zahl allein reicht doch.“"
+  ],
+  "frage": "Was zeigt der Kraftpfeil außer der Stärke noch?",
+  "predict": [
+   "Der Pfeil wird nur länger oder kürzer.",
+   "Die Pfeil-Länge zeigt die Stärke. Die Pfeil-Richtung zeigt die Richtung."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.",
+   "Drücke 6 N und →. Lies den letzten Satz in der Statuszeile.",
+   "Wiederhole das mit ↑ (nach oben) und ↗ (schräg nach rechts oben).",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Knöpfe drückst du?",
+   "Wohin würde der Körper gezogen?",
+   "Wie lang ist der Pfeil?"
+  ],
+  "tabRows": [
+   [
+    "2 N und →",
+    "nach rechts",
+    "kurz"
+   ],
+   [
+    "6 N und →",
+    "",
+    ""
+   ],
+   [
+    "6 N und ↑",
+    "",
+    ""
+   ],
+   [
+    "6 N und ↗",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine Kraft zeichnet man als",
+    "loesung": "Kraftpfeil",
+    "post": "."
+   },
+   {
+    "pre": "Die Pfeil-Richtung zeigt die Richtung. Die Pfeil-Länge zeigt, wie",
+    "loesung": "stark",
+    "post": "die Kraft ist."
+   }
+  ],
+  "wortbank": [
+   "Kraftpfeil",
+   "stark",
+   "lang",
+   "oben"
+  ],
+  "beispiel": {
+   "frage": "Was ändert sich, wenn du bei 6 N von → auf ↑ wechselst?",
+   "antwort": "Der Pfeil bleibt gleich lang. Er dreht sich nach oben. Der Körper würde jetzt nach oben gezogen."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst 6 N und dann ↓. Was steht am Ende der Statuszeile?",
+    "optionen": [
+     "Der Körper würde nach oben gezogen.",
+     "Der Körper würde nach rechts gezogen.",
+     "Der Körper würde nach unten gezogen."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2 N ist der Pfeil kurz. Bei 6 N ist der Pfeil",
+      "loesung": "lang",
+      "post": "."
+     },
+     {
+      "pre": "Du drückst ↑. Der Körper würde nach",
+      "loesung": "oben",
+      "post": "gezogen."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum die Zahl allein nicht reicht.",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. ↑ heißt nach oben.",
+   "h2": "Beginne so: Jannis hat nicht recht, weil ein Pfeil auch die Richtung zeigt.",
+   "h3": "Fast fertig: 6 N nach oben und 6 N nach unten sind gleich lang. Sie ziehen aber in eine andere ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann eine Kraft als Kraftpfeil zeichnen.",
+   "Ich weiß, was die Länge vom Pfeil zeigt.",
+   "Ich kann sagen, wohin eine Kraft zieht."
+  ],
+  "zuhause": "Zieh einen Karton über den Boden. Zeichne einen Punkt und dazu einen kurzen Pfeil für 2 N und einen langen für 6 N.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleiche Bildhälften nebeneinander: links ein grauer Kasten mit einem schwarzen Punkt an der rechten Kante, davon ein KURZER roter Pfeil waagerecht nach rechts, darüber die große Beschriftung „2 N“; rechts derselbe graue Kasten mit demselben schwarzen Punkt, davon ein LANGER roter Pfeil waagerecht nach rechts, darüber „6 N“; beide Pfeile starten genau am Punkt und liegen auf derselben Höhe, nur die Länge unterscheidet sich; keine weiteren Pfeile, keine Nebenbilder, keine Deko; unten die großen Beschriftungen „kurzer Pfeil = kleine Kraft“ und „langer Pfeil = große Kraft“; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fk7",
+  "quelle": "kf7",
+  "sim": "kraefte-addieren",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei ziehen am selben Seil",
+  "name": "Was passiert, wenn zwei ziehen?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Am Kran hängt ein schweres Rohr.",
+   "Nour und Jannis ziehen am Seil nach rechts. Das Rohr rutscht.",
+   "Dann zieht Jannis nach links.",
+   "Beide Kräfte zusammen ergeben die Gesamtkraft."
+  ],
+  "frage": "Wann wird die Gesamtkraft größer, wann kleiner?",
+  "predict": [
+   "Nur bei gleicher Richtung wird addiert. Sonst wird abgezogen.",
+   "Zwei Kräfte werden immer addiert. Die Richtung ist egal."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile ab. Zeile 1 ist schon ausgefüllt.",
+   "Drücke bei F1 auf „Richtung“. Prüfe: F1 zieht jetzt nach links. Trage Zeile 2 ein.",
+   "Drücke bei F2 auf „– N“. Trage Zeile 3 ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die beiden Ergebnisse.",
+  "tabCols": [
+   "Was drückst du?",
+   "Welche Kräfte zeigt die Statuszeile?",
+   "Wie groß ist die Gesamtkraft?"
+  ],
+  "tabRows": [
+   [
+    "nichts",
+    "3 N nach rechts und 2 N nach rechts",
+    "5 N nach rechts"
+   ],
+   [
+    "„Richtung“ bei F1",
+    "",
+    ""
+   ],
+   [
+    "„– N“ bei F2",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Zwei Kräfte ziehen auf einer Linie in die gleiche Richtung. Dann musst du die Zahlen",
+    "loesung": "addieren",
+    "post": "."
+   },
+   {
+    "pre": "Sie ziehen gegeneinander. Dann musst du die kleinere Zahl von der größeren",
+    "loesung": "abziehen",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "addieren",
+   "abziehen",
+   "5 N",
+   "1 N"
+  ],
+  "beispiel": {
+   "frage": "3 N und 2 N ziehen nach links. Wie groß ist die Gesamtkraft?",
+   "antwort": "Beide ziehen nach links. Also addiere: 3 N + 2 N = 5 N. Die Gesamtkraft ist 5 N nach links."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "F1 zieht 3 N nach links. F2 zieht 1 N nach rechts. Wie groß ist die Gesamtkraft?",
+    "optionen": [
+     "2 N nach links.",
+     "4 N nach links.",
+     "2 N nach rechts."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "3 N nach rechts und 2 N nach rechts ergeben",
+      "loesung": "5 N",
+      "post": "nach rechts."
+     },
+     {
+      "pre": "3 N nach links und 2 N nach rechts ergeben",
+      "loesung": "1 N",
+      "post": "nach links."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Zwei Kräfte sind immer stärker als eine.“ Warum stimmt das nicht?",
+    "satzstarter": "Das stimmt nicht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Denk an den Kraftpfeil: Zahl und Richtung.",
+   "h2": "Beginne so: Das stimmt nicht, weil zwei Kräfte auch gegeneinander ziehen können.",
+   "h3": "Fast fertig: 3 N nach links und 2 N nach rechts ergeben nur 1 N. Sie werden ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann zwei Kräfte in gleicher Richtung addieren.",
+   "Ich kann bei Gegenrichtung die kleinere Zahl abziehen.",
+   "Ich kann sagen, wohin die Gesamtkraft zeigt."
+  ],
+  "zuhause": "Zieht zu zweit einen Karton: erst beide nach rechts, dann gegeneinander. Schreibe auf, was leichter geht.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleich große Bildhälften nebeneinander, durch einen dünnen senkrechten Strich getrennt. Beide Hälften zeigen denselben grauen Kasten auf derselben waagerechten Linie – nur diese eine Linie, keine schrägen Pfeile. LINKS: ein roter Pfeil startet am Kasten und zeigt nach rechts, beschriftet „F1 = 3 N“; direkt darunter ein kürzerer roter Pfeil, ebenfalls nach rechts, beschriftet „F2 = 2 N“; darunter ein langer grüner Pfeil nach rechts mit der großen Beschriftung „Gesamtkraft 5 N nach rechts“. RECHTS: derselbe Kasten, ein roter Pfeil nach LINKS mit „F1 = 3 N“, darunter ein kürzerer roter Pfeil nach RECHTS mit „F2 = 2 N“, darunter ein sehr kurzer grüner Pfeil nach links mit der großen Beschriftung „Gesamtkraft 1 N nach links“. Über der linken Hälfte steht groß „gleiche Richtung: addieren“, über der rechten „gegeneinander: abziehen“. Alle roten Pfeile beginnen am Kasten, die grünen Pfeile stehen frei darunter. Keine weiteren Pfeile, keine Nebenbilder, keine Deko, ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fk8",
+  "quelle": "kf8",
+  "sim": "kraefte-gleichgewicht",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Die Lampe hängt still",
+  "name": "Warum bewegt sich die Lampe nicht?",
+  "fachwoerter_neu": [
+   "Kräftegleichgewicht"
+  ],
+  "alltag": [
+   "Über der Bühne hängt eine Lampe an einem Seil.",
+   "Das Seil zieht die Lampe nach oben. Diese Kraft heißt Haltekraft.",
+   "Jannis sagt: „An der Lampe zieht doch nichts mehr.“"
+  ],
+  "frage": "Wirken an der stillen Lampe wirklich keine Kräfte?",
+  "predict": [
+   "An der Lampe wirken keine Kräfte mehr.",
+   "Es wirken zwei Kräfte. Sie gleichen sich aus."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies am Anfang ab: Halte 5 N, Gewicht 5 N.",
+   "Drücke einmal auf – N. Beobachte die Lampe.",
+   "Lies im Bild unter der Lampe die Gesamtkraft ab.",
+   "Drücke auf den Knopf zurück in die Mitte. Vergleiche."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Haltekraft des Seils",
+   "Was steht im Bild unter der Lampe?",
+   "Was passiert mit der Lampe?"
+  ],
+  "tabRows": [
+   [
+    "5 N (am Anfang)",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ],
+   [
+    "4 N (nach – N)",
+    "",
+    ""
+   ],
+   [
+    "wieder 5 N",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Haltekraft und Gewichtskraft sind gleich groß. Die Gesamtkraft ist",
+    "loesung": "null",
+    "post": "."
+   },
+   {
+    "pre": "Das heißt",
+    "loesung": "Kräftegleichgewicht",
+    "post": ". Die Lampe bleibt in Ruhe. Die Kräfte sind trotzdem da."
+   }
+  ],
+  "wortbank": [
+   "null",
+   "Kräftegleichgewicht",
+   "unten",
+   "bewegt"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Simulation am Anfang?",
+   "antwort": "Die Haltekraft ist 5 N. Die Gewichtskraft ist auch 5 N. Im Bild steht: Gesamtkraft = 0 N. Die Lampe hängt still."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst einmal auf – N. Was steht dann im Bild?",
+    "optionen": [
+     "Gesamtkraft = 0 N.",
+     "Gesamtkraft = 1 N nach unten.",
+     "Die Gewichtskraft ist weg."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Das Seil hält nur mit 4 N. Es bleibt 1 N nach",
+      "loesung": "unten",
+      "post": "übrig."
+     },
+     {
+      "pre": "Darum bleibt die Lampe nicht in Ruhe. Sie",
+      "loesung": "bewegt",
+      "post": "sich."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum an der stillen Lampe doch Kräfte ziehen.",
+    "satzstarter": "Es wirken zwei Kräfte, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche jedes Wort nach dem Eintragen durch.",
+   "h2": "Beginne so: Es wirken zwei Kräfte, aber sie sind gleich groß.",
+   "h3": "Fast fertig: Das Seil zieht nach oben. Die Gewichtskraft zieht nach unten. Beide sind 5 N groß. Die Gesamtkraft ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann die Lampe in Ruhe bleibt.",
+   "Ich weiß, dass die Gesamtkraft dann null ist.",
+   "Ich kann erklären, dass trotzdem Kräfte wirken."
+  ],
+  "zuhause": "Lege ein Buch auf den Tisch. Es liegt still. Zeichne einen Pfeil nach unten und einen nach oben.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleiche Bildhälften nebeneinander: in jeder Hälfte hängt dieselbe Lampe an einem senkrechten Seil von der Decke; links ein grüner Pfeil vom Seil nach OBEN mit der großen Beschriftung „Halte 5 N“ und ein gleich langer roter Pfeil von der Lampe nach UNTEN mit „Gewicht 5 N“ (Farben wie am Bildschirm: Haltekraft grün, Gewichtskraft rot), darunter groß „Gesamtkraft = 0 N – bleibt in Ruhe“; rechts dieselbe Anordnung, aber der grüne Pfeil nach oben ist deutlich KÜRZER, beschriftet „Halte 4 N“, der rote Pfeil nach unten bleibt unverändert lang mit „Gewicht 5 N“, darunter groß „Gesamtkraft = 1 N nach unten – Bewegung“; beide Pfeile starten an der Lampe und liegen genau übereinander auf einer Linie; keine weiteren Pfeile, keine Nebenbilder, keine Deko; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fk9",
+  "quelle": "kf9",
+  "sim": "traegheit-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Niemand schiebt mehr",
+  "name": "Warum rutscht die Kiste weiter?",
+  "fachwoerter_neu": [
+   "Trägheit",
+   "Tempo v in m/s"
+  ],
+  "alltag": [
+   "Nour schiebt eine Kiste über den Boden und lässt los.",
+   "Die Kiste rutscht weiter und bleibt dann stehen.",
+   "Das Bremsen durch den Boden heißt Reibung.",
+   "Am Bildschirm steht v für das Tempo in Meter pro Sekunde (m/s)."
+  ],
+  "frage": "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
+  "predict": [
+   "Die Reibung bremst ihn. Ohne Reibung rollt er immer weiter.",
+   "Der Anstoß ist in dem Wagen langsam aufgebraucht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.",
+   "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.",
+   "Wähle „Weltall“, stoße an und lies die Statuszeile.",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Untergrund wählst du?",
+   "Wie viel Reibung? (steht in der Statuszeile)",
+   "Wie lange rollt der Wagen?"
+  ],
+  "tabRows": [
+   [
+    "Tisch",
+    "viel Reibung",
+    "nach 2,0 s steht er still"
+   ],
+   [
+    "Eis",
+    "",
+    ""
+   ],
+   [
+    "Weltall",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Körper behält von allein sein Tempo und seine Richtung. Das heißt",
+    "loesung": "Trägheit",
+    "post": "."
+   },
+   {
+    "pre": "Nicht der Anstoß geht aus. Die Reibung",
+    "loesung": "bremst",
+    "post": "den Wagen ab."
+   }
+  ],
+  "wortbank": [
+   "Trägheit",
+   "bremst",
+   "länger",
+   "Tempo"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt die Statuszeile im Weltall nach dem Anstoßen?",
+   "antwort": "Sie meldet: v immer noch 8,0 m/s. Der Wagen behält sein Tempo. Hier bremst ihn keine Reibung."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Der Bus bremst. Der Becher rutscht nach vorn. Warum?",
+    "optionen": [
+     "Die Trägheit ist eine Kraft. Sie drückt den Becher nach vorn.",
+     "Der Becher wird von hinten angeschoben.",
+     "Der Becher behält sein Tempo. Der Bus wird langsamer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Auf dem Eis ist wenig Reibung. Der Wagen rollt darum",
+      "loesung": "länger",
+      "post": "als auf dem Tisch."
+     },
+     {
+      "pre": "Im Weltall zeigt v weiter 8,0 m/s. Der Wagen behält sein",
+      "loesung": "Tempo",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum ein Raumschiff keine dauernd laufenden Triebwerke braucht.",
+    "satzstarter": "Im Weltall gibt es keine Reibung, deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Trägheit ist keine Kraft. Sie schiebt nichts. Die Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Im Weltall gibt es keine Reibung, deshalb bleibt das Tempo gleich.",
+   "h3": "Fast fertig: Ein Raumschiff behält im Weltall sein Tempo. Die Triebwerke braucht es nur zum ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, warum die Kiste stehen bleibt.",
+   "Ich kann v in der Statuszeile ablesen.",
+   "Ich kann erklären, was Trägheit bedeutet."
+  ],
+  "zuhause": "Achte im Bus darauf, wohin dein Körper kippt, wenn er bremst. Schreibe einen Satz mit dem Wort Trägheit.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht eines Busses innen. Links über der Hälfte groß „Der Bus fährt“: ein Kind sitzt aufrecht auf dem Sitz, auf dem Klapptisch davor steht ein Becher gerade. Rechts über der Hälfte groß „Der Bus bremst“: dasselbe Kind auf demselben Sitz, der Oberkörper deutlich nach vorn geneigt, der Becher ist ein Stück nach vorn gerutscht. Fahrtrichtung in beiden Hälften nach rechts. KEINE Pfeile im Bild, vor allem kein Kraftpfeil, der den Becher nach vorn schiebt. Unter beiden Hälften eine gemeinsame große Zeile: „Der Körper behält sein Tempo.“ Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+ },
+ {
+  "id": "fk10",
+  "quelle": "kf10",
+  "sim": "wechselwirkung",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Rückwärts auf dem Rollbrett",
+  "name": "Warum rollt das Rollbrett zurück?",
+  "fachwoerter_neu": [
+   "Wechselwirkung"
+  ],
+  "alltag": [
+   "Jannis steht auf einem Rollbrett mit vier Rollen.",
+   "Er drückt fest gegen das schwere Klavier.",
+   "Das Klavier bleibt stehen. Jannis rollt rückwärts weg."
+  ],
+  "frage": "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
+  "predict": [
+   "Nur Jannis drückt. Das Klavier drückt nicht zurück.",
+   "Beide Kräfte sind gleich groß. Der leichtere Körper wird schneller."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke Eisläufer. Trage das Tempo v von Läufer B ein.",
+   "Drücke Boot. Trage das Tempo v von Boot und Person ein.",
+   "Drücke Rakete. Lies die Statuszeile.",
+   "Vergleiche: Wer ist leichter? Wer wird schneller?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Körper",
+   "Wie schwer ist der Körper?",
+   "Wie groß ist das Tempo v?"
+  ],
+  "tabRows": [
+   [
+    "Läufer A",
+    "60 kg",
+    "2,0 m/s"
+   ],
+   [
+    "Läufer B",
+    "60 kg",
+    ""
+   ],
+   [
+    "Boot",
+    "300 kg",
+    ""
+   ],
+   [
+    "Person",
+    "60 kg",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Drückst du einen Körper, drückt er zurück. Das heißt",
+    "loesung": "Wechselwirkung",
+    "post": "."
+   },
+   {
+    "pre": "Die zwei Kräfte sind gleich groß. Sie wirken auf zwei",
+    "loesung": "verschiedene Körper",
+    "post": ". Darum heben sie sich nicht auf."
+   }
+  ],
+  "wortbank": [
+   "Wechselwirkung",
+   "verschiedene Körper",
+   "gleich schnell",
+   "leichtere"
+  ],
+  "beispiel": {
+   "frage": "Was passiert beim Beispiel Boot?",
+   "antwort": "Die Person drückt das Boot weg. Das Boot drückt die Person zurück. Beide Kräfte sind gleich groß. Die Person ist leichter. Darum wird sie 5-mal so schnell."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Rakete. Was steht in der Statuszeile?",
+    "optionen": [
+     "Die Rakete wird 0,20 m/s schnell, das Gas 6,0 m/s.",
+     "Die Rakete wird 6,0 m/s schnell, das Gas 0,20 m/s.",
+     "Rakete und Gas werden beide gleich schnell."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Läufer A und Läufer B haben beide 60 kg. Sie werden",
+      "loesung": "gleich schnell",
+      "post": "."
+     },
+     {
+      "pre": "Bei der Rakete wird der",
+      "loesung": "leichtere",
+      "post": "Körper 30-mal so schnell."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das Klavier drückt gar nicht zurück.“ Erkläre Nour, warum das falsch ist.",
+    "satzstarter": "Nour hat nicht recht, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Streiche durch, was du benutzt hast.",
+   "h2": "Beginne so: Nour hat nicht recht, weil das Klavier genauso stark zurückdrückt.",
+   "h3": "Fast fertig: Beide Kräfte sind gleich groß. Jannis ist viel leichter als das Klavier. Darum rollt nur ___ weg."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was Wechselwirkung heißt.",
+   "Ich weiß, dass beide Kräfte gleich groß sind.",
+   "Ich kann erklären, warum der leichtere Körper schneller wird."
+  ],
+  "zuhause": "Blase einen Luftballon auf und lass ihn los. Die Luft geht nach hinten, der Ballon fliegt nach vorn.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild mit EINER einzigen Szene: eine Person springt von einem Boot auf den Bootssteg; die Szene ist von der Seite gezeigt; von der Person geht ein roter Pfeil nach links auf das Boot, vom Boot ein GENAU GLEICH LANGER roter Pfeil nach rechts auf die Person; beide Pfeile liegen auf derselben Höhe und starten an den Händen bzw. am Bootsrand, sie unterscheiden sich in nichts außer der Richtung; große Beschriftungen unter den Körpern: „Boot · 300 kg“ und „Person · 60 kg“, darüber die Tempo-Angaben „0,40 m/s“ und „2,0 m/s“; unten groß der Satz „gleiche Kraft – aber nicht gleiches Tempo“; keine weiteren Pfeile, keine Bewegungslinien, keine Nebenbilder, keine Deko, kein zweites Beispiel im Bild; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fk11",
+  "quelle": "kf11",
+  "sim": "druck-flaeche",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Vier Dellen im neuen Podest",
+  "name": "Warum sinkt der schmale Fuß ein?",
+  "fachwoerter_neu": [
+   "Druck p in Pascal (Pa)",
+   "Fläche A"
+  ],
+  "alltag": [
+   "Die schmalen Rollen des Klaviers drücken Dellen in das Podest.",
+   "Herr Kessler legt breite Bretter unter: keine Delle mehr.",
+   "Die Fläche, auf der etwas aufliegt, heißt Fläche A."
+  ],
+  "frage": "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
+  "predict": [
+   "Bei gleicher Kraft entscheidet die Fläche A: kleine Fläche, großer Druck.",
+   "Wer schwerer ist, sinkt tiefer ein. Die Fläche A ist egal."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Turnschuhe. Lies bei p die Zahl vor kPa.",
+   "Drücke Stöckelabsatz und fülle die zweite Zeile aus.",
+   "Drücke Skier und fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die Fläche A?",
+   "Wie groß ist der Druck p?"
+  ],
+  "tabRows": [
+   [
+    "Turnschuhe",
+    "300 cm²",
+    "19,6 kPa"
+   ],
+   [
+    "Stöckelabsatz",
+    "",
+    ""
+   ],
+   [
+    "Skier",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Gleiche Kraft auf einer kleinen Fläche A macht einen großen",
+    "loesung": "Druck",
+    "post": "."
+   },
+   {
+    "pre": "Wird die Fläche A größer, dann wird der Druck",
+    "loesung": "kleiner",
+    "post": ". Den Druck p misst man in Pascal (Pa)."
+   }
+  ],
+  "wortbank": [
+   "Druck",
+   "kleiner",
+   "5886,0 kPa",
+   "2,1 kPa"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Druck unter Turnschuhen?",
+   "antwort": "Die Kraft ist 588,6 N. Die Fläche A ist 300 cm². Die Statuszeile zeigt: p = 19,6 kPa. 1 kPa sind 1000 Pa."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Die Kraft bleibt 588,6 N. Wo wird der Druck am größten?",
+    "optionen": [
+     "Auf den Skiern, weil die Fläche A am größten ist.",
+     "Auf dem Stöckelabsatz, weil die Fläche A am kleinsten ist.",
+     "Überall gleich, weil die Kraft gleich bleibt."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Stöckelabsatz hat 1 cm² Fläche A. Der Druck ist",
+      "loesung": "5886,0 kPa",
+      "post": "."
+     },
+     {
+      "pre": "Skier haben 2800 cm² Fläche A. Der Druck ist nur",
+      "loesung": "2,1 kPa",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nours Rucksack tut an dünnen Schnüren weh, an breiten Trägern nicht. Erkläre das.",
+    "satzstarter": "Die breiten Träger machen die Fläche A größer. Deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies bei p die Zahl vor kPa.",
+   "h2": "Beginne so: Deshalb ist der Druck auf der Schulter …",
+   "h3": "Fast fertig: Die Kraft bleibt gleich, die Fläche A wird größer. Ergänze: Der Druck wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Druck p in der Statuszeile ablesen.",
+   "Ich weiß: kleine Fläche A, großer Druck.",
+   "Ich kann erklären, warum breite Bretter keine Dellen machen."
+  ],
+  "zuhause": "Drücke mit dem Daumen gegen deine Handfläche. Drücke dann gleich stark mit dem stumpfen Bleistiftende.",
+  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund, gleiche Bodenlinie. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung. Über jeder Person derselbe einzelne dicke Pfeil senkrecht nach unten, in allen drei Feldern exakt gleich lang und gleich dick, beschriftet „F = 588,6 N“. Unterschiedlich ist nur der Fuß und die Fläche darunter, jeweils dick rot markiert: links ein einzelner schmaler Absatz mit „A = 1 cm²“, Mitte ein Turnschuh mit „A = 300 cm²“, rechts ein langer Ski mit „A = 2800 cm²“. Unter jedem Feld groß der Druckwert: „p = 5886,0 kPa“, „p = 19,6 kPa“, „p = 2,1 kPa“. Der Boden zeigt links ein tiefes Loch, in der Mitte eine flache Mulde, rechts eine glatte Fläche. Nur diese drei Pfeile, keine weiteren Pfeile, keine Balken, keine Deko, kein Elefant]"
+ },
+ {
+  "id": "fk12",
+  "quelle": "kf12",
+  "sim": "schweredruck",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Der untere Hahn spritzt weiter",
+  "name": "Warum drückt Wasser in der Tiefe mehr?",
+  "fachwoerter_neu": [
+   "Schweredruck"
+  ],
+  "alltag": [
+   "Neben der Bühne steht ein hoher Wassertank.",
+   "Oben läuft das Wasser nur träge aus dem Hahn.",
+   "Unten spritzt es Jannis quer über die Schuhe.",
+   "Den Druck durch die Flüssigkeit darüber nennt man Schweredruck."
+  ],
+  "frage": "Warum drückt das Wasser unten stärker als oben?",
+  "predict": [
+   "Der Schweredruck hängt davon ab, wie viel Wasser im Tank steht.",
+   "Der Schweredruck hängt von der Tiefe und von der Flüssigkeit ab."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies zuerst unter der Überschrift Der Schweredruck die Zahl vor kPa.",
+   "Drücke Öl und trage den Wert bei 10 m ein.",
+   "Drücke Quecksilber und fülle die dritte Zeile aus.",
+   "Drücke zuletzt 40 m – Tauchgrenze und ergänze die letzte Zeile."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Flüssigkeit",
+   "Wie tief ist es?",
+   "Wie groß ist der Schweredruck p?"
+  ],
+  "tabRows": [
+   [
+    "Wasser",
+    "10 m",
+    "98,1 kPa"
+   ],
+   [
+    "Öl",
+    "10 m",
+    ""
+   ],
+   [
+    "Quecksilber",
+    "10 m",
+    ""
+   ],
+   [
+    "Quecksilber",
+    "40 m",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je tiefer es geht, desto",
+    "loesung": "größer",
+    "post": "wird der Schweredruck."
+   },
+   {
+    "pre": "Eine schwerere Flüssigkeit drückt bei gleicher Tiefe",
+    "loesung": "stärker",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "stärker",
+   "88,3 kPa",
+   "5336,6 kPa"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist der Schweredruck in Wasser bei 10 m?",
+   "antwort": "Die Anzeige zeigt: p = 98,1 kPa. Die Zahl vor kPa kommt in die Tabelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst Quecksilber. Wie groß ist der Schweredruck bei 10 m?",
+    "optionen": [
+     "Er bleibt bei 98,1 kPa wie in Wasser.",
+     "Er wird kleiner, weil Quecksilber dünner fließt.",
+     "Er springt auf 1334,2 kPa und ist viel größer."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Öl ist leichter als Wasser. Bei 10 m zeigt die Anzeige nur",
+      "loesung": "88,3 kPa",
+      "post": "."
+     },
+     {
+      "pre": "In Quecksilber steigt der Wert bei 40 m auf",
+      "loesung": "5336,6 kPa",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis, warum der untere Hahn stärker spritzt als der obere.",
+    "satzstarter": "Unten ist das Wasser tiefer. Deshalb …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Lies nur unter der Überschrift Der Schweredruck.",
+   "h2": "Beginne so: Unten ist das Wasser tiefer. Deshalb drückt es dort …",
+   "h3": "Fast fertig: Oben ist die Tiefe klein, unten ist sie groß. Der Schweredruck unten ist deshalb ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Schweredruck in der Anzeige ablesen.",
+   "Ich weiß: tiefer bedeutet mehr Schweredruck.",
+   "Ich kann erklären, warum der untere Hahn stärker spritzt."
+  ],
+  "zuhause": "Tauche im Schwimmbad zum Boden. Achte auf deine Ohren. Vergleiche oben und unten.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild, ein einziger hoher Wassertank in Seitenansicht auf ruhigem hellem Hintergrund. Der Tank ist bis oben mit blauem Wasser gefüllt. Am Tank sitzen genau zwei gleich große Hähne übereinander: einer dicht unter der Wasseroberfläche, einer ganz unten. Aus dem oberen Hahn tropft ein kurzer, schlaffer Wasserstrahl fast senkrecht nach unten; aus dem unteren Hahn schießt ein deutlich längerer Strahl weit nach rechts. Links am Tank eine große Tiefenskala mit den Marken 0 m und 10 m. Große Beschriftungen: am oberen Hahn „wenig Tiefe – kleiner Schweredruck“, am unteren Hahn „viel Tiefe – großer Schweredruck“. Keine weiteren Hähne, keine Pfeile, keine Personen, keine Deko]"
+ },
+ {
+  "id": "fk13",
+  "quelle": "kf13",
+  "sim": "dichte",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Zwei Klötze auf der Werkbank",
+  "name": "Warum sind gleich große Würfel verschieden schwer?",
+  "fachwoerter_neu": [
+   "Dichte ρ in kg/m³",
+   "Volumen V"
+  ],
+  "alltag": [
+   "Auf der Werkbank liegen zwei gleich große Würfel.",
+   "Nour hebt den weißen leicht, den grauen kaum.",
+   "Der Platz eines Würfels heißt Volumen V.",
+   "Die Masse in 1 m³ heißt Dichte ρ (sprich: rho)."
+  ],
+  "frage": "Warum hat der eine Würfel mehr Masse als der andere?",
+  "predict": [
+   "Bei gleichem Volumen V entscheidet der Stoff. Jeder Stoff hat eine eigene Dichte ρ.",
+   "Gleich große Würfel haben ungefähr gleich viel Masse."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke Blei und suche die Zeile 2 · Die Masse.",
+   "Drücke Eisen und fülle die zweite Tabellenzeile aus.",
+   "Drücke Styropor und fülle die letzte Zeile aus.",
+   "Lies in Zeile 4: schwimmt oder sinkt der Würfel?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welchen Stoff hast du gedrückt?",
+   "Wie groß ist die Masse m in kg?",
+   "Schwimmt der Würfel oder sinkt er?"
+  ],
+  "tabRows": [
+   [
+    "Blei",
+    "11,340 kg",
+    "sinkt"
+   ],
+   [
+    "Eisen",
+    "",
+    ""
+   ],
+   [
+    "Styropor",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Gleich groß heißt nicht gleich schwer. Die Masse in 1 m³ heißt",
+    "loesung": "Dichte",
+    "post": "ρ."
+   },
+   {
+    "pre": "Bei gleichem Volumen V hat der Stoff mit der größeren Dichte die größere",
+    "loesung": "Masse",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Dichte",
+   "Masse",
+   "1,000 kg",
+   "0,020 kg"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Masse des Bleiwürfels?",
+   "antwort": "Alle Würfel sind 10 cm lang. Zeile 2 zeigt: m = 11,340 kg. Zeile 4 sagt: Blei sinkt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Beide Würfel sind gleich groß. Warum hat Blei mehr Masse?",
+    "optionen": [
+     "Blei hat eine größere Dichte ρ als Styropor.",
+     "Der Bleiwürfel hat ein größeres Volumen V.",
+     "Gleich große Würfel haben gleich viel Masse."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "1 Liter Wasser hat die Masse",
+      "loesung": "1,000 kg",
+      "post": "."
+     },
+     {
+      "pre": "Der Styroporwürfel hat nur die Masse",
+      "loesung": "0,020 kg",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler braucht ein schweres Gegengewicht für eine kleine Kiste. Blei oder Styropor?",
+    "satzstarter": "Herr Kessler nimmt … , denn bei gleichem Volumen V …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Wasser steht in Zeile 4.",
+   "h2": "Beginne so: Herr Kessler nimmt den Stoff mit der größeren Dichte ρ …",
+   "h3": "Fast fertig: Blei hat eine große Dichte ρ, Styropor eine kleine. Ergänze: Er nimmt ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Masse m in Zeile 2 ablesen.",
+   "Ich weiß: Jeder Stoff hat eine eigene Dichte ρ.",
+   "Ich kann erklären, warum gleich große Würfel verschieden schwer sind."
+  ],
+  "zuhause": "Suche zwei gleich große Dinge aus verschiedenen Stoffen. Hebe beide an und vergleiche.",
+  "bildauftrag": "[BILD: drei gleich große Würfel nebeneinander auf einer gemeinsamen Tischlinie, alle exakt gleich groß gezeichnet. Über der Reihe eine einzige Beschriftung „alle Würfel: 10 cm lang · V = 1000 cm³“. Links ein glatter grauer Bleiwürfel, in der Mitte ein rauer dunkler Eisenwürfel, rechts ein körniger weißer Styroporwürfel — die Stoffe unterscheiden sich an der Oberfläche, nicht nur an der Farbe. Unter jedem Würfel in derselben großen Schrift die Masse: „m = 11,340 kg“, „m = 7,870 kg“, „m = 0,020 kg“. Rechts daneben, durch eine dünne senkrechte Linie abgetrennt, eine volle 1-Liter-Flasche mit der Beschriftung „1 Liter Wasser · m = 1,000 kg“. Keine Dichtezahlen, keine Waage, keine Pfeile, keine Deko; ruhiger heller Hintergrund]"
+ },
+ {
+  "id": "fk14",
+  "quelle": "kf14",
+  "sim": "auftrieb",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Ein Stahlrohr in der Regentonne",
+  "name": "Warum schwimmt ein Schiff aus Eisen?",
+  "fachwoerter_neu": [
+   "Auftrieb"
+  ],
+  "alltag": [
+   "Beim Aufräumen fällt ein Stück Vollstahl in die Regentonne und sinkt.",
+   "Jannis wirft ein verschlossenes Stahlrohr hinterher. Es bleibt oben.",
+   "Im Rohr steckt Luft. Eisen und Luft zusammen ergeben die mittlere Dichte."
+  ],
+  "frage": "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
+  "predict": [
+   "Eisen ist schwerer als Wasser. Jedes Stück Eisen sinkt, egal welche Form.",
+   "Steckt genug Luft im Würfel, wird seine mittlere Dichte kleiner. Dann schwimmt er."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „massiv – sinkt“ und lies die mittlere Dichte ab.",
+   "Drücke „87 % – sinkt noch“ und dann „88 % – schwimmt gerade“.",
+   "Drücke „90 % – Schiff“ und vergleiche jede Zahl mit 1000 kg/m³."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Was hast du gedrückt?",
+   "Wie groß ist die mittlere Dichte?",
+   "Schwimmt der Würfel oder sinkt er?"
+  ],
+  "tabRows": [
+   [
+    "massiv – sinkt",
+    "7870 kg/m³",
+    "sinkt"
+   ],
+   [
+    "87 % – sinkt noch",
+    "",
+    ""
+   ],
+   [
+    "88 % – schwimmt gerade",
+    "",
+    ""
+   ],
+   [
+    "90 % – Schiff",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Unten drückt das Wasser stärker als oben. Diese Kraft nach oben heißt",
+    "loesung": "Auftrieb",
+    "post": "."
+   },
+   {
+    "pre": "Ein Körper schwimmt, wenn seine mittlere Dichte kleiner als",
+    "loesung": "1000 kg/m³",
+    "post": "ist."
+   }
+  ],
+  "wortbank": [
+   "Auftrieb",
+   "1000 kg/m³",
+   "größer",
+   "sinkt",
+   "schwimmt"
+  ],
+  "beispiel": {
+   "frage": "Warum sinkt der massive Würfel?",
+   "antwort": "Der Bildschirm zeigt 7870 kg/m³. Das ist größer als 1000 kg/m³. Darum sinkt der Würfel."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welcher Würfel schwimmt?",
+    "optionen": [
+     "Der Würfel mit 7870 kg/m³.",
+     "Der Würfel mit 787 kg/m³.",
+     "Der Würfel mit 1023 kg/m³."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 87 % zeigt der Bildschirm 1023 kg/m³. Das ist",
+      "loesung": "größer",
+      "post": "als 1000 kg/m³."
+     },
+     {
+      "pre": "Darum",
+      "loesung": "sinkt",
+      "post": "der Würfel noch."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Ein Schiff aus Stahl schwimmt, weil es so groß ist.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Nicht die Größe entscheidet, sondern …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Vergleiche jede Zahl mit 1000 kg/m³.",
+   "h2": "Beginne so: Nicht die Größe entscheidet, sondern die mittlere Dichte. Ein Schiff ist innen …",
+   "h3": "Fast fertig: Ein Schiff ist innen fast nur Luft. Seine mittlere Dichte bleibt unter 1000 kg/m³. Ergänze: Darum ___ es."
+  },
+  "selbstcheck": [
+   "Ich kann die mittlere Dichte am Bildschirm ablesen.",
+   "Ich weiß: Unter 1000 kg/m³ schwimmt der Würfel.",
+   "Ich kann erklären, warum ein Schiff aus Eisen schwimmt."
+  ],
+  "zuhause": "Knülle Alufolie zu einer Kugel und lege sie in Wasser. Forme dann ein flaches Schiffchen daraus.",
+  "bildauftrag": "[BILD: zwei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund, gleiche Wasserlinie, gleicher Bildausschnitt. In beiden Feldern dieselbe Regentonne im Schnitt, das Wasser hellblau, glatt, ohne Wellen und ohne Spiegelbild, am Wasser die Beschriftung „Wasser 1000 kg/m³“. Links liegt ein massiver grauer Stahlklotz unten am Boden der Tonne, darunter groß das Wort „sinkt“. Rechts schwimmt ein gleich großes, verschlossenes Stahlrohr an der Oberfläche; es ist aufgeschnitten gezeichnet, sodass der große Luftraum innen weiß und deutlich sichtbar ist und die Wand als dünner grauer Rand erscheint. Der Luftraum trägt die Beschriftung „Luft“, die Wand die Beschriftung „Eisen“, darunter groß das Wort „schwimmt“. Beide Körper sind exakt gleich groß gezeichnet, damit nur der Luftraum den Unterschied macht. Keine Pfeile, keine Kraftpfeile, keine Zahlenwerte außer der Wasserbeschriftung, keine Personen, keine Deko]"
+ },
+ {
+  "id": "fe1",
+  "quelle": "el1",
+  "sim": "arbeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Vier Meter über den Hof",
+  "name": "Wann wird Arbeit verrichtet?",
+  "fachwoerter_neu": [
+   "Arbeit W in Joule (J)"
+  ],
+  "alltag": [
+   "Jannis schleppt eine schwere Kiste über den Hof.",
+   "„Das war Arbeit“, stöhnt er. Herr Kessler sieht das anders.",
+   "In der Physik bedeutet Arbeit W etwas anderes als im Alltag.",
+   "Am Bildschirm heißt die Strecke s jetzt Weg s."
+  ],
+  "frage": "Wann verrichtet Jannis wirklich Arbeit?",
+  "predict": [
+   "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist null.",
+   "Tragen ist anstrengend. Also ist es Arbeit."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.",
+   "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.",
+   "Drücke „Hochheben“. Lies die Arbeit im Bild ab.",
+   "Trage alles in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was macht Jannis?",
+   "Zeigen Kraft und Weg in dieselbe Richtung?",
+   "Wie viel Arbeit W in J?"
+  ],
+  "tabRows": [
+   [
+    "Schieben: 100 N über 4 m",
+    "ja",
+    "400 J"
+   ],
+   [
+    "Waagerecht tragen: 4 m",
+    "",
+    ""
+   ],
+   [
+    "Hochheben: 2,0 m",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Arbeit gibt es nur, wenn Kraft und Weg in dieselbe Richtung zeigen:",
+    "loesung": "W = F · s",
+    "post": "in Joule (J)."
+   },
+   {
+    "pre": "Beim Tragen zeigt die Kraft nach oben. Die Arbeit ist",
+    "loesung": "null",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "W = F · s",
+   "null",
+   "400 J",
+   "392 J"
+  ],
+  "beispiel": {
+   "frage": "Wie viel Arbeit verrichtet Jannis beim Schieben?",
+   "antwort": "Gegeben: F = 100 N, s = 4 m. Gesucht: W. Formel: W = F · s. Einsetzen: W = 100 N · 4 m = 400 J. Antwort: Jannis verrichtet 400 J Arbeit."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour trägt einen Stuhl über die Bühne. Was gilt?",
+    "optionen": [
+     "Sie verrichtet keine Arbeit. Die Kraft zeigt nach oben.",
+     "Sie verrichtet Arbeit, denn der Stuhl ist schwer.",
+     "Sie verrichtet Arbeit, denn sie geht 4 m."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Schieben mit 100 N über 4 m ergibt",
+      "loesung": "400 J",
+      "post": "Arbeit."
+     },
+     {
+      "pre": "Beim Hochheben steht im Bild",
+      "loesung": "392 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Tragen ist anstrengend, also ist es Arbeit.“ Erkläre seinen Fehler.",
+    "satzstarter": "Beim Tragen zeigt die Kraft …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Beim Tragen zeigt die Kraft nach oben.",
+   "h3": "Fast fertig: Kraft und Weg zeigen nicht in dieselbe Richtung. Die Arbeit ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, wann Arbeit verrichtet wird.",
+   "Ich kann W = F · s ausrechnen.",
+   "Ich kann erklären, warum Tragen keine Arbeit ist."
+  ],
+  "zuhause": "Trage eine Tasche durch den Flur und die Treppe hinauf. Wo verrichtest du Arbeit?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+ },
+ {
+  "id": "fe2",
+  "quelle": "el2",
+  "sim": "lageenergie",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Sack liegt oben still",
+  "name": "Wo steckt die Energie oben?",
+  "fachwoerter_neu": [
+   "Lageenergie"
+  ],
+  "alltag": [
+   "Nour zieht einen schweren Sack auf die Bühne.",
+   "Oben liegt der Sack still und hat trotzdem Energie.",
+   "Diese gespeicherte Energie heißt Lageenergie."
+  ],
+  "frage": "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
+  "predict": [
+   "Die Höhe zählt mehr als die Masse.",
+   "Masse und Höhe zählen gleich stark."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.",
+   "Drücke „×2 Masse“ und trage den Wert in die Tabelle ein.",
+   "Drücke danach „×2 Höhe“ und trage ein. Setze vorher nicht zurück.",
+   "Vergleiche die drei Werte."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Werte.",
+  "tabCols": [
+   "Welchen Knopf drückst du?",
+   "Wie schwer? Wie hoch?",
+   "Wie viel Lageenergie?"
+  ],
+  "tabRows": [
+   [
+    "keinen (Start)",
+    "5 kg, 3 m",
+    "147 J"
+   ],
+   [
+    "×2 Masse",
+    "10 kg, 3 m",
+    ""
+   ],
+   [
+    "×2 Höhe",
+    "10 kg, 6 m",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Körper oben hat gespeicherte Energie. Sie heißt",
+    "loesung": "Lageenergie",
+    "post": "."
+   },
+   {
+    "pre": "Schwerer oder höher: dann ist die Lageenergie",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Lageenergie",
+   "größer",
+   "doppelt",
+   "294"
+  ],
+  "beispiel": {
+   "frage": "Wie viel Lageenergie hat ein Klotz mit 5 kg auf 3 m?",
+   "antwort": "Die Statuszeile zeigt: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J. Antwort: Der Klotz hat oben 147 J Lageenergie."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Zwei Klötze hängen auf 3 m Höhe. Welcher hat mehr Lageenergie?",
+    "optionen": [
+     "Der Klotz mit 1 kg. Die Anzeige zeigt 29 J.",
+     "Der Klotz mit 10 kg. Die Anzeige zeigt 294 J.",
+     "Beide gleich viel. Sie hängen gleich hoch."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "E = 10 kg · 9,81 N/kg · 3 m =",
+      "loesung": "294",
+      "post": "J. Lies den Wert in der Statuszeile ab."
+     },
+     {
+      "pre": "Doppelte Masse gibt",
+      "loesung": "doppelt",
+      "post": "so viel Lageenergie."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Zwei gleiche Säcke: einer liegt auf der Bühne, einer am Boden. Erkläre den Unterschied.",
+    "satzstarter": "Der Sack auf der Bühne hat mehr Lageenergie, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Lückenwörter stehen in der Wortbank. Die Werte stehen in der Statuszeile.",
+   "h2": "Beginne so: Der Sack auf der Bühne liegt höher, deshalb …",
+   "h3": "Fast fertig: Beide Säcke sind gleich schwer. Der obere liegt höher. Er hat mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die Lageenergie in der Statuszeile ablesen.",
+   "Ich weiß: schwerer oder höher heißt mehr Lageenergie.",
+   "Ich kann sagen, welcher Sack mehr Lageenergie hat."
+  ],
+  "zuhause": "Suche drei Dinge, die höher liegen als dein Kopf. Ordne sie nach der Lageenergie.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus drei gleich breiten Feldern nebeneinander, alle mit derselben Bodenlinie und demselben Pfahl im Boden, Seitenansicht. In jedem Feld hängt ein Klotz über dem Pfahl. Feld 1: kleiner Klotz, groß beschriftet „5 kg“, links ein Maßstrich vom Boden bis zum Klotz mit „3 m“, unter dem Feld groß „147 J“. Feld 2: derselbe Maßstrich „3 m“, aber ein doppelt so großer Klotz, beschriftet „10 kg“, darunter groß „294 J“. Feld 3: derselbe große Klotz „10 kg“, der Maßstrich reicht doppelt so hoch und trägt „6 m“, darunter groß „589 J“. Die drei Maßstriche sind maßstäblich zueinander, der Boden liegt in allen drei Feldern auf gleicher Höhe. Über dem ganzen Bild eine große Zeile: „Schwerer oder höher heißt mehr Lageenergie.“ KEINE Bewegungspfeile, keine fallenden Klötze, keine Formel im Bild. Ruhiger heller Hintergrund, keine Personen, keine Deko.]"
+ },
+ {
+  "id": "fe3",
+  "quelle": "el3",
+  "sim": "bewegungsenergie",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Ball wirft den Eimer um",
+  "name": "Wo steckt die Energie beim Rollen?",
+  "fachwoerter_neu": [
+   "Bewegungsenergie"
+  ],
+  "alltag": [
+   "Nour stößt einen schweren Ball über den Hof.",
+   "Der Ball rollt gegen einen Eimer und wirft ihn um.",
+   "Die Energie in einer Bewegung heißt Bewegungsenergie E in Joule (J)."
+  ],
+  "frage": "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppeltes Tempo v?",
+  "predict": [
+   "Doppeltes Tempo v bringt mehr Energie als doppelte Masse.",
+   "Masse und Tempo v wirken gleich stark."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „zurücksetzen“. Am Bildschirm stehen 4 kg und 4 m/s.",
+   "Drücke „×2 Masse“ und fülle Zeile 2 aus.",
+   "Drücke danach „×2 Tempo“ und fülle Zeile 3 aus.",
+   "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welcher Schritt?",
+   "Was steht am Bildschirm?",
+   "Wie viel Bewegungsenergie E?"
+  ],
+  "tabRows": [
+   [
+    "Start",
+    "4 kg mit 4 m/s",
+    "32 J"
+   ],
+   [
+    "×2 Masse",
+    "",
+    ""
+   ],
+   [
+    "×2 Tempo",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Doppelte Masse m bringt",
+    "loesung": "doppelt",
+    "post": "so viel Bewegungsenergie E."
+   },
+   {
+    "pre": "Doppeltes Tempo v bringt sogar",
+    "loesung": "viermal",
+    "post": "so viel Energie E."
+   }
+  ],
+  "wortbank": [
+   "doppelt",
+   "viermal",
+   "64 J",
+   "256 J"
+  ],
+  "beispiel": {
+   "frage": "Was steht am Bildschirm nach „×2 Masse“?",
+   "antwort": "Vorher: 4 kg mit 4 m/s und 32 J. Nachher: 8 kg mit 4 m/s und 64 J. Masse doppelt, Energie doppelt."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Vor Schulen gilt Tempo 30. Warum ist langsam sicherer?",
+    "optionen": [
+     "Bei doppeltem Tempo v steckt doppelt so viel Energie im Auto.",
+     "Das Tempo v ändert die Energie nicht. Nur die Masse zählt.",
+     "Bei doppeltem Tempo v steckt viermal so viel Energie im Auto."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach „×2 Masse“ stehen dort 8 kg. Die Energie steigt von 32 J auf",
+      "loesung": "64 J",
+      "post": "."
+     },
+     {
+      "pre": "Nach „×2 Tempo“ stehen dort 8 m/s. Die Energie steigt auf",
+      "loesung": "256 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Schwer ist gefährlicher als schnell.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Das Tempo v zählt mehr, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Wörter der Wortbank werden gebraucht. Streiche jedes durch.",
+   "h2": "Schau in deine Tabelle. Von 64 J auf 256 J ist viermal so viel.",
+   "h3": "Fast fertige Antwort: Doppeltes Tempo v bringt viermal so viel Energie. Doppelte Masse bringt nur ___ so viel."
+  },
+  "selbstcheck": [
+   "Ich kann die Bewegungsenergie am Bildschirm ablesen.",
+   "Ich kann sagen, was doppelte Masse bewirkt.",
+   "Ich kann erklären, warum doppeltes Tempo v viermal so viel bringt."
+  ],
+  "zuhause": "Suche das Schild Tempo 30 vor einer Schule. Schreibe auf, warum langsam sicherer ist.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus drei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In jedem Feld rollt eine Kugel von links nach rechts über einen glatten Boden und trifft rechts einen gleich großen Holzklotz; der Klotz ist um eine deutlich unterschiedliche Strecke nach rechts geschoben. Die drei Schiebestrecken stehen im nachgemessenen Verhältnis 1 : 2 : 8. Feld 1 oben groß „4 kg mit 4 m/s“, darunter „32 J“: kleine Kugel, Klotz um ein kurzes Grundmaß verschoben – so kurz, dass das Achtfache davon in Feld 3 noch in denselben Bildausschnitt passt. Feld 2 oben groß „8 kg mit 4 m/s“, darunter „64 J“: doppelt so große Kugel, Klotz genau doppelt so weit verschoben wie in Feld 1. Feld 3 oben groß „8 kg mit 8 m/s“, darunter „256 J“: gleich große Kugel wie in Feld 2, Klotz genau achtmal so weit verschoben wie in Feld 1, also viermal so weit wie in Feld 2. Die Ausgangsstelle des Klotzes in allen drei Feldern durch dieselbe dünne senkrechte Linie markiert, damit die drei Schiebestrecken vergleichbar sind. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kugel, keine Personen. Unter den drei Feldern eine gemeinsame große Zeile: „mehr Energie – der Klotz rutscht weiter“. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ {
+  "id": "fe4",
+  "quelle": "el4",
+  "sim": "energieerhaltung",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Der Ball vom Bühnenrand",
+  "name": "Was passiert beim Fallen?",
+  "fachwoerter_neu": [
+   "Energieerhaltung"
+  ],
+  "alltag": [
+   "In der Pause lässt Jannis einen Ball vom Bühnenrand fallen.",
+   "Unten ist der Ball sehr schnell. Nour sagt: „Da entsteht neue Energie.“",
+   "Energie entsteht nie neu. Sie wird nur umgewandelt. Das heißt Energieerhaltung."
+  ],
+  "frage": "Wo bleibt die Lageenergie, während der Ball fällt?",
+  "predict": [
+   "Beim Fallen geht die Lageenergie nach und nach verloren.",
+   "Beim Fallen wird die Lageenergie zu Bewegungsenergie."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Öffne die Simulation. Fasse die beiden Regler nicht an.",
+   "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.",
+   "Beobachte die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.",
+   "Trage in die Tabelle ein: Wird der Balken kürzer oder länger?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft den Startzustand und die zwei Balken.",
+  "tabCols": [
+   "Was liest du ab?",
+   "Was steht am Anfang da?",
+   "Was passiert beim Fallen?"
+  ],
+  "tabRows": [
+   [
+    "Höhe",
+    "Höhe = 20,0 m",
+    "wird kleiner"
+   ],
+   [
+    "Lageenergie E_pot",
+    "langer Balken",
+    ""
+   ],
+   [
+    "Bewegungsenergie E_kin",
+    "kein Balken",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beim Fallen wird die Lageenergie",
+    "loesung": "kleiner",
+    "post": "."
+   },
+   {
+    "pre": "Gleichzeitig wird die Bewegungsenergie",
+    "loesung": "größer",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "größer",
+   "392 J",
+   "0 J"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit den beiden Energien zusammen?",
+   "antwort": "Die Lageenergie wird zu Bewegungsenergie. Zusammen bleiben beide gleich groß. Energie geht nicht verloren. Das ist die Energieerhaltung."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wann darfst du die zwei Balken ablesen?",
+    "optionen": [
+     "Nur so lange, wie der Ball nach unten fällt.",
+     "Immer, auch wenn der Ball nach oben springt.",
+     "Erst, wenn du den Regler „Höhe h“ bewegt hast."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Am Anfang ist oben nur Lageenergie da. Der Bildschirm zeigt E_pot =",
+      "loesung": "392 J",
+      "post": "."
+     },
+     {
+      "pre": "Der Ball ruht noch. Deshalb steht dort E_kin =",
+      "loesung": "0 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die Simulation ist ein Modell. Erkläre, was sie über einen echten Ball nicht sagt.",
+    "satzstarter": "Die Simulation zeigt nur …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die vier Lückenwörter stehen in der Wortbank. Zwei davon sind Zahlen.",
+   "h2": "Beginne so: Die Simulation zeigt nur Zahlen und zwei Balken.",
+   "h3": "Fast fertig: Ein Modell zeigt nie alles. Beim echten Ball siehst du, wie hoch er ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann die zwei Balken E_pot und E_kin im Bild finden.",
+   "Ich weiß: Beim Fallen wird die Lageenergie kleiner.",
+   "Ich kann sagen, was die Simulation nicht zeigt."
+  ],
+  "zuhause": "Lass einen Ball aus 1 m Höhe fallen. Miss mit dem Zollstock, wie hoch er zurückspringt.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild auf ruhigem hellem Hintergrund, Seitenansicht. Links eine Bühnenkante; von ihr fällt EIN Ball senkrecht nach unten. Derselbe Ball ist dreimal gezeigt: dicht unter der Kante, auf halber Höhe, kurz über dem Boden. Die oberen beiden Bälle blass, der untere kräftig. Keine Bewegungsstreifen, keine Pfeile, keine weiteren Bälle, kein Rücksprung. Ganz links eine große Höhenleiter mit den Marken 0 m, 5 m, 10 m, 15 m und 20 m. Rechts neben jedem Ball, genau auf seiner Höhe, ein Paar aus zwei senkrechten Balken: oben ein sehr langer violetter Balken neben einem ganz kurzen orangen Balken, auf halber Höhe beide gleich lang, unten ein ganz kurzer violetter neben einem sehr langen orangen Balken. Jeder violette Balken trägt die Beschriftung „Lageenergie E_pot“, jeder orange die Beschriftung „Bewegungsenergie E_kin“, damit die Farbe nicht allein unterscheidet. Große Schrift, keine Personen, keine Formeln, keine Deko]"
+ },
+ {
+  "id": "fe5",
+  "quelle": "el5",
+  "sim": "energie-entwerten",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Am Ende ist alles warm",
+  "name": "Warum wird alles am Ende warm?",
+  "fachwoerter_neu": [
+   "entwertet"
+  ],
+  "alltag": [
+   "Der Bauscheinwerfer über der Bühne brennt seit einer Stunde.",
+   "Nour fasst an das Gehäuse. Es ist heiß: Das ist Wärme.",
+   "Herr Kessler sagt: Verloren geht dabei nichts. Sparen sollt ihr trotzdem."
+  ],
+  "frage": "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
+  "predict": [
+   "Am Ende sind immer noch 1000 J da. Aber fast alles ist Wärme.",
+   "Bei jedem Schritt geht Energie verloren. Am Ende sind es weniger."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke zuerst „Benzin → Fahrt“. Sonst misst du die falsche Kette.",
+   "Drücke „nächster Schritt“. Lies ab, wie viel man noch gebrauchen kann.",
+   "Lies auch die letzte Zeile: Wie viel ist zusammen da?",
+   "Trage beides in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Zahlen.",
+  "tabCols": [
+   "Wann?",
+   "Wie viel kann man noch gebrauchen? (in J)",
+   "Wie viel ist zusammen da? (in J)"
+  ],
+  "tabRows": [
+   [
+    "Am Anfang",
+    "1000 J",
+    "1000 J"
+   ],
+   [
+    "Nach Schritt 1 (Motor)",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Menge der Energie bleibt",
+    "loesung": "gleich",
+    "post": ". Ein Teil wird bei jedem Schritt zu Wärme."
+   },
+   {
+    "pre": "Diese Wärme kann man nicht mehr",
+    "loesung": "gebrauchen",
+    "post": ". Man sagt: Die Energie ist entwertet."
+   }
+  ],
+  "wortbank": [
+   "gleich",
+   "gebrauchen",
+   "250 J",
+   "750 J"
+  ],
+  "beispiel": {
+   "frage": "Wie viel von 1000 J ist zu Wärme geworden?",
+   "antwort": "Gegeben: 1000 J am Anfang, 250 J noch zu gebrauchen. Rechnung: 1000 J − 250 J = 750 J. Antwort: 750 J sind zu Wärme geworden."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was steht nach Schritt 1 am Bildschirm?",
+    "optionen": [
+     "Es sind nur noch 250 J zusammen da.",
+     "Zusammen sind es immer noch 1000 J.",
+     "Die 750 J Wärme sind verschwunden."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nach Schritt 1 sind von 1000 J noch",
+      "loesung": "250 J",
+      "post": "zu gebrauchen."
+     },
+     {
+      "pre": "Zu Wärme geworden sind",
+      "loesung": "750 J",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis fragt: Warum sollen wir sparen, wenn immer noch 1000 J da sind?",
+    "satzstarter": "Die Menge bleibt gleich, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Die Menge bleibt gleich, aber die Wärme ist überall verteilt.",
+   "h3": "Fast fertig: Die 1000 J sind noch da. Man kann sie nicht mehr ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann ablesen, wie viel man noch gebrauchen kann.",
+   "Ich kann sagen: Zusammen sind es immer noch 1000 J.",
+   "Ich kann erklären, warum man trotzdem sparen soll."
+  ],
+  "zuhause": "Fasse ein Ladegerät nach dem Laden an. Woher kommt die Wärme?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Balkenbild aus zwei gleich langen waagerechten Balken untereinander, gleicher Bildausschnitt, gleiche Länge. Oberer Balken, links davor die Beschriftung „Am Anfang“: der ganze Balken ist grün und glatt, in der Mitte groß beschriftet „1000 J – kann man gebrauchen“. Unterer Balken, links davor die Beschriftung „Nach Schritt 1: Motor“: das linke Viertel ist grün und glatt und trägt die Aufschrift „250 J“, die rechten drei Viertel sind rot und schraffiert und tragen die Aufschrift „750 J Wärme“; dazwischen eine kräftige senkrechte Trennlinie. Rechts neben beiden Balken eine geschweifte Klammer über die volle Länge mit der großen Beschriftung „zusammen immer noch 1000 J“. Unter dem Bild eine Legende aus zwei Kästchen: grünes glattes Kästchen „kann man gebrauchen“, rotes schraffiertes Kästchen „zu Wärme geworden“. Genau diese zwei Balken, keine weiteren Schritte, keine Prozentzahlen, keine Pfeile zwischen den Balken. Ruhiger heller Hintergrund, keine Personen, keine Deko.]"
+ },
+ {
+  "id": "fe6",
+  "quelle": "el6",
+  "sim": "leistung-rs",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Nour zieht schneller",
+  "name": "Was ist Leistung?",
+  "fachwoerter_neu": [
+   "Leistung P in Watt (W)"
+  ],
+  "alltag": [
+   "Zwei gleich schwere Kisten müssen auf die Bühne.",
+   "Jannis zieht langsam, Nour in der halben Zeit. Beide kommen gleich hoch.",
+   "Wie schnell Arbeit geht, heißt Leistung P in Watt (W)."
+  ],
+  "frage": "Was ändert sich, wenn Nour die halbe Zeit braucht?",
+  "predict": [
+   "Wer schneller zieht, verrichtet mehr Arbeit W.",
+   "Die Arbeit W bleibt gleich. Nur die Leistung P wird doppelt."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „zurücksetzen“ und dann „Hochziehen“. Die Zahlen stehen schon vorher da.",
+   "Drücke „÷2 Zeit“ und fülle Zeile 2 aus.",
+   "Drücke „zurücksetzen“. Stelle 20 kg ein und fülle Zeile 3 aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was ist eingestellt?",
+   "Wie groß ist die Arbeit W?",
+   "Wie viel Watt zeigt P?"
+  ],
+  "tabRows": [
+   [
+    "50 kg in 10 s",
+    "1962 J",
+    "196 W"
+   ],
+   [
+    "nach ÷2 Zeit",
+    "",
+    ""
+   ],
+   [
+    "20 kg in 10 s",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Für die Leistung gilt P =",
+    "loesung": "W / t",
+    "post": ". 1 Watt ist 1 Joule je Sekunde."
+   },
+   {
+    "pre": "Bei halber Zeit bleibt die Arbeit gleich. Die Leistung wird",
+    "loesung": "doppelt",
+    "post": "so groß."
+   }
+  ],
+  "wortbank": [
+   "W / t",
+   "doppelt",
+   "392 W",
+   "79 W"
+  ],
+  "beispiel": {
+   "frage": "Wie groß ist die Leistung P?",
+   "antwort": "Gegeben: W = 1962 J, t = 10 s. Gesucht: P. Rechnung: 1962 J / 10 s = 196 W. Antwort: Die Leistung ist 196 W."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was ändert sich zwischen 10 s und 5 s?",
+    "optionen": [
+     "Die Arbeit W wird doppelt. Die Leistung P bleibt gleich.",
+     "Arbeit W und Leistung P bleiben gleich.",
+     "Die Arbeit W bleibt gleich. Die Leistung P steigt auf 392 W."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "In 5 s: 1962 J / 5 s =",
+      "loesung": "392 W",
+      "post": "."
+     },
+     {
+      "pre": "Bei 20 kg: 785 J / 10 s =",
+      "loesung": "79 W",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Herr Kessler sagt: Beide haben gleich viel Arbeit verrichtet. Hat er recht?",
+    "satzstarter": "Herr Kessler hat recht, weil die Arbeit …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Lies nur bis „Leistung P = ... W“. Die 9,81 steht schon da.",
+   "h2": "785 J : 10 s = 78,5. Der Bildschirm rundet: 79 W.",
+   "h3": "Fast fertige Antwort: Die Arbeit ist gleich. Nour war schneller, darum ist ihre ___ doppelt."
+  },
+  "selbstcheck": [
+   "Ich kann die Leistung P ablesen.",
+   "Ich kann P = W / t benutzen.",
+   "Ich weiß, was bei halber Zeit passiert."
+  ],
+  "zuhause": "Laufe eine Treppe hinauf. Die Höhe sagt deine Lehrkraft. Stoppe deine Zeit.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern hängt dieselbe Kiste an einem Seil über einer Bühnenkante und ist gleich hoch gezogen; eine dünne waagerechte Linie auf gleicher Höhe in beiden Feldern zeigt, dass die Höhe wirklich dieselbe ist, daneben groß „h = 4 m“ und an der Kiste „50 kg“. Feld 1 oben groß „in 10 s“, Feld 2 oben groß „in 5 s“. In BEIDEN Feldern steht unten dieselbe Zeile „Arbeit W = 1962 J“, in Feld 1 darunter „Leistung P = 196 W“, in Feld 2 darunter „Leistung P = 392 W“. In Feld 1 zieht Jannis am Seil, in Feld 2 Nour, beide vierzehn, in Arbeitskleidung. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kiste je Feld, keine Uhr als Zusatzbild, keine PS- oder kW-Angaben. Unter den beiden Feldern eine gemeinsame große Zeile: „halbe Zeit – doppelte Leistung, gleiche Arbeit“ und darunter kleiner der Hinweis „das W hinter der Zahl heißt Watt“. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ {
+  "id": "fe7",
+  "quelle": "el7",
+  "sim": "wirkungsgrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Die alte Glühlampe im Scheinwerfer",
+  "name": "Wie viel Energie kommt an?",
+  "fachwoerter_neu": [
+   "Wirkungsgrad"
+  ],
+  "alltag": [
+   "Herr Kessler hält zwei Scheinwerfer hoch: einer mit Glühlampe, einer mit LED-Lampe.",
+   "Die alte Glühlampe wird im Betrieb sehr heiß.",
+   "Wie viel Prozent als Licht oder Bewegung herauskommt, heißt Wirkungsgrad η (sprich: eta)."
+  ],
+  "frage": "Wie viel von 1000 J wird bei einer Maschine wirklich Licht oder Bewegung?",
+  "predict": [
+   "Eine Glühlampe macht nur einen kleinen Teil zu Licht. Fast alles wird Wärme.",
+   "Eine Glühlampe macht ungefähr die Hälfte zu Licht."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies die Statuszeile. Fasse den Regler nicht an. Zeile 1 der Tabelle ist schon ausgefüllt.",
+   "Drücke „LED-Lampe“ und fülle Zeile 2 aus.",
+   "Drücke „Benzinmotor“ und „Elektromotor“. Fülle Zeile 3 und 4 aus.",
+   "Vergleiche: Wo kommt am meisten heraus?"
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Maschine",
+   "Was kommt bei 1000 J heraus?",
+   "Wie hoch ist der Wirkungsgrad η?"
+  ],
+  "tabRows": [
+   [
+    "Glühlampe",
+    "50 J Licht",
+    "5 %"
+   ],
+   [
+    "LED-Lampe",
+    "",
+    ""
+   ],
+   [
+    "Benzinmotor",
+    "",
+    ""
+   ],
+   [
+    "Elektromotor",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein Teil der Energie wird Licht oder Bewegung. Der Rest wird",
+    "loesung": "Wärme",
+    "post": "."
+   },
+   {
+    "pre": "Der",
+    "loesung": "Wirkungsgrad",
+    "post": "η sagt in Prozent, wie viel herauskommt. η ist nie 100 %."
+   }
+  ],
+  "wortbank": [
+   "Wärme",
+   "Wirkungsgrad",
+   "100 J",
+   "90 %"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt der Bildschirm bei der LED-Lampe?",
+   "antwort": "Hinein gehen 1000 J. Davon werden 400 J Licht. 600 J gehen als Wärme verloren. Der Wirkungsgrad η ist 40 %."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Maschine hat den höchsten Wirkungsgrad η?",
+    "optionen": [
+     "Der Elektromotor, η = 90 %.",
+     "Die Glühlampe, η = 5 %.",
+     "Der Benzinmotor, η = 25 %."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Der Elektromotor bekommt 1000 J. Davon werden 900 J Bewegung. Als Wärme gehen",
+      "loesung": "100 J",
+      "post": "verloren."
+     },
+     {
+      "pre": "Sein Wirkungsgrad η ist",
+      "loesung": "90 %",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Die alte Glühlampe geht noch. Ist es richtig, sie trotzdem zu tauschen?",
+    "satzstarter": "Ich finde den Tausch richtig / nicht richtig, weil …",
+    "zeilen": 5
+   }
+  ],
+  "hilfen": {
+   "h1": "In der Statuszeile steht „davon Licht: 50 J“. Dieses Feld brauchst du.",
+   "h2": "900 J und die Wärme ergeben zusammen 1000 J.",
+   "h3": "Fast fertige Antwort: Die Glühlampe macht aus 1000 J nur 50 J Licht, die LED 400 J. Sie spart viel ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Wirkungsgrad η ablesen.",
+   "Ich weiß, was mit dem Rest der Energie passiert.",
+   "Ich kann begründen, ob der Tausch richtig ist."
+  ],
+  "zuhause": "Suche zu Hause drei Geräte, die im Betrieb warm werden.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In jedem Feld steht links ein breiter Pfeil mit der großen Beschriftung „hinein 1000 J“, der in einen Scheinwerfer zeigt. Aus dem Scheinwerfer gehen zwei Pfeile heraus: einer nach oben rechts mit der Beschriftung „Licht“, einer nach unten rechts mit der Beschriftung „Wärme“. Die Breite der beiden Pfeile zeigt die Menge. Feld 1 oben groß „Glühlampe“: der Licht-Pfeil ist ein sehr schmaler Streifen mit „50 J“, der Wärme-Pfeil ist sehr breit mit „950 J“; unter dem Feld groß „Wirkungsgrad η = 5 %“. Feld 2 oben groß „LED-Lampe“: der Licht-Pfeil ist deutlich breiter mit „400 J“, der Wärme-Pfeil schmaler mit „600 J“; unter dem Feld groß „Wirkungsgrad η = 40 %“. Der Pfeil „hinein 1000 J“ ist in beiden Feldern exakt gleich breit, damit nur die Aufteilung verglichen wird. KEINE Lichtstrahlen, keine Strahlengänge, keine Blitze, keine Steckdose, keine zweite Lampe, keine Personen. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ {
+  "id": "fe8",
+  "quelle": "el8",
+  "sim": "hebel",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Die Eisenstange unter dem Klavier",
+  "name": "Warum hilft eine lange Stange?",
+  "fachwoerter_neu": [
+   "Hebel",
+   "Kraftarm"
+  ],
+  "alltag": [
+   "Herr Kessler schiebt eine Eisenstange unter das Klavier.",
+   "Unter der Stange liegt ein Holzklotz. Er ist der Drehpunkt.",
+   "So eine Stange heißt Hebel.",
+   "Der Kraftarm l₁ ist die Strecke vom Drehpunkt bis zur Hand."
+  ],
+  "frage": "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
+  "predict": [
+   "Der lange Kraftarm spart Kraft. Der Weg bleibt gleich.",
+   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N.",
+   "Drücke „gleich lang – nichts gespart“. Fülle Zeile 2 aus.",
+   "Drücke „achtfach – ein Achtel der Kraft“. Fülle Zeile 3 aus.",
+   "Vergleiche die drei Zeilen. Lies im Bild die Arbeit ab."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie lang ist der Kraftarm l₁?",
+   "Wie groß ist die Kraft F₁?",
+   "Wie weit läuft die Hand (Kraftweg)?"
+  ],
+  "tabRows": [
+   [
+    "1,00 m",
+    "50,00 N",
+    "40,0 cm"
+   ],
+   [
+    "0,25 m",
+    "",
+    ""
+   ],
+   [
+    "2,00 m",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langer Kraftarm braucht eine",
+    "loesung": "kleine",
+    "post": "Kraft F₁."
+   },
+   {
+    "pre": "Dafür läuft deine Hand einen",
+    "loesung": "langen",
+    "post": "Weg. Die Arbeit bleibt gleich."
+   }
+  ],
+  "wortbank": [
+   "kleine",
+   "langen",
+   "200,00 N",
+   "80,0 cm"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt das Bild nach „doppelt so lang – halbe Kraft“?",
+   "antwort": "Kraftarm l₁ = 0,50 m und F₁ = 100,00 N. Die Hand läuft 20,0 cm, die Last steigt 10,0 cm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Herr Kessler nimmt eine noch längere Stange. Was passiert?",
+    "optionen": [
+     "Die Kraft wird kleiner. Die Hand läuft kürzer.",
+     "Die Kraft wird kleiner. Die Hand läuft weiter.",
+     "Die Kraft bleibt gleich. Die Last steigt höher."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei einem Kraftarm von 0,25 m brauchst du",
+      "loesung": "200,00 N",
+      "post": "."
+     },
+     {
+      "pre": "Bei 2,00 m sind es 25,00 N. Die Hand läuft dann",
+      "loesung": "80,0 cm",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der lange Hebel spart auch Arbeit.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Im Bild steht bei jedem Kraftarm …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Beide Merksatz-Wörter stehen in der Wortbank. Streiche sie durch.",
+   "h2": "Vergleiche Zeile 2 und Zeile 3 deiner Tabelle.",
+   "h3": "Fast fertig: Im Bild steht immer 20,00 J. Die Kraft wird kleiner, der Weg wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Kraftarm l₁ am Hebel zeigen.",
+   "Ich kann sagen, was ein langer Kraftarm bewirkt.",
+   "Ich kann erklären, warum der Hebel keine Arbeit spart."
+  ],
+  "zuhause": "Drücke eine Tür an der Klinke auf. Drücke dann neben den Angeln. Schreibe auf, wo es leichter geht.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern liegt dieselbe gerade Eisenstange auf einem Holzklotz; der Holzklotz ist groß mit „Drehpunkt“ beschriftet. Links am kurzen Ende drückt eine Klavierecke die Stange nach unten, beschriftet „Last F₂ = 200 N“; die Strecke vom Holzklotz bis zum Klavier ist bemaßt mit „0,25 m“. Rechts drückt eine Hand auf die Stange. Feld 1 oben groß „Kraftarm l₁ = 0,25 m“: die Hand steht dicht neben dem Holzklotz, darunter „F₁ = 200,00 N“ und ein kurzer senkrechter Maßstrich am Handende, beschriftet „Kraftweg 10,0 cm“. Feld 2 oben groß „Kraftarm l₁ = 2,00 m“: dieselbe Hand steht sehr weit rechts, darunter „F₁ = 25,00 N“ und ein achtmal so langer senkrechter Maßstrich, beschriftet „Kraftweg 80,0 cm“. Das Klavier steigt in beiden Feldern gleich weit; beide Male derselbe kurze Maßstrich mit „Lastweg 10,0 cm“. Unter den beiden Feldern eine gemeinsame große Zeile: „Arbeit beide Male 20,00 J“. Keine Kraftpfeile, keine Bewegungslinien, keine zweite Stange, keine Winkel und keine Bögen, keine Personen außer der einen Hand. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ {
+  "id": "fe9",
+  "quelle": "el9+el10",
+  "sim": "flaschenzug",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Vier Seile für das Klavier",
+  "name": "Was bringen Rollen und Seile?",
+  "fachwoerter_neu": [
+   "feste Rolle",
+   "lose Rolle"
+  ],
+  "alltag": [
+   "Das Klavier muss 2,0 m hoch auf die Bühne.",
+   "Herr Kessler hängt einen Flaschenzug ans Rohr.",
+   "Ein Flaschenzug ist ein Seil über mehreren Rollen.",
+   "Ein Seilstück ist ein Stück Seil, das die Last hält."
+  ],
+  "frage": "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
+  "predict": [
+   "Mehr Seilstücke: Die Kraft wird kleiner, der Weg wird länger.",
+   "Mehr Seilstücke: Dann wird auch die Arbeit kleiner."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „n = 1 · volle Kraft“ und prüfe Zeile 1.",
+   "Drücke „n = 2 · halbe Kraft“ und fülle Zeile 2.",
+   "Drücke „n = 4 · ein Viertel“ und fülle Zeile 3.",
+   "Vergleiche die Zeile „Zugarbeit“ bei den drei Knöpfen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie viele Seilstücke tragen?",
+   "Wie groß ist die Kraft F in N?",
+   "Wie lang ist der Weg deiner Hand in m?"
+  ],
+  "tabRows": [
+   [
+    "1 Seilstück",
+    "600,0 N",
+    "2,0 m"
+   ],
+   [
+    "2 Seilstücke",
+    "",
+    ""
+   ],
+   [
+    "4 Seilstücke",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Eine",
+    "loesung": "feste Rolle",
+    "post": "spart keine Kraft. Sie dreht nur die Richtung um."
+   },
+   {
+    "pre": "Eine",
+    "loesung": "lose Rolle",
+    "post": "halbiert die Kraft und verdoppelt den Weg."
+   }
+  ],
+  "wortbank": [
+   "feste Rolle",
+   "lose Rolle",
+   "300,0 N",
+   "4,0 m"
+  ],
+  "beispiel": {
+   "frage": "Was rechnet der Bildschirm bei 1 Seilstück?",
+   "antwort": "Er zeigt F = 600 N / 1 = 600,0 N und s = 1 · 2,0 m = 2,0 m. Die Arbeit ist 1200,0 J."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was zeigt der Bildschirm bei 4 Seilstücken?",
+    "optionen": [
+     "Die Kraft ist 150,0 N. Die Arbeit sinkt auf 300,0 J.",
+     "Die Kraft bleibt 600,0 N.",
+     "Die Kraft ist 150,0 N. Die Arbeit bleibt 1200,0 J."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei 2 Seilstücken ist die Kraft",
+      "loesung": "300,0 N",
+      "post": "."
+     },
+     {
+      "pre": "Der Weg deiner Hand ist dann",
+      "loesung": "4,0 m",
+      "post": "lang."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Vier Seilstücke, also ein Viertel Arbeit.“ Erkläre, warum das falsch ist.",
+    "satzstarter": "Die Arbeit bleibt gleich, weil …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle vier Wörter der Wortbank werden gebraucht.",
+   "h2": "Merke: Was du an Kraft sparst, zahlst du am Weg zurück.",
+   "h3": "Fast fertige Antwort: Bei 2 Seilstücken ist die Kraft halb so groß, der Weg doppelt so lang. Deshalb bleibt die Arbeit ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann Kraft und Weg am Bildschirm ablesen.",
+   "Ich kann feste und lose Rolle unterscheiden.",
+   "Ich kann erklären, warum die Arbeit gleich bleibt."
+  ],
+  "zuhause": "Zähle die Seilstücke am Baukran. Ein Foto davon reicht auch. Schreibe die Zahl auf.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]"
+ },
+ {
+  "id": "fe10",
+  "quelle": "el11",
+  "sim": "zahnrad",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Dreimal kurbeln, einmal herum",
+  "name": "Warum dreht sich das kleine Rad schneller?",
+  "fachwoerter_neu": [
+   "Drehzahl"
+  ],
+  "alltag": [
+   "An der Seilwinde neben der Bühne sitzen zwei Zahnräder.",
+   "Jannis kurbelt dreimal. Die Trommel dreht sich nur einmal.",
+   "Die Drehzahl n sagt, wie oft sich ein Rad je Minute dreht.",
+   "U/min heißt: Umdrehungen je Minute."
+  ],
+  "frage": "Wovon hängt es ab, wie schnell sich Rad 2 dreht?",
+  "predict": [
+   "Das kleine Rad dreht schneller, weil es leichter ist.",
+   "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne sind schnell herum."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min.",
+   "Drücke „groß treibt klein – schneller“. Trage n₂ ein.",
+   "Drücke „klein treibt groß – langsamer, kräftiger“. Trage n₂ ein.",
+   "Vergleiche die drei Zeilen."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Zähne von Rad 1",
+   "Zähne von Rad 2",
+   "Wie groß ist n₂?"
+  ],
+  "tabRows": [
+   [
+    "24",
+    "24",
+    "60,0 U/min"
+   ],
+   [
+    "30",
+    "10",
+    ""
+   ],
+   [
+    "12",
+    "36",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Beide Räder schieben gleich viele Zähne durch. Wenige Zähne geben eine große",
+    "loesung": "Drehzahl",
+    "post": "."
+   },
+   {
+    "pre": "Viele Zähne geben eine kleine Drehzahl. Das Rad dreht sich dann",
+    "loesung": "langsam",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "Drehzahl",
+   "langsam",
+   "20,0 U/min",
+   "60,0 U/min",
+   "180,0 U/min"
+  ],
+  "beispiel": {
+   "frage": "Rad 1 und Rad 2 haben je 24 Zähne. Wie groß ist n₂?",
+   "antwort": "Beide Räder haben gleich viele Zähne. Rad 2 dreht genauso schnell wie Rad 1. Der Bildschirm zeigt: n₂ = 60,0 U/min."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Du drückst „40 auf 10 – vierfach schnell“. Wie groß ist n₂?",
+    "optionen": [
+     "n₂ = 240,0 U/min",
+     "n₂ = 60,0 U/min",
+     "n₂ = 20,0 U/min"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Rad 1 hat 30 Zähne, Rad 2 hat 10 Zähne. Dann ist n₂",
+      "loesung": "180,0 U/min",
+      "post": "."
+     },
+     {
+      "pre": "Rad 1 hat 12 Zähne, Rad 2 hat 36 Zähne. Dann ist n₂",
+      "loesung": "20,0 U/min",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Das kleine Rad dreht schneller, weil es leichter ist.“ Warum stimmt das nicht?",
+    "satzstarter": "Beide Räder schieben …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Alle Lückenwörter stehen in der Wortbank. Drei davon sind Drehzahlen.",
+   "h2": "Beginne so: Beide Räder schieben gleich viele Zähne durch.",
+   "h3": "Fast fertig: Rad 2 hat wenige Zähne. Es ist schnell herum. Seine Drehzahl ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann n₂ am Bildschirm ablesen.",
+   "Ich kann sagen: Wenige Zähne heißt große Drehzahl.",
+   "Ich kann erklären, warum Rad 2 schneller dreht."
+  ],
+  "zuhause": "Sieh dir hinten am Fahrrad die Zahnräder an. Wo geht das Treten leichter?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Schaubild aus genau zwei ineinandergreifenden Zahnrädern, von der Seite gesehen, nebeneinander auf gleicher Höhe, gleich große und gut zählbare Zähne an beiden Rädern. Links ein großes Rad, darunter die große Beschriftung „Rad 1 · 30 Zähne · 60 U/min“. Rechts ein deutlich kleineres Rad, darunter die große Beschriftung „Rad 2 · 10 Zähne · 180,0 U/min“. Jedes Rad trägt einen kräftigen Markierungsstrich von der Achse bis zum Rand, links blau, rechts orange, damit man die Umdrehungen zählen kann; darunter eine Legende aus zwei Kästchen: blaues Kästchen „Markierung Rad 1“, orangefarbenes Kästchen „Markierung Rad 2“. An der Stelle, wo die Zähne ineinandergreifen, ein dicker Pfeil von unten mit der großen Aufschrift „Hier passt jeder Zahn in eine Lücke.“ Über jedem Rad ein gebogener Drehpfeil, die beiden Pfeile gegenläufig gerichtet. Genau diese zwei Räder, keine Kette, kein drittes Rad, keine Kurbel, keine Trommel, keine Zahlenreihen, keine Personen. Ruhiger heller Hintergrund, keine Deko.]"
+ },
+ {
+  "id": "fe11",
+  "quelle": "el12+el13",
+  "sim": "schiefe-ebene",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Zwei Bretter an der Bühnenkante",
+  "name": "Was spart die Rampe?",
+  "fachwoerter_neu": [
+   "schiefe Ebene"
+  ],
+  "alltag": [
+   "Das Klavier soll auf die Bühne. Jannis hebt es nicht hoch.",
+   "Nour legt zwei Bretter schräg an die Bühnenkante.",
+   "So ein schräges Brett heißt in der Physik schiefe Ebene."
+  ],
+  "frage": "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
+  "predict": [
+   "Auf der flachen Rampe braucht Nour weniger Kraft. Die Kiste bleibt gleich schwer.",
+   "Auf der flachen Rampe wird die Kiste leichter."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.",
+   "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.",
+   "Trage Kraft und Weg für „mittel“ und „steil“ in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Rampe",
+   "Wie groß ist die Kraft F in N?",
+   "Wie lang ist der Weg?"
+  ],
+  "tabRows": [
+   [
+    "flach",
+    "1,5 N",
+    "4,0 × Höhe"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "steil",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Je flacher die Rampe liegt, desto",
+    "loesung": "kleiner",
+    "post": "ist die nötige Kraft."
+   },
+   {
+    "pre": "Dafür wird der Weg",
+    "loesung": "länger",
+    "post": ". Was du an Kraft sparst, zahlst du am Weg zurück."
+   }
+  ],
+  "wortbank": [
+   "kleiner",
+   "länger",
+   "1,5 N",
+   "schwer"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die flache Rampe ab?",
+   "antwort": "Am Bildschirm steht: „Zugkraft F = 1,5 N … Weg 4,0 × so lang wie die Höhe.“ In die Tabelle kommt: 1,5 N und 4,0 × Höhe."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche zwei Zahlen stehen bei der steilen Rampe am Bildschirm?",
+    "optionen": [
+     "1,5 N · Weg = 4,0 × Höhe",
+     "4,5 N · Weg = 1,3 × Höhe",
+     "6 N · Weg = 4,0 × Höhe"
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "An der flachen Rampe zieht Nour mit",
+      "loesung": "1,5 N",
+      "post": "."
+     },
+     {
+      "pre": "Die Kiste bleibt dabei genauso",
+      "loesung": "schwer",
+      "post": ". Am Bildschirm steht immer 6 N."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour kann höchstens 2 N ziehen. Welche Rampe muss sie nehmen?",
+    "satzstarter": "Nour muss die … Rampe nehmen, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Zahl vor dem N ist die Kraft F. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Nour muss die flache Rampe nehmen, weil …",
+   "h3": "Fast fertig: Flach heißt 1,5 N. Das ist weniger als 2 N. Nour nimmt die ___ Rampe."
+  },
+  "selbstcheck": [
+   "Ich kann die Kraft F in der Statuszeile ablesen.",
+   "Ich kann sagen: flacher heißt kleinere Kraft und längerer Weg.",
+   "Ich weiß: Auf der Rampe wird die Kiste nicht leichter."
+  ],
+  "zuhause": "Suche eine Rampe in deiner Nähe. Ist sie steil oder flach?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei Rampen, untereinander angeordnet, alle im selben Bildausschnitt und alle zur GLEICHEN Höhe hinauf. Rechts steht in allen drei Zeilen dieselbe Bühnenkante; die Höhe ist einmal durchgehend mit einer senkrechten Maßlinie und der großen Beschriftung „Höhe (gleich)“ markiert. Auf jeder Rampe dieselbe rechteckige Kiste, jede Kiste trägt gut lesbar die Aufschrift „6 N“. Aus jeder Kiste geht genau EIN gerader Zugpfeil schräg nach oben, in Richtung der Rampe – oben kurz, unten lang: obere Rampe steil (kurzer Pfeil), mittlere Rampe mittel, untere Rampe flach (langer Pfeil). Beschriftung neben den Pfeilen von oben nach unten: „Zugkraft 4,5 N“, „Zugkraft 3,0 N“, „Zugkraft 1,5 N“. Unter jeder Rampe die Weglänge als waagerechter Doppelpfeil entlang der Bohle mit den Aufschriften „Weg = 1,3 × Höhe“, „Weg = 2,0 × Höhe“, „Weg = 4,0 × Höhe“; die drei Doppelpfeile werden von oben nach unten sichtbar länger. Genau diese drei Rampen, genau ein Pfeil je Kiste. KEINE zerlegten Kräfte, keine Hangabtriebs- oder Normalkraftpfeile, keine zweiten Pfeile an der Kiste, kein Seil um Rollen, keine Personen, keine Zahlen außer den genannten. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ }
+]

@@ -1,0 +1,163 @@
+[
+ {
+  "sim": "beschleunigung-rs",
+  "ueberschrift": "🚀 Was ist eine beschleunigte Bewegung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "🚀 beschleunigen",
+    "ruft": "_bwgSet('gas')"
+   },
+   {
+    "aufschrift": "🛑 bremsen",
+    "ruft": "_bwgSet('bremse')"
+   },
+   {
+    "aufschrift": "▶ Fahren",
+    "ruft": "_bwgStart()"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_bwgReset()"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_bwgAns(0,0)"
+   },
+   {
+    "aufschrift": "Sie ändert sich",
+    "ruft": "_bwgAns(0,1)"
+   },
+   {
+    "aufschrift": "Sie ist immer null",
+    "ruft": "_bwgAns(0,2)"
+   },
+   {
+    "aufschrift": "Immer größer",
+    "ruft": "_bwgAns(1,0)"
+   },
+   {
+    "aufschrift": "Immer kleiner",
+    "ruft": "_bwgAns(1,1)"
+   },
+   {
+    "aufschrift": "Gleich groß",
+    "ruft": "_bwgAns(1,2)"
+   },
+   {
+    "aufschrift": "Eine Gerade",
+    "ruft": "_bwgAns(2,0)"
+   },
+   {
+    "aufschrift": "Eine Kurve",
+    "ruft": "_bwgAns(2,1)"
+   },
+   {
+    "aufschrift": "Eine waagerechte Linie",
+    "ruft": "_bwgAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_bwgSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_bwgSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_bwgSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('beschleunigung-rs')"
+   }
+  ],
+  "hinweise": [
+   "Lass den Wagen beschleunigen (Gas geben) oder bremsen. Jede Sekunde wird eine Marke gesetzt. Wie verändern sich die Abstände?",
+   "Bei einer beschleunigten Bewegung ändert sich die Geschwindigkeit. Beim Beschleunigen wird der Wagen schneller → die Sekunden-Marken werden immer größer. Beim Bremsen wird er langsamer → die Marken werden immer kleiner. Das Weg-Zeit-Diagramm ist eine Kurve.",
+   "Geschwindigkeit ändert sich → Marken-Abstände verschieden groß (größer beim Beschleunigen, kleiner beim Bremsen)."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander."
+   },
+   {
+    "einstellung": "🚀 beschleunigen",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander."
+   },
+   {
+    "einstellung": "🛑 bremsen",
+    "text": "bwgStatus: Bremsen: Die Geschwindigkeit wird immer kleiner. Die Sekunden-Marken werden immer enger."
+   },
+   {
+    "einstellung": "▶ Fahren",
+    "text": "bwgStatus: Bremsen: Die Geschwindigkeit wird immer kleiner. Die Sekunden-Marken werden immer enger."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander."
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Das wäre eine gleichförmige Bewegung."
+   },
+   {
+    "einstellung": "Sie ändert sich",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✓ Richtig! Die Geschwindigkeit ändert sich (schneller oder langsamer)."
+   },
+   {
+    "einstellung": "Sie ist immer null",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja."
+   },
+   {
+    "einstellung": "Immer größer",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✓ Richtig! Weil der Wagen schneller wird, werden die Abstände größer."
+   },
+   {
+    "einstellung": "Immer kleiner",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Kleiner werden sie beim Bremsen."
+   },
+   {
+    "einstellung": "Gleich groß",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung."
+   },
+   {
+    "einstellung": "Eine Gerade",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Gerade ist es bei gleichförmiger Bewegung."
+   },
+   {
+    "einstellung": "Eine Kurve",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✓ Richtig! Bei beschleunigter Bewegung ist es gekrümmt (Kurve)."
+   },
+   {
+    "einstellung": "Eine waagerechte Linie",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Waagerecht wäre kein Weg-Zeit-Verlauf."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Waagerecht wäre kein Weg-Zeit-Verlauf.  ||  bwgSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Waagerecht wäre kein Weg-Zeit-Verlauf.  ||  bwgSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Waagerecht wäre kein Weg-Zeit-Verlauf."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "bwgStatus: Beschleunigen: Die Geschwindigkeit wird immer größer. Die Sekunden-Marken werden immer weiter auseinander.  ||  bwgFb0: ✗ Der Körper bewegt sich ja.  ||  bwgFb1: ✗ Gleich groß wären sie bei gleichförmiger Bewegung.  ||  bwgFb2: ✗ Waagerecht wäre kein Weg-Zeit-Verlauf."
+   }
+  ],
+  "bildtexte": [
+   "s",
+   "t",
+   "s-t: Kurve",
+   "beschleunigen: v wird größer",
+   "bremsen: v wird kleiner"
+  ]
+ }
+]

@@ -1,0 +1,443 @@
+[
+ {
+  "sim": "hebel",
+  "ueberschrift": "⚖️ Warum ist die Stange länger als der Weg der Last?",
+  "regler": [
+   {
+    "id": "hebL1",
+    "beschriftung": "Kraftarm l₁: 1,00 m",
+    "bereich": {
+     "min": "0.25",
+     "max": "2",
+     "step": "0.05",
+     "start": "1"
+    }
+   },
+   {
+    "id": "hebF2",
+    "beschriftung": "Last F₂: 200 N",
+    "bereich": {
+     "min": "50",
+     "max": "400",
+     "step": "10",
+     "start": "200"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "gleich lang – nichts gespart",
+    "ruft": "_hebMarke(0.25)"
+   },
+   {
+    "aufschrift": "doppelt so lang – halbe Kraft",
+    "ruft": "_hebMarke(0.5)"
+   },
+   {
+    "aufschrift": "achtfach – ein Achtel der Kraft",
+    "ruft": "_hebMarke(2)"
+   }
+  ],
+  "hinweise": [
+   "Der Balken wippt um den Drehpunkt. Achte auf die beiden Messlatten: Die Hand läuft weit, die Last steigt nur ein Stück. Stelle den Kraftarm ein und lies mit.",
+   "Das ist der ganze Trick: Der Hebel dreht sich als ein Stück. Beide Enden drehen sich um denselben Winkel – aber das weiter außen liegende Ende beschreibt dabei einen längeren Bogen. Deshalb wird die Kraft kleiner und der Weg im selben Verhältnis größer. Das Produkt aus Kraft und Weg, also die Arbeit, bleibt dabei unverändert. Eine Maschine, die Arbeit spart, gibt es nicht.",
+   "Modellgrenze: Die Stange gilt hier als masselos und starr. Ihr Eigengewicht bleibt unberücksichtigt – eine echte 2-m-Eisenstange zieht selbst schon am Hebel. Auch Reibung im Drehpunkt und das Durchbiegen der Stange sind nicht enthalten.",
+   "Der Hebel spart Kraft – niemals Arbeit"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,00 m = 50,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 200 N : 4,00 = 50,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 50,00 N · 0,40 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "gleich lang – nichts gespart",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,25 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,25 m = 200,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,25 m : 0,25 m = 1,00 | Die nötige Kraft ist 1,00-mal kleiner als die Last: 200 N : 1,00 = 200,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 1,00 = 10,0 cm · 1,00 = 10,0 cm | Deine Hand läuft 10,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 200,00 N · 0,10 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "doppelt so lang – halbe Kraft",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,50 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,50 m = 100,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,50 m : 0,25 m = 2,00 | Die nötige Kraft ist 2,00-mal kleiner als die Last: 200 N : 2,00 = 100,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 2,00 = 10,0 cm · 2,00 = 20,0 cm | Deine Hand läuft 20,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 100,00 N · 0,20 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "achtfach – ein Achtel der Kraft",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 2,00 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 2,00 m = 25,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 2,00 m : 0,25 m = 8,00 | Die nötige Kraft ist 8,00-mal kleiner als die Last: 200 N : 8,00 = 25,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 8,00 = 10,0 cm · 8,00 = 80,0 cm | Deine Hand läuft 80,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 25,00 N · 0,80 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 0.25",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,25 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,25 m = 200,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,25 m : 0,25 m = 1,00 | Die nötige Kraft ist 1,00-mal kleiner als die Last: 200 N : 1,00 = 200,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 1,00 = 10,0 cm · 1,00 = 10,0 cm | Deine Hand läuft 10,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 200,00 N · 0,10 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 0.45",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,45 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,45 m = 111,11 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,45 m : 0,25 m = 1,80 | Die nötige Kraft ist 1,80-mal kleiner als die Last: 200 N : 1,80 = 111,11 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 1,80 = 10,0 cm · 1,80 = 18,0 cm | Deine Hand läuft 18,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 111,11 N · 0,18 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 0.7",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,70 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,70 m = 71,43 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,70 m : 0,25 m = 2,80 | Die nötige Kraft ist 2,80-mal kleiner als die Last: 200 N : 2,80 = 71,43 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 2,80 = 10,0 cm · 2,80 = 28,0 cm | Deine Hand läuft 28,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 71,43 N · 0,28 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 0.9",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 0,90 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 0,90 m = 55,56 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 0,90 m : 0,25 m = 3,60 | Die nötige Kraft ist 3,60-mal kleiner als die Last: 200 N : 3,60 = 55,56 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 3,60 = 10,0 cm · 3,60 = 36,0 cm | Deine Hand läuft 36,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 55,56 N · 0,36 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 1.15",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,15 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,15 m = 43,48 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,15 m : 0,25 m = 4,60 | Die nötige Kraft ist 4,60-mal kleiner als die Last: 200 N : 4,60 = 43,48 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,60 = 10,0 cm · 4,60 = 46,0 cm | Deine Hand läuft 46,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 43,48 N · 0,46 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 1.35",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,35 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,35 m = 37,04 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,35 m : 0,25 m = 5,40 | Die nötige Kraft ist 5,40-mal kleiner als die Last: 200 N : 5,40 = 37,04 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 5,40 = 10,0 cm · 5,40 = 54,0 cm | Deine Hand läuft 54,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 37,04 N · 0,54 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 1.55",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,55 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,55 m = 32,26 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,55 m : 0,25 m = 6,20 | Die nötige Kraft ist 6,20-mal kleiner als die Last: 200 N : 6,20 = 32,26 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 6,20 = 10,0 cm · 6,20 = 62,0 cm | Deine Hand läuft 62,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 32,26 N · 0,62 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 1.8",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,80 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,80 m = 27,78 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,80 m : 0,25 m = 7,20 | Die nötige Kraft ist 7,20-mal kleiner als die Last: 200 N : 7,20 = 27,78 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 7,20 = 10,0 cm · 7,20 = 72,0 cm | Deine Hand läuft 72,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 27,78 N · 0,72 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 2",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 2,00 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 2,00 m = 25,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 2,00 m : 0,25 m = 8,00 | Die nötige Kraft ist 8,00-mal kleiner als die Last: 200 N : 8,00 = 25,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 8,00 = 10,0 cm · 8,00 = 80,0 cm | Deine Hand läuft 80,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 25,00 N · 0,80 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Kraftarm l₁: 1,00 m = 1",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,00 m = 50,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 200 N : 4,00 = 50,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 50,00 N · 0,40 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 50",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 50 N · 0,25 m | F₁ = 50 N · 0,25 m : 1,00 m = 12,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 50 N : 4,00 = 12,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 12,50 N · 0,40 m = 5,00 J | W₂ = F₂ · s₂ = 50 N · 0,10 m = 5,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 90",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 90 N · 0,25 m | F₁ = 90 N · 0,25 m : 1,00 m = 22,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 90 N : 4,00 = 22,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 22,50 N · 0,40 m = 9,00 J | W₂ = F₂ · s₂ = 90 N · 0,10 m = 9,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 140",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 140 N · 0,25 m | F₁ = 140 N · 0,25 m : 1,00 m = 35,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 140 N : 4,00 = 35,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 35,00 N · 0,40 m = 14,00 J | W₂ = F₂ · s₂ = 140 N · 0,10 m = 14,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 180",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 180 N · 0,25 m | F₁ = 180 N · 0,25 m : 1,00 m = 45,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 180 N : 4,00 = 45,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 45,00 N · 0,40 m = 18,00 J | W₂ = F₂ · s₂ = 180 N · 0,10 m = 18,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 230",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 230 N · 0,25 m | F₁ = 230 N · 0,25 m : 1,00 m = 57,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 230 N : 4,00 = 57,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 57,50 N · 0,40 m = 23,00 J | W₂ = F₂ · s₂ = 230 N · 0,10 m = 23,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 270",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 270 N · 0,25 m | F₁ = 270 N · 0,25 m : 1,00 m = 67,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 270 N : 4,00 = 67,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 67,50 N · 0,40 m = 27,00 J | W₂ = F₂ · s₂ = 270 N · 0,10 m = 27,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 310",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 310 N · 0,25 m | F₁ = 310 N · 0,25 m : 1,00 m = 77,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 310 N : 4,00 = 77,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 77,50 N · 0,40 m = 31,00 J | W₂ = F₂ · s₂ = 310 N · 0,10 m = 31,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 360",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 360 N · 0,25 m | F₁ = 360 N · 0,25 m : 1,00 m = 90,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 360 N : 4,00 = 90,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 90,00 N · 0,40 m = 36,00 J | W₂ = F₂ · s₂ = 360 N · 0,10 m = 36,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 400",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 400 N · 0,25 m | F₁ = 400 N · 0,25 m : 1,00 m = 100,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 400 N : 4,00 = 100,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 100,00 N · 0,40 m = 40,00 J | W₂ = F₂ · s₂ = 400 N · 0,10 m = 40,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 60",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 60 N · 0,25 m | F₁ = 60 N · 0,25 m : 1,00 m = 15,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 60 N : 4,00 = 15,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 15,00 N · 0,40 m = 6,00 J | W₂ = F₂ · s₂ = 60 N · 0,10 m = 6,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 70",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 70 N · 0,25 m | F₁ = 70 N · 0,25 m : 1,00 m = 17,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 70 N : 4,00 = 17,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 17,50 N · 0,40 m = 7,00 J | W₂ = F₂ · s₂ = 70 N · 0,10 m = 7,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 80",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 80 N · 0,25 m | F₁ = 80 N · 0,25 m : 1,00 m = 20,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 80 N : 4,00 = 20,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 20,00 N · 0,40 m = 8,00 J | W₂ = F₂ · s₂ = 80 N · 0,10 m = 8,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 100",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 100 N · 0,25 m | F₁ = 100 N · 0,25 m : 1,00 m = 25,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 100 N : 4,00 = 25,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 25,00 N · 0,40 m = 10,00 J | W₂ = F₂ · s₂ = 100 N · 0,10 m = 10,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 110",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 110 N · 0,25 m | F₁ = 110 N · 0,25 m : 1,00 m = 27,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 110 N : 4,00 = 27,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 27,50 N · 0,40 m = 11,00 J | W₂ = F₂ · s₂ = 110 N · 0,10 m = 11,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 120",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 120 N · 0,25 m | F₁ = 120 N · 0,25 m : 1,00 m = 30,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 120 N : 4,00 = 30,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 30,00 N · 0,40 m = 12,00 J | W₂ = F₂ · s₂ = 120 N · 0,10 m = 12,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 130",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 130 N · 0,25 m | F₁ = 130 N · 0,25 m : 1,00 m = 32,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 130 N : 4,00 = 32,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 32,50 N · 0,40 m = 13,00 J | W₂ = F₂ · s₂ = 130 N · 0,10 m = 13,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 150",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 150 N · 0,25 m | F₁ = 150 N · 0,25 m : 1,00 m = 37,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 150 N : 4,00 = 37,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 37,50 N · 0,40 m = 15,00 J | W₂ = F₂ · s₂ = 150 N · 0,10 m = 15,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 160",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 160 N · 0,25 m | F₁ = 160 N · 0,25 m : 1,00 m = 40,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 160 N : 4,00 = 40,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 40,00 N · 0,40 m = 16,00 J | W₂ = F₂ · s₂ = 160 N · 0,10 m = 16,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 170",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 170 N · 0,25 m | F₁ = 170 N · 0,25 m : 1,00 m = 42,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 170 N : 4,00 = 42,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 42,50 N · 0,40 m = 17,00 J | W₂ = F₂ · s₂ = 170 N · 0,10 m = 17,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 190",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 190 N · 0,25 m | F₁ = 190 N · 0,25 m : 1,00 m = 47,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 190 N : 4,00 = 47,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 47,50 N · 0,40 m = 19,00 J | W₂ = F₂ · s₂ = 190 N · 0,10 m = 19,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 200",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 200 N · 0,25 m | F₁ = 200 N · 0,25 m : 1,00 m = 50,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 200 N : 4,00 = 50,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 50,00 N · 0,40 m = 20,00 J | W₂ = F₂ · s₂ = 200 N · 0,10 m = 20,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 210",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 210 N · 0,25 m | F₁ = 210 N · 0,25 m : 1,00 m = 52,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 210 N : 4,00 = 52,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 52,50 N · 0,40 m = 21,00 J | W₂ = F₂ · s₂ = 210 N · 0,10 m = 21,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 220",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 220 N · 0,25 m | F₁ = 220 N · 0,25 m : 1,00 m = 55,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 220 N : 4,00 = 55,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 55,00 N · 0,40 m = 22,00 J | W₂ = F₂ · s₂ = 220 N · 0,10 m = 22,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 240",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 240 N · 0,25 m | F₁ = 240 N · 0,25 m : 1,00 m = 60,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 240 N : 4,00 = 60,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 60,00 N · 0,40 m = 24,00 J | W₂ = F₂ · s₂ = 240 N · 0,10 m = 24,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 250",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 250 N · 0,25 m | F₁ = 250 N · 0,25 m : 1,00 m = 62,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 250 N : 4,00 = 62,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 62,50 N · 0,40 m = 25,00 J | W₂ = F₂ · s₂ = 250 N · 0,10 m = 25,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 260",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 260 N · 0,25 m | F₁ = 260 N · 0,25 m : 1,00 m = 65,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 260 N : 4,00 = 65,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 65,00 N · 0,40 m = 26,00 J | W₂ = F₂ · s₂ = 260 N · 0,10 m = 26,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 280",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 280 N · 0,25 m | F₁ = 280 N · 0,25 m : 1,00 m = 70,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 280 N : 4,00 = 70,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 70,00 N · 0,40 m = 28,00 J | W₂ = F₂ · s₂ = 280 N · 0,10 m = 28,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 290",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 290 N · 0,25 m | F₁ = 290 N · 0,25 m : 1,00 m = 72,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 290 N : 4,00 = 72,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 72,50 N · 0,40 m = 29,00 J | W₂ = F₂ · s₂ = 290 N · 0,10 m = 29,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 300",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 300 N · 0,25 m | F₁ = 300 N · 0,25 m : 1,00 m = 75,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 300 N : 4,00 = 75,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 75,00 N · 0,40 m = 30,00 J | W₂ = F₂ · s₂ = 300 N · 0,10 m = 30,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 320",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 320 N · 0,25 m | F₁ = 320 N · 0,25 m : 1,00 m = 80,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 320 N : 4,00 = 80,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 80,00 N · 0,40 m = 32,00 J | W₂ = F₂ · s₂ = 320 N · 0,10 m = 32,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 330",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 330 N · 0,25 m | F₁ = 330 N · 0,25 m : 1,00 m = 82,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 330 N : 4,00 = 82,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 82,50 N · 0,40 m = 33,00 J | W₂ = F₂ · s₂ = 330 N · 0,10 m = 33,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 340",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 340 N · 0,25 m | F₁ = 340 N · 0,25 m : 1,00 m = 85,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 340 N : 4,00 = 85,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 85,00 N · 0,40 m = 34,00 J | W₂ = F₂ · s₂ = 340 N · 0,10 m = 34,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 350",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 350 N · 0,25 m | F₁ = 350 N · 0,25 m : 1,00 m = 87,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 350 N : 4,00 = 87,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 87,50 N · 0,40 m = 35,00 J | W₂ = F₂ · s₂ = 350 N · 0,10 m = 35,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 370",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 370 N · 0,25 m | F₁ = 370 N · 0,25 m : 1,00 m = 92,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 370 N : 4,00 = 92,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 92,50 N · 0,40 m = 37,00 J | W₂ = F₂ · s₂ = 370 N · 0,10 m = 37,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 380",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 380 N · 0,25 m | F₁ = 380 N · 0,25 m : 1,00 m = 95,00 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 380 N : 4,00 = 95,00 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 95,00 N · 0,40 m = 38,00 J | W₂ = F₂ · s₂ = 380 N · 0,10 m = 38,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   },
+   {
+    "einstellung": "Last F₂: 200 N = 390",
+    "text": "hebStatus: Das Hebelgesetz | F₁ · l₁ = F₂ · l₂ | F₁ · 1,00 m = 390 N · 0,25 m | F₁ = 390 N · 0,25 m : 1,00 m = 97,50 N | | Wie viel länger ist der Kraftarm? | l₁ : l₂ = 1,00 m : 0,25 m = 4,00 | Die nötige Kraft ist 4,00-mal kleiner als die Last: 390 N : 4,00 = 97,50 N | | Der Preis dafür ist der Weg | Die Last soll s₂ = 10,0 cm steigen. | s₁ = s₂ · 4,00 = 10,0 cm · 4,00 = 40,0 cm | Deine Hand läuft 40,0 cm, die Last steigt nur 10,0 cm. | | Und jetzt beide Arbeiten | W₁ = F₁ · s₁ = 97,50 N · 0,40 m = 39,00 J | W₂ = F₂ · s₂ = 390 N · 0,10 m = 39,00 J | Beide Werte sind gleich. Der Hebel spart Kraft – Arbeit spart er nicht."
+   }
+  ],
+  "bildtexte": [
+   "s₁",
+   "s₂",
+   "Last",
+   "F₁ = 50,00 N",
+   "F₂ = 200 N",
+   "20,00 J",
+   "Kraftarm  l₁ = 1,00 m",
+   "Lastarm   l₂ = 0,25 m",
+   "l₁ ist 4,00-mal so lang",
+   "Die Last steigt gerade",
+   "Hebelgesetz:   F₁ · l₁ = F₂ · l₂",
+   "Der lange Arm spart Kraft – und kostet Weg",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 200,00 N",
+   "Kraftarm  l₁ = 0,25 m",
+   "l₁ ist 1,00-mal so lang",
+   "Kraftweg 10,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 100,00 N",
+   "Kraftarm  l₁ = 0,50 m",
+   "l₁ ist 2,00-mal so lang",
+   "Kraftweg 20,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 25,00 N",
+   "Kraftarm  l₁ = 2,00 m",
+   "l₁ ist 8,00-mal so lang",
+   "Kraftweg 80,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 111,11 N",
+   "Kraftarm  l₁ = 0,45 m",
+   "l₁ ist 1,80-mal so lang",
+   "Kraftweg 18,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 71,43 N",
+   "Kraftarm  l₁ = 0,70 m",
+   "l₁ ist 2,80-mal so lang",
+   "Kraftweg 28,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 55,56 N",
+   "Kraftarm  l₁ = 0,90 m",
+   "l₁ ist 3,60-mal so lang",
+   "Kraftweg 36,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 43,48 N",
+   "Kraftarm  l₁ = 1,15 m",
+   "l₁ ist 4,60-mal so lang",
+   "Kraftweg 46,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 37,04 N",
+   "Kraftarm  l₁ = 1,35 m",
+   "l₁ ist 5,40-mal so lang",
+   "Kraftweg 54,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 32,26 N",
+   "Kraftarm  l₁ = 1,55 m",
+   "l₁ ist 6,20-mal so lang",
+   "Kraftweg 62,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 27,78 N",
+   "Kraftarm  l₁ = 1,80 m",
+   "l₁ ist 7,20-mal so lang",
+   "Kraftweg 72,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 20,00 J",
+   "F₁ = 12,50 N",
+   "F₂ = 50 N",
+   "5,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 5,00 J",
+   "F₁ = 22,50 N",
+   "F₂ = 90 N",
+   "9,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 9,00 J",
+   "F₁ = 35,00 N",
+   "F₂ = 140 N",
+   "14,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 14,00 J",
+   "F₁ = 45,00 N",
+   "F₂ = 180 N",
+   "18,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 18,00 J",
+   "F₁ = 57,50 N",
+   "F₂ = 230 N",
+   "23,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 23,00 J",
+   "F₁ = 67,50 N",
+   "F₂ = 270 N",
+   "27,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 27,00 J",
+   "F₁ = 77,50 N",
+   "F₂ = 310 N",
+   "31,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 31,00 J",
+   "F₁ = 90,00 N",
+   "F₂ = 360 N",
+   "36,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 36,00 J",
+   "F₂ = 400 N",
+   "40,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 40,00 J",
+   "F₁ = 15,00 N",
+   "F₂ = 60 N",
+   "6,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 6,00 J",
+   "F₁ = 17,50 N",
+   "F₂ = 70 N",
+   "7,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 7,00 J",
+   "F₁ = 20,00 N",
+   "F₂ = 80 N",
+   "8,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 8,00 J",
+   "F₂ = 100 N",
+   "10,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 10,00 J",
+   "F₁ = 27,50 N",
+   "F₂ = 110 N",
+   "11,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 11,00 J",
+   "F₁ = 30,00 N",
+   "F₂ = 120 N",
+   "12,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 12,00 J",
+   "F₁ = 32,50 N",
+   "F₂ = 130 N",
+   "13,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 13,00 J",
+   "F₁ = 37,50 N",
+   "F₂ = 150 N",
+   "15,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 15,00 J",
+   "F₁ = 40,00 N",
+   "F₂ = 160 N",
+   "16,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 16,00 J",
+   "F₁ = 42,50 N",
+   "F₂ = 170 N",
+   "17,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 17,00 J",
+   "F₁ = 47,50 N",
+   "F₂ = 190 N",
+   "19,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 19,00 J",
+   "F₁ = 52,50 N",
+   "F₂ = 210 N",
+   "21,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 21,00 J",
+   "F₁ = 55,00 N",
+   "F₂ = 220 N",
+   "22,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 22,00 J",
+   "F₁ = 60,00 N",
+   "F₂ = 240 N",
+   "24,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 24,00 J",
+   "F₁ = 62,50 N",
+   "F₂ = 250 N",
+   "25,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 25,00 J",
+   "F₁ = 65,00 N",
+   "F₂ = 260 N",
+   "26,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 26,00 J",
+   "F₁ = 70,00 N",
+   "F₂ = 280 N",
+   "28,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 28,00 J",
+   "F₁ = 72,50 N",
+   "F₂ = 290 N",
+   "29,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 29,00 J",
+   "F₁ = 75,00 N",
+   "F₂ = 300 N",
+   "30,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 30,00 J",
+   "F₁ = 80,00 N",
+   "F₂ = 320 N",
+   "32,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 32,00 J",
+   "F₁ = 82,50 N",
+   "F₂ = 330 N",
+   "33,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 33,00 J",
+   "F₁ = 85,00 N",
+   "F₂ = 340 N",
+   "34,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 34,00 J",
+   "F₁ = 87,50 N",
+   "F₂ = 350 N",
+   "35,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 35,00 J",
+   "F₁ = 92,50 N",
+   "F₂ = 370 N",
+   "37,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 37,00 J",
+   "F₁ = 95,00 N",
+   "F₂ = 380 N",
+   "38,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 38,00 J",
+   "F₁ = 97,50 N",
+   "F₂ = 390 N",
+   "39,00 J",
+   "Kraftweg 40,0 cm  ·  Lastweg 10,0 cm  ·  Arbeit beide Male 39,00 J"
+  ]
+ }
+]

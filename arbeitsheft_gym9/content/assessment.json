@@ -1,0 +1,565 @@
+[
+ {
+  "id": "gym_ladung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "ELEKTRONEN",
+     "tipp": "Diese winzigen Teilchen wechseln beim Reiben von einem Körper zum anderen; neue Ladung entsteht dabei nicht."
+    },
+    {
+     "wort": "INFLUENZ",
+     "tipp": "So heißt es, wenn ein geriebener Stab die Elektronen im Metall nur verschiebt, ohne dass Ladung übergeht; nimmst du den Stab weg, fällt der Zeiger zurück auf null."
+    },
+    {
+     "wort": "ELEKTROSKOP",
+     "tipp": "Ein Metallteller mit einem beweglichen Zeiger, der durch seinen Ausschlag anzeigt, dass ein Körper geladen ist."
+    },
+    {
+     "wort": "FELDLINIEN",
+     "tipp": "Gedachte Pfeile, die von der positiven zur negativen Platte zeigen und das unsichtbare elektrische Feld darstellen."
+    },
+    {
+     "wort": "BLITZ",
+     "tipp": "Er zuckt, sobald die Feldstärke zwischen Wolke und Boden etwa 300 kV/m erreicht und die Luft leitend wird."
+    },
+    {
+     "wort": "DONNER",
+     "tipp": "Der Knall, der entsteht, weil sich die schlagartig erhitzte Luft ausdehnt; du hörst ihn erst nach dem Licht."
+    },
+    {
+     "wort": "SCHALL",
+     "tipp": "Er ist mit nur 343 m/s so langsam, dass die Zeit bis zum Donner die Entfernung des Gewitters verrät."
+    },
+    {
+     "wort": "SPANNUNG",
+     "tipp": "Der Antrieb der Quelle, gemessen in Volt; sie ist die Ursache, der Strom die Folge."
+    },
+    {
+     "wort": "VOLTMETER",
+     "tipp": "Dieses Messgerät schließt du immer parallel zum Bauteil an, um den Antrieb in Volt abzulesen."
+    },
+    {
+     "wort": "ANTRIEB",
+     "tipp": "So kannst du die Spannung auch nennen: das, was die Ladungen durch den Stromkreis treibt."
+    },
+    {
+     "wort": "ISOLATOR",
+     "tipp": "So nennt man Gummi, weil seine Elektronen fest an den Atomen sitzen und nichts hindurchlassen."
+    },
+    {
+     "wort": "ANSTOSS",
+     "tipp": "Er läuft beim Einschalten mit rund 200 000 km/s durch die schon gefüllte Leitung, sodass die Lampe sofort leuchtet."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass sich gleiche Ladungen abstoßen und verschiedene anziehen und dass beim Reiben keine neue Ladung entsteht, sondern nur Elektronen von einem Körper zum anderen wechseln.",
+    "Ich kann mit F = k · q · q : r² begründen, warum die Kraft auf ein Viertel sinkt, wenn sich der Abstand der Ladungen verdoppelt.",
+    "Ich kann Influenz und Berührung am Elektroskop unterscheiden und erklären, warum der Zeiger nach dem bloßen Nähern wieder auf 0° zurückfällt, nach der Berührung aber gespreizt bleibt.",
+    "Ich kann die elektrische Feldstärke zwischen zwei parallelen Platten mit E = U : d berechnen und die Einheit V/m angeben.",
+    "Ich kann die Richtung der Feldlinien und des Kraftpfeils auf einer positiven Probeladung angeben.",
+    "Ich kann erklären, ab welcher Feldstärke die Luft leitend wird und wie der Blitz mit dem Donner zusammenhängt.",
+    "Ich kann aus der Zeit zwischen Blitz und Donner mit s = v · t und v = 343 m/s die Entfernung eines Gewitters berechnen.",
+    "Ich kann die Spannung als Antrieb der Quelle beschreiben, das Voltmeter richtig anschließen und die Spannungen in Reihe geschalteter Zellen addieren.",
+    "Ich kann begründen, warum Metall leitet und Gummi nicht, und Leiter von Isolatoren unterscheiden.",
+    "Ich kann erklären, warum die Lampe sofort leuchtet, obwohl die einzelnen Elektronen im Draht nur extrem langsam wandern."
+   ],
+   "tipps": [
+    "Entscheide bei jeder Aufgabe zu Kräften zuerst über die Vorzeichen: Gleiche Vorzeichen stoßen sich ab, verschiedene ziehen sich an. Die Richtung entscheidet das Vorzeichen, den Betrag entscheidet der Abstand.",
+    "Merke dir die beiden Formeln des Kapitels als Paar: F = k · q · q : r² mit dem Abstand im Quadrat und E = U : d mit dem Abstand nur im Nenner. Beim Feld bedeutet halber Abstand doppelte Feldstärke.",
+    "Trenne beim Elektroskop immer Influenz und Berührung: Ohne Berührung geht keine Ladung über und der Zeiger fällt beim Wegnehmen zurück, erst mit Berührung bleibt er stehen.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: 249,7 µN bei 6 cm, 1000 V/m bei 100 V und 10 cm, 300 kV/m bis zum Blitz, 343 m/s Schall und 1,5 V je Zelle."
+   ],
+   "mini": [
+    {
+     "frage": "Zwei Kugeln ziehen sich bei 6 cm Abstand mit 249,7 µN an. Wie groß ist die Kraft, wenn du beide auf plus stellst, ohne den Abstand zu ändern?",
+     "loesung": "Der Betrag bleibt 249,7 µN, nur die Pfeile drehen sich um – aus Anziehen wird Abstoßen. Der Betrag hängt hier nur vom Abstand ab, und der bleibt gleich."
+    },
+    {
+     "frage": "Zwischen zwei parallelen Platten liegen 100 V bei 10 cm Abstand. Wie groß ist die Feldstärke E?",
+     "loesung": "E = U : d = 100 V : 0,10 m = 1000 V/m, genau der Wert im Infofeld der Simulation."
+    },
+    {
+     "frage": "Zwischen Blitz und Donner vergehen 6 s. Wie weit ist das Gewitter mit der Faustregel „3 s je km“ etwa entfernt?",
+     "loesung": "6 s geteilt durch 3 ergibt 2 km. Genauer liefert s = 343 m/s · 6 s = 2058 m, also ebenfalls rund 2 km."
+    },
+    {
+     "frage": "Wie viel Volt zeigt das Voltmeter, wenn drei Batteriezellen zu je 1,5 V in Reihe geschaltet sind?",
+     "loesung": "4,5 V, denn die Spannungen der Zellen addieren sich: 1,5 V + 1,5 V + 1,5 V = 4,5 V."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Gleiche Ladungen stoßen sich ab, verschiedene",
+     "loesung": "ziehen sich an",
+     "post": "."
+    },
+    {
+     "pre": "Verschiebt der geriebene Stab beim bloßen Nähern nur die Elektronen im Metall, ohne Ladung zu übertragen, nennt man das",
+     "loesung": "Influenz",
+     "post": "."
+    },
+    {
+     "pre": "Zwischen zwei parallelen Platten berechnet sich die Feldstärke aus",
+     "loesung": "E = U : d",
+     "post": "."
+    },
+    {
+     "pre": "Die Luft wird leitend und es blitzt, sobald die Feldstärke etwa",
+     "loesung": "300 kV/m",
+     "post": "erreicht."
+    },
+    {
+     "pre": "Metall leitet, weil es freie Elektronen enthält; Gummi hält seine Elektronen fest und ist deshalb ein",
+     "loesung": "Isolator",
+     "post": "."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Verdoppelt man den Abstand zweier Ladungen, sinkt die Kraft nicht auf die Hälfte, sondern auf ein Viertel.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Beim Reiben entsteht neue Ladung, die es vorher nicht gab.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Bei Influenz wird keine Ladung übertragen; nimmt man den Stab weg, fällt der Zeiger auf 0° zurück.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Halbiert man bei 100 V den Plattenabstand von 10 cm auf 5 cm, steigt die Feldstärke von 1000 V/m auf 2000 V/m.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Je größer der Plattenabstand d, desto stärker wird bei gleicher Spannung das Feld.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Man sieht den Blitz vor dem Donner, weil das Licht fast eine Million Mal schneller ist als der Schall.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das Voltmeter wird in Reihe zum Bauteil angeschlossen.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Zwischen Blitz und Donner vergehen 4 s. Wie weit ist das Gewitter etwa entfernt? Rechne mit v = 343 m/s.",
+    "optionen": [
+     "0,9 km",
+     "1,4 km",
+     "4,0 km",
+     "12,0 km"
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Erkläre, warum die Lampe sofort leuchtet, obwohl ein einzelnes Elektron im Draht nur extrem langsam wandert.",
+    "zeilen": 5,
+    "loesung": "Der Draht ist schon vollständig mit freien Elektronen gefüllt. Beim Einschalten muss kein Elektron erst zur Lampe wandern – der Anstoß läuft mit rund 200 000 km/s durch die ganze Leitung und erreicht die 3 m entfernte Lampe in nur 15 Nanosekunden. Die einzelnen Elektronen wandern dabei nur mit 0,0490 mm/s und brauchen für einen Meter Draht 5,7 Stunden. Sofort da ist also der Anstoß, nicht das einzelne Elektron."
+   },
+   "transfer": {
+    "frage": "David sagt: „Wenn ich den geriebenen Stab nur neben das Elektroskop halte, lade ich es auf – der Zeiger schlägt ja aus. Und je näher ich komme, desto mehr Ladung sitzt drauf.“ Beurteile beide Teile seiner Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Beim bloßen Nähern wird keine Ladung übertragen: Der Stab verschiebt durch Influenz nur die Elektronen im Metall, und dieser verschobene Influenz-Anteil spreizt den Zeiger. Nimmt man den Stab weg, verteilen sich die Elektronen wieder und der Zeiger fällt auf 0° zurück – es ist also nichts hängen geblieben. Auch der zweite Teil ist falsch: Ein größerer Ausschlag bei kleinerem Abstand zeigt nur einen stärkeren Influenz-Anteil an, nicht mehr Ladung auf dem Elektroskop; dort sitzen weiterhin 0 Einheiten. Dauerhaft geladen wird das Elektroskop erst, wenn der Stab den Teller wirklich berührt."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Kunststoffstab und Wolltuch zum Reiben",
+   "aufgeblasene Luftballons",
+   "Klarsichtfolie und Papierstreifen",
+   "Elektroskop mit Metallteller und beweglichem Zeiger",
+   "zwei geladene Folienstreifen zum Aufhängen am Stativ",
+   "Plattenkondensator aus zwei parallelen Metallplatten mit Stativmaterial",
+   "regelbare Spannungsquelle für Kleinspannung",
+   "Batteriezellen zu je 1,5 V mit Halterung",
+   "Voltmeter mit Messleitungen",
+   "Glühlämpchen mit Fassung",
+   "ein Stück Kupferdraht und ein Kabel mit Gummimantel",
+   "einfacher Spannungsprüfer",
+   "gemahlener Pfeffer und ein Wasserhahn mit dünnem Strahl für die Alltagsversuche",
+   "Lineal und Maßband"
+  ]
+ },
+ {
+  "id": "gym_kreise",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "AMPERE",
+     "tipp": "Die Einheit der Stromstärke, Kurzzeichen A; sie sagt, wie viel Ladung pro Sekunde durch den Kreis fließt."
+    },
+    {
+     "wort": "OHM",
+     "tipp": "Die Einheit des Widerstands mit dem Zeichen Ω; ihn berechnest du aus R = U/I."
+    },
+    {
+     "wort": "AMPEREMETER",
+     "tipp": "Dieses Messgerät zeigt die Stromstärke an und wird dazu in Reihe in den Kreis gebaut."
+    },
+    {
+     "wort": "WIDERSTAND",
+     "tipp": "So heißt das, was den Strom bremst; je größer er ist, desto weniger Strom fließt bei gleicher Spannung."
+    },
+    {
+     "wort": "KENNLINIE",
+     "tipp": "Das Diagramm aus Spannung und Stromstärke; beim ohmschen Widerstand ist es eine Gerade durch den Nullpunkt."
+    },
+    {
+     "wort": "PROPORTIONAL",
+     "tipp": "So verhalten sich Strom und Spannung, solange der Widerstand konstant bleibt: doppelte Spannung, doppelter Strom."
+    },
+    {
+     "wort": "KUPFER",
+     "tipp": "Von den drei untersuchten Metallen leitet dieses am besten; daraus macht man Leitungen."
+    },
+    {
+     "wort": "KONSTANTAN",
+     "tipp": "Von den drei Metallen leitet dieses am schlechtesten; daraus macht man Heizdrähte."
+    },
+    {
+     "wort": "REIHENSCHALTUNG",
+     "tipp": "Liegen zwei Widerstände hintereinander, addieren sie sich zum Gesamtwiderstand und der Strom wird kleiner."
+    },
+    {
+     "wort": "PARALLELSCHALTUNG",
+     "tipp": "Liegen zwei Widerstände nebeneinander, addieren sich die Teilströme und der Gesamtwiderstand wird kleiner."
+    },
+    {
+     "wort": "POTENTIOMETER",
+     "tipp": "Ein stufenlos veränderbarer Widerstand; er steckt in jedem Dimmer und in jedem Lautstärkeregler."
+    },
+    {
+     "wort": "GLUEHLAMPE",
+     "tipp": "Ihr Draht wird beim Stromfluss heiß, deshalb ist ihre Kennlinie keine Gerade, sondern nach oben gekrümmt."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass die Stromstärke I angibt, wie viel Ladung pro Sekunde durch den Kreis fließt, ihre Einheit Ampere nennen und begründen, warum das in Reihe liegende Amperemeter bei offenem Schalter 0 A zeigt.",
+    "Ich kann mit R = U/I den Widerstand berechnen, seine Einheit Ohm angeben und begründen, dass bei gleicher Spannung durch einen großen Widerstand weniger Strom fließt als durch einen kleinen.",
+    "Ich kann das Ohmsche Gesetz U = R · I anwenden und erklären, dass es nur gilt, solange der Widerstand konstant bleibt.",
+    "Ich kann eine U-I-Kennlinie deuten: Die Ursprungsgerade gehört zum ohmschen Widerstand, und je steiler sie verläuft, desto kleiner ist der Widerstand, denn die Steigung ist 1/R.",
+    "Ich kann begründen, warum eine Glühlampe statt einer Geraden eine gekrümmte Kennlinie hat, weil ihr Draht mit der Temperatur seinen Widerstand ändert.",
+    "Ich kann angeben, dass der Widerstand eines Drahtes von Länge, Dicke und Material abhängt, und Kupfer, Eisen und Konstantan nach ihrem Widerstand ordnen.",
+    "Ich kann für die Reihenschaltung mit R_ges = R₁ + R₂ rechnen und erklären, dass der Strom überall gleich groß ist und sich die Spannung auf beide Widerstände aufteilt.",
+    "Ich kann für die Parallelschaltung erklären, dass sich die Teilströme zum Gesamtstrom addieren und der Gesamtwiderstand kleiner ist als der kleinste Einzelwiderstand.",
+    "Ich kann Reihen- und Parallelschaltung gegenüberstellen und vorhersagen, ob der Strom beim Einbau eines zweiten Widerstands größer oder kleiner wird.",
+    "Ich kann das Potentiometer als stufenlos veränderbaren Widerstand beschreiben und mit I = U / R_ges ausrechnen, wie sich Strom und Helligkeit der Lampe beim Dimmen ändern."
+   ],
+   "tipps": [
+    "Schreibe dir die drei Gleichungen auf und achte auf den Unterschied: R = U/I lässt sich immer als Definition ausrechnen, aber das Ohmsche Gesetz U = R · I gilt nur, solange der Widerstand konstant bleibt.",
+    "Sieh bei jeder Schaltungsaufgabe zuerst nach, ob die Widerstände hintereinander (in Reihe) oder nebeneinander (parallel) liegen: In Reihe addieren sich die Widerstände, parallel addieren sich die Teilströme.",
+    "Merke dir die Faustregel für den Draht: kurz, dick und aus Kupfer bedeutet kleiner Widerstand; lang, dünn und aus Konstantan bedeutet großer Widerstand.",
+    "Prüfe deine Zahlen an den Seiten nach: 0,10 A / 0,30 A / 0,60 A bei schwach, mittel und stark; in Reihe 10 Ω + 20 Ω = 30 Ω mit 0,20 A; parallel ergeben 10 Ω und 20 Ω nur 6,7 Ω mit 0,68 A."
+   ],
+   "mini": [
+    {
+     "frage": "An einem Draht liegen 4,5 V, das Amperemeter zeigt 0,30 A. Wie groß ist der Widerstand?",
+     "loesung": "R = U/I = 4,5 V / 0,30 A = 15 Ω. Das ist genau der Glühdraht aus dem Versuch."
+    },
+    {
+     "frage": "Ein fester Widerstand von 100 Ω liegt an 12 V; es fließen 120,0 mA. Welchen Strom erwartest du bei 24 V?",
+     "loesung": "240,0 mA. Bei festem Widerstand ist der Strom zur Spannung proportional, doppelte Spannung ergibt doppelten Strom."
+    },
+    {
+     "frage": "In einer Reihenschaltung liegen R₁ = 10 Ω und R₂ = 20 Ω. Wie groß ist der Gesamtwiderstand?",
+     "loesung": "R_ges = R₁ + R₂ = 10 Ω + 20 Ω = 30 Ω. Bei 6 V fließen dann überall 0,20 A."
+    },
+    {
+     "frage": "Der Regler eines Dimmers steht auf 45 Ω, die Lampe hat 5 Ω, die Batterie liefert 4,5 V. Wie groß ist der Strom?",
+     "loesung": "R_ges = 45 Ω + 5 Ω = 50 Ω, also I = 4,5 V / 50 Ω = 0,09 A. Die Lampe leuchtet sehr dunkel."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die Stromstärke gibt an, wie viel",
+     "loesung": "Ladung pro Sekunde",
+     "post": "durch den Kreis fließt; ihre Einheit ist das Ampere."
+    },
+    {
+     "pre": "Den Widerstand berechnet man mit",
+     "loesung": "R = U/I",
+     "post": "; seine Einheit ist das Ohm (Ω)."
+    },
+    {
+     "pre": "Nur solange der Widerstand konstant bleibt, gilt das Ohmsche Gesetz",
+     "loesung": "U = R · I",
+     "post": "."
+    },
+    {
+     "pre": "In der Reihenschaltung addieren sich die Widerstände zum Gesamtwiderstand: R_ges =",
+     "loesung": "R₁ + R₂",
+     "post": "."
+    },
+    {
+     "pre": "In der Parallelschaltung ist der Gesamtwiderstand",
+     "loesung": "kleiner",
+     "post": "als der kleinste Einzelwiderstand."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein offener Schalter unterbricht den Kreis; das Amperemeter zeigt sofort 0 A, obwohl die Batterie weiter 4,5 V liefert.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Bei gleicher Spannung fließt durch einen Draht mit großem Widerstand mehr Strom als durch einen mit kleinem Widerstand.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Beim ohmschen Widerstand ist die U-I-Kennlinie eine Gerade, die durch den Nullpunkt verläuft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Je steiler die Kennlinie verläuft, desto größer ist der Widerstand.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Von Kupfer, Eisen und Konstantan leitet Konstantan am schlechtesten und hat den größten Widerstand.",
+     "stimmt": true
+    },
+    {
+     "aussage": "In einer Reihenschaltung ist der Strom an jeder Stelle gleich groß.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Schaltet man einen zweiten Widerstand parallel dazu, wird der Gesamtstrom kleiner.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "In einer Reihenschaltung liegen R₁ = 10 Ω und R₂ = 20 Ω an 6 V. Wie groß ist der Strom, der durch beide Widerstände fließt?",
+    "optionen": [
+     "0,10 A",
+     "0,20 A",
+     "0,30 A",
+     "0,60 A"
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Sina zeigt zwei U-I-Kennlinien: eine Ursprungsgerade und eine nach oben gekrümmte Kurve. Erkläre, welche zu einem ohmschen Widerstand und welche zu einer Glühlampe gehört und woran man das jeweils erkennt.",
+    "zeilen": 5,
+    "loesung": "Die Ursprungsgerade gehört zum ohmschen Widerstand. Bei ihm bleibt der Widerstand konstant, deshalb sind Strom und Spannung proportional und für jeden Punkt ergibt R = U/I denselben Wert. Die gekrümmte Kurve gehört zur Glühlampe. Ihr Draht wird beim Stromfluss immer heißer, und mit steigender Temperatur wächst sein Widerstand. Weil der Widerstand sich also während der Messung ändert, ist U/I nicht mehr überall gleich und die Kennlinie krümmt sich statt gerade zu bleiben. Man erkennt den ohmschen Widerstand an der Geraden durch den Nullpunkt, die Glühlampe an der Krümmung."
+   },
+   "transfer": {
+    "frage": "David sagt: „Ein zweiter Widerstand macht den Strom auf jeden Fall kleiner, egal ob ich ihn hintereinander oder nebeneinander anschließe.“ Beurteile die Aussage für die Reihen- und für die Parallelschaltung.",
+    "zeilen": 6,
+    "loesung": "Die Aussage stimmt nur für die Reihenschaltung. Legt man den zweiten Widerstand hintereinander, addieren sich die Widerstände zum Gesamtwiderstand: Aus R₁ = 10 Ω und R₂ = 20 Ω werden 30 Ω, und der Strom sinkt auf 0,20 A. Legt man den zweiten Widerstand dagegen parallel daneben, bekommt der Strom einen zweiten Weg. Die Teilströme addieren sich, und der Gesamtwiderstand von 6,7 Ω ist kleiner als jeder Einzelwiderstand. Statt der 0,45 A durch den einzelnen 10-Ω-Widerstand fließen dann 0,68 A. In der Parallelschaltung wird der Strom also größer, nicht kleiner. Davids Regel gilt somit nur für die Reihe, nicht für die Parallelschaltung."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "regelbares Netzgerät für Kleinspannung und eine 4,5-V-Batterie",
+   "Amperemeter und Voltmeter",
+   "Verbindungskabel, Krokodilklemmen und ein Schalter",
+   "ein Glühlämpchen mit Fassung als Scheinwerferlampe",
+   "ein dicker Kupferdraht, ein Glühdraht und ein Widerstandsdraht aus Konstantan",
+   "Widerstände mit 10 Ω, 20 Ω und 30 Ω",
+   "Drähte gleicher Machart in verschiedener Länge und Dicke aus Kupfer, Eisen und Konstantan",
+   "ein Steckbrett oder Experimentierrahmen für Reihen- und Parallelschaltung",
+   "ein Potentiometer als Drehregler und Dimmer",
+   "Millimeterpapier, Geodreieck und Lineal für die U-I-Kennlinie",
+   "ein Ladegerät mit aufgedruckter Stromstärke in Ampere oder Milliampere aus dem Alltag"
+  ]
+ },
+ {
+  "id": "gym_eleistung",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "ENERGIE",
+     "tipp": "Diese Größe ist Leistung mal Zeit; auf der Stromrechnung steht sie am Ende in Kilowattstunden."
+    },
+    {
+     "wort": "LEISTUNG",
+     "tipp": "Diese Größe gibt an, wie viel Energie ein Gerät in jeder Sekunde umsetzt; du misst sie in Watt."
+    },
+    {
+     "wort": "WATT",
+     "tipp": "Einheit der Leistung; ihre Zahl steht als Wattzahl auf jedem elektrischen Gerät."
+    },
+    {
+     "wort": "WATTSTUNDE",
+     "tipp": "So heißt die Energie, wenn du eine Leistung in Watt mit einer Zeit in Stunden malnimmst."
+    },
+    {
+     "wort": "KILOWATTSTUNDE",
+     "tipp": "Tausend Wattstunden ergeben diese Einheit; genau sie zählt der Stromzähler zu Hause."
+    },
+    {
+     "wort": "SPANNUNG",
+     "tipp": "Diese Größe misst du in Volt; zusammen mit der Stromstärke ergibt sie die Leistung."
+    },
+    {
+     "wort": "AMPERE",
+     "tipp": "In dieser Einheit gibst du die Stromstärke an; bis etwa 16 davon hält die Sicherung im Modell."
+    },
+    {
+     "wort": "SICHERUNG",
+     "tipp": "Sie überwacht den Strom und unterbricht den Stromkreis, sobald er zu groß wird."
+    },
+    {
+     "wort": "GESAMTSTROM",
+     "tipp": "So heißt der Strom, der zusammenkommt, wenn viele Geräte an einer Steckdose hängen."
+    },
+    {
+     "wort": "FEHLERSTROM",
+     "tipp": "Diesen kleinen Strom von 30 mA erkennt der FI-Schutzschalter und schaltet blitzschnell ab."
+    },
+    {
+     "wort": "STROMKREIS",
+     "tipp": "Jeder Teil im Haus, den eine eigene Sicherung überwacht; Licht und Steckdosen haben je einen."
+    },
+    {
+     "wort": "WASSERKOCHER",
+     "tipp": "Das Gerät backstage mit den meisten Watt, 2000, das aber nur kurze Zeit läuft."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann mit E = P · t die umgesetzte Energie eines Geräts berechnen und das Ergebnis von Wattstunden in Kilowattstunden umrechnen.",
+    "Ich kann erklären, warum eine kleine Leistung über lange Zeit genauso viel Energie umsetzen kann wie eine große Leistung über kurze Zeit.",
+    "Ich kann mit P = U · I die Leistung berechnen und begründen, warum bei doppelter Spannung der Strom mitwächst und die Leistung vierfach wird.",
+    "Ich kann erklären, dass die Wattzahl kein fester Einzelwert ist, sondern das Produkt aus Spannung und Stromstärke.",
+    "Ich kann aus Leistung und täglicher Laufzeit die Energie in kWh und mit 0,30 € je kWh die Jahreskosten eines Geräts bestimmen.",
+    "Ich kann begründen, warum ein schwaches Dauergerät wie der Kühlschrank im Jahr teurer sein kann als ein starkes, das nur kurz läuft.",
+    "Ich kann den Gesamtstrom mehrerer Geräte addieren und vorhersagen, ab wann er die Sicherungsgrenze von 16 A überschreitet.",
+    "Ich kann erklären, was die Sicherung tut, wenn der Strom zu groß wird, und warum für die Gefahr die Stromstärke entscheidend ist.",
+    "Ich kann beschreiben, warum ein Haus in mehrere Stromkreise aufgeteilt ist und welche Sicherung zu welcher Leitungsdicke passt.",
+    "Ich kann den FI-Schutzschalter von den übrigen Sicherungen unterscheiden und erklären, warum er schon bei 30 mA für den Menschen abschaltet."
+   ],
+   "tipps": [
+    "Schreibe bei jeder Rechnung zuerst die Formel hin: E = P · t für die Energie, P = U · I für die Leistung. Setze dann die Zahlen mit Einheit ein, damit am Ende Wh oder W herauskommt.",
+    "Achte auf die Einheit der Zeit: Watt mal Stunde ergibt Wattstunden, nicht gleich Kilowattstunden. Erst 1000 Wh zusammen sind 1 kWh.",
+    "Für die Jahreskosten zählt Leistung mal Laufzeit, nicht die Wattzahl allein. Rechne erst die kWh am Tag aus und multipliziere dann mit 0,30 € und mit 365 Tagen.",
+    "Merke dir die Zahlen des Kapitels und prüfe sie an den Seiten nach: Sicherungsgrenze 16 A, je Gerät 6 A im Modell, Lichtstromkreis 10 A, FI-Schutzschalter 30 mA = 0,03 A, Strompreis 0,30 € je kWh."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Föhn mit 1800 W läuft eine halbe Stunde. Wie viel Energie setzt er um?",
+     "loesung": "E = P · t = 1800 W · 0,5 h = 900 Wh, das sind 0,9 kWh."
+    },
+    {
+     "frage": "An einem Verbraucher liegen 6 V an, und es fließen 0,40 A. Wie groß ist die Leistung?",
+     "loesung": "P = U · I = 6 V · 0,40 A = 2,40 W."
+    },
+    {
+     "frage": "Ein Gerät verbraucht 4 kWh am Tag. Was kostet das bei 0,30 € je kWh?",
+     "loesung": "4 kWh · 0,30 € = 1,20 € am Tag."
+    },
+    {
+     "frage": "Jedes Gerät zieht im Modell 6 A. Bei wie vielen Geräten löst die Sicherung mit 16 A aus?",
+     "loesung": "Bei drei Geräten: 3 · 6 A = 18 A, das ist mehr als 16 A. Zwei Geräte mit 12 A halten noch."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Die umgesetzte elektrische Energie berechnet man aus Leistung mal",
+     "loesung": "Zeit",
+     "post": "."
+    },
+    {
+     "pre": "Die Leistung ist das Produkt aus Stromstärke und",
+     "loesung": "Spannung",
+     "post": "; sie wird in Watt gemessen."
+    },
+    {
+     "pre": "Der Stromzähler misst nicht die Leistung, sondern die verbrauchte Energie in",
+     "loesung": "Kilowattstunden",
+     "post": " (kWh)."
+    },
+    {
+     "pre": "Wird der Gesamtstrom größer als 16 A, unterbricht die",
+     "loesung": "Sicherung",
+     "post": " den Stromkreis."
+    },
+    {
+     "pre": "Schon bei einem Fehlerstrom von 30 mA schaltet der",
+     "loesung": "FI-Schutzschalter",
+     "post": " ab und schützt den Menschen."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Eine LED mit 10 W setzt in 10 h genauso viel Energie um wie ein Fernseher mit 100 W in 1 h, nämlich 100 Wh.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Das Gerät mit der höchsten Wattzahl setzt immer die meiste Energie um, egal wie lange die anderen laufen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Verdoppelt man bei gleichem Verbraucher die Spannung von 3 V auf 6 V, wird die Leistung nur doppelt so groß.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Kühlschrank mit 150 W kann im Jahr teurer sein als ein Wasserkocher mit 2000 W, weil er rund um die Uhr läuft.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Für die Gefahr durch den Strom ist allein die Spannung entscheidend, nicht die Stromstärke.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Löst im Haus eine einzelne Sicherung aus, bleibt nur ihr Stromkreis dunkel, nicht das ganze Haus.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der FI-Schutzschalter löst erst bei vielen Ampere aus, genau wie die übrigen Sicherungen.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Der Kühlschrank hinter der Bar hat 150 W und läuft 24 h am Tag. Wie viel Energie setzt er an einem Tag um?",
+    "optionen": [
+     "0,36 kWh",
+     "3,6 kWh",
+     "36 kWh",
+     "360 kWh"
+    ],
+    "richtig": 1
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Kühlschrank mit 150 W im Jahr mehr kosten kann als ein Wasserkocher mit 2000 W, obwohl der Wasserkocher die viel höhere Leistung hat.",
+    "zeilen": 5,
+    "loesung": "Die Kosten hängen nicht von der Leistung allein ab, sondern von der Energie, und Energie ist Leistung mal Laufzeit. Der Wasserkocher hat mit 2000 W zwar die viel höhere Leistung, läuft aber nur 1 h am Tag; das ergibt 2 kWh am Tag und rund 219,00 € im Jahr. Der Kühlschrank hat nur 150 W, läuft aber rund um die Uhr 24 h; das ergibt 3,6 kWh am Tag und rund 394,20 € im Jahr. Die lange Laufzeit gleicht die kleine Leistung mehr als aus. Deshalb entscheidet Leistung mal Laufzeit über die Kosten, nicht die Wattzahl allein."
+   },
+   "transfer": {
+    "frage": "David sagt: „Der FI-Schutzschalter ist einfach die stärkste Sicherung im Kasten, er hält am meisten Ampere aus. Und wenn er auslöst, wird das ganze Haus dunkel.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Der FI-Schutzschalter ist nicht die stärkste Sicherung, im Gegenteil: Er löst schon bei einem winzigen Fehlerstrom von 30 mA, also 0,03 A, aus, während die normalen Sicherungen erst bei 10 A oder 16 A abschalten. Er achtet nicht darauf, wie viel Strom durch die Leitung fließt, sondern darauf, ob Strom auf einem falschen Weg abfließt, und schützt so vor allem den Menschen. Auch der zweite Teil stimmt nicht: Ein Haus ist in viele Stromkreise mit je eigener Sicherung aufgeteilt. Löst eine Sicherung aus, bleibt nur ihr Stromkreis dunkel, nicht das ganze Haus. David verwechselt einen kleinen Schutzwert mit großer Belastbarkeit und einen einzelnen Stromkreis mit dem ganzen Haus."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Haushaltsgeräte mit Leistungsschild, zum Beispiel LED-Lampe, Fernseher, Wasserkocher und Kühlschrank",
+   "Energiemessgerät für die Steckdose, das Leistung in Watt und Energie in kWh anzeigt",
+   "Netzgerät mit einstellbarer Spannung von 1,5 V bis 6 V",
+   "Spannungsmesser und Strommesser",
+   "verschiedene Verbraucher wie kleine Lampen und Widerstände",
+   "Kabel, Krokodilklemmen und eine Steckplatte",
+   "Modell einer Mehrfachsteckdose, an die sich mehrere Geräte anschließen lassen",
+   "eine Schmelzsicherung und ein Leitungsschutzschalter zum Ansehen",
+   "ein FI-Schutzschalter aus der Sammlung",
+   "Leitungsstücke mit 1,5 mm² und 2,5 mm² Querschnitt",
+   "Datenblatt Stromkreise und Sicherungen im Haus",
+   "Taschenrechner und ein Preiszettel mit 0,30 € je kWh",
+   "Stoppuhr"
+  ]
+ }
+]

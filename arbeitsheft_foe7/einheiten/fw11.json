@@ -1,0 +1,176 @@
+{
+ "seite": {
+  "id": "fw11",
+  "quelle": "ew12",
+  "sim": "weltbild",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Zwei Weltbilder",
+  "name": "Wer steht in der Mitte?",
+  "fachwoerter_neu": [
+   "Weltbild"
+  ],
+  "alltag": [
+   "Auf einem vergilbten Blatt kreist alles um die Erde.",
+   "Jeder Planet läuft noch auf einem zweiten, kleinen Kreis.",
+   "Jannis sagt: Das ist doch falsch herum.",
+   "Ein Modell vom Aufbau des Himmels heißt Weltbild."
+  ],
+  "frage": "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
+  "predict": [
+   "Beide zeigen denselben Himmel, aber nur das heutige braucht keine Zusatzkreise.",
+   "Die zwei Weltbilder zeigen einen ganz verschiedenen Himmel."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.",
+   "Drücke „Sonne in der Mitte (heute)“ und vergleiche.",
+   "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?",
+   "Trage beide Zeilen in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die zwei Ergebnisse.",
+  "tabCols": [
+   "Weltbild",
+   "Wer steht in der Mitte?",
+   "Zusatzkreise (Epizykel) nötig?"
+  ],
+  "tabRows": [
+   [
+    "alt",
+    "die Erde",
+    "ja"
+   ],
+   [
+    "heute",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "In der Mitte des heutigen Weltbildes steht",
+    "loesung": "die Sonne",
+    "post": "."
+   },
+   {
+    "pre": "Das alte Weltbild brauchte Zusatzkreise (Epizykel), das heutige braucht",
+    "loesung": "keine",
+    "post": "– darum gilt es heute."
+   }
+  ],
+  "wortbank": [
+   "die Sonne",
+   "keine",
+   "Weltbild",
+   "Zusatzkreise",
+   "einfacher"
+  ],
+  "beispiel": {
+   "frage": "Was meldet die Simulation beim alten Weltbild?",
+   "antwort": "Die Erde steht in der Mitte. Der Himmel ließ sich gut vorhersagen – aber nur mit Zusatzkreisen für die Schleifen der Planeten."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Wie kam es zum heutigen Weltbild?",
+    "optionen": [
+     "Durch neue Beobachtungen, zum Beispiel mit dem Fernrohr.",
+     "Durch einen Zufall.",
+     "Weil ein König es befahl."
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Im heutigen Weltbild steht",
+      "loesung": "die Sonne",
+      "post": "in der Mitte."
+     },
+     {
+      "pre": "Es erklärt denselben Himmel, ist aber",
+      "loesung": "einfacher",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Wähle und begründe",
+    "frage": "Beide Weltbilder zeigen denselben Himmel. Warum gilt heute das mit der Sonne in der Mitte? Kreise ein: Es ist einfacher / Es ist älter.",
+    "satzstarter": "Das heutige Weltbild ist …, denn es braucht …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Nur das alte Weltbild braucht Zusatzkreise.",
+   "h2": "Beginne so: Das heutige Weltbild ist einfacher, denn es braucht keine …",
+   "h3": "Fast fertige Antwort: Beide zeigen denselben Himmel. Das heutige Weltbild braucht dafür keine Zusatzkreise. Es ist ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann beide Weltbilder unterscheiden.",
+   "Ich weiß, was Zusatzkreise sind.",
+   "Ich kann begründen, warum das heutige Weltbild gilt."
+  ],
+  "zuhause": "Gehe eng um einen Stuhl herum, während jemand außen langsamer im Kreis geht. Beim Überholen scheint die andere Person rückwärts zu wandern – wie der Mars am Himmel.",
+  "bildauftrag": "[BILD: zwei Kreisbilder nebeneinander; links das alte Weltbild: die Erde in der Mitte, ein Planet auf einem großen Kreis und zusätzlich auf einem kleinen Zusatzkreis, Beschriftung „früher: mit Zusatzkreisen“; rechts das heutige: die Sonne in der Mitte, Erde und Mars auf je einem einfachen Kreis, Beschriftung „heute: ohne Zusatzkreise“; große Titel „alt“ und „heute“; wenige, klare Linien; ruhiger heller Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw11",
+  "lernziel": "Die Schülerinnen und Schüler vergleichen das alte und das heutige Weltbild und begründen, dass sich das heutige durchgesetzt hat, weil es denselben Himmel ohne Zusatzkreise (Epizykel) erklärt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die zwei Statuszeilen aus diesem Lehrerteil als Karten. Für die Mars-Schleife: der Stuhl-Versuch aus dem Zuhause-Auftrag im Klassenraum.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die zwei Statuszeilen als Karten zeigen: Erde in der Mitte (alt) → Himmel gut vorhersagbar, aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen; die Anordnung selbst stimmt nicht · Sonne in der Mitte (heute) → derselbe Himmel, ohne einen einzigen Epizykel; so ist es heute gültig. Dazu: Der Mars läuft von der Erde aus zeitweise rückwärts – in beiden Modellen.",
+  "merksatz": [
+   "die Sonne",
+   "keine"
+  ],
+  "tabelle_erwartet": [
+   [
+    "heute",
+    "die Sonne",
+    "nein – keine"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Rückmeldung der Simulation: Neue Beweise führten zum heliozentrischen Weltbild.",
+   "typische_fehler": [
+    "„Das alte war einfach dumm“ – dass es den Himmel gut vorhersagte, wird übersehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "die Sonne",
+    "einfacher"
+   ],
+   "typische_fehler": [
+    "„die Erde“ wird aus Gewohnheit eingesetzt.",
+    "„richtiger“ statt der Wortbank-Form „einfacher“."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das heutige Weltbild ist einfacher, denn es braucht keine Zusatzkreise. Beide zeigen denselben Himmel – den Ausschlag gab die Einfachheit.",
+   "alternativen": [
+    "Mit dem Hinweis der Simulation ergänzt: Galilei sah 1610 die Jupitermonde und die Venusphasen – neue Beobachtungen sprachen für das heutige Bild.",
+    "Mit der Tabelle begründet: alt ja, heute keine Zusatzkreise."
+   ],
+   "typische_fehler": [
+    "richtig/falsch wird als Maßstab genommen statt einfacher/komplizierter.",
+    "Epizykel bleibt unübersetzt und unverstanden – immer „Zusatzkreis“ mitsprechen."
+   ]
+  },
+  "hilfe3_wort": "einfacher",
+  "schwache": [
+   "Das Wort „Zusatzkreis“ auf das alte Bild schreiben lassen.",
+   "Zuerst nur die Spalte „Wer steht in der Mitte?“ ausfüllen lassen.",
+   "Den Stuhl-Versuch zur Mars-Schleife gemeinsam vormachen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies den Hinweis der Simulation – Galilei sah 1610 die Jupitermonde: Also kreist nicht alles um die Erde.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Weltbilder. Kompetenz K1 (Quellseite ew12); die Beurteilung bleibt als gestützte Auswahl erhalten (B2, Seitenplan). Epizykel wird durchgehend als Zusatzkreis mitübersetzt."
+ }
+}

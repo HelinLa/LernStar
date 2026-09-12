@@ -1,0 +1,72 @@
+{
+ "id": "ki15",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "S3",
+  "E7"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Die Auftragung F über s ergibt eine Ursprungsgerade, und ihre Steigung ist unmittelbar die",
+   "loesung": "Federkonstante",
+   "post": "; bei D = 20 N/m lautet die Fitzeile y = 20,000·x."
+  },
+  {
+   "pre": "Über s aufgetragen liegt die Energie auf einer Parabel ohne ablesbare Steigung. Deshalb wird",
+   "loesung": "linearisiert",
+   "post": ": Auf die x-Achse kommt s² statt s."
+  },
+  {
+   "pre": "Über s² ergibt dieselbe Messreihe die Gerade y = 10,000·x. Die Federkonstante folgt daraus erst durch",
+   "loesung": "Verdoppeln",
+   "post": ", also D = 2 · k = 20,000 N/m."
+  },
+  {
+   "pre": "Die Steigung der E-s²-Geraden ist nur halb so groß wie D, weil die Energie die",
+   "loesung": "Dreiecksfläche",
+   "post": "unter der Kraftgeraden ist – halb so groß wie das Rechteck F · s."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Bei der Messreihe mit D = 50 N/m nennt „F über s auftragen“ die Steigung 50,000 N/m, „E über s² auftragen“ dagegen 25,000 N/m; beide Zahlen stammen aus denselben sieben Messwerten.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Die Auswertung unter der Messreihe vergleicht bei D = 20 N/m die Zeilen zu 5 cm und 10 cm: Die Kraft wächst auf das 2,0-fache, die Energie auf das 4,0-fache.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Weil die Punkte der Auftragung E über s dicht beieinander liegen, lässt sich auch dort eine Steigung ablesen; sie beträgt D/2.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Aus der Steigung der E-s²-Geraden folgt die Federkonstante durch Halbieren, aus k = 10,000 N/m also D = 5 N/m.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Mira liest bei der Messreihe mit D = 20 N/m unter „E über s² auftragen“ die Steigung k = 10,000 N/m ab und notiert: „Die Federkonstante dieser Feder ist 10 N/m.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Der Schluss trägt: Die Steigung jeder Ursprungsgeraden einer Messreihe ist die Federkonstante. Damit sind 10,000 N/m der gesuchte Wert, und die 20,000 N/m der ersten Auftragung gehören zu einer anderen Größe.",
+   "Der Schluss trägt nicht: Die Steigung der E-s²-Geraden ist D/2. Die Federkonstante folgt erst durch Verdoppeln, D = 2 · k = 20,000 N/m – genau der Wert, den die F-s-Gerade unmittelbar als Steigung ausweist.",
+   "Der Schluss trägt nicht: Über s² ist die Steigung doppelt so groß wie D. Aus 10,000 N/m folgt deshalb D = 5 N/m, und die F-s-Gerade zeigt einen anderen Ausschnitt derselben Feder."
+  ],
+  "richtig": 1,
+  "erklaerung": "Aufgetragen wird E = ½ · D · s². Steht s² auf der x-Achse, so ist der Vorfaktor vor x gerade ½ · D, und genau diesen Vorfaktor liefert der Fit als Steigung k. Aus k = 10,000 N/m folgt deshalb D = 2 · k = 20,000 N/m; der Ergebniskasten druckt diese Rückrechnung Zeile für Zeile und meldet gegen die eingestellten 20 N/m eine Abweichung von 0,00 %. Wer jede Ursprungsgerade gleich behandelt, übersieht, dass es auf die aufgetragenen Größen ankommt und nicht auf die Form der Kurve: Beide Auftragungen sind Ursprungsgeraden, aber nur die F-s-Gerade hat D als Steigung. Wer die Rückrechnung umdreht und statt zu verdoppeln halbiert, käme auf 5 N/m – ein Wert, der zu keiner der beiden Fitzeilen passt. Die Probe ist einfach: Eine Messreihe, zwei Auftragungen, aber nur eine Feder – am Ende muss zweimal dieselbe Federkonstante herauskommen."
+ },
+ "offen": {
+  "frage": "Erkläre, warum dieselbe Messreihe zwei verschiedene Steigungen liefert – 20,000 N/m unter „F über s auftragen“ und 10,000 N/m unter „E über s² auftragen“ –, begründe, weshalb der Faktor ½ zwischen ihnen kein Rechenzufall ist, und beurteile, was das R² = 1,0000 beider Geraden über die Messung aussagt.",
+  "prompt": "Erkläre, warum dieselbe Messreihe zwei verschiedene Steigungen liefert – 20,000 N/m unter „F über s auftragen“ und 10,000 N/m unter „E über s² auftragen“ –, begründe, weshalb der Faktor ½ zwischen ihnen kein Rechenzufall ist, und beurteile, was das R² = 1,0000 beider Geraden über die Messung aussagt.",
+  "zeilen": 5,
+  "loesung": "Die beiden Geraden tragen verschiedene Größen auf, deshalb bedeuten ihre Steigungen Verschiedenes. Über s aufgetragen gilt F = D · s: Die Steigung ist D selbst, hier 20,000 N/m. Über s² aufgetragen gilt E = ½ · D · s²; steht s² auf der x-Achse, so ist der Vorfaktor vor x gerade ½ · D, und genau ihn liefert der Fit mit 10,000 N/m. Zurückgerechnet ist D = 2 · k = 20,000 N/m, und damit stimmen beide Wege überein – wie es sein muss, denn es ist eine einzige Feder. Der Faktor ½ ist kein Rechenzufall, sondern die Fläche unter der Kraftgeraden. Beim Spannen wächst die Kraft von null bis F = D · s; die verrichtete Arbeit ist deshalb nicht das Rechteck F · s, sondern das Dreieck darunter mit der Grundseite s und der Höhe F, und ein Dreieck ist halb so groß wie das Rechteck mit denselben Seiten. Genau diese Halbierung taucht in der Steigung wieder auf. Der Zwischenschritt über s war nötig, um das zu sehen: Dort ergibt dieselbe Messreihe eine Parabel, und eine Parabel hat keine ablesbare Steigung. Das Ersetzen von s durch s² auf der x-Achse ist das Linearisieren, und erst danach steht wieder eine Zahl da, die man deuten kann. Das R² = 1,0000 sagt über die Güte einer echten Messung dagegen nichts aus. Die Simulation rechnet mit einer idealen Feder und einer reibungsfreien Bahn, ihre Punkte liegen deshalb exakt auf der Kurve des Modells; Messunsicherheiten gibt es hier gar nicht. An einer echten Fahrbahn streuen die Punkte, R² bleibt unter 1, und erst dann ist der Wert ein Maß dafür, wie gut Modell und Messung zusammenpassen."
+ }
+}

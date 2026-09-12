@@ -1,0 +1,199 @@
+{
+ "seite": {
+  "id": "fn6",
+  "quelle": "rk6",
+  "sim": "zerfall-halbwertszeit",
+  "sicherheit": "Simulation",
+  "theme": "foe_kern",
+  "titel": "Das Fläschchen wird schwächer",
+  "name": "Wann ist die Hälfte zerfallen?",
+  "fachwoerter_neu": [
+   "Halbwertszeit T½",
+   "Nuklid"
+  ],
+  "alltag": [
+   "Nour sieht im Krankenhaus ein Fläschchen mit Iod-131. Es wird schwächer.",
+   "Nach 8,02 Tagen ist die Hälfte der Kerne zerfallen. Diese Zeit heißt Halbwertszeit T½.",
+   "Zerfallen heißt: Ein Kern wird von selbst zu einem anderen Kern.",
+   "Eine Kernsorte wie Iod-131 heißt Nuklid."
+  ],
+  "frage": "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
+  "predict": [
+   "Immer genau 100 Kerne sind übrig.",
+   "Ungefähr 100 Kerne sind übrig."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.",
+   "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.",
+   "Vergleiche deine Zahl mit Zeile 3.",
+   "Wähle Iod-131 und danach Cäsium-137. Trage beides ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die vier Ergebnisse.",
+  "tabCols": [
+   "Nuklid",
+   "Wie lange dauert eine Halbwertszeit?",
+   "Wie viele Kerne sind vor dem Schritt übrig?"
+  ],
+  "tabRows": [
+   [
+    "Radon-220",
+    "55,6 s",
+    "200 von 200"
+   ],
+   [
+    "Iod-131",
+    "",
+    ""
+   ],
+   [
+    "Cäsium-137",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Nach einer Halbwertszeit T½ ist ungefähr die",
+    "loesung": "Hälfte",
+    "post": "der Kerne zerfallen."
+   },
+   {
+    "pre": "Jeder Kern zerfällt aber für sich und",
+    "loesung": "zufällig",
+    "post": ". Erst bei vielen Kernen stimmt die Regel."
+   }
+  ],
+  "wortbank": [
+   "Hälfte",
+   "zufällig",
+   "55,6 s",
+   "Nuklid"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du die Statuszeile nach einem Schritt?",
+   "antwort": "Zeile 2: „noch 107 von 200 Kernen übrig“. Zeile 3: „Erwartet hätte man 100“. Bei dir steht wahrscheinlich eine andere Zahl."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Bei Nour steht: noch 107 übrig, erwartet 100. Was stimmt?",
+    "optionen": [
+     "Die Simulation rechnet falsch. Es müssen 100 sein.",
+     "Die Kerne sind der Reihe nach dran. Dann wären es 100.",
+     "Jeder Kern zerfällt zufällig. Deshalb sind es selten genau 100."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Radon-220 dauert eine Halbwertszeit",
+      "loesung": "55,6 s",
+      "post": ". Bei Iod-131 dauert sie 8,02 Tage."
+     },
+     {
+      "pre": "Die Halbwertszeit gehört also zum",
+      "loesung": "Nuklid",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die Kerne sind der Reihe nach dran.“ Warum ist das falsch?",
+    "satzstarter": "Jannis hat nicht recht, weil …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "Die Statuszeile hat drei Zeilen. Zeile 2 nennt die übrigen Kerne. Alle Lückenwörter stehen in der Wortbank.",
+   "h2": "Beginne so: Jannis hat nicht recht, weil jeder Kern …",
+   "h3": "Fast fertig: Kein Kern weiß, wann er dran ist. Jeder Kern zerfällt ___."
+  },
+  "selbstcheck": [
+   "Ich kann die Halbwertszeit in der Statuszeile ablesen.",
+   "Ich weiß: Die Halbwertszeit gehört zum Nuklid. Temperatur und Druck ändern sie nicht.",
+   "Ich weiß: Jeder Kern zerfällt zufällig, nicht der Reihe nach."
+  ],
+  "zuhause": "Wirf 20 Münzen. Zähle die Köpfe. Sind es immer genau 10?",
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU ZWEI gleich großen Kernfeldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleicher heller Hintergrund, beide breiter als hoch. Beide Felder zeigen DIESELBEN 200 Kernpunkte an DENSELBEN Stellen, geordnet wie am Bildschirm: 10 Reihen zu je 20 Punkten, waagerecht und senkrecht gleicher Abstand, in beiden Feldern dasselbe Raster. Linkes Feld: alle 200 Punkte sind ausgefüllte Kreise. Darüber groß und gut lesbar: „am Anfang: 200 von 200 Kernen übrig“. Zwischen den beiden Feldern GENAU EIN breiter waagerechter Pfeil von links nach rechts, darüber die Beschriftung „nach einer Halbwertszeit – das sind 55,6 s“. Rechtes Feld: dasselbe Raster an denselben Stellen, aber 93 der Punkte sind jetzt offene Kreise. Entscheidend für die Komposition ist allein die VERTEILUNG der offenen Kreise: Sie liegen über das ganze Raster verstreut, kreuz und quer zwischen den ausgefüllten — nie als Reihe, nie als Spalte, nie als Streifen, nie als Block, nie als obere oder linke Hälfte, nie am Rand gesammelt und ohne jedes erkennbare Muster. Genau daran hängt die Aussage des Bildes: Kein Kern ist der Reihe nach dran. Über dem rechten Feld groß: „noch 107 von 200 Kernen übrig“, darunter in derselben Schriftgröße eine zweite Zeile: „erwartet hätte man 100“. Unten links, einmal für beide Felder, die Zeichenerklärung: „● noch nicht zerfallen    ○ zerfallen“. Sonst nichts: kein drittes Feld, kein Diagramm, keine Kurve, keine Achsen, keine kleinen Zusatzbilder am Rand, kein Fläschchen, kein Bleikasten, keine Personen, keine Zahlenreihe unter den Feldern. Ebenso nichts, was aus den Kernen herausfliegt: keine Strahlenpfeile, keine Blitze, keine Wellenlinien, keine Alpha-, Beta- oder Gammazeichen, keine gestrichelten Linien ins Leere — der einzige Pfeil im Bild ist der waagerechte Zeitpfeil zwischen den Feldern. Andere Zahlen als 200, 107 und 100 werden weggelassen; gedruckt werden nur die genannten Beschriftungen. Große Schrift, viel Weißraum, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fn6",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation ab, dass jedes Nuklid seine eigene Halbwertszeit T½ hat (Radon-220: 55,6 s · Iod-131: 8,02 Tage · Cäsium-137: 30,17 Jahre) und dass der Start immer bei 200 von 200 Kernen liegt. Sie messen für Radon-220 einen Schritt und stellen die gemessene Zahl der erwarteten gegenüber (im Faktendump: 107 gegen 100). Daraus benennen sie die Leitplanke dieser Seite: Der einzelne Kern zerfällt zufällig, er hat keinen Termin und altert nicht; erst die große Menge hält sich an die Regel „ungefähr die Hälfte“. Die Fehlvorstellung, gegen die die Seite gebaut ist, lautet: „Nach einer Halbwertszeit sind die Kerne der Reihe nach dran.“ Fachbegriffe nur für Sie, nicht auf der Schülerseite: Zerfallswahrscheinlichkeit, „im Mittel“, Zerfallsgesetz N(t) = N₀ · (½)^(t/T½).",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit den zwei Kernfeldern. Optional als Gegenprobe am Tisch: 20 Münzen je Paar, einmal werfen und die Köpfe zählen, danach zweimal wiederholen — dasselbe Muster wie in der Simulation, jede Münze für sich, die Summe ungefähr die Hälfte. Kein radioaktives Präparat nötig, es gibt hier keinen Schülerversuch.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen, jede im Wortlaut des Bildschirms, ohne die Prozentangabe. Karte 1 „Radon-220, Start“: „Radon-220, Halbwertszeit 55,6 s. Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig. Erwartet hätte man 200.“ Karte 2 „Radon-220, ein Schritt“: „Radon-220, Halbwertszeit 55,6 s. Nach einer Halbwertszeit – das sind 55,6 s – sind noch 107 von 200 Kernen übrig. Erwartet hätte man 100. Im letzten Schritt sind 93 Kerne zerfallen.“ Karte 3 „Iod-131“: „Iod-131, Halbwertszeit 8,02 Tage. Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig. Erwartet hätte man 200.“ Karte 4 „Cäsium-137“: „Cäsium-137, Halbwertszeit 30,17 Jahre. Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig. Erwartet hätte man 200.“ Sagen Sie beim Vorlesen von Karte 2 ausdrücklich dazu: Die 107 ist EIN Messwert von vielen möglichen; am Gerät steht bei jedem Lauf eine andere Zahl, mal über 100, mal darunter. Dazu als Tafelbild zwei gleich große Kernfelder nebeneinander, beide mit denselben 200 Punkten im Raster des Bildschirms (10 Reihen zu je 20): links alle ausgefüllt, rechts 93 davon offen, kreuz und quer über das ganze Raster verteilt — nie als Streifen, als Reihe oder als halbes Feld, sonst entsteht genau die Fehlvorstellung, gegen die die Seite arbeitet. Zwischen den Feldern ein Pfeil „nach einer Halbwertszeit – das sind 55,6 s“. Alternativ die Bildschirmzustände als Standbilder am Beamer zeigen. Als lebendiger Ersatz eignet sich der Münzwurf aus dem Zuhause-Auftrag: 20 Münzen werfen, Köpfe zählen, dreimal wiederholen und die drei Zahlen an die Tafel schreiben — sie liegen um 10 herum und sind selten genau 10.",
+  "merksatz": [
+   "Hälfte",
+   "zufällig"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Iod-131",
+    "8,02 Tage",
+    "200 von 200"
+   ],
+   [
+    "Cäsium-137",
+    "30,17 Jahre",
+    "200 von 200"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Nach „eine Halbwertszeit weiter“ meldet die Statuszeile für Radon-220 in Zeile 2: „Nach einer Halbwertszeit – das sind 55,6 s – sind noch 107 von 200 Kernen übrig (53,5 %).“ und in Zeile 3: „Erwartet hätte man 100. Im letzten Schritt sind 93 Kerne zerfallen.“ Gemessen und erwartet stehen also direkt nebeneinander und sind verschieden. Richtig ist die dritte Option: Jeder Kern zerfällt für sich und zufällig, deshalb trifft die Zahl die erwartete 100 fast nie genau. Die erste Option unterstellt der Simulation einen Rechenfehler, die zweite eine Reihenfolge. Beide enden bei 100 und unterscheiden sich allein im Grund — darüber wird gesprochen; die zweite ist die Fehlvorstellung, gegen die die Seite gebaut ist. Wichtig beim Besprechen: Die 107 ist der Wert aus dem Faktendump. Der Faktendump hält vier Läufe fest: 117, 103, 104, 107. Die Aufgabe schreibt die 107 deshalb ausdrücklich Nour zu („Bei Nour steht: …“) und nicht dem Bildschirm des Kindes — sonst liest ein Kind mit 117 auf dem Schirm im Heft eine Zahl, die seiner widerspricht.",
+   "typische_fehler": [
+    "Die erste Option wird angekreuzt: Eine Abweichung gilt als Fehler des Programms. Gegenfrage: Wer sagt jedem einzelnen Kern, wann er dran ist? Danach den Münzwurf zeigen — 20 Münzen ergeben auch selten genau 10 Köpfe.",
+    "Die zweite Option wird angekreuzt. Das ist die Fehlvorstellung, gegen die die ganze Seite gebaut ist. Am Bild zeigen: Die offenen Kreise liegen kreuz und quer, nicht in einer Reihe und nicht in einer Hälfte.",
+    "Bei Arbeitsschritt 2 wurde nicht gedrückt: In Zeile 2 steht noch der Startzustand „200 von 200“, und Zeile 3 nennt 200 statt 100. Aufgabe 1 selbst ist davon nicht betroffen – sie nennt beide Zahlen in ihrem Fragetext und ist ohne Gerät lösbar. Nachfragen: Welchen Knopf hast du zuletzt gedrückt?",
+    "Die eigene Messzahl wird gegen Nours 107 gehalten und für falsch erklärt. Genau umgekehrt: Zwei verschiedene Zahlen sind der Beleg. Beide Zahlen nebeneinander an die Tafel schreiben."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "55,6 s",
+    "Nuklid"
+   ],
+   "typische_fehler": [
+    "Statt 55,6 s wird 8,02 Tage eingesetzt, weil zuletzt Iod-131 eingestellt war. Der Satz nennt aber Radon-220. Auf die erste Tabellenzeile zurückverweisen.",
+    "Die Einheit fehlt („55,6“). Die Wortbank enthält sie mit Einheit; einmal abschreiben lassen. Betonen: Bei Radon-220 sind es Sekunden, bei Cäsium-137 Jahre.",
+    "In die zweite Lücke wird „Kern“ oder „Atom“ geschrieben. Das Wort steht in der Wortbank und im Alltagsteil: Eine Kernsorte wie Iod-131 heißt Nuklid.",
+    "Nach der zweiten Lücke („Die Halbwertszeit gehört also zum Nuklid“) kommt regelmäßig der Einwand, im Kühlschrank gehe es doch langsamer. Die Aussage steht als Selbstcheck 2 auf der Seite, damit sie angekreuzt und nicht nur überlesen wird; der Bildschirmhinweis sagt sie wörtlich: Die Halbwertszeit hängt allein vom Nuklid ab, nicht von Temperatur, Druck oder Alter der Probe."
+   ]
+  },
+  "a3": {
+   "erwartung": "Jannis hat nicht recht, weil jeder Kern für sich zerfällt. Kein Kern weiß, wann er dran ist, und es gibt keine Reihenfolge. Deshalb sind nach einer Halbwertszeit selten genau 100 Kerne übrig, sondern zum Beispiel 107. Erst bei sehr vielen Kernen stimmt die Regel „ungefähr die Hälfte“.",
+   "alternativen": [
+    "Kurzform ohne Zahl: „Weil jeder Kern zufällig zerfällt und keiner an der Reihe ist.“ — reicht für die volle Wertung.",
+    "Über die Messung begründet: „Wenn es eine Reihenfolge gäbe, müssten es genau 100 sein. Es waren aber 107.“",
+    "Über den Alltag begründet: „Das ist wie beim Münzwurf. Jede Münze für sich, und trotzdem ungefähr die Hälfte Kopf.“",
+    "Mit dem Zusatz, dass ein alter Kern genauso leicht zerfällt wie ein frischer — richtig und weiterführend, aber nicht verlangt.",
+    "Formulierungen wie „die Kerne warten nicht“ oder „keiner ist dran“ zählen, solange der Zufall genannt ist."
+   ],
+   "typische_fehler": [
+    "Nur „das stimmt nicht“ ohne Begründung. Nachfragen: Woran siehst du das? Die Wörter „zufällig“ oder „jeder für sich“ müssen vorkommen (Hilfe 3 lässt es als Lücke offen).",
+    "Die Regel wird ganz verworfen: „Also stimmt die Halbwertszeit gar nicht.“ Gegenhalten: Bei 200 Kernen schwankt es sichtbar, bei sehr vielen Kernen nicht mehr. Der Merksatz sagt beides.",
+    "Es wird die Halbwertszeit erklärt statt der Fehler von Jannis — Thema verfehlt. Auf den Satz in Anführungszeichen zeigen und fragen: Was behauptet Jannis genau?",
+    "Zufall wird als „niemand weiß es“ im Sinne von fehlendem Wissen gedeutet. Das ist für diese Klassenstufe hinnehmbar; nicht vertiefen, aber auch nicht als richtig festschreiben."
+   ]
+  },
+  "hilfe3_wort": "zufällig (auch richtig: für sich)",
+  "schwache": [
+   "Vorher gemeinsam üben, welche Knöpfe gelten. Die Simulation hat KEINE Regler, nur sieben Knöpfe: fünf Nuklide, einen Schrittknopf und einen zum Zurücksetzen. Der Schrittknopf heißt am Bildschirm „eine Halbwertszeit weiter“, der andere „Zurücksetzen“ — beide tragen davor ein Zeichen, das die Heftschrift nicht kennt und das deshalb nirgends abgedruckt ist. Zeigen Sie die zwei Knöpfe einmal am Beamer.",
+   "Die Statuszeile steht in DREI ZEILEN untereinander. Mit einem Papierstreifen nur die gerade gebrauchte Zeile freilassen: Zeile 1 nennt Nuklid und Halbwertszeit, Zeile 2 die übrigen Kerne, Zeile 3 die erwartete Zahl. Ohne diese Trennung wird regelmäßig die erwartete 100 als Messwert abgeschrieben.",
+   "Nur die zweite Tabellenspalte ausfüllen lassen; die dritte Spalte gemeinsam an der Tafel eintragen — sie heißt in allen drei Zeilen „200 von 200“, und genau das ist der Punkt: gleicher Start, verschiedene Zeit.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. „55,6 s“ mit Einheit abschreiben, nicht nur die Zahl.",
+   "Wer beim Erklären nicht anfängt, wirft zuerst 20 Münzen und zählt die Köpfe. Dann noch einmal. Die zwei verschiedenen Zahlen an den Rand schreiben lassen und danach den Satzstarter benutzen.",
+   "Beim Nuklidwechsel genügt EIN Druck auf den Nuklid-Knopf; der Schrittzähler springt von selbst auf „Nach 0 Halbwertszeiten“ (nachgemessen). Zeigen Sie das einmal am Beamer, sonst wird zusätzlich „Zurücksetzen“ gesucht und die Zeile bleibt leer."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende, zwei Stufen. (1) Bewerten: Nour sieht im Krankenhaus nur Nuklide mit kurzer Halbwertszeit. Warum nimmt eine Ärztin Iod-131 mit 8,02 Tagen und nicht Cäsium-137 mit 30,17 Jahren? Erwartet: Weil Iod-131 schnell schwächer wird und im Körper nicht jahrelang strahlt. (2) Weiterzählen mit Pfeilen, ohne Bruchrechnung: 200 Kerne → nach 1 Halbwertszeit ungefähr 100 → nach 2 Halbwertszeiten ungefähr 50. Der erste Pfeil ist vorgegeben. Wichtig: „ungefähr“ muss mitgeschrieben werden, und es bleibt bei ZWEI Schritten. Der dritte Schritt und die Prozentwerte gehören zu fn7.",
+  "kernlehrplan": "Inhaltsfeld Radioaktivität und Kernenergie (11) · Halbwertszeit und Zufall des Einzelzerfalls. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Einstellen der drei Nuklide und das Messen eines Schritts trägt E4, das Gegenüberstellen von gemessener und erwarteter Zahl E5, der Vergleich der drei Halbwertszeiten UF3, die Erklär-Aufgabe zur Reihenfolge UF1 und E6, die Vermutung zur Schwankung UF4. B1 und B2, die rk6 an der Bewertungsfrage „Warum nimmt eine Ärztin Iod-131 und nicht Cäsium-137?“ führte, liegen hier NUR in der freiwilligen Zusatzaufgabe und zählen deshalb nicht als Träger; im Band tragen fn12 B1 sowie fn4 und fn15 B2. K3 („Untersuchungen dokumentieren“) liegt bandeinheitlich auf dem AUSFÜLLEN DER TABELLE, nicht auf dem Zuhause-Auftrag: Der Münzwurf zu Hause ist ein Alltagsanker zum selben Mechanismus, kein Dokumentieren. Fachwortzählung: neu sind genau ZWEI Wörter, „Halbwertszeit T½“ (Größe plus Formelzeichen plus Einheit = ein Wort nach Zählregel 1; die Einheit wechselt hier bewusst zwischen s, Tagen und Jahren) und „Nuklid“ (im Alltagsteil mit Begriffssatz eingeführt, in der Wortbank und in Aufgabe 2 gebraucht, deshalb nach Zählregel 3 zählbar). Nicht neu eingeführt und nur als Rückverweis benutzt: Atomkern (fn1), radioaktive Strahlung (fn2). „Zerfallen“ dagegen steht HIER zum ersten Mal auf einer Schülerseite des Bandes – fn1 bis fn5 enthalten das Wort nicht, der frühere Rückverweis auf fn1 war falsch. Mitgezählt wird es trotzdem nicht: ein Alltagsverb ohne Formelzeichen und ohne Einheit (Zählregel 5). Es steht deshalb nicht in der Wortbank und bekommt im Alltagsteil einen Begriffssatz: „Zerfallen heißt: Ein Kern wird von selbst zu einem anderen Kern.“ fn7 verweist darauf zurück. Bewusst NICHT auf der Schülerseite, weil es das dritte bis fünfte Wort wäre: „Wahrscheinlichkeit“ (fünfsilbig, abstrakt; die Seite sagt durchgehend „zufällig“), „im Mittel“ (der Bildschirm schreibt es, die Seite sagt „ungefähr“ — dieselbe Aussage, eine Silbenstufe tiefer), „Isotop“, „Aktivität“, „Zerfallsgesetz“. Nach Zählregel 5 zählen „Hälfte“ und „zufällig“ nicht mit: Alltagswörter ohne Formelzeichen und ohne Einheit. Dass beide in der Wortbank stehen, ändert daran nichts — die Wortbank führt bandweit GENAU die vier Lückenwörter, sonst wäre Hilfe 1 („Alle Lückenwörter stehen in der Wortbank“) falsch. „Kern“ und „Zeit“ stehen nicht darin, weil sie in keiner Lücke gebraucht werden. Nach Zählregel 4 führt fn7 keines dieser Wörter erneut ein, sondern verweist zurück; „Alphazerfall“ und „Betazerfall“ (Erbe von rk8) gehören dort hin, nicht hierher. Datenlage und Fallen: (1) Die Zahl der übrigen Kerne ist ZUFÄLLIG und bei jedem Lauf anders. Der Faktendump zeigt 107 von 200 (53,5 %), die Beobachtung des Regelhefts 97 von 200. Deshalb steht in der Tabelle KEINE Spalte für die übrigen Kerne nach einem Schritt — sie hätte keine druckbare Lösung. Die 107 kommt nur dreimal vor: im gelösten Beispiel als Bildschirmzitat, dort abgesichert durch „Bei dir steht wahrscheinlich eine andere Zahl“ – „wahrscheinlich“, weil 107 einer von vier nachgemessenen Läufen ist und auch auf dem Schirm des Kindes stehen kann; in Aufgabe 1 ausdrücklich Nour zugeschrieben („Bei Nour steht: …“), damit sie nicht gegen die eigene Messung steht; und im Bild, das keine Messanweisung ist. Nachgemessen sind vier Läufe: 117, 103, 104, 107 — jede dieser Zahlen ist auf dem Schirm eines Kindes möglich. (2) simfakten betätigt jeden Knopf nur EINMAL. Seit dem 05.09.2026 trägt `fakten/zerfall-halbwertszeit.json` aber vier nachgemessene Kohlenstoff-14-Zustände (1 bis 4 Schritte). Damit ist belegt: Mit jedem Schritt kommt EINE Halbwertszeit dazu – die verstrichene Zeit wächst gleichmäßig (5.730 · 11.460 · 17.190 · 22.920 Jahre), sie verdoppelt sich NICHT. Halbiert wird die erwartete Kernzahl: 200 → 100 → 50 → 25 → 13. Die Statuszeile schreibt „Nach einer Halbwertszeit“, ab dem zweiten Schritt aber mit ZIFFER: „Nach 2 Halbwertszeiten“ — nicht ausgeschrieben. Die freiwillige Zusatzaufgabe 200 → 100 → 50 darf deshalb auf die Statuszeile verweisen (nachprüfen lässt sie sich an Kohlenstoff-14, nicht an Radon-220: dort ist nur ein Schritt gemessen). Unbelegt bleibt allein, was die Statuszeile nach einem Schritt bei Iod-131 oder Cäsium-137 anzeigt — die Seite fragt es deshalb nicht ab, die Tabelle verlangt für diese beiden nur Halbwertszeit und Startwert. (3) Ein Druck auf einen Nuklid-Knopf setzt den Schrittzähler selbst zurück — nachgemessen am 05.09.2026: nach zwei Schritten mit Radon-220 zeigte „Kohlenstoff-14“ sofort wieder „Nach 0 Halbwertszeiten“. Ein vorheriges „Zurücksetzen“ ist also nicht nötig; Arbeitsschritt 4 verlangt es seitdem nicht mehr und nennt dafür den Eintrag in die Tabelle. Der Rücksetzknopf bleibt am Bildschirm sichtbar und schadet nicht. (4) Die dritte Tabellenspalte („200 von 200“) ist mit Absicht in allen drei Zeilen gleich. Ihre Überschrift fragt ausdrücklich nach dem Wert VOR dem Schritt: Nach Arbeitsschritt 2 steht für Radon-220 die 107 auf dem Schirm, gedruckt steht in der Beispielzeile aber „200 von 200“ – ohne den Zeitpunkt in der Überschrift hält ein Kind das für einen Widerspruch. Sie ist die einzige Angabe, die für JEDES Nuklid belegt ist, und sie trägt die eigentliche Einsicht der Tabelle: Der Start ist immer derselbe, verschieden ist allein die Zeit — von 55,6 Sekunden bis 30,17 Jahre. Der Sprung von Sekunden auf Jahre ist der Lerninhalt, den man im Bild nicht sieht, weil jeder Bildschirm gleich aussieht; deshalb muss die Einheit in der Tabelle mitgeschrieben werden und die Spaltenüberschrift steht als ganze Frage da. Der Alltagsteil nennt seit dem Gegenlesen 8,02 Tage statt der gerundeten „acht Tage“ — die Anzeige rundet nicht, und zwei Schreibweisen derselben Größe auf einer Doppelseite sind für DaZ-Lernende die größere Hürde. Die Iod-131-Zeile ist damit vorgesagt; das ist bewusst in Kauf genommen, weil der Begriffssatz „Diese Zeit heißt Halbwertszeit T½“ eine konkrete Zeit braucht. Die eigentliche Leistung der Tabelle steckt ohnehin in der Cäsium-Zeile: 30,17 JAHRE gegen 55,6 Sekunden. (5) Plutonium-239 und Kohlenstoff-14 sind bewusst nicht in der Tabelle. Plutonium-239 steht mit „24.110 Jahre“ am Bildschirm — ein Tausenderpunkt, den DaZ-Lernende als Dezimalkomma lesen; das verstößt gegen die Hausregel „Dezimalkomma, nie Dezimalpunkt“. Kohlenstoff-14 gehört zu fn7 (Altersbestimmung). Beide Knöpfe sind am Bildschirm sichtbar; wer sie ausprobiert, macht nichts falsch, es wird nur nichts eingetragen. (6) Prozent entfällt vollständig. „53,5 %“ ist Prozent von 200, nicht von 100; Prozentrechnen ist im Förderheft nicht gesichert; Prozent kommt im ganzen Kapitel nicht vor, auch fn7 zählt ausschließlich in Kernen und hat keine Prozentspalte. Die Seite zählt in Kernen. (7) Die Statuszeile steht in DREI ZEILEN untereinander: Zeile 1 Nuklid und Halbwertszeit, Zeile 2 die übrigen Kerne, Zeile 3 die erwartete Zahl. Der senkrechte Strich, den der Faktendump zeigt, existiert am Bildschirm NICHT – er ist ein Werkzeug-Artefakt: physics-sim.js trennt mit <br>, simcheck/simfakten.js macht daraus beim Auslesen „ | “. Zeigen Sie am Beamer also drei Zeilen, kein Trennzeichen. Die Arbeitsschritte nennen die Zeile deshalb einzeln („in Zeile 1“, „in Zeile 2“, „mit Zeile 3“); ohne diese Führung wird die erwartete 100 als Messwert abgeschrieben. Hilfe 1 wiederholt die Dreiteilung. (8) Die Modellgrenze („200 Kerne sind wenige, in einem Gramm stecken rund 10²¹ Kerne“) bleibt vollständig hier: Zehn hoch einundzwanzig ist auf A2-Niveau nicht fassbar. Auf der Schülerseite steht davon nur die Sache — „Erst bei vielen Kernen stimmt die Regel“ im Merksatz. Erwähnen Sie die Größenordnung mündlich, wenn gefragt wird, warum echte Präparate so gleichmäßig zerfallen. (9) Undruckbare Zeichen: Der Schrittknopf und der Rücksetzknopf tragen vor dem Wort je ein Zeichen, ebenso die Überschrift der Simulation. SourceSans3 hat dafür keine Glyphe; sie werden nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Die Knöpfe heißen im Heft durchgehend „eine Halbwertszeit weiter“ und „Zurücksetzen“. Die Zeichen ● und ○ aus der Zeichenerklärung sind dagegen geprüft vorhanden und dürfen im Bildauftrag stehen. (10) Bewusst offen gelassen: Die Formel N(t) = N₀ · (½)^(t/T½) steht als Hinweis am Bildschirm, wird aber nirgends verlangt — weder Potenz noch Bruch. Ebenso offen bleibt das Diagramm der Simulation (Kurven „erwartet: jedes Mal die Hälfte“ und „gemessen“): Es ist am Bildschirm belegt, aber ein Kurvenvergleich wäre auf dieser Seite die dritte neue Anforderung. Er entfällt im ganzen Band: In fn7 wäre er neben der Altersbestimmung und dem Rückwärtslesen ebenfalls die dritte neue Anforderung, deshalb zeigt auch dort der Bildauftrag ein Zeitband statt eines Diagramms (entschieden am 05.09.2026). Deshalb enthält auch der Bildauftrag kein Diagramm. (11) Der Bildauftrag legt die 200 Kerne seit dem Gegenlesen in dasselbe Raster wie der Bildschirm (10 Reihen zu je 20, physics-sim.js: „Kernraster oben: 200 Kerne, 20 je Zeile“). Die frühere Vorgabe „ohne Raster, ohne Reihen, ohne Spalten“ widersprach dem Schirm, obwohl das Bild als Bildschirmzitat gebaut ist. Die didaktische Absicht bleibt vollständig erhalten – sie liegt allein auf der VERTEILUNG der 93 offenen Kreise, die im Raster ohnehin kreuz und quer liegen."
+ }
+}

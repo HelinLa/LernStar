@@ -1,0 +1,175 @@
+[
+ {
+  "sim": "messen",
+  "ueberschrift": "📏 Wie misst man Stromstärke und Spannung?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "Ⓐ Amperemeter",
+    "ruft": "_msnGeraet('ampere')"
+   },
+   {
+    "aufschrift": "Ⓥ Voltmeter",
+    "ruft": "_msnGeraet('volt')"
+   },
+   {
+    "aufschrift": "in Reihe",
+    "ruft": "_msnAnschluss('reihe')"
+   },
+   {
+    "aufschrift": "parallel",
+    "ruft": "_msnAnschluss('parallel')"
+   },
+   {
+    "aufschrift": "↺ Zurücksetzen",
+    "ruft": "_msnReset()"
+   },
+   {
+    "aufschrift": "Parallel zum Bauteil",
+    "ruft": "_msnAns(0,0)"
+   },
+   {
+    "aufschrift": "In Reihe in den Stromkreis",
+    "ruft": "_msnAns(0,1)"
+   },
+   {
+    "aufschrift": "Direkt an die Batteriepole",
+    "ruft": "_msnAns(0,2)"
+   },
+   {
+    "aufschrift": "In Reihe",
+    "ruft": "_msnAns(1,0)"
+   },
+   {
+    "aufschrift": "Parallel zum Bauteil",
+    "ruft": "_msnAns(1,1)"
+   },
+   {
+    "aufschrift": "Gar nicht",
+    "ruft": "_msnAns(1,2)"
+   },
+   {
+    "aufschrift": "Es entsteht ein Kurzschluss",
+    "ruft": "_msnAns(2,0)"
+   },
+   {
+    "aufschrift": "Es misst genauer",
+    "ruft": "_msnAns(2,1)"
+   },
+   {
+    "aufschrift": "Nichts",
+    "ruft": "_msnAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_msnSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_msnSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_msnSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('messen')"
+   }
+  ],
+  "hinweise": [
+   "Wähle ein Messgerät und schließe es an. Finde heraus: Wie muss ein Amperemeter, wie ein Voltmeter eingebaut werden? (Nur ungefährliche Kleinspannung.)",
+   "Das Amperemeter misst die Stromstärke – der Strom muss hindurchfließen, also wird es in Reihe eingebaut. Das Voltmeter misst die Spannung über einem Bauteil – es wird parallel (daneben) angeschlossen.",
+   "Amperemeter → in Reihe. | Voltmeter → parallel. | Falsch = Kurzschluss oder kein Strom."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A)."
+   },
+   {
+    "einstellung": "Ⓐ Amperemeter",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A)."
+   },
+   {
+    "einstellung": "Ⓥ Voltmeter",
+    "text": "msnStatus: ✗ Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel."
+   },
+   {
+    "einstellung": "in Reihe",
+    "text": "msnStatus: ✗ Voltmeter in Reihe: Es fließt fast kein Strom, die Lampe bleibt dunkel. Voltmeter gehört parallel."
+   },
+   {
+    "einstellung": "parallel",
+    "text": "msnStatus: ✓ Richtig! Das Voltmeter liegt parallel zur Lampe und misst die Spannung (z. B. 4,5 V)."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A)."
+   },
+   {
+    "einstellung": "Parallel zum Bauteil",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Parallel gehört das Voltmeter."
+   },
+   {
+    "einstellung": "In Reihe in den Stromkreis",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✓ Richtig! Das Amperemeter liegt in Reihe."
+   },
+   {
+    "einstellung": "Direkt an die Batteriepole",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss."
+   },
+   {
+    "einstellung": "In Reihe",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ In Reihe würde kaum Strom fließen."
+   },
+   {
+    "einstellung": "Parallel zum Bauteil",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✓ Richtig! Das Voltmeter wird parallel angeschlossen."
+   },
+   {
+    "einstellung": "Gar nicht",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an."
+   },
+   {
+    "einstellung": "Es entsteht ein Kurzschluss",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✓ Richtig! Ein sehr großer Strom fließt – Kurzschluss, Gerät in Gefahr."
+   },
+   {
+    "einstellung": "Es misst genauer",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Genauer wird es dadurch nicht – im Gegenteil."
+   },
+   {
+    "einstellung": "Nichts",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Es passiert sehr wohl etwas: ein Kurzschluss."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Es passiert sehr wohl etwas: ein Kurzschluss.  ||  msnSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Es passiert sehr wohl etwas: ein Kurzschluss.  ||  msnSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Es passiert sehr wohl etwas: ein Kurzschluss."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "msnStatus: ✓ Richtig! Das Amperemeter liegt in Reihe und misst die Stromstärke (z. B. 0,3 A).  ||  msnFb0: ✗ Direkt an die Pole wäre ein Kurzschluss.  ||  msnFb1: ✗ Man schließt es parallel an.  ||  msnFb2: ✗ Es passiert sehr wohl etwas: ein Kurzschluss."
+   }
+  ],
+  "bildtexte": [
+   "4,5 V",
+   "Lampe",
+   "A",
+   "0,3 A",
+   "Amperemeter in Reihe ✓",
+   "V",
+   "~4,5 V",
+   "Voltmeter in Reihe ✗",
+   "Voltmeter parallel ✓"
+  ]
+ }
+]

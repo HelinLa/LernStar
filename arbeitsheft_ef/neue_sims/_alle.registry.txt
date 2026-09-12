@@ -1,0 +1,38 @@
+
+  // ── SPANNENERGIE (EF) – E = ½·D·s² als Fläche unter der F-s-Geraden ──
+  'spannenergie': modal => {
+    _speInit();
+    modal.innerHTML = _speHTML();
+    _speStatus();
+    _speRenderTabelle();
+    _pSim = new PhysicsSimEngine('speAnim', 'speAnim');
+    _pSim.start(dt => _speUpdate(dt), (ctx, cv) => _speDraw(ctx, cv), []);
+  },
+  // ── WAAGERECHTER WURF (EF) – Superposition: gleichförmig quer, beschleunigt senkrecht ──
+  'wurf-waagerecht': modal => {
+    _wwfInit();
+    modal.innerHTML = _wwfHTML();
+    _wwfStatus();
+    _wwfListe();
+    _pSim = new PhysicsSimEngine('wwfAnim', 'wwfAnim');
+    _pSim.start(dt => _wwfUpdate(dt), (ctx, cv) => _wwfDraw(ctx, cv), []);
+  },
+  // ── WECHSELWIRKUNG (EF) – actio = reactio, quantitativ ──
+  'wechselwirkung-ef': modal => {
+    _wwkfInit();
+    modal.innerHTML = _wwkfHTML();
+    _wwkfStatus();
+    _pSim = new PhysicsSimEngine('wwkfAnim', 'wwkfAnim');
+    _pSim.start(dt => _wwkfUpdate(dt), (ctx, cv) => _wwkfDraw(ctx, cv), []);
+  },
+  // ── ZENTRIPETALKRAFT (EF) – alle sieben Groessen der Kreisbewegung ──
+  'zentripetalkraft': modal => {
+    _zpkInit();
+    modal.innerHTML = _zpkHTML();
+    _zpkRenderTable();
+    _zpkStatus();
+    _pSim = new PhysicsSimEngine('zpkAnim', 'zpkPlot');
+    _pSim.start(dt => _zpkUpdate(dt), (ctx, cv) => _zpkDraw(ctx, cv), []);
+    _mlabRenderTheorie(_zpk, false);
+    _mlabDrawPlot('zpkPlot', _zpk);
+  },

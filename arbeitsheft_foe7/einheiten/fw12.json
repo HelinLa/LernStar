@@ -1,0 +1,186 @@
+{
+ "seite": {
+  "id": "fw12",
+  "quelle": "ew13",
+  "sim": "schwarzes-loch",
+  "sicherheit": "Simulation",
+  "theme": "foe_weltall",
+  "titel": "Ein Kreis um ein leeres Feld",
+  "name": "Wie findet man ein schwarzes Loch?",
+  "fachwoerter_neu": [
+   "Ereignishorizont"
+  ],
+  "alltag": [
+   "Auf einer Karte hat jemand einen Kreis in ein leeres Feld gemalt.",
+   "Daneben steht nur ein Fragezeichen.",
+   "Wie markiert man etwas, das man nicht sehen kann?",
+   "Die Grenze um ein schwarzes Loch heißt Ereignishorizont."
+  ],
+  "frage": "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
+  "predict": [
+   "Licht läuft unverändert vorbei, denn Licht wiegt nichts.",
+   "Je näher das Licht vorbeiläuft, desto stärker wird es gebogen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „weit weg“ und dann „Lichtstrahl senden“.",
+   "Lies die Statuszeile ab und trage ein.",
+   "Wiederhole mit „mittel“ und „sehr nah“.",
+   "Vergleiche die drei Wege im Bild."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Abstand",
+   "Was macht der Strahl?",
+   "Kommt er wieder heraus?"
+  ],
+  "tabRows": [
+   [
+    "weit weg",
+    "läuft fast gerade weiter",
+    "ja"
+   ],
+   [
+    "mittel",
+    "",
+    ""
+   ],
+   [
+    "sehr nah",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Die Grenze, hinter der nichts mehr entkommt, heißt",
+    "loesung": "Ereignishorizont",
+    "post": "."
+   },
+   {
+    "pre": "Man sieht nicht das Loch selbst, sondern das",
+    "loesung": "Licht",
+    "post": "in seiner Nähe."
+   }
+  ],
+  "wortbank": [
+   "Ereignishorizont",
+   "Licht",
+   "gebogen",
+   "verschluckt",
+   "nichts"
+  ],
+  "beispiel": {
+   "frage": "Was passiert mit dem Strahl bei „sehr nah“?",
+   "antwort": "Der Strahl wird immer stärker zum Loch hin gebogen. Er verschwindet im Ereignishorizont. Er kommt nie wieder heraus."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Warum ist ein schwarzes Loch schwarz?",
+    "optionen": [
+     "Es besteht aus schwarzem Gestein.",
+     "Weil kein Licht herauskommt.",
+     "Weil es dort Nacht ist."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Nah am Loch wird der Lichtstrahl stark",
+      "loesung": "gebogen",
+      "post": "."
+     },
+     {
+      "pre": "Aus dem Ereignishorizont entkommt",
+      "loesung": "nichts",
+      "post": "– auch kein Licht."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Erkläre Jannis: Wie kann man etwas markieren, das man gar nicht sehen kann?",
+    "satzstarter": "Man sieht das Loch nicht, aber …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Sieh in die Tabelle: Der Strahl verrät das Loch durch seinen gebogenen Weg.",
+   "h2": "Beginne so: Man sieht das Loch nicht. Aber das Licht in seiner Nähe wird …",
+   "h3": "Fast fertige Antwort: Das Loch selbst leuchtet nicht. Wir erkennen es an seiner Wirkung auf das ___ in seiner Nähe."
+  },
+  "selbstcheck": [
+   "Ich weiß, was der Ereignishorizont ist.",
+   "Ich kann die drei Strahlwege beschreiben.",
+   "Ich kann erklären, wie man ein schwarzes Loch findet."
+  ],
+  "zuhause": "Spannt zu zweit ein Tuch. Legt einen schweren Ball in die Mitte und rollt eine Murmel vorbei: Nah am Ball wird ihre Bahn gebogen.",
+  "bildauftrag": "[BILD: in der Mitte ein schwarzer Kreis mit dünn markiertem Rand und großer Beschriftung „Ereignishorizont“; drei Lichtstrahlen laufen in verschiedenen Abständen vorbei: der äußere fast gerade (Beschriftung „weit weg“), der mittlere stark um das Loch herumgebogen („mittel“), der innere endet im Loch („sehr nah – verschluckt“); nur diese drei Linien; dunkler, ruhiger Hintergrund]"
+ },
+ "lehrer": {
+  "id": "fw12",
+  "lernziel": "Die Schülerinnen und Schüler erklären, dass man ein schwarzes Loch nicht direkt sehen kann, sondern es an seiner Wirkung auf das Licht in seiner Umgebung erkennt.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Optional als Schülerversuch: Tuch, schwerer Ball und Murmel (wie im Zuhause-Auftrag).",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 und 2 in Einzelarbeit, Aufgabe 3 zuerst im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei Statuszeilen als Karten zeigen: weit weg → nur wenig zur Seite gezogen, läuft fast gerade weiter · mittel → läuft fast einmal ganz um das Loch herum und entkommt gerade noch · sehr nah → wird immer stärker gebogen und verschwindet im Ereignishorizont, kommt nie wieder heraus.",
+  "merksatz": [
+   "Ereignishorizont",
+   "Licht"
+  ],
+  "tabelle_erwartet": [
+   [
+    "mittel",
+    "läuft fast einmal ums Loch herum",
+    "gerade noch"
+   ],
+   [
+    "sehr nah",
+    "wird verschluckt",
+    "nein"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Rückmeldung der Simulation: Da kein Licht entkommt, sehen wir nur Schwarz.",
+   "typische_fehler": [
+    "Das schwarze Loch wird für einen dunklen, kalten Planeten gehalten."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "gebogen",
+    "nichts"
+   ],
+   "typische_fehler": [
+    "„angezogen“ statt der Wortbank-Form „gebogen“.",
+    "„fast nichts“ – aus dem Ereignishorizont entkommt wirklich nichts."
+   ]
+  },
+  "a3": {
+   "erwartung": "Man sieht das Loch nicht. Aber das Licht in seiner Nähe wird gebogen, und heißes Gas leuchtet um das Loch herum. An dieser Wirkung erkennt man die Stelle – darum der Kreis auf der Karte.",
+   "alternativen": [
+    "Hinweis der Simulation zitieren: Der helle Ring ist nicht das Loch – er ist herumgelenktes Licht.",
+    "Mit der eigenen Tabelle begründet: Der gebogene Strahlweg verrät das Loch."
+   ],
+   "typische_fehler": [
+    "Man wolle das Loch als schwarzen Fleck direkt sehen – die Wirkung fehlt.",
+    "Der helle Ring wird für das Loch selbst gehalten."
+   ]
+  },
+  "hilfe3_wort": "Licht",
+  "schwache": [
+   "Die drei Strahlwege im Bild mit dem Finger nachfahren lassen.",
+   "Nur „weit weg“ und „sehr nah“ vergleichen lassen, „mittel“ danach.",
+   "Den Tuch-Versuch mit Ball und Murmel zuerst zeigen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Lies den Hinweis zum orangen Band – heißes, kreisendes Gas; die Seite, die auf uns zukommt, leuchtet heller.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · schwarze Löcher. Kompetenz K2 (Quellseite ew13) – einziger K2-Träger des Förderhefts, deshalb laut Seitenplan nicht zusammengelegt."
+ }
+}

@@ -1,0 +1,219 @@
+{
+ "seite": {
+  "id": "fv10",
+  "quelle": "ev11",
+  "sim": "freileitungen",
+  "sicherheit": "Simulation",
+  "theme": "foe_versorgung",
+  "titel": "Der Weg bis zur Steckdose",
+  "name": "Wie kommt der Strom zur Steckdose?",
+  "fachwoerter_neu": [
+   "Umspannwerk",
+   "Kilovolt (kV)"
+  ],
+  "alltag": [
+   "Jannis macht Praktikum bei den Stadtwerken.",
+   "Sein Betreuer zeigt ihm den Weg zur Steckdose.",
+   "Die lange Leitung über Land heißt Fernleitung. Warum dort Hochspannung ist, weißt du schon.",
+   "Ein Umspannwerk ändert die Spannung. kV heißt Kilovolt: 1 kV sind 1000 V."
+  ],
+  "frage": "Welche Stellen liegen auf dem Weg vom Kraftwerk bis zur Steckdose?",
+  "predict": [
+   "Aus dem Kraftwerk kommen schon 230 V. Die Spannung bleibt gleich.",
+   "Die Spannung wird unterwegs zweimal geändert: erst größer, am Ende wieder kleiner."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „5 · Konzepte im Vergleich“.",
+   "Sieh dir die fünf Kreise an. Jeder Kreis ist eine Stelle auf dem Weg.",
+   "Lies unter jedem Kreis beide Zeilen ab.",
+   "Trage sie in die Tabelle ein."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die fünf Stellen.",
+  "tabCols": [
+   "Welche Nummer?",
+   "Wie heißt die Stelle?",
+   "Was steht klein darunter?"
+  ],
+  "tabRows": [
+   [
+    "1",
+    "Kraftwerk",
+    "10–25 kV"
+   ],
+   [
+    "2",
+    "",
+    ""
+   ],
+   [
+    "3",
+    "",
+    ""
+   ],
+   [
+    "4",
+    "",
+    ""
+   ],
+   [
+    "5",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Strom geht vom Kraftwerk bis zur Steckdose. Vor der langen Leitung macht ein Umspannwerk die Spannung",
+    "loesung": "größer",
+    "post": "."
+   },
+   {
+    "pre": "Am Ende macht ein Umspannwerk sie wieder",
+    "loesung": "kleiner",
+    "post": "."
+   }
+  ],
+  "wortbank": [
+   "größer",
+   "kleiner",
+   "10–25 kV",
+   "230 V"
+  ],
+  "beispiel": {
+   "frage": "Wie liest du Stelle 1 ab?",
+   "antwort": "Im ersten Kreis steht die 1, darunter „Kraftwerk“ und klein „10–25 kV“. Beides kommt in die Tabelle."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Welche Reihenfolge zeigt das Bild?",
+    "optionen": [
+     "Kraftwerk → hoch → Fernleitung → herunter → Haushalt",
+     "Kraftwerk → herunter → Fernleitung → hoch → Haushalt",
+     "Haushalt → herunter → Fernleitung → hoch → Kraftwerk"
+    ],
+    "richtig": 0
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei Nummer 1 steht",
+      "loesung": "10–25 kV",
+      "post": "."
+     },
+     {
+      "pre": "Bei Nummer 5 steht",
+      "loesung": "230 V",
+      "post": ". So viel kommt bei dir an."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: Aus dem Kraftwerk kommen schon 230 V. Warum stimmt das nicht?",
+    "satzstarter": "Das stimmt nicht, weil im Kraftwerk …",
+    "zeilen": 3
+   }
+  ],
+  "hilfen": {
+   "h1": "kV heißt Kilovolt: 1 kV sind 1000 V. Die Wörter stehen in der Wortbank.",
+   "h2": "Sieh bei Nummer 1 nach: Dort stehen 10–25 kV. Umgerechnet sind 10 kV schon 10 000 V.",
+   "h3": "Fast fertig: Das stimmt nicht, weil im Kraftwerk 10–25 kV stehen. Das ist viel ___ als 230 V."
+  },
+  "selbstcheck": [
+   "Ich kann die fünf Stellen der Reihe nach nennen.",
+   "Ich kann unter jedem Kreis beide Zeilen ablesen und eintragen.",
+   "Ich weiß: Ein Umspannwerk macht die Spannung größer oder kleiner."
+  ],
+  "zuhause": "Suche ein Gerät mit der Aufschrift 230 V.",
+  "bildauftrag": "[BILD: große, kontrastreiche Übersicht des Stromwegs als EIN einziger waagerechter Streifen, von links nach rechts zu lesen, alles in einem Bildausschnitt. Auf einer gemeinsamen Mittellinie liegen GENAU FÜNF gleich große, randlos und vollflächig ausgefüllte Kreise in gleichem Abstand. In jedem Kreis steht groß und weiß nur seine Nummer, von links nach rechts 1, 2, 3, 4, 5. Direkt unter jedem Kreis steht in fetter, gut lesbarer Schrift sein Name, in dieser Reihenfolge: „Kraftwerk“, „hoch“, „Fernleitung“, „herunter“, „Haushalt“. Die fünf Kreise tragen fünf deutlich verschiedene, kräftige Farben, damit man sie auch in Graustufen an ihrer Helligkeit unterscheidet. Zwischen je zwei benachbarten Kreisen verbindet ein waagerechter Strich mit EINER Pfeilspitze zum rechten Nachbarn — vier Pfeile, alle in dieselbe Richtung; jeder beginnt sichtbar am Rand des einen Kreises und endet sichtbar am Rand des nächsten, keiner läuft weiter. Über dem Abschnitt zwischen Kreis 2 und Kreis 4 stehen drei einfache Strommasten auf der Verbindungslinie: je ein senkrechter Strich mit zwei kurzen Querarmen, gleich hoch, gleich weit auseinander. Unter den Namen von Kreis 2 und von Kreis 4 läuft je eine schmale waagerechte Klammer, und unter jeder Klammer steht groß dasselbe Wort: „Umspannwerk“. Ganz klein steht unter Kreis 1 „Anfang“ und unter Kreis 5 „Ende“. Weiter steht KEINE Zahl und KEIN Wort im Bild — ausdrücklich keine Spannungswerte, denn die liest die Schülerin selbst am Bildschirm ab und trägt sie in die Tabelle ein. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die fünf Kreise sind volle Farbflächen mit weißer Ziffer darin, nie Ringe, nie schraffiert, nie aus Strichen oder Rastern aufgebaut; sonst werden sie beim Verkleinern alle gleich grau und der Weg verliert seine Stationen. (2) Nebenbilder — es gibt genau diesen einen Streifen: kein zweites kleines Bild in einer Ecke, kein gezeichnetes Kraftwerksgebäude, kein Haus mit Fenstern, keine Landkarte, kein Diagramm, keine Person, kein Innenraum. Die Masten sind der einzige gegenständliche Teil des Bildes und stehen nur über der Strecke zwischen den beiden Umspannwerken. (3) Strahlengänge ins Leere — es wird keine Linie gezeichnet, die im Nichts endet: keine Blitze, keine Funken, keine Feldlinien, keine Strompfeile im Draht, keine Leitung, die aus dem Bildrand hinausläuft. Der Strom wird allein durch die vier Verbindungspfeile dargestellt. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+ },
+ "lehrer": {
+  "id": "fv10",
+  "lernziel": "Die Schülerinnen und Schüler lesen an der Simulation den WEG der Energie ab. Nach dem Knopf „5 · Konzepte im Vergleich“ zeigt der Bildschirm eine Kette aus fünf nummerierten Kreisen; unter jedem steht ein Name und darunter eine kleine Zeile: 1 Kraftwerk 10–25 kV · 2 hoch 220–380 kV · 3 Fernleitung kleiner Strom · 4 herunter 110 → 10 kV · 5 Haushalt 230 V. Sie tragen diese Zeilen in die Tabelle ein (das ist der K3-Anteil dieser Seite) und geben die Reihenfolge wieder. Sie benennen die Sache: Zwischen Kraftwerk und Steckdose wird die Spannung erst größer und am Ende wieder kleiner gemacht; die 230 V der Steckdose stehen erst bei Nummer 5. Fachlicher Ort dieser Umspannstellen — auf der Schülerseite als Wort eingeführt, am Bildschirm aber NICHT beschriftet: Umspannwerk. Ausdrücklich NICHT Ziel dieser Seite: das Warum der Hochspannung. Das trägt fv9 und wird hier in genau einem Alltagssatz zurückverwiesen.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die fünf Ergebniskarten aus diesem Lehrerteil und das Tafelbild mit der Kette der fünf Stellen. Optional als Anschauung: ein Foto eines Umspannwerks (eingezäunte Freiluftanlage) — das zeigt Stelle 2 oder Stelle 4 in der Wirklichkeit — oder ein Foto eines Strommasts vom Schulweg für Stelle 3. Der graue Kasten mit Warnschild im Wohngebiet gehört NICHT zu Stelle 4: Er sitzt zwischen Stelle 4 und Stelle 5 und wird nur mündlich erwähnt, wenn ein Kind danach fragt. Kein Schülerversuch, kein Aufbau mit Hochspannung.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Fünf Ergebniskarten vorlesen oder an die Tafel hängen, jede mit dem Bildschirmtext wörtlich und in dieser Reihenfolge. Karte 1: „1 · Kraftwerk · 10–25 kV“. Karte 2: „2 · hoch · 220–380 kV“. Karte 3: „3 · Fernleitung · kleiner Strom“. Karte 4: „4 · herunter · 110 → 10 kV“. Karte 5: „5 · Haushalt · 230 V“. Die Karten werden nebeneinander gehängt, mit vier Pfeilen dazwischen, alle nach rechts — die Reihenfolge ist die Lernsache, einzeln vorgelesene Karten genügen nicht. Dazu als Tafelbild die Kette aus fünf nummerierten Kreisen, darunter die fünf Namen; über die Strecke zwischen Kreis 2 und Kreis 4 drei einfache Strommasten zeichnen und unter Kreis 2 und Kreis 4 je eine Klammer mit dem Wort „Umspannwerk“ setzen. Wichtig beim Tafelbild: Die Spannungszeilen erst aufdecken, wenn die Tabelle ausgefüllt ist — sonst wird abgeschrieben statt abgelesen. Alternativ den Bildschirm einmal am Beamer zeigen und das Bild als Standbild stehen lassen.",
+  "merksatz": [
+   "größer",
+   "kleiner"
+  ],
+  "tabelle_erwartet": [
+   [
+    "2",
+    "hoch",
+    "220–380 kV"
+   ],
+   [
+    "3",
+    "Fernleitung",
+    "kleiner Strom"
+   ],
+   [
+    "4",
+    "herunter",
+    "110 → 10 kV"
+   ],
+   [
+    "5",
+    "Haushalt",
+    "230 V"
+   ]
+  ],
+  "a1": {
+   "richtig": 0,
+   "weg": "Das Bild wird von links nach rechts gelesen, die Kreise tragen die Nummern 1 bis 5 und vier Pfeile zeigen alle in dieselbe Richtung. Damit steht die Reihenfolge fest: Kraftwerk, hoch, Fernleitung, herunter, Haushalt — das ist die erste Option. Die zweite Option vertauscht „hoch“ und „herunter“; sie ließe die Spannung vor der langen Leitung sinken und danach steigen. Die dritte Option liest das Bild rückwärts, vom Haushalt zum Kraftwerk; auch „hoch“ und „herunter“ stehen dort in umgekehrter Folge. Beide falschen Optionen enthalten dieselben fünf Wörter — es geht allein um die Reihenfolge.",
+   "typische_fehler": [
+    "Die zweite Option wird angekreuzt: „hoch“ und „herunter“ werden verwechselt, weil beide Wörter im Bild fast gleich aussehen. Mit dem Finger die Nummern 2 und 4 nacheinander abfahren lassen und dabei laut mitlesen.",
+    "Die dritte Option wird angekreuzt, weil zuerst an die eigene Steckdose gedacht wird. Nachfragen: Wo fängt der Strom an? Der Kreis mit der 1 ist der Anfang.",
+    "Es wird gar nicht umgeschaltet: Die Simulation startet bei Station 1 und zeigt den Modellaufbau mit den zwei Spulen, nicht die Kette der fünf Kreise. Wer den Knopf „5 · Konzepte im Vergleich“ nicht gedrückt hat, sucht das Bild vergeblich.",
+    "Alle drei Optionen wirken gleich, weil nur die Wörter überflogen werden. Die Reihenfolge einmal gemeinsam mit fünf Fingern nachzählen lassen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "10–25 kV",
+    "230 V"
+   ],
+   "typische_fehler": [
+    "Bei Nummer 1 wird 230 V eingesetzt — genau die Fehlvorstellung aus der ersten Vermutung. Auf die eigene Tabelle zeigen: 230 V steht in der letzten Zeile, nicht in der ersten.",
+    "Bei Nummer 1 wird 220–380 kV eingesetzt: Zeile 1 und Zeile 2 werden verwechselt, weil beide mit kV enden. Die Nummer im Kreis mitlesen lassen.",
+    "Die Einheit fehlt („10–25“ oder „230“). Die Wortbank enthält beide Werte mit Einheit; einmal abschreiben lassen.",
+    "kV wird als V gelesen und die 10–25 für kleiner gehalten als die 230. Hier hilft nur Hilfe 1: 1 kV sind 1000 V, also sind 10 kV schon 10 000 V."
+   ]
+  },
+  "a3": {
+   "erwartung": "Das stimmt nicht, weil im Kraftwerk 10–25 kV stehen. Das ist viel mehr als 230 V. Die Spannung wird unterwegs erst größer und am Ende wieder kleiner gemacht. Die 230 V stehen erst bei Nummer 5.",
+   "alternativen": [
+    "Nur mit dem Zahlenvergleich, ohne den Weg: „Im Kraftwerk sind es 10–25 kV, und das ist mehr als 230 V.“ — reicht für die volle Wertung.",
+    "Über die Umrechnung: „10 kV sind 10 000 V. So viel kommt nicht aus der Steckdose.“",
+    "Über den Weg: „Die 230 V stehen erst bei Nummer 5, ganz am Ende.“",
+    "Mit eigenen Worten für das Umspannen: „Unterwegs wird die Spannung zweimal geändert, deshalb ist sie im Kraftwerk viel größer als in der Steckdose.“ — inhaltlich richtig; die Richtung (erst größer, dann kleiner) im Gespräch ergänzen lassen."
+   ],
+   "typische_fehler": [
+    "Die Antwort nennt nur „falsch“ oder „weil es mehr ist“, ohne eine Zahl. Nachfragen: Was steht bei Nummer 1 in deiner Tabelle? Die Angabe 10–25 kV muss vorkommen, Hilfe 3 gibt sie vor.",
+    "Es wird mit dem Verlust argumentiert („weil unterwegs Strom verloren geht“). Das ist die Frage von fv9 und hier nicht gefragt: Auf dieser Seite geht es um die Stellen auf dem Weg, nicht um den Verlust.",
+    "Nour bekommt recht, weil zu Hause ja 230 V steht. Auf die beiden Enden der Tabelle zeigen: Zeile 1 und Zeile 5 tragen verschiedene Werte.",
+    "Es wird behauptet, die Spannung werde unterwegs „aufgebraucht“. Gegenfrage: Bei Nummer 2 steht 220–380 kV — mehr als am Anfang. Etwas Aufgebrauchtes wird nicht größer."
+   ]
+  },
+  "hilfe3_wort": "mehr (auch richtig: größer)",
+  "schwache": [
+   "Vorher gemeinsam klären, welcher Knopf gilt: allein „5 · Konzepte im Vergleich“. Die vier anderen Stationsknöpfe und die drei Konzeptknöpfe werden auf dieser Seite nicht gebraucht; die Simulation startet bei Station 1, dort steht ein ganz anderes Bild.",
+   "Die erste Tabellenzeile gemeinsam laut lesen und im gelösten Beispiel die Stelle „10–25 kV“ mit dem Finger zeigen, bevor die Simulation geöffnet wird.",
+   "Wer langsam schreibt, füllt nur die dritte Spalte aus. Die Namen der fünf Stellen stehen auch im Bild dieser Seite und dürfen von dort abgeschrieben werden; die kleine Zeile steht nur am Bildschirm.",
+   "Wer den Pfeil in Zeile 4 nicht schreiben mag, darf „110 bis 10 kV“ notieren — gewertet wird der Inhalt, nicht das Zeichen. Ebenso ist „220 bis 380 kV“ in Zeile 2 in Ordnung.",
+   "Zeile 3 irritiert regelmäßig: Dort steht keine Spannung, sondern „kleiner Strom“. Vorher ankündigen, dass eine Zeile aus der Reihe fällt, sonst wird eine Zahl erfunden.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen, besonders 10–25 kV und 230 V mit Einheit.",
+   "Für DaZ-Lernende die fünf Namen vorab an der Tafel sammeln und mit der Hand von links nach rechts nachfahren: Kraftwerk – hoch – Fernleitung – herunter – Haushalt."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Schreibe die Werte der Zeilen 1, 2, 4 und 5 in Volt auf. Zeile 3 trägt keine Spannung — sie bleibt frei. 1 kV sind 1000 V. Bei Nummer 4 steht 110 → 10 kV, also 110 000 V und 10 000 V. Vergleiche zum Schluss mit den 230 V bei Nummer 5: Wo ist die Spannung am größten, wo am kleinsten? Wichtig: Es wird nur umgerechnet und verglichen. Der Verlust in der Leitung wird hier nicht berechnet — die Verlustzahlen des Bildschirms gehören zu fv9.",
+  "kernlehrplan": "Inhaltsfeld Elektrische Energieversorgung (10) · Weg der elektrischen Energie vom Kraftwerk über die Umspannwerke bis zur Steckdose. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite: Das Ankreuzen der Vermutung trägt E3, das Umschalten auf Station 5 und das Ablesen der fünf Zeilen E4, die Reihenfolge-Aufgabe UF3, die Erklär-Aufgabe zu Nours Satz UF4 und E6, die Aussage über die beiden Umspannstellen UF1. K3 („Untersuchungen dokumentieren“) liegt nach der Bandregel vom 05.09.2026 auf dem EINTRAGEN DER ABGELESENEN ZEILEN IN DIE TABELLE, nicht auf dem Zuhause-Auftrag; „Erkläre zu Hause jemandem …“ wäre Präsentieren, nicht Dokumentieren. Der Zuhause-Auftrag (ein Gerät mit der Aufschrift 230 V suchen) ist reines Beobachten und trägt keinen Code. — Abgrenzung zu fv9: Beide Einheiten benutzen dieselbe Simulation, aber nicht dasselbe Lernziel. fv9 fragt nach dem WARUM (Hochspannung macht den Strom in der Leitung klein) und arbeitet an Station 1 mit den Leitungskonzepten; fv10 fragt nach dem WEG und arbeitet allein an Station 5 mit dem Bild der Spannungsebenen. Es gibt deshalb KEINE gemeinsame Tabelle: Die Konzepttabelle von fv9 (Knopf · Strom I in A · Verlust in W, mit den Zeilen Hochspannung 0,100 A / 0,266 W und Niederspannung, CrNi 0,238 A / 1,224 W) steht ausschließlich dort; die Stationstabelle steht ausschließlich hier, und keine ihrer Zahlen kommt in fv9 vor. Der Rückverweis auf fv9 steht in genau einem Alltagssatz („Warum dort Hochspannung ist, weißt du schon“) und wird nirgends neu erarbeitet. — Fachwortzählung: neu sind genau ZWEI Wörter, „Umspannwerk“ und „Kilovolt (kV)“, beide im Alltagsteil mit Begriffssatz eingeführt. „Umspannwerk“ steht im Alltagsteil (dort wird es mit dem Begriffssatz „Ein Umspannwerk ändert die Spannung“ eingeführt), im Merksatz und im Selbstcheck, aber in KEINER Merksatz-Lücke, in keiner Hilfe-Lücke und nicht in der Wortbank. Die Merksatz-Lücken heißen „größer“ und „kleiner“ — zwei Alltagswörter nach Zählregel 5. Das Verbpaar hochspannen / herunterspannen kommt auf der Schülerseite mit Absicht NICHT vor: Es wäre nach Zählregel 3 ein DRITTES neues Fachwort (der Arbeitsdump zu ev11 führt es ausdrücklich als solches, und fv9 hat es aus demselben Grund umgangen), und es trüge auch noch beide Merksatz-Lücken. Die Bildschirmwörter „hoch“ und „herunter“ bleiben deshalb, wo sie hingehören: in der Tabelle, im Bild des Hefts und in den Optionen von Aufgabe 1 — abgelesen, nicht als Verb benutzt. „Kilovolt (kV)“ MUSS zählen: Zählregel 5 sagt ausdrücklich, dass ein Wort wieder zählt, sobald eine Einheit dazukommt. Die Umrechnung 1 kV = 1000 V steht im Alltagsteil und noch einmal in Hilfe 1 — ohne sie sind 10–25 kV und 230 V für A2–B1 nicht vergleichbar, und genau dieser Vergleich trägt Aufgabe 3. Nicht neu eingeführt und deshalb nur Rückverweis: Spannung U in Volt (V) (Förderband 8, fs3), Transformator (fv8) sowie Hochspannung und Verlust in Watt (W) — das sind, nachgesehen am 05.09.2026, genau die beiden neuen Fachwörter von fv9. „Fernleitung“ zählt nach Zählregel 5 NICHT: Es ist der Name einer Stelle im Bild, ohne Formelzeichen und ohne Einheit, genau wie „Kraftwerk“ und „Haushalt“; es steht weder in der Wortbank noch in einer Lücke, wird im Alltagsteil mit dem Begriffssatz „Die lange Leitung über Land heißt Fernleitung“ eingeführt und baut auf „Leitung“ auf, das fv9 durchgehend benutzt. Achtung, das ist geprüft und nicht geraten: fv9 führt „Fernleitung“ NICHT ein, sondern spricht von „Leitung“ und „Draht“. Der Begriffssatz muss deshalb hier stehen und darf nicht in einen Rückverweis umgeschrieben werden. Bewusst vermieden, weil sie das dritte bis sechste Wort wären: Spannungsebene, Trafostation, Ortsnetz, Leistung P in Watt. — Datenlage und Fallen: (1) Das Bild der fünf Stellen erscheint erst nach dem Knopf „5 · Konzepte im Vergleich“; der Ausgangszustand der Simulation ist Station 1 mit dem Modellaufbau (zwei Spulen, CrNi-Draht, zwei Lampen). Deshalb ist Arbeitsschritt 1 zwingend und deshalb ist die Beispielzeile der Tabelle die Zeile 1 des Bildes, nicht der Ausgangszustand der Simulation. (2) Alle fünf Zeilenpaare sind als Bildtext belegt: Kraftwerk / 10–25 kV, hoch / 220–380 kV, Fernleitung / kleiner Strom, herunter / 110 → 10 kV, Haushalt / 230 V. Im Faktendump stehen sie in genau dieser Reihenfolge hintereinander; das ist zugleich der Beleg für die Leserichtung, nach der Aufgabe 1 fragt. Dass die Kreise die Ziffern 1 bis 5 tragen, ist nur MITTELBAR belegt: In der Reihenfolge stehen „1“, „3“ und „5“ jeweils VOR ihrem Namen. „2“ und „4“ fehlen an ihrer Stelle, weil beide Ziffern weiter oben als Achsenbeschriftung des Diagramms stehen und der Dump jedes Bildwort nur einmal führt; „hoch“ fehlt aus demselben Grund, weil es schon den Trafo im Modellaufbau beschriftet (bildtexte 19). Nur „herunter“ steht genau einmal und an seiner Stelle in der Kette (bildtexte 59) — dort wurde nichts entdoppelt. Erschlossen und nicht belegt sind deshalb drei Angaben: die Ziffer 2, die Ziffer 4 und die Zuordnung von „hoch“ zu Kreis 2. (2a) Was woher stammt, sauber getrennt: Aus dem Faktendump belegt sind allein die zwölf Bildwörter der Kette. NICHT im Dump und nur im Quelltext von physics-sim.js nachgesehen (Funktion _frlDrawNetz) sind Form und Lage der Beschriftung: fünf gefüllte Kreise mit weißer Ziffer, der Name 36 px darunter, die kleine Zeile 48 px darunter, alle fünf auf einer Mittellinie. Die Seite ist damit sachlich richtig, aber „fünf Kreise“, „unter jedem Kreis“ und die Spaltenfrage „Was steht klein darunter?“ ruhen auf dieser Nachschau, nicht auf dem Dump — das ist hier ausgewiesen, damit eine ungeprüfte Angabe nicht wie eine geprüfte wirkt. Sobald `fakten/freileitungen.json` die Zeichnung von Station 5 mitführt (Form, Reihenfolge, Beschriftungszeilen), wird die Belegkette neu geschrieben. (2b) NICHT belegt und deshalb nirgends zitiert ist die Bildunterschrift des Bildschirms. Sie steht in der Simulation als Beschriftung unter der Zeichnung, der Faktendump führt sie aber nicht — simfakten liest die Bildwörter aus der Zeichnung und die Textkästen, nicht die Beschriftungszeilen darunter. Arbeitsschritt 2 sagt deshalb nur „Sieh dir die fünf Kreise an“ und nennt keinen Titel. Sobald `fakten/freileitungen.json` die Beschriftungszeilen mitführt, kann der Schritt den Titel wörtlich nennen. (3) Zeile 3 trägt KEINE Spannung, sondern die Angabe „kleiner Strom“. Die Tabellenspalte fragt deshalb neutral „Was steht klein darunter?“ und nicht „Welche Spannung?“ — sonst verlangt die Seite eine Zahl, die am Bildschirm nicht steht, und die Kinder erfinden eine. (4) Das Wort „Umspannwerk“ steht NIRGENDS am Bildschirm; dort stehen nur „hoch“ und „herunter“. Es ist ein Wort des Hefts und wird im Alltagsteil eingeführt. Nach der Heft-gegen-Sim-Regel darf es deshalb in keinem Arbeitsschritt und in keiner Ableseaufgabe vorkommen — es steht im Alltagsteil (dort wird es eingeführt), im Merksatz, im Selbstcheck und im Bild des Hefts, in keiner Hilfe und in keiner Ableseaufgabe. Fragen Sie nicht „Suche die Umspannwerke am Bildschirm“. (5) Zwei Sätze stehen als Bildtext mit im selben Bild und werden auf der Schülerseite bewusst NICHT verlangt: „Hochspannen senkt den Strom – und damit den Verlust auf der langen Strecke“ (das ist die Aussage von fv9; lesen Sie ihn vor, wenn ein Kind danach fragt) und „Genau hier arbeitet der Transformator aus Schlüsselexperiment 13“ (die Nummerierung stammt aus dem Regelheft und hat im Förderheft keine Entsprechung — nicht zitieren, sondern auf fv8 verweisen). (6) Neben dem Bild stehen an derselben Station drei weitere Knöpfe. Der Faktendump führt weder ihre Aufschriften noch ihre Wirkung, und für Station 5 enthält er auch keinen Kasten mit Vorteilen und Nachteilen. Sie werden deshalb nirgends zitiert. Die Seite verlangt deshalb keinen Zustand nach dem Drücken dieser Knöpfe; im Hinweis für schwache Lernende steht ausdrücklich, dass sie nicht gebraucht werden. Sobald `fakten/freileitungen.json` einen Zustand mit diesem Kasten trägt, kann eine Beurteilungsaufgabe nachgezogen werden. (7) Verwechslungsgefahren des Bildschirms, die diese Seite alle umgeht: die zwei verschiedenen Verlustzahlen für dasselbe Konzept (Rechnung-Kasten 0,266 W gegen Bilanz-Kasten 1,1 J), die Zahl 21,6 in zwei Bedeutungen (21,6 Ω Leitungswiderstand und 21,6 J Verlust) und die zwei Leitungswiderstände 26,6 Ω und 21,6 Ω für scheinbar dieselbe Leitung. Keine dieser Zahlen steht auf dieser Schülerseite; sie gehören zu fv9, und auch dort ist allein der Rechnung-Kasten zugelassen. (8) Rechnen: Auf der Schülerseite wird nichts ausgerechnet. Der Vergleich 10–25 kV gegen 230 V läuft über die Umrechnung 1 kV = 1000 V, die als Merkwissen im Alltagsteil steht; Hilfe 2 gibt den Zwischenschritt fertig vor (10 kV sind 10 000 V) und verlangt ihn nicht — genau dort bleibt die Klasse nach a2.typische_fehler hängen. Eine eigene Umrechnung in Volt steht nur in der freiwilligen Zusatzaufgabe; die Formeln P = U · I und P = R · I² erscheinen nirgends, auch nicht als Randnotiz. (9) Undruckbare Zeichen: Sechs Knöpfe der Simulation tragen vor dem Wort ein Emoji oder ein Sonderzeichen, ebenso die Überschrift der Simulation. SourceSans3 hat dafür keine Glyphe; sie werden deshalb nirgends zitiert — auch nicht hier im Lehrerteil, der mit derselben Schrift gesetzt wird und sie sonst als leere Kästchen druckte. Der einzige zitierte Knopf, „5 · Konzepte im Vergleich“, trägt nur den Mittelpunkt und ist geprüft druckbar. (10) Bewusst offen gelassen: Wie viele Umspannstellen wirklich auf dem Weg liegen. Das Bild zeigt genau zwei (Nummer 2 und Nummer 4), und die Seite behauptet nicht mehr; in der Wirklichkeit wird stufenweise über mehrere Ebenen heruntergespannt, was der Bildtext „110 → 10 kV“ andeutet. Deshalb nennt der Merksatz auch keinen Endwert: Ein Satz wie „am Ende herunter auf 230 V“ wäre falsch, denn Stelle 4 trägt am Bildschirm „110 → 10 kV“ — und genau diesen Wert schreibt das Kind eine Spalte weiter selbst ab. Die 230 V laufen allein über Nummer 5: Aufgabe 2 lässt sie dort ablesen, Hilfe 3 vergleicht sie mit den 10–25 kV des Kraftwerks. Wer nachfragt, bekommt die Antwort mündlich — auf der Schülerseite bliebe es eine zusätzliche neue Information ohne Beleg am Bildschirm. Ebenfalls offen: ob das Bild der fünf Stellen animiert ist oder still steht; die Seite fordert keinen Zustand nach einer Bewegung. (11) Warum in der Tabelle nur die Beispielzeile ausgefüllt ist: Beide offenen Spalten fragen nach etwas, das am Bildschirm steht — der Name der Stelle und die kleine Zeile darunter. Vorgedruckte Namen machten die zweite Spalte zur Scheinfrage („Wie heißt die Stelle?“ bei fünf schon gedruckten Namen) und beantworteten Aufgabe 1 gleich mit. Die fünf Namen stehen weiterhin im Bild dieser Seite; das ist die Stütze für langsame Schreiberinnen und der Ersatz ohne Gerät, siehe den Hinweis unter „schwache Lernende“. Aufgabe 1 prüft die Reihenfolge und ist damit bewusst bildgestützt: Auf A2 ist das Vergleichen dreier Ketten aus denselben fünf Wörtern die eigentliche Arbeit, und die Werte der dritten Spalte stehen im Bild ausdrücklich nicht."
+ }
+}

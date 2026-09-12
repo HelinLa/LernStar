@@ -1,0 +1,377 @@
+[
+ {
+  "id": "gym_kern",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "ISOTOPE",
+     "tipp": "So heißen Atome mit gleicher Protonenzahl, aber verschieden vielen Neutronen; Chlor-35 und Chlor-37 sind ein Beispiel."
+    },
+    {
+     "wort": "HALBWERTSZEIT",
+     "tipp": "Nach dieser Zeit ist im Mittel nur noch die Hälfte der Kerne übrig; bei Iod-131 sind es rund 8 Tage."
+    },
+    {
+     "wort": "BECQUEREL",
+     "tipp": "Die Einheit der Aktivität; ein Becquerel bedeutet genau einen Zerfall je Sekunde."
+    },
+    {
+     "wort": "TOTZEIT",
+     "tipp": "Die kurze Pause nach jedem Impuls, in der ein Zählrohr blind ist und deshalb hohe Raten zu klein misst."
+    },
+    {
+     "wort": "IONENPAAR",
+     "tipp": "Aus jedem getroffenen Atom entsteht eines: das herausgeschlagene Elektron und das zurückbleibende Ion."
+    },
+    {
+     "wort": "HALBWERTSDICKE",
+     "tipp": "Die Materialschicht, die Gammastrahlung halbiert; in Blei sind das rund 6 mm."
+    },
+    {
+     "wort": "ZERFALLSREIHE",
+     "tipp": "Die Kette von Zwischenkernen, über die sich Uran-238 bis zum stabilen Blei-206 umwandelt."
+    },
+    {
+     "wort": "BREMSSTRAHLUNG",
+     "tipp": "Der kontinuierliche Teil des Röntgenspektrums, der entsteht, wenn Elektronen im Feld der Kerne abgebremst werden."
+    },
+    {
+     "wort": "LORENTZKRAFT",
+     "tipp": "Diese Kraft steht immer senkrecht auf Geschwindigkeit und Feld und zwingt ein geladenes Teilchen auf eine Kreisbahn."
+    },
+    {
+     "wort": "KERNSPALTUNG",
+     "tipp": "Ein langsames Neutron trifft einen Uran-235-Kern, der daraufhin in zwei mittelschwere Bruchstücke auseinanderreißt."
+    },
+    {
+     "wort": "KETTENREAKTION",
+     "tipp": "Aus jeder Spaltung fliegen zwei bis drei Neutronen; lösen sie neue Spaltungen aus, entsteht diese sich fortsetzende Folge."
+    },
+    {
+     "wort": "SIEVERT",
+     "tipp": "In dieser Einheit misst man die Wirkung der Strahlung auf den Körper; ein Millionstel davon heißt Mikrosievert."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann mit der Kernladungszahl Z erklären, was ein Element festlegt, und Isotope wie Chlor-35 und Chlor-37 voneinander unterscheiden.",
+    "Ich kann mit N(t) = N₀·(½)^(t/T½) berechnen, wie viele Kerne nach mehreren Halbwertszeiten übrig sind, und die Aktivität in Becquerel angeben.",
+    "Ich kann erklären, warum ein Geiger-Müller-Zählrohr wegen seiner Totzeit hohe Raten zu klein misst, und die wahre Rate zurückrechnen.",
+    "Ich kann α-, β- und γ-Strahlung nach Reichweite und Ionisationsdichte unterscheiden und begründen, warum Alphastrahlung eingeatmet am gefährlichsten ist.",
+    "Ich kann angeben, welcher Absorber α-, β- und γ-Strahlung aufhält, und mit der Halbwertsdicke erklären, warum γ-Strahlung nur geschwächt, nie ganz gestoppt wird.",
+    "Ich kann erklären, dass ein einzelner Kern zufällig zerfällt und nicht altert und dass erst bei vielen Kernen die Halbwertszeit als Gesetz gilt.",
+    "Ich kann mit der Alpha- und Betaregel verfolgen, wie sich Uran-238 über eine Zerfallsreihe bis zum stabilen Blei-206 umwandelt.",
+    "Ich kann beschreiben, wie in einer Röntgenröhre Bremsstrahlung und charakteristische Linien entstehen, und Grenzwellenlänge und Linien ihren Ursachen zuordnen.",
+    "Ich kann mit r = m·v/(q·B) begründen, wovon der Radius der Kreisbahn eines geladenen Teilchens im Magnetfeld abhängt und wodurch sich der Umlaufsinn dreht.",
+    "Ich kann die Kernspaltung beschreiben und mit E = Δm·c² erklären, dass die frei werdende Energie aus dem fehlenden Massenrest stammt.",
+    "Ich kann mit dem Vermehrungsfaktor k erklären, wann eine Kettenreaktion erstirbt, gleichmäßig läuft oder lawinenartig wächst.",
+    "Ich kann die Kernfusion in der Sonne von der Spaltung unterscheiden und die drei A des Strahlenschutzes zur Senkung der Dosis anwenden."
+   ],
+   "tipps": [
+    "Halte die zwei Halbierungen des Kapitels auseinander: Die Halbwertszeit halbiert nach der Zeit die Zahl der Kerne, die Halbwertsdicke halbiert nach der Materialdicke die Gammastrahlung. Beide folgen dem Muster ein Halb hoch der Zahl der Schritte und werden nie exakt null.",
+    "Trenne Aktivität und Dosis sauber: Becquerel zählt nur die Zerfälle je Sekunde, Sievert misst die Wirkung auf den Körper. Aus der Aktivität allein folgt noch keine Gefahr – dazu brauchst du Abstand, Abschirmung und Zeit.",
+    "Merke dir für den Strahlenschutz die Rangfolge der drei A: Der Abstand wirkt am stärksten, weil er quadratisch eingeht, doppelter Abstand ergibt ein Viertel der Dosisleistung; Blei halbiert je Halbwertsdicke, und die Zeit geht einfach ein.",
+    "Schreibe die festen Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: Wichtungsfaktor 20 für Alpha und 1 für Beta und Gamma, Halbwertsdicke rund 6 mm Blei, Uran-238 endet nach 8 Alpha- und 6 Betazerfällen bei Blei-206, Fusion zündet ab rund 10 Millionen Grad."
+   ],
+   "mini": [
+    {
+     "frage": "Ein Kern hat die Kernladungszahl Z = 17 und die Massenzahl A = 37. Wie viele Neutronen hat er, und welches Element ist es?",
+     "loesung": "N = A − Z = 37 − 17 = 20 Neutronen. Z = 17 legt das Element fest, es ist also Chlor, hier Chlor-37."
+    },
+    {
+     "frage": "Eine Probe enthält 8000 Kerne. Wie viele sind nach zwei Halbwertszeiten im Mittel noch übrig?",
+     "loesung": "Nach jeder Halbwertszeit bleibt die Hälfte: 8000 → 4000 → 2000. Es sind rund 2000 Kerne, denn 8000·(½)² = 2000."
+    },
+    {
+     "frage": "Bei γ-Strahlung durch Blei kommen nach 6 mm noch 50 % durch. Wie viel Prozent kommen nach 12 mm durch?",
+     "loesung": "12 mm sind zwei Halbwertsdicken: 50 % → 25 %. Es kommen noch 25 % durch, ganz null wird es nie."
+    },
+    {
+     "frage": "Aylin verdoppelt ihren Abstand zur Quelle von 100 cm auf 200 cm. Auf welchen Teil sinkt die Dosisleistung?",
+     "loesung": "Auf ein Viertel, denn der Abstand geht quadratisch ein: Doppelter Abstand bedeutet ein Viertel der Dosisleistung."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Nach jeder Halbwertszeit ist im Mittel noch die",
+     "loesung": "Hälfte",
+     "post": "der Kerne übrig."
+    },
+    {
+     "pre": "Weil das Zählrohr nach jedem Impuls kurz blind ist, misst es hohe Raten immer zu",
+     "loesung": "klein",
+     "post": "; diese Pause heißt Totzeit."
+    },
+    {
+     "pre": "Für die Wirkung im Gewebe zählt nicht die Reichweite, sondern die",
+     "loesung": "Ionisationsdichte",
+     "post": "."
+    },
+    {
+     "pre": "Beim Alphazerfall sinkt die Massenzahl A um 4 und die Kernladungszahl Z um",
+     "loesung": "2",
+     "post": "."
+    },
+    {
+     "pre": "Von den drei A des Strahlenschutzes wirkt der Abstand am stärksten, weil er",
+     "loesung": "quadratisch",
+     "post": "eingeht."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Ein einzelner Kern altert nicht: Ein alter Kern zerfällt mit derselben Wahrscheinlichkeit wie ein frischer.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Gammastrahlung wird von genügend dickem Blei irgendwann vollständig gestoppt.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Aus dem fehlenden Massenrest der Kernspaltung wird nach E = Δm·c² Energie, während die Zahl der Kernbausteine gleich bleibt.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Die beiden scharfen charakteristischen Linien eines Röntgenspektrums wandern mit höherer Spannung zu kürzeren Wellenlängen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Ein Kernkraftwerk läuft dauerhaft bei einem Vermehrungsfaktor k = 1.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein stärkeres Magnetfeld zwingt ein geladenes Teilchen auf einen weiteren Bogen.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Die Aktivität in Becquerel und die Dosis in Sievert messen dasselbe.",
+     "stimmt": false
+    }
+   ],
+   "mc": {
+    "frage": "Eine Iod-131-Probe strahlt am Montag mit einer Aktivität von 4000 Bq; die Halbwertszeit beträgt rund 8 Tage. Wie groß ist die Aktivität nach 24 Tagen?",
+    "optionen": [
+     "2000 Bq",
+     "1000 Bq",
+     "500 Bq",
+     "1333 Bq"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Ein Präparat ist mit „4000 Becquerel“ angegeben, die Belastung eines Menschen dagegen in Mikrosievert. Erkläre den Unterschied zwischen Aktivität und Dosis und warum die Aktivität allein noch nichts über die Gefahr für den Körper sagt.",
+    "zeilen": 5,
+    "loesung": "Die Aktivität in Becquerel zählt nur, wie viele Kerne je Sekunde zerfallen: 4000 Becquerel bedeuten 4000 Zerfälle je Sekunde. Sie sagt nichts darüber, welche Strahlungsart entsteht, wie viel davon den Körper trifft und wie dicht sie dort ionisiert. Die Dosis in Sievert misst dagegen die Wirkung auf den Körper; ein Millionstel davon heißt Mikrosievert. Wie viel Dosis aus einer Aktivität wird, hängt von den drei A ab: Abstand, Abschirmung und Aufenthaltsdauer. Deshalb kann dieselbe Aktivität hinter einer Bleiwand und aus großem Abstand harmlos, ganz nah und ohne Schutz aber gefährlich sein."
+   },
+   "transfer": {
+    "frage": "Mia sagt: „Iod-131 hat 8 Tage Halbwertszeit. Nach 16 Tagen ist es also komplett weg.“ Beurteile ihre Aussage und rechne nach, wie viel der Probe nach 16 Tagen und nach 24 Tagen noch strahlt.",
+    "zeilen": 6,
+    "loesung": "Mias Aussage stimmt nicht. Nach jeder Halbwertszeit halbiert sich die Menge, sie wird aber nie ganz null. Nach 8 Tagen ist die Hälfte übrig, nach 16 Tagen ein Viertel: 100 % → 50 % → 25 %. Nach 24 Tagen, also drei Halbwertszeiten, ist es noch ein Achtel, rund 12,5 %. Mit N(t) = N₀·(½)^(t/T½) folgt derselbe Wert, denn (½)² = 1/4 und (½)³ = 1/8. „Komplett weg“ wäre die Probe erst nach sehr vielen Halbwertszeiten, exakt null wird sie nie. Nach 16 Tagen strahlt also noch ein Viertel und nach 24 Tagen noch ein Achtel."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Geiger-Müller-Zählrohr mit Anzeige und Lautsprecher",
+   "schwache Schulpräparate für α-, β- und γ-Strahlung im abgeschirmten Halter, nur von der Lehrkraft gehandhabt",
+   "Absorbersatz aus Papierblättern, Aluminiumblechen und Bleiplatten verschiedener Dicke",
+   "Nebelkammer zum Sichtbarmachen der Teilchenspuren",
+   "Stoppuhr und Maßband",
+   "Bleischürze und ein Bleiziegel aus der Sammlung",
+   "Periodensystem und eine Nuklidkarte",
+   "Schemazeichnung oder Modell einer Röntgenröhre",
+   "Dominosteine für das Modell der Kettenreaktion",
+   "ein Filmdosimeter oder das Bild eines Dosimeters",
+   "Taschenrechner, Zettel und Stift für die festen Zahlen des Kapitels"
+  ]
+ },
+ {
+  "id": "gym_energie",
+  "clues": {
+   "hinweise": [
+    {
+     "wort": "MAGNETFELD",
+     "tipp": "Rund um einen stromdurchflossenen Draht bildet sich dieses; seine Feldlinien laufen in Kreisen und lenken eine Kompassnadel ab."
+    },
+    {
+     "wort": "LORENTZKRAFT",
+     "tipp": "So heißt die Kraft, die einen stromdurchflossenen Leiter im Magnetfeld quer zu Strom und Feld wegschiebt, statt ihn anzuziehen."
+    },
+    {
+     "wort": "KOMMUTATOR",
+     "tipp": "Der geteilte Ring mit zwei Schleifkontakten, der im Motor bei jeder halben Umdrehung den Strom umpolt und ihn so am Laufen hält."
+    },
+    {
+     "wort": "DREHMOMENT",
+     "tipp": "Diese Größe M = N · B · I · A gibt an, wie kräftig die Spule im Motor gedreht wird; sie ist null, wenn die Spulenfläche quer zum Feld steht."
+    },
+    {
+     "wort": "INDUKTION",
+     "tipp": "So heißt das Erzeugen einer Spannung, das nur gelingt, solange sich der magnetische Fluss durch eine Spule ändert."
+    },
+    {
+     "wort": "GENERATOR",
+     "tipp": "Dieses Gerät dreht eine Spule im Magnetfeld und liefert dabei fortlaufend eine sinusförmige Wechselspannung, ohne dass etwas verbraucht wird."
+    },
+    {
+     "wort": "EFFEKTIVWERT",
+     "tipp": "Der Wert U_max geteilt durch Wurzel zwei; er sagt, welche Gleichspannung dieselbe Leistung brächte, und steht als 230 V an der Steckdose."
+    },
+    {
+     "wort": "TRANSFORMATOR",
+     "tipp": "Zwei Spulen auf einem gemeinsamen Eisenkern, die eine Wechselspannung fast verlustfrei hoch- oder heruntersetzen."
+    },
+    {
+     "wort": "HOCHSPANNUNG",
+     "tipp": "Mit 380 000 Volt jagt der Netzbetreiber Energie über Land, weil so der Strom klein bleibt und der Verlust R · I² stark sinkt."
+    },
+    {
+     "wort": "WIRKUNGSGRAD",
+     "tipp": "Der Anteil der eingesetzten Energie, der als Nutzen herauskommt; bei der Glühlampe nur 5 Prozent, beim Elektromotor 90 Prozent."
+    },
+    {
+     "wort": "ENTWERTUNG",
+     "tipp": "Energie geht nie verloren, doch bei jedem Schritt wird ein Teil zu Wärme; dieser Vorgang senkt ihre Brauchbarkeit."
+    },
+    {
+     "wort": "KILOWATTSTUNDE",
+     "tipp": "Die Einheit, in der Leistung mal Zeit, also der verbrauchte Strom, gemessen wird; eine kostet ungefähr 0,30 Euro."
+    }
+   ]
+  },
+  "prep": {
+   "kannIch": [
+    "Ich kann erklären, dass sich um einen stromdurchflossenen Draht ein Magnetfeld mit kreisförmigen Feldlinien bildet, und mit B = 20 µT · I / r seine Stärke berechnen.",
+    "Ich kann mit F = B · I · L die Kraft auf einen stromdurchflossenen Leiter im Magnetfeld berechnen und ihre Richtung mit der Drei-Finger-Regel der rechten Hand bestimmen.",
+    "Ich kann mit M = N · B · I · A das Drehmoment eines Motors berechnen und erklären, wie der Kommutator die Spule durch Umpolen des Stroms am Durchlaufen hält.",
+    "Ich kann begründen, dass in einer Spule nur dann eine Spannung induziert wird, wenn sich der magnetische Fluss ändert, und dass sie mit Geschwindigkeit und Windungszahl wächst.",
+    "Ich kann erklären, wie ein Generator mit Û = n · B · A · ω eine sinusförmige Wechselspannung erzeugt und warum sie in der Kantenlage am größten und bei senkrechter Fläche null ist.",
+    "Ich kann die Netzspannung als U(t) = U_max · sin(ω·t) beschreiben und mit U_eff = U_max/√2 den Effektivwert berechnen, der die umgesetzte Leistung angibt.",
+    "Ich kann mit U₁/U₂ = N₁/N₂ die Sekundärspannung eines Transformators berechnen und begründen, warum dabei keine Energie entsteht, weil der Strom im gleichen Maß sinkt.",
+    "Ich kann mit I = P/U und P_Verlust = R · I² erklären, warum Fernleitungen Hochspannung führen und der Verlust bei doppelter Spannung auf ein Viertel sinkt.",
+    "Ich kann mit η = E_nutz / E_rein den Wirkungsgrad berechnen und Geräte danach vergleichen, wie viel der eingesetzten Energie sie als Wärme verlieren.",
+    "Ich kann mit dem Energieerhaltungssatz erklären, warum Energie entwertet wird und man sie trotzdem sparen muss, welche Kraftwerksarten sich ergänzen und wie viel eine Sparmaßnahme in Kilowattstunden bringt."
+   ],
+   "tipps": [
+    "Trenne bei den Kräften sauber, was wirkt: Um den Draht laufen die Feldlinien im Kreis, und auf einen stromdurchflossenen Leiter drückt die Kraft immer quer zu Strom und Feld - hier wird nichts angezogen, es wird geschoben.",
+    "Merke dir die eine Grundregel der Induktion: Nicht das Feld, sondern seine Änderung erzeugt Spannung. Steht etwas still oder ist der Fluss gerade am größten, ist U genau null; am schnellsten ändert sich der Fluss in der Kantenlage.",
+    "Bei Trafo, Hochspannung und Wirkungsgrad hilft immer die Leistung: P = U · I bleibt am Trafo fast gleich, deshalb sinkt mit steigender Spannung der Strom; der Leitungsverlust R · I² hängt am Quadrat des Stroms; und η = Nutzen / eingesetzte Energie ist immer kleiner als 1.",
+    "Schreibe die Zahlen des Kapitels auf einen Zettel und prüfe sie an den Seiten nach: Erdfeld 20 µT, 0,01 N je Büroklammer, U_eff = 229,8 V bei U_max = 325 V, Glühlampe 5 % und LED 40 %, Netzfrequenz 50 Hz und 0,30 € je Kilowattstunde."
+   ],
+   "mini": [
+    {
+     "frage": "Berechne mit B = 20 µT · I / r das Drahtfeld bei 3,0 A und 2,0 cm Abstand und vergleiche es mit dem Erdfeld.",
+     "loesung": "B = 20 µT · 3,0 / 2,0 = 30,0 µT. Das ist stärker als das Erdfeld von 20 µT (Verhältnis 1,50), deshalb schlägt die Nadel um 56,3° nach Osten aus."
+    },
+    {
+     "frage": "Berechne mit F = B · I · L die Kraft auf den Leiter bei 0,20 T, 5,0 A und L = 0,10 m und gib sie in Büroklammern an.",
+     "loesung": "F = 0,20 T · 5,0 A · 0,10 m = 0,100 N. Bei 0,01 N je Büroklammer sind das genau 10 Büroklammern; der Stab wird dabei quer weggeschoben, nicht angezogen."
+    },
+    {
+     "frage": "Berechne den Effektivwert einer Wechselspannung mit dem Scheitelwert U_max = 325 V.",
+     "loesung": "U_eff = U_max/√2 = 325 V / √2 = 229,8 V, also ungefähr die 230 V der Steckdose. Der Scheitelwert 325 V tritt nur kurz an den Spitzen der Sinuskurve auf."
+    },
+    {
+     "frage": "Eine Glühlampe hat einen Wirkungsgrad von 5 Prozent. Wie viel von 1000 J wird zu Licht, wie viel zu Wärme?",
+     "loesung": "5 Prozent von 1000 J sind 50 J Licht. Der Rest, 950 J, wird zu Wärme. Nutzen und Verlust ergeben zusammen wieder 1000 J, denn die Energie bleibt erhalten."
+    }
+   ]
+  },
+  "test": {
+   "a1": [
+    {
+     "pre": "Um einen stromdurchflossenen Draht bilden die Feldlinien",
+     "loesung": "Kreise",
+     "post": "; ohne Strom ist der Draht kein Magnet."
+    },
+    {
+     "pre": "Ein stromdurchflossener Leiter im Magnetfeld wird quer zu Strom und Feld",
+     "loesung": "weggeschoben",
+     "post": ", nicht angezogen."
+    },
+    {
+     "pre": "In einer Spule wird nur dann eine Spannung induziert, wenn sich der magnetische",
+     "loesung": "Fluss",
+     "post": "ändert."
+    },
+    {
+     "pre": "Am Transformator gilt für die Spannungen U₁ / U₂ =",
+     "loesung": "N₁/N₂",
+     "post": "."
+    },
+    {
+     "pre": "Der Verlust in einer Leitung wächst mit dem Quadrat des",
+     "loesung": "Stroms",
+     "post": "; deshalb überträgt man mit Hochspannung."
+    }
+   ],
+   "a2": [
+    {
+     "aussage": "Um einen stromdurchflossenen Draht bildet sich ein Magnetfeld mit kreisförmigen Feldlinien.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Ein Magnet zieht einen stromdurchflossenen Kupferstab an wie einen Eisennagel zum stärkeren Pol.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Der Kommutator polt bei jeder halben Umdrehung den Strom in der Spule um.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Verdoppelt man die Geschwindigkeit des vorbeifahrenden Magneten, wird die induzierte Spannung doppelt so hoch.",
+     "stimmt": true
+    },
+    {
+     "aussage": "Der Effektivwert einer Wechselspannung ist größer als ihr Scheitelwert U_max.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Setzt ein Transformator die Spannung hoch, entsteht dabei zusätzliche Energie.",
+     "stimmt": false
+    },
+    {
+     "aussage": "Verdoppelt man die Übertragungsspannung einer Leitung, sinkt der Verlust auf ein Viertel.",
+     "stimmt": true
+    }
+   ],
+   "mc": {
+    "frage": "Ein Transformator liegt an U₁ = 230 V, das Windungsverhältnis ist N₁/N₂ = 0,5, und er überträgt 100 W. Wie groß sind Sekundärspannung U₂ und Sekundärstrom I₂?",
+    "optionen": [
+     "U₂ = 115,0 V und I₂ = 0,870 A",
+     "U₂ = 230,0 V und I₂ = 0,435 A",
+     "U₂ = 460,0 V und I₂ = 0,217 A",
+     "U₂ = 460,0 V und I₂ = 0,870 A"
+    ],
+    "richtig": 2
+   },
+   "offen": {
+    "frage": "Erkläre, warum ein Generator gerade dann die größte Spannung liefert, wenn der magnetische Fluss durch die Spule null ist.",
+    "zeilen": 5,
+    "loesung": "Die induzierte Spannung hängt nicht vom Fluss selbst ab, sondern von seiner Änderungsgeschwindigkeit: U = −n · dΦ/dt. In der Kantenlage steht die Spulenfläche parallel zum Feld, der Fluss ist gerade null, ändert sich beim Weiterdrehen aber am schnellsten. Deshalb ist dort dΦ/dt am größten und die Spannung erreicht ihren Scheitelwert Û = n · B · A · ω. Steht die Spulenfläche dagegen senkrecht zum Feld, ist der Fluss maximal, ändert sich im Umkehrpunkt für einen Augenblick aber nicht - dort ist die Spannung null. So entsteht die Sinuskurve auf dem Oszilloskop."
+   },
+   "transfer": {
+    "frage": "Leon sagt: „Der Transformator setzt die Spannung von 230 V auf 460 V hoch - also gewinnt er Energie dazu. Und die Fernleitung führt Hochspannung, weil hohe Spannung mehr Energie überträgt.“ Beurteile beide Teile der Aussage.",
+    "zeilen": 6,
+    "loesung": "Beide Teile stimmen nicht. Am Transformator gilt U₁/U₂ = N₁/N₂, und mit der höheren Spannung sinkt der Strom im gleichen Maß: Aus 230 V und 0,435 A werden 460 V und 0,217 A, das Produkt U · I bleibt rund 100 W. Die Leistung und damit die Energie bleiben also erhalten, der Trafo gewinnt nichts dazu. Auch der zweite Teil trifft es nicht: Wie viel Leistung übertragen wird, legt P = U · I fest, nicht die Spannung allein. Der eigentliche Grund für die Hochspannung ist der Verlust: Bei fester Leistung ist der Strom I = P/U, und der Leitungsverlust P_Verlust = R · I² hängt am Quadrat des Stroms. Eine hohe Spannung hält den Strom klein und senkt so den Verlust - bei doppelter Spannung auf ein Viertel."
+   }
+  },
+  "material": [
+   "Simulationen am Bildschirm",
+   "Kompass und eine gerade Leiterschiene mit Halter",
+   "regelbare Gleichstromquelle mit Amperemeter",
+   "Hufeisenmagnet und lose aufgehängter Kupferstab als Leiterschaukel",
+   "aufschraubbarer Demonstrationsmotor mit Spule, geteiltem Ring und zwei Schleifkontakten",
+   "Stabmagnet und Induktionsspulen mit 10 und 20 Windungen",
+   "Handkurbelgenerator und Oszilloskop",
+   "zerlegbarer Transformator mit Eisenkern und je einer Primär- und Sekundärspule",
+   "Hochspannungs-Übertragungsmodell mit langer Widerstandsleitung und zwei Transformatoren",
+   "Glühlampe, LED-Lampe und ein kleiner Elektromotor zum Vergleich des Wirkungsgrades",
+   "Voltmeter, Amperemeter und Verbindungskabel",
+   "Datenblatt der vier Kraftwerksarten Kohle, Kernkraft, Wind und Sonne",
+   "Zettel und Taschenrechner für Kilowattstunden und Kosten"
+  ]
+ }
+]

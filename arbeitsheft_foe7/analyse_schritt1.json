@@ -1,0 +1,898 @@
+{
+ "einheiten": [
+  {
+   "id": "oi1",
+   "lernziel": "Die Schülerinnen und Schüler beschreiben, dass eine Oberfläche das auftreffende Licht in die drei Anteile zurückgeworfen, hindurchgelassen und geschluckt aufteilt, die zusammen immer 100 Prozent ergeben.",
+   "kerninhalt": [
+    "Zurückgeworfen, hindurchgelassen und geschluckt ergeben zusammen immer 100 Prozent des Lichts.",
+    "Einzelne Anteile können null sein; durch den Spiegel geht zum Beispiel nichts hindurch.",
+    "Das geschluckte Licht macht den Körper wärmer, deshalb heizt sich schwarzes Papier in der Sonne stark auf.",
+    "Der Spiegel wirft gerichtet zurück, weißes Papier streut nach allen Seiten."
+   ],
+   "simwerte": [
+    "Der Spiegel wirft 95 % zurück und schluckt 5 %, hindurch geht nichts.",
+    "Fensterglas lässt 90 % hindurch, wirft 8 % zurück und schluckt 2 %.",
+    "Schwarzes Papier schluckt 95 %, weißes Papier wirft 80 % zurück und schluckt 20 %.",
+    "Bei jeder Oberfläche ergeben die drei Anteile zusammen 100 %.",
+    "Stellst du den Winkel zum Lot von 0° auf 80°, bleiben in der Simulation dieselben Zahlen stehen."
+   ],
+   "fachwoerter": [
+    "zurückwerfen",
+    "hindurchlassen",
+    "schlucken",
+    "streuen"
+   ],
+   "huerden": [
+    "Drei Prozentanteile gleichzeitig im Blick behalten und auf die Summe 100 % beziehen — für A2-B1 mit schwacher Bruch-/Prozentvorstellung sehr anspruchsvoll.",
+    "Langer erzählender Problemtext mit zwei Personen und vier Materialien, bevor die eigentliche Frage kommt.",
+    "Der dritte Forschen-Schritt (Winkel 0° bis 80° verstellen) führt eine zweite Variable ein, deren Ergebnis ein Negativbefund ist (»dieselben Zahlen bleiben stehen«) — schwer zu deuten."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Dreiteilung des Lichts ist die Grundlage des ganzen Optik-Kapitels und darf nicht entfallen; Problemtext, Winkelvariation und die offene Beurteilungsaufgabe (AFB III) lassen sich aber stark kürzen. Die vier Oberflächen mit ihren festen Prozentwerten aus der Statuszeile bleiben als einfache Ablesetabelle erhalten."
+  },
+  {
+   "id": "oi2",
+   "lernziel": "Die Schülerinnen und Schüler geben an, dass das Spiegelbild genauso weit hinter dem Spiegel liegt wie der Gegenstand davor und als virtuelles Bild nicht auf einem Schirm auffangbar ist.",
+   "kerninhalt": [
+    "Das Spiegelbild liegt genauso weit hinter dem Spiegel wie der Gegenstand davor.",
+    "Ein Bild hinter dem Spiegel heißt virtuell; man kann es nicht auffangen.",
+    "Es ist aufrecht und seitenverkehrt."
+   ],
+   "simwerte": [
+    "Stelle den Abstand g nacheinander auf 40, 80, 110 und 200 ein.",
+    "Bei g = 110 meldet die Statuszeile: Bild virtuell und aufrecht, 110 hinter dem Spiegel.",
+    "Stellst du 40 ein, liegt das Bild 40 dahinter, bei 200 sind es 200.",
+    "Die Antwort „Gleich weit hinter dem Spiegel wie der Gegenstand davor“ bekommt einen Haken, „Auf dem Spiegel“ wird abgelehnt."
+   ],
+   "fachwoerter": [
+    "virtuell",
+    "aufrecht",
+    "seitenverkehrt"
+   ],
+   "huerden": [
+    "Der Begriff »virtuell« ist doppelt abstrakt: ein Bild, das man sieht, das aber an seinem Ort nicht auffangbar ist — der Papiertest im Problemtext muss sprachlich sehr klar geführt werden.",
+    "Die Fachadjektive »aufrecht« und »seitenverkehrt« klingen ähnlich technisch und werden leicht verwechselt.",
+    "Der Formelbuchstabe g für den Abstand (ohne Einheit) ist eine zusätzliche Abstraktionsstufe."
+   ],
+   "entscheidung": "zusammenlegen",
+   "zusammenlegen_mit": "oi3",
+   "begruendung": "Beide Einheiten behandeln denselben ebenen Spiegel und sind fachlich direkt benachbart; die Bildregel (»genauso weit dahinter, virtuell«) lässt sich auf der gemeinsamen Seite als Merksatz mit kurzer Übung sichern, ohne eigene Simulation. Die gemeinsame Seite zeigt nur die Winkel-Simulation aus oi3, die g-Werte entfallen daher."
+  },
+  {
+   "id": "oi3",
+   "lernziel": "Die Schülerinnen und Schüler wenden das Reflexionsgesetz an: Der Einfallswinkel ist genauso groß wie der Reflexionswinkel, beide zum Lot gemessen.",
+   "kerninhalt": [
+    "Am Spiegel gilt das Reflexionsgesetz: Der Einfallswinkel ist genauso groß wie der Reflexionswinkel.",
+    "Beide werden zum Lot gemessen, also zur Senkrechten auf der Spiegelfläche, nie zur Fläche selbst.",
+    "Fällt der Strahl genau auf dem Lot ein, sind Einfallswinkel und Reflexionswinkel beide 0°."
+   ],
+   "simwerte": [
+    "Stelle den Einfallswinkel zum Lot nacheinander auf 0°, 20°, 40° und 80° ein.",
+    "Bei 0° meldet die Statuszeile: Einfallswinkel = Reflexionswinkel = 0°.",
+    "Bei 40° stehen zweimal 40°, bei 80° zweimal 80°.",
+    "Drehst du den Spiegel bei 40° um 25°, meldet die Anzeige: Spiegel um 25° gedreht, Strahl um 50° geschwenkt."
+   ],
+   "fachwoerter": [
+    "Reflexionsgesetz",
+    "Einfallswinkel",
+    "Reflexionswinkel",
+    "Lot"
+   ],
+   "huerden": [
+    "Das Lot als Bezugslinie: Winkel zur Senkrechten statt zur Spiegelfläche messen — verbreitete Fehlvorstellung, die im Original nur im Fachtext geklärt wird.",
+    "Die Doppelwinkel-Regel beim Spiegeldrehen verlangt eine zweischrittige Begründung (Lot dreht mit, beide Winkel ändern sich) — für die Fördergruppe zu mehrschrittig.",
+    "Lange Komposita (Einfallswinkel, Reflexionswinkel, Reflexionsgesetz) belasten die Lesbarkeit auf A2-B1 erheblich."
+   ],
+   "entscheidung": "zusammenlegen",
+   "zusammenlegen_mit": "oi2",
+   "begruendung": "Trägereinheit der gemeinsamen Spiegelseite: Ihre Simulation (Winkelpaare 0°/0°, 40°/40°, 80°/80°) bleibt als einzige erhalten, weil das Reflexionsgesetz die zentrale mess- und prüfbare Kompetenz des Kernlehrplans ist. Der Erweiterungsteil »Spiegel drehen — Strahl schwenkt doppelt« (25°/50°) wird als mehrschrittige Zusatzargumentation gestrichen."
+  },
+  {
+   "id": "oi4",
+   "lernziel": "Die Schülerinnen und Schüler beschreiben, dass Licht beim Übergang von Luft in Glas nur an der Grenzfläche geknickt wird (Brechung), und zwar zum Lot hin, sodass der Winkel im Glas kleiner ist als in der Luft.",
+   "kerninhalt": [
+    "An der Grenze zwischen Luft und Glas ändert das Licht seine Richtung. Das heißt Brechung.",
+    "Von Luft in Glas knickt der Strahl zum Lot hin; der Winkel im Glas bleibt kleiner als der in der Luft.",
+    "Genau auf dem Lot, also bei 0°, gibt es keinen Knick.",
+    "Davor, im Glas und dahinter läuft der Strahl geradeaus; geknickt wird er nur an der Grenzfläche."
+   ],
+   "simwerte": [
+    "Stelle den Winkel in der Luft nacheinander auf 0°, 40° und 75° ein.",
+    "Bei 40° in der Luft meldet die Statuszeile 25° im Glas, bei 75° in der Luft sind es 40° im Glas.",
+    "Drückst du „↓ genau auf das Lot“, stehen dort 0° und 0°: kein Knick."
+   ],
+   "fachwoerter": [
+    "Brechung",
+    "Grenzfläche",
+    "optisch dichter"
+   ],
+   "huerden": [
+    "Die Erklärung über »optisch dichter« und langsameres Licht ist nicht beobachtbar und für die Fördergruppe rein abstrakt — die Richtungsregel »zum Lot hin« muss ohne sie tragfähig sein.",
+    "Die Halbzylinder-Geometrie (warum an der runden Fläche kein zweiter Knick entsteht) ist eine mehrschrittige AFB-III-Argumentation.",
+    "»Zum Lot hin« setzt das Lot-Konzept aus der Spiegelseite sicher voraus — bei DaZ-Lernenden muss das Wort dort wirklich angekommen sein."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Brechung ist die unverzichtbare Grundlage für alle Folgeeinheiten (oi5 bis oi11, Linsen und Auge) und muss als eigene Seite bestehen bleiben. Gekürzt werden die Halbzylinder-Begründung und die Deutung über die Lichtgeschwindigkeit; es bleiben die Ableseregel mit den Wertepaaren 40°/25° und 75°/40° sowie der Fall 0°: kein Knick."
+  },
+  {
+   "id": "oi5",
+   "lernziel": "Die Schülerinnen und Schüler erkennen, dass Licht beim Übergang von Glas in Luft vom Lot weg gebrochen wird und über dem Grenzwinkel von 41,8° gar nicht mehr austritt (Totalreflexion).",
+   "kerninhalt": [
+    "Beim Übergang von Glas in Luft wird der Strahl vom Lot weg gebrochen.",
+    "Der Winkel in der Luft ist größer als der im Glas, nur bei 0° sind beide gleich.",
+    "Über dem Grenzwinkel von 41,8° tritt kein Licht mehr aus. Das nennt man Totalreflexion."
+   ],
+   "simwerte": [
+    "Bei 0° im Glas zeigt die Statuszeile auch 0° in der Luft, der Strahl knickt nicht.",
+    "Bei 20° im Glas sind es 31° in der Luft, bei 25° schon 39°.",
+    "Stellst du 42°, 55° oder 70° ein, meldet die Anzeige: Der Winkel liegt über dem Grenzwinkel von 41,8°, kein Licht tritt aus, alles wird zurückgeworfen.",
+    "Tabellenzeilen: Winkel im Glas 0°, Winkel im Glas 20°, Winkel im Glas 25°, Winkel im Glas 55°"
+   ],
+   "fachwoerter": [
+    "Totalreflexion",
+    "Grenzwinkel"
+   ],
+   "huerden": [
+    "Der Grenzwinkel 41,8° ist eine Dezimalzahl mit Komma und muss von zwei anderen Winkelangaben (im Glas / in der Luft) unterschieden werden.",
+    "Die Richtungsangabe 'vom Lot weg gebrochen' ist räumlich abstrakt und setzt den Begriff Lot aus den Vorseiten sicher voraus.",
+    "Der dritte Forschungsauftrag ist mehrschrittig: 55° einstellen UND gleichzeitig die Statuszeile beobachten, WÄHREND man bis 70° weiterdreht."
+   ],
+   "entscheidung": "zusammenlegen",
+   "zusammenlegen_mit": "oi6",
+   "begruendung": "Totalreflexion ist die zentrale neue Kompetenz und bleibt als Anker der gemeinsamen Seite mit oi6 erhalten; gezeigt wird nur die Glasklotz-Simulation, weil ihre Meldung den Grenzwinkel 41,8° wörtlich nennt. Reduziert auf zwei Messwerte (25° zu 39°, 55° ohne Austritt) plus Meldung."
+  },
+  {
+   "id": "oi6",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass Licht in einer gebogenen Glasfaser durch wiederholte Totalreflexion im Zickzack bis zum Ende läuft.",
+   "kerninhalt": [
+    "Ab dem Grenzwinkel von etwa 42° wird das Licht an der Wand vollständig zurückgeworfen.",
+    "Im Lichtleiter läuft das Licht im Zickzack bis zum Ende.",
+    "Weil der Stab nur sanft gebogen ist, bleibt der Winkel an jeder Wand groß genug. Genau so arbeiten Glasfaserkabel."
+   ],
+   "simwerte": [
+    "Bei 85° und bei 60° meldet die Statuszeile, dass der Winkel über dem Grenzwinkel liegt: Totalreflexion, das Licht bleibt im Lichtleiter.",
+    "Stellst du 40° oder 20° ein, also weniger als die 42° des Grenzwinkels, erscheint im Bild „Licht tritt aus“.",
+    "Tabellenzeilen: Winkel 20°, Winkel 40°, Winkel 60°, Winkel 85°"
+   ],
+   "fachwoerter": [
+    "Lichtleiter",
+    "Glasfaserkabel"
+   ],
+   "huerden": [
+    "Der Zusammenhang ist gegenläufig zur Intuition: großer Winkel bedeutet 'Licht bleibt drin', kleiner Winkel bedeutet 'Licht tritt aus'.",
+    "Der Problemtext ist lang und erzählerisch (Bündel, Tischkante, Taschenlampe), bevor die eigentliche Frage kommt.",
+    "Die Multiple-Choice-Optionen enthalten eingebaute Widerlegungen in zwei Sätzen — sprachlich sehr dicht für A2-B1."
+   ],
+   "entscheidung": "zusammenlegen",
+   "zusammenlegen_mit": "oi5",
+   "begruendung": "Fachlich direkt benachbart: dieselbe Totalreflexion, nur als Anwendung. Der Lichtleiter wird auf der gemeinsamen Seite ohne eigene Simulation als Anwendungsabschnitt geführt (Zickzack-Bild, Glasfaserkabel als Alltagsbezug), so bleibt die Kernlehrplan-Anwendung erhalten und eine ganze Seite entfällt."
+  },
+  {
+   "id": "oi7",
+   "lernziel": "Die Schülerinnen und Schüler unterscheiden Sammellinse und Zerstreuungslinse und beschreiben, dass die Sammellinse paralleles Licht im Brennpunkt bündelt, dessen Abstand zum Glas die Brennweite f ist.",
+   "kerninhalt": [
+    "Ein Glas, das in der Mitte dicker ist, heißt Sammellinse. Es lenkt paralleles Licht zueinander hin.",
+    "Alle Strahlen treffen sich in einem Punkt hinter dem Glas, dem Brennpunkt. Dort ist es am hellsten und am heißesten.",
+    "Der Abstand vom Glas zum Brennpunkt heißt Brennweite f.",
+    "Ein Glas, das in der Mitte dünner ist, heißt Zerstreuungslinse. Es lenkt die Strahlen auseinander."
+   ],
+   "simwerte": [
+    "Beim Glas „in der Mitte dicker“ laufen alle Strahlen zusammen. Die Anzeige nennt den Brennpunkt 90 hinter dem Glas, dort ist es am hellsten und heißesten.",
+    "Stellst du 45 ein, rückt der Punkt näher heran, bei 150 weiter weg.",
+    "Beim Glas „in der Mitte dünner“ laufen die Strahlen auseinander, rückwärts verlängert kommen sie aus einem Punkt 90 vor dem Glas.",
+    "Tabellenzeilen: in der Mitte dicker, f = 45; in der Mitte dicker, f = 90; in der Mitte dicker, f = 150; in der Mitte dünner, f = 90"
+   ],
+   "fachwoerter": [
+    "Sammellinse",
+    "Zerstreuungslinse",
+    "Brennpunkt",
+    "Brennweite"
+   ],
+   "huerden": [
+    "Vier neue Fachwörter auf einer Seite, darunter das lange Kompositum Zerstreuungslinse — für DaZ-Lernende schwer zu lesen und zu unterscheiden.",
+    "Die Denkoperation 'rückwärts verlängert kommen sie aus einem Punkt vor dem Glas' ist abstrakt und nur gedanklich nachvollziehbar.",
+    "Die Brennweite tritt als Variable f mit reinen Zahlwerten (45, 90, 150) ohne Einheit auf."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Sammellinse, Brennpunkt und Brennweite sind unverzichtbare Grundlage für Fernrohr, Lupe, Auge und Brille — streichen unmöglich. Vereinfacht auf zwei kontrastierende Fälle (dicker mit f = 90 gegen dünner) und nur zwei statt vier Fachwort-Neueinführungen im Merkteil; die Zerstreuungslinse bleibt qualitatives Gegenbeispiel ohne den Schritt 'rückwärts verlängert'."
+  },
+  {
+   "id": "oi8",
+   "lernziel": "Die Schülerinnen und Schüler beschreiben, wie Größe und Lage des Bildes einer Sammellinse von der Gegenstandsweite abhängen und dass nur näher als die Brennweite ein aufrechtes, virtuelles Bild entsteht.",
+   "kerninhalt": [
+    "Vor der Linse liegen zwei wichtige Marken: der Brennpunkt F bei 62 und der doppelte Abstand 2F bei 124.",
+    "Steht der Gegenstand weiter weg als 2F, wird das Bild kleiner als er selbst und steht auf dem Kopf. Solche Bilder kann man auf einem Schirm auffangen, sie heißen reell.",
+    "Innerhalb der Brennweite kippt alles: Das Bild wird aufrecht, größer und virtuell."
+   ],
+   "simwerte": [
+    "Bei g = 190 meldet die Statuszeile: verkleinert, umgekehrt, reell.",
+    "Bei g = 124, also genau bei 2f, ist es gleich groß und immer noch umgekehrt.",
+    "Bei g = 100 liegt es zwischen f und 2f, wird größer und bleibt umgekehrt.",
+    "Bei g = 25, näher als f = 62, steht es aufrecht, vergrößert und virtuell.",
+    "Tabellenzeilen: g = 190, g = 124, g = 100, g = 25"
+   ],
+   "fachwoerter": [
+    "reell",
+    "virtuell",
+    "Gegenstandsweite"
+   ],
+   "huerden": [
+    "Die Begriffspaare reell/virtuell und aufrecht/umgekehrt sind abstrakte Fremd- bzw. Fachwörter ohne Alltagsanker.",
+    "Gleichzeitiger Umgang mit drei Zahlgrößen (g, f = 62, 2f = 124) verlangt mehrfache Größenvergleiche pro Fall.",
+    "Die Fallunterscheidung hat vier Zonen (weiter als 2F, genau 2F, zwischen F und 2F, näher als F) — eine mehrschrittige Wenn-dann-Logik."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Bildentstehung an der Sammellinse ist die zentrale Kompetenz, auf der Fernrohr, Lupe, Auge und Kamera (oi9-oi12) aufbauen. Vereinfacht auf die zwei Kontrastfälle g = 190 (verkleinert, umgekehrt, reell) und g = 25 (aufrecht, vergrößert, virtuell); die Zwischenfälle g = 124 und g = 100 entfallen samt Vier-Zonen-Logik."
+  },
+  {
+   "id": "oi9",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass eine Lupe (Sammellinse) nur dann ein vergrößertes, aufrechtes Bild zeigt, wenn der Gegenstand näher an der Lupe steht als die Brennweite.",
+   "kerninhalt": [
+    "Eine Lupe ist eine Sammellinse.",
+    "Vergrößert und aufrecht sieht man nur, wenn der Gegenstand näher als f steht.",
+    "Je näher der Abstand g an die Brennweite f heranrückt, desto stärker wird die Vergrößerung."
+   ],
+   "simwerte": [
+    "g = 10",
+    "g = 32",
+    "g = 48",
+    "g = 60",
+    "f = 58",
+    "etwa 1,2-fache Vergrößerung",
+    "2,2-fach",
+    "5,8-fach",
+    "g ≥ f: kein aufrechtes Lupenbild"
+   ],
+   "fachwoerter": [
+    "Lupe",
+    "Vergrößerung",
+    "virtuell"
+   ],
+   "huerden": [
+    "Abstrakter Begriff „virtuell“ (ein Bild, das man nicht auffangen kann) ist für A2-B1 schwer greifbar.",
+    "Bedingungssatz mit Formelzeichen („näher als f“, Vergleich von g mit f = 58) verlangt Symbolverständnis.",
+    "Die Bildschirmmeldung „g ≥ f: kein aufrechtes Lupenbild“ enthält das Zeichen ≥, das die Zielgruppe nicht sicher liest."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Lupe bleibt als anschauliche Anwendung der Sammellinse, wird aber gekürzt: zwei Messpunkte plus Grenzfall statt vier Tabellenzeilen, „virtuell“ nur als Merkwort ohne Aufgabe, die offene Vergleichsaufgabe (AFB III) entfällt. Die Kernregel „nur innerhalb der Brennweite“ bleibt vollständig erhalten."
+  },
+  {
+   "id": "oi10",
+   "lernziel": "Die Schülerinnen und Schüler beschreiben, dass die Augenlinse auf der Netzhaut ein umgekehrtes Bild erzeugt und es durch Ändern ihrer Wölbung scharf hält, während die Pupille nur die Lichtmenge regelt.",
+   "kerninhalt": [
+    "Auf der Netzhaut entsteht ein umgekehrtes Bild.",
+    "Zum Scharfstellen verformt sich die Augenlinse: nah stärker gewölbt, fern flacher.",
+    "Die Pupille wirkt wie eine Blende und regelt nur die Lichtmenge."
+   ],
+   "simwerte": [
+    "Bild scharf auf der Netzhaut (umgekehrt)",
+    "Linse flacher (fern)",
+    "Linse stark gewölbt (nah)",
+    "eng",
+    "weit"
+   ],
+   "fachwoerter": [
+    "Netzhaut",
+    "Augenlinse",
+    "Pupille",
+    "reell",
+    "Akkommodation"
+   ],
+   "huerden": [
+    "Zwei schwere Fremdwörter („Akkommodation“, „reell“), die für die Fördergruppe nur rezeptiv tragbar sind.",
+    "Die Tabelle variiert zwei Größen gleichzeitig (Abstand und Pupille) — vier Kombinationen sind ein mehrschrittiger Auftrag.",
+    "Die zwei Funktionen sind leicht zu verwechseln: Linse macht scharf, Pupille macht hell — beides passiert am selben Auge."
+   ],
+   "entscheidung": "uebernehmen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Bildentstehung im Auge ist die zentrale Kompetenz des Kapitels und der fachliche Anker für oi11; die Simulation meldet rein qualitativ (kein einziger Zahlenwert), was der Zielgruppe entgegenkommt. Die Einheit bleibt als eigene Seite vollständig erhalten und wird nur sprachlich angepasst."
+  },
+  {
+   "id": "oi11",
+   "lernziel": "Die Schülerinnen und Schüler ordnen zu, dass ein kurzsichtiges Auge eine Zerstreuungslinse und ein weitsichtiges Auge eine Sammellinse braucht, damit das Bild genau auf der Netzhaut liegt.",
+   "kerninhalt": [
+    "Ein scharfes Bild entsteht nur, wenn sich die Lichtstrahlen genau auf der Netzhaut treffen.",
+    "Kurzsichtige Augen brauchen eine Zerstreuungslinse — ohne Brille liegt das Bild vor der Netzhaut.",
+    "Weitsichtige Augen brauchen eine Sammellinse — ohne Brille liegt das Bild hinter der Netzhaut.",
+    "Mit Brille liegt das Bild bei beiden Sehfehlern genau auf der Netzhaut und ist scharf."
+   ],
+   "simwerte": [
+    "Ohne Brille liegt das Bild vor der Netzhaut, unscharf, nötig ist eine Zerstreuungslinse",
+    "unscharf – Bild vor der Netzhaut",
+    "Mit Brille liegt das Bild genau auf der Netzhaut und ist scharf",
+    "Mit Sammellinse liegt das Bild genau auf der Netzhaut, scharf"
+   ],
+   "fachwoerter": [
+    "kurzsichtig",
+    "weitsichtig",
+    "Sehfehler"
+   ],
+   "huerden": [
+    "Das Minimalpaar „kurzsichtig/weitsichtig“ klingt ähnlich und wird von DaZ-Lernenden leicht vertauscht.",
+    "Die Ortslogik „vor/hinter der Netzhaut“ plus Korrekturrichtung („Treffpunkt nach hinten/nach vorn schieben“) verlangt mehrschrittige Raumvorstellung.",
+    "Die MC-Optionen und die Beurteilungsaufgabe sind zweisätzige Texte mit eingebauten Begründungen (AFB III) — zu lang für A2-B1."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Sehhilfen sind eine zentrale Kernlehrplan-Kompetenz und brauchen die eigene Simulation, denn nur dort steht die Bildlage am Bildschirm; ein Zusammenlegen mit oi10 würde eine der beiden Simulationen und damit die Prüfbarkeit kosten. Gekürzt werden die AFB-III-Beurteilung und die langen MC-Optionen; der Kern schrumpft auf die 2x2-Zuordnung, die die Tabelle schon vorgibt."
+  },
+  {
+   "id": "oi12",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass die Lochkamera wegen der geradlinigen Ausbreitung des Lichts ein umgekehrtes Bild erzeugt, das mit längerer Kamera größer und mit größerem Loch heller, aber unscharf wird.",
+   "kerninhalt": [
+    "Licht breitet sich geradlinig aus.",
+    "Das Bild der Lochkamera steht auf dem Kopf, weil sich die Strahlen im Loch kreuzen.",
+    "Je länger die Kamera, desto größer das Bild.",
+    "Ein größeres Loch lässt mehr Licht durch, macht das Bild aber unscharf."
+   ],
+   "simwerte": [
+    "g = 40 cm",
+    "b = 29 cm, Loch klein",
+    "b = 39 cm, Loch klein",
+    "b = 51 cm, Loch klein",
+    "b = 51 cm, Loch groß",
+    "Bild umgekehrt, kleiner als der Gegenstand, scharf",
+    "bei b = 39 cm ist es etwa so groß wie der Gegenstand, bei b = 51 cm größer",
+    "Mit großem Loch meldet die Anzeige unscharf"
+   ],
+   "fachwoerter": [
+    "Lochkamera",
+    "Bildweite",
+    "Gegenstandsweite"
+   ],
+   "huerden": [
+    "Die Formel B/G = b/g arbeitet mit vier Zeichen, die sich nur durch Groß-/Kleinschreibung unterscheiden — für die Fördergruppe kaum unterscheidbar.",
+    "Berechnungs- und Umstellaufgaben (B = G · b/g, b = g · B/G) sind mehrschrittige Bruchrechnung.",
+    "Die Tabelle variiert zwei Größen (Bildweite und Lochgröße) in vier Kombinationen — ein mehrschrittiger Auftrag."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Geradlinige Ausbreitung und umgekehrtes Bild bleiben als Kernlehrplan-Kern mit der Simulation erhalten; die Abbildungsformel B/G = b/g samt beiden Rechenaufgaben entfällt zugunsten der zwei qualitativen Je-desto-Regeln, die die Statuszeile wörtlich hergibt. Das halbiert den Aufgabenumfang, ohne eine zentrale Kompetenz zu streichen."
+  },
+  {
+   "id": "oi13",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass weißes Licht eine Mischung aller Spektralfarben ist, die das Prisma nur trennt und nicht selbst erzeugt.",
+   "kerninhalt": [
+    "Weißes Licht ist eine Mischung aller Spektralfarben.",
+    "Am stärksten bricht das Prisma Violett, am wenigsten Rot.",
+    "Hinter dem Prisma liegen die Farben von Rot bis Violett nebeneinander und bilden ein Spektrum.",
+    "Ein roter Strahl lässt sich im Prisma nicht weiter zerlegen, denn er ist einfarbig."
+   ],
+   "simwerte": [
+    "Statuszeile bei „weißes Licht\": „Das weiße Licht wird in alle Spektralfarben zerlegt, von Rot bis Violett.\"",
+    "Statuszeile bei „nur Rot\": „Rotes Licht wird nur gebrochen, aber nicht weiter zerlegt.\" (bei „nur Blau\" steht dasselbe)",
+    "Beschriftung im Bild bei „nur Blau\": Das Bild nennt den Strahl „einfarbig\".",
+    "Im Bild steht Rot am einen Rand des Fächers, Violett am anderen.",
+    "Einstellungen laut Tabelle: „weißes Licht\", „nur Rot\", „nur Blau\""
+   ],
+   "fachwoerter": [
+    "Prisma",
+    "Spektralfarben",
+    "Spektrum",
+    "einfarbig"
+   ],
+   "huerden": [
+    "Kontraintuitive Kernidee: Die Farben stecken unsichtbar im weißen Licht – die naheliegende Alltagsvorstellung „das Glas färbt das Licht\" wird als Predict-Option sogar angeboten und muss aktiv verworfen werden.",
+    "Das Wortpaar „brechen\" und „zerlegen\" klingt ähnlich, meint aber Verschiedenes; der Satz „wird nur gebrochen, aber nicht weiter zerlegt\" trägt die ganze Pointe.",
+    "Langer erzählender Problemtext mit zwei Personen und einer indirekt gestellten Frage."
+   ],
+   "entscheidung": "uebernehmen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Zerlegung weißen Lichts ist die zentrale Kompetenz des ganzen Farbenblocks und Grundlage für oi14 und oi15; sie darf nicht entfallen. Die Simulation liefert rein qualitative, kurze Meldungen ohne Zahlen – das trägt auch auf A2-B1, wenn Problemtext und Fachtext sprachlich entlastet werden."
+  },
+  {
+   "id": "oi14",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass ein Bildschirm alle Farben aus rotem, grünem und blauem Licht zusammenmischt (additive Farbmischung).",
+   "kerninhalt": [
+    "Ein Bildschirm mischt Licht aus Rot, Grün, Blau.",
+    "Alle drei Werte auf 255 ergeben Weiß, alle auf 0 ergeben Schwarz.",
+    "Rot und Grün ergeben Gelb.",
+    "Das Auge trennt die winzigen Leuchtflächen nicht mehr und zählt ihr Licht zu einer einzigen Farbe zusammen – das heißt additive Farbmischung."
+   ],
+   "simwerte": [
+    "Ausgangszustand im Statusfeld: Ergebnisfarbe „Rot\" mit R 220, G 60 und B 60",
+    "Nach „aus\": „Schwarz (kein Licht)\" mit R 0, G 0, B 0",
+    "Bei „Gelb\": R 255, G 255, B 0 – Blau ist ganz aus",
+    "Regler Blau auf 255: Ergebnisfarbe „Weiß\" mit R 255, G 255, B 255",
+    "Knöpfe und Regler laut Auftrag: „aus\", „Gelb\", „Weiß\", Regler „Blau\" von 0 auf 255"
+   ],
+   "fachwoerter": [
+    "Bildpunkt",
+    "Leuchtfläche",
+    "additive Farbmischung"
+   ],
+   "huerden": [
+    "Die Zahlentripel von 0 bis 255 sind für die Zielgruppe abstrakt: drei einheitenlose Werte pro Messung gleichzeitig ablesen und notieren überfordert schnell.",
+    "Lichtmischung widerspricht der Malfarben-Erfahrung (Rot + Grün = Gelb statt Braun) – die Fehlvorstellung muss explizit bearbeitet werden.",
+    "Mehrschrittiger Forschungsauftrag: ablesen, zwei Knöpfe drücken, jedes Mal drei Werte notieren, Regler schieben, vergleichen."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die additive Farbmischung bleibt als Kerninhalt erhalten, wird aber auf die drei Extremfälle Schwarz (0/0/0), Gelb (255/255/0) und Weiß (255/255/255) reduziert; der Ausgangszustand R 220/60/60 und das Dreifach-Notieren entfallen. Ein Zusammenlegen mit oi13 scheidet aus, weil die gemeinsame Seite nur eine Simulation zeigen könnte und Prisma-Zerlegung und RGB-Mischung zwei verschiedene Simulationen brauchen."
+  },
+  {
+   "id": "oi15",
+   "lernziel": "Die Schülerinnen und Schüler weisen mit dem Thermometer nach, dass hinter dem sichtbaren Spektrum unsichtbares Licht ankommt (Infrarot und Ultraviolett).",
+   "kerninhalt": [
+    "Hinter dem roten Rand liegt Infrarot; man merkt es als Wärme.",
+    "Vor dem violetten Rand liegt Ultraviolett; es macht den Sonnenbrand.",
+    "Nur der schmale Streifen von etwa 380 bis 780 Nanometern erreicht die Sehzellen.",
+    "Herschel wies das unsichtbare Licht hinter dem letzten Rot mit einem Thermometer nach."
+   ],
+   "simwerte": [
+    "Bei „555 nm – Grün\": Anzeige „sichtbares Licht\", Erwärmung von 38 Prozent",
+    "Bei „700 nm – letztes Rot\": 62 Prozent, die Anzeige nennt die Stelle noch „sichtbares Licht\"",
+    "Bei „310 nm – Sonnenbrand\": Anzeige „UV-B\", das Auge sieht nichts, es wärmt nur 3 Prozent",
+    "Bei „940 nm – Fernbedienung\": das Auge sieht nichts, die Erwärmung liegt bei 90 Prozent",
+    "Regler ganz rechts bei 1100 nm: Erwärmung 100 Prozent"
+   ],
+   "fachwoerter": [
+    "Infrarot",
+    "Ultraviolett",
+    "Nanometer",
+    "UV-B"
+   ],
+   "huerden": [
+    "Fünf abstrakte Nanometer-Werte (310, 555, 700, 940, 1100) mit einer unbekannten Einheit; pro Messpunkt müssen zwei Angaben (Bereich und Erwärmung) gleichzeitig abgelesen werden.",
+    "Die Kernaussage ist eine doppelte Negation („Licht, das man nicht sieht, ist trotzdem da\") – logisch und sprachlich anspruchsvoll für DaZ-Lernende.",
+    "Die Abschlussaufgabe verlangt ein Beurteilen mit Messwertbegründung (AFB III) über mehrere Sätze."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Wirkungen unsichtbarer Strahlung (Infrarot wärmt, Ultraviolett macht Sonnenbrand) sind Kernlehrplan-relevant und alltagsnah, daher kein Streichen; gekürzt wird auf drei statt fünf Messpunkte (310, 700, 940 nm) mit den Alltagsankern Sonnenbrand und Fernbedienung. Ein Zusammenlegen mit oi13 scheitert an der Ein-Simulation-Regel: Die Herschel-Messung braucht die eigene Thermometer-Simulation, die die Prisma-Meldungen aus oi13 nicht ersetzt."
+  },
+  {
+   "id": "ew1",
+   "lernziel": "Die Schülerinnen und Schüler unterscheiden Selbstleuchter (Sonne und Sterne) von beleuchteten Körpern (Mond und Planeten), die wir nur sehen, solange Sonnenlicht auf sie fällt.",
+   "kerninhalt": [
+    "Die Sonne und alle Sterne geben eigenes Licht ab; sie sind Selbstleuchter.",
+    "Den Mond und die Planeten sehen wir nur, weil die Sonne sie beleuchtet.",
+    "Ein Stern ist nichts anderes als eine ferne Sonne, nur viel weiter weg.",
+    "Fehlt das Sonnenlicht, sind Mond und Planeten sofort dunkel."
+   ],
+   "simwerte": [
+    "Statuszeile bei Sonne und Stern: „leuchtet selbst, Selbstleuchter“",
+    "Statuszeile bei Mond und Planet: er „leuchtet nicht selbst, sondern wird von der Sonne beleuchtet“",
+    "Nach „Sonnenlicht abdecken“: „Mond und Planet werden sofort dunkel und leuchten nicht nach“",
+    "Nach dem Abdecken: „strahlen Sonne und Stern unverändert weiter“",
+    "Auswahlkörper laut Tabelle/Forschen: Sonne, Stern, Mond, Planet; Knöpfe „Sonnenlicht abdecken“ und „↺ Zurücksetzen“"
+   ],
+   "fachwoerter": [
+    "Selbstleuchter",
+    "beleuchtet werden",
+    "Himmelskörper"
+   ],
+   "huerden": [
+    "Langer erzählender Problemtext mit zwei Figuren und einer Sternkarten-Rahmenhandlung, der zur Leitfrage nichts Fachliches beiträgt.",
+    "Verwechslungsgefahr zwischen „leuchtet selbst“ und „wird beleuchtet“ – für DaZ-Lernende schwierig (Passivform, Vorsilbe be-).",
+    "Der Forschen-Auftrag verlangt 4 Körper mal 2 Zustände, also 8 Ablesungen plus Vergleich – mehrschrittig."
+   ],
+   "entscheidung": "uebernehmen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Zentrale KLP-Kompetenz (Selbstleuchter vs. beleuchtete Körper) und rein qualitativ mit eindeutigen Statuszeilen-Meldungen – ideal als niedrigschwelliger Einstieg in die Reihe. Nur der Problemtext und die Ablesetabelle werden sprachlich verschlankt, der fachliche Umfang bleibt voll erhalten."
+  },
+  {
+   "id": "ew2",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass Tag und Nacht entstehen, weil sich die Erde in etwa 24 Stunden einmal um ihre eigene Achse dreht.",
+   "kerninhalt": [
+    "Tag und Nacht entstehen, weil sich die Erde um ihre eigene Achse dreht.",
+    "Für eine volle Drehung braucht die Erde etwa 24 Stunden; das ist ein Tag.",
+    "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel; dort ist Tag – die andere Hälfte liegt im eigenen Schatten der Erde."
+   ],
+   "simwerte": [
+    "Reglerstellungen laut Forschen: „0°, 90°, 180° und 270°“ am Regler „Erde von Hand drehen“; Knopf „⏯ Pause“",
+    "Bei 0°: „Ben hat Nacht, bei ihm ist Mitternacht, und Yumi hat gleichzeitig Tag“",
+    "Bei 90°: „steht Ben genau an der Grenze zwischen heller und dunkler Seite“",
+    "Bei 180°: „Ben hat Sonne, Yumi Nacht“",
+    "Bei 270°: Ben „wieder an dieser Grenze, diesmal auf dem Weg in die Nacht“",
+    "„Nach einer vollen Drehung, in Wirklichkeit 24 Stunden, steht alles wie am Anfang“"
+   ],
+   "fachwoerter": [
+    "Erdachse (eigene Achse)",
+    "Erddrehung",
+    "Tagseite/Nachtseite (helle und dunkle Seite)"
+   ],
+   "huerden": [
+    "Gradangaben 0° bis 270° sind abstrakt; die Grenzstellungen 90° und 270° verlangen zusätzlich Richtungsdenken („auf dem Weg in die Nacht“).",
+    "Ständiger Perspektivwechsel zwischen Ben und Yumi – gleichzeitig Tag UND Nacht denken überfordert bei geringer Lesekompetenz schnell.",
+    "Die offene Übungsaufgabe verlangt die Rechnung 360° zu 24 h, also 90° zu 6 h – Bruchrechnung auf AFB-II-Niveau."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Tag und Nacht durch Erddrehung ist unverzichtbarer Kernlehrplan-Inhalt, aber die vier Reglerstellungen samt Grenzfällen und die 6-Stunden-Rechnung übersteigen die Zielgruppe. Reduktion auf die Gegenüberstellung 0° und 180° (Ben/Yumi vertauscht) trägt die ganze Kernaussage; die Rechenaufgabe entfällt."
+  },
+  {
+   "id": "ew3",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass jede Masse jede andere anzieht (Gravitation) und dass ohne Luft Stein und Feder gleich schnell fallen.",
+   "kerninhalt": [
+    "Jede Masse zieht jede andere Masse an; diese Anziehung heißt Gravitation.",
+    "Ohne Luft fallen Stein und Feder gleich schnell – die Masse spielt dabei keine Rolle; erst die Luft bremst die leichte Feder aus.",
+    "Wie stark ein Himmelskörper zieht, gibt die Fallbeschleunigung g an.",
+    "Je stärker die Anziehung, desto kürzer die Fallzeit."
+   ],
+   "simwerte": [
+    "„Im luftleeren linken Rohr kommen Stein und Feder immer zusammen unten an; im rechten Rohr mit Luft schwebt die Feder weit hinterher“",
+    "Erde: „g = 9,8 m/s² und 0,55 s aus 1,50 m Höhe“",
+    "Mond: „nur 1,6 m/s² und 1,37 s“",
+    "Jupiter: „24,8 m/s² und 0,35 s“",
+    "Bedienung laut Forschen: Knopf „Noch einmal fallen lassen“, Auswahl Mond/Erde/Jupiter, „gestrichelte Linien 1 bis 4“ im linken Rohr"
+   ],
+   "fachwoerter": [
+    "Gravitation",
+    "Fallbeschleunigung g",
+    "Fallzeit",
+    "luftleer"
+   ],
+   "huerden": [
+    "Einheit m/s² und Dezimalzahlen (0,55 s; 1,37 s; 24,8 m/s²) – Zahlvergleiche mit Komma sind für die Fördergruppe eine eigene Hürde.",
+    "„Fallbeschleunigung“ ist ein langes, abstraktes Kompositum; die Je-desto-Beziehung (großes g, kurze Zeit) läuft gegen die Intuition.",
+    "Der Auftrag verlangt, zwei Rohre gleichzeitig zu beobachten UND drei Himmelskörper zu vergleichen – mehrschrittig."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Gravitation als Ursache des Fallens ist KLP-zentral und der Rohrversuch mit seinem verblüffenden Ergebnis (gleich schnell ohne Luft) ist gerade für die Fördergruppe stark. Vereinfacht auf den qualitativen Kern plus den Zweiervergleich Erde/Mond (Jupiter und die Linien 1–4 entfallen); die Seite nimmt zusätzlich die Merkregeln aus ew4 auf und wird zur gemeinsamen Gravitationsseite mit der Fallrohr-Simulation als einziger Simulation."
+  },
+  {
+   "id": "ew4",
+   "lernziel": "Die Schülerinnen und Schüler geben an, dass die Anziehung zwischen zwei Körpern mit den Massen wächst und beim doppelten Abstand auf ein Viertel sinkt.",
+   "kerninhalt": [
+    "Verdoppelst du eine der beiden Massen, wird die Anziehung doppelt so groß.",
+    "Verdoppelst du den Abstand, bleibt nur noch ein Viertel der Anziehung übrig.",
+    "Zwei Körper ziehen sich immer gegenseitig an, und zwar gleich stark in beide Richtungen – die beiden Pfeile sind immer gleich lang.",
+    "Der Abstand wirkt also stärker als die Masse."
+   ],
+   "simwerte": [
+    "Start laut Forschen: „beide Massen stehen auf 1, der Abstand auf 1“; Statuszeile: „8,0 Einheiten“",
+    "Nach „×2 Masse links“: „16,0 Einheiten, also genau das Doppelte“",
+    "Danach „×2 Abstand“: „fällt der Wert auf 4,0 Einheiten“ – „ein Viertel von 16,0“",
+    "„Mit beiden Massenreglern auf 5 sind es 200,0 Einheiten, das 25-Fache“",
+    "Knöpfe laut Forschen: „×2 Masse links“, „×2 Abstand“, „↺ zurücksetzen“"
+   ],
+   "fachwoerter": [
+    "gegenseitige Anziehung",
+    "Abstand"
+   ],
+   "huerden": [
+    "Proportionales und quadratisches Denken (das Doppelte, ein Viertel, das 25-Fache) – für Förderbedarf Lernen die härteste Hürde der vier Einheiten.",
+    "Abstrakte „Einheiten“ ohne Alltagsbezug; nichts ist sichtbar oder spürbar, nur eine Zahl ändert sich.",
+    "Mehrschrittige Kettenaufträge (erst ×2 Masse, dann zusätzlich ×2 Abstand, Startwert im Kopf behalten) und Rechenaufgaben bis AFB III."
+   ],
+   "entscheidung": "zusammenlegen",
+   "zusammenlegen_mit": "ew3",
+   "begruendung": "Fachlich direkt benachbart zu ew3 (beide Basiskonzept Wechselwirkung; die Überleitung von ew3 kündigt genau diese Frage an) – die beiden Merkregeln wandern als kurzer Merkkasten auf die Gravitationsseite von ew3, deren Fallrohr-Simulation die einzige Simulation der gemeinsamen Seite bleibt. Die Kugel-Simulation samt Zahlenwerten (8,0/16,0/4,0/200,0 Einheiten) und den quantitativen Kettenaufgaben entfällt, die KLP-Kompetenz (Anziehung hängt von Masse und Abstand ab) bleibt qualitativ erhalten."
+  },
+  {
+   "id": "ew5",
+   "lernziel": "Erklären, warum ein Planet trotz der ständigen Anziehung der Sonne nicht in sie stürzt: Er ist quer zur Sonne unterwegs und fällt darum bei passendem Anschub immer an ihr vorbei.",
+   "kerninhalt": [
+    "Der Planet fällt zur Sonne hin und zugleich an ihr vorbei – genau dieses ewige Vorbeifallen ist die Umlaufbahn.",
+    "Ist der Anschub zu klein, stürzt er hinein; ist er sehr groß, holt die Anziehung ihn nicht mehr zurück und er entkommt.",
+    "Die Anziehung der Sonne wird mit dem Abstand rasch schwächer."
+   ],
+   "simwerte": [
+    "Bei 6 km/s meldet die Anzeige: stürzt in die Sonne, der Anschub ist zu klein.",
+    "Bei 30 km/s steht dort fast ein Kreis, kleinster Abstand 1,00 AE, größter 1,03 AE, ein Umlauf dauert 1,02 Jahre.",
+    "Bei 36 km/s wird daraus eine lang gezogene Ellipse mit 2,71 AE als größtem Abstand.",
+    "Bei 50 km/s entkommt der Planet.",
+    "Für einen Kreis braucht er 29,8 km/s, ab 42,1 km/s entkommt er.",
+    "ganz klein",
+    "mittlerer Wert",
+    "etwas darüber",
+    "Gegenprobe groß"
+   ],
+   "fachwoerter": [
+    "Umlaufbahn",
+    "Anschub",
+    "Ellipse",
+    "AE"
+   ],
+   "huerden": [
+    "Zwei Bewegungen müssen gleichzeitig zusammengedacht werden (Hinfallen und Vorbeikommen ergeben die Bahn) – sehr abstrakt.",
+    "Viele Wert-Einheit-Paare auf engem Raum (km/s, AE, Jahre); die Einheit AE wird nirgends erklärt.",
+    "Die Tabellenzeilen (ganz klein, mittlerer Wert, etwas darüber, Gegenprobe groß) müssen erst selbst in km/s-Einstellungen übersetzt werden – mehrschrittiger Auftrag."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Gravitation als Ursache der Planetenbahnen ist die zentrale Wechselwirkungs-Kompetenz des Kapitels und braucht die eigene Bahnsimulation, kann also weder entfallen noch eine Seite mit einer anderen Simulation teilen. Vereinfacht auf drei feste Fälle mit wörtlichen Meldungen (6 km/s stürzt hinein, 30 km/s fast ein Kreis, 50 km/s entkommt); die Ellipse bei 36 km/s und die Grenzwerte 29,8/42,1 km/s entfallen."
+  },
+  {
+   "id": "ew6",
+   "lernziel": "Die vier inneren Gesteinsplaneten von den äußeren Gas- und Eisriesen unterscheiden und die Regel kennen: je weiter außen, desto länger der Umlauf.",
+   "kerninhalt": [
+    "Innen kreisen vier kleine Gesteinsplaneten mit fester Oberfläche.",
+    "Außen kreisen zwei Gasriesen und zwei Eisriesen; sie sind viel größer und haben keinen festen Boden.",
+    "Je weiter ein Planet von der Sonne entfernt ist, desto länger dauert sein Umlauf.",
+    "Ein Bild kann entweder die Größen oder die Abstände maßstäblich zeigen, nie beides zugleich."
+   ],
+   "simwerte": [
+    "Im Steckbrief steht für die Erde: Gesteinsplanet, feste Oberfläche, Durchmesser 12.756 km, Abstand 1 AE, Umlauf 1 Jahr, eine Drehung 24,0 Stunden, Dichte 5,51 g/cm³, 1 Mond, Lufthülle aus Stickstoff und Sauerstoff.",
+    "Das Schnittbild zeigt Kruste, Mantel und Kern aus Eisen.",
+    "Unter dem Bild steht: Abstände gestaucht, Größen nicht maßstäblich.",
+    "In der Ansicht Umlauf zählt die Uhr die Erdjahre, und die inneren Planeten kommen viel öfter herum als die äußeren.",
+    "Steckbrief",
+    "Größen",
+    "Abstände",
+    "Umlauf"
+   ],
+   "fachwoerter": [
+    "Gesteinsplanet",
+    "Gasriese",
+    "Eisriese",
+    "Asteroidengürtel",
+    "maßstäblich",
+    "Dichte"
+   ],
+   "huerden": [
+    "Der Erde-Steckbrief nennt neun Angaben mit vier Einheiten (km, AE, Stunden, g/cm³) – Datenflut, und Dichte ist fachlich noch nicht eingeführt.",
+    "Die Begriffe maßstäblich und gestaucht sind abstrakt; die Heftaufgabe verlangt dazu eine vierzeilige Begründung (warum nie beides zugleich passt).",
+    "Die Tabelle hat zwei offene Freitextspalten (Was zeigt das Bild? / Was erkennst du daran?) ohne vorgegebene Werte – für A2-B1 zu offen."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Der Gegensatz innen/außen und die Umlauf-Regel sind Kernbestand (Struktur der Materie) und hängen an den vier Ansichten dieser einen Simulation – streichen oder mit einer fremden Simulation zusammenlegen geht nicht. Vereinfacht wird der Steckbrief auf Sorte, Durchmesser und Umlauf (Dichte und Drehung entfallen), und die offene Tabelle bekommt vorgegebene Ankreuz- statt Freitextspalten."
+  },
+  {
+   "id": "ew7",
+   "lernziel": "Verstehen, dass ein Lichtjahr eine Strecke ist und dass Licht umso länger zu uns unterwegs ist, je weiter das Ziel entfernt ist.",
+   "kerninhalt": [
+    "Licht ist das Schnellste, was es gibt: rund 300 000 Kilometer in jeder Sekunde.",
+    "Ein Lichtjahr ist keine Zeit, sondern eine Strecke: der Weg, den das Licht in einem Jahr zurücklegt.",
+    "Je weiter ein Ziel entfernt ist, desto länger ist sein Licht zu uns unterwegs.",
+    "Wir sehen ferne Objekte so, wie sie früher waren – jeder Blick nach oben ist ein Blick in die Vergangenheit."
+   ],
+   "simwerte": [
+    "Der erste Blitz braucht bis zum Mond 1,3 Sekunden.",
+    "Die Anzeige nennt dazu die Entfernung 384 000 km, also 1,3 Lichtsekunden.",
+    "Erde → Sonne, Entfernung 150 Mio. km, das Licht ist 8,3 Minuten unterwegs.",
+    "Mit jedem weiter wird das Ziel ferner, und die Anzeige nennt eine immer längere Laufzeit.",
+    "Erde → Mond",
+    "Erde → nächster Stern",
+    "Erde → Andromeda-Galaxie"
+   ],
+   "fachwoerter": [
+    "Lichtjahr",
+    "Lichtsekunde",
+    "Laufzeit"
+   ],
+   "huerden": [
+    "Sehr große Zahlen in wechselnder Schreibweise (300 000 km, 384 000 km, 150 Mio. km) sind schwer zu lesen und zu vergleichen.",
+    "Das Kompositum Lichtjahr legt die Fehlvorstellung Zeit nahe – genau daran arbeitet die Einheit, für DaZ aber sprachlich heikel.",
+    "Die offene Übung verlangt die Rechnung 60 · 300 000 km = 18 000 000 km samt Vergleich – mehrschrittig und über A2-B1."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Von der Anlage her die förderfreundlichste Einheit (immer dieselbe Handlung: weiter drücken, Wert ablesen) und als Größenordnungs-Kompetenz unverzichtbar – sie bleibt fast unverändert. Vereinfacht wird nur die Rechenübung (60 · 300 000 km wird durch Ablesen und Vergleichen ersetzt); für nächster Stern und Andromeda-Galaxie dokumentiert das Heft keine Zahlen, dort trägt die Fördertabelle nur immer länger ein."
+  },
+  {
+   "id": "ew8",
+   "lernziel": "Beschreiben, wie das Fernrohr das Mondbild verändert: Es wird vergrößert, steht auf dem Kopf, und mit großer Öffnung wird es heller.",
+   "kerninhalt": [
+    "Das Objektiv entwirft im Rohr ein umgekehrtes Zwischenbild; das Okular ist die Lupe, mit der du dieses Zwischenbild anschaust.",
+    "Deshalb siehst du den Mond vergrößert und auf dem Kopf.",
+    "Eine größere Öffnung sammelt mehr Licht, das Bild wird dadurch heller.",
+    "Ein Fernrohr holt den Mond nicht wirklich näher heran – nur sein Bild wird größer."
+   ],
+   "simwerte": [
+    "Mit Teleskop meldet die Anzeige: Vergrößerung = Brennweite Objektiv: Brennweite Okular = 4-fach.",
+    "Das Bild steht auf dem Kopf, denn die gelbe Marke der Oberkante liegt jetzt unten.",
+    "Bei großer Öffnung ist das Bild hell und lichtstark, bei kleiner Öffnung nur mäßig hell.",
+    "bloßes Auge",
+    "mit Teleskop, große Öffnung",
+    "mit Teleskop, kleine Öffnung"
+   ],
+   "fachwoerter": [
+    "Objektiv",
+    "Okular",
+    "Zwischenbild",
+    "Vergrößerung",
+    "Öffnung"
+   ],
+   "huerden": [
+    "Die Vergrößerungsformel (Brennweite Objektiv geteilt durch Brennweite Okular, Schreibweise mit Doppelpunkt) ist eine Bruch-/Formelhürde.",
+    "Das Zweischritt-Modell bringt vier neue Fachwörter auf einer Seite (Objektiv, Okular, Zwischenbild, Vergrößerung) – hohe Merklast für DaZ.",
+    "Die MC- und Richtig/Falsch-Optionen sind lange Satzgefüge mit eingebauten Korrektursätzen – schwer zu durchschauen bei geringer Lesekompetenz."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Das Fernrohr ist der Anwendungskontext der Linsenoptik im Weltall-Kapitel und braucht die eigene Teleskop-Simulation; ein Zusammenlegen mit der Optik-Einheit läge außerhalb des Kapitels und verstieße gegen die Ein-Simulation-Regel. Vereinfacht bleiben die drei qualitativen Kernaussagen samt der Anzeige 4-fach; die Formel Brennweite:Brennweite, die Rechnung 800 mm : 20 mm und die Scharfstell-Bedingung (Abstand = Summe der Brennweiten) entfallen."
+  },
+  {
+   "id": "ew9",
+   "lernziel": "Die Schülerinnen und Schüler schließen aus dem Vergleich von vier Sternen, dass ein Stern umso weiter entfernt ist, je kleiner sein Parallaxenwinkel p ist.",
+   "kerninhalt": [
+    "Je weiter ein Stern entfernt ist, desto kleiner ist sein Parallaxenwinkel p.",
+    "Die Entfernung in Parsec ist 1 / p, also eins geteilt durch den Winkel.",
+    "Ein Parsec ist die Entfernung, bei der p genau eine Bogensekunde beträgt.",
+    "Ein halbes Jahr nach der ersten Messung steht die Erde 2 AE weiter drüben – vor den weit entfernten Sternen springt der nahe Stern deshalb hin und her."
+   ],
+   "simwerte": [
+    "Proxima Centauri: „1,301 Parsec – 4,2 Lichtjahre – und p = 1 / 1,301 = 0,7686 Bogensekunden; im Bild springt der Stern um 26,1 Bildpunkte“",
+    "61 Cygni: „0,2860″ und 3,497 Parsec“",
+    "Wega: „0,1302″ und 7,680 Parsec“",
+    "Polarstern: „0,0075″ und 132,6 Parsec“; „sein Sprung bleibt unter einem Bildpunkt und wird erst mit Lupe ×100 sichtbar: 25,6 Bildpunkte“"
+   ],
+   "fachwoerter": [
+    "Parallaxenwinkel p",
+    "Parsec",
+    "Bogensekunde"
+   ],
+   "huerden": [
+    "Die Bruchformel 1 / p mit Dezimalzahlen wie 0,7686 und 0,0075 (Kehrwert bilden) liegt rechnerisch weit über dem Niveau der Fördergruppe.",
+    "Drei abstrakte neue Einheiten auf einer Seite (Parsec, Bogensekunde, dazu Lichtjahre und AE) überladen den Wortschatz.",
+    "Der Forschen-Auftrag ist mehrschrittig: Stern wählen, zwei Werte aus der Statuszeile ablesen, beim Polarstern zusätzlich Lupe ×100 zuschalten."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Je-desto-Beziehung aus Messdaten (E5/E8) bleibt als Kern erhalten, wird aber rein qualitativ geführt: zwei bis drei Sterne vergleichen, kleiner Winkel heißt große Entfernung, dazu der Fingerversuch aus dem Alltagsauftrag. Die Rechnung 1 / p und die Parsec-Umrechnung entfallen als eigenständige Anforderung."
+  },
+  {
+   "id": "ew10",
+   "lernziel": "Die Schülerinnen und Schüler begründen, dass ein Stern seine Energie aus der Kernfusion bezieht und umso kürzer lebt, je größer seine Masse ist.",
+   "kerninhalt": [
+    "Im Kern eines Sterns verschmelzen Wasserstoffkerne zu Helium. Das nennt man Kernfusion.",
+    "Die Kernfusion ist kein Verbrennen, denn im Kern gibt es gar keinen Sauerstoff.",
+    "Je größer die Masse eines Sterns, desto kürzer lebt er.",
+    "Ein schwerer Stern presst seinen Kern stärker zusammen, fusioniert dadurch viel schneller und leuchtet heller."
+   ],
+   "simwerte": [
+    "1 Sonnenmasse: „10,0 Mrd. Jahre, Farbe gelb, etwa 5.800 K, am Ende bleibt ein Weißer Zwerg übrig“",
+    "0,5 Sonnenmassen: „56,6 Mrd. Jahre und die Farbe ist rötlich“",
+    "10 Sonnenmassen: „31,6 Mio. Jahre, blau-weiß, danach Supernova und Neutronenstern“",
+    "Gegenprobe 25 Sonnenmassen: „3,2 Mio. Jahre“"
+   ],
+   "fachwoerter": [
+    "Kernfusion",
+    "Sonnenmasse",
+    "Weißer Zwerg",
+    "Supernova",
+    "Neutronenstern"
+   ],
+   "huerden": [
+    "Mrd. und Mio. Jahre müssen sicher unterschieden werden – Größenordnungen ohne jede Anschauung, für die Zielgruppe leicht verwechselbar.",
+    "Die Regel ist kontraintuitiv: mehr Brennstoff, aber kürzeres Leben – die Begründung verlangt einen zweischrittigen Gedanken (mehr Vorrat, aber viel schnellerer Verbrauch).",
+    "Fünf neue Fachwörter auf einer Seite (Kernfusion, Sonnenmasse, Weißer Zwerg, Supernova, Neutronenstern)."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Kernfusion als Energiequelle und die Masse-Lebensdauer-Regel sind zentraler Kernlehrplan-Inhalt (Basiskonzept Energie) und bleiben. Gestrafft wird auf den Kontrast 1 gegen 10 Sonnenmassen; Gegenprobe 25 und die Endstadien werden auf den einen Satz „die Sonne endet als Weißer Zwerg, ein schwerer Stern als Supernova“ reduziert."
+  },
+  {
+   "id": "ew11",
+   "lernziel": "Die Schülerinnen und Schüler schließen aus den Sternzahlen in drei Blickrichtungen, dass die Milchstraße eine flache Scheibe ist und die Sonne nicht in ihrer Mitte steht.",
+   "kerninhalt": [
+    "Die Milchstraße ist eine Scheibe aus Sternen, hundertmal breiter als dick – rund 100 000 Lichtjahre breit, aber nur etwa 1000 Lichtjahre dick.",
+    "Die Sonne steht 26 000 Lichtjahre vom Zentrum entfernt, nicht in der Mitte.",
+    "Das milchige Band am Himmel entsteht, weil längs durch die Scheibe sehr viele Sterne hintereinander stehen."
+   ],
+   "simwerte": [
+    "zur Mitte: „203 Sterne im Blickfeld“",
+    "nach außen: „nur noch 50“",
+    "quer aus der Scheibe heraus: „lediglich 5“",
+    "Gegenprobe: „Säße die Sonne im Zentrum, wären laut Gegenprobe beide Richtungen längs durch die Scheibe gleich dicht.“"
+   ],
+   "fachwoerter": [
+    "Milchstraße"
+   ],
+   "huerden": [
+    "Räumliches Umdenken zwischen „längs durch die Scheibe“ und „quer heraus“ ist ohne greifbares Modell schwer – der Perspektivwechsel mit dem Regler „von der Seite (90°)“ kommt noch dazu.",
+    "Sehr große Zahlen (100 000, 26 000, 1000 Lichtjahre) ohne Alltagsbezug.",
+    "Die Gegenprobe ist sprachlich im Konjunktiv formuliert („Säße die Sonne im Zentrum, wären …“) – für A2/B1 kaum zu entschlüsseln."
+   ],
+   "entscheidung": "uebernehmen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Der Dreiervergleich mit einfachen ganzen Zahlen (203 / 50 / 5) trägt die Erkenntnis fast von allein und passt gut zur Fördergruppe; auch der Alltagsversuch mit der Baumreihe ist konkret und handelnd. Nur die Konjunktivsätze der Gegenprobe werden in einfache Wenn-dann-Sätze umformuliert."
+  },
+  {
+   "id": "ew12",
+   "lernziel": "Die Schülerinnen und Schüler vergleichen das alte und das heutige Weltbild und begründen, dass sich das heutige durchgesetzt hat, weil es denselben Himmel ohne Zusatzkreise erklärt.",
+   "kerninhalt": [
+    "In der Mitte des heutigen Weltbildes steht die Sonne.",
+    "Für die Schleifen der Planeten brauchte das alte Weltbild zusätzliche Kreise, die Epizykel – das heutige braucht keinen einzigen.",
+    "Die Schleife des Mars entsteht, weil die Erde ihn auf ihrer Bahn überholt.",
+    "Beide Modelle sagen denselben Himmel voraus; den Ausschlag gab, dass das heutige Weltbild einfacher ist."
+   ],
+   "simwerte": [
+    "Bei „Erde in der Mitte“ meldet die Statuszeile: „Der Himmel ließ sich gut vorhersagen, aber nur mit Zusatzkreisen für die Schleifen der Planeten.“",
+    "Bei „Sonne in der Mitte“ steht dort: „derselbe Himmel, aber ohne einen einzigen Epizykel“",
+    "„Die Zusammenfassung nennt früher zwei Kreise je Planet und heute nur einen.“",
+    "„Unten läuft der Mars in beiden Modellen zeitweise rückwärts.“"
+   ],
+   "fachwoerter": [
+    "Weltbild",
+    "Epizykel"
+   ],
+   "huerden": [
+    "Die Bewertungslogik ist abstrakt: Beide Modelle zeigen denselben Himmel, entschieden wird über Einfachheit statt über richtig/falsch – ungewohnt für Lernende, die eine eindeutige richtige Antwort erwarten.",
+    "Das Fremdwort „Epizykel“ hat keinerlei Alltagsanker.",
+    "Langer erzählender Problemtext und Beurteilungsaufträge auf AFB III („Beurteile Jannis' Satz …“) verlangen freies argumentierendes Schreiben."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Weltbilder samt Bewertungskompetenz (B2) sind zentraler Kernlehrplan-Inhalt und dürfen nicht entfallen. Die Seite wird auf den einen Kontrast verdichtet – Erde in der Mitte: Zusatzkreise nötig, Sonne in der Mitte: keine – mit den beiden Statuszeilen-Meldungen als einziger Beleg; „Epizykel“ wird konsequent als „Zusatzkreis“ mitübersetzt und die Beurteilung als gestützte Auswahl statt als freier Text geführt."
+  },
+  {
+   "id": "ew13",
+   "lernziel": "Die Schülerinnen und Schüler erklären, dass man ein schwarzes Loch nicht direkt sehen kann, sondern es an seiner Wirkung auf Licht in seiner Umgebung erkennt.",
+   "kerninhalt": [
+    "Masse zieht an, und zwar auch Licht.",
+    "Um das Loch herum liegt eine Grenze, der Ereignishorizont. Was diese Grenze überschreitet, kommt nie wieder heraus, auch kein Licht.",
+    "Je kleiner der Abstand ist, desto stärker biegt sich der Strahl. Ab einer Grenze kommt nichts mehr heraus.",
+    "Man sieht also nicht das Loch, sondern das Licht in seiner Nähe (herumgelenktes Licht und leuchtend kreisendes heißes Gas)."
+   ],
+   "simwerte": [
+    "Abstands-Tasten laut Tabelle und Forschen-Schritten: „weit weg“, „mittel“, „sehr nah“; dazu die Taste „Lichtstrahl senden“",
+    "Tabellenspalte: „Statuszeile: Kommt er wieder heraus?“",
+    "Statuszeile bei „weit weg“: „Der Lichtstrahl wird nur wenig zur Seite gezogen und läuft fast gerade weiter.“",
+    "Bei „mittel“: „läuft er fast einmal ganz um das Loch herum und entkommt gerade noch“",
+    "Bei „sehr nah“: „wird er immer stärker gebogen und verschwindet im Ereignishorizont“"
+   ],
+   "fachwoerter": [
+    "schwarzes Loch",
+    "Ereignishorizont"
+   ],
+   "huerden": [
+    "Abstraktes langes Kompositum „Ereignishorizont“ ohne Alltagsanschauung — muss als Merkwort mit Bild verankert werden.",
+    "Indirekter Nachweis („etwas erkennen, das man nicht sieht“) verlangt eine Umkehr-Logik über die Wirkung statt über das Objekt.",
+    "Die vier MC-Optionen der Übung sind je zwei lange Sätze mit feinen Unterschieden — für A2-B1 kaum unterscheidbar."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Die Simulation liefert eine sehr einfache Wenn-dann-Regel mit nur drei festen Abständen und klaren Statusmeldungen und trägt die Seite fast allein; gekürzt werden die langen MC-Optionen und die AFB-III-Aufgabe, der Kern (indirekter Nachweis über die drei Abstände) bleibt erhalten."
+  },
+  {
+   "id": "ew14",
+   "lernziel": "Die Schülerinnen und Schüler beschreiben, dass das Weltall mit dem Urknall heiß und dicht begann und sich seitdem ausdehnt, sodass die Abstände zwischen den Galaxien immer größer werden.",
+   "kerninhalt": [
+    "Nach der Urknalltheorie begann das Weltall vor etwa 13,8 Milliarden Jahren in einem sehr heißen und sehr dichten Zustand.",
+    "Seit dem Urknall werden die Abstände zwischen den Galaxien immer größer.",
+    "Die Galaxien fliegen nicht durch einen fertigen Raum, sondern der Raum zwischen ihnen wird größer.",
+    "Luftballon-Modell: Malst du Punkte darauf und bläst ihn auf, wächst jeder Abstand zwischen den Punkten."
+   ],
+   "simwerte": [
+    "Tasten laut Forschen-Schritten: „↺ zum Anfang“ und „Urknall starten“",
+    "Zeitanzeige vor dem Start: „Zeit seit dem Urknall: die allerersten Augenblicke“",
+    "Statuszeile vor dem Start: „Alles liegt auf winzigem Raum, unvorstellbar heiß und dicht.“",
+    "Nach dem Start: „rücken die Galaxien im Bild immer weiter auseinander, erst entstehen die ersten Sterne und Galaxien, dann das heutige Weltall“",
+    "Tabellenzeilen: „↺ zum Anfang“, „kurz nach „Urknall starten““, „in der Mitte des Ablaufs“, „am Ende des Ablaufs“"
+   ],
+   "fachwoerter": [
+    "Urknall",
+    "Urknalltheorie"
+   ],
+   "huerden": [
+    "Die Zahl „13,8 Milliarden Jahre“ ist unanschaulich groß und für die Zielgruppe schwer einzuordnen.",
+    "Die Unterscheidung „Galaxien fliegen nicht durch einen fertigen Raum, sondern der Raum wird größer“ ist sprachlich sehr fein und begrifflich abstrakt.",
+    "Die offene Aufgabe verlangt Modellkritik am Luftballon (AFB III, „was zeigt es gut, wo passt es nicht mehr“) — eine Meta-Ebene, die A2-B1 überfordert."
+   ],
+   "entscheidung": "vereinfachen",
+   "zusammenlegen_mit": "",
+   "begruendung": "Der Urknall ist der fachliche Abschluss des Weltall-Kapitels und darf als zentrale Weltbild-Kompetenz nicht entfallen; die Simulation mit zwei Tasten ist einfach bedienbar, aber die vierzeilige Tabelle, die langen Antwortoptionen und die Modellkritik (AFB III) werden auf das Ballon-Bild als reine Veranschaulichung reduziert."
+  }
+ ],
+ "kritik": {
+  "probleme": [
+   "Zielkorridor verfehlt: Auf Einheitenebene sinkt der Umfang nur von 29 auf 26 Doppelseiten (−10,3 %), weil nichts gestrichen und nur dreimal zusammengelegt wird. Auch nach dem Umfangsmaß des Förderprofils (Schülerteil 35–50 % schlanker) landet der Plan bei grob 30 %: 4 Einheiten bleiben praktisch voll (uebernehmen), ew7 'fast unverändert', die 18 übrigen Vereinfachungen sparen je etwa ein Drittel. Dazu kommt, dass das Förderprofil pro Einheit Wortbank, gelöstes Beispiel, drei Hilfestufen und Selbstcheck NEU hinzufügt — das frisst einen Teil der Ersparnis wieder auf und ist in der Analyse nirgends eingepreist.",
+   "Zusammenlegung ew3/ew4 ist nicht wechselseitig ausgezeichnet: ew4 sagt 'zusammenlegen mit ew3', aber ew3 trägt die Entscheidung 'vereinfachen' und beschreibt die gemeinsame Seite nur im Begründungstext. Bei oi2/oi3 und oi5/oi6 sind dagegen beide Partner als 'zusammenlegen' markiert — eine maschinelle Reziprozitätsprüfung oder ein Buildskript zählt ew3 als eigenständige Seite und verliert die Merkregeln aus ew4.",
+   "Kompetenz E4 droht obdachlos zu werden: oi2 ist laut forscherseiten.json die EINZIGE Trägerin von E4 unter den 29 Forscherseiten. Die Zusammenlegung streicht genau ihren Untersuchungsteil (Simulation mit g = 40/80/110/200) und verspricht nur 'Merksatz mit kurzer Übung'. Auf der gemeinsamen Seite steht ausschließlich die Winkel-Simulation aus oi3 — die Bildregel 'genauso weit dahinter' ist dort nicht ablesbar, darf also nach der Heft-gegen-Sim-Regel in keiner Aufgabe mit Bildschirmbezug abgefragt werden. Ohne einen echten Mess-/Untersuchungsauftrag fällt E4 komplett weg.",
+   "Fachwort-Limit der Förderreihe kollidiert mit beiden Optik-Zusammenlegungen: Das Förderprofil erlaubt höchstens ZWEI neue Fachwörter pro Lerneinheit. Die gemeinsame Spiegelseite oi2+oi3 braucht Einfallswinkel, Reflexionswinkel, Lot und virtuell (vier); die Seite oi5+oi6 braucht Totalreflexion, Grenzwinkel und Lichtleiter/Glasfaser (drei). Die Analyse sagt nicht, wie das Limit gehalten wird.",
+   "ew11 als 'uebernehmen' unterschätzt den Anpassungsbedarf: Die Einheit verlangt ZWEI verkettete Schlussfolgerungen (flache Scheibe UND Sonne nicht im Zentrum) plus ein Gegenproben-Argument, und der Merksatz enthält '26 000 Lichtjahre' sowie 'hundertmal breiter als dick'; die Begründungsaufgabe verknüpft Position, Blickrichtungsdichte und Helligkeit über das Sternbild Schütze. 'Konjunktiv in Wenn-dann umformulieren' reicht dafür bei A2-B1 mit Förderbedarf Lernen nicht — es ist die einzige uebernehmen-Einheit mit echtem Restrisiko (oi10, oi13, ew1 sind nach Sprachglättung tragfähig).",
+   "Kompetenzangabe bei ew9 stimmt nicht mit der Quelle überein: Die Analyse begründet mit '(E5/E8)', in forscherseiten.json ist ew9 aber mit E6 getaggt. Da genau dort die Rechnung 1/p und die Parsec-Umrechnung ersatzlos entfallen, muss gegen KLP Heft 3108 geprüft werden, ob die rein qualitative Fassung die tatsächlich zugeordnete Kompetenz noch bedient."
+  ],
+  "reduktion_prozent_schaetzung": 30,
+  "empfehlungen": [
+   "ew3 formal auf 'zusammenlegen mit ew4' umstellen und wie oi3/oi5 als Trägereinheit kennzeichnen, damit die Wechselseitigkeit maschinell prüfbar ist und kein Buildschritt ew3 als Einzelseite zählt.",
+   "Für den Korridor zwei bis drei weitere Zusammenlegungen nach dem oi5/oi6-Muster (Anwendung ohne eigene Simulation) prüfen. Stärkster Kandidat: oi9 in oi8 aufnehmen — oi9s Ziel ('nur näher als die Brennweite: aufrecht, virtuell') steht wörtlich schon im Ziel von oi8, die Lupe ist exakt der Fall g = 25 der oi8-Simulation. Weitere Kandidaten: oi1 als verschlankter Kapitelauftakt, ew13 als Anwendungsabschnitt der Schlussseite ew14. Erst damit sind 35 % und mehr realistisch erreichbar.",
+   "Den Alltagsauftrag von oi2 ('Miss zu Hause deinen Abstand zu einem Spiegel und schätze, wie weit dein Spiegelbild dahinter zu stehen scheint') als die angekündigte 'kurze Übung' der gemeinsamen Spiegelseite festschreiben: ein echter Messauftrag ohne Simulationsbezug — sichert E4 und hält die Heft-gegen-Sim-Regel ein.",
+   "Fachwortbudget der Merge-Seiten explizit festlegen: oi2+oi3 nur Einfallswinkel/Reflexionswinkel als neue Fachwörter, 'Lot' als beschriftete Bildmarke ohne Fachworteinführung, 'virtuell' wie bei oi9 nur als Merkwort; oi5+oi6 Totalreflexion und Grenzwinkel als Fachwörter, 'Glasfaser' als Alltagswort im Anwendungsteil.",
+   "Auf der Seite oi5+oi6 den Grenzwinkel einheitlich mit 41,8° führen (oi6 sagt im Original 'etwa 42°') — Förderregel 'immer dieselbe Bezeichnung für dieselbe Sache', und nur 41,8° steht wörtlich in der Statuszeile.",
+   "ew11 zusätzlich entlasten: die beiden Schlussfolgerungen in zwei getrennte Aufgabenschritte teilen, die Begründungsaufgabe als gestützte Auswahl mit Satzstartern führen und '26 000 Lichtjahre' aus dem Merksatz in den Lesetext verschieben.",
+   "Nach Schritt 2 die Reduktion messen statt schätzen (Hausregel 'Platz auf der Seite messen'): Wort- und Aufgabenzahl des Förder-Schülerteils gegen /Users/lala/Desktop/Claude/LernStar/arbeitsheft_gts7/content auszählen und das Band 35–50 % als Buildcheck in build_pilot.py verankern.",
+   "Vor der Umsetzung die Zuordnung der Prozesskompetenzen (E4 nur in oi2, K3 nur in oi8, E6 nur in ew9, K2 nur in ew13) gegen KLP Heft 3108 abgleichen, damit keine der Einzelträger-Kompetenzen durch die dort angesetzten Kürzungen ihren einzigen Ort verliert."
+  ]
+ }
+}

@@ -1,0 +1,196 @@
+[
+ {
+  "sim": "elektrische-leistung",
+  "ueberschrift": "💡 Elektrische Leistung P = U · I",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "1,5 V",
+    "ruft": "_elpSetU(1)"
+   },
+   {
+    "aufschrift": "3 V",
+    "ruft": "_elpSetU(2)"
+   },
+   {
+    "aufschrift": "6 V",
+    "ruft": "_elpSetU(4)"
+   },
+   {
+    "aufschrift": "viel Strom",
+    "ruft": "_elpSetR('klein')"
+   },
+   {
+    "aufschrift": "mittel",
+    "ruft": "_elpSetR('mittel')"
+   },
+   {
+    "aufschrift": "wenig Strom",
+    "ruft": "_elpSetR('gross')"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_elpReset()"
+   },
+   {
+    "aufschrift": "P = U + I",
+    "ruft": "_elpAns(0,0)"
+   },
+   {
+    "aufschrift": "P = U · I",
+    "ruft": "_elpAns(0,1)"
+   },
+   {
+    "aufschrift": "P = U / I",
+    "ruft": "_elpAns(0,2)"
+   },
+   {
+    "aufschrift": "Volt (V)",
+    "ruft": "_elpAns(1,0)"
+   },
+   {
+    "aufschrift": "Watt (W)",
+    "ruft": "_elpAns(1,1)"
+   },
+   {
+    "aufschrift": "Ohm (Ω)",
+    "ruft": "_elpAns(1,2)"
+   },
+   {
+    "aufschrift": "Sie wird größer",
+    "ruft": "_elpAns(2,0)"
+   },
+   {
+    "aufschrift": "Sie wird kleiner",
+    "ruft": "_elpAns(2,1)"
+   },
+   {
+    "aufschrift": "Sie bleibt gleich",
+    "ruft": "_elpAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_elpSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_elpSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_elpSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('leistung-rs')"
+   }
+  ],
+  "hinweise": [
+   "Verändere Spannung und Verbraucher. Beobachte, wie sich die Leistung (in Watt) und die Helligkeit ändern. (Nur ungefährliche Kleinspannung.)",
+   "Die elektrische Leistung P gibt an, wie viel Energie pro Sekunde umgesetzt wird. Man berechnet sie aus Spannung und Stromstärke: P = U · I. Einheit: Watt (W). Mehr Spannung oder mehr Strom → mehr Leistung.",
+   "P = U · I · Einheit Watt (W) · mehr Leistung → heller &amp; wärmer."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "1,5 V",
+    "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "3 V",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "6 V",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "viel Strom",
+    "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "mittel",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "wenig Strom",
+    "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "↺",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "P = U + I",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts."
+   },
+   {
+    "einstellung": "P = U · I",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke)."
+   },
+   {
+    "einstellung": "P = U / I",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht."
+   },
+   {
+    "einstellung": "Volt (V)",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung."
+   },
+   {
+    "einstellung": "Watt (W)",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen."
+   },
+   {
+    "einstellung": "Ohm (Ω)",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands."
+   },
+   {
+    "einstellung": "Sie wird größer",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I)."
+   },
+   {
+    "einstellung": "Sie wird kleiner",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner."
+   },
+   {
+    "einstellung": "Sie bleibt gleich",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+   }
+  ],
+  "bildtexte": [
+   "U = 3 V",
+   "A",
+   "0,20 A",
+   "P = 0,60 W",
+   "U = 1,5 V",
+   "0,10 A",
+   "P = 0,15 W",
+   "U = 6 V",
+   "0,40 A",
+   "P = 2,40 W",
+   "1,20 A",
+   "P = 7,20 W",
+   "0,13 A",
+   "P = 0,80 W"
+  ]
+ }
+]

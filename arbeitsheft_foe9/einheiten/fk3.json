@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fk3",
+  "quelle": "kf3",
+  "sim": "federgesetz",
+  "sicherheit": "Simulation",
+  "theme": "foe_kraefte",
+  "titel": "Weicher Puffer, harter Puffer",
+  "name": "Warum gibt eine Feder nach?",
+  "fachwoerter_neu": [],
+  "alltag": [
+   "Unter den Podestfüßen liegen Gummipuffer.",
+   "Nour drückt gleich stark auf zwei Puffer.",
+   "Der eine sinkt tief ein, der andere kaum."
+  ],
+  "frage": "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
+  "predict": [
+   "Die harte Feder dehnt sich bei 1 N weniger weit.",
+   "Beide Federn dehnen sich bei 1 N gleich weit."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „weiche Feder“ und drücke einmal „mehr ▶“.",
+   "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.",
+   "Drücke einmal „◀ weniger“ und wähle dann „harte Feder“.",
+   "Lies wieder ab. Fülle die letzte Zeile aus."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Welche Feder?",
+   "Wie groß ist die Kraft F in N?",
+   "Wie weit dehnt sie sich?"
+  ],
+  "tabRows": [
+   [
+    "weiche Feder",
+    "1 N",
+    "2 cm"
+   ],
+   [
+    "weiche Feder",
+    "2 N",
+    ""
+   ],
+   [
+    "harte Feder",
+    "1 N",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Mehr Kraft macht die Feder",
+    "loesung": "länger",
+    "post": "."
+   },
+   {
+    "pre": "Bei gleicher Kraft dehnt sich die harte Feder nur",
+    "loesung": "halb",
+    "post": "so weit wie die weiche Feder."
+   }
+  ],
+  "wortbank": [
+   "länger",
+   "halb",
+   "harte",
+   "weiche"
+  ],
+  "beispiel": {
+   "frage": "Wie weit dehnt sich die weiche Feder bei F = 1 N?",
+   "antwort": "Hinter dem Pfeil → steht 2 cm. So weit dehnt sich die weiche Feder."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Nour drückt gleich stark auf zwei Puffer. Puffer A sinkt 2 cm ein, Puffer B nur 1 cm. Welcher ist härter?",
+    "optionen": [
+     "Puffer A, denn er sinkt tiefer ein.",
+     "Beide Puffer sind gleich hart.",
+     "Puffer B, denn er sinkt weniger ein."
+    ],
+    "richtig": 2
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Unter das schwere Klavier gehört der",
+      "loesung": "harte",
+      "post": "Puffer."
+     },
+     {
+      "pre": "Unter den leichten Lautsprecher passt der",
+      "loesung": "weiche",
+      "post": "Puffer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Die harte Feder ist stärker, darum dehnt sie sich weiter.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Bei gleicher Kraft dehnt sich die harte Feder …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Hinter dem Pfeil → steht die Zahl, zum Beispiel 2 cm. Bei F = 0 N drücke „mehr ▶“.",
+   "h2": "Vergleiche in der Tabelle die beiden Zeilen mit 1 N.",
+   "h3": "Fast fertig: Bei 1 N dehnt sich die weiche Feder 2 cm, die harte nur 1 cm. Sie gibt also ___ nach."
+  },
+  "selbstcheck": [
+   "Ich kann sagen, was mehr Kraft mit einer Feder macht.",
+   "Ich kann am Bildschirm ablesen, wie weit die Feder nachgibt.",
+   "Ich weiß, dass die harte Feder bei gleicher Kraft weniger nachgibt."
+  ],
+  "zuhause": "Lege dasselbe Buch auf deine Matratze und dann auf ein Sofakissen. Vergleiche, wie tief es einsinkt.",
+  "bildauftrag": "[BILD: zwei senkrechte Schraubenfedern nebeneinander an einer Deckenschiene, an jeder hängt derselbe gleich große Metallklotz; die linke Feder ist genau doppelt so weit auseinandergezogen wie die rechte; daneben je ein großer Maßpfeil für die Dehnung, der linke genau doppelt so lang wie der rechte; große Beschriftungen „weiche Feder“, „harte Feder“ und „gleiche Kraft“ an den Klötzen; ruhiger heller Hintergrund, keine weiteren Federn, Gewichte oder Deko]"
+ },
+ "lehrer": {
+  "id": "fk3",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Bildschirm ab, wie weit sich eine weiche und eine harte Feder dehnen, und erklären: Mehr Kraft dehnt die Feder weiter; bei gleicher Kraft dehnt sich die harte Feder weniger weit. Federkonstante, Formel und Rechnung sind hier kein Thema.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Ergebnisse aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: zwei unterschiedlich harte Schraubenfedern, ein Stativ und gleiche Wägestücke.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Die drei nachgemessenen Ergebnisse als Karten zeigen oder an die Tafel schreiben: weiche Feder, F = 1 N → 2 cm · weiche Feder, F = 2 N → 4 cm · harte Feder, F = 1 N → 1 cm. Vierte Karte für schnelle Lernende: harte Feder, F = 2 N → 2 cm.",
+  "merksatz": [
+   "länger",
+   "halb"
+  ],
+  "tabelle_erwartet": [
+   [
+    "weiche Feder",
+    "2 N",
+    "4 cm"
+   ],
+   [
+    "harte Feder",
+    "1 N",
+    "1 cm"
+   ]
+  ],
+  "a1": {
+   "richtig": 2,
+   "weg": "Gleiche Kraft, kleinere Einsinktiefe heißt härter. Puffer B sinkt nur 1 cm ein, Puffer A doppelt so tief – genau wie harte gegen weiche Feder bei F = 1 N.",
+   "typische_fehler": [
+    "„Puffer A“, weil tiefes Einsinken mit „gibt viel her, ist stark“ verwechselt wird.",
+    "„Beide gleich hart“, weil nur auf die gleiche Druckkraft geschaut wird statt auf die Wirkung."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "harte",
+    "weiche"
+   ],
+   "typische_fehler": [
+    "Vertauschen: der weiche Puffer wird unter das Klavier gelegt, weil „weich = schont“.",
+    "„hart“ statt „harte“ eingesetzt – die Wortbank gibt die passende Form vor."
+   ]
+  },
+  "a3": {
+   "erwartung": "Bei gleicher Kraft dehnt sich die harte Feder weniger weit als die weiche. Am Bildschirm sind es bei F = 1 N nur 1 cm statt 2 cm. Hart heißt also: Sie gibt weniger nach, nicht mehr.",
+   "alternativen": [
+    "Umkehrung: Die weiche Feder dehnt sich bei derselben Kraft doppelt so weit.",
+    "Vergleich mit den Puffern: Der harte Puffer sinkt weniger tief ein, obwohl Nour gleich stark drückt.",
+    "Verweis auf die Tabelle: beide Zeilen mit 1 N gegeneinander."
+   ],
+   "typische_fehler": [
+    "„Stark“ und „dehnt sich weit“ werden gleichgesetzt (die Fehlvorstellung aus predict).",
+    "Die Kraft wird nicht als gleich vorausgesetzt: „Bei der harten zieht man ja mehr.“",
+    "Es wird nur wiederholt, dass die Feder hart ist, ohne die Dehnung zu nennen."
+   ]
+  },
+  "hilfe3_wort": "weniger (auch richtig: nicht so weit, weniger stark)",
+  "schwache": [
+   "Zuerst nur die beiden 1-N-Zeilen vergleichen; die 2-N-Zeile später oder gemeinsam ergänzen.",
+   "Die gefüllte Beispielzeile laut lesen und die Stelle hinter dem Pfeil → am Beamer zeigen.",
+   "„2 cm“ und „0,5 N/cm“ in der Statuszeile gemeinsam unterscheiden.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle bei der harten Feder F = 2 N ein und lies ab (2 cm). Vergleiche mit der weichen Feder bei F = 2 N (4 cm).",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraftwirkung und Verformung; Alltagsauftrag Matratze/Sofakissen trägt E5. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Der Bildschirm zeigt zusätzlich D = F/s, „Federkonstante“, „proportional“ und das Hooke'sche Gesetz – im Förderheft bewusst kein Thema, aber Anknüpfung für den E-Kurs. Das Formelzeichen s meint hier die Dehnung in cm, in fe1 dagegen den Weg in m.",
+  "hinweise_intern": [
+   "Der Ausgangszustand der Simulation IST bereits die weiche Feder (F = 1 N → 2 cm). Schritt 1 wählt sie trotzdem ausdrücklich, sonst wird zweimal dieselbe Feder gemessen.",
+   "Einstellbereich nachgemessen (05.09.2026, simcheck/werte.js): F von 0 N bis 5 N in 1-N-Schritten. Weich: 1 N → 2 cm, 2 N → 4 cm, 3 N → 6 cm, 5 N → 10 cm. Hart: 1 N → 1 cm, 2 N → 2 cm, 3 N → 3 cm, 5 N → 5 cm. Beim Umschalten der Feder bleibt die eingestellte Kraft stehen.",
+   "Bei F = 0 N verschwindet die Angabe D = F/s aus der Statuszeile („Eingestellt: F = 0 N → Dehnung s = 0 cm.“). Darauf zielt Hilfe 1.",
+   "Die Simulation zeigt zusätzlich D = F/s, das Wort „Federkonstante“, „proportional“, „Steigung“ und das Hooke'sche Gesetz (F = D · s). Das ist hier bewusst NICHT Thema und steht auf keiner Schülerseite; für den E-Kurs kann es hier angeknüpft werden.",
+   "Die Messpunkt-Tabelle der Simulation läuft ohne Trennzeichen zusammen („FsD = F/s1 N1 cm1,0 N/cm“). Sie wird auf der Heftseite nicht gebraucht und soll nicht abgeschrieben werden.",
+   "Formelzeichen s ist hier die Dehnung in cm; in fe1 (Arbeit W = F · s) ist s der Weg in m. Beim Übergang ansprechen.",
+   "Kraft F in N wurde in fk2 eingeführt; fk3 verwendet sie nur weiter und führt kein neues Fachwort ein."
+  ]
+ }
+}

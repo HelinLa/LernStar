@@ -1,0 +1,72 @@
+{
+ "id": "ki7",
+ "theme": "ef_mechanik",
+ "komp": [
+  "S1",
+  "E6",
+  "S7",
+  "B1"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Eine Kraft ist eine vektorielle Größe: Zu ihrem Betrag gehört stets auch die",
+   "loesung": "Richtung",
+   "post": ", in die sie wirkt."
+  },
+  {
+   "pre": "Zieht ein Seil unter dem Winkel α zur Waagerechten, so zieht den Schlitten allein die waagerechte Komponente",
+   "loesung": "F · cos(α)",
+   "post": "vorwärts."
+  },
+  {
+   "pre": "Die senkrechte Komponente F · sin(α) hebt den Schlitten nicht vom Boden ab, verringert aber die",
+   "loesung": "Normalkraft F_N",
+   "post": ", mit der Schlitten und Boden aufeinandergedrückt werden; deshalb sinkt zugleich die Reibung."
+  },
+  {
+   "pre": "Wächst der Winkel α von 0° auf 60°, so sinkt die waagerechte Komponente von 200,0 N auf",
+   "loesung": "100,0 N",
+   "post": ", während die senkrechte Komponente gegenläufig auf 173,2 N wächst."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Die waagerechte Komponente in der Zeile α = 30° ist genauso groß wie die senkrechte Komponente in der Zeile α = 60°.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Verdoppelt sich der Winkel von 30° auf 60°, so halbiert sich die waagerechte Komponente.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Je größer der Winkel α, desto stärker wird der Schlitten auf den Boden gedrückt, denn die senkrechte Komponente F · sin(α) wächst mit α.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Bei α = 0° ist die Normalkraft genauso groß wie die Gewichtskraft des beladenen Schlittens von 400,0 N, weil die senkrechte Komponente dort 0,0 N beträgt.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Tobias liest die Zeile α = 45° ab, addiert 141,4 N und 141,4 N zu 282,8 N und schließt daraus, dass das Seil in dieser Zeile mit 282,8 N belastet wird. Welche Antwort trifft zu?",
+  "optionen": [
+   "Die beiden Komponenten stehen senkrecht aufeinander und addieren sich deshalb nach dem Satz des Pythagoras; die Wurzel aus (141,4 N)² + (141,4 N)² ergibt 200,0 N.",
+   "Die Rechnung stimmt: Die 200,0 N in der Überschrift des Datenblatts nennen nur den vorwärts gerichteten Anteil, belastet wird das Seil mit der Summe beider Anteile.",
+   "Beide Zahlen sind zu halbieren, weil sich die Zugkraft bei α = 45° gleichmäßig auf zwei Richtungen verteilt; zu erwarten wären je 100,0 N."
+  ],
+  "richtig": 0,
+  "erklaerung": "Kräfte addieren sich als Pfeile, nicht als Zahlen. Weil die waagerechte und die senkrechte Komponente senkrecht aufeinanderstehen, gilt (F · cos α)² + (F · sin α)² = F². Eingesetzt ergibt (141,4 N)² + (141,4 N)² gerade (200,0 N)², und die Wurzel daraus ist 200,0 N – genau die Zugkraft aus der Überschrift des Datenblatts. Diese 200,0 N sind also der Betrag der ganzen Zugkraft und nicht ihr waagerechter Anteil; vorwärts ziehen bei α = 45° nur 141,4 N. Auch das Halbieren führt in die Irre: Aus je 100,0 N ergäbe sich nach Pythagoras eine Zugkraft von nur 141,4 N."
+ },
+ "offen": {
+  "frage": "Mira folgert aus dem Datenblatt: „Je größer der Winkel α, desto leichter läuft der Schlitten.“ Prüfe diese Behauptung, indem du für α = 30° und für α = 60° mit F_R = 0,30 · (400,0 N − F · sin(α)) berechnest, wie viel Zugkraft nach Abzug der Reibung übrig bleibt. Vergleiche mit den bereits bekannten Werten 80,0 N für α = 0° und 88,4 N für α = 20° und begründe dein Urteil.",
+  "prompt": "Mira folgert aus dem Datenblatt: „Je größer der Winkel α, desto leichter läuft der Schlitten.“ Prüfe diese Behauptung, indem du für α = 30° und für α = 60° mit F_R = 0,30 · (400,0 N − F · sin(α)) berechnest, wie viel Zugkraft nach Abzug der Reibung übrig bleibt. Vergleiche mit den bereits bekannten Werten 80,0 N für α = 0° und 88,4 N für α = 20° und begründe dein Urteil.",
+  "zeilen": 5,
+  "loesung": "Für α = 30° stehen im Datenblatt F · cos(30°) = 173,2 N und F · sin(30°) = 100,0 N. Damit ist F_N = 400,0 N − 100,0 N = 300,0 N und F_R = 0,30 · 300,0 N = 90,0 N; übrig bleiben 173,2 N − 90,0 N = 83,2 N. Für α = 60° gilt F · cos(60°) = 100,0 N und F · sin(60°) = 173,2 N, also F_N = 400,0 N − 173,2 N = 226,8 N und F_R = 0,30 · 226,8 N = 68,0 N; übrig bleiben 100,0 N − 68,0 N = 32,0 N. Die vier Werte ergeben die Reihe 80,0 N bei 0°, 88,4 N bei 20°, 83,2 N bei 30° und 32,0 N bei 60°. Miras Behauptung gilt also nur am Anfang: Solange der Winkel klein ist, senkt die Entlastung die Reibung stärker, als der Vortrieb F · cos(α) abnimmt. Danach kehrt sich das Verhältnis um, denn F · cos(α) fällt immer schneller, während von der Reibung ohnehin nur noch ein Rest abzuziehen ist. Bei 60° bleiben weniger als die Hälfte der 80,0 N übrig, mit denen Tobias waagerecht zieht. Richtig ist deshalb eine eingeschränkte Fassung: Schräg ziehen lohnt sich, aber nur bis zu einem günstigsten Winkel, der nach diesen vier Zeilen zwischen 0° und 30° liegen muss."
+ }
+}

@@ -1,0 +1,324 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="540" viewBox="0 0 900 540">
+<defs>
+<!-- ===== Karte ===== -->
+<linearGradient id="karte" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#FFF7E8"/><stop offset="1" stop-color="#F9E8CE"/>
+</linearGradient>
+<clipPath id="clipKarte"><rect x="0" y="0" width="900" height="540" rx="84"/></clipPath>
+
+<!-- ===== Holz: Grundverlauf + echte Maserung ueber feTurbulence ===== -->
+<linearGradient id="holz" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#A9762F"/><stop offset="0.18" stop-color="#C08F45"/>
+  <stop offset="0.55" stop-color="#CE9C56"/><stop offset="0.86" stop-color="#B27F3C"/>
+  <stop offset="1" stop-color="#96682A"/>
+</linearGradient>
+<linearGradient id="holzHell" x1="0" y1="0" x2="0" y2="540" gradientUnits="userSpaceOnUse">
+  <stop offset="0" stop-color="#C79A5C"/><stop offset="0.5" stop-color="#D8AE71"/>
+  <stop offset="1" stop-color="#B98D50"/>
+</linearGradient>
+<filter id="maser" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.010 0.42" numOctaves="4" seed="11" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.42  0 0 0 0 0.27  0 0 0 0 0.10  0 0 0 0.42 0"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+<filter id="rauh" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="5" result="n"/>
+  <feColorMatrix in="n" type="matrix" result="m"
+    values="0 0 0 0 0.30  0 0 0 0 0.24  0 0 0 0 0.16  0 0 0 0.35 0"/>
+  <feComposite in="m" in2="SourceGraphic" operator="atop"/>
+</filter>
+
+<!-- ===== Stahl: Hauptverlauf, warmer Reflex von unten, harter Glanzpunkt ===== -->
+<radialGradient id="stahl" cx="0.5" cy="0.5" r="0.68" fx="0.32" fy="0.26">
+  <stop offset="0" stop-color="#F7FAFD"/><stop offset="0.16" stop-color="#D4DEE9"/>
+  <stop offset="0.42" stop-color="#9BA9BB"/><stop offset="0.70" stop-color="#65728A"/>
+  <stop offset="0.89" stop-color="#3F4960"/><stop offset="1" stop-color="#2C3547"/>
+</radialGradient>
+<radialGradient id="stahlWarm" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#FFEBC2" stop-opacity="0.92"/>
+  <stop offset="0.55" stop-color="#EFCB90" stop-opacity="0.42"/>
+  <stop offset="1" stop-color="#DFB578" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="glanz" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.98"/>
+  <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.38"/>
+  <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="blech" x1="0" y1="0" x2="0.35" y2="1">
+  <stop offset="0" stop-color="#D9E1EA"/><stop offset="0.4" stop-color="#A6B2C2"/>
+  <stop offset="0.75" stop-color="#7C8899"/><stop offset="1" stop-color="#9DA9B8"/>
+</linearGradient>
+<linearGradient id="magnetKlotz" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#7A8496"/><stop offset="0.26" stop-color="#4D5768"/>
+  <stop offset="0.62" stop-color="#323B4D"/><stop offset="0.88" stop-color="#222939"/>
+  <stop offset="1" stop-color="#3E4759"/>
+</linearGradient>
+
+<!-- ===== Gras ===== -->
+<linearGradient id="gras" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#8FB362"/><stop offset="0.5" stop-color="#6E9449"/>
+  <stop offset="1" stop-color="#4F7134"/>
+</linearGradient>
+<linearGradient id="grasDunkel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6B8F46"/><stop offset="1" stop-color="#3E5B29"/>
+</linearGradient>
+
+<!-- ===== Schatten ===== -->
+<filter id="kontakt" x="-60%" y="-60%" width="220%" height="220%">
+  <feDropShadow dx="1" dy="3" stdDeviation="2.2" flood-color="#3A2B14" flood-opacity="0.55"/>
+</filter>
+<filter id="weich" x="-60%" y="-60%" width="220%" height="220%">
+  <feDropShadow dx="3" dy="7" stdDeviation="7" flood-color="#3A2B14" flood-opacity="0.32"/>
+</filter>
+<filter id="tiefe" x="-40%" y="-40%" width="180%" height="180%">
+  <feGaussianBlur stdDeviation="9"/>
+</filter>
+
+<!-- ================= eigene defs (Praefix m5) ================= -->
+<linearGradient id="m5Himmel" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2E3A63"/><stop offset="0.42" stop-color="#4C5C82"/>
+  <stop offset="0.74" stop-color="#7C87A0"/><stop offset="1" stop-color="#A9A79C"/>
+</linearGradient>
+<linearGradient id="m5Wald" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#33475C"/><stop offset="0.55" stop-color="#24354A"/>
+  <stop offset="1" stop-color="#182739"/>
+</linearGradient>
+<linearGradient id="m5WaldFern" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#546A80"/><stop offset="1" stop-color="#3C5069"/>
+</linearGradient>
+<linearGradient id="m5Wiese" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#6E8A5C"/><stop offset="0.34" stop-color="#5A7A46"/>
+  <stop offset="1" stop-color="#2F4A2A"/>
+</linearGradient>
+<linearGradient id="m5Kuehl" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#26375F" stop-opacity="0.34"/>
+  <stop offset="0.45" stop-color="#2B3F66" stop-opacity="0.14"/>
+  <stop offset="1" stop-color="#1B2B4C" stop-opacity="0.30"/>
+</linearGradient>
+<linearGradient id="m5Innen" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#2A1A08" stop-opacity="0.50"/>
+  <stop offset="0.42" stop-color="#3A2510" stop-opacity="0.14"/>
+  <stop offset="1" stop-color="#26170A" stop-opacity="0.42"/>
+</linearGradient>
+<linearGradient id="m5Fuge" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#301D08" stop-opacity="0.62"/>
+  <stop offset="1" stop-color="#301D08" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="m5Pfosten" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#7C5622"/><stop offset="0.16" stop-color="#C79554"/>
+  <stop offset="0.46" stop-color="#A67B3C"/><stop offset="0.80" stop-color="#6B4A1E"/>
+  <stop offset="1" stop-color="#412C11"/>
+</linearGradient>
+<linearGradient id="m5PfostenSchatten" x1="0" y1="0" x2="1" y2="0">
+  <stop offset="0" stop-color="#14203A" stop-opacity="0.55"/>
+  <stop offset="1" stop-color="#14203A" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="m5Blatt" cx="0.42" cy="0.36" r="0.72">
+  <stop offset="0" stop-color="#FBF6E9"/><stop offset="0.55" stop-color="#EFE6D2"/>
+  <stop offset="0.86" stop-color="#D9CCB2"/><stop offset="1" stop-color="#BCAC8E"/>
+</radialGradient>
+<linearGradient id="m5Rot" x1="0" y1="0" x2="1" y2="0.4">
+  <stop offset="0" stop-color="#E05A4A"/><stop offset="0.42" stop-color="#C22D24"/>
+  <stop offset="1" stop-color="#8A1712"/>
+</linearGradient>
+<linearGradient id="m5NadelHell" x1="0" y1="0" x2="1" y2="0.4">
+  <stop offset="0" stop-color="#FDFCF8"/><stop offset="0.45" stop-color="#E2DED3"/>
+  <stop offset="1" stop-color="#A9A497"/>
+</linearGradient>
+<radialGradient id="m5Vignette" cx="0.5" cy="0.46" r="0.72">
+  <stop offset="0.5" stop-color="#000000" stop-opacity="0"/>
+  <stop offset="1" stop-color="#160C02" stop-opacity="0.46"/>
+</radialGradient>
+<filter id="m5Glut" x="-60%" y="-60%" width="220%" height="220%">
+  <feGaussianBlur stdDeviation="16"/>
+</filter>
+
+<!-- Tanne, Fuss im Ursprung -->
+<g id="m5Tanne">
+  <path d="M0,-124 L19,-72 L10,-72 L27,-30 L15,-30 L35,12 L-35,12 L-15,-30 L-27,-30 L-10,-72 L-19,-72 Z"/>
+</g>
+
+<!-- Kompassgehaeuse, Mittelpunkt im Ursprung -->
+<g id="m5Geh">
+  <g filter="url(#kontakt)"><circle r="84" fill="url(#stahl)"/></g>
+  <circle r="84" fill="url(#stahl)"/>
+  <circle r="73" fill="#39425A" opacity="0.75"/>
+  <circle r="68" fill="url(#m5Blatt)"/>
+  <circle r="68" fill="none" stroke="#8C7F66" stroke-width="2" opacity="0.55"/>
+  <g stroke="#6A6151" stroke-width="3.8" stroke-linecap="round">
+    <line x1="0" y1="-62" x2="0" y2="-53"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(30)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(60)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(90)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(120)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(150)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(180)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(210)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(240)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(270)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(300)"/>
+    <line x1="0" y1="-62" x2="0" y2="-53" transform="rotate(330)"/>
+  </g>
+</g>
+
+<!-- Nadel, Spitze rot nach oben -->
+<g id="m5Nadel">
+  <g filter="url(#kontakt)">
+    <path d="M0,-60 L7.6,0 L0,8 L-7.6,0 Z" fill="url(#m5Rot)"/>
+    <path d="M0,60 L7.6,0 L0,-8 L-7.6,0 Z" fill="url(#m5NadelHell)"/>
+  </g>
+  <path d="M0,-58 L2.6,-4 L0,4 L-2.6,-4 Z" fill="#FFFFFF" opacity="0.20"/>
+</g>
+
+<!-- Deckel: Achse, Glasglanz, Ringlichter -->
+<g id="m5Deck">
+  <circle r="9.5" fill="url(#stahl)"/>
+  <ellipse cx="-3" cy="-3.5" rx="4.2" ry="3" fill="url(#glanz)"/>
+  <ellipse cx="-20" cy="-26" rx="42" ry="27" fill="url(#glanz)" opacity="0.26" transform="rotate(-26)"/>
+  <ellipse cx="0" cy="78" rx="42" ry="9" fill="url(#stahlWarm)" opacity="0.55"/>
+  <ellipse cx="-36" cy="-64" rx="26" ry="10" fill="url(#glanz)" transform="rotate(-28 -36 -64)"/>
+  <circle r="84" fill="none" stroke="#1E2534" stroke-width="2" opacity="0.45"/>
+</g>
+</defs>
+
+<g clip-path="url(#clipKarte)">
+  <rect width="900" height="540" fill="url(#karte)"/>
+
+  <!-- ============ RECHTS: draussen, Daemmerung ============ -->
+  <g>
+    <rect x="452" y="0" width="448" height="252" fill="url(#m5Himmel)"/>
+    <!-- ferne Baumkulisse -->
+    <g fill="url(#m5WaldFern)" opacity="0.85" filter="url(#tiefe)">
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(505,236) scale(0.82)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(600,240) scale(0.7)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(690,234) scale(0.9)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(790,240) scale(0.74)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(870,236) scale(0.86)"/>
+    </g>
+    <!-- nahe Baumkante -->
+    <g fill="url(#m5Wald)">
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(486,252) scale(1.16)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(556,254) scale(0.94)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(640,250) scale(1.08)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(726,254) scale(0.88)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(812,252) scale(1.2)"/>
+      <use xlink:href="#m5Tanne" href="#m5Tanne" transform="translate(884,254) scale(0.96)"/>
+    </g>
+    <!-- Wiese -->
+    <rect x="452" y="240" width="448" height="300" fill="url(#m5Wiese)"/>
+    <path d="M452,240 Q640,228 900,244 L900,300 L452,300 Z" fill="#3D5238" opacity="0.55"/>
+    <path d="M452,470 Q660,442 900,478 L900,540 L452,540 Z" fill="url(#grasDunkel)" opacity="0.75"/>
+    <!-- ruhige Grasbueschel -->
+    <g fill="url(#grasDunkel)" opacity="0.85">
+      <path d="M520,336 q6,-30 16,-46 q-2,32 -6,48 z"/>
+      <path d="M540,340 q10,-24 22,-36 q-8,28 -14,40 z"/>
+      <path d="M834,352 q-8,-32 -20,-48 q4,34 10,50 z"/>
+      <path d="M852,356 q-4,-26 -12,-40 q0,28 4,42 z"/>
+      <path d="M604,516 q10,-40 26,-58 q-6,42 -14,62 z"/>
+      <path d="M760,522 q-12,-38 -28,-56 q8,42 18,60 z"/>
+    </g>
+  </g>
+
+  <!-- ============ LINKS: Innenraum der Bude ============ -->
+  <g>
+    <!-- Bretterwand -->
+    <rect x="0" y="0" width="452" height="264" fill="url(#holz)" filter="url(#maser)"/>
+    <g stroke="#5E3F13" stroke-width="5" opacity="0.55">
+      <line x1="76" y1="0" x2="76" y2="264"/>
+      <line x1="164" y1="0" x2="164" y2="264"/>
+      <line x1="252" y1="0" x2="252" y2="264"/>
+      <line x1="340" y1="0" x2="340" y2="264"/>
+    </g>
+    <g stroke="#E4BE81" stroke-width="2.4" opacity="0.34">
+      <line x1="81" y1="0" x2="81" y2="264"/>
+      <line x1="169" y1="0" x2="169" y2="264"/>
+      <line x1="257" y1="0" x2="257" y2="264"/>
+      <line x1="345" y1="0" x2="345" y2="264"/>
+    </g>
+
+    <!-- Brett (Ablage) von oben -->
+    <rect x="0" y="252" width="452" height="288" fill="url(#holzHell)" filter="url(#maser)"/>
+    <g stroke="#8A5F26" stroke-width="4.4" opacity="0.5">
+      <line x1="0" y1="342" x2="452" y2="342"/>
+      <line x1="0" y1="440" x2="452" y2="440"/>
+    </g>
+    <g stroke="#F0D3A0" stroke-width="2.2" opacity="0.3">
+      <line x1="0" y1="347" x2="452" y2="347"/>
+      <line x1="0" y1="445" x2="452" y2="445"/>
+    </g>
+    <!-- Vorderkante der Wand / Fuge -->
+    <rect x="0" y="248" width="452" height="8" fill="#4A3010" opacity="0.7"/>
+    <rect x="0" y="256" width="452" height="34" fill="url(#m5Fuge)"/>
+
+    <!-- Magnetleiste -->
+    <g filter="url(#weich)">
+      <rect x="26" y="88" width="384" height="46" rx="6" fill="url(#holzHell)"/>
+    </g>
+    <rect x="26" y="88" width="384" height="46" rx="6" fill="url(#holzHell)" filter="url(#maser)"/>
+    <rect x="26" y="88" width="384" height="9" rx="4" fill="#F3D5A4" opacity="0.5"/>
+    <rect x="26" y="124" width="384" height="10" rx="4" fill="#6B4718" opacity="0.42"/>
+    <!-- Stahlschiene an der Leiste -->
+    <rect x="34" y="100" width="368" height="18" rx="5" fill="url(#blech)"/>
+    <rect x="34" y="102" width="368" height="5" rx="2.5" fill="#FFFFFF" opacity="0.4"/>
+
+    <!-- drei Magnete darunter -->
+    <g>
+      <g filter="url(#kontakt)"><rect x="74" y="130" width="60" height="54" rx="6" fill="url(#magnetKlotz)"/></g>
+      <ellipse cx="104" cy="180" rx="24" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+      <ellipse cx="92" cy="141" rx="15" ry="6" fill="url(#glanz)"/>
+      <rect x="74" y="130" width="60" height="7" rx="3" fill="url(#blech)" opacity="0.85"/>
+
+      <g filter="url(#kontakt)"><rect x="188" y="130" width="60" height="54" rx="6" fill="url(#magnetKlotz)"/></g>
+      <ellipse cx="218" cy="180" rx="24" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+      <ellipse cx="206" cy="141" rx="15" ry="6" fill="url(#glanz)"/>
+      <rect x="188" y="130" width="60" height="7" rx="3" fill="url(#blech)" opacity="0.85"/>
+
+      <g filter="url(#kontakt)"><rect x="302" y="130" width="60" height="54" rx="6" fill="url(#magnetKlotz)"/></g>
+      <ellipse cx="332" cy="180" rx="24" ry="8" fill="url(#stahlWarm)" opacity="0.5"/>
+      <ellipse cx="320" cy="141" rx="15" ry="6" fill="url(#glanz)"/>
+      <rect x="302" y="130" width="60" height="7" rx="3" fill="url(#blech)" opacity="0.85"/>
+    </g>
+
+    <!-- Innenstimmung: dunkler und waermer -->
+    <rect x="0" y="0" width="452" height="540" fill="url(#m5Innen)"/>
+    <ellipse cx="196" cy="330" rx="230" ry="150" fill="#FFD9A0" opacity="0.16" filter="url(#m5Glut)"/>
+  </g>
+
+  <!-- Kompass drinnen: Nadel steht nach oben zur Leiste -->
+  <g transform="translate(212,382)">
+    <ellipse cx="6" cy="86" rx="92" ry="20" fill="#2E1D08" opacity="0.34" filter="url(#tiefe)"/>
+    <use xlink:href="#m5Geh" href="#m5Geh"/>
+    <g transform="rotate(-8)"><use xlink:href="#m5Nadel" href="#m5Nadel"/></g>
+    <use xlink:href="#m5Deck" href="#m5Deck"/>
+  </g>
+
+  <!-- ============ Bretterkante als Trennung ============ -->
+  <g>
+    <rect x="452" y="0" width="40" height="540" fill="url(#m5Pfosten)"/>
+    <rect x="452" y="0" width="6" height="540" fill="#F0CE96" opacity="0.4"/>
+    <rect x="486" y="0" width="6" height="540" fill="#2C1C08" opacity="0.6"/>
+    <rect x="492" y="0" width="46" height="540" fill="url(#m5PfostenSchatten)"/>
+  </g>
+
+  <!-- Kompass draussen: gleiche Groesse, Nadel zeigt nach links unten -->
+  <g transform="translate(690,382)">
+    <ellipse cx="10" cy="86" rx="94" ry="20" fill="#16240F" opacity="0.42" filter="url(#tiefe)"/>
+    <use xlink:href="#m5Geh" href="#m5Geh"/>
+    <g transform="rotate(-138)"><use xlink:href="#m5Nadel" href="#m5Nadel"/></g>
+    <use xlink:href="#m5Deck" href="#m5Deck"/>
+  </g>
+  <!-- ein paar Halme vor dem Gehaeuse, damit er im Gras liegt -->
+  <g fill="url(#grasDunkel)" opacity="0.9">
+    <path d="M624,470 q-6,-38 -18,-56 q2,42 8,60 z"/>
+    <path d="M756,472 q10,-36 26,-54 q-6,40 -14,58 z"/>
+  </g>
+
+  <!-- kuehler Daemmerschleier ueber der Aussenhaelfte -->
+  <rect x="492" y="0" width="408" height="540" fill="url(#m5Kuehl)"/>
+
+  <!-- Gesamtvignette -->
+  <rect width="900" height="540" fill="url(#m5Vignette)"/>
+</g>
+<rect x="6" y="6" width="888" height="528" rx="78" fill="none" stroke="#C4963A" stroke-width="4.8"/>
+</svg>

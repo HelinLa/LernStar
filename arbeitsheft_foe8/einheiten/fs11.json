@@ -1,0 +1,195 @@
+{
+ "seite": {
+  "id": "fs11",
+  "quelle": "st11",
+  "sim": "elektronen-drift",
+  "sicherheit": "Simulation",
+  "theme": "foe_strom",
+  "titel": "Warum geht das Licht sofort an?",
+  "name": "Langsames Wandern, schnelles Signal",
+  "fachwoerter_neu": [
+   "Elektron"
+  ],
+  "alltag": [
+   "Jannis drückt den Schalter an der Werkbank.",
+   "Die Leselampe leuchtet sofort, obwohl das Kabel drei Meter lang ist.",
+   "Im Kupferdraht sitzen winzige Teilchen. So ein Teilchen heißt Elektron.",
+   "Nour fragt: Wie schnell sind diese Elektronen wirklich?"
+  ],
+  "frage": "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
+  "predict": [
+   "Nein. Die Elektronen wandern langsam. Trotzdem ist das Signal sofort da.",
+   "Ja. Die Elektronen sausen ganz schnell durch das ganze Kabel."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.",
+   "Lies im Bild die Werte für Zappeln und Signal ab.",
+   "Trage die zwei leeren Zeilen in die Tabelle ein.",
+   "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Was steht im Bild?",
+   "Welchen Wert zeigt das Bild?",
+   "Ist das schnell oder langsam?"
+  ],
+  "tabRows": [
+   [
+    "Wandern",
+    "0,0490 mm/s",
+    "langsam"
+   ],
+   [
+    "Zappeln",
+    "",
+    ""
+   ],
+   [
+    "Signal",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Der Draht ist schon voller Elektronen. Sie wandern sehr",
+    "loesung": "langsam",
+    "post": ": nur 0,0490 mm/s."
+   },
+   {
+    "pre": "Das",
+    "loesung": "Signal",
+    "post": "ist mit 200 000 000 m/s sofort in der ganzen Leitung. Darum leuchtet die Lampe."
+   }
+  ],
+  "wortbank": [
+   "langsam",
+   "Signal",
+   "5,7 Stunden",
+   "1 570 000 m/s"
+  ],
+  "beispiel": {
+   "frage": "Wie schnell wandern die Elektronen beim Knopf „Wasserkocher“?",
+   "antwort": "Ich drücke „Wasserkocher“. Im Bild steht: I = 9,0 A · A = 1,50 mm². Darunter steht: Wandern: 0,4410 mm/s. Bei mehr Strom wandern die Elektronen also schneller. Sie bleiben trotzdem sehr langsam."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Was stimmt nach den Werten im Bild?",
+    "optionen": [
+     "Das Signal ist genauso schnell wie das Wandern.",
+     "Das Wandern ist viel langsamer als das Signal.",
+     "Das Zappeln ist langsamer als das Wandern."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Für einen Meter Kabel braucht ein Elektron",
+      "loesung": "5,7 Stunden",
+      "post": "."
+     },
+     {
+      "pre": "Jedes Elektron zappelt mit",
+      "loesung": "1 570 000 m/s",
+      "post": "kreuz und quer."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Nour sagt: „Die Elektronen müssen rasend schnell durch das Kabel fahren.“ Erkläre Nour, warum die Lampe trotzdem sofort leuchtet.",
+    "satzstarter": "Der Draht ist schon voller …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Die drei Werte stehen im Bild unter dem Draht: Zappeln, Wandern und Signal. Achte auf mm/s und m/s.",
+   "h2": "Beginne so: Der Draht ist schon voller Elektronen. Das Signal …",
+   "h3": "Fast fertige Antwort: Der Draht ist schon voller Elektronen. Sie wandern nur 0,0490 mm/s. Das Signal ist mit 200 000 000 m/s sofort in der ganzen Leitung. Ergänze den letzten Satz: Kein Elektron muss die drei Meter bis zur Lampe ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann im Bild ablesen, wie schnell die Elektronen wandern.",
+   "Ich weiß, dass die Elektronen schon im Draht sind und nur wandern.",
+   "Ich kann erklären, warum die Lampe sofort leuchtet."
+  ],
+  "zuhause": "Suche einen Gartenschlauch, der schon voll Wasser ist. Drehe den Hahn auf. Vorne kommt sofort Wasser heraus. Es ist aber nicht das Wasser vom Hahn. Schreibe auf, was das mit dem Draht zu tun hat.",
+  "bildauftrag": "[BILD: ein einzelner, stark vergrößerter Kupferdraht waagerecht quer über das Bild, darüber klein die Beschriftung „Kupferdraht, stark vergrößert“; im Draht viele blaue Punkte für die Elektronen, jeder mit einer kurzen blauen Zickzack-Linie für das Zappeln, dazu EIN kräftiger oranger Pfeil, der nur ein winziges Stück nach rechts zeigt, für das Wandern; rechts am Draht eine kleine leuchtende Lampe; keine Pole, kein „+“ und kein „–“ am Draht; drei große Beschriftungen untereinander unter dem Draht: „Zappeln: 1 570 000 m/s“, „Wandern: 0,0490 mm/s“, „Signal: 200 000 000 m/s“; nur dieser eine Draht, keine zweite Leitung, keine Nebenbilder, keine Deko; ruhiger heller Hintergrund, sehr große gut lesbare Schrift]"
+ },
+ "lehrer": {
+  "id": "fs11",
+  "lernziel": "Die Schülerinnen und Schüler lesen im Bild der Simulation die drei Werte Wandern (0,0490 mm/s), Zappeln (1 570 000 m/s) und Signal (200 000 000 m/s) ab und erklären damit, warum die Lampe sofort leuchtet, obwohl die Elektronen sehr langsam wandern. Die Formel v = I / (n · A · e) und jede Umrechnung von Sekunden in Stunden sind auf dieser Seite bewusst weggelassen und bleiben dem Regelheft vorbehalten.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Werte aus diesem Lehrerteil als Karten oder als Tabelle an der Tafel. Optional als Demonstration: ein langer Gartenschlauch, der schon voll Wasser ist, und ein Wasserhahn.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Fünf Ergebniskarten im Wortlaut des Bildschirms zeigen oder vorlesen. Zustand: Knopf „Leselampe“, Bildtext „I = 1,0 A · A = 1,50 mm²“. Karte 1 „Zappeln: 1 570 000 m/s“ · Karte 2 „Wandern: 0,0490 mm/s“ · Karte 3 „Signal: 200 000 000 m/s – die Lampe geht sofort an“. Karte 4 aus der Statuszeile: „Für einen Meter Kabel braucht ein Elektron damit 20406 Sekunden – das sind 5,7 Stunden.“ Karte 5 für das gelöste Beispiel: Knopf „Wasserkocher“, Bildtext „I = 9,0 A · A = 1,50 mm²“ → „Wandern: 0,4410 mm/s“. Karten 1 bis 3 nebeneinander an die Tafel heften; die Klasse füllt daraus die Tabelle. Karte 4 erst zu Aufgabe 2 aufdecken.",
+  "merksatz": [
+   "langsam",
+   "Signal"
+  ],
+  "tabelle_erwartet": [
+   [
+    "Zappeln",
+    "1 570 000 m/s",
+    "schnell"
+   ],
+   [
+    "Signal",
+    "200 000 000 m/s",
+    "schnell"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Im Bild stehen die drei Werte untereinander: „Zappeln: 1 570 000 m/s“, „Wandern: 0,0490 mm/s“, „Signal: 200 000 000 m/s – die Lampe geht sofort an“. Das Wandern ist der mit Abstand kleinste Wert, das Signal der größte. Also stimmt nur Aussage 2.",
+   "typische_fehler": [
+    "Aussage 1 wird gewählt: „sofort“ wird mit „gleich schnell“ gleichgesetzt – die Lampe geht sofort an, also müssten auch die Elektronen sofort da sein.",
+    "Aussage 3 wird gewählt: Zappeln und Wandern werden verwechselt, weil beides die Elektronen betrifft. Die Simulation trennt es ausdrücklich: „Zappeln ist nicht Wandern.“",
+    "mm/s und m/s werden nicht unterschieden. 0,0490 gilt dann als großer Wert, weil vier Ziffern dastehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "5,7 Stunden",
+    "1 570 000 m/s"
+   ],
+   "typische_fehler": [
+    "„20406 Sekunden“ wird eingetragen statt „5,7 Stunden“ – beide Zahlen stehen im selben Satz der Statuszeile. Beides meint dieselbe Zeit; die Wortbank gibt die Stundenform vor.",
+    "Die beiden Wortbank-Einträge werden vertauscht, „5,7 Stunden“ landet beim Zappeln.",
+    "„1 570 000 m/s“ wird ohne Einheit abgeschrieben oder zu „1570“ verkürzt.",
+    "Die Lücke wird mit „0,0490 mm/s“ gefüllt: Wandern und Zappeln werden gleichgesetzt."
+   ]
+  },
+  "a3": {
+   "erwartung": "Der Draht ist schon voller Elektronen. Sie wandern nur 0,0490 mm/s, also sehr langsam. Das Signal ist mit 200 000 000 m/s sofort in der ganzen Leitung. Es schiebt auch die Elektronen in der Lampe an. Kein Elektron muss die drei Meter bis zur Lampe fahren.",
+   "alternativen": [
+    "Bild vom Gartenschlauch (steht so in der Simulation): Der Schlauch ist schon voll Wasser. Drehst du den Hahn auf, kommt vorne sofort Wasser – aber nicht das, was du gerade eingefüllt hast.",
+    "Verweis auf die eigene Tabelle: 0,0490 mm/s beim Wandern gegen 200 000 000 m/s beim Signal.",
+    "Verweis auf die Statuszeile: „Weil nicht das einzelne Elektron ankommen muss. Der Anstoß läuft durch die ganze Leitung – mit rund 200 000 km/s.“ Achtung: Die Statuszeile sagt „Anstoß“, das Bild und die Schülerseite sagen durchgehend „Signal“. Beim Vorlesen bitte „Signal“ sagen, sonst stehen zwei Namen für dieselbe Sache im Raum.",
+    "Verweis auf Aufgabe 2: Ein Elektron braucht für einen Meter Kabel 5,7 Stunden. So lange wartet niemand auf das Licht."
+   ],
+   "typische_fehler": [
+    "„Die Elektronen sind eben superschnell“ wird nur wiederholt; kein Wert aus der Tabelle wird genannt.",
+    "Das Zappeln wird als Erklärung genommen: „Sie zappeln ja mit 1 570 000 m/s.“ Das Zappeln geht kreuz und quer und bringt kein Elektron voran.",
+    "Es wird gesagt, der Strom oder die Ladung werde in der Lampe verbraucht. Ladung wird nicht verbraucht: Die Elektronen sind vorher und nachher da, sie wandern nur.",
+    "Der Draht wird als leer gedacht: Die Elektronen müssten erst vom Netzteil bis zur Lampe geschickt werden."
+   ]
+  },
+  "hilfe3_wort": "fahren (auch richtig: wandern, zurücklegen, laufen)",
+  "schwache": [
+   "Zuerst nur zwei Zeilen vergleichen lassen: „Wandern“ und „Signal“. Die Zeile „Zappeln“ erst danach ausfüllen, sonst stehen drei Größenordnungen gleichzeitig auf dem Tisch.",
+   "Die drei Werte vorher als Kärtchen der Größe nach ordnen lassen. Der Vergleich 0,0490 mm/s gegen 200 000 000 m/s ist die eigentliche Hürde, nicht die Physik.",
+   "mm/s und m/s an der Tafel als gesprochene Wörter einführen: „Millimeter je Sekunde“ und „Meter je Sekunde“. Sonst wird das kleine m überlesen.",
+   "Die Bedienreihenfolge fest vorgeben: erst „Leselampe“ drücken, dann ablesen. Wer „Handy-Ladegerät“ drückt, sieht im Bild „I = 0,5 A · A = 0,75 mm²“; das Wandern bleibt dabei bei 0,0490 mm/s. Die Tabelle stimmt dann zwar, die untere Bildzeile passt aber nicht zum Beispiel.",
+   "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen; „1 570 000 m/s“ dabei laut mitsprechen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „Wasserkocher“ und lies in der Statuszeile ab, wie lange ein Elektron jetzt für einen Meter Kabel braucht (2267 Sekunden – das sind 0,6 Stunden). Vergleiche mit den 5,7 Stunden bei der Leselampe und schreibe einen Satz dazu.",
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Bewegung der Elektronen im Leiter, Ladung wird nicht verbraucht. Kompetenzen UF1, UF2, E5 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): E5 über das Ordnen der drei Werte in der Tabelle, E6 über die Modellgrenze (das Wandern ist im Bild stark beschleunigt gezeichnet). UF4 und K3 hingen an der Formel v = I / (n · A · e) und an der Rechnung „3 m bei 0,0490 mm/s“; beides bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+ }
+}

@@ -1,0 +1,307 @@
+[
+ {
+  "sim": "auge",
+  "ueberschrift": "👁️ Wie funktioniert das Auge?",
+  "regler": [
+   {
+    "id": "augG",
+    "beschriftung": "Abstand des Gegenstands: weit",
+    "bereich": {
+     "min": "60",
+     "max": "220",
+     "step": "5",
+     "start": "150"
+    }
+   },
+   {
+    "id": "augP",
+    "beschriftung": "Pupille (Helligkeit): mittel",
+    "bereich": {
+     "min": "1",
+     "max": "6",
+     "step": "1",
+     "start": "3"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "aufrecht und vergrößert",
+    "ruft": "_augAns(0,0)"
+   },
+   {
+    "aufschrift": "umgekehrt und verkleinert",
+    "ruft": "_augAns(0,1)"
+   },
+   {
+    "aufschrift": "virtuell",
+    "ruft": "_augAns(0,2)"
+   },
+   {
+    "aufschrift": "Die Linse verformt sich (Akkommodation)",
+    "ruft": "_augAns(1,0)"
+   },
+   {
+    "aufschrift": "Die Netzhaut bewegt sich",
+    "ruft": "_augAns(1,1)"
+   },
+   {
+    "aufschrift": "Die Pupille wird größer",
+    "ruft": "_augAns(1,2)"
+   },
+   {
+    "aufschrift": "Dem Sensor",
+    "ruft": "_augAns(2,0)"
+   },
+   {
+    "aufschrift": "Der Blende",
+    "ruft": "_augAns(2,1)"
+   },
+   {
+    "aufschrift": "Der Brennweite",
+    "ruft": "_augAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_augSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_augSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_augSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('auge')"
+   }
+  ],
+  "hinweise": [
+   "Das Auge arbeitet wie eine Kamera. Verändere den Abstand des Gegenstands und die Pupille. Wo entsteht das Bild – und wie stellt das Auge scharf?",
+   "Auf der Netzhaut entsteht ein umgekehrtes Bild (das Gehirn dreht es um). Zum Scharfstellen verformt sich die Linse (Akkommodation): nah = stärker gewölbt. Die Pupille regelt wie eine Blende die Lichtmenge.",
+   "Auge = Linse + Pupille (Blende) + Netzhaut (Sensor). | Bild auf der Netzhaut: umgekehrt und verkleinert."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel."
+   },
+   {
+    "einstellung": "aufrecht und vergrößert",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt."
+   },
+   {
+    "einstellung": "umgekehrt und verkleinert",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild."
+   },
+   {
+    "einstellung": "virtuell",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell."
+   },
+   {
+    "einstellung": "Die Linse verformt sich (Akkommodation)",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen."
+   },
+   {
+    "einstellung": "Die Netzhaut bewegt sich",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest."
+   },
+   {
+    "einstellung": "Die Pupille wird größer",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit."
+   },
+   {
+    "einstellung": "Dem Sensor",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut."
+   },
+   {
+    "einstellung": "Der Blende",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges."
+   },
+   {
+    "einstellung": "Der Brennweite",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 60",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 80",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 100",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 120",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 140",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 160",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 180",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 200",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 220",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 65",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 70",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 75",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 85",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 90",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 95",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 105",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 110",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 115",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 125",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 130",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 135",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 145",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 150",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 155",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 165",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 170",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 175",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 185",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 190",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 195",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 205",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 210",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 215",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 1",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille eng.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 2",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille eng.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 3",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 4",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 5",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille weit.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Pupille (Helligkeit): mittel = 6",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille weit.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   }
+  ],
+  "bildtexte": [
+   "Gegenstand",
+   "Netzhaut",
+   "Linse",
+   "umgekehrtes Bild auf der Netzhaut"
+  ]
+ }
+]

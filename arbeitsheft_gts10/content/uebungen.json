@@ -1,0 +1,2274 @@
+[
+ {
+  "id": "ev1",
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Außerhalb des Magneten zeigen die Feldlinien vom Nordpol zum",
+    "loesung": "Südpol",
+    "post": "."
+   },
+   {
+    "pre": "Am stärksten ist das Feld dort, wo die Linien dicht liegen, also an den beiden",
+    "loesung": "Polen",
+    "post": "."
+   },
+   {
+    "pre": "Über der Mitte des Stabmagneten liegen die Feldlinien weit",
+    "loesung": "auseinander",
+    "post": ", dort wirkt er schwach."
+   },
+   {
+    "pre": "Ein Magnetfeld kann man nicht sehen, aber mit einer",
+    "loesung": "Kompassnadel",
+    "post": "nachweisen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "An den Polen liegen die Feldlinien dichter als über der Mitte des Magneten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Magnetfeld entsteht erst dann, wenn man eine Kompassnadel hineinlegt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei Abstand 140 dreht sich der Prüfkompass genauso weit wie bei Abstand 55.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Außerhalb des Magneten laufen die Feldlinien vom Nordpol zum Südpol.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Im Umspannwerk liegt ein Stabmagnet auf dem Tisch. Jannis legt eine Büroklammer über die Mitte - sie bleibt liegen. Hält er sie an ein Ende, springt sie sofort an den Magneten. Woran liegt das?",
+   "optionen": [
+    "In der Mitte besteht der Magnet aus unmagnetischem Metall. Der Stab ist aber überall aus demselben Material.",
+    "Über der Mitte ist die Büroklammer schwerer als am Ende. Ihre Masse ändert sich beim Verschieben jedoch nicht.",
+    "Über der Mitte liegen die Feldlinien weit auseinander, das Feld ist dort zu schwach, um die Klammer zu heben.",
+    "In der Mitte treffen Nordpol und Südpol zusammen und stoßen die Klammer ab. Eine Büroklammer wird von einem Magneten aber nie abgestoßen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche das Feld am Ende des Stabmagneten mit dem Feld über seiner Mitte. Nenne dabei zwei Unterschiede.",
+   "zeilen": 4,
+   "loesung": "Am Ende (0°) liegen die Feldlinien dicht beieinander, über der Mitte (90°) laufen sie weit auseinander. Deshalb dreht sich die Nadel des Prüfkompasses am Ende am kräftigsten und über der Mitte nur wenig. Auch die Richtung ist verschieden: Am Pol treten die Linien aus dem Magneten aus, über der Mitte verlaufen sie längs zu ihm. In beiden Fällen wird das Feld schwächer, wenn der Abstand von 55 auf 140 wächst."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Um einen Draht, durch den Strom fließt, verlaufen die Feldlinien im",
+    "loesung": "Kreis",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Strom ist der Draht",
+    "loesung": "kein Magnet",
+    "post": "und die Nadel zeigt nach Norden."
+   },
+   {
+    "pre": "Bei 3,0 A und 2,0 cm Abstand beträgt das Feld des Drahtes",
+    "loesung": "30,0 µT",
+    "post": "."
+   },
+   {
+    "pre": "Polt man den Strom um, schlägt die Nadel zur",
+    "loesung": "anderen Seite",
+    "post": "aus."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Draht zieht die Kompassnadel zu sich hin, so wie ein Magnet Eisen anzieht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Schaltet man den Strom aus, zeigt die Nadel sofort wieder nach Norden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei 3,0 A und 2,0 cm Abstand ist das Feld des Drahtes stärker als das waagerechte Erdfeld.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je größer der Abstand zum Draht, desto weiter dreht sich die Nadel.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis legt sein Handy mit Kompass-App neben ein Verlängerungskabel. Erst als er den Wasserkocher einschaltet, wandert die Anzeige zur Seite. Was steckt dahinter?",
+   "optionen": [
+    "Erst der fließende Strom erzeugt ein Feld um das Kabel. Es überlagert sich mit dem Erdfeld, und die Anzeige dreht sich.",
+    "Das Kupfer im Kabel ist ein Dauermagnet. Dann müsste die Anzeige aber auch bei ausgeschaltetem Kocher abweichen.",
+    "Der Kocher zieht das Handy an, weil sein Gehäuse aus Metall ist. Die App misst jedoch ein Magnetfeld und keine Anziehung des Gehäuses.",
+    "Die Wärme des Kochers verstellt die Anzeige. Sie wandert aber schon, bevor das Wasser überhaupt warm wird."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Kompassnadel bei eingeschaltetem Strom nicht mehr nach Norden zeigt, sondern schräg steht.",
+   "zeilen": 4,
+   "loesung": "Auf die Nadel wirken zwei Felder gleichzeitig. Das waagerechte Erdfeld von 20 µT zieht sie nach Norden, das kreisförmige Feld des Drahtes von 30,0 µT wirkt quer dazu. Die Nadel stellt sich in die Richtung dazwischen und schlägt deshalb 56,3° nach Osten aus. Schaltet man den Strom ab, bleibt nur das Erdfeld übrig und die Nadel dreht zurück nach Norden."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Tragkraft der Spule wächst mit der Stromstärke und mit der",
+    "loesung": "Windungszahl",
+    "post": "."
+   },
+   {
+    "pre": "Schaltet man den Strom ab, verliert der Elektromagnet seine",
+    "loesung": "Kraft",
+    "post": "."
+   },
+   {
+    "pre": "Bei 150 Windungen und 2 A hält die Spule",
+    "loesung": "9 Büroklammern",
+    "post": "."
+   },
+   {
+    "pre": "Die Ausgleichsgerade der Messreihe geht durch den",
+    "loesung": "Ursprung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelt man die Windungszahl von 150 auf 300, wird die Tragkraft ungefähr doppelt so groß.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Eisenkern im Inneren der Spule verstärkt das Magnetfeld.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch ohne Strom hält die Spule noch fast alle Büroklammern fest.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Von 1 A auf 5 A nimmt die Tragkraft nur um vier Büroklammern zu.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In der Werkstatt hält ein Elektromagnet ein Blech fest. Der Meister dreht die Stromstärke von 2 A auf 4 A hoch, die Windungszahl bleibt gleich. Was passiert mit der Tragkraft?",
+   "optionen": [
+    "Sie bleibt gleich, denn die Windungszahl hat sich nicht geändert. Die Tragkraft hängt aber auch von der Stromstärke ab.",
+    "Sie wird viermal so groß, weil doppelter Strom die Kraft im Quadrat steigert. Die Messreihe ergibt jedoch eine Gerade und keine quadratische Zunahme.",
+    "Sie nimmt ab, weil der Draht bei mehr Strom wärmer wird. In der Messreihe steigt die Tragkraft mit dem Strom aber an.",
+    "Sie wird ungefähr doppelt so groß, denn die Tragkraft wächst proportional zur Stromstärke."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne mit der Steigung 4,42 Büroklammern pro Ampere, wie viele Klammern die Spule bei 3 A trägt, und vergleiche mit dem Messwert bei 1 A.",
+   "zeilen": 4,
+   "loesung": "Die Ausgleichsgerade geht durch den Ursprung, also gilt Zahl der Klammern = 4,42 pro Ampere mal Stromstärke. Bei 3 A ergibt das 4,42 mal 3 = 13,3, also rund 13 Büroklammern. Bei 1 A wurden 4 Klammern gemessen, das passt zu 4,42 mal 1. Dreifacher Strom bedeutet also etwa dreifache Tragkraft: Die Tragkraft ist proportional zur Stromstärke."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E8",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Kraft auf einen Draht im Magnetfeld berechnet man mit F =",
+    "loesung": "B·I·L",
+    "post": "."
+   },
+   {
+    "pre": "Die Kraft wirkt senkrecht zum Strom und senkrecht zum",
+    "loesung": "Magnetfeld",
+    "post": "."
+   },
+   {
+    "pre": "Bei 5,0 A und 0,20 T zeigt die Anzeige eine Kraft von",
+    "loesung": "0,100 N",
+    "post": "."
+   },
+   {
+    "pre": "Polt man den Strom um, bleibt die Kraft gleich groß, wirkt aber nach",
+    "loesung": "unten",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Magnet zieht den Kupferstab an, deshalb bewegt sich der Stab auf den Nordpol zu.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 0 A wirkt auf den Stab keine Kraft, die Anzeige steht auf 0,000 N.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Steigt die Stromstärke von 5,0 A auf 10,0 A, vervierfacht sich die Kraft.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Kraft schiebt den Stab quer, nicht zum Pol des Magneten hin.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In Jannis' Kopfhörer sitzt eine Spule aus Kupferdraht zwischen kleinen Magneten. Sobald Musik läuft, bewegt sich die Membran vor und zurück. Wie kommt die Bewegung zustande?",
+   "optionen": [
+    "Die Magnete ziehen das Kupfer an, sobald Strom durch die Spule fließt. Kupfer wird von einem Magneten aber nicht angezogen.",
+    "Durch die Spule fließt ein wechselnder Strom. Im Feld der Magnete wirkt darauf die Kraft F = B·I·L, die je nach Stromrichtung nach vorn oder nach hinten schiebt.",
+    "Der Strom erwärmt die Luft im Gehäuse und drückt die Membran heraus. Die Membran bewegt sich aber viele hundert Mal pro Sekunde hin und her.",
+    "Der Schall läuft durch das Kabel und stößt die Membran an. Im Kabel fließt jedoch elektrischer Strom und kein Schall."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage: „Wenn ich die Stromstärke verdopple, muss ich das Magnetfeld halbieren, damit die Kraft gleich bleibt.“",
+   "zeilen": 5,
+   "loesung": "Die Aussage stimmt, denn in F = B · I · L zählt nur das Produkt aus B und I, wenn L gleich bleibt. Ein Beispiel: 0,40 T mal 2,0 A mal 0,10 m ergibt 0,080 N, und 0,20 T mal 4,0 A mal 0,10 m ergibt ebenfalls 0,080 N. Halbiertes Feld bei doppeltem Strom führt also zur selben Kraft. Nur die Richtung bliebe erhalten, solange man weder Strom noch Magnet umpolt."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Kraft steht senkrecht zum Strom und senkrecht zum",
+    "loesung": "Magnetfeld",
+    "post": "."
+   },
+   {
+    "pre": "Polst du Strom und Magnet beide um, bleibt die Kraftrichtung",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Bei der Drei-Finger-Regel der rechten Hand zeigt der Daumen in die technische",
+    "loesung": "Stromrichtung",
+    "post": "."
+   },
+   {
+    "pre": "Polst du nur den Strom um, bleibt die Kraft",
+    "loesung": "0,100 N",
+    "post": "groß, sie drückt den Stab aber nach unten."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Zeigefinger der rechten Hand zeigt bei der Drei-Finger-Regel vom Nordpol zum Südpol.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Magnet zieht den Kupferstab zu seinem Nordpol hin.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Polst du nur den Strom um, wird die Kraft dabei auch kleiner.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Drehst du Strom und Magnet gemeinsam um, wird der Stab wieder nach oben gedrückt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis' Vater baut den Motor eines Modellautos aus. Beim Einbauen vertauscht er die beiden Anschlusskabel und setzt dabei auch den Magneten verkehrt herum ein. Wie fährt das Auto danach?",
+   "optionen": [
+    "Es fährt rückwärts, denn vertauschte Kabel kehren die Drehrichtung immer um. Hier ist aber auch der Magnet umgedreht, und zwei Umkehrungen heben sich auf.",
+    "Es bleibt stehen, weil sich die beiden Umpolungen gegenseitig auslöschen. Aufgehoben wird jedoch nur die Richtungsumkehr; die Kraft behält ihre 0,100 N.",
+    "Es fährt vorwärts wie vorher, denn Strom und Magnet sind beide umgekehrt, und damit bleibt die Kraftrichtung dieselbe.",
+    "Es fährt vorwärts, aber langsamer, weil der Magnet nun gegen den Strom arbeitet. Der Betrag der Kraft folgt jedoch aus F = B · I · L und ändert sich beim Umpolen nicht."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe, warum die Kraft nach dem Umdrehen des Magneten allein nach unten zeigt, mit 0,100 N aber genauso groß bleibt wie vorher.",
+   "zeilen": 4,
+   "loesung": "Die Richtung der Kraft hängt von zwei Ursachen ab: von der Stromrichtung und von der Richtung des Magnetfeldes. Dreht man nur den Magneten um, ist eine der beiden Ursachen umgekehrt, und die Kraft dreht sich mit. Bei der Drei-Finger-Regel zeigt der Zeigefinger jetzt andersherum, der Mittelfinger kippt nach unten. Der Betrag folgt dagegen aus F = B · I · L; B, I und L sind unverändert, deshalb bleiben es 0,100 N."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E8",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Auf die beiden Spulenseiten wirken Kräfte in",
+    "loesung": "entgegengesetzte",
+    "post": "Richtungen."
+   },
+   {
+    "pre": "Ohne Kommutator bleibt die Spule nach einer halben",
+    "loesung": "Umdrehung",
+    "post": "stehen."
+   },
+   {
+    "pre": "Das Drehmoment berechnest du mit M =",
+    "loesung": "N·B·I·A",
+    "post": "."
+   },
+   {
+    "pre": "Steigt die Windungszahl von 20 auf 40, wird das Drehmoment",
+    "loesung": "doppelt so groß",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Verdoppelt man die Windungszahl der Spule, vervierfacht sich ihr Drehmoment.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In den beiden Seiten der Spule fließt der Strom in entgegengesetzte Richtungen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Kommutator polt den Strom in der Spule bei jeder halben Umdrehung um.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ohne Kommutator dreht sich die Spule langsamer, aber gleichmäßig weiter.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Werkraum ruckt Milas Modellauto nur kurz an und bleibt dann stehen, obwohl der Akku voll ist und der Motor warm wird. Beim Öffnen sieht sie: Der geteilte Ring auf der Welle ist abgebrochen. Warum fährt das Auto nicht?",
+   "optionen": [
+    "Ohne den geteilten Ring kehrt der Strom in der Spule nicht mehr um. Nach einer halben Umdrehung drücken dieselben Kräfte zurück, die Spule pendelt und bleibt stehen.",
+    "Der Akku liefert zu wenig Spannung für eine ganze Umdrehung. Der Motor wird aber warm, es fließt also Strom; fehlen tut nur die Umpolung.",
+    "Der Magnet zieht die Spule an und hält sie fest. Auf die Kupferspule wirkt jedoch keine anziehende Kraft zum Pol hin, sie wird quer gedrückt.",
+    "Das Drehmoment von 16,0 Millinewtonmetern ist für ein Modellauto zu klein. Mit genau diesem Drehmoment lief der Motor vorher; verändert hat sich nur der Ring."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche die Bewegung der Spule mit und ohne Kommutator und gib an, was der Kommutator dabei mit dem Strom macht.",
+   "zeilen": 4,
+   "loesung": "Mit Kommutator dreht sich die Spule immer weiter in dieselbe Richtung. Der geteilte Ring dreht sich mit und tauscht die Anschlüsse, sodass der Strom in der Spule bei jeder halben Umdrehung umkehrt; die Kräfte treiben deshalb immer in dieselbe Drehrichtung. Ohne Kommutator bleibt der Strom gleich gerichtet. Die Spule dreht sich dann über die Senkrechte hinaus, wird von denselben Kräften zurückgedrückt, pendelt und bleibt stehen."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Spannung entsteht nur, solange sich das Magnetfeld in der Spule",
+    "loesung": "ändert",
+    "post": "."
+   },
+   {
+    "pre": "Doppeltes Tempo des Magneten bedeutet",
+    "loesung": "doppelte Spannung",
+    "post": "."
+   },
+   {
+    "pre": "Liegt der Magnet still in der Spule, zeigt das Messgerät",
+    "loesung": "keine Spannung",
+    "post": "an."
+   },
+   {
+    "pre": "Zieht man den Magneten wieder heraus, kippt das",
+    "loesung": "Vorzeichen",
+    "post": "der Spannung."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Energie für die Spannung steckt im Magneten und wird beim Messen langsam aufgebraucht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit dem starken Magneten steigt die Spannung bei Tempo 50 cm/s von 0,300 V auf 0,900 V.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 600 Windungen, starkem Magneten und Tempo 100 cm/s zeigt das Gerät 1,200 V an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Fahrraddynamo liefert nur so lange Licht, wie sich das Rad dreht.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Lea hat eine Taschenlampe ohne Batterie. Schüttelt sie die Lampe, rutscht darin ein Magnet durch eine Spule und die Lampe leuchtet. Legt sie die Lampe auf den Tisch, wird es dunkel. Warum?",
+   "optionen": [
+    "Der Magnet hat seine Kraft beim Schütteln aufgebraucht. Er bleibt jedoch genauso stark wie vorher, er bewegt sich nur nicht mehr.",
+    "Der Magnet liegt jetzt neben der Spule statt darin. Auch mitten in der Spule würde er ohne Bewegung keine Spannung erzeugen.",
+    "Der Lampe fehlt die Batterie, die sie zum Leuchten braucht. Beim Schütteln leuchtet sie aber ohne Batterie; die Bewegung allein reicht aus.",
+    "Auf dem Tisch bewegt sich der Magnet nicht mehr. Ohne Bewegung ändert sich das Magnetfeld in der Spule nicht, und ohne Änderung entsteht keine Spannung."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bestimme die Spannung bei 600 Windungen, starkem Magneten und einem Tempo von 25 cm/s und begründe deinen Wert.",
+   "zeilen": 3,
+   "loesung": "Die Spannung wächst mit dem Tempo: halbes Tempo bedeutet halbe Spannung. Bei starkem Magneten und 50 cm/s zeigt das Gerät 0,600 V, bei 25 cm/s also 0,300 V. Die Formel bestätigt das: U = 600 · 0,10 T · 0,0004 m² · 0,25 m/s / 0,02 m = 0,300 V."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev8",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die wirksame Fläche der Spule folgt A′ = A ·",
+    "loesung": "cos φ",
+    "post": "."
+   },
+   {
+    "pre": "Verdoppelt man die Drehfrequenz, verdoppelt sich auch der",
+    "loesung": "Scheitelwert",
+    "post": "."
+   },
+   {
+    "pre": "Schatten und Spannung sind gegeneinander um eine",
+    "loesung": "Viertelperiode",
+    "post": "verschoben."
+   },
+   {
+    "pre": "Der Scheitelwert beträgt 0,658 V, der Effektivwert dagegen",
+    "loesung": "0,465 V",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei φ = 180° zeigt die Anzeige cos φ = -1,000 und sin φ = 0,000.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Spannung ist genau dann am größten, wenn der Schatten der Spule am größten ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Effektivwert einer Wechselspannung ist kleiner als ihr Scheitelwert.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Während sich die Spule dreht, wird das Feld der beiden großen Spulen abwechselnd stärker und schwächer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Auf dem Typenschild von Jannis' Wasserkocher steht 230 V. Im Leitstand zeigt ein Messgerät für dieselbe Steckdose einen Scheitelwert von rund 325 V. Wie passt das zusammen?",
+   "optionen": [
+    "Das Typenschild ist nur grob gerundet. Für eine Rundung ist der Unterschied jedoch viel zu groß, denn 325 V ist rund das 1,4-Fache von 230 V.",
+    "Die 230 V sind der Effektivwert. Man erhält ihn, indem man den Scheitelwert durch √2 teilt: 325 V geteilt durch 1,41 ergibt rund 230 V.",
+    "Das Gerät nimmt sich 230 V und lässt die übrigen 95 V ungenutzt. Eine Wechselspannung wird aber nicht aufgeteilt; beide Zahlen beschreiben dieselbe Spannung.",
+    "Die 325 V treten nur beim Einschalten auf und sinken danach auf 230 V. Der Scheitelwert wird jedoch in jeder Periode neu erreicht, fünfzigmal in jeder Sekunde."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage: „Wenn der Schatten der Spule am größten ist, ist auch die Spannung am größten.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Die Spannung entsteht nicht durch die wirksame Fläche selbst, sondern durch ihre Änderung. Bei φ = 0° ist der Schatten am größten, dort ändert sich die Fläche für einen Augenblick praktisch nicht, und die Spannung ist null. Am größten wird die Spannung bei φ = 90°, wenn der Schatten zu einem Strich geschrumpft ist; dort erreicht sie den Scheitelwert 0,658 V."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die beiden Spannungen verhalten sich wie die",
+    "loesung": "Windungszahlen",
+    "post": "der beiden Spulen."
+   },
+   {
+    "pre": "Ein Transformator arbeitet nur mit",
+    "loesung": "Wechselspannung",
+    "post": ", weil sich das Magnetfeld ändern muss."
+   },
+   {
+    "pre": "Das wechselnde Feld führt der",
+    "loesung": "Eisenkern",
+    "post": "von der Primärspule zur Sekundärspule."
+   },
+   {
+    "pre": "Statt der ideal erwarteten 10,000 V zeigt das Voltmeter nur",
+    "loesung": "8,80 V",
+    "post": ", denn der Kopplungsgrad ist k = 0,88."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Schließt du die Primärspule an eine Batterie an, liefert die Sekundärspule dauerhaft dieselbe Spannung wie bei Wechselspannung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelst du NS von 500 auf 1000, steigt die abgelesene Spannung von 4,40 V auf 8,80 V.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil ein Transformator die Spannung hochsetzt, gibt er auch mehr Leistung ab, als er aufnimmt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei NP = 500 und NS = 1000 nennt die Simulation das Übersetzungsverhältnis 2,000.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis findet im Flur seiner Großeltern einen alten Klingeltrafo. Auf dem Schild steht: 230 V hinein, 8 V heraus. Die Primärspule hat 2300 Windungen. Wie viele Windungen hat die Sekundärspule ungefähr?",
+   "optionen": [
+    "2300 Windungen, denn der Eisenkern gibt jede Windung eins zu eins weiter. Dann läge an der Sekundärspule aber wieder 230 V.",
+    "80 Windungen, denn US zu UP ist 8 zu 230, und genau dasselbe Verhältnis gilt für NS zu NP.",
+    "8 Windungen, denn die Ausgangsspannung in Volt gibt die Windungszahl an. Volt und Windungen sind aber verschiedene Größen; es zählt nur ihr Verhältnis.",
+    "Über 66 000 Windungen, denn eine große Windungszahl gehört zur großen Spannung. Hier ist die Sekundärspannung jedoch kleiner, sie braucht also weniger Windungen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Begründe, warum an einer Batterie nur beim Einschalten ein kurzer Ausschlag an der Sekundärspule zu sehen ist.",
+   "zeilen": 4,
+   "loesung": "Ein Transformator überträgt nur über ein Magnetfeld, das sich ändert. Beim Einschalten baut sich das Feld auf, diese Änderung erzeugt an der Sekundärspule kurz eine Spannung. Danach fließt zwar weiter Gleichstrom, aber das Feld bleibt gleich groß und ändert sich nicht mehr. Deshalb fällt die Sekundärspannung auf null, obwohl beide Spulen unverändert auf dem Eisenjoch sitzen."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev10",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Verlust einer Leitung wächst mit dem",
+    "loesung": "Quadrat des Stroms",
+    "post": ", nicht mit der Spannung."
+   },
+   {
+    "pre": "Bei fester Leistung berechnet man den Strom mit",
+    "loesung": "P / U",
+    "post": ", darum senkt Hochspannung den Strom."
+   },
+   {
+    "pre": "Für den Leitungsverlust gilt PVerlust =",
+    "loesung": "R · I²",
+    "post": "."
+   },
+   {
+    "pre": "Von 20 V auf 40 V verdoppelt, sinkt der Verlust von 2,21 W auf",
+    "loesung": "0,55 W",
+    "post": ", also auf ein Viertel."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Trägt man den Verlust über 1/U² auf, liegen die Messpunkte auf einer Ursprungsgeraden.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Verdoppelt man die Übertragungsspannung, halbiert sich der Verlust in der Leitung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je höher die Spannung auf der Leitung ist, desto mehr Wärme entsteht im Draht.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 250 V bleibt in der Tabelle nur noch ein Verlust von 0,01 W übrig.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Jannis' Onkel versorgt sein Gartenhaus über ein 60 m langes Kabel mit 12 V. Die Lampen leuchten schwach, das Kabel wird warm. Was hilft am meisten gegen den Verlust im Kabel?",
+   "optionen": [
+    "Ein längeres Kabel nehmen, damit sich die Wärme auf mehr Draht verteilt. Ein längeres Kabel hat mehr Widerstand, der Verlust wird dadurch größer.",
+    "Die Spannung auf 6 V senken, weil dann weniger Energie in das Kabel gedrückt wird. Bei halber Spannung fließt für dieselbe Leistung der doppelte Strom, und der Verlust vervierfacht sich.",
+    "Gar nichts ändern, denn der Verlust hängt nur vom Kabel ab. Der Verlust ist R · I², und über I = P/U hängt er sehr wohl von der gewählten Spannung ab.",
+    "Mit 230 V bis zum Gartenhaus gehen und erst dort auf 12 V heruntertransformieren, denn der rund zwanzigfach kleinere Strom senkt den Verlust auf etwa ein Vierhundertstel."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne, auf welchen Bruchteil der Verlust sinkt, wenn die Übertragungsspannung von 20 V auf 80 V steigt, und vergleiche mit den Messwerten.",
+   "zeilen": 4,
+   "loesung": "Die Spannung wird vervierfacht, also wird der Strom bei gleicher Leistung viermal kleiner. Weil der Verlust mit dem Quadrat des Stroms geht, sinkt er auf ein Sechzehntel. Aus 2,21 W werden rechnerisch 2,21 W: 16 = 0,138 W. Die Tabelle zeigt bei 80 V genau 0,14 W, Rechnung und Messung passen also zusammen."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Vor der Fernleitung wird die Spannung",
+    "loesung": "hochtransformiert",
+    "post": "und am Ende wieder heruntergesetzt."
+   },
+   {
+    "pre": "Beim Umspannen bleibt ungefähr gleich die",
+    "loesung": "Leistung",
+    "post": ", nicht die Spannung."
+   },
+   {
+    "pre": "Mit Hochspannung fließen in der Fernleitung nur",
+    "loesung": "0,100 A",
+    "post": ", und der Verlust beträgt 0,266 W."
+   },
+   {
+    "pre": "Ohne Transformatoren bleiben am CrNi-Draht an den Lampen nur",
+    "loesung": "1,52 V",
+    "post": "übrig, sie leuchten praktisch nicht."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Transformator setzt die Spannung hoch und überträgt dadurch auch mehr Leistung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Konzept „Hochspannung“ leuchten beide Lampen normal hell, obwohl die Fernleitung 26,6 Ω hat.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ohne Transformatoren fließen 0,238 A durch die Leitung, also mehr als die 0,100 A bei Hochspannung.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der dicke Kupferdraht hilft, weil er den Strom in der Leitung kleiner macht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Zwischen zwei Häusern in Jannis' Straße steht eine kleine Trafostation. Ein Nachbar sagt: „Den Kasten könnte man weglassen, dann kommt bei uns mehr an.“ Was stimmt?",
+   "optionen": [
+    "Ohne die Station läge die hohe Spannung der Leitung an den Steckdosen an und die Geräte gingen kaputt. Die Station setzt die Spannung auf den Wert herunter, den Lampen und Geräte brauchen.",
+    "Der Nachbar hat recht, denn im Transformator geht Energie verloren, und ohne ihn leuchtet alles heller. Ohne die hohe Leitungsspannung wäre der Strom viel größer, und auf der Strecke ginge weit mehr verloren.",
+    "Die Station ist nur ein Zähler für die Straße und hat mit der Spannung nichts zu tun. In ihr sitzt ein Transformator, der die Spannung für das Ortsnetz heruntersetzt.",
+    "Ohne Station bliebe die Spannung gleich, weil eine lange Leitung sie von selbst abbaut. Eine Leitung senkt die Spannung nur um den kleinen Anteil, der als Wärme verloren geht."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage eines Mitschülers: „Zwei Transformatoren sind zwei zusätzliche Verlustquellen, ohne sie kommt mehr Energie an.“",
+   "zeilen": 5,
+   "loesung": "Die Aussage trägt nicht. Zwar hat jeder Transformator eigene Verluste, doch sie sind klein gegen den Verlust auf der Strecke. Mit Hochspannung fließen nur 0,100 A, der Leitungsverlust beträgt 0,266 W, und beide Lampen leuchten hell; die Bilanz ist 1,1 J Verlust gegen 6,4 J Nutzen. Ohne Transformatoren fließen 0,238 A, an den Lampen bleiben 1,52 V, und 21,6 J gehen gegen 6,4 J Nutzen verloren. Die Kette mit zwei Transformatoren ist also deutlich besser."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "B1",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "III",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "In Kohle- und Kernkraftwerken treibt heißer Dampf eine",
+    "loesung": "Turbine",
+    "post": "an, die den Generator dreht."
+   },
+   {
+    "pre": "Ein sicheres Netz braucht eine",
+    "loesung": "Mischung",
+    "post": "aus regelbaren und wetterabhängigen Kraftwerken."
+   },
+   {
+    "pre": "Ein Pumpspeicherkraftwerk liefert selbst keine Energie, sondern",
+    "loesung": "verschiebt sie",
+    "post": "in eine andere Stunde."
+   },
+   {
+    "pre": "Beim Brennstoff steht der Windpark am besten da, bei der",
+    "loesung": "Planbarkeit",
+    "post": "am schlechtesten."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kohle- und Kernkraftwerke laufen gleichmäßig rund um die Uhr, lassen sich aber nur langsam nachführen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Pumpspeicherkraftwerk erzeugt zusätzliche Energie und vergrößert so die Menge im Netz.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Windpark kommt ohne Brennstoff aus, liefert aber nur, wenn das Wetter mitspielt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil ein Kernkraftwerk keine Abgase ausstößt, bleibt bei ihm die Spalte der Nebenwirkungen leer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "An einem windstillen Januarabend um 18 Uhr kochen und heizen alle gleichzeitig, der Verbrauch der Stadt springt nach oben. Welches Kraftwerk aus dem Datenblatt deckt diese halbe Stunde am besten ab?",
+   "optionen": [
+    "Der Windpark, weil er ohne Brennstoff arbeitet und deshalb sofort einspringt. Ohne Wind liefert er gar nichts, und der Brennstoff sagt nichts darüber, wie schnell ein Kraftwerk hochfährt.",
+    "Das Kernkraftwerk, weil es von allen die größte Leistung hat. Es lässt sich nur langsam nachführen und deckt darum die Grundlast, nicht eine kurze Spitze.",
+    "Das Pumpspeicherkraftwerk, weil es sich in Minuten hochfahren lässt und die gespeicherte Energie genau dann abgibt, wenn die Spitze kommt.",
+    "Das Kohlekraftwerk, weil man dort nur mehr Kohle nachlegen muss und die Leistung sofort steigt. Der Weg über Kessel, Dampf und Turbine braucht Zeit, in der Regelbarkeit steht es nur im Mittelfeld."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile den Vorschlag, die Stadt allein mit Windparks zu versorgen.",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag trägt nicht. Ein Windpark braucht keinen Brennstoff und steht bei den Nebenwirkungen gut da, in der Planbarkeit aber am schlechtesten. Bei Windstille liefern auch zehn Windparks zusammen nichts, denn sie haben alle dieselbe Schwäche. Nötig ist deshalb eine Mischung, etwa mit einem Pumpspeicher, der Flauten überbrückt und Spitzen abfängt."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev13",
+  "komp": [
+   "UF1",
+   "UF4",
+   "UF2",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Den Wirkungsgrad berechnest du als",
+    "loesung": "Enutz / Erein",
+    "post": "– er ist immer kleiner als 1."
+   },
+   {
+    "pre": "Die verlorene Energie verlässt das Gerät als",
+    "loesung": "Wärme",
+    "post": ", deshalb wird jedes Gerät im Betrieb warm."
+   },
+   {
+    "pre": "Von 1000 J macht die Glühlampe nur",
+    "loesung": "50 J",
+    "post": "Licht, ihr Wirkungsgrad beträgt also 5 %."
+   },
+   {
+    "pre": "Der Elektromotor liefert aus 1000 J ganze",
+    "loesung": "900 J",
+    "post": "Bewegung, sein Wirkungsgrad ist damit 90 %."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Steckst du in das Handy-Ladegerät statt 200 J ganze 1200 J hinein, steigt dadurch sein Wirkungsgrad.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Glühlampe gibt von 1000 J genau 950 J als Wärme an die Umgebung ab.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nutzen und Verlust ergeben zusammen genau die Energie, die in das Gerät hineingeht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil ein Teil der Energie verloren geht, ist nach dem Betrieb weniger Energie vorhanden als vorher.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis' Schwester sagt am Schreibtisch: „Ich lasse die alte Glühlampe drin, die LED ist mir zu teuer.“ Beide sollen gleich hell sein, also 400 J Licht abgeben. Wie viel elektrische Energie braucht die Glühlampe dafür?",
+   "optionen": [
+    "400 J, denn eine Lampe gibt genau das ab, was sie bekommt. Kein Gerät gibt jedoch alles weiter, ein Teil wird immer zu Wärme.",
+    "800 J, denn die Hälfte geht als Wärme verloren. Die Glühlampe verliert aber nicht die Hälfte, sondern 95 % der Energie.",
+    "1000 J, denn aus 1000 J werden 400 J Licht. Das gilt nur für die LED-Lampe mit η = 40 %, nicht für die Glühlampe.",
+    "8000 J, denn bei η = 5 % macht sie aus 1000 J nur 50 J Licht und braucht für 400 J das Achtfache."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis' Satz: „Die Wärme, die aus dem Schaltschrank kommt, ist verlorene Energie.“",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nur zur Hälfte. Verschwunden ist die Energie nicht, denn Nutzen und Verlust ergeben zusammen genau die hineingesteckte Energie; sie hat nur ihre Form gewechselt. Für das Gerät ist sie trotzdem wertlos, weil sich warme Luft nicht mehr nutzen lässt. Richtig wäre also: Die Energie ist nicht weg, aber niemand kann mit ihr noch etwas anfangen."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev14",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Der Stromzähler misst die Energie in",
+    "loesung": "Kilowattstunden",
+    "post": "(kWh), nicht in Watt."
+   },
+   {
+    "pre": "Die Kosten berechnest du als",
+    "loesung": "Energie · Preis",
+    "post": "– hier kostet 1 kWh 0,30 €."
+   },
+   {
+    "pre": "Ein Gerät mit 1000 W braucht in einer Stunde genau",
+    "loesung": "1 kWh",
+    "post": "an Energie."
+   },
+   {
+    "pre": "Bei 3 h am Tag kostet der Wasserkocher im Jahr",
+    "loesung": "657,00 €",
+    "post": ", die LED-Lampe dagegen nur 3,28 €."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Watt gibt die Leistung eines Geräts an, die Kilowattstunde gibt seine Energie an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Gerät, das nur eine Stunde am Tag läuft, fällt auf der Jahresrechnung kaum auf.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Verdoppelst du die tägliche Laufzeit des Wasserkochers von 1 h auf 2 h, verdoppeln sich auch seine Jahreskosten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Wasserkocher mit 2000 W kostet bei 1 h am Tag im Jahr weniger als der Kühlschrank mit 150 W bei 3 h am Tag.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Die Kundin am Tresen will wissen, welches Gerät sie zuerst seltener benutzen sollte, um im Jahr am meisten zu sparen. Auf ihrem Zettel stehen vier Geräte, jedes läuft 3 h am Tag.",
+   "optionen": [
+    "Den Wasserkocher mit 2000 W: Er kostet bei 3 h am Tag 657,00 € im Jahr, mehr als die drei anderen Geräte zusammen.",
+    "Den Kühlschrank mit 150 W, weil er als Einziger Tag und Nacht gebraucht wird. Bei 3 h am Tag kostet er im Jahr aber nur 49,27 €.",
+    "Die LED-Lampe, weil abends überall Licht brennt. Bei 3 h am Tag kostet sie im ganzen Jahr jedoch nur 3,28 €.",
+    "Es ist egal, alle vier laufen ja gleich lang. Die Laufzeit allein entscheidet aber nicht, die Leistung zählt genauso."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Beurteile den Satz der Kundin: „Ich habe doch nur eine kleine Lampe brennen lassen, so hoch kann meine Rechnung gar nicht sein.“",
+   "zeilen": 4,
+   "loesung": "Für die Lampe hat die Kundin recht: Eine LED mit 10 W kostet bei 3 h am Tag im ganzen Jahr nur 3,28 €. Für die Rechnung stimmt der Satz nicht, denn die Kosten hängen von Leistung und Laufzeit zusammen ab. Ein Gerät mit hoher Leistung wie der Wasserkocher mit 2000 W kommt bei 3 h am Tag schon auf 657,00 € im Jahr. Sie muss den Grund also bei den starken Geräten suchen, nicht bei der Lampe."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "ev15",
+  "komp": [
+   "UF1",
+   "UF4",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Feld überträgt eine Kraft ohne",
+    "loesung": "Berührung",
+    "post": "durch den Raum."
+   },
+   {
+    "pre": "Mit wachsendem Abstand von der Quelle wird jedes Feld",
+    "loesung": "schwächer",
+    "post": "."
+   },
+   {
+    "pre": "Von jeder Masse geht ein",
+    "loesung": "Gravitationsfeld",
+    "post": "aus, das auf jede andere Masse wirkt."
+   },
+   {
+    "pre": "Ein magnetisches Feld geht nicht nur von Magneten aus, sondern auch von",
+    "loesung": "Strömen",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwischen Magnet und Büroklammer muss Luft liegen, sonst kann das Feld keine Kraft übertragen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auf dem Mond ist die Masse eines Schraubendrehers kleiner, weil das Gravitationsfeld dort schwächer ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Auch von einem Schraubendreher geht ein Gravitationsfeld aus, denn er hat eine Masse.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Elektrisches, magnetisches und Gravitationsfeld werden alle drei mit wachsendem Abstand von ihrer Quelle schwächer.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Am Zaun des Umspannwerks hängt das Warnzeichen für Herzschrittmacher. Jannis fragt, wieso jemand gefährdet sein kann, der drinnen gar nichts anfasst. Welche Antwort trifft zu?",
+   "optionen": [
+    "Aus der Anlage springen Funken durch die Luft zum Schrittmacher. Das Schild warnt aber schon dort, wo kein Funke mehr hinkommt.",
+    "Der Zaun leitet den Strom bis zum Menschen weiter. Der Zaun steht jedoch nicht unter Spannung, und angefasst werden muss er auch nicht.",
+    "Rund um die Anlage liegen elektrische und magnetische Felder, die ohne Berührung durch den Raum wirken. Ein Schrittmacher enthält Elektronik, auf die ein starkes Feld einwirken kann.",
+    "Das Feld ist überall gleich stark, deshalb nützt auch Abstand nichts. Jedes Feld wird mit wachsendem Abstand jedoch schwächer, genau deshalb hängt das Schild am Zaun."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Vergleiche das elektrische, das magnetische und das Gravitationsfeld und begründe, warum man alle drei als Feld bezeichnet.",
+   "zeilen": 5,
+   "loesung": "Die drei unterscheiden sich darin, wovon sie ausgehen und worauf sie wirken: Das elektrische Feld geht von Ladungen aus und wirkt auf Ladungen, das magnetische geht von Magneten und von Strömen aus und wirkt auf magnetisierbare Stoffe, das Gravitationsfeld geht von jeder Masse aus und wirkt auf jede Masse. Gemeinsam ist ihnen der Aufbau: Es gibt eine Quelle, es gibt einen Körper, auf den gewirkt wird, und dazwischen liegt nur Raum. Alle drei übertragen die Kraft ohne Berührung und werden mit wachsendem Abstand schwächer. Genau darum nennt man alle drei ein Feld."
+  },
+  "theme": "gts_versorgung"
+ },
+ {
+  "id": "rk1",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF2",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "I",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Die Zahl der Protonen bestimmt das",
+    "loesung": "Element",
+    "post": ", die Zahl der Neutronen nur die Sorte."
+   },
+   {
+    "pre": "Die Massenzahl A ist die Summe",
+    "loesung": "Z + N",
+    "post": ", also Protonen plus Neutronen."
+   },
+   {
+    "pre": "Atome mit gleichem Z, aber verschiedenem N heißen",
+    "loesung": "Isotope",
+    "post": "; Kohlenstoff-12 und Kohlenstoff-14 sind ein Beispiel dafür."
+   },
+   {
+    "pre": "Stellst du am Regler acht Protonen ein, heißt das Atom",
+    "loesung": "Sauerstoff",
+    "post": "und nicht mehr Kohlenstoff."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Legt man einem Kern ein Neutron dazu, entsteht daraus ein anderes Element.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kohlenstoff-12 und Kohlenstoff-14 haben beide sechs Protonen im Kern.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Atom wirkt nach außen neutral, weil in der Hülle genauso viele Elektronen sitzen wie Protonen im Kern.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Massenzahl A sagt dir, wie viele Protonen im Kern sitzen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Nour holt aus dem Kühlschrank zwei Fläschchen: auf einem steht Kohlenstoff-12, auf dem anderen Kohlenstoff-14. Woran erkennt sie, dass in beiden wirklich Kohlenstoff steckt?",
+   "optionen": [
+    "An der Massenzahl hinter dem Namen, denn sie legt das Element fest. Die Massenzahl zählt aber alle Kernbausteine zusammen; über das Element entscheidet allein die Protonenzahl Z.",
+    "An der Zahl der Neutronen, denn die ist bei beiden gleich. Kohlenstoff-12 hat 6 Neutronen, Kohlenstoff-14 hat 8; gerade die Neutronenzahl ist also verschieden.",
+    "An der Zahl der Protonen: In beiden Kernen sitzen 6 Protonen, und allein die Protonenzahl legt fest, welches Element vorliegt. Die verschiedene Neutronenzahl macht daraus nur zwei Sorten.",
+    "Am Gewicht der Fläschchen, denn das schwerere enthält das andere Element. Ein schwererer Kern ist nur ein anderes Isotop, aber immer noch dasselbe Element."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Bestimme für Kalium-40 die Zahl der Neutronen; Kalium hat die Kernladungszahl Z = 19. Begründe außerdem, warum Kalium-39 und Kalium-40 dasselbe Element sind.",
+   "zeilen": 4,
+   "loesung": "Die Massenzahl ist A = 40, die Kernladungszahl Z = 19. Also gilt N = A − Z = 40 − 19 = 21 Neutronen. Beide Sorten haben 19 Protonen, und allein die Protonen legen das Element fest. Kalium-39 und Kalium-40 sind deshalb Isotope desselben Elements und unterscheiden sich nur in der Zahl der Neutronen."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk2",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Im Plateau zwischen 300 und 600 Volt ist jeder Impuls",
+    "loesung": "gleich groß",
+    "post": ", ganz gleich, welche Energie das Teilchen hatte."
+   },
+   {
+    "pre": "Nach jedem Impuls ist das Rohr kurz unempfindlich; diese Zeit heißt",
+    "loesung": "Totzeit",
+    "post": "."
+   },
+   {
+    "pre": "Bei 200 Volt arbeitet das Zählrohr im",
+    "loesung": "Proportionalbereich",
+    "post": "; dort ist der Impuls bei α groß, bei β mittel und bei γ klein."
+   },
+   {
+    "pre": "Über 600 Volt gerät das Rohr in die",
+    "loesung": "Dauerentladung",
+    "post": "und zählt keine einzelnen Teilchen mehr."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein einziges Teilchen löst im Zählrohr eine ganze Lawine von Elektronen aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im Auslösebereich verrät die Höhe eines Impulses, wie viel Energie das Teilchen mitgebracht hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wenn das Zählrohr bei 10 Volt nicht knackt, ist es kaputt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 450 Volt sind die Impulse von α-, β- und γ-Strahlung gleich hoch.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour steht vor der Tür mit dem gelben Zeichen und dreht den Spannungsknopf des Zählrohrs von 450 Volt auf 650 Volt. Was passiert mit der Messung?",
+   "optionen": [
+    "Das Rohr gerät in die Dauerentladung, die laut Anzeige oberhalb von 600 Volt beginnt. Es entlädt sich dann ununterbrochen und zählt keine einzelnen Teilchen mehr.",
+    "Die Zählrate bleibt gleich, weil 650 Volt noch im Plateau liegen. Das Plateau reicht aber nur von 300 bis 600 Volt.",
+    "Jeder Impuls wird einfach etwas höher, weil die Spannung höher ist. Im Plateau sind alle Impulse ohnehin gleich hoch, und über 600 Volt zählt das Rohr gar nicht mehr richtig.",
+    "Das Rohr misst nun zusätzlich die Energie der Teilchen, weil es bei höherer Spannung genauer arbeitet. Energien lassen sich nur im Proportionalbereich unterscheiden, nicht darüber."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Vergleiche, was das Zählrohr bei 200 Volt und bei 450 Volt anzeigt, wenn nacheinander α-, β- und γ-Strahlung eintrifft.",
+   "zeilen": 4,
+   "loesung": "Bei 200 Volt liegt das Rohr im Proportionalbereich von 100 bis 300 Volt. Dort ist der Impuls bei α groß, bei β mittel und bei γ klein, man kann die Strahlungsarten also an der Impulshöhe unterscheiden. Bei 450 Volt liegt das Rohr im Auslösebereich von 300 bis 600 Volt. Jetzt zündet jedes Teilchen das ganze Rohr, alle drei Impulse sind gleich hoch, und man zählt nur noch die Anzahl der Teilchen."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk3",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "E8"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Alpha- und Betastrahlung haben eine feste",
+    "loesung": "Reichweite",
+    "post": ", Gammastrahlung hat keine."
+   },
+   {
+    "pre": "Nach einer Halbwertsdicke kommt noch",
+    "loesung": "die Hälfte",
+    "post": "der Gammastrahlung durch."
+   },
+   {
+    "pre": "Betastrahlung geht durch Papier hindurch, wird aber von 5 mm",
+    "loesung": "Aluminium",
+    "post": "aufgehalten."
+   },
+   {
+    "pre": "Gammastrahlung besteht aus",
+    "loesung": "Photonen",
+    "post": "; nach jeder gleich dicken Schicht bleibt derselbe Bruchteil übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Alphastrahlung kommt schon durch 1 mm Papier nicht mehr hindurch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Blei macht Gammastrahlung nur schwächer, hält sie aber nie vollständig auf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil bei 6,0 mm Blei schon die Hälfte weg ist, kommt bei 12,0 mm gar nichts mehr durch.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Alphastrahlung durchdringt mehr Material als Gammastrahlung, weil sie die größte Energie mitbringt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Untersuchungsraum hängt die schwere Bleischürze am Haken, im Labor nebenan steht vor dem Arbeitsplatz nur eine dünne Scheibe aus Kunststoff. Warum reicht im Labor der Kunststoff?",
+   "optionen": [
+    "Weil im Labor gar keine Strahlung austritt. Dann bräuchte dort auch keine Scheibe zu stehen; sie steht ja gerade deshalb da, weil etwas strahlt.",
+    "Weil Kunststoff Gammastrahlung besser aufhält als Blei. Blei ist viel dichter und schwächt Gammastrahlung deutlich stärker ab als Kunststoff.",
+    "Weil eine dünne Schicht mehr aufhält als eine dicke. Je dicker die Schicht, desto weniger kommt hindurch - bei doppelter Halbwertsdicke nur noch ein Viertel.",
+    "Weil dort Betastrahlung auftritt, die nach wenigen Millimetern stecken bleibt. Für die durchdringende Strahlung im Untersuchungsraum braucht man dagegen Blei."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne, wie viel Prozent der Gammastrahlung nach 24,0 mm Blei noch ankommen, und begründe, warum auch eine sehr dicke Bleiwand nicht alles aufhält.",
+   "zeilen": 3,
+   "loesung": "Die Halbwertsdicke von Blei beträgt 6,0 mm, also sind 24,0 mm vier Halbwertsdicken. Nacheinander bleiben 50 Prozent, 25 Prozent, 12,5 Prozent und schließlich 6,25 Prozent übrig. Nach jeder weiteren Schicht bleibt wieder die Hälfte des Restes übrig, nie null. Der Rest wird also immer kleiner, verschwindet aber nicht."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk4",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beim Ionisieren wird einem Atom ein",
+    "loesung": "Elektron",
+    "post": "entrissen; in Luft kostet das im Mittel 34 eV."
+   },
+   {
+    "pre": "Gefährlich ist nicht die Reichweite, sondern die",
+    "loesung": "Ionisationsdichte",
+    "post": "."
+   },
+   {
+    "pre": "Alphastrahlung erzeugt in Luft 4.202 Ionenpaare je",
+    "loesung": "Millimeter",
+    "post": ", Betastrahlung nur 9,8."
+   },
+   {
+    "pre": "Im Strahlenschutz zählt Alphastrahlung mit dem",
+    "loesung": "Faktor 20",
+    "post": ", Beta- und Gammastrahlung nur mit 1."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Gammastrahlung ist im Körper am gefährlichsten, weil sie am weitesten kommt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein eingeatmetes Alphapräparat schadet mehr als dasselbe Präparat im verschlossenen Fläschchen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Alpha- und Betastrahlung erzeugen je Millimeter gleich viele Ionenpaare, weil beide aus Teilchen bestehen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Aus 5,00 MeV Energie entstehen in Luft rund 147.000 Ionenpaare.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "In einem älteren Rauchmelder an der Zimmerdecke steckt ein Alphapräparat hinter festem Gehäuse. Warum ist das für die Familie darunter ungefährlich?",
+   "optionen": [
+    "Weil Alphastrahlung von den drei Strahlungsarten die kleinste Energie mitbringt. Mit 5,00 MeV hat sie im Gegenteil die größte Energie der drei.",
+    "Weil Alphastrahlung in Luft nur 3,5 cm weit kommt und das feste Gehäuse sie zusätzlich aufhält; unten am Boden kommt von ihr nichts an.",
+    "Weil die Strahlung von der Decke aus nach oben davonfliegt. Strahlung geht in alle Richtungen; entscheidend ist die kurze Reichweite.",
+    "Weil ein einzelnes Alphateilchen zu wenig ausrichtet und erst viele zusammen schaden. Schon ein Teilchen erzeugt 4.202 Ionenpaare je Millimeter; entscheidend ist, ob der Stoff in den Körper gelangt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage: „Betastrahlung ist gefährlicher als Alphastrahlung, weil sie 3,0 Meter weit kommt.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Betastrahlung kommt zwar weiter, verteilt ihre Energie aber auf eine sehr lange Strecke und schafft nur 9,8 Ionenpaare je Millimeter. Alphastrahlung gibt ihre 5,00 MeV schon auf 3,5 cm ab und erzeugt 4.202 Ionenpaare je Millimeter, also rund 429-mal dichter. Im Gewebe zerreißt diese dichte Spur viel mehr Moleküle, deshalb rechnet der Strahlenschutz Alpha mit dem Faktor 20 und Beta nur mit 1."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk5",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "E7"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Teilchen ionisiert das Gas, und am dünnen Draht wächst daraus eine",
+    "loesung": "Lawine",
+    "post": "aus weiteren Elektronen und Ionen."
+   },
+   {
+    "pre": "Im Auslösebereich zählt man nur die",
+    "loesung": "Anzahl der Teilchen",
+    "post": "und erfährt nichts über ihre Energie."
+   },
+   {
+    "pre": "Bei etwa 200 V ist der Impuls von α am",
+    "loesung": "größten",
+    "post": ", denn α ionisiert am stärksten."
+   },
+   {
+    "pre": "Nach jedem Impuls ist das Rohr kurz feldfrei. Diese Pause heißt",
+    "loesung": "Totzeit",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei etwa 450 V ist der Impuls eines Alphateilchens höher als der eines Gammateilchens.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei etwa 200 V ist die Impulshöhe von γ am kleinsten.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Während der Totzeit weist das Zählrohr ein weiteres Teilchen sofort nach.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Ladung der Lawine fließt über den Widerstand ab und erzeugt einen Spannungsimpuls.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Im Museum steht ein Geiger-Zähler neben einer alten Uhr mit leuchtenden Zeigern. Das Gerät knackt, und am Bildschirm sind alle Impulse gleich hoch. Was folgt daraus?",
+   "optionen": [
+    "Aus der Uhr kommt nur eine einzige Strahlungsart, sonst wären die Impulse verschieden hoch. Gleich hohe Impulse entstehen aber auch bei gemischter Strahlung, sobald das Rohr im Auslösebereich arbeitet.",
+    "Der Zähler ist kaputt, denn Alphastrahlung muss immer den größten Impuls machen. Bei etwa 450 V sind gleich hohe Impulse jedoch normal und kein Defekt.",
+    "Das Rohr arbeitet im Auslösebereich bei etwa 450 V. Jedes Teilchen zündet eine Lawine über das ganze Rohr, deshalb sind alle Impulse gleich hoch und man kann nur ihre Anzahl zählen.",
+    "Die Uhr ist gleich weit von allen Stellen des Rohrs entfernt, darum sind die Impulse gleich hoch. Der Abstand ändert aber nur die Zahl der Impulse pro Sekunde, nicht ihre Höhe."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe, warum ein Zählrohr bei sehr vielen Teilchen pro Sekunde zu wenig zählt.",
+   "zeilen": 4,
+   "loesung": "Nach jedem Impuls ist das Rohr für kurze Zeit feldfrei; diese Pause heißt Totzeit. Trifft in dieser Zeit ein weiteres Teilchen ein, entsteht keine neue Lawine und der Impuls fehlt. Bei 2,0 Impulsen pro Sekunde fällt das kaum auf, bei sehr vielen Teilchen fehlen immer mehr. Der Zähler zeigt dann weniger an, als wirklich eingefallen ist."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk6",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Nach einer Halbwertszeit ist im Mittel die",
+    "loesung": "Hälfte",
+    "post": "der Kerne zerfallen."
+   },
+   {
+    "pre": "Die Halbwertszeit hängt allein vom",
+    "loesung": "Nuklid",
+    "post": "ab, nicht von Temperatur oder Druck."
+   },
+   {
+    "pre": "In der Statuszeile steht für Radon-220 eine Halbwertszeit von",
+    "loesung": "55,6 s",
+    "post": "."
+   },
+   {
+    "pre": "Ein alter Kern zerfällt mit derselben",
+    "loesung": "Wahrscheinlichkeit",
+    "post": "wie ein frischer."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Iod-131 hat mit 8,02 Tagen eine viel kürzere Halbwertszeit als Cäsium-137 mit 30,17 Jahren.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wärmt man ein Präparat an, dann zerfallen seine Kerne schneller.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach zwei Halbwertszeiten ist von 200 Kernen kein einziger mehr übrig.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei nur 200 Kernen weicht die gemessene Zahl deutlich von den erwarteten 100 ab.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Zu Hause fragt Nours Bruder, ob man ein radioaktives Präparat im Gefrierfach länger frisch halten kann, so wie Brötchen. Was antwortest du ihm?",
+   "optionen": [
+    "Nein. Die Halbwertszeit hängt allein vom Nuklid ab; Kälte ändert nichts daran, wie schnell die Kerne zerfallen.",
+    "Ja, denn Kälte bremst die Teilchen und damit auch den Zerfall. Die Temperatur wirkt aber nur auf die Bewegung ganzer Atome, nicht auf den Kern.",
+    "Ja, weil die Kerne in der Kälte fester zusammenhalten. Ein Kern zerfällt jedoch zufällig und ohne Einfluss seiner Umgebung.",
+    "Nein, im Gefrierfach zerfällt es sogar doppelt so schnell. Auch das wäre eine Wirkung der Temperatur, die es beim Kernzerfall nicht gibt."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Bestimme, wie viel Zeit vergeht, bis von einer Probe Radon-220 nur noch ein Achtel der Kerne übrig ist.",
+   "zeilen": 3,
+   "loesung": "Ein Achtel entspricht drei Halbwertszeiten, denn ½ · ½ · ½ ergibt ein Achtel. Radon-220 hat eine Halbwertszeit von 55,6 s. Drei Halbwertszeiten sind 3 · 55,6 s = 166,8 s, also knapp drei Minuten. Weil jeder Kern zufällig zerfällt, gilt dieser Wert nur im Mittel."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk7",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E5",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Nach zwei Halbwertszeiten ist noch ein",
+    "loesung": "Viertel",
+    "post": "der Kerne übrig."
+   },
+   {
+    "pre": "Kohlenstoff-14 hat eine Halbwertszeit von",
+    "loesung": "5730 Jahren",
+    "post": "."
+   },
+   {
+    "pre": "Mit dem Tod hört die Aufnahme von Kohlenstoff auf, der Vorrat im Fund",
+    "loesung": "zerfällt weiter",
+    "post": "."
+   },
+   {
+    "pre": "Nach 17190 Jahren ist von den Kernen noch ein",
+    "loesung": "Achtel",
+    "post": "übrig."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach 11460 Jahren ist der ganze Kohlenstoff-14 zerfallen, denn zweimal die Hälfte ist alles.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Solange eine Pflanze lebt, bleibt ihr Anteil an Kohlenstoff-14 gleich hoch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Aus dem Restanteil an Kohlenstoff-14 kann man abzählen, wie viele Halbwertszeiten vergangen sind.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch einen Stein aus dem Moor kann man mit Kohlenstoff-14 datieren, weil jedes Material Kohlenstoff enthält.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "In einer Fernsehsendung heißt es, ein Holzkanu aus einem See sei rund 11460 Jahre alt. Welche Messung passt zu dieser Jahreszahl?",
+   "optionen": [
+    "Im Holz steckt gar kein Kohlenstoff-14 mehr. Dann ließe sich kein Alter mehr bestimmen; nach zwei Halbwertszeiten ist noch ein Viertel da.",
+    "Im Holz steckt noch die Hälfte des ursprünglichen Kohlenstoff-14. Die Hälfte bedeutet aber nur eine Halbwertszeit, also rund 5730 Jahre.",
+    "Im Holz steckt noch ein Achtel des ursprünglichen Kohlenstoff-14. Ein Achtel bedeutet drei Halbwertszeiten, also 17190 Jahre, und das wäre zu alt.",
+    "Im Holz steckt noch ein Viertel des ursprünglichen Kohlenstoff-14. Ein Viertel bedeutet zwei Halbwertszeiten, also 2 · 5730 Jahre = 11460 Jahre."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Beurteile, ob sich das Alter eines Steinbeils mit Holzgriff mit der Kohlenstoff-14-Methode bestimmen lässt.",
+   "zeilen": 4,
+   "loesung": "Die Methode nutzt den Kohlenstoff, den ein Lebewesen zu Lebzeiten aufnimmt. Der Holzgriff stammt von einem Baum, deshalb steckt in ihm ein Vorrat an Kohlenstoff-14, der seit dem Tod des Baumes zerfällt. Am Griff lässt sich das Alter also bestimmen. Der Stein hat nie Kohlenstoff aufgenommen; für ihn gibt es keinen Startwert und damit kein Ergebnis."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk8",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF4",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Beim Alphazerfall verliert der Kern zwei Protonen und zwei",
+    "loesung": "Neutronen",
+    "post": "."
+   },
+   {
+    "pre": "Die Reihe des Uran-238 endet beim stabilen",
+    "loesung": "Blei-206",
+    "post": "."
+   },
+   {
+    "pre": "Beim Betazerfall wandelt sich ein Neutron in ein",
+    "loesung": "Proton",
+    "post": "um, und ein Elektron fliegt weg."
+   },
+   {
+    "pre": "Auf dem Weg von Uran-238 bis zum Blei-206 liegen 8 Alpha- und",
+    "loesung": "6 Betazerfälle",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Alphazerfall sinkt die Massenzahl um 4 und die Kernladungszahl um 2.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Aus Uran-238 entsteht beim ersten Alphazerfall Thorium-234.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Betazerfall sinkt die Massenzahl um 1, weil ein Elektron den Kern verlässt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Nach den vierzehn Schritten der Reihe ist vom Kern nichts mehr übrig.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Bei einer Führung im alten Bergwerk zeigt der Führer ein Gestein: Darin steckt Uran, und gleich daneben liegt Blei. Woher kommt das Blei?",
+   "optionen": [
+    "Beim Ablagern sind Uran und Blei zufällig zusammengeraten. Der Zusammenhang ist aber physikalisch, denn Blei-206 entsteht aus dem Uran selbst.",
+    "Uran-238 zerfällt in 14 Schritten weiter, bis der stabile Kern Blei-206 entstanden ist. Deshalb wächst im Gestein neben dem Uran ständig Blei nach.",
+    "Das schwere Uran hat das Blei über die Jahre angezogen. Kerne ziehen sich aber nicht über solche Entfernungen an; das Blei entsteht durch Zerfall.",
+    "Die Strahlung von außen hat das Uran zu Blei umgebaut. Der Zerfall läuft jedoch von allein im Kern ab und braucht keinen Anstoß von außen."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Berechne Massenzahl und Kernladungszahl des Kerns, der aus Uran-238 nach zwei Alphazerfällen und einem Betazerfall entstanden ist.",
+   "zeilen": 4,
+   "loesung": "Jeder Alphazerfall senkt die Massenzahl um 4 und die Kernladungszahl um 2. Zwei Alphazerfälle ergeben also 238 minus 8 gleich 230 und 92 minus 4 gleich 88. Der Betazerfall lässt die Massenzahl unverändert und erhöht die Kernladungszahl um 1. Der Kern hat danach die Massenzahl 230 und die Kernladungszahl 89."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk9",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Bei der Spaltung bleiben Kernbausteine und Protonen erhalten, die",
+    "loesung": "Masse",
+    "post": "dagegen nicht."
+   },
+   {
+    "pre": "Die frei werdende Energie rechnest du mit E =",
+    "loesung": "Δm · c²",
+    "post": "aus, also fehlende Masse mal Lichtgeschwindigkeit im Quadrat."
+   },
+   {
+    "pre": "Ein langsames Neutron wird vom Uran-235-Kern",
+    "loesung": "eingefangen",
+    "post": ", danach reißt der Kern in zwei mittelschwere Bruchstücke."
+   },
+   {
+    "pre": "Bei Barium und Krypton fehlen 0,1860 u, daraus werden",
+    "loesung": "173,3 MeV",
+    "post": "je Spaltung."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Bruchstücke wiegen zusammen genauso viel wie der Urankern mit dem eingefangenen Neutron.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Vor und nach der Spaltung zählt man 236 Kernbausteine und 92 Protonen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Xenon und Strontium liefern mit 184,7 MeV mehr Energie als Barium und Krypton mit 173,3 MeV.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Energie stammt aus der Bewegung des Neutrons, das den Urankern trifft.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Jannis rechnet abends am Küchentisch nach. Auf Nours Merkblatt steht, ein Uranwürfel von vier Zentimetern liefere so viel Energie wie ein Kohlezug mit über zweitausend Tonnen. Woher kommt diese Energie?",
+   "optionen": [
+    "Aus der Bewegung des Neutrons, das den Kern trifft. Eingefangen wird aber ein langsames Neutron, dessen Bewegungsenergie viel zu klein für 173,3 MeV ist.",
+    "Aus den zwei bis drei Neutronen, die zusätzlich wegfliegen. Diese Neutronen entstehen nicht neu, sie waren vorher schon Bausteine des Urankerns.",
+    "Aus der Masse, die nach der Spaltung fehlt: 0,1860 u werden nach E = Δm · c² zu 173,3 MeV.",
+    "Aus der Wärme im Brennstab, die den Urankern von außen aufheizt und aufsprengt. Die Wärme ist die Folge der Spaltung, nicht ihre Ursache."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis’ Satz: „Die Energie steckte schon vorher als Bewegung im Neutron, sonst könnte es den Urankern gar nicht sprengen.“",
+   "zeilen": 4,
+   "loesung": "Der Satz stimmt nicht. Eingefangen wird gerade ein langsames Neutron, seine Bewegungsenergie ist viel zu klein für die 173,3 MeV einer Spaltung. Die Energie stammt aus der Masse, die danach fehlt: 0,1860 u werden nach E = Δm · c² zu Energie. Das Neutron löst die Spaltung also nur aus, es bringt die Energie nicht mit."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk10",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "UF4"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Kernkraftwerk läuft dauerhaft mit dem Vermehrungsfaktor k =",
+    "loesung": "1,00",
+    "post": "und ist damit kritisch."
+   },
+   {
+    "pre": "Je weiter die Steuerstäbe eingefahren sind, desto",
+    "loesung": "kleiner",
+    "post": "wird der Vermehrungsfaktor k."
+   },
+   {
+    "pre": "Bei 0 % eingefahrenen Steuerstäben steht k = 1,60, die Kette ist damit",
+    "loesung": "überkritisch",
+    "post": "."
+   },
+   {
+    "pre": "Sind die Steuerstäbe ganz eingefahren, sinkt k auf",
+    "loesung": "0,40",
+    "post": "und die Kette erstickt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 50 % eingefahrenen Steuerstäben zeigt die nächste Generation 503 Spaltungen statt 500.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei k = 1,00 wird jede Generation ein wenig kleiner, bis die Kette von allein erlischt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Steuerstäbe bremsen die Kettenreaktion nur ab, wachsen kann sie trotzdem in jedem Fall weiter.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die Steuerstäbe fangen einen Teil der Neutronen weg; bei 75 % ist k nur noch 0,70.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Im Aufenthaltsraum der Klinik läuft ein Beitrag über einen Reaktor. Im Bild steht auf der Anzeige des Leitstands k = 1,14. Was bedeutet dieser Wert für die nächsten Generationen?",
+   "optionen": [
+    "Aus 100 Spaltungen werden 114, und das in jeder Generation erneut. Die Zahl der Spaltungen wächst also immer weiter, der Reaktor ist überkritisch.",
+    "Aus 100 Spaltungen werden einmalig 114, danach bleibt die Zahl dort stehen. Der Faktor wirkt jedoch in jeder Generation neu, nicht nur ein einziges Mal.",
+    "Die Zahl der Spaltungen steigt je Generation um 14, also 100, 114, 128. Das wäre immer derselbe Zuwachs; k ist aber ein Faktor, mit dem man malnimmt.",
+    "Die Kette erstirbt langsam, weil die Steuerstäbe schon halb eingefahren sind. Erstickt wird die Kette erst bei k unter 1, über 1 wächst sie."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Erkläre, warum die Steuerstäbe im Kraftwerk bei 50 % stehen bleiben und nicht auf 0 % herausgezogen werden.",
+   "zeilen": 4,
+   "loesung": "Bei 0 % steht k = 1,60: Aus 100 Spaltungen werden 160, und das in jeder Generation erneut. Nach zehn Generationen wären es rund 110-mal so viele, der Reaktor würde immer heißer. Bei 50 % fangen die Steuerstäbe so viele Neutronen weg, dass k = 1,00 bleibt und aus 500 Spaltungen wieder rund 500 werden. Nur so bleibt die Leistung gleich."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk11",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E8",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Zwischen Brennstab und Turbine steht immer der",
+    "loesung": "Dampf",
+    "post": ", deshalb ist ein Kernkraftwerk ein Dampfkraftwerk."
+   },
+   {
+    "pre": "Elektrische Energie entsteht erst im",
+    "loesung": "Generator",
+    "post": ", den die Turbine dreht."
+   },
+   {
+    "pre": "Eine einzelne Spaltung liefert rund",
+    "loesung": "200 MeV",
+    "post": ", das sind 3,2 · 10⁻¹¹ J."
+   },
+   {
+    "pre": "Für 300 Megawatt braucht ein Kraftwerk rund",
+    "loesung": "10¹⁹ Spaltungen",
+    "post": "in jeder Sekunde."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Reaktor entsteht die elektrische Energie unmittelbar, die Turbine verteilt sie nur auf die Leitungen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die 500 Spaltungen einer Generation liefern zusammen 16,0 · 10⁻⁹ J.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil eine Spaltung schon 200 MeV liefert, genügen für 300 Megawatt einige Tausend Spaltungen je Sekunde.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Kohlekraftwerk und Kernkraftwerk unterscheiden sich nur in der Wärmequelle; der Weg über Dampf, Turbine und Generator ist derselbe.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Nour kocht zu Hause Nudeln, und der Dampf hebt den Topfdeckel an. Sie überlegt, welches Bauteil im Kernkraftwerk diesem Deckel entspricht.",
+   "optionen": [
+    "Der Generator, denn dort kommt die Energie an. Den Generator dreht aber die Turbine, vom Dampf angehoben wird er nicht.",
+    "Der Brennstab, denn dort geht es am heißesten zu. Der Brennstab entspricht der Herdplatte unter dem Topf, nicht dem bewegten Deckel.",
+    "Die Steuerstäbe, denn sie regeln, wie stark es im Reaktor zugeht. Die Steuerstäbe bestimmen die Zahl der Spaltungen; bewegt werden sie vom Dampf nicht.",
+    "Die Turbine, denn wie der Deckel wird sie vom Dampf bewegt. Erst dahinter dreht sie den Generator, der die elektrische Energie liefert."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Berechne, wie viel Energie die 500 Spaltungen einer Generation zusammen liefern, und vergleiche das Ergebnis mit dem Bedarf eines Kraftwerks.",
+   "zeilen": 4,
+   "loesung": "Eine Spaltung liefert rund 200 MeV, also 3,2 · 10⁻¹¹ J. Für 500 Spaltungen rechnest du 500 · 3,2 · 10⁻¹¹ J = 16,0 · 10⁻⁹ J. Das ist verschwindend wenig, denn für 300 Megawatt braucht ein Kraftwerk rund 10¹⁹ Spaltungen in jeder Sekunde. Eine einzelne Generation im Bild reicht dafür bei Weitem nicht."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk12",
+  "komp": [
+   "UF1",
+   "UF2",
+   "E6",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Nach zehn Halbwertszeiten ist noch etwa ein",
+    "loesung": "Tausendstel",
+    "post": "des Stoffes übrig."
+   },
+   {
+    "pre": "Langlebiger Abfall gehört in ein",
+    "loesung": "Endlager",
+    "post": "tief im stabilen Gestein."
+   },
+   {
+    "pre": "Für Stoffe mit kurzer Halbwertszeit genügt in der Klinik ein",
+    "loesung": "Abklingraum",
+    "post": "."
+   },
+   {
+    "pre": "In abgebrannten Brennstäben stecken die Bruchstücke der Spaltung und neue",
+    "loesung": "schwere Kerne",
+    "post": ", beide sind radioaktiv."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Nach zehn Halbwertszeiten ist noch ungefähr ein Tausendstel des Stoffes übrig.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Für Stoffe, deren Halbwertszeit in Tagen zählt, reicht ein Abklingraum in der Klinik.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Nach zwei Halbwertszeiten ist ein Stoff vollständig zerfallen, denn zweimal die Hälfte ergibt das Ganze.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Je länger die Halbwertszeit eines Stoffes ist, desto mehr Kerne zerfallen in jeder Stunde.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im Abklingraum im Keller der Klinik steht ein Behälter mit einem Stoff, dessen Halbwertszeit 6 Tage beträgt. Nour fragt, wann der Inhalt in den normalen Müll darf.",
+   "optionen": [
+    "Nach 6 Tagen, denn dann ist die Halbwertszeit vorbei und der Stoff zerfallen. Nach einer Halbwertszeit ist aber erst die Hälfte weg, der Rest strahlt weiter.",
+    "Nach etwa zehn Halbwertszeiten, also rund 60 Tagen; dann ist nur noch ungefähr ein Tausendstel übrig.",
+    "Nach 12 Tagen, denn zweimal die Hälfte ergibt das Ganze. Nach zwei Halbwertszeiten ist jedoch noch ein Viertel da, und der Rest halbiert sich immer weiter.",
+    "Gar nicht, denn radioaktiver Abfall gehört immer in ein Endlager. Ein Endlager brauchen nur die langlebigen Stoffe mit Halbwertszeiten von vielen Tausend Jahren."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile den Vorschlag, abgebrannte Brennstäbe genauso abklingen zu lassen wie den Abfall aus der Klinik.",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag geht nicht auf. In der Klinik zählt man die Halbwertszeiten in Tagen; nach zehn davon ist noch ein Tausendstel übrig, das sind wenige Wochen Wartezeit. In abgebrannten Brennstäben stecken daneben Stoffe mit Halbwertszeiten von vielen Tausend Jahren. Zehn Halbwertszeiten dauern dort länger, als je ein Bauwerk überdauert hat; dieser Abfall muss deshalb in ein Endlager tief im stabilen Gestein."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk13",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Verdoppelst du den Abstand, sinkt die Dosisleistung auf",
+    "loesung": "ein Viertel",
+    "post": "."
+   },
+   {
+    "pre": "Je 6,5 mm Blei wird die Dosisleistung",
+    "loesung": "halbiert",
+    "post": "."
+   },
+   {
+    "pre": "Ohne Blei zeigt die Anzeige in 50 cm Abstand",
+    "loesung": "370,8 µSv/h",
+    "post": "."
+   },
+   {
+    "pre": "Die Zeit geht einfach ein: doppelt so lange bedeutet",
+    "loesung": "doppelte Dosis",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Schritt von 50 cm auf 100 cm senkt die Dosisleistung von 370,8 µSv/h auf 92,7 µSv/h.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer den Abstand zur Quelle verdoppelt, halbiert damit die Dosisleistung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Dosimeter, das 370,8 µSv/h anzeigt, hat damit schon 370,8 µSv gemessen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "7 mm Blei lassen bei 50 cm Abstand noch knapp die Hälfte der Dosisleistung übrig.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Beim Zahnarzt stellt sich die Helferin vor der Aufnahme nicht hinter eine Bleiwand, sondern geht ein paar Schritte weiter weg aus dem Raum. Warum bringt das so viel?",
+   "optionen": [
+    "Weil Blei gegen diese Strahlung überhaupt nichts nützt. Auch Blei hilft: Je 6,5 mm bleibt nur die Hälfte übrig.",
+    "Weil der Abstand quadratisch eingeht: Doppelter Abstand lässt nur ein Viertel übrig, vierfacher Abstand nur ein Sechzehntel.",
+    "Weil die Strahlung nach ein paar Metern von selbst aufhört. Gammastrahlung hat keine feste Reichweite, sie wird nur immer schwächer.",
+    "Weil doppelter Abstand die Dosisleistung halbiert, genau wie 6,5 mm Blei. Der Abstand geht aber quadratisch ein, doppelter Abstand bringt ein Viertel."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile die Aussage: „Mit der Bleischürze kann ich ruhig direkt vor dem Präparateschrank stehen bleiben.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt so nicht. Bei 50 cm zeigt die Anzeige 370,8 µSv/h, und 7 mm Blei lassen davon noch knapp die Hälfte durch. Der Schritt zurück auf 100 cm senkt den Wert dagegen auf 92,7 µSv/h, also auf ein Viertel. Der Abstand wirkt hier stärker als die Schürze, deshalb gehört der Schritt zurück dazu."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk14",
+  "komp": [
+   "UF1",
+   "UF2",
+   "B2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Aus der Dosisleistung wird eine Dosis erst durch die",
+    "loesung": "Zeit",
+    "post": "."
+   },
+   {
+    "pre": "Ein Flug nach New York bringt rund",
+    "loesung": "40 µSv",
+    "post": "."
+   },
+   {
+    "pre": "Ein Mikrosievert ist ein",
+    "loesung": "Millionstel",
+    "post": "Sievert."
+   },
+   {
+    "pre": "Unter 40 µSv bleibt die Dosis in 20 Minuten erst ab ungefähr",
+    "loesung": "90 cm",
+    "post": "Abstand."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die Anzeige 306,4 µSv/h bedeutet, dass Nour nach 20 Minuten 306,4 µSv abbekommen hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 90 cm Abstand liegt die Dosis in 20 Minuten mit 38,13 µSv etwa bei der eines Fluges nach New York.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bleibt Nour statt 20 Minuten 40 Minuten stehen, vervierfacht sich ihre Dosis.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 300 cm sind es in 20 Minuten nur 3,43 µSv, also weniger als ein Zehntel eines Fluges nach New York.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Am Abendbrottisch sagt Nours Mutter: „Zwanzig Minuten neben so einer Quelle, das ist doch bestimmt schlimmer als eine Röntgenaufnahme.“ Nour hat bei 125 cm Abstand gemessen. Was kann sie antworten?",
+   "optionen": [
+    "Sie hat recht, denn zwanzig Minuten sind viel länger als der Augenblick einer Röntgenaufnahme. Entscheidend ist aber nicht die Zeit allein, sondern Dosisleistung mal Zeit.",
+    "Sie hat recht, denn bei 125 cm stehen 59,3 auf der Anzeige, mehr als die Hälfte von 100. Die 59,3 sind µSv/h; in 20 Minuten bleiben davon nur 19,77 µSv.",
+    "Sie hat unrecht, denn ab einem Meter Abstand kommt gar keine Strahlung mehr an. Die Strahlung hört nicht auf, sie wird nur schwächer: Bei 125 cm sind es noch 59,3 µSv/h.",
+    "Sie hat unrecht: In 20 Minuten sind es bei 125 cm nur 19,77 µSv. Eine Röntgenaufnahme der Lunge bringt rund 100 µSv, also etwa das Fünffache."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bestimme, wie lange Nour bei 55 cm Abstand höchstens bleiben darf, damit sie nicht mehr Dosis abbekommt als bei einem Flug nach New York.",
+   "zeilen": 5,
+   "loesung": "Bei 55 cm zeigt die Anzeige 306,4 µSv/h. Ein Flug nach New York bringt rund 40 µSv. Aus t = 40 µSv: 306,4 µSv/h folgt t = 0,13 h. Das sind knapp 8 Minuten."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk15",
+  "komp": [
+   "UF1",
+   "UF3",
+   "UF2",
+   "B1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Für Bilder aus dem Körper nimmt man",
+    "loesung": "Gammastrahlung",
+    "post": "."
+   },
+   {
+    "pre": "Wie lange ein Stoff strahlt, sagt seine",
+    "loesung": "Halbwertszeit",
+    "post": "."
+   },
+   {
+    "pre": "Alpha- und Betastrahlung wirken dicht an der Quelle, weil sie eine kurze",
+    "loesung": "Reichweite",
+    "post": "haben."
+   },
+   {
+    "pre": "Bei einer Behandlung soll die Energie dort ankommen, wo die",
+    "loesung": "kranken Zellen",
+    "post": "sitzen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Für jede Aufgabe in der Medizin nimmt man den Stoff mit der schwächsten Strahlung.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Gammastrahlung eignet sich für ein Bild, weil sie das Gewebe durchdringt und außen am Messgerät ankommt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Stoff mit sehr langer Halbwertszeit strahlt noch weiter, wenn die Untersuchung längst vorbei ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Alphastrahlung eignet sich gut für Bilder aus dem Körperinneren, weil sie besonders viel Energie abgibt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Am Abendbrottisch fragt Nours Onkel, warum man für eine Untersuchung, bei der von außen gemessen wird, nicht einfach den Stoff mit der schwächsten Strahlung nimmt. Was antwortet Nour?",
+   "optionen": [
+    "Weil die schwächste Strahlung zu lange braucht, bis das Bild fertig ist. Nicht die Dauer ist das Problem, sondern dass die Strahlung außen überhaupt ankommen muss.",
+    "Weil Alphastrahlung am meisten Energie abgibt und deshalb das schärfste Bild macht. Alphastrahlung bleibt im Gewebe stecken und erreicht das Messgerät gar nicht.",
+    "Weil die Strahlung zur Aufgabe passen muss: Für ein Bild von außen braucht man Gammastrahlung, denn nur sie durchdringt das Gewebe.",
+    "Weil ein schwacher Stoff immer eine lange Halbwertszeit hat und dann ewig im Körper strahlt. Halbwertszeit und Strahlungsart haben nichts miteinander zu tun."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Beurteile den Vorschlag, für eine Behandlung im Körper einen Gammastrahler zu nehmen.",
+   "zeilen": 4,
+   "loesung": "Der Vorschlag passt nicht zur Aufgabe. Gammastrahlung gibt unterwegs nur wenig Energie ab und verlässt den Körper zum großen Teil wieder. Im kranken Gewebe käme deshalb nur ein kleiner Teil der Energie an, und gesundes Gewebe würde mitbestrahlt. Für eine Behandlung nimmt man Alpha- oder Betastrahlung, weil ihre kurze Reichweite die Energie dort lässt, wo sie wirken soll."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk16",
+  "komp": [
+   "UF1",
+   "UF2",
+   "UF4",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Im Sonnenkern verschmelzen vier Wasserstoffkerne zu einem",
+    "loesung": "Heliumkern",
+    "post": "."
+   },
+   {
+    "pre": "Im Modell zündet die Fusion erst ab etwa",
+    "loesung": "10 Millionen Grad",
+    "post": ", im Sonnenkern sind es 15 Millionen Grad."
+   },
+   {
+    "pre": "Alle Kerne sind positiv geladen und",
+    "loesung": "stoßen sich ab",
+    "post": ", deshalb braucht die Fusion so hohe Temperaturen."
+   },
+   {
+    "pre": "Je Kernbaustein liefert die Fusion",
+    "loesung": "6,68 MeV",
+    "post": ", die Spaltung dagegen nur 0,85 MeV."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Im Sonnenkern verbrennt Wasserstoff wie Holz in einem Ofen, nur eben sehr viel heißer.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 8 Millionen °C prallen die Kerne im Modell noch voneinander ab, es entsteht kein Heliumkern.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der entstandene Heliumkern ist leichter als die vier Wasserstoffkerne zusammen; die fehlende Masse wird zu Energie.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In einer Fusionsanlage auf der Erde reichen ebenfalls 15 Millionen Grad, weil dort dieselben Kerne verschmelzen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Beim Abendessen erzählt Nour von der Fusion. Ihr Vater zeigt auf die Kerze und sagt: „Wenn Kerne bei 15 Millionen Grad verschmelzen, dann verschmelzen sie in dieser Flamme eben ein bisschen langsamer.“ Welche Antwort trifft es?",
+   "optionen": [
+    "Er hat recht, bei jeder Temperatur verschmelzen ein paar Kerne, oben geht es nur schneller. Unter etwa 10 Millionen Grad prallen die Kerne aber ab, es entsteht kein einziger Heliumkern.",
+    "Er hat unrecht, denn erst ab etwa 10 Millionen Grad sind die Kerne schnell genug, um ihre Abstoßung zu überwinden – eine Kerzenflamme bleibt weit darunter.",
+    "Er hat unrecht, denn in Wachs stecken gar keine Kerne, die verschmelzen könnten. Auch Wachs besteht aus Atomen mit Kernen; es fehlt nicht der Brennstoff, sondern die Temperatur.",
+    "Er hat recht, die Sonne ist nur viel größer, deshalb läuft dort dasselbe schneller ab. Die Größe entscheidet aber nicht: Ohne die 10 Millionen Grad zündet die Fusion überhaupt nicht."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Beurteile Jannis' Satz: „Spalten oder Verschmelzen ist dasselbe in Grün, Energie kommt bei beidem heraus.“",
+   "zeilen": 4,
+   "loesung": "Beides liefert Energie, aber nicht gleich viel und nicht unter denselben Bedingungen. Bei der Fusion werden je Kernbaustein 6,68 MeV frei, bei der Spaltung nur 0,85 MeV, also fast achtmal so viel. Dafür müssen die Kerne bei der Fusion erst ihre gegenseitige Abstoßung überwinden, und das gelingt erst ab etwa 10 Millionen Grad, während eine Spaltung schon ein einzelnes langsames Neutron auslöst. Jannis' Satz trifft deshalb nicht zu."
+  },
+  "theme": "gts_kern"
+ },
+ {
+  "id": "rk17",
+  "komp": [
+   "UF1",
+   "UF2",
+   "B1",
+   "B3"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ],
+  "lueckensaetze": [
+   {
+    "pre": "Ein Kernkraftwerk gewinnt seine Energie aus der",
+    "loesung": "Kernspaltung",
+    "post": "schwerer Kerne."
+   },
+   {
+    "pre": "Zu einer Bewertung gehören Fakten und",
+    "loesung": "Gründe",
+    "post": ", die man aussprechen und prüfen kann."
+   },
+   {
+    "pre": "Beim Betrieb eines Kernkraftwerks entsteht kein",
+    "loesung": "Kohlenstoffdioxid",
+    "post": ", der Abfall bleibt trotzdem sehr lange gefährlich."
+   },
+   {
+    "pre": "Ob man eine Folge in Kauf nimmt, ist keine Messung, sondern eine",
+    "loesung": "Entscheidung",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Aus sehr wenig Brennstoff gewinnt ein Kernkraftwerk sehr viel Energie.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Weil die Physik jede Folge in Zahlen fassen kann, ergibt sich aus dem Datenblatt von selbst, ob Kernkraft richtig ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Kernkraftwerk stößt im Betrieb ähnlich viel Kohlenstoffdioxid aus wie ein Kohlekraftwerk, weil beide mit Dampf arbeiten.",
+    "stimmt": false
+   },
+   {
+    "aussage": "In einer begründeten Bewertung stehen auf beiden Seiten Einträge, und du sagst dazu, welcher Punkt für dich schwerer wiegt.",
+    "stimmt": true
+   }
+  ],
+  "mc": {
+   "frage": "Am Küchentisch streiten Nours Eltern über Kernkraft. Ihr Vater legt die Zeitung weg und sagt: „Das ist doch keine Meinungsfrage, das kann man ausrechnen.“ Welche Antwort trifft es?",
+   "optionen": [
+    "Er hat recht, wer alle Zahlen des Datenblatts kennt, kommt zwangsläufig zum selben Ergebnis. Die Zahlen sagen jedoch nur, was passiert, nicht wie schwer eine Folge wiegt.",
+    "Er hat recht, sobald man genau genug misst, entscheidet die Physik solche Fragen. Die Physik beschreibt die Folgen, das Gewichten der Folgen nimmt sie niemandem ab.",
+    "Er hat nur halb recht: Die Physik beschreibt die Folgen und fasst sie in Zahlen, aber welche Folge man in Kauf nimmt, muss man begründet entscheiden.",
+    "Er hat unrecht, bei Kernkraft ist ohnehin alles Ansichtssache. Auch das stimmt nicht, denn die Angaben im Datenblatt sind gemessen und für jeden nachprüfbar."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Begründe, warum zwei Menschen mit demselben Datenblatt zu verschiedenen Urteilen über Kernkraft kommen können.",
+   "zeilen": 4,
+   "loesung": "Das Datenblatt nennt die Folgen, aber nicht ihr Gewicht. Wem der Betrieb ohne Kohlenstoffdioxid am wichtigsten ist, der entscheidet sich dafür; wer den Abfall fürchtet, der über viele Tausend Jahre sicher eingeschlossen bleiben muss, entscheidet sich dagegen. Beide Urteile können gut begründet sein, solange jeder seine Gründe nennt und sie mit einer Angabe aus dem Datenblatt stützt."
+  },
+  "theme": "gts_kern"
+ }
+]

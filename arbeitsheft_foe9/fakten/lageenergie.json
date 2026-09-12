@@ -1,0 +1,256 @@
+[
+ {
+  "sim": "lageenergie",
+  "ueberschrift": "📦 Wo steckt die Energie, wenn etwas oben liegt?",
+  "regler": [
+   {
+    "id": "lgeM",
+    "beschriftung": "utton> ↺ zurücksetzen Masse m: 5 kg",
+    "bereich": {
+     "min": "1",
+     "max": "20",
+     "step": "1",
+     "start": "5"
+    }
+   },
+   {
+    "id": "lgeH",
+    "beschriftung": "Höhe h: 3 m",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "3"
+    }
+   }
+  ],
+  "knoepfe": [
+   {
+    "aufschrift": "▶ Fallen lassen",
+    "ruft": "_lgeGo()"
+   },
+   {
+    "aufschrift": "×2 Masse",
+    "ruft": "_lgeVerdopple('m')"
+   },
+   {
+    "aufschrift": "×2 Höhe",
+    "ruft": "_lgeVerdopple('h')"
+   },
+   {
+    "aufschrift": "↺ zurücksetzen",
+    "ruft": "_lgeInit();_lgeSync()"
+   }
+  ],
+  "hinweise": [
+   "Der Klotz fällt auf einen Pfahl und treibt ihn in den Boden. Je tiefer der Pfahl kommt, desto mehr Energie hatte der Klotz oben.",
+   "Verdopple einmal die Masse und einmal die Höhe. Beide zählen gleich stark – anders als beim Tempo.",
+   "Elage = m · g · h | g = 9,81 N/kg | Ergebnis in Joule"
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "▶ Fallen lassen",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | fällt gerade … v = 0,7 m/s"
+   },
+   {
+    "einstellung": "×2 Masse",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "×2 Höhe",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 6 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "↺ zurücksetzen",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 1",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 1 kg · 9,81 N/kg · 3 m | Lageenergie oben: 29 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 3",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 3 kg · 9,81 N/kg · 3 m | Lageenergie oben: 88 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 6",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 6 kg · 9,81 N/kg · 3 m | Lageenergie oben: 177 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 8",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 8 kg · 9,81 N/kg · 3 m | Lageenergie oben: 235 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 11",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 11 kg · 9,81 N/kg · 3 m | Lageenergie oben: 324 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 13",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 13 kg · 9,81 N/kg · 3 m | Lageenergie oben: 383 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 15",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 15 kg · 9,81 N/kg · 3 m | Lageenergie oben: 441 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 18",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 18 kg · 9,81 N/kg · 3 m | Lageenergie oben: 530 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 20",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 20 kg · 9,81 N/kg · 3 m | Lageenergie oben: 589 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 2",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 2 kg · 9,81 N/kg · 3 m | Lageenergie oben: 59 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 4",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 4 kg · 9,81 N/kg · 3 m | Lageenergie oben: 118 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 5",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 5 kg · 9,81 N/kg · 3 m | Lageenergie oben: 147 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 7",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 7 kg · 9,81 N/kg · 3 m | Lageenergie oben: 206 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 9",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 9 kg · 9,81 N/kg · 3 m | Lageenergie oben: 265 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 10",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 10 kg · 9,81 N/kg · 3 m | Lageenergie oben: 294 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 12",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 12 kg · 9,81 N/kg · 3 m | Lageenergie oben: 353 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 14",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 14 kg · 9,81 N/kg · 3 m | Lageenergie oben: 412 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 16",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 16 kg · 9,81 N/kg · 3 m | Lageenergie oben: 471 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 17",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 17 kg · 9,81 N/kg · 3 m | Lageenergie oben: 500 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "utton> ↺ zurücksetzen Masse m: 5 kg = 19",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 3 m | Lageenergie oben: 559 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 1",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 1 m | Lageenergie oben: 186 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 2",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 2 m | Lageenergie oben: 373 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 3",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 3 m | Lageenergie oben: 559 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 4",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 4 m | Lageenergie oben: 746 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 6",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 6 m | Lageenergie oben: 1118 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 7",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 7 m | Lageenergie oben: 1305 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 8",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 8 m | Lageenergie oben: 1491 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 9",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 9 m | Lageenergie oben: 1678 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 10",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 10 m | Lageenergie oben: 1864 J | Drücke „Fallen lassen“."
+   },
+   {
+    "einstellung": "Höhe h: 3 m = 5",
+    "text": "lgeStatus: Hubarbeit beim Hochheben: 19 kg · 9,81 N/kg · 5 m | Lageenergie oben: 932 J | Drücke „Fallen lassen“."
+   }
+  ],
+  "bildtexte": [
+   "h = 3 m",
+   "5 kg",
+   "Lageenergie E = m · g · h",
+   "147 J",
+   "Masse und Höhe zählen gleich stark",
+   "10 kg",
+   "294 J",
+   "h = 6 m",
+   "589 J",
+   "1 kg",
+   "29 J",
+   "3 kg",
+   "88 J",
+   "6 kg",
+   "177 J",
+   "8 kg",
+   "235 J",
+   "11 kg",
+   "324 J",
+   "13 kg",
+   "383 J",
+   "15 kg",
+   "441 J",
+   "18 kg",
+   "530 J",
+   "20 kg",
+   "2 kg",
+   "59 J",
+   "4 kg",
+   "118 J",
+   "7 kg",
+   "206 J",
+   "9 kg",
+   "265 J",
+   "12 kg",
+   "353 J",
+   "14 kg",
+   "412 J",
+   "16 kg",
+   "471 J",
+   "17 kg",
+   "500 J",
+   "19 kg",
+   "559 J",
+   "h = 1 m",
+   "186 J",
+   "h = 2 m",
+   "373 J",
+   "h = 4 m",
+   "746 J",
+   "1118 J",
+   "h = 7 m",
+   "1305 J",
+   "h = 8 m",
+   "1491 J",
+   "h = 9 m",
+   "1678 J",
+   "h = 10 m",
+   "1864 J",
+   "h = 5 m",
+   "932 J"
+  ]
+ }
+]

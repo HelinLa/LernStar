@@ -1,0 +1,140 @@
+[
+ {
+  "kapitel": "magnetismus",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Hersteller wirbt: „Unser Magnetverschluss hält jede Tasche zu – auch wenn ein Handy daneben liegt.“ Beurteile die Werbeaussage. Nenne zuerst, was du wissen müsstest, um sie zu prüfen, und begründe dann dein Urteil.",
+    "erwartung": "Prüfbar wird die Aussage erst mit Angaben zur Haltekraft, zum Abstand und zum Gewicht der Tasche. „Jede Tasche“ ist zu unbestimmt. Zum Handy: Der Verschluss hält weiter, umgekehrt kann ein starker Magnet aber Karten mit Magnetstreifen stören. Urteil mit Begründung, nicht nur Zustimmung oder Ablehnung."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Zwei Magnete sind gleich groß, einer soll stärker sein. Entwickle einen Versuch, mit dem ihr das in der Klasse fair vergleichen könnt. Lege vorher fest, was ihr messt und was jedes Mal gleich bleiben muss.",
+    "erwartung": "Messgröße z. B. Zahl der getragenen Büroklammern oder der Abstand, ab dem eine Klammer springt. Gleich bleiben müssen: Klammersorte, Unterlage, Anfangsabstand, Pol. Mehrfachmessung und Mittelwert werden erwartet."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "In alten Kopfhörern und Festplatten stecken starke Magnete. Nimm Stellung dazu, ob solche Geräte in den Restmüll dürfen. Wäge dabei den Aufwand des Trennens gegen den Nutzen ab.",
+    "erwartung": "Erwartet werden je ein Argument für und gegen das Trennen (Rohstoffe, seltene Erden, Aufwand, Sammelstellen) und eine begründete eigene Entscheidung. Beide Seiten müssen vorkommen."
+   }
+  ]
+ },
+ {
+  "kapitel": "licht",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ben sagt: „Im Kino ist es dunkel, deshalb sieht man die Leinwand besser.“ Beurteile, ob die Begründung trägt, und formuliere einen Satz, der wirklich erklärt, warum man im Dunkeln mehr erkennt.",
+    "erwartung": "Die Aussage stimmt im Ergebnis, aber nicht in der Begründung. Tragfähig: Ins Auge gelangt nur das Licht von der Leinwand; Streulicht aus dem Raum würde den Unterschied zwischen hell und dunkel verringern. Der Kontrast, nicht die Dunkelheit selbst, ist der Grund."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plane einen Versuch, mit dem ihr auf dem Schulhof die Höhe der Turnhalle über ihren Schatten bestimmt. Nenne jede Größe, die ihr messen müsst, und eine Fehlerquelle.",
+    "erwartung": "Gemessen werden: Schattenlänge der Halle, Länge eines senkrechten Stabes und dessen Schatten zur selben Zeit. Aus dem Verhältnis folgt die Höhe. Fehlerquellen: Schattenrand unscharf, Boden nicht eben, Zeitversatz zwischen den Messungen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Für die Schulbühne soll ein Scheinwerfer gekauft werden. Stelle drei Kriterien auf, nach denen ihr entscheidet, und gewichte sie begründet.",
+    "erwartung": "Kriterien z. B. Helligkeit, Stromverbrauch, Wärmeentwicklung, Preis, Blendung. Erwartet wird eine Rangfolge MIT Begründung, warum ein Kriterium schwerer wiegt als ein anderes."
+   }
+  ]
+ },
+ {
+  "kapitel": "strom",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Mia will die Lichterkette in ihrem Zimmer umbauen und die Batterien durch einen Stecker für die Steckdose ersetzen. Beurteile den Plan und begründe, was du ihr rätst.",
+    "erwartung": "Abzulehnen: 230 V sind lebensgefährlich, die Lämpchen sind für wenige Volt gebaut und würden sofort durchbrennen. Erwartet wird die Unterscheidung zwischen ungefährlicher Kleinspannung und Netzspannung, nicht nur ein Verbot."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "In der Klasse liegen zwei gleich aussehende Batterien, eine ist leer. Entwickle einen Weg, das mit einem Lämpchen und Kabeln sicher herauszufinden, ohne die Batterien zu öffnen.",
+    "erwartung": "Beide Batterien nacheinander in denselben Stromkreis mit demselben Lämpchen; die leere lässt das Lämpchen dunkel oder schwächer leuchten. Wichtig: derselbe Aufbau, sonst ist der Vergleich nicht fair."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "Viele Geräte bleiben nachts im Bereitschaftsbetrieb an. Nimm Stellung: Soll die Schule abends alle Geräte vom Netz trennen? Nenne ein Argument dafür und eines dagegen und entscheide dich begründet.",
+    "erwartung": "Dafür: Standby verbraucht dauerhaft Energie und kostet Geld. Dagegen: Geräte brauchen Startzeit, manche müssen erreichbar bleiben (Server, Alarm). Erwartet wird eine Entscheidung, die beide Seiten benennt."
+   }
+  ]
+ },
+ {
+  "kapitel": "waerme",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Werbetext verspricht: „Diese Thermoskanne hält Tee 24 Stunden heiß.“ Beurteile die Aussage. Nenne, was „heiß“ hier bedeuten müsste, damit man sie überhaupt prüfen kann.",
+    "erwartung": "Ohne Temperaturangabe ist die Aussage nicht prüfbar. Nötig wären Anfangs- und Endtemperatur, Füllmenge und Umgebungstemperatur. Erwartet wird die Einsicht, dass Werbeaussagen erst mit Zahlen überprüfbar werden."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant einen Versuch, der zeigt, welches von drei Materialien am besten isoliert. Legt vorher fest, was gleich bleiben muss, damit der Vergleich fair ist.",
+    "erwartung": "Gleich bleiben: Wassermenge, Anfangstemperatur, Gefäßform, Umgebungstemperatur, Messzeitpunkte. Gemessen wird die Temperatur nach festen Zeitabständen. Nur eine Größe wird verändert."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Eure Klasse will im Winter Energie sparen. Stellt drei Maßnahmen auf, ordnet sie nach Wirkung und Aufwand und begründet eure Reihenfolge.",
+    "erwartung": "Maßnahmen z. B. Stoßlüften statt Kippfenster, Heizung nachts drosseln, Türen schließen, Vorhänge nachts zuziehen. Erwartet wird eine begründete Gewichtung, nicht nur eine Aufzählung."
+   }
+  ]
+ },
+ {
+  "kapitel": "schall",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Ein Freund sagt: „Kopfhörer sind nur laut, wenn man sie ganz aufdreht.“ Beurteile die Aussage und begründe mit dem, was du über Lautstärke und Dauer weißt.",
+    "erwartung": "Die Aussage greift zu kurz: Auch mittlere Lautstärke schadet, wenn sie lange anhält. Erwartet wird der Zusammenhang von Pegel UND Dauer sowie der Hinweis, dass sich das Ohr an Lautstärke gewöhnt."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Entwickelt einen Versuch, mit dem ihr messt, wie gut eine Zimmertür Schall dämmt. Beschreibt, was ihr vergleicht und wie ihr Störgeräusche kleinhaltet.",
+    "erwartung": "Dieselbe Schallquelle mit gleicher Lautstärke, Messung vor und hinter der Tür an derselben Stelle, Tür einmal offen und einmal geschlossen. Störgeräusche durch ruhige Zeit und Wiederholungen kleinhalten."
+   },
+   {
+    "komp": "B3",
+    "afb": "III",
+    "prompt": "In der Pause ist es in der Mensa sehr laut. Nimm Stellung dazu, wer dafür verantwortlich ist, etwas zu ändern, und schlage eine Maßnahme vor, die ihr selbst umsetzen könnt.",
+    "erwartung": "Erwartet wird eine abwägende Antwort: Verantwortung liegt teils bei der Schule (Raum, Material), teils bei den Nutzenden. Der eigene Vorschlag muss realistisch und begründet sein."
+   }
+  ]
+ },
+ {
+  "kapitel": "himmel",
+  "aufgaben": [
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Eine Zeitung schreibt: „Im Sommer ist es wärmer, weil die Erde der Sonne näher ist.“ Beurteile die Aussage und schreibe die richtige Erklärung in zwei Sätzen.",
+    "erwartung": "Falsch: Die Erde ist im Nordsommer sogar etwas weiter entfernt. Richtig ist die Neigung der Erdachse: Die Sonne steht höher, ihr Licht trifft steiler auf und verteilt sich auf eine kleinere Fläche, außerdem sind die Tage länger."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Plant eine Beobachtungsreihe, mit der ihr über vier Wochen belegt, dass sich der Sonnenstand ändert. Legt Ort, Uhrzeit und Messgröße vorher fest.",
+    "erwartung": "Immer derselbe Ort, dieselbe Uhrzeit, derselbe senkrechte Stab; gemessen wird die Schattenlänge und die Schattenrichtung. Erwartet wird die Einsicht, dass nur eine Größe variieren darf: das Datum."
+   },
+   {
+    "komp": "K7",
+    "afb": "III",
+    "prompt": "Erkläre einem Kind aus Klasse 3 mit einer Taschenlampe und einem Ball, warum es Tag und Nacht gibt. Schreibe auf, welche Frage es dir danach gestellt hat und wie du sie beantwortet hast.",
+    "erwartung": "Erwartet wird eine adressatengerechte Erklärung ohne Fachwörter, das Modell muss korrekt bleiben (Erde dreht sich, Sonne wandert nicht). Die notierte Rückfrage zeigt, ob wirklich erklärt wurde."
+   }
+  ]
+ }
+]

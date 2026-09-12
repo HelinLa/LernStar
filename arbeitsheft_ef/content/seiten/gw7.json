@@ -1,0 +1,90 @@
+{
+ "id": "gw7",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Die Drehwaage im Gartenhaus",
+ "problem": "Mira rechnet für ihre Wettbewerbsmappe die Erdmasse aus und stockt: In der Formel steht G, und woher diese Zahl kommt, sagt kein Buch. Tobias findet einen Aufsatz von 1798. Sein Titel verspricht die Dichte der Erde – im Gartenhaus von Henry Cavendish hängen aber nur zwei Bleikugeln an einem Draht, beobachtet durch Fernrohre von außen.",
+ "frage": "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
+ "auftrag": "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
+ "predict": [
+  "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Ausschlag des Balkens ein Maß für ihre Masse.",
+  "Die Drehwaage misst nur die Kraft zwischen zwei bekannten Massen. Daraus folgt G; erst mit G, dem Ortsfaktor und dem Erdradius ergibt sich die Erdmasse."
+ ],
+ "predictOk": 1,
+ "forschen": [
+  "Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere die drei Werte mit Einheit.",
+  "Berechne mit F = G · m₁ · m₂ / r² und G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft zwischen einer großen und einer kleinen Kugel und vergleiche sie mit der letzten Zeile der Tabelle.",
+  "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg), löse dann F = G · m₁ · m₂ / r² nach G auf und begründe, welche Größe der Versuch liefert."
+ ],
+ "daten": {
+  "titel": "Die Drehwaage von Henry Cavendish, 1798",
+  "spalten": [
+   "Größe",
+   "Wert bei Cavendish 1798",
+   "Wozu sie dient"
+  ],
+  "zeilen": [
+   [
+    "Große Bleikugeln m₁",
+    "158 kg je Kugel",
+    "ziehen die kleine Kugel an"
+   ],
+   [
+    "Kleine Bleikugeln m₂",
+    "0,73 kg je Kugel",
+    "hängen am Waagebalken"
+   ],
+   [
+    "Abstand r der Mittelpunkte",
+    "0,23 m",
+    "geht quadratisch in F ein"
+   ],
+   [
+    "Länge des Waagebalkens",
+    "1,8 m",
+    "verlängert den Hebelarm"
+   ],
+   [
+    "Zu messende Kraft F",
+    "Größenordnung 10⁻⁷ N",
+    "verdrillt den Draht"
+   ]
+  ],
+  "quelle": "Werte nach Henry Cavendish, Philosophical Transactions 1798, in SI-Einheiten umgerechnet",
+  "merke": "Vier Größen dieser Tabelle sind abgemessen, eine ist gemessen. Gesucht ist die Zahl, die sie miteinander verbindet."
+ },
+ "tabCols": [
+  "Zahlenwert mit Einheit",
+  "Woher er stammt"
+ ],
+ "tabRows": [
+  "m₁ · m₂",
+  "r²",
+  "F zwischen den Kugeln",
+  "F im Vergleich zu m₂ · g"
+ ],
+ "fachtext": "Newtons Gravitationsgesetz F = G · m₁ · m₂ / r² verknüpft vier Größen. Drei davon lassen sich im Labor abmessen: die beiden Massen und ihr Abstand. Die vierte, die Gravitationskonstante G, steht auf keiner Waage und an keinem Maßband – sie kann nur aus einer Kraftmessung folgen. Genau das leistet die Drehwaage: Ein waagerechter Balken hängt an einem dünnen Draht, an seinen Enden sitzen die kleinen Kugeln. Nähert man die großen Bleikugeln, dreht sich der Balken so weit, bis der verdrillte Draht zurückhält, was die Anziehung zieht. Damit steht zugleich der direkte Nachweis der allgemeinen Massenanziehung auf dem Tisch: Hier zieht kein Himmelskörper, hier ziehen zwei Stücke Blei einander an. Aus dem Drehwinkel folgt F, aus F folgt G = F · r² / (m₁ · m₂). Erst danach ist die Erdmasse zu haben: Am Boden gilt g = G · M / R², umgestellt M = g · R² / G. Cavendish selbst gab sein Ergebnis als Dichte der Erde an; gemessen hat er eine Naturkonstante – Masse und Dichte der Erde sind erst die Folgerung daraus.",
+ "merksatz": [
+  {
+   "pre": "Die Drehwaage liefert zuerst die",
+   "loesung": "Gravitationskonstante",
+   "post": "G aus F = G · m₁ · m₂ / r²."
+  },
+  {
+   "pre": "Aus G, dem Ortsfaktor g und dem Erdradius R folgt danach die",
+   "loesung": "Erdmasse",
+   "post": ", denn es gilt g = G · M / R²."
+  }
+ ],
+ "beobachtung": "Aus dem Datenblatt folgt m₁ · m₂ = 158 kg · 0,73 kg = 115,34 kg² und r² = (0,23 m)² = 0,0529 m². Damit ist G · m₁ · m₂ = 6,674 · 10⁻¹¹ N·m²/kg² · 115,34 kg² = 7,70 · 10⁻⁹ N·m², und die Division durch r² ergibt F = 1,46 · 10⁻⁷ N – genau die Größenordnung, die die letzte Zeile der Tabelle nennt. Eine kleine Kugel wiegt dagegen m₂ · g = 0,73 kg · 9,81 N/kg = 7,16 N; die gesuchte Anziehung ist also rund 4,9 · 10⁷-mal kleiner. Deshalb hängt der Balken an einem dünnen Draht und wird durch Fernrohre von außen beobachtet: Jeder Luftzug im Raum wäre größer als die Kraft. Dass sie überhaupt zu sehen ist, beweist unmittelbar, dass sich beliebige Massen anziehen – im Gartenhaus war kein Himmelskörper beteiligt. Rückwärts gelesen zeigt dieselbe Gleichung, was der Versuch einbringt. Cavendish kannte m₁, m₂ und r und maß F; damit liefert G = F · r² / (m₁ · m₂) die Gravitationskonstante – die Masse der Erde ergibt sich erst im zweiten Schritt.",
+ "aufgabe": {
+  "frage": "Berechne aus g = 9,81 N/kg, dem Erdradius R = 6,37 · 10⁶ m und G = 6,674 · 10⁻¹¹ N·m²/kg² die Masse der Erde und begründe, warum diese Zahl erst nach Cavendishs Messung anzugeben war.",
+  "zeilen": 5,
+  "loesung": "Aus g = G · M / R² folgt M = g · R² / G. Mit R² = (6,37 · 10⁶ m)² = 4,058 · 10¹³ m² ist g · R² = 9,81 N/kg · 4,058 · 10¹³ m² = 3,981 · 10¹⁴ N·m²/kg. Division durch G ergibt M = 3,981 · 10¹⁴ N·m²/kg : (6,674 · 10⁻¹¹ N·m²/kg²) = 5,96 · 10²⁴ kg – die Einheiten kürzen sich zu Kilogramm. Tabellenwerke geben 5,972 · 10²⁴ kg an; die 0,1 Prozent Unterschied stammen aus den gerundeten Werten für g und R. Der Ortsfaktor g und der Erdradius R waren lange vor 1798 bekannt, doch ohne G liefert die Gleichung nur das Produkt G · M. Die Drehwaage trennt die beiden Faktoren: Sie misst die Anziehung zwischen zwei bekannten Massen und macht damit G zugänglich. Erst dieser Erkenntnisschritt macht aus einer alten Gleichung eine Zahl für die Erdmasse."
+ },
+ "alltag": "Beurteile die Zeitungsüberschrift „Cavendish wog die Erde“: Erkläre einer erwachsenen Person in drei Sätzen, was in dem Gartenhaus wirklich gemessen wurde, welcher Rechenschritt erst danach kam und warum die Überschrift trotzdem nicht völlig falsch ist.",
+ "alltagAfb": "III",
+ "alltagKomp": "E9",
+ "ueberleitung": "Mit G ist das Gravitationsgesetz vollständig – jede Anziehung im Sonnensystem lässt sich nun ausrechnen. Auf der nächsten Seite gehst du der Frage nach, warum diese Kraft die Erde nicht in die Sonne zieht, sondern auf ihrer Bahn hält.",
+ "name": "Wie wiegt man die Erde?",
+ "theme": "ef_gravitation"
+}

@@ -1,0 +1,72 @@
+{
+ "id": "gw5",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "S7",
+  "E11"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Aus der Masse eines Körpers und dem Ortsfaktor ergibt sich die Gewichtskraft nach der Vorschrift F =",
+   "loesung": "m · g",
+   "post": ", die die Simulation selbst in ihr Statusfeld schreibt."
+  },
+  {
+   "pre": "Der Ortsfaktor gibt die Kraft je Kilogramm an; als Quotient g = F / m trägt er deshalb die Einheit",
+   "loesung": "N/kg",
+   "post": "."
+  },
+  {
+   "pre": "Dieselbe Person erfährt auf der Erde 588 N und auf dem Mond 96 N. Der Quotient dieser beiden Kräfte beträgt",
+   "loesung": "6,125",
+   "post": "und stimmt mit dem Quotienten der beiden Ortsfaktoren überein."
+  },
+  {
+   "pre": "Die Einheit Newton ist über 1 N = 1 kg · m/s² festgelegt. Teilt man beide Seiten durch 1 kg, so folgt 1 N/kg =",
+   "loesung": "1 m/s²",
+   "post": "; die Angabe aus dem Fallversuch und die Angabe je Kilogramm meinen daher dieselbe Größe."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Von den drei Zahlen des Statusfelds bleibt beim Wechsel zwischen Mond, Erde und Jupiter allein die Masse unverändert stehen.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Da die Gewichtskraft auf dem Mond nur etwa ein Sechstel des Erdwerts beträgt, ist von der Person dort auch nur ein Sechstel der Masse vorhanden.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Für eine Person von 75 kg liefern die Ortsfaktoren der Simulation auf dem Mond 120 N und auf der Erde 735 N.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Der Quotient aus angezeigter Gewichtskraft und Masse fällt für Mond, Erde und Jupiter verschieden aus; er ist deshalb keine für den einzelnen Ort feste Zahl.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias vergleicht die beiden Angaben für g: In Kapitel 1 stand 9,81 m/s² aus dem Fallversuch, im Statusfeld steht 9,8 N/kg. Er schließt daraus, es handle sich um zwei verschiedene Größen mit zufällig ähnlichen Zahlen. Welche Begründung widerlegt ihn?",
+  "optionen": [
+   "Die beiden Angaben sind tatsächlich verschieden: 9,81 ist ein Messwert, 9,8 dagegen ein reiner Rechenwert, den die Division 588 N / 60 kg liefert. Nur weil beide Zahlen dicht beieinanderliegen, darf man sie nebeneinander benutzen.",
+   "Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s², die Einheit ist also dieselbe. Und weil im freien Fall allein die Gewichtskraft wirkt, folgt aus m · g = m · a auch a = g – Einheit und Zahlenwert stimmen überein.",
+   "Die Einheiten m/s² und N/kg lassen sich nicht ineinander überführen; übereinstimmen kann allein der Zahlenwert. Weil im freien Fall a = g gilt, beschreiben die beiden Größen aber dasselbe Verhalten."
+  ],
+  "richtig": 1,
+  "erklaerung": "Beide Teile des Nachweises sind nötig. Zuerst die Einheit: Newton ist über 1 N = 1 kg · m/s² festgelegt; nach Division durch 1 kg bleibt 1 N/kg = 1 m/s². Die Einheiten sind damit nicht bloß ineinander umrechenbar, sondern dieselbe – wer das bestreitet, hält an einem Unterschied fest, den es nicht gibt. Dann der Zahlenwert: Im freien Fall wirkt nur die Gewichtskraft, es gilt also m · g = m · a. Die Masse kürzt sich heraus und es bleibt a = g. Dass sie sich kürzen lässt, ist der eigentliche Kern: Links steht die schwere Masse, rechts die träge – erst weil beide Zahlen gleich groß sind, ist die Gleichsetzung erlaubt. Der Unterschied zwischen 9,81 und 9,8 hat damit nichts zu tun: Gemessen sind 9,81 N/kg, die Simulation rundet auf eine Nachkommastelle. Die Division 588 N / 60 kg liefert deshalb keinen bloßen Rechenwert, sondern genau diesen gerundeten Ortsfaktor zurück."
+ },
+ "offen": {
+  "frage": "Mira teilt die für den Mond angezeigte Gewichtskraft durch die Masse: 96 N / 60 kg = 1,6 N/kg. Sie hält fest: „Damit habe ich den Ortsfaktor der Simulation überprüft.“ Beurteile, was diese Rückwärtsrechnung belegen kann und was nicht, und gib an, wofür sie stattdessen ein Beleg ist.",
+  "prompt": "Mira teilt die für den Mond angezeigte Gewichtskraft durch die Masse: 96 N / 60 kg = 1,6 N/kg. Sie hält fest: „Damit habe ich den Ortsfaktor der Simulation überprüft.“ Beurteile, was diese Rückwärtsrechnung belegen kann und was nicht, und gib an, wofür sie stattdessen ein Beleg ist.",
+  "zeilen": 5,
+  "loesung": "Gerechnet ist die Zeile richtig: 96 N / 60 kg = 1,6 N/kg, und für den Jupiter ergibt 1488 N / 60 kg ebenso die angezeigten 24,8 N/kg. Als Überprüfung des Ortsfaktors taugt die Rechnung dennoch nicht. Die Simulation misst die Kraft nicht, sie rechnet sie aus Masse und Ortsfaktor nach der Vorschrift F = m · g, die sie im Statusfeld selbst nennt. Wer die angezeigte Kraft wieder durch dieselbe Masse teilt, macht genau diesen Rechenschritt rückgängig und muss zwangsläufig die Zahl zurückerhalten, die vorher eingesetzt worden ist. Bestätigt wird damit die Rechnung der Anzeige, nicht der Wert selbst; ein Ergebnis, das gar nicht anders ausfallen kann, prüft nichts. Ob auf dem Mond wirklich 1,6 N/kg herrschen, kann nur eine vom Modell unabhängige Quelle klären – etwa ein Fallversuch vor Ort, wie er in Kapitel 1 für die Erde 9,81 m/s² ergeben hat. Dass die Simulation für die Erde 9,8 N/kg statt der gemessenen 9,81 N/kg ausweist, zeigt ohnehin, dass ihre Zahlen gesetzt und gerundet und nicht gemessen sind. Ein Beleg ist die Rückwärtsrechnung trotzdem, nur für etwas anderes: dafür, was der Ortsfaktor bedeutet. F/m ist die Kraft je Kilogramm, und an einem Ort kommt dabei für jede Masse dieselbe Zahl heraus – mit 75 kg statt 60 kg liefert der Mond 120 N und damit erneut 120 N / 75 kg = 1,6 N/kg. Genau deshalb ist g eine Größe des Ortes und keine Eigenschaft der Person."
+ }
+}

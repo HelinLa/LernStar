@@ -1,0 +1,1231 @@
+[
+ {
+  "id": "st1",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Knistern in der kalten Werkstatt",
+  "problem": "Nour zieht in der kalten Werkstatt ihren Pullover über den Kopf. Es knistert laut, und die Haare stehen ihr vom Kopf ab. Jannis hält einen Papierschnipsel daneben, er springt an den Ärmel. Dabei ist noch gar keine Steckdose im Spiel. Am Bildschirm warten zwei Kugeln, die man laden kann.",
+  "frage": "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
+  "auftrag": "Untersuche, wie sich die beiden Kugeln bei gleicher und bei ungleicher Ladung verhalten.",
+  "predict": [
+   "Gleiche Ladungen stoßen sich ab, ungleiche Ladungen ziehen sich an.",
+   "Zwei geladene Kugeln ziehen sich immer an, denn beide sind ja geladen.",
+   "Entscheidend ist, welche Kugel mehr Ladung trägt. Die stärker geladene Kugel zieht die schwächere zu sich heran."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke bei Kugel A „positiv“ und bei Kugel B „negativ“ und lies die Statuszeile ab.",
+   "Drücke nun bei Kugel A „negativ“, sodass beide Kugeln negativ sind, und beobachte das Bild.",
+   "Drücke bei Kugel B „positiv“, danach „Zurücksetzen“, und vergleiche alle vier Statuszeilen."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "anziehen oder abstoßen?"
+  ],
+  "tabRows": [
+   "Kugel A +, Kugel B −",
+   "Kugel A −, Kugel B −",
+   "Kugel A −, Kugel B +",
+   "nach dem Zurücksetzen"
+  ],
+  "fachtext": "Alle Stoffe enthalten positive und negative Ladungen. Normalerweise ist von beiden gleich viel da, der Stoff wirkt neutral. Reibt man zwei Stoffe aneinander, wechseln winzige Ladungsträger von einem zum anderen. Der eine hat dann zu viele negative Ladungen, dem anderen fehlen sie. Zwischen geladenen Körpern wirkt eine Kraft, ohne dass sie sich berühren. Gleiche Ladungen stoßen sich ab, ungleiche ziehen sich an. Deshalb springt das Papier an den geriebenen Ärmel.",
+  "merksatz": [
+   {
+    "pre": "Gleiche Ladungen",
+    "loesung": "stoßen sich ab",
+    "post": "."
+   },
+   {
+    "pre": "Ungleiche Ladungen",
+    "loesung": "ziehen sich an",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Zu Beginn meldet die Statuszeile: Eine Kugel ist positiv, die andere negativ, ungleiche Ladung. Sie ziehen sich an. Im Bild rücken die Kugeln zusammen. Machst du Kugel A ebenfalls negativ, steht dort: Beide Kugeln sind negativ, gleiche Ladung. Sie stoßen sich ab. Machst du danach Kugel B positiv, ist die Ladung wieder ungleich, und sie ziehen sich an. Nach dem Zurücksetzen ebenso. Es entscheidet also nicht die Ladung allein, sondern der Vergleich beider Vorzeichen.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ein Luftballon nach dem Reiben an den Haaren kleine Papierstücke anzieht.",
+   "zeilen": 4,
+   "loesung": "Beim Reiben wechseln Ladungsträger von den Haaren auf den Ballon. Der Ballon ist danach geladen, die Haare tragen die entgegengesetzte Ladung. Im Papier verschieben sich die Ladungen, sodass dem Ballon die ungleiche Ladung zugewandt ist. Ungleiche Ladungen ziehen sich an, deshalb springen die Schnipsel an den Ballon."
+  },
+  "alltag": "Reibe zu Hause einen Luftballon an einem Wollpullover und halte ihn über kleine Papierschnipsel. Notiere, was passiert und wie lange die Wirkung anhält.",
+  "alltagAfb": "I",
+  "alltagKomp": "E4",
+  "ueberleitung": "Als Nächstes misst du nach, wie stark diese Kraft zwischen zwei Ladungen wirklich ist.",
+  "name": "Warum knistert der Pullover beim Ausziehen?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st2",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Zwei geladene Kugeln an dünnen Fäden",
+  "problem": "Auf der Werkbank hängen zwei kleine Kugeln an dünnen Fäden. Jannis lädt sie mit einem geriebenen Stab und schiebt sie langsam auseinander. Nour behauptet, doppelter Abstand halbiere die Kraft. Jannis ist sich nicht sicher. Am Bildschirm kannst du den Abstand genau einstellen und die Kraft in Zahlen ablesen.",
+  "frage": "Wie ändert sich die Kraft zwischen zwei Ladungen, wenn der Abstand wächst?",
+  "auftrag": "Untersuche, wie Abstand und Ladungsmenge die Kraft zwischen den beiden Kugeln verändern.",
+  "predict": [
+   "Doppelter Abstand bedeutet die halbe Kraft, weil die Kugeln doppelt so weit weg sind.",
+   "Doppelter Abstand bedeutet nur noch ein Viertel der Kraft, der Abstand zählt doppelt.",
+   "Bis zu einer bestimmten Entfernung bleibt die Kraft gleich stark. Weiter weg wirkt sie dann gar nicht mehr."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies ab, wie groß die Kraft bei 10 nC und 6,0 cm Abstand ist.",
+   "Drücke „Abstand verdoppeln“ und lies die Kraft bei 12,0 cm ab.",
+   "Stelle ein: Ladung 4 nC, danach 18 nC, und lies jedes Mal die Kraft ab."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "Kraft F"
+  ],
+  "tabRows": [
+   "10 nC, r = 6,0 cm",
+   "10 nC, r = 12,0 cm",
+   "4 nC, r = 12,0 cm",
+   "18 nC, r = 12,0 cm"
+  ],
+  "fachtext": "Zwischen zwei Ladungen wirkt eine Kraft, ohne dass sich die Körper berühren. Wie groß sie ist, hängt von zwei Dingen ab: von der Ladungsmenge und vom Abstand. Mehr Ladung bedeutet mehr Kraft. Beim Abstand ist es besonders auffällig, denn er geht doppelt in die Rechnung ein. Verdoppelst du ihn, bleibt nur ein Viertel der Kraft übrig. Die Richtung entscheiden die Vorzeichen: gleich stößt ab, verschieden zieht an.",
+  "merksatz": [
+   {
+    "pre": "Doppelter Abstand heißt nur noch",
+    "loesung": "ein Viertel",
+    "post": "der Kraft."
+   },
+   {
+    "pre": "Mehr Ladung auf den Kugeln bedeutet eine",
+    "loesung": "größere Kraft",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 10 nC und 6,0 cm zeigt die Anzeige F = 249,7 µN. Links plus, rechts minus, die Kugeln ziehen sich an. Nach „Abstand verdoppeln“ steht bei 12,0 cm nur noch F = 62,4 µN, also genau ein Viertel. Mit 4 nC sind es 10,0 µN, mit 18 nC dagegen 202,2 µN. Der Abstand zählt somit doppelt.",
+  "aufgabe": {
+   "frage": "Berechne, wie groß die Kraft bei 3,0 cm Abstand ist, wenn sie bei 6,0 cm 249,7 µN beträgt.",
+   "zeilen": 3,
+   "loesung": "Der Abstand wird halbiert. Weil der Abstand doppelt zählt, wird die Kraft viermal so groß. Also 249,7 µN mal 4 gleich 998,8 µN."
+  },
+  "alltag": "Reibe zu Hause zwei aufgeblasene Luftballons an einem Pullover, hänge sie an Fäden nebeneinander und beschreibe, wie sich ihr Abstand verändert.",
+  "alltagAfb": "II",
+  "alltagKomp": "E5",
+  "ueberleitung": "Danach geht es um die Batterie in der Werkstatt und um die Zahl mit dem V darauf.",
+  "name": "Wie wirken Ladungen aufeinander?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st3",
+  "basiskonzept": "Energie",
+  "titel": "Die Zahl mit dem V auf der Zelle",
+  "problem": "Im Nebenraum liegt eine Kiste voller Batteriezellen. Jannis hält eine Lampe an eine einzige Zelle, sie glimmt nur matt. Nour dreht die Zelle um, ohne Erfolg. Auf jeder Zelle steht 1,5 V. Was diese Zahl bedeutet, weiß noch keiner von beiden. Am Bildschirm kannst du Zellen zusammenschalten.",
+  "frage": "Wie wirkt sich die Spannung der Quelle auf die Helligkeit der Lampe aus?",
+  "auftrag": "Untersuche, wie sich Spannung und Helligkeit der Lampe ändern, wenn du Zellen dazuschaltest.",
+  "predict": [
+   "Mehr Zellen halten nur länger durch, die Lampe leuchtet genauso hell wie mit einer Zelle.",
+   "Eine zweite Zelle ist ein weiteres Bauteil im Kreis und bremst den Strom. Die Lampe leuchtet deshalb schwächer als mit einer einzigen Zelle.",
+   "Mehr Zellen ergeben mehr Volt, der Antrieb wird stärker und die Lampe leuchtet heller."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Drücke „1 Zelle (1,5 V)“ und lies die Spannung am Voltmeter ab.",
+   "Drücke nacheinander „2 Zellen (3 V)“ und „3 Zellen (4,5 V)“ und beobachte die Lampe.",
+   "Vergleiche die drei Spannungen mit der Helligkeit der Lampe."
+  ],
+  "tabCols": [
+   "Zahl der Zellen",
+   "Spannung U und Helligkeit"
+  ],
+  "tabRows": [
+   "1 Zelle",
+   "2 Zellen",
+   "3 Zellen"
+  ],
+  "fachtext": "Die Spannung U ist der Antrieb einer Quelle. Sie schiebt die Ladungen durch den geschlossenen Stromkreis. Gemessen wird sie in Volt. Jede Zelle liefert 1,5 V. Schaltet man Zellen hintereinander, addieren sich ihre Spannungen: zwei Zellen ergeben 3 V, drei Zellen 4,5 V. Ein stärkerer Antrieb treibt mehr Ladung pro Sekunde durch die Lampe, deshalb leuchtet sie heller. Das Voltmeter wird immer parallel zum Bauteil angeschlossen.",
+  "merksatz": [
+   {
+    "pre": "Die Spannung misst man in",
+    "loesung": "Volt (V)",
+    "post": "."
+   },
+   {
+    "pre": "Das Voltmeter schließt man",
+    "loesung": "parallel",
+    "post": "zum Bauteil an."
+   }
+  ],
+  "beobachtung": "Mit einer Zelle zeigt die Statuszeile U = 1,5 V, und die Lampe leuchtet nur schwach. Bei zwei Zellen steht dort U = 3 V, die Lampe wird heller. Mit drei Zellen meldet die Anzeige U = 4,5 V, und die Lampe leuchtet am hellsten. Das Voltmeter hängt dabei immer parallel. Mehr Volt bedeuten also einen stärkeren Antrieb und mehr Licht.",
+  "aufgabe": {
+   "frage": "Erkläre, warum drei Zellen die Lampe heller leuchten lassen als eine einzige Zelle.",
+   "zeilen": 3,
+   "loesung": "Jede Zelle liefert 1,5 V. Hintereinander geschaltet ergeben drei Zellen 4,5 V. Der Antrieb ist dreimal so stark. Dadurch fließen mehr Ladungen pro Sekunde durch die Lampe, und sie leuchtet heller."
+  },
+  "alltag": "Suche zu Hause drei Geräte mit Batterien und notiere zu jedem, wie viele Zellen darin stecken und welche Voltzahl aufgedruckt ist.",
+  "alltagAfb": "I",
+  "alltagKomp": "K1",
+  "ueberleitung": "Als Nächstes schaust du nach, wie viel bei diesem Antrieb pro Sekunde durch die Lampe fließt.",
+  "name": "Was sagt die Zahl mit dem V auf der Batterie?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st4",
+  "basiskonzept": "System",
+  "titel": "Ein Schalter unterbricht den Kreis",
+  "problem": "Über der Werkbank hängt jetzt eine Lampe an einer 4,5-V-Batterie. Nour drückt den Schalter, und das Licht geht aus. Jannis meint, der Strom warte im Kabel, bis der Schalter wieder schließt. Nour glaubt das nicht. Am Bildschirm liegt ein Amperemeter im Kreis, das jede Änderung anzeigt.",
+  "frage": "Wie groß ist die Stromstärke im Kreis, und wann fließt gar nichts mehr?",
+  "auftrag": "Miss die Stromstärke bei schwachem, mittlerem und starkem Strom und bei offenem Schalter.",
+  "predict": [
+   "Bei offenem Schalter fließt sofort kein Strom mehr, das Amperemeter zeigt dann 0 A.",
+   "Auch bei offenem Schalter fließt noch ein Rest Strom weiter, bis die Lampe langsam verglimmt.",
+   "Vor dem Schalter fließt der Strom weiter und staut sich dort. Nur hinter dem Schalter kommt nichts mehr an."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „Strom schwach“ und lies die Stromstärke am Amperemeter ab.",
+   "Drücke nacheinander „mittel“ und „stark“ und beobachte die Lampe.",
+   "Beobachte das Amperemeter, nachdem du mit dem Schalter den Kreis geöffnet hast."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   "Strom schwach",
+   "mittel",
+   "stark",
+   "Schalter geöffnet"
+  ],
+  "fachtext": "Elektrischer Strom besteht aus bewegten Ladungen. Die Stromstärke I sagt, wie viel Ladung in jeder Sekunde durch den Draht wandert. Ihre Einheit ist das Ampere. Je mehr Ladung pro Sekunde fließt, desto heller leuchtet die Lampe. Der Strom fließt nur im geschlossenen Kreis. Öffnet ein Schalter den Kreis, fehlt der Weg, und es fließt nichts mehr. Gemessen wird mit dem Amperemeter, das in Reihe im Kreis liegt.",
+  "merksatz": [
+   {
+    "pre": "Die Stromstärke misst man in",
+    "loesung": "Ampere (A)",
+    "post": "."
+   },
+   {
+    "pre": "Ist der Kreis offen, fließt",
+    "loesung": "kein Strom",
+    "post": ", die Lampe bleibt dunkel."
+   }
+  ],
+  "beobachtung": "Bei „Strom schwach“ zeigt das Amperemeter I = 0,10 A, die Lampe leuchtet nur schwach. Auf „mittel“ steht I = 0,30 A, auf „stark“ sogar I = 0,60 A, und die Lampe wird jedes Mal heller. Öffnest du den Schalter, meldet die Statuszeile: Der Kreis ist offen, I = 0 A, die Lampe bleibt dunkel. Ohne geschlossenen Kreis fließt also nichts.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die Lampe sofort dunkel wird, sobald der Schalter den Kreis öffnet.",
+   "zeilen": 3,
+   "loesung": "Strom besteht aus bewegten Ladungen. Sie können nur in einem geschlossenen Kreis rundherum fließen. Öffnet der Schalter den Kreis, ist der Weg unterbrochen. Das Amperemeter zeigt 0 A, und die Lampe bleibt dunkel."
+  },
+  "alltag": "Beobachte zu Hause an einer Taschenlampe, wie schnell das Licht nach dem Umlegen des Schalters ausgeht, und beschreibe, was das über den Stromkreis verrät.",
+  "alltagAfb": "II",
+  "alltagKomp": "E2",
+  "ueberleitung": "Als Nächstes klärst du, wie Amperemeter und Voltmeter richtig in den Kreis eingebaut werden.",
+  "name": "Wie viel fließt da eigentlich?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st5",
+  "basiskonzept": "System",
+  "titel": "Zwei Messgeräte an der Werkbank",
+  "problem": "Auf der Werkbank liegen zwei Messgeräte aus der Bauteilkiste. Nour will wissen, wie viel Strom durch die Werkstattlampe fließt, Jannis, wie viel Spannung an ihr liegt. Beide Geräte sehen fast gleich aus. Jannis hängt eines einfach irgendwo in die Leitung, und plötzlich bleibt die Lampe dunkel.",
+  "frage": "Wie muss ein Amperemeter, wie ein Voltmeter im Stromkreis liegen?",
+  "auftrag": "Prüfe, wie ein Amperemeter und wie ein Voltmeter angeschlossen werden müssen.",
+  "predict": [
+   "Beide Geräte werden gleich eingebaut: einfach in die Leitung, damit der Strom hindurchfließt.",
+   "Das Amperemeter liegt in Reihe im Kreis, das Voltmeter parallel neben dem Bauteil.",
+   "Beide Geräte hängst du neben das Bauteil, ohne die Leitung aufzutrennen. Ein Messgerät darf dem Strom ja nichts wegnehmen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „Amperemeter“ und lies die Statuszeile und den Wert am Messgerät ab.",
+   "Wähle „Voltmeter“, drücke „in Reihe“ und beobachte die Lampe.",
+   "Drücke „parallel“ und vergleiche diese Anzeige mit der vorherigen."
+  ],
+  "tabCols": [
+   "Gerät und Einbau",
+   "Was die Anzeige meldet"
+  ],
+  "tabRows": [
+   "Amperemeter, in Reihe",
+   "Voltmeter, in Reihe",
+   "Voltmeter, parallel"
+  ],
+  "fachtext": "Die Stromstärke sagt, wie viele Ladungen pro Sekunde durch eine Stelle fließen. Wer sie messen will, muss den Strom durch das Gerät leiten: Das Amperemeter liegt deshalb in Reihe im Kreis. Die Spannung ist der Antrieb zwischen zwei Punkten. Sie wird zwischen den beiden Anschlüssen eines Bauteils abgegriffen, also parallel daneben. Ein Amperemeter hat kaum Widerstand, ein Voltmeter einen sehr großen. Vertauscht man beide, bleibt die Lampe dunkel oder es entsteht ein Kurzschluss.",
+  "merksatz": [
+   {
+    "pre": "Das Amperemeter wird",
+    "loesung": "in Reihe",
+    "post": "in den Stromkreis eingebaut."
+   },
+   {
+    "pre": "Das Voltmeter schließt man",
+    "loesung": "parallel",
+    "post": "zum Bauteil an."
+   }
+  ],
+  "beobachtung": "Mit dem Amperemeter in Reihe meldet die Statuszeile „Richtig“ und das Gerät zeigt 0,3 A. Hängt das Voltmeter in Reihe, bleibt die Lampe dunkel: Es fließt fast kein Strom, obwohl das Gerät fast 4,5 V anzeigt. Parallel zur Lampe stimmt es dann und misst die Spannung von 4,5 V. Jedes Messgerät hat seinen festen Platz.",
+  "aufgabe": {
+   "frage": "Erkläre, warum ein Voltmeter in Reihe die Lampe dunkel bleiben lässt.",
+   "zeilen": 3,
+   "loesung": "Das Voltmeter hat einen sehr großen Widerstand. Liegt es in Reihe, muss der ganze Strom hindurch. Wegen des großen Widerstandes fließt fast kein Strom mehr, deshalb bleibt die Lampe dunkel. Das Gerät zeigt trotzdem fast 4,5 V an, weil fast die ganze Spannung am Messgerät liegt."
+  },
+  "alltag": "Sammle zu Hause drei Geräte, auf denen eine Angabe in Volt oder Ampere steht, und notiere jeweils Gerät und Wert.",
+  "alltagAfb": "I",
+  "alltagKomp": "K1",
+  "ueberleitung": "Als Nächstes untersuchst du, was den Strom in einem Bauteil eigentlich bremst.",
+  "name": "Wie schließt man ein Messgerät richtig an?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st6",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Drei Bauteile an derselben Batterie",
+  "problem": "In der Kiste liegen ein dicker Kupferdraht, ein Glühdraht und ein Widerstandsdraht. Nour klemmt sie nacheinander an dieselbe Batterie mit 4,5 Volt. Beim Kupferdraht springt der Zeiger des Amperemeters weit nach rechts, beim letzten Draht bewegt er sich kaum. Die Spannung war doch jedes Mal gleich.",
+  "frage": "Warum fließt bei gleicher Spannung durch jedes Bauteil ein anderer Strom?",
+  "auftrag": "Vergleiche die Stromstärken bei drei verschiedenen Widerständen und gleicher Spannung.",
+  "predict": [
+   "Die Batterie liefert immer denselben Strom, weil die Spannung mit 4,5 V gleich bleibt.",
+   "Jedes Bauteil holt sich aus der Batterie genau so viel Strom, wie es braucht. Der Widerstandsdraht braucht eben weniger als der Kupferdraht.",
+   "Je größer der Widerstand des Bauteils ist, desto kleiner wird die Stromstärke."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Drücke „kleiner Widerstand“ und lies Widerstand und Stromstärke in der Statuszeile ab.",
+   "Wähle danach „mittel“ und „großer Widerstand“ und notiere jedes Mal beide Werte.",
+   "Vergleiche die drei Stromstärken bei der gleichen Spannung von 4,5 V."
+  ],
+  "tabCols": [
+   "Bauteil mit Widerstand R",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   "dicker Kupferdraht, 3 Ω",
+   "Glühdraht, 15 Ω",
+   "Widerstandsdraht, 45 Ω"
+  ],
+  "fachtext": "Jedes Bauteil setzt den fließenden Ladungen einen Widerstand entgegen. Die Elektronen stoßen im Metall gegen die Atomrümpfe und kommen dadurch nur langsam voran. Je größer dieser Widerstand ist, desto weniger Ladung schafft es bei gleicher Spannung pro Sekunde hindurch. Man berechnet den Widerstand aus Spannung und Stromstärke: R = U/I. Seine Einheit ist das Ohm, kurz Ω. Ein Bauteil mit 15 Ω lässt bei 4,5 V genau 0,30 A durch.",
+  "merksatz": [
+   {
+    "pre": "Bei gleicher Spannung gilt: großer Widerstand,",
+    "loesung": "kleiner Strom",
+    "post": "."
+   },
+   {
+    "pre": "Den Widerstand berechnet man mit",
+    "loesung": "R = U/I",
+    "post": ", die Einheit ist Ohm."
+   }
+  ],
+  "beobachtung": "Die Spannung bleibt bei allen drei Versuchen 4,5 V. Der dicke Kupferdraht hat nur 3 Ω, das Amperemeter zeigt 1,50 A. Beim Glühdraht mit 15 Ω sind es 0,30 A, beim Widerstandsdraht mit 45 Ω nur noch 0,10 A. Dreimal so viel Widerstand bedeutet also ein Drittel der Stromstärke: Der Widerstand bremst den Strom.",
+  "aufgabe": {
+   "frage": "Berechne, welche Stromstärke bei 4,5 V durch einen Widerstand von 9 Ω fließt.",
+   "zeilen": 3,
+   "loesung": "Aus R = U/I folgt I = U/R. Also I = 4,5 V: 9 Ω = 0,5 A. Der Wert passt: Er liegt zwischen 1,50 A beim 3-Ω-Draht und 0,30 A beim 15-Ω-Glühdraht."
+  },
+  "alltag": "Suche zu Hause drei Dinge aus Metall und drei aus Kunststoff und ordne sie danach, welche den Strom gut leiten und welche ihn stark bremsen.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF3",
+  "ueberleitung": "Auf der nächsten Seite prüfst du, wovon der Widerstand eines Drahtes abhängt.",
+  "name": "Was bremst den Strom?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st7",
+  "basiskonzept": "Struktur der Materie",
+  "titel": "Drahtrollen aus der Restekiste",
+  "problem": "In der Restekiste liegen Drahtrollen: dicker Kupferdraht, dünner Draht, ein Rest Konstantan. Jannis will die Lampe über der Werkbank anschließen und greift zum längsten Stück, das er findet. Nour hält ihn auf: Sie hat schon gemerkt, dass die Lampe mit manchen Drähten deutlich schwächer leuchtet.",
+  "frage": "Wovon hängt es ab, wie stark ein Draht den Strom bremst?",
+  "auftrag": "Untersuche, wie Länge, Dicke und Material den Widerstand eines Drahtes verändern.",
+  "predict": [
+   "Ein längerer und ein dünnerer Draht haben mehr Widerstand, und das Material zählt zusätzlich.",
+   "Solange der Draht aus Metall ist, leitet er gleich gut; nur die Batterie entscheidet über den Strom.",
+   "Ein dünner Draht leitet besser als ein dicker. In der Enge wird der Strom schneller, so wie Wasser in einem engen Schlauch."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke „lang“ und lies ab, wie sich Widerstand und Stromstärke gegenüber „kurz“ ändern.",
+   "Drücke „dünn“ und lies den neuen Widerstand und die neue Stromstärke ab.",
+   "Vergleiche bei diesem Draht die Materialien Kupfer, Eisen und Konstantan."
+  ],
+  "tabCols": [
+   "Draht",
+   "Widerstand R"
+  ],
+  "tabRows": [
+   "Kupfer, kurz, dick",
+   "Kupfer, lang, dick",
+   "Kupfer, lang, dünn",
+   "Konstantan, lang, dünn"
+  ],
+  "fachtext": "Im Draht drängen sich die Elektronen an den Atomen vorbei. Ein längerer Draht bedeutet eine längere Strecke mit mehr Hindernissen, also mehr Widerstand. Ein dickerer Draht bietet dagegen mehr Platz nebeneinander, der Widerstand sinkt. Auch das Material entscheidet: In Kupfer kommen die Elektronen leicht voran, in Konstantan viel schwerer. Deshalb nimmt man für Leitungen Kupfer und für Heizdrähte Konstantan. Doppelte Länge bedeutet doppelten Widerstand.",
+  "merksatz": [
+   {
+    "pre": "Länger und dünner heißt",
+    "loesung": "mehr Widerstand",
+    "post": "für den Draht."
+   },
+   {
+    "pre": "Von den drei Materialien leitet",
+    "loesung": "Kupfer",
+    "post": "am besten."
+   }
+  ],
+  "beobachtung": "Kupfer, kurz und dick, hat R = 5 Ω, es fließen 0,90 A. Nur „lang“ gedrückt: R = 10 Ω und I = 0,45 A, also doppelte Länge, doppelter Widerstand und halber Strom. Mit „dünn“ steigt der Widerstand auf 20 Ω, der Strom sinkt auf 0,23 A. Beim gleichen Draht aus Konstantan sind es 180 Ω und nur noch 0,03 A.",
+  "aufgabe": {
+   "frage": "Begründe, warum man Leitungen aus dickem Kupferdraht baut und nicht aus dünnem Konstantandraht.",
+   "zeilen": 4,
+   "loesung": "Kupfer leitet sehr gut, und ein dicker, kurzer Draht hat wenig Widerstand: In der Simulation nur 5 Ω, dabei fließen 0,90 A. Der lange, dünne Konstantandraht hat 180 Ω, es fließen nur 0,03 A. Mit ihm bliebe die Lampe fast dunkel, und der Draht würde vor allem warm werden."
+  },
+  "alltag": "Vergleiche zu Hause ein dickes Ladekabel mit einem dünnen Kopfhörerkabel und beschreibe, welches wohl mehr Strom aushält.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF4",
+  "ueberleitung": "Auf der nächsten Seite misst du, wie Spannung, Stromstärke und Widerstand rechnerisch zusammenhängen.",
+  "name": "Wovon hängt der Widerstand eines Drahtes ab?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st8",
+  "basiskonzept": "System",
+  "titel": "Eine Gerade aus Messpunkten",
+  "problem": "Für die Werkstattlampen soll ein Vorwiderstand her. Jannis fragt, wie viel Strom bei welcher Spannung fließt, und will jede Kombination einzeln ausprobieren. Nour meint, zwei Messpunkte reichen: Wenn man sie in ein Diagramm einträgt, könne man alles Weitere ablesen. Jannis glaubt ihr nicht und holt schon einmal das Messgerät.",
+  "frage": "Wie ändert sich die Stromstärke, wenn die Spannung verdoppelt wird?",
+  "auftrag": "Miss bei festem Widerstand die Stromstärke zu zwei Spannungen und vergleiche beide Werte.",
+  "predict": [
+   "Die Stromstärke wächst zuerst schnell und dann immer langsamer, die Kurve wird flacher.",
+   "Die Stromstärke verdoppelt sich; die Messpunkte liegen auf einer Geraden durch den Nullpunkt.",
+   "Bis zu einer bestimmten Spannung fließt gar kein Strom. Erst darüber beginnt die Gerade und steigt dann gleichmäßig an."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Drücke „20 Ω“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.",
+   "Stelle mit „mehr“ 3 V ein, drücke erneut „Messpunkt“ und vergleiche beide Tabellenzeilen.",
+   "Drücke „10 Ω“ und lies ab, welche Stromstärke jetzt bei 3 V fließt."
+  ],
+  "tabCols": [
+   "Spannung U",
+   "Stromstärke I"
+  ],
+  "tabRows": [
+   "1,5 V bei R = 20 Ω",
+   "3 V bei R = 20 Ω",
+   "3 V bei R = 10 Ω"
+  ],
+  "fachtext": "Bei festem Widerstand hängen Spannung und Stromstärke einfach zusammen: Verdoppelt man den Antrieb, fließt doppelt so viel Ladung pro Sekunde. Die beiden Größen sind proportional, das Doppelte bei der einen bedeutet das Doppelte bei der anderen. Trägt man die Messpunkte in ein U-I-Diagramm ein, liegen sie auf einer Geraden durch den Nullpunkt. Das Verhältnis U geteilt durch I bleibt gleich, es ist der Widerstand R.",
+  "merksatz": [
+   {
+    "pre": "Doppelte Spannung bedeutet",
+    "loesung": "doppelter Strom",
+    "post": "bei festem Widerstand."
+   },
+   {
+    "pre": "Das ohmsche Gesetz lautet",
+    "loesung": "U = R·I",
+    "post": ", also R = U/I."
+   }
+  ],
+  "beobachtung": "Bei 20 Ω und U = 1,5 V meldet die Statuszeile I = 0,07 A. Stellst du 3 V ein, sind es 0,15 A, also ungefähr doppelt so viel. In beiden Fällen steht dort R = U/I = 20 Ω. Mit 10 Ω fließen bei 3 V dagegen 0,30 A. Die Stromstärke wächst im gleichen Verhältnis wie die Spannung, der Widerstand bleibt gleich.",
+  "aufgabe": {
+   "frage": "Berechne, welche Stromstärke bei 6 V durch einen Widerstand von 20 Ω fließt.",
+   "zeilen": 3,
+   "loesung": "Aus U = R·I folgt I = U/R. Also I = 6 V: 20 Ω = 0,30 A. Das passt zur Geraden: Bei 3 V waren es 0,15 A, bei doppelter Spannung fließt also der doppelte Strom."
+  },
+  "alltag": "Erkläre zu Hause jemandem mit eigenen Worten, warum bei doppelter Spannung doppelt so viel Strom fließt.",
+  "alltagAfb": "II",
+  "alltagKomp": "K3",
+  "ueberleitung": "Als Nächstes untersuchst du, was passiert, wenn mehrere Bauteile hintereinander im selben Stromkreis hängen.",
+  "name": "Wie hängen Spannung, Stromstärke und Widerstand zusammen?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st9",
+  "basiskonzept": "System",
+  "titel": "Die Lichterkette an der Werkbank",
+  "problem": "Jannis hat eine alte Lichterkette aus der Kiste gezogen. Alle Lämpchen hängen an einem einzigen Kabel, eines hinter dem anderen. Nour dreht das Netzteil auf, doch die Kette leuchtet nur schwach. Je mehr Lämpchen in der Reihe stecken, desto dunkler wird jedes einzelne. Die beiden wollen wissen, woran das liegt.",
+  "frage": "Wie verändert ein zweiter Widerstand in Reihe den Strom im Stromkreis?",
+  "auftrag": "Untersuche, wie sich Gesamtwiderstand, Strom und Teilspannungen ändern, wenn du die beiden Widerstände in der Reihenschaltung veränderst.",
+  "predict": [
+   "Der Strom teilt sich auf die beiden Widerstände auf: Am zweiten kommt weniger an als am ersten.",
+   "Für den Strom zählt nur das Bauteil mit dem größten Widerstand. Ein zweiter, kleinerer Widerstand dahinter ändert nichts mehr.",
+   "Der Strom ist an jeder Stelle gleich groß, und die beiden Widerstände addieren sich zum Gesamtwiderstand."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lies ab, welchen Gesamtwiderstand und welchen Strom die Statuszeile in der Grundstellung mit 10 Ω und 20 Ω anzeigt.",
+   "Wähle für den ersten Widerstand nacheinander 20 Ω und 30 Ω, stelle danach auch den zweiten auf 30 Ω und notiere jedes Mal R_ges und I.",
+   "Vergleiche die beiden Teilspannungen U₁ und U₂ mit den 6 V der Quelle."
+  ],
+  "tabCols": [
+   "Eingestellte Widerstände",
+   "R_ges und Strom I"
+  ],
+  "tabRows": [
+   "10 Ω und 20 Ω",
+   "20 Ω und 20 Ω",
+   "30 Ω und 20 Ω",
+   "30 Ω und 30 Ω"
+  ],
+  "fachtext": "In einer Reihenschaltung gibt es für die Ladungen nur einen einzigen Weg. Deshalb ist die Stromstärke an jeder Stelle des Kreises gleich groß. Jeder Widerstand hemmt den Strom zusätzlich, darum addieren sich die Widerstände: R_ges = R₁ + R₂. Der Gesamtwiderstand ist also immer größer als jeder einzelne Widerstand. Auch die Teilspannungen addieren sich zur Spannung der Quelle: U = U₁ + U₂. Am größeren Widerstand fällt dabei die größere Teilspannung ab.",
+  "merksatz": [
+   {
+    "pre": "In der Reihenschaltung ist die Stromstärke",
+    "loesung": "überall gleich",
+    "post": "groß."
+   },
+   {
+    "pre": "Für den Gesamtwiderstand gilt R_ges =",
+    "loesung": "R₁ + R₂",
+    "post": ", er wird also größer."
+   }
+  ],
+  "beobachtung": "In der Grundstellung steht R_ges = 10 Ω + 20 Ω = 30 Ω, und der Strom ist I = 0,20 A. Die Teilspannungen 2,0 V und 4,0 V ergeben zusammen 6 V. Stellst du 20 Ω und 20 Ω ein, wächst R_ges auf 40 Ω, der Strom sinkt auf 0,15 A. Bei 30 Ω und 30 Ω sind es 60 Ω und 0,10 A: mehr Widerstand, weniger Strom.",
+  "aufgabe": {
+   "frage": "Berechne den Gesamtwiderstand und die Stromstärke, wenn an der 6-V-Quelle 20 Ω und 30 Ω in Reihe liegen.",
+   "zeilen": 4,
+   "loesung": "R_ges = 20 Ω + 30 Ω = 50 Ω. Daraus folgt I = U / R_ges = 6 V / 50 Ω = 0,12 A. Dieser Strom fließt durch beide Widerstände gleich groß. Die Simulation zeigt für 50 Ω denselben Wert 0,12 A."
+  },
+  "alltag": "Sammle zu Hause drei Geräte, in die mehrere Batterien hintereinander eingelegt werden, und prüfe an jedem, ob die Spannungen der einzelnen Zellen zusammen die am Gerät angegebene Gesamtspannung ergeben.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF4",
+  "ueberleitung": "Als Nächstes siehst du dir an, warum das Licht weiterbrennt, wenn eine einzelne Lampe ausfällt.",
+  "name": "Was passiert, wenn alles hintereinander hängt?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st10",
+  "basiskonzept": "System",
+  "titel": "Eine Lampe fällt aus",
+  "problem": "Nour schraubt in der Werkstatt die zweite Deckenlampe ein. Kaum brennt sie, geht die erste aus, weil ihr Draht durchgebrannt ist. Die zweite leuchtet trotzdem ruhig weiter. Bei der Lichterkette von gestern blieb dagegen die ganze Reihe dunkel, sobald ein einziges Lämpchen kaputt war. Jannis fragt sich, was hier anders verdrahtet ist.",
+  "frage": "Wie verteilen sich Spannung und Strom auf zwei parallele Widerstände?",
+  "auftrag": "Untersuche, wie sich Gesamtstrom und Gesamtwiderstand ändern, wenn du die beiden parallel geschalteten Widerstände veränderst.",
+  "predict": [
+   "Beide Zweige bekommen die volle Spannung, die Ströme addieren sich, und der Gesamtwiderstand wird kleiner als der kleinste Einzelwiderstand.",
+   "Auch parallel addieren sich die Widerstände, der Gesamtwiderstand ist also größer als jeder einzelne.",
+   "Die Spannung teilt sich auf die beiden Zweige auf. Jede Lampe bekommt nur die Hälfte und leuchtet schwächer als allein."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Lies ab, welche Zweigströme und welchen Gesamtstrom die Statuszeile mit R₁ = 10 Ω und R₂ = 20 Ω anzeigt.",
+   "Wähle für R₁ nacheinander 20 Ω und 30 Ω und notiere jedes Mal I₁, I₂ und den Gesamtstrom.",
+   "Vergleiche den angezeigten Gesamtwiderstand R_ges mit dem kleineren der beiden Einzelwiderstände."
+  ],
+  "tabCols": [
+   "R₁ (bei R₂ = 20 Ω)",
+   "I₁, I₂ und Gesamtstrom I"
+  ],
+  "tabRows": [
+   "10 Ω",
+   "20 Ω",
+   "30 Ω"
+  ],
+  "fachtext": "In der Parallelschaltung hat jeder Widerstand seinen eigenen Weg von einem Pol zum anderen. Deshalb liegt an beiden die gleiche Spannung an. Jeder Zweig lässt seinen eigenen Strom fließen, und an der Verzweigung addieren sich diese Ströme zum Gesamtstrom: I = I₁ + I₂. Weil der Strom mehr Wege hat, kommt insgesamt mehr Ladung durch. Der Gesamtwiderstand ist deshalb kleiner als der kleinste Einzelwiderstand. Fällt ein Zweig aus, fließt im anderen weiter Strom.",
+  "merksatz": [
+   {
+    "pre": "In der Parallelschaltung ist die Spannung",
+    "loesung": "an beiden gleich",
+    "post": "groß."
+   },
+   {
+    "pre": "Für den Gesamtstrom gilt I =",
+    "loesung": "I₁ + I₂",
+    "post": ", und R_ges wird kleiner."
+   }
+  ],
+  "beobachtung": "Mit R₁ = 10 Ω und R₂ = 20 Ω zeigt die Simulation I₁ = 0,45 A, I₂ = 0,23 A und den Gesamtstrom I = 0,68 A. R_ges = 6,7 Ω ist kleiner als 10 Ω. Stellst du R₁ auf 30 Ω, sinkt I₁ auf 0,15 A, der Gesamtstrom auf 0,38 A, R_ges steigt auf 12,0 Ω. I₂ bleibt bei 0,23 A: Der zweite Zweig merkt nichts davon.",
+  "aufgabe": {
+   "frage": "Beurteile, ob die Deckenlampen in der Werkstatt besser in Reihe oder parallel angeschlossen werden.",
+   "zeilen": 4,
+   "loesung": "Parallel ist besser. An jeder Lampe liegt die volle Spannung, deshalb leuchten alle gleich hell. Jede Lampe hat einen eigenen Zweig: Fällt eine aus, fließt in den anderen Zweigen weiter Strom, das Licht bleibt an. In Reihe bekäme jede Lampe nur eine Teilspannung, und ein einziger Defekt macht den ganzen Raum dunkel."
+  },
+  "alltag": "Untersuche zu Hause, was passiert, wenn du ein Gerät im Zimmer ausschaltest, und beschreibe, woran du erkennst, dass die Steckdosen parallel angeschlossen sind.",
+  "alltagAfb": "II",
+  "alltagKomp": "E2",
+  "ueberleitung": "Als Nächstes schaust du dir an, was sich in den Drähten überhaupt bewegt, wenn Strom fließt.",
+  "name": "Warum bleibt das Licht an, wenn eine Lampe ausfällt?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st11",
+  "basiskonzept": "Struktur der Materie",
+  "titel": "Sofort hell trotz drei Metern Kabel",
+  "problem": "Jannis drückt den Schalter an der Werkbank, und die Leselampe leuchtet im selben Augenblick. Nour rechnet nach: Vom Netzteil bis zur Lampe sind es fast drei Meter Kabel. Sie ist sich sicher, dass die Elektronen diese Strecke blitzschnell zurücklegen müssen. Jannis glaubt das nicht und will es nachprüfen.",
+  "frage": "Wie schnell wandern die Elektronen im Draht wirklich?",
+  "auftrag": "Bestimme, wie schnell die Elektronen im Kupferdraht wandern, und vergleiche das mit der Geschwindigkeit des Anstoßes in der Leitung.",
+  "predict": [
+   "Die Elektronen sausen mit fast Lichtgeschwindigkeit durch das Kabel, sonst könnte die Lampe nicht sofort leuchten.",
+   "Die Elektronen wandern nur Bruchteile eines Millimeters pro Sekunde, der Anstoß läuft aber fast augenblicklich durch das ganze Kabel.",
+   "Die Elektronen bleiben an ihrem Platz und schubsen nur den Nachbarn an. Durch das Kabel wandert deshalb keines von ihnen."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies ab, welche Wandergeschwindigkeit die Simulation für die Leselampe mit I = 1,0 A und A = 1,50 mm² anzeigt.",
+   "Drücke „Wasserkocher“ und vergleiche die neue Wandergeschwindigkeit mit dem Wert der Leselampe.",
+   "Wähle mit dem Regler die kleinste Stromstärke 0,1 A und lies ab, wie lange ein Elektron dann für einen Meter Kabel braucht."
+  ],
+  "tabCols": [
+   "Einstellung",
+   "Wandergeschwindigkeit v"
+  ],
+  "tabRows": [
+   "Leselampe, 1,0 A",
+   "Wasserkocher, 9,0 A",
+   "Regler auf 0,1 A"
+  ],
+  "fachtext": "Ein Kupferdraht ist schon voller freier Elektronen. Schaltest du ein, schiebt das elektrische Feld sie alle gleichzeitig ein Stück weiter. Dieses langsame Wandern heißt Driftgeschwindigkeit und wird mit v = I / (n · A · e) berechnet. Mehr Stromstärke bedeutet mehr Drift, ein dickerer Draht weniger. Die Elektronen zappeln zwar rasend schnell durcheinander, doch das bringt sie nicht voran. Die Lampe leuchtet sofort, weil der Anstoß fast augenblicklich durch die ganze Leitung läuft.",
+  "merksatz": [
+   {
+    "pre": "Durch den Draht wandern die Elektronen",
+    "loesung": "sehr langsam",
+    "post": ", nur Bruchteile eines Millimeters je Sekunde."
+   },
+   {
+    "pre": "Der Anstoß läuft dagegen mit rund",
+    "loesung": "200 000 km/s",
+    "post": "durch die Leitung."
+   }
+  ],
+  "beobachtung": "Bei der Leselampe mit I = 1,0 A und A = 1,50 mm² zeigt die Simulation v = 0,0490 mm/s. Für einen Meter Kabel braucht ein Elektron damit 20406 Sekunden, also 5,7 Stunden. Beim Wasserkocher mit 9,0 A steigt v auf 0,4410 mm/s. Bei 0,1 A sind es nur 0,0049 mm/s und 56,7 Stunden je Meter. Das Zappeln mit 1570 km/s bringt die Elektronen nicht voran, der Anstoß dagegen läuft mit 200 000 km/s.",
+  "aufgabe": {
+   "frage": "Vergleiche die Strecke, die ein Elektron in einer Sekunde wandert, mit der Strecke des Anstoßes in derselben Zeit.",
+   "zeilen": 4,
+   "loesung": "Das Elektron kommt in einer Sekunde 0,0490 mm weit, der Anstoß rund 200 000 km. Der Anstoß ist damit unvorstellbar viel schneller. Genau deshalb leuchtet die Lampe sofort: Der Draht ist überall schon voller Elektronen, und der Anstoß setzt auch die Elektronen in der Lampe in Bewegung. Kein Elektron muss vom Netzteil bis zur Lampe wandern."
+  },
+  "alltag": "Vergleiche zu Hause das Kabel eines Handy-Ladegeräts mit dem Kabel eines Wasserkochers und begründe mit der Stromstärke, warum das eine dicker sein muss.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF2",
+  "ueberleitung": "Als Nächstes untersuchst du, was passiert, wenn sich Ladungen in riesigem Maßstab auf einen Schlag entladen: beim Blitz.",
+  "name": "Was bewegt sich im Draht wirklich?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st12",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Gewitter über dem Schulhof",
+  "problem": "Am Nachmittag zieht ein Gewitter über den Schulhof. Nour und Jannis schieben die Räder unter das Vordach und zählen zwischen Blitz und Donner mit. Jannis meint, der Donner entstehe erst später als der Blitz, deshalb komme er auch später an. Nour vermutet, dass etwas ganz anderes dahintersteckt.",
+  "frage": "Ab wann schlägt ein Blitz durch, und warum kommt der Donner später?",
+  "auftrag": "Untersuche, ab welcher Feldstärke die Luft leitend wird, und bestimme, wie lange der Donner aus 3,0 km Entfernung braucht.",
+  "predict": [
+   "Der Donner entsteht erst einige Sekunden nach dem Blitz, deshalb hört man ihn später.",
+   "Blitz und Donner kommen beide sofort bei dir an. Deine Ohren sind nur langsamer als deine Augen, deshalb merkst du den Donner später.",
+   "Blitz und Donner entstehen im selben Augenblick, der Schall ist aber viel langsamer als das Licht."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lies in der Grundstellung bei 120 kV/m ab, wie viel bis zur Schwelle fehlt, und stelle den Regler danach auf 250 kV/m.",
+   "Drücke „knapp darunter“ und danach „knapp darüber“ und beobachte, wann die Luft leitend wird.",
+   "Lies ab, wie lange der Donner bei 3,0 km Entfernung braucht, und vergleiche das mit der Faustregel drei Sekunden je Kilometer."
+  ],
+  "tabCols": [
+   "Feldstärke E",
+   "Meldung der Simulation"
+  ],
+  "tabRows": [
+   "120 kV/m",
+   "250 kV/m",
+   "290 kV/m",
+   "310 kV/m"
+  ],
+  "fachtext": "In einer Gewitterwolke trennen sich Ladungen: Unten sammelt sich negative Ladung, am Boden bleibt positive zurück. Zwischen beiden entsteht ein elektrisches Feld. Wird die Feldstärke zu groß, reißt sie Elektronen aus den Luftteilchen, und die Luft wird plötzlich leitend. Dann fließt für wenige Millionstel Sekunden ein riesiger Strom. Der Kanal wird so heiß, dass sich die Luft schlagartig ausdehnt. Dieser Knall ist der Donner, und er läuft mit Schallgeschwindigkeit zu dir.",
+  "merksatz": [
+   {
+    "pre": "Die Luft wird leitend, sobald das Feld etwa",
+    "loesung": "300 kV/m",
+    "post": "erreicht."
+   },
+   {
+    "pre": "Der Donner läuft mit",
+    "loesung": "343 m/s",
+    "post": ", das Licht ist fast unendlich viel schneller."
+   }
+  ],
+  "beobachtung": "Bei 120 kV/m meldet die Simulation, dass noch 180 kV/m bis zur Schwelle fehlen. Mit 250 kV/m sind es nur noch 50 kV/m, bei 290 kV/m fehlen 10 kV/m. Ab 300 kV/m wird die Luft leitend und es blitzt; im Kanal fließen rund 30 kA bei etwa 30.000 K. Der Donner braucht für 3000 m die Zeit t = 3000 m / 343 m/s = 8,75 s.",
+  "aufgabe": {
+   "frage": "Berechne, wie weit ein Gewitter entfernt ist, wenn du nach dem Blitz 6 Sekunden bis zum Donner zählst.",
+   "zeilen": 4,
+   "loesung": "s = v · t = 343 m/s · 6 s = 2058 m, also rund 2,1 km. Die Faustregel drei Sekunden je Kilometer liefert nur 2 km. Sie rechnet mit 333 m je Sekunde statt mit 343 m/s und schätzt die Entfernung deshalb rund 3 % zu klein."
+  },
+  "alltag": "Bestimme beim nächsten Gewitter die Entfernung, indem du die Sekunden zwischen Blitz und Donner zählst und mit 343 m/s umrechnest. Bleibe dabei im Haus.",
+  "alltagAfb": "II",
+  "alltagKomp": "E5",
+  "ueberleitung": "Als Nächstes rechnest du nach, wie viel Energie ein Gerät im Betrieb tatsächlich braucht.",
+  "name": "Was passiert bei einem Blitz?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st13",
+  "basiskonzept": "Energie",
+  "titel": "Zwei Lampen an einem Netzteil",
+  "problem": "Über der Werkbank hängt eine kahle Fassung. Jannis holt zwei Lampen aus der Kiste: eine winzige und eine mit dickem Draht. Nour schließt beide nacheinander an dasselbe Netzteil an. Die erste glimmt nur, die zweite blendet und wird nach kurzer Zeit richtig warm. Dabei zeigt das Netzteil beide Male dieselbe Spannung an.",
+  "frage": "Wie ändert sich die Leistung, wenn Spannung oder Stromstärke größer werden?",
+  "auftrag": "Untersuche, wie sich die Leistung ändert, wenn du Spannung und Verbraucher wechselst.",
+  "predict": [
+   "Auch bei gleicher Spannung steigt die Leistung, wenn mehr Strom durch den Verbraucher fließt.",
+   "Nur die Spannung entscheidet: Bei 6 V ist die Leistung immer gleich groß, egal welcher Verbraucher angeschlossen ist.",
+   "Wie viel Watt eine Lampe hat, steckt fest in der Lampe. Ob du sie an 3 V oder an 6 V anschließt, ändert daran nichts."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Drücke nacheinander 1,5 V, 3 V und 6 V und lies jedes Mal Stromstärke und Leistung ab.",
+   "Wähle bei 6 V nacheinander wenig Strom, mittel und viel Strom.",
+   "Vergleiche die drei Leistungen bei 6 V miteinander."
+  ],
+  "tabCols": [
+   "Stromstärke I",
+   "Leistung P"
+  ],
+  "tabRows": [
+   "1,5 V",
+   "3 V",
+   "6 V",
+   "6 V und viel Strom"
+  ],
+  "fachtext": "Die elektrische Leistung P sagt, wie viel Energie ein Gerät in jeder Sekunde umsetzt. Sie hängt von zwei Größen ab: von der Spannung U, die die Ladungen antreibt, und von der Stromstärke I, also davon, wie viele Ladungen pro Sekunde durch das Bauteil fließen. Beide zusammen ergeben P = U · I. Gemessen wird die Leistung in Watt. Mehr Watt heißt: mehr Energie pro Sekunde, bei einer Lampe als Licht und als Wärme.",
+  "merksatz": [
+   {
+    "pre": "Die elektrische Leistung berechnest du mit P =",
+    "loesung": "U · I",
+    "post": ". Sie sagt, wie viel Energie pro Sekunde umgesetzt wird."
+   },
+   {
+    "pre": "Gemessen wird die Leistung in der Einheit",
+    "loesung": "Watt",
+    "post": "(W)."
+   }
+  ],
+  "beobachtung": "Bei 1,5 V fließen 0,10 A, die Anzeige meldet P = 0,15 W. Bei 3 V sind es 0,20 A und 0,60 W, bei 6 V dann 0,40 A und 2,40 W. Lässt du 6 V stehen und wechselst nur den Verbraucher, springt die Leistung von 0,80 W über 2,40 W auf 7,20 W. Die Leistung wächst also mit beiden Größen.",
+  "aufgabe": {
+   "frage": "Berechne die Leistung bei 6 V und 1,20 A und erkläre, warum die Lampe dabei heller leuchtet als bei 0,13 A.",
+   "zeilen": 4,
+   "loesung": "P = U · I = 6 V · 1,20 A = 7,20 W. Bei 6 V und 0,13 A zeigt die Simulation dagegen nur 0,80 W. Bei 1,20 A wird pro Sekunde also neunmal so viel Energie umgesetzt. Nur ein kleiner Teil davon verlässt die Lampe als Licht, der größte Teil als Wärme. Deshalb leuchtet sie heller und wird dabei richtig warm."
+  },
+  "alltag": "Suche zu Hause drei Geräte mit Typenschild, notiere ihre Wattzahl und ordne sie von der kleinsten zur größten Leistung.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF3",
+  "ueberleitung": "Wo viel Leistung umgesetzt wird, wird es warm - als Nächstes schaust du dir an, wo Strom im Haushalt gefährlich wird.",
+  "name": "Wie viel Energie braucht ein Gerät?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "st14",
+  "basiskonzept": "System",
+  "titel": "Zu viel an einer Steckdose",
+  "problem": "In der Werkstatt gibt es nur diese eine Steckdose. Eine Mehrfachsteckdose hängt schon darin: Ladegerät, Lötkolben, Radio. Jannis will morgens noch den kleinen Heizlüfter dazustecken, weil es am Fenster zieht. Nour zögert. Bei ihr zu Hause wurde einmal die halbe Wohnung dunkel, als zu viele Geräte gleichzeitig liefen.",
+  "frage": "Wann unterbricht die Sicherung den Stromkreis?",
+  "auftrag": "Untersuche, bei wie vielen Geräten die Sicherung den Stromkreis unterbricht.",
+  "predict": [
+   "Jedes Gerät holt sich seinen eigenen Strom, deshalb kann man an eine Steckdose beliebig viele Geräte anschließen.",
+   "Die Ströme der Geräte addieren sich, und über der Grenze der Sicherung wird der Stromkreis unterbrochen.",
+   "Die Sicherung achtet auf die Spannung. Sie unterbricht erst, wenn die Spannung in der Leitung zu groß wird."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Lies ab, wie viel Strom ein Gerät zieht und wo die Grenze der Sicherung liegt.",
+   "Drücke mehrmals „Gerät anschließen“ und beobachte nach jedem Gerät die Stromstärke.",
+   "Vergleiche den Strom mit der Grenze und beobachte, wann die Sicherung eingreift."
+  ],
+  "tabCols": [
+   "Strom in A",
+   "Sicherung hält / unterbricht"
+  ],
+  "tabRows": [
+   "1 Gerät",
+   "2 Geräte",
+   "3 Geräte"
+  ],
+  "fachtext": "An einer Steckdose hängen alle Geräte nebeneinander im selben Stromkreis. Jedes zieht seinen eigenen Strom, und diese Ströme addieren sich in der Zuleitung. Wird der Gesamtstrom zu groß, erwärmt sich das Kabel in der Wand, im schlimmsten Fall brennt es. Deshalb sitzt eine Sicherung im Kreis: Sie unterbricht ihn, sobald der Strom ihre Grenze überschreitet. Gefährlich sind außerdem beschädigte Kabel und Wasser an Geräten.",
+  "merksatz": [
+   {
+    "pre": "Die Ströme aller Geräte an einer Steckdose",
+    "loesung": "addieren sich",
+    "post": "in der Zuleitung."
+   },
+   {
+    "pre": "Wird der Strom zu groß, unterbricht die",
+    "loesung": "Sicherung",
+    "post": "den Stromkreis."
+   }
+  ],
+  "beobachtung": "Mit einem Gerät zeigt die Anzeige 6 A, die Sicherung ist auf 16 A ausgelegt: Der Strom fließt sicher. Nach dem zweiten Gerät sind es 12 A, immer noch unter der Grenze. Kommt ein drittes Gerät mit seinen 6 A dazu, ist die Grenze überschritten, und die Sicherung unterbricht den Stromkreis. Sie schaltet also ab, sobald der Gesamtstrom über 16 A liegt.",
+  "aufgabe": {
+   "frage": "Beurteile die Aussage: „An eine Mehrfachsteckdose darf man so viele Geräte anschließen, wie Löcher frei sind.“",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt nicht. Die Leiste hat zwar mehrere Löcher, aber alle Geräte hängen an derselben Leitung, und ihre Ströme addieren sich. Schon drei Geräte mit je 6 A liegen über der Grenze von 16 A, dann unterbricht die Sicherung den Kreis. Ohne Sicherung würde das Kabel in der Wand heiß werden und könnte brennen."
+  },
+  "alltag": "Suche zu Hause den Sicherungskasten, notiere die Ampere-Zahl auf zwei Sicherungen und schreibe dazu, welche Räume sie schützen.",
+  "alltagAfb": "I",
+  "alltagKomp": "K1",
+  "ueberleitung": "Der Stromkreis in der Werkstatt ist jetzt sicher - im nächsten Thema geht es um die Räder selbst und darum, wer wirklich schneller ist.",
+  "name": "Wo wird Strom im Haushalt gefährlich?",
+  "theme": "gts_strom"
+ },
+ {
+  "id": "be1",
+  "basiskonzept": "System",
+  "titel": "Das Wettrennen auf dem Schulhof",
+  "problem": "In der Fahrrad-AG streiten Nour und Jannis über zwei fertige Räder. Jannis sagt, das blaue sei schneller, weil es größer aussieht. Nour hält dagegen: Das entscheidet nur eine Fahrt. Sie stecken auf dem Schulhof eine Strecke ab. Doch was heißt „schneller“ eigentlich genau? Am Bildschirm lassen sie zuerst zwei Autos gegeneinander fahren.",
+  "frage": "Woran erkennst du, welches der beiden Autos wirklich schneller ist?",
+  "auftrag": "Untersuche mit verschiedenen Tempo-Einstellungen, wann Auto A und wann Auto B schneller ist.",
+  "predict": [
+   "Schneller ist das Auto, das am Ende die größere Strecke geschafft hat – die Zeit spielt dabei keine Rolle.",
+   "Schneller ist das Auto, das am Ende weiter vorne steht. Wo die beiden gestartet sind, spielt dabei keine Rolle.",
+   "Schneller ist das Auto, das in der gleichen Zeit die größere Strecke schafft."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Wähle für Auto A das Tempo langsam und für Auto B das Tempo schnell.",
+   "Drücke „Rennen starten“ und beobachte, welches Auto am Ziel weiter vorne ist.",
+   "Vergleiche die Statuszeile mit der Meldung, wenn beide Autos auf schnell stehen."
+  ],
+  "tabCols": [
+   "Tempo A und Tempo B",
+   "Meldung in der Statuszeile"
+  ],
+  "tabRows": [
+   "A langsam – B schnell",
+   "A mittel – B schnell",
+   "A schnell – B schnell",
+   "A schnell – B langsam"
+  ],
+  "fachtext": "Die Geschwindigkeit sagt, wie schnell sich ein Körper bewegt. Vergleichen kannst du nur, wenn du zwei Größen zusammen betrachtest: die zurückgelegte Strecke und die dafür gebrauchte Zeit. Ein Fahrzeug ist schneller, wenn es in der gleichen Zeit eine größere Strecke zurücklegt – oder wenn es dieselbe Strecke in kürzerer Zeit schafft. Deshalb gilt: Geschwindigkeit ist Strecke pro Zeit. Beim Rennen läuft für beide Autos dieselbe Zeit, deshalb entscheidet allein die Strecke.",
+  "merksatz": [
+   {
+    "pre": "Schneller ist, wer in gleicher Zeit",
+    "loesung": "mehr Strecke",
+    "post": "zurücklegt."
+   },
+   {
+    "pre": "Geschwindigkeit bedeutet",
+    "loesung": "Strecke pro Zeit",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Steht Auto A auf langsam und Auto B auf schnell, meldet die Statuszeile: „Auto B ist schneller – es legt in der gleichen Zeit mehr Strecke zurück.“ Nach dem Start ist der blaue Wagen am Ziel weiter vorne. Stellst du beide Autos auf schnell, heißt es: „Beide Autos sind gleich schnell – sie kommen gleich weit.“ Gleiche Zeit und mehr Strecke bedeutet also schneller.",
+  "aufgabe": {
+   "frage": "Erkläre, warum die zurückgelegte Strecke allein noch nicht verrät, welches Rad schneller ist.",
+   "zeilen": 3,
+   "loesung": "Eine Strecke sagt erst dann etwas über die Geschwindigkeit, wenn man weiß, wie lange die Fahrt gedauert hat. Auch ein langsames Rad kommt in langer Zeit weit. Nur wenn die Zeit für beide gleich ist, entscheidet die größere Strecke. Sonst muss man Strecke und Zeit immer zusammen vergleichen."
+  },
+  "alltag": "Vergleiche zu Hause zwei Durchgänge: Gehe einen Flur einmal gemütlich und einmal zügig ab und zähle dabei jedes Mal die Sekunden mit. Schreibe auf, woran du merkst, welcher Durchgang schneller war.",
+  "alltagAfb": "I",
+  "alltagKomp": "E2",
+  "ueberleitung": "Als Nächstes reicht der AG das Ergebnis „schneller“ nicht mehr – jetzt wird die Geschwindigkeit gemessen.",
+  "name": "Wer ist schneller - und woran misst man das?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be2",
+  "basiskonzept": "System",
+  "titel": "Zehn Meter und eine Stoppuhr",
+  "problem": "Nour hat mit Kreide eine Strecke auf den Schulhof gemalt, Jannis hält die Stoppuhr. „Und was schreiben wir jetzt auf?“, fragt er. Ein Sieger allein reicht der AG nicht mehr, sie will für jedes Rad eine Zahl. Am Bildschirm steht dafür ein Wagen an einer Messstrecke bereit.",
+  "frage": "Welche zwei Größen musst du messen, um eine Geschwindigkeit zu bestimmen?",
+  "auftrag": "Bestimme aus der Messstrecke und der gestoppten Zeit die Geschwindigkeit des Wagens.",
+  "predict": [
+   "Man braucht beides: die Strecke und die Zeit. Erst aus beiden zusammen ergibt sich die Geschwindigkeit.",
+   "Die Stoppuhr genügt: Wer die kleinere Zeit hat, ist schneller – die Strecke muss man nicht messen.",
+   "Ein Tacho zeigt die Geschwindigkeit direkt an, so wie ein Maßband eine Länge. Du musst also nichts zusammensetzen und nichts ausrechnen."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle das Tempo langsam und drücke „Messung starten“.",
+   "Beobachte die Stoppuhr, während der Wagen die Messstrecke von 10 m abfährt.",
+   "Vergleiche das Ergebnis, indem du zurücksetzt, das Tempo schnell wählst und erneut misst."
+  ],
+  "tabCols": [
+   "Tempo",
+   "gestoppte Zeit t"
+  ],
+  "tabRows": [
+   "langsam",
+   "mittel",
+   "schnell"
+  ],
+  "fachtext": "Eine Geschwindigkeit kann man nicht direkt ablesen, man setzt sie aus zwei Messungen zusammen. Die Strecke s misst du mit dem Maßband, die Zeit t mit einer Stoppuhr oder einer Lichtschranke. Daraus berechnest du v = s / t, also Strecke geteilt durch Zeit. Die Einheit ist Meter pro Sekunde (m/s). Eine Lichtschranke misst genauer als die Hand, weil sie ohne Reaktionszeit startet und stoppt. Die Messstrecke bleibt bei allen Fahrten gleich lang.",
+  "merksatz": [
+   {
+    "pre": "Gemessen werden die Strecke und",
+    "loesung": "die Zeit",
+    "post": "."
+   },
+   {
+    "pre": "Berechnet wird die Geschwindigkeit mit v =",
+    "loesung": "s / t",
+    "post": ", Einheit m/s."
+   }
+  ],
+  "beobachtung": "Vor dem Start steht in der Statuszeile: „Bereit. Messstrecke s = 10 m.“ Die Stoppuhr zeigt 0,0 s. Nach dem Drücken meldet sie: „Der Wagen fährt … die Stoppuhr läuft“, und die Uhr zählt hoch. Beim Tempo langsam läuft sie länger als beim Tempo schnell, die Strecke bleibt aber immer 10 m. Die Kontrollfrage bestätigt: v = 10 m / 5 s = 2 m/s.",
+  "aufgabe": {
+   "frage": "Berechne die Geschwindigkeit eines Wagens, der die Messstrecke von 10 m in 5 s durchfährt.",
+   "zeilen": 3,
+   "loesung": "Gegeben: s = 10 m und t = 5 s. Gesucht ist v. Rechnung: v = s / t = 10 m / 5 s = 2 m/s. Der Wagen fährt also mit 2 m/s. Bei gleicher Strecke gilt: Je kleiner die gestoppte Zeit, desto größer die Geschwindigkeit."
+  },
+  "alltag": "Miss mit einem Maßband oder mit abgezählten Schritten einen Flur bei dir zu Hause aus und stoppe, wie lange du für ihn brauchst. Berechne daraus deine Gehgeschwindigkeit in m/s.",
+  "alltagAfb": "II",
+  "alltagKomp": "E6",
+  "ueberleitung": "Im nächsten Schritt siehst du, wie du mit der Formel auch die Strecke oder die Zeit berechnest.",
+  "name": "Wie misst man eine Geschwindigkeit?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be3",
+  "basiskonzept": "System",
+  "titel": "Der Rechenzettel an der Werkbank",
+  "problem": "An der Werkbank klebt Nours Zettel mit den Messwerten der Testfahrt: 100 m in 10 s. Jannis rechnet im Kopf und kommt auf eine Zahl, Nour auf eine andere. Und was wird aus der Geschwindigkeit, wenn die Strecke länger oder die Zeit kürzer ist? Am Bildschirm stellen die beiden Strecke und Zeit selbst ein.",
+  "frage": "Wie ändert sich v, wenn du die Strecke verdoppelst oder die Zeit halbierst?",
+  "auftrag": "Untersuche, wie sich die berechnete Geschwindigkeit ändert, wenn du Strecke oder Zeit veränderst.",
+  "predict": [
+   "Halbierst du die Zeit, wird auch die Geschwindigkeit halbiert – die Hälfte gehört zur Hälfte.",
+   "Halbierst du die Zeit, verdoppelt sich die Geschwindigkeit, weil durch eine kleinere Zahl geteilt wird.",
+   "Für die Geschwindigkeit zählt allein die Strecke. Verdoppelst du sie, verdoppelt sich v; halbierst du die Zeit, ändert sich nichts."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle die Strecke 100 m und die Zeit 10 s und lies die Statuszeile ab.",
+   "Stelle die Strecke auf 200 m um und vergleiche den neuen Wert von v.",
+   "Wähle danach die Zeit 5 s und beobachte, was mit der Geschwindigkeit passiert."
+  ],
+  "tabCols": [
+   "Einstellung von s und t",
+   "angezeigtes v"
+  ],
+  "tabRows": [
+   "50 m und 10 s",
+   "100 m und 10 s",
+   "200 m und 10 s",
+   "200 m und 5 s"
+  ],
+  "fachtext": "Für die Geschwindigkeit gilt v = s / t: Du teilst die Strecke durch die Zeit. Verdoppelst du bei gleicher Zeit die Strecke, verdoppelt sich auch v. Halbierst du bei gleicher Strecke die Zeit, verdoppelt sich v ebenfalls, denn geteilt wird jetzt durch eine kleinere Zahl. Das Formeldreieck zeigt die beiden anderen Formen: s = v · t und t = s / v. Damit lässt sich jede der drei Größen aus den beiden anderen berechnen.",
+  "merksatz": [
+   {
+    "pre": "Die Geschwindigkeit berechnest du mit v =",
+    "loesung": "s / t",
+    "post": "."
+   },
+   {
+    "pre": "Aus dem Formeldreieck folgt s =",
+    "loesung": "v · t",
+    "post": "und t = s / v."
+   }
+  ],
+  "beobachtung": "Bei 100 m und 10 s steht in der Statuszeile: v = s / t = 100 m / 10 s = 10,0 m/s, das sind 36,0 km/h. Mit 200 m bei derselben Zeit zeigt sie 20,0 m/s, mit 50 m nur 5,0 m/s. Stellst du bei 200 m die Zeit auf 5 s, erscheinen 40,0 m/s. Doppelte Strecke und halbe Zeit führen also beide zur doppelten Geschwindigkeit.",
+  "aufgabe": {
+   "frage": "Berechne, wie lange ein Wagen mit 20,0 m/s für eine Strecke von 200 m braucht.",
+   "zeilen": 3,
+   "loesung": "Gegeben: v = 20,0 m/s und s = 200 m. Gesucht ist t. Aus v = s / t folgt umgestellt t = s / v. Rechnung: t = 200 m / 20,0 m/s = 10 s. Genau diese Kombination zeigt die Simulation an, wenn du 200 m und 10 s einstellst."
+  },
+  "alltag": "Lies bei einer Bus- oder Bahnfahrt die zurückgelegte Strecke und die Fahrzeit vom Fahrplan ab und berechne daraus die mittlere Geschwindigkeit in Meter pro Sekunde.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF2",
+  "ueberleitung": "Auf dem Tacho steht trotzdem km/h – warum das dieselbe Geschwindigkeit sein kann, klärst du als Nächstes.",
+  "name": "Wie rechnet man aus Weg und Zeit die Geschwindigkeit?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be4",
+  "basiskonzept": "System",
+  "titel": "Tacho und Heft widersprechen sich",
+  "problem": "Am Rad von Jannis hängt ein alter Tacho, er zeigt auf der Testrunde 18 km/h. In Nours Heft steht für dieselbe Runde 5,0 Meter pro Sekunde. Zwei Zahlen für ein Rad – da habe sich jemand verrechnet, meint Jannis. Nour holt lieber die Umrechnung auf den Bildschirm.",
+  "frage": "Wie rechnest du eine Geschwindigkeit von m/s in km/h um – und wieder zurück?",
+  "auftrag": "Vergleiche die beiden Anzeigen bei verschiedenen Geschwindigkeiten und bestimme den Umrechnungsfaktor.",
+  "predict": [
+   "Zwischen m/s und km/h steht der Faktor 1000, weil ein Kilometer 1000 Meter hat.",
+   "Zwischen m/s und km/h steht der Faktor 60, weil eine Stunde 60 Minuten hat.",
+   "Zwischen m/s und km/h steht der Faktor 3,6, weil auch die Zeiteinheit umgerechnet werden muss."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Lies im Ausgangszustand beide Anzeigen ab: links den Wert in m/s, rechts den in km/h.",
+   "Drücke „langsamer“ und beobachte, wie sich beide Zahlen zugleich ändern.",
+   "Vergleiche die Voreinstellungen Fußgänger, Radfahrer, Auto (Stadt) und ICE miteinander."
+  ],
+  "tabCols": [
+   "Voreinstellung",
+   "Wert in m/s und in km/h"
+  ],
+  "tabRows": [
+   "Fußgänger",
+   "Radfahrer",
+   "Auto (Stadt)",
+   "ICE"
+  ],
+  "fachtext": "Ein Körper mit 1 m/s legt in jeder Sekunde einen Meter zurück, in einer Stunde also 3600 Meter. Das sind 3,6 Kilometer, deshalb gilt 1 m/s = 3,6 km/h. Von m/s zu km/h multiplizierst du mit 3,6, in die andere Richtung teilst du durch 3,6. Die Bewegung selbst ändert sich dabei nicht, nur die Einheit, in der du sie aufschreibst. Für den Vergleich müssen beide Werte immer dieselbe Einheit haben.",
+  "merksatz": [
+   {
+    "pre": "Von m/s zu km/h rechnest du",
+    "loesung": "mal 3,6",
+    "post": "."
+   },
+   {
+    "pre": "Es gilt: 1 m/s sind",
+    "loesung": "3,6 km/h",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Im Ausgangszustand steht dort: 10,0 m/s · 3,6 = 36,0 km/h. Nach „langsamer“ zeigt die Anzeige 9,0 m/s und 32,4 km/h, beide Zahlen ändern sich zusammen. Der Fußgänger geht mit 1,5 m/s, also 5,4 km/h, der Radfahrer fährt 5,0 m/s = 18,0 km/h, der ICE 83,0 m/s = 298,8 km/h. Der Faktor bleibt immer 3,6.",
+  "aufgabe": {
+   "frage": "Vergleiche einen Radfahrer mit 5,0 m/s und ein Stadtauto mit 50,4 km/h. Wer ist schneller?",
+   "zeilen": 4,
+   "loesung": "Zuerst beide Werte in dieselbe Einheit bringen: 5,0 m/s · 3,6 = 18,0 km/h. Das Auto fährt mit 50,4 km/h und ist damit klar schneller. Zur Probe andersherum: 50,4 km/h ÷ 3,6 = 14,0 m/s, also fast das Dreifache der 5,0 m/s des Radfahrers."
+  },
+  "alltag": "Lies das Tempo-Schild in deiner Straße ab und rechne den erlaubten Wert in m/s um. Schreibe auf, wie viele Meter ein Auto damit in einer einzigen Sekunde zurücklegt.",
+  "alltagAfb": "II",
+  "alltagKomp": "UF4",
+  "ueberleitung": "Als Nächstes fährt der Wagen mit gleichbleibendem Tempo – und setzt dabei jede Sekunde eine Marke.",
+  "name": "Warum steht auf dem Schild km/h und im Heft m/s?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be5",
+  "basiskonzept": "System",
+  "titel": "Kreidestriche auf dem Schulhof",
+  "problem": "Auf dem Schulhof steht die abgesteckte Messstrecke. Jannis tritt gleichmäßig in die Pedale und Nour ruft jede Sekunde „jetzt“, während Kreide auf den Asphalt geht. Am Ende liegen die Kreidestriche da wie Perlen auf einer Schnur. Jannis findet, das sehe nach Gleichmaß aus. Nour will es genauer wissen und öffnet die Simulation.",
+  "frage": "Wie liegen die Sekunden-Marken, wenn die Geschwindigkeit gleich bleibt?",
+  "auftrag": "Untersuche die Abstände der Sekunden-Marken innerhalb einer Fahrt und vergleiche sie bei den drei Geschwindigkeiten.",
+  "predict": [
+   "Solange die Geschwindigkeit gleich bleibt, liegen alle Marken gleich weit auseinander.",
+   "Weil der Wagen immer weiter rollt, werden die Marken nach hinten hin immer weiter auseinander liegen.",
+   "Die Abstände der Marken werden nach hinten immer kleiner. Jede Bewegung wird von allein langsamer, auch wenn du gleichmäßig trittst."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle „langsam“ und drücke Fahren.",
+   "Lies ab, welchen Wert v die Statuszeile zeigt, und beobachte die Abstände der Marken.",
+   "Vergleiche das mit den Durchgängen für „mittel“ und „schnell“."
+  ],
+  "tabCols": [
+   "v laut Statuszeile",
+   "Abstände der Marken"
+  ],
+  "tabRows": [
+   "langsam",
+   "mittel",
+   "schnell"
+  ],
+  "fachtext": "Eine Bewegung heißt gleichförmig, wenn die Geschwindigkeit sich nicht ändert. Der Körper legt dann in jeder Sekunde genau die gleiche Strecke zurück. Setzt man jede Sekunde eine Marke, liegen diese Marken deshalb alle gleich weit auseinander. Eine größere Geschwindigkeit macht die Abstände größer, aber untereinander bleiben sie gleich. Trägt man den Weg über der Zeit auf, ergibt sich eine Gerade. Berechnet wird die Geschwindigkeit als Weg geteilt durch Zeit.",
+  "merksatz": [
+   {
+    "pre": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit",
+    "loesung": "konstant",
+    "post": "."
+   },
+   {
+    "pre": "Im Weg-Zeit-Diagramm ergibt eine gleichförmige Bewegung",
+    "loesung": "eine Gerade",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei „langsam“ zeigt die Statuszeile v = 40, bei „mittel“ v = 70 und bei „schnell“ v = 110. Bei „schnell“ liegen die Marken weiter auseinander als bei „langsam“. Innerhalb einer Fahrt ändert sich der Abstand jedoch nicht: Die Marken liegen immer gleich weit auseinander. Die Statuszeile sagt dazu, in jeder Sekunde werde die gleiche Strecke zurückgelegt. Gleichförmig heißt also: gleiche Geschwindigkeit, gleiche Abstände.",
+  "aufgabe": {
+   "frage": "Erkläre, woran man an den Kreidestrichen auf dem Schulhof erkennt, dass ein Rad gleichförmig fährt.",
+   "zeilen": 4,
+   "loesung": "Zwischen zwei Kreidestrichen liegt immer genau eine Sekunde. Sind alle Abstände gleich groß, hat das Rad in jeder Sekunde die gleiche Strecke zurückgelegt. Die Geschwindigkeit bleibt also konstant, die Bewegung ist gleichförmig. Werden die Abstände größer oder kleiner, ändert sich die Geschwindigkeit."
+  },
+  "alltag": "Gehe zu Hause im gleichen Takt durch den Flur und lass jemanden bei jedem zweiten Schritt ein Stück Kreppband auf den Boden kleben. Prüfe mit dem Lineal, ob die Abstände gleich groß sind.",
+  "alltagAfb": "II",
+  "alltagKomp": "E5",
+  "ueberleitung": "Als Nächstes trägst du die Fahrt in ein Weg-Zeit-Diagramm ein und liest an der Steilheit der Linie ab, wie schnell der Wagen war.",
+  "name": "Was heißt gleichförmige Bewegung?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be6",
+  "basiskonzept": "System",
+  "titel": "Linien an der Werkstattwand",
+  "problem": "In der Werkstatt hängt jetzt ein großes Blatt Papier an der Wand. Nour zeichnet die Messfahrten der AG als Linien auf: eine für Jannis, eine für sich selbst, eine für die Fahrt mit Halt am Tor. Jannis sieht nur Striche. Nour behauptet, man könne jede Fahrt daran erkennen.",
+  "frage": "Was verrät die Steilheit der Linie im Weg-Zeit-Diagramm über die Fahrt?",
+  "auftrag": "Vergleiche die Linien im Weg-Zeit-Diagramm für eine langsame Fahrt, eine schnelle Fahrt und eine Fahrt mit Pause.",
+  "predict": [
+   "Eine waagerechte Linie heißt, dass der Wagen ruhig und gleichmäßig weiterfährt.",
+   "Eine waagerechte Linie heißt, dass der Weg gleich bleibt: Der Wagen steht still.",
+   "Die Linie bildet die gefahrene Strecke nach wie eine Landkarte. Eine steile Linie heißt, dass es dort bergauf geht."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle „langsam“, drücke Fahren und beobachte, wie steil die Linie im s-t-Diagramm steigt.",
+   "Wähle „schnell“, drücke erneut Fahren und vergleiche die Steilheit mit dem ersten Durchgang.",
+   "Wähle „mit Pause“, drücke Fahren und beobachte die Linie, während der Wagen auf der Fahrbahn steht."
+  ],
+  "tabCols": [
+   "Verlauf der Linie",
+   "Was der Wagen macht"
+  ],
+  "tabRows": [
+   "langsam",
+   "schnell",
+   "mit Pause"
+  ],
+  "fachtext": "Im Weg-Zeit-Diagramm steht die Zeit auf der waagerechten Achse und der zurückgelegte Weg auf der senkrechten Achse. Jeder Punkt sagt: Zu dieser Zeit war der Wagen so weit gekommen. Steigt die Linie steil, wächst der Weg in kurzer Zeit stark, der Wagen ist also schnell. Eine flache Linie bedeutet wenig Weg in derselben Zeit, also langsam. Bleibt die Linie waagerecht, ändert sich der Weg nicht: Der Wagen steht.",
+  "merksatz": [
+   {
+    "pre": "Eine steile Linie im Weg-Zeit-Diagramm bedeutet: Der Wagen ist",
+    "loesung": "schnell",
+    "post": "."
+   },
+   {
+    "pre": "Eine waagerechte Linie im Weg-Zeit-Diagramm bedeutet",
+    "loesung": "Stillstand",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei „langsam“ meldet die Statuszeile eine flache Gerade: in gleicher Zeit wenig Weg. Bei „schnell“ steigt die Gerade viel steiler, dort steht „in gleicher Zeit viel Weg“. Bei „mit Pause“ steigt die Linie zuerst, wird dann waagerecht und steigt danach wieder. Genau in dem waagerechten Stück bleibt der Wagen auf der Fahrbahn stehen. Die Steilheit zeigt also, wie schnell gefahren wird.",
+  "aufgabe": {
+   "frage": "Erkläre, warum eine waagerechte Linie im Weg-Zeit-Diagramm nicht bedeutet, dass die Zeit stehen bleibt.",
+   "zeilen": 4,
+   "loesung": "Auf der waagerechten Achse läuft die Zeit immer weiter, auch wenn der Wagen hält. Auf der senkrechten Achse steht der zurückgelegte Weg. Steht der Wagen, wächst der Weg nicht mehr, die Zeit aber schon. Deshalb wandert die Linie nach rechts, ohne nach oben zu steigen: Sie verläuft waagerecht."
+  },
+  "alltag": "Miss auf dem Schulweg mit der Stoppuhr, wie lange ein Bus an der Haltestelle steht. Zeichne zu Hause die Linie seiner Fahrt im Weg-Zeit-Diagramm und baue diesen Halt richtig ein.",
+  "alltagAfb": "II",
+  "alltagKomp": "K3",
+  "ueberleitung": "Als Nächstes lässt du den Wagen anfahren und bremsen und siehst nach, was dann mit den Sekunden-Marken passiert.",
+  "name": "Was verrät ein Zeit-Weg-Diagramm?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be7",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Anfahren und Bremsen am Hoftor",
+  "problem": "Am Hoftor probiert Jannis das reparierte Rad aus. Er tritt kräftig an, rollt über den Hof und zieht kurz vor der Mauer die Bremse. Nour hat die Kreide dabei und markiert wieder jede Sekunde. Diesmal liegen die Striche nicht mehr gleich weit auseinander, und beide fragen sich, warum.",
+  "frage": "Wie ändern sich die Sekunden-Marken beim Beschleunigen und beim Bremsen?",
+  "auftrag": "Untersuche, wie sich die Abstände der Sekunden-Marken beim Beschleunigen und beim Bremsen verändern.",
+  "predict": [
+   "Die Abstände bleiben auch hier gleich, der Wagen ist ja die ganze Zeit in Bewegung.",
+   "Beim Antreten sind die Abstände sofort groß und bleiben dann gleich. Beim Bremsen steht das Rad sofort, und es kommt keine Marke mehr dazu.",
+   "Beim Beschleunigen werden die Abstände immer größer, beim Bremsen immer kleiner."
+  ],
+  "predictOk": 2,
+  "forschen": [
+   "Drücke beschleunigen, starte mit Fahren und beobachte die Abstände der Sekunden-Marken.",
+   "Drücke bremsen, fahre erneut und vergleiche die Marken mit dem ersten Durchgang.",
+   "Lies ab, was die Statuszeile zu jeder der beiden Fahrten meldet."
+  ],
+  "tabCols": [
+   "beschleunigen",
+   "bremsen"
+  ],
+  "tabRows": [
+   "Abstände der Sekunden-Marken",
+   "Geschwindigkeit im Verlauf",
+   "Text in der Statuszeile"
+  ],
+  "fachtext": "Ändert sich die Geschwindigkeit, heißt die Bewegung beschleunigt. Beim Anfahren nimmt die Geschwindigkeit zu: In jeder Sekunde legt der Wagen eine längere Strecke zurück als in der Sekunde davor, deshalb werden die Abstände der Marken immer größer. Beim Bremsen nimmt die Geschwindigkeit ab, die Abstände werden immer kleiner. Weil der Weg pro Sekunde nicht gleich bleibt, ist die Linie im Weg-Zeit-Diagramm keine Gerade mehr, sondern eine Kurve.",
+  "merksatz": [
+   {
+    "pre": "Bei einer beschleunigten Bewegung ändert sich",
+    "loesung": "die Geschwindigkeit",
+    "post": "."
+   },
+   {
+    "pre": "Beim Bremsen werden die Abstände der Sekunden-Marken",
+    "loesung": "immer kleiner",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Nach beschleunigen meldet die Statuszeile: Die Geschwindigkeit wird immer größer, die Sekunden-Marken werden immer weiter auseinander. Auf der Fahrbahn sieht man genau das, der Wagen zieht davon. Nach bremsen steht dort das Gegenteil: Die Geschwindigkeit wird immer kleiner, die Marken werden immer enger. In beiden Fällen ist die s-t-Linie gebogen. Ungleiche Abstände bedeuten also eine sich ändernde Geschwindigkeit.",
+  "aufgabe": {
+   "frage": "Begründe, warum die Abstände beim Anfahren größer werden, beim Bremsen aber kleiner.",
+   "zeilen": 4,
+   "loesung": "Zwischen zwei Marken liegt immer genau eine Sekunde. Beim Anfahren wird der Wagen schneller und schafft in jeder Sekunde eine längere Strecke als in der Sekunde davor, deshalb wachsen die Abstände. Beim Bremsen wird er langsamer und schafft in jeder Sekunde weniger Weg, deshalb rücken die Marken enger zusammen."
+  },
+  "alltag": "Fahre zu Hause mit dem Rad langsam an und lass jemanden zählen, wie viele Gehwegplatten du in der ersten, in der zweiten und in der dritten Sekunde überquerst. Vergleiche die drei Zahlen.",
+  "alltagAfb": "II",
+  "alltagKomp": "E6",
+  "ueberleitung": "Als Nächstes trägst du nicht mehr den Weg, sondern die Geschwindigkeit über der Zeit auf und liest ab, ob ein Wagen beschleunigt oder bremst.",
+  "name": "Was passiert beim Anfahren und Bremsen?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be8",
+  "basiskonzept": "System",
+  "titel": "Die Linie steigt und fällt",
+  "problem": "Auf dem Schulhof hat die AG die Messstrecke abgesteckt. Jannis fährt an, tritt kurz kräftig und rollt dann aus. Nour hält die Fahrt in einem Diagramm fest, aber ihre Linie steigt, wird waagerecht und fällt wieder. Die anderen streiten, was diese drei Stücke über das Rad verraten.",
+  "frage": "Was bedeuten steigende, waagerechte und fallende Linien im v-t-Diagramm?",
+  "auftrag": "Untersuche, wie sich die Linie im v-t-Diagramm bei konstanter Fahrt, beim Beschleunigen und beim Bremsen verändert.",
+  "predict": [
+   "Eine waagerechte Linie bedeutet, dass der Wagen gleich schnell weiterfährt.",
+   "Eine waagerechte Linie bedeutet, dass der Wagen steht.",
+   "Eine fallende Linie bedeutet, dass der Wagen rückwärts fährt. Eine steigende Linie bedeutet, dass er vorwärts fährt."
+  ],
+  "predictOk": 0,
+  "forschen": [
+   "Wähle konstant und drücke Fahren. Beobachte die Linie und die Anzeige v jetzt.",
+   "Wähle beschleunigen, drücke Fahren und lies ab, wie sich v jetzt dabei verändert.",
+   "Vergleiche damit den Verlauf bei bremsen und lies dazu die Statuszeile ab."
+  ],
+  "tabCols": [
+   "Eingestellte Bewegung",
+   "Linie im v-t-Diagramm"
+  ],
+  "tabRows": [
+   "konstant",
+   "beschleunigen",
+   "bremsen"
+  ],
+  "fachtext": "Im v-t-Diagramm steht die Zeit waagerecht und die Geschwindigkeit senkrecht. Die Linie zeigt also nicht den Weg, sondern das Tempo. Bleibt das Tempo gleich, läuft die Linie waagerecht: Die Bewegung ist gleichförmig. Wird der Körper schneller, steigt die Linie an. Wird er langsamer, fällt sie ab, bis sie unten bei null ankommt. Der Wagen steht dann. Je steiler die Linie, desto stärker ändert sich die Geschwindigkeit.",
+  "merksatz": [
+   {
+    "pre": "Eine waagerechte Linie im v-t-Diagramm bedeutet",
+    "loesung": "konstantes Tempo",
+    "post": "– der Wagen fährt gleichförmig."
+   },
+   {
+    "pre": "Eine fallende Linie zeigt, dass der Wagen",
+    "loesung": "langsamer wird",
+    "post": "– bis er steht."
+   }
+  ],
+  "beobachtung": "Bei konstant läuft die Linie schnurgerade waagerecht, und die Anzeige v jetzt bleibt stehen, bei uns auf 55. Die Statuszeile meldet: konstante Geschwindigkeit, der Wagen fährt gleich schnell. Bei beschleunigen steigt die Linie gleichmäßig an, und die Zahl bei v jetzt wird immer größer. Bei bremsen fällt die Linie, v jetzt sinkt bis 0, und der Wagen steht. Die Richtung der Linie verrät also, ob das Tempo gleich bleibt, wächst oder sinkt.",
+  "aufgabe": {
+   "frage": "Erkläre, warum eine waagerechte Linie im v-t-Diagramm etwas ganz anderes bedeutet als im Weg-Zeit-Diagramm.",
+   "zeilen": 4,
+   "loesung": "Im v-t-Diagramm steht senkrecht die Geschwindigkeit. Eine waagerechte Linie heißt dort: Das Tempo bleibt gleich, der Wagen fährt gleichförmig weiter. Im Weg-Zeit-Diagramm steht senkrecht der zurückgelegte Weg. Bleibt der Weg gleich, kommt der Körper nicht voran, er steht still. Dieselbe Linienform bedeutet also je nach Achse etwas völlig anderes. Man muss immer zuerst auf die Beschriftung der senkrechten Achse schauen."
+  },
+  "alltag": "Beobachte auf einer Bus- oder Autofahrt drei Abschnitte: das Anfahren, die gleichmäßige Fahrt und das Bremsen vor der Haltestelle. Zeichne danach aus dem Gedächtnis eine v-t-Linie für diese Fahrt in dein Heft.",
+  "alltagAfb": "II",
+  "alltagKomp": "K1",
+  "ueberleitung": "Wenn du weißt, wie eine fallende Linie aussieht, kannst du als Nächstes untersuchen, wie weit ein Auto wirklich rollt, bis es steht.",
+  "name": "Was verrät ein Zeit-Geschwindigkeit-Diagramm?",
+  "theme": "gts_bewegung"
+ },
+ {
+  "id": "be9",
+  "basiskonzept": "Wechselwirkung",
+  "titel": "Ein Schild für die Einfahrt",
+  "problem": "Vor der Fahrrad-Werkstatt liegt die Einfahrt, über die beim Sommerfest Autos den Getränkewagen bringen. Nour findet, ein Auto mit Tempo 30 könne dort sofort stehen bleiben. Jannis widerspricht: Er hat gesehen, wie weit ein Wagen noch rollt. Die AG soll ein Schild mit einem Sicherheitsabstand entwerfen.",
+  "frage": "Wie verändert sich der Bremsweg, wenn sich die Geschwindigkeit verdoppelt?",
+  "auftrag": "Vergleiche Reaktionsweg, Bremsweg und Anhalteweg bei 30 km/h, 50 km/h und 100 km/h.",
+  "predict": [
+   "Bei doppeltem Tempo wird der Bremsweg doppelt so lang.",
+   "Bei doppeltem Tempo wird der Bremsweg viermal so lang.",
+   "Der Bremsweg hängt vor allem davon ab, wie schwer das Fahrzeug ist. Bei doppeltem Tempo bleibt er fast gleich lang."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Wähle 30 km/h und drücke Gefahr! (Start). Lies Reaktionsweg, Bremsweg und Anhalteweg in der Statuszeile ab.",
+   "Drücke danach 50 km/h und anschließend 100 km/h und lies die drei Wege jedes Mal neu ab.",
+   "Vergleiche die Bremswege bei 50 km/h und bei 100 km/h miteinander."
+  ],
+  "tabCols": [
+   "Tempo",
+   "Bremsweg in m"
+  ],
+  "tabRows": [
+   "30 km/h",
+   "50 km/h",
+   "100 km/h"
+  ],
+  "fachtext": "Der Anhalteweg besteht aus zwei Teilen. Zuerst kommt der Reaktionsweg: Du siehst die Gefahr, aber das Auto fährt noch mit vollem Tempo weiter, bis dein Fuß auf der Bremse ist. Dieser Teil wächst gleichmäßig mit der Geschwindigkeit. Dann folgt der Bremsweg bis zum Stillstand. Er wächst mit dem Quadrat der Geschwindigkeit. Doppeltes Tempo bedeutet deshalb vierfachen Bremsweg. Genau das unterschätzen Fußgänger und Radfahrer am häufigsten.",
+  "merksatz": [
+   {
+    "pre": "Reaktionsweg und Bremsweg ergeben zusammen den",
+    "loesung": "Anhalteweg",
+    "post": "."
+   },
+   {
+    "pre": "Bei doppeltem Tempo wird der Bremsweg",
+    "loesung": "viermal so lang",
+    "post": "."
+   }
+  ],
+  "beobachtung": "Bei 30 km/h meldet die Statuszeile: Reaktionsweg 9 m, Bremsweg 9 m, Anhalteweg 18 m. Bei 50 km/h sind es 15 m, 25 m und 40 m. Bei 100 km/h stehen dort 30 m, 100 m und 130 m. Der Reaktionsweg verdoppelt sich von 15 m auf 30 m, der Bremsweg aber springt von 25 m auf 100 m. Doppeltes Tempo bedeutet also vierfachen Bremsweg.",
+  "aufgabe": {
+   "frage": "Berechne, wie viele Meter ein Auto bei 100 km/h länger bis zum Stillstand braucht als bei 50 km/h, und erkläre den Unterschied.",
+   "zeilen": 4,
+   "loesung": "Bei 50 km/h beträgt der Anhalteweg 40 m, bei 100 km/h sind es 130 m. Der Unterschied ist 130 m − 40 m = 90 m. Der Reaktionsweg verdoppelt sich nur von 15 m auf 30 m, weil er gleichmäßig mit dem Tempo wächst. Der Bremsweg wird dagegen vervierfacht, von 25 m auf 100 m, weil er vom Quadrat der Geschwindigkeit abhängt. Deshalb wächst der Anhalteweg so stark."
+  },
+  "alltag": "Miss mit Schritten ab, wie lang 18 Meter auf deinem Schulweg sind. So weit fährt ein Auto mit 30 km/h vom Erkennen der Gefahr an, bis es steht. Markiere Anfang und Ende und erzähle zu Hause, was dir dabei aufgefallen ist.",
+  "alltagAfb": "II",
+  "alltagKomp": "B2",
+  "ueberleitung": "Damit ist die Messstrecke ausgewertet, und beim Sommerfest könnt ihr zeigen, wie viel Platz ein Fahrzeug bis zum Stillstand wirklich braucht.",
+  "name": "Wie weit fährt ein Auto, bis es steht?",
+  "theme": "gts_bewegung"
+ }
+]

@@ -1,0 +1,250 @@
+[
+ {
+  "id": "ft1",
+  "theme": "foe_versorgung",
+  "titel": "Fördertest 1 · Woher der Strom kommt",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Wo ist das Magnetfeld eines Stabmagneten am stärksten?",
+      "optionen": [
+       "Über der Mitte des Magneten.",
+       "An den beiden Enden.",
+       "Überall um den Magneten gleich."
+      ],
+      "richtig": 1
+     },
+     {
+      "frage": "Womit arbeitet ein Transformator?",
+      "optionen": [
+       "Nur mit Wechselspannung.",
+       "Nur mit einer Batterie.",
+       "Mit jeder Spannung."
+      ],
+      "richtig": 0
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Er ist nur ein Magnet, solange Strom fließt.",
+      "Elektromagnet"
+     ],
+     [
+      "Sie entsteht, solange sich ein Magnet bewegt.",
+      "Induktion"
+     ],
+     [
+      "Es macht die Spannung größer oder wieder kleiner.",
+      "Umspannwerk"
+     ],
+     [
+      "Er sagt, wie viel Prozent herauskommt.",
+      "Wirkungsgrad"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "Kilowattstunden",
+     "Norden",
+     "wetterabhängig",
+     "kleiner"
+    ],
+    "luecken": [
+     {
+      "pre": "Ohne Strom zeigt die Kompassnadel nach",
+      "loesung": "Norden",
+      "post": ". Dann wirkt nur das Erdfeld."
+     },
+     {
+      "pre": "Mit Hochspannung fließt in der Leitung nur ein",
+      "loesung": "kleiner",
+      "post": " Strom."
+     },
+     {
+      "pre": "Der Stromzähler misst die Energie in",
+      "loesung": "Kilowattstunden",
+      "post": ", nicht in Watt."
+     },
+     {
+      "pre": "Ein Windpark liefert nicht immer gleich viel. Er ist",
+      "loesung": "wetterabhängig",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Ein Windpark steht weit weg von der Stadt. Vor der langen Leitung macht ein Umspannwerk die Spannung größer. Erkläre, warum das hilft.",
+    "satzstarter": "Mit Hochspannung fließt …",
+    "zeilen": 4,
+    "erwartung": "Mit Hochspannung fließt in der Leitung nur ein kleiner Strom. Dann wird im Draht nur wenig Energie zu Wärme. So geht auf dem langen Weg wenig verloren.",
+    "teilpunkte": [
+     "Hochspannung heißt kleiner Strom (1 P)",
+     "kleiner Strom heißt wenig Wärme im Draht (1 P)",
+     "darum ist der Verlust auf dem langen Weg klein (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ },
+ {
+  "id": "ft2",
+  "theme": "foe_kern",
+  "titel": "Fördertest 2 · Aus dem Atomkern",
+  "hinweis": "Du darfst den Test ohne Heft lösen. Lies jede Aufgabe zweimal.",
+  "punkte": 13,
+  "aufgaben": [
+   {
+    "typ": "ankreuzen",
+    "punkte": 2,
+    "fragen": [
+     {
+      "frage": "Was passiert beim Ionisieren?",
+      "optionen": [
+       "Der Atomkern wird zerstört.",
+       "Der Stoff wird selbst radioaktiv.",
+       "Ein Elektron wird aus dem Atom geschlagen."
+      ],
+      "richtig": 2
+     },
+     {
+      "frage": "Wann ist ungefähr die Hälfte der Kerne zerfallen?",
+      "optionen": [
+       "Nach zwei Halbwertszeiten.",
+       "Nach einer Halbwertszeit.",
+       "Nach zehn Halbwertszeiten."
+      ],
+      "richtig": 1
+     }
+    ]
+   },
+   {
+    "typ": "zuordnen",
+    "punkte": 4,
+    "auftrag": "Ordne zu: Schreibe den passenden Buchstaben in das Kästchen.",
+    "paare": [
+     [
+      "Schon Papier hält sie auf.",
+      "Alphastrahlung"
+     ],
+     [
+      "Durch Blei kommt immer ein kleiner Rest.",
+      "Gammastrahlung"
+     ],
+     [
+      "Er zerbricht, wenn ein Neutron ihn trifft.",
+      "Urankern"
+     ],
+     [
+      "Der Dampf dreht sie im Kraftwerk.",
+      "Turbine"
+     ]
+    ]
+   },
+   {
+    "typ": "luecken",
+    "punkte": 4,
+    "auftrag": "Trage ein: Die Wörter findest du in der Wortbank.",
+    "wortbank": [
+     "Heliumkern",
+     "1,00",
+     "Abklingraum",
+     "ein Viertel"
+    ],
+    "luecken": [
+     {
+      "pre": "Ein Kernkraftwerk läuft immer mit k =",
+      "loesung": "1,00",
+      "post": ". Jede Runde bleibt gleich groß."
+     },
+     {
+      "pre": "Verdoppelst du den Abstand, sinkt die Dosisleistung auf",
+      "loesung": "ein Viertel",
+      "post": "."
+     },
+     {
+      "pre": "In der Sonne verschmelzen vier kleine Kerne zu einem",
+      "loesung": "Heliumkern",
+      "post": "."
+     },
+     {
+      "pre": "Ist die Halbwertszeit sehr kurz, wartet der Abfall im",
+      "loesung": "Abklingraum",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "transfer",
+    "punkte": 3,
+    "frage": "Nour hat zwei Abfälle. Der eine hat 8 Tage Halbwertszeit, der andere 24 000 Jahre. Entscheide, welcher ins Endlager muss. Begründe deine Antwort.",
+    "satzstarter": "Ins Endlager muss …, weil …",
+    "zeilen": 4,
+    "erwartung": "Ins Endlager muss der Abfall mit 24 000 Jahren. So lange kann niemand warten. Der andere hat nur 8 Tage. Er kann im Abklingraum warten.",
+    "teilpunkte": [
+     "der Abfall mit 24 000 Jahren muss ins Endlager (1 P)",
+     "so lange kann man nicht warten (1 P)",
+     "8 Tage sind kurz, der Abfall wartet im Abklingraum (1 P)"
+    ]
+   }
+  ],
+  "schluessel": [
+   [
+    12,
+    13,
+    "Stark! Du kannst das Kapitel."
+   ],
+   [
+    9,
+    11,
+    "Geschafft. Sieh dir die Merksätze noch einmal an."
+   ],
+   [
+    5,
+    8,
+    "Übe mit den Hilfen der Doppelseiten weiter."
+   ],
+   [
+    0,
+    4,
+    "Hol dir Hilfe bei deiner Lehrkraft – gemeinsam klappt es."
+   ]
+  ]
+ }
+]

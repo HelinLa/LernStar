@@ -1,0 +1,72 @@
+{
+ "id": "gw12",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "E6",
+  "K8",
+  "E8"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "In der Lichtuhr läuft ein Photon zwischen Blitzlampe und Spiegel hin und her. Ein solches Hin und Her heißt ein",
+   "loesung": "Takt",
+   "post": "; seine Dauer ist der Weg geteilt durch c."
+  },
+  {
+   "pre": "Station 4 nennt bei v/c = 0,600 für den Kehrwert 1/√(1−β²) den Wert 1,250. Diese Größe heißt",
+   "loesung": "Lorentzfaktor γ",
+   "post": "."
+  },
+  {
+   "pre": "Bei v = 0,60·c zeigt Station 4 den Faktor √(1−β²) = 0,8000. Während in A eine Stunde vergeht, vergehen in der bewegten Uhr deshalb nur",
+   "loesung": "48,0 min",
+   "post": "."
+  },
+  {
+   "pre": "Der Faktor √(1−β²) wird nie größer als 1. Zwischen denselben beiden Ereignissen vergeht in der bewegten Uhr also stets die",
+   "loesung": "kürzere Zeitspanne",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Station 3 beziffert eine Zeitspanne der bewegten Uhr bei v = 0,60·c auf 80,0 % der in A gemessenen; die 160 Ticks je 200 ruhende an Station 6 führen auf denselben Anteil.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Trägt man statt f² über β² den Faktor f unmittelbar über v/c auf, so liegen die vier Messpunkte auf derselben Geraden mit dem Achsenabschnitt 1 und der Steigung −1.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Station 4 gibt für v/c = 0,950 den Faktor 0,3122 an, die Zählung an Station 6 dagegen 62 Ticks je 200 und damit 0,310. Beide Angaben lassen sich vereinbaren, weil sich nur ganze Ticks zählen lassen.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Dass auch B die Uhren in A langsamer gehen sieht, macht die Herleitung widersprüchlich: Tatsächlich kann nur eine der beiden Uhren die kürzere Zeitspanne anzeigen.",
+   "stimmt": false
+  }
+ ],
+ "mc": {
+  "frage": "Tobias überträgt die Anzeige zu v = 0,95·c in den Bericht: „Der Faktor beträgt 3,203; in der bewegten Uhr vergeht je Stunde in A also das 3,203-Fache dieser Stunde.“ Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Der Faktor steht verkehrt herum. 3,203 ist der Lorentzfaktor γ und gibt an, um welchen Faktor der A-Takt länger dauert; für die Zeitspanne in der bewegten Uhr gilt √(1−β²) = 0,3122, und Station 4 nennt dazu 18,7 min je Stunde.",
+   "Die Angabe stimmt, denn auch Station 2 meldet bei v/c = 0,95 den Wert 3,203. Beide Stationen beschreiben dieselbe Uhr, der Faktor gilt daher unverändert für die bewegte Uhr.",
+   "Die Angabe lässt sich nicht entscheiden, weil 0,3122 und 3,203 zwei gleichwertige Schreibweisen desselben Faktors sind; welche der beiden Uhren mehr anzeigt, legt die Herleitung nicht fest."
+  ],
+  "richtig": 0,
+  "erklaerung": "Die beiden Zahlen sind Kehrwerte voneinander: 0,3122 · 3,203 = 1,000. Genau deshalb entscheidet die Zuordnung, und die Herleitung legt sie fest – aus Δtbew = ΔtRuh·√(1−v²/c²) folgt, dass die bewegte Uhr mit dem Faktor kleiner als 1 zu rechnen ist. Station 2 sagt dasselbe von der anderen Seite: Dort ist der A-Takt um den Faktor 3,203 länger als der B-Takt, nicht die Anzeige der bewegten Uhr größer. Station 4 druckt dazu unmittelbar 18,7 min je Stunde, und Station 6 zählt bei 0,95·c 62 Ticks gegen 200 ruhende – die bewegte Uhr tickt seltener, sie kann also nicht mehr anzeigen. Damit ist auch die dritte Beurteilung erledigt: Zwei Kehrwerte sind keine gleichwertigen Schreibweisen für dieselbe Aussage, sondern gehören zu zwei verschiedenen Uhren."
+ },
+ "offen": {
+  "frage": "Station 6 zählt bei vier Geschwindigkeiten die Ticks der bewegten Uhr und wertet die vier Messpunkte zu f² = 1,000 − 1,000·β² mit R² = 0,99998 aus; als Theoriefunktion sind Achsenabschnitt 1 und Steigung −1 vorgegeben. Leite aus Δtbew = ΔtRuh·√(1−v²/c²) her, warum gerade diese Gerade zu erwarten ist, und beurteile, was die Übereinstimmung über die Herleitung mit dem Satz des Pythagoras aussagt und was sie über die Konstanz von c nicht aussagt.",
+  "prompt": "Station 6 zählt bei vier Geschwindigkeiten die Ticks der bewegten Uhr und wertet die vier Messpunkte zu f² = 1,000 − 1,000·β² mit R² = 0,99998 aus; als Theoriefunktion sind Achsenabschnitt 1 und Steigung −1 vorgegeben. Leite aus Δtbew = ΔtRuh·√(1−v²/c²) her, warum gerade diese Gerade zu erwarten ist, und beurteile, was die Übereinstimmung über die Herleitung mit dem Satz des Pythagoras aussagt und was sie über die Konstanz von c nicht aussagt.",
+  "zeilen": 5,
+  "loesung": "Der gemessene Faktor ist das Verhältnis der beiden Zeitspannen: f = n/200 = Δtbew/ΔtRuh. Nach der Herleitung ist Δtbew/ΔtRuh = √(1−β²), also f = √(1−β²). Quadrieren beseitigt die Wurzel und liefert f² = 1 − β². Über β² aufgetragen ist das eine Gerade mit dem Achsenabschnitt 1 und der Steigung −1 – genau die vorgegebene Theoriefunktion; die Auswertung f² = 1,000 − 1,000·β² trifft beide Kennzahlen. Die Messwerte bestätigen das auch einzeln: Bei v = 0,60·c ist f = 0,800, also f² = 0,640, und mit β² = 0,360 ergibt die Summe 1,000. Dass R² mit 0,99998 knapp unter 1 bleibt, liegt an der Zählung selbst: Bei v = 0,95·c nennt Station 4 den Faktor 0,3122, gezählt werden aber 62 von 200 Ticks und damit 0,310 – feiner als ein ganzer Tick lässt sich nicht messen. Die Übereinstimmung sagt deshalb aus, dass die aus dem Satz des Pythagoras gewonnene Formel die Zählergebnisse von 0,10·c bis 0,95·c nicht nur der Tendenz nach, sondern der Größe nach richtig vorhersagt. Sie sagt aber nichts über die Konstanz von c aus: Dass das Photon auch auf dem schrägen Weg mit c läuft, ist die Voraussetzung, aus der die Formel abgeleitet und nach der die Simulation gebaut wurde. Ein Modell kann seine eigene Grundannahme nicht prüfen; dafür braucht es Messungen außerhalb des Modells, und Station 5 nennt dazu die kosmischen Myonen sowie die etwa 38 µs pro Tag, um die unkorrigierte GPS-Uhren abweichen."
+ }
+}

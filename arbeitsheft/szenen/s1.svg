@@ -1,0 +1,53 @@
+<defs>
+  <radialGradient id="s1licht" cx="0.46" cy="0.34" r="0.78">
+    <stop offset="0" stop-color="#FFE9BC" stop-opacity="0.20"/>
+    <stop offset="0.5" stop-color="#FFD98F" stop-opacity="0.05"/>
+    <stop offset="1" stop-color="#170F04" stop-opacity="0.46"/>
+  </radialGradient>
+</defs>
+  <use href="#t_flaeche_holz" x="0" y="0"/>
+  <rect x="0" y="0" width="900" height="540" fill="url(#s1licht)"/>
+
+  <!-- der Zettel aus dem Laden: nur genormte Zeichen -->
+  <g transform="translate(268,262) rotate(-4)">
+    <use href="#t_blatt_kariert" transform="scale(0.98)"/>
+    <g stroke="#4A4A52" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M-96,-96 H-24 M24,-96 H96"/>
+      <circle cx="0" cy="-96" r="24" fill="#FBF3E0"/>
+      <path d="M-17,-113 L17,-79 M17,-113 L-17,-79"/>
+      <path d="M-96,-96 V-26 M-96,26 V96"/>
+      <path d="M96,-96 V-20 M96,26 V96"/>
+      <path d="M-96,96 H96"/>
+    </g>
+    <g stroke="#4A4A52" fill="none" stroke-linecap="round">
+      <path d="M-108,-26 V26" stroke-width="6"/>
+      <path d="M-84,-13 V13" stroke-width="6"/>
+      <circle cx="96" cy="-20" r="4" fill="#4A4A52"/>
+      <circle cx="96" cy="26" r="4" fill="#4A4A52"/>
+      <path d="M96,-20 L128,20" stroke-width="5"/>
+    </g>
+  </g>
+
+  <!-- Emmas eigene Fassung daneben, mit Buntstift und krumm -->
+  <g transform="translate(646,282) rotate(5)">
+    <use href="#t_blatt" transform="scale(0.98)"/>
+    <g stroke="#8A5A22" stroke-width="7" fill="none" stroke-linecap="round">
+      <path d="M-92,26 C -66,-4 -34,-6 -10,20"/>
+      <path d="M-92,58 C -60,88 -20,86 6,58"/>
+    </g>
+    <g transform="translate(-70,44)">
+      <rect x="-42" y="-30" width="84" height="60" rx="6" fill="#9A6A3A" stroke="#6E4A24" stroke-width="4"/>
+      <path d="M-20,-30 V-48 M20,-30 V-52" stroke="#6E4A24" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(38,32)">
+      <circle cx="0" cy="0" r="30" fill="#F5D34E" stroke="#D8A81E" stroke-width="4"/>
+      <g stroke="#D8A81E" stroke-width="6" stroke-linecap="round">
+        <path d="M0,-42 V-56"/><path d="M0,42 V56"/><path d="M-42,0 H-56"/><path d="M42,0 H56"/>
+        <path d="M-30,-30 L-40,-40"/><path d="M30,-30 L40,-40"/>
+        <path d="M-30,30 L-40,40"/><path d="M30,30 L40,40"/>
+      </g>
+    </g>
+  </g>
+
+  <use href="#t_bleistift" transform="translate(452,492) rotate(-8) scale(1.05)"/>
+  <use href="#t_lampe_vorn_aus" transform="translate(120,474) rotate(-6) scale(1.0)"/>

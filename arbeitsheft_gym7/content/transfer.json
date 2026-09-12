@@ -1,0 +1,48 @@
+[
+ {
+  "kapitel": "gym_optik",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "Beim Augenarzt ist das Untersuchungszimmer nur 3 m lang, die Sehtafel muss aber aus 6 m Entfernung gelesen werden. Die Ärztin hängt die Tafel deshalb über den Kopf der Patientin und einen ebenen Spiegel an die gegenüberliegende Wand. Ein Patient beschwert sich: „Das ist doch Schummelei – der Raum ist viel zu kurz für diesen Test.“ Schreibe eine begründete Antwort, die den Trick mit dem Spiegel erklärt.",
+    "erwartung": "Die Schülerin überträgt die Regel vom ebenen Spiegel: Das Bild liegt genauso weit hinter dem Spiegel, wie der Gegenstand davorsteht. Die Tafel hängt 3 m vor dem Spiegel, ihr Bild liegt also 3 m dahinter; von den Augen der Patientin bis zum Spiegel sind es ebenfalls 3 m, der Sehweg beträgt darum 3 m + 3 m = 6 m. Weil das Auge die reflektierten Strahlen geradlinig nach hinten verlängert, sieht es die Tafel wirklich in 6 m Entfernung – für das Scharfstellen zählt dieser Weg, der Test ist also keine Schummelei. Als Zusatz erkennt sie, dass das Spiegelbild seitenverkehrt ist: Buchstaben auf solchen Tafeln müssen gespiegelt gedruckt sein, oder man verwendet Zeichen, denen die Vertauschung nichts ausmacht. Häufige Fehler: Das Bild wird auf die Spiegelfläche gelegt statt dahinter; die 6 m werden behauptet, ohne die Lage des Bildes zu begründen; das seitenverkehrte Bild wird vergessen; das virtuelle Bild wird für auffangbar gehalten."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Auf dem Flohmarkt hat Jonas für die Sternwarten-AG eine alte Schreibtischlupe ohne Aufschrift gekauft. Mira möchte wissen, welche Brennweite sie hat. Plane eine Untersuchung, mit der ihr die Brennweite der Lupe auf zwei verschiedenen Wegen bestimmen könnt, und nenne eine Sicherheitsregel, die ihr dabei beachten müsst.",
+    "erwartung": "Die Schülerin plant zwei Wege. Weg 1: Die Lupe ist eine Sammellinse und bündelt das parallele Licht der Sonne oder einer weit entfernten Lampe; ein Blatt wird verschoben, bis der kleinste, hellste Fleck entsteht, und der Abstand von der Linsenmitte bis zum Blatt gemessen – das ist die Brennweite; die Messung wird mehrfach wiederholt. Weg 2: Die Lupe wird über einer Schrift langsam angehoben; solange der Abstand kleiner als die Brennweite ist, bleibt das Bild aufrecht und vergrößert sich immer stärker. Bei dem Abstand, an dem das aufrechte Lupenbild kippt und unbrauchbar wird, liegt der Gegenstand ungefähr in der Brennweite – wie in der Simulation, die bei f = 58 ab g = 56 kein brauchbares Lupenbild mehr meldet. Beide Werte müssen übereinstimmen. Als Sicherheitsregel nennt sie: nie durch die Lupe in die Sonne schauen, und den heißen Brennfleck nie auf Haut oder trockenes Material richten. Häufige Fehler: Der Abstand wird vom Lupenrand oder Griff statt von der Linsenmitte gemessen; eine nahe Lampe liefert kein paralleles Licht, die Brennweite kommt zu groß heraus; es wird nur einmal gemessen; der Kippabstand wird mit der doppelten Brennweite verwechselt."
+   },
+   {
+    "komp": "B2",
+    "afb": "III",
+    "prompt": "Für den Abend an der Schulsternwarte darf die AG ein zweites Gerät anschaffen. Im Katalog stehen zwei Angebote zum gleichen Preis: Fernrohr A hat eine große Objektivöffnung und vergrößert 4-fach, Fernrohr B hat eine kleine Öffnung, vergrößert aber 8-fach. Die AG will vor allem lichtschwache Nebelflecke beobachten. Lege zwei Kriterien für die Entscheidung fest und begründe dann, welches Fernrohr die AG kaufen sollte.",
+    "erwartung": "Die Schülerin legt zuerst nachvollziehbare Kriterien fest, zum Beispiel die Helligkeit des Bildes und die Erkennbarkeit von Einzelheiten. Sie überträgt aus dem Kapitel die zwei getrennten Aufgaben des Fernrohrs: Die Vergrößerung zeigt ein Objekt unter größerem Sehwinkel, die Öffnung sammelt das Licht – mit der Öffnung ändert sich nicht die Größe des Bildes, sondern nur seine Helligkeit. Lichtschwache Objekte werden erst durch eine große Öffnung überhaupt sichtbar; eine stärkere Vergrößerung eines zu dunklen Bildes liefert nur einen größeren dunklen Fleck. Für die Nebelflecke entscheidet sie sich darum begründet für Fernrohr A und ordnet ein, dass Fernrohr B eher für helle Objekte wie den Mond taugt. Häufige Fehler: Die Vergrößerung wird für das einzige Qualitätsmerkmal gehalten; Öffnung und Vergrößerung werden verwechselt; die Entscheidung fällt ohne vorher festgelegte Kriterien; behauptet wird, die kleine Öffnung mache das Bild kleiner statt dunkler."
+   }
+  ]
+ },
+ {
+  "kapitel": "gym_weltall",
+  "aufgaben": [
+   {
+    "komp": "K4",
+    "afb": "III",
+    "prompt": "In einem Weltraumfilm fällt mitten zwischen Erde und Mars der Antrieb des Raumschiffs aus. Sofort wird das Schiff langsamer und bleibt schließlich im All stehen. Jonas findet die Szene spannend, du sollst sie für die Schülerzeitung prüfen. Schreibe eine Richtigstellung, die erklärt, was mit dem Schiff wirklich passieren würde.",
+    "erwartung": "Die Schülerin erkennt, dass die Szene der Physik widerspricht: Im Weltall gibt es weder Boden noch Luft, also auch nichts, was das Schiff bremsen könnte. Der Antrieb wird nur gebraucht, um schneller oder langsamer zu werden – eine Rakete stößt sich dabei am eigenen ausgestoßenen Gas ab, zum bloßen Weiterfliegen braucht das Schiff gar nichts. Fällt der Antrieb aus, fliegt es mit unveränderter Geschwindigkeit geradeaus weiter oder folgt wie ein Planet einer Bahn um die Sonne: Auch die Erde läuft seit Milliarden Jahren ohne jeden Antrieb um die Sonne, weil sie ständig an ihr vorbeifällt. Häufige Fehler: Das Raumschiff wird wie ein Auto behandelt, das ohne Gas ausrollt; die Anziehung der Sonne wird als Bremse gedeutet, obwohl der Planet quer zu ihr unterwegs ist; der Rückstoß wird mit dem Abstoßen an der Luft verwechselt; die Richtigstellung nennt die Szene nur „falsch“, ohne zu erklären, was stattdessen geschieht."
+   },
+   {
+    "komp": "E4",
+    "afb": "III",
+    "prompt": "Beim Besucherabend an der Schulsternwarte zeigt ein Gast auf einen hellen Lichtpunkt: „Das ist bestimmt ein Planet!“ Ein anderer hält ihn für einen Stern. Entwickle einen Beobachtungsplan über mehrere Wochen, mit dem Mira und Jonas den Streit ohne Fernrohr entscheiden können. Nenne zwei Merkmale und beschreibe, wie ihr die Beobachtungen festhaltet.",
+    "erwartung": "Die Schülerin nutzt zwei Merkmale aus dem Kapitel: Ein Stern funkelt am Himmel als winziger Punkt, ein Planet leuchtet als kleines Scheibchen ruhiger – das lässt sich schon am ersten Abend prüfen. Als zweites Merkmal verfolgt sie die Stellung des Lichtpunkts gegenüber den umliegenden Sternen über mehrere Wochen, etwa mit einer Skizze derselben Himmelsgegend an jedem klaren Abend zur gleichen Uhrzeit: Ein Planet wandert vor den fernen Sternen weiter und kann dabei sogar scheinbar rückwärtslaufen wie der Mars, ein Stern behält seinen Platz im Sternbild. Sie legt fest, wie jede Beobachtung festgehalten wird (Datum, Uhrzeit, Skizze), und schlägt als Gegenprobe eine Sternkarten-App vor. Häufige Fehler: Es wird nur ein einziger Abend geplant, obwohl die Wanderung Wochen braucht; die Helligkeit wird als Merkmal genommen, obwohl sie nichts entscheidet; erwartet wird, dass sich der Punkt schon innerhalb von Minuten bewegt; die Skizzen zeigen jedes Mal eine andere Himmelsgegend und lassen sich nicht vergleichen."
+   },
+   {
+    "komp": "B1",
+    "afb": "III",
+    "prompt": "Ein Reiseanbieter wirbt für Parabelflüge: „Erleben Sie echte Schwerelosigkeit! In 8000 m Höhe ist die Anziehung der Erde ausgeschaltet – Sie schweben wie im Weltall.“ Miras Tante überlegt, so einen Flug zu buchen. Beurteile die Werbeaussage: Was stimmt an dem Angebot, und welche Erklärung ist falsch?",
+    "erwartung": "Die Schülerin trennt Erlebnis und Erklärung: Das Schweben ist echt, die Begründung ist falsch. In 8000 m Höhe ist die Anziehung der Erde fast unverändert, denn erst der doppelte Abstand vom Erdmittelpunkt würde sie auf ein Viertel senken – das Flugzeug ist dafür viel zu dicht an der Erde. Die Schwerelosigkeit entsteht wie im Aufzug mit gerissenem Seil: Das Flugzeug fällt eine Zeit lang frei, Boden und Fluggäste fallen gleich schnell, kein Boden drückt gegen die Füße, und eine Waage würde 0 N zeigen. Genauso schwebt die Astronautin auf der Raumstation, die fortwährend um die Erde herumfällt. Die Schülerin folgert, dass die Tante das Schweben wirklich erleben kann, die Werbung mit „Anziehung ausgeschaltet“ aber etwas Falsches behauptet. Häufige Fehler: Schwerelos wird mit „keine Anziehung“ gleichgesetzt; die Flughöhe wird als Ursache genannt statt des freien Falls; übersehen wird, dass das Schweben nur so lange dauert, wie das Flugzeug fällt; das Angebot wird pauschal als Betrug abgetan, obwohl das Erlebnis selbst echt ist."
+   }
+  ]
+ }
+]

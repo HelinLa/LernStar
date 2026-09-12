@@ -1,0 +1,52 @@
+{
+ "id": "gw2",
+ "basiskonzept": "Mathematisieren und Vorhersagen",
+ "titel": "Der Pfeil zeigt nach innen",
+ "problem": "Noch auf der Kirmes filmen Mira und Tobias das Kettenkarussell. Je schneller es sich dreht, desto weiter stehen die Ketten schräg. Tobias fragt, welche Kraft die Sitze auf ihrer Bahn hält und wohin sie zeigt. Mira will das nicht raten: Für Jugend forscht zählt nur eine Richtung, die man am Bildschirm nachprüfen und mit Zahlen belegen kann.",
+ "frage": "Wohin zeigt die Kraft auf der Kreisbahn – und wovon hängt ihr Betrag ab?",
+ "auftrag": "Untersuche am Bildschirm, in welche Richtung der Kraftpfeil zeigt, und bestimme aus Radius und Umlauffrequenz die Zentripetalbeschleunigung, mit der Masse zusätzlich die Zentripetalkraft.",
+ "predict": [
+  "Die Kraft zeigt zum Mittelpunkt. Sie ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential geradeaus weiter.",
+  "Die Kraft zeigt in Bewegungsrichtung, also tangential zur Bahn – sonst käme der Körper auf der Kreisbahn nicht voran."
+ ],
+ "predictOk": 0,
+ "forschen": [
+  "Lies in der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ die fünf berechneten Größen ab: Umlaufzeit T, Winkelgeschwindigkeit ω, Bahngeschwindigkeit v, Zentripetalbeschleunigung a_z und Zentripetalkraft F_z.",
+  "Vergleiche im Bild die beiden Pfeile „F_z zum Mittelpunkt“ und „v tangential“, während der Drehwinkel φ einmal ganz herumläuft. Halte danach den Wert hinter „daraus gemessene Umlaufzeit“ gegen die Rechenzeile T = 1/f.",
+  "Ziehe den Regler „Masse m“ von 0,50 kg über 1,00 kg auf 2,00 kg, ohne Radius und Umlauffrequenz anzurühren, und verfolge dabei getrennt die Zeile für a_z und die Zeile für F_z."
+ ],
+ "tabCols": [
+  "Masse m (r = 0,80 m, f = 1,50 Hz)",
+  "a_z (m/s²) und F_z (N)"
+ ],
+ "tabRows": [
+  "m = 0,50 kg",
+  "m = 1,00 kg",
+  "m = 2,00 kg"
+ ],
+ "fachtext": "Eine gleichförmige Kreisbewegung ist durch wenige Größen vollständig beschrieben. Der Radius r (in m) gibt den Abstand von der Drehachse an, die Umlaufzeit T (in s) die Dauer eines vollen Umlaufs, die Umlauffrequenz f (in Hz) die Zahl der Umläufe je Sekunde; beide hängen über T = 1/f zusammen. Die Winkelgeschwindigkeit ω = 2·π·f (in rad/s) misst den überstrichenen Winkel je Zeit, die Bahngeschwindigkeit v = ω·r (in m/s) den zurückgelegten Weg je Zeit. Ihr Betrag bleibt gleich, ihre Richtung nicht – und schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r (in m/s²). Nach dem zweiten Newton'schen Gesetz gehört dazu eine Kraft in derselben Richtung: F_z = m · a_z (in N), wobei m (in kg) die Masse des Körpers ist. Die Zentripetalkraft ist keine neue Kraftart, sondern eine Aufgabe: Hier übernimmt sie ein Faden, dort eine Schiene, im Auto die Reibung und beim Kettenkarussell die waagerechte Komponente der Kettenkraft – deshalb stehen die Ketten schräg. Fällt sie weg, wirkt in der Bahnebene keine Kraft mehr, und der Körper fliegt tangential geradeaus weiter.",
+ "merksatz": [
+  {
+   "pre": "Die Zentripetalkraft zeigt immer zum",
+   "loesung": "Mittelpunkt",
+   "post": "der Kreisbahn."
+  },
+  {
+   "pre": "Es gilt a_z = ω²·r und daraus F_z =",
+   "loesung": "m · a_z",
+   "post": "."
+  }
+ ],
+ "beobachtung": "In der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz zeigt das Feld „Alle Größen der Kreisbewegung“ T = 0,667 s, ω = 9,4248 rad/s, v = 7,53984 m/s, a_z = 71,06 m/s² und F_z = 35,53 N. Darunter stehen die Rechenzeilen: v = ω·r = 9,4248 rad/s · 0,80 m, dann zweimal a_z – einmal als v²/r, einmal als ω²·r – und beide Wege geben 71,06 m/s². Vor dem ersten vollen Umlauf steht hinter „daraus gemessene Umlaufzeit“ nur ein Strich; danach steht dort T = 0,667 s, genau der Wert aus T = 1/f. Die „Uhr der Simulation“ daneben zählt weiter – sie gibt die gesamte Laufzeit an, nicht die Umlaufzeit. Der rote Pfeil zeigt in jeder Winkelstellung zum Mittelpunkt, der grüne bleibt tangential. Zieht man allein den Masse-Regler, wächst F_z von 35,53 N bei 0,50 kg über 71,06 N bei 1,00 kg auf 142,1 N bei 2,00 kg, während a_z in allen drei Zeilen 71,06 m/s² anzeigt; auch T = 0,667 s, ω = 9,4248 rad/s und v = 7,53984 m/s bleiben unverändert.",
+ "aufgabe": {
+  "frage": "Berechne für die Einstellung m = 1,00 kg, r = 1,00 m und f = 2,00 Hz nacheinander T, ω, v, a_z und F_z und vergleiche jeden Zwischenwert mit der Anzeige der Simulation.",
+  "zeilen": 5,
+  "loesung": "T = 1/f = 1 / 2,00 Hz = 0,500 s. ω = 2·π·f = 2·π·2,00 Hz = 12,5664 rad/s. v = ω·r = 12,5664 rad/s · 1,00 m = 12,56640 m/s. a_z = v²/r = (12,56640 m/s)² / 1,00 m = 157,9 m/s²; die Probe über a_z = ω²·r = (12,5664 rad/s)² · 1,00 m ergibt denselben Wert. F_z = m · a_z = 1,00 kg · 157,9 m/s² = 157,9 N. Alle fünf Zahlen stehen so auch im Feld „Alle Größen der Kreisbewegung“; dass der Zahlenwert von a_z und F_z hier gleich ist – bei verschiedenen Einheiten, m/s² und N –, liegt allein an m = 1,00 kg."
+ },
+ "alltag": "Im Auto stützt dich beim Abbiegen die Tür, dazu die Reibung zwischen dir und dem Sitz. Erkläre einer Person zu Hause in drei Sätzen, in welche Richtung diese Kraft auf dich wirkt und was ohne sie mit dir geschähe. Benutze dabei die Wörter Kreisbahn, Mittelpunkt und tangential.",
+ "alltagAfb": "II",
+ "alltagKomp": "K4",
+ "ueberleitung": "Dass F_z mit der Masse wächst, hast du an drei Einstellungen gesehen – drei Punkte sind aber noch keine Messreihe. Auf der nächsten Seite nimmst du eine ganze Reihe auf, legst eine Ausgleichsgerade hindurch und liest aus ihrer Steigung zurück, was du vorher eingestellt hast.",
+ "name": "Was hält den Körper auf der Kreisbahn?",
+ "theme": "ef_gravitation"
+}

@@ -1,0 +1,72 @@
+{
+ "id": "gw10",
+ "theme": "ef_gravitation",
+ "komp": [
+  "S1",
+  "S2",
+  "E8",
+  "E9"
+ ],
+ "afb": [
+  "I",
+  "II",
+  "II",
+  "III"
+ ],
+ "lueckensaetze": [
+  {
+   "pre": "Die Schleife des Mars erzeugt im geozentrischen Modell ein zweiter Kreis, auf dem der Planet zusätzlich zu seiner großen Bahn umläuft; dieser heißt",
+   "loesung": "Epizykel",
+   "post": "."
+  },
+  {
+   "pre": "Beide Tafeln sagen denselben Himmel voraus; an der Schleife allein lassen sich die Weltbilder daher nicht",
+   "loesung": "unterscheiden",
+   "post": "."
+  },
+  {
+   "pre": "Zu a = 1,524 AE liefert das dritte Keplergesetz für den Mars T = 1,88 Jahre; für den Abstand zweier Überholungen folgt 1 : (1 : 1,00 − 1 : 1,88) =",
+   "loesung": "2,1",
+   "post": "Jahre."
+  },
+  {
+   "pre": "Dass sich die Erde wirklich bewegt, wies erst Bessel 1838 nach, und zwar mit der",
+   "loesung": "Fixsternparallaxe",
+   "post": "."
+  }
+ ],
+ "richtigfalsch": [
+  {
+   "aussage": "Der Streifen unter den Tafeln zeigt in beiden Modellen dieselbe rückläufige Bewegung des Mars.",
+   "stimmt": true
+  },
+  {
+   "aussage": "Mit den Jupitermonden von 1610 war zugleich nachgewiesen, dass die Erde sich bewegt.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Laut Statuszeile ließ sich der Himmel mit der geozentrischen Anordnung nicht vorhersagen.",
+   "stimmt": false
+  },
+  {
+   "aussage": "Im Kästchen „Jupitermonde“ braucht der innerste Mond für einen Umlauf weniger Zeit als der äußerste.",
+   "stimmt": true
+  }
+ ],
+ "mc": {
+  "frage": "Mira nennt die Schleife des Mars den Beweis für den Umlauf der Erde. Welche Beurteilung trifft zu?",
+  "optionen": [
+   "Mira hat recht: Nur der Umlauf der Erde kann die Blickrichtung zum Mars zurückdrehen. In der linken Tafel läuft der Mars stets vorwärts, und genau daran ist diese Anordnung gescheitert.",
+   "Der Schluss trägt nicht: Die Statuszeile meldet für beide Tafeln denselben Himmel – rechts erzeugt ihn das Überholen auf der inneren Bahn, links ein zweiter Kreis je Planet. Eine für beide Modelle gleiche Vorhersage schließt keines aus.",
+   "Der Schluss trägt nicht, weil die Schleife ein zufälliges Ereignis ohne feste Wiederkehr ist; aus einer unregelmäßig auftretenden Beobachtung lässt sich grundsätzlich kein Modell prüfen."
+  ],
+  "richtig": 1,
+  "erklaerung": "Der Streifen unter den Tafeln zeigt bei beiden Modellen dasselbe Bild, und die Statuszeile bescheinigt der heliozentrischen Anordnung „genau denselben Himmel“. Auch die linke Tafel bringt die Schleife also zustande – dort über den Epizykel, den kleinen gestrichelten Zusatzkreis neben der großen Marsbahn; die Zeile unter den Tafeln zählt geozentrisch 2 Kreise je Planet, heliozentrisch 1 Kreis je Planet. Damit fällt die erste Beurteilung: Sie behauptet für die linke Tafel eine Vorhersage, die diese gar nicht macht. Der Einwand mit dem Zufall trifft ebenso wenig: Die Schleife folgt zwingend aus den Umlaufzeiten, zu T = 1,88 Jahre gehört ein Abstand von 2,1 Jahren zwischen zwei Überholungen. Miras Fehler liegt nicht bei der Regelmäßigkeit, sondern in der Logik – eine für beide Modelle gleiche Vorhersage kann keines von beiden ausschließen. Den Ausschlag gaben erst die Jupitermonde und die Venusphasen von 1610."
+ },
+ "offen": {
+  "frage": "Tobias wählt das heliozentrische Modell allein wegen des geringeren Aufwands – ein Kreis statt zweier. Beurteile diese Begründung, beziehe ein, dass die Simulation die aufgeräumte heutige Fassung zeigt, und gib an, was ein Modell erst ausschließt.",
+  "prompt": "Tobias wählt das heliozentrische Modell allein wegen des geringeren Aufwands – ein Kreis statt zweier. Beurteile diese Begründung, beziehe ein, dass die Simulation die aufgeräumte heutige Fassung zeigt, und gib an, was ein Modell erst ausschließt.",
+  "zeilen": 4,
+  "loesung": "Als Beobachtung ist der Vergleich richtig: Die Zeile unter den Tafeln zählt geozentrisch 2 Kreise je Planet und heliozentrisch 1 Kreis je Planet, für den Mars also einen Kreis statt zweier. Als Entscheidungsgrund trägt er trotzdem nicht, denn beide Anordnungen sagen denselben Himmel voraus; Sparsamkeit ist ein Argument, aber kein Beweis. Hinzu kommt, dass die Simulation die aufgeräumte heutige Fassung zeigt: Kopernikus selbst brauchte 1543 noch Zusatzkreise, weil er an gleichförmigen Kreisen festhielt – ohne sie kommt erst Keplers Ellipse aus. Der Vorsprung an Einfachheit war damals also kleiner, als die rechte Tafel ihn erscheinen lässt; ein Urteil allein über die Zahl der Kreise stützt sich auf einen Darstellungsstand, den es 1543 noch gar nicht gab. Ausschließen ließ sich der ptolemäische Aufbau erst durch Beobachtungen, für die er keinen Platz hat: 1610 sah Galilei im Fernrohr die Monde des Jupiter – also kreist nicht alles um die Erde – und vor allem die Phasen der Venus, die dieser Aufbau nicht zulässt. Dass sich die Erde wirklich bewegt, war damit noch nicht gezeigt; diesen Nachweis lieferte erst Bessel 1838 mit der Fixsternparallaxe."
+ }
+}

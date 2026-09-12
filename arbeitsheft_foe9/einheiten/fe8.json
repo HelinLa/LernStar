@@ -1,0 +1,194 @@
+{
+ "seite": {
+  "id": "fe8",
+  "quelle": "el8",
+  "sim": "hebel",
+  "sicherheit": "Simulation",
+  "theme": "foe_energie",
+  "titel": "Die Eisenstange unter dem Klavier",
+  "name": "Warum hilft eine lange Stange?",
+  "fachwoerter_neu": [
+   "Hebel",
+   "Kraftarm"
+  ],
+  "alltag": [
+   "Herr Kessler schiebt eine Eisenstange unter das Klavier.",
+   "Unter der Stange liegt ein Holzklotz. Er ist der Drehpunkt.",
+   "So eine Stange heißt Hebel.",
+   "Der Kraftarm l₁ ist die Strecke vom Drehpunkt bis zur Hand."
+  ],
+  "frage": "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
+  "predict": [
+   "Der lange Kraftarm spart Kraft. Der Weg bleibt gleich.",
+   "Der lange Kraftarm spart Kraft. Die Hand läuft dafür weiter."
+  ],
+  "predictOk": 1,
+  "forschen": [
+   "Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N.",
+   "Drücke „gleich lang – nichts gespart“. Fülle Zeile 2 aus.",
+   "Drücke „achtfach – ein Achtel der Kraft“. Fülle Zeile 3 aus.",
+   "Vergleiche die drei Zeilen. Lies im Bild die Arbeit ab."
+  ],
+  "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
+  "tabCols": [
+   "Wie lang ist der Kraftarm l₁?",
+   "Wie groß ist die Kraft F₁?",
+   "Wie weit läuft die Hand (Kraftweg)?"
+  ],
+  "tabRows": [
+   [
+    "1,00 m",
+    "50,00 N",
+    "40,0 cm"
+   ],
+   [
+    "0,25 m",
+    "",
+    ""
+   ],
+   [
+    "2,00 m",
+    "",
+    ""
+   ]
+  ],
+  "merksatz": [
+   {
+    "pre": "Ein langer Kraftarm braucht eine",
+    "loesung": "kleine",
+    "post": "Kraft F₁."
+   },
+   {
+    "pre": "Dafür läuft deine Hand einen",
+    "loesung": "langen",
+    "post": "Weg. Die Arbeit bleibt gleich."
+   }
+  ],
+  "wortbank": [
+   "kleine",
+   "langen",
+   "200,00 N",
+   "80,0 cm"
+  ],
+  "beispiel": {
+   "frage": "Was zeigt das Bild nach „doppelt so lang – halbe Kraft“?",
+   "antwort": "Kraftarm l₁ = 0,50 m und F₁ = 100,00 N. Die Hand läuft 20,0 cm, die Last steigt 10,0 cm."
+  },
+  "aufgaben": [
+   {
+    "typ": "erkennen",
+    "op": "Kreuze an",
+    "frage": "Herr Kessler nimmt eine noch längere Stange. Was passiert?",
+    "optionen": [
+     "Die Kraft wird kleiner. Die Hand läuft kürzer.",
+     "Die Kraft wird kleiner. Die Hand läuft weiter.",
+     "Die Kraft bleibt gleich. Die Last steigt höher."
+    ],
+    "richtig": 1
+   },
+   {
+    "typ": "einsetzen",
+    "op": "Trage ein",
+    "luecken": [
+     {
+      "pre": "Bei einem Kraftarm von 0,25 m brauchst du",
+      "loesung": "200,00 N",
+      "post": "."
+     },
+     {
+      "pre": "Bei 2,00 m sind es 25,00 N. Die Hand läuft dann",
+      "loesung": "80,0 cm",
+      "post": "."
+     }
+    ]
+   },
+   {
+    "typ": "erklaeren",
+    "op": "Erkläre",
+    "frage": "Jannis sagt: „Der lange Hebel spart auch Arbeit.“ Erkläre, warum das nicht stimmt.",
+    "satzstarter": "Im Bild steht bei jedem Kraftarm …",
+    "zeilen": 4
+   }
+  ],
+  "hilfen": {
+   "h1": "Beide Merksatz-Wörter stehen in der Wortbank. Streiche sie durch.",
+   "h2": "Vergleiche Zeile 2 und Zeile 3 deiner Tabelle.",
+   "h3": "Fast fertig: Im Bild steht immer 20,00 J. Die Kraft wird kleiner, der Weg wird ___ ."
+  },
+  "selbstcheck": [
+   "Ich kann den Kraftarm l₁ am Hebel zeigen.",
+   "Ich kann sagen, was ein langer Kraftarm bewirkt.",
+   "Ich kann erklären, warum der Hebel keine Arbeit spart."
+  ],
+  "zuhause": "Drücke eine Tür an der Klinke auf. Drücke dann neben den Angeln. Schreibe auf, wo es leichter geht.",
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern liegt dieselbe gerade Eisenstange auf einem Holzklotz; der Holzklotz ist groß mit „Drehpunkt“ beschriftet. Links am kurzen Ende drückt eine Klavierecke die Stange nach unten, beschriftet „Last F₂ = 200 N“; die Strecke vom Holzklotz bis zum Klavier ist bemaßt mit „0,25 m“. Rechts drückt eine Hand auf die Stange. Feld 1 oben groß „Kraftarm l₁ = 0,25 m“: die Hand steht dicht neben dem Holzklotz, darunter „F₁ = 200,00 N“ und ein kurzer senkrechter Maßstrich am Handende, beschriftet „Kraftweg 10,0 cm“. Feld 2 oben groß „Kraftarm l₁ = 2,00 m“: dieselbe Hand steht sehr weit rechts, darunter „F₁ = 25,00 N“ und ein achtmal so langer senkrechter Maßstrich, beschriftet „Kraftweg 80,0 cm“. Das Klavier steigt in beiden Feldern gleich weit; beide Male derselbe kurze Maßstrich mit „Lastweg 10,0 cm“. Unter den beiden Feldern eine gemeinsame große Zeile: „Arbeit beide Male 20,00 J“. Keine Kraftpfeile, keine Bewegungslinien, keine zweite Stange, keine Winkel und keine Bögen, keine Personen außer der einen Hand. Ruhiger heller Hintergrund ohne Deko.]"
+ },
+ "lehrer": {
+  "id": "fe8",
+  "lernziel": "Die Schülerinnen und Schüler lesen am Hebel ab, dass ein längerer Kraftarm l₁ eine kleinere Kraft F₁ braucht, und beschreiben am Kraftweg, dass die Hand dafür einen längeren Weg läuft. Sie lesen die Arbeit als unveränderte 20,00 J ab und begründen damit: Der Hebel spart Kraft, aber keine Arbeit. Gerechnet wird nicht.",
+  "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die vier Ergebniskarten aus diesem Lehrerteil als Karten oder als Tafelbild. Optional als Demonstration: ein Lineal auf einem runden Stift als Drehpunkt, ein Buch als Last, einmal dicht am Stift und einmal am äußeren Ende gedrückt.",
+  "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
+  "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
+  "ersatz_ohne_simulation": "Vier Ergebniskarten vorlesen oder an die Tafel hängen. Die Last bleibt auf allen Karten bei F₂ = 200 N, der Lastarm ist nicht einstellbar und immer l₂ = 0,25 m. Karte 1 (Ausgangszustand, Regler auf 1,00 m): „Kraftarm l₁ = 1,00 m · F₁ = 50,00 N · Kraftweg 40,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 2 (Knopf „gleich lang – nichts gespart“): „Kraftarm l₁ = 0,25 m · F₁ = 200,00 N · Kraftweg 10,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 3 (Knopf „doppelt so lang – halbe Kraft“, das gelöste Beispiel): „Kraftarm l₁ = 0,50 m · F₁ = 100,00 N · Kraftweg 20,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Karte 4 (Knopf „achtfach – ein Achtel der Kraft“): „Kraftarm l₁ = 2,00 m · F₁ = 25,00 N · Kraftweg 80,0 cm · Lastweg 10,0 cm · Arbeit beide Male 20,00 J“. Dazu eine fünfte Karte mit den beiden Sätzen, die die Simulation anzeigt: „Der lange Arm spart Kraft – und kostet Weg“ (Bildzeile über dem Hebel) und „Der Hebel spart Kraft – niemals Arbeit“ (Zeile unter dem Bild). Als Tischversuch zur Gegenprobe: Lineal auf einem Stift, ein Buch dicht am Stift als Last, einmal dicht daneben und einmal ganz außen drücken lassen; beobachtet wird nur, wo es leichter geht und wie weit die drückende Hand nach unten läuft.",
+  "merksatz": [
+   "kleine",
+   "langen"
+  ],
+  "tabelle_erwartet": [
+   [
+    "0,25 m",
+    "200,00 N",
+    "10,0 cm"
+   ],
+   [
+    "2,00 m",
+    "25,00 N",
+    "80,0 cm"
+   ]
+  ],
+  "a1": {
+   "richtig": 1,
+   "weg": "Die eigene Tabelle trägt die Antwort: Von 0,25 m auf 2,00 m fällt die Kraft von 200,00 N auf 25,00 N, der Kraftweg wächst von 10,0 cm auf 80,0 cm. Eine noch längere Stange setzt diese Richtung fort – kleinere Kraft, längerer Weg.",
+   "typische_fehler": [
+    "Antwort 2: Kraft und Weg werden gleichgerichtet gedacht („leichter heißt auch kürzer“) – genau die Vermutung 1 auf Seite A.",
+    "Antwort 3: Der Lastweg wird mit dem Kraftweg verwechselt. Die Last steigt in jedem Zustand genau 10,0 cm; das steht auf allen Karten.",
+    "Die Knopfaufschriften werden als Antwort abgeschrieben („halbe Kraft“), ohne in die Tabelle zu sehen."
+   ]
+  },
+  "a2": {
+   "loesungen": [
+    "200,00 N",
+    "80,0 cm"
+   ],
+   "typische_fehler": [
+    "„200 N“ statt „200,00 N“. Fachlich richtig, aber die Anzeige schreibt die Last ohne Nachkommastellen (F₂ = 200 N) und die Kraft mit zweien (F₁ = 200,00 N). Beide Schreibweisen stehen bei l₁ = 0,25 m nebeneinander und werden für zwei verschiedene Werte gehalten – hier ausdrücklich ansprechen.",
+    "In die zweite Lücke kommt „10,0 cm“: der Lastweg statt des Kraftwegs.",
+    "In die zweite Lücke kommt „8,00“ oder „achtfach“ aus dem Knopfnamen statt einer Länge."
+   ]
+  },
+  "a3": {
+   "erwartung": "Im Bild steht bei jedem Kraftarm dieselbe Arbeit: 20,00 J. Die Kraft wird kleiner, aber der Weg wird genauso viel länger. Deshalb spart der Hebel nur Kraft, keine Arbeit.",
+   "alternativen": [
+    "Zahlenvergleich aus der eigenen Tabelle: „Bei 0,25 m sind es 200,00 N und 10,0 cm, bei 2,00 m nur 25,00 N, dafür 80,0 cm.“ – reicht für die volle Wertung.",
+    "Wörtlicher Bezug auf die Bildzeile „Der lange Arm spart Kraft – und kostet Weg“.",
+    "Alltagsbezug: „An der Türklinke geht es leichter, aber die Hand muss weiter mitlaufen.“"
+   ],
+   "typische_fehler": [
+    "Der Merksatz wird abgeschrieben, ohne Jannis zu widersprechen. Nachfragen: Welche Zahl aus dem Bild zeigt das?",
+    "„Arbeit“ und „Kraft“ werden als dasselbe Wort benutzt („weniger Kraft ist weniger Arbeit“).",
+    "Es wird nachgerechnet (25,00 N · 0,80 m). Das ist nicht verlangt und führt über die verschwiegene Umrechnung 80,0 cm → 0,80 m in die Irre; die Arbeit wird nur abgelesen."
+   ]
+  },
+  "hilfe3_wort": "länger (auch richtig: weiter, größer)",
+  "schwache": [
+   "Die Vermutung muss VOR dem ersten Knopfdruck stehen. Die Knöpfe heißen „halbe Kraft“ und „ein Achtel der Kraft“ und nehmen das Ergebnis vorweg; wer zuerst drückt, hat die Forscherfrage schon beantwortet.",
+   "Zuerst nur Zeile 1 und Zeile 2 ausfüllen (1,00 m und 0,25 m), Zeile 3 erst danach dazunehmen.",
+   "Es gibt keinen Zurücksetzen-Knopf. Zurück zum Ausgangszustand kommt man nur, indem man den Regler wieder auf 1,00 m zieht. Das vorher zeigen.",
+   "Den Last-Regler nicht anfassen lassen. Er bleibt auf 200 N; sonst passen die Kraftwerte der Tabelle nicht mehr.",
+   "Die Beispielzeile der Tabelle gemeinsam laut lesen und die drei Zahlen im Bild zeigen lassen, bevor die Simulation weiterbedient wird.",
+   "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
+  ],
+  "zusatz": "Freiwillig für schnelle Lernende: Drücke „doppelt so lang – halbe Kraft“ und schreibe Kraft und Kraftweg auf. Ordne den Wert zwischen deine beiden Tabellenzeilen ein.",
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Hebel als Kraftwandler. Neu sind genau zwei Fachwörter: Hebel und Kraftarm l₁. „Drehpunkt“, „Kraftweg“ und „Lastweg“ bleiben nach Zählregel 5 Alltagswörter: Der Drehpunkt bekommt im Alltagsteil einen Begriffssatz, der Kraftweg steht als Klammer im Tabellenkopf, der Lastweg nur als Beschriftung im Bildauftrag – keines der drei steht in Wortbank, Merksatz-Lücke oder Aufgabe. „Kraft“ stammt aus fk1, „Newton (N)“ aus fk2, „Arbeit W in Joule“ aus fe1; alle drei werden hier nur wiederholt. Bewusst gestrichen: das Wort „Hebelgesetz“, „Lastarm l₂“ als Lernwort (der Lastarm ist in dieser Simulation gar nicht einstellbar und immer 0,25 m) – auch im Bildauftrag trägt diese Strecke nur ihr Maß „0,25 m“, ohne Namen und ohne Formelzeichen, sonst wäre sie nach Zählregel 5 das dritte Fachwort; ferner „Kraftwandler“, „masselos“ sowie die Formelzeichen s₁/s₂ und W₁/W₂ – acht indizierte Zeichen auf einer Doppelseite verwechselt die Zielgruppe systematisch, deshalb bleiben nur F₁, F₂ und l₁ stehen. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite; die Sache steht hier als „Die Arbeit bleibt gleich“. Datenlage: Alle gedruckten Werte stammen aus den Bildtexten der Simulation bei F₂ = 200 N – 1,00 m/50,00 N/40,0 cm, 0,25 m/200,00 N/10,0 cm, 0,50 m/100,00 N/20,0 cm, 2,00 m/25,00 N/80,0 cm, dazu durchgehend Lastweg 10,0 cm und „Arbeit beide Male 20,00 J“. Der Wert 0,50 m ist NUR über den Knopf „doppelt so lang – halbe Kraft“ belegt, nicht über die Reglerreihe; er steht deshalb im gelösten Beispiel und nicht in der Tabelle. Nachgemessen (simcheck/werte.js, Anzeige hebWertL1): Die Reglerbeschriftung springt nach jedem Knopfdruck mit – „achtfach“ zeigt 2,00, „gleich lang“ 0,25, „doppelt so lang“ 0,50. Abgefragt wird die Kraftarmlänge trotzdem aus dem Bild, weil dort auch Kraft, Wege und Arbeit nebeneinander stehen. Nicht nachgemessen und darum nicht gedruckt: jeder Zustand, in dem Kraftarm und Last gleichzeitig verstellt sind – die Last bleibt auf der ganzen Doppelseite bei 200 N. Modellgrenze für das Unterrichtsgespräch: Die Stange gilt als masselos und starr, Reibung im Drehpunkt und Durchbiegen sind nicht enthalten. Kompetenzen: die Tabelle trägt E5, Aufgabe 3 trägt E6, der Zuhause-Auftrag trägt UF4."
+ }
+}

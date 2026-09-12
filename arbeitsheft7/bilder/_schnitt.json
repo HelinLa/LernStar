@@ -1,0 +1,56 @@
+{
+ "f8": {
+  "box": [
+   0.0,
+   0.28,
+   0.462,
+   0.648
+  ],
+  "warum": "Bild kam als Doppelfeld (abends|morgens). Genommen wird nur das linke Feld, und daraus der Streifen mit Hof UND Spiegelgesicht - der Morgen ist die halbe Antwort und gehoert nicht ins Einstiegsbild."
+ },
+ "g10": {
+  "box": [
+   0.3343,
+   0.36,
+   0.6646,
+   0.755
+  ],
+  "warum": "Bild kam als Dreierstreifen (Morgen|Mittag|Abend). Genommen wird nur das mittlere Feld bei Ebbe - Morgen und Abend sind die halbe Antwort."
+ },
+ "t8": {
+  "box": [
+   0.0,
+   0.279,
+   0.655,
+   0.868
+  ],
+  "warum": "Bild hatte oben rechts ein rundes Nebenbild, das das Band in einzelne Sterne aufgeloest zeigt - genau die Antwort. Der Ausschnitt laesst es weg."
+ },
+ "t6": {
+  "box": [
+   0.0,
+   0.289,
+   0.545,
+   0.779
+  ],
+  "warum": "Bild hatte ein rundes Nebenbild mit Orion und zwei Sanduhren (eine fast leer) - das ist die Antwort auf 'wer geht zuerst aus'. Der Ausschnitt zeigt nur Bens Stutzen."
+ },
+ "t1": {
+  "box": [
+   0.235,
+   0.02,
+   1.0,
+   0.813
+  ],
+  "warum": "Bild hatte unten links ein rundes Nebenbild mit dem scharfen Schild. Der Ausschnitt laesst es weg; beide Linsen und der Blick durchs Okular bleiben."
+ },
+ "t2": {
+  "box": [
+   0.491,
+   0.099,
+   1.0,
+   0.654
+  ],
+  "warum": "Bild kam als Doppelfeld (Handy+Fernrohr | Wohnzimmer) mit rundem Nebenbild links. Genommen wird nur das rechte Feld - das ist das gebriefte Motiv."
+ }
+}

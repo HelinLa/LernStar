@@ -1,0 +1,204 @@
+[
+ {
+  "sim": "v-umrechnung",
+  "ueberschrift": "🔄 Wie werden m/s und km/h umgerechnet?",
+  "regler": [],
+  "knoepfe": [
+   {
+    "aufschrift": "◀ langsamer",
+    "ruft": "_umrStep(-1)"
+   },
+   {
+    "aufschrift": "schneller ▶",
+    "ruft": "_umrStep(1)"
+   },
+   {
+    "aufschrift": "↺",
+    "ruft": "_umrReset()"
+   },
+   {
+    "aufschrift": "🚶 Fußgänger",
+    "ruft": "_umrBsp(0)"
+   },
+   {
+    "aufschrift": "🚴 Radfahrer",
+    "ruft": "_umrBsp(1)"
+   },
+   {
+    "aufschrift": "🚗 Auto (Stadt)",
+    "ruft": "_umrBsp(2)"
+   },
+   {
+    "aufschrift": "🚄 ICE",
+    "ruft": "_umrBsp(3)"
+   },
+   {
+    "aufschrift": "1 km/h",
+    "ruft": "_umrAns(0,0)"
+   },
+   {
+    "aufschrift": "3,6 km/h",
+    "ruft": "_umrAns(0,1)"
+   },
+   {
+    "aufschrift": "60 km/h",
+    "ruft": "_umrAns(0,2)"
+   },
+   {
+    "aufschrift": "Mal 3,6",
+    "ruft": "_umrAns(1,0)"
+   },
+   {
+    "aufschrift": "Durch 3,6",
+    "ruft": "_umrAns(1,1)"
+   },
+   {
+    "aufschrift": "Mal 1000",
+    "ruft": "_umrAns(1,2)"
+   },
+   {
+    "aufschrift": "3,6 km/h",
+    "ruft": "_umrAns(2,0)"
+   },
+   {
+    "aufschrift": "36 km/h",
+    "ruft": "_umrAns(2,1)"
+   },
+   {
+    "aufschrift": "360 km/h",
+    "ruft": "_umrAns(2,2)"
+   },
+   {
+    "aufschrift": "😟 unsicher",
+    "ruft": "_umrSelf(1)"
+   },
+   {
+    "aufschrift": "😐 geht so",
+    "ruft": "_umrSelf(2)"
+   },
+   {
+    "aufschrift": "😃 sicher",
+    "ruft": "_umrSelf(3)"
+   },
+   {
+    "aufschrift": "🗑 Protokoll zurücksetzen",
+    "ruft": "_abClear('umrechnung')"
+   }
+  ],
+  "hinweise": [
+   "Stelle eine Geschwindigkeit ein und sieh dir beide Einheiten an. Merke: von m/s zu km/h mal 3,6 – von km/h zu m/s durch 3,6.",
+   "1 m/s = 3,6 km/h. Um von m/s in km/h umzurechnen, multipliziert man mit 3,6. Um von km/h in m/s umzurechnen, teilt man durch 3,6. So kann man Alltagsgeschwindigkeiten vergleichen.",
+   "m/s → km/h: × 3,6 · km/h → m/s: ÷ 3,6 · 1 m/s = 3,6 km/h."
+  ],
+  "status": [
+   {
+    "einstellung": "Ausgangszustand",
+    "text": "umrStatus: 10,0 m/s · 3,6 = 36,0 km/h. (Rückwärts: 36,0 km/h ÷ 3,6 = 10,0 m/s.)"
+   },
+   {
+    "einstellung": "◀ langsamer",
+    "text": "umrStatus: 9,0 m/s · 3,6 = 32,4 km/h. (Rückwärts: 32,4 km/h ÷ 3,6 = 9,0 m/s.)"
+   },
+   {
+    "einstellung": "schneller ▶",
+    "text": "umrStatus: 10,0 m/s · 3,6 = 36,0 km/h. (Rückwärts: 36,0 km/h ÷ 3,6 = 10,0 m/s.)"
+   },
+   {
+    "einstellung": "↺",
+    "text": "umrStatus: 10,0 m/s · 3,6 = 36,0 km/h. (Rückwärts: 36,0 km/h ÷ 3,6 = 10,0 m/s.)"
+   },
+   {
+    "einstellung": "🚶 Fußgänger",
+    "text": "umrStatus: 1,5 m/s · 3,6 = 5,4 km/h. (Rückwärts: 5,4 km/h ÷ 3,6 = 1,5 m/s.)"
+   },
+   {
+    "einstellung": "🚴 Radfahrer",
+    "text": "umrStatus: 5,0 m/s · 3,6 = 18,0 km/h. (Rückwärts: 18,0 km/h ÷ 3,6 = 5,0 m/s.)"
+   },
+   {
+    "einstellung": "🚗 Auto (Stadt)",
+    "text": "umrStatus: 14,0 m/s · 3,6 = 50,4 km/h. (Rückwärts: 50,4 km/h ÷ 3,6 = 14,0 m/s.)"
+   },
+   {
+    "einstellung": "🚄 ICE",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)"
+   },
+   {
+    "einstellung": "1 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ 1 m/s ist mehr als 1 km/h."
+   },
+   {
+    "einstellung": "3,6 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✓ Richtig! 1 m/s = 3,6 km/h."
+   },
+   {
+    "einstellung": "60 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht."
+   },
+   {
+    "einstellung": "Mal 3,6",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✓ Richtig! m/s · 3,6 = km/h."
+   },
+   {
+    "einstellung": "Durch 3,6",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Das wäre der Weg zurück (km/h → m/s)."
+   },
+   {
+    "einstellung": "Mal 1000",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s."
+   },
+   {
+    "einstellung": "3,6 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Das ist nur 1 m/s."
+   },
+   {
+    "einstellung": "36 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✓ Richtig! 10 · 3,6 = 36 km/h."
+   },
+   {
+    "einstellung": "360 km/h",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Um den Faktor 10 zu groß."
+   },
+   {
+    "einstellung": "😟 unsicher",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Um den Faktor 10 zu groß.  ||  umrSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😐 geht so",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Um den Faktor 10 zu groß.  ||  umrSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😃 sicher",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Um den Faktor 10 zu groß."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen",
+    "text": "umrStatus: 83,0 m/s · 3,6 = 298,8 km/h. (Rückwärts: 298,8 km/h ÷ 3,6 = 83,0 m/s.)  ||  umrFb0: ✗ So groß ist der Faktor nicht.  ||  umrFb1: ✗ Mit 1000 rechnet man km ↔ m, nicht km/h ↔ m/s.  ||  umrFb2: ✗ Um den Faktor 10 zu groß."
+   }
+  ],
+  "bildtexte": [
+   "10,0",
+   "m/s",
+   "36,0",
+   "km/h",
+   "× 3,6",
+   "÷ 3,6",
+   "10,0 m/s  =  36,0 km/h",
+   "9,0",
+   "32,4",
+   "9,0 m/s  =  32,4 km/h",
+   "1,5",
+   "5,4",
+   "1,5 m/s  =  5,4 km/h",
+   "5,0",
+   "18,0",
+   "5,0 m/s  =  18,0 km/h",
+   "14,0",
+   "50,4",
+   "14,0 m/s  =  50,4 km/h",
+   "83,0",
+   "298,8",
+   "83,0 m/s  =  298,8 km/h"
+  ]
+ }
+]

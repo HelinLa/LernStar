@@ -1,0 +1,1777 @@
+[
+ {
+  "id": "sp1",
+  "theme": "spannung",
+  "lueckensaetze": [
+   {
+    "pre": "Es gibt zwei Ladungsarten: positive und",
+    "loesung": "negative",
+    "post": " Ladung."
+   },
+   {
+    "pre": "Gleiche Ladungen stoßen sich ab, ungleiche",
+    "loesung": "ziehen",
+    "post": " sich an."
+   },
+   {
+    "pre": "Beim Reiben wandern Ladungen von einem Stoff auf den",
+    "loesung": "anderen",
+    "post": "."
+   },
+   {
+    "pre": "Zwischen geladenen Körpern wirkt eine Kraft, ohne dass sie sich",
+    "loesung": "berühren",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwei negativ geladene Kugeln ziehen sich an.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine positive und eine negative Kugel ziehen sich an.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein geriebener Kunststoff kann Staub anziehen, obwohl der Staub ungeladen ist.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Reiben entsteht neue Ladung aus dem Nichts.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Zwei Kugeln stoßen sich ab. Was weißt du damit über ihre Ladungen?",
+   "optionen": [
+    "Eine ist geladen, die andere gar nicht. Dann gäbe es Anziehung, keine Abstoßung.",
+    "Sie sind ungleich geladen, also eine positiv und eine negativ. Das ergäbe Anziehung.",
+    "Sie tragen die gleiche Ladung – entweder beide positiv oder beide negativ.",
+    "Über die Ladungen lässt sich daraus nichts sagen. Die Regel gleich/ungleich sagt genau das aus."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia hält ein geriebenes Lineal über kleine Papierschnipsel. Sie springen hoch, fallen nach kurzer Zeit aber wieder ab. Erkläre beides.",
+   "zeilen": 4,
+   "loesung": "Durch das Reiben ist das Lineal elektrisch geladen. Ein Papierschnipsel ist insgesamt ungeladen, seine Ladungen lassen sich aber ein Stück verschieben: Die ungleiche Ladung wandert zur Seite des Lineals, die gleiche weg davon. Weil die Kraft bei kleinerem Abstand größer ist, überwiegt die Anziehung und der Schnipsel springt hoch. Beim Berühren gleichen sich die Ladungen dann aus, oder es fließt Ladung über die feuchte Luft ab. Danach ist kein Unterschied mehr da, und der Schnipsel fällt wieder herunter."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "sp2",
+  "theme": "spannung",
+  "lueckensaetze": [
+   {
+    "pre": "Die Stromstärke I gibt an, wie viel Ladung in jeder",
+    "loesung": "Sekunde",
+    "post": " fließt."
+   },
+   {
+    "pre": "Die Einheit der Stromstärke ist das",
+    "loesung": "Ampere",
+    "post": ", abgekürzt A."
+   },
+   {
+    "pre": "Bei „stark“ zeigt die Simulation I =",
+    "loesung": "0,60 A",
+    "post": ", bei „schwach“ nur 0,10 A."
+   },
+   {
+    "pre": "Ist der Stromkreis offen, so beträgt die Stromstärke",
+    "loesung": "0",
+    "post": " A."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Je größer die Stromstärke, desto heller leuchtet die Lampe.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Auch im offenen Stromkreis fließt noch ein kleiner Strom.",
+    "stimmt": false
+   },
+   {
+    "aussage": "0,60 A sind sechsmal so viel wie 0,10 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Stromstärke misst, wie viel Ladung insgesamt in der Batterie steckt.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Was bedeutet die Angabe I = 0,30 A?",
+   "optionen": [
+    "In jeder Sekunde fließt eine bestimmte Ladungsmenge durch den Draht.",
+    "Die Batterie hat einen Vorrat von 0,30 Ladungen. Die Stromstärke ist kein Vorrat, sondern ein Fluss.",
+    "Die Lampe hat einen Widerstand von 0,30. Der Widerstand wird in Ohm angegeben, nicht in Ampere.",
+    "Der Antrieb der Ladungen beträgt 0,30. Der Antrieb ist die Spannung und wird in Volt gemessen."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben misst an seiner Seifenkiste 0,10 A, nach dem Kabeltausch 0,60 A. Berechne, um welchen Faktor die Stromstärke gewachsen ist, und erkläre, woran man das an der Lampe sehen würde.",
+   "zeilen": 4,
+   "loesung": "Der Faktor ergibt sich als 0,60 A geteilt durch 0,10 A, also 6. Es fließt jetzt sechsmal so viel Ladung pro Sekunde durch den Kreis. An einer Lampe im selben Kreis würde man das sofort sehen: Sie leuchtet deutlich heller, weil in derselben Zeit sechsmal so viele Ladungen den Glühdraht durchlaufen und dabei Energie abgeben. Der Draht wird dadurch heißer. Die Stromstärke sagt dabei nichts darüber aus, wie lange der Akku noch durchhält – das ist eine andere Frage."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "sp3",
+  "theme": "spannung",
+  "lueckensaetze": [
+   {
+    "pre": "Die elektrische Spannung U ist der",
+    "loesung": "Antrieb",
+    "post": " für die Ladungen."
+   },
+   {
+    "pre": "Gemessen wird die Spannung in",
+    "loesung": "Volt",
+    "post": ", abgekürzt V."
+   },
+   {
+    "pre": "Eine einzelne Zelle liefert",
+    "loesung": "1,5 V",
+    "post": "."
+   },
+   {
+    "pre": "Drei Zellen hintereinander liefern zusammen",
+    "loesung": "4,5 V",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Zwei hintereinandergeschaltete Zellen liefern 3 V.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Mehr Spannung bedeutet bei derselben Lampe mehr Strom.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Spannung wird mit einem Amperemeter gemessen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Vier Zellen hintereinander liefern 4 V.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine Taschenlampe braucht 4,5 V. Wie viele 1,5-V-Zellen gehören hinein?",
+   "optionen": [
+    "Eine, wenn sie groß genug ist. Die Größe einer Zelle ändert ihre Spannung nicht.",
+    "Zwei, denn 1,5 V mal 2 sind 4,5 V. Zwei Zellen ergeben 3 V.",
+    "Sechs, denn 4,5 geteilt durch 1,5 ist 6. Der Quotient ist 3, nicht 6.",
+    "Drei, denn 1,5 V + 1,5 V + 1,5 V ergeben 4,5 V."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mia legt zwei Zellen nebeneinander statt hintereinander. Die Lampe leuchtet genauso hell wie mit einer einzigen. Erkläre, warum – und wofür diese Schaltung trotzdem gut ist.",
+   "zeilen": 4,
+   "loesung": "Beim Hintereinanderschalten liegt der Pluspol der einen Zelle am Minuspol der nächsten. Die Antriebe wirken dann in dieselbe Richtung und addieren sich, aus 1,5 V und 1,5 V werden 3 V. Legt Mia die Zellen dagegen nebeneinander, also parallel, so liegt jede für sich zwischen denselben beiden Punkten. Der Antrieb bleibt deshalb bei 1,5 V, und die Lampe leuchtet unverändert. Gut ist die Parallelschaltung trotzdem: Beide Zellen liefern gemeinsam den Strom, jede gibt nur die Hälfte ab, und die Lampe brennt ungefähr doppelt so lange."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "sp4",
+  "theme": "spannung",
+  "lueckensaetze": [
+   {
+    "pre": "Das Amperemeter wird",
+    "loesung": "in Reihe",
+    "post": " in den Stromkreis eingebaut."
+   },
+   {
+    "pre": "Das Voltmeter wird",
+    "loesung": "parallel",
+    "post": " zum Bauteil angeschlossen."
+   },
+   {
+    "pre": "Ein Amperemeter parallel angeschlossen erzeugt einen",
+    "loesung": "Kurzschluss",
+    "post": "."
+   },
+   {
+    "pre": "Ein Voltmeter in Reihe geschaltet lässt fast keinen",
+    "loesung": "Strom",
+    "post": " mehr durch."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Amperemeter hat einen sehr kleinen Widerstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Voltmeter darf man in Reihe schalten, wenn man vorsichtig ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Von den vier Kombinationen aus Gerät und Anschluss sind genau zwei richtig.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beide Messgeräte werden gleich angeschlossen, nur die Anzeige unterscheidet sich.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum muss der ganze Strom durch ein Amperemeter hindurchfließen?",
+   "optionen": [
+    "Damit das Gerät genug Energie zum Anzeigen bekommt. Messgeräte beziehen ihre Energie nicht aus dem Messstrom.",
+    "Weil es zählt, wie viel Ladung pro Sekunde vorbeikommt – das geht nur, wenn alles hindurchgeht.",
+    "Damit die Lampe dunkler wird und man besser ablesen kann. Das Gerät soll den Kreis gerade nicht verändern.",
+    "Weil es sonst die Spannung anzeigen würde. Was ein Gerät misst, hängt vom Gerät ab, nicht vom Anschluss allein."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben schließt versehentlich das Amperemeter parallel zur Lampe an. Beschreibe, was im Stromkreis geschieht, und begründe, warum das für das Gerät gefährlich ist.",
+   "zeilen": 4,
+   "loesung": "Das Amperemeter hat einen sehr kleinen Widerstand, viel kleiner als die Lampe. Parallel angeschlossen bietet es dem Strom einen bequemen zweiten Weg an der Lampe vorbei. Fast der gesamte Strom nimmt diesen Weg, und weil der Widerstand dort so klein ist, wird die Stromstärke sehr groß – das ist ein Kurzschluss. Die Lampe bleibt dabei dunkel oder leuchtet nur schwach. Für das Messgerät ist das gefährlich, weil es für so große Ströme nicht gebaut ist: Der Draht im Inneren erhitzt sich, die Sicherung brennt durch oder das Gerät geht kaputt. Auch die Batterie wird dabei stark belastet und heiß."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "sp5",
+  "theme": "spannung",
+  "lueckensaetze": [
+   {
+    "pre": "Bei gleichem Widerstand gilt: mehr Spannung, mehr",
+    "loesung": "Strom",
+    "post": "."
+   },
+   {
+    "pre": "Bei gleicher Spannung gilt: größerer Widerstand,",
+    "loesung": "weniger",
+    "post": " Strom."
+   },
+   {
+    "pre": "Bei mittlerem Widerstand liefern 3 V eine Stromstärke von",
+    "loesung": "0,20 A",
+    "post": "."
+   },
+   {
+    "pre": "Beim Untersuchen darf man immer nur eine",
+    "loesung": "Größe",
+    "post": " verändern."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei mittlerem Widerstand liefert dreifache Spannung auch dreifache Stromstärke.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei 4,5 V und kleinem Widerstand fließt weniger Strom als bei großem Widerstand.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Wer zwei Größen gleichzeitig ändert, kann die Ursache nicht mehr zuordnen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Widerstand hat auf die Stromstärke keinen Einfluss.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Bei mittlerem Widerstand fließen mit 1,5 V genau 0,10 A. Wie viel fließt mit 4,5 V?",
+   "optionen": [
+    "0,10 A, denn der Widerstand bleibt gleich. Nicht der Widerstand allein bestimmt den Strom.",
+    "0,15 A, denn zu jedem Volt kommen 0,05 A dazu. Der Zusammenhang ist nicht additiv, sondern vervielfachend.",
+    "0,30 A, denn die dreifache Spannung ergibt bei gleichem Widerstand die dreifache Stromstärke.",
+    "0,90 A, denn 4,5 geteilt durch 5 ergibt 0,90. Das gilt für den kleinen Widerstand, nicht den mittleren."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben will herausfinden, ob der neue Akku oder das dickere Kabel für den schnelleren Motor gesorgt hat. Beschreibe, wie er vorgehen muss, damit die Antwort eindeutig wird.",
+   "zeilen": 4,
+   "loesung": "Er muss zwei getrennte Messungen machen und dabei jedes Mal nur eine Größe verändern. Zuerst behält er das alte Kabel und tauscht nur den Akku; die gemessene Stromstärke zeigt dann allein die Wirkung der größeren Spannung. Danach nimmt er wieder den alten Akku und tauscht nur das Kabel; jetzt zeigt die Messung allein die Wirkung des kleineren Widerstands. Alles andere – Motor, Anschlüsse, Messgerät – muss beide Male gleich bleiben. Verändert er wie zuvor beides zusammen, überlagern sich die Wirkungen, und aus der Endzahl lässt sich nicht mehr ablesen, welcher Anteil woher kommt."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd1",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "Das Formelzeichen des Widerstands ist",
+    "loesung": "R",
+    "post": ", seine Einheit das Ohm (Ω)."
+   },
+   {
+    "pre": "Bei gleicher Spannung gilt: je größer der Widerstand, desto",
+    "loesung": "kleiner",
+    "post": " die Stromstärke."
+   },
+   {
+    "pre": "Aus U und I berechnet man den Widerstand als R =",
+    "loesung": "U/I",
+    "post": "."
+   },
+   {
+    "pre": "Wo Strom durch einen Widerstand fließt, entsteht",
+    "loesung": "Wärme",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 4,5 V fließen durch 45 Ω genau 0,10 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein großer Widerstand lässt bei gleicher Spannung mehr Strom durch.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der dicke Kupferdraht hat von den drei Bauteilen den kleinsten Widerstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Widerstand von 15 Ω lässt bei 4,5 V dieselbe Stromstärke durch wie 45 Ω.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Durch ein Bauteil fließen bei 6 V genau 0,30 A. Wie groß ist sein Widerstand?",
+   "optionen": [
+    "1,8 Ω, denn 6 mal 0,30 ergibt 1,8. Der Widerstand ist ein Quotient, kein Produkt.",
+    "0,05 Ω, denn 0,30 geteilt durch 6 ergibt 0,05. Das ist die Rechnung andersherum.",
+    "6,3 Ω, denn Spannung und Stromstärke werden addiert. Größen mit verschiedenen Einheiten addiert man nicht.",
+    "20 Ω, denn R = U/I und 6 V geteilt durch 0,30 A ergibt 20 Ω."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Das dünne Kabel an Bens Seifenkiste wird heiß, das dicke bleibt kalt. Erkläre mit dem Begriff Widerstand, woran das liegt.",
+   "zeilen": 4,
+   "loesung": "Das dünne Kabel hat einen größeren Widerstand als das dicke, denn ein enger Weg bremst die Ladungen stärker. Wo Strom durch einen Widerstand fließt, wird elektrische Energie in Wärme umgesetzt – und je größer der Widerstand bei gleichem Strom ist, desto mehr Energie bleibt als Wärme im Draht. Deshalb erwärmt sich das dünne Kabel spürbar, während das dicke die Energie fast vollständig zum Motor weiterleitet. Für die Seifenkiste ist das doppelt schlecht: Die Wärme fehlt am Motor, und der Akku ist schneller leer."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd2",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "Trägt man I über U auf, so erhält man die",
+    "loesung": "Kennlinie",
+    "post": " eines Bauteils."
+   },
+   {
+    "pre": "Bei festem Widerstand ist die Kennlinie eine Gerade durch den",
+    "loesung": "Nullpunkt",
+    "post": "."
+   },
+   {
+    "pre": "Das Ohmsche Gesetz lautet U =",
+    "loesung": "R · I",
+    "post": "."
+   },
+   {
+    "pre": "Bei 10 Ω gehören zu 3 V genau",
+    "loesung": "0,30 A",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei doppelter Spannung fließt am selben Widerstand die doppelte Stromstärke.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine steilere Kennlinie gehört zu einem größeren Widerstand.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Quotient U/I ist bei einem ohmschen Bauteil für alle Messpunkte gleich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Zu U = 0 V kann eine Stromstärke von 0,05 A gehören.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Zwei Kennlinien starten im Nullpunkt, die eine verläuft steiler. Was folgt daraus?",
+   "optionen": [
+    "Das steilere Bauteil hat die größere Spannung. Die Spannung ist die Achse, keine Eigenschaft des Bauteils.",
+    "Das steilere Bauteil hat den kleineren Widerstand, denn bei gleicher Spannung fließt dort mehr Strom.",
+    "Beide Bauteile haben denselben Widerstand, nur der Maßstab ist anders. Bei gleichem Maßstab bedeutet steiler wirklich mehr Strom.",
+    "Das steilere Bauteil wird schneller warm. Das hängt von Strom und Widerstand zusammen ab, nicht von der Steigung allein."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben misst bei 20 Ω die Wertepaare 1,5 V / 0,08 A und 6 V / 0,30 A. Prüfe rechnerisch, ob beide zum selben Widerstand gehören, und erkläre die Abweichung.",
+   "zeilen": 4,
+   "loesung": "Für das erste Paar ergibt R = U/I den Wert 1,5 V geteilt durch 0,08 A, also rund 18,8 Ω. Für das zweite Paar sind es 6 V geteilt durch 0,30 A, also genau 20 Ω. Die beiden Werte liegen dicht beieinander, sind aber nicht exakt gleich. Der Grund liegt nicht am Bauteil, sondern an der Anzeige: Die Simulation rundet auf zwei Stellen, aus 0,075 A wird 0,08 A. Rechnet man mit dem ungerundeten Wert, so ergibt 1,5 V geteilt durch 0,075 A wieder genau 20 Ω. Beide Punkte gehören also zu demselben Widerstand."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd3",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "Ein doppelt so langer Draht hat den",
+    "loesung": "doppelten",
+    "post": " Widerstand."
+   },
+   {
+    "pre": "Ein dünnerer Draht hat einen",
+    "loesung": "größeren",
+    "post": " Widerstand als ein dicker."
+   },
+   {
+    "pre": "Von Kupfer, Eisen und Konstantan leitet",
+    "loesung": "Kupfer",
+    "post": " am besten."
+   },
+   {
+    "pre": "Für Heizdrähte nimmt man ein Material mit",
+    "loesung": "großem",
+    "post": " Widerstand."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Kupfer, kurz und dick, hat in der Simulation R = 5 Ω.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Länge und Dicke wirken in dieser Simulation gleich stark auf den Widerstand.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein langer Konstantandraht eignet sich gut als Zuleitung im Haus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Das Material spielt für den Widerstand keine Rolle.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Kupferdraht (kurz, dick) hat 5 Ω. Was hat er, wenn er doppelt so lang UND halb so dick ist?",
+   "optionen": [
+    "20 Ω, denn beide Änderungen verdoppeln den Widerstand: 5 Ω mal 2 mal 2.",
+    "10 Ω, denn die beiden Änderungen zählen zusammen einmal doppelt. Jede Änderung wirkt für sich.",
+    "5 Ω, denn Länge und Dicke heben sich gegenseitig auf. Beide erhöhen den Widerstand, sie heben sich nicht auf.",
+    "2,5 Ω, denn der dünnere Draht spart Material. Weniger Material bedeutet mehr Widerstand, nicht weniger."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Mia will den Widerstand eines Konstantandrahtes halbieren, ohne das Material zu wechseln. Nenne zwei Möglichkeiten und begründe jede.",
+   "zeilen": 4,
+   "loesung": "Erstens kann sie den Draht halb so lang nehmen. Der Widerstand wächst mit der Länge, weil die Ladungen eine längere Strecke durch das bremsende Material zurücklegen müssen; halbe Länge bedeutet deshalb halber Widerstand. Zweitens kann sie einen doppelt so dicken Draht nehmen. Ein dickerer Draht bietet dem Strom einen breiteren Weg, sodass mehr Ladungen nebeneinander durchpassen; das halbiert den Widerstand ebenfalls. In der Simulation lässt sich beides nachprüfen: Von „lang“ auf „kurz“ und von „dünn“ auf „dick“ halbiert sich der angezeigte Wert jedes Mal."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd4",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "In der Reihenschaltung ist die Stromstärke an jeder Stelle",
+    "loesung": "gleich",
+    "post": " groß."
+   },
+   {
+    "pre": "Die Widerstände addieren sich: R = R₁",
+    "loesung": "+",
+    "post": " R₂."
+   },
+   {
+    "pre": "Bei 10 Ω und 20 Ω an 6 V beträgt der Gesamtwiderstand",
+    "loesung": "30 Ω",
+    "post": "."
+   },
+   {
+    "pre": "Am größeren Widerstand fällt die",
+    "loesung": "größere",
+    "post": " Teilspannung ab."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Die beiden Teilspannungen ergeben zusammen die Spannung der Quelle.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei zwei gleichen Widerständen teilt sich die Spannung gleichmäßig auf.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In der Reihenschaltung bekommt jeder Widerstand die Hälfte des Stroms.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Mit zweimal 30 Ω an 6 V fließen 0,20 A.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "An 6 V liegen 10 Ω und 20 Ω in Reihe. Welche Teilspannung fällt am 20-Ω-Widerstand ab?",
+   "optionen": [
+    "3,0 V, denn die Spannung teilt sich immer gleichmäßig. Sie teilt sich im Verhältnis der Widerstände.",
+    "6,0 V, denn die Quelle liefert 6 V. Das ist die Summe beider Teilspannungen, nicht eine davon.",
+    "4,0 V, denn I = 6 V : 30 Ω = 0,20 A, und 20 Ω mal 0,20 A ergeben 4,0 V.",
+    "2,0 V, denn das ist der kleinere Anteil. Der fällt am 10-Ω-Widerstand ab, nicht am größeren."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ben schaltet zu einem 10-Ω-Widerstand einen zweiten in Reihe und misst danach weniger Strom. Erkläre, warum das so sein muss, und rechne für R₂ = 30 Ω an 6 V nach.",
+   "zeilen": 4,
+   "loesung": "In der Reihenschaltung gibt es nur einen Weg, den der Strom nehmen kann. Ein zweiter Widerstand verlängert diesen Weg gewissermaßen, und die Widerstände addieren sich: Aus 10 Ω werden mit R₂ = 30 Ω zusammen 40 Ω. Weil die Spannung der Quelle mit 6 V gleich bleibt, muss die Stromstärke nach I = U/R sinken: 6 V geteilt durch 40 Ω ergeben 0,15 A. Vorher, mit dem 10-Ω-Widerstand allein, waren es 6 V geteilt durch 10 Ω, also 0,60 A. Der Strom ist damit auf ein Viertel gefallen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd5",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "In der Parallelschaltung liegt an beiden Widerständen die",
+    "loesung": "gleiche",
+    "post": " Spannung."
+   },
+   {
+    "pre": "Die Teilströme addieren sich zum",
+    "loesung": "Gesamtstrom",
+    "post": ": I = I₁ + I₂."
+   },
+   {
+    "pre": "Der Gesamtwiderstand ist",
+    "loesung": "kleiner",
+    "post": " als jeder der beiden Einzelwiderstände."
+   },
+   {
+    "pre": "Zwei gleiche Widerstände parallel ergeben zusammen den",
+    "loesung": "halben",
+    "post": " Widerstand."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei 10 Ω und 20 Ω an 4,5 V fließen zusammen 0,68 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein zusätzlicher paralleler Widerstand verkleinert den Gesamtstrom.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zweimal 30 Ω parallel ergeben einen Gesamtwiderstand von 15 Ω.",
+    "stimmt": true
+   },
+   {
+    "aussage": "In der Parallelschaltung ist der Strom in beiden Zweigen immer gleich groß.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum ist der Gesamtwiderstand einer Parallelschaltung kleiner als jeder Einzelwiderstand?",
+   "optionen": [
+    "Weil sich die Widerstände gegenseitig abschwächen. Bauteile beeinflussen einander nicht direkt.",
+    "Weil die Spannung sich aufteilt. In der Parallelschaltung liegt an beiden die volle Spannung.",
+    "Weil der kleinere Widerstand den größeren überbrückt. Auch durch den größeren fließt weiter Strom.",
+    "Weil der Strom zwei Wege hat und sich die Teilströme addieren; mehr Strom bei gleicher Spannung bedeutet weniger Widerstand."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "In einer Wohnung sind alle Steckdosen parallel geschaltet. Erkläre zwei Vorteile und nenne die Gefahr, die daraus entsteht.",
+   "zeilen": 4,
+   "loesung": "Der erste Vorteil ist, dass an jeder Steckdose die volle Netzspannung anliegt, unabhängig davon, wie viele Geräte sonst noch angeschlossen sind. Der zweite ist, dass jedes Gerät für sich ein- und ausgeschaltet werden kann: Weil jeder Zweig seinen eigenen Weg hat, unterbricht ein ausgeschaltetes Gerät die anderen nicht. Die Gefahr steckt in derselben Eigenschaft: Die Teilströme addieren sich, und der Gesamtwiderstand sinkt mit jedem zusätzlichen Gerät. Hängen zu viele Geräte an einem Stromkreis, wird der Gesamtstrom so groß, dass die Leitung heiß wird – deshalb sitzt im Sicherungskasten eine Sicherung, die vorher abschaltet."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "wd6",
+  "theme": "widerstand",
+  "lueckensaetze": [
+   {
+    "pre": "Ein Potentiometer ist ein Widerstand, dessen Wert sich",
+    "loesung": "verstellen",
+    "post": " lässt."
+   },
+   {
+    "pre": "Der Schleifer greift die Widerstandsbahn an einer beliebigen",
+    "loesung": "Stelle",
+    "post": " ab."
+   },
+   {
+    "pre": "Steht der Regler ganz links, so beträgt sein Widerstand",
+    "loesung": "0 Ω",
+    "post": "."
+   },
+   {
+    "pre": "Je größer der eingestellte Widerstand, desto",
+    "loesung": "dunkler",
+    "post": " die Lampe."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ganz rechts fließen in der Simulation 0,09 A.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Das Potentiometer verändert die Spannung der Batterie.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Zwischen den Endstellungen ändert sich der Widerstand stufenlos.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei ganz links stehendem Regler fließt ein unbegrenzt großer Strom.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum fließen bei ganz links stehendem Regler nur 0,90 A und nicht mehr?",
+   "optionen": [
+    "Weil die Batterie nicht mehr hergibt. Die Quelle liefert 4,5 V, das begrenzt den Strom nicht allein.",
+    "Weil die Lampe selbst noch einen Widerstand von 5 Ω hat, und 4,5 V geteilt durch 5 Ω sind 0,90 A.",
+    "Weil das Potentiometer immer einen Rest von 5 Ω behält. Ganz links ist sein Widerstand null.",
+    "Weil die Kabel den Strom bremsen. Der Kabelwiderstand ist im Modell nicht berücksichtigt."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Ben will mit einem Potentiometer den Motor der Seifenkiste regeln. Beurteile, ob das eine gute Lösung ist, und beziehe die Wärme im Regler in deine Antwort ein.",
+   "zeilen": 4,
+   "loesung": "Regeln lässt sich der Motor damit auf jeden Fall: Ein größerer eingestellter Widerstand lässt weniger Strom durch, der Motor läuft langsamer, und das stufenlos. Der Haken liegt bei der Energie. Der Strom fließt durch die Widerstandsbahn hindurch, und dort wird genau der Anteil der Energie in Wärme umgesetzt, der dem Motor fehlt. Beim langsamen Fahren heizt der Regler also kräftig, und der Akku ist trotzdem genauso schnell leer. Für kleine Ströme wie bei einer Lampe ist das in Ordnung; für einen Fahrzeugmotor ist es Verschwendung, und der Regler kann zu heiß werden. Moderne Regler schalten den Strom deshalb sehr schnell an und aus, statt ihn zu bremsen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "lt1",
+  "theme": "leistung",
+  "lueckensaetze": [
+   {
+    "pre": "Die elektrische Leistung berechnet man als P =",
+    "loesung": "U · I",
+    "post": "."
+   },
+   {
+    "pre": "Die Einheit der Leistung ist das Watt, abgekürzt",
+    "loesung": "W",
+    "post": "."
+   },
+   {
+    "pre": "Ein Watt bedeutet ein Joule je",
+    "loesung": "Sekunde",
+    "post": "."
+   },
+   {
+    "pre": "Bei 3 V und 0,20 A beträgt die Leistung",
+    "loesung": "0,60 W",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei doppelter Spannung am selben Verbraucher wird die Leistung viermal so groß.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Leistung sagt, wie viel Energie insgesamt im Akku steckt.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei 6 V und „viel Strom“ zeigt die Simulation 7,20 W.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Leistung hängt nur von der Spannung ab.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Föhn nimmt bei 230 V eine Stromstärke von 6 A auf. Wie groß ist seine Leistung?",
+   "optionen": [
+    "1380 W, denn P = U · I und 230 V mal 6 A ergeben 1380 W.",
+    "38 W, denn 230 geteilt durch 6 ergibt rund 38. Das wäre der Widerstand in Ohm, nicht die Leistung.",
+    "236 W, denn Spannung und Stromstärke werden addiert. Größen mit verschiedenen Einheiten addiert man nicht.",
+    "6 W, denn die Stromstärke ist die Leistung. Stromstärke und Leistung sind verschiedene Größen."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben misst am Motor der Seifenkiste 7,2 V und 2,5 A. Berechne die Leistung und beurteile, ob ein Akku mit 20 Wh für ein halbstündiges Rennen reicht.",
+   "zeilen": 4,
+   "loesung": "Die Leistung beträgt P = U · I = 7,2 V · 2,5 A = 18 W. In einer halben Stunde, also 0,5 h, setzt der Motor damit E = P · t = 18 W · 0,5 h = 9 Wh um. Der Akku hat 20 Wh, das ist mehr als das Doppelte – rechnerisch reicht er also aus. In Wirklichkeit kommt es knapper: Ein Teil der Energie bleibt als Wärme im Regler und in den Kabeln, ein Akku gibt bei Kälte weniger her, und beim Beschleunigen zieht der Motor kurzzeitig mehr als 2,5 A. Mit gut zwei Dritteln Reserve dürfte es trotzdem gut ausgehen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "lt2",
+  "theme": "leistung",
+  "lueckensaetze": [
+   {
+    "pre": "Die umgesetzte Energie berechnet man als E =",
+    "loesung": "P · t",
+    "post": "."
+   },
+   {
+    "pre": "1000 Wattstunden sind eine",
+    "loesung": "Kilowattstunde",
+    "post": "."
+   },
+   {
+    "pre": "Eine LED mit 10 W setzt in 10 Stunden",
+    "loesung": "100 Wh",
+    "post": " um."
+   },
+   {
+    "pre": "Ein Wasserkocher mit 2000 W setzt in einer Stunde",
+    "loesung": "2 kWh",
+    "post": " um."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Ein Gerät mit kleiner Leistung kann über lange Zeit mehr Energie umsetzen als ein starkes über kurze.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Watt und Kilowattstunde messen dasselbe.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Die LED braucht 200 Stunden für die Energie, die der Wasserkocher in einer Stunde umsetzt.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Wer die Zeit verdoppelt, halbiert die umgesetzte Energie.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Gerät mit 500 W läuft 4 Stunden. Wie viel Energie setzt es um?",
+   "optionen": [
+    "125 Wh, denn 500 geteilt durch 4 ergibt 125. Bei E = P · t wird multipliziert, nicht geteilt.",
+    "504 Wh, denn Leistung und Zeit werden addiert. Größen mit verschiedenen Einheiten addiert man nicht.",
+    "2 kWh, denn E = P · t ergibt 500 W mal 4 h = 2000 Wh, also 2 kWh.",
+    "2000 kWh, denn 500 mal 4 sind 2000. Das Ergebnis steht in Wattstunden, nicht in Kilowattstunden."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia lässt eine 60-W-Glühlampe vier Stunden brennen, Ben eine 10-W-LED zwölf Stunden. Berechne beide Energien und vergleiche.",
+   "zeilen": 4,
+   "loesung": "Für die Glühlampe gilt E = P · t = 60 W · 4 h = 240 Wh, also 0,24 kWh. Für die LED sind es E = 10 W · 12 h = 120 Wh oder 0,12 kWh. Mias Lampe setzt damit genau doppelt so viel Energie um wie Bens LED, obwohl sie nur ein Drittel der Zeit brennt. Der Grund ist die sechsmal größere Leistung: Sie wiegt die kürzere Zeit mehr als auf. Wer Energie sparen will, muss deshalb immer beides ansehen – wie stark ein Gerät ist und wie lange es läuft."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "lt3",
+  "theme": "leistung",
+  "lueckensaetze": [
+   {
+    "pre": "Abgerechnet wird die Energie in",
+    "loesung": "Kilowattstunden",
+    "post": ", nicht die Leistung."
+   },
+   {
+    "pre": "In der Simulation kostet eine Kilowattstunde",
+    "loesung": "30 Cent",
+    "post": "."
+   },
+   {
+    "pre": "Der Fernseher mit 100 W kostet bei 3 h am Tag im Jahr",
+    "loesung": "32,85 €",
+    "post": "."
+   },
+   {
+    "pre": "Für die Jahreskosten rechnet man die Tageskosten mal",
+    "loesung": "365",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der Kühlschrank kostet im Jahr mehr als der Wasserkocher.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Ein Gerät mit kleiner Leistung kann nie hohe Jahreskosten verursachen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Wasserkocher verbraucht bei einer Stunde am Tag 2 kWh.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Kosten hängen allein von der Leistung ab.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine LED mit 10 W brennt 3 Stunden am Tag. Was kostet das bei 30 Cent je kWh im Jahr?",
+   "optionen": [
+    "10,95 €, denn 10 W mal 3 h sind 30 W. Watt sind keine Wattstunden; 30 Wh ergeben 0,03 kWh am Tag.",
+    "3,29 €, denn 0,03 kWh am Tag kosten 0,009 €, im Jahr also rund 3,29 €.",
+    "32,85 €, denn das ist der Wert des Fernsehers. Der hat die zehnfache Leistung.",
+    "0,90 €, denn 3 Stunden mal 30 Cent ergeben 90 Cent. Bezahlt wird je Kilowattstunde, nicht je Stunde."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Bens Vater lässt einen alten Röhrenfernseher mit 250 W täglich 4 Stunden laufen. Berechne die Jahreskosten bei 30 Cent je kWh und vergleiche mit dem Gerät aus der Simulation.",
+   "zeilen": 4,
+   "loesung": "Zuerst die Energie je Tag: E = P · t = 250 W · 4 h = 1000 Wh, also 1 kWh. Das kostet 1 kWh · 0,30 € = 0,30 € am Tag. Im Jahr sind es 0,30 € · 365 = 109,50 €. Der Fernseher aus der Simulation mit 100 W und 3 Stunden kommt dagegen auf 0,3 kWh am Tag und 32,85 € im Jahr. Der alte Röhrenfernseher kostet also mehr als das Dreifache. Der Unterschied entsteht aus beidem: aus der zweieinhalbfachen Leistung und aus der um eine Stunde längeren Laufzeit."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "lt4",
+  "theme": "leistung",
+  "lueckensaetze": [
+   {
+    "pre": "Wie viel eine Sparmaßnahme bringt, misst man in",
+    "loesung": "Kilowattstunden",
+    "post": " je Jahr."
+   },
+   {
+    "pre": "Der Tausch der Glühlampe gegen eine LED spart im Jahr",
+    "loesung": "75,9 kWh",
+    "post": "."
+   },
+   {
+    "pre": "Am meisten spart in der Simulation der neue",
+    "loesung": "Kühlschrank",
+    "post": "."
+   },
+   {
+    "pre": "Beim Standby bleibt nach dem Ziehen des Steckers ein Verbrauch von",
+    "loesung": "0",
+    "post": " kWh."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Das Ziehen der Stecker spart fast so viel wie der Lampentausch.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine kleine Leistung kann über lange Zeit viel ausmachen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Der Lampentausch spart mehr als der Kühlschranktausch.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Alle drei Maßnahmen zusammen sparen weniger als 50 Euro im Jahr.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Warum spart das Ziehen der Stecker fast so viel wie der Lampentausch?",
+   "optionen": [
+    "Weil Standby-Geräte mehr Leistung haben als Glühlampen. Sie haben mit 10 W deutlich weniger.",
+    "Weil Glühlampen kaum noch verwendet werden. Im Vergleich stehen die Zahlen beider Fälle nebeneinander.",
+    "Weil Strom nachts teurer ist. Der Preis ist in der Simulation rund um die Uhr derselbe.",
+    "Weil die kleine Standby-Leistung rund zwanzig Stunden am Tag anfällt, die Lampe aber nur vier."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bens Vater kann nur eine Maßnahme bezahlen. Beurteile mit den Zahlen aus der Simulation, welche er wählen sollte, und nenne einen Grund, der gegen die reine Rechnung sprechen könnte.",
+   "zeilen": 4,
+   "loesung": "Nach den Zahlen ist der neue Kühlschrank die beste Wahl: Er senkt den Verbrauch von 200,8 auf 91,3 kWh und spart damit 109,5 kWh oder 32,85 € im Jahr – mehr als der Lampentausch mit 22,78 € und das Steckerziehen mit 21,90 €. Gegen die reine Rechnung spricht der Preis: Ein neuer Kühlschrank kostet mehrere hundert Euro und hat sich erst nach vielen Jahren bezahlt gemacht, während das Steckerziehen nichts kostet und sofort wirkt. Auch die Herstellung des neuen Geräts verbraucht Energie. Wer wenig Geld hat, fängt deshalb sinnvollerweise beim Standby an."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "lt5",
+  "theme": "leistung",
+  "lueckensaetze": [
+   {
+    "pre": "Alle Steckdosen eines Raumes hängen",
+    "loesung": "parallel",
+    "post": " am selben Stromkreis."
+   },
+   {
+    "pre": "Die Ströme aller angeschlossenen Geräte",
+    "loesung": "addieren",
+    "post": " sich."
+   },
+   {
+    "pre": "In der Simulation zieht jedes Gerät",
+    "loesung": "6 A",
+    "post": "."
+   },
+   {
+    "pre": "Die Sicherung löst aus, wenn der Strom über",
+    "loesung": "16 A",
+    "post": " steigt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei zwei Geräten fließen 12 A, das liegt unter der Grenze.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine Sicherung löst nur aus, wenn ein Gerät defekt ist.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein zu großer Strom kann die Leitung in der Wand gefährlich erwärmen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim dritten Gerät fließen 18 A, und die Sicherung hält das aus.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Drei Geräte mit je 6 A hängen an einer 16-A-Sicherung. Was geschieht?",
+   "optionen": [
+    "Die Sicherung löst aus, denn 3 mal 6 A sind 18 A und damit mehr als 16 A.",
+    "Nichts, denn jedes Gerät bleibt für sich unter 16 A. Die Sicherung sieht den Gesamtstrom.",
+    "Die Geräte teilen sich die 16 A, jedes bekommt gut 5 A. Geräte nehmen den Strom, den sie brauchen.",
+    "Die Spannung sinkt auf ein Drittel. In der Parallelschaltung bleibt die Spannung gleich."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "In einer Küche laufen gleichzeitig Wasserkocher, Toaster und Mikrowelle an derselben Steckdosenleiste. Erkläre, warum das gefährlich werden kann, und beschreibe, was die Sicherung dabei tut.",
+   "zeilen": 4,
+   "loesung": "Alle drei Geräte hängen parallel, ihre Ströme addieren sich also. Jedes von ihnen hat eine große Leistung und zieht deshalb für sich schon mehrere Ampere; zusammen kann der Strom leicht über die zulässigen 16 A steigen. Ein so großer Strom erwärmt die Leitung in der Wand und vor allem die dünne Zuleitung der Steckdosenleiste. Bleibt das lange genug so, kann die Isolierung schmelzen und ein Brand entstehen. Die Sicherung misst genau diesen Gesamtstrom und unterbricht den Kreis, sobald er die Grenze überschreitet. Sie schützt damit nicht die Geräte, sondern die Leitung."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg1",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Schneller ist, wer in derselben Zeit die größere",
+    "loesung": "Strecke",
+    "post": " zurücklegt."
+   },
+   {
+    "pre": "Bei gleicher Strecke ist schneller, wer weniger",
+    "loesung": "Zeit",
+    "post": " braucht."
+   },
+   {
+    "pre": "Ein fairer Vergleich braucht eine gemeinsame",
+    "loesung": "Bezugsgröße",
+    "post": "."
+   },
+   {
+    "pre": "Geschwindigkeit verbindet immer Strecke und",
+    "loesung": "Zeit",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Wer zuerst ankommt, ist immer der Schnellere.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Legen zwei Autos in derselben Zeit dieselbe Strecke zurück, sind sie gleich schnell.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Man kann Geschwindigkeiten auch über die gleiche Strecke vergleichen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Startzeit spielt für den Vergleich keine Rolle.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Auto A fährt 5 s lang 40 m, Auto B fährt 5 s lang 55 m. Wer ist schneller?",
+   "optionen": [
+    "Beide gleich, denn sie fahren dieselbe Zeit. Gleiche Zeit heißt nicht gleiche Strecke.",
+    "Auto B, denn es legt in derselben Zeit die größere Strecke zurück.",
+    "Auto A, denn eine kleinere Zahl bedeutet weniger Anstrengung. Die Zahl steht für die Strecke.",
+    "Das lässt sich nicht sagen, weil die Startzeiten fehlen. Beide fahren hier gleich lang."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Bens Kiste ist an der Mauer zuerst da, obwohl Mias Rad schneller war. Erkläre, wie das möglich ist, und beschreibe, wie die beiden es richtig vergleichen.",
+   "zeilen": 4,
+   "loesung": "Möglich ist das, wenn die Kiste früher losgefahren ist. Die Ankunft am Ziel mischt zwei Dinge: den Vorsprung beim Start und das Tempo während der Fahrt. Ein langsameres Fahrzeug mit genug Vorsprung kommt trotzdem zuerst an. Richtig vergleichen lässt es sich auf zwei Wegen. Entweder starten beide gleichzeitig und man schaut nach einer festen Zeit, wer weiter gekommen ist. Oder jeder fährt dieselbe Strecke und man stoppt für jeden die Zeit vom eigenen Start bis zum Ziel; dann ist schneller, wer weniger Zeit braucht."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg2",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Die Geschwindigkeit berechnet man als v =",
+    "loesung": "s / t",
+    "post": "."
+   },
+   {
+    "pre": "Die Messstrecke in der Simulation beträgt",
+    "loesung": "10 m",
+    "post": "."
+   },
+   {
+    "pre": "Bei „mittel“ braucht der Wagen 5,0 s, das ergibt",
+    "loesung": "2,0 m/s",
+    "post": "."
+   },
+   {
+    "pre": "Halbiert sich die Zeit, so",
+    "loesung": "verdoppelt",
+    "post": " sich die Geschwindigkeit."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei „schnell“ braucht der Wagen 2,0 s für die 10 m.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Je länger die gemessene Zeit, desto größer die Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Anfang und Ende der Messung müssen genau festliegen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Bei „langsam“ ergibt die Messung 10,0 m/s.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Wagen braucht für 10 m genau 4 s. Wie schnell ist er?",
+   "optionen": [
+    "40 m/s, denn 10 mal 4 sind 40. Bei v = s/t wird geteilt, nicht multipliziert.",
+    "0,4 m/s, denn 4 geteilt durch 10 ergibt 0,4. Das ist die Rechnung andersherum.",
+    "14 m/s, denn Strecke und Zeit werden addiert. Größen mit verschiedenen Einheiten addiert man nicht.",
+    "2,5 m/s, denn v = s/t und 10 m geteilt durch 4 s ergeben 2,5 m/s."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Mia misst dieselbe Fahrt einmal über 10 m und einmal über 100 m und bekommt leicht verschiedene Werte. Erkläre, welche Messung du für zuverlässiger hältst.",
+   "zeilen": 4,
+   "loesung": "Zuverlässiger ist die Messung über 100 m. Beim Drücken der Stoppuhr entsteht jedes Mal ungefähr derselbe Fehler von etwa zwei Zehntelsekunden, ganz gleich wie lang die Strecke ist. Bei 10 m dauert die Fahrt aber nur wenige Sekunden, und der Fehler macht davon einen großen Anteil aus. Bei 100 m dauert sie zehnmal so lange, und derselbe Fehler fällt kaum noch ins Gewicht. Der Anteil des Fehlers an der Gesamtzeit wird also kleiner, je länger gemessen wird. Deshalb misst man am besten über eine möglichst lange Strecke oder mittelt über mehrere Versuche."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg3",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Die Geschwindigkeit ist der Quotient aus Strecke und",
+    "loesung": "Zeit",
+    "post": "."
+   },
+   {
+    "pre": "100 m in 10 s ergeben",
+    "loesung": "10 m/s",
+    "post": ", das sind 36 km/h."
+   },
+   {
+    "pre": "Wachsen Strecke und Zeit im selben Verhältnis, bleibt v",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Bei doppelter Zeit und gleicher Strecke",
+    "loesung": "halbiert",
+    "post": " sich die Geschwindigkeit."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "50 m in 5 s und 200 m in 20 s ergeben dieselbe Geschwindigkeit.",
+    "stimmt": true
+   },
+   {
+    "aussage": "200 m in 10 s sind doppelt so schnell wie 100 m in 10 s.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Eine größere Strecke bedeutet immer eine größere Geschwindigkeit.",
+    "stimmt": false
+   },
+   {
+    "aussage": "10 m/s entsprechen 100 km/h.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Welche Kombination ergibt NICHT 10 m/s?",
+   "optionen": [
+    "200 m in 10 s, denn das ergibt 20 m/s.",
+    "50 m in 5 s, denn das ergibt genau 10 m/s.",
+    "100 m in 10 s, denn das ergibt genau 10 m/s.",
+    "200 m in 20 s, denn das ergibt genau 10 m/s."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Ben legt 200 m in 20 s zurück, Mia 50 m in 4 s. Berechne beide Geschwindigkeiten und entscheide, wer schneller ist.",
+   "zeilen": 4,
+   "loesung": "Für Ben gilt v = s / t = 200 m geteilt durch 20 s = 10 m/s. Für Mia sind es 50 m geteilt durch 4 s = 12,5 m/s. Mia ist also schneller, obwohl sie die kürzere Strecke gefahren ist und weniger Zeit gebraucht hat. Genau darin liegt der Sinn des Quotienten: Er macht Fahrten vergleichbar, die weder in der Strecke noch in der Zeit übereinstimmen. In Kilometern je Stunde sind es 36 km/h für Ben und 45 km/h für Mia."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "E6"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg4",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Von m/s nach km/h rechnet man mal",
+    "loesung": "3,6",
+    "post": "."
+   },
+   {
+    "pre": "Von km/h nach m/s wird durch 3,6",
+    "loesung": "geteilt",
+    "post": "."
+   },
+   {
+    "pre": "Eine Stunde hat",
+    "loesung": "3600",
+    "post": " Sekunden."
+   },
+   {
+    "pre": "5 m/s sind",
+    "loesung": "18 km/h",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Der ICE fährt in der Simulation mit 83 m/s, also 298,8 km/h.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Man rechnet mal 1000, weil ein Kilometer 1000 Meter hat.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Ein Fußgänger mit 1,5 m/s ist mit 5,4 km/h unterwegs.",
+    "stimmt": true
+   },
+   {
+    "aussage": "m/s und km/h messen verschiedene Größen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Auto fährt 14 m/s. Wie viel ist das in km/h?",
+   "optionen": [
+    "50,4 km/h, denn 14 mal 3,6 ergeben 50,4.",
+    "3,9 km/h, denn 14 geteilt durch 3,6 ergibt 3,9. Das ist die Gegenrichtung.",
+    "14 000 km/h, denn ein Kilometer hat 1000 Meter. Die Zeit muss ebenfalls umgerechnet werden.",
+    "140 km/h, denn man hängt eine Null an. Der Faktor ist 3,6, nicht 10."
+   ],
+   "richtig": 0
+  },
+  "offen": {
+   "prompt": "Auf dem Ortsschild stehen 50 km/h. Rechne diesen Wert in m/s um und beurteile, ob die Seifenkiste mit 5 m/s damit mithalten könnte.",
+   "zeilen": 4,
+   "loesung": "Von km/h nach m/s wird durch 3,6 geteilt: 50 km/h geteilt durch 3,6 ergeben rund 13,9 m/s. Die Seifenkiste kommt auf 5 m/s und ist damit nur etwa ein Drittel so schnell. Mithalten könnte sie also nicht. Zur Probe lässt sich rückwärts rechnen: 13,9 m/s mal 3,6 ergeben wieder rund 50 km/h. Anschaulich heißt 13,9 m/s, dass ein Auto in jeder Sekunde fast vierzehn Meter zurücklegt – etwa drei Autolängen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "bg5",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Bei einer gleichförmigen Bewegung bleibt die Geschwindigkeit",
+    "loesung": "gleich",
+    "post": "."
+   },
+   {
+    "pre": "Die Sekundenmarken haben dann alle denselben",
+    "loesung": "Abstand",
+    "post": "."
+   },
+   {
+    "pre": "Ein größerer Markenabstand bedeutet ein größeres",
+    "loesung": "Tempo",
+    "post": "."
+   },
+   {
+    "pre": "In jeder Sekunde wird dieselbe",
+    "loesung": "Strecke",
+    "post": " zurückgelegt."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei „schnell“ liegen die Marken weiter auseinander als bei „langsam“.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Innerhalb einer gleichförmigen Fahrt ändert sich der Markenabstand.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Der Abstand zwischen zwei Marken ist die Strecke einer Sekunde.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Gleiche Markenabstände bedeuten, dass der Wagen steht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Was folgt aus gleichen Abständen der Sekundenmarken?",
+   "optionen": [
+    "Der Wagen steht. Dann läge alles auf einer Stelle, es gäbe keine Abstände.",
+    "Der Wagen wird schneller. Dann würden die Abstände wachsen.",
+    "Die Geschwindigkeit ändert sich nicht, denn in jeder Sekunde wird dieselbe Strecke zurückgelegt.",
+    "Der Wagen bremst. Dann würden die Abstände kleiner."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Mia behauptet, aus dem Markenabstand allein könne man die Geschwindigkeit ablesen. Beurteile diese Aussage und nenne, was man dafür zusätzlich wissen muss.",
+   "zeilen": 4,
+   "loesung": "Die Aussage stimmt fast, aber nicht ganz. Der Abstand zwischen zwei Marken ist die zurückgelegte Strecke; für eine Geschwindigkeit braucht man zusätzlich die Zeit zwischen den Marken. In der Simulation wird jede Sekunde eine Marke gesetzt, deshalb entspricht der Abstand hier gerade der Strecke pro Sekunde und damit unmittelbar der Geschwindigkeit in Metern je Sekunde. Würde man dagegen alle zwei Sekunden eine Marke setzen, wären die Abstände bei gleichem Tempo doppelt so groß. Man muss also den Zeittakt kennen – und außerdem den Maßstab, in dem die Abstände gemessen werden."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ },
+ {
+  "id": "bg6",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Beim Beschleunigen werden die Sekundenmarken immer",
+    "loesung": "weiter",
+    "post": " auseinander."
+   },
+   {
+    "pre": "Beim Bremsen rücken die Marken immer",
+    "loesung": "enger",
+    "post": " zusammen."
+   },
+   {
+    "pre": "Beschleunigt heißt: die Geschwindigkeit",
+    "loesung": "ändert",
+    "post": " sich."
+   },
+   {
+    "pre": "Auch das Bremsen zählt zu den",
+    "loesung": "beschleunigten",
+    "post": " Bewegungen."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Beim Bremsen wird die Geschwindigkeit kleiner.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beschleunigt bedeutet in der Physik immer schneller werden.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Bei einer gleichförmigen Fahrt bleibt der Markenabstand gleich.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Beim Beschleunigen und beim Bremsen werden die Abstände beide größer.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Die Sekundenmarken werden immer enger. Was tut der Wagen?",
+   "optionen": [
+    "Er fährt gleichmäßig. Dann wären die Abstände gleich.",
+    "Er wird schneller. Dann würden die Abstände wachsen.",
+    "Er steht bereits. Dann gäbe es überhaupt keine neuen Abstände mehr.",
+    "Er bremst: In jeder Sekunde legt er eine kleinere Strecke zurück."
+   ],
+   "richtig": 3
+  },
+  "offen": {
+   "prompt": "Bens Kiste rollt die abschüssige Zufahrt hinunter und wird dabei immer schneller. Beschreibe, wie die Sekundenmarken aussehen, und erkläre, warum diese Fahrt nicht gleichförmig ist.",
+   "zeilen": 4,
+   "loesung": "Die Marken liegen am Anfang dicht beieinander und rücken dann von Marke zu Marke weiter auseinander. Der Grund ist, dass der Abstand zwischen zwei Marken die Strecke einer Sekunde angibt: Wird die Kiste schneller, schafft sie in jeder folgenden Sekunde mehr Weg. Gleichförmig wäre die Fahrt nur, wenn die Geschwindigkeit sich nicht ändert und alle Abstände gleich blieben. Hier ändert sie sich dagegen ständig, die Bewegung ist also beschleunigt. Am Ende, wenn Ben bremst, kehrt sich das um und die Abstände werden wieder kleiner – auch das ist eine beschleunigte Bewegung."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg7",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Im Weg-Zeit-Diagramm steht unten die",
+    "loesung": "Zeit",
+    "post": " und links der Weg."
+   },
+   {
+    "pre": "Eine steilere Linie bedeutet eine größere",
+    "loesung": "Geschwindigkeit",
+    "post": "."
+   },
+   {
+    "pre": "Eine waagerechte Linie bedeutet",
+    "loesung": "Stillstand",
+    "post": "."
+   },
+   {
+    "pre": "Der zurückgelegte Weg kann nicht",
+    "loesung": "kleiner",
+    "post": " werden."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Bei der schnellen Fahrt steigt die Linie steiler an als bei der langsamen.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Während einer Pause verläuft die Linie waagerecht.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Die Linie kann im Weg-Zeit-Diagramm auch fallen.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Eine flache Linie bedeutet, dass der Wagen steht.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Im s-t-Diagramm verläuft ein Abschnitt waagerecht. Was geschieht dort?",
+   "optionen": [
+    "Der Wagen fährt gleichmäßig weiter. Dann würde die Linie gleichmäßig steigen.",
+    "Der Wagen steht: Die Zeit läuft weiter, aber es kommt kein Weg dazu.",
+    "Der Wagen fährt zurück. Dafür müsste die Linie fallen, was hier nicht möglich ist.",
+    "Der Wagen wird schneller. Dann würde die Linie immer steiler."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Zwei Linien im s-t-Diagramm starten im Nullpunkt, die eine ist deutlich steiler. Erkläre, was das über die beiden Fahrten aussagt, und was gilt, wenn sich die Linien schneiden.",
+   "zeilen": 4,
+   "loesung": "Die steilere Linie gehört zur schnelleren Fahrt: In derselben Zeit kommt dort mehr Weg dazu. Weil beide im Nullpunkt starten, sind sie zur selben Zeit am selben Ort losgefahren, und die schnellere ist ab der ersten Sekunde vorn. Ein Schnittpunkt bedeutet, dass beide Fahrzeuge zu diesem Zeitpunkt denselben Weg zurückgelegt haben, also gleichauf sind. Bei zwei Geraden durch den Nullpunkt kann das nur der Nullpunkt selbst sein. Starten die Linien dagegen bei verschiedenen Werten, so ist ein späterer Schnittpunkt der Moment des Überholens."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg8",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Im v-t-Diagramm steht links die",
+    "loesung": "Geschwindigkeit",
+    "post": "."
+   },
+   {
+    "pre": "Eine waagerechte Linie bedeutet dort gleichbleibendes",
+    "loesung": "Tempo",
+    "post": "."
+   },
+   {
+    "pre": "Eine steigende Linie bedeutet",
+    "loesung": "Beschleunigen",
+    "post": "."
+   },
+   {
+    "pre": "Eine fallende Linie bedeutet",
+    "loesung": "Bremsen",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "Eine waagerechte Linie im v-t-Diagramm bedeutet Stillstand.",
+    "stimmt": false
+   },
+   {
+    "aussage": "Beim Bremsen fällt die Linie bis auf null.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dieselbe Fahrt sieht im s-t- und im v-t-Diagramm verschieden aus.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Im v-t-Diagramm kann die Linie nicht fallen.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Eine waagerechte Linie liegt im v-t-Diagramm auf dem Wert null. Was heißt das?",
+   "optionen": [
+    "Der Wagen fährt gleichmäßig schnell. Auf null bedeutet gerade keine Geschwindigkeit.",
+    "Der Wagen bremst gerade. Beim Bremsen fällt die Linie, sie liegt nicht fest auf null.",
+    "Der Wagen steht, denn seine Geschwindigkeit ist null und ändert sich nicht.",
+    "Das Diagramm ist falsch gezeichnet. Der Fall ist sinnvoll und beschreibt einen stehenden Wagen."
+   ],
+   "richtig": 2
+  },
+  "offen": {
+   "prompt": "Ein Auto fährt an, hält das Tempo, bremst und steht dann. Beschreibe den Verlauf der Linie im v-t-Diagramm für alle vier Abschnitte.",
+   "zeilen": 4,
+   "loesung": "Im ersten Abschnitt beginnt die Linie bei null und steigt an, denn die Geschwindigkeit wächst beim Anfahren. Im zweiten Abschnitt verläuft sie waagerecht auf der erreichten Höhe, weil das Tempo gleich bleibt; der Wagen fährt hier gleichförmig, steht aber gerade nicht. Im dritten Abschnitt fällt sie, denn beim Bremsen wird die Geschwindigkeit kleiner. Im vierten Abschnitt liegt sie waagerecht auf null: Der Wagen steht. Die beiden waagerechten Abschnitte sehen ähnlich aus und bedeuten doch Verschiedenes – entscheidend ist, auf welcher Höhe sie liegen."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "K1"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "II"
+  ]
+ },
+ {
+  "id": "bg9",
+  "theme": "tempo",
+  "lueckensaetze": [
+   {
+    "pre": "Ausgelöst wird, wenn die gemessene Geschwindigkeit über der",
+    "loesung": "erlaubten",
+    "post": " liegt."
+   },
+   {
+    "pre": "Die Differenz sagt, um wie viel zu",
+    "loesung": "schnell",
+    "post": " gefahren wurde."
+   },
+   {
+    "pre": "Bei 70 km/h und erlaubten 50 km/h sind es",
+    "loesung": "20 km/h",
+    "post": " zu viel."
+   },
+   {
+    "pre": "Der erlaubte Wert steht auf dem",
+    "loesung": "Schild",
+    "post": "."
+   }
+  ],
+  "richtigfalsch": [
+   {
+    "aussage": "70 km/h bei erlaubten 70 km/h lösen die Messung aus.",
+    "stimmt": false
+   },
+   {
+    "aussage": "100 km/h bei erlaubten 30 km/h ergeben 70 km/h zu viel.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Dieselbe Geschwindigkeit kann an einer Stelle erlaubt und an einer anderen zu schnell sein.",
+    "stimmt": true
+   },
+   {
+    "aussage": "Geblitzt wird jedes Auto über 50 km/h.",
+    "stimmt": false
+   }
+  ],
+  "mc": {
+   "frage": "Ein Auto fährt 50 km/h, erlaubt sind 30 km/h. Was meldet die Messung?",
+   "optionen": [
+    "Nichts, denn 50 km/h sind innerorts üblich. Maßgeblich ist das Schild an dieser Stelle.",
+    "Geblitzt, 20 km/h zu schnell – denn 50 km/h liegen um 20 km/h über den erlaubten 30 km/h.",
+    "Geblitzt, 80 km/h zu schnell. Addiert wird nicht, es zählt die Differenz.",
+    "Nichts, denn die Differenz ist kleiner als 30 km/h. Schon jede Überschreitung löst aus."
+   ],
+   "richtig": 1
+  },
+  "offen": {
+   "prompt": "Bens Vater sagt, er sei „gefühlt genauso schnell“ gefahren wie das geblitzte Auto. Beurteile dieses Argument mit dem, was du über Messung und erlaubte Geschwindigkeit weißt.",
+   "zeilen": 4,
+   "loesung": "Das Argument trägt aus zwei Gründen nicht. Erstens ist das Gefühl kein Messwert: Wie schnell eine Fahrt wirkt, hängt von Motorgeräusch, Fahrbahn und Gewöhnung ab, und schon zehn Kilometer je Stunde Unterschied sind kaum zu spüren. Gemessen wird dagegen die tatsächliche Geschwindigkeit. Zweitens entscheidet nicht die Geschwindigkeit allein, sondern der Vergleich mit dem erlaubten Wert an genau dieser Stelle. Selbst wenn beide Autos wirklich gleich schnell gewesen wären, könnte eines schon hinter einem Schild mit niedrigerem Limit gefahren sein. Nachprüfbar ist das nur über die Messung, nicht über den Eindruck."
+  },
+  "komp": [
+   "UF1",
+   "UF1",
+   "UF2",
+   "B2"
+  ],
+  "afb": [
+   "I",
+   "II",
+   "II",
+   "III"
+  ]
+ }
+]
