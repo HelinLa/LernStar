@@ -39,7 +39,19 @@ def lies_qr(pfad, ausschnitt=AUSSCHNITT):
 def messen(heft):
     bd = os.path.join(heft, "build")
     seiten = {}
-    dateien = sorted(glob.glob(os.path.join(bd, "book_p*.png")),
+    # NUR echte Seiten. Der Schreibtisch legt beim Abgleich Dateien wie
+    # "book_p99 3.png" an; sie sehen aus wie Seiten, sind aber Kopien eines
+    # aelteren Standes. Frueher lief der Sortierschluessel darauf in ein
+    # AttributeError und riss den ganzen Durchgang mit - gemessen: 68 solcher
+    # Kopien in einem einzigen Band. Sie stillschweigend mitzuzaehlen waere
+    # schlimmer als der Absturz (die Seitenzahlen waeren dann falsch), deshalb
+    # werden sie uebersprungen UND gemeldet.
+    alle = glob.glob(os.path.join(bd, "book_p*.png"))
+    echt = [p for p in alle if re.search(r"book_p\d+\.png$", p)]
+    if len(echt) < len(alle):
+        print("  %d Datei(en) uebersprungen, die keine Seite sind "
+              "(iCloud-Konfliktkopien wie 'book_p99 3.png')" % (len(alle) - len(echt)))
+    dateien = sorted(echt,
                      key=lambda p: int(re.search(r"book_p(\d+)\.png$", p).group(1)))
     ohne = 0
     for p in dateien:
