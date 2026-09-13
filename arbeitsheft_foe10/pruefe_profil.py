@@ -108,7 +108,8 @@ BREITE_MESSEN = _spaltenmass()
 # verfehlt. Das Gewicht wird deshalb gemessen und ausgewiesen, nicht geschaetzt.
 # BUDGET ist die Obergrenze, ab der eine Seite gemeldet wird; None = nur messen.
 BUDGET = 392          # verbindlich ab Band 9 (Abdullah, 05.09.2026)
-# NACHGEEICHT am 12.09.2026: Die 380 waren an Seiten mit ZWEI Ankreuz-
+#                     Wert 392 von Abdullah bestaetigt am 13.09.2026.
+# NACHGEEICHT am 12.09.2026, von Abdullah bestaetigt am 13.09.2026: Die 380 waren an Seiten mit ZWEI Ankreuz-
 # moeglichkeiten gemessen. Das Einstiegskonzept verlangt eine dritte, und die
 # kostet gemessen 11 bis 13 Woerter im Median (foe7 13 · foe8 12 · foe9 11 ·
 # foe10 12). Ohne Nacheichung meldete der Pruefer 14 von 25 Einheiten in foe9

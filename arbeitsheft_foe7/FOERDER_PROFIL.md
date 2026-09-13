@@ -125,7 +125,10 @@ ihrem Gewicht. Gemessen: Heft 7 liegt bei Median **363** Wörtern je
 Doppelseite, Heft 8 bei **451** (+24 %). Mit Heft-8-Gewicht hätte Heft 9 den
 Korridor verfehlt (25 × 451 = 11 275 Wörter = nur −28,7 % statt −40 %).
 
-Ab Band 9 gilt deshalb ein Budget von **höchstens 380 Wörtern je Doppelseite**
+Ab Band 9 gilt deshalb ein Budget von **höchstens 392 Wörtern je Doppelseite**
+(bis 12.09.2026: 380 – nachgeeicht um den gemessenen Preis der dritten
+Ankreuzmöglichkeit, 11 bis 13 Wörter im Median; von Abdullah am 13.09.2026
+bestätigt)
 (Schülerseite ohne den Bildauftrag). `pruefe_profil.py` misst das Gewicht und
 meldet jede Überschreitung; die Konstante heißt `BUDGET`.
 
