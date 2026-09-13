@@ -41451,7 +41451,112 @@ function _mlabDrawPlot(cvId, st) {
     info.push({ key: g.key, col, fit, n: gp.length });
   });
 
+  // ── Steigungsdreieck: zwei Punkte anklicken, Steigung ablesen ──────────
+  //
+  // Der Wunsch des Auftraggebers (13.09.2026): "dann auf zwei punkte geklickt,
+  // und wir haben dann die Steigung bekommen und die wir dann geschwindigkeit
+  // genannt". Vorher stand die Steigung fertig im Ergebniskasten - der
+  // Schueler bekam eine Zahl, statt sie zu holen.
+  //
+  // Geklickt wird auf die AUSGLEICHSGERADE, nicht auf die Messpunkte: Dann
+  // faellt genau ihre Steigung heraus, und es entsteht das Steigungsdreieck
+  // aus dem Mathematikunterricht. Auf zwei Messpunkte geklickt kaeme je nach
+  // Streuung etwas leicht anderes heraus als im Ergebniskasten - zwei Zahlen
+  // fuer dieselbe Sache sind auf einer Heftseite eine Fehlerquelle.
+  cv._mlabGeo = { x0, y0, x1, y1, xmin, xmax, ymin, ymax, fit: (info[0] || {}).fit || null };
+  if (st.pre) _MLAB_STATES[st.pre] = st;
+  // Ein Wechsel der Auftragung macht eine alte Auswahl sinnlos - die Steigung
+  // eines t-s-Punktepaars sagt im t-v-Diagramm nichts.
+  if (st._steigPreset !== st.preset) { st._steigPreset = st.preset; st.picks = []; }
+  if (!cv._mlabKlick) {
+    cv._mlabKlick = true;
+    cv.addEventListener('click', ev => {
+      const g = cv._mlabGeo;
+      if (!st.steigung || !g || !g.fit) return;
+      // Bildpunkt -> Datenwert. Im Vollbild ist die Leinwand groesser als ihr
+      // Nennmass; clientWidth traegt die WIRKLICHE Anzeigegroesse, cv.width das
+      // Nennmass, auf das alle Zeichenfunktionen rechnen.
+      const kx = cv.width / (cv.clientWidth || cv.width);
+      const px = ev.offsetX * kx;
+      if (px < g.x0 || px > g.x1) return;
+      const xv = g.xmin + (px - g.x0) / (g.x1 - g.x0) * (g.xmax - g.xmin);
+      st.picks = (st.picks || []).concat([xv]).slice(-2);
+      _mlabDrawPlot(cvId, st);
+      _mlabRenderSteigung(st, P);
+    });
+  }
+  if (st.steigung && (st.picks || []).length) {
+    const fit = (info[0] || {}).fit;
+    if (fit) {
+      const ys = xv => fit.k * xv + fit.b;
+      ctx.strokeStyle = '#b45309'; ctx.fillStyle = '#b45309'; ctx.lineWidth = 2;
+      st.picks.forEach(xv => {
+        ctx.beginPath(); ctx.arc(X(xv), Y(ys(xv)), 5.5, 0, 2 * Math.PI); ctx.fill();
+      });
+      if (st.picks.length === 2) {
+        const [a, b] = st.picks.slice().sort((p, q) => p - q);
+        ctx.setLineDash([5, 4]);
+        ctx.beginPath();                       // waagerecht: Δx
+        ctx.moveTo(X(a), Y(ys(a))); ctx.lineTo(X(b), Y(ys(a)));
+        ctx.lineTo(X(b), Y(ys(b)));            // senkrecht: Δy
+        ctx.stroke(); ctx.setLineDash([]);
+        ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('Δ' + _mlabSym(P.xl), (X(a) + X(b)) / 2, Y(ys(a)) + 15);
+        ctx.textAlign = 'left';
+        ctx.fillText('Δ' + _mlabSym(P.yl), X(b) + 6, (Y(ys(a)) + Y(ys(b))) / 2);
+      }
+    }
+  }
+
   _mlabRenderFit(st, info, P);
+}
+
+// Alle Messlabore melden sich hier an, damit die beiden Steigungsknoepfe EINE
+// Funktion rufen koennen. Ohne das muessten dreizehn _xxxSetBool angefasst
+// werden, nur damit sie beim Einschalten die alte Auswahl verwerfen.
+const _MLAB_STATES = {};
+
+function _mlabSteigungAn(pre, an) {
+  const st = _MLAB_STATES[pre];
+  if (!st) return;
+  st.steigung = !!an;
+  st.picks = [];                     // beim Ein- UND Ausschalten leeren
+  _mlabDrawPlot(st.plotId, st);
+  _mlabRenderSteigung(st, st.presets[st.preset]);
+}
+
+// "s in m" -> "s" · "t in s" -> "t". Die Achsenbeschriftung traegt Zeichen und
+// Einheit; beide werden fuer das Steigungsdreieck getrennt gebraucht.
+function _mlabSym(lbl) { return String(lbl || '').split(' in ')[0].trim(); }
+function _mlabEinheit(lbl) {
+  const t = String(lbl || '').split(' in ');
+  return t.length > 1 ? t[1].trim() : '';
+}
+
+// Die abgelesene Steigung als Satz unter dem Diagramm.
+function _mlabRenderSteigung(st, P) {
+  const el = document.getElementById(st.pre + 'Steig');
+  if (!el) return;
+  const n = (st.picks || []).length;
+  if (!st.steigung) { el.innerHTML = ''; return; }
+  if (n < 2) {
+    el.innerHTML = '<span class="fpm-note">Klicke <b>zwei Punkte</b> auf der Ausgleichsgeraden an' +
+      (n ? ' – noch einer.' : '.') + '</span>';
+    return;
+  }
+  const geo = document.getElementById(st.plotId);
+  const fit = geo && geo._mlabGeo ? geo._mlabGeo.fit : null;
+  if (!fit) { el.innerHTML = ''; return; }
+  const [a, b] = st.picks.slice().sort((p, q) => p - q);
+  const dx = b - a, dy = fit.k * b - fit.k * a;
+  const sx = _mlabSym(P.xl), sy = _mlabSym(P.yl);
+  const ex = _mlabEinheit(P.xl), ey = _mlabEinheit(P.yl);
+  const einheit = ey && ex ? ey + '/' + ex : '';
+  el.innerHTML = '<div class="fpm-theo"><b>Steigungsdreieck</b><br>' +
+    'Δ' + sx + ' = ' + _fpmNum(dx, 2) + ' ' + ex + ' &nbsp;·&nbsp; ' +
+    'Δ' + sy + ' = ' + _fpmNum(dy, 2) + ' ' + ey + '<br>' +
+    'Steigung = Δ' + sy + ' / Δ' + sx + ' = <b>' + _fpmNum(dy / dx, 2) + ' ' + einheit + '</b>' +
+    (P.steigungHeisst ? '<br>Das ist die <b>' + P.steigungHeisst + '</b>.' : '') + '</div>';
 }
 
 function _mlabRenderFit(st, groups, P) {
@@ -41598,6 +41703,11 @@ function _mlabAuswertungHTML(st, fns) {
     <div class="fpm-grid2">
       <canvas id="${st.plotId}" width="470" height="330" class="phys-chart-cv"></canvas>
       <div>
+        <div class="sim-btn-row" style="padding:0 0 6px">
+          <button class="sim-btn primary" onclick="_mlabSteigungAn('${st.pre}',true)">📐 Steigung messen</button>
+          <button class="sim-btn" onclick="_mlabSteigungAn('${st.pre}',false)">↺ zurücksetzen</button>
+        </div>
+        <div id="${st.pre}Steig"></div>
         <div class="fpm-fit" id="${st.fitId}"></div>
         <div class="fpm-label" style="margin-top:10px">Funktion plotten</div>
         <input type="text" id="${st.fnId}" class="fpm-input" placeholder="z. B. 2*x" spellcheck="false"
@@ -41773,6 +41883,7 @@ const _GLF_PRESETS = [
       's = v · t &nbsp;⇒&nbsp; v = Steigung = Δs/Δt – aus allen ' + g0.n + ' Messwerten dieser Reihe zugleich') },
 
   { tab: 't → v', xl: 't in s', yl: 'v in m/s', x: r => r.t, y: r => r.v, grp: r => r.g, orig: false,
+    steigungHeisst: 'Beschleunigung a – hier null, die Gerade ist waagerecht',
     gl: k => _glfGl(k), slope: () => 0,
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: (xv, k) => _glfKeyV(k),
@@ -41830,7 +41941,7 @@ function _glfHTML() {
           <button class="sim-btn" onclick="_glfNeueFahrt()">↺ neue Fahrt</button>
         </div>
         <div class="lmp-status" id="glfStatus"></div>
-        <div class="fpm-note" style="margin-top:6px">Der Wagen fährt, Uhr und Wegmesser laufen mit. <b>„⏱ Zeit stoppen“</b> hält den Augenblickswert fest und schreibt t, s und v als Zeile in die Tabelle – der Wagen fährt dabei weiter. Stoppe <b>mindestens fünf Mal</b> während einer Fahrt. Es ist gleichgültig, <b>wann</b> du stoppst: Die Steigung der s-t-Geraden kommt immer gleich heraus. Die Uhr ist eine Videoanalyse mit 50 Bildern je Sekunde und springt deshalb in Schritten von <b>0,02 s</b> – dadurch geht s = v · t in jeder Zeile auf allen angezeigten Stellen auf. <b>„↺ neue Fahrt“</b> stellt Uhr und Weg auf null, die Tabelle bleibt stehen. Eine neue Reglerstellung beginnt ebenfalls eine neue Fahrt, weil der Weg als s = v · t mitläuft.</div>
+        <div class="fpm-note" style="margin-top:6px">Der Wagen fährt. <b>„⏱ Zeit stoppen“</b> schreibt t und s als Zeile in die Tabelle – <b>mindestens fünf Mal</b> während einer Fahrt. <b>Wann</b> du stoppst, ist gleichgültig. <b>„↺ neue Fahrt“</b> stellt Uhr und Weg auf null.</div>
       </div>
       <div>
         <div class="fpm-label">Wertetabelle</div>
@@ -41846,13 +41957,13 @@ function _glfHTML() {
           </table>
           <div class="fpm-empty" id="glfEmpty">Noch keine Messwerte.<br>Wagen fahren lassen → „⏱ Zeit stoppen“ drücken.</div>
         </div>
-        <div class="fpm-note" style="margin-top:6px">t, s und v werden <b>abgelesen</b>: t von der Uhr, s vom Wegmesser, v vom Tacho. Die letzte Spalte wird dagegen <b>gerechnet</b>: a = Δv/Δt aus dieser und der vorigen Zeile derselben Fahrt – gleiche Farbe der Kugel. In der ersten Zeile jeder Fahrt steht deshalb nur ein Strich. Die drei Knöpfe darüber nehmen ein <b>zweites</b> Messverfahren auf; seine Zeilen bilden eigene Messreihen und geraten nicht mit den gestoppten in eine Ausgleichsgerade.</div>
+        <div class="fpm-note" style="margin-top:6px">t und s liest du ab, v zeigt der Tacho. a wird aus zwei Zeilen gerechnet – in der ersten Zeile steht deshalb ein Strich.</div>
       </div>
     </div>
     <div class="fpm-label" style="margin-top:12px">Auswertung – t-s-Diagramm, t-v-Diagramm, t-a-Diagramm</div>
     ${_mlabAuswertungHTML(_glf, { preset: '_glfSetPreset', setfn: '_glfSetFn', theo: '_glfTheorieFn', clear: '_glfClearFn', bool: '_glfSetBool' })}
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      <b>s = v · t</b> &nbsp;⇒&nbsp; die Steigung der s-t-Geraden <i>ist</i> die Geschwindigkeit &nbsp;|&nbsp; die t-v-Gerade ist waagerecht &nbsp;|&nbsp; die t-a-Gerade liegt auf null
+      Ausgleichsgerade holen &nbsp;→&nbsp; <b>📐 Steigung messen</b> &nbsp;→&nbsp; zwei Punkte anklicken. Die Steigung <i>ist</i> die Geschwindigkeit.
     </p>
   </div>`;
 }
@@ -83196,6 +83307,7 @@ function _befOrigWarnung() {
 // beiden Seiten mitzuziehen.
 const _BEF_PRESETS = [
   { tab: 't → v', xl: 't in s', yl: 'v in m/s', x: r => r.t, y: r => r.v, grp: r => r.g, orig: true,
+    steigungHeisst: 'Beschleunigung a',
     gl: k => _befGl(k), slope: k => _befKeyA(k),
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: (xv, k) => _befKeyA(k) * xv,
