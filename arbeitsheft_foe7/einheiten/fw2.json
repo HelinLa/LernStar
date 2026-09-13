@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "0°",
-    "Yumi",
-    "Ben"
+    "",
+    ""
    ],
    [
     "180°",
@@ -136,6 +136,11 @@
    "24 Stunden"
   ],
   "tabelle_erwartet": [
+   [
+    "0°",
+    "Yumi",
+    "Ben"
+   ],
    [
     "180°",
     "Ben",

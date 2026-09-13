@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "2 N und →",
-    "nach rechts",
-    "kurz"
+    "",
+    ""
    ],
    [
     "6 N und →",
@@ -139,6 +139,11 @@
    "stark"
   ],
   "tabelle_erwartet": [
+   [
+    "2 N und →",
+    "nach rechts",
+    "kurz"
+   ],
    [
     "6 N und →",
     "nach rechts",

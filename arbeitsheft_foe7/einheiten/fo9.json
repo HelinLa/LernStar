@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "b = 29 cm, Loch klein",
-    "kleiner als der Gegenstand",
-    "scharf"
+    "",
+    ""
    ],
    [
     "b = 39 cm, Loch klein",
@@ -141,6 +141,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "b = 29 cm, Loch klein",
+    "kleiner als der Gegenstand",
+    "scharf"
+   ],
    [
     "b = 39 cm, Loch klein",
     "etwa so groß wie der Gegenstand",

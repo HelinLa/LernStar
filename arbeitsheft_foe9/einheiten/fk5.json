@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "Erde",
-    "9,8 N/kg",
-    "588 N"
+    "",
+    ""
    ],
    [
     "Mond",
@@ -134,6 +134,11 @@
    "1,6 N/kg"
   ],
   "tabelle_erwartet": [
+   [
+    "Erde",
+    "9,8 N/kg",
+    "588 N"
+   ],
    [
     "Mond",
     "1,6 N/kg",

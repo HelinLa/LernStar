@@ -12,6 +12,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Bewegen",
+    "„Die Kraft setzt den ruhenden Wagen in Bewegung“ – er wird schneller.",
+    "das Tempo"
+   ],
+   [
     "Verformen",
     "„Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ (im Bild: „Wirkung: verformen“ und „verformt!“)",
     "die Form"
@@ -76,6 +81,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Feder leeren",
+    "F = 0 N",
+    "entspannt"
+   ],
+   [
     "ein Gewicht anhängen",
     "F = 1 N",
     "um 1 cm gedehnt"
@@ -139,6 +149,11 @@
    "halb"
   ],
   "tabelle_erwartet": [
+   [
+    "weiche Feder",
+    "1 N",
+    "2 cm"
+   ],
    [
     "weiche Feder",
     "2 N",
@@ -213,6 +228,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "100 g",
+    "m = 100 g",
+    "F = 1,0 N"
+   ],
+   [
     "1 kg",
     "m = 1 kg",
     "F = 9,8 N"
@@ -278,6 +298,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Erde",
+    "9,8 N/kg",
+    "588 N"
+   ],
+   [
     "Mond",
     "1,6 N/kg",
     "96 N"
@@ -340,6 +365,11 @@
    "stark"
   ],
   "tabelle_erwartet": [
+   [
+    "2 N und →",
+    "nach rechts",
+    "kurz"
+   ],
    [
     "6 N und →",
     "nach rechts",
@@ -411,6 +441,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "nichts",
+    "3 N nach rechts und 2 N nach rechts",
+    "5 N nach rechts"
+   ],
+   [
     "„Richtung“ bei F1",
     "3 N nach links und 2 N nach rechts",
     "1 N nach links"
@@ -477,6 +512,11 @@
    "Kräftegleichgewicht"
   ],
   "tabelle_erwartet": [
+   [
+    "5 N (am Anfang)",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ],
    [
     "4 N (nach – N)",
     "Gesamtkraft = 1 N nach unten",
@@ -547,6 +587,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Tisch",
+    "viel Reibung",
+    "nach 2,0 s steht er still"
+   ],
+   [
     "Eis",
     "wenig Reibung",
     "nach 16,0 s steht er still"
@@ -608,6 +653,11 @@
    "verschiedene Körper"
   ],
   "tabelle_erwartet": [
+   [
+    "Läufer A",
+    "60 kg",
+    "2,0 m/s"
+   ],
    [
     "Läufer B",
     "60 kg",
@@ -681,6 +731,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Turnschuhe",
+    "300 cm²",
+    "19,6 kPa"
+   ],
+   [
     "Stöckelabsatz",
     "1 cm²",
     "5886,0 kPa"
@@ -747,6 +802,11 @@
    "stärker"
   ],
   "tabelle_erwartet": [
+   [
+    "Wasser",
+    "10 m",
+    "98,1 kPa"
+   ],
    [
     "Öl",
     "10 m",
@@ -824,6 +884,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Blei",
+    "11,340 kg",
+    "sinkt"
+   ],
+   [
     "Eisen",
     "7,870 kg",
     "sinkt"
@@ -892,6 +957,11 @@
    "1000 kg/m³"
   ],
   "tabelle_erwartet": [
+   [
+    "massiv – sinkt",
+    "7870 kg/m³",
+    "sinkt"
+   ],
    [
     "87 % – sinkt noch",
     "1023 kg/m³",
@@ -965,6 +1035,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Schieben: 100 N über 4 m",
+    "ja",
+    "400 J"
+   ],
+   [
     "Waagerecht tragen: 4 m",
     "nein",
     "0 J"
@@ -1034,6 +1109,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "keinen (Start)",
+    "5 kg, 3 m",
+    "147 J"
+   ],
+   [
     "×2 Masse",
     "10 kg, 3 m",
     "294 J"
@@ -1098,6 +1178,11 @@
    "viermal"
   ],
   "tabelle_erwartet": [
+   [
+    "Start",
+    "4 kg mit 4 m/s",
+    "32 J"
+   ],
    [
     "×2 Masse",
     "8 kg mit 4 m/s",
@@ -1165,6 +1250,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "Höhe",
+    "Höhe = 20,0 m",
+    "wird kleiner"
+   ],
    [
     "Lageenergie E_pot",
     "langer Balken",
@@ -1234,6 +1324,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Am Anfang",
+    "1000 J",
+    "1000 J"
+   ],
+   [
     "Nach Schritt 1 (Motor)",
     "250 J",
     "1000 J"
@@ -1296,6 +1391,11 @@
    "doppelt"
   ],
   "tabelle_erwartet": [
+   [
+    "50 kg in 10 s",
+    "1962 J",
+    "196 W"
+   ],
    [
     "nach ÷2 Zeit",
     "1962 J",
@@ -1363,6 +1463,11 @@
    "Wirkungsgrad"
   ],
   "tabelle_erwartet": [
+   [
+    "Glühlampe",
+    "50 J Licht",
+    "5 %"
+   ],
    [
     "LED-Lampe",
     "400 J Licht",
@@ -1440,6 +1545,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1,00 m",
+    "50,00 N",
+    "40,0 cm"
+   ],
+   [
     "0,25 m",
     "200,00 N",
     "10,0 cm"
@@ -1508,6 +1618,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1 Seilstück",
+    "600,0 N",
+    "2,0 m"
+   ],
+   [
     "2 Seilstücke",
     "300,0 N",
     "4,0 m"
@@ -1574,6 +1689,11 @@
    "langsam"
   ],
   "tabelle_erwartet": [
+   [
+    "24",
+    "24",
+    "60,0 U/min"
+   ],
    [
     "30",
     "10",
@@ -1643,6 +1763,11 @@
    "länger"
   ],
   "tabelle_erwartet": [
+   [
+    "flach",
+    "1,5 N",
+    "4,0 × Höhe"
+   ],
    [
     "mittel",
     "3,0 N",

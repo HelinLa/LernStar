@@ -66,8 +66,8 @@
   "tabRows": [
    [
     "Klima",
-    "dafür",
-    "sehr"
+    "",
+    ""
    ],
    [
     "Brennstoff",
@@ -168,6 +168,11 @@
    "Grund"
   ],
   "tabelle_erwartet": [
+   [
+    "Klima",
+    "dafür",
+    "sehr"
+   ],
    [
     "Brennstoff",
     "dafür oder dagegen — beides ist richtig",

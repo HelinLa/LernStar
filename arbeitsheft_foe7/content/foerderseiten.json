@@ -34,8 +34,8 @@
   "tabRows": [
    [
     "Spiegel",
-    "95 % · 0 % · 5 %",
-    "100 %"
+    "",
+    ""
    ],
    [
     "Fensterglas",
@@ -164,8 +164,8 @@
   "tabRows": [
    [
     "0°",
-    "0°",
-    "ja"
+    "",
+    ""
    ],
    [
     "20°",
@@ -294,8 +294,8 @@
   "tabRows": [
    [
     "0°",
-    "0°",
-    "nein"
+    "",
+    ""
    ],
    [
     "40°",
@@ -420,8 +420,8 @@
   "tabRows": [
    [
     "0°",
-    "0°",
-    "ja"
+    "",
+    ""
    ],
    [
     "20°",
@@ -551,8 +551,8 @@
   "tabRows": [
    [
     "in der Mitte dicker",
-    "sie treffen sich im Brennpunkt",
-    "ja, 90 hinter dem Glas"
+    "",
+    ""
    ],
    [
     "in der Mitte dünner",
@@ -671,8 +671,8 @@
   "tabRows": [
    [
     "g = 190",
-    "verkleinert",
-    "umgekehrt"
+    "",
+    ""
    ],
    [
     "g = 100",
@@ -797,8 +797,8 @@
   "tabRows": [
    [
     "Abstand weit",
-    "flacher (fern)",
-    "mittel"
+    "",
+    ""
    ],
    [
     "Abstand nah",
@@ -927,8 +927,8 @@
   "tabRows": [
    [
     "kurzsichtig ohne Brille",
-    "vor der Netzhaut",
-    "unscharf"
+    "",
+    ""
    ],
    [
     "kurzsichtig mit Brille",
@@ -1057,8 +1057,8 @@
   "tabRows": [
    [
     "b = 29 cm, Loch klein",
-    "kleiner als der Gegenstand",
-    "scharf"
+    "",
+    ""
    ],
    [
     "b = 39 cm, Loch klein",
@@ -1188,8 +1188,8 @@
   "tabRows": [
    [
     "weißes Licht",
-    "ein Fächer aus allen Farben",
-    "viele Farben"
+    "",
+    ""
    ],
    [
     "nur Rot",
@@ -1309,8 +1309,8 @@
   "tabRows": [
    [
     "Ausgangszustand",
-    "220 · 60 · 60",
-    "Rot"
+    "",
+    ""
    ],
    [
     "aus",
@@ -1439,8 +1439,8 @@
   "tabRows": [
    [
     "555 nm – Grün",
-    "ja",
-    "38 %"
+    "",
+    ""
    ],
    [
     "700 nm – letztes Rot",
@@ -1565,8 +1565,8 @@
   "tabRows": [
    [
     "Sonne",
-    "ja – Selbstleuchter",
-    "hell"
+    "",
+    ""
    ],
    [
     "Stern",
@@ -1695,8 +1695,8 @@
   "tabRows": [
    [
     "0°",
-    "Yumi",
-    "Ben"
+    "",
+    ""
    ],
    [
     "180°",
@@ -1820,8 +1820,8 @@
   "tabRows": [
    [
     "Mond",
-    "1,6",
-    "1,37 s"
+    "",
+    ""
    ],
    [
     "Erde",
@@ -1945,8 +1945,8 @@
   "tabRows": [
    [
     "ganz klein (6 km/s)",
-    "stürzt in die Sonne",
-    "nein"
+    "",
+    ""
    ],
    [
     "mittlerer Wert (30 km/s)",
@@ -2071,8 +2071,8 @@
   "tabRows": [
    [
     "Steckbrief",
-    "Erde: Gesteinsplanet, feste Oberfläche",
-    "innen gibt es festen Boden"
+    "",
+    ""
    ],
    [
     "Größen",
@@ -2196,8 +2196,8 @@
   "tabRows": [
    [
     "Erde → Mond",
-    "384 000 km",
-    "1,3 Sekunden"
+    "",
+    ""
    ],
    [
     "Erde → Sonne",
@@ -2322,8 +2322,8 @@
   "tabRows": [
    [
     "bloßes Auge",
-    "klein, richtig herum",
-    "Lichtschwaches unsichtbar"
+    "",
+    ""
    ],
    [
     "Teleskop, große Öffnung",
@@ -2447,8 +2447,8 @@
   "tabRows": [
    [
     "Proxima Centauri",
-    "0,7686",
-    "4,2"
+    "",
+    ""
    ],
    [
     "61 Cygni",
@@ -2578,8 +2578,8 @@
   "tabRows": [
    [
     "1 Sonnenmasse (Sonne)",
-    "10,0 Mrd. Jahre",
-    "—"
+    "",
+    ""
    ],
    [
     "10 Sonnenmassen",
@@ -2703,8 +2703,8 @@
   "tabRows": [
    [
     "zur Mitte",
-    "203",
-    "hellstes Stück"
+    "",
+    ""
    ],
    [
     "nach außen",
@@ -2828,8 +2828,8 @@
   "tabRows": [
    [
     "alt",
-    "die Erde",
-    "ja"
+    "",
+    ""
    ],
    [
     "heute",
@@ -2948,8 +2948,8 @@
   "tabRows": [
    [
     "weit weg",
-    "läuft fast gerade weiter",
-    "ja"
+    "",
+    ""
    ],
    [
     "mittel",
@@ -3073,8 +3073,8 @@
   "tabRows": [
    [
     "am Anfang",
-    "alles auf winzigem Raum",
-    "unvorstellbar heiß und dicht"
+    "",
+    ""
    ],
    [
     "in der Mitte des Ablaufs",

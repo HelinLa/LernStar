@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Schieben: 100 N über 4 m",
-    "ja",
-    "400 J"
+    "",
+    ""
    ],
    [
     "Waagerecht tragen: 4 m",
@@ -135,6 +135,11 @@
    "null"
   ],
   "tabelle_erwartet": [
+   [
+    "Schieben: 100 N über 4 m",
+    "ja",
+    "400 J"
+   ],
    [
     "Waagerecht tragen: 4 m",
     "nein",

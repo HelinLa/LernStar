@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "5 N (am Anfang)",
-    "Gesamtkraft = 0 N",
-    "Sie bleibt in Ruhe."
+    "",
+    ""
    ],
    [
     "4 N (nach – N)",
@@ -134,6 +134,11 @@
    "Kräftegleichgewicht"
   ],
   "tabelle_erwartet": [
+   [
+    "5 N (am Anfang)",
+    "Gesamtkraft = 0 N",
+    "Sie bleibt in Ruhe."
+   ],
    [
     "4 N (nach – N)",
     "Gesamtkraft = 1 N nach unten",

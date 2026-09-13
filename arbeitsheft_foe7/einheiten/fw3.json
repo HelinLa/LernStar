@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Mond",
-    "1,6",
-    "1,37 s"
+    "",
+    ""
    ],
    [
     "Erde",
@@ -136,6 +136,11 @@
    "gleich schnell"
   ],
   "tabelle_erwartet": [
+   [
+    "Mond",
+    "1,6",
+    "1,37 s"
+   ],
    [
     "Erde",
     "9,8",

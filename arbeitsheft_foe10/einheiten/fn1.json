@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Wasserstoff-1",
-    "1 Proton, 0 Neutronen",
-    "Wasserstoff-1"
+    "",
+    ""
    ],
    [
     "Kohlenstoff-12",
@@ -141,6 +141,11 @@
    "Neutronen"
   ],
   "tabelle_erwartet": [
+   [
+    "Wasserstoff-1",
+    "1 Proton, 0 Neutronen",
+    "Wasserstoff-1"
+   ],
    [
     "Kohlenstoff-12",
     "6 Protonen, 6 Neutronen",

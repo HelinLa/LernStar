@@ -64,8 +64,8 @@
   "tabRows": [
    [
     "Iod-131",
-    "8 Tage",
-    "kurz"
+    "",
+    ""
    ],
    [
     "Cäsium-137",
@@ -161,6 +161,11 @@
    "Endlager"
   ],
   "tabelle_erwartet": [
+   [
+    "Iod-131",
+    "8 Tage",
+    "kurz"
+   ],
    [
     "Cäsium-137",
     "30 Jahre",

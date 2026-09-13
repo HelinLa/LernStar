@@ -63,8 +63,8 @@
   "tabRows": [
    [
     "Technetium-99m",
-    "Gamma",
-    "Diagnose"
+    "",
+    ""
    ],
    [
     "Iod-131",
@@ -160,6 +160,11 @@
    "Therapie"
   ],
   "tabelle_erwartet": [
+   [
+    "Technetium-99m",
+    "Gamma",
+    "Diagnose"
+   ],
    [
     "Iod-131",
     "Beta",

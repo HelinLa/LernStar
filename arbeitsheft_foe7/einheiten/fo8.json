@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "kurzsichtig ohne Brille",
-    "vor der Netzhaut",
-    "unscharf"
+    "",
+    ""
    ],
    [
     "kurzsichtig mit Brille",
@@ -141,6 +141,11 @@
    "Sammellinse"
   ],
   "tabelle_erwartet": [
+   [
+    "kurzsichtig ohne Brille",
+    "vor der Netzhaut",
+    "unscharf"
+   ],
    [
     "kurzsichtig mit Brille",
     "genau auf der Netzhaut",

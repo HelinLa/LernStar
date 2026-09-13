@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "5,0 A",
-    "0,100 N",
-    "nach oben"
+    "",
+    ""
    ],
    [
     "0 A",
@@ -140,6 +140,11 @@
    "andersherum"
   ],
   "tabelle_erwartet": [
+   [
+    "5,0 A",
+    "0,100 N",
+    "nach oben"
+   ],
    [
     "0 A",
     "0,000 N",

@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "1 Sonnenmasse (Sonne)",
-    "10,0 Mrd. Jahre",
-    "—"
+    "",
+    ""
    ],
    [
     "10 Sonnenmassen",
@@ -137,6 +137,11 @@
    "kürzer"
   ],
   "tabelle_erwartet": [
+   [
+    "1 Sonnenmasse (Sonne)",
+    "10,0 Mrd. Jahre",
+    "—"
+   ],
    [
     "10 Sonnenmassen",
     "31,6 Mio. Jahre",

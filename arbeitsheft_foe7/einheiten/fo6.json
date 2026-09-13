@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "g = 190",
-    "verkleinert",
-    "umgekehrt"
+    "",
+    ""
    ],
    [
     "g = 100",
@@ -136,6 +136,11 @@
    "Lupe"
   ],
   "tabelle_erwartet": [
+   [
+    "g = 190",
+    "verkleinert",
+    "umgekehrt"
+   ],
    [
     "g = 100",
     "vergrößert",

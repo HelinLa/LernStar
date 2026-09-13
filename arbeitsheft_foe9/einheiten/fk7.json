@@ -35,8 +35,8 @@
   "tabRows": [
    [
     "nichts",
-    "3 N nach rechts und 2 N nach rechts",
-    "5 N nach rechts"
+    "",
+    ""
    ],
    [
     "„Richtung“ bei F1",
@@ -132,6 +132,11 @@
    "abziehen"
   ],
   "tabelle_erwartet": [
+   [
+    "nichts",
+    "3 N nach rechts und 2 N nach rechts",
+    "5 N nach rechts"
+   ],
    [
     "„Richtung“ bei F1",
     "3 N nach links und 2 N nach rechts",

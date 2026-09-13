@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Fußgänger",
-    "1,5 m/s",
-    "5,4 km/h"
+    "",
+    ""
    ],
    [
     "Radfahrer",
@@ -135,6 +135,11 @@
    "3,6 km/h"
   ],
   "tabelle_erwartet": [
+   [
+    "Fußgänger",
+    "1,5 m/s",
+    "5,4 km/h"
+   ],
    [
     "Radfahrer",
     "5,0 m/s",

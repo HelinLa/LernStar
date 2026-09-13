@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "555 nm – Grün",
-    "ja",
-    "38 %"
+    "",
+    ""
    ],
    [
     "700 nm – letztes Rot",
@@ -136,6 +136,11 @@
    "wärmt"
   ],
   "tabelle_erwartet": [
+   [
+    "555 nm – Grün",
+    "ja",
+    "38 %"
+   ],
    [
     "700 nm – letztes Rot",
     "ja",

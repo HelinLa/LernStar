@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "Am Anfang",
-    "1000 J",
-    "1000 J"
+    "",
+    ""
    ],
    [
     "Nach Schritt 1 (Motor)",
@@ -129,6 +129,11 @@
    "gebrauchen"
   ],
   "tabelle_erwartet": [
+   [
+    "Am Anfang",
+    "1000 J",
+    "1000 J"
+   ],
    [
     "Nach Schritt 1 (Motor)",
     "250 J",

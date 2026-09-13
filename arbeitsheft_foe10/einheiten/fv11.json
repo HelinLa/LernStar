@@ -70,8 +70,8 @@
   "tabRows": [
    [
     "Kohlekraftwerk",
-    "ja",
-    "Platz 2"
+    "",
+    ""
    ],
    [
     "Kernkraftwerk",
@@ -172,6 +172,11 @@
    "wetterabhängig"
   ],
   "tabelle_erwartet": [
+   [
+    "Kohlekraftwerk",
+    "ja",
+    "Platz 2"
+   ],
    [
     "Kernkraftwerk",
     "ja",

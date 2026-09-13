@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "2,0 Hz",
-    "0,658 V",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "1,0 Hz",
@@ -137,6 +137,11 @@
    "doppelt so groß"
   ],
   "tabelle_erwartet": [
+   [
+    "2,0 Hz",
+    "0,658 V",
+    "Anfang, kein Vergleich"
+   ],
    [
     "1,0 Hz",
     "0,329 V",

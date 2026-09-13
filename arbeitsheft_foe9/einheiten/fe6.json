@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "50 kg in 10 s",
-    "1962 J",
-    "196 W"
+    "",
+    ""
    ],
    [
     "nach ÷2 Zeit",
@@ -133,6 +133,11 @@
    "doppelt"
   ],
   "tabelle_erwartet": [
+   [
+    "50 kg in 10 s",
+    "1962 J",
+    "196 W"
+   ],
    [
     "nach ÷2 Zeit",
     "1962 J",

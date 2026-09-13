@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "γ-Strahlung und Blei",
-    "50,2 % kommen durch",
-    "Ungefähr die Hälfte kommt durch"
+    "",
+    ""
    ],
    [
     "α-Strahlung und Papier",
@@ -135,6 +135,11 @@
    "schwächer"
   ],
   "tabelle_erwartet": [
+   [
+    "γ-Strahlung und Blei",
+    "50,2 % kommen durch",
+    "Ungefähr die Hälfte kommt durch"
+   ],
    [
     "α-Strahlung und Papier",
     "0,0 % kommen durch",

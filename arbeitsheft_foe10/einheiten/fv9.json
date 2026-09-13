@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Hochspannung",
-    "0,100 A",
-    "0,266 W"
+    "",
+    ""
    ],
    [
     "Niederspannung, CrNi",
@@ -131,6 +131,11 @@
    "wenig"
   ],
   "tabelle_erwartet": [
+   [
+    "Hochspannung",
+    "0,100 A",
+    "0,266 W"
+   ],
    [
     "Niederspannung, CrNi",
     "0,238 A",

@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "mittel",
-    "70",
-    "gleich groß"
+    "",
+    ""
    ],
    [
     "langsam",
@@ -136,6 +136,11 @@
    "beschleunigt"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "70",
+    "gleich groß"
+   ],
    [
     "langsam",
     "40",

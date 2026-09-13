@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "1",
-    "Kraftwerk",
-    "10–25 kV"
+    "",
+    ""
    ],
    [
     "2",
@@ -146,6 +146,11 @@
    "kleiner"
   ],
   "tabelle_erwartet": [
+   [
+    "1",
+    "Kraftwerk",
+    "10–25 kV"
+   ],
    [
     "2",
     "hoch",

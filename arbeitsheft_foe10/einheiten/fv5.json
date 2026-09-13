@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "20 Windungen, Kommutator an",
-    "sie dreht immer weiter",
-    "16,0 mN·m"
+    "",
+    ""
    ],
    [
     "20 Windungen, Kommutator aus",
@@ -136,6 +136,11 @@
    "Kommutator"
   ],
   "tabelle_erwartet": [
+   [
+    "20 Windungen, Kommutator an",
+    "sie dreht immer weiter",
+    "16,0 mN·m"
+   ],
    [
     "20 Windungen, Kommutator aus",
     "sie wackelt und bleibt stehen",

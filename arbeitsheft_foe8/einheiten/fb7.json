@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "50 km/h",
-    "15 m",
-    "25 m"
+    "",
+    ""
    ],
    [
     "100 km/h",
@@ -136,6 +136,11 @@
    "Reaktionsweg"
   ],
   "tabelle_erwartet": [
+   [
+    "50 km/h",
+    "15 m",
+    "25 m"
+   ],
    [
     "100 km/h",
     "30 m",

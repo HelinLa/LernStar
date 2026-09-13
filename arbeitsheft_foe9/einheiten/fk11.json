@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "Turnschuhe",
-    "300 cm²",
-    "19,6 kPa"
+    "",
+    ""
    ],
    [
     "Stöckelabsatz",
@@ -134,6 +134,11 @@
    "kleiner"
   ],
   "tabelle_erwartet": [
+   [
+    "Turnschuhe",
+    "300 cm²",
+    "19,6 kPa"
+   ],
    [
     "Stöckelabsatz",
     "1 cm²",

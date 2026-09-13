@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "konstant",
-    "waagerecht",
-    "bleibt gleich"
+    "",
+    ""
    ],
    [
     "beschleunigen",
@@ -135,6 +135,11 @@
    "langsamer"
   ],
   "tabelle_erwartet": [
+   [
+    "konstant",
+    "waagerecht",
+    "bleibt gleich"
+   ],
    [
     "beschleunigen",
     "ansteigend",

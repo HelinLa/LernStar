@@ -38,7 +38,7 @@
    [
     "Läufer A",
     "60 kg",
-    "2,0 m/s"
+    ""
    ],
    [
     "Läufer B",
@@ -139,6 +139,11 @@
    "verschiedene Körper"
   ],
   "tabelle_erwartet": [
+   [
+    "Läufer A",
+    "60 kg",
+    "2,0 m/s"
+   ],
    [
     "Läufer B",
     "60 kg",

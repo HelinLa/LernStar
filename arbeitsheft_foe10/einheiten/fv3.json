@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "1 A",
-    "deine Zahl vom Bildschirm",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "3 A",
@@ -136,6 +136,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "1 A",
+    "deine Zahl vom Bildschirm",
+    "Anfang, kein Vergleich"
+   ],
    [
     "3 A",
     "eigene Zahl der Klasse – sie schwankt bei jedem Lauf, kein Sollwert",

@@ -40,7 +40,7 @@
    [
     "55",
     "0° = Ende",
-    "viele"
+    ""
    ],
    [
     "55",
@@ -163,8 +163,8 @@
   "tabRows": [
    [
     "Strom an: 3,0 A, Abstand 2,0 cm",
-    "Erdfeld 20 µT, Magnetfeld 30,0 µT",
-    "nach Osten"
+    "",
+    ""
    ],
    [
     "Strom aus, Abstand 2,0 cm",
@@ -283,8 +283,8 @@
   "tabRows": [
    [
     "1 A",
-    "deine Zahl vom Bildschirm",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "3 A",
@@ -407,8 +407,8 @@
   "tabRows": [
    [
     "5,0 A",
-    "0,100 N",
-    "nach oben"
+    "",
+    ""
    ],
    [
     "0 A",
@@ -537,8 +537,8 @@
   "tabRows": [
    [
     "20 Windungen, Kommutator an",
-    "sie dreht immer weiter",
-    "16,0 mN·m"
+    "",
+    ""
    ],
    [
     "20 Windungen, Kommutator aus",
@@ -662,7 +662,7 @@
    [
     "mittel",
     "50 cm/s",
-    "0,300 V"
+    ""
    ],
    [
     "stark",
@@ -791,8 +791,8 @@
   "tabRows": [
    [
     "2,0 Hz",
-    "0,658 V",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "1,0 Hz",
@@ -917,8 +917,8 @@
   "tabRows": [
    [
     "1000 Windungen",
-    "8,80",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "500 Windungen",
@@ -1042,8 +1042,8 @@
   "tabRows": [
    [
     "Hochspannung",
-    "0,100 A",
-    "0,266 W"
+    "",
+    ""
    ],
    [
     "Niederspannung, CrNi",
@@ -1162,8 +1162,8 @@
   "tabRows": [
    [
     "1",
-    "Kraftwerk",
-    "10–25 kV"
+    "",
+    ""
    ],
    [
     "2",
@@ -1328,8 +1328,8 @@
   "tabRows": [
    [
     "Kohlekraftwerk",
-    "ja",
-    "Platz 2"
+    "",
+    ""
    ],
    [
     "Kernkraftwerk",
@@ -1457,8 +1457,8 @@
   "tabRows": [
    [
     "1000 J",
-    "800 J",
-    "80 %"
+    "",
+    ""
    ],
    [
     "200 J",
@@ -1588,7 +1588,7 @@
    [
     "Fernseher 100 W",
     "3 h",
-    "32,85 €"
+    ""
    ],
    [
     "LED 10 W",
@@ -1717,8 +1717,8 @@
   "tabRows": [
    [
     "Wasserstoff-1",
-    "1 Proton, 0 Neutronen",
-    "Wasserstoff-1"
+    "",
+    ""
    ],
    [
     "Kohlenstoff-12",
@@ -1847,8 +1847,8 @@
   "tabRows": [
    [
     "0 V",
-    "I",
-    "zählt nicht"
+    "",
+    ""
    ],
    [
     "450 V",
@@ -1971,8 +1971,8 @@
   "tabRows": [
    [
     "γ-Strahlung und Blei",
-    "50,2 % kommen durch",
-    "Ungefähr die Hälfte kommt durch"
+    "",
+    ""
    ],
    [
     "α-Strahlung und Papier",
@@ -2096,8 +2096,8 @@
   "tabRows": [
    [
     "α Alpha",
-    "4.202 (über viertausend)",
-    "3,5 cm"
+    "",
+    ""
    ],
    [
     "β Beta",
@@ -2221,8 +2221,8 @@
   "tabRows": [
    [
     "α",
-    "groß",
-    "gleich"
+    "",
+    ""
    ],
    [
     "β",
@@ -2346,8 +2346,8 @@
   "tabRows": [
    [
     "Radon-220",
-    "55,6 s",
-    "200 von 200"
+    "",
+    ""
    ],
    [
     "Iod-131",
@@ -2471,8 +2471,8 @@
   "tabRows": [
    [
     "0",
-    "0 Jahre",
-    "200"
+    "",
+    ""
    ],
    [
     "1",
@@ -2601,8 +2601,8 @@
   "tabRows": [
    [
     "Barium + Krypton",
-    "0,1860 u",
-    "173,3 MeV"
+    "",
+    ""
    ],
    [
     "Xenon + Strontium",
@@ -2725,8 +2725,8 @@
   "tabRows": [
    [
     "0 %",
-    "1,60",
-    "160"
+    "",
+    ""
    ],
    [
     "50 %",
@@ -2854,8 +2854,8 @@
   "tabRows": [
    [
     "Brennstab",
-    "wird heiß",
-    "nein"
+    "",
+    ""
    ],
    [
     "Wasser",
@@ -3009,8 +3009,8 @@
   "tabRows": [
    [
     "Iod-131",
-    "8 Tage",
-    "kurz"
+    "",
+    ""
    ],
    [
     "Cäsium-137",
@@ -3134,8 +3134,8 @@
   "tabRows": [
    [
     "50 cm",
-    "370,8 µSv/h",
-    "123,6 µSv"
+    "",
+    ""
    ],
    [
     "100 cm",
@@ -3288,8 +3288,8 @@
   "tabRows": [
    [
     "Technetium-99m",
-    "Gamma",
-    "Diagnose"
+    "",
+    ""
    ],
    [
     "Iod-131",
@@ -3413,8 +3413,8 @@
   "tabRows": [
    [
     "4",
-    "Es passiert nichts.",
-    "zu langsam"
+    "",
+    ""
    ],
    [
     "8",
@@ -3570,8 +3570,8 @@
   "tabRows": [
    [
     "Klima",
-    "dafür",
-    "sehr"
+    "",
+    ""
    ],
    [
     "Brennstoff",

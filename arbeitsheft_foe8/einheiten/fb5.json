@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "schnell",
-    "steil",
-    "Er fährt schnell."
+    "",
+    ""
    ],
    [
     "langsam",
@@ -135,6 +135,11 @@
    "steht still"
   ],
   "tabelle_erwartet": [
+   [
+    "schnell",
+    "steil",
+    "Er fährt schnell."
+   ],
    [
     "langsam",
     "flach",

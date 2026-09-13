@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "mittel",
-    "15 Ω",
-    "0,30 A"
+    "",
+    ""
    ],
    [
     "kleiner Widerstand",
@@ -135,6 +135,11 @@
    "kleiner Strom"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "15 Ω",
+    "0,30 A"
+   ],
    [
     "kleiner Widerstand",
     "3 Ω",

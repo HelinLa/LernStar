@@ -38,7 +38,7 @@
    [
     "keinen (Start)",
     "5 kg, 3 m",
-    "147 J"
+    ""
    ],
    [
     "×2 Masse",
@@ -134,6 +134,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "keinen (Start)",
+    "5 kg, 3 m",
+    "147 J"
+   ],
    [
     "×2 Masse",
     "10 kg, 3 m",

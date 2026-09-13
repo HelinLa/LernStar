@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "langsam",
-    "10,0 s",
-    "1,0 m/s"
+    "",
+    ""
    ],
    [
     "mittel",
@@ -136,6 +136,11 @@
    "s / t"
   ],
   "tabelle_erwartet": [
+   [
+    "langsam",
+    "10,0 s",
+    "1,0 m/s"
+   ],
    [
     "mittel",
     "5,0 s",

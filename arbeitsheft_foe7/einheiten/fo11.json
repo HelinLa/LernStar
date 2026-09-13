@@ -35,8 +35,8 @@
   "tabRows": [
    [
     "Ausgangszustand",
-    "220 · 60 · 60",
-    "Rot"
+    "",
+    ""
    ],
    [
     "aus",
@@ -138,6 +138,11 @@
    "Weiß"
   ],
   "tabelle_erwartet": [
+   [
+    "Ausgangszustand",
+    "220 · 60 · 60",
+    "Rot"
+   ],
    [
     "aus",
     "0 · 0 · 0",

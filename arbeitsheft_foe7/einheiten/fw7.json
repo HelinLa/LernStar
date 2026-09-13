@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "bloßes Auge",
-    "klein, richtig herum",
-    "Lichtschwaches unsichtbar"
+    "",
+    ""
    ],
    [
     "Teleskop, große Öffnung",
@@ -137,6 +137,11 @@
    "heller"
   ],
   "tabelle_erwartet": [
+   [
+    "bloßes Auge",
+    "klein, richtig herum",
+    "Lichtschwaches unsichtbar"
+   ],
    [
     "Teleskop, große Öffnung",
     "4-fach größer, auf dem Kopf",

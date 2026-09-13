@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "Start",
-    "4 kg mit 4 m/s",
-    "32 J"
+    "",
+    ""
    ],
    [
     "×2 Masse",
@@ -134,6 +134,11 @@
    "viermal"
   ],
   "tabelle_erwartet": [
+   [
+    "Start",
+    "4 kg mit 4 m/s",
+    "32 J"
+   ],
    [
     "×2 Masse",
     "8 kg mit 4 m/s",

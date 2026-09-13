@@ -40,7 +40,7 @@
    [
     "55",
     "0° = Ende",
-    "viele"
+    ""
    ],
    [
     "55",
@@ -136,6 +136,11 @@
    "stärksten"
   ],
   "tabelle_erwartet": [
+   [
+    "55",
+    "0° = Ende",
+    "viele"
+   ],
    [
     "55",
     "90° = Mitte",

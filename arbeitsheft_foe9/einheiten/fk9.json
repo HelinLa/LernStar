@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Tisch",
-    "viel Reibung",
-    "nach 2,0 s steht er still"
+    "",
+    ""
    ],
    [
     "Eis",
@@ -136,6 +136,11 @@
    "bremst"
   ],
   "tabelle_erwartet": [
+   [
+    "Tisch",
+    "viel Reibung",
+    "nach 2,0 s steht er still"
+   ],
    [
     "Eis",
     "wenig Reibung",

@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "1 Gerät",
-    "6 A",
-    "Sie lässt den Strom fließen."
+    "",
+    ""
    ],
    [
     "2 Geräte",
@@ -135,6 +135,11 @@
    "Sicherung"
   ],
   "tabelle_erwartet": [
+   [
+    "1 Gerät",
+    "6 A",
+    "Sie lässt den Strom fließen."
+   ],
    [
     "2 Geräte",
     "12 A",

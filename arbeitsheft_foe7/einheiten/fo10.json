@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "weißes Licht",
-    "ein Fächer aus allen Farben",
-    "viele Farben"
+    "",
+    ""
    ],
    [
     "nur Rot",
@@ -136,6 +136,11 @@
    "bricht"
   ],
   "tabelle_erwartet": [
+   [
+    "weißes Licht",
+    "ein Fächer aus allen Farben",
+    "viele Farben"
+   ],
    [
     "nur Rot",
     "ein roter Strich, nur gebrochen",

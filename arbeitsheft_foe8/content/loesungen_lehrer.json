@@ -12,6 +12,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "am Anfang",
+    "ungleiche Ladung",
+    "Sie ziehen sich an."
+   ],
+   [
     "beide Kugeln − negativ",
     "gleiche Ladung",
     "Sie stoßen sich ab."
@@ -71,6 +76,11 @@
    "ein Viertel"
   ],
   "tabelle_erwartet": [
+   [
+    "10 nC",
+    "6,0 cm",
+    "249,7 µN"
+   ],
    [
     "10 nC",
     "12,0 cm",
@@ -143,6 +153,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1 Zelle",
+    "1,5 V",
+    "schwach"
+   ],
+   [
     "2 Zellen",
     "3 V",
     "heller"
@@ -204,6 +219,11 @@
    "kein Strom"
   ],
   "tabelle_erwartet": [
+   [
+    "Strom schwach",
+    "0,10 A",
+    "geschlossen"
+   ],
    [
     "mittel",
     "0,30 A",
@@ -277,6 +297,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Amperemeter",
+    "in Reihe",
+    "✓ misst 0,3 A"
+   ],
+   [
     "Voltmeter",
     "in Reihe",
     "✗ Lampe bleibt dunkel"
@@ -340,6 +365,11 @@
    "kleiner Strom"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "15 Ω",
+    "0,30 A"
+   ],
    [
     "kleiner Widerstand",
     "3 Ω",
@@ -406,6 +436,11 @@
    "stärker"
   ],
   "tabelle_erwartet": [
+   [
+    "Kupfer, kurz, dick",
+    "5 Ω",
+    "0,90 A"
+   ],
    [
     "Kupfer, lang, dick",
     "10 Ω",
@@ -482,6 +517,11 @@
   "tabelle_erwartet": [
    [
     "20 Ω",
+    "1,5 V",
+    "0,07 A"
+   ],
+   [
+    "20 Ω",
     "3 V",
     "0,15 A"
    ],
@@ -546,6 +586,11 @@
    "Gesamtwiderstand"
   ],
   "tabelle_erwartet": [
+   [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "30 Ω",
+    "0,20 A"
+   ],
    [
     "R₁ = 20 Ω, R₂ = 20 Ω",
     "40 Ω",
@@ -613,6 +658,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "R₁ = 10 Ω, R₂ = 20 Ω",
+    "I₁ = 0,45 A, I₂ = 0,23 A",
+    "0,68 A"
+   ],
+   [
     "R₁ = 30 Ω, R₂ = 20 Ω",
     "I₁ = 0,15 A, I₂ = 0,23 A",
     "0,38 A"
@@ -674,6 +724,11 @@
    "Signal"
   ],
   "tabelle_erwartet": [
+   [
+    "Wandern",
+    "0,0490 mm/s",
+    "langsam"
+   ],
    [
     "Zappeln",
     "1 570 000 m/s",
@@ -745,6 +800,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1,0 km",
+    "2,92 s",
+    "3 Millionstel Sekunden"
+   ],
+   [
     "2,0 km",
     "5,83 s",
     "7 Millionstel Sekunden"
@@ -812,6 +872,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1 Gerät",
+    "6 A",
+    "Sie lässt den Strom fließen."
+   ],
+   [
     "2 Geräte",
     "12 A",
     "Sie lässt den Strom fließen."
@@ -878,6 +943,11 @@
    "Geschwindigkeit"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "schnell",
+    "Auto B"
+   ],
    [
     "schnell",
     "schnell",
@@ -947,6 +1017,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "langsam",
+    "10,0 s",
+    "1,0 m/s"
+   ],
+   [
     "mittel",
     "5,0 s",
     "2,0 m/s"
@@ -1014,6 +1089,11 @@
    "3,6 km/h"
   ],
   "tabelle_erwartet": [
+   [
+    "Fußgänger",
+    "1,5 m/s",
+    "5,4 km/h"
+   ],
    [
     "Radfahrer",
     "5,0 m/s",
@@ -1084,6 +1164,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "mittel",
+    "70",
+    "gleich groß"
+   ],
+   [
     "langsam",
     "40",
     "gleich groß"
@@ -1152,6 +1237,11 @@
    "steht still"
   ],
   "tabelle_erwartet": [
+   [
+    "schnell",
+    "steil",
+    "Er fährt schnell."
+   ],
    [
     "langsam",
     "flach",
@@ -1223,6 +1313,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "konstant",
+    "waagerecht",
+    "bleibt gleich"
+   ],
+   [
     "beschleunigen",
     "ansteigend",
     "wird größer"
@@ -1285,6 +1380,11 @@
    "Reaktionsweg"
   ],
   "tabelle_erwartet": [
+   [
+    "50 km/h",
+    "15 m",
+    "25 m"
+   ],
    [
     "100 km/h",
     "30 m",

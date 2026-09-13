@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Strom an: 3,0 A, Abstand 2,0 cm",
-    "Erdfeld 20 µT, Magnetfeld 30,0 µT",
-    "nach Osten"
+    "",
+    ""
    ],
    [
     "Strom aus, Abstand 2,0 cm",
@@ -130,6 +130,11 @@
    "Norden"
   ],
   "tabelle_erwartet": [
+   [
+    "Strom an: 3,0 A, Abstand 2,0 cm",
+    "Erdfeld 20 µT, Magnetfeld 30,0 µT",
+    "nach Osten"
+   ],
    [
     "Strom aus, Abstand 2,0 cm",
     "nur das Erdfeld, rund 20 µT",

@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "Feder leeren",
-    "F = 0 N",
-    "entspannt"
+    "",
+    ""
    ],
    [
     "ein Gewicht anhängen",
@@ -133,6 +133,11 @@
    "länger"
   ],
   "tabelle_erwartet": [
+   [
+    "Feder leeren",
+    "F = 0 N",
+    "entspannt"
+   ],
    [
     "ein Gewicht anhängen",
     "F = 1 N",

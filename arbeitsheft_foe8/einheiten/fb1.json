@@ -39,7 +39,7 @@
    [
     "mittel",
     "schnell",
-    "Auto B"
+    ""
    ],
    [
     "schnell",
@@ -135,6 +135,11 @@
    "Geschwindigkeit"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "schnell",
+    "Auto B"
+   ],
    [
     "schnell",
     "schnell",

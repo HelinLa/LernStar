@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "am Anfang",
-    "ungleiche Ladung",
-    "Sie ziehen sich an."
+    "",
+    ""
    ],
    [
     "beide Kugeln − negativ",
@@ -130,6 +130,11 @@
    "ziehen"
   ],
   "tabelle_erwartet": [
+   [
+    "am Anfang",
+    "ungleiche Ladung",
+    "Sie ziehen sich an."
+   ],
    [
     "beide Kugeln − negativ",
     "gleiche Ladung",

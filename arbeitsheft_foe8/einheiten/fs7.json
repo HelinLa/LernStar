@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "Kupfer, kurz, dick",
-    "5 Ω",
-    "0,90 A"
+    "",
+    ""
    ],
    [
     "Kupfer, lang, dick",
@@ -138,6 +138,11 @@
    "stärker"
   ],
   "tabelle_erwartet": [
+   [
+    "Kupfer, kurz, dick",
+    "5 Ω",
+    "0,90 A"
+   ],
    [
     "Kupfer, lang, dick",
     "10 Ω",

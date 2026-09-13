@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "weit weg",
-    "läuft fast gerade weiter",
-    "ja"
+    "",
+    ""
    ],
    [
     "mittel",
@@ -136,6 +136,11 @@
    "Licht"
   ],
   "tabelle_erwartet": [
+   [
+    "weit weg",
+    "läuft fast gerade weiter",
+    "ja"
+   ],
    [
     "mittel",
     "läuft fast einmal ums Loch herum",

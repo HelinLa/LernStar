@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "alt",
-    "die Erde",
-    "ja"
+    "",
+    ""
    ],
    [
     "heute",
@@ -131,6 +131,11 @@
    "keine"
   ],
   "tabelle_erwartet": [
+   [
+    "alt",
+    "die Erde",
+    "ja"
+   ],
    [
     "heute",
     "die Sonne",

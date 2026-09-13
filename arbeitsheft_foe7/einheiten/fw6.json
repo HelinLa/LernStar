@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Erde → Mond",
-    "384 000 km",
-    "1,3 Sekunden"
+    "",
+    ""
    ],
    [
     "Erde → Sonne",
@@ -136,6 +136,11 @@
    "länger"
   ],
   "tabelle_erwartet": [
+   [
+    "Erde → Mond",
+    "384 000 km",
+    "1,3 Sekunden"
+   ],
    [
     "Erde → Sonne",
     "150 Mio. km",

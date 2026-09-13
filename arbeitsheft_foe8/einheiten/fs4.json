@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Strom schwach",
-    "0,10 A",
-    "geschlossen"
+    "",
+    ""
    ],
    [
     "mittel",
@@ -141,6 +141,11 @@
    "kein Strom"
   ],
   "tabelle_erwartet": [
+   [
+    "Strom schwach",
+    "0,10 A",
+    "geschlossen"
+   ],
    [
     "mittel",
     "0,30 A",

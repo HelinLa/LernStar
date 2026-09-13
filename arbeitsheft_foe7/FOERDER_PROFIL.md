@@ -31,8 +31,11 @@ SEITE A — ENTDECKEN
 4. `predict`: zwei Vermutungen zum Ankreuzen; eine typische Fehlvorstellung
    darf bewusst dabei sein. Richtige Position streuen (Messregel!).
 5. `forschen`: höchstens 4 nummerierte Schritte.
-6. `tabelle`: höchstens 4 Spalten, 5 Datenzeilen; Kopf UND mindestens eine
-   Beispielzeile sind schon ausgefüllt.
+6. `tabelle`: höchstens 4 Spalten, 5 Datenzeilen; NUR der Kopf ist
+   ausgefüllt. Alle Zellen bleiben leer – die Schülerinnen und Schüler
+   tragen jede Zeile selbst ein (Abdullah, 13.09.2026; vorher war die
+   erste Zeile als Beispiel vorgegeben). Die Werte der früheren
+   Beispielzeile stehen jetzt im Lehrerteil unter `tabelle_erwartet`.
 7. Kennzeichnung: Simulation / Schülerversuch / Demonstration.
 
 SEITE B — VERSTEHEN UND ÜBEN

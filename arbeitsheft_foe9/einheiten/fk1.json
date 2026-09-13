@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Bewegen",
-    "„Die Kraft setzt den ruhenden Wagen in Bewegung“ – er wird schneller.",
-    "das Tempo"
+    "",
+    ""
    ],
    [
     "Verformen",
@@ -135,6 +135,11 @@
    "Wirkung"
   ],
   "tabelle_erwartet": [
+   [
+    "Bewegen",
+    "„Die Kraft setzt den ruhenden Wagen in Bewegung“ – er wird schneller.",
+    "das Tempo"
+   ],
    [
     "Verformen",
     "„Die Kraft drückt die Knete zusammen – sie verformt den Körper.“ (im Bild: „Wirkung: verformen“ und „verformt!“)",

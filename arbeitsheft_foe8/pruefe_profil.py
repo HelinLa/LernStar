@@ -109,8 +109,16 @@ def pruefe(einheit):
     for i, r in enumerate(rows):
         if len(r) != 3:
             f.append(f"Tabellenzeile {i+1} hat {len(r)} Zellen statt 3")
-    if rows and any(not z for z in rows[0]):
-        f.append("Beispielzeile (Zeile 1) muss vollständig gefüllt sein")
+    # Seit dem 13.09.2026 sind ALLE Zellen leer - der Schueler fuellt auch die
+    # erste Zeile. Vorher stand hier das Gegenteil ("Beispielzeile muss
+    # vollstaendig gefuellt sein"); die Werte sind in den Lehrerteil umgezogen.
+    # Jede Spalte ist entweder VORGABE (in allen Zeilen gefuellt) oder
+    # ANTWORTSPALTE (in allen leer). Eine halb gefuellte Spalte ist die alte
+    # Beispielzeile - genau das soll nicht mehr vorkommen.
+    def _voll(r): return sum(1 for z in r[1:] if str(z).strip())
+    if len(rows) > 1 and all(_voll(rows[0]) > _voll(r) for r in rows[1:]):
+        f.append("Zeile 1 ist voller als alle übrigen – das ist die alte "
+                 "Beispielzeile; alle Antwortzellen bleiben leer")
     ms = s.get("merksatz", [])
     if len(ms) != 2 or any(k not in m for m in ms for k in ("pre", "loesung", "post")):
         f.append("Merksatz braucht GENAU 2 Lücken-Einträge mit pre/loesung/post (Lehrerseite liest [0] und [1])")
@@ -205,7 +213,8 @@ def pruefe(einheit):
     if len(auf) == 3 and l.get("a2", {}).get("loesungen") != [lk["loesung"] for lk in auf[1].get("luecken", [])]:
         f.append("Lehrerteil: a2-Lösungen passen nicht zu den Lücken der Schülerseite")
     # erwartete Tabelle: je eine Zeile für jede NICHT-Beispielzeile mit leeren Zellen
-    offene = [r[0] for r in rows[1:] if any(not z for z in r[1:])]
+    # ab Zeile 1, nicht ab Zeile 2: die Beispielzeile gibt es nicht mehr
+    offene = [r[0] for r in rows if any(not z for z in r[1:])]
     erwartete = [r[0] for r in l.get("tabelle_erwartet", [])]
     if offene != erwartete:
         f.append(f"Lehrerteil: tabelle_erwartet deckt {erwartete} statt der offenen Zeilen {offene}")
@@ -233,6 +242,12 @@ def selbsttest(gut):
             fehler.append(f"Kaputt-Probe {pfad} → erwartete Meldung „{muss}“ kam nicht (Befunde: {bef})")
 
     kaputt(("seite", "tabCols"), ["a", "b"], "GENAU 3 Spalten")
+    # Kaputt-Probe zur neuen Tabellenregel: eine vorausgefuellte Zelle muss
+    # auffallen. Die alte Regel hatte ihre eigene Probe nie bekommen.
+    kaputt(("seite", "tabRows"),
+           [[gut["seite"]["tabRows"][0][0], "X", "Y"]] + 
+           [list(r) for r in gut["seite"]["tabRows"][1:]],
+           "voller als alle übrigen")
     kaputt(("seite", "merksatz"), gut["seite"]["merksatz"][:1], "GENAU 2 Lücken")
     kaputt(("seite", "wortbank"), ["a", "b", "c"], "Wortbank")
     kaputt(("seite", "forschen"), ["Man nimmt den Regler und dreht."], "Operator")

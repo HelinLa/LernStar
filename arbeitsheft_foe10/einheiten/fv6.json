@@ -39,7 +39,7 @@
    [
     "mittel",
     "50 cm/s",
-    "0,300 V"
+    ""
    ],
    [
     "stark",
@@ -140,6 +140,11 @@
    "doppelte Spannung"
   ],
   "tabelle_erwartet": [
+   [
+    "mittel",
+    "50 cm/s",
+    "0,300 V"
+   ],
    [
     "stark",
     "50 cm/s",

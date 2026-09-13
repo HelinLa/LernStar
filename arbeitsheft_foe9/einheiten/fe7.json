@@ -37,8 +37,8 @@
   "tabRows": [
    [
     "Glühlampe",
-    "50 J Licht",
-    "5 %"
+    "",
+    ""
    ],
    [
     "LED-Lampe",
@@ -139,6 +139,11 @@
    "Wirkungsgrad"
   ],
   "tabelle_erwartet": [
+   [
+    "Glühlampe",
+    "50 J Licht",
+    "5 %"
+   ],
    [
     "LED-Lampe",
     "400 J Licht",

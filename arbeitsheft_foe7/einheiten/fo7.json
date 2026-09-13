@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Abstand weit",
-    "flacher (fern)",
-    "mittel"
+    "",
+    ""
    ],
    [
     "Abstand nah",
@@ -142,6 +142,11 @@
    "Helligkeit"
   ],
   "tabelle_erwartet": [
+   [
+    "Abstand weit",
+    "flacher (fern)",
+    "mittel"
+   ],
    [
     "Abstand nah",
     "stark gewölbt (nah)",

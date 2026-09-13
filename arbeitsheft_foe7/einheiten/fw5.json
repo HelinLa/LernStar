@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Steckbrief",
-    "Erde: Gesteinsplanet, feste Oberfläche",
-    "innen gibt es festen Boden"
+    "",
+    ""
    ],
    [
     "Größen",
@@ -137,6 +137,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "Steckbrief",
+    "Erde: Gesteinsplanet, feste Oberfläche",
+    "innen gibt es festen Boden"
+   ],
    [
     "Größen",
     "vier kleine innen, vier große außen",

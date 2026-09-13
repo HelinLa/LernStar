@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Brennstab",
-    "wird heiß",
-    "nein"
+    "",
+    ""
    ],
    [
     "Wasser",
@@ -140,6 +140,11 @@
    "Generator"
   ],
   "tabelle_erwartet": [
+   [
+    "Brennstab",
+    "wird heiß",
+    "nein"
+   ],
    [
     "Wasser",
     "wird zu Dampf",

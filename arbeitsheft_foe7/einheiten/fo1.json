@@ -34,8 +34,8 @@
   "tabRows": [
    [
     "Spiegel",
-    "95 % · 0 % · 5 %",
-    "100 %"
+    "",
+    ""
    ],
    [
     "Fensterglas",
@@ -137,6 +137,11 @@
    "warm"
   ],
   "tabelle_erwartet": [
+   [
+    "Spiegel",
+    "95 % · 0 % · 5 %",
+    "100 %"
+   ],
    [
     "Fensterglas",
     "8 % · 90 % · 2 %",

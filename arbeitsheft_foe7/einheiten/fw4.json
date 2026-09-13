@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "ganz klein (6 km/s)",
-    "stürzt in die Sonne",
-    "nein"
+    "",
+    ""
    ],
    [
     "mittlerer Wert (30 km/s)",
@@ -136,6 +136,11 @@
    "Umlaufbahn"
   ],
   "tabelle_erwartet": [
+   [
+    "ganz klein (6 km/s)",
+    "stürzt in die Sonne",
+    "nein"
+   ],
    [
     "mittlerer Wert (30 km/s)",
     "fast ein Kreis",

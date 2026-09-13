@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "in der Mitte dicker",
-    "sie treffen sich im Brennpunkt",
-    "ja, 90 hinter dem Glas"
+    "",
+    ""
    ],
    [
     "in der Mitte dünner",
@@ -132,6 +132,11 @@
    "Brennpunkt"
   ],
   "tabelle_erwartet": [
+   [
+    "in der Mitte dicker",
+    "sie treffen sich im Brennpunkt",
+    "ja, 90 hinter dem Glas"
+   ],
    [
     "in der Mitte dünner",
     "sie laufen auseinander",

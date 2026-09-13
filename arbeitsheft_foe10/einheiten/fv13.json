@@ -40,7 +40,7 @@
    [
     "Fernseher 100 W",
     "3 h",
-    "32,85 €"
+    ""
    ],
    [
     "LED 10 W",
@@ -141,6 +141,11 @@
    "Preis"
   ],
   "tabelle_erwartet": [
+   [
+    "Fernseher 100 W",
+    "3 h",
+    "32,85 €"
+   ],
    [
     "LED 10 W",
     "3 h",

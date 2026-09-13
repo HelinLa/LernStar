@@ -12,6 +12,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Spiegel",
+    "95 % · 0 % · 5 %",
+    "100 %"
+   ],
+   [
     "Fensterglas",
     "8 % · 90 % · 2 %",
     "100 %"
@@ -76,6 +81,11 @@
    "hinter"
   ],
   "tabelle_erwartet": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
    [
     "20°",
     "20°",
@@ -142,6 +152,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "0°",
+    "0°",
+    "nein"
+   ],
+   [
     "40°",
     "25°",
     "ja"
@@ -201,6 +216,11 @@
    "Totalreflexion"
   ],
   "tabelle_erwartet": [
+   [
+    "0°",
+    "0°",
+    "ja"
+   ],
    [
     "20°",
     "31°",
@@ -267,6 +287,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "in der Mitte dicker",
+    "sie treffen sich im Brennpunkt",
+    "ja, 90 hinter dem Glas"
+   ],
+   [
     "in der Mitte dünner",
     "sie laufen auseinander",
     "nein, nie ein heller Fleck"
@@ -321,6 +346,11 @@
    "Lupe"
   ],
   "tabelle_erwartet": [
+   [
+    "g = 190",
+    "verkleinert",
+    "umgekehrt"
+   ],
    [
     "g = 100",
     "vergrößert",
@@ -381,6 +411,11 @@
    "Helligkeit"
   ],
   "tabelle_erwartet": [
+   [
+    "Abstand weit",
+    "flacher (fern)",
+    "mittel"
+   ],
    [
     "Abstand nah",
     "stark gewölbt (nah)",
@@ -447,6 +482,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "kurzsichtig ohne Brille",
+    "vor der Netzhaut",
+    "unscharf"
+   ],
+   [
     "kurzsichtig mit Brille",
     "genau auf der Netzhaut",
     "scharf"
@@ -511,6 +551,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "b = 29 cm, Loch klein",
+    "kleiner als der Gegenstand",
+    "scharf"
+   ],
    [
     "b = 39 cm, Loch klein",
     "etwa so groß wie der Gegenstand",
@@ -577,6 +622,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "weißes Licht",
+    "ein Fächer aus allen Farben",
+    "viele Farben"
+   ],
+   [
     "nur Rot",
     "ein roter Strich, nur gebrochen",
     "eine Farbe"
@@ -636,6 +686,11 @@
    "Weiß"
   ],
   "tabelle_erwartet": [
+   [
+    "Ausgangszustand",
+    "220 · 60 · 60",
+    "Rot"
+   ],
    [
     "aus",
     "0 · 0 · 0",
@@ -702,6 +757,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "555 nm – Grün",
+    "ja",
+    "38 %"
+   ],
+   [
     "700 nm – letztes Rot",
     "ja",
     "62 %"
@@ -761,6 +821,11 @@
    "beleuchtet"
   ],
   "tabelle_erwartet": [
+   [
+    "Sonne",
+    "ja – Selbstleuchter",
+    "hell"
+   ],
    [
     "Stern",
     "ja – Selbstleuchter",
@@ -827,6 +892,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "0°",
+    "Yumi",
+    "Ben"
+   ],
+   [
     "180°",
     "Ben",
     "Yumi"
@@ -886,6 +956,11 @@
    "gleich schnell"
   ],
   "tabelle_erwartet": [
+   [
+    "Mond",
+    "1,6",
+    "1,37 s"
+   ],
    [
     "Erde",
     "9,8",
@@ -947,6 +1022,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "ganz klein (6 km/s)",
+    "stürzt in die Sonne",
+    "nein"
+   ],
+   [
     "mittlerer Wert (30 km/s)",
     "fast ein Kreis",
     "ja"
@@ -1006,6 +1086,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "Steckbrief",
+    "Erde: Gesteinsplanet, feste Oberfläche",
+    "innen gibt es festen Boden"
+   ],
    [
     "Größen",
     "vier kleine innen, vier große außen",
@@ -1067,6 +1152,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "Erde → Mond",
+    "384 000 km",
+    "1,3 Sekunden"
+   ],
+   [
     "Erde → Sonne",
     "150 Mio. km",
     "8,3 Minuten"
@@ -1127,6 +1217,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "bloßes Auge",
+    "klein, richtig herum",
+    "Lichtschwaches unsichtbar"
+   ],
+   [
     "Teleskop, große Öffnung",
     "4-fach größer, auf dem Kopf",
     "hell"
@@ -1185,6 +1280,11 @@
    "Winkeln"
   ],
   "tabelle_erwartet": [
+   [
+    "Proxima Centauri",
+    "0,7686",
+    "4,2"
+   ],
    [
     "61 Cygni",
     "0,2860",
@@ -1251,6 +1351,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "1 Sonnenmasse (Sonne)",
+    "10,0 Mrd. Jahre",
+    "—"
+   ],
+   [
     "10 Sonnenmassen",
     "31,6 Mio. Jahre",
     "kürzer"
@@ -1310,6 +1415,11 @@
    "Mitte"
   ],
   "tabelle_erwartet": [
+   [
+    "zur Mitte",
+    "203",
+    "hellstes Stück"
+   ],
    [
     "nach außen",
     "50",
@@ -1371,6 +1481,11 @@
   ],
   "tabelle_erwartet": [
    [
+    "alt",
+    "die Erde",
+    "ja"
+   ],
+   [
     "heute",
     "die Sonne",
     "nein – keine"
@@ -1425,6 +1540,11 @@
    "Licht"
   ],
   "tabelle_erwartet": [
+   [
+    "weit weg",
+    "läuft fast gerade weiter",
+    "ja"
+   ],
    [
     "mittel",
     "läuft fast einmal ums Loch herum",
@@ -1485,6 +1605,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "am Anfang",
+    "alles auf winzigem Raum",
+    "unvorstellbar heiß und dicht"
+   ],
    [
     "in der Mitte des Ablaufs",
     "rücken auseinander",

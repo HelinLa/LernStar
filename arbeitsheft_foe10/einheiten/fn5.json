@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "α",
-    "groß",
-    "gleich"
+    "",
+    ""
    ],
    [
     "β",
@@ -136,6 +136,11 @@
    "gleich"
   ],
   "tabelle_erwartet": [
+   [
+    "α",
+    "groß",
+    "gleich"
+   ],
    [
     "β",
     "mittel",

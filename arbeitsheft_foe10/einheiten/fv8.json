@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "1000 Windungen",
-    "8,80",
-    "Anfang, kein Vergleich"
+    "",
+    ""
    ],
    [
     "500 Windungen",
@@ -136,6 +136,11 @@
    "Wechselspannung"
   ],
   "tabelle_erwartet": [
+   [
+    "1000 Windungen",
+    "8,80",
+    "Anfang, kein Vergleich"
+   ],
    [
     "500 Windungen",
     "4,40",

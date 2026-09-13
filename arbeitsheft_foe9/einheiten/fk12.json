@@ -39,7 +39,7 @@
    [
     "Wasser",
     "10 m",
-    "98,1 kPa"
+    ""
    ],
    [
     "Öl",
@@ -140,6 +140,11 @@
    "stärker"
   ],
   "tabelle_erwartet": [
+   [
+    "Wasser",
+    "10 m",
+    "98,1 kPa"
+   ],
    [
     "Öl",
     "10 m",

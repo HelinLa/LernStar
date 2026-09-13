@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "α Alpha",
-    "4.202 (über viertausend)",
-    "3,5 cm"
+    "",
+    ""
    ],
    [
     "β Beta",
@@ -136,6 +136,11 @@
    "dicht"
   ],
   "tabelle_erwartet": [
+   [
+    "α Alpha",
+    "4.202 (über viertausend)",
+    "3,5 cm"
+   ],
    [
     "β Beta",
     "9,8",

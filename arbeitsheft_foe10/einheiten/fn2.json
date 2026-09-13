@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "0 V",
-    "I",
-    "zählt nicht"
+    "",
+    ""
    ],
    [
     "450 V",
@@ -136,6 +136,11 @@
    "450 V"
   ],
   "tabelle_erwartet": [
+   [
+    "0 V",
+    "I",
+    "zählt nicht"
+   ],
    [
     "450 V",
     "IV",

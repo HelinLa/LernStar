@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "zur Mitte",
-    "203",
-    "hellstes Stück"
+    "",
+    ""
    ],
    [
     "nach außen",
@@ -136,6 +136,11 @@
    "Mitte"
   ],
   "tabelle_erwartet": [
+   [
+    "zur Mitte",
+    "203",
+    "hellstes Stück"
+   ],
    [
     "nach außen",
     "50",

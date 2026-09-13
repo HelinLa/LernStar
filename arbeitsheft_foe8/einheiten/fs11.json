@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Wandern",
-    "0,0490 mm/s",
-    "langsam"
+    "",
+    ""
    ],
    [
     "Zappeln",
@@ -135,6 +135,11 @@
    "Signal"
   ],
   "tabelle_erwartet": [
+   [
+    "Wandern",
+    "0,0490 mm/s",
+    "langsam"
+   ],
    [
     "Zappeln",
     "1 570 000 m/s",

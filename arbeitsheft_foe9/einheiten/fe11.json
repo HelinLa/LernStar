@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "flach",
-    "1,5 N",
-    "4,0 × Höhe"
+    "",
+    ""
    ],
    [
     "mittel",
@@ -133,6 +133,11 @@
    "länger"
   ],
   "tabelle_erwartet": [
+   [
+    "flach",
+    "1,5 N",
+    "4,0 × Höhe"
+   ],
    [
     "mittel",
     "3,0 N",

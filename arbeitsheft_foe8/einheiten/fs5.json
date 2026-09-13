@@ -40,7 +40,7 @@
    [
     "Amperemeter",
     "in Reihe",
-    "✓ misst 0,3 A"
+    ""
    ],
    [
     "Voltmeter",
@@ -136,6 +136,11 @@
    "parallel"
   ],
   "tabelle_erwartet": [
+   [
+    "Amperemeter",
+    "in Reihe",
+    "✓ misst 0,3 A"
+   ],
    [
     "Voltmeter",
     "in Reihe",

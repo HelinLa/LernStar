@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Blei",
-    "11,340 kg",
-    "sinkt"
+    "",
+    ""
    ],
    [
     "Eisen",
@@ -136,6 +136,11 @@
    "Masse"
   ],
   "tabelle_erwartet": [
+   [
+    "Blei",
+    "11,340 kg",
+    "sinkt"
+   ],
    [
     "Eisen",
     "7,870 kg",

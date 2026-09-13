@@ -38,7 +38,7 @@
    [
     "Höhe",
     "Höhe = 20,0 m",
-    "wird kleiner"
+    ""
    ],
    [
     "Lageenergie E_pot",
@@ -134,6 +134,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "Höhe",
+    "Höhe = 20,0 m",
+    "wird kleiner"
+   ],
    [
     "Lageenergie E_pot",
     "langer Balken",

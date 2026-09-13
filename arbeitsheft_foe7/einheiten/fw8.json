@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "Proxima Centauri",
-    "0,7686",
-    "4,2"
+    "",
+    ""
    ],
    [
     "61 Cygni",
@@ -141,6 +141,11 @@
    "Winkeln"
   ],
   "tabelle_erwartet": [
+   [
+    "Proxima Centauri",
+    "0,7686",
+    "4,2"
+   ],
    [
     "61 Cygni",
     "0,2860",

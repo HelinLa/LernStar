@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "Barium + Krypton",
-    "0,1860 u",
-    "173,3 MeV"
+    "",
+    ""
    ],
    [
     "Xenon + Strontium",
@@ -136,6 +136,11 @@
    "Masse"
   ],
   "tabelle_erwartet": [
+   [
+    "Barium + Krypton",
+    "0,1860 u",
+    "173,3 MeV"
+   ],
    [
     "Xenon + Strontium",
     "0,1983 u",

@@ -39,8 +39,8 @@
   "tabRows": [
    [
     "4",
-    "Es passiert nichts.",
-    "zu langsam"
+    "",
+    ""
    ],
    [
     "8",
@@ -141,6 +141,11 @@
    "10 Millionen Grad"
   ],
   "tabelle_erwartet": [
+   [
+    "4",
+    "Es passiert nichts.",
+    "zu langsam"
+   ],
    [
     "8",
     "Es passiert nichts.",

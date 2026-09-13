@@ -810,12 +810,12 @@ def bausteine_a(cfg,luft=0.0):
 
     # ④ Trage ein - Kopf und Beispielzeile sind schon gefuellt
     B.append(b_marke(4,"Meine Beobachtung","K3"))
-    B.append(b_para("Die erste Zeile ist schon fertig – so geht es.",art="med",
+    B.append(b_para("Trage deine Werte ein.",art="med",
                     haftet=1,name="Tabellenhinweis"))
     cols=cfg["tabCols"]; rows=cfg["tabRows"]
     B.append(bst("Tabelle",
                  lambda h,d,y: tabelle(h,d,y,fd.STIL,cols,rows,[0.24,0.44,0.32],
-                                       beispiel=True,schreib=True,luft=luft),
+                                       beispiel=False,schreib=True,luft=luft),
                  fd.ABS_AUFGABE))
 
     # Satzanfang: die Beobachtung in Worte fassen, bevor sie gedeutet wird.

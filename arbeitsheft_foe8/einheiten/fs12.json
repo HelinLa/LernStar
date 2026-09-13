@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "1,0 km",
-    "2,92 s",
-    "3 Millionstel Sekunden"
+    "",
+    ""
    ],
    [
     "2,0 km",
@@ -133,6 +133,11 @@
    "langsamer"
   ],
   "tabelle_erwartet": [
+   [
+    "1,0 km",
+    "2,92 s",
+    "3 Millionstel Sekunden"
+   ],
    [
     "2,0 km",
     "5,83 s",

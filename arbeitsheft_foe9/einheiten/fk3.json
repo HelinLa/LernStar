@@ -36,7 +36,7 @@
    [
     "weiche Feder",
     "1 N",
-    "2 cm"
+    ""
    ],
    [
     "weiche Feder",
@@ -132,6 +132,11 @@
    "halb"
   ],
   "tabelle_erwartet": [
+   [
+    "weiche Feder",
+    "1 N",
+    "2 cm"
+   ],
    [
     "weiche Feder",
     "2 N",

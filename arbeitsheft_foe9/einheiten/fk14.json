@@ -36,8 +36,8 @@
   "tabRows": [
    [
     "massiv – sinkt",
-    "7870 kg/m³",
-    "sinkt"
+    "",
+    ""
    ],
    [
     "87 % – sinkt noch",
@@ -139,6 +139,11 @@
    "1000 kg/m³"
   ],
   "tabelle_erwartet": [
+   [
+    "massiv – sinkt",
+    "7870 kg/m³",
+    "sinkt"
+   ],
    [
     "87 % – sinkt noch",
     "1023 kg/m³",

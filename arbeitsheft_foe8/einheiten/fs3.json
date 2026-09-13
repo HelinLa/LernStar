@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "1 Zelle",
-    "1,5 V",
-    "schwach"
+    "",
+    ""
    ],
    [
     "2 Zellen",
@@ -135,6 +135,11 @@
    "heller"
   ],
   "tabelle_erwartet": [
+   [
+    "1 Zelle",
+    "1,5 V",
+    "schwach"
+   ],
    [
     "2 Zellen",
     "3 V",

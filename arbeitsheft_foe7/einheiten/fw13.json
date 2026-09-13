@@ -38,8 +38,8 @@
   "tabRows": [
    [
     "am Anfang",
-    "alles auf winzigem Raum",
-    "unvorstellbar heiß und dicht"
+    "",
+    ""
    ],
    [
     "in der Mitte des Ablaufs",
@@ -136,6 +136,11 @@
    "größer"
   ],
   "tabelle_erwartet": [
+   [
+    "am Anfang",
+    "alles auf winzigem Raum",
+    "unvorstellbar heiß und dicht"
+   ],
    [
     "in der Mitte des Ablaufs",
     "rücken auseinander",
