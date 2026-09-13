@@ -400,6 +400,16 @@ die Vermutungen nummeriert und alle drei begruendet (`predictWarum`), jede
 Aufgabe mit Wortlaut ueber der Loesung, die Alltagsaufgabe erstmals mit Loesung
 (`alltagLoesung`). Ein Lesezeichen je Einheit.
 
+> **Drei Sek-I-Reste im gedruckten Oberstufenband** (berichtigt 14.09.2026):
+> Die Erklaerseite „Kompetenzbereiche des Kernlehrplans" nannte **UF1-UF4 aus
+> Heft 3411**, waehrend jedes Kaertchen im Band S/E/K/B aus Heft 4721 traegt –
+> sie erklaerte also Codes, die im Band nirgends vorkommen, und die benutzten
+> nicht. Der Wortlaut kommt jetzt aus `kompetenzen_gost`, die Spanne wird
+> GEZAEHLT (S1-S7, E1-E11, K1-K10, B1-B8). Dazu sagten Deckblatt und Seite 3
+> „orientiert an ... der Sekundarstufe I". Seitdem meldet die Versalprobe zum
+> ersten Mal „keine Woerter in Grossbuchstaben" – vorher stand dort dauerhaft
+> „UF (5x)", und niemand las es mehr.
+
 > **Die Proben liefen frueher NACH `build_lehrerband` und haben ihn nie
 > gesehen.** Die Kreisziffern ② ④ ⑥ in den neuen Ueberschriften stehen nicht in
 > der Heftschrift - auf der Schuelerseite sind sie gezeichnete Marken, kein Text.
@@ -666,9 +676,22 @@ Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/R
 > werden (gemessen: 51 in `aufgabe.loesung`, 23 in `alltagLoesung` – alle
 > richtig). Drei Selbsttest-Proben halten beide Richtungen fest.
 >
-> **Auf die Foerderreihe laesst sich das Werkzeug nicht anwenden**: Dort sind
-> `tabRows` Listen von Zellen, keine Zeichenketten, und `pruefe()` stuerzt ab.
-> Der Fehler ist aelter als diese Aenderung und noch offen.
+> **Die Foerderreihe liess sich bis zum 14.09.2026 gar nicht pruefen**: Dort ist
+> `tabRows` eine Liste von ZELLEN je Zeile und `beobachtung` fehlt ganz –
+> `' '.join(...)` warf „expected str instance, list found". Der Absturz sah aus
+> wie ein Aufrufsfehler, deshalb ist er nie aufgefallen. `_flach()` loest jetzt
+> jedes Feld auf, egal wie es gebaut ist. Damit sind die vier Baende **zum
+> ersten Mal geprueft**: 98 Seiten, 244 Zahlen mit Einheit, 0 ohne Deckung.
+>
+> **Werte, die bei jedem Durchgang anders ausfallen** – eine streuende
+> Kraftmessdose (`gw3`), eine von Hand gedrueckte Stoppuhr (`ki3`) – koennen in
+> keinem Faktendump stehen. Die Seite bekommt dafuer das Feld
+> **`werte_streuen`**; solche Werte stehen dann in einem dritten Eimer des
+> Berichts: sichtbar ausgewiesen, aber kein Mangel. 14 Dauermeldungen machen
+> einen Pruefer sonst stumpf. **Der Riegel:** Das Feld allein genuegt nicht –
+> die Seite MUSS im Text sagen, dass die Zahlen des Lesers andere sind
+> („Deine Zahlen sind andere", „entscheidest du selbst"). Fehlt der Satz, ist
+> DAS der Befund; sonst waere das Feld ein Schalter zum Stummstellen.
 | `seitenzahlen.py` | liest die Seitenzahlen aus den gesetzten Seiten (siehe oben) |
 | `qr_live.py` | prueft die GEDRUCKTEN QR-Codes gegen den AUSGELIEFERTEN Stand (siehe unten) |
 
