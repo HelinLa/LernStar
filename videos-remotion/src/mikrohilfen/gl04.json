@@ -1,0 +1,69 @@
+{
+  "kennung": "gl04",
+  "frage": "Wie bekomme ich die 3 vor dem x weg?",
+  "aufgabe": "a05",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt 3x = 15.",
+      "szene": [
+        {
+          "zeile": "3x = 15"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir wollen die 3 vor dem x wegbekommen.",
+      "szene": [
+        {
+          "ring": "3",
+          "farbe": "rot"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Teile auf beiden Seiten durch 3.",
+      "szene": [
+        {
+          "unterBeide": ": 3"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "3x heißt 3 mal x. Teilen hebt das Malnehmen auf.",
+      "szene": [
+        {
+          "hebeAuf": [
+            "3x",
+            ": 3"
+          ],
+          "wird": "x"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt muss dort x = 15 : 3 stehen.",
+      "szene": [
+        {
+          "neueZeile": "x = 15 : 3"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "x = 15 : 3"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

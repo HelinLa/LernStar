@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A",
+    "text": "Du hast jetzt x plus sechs gleich vierzehn."
+  },
+  {
+    "id": "B",
+    "text": "Beide Seiten sollen gleich schwer bleiben."
+  },
+  {
+    "id": "C",
+    "text": "Rechne auf beiden Seiten minus sechs."
+  },
+  {
+    "id": "D",
+    "text": "Rechnest du nur links, kippt die Waage."
+  },
+  {
+    "id": "E",
+    "text": "Unter beiden Seiten steht minus sechs, nicht nur links."
+  },
+  {
+    "id": "F",
+    "text": "Jetzt bist du wieder dran."
+  }
+]

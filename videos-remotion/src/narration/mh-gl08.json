@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A",
+    "text": "Du hast hier drei x plus zwei."
+  },
+  {
+    "id": "B",
+    "text": "Wir prüfen: Sind drei x plus zwei zusammen fünf x?"
+  },
+  {
+    "id": "C",
+    "text": "Suche in beiden Teilen das x."
+  },
+  {
+    "id": "D",
+    "text": "Nur drei x hat ein x. Zusammenfassen darf man nur Gleiches."
+  },
+  {
+    "id": "E",
+    "text": "Also bleibt drei x plus zwei stehen. Das ist nicht fünf x."
+  },
+  {
+    "id": "F",
+    "text": "Jetzt bist du wieder dran."
+  }
+]

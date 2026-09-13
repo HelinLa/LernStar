@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A",
+    "text": "Du hast vier x plus drei gleich neunzehn. Heraus kam die vier."
+  },
+  {
+    "id": "B",
+    "text": "Wir prüfen, ob die vier wirklich stimmt."
+  },
+  {
+    "id": "C",
+    "text": "Setze die vier für das x ein."
+  },
+  {
+    "id": "D",
+    "text": "Nur bei der richtigen Zahl sind beide Seiten gleich."
+  },
+  {
+    "id": "E",
+    "text": "Links steht dann neunzehn. Rechts steht auch neunzehn."
+  },
+  {
+    "id": "F",
+    "text": "Jetzt bist du wieder dran."
+  }
+]

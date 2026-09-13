@@ -1,10 +1,16 @@
 {
-  "intro": 9.856,
-  "beobachten": 11.408,
-  "modell": 9.52,
-  "blende": 13.968,
-  "tempo": 12.4,
-  "merksatz": 9.264,
-  "transfer": 9.264,
-  "outro": 7.488
+"intro_1": 5.075,
+"intro_2": 4.988,
+"beobachten_1": 5.085,
+"beobachten_2": 6.239,
+"modell_1": 6.77,
+"modell_2": 4.353,
+"blende_1": 7.751,
+"blende_2": 5.37,
+"tempo_1": 5.864,
+"tempo_2": 7.03,
+"merksatz_1": 8.44,
+"transfer_1": 4.659,
+"transfer_2": 3.838,
+"outro_1": 6.717
 }

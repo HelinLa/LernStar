@@ -1,0 +1,100 @@
+{
+  "kennung": "gl07",
+  "frage": "Wie fasse ich 3x + 2x zusammen?",
+  "aufgabe": "a13",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt 3x + 2x = 20.",
+      "szene": [
+        {
+          "zeile": "3x + 2x = 20"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir wollen 3x + 2x zusammenfassen.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "ring": "3x",
+              "farbe": "gelb"
+            },
+            {
+              "ring": "2x",
+              "farbe": "gelb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Zähle 3x und 2x zusammen.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "zeile": "3x + 2x"
+            },
+            {
+              "markiere": "3x + 2x",
+              "farbe": "gelb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Beide Teile haben ein x. Dann zählst du nur die Zahlen davor zusammen.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "buendel": [
+                {
+                  "unter": "x",
+                  "inhalt": "x"
+                },
+                {
+                  "unter": "x",
+                  "inhalt": "x"
+                }
+              ]
+            },
+            {
+              "gross": "3"
+            },
+            {
+              "gross": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt muss dort 5x = 20 stehen.",
+      "szene": [
+        {
+          "neueZeile": "5x = 20"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "5x = 20"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

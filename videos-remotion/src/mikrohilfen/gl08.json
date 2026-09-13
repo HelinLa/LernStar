@@ -1,0 +1,96 @@
+{
+  "kennung": "gl08",
+  "frage": "Warum ist 3x + 2 nicht 5x?",
+  "aufgabe": "a08",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast hier 3x + 2.",
+      "szene": [
+        {
+          "zeile": "3x + 2"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir prüfen: Sind 3x + 2 zusammen 5x?",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "zeile": "5x"
+            },
+            {
+              "frage": "5x"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Suche in beiden Teilen das x.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "ring": "3x",
+              "farbe": "gelb"
+            },
+            {
+              "ring": "2",
+              "farbe": "gelb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Nur 3x hat ein x. Zusammenfassen darf man nur Gleiches.",
+      "szene": [
+        {
+          "buendel": [
+            {
+              "unter": "3x",
+              "inhalt": "x"
+            },
+            {
+              "unter": "2",
+              "inhalt": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Also bleibt 3x + 2 stehen. Das ist nicht 5x.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "haken": "3x + 2"
+            },
+            {
+              "kreuz": "5x"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "3x + 2"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

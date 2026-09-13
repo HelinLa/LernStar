@@ -1,0 +1,15 @@
+[
+  { "id": "intro_1", "text": "Du drückst auf den Schalter. Und die Lampe leuchtet. Aber was passiert da eigentlich im Kabel?" },
+  { "id": "alltag_1", "text": "Damit die Lampe leuchtet, muss der Kreis geschlossen sein. Der Strom fließt von der Quelle durch das Kabel zum Verbraucher und wieder zurück." },
+  { "id": "fehlvorstellung_1", "text": "Viele denken jetzt: In der Lampe wird der Strom aufgebraucht. So wie Wasser, das im Glas verschwindet." },
+  { "id": "fehlvorstellung_2", "text": "Bei einer einzigen Lampe merkst du davon nichts. Beide Ideen sagen dasselbe voraus. Deshalb schauen wir genauer hin." },
+  { "id": "experiment_1", "text": "Jetzt bauen wir zwei gleiche Lampen hintereinander in einen Kreis. Also in Reihe. Rate erst: Welche Lampe leuchtet heller?" },
+  { "id": "experiment_2", "text": "Wenn Strom verbraucht würde, dann müsste die erste Lampe heller sein. Für die zweite bliebe ja weniger übrig. Halte deine Vorhersage kurz fest." },
+  { "id": "aufloesung_1", "text": "Wir schließen den Kreis. Und schau: Beide Lampen leuchten genau gleich hell." },
+  { "id": "aufloesung_2", "text": "Der Strom wird also nicht schwächer. Zwischen den Lampen geht nichts verloren. Der Strom bleibt erhalten." },
+  { "id": "modell_1", "text": "Stell dir eine Fahrradkette vor. Du trittst, die ganze Kette bewegt sich überall gleich. Vorne verschwindet keine Kette." },
+  { "id": "modell_2", "text": "Die Lampen sind wie Stellen, an denen es etwas schwerer geht. Da wird Energie zu Licht. Aber die Kette selbst bleibt vollständig." },
+  { "id": "merksatz_1", "text": "Merke: Im geschlossenen Stromkreis fließt der Strom im Kreis. Er wird nicht verbraucht. Der Verbraucher nutzt seine Energie und macht daraus Licht." },
+  { "id": "transfer_1", "text": "Frag dich beim nächsten Mal: Ist der Kreis geschlossen? Und denk daran, der Strom kommt immer wieder zurück zur Quelle." },
+  { "id": "outro_1", "text": "Jetzt bist du dran. Sag eine Vorhersage, bevor du es ausprobierst. Und dann teste, ob sie stimmt." }
+]

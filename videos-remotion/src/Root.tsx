@@ -209,12 +209,28 @@ import { NatuerlicherTreibhauseffekt, NATUERLICHER_TREIBHAUSEFFEKT_DURATION } fr
 import { WetterKlima, WETTER_KLIMA_DURATION } from './videos/WetterKlima';
 import { Nachhaltigkeit, NACHHALTIGKEIT_DURATION } from './videos/Nachhaltigkeit';
 import { Energiemix, ENERGIEMIX_DURATION } from './videos/Energiemix';
+import { Mikrohilfe, mikrohilfeDauer } from './videos/Mikrohilfe';
+import { MIKROHILFEN } from './mikrohilfen/daten';
 
 // Alle LernStar-Lernvideos werden hier registriert.
 // Format: 1920x1080 (16:9), 30 fps – passt als <video> in LernStar.
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* FELO Mathematik 8 – Mikrohilfen. Eine Komponente, elf Datensätze:
+          registriert wird über eine Schleife, nicht elfmal von Hand. */}
+      {Object.keys(MIKROHILFEN).map((kennung) => (
+        <Composition
+          key={kennung}
+          id={`Mikrohilfe-${kennung}`}
+          component={Mikrohilfe}
+          defaultProps={{ kennung }}
+          durationInFrames={mikrohilfeDauer(kennung)}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+      ))}
       <Composition
         id="MagnetProblem"
         component={MagnetProblem}

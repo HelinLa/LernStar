@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A",
+    "text": "Du hast jetzt drei x plus zwei x gleich zwanzig."
+  },
+  {
+    "id": "B",
+    "text": "Wir wollen drei x plus zwei x zusammenfassen."
+  },
+  {
+    "id": "C",
+    "text": "Zähle drei x und zwei x zusammen."
+  },
+  {
+    "id": "D",
+    "text": "Beide Teile haben ein x. Dann zählst du nur die Zahlen davor zusammen."
+  },
+  {
+    "id": "E",
+    "text": "Jetzt muss dort fünf x gleich zwanzig stehen."
+  },
+  {
+    "id": "F",
+    "text": "Jetzt bist du wieder dran."
+  }
+]

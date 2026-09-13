@@ -1,0 +1,71 @@
+{
+  "kennung": "gl06",
+  "frage": "Womit fange ich an: Zahl daneben oder Zahl davor?",
+  "aufgabe": "a07",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt 5x + 2 = 22.",
+      "szene": [
+        {
+          "zeile": "5x + 2 = 22"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir wollen zuerst die +2 wegbekommen.",
+      "szene": [
+        {
+          "pfeile": {
+            "blass": "5",
+            "kraeftig": "+2"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Rechne zuerst auf beiden Seiten −2.",
+      "szene": [
+        {
+          "unterBeide": "−2"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Die +2 steht allein. Das 5x heißt 5 mal x.",
+      "szene": [
+        {
+          "markiere": "5x",
+          "farbe": "blau"
+        },
+        {
+          "notiz": "5 mal x"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt muss dort 5x = 20 stehen.",
+      "szene": [
+        {
+          "neueZeile": "5x = 20"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "5x = 20"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

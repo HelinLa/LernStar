@@ -1,0 +1,83 @@
+{
+  "kennung": "gl11",
+  "frage": "Wie rechne ich weiter, wenn ich x schon kenne?",
+  "aufgabe": "a10",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast x + y = 10. Für x steht die 4.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "zeile": "x + y = 10"
+            },
+            {
+              "kasten": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir wollen eine Gleichung mit nur einem Buchstaben.",
+      "szene": [
+        {
+          "zielzeile": "y"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Setze die 4 für das x ein.",
+      "szene": [
+        {
+          "ersetze": {
+            "was": "x",
+            "durch": "4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "x und 4 sind dieselbe Zahl.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "ring": "4",
+              "farbe": "gelb"
+            },
+            {
+              "ring": "4",
+              "farbe": "gelb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt muss dort 4 + y = 10 stehen.",
+      "szene": [
+        {
+          "neueZeile": "4 + y = 10"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "4 + y = 10"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "kennung": "gl09",
+  "frage": "Was mache ich, wenn x auf beiden Seiten steht?",
+  "aufgabe": "a09",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt 5x = 2x + 12.",
+      "szene": [
+        {
+          "zeile": "5x = 2x + 12"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir wollen das x nur noch links haben.",
+      "szene": [
+        {
+          "ring": "5x",
+          "farbe": "blau"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Rechne auf beiden Seiten −2x.",
+      "szene": [
+        {
+          "unterBeide": "−2x"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Minus 2x hebt die plus 2x auf. Links bleiben 3x.",
+      "szene": [
+        {
+          "hebeAuf": [
+            "5x",
+            "−2x"
+          ],
+          "wird": "3x"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt muss dort 3x = 12 stehen.",
+      "szene": [
+        {
+          "neueZeile": "3x = 12"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "3x = 12"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

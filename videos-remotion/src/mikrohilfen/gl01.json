@@ -1,0 +1,64 @@
+{
+  "kennung": "gl01",
+  "frage": "Was soll am Ende allein stehen?",
+  "aufgabe": "a06",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt x − 9 = 3.",
+      "szene": [
+        {
+          "zeile": "x − 9 = 3"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Am Ende soll das x allein stehen.",
+      "szene": [
+        {
+          "zielzeile": "x"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Markiere die −9 neben dem x.",
+      "szene": [
+        {
+          "ring": "−9",
+          "farbe": "rot"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Wenn das x allein steht, kannst du seine Zahl ablesen.",
+      "szene": [
+        {
+          "ring": "−9",
+          "farbe": "rot"
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Jetzt ist nur die −9 markiert, nicht das x.",
+      "szene": [
+        {
+          "ring": "−9",
+          "farbe": "rot"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  { "id": "intro_1", "text": "Ein Magnet kann etwas Erstaunliches: Er zieht Dinge an, ganz ohne sie zu berühren." },
+  { "id": "intro_2", "text": "Aber zieht er wirklich alles an, was aus Metall ist? Finden wir es heraus!" },
+  { "id": "test_1", "text": "Wir halten einen Magneten an fünf Dinge: einen Eisennagel, eine Alu-Dose, eine Kupfermünze, einen Holzklotz und einen Plastiklöffel." },
+  { "id": "test_2", "text": "Und? Nur der Eisennagel bleibt hängen! Aluminium, Kupfer, Holz und Plastik zieht der Magnet gar nicht an." },
+  { "id": "merk1_1", "text": "Merke: Magnetisch sind nur wenige Stoffe. Vor allem Eisen, dazu Nickel und Kobalt. Die meisten anderen Metalle nicht." },
+  { "id": "pole_1", "text": "Jeder Magnet hat zwei Pole: einen Nordpol und einen Südpol. An den Enden ist die Kraft am stärksten." },
+  { "id": "kraft_1", "text": "Und jetzt wird es spannend: Gleiche Pole stoßen sich ab. Nord und Nord drücken sich auseinander." },
+  { "id": "kraft_2", "text": "Verschiedene Pole ziehen sich an. Nord und Süd schnappen fest zusammen." },
+  { "id": "feld_1", "text": "Rund um den Magneten liegt ein unsichtbares Magnetfeld. Mit Eisenspänen wird es sichtbar: Es läuft in Bögen vom Nordpol zum Südpol." },
+  { "id": "kompass_1", "text": "Auch die Erde ist ein riesiger Magnet. Deshalb zeigt eine Kompassnadel immer nach Norden. So findest du überall die Richtung." },
+  { "id": "merk2_1", "text": "Zusammengefasst: Ein Magnet hat Nord- und Südpol, zieht Eisen an, und gleiche Pole stoßen sich ab." },
+  { "id": "outro_1", "text": "Magnetismus: eine unsichtbare Kraft, die überall steckt. Physik verstehen, Schritt für Schritt." }
+]

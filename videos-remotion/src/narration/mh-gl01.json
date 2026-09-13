@@ -1,0 +1,26 @@
+[
+  {
+    "id": "A",
+    "text": "Du hast jetzt x minus neun gleich drei."
+  },
+  {
+    "id": "B",
+    "text": "Am Ende soll das x allein stehen."
+  },
+  {
+    "id": "C",
+    "text": "Markiere die minus neun neben dem x."
+  },
+  {
+    "id": "D",
+    "text": "Wenn das x allein steht, kannst du seine Zahl ablesen."
+  },
+  {
+    "id": "E",
+    "text": "Jetzt ist nur die minus neun markiert, nicht das x."
+  },
+  {
+    "id": "F",
+    "text": "Jetzt bist du wieder dran."
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "kennung": "gl10",
+  "frage": "Wie mache ich die Probe?",
+  "aufgabe": "a20",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast 4x + 3 = 19. Heraus kam die 4.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "zeile": "4x + 3 = 19"
+            },
+            {
+              "kasten": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Wir prüfen, ob die 4 wirklich stimmt.",
+      "szene": [
+        {
+          "ring": "4",
+          "farbe": "rot"
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Setze die 4 für das x ein.",
+      "szene": [
+        {
+          "ersetze": {
+            "was": "4x",
+            "durch": "4 · 4"
+          }
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Nur bei der richtigen Zahl sind beide Seiten gleich.",
+      "szene": [
+        {
+          "waage": {
+            "links": "4 · 4 + 3",
+            "rechts": "19"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Links steht dann 19. Rechts steht auch 19.",
+      "szene": [
+        {
+          "zusammen": [
+            {
+              "ersetze": {
+                "was": "4 · 4 + 3",
+                "durch": "19",
+                "farbe": "gruen"
+              }
+            },
+            {
+              "markiere": "19",
+              "farbe": "gruen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "nurNoch": "19"
+        },
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}

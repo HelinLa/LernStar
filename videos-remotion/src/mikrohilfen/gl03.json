@@ -1,0 +1,79 @@
+{
+  "kennung": "gl03",
+  "frage": "Warum muss ich auf beiden Seiten dasselbe rechnen?",
+  "aufgabe": "a02",
+  "teile": [
+    {
+      "id": "A",
+      "text": "Du hast jetzt x + 6 = 14.",
+      "szene": [
+        {
+          "zeile": "x + 6 = 14"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "text": "Beide Seiten sollen gleich schwer bleiben.",
+      "szene": [
+        {
+          "waage": {
+            "links": "x + 6",
+            "rechts": "14"
+          }
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "text": "Rechne auf beiden Seiten −6.",
+      "szene": [
+        {
+          "unterBeide": "−6"
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "text": "Rechnest du nur links, kippt die Waage.",
+      "szene": [
+        {
+          "gegenprobe": [
+            {
+              "waage": {
+                "kippt": "rechts"
+              }
+            },
+            {
+              "unterLinks": "−6"
+            },
+            {
+              "zeile": "x = 14"
+            },
+            {
+              "kreuz": "x = 14"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "text": "Unter beiden Seiten steht −6, nicht nur links.",
+      "szene": [
+        {
+          "unterBeide": "−6"
+        }
+      ]
+    },
+    {
+      "id": "F",
+      "text": "Jetzt bist du wieder dran.",
+      "szene": [
+        {
+          "halte": 3
+        }
+      ]
+    }
+  ]
+}
