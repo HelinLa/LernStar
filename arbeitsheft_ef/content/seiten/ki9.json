@@ -2,14 +2,15 @@
  "id": "ki9",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Ein Regler nach dem anderen",
- "problem": "Am Wettbewerbsstand soll ihr Wagen auf drei Metern möglichst schnell werden. Tobias dreht den Zugmotor eine Stufe höher, Mira nimmt stattdessen Ballast vom Wagen herunter. Beide behaupten, ihr Griff bringe mehr. Weil sie gestern immer beides zugleich verändert haben, entscheidet die Messreihe gar nichts. Am Bildschirm gibt es für jede Größe einen eigenen Regler.",
+ "problem": "Am Ausgang des Supermarkts schiebt Mira den vollen Einkaufswagen an und kommt kaum vom Fleck; der leere Wagen daneben rollt bei gleichem Anschieben sofort los. Tobias meint, es liege allein an der Kraft, Mira hält die Ladung für entscheidend. Weil im Gedränge beides zugleich wechselt, wollen sie es am Bildschirm sauber trennen.",
  "frage": "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
  "auftrag": "Bestimme aus zwei Messreihen, wie die Beschleunigung von Kraft und Masse abhängt: Nimm je eine Reihe unter Variablenkontrolle auf und suche die Auftragung, in der die Messpunkte auf einer Ursprungsgeraden liegen.",
  "predict": [
   "Über der Masse aufgetragen liegen die Messpunkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt der Beschleunigung denselben Betrag weg, gleichgültig, wie schwer der Wagen schon ist.",
+  "Über der Masse liegen die Punkte auf einer Ursprungsgeraden: Doppelte Masse gibt doppelte Beschleunigung, weil ein schwererer Wagen mehr Schwung aufnimmt.",
   "Über der Kraft liegen die Messpunkte auf einer Ursprungsgeraden, über der Masse dagegen auf einer krummen Kurve; erst über dem Kehrwert 1/m wird daraus wieder eine Ursprungsgerade."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Lass den Regler „Masse m“ auf 5 kg stehen, wähle die Auftragung „a über F auftragen“ und nimm mit „Messreihe automatisch aufnehmen“ die ganze Kraftreihe auf – acht Zeilen von F = 10 N bis F = 200 N. Lies im Auswertungsfeld die Geradengleichung, R² und die Zeile „Masse m aus der Steigung k“ ab.",
   "Drücke „Tabelle leeren“ und bestätige die Rückfrage, sonst wertet das Feld die Kraftreihe mit aus. Stelle „Kraft F“ auf 40 N, wähle „a über m auftragen“ und nimm erneut mit „Messreihe automatisch aufnehmen“ auf – diesmal fährt die Masse in neun Zeilen von 1 kg bis 20 kg. Halte fest, welche Form die Punktfolge hat und was das Auswertungsfeld statt einer Steigung meldet.",

@@ -3,7 +3,7 @@
   "id": "ki1",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Fünf Stopps, eine Steigung",
-  "problem": "Mira und Tobias sollen die Geschwindigkeit ihres Wagens belegen. Tobias liest sie am Tacho ab: 4,00 m/s, fertig. Mira hält das für keine Messung, sondern für eine abgelesene Reglerstellung. Sie lässt den Wagen fahren, drückt während einer einzigen Fahrt fünfmal die Stoppuhr und trägt ihre Wertepaare auf. Erst die Steigung ihrer Geraden sei ein Messergebnis.",
+  "problem": "Nach dem Lauftreff vergleichen Mira und Tobias ihre App: Zwei Weg-Zeit-Geraden gehen vom Ursprung aus, Miras verläuft steiler. Tobias liest einfach die angezeigte Zahl ab. Mira hält dagegen, eine App messe nur Zeiten und Wege; die Geschwindigkeit müsse man daraus erst gewinnen. Für Jugend forscht zählt nur eine belegte Zahl, und an der Messstrecke lässt sich das entscheiden.",
   "frage": "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
   "auftrag": "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
   "predict": [
@@ -57,7 +57,7 @@
   "id": "ki2",
   "basiskonzept": "Zufall und Determiniertheit",
   "titel": "Wann du stoppst, ist gleichgültig",
-  "problem": "Mira lässt den Wagen fahren und drückt die Stoppuhr, wann immer ihr danach ist: einmal früh, einmal spät, dazwischen dreimal. Tobias hält das für unbrauchbar – wer ohne Plan stoppe, bekomme auch ein Ergebnis ohne Plan. Mira trägt ihre fünf Wertepaare trotzdem auf. Am Ende steht dort eine Geschwindigkeit, die niemand eingestellt hat.",
+  "problem": "Auf der Zugfahrt nach Hause notiert Mira zu jedem Kilometerstein, den sie zufällig bemerkt, die Uhrzeit – zweimal kurz hintereinander, dann erst wieder nach einer langen Pause. Tobias hält die Auswahl für planlos: Wer ohne Plan stoppe, bekomme auch ein Ergebnis ohne Plan. Mira widerspricht. An der Messstrecke lässt sich das mit eigener Stoppuhr prüfen.",
   "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
   "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
   "predict": [
@@ -113,7 +113,7 @@
   "id": "ki3",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Drei Diagramme, eine Zahl",
-  "problem": "Der Wagen von Mira und Tobias rollt jetzt nicht mehr gleichmäßig, er wird immer schneller. Tobias drückt während einer Fahrt fünfmal die Stoppuhr und hat fünf Zeiten, fünf Wege und fünf Tachowerte – jedes Mal eine andere Geschwindigkeit. Er will den Mittelwert bilden. Mira widerspricht: Eine einzige Geschwindigkeit beschreibe keine Fahrt, die sich in jedem Augenblick ändert.",
+  "problem": "Im Prospekt eines Kleinwagens steht, er komme in 9,5 Sekunden von null auf 100 Kilometer je Stunde. Tobias rechnet die mittlere Geschwindigkeit aus und hält die Angabe damit für erklärt. Mira widerspricht: Eine einzige Geschwindigkeit beschreibe keine Fahrt, die sich in jedem Augenblick ändert. Der Prospekt meine etwas anderes. An der Messstrecke lässt sich das entscheiden.",
   "frage": "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
   "auftrag": "Bestimme die Beschleunigung als Steigung deiner selbst gestoppten t-v-Geraden und vergleiche, was die Auftragungen t → s, t → v und t → a über diese Zahl hergeben.",
   "predict": [
@@ -167,7 +167,7 @@
   "id": "ki4",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Aus der Kurve eine Gerade machen",
-  "problem": "Mira lässt den Wagen fahren und drückt fünfmal die Stoppuhr; Tobias trägt die gestoppten Wertepaare t und s auf und erhält eine gebogene Kurve. Er legt ein Lineal an und liest eine Steigung ab – an einer anderen Stelle der Kurve kommt eine ganz andere heraus. Für die Wettbewerbsmappe brauchen die beiden eine einzige Beschleunigung, keine Spanne.",
+  "problem": "Vor dem Haus rollt Tobias' Skateboard die abschüssige Einfahrt hinunter, vorbei an Kreidestrichen mit wachsenden Abständen. Mira stoppt an jedem Strich und trägt Zeit und Weg auf; es entsteht eine gebogene Kurve. Tobias legt ein Lineal an und liest eine Steigung ab – ein Stück weiter eine ganz andere. Am Bildschirm wollen beide das klären.",
   "frage": "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
   "auftrag": "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
   "predict": [
@@ -221,7 +221,7 @@
   "id": "ki5",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Zwei Wege, zwei Zahlen",
-  "problem": "Für die Wettbewerbsmappe soll neben jeder Messung eine Fallbeschleunigung stehen. Tobias liest ein einziges Wertetripel ab und rechnet g zweimal aus: über v/t bekommt er 9,81 m/s², über 2s/t² dagegen 10,35 m/s². Mira hält das für Ablesepech und schlägt vor, statt eines Tripels eine ganze Messreihe aufzunehmen.",
+  "problem": "Im Spiel von Tobias fällt eine Kiste durch den Hallenboden, wenn der Rechner ins Stocken gerät. Mira sieht darin keinen Programmfehler, sondern zu grobe Zeitschritte. Tobias hält dagegen: Auch ihre eigene Fallzeit liefere je nach Rechenweg zwei verschiedene Werte für g, einmal 9,81, einmal 10,35 m/s². An der Messstrecke wollen sie klären, was davon übrig bleibt.",
   "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
   "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
   "predict": [
@@ -276,7 +276,7 @@
   "id": "ki6",
   "basiskonzept": "Superposition und Komponenten",
   "titel": "Ein Schlag, nicht zwei",
-  "problem": "An der Messstrecke schiebt Mira eine Stahlkugel über die Tischkante, während Tobias an derselben Kante im selben Augenblick eine zweite Kugel einfach fallen lässt. Mira rechnet mit zwei Aufschlägen, denn ihre Kugel legt den weiteren Weg zurück. Zu hören ist nur ein einziger Schlag. Mira will es mit kräftigerem Stoß wiederholen: Dann müsse die Kugel länger fliegen.",
+  "problem": "Zu Hause legt Mira zwei Münzen an die Tischkante und schnipst ein Lineal dagegen: Die eine fliegt weit hinaus, die andere kippt nur über die Kante. Tobias rechnet mit zwei Aufschlägen, denn die fliegende Münze lege den längeren Weg zurück. Zu hören ist ein einziger. Kräftiger schnipsen, schlägt er vor. An der Messstrecke lässt sich die Fallzeit stoppen.",
   "frage": "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
   "auftrag": "Miss die Fallzeit unter Variablenkontrolle für neun Abwurfhöhen und für acht Abwurfgeschwindigkeiten und entscheide an den vier Auftragungen, welche krumm bleibt, welche die Abhängigkeit von h liefert und welche zeigt, dass v₀ die Fallzeit nicht ändert.",
   "predict": [
@@ -330,7 +330,7 @@
   "id": "ki7",
   "basiskonzept": "Superposition und Komponenten",
   "titel": "Zwei Kisten, ein schräges Seil",
-  "problem": "Vor der Regionalrunde von „Jugend forscht“ ziehen Mira und Tobias je eine Kiste über den verschneiten Hof, jede auf einem eigenen Schlitten. Tobias hält sein Seil fast waagerecht, Mira zieht ihres deutlich schräg nach oben. Beide ziehen mit derselben Kraft, doch bei Mira läuft der Schlitten spürbar leichter. Tobias vermutet einen Messfehler, Mira widerspricht.",
+  "problem": "Mira zieht ihren Rollkoffer am ausgezogenen Griff flach hinter sich her, Tobias hat seinen Griff kurz eingestellt und hält ihn steil nach oben. Beide strengen sich nach eigener Auskunft gleich an, doch Mira kommt merklich leichter voran. Tobias hält den Unterschied für Einbildung. Das Datenblatt zum schräg gezogenen Schlitten lässt sich daraufhin prüfen.",
   "frage": "Welcher Teil einer schräg ziehenden Kraft zieht den Schlitten vorwärts?",
   "auftrag": "Bestimme aus dem Datenblatt die waagerechte und die senkrechte Komponente der Zugkraft und vergleiche, wie beide sich mit dem Winkel ändern.",
   "predict": [
@@ -420,7 +420,7 @@
   "id": "ki8",
   "basiskonzept": "Erhaltung und Gleichgewicht",
   "titel": "Niemand schiebt, nichts ändert sich",
-  "problem": "An der Luftkissenbahn gibt Tobias dem Wagen einen kurzen Stoß und zieht die Hand sofort zurück. Mira erwartet, dass er nun langsamer wird, denn es schiebt ja nichts mehr. Beide Lichtschranken melden aber dieselbe Zeit für dieselbe Strecke. Tobias notiert die Werte und sagt, dann fehle in ihrer Erklärung etwas Grundsätzliches.",
+  "problem": "Im Bus rutscht Tobias' Rucksack beim scharfen Bremsen nach vorn, obwohl ihn niemand anfasst. Irgendetwas müsse ihn geschoben haben, sagt er. Mira widerspricht: Am Rucksack habe sich gar nichts geändert, geändert habe sich der Bus unter ihm. Beide bleiben bei ihrer Version, bis feststeht, was ein Körper ohne Antrieb tut. Am Bildschirm wollen sie das entscheiden.",
   "frage": "Wie ändert sich die Geschwindigkeit, wenn die resultierende Kraft null ist?",
   "auftrag": "Prüfe unter Variablenkontrolle, ob ein Körper ohne resultierende Kraft sein Tempo behält: Halte den Regler für die Kraft bei 0 N und verändere allein die Anfangsgeschwindigkeit.",
   "predict": [
@@ -474,7 +474,7 @@
   "id": "ki9",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Ein Regler nach dem anderen",
-  "problem": "Am Wettbewerbsstand soll ihr Wagen auf drei Metern möglichst schnell werden. Tobias dreht den Zugmotor eine Stufe höher, Mira nimmt stattdessen Ballast vom Wagen herunter. Beide behaupten, ihr Griff bringe mehr. Weil sie gestern immer beides zugleich verändert haben, entscheidet die Messreihe gar nichts. Am Bildschirm gibt es für jede Größe einen eigenen Regler.",
+  "problem": "Am Ausgang des Supermarkts schiebt Mira den vollen Einkaufswagen an und kommt kaum vom Fleck; der leere Wagen daneben rollt bei gleichem Anschieben sofort los. Tobias meint, es liege allein an der Kraft, Mira hält die Ladung für entscheidend. Weil im Gedränge beides zugleich wechselt, wollen sie es am Bildschirm sauber trennen.",
   "frage": "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
   "auftrag": "Bestimme aus zwei Messreihen, wie die Beschleunigung von Kraft und Masse abhängt: Nimm je eine Reihe unter Variablenkontrolle auf und suche die Auftragung, in der die Messpunkte auf einer Ursprungsgeraden liegen.",
   "predict": [
@@ -528,7 +528,7 @@
   "id": "ki10",
   "basiskonzept": "Erhaltung und Gleichgewicht",
   "titel": "Still, aber nicht kräftefrei",
-  "problem": "Über der Messstrecke hängt eine Werkstattlampe an einem Seil, in das ein Kraftmesser eingehängt ist. Tobias trägt sie ins Protokoll als kräftefrei ein: Sie bewegt sich nicht, also ziehe auch nichts an ihr. Mira hält ihm die Anzeige hin, die ruhig bei 5 N steht und keinen Millimeter zurückgeht. Beide Sätze können nicht gleichzeitig stimmen.",
+  "problem": "Beim Lernen hält Tobias ein Buch flach auf der ausgestreckten Hand und rührt sich nicht. Kräftefrei, sagt er: Was sich nicht bewegt, an dem ziehe auch nichts. Mira deutet auf seinen zitternden Arm, der merke sehr wohl etwas. Am Bildschirm hängt dieselbe Frage an einer Lampe, deren Kraftmesser ruhig bei 5 N steht.",
   "frage": "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
   "auftrag": "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
   "predict": [
@@ -583,7 +583,7 @@
   "id": "ki11",
   "basiskonzept": "Erhaltung und Gleichgewicht",
   "titel": "Gleiche Kraft, ungleiche Fahrt",
-  "problem": "Mira sitzt auf einem Rollwagen und stößt sich an der Wand am Ende der Messstrecke ab. Sie rollt davon, die Wand bleibt stehen. Gedrückt habe nur sie, sagt Tobias. Dann klemmen die beiden eine gespannte Feder zwischen zwei Wagen, und beim Lösen fahren beide los. Wer drückt hier eigentlich wen?",
+  "problem": "Beim Aussteigen aus einem Ruderboot tritt Mira kräftig ab; das Boot rutscht sichtbar vom Steg weg, sie selbst kommt nach vorn. Gedrückt habe nur sie, behauptet Tobias, das Boot sei bloß leicht. Mira fragt zurück, warum der Steg beim Auftreten dann unbewegt bleibt. Mit zwei Wagen und einer gespannten Feder dazwischen lässt sich beides nachmessen.",
   "frage": "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
   "auftrag": "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
   "predict": [
@@ -637,7 +637,7 @@
   "id": "ki12",
   "basiskonzept": "Superposition und Komponenten",
   "titel": "Was von 80 Newton übrig bleibt",
-  "problem": "Auf ihrer Messstrecke zieht ein Motor mit 80 Newton an einem Wagen von 5 Kilogramm. Tobias rechnet im Kopf und sagt 16 Meter je Sekundenquadrat voraus. Die Lichtschranken melden weniger. Mira fährt mit dem Finger über die Schiene und zeigt ihm den grauen Streifen darauf. Wie viel bleibt dann noch zum Beschleunigen übrig?",
+  "problem": "Zu Hause zieht Mira eine volle Getränkekiste mit gleichmäßigem Zug über die Fliesen, dann über den Teppich – dort kommt sie kaum vom Fleck. Tobias hält den Teppich einfach für schwerer. Mira hält dagegen, an der Kiste habe sich nichts geändert. Am Bildschirm wollen die beiden prüfen, was von der Zugkraft überhaupt zum Beschleunigen übrig bleibt.",
   "frage": "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
   "auftrag": "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
   "predict": [
@@ -692,7 +692,7 @@
   "id": "ki13",
   "basiskonzept": "Superposition und Komponenten",
   "titel": "Vier Meter getragen, null Joule",
-  "problem": "Beim Abbau der Messstrecke nimmt Tobias die Kiste mit den Lichtschranken auf und trägt sie vier Meter weit durch den Flur zurück. Er schnauft und nennt das die schwerste Arbeit des ganzen Tages. Mira rechnet nebenher mit und behauptet, er habe an der Kiste genau null Joule Arbeit verrichtet. Sein Rücken ist anderer Meinung.",
+  "problem": "Mit dem vollen Schulrucksack auf den Schultern geht Tobias den Flur entlang und danach eine Treppe hinauf. Oben behauptet er, der lange Flur habe ihn mehr gekostet als die paar Stufen. Mira widerspricht: Für den Rucksack zähle davon allein die Treppe. Am Bildschirm wollen beide den Streit an derselben Last entscheiden.",
   "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
   "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
   "predict": [
@@ -745,7 +745,7 @@
   "id": "ki14",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Zweimal verdoppelt, zweimal anders",
-  "problem": "Für die Wettbewerbsmappe sollen Mira und Tobias angeben, wie viel Energie ihr Wagen am Ende der Messstrecke mitbringt. Tobias rechnet kurz: doppeltes Tempo, doppelte Energie. Mira hält das Fahrschulbuch dagegen, in dem der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Entscheiden soll eine Messreihe: Die Kugel schiebt einen Klotz, und der Schiebeweg misst die Energie.",
+  "problem": "Im Fahrschulbuch von Miras Schwester steht, dass der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Tobias hält das für eine Faustregel mit Sicherheitszuschlag: Doppeltes Tempo bedeute doppelte Energie und damit doppelten Weg. Mira traut dem Buch mehr als dem Kopfrechnen. Entscheiden soll eine Messreihe, in der eine Kugel einen Klotz schiebt – mal schneller, mal schwerer.",
   "frage": "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
   "auftrag": "Miss eine Messreihe zur Bewegungsenergie und linearisiere sie: Trage E über v und danach über v² auf, bestimme die Steigung der Ursprungsgeraden und rechne aus ihr Masse und Tempo zurück.",
   "predict": [
@@ -799,7 +799,7 @@
   "id": "ki15",
   "basiskonzept": "Erhaltung und Gleichgewicht",
   "titel": "Das Dreieck unter der Geraden",
-  "problem": "Vor jedem Start schnellt eine gespannte Feder ihren Wagen auf die Messstrecke. Tobias hängt einen Kraftmesser an: bei zehn Zentimetern Auslenkung zeigt er zwei Newton. Zwei Newton mal zehn Zentimeter, rechnet er, das seien 0,2 Joule in der Feder. Mira widerspricht – am Anfang des Spannens sei die Kraft doch null gewesen.",
+  "problem": "Mira drückt die Feder eines Kugelschreibers auf der Küchenwaage zusammen: zwei Millimeter, vier, sechs, acht, und notiert jedes Mal die angezeigte Masse. Tobias rechnet daraus die gespeicherte Energie als Kraft mal Weg aus. Mira hält dagegen, am Anfang des Drückens sei die Kraft null gewesen. Am Bildschirm wollen sie das entscheiden.",
   "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
   "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
   "predict": [
@@ -853,7 +853,7 @@
   "id": "ki16",
   "basiskonzept": "Erhaltung und Gleichgewicht",
   "titel": "Die Summe mit Vorzeichen",
-  "problem": "Am Ende der Messstrecke lassen Mira und Tobias zwei Wagen aufeinanderprallen. Der leichte kommt zurück, der schwere fährt los. Für die Wettbewerbsmappe suchen sie eine Größe, die der Stoß nicht verändert. Tobias addiert, was die Lichtschranken danach melden, und hat mehr in der Hand als vorher – dabei hat niemand nachgeschoben.",
+  "problem": "Auf den Küchenfliesen schnippt Mira eine Murmel gegen eine ruhende: Die erste bleibt fast stehen, die zweite läuft weiter. Tobias sucht eine Größe, die der Zusammenstoß nicht verändert, und addiert, was beide Murmeln an Masse und Tempo mitbringen. Sobald eine davon zurückläuft, hat er mehr in der Hand als vorher. An der Messstrecke lässt sich das prüfen.",
   "frage": "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
   "auftrag": "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
   "predict": [
@@ -1016,7 +1016,7 @@
   "id": "gw3",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Acht Punkte, eine Steigung",
-  "problem": "Für die Jury von Jugend forscht reicht Mira die Formel nicht; sie will die Zentripetalkraft gemessen haben. Tobias übernimmt den ersten Messpunkt und stutzt: Im Statusfeld stehen 35,53 N, in seiner Tabelle 35,65 N. Die Kraftmessdose streut um etwa 1,5 %. Trägt eine Messreihe aus solchen Werten trotzdem ein belastbares Ergebnis?",
+  "problem": "Vor der Wäscheschleuder liest Mira das Typenschild: 1400 Umdrehungen je Minute, Trommelradius 0,24 m. Tobias behauptet, daraus lasse sich die Masse eines Wäschestücks ausrechnen, sobald man die Kraft an der Trommelwand kennt. Mira wendet ein, jede einzelne Kraftmessung streue. Am Bildschirm nehmen beide deshalb eine ganze Messreihe auf, statt eines einzigen Werts.",
   "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
   "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
   "predict": [
@@ -1069,7 +1069,7 @@
   "id": "gw4",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Zwei Kugeln, zwei Auftragungen",
-  "problem": "Für „Jugend forscht“ suchen Mira und Tobias eine Formel für die Anziehung zwischen zwei Körpern. Tobias setzt auf die Masse: Die Sonne habe eben unvorstellbar viel Masse. Mira setzt auf den Abstand: Neptun werde von derselben Sonne gehalten, nur dreißigmal weiter draußen. Zwei Größen also – aber zählen beide gleich viel?",
+  "problem": "Auf dem Planetenweg im Stadtpark laufen Mira und Tobias von der Sonne bis Neptun – dreißigmal so weit wie bis zur Erde. Dass die Sonne den fernen Planeten überhaupt noch hält, erklärt Tobias mit ihrer riesigen Masse. Mira zeigt auf die Entfernung. Zwei Größen also – am Bildschirm lässt sich jede einzeln verstellen.",
   "frage": "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
   "auftrag": "Bestimme unter Variablenkontrolle aus einer Messreihe, in welcher Auftragung die Messpunkte auf einer Ursprungsgeraden liegen, und rechne aus deren Steigung die Verhältniszahl der Simulation zurück.",
   "predict": [
@@ -1125,7 +1125,7 @@
   "id": "gw5",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Dieselbe Person, drei Zahlen",
-  "problem": "Tobias schreibt aufs Wettbewerbsplakat: Auf dem Mond wiegst du nur ein Sechstel. Klar, sagt er, dort ist eben weniger von einem da; die Waage zeigt ja auch nur ein Sechstel an. Mira glaubt das nicht: Von ihr selbst gehe unterwegs nichts verloren. In Kapitel 1 stand der Ortsfaktor in m/s², heute in N/kg.",
+  "problem": "Eine Küchenwaage zeigt für eine Tüte Mehl ein Kilogramm an. Auf dem Mond, sagt Tobias, stünde dort nur ein Sechstel; dort sei eben weniger von dem Mehl da. Mira widerspricht: Unterwegs gehe von der Tüte nichts verloren. Verwirrend findet sie zudem, dass der Ortsfaktor heute in Newton je Kilogramm angegeben wird. Am Bildschirm lässt sich das klären.",
   "frage": "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
   "auftrag": "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
   "predict": [
@@ -1264,7 +1264,7 @@
   "id": "gw7",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Die Drehwaage im Gartenhaus",
-  "problem": "Mira rechnet für ihre Wettbewerbsmappe die Erdmasse aus und stockt: In der Formel steht G, und woher diese Zahl kommt, sagt kein Buch. Tobias findet einen Aufsatz von 1798. Sein Titel verspricht die Dichte der Erde – im Gartenhaus von Henry Cavendish hängen aber nur zwei Bleikugeln an einem Draht, beobachtet durch Fernrohre von außen.",
+  "problem": "In einer Zeitung stößt Tobias auf die Überschrift „Cavendish wog die Erde“ und nimmt sie wörtlich. Mira hält dagegen: Keine Waage der Welt trage die Erde, und in dem Gartenhaus von 1798 hingen nur zwei Bleikugeln an einem Draht. Wer recht behält, hängt daran, welche Größe dieser Versuch liefert – am Datenblatt lässt sich das nachrechnen.",
   "frage": "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
   "auftrag": "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
   "predict": [
@@ -1355,7 +1355,7 @@
   "id": "gw8",
   "basiskonzept": "Zufall und Determiniertheit",
   "titel": "Das ewige Vorbeifallen",
-  "problem": "Für den Wettbewerbsbericht braucht Mira einen Satz über die Gravitation. Tobias diktiert: Die Sonne zieht an der Erde, also muss die Erde irgendwann hineinstürzen. Mira hält dagegen – dann gäbe es sie längst nicht mehr. Am Bildschirm starten beide einen Planeten im Abstand der Erde und ändern nur eine einzige Zahl. Welche Bahn entsteht daraus?",
+  "problem": "In der Live-Übertragung von der Raumstation schwebt eine Astronautin durch das Modul. Tobias schließt daraus, dort oben ziehe die Erde nicht mehr. Mira widerspricht: In dieser Höhe zieht sie fast genauso stark wie am Boden, und trotzdem fällt niemand herunter. Am Bildschirm starten beide einen Körper auf einer Umlaufbahn und ändern nur seine Anfangsgeschwindigkeit.",
   "frage": "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
   "auftrag": "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
   "predict": [
@@ -1409,7 +1409,7 @@
   "id": "gw9",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Sechs Planeten, eine Konstante",
-  "problem": "Für die Wettbewerbsmappe tippt Tobias eine Tabelle ab: sechs Planeten mit großer Halbachse und Umlaufzeit. Mira sucht darin einen Zusammenhang. Doppelter Bahnradius heißt nicht doppelte Umlaufzeit, das sieht sie sofort; auch mit dem Quadrat kommt sie nicht weiter. Tobias meint, wer die Regel kenne, brauche künftig nur noch eine der beiden Spalten.",
+  "problem": "An der Hauswand gegenüber zeigt eine Satellitenschüssel seit Jahren in dieselbe Richtung; ihr Fernsehsatellit braucht für einen Umlauf genau einen Tag. Tobias schätzt dessen Bahnradius im Dreisatz: Der Mond brauche 27,3 Tage, der Satellit also knapp ein Siebenundzwanzigstel des Mondabstands. Mira hält den Dreisatz für unzulässig. Am Datenblatt mit sechs Planeten lässt sich das prüfen.",
   "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
   "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
   "predict": [
@@ -1505,7 +1505,7 @@
   "id": "gw10",
   "basiskonzept": "Zufall und Determiniertheit",
   "titel": "Zwei Modelle, ein Himmel",
-  "problem": "Für die Wettbewerbsmappe hat Tobias den Weg des Mars über viele Wochen abgezeichnet: erst wandert der Planet vorwärts, dann rückwärts, dann wieder vorwärts. Mira nennt diese Schleife den Beweis dafür, dass die Erde um die Sonne läuft. Tobias hält dagegen: Ptolemäus habe dieselbe Schleife schon mit ruhender Erde vorhergesagt. Am Bildschirm stehen beide Modelle nebeneinander.",
+  "problem": "In einer Dokumentation heißt es, Kopernikus habe 1543 die Erde aus dem Mittelpunkt der Welt gerückt. Mira nennt die Rückwärtsschleife des Mars am Nachthimmel den Beweis dafür. Tobias hält dagegen: Ptolemäus habe dieselbe Schleife schon mit ruhender Erde vorhergesagt, und am Himmel sei der Unterschied nicht zu sehen. Am Bildschirm lassen sich beide Modelle vergleichen.",
   "frage": "Was entscheidet zwischen dem geozentrischen und dem heliozentrischen Weltbild?",
   "auftrag": "Vergleiche beide Modelle darin, wer im Zentrum steht, wie viele Kreise der Mars in jedem Modell braucht und was sie für den Himmel vorhersagen.",
   "predict": [
@@ -1645,7 +1645,7 @@
   "id": "gw12",
   "basiskonzept": "Mathematisieren und Vorhersagen",
   "titel": "Ein Photon, zwei Zeitspannen",
-  "problem": "Für den letzten Abschnitt des Wettbewerbsberichts schreibt Tobias eine Zeile aus dem Physikbuch ab: Licht ist für jeden Beobachter gleich schnell, auch für den, der ihm hinterherfliegt. Mira hält das für einen Druckfehler. In allen bisherigen Kapiteln lief die Zeit für alle gleich – und der Bericht sollte das Kapitel abschließen, nicht sprengen.",
+  "problem": "Das Navi im Auto sagt die Ausfahrt metergenau an. Mira hat gelesen, dass die Uhren der Satelliten dafür jeden Tag nachgestellt werden. Tobias hält das für Technik: Eine Uhr, die genau geht, gehe eben überall genau. Mira fragt zurück, ob eine Uhr denn für jeden dasselbe anzeigt. An den Stationen der Simulation lässt sich das nachmessen.",
   "frage": "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
   "auftrag": "Miss an Station 6 den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten und prüfe an den Stationen 3 und 4, ob der Satz des Pythagoras genau diese Werte liefert.",
   "predict": [

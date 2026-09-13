@@ -2,12 +2,13 @@
  "id": "ki2",
  "basiskonzept": "Zufall und Determiniertheit",
  "titel": "Wann du stoppst, ist gleichgültig",
- "problem": "Mira lässt den Wagen fahren und drückt die Stoppuhr, wann immer ihr danach ist: einmal früh, einmal spät, dazwischen dreimal. Tobias hält das für unbrauchbar – wer ohne Plan stoppe, bekomme auch ein Ergebnis ohne Plan. Mira trägt ihre fünf Wertepaare trotzdem auf. Am Ende steht dort eine Geschwindigkeit, die niemand eingestellt hat.",
+ "problem": "Auf der Zugfahrt nach Hause notiert Mira zu jedem Kilometerstein, den sie zufällig bemerkt, die Uhrzeit – zweimal kurz hintereinander, dann erst wieder nach einer langen Pause. Tobias hält die Auswahl für planlos: Wer ohne Plan stoppe, bekomme auch ein Ergebnis ohne Plan. Mira widerspricht. An der Messstrecke lässt sich das mit eigener Stoppuhr prüfen.",
  "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
  "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
  "predict": [
   "Der Zeitpunkt entscheidet mit: Wer früh stoppt, hat wenig Weg auf dem Wegmesser und bekommt deshalb eine flachere Gerade als jemand, der spät stoppt.",
-  "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, und deren Steigung ist die gefahrene Geschwindigkeit."
+  "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, und deren Steigung ist die gefahrene Geschwindigkeit.",
+  "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden – Punkte, die weit auseinanderliegen, verfälschen sie."
  ],
  "predictOk": 1,
  "forschen": [

@@ -2,14 +2,15 @@
  "id": "ki1",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Fünf Stopps, eine Steigung",
- "problem": "Mira und Tobias sollen die Geschwindigkeit ihres Wagens belegen. Tobias liest sie am Tacho ab: 4,00 m/s, fertig. Mira hält das für keine Messung, sondern für eine abgelesene Reglerstellung. Sie lässt den Wagen fahren, drückt während einer einzigen Fahrt fünfmal die Stoppuhr und trägt ihre Wertepaare auf. Erst die Steigung ihrer Geraden sei ein Messergebnis.",
+ "problem": "Nach dem Lauftreff vergleichen Mira und Tobias ihre App: Zwei Weg-Zeit-Geraden gehen vom Ursprung aus, Miras verläuft steiler. Tobias liest einfach die angezeigte Zahl ab. Mira hält dagegen, eine App messe nur Zeiten und Wege; die Geschwindigkeit müsse man daraus erst gewinnen. Für Jugend forscht zählt nur eine belegte Zahl, und an der Messstrecke lässt sich das entscheiden.",
  "frage": "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
  "auftrag": "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
  "predict": [
+  "Alle gestoppten Wertepaare liegen auf einer Ursprungsgeraden. Deren Steigung ist die Geschwindigkeit, und sie kommt gleich heraus, gleichgültig in welchen Augenblicken gestoppt wurde.",
   "Weil die Stoppuhr mal früher und mal später gedrückt wird, fällt die Steigung jedes Mal etwas anders aus. Man müsste in gleichen Abständen stoppen, damit ein brauchbarer Wert herauskommt.",
-  "Alle gestoppten Wertepaare liegen auf einer Ursprungsgeraden. Deren Steigung ist die Geschwindigkeit, und sie kommt gleich heraus, gleichgültig in welchen Augenblicken gestoppt wurde."
+  "Je größer der Weg ist, den der Wagen bis zum Stoppen zurückgelegt hat, desto größer ist seine Geschwindigkeit. Man liest v deshalb am höchsten Wegwert der Tabelle ab; die zugehörige Zeit braucht man dafür nicht."
  ],
- "predictOk": 1,
+ "predictOk": 0,
  "forschen": [
   "Lass den Wagen bei „Geschwindigkeit v“ = 4,0 m/s fahren und drücke fünfmal „Zeit stoppen“, ruhig in ungleichen Abständen. Jede Zeile hält fest, was in diesem Augenblick auf der Anzeigetafel steht: Uhr t, Wegmesser s und Tacho v. Stoppe so lange, bis die Statuszeile „5 von mindestens 5 gestoppten Messwerten“ meldet.",
   "Wähle „t → s“. Über dem Ergebniskasten steht deine Reihe als „Stoppuhr · v = 4,0 m/s“ mit ihrer Ausgleichsgeraden y = …·x. Notiere diese Steigung und daneben die Zeile „Geschwindigkeit v = Steigung der Ausgleichsgeraden“. Rechne danach aus zwei beliebigen Tabellenzeilen Δs/Δt von Hand nach und vergleiche beide Zahlen.",

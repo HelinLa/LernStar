@@ -2,12 +2,13 @@
  "id": "gw7",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Die Drehwaage im Gartenhaus",
- "problem": "Mira rechnet für ihre Wettbewerbsmappe die Erdmasse aus und stockt: In der Formel steht G, und woher diese Zahl kommt, sagt kein Buch. Tobias findet einen Aufsatz von 1798. Sein Titel verspricht die Dichte der Erde – im Gartenhaus von Henry Cavendish hängen aber nur zwei Bleikugeln an einem Draht, beobachtet durch Fernrohre von außen.",
+ "problem": "In einer Zeitung stößt Tobias auf die Überschrift „Cavendish wog die Erde“ und nimmt sie wörtlich. Mira hält dagegen: Keine Waage der Welt trage die Erde, und in dem Gartenhaus von 1798 hingen nur zwei Bleikugeln an einem Draht. Wer recht behält, hängt daran, welche Größe dieser Versuch liefert – am Datenblatt lässt sich das nachrechnen.",
  "frage": "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
  "auftrag": "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
  "predict": [
   "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Ausschlag des Balkens ein Maß für ihre Masse.",
-  "Die Drehwaage misst nur die Kraft zwischen zwei bekannten Massen. Daraus folgt G; erst mit G, dem Ortsfaktor und dem Erdradius ergibt sich die Erdmasse."
+  "Die Drehwaage misst nur die Kraft zwischen zwei bekannten Massen. Daraus folgt G; erst mit G, dem Ortsfaktor und dem Erdradius ergibt sich die Erdmasse.",
+  "Cavendish hat G nicht gemessen, sondern aus dem Ortsfaktor g und dem Erdradius berechnet; die Drehwaage diente nur der Bestätigung."
  ],
  "predictOk": 1,
  "forschen": [

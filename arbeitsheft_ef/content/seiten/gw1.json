@@ -6,10 +6,11 @@
  "frage": "Wie hängen Winkelgeschwindigkeit ω und Bahngeschwindigkeit v zusammen?",
  "auftrag": "Untersuche mit den beiden Reglern, wovon der Wert in der Zeile v≈ abhängt, und bilde in jeder Zeile den Quotienten aus diesem Wert und der eingestellten Winkelgeschwindigkeit.",
  "predict": [
+  "Alle Sitze des Karussells haben dieselbe Bahngeschwindigkeit, weil sie für eine Runde dieselbe Zeit brauchen. Mit dem Abstand von der Achse ändert sich nur die Winkelgeschwindigkeit.",
   "Alle Sitze des Karussells haben dieselbe Winkelgeschwindigkeit, denn sie überstreichen in derselben Zeit denselben Winkel. Die Bahngeschwindigkeit wächst dagegen mit dem Abstand von der Achse, weil ein äußerer Sitz einen längeren Bogen zurücklegt.",
-  "Alle Sitze des Karussells haben dieselbe Bahngeschwindigkeit, weil sie für eine Runde dieselbe Zeit brauchen. Mit dem Abstand von der Achse ändert sich nur die Winkelgeschwindigkeit."
+  "Winkelgeschwindigkeit und Bahngeschwindigkeit sind dieselbe Größe in verschiedenen Einheiten; rad/s lässt sich in m/s umrechnen, ohne den Radius zu kennen."
  ],
- "predictOk": 0,
+ "predictOk": 1,
  "forschen": [
   "Die Simulation startet mit ω = 3 rad/s und r = 70 px. Prüfe beide Regler und lies im weißen Anzeigefeld rechts oben im Bild die Zeile ab, die mit v≈ beginnt – darüber steht ω=…rad/s, darunter F_z≈…N. Die Simulation schreibt dort einen Punkt statt eines Kommas. Übertrage den Wert in die erste Tabellenzeile.",
   "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s, ohne den Radius zu verändern. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch die eingestellte Winkelgeschwindigkeit.",

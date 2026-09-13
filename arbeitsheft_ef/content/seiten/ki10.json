@@ -2,14 +2,15 @@
  "id": "ki10",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Still, aber nicht kräftefrei",
- "problem": "Über der Messstrecke hängt eine Werkstattlampe an einem Seil, in das ein Kraftmesser eingehängt ist. Tobias trägt sie ins Protokoll als kräftefrei ein: Sie bewegt sich nicht, also ziehe auch nichts an ihr. Mira hält ihm die Anzeige hin, die ruhig bei 5 N steht und keinen Millimeter zurückgeht. Beide Sätze können nicht gleichzeitig stimmen.",
+ "problem": "Beim Lernen hält Tobias ein Buch flach auf der ausgestreckten Hand und rührt sich nicht. Kräftefrei, sagt er: Was sich nicht bewegt, an dem ziehe auch nichts. Mira deutet auf seinen zitternden Arm, der merke sehr wohl etwas. Am Bildschirm hängt dieselbe Frage an einer Lampe, deren Kraftmesser ruhig bei 5 N steht.",
  "frage": "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
  "auftrag": "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
  "predict": [
+  "Beide Kräfte wirken die ganze Zeit weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null – und nur deshalb bleibt die Lampe in Ruhe.",
   "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst, sobald sich etwas bewegt.",
-  "Beide Kräfte wirken die ganze Zeit weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null – und nur deshalb bleibt die Lampe in Ruhe."
+  "Die Haltekraft des Seils ist größer als die Gewichtskraft – sonst könnte sie die Lampe nicht oben halten."
  ],
- "predictOk": 1,
+ "predictOk": 0,
  "forschen": [
   "Lies im Ausgangszustand das Statusfeld ab: Haltekraft, Gewichtskraft und Gesamtkraft stehen dort mit Zahl und Einheit, dazu der Zustand der Lampe. Vergleiche die Zahlen mit den Beschriftungen am Bild („Halte 5 N“, „Gewicht 5 N“).",
   "Drücke einmal „– N“ und notiere sofort Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe. Drücke danach zweimal „+ N“ und zuletzt „zurück in die Mitte“ und halte jede Statuszeile gegen den Ausgangszustand.",

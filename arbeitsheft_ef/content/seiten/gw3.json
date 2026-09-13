@@ -2,14 +2,15 @@
  "id": "gw3",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Acht Punkte, eine Steigung",
- "problem": "Für die Jury von Jugend forscht reicht Mira die Formel nicht; sie will die Zentripetalkraft gemessen haben. Tobias übernimmt den ersten Messpunkt und stutzt: Im Statusfeld stehen 35,53 N, in seiner Tabelle 35,65 N. Die Kraftmessdose streut um etwa 1,5 %. Trägt eine Messreihe aus solchen Werten trotzdem ein belastbares Ergebnis?",
+ "problem": "Vor der Wäscheschleuder liest Mira das Typenschild: 1400 Umdrehungen je Minute, Trommelradius 0,24 m. Tobias behauptet, daraus lasse sich die Masse eines Wäschestücks ausrechnen, sobald man die Kraft an der Trommelwand kennt. Mira wendet ein, jede einzelne Kraftmessung streue. Am Bildschirm nehmen beide deshalb eine ganze Messreihe auf, statt eines einzigen Werts.",
  "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
  "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
  "predict": [
+  "Die Ausgleichsgerade mittelt die Streuung über alle Punkte hinweg. Die Masse aus der Steigung trifft den eingestellten Wert deshalb deutlich besser als eine Einzelmessung.",
   "Weil jeder einzelne Messwert um bis zu 1,5 % danebenliegt, kann auch die Masse aus der Steigung höchstens auf 1,5 % genau herauskommen.",
-  "Die Ausgleichsgerade mittelt die Streuung über alle Punkte hinweg. Die Masse aus der Steigung trifft den eingestellten Wert deshalb deutlich besser als eine Einzelmessung."
+  "Die Ausgleichsgerade wird durch den ersten und den letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
  ],
- "predictOk": 1,
+ "predictOk": 0,
  "forschen": [
   "Drücke zuerst „Tabelle leeren“, damit du mit einer leeren Tabelle beginnst. Notiere dann bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Zentripetalkraft F_z aus dem Statusfeld „Alle Größen der Kreisbewegung“, drücke „Messpunkt übernehmen“ und notiere auch den Wert, der dafür in der Tabelle erscheint. Vergleiche beide.",
   "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, die daneben stehende erwartete Steigung, das Bestimmtheitsmaß R², die Masse aus der Steigung und deren Abweichung ab.",

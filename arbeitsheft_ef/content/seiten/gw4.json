@@ -2,14 +2,15 @@
  "id": "gw4",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Zwei Kugeln, zwei Auftragungen",
- "problem": "Für „Jugend forscht“ suchen Mira und Tobias eine Formel für die Anziehung zwischen zwei Körpern. Tobias setzt auf die Masse: Die Sonne habe eben unvorstellbar viel Masse. Mira setzt auf den Abstand: Neptun werde von derselben Sonne gehalten, nur dreißigmal weiter draußen. Zwei Größen also – aber zählen beide gleich viel?",
+ "problem": "Auf dem Planetenweg im Stadtpark laufen Mira und Tobias von der Sonne bis Neptun – dreißigmal so weit wie bis zur Erde. Dass die Sonne den fernen Planeten überhaupt noch hält, erklärt Tobias mit ihrer riesigen Masse. Mira zeigt auf die Entfernung. Zwei Größen also – am Bildschirm lässt sich jede einzeln verstellen.",
  "frage": "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
  "auftrag": "Bestimme unter Variablenkontrolle aus einer Messreihe, in welcher Auftragung die Messpunkte auf einer Ursprungsgeraden liegen, und rechne aus deren Steigung die Verhältniszahl der Simulation zurück.",
  "predict": [
+  "Masse und Abstand zählen gleich viel: Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe.",
   "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur noch ein Viertel – der Abstand zählt stärker.",
-  "Masse und Abstand zählen gleich viel: Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe."
+  "Doppelte Masse gibt die vierfache Anziehung, doppelter Abstand die halbe – das Quadrat steht bei der Masse."
  ],
- "predictOk": 0,
+ "predictOk": 1,
  "forschen": [
   "Ziehe die Regler „Masse der linken Kugel“ und „Masse der rechten Kugel“ auf 5; das Statusfeld meldet dann 200,0 Einheiten. Wähle „F über r auftragen“, drücke „Messreihe automatisch aufnehmen“ und lies in der Wertetabelle für jede der fünf Zeilen r, 1/r² und F ab. Lies daneben, warum das Auswertungsfeld hier keine Ausgleichsgerade zeichnet.",
   "Wähle „F über 1/r² auftragen“, ohne an der Tabelle etwas zu ändern. Notiere die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R², die daneben stehende erwartete Steigung und die Zeile „Verhältniszahl der Simulation aus der Steigung k“. Wähle danach „F über m₁·m₂/r² auftragen“ und halte die dortige Steigung gegen diese Verhältniszahl.",

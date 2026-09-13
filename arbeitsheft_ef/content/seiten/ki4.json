@@ -2,12 +2,13 @@
  "id": "ki4",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Aus der Kurve eine Gerade machen",
- "problem": "Mira lässt den Wagen fahren und drückt fünfmal die Stoppuhr; Tobias trägt die gestoppten Wertepaare t und s auf und erhält eine gebogene Kurve. Er legt ein Lineal an und liest eine Steigung ab – an einer anderen Stelle der Kurve kommt eine ganz andere heraus. Für die Wettbewerbsmappe brauchen die beiden eine einzige Beschleunigung, keine Spanne.",
+ "problem": "Vor dem Haus rollt Tobias' Skateboard die abschüssige Einfahrt hinunter, vorbei an Kreidestrichen mit wachsenden Abständen. Mira stoppt an jedem Strich und trägt Zeit und Weg auf; es entsteht eine gebogene Kurve. Tobias legt ein Lineal an und liest eine Steigung ab – ein Stück weiter eine ganz andere. Am Bildschirm wollen beide das klären.",
  "frage": "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
  "auftrag": "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
  "predict": [
   "Trägt man s über t² auf, liegen die gestoppten Punkte auf einer Ursprungsgeraden; ihre Steigung ist a/2, die Beschleunigung also das Doppelte der Steigung.",
-  "Weil jeder Stopp in einen anderen Augenblick der Fahrt fällt, gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade."
+  "Weil jeder Stopp in einen anderen Augenblick der Fahrt fällt, gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
+  "Trägt man s über t² auf, ist die Steigung unmittelbar die Beschleunigung – der Faktor ½ steckt schon in der Umrechnung der Achse."
  ],
  "predictOk": 0,
  "forschen": [

@@ -6,10 +6,11 @@
  "frage": "Wie stark ist das Feld der Erde dort, wo Menschen schwerelos schweben?",
  "auftrag": "Vergleiche die vier Feldstärken des Datenblatts und prüfe, ob in der Bahnhöhe der ISS überhaupt noch ein Gravitationsfeld vorhanden ist.",
  "predict": [
+  "Die Feldstärke sinkt mit 1/r², und 400 km sind gegen 6371 km wenig. In der ISS wirken deshalb noch fast neun Newton je Kilogramm; das Schweben muss einen anderen Grund haben.",
   "Ein Feld reicht nur begrenzt weit. In 400 km Höhe ist das Erdfeld praktisch zu Ende und die Feldstärke dort nahezu null – deshalb schweben die Menschen in der ISS.",
-  "Die Feldstärke sinkt mit 1/r², und 400 km sind gegen 6371 km wenig. In der ISS wirken deshalb noch fast neun Newton je Kilogramm; das Schweben muss einen anderen Grund haben."
+  "Die Feldstärke sinkt mit 1/r und nicht mit 1/r²; in 400 km Höhe sind deshalb noch etwa 94 Prozent der Bodenwerte übrig."
  ],
- "predictOk": 1,
+ "predictOk": 0,
  "forschen": [
   "Übertrage zu jedem Ort den Abstand r in die Tabelle und rechne für die ISS-Zeile nach, wie viel davon Höhe über dem Erdboden ist – der Erdradius steht in der ersten Zeile.",
   "Bilde für jede Zeile den Anteil g : 9,82 N/kg am Wert an der Erdoberfläche und trage ihn in die Tabelle ein.",

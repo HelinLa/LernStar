@@ -2,12 +2,13 @@
  "id": "ki7",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Zwei Kisten, ein schräges Seil",
- "problem": "Vor der Regionalrunde von „Jugend forscht“ ziehen Mira und Tobias je eine Kiste über den verschneiten Hof, jede auf einem eigenen Schlitten. Tobias hält sein Seil fast waagerecht, Mira zieht ihres deutlich schräg nach oben. Beide ziehen mit derselben Kraft, doch bei Mira läuft der Schlitten spürbar leichter. Tobias vermutet einen Messfehler, Mira widerspricht.",
+ "problem": "Mira zieht ihren Rollkoffer am ausgezogenen Griff flach hinter sich her, Tobias hat seinen Griff kurz eingestellt und hält ihn steil nach oben. Beide strengen sich nach eigener Auskunft gleich an, doch Mira kommt merklich leichter voran. Tobias hält den Unterschied für Einbildung. Das Datenblatt zum schräg gezogenen Schlitten lässt sich daraufhin prüfen.",
  "frage": "Welcher Teil einer schräg ziehenden Kraft zieht den Schlitten vorwärts?",
  "auftrag": "Bestimme aus dem Datenblatt die waagerechte und die senkrechte Komponente der Zugkraft und vergleiche, wie beide sich mit dem Winkel ändern.",
  "predict": [
   "Nur die waagerechte Komponente F · cos(α) zieht vorwärts, und sie wird mit wachsendem Winkel kleiner. Die senkrechte Komponente F · sin(α) zieht den Schlitten nach oben und entlastet ihn.",
-  "Der Schlitten wird bei jedem Winkel gleich stark vorwärts gezogen, denn die Zugkraft beträgt immer 200 N. Der Winkel ändert nur die Richtung des Seils, nicht die Wirkung."
+  "Der Schlitten wird bei jedem Winkel gleich stark vorwärts gezogen, denn die Zugkraft beträgt immer 200 N. Der Winkel ändert nur die Richtung des Seils, nicht die Wirkung.",
+  "Vorwärts zieht die Komponente F · sin(α), nach oben F · cos(α) – bei kleinem Winkel zieht das Seil deshalb kaum vorwärts."
  ],
  "predictOk": 0,
  "forschen": [

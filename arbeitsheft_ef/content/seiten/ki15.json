@@ -2,14 +2,15 @@
  "id": "ki15",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Das Dreieck unter der Geraden",
- "problem": "Vor jedem Start schnellt eine gespannte Feder ihren Wagen auf die Messstrecke. Tobias hängt einen Kraftmesser an: bei zehn Zentimetern Auslenkung zeigt er zwei Newton. Zwei Newton mal zehn Zentimeter, rechnet er, das seien 0,2 Joule in der Feder. Mira widerspricht – am Anfang des Spannens sei die Kraft doch null gewesen.",
+ "problem": "Mira drückt die Feder eines Kugelschreibers auf der Küchenwaage zusammen: zwei Millimeter, vier, sechs, acht, und notiert jedes Mal die angezeigte Masse. Tobias rechnet daraus die gespeicherte Energie als Kraft mal Weg aus. Mira hält dagegen, am Anfang des Drückens sei die Kraft null gewesen. Am Bildschirm wollen sie das entscheiden.",
  "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
  "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
  "predict": [
-  "Über s² wird die Auftragung wieder gerade, ihre Steigung ist aber nur halb so groß wie bei F über s. Die Federkonstante folgt aus ihr erst durch Verdoppeln, also D = 2 · k.",
-  "Beide Auftragungen stammen aus derselben Messreihe, also muss auch die Steigung dieselbe sein. Über s² liest man die Federkonstante deshalb unmittelbar ab, ohne noch etwas zu verdoppeln."
+  "Beide Auftragungen stammen aus derselben Messreihe, also muss auch die Steigung dieselbe sein. Über s² liest man die Federkonstante deshalb unmittelbar ab, ohne noch etwas zu verdoppeln.",
+  "Über s² ist die Steigung doppelt so groß wie bei F über s; die Federkonstante folgt daraus durch Halbieren, also D = k/2.",
+  "Über s² wird die Auftragung wieder gerade, ihre Steigung ist aber nur halb so groß wie bei F über s. Die Federkonstante folgt aus ihr erst durch Verdoppeln, also D = 2 · k."
  ],
- "predictOk": 0,
+ "predictOk": 2,
  "forschen": [
   "Der Ausgangszustand steht auf D = 20 N/m. Drücke „Messreihe automatisch aufnehmen“: Die Federkonstante bleibt fest, die Auslenkung fährt in sieben Zeilen von 0 cm bis 30 cm. Notiere aus der Tabelle die Spalten s, s², F und E und lies darunter die Zeile „Auswertung der Messreihe“ – sie nennt für 5 cm und 10 cm zwei Faktoren.",
   "Drücke „F über s auftragen“ und notiere die Steigung der Fitzeile und darunter den Kasten „Federkonstante D aus der Steigung k“. Wechsle auf „E über s auftragen“ und setze den Haken bei „Theoriekurve einblenden“: Halte fest, warum dort keine Steigung steht. Drücke dann „E über s² auftragen“ und lies Steigung und Rückrechnung ab.",

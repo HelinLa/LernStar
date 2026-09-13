@@ -2,14 +2,15 @@
  "id": "ki6",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Ein Schlag, nicht zwei",
- "problem": "An der Messstrecke schiebt Mira eine Stahlkugel über die Tischkante, während Tobias an derselben Kante im selben Augenblick eine zweite Kugel einfach fallen lässt. Mira rechnet mit zwei Aufschlägen, denn ihre Kugel legt den weiteren Weg zurück. Zu hören ist nur ein einziger Schlag. Mira will es mit kräftigerem Stoß wiederholen: Dann müsse die Kugel länger fliegen.",
+ "problem": "Zu Hause legt Mira zwei Münzen an die Tischkante und schnipst ein Lineal dagegen: Die eine fliegt weit hinaus, die andere kippt nur über die Kante. Tobias rechnet mit zwei Aufschlägen, denn die fliegende Münze lege den längeren Weg zurück. Zu hören ist ein einziger. Kräftiger schnipsen, schlägt er vor. An der Messstrecke lässt sich die Fallzeit stoppen.",
  "frage": "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
  "auftrag": "Miss die Fallzeit unter Variablenkontrolle für neun Abwurfhöhen und für acht Abwurfgeschwindigkeiten und entscheide an den vier Auftragungen, welche krumm bleibt, welche die Abhängigkeit von h liefert und welche zeigt, dass v₀ die Fallzeit nicht ändert.",
  "predict": [
   "Je schneller die Kugel abgeworfen wird, desto länger bleibt sie in der Luft – für den weiteren Weg braucht sie mehr Zeit.",
+  "Die Fallzeit hängt von beidem ab: Aus größerer Höhe fällt die Kugel länger, und eine größere Abwurfgeschwindigkeit verlängert die Zeit zusätzlich ein wenig.",
   "Die Fallzeit hängt allein von der Abwurfhöhe ab; eine größere Abwurfgeschwindigkeit vergrößert nur die Wurfweite."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Lass die Ausgangsstellung stehen – „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 8 m/s – und wähle die Auftragung „t_F über h auftragen“. Drücke „Messreihe automatisch aufnehmen“: Die Tabelle füllt sich mit neun Zeilen von h = 5 m bis h = 45 m. Übertrage die Fallzeit für h = 5 m und für h = 20 m und halte fest, warum sich aus dieser Auftragung keine Steigung ablesen lässt.",
   "Wechsle zu „t_F² über h auftragen“ – dieselben neun Messwerte, nur die senkrechte Achse heißt jetzt „t_F² in s²“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und den Wert hinter „erwartet:“ ab, dazu die Zeile „Ortsfaktor g aus der Steigung k“ darunter.",

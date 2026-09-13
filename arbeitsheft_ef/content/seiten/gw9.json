@@ -2,12 +2,13 @@
  "id": "gw9",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Sechs Planeten, eine Konstante",
- "problem": "Für die Wettbewerbsmappe tippt Tobias eine Tabelle ab: sechs Planeten mit großer Halbachse und Umlaufzeit. Mira sucht darin einen Zusammenhang. Doppelter Bahnradius heißt nicht doppelte Umlaufzeit, das sieht sie sofort; auch mit dem Quadrat kommt sie nicht weiter. Tobias meint, wer die Regel kenne, brauche künftig nur noch eine der beiden Spalten.",
+ "problem": "An der Hauswand gegenüber zeigt eine Satellitenschüssel seit Jahren in dieselbe Richtung; ihr Fernsehsatellit braucht für einen Umlauf genau einen Tag. Tobias schätzt dessen Bahnradius im Dreisatz: Der Mond brauche 27,3 Tage, der Satellit also knapp ein Siebenundzwanzigstel des Mondabstands. Mira hält den Dreisatz für unzulässig. Am Datenblatt mit sechs Planeten lässt sich das prüfen.",
  "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
  "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
  "predict": [
   "Der Quotient T²/a³ hat für alle sechs Planeten denselben Wert. Kennt man von einem weiteren Körper nur die Umlaufzeit, lässt sich seine Halbachse damit berechnen, ohne sie zu messen.",
-  "Jeder Planet liefert seinen eigenen Wert, weil jeder eine andere Masse hat. Aus der Tabelle lässt sich deshalb keine gemeinsame Regel gewinnen."
+  "Jeder Planet liefert seinen eigenen Wert, weil jeder eine andere Masse hat. Aus der Tabelle lässt sich deshalb keine gemeinsame Regel gewinnen.",
+  "Für alle Planeten ist der Quotient T/a derselbe; die Umlaufzeit wächst also einfach proportional zur großen Halbachse."
  ],
  "predictOk": 0,
  "forschen": [
@@ -23,12 +24,36 @@
    "Umlaufzeit T in Jahren"
   ],
   "zeilen": [
-   ["Merkur", "0,387", "0,241"],
-   ["Venus", "0,723", "0,615"],
-   ["Erde", "1,000", "1,000"],
-   ["Mars", "1,524", "1,881"],
-   ["Jupiter", "5,203", "11,862"],
-   ["Saturn", "9,537", "29,457"]
+   [
+    "Merkur",
+    "0,387",
+    "0,241"
+   ],
+   [
+    "Venus",
+    "0,723",
+    "0,615"
+   ],
+   [
+    "Erde",
+    "1,000",
+    "1,000"
+   ],
+   [
+    "Mars",
+    "1,524",
+    "1,881"
+   ],
+   [
+    "Jupiter",
+    "5,203",
+    "11,862"
+   ],
+   [
+    "Saturn",
+    "9,537",
+    "29,457"
+   ]
   ],
   "quelle": "Siderische Umlaufzeiten und mittlere große Halbachsen der sechs klassischen Planeten, jeweils auf drei Nachkommastellen gerundet. 1 AE = 149,6 Mio. km.",
   "merke": "Beide Spalten sind auf die Erde bezogen: 1 AE ist ihr mittlerer Sonnenabstand, 1 Jahr ihre Umlaufzeit. Deshalb steht in ihrer Zeile zweimal 1,000."

@@ -2,14 +2,15 @@
  "id": "ki5",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Zwei Wege, zwei Zahlen",
- "problem": "Für die Wettbewerbsmappe soll neben jeder Messung eine Fallbeschleunigung stehen. Tobias liest ein einziges Wertetripel ab und rechnet g zweimal aus: über v/t bekommt er 9,81 m/s², über 2s/t² dagegen 10,35 m/s². Mira hält das für Ablesepech und schlägt vor, statt eines Tripels eine ganze Messreihe aufzunehmen.",
+ "problem": "Im Spiel von Tobias fällt eine Kiste durch den Hallenboden, wenn der Rechner ins Stocken gerät. Mira sieht darin keinen Programmfehler, sondern zu grobe Zeitschritte. Tobias hält dagegen: Auch ihre eigene Fallzeit liefere je nach Rechenweg zwei verschiedene Werte für g, einmal 9,81, einmal 10,35 m/s². An der Messstrecke wollen sie klären, was davon übrig bleibt.",
  "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
  "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
  "predict": [
+  "Mit einer ganzen Messreihe verschwindet der Unterschied: Die Ausgleichsgerade mittelt die Ablesefehler des einzelnen Tripels heraus, und beide Auftragungen führen auf denselben Wert für g.",
   "Auch aus einer ganzen Messreihe werden es zwei Geraden: Die Steigung aus s über t² liefert ein größeres g als die Steigung aus v über t, weil die Simulation den Fallweg schrittweise aufsummiert und dabei zu viel Weg erhält.",
-  "Mit einer ganzen Messreihe verschwindet der Unterschied: Die Ausgleichsgerade mittelt die Ablesefehler des einzelnen Tripels heraus, und beide Auftragungen führen auf denselben Wert für g."
+  "Der Unterschied bleibt, weil die Auftragung über t² den Ablesefehler quadriert; v über t ist deshalb grundsätzlich die genauere Auftragung."
  ],
- "predictOk": 0,
+ "predictOk": 1,
  "forschen": [
   "Drücke zuerst „Tabelle leeren“, damit keine alten Zeilen mitrechnen. Belasse den Regler „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“: In die Wertetabelle laufen 9 Messpunkte von t = 0,32 s bis t = 3,18 s – dieselben Zahlen, die im weißen Anzeigefeld stehen, wenn die Uhr dort steht. Einzelne Punkte gehen auch – erst „Anhalten“, dann „Messpunkt übernehmen“; sie landen in derselben Tabelle und verändern die Ausgleichsgeraden.",
   "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve, aus der sich keine Steigung ablesen lässt. Wechsle zu „t² → s auftragen“ – jetzt liegen dieselben Punkte auf einer Ursprungsgeraden. Notiere ihre Steigung k aus der Zeile y = k·x.",

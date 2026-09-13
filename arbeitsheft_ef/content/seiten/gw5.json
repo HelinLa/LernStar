@@ -2,14 +2,15 @@
  "id": "gw5",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Dieselbe Person, drei Zahlen",
- "problem": "Tobias schreibt aufs Wettbewerbsplakat: Auf dem Mond wiegst du nur ein Sechstel. Klar, sagt er, dort ist eben weniger von einem da; die Waage zeigt ja auch nur ein Sechstel an. Mira glaubt das nicht: Von ihr selbst gehe unterwegs nichts verloren. In Kapitel 1 stand der Ortsfaktor in m/s², heute in N/kg.",
+ "problem": "Eine Küchenwaage zeigt für eine Tüte Mehl ein Kilogramm an. Auf dem Mond, sagt Tobias, stünde dort nur ein Sechstel; dort sei eben weniger von dem Mehl da. Mira widerspricht: Unterwegs gehe von der Tüte nichts verloren. Verwirrend findet sie zudem, dass der Ortsfaktor heute in Newton je Kilogramm angegeben wird. Am Bildschirm lässt sich das klären.",
  "frage": "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
  "auftrag": "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
  "predict": [
   "Auf dem Mond ist weniger von derselben Person da: Masse und Gewichtskraft werden gemeinsam kleiner.",
+  "Auf dem Mond bleibt die Gewichtskraft dieselbe; kleiner wird die Masse, weil dort weniger an der Person zieht.",
   "Die Masse bleibt überall dieselbe; kleiner wird allein die Gewichtskraft, weil g dort kleiner ist."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Drücke „Erde“ und notiere aus dem Statusfeld die Masse m, den Ortsfaktor g und die Gewichtskraft F.",
   "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab – eine der drei Zahlen bleibt unverändert stehen.",

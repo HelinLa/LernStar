@@ -2,14 +2,15 @@
  "id": "ki11",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Gleiche Kraft, ungleiche Fahrt",
- "problem": "Mira sitzt auf einem Rollwagen und stößt sich an der Wand am Ende der Messstrecke ab. Sie rollt davon, die Wand bleibt stehen. Gedrückt habe nur sie, sagt Tobias. Dann klemmen die beiden eine gespannte Feder zwischen zwei Wagen, und beim Lösen fahren beide los. Wer drückt hier eigentlich wen?",
+ "problem": "Beim Aussteigen aus einem Ruderboot tritt Mira kräftig ab; das Boot rutscht sichtbar vom Steg weg, sie selbst kommt nach vorn. Gedrückt habe nur sie, behauptet Tobias, das Boot sei bloß leicht. Mira fragt zurück, warum der Steg beim Auftreten dann unbewegt bleibt. Mit zwei Wagen und einer gespannten Feder dazwischen lässt sich beides nachmessen.",
  "frage": "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
  "auftrag": "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
  "predict": [
+  "Der schwerere Wagen drückt kräftiger. Auf den leichteren Wagen wirkt deshalb die größere Kraft, und nur darum wird er stärker beschleunigt.",
   "Beide Wagen erfahren zu jedem Zeitpunkt gleich große, entgegengesetzt gerichtete Kräfte. Verschieden sind nur die Beschleunigungen – sie verhalten sich umgekehrt wie die Massen.",
-  "Der schwerere Wagen drückt kräftiger. Auf den leichteren Wagen wirkt deshalb die größere Kraft, und nur darum wird er stärker beschleunigt."
+  "Beide Wagen erfahren gleich große Kräfte und werden deshalb auch gleich stark beschleunigt; die Massen spielen dabei keine Rolle."
  ],
- "predictOk": 0,
+ "predictOk": 1,
  "forschen": [
   "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und die Stoßdauer Δt. Notiere dazu die Zeile mit dem Verhältnis a1 : a2.",
   "Drücke „Neu aufstellen“ und ziehe den Regler „Masse m1 (linker Wagen)“ nacheinander auf 1 kg, 2 kg und 5 kg, während „Masse m2 (rechter Wagen)“ auf 5 kg steht. Ziehe zuletzt m2 auf 1 kg und lass m1 bei 5 kg. Löse die Feder jedes Mal neu.",

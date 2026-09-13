@@ -2,14 +2,15 @@
  "id": "gw8",
  "basiskonzept": "Zufall und Determiniertheit",
  "titel": "Das ewige Vorbeifallen",
- "problem": "Für den Wettbewerbsbericht braucht Mira einen Satz über die Gravitation. Tobias diktiert: Die Sonne zieht an der Erde, also muss die Erde irgendwann hineinstürzen. Mira hält dagegen – dann gäbe es sie längst nicht mehr. Am Bildschirm starten beide einen Planeten im Abstand der Erde und ändern nur eine einzige Zahl. Welche Bahn entsteht daraus?",
+ "problem": "In der Live-Übertragung von der Raumstation schwebt eine Astronautin durch das Modul. Tobias schließt daraus, dort oben ziehe die Erde nicht mehr. Mira widerspricht: In dieser Höhe zieht sie fast genauso stark wie am Boden, und trotzdem fällt niemand herunter. Am Bildschirm starten beide einen Körper auf einer Umlaufbahn und ändern nur seine Anfangsgeschwindigkeit.",
  "frage": "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
  "auftrag": "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
  "predict": [
   "Je größer der Anschub quer zur Sonne, desto weiter außen läuft die Bahn. Der Planet bleibt bei jedem eingestellten Wert auf einer geschlossenen Bahn, sie wird nur immer größer.",
+  "Der Planet stürzt nicht hinein, weil die Fliehkraft die Anziehung genau aufhebt: Beide Kräfte sind gleich groß, deshalb bleibt er auf der Bahn.",
   "Nur in einem mittleren Bereich fällt der Planet immerzu an der Sonne vorbei und läuft auf einer geschlossenen Bahn. Ist der Anschub zu klein, trifft er die Sonne; ist er zu groß, kommt er nicht zurück."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Stelle den Regler „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Verfolge die Anzeige „Abstand zur Sonne“, bis dort „Treffer – der Planet stürzt in die Sonne“ steht. Taste dich danach von 12 km/s an in Einerschritten aufwärts und halte fest, ab welchem Wert die Statuszeile nicht mehr „stürzt in die Sonne“ meldet.",
   "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere zu jeder Einstellung aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand sowie die Dauer eines Umlaufs.",

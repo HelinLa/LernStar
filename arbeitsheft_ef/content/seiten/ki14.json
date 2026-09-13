@@ -2,14 +2,15 @@
  "id": "ki14",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Zweimal verdoppelt, zweimal anders",
- "problem": "Für die Wettbewerbsmappe sollen Mira und Tobias angeben, wie viel Energie ihr Wagen am Ende der Messstrecke mitbringt. Tobias rechnet kurz: doppeltes Tempo, doppelte Energie. Mira hält das Fahrschulbuch dagegen, in dem der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Entscheiden soll eine Messreihe: Die Kugel schiebt einen Klotz, und der Schiebeweg misst die Energie.",
+ "problem": "Im Fahrschulbuch von Miras Schwester steht, dass der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Tobias hält das für eine Faustregel mit Sicherheitszuschlag: Doppeltes Tempo bedeute doppelte Energie und damit doppelten Weg. Mira traut dem Buch mehr als dem Kopfrechnen. Entscheiden soll eine Messreihe, in der eine Kugel einen Klotz schiebt – mal schneller, mal schwerer.",
  "frage": "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
  "auftrag": "Miss eine Messreihe zur Bewegungsenergie und linearisiere sie: Trage E über v und danach über v² auf, bestimme die Steigung der Ursprungsgeraden und rechne aus ihr Masse und Tempo zurück.",
  "predict": [
+  "Beide Auftragungen ergeben sofort eine Gerade. Die Energie wächst mit dem Tempo genauso wie mit der Masse, ein Verdoppeln zählt also in beiden Fällen gleich viel.",
   "Über v liegen die Messpunkte auf einer krummen Kurve. Erst über v² wird daraus eine Ursprungsgerade: Doppeltes Tempo bringt die vierfache Energie, doppelte Masse nur die doppelte.",
-  "Beide Auftragungen ergeben sofort eine Gerade. Die Energie wächst mit dem Tempo genauso wie mit der Masse, ein Verdoppeln zählt also in beiden Fällen gleich viel."
+  "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: Die Energie ist m · v², ohne den Faktor ½."
  ],
- "predictOk": 0,
+ "predictOk": 1,
  "forschen": [
   "Drücke „zurücksetzen“; im Statusfeld stehen 4 kg mit 4 m/s. Wähle zuerst „E über v auftragen“ – die automatische Reihe fährt immer die Größe durch, die gerade auf der x-Achse steht. Drücke dann „Messpunkt übernehmen“: Die Kugel rollt los, schiebt den Klotz 0,16 m weit, und die Tabelle bekommt ihre erste Zeile mit m, v, v², s und E = F · s. Drücke danach „Messreihe automatisch aufnehmen“ – das Tempo läuft von 1 m/s bis 12 m/s, die Masse bleibt bei 4 kg.",
   "Beschreibe an der Auftragung „E über v“, wie die Punkte liegen; eine Ausgleichsgerade wird hier absichtlich nicht gezeichnet, und bei 4 m/s liegen zwei Punkte genau übereinander. Wähle dann „E über v² auftragen“ – dieselben Messwerte, nur anders aufgetragen. Notiere aus dem Auswertungsfeld die Gerade y = k·x, den Wert hinter „erwartet:“, das Bestimmtheitsmaß R² und den Wert aus dem Kasten „Masse m aus der Steigung k“.",

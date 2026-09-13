@@ -71,8 +71,15 @@ def pruefe_seite(s, streng=True, klasse=None):
 
     if not 3 <= len(s.get("tabRows", [])) <= 4:
         f.append((tid, "tabelle", f"{len(s.get('tabRows', []))} Tabellenzeilen (3–4)"))
-    if len(s.get("predict", [])) != 2:
-        f.append((tid, "predict", f"{len(s.get('predict', []))} Vermutungen (2)"))
+    # DREI Vermutungen seit dem Einstiegsumbau (12.09.2026). Die Regel stand bis
+    # zum 13.09. noch auf zwei und meldete danach JEDE Seite aller 19 Baende -
+    # ein Pruefer, der immer rot meldet, wird nicht mehr gelesen. Derselbe
+    # Nachzug war in pruefe_profil.py der Foerderreihe noetig; dieser hier war
+    # uebersehen worden.
+    if len(s.get("predict", [])) != 3:
+        f.append((tid, "predict", f"{len(s.get('predict', []))} Vermutungen (3)"))
+    if len(set(s.get("predict", []))) != len(s.get("predict", [])):
+        f.append((tid, "predict", "zwei Vermutungen sind wortgleich"))
     if len(s.get("merksatz", [])) != 2:
         f.append((tid, "merksatz", f"{len(s.get('merksatz', []))} Merksätze (2)"))
     # Zeichen, die die Heftschrift nicht hat, drucken als leeres Kaestchen.

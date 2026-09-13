@@ -2,14 +2,15 @@
  "id": "ki12",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Was von 80 Newton übrig bleibt",
- "problem": "Auf ihrer Messstrecke zieht ein Motor mit 80 Newton an einem Wagen von 5 Kilogramm. Tobias rechnet im Kopf und sagt 16 Meter je Sekundenquadrat voraus. Die Lichtschranken melden weniger. Mira fährt mit dem Finger über die Schiene und zeigt ihm den grauen Streifen darauf. Wie viel bleibt dann noch zum Beschleunigen übrig?",
+ "problem": "Zu Hause zieht Mira eine volle Getränkekiste mit gleichmäßigem Zug über die Fliesen, dann über den Teppich – dort kommt sie kaum vom Fleck. Tobias hält den Teppich einfach für schwerer. Mira hält dagegen, an der Kiste habe sich nichts geändert. Am Bildschirm wollen die beiden prüfen, was von der Zugkraft überhaupt zum Beschleunigen übrig bleibt.",
  "frage": "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
  "auftrag": "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
  "predict": [
   "Verdoppelt man μ, verdoppelt sich die Reibungskraft – und die Beschleunigung des Wagens sinkt deshalb auf die Hälfte: Was doppelt so stark bremst, lässt nur die halbe Beschleunigung übrig.",
+  "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen liegt mit mehr Fläche auf und wird deshalb stärker gebremst.",
   "Verdoppelt man μ, verdoppelt sich zwar die Reibungskraft, die Beschleunigung sinkt aber nicht auf die Hälfte: Beschleunigt wird der Wagen nur von dem Rest, der von der Antriebskraft übrig bleibt."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Halte zuerst die Bedingungen fest, die fest bleiben sollen: Der Regler „Antriebskraft F“ steht auf 80 N, der Regler „Masse m“ auf 5 kg. Der Infokasten rechts oben zeigt vier Angaben – F, F_R, μ und v; in der Ausgangsstellung stehen dort F = 80 N, μ = 0,30 und F_R = 14,7 N. Diese Zeile kommt nicht in die Tabelle.",
   "Ziehe nun allein den Regler „Reibungskoeffizient μ“ nacheinander auf 0,00, dann 0,20, dann 0,40 und zuletzt 0,60. Der Regler zählt in Hundertsteln und rastet in Schritten von 0,05, μ = 0,20 steht also bei 20. Notiere jedes Mal den Wert hinter „F_R=“ und rechne F_res = 80 N − F_R sowie a = F_res / 5 kg aus.",

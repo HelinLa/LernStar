@@ -2,12 +2,13 @@
  "id": "ki13",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Vier Meter getragen, null Joule",
- "problem": "Beim Abbau der Messstrecke nimmt Tobias die Kiste mit den Lichtschranken auf und trägt sie vier Meter weit durch den Flur zurück. Er schnauft und nennt das die schwerste Arbeit des ganzen Tages. Mira rechnet nebenher mit und behauptet, er habe an der Kiste genau null Joule Arbeit verrichtet. Sein Rücken ist anderer Meinung.",
+ "problem": "Mit dem vollen Schulrucksack auf den Schultern geht Tobias den Flur entlang und danach eine Treppe hinauf. Oben behauptet er, der lange Flur habe ihn mehr gekostet als die paar Stufen. Mira widerspricht: Für den Rucksack zähle davon allein die Treppe. Am Bildschirm wollen beide den Streit an derselben Last entscheiden.",
  "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
  "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
  "predict": [
   "Es zählt nur der Anteil der Kraft, der in die Richtung zeigt, in die sich die Kiste bewegt. Beim waagerechten Tragen gibt es diesen Anteil nicht – deshalb kommt dort keine Arbeit heraus, so anstrengend es sich auch anfühlt.",
-  "Wer eine Last trägt, verrichtet Arbeit: Die Haltekraft wirkt über den ganzen Weg von 4 m. Beim Tragen muss deshalb mindestens so viel Arbeit herauskommen wie beim Schieben derselben Kiste."
+  "Wer eine Last trägt, verrichtet Arbeit: Die Haltekraft wirkt über den ganzen Weg von 4 m. Beim Tragen muss deshalb mindestens so viel Arbeit herauskommen wie beim Schieben derselben Kiste.",
+  "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben – es fehlt ja die Reibung, gegen die man sonst anarbeitet."
  ],
  "predictOk": 0,
  "forschen": [

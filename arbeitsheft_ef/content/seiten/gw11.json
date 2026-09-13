@@ -7,9 +7,10 @@
  "auftrag": "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
  "predict": [
   "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht. Wer Bilder aus dem All zeigt, war schließlich näher dran als ein Buch.",
+  "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Wer einen Titel führt oder an einer Hochschule arbeitet, muss nicht offenlegen, woher die Zahlen stammen und wie gemessen wurde.",
   "Verlässlich ist die Quelle, deren Aussage sich nachprüfen lässt: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt. Das lässt sich Zeile für Zeile abhaken."
  ],
- "predictOk": 1,
+ "predictOk": 2,
  "forschen": [
   "Lies die vier Zeilen des Datenblatts und markiere in jeder Zeile, welche der vier Kriterien erfüllt sind: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung.",
   "Rechne die Behauptung der ersten Zeile nach: r = 6371 km + 400 km, dann g = G · M / r² mit G = 6,674 · 10⁻¹¹ N · m² / kg² und M = 5,972 · 10²⁴ kg. Vergleiche mit dem Bodenwert, den dieselbe Formel für r = 6371 km liefert.",
