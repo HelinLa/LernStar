@@ -51,5 +51,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "Die Steigung hat eine Verhältniszahl geliefert, keine Naturkonstante: Der Simulation fehlt das G, das aus dem Verhältnis eine Kraft in Newton macht, deshalb zählt sie in „Einheiten“. Auf der nächsten Seite wird aus der Anziehung ein Gewicht: Dieselbe Person bringt auf dem Mond eine andere Zahl auf die Waage, obwohl sich an ihr selbst nichts geändert hat – und du siehst, woran das liegt.",
  "name": "Mehr Masse oder weniger Abstand – was wirkt stärker?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "F ~ 1/r², also verhält sich die Anziehung wie 1/1,06² = 1/1,1236 = 0,890. Auf der ISS wirken demnach noch rund 89 Prozent der Anziehung am Erdboden – elf Prozent weniger. Schwerelos schwebt die Besatzung also nicht, weil die Anziehung fehlte, sondern weil Station und Besatzung gemeinsam fallen.",
+ "predictWarum": [
+  "Widerlegt: Über 1/r² entsteht eine Gerade – über 1/r täte sie es nicht.",
+  "Am Bildschirm: Über 1/r² steht y = 200,000·x mit R² = 1,0000; F ist dem Kehrwert des Quadrats proportional.",
+  "Widerlegt: Über m₁ ist die Auftragung gerade, nicht quadratisch."
+ ]
 }

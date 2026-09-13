@@ -49,5 +49,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "Dass F_z mit der Masse wächst, hast du an drei Einstellungen gesehen – drei Punkte sind aber noch keine Messreihe. Auf der nächsten Seite nimmst du eine ganze Reihe auf, legst eine Ausgleichsgerade hindurch und liest aus ihrer Steigung zurück, was du vorher eingestellt hast.",
  "name": "Was hält den Körper auf der Kreisbahn?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Die Kraft zeigt zum Kurvenmittelpunkt. Sie ändert nur die Richtung deiner Geschwindigkeit, nicht ihren Betrag, und wird von Tür, Gurt und Reibung am Sitz aufgebracht: F_z = m · v²/r. Ohne sie flögest du tangential geradeaus weiter – genau das fühlt sich an, als drücke dich etwas nach außen. Nach außen wirkt dabei keine eigene Kraft.",
+ "predictWarum": [
+  "Widerlegt: Der Pfeil „v tangential“ und der Pfeil „F_z zum Mittelpunkt“ stehen senkrecht zueinander.",
+  "Widerlegt: Im Bild zeigt F_z nach innen; nach außen zeigt kein Pfeil.",
+  "Am Bildschirm: F_z zeigt zum Mittelpunkt, während der Betrag von v während des Umlaufs gleich bleibt."
+ ]
 }

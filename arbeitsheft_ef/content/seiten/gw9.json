@@ -92,5 +92,11 @@
  "alltagKomp": "E10",
  "ueberleitung": "Die Regel gilt in dieser Form nur, wenn alle sechs Bahnen um dieselbe Sonne laufen. Auf der nächsten Seite beobachtest du dieselbe Marsbahn von der Erde aus – und siehst, warum der Planet dabei zeitweise rückwärts zu laufen scheint.",
  "name": "Was verrät die Umlaufzeit über den Bahnradius?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Aus T²/a³ = konstant folgt a_Sat = a_Mond · (T_Sat / T_Mond)^(2/3) = 384 000 km · (1,00 / 27,3)^(2/3) = 384 000 km · 0,1103 = 42 400 km. Das ist rund das 6,7-Fache des Erdradius von 6370 km; die Bahnhöhe über dem Boden beträgt also etwa 36 000 km. Tobias' Dreisatz hätte 384 000 / 27,3 = 14 100 km ergeben – ein Drittel davon. Der Dreisatz versagt, weil T nicht proportional zu a ist, sondern zu a^(3/2).",
+ "predictWarum": [
+  "Im Datenblatt: T²/a³ ergibt für alle sechs Planeten 1,00 auf vier Stellen.",
+  "Widerlegt: Die Planetenmassen unterscheiden sich um das Tausendfache, der Quotient nicht.",
+  "Widerlegt: T/a ist für Merkur 0,62 und für Neptun 5,5 – kein gemeinsamer Wert."
+ ]
 }

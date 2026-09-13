@@ -51,5 +51,11 @@
  "alltagKomp": "S2",
  "ueberleitung": "Damit ist die Messstrecke zu Ende. Auf ihr lief alles geradeaus, und ein einziges Vorzeichen genügte, um die Richtung festzuhalten. Im nächsten Kapitel biegen Mira und Tobias die Bahn zum Kreis. Dann ändert sich die Richtung in jedem Augenblick – der Impuls also auch, obwohl das Tempo gleich bleibt. Die erste Frage dort lautet, wie schnell ein Punkt auf der Kreisbahn überhaupt ist.",
  "name": "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Beim Stoß üben beide Murmeln gleich große, entgegengesetzt gerichtete Kräfte gleich lange aufeinander aus. Jede erfährt denselben Kraftstoß mit umgekehrtem Vorzeichen, also Δp₁ = −Δp₂ – die Summe ändert sich nicht. Das gilt unabhängig davon, ob sie auseinander laufen oder aneinander kleben. Kleben sie zusammen, bewegen sich beide mit v' = m₁ · v₁ / (m₁ + m₂), bei gleichen Massen also mit der Hälfte des Anfangstempos. Die kinetische Energie bleibt dann nicht erhalten; die Simulation zeigt nur den elastischen Fall.",
+ "predictWarum": [
+  "Am Bildschirm: p_ges behält vor und nach dem Stoß denselben Wert, obwohl p₁ das Vorzeichen wechselt.",
+  "Widerlegt: p_ges steht nach dem Stoß unverändert da, nicht größer.",
+  "Widerlegt: |p₁| + |p₂| wäre nach dem Stoß größer als vorher; p_ges ist es nicht."
+ ]
 }

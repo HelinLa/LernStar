@@ -51,5 +51,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "An der Lampe greifen beide Kräfte am selben Körper an – nur deshalb heben sie einander auf. Auf der nächsten Seite triffst du ein zweites Kräftepaar, das ebenfalls gleich groß und entgegengesetzt gerichtet ist, aber an zwei verschiedenen Körpern angreift und sich gerade deshalb nicht aufhebt.",
  "name": "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Am Buch greifen zwei Kräfte an: die Gewichtskraft F_G = m · g nach unten und die Auflagekraft der Hand nach oben. Das Buch ruht, also ist die Summe null – die Hand drückt genau so stark nach oben, wie das Buch nach unten zieht. Kräftefrei ist es damit nicht: Beide Kräfte wirken, nur ihre Summe verschwindet. Dass die Handkraft wirklich wirkt, merkt man am zitternden Arm; lässt sie nach, ist die Summe nicht mehr null und das Buch sinkt.",
+ "predictWarum": [
+  "Am Bildschirm: Das Statusfeld nennt Haltekraft 5 N und Gewichtskraft 5 N nebeneinander, Gesamtkraft 0 N.",
+  "Widerlegt: Beide Kräfte stehen im Statusfeld, obwohl die Lampe still hängt.",
+  "Widerlegt: Beide Beträge sind gleich groß – wäre die Haltekraft größer, stiege die Lampe."
+ ]
 }

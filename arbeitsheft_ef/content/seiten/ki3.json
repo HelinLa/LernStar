@@ -49,5 +49,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Die Auftragung t → v gab dir sofort eine Zahl. Dieselben Messwerte über t → s meldeten dagegen: keine Gerade, sondern eine Parabel. Auf der nächsten Seite siehst du, mit welchem Griff auch daraus eine Gerade wird – und wie du a ein zweites Mal gewinnst, diesmal aus dem Weg.",
  "name": "Wie schnell wird der Wagen schneller?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "100 km/h = 100 / 3,6 m/s = 27,78 m/s. Aus der Ruhe heraus ist Δv = 27,78 m/s und Δt = 9,5 s, also Δv/Δt = 27,78 m/s / 9,5 s = 2,92 m/s². Der Wert liegt innerhalb der Reglerspanne 0,5 bis 8,0 m/s², lässt sich am Bildschirm also nachstellen.",
+ "predictWarum": [
+  "Widerlegt: Ein Mittelwert von Geschwindigkeiten hat die Einheit m/s und kann keine Beschleunigung sein.",
+  "Widerlegt: Aus der Ruhe trifft v/t zufällig dieselbe Zahl; es ist aber der Quotient EINES Punktes und kein Δv/Δt – bei einem Start mit v₀ ≠ 0 versagt er.",
+  "Am Bildschirm: „t → v“ meldet y = 2,000·x mit R² = 1,0000 und darunter „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s²“."
+ ]
 }

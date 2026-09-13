@@ -50,5 +50,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "Solange die Summe der Kräfte null ist, bleibt alles, wie es war – der Wagen läuft mit unverändertem Tempo weiter. Auf der nächsten Seite ist die resultierende Kraft nicht mehr null, und du misst, wovon es abhängt, wie stark ein Körper dann beschleunigt.",
  "name": "Was macht ein Körper, wenn keine Kraft mehr zieht?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Am Rucksack greifen Gewichtskraft und Auflagekraft an; sie heben sich auf. Dazu kommt nur die kleine Reibung zum Sitz. Solange diese Summe nahezu null ist, behält der Rucksack nach dem ersten Newton'schen Gesetz seine Geschwindigkeit bei. Gebremst wird der Bus, nicht der Rucksack – vom Bus aus gesehen rutscht er deshalb nach vorn. Geschoben hat ihn niemand; er fährt einfach weiter.",
+ "predictWarum": [
+  "Widerlegt: Mit F = 0 N zeigt das weiße Kästchen nach einer Weile denselben Wert wie am Anfang.",
+  "Am Bildschirm: v bleibt bei jedem eingestellten v₀ stehen, die Linie v(t) läuft waagerecht durch.",
+  "Widerlegt: Bei F = 0 N fährt der Wagen weiter, statt stehen zu bleiben."
+ ]
 }

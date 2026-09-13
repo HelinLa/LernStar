@@ -49,5 +49,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "Waagerecht und senkrecht ließen sich getrennt auswerten, weil sie einander nicht in die Quere kommen. Auf der nächsten Seite triffst du dieselbe Zerlegung wieder – dort nicht bei einer Bewegung, sondern bei einer Kraft, die schräg an einem Körper zieht.",
  "name": "Warum trifft die geworfene Kugel gleichzeitig auf?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Waagerechte und senkrechte Bewegung überlagern sich, ohne sich zu stören. Die Fallzeit folgt allein aus der Abwurfhöhe: t_F = √(2h/g); v₀ kommt darin nicht vor. Beide Münzen starten von derselben Tischkante, haben also dieselbe Fallzeit und schlagen gleichzeitig auf – ein Aufschlag. Die Abwurfgeschwindigkeit ändert nur die Wurfweite x = v₀ · t_F.",
+ "predictWarum": [
+  "Widerlegt: „t_F über v₀“ ist eine Waagerechte – acht verschiedene v₀, achtmal die Fallzeit 2,0193 s.",
+  "Widerlegt: Dieselbe Waagerechte hat die Steigung 0,0000; t_F hängt also auch nicht ein wenig von v₀ ab.",
+  "Am Bildschirm: Aus „t_F² über h“ folgt t_F = √(2h/g) – darin steht die Höhe und sonst nichts."
+ ]
 }

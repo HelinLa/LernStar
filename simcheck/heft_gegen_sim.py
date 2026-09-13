@@ -208,6 +208,37 @@ def _ist_abgeleitet(v, e, nach_einheit, ohne_einheit=()):
     return None
 
 
+# Ein Satz, der SAGT, dass etwas am Bildschirm steht, muss stimmen. Gesucht wird
+# die Marke am Satzanfang; alles dahinter bis zum Satzende ist die Behauptung.
+BILDSCHIRM_MARKE = re.compile(r'(?:Am Bildschirm|Im Datenblatt|Die Statuszeile meldet|'
+                              r'Das Statusfeld zeigt|Die Anzeige zeigt)\s*:?\s*')
+
+
+def _bildschirmsaetze(s):
+    """Alle Saetze der Seite, die eine Bildschirmanzeige BEHAUPTEN.
+
+    Durchsucht werden auch Felder, die sonst nicht geprueft werden - der
+    Lehrerteil steht in `predictWarum`, `alltagLoesung` und `aufgabe.loesung`.
+    Genommen wird nur der Teil HINTER der Marke: Was davor steht, ist Einleitung
+    ("Widerlegt: ...") und behauptet nichts ueber den Bildschirm."""
+    roh = []
+    for feld in ('predictWarum', 'predict', 'forschen'):
+        roh += [x for x in (s.get(feld) or []) if isinstance(x, str)]
+    for feld in ('alltagLoesung', 'alltag', 'fachtext', 'ueberleitung', 'modellgrenze'):
+        if isinstance(s.get(feld), str):
+            roh.append(s[feld])
+    a = s.get('aufgabe') or {}
+    for feld in ('frage', 'loesung'):
+        if isinstance(a.get(feld), str):
+            roh.append(a[feld])
+    raus = []
+    for t in roh:
+        m = BILDSCHIRM_MARKE.search(t)
+        if m:
+            raus.append(t[m.end():])
+    return raus
+
+
 def pruefe(seiten, fakten, sim_von):
     treffer, abgel = [], []
     for s in seiten:
@@ -219,7 +250,21 @@ def pruefe(seiten, fakten, sim_von):
         nach_einheit = {}
         for _v, _e, _ in zahlen(faktentext(f)):
             nach_einheit.setdefault(_e, []).append(_v)
-        text = ' '.join(s.get('forschen', []) + s.get('tabRows', []) + [s.get('beobachtung', '')])
+        # WAS WIRD GEPRUEFT? Erstens die Felder, die dem Schueler sagen, was er
+        # ablesen soll (forschen, tabRows, beobachtung). Zweitens - seit dem
+        # 14.09.2026 - JEDER Satz, der ausdruecklich behauptet, etwas stehe am
+        # Bildschirm, gleich in welchem Feld er steht.
+        #
+        # Warum die zweite Regel: Der Lehrerteil bekam Saetze der Form
+        # "Am Bildschirm: F_R verdoppelt sich mit µ, a faellt von 13,1 auf
+        # 10,1 m/s²". Die Simulation `reibung` zeigt aber ueberhaupt keine
+        # Beschleunigung - im ganzen Faktendump kommt "m/s²" kein einziges Mal
+        # vor. Solche Saetze standen bis dahin in KEINEM geprueften Feld, und
+        # eine Lehrkraft haette am Bildschirm nach einer Zahl gesucht, die es
+        # dort nie gab. Die Loesungswege selbst bleiben ungeprueft - sie
+        # RECHNEN zu Recht mit Werten, die nirgends angezeigt werden.
+        text = ' '.join(s.get('forschen', []) + s.get('tabRows', []) + [s.get('beobachtung', '')]
+                        + _bildschirmsaetze(s))
         for v, e, roh in zahlen(text):
             # gedeckt, wenn die Simulation denselben Wert zeigt - auf die Stellen
             # gerundet, mit denen er auf der Seite steht
@@ -276,6 +321,35 @@ def selbsttest():
     t = lauf("Lies v = 4,00 m/s, p = 12,5 kg·m/s und omega = 9,4248 rad/s ab.")
     if t:
         f.append(f"Gute Probe meldete {len(t)} Befunde: {t}")
+
+    # 1a2. BILDSCHIRM-BEHAUPTUNG, gute Probe: Was hinter "Am Bildschirm:" steht,
+    #      ist am Bildschirm - kein Befund. Steht in predictWarum, also in einem
+    #      Feld, das sonst gar nicht geprueft wird.
+    t = pruefe([{"id": "t1", "forschen": [], "tabRows": [], "beobachtung": "",
+                 "predictWarum": ["Am Bildschirm: die Reibungskraft betraegt 14,7 N."]}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+    if t:
+        f.append(f"Gute Bildschirm-Behauptung meldete faelschlich: {t}")
+
+    # 1a3. KAPUTTE Probe zur selben Regel - sie MUSS auffallen. Ohne diese Probe
+    #      waere die Regel eine Behauptung ueber sich selbst. Anlass: Der
+    #      Lehrerteil der Oberstufe behauptete "Am Bildschirm: ... a faellt von
+    #      13,1 auf 10,1 m/s²" fuer eine Simulation, die keine Beschleunigung
+    #      anzeigt.
+    t = pruefe([{"id": "t1", "forschen": [], "tabRows": [], "beobachtung": "",
+                 "predictWarum": ["Am Bildschirm: a faellt von 13,1 auf 10,1 m/s²."]}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+    if not t:
+        f.append("Erfundene Bildschirm-Behauptung (10,1 m/s²) blieb unbemerkt")
+
+    # 1a4. Gegenprobe zur Abgrenzung: DIESELBE Zahl ohne die Marke, in einem
+    #      Loesungsweg, ist KEIN Befund - dort wird gerechnet, nicht abgelesen.
+    #      Ohne diese Probe waere die Regel zu weit und meldete jeden Rechenweg.
+    t = pruefe([{"id": "t1", "forschen": [], "tabRows": [], "beobachtung": "",
+                 "aufgabe": {"loesung": "Daraus folgt a = 10,1 m/s²."}}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+    if t:
+        f.append(f"Gerechneter Wert im Loesungsweg meldete faelschlich: {t}")
 
     # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
     t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")

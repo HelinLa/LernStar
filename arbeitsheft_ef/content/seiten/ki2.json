@@ -51,5 +51,11 @@
  "alltagKomp": "K7",
  "ueberleitung": "Zwei verschiedene Punktpaare, dieselbe Steigung – der Augenblick des Stoppens hat nichts geändert. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während der Wagen schneller wird: Dann ist die Punktfolge im t-s-Diagramm keine Gerade mehr, und eine einzige Steigung reicht nicht mehr aus.",
  "name": "Wie gut ist eine digitale Messung?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Erwartet wird „t → s“ mit der Begründung, dass dort die gesuchte Größe die Steigung ist und sich aus zwei beliebigen Punkten ablesen lässt. „t → v“ zeigt die Geschwindigkeit zwar als Höhe der Waagerechten, belegt aber nicht, dass Weg und Zeit proportional sind; „t → a“ sagt nur, dass sich nichts ändert. Wer sich für „t → v“ entscheidet, muss dafür anführen, dass die Konstanz von v unmittelbar zu sehen ist – dann ist auch das eine tragfähige Antwort.",
+ "predictWarum": [
+  "Widerlegt: Zwei früh gewählte und zwei spät gewählte Punkte liefern dieselbe Steigung.",
+  "Am Bildschirm: Alle fünf Stopps liegen auf y = 4,000·x, unabhängig vom Augenblick des Drückens.",
+  "Widerlegt: Gerade die weit auseinanderliegenden Punkte geben dieselbe Zahl wie die benachbarten."
+ ]
 }

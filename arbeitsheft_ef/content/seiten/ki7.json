@@ -86,5 +86,11 @@
   ],
   "quelle": "Berechnet für F = 200,0 N, gerundet auf eine Nachkommastelle. Der Winkel α wird zwischen Seil und Waagerechter gemessen; das Seil zieht schräg nach oben.",
   "merke": "Die linke Spalte nennt den Winkel zwischen Seil und Waagerechter. Alle fünf Zeilen gehören zu ein und derselben Zugkraft von 200,0 N."
- }
+ },
+ "alltagLoesung": "Vorwärts zieht allein F · cos(α). Der Kosinus fällt mit wachsendem Winkel: bei 0° 1,000, bei 30° 0,866, bei 60° 0,500. Ein steil geführter Griff gibt also nur noch die Hälfte der Zugkraft nach vorn weiter. Der senkrechte Anteil F · sin(α) wächst dabei; er hebt den Koffer nicht an, entlastet aber die Rollen und senkt damit die Reibung. Deshalb zieht der flache Griff mehr vorwärts, während der steile den Untergrund entlastet.",
+ "predictWarum": [
+  "Im Datenblatt: Die waagerechte Komponente fällt von 200,0 N bei 0° auf 100,0 N bei 60°.",
+  "Widerlegt: Das Datenblatt nennt für jeden Winkel eine andere waagerechte Komponente.",
+  "Widerlegt: Bei α = 0° ist sin(α) = 0 – nach dieser Vermutung zöge das Seil dann gar nicht vorwärts."
+ ]
 }

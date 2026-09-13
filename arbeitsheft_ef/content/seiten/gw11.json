@@ -82,5 +82,11 @@
  "alltagKomp": "K2",
  "ueberleitung": "Diese vier Zeilen ließen sich mit einer Rechnung entscheiden. Die letzte Seite des Kapitels behauptet etwas, das keinem Gefühl entspricht und trotzdem gemessen ist: Eine bewegte Uhr geht langsamer. Lege dort dieselben Kriterien noch einmal an.",
  "name": "Wem glaubt man ein Weltbild?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Erwartet wird, dass die Aussage wörtlich notiert und an den vier Kriterien gemessen wird: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung. Bei einem Netzvideo fehlen meist die ersten drei, und „dort oben gibt es keine Schwerkraft“ ist eine Deutung, keine Beobachtung. Zum eigenen Nachrechnen braucht man Bahnhöhe und Umlaufzeit: Damit liefert a = 4 · π² · r / T² den Wert 8,69 m/s², und g = G · M / r² liefert dieselbe Zahl – zwei unabhängige Wege, ein Ergebnis. Die Deutung ist damit widerlegt.",
+ "predictWarum": [
+  "Widerlegt: Das Netzvideo tritt am sichersten auf – und ist gerade das, was die Rechnung widerlegt.",
+  "Widerlegt: Der Zeitungsartikel nennt eine Fachperson und trotzdem keine Daten, an denen man ihn prüfen könnte.",
+  "Im Datenblatt: Nur Schulbuch und Fachartikel erfüllen alle vier Kriterien – und nur ihre Aussage hält der Rechnung stand."
+ ]
 }

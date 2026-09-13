@@ -50,5 +50,11 @@
  "alltagKomp": "S1",
  "ueberleitung": "Die Kugel trug ihre Energie, weil sie fuhr; der Klotz auf dem Regal trägt sie, weil er hoch liegt. Auf der nächsten Seite kommt eine dritte Form dazu: In einer gespannten Feder steckt Energie, obwohl nichts fährt und nichts oben liegt – und in ihrer Formel steht wieder ein Quadrat, diesmal die Auslenkung. Auch dort wird erst das Quadrieren die Auftragung gerade machen.",
  "name": "Warum zählt das Tempo doppelt?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Bei konstanter Bremskraft F ist der Bremsweg s = E/F, und die mitgebrachte Energie ist E = ½ · m · v². Verdoppelt sich v, vervierfacht sich E – und damit auch s. Genau das zeigt die Messreihe: E über v ergibt eine Kurve, E über v² eine Ursprungsgerade. Aus 0,16 m bei 4 m/s werden 0,64 m bei 8 m/s. Geglaubt werden muss die Faustregel also nicht; sie folgt aus der Auftragung.",
+ "predictWarum": [
+  "Widerlegt: Über v liegen die Punkte auf einer Kurve, nicht auf einer Geraden.",
+  "Am Bildschirm: Erst über v² wird die Auftragung gerade; über m ist sie es von Anfang an.",
+  "Widerlegt: Die Steigung über v² beträgt m/2, nicht m – der Kasten rechnet die Masse mit 2 · k zurück."
+ ]
 }

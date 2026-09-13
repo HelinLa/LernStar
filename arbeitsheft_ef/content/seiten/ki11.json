@@ -50,5 +50,11 @@
  "alltagKomp": "S1",
  "ueberleitung": "Auf der reibungsfreien Bahn wurde die ganze Federenergie zu Bewegung – 0,800 J, ohne jeden Verlust. Auf der nächsten Seite kommt die Reibung dazu, und du misst, wie viel einer Zugkraft sie wegnimmt und wie viel zum Beschleunigen übrig bleibt.",
  "name": "Warum drückt die Wand zurück?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Der Fuß drückt das Boot nach hinten, das Boot drückt den Menschen mit gleich großer, entgegengesetzter Kraft nach vorn. Die beiden Kräfte greifen an verschiedenen Körpern an und heben sich deshalb nicht auf. Weil a = F/m gilt, wird das leichte Boot stark beschleunigt und der schwerere Mensch wenig. Beim Auftreten auf den Steg wirkt dasselbe Kräftepaar – nur hängt der Steg an der Erde: dieselbe Kraft, eine riesige Masse, praktisch keine Beschleunigung.",
+ "predictWarum": [
+  "Widerlegt: Das Statusfeld zeigt F1 und F2 mit gleichem Betrag, in jeder der vier Zeilen.",
+  "Am Bildschirm: F1 = F2, aber a1 : a2 kippt mit den Massen – bei 1 kg gegen 5 kg auf 5 : 1.",
+  "Widerlegt: Die beiden Beschleunigungen stehen getrennt da und sind verschieden, sobald es die Massen sind."
+ ]
 }

@@ -49,5 +49,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Die Steigung hat die Masse zurückgegeben, weil in F_z = 4·π²·m·f²·r nur eine Größe unbekannt war. Auf der nächsten Seite hält kein Faden mehr: Dort zieht die Anziehung zweier Massen – und die wächst nicht mit dem Abstand, sie schrumpft mit ihm.",
  "name": "Was sagt eine Messreihe über die Zentripetalkraft?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "f = 1400 / 60 s = 23,33 Hz. Mit F_z = 4 · π² · m · f² · r folgt F_z = 39,48 · 0,20 kg · (23,33 Hz)² · 0,24 m = 39,48 · 0,20 · 544,4 · 0,24 = 1032 N. Das ist rund das 525-Fache der Gewichtskraft desselben Wäschestücks (0,20 kg · 9,81 N/kg = 1,96 N) – deshalb presst die Schleuder das Wasser heraus. Verdoppelt man die Drehzahl, vervierfacht sich die Kraft, denn f geht quadratisch ein.",
+ "predictWarum": [
+  "Am Bildschirm: Die Zeile „Masse aus der Steigung“ trifft den Regler auf zwei Stellen, obwohl einzelne Messpunkte streuen.",
+  "Widerlegt: Die Abweichung der Steigung fällt kleiner aus als die Streuung der Einzelwerte.",
+  "Widerlegt: Die Ausgleichsgerade wird über ALLE Punkte gelegt; R² sagt, wie gut sie zu allen passt."
+ ]
 }

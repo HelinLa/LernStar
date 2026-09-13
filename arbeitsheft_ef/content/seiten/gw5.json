@@ -49,5 +49,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "g ist damit eine Größe des Ortes: An jeder Stelle liegt ein Wert bereit, auch wenn dort kein Körper steht. Auf der nächsten Seite bekommt diese Vorstellung ihren Namen – das Feld.",
  "name": "Warum wiegt derselbe Mensch auf dem Mond weniger?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Die Waage misst die Gewichtskraft und rechnet sie mit dem Ortsfaktor der Erde in Kilogramm um. Auf dem Mond ist F = 1,0 kg · 1,6 N/kg = 1,6 N statt 9,8 N. Die Waage teilt aber weiter durch 9,8 N/kg und zeigt deshalb 1,6 / 9,8 = 0,16 kg an. Am Mehl hat sich nichts geändert – seine Masse ist weiter 1,0 kg. Falsch ist nicht das Mehl, sondern die Umrechnung der Waage.",
+ "predictWarum": [
+  "Widerlegt: Die Zeile m zeigt auf Erde, Mond und Jupiter dieselbe Zahl.",
+  "Widerlegt: Die Gewichtskraft F wechselt mit jedem Knopf, die Masse nicht.",
+  "Am Bildschirm: m bleibt stehen, g und F wechseln – und F/m ergibt jedes Mal den Ortsfaktor."
+ ]
 }

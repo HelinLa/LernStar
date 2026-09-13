@@ -50,7 +50,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Die Steigung deiner Geraden gab die Geschwindigkeit, ohne dass du sie am Regler abgelesen hast. Auf der nächsten Seite prüfst du nach, ob das auch gilt, wenn du zu ganz anderen Augenblicken stoppst und zwei ganz andere Punkte markierst.",
   "name": "Wie schnell fährt der Wagen wirklich?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Zwei Punkte derselben Geraden genügen: Δs = 800 m − 200 m = 600 m und Δt = 400 s − 100 s = 300 s, also v = 600 m / 300 s = 2,00 m/s. Gegenprobe mit je einem einzelnen Punkt: 200 m / 100 s = 2,00 m/s und 800 m / 400 s = 2,00 m/s – beide Male dieselbe Zahl, weil die Gerade durch den Ursprung geht. Genau das war am Bildschirm der Grund, warum der Augenblick des Stoppens gleichgültig ist.",
+  "predictWarum": [
+   "Am Bildschirm: Δs/Δt ergibt bei jedem Punktepaar 4,00 m/s, gleich wann gestoppt wurde.",
+   "Widerlegt: Die fünf Stopps liegen in ungleichen Abständen und trotzdem auf einer Geraden mit R² = 1,0000.",
+   "Widerlegt: Zu jedem größeren Weg gehört eine größere Zeit; der Quotient aus beiden bleibt gleich."
+  ]
  },
  {
   "id": "ki2",
@@ -105,7 +111,13 @@
   "alltagKomp": "K7",
   "ueberleitung": "Zwei verschiedene Punktpaare, dieselbe Steigung – der Augenblick des Stoppens hat nichts geändert. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während der Wagen schneller wird: Dann ist die Punktfolge im t-s-Diagramm keine Gerade mehr, und eine einzige Steigung reicht nicht mehr aus.",
   "name": "Wie gut ist eine digitale Messung?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Erwartet wird „t → s“ mit der Begründung, dass dort die gesuchte Größe die Steigung ist und sich aus zwei beliebigen Punkten ablesen lässt. „t → v“ zeigt die Geschwindigkeit zwar als Höhe der Waagerechten, belegt aber nicht, dass Weg und Zeit proportional sind; „t → a“ sagt nur, dass sich nichts ändert. Wer sich für „t → v“ entscheidet, muss dafür anführen, dass die Konstanz von v unmittelbar zu sehen ist – dann ist auch das eine tragfähige Antwort.",
+  "predictWarum": [
+   "Widerlegt: Zwei früh gewählte und zwei spät gewählte Punkte liefern dieselbe Steigung.",
+   "Am Bildschirm: Alle fünf Stopps liegen auf y = 4,000·x, unabhängig vom Augenblick des Drückens.",
+   "Widerlegt: Gerade die weit auseinanderliegenden Punkte geben dieselbe Zahl wie die benachbarten."
+  ]
  },
  {
   "id": "ki3",
@@ -158,7 +170,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Die Auftragung t → v gab dir sofort eine Zahl. Dieselben Messwerte über t → s meldeten dagegen: keine Gerade, sondern eine Parabel. Auf der nächsten Seite siehst du, mit welchem Griff auch daraus eine Gerade wird – und wie du a ein zweites Mal gewinnst, diesmal aus dem Weg.",
   "name": "Wie schnell wird der Wagen schneller?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "100 km/h = 100 / 3,6 m/s = 27,78 m/s. Aus der Ruhe heraus ist Δv = 27,78 m/s und Δt = 9,5 s, also Δv/Δt = 27,78 m/s / 9,5 s = 2,92 m/s². Der Wert liegt innerhalb der Reglerspanne 0,5 bis 8,0 m/s², lässt sich am Bildschirm also nachstellen.",
+  "predictWarum": [
+   "Widerlegt: Ein Mittelwert von Geschwindigkeiten hat die Einheit m/s und kann keine Beschleunigung sein.",
+   "Widerlegt: Aus der Ruhe trifft v/t zufällig dieselbe Zahl; es ist aber der Quotient EINES Punktes und kein Δv/Δt – bei einem Start mit v₀ ≠ 0 versagt er.",
+   "Am Bildschirm: „t → v“ meldet y = 2,000·x mit R² = 1,0000 und darunter „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s²“."
+  ]
  },
  {
   "id": "ki4",
@@ -212,7 +230,13 @@
   "alltagKomp": "K6",
   "ueberleitung": "Mit t² auf der Rechtsachse hast du ein Werkzeug, das aus jedem quadratischen Zusammenhang eine Gerade macht. Auf der nächsten Seite lassen Mira und Tobias eine Kugel fallen – und erhalten für den Ortsfaktor zwei Zahlen, die je nach Auswerteweg nicht zusammenpassen.",
   "name": "Warum trägt man t² auf?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Für das Fadenpendel gilt T = 2π·√(l/g), quadriert also T² = (4π²/g)·l. Über l aufgetragen ergibt T eine Wurzelkurve, aus der sich keine Steigung ablesen lässt; T² über l ergibt eine Ursprungsgerade. Ihre Steigung ist k = 4π²/g ≈ 4,02 s²/m, und daraus folgt g = 4π²/k ≈ 9,81 m/s². Dieselbe Bewegung, dieselbe Frage: Erst die quadrierte Achse macht aus der Kurve eine Zahl.",
+  "predictWarum": [
+   "Am Bildschirm: Über t² liegt eine Gerade der Steigung 1,00 m/s²; der Regler steht auf 2,0 m/s², also a = 2 · Steigung.",
+   "Widerlegt: Über t² liegen alle Punkte auf EINER Geraden – eine Gerade hat überall dieselbe Steigung.",
+   "Widerlegt: Die gemessene Steigung ist halb so groß wie der eingestellte Wert; der Faktor ½ steckt in s = ½ · a · t²."
+  ]
  },
  {
   "id": "ki5",
@@ -267,7 +291,13 @@
   "alltagKomp": "S2",
   "ueberleitung": "Aus einer einzigen Messreihe wurden zwei Ausgleichsgeraden und zwei Zahlen für g – entschieden hat das allein das Rechenverfahren, nicht die Ablesung. Auf der nächsten Seite schiebt Mira eine Kugel über die Tischkante: Dann laufen zwei Bewegungen gleichzeitig ab, und nur eine von beiden bestimmt die Fallzeit.",
   "name": "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Ein Rechenschritt setzt die Geschwindigkeit für die ganze Dauer Δt als gleichbleibend an. Bei beschleunigter Bewegung ändert sie sich aber während des Schritts, und der Fehler wächst mit Δt. Die Simulation summiert deshalb mit Δt = 0,016 s ein wenig zu viel Weg auf – darum liefert s über t² ein größeres g als v über t. Im Spiel ist Δt sehr viel größer: Der Körper springt zwischen zwei Schritten so weit, dass er den Boden überspringt und darunter landet.",
+  "predictWarum": [
+   "Widerlegt: Beide Auswertungen laufen über dieselben neun Punkte und kommen trotzdem auf verschiedene Zahlen.",
+   "Am Bildschirm: Der Kasten nennt beide g-Werte nebeneinander und ihre Differenz; der aus „t² → s“ liegt höher.",
+   "Widerlegt: Die Simulation liest nicht ab, sie rechnet – der Unterschied kommt aus dem Zeitschritt, nicht aus dem Quadrieren."
+  ]
  },
  {
   "id": "ki6",
@@ -320,7 +350,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "Waagerecht und senkrecht ließen sich getrennt auswerten, weil sie einander nicht in die Quere kommen. Auf der nächsten Seite triffst du dieselbe Zerlegung wieder – dort nicht bei einer Bewegung, sondern bei einer Kraft, die schräg an einem Körper zieht.",
   "name": "Warum trifft die geworfene Kugel gleichzeitig auf?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Waagerechte und senkrechte Bewegung überlagern sich, ohne sich zu stören. Die Fallzeit folgt allein aus der Abwurfhöhe: t_F = √(2h/g); v₀ kommt darin nicht vor. Beide Münzen starten von derselben Tischkante, haben also dieselbe Fallzeit und schlagen gleichzeitig auf – ein Aufschlag. Die Abwurfgeschwindigkeit ändert nur die Wurfweite x = v₀ · t_F.",
+  "predictWarum": [
+   "Widerlegt: „t_F über v₀“ ist eine Waagerechte – acht verschiedene v₀, achtmal die Fallzeit 2,0193 s.",
+   "Widerlegt: Dieselbe Waagerechte hat die Steigung 0,0000; t_F hängt also auch nicht ein wenig von v₀ ab.",
+   "Am Bildschirm: Aus „t_F² über h“ folgt t_F = √(2h/g) – darin steht die Höhe und sonst nichts."
+  ]
  },
  {
   "id": "ki7",
@@ -410,7 +446,13 @@
    ],
    "quelle": "Berechnet für F = 200,0 N, gerundet auf eine Nachkommastelle. Der Winkel α wird zwischen Seil und Waagerechter gemessen; das Seil zieht schräg nach oben.",
    "merke": "Die linke Spalte nennt den Winkel zwischen Seil und Waagerechter. Alle fünf Zeilen gehören zu ein und derselben Zugkraft von 200,0 N."
-  }
+  },
+  "alltagLoesung": "Vorwärts zieht allein F · cos(α). Der Kosinus fällt mit wachsendem Winkel: bei 0° 1,000, bei 30° 0,866, bei 60° 0,500. Ein steil geführter Griff gibt also nur noch die Hälfte der Zugkraft nach vorn weiter. Der senkrechte Anteil F · sin(α) wächst dabei; er hebt den Koffer nicht an, entlastet aber die Rollen und senkt damit die Reibung. Deshalb zieht der flache Griff mehr vorwärts, während der steile den Untergrund entlastet.",
+  "predictWarum": [
+   "Im Datenblatt: Die waagerechte Komponente fällt von 200,0 N bei 0° auf 100,0 N bei 60°.",
+   "Widerlegt: Das Datenblatt nennt für jeden Winkel eine andere waagerechte Komponente.",
+   "Widerlegt: Bei α = 0° ist sin(α) = 0 – nach dieser Vermutung zöge das Seil dann gar nicht vorwärts."
+  ]
  },
  {
   "id": "ki8",
@@ -464,7 +506,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "Solange die Summe der Kräfte null ist, bleibt alles, wie es war – der Wagen läuft mit unverändertem Tempo weiter. Auf der nächsten Seite ist die resultierende Kraft nicht mehr null, und du misst, wovon es abhängt, wie stark ein Körper dann beschleunigt.",
   "name": "Was macht ein Körper, wenn keine Kraft mehr zieht?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Am Rucksack greifen Gewichtskraft und Auflagekraft an; sie heben sich auf. Dazu kommt nur die kleine Reibung zum Sitz. Solange diese Summe nahezu null ist, behält der Rucksack nach dem ersten Newton'schen Gesetz seine Geschwindigkeit bei. Gebremst wird der Bus, nicht der Rucksack – vom Bus aus gesehen rutscht er deshalb nach vorn. Geschoben hat ihn niemand; er fährt einfach weiter.",
+  "predictWarum": [
+   "Widerlegt: Mit F = 0 N zeigt das weiße Kästchen nach einer Weile denselben Wert wie am Anfang.",
+   "Am Bildschirm: v bleibt bei jedem eingestellten v₀ stehen, die Linie v(t) läuft waagerecht durch.",
+   "Widerlegt: Bei F = 0 N fährt der Wagen weiter, statt stehen zu bleiben."
+  ]
  },
  {
   "id": "ki9",
@@ -518,7 +566,13 @@
   "alltagKomp": "S1",
   "ueberleitung": "Am Wagen zog genau eine Kraft, und er wurde immer schneller. Über der Messstrecke hängt dagegen eine Werkstattlampe an einem Federkraftmesser, der ruhig bei 5 N steht – und trotzdem bewegt sie sich nicht. Auf der nächsten Seite prüfst du, was F = m · a für diesen Fall verlangt.",
   "name": "Wovon hängt die Beschleunigung ab?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Aus F = m · a folgt a = F/m. Leerer Wagen: a = 60 N / 10 kg = 6,0 m/s². Voller Wagen: a = 60 N / 30 kg = 2,0 m/s², also ein Drittel. Die dreifache Masse gibt bei gleicher Kraft ein Drittel der Beschleunigung – das ist der Zusammenhang, den die Auftragung über 1/m als Gerade zeigt. Die Rollreibung ist dabei vernachlässigt; 30 kg liegen außerhalb des Reglers, die Vorhersage kommt hier aus dem Gesetz und nicht vom Bildschirm.",
+  "predictWarum": [
+   "Widerlegt: Über m entsteht keine Gerade, sondern eine Hyperbel – die Auswertung zeichnet dort gar keine Ausgleichsgerade.",
+   "Widerlegt: Größere Masse gibt kleinere Beschleunigung; die Punktfolge fällt, statt zu steigen.",
+   "Am Bildschirm: „a über F“ liefert eine Gerade, „a über 1/m“ ebenfalls – nur über m bleibt die Kurve."
+  ]
  },
  {
   "id": "ki10",
@@ -573,7 +627,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "An der Lampe greifen beide Kräfte am selben Körper an – nur deshalb heben sie einander auf. Auf der nächsten Seite triffst du ein zweites Kräftepaar, das ebenfalls gleich groß und entgegengesetzt gerichtet ist, aber an zwei verschiedenen Körpern angreift und sich gerade deshalb nicht aufhebt.",
   "name": "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Am Buch greifen zwei Kräfte an: die Gewichtskraft F_G = m · g nach unten und die Auflagekraft der Hand nach oben. Das Buch ruht, also ist die Summe null – die Hand drückt genau so stark nach oben, wie das Buch nach unten zieht. Kräftefrei ist es damit nicht: Beide Kräfte wirken, nur ihre Summe verschwindet. Dass die Handkraft wirklich wirkt, merkt man am zitternden Arm; lässt sie nach, ist die Summe nicht mehr null und das Buch sinkt.",
+  "predictWarum": [
+   "Am Bildschirm: Das Statusfeld nennt Haltekraft 5 N und Gewichtskraft 5 N nebeneinander, Gesamtkraft 0 N.",
+   "Widerlegt: Beide Kräfte stehen im Statusfeld, obwohl die Lampe still hängt.",
+   "Widerlegt: Beide Beträge sind gleich groß – wäre die Haltekraft größer, stiege die Lampe."
+  ]
  },
  {
   "id": "ki11",
@@ -627,7 +687,13 @@
   "alltagKomp": "S1",
   "ueberleitung": "Auf der reibungsfreien Bahn wurde die ganze Federenergie zu Bewegung – 0,800 J, ohne jeden Verlust. Auf der nächsten Seite kommt die Reibung dazu, und du misst, wie viel einer Zugkraft sie wegnimmt und wie viel zum Beschleunigen übrig bleibt.",
   "name": "Warum drückt die Wand zurück?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Der Fuß drückt das Boot nach hinten, das Boot drückt den Menschen mit gleich großer, entgegengesetzter Kraft nach vorn. Die beiden Kräfte greifen an verschiedenen Körpern an und heben sich deshalb nicht auf. Weil a = F/m gilt, wird das leichte Boot stark beschleunigt und der schwerere Mensch wenig. Beim Auftreten auf den Steg wirkt dasselbe Kräftepaar – nur hängt der Steg an der Erde: dieselbe Kraft, eine riesige Masse, praktisch keine Beschleunigung.",
+  "predictWarum": [
+   "Widerlegt: Das Statusfeld zeigt F1 und F2 mit gleichem Betrag, in jeder der vier Zeilen.",
+   "Am Bildschirm: F1 = F2, aber a1 : a2 kippt mit den Massen – bei 1 kg gegen 5 kg auf 5 : 1.",
+   "Widerlegt: Die beiden Beschleunigungen stehen getrennt da und sind verschieden, sobald es die Massen sind."
+  ]
  },
  {
   "id": "ki12",
@@ -682,7 +748,13 @@
   "alltagKomp": "S1",
   "ueberleitung": "Bei einem eingestellten Reibungskoeffizienten nimmt die Reibung der Antriebskraft immer denselben Betrag weg – gleichgültig, wie stark der Motor zieht –, und der Wagen legt trotzdem Meter um Meter zurück. Auf der nächsten Seite kommt zur Kraft der Weg dazu: Du misst, wann eine Kraft wirklich Arbeit verrichtet – und wohin die Arbeit verschwindet, die gegen die Reibung geleistet wird.",
   "name": "Wie viel Kraft bleibt zum Beschleunigen übrig?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Beschleunigt wird nicht mit der Zugkraft, sondern mit F_res = F − F_R, und es gilt F_R = μ · F_N. Die Kiste ist auf beiden Böden gleich schwer, F_N also gleich; verschieden ist allein μ. Auf dem Teppich ist μ größer, damit F_R größer und der Rest kleiner – bei derselben Zugkraft bleibt weniger zum Beschleunigen übrig. Der Teppich ist nicht schwerer, er reibt stärker.",
+  "predictWarum": [
+   "Widerlegt: Von μ = 0,30 auf 0,60 verdoppelt sich F_R von 14,7 N auf 29,4 N; gerechnet fällt die Beschleunigung dabei nur von 13,1 auf 10,1 m/s².",
+   "Widerlegt: Die Simulation hat keinen Regler für die Auflagefläche; F_R hängt dort nur von μ und der Masse ab.",
+   "Am Bildschirm: F_R steigt mit μ von 14,7 N auf 29,4 N, während die Zugkraft unverändert 80 N bleibt – beschleunigt wird mit der Differenz, die die Simulation selbst nicht anzeigt."
+  ]
  },
  {
   "id": "ki13",
@@ -735,7 +807,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Die 392 J vom Hochheben sind nicht verschwunden – sie stecken jetzt in der angehobenen Kiste. Auf der nächsten Seite lässt du sie wieder los und misst, wie viel Energie in einem bewegten Körper steckt. Ob dabei eine Verdopplung des Tempos genauso viel zählt wie eine der Masse, entscheidet dort eine Messreihe.",
   "name": "Wann wird wirklich Arbeit verrichtet?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "W = m · g · h und P = W/t. Beispiel: Rucksack 6,0 kg, 14 Stufen à 0,17 m, also h = 2,38 m, gestoppte Zeit 6,0 s. Dann W = 6,0 kg · 9,81 N/kg · 2,38 m = 140 J und P = 140 J / 6,0 s = 23 W. Der Flur zählt nicht: Dort steht die Haltekraft senkrecht zum Weg, also ist W = 0 J. Wer die eigene Masse mitrechnet, muss sie zu m addieren – dann kommen leicht mehrere hundert Watt heraus; welche der beiden Zahlen gemeint ist, muss die Antwort sagen.",
+  "predictWarum": [
+   "Am Bildschirm: „Waagerecht tragen“ meldet W = 0 J, obwohl die Haltekraft 196 N beträgt.",
+   "Widerlegt: Beim Schieben steht W = 400 J, beim Tragen 0 J – bei demselben Weg von 4 m.",
+   "Widerlegt: Auch „ein wenig“ wird es nicht: Der angezeigte Wert ist genau null, nicht nur klein."
+  ]
  },
  {
   "id": "ki14",
@@ -789,7 +867,13 @@
   "alltagKomp": "S1",
   "ueberleitung": "Die Kugel trug ihre Energie, weil sie fuhr; der Klotz auf dem Regal trägt sie, weil er hoch liegt. Auf der nächsten Seite kommt eine dritte Form dazu: In einer gespannten Feder steckt Energie, obwohl nichts fährt und nichts oben liegt – und in ihrer Formel steht wieder ein Quadrat, diesmal die Auslenkung. Auch dort wird erst das Quadrieren die Auftragung gerade machen.",
   "name": "Warum zählt das Tempo doppelt?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Bei konstanter Bremskraft F ist der Bremsweg s = E/F, und die mitgebrachte Energie ist E = ½ · m · v². Verdoppelt sich v, vervierfacht sich E – und damit auch s. Genau das zeigt die Messreihe: E über v ergibt eine Kurve, E über v² eine Ursprungsgerade. Aus 0,16 m bei 4 m/s werden 0,64 m bei 8 m/s. Geglaubt werden muss die Faustregel also nicht; sie folgt aus der Auftragung.",
+  "predictWarum": [
+   "Widerlegt: Über v liegen die Punkte auf einer Kurve, nicht auf einer Geraden.",
+   "Am Bildschirm: Erst über v² wird die Auftragung gerade; über m ist sie es von Anfang an.",
+   "Widerlegt: Die Steigung über v² beträgt m/2, nicht m – der Kasten rechnet die Masse mit 2 · k zurück."
+  ]
  },
  {
   "id": "ki15",
@@ -843,7 +927,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Aus einer Messreihe ist hier eine Formel geworden – die Auftragung über s² hat die krumme Kurve gerade gemacht. Auf der nächsten Seite prallen zwei Wagen aufeinander; dann steht neben der Energie noch eine zweite Summe in der Bilanz, der Impuls.",
   "name": "Die gespannte Feder – wo steckt die Energie?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Die Waage zeigt eine Masse; daraus wird F = m · g. Trägt man F über s auf, entsteht eine Ursprungsgerade, deren Steigung die Federkonstante D ist. Beispielmessung: bei 8 mm zeigt die Waage 0,21 kg, also F = 0,21 kg · 9,81 N/kg = 2,06 N und D = 2,06 N / 0,008 m ≈ 258 N/m. Entscheidend ist der Nullpunkt: s = 0 ist die entspannte Länge der Feder, nicht die Auflagefläche der Waage – sonst ist die Gerade verschoben und die Steigung falsch.",
+  "predictWarum": [
+   "Widerlegt: „F über s“ und „E über s²“ liefern verschiedene Steigungen – 20 und 10 bei D = 20 N/m.",
+   "Widerlegt: Die Steigung über s² ist kleiner als die über s, nicht größer.",
+   "Am Bildschirm: Bei D = 20 N/m steht über s² die Steigung 10, bei D = 50 N/m die Steigung 25 – jeweils die Hälfte."
+  ]
  },
  {
   "id": "ki16",
@@ -898,7 +988,13 @@
   "alltagKomp": "S2",
   "ueberleitung": "Damit ist die Messstrecke zu Ende. Auf ihr lief alles geradeaus, und ein einziges Vorzeichen genügte, um die Richtung festzuhalten. Im nächsten Kapitel biegen Mira und Tobias die Bahn zum Kreis. Dann ändert sich die Richtung in jedem Augenblick – der Impuls also auch, obwohl das Tempo gleich bleibt. Die erste Frage dort lautet, wie schnell ein Punkt auf der Kreisbahn überhaupt ist.",
   "name": "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
-  "theme": "ef_mechanik"
+  "theme": "ef_mechanik",
+  "alltagLoesung": "Beim Stoß üben beide Murmeln gleich große, entgegengesetzt gerichtete Kräfte gleich lange aufeinander aus. Jede erfährt denselben Kraftstoß mit umgekehrtem Vorzeichen, also Δp₁ = −Δp₂ – die Summe ändert sich nicht. Das gilt unabhängig davon, ob sie auseinander laufen oder aneinander kleben. Kleben sie zusammen, bewegen sich beide mit v' = m₁ · v₁ / (m₁ + m₂), bei gleichen Massen also mit der Hälfte des Anfangstempos. Die kinetische Energie bleibt dann nicht erhalten; die Simulation zeigt nur den elastischen Fall.",
+  "predictWarum": [
+   "Am Bildschirm: p_ges behält vor und nach dem Stoß denselben Wert, obwohl p₁ das Vorzeichen wechselt.",
+   "Widerlegt: p_ges steht nach dem Stoß unverändert da, nicht größer.",
+   "Widerlegt: |p₁| + |p₂| wäre nach dem Stoß größer als vorher; p_ges ist es nicht."
+  ]
  },
  {
   "id": "gw1",
@@ -953,7 +1049,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "Neben dem grünen Pfeil am Ball zeichnet die Simulation einen zweiten, roten Pfeil, der immer zur Mitte zeigt; seinen Betrag meldet die dritte Zeile F_z≈ im Anzeigefeld. Auf der nächsten Seite wechselst du zu einer Simulation mit Kraftmessdose und untersuchst, wohin diese Kraft zeigt und wovon ihr Betrag abhängt.",
   "name": "Wie schnell ist ein Punkt auf der Kreisbahn?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Ritzel und Hinterrad sitzen starr auf derselben Achse und haben deshalb dieselbe Winkelgeschwindigkeit ω. Die Bahngeschwindigkeit ist v = ω · r und wächst mit dem Abstand von der Achse. Der Reifen hat den weit größeren Radius – rund 0,34 m gegen etwa 0,04 m am Ritzel, also etwa das Achtfache an v. ω gehört zum ganzen starren Körper, v zu einem einzelnen Punkt darauf.",
+  "predictWarum": [
+   "Widerlegt: Bei festem ω ändert der Regler „Radius r“ die Zeile v≈ – von 70 px auf 40 px fällt sie.",
+   "Am Bildschirm: Die Zeile v≈ geteilt durch ω ergibt in jeder Zeile denselben Wert, nämlich r.",
+   "Widerlegt: Ohne den Radius lässt sich rad/s nicht in m/s umrechnen – genau er steht im Quotienten."
+  ]
  },
  {
   "id": "gw2",
@@ -1006,7 +1108,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "Dass F_z mit der Masse wächst, hast du an drei Einstellungen gesehen – drei Punkte sind aber noch keine Messreihe. Auf der nächsten Seite nimmst du eine ganze Reihe auf, legst eine Ausgleichsgerade hindurch und liest aus ihrer Steigung zurück, was du vorher eingestellt hast.",
   "name": "Was hält den Körper auf der Kreisbahn?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Die Kraft zeigt zum Kurvenmittelpunkt. Sie ändert nur die Richtung deiner Geschwindigkeit, nicht ihren Betrag, und wird von Tür, Gurt und Reibung am Sitz aufgebracht: F_z = m · v²/r. Ohne sie flögest du tangential geradeaus weiter – genau das fühlt sich an, als drücke dich etwas nach außen. Nach außen wirkt dabei keine eigene Kraft.",
+  "predictWarum": [
+   "Widerlegt: Der Pfeil „v tangential“ und der Pfeil „F_z zum Mittelpunkt“ stehen senkrecht zueinander.",
+   "Widerlegt: Im Bild zeigt F_z nach innen; nach außen zeigt kein Pfeil.",
+   "Am Bildschirm: F_z zeigt zum Mittelpunkt, während der Betrag von v während des Umlaufs gleich bleibt."
+  ]
  },
  {
   "id": "gw3",
@@ -1059,7 +1167,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Die Steigung hat die Masse zurückgegeben, weil in F_z = 4·π²·m·f²·r nur eine Größe unbekannt war. Auf der nächsten Seite hält kein Faden mehr: Dort zieht die Anziehung zweier Massen – und die wächst nicht mit dem Abstand, sie schrumpft mit ihm.",
   "name": "Was sagt eine Messreihe über die Zentripetalkraft?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "f = 1400 / 60 s = 23,33 Hz. Mit F_z = 4 · π² · m · f² · r folgt F_z = 39,48 · 0,20 kg · (23,33 Hz)² · 0,24 m = 39,48 · 0,20 · 544,4 · 0,24 = 1032 N. Das ist rund das 525-Fache der Gewichtskraft desselben Wäschestücks (0,20 kg · 9,81 N/kg = 1,96 N) – deshalb presst die Schleuder das Wasser heraus. Verdoppelt man die Drehzahl, vervierfacht sich die Kraft, denn f geht quadratisch ein.",
+  "predictWarum": [
+   "Am Bildschirm: Die Zeile „Masse aus der Steigung“ trifft den Regler auf zwei Stellen, obwohl einzelne Messpunkte streuen.",
+   "Widerlegt: Die Abweichung der Steigung fällt kleiner aus als die Streuung der Einzelwerte.",
+   "Widerlegt: Die Ausgleichsgerade wird über ALLE Punkte gelegt; R² sagt, wie gut sie zu allen passt."
+  ]
  },
  {
   "id": "gw4",
@@ -1114,7 +1228,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "Die Steigung hat eine Verhältniszahl geliefert, keine Naturkonstante: Der Simulation fehlt das G, das aus dem Verhältnis eine Kraft in Newton macht, deshalb zählt sie in „Einheiten“. Auf der nächsten Seite wird aus der Anziehung ein Gewicht: Dieselbe Person bringt auf dem Mond eine andere Zahl auf die Waage, obwohl sich an ihr selbst nichts geändert hat – und du siehst, woran das liegt.",
   "name": "Mehr Masse oder weniger Abstand – was wirkt stärker?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "F ~ 1/r², also verhält sich die Anziehung wie 1/1,06² = 1/1,1236 = 0,890. Auf der ISS wirken demnach noch rund 89 Prozent der Anziehung am Erdboden – elf Prozent weniger. Schwerelos schwebt die Besatzung also nicht, weil die Anziehung fehlte, sondern weil Station und Besatzung gemeinsam fallen.",
+  "predictWarum": [
+   "Widerlegt: Über 1/r² entsteht eine Gerade – über 1/r täte sie es nicht.",
+   "Am Bildschirm: Über 1/r² steht y = 200,000·x mit R² = 1,0000; F ist dem Kehrwert des Quadrats proportional.",
+   "Widerlegt: Über m₁ ist die Auftragung gerade, nicht quadratisch."
+  ]
  },
  {
   "id": "gw5",
@@ -1167,7 +1287,13 @@
   "alltagKomp": "K4",
   "ueberleitung": "g ist damit eine Größe des Ortes: An jeder Stelle liegt ein Wert bereit, auch wenn dort kein Körper steht. Auf der nächsten Seite bekommt diese Vorstellung ihren Namen – das Feld.",
   "name": "Warum wiegt derselbe Mensch auf dem Mond weniger?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Die Waage misst die Gewichtskraft und rechnet sie mit dem Ortsfaktor der Erde in Kilogramm um. Auf dem Mond ist F = 1,0 kg · 1,6 N/kg = 1,6 N statt 9,8 N. Die Waage teilt aber weiter durch 9,8 N/kg und zeigt deshalb 1,6 / 9,8 = 0,16 kg an. Am Mehl hat sich nichts geändert – seine Masse ist weiter 1,0 kg. Falsch ist nicht das Mehl, sondern die Umrechnung der Waage.",
+  "predictWarum": [
+   "Widerlegt: Die Zeile m zeigt auf Erde, Mond und Jupiter dieselbe Zahl.",
+   "Widerlegt: Die Gewichtskraft F wechselt mit jedem Knopf, die Masse nicht.",
+   "Am Bildschirm: m bleibt stehen, g und F wechseln – und F/m ergibt jedes Mal den Ortsfaktor."
+  ]
  },
  {
   "id": "gw6",
@@ -1253,7 +1379,13 @@
   "alltagKomp": "S7",
   "ueberleitung": "Ob ein Körper, der ständig fällt, dabei wirklich auf einer Kreisbahn bleibt, rechnest du an der Planetenbahn nach. Vorher fehlt eine Zahl, die in jeder Zeile dieses Datenblatts steckt: die Masse M der Erde. Auf eine Waage hat sie noch nie jemand gestellt.",
   "name": "Was ist ein Feld?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "g = G · M / r² = 6,674 · 10⁻¹¹ N·m²/kg² · 5,972 · 10²⁴ kg / (6,382 · 10⁶ m)² = 3,986 · 10¹⁴ / 4,073 · 10¹³ = 9,79 N/kg. Am Boden sind es 9,82 N/kg – der Unterschied beträgt 0,3 Prozent. Ein Koffer von 20 kg wiegt oben 195,7 N statt 196,4 N, also 0,7 N weniger; das entspricht rund 70 Gramm auf der Waage und ist beim Tragen nicht zu merken. 11 km sind gegen 6371 km eben wenig.",
+  "predictWarum": [
+   "Im Datenblatt: Für die ISS steht 8,69 N/kg, also 88,5 Prozent des Bodenwerts.",
+   "Widerlegt: 8,69 N/kg ist nicht nahezu null – es ist fast der Bodenwert.",
+   "Widerlegt: Mit 1/r statt 1/r² kämen 94 Prozent heraus; das Datenblatt nennt 88,5."
+  ]
  },
  {
   "id": "gw7",
@@ -1344,7 +1476,13 @@
   "alltagKomp": "E9",
   "ueberleitung": "Mit G ist das Gravitationsgesetz vollständig – jede Anziehung im Sonnensystem lässt sich nun ausrechnen. Auf der nächsten Seite gehst du der Frage nach, warum diese Kraft die Erde nicht in die Sonne zieht, sondern auf ihrer Bahn hält.",
   "name": "Wie wiegt man die Erde?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Gemessen wurde im Gartenhaus die Anziehung zwischen zwei bekannten Bleimassen, also die Gravitationskonstante G – keine Erdmasse, und keine Waage, die die Erde trägt. Erst mit G, dem Ortsfaktor g und dem Erdradius R folgt M = g · R² / G. Als Bild ist die Überschrift nicht völlig falsch: Ohne Cavendishs Messung war die Erdmasse nicht anzugeben. Als Beschreibung des Versuchs ist sie falsch – sie verschweigt, dass die Zahl erst aus einer Rechnung kam.",
+  "predictWarum": [
+   "Widerlegt: Im Datenblatt stehen nur die beiden Bleimassen und ihr Abstand – die Erde kommt darin nicht vor.",
+   "Im Datenblatt: Aus m₁ · m₂, r² und der gemessenen Kraft folgt G; die Erdmasse erst danach aus g, R und G.",
+   "Widerlegt: g und R allein genügen nicht – in M = g · R² / G steht G im Nenner und muss gemessen sein."
+  ]
  },
  {
   "id": "gw8",
@@ -1398,7 +1536,13 @@
   "alltagKomp": "E10",
   "ueberleitung": "Je weiter die Bahn hinausreicht, desto länger dauert ein Umlauf. Die Bahngröße ist dabei die halbe Summe aus kleinstem und größtem Abstand: 1,02 AE bei 1,02 Jahren, 1,86 AE bei 2,53 Jahren, 86 AE bei 800 Jahren. Auf der nächsten Seite rechnest du nach, in welchem Verhältnis Umlaufzeit und Bahngröße zueinander stehen.",
   "name": "Warum fällt die Erde nicht in die Sonne?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Die Station fällt ständig zur Erde hin und ist zugleich seitwärts unterwegs – sie fällt an der Erde vorbei. Damit sich beides zu einer Kreisbahn ergänzt, muss die Gravitationskraft genau die Zentripetalkraft sein: G · M · m / r² = m · v² / r, also v = √(G·M/r). Diese Zahl hängt allein vom Bahnradius ab. Ist v kleiner, reicht die seitliche Bewegung nicht: Die Bahn wird zur Ellipse, die der Erde näher kommt – und bei zu kleinem v endet sie in der Atmosphäre.",
+  "predictWarum": [
+   "Widerlegt: Bei 6 km/s meldet die Statuszeile einen Sturz, bei 48 km/s kein Wiederkommen.",
+   "Widerlegt: Die Simulation kennt keine Fliehkraft; sie rechnet allein mit der Anziehung zum Zentrum.",
+   "Am Bildschirm: Zwischen rund 12 und 42 km/s meldet die Statuszeile eine geschlossene Bahn, darunter und darüber nicht."
+  ]
  },
  {
   "id": "gw9",
@@ -1494,7 +1638,13 @@
   "alltagKomp": "E10",
   "ueberleitung": "Die Regel gilt in dieser Form nur, wenn alle sechs Bahnen um dieselbe Sonne laufen. Auf der nächsten Seite beobachtest du dieselbe Marsbahn von der Erde aus – und siehst, warum der Planet dabei zeitweise rückwärts zu laufen scheint.",
   "name": "Was verrät die Umlaufzeit über den Bahnradius?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Aus T²/a³ = konstant folgt a_Sat = a_Mond · (T_Sat / T_Mond)^(2/3) = 384 000 km · (1,00 / 27,3)^(2/3) = 384 000 km · 0,1103 = 42 400 km. Das ist rund das 6,7-Fache des Erdradius von 6370 km; die Bahnhöhe über dem Boden beträgt also etwa 36 000 km. Tobias' Dreisatz hätte 384 000 / 27,3 = 14 100 km ergeben – ein Drittel davon. Der Dreisatz versagt, weil T nicht proportional zu a ist, sondern zu a^(3/2).",
+  "predictWarum": [
+   "Im Datenblatt: T²/a³ ergibt für alle sechs Planeten 1,00 auf vier Stellen.",
+   "Widerlegt: Die Planetenmassen unterscheiden sich um das Tausendfache, der Quotient nicht.",
+   "Widerlegt: T/a ist für Merkur 0,62 und für Neptun 5,5 – kein gemeinsamer Wert."
+  ]
  },
  {
   "id": "gw10",
@@ -1548,7 +1698,13 @@
   "alltagKomp": "B8",
   "ueberleitung": "Galileis Jupitermonde kannst du am Bildschirm kreisen sehen; Bessels Parallaxe und das Jahr 1543 stehen dort nur als Text. Auf der nächsten Seite liegen vier Arten von Quellen zu einer Aussage über Schwerelosigkeit nebeneinander, und du entscheidest an nachprüfbaren Kriterien, welcher davon du warum glaubst.",
   "name": "Warum läuft der Mars manchmal rückwärts?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Erwartet wird: Vor Kopernikus stützte sich eine Aussage über den Himmel auch auf Autorität und überlieferte Lehre. Seither entscheidet, ob sie eine Beobachtung vorhersagt, die sich nachprüfen lässt – und ob eine gegenteilige Beobachtung sie widerlegen könnte. Die Marsschleife allein entschied nichts, weil beide Modelle sie vorhersagen; erst Galileis Jupitermonde und die Venusphasen lieferten eine Beobachtung, die nur eines der beiden zulässt. Geprüft wird seitdem an der Beobachtung, nicht an der Herkunft der Aussage. Auch tragfähig: der Hinweis, dass Sparsamkeit – weniger Kreise – ein Argument ist, aber kein Beweis.",
+  "predictWarum": [
+   "Widerlegt: Auch „Erde in der Mitte (alt)“ zeigt die Schleife im Streifen unten.",
+   "Am Bildschirm: Beide Tafeln zeigen dieselbe Schleife; die ältere braucht dafür einen zweiten Kreis je Planet.",
+   "Widerlegt: Der Mars läuft auf seiner Bahn durchgehend in eine Richtung – rückläufig wirkt er nur von der Erde aus gesehen."
+  ]
  },
  {
   "id": "gw11",
@@ -1634,7 +1790,13 @@
   "alltagKomp": "K2",
   "ueberleitung": "Diese vier Zeilen ließen sich mit einer Rechnung entscheiden. Die letzte Seite des Kapitels behauptet etwas, das keinem Gefühl entspricht und trotzdem gemessen ist: Eine bewegte Uhr geht langsamer. Lege dort dieselben Kriterien noch einmal an.",
   "name": "Wem glaubt man ein Weltbild?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Erwartet wird, dass die Aussage wörtlich notiert und an den vier Kriterien gemessen wird: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung. Bei einem Netzvideo fehlen meist die ersten drei, und „dort oben gibt es keine Schwerkraft“ ist eine Deutung, keine Beobachtung. Zum eigenen Nachrechnen braucht man Bahnhöhe und Umlaufzeit: Damit liefert a = 4 · π² · r / T² den Wert 8,69 m/s², und g = G · M / r² liefert dieselbe Zahl – zwei unabhängige Wege, ein Ergebnis. Die Deutung ist damit widerlegt.",
+  "predictWarum": [
+   "Widerlegt: Das Netzvideo tritt am sichersten auf – und ist gerade das, was die Rechnung widerlegt.",
+   "Widerlegt: Der Zeitungsartikel nennt eine Fachperson und trotzdem keine Daten, an denen man ihn prüfen könnte.",
+   "Im Datenblatt: Nur Schulbuch und Fachartikel erfüllen alle vier Kriterien – und nur ihre Aussage hält der Rechnung stand."
+  ]
  },
  {
   "id": "gw12",
@@ -1688,6 +1850,12 @@
   "alltagKomp": "E9",
   "ueberleitung": "Damit steht der letzte Abschnitt des Wettbewerbsberichts. Von der ersten Lichtschranke bis hierher galt stillschweigend, dass eine Sekunde für alle dieselbe ist – die Lichtuhr nimmt diese Voraussetzung zurück. An dieselbe Rechnung schließen später die Längenkontraktion und E = m·c² an.",
   "name": "Warum geht die bewegte Uhr langsamer?",
-  "theme": "ef_gravitation"
+  "theme": "ef_gravitation",
+  "alltagLoesung": "Das Gedankenexperiment erfindet keine Physik, es zieht die Folgerung aus einem Messbefund: c hat in jedem Bezugssystem denselben Wert (Michelson-Morley). Aus dieser einen Annahme und dem Satz des Pythagoras folgt Δtbew = ΔtRuh · √(1−v²/c²) – eine Formel mit einer Zahl darin, also eine Vorhersage. Die Lichtuhr selbst muss niemand bauen; geprüft wird die Formel an etwas anderem. Kosmische Myonen zerfallen genau so viel langsamer, wie sie es verlangt, und erreichen deshalb den Erdboden. Ein Gedankenexperiment ohne prüfbare Folgerung wäre dagegen wertlos.",
+  "predictWarum": [
+   "Am Bildschirm: Bei v/c = 0,95 zählt die Messstation rund 62 bewegte Ticks je 200 ruhende – genau √(1−0,95²) = 0,312.",
+   "Widerlegt: Die Simulation hält c in jedem System gleich; das Photon wird nicht schneller.",
+   "Widerlegt: Gemessen wird an Stationen, an denen die Uhr vorbeikommt – Laufzeiten des Lichts zum Beobachter spielen dabei keine Rolle."
+  ]
  }
 ]

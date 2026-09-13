@@ -51,5 +51,11 @@
  "alltagKomp": "S1",
  "ueberleitung": "Bei einem eingestellten Reibungskoeffizienten nimmt die Reibung der Antriebskraft immer denselben Betrag weg – gleichgültig, wie stark der Motor zieht –, und der Wagen legt trotzdem Meter um Meter zurück. Auf der nächsten Seite kommt zur Kraft der Weg dazu: Du misst, wann eine Kraft wirklich Arbeit verrichtet – und wohin die Arbeit verschwindet, die gegen die Reibung geleistet wird.",
  "name": "Wie viel Kraft bleibt zum Beschleunigen übrig?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Beschleunigt wird nicht mit der Zugkraft, sondern mit F_res = F − F_R, und es gilt F_R = μ · F_N. Die Kiste ist auf beiden Böden gleich schwer, F_N also gleich; verschieden ist allein μ. Auf dem Teppich ist μ größer, damit F_R größer und der Rest kleiner – bei derselben Zugkraft bleibt weniger zum Beschleunigen übrig. Der Teppich ist nicht schwerer, er reibt stärker.",
+ "predictWarum": [
+  "Widerlegt: Von μ = 0,30 auf 0,60 verdoppelt sich F_R von 14,7 N auf 29,4 N; gerechnet fällt die Beschleunigung dabei nur von 13,1 auf 10,1 m/s².",
+  "Widerlegt: Die Simulation hat keinen Regler für die Auflagefläche; F_R hängt dort nur von μ und der Masse ab.",
+  "Am Bildschirm: F_R steigt mit μ von 14,7 N auf 29,4 N, während die Zugkraft unverändert 80 N bleibt – beschleunigt wird mit der Differenz, die die Simulation selbst nicht anzeigt."
+ ]
 }

@@ -50,5 +50,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Aus einer Messreihe ist hier eine Formel geworden – die Auftragung über s² hat die krumme Kurve gerade gemacht. Auf der nächsten Seite prallen zwei Wagen aufeinander; dann steht neben der Energie noch eine zweite Summe in der Bilanz, der Impuls.",
  "name": "Die gespannte Feder – wo steckt die Energie?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Die Waage zeigt eine Masse; daraus wird F = m · g. Trägt man F über s auf, entsteht eine Ursprungsgerade, deren Steigung die Federkonstante D ist. Beispielmessung: bei 8 mm zeigt die Waage 0,21 kg, also F = 0,21 kg · 9,81 N/kg = 2,06 N und D = 2,06 N / 0,008 m ≈ 258 N/m. Entscheidend ist der Nullpunkt: s = 0 ist die entspannte Länge der Feder, nicht die Auflagefläche der Waage – sonst ist die Gerade verschoben und die Steigung falsch.",
+ "predictWarum": [
+  "Widerlegt: „F über s“ und „E über s²“ liefern verschiedene Steigungen – 20 und 10 bei D = 20 N/m.",
+  "Widerlegt: Die Steigung über s² ist kleiner als die über s, nicht größer.",
+  "Am Bildschirm: Bei D = 20 N/m steht über s² die Steigung 10, bei D = 50 N/m die Steigung 25 – jeweils die Hälfte."
+ ]
 }

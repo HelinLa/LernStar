@@ -50,5 +50,11 @@
  "alltagKomp": "K6",
  "ueberleitung": "Mit t² auf der Rechtsachse hast du ein Werkzeug, das aus jedem quadratischen Zusammenhang eine Gerade macht. Auf der nächsten Seite lassen Mira und Tobias eine Kugel fallen – und erhalten für den Ortsfaktor zwei Zahlen, die je nach Auswerteweg nicht zusammenpassen.",
  "name": "Warum trägt man t² auf?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Für das Fadenpendel gilt T = 2π·√(l/g), quadriert also T² = (4π²/g)·l. Über l aufgetragen ergibt T eine Wurzelkurve, aus der sich keine Steigung ablesen lässt; T² über l ergibt eine Ursprungsgerade. Ihre Steigung ist k = 4π²/g ≈ 4,02 s²/m, und daraus folgt g = 4π²/k ≈ 9,81 m/s². Dieselbe Bewegung, dieselbe Frage: Erst die quadrierte Achse macht aus der Kurve eine Zahl.",
+ "predictWarum": [
+  "Am Bildschirm: Über t² liegt eine Gerade der Steigung 1,00 m/s²; der Regler steht auf 2,0 m/s², also a = 2 · Steigung.",
+  "Widerlegt: Über t² liegen alle Punkte auf EINER Geraden – eine Gerade hat überall dieselbe Steigung.",
+  "Widerlegt: Die gemessene Steigung ist halb so groß wie der eingestellte Wert; der Faktor ½ steckt in s = ½ · a · t²."
+ ]
 }

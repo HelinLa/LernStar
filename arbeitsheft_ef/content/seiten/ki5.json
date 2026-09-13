@@ -51,5 +51,11 @@
  "alltagKomp": "S2",
  "ueberleitung": "Aus einer einzigen Messreihe wurden zwei Ausgleichsgeraden und zwei Zahlen für g – entschieden hat das allein das Rechenverfahren, nicht die Ablesung. Auf der nächsten Seite schiebt Mira eine Kugel über die Tischkante: Dann laufen zwei Bewegungen gleichzeitig ab, und nur eine von beiden bestimmt die Fallzeit.",
  "name": "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Ein Rechenschritt setzt die Geschwindigkeit für die ganze Dauer Δt als gleichbleibend an. Bei beschleunigter Bewegung ändert sie sich aber während des Schritts, und der Fehler wächst mit Δt. Die Simulation summiert deshalb mit Δt = 0,016 s ein wenig zu viel Weg auf – darum liefert s über t² ein größeres g als v über t. Im Spiel ist Δt sehr viel größer: Der Körper springt zwischen zwei Schritten so weit, dass er den Boden überspringt und darunter landet.",
+ "predictWarum": [
+  "Widerlegt: Beide Auswertungen laufen über dieselben neun Punkte und kommen trotzdem auf verschiedene Zahlen.",
+  "Am Bildschirm: Der Kasten nennt beide g-Werte nebeneinander und ihre Differenz; der aus „t² → s“ liegt höher.",
+  "Widerlegt: Die Simulation liest nicht ab, sie rechnet – der Unterschied kommt aus dem Zeitschritt, nicht aus dem Quadrieren."
+ ]
 }

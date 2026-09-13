@@ -50,5 +50,11 @@
  "alltagKomp": "E10",
  "ueberleitung": "Je weiter die Bahn hinausreicht, desto länger dauert ein Umlauf. Die Bahngröße ist dabei die halbe Summe aus kleinstem und größtem Abstand: 1,02 AE bei 1,02 Jahren, 1,86 AE bei 2,53 Jahren, 86 AE bei 800 Jahren. Auf der nächsten Seite rechnest du nach, in welchem Verhältnis Umlaufzeit und Bahngröße zueinander stehen.",
  "name": "Warum fällt die Erde nicht in die Sonne?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Die Station fällt ständig zur Erde hin und ist zugleich seitwärts unterwegs – sie fällt an der Erde vorbei. Damit sich beides zu einer Kreisbahn ergänzt, muss die Gravitationskraft genau die Zentripetalkraft sein: G · M · m / r² = m · v² / r, also v = √(G·M/r). Diese Zahl hängt allein vom Bahnradius ab. Ist v kleiner, reicht die seitliche Bewegung nicht: Die Bahn wird zur Ellipse, die der Erde näher kommt – und bei zu kleinem v endet sie in der Atmosphäre.",
+ "predictWarum": [
+  "Widerlegt: Bei 6 km/s meldet die Statuszeile einen Sturz, bei 48 km/s kein Wiederkommen.",
+  "Widerlegt: Die Simulation kennt keine Fliehkraft; sie rechnet allein mit der Anziehung zum Zentrum.",
+  "Am Bildschirm: Zwischen rund 12 und 42 km/s meldet die Statuszeile eine geschlossene Bahn, darunter und darüber nicht."
+ ]
 }

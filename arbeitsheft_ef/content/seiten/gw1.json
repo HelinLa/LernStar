@@ -51,5 +51,11 @@
  "alltagKomp": "K4",
  "ueberleitung": "Neben dem grünen Pfeil am Ball zeichnet die Simulation einen zweiten, roten Pfeil, der immer zur Mitte zeigt; seinen Betrag meldet die dritte Zeile F_z≈ im Anzeigefeld. Auf der nächsten Seite wechselst du zu einer Simulation mit Kraftmessdose und untersuchst, wohin diese Kraft zeigt und wovon ihr Betrag abhängt.",
  "name": "Wie schnell ist ein Punkt auf der Kreisbahn?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Ritzel und Hinterrad sitzen starr auf derselben Achse und haben deshalb dieselbe Winkelgeschwindigkeit ω. Die Bahngeschwindigkeit ist v = ω · r und wächst mit dem Abstand von der Achse. Der Reifen hat den weit größeren Radius – rund 0,34 m gegen etwa 0,04 m am Ritzel, also etwa das Achtfache an v. ω gehört zum ganzen starren Körper, v zu einem einzelnen Punkt darauf.",
+ "predictWarum": [
+  "Widerlegt: Bei festem ω ändert der Regler „Radius r“ die Zeile v≈ – von 70 px auf 40 px fällt sie.",
+  "Am Bildschirm: Die Zeile v≈ geteilt durch ω ergibt in jeder Zeile denselben Wert, nämlich r.",
+  "Widerlegt: Ohne den Radius lässt sich rad/s nicht in m/s umrechnen – genau er steht im Quotienten."
+ ]
 }

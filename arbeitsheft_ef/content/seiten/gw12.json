@@ -50,5 +50,11 @@
  "alltagKomp": "E9",
  "ueberleitung": "Damit steht der letzte Abschnitt des Wettbewerbsberichts. Von der ersten Lichtschranke bis hierher galt stillschweigend, dass eine Sekunde für alle dieselbe ist – die Lichtuhr nimmt diese Voraussetzung zurück. An dieselbe Rechnung schließen später die Längenkontraktion und E = m·c² an.",
  "name": "Warum geht die bewegte Uhr langsamer?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Das Gedankenexperiment erfindet keine Physik, es zieht die Folgerung aus einem Messbefund: c hat in jedem Bezugssystem denselben Wert (Michelson-Morley). Aus dieser einen Annahme und dem Satz des Pythagoras folgt Δtbew = ΔtRuh · √(1−v²/c²) – eine Formel mit einer Zahl darin, also eine Vorhersage. Die Lichtuhr selbst muss niemand bauen; geprüft wird die Formel an etwas anderem. Kosmische Myonen zerfallen genau so viel langsamer, wie sie es verlangt, und erreichen deshalb den Erdboden. Ein Gedankenexperiment ohne prüfbare Folgerung wäre dagegen wertlos.",
+ "predictWarum": [
+  "Am Bildschirm: Bei v/c = 0,95 zählt die Messstation rund 62 bewegte Ticks je 200 ruhende – genau √(1−0,95²) = 0,312.",
+  "Widerlegt: Die Simulation hält c in jedem System gleich; das Photon wird nicht schneller.",
+  "Widerlegt: Gemessen wird an Stationen, an denen die Uhr vorbeikommt – Laufzeiten des Lichts zum Beobachter spielen dabei keine Rolle."
+ ]
 }

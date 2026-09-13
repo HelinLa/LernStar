@@ -49,5 +49,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Die 392 J vom Hochheben sind nicht verschwunden – sie stecken jetzt in der angehobenen Kiste. Auf der nächsten Seite lässt du sie wieder los und misst, wie viel Energie in einem bewegten Körper steckt. Ob dabei eine Verdopplung des Tempos genauso viel zählt wie eine der Masse, entscheidet dort eine Messreihe.",
  "name": "Wann wird wirklich Arbeit verrichtet?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "W = m · g · h und P = W/t. Beispiel: Rucksack 6,0 kg, 14 Stufen à 0,17 m, also h = 2,38 m, gestoppte Zeit 6,0 s. Dann W = 6,0 kg · 9,81 N/kg · 2,38 m = 140 J und P = 140 J / 6,0 s = 23 W. Der Flur zählt nicht: Dort steht die Haltekraft senkrecht zum Weg, also ist W = 0 J. Wer die eigene Masse mitrechnet, muss sie zu m addieren – dann kommen leicht mehrere hundert Watt heraus; welche der beiden Zahlen gemeint ist, muss die Antwort sagen.",
+ "predictWarum": [
+  "Am Bildschirm: „Waagerecht tragen“ meldet W = 0 J, obwohl die Haltekraft 196 N beträgt.",
+  "Widerlegt: Beim Schieben steht W = 400 J, beim Tragen 0 J – bei demselben Weg von 4 m.",
+  "Widerlegt: Auch „ein wenig“ wird es nicht: Der angezeigte Wert ist genau null, nicht nur klein."
+ ]
 }

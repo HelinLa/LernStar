@@ -87,5 +87,11 @@
  "alltagKomp": "E9",
  "ueberleitung": "Mit G ist das Gravitationsgesetz vollständig – jede Anziehung im Sonnensystem lässt sich nun ausrechnen. Auf der nächsten Seite gehst du der Frage nach, warum diese Kraft die Erde nicht in die Sonne zieht, sondern auf ihrer Bahn hält.",
  "name": "Wie wiegt man die Erde?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Gemessen wurde im Gartenhaus die Anziehung zwischen zwei bekannten Bleimassen, also die Gravitationskonstante G – keine Erdmasse, und keine Waage, die die Erde trägt. Erst mit G, dem Ortsfaktor g und dem Erdradius R folgt M = g · R² / G. Als Bild ist die Überschrift nicht völlig falsch: Ohne Cavendishs Messung war die Erdmasse nicht anzugeben. Als Beschreibung des Versuchs ist sie falsch – sie verschweigt, dass die Zahl erst aus einer Rechnung kam.",
+ "predictWarum": [
+  "Widerlegt: Im Datenblatt stehen nur die beiden Bleimassen und ihr Abstand – die Erde kommt darin nicht vor.",
+  "Im Datenblatt: Aus m₁ · m₂, r² und der gemessenen Kraft folgt G; die Erdmasse erst danach aus g, R und G.",
+  "Widerlegt: g und R allein genügen nicht – in M = g · R² / G steht G im Nenner und muss gemessen sein."
+ ]
 }

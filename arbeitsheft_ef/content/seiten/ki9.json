@@ -50,5 +50,11 @@
  "alltagKomp": "S1",
  "ueberleitung": "Am Wagen zog genau eine Kraft, und er wurde immer schneller. Über der Messstrecke hängt dagegen eine Werkstattlampe an einem Federkraftmesser, der ruhig bei 5 N steht – und trotzdem bewegt sie sich nicht. Auf der nächsten Seite prüfst du, was F = m · a für diesen Fall verlangt.",
  "name": "Wovon hängt die Beschleunigung ab?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Aus F = m · a folgt a = F/m. Leerer Wagen: a = 60 N / 10 kg = 6,0 m/s². Voller Wagen: a = 60 N / 30 kg = 2,0 m/s², also ein Drittel. Die dreifache Masse gibt bei gleicher Kraft ein Drittel der Beschleunigung – das ist der Zusammenhang, den die Auftragung über 1/m als Gerade zeigt. Die Rollreibung ist dabei vernachlässigt; 30 kg liegen außerhalb des Reglers, die Vorhersage kommt hier aus dem Gesetz und nicht vom Bildschirm.",
+ "predictWarum": [
+  "Widerlegt: Über m entsteht keine Gerade, sondern eine Hyperbel – die Auswertung zeichnet dort gar keine Ausgleichsgerade.",
+  "Widerlegt: Größere Masse gibt kleinere Beschleunigung; die Punktfolge fällt, statt zu steigen.",
+  "Am Bildschirm: „a über F“ liefert eine Gerade, „a über 1/m“ ebenfalls – nur über m bleibt die Kurve."
+ ]
 }

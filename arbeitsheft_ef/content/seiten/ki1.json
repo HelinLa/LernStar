@@ -49,5 +49,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Die Steigung deiner Geraden gab die Geschwindigkeit, ohne dass du sie am Regler abgelesen hast. Auf der nächsten Seite prüfst du nach, ob das auch gilt, wenn du zu ganz anderen Augenblicken stoppst und zwei ganz andere Punkte markierst.",
  "name": "Wie schnell fährt der Wagen wirklich?",
- "theme": "ef_mechanik"
+ "theme": "ef_mechanik",
+ "alltagLoesung": "Zwei Punkte derselben Geraden genügen: Δs = 800 m − 200 m = 600 m und Δt = 400 s − 100 s = 300 s, also v = 600 m / 300 s = 2,00 m/s. Gegenprobe mit je einem einzelnen Punkt: 200 m / 100 s = 2,00 m/s und 800 m / 400 s = 2,00 m/s – beide Male dieselbe Zahl, weil die Gerade durch den Ursprung geht. Genau das war am Bildschirm der Grund, warum der Augenblick des Stoppens gleichgültig ist.",
+ "predictWarum": [
+  "Am Bildschirm: Δs/Δt ergibt bei jedem Punktepaar 4,00 m/s, gleich wann gestoppt wurde.",
+  "Widerlegt: Die fünf Stopps liegen in ungleichen Abständen und trotzdem auf einer Geraden mit R² = 1,0000.",
+  "Widerlegt: Zu jedem größeren Weg gehört eine größere Zeit; der Quotient aus beiden bleibt gleich."
+ ]
 }

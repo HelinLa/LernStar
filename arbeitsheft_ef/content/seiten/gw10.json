@@ -50,5 +50,11 @@
  "alltagKomp": "B8",
  "ueberleitung": "Galileis Jupitermonde kannst du am Bildschirm kreisen sehen; Bessels Parallaxe und das Jahr 1543 stehen dort nur als Text. Auf der nächsten Seite liegen vier Arten von Quellen zu einer Aussage über Schwerelosigkeit nebeneinander, und du entscheidest an nachprüfbaren Kriterien, welcher davon du warum glaubst.",
  "name": "Warum läuft der Mars manchmal rückwärts?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "Erwartet wird: Vor Kopernikus stützte sich eine Aussage über den Himmel auch auf Autorität und überlieferte Lehre. Seither entscheidet, ob sie eine Beobachtung vorhersagt, die sich nachprüfen lässt – und ob eine gegenteilige Beobachtung sie widerlegen könnte. Die Marsschleife allein entschied nichts, weil beide Modelle sie vorhersagen; erst Galileis Jupitermonde und die Venusphasen lieferten eine Beobachtung, die nur eines der beiden zulässt. Geprüft wird seitdem an der Beobachtung, nicht an der Herkunft der Aussage. Auch tragfähig: der Hinweis, dass Sparsamkeit – weniger Kreise – ein Argument ist, aber kein Beweis.",
+ "predictWarum": [
+  "Widerlegt: Auch „Erde in der Mitte (alt)“ zeigt die Schleife im Streifen unten.",
+  "Am Bildschirm: Beide Tafeln zeigen dieselbe Schleife; die ältere braucht dafür einen zweiten Kreis je Planet.",
+  "Widerlegt: Der Mars läuft auf seiner Bahn durchgehend in eine Richtung – rückläufig wirkt er nur von der Erde aus gesehen."
+ ]
 }

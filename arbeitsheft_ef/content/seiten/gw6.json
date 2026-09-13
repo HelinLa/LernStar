@@ -82,5 +82,11 @@
  "alltagKomp": "S7",
  "ueberleitung": "Ob ein Körper, der ständig fällt, dabei wirklich auf einer Kreisbahn bleibt, rechnest du an der Planetenbahn nach. Vorher fehlt eine Zahl, die in jeder Zeile dieses Datenblatts steckt: die Masse M der Erde. Auf eine Waage hat sie noch nie jemand gestellt.",
  "name": "Was ist ein Feld?",
- "theme": "ef_gravitation"
+ "theme": "ef_gravitation",
+ "alltagLoesung": "g = G · M / r² = 6,674 · 10⁻¹¹ N·m²/kg² · 5,972 · 10²⁴ kg / (6,382 · 10⁶ m)² = 3,986 · 10¹⁴ / 4,073 · 10¹³ = 9,79 N/kg. Am Boden sind es 9,82 N/kg – der Unterschied beträgt 0,3 Prozent. Ein Koffer von 20 kg wiegt oben 195,7 N statt 196,4 N, also 0,7 N weniger; das entspricht rund 70 Gramm auf der Waage und ist beim Tragen nicht zu merken. 11 km sind gegen 6371 km eben wenig.",
+ "predictWarum": [
+  "Im Datenblatt: Für die ISS steht 8,69 N/kg, also 88,5 Prozent des Bodenwerts.",
+  "Widerlegt: 8,69 N/kg ist nicht nahezu null – es ist fast der Bodenwert.",
+  "Widerlegt: Mit 1/r statt 1/r² kämen 94 Prozent heraus; das Datenblatt nennt 88,5."
+ ]
 }
