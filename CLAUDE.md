@@ -377,9 +377,38 @@ Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
 Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
 28 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
 
-Stand 08.09.2026 **fertig und ausgeliefert**: 188 Schuelerseiten, 28 Einheiten,
+Stand 14.09.2026: **178 Schuelerseiten + 125 Seiten Lehrerband**, 28 Einheiten,
 23 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
 Bruecke bei 570 Heftseiten, Registry bei 226 Simulationen.
+
+**Der Einstieg ist kuerzer als in der Sek I** (seit 13.09.2026): drei Saetze,
+26-45 Woerter statt 42-59. `formregeln.pruefe_seite(..., klasse=11)`, und
+`uebernehmen.py` reicht das Argument durch - ohne es meldet der Pruefer 27 von
+28 Seiten. Dazu fuenf Regeln, die aus einer Messung an der GEDRUCKTEN Seite
+kamen, nicht aus einer Wortzaehlung: Aufgabe und Alltag verlangen GENAU EINE
+Handlung · ein Forschen-Schritt hoechstens drei · in Abschnitt ② steht kein
+Fachwort, das erst ⑥ erklaert · eine Vermutung ist ein Satz mit einer Aussage
+(≤ 16 Woerter) · Fachtext hoechstens acht Saetze. Faellt ein Schritt weg, faellt
+die Tabellenzeile in ④ mit weg UND `beobachtung` muss nach - das Feld steht
+nicht nur im Lehrerband, sondern im Messwerte-Anhang des Schuelerbands.
+
+**Der Lehrerband steht im Hausstil, nach dem Vorbild der Foerderreihe**
+(seit 14.09.2026, `lehrer_bloecke` / `lehrerseite` in `build_book.py`, Vorbild
+`arbeitsheft_foe9/build_pilot.py::seite_l`). Je Einheit EIN Lehrerteil mit
+Forscher- UND Uebungsloesung, oben "Auf einen Blick" mit den blossen Nummern,
+die Vermutungen nummeriert und alle drei begruendet (`predictWarum`), jede
+Aufgabe mit Wortlaut ueber der Loesung, die Alltagsaufgabe erstmals mit Loesung
+(`alltagLoesung`). Ein Lesezeichen je Einheit.
+
+> **Die Proben liefen frueher NACH `build_lehrerband` und haben ihn nie
+> gesehen.** Die Kreisziffern ② ④ ⑥ in den neuen Ueberschriften stehen nicht in
+> der Heftschrift - auf der Schuelerseite sind sie gezeichnete Marken, kein Text.
+> Gedruckt wurden 168 leere Kaestchen, und die Zeichenprobe meldete "0 fehlende
+> Zeichen". Der Lehrerband wird jetzt mit `lehrerband_setzen()` VOR den Proben
+> gesetzt und danach geschrieben; die Satzspiegel-Probe laeuft je Band getrennt.
+> Unmittelbar danach fand die Versalprobe 32 Versalwoerter im Lehrerteil
+> (Wortschatzliste und `lehrplan.zeile()` liefern Versalien) und die
+> Satzspiegel-Probe zehn Seiten unter einem Drittel.
 
 > **`ch_uebung` lief unter die Blattkante** (gefunden 08.09.2026, derselbe Fehler
 > wie `build_pilot.seite_l` in der Foerderreihe). Die Funktion setzte GENAU EINE
@@ -625,6 +654,21 @@ Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/R
 | `einbaupruefung.py` | neue Simulationsdatei vor dem Einbau pruefen (Namens- und DOM-Kollisionen) |
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
 | `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN Werten (t², 1/m) |
+
+> **Geprueft werden `forschen`, `tabRows`, `beobachtung` – und seit dem
+> 14.09.2026 jeder Satz, der BEHAUPTET, etwas stehe am Bildschirm**
+> („Am Bildschirm:", „Im Datenblatt:", „Die Statuszeile meldet:"), gleich in
+> welchem Feld er steht. Anlass: Der neue Lehrerteil der Oberstufe schrieb
+> „Am Bildschirm: ... a faellt von 13,1 auf 10,1 m/s²" – die Simulation
+> `reibung` zeigt gar keine Beschleunigung, „m/s²" kommt im ganzen Faktendump
+> nicht vor. Solche Saetze standen in KEINEM geprueften Feld. Loesungswege
+> bleiben ungeprueft: Sie rechnen zu Recht mit Werten, die nirgends angezeigt
+> werden (gemessen: 51 in `aufgabe.loesung`, 23 in `alltagLoesung` – alle
+> richtig). Drei Selbsttest-Proben halten beide Richtungen fest.
+>
+> **Auf die Foerderreihe laesst sich das Werkzeug nicht anwenden**: Dort sind
+> `tabRows` Listen von Zellen, keine Zeichenketten, und `pruefe()` stuerzt ab.
+> Der Fehler ist aelter als diese Aenderung und noch offen.
 | `seitenzahlen.py` | liest die Seitenzahlen aus den gesetzten Seiten (siehe oben) |
 | `qr_live.py` | prueft die GEDRUCKTEN QR-Codes gegen den AUSGELIEFERTEN Stand (siehe unten) |
 

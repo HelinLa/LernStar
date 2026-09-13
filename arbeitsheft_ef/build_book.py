@@ -1639,7 +1639,10 @@ def lehrer_bloecke(tid):
 
     # ── ③/④ Was am Bildschirm steht ──────────────────────────────────────
     if o.get("beobachtung"):
-        L.append(("Abschnitt 4 · Meine Beobachtung – was am Bildschirm steht",
+        # Fuenf Einheiten haben keine Simulation, sondern ein gedrucktes
+        # Datenblatt. "Was am Bildschirm steht" waere dort schlicht falsch.
+        _wo="im Datenblatt" if o.get("daten") else "am Bildschirm"
+        L.append(("Abschnitt 4 · Meine Beobachtung – was %s steht"%_wo,
                   [o["beobachtung"]]))
 
     # ── ⑥ Merksatz vollstaendig ──────────────────────────────────────────
