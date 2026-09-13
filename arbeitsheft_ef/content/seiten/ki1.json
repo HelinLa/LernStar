@@ -2,31 +2,30 @@
  "id": "ki1",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Fünf Stopps, eine Steigung",
- "problem": "Nach dem Lauftreff vergleichen Mira und Tobias ihre App: Zwei Weg-Zeit-Geraden gehen vom Ursprung aus, Miras verläuft steiler. Tobias liest einfach die angezeigte Zahl ab. Mira hält dagegen, eine App messe nur Zeiten und Wege; die Geschwindigkeit müsse man daraus erst gewinnen. Für Jugend forscht zählt nur eine belegte Zahl, und an der Messstrecke lässt sich das entscheiden.",
+ "problem": "Mira und Tobias vergleichen nach dem Lauftreff ihre Lauf-App. Tobias liest die angezeigte Geschwindigkeit einfach ab. Mira sagt, die App messe nur Zeiten und Wege – die Geschwindigkeit stecke da erst drin.",
  "frage": "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
  "auftrag": "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
  "predict": [
-  "Die Wertepaare liegen auf einer Ursprungsgeraden; deren Steigung ist v – unabhängig davon, wann gestoppt wurde.",
-  "Die Steigung fällt bei jedem Stoppen etwas anders aus; erst gleiche Zeitabstände liefern einen brauchbaren Wert für v.",
-  "Je größer der zurückgelegte Weg, desto größer v; man liest v am größten Wegwert ab, ohne die Zeit."
+  "Aus Zeit und Weg lässt sich die Geschwindigkeit berechnen, egal wann man stoppt.",
+  "Man muss in gleichen Zeitabständen stoppen, sonst kommt kein brauchbarer Wert heraus.",
+  "Je länger die Strecke, desto größer die Geschwindigkeit – die Zeit zählt nicht mit."
  ],
  "predictOk": 0,
  "forschen": [
-  "Stelle „Geschwindigkeit v“ auf 4,0 m/s und drücke fünfmal „Zeit stoppen“. Die Statuszeile meldet 5 von mindestens 5 gestoppten Messwerten.",
-  "Wähle „t → s“, drücke „Steigung messen“ und markiere zwei Punkte auf der Ausgleichsgeraden. Notiere Δs, Δt, Steigung und Geradengleichung.",
-  "Wechsle zu „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle danach 7,0 m/s ein, stoppe fünfmal und notiere die neue t-s-Gerade."
+  "Stelle „Geschwindigkeit v“ auf 4,0 m/s und drücke fünfmal „Zeit stoppen“.",
+  "Wähle „t → s“ und markiere mit „Steigung messen“ zwei Punkte auf der Geraden.",
+  "Wechsle zu „t → v“ und danach zu „t → a“."
  ],
  "tabCols": [
-  "Gleichung der Ausgleichsgeraden",
-  "Zahl daraus · was sie bedeutet"
+  "Auftragung",
+  "Steigung · was sie bedeutet"
  ],
  "tabRows": [
   "t → s bei v = 4,0 m/s",
   "t → v bei v = 4,0 m/s",
-  "t → a bei v = 4,0 m/s",
-  "t → s bei v = 7,0 m/s"
+  "t → a bei v = 4,0 m/s"
  ],
- "fachtext": "Gemessen wird nicht die Geschwindigkeit, sondern je ein Paar aus Zeit und Weg. Im t-s-Diagramm liegen diese Paare auf einer Geraden durch den Ursprung. Eine Ursprungsgerade bedeutet: s und t sind proportional. Der Quotient s/t hat für jeden Messpunkt denselben Wert. Diesen Wert nennt man die Geschwindigkeit v. Es gilt s = v · t, und v ist zugleich die Steigung der Geraden. Für zwei beliebige Punkte gilt v = Δs/Δt. Welche zwei Punkte man wählt, ist gleichgültig. Das t-v-Diagramm zeigt eine Waagerechte. Ihr Achsenabschnitt ist wieder v. Im t-a-Diagramm liegen alle Werte auf der Nulllinie. Genau das heißt gleichförmig: Die Geschwindigkeit ändert sich nicht.",
+ "fachtext": "Gemessen wird nicht die Geschwindigkeit, sondern zu jeder Zeit ein Weg. Im t-s-Diagramm liegen diese Wertepaare auf einer Ursprungsgeraden. Ihre Steigung ist für jedes Punktepaar dieselbe Zahl. Diese Zahl nennt man die Geschwindigkeit v; es gilt v = Δs/Δt und s = v · t. Welche zwei Punkte man dafür markiert, ist gleichgültig. Das t-v-Diagramm zeigt darum eine Waagerechte in der Höhe v. Im t-a-Diagramm liegen alle Werte auf der Nulllinie. Genau das heißt gleichförmig: Die Geschwindigkeit ändert sich nicht.",
  "merksatz": [
   {
    "pre": "Liegen die gestoppten Wertepaare auf einer Ursprungsgeraden, sind s und t proportional; ihr gemeinsamer Quotient s/t ist die",
@@ -39,16 +38,16 @@
    "post": "."
   }
  ],
- "beobachtung": "Deine fünf Zeiten sind deine eigenen – wer früher oder später drückt, bekommt andere t. Die Uhr springt in Schritten von 0,02 s, deshalb geht s = v · t in jeder Zeile auf beiden Nachkommastellen auf; eine Reihe bei 4,0 m/s kann etwa 0,54 s mit 2,16 m, 1,30 s mit 5,20 m und 2,24 s mit 8,96 m enthalten. Die Spalte v zeigt in jeder Zeile 4,00 m/s, die Spalte a ab der zweiten Zeile 0,00 m/s²; in der ersten Zeile steht nur ein Strich. Unter „t → s“ erscheint deine Reihe als „Stoppuhr · v = 4,0 m/s · 5 Messwerte“ mit y = 4,000·x und R² = 1,0000, darunter 4,00 m/s und Abweichung 0,00 % – unabhängig davon, wann du gestoppt hast. Unter „t → v“ liegt die Waagerechte bei y = 0,0000·x + 4,0000, unter „t → a“ die Nulllinie bei y = 0,0000·x + 0,0000; dort zählt die Reihe nur 4 Messwerte, weil die erste Zeile kein a hat. Nach der zweiten Fahrt steht „Stoppuhr · v = 7,0 m/s“ mit y = 7,000·x darüber: dieselbe Bahn, steilere Gerade. Der Ergebniskasten ganz unten gehört immer zur langsamsten Reihe.",
+ "beobachtung": "Deine fünf Zeiten sind deine eigenen – wer früher oder später drückt, bekommt andere t. Die Uhr springt in Schritten von 0,02 s, deshalb geht s = v · t in jeder Zeile auf beiden Nachkommastellen auf; eine Reihe bei 4,0 m/s kann etwa 0,54 s mit 2,16 m, 1,30 s mit 5,20 m und 2,24 s mit 8,96 m enthalten. Die Spalte v zeigt in jeder Zeile 4,00 m/s, die Spalte a ab der zweiten Zeile 0,00 m/s²; in der ersten Zeile steht nur ein Strich. Unter „t → s“ erscheint deine Reihe als „Stoppuhr · v = 4,0 m/s · 5 Messwerte“ mit y = 4,000·x und R² = 1,0000, darunter 4,00 m/s und Abweichung 0,00 % – unabhängig davon, wann du gestoppt hast. Unter „t → v“ liegt die Waagerechte bei y = 0,0000·x + 4,0000, unter „t → a“ die Nulllinie bei y = 0,0000·x + 0,0000; dort zählt die Reihe nur 4 Messwerte, weil die erste Zeile kein a hat.",
  "aufgabe": {
-  "frage": "Leite aus zwei Zeilen deiner Stoppuhr-Reihe her, dass die Steigung der t-s-Geraden die Geschwindigkeit angibt, und begründe, warum der Zeitpunkt des Stoppens dabei gleichgültig ist.",
+  "frage": "Bestimme Δs/Δt aus zwei Zeilen deiner Stoppuhr-Reihe und danach aus zwei ganz anderen Zeilen.",
   "zeilen": 4,
   "loesung": "Zwei Zeilen einer Reihe bei 4,0 m/s, zum Beispiel (0,92 s | 3,68 m) und (2,24 s | 8,96 m): Δs = 8,96 m − 3,68 m = 5,28 m, Δt = 2,24 s − 0,92 s = 1,32 s, also Δs/Δt = 5,28 m / 1,32 s = 4,00 m/s. Ein anderes Paar derselben Reihe, etwa (1,30 s | 5,20 m) und (1,76 s | 7,04 m), ergibt Δs = 1,84 m und Δt = 0,46 s und wieder 4,00 m/s. Der Grund: Für jeden Punkt der Ursprungsgeraden gilt s = v · t, für zwei Punkte also s₂ − s₁ = v · (t₂ − t₁). Kürzt man durch t₂ − t₁, bleibt v = Δs/Δt; die Zeitdifferenz fällt heraus. Deshalb hängt das Ergebnis weder von der Wahl der beiden Zeilen ab noch davon, wann gestoppt wurde. Genau diese Zahl gibt die Simulation als „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ aus."
  },
- "alltag": "In einer Lauf-App liegen zwei Weg-Zeit-Geraden übereinander, beide durch den Ursprung: Läuferin A ist nach 100 s bei 200 m und nach 400 s bei 800 m, Läuferin B nach 100 s bei 250 m und nach 400 s bei 1000 m. Bestimme für die steilere Gerade die Geschwindigkeit in Metern je Sekunde und erkläre einer Person zu Hause, warum du dafür zwei beliebige Punkte der Geraden nehmen darfst – so, wie am Bildschirm der Augenblick des Stoppens gleichgültig war.",
+ "alltag": "In einer Lauf-App ist Läuferin A nach 100 s bei 200 m und nach 400 s bei 800 m. Bestimme ihre Geschwindigkeit in Metern je Sekunde.",
  "alltagAfb": "II",
  "alltagKomp": "S7",
- "ueberleitung": "Die Steigung deiner Geraden gab die Geschwindigkeit, ohne dass du sie am Regler abgelesen hast – und sie kam gleich heraus, obwohl du in ungleichen Abständen gestoppt hast. Auf der nächsten Seite prüfst du genau das nach: Du stoppst noch einmal, bewusst zu ganz anderen Augenblicken, und hältst die Steigung deiner neuen Reihe gegen die alte.",
+ "ueberleitung": "Die Steigung deiner Geraden gab die Geschwindigkeit, ohne dass du sie am Regler abgelesen hast. Auf der nächsten Seite prüfst du nach, ob das auch gilt, wenn du zu ganz anderen Augenblicken stoppst und zwei ganz andere Punkte markierst.",
  "name": "Wie schnell fährt der Wagen wirklich?",
  "theme": "ef_mechanik"
 }

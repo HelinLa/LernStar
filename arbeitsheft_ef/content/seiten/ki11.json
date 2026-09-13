@@ -2,19 +2,19 @@
  "id": "ki11",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Gleiche Kraft, ungleiche Fahrt",
- "problem": "Beim Aussteigen aus einem Ruderboot tritt Mira kräftig ab; das Boot rutscht sichtbar vom Steg weg, sie selbst kommt nach vorn. Gedrückt habe nur sie, behauptet Tobias, das Boot sei bloß leicht. Mira fragt zurück, warum der Steg beim Auftreten dann unbewegt bleibt. Mit zwei Wagen und einer gespannten Feder dazwischen lässt sich beides nachmessen.",
+ "problem": "Beim Aussteigen aus einem Ruderboot tritt Mira kräftig ab. Das Boot rutscht sichtbar vom Steg weg, sie selbst kommt nach vorn. Gedrückt habe nur sie, behauptet Tobias.",
  "frage": "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
  "auftrag": "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
  "predict": [
-  "Der schwerere Wagen drückt kräftiger; auf den leichteren Wagen wirkt die größere Kraft, darum wird er stärker beschleunigt.",
-  "Beide Wagen erfahren stets gleich große, entgegengesetzte Kräfte. Verschieden sind nur die Beschleunigungen; sie verhalten sich umgekehrt wie die Massen.",
-  "Beide Wagen erfahren gleich große Kräfte und werden deshalb gleich stark beschleunigt; die Massen spielen keine Rolle."
+  "Auf den leichteren Wagen wirkt die größere Kraft.",
+  "Beide Wagen erfahren gleich große Kräfte, aber verschiedene Beschleunigungen.",
+  "Beide Wagen werden gleich stark beschleunigt."
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und a1 : a2.",
-  "Drücke „Neu aufstellen“, stelle die Regler „Masse m1 (linker Wagen)“ und „Masse m2 (rechter Wagen)“ nach den vier Tabellenzeilen ein und löse die Feder jedes Mal neu.",
-  "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert."
+  "Drücke „Feder lösen“ und lies F1, F2, a1 und a2 ab.",
+  "Stelle die Massen der zweiten Tabellenzeile ein und löse die Feder neu.",
+  "Wiederhole das für die beiden letzten Tabellenzeilen."
  ],
  "tabCols": [
   "F1 und F2 beim Lösen in N",
@@ -26,7 +26,7 @@
   "m1 = 5 kg · m2 = 5 kg",
   "m1 = 5 kg · m2 = 1 kg"
  ],
- "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten immer paarweise auf. Das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an. Sie heben sich deshalb nicht auf, sondern beschleunigen beide Wagen. Wie stark, sagt F = m · a. Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1. Die Beschleunigungen verhalten sich umgekehrt wie die Massen. Den größten Kraftbetrag gibt die gespannte Feder vor: F = D · s0. Darin kommt keine Masse vor. Er ist in allen vier Messungen derselbe.",
+ "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten immer paarweise auf; das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an. Sie heben sich deshalb nicht auf, sondern beschleunigen beide Wagen. Wie stark, sagt F = m · a. Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1. Den Kraftbetrag gibt die gespannte Feder vor: F = D · s0. Darin kommt keine Masse vor, er ist in allen vier Messungen derselbe.",
  "merksatz": [
   {
    "pre": "Kräfte treten paarweise auf: gleich groß, entgegengesetzt – und sie greifen an",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "In der Grundeinstellung m1 = 2 kg und m2 = 5 kg meldet die Zeile „Beim Lösen“: F1 = -20,00 N, F2 = +20,00 N, a1 = -10,00 m/s², a2 = +4,00 m/s², Stoßdauer Δt = 0,119 s, für beide Wagen dieselbe; darüber steht a1 : a2 = 5 : 2 = m2 : m1 (= 2,50). Mit m1 = 1 kg wird daraus a1 = -20,00 m/s² und a2 = +4,00 m/s² bei Δt = 0,091 s (a1 : a2 = 5 : 1), mit m1 = 5 kg a1 = -4,00 m/s² und a2 = +4,00 m/s² bei Δt = 0,157 s (a1 : a2 = 1 : 1). Zieht man danach m2 auf 1 kg, springt a2 auf +20,00 m/s², während a1 bei -4,00 m/s² stehen bleibt (a1 : a2 = 1 : 5, Δt = 0,091 s). F1 und F2 stehen in allen vier Einstellungen bei -20,00 N und +20,00 N. Die Endwerte wandern von v1 = -1,155 m/s, v2 = +0,231 m/s bis v1 = -0,231 m/s, v2 = +1,155 m/s, aber p1 + p2 = 0,000 kg·m/s und E(Feder) = 0,800 J stehen jedes Mal da; bei m1 = 1 kg zerlegt das Statusfeld die Energie in 0,667 J + 0,133 J, bei m2 = 1 kg in 0,133 J + 0,667 J.",
  "aufgabe": {
-  "frage": "Berechne aus D = 250 N/m und der Vorspannung s0 = 8,0 cm die Höchstkraft F = D · s0 und daraus a1 und a2 für m1 = 1 kg und m2 = 5 kg; begründe, warum die Kraft für beide Wagen dieselbe ist.",
+  "frage": "Berechne aus D = 250 N/m und der Vorspannung s0 = 8,0 cm die Höchstkraft F = D · s0 und daraus a1 und a2 für m1 = 1 kg und m2 = 5 kg.",
   "zeilen": 5,
   "loesung": "Aus s0 = 8,0 cm = 0,080 m folgt F = D · s0 = 250 N/m · 0,080 m = 20,00 N – genau der Höchstwert, den das Statusfeld nennt (F1 = -20,00 N, F2 = +20,00 N; die Vorzeichen geben nur die Richtung an). Mit F = m · a wird daraus a1 = 20,00 N : 1 kg = 20,00 m/s² und a2 = 20,00 N : 5 kg = 4,00 m/s², also a1 : a2 = 20,00 : 4,00 = 5 : 1 = m2 : m1 – die Werte, die die Simulation für diese Einstellung anzeigt. Dieselbe Kraft erfahren beide Wagen, weil es nur eine Feder gibt und diese an ihren beiden Enden mit demselben Betrag drückt; in F = D · s0 steht keine Masse. Verschieden sind allein die Beschleunigungen, denn derselbe Kraftbetrag wirkt auf verschieden große Massen."
  },
- "alltag": "Beim Aussteigen aus einem Boot schiebt sich das Boot vom Steg weg, während man selbst nach vorn kommt. Erkläre mit dem Wechselwirkungsprinzip, welche zwei Kräfte dabei auftreten, an welchen Körpern sie angreifen und warum das leichte Boot sichtbar zurückweicht. Begründe dann mit einem zweiten Kräftepaar, warum der Steg beim Auftreten nicht sichtbar zurückweicht.",
+ "alltag": "Erkläre mit dem Wechselwirkungsprinzip, warum sich beim Aussteigen das Boot vom Steg wegschiebt.",
  "alltagAfb": "II",
  "alltagKomp": "S1",
  "ueberleitung": "Auf der reibungsfreien Bahn wurde die ganze Federenergie zu Bewegung – 0,800 J, ohne jeden Verlust. Auf der nächsten Seite kommt die Reibung dazu, und du misst, wie viel einer Zugkraft sie wegnimmt und wie viel zum Beschleunigen übrig bleibt.",

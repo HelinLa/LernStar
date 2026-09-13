@@ -2,19 +2,19 @@
  "id": "gw5",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Dieselbe Person, drei Zahlen",
- "problem": "Eine Küchenwaage zeigt für eine Tüte Mehl ein Kilogramm an. Auf dem Mond, sagt Tobias, stünde dort nur ein Sechstel; dort sei eben weniger von dem Mehl da. Mira widerspricht: Unterwegs gehe von der Tüte nichts verloren. Verwirrend findet sie zudem, dass der Ortsfaktor heute in Newton je Kilogramm angegeben wird. Am Bildschirm lässt sich das klären.",
+ "problem": "Eine Küchenwaage zeigt für eine Tüte Mehl ein Kilogramm an. Auf dem Mond stünde dort nur ein Sechstel, sagt Tobias – dort sei eben weniger Mehl da. Mira widerspricht: Unterwegs gehe von der Tüte nichts verloren.",
  "frage": "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
  "auftrag": "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
  "predict": [
   "Auf dem Mond werden Masse und Gewichtskraft beide kleiner.",
   "Auf dem Mond bleibt die Gewichtskraft dieselbe, kleiner wird die Masse.",
-  "Die Masse bleibt überall dieselbe, kleiner wird allein die Gewichtskraft, weil g auf dem Mond kleiner ist."
+  "Die Masse bleibt überall dieselbe, kleiner wird allein die Gewichtskraft."
  ],
  "predictOk": 2,
  "forschen": [
-  "Drücke „Erde“ und notiere aus dem Statusfeld die Masse m, den Ortsfaktor g und die Gewichtskraft F.",
-  "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab. Eine der drei Zahlen bleibt unverändert stehen.",
-  "Beantworte die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."
+  "Drücke „Erde“ und notiere Masse m, Ortsfaktor g und Gewichtskraft F.",
+  "Drücke „Mond“ und „Jupiter“ und lies dieselben drei Größen ab.",
+  "Beantworte die drei Quizfragen und halte die genannte Formel fest."
  ],
  "tabCols": [
   "m in kg und g in N/kg (Statusfeld)",
@@ -25,7 +25,7 @@
   "Erde",
   "Jupiter"
  ],
- "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m gehört zum Körper und ändert sich mit dem Ort nicht. Sie misst, wie stark er einer Beschleunigung widersteht und wie stark ein Himmelskörper ihn anzieht. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Der Quotient F/m ist an jedem Ort eine feste Zahl, der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation zeigt 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s². Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s².",
+ "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m gehört zum Körper und ändert sich mit dem Ort nicht. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Der Quotient F/m ist an jedem Ort eine feste Zahl, der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation zeigt 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s². Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s².",
  "merksatz": [
   {
    "pre": "Die Masse gehört zum Körper, vom Ort abhängig ist allein die",
@@ -40,11 +40,11 @@
  ],
  "beobachtung": "Für die Erde meldet das Statusfeld g = 9,8 N/kg, m = 60 kg und F = m · g = 588 N. Für den Mond g = 1,6 N/kg, dieselbe Masse und F = 96 N, laut Anzeige etwa 1/6 der Erd-Gewichtskraft. Für den Jupiter g = 24,8 N/kg und F = 1488 N. Der Zusatz „überall gleich“ hinter der Masse bleibt stehen; nur g und F wechseln. Rückwärts gerechnet: 96 N / 60 kg = 1,6 N/kg und 1488 N / 60 kg = 24,8 N/kg – der Quotient F/m ist genau der angezeigte Ortsfaktor. Das muss so herauskommen: Die Simulation rechnet F aus m und g und schreibt die Vorschrift F = m · g selbst ins Statusfeld. Die Rückwärtsrechnung bestätigt deshalb keine Messung, sondern zeigt, was der Ortsfaktor ist – Kraft je Kilogramm. Und 588 N / 96 N = 6,125 ist derselbe Faktor wie 9,8 / 1,6.",
  "aufgabe": {
-  "frage": "Berechne mit den Ortsfaktoren der Simulation (Mond 1,6 N/kg, Erde 9,8 N/kg) die Gewichtskraft einer Person von 75 kg und begründe, warum der Unterschied nichts mit ihrer Masse zu tun hat.",
+  "frage": "Berechne mit den Ortsfaktoren der Simulation (Mond 1,6 N/kg, Erde 9,8 N/kg) die Gewichtskraft einer Person von 75 kg.",
   "zeilen": 4,
   "loesung": "Es gilt F = m · g. Mond: F = 75 kg · 1,6 N/kg = 120 N. Erde: F = 75 kg · 9,8 N/kg = 735 N. Das Verhältnis 735 N / 120 N = 6,125 ist genau das Verhältnis 9,8 / 1,6 der Ortsfaktoren. Wer statt mit dem gerundeten Wert der Simulation mit dem gemessenen Ortsfaktor 9,81 N/kg rechnet, erhält 735,75 N und das Verhältnis 6,13 – dieselbe Aussage, nur eine Stelle genauer. Beide Male steht dieselbe Masse 75 kg; verändert wurde allein g – eine Größe des Ortes, nicht der Person."
  },
- "alltag": "Eine Küchenwaage misst die Gewichtskraft und zeigt daraus Kilogramm an, gerechnet mit dem Ortsfaktor der Erde. Erkläre zu Hause in drei Sätzen, was sie auf dem Mond für ein Kilogramm Mehl anzeigt und warum das Mehl gleich bleibt.",
+ "alltag": "Erkläre, was eine Küchenwaage auf dem Mond für ein Kilogramm Mehl anzeigen würde.",
  "alltagAfb": "II",
  "alltagKomp": "K4",
  "ueberleitung": "g ist damit eine Größe des Ortes: An jeder Stelle liegt ein Wert bereit, auch wenn dort kein Körper steht. Auf der nächsten Seite bekommt diese Vorstellung ihren Namen – das Feld.",

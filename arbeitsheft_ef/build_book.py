@@ -317,6 +317,18 @@ def setze_einheit(B,kopf,titel,pn,name,qr=None,fuellen=False,kopf_rechts=None,
     seiten=fd.umbrechen(B,hoehen)
     if fuellen:
         B,hoehen,seiten=fd.schreibraum_auffuellen(B,hoehen,seiten,fd.STIL)
+        # ZWEITER Durchgang fuer den Alltagsblock (13.09.2026). fd.schreib-
+        # raum_auffuellen fuellt hinter EINEM Praefix und hoechstens neun Zeilen
+        # nach; auf der Forscherseite ist der letzte Block aber "Alltagslinie",
+        # nicht "Schreiblinie". Solange die Abschnitte ①-⑥ lang waren, fiel das
+        # nicht auf. Nach der Vereinfachung der Oberstufe endete ki1 auf Seite 3
+        # bei rund der halben Blatthoehe: zwoelf Auftragszeilen, dann der Alltag
+        # mit seinen zwei festen Zeilen, darunter nichts. Der zweite Durchgang
+        # holt genau diesen Rest. Er kann keine Seite kosten - die Funktion
+        # nimmt sich zurueck, sobald der Umbruch sich aendert -, und wo es
+        # keinen Alltagsblock gibt (Uebungsseite, Test), tut er nichts.
+        B,hoehen,seiten=fd.schreibraum_auffuellen(B,hoehen,seiten,fd.STIL,
+                                                  praefix="Alltagslinie")
     if ausgleich and len(seiten)>1:
         seiten=ausgleichen(B,hoehen)
     # Steht am Fuss einer Seite noch ein Baustein, der etwas festhaelt, ist die

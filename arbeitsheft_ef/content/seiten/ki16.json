@@ -2,19 +2,19 @@
  "id": "ki16",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Die Summe mit Vorzeichen",
- "problem": "Auf den Küchenfliesen schnippt Mira eine Murmel gegen eine ruhende: Die erste bleibt fast stehen, die zweite läuft weiter. Tobias sucht eine Größe, die der Zusammenstoß nicht verändert, und addiert, was beide Murmeln an Masse und Tempo mitbringen. Sobald eine davon zurückläuft, hat er mehr in der Hand als vorher. An der Messstrecke lässt sich das prüfen.",
+ "problem": "Auf den Küchenfliesen schnippt Mira eine Murmel gegen eine ruhende. Die erste bleibt fast stehen, die zweite läuft weiter. Tobias sucht eine Größe, die der Zusammenstoß nicht verändert.",
  "frage": "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
  "auftrag": "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
  "predict": [
-  "p_ges behält seinen Startwert: p₁ wird beim Zurückprallen negativ und zieht von p₂ ab; die vorzeichenrichtige Summe bleibt gleich.",
-  "Nach dem Stoß sind beide Kugeln unterwegs, vorher nur eine: Die Impulse addieren sich, p_ges ist danach größer.",
-  "Erhalten bleibt die Summe der Beträge |p₁| + |p₂|; das Vorzeichen zählt beim Addieren nicht mit."
+  "Die Summe bleibt gleich, wenn man die Rückwärtsbewegung negativ zählt.",
+  "Nach dem Stoß sind beide unterwegs, die Summe ist also größer.",
+  "Erhalten bleibt die Summe der Beträge, ohne Vorzeichen."
  ],
  "predictOk": 0,
  "forschen": [
-  "Beim Öffnen rollt m₁ = 3 kg auf die ruhende m₂ = 5 kg zu. Lies p₁, p₂ und p_ges ab, solange sie getrennt sind.",
-  "Stelle „Masse 1 (kg)“ auf 1 kg und drücke „Stoß auslösen“. Notiere p₁, p₂ und p_ges vor und nach der Berührung.",
-  "Ziehe „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab. Rechne p₁ + p₂ nach. (65 Wörter)"
+  "Lies p₁, p₂ und p_ges ab, solange die Kugeln getrennt sind.",
+  "Stelle „Masse 1 (kg)“ auf 1 kg und drücke „Stoß auslösen“.",
+  "Ziehe „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab."
  ],
  "modellgrenze": "Wer einen Massenregler erst nach dem Zusammenstoß verstellt, sieht keinen Stoß mehr: Die Simulation rechnet p = m · v dann mit der neuen Masse und der alten Geschwindigkeit weiter. Zeile 4 der Tabelle ist deshalb eine Grenze des Modells, kein Gegenbeispiel zum Erhaltungssatz – ein wirklicher Körper ändert seine Masse unterwegs nicht. Maßstab: Die Simulation nimmt ihre Bildpunkte als Meter, deshalb gehören zu p₁ = 60,0 kg·m/s bei 1 kg schon 60 m/s – für rollende Kugeln unrealistisch hoch, und die Energien fallen entsprechend groß aus. An den beiden Bilanzen ändert das nichts.",
  "tabCols": [
@@ -27,7 +27,7 @@
   "m₁ = 1 kg · m₂ = 5 kg · nach dem Stoß",
   "m₁ nach dem Stoß auf 2 kg · m₂ = 5 kg"
  ],
- "fachtext": "Der Impuls ist p = m · v. Weil v gerichtet ist, ist p es ebenfalls. Auf einer geraden Bahn genügt ein Vorzeichen: nach rechts positiv, nach links negativ. Der Gesamtimpuls ist deshalb die vorzeichenrichtige Summe p_ges = m₁ · v₁ + m₂ · v₂. Die Summe der Beträge ist etwas anderes. Beim Stoß üben beide Körper nach dem dritten newtonschen Gesetz gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus, und das gleich lange. Jeder erfährt denselben Kraftstoß mit umgekehrtem Vorzeichen, also Δp₁ = −Δp₂. Der Gesamtimpuls bleibt erhalten. Das gilt in jedem abgeschlossenen System. Beim elastischen Stoß bleibt zusätzlich die kinetische Energie erhalten. Die Simulation rechnet ausschließlich elastisch.",
+ "fachtext": "Der Impuls ist p = m · v. Weil v gerichtet ist, ist p es ebenfalls; auf einer geraden Bahn genügt ein Vorzeichen. Der Gesamtimpuls ist deshalb die vorzeichenrichtige Summe p_ges = m₁ · v₁ + m₂ · v₂. Die Summe der Beträge ist etwas anderes. Beim Stoß üben beide Körper gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus, und das gleich lange. Jeder erfährt denselben Kraftstoß mit umgekehrtem Vorzeichen, also Δp₁ = −Δp₂. Der Gesamtimpuls bleibt erhalten; das gilt in jedem abgeschlossenen System. Beim elastischen Stoß bleibt zusätzlich die kinetische Energie erhalten, und genau so rechnet die Simulation.",
  "merksatz": [
   {
    "pre": "Beim Stoß gibt der eine Körper genau so viel Impuls ab, wie der andere aufnimmt; die Summe p_ges bleibt deshalb",
@@ -42,11 +42,11 @@
  ],
  "beobachtung": "Beim Öffnen stehen m₁ = 3 kg und m₂ = 5 kg; die Kugeln tragen die Aufschriften m3 und m5. Das Anzeigefeld meldet p₁ = 180,0 · p₂ = 0,0 · p_ges = 180,0 kg·m/s – Kugel 2 liegt still, der ganze Impuls steckt in Kugel 1. Die Kurve „Gesamtimpuls“ läuft dabei waagerecht; ihre Achse nennt als größten und als kleinsten Wert dieselbe Zahl 180,0. Nach dem Umstellen auf m₁ = 1 kg und einem neuen Durchgang steht vor der Berührung p₁ = 60,0 · p₂ = 0,0 · p_ges = 60,0. Nach dem Zusammenstoß meldet dasselbe Feld p₁ = −40,0 · p₂ = 100,0 · p_ges = 60,0: Kugel 1 läuft mit negativem Impuls zurück, Kugel 2 fährt mit 100,0 kg·m/s los, und die Summe steht unverändert auf 60,0. Nachgerechnet ist −40,0 + 100,0 = 60,0; die Beträge ergäben dagegen 40,0 + 100,0 = 140,0, und so viel Impuls ist nicht da. Kugel 1 hat genau 100,0 kg·m/s abgegeben, und genau 100,0 kg·m/s sind bei Kugel 2 angekommen. Die Kurve „Gesamtimpuls“ bleibt über den Stoß hinweg auf 60,0 kg·m/s, während die Kurve „Impuls Ball 1“ von 60,0 auf 40,0 springt – sie trägt den Betrag auf und kennt kein Minus. Wird der Regler „Masse 1 (kg)“ erst danach auf 2 kg gezogen, meldet das Anzeigefeld p₁ = −80,0 · p₂ = 100,0 · p_ges = 20,0. Die Geschwindigkeiten sind dieselben geblieben, nur die Masse in p = m · v ist eine andere – ein Stoß war das nicht.",
  "aufgabe": {
-  "frage": "Berechne für den Durchgang mit m₁ = 1 kg und m₂ = 5 kg aus den abgelesenen Impulsen mit E = p² / (2 · m) die kinetische Energie beider Kugeln vor und nach dem Stoß und begründe, warum p_ges gleich bleibt, p₁ aber das Vorzeichen wechselt.",
+  "frage": "Berechne mit E = p² / (2 · m) die kinetische Energie beider Kugeln vor und nach dem Stoß für m₁ = 1 kg und m₂ = 5 kg.",
   "zeilen": 5,
   "loesung": "Für m₁ = 1 kg und m₂ = 5 kg gilt vor dem Stoß p₁ = 60,0 kg·m/s und p₂ = 0,0 kg·m/s. Damit ist E₁ = p₁² / (2 · m₁) = (60,0)² / (2 · 1 kg) = 3600 / 2 = 1800 J und E₂ = 0 J, zusammen E_ges = 1800 J. Nach dem Stoß steht p₁ = −40,0 kg·m/s und p₂ = 100,0 kg·m/s. Daraus folgt E₁ = (−40,0)² / (2 · 1 kg) = 1600 / 2 = 800 J und E₂ = (100,0)² / (2 · 5 kg) = 10000 / 10 = 1000 J, zusammen wieder E_ges = 1800 J. Beide Summen bleiben also erhalten, denn die Simulation rechnet elastisch. Verschieden ist, wie sie es tun: Der Impuls ist gerichtet, deshalb wird p₁ negativ, und die Summe −40,0 + 100,0 = 60,0 fällt kleiner aus als die Summe der Beträge 40,0 + 100,0 = 140,0. In E = p² / (2 · m) steht p dagegen im Quadrat; das Vorzeichen verschwindet, und die Anteile addieren sich als positive Zahlen zu 800 J + 1000 J = 1800 J. Kugel 1 hat 100,0 kg·m/s an Impuls abgegeben und 1000 J an Energie – zwei getrennte Bilanzen, die sich ohne die Masse nicht ineinander umrechnen lassen. Das Vorzeichen wechselt, weil die stoßende Masse die kleinere ist: In v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂) wird der Zähler negativ, sobald m₁ < m₂ ist. Mit p₁ = 60,0 kg·m/s und m₁ = 1 kg ist v₁ = 60 m/s, und die Formel liefert v₁' = ((1 − 5) · 60) / 6 = −40 m/s, also p₁ = −40,0 kg·m/s – genau der abgelesene Wert."
  },
- "alltag": "Lege zwei gleich große Murmeln auf eine glatte Fliese und schnippe die eine gegen die andere, die ruhig liegt: Die erste bleibt fast stehen, die zweite läuft mit etwa demselben Tempo weiter. Wiederhole das mit einem kleinen Klümpchen Knete zwischen beiden, sodass sie zusammenkleben und gemeinsam weiterrollen. Erkläre einer Person zu Hause, warum die Summe m · v in beiden Fällen dieselbe bleibt, das gemeinsame Tempo im zweiten Fall aber nur knapp halb so groß ist (die Knete wiegt mit) – und warum die Simulation nur den ersten der beiden Fälle zeigen kann.",
+ "alltag": "Erkläre, warum die Summe m · v gleich bleibt, wenn zwei Murmeln zusammenstoßen und aneinander kleben bleiben.",
  "alltagAfb": "II",
  "alltagKomp": "S2",
  "ueberleitung": "Damit ist die Messstrecke zu Ende. Auf ihr lief alles geradeaus, und ein einziges Vorzeichen genügte, um die Richtung festzuhalten. Im nächsten Kapitel biegen Mira und Tobias die Bahn zum Kreis. Dann ändert sich die Richtung in jedem Augenblick – der Impuls also auch, obwohl das Tempo gleich bleibt. Die erste Frage dort lautet, wie schnell ein Punkt auf der Kreisbahn überhaupt ist.",

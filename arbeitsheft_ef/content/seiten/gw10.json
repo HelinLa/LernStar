@@ -2,19 +2,19 @@
  "id": "gw10",
  "basiskonzept": "Zufall und Determiniertheit",
  "titel": "Zwei Modelle, ein Himmel",
- "problem": "In einer Dokumentation heißt es, Kopernikus habe 1543 die Erde aus dem Mittelpunkt der Welt gerückt. Mira nennt die Rückwärtsschleife des Mars am Nachthimmel den Beweis dafür. Tobias hält dagegen: Ptolemäus habe dieselbe Schleife schon mit ruhender Erde vorhergesagt, und am Himmel sei der Unterschied nicht zu sehen. Am Bildschirm lassen sich beide Modelle vergleichen.",
+ "problem": "In einer Dokumentation heißt es, Kopernikus habe 1543 die Erde aus dem Mittelpunkt der Welt gerückt. Mira nennt die Rückwärtsschleife des Mars als Beweis dafür. Tobias hält dagegen: Ptolemäus sagte dieselbe Schleife mit ruhender Erde voraus.",
  "frage": "Was entscheidet zwischen dem geozentrischen und dem heliozentrischen Weltbild?",
  "auftrag": "Vergleiche beide Modelle darin, wer im Zentrum steht, wie viele Kreise der Mars in jedem Modell braucht und was sie für den Himmel vorhersagen.",
  "predict": [
-  "Nur das heliozentrische Modell bringt die Schleife zustande; im geozentrischen läuft der Mars immer vorwärts.",
-  "Beide Modelle zeigen dieselbe Schleife; das geozentrische braucht dafür einen Zusatzkreis je Planet, das heliozentrische nicht.",
-  "Die Schleife entsteht, weil der Mars auf seiner Bahn für einige Wochen tatsächlich rückwärts läuft."
+  "Nur das heliozentrische Modell bringt die Schleife zustande.",
+  "Beide Modelle zeigen dieselbe Schleife, das ältere braucht dafür Zusatzkreise.",
+  "Der Mars läuft auf seiner Bahn für einige Wochen wirklich rückwärts."
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was die Schleifen nötig macht und wie die Zeile die Anordnung bewertet.",
-  "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht.",
-  "Verfolge im Streifen unten, wann die Spur des Mars orange wird. Halte aus dem Hinweistext fest, was Galilei 1610 sah."
+  "Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile ab.",
+  "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben Angaben.",
+  "Verfolge im Streifen unten, wann die Spur des Mars orange wird."
  ],
  "tabCols": [
   "geozentrisch: Erde in der Mitte (alt)",
@@ -26,7 +26,7 @@
   "Schleife des Mars im Streifen unten",
   "Urteil am Ende der Statuszeile"
  ],
- "fachtext": "Von der Erde aus wandert der Mars meist in eine Richtung zwischen den Sternen. Für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und überholt den Mars. Im geozentrischen Modell ruht die Erde; dort erzeugt ein zweiter Kreis die Schleife, der Epizykel. Beide Modelle sagen dasselbe Aussehen des Himmels voraus. Die Schleife allein entscheidet also nicht zwischen ihnen. Heliozentrisch genügt für den Mars ein Kreis; Sparsamkeit ist aber kein Beweis. Den Ausschlag gaben Galileis Beobachtungen von 1610: Jupitermonde und die Phasen der Venus, die der ptolemäische Aufbau nicht zulässt.",
+ "fachtext": "Von der Erde aus wandert der Mars meist in eine Richtung zwischen den Sternen. Für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und überholt den Mars. Im geozentrischen Modell ruht die Erde; dort erzeugt ein zweiter Kreis die Schleife, der Epizykel. Beide Modelle sagen dasselbe Aussehen des Himmels voraus. Die Schleife allein entscheidet also nicht zwischen ihnen. Heliozentrisch genügt für den Mars ein Kreis; Sparsamkeit ist aber kein Beweis. Den Ausschlag gaben Galileis Beobachtungen von 1610: Jupitermonde und die Phasen der Venus.",
  "merksatz": [
   {
    "pre": "Zwischen den Sternen läuft der Mars zeitweise rückwärts, weil die Erde ihn auf der inneren Bahn",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "Im Ausgangszustand und nach „Zurücksetzen“ steht in der Statuszeile: „Geozentrisch (Ptolemäus): Die Erde steht in der Mitte. Damit ließ sich der Himmel gut vorhersagen – aber nur mit Zusatzkreisen (Epizykeln) für die Schleifen der Planeten. Die Anordnung selbst stimmt nicht.“ Nach „Sonne in der Mitte (heute)“ heißt es: „Heliozentrisch (Kopernikus): Die Sonne steht in der Mitte, auch die Erde kreist um sie. Es sagt genau denselben Himmel voraus – aber ohne einen einzigen Epizykel. So ist es heute gültig.“ Für den Mars sind links zwei Kreise gezeichnet, die große Bahn und der kleine gestrichelte Zusatzkreis, rechts dagegen nur die eine Bahn; die Zeile unter den Tafeln fasst es zusammen: geozentrisch 2 Kreise je Planet, heliozentrisch 1 Kreis je Planet – heute gültig. Der Streifen unten zeigt bei beiden Modellen dasselbe Bild – „Von der Erde aus gesehen: Mars läuft zeitweise rückwärts“ –, und die Spur wird orange, wenn die Erde den Mars überholt. Im Kästchen „Jupitermonde“ der rechten Tafel umkreisen vier Monde den Jupiter, der innerste am schnellsten, der äußerste am langsamsten. Der Hinweistext rechts daneben ordnet die drei Namen: Kopernikus konnte 1543 nichts beweisen, Galilei sah 1610 durch das Fernrohr die Jupitermonde und die Venusphasen, und den Beweis, dass die Erde sich bewegt, lieferte erst Bessel 1838 mit der Fixsternparallaxe.",
  "aufgabe": {
-  "frage": "Begründe, warum die rückläufige Schleife des Mars allein nicht zwischen den beiden Weltbildern entscheidet, und nenne die Beobachtungen, die den Ausschlag gaben.",
+  "frage": "Begründe, warum die rückläufige Schleife des Mars allein nicht zwischen den beiden Weltbildern entscheidet.",
   "zeilen": 5,
   "loesung": "Beide Modelle sagen für den Himmel dasselbe voraus: Der geozentrischen Anordnung bescheinigt die Statuszeile, dass sich damit der Himmel gut vorhersagen ließ, der heliozentrischen, dass sie „genau denselben Himmel“ voraussagt. Die Schleife entsteht einmal durch den Epizykel, einmal dadurch, dass die Erde den Mars überholt. Eine Beobachtung, die zu beiden Modellen passt, kann keines von beiden ausschließen; sie unterscheiden sich nur im Aufwand – für den Mars zwei Kreise gegenüber einem, und das ist ein Argument, kein Beweis. Den Ausschlag gaben erst Beobachtungen, die der ptolemäische Aufbau nicht zulässt: 1610 die Jupitermonde und vor allem die Venusphasen (Galilei) – damit war dieser Aufbau widerlegt. Dass sich die Erde wirklich bewegt, war damit noch nicht gezeigt; den direkten Nachweis lieferte erst Bessel 1838 mit der Fixsternparallaxe."
  },
- "alltag": "Kopernikus veröffentlichte sein Modell 1543 und konnte es nicht beweisen – er stellte damit eine Ordnung der Welt infrage, die damals auch von der kirchlichen Lehre getragen wurde. Ordne die Bedeutung dieses Wandels für die Naturwissenschaften ein: Begründe zu Hause in drei bis vier Sätzen, was sich dadurch im Verhältnis von physikalischer Aussage und kirchlicher Lehre geändert hat – woran eine Aussage seitdem geprüft wird und woran nicht mehr.",
+ "alltag": "Ordne ein, was sich seit Kopernikus daran geändert hat, woran eine physikalische Aussage geprüft wird.",
  "alltagAfb": "II",
  "alltagKomp": "B8",
  "ueberleitung": "Galileis Jupitermonde kannst du am Bildschirm kreisen sehen; Bessels Parallaxe und das Jahr 1543 stehen dort nur als Text. Auf der nächsten Seite liegen vier Arten von Quellen zu einer Aussage über Schwerelosigkeit nebeneinander, und du entscheidest an nachprüfbaren Kriterien, welcher davon du warum glaubst.",

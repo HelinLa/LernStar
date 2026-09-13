@@ -66,7 +66,10 @@ def pruefen(seiten):
     """Liefert eine Liste von Beanstandungen, ohne etwas zu aendern."""
     fehler = []
     for s in seiten:
-        for tid, art, txt in formregeln.pruefe_seite(s):
+        # klasse=11: Die Oberstufe hat seit dem 13.09.2026 eine eigene Spanne
+        # fuer den Einstieg (26-45 statt 42-59). Ohne das Argument faellt der
+        # Pruefer auf die Sek-I-Spanne zurueck und meldet 27 von 28 Seiten.
+        for tid, art, txt in formregeln.pruefe_seite(s, klasse=11):
             fehler.append(f"{tid}: [{art}] {txt}")
     for kap, art, txt in formregeln.pruefe_verteilung(seiten, plan.KAPITEL_VON):
         fehler.append(f"{kap}: [{art}] {txt}")

@@ -2,19 +2,19 @@
  "id": "ki14",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Zweimal verdoppelt, zweimal anders",
- "problem": "Im Fahrschulbuch von Miras Schwester steht, dass der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Tobias hält das für eine Faustregel mit Sicherheitszuschlag: Doppeltes Tempo bedeute doppelte Energie und damit doppelten Weg. Mira traut dem Buch mehr als dem Kopfrechnen. Entscheiden soll eine Messreihe, in der eine Kugel einen Klotz schiebt – mal schneller, mal schwerer.",
+ "problem": "Im Fahrschulbuch steht, dass der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Tobias hält das für eine Faustregel mit Sicherheitszuschlag. Mira traut dem Buch mehr als dem Kopfrechnen.",
  "frage": "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
  "auftrag": "Miss eine Messreihe zur Bewegungsenergie und linearisiere sie: Trage E über v und danach über v² auf, bestimme die Steigung der Ursprungsgeraden und rechne aus ihr Masse und Tempo zurück.",
  "predict": [
-  "Schon über v liegen die Punkte auf einer Geraden: Doppeltes Tempo bringt die doppelte Energie, doppelte Masse ebenso.",
-  "Über v ergibt sich eine Kurve, erst über v² eine Ursprungsgerade: Doppeltes Tempo bringt vierfache Energie, doppelte Masse nur doppelte.",
-  "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: E = m · v², ohne ½."
+  "Doppeltes Tempo bringt doppelte Energie, doppelte Masse ebenso.",
+  "Doppeltes Tempo bringt vierfache Energie, doppelte Masse nur doppelte.",
+  "Über v² ist die Steigung die Masse selbst, ohne den Faktor ½."
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „zurücksetzen“, wähle „E über v auftragen“ und drücke „Messreihe automatisch aufnehmen“. Beschreibe danach, wie die Punkte liegen.",
-  "Wähle „E über v² auftragen“ und notiere y = k·x, R², den Wert hinter „erwartet:“ und den Kasten „Masse m aus der Steigung k“.",
-  "Drücke „Tabelle leeren“, wähle „E über m auftragen“ und nimm die Reihe erneut auf. Notiere Steigung, R² und „Geschwindigkeit v aus der Steigung k“."
+  "Wähle „E über v auftragen“ und nimm die Messreihe auf.",
+  "Wähle „E über v² auftragen“ und notiere Steigung k und R².",
+  "Leere die Tabelle und nimm „E über m auftragen“ neu auf."
  ],
  "tabCols": [
   "Auftragung und Auswertung",
@@ -26,7 +26,7 @@
   "E über m: k in m²/s² → Tempo v",
   "R² und Abweichung der Rückrechnung"
  ],
- "fachtext": "Gemessen wird ein Weg: Die Kugel schiebt den Klotz gegen die konstante Reibungskraft F = 200 N. Die dafür nötige Arbeit ist die mitgebrachte Energie: E = F · s. E über v ergibt eine gekrümmte Kurve; eine Ausgleichsgerade wäre falsch. Linearisieren hilft: Über v² ergeben dieselben Messwerte eine Ursprungsgerade. Also geht v quadratisch ein. Die Steigung trägt Physik: k = m/2 in kg, also m = 2 · k. Über m ist die Auftragung von vornherein gerade, dort ist k = v²/2. Die Steigungen liefern 2,0 kg bei 4 kg und 8,0 m²/s² bei 4 m/s. Beide Male steht ½ davor, also E = ½ · m · v².",
+ "fachtext": "Gemessen wird ein Weg: Die Kugel schiebt den Klotz gegen die konstante Reibungskraft F = 200 N. Die dafür nötige Arbeit ist die mitgebrachte Energie: E = F · s. E über v ergibt eine gekrümmte Kurve, eine Ausgleichsgerade wäre dort falsch. Linearisieren hilft: Über v² ergeben dieselben Messwerte eine Ursprungsgerade, v geht also quadratisch ein. Die Steigung trägt Physik: k = m/2 in kg, also m = 2 · k. Über m ist die Auftragung von vornherein gerade, dort ist k = v²/2. Die Steigungen liefern 2,0 kg bei 4 kg und 8,0 m²/s² bei 4 m/s. Beide Male steht ½ davor, also E = ½ · m · v².",
  "merksatz": [
   {
    "pre": "Über v liegen die Messpunkte auf einer gekrümmten Kurve; erst die Auftragung über v² ergibt eine",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "Der von Hand übernommene Punkt steht als erste Tabellenzeile: 4 kg | 4 m/s | 16 m²/s² | 0,16 m | 32 J – und 200 N · 0,16 m sind genau diese 32 J. Die automatische Reihe hängt acht Zeilen an, alle bei 4 kg: 1 m/s mit 0,01 m und 2 J, 2 m/s mit 0,04 m und 8 J, 3 m/s mit 0,09 m und 18 J, 4 m/s mit 0,16 m und 32 J, 6 m/s mit 0,36 m und 72 J, 8 m/s mit 0,64 m und 128 J, 10 m/s mit 1,00 m und 200 J, 12 m/s mit 1,44 m und 288 J. In der Auftragung E über v liegen diese neun Punkte auf einer nach oben gekrümmten Kurve; zu sehen sind acht Kleckse, weil der von Hand übernommene Punkt und der Reihenpunkt bei 4 m/s aufeinanderfallen. Von 1 m/s auf 2 m/s ändert sich fast nichts, von 10 m/s auf 12 m/s sehr viel, und eine Ausgleichsgerade wird gar nicht erst gezeichnet. Nach „E über v² auftragen“ meldet das Auswertungsfeld „m = 4 kg · 9 Messwerte“, dazu y = 2,000·x bei R² = 1,0000 und „erwartet: 2,000“; darunter steht „Masse m aus der Steigung k 4,00 kg · eingestellt: 4,00 kg“ mit der Abweichung 0,00 %. Die Steigung 2,0 kg ist m/2, und 2 · 2,0 kg sind die eingestellten 4 kg. Nach „Tabelle leeren“ und „E über m auftragen“ steht bei festem Tempo 4 m/s die zweite Reihe da: 1 kg mit 0,04 m und 8 J, 2 kg mit 0,08 m und 16 J, 4 kg mit 0,16 m und 32 J, 6 kg mit 0,24 m und 48 J, 8 kg mit 0,32 m und 64 J, 10 kg mit 0,40 m und 80 J, 13 kg mit 0,52 m und 104 J, 16 kg mit 0,64 m und 128 J. Diese Punkte liegen von Anfang an auf einer Ursprungsgeraden: „v = 4 m/s · 8 Messwerte“, y = 8,000·x bei R² = 1,0000 und „erwartet: 8,000“, darunter „Geschwindigkeit v aus der Steigung k 4,00 m/s · eingestellt: 4,00 m/s“ mit der Abweichung 0,00 %. Die Steigung 8,0 m²/s² ist v²/2, und √(2 · 8,0 m²/s²) sind die eingestellten 4 m/s. Beide Bestimmtheitsmaße stehen exakt bei 1,0000 und beide Abweichungen bei 0,00 % – die Kugel verliert unterwegs nichts, und der Maßstab am Klotz streut nicht. Deine Zahlen sind deshalb dieselben; eine echte Messreihe würde streuen.",
  "aufgabe": {
-  "frage": "Werte die Messreihe einer anderen Gruppe aus: Sie hat bei 2 m/s, 4 m/s, 6 m/s und 8 m/s einen Schiebeweg von 0,07 m, 0,28 m, 0,63 m und 1,12 m gemessen, die Masse aber nicht notiert. Bestimme über E = F · s die Energien, trage sie über v² auf und rechne aus der Steigung die Masse zurück.",
+  "frage": "Bestimme aus den Schiebewegen 0,07 m, 0,28 m, 0,63 m und 1,12 m bei 2, 4, 6 und 8 m/s über E = F · s und die Auftragung über v² die Masse der Kugel.",
   "zeilen": 5,
   "loesung": "Aus E = F · s mit F = 200 N folgen 14 J, 56 J, 126 J und 224 J. Die zugehörigen Quadrate sind 4 m²/s², 16 m²/s², 36 m²/s² und 64 m²/s². Über v² aufgetragen liefert jedes Paar denselben Quotienten: 14 J : 4 m²/s² = 3,5 kg, 56 : 16 = 3,5, 126 : 36 = 3,5 und 224 : 64 = 3,5. Die vier Punkte liegen also auf einer Ursprungsgeraden mit der Steigung k = 3,5 kg, und aus m = 2 · k folgt m = 7,0 kg. Über v aufgetragen wären dieselben Werte eine Parabel gewesen, aus der sich nichts ablesen lässt. Die Probe am Bildschirm bestätigt das Ergebnis: Mit „Masse m“ auf 7 kg und „Tempo v“ auf 4 m/s meldet das Statusfeld E = ½ · 7 · 4² = 56 J und einen Schiebeweg von 0,28 m – genau der zweite Messwert der fremden Reihe."
  },
- "alltag": "Im Fahrschulbuch steht, dass der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst. Erkläre einer Person zu Hause, warum das aus der Messreihe folgt und nicht geglaubt werden muss: Der Bremsweg ist genau der Schiebeweg des Klotzes, denn bei konstanter Bremskraft ist s = E / F. Weil E über v² auf einer Ursprungsgeraden liegt, wächst auch der Weg mit dem Quadrat – aus 0,16 m bei 4 m/s werden 0,64 m bei 8 m/s.",
+ "alltag": "Erkläre mit s = E / F, warum der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst.",
  "alltagAfb": "II",
  "alltagKomp": "S1",
  "ueberleitung": "Die Kugel trug ihre Energie, weil sie fuhr; der Klotz auf dem Regal trägt sie, weil er hoch liegt. Auf der nächsten Seite kommt eine dritte Form dazu: In einer gespannten Feder steckt Energie, obwohl nichts fährt und nichts oben liegt – und in ihrer Formel steht wieder ein Quadrat, diesmal die Auslenkung. Auch dort wird erst das Quadrieren die Auftragung gerade machen.",

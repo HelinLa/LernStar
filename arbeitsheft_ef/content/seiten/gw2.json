@@ -2,19 +2,19 @@
  "id": "gw2",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Der Pfeil zeigt nach innen",
- "problem": "Noch auf der Kirmes filmen Mira und Tobias das Kettenkarussell. Je schneller es sich dreht, desto weiter stehen die Ketten schräg. Tobias fragt, welche Kraft die Sitze auf ihrer Bahn hält und wohin sie zeigt. Mira will das nicht raten: Für Jugend forscht zählt nur eine Richtung, die man am Bildschirm nachprüfen und mit Zahlen belegen kann.",
+ "problem": "Je schneller sich das Kettenkarussell dreht, desto weiter stehen die Ketten schräg. Tobias fragt, welche Kraft die Sitze auf ihrer Bahn hält und wohin sie zeigt. Mira will das nicht raten.",
  "frage": "Wohin zeigt die Kraft auf der Kreisbahn – und wovon hängt ihr Betrag ab?",
  "auftrag": "Untersuche am Bildschirm, in welche Richtung der Kraftpfeil zeigt, und bestimme aus Radius und Umlauffrequenz die Zentripetalbeschleunigung, mit der Masse zusätzlich die Zentripetalkraft.",
  "predict": [
-  "Die Kraft zeigt tangential in Bewegungsrichtung; sonst käme der Körper auf der Bahn nicht voran.",
-  "Die Kraft zeigt nach außen: Sie hält den Körper gegen die Fliehkraft auf seiner Bahn.",
-  "Die Kraft zeigt zum Mittelpunkt und ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential weiter."
+  "Die Kraft zeigt in Fahrtrichtung, sonst käme der Sitz nicht voran.",
+  "Die Kraft zeigt nach außen und hält den Sitz gegen die Fliehkraft.",
+  "Die Kraft zeigt zum Mittelpunkt und ändert nur die Richtung der Bewegung."
  ],
  "predictOk": 2,
  "forschen": [
-  "Lies bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ T, ω, v, a_z und F_z ab.",
-  "Vergleiche im Bild die Pfeile „F_z zum Mittelpunkt“ und „v tangential“ während eines Umlaufs. Halte „daraus gemessene Umlaufzeit“ gegen T = 1/f.",
-  "Ziehe den Regler „Masse m“ auf 1,00 kg und auf 2,00 kg und verfolge dabei getrennt a_z und F_z."
+  "Lies bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Größen T, ω, v, a_z und F_z ab.",
+  "Vergleiche im Bild die Pfeile „F_z zum Mittelpunkt“ und „v tangential“.",
+  "Ziehe den Regler „Masse m“ auf 1,00 kg und auf 2,00 kg."
  ],
  "tabCols": [
   "Masse m (r = 0,80 m, f = 1,50 Hz)",
@@ -25,7 +25,7 @@
   "m = 1,00 kg",
   "m = 2,00 kg"
  ],
- "fachtext": "Der Radius r ist der Abstand von der Drehachse. Die Umlaufzeit T ist die Dauer eines Umlaufs, die Umlauffrequenz f die Zahl der Umläufe je Sekunde; es gilt T = 1/f. Die Winkelgeschwindigkeit ist ω = 2·π·f, die Bahngeschwindigkeit v = ω·r. Ihr Betrag bleibt gleich, ihre Richtung nicht. Schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r. Nach dem zweiten Newton'schen Gesetz gehört dazu die Zentripetalkraft F_z = m · a_z, ebenfalls nach innen. Sie ist keine neue Kraftart, sondern eine Aufgabe: mal übernimmt sie ein Faden, mal die Reibung. Fällt sie weg, fliegt der Körper tangential weiter.",
+ "fachtext": "Der Radius r ist der Abstand von der Drehachse, die Umlaufzeit T die Dauer eines Umlaufs; es gilt T = 1/f. Daraus folgen ω = 2·π·f und v = ω·r. Der Betrag von v bleibt gleich, seine Richtung nicht. Schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r. Dazu gehört die Zentripetalkraft F_z = m · a_z, ebenfalls nach innen. Sie ist keine neue Kraftart, sondern eine Aufgabe: mal übernimmt sie ein Faden, mal die Reibung. Fällt sie weg, fliegt der Körper tangential weiter.",
  "merksatz": [
   {
    "pre": "Die Zentripetalkraft zeigt immer zum",
@@ -40,11 +40,11 @@
  ],
  "beobachtung": "In der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz zeigt das Feld „Alle Größen der Kreisbewegung“ T = 0,667 s, ω = 9,4248 rad/s, v = 7,53984 m/s, a_z = 71,06 m/s² und F_z = 35,53 N. Darunter stehen die Rechenzeilen: v = ω·r = 9,4248 rad/s · 0,80 m, dann zweimal a_z – einmal als v²/r, einmal als ω²·r – und beide Wege geben 71,06 m/s². Vor dem ersten vollen Umlauf steht hinter „daraus gemessene Umlaufzeit“ nur ein Strich; danach steht dort T = 0,667 s, genau der Wert aus T = 1/f. Die „Uhr der Simulation“ daneben zählt weiter – sie gibt die gesamte Laufzeit an, nicht die Umlaufzeit. Der rote Pfeil zeigt in jeder Winkelstellung zum Mittelpunkt, der grüne bleibt tangential. Zieht man allein den Masse-Regler, wächst F_z von 35,53 N bei 0,50 kg über 71,06 N bei 1,00 kg auf 142,1 N bei 2,00 kg, während a_z in allen drei Zeilen 71,06 m/s² anzeigt; auch T = 0,667 s, ω = 9,4248 rad/s und v = 7,53984 m/s bleiben unverändert.",
  "aufgabe": {
-  "frage": "Berechne für die Einstellung m = 1,00 kg, r = 1,00 m und f = 2,00 Hz nacheinander T, ω, v, a_z und F_z und vergleiche jeden Zwischenwert mit der Anzeige der Simulation.",
+  "frage": "Berechne für m = 1,00 kg, r = 1,00 m und f = 2,00 Hz nacheinander T, ω, v, a_z und F_z.",
   "zeilen": 5,
   "loesung": "T = 1/f = 1 / 2,00 Hz = 0,500 s. ω = 2·π·f = 2·π·2,00 Hz = 12,5664 rad/s. v = ω·r = 12,5664 rad/s · 1,00 m = 12,56640 m/s. a_z = v²/r = (12,56640 m/s)² / 1,00 m = 157,9 m/s²; die Probe über a_z = ω²·r = (12,5664 rad/s)² · 1,00 m ergibt denselben Wert. F_z = m · a_z = 1,00 kg · 157,9 m/s² = 157,9 N. Alle fünf Zahlen stehen so auch im Feld „Alle Größen der Kreisbewegung“; dass der Zahlenwert von a_z und F_z hier gleich ist – bei verschiedenen Einheiten, m/s² und N –, liegt allein an m = 1,00 kg."
  },
- "alltag": "Im Auto stützt dich beim Abbiegen die Tür, dazu die Reibung zwischen dir und dem Sitz. Erkläre einer Person zu Hause in drei Sätzen, in welche Richtung diese Kraft auf dich wirkt und was ohne sie mit dir geschähe. Benutze dabei die Wörter Kreisbahn, Mittelpunkt und tangential.",
+ "alltag": "Erkläre, in welche Richtung die Kraft auf dich wirkt, während das Auto abbiegt.",
  "alltagAfb": "II",
  "alltagKomp": "K4",
  "ueberleitung": "Dass F_z mit der Masse wächst, hast du an drei Einstellungen gesehen – drei Punkte sind aber noch keine Messreihe. Auf der nächsten Seite nimmst du eine ganze Reihe auf, legst eine Ausgleichsgerade hindurch und liest aus ihrer Steigung zurück, was du vorher eingestellt hast.",

@@ -2,19 +2,19 @@
  "id": "gw11",
  "basiskonzept": "Zufall und Determiniertheit",
  "titel": "Vier Quellen, eine Behauptung",
- "problem": "Für die Tafel zur Schwerelosigkeit haben Mira und Tobias vier Quellen gesammelt: ein Schulbuch, einen Zeitungsartikel, ein Video aus dem Netz und einen begutachteten Fachartikel. Alle vier äußern sich dazu, warum die Besatzung einer Raumstation schwebt, und sie widersprechen einander. Tobias will die Quelle nehmen, die am überzeugendsten klingt. Mira fragt zurück: Woran misst man das?",
+ "problem": "Für ihre Tafel haben Mira und Tobias vier Quellen zur Schwerelosigkeit gesammelt: ein Schulbuch, eine Zeitung, ein Netzvideo und einen Fachartikel. Alle vier widersprechen einander. Tobias will die nehmen, die am überzeugendsten klingt.",
  "frage": "Woran erkennt man, welche Quelle eine physikalische Aussage verlässlich belegt?",
  "auftrag": "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
  "predict": [
-  "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht; Bilder aus dem All wiegen schwerer.",
-  "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Titel oder Hochschule genügen, Daten und Messweise muss niemand offenlegen.",
-  "Verlässlich ist die Quelle, deren Aussage nachprüfbar ist: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt."
+  "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten erreicht.",
+  "Verlässlich ist die Quelle, hinter der eine Fachperson mit Titel steht.",
+  "Verlässlich ist die Quelle, deren Aussage sich nachprüfen lässt."
  ],
  "predictOk": 2,
  "forschen": [
-  "Lies die vier Zeilen des Datenblatts und markiere je Zeile die erfüllten Kriterien: Quellenangabe, Begutachtung, offene Daten, Trennung von Beobachtung und Deutung.",
-  "Rechne die erste Behauptung nach: g = G · M / r² mit r = 6371 km + 400 km, G = 6,674 · 10⁻¹¹ N·m²/kg² und M = 5,972 · 10²⁴ kg.",
-  "Zähle je Quellenart die erfüllten Kriterien und vergib danach die Rangplätze 1 bis 4."
+  "Markiere je Zeile des Datenblatts die erfüllten Kriterien.",
+  "Rechne die erste Behauptung mit g = G · M / r² und r = 6771 km nach.",
+  "Vergib nach der Zahl der erfüllten Kriterien die Rangplätze 1 bis 4."
  ],
  "daten": {
   "titel": "Vier Quellenarten zu einer Aussage über Schwerelosigkeit",
@@ -58,7 +58,7 @@
   "Netzvideo",
   "Fachartikel"
  ],
- "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden. Es zieht die Astronautin weiter an. Station und Besatzung sind gemeinsam im freien Fall. Genau deshalb drückt niemand auf eine Unterlage. Diese Aussage ist nachprüfbar: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Zwei unabhängige Wege liefern denselben Wert. Ebenso prüfbar ist eine Quelle. Sie nennt, worauf sie sich stützt. Sie wurde von Fachleuten begutachtet. Sie legt ihre Daten offen. Und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
+ "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden und zieht die Astronautin weiter an. Station und Besatzung sind gemeinsam im freien Fall; genau deshalb drückt niemand auf eine Unterlage. Diese Aussage ist nachprüfbar: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Ebenso prüfbar ist eine Quelle. Sie nennt, worauf sie sich stützt, und sie wurde von Fachleuten begutachtet. Sie legt ihre Daten offen und trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
  "merksatz": [
   {
    "pre": "Schwerelosigkeit bedeutet nicht fehlende Anziehung, sondern",
@@ -73,11 +73,11 @@
  ],
  "beobachtung": "Die Rechnung entscheidet zwischen den Zeilen. Mit r = 6371 km + 400 km = 6771 km = 6,771 · 10⁶ m folgt r² = 4,585 · 10¹³ m², und mit G · M = 3,986 · 10¹⁴ m³/s² ergibt sich g = 8,69 m/s². Dieselbe Formel liefert am Boden 3,986 · 10¹⁴ m³/s² : 4,059 · 10¹³ m² = 9,82 m/s²; in Bahnhöhe bleiben davon 8,69 : 9,82 = 0,885, also 88,5 Prozent. Die Anziehung ist dort nur um gut ein Zehntel kleiner. Damit ist das Netzvideo widerlegt. Der Zeitungsartikel sagt dasselbe in schwächerer Form; er nennt keine Zahl und lässt sich deshalb nicht genau prüfen, doch in der Lesart „fast keine Anziehung“ widerspricht ihm dieselbe Rechnung. Schulbuch und Fachartikel stimmen im Wert überein. Die dritte Spalte zählt: Fachartikel vier Kriterien, Schulbuch drei, Zeitungsartikel eins, Netzvideo keins – das ist die Rangfolge. Verlässlichkeit und Richtigkeit bleiben dabei zweierlei: Der Rang entsteht aus den Kriterien, über wahr oder falsch entscheidet die Rechnung.",
  "aufgabe": {
-  "frage": "Berechne aus den Bahndaten der vierten Zeile mit a = 4 · π² · r / T² die Zentripetalbeschleunigung und begründe damit, welche der vier Aussagen haltbar ist.",
+  "frage": "Berechne aus den Bahndaten der vierten Zeile mit a = 4 · π² · r / T² die Zentripetalbeschleunigung.",
   "zeilen": 5,
   "loesung": "Mit r = 6771 km = 6,771 · 10⁶ m und T = 5545 s gilt 4 · π² · r = 39,48 · 6,771 · 10⁶ m = 2,673 · 10⁸ m sowie T² = (5545 s)² = 3,0747 · 10⁷ s². Damit ist a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s². Dieser Wert stimmt mit dem Erdfeld in dieser Höhe überein: Die Feldstärke 8,69 N/kg entspricht einer Beschleunigung von 8,69 m/s². Die Station wird angezogen und fällt mit genau dieser Beschleunigung ständig an der Erde vorbei. Haltbar sind deshalb die Aussagen von Schulbuch und Fachartikel; das Netzvideo ist widerlegt, und der Zeitungsartikel nennt keine Zahl – prüfen lässt er sich nur der Richtung nach, und auch dort hält er nicht stand. Der Fachartikel steht trotz gleichem Wert über dem Schulbuch, weil er die Messdaten offenlegt und begutachtet wurde."
  },
- "alltag": "Suche in einem Erklärvideo oder einem Zeitungsartikel eine Aussage über Schwerelosigkeit und prüfe sie an den vier Kriterien des Datenblatts. Notiere, welches Kriterium fehlt und welche Angabe du bräuchtest, um die Aussage selbst nachzurechnen.",
+ "alltag": "Prüfe eine Aussage über Schwerelosigkeit aus einem Erklärvideo an den vier Kriterien des Datenblatts.",
  "alltagAfb": "III",
  "alltagKomp": "K2",
  "ueberleitung": "Diese vier Zeilen ließen sich mit einer Rechnung entscheiden. Die letzte Seite des Kapitels behauptet etwas, das keinem Gefühl entspricht und trotzdem gemessen ist: Eine bewegte Uhr geht langsamer. Lege dort dieselben Kriterien noch einmal an.",

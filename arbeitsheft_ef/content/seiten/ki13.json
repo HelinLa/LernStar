@@ -2,19 +2,19 @@
  "id": "ki13",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Vier Meter getragen, null Joule",
- "problem": "Mit dem vollen Schulrucksack auf den Schultern geht Tobias den Flur entlang und danach eine Treppe hinauf. Oben behauptet er, der lange Flur habe ihn mehr gekostet als die paar Stufen. Mira widerspricht: Für den Rucksack zähle davon allein die Treppe. Am Bildschirm wollen beide den Streit an derselben Last entscheiden.",
+ "problem": "Mit dem vollen Rucksack geht Tobias den Flur entlang und danach eine Treppe hinauf. Der lange Flur habe ihn mehr gekostet als die paar Stufen, sagt er oben. Mira widerspricht.",
  "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
  "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
  "predict": [
-  "Nur der Kraftanteil in Wegrichtung zählt; beim waagerechten Tragen gibt es ihn nicht, deshalb ist W null.",
-  "Die Haltekraft wirkt über den ganzen Weg von 4 m; Tragen liefert daher mindestens so viel Arbeit wie Schieben.",
-  "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben, weil die Reibung fehlt."
+  "Nur der Kraftanteil in Wegrichtung zählt.",
+  "Tragen liefert mindestens so viel Arbeit wie Schieben.",
+  "Tragen liefert Arbeit, nur weniger als Schieben."
  ],
  "predictOk": 0,
  "forschen": [
-  "Drücke „Schieben“. „Schiebekraft F“ steht auf 100 N, „Weg s“ auf 4 m. Notiere W und den Satz am unteren Bildrand.",
-  "Drücke „Waagerecht tragen“. „Masse der Kiste m“ steht auf 20 kg, der Weg bleibt 4 m. Notiere Haltekraft, W und den Satz.",
-  "Drücke „Hochheben“ und „Ausführen“. „Höhe h“ steht auf 2,0 m. Prüfe, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
+  "Drücke „Schieben“ und notiere W bei F = 100 N und s = 4 m.",
+  "Drücke „Waagerecht tragen“ und notiere Haltekraft und W.",
+  "Drücke „Hochheben“ und „Ausführen“ und notiere W bei h = 2,0 m."
  ],
  "tabCols": [
   "Kraft und Weg laut Statusfeld",
@@ -25,7 +25,7 @@
   "Waagerecht tragen",
   "Hochheben"
  ],
- "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs des Weges verschiebt. Es zählt nur der Anteil der Kraft in Wegrichtung: W = F · s · cos(α). α ist der Winkel zwischen Kraft und Weg. Für α = 0° bleibt W = F · s. Für α = 90° ist cos(α) = 0, also W = 0 J, gleichgültig wie groß F ist. Die Einheit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben gleicht die Hubkraft die Gewichtskraft aus: W = m · g · h. Die Leistung P = W/t sagt, wie schnell das geschieht. 1 Watt ist 1 Joule je Sekunde.",
+ "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs des Weges verschiebt. Es zählt nur der Anteil der Kraft in Wegrichtung: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Für α = 0° bleibt W = F · s. Für α = 90° ist cos(α) = 0, also W = 0 J, gleichgültig wie groß F ist. Die Einheit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben gleicht die Hubkraft die Gewichtskraft aus: W = m · g · h. Die Leistung P = W/t sagt, wie schnell das geschieht. 1 Watt ist 1 Joule je Sekunde.",
  "merksatz": [
   {
    "pre": "Arbeit verrichtet allein die Kraftkomponente",
@@ -40,11 +40,11 @@
  ],
  "beobachtung": "Nach „Schieben“ stehen die Regler auf „Schiebekraft F: 100“ und „Weg s: 4“; das Statusfeld darunter meldet „Du schiebst mit 100 N über 4 m.“ und „Arbeit W = 100 N · 4 m = 400 J“. Das Bild ist mit „Kiste über den Boden schieben“ überschrieben, der Balken am oberen Bildrand nennt „verrichtete Arbeit: 400 J“, und am unteren Bildrand steht „Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet“. Nach „Waagerecht tragen“ heißen die Regler „Masse der Kiste m: 20“ und „getragener Weg s: 4“; das Statusfeld meldet „Du hältst 196 N (20 kg) und gehst 4 m geradeaus.“, „Die Kraft zeigt nach oben, der Weg nach vorn.“ und „Arbeit W = 0 J – physikalisch keine Arbeit.“ Der Balken steht bei „verrichtete Arbeit: 0 J“, der Satz am unteren Bildrand lautet „Kraft ↑ und Weg → stehen senkrecht zueinander → W = 0“. Trotz 196 N über volle 4 m bleibt W also null. Nach „Hochheben“ stehen „Masse der Kiste m: 20“ und „Höhe h: 2,0“; das Statusfeld nennt „Du hebst 20 kg um 2,0 m hoch.“ und „Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J“, der Balken meldet „verrichtete Arbeit: 392 J“, und unten steht wieder der Satz über die gleiche Richtung von Kraft und Weg. Nachgerechnet ergibt 20 · 9,81 · 2,0 = 392,4, die Anzeige rundet also auf ganze Joule ab. Während „Ausführen“ läuft, wächst der Pfeil „Weg s“ nach oben und der Pfeil „Kraft F“ wandert mit der Kiste mit; die 392 J stehen dabei von Anfang an im Balken – er meldet also die Arbeit für den ganzen Hub, nicht die bis zu diesem Augenblick verrichtete. Am Ende ergänzt das Statusfeld den Vermerk, dass ausgeführt wurde.",
  "aufgabe": {
-  "frage": "Berechne aus den drei angezeigten Arbeitswerten die Leistung, wenn Tobias für jeden der drei Vorgänge 2,5 s braucht, und begründe, warum beim Tragen sowohl W als auch P null werden, obwohl er dabei 196 N hält.",
+  "frage": "Berechne die Leistung für alle drei Vorgänge, wenn Tobias für jeden 2,5 s braucht.",
   "zeilen": 5,
   "loesung": "Es gilt P = W / t. Schieben: W = 100 N · 4 m = 400 J, also P = 400 J / 2,5 s = 160 W. Waagerecht tragen: W = 0 J, also P = 0 J / 2,5 s = 0 W. Hochheben: mit dem angezeigten Wert W = 392 J folgt P = 392 J / 2,5 s = 156,8 W; rechnet man mit dem ungerundeten Wert 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, sind es 156,96 W, also rund 157 W. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg nach vorn – der Winkel beträgt 90°. Die Komponente längs des Weges ist 196 N · cos(90°) = 0 N, damit W = 0 N · 4 m = 0 J und P = 0 J / 2,5 s = 0 W. Die Anstrengung ist echt, sie steckt in der Muskelarbeit des Trägers; an der Kiste wird sie nicht als Arbeit wirksam, weil die Kiste ihre Höhe nicht ändert."
  },
- "alltag": "Trage deinen Schulrucksack zehn Schritte durch den Flur, dann eine Treppe hinauf. Wiege ihn, miss die Stufenhöhe, zähle die Stufen und stoppe die Zeit. Rechne m · g · h und W / t zweimal – nur Rucksack, dann Rucksack samt Körper –, entscheide, welche der beiden Zahlen deine Leistung in Watt ist, und begründe, warum der Flur nicht zählt.",
+ "alltag": "Berechne aus der Masse deines Schulrucksacks, der Höhe einer Treppe und der gestoppten Zeit deine Leistung in Watt.",
  "alltagAfb": "II",
  "alltagKomp": "S7",
  "ueberleitung": "Die 392 J vom Hochheben sind nicht verschwunden – sie stecken jetzt in der angehobenen Kiste. Auf der nächsten Seite lässt du sie wieder los und misst, wie viel Energie in einem bewegten Körper steckt. Ob dabei eine Verdopplung des Tempos genauso viel zählt wie eine der Masse, entscheidet dort eine Messreihe.",

@@ -2,19 +2,19 @@
  "id": "ki15",
  "basiskonzept": "Erhaltung und Gleichgewicht",
  "titel": "Das Dreieck unter der Geraden",
- "problem": "Mira drückt die Feder eines Kugelschreibers auf der Küchenwaage zusammen: zwei Millimeter, vier, sechs, acht, und notiert jedes Mal die angezeigte Masse. Tobias rechnet daraus die gespeicherte Energie als Kraft mal Weg aus. Mira hält dagegen, am Anfang des Drückens sei die Kraft null gewesen. Am Bildschirm wollen sie das entscheiden.",
+ "problem": "Mira drückt die Feder eines Kugelschreibers auf der Küchenwaage zusammen und notiert jedes Mal die angezeigte Masse. Tobias rechnet daraus die gespeicherte Energie als Kraft mal Weg aus. Mira hält dagegen: Am Anfang des Drückens war die Kraft null.",
  "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
  "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
  "predict": [
-  "Über s² ist die Steigung dieselbe wie bei F über s; die Federkonstante liest man unmittelbar ab, D = k.",
-  "Über s² ist die Steigung doppelt so groß wie bei F über s, die Federkonstante also D = k/2.",
-  "Über s² wird die Auftragung gerade; die Steigung ist halb so groß wie bei F über s, D = 2·k."
+  "Über s² ist die Steigung dieselbe wie bei F über s.",
+  "Über s² ist die Steigung doppelt so groß wie bei F über s.",
+  "Über s² ist die Steigung halb so groß wie bei F über s."
  ],
  "predictOk": 2,
  "forschen": [
-  "Drücke bei D = 20 N/m „Messreihe automatisch aufnehmen“ und notiere aus der Tabelle s, s², F und E.",
-  "Drücke nacheinander „F über s auftragen“, „E über s auftragen“ und „E über s² auftragen“. Lies jedes Mal Form und Steigung ab.",
-  "Leere die Tabelle, stelle den Regler „Federkonstante D“ auf 50 N/m und nimm die Messreihe erneut auf. Lies die Steigung unter „E über s² auftragen“ ab."
+  "Drücke bei D = 20 N/m „Messreihe automatisch aufnehmen“.",
+  "Drücke nacheinander „F über s auftragen“, „E über s auftragen“ und „E über s² auftragen“.",
+  "Stelle „Federkonstante D“ auf 50 N/m und nimm die Reihe erneut auf."
  ],
  "tabCols": [
   "Auftragung im Auswertungsfeld",
@@ -26,7 +26,7 @@
   "E über s², D = 20 N/m",
   "E über s², D = 50 N/m"
  ],
- "fachtext": "Trägt man F über s auf, liegen die Punkte auf einer Ursprungsgeraden. Ihre Steigung k ist die Federkonstante D. Dieselben Werte als E über s aufgetragen ergeben eine Parabel. Aus ihr ist keine Steigung abzulesen. Der Ausweg heißt Linearisieren: s² tritt an die Stelle von s. Über s² liegen sie wieder auf einer Geraden. Deren Steigung ist nicht D, sondern D/2. Zurückgerechnet gilt D = 2 · k. Der Faktor stammt aus der Fläche unter der F-s-Geraden. Die Kraft wächst von null auf F, im Mittel wirkt die halbe Kraft. Diese Fläche ist ein Dreieck mit den Seiten s und F. Daraus folgt E = ½ · D · s².",
+ "fachtext": "Trägt man F über s auf, liegen die Punkte auf einer Ursprungsgeraden; ihre Steigung k ist die Federkonstante D. Dieselben Werte als E über s aufgetragen ergeben eine Parabel, aus der keine Steigung abzulesen ist. Der Ausweg heißt Linearisieren: s² tritt an die Stelle von s. Über s² liegen sie wieder auf einer Geraden. Deren Steigung ist nicht D, sondern D/2; zurückgerechnet gilt D = 2 · k. Der Faktor stammt aus der Fläche unter der F-s-Geraden: Die Kraft wächst von null auf F, im Mittel wirkt die halbe Kraft. Diese Fläche ist ein Dreieck mit den Seiten s und F. Daraus folgt E = ½ · D · s².",
  "merksatz": [
   {
    "pre": "Über s² statt über s aufgetragen liegen die Energiewerte wieder auf einer Ursprungsgeraden; dieses Umformen der Achse heißt",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "Nach „Messreihe automatisch aufnehmen“ stehen bei D = 20 N/m sieben Zeilen in der Messreihe: s = 0, 5, 10, 15, 20, 25 und 30 cm, dazu s² von 0,0000 m² bis 0,0900 m², F = 0,00 · 1,00 · 2,00 · 3,00 · 4,00 · 5,00 · 6,00 N und E = 0,0000 · 0,0250 · 0,1000 · 0,2250 · 0,4000 · 0,6250 · 0,9000 J. Darunter meldet die Auswertung der Messreihe, dass Zeile 2 und Zeile 3 zur selben Feder gehören und die Auslenkung von 5 cm auf 10 cm verdoppelt ist: „Kraft: 1,00 N → 2,00 N, also das 2,0-fache. Energie: 0,0250 J → 0,1000 J, also das 4,0-fache. Das ist der Beleg: F ~ s, aber E ~ s².“ „F über s auftragen“ liefert die Fitzeile y = 20,000·x bei R² = 1,0000 und erwartet 20,000; der Kasten „Federkonstante D aus der Steigung k“ nennt 20,000 N/m gegen eingestellt 20 N/m, Abweichung 0,00 %, mit der Zeile F = D · s, also D = k. „E über s auftragen“ zeigt statt einer Fitzeile den Hinweis, dass die Punkte NICHT auf einer Geraden liegen: eine Parabel durch den Ursprung hat keine Steigung, die man ablesen könnte. „E über s² auftragen“ macht daraus wieder eine Ursprungsgerade: y = 10,000·x, R² = 1,0000, erwartet 10,000 – und der Ergebniskasten rechnet zurück, D = 2 · k = 2 · 10,000 N/m = 20,000 N/m, ebenfalls mit 0,00 % Abweichung. Nach „Tabelle leeren“ und D = 50 N/m ergibt dieselbe Reihe F = 2,50 N bei 5 cm bis 15,00 N bei 30 cm und E = 0,0625 J bis 2,2500 J; „F über s auftragen“ gibt y = 50,000·x, „E über s² auftragen“ gibt y = 25,000·x und wieder D = 2 · 25,000 N/m = 50,000 N/m. Beide Male ist die Steigung der linearisierten Auftragung genau die halbe Federkonstante.",
  "aufgabe": {
-  "frage": "Bestimme aus der Steigung k = 12,500 N/m einer E-s²-Geraden die Federkonstante, berechne damit Kraft und Spannenergie bei s = 24 cm und prüfe beide Zahlen am Bildschirm nach.",
+  "frage": "Bestimme aus der Steigung k = 12,500 N/m einer E-s²-Geraden die Federkonstante.",
   "zeilen": 5,
   "loesung": "Aus der linearisierten Auftragung folgt die Federkonstante durch Verdoppeln: D = 2 · k = 2 · 12,500 N/m = 25,000 N/m, also D = 25 N/m. Diesen Wert kann der Regler „Federkonstante D“ einstellen, er läuft in Schritten von 5 N/m von 5 bis 60. Dann s = 24 cm = 0,24 m. Kraft: F = D · s = 25 N/m · 0,24 m = 6,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 25 N/m · (0,24 m)² = 0,5 · 25 · 0,0576 = 0,720 J. Die Gegenprobe über die Fläche gibt dieselbe Zahl: ½ · Grundseite · Höhe = 0,5 · 0,24 m · 6,00 N = 0,720 J. Nachprüfen am Bildschirm: Regler auf D = 25 N/m und s = 24 cm stellen, dann meldet das Feld „Kraft, Fläche, Energie“ genau 6,00 N und 0,720 J. Wer die Rückrechnung selbst sehen will, drückt „Messreihe automatisch aufnehmen“ und „E über s² auftragen“: Dort steht y = 12,500·x bei R² = 1,0000 und darunter E = ½ · D · s², also D = 2 · k = 2 · 12,500 N/m = 25,000 N/m bei 0,00 % Abweichung. Wer stattdessen F · s rechnet, kommt auf 6,00 N · 0,24 m = 1,44 J, also genau das Doppelte – das ist die Rechteckfläche, nicht das Dreieck. Nach „Loslassen“ nennt die Statuszeile v = √(2 · 0,720 J / 0,50 kg) = 1,70 m/s."
  },
- "alltag": "Nimm die Feder aus einem Druckkugelschreiber heraus – frei liegt sie in ihrer Ruhelage, dort ist s = 0. Drücke sie auf einer Küchenwaage mit einem Lineal um 2, 4, 6 und 8 mm zusammen und notiere jedes Mal die angezeigte Masse. Rechne F = m · g aus, trage F über s auf und bestimme die Federkonstante aus der Steigung.",
+ "alltag": "Bestimme die Federkonstante der Feder aus einem Druckkugelschreiber, indem du sie auf einer Küchenwaage um 2, 4, 6 und 8 mm zusammendrückst.",
  "alltagAfb": "II",
  "alltagKomp": "S7",
  "ueberleitung": "Aus einer Messreihe ist hier eine Formel geworden – die Auftragung über s² hat die krumme Kurve gerade gemacht. Auf der nächsten Seite prallen zwei Wagen aufeinander; dann steht neben der Energie noch eine zweite Summe in der Bilanz, der Impuls.",

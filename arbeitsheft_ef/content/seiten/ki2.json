@@ -2,31 +2,30 @@
  "id": "ki2",
  "basiskonzept": "Zufall und Determiniertheit",
  "titel": "Wann du stoppst, ist gleichgültig",
- "problem": "Auf der Zugfahrt nach Hause notiert Mira zu jedem Kilometerstein, den sie zufällig bemerkt, die Uhrzeit – zweimal kurz hintereinander, dann erst wieder nach einer langen Pause. Tobias hält die Auswahl für planlos: Wer ohne Plan stoppe, bekomme auch ein Ergebnis ohne Plan. Mira widerspricht. An der Messstrecke lässt sich das mit eigener Stoppuhr prüfen.",
+ "problem": "Auf der Zugfahrt notiert Mira zu jedem Kilometerstein, den sie zufällig bemerkt, die Uhrzeit – zweimal kurz hintereinander, dann lange nichts. Tobias hält das für planlos gestoppt. Mira widerspricht.",
  "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
  "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
  "predict": [
-  "Der Zeitpunkt entscheidet mit: Wer früh stoppt, erhält eine flachere Gerade als jemand, der spät stoppt.",
-  "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, deren Steigung die gefahrene Geschwindigkeit ist.",
-  "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden; weit auseinanderliegende Punkte verfälschen sie."
+  "Wer früh stoppt, bekommt eine flachere Gerade als jemand, der spät stoppt.",
+  "Der Zeitpunkt ist gleichgültig, alle Stopps liegen auf derselben Geraden.",
+  "Nur zwei benachbarte Zeilen geben die richtige Steigung."
  ],
  "predictOk": 1,
  "forschen": [
-  "Stelle den Regler „Geschwindigkeit v“ auf 4,0 m/s, drücke „neue Fahrt“ und stoppe fünfmal mit „Zeit stoppen“.",
-  "Wähle „t → s“, drücke „Steigung messen“ und wähle zwei Punkte auf der Ausgleichsgeraden; lies die Steigung ab. Stelle 6,0 m/s ein, stoppe fünfmal und miss die zweite Steigung.",
-  "Wähle „t → v“ und danach „t → a“. Notiere Achsenabschnitt und Steigung der Waagerechten sowie die Höhe der t-a-Geraden."
+  "Stelle „Geschwindigkeit v“ auf 4,0 m/s und stoppe fünfmal mit „Zeit stoppen“.",
+  "Wähle „t → s“, drücke „Steigung messen“ und markiere zwei Punkte auf der Geraden.",
+  "Markiere danach zwei ganz andere Punkte derselben Geraden."
  ],
  "tabCols": [
-  "Auftragung und abgelesene Größe",
-  "Ergebnis für Reihe 1 und Reihe 2"
+  "Welche zwei Punkte?",
+  "Δs, Δt und die Steigung in m/s"
  ],
  "tabRows": [
-  "t → s: Steigung der Ausgleichsgeraden",
-  "t → v: Achsenabschnitt der Waagerechten",
-  "t → v: Steigung, also die Beschleunigung a",
-  "t → a: Höhe der Geraden"
+  "erste Wahl",
+  "zweite Wahl",
+  "Regler „Geschwindigkeit v“"
  ],
- "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Die Auftragung t → s prüft das. Die gestoppten Punkte liegen auf einer Ursprungsgeraden. Das bedeutet s ~ t, also s = k · t. Die Steigung k = Δs/Δt hat die Einheit Meter je Sekunde. Damit ist k die Geschwindigkeit, und es folgt s = v · t. Ein einzelner Quotient s/t nutzt nur eine Zeile, die Steigung alle zugleich. Bei t → v liegen die Punkte auf einer Waagerechten. Ihre Höhe ist die Geschwindigkeit, ihre Steigung ist die Beschleunigung und damit null. Bei t → a liegt jeder Wert auf der Nulllinie.",
+ "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Die Auftragung t → s prüft das. Die gestoppten Punkte liegen auf einer Ursprungsgeraden, das bedeutet s = k · t. Die Steigung k = Δs/Δt hat die Einheit Meter je Sekunde. Damit ist k die Geschwindigkeit, und es folgt s = v · t. Ein einzelner Quotient s/t nutzt nur eine Zeile, die Steigung alle zugleich. Deshalb ist es gleichgültig, welche zwei Punkte man markiert. Wer früher oder später stoppt, landet auf derselben Geraden.",
  "merksatz": [
   {
    "pre": "Die gestoppten Wertepaare liegen auf einer Ursprungsgeraden: s ~ t. Ihre Steigung Δs/Δt ist die",
@@ -39,18 +38,18 @@
    "post": "."
   }
  ],
- "beobachtung": "Deine Zeiten sind andere als die hier genannten – du hast in anderen Augenblicken gestoppt. Bei 4,0 m/s füllte sich die Tabelle hier mit 0,50 s zu 2,00 m, 0,88 s zu 3,52 m, 1,28 s zu 5,12 m, 1,74 s zu 6,96 m und 2,20 s zu 8,80 m; in der Spalte v stand jedes Mal 4,00 m/s, in der Spalte a von der zweiten Zeile an jedes Mal 0,00 m/s². Unter „t → s“ steht dazu y = 4,000·x mit R² = 1,0000 und „erwartet: 4,000“, darunter „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ mit 4,00 m/s und „Abweichung 0,00 %“. Die zweite Reihe bei 6,0 m/s ergab 0,44 s zu 2,64 m, 0,84 s zu 5,04 m, 1,34 s zu 8,04 m, 1,70 s zu 10,20 m und 2,20 s zu 13,20 m; ihre Gerade y = 6,000·x ist deutlich steiler. Bei „t → v“ liegen beide Reihen auf Waagerechten, y = 0,0000·x + 4,0000 und y = 0,0000·x + 6,0000: Der Achsenabschnitt wiederholt die Zahl, die aus der Steigung kam, und die Steigung selbst ist die Beschleunigung mit 0,0000 m/s². Bei „t → a“ liegt alles auf der Nulllinie, y = 0,0000·x + 0,0000 mit der Höhe 0,00 m/s². Die Ergebniszeile unter den Geraden gehört immer zur langsamsten Reihe.",
+ "beobachtung": "Deine Zeiten sind andere als die hier genannten – du hast in anderen Augenblicken gestoppt. Bei 4,0 m/s füllte sich die Tabelle hier mit 0,50 s zu 2,00 m, 0,88 s zu 3,52 m, 1,28 s zu 5,12 m, 1,74 s zu 6,96 m und 2,20 s zu 8,80 m; in der Spalte v stand jedes Mal 4,00 m/s. Unter „t → s“ steht dazu y = 4,000·x mit R² = 1,0000 und „erwartet: 4,000“, darunter „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ mit 4,00 m/s und „Abweichung 0,00 %“. Markierst du die beiden äußeren Punkte, zeigt das Steigungsdreieck Δs = 8,80 m − 2,00 m = 6,80 m und Δt = 2,20 s − 0,50 s = 1,70 s, also 4,00 m/s. Markierst du stattdessen die beiden mittleren, steht dort Δs = 6,96 m − 3,52 m = 3,44 m und Δt = 1,74 s − 0,88 s = 0,86 s – wieder 4,00 m/s. Der Abstand der beiden Punkte ändert die Zahl nicht.",
  "aufgabe": {
-  "frage": "Berechne aus den Wertepaaren (0,50 s | 2,00 m) und (2,20 s | 8,80 m) die Steigung der ersten Geraden und beurteile, was die Anzeige „Abweichung 0,00 %“ über die Güte dieser Messung wirklich aussagt.",
+  "frage": "Berechne aus den Wertepaaren (0,50 s | 2,00 m) und (2,20 s | 8,80 m) die Steigung der Geraden.",
   "zeilen": 4,
   "komp": "E7",
   "afb": "III",
   "loesung": "Steigung = Δs/Δt = (8,80 m − 2,00 m) / (2,20 s − 0,50 s) = 6,80 m / 1,70 s = 4,00 m/s. Genau diese Zahl steht unter „t → s“ als Steigung der Ausgleichsgeraden, und dieselbe Zahl liefert bei „t → v“ der Achsenabschnitt der Waagerechten – zwei Auftragungen, ein Ergebnis. Die Angabe „Abweichung 0,00 %“ vergleicht die gemessene Steigung mit dem Wert, der am Regler eingestellt war. Über die Güte einer Messung sagt sie deshalb nichts: Die Simulation bedient Uhr, Wegmesser und Tacho aus derselben Rechnung s = v · t, und die Uhr springt in Schritten von 0,02 s, sodass jede Zeile auf allen angezeigten Stellen aufgeht. Eine Stoppuhr in der Hand hat dagegen eine Reaktionszeit von etwa 0,2 s. Dort streuen die Punkte um die Gerade, und erst dort trägt die Ausgleichsgerade ihren Namen: Sie mittelt über alle Messwerte, statt einem einzelnen Quotienten s/t zu glauben."
  },
- "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Entscheide dich für eine der drei Auftragungen, skizziere sie mit beschrifteten Achsen und schreibe zwei Sätze dazu, die der Jury sagen, an welcher Stelle des Diagramms sie die Geschwindigkeit abliest und warum ein einzelnes Wertepaar dafür nicht genügt.",
+ "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
  "alltagAfb": "II",
  "alltagKomp": "K7",
- "ueberleitung": "Fünfmal gestoppt, zwei Geraden, ein Gesetz – und die t-a-Auftragung blieb dabei auf null. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während der Wagen schneller wird: Dann ist die Punktfolge im t-s-Diagramm keine Gerade mehr, und eine einzige Steigung reicht nicht mehr aus.",
+ "ueberleitung": "Zwei verschiedene Punktpaare, dieselbe Steigung – der Augenblick des Stoppens hat nichts geändert. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während der Wagen schneller wird: Dann ist die Punktfolge im t-s-Diagramm keine Gerade mehr, und eine einzige Steigung reicht nicht mehr aus.",
  "name": "Wie gut ist eine digitale Messung?",
  "theme": "ef_mechanik"
 }

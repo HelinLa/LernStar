@@ -2,19 +2,19 @@
  "id": "gw3",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Acht Punkte, eine Steigung",
- "problem": "Vor der Wäscheschleuder liest Mira das Typenschild: 1400 Umdrehungen je Minute, Trommelradius 0,24 m. Tobias behauptet, daraus lasse sich die Masse eines Wäschestücks ausrechnen, sobald man die Kraft an der Trommelwand kennt. Mira wendet ein, jede einzelne Kraftmessung streue. Am Bildschirm nehmen beide deshalb eine ganze Messreihe auf, statt eines einzigen Werts.",
+ "problem": "Auf dem Typenschild der Wäscheschleuder stehen 1400 Umdrehungen je Minute und ein Trommelradius von 0,24 m. Tobias will daraus die Masse eines Wäschestücks ausrechnen. Mira wendet ein, jede einzelne Kraftmessung streue.",
  "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
  "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
  "predict": [
-  "Die Ausgleichsgerade mittelt die Streuung aller Punkte; die Masse aus ihrer Steigung trifft den eingestellten Wert besser als eine Einzelmessung.",
-  "Jeder Messwert liegt um bis zu 1,5 % daneben; genauer kann auch die Masse aus der Steigung nicht werden.",
-  "Die Ausgleichsgerade wird durch ersten und letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
+  "Eine Gerade durch alle Punkte trifft die Masse besser als eine Einzelmessung.",
+  "Genauer als eine Einzelmessung kann auch die Gerade nicht werden.",
+  "Die Gerade wird durch den ersten und den letzten Messpunkt gelegt."
  ],
  "predictOk": 0,
  "forschen": [
-  "Leere die Tabelle, wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“ bei m = 0,50 kg und f = 1,50 Hz.",
-  "Lies im Auswertungsfeld Steigung k, erwartete Steigung, Masse aus der Steigung und Abweichung ab.",
-  "Leere die Tabelle, wechsle bei r = 0,80 m auf „F über f² auftragen“ und nimm neu auf. Stelle danach „Masse m“ auf 1,50 kg und wiederhole „F über r auftragen“. (68 Wörter)"
+  "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“.",
+  "Lies Steigung k, Masse aus der Steigung und Abweichung ab.",
+  "Wiederhole das mit „F über f² auftragen“ und danach bei m = 1,50 kg."
  ],
  "tabCols": [
   "Steigung k und erwartete Steigung",
@@ -25,7 +25,7 @@
   "F über f² · m = 0,50 kg, r = 0,80 m",
   "F über r · m = 1,50 kg, f = 1,50 Hz"
  ],
- "fachtext": "Mit ω = 2·π·f wird a_z = ω²·r zu a_z = 4·π²·f²·r. Für die Kraft folgt F_z = 4·π²·m·f²·r. Ausgewertet wird über die Steigung. Bei festem m und f gehört zu F über r die Steigung k = 4·π²·m·f². Hält man m und r fest, ergibt F über f eine Parabel. Erst über f² liegen die Punkte wieder auf einer Geraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. In der Steigung steht außer m nur Bekanntes. Sie lässt sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Die Steigung über viele Punkte streut weniger als ein einzelner Messwert der Kraftmessdose.",
+ "fachtext": "Mit ω = 2·π·f wird a_z = ω²·r zu a_z = 4·π²·f²·r, für die Kraft also F_z = 4·π²·m·f²·r. Ausgewertet wird über die Steigung. Bei festem m und f gehört zu F über r die Steigung k = 4·π²·m·f². Hält man m und r fest, ergibt F über f eine Parabel; erst über f² liegen die Punkte wieder auf einer Geraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. In der Steigung steht außer m nur Bekanntes. Sie lässt sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Eine Steigung über viele Punkte streut weniger als ein einzelner Messwert.",
  "merksatz": [
   {
    "pre": "Trägt man F_z über r auf, so ist die Steigung",
@@ -40,11 +40,11 @@
  ],
  "beobachtung": "Die Kraftmessdose streut: Jeder Durchgang gibt andere Zahlen, und der Tabellenwert stimmt so gut wie nie genau mit dem Statusfeld überein. In unserem Durchgang stand das so da: Bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz meldet das Statusfeld T = 0,667 s, ω = 9,4248 rad/s, v = 7,53984 m/s, a_z = 71,06 m/s² und F_z = 35,53 N; „Messpunkt übernehmen“ trug dafür 35,65 N in die Tabelle ein. Nach „Messreihe automatisch aufnehmen“ standen acht Wertepaare da – der von Hand übernommene Punkt oben, darunter die Radien von 0,2 m aufwärts. Nach dem Radius sortiert: 0,2 m mit 8,84 N, 0,4 m mit 17,85 N, 0,6 m mit 26,64 N, 0,8 m mit 35,65 N, 0,9 m mit 40,28 N, 1,1 m mit 49,09 N, 1,3 m mit 57,07 N und 1,5 m mit 66,62 N. Das Auswertungsfeld meldete „m = 0,5 kg, f = 1,5 Hz · 8 Messwerte“, dazu y = 44,383·x bei R² = 1,0000 und erwartet 44,413, darunter „Masse m aus der Steigung k 0,500 kg · eingestellt: 0,500 kg“ mit der Abweichung 0,00 %. Die Rückrechnung geht auf: 4·π²·(1,50 Hz)² = 88,83 1/s², und 44,383 N/m : 88,83 1/s² ≈ 0,500 kg. Deine Zahlen sind andere: R² zeigt fast immer 0,9999 oder 1,0000, die Abweichung der zurückgerechneten Masse liegt fast immer unter 1 % und springt dabei in Schritten von etwa 0,2 %, weil die Masse auf drei Nachkommastellen angezeigt wird. Die erwarteten Steigungen der beiden anderen Reihen stehen ebenso im Auswertungsfeld: 15,791 N·s² für die f²-Reihe bei m = 0,50 kg und r = 0,80 m, 133,240 N/m für die r-Reihe bei m = 1,50 kg, die aus sieben Messwerten besteht. Auch dort trifft die zurückgerechnete Masse auf wenige Zehntelprozent.",
  "aufgabe": {
-  "frage": "Berechne aus deinem notierten Tabellenwert bei r = 0,80 m aus Schritt 1 über m = F_z / a_z mit a_z = 71,06 m/s² die Masse. Vergleiche ihre Abweichung mit der Abweichung, die du für die erste Messreihe in die Tabelle eingetragen hast, und begründe den Unterschied.",
+  "frage": "Berechne aus deinem Tabellenwert bei r = 0,80 m über m = F_z / a_z mit a_z = 71,06 m/s² die Masse.",
   "zeilen": 4,
   "loesung": "In unserem Durchgang stand dort 35,65 N: m = F_z / a_z = 35,65 N : 71,06 m/s² = 0,5017 kg. Eingestellt sind 0,500 kg, die Abweichung beträgt also (0,5017 kg − 0,500 kg) : 0,500 kg = 0,0034, das sind 0,34 %. Die Ausgleichsgerade über acht Messwerte kam auf 0,500 kg mit 0,07 % – in diesem Durchgang rund fünfmal näher am eingestellten Wert; im Mittel gewinnt die Ausgleichsgerade etwa den Faktor zwei bis drei. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose von etwa 1,5 %; über acht Punkte mittelt sie sich zum großen Teil heraus – am stärksten wirken dabei die Punkte mit großem Radius. Eine Einzelmessung kann den Wert zufällig auch besser treffen; verlassen kann man sich darauf nicht."
  },
- "alltag": "Auf dem Typenschild einer Wäscheschleuder stehen 1400 Umdrehungen je Minute und ein Trommelradius von 0,24 m. Bestimme daraus die Umlauffrequenz f in Hz und die Kraft, mit der die Trommelwand ein Wäschestück von 0,20 kg auf der Kreisbahn hält. Erkläre danach einer Person zu Hause, warum die doppelte Drehzahl die vierfache Kraft bedeutet.",
+ "alltag": "Berechne aus 1400 Umdrehungen je Minute die Umlauffrequenz f in Hz und daraus die Kraft auf ein Wäschestück von 0,20 kg bei r = 0,24 m.",
  "alltagAfb": "II",
  "alltagKomp": "S7",
  "ueberleitung": "Die Steigung hat die Masse zurückgegeben, weil in F_z = 4·π²·m·f²·r nur eine Größe unbekannt war. Auf der nächsten Seite hält kein Faden mehr: Dort zieht die Anziehung zweier Massen – und die wächst nicht mit dem Abstand, sie schrumpft mit ihm.",

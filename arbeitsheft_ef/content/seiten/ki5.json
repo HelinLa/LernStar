@@ -2,19 +2,19 @@
  "id": "ki5",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Zwei Wege, zwei Zahlen",
- "problem": "Im Spiel von Tobias fällt eine Kiste durch den Hallenboden, wenn der Rechner ins Stocken gerät. Mira sieht darin keinen Programmfehler, sondern zu grobe Zeitschritte. Tobias hält dagegen: Auch ihre eigene Fallzeit liefere je nach Rechenweg zwei verschiedene Werte für g, einmal 9,81, einmal 10,35 m/s². An der Messstrecke wollen sie klären, was davon übrig bleibt.",
+ "problem": "In Tobias' Spiel fällt eine Kiste durch den Hallenboden, wenn der Rechner stockt. Mira hält die Zeitschritte für zu grob. Tobias rechnet seine eigene Fallzeit auf zwei Wegen aus und bekommt zwei verschiedene Werte für g.",
  "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
  "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
  "predict": [
-  "Der Unterschied verschwindet: Die Ausgleichsgerade mittelt die Ablesefehler heraus, beide Auftragungen liefern denselben Wert für g.",
-  "Auch dann liefert s über t² ein größeres g als v über t, weil die Simulation zu viel Fallweg aufsummiert.",
-  "Der Unterschied bleibt, weil t² den Ablesefehler quadriert; v über t ist deshalb die genauere Auftragung."
+  "Über viele Messpunkte gemittelt liefern beide Wege dasselbe g.",
+  "Der Weg über t² liefert weiter ein größeres g als der über v.",
+  "Der Weg über v ist genauer, weil t² den Ablesefehler quadriert."
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „Tabelle leeren“, belasse „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“. Neun Messpunkte laufen in die Tabelle.",
-  "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve. Wechsle zu „t² → s auftragen“, notiere die Steigung k und verdopple sie.",
-  "Wechsle zu „t → v auftragen“ und notiere diese Steigung als g. Lies im Kasten „Fallbeschleunigung g aus der Steigung“ beide g-Werte und ihre Differenz ab."
+  "Drücke „Tabelle leeren“ und danach „Messreihe automatisch aufnehmen“ bei 50 m Fallhöhe.",
+  "Wähle „t² → s auftragen“ und notiere die Steigung k.",
+  "Wechsle zu „t → v auftragen“ und notiere diese Steigung als g."
  ],
  "modellgrenze": "Vor t = 0,15 s und nach dem Aufprall nimmt die Simulation keinen Messpunkt an: Am Anfang sind s und v auf zwei Nachkommastellen zu grob gerundet, nach dem Aufprall stehen beide still, während die Uhr weiterläuft. Solche Zeilen würden beide Ausgleichsgeraden verfälschen, nicht nur die aus s über t².",
  "tabCols": [
@@ -27,7 +27,7 @@
   "t → v: Steigung k = g in m/s²",
   "Differenz der beiden g-Werte in m/s²"
  ],
- "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg ungleichmäßig. Über t ergibt s eine Kurve ohne ablesbare Steigung. Linearisieren heißt: eine Achse so umrechnen, dass eine Gerade entsteht. Über t² gelingt das; diese Gerade hat die Steigung k. Die Auftragung v über t ist schon eine Ursprungsgerade. Ihre Steigung ist die Fallbeschleunigung g. Der Vergleich zeigt: k ist halb so groß wie g, also k = g/2. Daraus folgen s = ½ · g · t² und g = 2 · k. Beide Wege liefern leicht verschiedene Zahlen. Die Simulation summiert den Weg in Schritten von Δt = 0,016 s zu groß auf. Das ist die Genauigkeitsgrenze des Rechenverfahrens.",
+ "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg ungleichmäßig; über t ergibt s eine Kurve ohne ablesbare Steigung. Linearisieren heißt: eine Achse so umrechnen, dass eine Gerade entsteht. Über t² gelingt das, diese Gerade hat die Steigung k. Die Auftragung v über t ist schon eine Ursprungsgerade, ihre Steigung ist die Fallbeschleunigung g. Der Vergleich zeigt: k ist halb so groß wie g. Daraus folgen s = ½ · g · t² und g = 2 · k. Beide Wege liefern leicht verschiedene Zahlen, weil die Simulation den Weg in Schritten von Δt = 0,016 s zu groß aufsummiert. Das ist die Genauigkeitsgrenze des Rechenverfahrens.",
  "merksatz": [
   {
    "pre": "Trägt man s über t² auf, liegen die Punkte auf einer Ursprungsgeraden; ihre Steigung k ist",
@@ -42,11 +42,11 @@
  ],
  "beobachtung": "Der Regler steht auf 50 m; „Messreihe automatisch aufnehmen“ schreibt 9 Messpunkte in die Tabelle, von t = 0,32 s bis t = 3,18 s. Die Tabelle hat sieben Spalten; die erste trägt überall die Fallhöhe 50. Die vier folgenden lauten (t; s; v; t²): 0,32 s; 0,53 m; 3,14 m/s; 0,1024 s² – 0,64 s; 2,06 m; 6,28 m/s; 0,4096 s² – 0,96 s; 4,60 m; 9,42 m/s; 0,9216 s² – 1,28 s; 8,14 m; 12,56 m/s; 1,6384 s² – 1,60 s; 12,68 m; 15,70 m/s; 2,5600 s² – 1,92 s; 18,23 m; 18,84 m/s; 3,6864 s² – 2,24 s; 24,79 m; 21,97 m/s; 5,0176 s² – 2,56 s; 32,35 m; 25,11 m/s; 6,5536 s² – 3,18 s; 49,98 m; 31,24 m/s; 10,1124 s². Die beiden letzten Spalten rechnen g schon zeilenweise aus: über v/t steht dort achtmal 9,81 und zuletzt 9,82, über 2s/t² dagegen 10,35 in der ersten Zeile und 9,87 bzw. 9,88 in den beiden letzten. In der Auftragung t → s liegen die Punkte auf einer Kurve. Nach t² → s liegen dieselben Punkte auf einer Ursprungsgeraden: y = 4,942·x bei R² = 1,0000, erwartet wird 4,905. Nach t → v ergibt sich y = 9,815·x, ebenfalls bei R² = 1,0000. Der Kasten „Fallbeschleunigung g aus der Steigung“ rechnet beide Steigungen in Fallbeschleunigungen um, beide in m/s²: aus s über t² folgt g = 2 · 4,942 = 9,884 mit einer Abweichung von 0,75 %, aus v über t unmittelbar g = 9,815 mit 0,05 %. Der Vergleich der beiden Wege steht darunter: 9,884 − 9,815 = 0,069. Eine zweite Messreihe aus einer anderen Fallhöhe legt ihre Punkte auf dieselben beiden Geraden, und jeder Durchgang wiederholt die Zahlen.",
  "aufgabe": {
-  "frage": "Bestimme aus den Tabellenzeilen t = 0,64 s mit s = 2,06 m und t = 2,56 s mit s = 32,35 m die Steigung der Geraden s über t², rechne daraus g zurück und begründe, warum die Gerade v über t einen kleineren Wert liefert.",
+  "frage": "Bestimme aus den Tabellenzeilen (0,64 s | 2,06 m) und (2,56 s | 32,35 m) die Steigung von s über t² und daraus g.",
   "zeilen": 4,
   "loesung": "Zu den beiden Zeiten gehören t² = (0,64 s)² = 0,4096 s² und t² = (2,56 s)² = 6,5536 s². Die Steigung durch diese zwei Punkte ist k = (32,35 m − 2,06 m) / (6,5536 s² − 0,4096 s²) = 30,29 m / 6,1440 s² = 4,93 m/s². Wegen s = ½ · g · t² ist k = g/2, also g = 2 · 4,93 m/s² = 9,86 m/s²; die Ausgleichsgerade über alle neun Punkte liefert mit 4,942 m/s² etwas mehr. Dieselben zwei Zeilen über v gerechnet: k = (25,11 m/s − 6,28 m/s) / (2,56 s − 0,64 s) = 18,83 m/s / 1,92 s = 9,81 m/s², und hier ist k schon g. Die Differenz von 0,05 m/s² fällt in jedem Lauf gleich aus und zeigt immer in dieselbe Richtung. Die Simulation summiert den Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende auf und erhält dadurch zu viel Weg, während v in jedem Schritt genau um g · Δt wächst. Nur die aus s gewonnene Gerade ist davon betroffen."
  },
- "alltag": "Computerspiele und Simulationsprogramme rechnen Bewegungen ebenfalls in Zeitschritten; wird der Schritt zu groß, rutschen Gegenstände schon einmal durch den Boden. Erkläre einer Person zu Hause in drei Sätzen, warum ein größerer Rechenschritt den berechneten Weg verfälscht – und warum unsere Simulation trotzdem auf jedem Gerät dieselbe Abweichung zeigt.",
+ "alltag": "Computerspiele rechnen Bewegungen in Zeitschritten. Erkläre, warum ein zu großer Rechenschritt den berechneten Weg verfälscht.",
  "alltagAfb": "II",
  "alltagKomp": "S2",
  "ueberleitung": "Aus einer einzigen Messreihe wurden zwei Ausgleichsgeraden und zwei Zahlen für g – entschieden hat das allein das Rechenverfahren, nicht die Ablesung. Auf der nächsten Seite schiebt Mira eine Kugel über die Tischkante: Dann laufen zwei Bewegungen gleichzeitig ab, und nur eine von beiden bestimmt die Fallzeit.",

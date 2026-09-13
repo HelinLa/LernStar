@@ -2,19 +2,19 @@
  "id": "ki4",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Aus der Kurve eine Gerade machen",
- "problem": "Vor dem Haus rollt Tobias' Skateboard die abschüssige Einfahrt hinunter, vorbei an Kreidestrichen mit wachsenden Abständen. Mira stoppt an jedem Strich und trägt Zeit und Weg auf; es entsteht eine gebogene Kurve. Tobias legt ein Lineal an und liest eine Steigung ab – ein Stück weiter eine ganz andere. Am Bildschirm wollen beide das klären.",
+ "problem": "Tobias' Skateboard rollt die Einfahrt hinunter, vorbei an Kreidestrichen mit wachsenden Abständen. Mira stoppt an jedem Strich und trägt Zeit und Weg auf – es entsteht eine gebogene Kurve. Tobias legt ein Lineal an und liest an zwei Stellen ganz verschiedene Steigungen ab.",
  "frage": "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
  "auftrag": "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
  "predict": [
-  "Trägt man s über t² auf, entsteht eine Ursprungsgerade; ihre Steigung ist a/2, die Beschleunigung also das Doppelte.",
-  "In der Auftragung über t² gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
-  "Trägt man s über t² auf, ist die Steigung unmittelbar a; der Faktor ½ steckt schon in der Achse."
+  "Über t² entsteht eine Gerade, deren Steigung halb so groß ist wie a.",
+  "Über t² gehört zu jedem Punkt eine andere Steigung.",
+  "Über t² entsteht eine Gerade, deren Steigung genau a ist."
  ],
  "predictOk": 0,
  "forschen": [
-  "Stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Drücke während einer Fahrt fünfmal „Zeit stoppen“ und übertrage die ersten vier Zeilen in die Tabelle.",
-  "Wähle „t² → s“ und drücke „Steigung messen“. Wähle zwei Punkte auf der Ausgleichsgeraden und lies die Steigung im Steigungsdreieck ab.",
-  "Rechne zu jeder Zeile t² und s/t² aus. Vergleiche den Quotienten mit der Steigung und prüfe a = 2 · Steigung."
+  "Stelle „Beschleunigung a“ auf 2,0 m/s² und stoppe fünfmal während der Fahrt.",
+  "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.",
+  "Rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."
  ],
  "tabCols": [
   "abgelesen: t in s · s in m · v in m/s",
@@ -26,7 +26,7 @@
   "3. Stopp",
   "4. Stopp"
  ],
- "fachtext": "Bei gleichmäßig beschleunigter Bewegung bleibt die Beschleunigung während der ganzen Fahrt gleich. Aus dem Start aus der Ruhe folgt v = a · t. Die t-v-Auftragung ist deshalb eine Ursprungsgerade, und ihre Steigung ist die Beschleunigung. Der Weg ist die Fläche unter dieser Geraden, also s = ½ · a · t². Im t-s-Diagramm liegen die Punkte darum auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung. Eine einzige Zahl ist daraus nicht abzulesen. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Das ergibt eine Ursprungsgerade der Steigung a/2. Es gilt also a = 2 · Steigung.",
+ "fachtext": "Bei gleichmäßig beschleunigter Bewegung bleibt die Beschleunigung während der ganzen Fahrt gleich. Aus dem Start aus der Ruhe folgt v = a · t. Die t-v-Auftragung ist deshalb eine Ursprungsgerade, und ihre Steigung ist die Beschleunigung. Der Weg ist die Fläche unter dieser Geraden, also s = ½ · a · t². Im t-s-Diagramm liegen die Punkte darum auf einer Parabel, aus der keine einzelne Steigung abzulesen ist. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Das ergibt eine Ursprungsgerade der Steigung a/2. Es gilt also a = 2 · Steigung.",
  "merksatz": [
   {
    "pre": "Aus der s-t-Parabel lässt sich a nicht ablesen; erst das Quadrieren der gestoppten Zeit macht daraus eine",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "Wann du stoppst, ist dir überlassen; die Uhr springt in Schritten von 0,02 s, deine Zeiten weichen also von den hier genannten ab. Ein Durchgang bei a = 2,0 m/s² mit fünf Stopps in einer Fahrt lieferte t = 1,20 s · s = 1,44 m · v = 2,40 m/s, dann 1,50 s · 2,25 m · 3,00 m/s, 1,80 s · 3,24 m · 3,60 m/s, 2,10 s · 4,41 m · 4,20 m/s und 2,40 s · 5,76 m · 4,80 m/s. Die letzte Tabellenspalte rechnet die Simulation selbst: Hier liegen die Stopps 0,30 s auseinander, also a = Δv/Δt = 0,60 m/s : 0,30 s = 2,00 m/s²; nur die erste Zeile jeder Fahrt bleibt leer, weil ihr der Vorgänger fehlt. Nach „t → s“ steht im Auswertungsfeld: „Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.“ Den Wechsel schlägt die Simulation also selbst vor. Nach „t² → s“ heißen die Achsen t² in s² und s in m, und dort steht: „Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.“ Die Ausgleichsgerade lautet y = 1,000·x mit R² = 1,0000 · erwartet: 1,000, darunter „Beschleunigung a = 2 × Steigung 2,00 m/s² · Literatur: 2,00“; unter „Erwarteter Funktionstyp“ steht „Steigung = a/2 = 1,00 m/s²“. Deine Handrechnung muss dasselbe liefern: 1,20² = 1,44 s² und 1,44 m : 1,44 s² = 1,00 m/s², ebenso 2,40² = 5,76 s² und 5,76 m : 5,76 s² = 1,00 m/s². Der Quotient s/t² hängt nicht davon ab, wann du gestoppt hast – genau das kennzeichnet die Ursprungsgerade; an krummen Stoppstellen rundet der Wegmesser auf zwei Nachkommastellen, und in der vierten Stelle der Steigung steht dann 0,9998 statt 1,0000. Die beiden Gegenproben liefern dieselbe Zahl: „t → v“ meldet y = 2,000·x und „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s²“, „t → a“ eine Waagerechte y = 0,0000·x + 2,0000.",
  "aufgabe": {
-  "frage": "Berechne aus den beiden Stopps t = 1,00 s mit s = 2,50 m und t = 1,40 s mit s = 4,90 m einer Fahrt bei a = 5,0 m/s² jeweils den Quotienten s/t², bestimme daraus die Beschleunigung und begründe, warum derselbe Vergleich mit s/t statt s/t² zwei verschiedene Zahlen liefert.",
+  "frage": "Bestimme aus den Stopps (1,00 s | 2,50 m) und (1,40 s | 4,90 m) jeweils s/t² und daraus die Beschleunigung.",
   "zeilen": 5,
   "loesung": "Erster Stopp: t² = (1,00 s)² = 1,00 s², also s/t² = 2,50 m : 1,00 s² = 2,50 m/s². Zweiter Stopp: t² = (1,40 s)² = 1,96 s², also s/t² = 4,90 m : 1,96 s² = 2,50 m/s². Beide Stopps liefern denselben Quotienten – genau das heißt, dass die Punkte im s-t²-Diagramm auf einer Ursprungsgeraden liegen. Aus s = ½ · a · t² folgt s/t² = a/2; die Steigung ist also die halbe Beschleunigung, und es ist a = 2 · 2,50 m/s² = 5,00 m/s² – der eingestellte Wert. Mit s/t dagegen: 2,50 m : 1,00 s = 2,50 m/s und 4,90 m : 1,40 s = 3,50 m/s. Dieser Quotient ist die mittlere Geschwindigkeit seit dem Start, und die wächst mit, weil der Wagen immer schneller wird; s/t ist deshalb keine feste Zahl der Fahrt, sondern hängt davon ab, wann gestoppt wurde. Erst das Quadrieren der Zeit macht den Quotienten konstant und liefert damit einen Wert, der die ganze Fahrt beschreibt."
  },
- "alltag": "Für ein Fadenpendel findest du Tabellen von Pendellänge l und Schwingungsdauer T. Trage T einmal über l und dann T² über l auf und erkläre einer Person zu Hause in drei Sätzen, welche der beiden Darstellungen eine Zahl liefert und welche nur eine Kurve.",
+ "alltag": "Für ein Fadenpendel findest du Tabellen von Pendellänge l und Schwingungsdauer T. Trage T² über l auf.",
  "alltagAfb": "II",
  "alltagKomp": "K6",
  "ueberleitung": "Mit t² auf der Rechtsachse hast du ein Werkzeug, das aus jedem quadratischen Zusammenhang eine Gerade macht. Auf der nächsten Seite lassen Mira und Tobias eine Kugel fallen – und erhalten für den Ortsfaktor zwei Zahlen, die je nach Auswerteweg nicht zusammenpassen.",

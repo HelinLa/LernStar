@@ -2,19 +2,19 @@
  "id": "gw12",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Ein Photon, zwei Zeitspannen",
- "problem": "Das Navi im Auto sagt die Ausfahrt metergenau an. Mira hat gelesen, dass die Uhren der Satelliten dafür jeden Tag nachgestellt werden. Tobias hält das für Technik: Eine Uhr, die genau geht, gehe eben überall genau. Mira fragt zurück, ob eine Uhr denn für jeden dasselbe anzeigt. An den Stationen der Simulation lässt sich das nachmessen.",
+ "problem": "Das Navi sagt die Ausfahrt metergenau an. Mira hat gelesen, dass die Uhren der Satelliten dafür jeden Tag nachgestellt werden. Tobias hält das für Technik: Eine Uhr, die genau geht, gehe überall genau.",
  "frage": "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
  "auftrag": "Miss an Station 6 den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten und prüfe an den Stationen 3 und 4, ob der Satz des Pythagoras genau diese Werte liefert.",
  "predict": [
-  "Das Photon läuft auch auf dem längeren schrägen Weg mit c; für A dauert ein Takt länger als im Ruhesystem.",
-  "Für A ist der Weg länger, das Photon wird aber mitgenommen und ist schneller; der Takt dauert gleich lang.",
-  "Die bewegte Uhr geht nur scheinbar nach: Der Effekt verschwindet, wenn man die Laufzeit des Lichts zum Beobachter herausrechnet."
+  "Für den ruhenden Beobachter dauert ein Takt der bewegten Uhr länger.",
+  "Das Photon wird mitgenommen und ist schneller, der Takt dauert gleich lang.",
+  "Die bewegte Uhr geht nur scheinbar nach, es ist die Laufzeit des Lichts."
  ],
  "predictOk": 0,
  "forschen": [
-  "Drücke „2 · Die bewegte Lichtuhr“ und stelle „Relativgeschwindigkeit v/c“ auf 0,95. Notiere den Faktor aus dem Text.",
-  "Drücke „3 · Herleitung mit Pythagoras“ und übertrage die Gleichung. Lies bei „4 · Der relativistische Faktor“ den Faktor und γ ab.",
-  "Drücke „6 · Zeitdehnung messen“, stelle v/c auf 0,10, 0,60, 0,84 und 0,95 und übernimm jeden Messwert. Trage Ticks und Faktor f ein."
+  "Drücke „2 · Die bewegte Lichtuhr“ und stelle „Relativgeschwindigkeit v/c“ auf 0,95.",
+  "Drücke „4 · Der relativistische Faktor“ und lies den Faktor und γ ab.",
+  "Drücke „6 · Zeitdehnung messen“ und miss bei 0,10, 0,60, 0,84 und 0,95."
  ],
  "tabCols": [
   "bewegte Ticks je 200 ruhende",
@@ -26,7 +26,7 @@
   "v = 0,84·c",
   "v = 0,95·c"
  ],
- "fachtext": "Der Messbefund des Michelson-Morley-Experiments lautet: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Die Lichtuhr macht daraus ein Messgerät. Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her. Das ist ein Takt. Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. Für A fährt die Uhr mit v vorbei. Sie wandert dabei um v·ΔtRuh zur Seite, das Photon läuft schräg die Strecke c·ΔtRuh. Die drei Strecken bilden ein rechtwinkliges Dreieck. Aus dem Satz des Pythagoras folgt Δtbew = ΔtRuh·√(1−v²/c²). Dieser Faktor ist nie größer als 1. In der bewegten Uhr vergeht also die kürzere Zeitspanne. Der Kehrwert dieses Faktors heißt Lorentzfaktor γ.",
+ "fachtext": "Der Messbefund des Michelson-Morley-Experiments lautet: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Die Lichtuhr macht daraus ein Messgerät: Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her, das ist ein Takt. Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. Für A fährt die Uhr mit v vorbei; sie wandert um v·ΔtRuh zur Seite, das Photon läuft schräg die Strecke c·ΔtRuh. Die drei Strecken bilden ein rechtwinkliges Dreieck. Aus dem Satz des Pythagoras folgt Δtbew = ΔtRuh·√(1−v²/c²). Dieser Faktor ist nie größer als 1, in der bewegten Uhr vergeht also die kürzere Zeitspanne. Der Kehrwert dieses Faktors heißt Lorentzfaktor γ.",
  "merksatz": [
   {
    "pre": "Weil c in jedem Bezugssystem gleich ist, bedeutet ein längerer Lichtweg eine längere",
@@ -41,11 +41,11 @@
  ],
  "beobachtung": "Station 2 meldet bei v/c = 0: „Bei v = 0,00·c ist der A-Takt um den Faktor 1/√(1−β²) = 1,000 länger als der B-Takt“ – beide Wege fallen zusammen. Bei v/c = 0,95 steht dort 3,203. Station 3 beschriftet die Dreiecksseiten mit c·ΔtRuh (Lichtweg), v·ΔtRuh (Bewegung der Uhr) und c·Δtbew (Höhe) und endet für v = 0,60·c mit Δtbew = ΔtRuh·0,800 und dem Satz, eine Zeitspanne der bewegten Uhr sei „nur 80,0 % so lang wie die in A gemessene“. Station 4 zeigt bei v/c = 0,600 den Faktor √(1−β²) = 0,8000, γ = 1,250 und 48,0 min, bei 0,950 dagegen 0,3122, γ = 3,203 und 18,7 min. Station 5 nennt die kosmischen Myonen als Beleg und beziffert die unkorrigierte Abweichung der GPS-Uhren auf etwa 38 µs pro Tag. An Station 6 tickt die bewegte Uhr 199-mal bei 0,10·c, 160-mal bei 0,60·c, 109-mal bei 0,84·c und 62-mal bei 0,95·c; die Zeile „gemessener Faktor f = n/200“ meldet dazu 0,995, 0,800, 0,545 und 0,310. Aus diesen vier Werten wird f² = 1,000 − 1,000·β² mit R² = 0,99998; „Theoriefunktion“ setzt f(x) = 1-1*x ein und nennt Achsenabschnitt 1 und Steigung −1 als Erwartung.",
  "aufgabe": {
-  "frage": "Berechne für v = 0,60·c den Faktor √(1−β²) sowie die Zeitspanne, die in der bewegten Uhr vergeht, während in A eine Stunde vergeht, und vergleiche beides mit den 160 Ticks der Messstation.",
+  "frage": "Berechne für v = 0,60·c den Faktor √(1−β²) und die Zeitspanne, die in der bewegten Uhr vergeht, während in A eine Stunde vergeht.",
   "zeilen": 5,
   "loesung": "Es ist β = v/c = 0,60, also β² = 0,36 und 1 − β² = 0,64. Damit wird √(1−β²) = √0,64 = 0,800 – genau der Wert, den Station 4 als 0,8000 anzeigt. Für eine Stunde in A folgt Δtbew = 60,0 min · 0,800 = 48,0 min, und die Anzeige nennt ebenfalls 48,0 min. Die Messstation zählt 160 Ticks der bewegten Uhr gegen 200 Ticks der ruhenden, also f = 160/200 = 0,800. Gezählter Faktor und gerechneter Faktor stimmen überein: Die Rechnung aus dem Satz des Pythagoras sagt die Messung richtig vorher."
  },
- "alltag": "Kein Labor hat je eine Lichtuhr gebaut, und trotzdem hängt an ihrer Formel die Uhrenkorrektur jedes Navigationssatelliten. Erkläre einer Person zu Hause in drei Sätzen, wieso ein reines Gedankenexperiment zu einer überprüfbaren Vorhersage führen kann, und nenne die kosmischen Myonen als den Beleg, den die Simulation dafür anführt.",
+ "alltag": "Erkläre, wieso ein reines Gedankenexperiment wie die Lichtuhr zu einer überprüfbaren Vorhersage führen kann.",
  "alltagAfb": "III",
  "alltagKomp": "E9",
  "ueberleitung": "Damit steht der letzte Abschnitt des Wettbewerbsberichts. Von der ersten Lichtschranke bis hierher galt stillschweigend, dass eine Sekunde für alle dieselbe ist – die Lichtuhr nimmt diese Voraussetzung zurück. An dieselbe Rechnung schließen später die Längenkontraktion und E = m·c² an.",

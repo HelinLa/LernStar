@@ -2,19 +2,19 @@
  "id": "gw9",
  "basiskonzept": "Mathematisieren und Vorhersagen",
  "titel": "Sechs Planeten, eine Konstante",
- "problem": "An der Hauswand gegenüber zeigt eine Satellitenschüssel seit Jahren in dieselbe Richtung; ihr Fernsehsatellit braucht für einen Umlauf genau einen Tag. Tobias schätzt dessen Bahnradius im Dreisatz: Der Mond brauche 27,3 Tage, der Satellit also knapp ein Siebenundzwanzigstel des Mondabstands. Mira hält den Dreisatz für unzulässig. Am Datenblatt mit sechs Planeten lässt sich das prüfen.",
+ "problem": "Die Satellitenschüssel an der Hauswand zeigt seit Jahren in dieselbe Richtung; ihr Satellit braucht für einen Umlauf genau einen Tag. Tobias schätzt dessen Bahnradius im Dreisatz aus der Mondbahn. Mira hält den Dreisatz für unzulässig.",
  "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
  "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
  "predict": [
-  "T²/a³ hat für alle sechs Planeten denselben Wert; aus der Umlaufzeit eines Körpers folgt damit seine Halbachse.",
-  "Jeder Planet liefert wegen seiner eigenen Masse einen anderen Wert; eine gemeinsame Regel gibt die Tabelle nicht her.",
-  "Für alle Planeten ist T/a derselbe; die Umlaufzeit wächst also proportional zur großen Halbachse."
+  "T²/a³ hat für alle sechs Planeten denselben Wert.",
+  "Jeder Planet liefert wegen seiner eigenen Masse einen anderen Wert.",
+  "T/a ist für alle Planeten derselbe."
  ],
  "predictOk": 0,
  "forschen": [
-  "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab.",
-  "Berechne zeilenweise a³ und T² und daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Stellen, nicht die Zwischenwerte.",
-  "Trage Merkur, Erde, Jupiter und Saturn ein und vergleiche die Quotienten. Entscheide, ob die Unterschiede aus der Regel oder aus der Stellenzahl stammen."
+  "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T ab.",
+  "Berechne zeilenweise a³, T² und daraus den Quotienten T²/a³.",
+  "Vergleiche die Quotienten von Merkur, Erde, Jupiter und Saturn."
  ],
  "daten": {
   "titel": "Umlaufzeit und große Halbachse der Planeten",
@@ -68,7 +68,7 @@
   "Jupiter",
   "Saturn"
  ],
- "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, sein drittes Gesetz: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante 1,00. Die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt. Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für eine Ellipse gilt dasselbe mit der großen Halbachse a. Rechts steht nur die Masse M des Zentralkörpers. Die Masse des umlaufenden Planeten fällt heraus.",
+ "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten sein drittes Gesetz: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, ist diese Konstante 1,00. Die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt. Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Rechts steht nur die Masse M des Zentralkörpers. Die Masse des umlaufenden Planeten fällt heraus.",
  "merksatz": [
   {
    "pre": "Drittes Keplersches Gesetz: Für alle Planeten der Sonne ist T²/a³",
@@ -83,11 +83,11 @@
  ],
  "beobachtung": "Trägst du die Quotienten selbst ein, steht dort sechsmal fast dieselbe Zahl. Merkur: T² = 0,05808 und a³ = 0,05796, also T²/a³ = 1,0021. Venus: 0,3782/0,3779 = 1,0008. Erde: 1,0000/1,0000 = 1,0000. Mars: 3,5382/3,5396 = 0,9996. Jupiter: 140,71/140,85 = 0,9990. Saturn: 867,71/867,43 = 1,0003. Von Merkur bis Saturn wächst die Halbachse auf knapp das 25-Fache und die Umlaufzeit auf das 122-Fache – die sechs Quotienten weichen trotzdem um weniger als 0,3 Prozent von 1,00 ab. Der größte Rest steht bei Merkur – er hat die kleinsten Zahlen der Tabelle, und dort wiegt die letzte gedruckte Stelle am schwersten: ±0,0005 in a = 0,387 verschiebt seinen Quotienten schon um vier Promille. Die Reste bleiben damit im Bereich der gedruckten Stellen: Für eine eigene Regel je Planet müssten die Quotienten deutlich auseinanderlaufen, nicht erst in der vierten Stelle. Ein einziger Wert, der um 20 Prozent danebenläge, würde dagegen zeigen, dass der Körper nicht die Sonne umläuft.",
  "aufgabe": {
-  "frage": "Berechne die große Halbachse des Uranus. Wilhelm Herschel entdeckte ihn 1781 hinter der Saturnbahn. Gegeben ist allein seine Umlaufzeit T = 84,0 Jahre. Rechne mit T²/a³ = 1,00, T in Jahren und a in AE.",
+  "frage": "Berechne die große Halbachse des Uranus aus seiner Umlaufzeit T = 84,0 Jahre mit T²/a³ = 1,00, T in Jahren und a in AE.",
   "zeilen": 5,
   "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Mit T = 84,0 Jahren ist T² = 7056, und die dritte Wurzel daraus ergibt a = 19,18. Die große Halbachse des Uranus beträgt also rund 19,2 AE, gut das 19-Fache des Erdabstands und etwa das Doppelte der Saturnbahn (9,537 AE). Die Probe bestätigt es: 84,0²/19,18³ = 7056/7055,8 = 1,00. Bemerkenswert ist, wie dieser Wert zustande kommt – gegeben war allein die Zeit für einen Umlauf, der Bahnradius ist vorhergesagt. Ein Tabellenwerk gibt 19,19 AE an."
  },
- "alltag": "Ein Fernsehsatellit steht über dem Äquator scheinbar still, seine Umlaufzeit beträgt genau 1,00 Tag. Der Mond umläuft dieselbe Erde in 27,3 Tagen bei einer Halbachse von 384 000 km. Berechne mit T²/a³ = konstant den Bahnradius des Satelliten und vergleiche ihn mit dem Erdradius von 6370 km.",
+ "alltag": "Ein Fernsehsatellit umläuft die Erde in 1,00 Tag, der Mond in 27,3 Tagen bei einer Halbachse von 384 000 km. Berechne mit T²/a³ = konstant den Bahnradius des Satelliten.",
  "alltagAfb": "II",
  "alltagKomp": "E10",
  "ueberleitung": "Die Regel gilt in dieser Form nur, wenn alle sechs Bahnen um dieselbe Sonne laufen. Auf der nächsten Seite beobachtest du dieselbe Marsbahn von der Erde aus – und siehst, warum der Planet dabei zeitweise rückwärts zu laufen scheint.",

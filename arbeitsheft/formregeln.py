@@ -32,14 +32,27 @@ def pruefe_seite(s, streng=True, klasse=None):
     Klasse 5/6 richtet sich an Achtjaehrige und hat bewusst kuerzere Einstiege:
     gemessen 36 bis 51 Woerter, im Mittel 41,2. Die Hefte 7 bis 10 liegen bei 42
     bis 60, im Mittel 45 bis 52. Wer eine einzige Spanne fuer alle nimmt, meldet
-    18 der 33 Seiten von Klasse 5/6 faelschlich."""
+    18 der 33 Seiten von Klasse 5/6 faelschlich.
+
+    Ab Klasse 11 (Oberstufe) gilt 26 bis 45. Das ist kein Versehen und keine
+    Aufweichung: Abdullah hat den EF-Band am 13.09.2026 ZWEIMAL als "zu komplex"
+    zurueckgegeben. Beim ersten Mal habe ich die Wortzahl halbiert - das half
+    nicht. Gemessen lag die Komplexitaet woanders (28 von 28 Aufgaben verlangten
+    zwei Handlungen in EINEM Satz, 12 von 28 Vermutungen benutzten ein Fachwort,
+    das erst im Merkkasten erklaert wird). Der Einstieg wurde daraufhin auf DREI
+    Saetze gebracht: Alltagsszene, Streit, fertig. Der frueher uebliche
+    Schlusssatz "Am Bildschirm laesst sich das entscheiden" faellt weg, weil
+    Abschnitt ③ dasselbe noch einmal sagt. Danach liegen die 28 Einstiege bei 27
+    bis 39 Woertern - mit der alten Spanne meldete der Pruefer 27 von 28 Seiten
+    faelschlich. Die 18 Baende der Sek I bleiben unberuehrt bei 42 bis 59."""
     f, tid = [], s.get("id", "?")
     for k in PFLICHT:
         if k not in s or s[k] in (None, "", []):
             f.append((tid, "fehlt", f"Feld „{k}“ fehlt"))
 
     w = len(s.get("problem", "").split())
-    unten, oben = (34, 52) if (klasse or 9) <= 6 else (42, 59)
+    k = klasse or 9
+    unten, oben = (34, 52) if k <= 6 else (26, 45) if k >= 11 else (42, 59)
     if not unten <= w <= oben:
         f.append((tid, "einstieg", f"Einstieg hat {w} Wörter ({unten}–{oben})"))
 

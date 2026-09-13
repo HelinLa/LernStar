@@ -2,19 +2,19 @@
  "id": "ki12",
  "basiskonzept": "Superposition und Komponenten",
  "titel": "Was von 80 Newton übrig bleibt",
- "problem": "Zu Hause zieht Mira eine volle Getränkekiste mit gleichmäßigem Zug über die Fliesen, dann über den Teppich – dort kommt sie kaum vom Fleck. Tobias hält den Teppich einfach für schwerer. Mira hält dagegen, an der Kiste habe sich nichts geändert. Am Bildschirm wollen die beiden prüfen, was von der Zugkraft überhaupt zum Beschleunigen übrig bleibt.",
+ "problem": "Mira zieht eine volle Getränkekiste gleichmäßig über die Fliesen, dann über den Teppich – dort kommt sie kaum vom Fleck. Tobias hält den Teppich einfach für schwerer. Mira sagt, an der Kiste habe sich nichts geändert.",
  "frage": "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
  "auftrag": "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
  "predict": [
-  "Verdoppeltes μ verdoppelt die Reibungskraft; die Beschleunigung des Wagens sinkt deshalb auf die Hälfte.",
-  "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen wird stärker gebremst.",
-  "Verdoppeltes μ verdoppelt die Reibungskraft, halbiert die Beschleunigung aber nicht: Beschleunigt wird der Wagen nur vom Rest der Antriebskraft."
+  "Doppeltes μ halbiert die Beschleunigung.",
+  "Die Reibungskraft hängt von der Auflagefläche ab.",
+  "Doppeltes μ verdoppelt die Reibungskraft, halbiert die Beschleunigung aber nicht."
  ],
  "predictOk": 2,
  "forschen": [
-  "Prüfe die Ausgangsstellung: Der Regler „Masse m“ steht auf 5 kg, der Infokasten zeigt F = 80 N, μ = 0,30 und F_R = 14,7 N.",
-  "Ziehe allein den Regler „Reibungskoeffizient μ“ auf 0,00, 0,20, 0,40 und 0,60. Notiere jedes Mal den Wert hinter „F_R=“.",
-  "Rechne je Zeile F_res = 80 N − F_R und a = F_res / 5 kg aus. Prüfe, ob F_R mit steigendem v wächst."
+  "Prüfe die Ausgangsstellung: m = 5 kg, F = 80 N, μ = 0,30 und F_R = 14,7 N.",
+  "Ziehe allein den Regler „Reibungskoeffizient μ“ auf 0,00, 0,20, 0,40 und 0,60.",
+  "Notiere jedes Mal den Wert hinter „F_R=“."
  ],
  "tabCols": [
   "F_R im Bild in N",
@@ -27,7 +27,7 @@
   "μ = 0,60"
  ],
  "modellgrenze": "Die Simulation kennt nur die Gleitreibung des schon fahrenden Wagens. Stellst du die Antriebskraft unter F_R – etwa F = 20 N bei μ = 0,60 –, bleibt der Wagen bei v = 0,0 m/s stehen, und der Infokasten meldet trotzdem F_R = 29,4 N. Warum eine Kiste auf dem Teppich erst losbrechen muss, erklärt die Haftreibung; die steckt in diesem Modell nicht.",
- "fachtext": "Reibung tritt auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt F_R = μ · F_N. Sie ist proportional zur Normalkraft. Auf waagerechter Bahn ist das die Gewichtskraft, also F_N = m · g. Der Reibungskoeffizient μ ist eine Verhältniszahl ohne Einheit. Er hängt von den Werkstoffen ab. Antrieb und Reibung greifen am selben Wagen an, aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R. Erst diese steht im Grundgesetz a = F_res / m, mit 1 N/kg = 1 m/s². Die Antriebskraft allein sagt über die Beschleunigung nichts aus. Im Modell hängt F_R weder von der Berührfläche noch von der Geschwindigkeit ab.",
+ "fachtext": "Reibung tritt auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt F_R = μ · F_N, sie ist also proportional zur Normalkraft. Auf waagerechter Bahn ist das die Gewichtskraft, F_N = m · g. Der Reibungskoeffizient μ ist eine Verhältniszahl ohne Einheit und hängt von den Werkstoffen ab. Antrieb und Reibung greifen am selben Wagen an, aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R. Erst diese steht im Grundgesetz a = F_res / m. Die Antriebskraft allein sagt über die Beschleunigung nichts aus.",
  "merksatz": [
   {
    "pre": "Für die Gleitreibung gilt F_R = μ · F_N, auf waagerechter Bahn also mit F_N =",
@@ -42,11 +42,11 @@
  ],
  "beobachtung": "In der Ausgangsstellung stehen im Bild F = 80 N, μ = 0,30 und F_R = 14,7 N; die Masse liest man am Regler „Masse m“ mit 5 kg ab. In der Messreihe zeigt das Bild bei μ = 0,00 die Reibungskraft 0,0 N, bei μ = 0,20 dann 9,8 N, bei μ = 0,40 dann 19,6 N und bei μ = 0,60 dann 29,4 N. Der doppelte Reibungskoeffizient ergibt genau die doppelte, der dreifache genau die dreifache Reibungskraft – F_R ist proportional zu μ, und bei μ = 0,00 verschwindet sie ganz. Am oberen Anschlag, bei μ = 1,00, steht 49,1 N. Die Antriebskraft bleibt in der ganzen Messreihe bei 80 N und die Masse bei 5 kg; verstellt wird allein μ. Das Diagramm „Reibungskraft F_R“ hinkt nach jedem Reglerwechsel nach: Der alte Wert bleibt rund fünf Sekunden lang darin stehen und bildet mit dem neuen eine Stufe – wer sofort hinsieht, hält sie leicht für ein Wachsen mit v. Erst wenn die alten Werte links ausgelaufen sind, liegt die Linie über der ganzen Zeitachse waagerecht, obwohl die Anzeige „v=“ ununterbrochen weiterzählt: Die Reibungskraft hängt nicht von der Geschwindigkeit ab. Die rechte Spalte der Tabelle steht nicht am Bildschirm – F_res und a werden gerechnet.",
  "aufgabe": {
-  "frage": "Stelle den Regler „Reibungskoeffizient μ“ auf 0,95 – diese Stellung steht in keiner Zeile deiner Tabelle. Lies F_R ab, berechne daraus die resultierende Kraft und die Beschleunigung und begründe, warum die Beschleunigung gegenüber der Ausgangsstellung μ = 0,30 nur etwa auf die Hälfte fällt, obwohl die Reibungskraft mehr als dreimal so groß geworden ist.",
+  "frage": "Berechne die Beschleunigung für die Reglerstellung μ = 0,95, die in keiner Zeile deiner Tabelle steht.",
   "zeilen": 5,
   "loesung": "Bei μ = 0,95 zeigt der Infokasten F_R = 46,6 N; F = 80 N und m = 5 kg stehen unverändert. Daraus folgt F_res = 80 N − 46,6 N = 33,4 N und a = 33,4 N / 5 kg = 6,7 m/s². In der Ausgangsstellung μ = 0,30 steht F_R = 14,7 N, also F_res = 80 N − 14,7 N = 65,3 N und a = 65,3 N / 5 kg = 13,1 m/s². Die Reibungskraft ist auf das 3,2-Fache gestiegen (46,6 N / 14,7 N = 3,17), die Beschleunigung dagegen nur auf 6,7 / 13,1 = 0,51, also etwa auf die Hälfte. Der Grund liegt in der Überlagerung: Beschleunigt wird nicht mit F_R, sondern mit der Differenz F − F_R. Von den 80 N zieht die Reibung erst 14,7 N und dann 46,6 N ab; der Rest schrumpft von 65,3 N auf 33,4 N – das ist gut die Hälfte und gerade nicht ein Drittel. Die vier Tabellenzeilen ergeben zum Vergleich: μ = 0,00 → F_res = 80,0 N und a = 16,0 m/s², μ = 0,20 → 70,2 N und 14,0 m/s², μ = 0,40 → 60,4 N und 12,1 m/s², μ = 0,60 → 50,6 N und 10,1 m/s²."
  },
- "alltag": "Zieh zu Hause eine volle Getränkekiste einmal über Fliesen und einmal über einen Teppich, jedes Mal mit gleichmäßigem Zug. Schätze, um welchen Faktor die nötige Zugkraft sich unterscheidet, und erkläre einer Person zu Hause, warum dieselbe Zugkraft auf den beiden Böden zu ganz verschiedenen Beschleunigungen führt.",
+ "alltag": "Erkläre, warum dieselbe Zugkraft eine Getränkekiste auf Fliesen und auf Teppich verschieden stark beschleunigt.",
  "alltagAfb": "II",
  "alltagKomp": "S1",
  "ueberleitung": "Bei einem eingestellten Reibungskoeffizienten nimmt die Reibung der Antriebskraft immer denselben Betrag weg – gleichgültig, wie stark der Motor zieht –, und der Wagen legt trotzdem Meter um Meter zurück. Auf der nächsten Seite kommt zur Kraft der Weg dazu: Du misst, wann eine Kraft wirklich Arbeit verrichtet – und wohin die Arbeit verschwindet, die gegen die Reibung geleistet wird.",
