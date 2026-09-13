@@ -176,7 +176,8 @@
    "Widerlegt: Ein Mittelwert von Geschwindigkeiten hat die Einheit m/s und kann keine Beschleunigung sein.",
    "Widerlegt: Aus der Ruhe trifft v/t zufällig dieselbe Zahl; es ist aber der Quotient EINES Punktes und kein Δv/Δt – bei einem Start mit v₀ ≠ 0 versagt er.",
    "Am Bildschirm: „t → v“ meldet y = 2,000·x mit R² = 1,0000 und darunter „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s²“."
-  ]
+  ],
+  "werte_streuen": true
  },
  {
   "id": "ki4",
@@ -1173,7 +1174,8 @@
    "Am Bildschirm: Die Zeile „Masse aus der Steigung“ trifft den Regler auf zwei Stellen, obwohl einzelne Messpunkte streuen.",
    "Widerlegt: Die Abweichung der Steigung fällt kleiner aus als die Streuung der Einzelwerte.",
    "Widerlegt: Die Ausgleichsgerade wird über ALLE Punkte gelegt; R² sagt, wie gut sie zu allen passt."
-  ]
+  ],
+  "werte_streuen": true
  },
  {
   "id": "gw4",

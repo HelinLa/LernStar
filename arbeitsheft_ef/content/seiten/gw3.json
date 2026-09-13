@@ -55,5 +55,6 @@
   "Am Bildschirm: Die Zeile „Masse aus der Steigung“ trifft den Regler auf zwei Stellen, obwohl einzelne Messpunkte streuen.",
   "Widerlegt: Die Abweichung der Steigung fällt kleiner aus als die Streuung der Einzelwerte.",
   "Widerlegt: Die Ausgleichsgerade wird über ALLE Punkte gelegt; R² sagt, wie gut sie zu allen passt."
- ]
+ ],
+ "werte_streuen": true
 }

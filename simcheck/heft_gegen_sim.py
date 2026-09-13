@@ -239,13 +239,61 @@ def _bildschirmsaetze(s):
     return raus
 
 
+def _flach(x):
+    """Ein Feld in eine Liste von Zeichenketten aufloesen - egal wie es gebaut ist.
+
+    Die Reihen haben verschiedene Formen fuer dasselbe Feld:
+      Regelreihe   tabRows = ["t → s bei 4,0 m/s", ...]        (Zeichenketten)
+      Foerderreihe tabRows = [["Bewegen", "", ""], ...]        (Zellen je Zeile)
+      Foerderreihe beobachtung fehlt ganz (None)
+
+    Bis zum 14.09.2026 klebte pruefe() die Felder mit ' '.join(...) direkt
+    zusammen. Auf den vier Foerderbaenden stuerzte es deshalb ab
+    ("sequence item 4: expected str instance, list found") - das Werkzeug war
+    dort nie benutzbar, und niemandem fiel es auf, weil der Absturz aussah wie
+    ein Aufrufsfehler. Ein Pruefer, der gar nicht erst laeuft, ist so blind wie
+    einer, der schweigt ([[pruefer-der-schweigt]])."""
+    if x is None:
+        return []
+    if isinstance(x, str):
+        return [x]
+    raus = []
+    for e in x:
+        raus += _flach(e)
+    return raus
+
+
+# Manche Seiten drucken Werte, die BEI JEDEM DURCHGANG ANDERS ausfallen: eine
+# streuende Kraftmessdose (gw3 "Acht Punkte, eine Steigung"), eine von Hand
+# gedrueckte Stoppuhr (ki1-ki4). Sie koennen in keinem Faktendump stehen - die
+# Seite sagt das selbst und nennt sie ausdruecklich als Beispiel. Ohne eigenen
+# Ausgang meldet der Pruefer sie fuer immer, und ein echter Fehler verschwindet
+# zwischen 14 Dauermeldungen.
+#
+# DER RIEGEL: Das Feld allein genuegt nicht. Die Seite MUSS im Text sagen, dass
+# die Zahlen des Lesers andere sind - sonst waere `werte_streuen` bloss ein
+# Schalter zum Stummstellen. Fehlt der Satz, ist DAS der Befund.
+STREUSATZ = re.compile(r'(streut|streuen|Deine Zahlen sind andere|deine eigenen|'
+                       r'entscheidest du selbst|bei jedem Durchgang andere)')
+
+
+def _streut(s):
+    if not s.get('werte_streuen'):
+        return False
+    text = ' '.join(_flach(s.get('beobachtung')) + _flach(s.get('forschen')))
+    return bool(STREUSATZ.search(text))
+
+
 def pruefe(seiten, fakten, sim_von):
-    treffer, abgel = [], []
+    treffer, abgel, streu, ohne_satz = [], [], [], []
     for s in seiten:
         f = fakten.get(sim_von.get(s['id']))
         if not f:
             continue
         gezeigt = zwischenwerte(f)
+        streuend = _streut(s)
+        if s.get('werte_streuen') and not streuend:
+            ohne_satz.append(s['id'])
         # Bildschirmwerte NACH EINHEIT - Grundlage der Ableitungspruefung
         nach_einheit = {}
         for _v, _e, _ in zahlen(faktentext(f)):
@@ -263,8 +311,8 @@ def pruefe(seiten, fakten, sim_von):
         # eine Lehrkraft haette am Bildschirm nach einer Zahl gesucht, die es
         # dort nie gab. Die Loesungswege selbst bleiben ungeprueft - sie
         # RECHNEN zu Recht mit Werten, die nirgends angezeigt werden.
-        text = ' '.join(s.get('forschen', []) + s.get('tabRows', []) + [s.get('beobachtung', '')]
-                        + _bildschirmsaetze(s))
+        text = ' '.join(_flach(s.get('forschen')) + _flach(s.get('tabRows'))
+                        + _flach(s.get('beobachtung')) + _bildschirmsaetze(s))
         for v, e, roh in zahlen(text):
             # gedeckt, wenn die Simulation denselben Wert zeigt - auf die Stellen
             # gerundet, mit denen er auf der Seite steht
@@ -286,9 +334,11 @@ def pruefe(seiten, fakten, sim_von):
                 # Nicht verschweigen, nur getrennt ausweisen: der Wert steht
                 # nicht am Bildschirm, ist aber von dort nachrechenbar.
                 abgel.append((s['id'], sim_von[s['id']], roh, weg))
+            elif streuend:
+                streu.append((s['id'], sim_von[s['id']], roh))
             else:
                 treffer.append((s['id'], sim_von[s['id']], roh))
-    return treffer, abgel
+    return treffer, abgel, streu, ohne_satz
 
 def selbsttest():
     """Ohne bestandenen Selbsttest darf das Werkzeug nicht urteilen.
@@ -312,6 +362,9 @@ def selbsttest():
     def lauf(text):
         return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
                       {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+
+    def lauf_streu(seite):
+        return pruefe([seite], {k: v[0] for k, v in fakten.items()}, sim_von)
 
     def lauf_abg(text):
         return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
@@ -350,6 +403,48 @@ def selbsttest():
                {k: v[0] for k, v in fakten.items()}, sim_von)[0]
     if t:
         f.append(f"Gerechneter Wert im Loesungsweg meldete faelschlich: {t}")
+
+    # 1a5. FOERDERFORM. Dort ist tabRows eine Liste von ZELLEN je Zeile und
+    #      beobachtung fehlt ganz. Bis zum 14.09.2026 stuerzte pruefe() daran ab
+    #      ("expected str instance, list found") - auf allen vier Foerderbaenden,
+    #      seit es sie gibt. Die Probe faehrt beide Formen gegeneinander.
+    t = pruefe([{"id": "t1", "forschen": ["Lies v = 4,00 m/s ab."],
+                 "tabRows": [["Bewegen", "14,7 N", ""], ["Verformen", "", ""]]}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+    if t:
+        f.append(f"Foerderform (tabRows als Zellen) meldete faelschlich: {t}")
+
+    # 1a6. Gegenprobe dazu: In DERSELBEN Form muss ein erfundener Wert auffallen.
+    #      Ohne sie wuerde ein stiller `return []` die Probe 1a5 ebenso bestehen.
+    t = pruefe([{"id": "t1", "forschen": [],
+                 "tabRows": [["Bewegen", "99,9 N", ""]]}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)[0]
+    if not t:
+        f.append("Erfundener Wert in einer Foerder-Tabellenzelle (99,9 N) blieb unbemerkt")
+
+    # 1a7. STREUENDE MESSUNG, gute Probe: Eine Seite, die `werte_streuen` traegt
+    #      UND es im Text sagt, darf einen abweichenden Messwert drucken - er
+    #      gehoert in den dritten Eimer, nicht unter die Maengel.
+    tr, _ab, st, os_ = lauf_streu({"id": "t1", "werte_streuen": True,
+        "forschen": ["Die Kraftmessdose streut: Lies 8,84 N ab."],
+        "tabRows": [], "beobachtung": ""})
+    if tr or os_ or not st:
+        f.append(f"Streuende Messung falsch einsortiert: Maengel={tr} ohne_satz={os_} streu={st}")
+
+    # 1a8. DER RIEGEL. Dasselbe Feld OHNE den Satz im Text muss auffallen -
+    #      sonst waere `werte_streuen` ein Schalter zum Stummstellen des
+    #      Pruefers. Ohne diese Probe waere die Ausnahme ein Scheunentor.
+    tr, _ab, st, os_ = lauf_streu({"id": "t1", "werte_streuen": True,
+        "forschen": ["Lies 8,84 N ab."], "tabRows": [], "beobachtung": ""})
+    if not os_ or not tr:
+        f.append(f"`werte_streuen` ohne Satz im Text blieb unbemerkt: ohne_satz={os_} Maengel={tr}")
+
+    # 1a9. Und ohne das Feld bleibt alles beim Alten: ein Mangel ist ein Mangel.
+    tr, _ab, st, os_ = lauf_streu({"id": "t1",
+        "forschen": ["Die Kraftmessdose streut: Lies 8,84 N ab."],
+        "tabRows": [], "beobachtung": ""})
+    if not tr or st:
+        f.append(f"Ohne `werte_streuen` wurde der Wert nicht mehr gemeldet: {tr} / {st}")
 
     # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
     t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")
@@ -427,7 +522,7 @@ def main():
     kap = getattr(plan, 'ALLE_KAPITEL', None) or getattr(plan, 'KAPITEL', [])
     sim_von = {th['id']: th.get('sim') for k in kap for th in k['themen']}
 
-    tr, abgel = pruefe(seiten, fakten, sim_von)
+    tr, abgel, streu, ohne_satz = pruefe(seiten, fakten, sim_von)
     print(f'{len(seiten)} Seiten geprueft · {len(tr)} Werte ohne Entsprechung am Bildschirm')
     nach = collections.defaultdict(list)
     for tid, sim, roh in tr:
@@ -447,7 +542,19 @@ def main():
             nachA[(tid, sim)].append(f'{roh} = {weg}')
         for (tid, sim), werte in sorted(nachA.items()):
             print(f'   {tid:6s} [{sim}]  {"; ".join(werte)}')
-    sys.exit(1 if tr else 0)
+    if streu:
+        nachS = collections.defaultdict(list)
+        for tid, sim, roh in streu:
+            nachS[(tid, sim)].append(roh)
+        print(f'\n{len(streu)} Werte stammen aus einer STREUENDEN Messung '
+              f'(kein Mangel - die Seite sagt selbst, dass deine Zahlen andere sind):')
+        for (tid, sim), werte in sorted(nachS.items()):
+            print(f'   {tid:6s} [{sim}]  {", ".join(werte)}')
+    if ohne_satz:
+        # Der Riegel hat zugeschnappt: Feld gesetzt, Satz fehlt.
+        print(f'\nWARNUNG: {len(ohne_satz)} Seite(n) tragen `werte_streuen`, sagen es aber '
+              f'im Text nicht: {", ".join(sorted(ohne_satz))}')
+    sys.exit(1 if (tr or ohne_satz) else 0)
 
 if __name__ == '__main__':
     main()

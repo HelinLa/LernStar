@@ -1206,7 +1206,10 @@ def book_cover():
     fd.T(h,fd.X0,y,"Forschen · Eigeninitiative · Lernen · Organisieren",
          fd.schrift("med",fd.FLIESS),fd.STIL["akzent"])
     y+=fd.LH+4
-    fd.T(h,fd.X0,y,"orientiert an den Themen des Physikunterrichts der Sekundarstufe I",
+    # Auf dem DECKBLATT stand "Sekundarstufe I" - in einem Band fuer die
+    # Einfuehrungsphase. Beim Ableiten aus den Sek-I-Baenden stehen geblieben,
+    # wie die UF-Kompetenztafel und der Einordnungssatz auf Seite 3.
+    fd.T(h,fd.X0,y,"orientiert an den Inhaltsfeldern der Einführungsphase",
          fd.schrift("reg",fd.KLEIN),fd.STIL["text"])
     PROBE.append(("Deckblatt",1,_unterkante(im)))
     return fertig(im)
@@ -1294,16 +1297,27 @@ def about_pages(pn):
         B.append(bst("Säule %d"%(i+1),b_saeule,fd.ABS_AUFGABE))
     B[-1].abstand=fd.ABS_ABSCHNITT
     B.append(b_unterkopf("Kompetenzbereiche des Kernlehrplans"))
-    # WORTLAUT UNVERAENDERT AUS DEM AUSGELIEFERTEN BAND. Er nennt die Codes der
-    # Sekundarstufe I (UF1-UF4, Heft 3411) - die Kaertchen auf den Aufgabenseiten
-    # tragen dagegen die Oberstufencodes S/E/K/B aus Heft 4721. Das ist ein
-    # INHALTLICHER Fehler des Bandes, kein Satzfehler; er wird hier gemeldet und
-    # nicht nebenbei umgeschrieben. kompetenzen_gost.KURZ haelt den richtigen
-    # Wortlaut bereit, sobald der Auftraggeber die Seite freigibt.
-    kb=[("UF","Umgang mit Fachwissen","UF1 wiedergeben · UF2 anwenden · UF3 ordnen · UF4 vernetzen"),
-        ("E","Erkenntnisgewinnung","E1–E7: fragen, beobachten, vermuten, experimentieren, auswerten, Modelle nutzen"),
-        ("K","Kommunikation","K1–K4: dokumentieren, Informationen verarbeiten, präsentieren, argumentieren"),
-        ("B","Bewertung","B1–B4: analysieren, Kriterien festlegen, abwägen, Stellung nehmen")]
+    # BERICHTIGT am 14.09.2026. Bis dahin stand hier der Wortlaut der
+    # SEKUNDARSTUFE I (UF1-UF4 aus Heft 3411) - die Kaertchen auf jeder
+    # Aufgabenseite tragen aber die Oberstufencodes S/E/K/B aus Heft 4721.
+    # Die Erklaerseite erklaerte also Codes, die im Band nirgends vorkommen,
+    # und erklaerte die tatsaechlich benutzten nicht. Ein voriger Lauf hatte den
+    # Fehler gefunden und als Frage an den Auftraggeber stehen lassen; die
+    # Versalprobe meldete ihn seitdem als "UF (5x)".
+    #
+    # Der Wortlaut kommt jetzt aus kompetenzen_gost - Bereichsnamen aus BEREICH,
+    # Stichworte aus KURZ, die Spanne GEZAEHLT statt geschrieben (S1-S7, E1-E11,
+    # K1-K10, B1-B8). So kann die Seite nicht mehr von der Tafel abweichen.
+    def _spanne(b):
+        _n=[int(c[1:]) for c in kompetenzen.KOMPETENZ if c[0]==b]
+        return "%s%d–%s%d"%(b,min(_n),b,max(_n))
+    def _stich(b,wieviel=4):
+        _c=sorted((c for c in kompetenzen.KOMPETENZ if c[0]==b),key=lambda c:int(c[1:]))
+        return " · ".join(kompetenzen.KURZ[c] for c in _c[:wieviel])
+    # Kein "…" am Ende: Es landete als einzelnes Zeichen auf einer eigenen
+    # Zeile. Dass mehr dahintersteht, sagt schon die Spanne "S1–S7".
+    kb=[(b,kompetenzen.BEREICH[b],"%s: %s"%(_spanne(b),_stich(b)))
+        for b in ("S","E","K","B")]
     for ku,na,er in kb:
         def b_komp(h,d,y,ku=ku,na=na,er=er):
             fd.kompchip(h,fd.X0+80,y-2,ku,None,fd.STIL)
@@ -1312,7 +1326,7 @@ def about_pages(pn):
                            fd.STIL["text"],LESE-96,fd.LH)
         B.append(bst("Kompetenzbereich "+ku,b_komp,fd.ABS_ZEILE))
     B.append(b_para("Der Code steht rechts in der Kopfzeile jeder Aufgabe. Wortlaut nach: Kernlehrplan "
-        "Physik, Gymnasium Sekundarstufe I NRW (Heft 3411, 2019).",art="med",breite=LESE,
+        "Physik für die gymnasiale Oberstufe NRW (Heft 4721, 2013).",art="med",breite=LESE,
         abstand=fd.ABS_ABSCHNITT,name="Quelle Kernlehrplan"))
     B.append(b_unterkopf("Anforderungsbereiche"))
     ab=[("I","Reproduzieren","Bekanntes wiedergeben und ein geübtes Verfahren anwenden"),
@@ -1330,12 +1344,12 @@ def about_pages(pn):
     # dem Satz, dass Bereich II den Schwerpunkt bildet. Die Seite darf sie
     # deshalb als Vorgabe des Plans kennzeichnen - in der Sek I darf sie das nicht.
     B.append(b_para("Er steht neben dem Kompetenzcode. Der Kernlehrplan der gymnasialen Oberstufe "
-        "fuehrt die drei Bereiche in Kapitel 4; der Schwerpunkt liegt auf Bereich II.",art="med",
+        "führt die drei Bereiche in Kapitel 4; der Schwerpunkt liegt auf Bereich II.",art="med",
         breite=LESE,abstand=fd.ABS_ABSCHNITT,name="Quelle Anforderungsbereiche"))
     # "mit Wortschatz-Raetseln" stand hier, solange Wortgitter und Kreuzwort
     # gesetzt wurden. Sie entfallen; die Wortliste traegt weiter die Test-
     # Vorbereitung. Der Satz wuerde sonst etwas behaupten, was nicht im Heft steht.
-    B.append(b_para("Orientiert an zentralen Themen und Kompetenzen des Physikunterrichts in der Sekundarstufe I – "
+    B.append(b_para("Orientiert an den Inhaltsfeldern und Kompetenzen der Einführungsphase – "
         "mit Wortschatz, Test-Vorbereitung und einem Test zu jedem Kapitel. Alle Texte, Aufgaben und "
         "Zeichnungen sind eigenständig erstellt.",breite=LESE,
         abstand=fd.ABS_ABSCHNITT,name="Einordnung"))
