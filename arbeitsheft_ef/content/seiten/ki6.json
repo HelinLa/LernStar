@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Lass die Ausgangsstellung stehen – „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 8 m/s – und wähle die Auftragung „t_F über h auftragen“. Drücke „Messreihe automatisch aufnehmen“: Die Tabelle füllt sich mit neun Zeilen von h = 5 m bis h = 45 m. Übertrage die Fallzeit für h = 5 m und für h = 20 m und halte fest, warum sich aus dieser Auftragung keine Steigung ablesen lässt.",
-  "Wechsle zu „t_F² über h auftragen“ – dieselben neun Messwerte, nur die senkrechte Achse heißt jetzt „t_F² in s²“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und den Wert hinter „erwartet:“ ab, dazu die Zeile „Ortsfaktor g aus der Steigung k“ darunter.",
-  "Drücke „Tabelle leeren“ und bestätige die Rückfrage, wähle „t_F über v₀ auftragen“ und drücke erneut „Messreihe automatisch aufnehmen“: Jetzt bleibt h = 20 m stehen und v₀ wandert von 2 m/s bis 20 m/s. Notiere Steigung und Achsenabschnitt dieser Geraden. Wechsle danach ohne neue Messung zu „x_W über v₀ auftragen“ und lies dort die Steigung ab."
+  "Wähle bei v₀ = 8 m/s „t_F über h auftragen“ und drücke „Messreihe automatisch aufnehmen“. Warum ist keine Steigung ablesbar?",
+  "Wechsle zu „t_F² über h auftragen“ und lies y = k·x und den „Ortsfaktor g aus der Steigung k“ ab.",
+  "Drücke „Tabelle leeren“, wähle „t_F über v₀ auftragen“ und nimm bei h = 20 m neu auf. Notiere Steigung und Achsenabschnitt, danach die Steigung bei „x_W über v₀ auftragen“. (69 Wörter)"
  ],
  "tabCols": [
   "Auftragung (x-Achse → y-Achse)",
@@ -26,7 +26,7 @@
   "t_F über v₀ · 8 Messwerte bei h = 20 m",
   "x_W über v₀ · dieselben 8 Messwerte"
  ],
- "fachtext": "Der waagerechte Wurf zerfällt in zwei Teilbewegungen, die gleichzeitig ablaufen und sich nicht stören: Waagerecht wirkt keine Kraft – x = v₀ · t; senkrecht zieht die Gewichtskraft, der Körper wird gleichmäßig beschleunigt – y = h − 0,5 · g · t². Eliminiert man t, ergibt sich die Bahnkurve y = h − g/(2 · v₀²) · x², eine Parabel. Woher die Fallzeit kommt, zeigt aber erst die Messreihe. Trägt man t_F über h auf, entsteht eine nach rechts abflachende Kurve – aus einer krummen Auftragung lässt sich keine Steigung ablesen. Quadriert man die Fallzeit – genau das ist das Linearisieren –, liegen die Punkte auf einer Ursprungsgeraden t_F² = k · h. Dasselbe liefert y = 0 in y = h − 0,5 · g · t²: t_F² = (2/g) · h. Die Steigung ist also keine bloße Zahl, sondern k = 2/g, und daraus folgt g = 2/k zurück. In t_F = √(2h/g) kommt v₀ nicht vor; bewiesen ist das erst mit der dritten Auftragung: t_F über v₀ ist eine Waagerechte mit der Steigung null, ihr Achsenabschnitt ist die Fallzeit. Erst x_W über v₀ ist wieder eine Ursprungsgerade – ihre Steigung ist die Fallzeit selbst. Gültigkeitsbereich: ohne Luftwiderstand, g = 9,81 m/s²; der Vergleichskörper ist im Bild nur zur besseren Sicht nach links versetzt.",
+ "fachtext": "Der waagerechte Wurf besteht aus zwei Teilbewegungen, die sich nicht stören. Waagerecht gilt x = v₀ · t, senkrecht y = h − 0,5 · g · t². Die Auftragung t_F über h ergibt eine krumme Kurve ohne ablesbare Steigung. Quadriert man die Fallzeit, liegen die Punkte auf einer Ursprungsgeraden: t_F² = (2/g) · h. Die Steigung ist k = 2/g, also g = 2/k. In t_F = √(2h/g) kommt v₀ nicht vor. Das bestätigt die Auftragung t_F über v₀: eine Waagerechte der Steigung null, ihr Achsenabschnitt ist die Fallzeit. Bei x_W über v₀ ist die Steigung die Fallzeit selbst. Es gilt g = 9,81 m/s² ohne Luftwiderstand.",
  "merksatz": [
   {
    "pre": "Krumme Auftragungen geben keine Steigung her. Quadriert man t_F, entsteht eine Ursprungsgerade mit der Steigung k =",

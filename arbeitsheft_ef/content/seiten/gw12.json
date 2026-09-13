@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Drücke „1 · Die Lichtuhr“ und beobachte einen Takt. Wechsle zu „2 · Die bewegte Lichtuhr“, stelle „Relativgeschwindigkeit v/c“ erst auf 0, dann auf 0,95 und notiere jedes Mal, um welchen Faktor der A-Takt laut Text länger ist als der B-Takt.",
-  "Stelle v/c auf 0,60 zurück, drücke „3 · Herleitung mit Pythagoras“ und übertrage die drei Dreiecksseiten und die Gleichung. Wechsle zu „4 · Der relativistische Faktor“ und lies bei v/c = 0,600 und bei 0,950 den Faktor √(1−β²), den Lorentzfaktor γ und die Minutenzahl je Stunde in A ab.",
-  "Drücke „5 · Wo es zählt: GPS & Co.“ und halte fest, welche Teilchen die Zeitdehnung belegen. Drücke „6 · Zeitdehnung messen“, stelle v/c nacheinander auf 0,10, 0,60, 0,84 und 0,95, trage Ticks und Faktor f in die Tabelle ein und übernimm jeden Messwert. Drücke „Theoriefunktion“ und lies Geradengleichung und R² ab."
+  "Drücke „2 · Die bewegte Lichtuhr“ und stelle „Relativgeschwindigkeit v/c“ auf 0,95. Notiere den Faktor aus dem Text.",
+  "Drücke „3 · Herleitung mit Pythagoras“ und übertrage die Gleichung. Lies bei „4 · Der relativistische Faktor“ den Faktor und γ ab.",
+  "Drücke „6 · Zeitdehnung messen“, stelle v/c auf 0,10, 0,60, 0,84 und 0,95 und übernimm jeden Messwert. Trage Ticks und Faktor f ein."
  ],
  "tabCols": [
   "bewegte Ticks je 200 ruhende",
@@ -26,7 +26,7 @@
   "v = 0,84·c",
   "v = 0,95·c"
  ],
- "fachtext": "Ausgangspunkt ist ein einziger Messbefund des Michelson-Morley-Experiments: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Eine Lichtuhr macht daraus ein Messgerät. Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her; ein Hin und Her ist ein Takt, und die Taktdauer ist Weg geteilt durch c. Die Herleitung nimmt den halben Takt, den Weg zum Spiegel: Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. In einem System A, an dem die Uhr mit v vorbeifährt, wandert sie währenddessen um v·ΔtRuh zur Seite, und das Photon legt schräg die Strecke c·ΔtRuh zurück – der Index Ruh meint den ruhenden Beobachter A, nicht das Ruhesystem der Uhr. Die drei Strecken bilden ein rechtwinkliges Dreieck, also gilt (c·ΔtRuh)² = (v·ΔtRuh)² + (c·Δtbew)²; für ganze Takte kürzt sich der Faktor 2 wieder heraus. Aufgelöst ergibt das c²·Δtbew² = (c²−v²)·ΔtRuh² und damit Δtbew = ΔtRuh·√(1−v²/c²). Mit β = v/c ist der Faktor √(1−β²) nie größer als 1: Zwischen denselben Ereignissen vergeht in der bewegten Uhr die kürzere Zeitspanne. Sein Kehrwert γ = 1/√(1−β²) heißt Lorentzfaktor. Eine Zeit, die für alle gilt, gibt es damit nicht mehr; man spricht von einer Zeitspanne in einem System, nicht von der Zeit. Auch B sieht die A-Uhren langsamer – kein Widerspruch, denn A misst mit zwei Uhren, die für B nicht synchron sind.",
+ "fachtext": "Der Messbefund des Michelson-Morley-Experiments lautet: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Die Lichtuhr macht daraus ein Messgerät. Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her. Das ist ein Takt. Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. Für A fährt die Uhr mit v vorbei. Sie wandert dabei um v·ΔtRuh zur Seite, das Photon läuft schräg die Strecke c·ΔtRuh. Die drei Strecken bilden ein rechtwinkliges Dreieck. Aus dem Satz des Pythagoras folgt Δtbew = ΔtRuh·√(1−v²/c²). Dieser Faktor ist nie größer als 1. In der bewegten Uhr vergeht also die kürzere Zeitspanne. Der Kehrwert dieses Faktors heißt Lorentzfaktor γ.",
  "merksatz": [
   {
    "pre": "Weil c in jedem Bezugssystem gleich ist, bedeutet ein längerer Lichtweg eine längere",

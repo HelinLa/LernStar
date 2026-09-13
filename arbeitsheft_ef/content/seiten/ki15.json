@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Der Ausgangszustand steht auf D = 20 N/m. Drücke „Messreihe automatisch aufnehmen“: Die Federkonstante bleibt fest, die Auslenkung fährt in sieben Zeilen von 0 cm bis 30 cm. Notiere aus der Tabelle die Spalten s, s², F und E und lies darunter die Zeile „Auswertung der Messreihe“ – sie nennt für 5 cm und 10 cm zwei Faktoren.",
-  "Drücke „F über s auftragen“ und notiere die Steigung der Fitzeile und darunter den Kasten „Federkonstante D aus der Steigung k“. Wechsle auf „E über s auftragen“ und setze den Haken bei „Theoriekurve einblenden“: Halte fest, warum dort keine Steigung steht. Drücke dann „E über s² auftragen“ und lies Steigung und Rückrechnung ab.",
-  "Drücke „Tabelle leeren“ und bestätige die Rückfrage „Alle 7 Messwerte löschen?“, stelle den Regler „Federkonstante D“ auf 50 N/m und drücke erneut „Messreihe automatisch aufnehmen“. Lies für diese neue Reihe die Steigung unter „F über s auftragen“ und unter „E über s² auftragen“ ab und vergleiche beide mit dem eingestellten Wert."
+  "Drücke bei D = 20 N/m „Messreihe automatisch aufnehmen“ und notiere aus der Tabelle s, s², F und E.",
+  "Drücke nacheinander „F über s auftragen“, „E über s auftragen“ und „E über s² auftragen“. Lies jedes Mal Form und Steigung ab.",
+  "Leere die Tabelle, stelle den Regler „Federkonstante D“ auf 50 N/m und nimm die Messreihe erneut auf. Lies die Steigung unter „E über s² auftragen“ ab."
  ],
  "tabCols": [
   "Auftragung im Auswertungsfeld",
@@ -26,7 +26,7 @@
   "E über s², D = 20 N/m",
   "E über s², D = 50 N/m"
  ],
- "fachtext": "Eine Messreihe wird erst dann zu einer Formel, wenn man sie aufträgt. Bei fester Federkonstante liegen die Messpunkte der Auftragung F über s auf einer Ursprungsgeraden – das ist das Kraftgesetz F = D · s, und die Steigung k dieser Geraden ist unmittelbar die Federkonstante: D = k, gemessen in N/m. Trägt man dieselben Messwerte als E über s auf, wird die Auftragung krumm: eine Parabel durch den Ursprung. Eine Parabel hat keine Steigung, die man ablesen könnte; die Federkonstante ist ihr also nicht unmittelbar zu entnehmen. Deshalb wird linearisiert. Man ersetzt die Größe auf der x-Achse durch eine andere – hier s² statt s – und prüft, ob die Punkte danach auf einer Geraden liegen. Über s² tun sie es: Damit ist E proportional zu s², und die Steigung dieser zweiten Geraden gehört wieder zur Feder. Sie ist aber nicht D, sondern D/2; zurückgerechnet gilt D = 2 · k. Der Faktor ½ ist kein Rechenzufall, sondern hat eine anschauliche Bedeutung. Beim Spannen wächst die Kraft von null bis zum Endwert F = D · s. Die Form W = F · s gilt nur für eine konstante Kraft, einzusetzen ist ihr Mittelwert ½ · F. Die gespeicherte Energie ist deshalb die Fläche unter der F-s-Geraden, und diese Fläche ist ein rechtwinkliges Dreieck mit der Grundseite s und der Höhe F – halb so groß wie das Rechteck F · s mit denselben Seiten. So entsteht E = ½ · F · s = ½ · D · s², mit 1 N · 1 m = 1 J. Dieselbe Feder liefert also zwei Geraden mit zwei Steigungen: D aus der Kraftauftragung, D/2 aus der linearisierten Energieauftragung. Weil s im Quadrat steht, bringt die doppelte Auslenkung die doppelte Kraft, aber die vierfache Energie. Beim Loslassen gilt für einen reibungsfrei laufenden Wagen der Masse m: E_Spann = E_Kin, also ½ · D · s² = ½ · m · v² und damit v = √(2 · E / m). Die Simulation rechnet mit einer idealen Feder und einer reibungsfreien Bahn; an einer echten Fahrbahn gehen einige Prozent an Reibung und mitschwingende Federmasse verloren.",
+ "fachtext": "Trägt man F über s auf, liegen die Punkte auf einer Ursprungsgeraden. Ihre Steigung k ist die Federkonstante D. Dieselben Werte als E über s aufgetragen ergeben eine Parabel. Aus ihr ist keine Steigung abzulesen. Der Ausweg heißt Linearisieren: s² tritt an die Stelle von s. Über s² liegen sie wieder auf einer Geraden. Deren Steigung ist nicht D, sondern D/2. Zurückgerechnet gilt D = 2 · k. Der Faktor stammt aus der Fläche unter der F-s-Geraden. Die Kraft wächst von null auf F, im Mittel wirkt die halbe Kraft. Diese Fläche ist ein Dreieck mit den Seiten s und F. Daraus folgt E = ½ · D · s².",
  "merksatz": [
   {
    "pre": "Über s² statt über s aufgetragen liegen die Energiewerte wieder auf einer Ursprungsgeraden; dieses Umformen der Achse heißt",

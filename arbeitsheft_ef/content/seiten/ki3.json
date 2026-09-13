@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Drücke „Tabelle leeren“ und stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Der Wagen fährt bereits; drücke während einer Fahrt fünfmal „Zeit stoppen“, ungefähr gleichmäßig über die Bahn verteilt. Verpasst du den Start, setzt „neue Fahrt“ Uhr und Weg auf null zurück. Übertrage die fünf Zeilen mit t, s, v und der gerechneten Spalte a.",
-  "Wähle nacheinander die Auftragungen „t → s“, „t → v“ und „t → a“ und halte zu jeder fest, welche Form die Punktreihe hat und welche Zahl für a herauskommt. Bei „t → v“ liest du die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.",
-  "Stelle den Regler danach auf 4,0 m/s² – die Uhr beginnt eine neue Fahrt, die Tabelle bleibt stehen – und stoppe wieder fünfmal. Vergleiche in „t → v“ die beiden Steigungen und in „t → a“ die Höhen der beiden Waagerechten miteinander."
+  "Stelle „Beschleunigung a“ auf 2,0 m/s² und drücke während einer Fahrt fünfmal „Zeit stoppen“.",
+  "Wähle nacheinander „t → s“, „t → v“ und „t → a“. Notiere je Auftragung die Form der Punktreihe, die Steigung k und den Wert für a.",
+  "Drücke bei „t → v“ „Steigung messen“ und wähle zwei Punkte auf der Ausgleichsgeraden. Stelle dann 4,0 m/s² ein, stoppe neu und miss die Steigung erneut. (69 Wörter)"
  ],
  "tabCols": [
   "Form der Punktreihe, Steigung k",
@@ -26,7 +26,7 @@
   "t → a bei a = 2,0 m/s²",
   "t → v bei a = 4,0 m/s²"
  ],
- "fachtext": "Fünf gestoppte Wertepaare, und im t-v-Diagramm liegen sie auf einer Geraden durch den Ursprung – das ist der Befund, aus dem alles Weitere folgt. Auf einer Ursprungsgeraden hat der Quotient v/t für jeden Punkt denselben Wert; gleichbedeutend liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man v/t = a nach v um, steht v = a · t da: Die Formel ist das Ergebnis der Messung, nicht ihre Voraussetzung. Dass a während der Fahrt überhaupt konstant bleibt, prüft die Auftragung t → a nach – sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel, die in jedem Punkt eine andere Steigung hat; eine einzelne Zahl ist daraus nicht zu gewinnen.",
+ "fachtext": "Fünf gestoppte Wertepaare liegen im t-v-Diagramm auf einer Ursprungsgeraden. Auf einer Ursprungsgeraden liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man Δv/Δt = a nach v um, steht v = a · t da. Die Formel ist damit das Ergebnis der Messung, nicht ihre Voraussetzung. Ob a während der Fahrt konstant bleibt, prüft die Auftragung t → a. Sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung. Eine einzelne Zahl ist daraus nicht zu gewinnen.",
  "merksatz": [
   {
    "pre": "Die Steigung Δv/Δt der t-v-Geraden ist für jedes Punktepaar gleich groß; diese eine Zahl heißt",

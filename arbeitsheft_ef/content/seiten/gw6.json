@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Übertrage zu jedem Ort den Abstand r in die Tabelle und rechne für die ISS-Zeile nach, wie viel davon Höhe über dem Erdboden ist – der Erdradius steht in der ersten Zeile.",
-  "Bilde für jede Zeile den Anteil g : 9,82 N/kg am Wert an der Erdoberfläche und trage ihn in die Tabelle ein.",
-  "Prüfe eine Zeile nach: Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."
+  "Übertrage zu jedem Ort den Abstand r in die Tabelle. Rechne für die ISS-Zeile aus, wie viel davon Höhe über dem Erdboden ist.",
+  "Bilde für jede Zeile den Anteil g : 9,82 N/kg und trage ihn in die Tabelle ein.",
+  "Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."
  ],
  "daten": {
   "titel": "Feldstärke g der Erde in vier Abständen",
@@ -58,7 +58,7 @@
   "Navigationssatellit",
   "Mondbahn"
  ],
- "fachtext": "Ein Feld ordnet jedem Punkt des Raums eine physikalische Größe zu. Beim Gravitationsfeld ist das die Feldstärke g = F/m, also die Kraft je Kilogramm Probemasse an diesem Ort; ihre Einheit ist 1 N/kg. Der Gewinn dieser Beschreibung: g hängt nur noch vom Zentralkörper und vom Ort ab, nicht mehr vom Probekörper. Teilt man das Gravitationsgesetz F = G · M · m / r² durch m, bleibt g = G · M / r². Die Feldstärke zeigt überall zum Erdmittelpunkt und nimmt mit dem Quadrat des Abstands ab: doppelter Abstand, ein Viertel der Feldstärke. Sie wird beliebig klein, aber nie null – ein Feld hat keinen Rand. Der Ortsfaktor 9,81 N/kg ist deshalb kein eigener Naturwert, sondern nur der Wert dieses Feldes an der Erdoberfläche.",
+ "fachtext": "Ein Feld ordnet jedem Punkt des Raums eine Größe zu. Beim Gravitationsfeld ist das die Feldstärke g = F/m, die Kraft je Kilogramm Probemasse; ihre Einheit ist 1 N/kg. So hängt g nur vom Ort ab, nicht vom Probekörper. Teilt man F = G·M·m/r² durch m, bleibt g = G·M/r². Sie zeigt zum Erdmittelpunkt und nimmt mit dem Quadrat des Abstands ab: doppelter Abstand, ein Viertel. Sie wird beliebig klein, aber nie null. An der ISS ist das Feld fast so stark wie am Boden; Station und Besatzung fallen nur gemeinsam um die Erde. Der Ortsfaktor 9,81 N/kg ist der Wert dieses Feldes an der Erdoberfläche.",
  "merksatz": [
   {
    "pre": "Aus F = G·M·m/r² wird durch Division durch m die Feldstärke",

@@ -13,8 +13,8 @@
  "predictOk": 2,
  "forschen": [
   "Drücke „Erde“ und notiere aus dem Statusfeld die Masse m, den Ortsfaktor g und die Gewichtskraft F.",
-  "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab – eine der drei Zahlen bleibt unverändert stehen.",
-  "Beantworte danach die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."
+  "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab. Eine der drei Zahlen bleibt unverändert stehen.",
+  "Beantworte die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."
  ],
  "tabCols": [
   "m in kg und g in N/kg (Statusfeld)",
@@ -25,7 +25,7 @@
   "Erde",
   "Jupiter"
  ],
- "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m beschreibt den Körper selbst: wie stark er einer Beschleunigung widersteht (träge Masse) und wie stark ein Himmelskörper ihn anzieht (schwere Masse). Beide Zahlen sind gleich und gehören zum Körper, nicht zum Ort. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Die Kraft je Kilogramm ist an jedem Ort eine feste Zahl in N/kg – der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation rundet auf 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s² da, aus dem Fallversuch bestimmt. Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s². Auch der Zahlenwert ist gleich: Im freien Fall wirkt nur die Gewichtskraft, aus m · g = m · a folgt a = g – träge und schwere Masse sind gleich groß.",
+ "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m gehört zum Körper und ändert sich mit dem Ort nicht. Sie misst, wie stark er einer Beschleunigung widersteht und wie stark ein Himmelskörper ihn anzieht. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Der Quotient F/m ist an jedem Ort eine feste Zahl, der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation zeigt 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s². Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s².",
  "merksatz": [
   {
    "pre": "Die Masse gehört zum Körper, vom Ort abhängig ist allein die",

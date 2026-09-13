@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Die Simulation startet mit ω = 3 rad/s und r = 70 px. Prüfe beide Regler und lies im weißen Anzeigefeld rechts oben im Bild die Zeile ab, die mit v≈ beginnt – darüber steht ω=…rad/s, darunter F_z≈…N. Die Simulation schreibt dort einen Punkt statt eines Kommas. Übertrage den Wert in die erste Tabellenzeile.",
-  "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s, ohne den Radius zu verändern. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch die eingestellte Winkelgeschwindigkeit.",
-  "Ziehe nun bei 7 rad/s den Regler „Radius r“ von 70 px auf 40 px – der kleinere Radius steht für eine weiter innen hängende Kette desselben Karussells: ω bleibt gleich, nur der Abstand von der Achse ändert sich. Vergleiche v≈-Wert und Quotient mit der Zeile darüber und halte fest, welche der beiden Zahlen sich ändert."
+  "Lies die Zeile v≈ im Anzeigefeld ab, während ω auf 3 rad/s und r auf 70 px stehen. Beachte den Punkt statt des Kommas.",
+  "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch ω.",
+  "Ziehe bei 7 rad/s den Regler „Radius r“ auf 40 px. Vergleiche Wert und Quotient mit der Zeile darüber."
  ],
  "modellgrenze": "Maßstab: Die Simulation zeichnet 10 px als 1 m – der Radius 70 px steht also für 7,0 m. Die beiden Pfeile am Ball sind dagegen immer gleich lang gezeichnet; sie geben nur die Richtung an, den Betrag von v nicht.",
  "tabCols": [
@@ -27,7 +27,7 @@
   "ω = 7 rad/s · r = 70 px",
   "ω = 7 rad/s · r = 40 px"
  ],
- "fachtext": "Bei einer gleichförmigen Kreisbewegung überstreicht der Zeiger von der Drehachse zum Körper in gleichen Zeiten gleiche Winkel. Der Quotient ω = Δφ/Δt heißt Winkelgeschwindigkeit; der Winkel wird im Bogenmaß gemessen, die Einheit ist 1 rad/s, ein voller Umlauf sind 2π rad. Die Bahngeschwindigkeit v = Δs/Δt zählt dagegen den Weg auf der Kreislinie. Für einen Winkel im Bogenmaß gilt s = φ · r, und daraus folgt v = ω · r. Beide Größen beschreiben dieselbe Drehung, aber nicht dasselbe: ω gehört zum ganzen starren Körper, v gehört zu einem einzelnen Punkt und wächst mit seinem Abstand von der Achse. Der Betrag von v bleibt dabei konstant, die Richtung nicht – der Geschwindigkeitsvektor zeigt in jedem Augenblick tangential zur Bahn.",
+ "fachtext": "Bei einer gleichförmigen Kreisbewegung überstreicht der Zeiger von der Achse zum Körper in gleichen Zeiten gleiche Winkel. Der Quotient ω = Δφ/Δt heißt Winkelgeschwindigkeit. Der Winkel wird im Bogenmaß gemessen, die Einheit ist 1 rad/s. Ein voller Umlauf sind 2π rad. Die Bahngeschwindigkeit v = Δs/Δt zählt dagegen den Weg auf der Kreislinie. Im Bogenmaß gilt s = φ · r, und daraus folgt v = ω · r. ω gehört zum ganzen starren Körper, v gehört zu einem einzelnen Punkt. Deshalb wächst v mit dem Abstand von der Achse. Der Betrag von v bleibt konstant, die Richtung nicht. Der Geschwindigkeitsvektor zeigt stets tangential zur Bahn.",
  "merksatz": [
   {
    "pre": "Alle Punkte eines starren Körpers drehen sich mit derselben",

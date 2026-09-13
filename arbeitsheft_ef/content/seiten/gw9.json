@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab und notiere beide Werte mit ihren Einheiten.",
-  "Berechne zeilenweise a³ und T² und bilde daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Nachkommastellen, nicht schon die Zwischenwerte, sonst verschiebt sich das Ergebnis bei Merkur.",
-  "Trage Merkur, Erde, Jupiter und Saturn in die Tabelle ein, vergleiche die sechs Quotienten und entscheide, ob die Unterschiede aus der Regel selbst stammen oder aus der Stellenzahl der Tabelle."
+  "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab.",
+  "Berechne zeilenweise a³ und T² und daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Stellen, nicht die Zwischenwerte.",
+  "Trage Merkur, Erde, Jupiter und Saturn ein und vergleiche die Quotienten. Entscheide, ob die Unterschiede aus der Regel oder aus der Stellenzahl stammen."
  ],
  "daten": {
   "titel": "Umlaufzeit und große Halbachse der Planeten",
@@ -68,7 +68,7 @@
   "Jupiter",
   "Saturn"
  ],
- "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, die heute sein drittes Gesetz heißt: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante gerade 1,00 – die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt: Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für die Ellipse gilt dasselbe, sobald man für a die große Halbachse einsetzt. Rechts steht nur die Masse M des Zentralkörpers, die Masse des umlaufenden Planeten fällt heraus. Genau deshalb genügt eine einzige gemessene Größe, um die andere vorherzusagen.",
+ "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, sein drittes Gesetz: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante 1,00. Die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt. Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für eine Ellipse gilt dasselbe mit der großen Halbachse a. Rechts steht nur die Masse M des Zentralkörpers. Die Masse des umlaufenden Planeten fällt heraus.",
  "merksatz": [
   {
    "pre": "Drittes Keplersches Gesetz: Für alle Planeten der Sonne ist T²/a³",

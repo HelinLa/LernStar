@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Lass den Wagen bei „Geschwindigkeit v“ = 4,0 m/s fahren und drücke fünfmal „Zeit stoppen“, ruhig in ungleichen Abständen. Jede Zeile hält fest, was in diesem Augenblick auf der Anzeigetafel steht: Uhr t, Wegmesser s und Tacho v. Stoppe so lange, bis die Statuszeile „5 von mindestens 5 gestoppten Messwerten“ meldet.",
-  "Wähle „t → s“. Über dem Ergebniskasten steht deine Reihe als „Stoppuhr · v = 4,0 m/s“ mit ihrer Ausgleichsgeraden y = …·x. Notiere diese Steigung und daneben die Zeile „Geschwindigkeit v = Steigung der Ausgleichsgeraden“. Rechne danach aus zwei beliebigen Tabellenzeilen Δs/Δt von Hand nach und vergleiche beide Zahlen.",
-  "Wähle nacheinander „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle den Regler danach auf 7,0 m/s – Uhr und Weg beginnen von vorn – und stoppe wieder fünfmal. Vergleiche die beiden t-s-Geraden: Die steilere gehört zur schnelleren Fahrt."
+  "Stelle „Geschwindigkeit v“ auf 4,0 m/s und drücke fünfmal „Zeit stoppen“. Die Statuszeile meldet 5 von mindestens 5 gestoppten Messwerten.",
+  "Wähle „t → s“, drücke „Steigung messen“ und markiere zwei Punkte auf der Ausgleichsgeraden. Notiere Δs, Δt, Steigung und Geradengleichung.",
+  "Wechsle zu „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle danach 7,0 m/s ein, stoppe fünfmal und notiere die neue t-s-Gerade."
  ],
  "tabCols": [
   "Gleichung der Ausgleichsgeraden",
@@ -26,7 +26,7 @@
   "t → a bei v = 4,0 m/s",
   "t → s bei v = 7,0 m/s"
  ],
- "fachtext": "Gemessen wird hier nicht die Geschwindigkeit, sondern ein Paar aus Zeit und Weg – so oft, wie die Stoppuhr gedrückt wird. Trägt man diese Paare im t-s-Diagramm auf, liegen sie auf einer Geraden durch den Ursprung. Das ist der Befund, aus dem alles Weitere folgt. Eine Ursprungsgerade bedeutet: s und t sind proportional, der Quotient s/t ist für jeden Messpunkt derselbe. Diesen gemeinsamen Quotienten nennt man die Geschwindigkeit v, und aus s/t = v wird durch Umstellen s = v · t. Die Formel wird also nicht vorausgesetzt, sondern aus der Lage der Messpunkte gewonnen. Weil die Gerade durch den Ursprung geht, ist v zugleich ihre Steigung. Für zwei beliebige Punkte gilt s₁ = v · t₁ und s₂ = v · t₂; die Differenz ist Δs = v · Δt, und Kürzen durch Δt liefert v = Δs/Δt. Die Zeitdifferenz fällt heraus – deshalb hängt das Ergebnis weder davon ab, welche zwei Punkte man nimmt, noch davon, in welchem Augenblick gestoppt wurde. Die beiden anderen Auftragungen prüfen diesen Schluss nach. Im t-v-Diagramm liegen die Tachowerte auf einer Waagerechten: Ihre Steigung ist null, ihr Achsenabschnitt ist wieder v. Im t-a-Diagramm liegt jeder aus zwei Tabellenzeilen gerechnete Wert a = Δv/Δt auf der Nulllinie. Genau das heißt gleichförmig – die Geschwindigkeit ändert sich nicht, und nur weil sie sich nicht ändert, ist die t-s-Auftragung überhaupt eine Gerade.",
+ "fachtext": "Gemessen wird nicht die Geschwindigkeit, sondern je ein Paar aus Zeit und Weg. Im t-s-Diagramm liegen diese Paare auf einer Geraden durch den Ursprung. Eine Ursprungsgerade bedeutet: s und t sind proportional. Der Quotient s/t hat für jeden Messpunkt denselben Wert. Diesen Wert nennt man die Geschwindigkeit v. Es gilt s = v · t, und v ist zugleich die Steigung der Geraden. Für zwei beliebige Punkte gilt v = Δs/Δt. Welche zwei Punkte man wählt, ist gleichgültig. Das t-v-Diagramm zeigt eine Waagerechte. Ihr Achsenabschnitt ist wieder v. Im t-a-Diagramm liegen alle Werte auf der Nulllinie. Genau das heißt gleichförmig: Die Geschwindigkeit ändert sich nicht.",
  "merksatz": [
   {
    "pre": "Liegen die gestoppten Wertepaare auf einer Ursprungsgeraden, sind s und t proportional; ihr gemeinsamer Quotient s/t ist die",

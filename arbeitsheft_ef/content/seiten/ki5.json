@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke zuerst „Tabelle leeren“, damit keine alten Zeilen mitrechnen. Belasse den Regler „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“: In die Wertetabelle laufen 9 Messpunkte von t = 0,32 s bis t = 3,18 s – dieselben Zahlen, die im weißen Anzeigefeld stehen, wenn die Uhr dort steht. Einzelne Punkte gehen auch – erst „Anhalten“, dann „Messpunkt übernehmen“; sie landen in derselben Tabelle und verändern die Ausgleichsgeraden.",
-  "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve, aus der sich keine Steigung ablesen lässt. Wechsle zu „t² → s auftragen“ – jetzt liegen dieselben Punkte auf einer Ursprungsgeraden. Notiere ihre Steigung k aus der Zeile y = k·x.",
-  "Wechsle zu „t → v auftragen“ und notiere auch diese Steigung: Sie ist g unmittelbar. Vergleiche die beiden Zahlen – die Steigung aus s über t² ist halb so groß, daraus folgt g = 2 · k. Im Kasten „Fallbeschleunigung g aus der Steigung“ stehen beide zurückgerechneten g-Werte und ihre Differenz."
+  "Drücke „Tabelle leeren“, belasse „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“. Neun Messpunkte laufen in die Tabelle.",
+  "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve. Wechsle zu „t² → s auftragen“, notiere die Steigung k und verdopple sie.",
+  "Wechsle zu „t → v auftragen“ und notiere diese Steigung als g. Lies im Kasten „Fallbeschleunigung g aus der Steigung“ beide g-Werte und ihre Differenz ab."
  ],
  "modellgrenze": "Vor t = 0,15 s und nach dem Aufprall nimmt die Simulation keinen Messpunkt an: Am Anfang sind s und v auf zwei Nachkommastellen zu grob gerundet, nach dem Aufprall stehen beide still, während die Uhr weiterläuft. Solche Zeilen würden beide Ausgleichsgeraden verfälschen, nicht nur die aus s über t².",
  "tabCols": [
@@ -27,7 +27,7 @@
   "t → v: Steigung k = g in m/s²",
   "Differenz der beiden g-Werte in m/s²"
  ],
- "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg nicht gleichmäßig: s über t liefert eine Kurve, und aus einer Kurve lässt sich keine Steigung ablesen. Linearisieren heißt, eine Achse so umzurechnen, dass die Messpunkte auf einer Ursprungsgeraden liegen. Über t² aufgetragen gelingt das – s ist proportional zu t², und die Gerade hat die Steigung k. Die zweite Auftragung kommt ohne den Fallweg aus: v über t ist von sich aus eine Ursprungsgerade, und ihre Steigung ist der Zuwachs der Geschwindigkeit je Sekunde, also die Fallbeschleunigung selbst. Der Vergleich der beiden gemessenen Steigungen entscheidet: k ist halb so groß wie die Steigung der v-Geraden. Damit ist k = g/2 abgelesen und nicht vorausgesetzt, und erst daraus folgen s = ½ · g · t² und g = 2 · k. Beide Geraden stammen aus denselben Messpunkten und liefern trotzdem verschiedene Zahlen: Die Simulation wertet die Formeln nicht aus, sie rechnet den Fall in festen Schritten von Δt = 0,016 s. Erst wird v um g · Δt erhöht, danach v · Δt zum Weg addiert; der Weg wird mit der Geschwindigkeit am Schrittende aufsummiert und fällt um den Faktor (1 + Δt/t) zu groß aus, während v = g · t exakt bleibt. Der aus s gewonnene g-Wert liegt deshalb immer über dem aus v – keine Messunsicherheit, sondern die Genauigkeitsgrenze des Rechenverfahrens.",
+ "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg ungleichmäßig. Über t ergibt s eine Kurve ohne ablesbare Steigung. Linearisieren heißt: eine Achse so umrechnen, dass eine Gerade entsteht. Über t² gelingt das; diese Gerade hat die Steigung k. Die Auftragung v über t ist schon eine Ursprungsgerade. Ihre Steigung ist die Fallbeschleunigung g. Der Vergleich zeigt: k ist halb so groß wie g, also k = g/2. Daraus folgen s = ½ · g · t² und g = 2 · k. Beide Wege liefern leicht verschiedene Zahlen. Die Simulation summiert den Weg in Schritten von Δt = 0,016 s zu groß auf. Das ist die Genauigkeitsgrenze des Rechenverfahrens.",
  "merksatz": [
   {
    "pre": "Trägt man s über t² auf, liegen die Punkte auf einer Ursprungsgeraden; ihre Steigung k ist",

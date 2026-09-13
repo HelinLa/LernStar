@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Stelle den Regler „Externe Kraft F“ auf 0 N und den Regler „Anfangsgeschwindigkeit v₀“ auf 20 m/s. Lies im weißen Kästchen rechts oben v₀, F und v ab.",
-  "Lass die Simulation eine Weile laufen, ohne einen Regler anzufassen, und lies v ein zweites Mal ab. Beobachte dabei, wo die Linie v(t) im oberen Diagramm verläuft.",
-  "Ziehe v₀ nacheinander auf 5 m/s, 12 m/s und 40 m/s, ohne F anzurühren. Warte nach jeder Änderung, bis die Linie v(t) wieder auf ganzer Breite waagerecht durchläuft, und lies v erneut ab."
+  "Stelle „Externe Kraft F“ auf 0 N und „Anfangsgeschwindigkeit v₀“ auf 20 m/s. Lies v im weißen Kästchen ab.",
+  "Lass die Simulation laufen und lies v ein zweites Mal ab. Halte fest, wie die Linie v(t) im oberen Diagramm verläuft.",
+  "Ziehe v₀ nacheinander auf 5 m/s, 12 m/s und 40 m/s, ohne F anzurühren. Warte jedes Mal, bis v(t) waagerecht durchläuft, und lies v erneut ab."
  ],
  "tabCols": [
   "v sofort / v nach einer Weile in m/s",
@@ -26,7 +26,7 @@
   "v₀ = 12 m/s · F = 0 N",
   "v₀ = 40 m/s · F = 0 N"
  ],
- "fachtext": "Das erste Newton'sche Gesetz nennt Ruhe und geradlinig gleichförmige Bewegung in einem Atemzug – zu Recht, denn Ruhe ist der Sonderfall v = 0. Ein Körper behält seinen Bewegungszustand, also die Geschwindigkeit nach Betrag und Richtung, solange die resultierende Kraft null ist; erst eine von null verschiedene resultierende Kraft ändert ihn. Resultierend heißt alle Kräfte zusammengenommen: Antrieb und Reibung dürfen durchaus wirken, nur ihre Summe muss verschwinden. Der Regler „Externe Kraft F“ ist genau diese Summe. Steht er auf 0 N, so bleibt v auf dem eingestellten v₀, und weil v konstant ist, wächst der Weg gleichförmig, s = v · t. Einstellen lässt sich v₀ erst ab 5 m/s. Der ruhende Wagen fehlt am Bildschirm aber nur scheinbar: Für einen Beobachter, der mit 20 m/s mitfährt, ruht genau der Wagen, den du laufen siehst.",
+ "fachtext": "Das erste Newton'sche Gesetz nennt Ruhe und geradlinig gleichförmige Bewegung in einem Atemzug. Ruhe ist nur der Sonderfall v = 0. Ein Körper behält seinen Bewegungszustand, solange die resultierende Kraft null ist. Gemeint ist die Geschwindigkeit nach Betrag und Richtung. Erst eine von null verschiedene resultierende Kraft bewirkt eine Änderung. Resultierend heißt alle Kräfte zusammengenommen. Antrieb und Reibung dürfen wirken, nur ihre Summe muss verschwinden. Der Regler „Externe Kraft F“ ist genau diese Summe. Steht er auf 0 N, bleibt v auf dem eingestellten v₀. Weil v konstant ist, wächst der Weg gleichförmig mit s = v · t. Einstellen lässt sich v₀ erst ab 5 m/s.",
  "merksatz": [
   {
    "pre": "Ist die Summe aller Kräfte an einem Körper",

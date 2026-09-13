@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Halte zuerst die Bedingungen fest, die fest bleiben sollen: Der Regler „Antriebskraft F“ steht auf 80 N, der Regler „Masse m“ auf 5 kg. Der Infokasten rechts oben zeigt vier Angaben – F, F_R, μ und v; in der Ausgangsstellung stehen dort F = 80 N, μ = 0,30 und F_R = 14,7 N. Diese Zeile kommt nicht in die Tabelle.",
-  "Ziehe nun allein den Regler „Reibungskoeffizient μ“ nacheinander auf 0,00, dann 0,20, dann 0,40 und zuletzt 0,60. Der Regler zählt in Hundertsteln und rastet in Schritten von 0,05, μ = 0,20 steht also bei 20. Notiere jedes Mal den Wert hinter „F_R=“ und rechne F_res = 80 N − F_R sowie a = F_res / 5 kg aus.",
-  "Lass die Simulation nach dem letzten Reglerwechsel etwa fünf Sekunden unberührt weiterlaufen, bis die Stufe aus der vorigen Stellung links aus dem Diagramm gewandert ist. Vergleiche erst dann im Diagramm „Reibungskraft F_R“ den Verlauf über der Zeitachse t mit der Anzeige „v=“ im Bild, die immer weiter hochzählt, und halte fest, ob F_R mit wachsender Geschwindigkeit größer wird."
+  "Prüfe die Ausgangsstellung: Der Regler „Masse m“ steht auf 5 kg, der Infokasten zeigt F = 80 N, μ = 0,30 und F_R = 14,7 N.",
+  "Ziehe allein den Regler „Reibungskoeffizient μ“ auf 0,00, 0,20, 0,40 und 0,60. Notiere jedes Mal den Wert hinter „F_R=“.",
+  "Rechne je Zeile F_res = 80 N − F_R und a = F_res / 5 kg aus. Prüfe, ob F_R mit steigendem v wächst."
  ],
  "tabCols": [
   "F_R im Bild in N",
@@ -27,7 +27,7 @@
   "μ = 0,60"
  ],
  "modellgrenze": "Die Simulation kennt nur die Gleitreibung des schon fahrenden Wagens. Stellst du die Antriebskraft unter F_R – etwa F = 20 N bei μ = 0,60 –, bleibt der Wagen bei v = 0,0 m/s stehen, und der Infokasten meldet trotzdem F_R = 29,4 N. Warum eine Kiste auf dem Teppich erst losbrechen muss, erklärt die Haftreibung; die steckt in diesem Modell nicht.",
- "fachtext": "Reibung tritt dort auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt das Modell F_R = μ · F_N: Die Reibungskraft ist proportional zu der Normalkraft, mit der die Flächen aufeinandergedrückt werden. Auf waagerechter Bahn ist das die Gewichtskraft, also F_N = m · g. Der Reibungskoeffizient μ ist eine reine Verhältniszahl ohne Einheit und hängt von der Paarung der Werkstoffe ab. Antriebskraft und Reibungskraft greifen am selben Wagen an und liegen auf einer Wirkungslinie, zeigen aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R, und erst diese steht im Grundgesetz der Mechanik: a = F_res / m, mit 1 N/kg = 1 m/s². Die Antriebskraft allein sagt über die Beschleunigung nichts aus. Gültigkeitsbereich: Das Modell beschreibt den bereits gleitenden Körper mit einer Reibungskraft, die weder von der Größe der Berührfläche noch von der Geschwindigkeit abhängt – auch den Wagen auf der Bahn rechnet die Simulation als gleitenden, nicht als rollenden Körper. Die Haftreibung vor dem Losbrechen, die Rollreibung und der mit v² wachsende Luftwiderstand sind darin nicht enthalten. Welchen Ortsfaktor die Simulation benutzt, steht nirgends am Bildschirm – er lässt sich aus je einem Wertepaar μ und F_R zurückrechnen.",
+ "fachtext": "Reibung tritt auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt F_R = μ · F_N. Sie ist proportional zur Normalkraft. Auf waagerechter Bahn ist das die Gewichtskraft, also F_N = m · g. Der Reibungskoeffizient μ ist eine Verhältniszahl ohne Einheit. Er hängt von den Werkstoffen ab. Antrieb und Reibung greifen am selben Wagen an, aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R. Erst diese steht im Grundgesetz a = F_res / m, mit 1 N/kg = 1 m/s². Die Antriebskraft allein sagt über die Beschleunigung nichts aus. Im Modell hängt F_R weder von der Berührfläche noch von der Geschwindigkeit ab.",
  "merksatz": [
   {
    "pre": "Für die Gleitreibung gilt F_R = μ · F_N, auf waagerechter Bahn also mit F_N =",

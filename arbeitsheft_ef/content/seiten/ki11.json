@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und die Stoßdauer Δt. Notiere dazu die Zeile mit dem Verhältnis a1 : a2.",
-  "Drücke „Neu aufstellen“ und ziehe den Regler „Masse m1 (linker Wagen)“ nacheinander auf 1 kg, 2 kg und 5 kg, während „Masse m2 (rechter Wagen)“ auf 5 kg steht. Ziehe zuletzt m2 auf 1 kg und lass m1 bei 5 kg. Löse die Feder jedes Mal neu.",
-  "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert. Lies zum Schluss einmal die Zeilen „Endwerte“ und „Energie“ ab: Wie groß ist E(Feder), und was ergibt p1 + p2?"
+  "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und a1 : a2.",
+  "Drücke „Neu aufstellen“, stelle die Regler „Masse m1 (linker Wagen)“ und „Masse m2 (rechter Wagen)“ nach den vier Tabellenzeilen ein und löse die Feder jedes Mal neu.",
+  "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert."
  ],
  "tabCols": [
   "F1 und F2 beim Lösen in N",
@@ -26,7 +26,7 @@
   "m1 = 5 kg · m2 = 5 kg",
   "m1 = 5 kg · m2 = 1 kg"
  ],
- "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten also immer paarweise auf; das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an – deshalb heben sie sich nicht auf, sondern beschleunigen beide Körper. Wie stark, sagt F = m · a: Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1, die Beschleunigungen verhalten sich also umgekehrt wie die Massen. Über die ganze Stoßdauer aufsummiert liefert F1 = −F2 außerdem Δp1 = −Δp2: die Impulssumme bleibt konstant. Null ist sie hier nur, weil beide Wagen aus der Ruhe starten. Den größten Kraftbetrag gibt die gespannte Feder vor: F = D · s0, und darin kommt keine Masse vor; während des Abstoßens sinkt er auf null. Auch die Stoßdauer hängt von den Massen ab: Δt = (π/2) · √(μ/D) mit der reduzierten Masse μ = m1 · m2/(m1 + m2); der Höchstwert der Kraft dagegen nicht. Gültigkeitsbereich: Die Bahn ist reibungsfrei, die Feder ideal (masselos, F = D · s), die Bewegung läuft in Zeitlupe ab; angezeigt wird immer die wirkliche Zeit t, und am Bahnende endet nur die Anzeige, nicht die Bewegung.",
+ "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten immer paarweise auf. Das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an. Sie heben sich deshalb nicht auf, sondern beschleunigen beide Wagen. Wie stark, sagt F = m · a. Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1. Die Beschleunigungen verhalten sich umgekehrt wie die Massen. Den größten Kraftbetrag gibt die gespannte Feder vor: F = D · s0. Darin kommt keine Masse vor. Er ist in allen vier Messungen derselbe.",
  "merksatz": [
   {
    "pre": "Kräfte treten paarweise auf: gleich groß, entgegengesetzt – und sie greifen an",

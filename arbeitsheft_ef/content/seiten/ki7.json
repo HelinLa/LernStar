@@ -13,8 +13,8 @@
  "predictOk": 0,
  "forschen": [
   "Lies im Datenblatt die Zeilen für α = 0°, α = 30° und α = 60° ab und notiere beide Komponenten mit Einheit.",
-  "Rechne die Zeile α = 30° selbst nach: F · cos(30°) mit cos(30°) = 0,8660 und F · sin(30°) mit sin(30°) = 0,5000. Vergleiche dein Ergebnis mit den gedruckten Werten.",
-  "Ordne die fünf Zeilen danach, wie groß die waagerechte Komponente ist, und halte fest, was dabei mit der senkrechten Komponente geschieht."
+  "Rechne die Zeile α = 30° nach: F · cos(30°) mit 0,8660 und F · sin(30°) mit 0,5000. Vergleiche mit den gedruckten Werten.",
+  "Ordne die Zeilen nach der Größe der waagerechten Komponente und halte fest, was dabei mit der senkrechten geschieht."
  ],
  "tabCols": [
   "Beide Komponenten aus dem Datenblatt",
@@ -25,7 +25,7 @@
   "α = 30°",
   "α = 60°"
  ],
- "fachtext": "Eine Kraft ist eine vektorielle Größe: Sie hat einen Betrag und eine Richtung. Zieht ein Seil unter dem Winkel α zur Waagerechten, so lässt sich diese eine Kraft in zwei senkrecht zueinander stehende Anteile zerlegen, die zusammen genau dieselbe Wirkung haben wie sie. Die waagerechte Komponente beträgt F · cos(α), die senkrechte F · sin(α). Beide ergeben zusammen wieder F, aber nicht als Summe der Zahlen, sondern nach dem Satz des Pythagoras: (F · cos α)² + (F · sin α)² = F². Für den Schlitten heißt das: Vorwärts zieht allein die waagerechte Komponente. Die senkrechte Komponente hebt den Schlitten nicht vom Boden ab; sie verringert aber die Normalkraft F_N, mit der Schlitten und Boden aufeinandergedrückt werden. Damit greift die Zerlegung zugleich in die Reibung ein, denn die hängt von F_N ab.",
+ "fachtext": "Eine Kraft hat einen Betrag und eine Richtung. Zieht ein Seil unter dem Winkel α zur Waagerechten, lässt sich diese eine Kraft in zwei senkrecht zueinander stehende Anteile zerlegen. Beide zusammen haben dieselbe Wirkung wie sie. Die waagerechte Komponente beträgt F · cos(α), die senkrechte F · sin(α). Zusammen ergeben sie wieder F, aber nicht als Summe der Zahlen, sondern nach dem Satz des Pythagoras. Vorwärts zieht allein die waagerechte Komponente. Die senkrechte Komponente hebt den Schlitten nicht vom Boden ab. Sie entlastet ihn aber: Die Normalkraft F_N zwischen Schlitten und Boden wird kleiner. Damit greift die Zerlegung zugleich in die Reibung ein, denn die hängt von F_N ab.",
  "merksatz": [
   {
    "pre": "Zieht ein Seil unter dem Winkel α zur Waagerechten, so beträgt die waagerechte Komponente",

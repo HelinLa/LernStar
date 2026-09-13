@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Lies in der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ die fünf berechneten Größen ab: Umlaufzeit T, Winkelgeschwindigkeit ω, Bahngeschwindigkeit v, Zentripetalbeschleunigung a_z und Zentripetalkraft F_z.",
-  "Vergleiche im Bild die beiden Pfeile „F_z zum Mittelpunkt“ und „v tangential“, während der Drehwinkel φ einmal ganz herumläuft. Halte danach den Wert hinter „daraus gemessene Umlaufzeit“ gegen die Rechenzeile T = 1/f.",
-  "Ziehe den Regler „Masse m“ von 0,50 kg über 1,00 kg auf 2,00 kg, ohne Radius und Umlauffrequenz anzurühren, und verfolge dabei getrennt die Zeile für a_z und die Zeile für F_z."
+  "Lies bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ T, ω, v, a_z und F_z ab.",
+  "Vergleiche im Bild die Pfeile „F_z zum Mittelpunkt“ und „v tangential“ während eines Umlaufs. Halte „daraus gemessene Umlaufzeit“ gegen T = 1/f.",
+  "Ziehe den Regler „Masse m“ auf 1,00 kg und auf 2,00 kg und verfolge dabei getrennt a_z und F_z."
  ],
  "tabCols": [
   "Masse m (r = 0,80 m, f = 1,50 Hz)",
@@ -25,7 +25,7 @@
   "m = 1,00 kg",
   "m = 2,00 kg"
  ],
- "fachtext": "Eine gleichförmige Kreisbewegung ist durch wenige Größen vollständig beschrieben. Der Radius r (in m) gibt den Abstand von der Drehachse an, die Umlaufzeit T (in s) die Dauer eines vollen Umlaufs, die Umlauffrequenz f (in Hz) die Zahl der Umläufe je Sekunde; beide hängen über T = 1/f zusammen. Die Winkelgeschwindigkeit ω = 2·π·f (in rad/s) misst den überstrichenen Winkel je Zeit, die Bahngeschwindigkeit v = ω·r (in m/s) den zurückgelegten Weg je Zeit. Ihr Betrag bleibt gleich, ihre Richtung nicht – und schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r (in m/s²). Nach dem zweiten Newton'schen Gesetz gehört dazu eine Kraft in derselben Richtung: F_z = m · a_z (in N), wobei m (in kg) die Masse des Körpers ist. Die Zentripetalkraft ist keine neue Kraftart, sondern eine Aufgabe: Hier übernimmt sie ein Faden, dort eine Schiene, im Auto die Reibung und beim Kettenkarussell die waagerechte Komponente der Kettenkraft – deshalb stehen die Ketten schräg. Fällt sie weg, wirkt in der Bahnebene keine Kraft mehr, und der Körper fliegt tangential geradeaus weiter.",
+ "fachtext": "Der Radius r ist der Abstand von der Drehachse. Die Umlaufzeit T ist die Dauer eines Umlaufs, die Umlauffrequenz f die Zahl der Umläufe je Sekunde; es gilt T = 1/f. Die Winkelgeschwindigkeit ist ω = 2·π·f, die Bahngeschwindigkeit v = ω·r. Ihr Betrag bleibt gleich, ihre Richtung nicht. Schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r. Nach dem zweiten Newton'schen Gesetz gehört dazu die Zentripetalkraft F_z = m · a_z, ebenfalls nach innen. Sie ist keine neue Kraftart, sondern eine Aufgabe: mal übernimmt sie ein Faden, mal die Reibung. Fällt sie weg, fliegt der Körper tangential weiter.",
  "merksatz": [
   {
    "pre": "Die Zentripetalkraft zeigt immer zum",

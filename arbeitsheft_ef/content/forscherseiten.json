@@ -13,9 +13,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Lass den Wagen bei „Geschwindigkeit v“ = 4,0 m/s fahren und drücke fünfmal „Zeit stoppen“, ruhig in ungleichen Abständen. Jede Zeile hält fest, was in diesem Augenblick auf der Anzeigetafel steht: Uhr t, Wegmesser s und Tacho v. Stoppe so lange, bis die Statuszeile „5 von mindestens 5 gestoppten Messwerten“ meldet.",
-   "Wähle „t → s“. Über dem Ergebniskasten steht deine Reihe als „Stoppuhr · v = 4,0 m/s“ mit ihrer Ausgleichsgeraden y = …·x. Notiere diese Steigung und daneben die Zeile „Geschwindigkeit v = Steigung der Ausgleichsgeraden“. Rechne danach aus zwei beliebigen Tabellenzeilen Δs/Δt von Hand nach und vergleiche beide Zahlen.",
-   "Wähle nacheinander „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle den Regler danach auf 7,0 m/s – Uhr und Weg beginnen von vorn – und stoppe wieder fünfmal. Vergleiche die beiden t-s-Geraden: Die steilere gehört zur schnelleren Fahrt."
+   "Stelle „Geschwindigkeit v“ auf 4,0 m/s und drücke fünfmal „Zeit stoppen“. Die Statuszeile meldet 5 von mindestens 5 gestoppten Messwerten.",
+   "Wähle „t → s“, drücke „Steigung messen“ und markiere zwei Punkte auf der Ausgleichsgeraden. Notiere Δs, Δt, Steigung und Geradengleichung.",
+   "Wechsle zu „t → v“ und „t → a“ und notiere beide Gleichungen. Stelle danach 7,0 m/s ein, stoppe fünfmal und notiere die neue t-s-Gerade."
   ],
   "tabCols": [
    "Gleichung der Ausgleichsgeraden",
@@ -27,7 +27,7 @@
    "t → a bei v = 4,0 m/s",
    "t → s bei v = 7,0 m/s"
   ],
-  "fachtext": "Gemessen wird hier nicht die Geschwindigkeit, sondern ein Paar aus Zeit und Weg – so oft, wie die Stoppuhr gedrückt wird. Trägt man diese Paare im t-s-Diagramm auf, liegen sie auf einer Geraden durch den Ursprung. Das ist der Befund, aus dem alles Weitere folgt. Eine Ursprungsgerade bedeutet: s und t sind proportional, der Quotient s/t ist für jeden Messpunkt derselbe. Diesen gemeinsamen Quotienten nennt man die Geschwindigkeit v, und aus s/t = v wird durch Umstellen s = v · t. Die Formel wird also nicht vorausgesetzt, sondern aus der Lage der Messpunkte gewonnen. Weil die Gerade durch den Ursprung geht, ist v zugleich ihre Steigung. Für zwei beliebige Punkte gilt s₁ = v · t₁ und s₂ = v · t₂; die Differenz ist Δs = v · Δt, und Kürzen durch Δt liefert v = Δs/Δt. Die Zeitdifferenz fällt heraus – deshalb hängt das Ergebnis weder davon ab, welche zwei Punkte man nimmt, noch davon, in welchem Augenblick gestoppt wurde. Die beiden anderen Auftragungen prüfen diesen Schluss nach. Im t-v-Diagramm liegen die Tachowerte auf einer Waagerechten: Ihre Steigung ist null, ihr Achsenabschnitt ist wieder v. Im t-a-Diagramm liegt jeder aus zwei Tabellenzeilen gerechnete Wert a = Δv/Δt auf der Nulllinie. Genau das heißt gleichförmig – die Geschwindigkeit ändert sich nicht, und nur weil sie sich nicht ändert, ist die t-s-Auftragung überhaupt eine Gerade.",
+  "fachtext": "Gemessen wird nicht die Geschwindigkeit, sondern je ein Paar aus Zeit und Weg. Im t-s-Diagramm liegen diese Paare auf einer Geraden durch den Ursprung. Eine Ursprungsgerade bedeutet: s und t sind proportional. Der Quotient s/t hat für jeden Messpunkt denselben Wert. Diesen Wert nennt man die Geschwindigkeit v. Es gilt s = v · t, und v ist zugleich die Steigung der Geraden. Für zwei beliebige Punkte gilt v = Δs/Δt. Welche zwei Punkte man wählt, ist gleichgültig. Das t-v-Diagramm zeigt eine Waagerechte. Ihr Achsenabschnitt ist wieder v. Im t-a-Diagramm liegen alle Werte auf der Nulllinie. Genau das heißt gleichförmig: Die Geschwindigkeit ändert sich nicht.",
   "merksatz": [
    {
     "pre": "Liegen die gestoppten Wertepaare auf einer Ursprungsgeraden, sind s und t proportional; ihr gemeinsamer Quotient s/t ist die",
@@ -67,9 +67,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Lass den Regler „Geschwindigkeit v“ auf 4,0 m/s stehen und drücke „neue Fahrt“. Während der Wagen rollt, drückst du fünfmal „Zeit stoppen“ – wann, ist gleichgültig. Jede Zeile der Wertetabelle trägt danach die abgelesene Zeit, den Weg und den Tachowert. Wähle „t → s“ und lies unter „Auswertung“ die Zeile „y = …·x“ ab.",
-   "Stelle den Regler auf 6,0 m/s; damit beginnt eine neue Fahrt, die Tabelle bleibt stehen. Stoppe wieder fünfmal. Unter „t → s“ stehen jetzt zwei Ursprungsgeraden untereinander, jede mit ihrer Reihe beschriftet. Trage beide Steigungen ein und halte daneben, was am Regler stand.",
-   "Wähle „t → v“ und danach „t → a“, ohne die Tabelle zu leeren. Notiere bei „t → v“ den Achsenabschnitt der Waagerechten und ihre Steigung, bei „t → a“ die Höhe der Geraden. Beide Auftragungen benutzen dieselben Zeilen wie „t → s“."
+   "Stelle den Regler „Geschwindigkeit v“ auf 4,0 m/s, drücke „neue Fahrt“ und stoppe fünfmal mit „Zeit stoppen“.",
+   "Wähle „t → s“, drücke „Steigung messen“ und wähle zwei Punkte auf der Ausgleichsgeraden; lies die Steigung ab. Stelle 6,0 m/s ein, stoppe fünfmal und miss die zweite Steigung.",
+   "Wähle „t → v“ und danach „t → a“. Notiere Achsenabschnitt und Steigung der Waagerechten sowie die Höhe der t-a-Geraden."
   ],
   "tabCols": [
    "Auftragung und abgelesene Größe",
@@ -81,7 +81,7 @@
    "t → v: Steigung, also die Beschleunigung a",
    "t → a: Höhe der Geraden"
   ],
-  "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Genau das prüft die Auftragung t → s. Die gestoppten Punkte liegen auf einer Geraden, und weil zur Zeit null auch der Weg null ist, geht sie durch den Ursprung. Eine Ursprungsgerade bedeutet Proportionalität, s ~ t, also s = k · t mit festem Faktor k. Diesen Faktor liefert die Ausgleichsgerade als ihre Steigung k = Δs/Δt; seine Einheit ist Meter je Sekunde. Damit ist k die Geschwindigkeit, und aus der Messung wird das Weg-Zeit-Gesetz s = v · t – die Formel steht am Ende, nicht am Anfang. Ein einzelner Quotient s/t wäre nur ein Punkt; die Steigung nutzt alle Zeilen zugleich. Die anderen beiden Auftragungen prüfen dieselben Messwerte gegen: Bei t → v liegen die Punkte auf einer Waagerechten, deren Höhe wieder die Geschwindigkeit ist und deren Steigung – die Beschleunigung – null ist. Bei t → a wird a = Δv/Δt aus je zwei Zeilen gerechnet und liegt auf der Nulllinie. Was sich nicht ändert, krümmt nichts: Nur weil a null bleibt, ist die t-s-Auftragung überhaupt eine Gerade. Dass die Auswertung dazu R² = 1,0000 und 0,00 % Abweichung meldet, ist kein Gütesiegel der Messung, sondern eine Eigenschaft des Modells: Uhr, Wegmesser und Tacho bedient dieselbe Rechnung.",
+  "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Die Auftragung t → s prüft das. Die gestoppten Punkte liegen auf einer Ursprungsgeraden. Das bedeutet s ~ t, also s = k · t. Die Steigung k = Δs/Δt hat die Einheit Meter je Sekunde. Damit ist k die Geschwindigkeit, und es folgt s = v · t. Ein einzelner Quotient s/t nutzt nur eine Zeile, die Steigung alle zugleich. Bei t → v liegen die Punkte auf einer Waagerechten. Ihre Höhe ist die Geschwindigkeit, ihre Steigung ist die Beschleunigung und damit null. Bei t → a liegt jeder Wert auf der Nulllinie.",
   "merksatz": [
    {
     "pre": "Die gestoppten Wertepaare liegen auf einer Ursprungsgeraden: s ~ t. Ihre Steigung Δs/Δt ist die",
@@ -123,9 +123,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Drücke „Tabelle leeren“ und stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Der Wagen fährt bereits; drücke während einer Fahrt fünfmal „Zeit stoppen“, ungefähr gleichmäßig über die Bahn verteilt. Verpasst du den Start, setzt „neue Fahrt“ Uhr und Weg auf null zurück. Übertrage die fünf Zeilen mit t, s, v und der gerechneten Spalte a.",
-   "Wähle nacheinander die Auftragungen „t → s“, „t → v“ und „t → a“ und halte zu jeder fest, welche Form die Punktreihe hat und welche Zahl für a herauskommt. Bei „t → v“ liest du die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = Steigung der v-t-Geraden“ ab.",
-   "Stelle den Regler danach auf 4,0 m/s² – die Uhr beginnt eine neue Fahrt, die Tabelle bleibt stehen – und stoppe wieder fünfmal. Vergleiche in „t → v“ die beiden Steigungen und in „t → a“ die Höhen der beiden Waagerechten miteinander."
+   "Stelle „Beschleunigung a“ auf 2,0 m/s² und drücke während einer Fahrt fünfmal „Zeit stoppen“.",
+   "Wähle nacheinander „t → s“, „t → v“ und „t → a“. Notiere je Auftragung die Form der Punktreihe, die Steigung k und den Wert für a.",
+   "Drücke bei „t → v“ „Steigung messen“ und wähle zwei Punkte auf der Ausgleichsgeraden. Stelle dann 4,0 m/s² ein, stoppe neu und miss die Steigung erneut. (69 Wörter)"
   ],
   "tabCols": [
    "Form der Punktreihe, Steigung k",
@@ -137,7 +137,7 @@
    "t → a bei a = 2,0 m/s²",
    "t → v bei a = 4,0 m/s²"
   ],
-  "fachtext": "Fünf gestoppte Wertepaare, und im t-v-Diagramm liegen sie auf einer Geraden durch den Ursprung – das ist der Befund, aus dem alles Weitere folgt. Auf einer Ursprungsgeraden hat der Quotient v/t für jeden Punkt denselben Wert; gleichbedeutend liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man v/t = a nach v um, steht v = a · t da: Die Formel ist das Ergebnis der Messung, nicht ihre Voraussetzung. Dass a während der Fahrt überhaupt konstant bleibt, prüft die Auftragung t → a nach – sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel, die in jedem Punkt eine andere Steigung hat; eine einzelne Zahl ist daraus nicht zu gewinnen.",
+  "fachtext": "Fünf gestoppte Wertepaare liegen im t-v-Diagramm auf einer Ursprungsgeraden. Auf einer Ursprungsgeraden liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man Δv/Δt = a nach v um, steht v = a · t da. Die Formel ist damit das Ergebnis der Messung, nicht ihre Voraussetzung. Ob a während der Fahrt konstant bleibt, prüft die Auftragung t → a. Sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung. Eine einzelne Zahl ist daraus nicht zu gewinnen.",
   "merksatz": [
    {
     "pre": "Die Steigung Δv/Δt der t-v-Geraden ist für jedes Punktepaar gleich groß; diese eine Zahl heißt",
@@ -177,9 +177,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Stelle den Regler „Beschleunigung a“ auf 2,0 m/s² und drücke „Tabelle leeren“. Lass den Wagen aus der Ruhe fahren und drücke während derselben Fahrt fünfmal „Zeit stoppen“ – die Statuszeile zählt mit, bis fünf gestoppte Messwerte beisammen sind. Übertrage die ersten vier Zeilen mit t, s und v in die Tabelle.",
-   "Wähle die Auftragung „t → s“. Das Auswertungsfeld nennt keine Steigung, sondern rät: quadriere t und wechsle zur Auftragung t² → s. Folge dem Rat mit „t² → s“ und lies die Achsenbeschriftung, die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = 2 × Steigung“ ab.",
-   "Rechne für deine vier Zeilen t² und den Quotienten s/t² aus und halte ihn gegen die abgelesene Steigung. Prüfe dasselbe a anschließend über „t → v“ – dort ist die Steigung selbst die Beschleunigung – und über „t → a“, wo die Höhe der waagerechten Ausgleichsgeraden dieselbe Zahl liefert."
+   "Stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Drücke während einer Fahrt fünfmal „Zeit stoppen“ und übertrage die ersten vier Zeilen in die Tabelle.",
+   "Wähle „t² → s“ und drücke „Steigung messen“. Wähle zwei Punkte auf der Ausgleichsgeraden und lies die Steigung im Steigungsdreieck ab.",
+   "Rechne zu jeder Zeile t² und s/t² aus. Vergleiche den Quotienten mit der Steigung und prüfe a = 2 · Steigung."
   ],
   "tabCols": [
    "abgelesen: t in s · s in m · v in m/s",
@@ -191,7 +191,7 @@
    "3. Stopp",
    "4. Stopp"
   ],
-  "fachtext": "Die Stoppuhr hält zu jedem Augenblick t den Weg s und die Geschwindigkeit v fest. Trägt man die aus je zwei Zeilen gerechnete Größe Δv/Δt über t auf, liegen alle Punkte auf derselben Waagerechten: Die Beschleunigung ändert sich während der Fahrt nicht. Aus a = Δv/Δt und dem Start aus der Ruhe folgt damit v = a · t – die t-v-Auftragung ist eine Ursprungsgerade, deren Steigung die Beschleunigung ist. Der Weg ist die Fläche unter dieser Geraden: bis zur Zeit t ein Dreieck mit der Grundseite t und der Höhe v = a · t, also s = ½ · t · v = ½ · a · t². Der Weg wächst folglich nicht proportional zur Zeit, sondern zu deren Quadrat; im t-s-Diagramm liegen die Punkte auf einer Parabel, und eine Parabel hat in jedem Punkt eine andere Steigung – ein einziger Wert ist daraus nicht abzulesen. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Aus s = ½ · a · t² wird s = (a/2) · x mit x = t², also eine Ursprungsgerade der Steigung a/2, und damit a = 2 · Steigung. Für einen einzelnen Stopp ist diese Steigung gerade s/t²; genauer wird sie, wenn die Ausgleichsgerade alle Punkte der Reihe auswertet. Linearisieren heißt, die Achsen so zu wählen, dass die vermutete Beziehung als Gerade sichtbar wird – erst eine Gerade liefert eine Zahl.",
+  "fachtext": "Bei gleichmäßig beschleunigter Bewegung bleibt die Beschleunigung während der ganzen Fahrt gleich. Aus dem Start aus der Ruhe folgt v = a · t. Die t-v-Auftragung ist deshalb eine Ursprungsgerade, und ihre Steigung ist die Beschleunigung. Der Weg ist die Fläche unter dieser Geraden, also s = ½ · a · t². Im t-s-Diagramm liegen die Punkte darum auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung. Eine einzige Zahl ist daraus nicht abzulesen. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Das ergibt eine Ursprungsgerade der Steigung a/2. Es gilt also a = 2 · Steigung.",
   "merksatz": [
    {
     "pre": "Aus der s-t-Parabel lässt sich a nicht ablesen; erst das Quadrieren der gestoppten Zeit macht daraus eine",
@@ -231,9 +231,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke zuerst „Tabelle leeren“, damit keine alten Zeilen mitrechnen. Belasse den Regler „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“: In die Wertetabelle laufen 9 Messpunkte von t = 0,32 s bis t = 3,18 s – dieselben Zahlen, die im weißen Anzeigefeld stehen, wenn die Uhr dort steht. Einzelne Punkte gehen auch – erst „Anhalten“, dann „Messpunkt übernehmen“; sie landen in derselben Tabelle und verändern die Ausgleichsgeraden.",
-   "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve, aus der sich keine Steigung ablesen lässt. Wechsle zu „t² → s auftragen“ – jetzt liegen dieselben Punkte auf einer Ursprungsgeraden. Notiere ihre Steigung k aus der Zeile y = k·x.",
-   "Wechsle zu „t → v auftragen“ und notiere auch diese Steigung: Sie ist g unmittelbar. Vergleiche die beiden Zahlen – die Steigung aus s über t² ist halb so groß, daraus folgt g = 2 · k. Im Kasten „Fallbeschleunigung g aus der Steigung“ stehen beide zurückgerechneten g-Werte und ihre Differenz."
+   "Drücke „Tabelle leeren“, belasse „Fallhöhe“ bei 50 m und drücke „Messreihe automatisch aufnehmen“. Neun Messpunkte laufen in die Tabelle.",
+   "Wähle „t → s auftragen“: Die Punkte liegen auf einer Kurve. Wechsle zu „t² → s auftragen“, notiere die Steigung k und verdopple sie.",
+   "Wechsle zu „t → v auftragen“ und notiere diese Steigung als g. Lies im Kasten „Fallbeschleunigung g aus der Steigung“ beide g-Werte und ihre Differenz ab."
   ],
   "modellgrenze": "Vor t = 0,15 s und nach dem Aufprall nimmt die Simulation keinen Messpunkt an: Am Anfang sind s und v auf zwei Nachkommastellen zu grob gerundet, nach dem Aufprall stehen beide still, während die Uhr weiterläuft. Solche Zeilen würden beide Ausgleichsgeraden verfälschen, nicht nur die aus s über t².",
   "tabCols": [
@@ -246,7 +246,7 @@
    "t → v: Steigung k = g in m/s²",
    "Differenz der beiden g-Werte in m/s²"
   ],
-  "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg nicht gleichmäßig: s über t liefert eine Kurve, und aus einer Kurve lässt sich keine Steigung ablesen. Linearisieren heißt, eine Achse so umzurechnen, dass die Messpunkte auf einer Ursprungsgeraden liegen. Über t² aufgetragen gelingt das – s ist proportional zu t², und die Gerade hat die Steigung k. Die zweite Auftragung kommt ohne den Fallweg aus: v über t ist von sich aus eine Ursprungsgerade, und ihre Steigung ist der Zuwachs der Geschwindigkeit je Sekunde, also die Fallbeschleunigung selbst. Der Vergleich der beiden gemessenen Steigungen entscheidet: k ist halb so groß wie die Steigung der v-Geraden. Damit ist k = g/2 abgelesen und nicht vorausgesetzt, und erst daraus folgen s = ½ · g · t² und g = 2 · k. Beide Geraden stammen aus denselben Messpunkten und liefern trotzdem verschiedene Zahlen: Die Simulation wertet die Formeln nicht aus, sie rechnet den Fall in festen Schritten von Δt = 0,016 s. Erst wird v um g · Δt erhöht, danach v · Δt zum Weg addiert; der Weg wird mit der Geschwindigkeit am Schrittende aufsummiert und fällt um den Faktor (1 + Δt/t) zu groß aus, während v = g · t exakt bleibt. Der aus s gewonnene g-Wert liegt deshalb immer über dem aus v – keine Messunsicherheit, sondern die Genauigkeitsgrenze des Rechenverfahrens.",
+  "fachtext": "Beim freien Fall aus der Ruhe wächst der Weg ungleichmäßig. Über t ergibt s eine Kurve ohne ablesbare Steigung. Linearisieren heißt: eine Achse so umrechnen, dass eine Gerade entsteht. Über t² gelingt das; diese Gerade hat die Steigung k. Die Auftragung v über t ist schon eine Ursprungsgerade. Ihre Steigung ist die Fallbeschleunigung g. Der Vergleich zeigt: k ist halb so groß wie g, also k = g/2. Daraus folgen s = ½ · g · t² und g = 2 · k. Beide Wege liefern leicht verschiedene Zahlen. Die Simulation summiert den Weg in Schritten von Δt = 0,016 s zu groß auf. Das ist die Genauigkeitsgrenze des Rechenverfahrens.",
   "merksatz": [
    {
     "pre": "Trägt man s über t² auf, liegen die Punkte auf einer Ursprungsgeraden; ihre Steigung k ist",
@@ -286,9 +286,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Lass die Ausgangsstellung stehen – „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 8 m/s – und wähle die Auftragung „t_F über h auftragen“. Drücke „Messreihe automatisch aufnehmen“: Die Tabelle füllt sich mit neun Zeilen von h = 5 m bis h = 45 m. Übertrage die Fallzeit für h = 5 m und für h = 20 m und halte fest, warum sich aus dieser Auftragung keine Steigung ablesen lässt.",
-   "Wechsle zu „t_F² über h auftragen“ – dieselben neun Messwerte, nur die senkrechte Achse heißt jetzt „t_F² in s²“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und den Wert hinter „erwartet:“ ab, dazu die Zeile „Ortsfaktor g aus der Steigung k“ darunter.",
-   "Drücke „Tabelle leeren“ und bestätige die Rückfrage, wähle „t_F über v₀ auftragen“ und drücke erneut „Messreihe automatisch aufnehmen“: Jetzt bleibt h = 20 m stehen und v₀ wandert von 2 m/s bis 20 m/s. Notiere Steigung und Achsenabschnitt dieser Geraden. Wechsle danach ohne neue Messung zu „x_W über v₀ auftragen“ und lies dort die Steigung ab."
+   "Wähle bei v₀ = 8 m/s „t_F über h auftragen“ und drücke „Messreihe automatisch aufnehmen“. Warum ist keine Steigung ablesbar?",
+   "Wechsle zu „t_F² über h auftragen“ und lies y = k·x und den „Ortsfaktor g aus der Steigung k“ ab.",
+   "Drücke „Tabelle leeren“, wähle „t_F über v₀ auftragen“ und nimm bei h = 20 m neu auf. Notiere Steigung und Achsenabschnitt, danach die Steigung bei „x_W über v₀ auftragen“. (69 Wörter)"
   ],
   "tabCols": [
    "Auftragung (x-Achse → y-Achse)",
@@ -300,7 +300,7 @@
    "t_F über v₀ · 8 Messwerte bei h = 20 m",
    "x_W über v₀ · dieselben 8 Messwerte"
   ],
-  "fachtext": "Der waagerechte Wurf zerfällt in zwei Teilbewegungen, die gleichzeitig ablaufen und sich nicht stören: Waagerecht wirkt keine Kraft – x = v₀ · t; senkrecht zieht die Gewichtskraft, der Körper wird gleichmäßig beschleunigt – y = h − 0,5 · g · t². Eliminiert man t, ergibt sich die Bahnkurve y = h − g/(2 · v₀²) · x², eine Parabel. Woher die Fallzeit kommt, zeigt aber erst die Messreihe. Trägt man t_F über h auf, entsteht eine nach rechts abflachende Kurve – aus einer krummen Auftragung lässt sich keine Steigung ablesen. Quadriert man die Fallzeit – genau das ist das Linearisieren –, liegen die Punkte auf einer Ursprungsgeraden t_F² = k · h. Dasselbe liefert y = 0 in y = h − 0,5 · g · t²: t_F² = (2/g) · h. Die Steigung ist also keine bloße Zahl, sondern k = 2/g, und daraus folgt g = 2/k zurück. In t_F = √(2h/g) kommt v₀ nicht vor; bewiesen ist das erst mit der dritten Auftragung: t_F über v₀ ist eine Waagerechte mit der Steigung null, ihr Achsenabschnitt ist die Fallzeit. Erst x_W über v₀ ist wieder eine Ursprungsgerade – ihre Steigung ist die Fallzeit selbst. Gültigkeitsbereich: ohne Luftwiderstand, g = 9,81 m/s²; der Vergleichskörper ist im Bild nur zur besseren Sicht nach links versetzt.",
+  "fachtext": "Der waagerechte Wurf besteht aus zwei Teilbewegungen, die sich nicht stören. Waagerecht gilt x = v₀ · t, senkrecht y = h − 0,5 · g · t². Die Auftragung t_F über h ergibt eine krumme Kurve ohne ablesbare Steigung. Quadriert man die Fallzeit, liegen die Punkte auf einer Ursprungsgeraden: t_F² = (2/g) · h. Die Steigung ist k = 2/g, also g = 2/k. In t_F = √(2h/g) kommt v₀ nicht vor. Das bestätigt die Auftragung t_F über v₀: eine Waagerechte der Steigung null, ihr Achsenabschnitt ist die Fallzeit. Bei x_W über v₀ ist die Steigung die Fallzeit selbst. Es gilt g = 9,81 m/s² ohne Luftwiderstand.",
   "merksatz": [
    {
     "pre": "Krumme Auftragungen geben keine Steigung her. Quadriert man t_F, entsteht eine Ursprungsgerade mit der Steigung k =",
@@ -341,8 +341,8 @@
   "predictOk": 0,
   "forschen": [
    "Lies im Datenblatt die Zeilen für α = 0°, α = 30° und α = 60° ab und notiere beide Komponenten mit Einheit.",
-   "Rechne die Zeile α = 30° selbst nach: F · cos(30°) mit cos(30°) = 0,8660 und F · sin(30°) mit sin(30°) = 0,5000. Vergleiche dein Ergebnis mit den gedruckten Werten.",
-   "Ordne die fünf Zeilen danach, wie groß die waagerechte Komponente ist, und halte fest, was dabei mit der senkrechten Komponente geschieht."
+   "Rechne die Zeile α = 30° nach: F · cos(30°) mit 0,8660 und F · sin(30°) mit 0,5000. Vergleiche mit den gedruckten Werten.",
+   "Ordne die Zeilen nach der Größe der waagerechten Komponente und halte fest, was dabei mit der senkrechten geschieht."
   ],
   "tabCols": [
    "Beide Komponenten aus dem Datenblatt",
@@ -353,7 +353,7 @@
    "α = 30°",
    "α = 60°"
   ],
-  "fachtext": "Eine Kraft ist eine vektorielle Größe: Sie hat einen Betrag und eine Richtung. Zieht ein Seil unter dem Winkel α zur Waagerechten, so lässt sich diese eine Kraft in zwei senkrecht zueinander stehende Anteile zerlegen, die zusammen genau dieselbe Wirkung haben wie sie. Die waagerechte Komponente beträgt F · cos(α), die senkrechte F · sin(α). Beide ergeben zusammen wieder F, aber nicht als Summe der Zahlen, sondern nach dem Satz des Pythagoras: (F · cos α)² + (F · sin α)² = F². Für den Schlitten heißt das: Vorwärts zieht allein die waagerechte Komponente. Die senkrechte Komponente hebt den Schlitten nicht vom Boden ab; sie verringert aber die Normalkraft F_N, mit der Schlitten und Boden aufeinandergedrückt werden. Damit greift die Zerlegung zugleich in die Reibung ein, denn die hängt von F_N ab.",
+  "fachtext": "Eine Kraft hat einen Betrag und eine Richtung. Zieht ein Seil unter dem Winkel α zur Waagerechten, lässt sich diese eine Kraft in zwei senkrecht zueinander stehende Anteile zerlegen. Beide zusammen haben dieselbe Wirkung wie sie. Die waagerechte Komponente beträgt F · cos(α), die senkrechte F · sin(α). Zusammen ergeben sie wieder F, aber nicht als Summe der Zahlen, sondern nach dem Satz des Pythagoras. Vorwärts zieht allein die waagerechte Komponente. Die senkrechte Komponente hebt den Schlitten nicht vom Boden ab. Sie entlastet ihn aber: Die Normalkraft F_N zwischen Schlitten und Boden wird kleiner. Damit greift die Zerlegung zugleich in die Reibung ein, denn die hängt von F_N ab.",
   "merksatz": [
    {
     "pre": "Zieht ein Seil unter dem Winkel α zur Waagerechten, so beträgt die waagerechte Komponente",
@@ -430,9 +430,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Stelle den Regler „Externe Kraft F“ auf 0 N und den Regler „Anfangsgeschwindigkeit v₀“ auf 20 m/s. Lies im weißen Kästchen rechts oben v₀, F und v ab.",
-   "Lass die Simulation eine Weile laufen, ohne einen Regler anzufassen, und lies v ein zweites Mal ab. Beobachte dabei, wo die Linie v(t) im oberen Diagramm verläuft.",
-   "Ziehe v₀ nacheinander auf 5 m/s, 12 m/s und 40 m/s, ohne F anzurühren. Warte nach jeder Änderung, bis die Linie v(t) wieder auf ganzer Breite waagerecht durchläuft, und lies v erneut ab."
+   "Stelle „Externe Kraft F“ auf 0 N und „Anfangsgeschwindigkeit v₀“ auf 20 m/s. Lies v im weißen Kästchen ab.",
+   "Lass die Simulation laufen und lies v ein zweites Mal ab. Halte fest, wie die Linie v(t) im oberen Diagramm verläuft.",
+   "Ziehe v₀ nacheinander auf 5 m/s, 12 m/s und 40 m/s, ohne F anzurühren. Warte jedes Mal, bis v(t) waagerecht durchläuft, und lies v erneut ab."
   ],
   "tabCols": [
    "v sofort / v nach einer Weile in m/s",
@@ -444,7 +444,7 @@
    "v₀ = 12 m/s · F = 0 N",
    "v₀ = 40 m/s · F = 0 N"
   ],
-  "fachtext": "Das erste Newton'sche Gesetz nennt Ruhe und geradlinig gleichförmige Bewegung in einem Atemzug – zu Recht, denn Ruhe ist der Sonderfall v = 0. Ein Körper behält seinen Bewegungszustand, also die Geschwindigkeit nach Betrag und Richtung, solange die resultierende Kraft null ist; erst eine von null verschiedene resultierende Kraft ändert ihn. Resultierend heißt alle Kräfte zusammengenommen: Antrieb und Reibung dürfen durchaus wirken, nur ihre Summe muss verschwinden. Der Regler „Externe Kraft F“ ist genau diese Summe. Steht er auf 0 N, so bleibt v auf dem eingestellten v₀, und weil v konstant ist, wächst der Weg gleichförmig, s = v · t. Einstellen lässt sich v₀ erst ab 5 m/s. Der ruhende Wagen fehlt am Bildschirm aber nur scheinbar: Für einen Beobachter, der mit 20 m/s mitfährt, ruht genau der Wagen, den du laufen siehst.",
+  "fachtext": "Das erste Newton'sche Gesetz nennt Ruhe und geradlinig gleichförmige Bewegung in einem Atemzug. Ruhe ist nur der Sonderfall v = 0. Ein Körper behält seinen Bewegungszustand, solange die resultierende Kraft null ist. Gemeint ist die Geschwindigkeit nach Betrag und Richtung. Erst eine von null verschiedene resultierende Kraft bewirkt eine Änderung. Resultierend heißt alle Kräfte zusammengenommen. Antrieb und Reibung dürfen wirken, nur ihre Summe muss verschwinden. Der Regler „Externe Kraft F“ ist genau diese Summe. Steht er auf 0 N, bleibt v auf dem eingestellten v₀. Weil v konstant ist, wächst der Weg gleichförmig mit s = v · t. Einstellen lässt sich v₀ erst ab 5 m/s.",
   "merksatz": [
    {
     "pre": "Ist die Summe aller Kräfte an einem Körper",
@@ -484,9 +484,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Lass den Regler „Masse m“ auf 5 kg stehen, wähle die Auftragung „a über F auftragen“ und nimm mit „Messreihe automatisch aufnehmen“ die ganze Kraftreihe auf – acht Zeilen von F = 10 N bis F = 200 N. Lies im Auswertungsfeld die Geradengleichung, R² und die Zeile „Masse m aus der Steigung k“ ab.",
-   "Drücke „Tabelle leeren“ und bestätige die Rückfrage, sonst wertet das Feld die Kraftreihe mit aus. Stelle „Kraft F“ auf 40 N, wähle „a über m auftragen“ und nimm erneut mit „Messreihe automatisch aufnehmen“ auf – diesmal fährt die Masse in neun Zeilen von 1 kg bis 20 kg. Halte fest, welche Form die Punktfolge hat und was das Auswertungsfeld statt einer Steigung meldet.",
-   "Wechsle mit „a über 1/m auftragen“ zum mittleren der drei Reiter: dieselben neun Messwerte, nur eine andere x-Achse. Lies Steigung und R² ab und vergleiche die Zeile „Kraft F aus der Steigung k“ mit der Kraft, die am Regler eingestellt ist."
+   "Belasse „Masse m“ bei 5 kg, wähle „a über F auftragen“ und drücke „Messreihe automatisch aufnehmen“. Notiere Steigung k und Masse aus k.",
+   "Drücke „Tabelle leeren“, stelle „Kraft F“ auf 40 N, wähle „a über m auftragen“ und nimm die Reihe erneut auf. Halte die Kurvenform fest.",
+   "Wechsle zu „a über 1/m auftragen“ und lies die Steigung ab. Vergleiche die Zeile „Kraft F aus der Steigung k“ mit dem Regler."
   ],
   "tabCols": [
    "Auftragung und festgehaltene Größe",
@@ -498,7 +498,7 @@
    "a über m (F = 40 N fest): Kurvenform",
    "a über 1/m: Steigung k, also Kraft F"
   ],
-  "fachtext": "Eine resultierende Kraft ändert den Bewegungszustand: Bleibt F während der Fahrt konstant, ist auch die Beschleunigung a konstant. Wovon a abhängt, entscheidet keine Behauptung, sondern die Form der Messpunkte. Erste Reihe, Masse festgehalten: Über F aufgetragen liegen die Punkte auf einer Ursprungsgeraden, also a ~ F. Ihre Steigung hat die Einheit 1/kg und ist der Kehrwert der Masse – aus m = 1/k kommt die eingestellte Masse zurück. Zweite Reihe, Kraft festgehalten: Über m aufgetragen entsteht eine Hyperbel, und aus einer krummen Kurve lässt sich keine Steigung ablesen. Deshalb wird linearisiert, also die Größe auf der x-Achse so gewählt, dass eine Gerade herauskommt. Hier ist es der Kehrwert 1/m: Dieselben Messwerte liegen dort auf einer Ursprungsgeraden, deren Steigung die festgehaltene Kraft ist. Beide Reihen ergeben a ~ F/m; dass vor F/m der Faktor 1 steht, ist nicht gemessen, sondern festgelegt: Die Einheit Newton ist so definiert, dass 1 N = 1 kg · m/s² gilt. Damit ist a = F/m, üblich geschrieben F = m · a, für konstante Masse; die Impulsfassung kommt später. Gültigkeitsbereich: Die Simulation rechnet ohne Reibung und ohne Luftwiderstand, die eingestellte Kraft ist zugleich die resultierende Kraft, und die Messwerte streuen nicht.",
+  "fachtext": "Eine resultierende Kraft ändert den Bewegungszustand. Bleibt F während der Fahrt konstant, ist auch die Beschleunigung a konstant. Wovon a abhängt, zeigt die Lage der Messpunkte. Erste Reihe, Masse festgehalten: Über F aufgetragen liegen die Punkte auf einer Ursprungsgeraden, also gilt a ~ F. Die Steigung ist der Kehrwert der Masse. Zweite Reihe, Kraft festgehalten: Über m aufgetragen entsteht eine Hyperbel ohne ablesbare Steigung. Über 1/m liegen dieselben Werte wieder auf einer Ursprungsgeraden. Deren Steigung ist die festgehaltene Kraft. Beide Reihen zusammen ergeben a = F/m, üblich geschrieben F = m · a. Die Simulation rechnet ohne Reibung, die eingestellte Kraft ist zugleich die resultierende Kraft.",
   "merksatz": [
    {
     "pre": "Über der Masse selbst liegen die Messpunkte auf einer Hyperbel; über dem Kehrwert 1/m dagegen auf einer",
@@ -538,9 +538,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Lies im Ausgangszustand das Statusfeld ab: Haltekraft, Gewichtskraft und Gesamtkraft stehen dort mit Zahl und Einheit, dazu der Zustand der Lampe. Vergleiche die Zahlen mit den Beschriftungen am Bild („Halte 5 N“, „Gewicht 5 N“).",
-   "Drücke einmal „– N“ und notiere sofort Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe. Drücke danach zweimal „+ N“ und zuletzt „zurück in die Mitte“ und halte jede Statuszeile gegen den Ausgangszustand.",
-   "Drücke noch einmal „– N“ und warte, bis sich das Bild nicht mehr ändert. Vergleiche dann, was die Zeichnung zeigt, mit dem, was die Statuszeile weiterhin meldet, und notiere den Unterschied."
+   "Lies im Ausgangszustand Haltekraft, Gewichtskraft und Gesamtkraft im Statusfeld ab und vergleiche sie mit „Halte 5 N“ und „Gewicht 5 N“ am Bild.",
+   "Drücke einmal „– N“ und notiere Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe.",
+   "Drücke zweimal „+ N“ und danach „zurück in die Mitte“. Halte jede Statuszeile gegen den Ausgangszustand."
   ],
   "modellgrenze": "Die Zeichnung zeigt nur den Beginn der Bewegung: Nach wenigen Sekunden hält die Lampe am unteren Bildrand, während die Statuszeile unverändert 1 N nach unten meldet – sie wird nur beim Drücken neu geschrieben. Wird die Gesamtkraft wieder 0 N, steht die Lampe sofort still, statt gleichförmig weiterzulaufen; diesen zweiten Fall des Trägheitsprinzips hast du am Wagen gesehen.",
   "tabCols": [
@@ -553,7 +553,7 @@
    "zweimal + N (Halte 6 N)",
    "zurück in die Mitte"
   ],
-  "fachtext": "Kräfte sind gerichtete Größen und werden vektoriell addiert. An der Lampe greifen zwei an: die Gewichtskraft F_G nach unten und die Haltekraft F_H des Seils nach oben. Beide wirken am selben Körper und liegen auf einer Wirkungslinie, deshalb genügt hier die vorzeichenbehaftete Summe F_res = F_H − F_G. Sie heißt resultierende Kraft; der Bildschirm nennt sie Gesamtkraft und schreibt statt des Vorzeichens die Richtung dazu: F_res = −1 N steht dort als „1 N nach unten“. Ein Körper bleibt genau dann in Ruhe oder in gleichförmiger Bewegung, wenn F_res = 0 N ist – gemessen in einem Bezugssystem, das selbst nicht beschleunigt wird (Inertialsystem); das ist die Aussage des Trägheitsprinzips. Kräftegleichgewicht heißt also nicht, dass keine Kräfte wirken, sondern dass sich die wirkenden Kräfte zu null ergänzen – das Seil bleibt gespannt, der Kraftmesser zeigt weiter an. Erst wenn F_res von null abweicht, ändert sich der Bewegungszustand, und zwar nach F_res = m · a. Gültigkeitsbereich: Die Simulation zeigt den eindimensionalen Fall mit zwei Kräften auf einer Linie und hält die Haltekraft dabei konstant. Allgemein lautet die Gleichgewichtsbedingung, dass die vektorielle Summe aller angreifenden Kräfte null ist; bei ausgedehnten Körpern kommt die Bedingung für die Drehmomente hinzu.",
+  "fachtext": "Kräfte werden vektoriell addiert. An der Lampe greifen die Gewichtskraft F_G nach unten und die Haltekraft F_H des Seils nach oben an. Beide liegen auf einer Wirkungslinie; es genügt die vorzeichenbehaftete Summe F_res = F_H − F_G. Der Bildschirm nennt diese resultierende Kraft Gesamtkraft mit Richtung: −1 N heißt dort „1 N nach unten“. Ein Körper bleibt genau dann in Ruhe oder in gleichförmiger Bewegung, wenn F_res = 0 N ist. Das ist das Trägheitsprinzip. Kräftegleichgewicht heißt nicht, dass keine Kräfte wirken, sondern dass sie sich zu null ergänzen; das Seil bleibt gespannt. Erst wenn F_res von null abweicht, ändert sich der Bewegungszustand: F_res = m · a.",
   "merksatz": [
    {
     "pre": "Ein Körper bleibt in Ruhe, wenn die Summe aller angreifenden Kräfte",
@@ -593,9 +593,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und die Stoßdauer Δt. Notiere dazu die Zeile mit dem Verhältnis a1 : a2.",
-   "Drücke „Neu aufstellen“ und ziehe den Regler „Masse m1 (linker Wagen)“ nacheinander auf 1 kg, 2 kg und 5 kg, während „Masse m2 (rechter Wagen)“ auf 5 kg steht. Ziehe zuletzt m2 auf 1 kg und lass m1 bei 5 kg. Löse die Feder jedes Mal neu.",
-   "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert. Lies zum Schluss einmal die Zeilen „Endwerte“ und „Energie“ ab: Wie groß ist E(Feder), und was ergibt p1 + p2?"
+   "Drücke „Feder lösen“ und lies im Statusfeld die Zeile „Beim Lösen“ ab: F1, F2, a1, a2 und a1 : a2.",
+   "Drücke „Neu aufstellen“, stelle die Regler „Masse m1 (linker Wagen)“ und „Masse m2 (rechter Wagen)“ nach den vier Tabellenzeilen ein und löse die Feder jedes Mal neu.",
+   "Vergleiche die vier Zeilen deiner Tabelle und halte fest, welche der eingetragenen Zahlen sich kein einziges Mal ändert."
   ],
   "tabCols": [
    "F1 und F2 beim Lösen in N",
@@ -607,7 +607,7 @@
    "m1 = 5 kg · m2 = 5 kg",
    "m1 = 5 kg · m2 = 1 kg"
   ],
-  "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten also immer paarweise auf; das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an – deshalb heben sie sich nicht auf, sondern beschleunigen beide Körper. Wie stark, sagt F = m · a: Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1, die Beschleunigungen verhalten sich also umgekehrt wie die Massen. Über die ganze Stoßdauer aufsummiert liefert F1 = −F2 außerdem Δp1 = −Δp2: die Impulssumme bleibt konstant. Null ist sie hier nur, weil beide Wagen aus der Ruhe starten. Den größten Kraftbetrag gibt die gespannte Feder vor: F = D · s0, und darin kommt keine Masse vor; während des Abstoßens sinkt er auf null. Auch die Stoßdauer hängt von den Massen ab: Δt = (π/2) · √(μ/D) mit der reduzierten Masse μ = m1 · m2/(m1 + m2); der Höchstwert der Kraft dagegen nicht. Gültigkeitsbereich: Die Bahn ist reibungsfrei, die Feder ideal (masselos, F = D · s), die Bewegung läuft in Zeitlupe ab; angezeigt wird immer die wirkliche Zeit t, und am Bahnende endet nur die Anzeige, nicht die Bewegung.",
+  "fachtext": "Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Kräfte treten immer paarweise auf. Das ist das dritte Newton'sche Gesetz. Anders als beim Kräftegleichgewicht greifen die beiden Kräfte an verschiedenen Körpern an. Sie heben sich deshalb nicht auf, sondern beschleunigen beide Wagen. Wie stark, sagt F = m · a. Aus demselben Kraftbetrag folgt a1 : a2 = m2 : m1. Die Beschleunigungen verhalten sich umgekehrt wie die Massen. Den größten Kraftbetrag gibt die gespannte Feder vor: F = D · s0. Darin kommt keine Masse vor. Er ist in allen vier Messungen derselbe.",
   "merksatz": [
    {
     "pre": "Kräfte treten paarweise auf: gleich groß, entgegengesetzt – und sie greifen an",
@@ -647,9 +647,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Halte zuerst die Bedingungen fest, die fest bleiben sollen: Der Regler „Antriebskraft F“ steht auf 80 N, der Regler „Masse m“ auf 5 kg. Der Infokasten rechts oben zeigt vier Angaben – F, F_R, μ und v; in der Ausgangsstellung stehen dort F = 80 N, μ = 0,30 und F_R = 14,7 N. Diese Zeile kommt nicht in die Tabelle.",
-   "Ziehe nun allein den Regler „Reibungskoeffizient μ“ nacheinander auf 0,00, dann 0,20, dann 0,40 und zuletzt 0,60. Der Regler zählt in Hundertsteln und rastet in Schritten von 0,05, μ = 0,20 steht also bei 20. Notiere jedes Mal den Wert hinter „F_R=“ und rechne F_res = 80 N − F_R sowie a = F_res / 5 kg aus.",
-   "Lass die Simulation nach dem letzten Reglerwechsel etwa fünf Sekunden unberührt weiterlaufen, bis die Stufe aus der vorigen Stellung links aus dem Diagramm gewandert ist. Vergleiche erst dann im Diagramm „Reibungskraft F_R“ den Verlauf über der Zeitachse t mit der Anzeige „v=“ im Bild, die immer weiter hochzählt, und halte fest, ob F_R mit wachsender Geschwindigkeit größer wird."
+   "Prüfe die Ausgangsstellung: Der Regler „Masse m“ steht auf 5 kg, der Infokasten zeigt F = 80 N, μ = 0,30 und F_R = 14,7 N.",
+   "Ziehe allein den Regler „Reibungskoeffizient μ“ auf 0,00, 0,20, 0,40 und 0,60. Notiere jedes Mal den Wert hinter „F_R=“.",
+   "Rechne je Zeile F_res = 80 N − F_R und a = F_res / 5 kg aus. Prüfe, ob F_R mit steigendem v wächst."
   ],
   "tabCols": [
    "F_R im Bild in N",
@@ -662,7 +662,7 @@
    "μ = 0,60"
   ],
   "modellgrenze": "Die Simulation kennt nur die Gleitreibung des schon fahrenden Wagens. Stellst du die Antriebskraft unter F_R – etwa F = 20 N bei μ = 0,60 –, bleibt der Wagen bei v = 0,0 m/s stehen, und der Infokasten meldet trotzdem F_R = 29,4 N. Warum eine Kiste auf dem Teppich erst losbrechen muss, erklärt die Haftreibung; die steckt in diesem Modell nicht.",
-  "fachtext": "Reibung tritt dort auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt das Modell F_R = μ · F_N: Die Reibungskraft ist proportional zu der Normalkraft, mit der die Flächen aufeinandergedrückt werden. Auf waagerechter Bahn ist das die Gewichtskraft, also F_N = m · g. Der Reibungskoeffizient μ ist eine reine Verhältniszahl ohne Einheit und hängt von der Paarung der Werkstoffe ab. Antriebskraft und Reibungskraft greifen am selben Wagen an und liegen auf einer Wirkungslinie, zeigen aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R, und erst diese steht im Grundgesetz der Mechanik: a = F_res / m, mit 1 N/kg = 1 m/s². Die Antriebskraft allein sagt über die Beschleunigung nichts aus. Gültigkeitsbereich: Das Modell beschreibt den bereits gleitenden Körper mit einer Reibungskraft, die weder von der Größe der Berührfläche noch von der Geschwindigkeit abhängt – auch den Wagen auf der Bahn rechnet die Simulation als gleitenden, nicht als rollenden Körper. Die Haftreibung vor dem Losbrechen, die Rollreibung und der mit v² wachsende Luftwiderstand sind darin nicht enthalten. Welchen Ortsfaktor die Simulation benutzt, steht nirgends am Bildschirm – er lässt sich aus je einem Wertepaar μ und F_R zurückrechnen.",
+  "fachtext": "Reibung tritt auf, wo zwei Flächen aneinander gleiten. Für die Gleitreibung gilt F_R = μ · F_N. Sie ist proportional zur Normalkraft. Auf waagerechter Bahn ist das die Gewichtskraft, also F_N = m · g. Der Reibungskoeffizient μ ist eine Verhältniszahl ohne Einheit. Er hängt von den Werkstoffen ab. Antrieb und Reibung greifen am selben Wagen an, aber in entgegengesetzte Richtungen. Ihre Überlagerung ergibt die resultierende Kraft F_res = F − F_R. Erst diese steht im Grundgesetz a = F_res / m, mit 1 N/kg = 1 m/s². Die Antriebskraft allein sagt über die Beschleunigung nichts aus. Im Modell hängt F_R weder von der Berührfläche noch von der Geschwindigkeit ab.",
   "merksatz": [
    {
     "pre": "Für die Gleitreibung gilt F_R = μ · F_N, auf waagerechter Bahn also mit F_N =",
@@ -702,9 +702,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Drücke „Schieben“. Der Regler „Schiebekraft F“ steht auf 100 N, der Regler „Weg s“ auf 4 m – lass beide in der ganzen Messreihe stehen. Notiere aus dem Statusfeld die Rechnung für W, den Wert im Balken am oberen und den Satz am unteren Bildrand.",
-   "Drücke „Waagerecht tragen“. Die Regler heißen jetzt „Masse der Kiste m“ (20 kg) und „getragener Weg s“ – derselbe Regler wie eben, er bleibt auf 4 m. Welche Haltekraft nennt das Statusfeld, wie groß ist W, was sagt der Satz am unteren Bildrand?",
-   "Drücke „Hochheben“; „Masse der Kiste m“ bleibt auf 20 kg, „Höhe h“ steht auf 2,0 m. Drücke „Ausführen“, verfolge den wachsenden Wegpfeil und schreibe den Rechenweg ab. Prüfe nach, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
+   "Drücke „Schieben“. „Schiebekraft F“ steht auf 100 N, „Weg s“ auf 4 m. Notiere W und den Satz am unteren Bildrand.",
+   "Drücke „Waagerecht tragen“. „Masse der Kiste m“ steht auf 20 kg, der Weg bleibt 4 m. Notiere Haltekraft, W und den Satz.",
+   "Drücke „Hochheben“ und „Ausführen“. „Höhe h“ steht auf 2,0 m. Prüfe, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
   ],
   "tabCols": [
    "Kraft und Weg laut Statusfeld",
@@ -715,7 +715,7 @@
    "Waagerecht tragen",
    "Hochheben"
   ],
-  "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs eines Weges verschiebt. Entscheidend ist dabei nicht der Betrag der Kraft, sondern ihre Komponente in Wegrichtung. Zerlegt man die Kraft – wie schon beim schräg gezogenen Schlitten – in einen Anteil längs und einen Anteil quer zum Weg, so trägt allein der längs gerichtete Anteil bei: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Für α = 0° wird daraus die einfache Form W = F · s, für α = 90° ist cos(α) = 0 und damit W = 0 J, gleichgültig wie groß F ist. Die Einheit der Arbeit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben muss die Hubkraft die Gewichtskraft F_G = m · g ausgleichen; sie zeigt längs des Hubwegs, deshalb gilt W = m · g · h. Wie schnell die Arbeit verrichtet wird, sagt die Leistung P = W / t mit der Einheit 1 Watt = 1 Joule je Sekunde; sie unterscheidet zwei Vorgänge, die dieselbe Arbeit in verschiedener Zeit verrichten. Gültigkeitsbereich: Alle drei Formeln setzen eine konstante Kraft und einen geraden Weg voraus. Die Simulation zeigt nur die beiden Grenzfälle α = 0° und α = 90°; Zwischenwinkel muss man rechnen. Und W = 0 J heißt nicht, dass der Träger keine Energie umsetzt – seine Muskelfasern spannen sich unablässig nach und verbrauchen dabei Energie; an der Kiste wird davon nichts als Arbeit wirksam, weil sie sich nicht in Kraftrichtung bewegt.",
+  "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs des Weges verschiebt. Es zählt nur der Anteil der Kraft in Wegrichtung: W = F · s · cos(α). α ist der Winkel zwischen Kraft und Weg. Für α = 0° bleibt W = F · s. Für α = 90° ist cos(α) = 0, also W = 0 J, gleichgültig wie groß F ist. Die Einheit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben gleicht die Hubkraft die Gewichtskraft aus: W = m · g · h. Die Leistung P = W/t sagt, wie schnell das geschieht. 1 Watt ist 1 Joule je Sekunde.",
   "merksatz": [
    {
     "pre": "Arbeit verrichtet allein die Kraftkomponente",
@@ -755,9 +755,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke „zurücksetzen“; im Statusfeld stehen 4 kg mit 4 m/s. Wähle zuerst „E über v auftragen“ – die automatische Reihe fährt immer die Größe durch, die gerade auf der x-Achse steht. Drücke dann „Messpunkt übernehmen“: Die Kugel rollt los, schiebt den Klotz 0,16 m weit, und die Tabelle bekommt ihre erste Zeile mit m, v, v², s und E = F · s. Drücke danach „Messreihe automatisch aufnehmen“ – das Tempo läuft von 1 m/s bis 12 m/s, die Masse bleibt bei 4 kg.",
-   "Beschreibe an der Auftragung „E über v“, wie die Punkte liegen; eine Ausgleichsgerade wird hier absichtlich nicht gezeichnet, und bei 4 m/s liegen zwei Punkte genau übereinander. Wähle dann „E über v² auftragen“ – dieselben Messwerte, nur anders aufgetragen. Notiere aus dem Auswertungsfeld die Gerade y = k·x, den Wert hinter „erwartet:“, das Bestimmtheitsmaß R² und den Wert aus dem Kasten „Masse m aus der Steigung k“.",
-   "Drücke „Tabelle leeren“ und bestätige die Rückfrage, sonst rechnet der Ergebniskasten mit der alten Reihe weiter. Wähle „E über m auftragen“ und drücke erneut „Messreihe automatisch aufnehmen“: Jetzt läuft die Masse von 1 kg bis 16 kg, das Tempo bleibt auf 4 m/s. Notiere wieder Steigung und R² und dazu das Tempo, das der Kasten „Geschwindigkeit v aus der Steigung k“ zurückrechnet."
+   "Drücke „zurücksetzen“, wähle „E über v auftragen“ und drücke „Messreihe automatisch aufnehmen“. Beschreibe danach, wie die Punkte liegen.",
+   "Wähle „E über v² auftragen“ und notiere y = k·x, R², den Wert hinter „erwartet:“ und den Kasten „Masse m aus der Steigung k“.",
+   "Drücke „Tabelle leeren“, wähle „E über m auftragen“ und nimm die Reihe erneut auf. Notiere Steigung, R² und „Geschwindigkeit v aus der Steigung k“."
   ],
   "tabCols": [
    "Auftragung und Auswertung",
@@ -769,7 +769,7 @@
    "E über m: k in m²/s² → Tempo v",
    "R² und Abweichung der Rückrechnung"
   ],
-  "fachtext": "Gemessen wird hier nicht die Energie, sondern ein Weg: Die Kugel schiebt den Klotz gegen die konstante Reibungskraft F = 200 N, und die dafür nötige Arbeit ist genau die Energie, die die Kugel mitbrachte – E = F · s. Jede Tabellenzeile ist damit ein Messwert und keine ausgerechnete Formel. Trägt man E über v auf, entsteht eine gekrümmte Kurve; eine Ausgleichsgerade hindurchzulegen wäre falsch, und das Programm zeichnet deshalb keine. Krumme Auftragungen macht man auswertbar, indem man linearisiert: Dieselben Messwerte werden über einer neuen Größe aufgetragen, bis eine Ursprungsgerade entsteht. Über v² gelingt das – und schon das ist der Nachweis, dass v quadratisch eingeht. Die Steigung trägt dabei Physik: k = m/2 mit der Einheit J/(m²/s²) = kg, also m = 2 · k. Über m ist die Auftragung von vornherein gerade; dort ist k = v²/2 in J/kg = m²/s², also v = √(2 · k). Beide Reihen zusammen ergeben E ~ m und E ~ v²; den Vorfaktor liefern die Steigungen selbst: 2,0 kg gemessen bei eingestellten 4 kg sind gerade m/2, und 8,0 m²/s² bei 4 m/s sind v²/2 – beide Male steht dieselbe ½ davor, also E = ½ · m · v². Gültigkeitsbereich: „Masse m“ läuft in Schritten von 1 kg von 1 kg bis 16 kg, „Tempo v“ von 1 m/s bis 12 m/s. Die automatische Reihe verändert nur die Größe, die auf der x-Achse steht – ohne diese Variablenkontrolle liegen die Punkte auf mehreren Geraden. Die Simulation rechnet ohne Verluste und ohne Streuung; R² = 1,0000 ist deshalb eine Eigenschaft des Modells und kein Gütesiegel einer echten Messung.",
+  "fachtext": "Gemessen wird ein Weg: Die Kugel schiebt den Klotz gegen die konstante Reibungskraft F = 200 N. Die dafür nötige Arbeit ist die mitgebrachte Energie: E = F · s. E über v ergibt eine gekrümmte Kurve; eine Ausgleichsgerade wäre falsch. Linearisieren hilft: Über v² ergeben dieselben Messwerte eine Ursprungsgerade. Also geht v quadratisch ein. Die Steigung trägt Physik: k = m/2 in kg, also m = 2 · k. Über m ist die Auftragung von vornherein gerade, dort ist k = v²/2. Die Steigungen liefern 2,0 kg bei 4 kg und 8,0 m²/s² bei 4 m/s. Beide Male steht ½ davor, also E = ½ · m · v².",
   "merksatz": [
    {
     "pre": "Über v liegen die Messpunkte auf einer gekrümmten Kurve; erst die Auftragung über v² ergibt eine",
@@ -809,9 +809,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Der Ausgangszustand steht auf D = 20 N/m. Drücke „Messreihe automatisch aufnehmen“: Die Federkonstante bleibt fest, die Auslenkung fährt in sieben Zeilen von 0 cm bis 30 cm. Notiere aus der Tabelle die Spalten s, s², F und E und lies darunter die Zeile „Auswertung der Messreihe“ – sie nennt für 5 cm und 10 cm zwei Faktoren.",
-   "Drücke „F über s auftragen“ und notiere die Steigung der Fitzeile und darunter den Kasten „Federkonstante D aus der Steigung k“. Wechsle auf „E über s auftragen“ und setze den Haken bei „Theoriekurve einblenden“: Halte fest, warum dort keine Steigung steht. Drücke dann „E über s² auftragen“ und lies Steigung und Rückrechnung ab.",
-   "Drücke „Tabelle leeren“ und bestätige die Rückfrage „Alle 7 Messwerte löschen?“, stelle den Regler „Federkonstante D“ auf 50 N/m und drücke erneut „Messreihe automatisch aufnehmen“. Lies für diese neue Reihe die Steigung unter „F über s auftragen“ und unter „E über s² auftragen“ ab und vergleiche beide mit dem eingestellten Wert."
+   "Drücke bei D = 20 N/m „Messreihe automatisch aufnehmen“ und notiere aus der Tabelle s, s², F und E.",
+   "Drücke nacheinander „F über s auftragen“, „E über s auftragen“ und „E über s² auftragen“. Lies jedes Mal Form und Steigung ab.",
+   "Leere die Tabelle, stelle den Regler „Federkonstante D“ auf 50 N/m und nimm die Messreihe erneut auf. Lies die Steigung unter „E über s² auftragen“ ab."
   ],
   "tabCols": [
    "Auftragung im Auswertungsfeld",
@@ -823,7 +823,7 @@
    "E über s², D = 20 N/m",
    "E über s², D = 50 N/m"
   ],
-  "fachtext": "Eine Messreihe wird erst dann zu einer Formel, wenn man sie aufträgt. Bei fester Federkonstante liegen die Messpunkte der Auftragung F über s auf einer Ursprungsgeraden – das ist das Kraftgesetz F = D · s, und die Steigung k dieser Geraden ist unmittelbar die Federkonstante: D = k, gemessen in N/m. Trägt man dieselben Messwerte als E über s auf, wird die Auftragung krumm: eine Parabel durch den Ursprung. Eine Parabel hat keine Steigung, die man ablesen könnte; die Federkonstante ist ihr also nicht unmittelbar zu entnehmen. Deshalb wird linearisiert. Man ersetzt die Größe auf der x-Achse durch eine andere – hier s² statt s – und prüft, ob die Punkte danach auf einer Geraden liegen. Über s² tun sie es: Damit ist E proportional zu s², und die Steigung dieser zweiten Geraden gehört wieder zur Feder. Sie ist aber nicht D, sondern D/2; zurückgerechnet gilt D = 2 · k. Der Faktor ½ ist kein Rechenzufall, sondern hat eine anschauliche Bedeutung. Beim Spannen wächst die Kraft von null bis zum Endwert F = D · s. Die Form W = F · s gilt nur für eine konstante Kraft, einzusetzen ist ihr Mittelwert ½ · F. Die gespeicherte Energie ist deshalb die Fläche unter der F-s-Geraden, und diese Fläche ist ein rechtwinkliges Dreieck mit der Grundseite s und der Höhe F – halb so groß wie das Rechteck F · s mit denselben Seiten. So entsteht E = ½ · F · s = ½ · D · s², mit 1 N · 1 m = 1 J. Dieselbe Feder liefert also zwei Geraden mit zwei Steigungen: D aus der Kraftauftragung, D/2 aus der linearisierten Energieauftragung. Weil s im Quadrat steht, bringt die doppelte Auslenkung die doppelte Kraft, aber die vierfache Energie. Beim Loslassen gilt für einen reibungsfrei laufenden Wagen der Masse m: E_Spann = E_Kin, also ½ · D · s² = ½ · m · v² und damit v = √(2 · E / m). Die Simulation rechnet mit einer idealen Feder und einer reibungsfreien Bahn; an einer echten Fahrbahn gehen einige Prozent an Reibung und mitschwingende Federmasse verloren.",
+  "fachtext": "Trägt man F über s auf, liegen die Punkte auf einer Ursprungsgeraden. Ihre Steigung k ist die Federkonstante D. Dieselben Werte als E über s aufgetragen ergeben eine Parabel. Aus ihr ist keine Steigung abzulesen. Der Ausweg heißt Linearisieren: s² tritt an die Stelle von s. Über s² liegen sie wieder auf einer Geraden. Deren Steigung ist nicht D, sondern D/2. Zurückgerechnet gilt D = 2 · k. Der Faktor stammt aus der Fläche unter der F-s-Geraden. Die Kraft wächst von null auf F, im Mittel wirkt die halbe Kraft. Diese Fläche ist ein Dreieck mit den Seiten s und F. Daraus folgt E = ½ · D · s².",
   "merksatz": [
    {
     "pre": "Über s² statt über s aufgetragen liegen die Energiewerte wieder auf einer Ursprungsgeraden; dieses Umformen der Achse heißt",
@@ -863,9 +863,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Beim Öffnen rollt die Kugel mit der Aufschrift m3 auf die ruhende Kugel m5 zu; der Regler „Masse 2 (kg)“ bleibt die ganze Seite über auf 5 kg stehen. Lies im Anzeigefeld über der Bahn die drei Zeilen p₁, p₂ und p_ges ab, solange die beiden noch getrennt sind – der Zusammenstoß kommt nach rund drei Sekunden. Mit „Stoß auslösen“ beginnt der Durchgang von vorn.",
-   "Stelle den Regler „Masse 1 (kg)“ auf 1 kg und starte mit „Stoß auslösen“ einen neuen Durchgang. Notiere p₁, p₂ und p_ges vor der Berührung und noch einmal danach, und verfolge dabei die Kurve „Gesamtimpuls“ im unteren Diagramm.",
-   "Der Stoß ist jetzt vorbei. Ziehe den Regler „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab. Halte außerdem die Zahl p₁ im Anzeigefeld gegen den Wert, den die Kurve „Impuls Ball 1“ im selben Augenblick anzeigt."
+   "Beim Öffnen rollt m₁ = 3 kg auf die ruhende m₂ = 5 kg zu. Lies p₁, p₂ und p_ges ab, solange sie getrennt sind.",
+   "Stelle „Masse 1 (kg)“ auf 1 kg und drücke „Stoß auslösen“. Notiere p₁, p₂ und p_ges vor und nach der Berührung.",
+   "Ziehe „Masse 1 (kg)“ auf 2 kg und lies die drei Zeilen erneut ab. Rechne p₁ + p₂ nach. (65 Wörter)"
   ],
   "modellgrenze": "Wer einen Massenregler erst nach dem Zusammenstoß verstellt, sieht keinen Stoß mehr: Die Simulation rechnet p = m · v dann mit der neuen Masse und der alten Geschwindigkeit weiter. Zeile 4 der Tabelle ist deshalb eine Grenze des Modells, kein Gegenbeispiel zum Erhaltungssatz – ein wirklicher Körper ändert seine Masse unterwegs nicht. Maßstab: Die Simulation nimmt ihre Bildpunkte als Meter, deshalb gehören zu p₁ = 60,0 kg·m/s bei 1 kg schon 60 m/s – für rollende Kugeln unrealistisch hoch, und die Energien fallen entsprechend groß aus. An den beiden Bilanzen ändert das nichts.",
   "tabCols": [
@@ -878,7 +878,7 @@
    "m₁ = 1 kg · m₂ = 5 kg · nach dem Stoß",
    "m₁ nach dem Stoß auf 2 kg · m₂ = 5 kg"
   ],
-  "fachtext": "Der Impuls eines Körpers ist p = m · v. Weil v eine gerichtete Größe ist, ist p es ebenfalls: Auf einer geraden Bahn genügt ein Vorzeichen, um die Richtung festzuhalten – nach rechts positiv, nach links negativ. Der Gesamtimpuls zweier Körper ist deshalb die vorzeichenrichtige Summe p_ges = m₁ · v₁ + m₂ · v₂ und nicht die Summe der Beträge. Stoßen die beiden zusammen, üben sie nach dem dritten newtonschen Gesetz gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus – genau gleich lange. Jeder erfährt also denselben Kraftstoß F · Δt, nur mit umgekehrtem Vorzeichen: Δp₁ = −Δp₂. Was der eine an Impuls abgibt, nimmt der andere auf; die Summe bleibt unverändert. Das ist der Impulserhaltungssatz, und er gilt in jedem abgeschlossenen System, an dem von außen keine Kraft angreift. Den Ausgang eines Stoßes legt er allein aber nicht fest: Eine Gleichung genügt für zwei unbekannte Geschwindigkeiten nicht. Erst zusammen mit der Erhaltung der kinetischen Energie, die den elastischen Stoß gerade auszeichnet, folgen daraus für den geraden elastischen Stoß v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂) und v₂' = ((m₂ − m₁) · v₂ + 2 · m₁ · v₁) / (m₁ + m₂). Die kinetische Energie lässt sich aus demselben Messwert gewinnen: Aus E = ½ · m · v² und p = m · v wird E = p² / (2 · m). Der Unterschied der beiden Bilanzen steckt in diesem Quadrat: Der Impuls ist gerichtet, seine Summe kann kleiner ausfallen als die Summe der Beträge; die Energie ist nie negativ, ihre Anteile addieren sich immer. Beim elastischen Stoß bleiben beide Summen erhalten, beim unelastischen nur der Impuls – ein Teil der Bewegungsenergie geht in Verformung und Wärme. Gültigkeitsbereich: Die Simulation rechnet ausschließlich elastisch; einen unelastischen Stoß, bei dem die Körper zusammenkleben, kann man an ihr nicht einstellen. Beide Massenregler laufen von 1 kg bis 10 kg in Schritten von 1 kg, Reibung fehlt. Das Anzeigefeld nennt p₁ und p₂ mit Vorzeichen; die Kurve „Impuls Ball 1“ trägt dagegen den Betrag auf und bleibt auch nach dem Zurückprallen positiv – sie kennt kein Minus.",
+  "fachtext": "Der Impuls ist p = m · v. Weil v gerichtet ist, ist p es ebenfalls. Auf einer geraden Bahn genügt ein Vorzeichen: nach rechts positiv, nach links negativ. Der Gesamtimpuls ist deshalb die vorzeichenrichtige Summe p_ges = m₁ · v₁ + m₂ · v₂. Die Summe der Beträge ist etwas anderes. Beim Stoß üben beide Körper nach dem dritten newtonschen Gesetz gleich große, entgegengesetzt gerichtete Kräfte aufeinander aus, und das gleich lange. Jeder erfährt denselben Kraftstoß mit umgekehrtem Vorzeichen, also Δp₁ = −Δp₂. Der Gesamtimpuls bleibt erhalten. Das gilt in jedem abgeschlossenen System. Beim elastischen Stoß bleibt zusätzlich die kinetische Energie erhalten. Die Simulation rechnet ausschließlich elastisch.",
   "merksatz": [
    {
     "pre": "Beim Stoß gibt der eine Körper genau so viel Impuls ab, wie der andere aufnimmt; die Summe p_ges bleibt deshalb",
@@ -918,9 +918,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Die Simulation startet mit ω = 3 rad/s und r = 70 px. Prüfe beide Regler und lies im weißen Anzeigefeld rechts oben im Bild die Zeile ab, die mit v≈ beginnt – darüber steht ω=…rad/s, darunter F_z≈…N. Die Simulation schreibt dort einen Punkt statt eines Kommas. Übertrage den Wert in die erste Tabellenzeile.",
-   "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s, ohne den Radius zu verändern. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch die eingestellte Winkelgeschwindigkeit.",
-   "Ziehe nun bei 7 rad/s den Regler „Radius r“ von 70 px auf 40 px – der kleinere Radius steht für eine weiter innen hängende Kette desselben Karussells: ω bleibt gleich, nur der Abstand von der Achse ändert sich. Vergleiche v≈-Wert und Quotient mit der Zeile darüber und halte fest, welche der beiden Zahlen sich ändert."
+   "Lies die Zeile v≈ im Anzeigefeld ab, während ω auf 3 rad/s und r auf 70 px stehen. Beachte den Punkt statt des Kommas.",
+   "Erhöhe ω auf 6 rad/s und danach auf 7 rad/s. Notiere jedes Mal den Wert aus der Zeile v≈ und teile ihn durch ω.",
+   "Ziehe bei 7 rad/s den Regler „Radius r“ auf 40 px. Vergleiche Wert und Quotient mit der Zeile darüber."
   ],
   "modellgrenze": "Maßstab: Die Simulation zeichnet 10 px als 1 m – der Radius 70 px steht also für 7,0 m. Die beiden Pfeile am Ball sind dagegen immer gleich lang gezeichnet; sie geben nur die Richtung an, den Betrag von v nicht.",
   "tabCols": [
@@ -933,7 +933,7 @@
    "ω = 7 rad/s · r = 70 px",
    "ω = 7 rad/s · r = 40 px"
   ],
-  "fachtext": "Bei einer gleichförmigen Kreisbewegung überstreicht der Zeiger von der Drehachse zum Körper in gleichen Zeiten gleiche Winkel. Der Quotient ω = Δφ/Δt heißt Winkelgeschwindigkeit; der Winkel wird im Bogenmaß gemessen, die Einheit ist 1 rad/s, ein voller Umlauf sind 2π rad. Die Bahngeschwindigkeit v = Δs/Δt zählt dagegen den Weg auf der Kreislinie. Für einen Winkel im Bogenmaß gilt s = φ · r, und daraus folgt v = ω · r. Beide Größen beschreiben dieselbe Drehung, aber nicht dasselbe: ω gehört zum ganzen starren Körper, v gehört zu einem einzelnen Punkt und wächst mit seinem Abstand von der Achse. Der Betrag von v bleibt dabei konstant, die Richtung nicht – der Geschwindigkeitsvektor zeigt in jedem Augenblick tangential zur Bahn.",
+  "fachtext": "Bei einer gleichförmigen Kreisbewegung überstreicht der Zeiger von der Achse zum Körper in gleichen Zeiten gleiche Winkel. Der Quotient ω = Δφ/Δt heißt Winkelgeschwindigkeit. Der Winkel wird im Bogenmaß gemessen, die Einheit ist 1 rad/s. Ein voller Umlauf sind 2π rad. Die Bahngeschwindigkeit v = Δs/Δt zählt dagegen den Weg auf der Kreislinie. Im Bogenmaß gilt s = φ · r, und daraus folgt v = ω · r. ω gehört zum ganzen starren Körper, v gehört zu einem einzelnen Punkt. Deshalb wächst v mit dem Abstand von der Achse. Der Betrag von v bleibt konstant, die Richtung nicht. Der Geschwindigkeitsvektor zeigt stets tangential zur Bahn.",
   "merksatz": [
    {
     "pre": "Alle Punkte eines starren Körpers drehen sich mit derselben",
@@ -973,9 +973,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Lies in der Ausgangsstellung m = 0,50 kg, r = 0,80 m, f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ die fünf berechneten Größen ab: Umlaufzeit T, Winkelgeschwindigkeit ω, Bahngeschwindigkeit v, Zentripetalbeschleunigung a_z und Zentripetalkraft F_z.",
-   "Vergleiche im Bild die beiden Pfeile „F_z zum Mittelpunkt“ und „v tangential“, während der Drehwinkel φ einmal ganz herumläuft. Halte danach den Wert hinter „daraus gemessene Umlaufzeit“ gegen die Rechenzeile T = 1/f.",
-   "Ziehe den Regler „Masse m“ von 0,50 kg über 1,00 kg auf 2,00 kg, ohne Radius und Umlauffrequenz anzurühren, und verfolge dabei getrennt die Zeile für a_z und die Zeile für F_z."
+   "Lies bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz im Feld „Alle Größen der Kreisbewegung“ T, ω, v, a_z und F_z ab.",
+   "Vergleiche im Bild die Pfeile „F_z zum Mittelpunkt“ und „v tangential“ während eines Umlaufs. Halte „daraus gemessene Umlaufzeit“ gegen T = 1/f.",
+   "Ziehe den Regler „Masse m“ auf 1,00 kg und auf 2,00 kg und verfolge dabei getrennt a_z und F_z."
   ],
   "tabCols": [
    "Masse m (r = 0,80 m, f = 1,50 Hz)",
@@ -986,7 +986,7 @@
    "m = 1,00 kg",
    "m = 2,00 kg"
   ],
-  "fachtext": "Eine gleichförmige Kreisbewegung ist durch wenige Größen vollständig beschrieben. Der Radius r (in m) gibt den Abstand von der Drehachse an, die Umlaufzeit T (in s) die Dauer eines vollen Umlaufs, die Umlauffrequenz f (in Hz) die Zahl der Umläufe je Sekunde; beide hängen über T = 1/f zusammen. Die Winkelgeschwindigkeit ω = 2·π·f (in rad/s) misst den überstrichenen Winkel je Zeit, die Bahngeschwindigkeit v = ω·r (in m/s) den zurückgelegten Weg je Zeit. Ihr Betrag bleibt gleich, ihre Richtung nicht – und schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r (in m/s²). Nach dem zweiten Newton'schen Gesetz gehört dazu eine Kraft in derselben Richtung: F_z = m · a_z (in N), wobei m (in kg) die Masse des Körpers ist. Die Zentripetalkraft ist keine neue Kraftart, sondern eine Aufgabe: Hier übernimmt sie ein Faden, dort eine Schiene, im Auto die Reibung und beim Kettenkarussell die waagerechte Komponente der Kettenkraft – deshalb stehen die Ketten schräg. Fällt sie weg, wirkt in der Bahnebene keine Kraft mehr, und der Körper fliegt tangential geradeaus weiter.",
+  "fachtext": "Der Radius r ist der Abstand von der Drehachse. Die Umlaufzeit T ist die Dauer eines Umlaufs, die Umlauffrequenz f die Zahl der Umläufe je Sekunde; es gilt T = 1/f. Die Winkelgeschwindigkeit ist ω = 2·π·f, die Bahngeschwindigkeit v = ω·r. Ihr Betrag bleibt gleich, ihre Richtung nicht. Schon eine Richtungsänderung ist eine Beschleunigung. Sie zeigt zum Mittelpunkt und heißt Zentripetalbeschleunigung a_z = v²/r = ω²·r. Nach dem zweiten Newton'schen Gesetz gehört dazu die Zentripetalkraft F_z = m · a_z, ebenfalls nach innen. Sie ist keine neue Kraftart, sondern eine Aufgabe: mal übernimmt sie ein Faden, mal die Reibung. Fällt sie weg, fliegt der Körper tangential weiter.",
   "merksatz": [
    {
     "pre": "Die Zentripetalkraft zeigt immer zum",
@@ -1026,9 +1026,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Drücke zuerst „Tabelle leeren“, damit du mit einer leeren Tabelle beginnst. Notiere dann bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Zentripetalkraft F_z aus dem Statusfeld „Alle Größen der Kreisbewegung“, drücke „Messpunkt übernehmen“ und notiere auch den Wert, der dafür in der Tabelle erscheint. Vergleiche beide.",
-   "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, die daneben stehende erwartete Steigung, das Bestimmtheitsmaß R², die Masse aus der Steigung und deren Abweichung ab.",
-   "Leere die Tabelle – sonst rechnet der Ergebniskasten nicht mit deiner neuen Reihe –, wähle „F über f² auftragen“ und nimm die Messreihe erneut auf. Leere die Tabelle danach ein drittes Mal, stelle „Masse m“ auf 1,50 kg, wähle wieder „F über r auftragen“ und nimm die Reihe auf. Rechne aus ihrer Steigung mit m = k/(4·π²·f²) die Masse selbst nach und halte sie gegen den Ergebniskasten."
+   "Leere die Tabelle, wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“ bei m = 0,50 kg und f = 1,50 Hz.",
+   "Lies im Auswertungsfeld Steigung k, erwartete Steigung, Masse aus der Steigung und Abweichung ab.",
+   "Leere die Tabelle, wechsle bei r = 0,80 m auf „F über f² auftragen“ und nimm neu auf. Stelle danach „Masse m“ auf 1,50 kg und wiederhole „F über r auftragen“. (68 Wörter)"
   ],
   "tabCols": [
    "Steigung k und erwartete Steigung",
@@ -1039,7 +1039,7 @@
    "F über f² · m = 0,50 kg, r = 0,80 m",
    "F über r · m = 1,50 kg, f = 1,50 Hz"
   ],
-  "fachtext": "Setzt man ω = 2·π·f in a_z = ω²·r ein, wird a_z = 4·π²·f²·r und damit F_z = m·a_z = 4·π²·m·f²·r. Eine Messreihe wertet man aus, indem man so aufträgt, dass eine Ursprungsgerade entsteht: Bei festem m und f gehört zu F_z(r) die Steigung k = 4·π²·m·f². Hält man dagegen m und r fest, ergibt F_z über f eine Parabel; erst über f² liegt F_z(f²) = 4·π²·m·r · f² wieder auf einer Ursprungsgeraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. Weil in der Steigung außer der gesuchten Größe nur bekannte stehen, lässt sie sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose, die Steigung über viele Punkte deutlich weniger. Das Bestimmtheitsmaß R² steht dabei so gut wie immer bei 0,9999 oder 1,0000 – das heißt nur, dass die Streuung gegenüber dem Messbereich klein ist, nicht, dass fehlerfrei gemessen wurde.",
+  "fachtext": "Mit ω = 2·π·f wird a_z = ω²·r zu a_z = 4·π²·f²·r. Für die Kraft folgt F_z = 4·π²·m·f²·r. Ausgewertet wird über die Steigung. Bei festem m und f gehört zu F über r die Steigung k = 4·π²·m·f². Hält man m und r fest, ergibt F über f eine Parabel. Erst über f² liegen die Punkte wieder auf einer Geraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. In der Steigung steht außer m nur Bekanntes. Sie lässt sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Die Steigung über viele Punkte streut weniger als ein einzelner Messwert der Kraftmessdose.",
   "merksatz": [
    {
     "pre": "Trägt man F_z über r auf, so ist die Steigung",
@@ -1079,9 +1079,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Ziehe die Regler „Masse der linken Kugel“ und „Masse der rechten Kugel“ auf 5; das Statusfeld meldet dann 200,0 Einheiten. Wähle „F über r auftragen“, drücke „Messreihe automatisch aufnehmen“ und lies in der Wertetabelle für jede der fünf Zeilen r, 1/r² und F ab. Lies daneben, warum das Auswertungsfeld hier keine Ausgleichsgerade zeichnet.",
-   "Wähle „F über 1/r² auftragen“, ohne an der Tabelle etwas zu ändern. Notiere die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R², die daneben stehende erwartete Steigung und die Zeile „Verhältniszahl der Simulation aus der Steigung k“. Wähle danach „F über m₁·m₂/r² auftragen“ und halte die dortige Steigung gegen diese Verhältniszahl.",
-   "Drücke „Tabelle leeren“, bestätige die Rückfrage, stelle den Regler „Abstand“ auf 2 und lass „Masse der rechten Kugel“ auf 5 stehen. Wähle „F über m₁ auftragen“, nimm mit „Messreihe automatisch aufnehmen“ die zweite Reihe auf und prüfe am Ergebniskasten, ob die aus der Steigung zurückgerechnete Masse der rechten Kugel zu deiner Reglerstellung passt."
+   "Stelle beide Massenregler auf 5, wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies ab, warum hier keine Ausgleichsgerade erscheint.",
+   "Wähle „F über 1/r² auftragen“ und notiere k, R² und die Verhältniszahl. Wähle dann „F über m₁·m₂/r² auftragen“ und vergleiche die Steigung.",
+   "Drücke „Tabelle leeren“, stelle den Regler „Abstand“ auf 2 und wähle „F über m₁ auftragen“. Nimm die zweite Reihe auf und prüfe die zurückgerechnete Masse."
   ],
   "tabCols": [
    "Gewählte Auftragung",
@@ -1093,7 +1093,7 @@
    "F über m₁·m₂/r² · dieselbe Reihe",
    "F über m₁ · zweite Reihe, Abstand 2"
   ],
-  "fachtext": "Aus einer Messreihe wird eine Formel, indem man sie so aufträgt, dass eine Ursprungsgerade entsteht – erst deren Steigung ist eine Zahl, mit der sich weiterrechnen lässt. Über dem Abstand r gelingt das nicht: Die Punkte fallen erst steil, dann immer flacher, und an eine Kurve lässt sich keine Steigung anlegen. Der Ausweg heißt Linearisieren. Man rechnet zu jedem Messwert 1/r² aus und trägt F über dieser Größe auf; nun liegen dieselben Punkte auf einer Geraden durch den Ursprung. Damit ist F ~ 1/r² gemessen und nicht behauptet. Die Steigung k hängt noch von den beiden festgehaltenen Massen ab; teilt man sie durch m₁ · m₂, bleibt eine Zahl übrig, die für jede Messreihe dieselbe ist – die Verhältniszahl. Rückwärts gelesen heißt das k = 8 · m₁ · m₂. Hält man dagegen Abstand und zweite Masse fest, liegt F über m₁ ohne jede Umrechnung auf einer Ursprungsgeraden mit k = 8 · m₂ / r²; auch daraus lässt sich eine Größe zurückgewinnen, nämlich m₂. Beides zusammen ergibt F ~ m₁ · m₂ / r². Trägt man F über m₁ · m₂ / r² auf, steht die Verhältniszahl unmittelbar als Steigung da; dass dort auch Reihen mit ganz anderen Massen auf dieselbe Gerade fallen, zeigt sich erst, wenn man sie nebeneinander aufnimmt. In der Natur steht an ihrer Stelle die Gravitationskonstante G; die Simulation kennt sie nicht, weil sie in Einheiten statt in Newton zählt.",
+  "fachtext": "Aus einer Messreihe wird eine Formel, wenn man sie als Ursprungsgerade auftragen kann. Erst deren Steigung ist eine Zahl zum Weiterrechnen. Über dem Abstand r gelingt das nicht. An eine Kurve lässt sich keine Steigung anlegen. Der Ausweg heißt Linearisieren: Man rechnet zu jedem Messwert 1/r² aus und trägt F darüber auf. Nun liegen dieselben Punkte auf einer Ursprungsgeraden. Damit ist F ~ 1/r² gemessen. Ihre Steigung ist k = 8·m₁·m₂. Hält man r und m₂ fest, liegt F über m₁ ebenfalls auf einer Ursprungsgeraden mit k = 8·m₂/r². Zusammen ergibt das F ~ m₁ · m₂ / r². In der Natur steht dort die Gravitationskonstante G.",
   "merksatz": [
    {
     "pre": "Aus der Kurve wird eine Gerade, sobald man F nicht über r, sondern über",
@@ -1136,8 +1136,8 @@
   "predictOk": 2,
   "forschen": [
    "Drücke „Erde“ und notiere aus dem Statusfeld die Masse m, den Ortsfaktor g und die Gewichtskraft F.",
-   "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab – eine der drei Zahlen bleibt unverändert stehen.",
-   "Beantworte danach die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."
+   "Drücke „Mond“ und „Jupiter“ und lies jedes Mal dieselben drei Größen ab. Eine der drei Zahlen bleibt unverändert stehen.",
+   "Beantworte die drei Quizfragen und halte fest, welche Formel die Rückmeldung zu „Von der Masse und dem Ortsfaktor g“ nennt."
   ],
   "tabCols": [
    "m in kg und g in N/kg (Statusfeld)",
@@ -1148,7 +1148,7 @@
    "Erde",
    "Jupiter"
   ],
-  "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m beschreibt den Körper selbst: wie stark er einer Beschleunigung widersteht (träge Masse) und wie stark ein Himmelskörper ihn anzieht (schwere Masse). Beide Zahlen sind gleich und gehören zum Körper, nicht zum Ort. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Die Kraft je Kilogramm ist an jedem Ort eine feste Zahl in N/kg – der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation rundet auf 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s² da, aus dem Fallversuch bestimmt. Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s². Auch der Zahlenwert ist gleich: Im freien Fall wirkt nur die Gewichtskraft, aus m · g = m · a folgt a = g – träge und schwere Masse sind gleich groß.",
+  "fachtext": "Masse und Gewichtskraft sind verschiedene Größen. Die Masse m gehört zum Körper und ändert sich mit dem Ort nicht. Sie misst, wie stark er einer Beschleunigung widersteht und wie stark ein Himmelskörper ihn anzieht. Die Gewichtskraft F hängt dagegen vom Ort ab: F = m · g. Der Quotient F/m ist an jedem Ort eine feste Zahl, der Ortsfaktor g. Auf der Erde sind das 9,81 N/kg; die Simulation zeigt 9,8. In Kapitel 1 stand dieselbe Zahl als 9,81 m/s². Ein zweites g ist das nicht: Aus 1 N = 1 kg · m/s² folgt 1 N/kg = 1 m/s².",
   "merksatz": [
    {
     "pre": "Die Masse gehört zum Körper, vom Ort abhängig ist allein die",
@@ -1188,9 +1188,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Übertrage zu jedem Ort den Abstand r in die Tabelle und rechne für die ISS-Zeile nach, wie viel davon Höhe über dem Erdboden ist – der Erdradius steht in der ersten Zeile.",
-   "Bilde für jede Zeile den Anteil g : 9,82 N/kg am Wert an der Erdoberfläche und trage ihn in die Tabelle ein.",
-   "Prüfe eine Zeile nach: Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."
+   "Übertrage zu jedem Ort den Abstand r in die Tabelle. Rechne für die ISS-Zeile aus, wie viel davon Höhe über dem Erdboden ist.",
+   "Bilde für jede Zeile den Anteil g : 9,82 N/kg und trage ihn in die Tabelle ein.",
+   "Berechne g = G · M / r² für die ISS-Bahn mit r = 6771 km und vergleiche dein Ergebnis mit dem Datenblatt."
   ],
   "daten": {
    "titel": "Feldstärke g der Erde in vier Abständen",
@@ -1234,7 +1234,7 @@
    "Navigationssatellit",
    "Mondbahn"
   ],
-  "fachtext": "Ein Feld ordnet jedem Punkt des Raums eine physikalische Größe zu. Beim Gravitationsfeld ist das die Feldstärke g = F/m, also die Kraft je Kilogramm Probemasse an diesem Ort; ihre Einheit ist 1 N/kg. Der Gewinn dieser Beschreibung: g hängt nur noch vom Zentralkörper und vom Ort ab, nicht mehr vom Probekörper. Teilt man das Gravitationsgesetz F = G · M · m / r² durch m, bleibt g = G · M / r². Die Feldstärke zeigt überall zum Erdmittelpunkt und nimmt mit dem Quadrat des Abstands ab: doppelter Abstand, ein Viertel der Feldstärke. Sie wird beliebig klein, aber nie null – ein Feld hat keinen Rand. Der Ortsfaktor 9,81 N/kg ist deshalb kein eigener Naturwert, sondern nur der Wert dieses Feldes an der Erdoberfläche.",
+  "fachtext": "Ein Feld ordnet jedem Punkt des Raums eine Größe zu. Beim Gravitationsfeld ist das die Feldstärke g = F/m, die Kraft je Kilogramm Probemasse; ihre Einheit ist 1 N/kg. So hängt g nur vom Ort ab, nicht vom Probekörper. Teilt man F = G·M·m/r² durch m, bleibt g = G·M/r². Sie zeigt zum Erdmittelpunkt und nimmt mit dem Quadrat des Abstands ab: doppelter Abstand, ein Viertel. Sie wird beliebig klein, aber nie null. An der ISS ist das Feld fast so stark wie am Boden; Station und Besatzung fallen nur gemeinsam um die Erde. Der Ortsfaktor 9,81 N/kg ist der Wert dieses Feldes an der Erdoberfläche.",
   "merksatz": [
    {
     "pre": "Aus F = G·M·m/r² wird durch Division durch m die Feldstärke",
@@ -1274,9 +1274,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere die drei Werte mit Einheit.",
-   "Berechne mit F = G · m₁ · m₂ / r² und G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft zwischen einer großen und einer kleinen Kugel und vergleiche sie mit der letzten Zeile der Tabelle.",
-   "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg), löse dann F = G · m₁ · m₂ / r² nach G auf und begründe, welche Größe der Versuch liefert."
+   "Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere m₁ · m₂ und r² mit Einheit.",
+   "Berechne daraus mit G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft und vergleiche sie mit der letzten Zeile der Tabelle.",
+   "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg) und begründe, welche Größe der Versuch liefert."
   ],
   "daten": {
    "titel": "Die Drehwaage von Henry Cavendish, 1798",
@@ -1325,7 +1325,7 @@
    "F zwischen den Kugeln",
    "F im Vergleich zu m₂ · g"
   ],
-  "fachtext": "Newtons Gravitationsgesetz F = G · m₁ · m₂ / r² verknüpft vier Größen. Drei davon lassen sich im Labor abmessen: die beiden Massen und ihr Abstand. Die vierte, die Gravitationskonstante G, steht auf keiner Waage und an keinem Maßband – sie kann nur aus einer Kraftmessung folgen. Genau das leistet die Drehwaage: Ein waagerechter Balken hängt an einem dünnen Draht, an seinen Enden sitzen die kleinen Kugeln. Nähert man die großen Bleikugeln, dreht sich der Balken so weit, bis der verdrillte Draht zurückhält, was die Anziehung zieht. Damit steht zugleich der direkte Nachweis der allgemeinen Massenanziehung auf dem Tisch: Hier zieht kein Himmelskörper, hier ziehen zwei Stücke Blei einander an. Aus dem Drehwinkel folgt F, aus F folgt G = F · r² / (m₁ · m₂). Erst danach ist die Erdmasse zu haben: Am Boden gilt g = G · M / R², umgestellt M = g · R² / G. Cavendish selbst gab sein Ergebnis als Dichte der Erde an; gemessen hat er eine Naturkonstante – Masse und Dichte der Erde sind erst die Folgerung daraus.",
+  "fachtext": "Newtons Gravitationsgesetz F = G · m₁ · m₂ / r² verknüpft vier Größen. Drei davon misst man im Labor: die beiden Massen und ihren Abstand. Die vierte ist die Gravitationskonstante G. Sie steht auf keiner Waage. Sie folgt nur aus einer Kraftmessung. Genau das leistet die Drehwaage. Ein Balken hängt an einem dünnen Draht und trägt zwei kleine Kugeln. Nähert man die großen Bleikugeln, dreht sich der Balken, bis der verdrillte Draht gegenhält. Hier ziehen zwei Stücke Blei einander an. Aus dem Drehwinkel folgt F und daraus G. Erst danach folgt die Erdmasse: Aus g = G · M / R² wird M = g · R² / G.",
   "merksatz": [
    {
     "pre": "Die Drehwaage liefert zuerst die",
@@ -1365,9 +1365,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Stelle den Regler „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Verfolge die Anzeige „Abstand zur Sonne“, bis dort „Treffer – der Planet stürzt in die Sonne“ steht. Taste dich danach von 12 km/s an in Einerschritten aufwärts und halte fest, ab welchem Wert die Statuszeile nicht mehr „stürzt in die Sonne“ meldet.",
-   "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere zu jeder Einstellung aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand sowie die Dauer eines Umlaufs.",
-   "Vergleiche 42 km/s mit 48 km/s und prüfe, ob die Statuszeile noch einen größten Abstand meldet. Notiere für 42 km/s beide Abstände und die Umlaufzeit und halte die beiden Kennwerte fest, die am Ende jeder Statuszeile stehen."
+   "Stelle „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Taste dich danach von 12 km/s an in Einerschritten aufwärts, bis kein Sturz mehr gemeldet wird.",
+   "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand und die Umlaufzeit.",
+   "Vergleiche 42 km/s mit 48 km/s. Prüfe, ob die Statuszeile noch einen größten Abstand meldet."
   ],
   "tabCols": [
    "Bahnform laut Statuszeile",
@@ -1379,7 +1379,7 @@
    "30 km/s",
    "36 km/s"
   ],
-  "fachtext": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung genau quer dazu, ändert die Kraft nur deren Richtung, nicht ihren Betrag – das ist der Kreisfall. Der Planet fällt zur Sonne hin und ist zugleich seitwärts unterwegs, fällt also an ihr vorbei statt auf sie: Dieses ständige Vorbeifallen ist die Umlaufbahn. Auf der Kreisbahn liefert die Gravitationskraft gerade die nötige Zentripetalkraft: G·M·m/r² = m·v²/r. Die Masse m des Planeten kürzt sich heraus, es bleibt v = √(G·M/r); der Kreiswert hängt also nur vom Abstand ab, nicht davon, was dort kreist. Weicht v davon ab, wird die Bahn in beiden Richtungen zur Ellipse – nur liegt der Startpunkt einmal außen, einmal innen. Ist v kleiner, ist der Start der größte Abstand; wird v zu klein, führt die Ellipse so dicht an der Sonne vorbei, dass der Planet sie trifft. Ist v größer, ist der Start der kleinste Abstand. Auf jeder Ellipse hat die Kraft auch einen Anteil längs der Bahn, deshalb ändert sich dort auch der Betrag: nah an der Sonne läuft der Planet schnell, weit draußen langsam. Zum Entkommen braucht er v = √(2·G·M/r), also den √2-fachen Kreiswert. Startort und Startrichtung sind bei jedem Versuch dieselben; allein die Startgeschwindigkeit legt die ganze weitere Bahn fest – dieselbe Zahl liefert immer dieselbe Bahn, ohne jeden Zufall.",
+  "fachtext": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung quer dazu, ändert die Kraft nur deren Richtung, nicht deren Betrag. Der Planet fällt zur Sonne hin und ist zugleich seitwärts unterwegs. Er fällt an ihr vorbei. Dieses ständige Vorbeifallen ist die Umlaufbahn. Auf der Kreisbahn ist die Gravitationskraft die nötige Zentripetalkraft: G·M·m/r² = m·v²/r. Die Masse m kürzt sich heraus, es bleibt v = √(G·M/r). Dieser Kreiswert hängt nur vom Abstand ab. Weicht v davon ab, entsteht eine Ellipse. Bei kleinerem v ist der Start der größte Abstand, bei größerem v der kleinste. Ein zu kleines v endet im Treffer. Zum Entkommen braucht der Planet den √2-fachen Kreiswert.",
   "merksatz": [
    {
     "pre": "Anziehung und Querbewegung ergeben zusammen das ständige",
@@ -1419,9 +1419,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab und notiere beide Werte mit ihren Einheiten.",
-   "Berechne zeilenweise a³ und T² und bilde daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Nachkommastellen, nicht schon die Zwischenwerte, sonst verschiebt sich das Ergebnis bei Merkur.",
-   "Trage Merkur, Erde, Jupiter und Saturn in die Tabelle ein, vergleiche die sechs Quotienten und entscheide, ob die Unterschiede aus der Regel selbst stammen oder aus der Stellenzahl der Tabelle."
+   "Lies für jeden Planeten die große Halbachse a und die Umlaufzeit T aus dem Datenblatt ab.",
+   "Berechne zeilenweise a³ und T² und daraus den Quotienten T²/a³. Runde erst den Quotienten auf vier Stellen, nicht die Zwischenwerte.",
+   "Trage Merkur, Erde, Jupiter und Saturn ein und vergleiche die Quotienten. Entscheide, ob die Unterschiede aus der Regel oder aus der Stellenzahl stammen."
   ],
   "daten": {
    "titel": "Umlaufzeit und große Halbachse der Planeten",
@@ -1475,7 +1475,7 @@
    "Jupiter",
    "Saturn"
   ],
-  "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, die heute sein drittes Gesetz heißt: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante gerade 1,00 – die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt: Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für die Ellipse gilt dasselbe, sobald man für a die große Halbachse einsetzt. Rechts steht nur die Masse M des Zentralkörpers, die Masse des umlaufenden Planeten fällt heraus. Genau deshalb genügt eine einzige gemessene Größe, um die andere vorherzusagen.",
+  "fachtext": "Johannes Kepler fand 1619 in den Bahndaten der Planeten eine Regel, sein drittes Gesetz: Die Quadrate der Umlaufzeiten verhalten sich wie die dritten Potenzen der großen Halbachsen. Kurz geschrieben ist T²/a³ für alle Planeten derselben Sonne konstant. Misst man T in Jahren und a in Astronomischen Einheiten, so ist diese Konstante 1,00. Die Erde liefert 1²/1³. Newton zeigte später, woher die Regel kommt. Setzt man für eine Kreisbahn die Gravitationskraft gleich der Zentripetalkraft, ergibt sich T²/a³ = 4π²/(G·M). Für eine Ellipse gilt dasselbe mit der großen Halbachse a. Rechts steht nur die Masse M des Zentralkörpers. Die Masse des umlaufenden Planeten fällt heraus.",
   "merksatz": [
    {
     "pre": "Drittes Keplersches Gesetz: Für alle Planeten der Sonne ist T²/a³",
@@ -1515,9 +1515,9 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was für die Schleifen der Planeten nötig ist und wie die Zeile die Anordnung am Ende bewertet.",
-   "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht, und verfolge im Streifen unten, wann die Spur des Mars orange wird.",
-   "Beobachte in der rechten Tafel das kleine Kästchen „Jupitermonde“: Verfolge einen inneren und einen äußeren Mond und vergleiche, wie lange sie für einen Umlauf brauchen. Halte aus dem Hinweistext rechts daneben fest, was Galilei 1610 sah und was Bessel 1838 nachwies."
+   "Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was die Schleifen nötig macht und wie die Zeile die Anordnung bewertet.",
+   "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht.",
+   "Verfolge im Streifen unten, wann die Spur des Mars orange wird. Halte aus dem Hinweistext fest, was Galilei 1610 sah."
   ],
   "tabCols": [
    "geozentrisch: Erde in der Mitte (alt)",
@@ -1529,7 +1529,7 @@
    "Schleife des Mars im Streifen unten",
    "Urteil am Ende der Statuszeile"
   ],
-  "fachtext": "Von der Erde aus wandert der Mars die meiste Zeit in eine Richtung zwischen den Sternen; für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und zieht am Mars vorbei, und die Blickrichtung von der Erde zum Mars dreht dabei zurück. Im geozentrischen Modell ruht die Erde; dort muss die Schleife durch einen zweiten Kreis erzeugt werden, den Epizykel, auf dem der Planet zusätzlich zu seiner großen Bahn umläuft. Beide Modelle sagen deshalb dasselbe Aussehen des Himmels voraus – die Schleife allein entscheidet also nicht zwischen ihnen. Vergleichen lässt sich der Aufwand: für den Mars ein Kreis statt zweier. Sparsamkeit ist ein Argument, aber kein Beweis. Die Simulation zeigt dabei die aufgeräumte, heutige Fassung; Kopernikus selbst brauchte 1543 noch Zusatzkreise, weil er an gleichförmigen Kreisen festhielt – ganz ohne sie kommt erst Keplers Ellipse aus. Den Ausschlag gaben Beobachtungen, für die der ptolemäische Aufbau keinen Platz hat: 1610 sah Galilei durch das Fernrohr Monde um den Jupiter – also kreist nicht alles um die Erde – und die Phasen der Venus, die dieser Aufbau nicht zulässt. Damit war er widerlegt; dass sich die Erde wirklich bewegt, zeigte erst Bessel 1838 mit der Fixsternparallaxe. Die Schleife selbst ist nichts Zufälliges: Sie folgt zwingend aus den Umlaufzeiten beider Bahnen. Für den Mars gibt das dritte Keplergesetz zu a = 1,524 AE die Umlaufzeit T = 1,88 Jahre, und daraus folgt der Abstand zweier Überholungen: 1 : (1 : 1,00 − 1 : 1,88) = 2,1 Jahre. So oft und nur so oft steht eine Schleife am Himmel.",
+  "fachtext": "Von der Erde aus wandert der Mars meist in eine Richtung zwischen den Sternen. Für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und überholt den Mars. Im geozentrischen Modell ruht die Erde; dort erzeugt ein zweiter Kreis die Schleife, der Epizykel. Beide Modelle sagen dasselbe Aussehen des Himmels voraus. Die Schleife allein entscheidet also nicht zwischen ihnen. Heliozentrisch genügt für den Mars ein Kreis; Sparsamkeit ist aber kein Beweis. Den Ausschlag gaben Galileis Beobachtungen von 1610: Jupitermonde und die Phasen der Venus, die der ptolemäische Aufbau nicht zulässt.",
   "merksatz": [
    {
     "pre": "Zwischen den Sternen läuft der Mars zeitweise rückwärts, weil die Erde ihn auf der inneren Bahn",
@@ -1569,9 +1569,9 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Lies die vier Zeilen des Datenblatts und markiere in jeder Zeile, welche der vier Kriterien erfüllt sind: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung.",
-   "Rechne die Behauptung der ersten Zeile nach: r = 6371 km + 400 km, dann g = G · M / r² mit G = 6,674 · 10⁻¹¹ N · m² / kg² und M = 5,972 · 10²⁴ kg. Vergleiche mit dem Bodenwert, den dieselbe Formel für r = 6371 km liefert.",
-   "Zähle für jede Quellenart, wie viele der vier Kriterien sie erfüllt, trage die Zahl in die Tabelle ein und vergib danach die Rangplätze 1 bis 4."
+   "Lies die vier Zeilen des Datenblatts und markiere je Zeile die erfüllten Kriterien: Quellenangabe, Begutachtung, offene Daten, Trennung von Beobachtung und Deutung.",
+   "Rechne die erste Behauptung nach: g = G · M / r² mit r = 6371 km + 400 km, G = 6,674 · 10⁻¹¹ N·m²/kg² und M = 5,972 · 10²⁴ kg.",
+   "Zähle je Quellenart die erfüllten Kriterien und vergib danach die Rangplätze 1 bis 4."
   ],
   "daten": {
    "titel": "Vier Quellenarten zu einer Aussage über Schwerelosigkeit",
@@ -1615,7 +1615,7 @@
    "Netzvideo",
    "Fachartikel"
   ],
-  "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden, und es zieht die Astronautin weiter an. Station und Besatzung fallen gemeinsam frei, und genau deshalb drückt niemand auf eine Unterlage. Diese Aussage lässt sich prüfen: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Dass zwei unabhängige Wege denselben Wert liefern, ist kein Zufall, sondern die Folge eines determinierten Gesetzes. Ebenso prüfbar ist eine Quelle: Sie nennt, worauf sie sich stützt, sie wurde von Fachleuten begutachtet, sie legt ihre Daten offen, und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
+  "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden. Es zieht die Astronautin weiter an. Station und Besatzung sind gemeinsam im freien Fall. Genau deshalb drückt niemand auf eine Unterlage. Diese Aussage ist nachprüfbar: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Zwei unabhängige Wege liefern denselben Wert. Ebenso prüfbar ist eine Quelle. Sie nennt, worauf sie sich stützt. Sie wurde von Fachleuten begutachtet. Sie legt ihre Daten offen. Und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
   "merksatz": [
    {
     "pre": "Schwerelosigkeit bedeutet nicht fehlende Anziehung, sondern",
@@ -1655,9 +1655,9 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Drücke „1 · Die Lichtuhr“ und beobachte einen Takt. Wechsle zu „2 · Die bewegte Lichtuhr“, stelle „Relativgeschwindigkeit v/c“ erst auf 0, dann auf 0,95 und notiere jedes Mal, um welchen Faktor der A-Takt laut Text länger ist als der B-Takt.",
-   "Stelle v/c auf 0,60 zurück, drücke „3 · Herleitung mit Pythagoras“ und übertrage die drei Dreiecksseiten und die Gleichung. Wechsle zu „4 · Der relativistische Faktor“ und lies bei v/c = 0,600 und bei 0,950 den Faktor √(1−β²), den Lorentzfaktor γ und die Minutenzahl je Stunde in A ab.",
-   "Drücke „5 · Wo es zählt: GPS & Co.“ und halte fest, welche Teilchen die Zeitdehnung belegen. Drücke „6 · Zeitdehnung messen“, stelle v/c nacheinander auf 0,10, 0,60, 0,84 und 0,95, trage Ticks und Faktor f in die Tabelle ein und übernimm jeden Messwert. Drücke „Theoriefunktion“ und lies Geradengleichung und R² ab."
+   "Drücke „2 · Die bewegte Lichtuhr“ und stelle „Relativgeschwindigkeit v/c“ auf 0,95. Notiere den Faktor aus dem Text.",
+   "Drücke „3 · Herleitung mit Pythagoras“ und übertrage die Gleichung. Lies bei „4 · Der relativistische Faktor“ den Faktor und γ ab.",
+   "Drücke „6 · Zeitdehnung messen“, stelle v/c auf 0,10, 0,60, 0,84 und 0,95 und übernimm jeden Messwert. Trage Ticks und Faktor f ein."
   ],
   "tabCols": [
    "bewegte Ticks je 200 ruhende",
@@ -1669,7 +1669,7 @@
    "v = 0,84·c",
    "v = 0,95·c"
   ],
-  "fachtext": "Ausgangspunkt ist ein einziger Messbefund des Michelson-Morley-Experiments: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Eine Lichtuhr macht daraus ein Messgerät. Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her; ein Hin und Her ist ein Takt, und die Taktdauer ist Weg geteilt durch c. Die Herleitung nimmt den halben Takt, den Weg zum Spiegel: Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. In einem System A, an dem die Uhr mit v vorbeifährt, wandert sie währenddessen um v·ΔtRuh zur Seite, und das Photon legt schräg die Strecke c·ΔtRuh zurück – der Index Ruh meint den ruhenden Beobachter A, nicht das Ruhesystem der Uhr. Die drei Strecken bilden ein rechtwinkliges Dreieck, also gilt (c·ΔtRuh)² = (v·ΔtRuh)² + (c·Δtbew)²; für ganze Takte kürzt sich der Faktor 2 wieder heraus. Aufgelöst ergibt das c²·Δtbew² = (c²−v²)·ΔtRuh² und damit Δtbew = ΔtRuh·√(1−v²/c²). Mit β = v/c ist der Faktor √(1−β²) nie größer als 1: Zwischen denselben Ereignissen vergeht in der bewegten Uhr die kürzere Zeitspanne. Sein Kehrwert γ = 1/√(1−β²) heißt Lorentzfaktor. Eine Zeit, die für alle gilt, gibt es damit nicht mehr; man spricht von einer Zeitspanne in einem System, nicht von der Zeit. Auch B sieht die A-Uhren langsamer – kein Widerspruch, denn A misst mit zwei Uhren, die für B nicht synchron sind.",
+  "fachtext": "Der Messbefund des Michelson-Morley-Experiments lautet: Die Lichtgeschwindigkeit c hat in jedem Bezugssystem denselben Wert. Die Lichtuhr macht daraus ein Messgerät. Ein Photon läuft zwischen Blitzlampe und Spiegel hin und her. Das ist ein Takt. Im mitbewegten System B läuft das Photon senkrecht, die Kastenhöhe ist c·Δtbew. Für A fährt die Uhr mit v vorbei. Sie wandert dabei um v·ΔtRuh zur Seite, das Photon läuft schräg die Strecke c·ΔtRuh. Die drei Strecken bilden ein rechtwinkliges Dreieck. Aus dem Satz des Pythagoras folgt Δtbew = ΔtRuh·√(1−v²/c²). Dieser Faktor ist nie größer als 1. In der bewegten Uhr vergeht also die kürzere Zeitspanne. Der Kehrwert dieses Faktors heißt Lorentzfaktor γ.",
   "merksatz": [
    {
     "pre": "Weil c in jedem Bezugssystem gleich ist, bedeutet ein längerer Lichtweg eine längere",

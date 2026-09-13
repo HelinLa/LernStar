@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Drücke zuerst „Tabelle leeren“, damit du mit einer leeren Tabelle beginnst. Notiere dann bei m = 0,50 kg, r = 0,80 m und f = 1,50 Hz die Zentripetalkraft F_z aus dem Statusfeld „Alle Größen der Kreisbewegung“, drücke „Messpunkt übernehmen“ und notiere auch den Wert, der dafür in der Tabelle erscheint. Vergleiche beide.",
-  "Wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies im Auswertungsfeld die Ausgleichsgerade y = k·x, die daneben stehende erwartete Steigung, das Bestimmtheitsmaß R², die Masse aus der Steigung und deren Abweichung ab.",
-  "Leere die Tabelle – sonst rechnet der Ergebniskasten nicht mit deiner neuen Reihe –, wähle „F über f² auftragen“ und nimm die Messreihe erneut auf. Leere die Tabelle danach ein drittes Mal, stelle „Masse m“ auf 1,50 kg, wähle wieder „F über r auftragen“ und nimm die Reihe auf. Rechne aus ihrer Steigung mit m = k/(4·π²·f²) die Masse selbst nach und halte sie gegen den Ergebniskasten."
+  "Leere die Tabelle, wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“ bei m = 0,50 kg und f = 1,50 Hz.",
+  "Lies im Auswertungsfeld Steigung k, erwartete Steigung, Masse aus der Steigung und Abweichung ab.",
+  "Leere die Tabelle, wechsle bei r = 0,80 m auf „F über f² auftragen“ und nimm neu auf. Stelle danach „Masse m“ auf 1,50 kg und wiederhole „F über r auftragen“. (68 Wörter)"
  ],
  "tabCols": [
   "Steigung k und erwartete Steigung",
@@ -25,7 +25,7 @@
   "F über f² · m = 0,50 kg, r = 0,80 m",
   "F über r · m = 1,50 kg, f = 1,50 Hz"
  ],
- "fachtext": "Setzt man ω = 2·π·f in a_z = ω²·r ein, wird a_z = 4·π²·f²·r und damit F_z = m·a_z = 4·π²·m·f²·r. Eine Messreihe wertet man aus, indem man so aufträgt, dass eine Ursprungsgerade entsteht: Bei festem m und f gehört zu F_z(r) die Steigung k = 4·π²·m·f². Hält man dagegen m und r fest, ergibt F_z über f eine Parabel; erst über f² liegt F_z(f²) = 4·π²·m·r · f² wieder auf einer Ursprungsgeraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. Weil in der Steigung außer der gesuchten Größe nur bekannte stehen, lässt sie sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose, die Steigung über viele Punkte deutlich weniger. Das Bestimmtheitsmaß R² steht dabei so gut wie immer bei 0,9999 oder 1,0000 – das heißt nur, dass die Streuung gegenüber dem Messbereich klein ist, nicht, dass fehlerfrei gemessen wurde.",
+ "fachtext": "Mit ω = 2·π·f wird a_z = ω²·r zu a_z = 4·π²·f²·r. Für die Kraft folgt F_z = 4·π²·m·f²·r. Ausgewertet wird über die Steigung. Bei festem m und f gehört zu F über r die Steigung k = 4·π²·m·f². Hält man m und r fest, ergibt F über f eine Parabel. Erst über f² liegen die Punkte wieder auf einer Geraden. Durch alle Punkte legt das Programm die Ausgleichsgerade y = k·x. In der Steigung steht außer m nur Bekanntes. Sie lässt sich zurückrechnen: m = k/(4·π²·f²) aus der r-Geraden, m = k/(4·π²·r) aus der f²-Geraden. Die Steigung über viele Punkte streut weniger als ein einzelner Messwert der Kraftmessdose.",
  "merksatz": [
   {
    "pre": "Trägt man F_z über r auf, so ist die Steigung",

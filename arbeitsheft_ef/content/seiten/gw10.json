@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was für die Schleifen der Planeten nötig ist und wie die Zeile die Anordnung am Ende bewertet.",
-  "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht, und verfolge im Streifen unten, wann die Spur des Mars orange wird.",
-  "Beobachte in der rechten Tafel das kleine Kästchen „Jupitermonde“: Verfolge einen inneren und einen äußeren Mond und vergleiche, wie lange sie für einen Umlauf brauchen. Halte aus dem Hinweistext rechts daneben fest, was Galilei 1610 sah und was Bessel 1838 nachwies."
+  "Drücke „Erde in der Mitte (alt)“ und lies in der Statuszeile ab, wer im Zentrum steht, was die Schleifen nötig macht und wie die Zeile die Anordnung bewertet.",
+  "Drücke „Sonne in der Mitte (heute)“ und vergleiche dieselben drei Angaben. Zähle, wie viele Kreise der Mars in jeder Tafel braucht.",
+  "Verfolge im Streifen unten, wann die Spur des Mars orange wird. Halte aus dem Hinweistext fest, was Galilei 1610 sah."
  ],
  "tabCols": [
   "geozentrisch: Erde in der Mitte (alt)",
@@ -26,7 +26,7 @@
   "Schleife des Mars im Streifen unten",
   "Urteil am Ende der Statuszeile"
  ],
- "fachtext": "Von der Erde aus wandert der Mars die meiste Zeit in eine Richtung zwischen den Sternen; für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und zieht am Mars vorbei, und die Blickrichtung von der Erde zum Mars dreht dabei zurück. Im geozentrischen Modell ruht die Erde; dort muss die Schleife durch einen zweiten Kreis erzeugt werden, den Epizykel, auf dem der Planet zusätzlich zu seiner großen Bahn umläuft. Beide Modelle sagen deshalb dasselbe Aussehen des Himmels voraus – die Schleife allein entscheidet also nicht zwischen ihnen. Vergleichen lässt sich der Aufwand: für den Mars ein Kreis statt zweier. Sparsamkeit ist ein Argument, aber kein Beweis. Die Simulation zeigt dabei die aufgeräumte, heutige Fassung; Kopernikus selbst brauchte 1543 noch Zusatzkreise, weil er an gleichförmigen Kreisen festhielt – ganz ohne sie kommt erst Keplers Ellipse aus. Den Ausschlag gaben Beobachtungen, für die der ptolemäische Aufbau keinen Platz hat: 1610 sah Galilei durch das Fernrohr Monde um den Jupiter – also kreist nicht alles um die Erde – und die Phasen der Venus, die dieser Aufbau nicht zulässt. Damit war er widerlegt; dass sich die Erde wirklich bewegt, zeigte erst Bessel 1838 mit der Fixsternparallaxe. Die Schleife selbst ist nichts Zufälliges: Sie folgt zwingend aus den Umlaufzeiten beider Bahnen. Für den Mars gibt das dritte Keplergesetz zu a = 1,524 AE die Umlaufzeit T = 1,88 Jahre, und daraus folgt der Abstand zweier Überholungen: 1 : (1 : 1,00 − 1 : 1,88) = 2,1 Jahre. So oft und nur so oft steht eine Schleife am Himmel.",
+ "fachtext": "Von der Erde aus wandert der Mars meist in eine Richtung zwischen den Sternen. Für einige Wochen kehrt sich die Richtung um. Im heliozentrischen Modell ist das ein Überholvorgang: Die Erde läuft auf der inneren, schnelleren Bahn und überholt den Mars. Im geozentrischen Modell ruht die Erde; dort erzeugt ein zweiter Kreis die Schleife, der Epizykel. Beide Modelle sagen dasselbe Aussehen des Himmels voraus. Die Schleife allein entscheidet also nicht zwischen ihnen. Heliozentrisch genügt für den Mars ein Kreis; Sparsamkeit ist aber kein Beweis. Den Ausschlag gaben Galileis Beobachtungen von 1610: Jupitermonde und die Phasen der Venus, die der ptolemäische Aufbau nicht zulässt.",
  "merksatz": [
   {
    "pre": "Zwischen den Sternen läuft der Mars zeitweise rückwärts, weil die Erde ihn auf der inneren Bahn",

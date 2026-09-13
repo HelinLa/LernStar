@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Stelle den Regler „Beschleunigung a“ auf 2,0 m/s² und drücke „Tabelle leeren“. Lass den Wagen aus der Ruhe fahren und drücke während derselben Fahrt fünfmal „Zeit stoppen“ – die Statuszeile zählt mit, bis fünf gestoppte Messwerte beisammen sind. Übertrage die ersten vier Zeilen mit t, s und v in die Tabelle.",
-  "Wähle die Auftragung „t → s“. Das Auswertungsfeld nennt keine Steigung, sondern rät: quadriere t und wechsle zur Auftragung t² → s. Folge dem Rat mit „t² → s“ und lies die Achsenbeschriftung, die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R² und die Zeile „Beschleunigung a = 2 × Steigung“ ab.",
-  "Rechne für deine vier Zeilen t² und den Quotienten s/t² aus und halte ihn gegen die abgelesene Steigung. Prüfe dasselbe a anschließend über „t → v“ – dort ist die Steigung selbst die Beschleunigung – und über „t → a“, wo die Höhe der waagerechten Ausgleichsgeraden dieselbe Zahl liefert."
+  "Stelle den Regler „Beschleunigung a“ auf 2,0 m/s². Drücke während einer Fahrt fünfmal „Zeit stoppen“ und übertrage die ersten vier Zeilen in die Tabelle.",
+  "Wähle „t² → s“ und drücke „Steigung messen“. Wähle zwei Punkte auf der Ausgleichsgeraden und lies die Steigung im Steigungsdreieck ab.",
+  "Rechne zu jeder Zeile t² und s/t² aus. Vergleiche den Quotienten mit der Steigung und prüfe a = 2 · Steigung."
  ],
  "tabCols": [
   "abgelesen: t in s · s in m · v in m/s",
@@ -26,7 +26,7 @@
   "3. Stopp",
   "4. Stopp"
  ],
- "fachtext": "Die Stoppuhr hält zu jedem Augenblick t den Weg s und die Geschwindigkeit v fest. Trägt man die aus je zwei Zeilen gerechnete Größe Δv/Δt über t auf, liegen alle Punkte auf derselben Waagerechten: Die Beschleunigung ändert sich während der Fahrt nicht. Aus a = Δv/Δt und dem Start aus der Ruhe folgt damit v = a · t – die t-v-Auftragung ist eine Ursprungsgerade, deren Steigung die Beschleunigung ist. Der Weg ist die Fläche unter dieser Geraden: bis zur Zeit t ein Dreieck mit der Grundseite t und der Höhe v = a · t, also s = ½ · t · v = ½ · a · t². Der Weg wächst folglich nicht proportional zur Zeit, sondern zu deren Quadrat; im t-s-Diagramm liegen die Punkte auf einer Parabel, und eine Parabel hat in jedem Punkt eine andere Steigung – ein einziger Wert ist daraus nicht abzulesen. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Aus s = ½ · a · t² wird s = (a/2) · x mit x = t², also eine Ursprungsgerade der Steigung a/2, und damit a = 2 · Steigung. Für einen einzelnen Stopp ist diese Steigung gerade s/t²; genauer wird sie, wenn die Ausgleichsgerade alle Punkte der Reihe auswertet. Linearisieren heißt, die Achsen so zu wählen, dass die vermutete Beziehung als Gerade sichtbar wird – erst eine Gerade liefert eine Zahl.",
+ "fachtext": "Bei gleichmäßig beschleunigter Bewegung bleibt die Beschleunigung während der ganzen Fahrt gleich. Aus dem Start aus der Ruhe folgt v = a · t. Die t-v-Auftragung ist deshalb eine Ursprungsgerade, und ihre Steigung ist die Beschleunigung. Der Weg ist die Fläche unter dieser Geraden, also s = ½ · a · t². Im t-s-Diagramm liegen die Punkte darum auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung. Eine einzige Zahl ist daraus nicht abzulesen. Deshalb linearisiert man: Zu jedem Messwert wird t² gebildet und s über t² aufgetragen. Das ergibt eine Ursprungsgerade der Steigung a/2. Es gilt also a = 2 · Steigung.",
  "merksatz": [
   {
    "pre": "Aus der s-t-Parabel lässt sich a nicht ablesen; erst das Quadrieren der gestoppten Zeit macht daraus eine",

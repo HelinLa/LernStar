@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Stelle den Regler „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Verfolge die Anzeige „Abstand zur Sonne“, bis dort „Treffer – der Planet stürzt in die Sonne“ steht. Taste dich danach von 12 km/s an in Einerschritten aufwärts und halte fest, ab welchem Wert die Statuszeile nicht mehr „stürzt in die Sonne“ meldet.",
-  "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere zu jeder Einstellung aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand sowie die Dauer eines Umlaufs.",
-  "Vergleiche 42 km/s mit 48 km/s und prüfe, ob die Statuszeile noch einen größten Abstand meldet. Notiere für 42 km/s beide Abstände und die Umlaufzeit und halte die beiden Kennwerte fest, die am Ende jeder Statuszeile stehen."
+  "Stelle „Startgeschwindigkeit quer zur Sonne“ auf 6 km/s und drücke „neu starten“. Taste dich danach von 12 km/s an in Einerschritten aufwärts, bis kein Sturz mehr gemeldet wird.",
+  "Stelle nacheinander 18, 24, 30 und 36 km/s ein. Notiere aus der Statuszeile die Bahnform, den kleinsten und den größten Abstand und die Umlaufzeit.",
+  "Vergleiche 42 km/s mit 48 km/s. Prüfe, ob die Statuszeile noch einen größten Abstand meldet."
  ],
  "tabCols": [
   "Bahnform laut Statuszeile",
@@ -26,7 +26,7 @@
   "30 km/s",
   "36 km/s"
  ],
- "fachtext": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung genau quer dazu, ändert die Kraft nur deren Richtung, nicht ihren Betrag – das ist der Kreisfall. Der Planet fällt zur Sonne hin und ist zugleich seitwärts unterwegs, fällt also an ihr vorbei statt auf sie: Dieses ständige Vorbeifallen ist die Umlaufbahn. Auf der Kreisbahn liefert die Gravitationskraft gerade die nötige Zentripetalkraft: G·M·m/r² = m·v²/r. Die Masse m des Planeten kürzt sich heraus, es bleibt v = √(G·M/r); der Kreiswert hängt also nur vom Abstand ab, nicht davon, was dort kreist. Weicht v davon ab, wird die Bahn in beiden Richtungen zur Ellipse – nur liegt der Startpunkt einmal außen, einmal innen. Ist v kleiner, ist der Start der größte Abstand; wird v zu klein, führt die Ellipse so dicht an der Sonne vorbei, dass der Planet sie trifft. Ist v größer, ist der Start der kleinste Abstand. Auf jeder Ellipse hat die Kraft auch einen Anteil längs der Bahn, deshalb ändert sich dort auch der Betrag: nah an der Sonne läuft der Planet schnell, weit draußen langsam. Zum Entkommen braucht er v = √(2·G·M/r), also den √2-fachen Kreiswert. Startort und Startrichtung sind bei jedem Versuch dieselben; allein die Startgeschwindigkeit legt die ganze weitere Bahn fest – dieselbe Zahl liefert immer dieselbe Bahn, ohne jeden Zufall.",
+ "fachtext": "Die Gravitationskraft zeigt immer zum Zentrum. Steht die Bewegung quer dazu, ändert die Kraft nur deren Richtung, nicht deren Betrag. Der Planet fällt zur Sonne hin und ist zugleich seitwärts unterwegs. Er fällt an ihr vorbei. Dieses ständige Vorbeifallen ist die Umlaufbahn. Auf der Kreisbahn ist die Gravitationskraft die nötige Zentripetalkraft: G·M·m/r² = m·v²/r. Die Masse m kürzt sich heraus, es bleibt v = √(G·M/r). Dieser Kreiswert hängt nur vom Abstand ab. Weicht v davon ab, entsteht eine Ellipse. Bei kleinerem v ist der Start der größte Abstand, bei größerem v der kleinste. Ein zu kleines v endet im Treffer. Zum Entkommen braucht der Planet den √2-fachen Kreiswert.",
  "merksatz": [
   {
    "pre": "Anziehung und Querbewegung ergeben zusammen das ständige",

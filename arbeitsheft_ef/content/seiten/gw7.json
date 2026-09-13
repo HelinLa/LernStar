@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere die drei Werte mit Einheit.",
-  "Berechne mit F = G · m₁ · m₂ / r² und G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft zwischen einer großen und einer kleinen Kugel und vergleiche sie mit der letzten Zeile der Tabelle.",
-  "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg), löse dann F = G · m₁ · m₂ / r² nach G auf und begründe, welche Größe der Versuch liefert."
+  "Lies im Datenblatt die beiden Massen und den Abstand ihrer Mittelpunkte ab und notiere m₁ · m₂ und r² mit Einheit.",
+  "Berechne daraus mit G = 6,674 · 10⁻¹¹ N·m²/kg² die Anziehungskraft und vergleiche sie mit der letzten Zeile der Tabelle.",
+  "Vergleiche diese Kraft mit der Gewichtskraft m₂ · g einer kleinen Kugel (g = 9,81 N/kg) und begründe, welche Größe der Versuch liefert."
  ],
  "daten": {
   "titel": "Die Drehwaage von Henry Cavendish, 1798",
@@ -63,7 +63,7 @@
   "F zwischen den Kugeln",
   "F im Vergleich zu m₂ · g"
  ],
- "fachtext": "Newtons Gravitationsgesetz F = G · m₁ · m₂ / r² verknüpft vier Größen. Drei davon lassen sich im Labor abmessen: die beiden Massen und ihr Abstand. Die vierte, die Gravitationskonstante G, steht auf keiner Waage und an keinem Maßband – sie kann nur aus einer Kraftmessung folgen. Genau das leistet die Drehwaage: Ein waagerechter Balken hängt an einem dünnen Draht, an seinen Enden sitzen die kleinen Kugeln. Nähert man die großen Bleikugeln, dreht sich der Balken so weit, bis der verdrillte Draht zurückhält, was die Anziehung zieht. Damit steht zugleich der direkte Nachweis der allgemeinen Massenanziehung auf dem Tisch: Hier zieht kein Himmelskörper, hier ziehen zwei Stücke Blei einander an. Aus dem Drehwinkel folgt F, aus F folgt G = F · r² / (m₁ · m₂). Erst danach ist die Erdmasse zu haben: Am Boden gilt g = G · M / R², umgestellt M = g · R² / G. Cavendish selbst gab sein Ergebnis als Dichte der Erde an; gemessen hat er eine Naturkonstante – Masse und Dichte der Erde sind erst die Folgerung daraus.",
+ "fachtext": "Newtons Gravitationsgesetz F = G · m₁ · m₂ / r² verknüpft vier Größen. Drei davon misst man im Labor: die beiden Massen und ihren Abstand. Die vierte ist die Gravitationskonstante G. Sie steht auf keiner Waage. Sie folgt nur aus einer Kraftmessung. Genau das leistet die Drehwaage. Ein Balken hängt an einem dünnen Draht und trägt zwei kleine Kugeln. Nähert man die großen Bleikugeln, dreht sich der Balken, bis der verdrillte Draht gegenhält. Hier ziehen zwei Stücke Blei einander an. Aus dem Drehwinkel folgt F und daraus G. Erst danach folgt die Erdmasse: Aus g = G · M / R² wird M = g · R² / G.",
  "merksatz": [
   {
    "pre": "Die Drehwaage liefert zuerst die",

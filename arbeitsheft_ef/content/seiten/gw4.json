@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Ziehe die Regler „Masse der linken Kugel“ und „Masse der rechten Kugel“ auf 5; das Statusfeld meldet dann 200,0 Einheiten. Wähle „F über r auftragen“, drücke „Messreihe automatisch aufnehmen“ und lies in der Wertetabelle für jede der fünf Zeilen r, 1/r² und F ab. Lies daneben, warum das Auswertungsfeld hier keine Ausgleichsgerade zeichnet.",
-  "Wähle „F über 1/r² auftragen“, ohne an der Tabelle etwas zu ändern. Notiere die Ausgleichsgerade y = k·x, das Bestimmtheitsmaß R², die daneben stehende erwartete Steigung und die Zeile „Verhältniszahl der Simulation aus der Steigung k“. Wähle danach „F über m₁·m₂/r² auftragen“ und halte die dortige Steigung gegen diese Verhältniszahl.",
-  "Drücke „Tabelle leeren“, bestätige die Rückfrage, stelle den Regler „Abstand“ auf 2 und lass „Masse der rechten Kugel“ auf 5 stehen. Wähle „F über m₁ auftragen“, nimm mit „Messreihe automatisch aufnehmen“ die zweite Reihe auf und prüfe am Ergebniskasten, ob die aus der Steigung zurückgerechnete Masse der rechten Kugel zu deiner Reglerstellung passt."
+  "Stelle beide Massenregler auf 5, wähle „F über r auftragen“ und drücke „Messreihe automatisch aufnehmen“. Lies ab, warum hier keine Ausgleichsgerade erscheint.",
+  "Wähle „F über 1/r² auftragen“ und notiere k, R² und die Verhältniszahl. Wähle dann „F über m₁·m₂/r² auftragen“ und vergleiche die Steigung.",
+  "Drücke „Tabelle leeren“, stelle den Regler „Abstand“ auf 2 und wähle „F über m₁ auftragen“. Nimm die zweite Reihe auf und prüfe die zurückgerechnete Masse."
  ],
  "tabCols": [
   "Gewählte Auftragung",
@@ -26,7 +26,7 @@
   "F über m₁·m₂/r² · dieselbe Reihe",
   "F über m₁ · zweite Reihe, Abstand 2"
  ],
- "fachtext": "Aus einer Messreihe wird eine Formel, indem man sie so aufträgt, dass eine Ursprungsgerade entsteht – erst deren Steigung ist eine Zahl, mit der sich weiterrechnen lässt. Über dem Abstand r gelingt das nicht: Die Punkte fallen erst steil, dann immer flacher, und an eine Kurve lässt sich keine Steigung anlegen. Der Ausweg heißt Linearisieren. Man rechnet zu jedem Messwert 1/r² aus und trägt F über dieser Größe auf; nun liegen dieselben Punkte auf einer Geraden durch den Ursprung. Damit ist F ~ 1/r² gemessen und nicht behauptet. Die Steigung k hängt noch von den beiden festgehaltenen Massen ab; teilt man sie durch m₁ · m₂, bleibt eine Zahl übrig, die für jede Messreihe dieselbe ist – die Verhältniszahl. Rückwärts gelesen heißt das k = 8 · m₁ · m₂. Hält man dagegen Abstand und zweite Masse fest, liegt F über m₁ ohne jede Umrechnung auf einer Ursprungsgeraden mit k = 8 · m₂ / r²; auch daraus lässt sich eine Größe zurückgewinnen, nämlich m₂. Beides zusammen ergibt F ~ m₁ · m₂ / r². Trägt man F über m₁ · m₂ / r² auf, steht die Verhältniszahl unmittelbar als Steigung da; dass dort auch Reihen mit ganz anderen Massen auf dieselbe Gerade fallen, zeigt sich erst, wenn man sie nebeneinander aufnimmt. In der Natur steht an ihrer Stelle die Gravitationskonstante G; die Simulation kennt sie nicht, weil sie in Einheiten statt in Newton zählt.",
+ "fachtext": "Aus einer Messreihe wird eine Formel, wenn man sie als Ursprungsgerade auftragen kann. Erst deren Steigung ist eine Zahl zum Weiterrechnen. Über dem Abstand r gelingt das nicht. An eine Kurve lässt sich keine Steigung anlegen. Der Ausweg heißt Linearisieren: Man rechnet zu jedem Messwert 1/r² aus und trägt F darüber auf. Nun liegen dieselben Punkte auf einer Ursprungsgeraden. Damit ist F ~ 1/r² gemessen. Ihre Steigung ist k = 8·m₁·m₂. Hält man r und m₂ fest, liegt F über m₁ ebenfalls auf einer Ursprungsgeraden mit k = 8·m₂/r². Zusammen ergibt das F ~ m₁ · m₂ / r². In der Natur steht dort die Gravitationskonstante G.",
  "merksatz": [
   {
    "pre": "Aus der Kurve wird eine Gerade, sobald man F nicht über r, sondern über",

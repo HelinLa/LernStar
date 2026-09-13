@@ -12,9 +12,9 @@
  ],
  "predictOk": 1,
  "forschen": [
-  "Lass den Regler „Geschwindigkeit v“ auf 4,0 m/s stehen und drücke „neue Fahrt“. Während der Wagen rollt, drückst du fünfmal „Zeit stoppen“ – wann, ist gleichgültig. Jede Zeile der Wertetabelle trägt danach die abgelesene Zeit, den Weg und den Tachowert. Wähle „t → s“ und lies unter „Auswertung“ die Zeile „y = …·x“ ab.",
-  "Stelle den Regler auf 6,0 m/s; damit beginnt eine neue Fahrt, die Tabelle bleibt stehen. Stoppe wieder fünfmal. Unter „t → s“ stehen jetzt zwei Ursprungsgeraden untereinander, jede mit ihrer Reihe beschriftet. Trage beide Steigungen ein und halte daneben, was am Regler stand.",
-  "Wähle „t → v“ und danach „t → a“, ohne die Tabelle zu leeren. Notiere bei „t → v“ den Achsenabschnitt der Waagerechten und ihre Steigung, bei „t → a“ die Höhe der Geraden. Beide Auftragungen benutzen dieselben Zeilen wie „t → s“."
+  "Stelle den Regler „Geschwindigkeit v“ auf 4,0 m/s, drücke „neue Fahrt“ und stoppe fünfmal mit „Zeit stoppen“.",
+  "Wähle „t → s“, drücke „Steigung messen“ und wähle zwei Punkte auf der Ausgleichsgeraden; lies die Steigung ab. Stelle 6,0 m/s ein, stoppe fünfmal und miss die zweite Steigung.",
+  "Wähle „t → v“ und danach „t → a“. Notiere Achsenabschnitt und Steigung der Waagerechten sowie die Höhe der t-a-Geraden."
  ],
  "tabCols": [
   "Auftragung und abgelesene Größe",
@@ -26,7 +26,7 @@
   "t → v: Steigung, also die Beschleunigung a",
   "t → a: Höhe der Geraden"
  ],
- "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Genau das prüft die Auftragung t → s. Die gestoppten Punkte liegen auf einer Geraden, und weil zur Zeit null auch der Weg null ist, geht sie durch den Ursprung. Eine Ursprungsgerade bedeutet Proportionalität, s ~ t, also s = k · t mit festem Faktor k. Diesen Faktor liefert die Ausgleichsgerade als ihre Steigung k = Δs/Δt; seine Einheit ist Meter je Sekunde. Damit ist k die Geschwindigkeit, und aus der Messung wird das Weg-Zeit-Gesetz s = v · t – die Formel steht am Ende, nicht am Anfang. Ein einzelner Quotient s/t wäre nur ein Punkt; die Steigung nutzt alle Zeilen zugleich. Die anderen beiden Auftragungen prüfen dieselben Messwerte gegen: Bei t → v liegen die Punkte auf einer Waagerechten, deren Höhe wieder die Geschwindigkeit ist und deren Steigung – die Beschleunigung – null ist. Bei t → a wird a = Δv/Δt aus je zwei Zeilen gerechnet und liegt auf der Nulllinie. Was sich nicht ändert, krümmt nichts: Nur weil a null bleibt, ist die t-s-Auftragung überhaupt eine Gerade. Dass die Auswertung dazu R² = 1,0000 und 0,00 % Abweichung meldet, ist kein Gütesiegel der Messung, sondern eine Eigenschaft des Modells: Uhr, Wegmesser und Tacho bedient dieselbe Rechnung.",
+ "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Die Auftragung t → s prüft das. Die gestoppten Punkte liegen auf einer Ursprungsgeraden. Das bedeutet s ~ t, also s = k · t. Die Steigung k = Δs/Δt hat die Einheit Meter je Sekunde. Damit ist k die Geschwindigkeit, und es folgt s = v · t. Ein einzelner Quotient s/t nutzt nur eine Zeile, die Steigung alle zugleich. Bei t → v liegen die Punkte auf einer Waagerechten. Ihre Höhe ist die Geschwindigkeit, ihre Steigung ist die Beschleunigung und damit null. Bei t → a liegt jeder Wert auf der Nulllinie.",
  "merksatz": [
   {
    "pre": "Die gestoppten Wertepaare liegen auf einer Ursprungsgeraden: s ~ t. Ihre Steigung Δs/Δt ist die",

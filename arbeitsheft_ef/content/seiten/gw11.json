@@ -12,9 +12,9 @@
  ],
  "predictOk": 2,
  "forschen": [
-  "Lies die vier Zeilen des Datenblatts und markiere in jeder Zeile, welche der vier Kriterien erfüllt sind: Quellenangabe, Begutachtung, offengelegte Daten, Trennung von Beobachtung und Deutung.",
-  "Rechne die Behauptung der ersten Zeile nach: r = 6371 km + 400 km, dann g = G · M / r² mit G = 6,674 · 10⁻¹¹ N · m² / kg² und M = 5,972 · 10²⁴ kg. Vergleiche mit dem Bodenwert, den dieselbe Formel für r = 6371 km liefert.",
-  "Zähle für jede Quellenart, wie viele der vier Kriterien sie erfüllt, trage die Zahl in die Tabelle ein und vergib danach die Rangplätze 1 bis 4."
+  "Lies die vier Zeilen des Datenblatts und markiere je Zeile die erfüllten Kriterien: Quellenangabe, Begutachtung, offene Daten, Trennung von Beobachtung und Deutung.",
+  "Rechne die erste Behauptung nach: g = G · M / r² mit r = 6371 km + 400 km, G = 6,674 · 10⁻¹¹ N·m²/kg² und M = 5,972 · 10²⁴ kg.",
+  "Zähle je Quellenart die erfüllten Kriterien und vergib danach die Rangplätze 1 bis 4."
  ],
  "daten": {
   "titel": "Vier Quellenarten zu einer Aussage über Schwerelosigkeit",
@@ -58,7 +58,7 @@
   "Netzvideo",
   "Fachartikel"
  ],
- "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden, und es zieht die Astronautin weiter an. Station und Besatzung fallen gemeinsam frei, und genau deshalb drückt niemand auf eine Unterlage. Diese Aussage lässt sich prüfen: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Dass zwei unabhängige Wege denselben Wert liefern, ist kein Zufall, sondern die Folge eines determinierten Gesetzes. Ebenso prüfbar ist eine Quelle: Sie nennt, worauf sie sich stützt, sie wurde von Fachleuten begutachtet, sie legt ihre Daten offen, und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
+ "fachtext": "Schwerelosigkeit heißt nicht, dass keine Kraft mehr wirkt. In 400 km Höhe hat das Erdfeld noch 88,5 Prozent seiner Stärke am Boden. Es zieht die Astronautin weiter an. Station und Besatzung sind gemeinsam im freien Fall. Genau deshalb drückt niemand auf eine Unterlage. Diese Aussage ist nachprüfbar: Aus Bahnradius und Umlaufzeit folgt eine Beschleunigung, die mit g in dieser Höhe übereinstimmt. Zwei unabhängige Wege liefern denselben Wert. Ebenso prüfbar ist eine Quelle. Sie nennt, worauf sie sich stützt. Sie wurde von Fachleuten begutachtet. Sie legt ihre Daten offen. Und sie trennt die Beobachtung von der Deutung. Fehlt all das, bleibt nur ein Eindruck.",
  "merksatz": [
   {
    "pre": "Schwerelosigkeit bedeutet nicht fehlende Anziehung, sondern",

@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Lies im Ausgangszustand das Statusfeld ab: Haltekraft, Gewichtskraft und Gesamtkraft stehen dort mit Zahl und Einheit, dazu der Zustand der Lampe. Vergleiche die Zahlen mit den Beschriftungen am Bild („Halte 5 N“, „Gewicht 5 N“).",
-  "Drücke einmal „– N“ und notiere sofort Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe. Drücke danach zweimal „+ N“ und zuletzt „zurück in die Mitte“ und halte jede Statuszeile gegen den Ausgangszustand.",
-  "Drücke noch einmal „– N“ und warte, bis sich das Bild nicht mehr ändert. Vergleiche dann, was die Zeichnung zeigt, mit dem, was die Statuszeile weiterhin meldet, und notiere den Unterschied."
+  "Lies im Ausgangszustand Haltekraft, Gewichtskraft und Gesamtkraft im Statusfeld ab und vergleiche sie mit „Halte 5 N“ und „Gewicht 5 N“ am Bild.",
+  "Drücke einmal „– N“ und notiere Betrag und Richtung der Gesamtkraft sowie das Verhalten der Lampe.",
+  "Drücke zweimal „+ N“ und danach „zurück in die Mitte“. Halte jede Statuszeile gegen den Ausgangszustand."
  ],
  "modellgrenze": "Die Zeichnung zeigt nur den Beginn der Bewegung: Nach wenigen Sekunden hält die Lampe am unteren Bildrand, während die Statuszeile unverändert 1 N nach unten meldet – sie wird nur beim Drücken neu geschrieben. Wird die Gesamtkraft wieder 0 N, steht die Lampe sofort still, statt gleichförmig weiterzulaufen; diesen zweiten Fall des Trägheitsprinzips hast du am Wagen gesehen.",
  "tabCols": [
@@ -27,7 +27,7 @@
   "zweimal + N (Halte 6 N)",
   "zurück in die Mitte"
  ],
- "fachtext": "Kräfte sind gerichtete Größen und werden vektoriell addiert. An der Lampe greifen zwei an: die Gewichtskraft F_G nach unten und die Haltekraft F_H des Seils nach oben. Beide wirken am selben Körper und liegen auf einer Wirkungslinie, deshalb genügt hier die vorzeichenbehaftete Summe F_res = F_H − F_G. Sie heißt resultierende Kraft; der Bildschirm nennt sie Gesamtkraft und schreibt statt des Vorzeichens die Richtung dazu: F_res = −1 N steht dort als „1 N nach unten“. Ein Körper bleibt genau dann in Ruhe oder in gleichförmiger Bewegung, wenn F_res = 0 N ist – gemessen in einem Bezugssystem, das selbst nicht beschleunigt wird (Inertialsystem); das ist die Aussage des Trägheitsprinzips. Kräftegleichgewicht heißt also nicht, dass keine Kräfte wirken, sondern dass sich die wirkenden Kräfte zu null ergänzen – das Seil bleibt gespannt, der Kraftmesser zeigt weiter an. Erst wenn F_res von null abweicht, ändert sich der Bewegungszustand, und zwar nach F_res = m · a. Gültigkeitsbereich: Die Simulation zeigt den eindimensionalen Fall mit zwei Kräften auf einer Linie und hält die Haltekraft dabei konstant. Allgemein lautet die Gleichgewichtsbedingung, dass die vektorielle Summe aller angreifenden Kräfte null ist; bei ausgedehnten Körpern kommt die Bedingung für die Drehmomente hinzu.",
+ "fachtext": "Kräfte werden vektoriell addiert. An der Lampe greifen die Gewichtskraft F_G nach unten und die Haltekraft F_H des Seils nach oben an. Beide liegen auf einer Wirkungslinie; es genügt die vorzeichenbehaftete Summe F_res = F_H − F_G. Der Bildschirm nennt diese resultierende Kraft Gesamtkraft mit Richtung: −1 N heißt dort „1 N nach unten“. Ein Körper bleibt genau dann in Ruhe oder in gleichförmiger Bewegung, wenn F_res = 0 N ist. Das ist das Trägheitsprinzip. Kräftegleichgewicht heißt nicht, dass keine Kräfte wirken, sondern dass sie sich zu null ergänzen; das Seil bleibt gespannt. Erst wenn F_res von null abweicht, ändert sich der Bewegungszustand: F_res = m · a.",
  "merksatz": [
   {
    "pre": "Ein Körper bleibt in Ruhe, wenn die Summe aller angreifenden Kräfte",

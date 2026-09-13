@@ -12,9 +12,9 @@
  ],
  "predictOk": 0,
  "forschen": [
-  "Drücke „Schieben“. Der Regler „Schiebekraft F“ steht auf 100 N, der Regler „Weg s“ auf 4 m – lass beide in der ganzen Messreihe stehen. Notiere aus dem Statusfeld die Rechnung für W, den Wert im Balken am oberen und den Satz am unteren Bildrand.",
-  "Drücke „Waagerecht tragen“. Die Regler heißen jetzt „Masse der Kiste m“ (20 kg) und „getragener Weg s“ – derselbe Regler wie eben, er bleibt auf 4 m. Welche Haltekraft nennt das Statusfeld, wie groß ist W, was sagt der Satz am unteren Bildrand?",
-  "Drücke „Hochheben“; „Masse der Kiste m“ bleibt auf 20 kg, „Höhe h“ steht auf 2,0 m. Drücke „Ausführen“, verfolge den wachsenden Wegpfeil und schreibe den Rechenweg ab. Prüfe nach, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
+  "Drücke „Schieben“. „Schiebekraft F“ steht auf 100 N, „Weg s“ auf 4 m. Notiere W und den Satz am unteren Bildrand.",
+  "Drücke „Waagerecht tragen“. „Masse der Kiste m“ steht auf 20 kg, der Weg bleibt 4 m. Notiere Haltekraft, W und den Satz.",
+  "Drücke „Hochheben“ und „Ausführen“. „Höhe h“ steht auf 2,0 m. Prüfe, ob 20 kg · 9,81 N/kg · 2,0 m den angezeigten Wert ergibt."
  ],
  "tabCols": [
   "Kraft und Weg laut Statusfeld",
@@ -25,7 +25,7 @@
   "Waagerecht tragen",
   "Hochheben"
  ],
- "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs eines Weges verschiebt. Entscheidend ist dabei nicht der Betrag der Kraft, sondern ihre Komponente in Wegrichtung. Zerlegt man die Kraft – wie schon beim schräg gezogenen Schlitten – in einen Anteil längs und einen Anteil quer zum Weg, so trägt allein der längs gerichtete Anteil bei: W = F · s · cos(α), wobei α der Winkel zwischen Kraft und Weg ist. Für α = 0° wird daraus die einfache Form W = F · s, für α = 90° ist cos(α) = 0 und damit W = 0 J, gleichgültig wie groß F ist. Die Einheit der Arbeit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben muss die Hubkraft die Gewichtskraft F_G = m · g ausgleichen; sie zeigt längs des Hubwegs, deshalb gilt W = m · g · h. Wie schnell die Arbeit verrichtet wird, sagt die Leistung P = W / t mit der Einheit 1 Watt = 1 Joule je Sekunde; sie unterscheidet zwei Vorgänge, die dieselbe Arbeit in verschiedener Zeit verrichten. Gültigkeitsbereich: Alle drei Formeln setzen eine konstante Kraft und einen geraden Weg voraus. Die Simulation zeigt nur die beiden Grenzfälle α = 0° und α = 90°; Zwischenwinkel muss man rechnen. Und W = 0 J heißt nicht, dass der Träger keine Energie umsetzt – seine Muskelfasern spannen sich unablässig nach und verbrauchen dabei Energie; an der Kiste wird davon nichts als Arbeit wirksam, weil sie sich nicht in Kraftrichtung bewegt.",
+ "fachtext": "Arbeit wird verrichtet, wenn eine Kraft einen Körper längs des Weges verschiebt. Es zählt nur der Anteil der Kraft in Wegrichtung: W = F · s · cos(α). α ist der Winkel zwischen Kraft und Weg. Für α = 0° bleibt W = F · s. Für α = 90° ist cos(α) = 0, also W = 0 J, gleichgültig wie groß F ist. Die Einheit ist 1 Joule = 1 Newton · 1 Meter. Beim Anheben gleicht die Hubkraft die Gewichtskraft aus: W = m · g · h. Die Leistung P = W/t sagt, wie schnell das geschieht. 1 Watt ist 1 Joule je Sekunde.",
  "merksatz": [
   {
    "pre": "Arbeit verrichtet allein die Kraftkomponente",
