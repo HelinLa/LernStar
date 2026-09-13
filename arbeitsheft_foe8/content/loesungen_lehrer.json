@@ -57,7 +57,7 @@
    "Die Simulation rät „Verändere immer nur eine Ladung“. Hier werden beide Minus-Knöpfe gedrückt, damit sicher beide Kugeln negativ sind."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 1 ab: „Es gibt positive (+) und negative (−) Ladung.“",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung, Anziehung und Abstoßung. Kompetenzen stehen bewusst nur hier: UF1, UF2 und UF4 über Merksatz, Tabelle und Aufgabe 1; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); E4 über den Luftballon-Auftrag zu Hause – der Seitenplan sichert E4 ausdrücklich auf dieser Seite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung, Anziehung und Abstoßung. Die Codes stehen auch auf der Schülerseite. Ausführlich: UF1, UF2 und UF4 über Merksatz, Tabelle und Aufgabe 1; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); E4 über den Luftballon-Auftrag zu Hause – der Seitenplan sichert E4 ausdrücklich auf dieser Seite."
  },
  {
   "id": "fs2",
@@ -128,7 +128,7 @@
    "Die grüne Probeladung am Bildschirm gemeinsam benennen und abhaken: Sie wird auf dieser Seite nicht gebraucht."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Stelle bei 12,0 cm „Ladung je Kugel“ nacheinander auf 8 nC und auf 16 nC. Schreibe beide Kräfte auf (39,9 µN und 159,8 µN) und vergleiche sie.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung und ihre Kraftwirkung. Schwerpunkt E5 (Auswerten: Messwerte aus der Simulation ordnen und eine Regel daraus ablesen). Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrische Ladung und ihre Kraftwirkung. Schwerpunkt E5 (Auswerten: Messwerte aus der Simulation ordnen und eine Regel daraus ablesen). Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs3",
@@ -190,7 +190,7 @@
    "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke den Knopf „Zurücksetzen“ (mit dem Kreispfeil davor). Sage vorher, welche Spannung danach am Voltmeter steht, und prüfe deine Vorhersage.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7), Basiskonzept Energie · Spannung U und Volt. Kompetenzen UF1, UF3, UF4, E6 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): UF1, UF3 und UF4 über Merksatz, Tabelle und Aufgabe 1; E6 über den Vergleich der drei Statuszeilen in Tabelle und Aufgabe 3; K1 über den Zuhause-Auftrag (Werte aus dem Alltag entnehmen und notieren). Der Merksatz „Das Voltmeter schließt man parallel an“ aus der Quellseite st3 bleibt fs5 vorbehalten – die Simulation spannung hat keinen Umschalter Reihe/parallel. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7), Basiskonzept Energie · Spannung U und Volt. Kompetenzen UF1, UF3, UF4, E6 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): UF1, UF3 und UF4 über Merksatz, Tabelle und Aufgabe 1; E6 über den Vergleich der drei Statuszeilen in Tabelle und Aufgabe 3; K1 über den Zuhause-Auftrag (Werte aus dem Alltag entnehmen und notieren). Der Merksatz „Das Voltmeter schließt man parallel an“ aus der Quellseite st3 bleibt fs5 vorbehalten – die Simulation spannung hat keinen Umschalter Reihe/parallel. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs4",
@@ -326,7 +326,7 @@
    "Auf die Knopf-Falle hinweisen: Der Bedienknopf heißt „parallel“, die Quiz-Antwort „Parallel zum Bauteil“ – gemeinsam einmal zeigen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke im Quiz der Simulation die Antwort „Direkt an die Batteriepole“ und schreibe auf, was die Simulation dazu meldet.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Messgeräte für Stromstärke und Spannung. Kompetenzcodes (UF1, E5, K1, B2) stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Messgeräte für Stromstärke und Spannung. Kompetenzcodes: UF1, E5, K1, B2. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs6",
@@ -392,7 +392,7 @@
    "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe die drei richtigen Antworten auf („Er hemmt den Strom“, „Kleiner“, „Ohm (Ω)“).",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrischer Widerstand. Kompetenzen UF1, UF2, UF3 und B2 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). UF4 hing an der Rechnung R = U/I und bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · elektrischer Widerstand. Kompetenzen UF1, UF2, UF3 und B2 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). UF4 hing an der Rechnung R = U/I und bleibt dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs7",
@@ -466,7 +466,7 @@
    "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen der Simulation. Richtig sind „Wenn er lang und dünn ist“, „Kupfer“ und „wird größer“. Wer danach noch Zeit hat, drückt „Konstantan“ und liest ab: R = 180 Ω und I = 0,03 A. Konstantan steht bewusst nicht auf der Schülerseite und darf hier dazukommen.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Widerstand eines Drahtes (Länge, Dicke, Material). Kompetenzen UF1, UF3, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108); die Quelle st7 trug UF4. E4 steckt in der Reihenfolge der Tabellenzeilen: Von Zeile zu Zeile wird immer nur EINE Größe verändert. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Widerstand eines Drahtes (Länge, Dicke, Material). Kompetenzen UF1, UF3, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108); die Quelle st7 trug UF4. E4 steckt in der Reihenfolge der Tabellenzeilen: Von Zeile zu Zeile wird immer nur EINE Größe verändert. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs8",
@@ -532,7 +532,7 @@
    "Rundungshinweis für die Lehrkraft: Die Anzeige rundet. 0,07 A · 2 ergibt 0,14 A, die Simulation zeigt bei 3 V aber 0,15 A. Deshalb steht auf der Schülerseite überall „ungefähr doppelt so viel“ und nie „genau doppelt“. Wer nachrechnet, hat gut gearbeitet: die Rundung benennen, nicht wegdiskutieren."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die Frage mit den drei Antwortknöpfen „Sie bleibt gleich“ / „Sie verdoppelt sich“ / „Sie halbiert sich“ und schreibe die Rückmeldung ab. Wer mag, drückt danach „20 Ω“ und dann „Messpunkt“; die Simulation trägt dann 3 V | 0,15 A | 20 Ω in ihre eigene Tabelle ein. Ohne den Druck auf „20 Ω“ steht die Simulation nach Schritt 3 noch auf 10 Ω und trägt 3 V | 0,30 A | 10 Ω ein.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Zusammenhang von Spannung und Stromstärke bei festem Widerstand. Kompetenzen UF1, E6 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan hier einzeln gesichert und sitzt bewusst im Selbstcheck („Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen“), gestützt durch Aufgabe 3. UF4 und K3 hingen am ohmschen Gesetz U = R · I und an der Rechnung I = U/R; beides bleibt dem Regelheft gts8 vorbehalten, weil fs8 kein neues Fachwort einführen darf. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Zusammenhang von Spannung und Stromstärke bei festem Widerstand. Kompetenzen UF1, E6 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan hier einzeln gesichert und sitzt bewusst im Selbstcheck („Ich kann meine Antwort mit zwei Zahlen aus der Tabelle begründen“), gestützt durch Aufgabe 3. UF4 und K3 hingen am ohmschen Gesetz U = R · I und an der Rechnung I = U/R; beides bleibt dem Regelheft gts8 vorbehalten, weil fs8 kein neues Fachwort einführen darf. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs9",
@@ -598,7 +598,7 @@
    "Die beiden neuen Wörter laut in ihre Teile zerlegen: Reihe + Schaltung, gesamt + Widerstand. Danach einmal abschreiben lassen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Quizfragen und schreibe auf, welche Antworten ein Häkchen bekommen („R_ges = R₁ + R₂“, „Überall gleich“, „Er wird kleiner“).",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Reihenschaltung von Widerständen. Kompetenzen UF1, UF2, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Teilspannungen und die Rechnung I = U / R_ges hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Reihenschaltung von Widerständen. Kompetenzen UF1, UF2, UF4 und E4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Teilspannungen und die Rechnung I = U / R_ges hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs10",
@@ -660,7 +660,7 @@
    "Das Tiefgestellte einmal laut klären: I₁ heißt „I eins“, I₂ heißt „I zwei“. Die Addition 0,15 + 0,23 an der Tafel untereinander schreiben lassen – das Rechnen mit Komma ist hier die Hürde, nicht die Physik."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die drei Fragen. Schreibe die richtige Antwort zum Strom auf („I = I₁ + I₂“).",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Parallelschaltung und Stromstärke im verzweigten Stromkreis. Kompetenzen UF1, UF2, UF3 und E2 (Heft 3108). Der Gesamtwiderstand braucht die Kehrwertformel und bleibt dem Regelheft gts8 vorbehalten. Codes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Parallelschaltung und Stromstärke im verzweigten Stromkreis. Kompetenzen UF1, UF2, UF3 und E2 (Heft 3108). Der Gesamtwiderstand braucht die Kehrwertformel und bleibt dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs11",
@@ -730,7 +730,7 @@
    "Vor Aufgabe 2 die vier Einträge der Wortbank einmal abschreiben lassen; „1 570 000 m/s“ dabei laut mitsprechen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „Wasserkocher“ und lies in der Statuszeile ab, wie lange ein Elektron jetzt für einen Meter Kabel braucht (2267 Sekunden – das sind 0,6 Stunden). Vergleiche mit den 5,7 Stunden bei der Leselampe und schreibe einen Satz dazu.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Bewegung der Elektronen im Leiter, Ladung wird nicht verbraucht. Kompetenzen UF1, UF2, E5 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): E5 über das Ordnen der drei Werte in der Tabelle, E6 über die Modellgrenze (das Wandern ist im Bild stark beschleunigt gezeichnet). UF4 und K3 hingen an der Formel v = I / (n · A · e) und an der Rechnung „3 m bei 0,0490 mm/s“; beides bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Bewegung der Elektronen im Leiter, Ladung wird nicht verbraucht. Kompetenzen UF1, UF2, E5 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108): E5 über das Ordnen der drei Werte in der Tabelle, E6 über die Modellgrenze (das Wandern ist im Bild stark beschleunigt gezeichnet). UF4 und K3 hingen an der Formel v = I / (n · A · e) und an der Rechnung „3 m bei 0,0490 mm/s“; beides bleibt dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs12",
@@ -797,7 +797,7 @@
    "„Millionstel Sekunden“ gemeinsam laut lesen und mit einem Fingerschnippen vergleichen: kürzer als jedes Schnippen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke in der Simulation den Knopf „knapp darüber“ und beobachte die Anzeige „Zählen: … von 8,75 s“. Schreibe auf, bei welcher Sekunde der Donner ankommt.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gewitter, Blitz und Donner. Kompetenzen UF1, E2, E5 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Feldstärke, die Durchbruchschwelle 300 kV/m und die Entfernungsbestimmung mit t = s / v hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gewitter, Blitz und Donner. Kompetenzen UF1, E2, E5 und K1 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). Die Feldstärke, die Durchbruchschwelle 300 kV/m und die Entfernungsbestimmung mit t = s / v hingen im Original an derselben Aufgabe und bleiben dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fs13",
@@ -864,7 +864,7 @@
    "Das Wort Sicherung einmal abschreiben lassen und durchgängig benutzen – nie „Schalter“, „Automat“ oder „Stecker“ dafür sagen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „Gerät anschließen“ ein viertes und ein fünftes Mal und schreibe die beiden Ströme auf (24 A und 30 A). Die Meldung der Sicherung bleibt dabei dieselbe. Drücke danach „Sicherung zurücksetzen“ und beantworte die drei Fragen der Simulation.",
-  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gefahren des elektrischen Stroms und Schutzmaßnahmen. Kompetenzen UF1, UF4, E4 und B3 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). B3 hängt im ganzen Band allein an dieser Seite; der Erklär-Slot gehört deshalb der Sicherung allein (Seitenplan, gesicherte Einzelträger-Kompetenzen). K1 wird über den Zuhause-Auftrag eingelöst – bewusst ohne den Sicherungskasten, den die Zielgruppe nicht öffnen soll. Die Leistungsrechnung P = U · I aus st13 bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Stromkreise (7) · Gefahren des elektrischen Stroms und Schutzmaßnahmen. Kompetenzen UF1, UF4, E4 und B3 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). B3 hängt im ganzen Band allein an dieser Seite; der Erklär-Slot gehört deshalb der Sicherung allein (Seitenplan, gesicherte Einzelträger-Kompetenzen). K1 wird über den Zuhause-Auftrag eingelöst – bewusst ohne den Sicherungskasten, den die Zielgruppe nicht öffnen soll. Die Leistungsrechnung P = U · I aus st13 bleibt dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fb1",
@@ -932,7 +932,7 @@
    "Als Gegenprobe auf dem Tisch: zwei gleich große Spielzeugautos gleich lange schieben und die Endpunkte mit Klebestreifen markieren."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Die drei Fragen stehen in der Simulation unter „Minidiagnose“ – sie sitzen im Protokoll, das erst mit dem Passwort der Lehrkraft aufgeht. Nach dem Freischalten: Beantworte die drei Fragen und schreibe die Rückmeldung zu Frage 2 ab: „Geschwindigkeit = Strecke pro Zeit.“ Diese Wortformel wird auf fb2 gebraucht.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Geschwindigkeit als Vergleich von Strecke und Zeit. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Tabelle; E2 über die Vermutung und das Rennen bei gleicher Fahrzeit; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); K3 über den Auftrag zu Hause. Der Seitenplan hält v = s / t für fb2 zurück."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Geschwindigkeit als Vergleich von Strecke und Zeit. Die Codes stehen auch auf der Schülerseite. Ausführlich: UF1 und UF2 über Merksatz und Tabelle; E2 über die Vermutung und das Rennen bei gleicher Fahrzeit; B2 über Aufgabe 3 (Jannis' Behauptung prüfen); K3 über den Auftrag zu Hause. Der Seitenplan hält v = s / t für fb2 zurück."
  },
  {
   "id": "fb2",
@@ -1000,7 +1000,7 @@
    "Einmal gemeinsam ansehen: Die Fahrt am Bildschirm dauert bei jedem Tempo gleich lange. Nur die Zahl auf der Stoppuhr ist anders. Sonst wird die echte Wartezeit für die Messzeit gehalten."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Vor jedem Lauf die Zeit vorhersagen, dann „Messung starten“ drücken und die Vorhersage mit der Stoppuhr vergleichen. Danach die Zeilen langsam und schnell vergleichen: Die Zeit wird ein Fünftel so groß, die Geschwindigkeit fünfmal so groß. Als Merksatz dient der Satz unter der Simulation: „Strecke s messen + Zeit t stoppen → v = s / t · Einheit m/s.“ Nicht in das Protokoll ganz unten schicken: Es ist passwortgeschützt und beim Öffnen zu; die drei Testfragen dort sind für diese Seite nicht erreichbar.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit messen und berechnen. Kompetenzen UF1, UF2, E4 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). E4 wird hier gesichert: Aufgabe 1 lässt entscheiden, welche zwei Größen überhaupt gemessen werden müssen, der Zuhause-Auftrag lässt dieselbe Messung selbst planen und durchführen. Die Einheit legt be2 und be3 zusammen; beide trugen dieselbe Merksatz-Lücke v = s / t. Die Umstellungen s = v · t und t = s / v bleiben dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit messen und berechnen. Kompetenzen UF1, UF2, E4 und E6 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). E4 wird hier gesichert: Aufgabe 1 lässt entscheiden, welche zwei Größen überhaupt gemessen werden müssen, der Zuhause-Auftrag lässt dieselbe Messung selbst planen und durchführen. Die Einheit legt be2 und be3 zusammen; beide trugen dieselbe Merksatz-Lücke v = s / t. Die Umstellungen s = v · t und t = s / v bleiben dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fb3",
@@ -1069,7 +1069,7 @@
    "„ICE“ (Statuszeile: „83,0 m/s · 3,6 = 298,8 km/h“) erst ganz am Schluss und nur zum Staunen zeigen. Die Zahl gehört nicht in die Tabelle und nicht in eine Aufgabe."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte in der Simulation die eingebauten Fragen mit den Antwortknöpfen und schreibe die Rückmeldung zu „Mal 3,6“ ab: „✓ Richtig! m/s · 3,6 = km/h.“ Wer mag, drückt danach „ICE“ und schreibt die ganze Statuszeile ab. Bedienhinweis: Es gibt drei Fragen mit je einer eigenen Rückmeldezeile, und der Knopf „3,6 km/h“ kommt in zwei verschiedenen Fragen vor – einmal meldet er „✓ Richtig! 1 m/s = 3,6 km/h.“, einmal „✗ Das ist nur 1 m/s.“ Beides stimmt; die Rückmeldung gehört jeweils zur eigenen Frage.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit in verschiedenen Einheiten. Kompetenzen UF1, UF4 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan neben fs8 hier einzeln gesichert und sitzt in Aufgabe 3: Die Lernenden begründen mit zwei Zahlen aus der eigenen Tabelle, dass 18,0 km/h und 5,0 m/s dieselbe Bewegung meinen. UF4 trägt die Umrechnung selbst. Die Rückrichtung km/h → m/s bleibt dem Regelheft gts8 vorbehalten. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Geschwindigkeit in verschiedenen Einheiten. Kompetenzen UF1, UF4 und K4 (Kernlehrplan Naturwissenschaften Gesamtschule NRW, Heft 3108). K4 ist laut Seitenplan neben fs8 hier einzeln gesichert und sitzt in Aufgabe 3: Die Lernenden begründen mit zwei Zahlen aus der eigenen Tabelle, dass 18,0 km/h und 5,0 m/s dieselbe Bewegung meinen. UF4 trägt die Umrechnung selbst. Die Rückrichtung km/h → m/s bleibt dem Regelheft gts8 vorbehalten. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
  },
  {
   "id": "fb4",
@@ -1138,7 +1138,7 @@
    "Als Gegenprobe auf dem Tisch: einen Stift gleichmäßig schieben und im Sekundentakt Klebepunkte setzen, danach absichtlich immer schneller schieben."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 2 ab: „Gleiche Strecke pro Sekunde → gleiche Abstände.“",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · gleichförmige und beschleunigte Bewegung. Kompetenzen stehen bewusst nur hier: UF1 und UF2 über Merksatz und Aufgabe 1 (gleichförmig gegen beschleunigt unterscheiden); E2 über die Vermutung; E5 über den Vergleich der drei Fahrten (aus be5) und E6 über die Deutung von Beschleunigen und Bremsen (aus be7, hier als Bild und Aufgabe 2); B2 über Aufgabe 3. Das Weg-Zeit-Diagramm und damit K2 bleiben nach dem Seitenplan bei fb5."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · gleichförmige und beschleunigte Bewegung. Die Codes stehen auch auf der Schülerseite. Ausführlich: UF1 und UF2 über Merksatz und Aufgabe 1 (gleichförmig gegen beschleunigt unterscheiden); E2 über die Vermutung; E5 über den Vergleich der drei Fahrten (aus be5) und E6 über die Deutung von Beschleunigen und Bremsen (aus be7, hier als Bild und Aufgabe 2); B2 über Aufgabe 3. Das Weg-Zeit-Diagramm und damit K2 bleiben nach dem Seitenplan bei fb5."
  },
  {
   "id": "fb5",
@@ -1208,7 +1208,7 @@
    "Als Gegenprobe auf dem Tisch: Ein Finger wandert gleichmäßig über ein Blatt und bleibt bei „Pause“ stehen, während eine zweite Person laut weiterzählt. So wird hörbar, dass die Zeit weiterläuft."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte die drei Quizfragen in der Simulation. Schreibe die Rückmeldung zu Frage 3 ab: „Konstante Geschwindigkeit → Gerade.“ Das Wort „konstant“ steht auf fb4. Erkläre danach in einem Satz, warum eine gleichmäßige Fahrt keine Kurve ergibt.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Weg-Zeit-Diagramm. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: K2 über die Tabelle und Aufgabe 1 (Informationen aus Diagramm und Statuszeile entnehmen) – dieser Code hängt im ganzen Band allein an dieser Seite und ist deshalb reines Ablesen und Zuordnen geblieben; B2 über Aufgabe 3 (Jannis' Behauptung prüfen), der Erklär-Slot gehört B2 allein; UF1 über den Merksatz; K3 über den Auftrag zu Hause (Weg-Zeit-Diagramm des eigenen Schulwegs auf kariertem Papier; das im Seitenplan angedachte vorgedruckte Achsenkreuz entfällt – der Renderer hat auf Seite B keine Zeichenfläche, und der Bildkasten auf Seite A ist mit 52 × 28 mm zu klein dafür). Die gestrichene MC-Zugfahrt aus be6 wird nicht ersetzt: Die Simulation zeigt keine Zeitwerte, aus denen man ablesen könnte."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8), erster Teil · Weg-Zeit-Diagramm. Die Codes stehen auch auf der Schülerseite. Ausführlich: K2 über die Tabelle und Aufgabe 1 (Informationen aus Diagramm und Statuszeile entnehmen) – dieser Code hängt im ganzen Band allein an dieser Seite und ist deshalb reines Ablesen und Zuordnen geblieben; B2 über Aufgabe 3 (Jannis' Behauptung prüfen), der Erklär-Slot gehört B2 allein; UF1 über den Merksatz; K3 über den Auftrag zu Hause (Weg-Zeit-Diagramm des eigenen Schulwegs auf kariertem Papier; das im Seitenplan angedachte vorgedruckte Achsenkreuz entfällt – der Renderer hat auf Seite B keine Zeichenfläche, und der Bildkasten auf Seite A ist mit 52 × 28 mm zu klein dafür). Die gestrichene MC-Zugfahrt aus be6 wird nicht ersetzt: Die Simulation zeigt keine Zeitwerte, aus denen man ablesen könnte."
  },
  {
   "id": "fb6",
@@ -1271,7 +1271,7 @@
    "Die Anzeige „v jetzt“ abdecken; sie ändert sich ständig und lenkt von der Linie ab."
   ],
   "zusatz": "Freiwillig: die drei Fragen in der Simulation beantworten und die richtigen Rückmeldungen abschreiben.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Tempo-Zeit-Diagramme auswerten. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 über den Merksatz; UF2 über Tabelle und Aufgabe 1 (waagerecht, ansteigend und fallend auseinanderhalten); E5 über den Vergleich der drei Einstellungen; B2 über Aufgabe 3 (Jannis' Behauptung prüfen). UF1, UF2 und E5 stammen aus be8. K2 steht hier bewusst nicht: Der Code hängt nach dem Seitenplan allein an fb5, und fb4 hält ihn dort ebenfalls frei."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Tempo-Zeit-Diagramme auswerten. Die Codes stehen auch auf der Schülerseite. Ausführlich: UF1 über den Merksatz; UF2 über Tabelle und Aufgabe 1 (waagerecht, ansteigend und fallend auseinanderhalten); E5 über den Vergleich der drei Einstellungen; B2 über Aufgabe 3 (Jannis' Behauptung prüfen). UF1, UF2 und E5 stammen aus be8. K2 steht hier bewusst nicht: Der Code hängt nach dem Seitenplan allein an fb5, und fb4 hält ihn dort ebenfalls frei."
  },
  {
   "id": "fb7",
@@ -1340,6 +1340,6 @@
    "Im Bild den Reaktionsweg gelb und den Bremsweg rot nachmalen lassen, danach die Klammer für den Anhalteweg darunterziehen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Beantworte die erste Quizfrage in der Simulation. Drücke den Knopf „Reaktionsweg + Bremsweg“ und schreibe die Rückmeldung ab: „✓ Richtig! Beide Teile zusammen ergeben den Anhalteweg.“",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Anhalteweg und Sicherheit im Straßenverkehr. Kompetenzen stehen bewusst nur hier, nicht auf der Schülerseite: UF1 und UF2 über Merksatz und Tabelle (Reaktionsweg, Bremsweg, Anhalteweg auseinanderhalten); E2 über die Vermutung; E5 über den Vergleich der Bremswege bei 50 km/h und 100 km/h; B2 über Aufgabe 3 und den Auftrag zu Hause (Nours Behauptung an Messwerten prüfen). Der Seitenplan hält den Zusammenhang mit dem Quadrat der Geschwindigkeit sprachlich draußen: Er wird nur als „viermal so lang“ an den zwei abgelesenen Zahlen gezeigt."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Anhalteweg und Sicherheit im Straßenverkehr. Die Codes stehen auch auf der Schülerseite. Ausführlich: UF1 und UF2 über Merksatz und Tabelle (Reaktionsweg, Bremsweg, Anhalteweg auseinanderhalten); E2 über die Vermutung; E5 über den Vergleich der Bremswege bei 50 km/h und 100 km/h; B2 über Aufgabe 3 und den Auftrag zu Hause (Nours Behauptung an Messwerten prüfen). Der Seitenplan hält den Zusammenhang mit dem Quadrat der Geschwindigkeit sprachlich draußen: Er wird nur als „viermal so lang“ an den zwei abgelesenen Zahlen gezeigt."
  }
 ]

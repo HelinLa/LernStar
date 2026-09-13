@@ -14,10 +14,12 @@ arbeitsheft*/prototyp/build/
 
 # Sicherungskopien neben den Dateien (.vor_<anlass>). Sie sind der Rueckweg
 # waehrend einer Aenderung, nicht Teil des Standes.
-*.vor_einstieg
-*.vor_einpassen
-*.vor_dritte
-*.vor_zeichen
+#
+# EIN MUSTER statt einer Liste: Die Endungen wurden erst einzeln aufgezaehlt
+# (vor_einstieg, vor_dritte, vor_zeichen) - beim naechsten Anlass hiess sie
+# vor_kompetenz und 85 Kopien standen ploetzlich als ungetrackt da. Was sich
+# aufzaehlen laesst, veraltet; ein Muster nicht.
+*.vor_*
 
 __pycache__/
 *.pyc

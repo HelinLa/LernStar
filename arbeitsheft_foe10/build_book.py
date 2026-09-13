@@ -170,8 +170,10 @@ FUER_LEHRKRAEFTE=[
     f"Dieses Förderheft hat die gleichen fachlichen Ziele wie FELO Physik {KL} "
     f"({SFORM.split()[0]}), aber einen leichteren Lernweg: Sprachniveau A2–B1, "
     "kleine Schritte, gestufte Hilfen.",
+    "Jeder Abschnitt trägt seinen Kompetenzcode aus dem Kernlehrplan – dieselben "
+    "Codes wie in den übrigen FELO-Bänden.",
     "Der getrennte Lehrerband enthält Lösungen, Erwartungshorizonte, typische Fehler, "
-    "den Ersatzweg ohne Simulation und die Kernlehrplan-Bezüge samt Kompetenzcodes."]
+    "den Ersatzweg ohne Simulation und die ausführlichen Kernlehrplan-Bezüge."]
 IMPRESSUM=[("Autor & Konzept","Abdullah Lala"),("Texte & Illustrationen","Abdullah Lala"),
            ("Herausgeber","Eigenverlag Abdullah Lala"),("Auflage","1. Auflage 2026"),
            ("Fassung","1.1 · Stand 9. September 2026"),

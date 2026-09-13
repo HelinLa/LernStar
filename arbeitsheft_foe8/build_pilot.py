@@ -386,6 +386,31 @@ def b_ankreuz(text,art="reg",grad=None,breite=None,abstand=fd.ABS_ZEILE,name="An
         ende=fd.para(h,fd.X0+ANKREUZ+18,y,text,fd.schrift(art,grad),fd.STIL["text"],br,hh)
         return max(y+ANKREUZ+4,ende)
     return bst(name,f,abstand)
+# Kompetenzcode und Anforderungsbereich der drei Aufgaben - nach ihrem TYP,
+# nicht je Einheit. Der Rendervertrag schreibt die Dreiheit fest (98 von 98
+# Einheiten: "Kreuze an" / "Trage ein" / "Erklaere"), ein Code je Typ behauptet
+# also nichts ueber die einzelne Seite. Wortlaut aus arbeitsheft/kompetenzen.py
+# (Kernlehrplan Gesamtschule, dieselbe Tafel wie die Realschulreihe):
+#   UF1 Fakten wiedergeben und erlaeutern
+#   UF2 Konzepte unterscheiden und auswaehlen
+#   UF4 Wissen vernetzen
+#   B1  Bewertungen an Kriterien orientieren
+#   B2  Argumentieren und Position beziehen
+AUFGABEN_KOMP = {"erkennen": ("UF1", "I"),
+                 "einsetzen": ("UF2", "II"),
+                 "erklaeren": ("UF4", "II")}
+# Drei Aufgaben in Band 10 tragen einen Bewertungsoperator statt "Erklaere".
+# Sie verlangen ein Urteil, keine Wissensvernetzung - also B, nicht UF.
+AUFGABEN_KOMP_OP = {"Beurteile": ("B1", "III"),
+                    "Wähle und begründe": ("B2", "III")}
+
+
+def aufgaben_code(a):
+    """Code und Anforderungsbereich einer Aufgabe. Die Einheit darf ueberschreiben."""
+    komp, afb = AUFGABEN_KOMP_OP.get(a.get("op"),
+                                     AUFGABEN_KOMP.get(a.get("typ"), (None, None)))
+    return a.get("komp") or komp, a.get("afb") or afb
+
 def b_schreibzeile(label, abstand=fd.ABS_ZEILE, name=None):
     """Beschriftung, dahinter eine Schreiblinie bis zum rechten Rand."""
     def f(h, d, y):
@@ -686,22 +711,22 @@ def kopfzeile(cfg,nr,zusatz):
 
 def bausteine_a(cfg,luft=0.0):
     hat_qr=qr_pfad(cfg["id"]) is not None
-    eimg=bild_pfad(cfg)
     B=[b_titel(cfg.get("titel") or cfg["name"],unterzeile=cfg["name"],
                breite=(QR_LINKS-fd.X0) if hat_qr else None,
                regel_bis=QR_LINKS if hat_qr else None)]
 
     # ① Lesen - drei kurze Saetze, Bild rechts in der Randspalte
-    B.append(b_marke(1,"Das Problem"))
+    B.append(b_marke(1,"Das Problem","E1"))
     def b_alltag(h,d,y):
         yy=y; r=round(fd.einheiten(FOE)*0.28,1)
         for s in cfg["alltag"]:
             h.circ(fd.X0+r+2,yy+LH_FOE*0.5,r,fill=fd.STIL["akzent"])
             yy=fd.para(h,fd.X0+SCHEIBE_X,yy,s,fd.schrift("reg",FOE),fd.STIL["text"],
                        fd.SPALTE-SCHEIBE_X,LH_FOE)+8
-        if eimg:
-            _bw,bh=h.pastefit(eimg,fd.RAND0,y,BILDSP,BILDSP*0.62)
-            yy=max(yy,y+bh)
+        # Kein Einstiegsbild mehr (Abdullah, 13.09.2026). Gedruckt stand dort
+        # ein leerer Rahmen "Bild <id> folgt" - die Bilder der Quellbaende sind
+        # selbst Platzhalter, eine Bildstuetze war es also nie. Der Rahmen sass
+        # in der RANDSPALTE; sein Wegfall aendert die Textbreite nicht.
         return yy
     B.append(bst("Alltag",b_alltag,fd.ABS_AUFGABE,haftet=1))
     B.append(bst("Forscherfrage",
@@ -710,7 +735,7 @@ def bausteine_a(cfg,luft=0.0):
                  fd.ABS_ABSCHNITT))
 
     # ② Deine Vermutung
-    B.append(b_marke(2,"Meine Vermutung"))
+    B.append(b_marke(2,"Meine Vermutung","E3"))
     B.append(b_para("Kreuze eine Vermutung an.",art="med",haftet=1,name="Anweisung"))
     for t in cfg.get("predict",[]): B.append(b_ankreuz(t,name="Vermutung"))
     # Seit dem Einstiegsumbau drei Moeglichkeiten plus eine eigene. Die Schleife
@@ -718,7 +743,7 @@ def bausteine_a(cfg,luft=0.0):
     B.append(b_schreibzeile("Eigene Vermutung:",fd.ABS_ABSCHNITT,name="Eigene Vermutung"))
 
     # ③ Forschen am Bildschirm
-    B.append(b_marke(3,"Am Bildschirm"))
+    B.append(b_marke(3,"Am Bildschirm","E5"))
     B.append(bst("Bildschirm",
                  lambda h,d,y: kasten_bildschirm(h,d,y,fd.STIL,
                      ["Öffne die Simulation über den QR-Code oben rechts.",
@@ -729,7 +754,7 @@ def bausteine_a(cfg,luft=0.0):
     B[-1].abstand=fd.ABS_ABSCHNITT
 
     # ④ Trage ein - Kopf und Beispielzeile sind schon gefuellt
-    B.append(b_marke(4,"Meine Beobachtung"))
+    B.append(b_marke(4,"Meine Beobachtung","K3"))
     B.append(b_para("Die erste Zeile ist schon fertig – so geht es.",art="med",
                     haftet=1,name="Tabellenhinweis"))
     cols=cfg["tabCols"]; rows=cfg["tabRows"]
@@ -750,7 +775,7 @@ def bausteine_a(cfg,luft=0.0):
     # vorher raten laesst. Er steht VOR dem Merksatz (der auf Seite B kommt):
     # stuende der Merksatz davor, pruefte das Kind seine Vermutung am
     # gedruckten Loesungstext statt an der eigenen Tabelle.
-    B.append(b_marke(5,"Stimmt deine Vermutung?"))
+    B.append(b_marke(5,"Stimmt deine Vermutung?","E6"))
     B.append(b_kreuzreihe("Meine Vermutung war:",
                           ["richtig","fast richtig","nicht richtig"],
                           name="Vermutung geprüft"))
@@ -809,18 +834,18 @@ def bausteine_b(cfg,nl):
                  fd.ABS_ABSCHNITT))
 
     # ④ Drei Aufgaben: erkennen - einsetzen - erklaeren
-    B.append(b_marke(1,a1["op"]))
+    B.append(b_marke(1,a1["op"],*aufgaben_code(a1)))
     B.append(b_para(a1["frage"],art="med",haftet=len(a1["optionen"]),name="Aufgabenfrage"))
     for o in a1["optionen"]: B.append(b_ankreuz(o,name="Antwort"))
     B[-1].abstand=fd.ABS_ABSCHNITT
 
-    B.append(b_marke(2,a2["op"]))
+    B.append(b_marke(2,a2["op"],*aufgaben_code(a2)))
     B.append(b_para("Die Wörter findest du in der Wortbank.",art="med",
                     haftet=len(a2["luecken"]),name="Wortbankhinweis"))
     for lk in a2["luecken"]: B.append(b_luecke(lk))
     B[-1].abstand=fd.ABS_ABSCHNITT
 
-    B.append(b_marke(3,a3["op"]))
+    B.append(b_marke(3,a3["op"],*aufgaben_code(a3)))
     B.append(b_para(a3["frage"],art="med",haftet=2,name="Schreibauftrag"))
     def b_start(h,d,y):
         f=fd.schrift("med",FOE)

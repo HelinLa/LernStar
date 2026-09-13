@@ -182,7 +182,7 @@
    "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Stelle bei der harten Feder F = 2 N ein und lies ab (2 cm). Vergleiche mit der weichen Feder bei F = 2 N (4 cm).",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraftwirkung und Verformung; Alltagsauftrag Matratze/Sofakissen trägt E5. Kompetenzcodes stehen bewusst nur hier, nicht auf der Schülerseite. Der Bildschirm zeigt zusätzlich D = F/s, „Federkonstante“, „proportional“ und das Hooke'sche Gesetz – im Förderheft bewusst kein Thema, aber Anknüpfung für den E-Kurs. Das Formelzeichen s meint hier die Dehnung in cm, in fe1 dagegen den Weg in m.",
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Kraftwirkung und Verformung; Alltagsauftrag Matratze/Sofakissen trägt E5. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Der Bildschirm zeigt zusätzlich D = F/s, „Federkonstante“, „proportional“ und das Hooke'sche Gesetz – im Förderheft bewusst kein Thema, aber Anknüpfung für den E-Kurs. Das Formelzeichen s meint hier die Dehnung in cm, in fe1 dagegen den Weg in m.",
   "hinweise_intern": [
    "Der Ausgangszustand der Simulation IST bereits die weiche Feder (F = 1 N → 2 cm). Schritt 1 wählt sie trotzdem ausdrücklich, sonst wird zweimal dieselbe Feder gemessen.",
    "Einstellbereich nachgemessen (05.09.2026, simcheck/werte.js): F von 0 N bis 5 N in 1-N-Schritten. Weich: 1 N → 2 cm, 2 N → 4 cm, 3 N → 6 cm, 5 N → 10 cm. Hart: 1 N → 1 cm, 2 N → 2 cm, 3 N → 3 cm, 5 N → 5 cm. Beim Umschalten der Feder bleibt die eingestellte Kraft stehen.",
