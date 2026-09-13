@@ -90,8 +90,17 @@ def sims_der_registry(js):
 
 def pruefe(heftordner, bruecke, registry):
     name = os.path.basename(heftordner.rstrip("/"))
-    seiten = sorted(glob.glob(os.path.join(heftordner, "build", "book_p*.png")),
+    # Der Schreibtisch legt beim iCloud-Abgleich Kopien wie "book_p99 3.png" an.
+    # Das Muster book_p*.png fasst sie mit, das Muster book_p\d+\.png$ nicht -
+    # der Sortierschluessel bekam None und das Werkzeug stuerzte ab, statt zu
+    # pruefen. simcheck/seitenzahlen.py hatte denselben Fehler und ist seit dem
+    # 09.09.2026 dagegen abgesichert; hier stand er noch.
+    alle = glob.glob(os.path.join(heftordner, "build", "book_p*.png"))
+    seiten = sorted([p for p in alle if re.search(r"book_p\d+\.png$", p)],
                     key=lambda p: int(re.search(r"book_p(\d+)\.png$", p).group(1)))
+    if len(seiten) < len(alle):
+        print("  %s: %d Datei(en) uebersprungen, die keine Seite sind "
+              "(iCloud-Konfliktkopien)" % (name, len(alle) - len(seiten)))
     if not seiten:
         print(f"  -- {name}: kein gesetztes Heft in build/ - uebersprungen (erst build_book.py)")
         return []

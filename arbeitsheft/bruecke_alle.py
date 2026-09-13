@@ -80,7 +80,12 @@ for e in alle:
            f"    name: {json.dumps(e['name'], ensure_ascii=False)},",
            f"    titel: {json.dumps(e['titel'], ensure_ascii=False)},",
            f"    frage: {json.dumps(e['frage'], ensure_ascii=False)},",
-           f"    auftrag: {json.dumps(e.get('auftrag',''), ensure_ascii=False)},",
+    # Das Feld `auftrag` wird NICHT mehr ausgeliefert (13.09.2026).
+    # js/heft-banner.js zeigte es ueber der Simulation an - denselben Satz,
+    # den Abdullah am selben Tag von der gedruckten Seite streichen liess
+    # ("die kinder muessen selber drauf kommen"). In der Bruecke waren das
+    # 52 KB ueber 570 Heftseiten, die jeder Nutzer mitlaedt. Die SCHRITTE
+    # bleiben - die stehen auch im Heft unter Abschnitt 3.
            f"    schritte: [{schritte}]",
            "  },"]
 js += ["};", "",

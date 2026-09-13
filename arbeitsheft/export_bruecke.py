@@ -77,7 +77,12 @@ for tid, d in eintraege:
     js.append(f"    name: {json.dumps(d['name'], ensure_ascii=False)},")
     js.append(f"    titel: {json.dumps(d['titel'], ensure_ascii=False)},")
     js.append(f"    frage: {json.dumps(d['frage'], ensure_ascii=False)},")
-    js.append(f"    auftrag: {json.dumps(d['auftrag'], ensure_ascii=False)},")
+    # Das Feld `auftrag` wird NICHT mehr ausgeliefert (13.09.2026).
+    # js/heft-banner.js zeigte es ueber der Simulation an - denselben Satz,
+    # den Abdullah am selben Tag von der gedruckten Seite streichen liess
+    # ("die kinder muessen selber drauf kommen"). In der Bruecke waren das
+    # 52 KB ueber 570 Heftseiten, die jeder Nutzer mitlaedt. Die SCHRITTE
+    # bleiben - die stehen auch im Heft unter Abschnitt 3.
     js.append(f"    schritte: [{schritte}]")
     js.append("  },")
 js += ["};", "",

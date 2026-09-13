@@ -40,9 +40,6 @@
   .heft-kopf-seite{background:#c6a04a;color:#1c2136;border-radius:6px;padding:2px 8px;letter-spacing:.06em}
   .heft-kopf-frage{margin:7px 0 0;font:600 17px/1.35 system-ui,sans-serif;color:#fff7e8}
   .heft-kopf-frage b{color:#e8c777}
-  .heft-kopf-auftrag{margin:6px 0 0;padding-top:6px;font:400 14px/1.4 system-ui,sans-serif;
-    color:#e6dcc6;border-top:1px solid rgba(230,220,198,.28)}
-  .heft-kopf-auftrag b{color:#e8c777}
   .heft-schritte{margin:9px 0 0;padding:0;list-style:none;display:none}
   .heft-schritte li{display:flex;gap:9px;align-items:flex-start;margin:5px 0;
     font:400 13.5px/1.45 system-ui,sans-serif;color:#d7ddea}
@@ -58,9 +55,13 @@
     const teile = d.frage.split(':');
     const op = teile.length > 1 ? teile[0] + ':' : '';
     const rest = teile.length > 1 ? teile.slice(1).join(':').trim() : d.frage;
-    const aw = (d.auftrag || '').split(' ');
-    const auftrag = d.auftrag
-      ? `<p class="heft-kopf-auftrag"><b>${aw[0]}</b> ${aw.slice(1).join(' ')}</p>` : '';
+    // Der Auftrag wird NICHT mehr angezeigt (13.09.2026). Abdullah hat ihn am
+    // selben Tag von der gedruckten Seite streichen lassen: "ich finde die
+    // frage reicht ... die kinder muessen selber drauf kommen". Auf dem
+    // Bildschirm stand er danach weiter - derselbe Satz, den die Seite
+    // bewusst nicht mehr zeigt. Bei der Oberstufe war er zusaetzlich falsch
+    // geworden: Er nannte Auftragungen, die kein Schritt mehr verlangt.
+    // Die drei SCHRITTE bleiben - die stehen auch im Heft unter ③.
     const schritte = (d.schritte || []).map((s, i) =>
       `<li><span>${i + 1}</span>${s}</li>`).join('');
     return `<div class="heft-kopf">
@@ -69,7 +70,6 @@
         <span>${d.kapitel} · ${d.name}</span>
       </div>
       <p class="heft-kopf-frage">${op ? '<b>' + op + '</b> ' : ''}${rest}</p>
-      ${auftrag}
       ${schritte ? `<ul class="heft-schritte">${schritte}</ul>
       <button class="heft-mehr" type="button">Die Schritte aus dem Heft ▾</button>` : ''}
     </div>`;
