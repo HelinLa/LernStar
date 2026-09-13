@@ -6,9 +6,9 @@
  "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
  "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
  "predict": [
-  "Mit einer ganzen Messreihe verschwindet der Unterschied: Die Ausgleichsgerade mittelt die Ablesefehler des einzelnen Tripels heraus, und beide Auftragungen führen auf denselben Wert für g.",
-  "Auch aus einer ganzen Messreihe werden es zwei Geraden: Die Steigung aus s über t² liefert ein größeres g als die Steigung aus v über t, weil die Simulation den Fallweg schrittweise aufsummiert und dabei zu viel Weg erhält.",
-  "Der Unterschied bleibt, weil die Auftragung über t² den Ablesefehler quadriert; v über t ist deshalb grundsätzlich die genauere Auftragung."
+  "Der Unterschied verschwindet: Die Ausgleichsgerade mittelt die Ablesefehler heraus, beide Auftragungen liefern denselben Wert für g.",
+  "Auch dann liefert s über t² ein größeres g als v über t, weil die Simulation zu viel Fallweg aufsummiert.",
+  "Der Unterschied bleibt, weil t² den Ablesefehler quadriert; v über t ist deshalb die genauere Auftragung."
  ],
  "predictOk": 1,
  "forschen": [

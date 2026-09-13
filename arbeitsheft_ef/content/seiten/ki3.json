@@ -6,9 +6,9 @@
  "frage": "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
  "auftrag": "Bestimme die Beschleunigung als Steigung deiner selbst gestoppten t-v-Geraden und vergleiche, was die Auftragungen t → s, t → v und t → a über diese Zahl hergeben.",
  "predict": [
-  "Weil der Wagen immer schneller wird, steigt die Punktreihe im t-v-Diagramm immer steiler an. Eine einzige Steigung für die ganze Fahrt gibt es deshalb nicht; man muss den Mittelwert der Geschwindigkeiten nehmen.",
-  "Die Beschleunigung ist der Quotient v/t des letzten Messpunkts; die Steigung der Geraden sagt dagegen nur, wie schnell der Wagen im Mittel war.",
-  "Die gestoppten Wertepaare liegen im t-v-Diagramm auf einer Geraden durch den Ursprung. Ihre Steigung Δv/Δt ist für jedes Punktepaar dieselbe Zahl – und genau diese Zahl ist die Beschleunigung."
+  "Die Punktreihe im t-v-Diagramm steigt immer steiler an; statt einer Steigung nimmt man den Mittelwert der Geschwindigkeiten.",
+  "Die Beschleunigung ist der Quotient v/t des letzten Messpunkts; die Steigung der Geraden gibt nur die mittlere Geschwindigkeit an.",
+  "Die Wertepaare liegen im t-v-Diagramm auf einer Ursprungsgeraden. Ihre Steigung Δv/Δt ist für jedes Punktepaar dieselbe Zahl: die Beschleunigung."
  ],
  "predictOk": 2,
  "forschen": [

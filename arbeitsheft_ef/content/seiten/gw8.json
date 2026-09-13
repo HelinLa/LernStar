@@ -6,9 +6,9 @@
  "frage": "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
  "auftrag": "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
  "predict": [
-  "Je größer der Anschub quer zur Sonne, desto weiter außen läuft die Bahn. Der Planet bleibt bei jedem eingestellten Wert auf einer geschlossenen Bahn, sie wird nur immer größer.",
-  "Der Planet stürzt nicht hinein, weil die Fliehkraft die Anziehung genau aufhebt: Beide Kräfte sind gleich groß, deshalb bleibt er auf der Bahn.",
-  "Nur in einem mittleren Bereich fällt der Planet immerzu an der Sonne vorbei und läuft auf einer geschlossenen Bahn. Ist der Anschub zu klein, trifft er die Sonne; ist er zu groß, kommt er nicht zurück."
+  "Je größer der Anschub, desto weiter außen die Bahn; geschlossen bleibt sie bei jedem eingestellten Wert.",
+  "Die Fliehkraft hebt die Anziehung genau auf: Beide Kräfte sind gleich groß, deshalb bleibt der Planet auf der Bahn.",
+  "Nur ein mittlerer Anschub hält den Planeten auf geschlossener Bahn; zu wenig lässt ihn hineinstürzen, zu viel entkommen."
  ],
  "predictOk": 2,
  "forschen": [

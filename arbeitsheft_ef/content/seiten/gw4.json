@@ -6,9 +6,9 @@
  "frage": "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
  "auftrag": "Bestimme unter Variablenkontrolle aus einer Messreihe, in welcher Auftragung die Messpunkte auf einer Ursprungsgeraden liegen, und rechne aus deren Steigung die Verhältniszahl der Simulation zurück.",
  "predict": [
-  "Masse und Abstand zählen gleich viel: Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe.",
-  "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur noch ein Viertel – der Abstand zählt stärker.",
-  "Doppelte Masse gibt die vierfache Anziehung, doppelter Abstand die halbe – das Quadrat steht bei der Masse."
+  "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe – beide zählen gleich viel.",
+  "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur ein Viertel; der Abstand geht quadratisch ein.",
+  "Doppelte Masse gibt die vierfache Anziehung, doppelter Abstand die halbe: Das Quadrat steht bei der Masse."
  ],
  "predictOk": 1,
  "forschen": [

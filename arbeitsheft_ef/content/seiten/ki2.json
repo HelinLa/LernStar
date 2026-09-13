@@ -6,9 +6,9 @@
  "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
  "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
  "predict": [
-  "Der Zeitpunkt entscheidet mit: Wer früh stoppt, hat wenig Weg auf dem Wegmesser und bekommt deshalb eine flachere Gerade als jemand, der spät stoppt.",
-  "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, und deren Steigung ist die gefahrene Geschwindigkeit.",
-  "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden – Punkte, die weit auseinanderliegen, verfälschen sie."
+  "Der Zeitpunkt entscheidet mit: Wer früh stoppt, erhält eine flachere Gerade als jemand, der spät stoppt.",
+  "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, deren Steigung die gefahrene Geschwindigkeit ist.",
+  "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden; weit auseinanderliegende Punkte verfälschen sie."
  ],
  "predictOk": 1,
  "forschen": [

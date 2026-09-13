@@ -6,9 +6,9 @@
  "frage": "Wohin zeigt die Kraft auf der Kreisbahn – und wovon hängt ihr Betrag ab?",
  "auftrag": "Untersuche am Bildschirm, in welche Richtung der Kraftpfeil zeigt, und bestimme aus Radius und Umlauffrequenz die Zentripetalbeschleunigung, mit der Masse zusätzlich die Zentripetalkraft.",
  "predict": [
-  "Die Kraft zeigt in Bewegungsrichtung, also tangential zur Bahn – sonst käme der Körper auf der Kreisbahn nicht voran.",
+  "Die Kraft zeigt tangential in Bewegungsrichtung; sonst käme der Körper auf der Bahn nicht voran.",
   "Die Kraft zeigt nach außen: Sie hält den Körper gegen die Fliehkraft auf seiner Bahn.",
-  "Die Kraft zeigt zum Mittelpunkt. Sie ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential geradeaus weiter."
+  "Die Kraft zeigt zum Mittelpunkt und ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential weiter."
  ],
  "predictOk": 2,
  "forschen": [

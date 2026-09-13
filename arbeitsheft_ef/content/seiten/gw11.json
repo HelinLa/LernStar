@@ -6,9 +6,9 @@
  "frage": "Woran erkennt man, welche Quelle eine physikalische Aussage verlässlich belegt?",
  "auftrag": "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
  "predict": [
-  "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht. Wer Bilder aus dem All zeigt, war schließlich näher dran als ein Buch.",
-  "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Wer einen Titel führt oder an einer Hochschule arbeitet, muss nicht offenlegen, woher die Zahlen stammen und wie gemessen wurde.",
-  "Verlässlich ist die Quelle, deren Aussage sich nachprüfen lässt: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt. Das lässt sich Zeile für Zeile abhaken."
+  "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht; Bilder aus dem All wiegen schwerer.",
+  "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Titel oder Hochschule genügen, Daten und Messweise muss niemand offenlegen.",
+  "Verlässlich ist die Quelle, deren Aussage nachprüfbar ist: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt."
  ],
  "predictOk": 2,
  "forschen": [

@@ -6,9 +6,9 @@
  "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
  "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
  "predict": [
-  "Es zählt nur der Anteil der Kraft, der in die Richtung zeigt, in die sich die Kiste bewegt. Beim waagerechten Tragen gibt es diesen Anteil nicht – deshalb kommt dort keine Arbeit heraus, so anstrengend es sich auch anfühlt.",
-  "Wer eine Last trägt, verrichtet Arbeit: Die Haltekraft wirkt über den ganzen Weg von 4 m. Beim Tragen muss deshalb mindestens so viel Arbeit herauskommen wie beim Schieben derselben Kiste.",
-  "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben – es fehlt ja die Reibung, gegen die man sonst anarbeitet."
+  "Nur der Kraftanteil in Wegrichtung zählt; beim waagerechten Tragen gibt es ihn nicht, deshalb ist W null.",
+  "Die Haltekraft wirkt über den ganzen Weg von 4 m; Tragen liefert daher mindestens so viel Arbeit wie Schieben.",
+  "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben, weil die Reibung fehlt."
  ],
  "predictOk": 0,
  "forschen": [

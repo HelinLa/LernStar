@@ -6,9 +6,9 @@
  "frage": "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
  "auftrag": "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
  "predict": [
-  "p_ges behält seinen Startwert. Weil p₁ beim Zurückprallen negativ wird, zieht es von p₂ ab: Was Kugel 1 abgibt, nimmt Kugel 2 auf, und die Summe ändert sich beim Stoß nicht.",
-  "Kugel 1 prallt zurück und Kugel 2 fährt an – nach dem Stoß sind beide unterwegs, vorher war es nur eine. Die beiden Impulse addieren sich deshalb, und p_ges ist danach größer als der Startwert.",
-  "Erhalten bleibt die Summe der Beträge |p₁| + |p₂|. Das Vorzeichen gibt nur die Richtung an und zählt beim Addieren nicht mit."
+  "p_ges behält seinen Startwert: p₁ wird beim Zurückprallen negativ und zieht von p₂ ab; die vorzeichenrichtige Summe bleibt gleich.",
+  "Nach dem Stoß sind beide Kugeln unterwegs, vorher nur eine: Die Impulse addieren sich, p_ges ist danach größer.",
+  "Erhalten bleibt die Summe der Beträge |p₁| + |p₂|; das Vorzeichen zählt beim Addieren nicht mit."
  ],
  "predictOk": 0,
  "forschen": [

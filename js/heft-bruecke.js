@@ -2533,7 +2533,7 @@ const HEFT_SEITEN = {
   },
   "kf6": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraftpfeil", seite: 32,
+    sim: "kraftpfeil", seite: 31,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wie zeichnet man eine Kraft auf?",
     titel: "Ein Pfeil für jede Kraft",
@@ -2543,7 +2543,7 @@ const HEFT_SEITEN = {
   },
   "kf7": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraefte-addieren", seite: 37,
+    sim: "kraefte-addieren", seite: 36,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Was passiert, wenn zwei Menschen ziehen?",
     titel: "Zwei ziehen am selben Seil",
@@ -2553,7 +2553,7 @@ const HEFT_SEITEN = {
   },
   "kf8": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraefte-gleichgewicht", seite: 42,
+    sim: "kraefte-gleichgewicht", seite: 41,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wann bewegt sich trotz Kraft nichts?",
     titel: "Der Scheinwerfer hängt still",
@@ -2563,7 +2563,7 @@ const HEFT_SEITEN = {
   },
   "kf9": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "traegheit-rs", seite: 47,
+    sim: "traegheit-rs", seite: 45,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum rutscht die Kiste weiter, obwohl niemand schiebt?",
     titel: "Die Kiste rutscht weiter",
@@ -2573,7 +2573,7 @@ const HEFT_SEITEN = {
   },
   "kf10": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "wechselwirkung", seite: 52,
+    sim: "wechselwirkung", seite: 50,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum rollt das Rollbrett zurück?",
     titel: "Rückwärts auf dem Rollbrett",
@@ -2583,7 +2583,7 @@ const HEFT_SEITEN = {
   },
   "kf11": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "druck-flaeche", seite: 57,
+    sim: "druck-flaeche", seite: 55,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum sinkt das Podest unter dem schmalen Fuß ein?",
     titel: "Vier Dellen im neuen Podest",
@@ -2593,7 +2593,7 @@ const HEFT_SEITEN = {
   },
   "kf12": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schweredruck", seite: 62,
+    sim: "schweredruck", seite: 60,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum drückt Wasser in der Tiefe stärker?",
     titel: "Der untere Hahn spritzt weiter",
@@ -2603,7 +2603,7 @@ const HEFT_SEITEN = {
   },
   "kf13": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "dichte", seite: 67,
+    sim: "dichte", seite: 65,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum wiegen gleich große Körper ganz verschieden viel?",
     titel: "Zwei gleich große Klötze in der Werkstatt",
@@ -2613,7 +2613,7 @@ const HEFT_SEITEN = {
   },
   "kf14": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "auftrieb", seite: 72,
+    sim: "auftrieb", seite: 70,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum schwimmt ein Schiff aus Eisen?",
     titel: "Ein Traversenrohr in der Regentonne",
@@ -2623,7 +2623,7 @@ const HEFT_SEITEN = {
   },
   "el1": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "arbeit", seite: 85,
+    sim: "arbeit", seite: 83,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wann wird in der Physik Arbeit verrichtet?",
     titel: "Vier Meter über den Hof",
@@ -2633,7 +2633,7 @@ const HEFT_SEITEN = {
   },
   "el2": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "lageenergie", seite: 90,
+    sim: "lageenergie", seite: 88,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wo steckt die Energie, wenn etwas oben liegt?",
     titel: "Der Klotz über dem Pfahl",
@@ -2643,7 +2643,7 @@ const HEFT_SEITEN = {
   },
   "el3": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "bewegungsenergie", seite: 95,
+    sim: "bewegungsenergie", seite: 93,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wo steckt die Energie, wenn etwas rollt?",
     titel: "Die Kabeltrommel auf der Rampe",
@@ -2653,7 +2653,7 @@ const HEFT_SEITEN = {
   },
   "el4": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "energieerhaltung", seite: 100,
+    sim: "energieerhaltung", seite: 98,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Bleibt die Energie beim Umwandeln erhalten?",
     titel: "Der Ball vom Bühnenrand",
@@ -2663,7 +2663,7 @@ const HEFT_SEITEN = {
   },
   "el5": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "energie-entwerten", seite: 105,
+    sim: "energie-entwerten", seite: 103,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum wird alles am Ende warm?",
     titel: "Der heiße Scheinwerfer am Abend",
@@ -2673,7 +2673,7 @@ const HEFT_SEITEN = {
   },
   "el6": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "leistung-rs", seite: 110,
+    sim: "leistung-rs", seite: 108,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was unterscheidet Arbeit von Leistung?",
     titel: "Zwei Kisten, zwei Tempos",
@@ -2683,7 +2683,7 @@ const HEFT_SEITEN = {
   },
   "el7": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "wirkungsgrad", seite: 115,
+    sim: "wirkungsgrad", seite: 113,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wie viel von der Energie kommt an?",
     titel: "Glühlampe oder LED",
@@ -2693,7 +2693,7 @@ const HEFT_SEITEN = {
   },
   "el8": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "hebel", seite: 120,
+    sim: "hebel", seite: 118,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum ist eine Stange länger als der Weg der Last?",
     titel: "Die Eisenstange unter dem Klavier",
@@ -2703,7 +2703,7 @@ const HEFT_SEITEN = {
   },
   "el9": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "feste-rolle", seite: 125,
+    sim: "feste-rolle", seite: 123,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was bringt eine Rolle an der Decke?",
     titel: "Die Rolle unter dem Hallendach",
@@ -2713,7 +2713,7 @@ const HEFT_SEITEN = {
   },
   "el10": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "flaschenzug", seite: 130,
+    sim: "flaschenzug", seite: 128,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wie viele Seile tragen die Last?",
     titel: "Vier Seile für das Klavier",
@@ -2723,7 +2723,7 @@ const HEFT_SEITEN = {
   },
   "el11": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "zahnrad", seite: 135,
+    sim: "zahnrad", seite: 133,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Im Getriebe der Seilwinde",
@@ -2733,7 +2733,7 @@ const HEFT_SEITEN = {
   },
   "el12": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schiefe-ebene", seite: 140,
+    sim: "schiefe-ebene", seite: 138,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum ist die Rampe leichter als das Heben?",
     titel: "Zwei Bohlen an der Bühnenkante",
@@ -2743,7 +2743,7 @@ const HEFT_SEITEN = {
   },
   "el13": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schiefe-ebene", seite: 145,
+    sim: "schiefe-ebene", seite: 143,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was spart man wirklich - Kraft oder Arbeit?",
     titel: "Kraft gespart, Arbeit nicht",

@@ -6,9 +6,9 @@
  "frage": "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
  "auftrag": "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
  "predict": [
-  "Verdoppelt man μ, verdoppelt sich die Reibungskraft – und die Beschleunigung des Wagens sinkt deshalb auf die Hälfte: Was doppelt so stark bremst, lässt nur die halbe Beschleunigung übrig.",
-  "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen liegt mit mehr Fläche auf und wird deshalb stärker gebremst.",
-  "Verdoppelt man μ, verdoppelt sich zwar die Reibungskraft, die Beschleunigung sinkt aber nicht auf die Hälfte: Beschleunigt wird der Wagen nur von dem Rest, der von der Antriebskraft übrig bleibt."
+  "Verdoppeltes μ verdoppelt die Reibungskraft; die Beschleunigung des Wagens sinkt deshalb auf die Hälfte.",
+  "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen wird stärker gebremst.",
+  "Verdoppeltes μ verdoppelt die Reibungskraft, halbiert die Beschleunigung aber nicht: Beschleunigt wird der Wagen nur vom Rest der Antriebskraft."
  ],
  "predictOk": 2,
  "forschen": [

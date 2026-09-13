@@ -6,9 +6,9 @@
  "frage": "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
  "auftrag": "Miss eine Messreihe zur Bewegungsenergie und linearisiere sie: Trage E über v und danach über v² auf, bestimme die Steigung der Ursprungsgeraden und rechne aus ihr Masse und Tempo zurück.",
  "predict": [
-  "Beide Auftragungen ergeben sofort eine Gerade. Die Energie wächst mit dem Tempo genauso wie mit der Masse, ein Verdoppeln zählt also in beiden Fällen gleich viel.",
-  "Über v liegen die Messpunkte auf einer krummen Kurve. Erst über v² wird daraus eine Ursprungsgerade: Doppeltes Tempo bringt die vierfache Energie, doppelte Masse nur die doppelte.",
-  "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: Die Energie ist m · v², ohne den Faktor ½."
+  "Schon über v liegen die Punkte auf einer Geraden: Doppeltes Tempo bringt die doppelte Energie, doppelte Masse ebenso.",
+  "Über v ergibt sich eine Kurve, erst über v² eine Ursprungsgerade: Doppeltes Tempo bringt vierfache Energie, doppelte Masse nur doppelte.",
+  "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: E = m · v², ohne ½."
  ],
  "predictOk": 1,
  "forschen": [

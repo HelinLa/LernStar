@@ -6,9 +6,9 @@
  "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
  "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
  "predict": [
-  "Die Ausgleichsgerade mittelt die Streuung über alle Punkte hinweg. Die Masse aus der Steigung trifft den eingestellten Wert deshalb deutlich besser als eine Einzelmessung.",
-  "Weil jeder einzelne Messwert um bis zu 1,5 % danebenliegt, kann auch die Masse aus der Steigung höchstens auf 1,5 % genau herauskommen.",
-  "Die Ausgleichsgerade wird durch den ersten und den letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
+  "Die Ausgleichsgerade mittelt die Streuung aller Punkte; die Masse aus ihrer Steigung trifft den eingestellten Wert besser als eine Einzelmessung.",
+  "Jeder Messwert liegt um bis zu 1,5 % daneben; genauer kann auch die Masse aus der Steigung nicht werden.",
+  "Die Ausgleichsgerade wird durch ersten und letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
  ],
  "predictOk": 0,
  "forschen": [

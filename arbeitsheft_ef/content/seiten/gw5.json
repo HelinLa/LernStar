@@ -6,9 +6,9 @@
  "frage": "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
  "auftrag": "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
  "predict": [
-  "Auf dem Mond ist weniger von derselben Person da: Masse und Gewichtskraft werden gemeinsam kleiner.",
-  "Auf dem Mond bleibt die Gewichtskraft dieselbe; kleiner wird die Masse, weil dort weniger an der Person zieht.",
-  "Die Masse bleibt überall dieselbe; kleiner wird allein die Gewichtskraft, weil g dort kleiner ist."
+  "Auf dem Mond werden Masse und Gewichtskraft beide kleiner.",
+  "Auf dem Mond bleibt die Gewichtskraft dieselbe, kleiner wird die Masse.",
+  "Die Masse bleibt überall dieselbe, kleiner wird allein die Gewichtskraft, weil g auf dem Mond kleiner ist."
  ],
  "predictOk": 2,
  "forschen": [

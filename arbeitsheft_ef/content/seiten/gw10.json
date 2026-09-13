@@ -6,8 +6,8 @@
  "frage": "Was entscheidet zwischen dem geozentrischen und dem heliozentrischen Weltbild?",
  "auftrag": "Vergleiche beide Modelle darin, wer im Zentrum steht, wie viele Kreise der Mars in jedem Modell braucht und was sie für den Himmel vorhersagen.",
  "predict": [
-  "Nur das heliozentrische Modell bringt die Schleife überhaupt zustande; im geozentrischen läuft der Mars immer vorwärts, und genau daran ist es gescheitert.",
-  "Beide Modelle zeigen am Himmel dieselbe Schleife. Das geozentrische erzeugt sie mit einem Zusatzkreis je Planet, das heliozentrische kommt ohne einen solchen aus.",
+  "Nur das heliozentrische Modell bringt die Schleife zustande; im geozentrischen läuft der Mars immer vorwärts.",
+  "Beide Modelle zeigen dieselbe Schleife; das geozentrische braucht dafür einen Zusatzkreis je Planet, das heliozentrische nicht.",
   "Die Schleife entsteht, weil der Mars auf seiner Bahn für einige Wochen tatsächlich rückwärts läuft."
  ],
  "predictOk": 1,

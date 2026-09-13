@@ -6,9 +6,9 @@
  "frage": "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
  "auftrag": "Bestimme aus zwei Messreihen, wie die Beschleunigung von Kraft und Masse abhängt: Nimm je eine Reihe unter Variablenkontrolle auf und suche die Auftragung, in der die Messpunkte auf einer Ursprungsgeraden liegen.",
  "predict": [
-  "Über der Masse aufgetragen liegen die Messpunkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt der Beschleunigung denselben Betrag weg, gleichgültig, wie schwer der Wagen schon ist.",
-  "Über der Masse liegen die Punkte auf einer Ursprungsgeraden: Doppelte Masse gibt doppelte Beschleunigung, weil ein schwererer Wagen mehr Schwung aufnimmt.",
-  "Über der Kraft liegen die Messpunkte auf einer Ursprungsgeraden, über der Masse dagegen auf einer krummen Kurve; erst über dem Kehrwert 1/m wird daraus wieder eine Ursprungsgerade."
+  "Über der Masse liegen die Punkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt a denselben Betrag weg.",
+  "Über der Masse liegen die Punkte auf einer Ursprungsgeraden: Doppelte Masse gibt doppelte Beschleunigung.",
+  "Über F liegen die Punkte auf einer Ursprungsgeraden, über m auf einer Kurve, über 1/m wieder auf einer Geraden."
  ],
  "predictOk": 2,
  "forschen": [

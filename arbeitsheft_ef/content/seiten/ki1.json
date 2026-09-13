@@ -6,9 +6,9 @@
  "frage": "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
  "auftrag": "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
  "predict": [
-  "Alle gestoppten Wertepaare liegen auf einer Ursprungsgeraden. Deren Steigung ist die Geschwindigkeit, und sie kommt gleich heraus, gleichgültig in welchen Augenblicken gestoppt wurde.",
-  "Weil die Stoppuhr mal früher und mal später gedrückt wird, fällt die Steigung jedes Mal etwas anders aus. Man müsste in gleichen Abständen stoppen, damit ein brauchbarer Wert herauskommt.",
-  "Je größer der Weg ist, den der Wagen bis zum Stoppen zurückgelegt hat, desto größer ist seine Geschwindigkeit. Man liest v deshalb am höchsten Wegwert der Tabelle ab; die zugehörige Zeit braucht man dafür nicht."
+  "Die Wertepaare liegen auf einer Ursprungsgeraden; deren Steigung ist v – unabhängig davon, wann gestoppt wurde.",
+  "Die Steigung fällt bei jedem Stoppen etwas anders aus; erst gleiche Zeitabstände liefern einen brauchbaren Wert für v.",
+  "Je größer der zurückgelegte Weg, desto größer v; man liest v am größten Wegwert ab, ohne die Zeit."
  ],
  "predictOk": 0,
  "forschen": [

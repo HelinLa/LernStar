@@ -6,9 +6,9 @@
  "frage": "Wie ändert sich die Geschwindigkeit, wenn die resultierende Kraft null ist?",
  "auftrag": "Prüfe unter Variablenkontrolle, ob ein Körper ohne resultierende Kraft sein Tempo behält: Halte den Regler für die Kraft bei 0 N und verändere allein die Anfangsgeschwindigkeit.",
  "predict": [
-  "Ohne Antrieb wird der Wagen von selbst langsamer; je größer v₀ eingestellt ist, desto länger dauert es, bis er ausgerollt ist.",
-  "Ohne resultierende Kraft bleibt die Geschwindigkeit unverändert; der Wagen behält genau das eingestellte v₀ bei.",
-  "Eine resultierende Kraft von null bedeutet, dass der Wagen in Ruhe bleiben muss; für eine gleichförmige Fahrt braucht es eine kleine, gleichbleibende Kraft."
+  "Ohne Antrieb wird der Wagen von selbst langsamer; bei größerem v₀ dauert das Ausrollen länger.",
+  "Ohne resultierende Kraft bleibt die Geschwindigkeit unverändert; der Wagen behält das eingestellte v₀ bei.",
+  "Resultierende Kraft null bedeutet Stillstand; eine gleichförmige Fahrt erfordert eine kleine, gleichbleibende Kraft."
  ],
  "predictOk": 1,
  "forschen": [

@@ -6,9 +6,9 @@
  "frage": "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
  "auftrag": "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
  "predict": [
-  "Der schwerere Wagen drückt kräftiger. Auf den leichteren Wagen wirkt deshalb die größere Kraft, und nur darum wird er stärker beschleunigt.",
-  "Beide Wagen erfahren zu jedem Zeitpunkt gleich große, entgegengesetzt gerichtete Kräfte. Verschieden sind nur die Beschleunigungen – sie verhalten sich umgekehrt wie die Massen.",
-  "Beide Wagen erfahren gleich große Kräfte und werden deshalb auch gleich stark beschleunigt; die Massen spielen dabei keine Rolle."
+  "Der schwerere Wagen drückt kräftiger; auf den leichteren Wagen wirkt die größere Kraft, darum wird er stärker beschleunigt.",
+  "Beide Wagen erfahren stets gleich große, entgegengesetzte Kräfte. Verschieden sind nur die Beschleunigungen; sie verhalten sich umgekehrt wie die Massen.",
+  "Beide Wagen erfahren gleich große Kräfte und werden deshalb gleich stark beschleunigt; die Massen spielen keine Rolle."
  ],
  "predictOk": 1,
  "forschen": [

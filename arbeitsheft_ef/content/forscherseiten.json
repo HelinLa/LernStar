@@ -7,9 +7,9 @@
   "frage": "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
   "auftrag": "Miss mit der Stoppuhr eine eigene Wertereihe, bestimme die Geschwindigkeit aus der Steigung der t-s-Geraden und prüfe das Ergebnis an den Auftragungen t → v und t → a.",
   "predict": [
-   "Alle gestoppten Wertepaare liegen auf einer Ursprungsgeraden. Deren Steigung ist die Geschwindigkeit, und sie kommt gleich heraus, gleichgültig in welchen Augenblicken gestoppt wurde.",
-   "Weil die Stoppuhr mal früher und mal später gedrückt wird, fällt die Steigung jedes Mal etwas anders aus. Man müsste in gleichen Abständen stoppen, damit ein brauchbarer Wert herauskommt.",
-   "Je größer der Weg ist, den der Wagen bis zum Stoppen zurückgelegt hat, desto größer ist seine Geschwindigkeit. Man liest v deshalb am höchsten Wegwert der Tabelle ab; die zugehörige Zeit braucht man dafür nicht."
+   "Die Wertepaare liegen auf einer Ursprungsgeraden; deren Steigung ist v – unabhängig davon, wann gestoppt wurde.",
+   "Die Steigung fällt bei jedem Stoppen etwas anders aus; erst gleiche Zeitabstände liefern einen brauchbaren Wert für v.",
+   "Je größer der zurückgelegte Weg, desto größer v; man liest v am größten Wegwert ab, ohne die Zeit."
   ],
   "predictOk": 0,
   "forschen": [
@@ -61,9 +61,9 @@
   "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
   "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
   "predict": [
-   "Der Zeitpunkt entscheidet mit: Wer früh stoppt, hat wenig Weg auf dem Wegmesser und bekommt deshalb eine flachere Gerade als jemand, der spät stoppt.",
-   "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, und deren Steigung ist die gefahrene Geschwindigkeit.",
-   "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden – Punkte, die weit auseinanderliegen, verfälschen sie."
+   "Der Zeitpunkt entscheidet mit: Wer früh stoppt, erhält eine flachere Gerade als jemand, der spät stoppt.",
+   "Der Zeitpunkt ist gleichgültig: Alle gestoppten Wertepaare liegen auf derselben Ursprungsgeraden, deren Steigung die gefahrene Geschwindigkeit ist.",
+   "Die Steigung muss aus zwei benachbarten Zeilen gebildet werden; weit auseinanderliegende Punkte verfälschen sie."
   ],
   "predictOk": 1,
   "forschen": [
@@ -117,9 +117,9 @@
   "frage": "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
   "auftrag": "Bestimme die Beschleunigung als Steigung deiner selbst gestoppten t-v-Geraden und vergleiche, was die Auftragungen t → s, t → v und t → a über diese Zahl hergeben.",
   "predict": [
-   "Weil der Wagen immer schneller wird, steigt die Punktreihe im t-v-Diagramm immer steiler an. Eine einzige Steigung für die ganze Fahrt gibt es deshalb nicht; man muss den Mittelwert der Geschwindigkeiten nehmen.",
-   "Die Beschleunigung ist der Quotient v/t des letzten Messpunkts; die Steigung der Geraden sagt dagegen nur, wie schnell der Wagen im Mittel war.",
-   "Die gestoppten Wertepaare liegen im t-v-Diagramm auf einer Geraden durch den Ursprung. Ihre Steigung Δv/Δt ist für jedes Punktepaar dieselbe Zahl – und genau diese Zahl ist die Beschleunigung."
+   "Die Punktreihe im t-v-Diagramm steigt immer steiler an; statt einer Steigung nimmt man den Mittelwert der Geschwindigkeiten.",
+   "Die Beschleunigung ist der Quotient v/t des letzten Messpunkts; die Steigung der Geraden gibt nur die mittlere Geschwindigkeit an.",
+   "Die Wertepaare liegen im t-v-Diagramm auf einer Ursprungsgeraden. Ihre Steigung Δv/Δt ist für jedes Punktepaar dieselbe Zahl: die Beschleunigung."
   ],
   "predictOk": 2,
   "forschen": [
@@ -171,9 +171,9 @@
   "frage": "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
   "auftrag": "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
   "predict": [
-   "Trägt man s über t² auf, liegen die gestoppten Punkte auf einer Ursprungsgeraden; ihre Steigung ist a/2, die Beschleunigung also das Doppelte der Steigung.",
-   "Weil jeder Stopp in einen anderen Augenblick der Fahrt fällt, gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
-   "Trägt man s über t² auf, ist die Steigung unmittelbar die Beschleunigung – der Faktor ½ steckt schon in der Umrechnung der Achse."
+   "Trägt man s über t² auf, entsteht eine Ursprungsgerade; ihre Steigung ist a/2, die Beschleunigung also das Doppelte.",
+   "In der Auftragung über t² gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
+   "Trägt man s über t² auf, ist die Steigung unmittelbar a; der Faktor ½ steckt schon in der Achse."
   ],
   "predictOk": 0,
   "forschen": [
@@ -225,9 +225,9 @@
   "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",
   "auftrag": "Bestimme g aus einer Messreihe über beide Linearisierungen und vergleiche die Steigungen der beiden Ausgleichsgeraden.",
   "predict": [
-   "Mit einer ganzen Messreihe verschwindet der Unterschied: Die Ausgleichsgerade mittelt die Ablesefehler des einzelnen Tripels heraus, und beide Auftragungen führen auf denselben Wert für g.",
-   "Auch aus einer ganzen Messreihe werden es zwei Geraden: Die Steigung aus s über t² liefert ein größeres g als die Steigung aus v über t, weil die Simulation den Fallweg schrittweise aufsummiert und dabei zu viel Weg erhält.",
-   "Der Unterschied bleibt, weil die Auftragung über t² den Ablesefehler quadriert; v über t ist deshalb grundsätzlich die genauere Auftragung."
+   "Der Unterschied verschwindet: Die Ausgleichsgerade mittelt die Ablesefehler heraus, beide Auftragungen liefern denselben Wert für g.",
+   "Auch dann liefert s über t² ein größeres g als v über t, weil die Simulation zu viel Fallweg aufsummiert.",
+   "Der Unterschied bleibt, weil t² den Ablesefehler quadriert; v über t ist deshalb die genauere Auftragung."
   ],
   "predictOk": 1,
   "forschen": [
@@ -280,8 +280,8 @@
   "frage": "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
   "auftrag": "Miss die Fallzeit unter Variablenkontrolle für neun Abwurfhöhen und für acht Abwurfgeschwindigkeiten und entscheide an den vier Auftragungen, welche krumm bleibt, welche die Abhängigkeit von h liefert und welche zeigt, dass v₀ die Fallzeit nicht ändert.",
   "predict": [
-   "Je schneller die Kugel abgeworfen wird, desto länger bleibt sie in der Luft – für den weiteren Weg braucht sie mehr Zeit.",
-   "Die Fallzeit hängt von beidem ab: Aus größerer Höhe fällt die Kugel länger, und eine größere Abwurfgeschwindigkeit verlängert die Zeit zusätzlich ein wenig.",
+   "Die Fallzeit hängt allein von v₀ ab: Je schneller abgeworfen wird, desto länger bleibt die Kugel in der Luft.",
+   "Die Fallzeit hängt von beidem ab: Größere Höhe verlängert sie deutlich, größeres v₀ zusätzlich ein wenig.",
    "Die Fallzeit hängt allein von der Abwurfhöhe ab; eine größere Abwurfgeschwindigkeit vergrößert nur die Wurfweite."
   ],
   "predictOk": 2,
@@ -334,9 +334,9 @@
   "frage": "Welcher Teil einer schräg ziehenden Kraft zieht den Schlitten vorwärts?",
   "auftrag": "Bestimme aus dem Datenblatt die waagerechte und die senkrechte Komponente der Zugkraft und vergleiche, wie beide sich mit dem Winkel ändern.",
   "predict": [
-   "Nur die waagerechte Komponente F · cos(α) zieht vorwärts, und sie wird mit wachsendem Winkel kleiner. Die senkrechte Komponente F · sin(α) zieht den Schlitten nach oben und entlastet ihn.",
-   "Der Schlitten wird bei jedem Winkel gleich stark vorwärts gezogen, denn die Zugkraft beträgt immer 200 N. Der Winkel ändert nur die Richtung des Seils, nicht die Wirkung.",
-   "Vorwärts zieht die Komponente F · sin(α), nach oben F · cos(α) – bei kleinem Winkel zieht das Seil deshalb kaum vorwärts."
+   "Vorwärts zieht nur die waagerechte Komponente F · cos(α); sie wird mit wachsendem Winkel kleiner. Senkrecht wirkt F · sin(α).",
+   "Der Schlitten wird bei jedem Winkel gleich stark vorwärts gezogen; die Zugkraft beträgt immer 200 N.",
+   "Vorwärts zieht F · sin(α), nach oben F · cos(α); bei kleinem Winkel zieht das Seil kaum vorwärts."
   ],
   "predictOk": 0,
   "forschen": [
@@ -424,9 +424,9 @@
   "frage": "Wie ändert sich die Geschwindigkeit, wenn die resultierende Kraft null ist?",
   "auftrag": "Prüfe unter Variablenkontrolle, ob ein Körper ohne resultierende Kraft sein Tempo behält: Halte den Regler für die Kraft bei 0 N und verändere allein die Anfangsgeschwindigkeit.",
   "predict": [
-   "Ohne Antrieb wird der Wagen von selbst langsamer; je größer v₀ eingestellt ist, desto länger dauert es, bis er ausgerollt ist.",
-   "Ohne resultierende Kraft bleibt die Geschwindigkeit unverändert; der Wagen behält genau das eingestellte v₀ bei.",
-   "Eine resultierende Kraft von null bedeutet, dass der Wagen in Ruhe bleiben muss; für eine gleichförmige Fahrt braucht es eine kleine, gleichbleibende Kraft."
+   "Ohne Antrieb wird der Wagen von selbst langsamer; bei größerem v₀ dauert das Ausrollen länger.",
+   "Ohne resultierende Kraft bleibt die Geschwindigkeit unverändert; der Wagen behält das eingestellte v₀ bei.",
+   "Resultierende Kraft null bedeutet Stillstand; eine gleichförmige Fahrt erfordert eine kleine, gleichbleibende Kraft."
   ],
   "predictOk": 1,
   "forschen": [
@@ -478,9 +478,9 @@
   "frage": "Wie hängt die Beschleunigung von der Zugkraft und von der Masse ab?",
   "auftrag": "Bestimme aus zwei Messreihen, wie die Beschleunigung von Kraft und Masse abhängt: Nimm je eine Reihe unter Variablenkontrolle auf und suche die Auftragung, in der die Messpunkte auf einer Ursprungsgeraden liegen.",
   "predict": [
-   "Über der Masse aufgetragen liegen die Messpunkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt der Beschleunigung denselben Betrag weg, gleichgültig, wie schwer der Wagen schon ist.",
-   "Über der Masse liegen die Punkte auf einer Ursprungsgeraden: Doppelte Masse gibt doppelte Beschleunigung, weil ein schwererer Wagen mehr Schwung aufnimmt.",
-   "Über der Kraft liegen die Messpunkte auf einer Ursprungsgeraden, über der Masse dagegen auf einer krummen Kurve; erst über dem Kehrwert 1/m wird daraus wieder eine Ursprungsgerade."
+   "Über der Masse liegen die Punkte auf einer fallenden Geraden: Jedes zusätzliche Kilogramm nimmt a denselben Betrag weg.",
+   "Über der Masse liegen die Punkte auf einer Ursprungsgeraden: Doppelte Masse gibt doppelte Beschleunigung.",
+   "Über F liegen die Punkte auf einer Ursprungsgeraden, über m auf einer Kurve, über 1/m wieder auf einer Geraden."
   ],
   "predictOk": 2,
   "forschen": [
@@ -532,9 +532,9 @@
   "frage": "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
   "auftrag": "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
   "predict": [
-   "Beide Kräfte wirken die ganze Zeit weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null – und nur deshalb bleibt die Lampe in Ruhe.",
-   "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst, sobald sich etwas bewegt.",
-   "Die Haltekraft des Seils ist größer als die Gewichtskraft – sonst könnte sie die Lampe nicht oben halten."
+   "Beide Kräfte wirken weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null; die Lampe bleibt in Ruhe.",
+   "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst bei Bewegung.",
+   "Die Haltekraft des Seils ist größer als die Gewichtskraft; sonst bliebe die Lampe nicht oben."
   ],
   "predictOk": 0,
   "forschen": [
@@ -587,9 +587,9 @@
   "frage": "Wie hängen Kraft und Beschleunigung von den Massen zweier Wagen ab?",
   "auftrag": "Vergleiche bei sehr verschiedenen Massen die beiden Kräfte mit den beiden Beschleunigungen und stelle fest, welche der Größen von den Massen abhängt.",
   "predict": [
-   "Der schwerere Wagen drückt kräftiger. Auf den leichteren Wagen wirkt deshalb die größere Kraft, und nur darum wird er stärker beschleunigt.",
-   "Beide Wagen erfahren zu jedem Zeitpunkt gleich große, entgegengesetzt gerichtete Kräfte. Verschieden sind nur die Beschleunigungen – sie verhalten sich umgekehrt wie die Massen.",
-   "Beide Wagen erfahren gleich große Kräfte und werden deshalb auch gleich stark beschleunigt; die Massen spielen dabei keine Rolle."
+   "Der schwerere Wagen drückt kräftiger; auf den leichteren Wagen wirkt die größere Kraft, darum wird er stärker beschleunigt.",
+   "Beide Wagen erfahren stets gleich große, entgegengesetzte Kräfte. Verschieden sind nur die Beschleunigungen; sie verhalten sich umgekehrt wie die Massen.",
+   "Beide Wagen erfahren gleich große Kräfte und werden deshalb gleich stark beschleunigt; die Massen spielen keine Rolle."
   ],
   "predictOk": 1,
   "forschen": [
@@ -641,9 +641,9 @@
   "frage": "Wovon hängt die Reibungskraft ab – und was beschleunigt den Wagen wirklich?",
   "auftrag": "Bestimme unter Variablenkontrolle, wie die Reibungskraft vom Reibungskoeffizienten abhängt: Lass Antriebskraft und Masse in der ganzen Messreihe unverändert stehen und verstelle allein den Regler für μ.",
   "predict": [
-   "Verdoppelt man μ, verdoppelt sich die Reibungskraft – und die Beschleunigung des Wagens sinkt deshalb auf die Hälfte: Was doppelt so stark bremst, lässt nur die halbe Beschleunigung übrig.",
-   "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen liegt mit mehr Fläche auf und wird deshalb stärker gebremst.",
-   "Verdoppelt man μ, verdoppelt sich zwar die Reibungskraft, die Beschleunigung sinkt aber nicht auf die Hälfte: Beschleunigt wird der Wagen nur von dem Rest, der von der Antriebskraft übrig bleibt."
+   "Verdoppeltes μ verdoppelt die Reibungskraft; die Beschleunigung des Wagens sinkt deshalb auf die Hälfte.",
+   "Die Reibungskraft hängt von der Auflagefläche ab: Ein breiterer Wagen wird stärker gebremst.",
+   "Verdoppeltes μ verdoppelt die Reibungskraft, halbiert die Beschleunigung aber nicht: Beschleunigt wird der Wagen nur vom Rest der Antriebskraft."
   ],
   "predictOk": 2,
   "forschen": [
@@ -696,9 +696,9 @@
   "frage": "Wann verrichtet eine Kraft Arbeit – und wann bleibt W trotz Anstrengung null?",
   "auftrag": "Vergleiche die drei Situationen Schieben, Waagerecht tragen und Hochheben an derselben Kiste und begründe aus der Richtung von Kraft und Weg, wie viel Arbeit dabei jeweils herauskommt.",
   "predict": [
-   "Es zählt nur der Anteil der Kraft, der in die Richtung zeigt, in die sich die Kiste bewegt. Beim waagerechten Tragen gibt es diesen Anteil nicht – deshalb kommt dort keine Arbeit heraus, so anstrengend es sich auch anfühlt.",
-   "Wer eine Last trägt, verrichtet Arbeit: Die Haltekraft wirkt über den ganzen Weg von 4 m. Beim Tragen muss deshalb mindestens so viel Arbeit herauskommen wie beim Schieben derselben Kiste.",
-   "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben – es fehlt ja die Reibung, gegen die man sonst anarbeitet."
+   "Nur der Kraftanteil in Wegrichtung zählt; beim waagerechten Tragen gibt es ihn nicht, deshalb ist W null.",
+   "Die Haltekraft wirkt über den ganzen Weg von 4 m; Tragen liefert daher mindestens so viel Arbeit wie Schieben.",
+   "Beim Tragen wird Arbeit verrichtet, nur weniger als beim Schieben, weil die Reibung fehlt."
   ],
   "predictOk": 0,
   "forschen": [
@@ -749,9 +749,9 @@
   "frage": "Zählt eine Verdopplung des Tempos genauso viel wie eine der Masse?",
   "auftrag": "Miss eine Messreihe zur Bewegungsenergie und linearisiere sie: Trage E über v und danach über v² auf, bestimme die Steigung der Ursprungsgeraden und rechne aus ihr Masse und Tempo zurück.",
   "predict": [
-   "Beide Auftragungen ergeben sofort eine Gerade. Die Energie wächst mit dem Tempo genauso wie mit der Masse, ein Verdoppeln zählt also in beiden Fällen gleich viel.",
-   "Über v liegen die Messpunkte auf einer krummen Kurve. Erst über v² wird daraus eine Ursprungsgerade: Doppeltes Tempo bringt die vierfache Energie, doppelte Masse nur die doppelte.",
-   "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: Die Energie ist m · v², ohne den Faktor ½."
+   "Schon über v liegen die Punkte auf einer Geraden: Doppeltes Tempo bringt die doppelte Energie, doppelte Masse ebenso.",
+   "Über v ergibt sich eine Kurve, erst über v² eine Ursprungsgerade: Doppeltes Tempo bringt vierfache Energie, doppelte Masse nur doppelte.",
+   "Über v² wird die Auftragung gerade, ihre Steigung ist aber die Masse selbst: E = m · v², ohne ½."
   ],
   "predictOk": 1,
   "forschen": [
@@ -803,9 +803,9 @@
   "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
   "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
   "predict": [
-   "Beide Auftragungen stammen aus derselben Messreihe, also muss auch die Steigung dieselbe sein. Über s² liest man die Federkonstante deshalb unmittelbar ab, ohne noch etwas zu verdoppeln.",
-   "Über s² ist die Steigung doppelt so groß wie bei F über s; die Federkonstante folgt daraus durch Halbieren, also D = k/2.",
-   "Über s² wird die Auftragung wieder gerade, ihre Steigung ist aber nur halb so groß wie bei F über s. Die Federkonstante folgt aus ihr erst durch Verdoppeln, also D = 2 · k."
+   "Über s² ist die Steigung dieselbe wie bei F über s; die Federkonstante liest man unmittelbar ab, D = k.",
+   "Über s² ist die Steigung doppelt so groß wie bei F über s, die Federkonstante also D = k/2.",
+   "Über s² wird die Auftragung gerade; die Steigung ist halb so groß wie bei F über s, D = 2·k."
   ],
   "predictOk": 2,
   "forschen": [
@@ -857,9 +857,9 @@
   "frage": "Was bleibt beim Stoß gleich – und warum zählt das Vorzeichen mit?",
   "auftrag": "Prüfe am geraden Stoß zweier Kugeln, ob sich die Summe p_ges beim Zusammenstoß ändert, und vergleiche p₁ und p₂ jeweils vor und nach der Berührung.",
   "predict": [
-   "p_ges behält seinen Startwert. Weil p₁ beim Zurückprallen negativ wird, zieht es von p₂ ab: Was Kugel 1 abgibt, nimmt Kugel 2 auf, und die Summe ändert sich beim Stoß nicht.",
-   "Kugel 1 prallt zurück und Kugel 2 fährt an – nach dem Stoß sind beide unterwegs, vorher war es nur eine. Die beiden Impulse addieren sich deshalb, und p_ges ist danach größer als der Startwert.",
-   "Erhalten bleibt die Summe der Beträge |p₁| + |p₂|. Das Vorzeichen gibt nur die Richtung an und zählt beim Addieren nicht mit."
+   "p_ges behält seinen Startwert: p₁ wird beim Zurückprallen negativ und zieht von p₂ ab; die vorzeichenrichtige Summe bleibt gleich.",
+   "Nach dem Stoß sind beide Kugeln unterwegs, vorher nur eine: Die Impulse addieren sich, p_ges ist danach größer.",
+   "Erhalten bleibt die Summe der Beträge |p₁| + |p₂|; das Vorzeichen zählt beim Addieren nicht mit."
   ],
   "predictOk": 0,
   "forschen": [
@@ -912,9 +912,9 @@
   "frage": "Wie hängen Winkelgeschwindigkeit ω und Bahngeschwindigkeit v zusammen?",
   "auftrag": "Untersuche mit den beiden Reglern, wovon der Wert in der Zeile v≈ abhängt, und bilde in jeder Zeile den Quotienten aus diesem Wert und der eingestellten Winkelgeschwindigkeit.",
   "predict": [
-   "Alle Sitze des Karussells haben dieselbe Bahngeschwindigkeit, weil sie für eine Runde dieselbe Zeit brauchen. Mit dem Abstand von der Achse ändert sich nur die Winkelgeschwindigkeit.",
-   "Alle Sitze des Karussells haben dieselbe Winkelgeschwindigkeit, denn sie überstreichen in derselben Zeit denselben Winkel. Die Bahngeschwindigkeit wächst dagegen mit dem Abstand von der Achse, weil ein äußerer Sitz einen längeren Bogen zurücklegt.",
-   "Winkelgeschwindigkeit und Bahngeschwindigkeit sind dieselbe Größe in verschiedenen Einheiten; rad/s lässt sich in m/s umrechnen, ohne den Radius zu kennen."
+   "Alle Sitze haben dieselbe Bahngeschwindigkeit, weil eine Runde gleich lange dauert; mit dem Abstand ändert sich nur ω.",
+   "Alle Sitze haben dieselbe Winkelgeschwindigkeit ω; die Bahngeschwindigkeit v wächst mit dem Abstand von der Achse.",
+   "ω und v sind dieselbe Größe in anderen Einheiten; rad/s lässt sich ohne den Radius in m/s umrechnen."
   ],
   "predictOk": 1,
   "forschen": [
@@ -967,9 +967,9 @@
   "frage": "Wohin zeigt die Kraft auf der Kreisbahn – und wovon hängt ihr Betrag ab?",
   "auftrag": "Untersuche am Bildschirm, in welche Richtung der Kraftpfeil zeigt, und bestimme aus Radius und Umlauffrequenz die Zentripetalbeschleunigung, mit der Masse zusätzlich die Zentripetalkraft.",
   "predict": [
-   "Die Kraft zeigt in Bewegungsrichtung, also tangential zur Bahn – sonst käme der Körper auf der Kreisbahn nicht voran.",
+   "Die Kraft zeigt tangential in Bewegungsrichtung; sonst käme der Körper auf der Bahn nicht voran.",
    "Die Kraft zeigt nach außen: Sie hält den Körper gegen die Fliehkraft auf seiner Bahn.",
-   "Die Kraft zeigt zum Mittelpunkt. Sie ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential geradeaus weiter."
+   "Die Kraft zeigt zum Mittelpunkt und ändert nur die Richtung der Geschwindigkeit; ohne sie flöge der Körper tangential weiter."
   ],
   "predictOk": 2,
   "forschen": [
@@ -1020,9 +1020,9 @@
   "frage": "Wie gewinnt man aus einer streuenden Messreihe die Masse zurück?",
   "auftrag": "Bestimme aus deiner Messreihe die Steigung der Ausgleichsgeraden, rechne daraus die Masse zurück und vergleiche sie mit dem eingestellten Wert.",
   "predict": [
-   "Die Ausgleichsgerade mittelt die Streuung über alle Punkte hinweg. Die Masse aus der Steigung trifft den eingestellten Wert deshalb deutlich besser als eine Einzelmessung.",
-   "Weil jeder einzelne Messwert um bis zu 1,5 % danebenliegt, kann auch die Masse aus der Steigung höchstens auf 1,5 % genau herauskommen.",
-   "Die Ausgleichsgerade wird durch den ersten und den letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
+   "Die Ausgleichsgerade mittelt die Streuung aller Punkte; die Masse aus ihrer Steigung trifft den eingestellten Wert besser als eine Einzelmessung.",
+   "Jeder Messwert liegt um bis zu 1,5 % daneben; genauer kann auch die Masse aus der Steigung nicht werden.",
+   "Die Ausgleichsgerade wird durch ersten und letzten Messpunkt gelegt; die Punkte dazwischen dienen nur der Kontrolle."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1073,9 +1073,9 @@
   "frage": "Wie ändert sich die Anziehung, wenn man Masse oder Abstand verdoppelt?",
   "auftrag": "Bestimme unter Variablenkontrolle aus einer Messreihe, in welcher Auftragung die Messpunkte auf einer Ursprungsgeraden liegen, und rechne aus deren Steigung die Verhältniszahl der Simulation zurück.",
   "predict": [
-   "Masse und Abstand zählen gleich viel: Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe.",
-   "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur noch ein Viertel – der Abstand zählt stärker.",
-   "Doppelte Masse gibt die vierfache Anziehung, doppelter Abstand die halbe – das Quadrat steht bei der Masse."
+   "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand die halbe – beide zählen gleich viel.",
+   "Doppelte Masse gibt die doppelte Anziehung, doppelter Abstand aber nur ein Viertel; der Abstand geht quadratisch ein.",
+   "Doppelte Masse gibt die vierfache Anziehung, doppelter Abstand die halbe: Das Quadrat steht bei der Masse."
   ],
   "predictOk": 1,
   "forschen": [
@@ -1129,9 +1129,9 @@
   "frage": "Was ändert sich mit dem Ort, was bleibt – und wofür steht g in N/kg?",
   "auftrag": "Vergleiche bei gleichbleibender Masse von 60 kg die Gewichtskraft auf Mond, Erde und Jupiter und bestimme zu jeder Zeile den Quotienten F/m.",
   "predict": [
-   "Auf dem Mond ist weniger von derselben Person da: Masse und Gewichtskraft werden gemeinsam kleiner.",
-   "Auf dem Mond bleibt die Gewichtskraft dieselbe; kleiner wird die Masse, weil dort weniger an der Person zieht.",
-   "Die Masse bleibt überall dieselbe; kleiner wird allein die Gewichtskraft, weil g dort kleiner ist."
+   "Auf dem Mond werden Masse und Gewichtskraft beide kleiner.",
+   "Auf dem Mond bleibt die Gewichtskraft dieselbe, kleiner wird die Masse.",
+   "Die Masse bleibt überall dieselbe, kleiner wird allein die Gewichtskraft, weil g auf dem Mond kleiner ist."
   ],
   "predictOk": 2,
   "forschen": [
@@ -1182,9 +1182,9 @@
   "frage": "Wie stark ist das Feld der Erde dort, wo Menschen schwerelos schweben?",
   "auftrag": "Vergleiche die vier Feldstärken des Datenblatts und prüfe, ob in der Bahnhöhe der ISS überhaupt noch ein Gravitationsfeld vorhanden ist.",
   "predict": [
-   "Die Feldstärke sinkt mit 1/r², und 400 km sind gegen 6371 km wenig. In der ISS wirken deshalb noch fast neun Newton je Kilogramm; das Schweben muss einen anderen Grund haben.",
-   "Ein Feld reicht nur begrenzt weit. In 400 km Höhe ist das Erdfeld praktisch zu Ende und die Feldstärke dort nahezu null – deshalb schweben die Menschen in der ISS.",
-   "Die Feldstärke sinkt mit 1/r und nicht mit 1/r²; in 400 km Höhe sind deshalb noch etwa 94 Prozent der Bodenwerte übrig."
+   "Die Feldstärke sinkt mit 1/r²; 400 km sind gegen 6371 km wenig. In der ISS wirken noch fast 9 N/kg.",
+   "Ein Feld reicht nur begrenzt weit: In 400 km Höhe ist die Feldstärke nahezu null, deshalb schwebt man dort.",
+   "Die Feldstärke sinkt mit 1/r statt 1/r²; in 400 km Höhe bleiben deshalb etwa 94 Prozent des Bodenwerts."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1268,9 +1268,9 @@
   "frage": "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
   "auftrag": "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
   "predict": [
-   "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Ausschlag des Balkens ein Maß für ihre Masse.",
-   "Die Drehwaage misst nur die Kraft zwischen zwei bekannten Massen. Daraus folgt G; erst mit G, dem Ortsfaktor und dem Erdradius ergibt sich die Erdmasse.",
-   "Cavendish hat G nicht gemessen, sondern aus dem Ortsfaktor g und dem Erdradius berechnet; die Drehwaage diente nur der Bestätigung."
+   "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Balkenausschlag ihr Maß.",
+   "Die Drehwaage misst die Kraft zwischen zwei bekannten Massen; daraus folgt G. Erst G, Ortsfaktor und Erdradius liefern die Erdmasse.",
+   "Cavendish hat G nicht gemessen, sondern aus Ortsfaktor g und Erdradius berechnet; die Drehwaage diente nur der Bestätigung."
   ],
   "predictOk": 1,
   "forschen": [
@@ -1359,9 +1359,9 @@
   "frage": "Warum stürzt der Planet nicht in die Sonne, obwohl sie ihn ständig anzieht?",
   "auftrag": "Untersuche, wie die Bahnform allein von der Startgeschwindigkeit quer zur Sonne abhängt, und lies die beiden Kennwerte ab, die die Statuszeile nennt: den Kreiswert und den Fluchtwert.",
   "predict": [
-   "Je größer der Anschub quer zur Sonne, desto weiter außen läuft die Bahn. Der Planet bleibt bei jedem eingestellten Wert auf einer geschlossenen Bahn, sie wird nur immer größer.",
-   "Der Planet stürzt nicht hinein, weil die Fliehkraft die Anziehung genau aufhebt: Beide Kräfte sind gleich groß, deshalb bleibt er auf der Bahn.",
-   "Nur in einem mittleren Bereich fällt der Planet immerzu an der Sonne vorbei und läuft auf einer geschlossenen Bahn. Ist der Anschub zu klein, trifft er die Sonne; ist er zu groß, kommt er nicht zurück."
+   "Je größer der Anschub, desto weiter außen die Bahn; geschlossen bleibt sie bei jedem eingestellten Wert.",
+   "Die Fliehkraft hebt die Anziehung genau auf: Beide Kräfte sind gleich groß, deshalb bleibt der Planet auf der Bahn.",
+   "Nur ein mittlerer Anschub hält den Planeten auf geschlossener Bahn; zu wenig lässt ihn hineinstürzen, zu viel entkommen."
   ],
   "predictOk": 2,
   "forschen": [
@@ -1413,9 +1413,9 @@
   "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
   "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
   "predict": [
-   "Der Quotient T²/a³ hat für alle sechs Planeten denselben Wert. Kennt man von einem weiteren Körper nur die Umlaufzeit, lässt sich seine Halbachse damit berechnen, ohne sie zu messen.",
-   "Jeder Planet liefert seinen eigenen Wert, weil jeder eine andere Masse hat. Aus der Tabelle lässt sich deshalb keine gemeinsame Regel gewinnen.",
-   "Für alle Planeten ist der Quotient T/a derselbe; die Umlaufzeit wächst also einfach proportional zur großen Halbachse."
+   "T²/a³ hat für alle sechs Planeten denselben Wert; aus der Umlaufzeit eines Körpers folgt damit seine Halbachse.",
+   "Jeder Planet liefert wegen seiner eigenen Masse einen anderen Wert; eine gemeinsame Regel gibt die Tabelle nicht her.",
+   "Für alle Planeten ist T/a derselbe; die Umlaufzeit wächst also proportional zur großen Halbachse."
   ],
   "predictOk": 0,
   "forschen": [
@@ -1509,8 +1509,8 @@
   "frage": "Was entscheidet zwischen dem geozentrischen und dem heliozentrischen Weltbild?",
   "auftrag": "Vergleiche beide Modelle darin, wer im Zentrum steht, wie viele Kreise der Mars in jedem Modell braucht und was sie für den Himmel vorhersagen.",
   "predict": [
-   "Nur das heliozentrische Modell bringt die Schleife überhaupt zustande; im geozentrischen läuft der Mars immer vorwärts, und genau daran ist es gescheitert.",
-   "Beide Modelle zeigen am Himmel dieselbe Schleife. Das geozentrische erzeugt sie mit einem Zusatzkreis je Planet, das heliozentrische kommt ohne einen solchen aus.",
+   "Nur das heliozentrische Modell bringt die Schleife zustande; im geozentrischen läuft der Mars immer vorwärts.",
+   "Beide Modelle zeigen dieselbe Schleife; das geozentrische braucht dafür einen Zusatzkreis je Planet, das heliozentrische nicht.",
    "Die Schleife entsteht, weil der Mars auf seiner Bahn für einige Wochen tatsächlich rückwärts läuft."
   ],
   "predictOk": 1,
@@ -1563,9 +1563,9 @@
   "frage": "Woran erkennt man, welche Quelle eine physikalische Aussage verlässlich belegt?",
   "auftrag": "Prüfe die vier Aussagen des Datenblatts an nachprüfbaren Kriterien und ordne die Quellenarten nach ihrer Verlässlichkeit.",
   "predict": [
-   "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht. Wer Bilder aus dem All zeigt, war schließlich näher dran als ein Buch.",
-   "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Wer einen Titel führt oder an einer Hochschule arbeitet, muss nicht offenlegen, woher die Zahlen stammen und wie gemessen wurde.",
-   "Verlässlich ist die Quelle, deren Aussage sich nachprüfen lässt: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt. Das lässt sich Zeile für Zeile abhaken."
+   "Verlässlich ist die Quelle, die am sichersten auftritt und die meisten Menschen erreicht; Bilder aus dem All wiegen schwerer.",
+   "Verlässlich ist die Quelle, hinter der eine Fachperson steht: Titel oder Hochschule genügen, Daten und Messweise muss niemand offenlegen.",
+   "Verlässlich ist die Quelle, deren Aussage nachprüfbar ist: Quellenangabe, Begutachtung, offengelegte Daten, Beobachtung und Deutung getrennt."
   ],
   "predictOk": 2,
   "forschen": [
@@ -1649,9 +1649,9 @@
   "frage": "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
   "auftrag": "Miss an Station 6 den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten und prüfe an den Stationen 3 und 4, ob der Satz des Pythagoras genau diese Werte liefert.",
   "predict": [
-   "Das Photon läuft auch auf dem längeren schrägen Weg mit genau c. Ein längerer Weg bei gleicher Geschwindigkeit braucht mehr Zeit – in A dauert ein Takt länger als im Ruhesystem der Uhr.",
-   "Aus Sicht von A legt das Photon zwar einen längeren, schrägen Weg zurück, wird dabei aber vom bewegten Kasten mitgenommen und ist entsprechend schneller. Ein Takt dauert deshalb in beiden Systemen gleich lang.",
-   "Die bewegte Uhr geht nur scheinbar langsamer: Das Licht braucht länger bis zum Beobachter. In Wirklichkeit vergeht die Zeit überall gleich."
+   "Das Photon läuft auch auf dem längeren schrägen Weg mit c; für A dauert ein Takt länger als im Ruhesystem.",
+   "Für A ist der Weg länger, das Photon wird aber mitgenommen und ist schneller; der Takt dauert gleich lang.",
+   "Die bewegte Uhr geht nur scheinbar nach: Der Effekt verschwindet, wenn man die Laufzeit des Lichts zum Beobachter herausrechnet."
   ],
   "predictOk": 0,
   "forschen": [

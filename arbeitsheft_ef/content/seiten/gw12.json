@@ -6,9 +6,9 @@
  "frage": "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
  "auftrag": "Miss an Station 6 den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten und prüfe an den Stationen 3 und 4, ob der Satz des Pythagoras genau diese Werte liefert.",
  "predict": [
-  "Das Photon läuft auch auf dem längeren schrägen Weg mit genau c. Ein längerer Weg bei gleicher Geschwindigkeit braucht mehr Zeit – in A dauert ein Takt länger als im Ruhesystem der Uhr.",
-  "Aus Sicht von A legt das Photon zwar einen längeren, schrägen Weg zurück, wird dabei aber vom bewegten Kasten mitgenommen und ist entsprechend schneller. Ein Takt dauert deshalb in beiden Systemen gleich lang.",
-  "Die bewegte Uhr geht nur scheinbar langsamer: Das Licht braucht länger bis zum Beobachter. In Wirklichkeit vergeht die Zeit überall gleich."
+  "Das Photon läuft auch auf dem längeren schrägen Weg mit c; für A dauert ein Takt länger als im Ruhesystem.",
+  "Für A ist der Weg länger, das Photon wird aber mitgenommen und ist schneller; der Takt dauert gleich lang.",
+  "Die bewegte Uhr geht nur scheinbar nach: Der Effekt verschwindet, wenn man die Laufzeit des Lichts zum Beobachter herausrechnet."
  ],
  "predictOk": 0,
  "forschen": [

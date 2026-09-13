@@ -6,9 +6,9 @@
  "frage": "Was hat Cavendish wirklich gemessen – und wie kommt man von dort zur Erdmasse?",
  "auftrag": "Bestimme aus den Kenngrößen des Datenblatts die Anziehungskraft zwischen einer großen und einer kleinen Kugel und deute, welche Größe der Versuch liefert.",
  "predict": [
-  "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Ausschlag des Balkens ein Maß für ihre Masse.",
-  "Die Drehwaage misst nur die Kraft zwischen zwei bekannten Massen. Daraus folgt G; erst mit G, dem Ortsfaktor und dem Erdradius ergibt sich die Erdmasse.",
-  "Cavendish hat G nicht gemessen, sondern aus dem Ortsfaktor g und dem Erdradius berechnet; die Drehwaage diente nur der Bestätigung."
+  "Die Drehwaage misst die Erdmasse unmittelbar: Weil die Erde an den Kugeln zieht, ist der Balkenausschlag ihr Maß.",
+  "Die Drehwaage misst die Kraft zwischen zwei bekannten Massen; daraus folgt G. Erst G, Ortsfaktor und Erdradius liefern die Erdmasse.",
+  "Cavendish hat G nicht gemessen, sondern aus Ortsfaktor g und Erdradius berechnet; die Drehwaage diente nur der Bestätigung."
  ],
  "predictOk": 1,
  "forschen": [

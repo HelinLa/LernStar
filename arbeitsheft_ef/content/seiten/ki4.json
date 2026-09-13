@@ -6,9 +6,9 @@
  "frage": "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
  "auftrag": "Bestimme die Beschleunigung aus der Steigung der s-t²-Geraden deiner eigenen Stoppuhr-Messreihe und vergleiche sie mit den Steigungen der Auftragungen t → v und t → a.",
  "predict": [
-  "Trägt man s über t² auf, liegen die gestoppten Punkte auf einer Ursprungsgeraden; ihre Steigung ist a/2, die Beschleunigung also das Doppelte der Steigung.",
-  "Weil jeder Stopp in einen anderen Augenblick der Fahrt fällt, gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
-  "Trägt man s über t² auf, ist die Steigung unmittelbar die Beschleunigung – der Faktor ½ steckt schon in der Umrechnung der Achse."
+  "Trägt man s über t² auf, entsteht eine Ursprungsgerade; ihre Steigung ist a/2, die Beschleunigung also das Doppelte.",
+  "In der Auftragung über t² gehört zu jedem Punkt eine eigene Steigung; eine einzige Beschleunigung liefert nur die v-t-Gerade.",
+  "Trägt man s über t² auf, ist die Steigung unmittelbar a; der Faktor ½ steckt schon in der Achse."
  ],
  "predictOk": 0,
  "forschen": [

@@ -6,9 +6,9 @@
  "frage": "Welche Auftragung macht aus der E-s-Kurve eine Gerade – und was heißt ihre Steigung?",
  "auftrag": "Bestimme die Federkonstante zweimal aus derselben Messreihe: einmal aus der Steigung der F-s-Geraden, einmal aus der Steigung der E-s²-Geraden, und vergleiche die beiden Steigungen miteinander.",
  "predict": [
-  "Beide Auftragungen stammen aus derselben Messreihe, also muss auch die Steigung dieselbe sein. Über s² liest man die Federkonstante deshalb unmittelbar ab, ohne noch etwas zu verdoppeln.",
-  "Über s² ist die Steigung doppelt so groß wie bei F über s; die Federkonstante folgt daraus durch Halbieren, also D = k/2.",
-  "Über s² wird die Auftragung wieder gerade, ihre Steigung ist aber nur halb so groß wie bei F über s. Die Federkonstante folgt aus ihr erst durch Verdoppeln, also D = 2 · k."
+  "Über s² ist die Steigung dieselbe wie bei F über s; die Federkonstante liest man unmittelbar ab, D = k.",
+  "Über s² ist die Steigung doppelt so groß wie bei F über s, die Federkonstante also D = k/2.",
+  "Über s² wird die Auftragung gerade; die Steigung ist halb so groß wie bei F über s, D = 2·k."
  ],
  "predictOk": 2,
  "forschen": [

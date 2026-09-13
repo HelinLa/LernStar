@@ -606,7 +606,15 @@ def topic_pages(cfg,chtitel,fno,pn):
                        fd.STIL["text"],fd.SPALTE,fd.LH)
     B.append(bst("Problem",b_problem,fd.ABS_AUFGABE,haftet=1))
     B.append(bst("Forscherfrage",
-                 lambda h,d,y: kasten_frage(h,d,y,fd.STIL,cfg["frage"],cfg.get("auftrag")),
+                 # Der Forscherauftrag steht NICHT mehr unter der Frage
+                 # (Abdullah, 13.09.2026). Er nahm der Vermutung die Aufgabe
+                 # weg: "bestimme die Geschwindigkeit aus der Steigung der
+                 # t-s-Geraden" stand zwei Zentimeter ueber dem Kasten, in dem
+                 # das Kind genau das erraten soll. Was zu tun ist, sagen die
+                 # Arbeitsschritte in Abschnitt ③ - nach der Vermutung.
+                 # Das Feld bleibt in den Daten: Die Bruecke zeigt es in der
+                 # App, wenn der QR-Code gescannt wird.
+                 lambda h,d,y: kasten_frage(h,d,y,fd.STIL,cfg["frage"]),
                  fd.ABS_ABSCHNITT))
 
     # ② Meine Vermutung - DREI Moeglichkeiten plus eine eigene.

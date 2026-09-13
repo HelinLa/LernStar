@@ -6,8 +6,8 @@
  "frage": "Wovon hängt die Fallzeit beim waagerechten Wurf ab – von h oder von v₀?",
  "auftrag": "Miss die Fallzeit unter Variablenkontrolle für neun Abwurfhöhen und für acht Abwurfgeschwindigkeiten und entscheide an den vier Auftragungen, welche krumm bleibt, welche die Abhängigkeit von h liefert und welche zeigt, dass v₀ die Fallzeit nicht ändert.",
  "predict": [
-  "Je schneller die Kugel abgeworfen wird, desto länger bleibt sie in der Luft – für den weiteren Weg braucht sie mehr Zeit.",
-  "Die Fallzeit hängt von beidem ab: Aus größerer Höhe fällt die Kugel länger, und eine größere Abwurfgeschwindigkeit verlängert die Zeit zusätzlich ein wenig.",
+  "Die Fallzeit hängt allein von v₀ ab: Je schneller abgeworfen wird, desto länger bleibt die Kugel in der Luft.",
+  "Die Fallzeit hängt von beidem ab: Größere Höhe verlängert sie deutlich, größeres v₀ zusätzlich ein wenig.",
   "Die Fallzeit hängt allein von der Abwurfhöhe ab; eine größere Abwurfgeschwindigkeit vergrößert nur die Wurfweite."
  ],
  "predictOk": 2,

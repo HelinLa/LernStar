@@ -6,9 +6,9 @@
  "frage": "Welche Verknüpfung von Halbachse und Umlaufzeit ist für alle Planeten gleich?",
  "auftrag": "Prüfe am Datenblatt, ob der Quotient T²/a³ für alle sechs Planeten denselben Wert ergibt.",
  "predict": [
-  "Der Quotient T²/a³ hat für alle sechs Planeten denselben Wert. Kennt man von einem weiteren Körper nur die Umlaufzeit, lässt sich seine Halbachse damit berechnen, ohne sie zu messen.",
-  "Jeder Planet liefert seinen eigenen Wert, weil jeder eine andere Masse hat. Aus der Tabelle lässt sich deshalb keine gemeinsame Regel gewinnen.",
-  "Für alle Planeten ist der Quotient T/a derselbe; die Umlaufzeit wächst also einfach proportional zur großen Halbachse."
+  "T²/a³ hat für alle sechs Planeten denselben Wert; aus der Umlaufzeit eines Körpers folgt damit seine Halbachse.",
+  "Jeder Planet liefert wegen seiner eigenen Masse einen anderen Wert; eine gemeinsame Regel gibt die Tabelle nicht her.",
+  "Für alle Planeten ist T/a derselbe; die Umlaufzeit wächst also proportional zur großen Halbachse."
  ],
  "predictOk": 0,
  "forschen": [

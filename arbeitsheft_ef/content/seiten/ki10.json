@@ -6,9 +6,9 @@
  "frage": "Bedeutet Ruhe, dass keine Kraft wirkt – oder dass die Gesamtkraft null ist?",
  "auftrag": "Prüfe, ob die Lampe nur dann in Ruhe bleibt, wenn Haltekraft und Gewichtskraft gleich groß sind, und beobachte, was eine Abweichung von 1 N nach unten und nach oben ändert.",
  "predict": [
-  "Beide Kräfte wirken die ganze Zeit weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null – und nur deshalb bleibt die Lampe in Ruhe.",
-  "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst, sobald sich etwas bewegt.",
-  "Die Haltekraft des Seils ist größer als die Gewichtskraft – sonst könnte sie die Lampe nicht oben halten."
+  "Beide Kräfte wirken weiter. Weil sie gleich groß und entgegengesetzt sind, ist ihre Summe null; die Lampe bleibt in Ruhe.",
+  "Solange die Lampe still hängt, wirkt keine Kraft auf sie; Kräfte zeigen sich erst bei Bewegung.",
+  "Die Haltekraft des Seils ist größer als die Gewichtskraft; sonst bliebe die Lampe nicht oben."
  ],
  "predictOk": 0,
  "forschen": [

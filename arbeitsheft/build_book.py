@@ -585,7 +585,12 @@ def topic_pages(cfg,chtitel,fno,pn,diag=None):
                        fd.STIL["text"],fd.SPALTE,fd.LH)
     B.append(bst("Problem",b_problem,fd.ABS_AUFGABE,haftet=1))
     B.append(bst("Forscherfrage",
-                 lambda h,d,y: kasten_frage(h,d,y,fd.STIL,cfg["frage"],cfg.get("auftrag")),
+                 # Der Forscherauftrag steht NICHT mehr unter der Frage
+                 # (Abdullah, 13.09.2026). Er nahm der Vermutung die Aufgabe
+                 # weg: Was zu tun ist, sagen die Arbeitsschritte in Abschnitt
+                 # ③ - NACH der Vermutung. Das Feld bleibt in den Daten, die
+                 # Bruecke zeigt es in der App beim Scannen des QR-Codes.
+                 lambda h,d,y: kasten_frage(h,d,y,fd.STIL,cfg["frage"]),
                  fd.ABS_ABSCHNITT))
 
     # ② Meine Vermutung - DREI Moeglichkeiten plus eine eigene.
