@@ -652,6 +652,27 @@ gedehnt.
 Am Beamer bekommt das Bild `1,75` von `2,75` Spalten statt der Haelfte - die
 Statuszeile daneben ist Beiwerk.
 
+**Auch im NORMALEN Fenster wird jetzt scharf gezeichnet** (seit 14.09.2026,
+`_simSchaerfeFaktor` / `_simSchaerfen`, aufgerufen in `openPhysicsSim` wie der
+Vollbildknopf). Vorher galt die Skalierung nur im Vollbild: Die Leinwand traegt
+420 Bildpunkte Nennbreite und wird per CSS auf die Spaltenbreite gedehnt, auf
+einem Geraet mit doppelter Punktdichte noch einmal - gezeichnet wurde in 420
+Punkte, dargestellt auf rund 1100. Deshalb sah es am Beamer scharf aus und auf
+dem Schuelergeraet nicht; gemeldet hat es eine Klasse beim Test der
+Einfuehrungsphase.
+
+**Die Typografie der Diagramme kommt aus sechs Konstanten** (`_PLOT_ZAHL`,
+`_PLOT_TITEL`, `_PLOT_ACHSE`, `_PLOT_GITTER`, `_PLOT_TICK_F`, `_PLOT_TITEL_F`).
+Achsenzahlen standen bei **2,56:1** Kontrast auf Weiss - unter der Schwelle von
+4,5:1 und 5,7-fach schwaecher als der Text im gedruckten Heft (14,68:1).
+
+> **Farbe darf pauschal, Schriftgrad nicht.** Gemessen haben nur **14 von 47**
+> Diagramm-Zeichnern `padL >= 56` und `padB >= 38`; bei den uebrigen liegt padL
+> bei 34 bis 48, dort laeuft eine 12-px-Zahl aus dem Diagramm. Und von den
+> **520** Vorkommen von `#94a3b8` sind nur 107 Achsentext - die uebrigen sind
+> Gitter und blasse Umrisse, wo blass richtig ist. Ein Pauschaltausch haette die
+> gewollte Abstufung platt gemacht.
+
 ## simcheck/ – Pruefwerkzeuge
 
 Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
