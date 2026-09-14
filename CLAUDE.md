@@ -375,11 +375,31 @@ ist Lesehilfe und nimmt das Ergebnis NIE vorweg. `pruefe_profil.py` haelt
 
 Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
 Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
-28 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
+27 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
 
-Stand 14.09.2026: **178 Schuelerseiten + 125 Seiten Lehrerband**, 28 Einheiten,
-23 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
-Bruecke bei 570 Heftseiten, Registry bei 226 Simulationen.
+Stand 14.09.2026: **168 Schuelerseiten + 121 Seiten Lehrerband**, 27 Einheiten,
+22 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
+Bruecke bei 569 Heftseiten, Registry bei 226 Simulationen.
+
+> **ki2 ist entfallen** (Abdullah, 14.09.2026): "den unterpunkt brauchen wir
+> doch gar nicht, wir haben doch den läufer oben und können dort alles
+> thematisieren ... außerdem passt auch der einstieg nicht". ki1 traegt die
+> Aussage bereits (Vermutung 1 "egal wann man stoppt", Aufgabe "zwei Zeilen
+> und danach zwei ganz andere"), und ki2s Einstieg (Zugfahrt mit
+> Kilometersteinen) passte nicht zum Lauftreff-Faden.
+>
+> Vier Dinge hingen daran und fielen NICHT von selbst weg:
+> ki1s `ueberleitung` kuendigte ki2 woertlich an · die Loesung von ki1s
+> offener Uebungsaufgabe endete mit "Genau dieser Fall steht auf der
+> naechsten Seite" · der Kompetenzcode **K7** kam im ganzen Band nur in ki2
+> vor (seine Poster-Aufgabe ist nach ki3 gewandert und hat dort eine
+> Doppelung ersetzt - ki3s Aufgabe UND Alltag rechneten beide Δv/Δt) · und
+> das Basiskonzept **"Zufall und Determiniertheit"**, das der Lehrplan dem
+> Inhaltsfeld 1 ausdruecklich zuweist ("statistische Messunsicherheit"),
+> hatte in Kapitel 1 keinen Traeger mehr - es steht jetzt auf ki5, wo zwei
+> Rechenwege verschiedene g liefern. Dazu Wortschatz und Test-Vorbereitung:
+> "SPANNWEITE" wurde in keiner Einheit mehr erklaert, eine Kann-ich-Aussage
+> verlangte die Spannweite dreier Messfahrten.
 
 **Der Einstieg ist kuerzer als in der Sek I** (seit 13.09.2026): drei Saetze,
 26-45 Woerter statt 42-59. `formregeln.pruefe_seite(..., klasse=11)`, und

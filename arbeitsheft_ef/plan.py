@@ -70,7 +70,6 @@ KAPITEL = [
             "eine Messung erst dann etwas wert ist, wenn man ihre Unsicherheit kennt."),
         "themen": [
             {"id": "ki1",  "name": "Wie schnell fährt der Wagen wirklich?",                       "sim": "gleichfoermig"},
-            {"id": "ki2",  "name": "Wie gut ist eine digitale Messung?",                          "sim": "gleichfoermig"},
             {"id": "ki3",  "name": "Wie schnell wird der Wagen schneller?",                       "sim": "beschleunigung-ef"},
             {"id": "ki4",  "name": "Warum trägt man t² auf?",                                     "sim": "beschleunigung-ef"},
             {"id": "ki5",  "name": "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?", "sim": "freierfall"},

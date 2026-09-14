@@ -44,13 +44,13 @@
   "zeilen": 5,
   "loesung": "Erstes Paar: Δv = 4,76 m/s − 0,68 m/s = 4,08 m/s und Δt = 2,38 s − 0,34 s = 2,04 s, also Δv/Δt = 4,08 m/s : 2,04 s = 2,00 m/s². Zweites Paar: Δv = 4,76 m/s − 3,84 m/s = 0,92 m/s und Δt = 2,38 s − 1,92 s = 0,46 s, also 0,92 m/s : 0,46 s = 2,00 m/s². Die beiden Paare liegen weit auseinander und liefern dennoch dieselbe Zahl; genau das steht auch in der a-Spalte, dort 2,00 in jeder Zeile ab der zweiten. Δv/Δt ist die Steigung der Verbindungsgeraden zweier Punkte. Ist sie für jedes Paar gleich, so liegen alle Punkte auf einer einzigen Geraden, und weil der Wagen aus der Ruhe startet, geht diese Gerade durch den Ursprung. Eine Ursprungsgerade mit der Steigung a heißt v/t = a für jeden Punkt; nach v umgestellt ergibt das v = a · t. Die Ausgleichsgerade bestätigt es mit y = 2,000·x bei R² = 1,0000."
  },
- "alltag": "Ein Kleinwagen beschleunigt laut Prospekt in 9,5 s von 0 auf 100 km/h. Berechne daraus Δv/Δt in m/s².",
+ "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
  "alltagAfb": "II",
- "alltagKomp": "S7",
+ "alltagKomp": "K7",
  "ueberleitung": "Die Auftragung t → v gab dir sofort eine Zahl. Dieselben Messwerte über t → s meldeten dagegen: keine Gerade, sondern eine Parabel. Auf der nächsten Seite siehst du, mit welchem Griff auch daraus eine Gerade wird – und wie du a ein zweites Mal gewinnst, diesmal aus dem Weg.",
  "name": "Wie schnell wird der Wagen schneller?",
  "theme": "ef_mechanik",
- "alltagLoesung": "100 km/h = 100 / 3,6 m/s = 27,78 m/s. Aus der Ruhe heraus ist Δv = 27,78 m/s und Δt = 9,5 s, also Δv/Δt = 27,78 m/s / 9,5 s = 2,92 m/s². Der Wert liegt innerhalb der Reglerspanne 0,5 bis 8,0 m/s², lässt sich am Bildschirm also nachstellen.",
+ "alltagLoesung": "Erwartet wird „t → v“: Nur dort ist die gesuchte Größe die Steigung, und sie lässt sich aus zwei beliebigen Punkten ablesen. „t → s“ zeigt eine Parabel – daraus ist keine einzelne Zahl zu holen. „t → a“ belegt nur, dass sich die Beschleunigung nicht ändert; das ist eine Kontrolle, keine Messung von a. Wer sich für „t → a“ entscheidet, muss anführen, dass die Waagerechte die Konstanz zeigt – dann gehörte „t → v“ als zweites Diagramm daneben, und dafür ist auf dem Poster kein Platz.",
  "predictWarum": [
   "Widerlegt: Ein Mittelwert von Geschwindigkeiten hat die Einheit m/s und kann keine Beschleunigung sein.",
   "Widerlegt: Aus der Ruhe trifft v/t zufällig dieselbe Zahl; es ist aber der Quotient EINES Punktes und kein Δv/Δt – bei einem Start mit v₀ ≠ 0 versagt er.",

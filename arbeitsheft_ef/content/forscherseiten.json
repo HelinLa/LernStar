@@ -48,7 +48,7 @@
   "alltag": "In einer Lauf-App ist Läuferin A nach 100 s bei 200 m und nach 400 s bei 800 m. Bestimme ihre Geschwindigkeit in Metern je Sekunde.",
   "alltagAfb": "II",
   "alltagKomp": "S7",
-  "ueberleitung": "Die Steigung deiner Geraden gab die Geschwindigkeit, ohne dass du sie am Regler abgelesen hast. Auf der nächsten Seite prüfst du nach, ob das auch gilt, wenn du zu ganz anderen Augenblicken stoppst und zwei ganz andere Punkte markierst.",
+  "ueberleitung": "Deine Steigung gab die Geschwindigkeit, und es war gleichgültig, wann du gestoppt hast. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während ein Wagen schneller wird: Dann liegen die Punkte im t-s-Diagramm nicht mehr auf einer Geraden, und eine einzige Steigung reicht nicht mehr aus.",
   "name": "Wie schnell läuft sie wirklich?",
   "theme": "ef_mechanik",
   "alltagLoesung": "Zwei Punkte derselben Geraden genügen: Δs = 800 m − 200 m = 600 m und Δt = 400 s − 100 s = 300 s, also v = 600 m / 300 s = 2,00 m/s. Gegenprobe mit je einem einzelnen Punkt: 200 m / 100 s = 2,00 m/s und 800 m / 400 s = 2,00 m/s – beide Male dieselbe Zahl, weil die Gerade durch den Ursprung geht. Genau das war am Bildschirm der Grund, warum der Augenblick des Stoppens gleichgültig ist.",
@@ -56,67 +56,6 @@
    "Am Bildschirm: Δs/Δt ergibt bei jedem Punktepaar 4,00 m/s, gleich wann gestoppt wurde.",
    "Widerlegt: Die fünf Stopps liegen in ungleichen Abständen und trotzdem auf einer Geraden mit R² = 1,0000.",
    "Widerlegt: Zu jedem größeren Weg gehört eine größere Zeit; der Quotient aus beiden bleibt gleich."
-  ]
- },
- {
-  "id": "ki2",
-  "basiskonzept": "Zufall und Determiniertheit",
-  "titel": "Wann du stoppst, ist gleichgültig",
-  "problem": "Auf der Zugfahrt notiert Mira zu jedem Kilometerstein, den sie zufällig bemerkt, die Uhrzeit – zweimal kurz hintereinander, dann lange nichts. Tobias hält das für planlos gestoppt. Mira widerspricht.",
-  "frage": "Wie gewinnt man die Geschwindigkeit aus einer selbst gestoppten Messreihe?",
-  "auftrag": "Bestimme aus einer selbst gestoppten Messreihe die Steigung der t-s-Geraden, wiederhole das bei einer zweiten Reglerstellung und prüfe beide Ergebnisse an den Auftragungen t → v und t → a.",
-  "predict": [
-   "Wer früh stoppt, bekommt eine flachere Gerade als jemand, der spät stoppt.",
-   "Der Zeitpunkt ist gleichgültig, alle Stopps liegen auf derselben Geraden.",
-   "Nur zwei benachbarte Zeilen geben die richtige Steigung."
-  ],
-  "predictOk": 1,
-  "forschen": [
-   "Stelle „Geschwindigkeit v“ auf 4,0 m/s und stoppe fünfmal mit „Zeit stoppen“.",
-   "Wähle „t → s“, drücke „Steigung messen“ und markiere zwei Punkte auf der Geraden.",
-   "Markiere danach zwei ganz andere Punkte derselben Geraden."
-  ],
-  "tabCols": [
-   "Welche zwei Punkte?",
-   "Δs, Δt und die Steigung in m/s"
-  ],
-  "tabRows": [
-   "erste Wahl",
-   "zweite Wahl",
-   "Regler „Geschwindigkeit v“"
-  ],
-  "fachtext": "Gleichförmig heißt: In gleichen Zeitspannen werden gleiche Wege zurückgelegt. Die Auftragung t → s prüft das. Die gestoppten Punkte liegen auf einer Ursprungsgeraden, das bedeutet s = k · t. Die Steigung k = Δs/Δt hat die Einheit Meter je Sekunde. Damit ist k die Geschwindigkeit, und es folgt s = v · t. Ein einzelner Quotient s/t nutzt nur eine Zeile, die Steigung alle zugleich. Deshalb ist es gleichgültig, welche zwei Punkte man markiert. Wer früher oder später stoppt, landet auf derselben Geraden.",
-  "merksatz": [
-   {
-    "pre": "Die gestoppten Wertepaare liegen auf einer Ursprungsgeraden: s ~ t. Ihre Steigung Δs/Δt ist die",
-    "loesung": "Geschwindigkeit",
-    "post": "; damit gilt s = v · t."
-   },
-   {
-    "pre": "Gegenprobe mit denselben Zeilen: Die t-v-Gerade ist waagerecht, die t-a-Gerade liegt auf",
-    "loesung": "null",
-    "post": "."
-   }
-  ],
-  "beobachtung": "Deine Zeiten sind andere als die hier genannten – du hast in anderen Augenblicken gestoppt. Bei 4,0 m/s füllte sich die Tabelle hier mit 0,50 s zu 2,00 m, 0,88 s zu 3,52 m, 1,28 s zu 5,12 m, 1,74 s zu 6,96 m und 2,20 s zu 8,80 m; in der Spalte v stand jedes Mal 4,00 m/s. Unter „t → s“ steht dazu y = 4,000·x mit R² = 1,0000 und „erwartet: 4,000“, darunter „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ mit 4,00 m/s und „Abweichung 0,00 %“. Markierst du die beiden äußeren Punkte, zeigt das Steigungsdreieck Δs = 8,80 m − 2,00 m = 6,80 m und Δt = 2,20 s − 0,50 s = 1,70 s, also 4,00 m/s. Markierst du stattdessen die beiden mittleren, steht dort Δs = 6,96 m − 3,52 m = 3,44 m und Δt = 1,74 s − 0,88 s = 0,86 s – wieder 4,00 m/s. Der Abstand der beiden Punkte ändert die Zahl nicht.",
-  "aufgabe": {
-   "frage": "Berechne aus den Wertepaaren (0,50 s | 2,00 m) und (2,20 s | 8,80 m) die Steigung der Geraden.",
-   "zeilen": 4,
-   "komp": "E7",
-   "afb": "III",
-   "loesung": "Steigung = Δs/Δt = (8,80 m − 2,00 m) / (2,20 s − 0,50 s) = 6,80 m / 1,70 s = 4,00 m/s. Genau diese Zahl steht unter „t → s“ als Steigung der Ausgleichsgeraden, und dieselbe Zahl liefert bei „t → v“ der Achsenabschnitt der Waagerechten – zwei Auftragungen, ein Ergebnis. Die Angabe „Abweichung 0,00 %“ vergleicht die gemessene Steigung mit dem Wert, der am Regler eingestellt war. Über die Güte einer Messung sagt sie deshalb nichts: Die Simulation bedient Uhr, Wegmesser und Tacho aus derselben Rechnung s = v · t, und die Uhr springt in Schritten von 0,02 s, sodass jede Zeile auf allen angezeigten Stellen aufgeht. Eine Stoppuhr in der Hand hat dagegen eine Reaktionszeit von etwa 0,2 s. Dort streuen die Punkte um die Gerade, und erst dort trägt die Ausgleichsgerade ihren Namen: Sie mittelt über alle Messwerte, statt einem einzelnen Quotienten s/t zu glauben."
-  },
-  "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
-  "alltagAfb": "II",
-  "alltagKomp": "K7",
-  "ueberleitung": "Zwei verschiedene Punktpaare, dieselbe Steigung – der Augenblick des Stoppens hat nichts geändert. Auf der nächsten Seite drückst du dieselbe Stoppuhr, während der Wagen schneller wird: Dann ist die Punktfolge im t-s-Diagramm keine Gerade mehr, und eine einzige Steigung reicht nicht mehr aus.",
-  "name": "Wie gut ist eine digitale Messung?",
-  "theme": "ef_mechanik",
-  "alltagLoesung": "Erwartet wird „t → s“ mit der Begründung, dass dort die gesuchte Größe die Steigung ist und sich aus zwei beliebigen Punkten ablesen lässt. „t → v“ zeigt die Geschwindigkeit zwar als Höhe der Waagerechten, belegt aber nicht, dass Weg und Zeit proportional sind; „t → a“ sagt nur, dass sich nichts ändert. Wer sich für „t → v“ entscheidet, muss dafür anführen, dass die Konstanz von v unmittelbar zu sehen ist – dann ist auch das eine tragfähige Antwort.",
-  "predictWarum": [
-   "Widerlegt: Zwei früh gewählte und zwei spät gewählte Punkte liefern dieselbe Steigung.",
-   "Am Bildschirm: Alle fünf Stopps liegen auf y = 4,000·x, unabhängig vom Augenblick des Drückens.",
-   "Widerlegt: Gerade die weit auseinanderliegenden Punkte geben dieselbe Zahl wie die benachbarten."
   ]
  },
  {
@@ -165,13 +104,13 @@
    "zeilen": 5,
    "loesung": "Erstes Paar: Δv = 4,76 m/s − 0,68 m/s = 4,08 m/s und Δt = 2,38 s − 0,34 s = 2,04 s, also Δv/Δt = 4,08 m/s : 2,04 s = 2,00 m/s². Zweites Paar: Δv = 4,76 m/s − 3,84 m/s = 0,92 m/s und Δt = 2,38 s − 1,92 s = 0,46 s, also 0,92 m/s : 0,46 s = 2,00 m/s². Die beiden Paare liegen weit auseinander und liefern dennoch dieselbe Zahl; genau das steht auch in der a-Spalte, dort 2,00 in jeder Zeile ab der zweiten. Δv/Δt ist die Steigung der Verbindungsgeraden zweier Punkte. Ist sie für jedes Paar gleich, so liegen alle Punkte auf einer einzigen Geraden, und weil der Wagen aus der Ruhe startet, geht diese Gerade durch den Ursprung. Eine Ursprungsgerade mit der Steigung a heißt v/t = a für jeden Punkt; nach v umgestellt ergibt das v = a · t. Die Ausgleichsgerade bestätigt es mit y = 2,000·x bei R² = 1,0000."
   },
-  "alltag": "Ein Kleinwagen beschleunigt laut Prospekt in 9,5 s von 0 auf 100 km/h. Berechne daraus Δv/Δt in m/s².",
+  "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
   "alltagAfb": "II",
-  "alltagKomp": "S7",
+  "alltagKomp": "K7",
   "ueberleitung": "Die Auftragung t → v gab dir sofort eine Zahl. Dieselben Messwerte über t → s meldeten dagegen: keine Gerade, sondern eine Parabel. Auf der nächsten Seite siehst du, mit welchem Griff auch daraus eine Gerade wird – und wie du a ein zweites Mal gewinnst, diesmal aus dem Weg.",
   "name": "Wie schnell wird der Wagen schneller?",
   "theme": "ef_mechanik",
-  "alltagLoesung": "100 km/h = 100 / 3,6 m/s = 27,78 m/s. Aus der Ruhe heraus ist Δv = 27,78 m/s und Δt = 9,5 s, also Δv/Δt = 27,78 m/s / 9,5 s = 2,92 m/s². Der Wert liegt innerhalb der Reglerspanne 0,5 bis 8,0 m/s², lässt sich am Bildschirm also nachstellen.",
+  "alltagLoesung": "Erwartet wird „t → v“: Nur dort ist die gesuchte Größe die Steigung, und sie lässt sich aus zwei beliebigen Punkten ablesen. „t → s“ zeigt eine Parabel – daraus ist keine einzelne Zahl zu holen. „t → a“ belegt nur, dass sich die Beschleunigung nicht ändert; das ist eine Kontrolle, keine Messung von a. Wer sich für „t → a“ entscheidet, muss anführen, dass die Waagerechte die Konstanz zeigt – dann gehörte „t → v“ als zweites Diagramm daneben, und dafür ist auf dem Poster kein Platz.",
   "predictWarum": [
    "Widerlegt: Ein Mittelwert von Geschwindigkeiten hat die Einheit m/s und kann keine Beschleunigung sein.",
    "Widerlegt: Aus der Ruhe trifft v/t zufällig dieselbe Zahl; es ist aber der Quotient EINES Punktes und kein Δv/Δt – bei einem Start mit v₀ ≠ 0 versagt er.",
@@ -241,7 +180,7 @@
  },
  {
   "id": "ki5",
-  "basiskonzept": "Mathematisieren und Vorhersagen",
+  "basiskonzept": "Zufall und Determiniertheit",
   "titel": "Zwei Wege, zwei Zahlen",
   "problem": "In Tobias' Spiel fällt eine Kiste durch den Hallenboden, wenn der Rechner stockt. Mira hält die Zeitschritte für zu grob. Tobias rechnet seine eigene Fallzeit auf zwei Wegen aus und bekommt zwei verschiedene Werte für g.",
   "frage": "Was bleibt vom Unterschied der beiden g-Werte, wenn man eine Messreihe auswertet?",

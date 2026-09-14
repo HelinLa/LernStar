@@ -1176,7 +1176,11 @@ def basiskonzept_seiten(pn):
         for konz,stich in _bk.items():
             nummern=[str(i+1) for i,tid in enumerate(ch["topics"])
                      if FSD.get(tid,{}).get("basiskonzept")==konz]
-            zeilen.append([konz,stich,("Seiten "+", ".join(nummern)) if nummern
+            # "Forscherkreis", nicht "Seiten": `nummern` sind die Positionen der
+            # Einheiten im Kapitel (i+1), nicht Blattzahlen. Gedruckt stand hier
+            # "Seiten 1, 2, 3" - wer Seite 1 aufschlug, fand das Deckblatt. Die
+            # Zahl ist dieselbe, die in der Kopfzeile jeder Forscherseite steht.
+            zeilen.append([konz,stich,("Forscherkreis "+", ".join(nummern)) if nummern
                            else "in diesem Kapitel nicht"])
         B.append(bst("Konzepttabelle "+ch["id"],
                      lambda h,d,y,z=zeilen: fd.tabelle(h,d,y,fd.STIL,

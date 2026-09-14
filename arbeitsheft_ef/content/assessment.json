@@ -8,10 +8,6 @@
      "tipp": "Diese Eigenschaft der Ausgleichsgeraden ist im s-t-Diagramm die Geschwindigkeit und im v-t-Diagramm die Beschleunigung; gebildet wird sie als Δy/Δx aus zwei beliebigen Punkten."
     },
     {
-     "wort": "SPANNWEITE",
-     "tipp": "Vom kleinsten bis zum größten Wert dreier Messfahrten reicht sie; erst sie sagt, wie sicher eine gemessene Steigung ist – R² sagt es nicht."
-    },
-    {
      "wort": "LINEARISIERUNG",
      "tipp": "Der Kunstgriff, der aus einer Parabel eine Ursprungsgerade macht: Man wählt die Achsen neu und trägt s über t² auf."
     },
@@ -56,7 +52,6 @@
   "prep": {
    "kannIch": [
     "Ich kann aus Weg-Zeit-Paaren die Geschwindigkeit als Steigung v = Δs/Δt bestimmen und begründen, warum die Ausgleichsgerade belastbarer ist als ein einzelner Quotient s/t.",
-    "Ich kann erklären, dass R² nur die Anpassungsgüte misst, und mit der Spannweite dreier Messfahrten angeben, wie sicher meine Steigung wirklich ist.",
     "Ich kann die Beschleunigung als Steigung der v-t-Geraden ablesen und sie aus der s-t-Parabel gewinnen, indem ich s über t² auftrage und a = 2 · Steigung bilde.",
     "Ich kann die Fallbeschleunigung über g = v/t und über g = 2s/t² bestimmen und begründen, warum die schrittweise Rechnung den zweiten Wert zu groß macht.",
     "Ich kann den waagerechten Wurf in zwei Teilbewegungen zerlegen und mit t = √(2h/g) und xW = v₀ · t begründen, warum v₀ die Fallzeit nicht verändert.",

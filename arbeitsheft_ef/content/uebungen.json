@@ -68,80 +68,8 @@
    "frage": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
    "prompt": "Tobias bestimmt die Geschwindigkeit aus einer einzigen gestoppten Zeile: v = 8,96 m / 2,24 s = 4,00 m/s. Mira nimmt die Steigung der Ausgleichsgeraden durch alle fünf Punkte und erhält dieselbe Zahl. Erkläre, warum beide Wege hier genau übereinstimmen, und beurteile, ob daraus folgt, dass eine einzelne Ablesung im Allgemeinen genügt.",
    "zeilen": 4,
-   "loesung": "Beide Wege stimmen überein, weil die Uhr in Schritten von 0,02 s springt und der Wegmesser den Weg als s = v · t bildet: In jeder Zeile ist s genau das v-fache von t, hier 8,96 m = 4,00 m/s · 2,24 s. Der Quotient s/t einer einzelnen Zeile ist deshalb schon die Steigung selbst, und eine Ausgleichsgerade durch lauter exakte Punkte liefert nichts anderes – daher y = 4,000·x und R² = 1,0000 nach jeder Stoppfolge. Verallgemeinern lässt sich das nicht: Diese Übereinstimmung ist eine Eigenschaft der digitalen Anzeige, nicht der Messmethode. Sobald eine Zeit wirklich gestoppt und nicht aus s = v · t zurückgerechnet wird, streut jede Ablesung; dann liefert eine einzelne Zeile einen zufälligen Wert, die Steigung aus allen Punkten dagegen einen belastbaren. Genau dieser Fall steht auf der nächsten Seite."
+   "loesung": "Beide Wege stimmen überein, weil die Uhr in Schritten von 0,02 s springt und der Wegmesser den Weg als s = v · t bildet: In jeder Zeile ist s genau das v-fache von t, hier 8,96 m = 4,00 m/s · 2,24 s. Der Quotient s/t einer einzelnen Zeile ist deshalb schon die Steigung selbst, und eine Ausgleichsgerade durch lauter exakte Punkte liefert nichts anderes – daher y = 4,000·x und R² = 1,0000 nach jeder Stoppfolge. Verallgemeinern lässt sich das nicht: Diese Übereinstimmung ist eine Eigenschaft der digitalen Anzeige, nicht der Messmethode. Sobald eine Zeit wirklich gestoppt und nicht aus s = v · t zurückgerechnet wird, streut jede Ablesung; dann liefert eine einzelne Zeile einen zufälligen Wert, die Steigung aus allen Punkten dagegen einen belastbaren."
   }
- },
- {
-  "id": "ki2",
-  "komp": [
-   "S6",
-   "S7",
-   "E4",
-   "E7"
-  ],
-  "afb": [
-   "I",
-   "II",
-   "II",
-   "III"
-  ],
-  "lueckensaetze": [
-   {
-    "pre": "Liegen die gestoppten Wertepaare auf einer Ursprungsgeraden, ist der Weg zur Zeit",
-    "loesung": "proportional",
-    "post": "; es gilt s = v · t."
-   },
-   {
-    "pre": "Die Geschwindigkeit ist die Steigung der t-s-Geraden, also der Differenzenquotient v =",
-    "loesung": "Δs/Δt",
-    "post": "."
-   },
-   {
-    "pre": "Bei der Auftragung t → v liegen die Punkte einer Messreihe auf einer Waagerechten; ihr",
-    "loesung": "Achsenabschnitt",
-    "post": "ist die Geschwindigkeit."
-   },
-   {
-    "pre": "Weil der Tacho in jeder Zeile denselben Wert zeigt, ist Δv null – die t-a-Gerade liegt auf der",
-    "loesung": "Nulllinie",
-    "post": "."
-   }
-  ],
-  "richtigfalsch": [
-   {
-    "aussage": "Die Steigung der Ausgleichsgeraden nutzt alle Zeilen einer Messreihe, ein einzelner Quotient s/t dagegen nur eine.",
-    "stimmt": true
-   },
-   {
-    "aussage": "Wer erst spät auf „Zeit stoppen“ drückt, erhält eine steilere t-s-Gerade als jemand, der früh stoppt.",
-    "stimmt": false
-   },
-   {
-    "aussage": "Bei einer gleichförmigen Fahrt ist die Steigung der t-v-Geraden null, ihr Achsenabschnitt dagegen die Geschwindigkeit.",
-    "stimmt": true
-   },
-   {
-    "aussage": "Eine zweite Messreihe mit größerer Reglerstellung liefert im t-s-Diagramm eine flachere Gerade.",
-    "stimmt": false
-   }
-  ],
-  "mc": {
-   "frage": "Eine gestoppte Messreihe ergibt im t-s-Diagramm die Ursprungsgerade y = 6,000·x. Was folgt daraus?",
-   "optionen": [
-    "Der Wagen legt zwar in jeder Sekunde 6,00 m zurück, wird dabei aber langsam schneller. Eine wachsende Geschwindigkeit würde die Punktfolge krümmen; hier liegen die Punkte jedoch auf einer Geraden.",
-    "Die Zahl 6,000 gibt den Weg an, den der Wagen insgesamt zurückgelegt hat. Der Gesamtweg steht aber in der Spalte s der letzten Zeile und nicht in der Steigung.",
-    "Die Geschwindigkeit beträgt 6,00 m/s: Sie ist die Steigung der Geraden und damit aus allen Zeilen der Reihe zugleich gewonnen."
-   ],
-   "richtig": 2,
-   "erklaerung": "Eine Ursprungsgerade im t-s-Diagramm bedeutet s ~ t, also s = k · t mit festem Faktor k. Dieser Faktor ist die Steigung, seine Einheit ist Meter je Sekunde – damit ist k die Geschwindigkeit, und aus der Messung wird das Weg-Zeit-Gesetz s = v · t. Hier ist k = 6,000, die Fahrt lief also mit 6,00 m/s. Schneller werden kann der Wagen dabei nicht: Eine wachsende Geschwindigkeit krümmt die Punktfolge, und die Gegenprobe t → a legt alle Werte auf die Nulllinie. Der Gesamtweg ist die Steigung ebenfalls nicht; er steht in der Spalte s der letzten Zeile und hängt davon ab, wann zuletzt gestoppt wurde – die Steigung hängt davon gerade nicht ab."
-  },
-  "offen": {
-   "frage": "Beurteile die Protokollangabe „v = 4,0 m/s, abgelesen am Regler“ und beschreibe, wie sich dieselbe Zahl aus einer eigenen Messreihe gewinnen lässt.",
-   "prompt": "Beurteile die Protokollangabe „v = 4,0 m/s, abgelesen am Regler“ und beschreibe, wie sich dieselbe Zahl aus einer eigenen Messreihe gewinnen lässt.",
-   "zeilen": 4,
-   "loesung": "Die Angabe ist keine Messung, sondern eine Einstellung: Sie steht schon vor der Fahrt fest und würde auch dann dort stehen, wenn niemand gestoppt hätte. Gemessen wird die Geschwindigkeit so: Während der Fahrt mehrfach „Zeit stoppen“ drücken, sodass die Wertetabelle mindestens fünf Zeilen mit Zeit, Weg und Tachowert trägt. Diese Wertepaare in der Auftragung t → s eintragen; sie liegen auf einer Ursprungsgeraden. Deren Steigung Δs/Δt hat die Einheit Meter je Sekunde und ist die gesuchte Geschwindigkeit – gewonnen aus allen Zeilen zugleich, nicht aus einer. Die Gegenprobe liefern t → v, wo der Achsenabschnitt der Waagerechten dieselbe Zahl wiederholt, und t → a, wo alle Werte auf der Nulllinie liegen."
-  },
-  "theme": "ef_mechanik"
  },
  {
   "id": "ki3",

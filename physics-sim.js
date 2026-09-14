@@ -42019,7 +42019,7 @@ function _glfHTML() {
     <h3 class="sim-h3">🏃 Gleichförmige Bewegung – die Geschwindigkeit aus der Steigung messen</h3>
     <div class="fpm-grid">
       <div>
-        <canvas id="glfAnim" width="420" height="250" class="phys-anim-cv"></canvas>
+        <canvas id="glfAnim" width="420" height="290" class="phys-anim-cv"></canvas>
         <div class="phys-ctrl" style="margin-top:8px">
           <span class="phys-ctrl-label">Geschwindigkeit v: <b id="glfVLbl">4,0 m/s</b></span>
           <input type="range" id="glfV" min="1" max="9" step="0.5" value="4"
@@ -42233,22 +42233,24 @@ function _glfUpdate(dt) {
 
 // ── Die Laeuferin ───────────────────────────────────────────────────────────
 //
-// Eine Figur mit ECHTEN GELENKEN, kein Strichmaennchen: Huefte-Knie-Fuss und
-// Schulter-Ellbogen-Hand liegen auf je zwei Gliedern fester Laenge. Wohin das
-// Knie kommt, rechnet _glfGelenk aus (Schnittpunkt zweier Kreise) - das ist
-// der Unterschied zwischen einer laufenden Figur und einer Schere aus Strichen.
+// Eine gezeichnete Sportlerin, kein Strichmaennchen: Huefte-Knie-Fuss und
+// Schulter-Ellbogen-Hand liegen auf je zwei Gliedern fester Laenge, das Knie
+// rechnet _glfGelenk als Schnitt zweier Kreise aus. Die Glieder VERJUENGEN
+// sich (Oberschenkel an der Huefte dick, am Knie schmal; Wade umgekehrt) -
+// das ist der groesste Unterschied zu zwei Strichen gleicher Dicke.
 //
-// ZWEI DINGE, die beim ersten Anlauf falsch waren und nachgerechnet auffielen:
+// DREI DINGE, die erst das Nachrechnen bzw. das gerenderte Bild zeigte:
 //
-// 1. Die Huefthoehe war frei gesetzt (0,48 H) und das Bein 0,49 H lang. Bei
-//    einem Schritt von 0,28 H braucht man aber sqrt(0,48² + 0,28²) = 0,556 H
-//    Reichweite - 462 von 800 Proben waren ueberstreckt und der Standfuss
-//    erreichte den Boden in KEINER einzigen Probe. Jetzt ist es umgekehrt: Die
-//    Huefte FOLGT dem Standfuss (hoehe = sqrt(L² - x²) mit etwas Kniebeugung),
-//    damit ist die Reichweite von der Bauart her garantiert.
-// 2. Mit einer Standphase von genau der Haelfte je Bein ist immer ein Fuss am
-//    Boden - das ist ein GANG, kein Lauf. Die Standphase deckt jetzt 0,35 des
-//    Doppelschritts, dazwischen liegt eine echte Flugphase.
+// 1. Die Huefthoehe war frei gesetzt und das Bein zu kurz: 462 von 800 Proben
+//    ueberstreckt, der Standfuss erreichte den Boden in KEINER. Jetzt FOLGT
+//    die Huefte dem Standfuss (sqrt(L² - x²) mit 6 % Kniebeugung als Spiel).
+// 2. Mit halber Standphase je Bein ist immer ein Fuss am Boden - ein GANG.
+//    Die Standphase deckt jetzt 0,35 der Periode, es bleibt eine Flugphase
+//    von 30 %.
+// 3. Die Rumpfbreite war WAAGERECHT von der Huefte abgetragen. Der Koerper
+//    steht aber schraeg (Vorlage 13°), also kreuzten sich Vorder- und
+//    Rueckenkante und der Rumpf wurde ein zackiger Klumpen. Sie gehoert auf
+//    die NORMALE der Achse Huefte->Schulter.
 //
 // Die Phase kommt aus dem WEG, nicht aus der Zeit: Steht die Bahn, steht auch
 // der Schritt.
@@ -42265,8 +42267,8 @@ function _glfGelenk(ax, ay, bx, by, l1, l2, seite) {
   return [ax + ux * a - seite * uy * h, ay + uy * a + seite * ux * h, bx, by];
 }
 
-// Fussbahn eines Beins. q in [0,1): erst Standphase am Boden nach hinten,
-// dann Schwungphase in der Luft nach vorn.
+// Fussbahn eines Beins: erst Standphase am Boden nach hinten, dann
+// Schwungphase in der Luft nach vorn.
 function _glfFuss(q, A, hub) {
   q = q - Math.floor(q);
   if (q < _GLF_STAND) { const u = q / _GLF_STAND; return [A - 2 * A * u, 0, true]; }
@@ -42274,117 +42276,160 @@ function _glfFuss(q, A, hub) {
   return [-A + 2 * A * u, -hub * Math.sin(Math.PI * u), false];
 }
 
+// Ein Glied, das sich verjuengt - mit runden Enden, damit die Gelenke weich
+// ineinander laufen.
+function _glfGlied(ctx, p1, p2, w1, w2, farbe) {
+  const dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+  const L = Math.hypot(dx, dy) || 1e-6;
+  const nx = -dy / L, ny = dx / L;
+  ctx.fillStyle = farbe;
+  ctx.beginPath();
+  ctx.moveTo(p1[0] + nx * w1 / 2, p1[1] + ny * w1 / 2);
+  ctx.lineTo(p2[0] + nx * w2 / 2, p2[1] + ny * w2 / 2);
+  ctx.lineTo(p2[0] - nx * w2 / 2, p2[1] - ny * w2 / 2);
+  ctx.lineTo(p1[0] - nx * w1 / 2, p1[1] - ny * w1 / 2);
+  ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(p1[0], p1[1], w1 / 2, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(p2[0], p2[1], w2 / 2, 0, 2 * Math.PI); ctx.fill();
+}
+
 function _glfLaeuferin(ctx, x, boden, hoehe, phase, akzent) {
-  const H = hoehe;
-  const kopfR = 0.071 * H;
+  const H = hoehe, kopfR = 0.066 * H;
   const ober = 0.245 * H, unter = 0.245 * H, L = ober + unter;
   const oarm = 0.175 * H, uarm = 0.160 * H;
-  const A = 0.26 * H, hub = 0.20 * H;
-  const BEUGE = 0.94;                       // Kniebeugung: laesst dem Gelenk Luft
+  const A = 0.26 * H, hub = 0.20 * H, BEUGE = 0.94;
 
   const p = phase - Math.floor(phase);
   const b1 = _glfFuss(p, A, hub), b2 = _glfFuss(p + 0.5, A, hub);
-
-  // ── Huefthoehe FOLGT dem Standfuss. In der Flugphase ein kleiner Bogen. ──
   let hufAb;
   if (b1[2] || b2[2]) {
     const fx = b1[2] ? b1[0] : b2[0];
     hufAb = Math.sqrt(Math.max(0, L * L - fx * fx)) * BEUGE;
   } else {
     const rand = Math.sqrt(Math.max(0, L * L - A * A)) * BEUGE;
-    // Wie weit ist die Flugphase fortgeschritten? Sie liegt zwischen dem
-    // Abstossen des einen und dem Aufsetzen des anderen Beins.
     const q = p < 0.5 ? (p - _GLF_STAND) / (0.5 - _GLF_STAND)
                       : (p - 0.5 - _GLF_STAND) / (0.5 - _GLF_STAND);
     hufAb = rand + hub * 0.22 * Math.sin(Math.PI * Math.max(0, Math.min(1, q)));
   }
   const hufX = x - 0.02 * H, hufY = boden - hufAb;
-  // Schulter VOR der Huefte und der Rumpf schmal: Die erste Fassung war
-  // gedrungen - Trikot zu breit und zu lang, kein Hals. Am gerenderten Bild
-  // nachgestellt, nicht geschaetzt.
-  const schX = x + 0.095 * H, schY = hufY - 0.335 * H;
+  const schX = x + 0.075 * H, schY = hufY - 0.335 * H;      // Vorlage 13°
   const luft = (b1[2] || b2[2]) ? 0 : 1;
 
-  // Schatten - schrumpft, wenn die Figur in der Luft ist
+  const HAUT = '#e2a878', HAUT_D = '#b7784a';
+  const HAAR = '#3b2412', HAAR_H = '#28180c';
+  const HOSE = '#312e81', HOSE_D = '#211f5e';
+  const SCHUH = '#f97316', SCHUH_D = '#c2410c', SOHLE = '#f1f5f9';
+
   ctx.fillStyle = 'rgba(15,23,42,' + (0.17 - 0.08 * luft).toFixed(3) + ')';
   ctx.beginPath();
-  ctx.ellipse(x, boden + 1, (0.30 - 0.07 * luft) * H, 0.035 * H, 0, 0, 2 * Math.PI);
+  ctx.ellipse(x, boden + 1, (0.30 - 0.07 * luft) * H, 0.030 * H, 0, 0, 2 * Math.PI);
   ctx.fill();
 
-  const HAUT = '#e2a878', HAUT_D = '#bd7f52', HAAR = '#3b2412';
-  const HOSE = '#312e81', SCHUH = '#f97316', SCHUH_D = '#c2410c';
-  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const bogen = (p0, p1, p2, n) => {
+    const r = [];
+    for (let i = 0; i <= n; i++) {
+      const t = i / n, s = 1 - t;
+      r.push([s * s * p0[0] + 2 * s * t * p1[0] + t * t * p2[0],
+              s * s * p0[1] + 2 * s * t * p1[1] + t * t * p2[1]]);
+    }
+    return r;
+  };
+  const fuellen = pts => {
+    ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    ctx.closePath(); ctx.fill();
+  };
 
   const bein = (bb, vorne) => {
     const [fx, fy] = bb;
     const [kx, ky, zx, zy] = _glfGelenk(hufX, hufY, x + fx, boden + fy, ober, unter, -1);
-    ctx.strokeStyle = vorne ? HAUT : HAUT_D;
-    ctx.lineWidth = 0.096 * H;
-    ctx.beginPath(); ctx.moveTo(hufX, hufY); ctx.lineTo(kx, ky); ctx.stroke();
-    ctx.lineWidth = 0.072 * H;
-    ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(zx, zy); ctx.stroke();
-    ctx.save(); ctx.translate(zx, zy); ctx.rotate(fy < -0.5 ? -0.38 : 0);
+    const haut = vorne ? HAUT : HAUT_D, hose = vorne ? HOSE : HOSE_D;
+    const mx = hufX + (kx - hufX) * 0.42, my = hufY + (ky - hufY) * 0.42;
+    _glfGlied(ctx, [hufX, hufY], [mx, my], 0.105 * H, 0.082 * H, hose);
+    _glfGlied(ctx, [mx, my], [kx, ky], 0.082 * H, 0.060 * H, haut);
+    const wx = kx + (zx - kx) * 0.40, wy = ky + (zy - ky) * 0.40;
+    _glfGlied(ctx, [kx, ky], [wx, wy], 0.058 * H, 0.062 * H, haut);   // Wade
+    _glfGlied(ctx, [wx, wy], [zx, zy], 0.062 * H, 0.034 * H, haut);
+    // Laufschuh mit Sohle, beim Abrollen gekippt
+    const th = fy < -0.5 ? -0.40 : 0, ca = Math.cos(th), sa = Math.sin(th);
+    const dr = (px, py) => [zx + px * ca - py * sa, zy + px * sa + py * ca];
     ctx.fillStyle = vorne ? SCHUH : SCHUH_D;
-    ctx.beginPath();
-    ctx.ellipse(0.030 * H, 0.014 * H, 0.072 * H, 0.036 * H, 0, 0, 2 * Math.PI);
-    ctx.fill(); ctx.restore();
+    fuellen([dr(-0.030 * H, -0.016 * H), dr(0.082 * H, -0.010 * H),
+             dr(0.096 * H, 0.014 * H), dr(-0.036 * H, 0.020 * H)]);
+    ctx.fillStyle = vorne ? SOHLE : '#cbd5e1';
+    fuellen([dr(-0.036 * H, 0.016 * H), dr(0.096 * H, 0.010 * H),
+             dr(0.098 * H, 0.026 * H), dr(-0.038 * H, 0.030 * H)]);
   };
   // Die Arme gehen GEGENLAEUFIG zu den Beinen - daran erkennt das Auge den Lauf.
   const arm = (bb, vorne) => {
     const zielX = schX + bb[0] * -0.50, zielY = schY + 0.21 * H + bb[1] * -0.26;
     const [ex, ey, wx, wy] = _glfGelenk(schX, schY, zielX, zielY, oarm, uarm, 1);
-    ctx.strokeStyle = vorne ? HAUT : HAUT_D;
-    ctx.lineWidth = 0.060 * H;
-    ctx.beginPath(); ctx.moveTo(schX, schY); ctx.lineTo(ex, ey); ctx.lineTo(wx, wy); ctx.stroke();
-    ctx.fillStyle = vorne ? HAUT : HAUT_D;
-    ctx.beginPath(); ctx.arc(wx, wy, 0.034 * H, 0, 2 * Math.PI); ctx.fill();
+    const haut = vorne ? HAUT : HAUT_D;
+    _glfGlied(ctx, [schX, schY], [ex, ey], 0.062 * H, 0.046 * H, haut);
+    _glfGlied(ctx, [ex, ey], [wx, wy], 0.044 * H, 0.034 * H, haut);
+    ctx.fillStyle = haut;
+    ctx.beginPath(); ctx.arc(wx, wy, 0.030 * H, 0, 2 * Math.PI); ctx.fill();   // Faust
   };
 
   bein(b2, false); arm(b1, false);          // hinten liegende Glieder zuerst
 
-  // Trikot und Hose als gefuellte Formen, nicht als Striche
+  // ── Rumpf: Brustkorb breit, Taille schmal, Huefte wieder breiter ──
+  const ax = schX - hufX, ay = schY - hufY;
+  const aL = Math.hypot(ax, ay) || 1e-6;
+  const ux = ax / aL, uy = ay / aL;
+  let nx = -uy, ny = ux;
+  if (nx < 0) { nx = -nx; ny = -ny; }        // Normale zeigt nach VORN
+  const auf = (t, quer) => [hufX + ux * aL * t + nx * quer,
+                            hufY + uy * aL * t + ny * quer];
+  const sw = 0.092 * H, bw2 = 0.098 * H, tw = 0.052 * H, hw = 0.084 * H;
   ctx.fillStyle = akzent;
-  ctx.beginPath();
-  ctx.moveTo(schX - 0.086 * H, schY - 0.040 * H);
-  ctx.lineTo(schX + 0.086 * H, schY - 0.040 * H);
-  ctx.lineTo(hufX + 0.078 * H, hufY - 0.030 * H);
-  ctx.lineTo(hufX - 0.078 * H, hufY - 0.030 * H);
-  ctx.closePath(); ctx.fill();
+  fuellen(bogen(auf(1.02, -sw * 0.95), auf(1.16, 0), auf(1.02, sw * 0.95), 10)
+    .concat(bogen(auf(0.98, sw), auf(0.74, bw2), auf(0.44, tw), 10),
+            bogen(auf(0.44, tw), auf(0.14, hw * 0.98), auf(-0.04, hw), 10),
+            bogen(auf(-0.04, -hw), auf(0.16, -hw * 0.94), auf(0.44, -tw * 1.04), 10),
+            bogen(auf(0.44, -tw * 1.04), auf(0.76, -bw2 * 0.92), auf(0.98, -sw), 10)));
   ctx.fillStyle = HOSE;
-  ctx.beginPath();
-  ctx.moveTo(hufX - 0.088 * H, hufY - 0.055 * H);
-  ctx.lineTo(hufX + 0.090 * H, hufY - 0.055 * H);
-  ctx.lineTo(hufX + 0.078 * H, hufY + 0.075 * H);
-  ctx.lineTo(hufX - 0.078 * H, hufY + 0.075 * H);
-  ctx.closePath(); ctx.fill();
+  fuellen(bogen(auf(0.20, hw * 0.96), auf(0.02, hw * 1.10), auf(-0.26, hw * 0.86), 8)
+    .concat(bogen(auf(-0.26, -hw * 0.86), auf(0.02, -hw * 1.14), auf(0.20, -hw * 0.98), 8)));
+  // Startnummer, klein und auf der Achse - sie kippt mit
+  const m0 = auf(0.52, 0), r1 = 0.030 * H, r2 = 0.022 * H;
+  ctx.fillStyle = '#f8fafc';
+  fuellen([[m0[0] + ux * r2 + nx * r1, m0[1] + uy * r2 + ny * r1],
+           [m0[0] - ux * r2 + nx * r1, m0[1] - uy * r2 + ny * r1],
+           [m0[0] - ux * r2 - nx * r1 * 0.2, m0[1] - uy * r2 - ny * r1 * 0.2],
+           [m0[0] + ux * r2 - nx * r1 * 0.2, m0[1] + uy * r2 - ny * r1 * 0.2]]);
 
-  // Hals, Kopf, Zopf
-  ctx.strokeStyle = HAUT; ctx.lineWidth = 0.048 * H;
-  ctx.beginPath(); ctx.moveTo(schX, schY); ctx.lineTo(schX + 0.016 * H, schY - 0.105 * H); ctx.stroke();
-  const kx0 = schX + 0.024 * H, ky0 = schY - 0.105 * H - kopfR * 0.92;
+  // ── Hals, Kopf, Zopf ──
+  _glfGlied(ctx, [schX, schY], [schX + 0.016 * H, schY - 0.075 * H],
+            0.050 * H, 0.044 * H, HAUT);
+  const kx0 = schX + 0.026 * H, ky0 = schY - 0.075 * H - kopfR * 0.92;
   ctx.fillStyle = HAUT;
-  ctx.beginPath(); ctx.arc(kx0, ky0, kopfR, 0, 2 * Math.PI); ctx.fill();
-  ctx.fillStyle = HAAR;
+  ctx.beginPath(); ctx.ellipse(kx0, ky0, kopfR, kopfR * 1.06, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = HAAR;                      // Haarkappe, das Ohr bleibt frei
   ctx.beginPath();
-  ctx.arc(kx0 - 0.012 * H, ky0 - 0.008 * H, kopfR * 0.98, Math.PI * 0.60, Math.PI * 1.90);
+  ctx.ellipse(kx0, ky0 - kopfR * 0.06, kopfR * 1.04, kopfR * 1.06,
+              0, Math.PI * 0.71, Math.PI * 1.94);
   ctx.fill();
   const zopf = 0.12 * H * Math.sin(2 * Math.PI * p + 0.8);
-  ctx.strokeStyle = HAAR; ctx.lineWidth = 0.046 * H;
-  ctx.beginPath();
-  ctx.moveTo(kx0 - kopfR * 0.8, ky0 - kopfR * 0.15);
-  ctx.quadraticCurveTo(kx0 - kopfR * 1.8, ky0 + 0.02 * H + zopf * 0.4,
-                       kx0 - kopfR * 2.0, ky0 + 0.10 * H + zopf);
-  ctx.stroke();
+  const zb = bogen([kx0 - kopfR * 0.75, ky0 - kopfR * 0.25],
+                   [kx0 - kopfR * 1.9, ky0 + 0.015 * H + zopf * 0.4],
+                   [kx0 - kopfR * 2.1, ky0 + 0.095 * H + zopf], 12);
+  for (let i = 0; i < zb.length - 1; i++)
+    _glfGlied(ctx, zb[i], zb[i + 1], 0.046 * H * (1 - i * 0.045),
+              0.046 * H * (1 - (i + 1) * 0.045), i % 2 ? HAAR_H : HAAR);
 
   bein(b1, true); arm(b2, true);            // vorne liegende Glieder zuletzt
-  ctx.lineCap = 'butt'; ctx.lineJoin = 'miter';
 }
 
 
 function _glfDraw(ctx, cv) {
   if (!_glf) return;
   const W = cv.width, H = cv.height;
-  const road = 168, carX = 132, pxm = _GLF_PXM;
+  // Bahn bei 200 statt 168 und Leinwand 290 statt 250: Die Laeuferin ist
+  // 78 px hoch (vorher 46) - Abdullah wollte sie groesser und wie eine
+  // Sportlerin. Gemessen bleiben 129 px ueber der Bahn und 24 px unter der
+  // letzten Fusszeile.
+  const road = 200, carX = 132, pxm = _GLF_PXM;
   const X = s => carX + (s - _glf.s) * pxm;
 
   ctx.clearRect(0, 0, W, H);
@@ -42447,10 +42492,10 @@ function _glfDraw(ctx, cv) {
   const xs = X(0);
   if (xs > -12 && xs < W + 12) {
     ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2; ctx.setLineDash([3, 3]);
-    ctx.beginPath(); ctx.moveTo(xs, road - 54); ctx.lineTo(xs, road + 12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xs, road - 88); ctx.lineTo(xs, road + 12); ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = '#0f172a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
-    ctx.fillText('Start', xs + 4, road - 58);
+    ctx.fillText('Start', xs + 4, road - 92);
   }
 
   // Lichtschranken in den ersten 10 m
@@ -42462,9 +42507,9 @@ function _glfDraw(ctx, cv) {
     // 600 Schrittphasen, Kopfoberkante bei road - 48). Durch die alte Schranke
     // waere sie hindurchgelaufen.
     ctx.strokeStyle = durch ? '#cbd5e1' : '#93c5fd'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(x, road - 54); ctx.lineTo(x, road); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, road - 88); ctx.lineTo(x, road); ctx.stroke();
     ctx.fillStyle = durch ? '#cbd5e1' : '#3b82f6';
-    ctx.beginPath(); ctx.arc(x, road - 54, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(x, road - 88, 3.5, 0, 2 * Math.PI); ctx.fill();
   });
 
   // ── Laeuferin: laeuft auf der Stelle, die Bahn wandert ────
@@ -42475,14 +42520,15 @@ function _glfDraw(ctx, cv) {
   // zwischen zwei Bildern uebersetzen, bevor es anfangen konnte.
   //
   // Erlaubt ist die Aenderung, weil `gleichfoermig` laut js/heft-bruecke.js
-  // NUR ki1 und ki2 traegt; die Sek-I-Baende zeigen auf `gleichfoermig-rs`.
+  // NUR ki1 traegt (bis zum 14.09.2026 auch ki2 - die Einheit ist entfallen);
+  // die Sek-I-Baende zeigen auf `gleichfoermig-rs`.
   // Bei `beschleunigung-ef` (ki3, ki4) bleibt das Auto - dort IST der Einstieg
   // der Kleinwagen-Prospekt "in 9,5 s von 0 auf 100".
   //
   // Bewegungsstriche hinter ihr, in Huefthoehe
   ctx.strokeStyle = 'rgba(124,58,237,0.28)'; ctx.lineWidth = 2;
   for (let i = 0; i < 3; i++) {
-    const ln = 5 + _glf.v * 2.2, yy = road - 20 - i * 6;
+    const ln = 7 + _glf.v * 2.8, yy = road - 34 - i * 9;
     const xx = carX - 20 - ((_glf.s * 4 + i * 0.6) % 1) * 16;
     ctx.beginPath(); ctx.moveTo(xx - ln, yy); ctx.lineTo(xx, yy); ctx.stroke();
   }
@@ -42490,7 +42536,7 @@ function _glfDraw(ctx, cv) {
   // steht auch der Schritt. 0,62 Doppelschritte je Meter, also 1,61 m je
   // Doppelschritt und 0,81 m je Schritt - bei 4,0 m/s sind das rund 150
   // Schritte in der Minute, im Bereich eines echten Laufs.
-  _glfLaeuferin(ctx, carX, road + 1, 44, _glf.s * 0.62,
+  _glfLaeuferin(ctx, carX, road + 1, 78, _glf.s * 0.62,
                 hell ? '#f97316' : '#7c3aed');
 
   // ── Fusszeilen ──────────────────────────────────────

@@ -1392,7 +1392,11 @@ def basiskonzept_seiten(pn):
         for konz,stich in _bk.items():
             nummern=[str(i+1) for i,tid in enumerate(ch["topics"])
                      if FSD.get(tid,{}).get("basiskonzept")==konz]
-            zeilen.append([konz,stich,("Seiten "+", ".join(nummern)) if nummern
+            # "Forscherkreis", nicht "Seiten": `nummern` sind die Positionen der
+            # Einheiten im Kapitel (i+1), nicht Blattzahlen. Gedruckt stand hier
+            # "Seiten 1, 2, 3" - wer Seite 1 aufschlug, fand das Deckblatt. Die
+            # Zahl ist dieselbe, die in der Kopfzeile jeder Forscherseite steht.
+            zeilen.append([konz,stich,("Forscherkreis "+", ".join(nummern)) if nummern
                            else "in diesem Kapitel nicht"])
         # BREITERE ERSTE SPALTE ALS IN DER SEKUNDARSTUFE I. Dort heissen die
         # Basiskonzepte "Energie" oder "System" und passen in 0,22 der Lesespalte
