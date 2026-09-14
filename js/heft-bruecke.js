@@ -4893,7 +4893,7 @@ const HEFT_SEITEN = {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
     sim: "gleichfoermig", seite: 7,
     kapitel: "Grundlagen der Mechanik",
-    name: "Wie schnell fährt der Wagen wirklich?",
+    name: "Wie schnell läuft sie wirklich?",
     titel: "Fünf Stopps, eine Steigung",
     frage: "Wie misst man die Geschwindigkeit, statt sie am Regler abzulesen?",
     schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s und drücke fünfmal „Zeit stoppen“.", "Wähle „t → s“ und markiere mit „Steigung messen“ zwei Punkte auf der Geraden.", "Wechsle zu „t → v“ und danach zu „t → a“."]

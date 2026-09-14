@@ -249,6 +249,91 @@ function _simSkala(cv, k) {
   }
 }
 
+// ── TYPOGRAFIE DER DIAGRAMME (14.09.2026) ───────────────────────────────────
+//
+// Gemeldet von den Schuelern beim Test der Einfuehrungsphase: "konnte bei den
+// Diagrammen die Achsen nicht gut lesen", "die Schrift soll groesser und
+// dunkler". Nachgemessen war beides begruendet:
+//
+//   Achsenzahlen  10 px in #94a3b8  =  2,56:1 Kontrast auf Weiss
+//   Die Schwelle fuer Text ist 4,5:1; im gedruckten Heft steht Text bei
+//   14,68:1. Der Bildschirm war also 5,7-fach schwaecher als das Heft, an dem
+//   dieselben Kinder dieselbe Aufgabe loesen.
+//
+// Die FARBEN gelten fuer alle Diagramme - eine Farbe aendert keine Geometrie.
+// Der SCHRIFTGRAD wird nur dort erhoeht, wo die Raender ihn tragen: gemessen
+// haben 14 der 47 Zeichner padL >= 56 und padB >= 38, und das sind GENAU die
+// 14, die die Grundzeile unten woertlich gleich fuehren (darunter
+// _mlabDrawPlot, das alle 13 Messlabore und damit die ganze Einfuehrungsphase
+// traegt). Bei den engen Zeichnern liegt padL bei 34 bis 48 - dort liefe eine
+// 12-px-Zahl aus dem Diagramm heraus. Sie bleiben bei 10 px und bekommen nur
+// die dunklere Farbe.
+const _PLOT_TICK_F  = '12px sans-serif';        // Achsenzahlen, war 10 px
+const _PLOT_TITEL_F = '700 12px sans-serif';    // Achsenbeschriftung, war 700 10 px
+const _PLOT_ZAHL    = '#475569';   //  7,58:1  (war #94a3b8 mit 2,56:1)
+const _PLOT_TITEL   = '#1f2937';   // 14,68:1  - die Textfarbe des gedruckten Hefts
+const _PLOT_ACHSE   = '#64748b';   //  4,76:1  - Achsen- und Strukturlinien
+const _PLOT_GITTER  = '#dbe3ec';   // Gitternetz, etwas kraeftiger als #eef2f7
+
+// ── SCHAERFE IM NORMALEN FENSTER (14.09.2026) ───────────────────────────────
+//
+// Jede Leinwand traegt ein Nennmass von 420 Bildpunkten Breite und wird per CSS
+// auf die Spaltenbreite gedehnt (`.phys-anim-cv { width: 100% }`). Auf einem
+// Geraet mit doppelter Punktdichte kommt dieser Faktor noch dazu: Gezeichnet
+// wird in 420 Punkte, dargestellt auf 1100 - jede Linie und jede Ziffer
+// bekommt also nur ein Drittel der Punkte, die sie braucht.
+//
+// Im VOLLBILD war das schon geloest (_simVollbildFaktor, gemessen 2,53-fach).
+// Im normalen Fenster nicht - deshalb sah es am Beamer scharf aus und auf dem
+// Schuelergeraet nicht. Gemeldet haben es die Schueler beim Test der
+// Einfuehrungsphase am 14.09.2026: "konnte bei den Diagrammen die Achsen nicht
+// gut lesen".
+//
+// Es ist derselbe Hebel wie beim Vollbild und braucht deshalb dieselbe
+// Begruendung: Alle Zeichenfunktionen lesen von der Leinwand NUR .width und
+// .height, und die liefern weiterhin das Nennmass (_simSkala legt dafuer einen
+// eigenen Getter an). Keine der 226 Simulationen muss angefasst werden.
+function _simSchaerfeFaktor(cv) {
+  if (!cv || !cv.getBoundingClientRect || !_cvBeschreiber()) return 1;
+  const nom = cv._nomW !== undefined ? cv._nomW : _CV_W.get.call(cv);
+  if (!nom) return 1;
+  const breit = cv.getBoundingClientRect().width;
+  if (!breit) return 1;                     // noch nicht im Layout
+  const dpr = Math.min((typeof window !== 'undefined' && window.devicePixelRatio) || 1, 2);
+  // Gedeckelt auf 4: Mehr bringt dem Auge nichts und kostet Speicher.
+  // Unter 1,01 gar nichts tun - dann ist die Leinwand schon passend.
+  return Math.max(1, Math.min(4, (breit / nom) * dpr));
+}
+
+function _simSchaerfen(el) {
+  if (!el || !el.querySelectorAll) return;
+  // Erst den Umbruch erzwingen, dann messen - ohne das liefert
+  // getBoundingClientRect() auf einem gerade eingehaengten Fenster 0.
+  void el.offsetWidth;
+  el.querySelectorAll('canvas').forEach(cv => {
+    if (cv._voll) return;                   // im Vollbild rechnet _simVollbildFaktor
+    const k = _simSchaerfeFaktor(cv);
+    if (k > 1.01) _simSkala(cv, k);
+  });
+}
+
+// Dreht jemand das Tablet oder zieht das Fenster breiter, aendert sich die
+// Spaltenbreite - und damit der noetige Faktor. _simSkala tut nichts, wenn er
+// gleich bleibt, der Aufruf ist also billig.
+if (typeof window !== 'undefined' && window.addEventListener) {
+  let _schaerfeWartet = null;
+  const _neuSchaerfen = () => {
+    if (_schaerfeWartet) clearTimeout(_schaerfeWartet);
+    _schaerfeWartet = setTimeout(() => {
+      const el = document.getElementById('physModal');
+      if (el && !(document.fullscreenElement || document.webkitFullscreenElement))
+        _simSchaerfen(el);
+    }, 150);
+  };
+  window.addEventListener('resize', _neuSchaerfen);
+  window.addEventListener('orientationchange', _neuSchaerfen);
+}
+
 // Wie stark darf vergroessert werden? Der Bildschirm gibt es vor, gedeckelt,
 // damit eine 8K-Wand nicht 64-fach Speicher frisst.
 function _simVollbildFaktor(box) {
@@ -413,7 +498,10 @@ function _simVollbildLayout(an) {
   if (an) _simBildAnpassen(el); else _simBildZurueck(el);
   // Erst die Anzeigegroesse, dann die Aufloesung - der Faktor haengt an der
   // Breite, die die Anpassung gerade festgelegt hat.
-  _simAlleLeinwaende(el, an ? _simVollbildFaktor(box) : 1);
+  // Zurueck aus dem Vollbild NICHT auf 1: Das normale Fenster braucht seinen
+  // eigenen Faktor, sonst kaeme man aus dem Vollbild in ein unscharfes Bild.
+  if (an) _simAlleLeinwaende(el, _simVollbildFaktor(box));
+  else    { _simAlleLeinwaende(el, 1); _simSchaerfen(el); }
   // Beim echten Vollbild setzt sich die Fenstergroesse erst ein Bild spaeter;
   // deshalb ein zweiter Anlauf, der nichts tut, wenn sich nichts geaendert hat.
   if (an && typeof requestAnimationFrame === 'function')
@@ -3131,6 +3219,7 @@ function openPhysicsSim(simId) {
   if (fn) {
     fn(modal);
     _simVollbildKnopf(modal);   // zentral: jede Simulation bekommt ihn
+    _simSchaerfen(modal);       // zentral: echte Aufloesung statt gedehnter 420 px
     return;
   }
   // Unbekannte Kennung: Frueher stand hier "wird vorbereitet…" - das klang nach
@@ -7909,7 +7998,7 @@ function _zrrDraw(ctx, cv) {
   for (let z = zMin; z <= zMax; z += 1) { ctx.beginPath(); ctx.moveTo(oxL, py(z)); ctx.lineTo(oxR, py(z)); ctx.stroke(); }
 
   // Achsen
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(oxL, oyT); ctx.lineTo(oxL, oyB); ctx.lineTo(oxR, oyB); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
   ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -10392,27 +10481,27 @@ function _fpmDrawPlot() {
 
   // Gitter & Achsen
   const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 28);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('fpmFit');
@@ -11254,7 +11343,7 @@ function _dspRenderScreen() {
       ctx.fillText(_fpmTickLbl(vv, t.step), px, ay + 16);
     });
   });
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
   ctx.fillText('x in mm', W - 6, ay + 16);
 
   // Marken
@@ -11762,27 +11851,27 @@ function _dspDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('dspFitBox');
@@ -12229,7 +12318,7 @@ function _gitRenderScreen() {
       ctx.fillText(_fpmTickLbl(vv, t.step), px, ay + 16);
     });
   });
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
   ctx.fillText('x in mm', W - 6, ay + 16);
 
   [[_git.m1, 1, '#fbbf24'], [_git.m2, 2, '#f472b6']].forEach(([mm, nr, col]) => {
@@ -12390,7 +12479,7 @@ function _gitRenderBank(ctx, cv) {
   ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText('g = ' + _fpmNum(_gitG() * 1000, 3) + ' µm', xG - 20, 20);
   ctx.fillText('N = ' + _gitN() + ' beleuchtete Spalte', xG - 20, 32);
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
   ctx.fillText('Winkel maßstäblich, Längen schematisch', W - 8, H - 8);
   ctx.textAlign = 'left';
 }
@@ -12879,27 +12968,27 @@ function _gitDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('gitFitBox');
@@ -14098,10 +14187,10 @@ function _phoDrawPlot() {
   const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   // y-Teilung symmetrisch um null
@@ -14112,23 +14201,23 @@ function _phoDrawPlot() {
     [v, -v].forEach(vv => {
       if (vv < ymin || vv > ymax) return;
       ctx.beginPath(); ctx.moveTo(x0, Y(vv)); ctx.lineTo(x1, Y(vv)); ctx.stroke();
-      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+      ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
       ctx.fillText(_fpmTickLbl(vv, yt.step), x0 - 6, Y(vv) + 3);
     });
   });
 
   // Achsen; die x-Achse liegt bei y = 0, nicht am unteren Rand
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(x0, Y(0)); ctx.lineTo(x1, Y(0)); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('phoFitBox');
@@ -15338,22 +15427,22 @@ function _milDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
 
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(14, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
@@ -15372,7 +15461,7 @@ function _milDrawPlot() {
   }
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte – vermiss zuerst Tröpfchen in Station 2', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('milFitBox');
@@ -16285,29 +16374,29 @@ function _fsrDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
 
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte – nimm zuerst Kreisbahnen in Station 1 auf', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('fsrFitBox');
@@ -16606,13 +16695,13 @@ function _fsrRenderSchalt(ctx, cv) {
   kasten(W - 122, 48, 108, 40, 'Spulenstrom', _fpmNum(_fsr.I, 2) + ' A', '#16a34a');
 
   // Rohr in der Mitte
-  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.ellipse(W / 2, 68, 46, 40, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('Fadenstrahl-', W / 2, 64); ctx.fillText('rohr', W / 2, 76);
 
   // Leitungen
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath();
   ctx.moveTo(122, 42); ctx.lineTo(W / 2 - 46, 55);
   ctx.moveTo(122, 94); ctx.lineTo(W / 2 - 46, 82);
@@ -17420,29 +17509,29 @@ function _ebrDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
 
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(15, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte – lies zuerst in Station 1 die Ringe ab', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('ebrFitBox');
@@ -19180,13 +19269,13 @@ function _oszRenderWandler(ctx, cv) {
   ctx.font = '9px sans-serif';
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
   });
   const yt = _fpmTicks(umax, 4);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
@@ -19201,7 +19290,7 @@ function _oszRenderWandler(ctx, cv) {
   }
   ctx.stroke();
 
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
   ctx.fillText(s.gr + ' in ' + s.eh, x1, y0 + 27);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText('registrierte Spannung in V', 0, 0); ctx.restore();
@@ -19551,12 +19640,12 @@ function _oszMDrawPlot() {
   const xt = _fpmTicks(xmax, 5);
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -19565,7 +19654,7 @@ function _oszMDrawPlot() {
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('oszMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
@@ -20692,28 +20781,28 @@ function _lskDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 6);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 29);
   ctx.save(); ctx.translate(14, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!alle.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('lskFitBox');
@@ -22732,12 +22821,12 @@ function _thrMDrawPlot() {
   xt.ticks.forEach(v => {
     if (v < xmin) return;
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -22747,7 +22836,7 @@ function _thrMDrawPlot() {
   ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('thrMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
@@ -23019,7 +23108,7 @@ function _thrRenderSpur(ctx, cv) {
   ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
   ctx.fillStyle = '#0369a1'; ctx.fillText('■ Auslenkung', x0 + 3, yo - 6);
   ctx.fillStyle = '#db2777'; ctx.fillText('■ Ringstrom', x0 + 78, yo - 6);
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
   ctx.fillText('t in s', x1, yu + 22);
   ctx.textAlign = 'left';
 }
@@ -23100,13 +23189,13 @@ function _thrRenderStromCv(ctx, cv) {
   for (let i = 0; i <= 5; i++) {
     const x = x0 + i / 5 * (x1 - x0);
     ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmNum(i / 5 * spanne * 1000, 0), x, y0 + 13);
   }
   for (let j = 0; j <= 4; j++) {
     const y = y0 - j / 4 * (y0 - y1);
     ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(String(j * 25) + ' %', x0 - 5, y + 3);
   }
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
@@ -23143,7 +23232,7 @@ function _thrRenderStromCv(ctx, cv) {
     ctx.fillText('95 % nach ' + _fpmNum(t95 * 1000, 0) + ' ms', x95, y95 - 6);
   }
 
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
   ctx.fillText('t in ms', x1, y0 + 26);
   ctx.save(); ctx.translate(14, (y0 + y1) / 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'center'; ctx.fillText('Spulenstrom', 0, 0); ctx.restore();
@@ -24437,28 +24526,28 @@ function _lsfDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
   });
   const yt = _fpmTicks(ymax, 4);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 27);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!alle.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('lsfFitBox');
@@ -24672,7 +24761,7 @@ function _lsfRenderZeigerCv(ctx, cv) {
 
   // Drehspulinstrument
   const mx = 290, my = 116, R = 76;
-  ctx.fillStyle = '#fff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.fillStyle = '#fff'; ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.arc(mx, my, R, Math.PI, 2 * Math.PI); ctx.closePath();
   ctx.fill(); ctx.stroke();
   ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
@@ -24718,7 +24807,7 @@ function _lsfRenderZerlegungCv(ctx, cv) {
   const skal = (x1 - x0) / 2 / m;
 
   const zeile = (y, wert, farbe, name, formel) => {
-    ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_TITEL; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
     ctx.fillText(name, x0 - 8, y + 4);
     ctx.font = '9px sans-serif'; ctx.fillStyle = '#94a3b8';
     ctx.fillText(formel, x0 - 8, y + 15);
@@ -25818,28 +25907,28 @@ function _genDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
   });
   const yt = _fpmTicks(ymax, 4);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 27);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!alle.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('genFitBox');
@@ -27369,21 +27458,21 @@ function _trfPlot(cvId, fitId, presets, prIdx, rows, fn, reveal) {
   const Y = v => y0 - v / ymax * (y0 - y1);
 
   const xt = _fpmTicks(xmax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 13);
   });
   const yt = _fpmTicks(ymax, 4);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 27);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText(P.yl, 0, 0); ctx.restore();
@@ -27391,7 +27480,7 @@ function _trfPlot(cvId, fitId, presets, prIdx, rows, fn, reveal) {
 
   const fo = document.getElementById(fitId);
   if (!alle.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     if (fo) fo.innerHTML = '<div class="fpm-note">' + P.note + '</div>';
@@ -29155,29 +29244,29 @@ function _frlDrawSweep() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
 
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   const xt = _fpmTicks(xmax, 6);
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(PR.xl, x1, y0 + 28);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.fillText(PR.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte – stelle U ein und übernimm den Verlust', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('frlFitBox');
@@ -30480,15 +30569,15 @@ function _fhMDrawPlot() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
-  for (let n = 0; n <= xmax; n++) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
+  for (let n = 0; n <= xmax; n++) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('n', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('U_n in V', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Maxima übernommen', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('fhMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Schiebe den Cursor auf die Strom-Maxima und übernimm ihre Spannungen. Die Steigung der Geraden U_n über n ist die Anregungsenergie.</div>';
@@ -30707,11 +30796,11 @@ function _fhDrawKennlinieAuf(ctx, cv, bisUA, markiere, kaltZusatz) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '10px sans-serif';
   for (let u = 0; u <= _FH_UAMAX; u += 5) {
     ctx.beginPath(); ctx.moveTo(X(u), y0); ctx.lineTo(X(u), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(u + '', X(u), y0 + 13);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(u + '', X(u), y0 + 13);
   }
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
   ctx.fillText('U_A / V', x1, y0 + 26);
   ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
   ctx.fillText('I_A', 0, 0); ctx.restore();
@@ -31576,15 +31665,15 @@ function _lspMDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
   const xt = _fpmTicks(xmax, 5);
-  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('¼ − 1/n²', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('1/λ in 1/µm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('lspMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Miss die vier sichtbaren Balmer-Linien und übernimm sie. Die Steigung der Geraden liefert die Rydberg-Konstante.</div>';
@@ -33001,7 +33090,7 @@ function _sonDrawStaerken(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [3000, 5000, 10000, 20000, 40000].forEach(T => {
     ctx.beginPath(); ctx.moveTo(X(T), y0); ctx.lineTo(X(T), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(T >= 1000 ? (T / 1000) + 'k' : T, X(T), y0 + 12);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
@@ -33154,7 +33243,7 @@ function _sonMDrawPlot() {
   for (let nm = 400; nm <= 700; nm += 50) {
     ctx.beginPath(); ctx.moveTo(X(nm), y0); ctx.lineTo(X(nm), y1); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x0, Y(nm)); ctx.lineTo(x1, Y(nm)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(nm + '', X(nm), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(nm + '', X(nm), y0 + 12);
     ctx.textAlign = 'right'; ctx.fillText(nm + '', x0 - 5, Y(nm) + 3);
   }
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
@@ -33162,7 +33251,7 @@ function _sonMDrawPlot() {
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('λ Labor / nm', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ Sonne / nm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Zuordnungen', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('sonMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Ordne die Fraunhoferlinien den Elementen zu. Fallen Sonnen- und Laborwellenlänge zusammen, ergibt sich die Gerade der Steigung 1.</div>';
@@ -33493,15 +33582,15 @@ function _flmMDrawPlot() {
   const X = v => x0 + (v - xmin) / (xmax - xmin) * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
-  for (let s = 0; s <= 12; s += 3) { ctx.beginPath(); ctx.moveTo(X(s), y0); ctx.lineTo(X(s), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(s + '', X(s), y0 + 12); }
+  for (let s = 0; s <= 12; s += 3) { ctx.beginPath(); ctx.moveTo(X(s), y0); ctx.lineTo(X(s), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(s + '', X(s), y0 + 12); }
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Skalenteil', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ in nm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('flmMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Miss die Skalenpositionen der Elementlinien. Die Steigung der Geraden ist die Dispersion des Spektroskops.</div>';
@@ -34548,15 +34637,15 @@ function _gmzMDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
   const xt = _fpmTicks(xmax, 5);
-  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('1/Z_wahr in ms', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('1/Z_mess in ms', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('gmzMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Nimm bei verschiedenen wahren Raten die gemessene Rate auf. Der Achsenabschnitt der Geraden ist die Totzeit τ.</div>';
@@ -35133,7 +35222,7 @@ function _gmzDrawKenn(ctx, cv) {
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#94a3b8'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
   [0, 100, 200, 300, 400, 500, 600, 700].forEach(U => ctx.fillText(U + '', X(U), y0 + 12));
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
   ctx.fillText('Spannung U / V', x1, y0 + 26);
   ctx.save(); ctx.translate(12, y1 + 4); ctx.rotate(-Math.PI / 2);
   ctx.fillText('Ausschlag', 0, 0); ctx.restore();
@@ -35215,7 +35304,7 @@ function _gmzDrawTot(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 2000, 4000, 6000, 8000].forEach(z => {
     ctx.beginPath(); ctx.moveTo(X(z), y0); ctx.lineTo(X(z), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((z / 1000) + 'k', X(z), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText((z / 1000) + 'k', X(z), y0 + 12);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -35595,15 +35684,15 @@ function _rtgMDrawPlot() {
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
   const xt = _fpmTicks(xmax, 5);
-  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
+  xt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 12); });
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('1/U in 1/kV', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('λ_min in pm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('rtgMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Miss die Grenzwellenlänge bei mehreren Spannungen. Die Steigung der Geraden liefert die Planck-Konstante.</div>';
@@ -36152,7 +36241,7 @@ function _rtgDrawSpektrum(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 50, 100, 150, 200].forEach(l => {
     ctx.beginPath(); ctx.moveTo(X(l), y0); ctx.lineTo(X(l), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(l + '', X(l), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(l + '', X(l), y0 + 12);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -36320,11 +36409,11 @@ function _rtgDrawGrenz(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 2e18, 4e18, 6e18, 8e18].forEach(f => {
     ctx.beginPath(); ctx.moveTo(X(f), y0); ctx.lineTo(X(f), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((f / 1e18) + '', X(f), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText((f / 1e18) + '', X(f), y0 + 12);
   });
   [0, 10, 20, 30, 40].forEach(U => {
     ctx.strokeStyle = '#eef2f7'; ctx.beginPath(); ctx.moveTo(x0, Y(U)); ctx.lineTo(x1, Y(U)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(U + '', x0 - 4, Y(U) + 3);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(U + '', x0 - 4, Y(U) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -36361,7 +36450,7 @@ function _rtgDrawMoseley(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 20, 40, 60, 80].forEach(Z => {
     ctx.beginPath(); ctx.moveTo(X(Z), y0); ctx.lineTo(X(Z), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(Z + '', X(Z), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(Z + '', X(Z), y0 + 12);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -36659,7 +36748,7 @@ function _absMDrawAufbau(ctx, cv) {
   const nPl = Math.round(_abs.mD / 2);
   ctx.fillStyle = '#475569';
   for (let i = 0; i < nPl; i++) ctx.fillRect(70 + i * 9, cy - 34, 7, 68);
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText('Blei ' + _abs.mD + ' mm', 70 + nPl * 9 / 2, cy + 48);
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText('Blei ' + _abs.mD + ' mm', 70 + nPl * 9 / 2, cy + 48);
   // Strahl (Intensität ~ R)
   const frac = _absMRtrue(_abs.mD) / _ABS_CS.R0;
   ctx.strokeStyle = 'rgba(167,139,250,' + (0.25 + 0.65 * frac) + ')'; ctx.lineWidth = 2 + 4 * frac;
@@ -36687,17 +36776,17 @@ function _absMDrawPlot() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
-  for (let d = 0; d <= 20; d += 5) { ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12); }
+  for (let d = 0; d <= 20; d += 5) { ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12); }
   const yticks = [];
   const span = ymax - ymin; const step = span / 5;
   for (let i = 0; i <= 5; i++) yticks.push(ymin + i * step);
-  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _abs.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
+  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _abs.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText(P.xl, x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('absMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
@@ -37286,11 +37375,11 @@ function _absDrawKurve(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 5, 10, 15, 20].forEach(d => {
     ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
   });
   [0, 500, 1000, 1500, 2000, 2500].forEach(R => {
     ctx.beginPath(); ctx.moveTo(x0, Y(R)); ctx.lineTo(x1, Y(R)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(R + '', x0 - 4, Y(R) + 3);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(R + '', x0 - 4, Y(R) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -37344,11 +37433,11 @@ function _absDrawLinear(ctx, cv) {
     ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
     [0, 5, 10, 15, 20].forEach(d => {
       ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
-      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+      ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
     });
     [-2, -1.5, -1, -0.5, 0].forEach(v => {
       ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
+      ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
     });
     ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
     ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -37371,7 +37460,7 @@ function _absDrawLinear(ctx, cv) {
     ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
     [0, 5, 10, 15, 20].forEach(d => {
       ctx.beginPath(); ctx.moveTo(X(d), y0); ctx.lineTo(X(d), y1); ctx.stroke();
-      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
+      ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(d + '', X(d), y0 + 12);
     });
     ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
     ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -37486,7 +37575,7 @@ function _absDrawTiefe(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 10, 20, 30].forEach(t => {
     ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -37774,15 +37863,15 @@ function _mmMDrawPlot() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
-  for (let n = 0; n <= 80; n += 20) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
+  for (let n = 0; n <= 80; n += 20) { ctx.beginPath(); ctx.moveTo(X(n), y0); ctx.lineTo(X(n), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(n + '', X(n), y0 + 12); }
   const yt = _fpmTicks(ymax, 5);
-  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
+  yt.ticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('Streifenzahl N', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('Δd in µm', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('mmMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Zähle zu verschiedenen Spiegelwegen die Streifen. Die Steigung der Geraden ist λ/2.</div>';
@@ -38251,7 +38340,7 @@ function _mmDrawInterf(ctx, cv) {
   ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 3;
   ctx.beginPath(); ctx.moveTo(bx + armL, by - 14); ctx.lineTo(bx + armL, by + 14); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(bx - 14, by - armL); ctx.lineTo(bx + 14, by - armL); ctx.stroke();
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
   ctx.fillText('Spiegel', bx + armL, by - 20);
   ctx.fillText('Spiegel', bx, by - armL - 6);
   // Messoptik unten
@@ -38737,16 +38826,16 @@ function _myoMDrawPlot() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
   ctx.font = '9px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
-  for (let t = 0; t <= 11; t += 2) { ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12); }
+  for (let t = 0; t <= 11; t += 2) { ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(t + '', X(t), y0 + 12); }
   const yticks = []; const span = ymax - ymin;
   for (let i = 0; i <= 5; i++) yticks.push(ymin + i * span / 5);
-  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _myo.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
+  yticks.forEach(v => { ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke(); ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, _myo.preset === 1 ? 2 : 0), x0 - 5, Y(v) + 3); });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText(P.xl, x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText(P.yl, 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('myoMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">' + P.deutung + '</div>';
@@ -39279,11 +39368,11 @@ function _myoDrawKurve(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 2500, 5000, 7500, 10000].forEach(h => {
     ctx.beginPath(); ctx.moveTo(X(h), y0); ctx.lineTo(X(h), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText((h / 1000) + '', X(h), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText((h / 1000) + '', X(h), y0 + 12);
   });
   [1, 0.1, 0.01, 0.001].forEach(n => {
     ctx.beginPath(); ctx.moveTo(x0, Y(n)); ctx.lineTo(x1, Y(n)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(n >= 1 ? '1' : n.toString(), x0 - 4, Y(n) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
@@ -39599,7 +39688,7 @@ function _luMDrawPlot() {
   for (let t = 0; t <= 1.001; t += 0.2) {
     ctx.beginPath(); ctx.moveTo(X(t), y0); ctx.lineTo(X(t), y1); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x0, Y(t)); ctx.lineTo(x1, Y(t)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(t, 1), X(t), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(t, 1), X(t), y0 + 12);
     ctx.textAlign = 'right'; ctx.fillText(_fpmNum(t, 1), x0 - 5, Y(t) + 3);
   }
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
@@ -39607,7 +39696,7 @@ function _luMDrawPlot() {
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('β²', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 2); ctx.rotate(-Math.PI / 2); ctx.fillText('f²', 0, 0); ctx.restore(); ctx.textAlign = 'left';
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = '10px sans-serif';
     ctx.fillText('Noch keine Messwerte', (x0 + x1) / 2, (y0 + y1) / 2); ctx.textAlign = 'left';
     const fo = document.getElementById('luMFitBox');
     if (fo) fo.innerHTML = '<div class="fpm-note">Miss den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten. Über β² aufgetragen ergibt f² eine Gerade der Steigung −1.</div>';
@@ -40150,11 +40239,11 @@ function _luDrawFaktor(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '8px sans-serif';
   [0, 0.25, 0.5, 0.75, 1].forEach(b => {
     ctx.beginPath(); ctx.moveTo(X(b), y0); ctx.lineTo(X(b), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(b, 2), X(b), y0 + 12);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(_fpmNum(b, 2), X(b), y0 + 12);
   });
   [0, 0.5, 1].forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText(_fpmNum(v, 1), x0 - 4, Y(v) + 3);
   });
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
@@ -40770,30 +40859,30 @@ function _zykDrawPlot() {
   const X = v => x0 + v / xmax * (x1 - x0);
   const Y = v => y0 - v / ymax * (y0 - y1);
 
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   const xt = _fpmTicks(xmax, 6);
   xt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   const yt = _fpmTicks(ymax, 5);
   yt.ticks.forEach(v => {
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
 
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 30);
   ctx.save(); ctx.translate(14, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte – nimm zuerst Kreisbahnen in Station 2 auf', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById('zykFitBox');
@@ -41149,7 +41238,7 @@ function _zykDrawMess(ctx, cv) {
   // Maßstab (Lineal) waagerecht durch das Zentrum
   ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(cx - maxPix - 10, cy); ctx.lineTo(cx + maxPix + 10, cy); ctx.stroke();
-  ctx.font = '8px sans-serif'; ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+  ctx.font = '8px sans-serif'; ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
   const cmMax = Math.ceil((maxPix) / pxPerCm);
   for (let c = 0; c <= cmMax; c++) {
     const x = cx + c * pxPerCm;
@@ -41358,29 +41447,29 @@ function _mlabDrawPlot(cvId, st) {
 
   // Gitter & Achsen
   const xt = _fpmTicks(xmax, 6), yt = _fpmTicks(ymax, 5);
-  ctx.font = '10px sans-serif'; ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  ctx.font = _PLOT_TICK_F; ctx.strokeStyle = _PLOT_GITTER; ctx.lineWidth = 1;
   xt.ticks.forEach(v => {
     if (v < xmin) return;
     ctx.beginPath(); ctx.moveTo(X(v), y0); ctx.lineTo(X(v), y1); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center';
     ctx.fillText(_fpmTickLbl(v, xt.step), X(v), y0 + 14);
   });
   yt.ticks.forEach(v => {
     if (v < ymin) return;
     ctx.beginPath(); ctx.moveTo(x0, Y(v)); ctx.lineTo(x1, Y(v)); ctx.stroke();
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right';
     ctx.fillText(_fpmTickLbl(v, yt.step), x0 - 6, Y(v) + 3);
   });
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.lineTo(x1, y0); ctx.stroke();
-  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillStyle = _PLOT_TITEL; ctx.font = _PLOT_TITEL_F; ctx.textAlign = 'right';
   ctx.fillText(P.xl, x1, y0 + 28);
   ctx.save(); ctx.translate(13, y1 + 2); ctx.rotate(-Math.PI / 2);
   ctx.textAlign = 'right'; ctx.fillText(P.yl, 0, 0); ctx.restore();
   ctx.textAlign = 'left';
 
   if (!pts.length) {
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.font = '11px sans-serif';
+    ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.font = _PLOT_TICK_F;
     ctx.fillText('Noch keine Messwerte aufgenommen', (x0 + x1) / 2, (y0 + y1) / 2);
     ctx.textAlign = 'left';
     const fo = document.getElementById(st.fitId);
@@ -41891,7 +41980,7 @@ const _GLF_PRESETS = [
     typ: 'lineare Funktion mit der Steigung null (waagerechte Gerade)', form: 'v(t) = v = konstant',
     param: () => 'Steigung = a = 0 m/s², Achsenabschnitt = v = ' + _fpmNum(_glf.v, _GLF_NK) + ' m/s (am Regler eingestellt)',
     term: () => '0*x+' + _glf.v.toFixed(_GLF_NK),
-    deutung: 'Die Geschwindigkeit ändert sich während der Fahrt nicht. Genau das heißt „gleichförmig“ – und nur deshalb ist die s-t-Auftragung eine Gerade.',
+    deutung: 'Die Geschwindigkeit ändert sich während des Laufs nicht. Genau das heißt „gleichförmig“ – und nur deshalb ist die s-t-Auftragung eine Gerade.',
     ergebnis: (g0, st) => st.origin ? _glfOrigWarnung('Geschwindigkeit v und Beschleunigung a') :
       _glfErgebnis('Geschwindigkeit v aus dem Achsenabschnitt der Waagerechten',
         _glfFitB(g0.fit.b), _glfKeyV(g0.key), _GLF_NK, 'm/s', 'eingestellt für diese Reihe',
@@ -41927,7 +42016,7 @@ function _glfInit() {
 function _glfHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim glf-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">🚗 Gleichförmige Bewegung – die Geschwindigkeit aus der Steigung messen</h3>
+    <h3 class="sim-h3">🏃 Gleichförmige Bewegung – die Geschwindigkeit aus der Steigung messen</h3>
     <div class="fpm-grid">
       <div>
         <canvas id="glfAnim" width="420" height="250" class="phys-anim-cv"></canvas>
@@ -41938,15 +42027,15 @@ function _glfHTML() {
         </div>
         <div class="sim-btn-row" style="padding:6px 0 2px">
           <button class="sim-btn primary" onclick="_glfStopp()">⏱ Zeit stoppen</button>
-          <button class="sim-btn" onclick="_glfNeueFahrt()">↺ neue Fahrt</button>
+          <button class="sim-btn" onclick="_glfNeueFahrt()">↺ neuer Lauf</button>
         </div>
         <div class="lmp-status" id="glfStatus"></div>
-        <div class="fpm-note" style="margin-top:6px">Der Wagen fährt. <b>„⏱ Zeit stoppen“</b> schreibt t und s als Zeile in die Tabelle – <b>mindestens fünf Mal</b> während einer Fahrt. <b>Wann</b> du stoppst, ist gleichgültig. <b>„↺ neue Fahrt“</b> stellt Uhr und Weg auf null.</div>
+        <div class="fpm-note" style="margin-top:6px">Die Läuferin läuft. <b>„⏱ Zeit stoppen“</b> schreibt t und s in die Tabelle. Stoppe <b>mindestens fünf Mal</b>. <b>Wann</b> du stoppst, ist gleichgültig. <b>„↺ neuer Lauf“</b> setzt Uhr und Weg auf null.</div>
       </div>
       <div>
         <div class="fpm-label">Wertetabelle</div>
         <div class="sim-btn-row">
-          <button class="sim-btn" onclick="_glfMessen()">⏱ Lichtschranken-Messfahrt</button>
+          <button class="sim-btn" onclick="_glfMessen()">⏱ Lichtschranken-Messlauf</button>
           <button class="sim-btn" onclick="_glfDemo()">📋 Beispielmessreihe</button>
           <button class="sim-btn" onclick="_glfClear()">🗑 Tabelle leeren</button>
         </div>
@@ -41955,9 +42044,9 @@ function _glfHTML() {
             <thead><tr><th>Nr.</th><th>t in s</th><th>s in m</th><th>v in m/s</th><th>a in m/s²</th><th></th></tr></thead>
             <tbody id="glfTbody"></tbody>
           </table>
-          <div class="fpm-empty" id="glfEmpty">Noch keine Messwerte.<br>Wagen fahren lassen → „⏱ Zeit stoppen“ drücken.</div>
+          <div class="fpm-empty" id="glfEmpty">Noch keine Messwerte.<br>Laufen lassen → „⏱ Zeit stoppen“ drücken.</div>
         </div>
-        <div class="fpm-note" style="margin-top:6px">t und s liest du ab, v zeigt der Tacho. a wird aus zwei Zeilen gerechnet – in der ersten Zeile steht deshalb ein Strich.</div>
+        <div class="fpm-note" style="margin-top:6px">Die Uhr gibt t, der Wegmesser s, der Tacho v. Die Spalte a braucht zwei Zeilen – in der ersten steht darum ein Strich.</div>
       </div>
     </div>
     <div class="fpm-label" style="margin-top:12px">Auswertung – t-s-Diagramm, t-v-Diagramm, t-a-Diagramm</div>
@@ -41976,7 +42065,7 @@ function _glfSetV(v) {
   if (!_glf) return;
   _glf.v = +v;
   _glf.t = 0; _glf.s = 0; _glf.letzte = null; _glf.fahrt++;
-  _glf.meldung = 'Neue Geschwindigkeit – Uhr und Weg stehen wieder auf null.';
+  _glf.meldung = 'Neues Tempo – Uhr und Weg stehen wieder auf null.';
   _glf.flash = 0.9;
   const el = document.getElementById('glfVLbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' m/s';
   _mlabRefreshTheorie(_glf);
@@ -41999,7 +42088,7 @@ function _glfStopp() {
 function _glfNeueFahrt() {
   if (!_glf) return;
   _glf.t = 0; _glf.s = 0; _glf.letzte = null; _glf.fahrt++;
-  _glf.meldung = 'Neue Fahrt – Uhr und Weg auf null, die Tabelle bleibt stehen.';
+  _glf.meldung = 'Neuer Lauf – Uhr und Weg auf null, die Tabelle bleibt stehen.';
   _glf.flash = 0.9;
   _glfStatus();
 }
@@ -42013,7 +42102,7 @@ function _glfMessen() {
     const t = _glfRund((s / v) * (1 + (Math.random() - 0.5) * 0.012), _GLF_NK);
     _glf.rows.push({ id: _glf.nextId++, q: 1, v, s, t, g: _glfKey(1, v), f, a: NaN, tm: NaN });
   });
-  _glf.meldung = 'Lichtschranken-Messfahrt: 6 Zeilen bei v = ' + _fpmNum(v, _GLF_NK) + ' m/s';
+  _glf.meldung = 'Lichtschranken-Messlauf: 6 Zeilen bei v = ' + _fpmNum(v, _GLF_NK) + ' m/s';
   _glf.flash = 1;
   _glfNachTabelle();
 }
@@ -42027,7 +42116,7 @@ function _glfDemo() {
       _glf.rows.push({ id: _glf.nextId++, q: 1, v, s, t, g: _glfKey(1, v), f, a: NaN, tm: NaN });
     });
   });
-  _glf.meldung = 'Beispielmessreihe: drei Lichtschranken-Fahrten mit 3,00, 5,00 und 7,00 m/s';
+  _glf.meldung = 'Beispielmessreihe: drei Lichtschranken-Läufe mit 3,00, 5,00 und 7,00 m/s';
   _glf.flash = 1;
   _glfNachTabelle();
 }
@@ -42091,7 +42180,7 @@ function _glfStatus() {
   const kopf = l
     ? '⏱ zuletzt festgehalten: t = ' + _fpmNum(l.t, _GLF_NK) + ' s · s = ' + _fpmNum(l.s, _GLF_NK) +
       ' m · v = ' + _fpmNum(l.v, _GLF_NK) + ' m/s'
-    : '⏱ Noch nichts gestoppt – der Wagen fährt bereits.';
+    : '⏱ Noch nichts gestoppt – die Läuferin läuft bereits.';
   el.innerHTML = kopf + ' &nbsp;·&nbsp; ' + n + ' von mindestens 5 gestoppten Messwerten bei v = ' +
     _fpmNum(_glf.v, 1) + ' m/s' + (n >= 5 ? ' – die Messreihe reicht für die Auswertung.' : '.');
   el.className = 'lmp-status' + (n >= 5 ? ' on' : '');
@@ -42225,38 +42314,52 @@ function _glfDraw(ctx, cv) {
     ctx.beginPath(); ctx.arc(x, road - 42, 3, 0, 2 * Math.PI); ctx.fill();
   });
 
-  // ── Wagen: steht im Bild still, die Bahn wandert ────
+  // ── Laeuferin: laeuft auf der Stelle, die Bahn wandert ────
+  //
+  // Hier stand bis zum 14.09.2026 ein Auto. Gemeldet haben es die Schueler
+  // beim Test der Einfuehrungsphase: Der Einstieg von ki1 ist ein Lauftreff
+  // mit einer Lauf-App - am Bildschirm fuhr ein Wagen. Das Kind musste erst
+  // zwischen zwei Bildern uebersetzen, bevor es anfangen konnte.
+  //
+  // Erlaubt ist die Aenderung, weil `gleichfoermig` laut js/heft-bruecke.js
+  // NUR ki1 und ki2 traegt; die Sek-I-Baende zeigen auf `gleichfoermig-rs`.
+  // Bei `beschleunigung-ef` (ki3, ki4) bleibt das Auto - dort IST der Einstieg
+  // der Kleinwagen-Prospekt "in 9,5 s von 0 auf 100".
+  const farbe = hell ? '#f97316' : '#7c3aed';
+  const fuss = road + 1, kopfY = fuss - 30;
+  // Bewegungsstriche hinter der Laeuferin, in Huefthoehe
   ctx.strokeStyle = 'rgba(124,58,237,0.30)'; ctx.lineWidth = 2;
   for (let i = 0; i < 3; i++) {
-    const ln = 5 + _glf.v * 2.2, yy = road - 8 - i * 6;
-    const xx = carX - 24 - ((_glf.s * 4 + i * 0.6) % 1) * 16;
+    const ln = 5 + _glf.v * 2.2, yy = fuss - 20 - i * 5;
+    const xx = carX - 18 - ((_glf.s * 4 + i * 0.6) % 1) * 16;
     ctx.beginPath(); ctx.moveTo(xx - ln, yy); ctx.lineTo(xx, yy); ctx.stroke();
   }
-  const bwg = 42, bhg = 20;
-  ctx.fillStyle = hell ? '#f97316' : '#7c3aed';
+  // Die Schrittphase laeuft mit dem WEG, nicht mit der Zeit: Steht die Bahn,
+  // steht auch der Schritt - sonst trippelte die Figur bei v = 0 weiter.
+  const ph = _glf.s * 2.6, s1 = Math.sin(ph), s2 = Math.sin(ph + Math.PI);
+  ctx.lineCap = 'round';
+  ctx.fillStyle = farbe;
+  ctx.beginPath(); ctx.arc(carX + 2, kopfY, 5, 0, 2 * Math.PI); ctx.fill();   // Kopf
+  ctx.strokeStyle = farbe; ctx.lineWidth = 3.2;
+  const hufX = carX - 3, hufY = fuss - 12;                                    // Huefte
+  ctx.beginPath(); ctx.moveTo(carX + 1, kopfY + 5); ctx.lineTo(hufX, hufY); ctx.stroke();
+  const schX = carX, schY = kopfY + 8;                                        // Arme
   ctx.beginPath();
-  ctx.roundRect ? ctx.roundRect(carX - bwg / 2, road - bhg, bwg, bhg, 5)
-                : ctx.rect(carX - bwg / 2, road - bhg, bwg, bhg);
-  ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.fillRect(carX - 3, road - bhg + 4, 15, 8);
-  const rr = 5.5, ang = _glf.s / 0.35;
-  [-12, 12].forEach(dx => {
-    ctx.fillStyle = '#1e293b';
-    ctx.beginPath(); ctx.arc(carX + dx, road + 1, rr, 0, 2 * Math.PI); ctx.fill();
-    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.moveTo(carX + dx - Math.cos(ang) * rr, road + 1 - Math.sin(ang) * rr);
-    ctx.lineTo(carX + dx + Math.cos(ang) * rr, road + 1 + Math.sin(ang) * rr);
-    ctx.stroke();
-  });
+  ctx.moveTo(schX, schY); ctx.lineTo(schX + 9 * s1, schY + 10 - 4 * Math.abs(s1));
+  ctx.moveTo(schX, schY); ctx.lineTo(schX + 9 * s2, schY + 10 - 4 * Math.abs(s2));
+  ctx.stroke();
+  ctx.beginPath();                                                            // Beine
+  ctx.moveTo(hufX, hufY); ctx.lineTo(hufX + 10 * s1, fuss - 3 * Math.abs(s1));
+  ctx.moveTo(hufX, hufY); ctx.lineTo(hufX + 10 * s2, fuss - 3 * Math.abs(s2));
+  ctx.stroke();
+  ctx.lineCap = 'butt';
 
   // ── Fusszeilen ──────────────────────────────────────
   ctx.textAlign = 'left';
   ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif';
   ctx.fillText('Lichtschranken in den ersten 10 m der Bahn', 10, road + 52);
   ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
-  ctx.fillText('Stoppe mindestens fünf Mal – wann, ist gleichgültig: die Steigung bleibt dieselbe.', 10, road + 66);
+  ctx.fillText('Wann du stoppst, ist gleichgültig: die Steigung bleibt dieselbe.', 10, road + 66);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -42731,11 +42834,11 @@ function _swgDrawGraph(ctx, cv) {
   ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1; ctx.font = '9px sans-serif';
   for (let t = 0; t <= _SWG_WIN; t += 1) {
     ctx.beginPath(); ctx.moveTo(X(t), y1); ctx.lineTo(X(t), y0); ctx.stroke();
-    if (t % 2 === 0) { ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center'; ctx.fillText(t, X(t), y0 + 12); }
+    if (t % 2 === 0) { ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'center'; ctx.fillText(t, X(t), y0 + 12); }
   }
   // Nulllinie (Ruhelage)
   ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x0, Y(0)); ctx.lineTo(x1, Y(0)); ctx.stroke();
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText('0', x0 - 3, Y(0) + 3);
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText('0', x0 - 3, Y(0) + 3);
   ctx.fillText('+ŷ', x0 - 3, Y(_swg.amp0) + 3); ctx.fillText('−ŷ', x0 - 3, Y(-_swg.amp0) + 3);
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText('y in cm', x0, y1 + 8); ctx.textAlign = 'right'; ctx.fillText('t in s', x1, y0 + 12);
@@ -52948,7 +53051,7 @@ function _lupDraw(ctx, cv) {
   ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0b1020'; ctx.fillRect(0, 0, W, H);
   ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(8, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
   // Brennpunkte
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;[xL - f, xL + f].forEach(fx => { ctx.beginPath(); ctx.moveTo(fx, cy - 5); ctx.lineTo(fx, cy + 5); ctx.stroke(); });
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;[xL - f, xL + f].forEach(fx => { ctx.beginPath(); ctx.moveTo(fx, cy - 5); ctx.lineTo(fx, cy + 5); ctx.stroke(); });
   ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F', xL - f, cy + 16); ctx.fillText('F', xL + f, cy + 16);
   // Lupe (Linse mit Griff)
   ctx.fillStyle = 'rgba(96,165,250,0.28)'; ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 2.5;
@@ -70951,7 +71054,7 @@ function _bauDraw(ctx, cv) {
   gg.addColorStop(0, 'rgba(56,189,248,0.20)'); gg.addColorStop(1, 'rgba(125,211,252,0.42)');
   ctx.fillStyle = gg; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.stroke();
   ctx.fillStyle = '#7dd3fc'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Glas', cx - 56, cy + 4);
-  ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'right'; ctx.fillText('Luft', W - 10, 18);
+  ctx.fillStyle = _PLOT_ZAHL; ctx.textAlign = 'right'; ctx.fillText('Luft', W - 10, 18);
   // Lot
   ctx.strokeStyle = 'rgba(226,232,240,0.5)'; ctx.setLineDash([5, 4]); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(cx - 74, cy); ctx.lineTo(cx + 118, cy); ctx.stroke(); ctx.setLineDash([]);
@@ -73818,7 +73921,7 @@ function _plxDraw(ctx, cv) {
   // Bruchzeichen: die Strecke ist nicht massstaeblich
   ctx.fillStyle = '#f8fafc';
   ctx.fillRect(228, 40, 26, 74);
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   for (const dx of [232, 246]) {
     ctx.beginPath(); ctx.moveTo(dx, 44); ctx.lineTo(dx + 8, 76); ctx.lineTo(dx, 108); ctx.stroke();
   }
@@ -80969,7 +81072,7 @@ function _wwfDraw(ctx, cv) {
   ctx.textAlign = 'right'; ctx.fillText('x in m', xR, gY + 20);
 
   // Achsen
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(x0, gY); ctx.lineTo(x0, topY); ctx.stroke();
   ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
   ctx.fillText('y in m', x0 + 5, topY + 6);
@@ -82275,7 +82378,7 @@ function _zpkDraw(ctx, cv) {
   // im Bild stehen. Sie liegt im Mittelpunkt und kann deshalb bei keinem Radius
   // mit der Bahn zusammenstossen.
   const bx = cx + rp * Math.cos(phi), by = cy - rp * Math.sin(phi);
-  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  ctx.strokeStyle = _PLOT_ACHSE; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(bx, by); ctx.stroke();
   ctx.fillStyle = '#1e293b'; ctx.fillRect(cx - 6, cy - 6, 12, 12);
   ctx.fillStyle = '#f8fafc'; ctx.fillRect(cx - 2, cy - 2, 4, 4);
