@@ -657,11 +657,13 @@ def b_wortbank(woerter,ueberschrift="Wortbank"):
 def tabelle(h,d,y,st,kopf,zeilen,anteile=None,beispiel=False,schreib=False,luft=0.0):
     """Tabelle auf der Lesespalte. Zellen brechen UM, sie werden nicht verkleinert.
 
-    `beispiel` toent die erste Zeile: sie ist schon ausgefuellt und zeigt das
-    Muster (FOERDER_PROFIL.md, Seite A Punkt 6). Das Merkmal ist nicht die Farbe -
-    die Beispielzeile ist die einzige BESCHRIFTETE Zeile, alle anderen tragen
-    Schreiblinien. `schreib` legt in jede leere Zelle eine Linie, `luft` macht
-    jede Zeile um so viele Einheiten hoeher (siehe seite_a)."""
+    `beispiel` toent die erste Zeile. SEIT DEM 13.09.2026 RUFT NIEMAND MEHR MIT
+    beispiel=True AUF: Abdullah wollte die Tabellen leer, damit die Klasse sie
+    selbst ausfuellt; die Werte der frueheren Beispielzeile stehen im Lehrerteil
+    unter `tabelle_erwartet`. Der Schalter bleibt, weil er nichts kostet - aber
+    er beschreibt kein Verhalten des Bandes mehr.
+    `schreib` legt in jede leere Zelle eine Linie, `luft` macht jede Zeile um so
+    viele Einheiten hoeher (siehe seite_a)."""
     st=st or fd.STIL
     tx0,tx1=fd.KASTEN_X0,fd.KASTEN_X1
     n=len(kopf)
@@ -801,8 +803,7 @@ def bausteine_a(cfg,luft=0.0):
     else:
         B.append(bst("Bildschirm",
                      lambda h,d,y: kasten_bildschirm(h,d,y,fd.STIL,
-                         ["Öffne die Simulation über den QR-Code oben rechts.",
-                          cfg.get("ersatz","")]),
+                         ["Öffne die Simulation über den QR-Code."]),
                      fd.ABS_AUFGABE,haftet=1))
     for i,s in enumerate(cfg.get("forschen",[])):
         B.append(b_punkt(s,i=i,name="Schritt %d"%(i+1)))

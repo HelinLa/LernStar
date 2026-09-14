@@ -603,9 +603,23 @@ nur einstufigen Pruefung stand in **allen vier Kapiteltests** von Band 8
 Wortgitter und Kreuzwortraetsel werden nicht mehr gesetzt (90 Seiten), der
 Loesungsteil wandert in ein eigenes `<DATEINAME>_Lehrerband.pdf` (488 Seiten),
 wie es die Foerderreihe schon machte. Der **Messwerte-Anhang bleibt beim
-Schueler** – die Heftseiten verweisen mit „Ohne Geraet: Messwerte im Anhang"
-darauf. Zusammen zahlen die beiden Kuerzungen den groesseren Schriftgrad fast:
+Schueler**. Zusammen zahlen die beiden Kuerzungen den groesseren Schriftgrad fast:
 Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
+
+> **Abschnitt ③ sagt nur noch einen Satz** (Abdullah, 14.09.2026: "mache es
+> immer kurz und knappt simulation öffennen und die Schritte durchführen"):
+> „Öffne die Simulation über den QR-Code und führe die Schritte durch." –
+> gemessen 714 von 742 Einheiten, also EINE Zeile. Vorher standen dort zwei:
+> „… hier trägst du ein. · Ohne Gerät: Messwerte im Anhang." Im Foerderheft
+> laeuft der Fliesstext auf 14 pt, dort passt der Satz nicht in eine Zeile
+> (842 von 738) – er heisst deshalb kurz „Öffne die Simulation über den
+> QR-Code."; die Schritte stehen ohnehin numeriert darunter.
+>
+> **Folge, die man wissen muss:** Der Anhang „Messwerte ohne Gerät" hat damit
+> KEINEN Verweis mehr auf einer Forscherseite. Er steht weiter im Band und im
+> Inhaltsverzeichnis, aber ein Kind findet ihn nur noch dort. Der Satz ueber
+> den Ersatzweg steht in der Foerderreihe weiterhin im LEHRERTEIL unter
+> „Wenn die Simulation nicht geht" – dort richtet er sich an die Lehrkraft.
 
 > **Beim Zaehlen von Seiten die iCloud-Duplikate ausschliessen.** Der
 > Schreibtisch legt Dateien wie `book_p99 3.png` an. `ls build/book_p*.png | wc -l`

@@ -537,8 +537,7 @@ def topic_pages(cfg,chtitel,fno,pn):
     B.append(b_marke(3,titel3,"E6" if dat else "E5"))
     if dat or am_schirm:
         hinweis=("Datenblatt: "+dat["titel"]) if dat else \
-                ("Öffne die Simulation über den QR-Code oben rechts – hier trägst du ein.  ·  Ohne Gerät: "
-                     + (cfg.get("ersatz") or "Messwerte im Anhang."))
+                "Öffne die Simulation über den QR-Code und führe die Schritte durch."
         zn=_gitter_mittig if dat else None
         B.append(bst("Quelle",
                      lambda h,d,y,t=hinweis,z=zn: kasten_quelle(h,d,y,fd.STIL,t,z),

@@ -174,8 +174,17 @@ def pruefe(einheit):
     for st in fo:
         if not st.split()[0].rstrip(",.:").startswith(OPERATOREN):
             f.append(f"Forschen-Schritt beginnt nicht mit Operator: „{st[:44]}…“")
+    # `seite.ersatz` wird seit dem 14.09.2026 NICHT MEHR GEDRUCKT. Abdullah wollte
+    # Abschnitt ③ auf einen Satz: "mache es immer kurz und knappt simulation
+    # öffennen und die Schritte durchführen". Der Ersatzweg steht seitdem nur
+    # noch im Lehrerteil unter "Wenn die Simulation nicht geht" - dort richtet er
+    # sich an die Lehrkraft, die ihn ohnehin vorbereitet.
+    #
+    # Die Regel bleibt trotzdem: Sie haelt die QUELLE vollstaendig, damit der
+    # Ersatzweg je Einheit dokumentiert ist und beim naechsten Umbau nicht fehlt.
+    # Sie prueft aber nichts Gedrucktes mehr - wer sie liest, soll das wissen.
     if s.get("sim") and not s.get("ersatz", "").startswith("Wenn die Simulation nicht geht"):
-        f.append("Ersatzsatz für die Simulation fehlt oder weicht ab")
+        f.append("Ersatzsatz fehlt oder weicht ab (Quelle, nicht gedruckt)")
     if not s.get("bildauftrag", "").startswith("[BILD:"):
         f.append("Bildauftrag muss mit [BILD: beginnen")
     if not s.get("zuhause"): f.append("Zuhause-Auftrag fehlt")

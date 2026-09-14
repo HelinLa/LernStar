@@ -142,7 +142,7 @@ SCHRITTE_A=[("Lesen:","Lies die kurze Geschichte."),
             ("Deine Vermutung:","Kreuze an, was du glaubst."),
             ("Forschen am Bildschirm:","Öffne die Simulation mit dem QR-Code. "
              "Stelle ein und lies ab."),
-            ("Trage ein:","Fülle die Tabelle. Die erste Zeile ist schon gelöst.")]
+            ("Trage ein:","Fülle die Tabelle Zeile für Zeile aus.")]
 SCHRITTE_B=[("Merksatz:","Setze die zwei Wörter aus der Wortbank ein."),
             ("Beispiel:","So sieht eine gute Antwort aus."),
             ("Drei Aufgaben:","Erst ankreuzen, dann eintragen, dann erklären."),
@@ -504,7 +504,7 @@ LB_INHALT=["Lösungen und Erwartungshorizonte","typische Fehler und gestufte Hil
 
 LB_HINWEISE=[
  ("Aufbau jeder Einheit","Eine Doppelseite pro Lernziel: Seite A (Entdecken) mit "
-  "Geschichte, Vermutung, Simulation und vorausgefüllter Beispielzeile · Seite B "
+  "Geschichte, Vermutung, Simulation und leerer Wertetabelle · Seite B "
   "(Verstehen & Üben) mit Merksatz, Wortbank, gelöstem Beispiel, drei Aufgaben, "
   "drei Hilfestufen und Selbstcheck."),
  ("Die drei Hilfestufen","Hilfe 1 verweist auf Wortbank oder Schlüsselstelle · "
