@@ -43,6 +43,10 @@ import importlib.util as _ilu
 _spec=_ilu.spec_from_file_location("lehrplan", os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "arbeitsheft", "lehrplan.py"))
 lehrplan=_ilu.module_from_spec(_spec); _spec.loader.exec_module(lehrplan)
+_kspec=_ilu.spec_from_file_location("kompetenzen", os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "arbeitsheft",
+    "kompetenzen.py"))
+kompetenzen=_ilu.module_from_spec(_kspec); _kspec.loader.exec_module(kompetenzen)
 import plan
 # ACHTUNG: build_final definiert selbst ein HERE (Ordner von Klasse 5) und der
 # Stern-Import zieht es mit herein. HERE muss deshalb DANACH gesetzt werden,
@@ -87,6 +91,8 @@ def _diag(chid,tid):
 BANDNAME="FELO Physik 9 · Realschule NRW"
 DATEINAME="FELO_Physik_9_Realschule_NRW"
 FUSS="FELO Physik 9 · Forscherheft"
+# Der Lehrerband ist ein eigenes Heft und traegt eine eigene Fusszeile.
+FUSS_LB  = FUSS.replace("Forscherheft", "Lehrerband")
 
 # ═════════════════════════════════════════════════════════════════════════════
 #  NEUER SATZ - Masse, die es in der Groessentafel des Moduls nicht gibt
@@ -181,12 +187,12 @@ def qr_karte(h,d,tid):
     return (QR_X-14,QR_Y-13,QR_X+QR_KANTE+8,QR_Y+QR_KANTE+34)
 
 
-def blatt(im,d,h,name,kopf,titel,si,gesamt,pn,qr=None,kopf_rechts=None):
+def blatt(im,d,h,name,kopf,titel,si,gesamt,pn,qr=None,kopf_rechts=None,fuss=None):
     """Ein fertiges Blatt: erst messen, dann Kopf, Fuss und QR daraufsetzen."""
     PROBE.append((name,pn,_unterkante(im)))
     # fd.seitenrahmen druckt die Seitenzahl als pn+seite - `pn` ist dort die ERSTE
     # Seite der Einheit. Hier steht die echte Seitenzahl, also pn-si uebergeben.
-    fd.seitenrahmen(h,d,fd.STIL,kopf,kopf_rechts,titel,si,gesamt,pn-si,FUSS)
+    fd.seitenrahmen(h,d,fd.STIL,kopf,kopf_rechts,titel,si,gesamt,pn-si,fuss or FUSS)
     if qr: qr_karte(h,d,qr)
     return fertig(im)
 
@@ -260,7 +266,8 @@ def auswuchten(B,hoehen,seiten):
     return beste
 
 
-def setze_einheit(B,kopf,titel,pn,name,qr=None,fuellen=False,kopf_rechts=None):
+def setze_einheit(B,kopf,titel,pn,name,qr=None,fuellen=False,kopf_rechts=None,
+                  ausgleich=False,fuss=None):
     """Bausteine messen, umbrechen, setzen. Gibt die Liste der Seiten zurueck.
 
     Der Umbruch ist die einzige Stelle, die entscheidet, wie viele Seiten eine
@@ -270,6 +277,8 @@ def setze_einheit(B,kopf,titel,pn,name,qr=None,fuellen=False,kopf_rechts=None):
     seiten=fd.umbrechen(B,hoehen)
     if fuellen:
         B,hoehen,seiten=fd.schreibraum_auffuellen(B,hoehen,seiten,fd.STIL)
+    if ausgleich and len(seiten)>1:
+        seiten=ausgleichen(B,hoehen)
     seiten=auswuchten(B,hoehen,seiten)
     # Steht am Fuss einer Seite noch ein Baustein, der etwas festhaelt, ist die
     # Verklammerung nicht aufgegangen - genau das ist die einsame Ueberschrift.
@@ -284,7 +293,7 @@ def setze_einheit(B,kopf,titel,pn,name,qr=None,fuellen=False,kopf_rechts=None):
         im,d=newp(fd.GRUND); h=hp(im,d)
         for i,y in eintraege: B[i].f(h,d,y)
         raus.append(blatt(im,d,h,f"{name} {si+1}/{len(seiten)}",kopf,titel,si,len(seiten),
-                          pn+si,qr if si==0 else None,kopf_rechts if si==0 else None))
+                          pn+si,qr if si==0 else None,kopf_rechts if si==0 else None,fuss))
     return raus
 
 
@@ -351,6 +360,58 @@ def b_para(text,art="reg",grad=None,farbe=None,breite=None,x=None,lh=None,
                        fd.SPALTE if breite is None else breite,
                        fd.LH if lh is None else lh)
     return bst(name,f,abstand,haftet)
+
+
+_MESSBLATT=None
+
+
+def messhilfe():
+    """Ein Blatt, das nur zum MESSEN da ist.
+
+    h.wrap braucht ein Bild, kein Papier: Es fragt die Schrift nach Breiten und
+    zeichnet nichts. Das eine Blatt wird deshalb einmal angelegt und immer
+    wiederbenutzt - es kommt nie in den Band."""
+    global _MESSBLATT
+    if _MESSBLATT is None:
+        im,d=newp(fd.GRUND); _MESSBLATT=hp(im,d)
+    return _MESSBLATT
+
+
+def b_zeilen(text,art="reg",grad=None,breite=None,punkt=False,
+             abstand=fd.ABS_ZEILE,name="Zeile"):
+    """Ein Absatz, der ZEILENWEISE umbrechen darf - eine LISTE von Bausteinen.
+
+    Uebernommen aus arbeitsheft_foe9/build_pilot.py, wo dieselbe Not bestand.
+    b_para setzt einen Absatz als EINEN Baustein: Der Umbruch kann ihn nur ganz
+    oder gar nicht auf ein Blatt nehmen. Auf den Schuelerseiten reicht das - dort
+    ist kein Absatz laenger als ein paar Zeilen. Im Lehrerteil reicht es NICHT:
+    Ein einzelner Erwartungshorizont ist hier bis zu 1300 Einheiten hoch, eine
+    Folgeseite fasst rund 1480. Ein Baustein, der nirgends hinpasst, wird vom
+    Umbruch auf ein frisches Blatt gelegt und laeuft dort unten heraus - PIL
+    schneidet den Rest wortlos ab. Genau dieser Fehler steht zweimal in CLAUDE.md
+    ("Der Lehrerteil lief unter der Blattkante weiter", "ch_uebung lief unter die
+    Blattkante").
+
+    Deshalb: jede Zeile ein Baustein, und die erste haelt die zweite fest, damit
+    nie eine einzelne Zeile allein unten anhaengt."""
+    grad=fd.FLIESS if grad is None else grad
+    hh=fd.LH if grad==fd.FLIESS else round(fd.einheiten(grad)*fd.ZAB,2)
+    r=round(fd.einheiten(grad)*0.55,1)
+    xt=round(r*2+14,1) if punkt else 0.0
+    br=(LESE if breite is None else breite)-xt
+    f=fd.schrift(art,grad)
+    zeilen=messhilfe().wrap(text,f,br) or [""]
+    B=[]
+    for k,z in enumerate(zeilen):
+        def zeichne(h,d,y,k=k,z=z):
+            if punkt and k==0:
+                fd.raute(d,fd.X0+r,y+hh*0.45,r*0.45,fd.STIL["akzent"])
+            fd.T(h,fd.X0+xt,y,z,f,fd.STIL["text"])
+            return y+hh
+        B.append(bst("%s %d"%(name,k+1),zeichne,abstand=0,
+                     haftet=1 if (k==0 and len(zeilen)>1) else 0))
+    B[-1].abstand=abstand
+    return B
 
 
 def schreiblinie(h,y,x0=None,x1=None,nummer=None):
@@ -469,6 +530,36 @@ def kasten_quelle(h,d,y,st,text,zeichner=None):
 
 def _gitter_mittig(d,x,cy,b,fill):
     gitterzeichen(d,x+b*0.5,cy,b*0.55,fill)
+
+
+def ausgleichen(B,hoehen):
+    """Umbrechen und den Bruch AUSGLEICHEN, ohne eine Seite zu kosten.
+
+    fd.umbrechen fuellt gierig: Seite 1 randvoll, der Rest faellt hinten heraus.
+    Fuer Schreibseiten ist das richtig - dort holt schreibraum_auffuellen den
+    Platz zurueck. Fuer eine Kapitel-Trennseite ist es falsch: Die beiden Kapitel
+    dieses Bandes tragen 16 und 12 Themen, also mehr als ein Blatt fasst - und in
+    Kapitel 1 kommt eine lange Materialliste dazu. Ohne Ausgleich stuenden auf
+    Seite 2 nur die letzten Kaestchen und die Leitzeile. (Klasse 8 kennt das
+    nicht - dort hat kein Kapitel mehr als sieben Themen und jede Trennseite
+    passt auf ein Blatt.)
+
+    Gesucht wird deshalb die NIEDRIGSTE Blattkante, bei der die Einheit noch
+    mit derselben Seitenzahl auskommt. Jede Einheit unterhalb davon wuerde eine
+    Seite mehr kosten - der Ausgleich ist also gratis. Gemessen wird das
+    Ergebnis, nicht angenommen: kommt etwas anderes heraus als dieselbe
+    Seitenzahl, bleibt der gierige Umbruch stehen."""
+    seiten=fd.umbrechen(B,hoehen)
+    n=len(seiten)
+    if n<2: return seiten
+    lo,hi=int(fd.OBEN+fd.FORTS)+1,int(fd.UNTEN)
+    while lo<hi:
+        m=(lo+hi)//2
+        if len(fd.umbrechen(B,hoehen,unten=m))<=n: hi=m
+        else: lo=m+1
+    besser=fd.umbrechen(B,hoehen,unten=lo)
+    return besser if len(besser)==n else seiten
+
 
 
 def kasten_frage(h,d,y,st,frage,auftrag=None):
@@ -1363,190 +1454,356 @@ def ch_kreuzwort(entries,name,pn,acc):
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-#  LÖSUNGSTEIL  ->  LEHRERBAND (eigenes PDF, kompakter Satz fuer Erwachsene)
+#  LEHRERBAND  (eigenes PDF)
+#
+#  Seit dem 14.09.2026 im HAUSSTIL des Bandes, nach dem Vorbild der Foerderreihe
+#  (arbeitsheft_foe9/build_pilot.py::seite_l und lehrer_bloecke). Vorher war es
+#  ein eigener Satz auf cremefarbenem Grund: je Einheit vier Bloecke Fliesstext
+#  (VERMUTUNG · BEOBACHTUNG · ERKLAERUNG · SICHERUNG), die Uebungsloesungen in
+#  zweispaltigen Listen ein paar Seiten weiter, und die Vermutung nur im
+#  WORTLAUT - ohne die Nummer, die auf der Schuelerseite am Kaestchen steht.
+#
+#  Abdullah, 13.09.2026: "Man will sich die Vermutungen anschauen und die
+#  Aufgaben, dann will man direkt die lösung zuordnen und gucken ob alles passt.
+#  Im unterricht hat man nicht immer zeit und schüler fragen sofort nach den
+#  lösungen."
+#
+#  Vier Dinge folgen daraus:
+#
+#   1. EINE Einheit, EIN Lehrerteil. Forscherseite und Uebungsseite stehen
+#      zusammen. Vorher lagen sie in getrennten Kapitelbloecken - wer die
+#      Uebungsloesung zu ki1 suchte, blaetterte an 16 Forscherseiten vorbei.
+#   2. Ganz oben "Auf einen Blick": nur die Nummern und Woerter. Richtig ist
+#      Vermutung 2, die vier Lueckenwoerter, die R/F-Folge, die MC-Nummer.
+#      Das ist der Fall "Schueler fragt sofort nach der Loesung".
+#   3. Die Vermutung wird NUMMERIERT und alle drei werden gezeigt - mit einem
+#      Satz, warum die beiden anderen nicht tragen. Auf der Schuelerseite stehen
+#      drei Kaestchen; ein blosser Wortlaut zwingt zum Zeilenvergleich.
+#   4. Jede Aufgabe steht mit ihrem WORTLAUT ueber ihrer Loesung. Vorher musste
+#      man das Schuelerheft danebenlegen, um zu wissen, wonach gefragt war.
+#
+#  Gesetzt wird mit denselben Bausteinen wie die Schuelerseiten (felo_design,
+#  12 pt), umbrochen wird ZEILENWEISE (b_zeilen) - ein Erwartungshorizont ist
+#  hier hoeher als eine Seite, und ein unteilbarer Baustein laeuft unter der
+#  Blattkante heraus. Genau das steht zweimal in CLAUDE.md.
 # ═════════════════════════════════════════════════════════════════════════════
-def _loes_bloecke(o):
-    return [("VERMUTUNG",o["predict"][o.get("predictOk",0)]),
-            ("BEOBACHTUNG",o.get("beobachtung","")),
-            ("ERKLÄRUNG",o["aufgabe"]["loesung"]),
-            ("SICHERUNG"," ".join(m["pre"]+" "+m["loesung"]+m["post"] for m in o["merksatz"]))]
 
-# Schriftgroesse im Loesungsteil. AV(22) sind auf der A4-Seite rund 10,6 pt.
-# Frueher lief der Satz stufenweise bis AV(9) = 4,3 pt herunter, damit die
-# Seitenzahl gleich blieb - im Druck war das nicht mehr lesbar. Jetzt bleibt die
-# Groesse fest, und der Loesungsteil bekommt so viele Seiten, wie er braucht.
-LOES_GR, LOES_LH, LOES_AB = 22, 34, 12
-
-# Der Kernlehrplan-Block steht auf der ERSTEN Loesungsseite jedes Kapitels
-# ueber dem Text: Zeile mit dem Inhaltsfeld plus zwei Zeilen Basiskonzepte.
-_LEHRPLAN_H = 56
+# Auf welcher Heftseite steht die Einheit? Waehrend des Schuelersatzes gefuellt
+# (main), vom Lehrerband gelesen - build_lehrerband laeuft am Ende von main.
+# Eine leere Angabe ist kein Fehler: dann entfaellt der Seitenverweis.
+HEFTSEITE={}
 
 
-def _loes_forscherseiten(ch,ci,pn0):
-    """Loesungen zu den Forscherseiten, verteilt auf so viele Seiten wie noetig."""
-    im,d=newp(CREAM); h=hp(im,d)                     # nur zum Ausmessen
-    gr,lh,ab,kopf,luft=LOES_GR,LOES_LH,LOES_AB,46,30
-    lx=ML+170; tw=W-ML-lx-40
-    def hoehe(tid):
-        return kopf+sum(len(h.wrap(x,AV(gr),tw))*lh+ab for _,x in _loes_bloecke(FSD[tid]) if x)+luft
-    teile=[]; akt=[]; y=214+(_LEHRPLAN_H if lehrplan.feld(ch["id"]) else 0)
-    for i,tid in enumerate(ch["topics"]):
-        hh=hoehe(tid)
-        if akt and y+hh>H-96: teile.append(akt); akt=[]; y=214
-        akt.append(i); y+=hh
-    if akt: teile.append(akt)
-    seiten=[]
-    for j,idx in enumerate(teile):
-        im,d=newp(CREAM); h=hp(im,d)
-        pagehead(h,"LEHRERBAND · LÖSUNGEN",f"Kapitel {ci+1} · {ch['title']}",GOLD_D,30)
-        _u="Forscherseiten · Vermutung, erwartete Beobachtung (Werte aus der Simulation), Erklärung, Sicherung"
-        if len(teile)>1: _u+=f"  ({idx[0]+1}–{idx[-1]+1} von {len(ch['topics'])})"
-        h.T(ML,176,_u,AVM(13),SUB)
-        _fd=lehrplan.feld(ch["id"])
-        if _fd and j==0:
-            _nr,_nm,_bk=_fd
-            h.T(ML,196,f"Kernlehrplan: Inhaltsfeld {_nr} · {_nm}",AVM(13),GOLD_D)
-            _bz=h.para(ML,214," · ".join(f"{_k}: {_v}" for _k,_v in _bk.items()),AV(12),SUB,W-2*ML,17)
-        y=214+(_LEHRPLAN_H if (_fd and j==0) else 0)
-        for k,i in enumerate(idx):
-            tid=ch["topics"][i]; o=FSD[tid]
-            if k: h.ln([(ML,y-luft//2),(W-ML,y-luft//2)],GLINE,1)
-            h.circ(ML+17,y+16,16,fill=ch["acc"]); h.T(ML+17,y+17,str(i+1),AVB(16),CREAM,anchor="mm")
-            h.T(ML+46,y+2,o.get("titel") or o["name"],AVB(gr+3),INK)
-            # Welche Kompetenzbereiche deckt dieses Thema ab? Forscherseite und
-            # Uebungsseite zusammengenommen.
-            _ber=[]
-            for _b in ([ (o.get("aufgabe") or {}).get("komp"), o.get("alltagKomp") ]
-                       + list((UEBD.get(tid,{}) or {}).get("komp") or [])):
-                if _b and _b not in _ber: _ber.append(_b)
-            _xr=W-ML
-            for _b in ["UF","E","K","B"]:
-                if _b in _ber: _xr-=h.kompchip(_xr,y+4,_b,ch["acc"])+6
-            y+=kopf
-            for lab,txt in _loes_bloecke(o):
-                if not txt: continue
-                h.T(ML+46,y+5,lab,COP(13),GOLD_D)
-                y=h.para(lx,y,txt,AV(gr),INK,tw,lh)+ab
-            y+=luft
-        footer(h,pn0+j,GOLD_D)
-        seiten.append(fertig(im))
-    return seiten
+# Eine Rechenaufgabe hat eine Loesung, eine offene Aufgabe einen
+# Erwartungshorizont. Entschieden wird am Operator - das ist dieselbe
+# Unterscheidung, die der Hausstil auf den Schuelerseiten trifft.
+_RECHNET=("Berechne","Bestimme","Rechne","Miss","Trage")
 
 
-def _loes_uebungsseiten(ch,ci,pn0):
-    """Loesungen zu Uebung, Raetsel und Kapiteltest - zweispaltig, ueber mehrere Seiten."""
-    im,d=newp(CREAM); h=hp(im,d)                     # nur zum Ausmessen
-    gr,lh,ab,sa=LOES_GR,LOES_LH,LOES_AB,46
-    Lx=ML; Rx=W/2+22; cw=W/2-ML-32
+def _loesungswort(frage):
+    # Der Operator steht NICHT immer am Anfang: Die Alltagsaufgaben stellen oft
+    # erst die Lage dar und fragen im zweiten Satz ("In einer Lauf-App ist ...
+    # Bestimme ihre Geschwindigkeit"). Gesucht wird deshalb im ganzen Text.
+    import re as _r
+    return "Lösung: " if _r.search(r"(?<![A-Za-zÄÖÜäöüß])(%s)(?![a-zäöüß])"
+                                   % "|".join(_RECHNET), frage) \
+        else "Erwartungshorizont: "
+
+
+def _wortform(w):
+    """Ein Wort aus der Raetselliste in normale Schreibweise bringen.
+
+    Die Listen sind durchgehend versal. `capitalize()` scheitert an Wortformen
+    mit Binnenzeichen ("WEG-ZEIT-DIAGRAMM" wuerde "Weg-zeit-diagramm"), deshalb
+    wird an Bindestrichen geteilt."""
+    return "-".join(t[:1]+t[1:].lower() for t in w.split("-"))
+
+
+def _komptext(code):
+    """Klartext eines Kompetenzcodes, leer wenn die Tafel ihn nicht kennt."""
+    t = getattr(kompetenzen, "KOMPETENZ", {}) if "kompetenzen" in globals() else {}
+    return t.get(code, "")
+
+
+def _rf(stimmt):
+    return "richtig" if stimmt else "falsch"
+
+
+def _luecke_satz(s):
+    """Lueckensatz mit eingesetzter Loesung - das Loesungswort in Anfuehrung."""
+    post=s.get("post","")
+    return s["pre"]+" „"+s["loesung"]+"“"+("" if post.startswith(("."," ","!","?",",",";")) else " ")+post
+
+
+def _kompetenzen(o,ub):
+    """Kompetenzcodes dieser Einheit, Forscherseite und Uebungsseite zusammen."""
+    codes=[]
+    for c in ([(o.get("aufgabe") or {}).get("komp"), o.get("alltagKomp")]
+              + list((ub or {}).get("komp") or [])):
+        if c and c not in codes: codes.append(c)
+    return codes
+
+
+def lehrer_bloecke(tid):
+    """Die Bloecke eines Lehrerteils, in der Reihenfolge des Unterrichts.
+
+    Gibt (Titel, [Punkte]) zurueck - genau die Form, die seite_l der
+    Foerderreihe erwartet. Fehlt ein Feld, entfaellt sein Block; kein Block
+    wird mit leerem Inhalt gesetzt."""
+    o=FSD[tid]; ub=UEBD.get(tid) or {}
+    auf=o.get("aufgabe") or {}
+    ms=o.get("merksatz") or []
+    ok=o.get("predictOk",0)
+    L=[]
+
+    # ── Auf einen Blick: nur Nummern und Woerter ─────────────────────────
+    kurz=["Vermutung (Abschnitt 2): richtig ist Nummer %d von %d."%(ok+1,len(o.get("predict") or [1]))]
+    if ms:
+        kurz.append("Merksatz (Abschnitt 6): "+"  ·  ".join(
+            "Lücke %d: %s"%(i+1,m["loesung"]) for i,m in enumerate(ms)))
+    if ub.get("lueckensaetze"):
+        kurz.append("Übung, Lückensätze: "+"  ·  ".join(
+            "%d %s"%(i+1,s["loesung"]) for i,s in enumerate(ub["lueckensaetze"])))
+    if ub.get("richtigfalsch"):
+        kurz.append("Übung, richtig oder falsch: "+"  ·  ".join(
+            "%d %s"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(ub["richtigfalsch"])))
+    if ub.get("mc"):
+        kurz.append("Übung, Auswahlaufgabe: richtig ist Antwort %d."%(ub["mc"]["richtig"]+1))
+    L.append(("Auf einen Blick",kurz))
+
+    # ── ② Vermutung: alle drei, mit Verdikt und Grund ────────────────────
+    if o.get("predict"):
+        warum=o.get("predictWarum") or []
+        v=[]
+        for i,p in enumerate(o["predict"]):
+            t="Vermutung %d – %s.  „%s“"%(i+1,"richtig" if i==ok else "falsch",p)
+            g=warum[i] if i<len(warum) else ""
+            v.append(t+("  "+g if g else ""))
+        L.append(("Abschnitt 2 · Meine Vermutung – welche trägt, und warum",v))
+
+    # ── ③/④ Was am Bildschirm steht ──────────────────────────────────────
+    if o.get("beobachtung"):
+        # Fuenf Einheiten haben keine Simulation, sondern ein gedrucktes
+        # Datenblatt. "Was am Bildschirm steht" waere dort schlicht falsch.
+        _wo="im Datenblatt" if o.get("daten") else "am Bildschirm"
+        L.append(("Abschnitt 4 · Meine Beobachtung – was %s steht"%_wo,
+                  [o["beobachtung"]]))
+
+    # ── ⑥ Merksatz vollstaendig ──────────────────────────────────────────
+    if ms:
+        L.append(("Abschnitt 6 · Merksatz – vollständig",
+                  [" ".join(m["pre"]+" "+m["loesung"]+m.get("post","") for m in ms)]))
+
+    # ── ⑦ Aufgabe: Wortlaut ueber der Loesung ────────────────────────────
+    if auf.get("frage"):
+        L.append(("Abschnitt 7 · Aufgabe",
+                  ["Gefragt ist: "+auf["frage"]]
+                  +(["Lösung: "+auf["loesung"]] if auf.get("loesung") else [])))
+
+    # ── Alltag & Anwendung ───────────────────────────────────────────────
+    if o.get("alltag"):
+        L.append(("Alltag & Anwendung",
+                  ["Gefragt ist: "+o["alltag"]]
+                  +([_loesungswort(o["alltag"])+o["alltagLoesung"]]
+                    if o.get("alltagLoesung") else [])))
+
+    if o.get("modellgrenze"):
+        L.append(("Grenze des Modells",[o["modellgrenze"]]))
+
+    # ── Uebungsseite ─────────────────────────────────────────────────────
+    if ub.get("lueckensaetze"):
+        L.append(("Übungsseite · Lückensätze",
+                  ["%d  %s"%(i+1,_luecke_satz(s)) for i,s in enumerate(ub["lueckensaetze"])]))
+    if ub.get("richtigfalsch"):
+        L.append(("Übungsseite · Richtig oder falsch",
+                  ["%d  %s  –  %s"%(i+1,_rf(s["stimmt"]),s["aussage"])
+                   for i,s in enumerate(ub["richtigfalsch"])]))
+    mc=ub.get("mc")
+    if mc:
+        p=["Richtig ist Antwort %d: „%s“"%(mc["richtig"]+1,mc["optionen"][mc["richtig"]])]
+        if mc.get("erklaerung"): p.append(mc["erklaerung"])
+        L.append(("Übungsseite · Auswahlaufgabe",p))
+    off=ub.get("offen") or {}
+    if off.get("loesung"):
+        p=[]
+        if off.get("frage"): p.append("Gefragt ist: "+off["frage"])
+        p.append("Erwartungshorizont: "+off["loesung"])
+        L.append(("Übungsseite · Denk nach",p))
+
+    codes=_kompetenzen(o,ub)
+    if codes:
+        # Tolerant: Kennt die Tafel den Code nicht, steht nur der Code da. Die
+        # Reihen benutzen DREI Tafeln mit denselben Buchstaben (Realschule und
+        # Gesamtschule UF/E/K/B, Gymnasium mit eigenem B4, Oberstufe S/E/K/B) -
+        # ein KeyError waere hier der falsche Weg, ihn zu melden. Dafuer ist die
+        # Kompetenzprobe im Bau da.
+        L.append(("Kompetenzen dieser Einheit",
+                  [(("%s – %s"%(c,_komptext(c))) if _komptext(c) else c) for c in codes]))
+    return L
+
+
+def lehrerseite(tid,nr,pn):
+    """Lehrerteil EINER Einheit. Gibt eine LISTE von Seiten zurueck."""
+    o=FSD[tid]
+    titel=o.get("titel") or o["name"]
+    unter="Lösungen und Erwartungshorizont"
+    if HEFTSEITE.get(tid):
+        unter+=" · Forscherheft ab Seite %d"%HEFTSEITE[tid]
+    B=[b_titel("%d  %s"%(nr,titel),unterzeile=unter)]
+    for bt,punkte in lehrer_bloecke(tid):
+        B.append(b_unterkopf(bt))
+        for p in punkte:
+            B+=b_zeilen(p,punkt=True,name="Punkt")
+        B[-1].abstand=fd.ABS_AUFGABE
+    B[-1].abstand=fd.ABS_ZEILE
+    # ausgleich=True: Ohne ihn fuellt der Umbruch gierig und die LETZTE Seite
+    # einer Einheit traegt den Rest - gemessen 8 bis 33 Prozent auf zehn von 28
+    # Einheiten. Dieselbe Seitenzahl, aber gleichmaessig verteilt.
+    return setze_einheit(B,"Lehrerteil · nur für Lehrkräfte",titel,pn,
+                         "Lehrerteil "+tid,ausgleich=True,fuss=FUSS_LB)
+
+
+def lehrer_kapitelbloecke(ch,ci):
+    """Was nicht zu einer einzelnen Einheit gehoert: Test, Weiterdenken, Vorbereitung."""
     a=ASMT[ch["id"]]; t=a["test"]
-    bl=[("sec","ÜBUNGEN")]
-    for ti,tid in enumerate(ch["topics"]):
-        ub=UEBD[tid]
-        bl.append(("item",f"{ti+1})",[("Lücken: "+" · ".join(s["loesung"] for s in ub["lueckensaetze"]),INK),
-                                      ("R/F: "+" ".join("R" if s["stimmt"] else "F" for s in ub["richtigfalsch"]),SUB),
-                                      ("MC: "+ub["mc"]["optionen"][ub["mc"]["richtig"]],SUB)]))
-    bl.append(("sec","DENK NACH (ÜBUNG)"))
-    for ti,tid in enumerate(ch["topics"]):
-        bl.append(("item",f"{ti+1})",[(UEBD[tid]["offen"]["loesung"],INK)]))
+    L=[]
+    # lehrplan.zeile() liefert Versalien fuer die Trennseite ("INHALTSFELD 1 ·
+    # GRUNDLAGEN DER MECHANIK"). Im Fliesstext des Lehrerteils gehoert die
+    # normale Schreibweise hin - die Versalprobe meldete sie sonst zu Recht.
+    _f=lehrplan.feld(ch["id"]) if hasattr(lehrplan,"feld") else None
+    if _f:
+        _nr,_nm,_bk=_f
+        L.append(("Kernlehrplan",
+                  ["Inhaltsfeld %d · %s"%(_nr,_nm)]
+                  +["%s: %s"%(_k,_v) for _k,_v in _bk.items()]))
+    kurz=["Kapiteltest, Lückensätze: "+"  ·  ".join(
+        "%d %s"%(i+1,s["loesung"]) for i,s in enumerate(t["a1"]))]
+    kurz.append("Kapiteltest, richtig oder falsch: "+"  ·  ".join(
+        "%d %s"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(t["a2"])))
+    kurz.append("Kapiteltest, Auswahlaufgabe: richtig ist Antwort %d."%(t["mc"]["richtig"]+1))
+    L.append(("Auf einen Blick",kurz))
+
+    L.append(("Kapiteltest · Aufgabe 1 – Lückensätze",
+              ["%d  %s"%(i+1,_luecke_satz(s)) for i,s in enumerate(t["a1"])]))
+    L.append(("Kapiteltest · Aufgabe 2 – Richtig oder falsch",
+              ["%d  %s  –  %s"%(i+1,_rf(s["stimmt"]),s["aussage"])
+               for i,s in enumerate(t["a2"])]))
+    _mc=t["mc"]
+    L.append(("Kapiteltest · Aufgabe 3 – Auswahlaufgabe",
+              ["Richtig ist Antwort %d: „%s“"%(_mc["richtig"]+1,_mc["optionen"][_mc["richtig"]])]))
+    for _nr,_k in (("Aufgabe 4","offen"),("Aufgabe 5","transfer")):
+        _x=t.get(_k) or {}
+        if _x.get("loesung"):
+            L.append(("Kapiteltest · %s"%_nr,
+                      (["Gefragt ist: "+_x["frage"]] if _x.get("frage") else [])
+                      +["Erwartungshorizont: "+_x["loesung"]]))
+
     if TRANSFER.get(ch["id"]):
-        bl.append(("sec","WEITERDENKEN · ERWARTUNGSHORIZONT (Anforderungsbereich III)"))
-        bl.append(("item","",[("Diese Aufgaben haben nicht die eine richtige Antwort. Gewertet wird, "
-                               "ob die Begründung trägt und beide Seiten vorkommen.",SUB)]))
-        for _i,_tr in enumerate(TRANSFER[ch["id"]]):
-            bl.append(("item",chr(65+_i)+")",[(f"[{_tr['komp']} · AFB {_tr.get('afb','III')}] "+_tr["erwartung"],INK)]))
-    bl.append(("sec","AUFGABEN-CHECK DER FORSCHERSEITEN"))
-    for ti,tid in enumerate(ch["topics"]):
-        bl.append(("item",f"{ti+1})",[(FSD[tid]["aufgabe"]["loesung"],INK)]))
-    bl.append(("sec","KAPITELTEST"))
-    for nr,txt in (("1)","Lücken: "+" · ".join(s["loesung"] for s in t["a1"])),
-                   ("2)","R/F: "+" ".join("R" if s["stimmt"] else "F" for s in t["a2"])),
-                   ("3)","MC: "+t["mc"]["optionen"][t["mc"]["richtig"]]),
-                   ("4)",t["offen"]["loesung"]),("5)",t["transfer"]["loesung"])):
-        bl.append(("item",nr,[(txt,INK)]))
+        p=["Diese Aufgaben haben nicht die eine richtige Antwort. Gewertet wird, "
+           "ob die Begründung trägt und beide Seiten vorkommen."]
+        for i,tr in enumerate(TRANSFER[ch["id"]]):
+            if tr.get("prompt"): p.append("%s)  Gefragt ist: %s"%(chr(65+i),tr["prompt"]))
+            p.append("%s)  [%s · Anforderungsbereich %s]  %s"
+                     %(chr(65+i),tr.get("komp","—"),tr.get("afb","III"),tr["erwartung"]))
+        L.append(("Weiterdenken · Erwartungshorizont",p))
+
     if a.get("prep",{}).get("mini"):
-        # Die Mini-Aufgaben der Test-Vorbereitung hatten bisher nirgends im Heft eine
-        # Loesung. Fuer Eltern, die zu Hause abfragen, standen 47 Fragen ohne Antwort.
-        bl.append(("sec","TEST-VORBEREITUNG · PRÜFE DICH SELBST"))
-        for mi,m in enumerate(a["prep"]["mini"]):
-            bl.append(("item",f"{mi+1})",[(m["loesung"],INK)]))
-    # Die Raetselseiten werden nicht mehr gesetzt; die Wortliste bleibt hier stehen,
-    # weil dieselben Woerter die Test-Vorbereitung tragen ("Diese Wörter musst du kennen").
-    bl.append(("sec","WORTSCHATZ DES KAPITELS"))
-    bl.append(("item","",[(", ".join(x["wort"] for x in a["clues"]["hinweise"]),INK)]))
-    def bh(b):
-        if b[0]=="sec": return sa
-        return sum(len(h.wrap(txt,AV(gr),cw-32))*lh for txt,_ in b[2])+ab
-    unten=H-96; spalten=[]; akt=[]; y=214
-    for n,b in enumerate(bl):
-        hh=bh(b)
-        # Eine Abschnittsueberschrift allein am Spaltenende bleibt ohne Inhalt stehen.
-        if b[0]=="sec" and n+1<len(bl): hh+=bh(bl[n+1])
-        if akt and y+hh>unten: spalten.append(akt); akt=[]; y=214
-        akt.append(b); y+=bh(b)
-    if akt: spalten.append(akt)
-    seiten=[]
-    for si in range(0,len(spalten),2):
-        im,d=newp(CREAM); h=hp(im,d)
-        pagehead(h,"LEHRERBAND · LÖSUNGEN",f"Kapitel {ci+1} · {ch['title']}",GOLD_D,30)
-        _u="Übungsseiten, Kapiteltest und Wortschatz"
-        if len(spalten)>2: _u+=f"  (Teil {si//2+1} von {(len(spalten)+1)//2})"
-        h.T(ML,176,_u,AVM(13),SUB)
-        for j,x0 in ((0,Lx),(1,Rx)):
-            if si+j>=len(spalten): break
-            y=214
-            for b in spalten[si+j]:
-                if b[0]=="sec":
-                    h.tracked(x0,y+6,b[1],COP(15),GOLD_D,2,center=False); y+=sa
-                else:
-                    if b[1]: h.T(x0,y,b[1],AVB(gr),STEP[0])
-                    yy=y
-                    for txt,col in b[2]: yy=h.para(x0+32,yy,txt,AV(gr),col,cw-32,lh)
-                    y=yy+ab
-        footer(h,pn0+len(seiten),GOLD_D)
-        seiten.append(fertig(im))
-    return seiten
+        L.append(("Test-Vorbereitung · Prüfe dich selbst",
+                  ["%d  %s"%(i+1,m["loesung"]) for i,m in enumerate(a["prep"]["mini"])]))
+    if a.get("clues",{}).get("hinweise"):
+        # Die Woerter liegen in GROSSBUCHSTABEN vor - Rest aus der Zeit, als
+        # sie ein Kreuzwortraetsel fuellten (seit 09.09.2026 abgeschafft).
+        # Gedruckt wird die normale Schreibweise; sonst stehen hier 30 Versal-
+        # woerter im Fliesstext.
+        L.append(("Wortschatz des Kapitels",
+                  [", ".join(_wortform(x["wort"]) for x in a["clues"]["hinweise"])]))
+    return L
 
 
-def loesungen_pages(start_pn):
-    """Je Kapitel: erst die Forscherseiten, dann Uebung und Test."""
-    pages=[]; pn=start_pn; starts=[]
-    for ci,ch in enumerate(CHAPTERS):
-        starts.append(pn)
-        for p in _loes_forscherseiten(ch,ci,pn): pages.append(p); pn+=1
-        for p in _loes_uebungsseiten(ch,ci,pn): pages.append(p); pn+=1
-    return pages,pn,starts
+def lehrerseite_kapitel(ch,ci,pn):
+    B=[b_titel("Kapitel %d · %s"%(ci+1,ch["title"]),
+               unterzeile="Kapiteltest, Weiterdenken und Test-Vorbereitung")]
+    for bt,punkte in lehrer_kapitelbloecke(ch,ci):
+        B.append(b_unterkopf(bt))
+        for p in punkte:
+            B+=b_zeilen(p,punkt=True,name="Punkt")
+        B[-1].abstand=fd.ABS_AUFGABE
+    B[-1].abstand=fd.ABS_ZEILE
+    return setze_einheit(B,"Lehrerteil · nur für Lehrkräfte",
+                         "Kapitel %d"%(ci+1),pn,"Lehrerteil Kapitel %d"%(ci+1),
+                         ausgleich=True,fuss=FUSS_LB)
+
+
+LB_INHALT=["Lösungen und Erwartungshorizonte zu allen Forscherseiten",
+           "Lösungen der Übungsseiten – bei ihrer Einheit, nicht am Kapitelende",
+           "„Auf einen Blick“ über jeder Einheit: nur die Nummern und Wörter",
+           "Kapiteltests, Weiterdenken-Aufgaben und Test-Vorbereitung",
+           "Kernlehrplan-Bezug und Kompetenzcodes je Einheit"]
 
 
 def lb_cover():
-    """Deckblatt des Lehrerbands - im Satz des Bands, nicht im Schuelersatz."""
-    im,d=newp(CREAM); h=hp(im,d)
-    h.R(46,46,W-46,H-46,18,outline=GOLD,w=2); h.R(56,56,W-56,H-56,14,outline=GOLD_D,w=1)
-    h.R(W/2-124,104,W/2+124,152,8,outline=GOLD,w=1.4)
-    h.tracked(W/2,120,"LEHRERBAND",COP(13),GOLD_D,4)
-    h.tracked(W/2,178,"FELO",DIDOT(84),GOLD_D,30)
-    h.ln([(W/2-150,302),(W/2+150,302)],GOLD_D,1.4)
-    h.tracked(W/2,330,"PHYSIK 9",DIDOT(46),INK,4)
-    h.tracked(W/2,410,"REALSCHULE NRW",COP(16),GOLD_D,6); h.orn(W/2,452,150)
-    z=["Lösungen zu allen %d Forscherseiten"%len(FSD),"Lösungen der Übungsseiten und Kapiteltests",
-       "Erwartungshorizont der Weiterdenken-Aufgaben (Anforderungsbereich III)",
-       "Lösungen der Mini-Aufgaben aus der Test-Vorbereitung",
-       "Kernlehrplan-Bezug und Kompetenzbereiche je Kapitel"]
-    yy=540
-    for t in z:
-        h.circ(W/2-330,yy+9,4,fill=GOLD); h.T(W/2-310,yy,t,AVM(17),INK); yy+=44
-    h.para(W/2-330,yy+30,"Der Schülerband enthält diese Lösungen nicht mehr. Die erwarteten "
-        "Messwerte stehen weiterhin dort im Anhang „Messwerte ohne Gerät“ – ohne Erklärung "
-        "und ohne Sicherung, damit ohne Gerät weitergearbeitet werden kann.",
-        AV(14.5),SUB,660,23)
-    h.tracked(W/2,H-212,"NUR FÜR LEHRKRÄFTE – NICHT FÜR DIE SCHÜLERHAND",COP(11),GOLD_D,3)
-    h.orn(W/2,H-118,150)
+    """Deckblatt des Lehrerbands - im Hausstil, wie die Foerderreihe."""
+    im,d=newp(fd.GRUND); h=hp(im,d)
+    y=fd.OBEN
+    fd.T(h,fd.X0,y,"Lehrerband",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
+    y+=LH_ZWISCH+18
+    fd.T(h,fd.X0,y,"FELO",fd.schrift("bold",DISPLAY_GROSS),fd.STIL["h1"])
+    y+=round(fd.einheiten(DISPLAY_GROSS)*fd.ZAB,2)+10
+    h.ln([(fd.X0,y),(fd.X1,y)],fd.STIL["akzent"],1.6)
+    y+=24
+    # Titel und Schulform kommen aus BANDNAME - das haben ALLE 19 Baende, KL und
+    # SFORM nur vierzehn von ihnen (die fuenf Realschulbaende tragen den Namen
+    # als festen String). "FELO Physik 9 · Realschule NRW" wird zu
+    # "Physik 9 · Forscherheft" und "Realschule NRW".
+    _t=BANDNAME.replace("FELO ","").split(" · ")
+    fd.T(h,fd.X0,y,_t[0]+" · Forscherheft",fd.schrift("bold",fd.HAUPT),fd.STIL["h1"])
+    y+=LH_HAUPT+8
+    fd.T(h,fd.X0,y,_t[-1] if len(_t)>1 else "",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
+    y+=LH_ZWISCH+40
+    for t in LB_INHALT:
+        fd.raute(d,fd.X0+7,y+fd.LH*0.45,6,fd.STIL["akzent"])
+        y=fd.para(h,fd.X0+28,y,t,fd.schrift("med",fd.FLIESS),fd.STIL["text"],LESE-28,fd.LH)+10
+    y+=20
+    fd.para(h,fd.X0,y,"Der Schülerband enthält diese Lösungen nicht. Die erwarteten "
+            "Messwerte stehen dort weiterhin im Anhang „Messwerte ohne Gerät“ – ohne "
+            "Erklärung und ohne Sicherung, damit auch ohne Gerät weitergearbeitet "
+            "werden kann.",fd.schrift("reg",fd.FLIESS),fd.STIL["text"],LESE,fd.LH)
+    fd.T(h,fd.X0,fd.UNTEN-LH_ZWISCH,"Nur für Lehrkräfte – nicht für die Schülerhand",
+         fd.schrift("bold",fd.ZWISCHEN),fd.STIL["akzent"])
+    PROBE.append(("Lehrerband Deckblatt",1,_unterkante(im)))
     return fertig(im)
 
 
-def build_lehrerband():
+def loesungen_pages(start_pn):
+    """Je Kapitel: jede Einheit ein eigener Lehrerteil, danach der Kapitelblock."""
+    pages=[]; pn=start_pn; starts=[]; marken=[]
+    for ci,ch in enumerate(CHAPTERS):
+        starts.append(pn)
+        for ti,tid in enumerate(ch["topics"]):
+            marken.append((FSD[tid].get("titel") or FSD[tid]["name"],pn,ci))
+            for p in lehrerseite(tid,ti+1,pn): pages.append(p); pn+=1
+        marken.append(("Kapiteltest und Weiterdenken",pn,ci))
+        for p in lehrerseite_kapitel(ch,ci,pn): pages.append(p); pn+=1
+    return pages,pn,starts,marken
+
+
+def lehrerband_setzen():
+    """Nur SETZEN, nichts schreiben. Wird VOR den Proben aufgerufen.
+
+    Frueher setzte build_lehrerband() erst nach der Satzspiegel-, Zeichen- und
+    Versalprobe - die Proben sahen den Lehrerband also nie. Am 14.09.2026 hat
+    das genau einmal zugeschlagen: Die Kreisziffern ② ④ ⑥ in den Ueberschriften
+    des neuen Lehrerteils stehen NICHT in der Heftschrift (auf der
+    Schuelerseite sind sie gezeichnete Marken, kein Text). Gedruckt wurden
+    168 leere Kaestchen, und die Zeichenprobe meldete "0 fehlende Zeichen".
+    Seitdem laeuft das Setzen vor den Proben und das Schreiben danach."""
+    loes,_pn,starts,marken=loesungen_pages(2)
+    return [lb_cover()]+loes,starts,marken
+
+
+def build_lehrerband(gesetzt=None):
     """Der Loesungsteil als eigenes PDF - Vorbild: arbeitsheft_foe8/build_book.py."""
-    loes,_pn,starts=loesungen_pages(2)
-    pages=[lb_cover()]+loes
+    pages,starts,marken=gesetzt if gesetzt else lehrerband_setzen()
     out=os.path.join(HERE,"build","lehrerband.pdf")
     pages[0].save(out,"PDF",resolution=150,save_all=True,append_images=pages[1:])
     ziel=os.path.expanduser(f"~/Desktop/{DATEINAME}_Lehrerband.pdf")
@@ -1557,12 +1814,21 @@ def build_lehrerband():
         for p in r.pages: w.add_page(p)
         w.add_outline_item("Deckblatt",0)
         lp=w.add_outline_item("Lösungen",1)
+        # Ein Lesezeichen JE EINHEIT, nicht nur je Kapitel. Der Lehrerband wird
+        # im Unterricht aufgeschlagen, nicht gelesen: Wer die Loesung zu ki9
+        # sucht, soll sie im Baum finden und nicht 16 Seiten blaettern.
+        _kap=[]
         for i,ch in enumerate(CHAPTERS):
-            w.add_outline_item(f"Kapitel {i+1} · {ch['title']}",starts[i]-1,parent=lp)
+            _kap.append(w.add_outline_item(f"Kapitel {i+1} · {ch['title']}",
+                                           starts[i]-1,parent=lp))
+        for _t,_p,_ci in marken:
+            w.add_outline_item(_t,_p-1,parent=_kap[_ci])
         w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
-        w.add_metadata({"/Title":"FELO PHYSIK 9 – Realschule NRW – Lehrerband",
+        # Aus BANDNAME, nicht aus KL/SFORM: die fuenf Realschulbaende haben die
+        # beiden Namen nicht (siehe lb_cover).
+        w.add_metadata({"/Title":BANDNAME.upper()+" – Lehrerband",
                         "/Author":"Abdullah Lala","/Creator":"FELO",
-                        "/Subject":"Lösungen und Erwartungshorizonte zum Forscherheft Klasse 9"})
+                        "/Subject":"Lösungen und Erwartungshorizonte zum Forscherheft "+BANDNAME})
         with open(ziel,"wb") as f: w.write(f)
     except Exception as e:
         import shutil; shutil.copy2(out,ziel); print("Lehrerband ohne Lesezeichen:",e)
@@ -1685,6 +1951,7 @@ if __name__=="__main__":
             chap["subs"].append((_lbl,pn))
             chap["topics"].append((_lbl,pn))   # Themen-Kästchen der Trennseite -> Forscherseite
             qrpages[pn]=tid
+            HEFTSEITE[tid]=pn      # Seitenverweis im Lehrerteil
             _tp=topic_pages(FSD[tid],ch["title"],ti+1,pn)
             body+=_tp; pn+=len(_tp)
             if tid in UEBD:
@@ -1723,9 +1990,15 @@ if __name__=="__main__":
     fehlend=[i+1 for i,s in enumerate(seitentexte) if not s]
     if fehlend: print("ohne Textprotokoll:",fehlend)
 
+    # ── Der Lehrerband wird JETZT gesetzt, geschrieben wird er spaeter. ──
+    # Nur so laufen Satzspiegel-, Zeichen- und Versalprobe auch ueber ihn.
+    # Siehe lehrerband_setzen().
+    _n_schueler=len(PROBE)
+    _lb=lehrerband_setzen()
+
     # ── Woraus besteht der Band? Gezaehlt, nicht geschaetzt. ──
     _art={}
-    for _name,_pn,_y in PROBE:
+    for _name,_pn,_y in PROBE[:_n_schueler]:
         _a=_name.split(" ")[0] if " " in _name else _name
         _art[_a]=_art.get(_a,0)+1
     print("\nSeitenspiegel des Schuelerbandes:")
@@ -1733,36 +2006,42 @@ if __name__=="__main__":
         print(f"   {_a:22s} {_art[_a]:4d}")
 
     # ── Satzspiegel-Probe: wie tief laeuft jede Seite wirklich? ──
-    ueber=[p for p in PROBE if p[2]>fd.UNTEN+0.5]
-    print(f"\nSatzspiegel-Probe: {len(PROBE)} Seiten gemessen, Grenze {fd.UNTEN:.0f} Einheiten "
-          f"({fd.punkt(fd.UNTEN):.0f} pt)")
-    if ueber:
-        print(f"WARNUNG: {len(ueber)} Seite(n) laufen unter den Satzspiegel:")
-        for name,seite,y in sorted(ueber,key=lambda p:-p[2])[:20]:
-            print(f"   Seite {seite:3d}  {name:38s} endet {y:.0f}  (+{y-fd.UNTEN:.0f})")
-    else:
-        tiefste=max(PROBE,key=lambda p:p[2])
-        print(f"   keine Seite laeuft unter den Satzspiegel. Tiefste: Seite {tiefste[1]} "
-              f"({tiefste[0]}) endet {tiefste[2]:.0f}, {fd.UNTEN-tiefste[2]:.0f} Einheiten Luft.")
+    # Je Band getrennt: Beide zaehlen ihre Seiten ab 1, und die Ausnahme
+    # "letzte Seite des Bandes" traefe sonst die falsche.
+    def _satzspiegel(name,teil):
+        if not teil: return
+        ueber=[p for p in teil if p[2]>fd.UNTEN+0.5]
+        print(f"\nSatzspiegel-Probe {name}: {len(teil)} Seiten gemessen, "
+              f"Grenze {fd.UNTEN:.0f} Einheiten ({fd.punkt(fd.UNTEN):.0f} pt)")
+        if ueber:
+            print(f"WARNUNG: {len(ueber)} Seite(n) laufen unter den Satzspiegel:")
+            for nm,seite,y in sorted(ueber,key=lambda p:-p[2])[:20]:
+                print(f"   Seite {seite:3d}  {nm:38s} endet {y:.0f}  (+{y-fd.UNTEN:.0f})")
+        else:
+            tiefste=max(teil,key=lambda p:p[2])
+            print(f"   keine Seite laeuft unter den Satzspiegel. Tiefste: Seite {tiefste[1]} "
+                  f"({tiefste[0]}) endet {tiefste[2]:.0f}, {fd.UNTEN-tiefste[2]:.0f} Einheiten Luft.")
+        # Fast leere Seiten. Sie laufen unter keine Kante und es faellt kein Text
+        # weg - sichtbar werden sie nur so. Seite 32 trug einmal genau eine Linie.
+        _letzte=max(p[1] for p in teil)
+        _leer=[p for p in teil if p[2]<fd.OBEN+(fd.UNTEN-fd.OBEN)/3]
+        if _leer:
+            print(f"   {len(_leer)} Seite(n) tragen weniger als ein Drittel:")
+            for nm,seite,y in sorted(_leer,key=lambda p:p[2])[:20]:
+                print(f"   Seite {seite:3d}  {nm:38s} endet {y:.0f} "
+                      f"({100*(y-fd.OBEN)/(fd.UNTEN-fd.OBEN):.0f} % gefuellt)"
+                      +("   letzte Seite des Bandes - unvermeidbar" if seite==_letzte else
+                        "   WARNUNG"))
+        else:
+            print("   keine Seite traegt weniger als ein Drittel.")
+    _satzspiegel("Schuelerband",PROBE[:_n_schueler])
+    _satzspiegel("Lehrerband",PROBE[_n_schueler:])
     if WAISEN:
         print(f"WARNUNG: {len(WAISEN)} Seite(n) enden mit einer allein stehenden Ueberschrift:")
         for name,seite,bs_name in WAISEN[:20]:
             print(f"   Seite {seite:3d}  {name:38s} endet mit '{bs_name}'")
     else:
         print("   keine Seite endet mit einer allein stehenden Ueberschrift.")
-    # Fast leere Seiten. Sie laufen unter keine Kante und faellt kein Text weg -
-    # sichtbar werden sie nur so. Seite 32 trug einmal genau eine Schreiblinie.
-    _letzte=max(p[1] for p in PROBE)
-    _leer=[p for p in PROBE if p[2]<fd.OBEN+(fd.UNTEN-fd.OBEN)/3]
-    if _leer:
-        print(f"{len(_leer)} Seite(n) tragen weniger als ein Drittel:")
-        for name,seite,y in sorted(_leer,key=lambda p:p[2])[:20]:
-            print(f"   Seite {seite:3d}  {name:38s} endet {y:.0f} "
-                  f"({100*(y-fd.OBEN)/(fd.UNTEN-fd.OBEN):.0f} % gefuellt)"
-                  +("   letzte Seite des Bandes - unvermeidbar" if seite==_letzte else
-                    "   WARNUNG"))
-    else:
-        print("   keine Seite traegt weniger als ein Drittel.")
 
     # ── Zeichenprobe: haelt JEDE gesetzte Kette der cmap stand? ──
     # fd.T fuehrt Buch ueber alles, was im neuen Satz gedruckt wird. Ein leeres
@@ -1820,5 +2099,6 @@ if __name__=="__main__":
     except Exception as e:
         import traceback; traceback.print_exc(); print("E-Book-Schritt übersprungen:",e)
     print("")
-    n_lb=build_lehrerband()
+    # `_lb` ist oben schon gesetzt, damit die Proben es messen konnten.
+    n_lb=build_lehrerband(_lb)
     print(f"\nSchuelerband {len(pages)} Seiten  ·  Lehrerband {n_lb} Seiten")

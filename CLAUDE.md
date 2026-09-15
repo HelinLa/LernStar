@@ -412,13 +412,10 @@ Fachwort, das erst ⑥ erklaert · eine Vermutung ist ein Satz mit einer Aussage
 die Tabellenzeile in ④ mit weg UND `beobachtung` muss nach - das Feld steht
 nicht nur im Lehrerband, sondern im Messwerte-Anhang des Schuelerbands.
 
-**Der Lehrerband steht im Hausstil, nach dem Vorbild der Foerderreihe**
-(seit 14.09.2026, `lehrer_bloecke` / `lehrerseite` in `build_book.py`, Vorbild
-`arbeitsheft_foe9/build_pilot.py::seite_l`). Je Einheit EIN Lehrerteil mit
-Forscher- UND Uebungsloesung, oben "Auf einen Blick" mit den blossen Nummern,
-die Vermutungen nummeriert und alle drei begruendet (`predictWarum`), jede
-Aufgabe mit Wortlaut ueber der Loesung, die Alltagsaufgabe erstmals mit Loesung
-(`alltagLoesung`). Ein Lesezeichen je Einheit.
+**Der Lehrerband steht im Hausstil** – der Aufbau gilt seit dem 15.09.2026 fuer
+alle 19 Baende und ist im Abschnitt "Lehrerband" beschrieben. NUR die Oberstufe
+hat zusaetzlich `predictWarum` (drei Saetze, warum die falschen Vermutungen
+nicht tragen) und `alltagLoesung`.
 
 > **Drei Sek-I-Reste im gedruckten Oberstufenband** (berichtigt 14.09.2026):
 > Die Erklaerseite „Kompetenzbereiche des Kernlehrplans" nannte **UF1-UF4 aus
@@ -706,6 +703,61 @@ Achsenzahlen standen bei **2,56:1** Kontrast auf Weiss - unter der Schwelle von
 > **520** Vorkommen von `#94a3b8` sind nur 107 Achsentext - die uebrigen sind
 > Gitter und blasse Umrisse, wo blass richtig ist. Ein Pauschaltausch haette die
 > gewollte Abstufung platt gemacht.
+
+## Lehrerband – ein Format fuer alle 19 Baende (seit 15.09.2026)
+
+Jeder Band setzt ein eigenes `<DATEINAME>_Lehrerband.pdf`. Seit dem 15.09.2026
+tragen **alle 19** denselben Aufbau; entstanden ist er in der Foerderreihe
+(`arbeitsheft_foe*/build_pilot.py::seite_l` + `lehrer_bloecke`), am 14.09. auf
+die Oberstufe uebertragen und am 15.09. auf die vierzehn Baende der
+Sekundarstufe I.
+
+**Der Aufbau** (`lehrer_bloecke` / `lehrerseite` in jedem `build_book.py`):
+
+- **Eine Einheit, EIN Lehrerteil** – Forscher- UND Uebungsloesung zusammen.
+  Vorher lagen sie in getrennten Kapitelbloecken; wer die Uebungsloesung zu
+  einer Einheit suchte, blaetterte an allen Forscherseiten des Kapitels vorbei.
+- Oben **"Auf einen Blick"**: nur die Nummern und Woerter – richtige Vermutung,
+  Merksatzluecken, Lueckenwoerter, R/F-Folge, Nummer der Auswahlaufgabe.
+  Abdullah, 13.09.2026: *"Im unterricht hat man nicht immer zeit und schüler
+  fragen sofort nach den lösungen."*
+- Die **Vermutungen sind nummeriert** und tragen ihr Verdikt. Auf der
+  Schuelerseite stehen drei Kaestchen; ein blosser Wortlaut zwingt zum
+  Zeilenvergleich.
+- **Jede Aufgabe im Wortlaut ueber ihrer Loesung** – sonst braucht man beide
+  Hefte auf dem Tisch.
+- **Ein Lesezeichen je Einheit** statt nur je Kapitel.
+- Umbrochen wird ZEILENWEISE (`b_zeilen`): Ein Erwartungshorizont ist hoeher
+  als eine Seite, und ein unteilbarer Baustein laeuft unter der Blattkante
+  heraus. Dazu `ausgleich=True`, sonst traegt die letzte Seite einer Einheit
+  den Rest (gemessen in EF: 8 bis 33 Prozent auf zehn von 28 Einheiten).
+
+**Zwei Felder hat nur die Oberstufe**: `predictWarum` (drei Saetze, warum die
+falschen Vermutungen nicht tragen) und `alltagLoesung`. Der Renderer behandelt
+beide als OPTIONAL – fehlen sie, entfaellt der Punkt, nicht der Block. Gemessen
+fehlen sie in **448 Einheiten** der Sek I; das waeren 1792 Texte, jeder gegen
+den Faktendump seiner Simulation zu pruefen. Wer sie nachtraegt, tut es
+bandweise.
+
+> **Die Proben muessen VOR dem Schreiben des Lehrerbands laufen.** Frueher
+> stand `build_lehrerband()` am Ende von `main()`, hinter Satzspiegel-,
+> Zeichen- und Versalprobe – der Lehrerband war damit ungeprueft. Am
+> 14.09.2026 hat das zugeschlagen: Die Kreisziffern ② ④ ⑥ in den neuen
+> Ueberschriften stehen nicht in der Heftschrift, 168 leere Kaestchen im
+> Druck, und die Zeichenprobe meldete "0 fehlende Zeichen". Jetzt setzt
+> `lehrerband_setzen()` den Band VOR den Proben, `build_lehrerband(_lb)`
+> schreibt ihn danach, und die Satzspiegel-Probe laeuft **je Band getrennt** –
+> beide zaehlen ihre Seiten ab 1, sonst trifft die Ausnahme "letzte Seite des
+> Bandes" die falsche.
+
+> **Was beim Portieren je Band anders ist:** Die fuenf Realschulbaende haben
+> kein `KL` und kein `SFORM` (ihr Name steht als fester String in `BANDNAME`);
+> Deckblatt und PDF-Metadaten leiten deshalb alles aus `BANDNAME` ab. Die
+> Sek-I-Baende laden `arbeitsheft/kompetenzen.py` bisher nicht – der Lehrerteil
+> nennt aber den Klartext jedes Codes, also wird das Modul mitgeladen und die
+> Textsuche bleibt tolerant (unbekannter Code -> nur der Code). Und nur
+> `arbeitsheft10` hatte `ausgleichen()`; die uebrigen dreizehn haben es
+> bekommen.
 
 ## simcheck/ – Pruefwerkzeuge
 
